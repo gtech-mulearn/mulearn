@@ -4,7 +4,7 @@ import illustration from "./assets/illustration.png";
 
 const Home = () => {
   return (
-    <div className={styles.main_container}>
+    <div className={styles.firstviewmain_container}>
       <div className={styles.firstview_container}>
         <div className={styles.first_view}>
           <div className={styles.fv_texts}>
