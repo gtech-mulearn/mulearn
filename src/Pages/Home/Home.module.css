@@ -1,0 +1,85 @@
+p {
+  margin: 0;
+}
+
+.main_container {
+  padding-top: 5rem;
+  background-color: #f2f3f9;
+  opacity: 1;
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      #f2f3f9 15px
+    ),
+    repeating-linear-gradient(#fdf1e755, #fdf1e7);
+  min-height: 100vh;
+}
+
+.first_view {
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.fv_texts {
+  text-align: center;
+}
+
+.fv_image {
+  display: none;
+}
+
+.fv_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #303030;
+}
+
+.fv_heading span {
+  font-weight: 600;
+  color: #eca53a;
+}
+
+.fv_tagline {
+  margin-top: 1rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.primary {
+  background-color: #eca53a;
+  padding: 0.7rem 2.75rem;
+  border: none;
+  margin-top: 1rem;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  border-radius: 5px;
+}
+
+@media only screen and (min-width: 1000px) {
+  .firstview_container {
+    max-width: 1000px;
+    display: block;
+    margin: auto;
+  }
+
+  .fv_image {
+    display: block;
+    margin: auto;
+    width: 55rem;
+  }
+
+  .fv_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 4.5rem;
+    line-height: 4.55rem;
+    font-weight: 600;
+  }
+
+  .fv_tagline {
+    font-size: 1.1rem;
+  }
+}
