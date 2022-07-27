@@ -39,7 +39,7 @@ p {
 
 .fv_heading span {
   font-weight: 600;
-  color: #eca53a;
+  color: #f78c40;
 }
 
 .fv_tagline {
@@ -48,7 +48,7 @@ p {
 }
 
 .primary {
-  background-color: #eca53a;
+  background-color: #f78c40;
   padding: 0.7rem 2.75rem;
   border: none;
   margin-top: 1rem;
@@ -80,5 +80,38 @@ p {
 
   .fv_tagline {
     font-size: 1.1rem;
+  }
+}
+
+/* Second Section Styles */
+
+.secondviewmain_container {
+  padding-top: 3rem;
+}
+
+.sv_mainheading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #303030;
+  text-align: center;
+}
+
+.sv_mainheading span {
+  font-weight: 600;
+  color: #f78c40;
+}
+
+@media only screen and (min-width: 1000px) {
+  .secondview_container {
+    max-width: 1000px;
+    display: block;
+    margin: auto;
+  }
+
+  .sv_mainheading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 2.75rem;
+    font-weight: 600;
   }
 }
