@@ -31,6 +31,33 @@ const Home = () => {
             <div className={styles.sv_mainheading}>
               What is <span>Mulearn?</span>{" "}
             </div>
+            <div className={styles.sv_points}>
+              <div className={styles.sv_point}>
+                <div className={styles.svp_heading}>Involve</div>
+                <div className={styles.svp_text}>
+                  Mulearn is a place for everyone. A place where one could
+                  involve the most and enjoy our interesting events like{" "}
+                  <span>Inspiration Radio</span>, <span>Let's Chill</span> and
+                  Much more..
+                </div>
+              </div>
+              <div className={styles.sv_point}>
+                <div className={styles.svp_heading}>Interact</div>
+                <div className={styles.svp_text}>
+                  A Interactive space where each one of you could interact with
+                  peers with same mindset and mentors with mentoring mindset. If
+                  you interact well it could even turn into an Internship.
+                </div>
+              </div>
+              <div className={styles.sv_point}>
+                <div className={styles.svp_heading}>Innovate</div>
+                <div className={styles.svp_text}>
+                  A space full of opportunties for you to innovate and create
+                  amazing creations. To showcase yourself. You Improve yourself
+                  and Innovate yourself!.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

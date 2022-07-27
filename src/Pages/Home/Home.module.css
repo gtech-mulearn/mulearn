@@ -86,6 +86,7 @@ p {
 /* Second Section Styles */
 
 .secondviewmain_container {
+  padding: 1rem;
   padding-top: 3rem;
 }
 
@@ -102,6 +103,23 @@ p {
   color: #f78c40;
 }
 
+.sv_points {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.svp_heading {
+  font-family: "Noto Sans", sans-serif;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.svp_text {
+  font-family: "Poppins", sans-serif;
+}
+
 @media only screen and (min-width: 1000px) {
   .secondview_container {
     max-width: 1000px;
@@ -113,5 +131,18 @@ p {
     font-family: "Noto Sans", sans-serif;
     font-size: 2.75rem;
     font-weight: 600;
+  }
+
+  .sv_points {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sv_point {
+    text-align: center;
+    margin: 0 1rem;
   }
 }
