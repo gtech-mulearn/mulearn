@@ -244,4 +244,12 @@ p {
     font-weight: 700;
     color: #303030;
   }
+
+  .tvp_heading {
+    font-size: 1.5rem;
+  }
+
+  .tvp_text {
+    font-size: 1rem;
+  }
 }

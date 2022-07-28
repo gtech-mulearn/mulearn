@@ -90,7 +90,7 @@ const Home = () => {
             </div>
             <div className={styles.tv_points}>
               <div className={styles.tv_point}>
-                <p className={styles.tvp_heading}>Inspiration Station<br/> Radio</p>
+                <p className={styles.tvp_heading}>Inspiration Station Radio</p>
                 <p className={styles.tvp_text}>
                   ISR is one of event which is conducted at Mulearn on weekly,
                   an event where student come in and share their stories and
@@ -100,9 +100,7 @@ const Home = () => {
               <div className={styles.tv_point}>
                 <p className={styles.tvp_heading}>Let's Chill</p>
                 <p className={styles.tvp_text}>
-                  ISR is one of event which is conducted at Mulearn on weekly,
-                  an event where student come in and share their stories and
-                  inspirations for listeners like to learn.
+                30 minutes to chillout. Join lobby vc every day at 6.30 pm to unwind, connect, and mingle with new people from campuses all over the state. Take part in conversations and other enjoyable activities. Connect and advance.
                 </p>
               </div>
             </div>
