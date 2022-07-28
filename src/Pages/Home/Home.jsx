@@ -76,11 +76,39 @@ const Home = () => {
       <div className={styles.thirdviewmain_container}>
         <div className={styles.thirdview_container}>
           <div className={styles.third_view}>
+            <div className={styles.tv_texts}>
+              <p className={styles.tv_mainheading}>
+                Exloring the Events at <span>µLearn.</span>{" "}
+              </p>
 
+              <p className={styles.tv_tagline}>
+                Each week multiple events are conducted at µLearn. Events full
+                of stories, learning experience, inspirations and much more
+                awaits you there. Events are key to opening the doors of
+                Interactions.{" "}
+              </p>
+            </div>
+            <div className={styles.tv_points}>
+              <div className={styles.tv_point}>
+                <p className={styles.tvp_heading}>Inspiration Station<br/> Radio</p>
+                <p className={styles.tvp_text}>
+                  ISR is one of event which is conducted at Mulearn on weekly,
+                  an event where student come in and share their stories and
+                  inspirations for listeners like to learn.
+                </p>
+              </div>
+              <div className={styles.tv_point}>
+                <p className={styles.tvp_heading}>Let's Chill</p>
+                <p className={styles.tvp_text}>
+                  ISR is one of event which is conducted at Mulearn on weekly,
+                  an event where student come in and share their stories and
+                  inspirations for listeners like to learn.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
     </>
   );
 };

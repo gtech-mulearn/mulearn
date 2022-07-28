@@ -89,7 +89,7 @@ p {
 .secondviewmain_container {
   padding: 2rem;
   padding-top: 4rem;
-  padding-bottom: 5rem;
+  padding-bottom: 0rem;
 }
 
 .sv_mainheading {
@@ -159,5 +159,89 @@ p {
   .svp_text {
     font-family: "Poppins", sans-serif;
     font-size: 1.02rem;
+  }
+}
+
+/* Thrid View */
+
+.thirdviewmain_container {
+  padding-top: 2rem;
+  /* background-color: #f2f3f9;
+  opacity: 1;
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      #f2f3f9 15px
+    ),
+    repeating-linear-gradient(#fdf1e755, #fdf1e7); */
+}
+
+.third_view {
+  padding: 0 2rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.tv_mainheading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #303030;
+}
+
+.tv_mainheading span {
+  color: #f78c40;
+}
+
+.tv_tagline {
+  margin-top: 1rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.tv_points {
+  margin-top: 1rem;
+}
+
+.tv_point {
+  margin: 1.5rem 0;
+}
+
+.tvp_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1.45rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  color: #f78c40;
+}
+
+.tvp_text {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  .thirdviewmain_container {
+    max-width: 1300px;
+    margin: auto;
+  }
+  .third_view {
+    margin: 5rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tv_tagline {
+    width: 80%;
+  }
+
+  .tv_mainheading {
+    width: 80%;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #303030;
   }
 }
