@@ -33,7 +33,11 @@ const Home = () => {
         <div className={styles.secondview_container}>
           <div className={styles.second_view}>
             <p className={styles.sv_mainheading}>
-              Knowing more about <span>µLearn</span>{" "}
+              Knowing more about <span>µLearn!</span>{" "}
+            </p>
+            <p className={styles.sv_tagline}>
+              Curious know more about µLearn and explore what all magic we can
+              do together, come lets witness it!
             </p>
             <div className={styles.sv_points}>
               <div className={styles.sv_point}>
@@ -43,7 +47,16 @@ const Home = () => {
                   Mulearn is a place for everyone. A place where one could
                   involve the most and enjoy our interesting events like{" "}
                   <span>Inspiration Radio</span>, <span>Let's Chill</span> and
-                  Much more..
+                  Much more.. to their fullest
+                </div>
+              </div>
+              <div className={styles.sv_point}>
+                <img src={innovation} alt="" className={styles.svp_image} />
+                <div className={styles.svp_heading}>Innovate</div>
+                <div className={styles.svp_text}>
+                  A space full of opportunties to innovate and create amazing
+                  creations. To showcase yourself. You Improve yourself and
+                  Innovate yourself!.
                 </div>
               </div>
               <div className={styles.sv_point}>
@@ -51,17 +64,8 @@ const Home = () => {
                 <div className={styles.svp_heading}>Interact</div>
                 <div className={styles.svp_text}>
                   A Interactive space where each one of you could interact with
-                  peers with same mindset and mentors with mentoring mindset. If
-                  you interact well it could even turn into an Internship.
-                </div>
-              </div>
-              <div className={styles.sv_point}>
-                <img src={innovation} alt="" className={styles.svp_image} />
-                <div className={styles.svp_heading}>Innovate</div>
-                <div className={styles.svp_text}>
-                  A space full of opportunties for you to innovate and create
-                  amazing creations. To showcase yourself. You Improve yourself
-                  and Innovate yourself!.
+                  peers with same mindset and mentors with marvellous mindset.
+                  If you interact well it could even turn into an Internship.
                 </div>
               </div>
             </div>

@@ -1,5 +1,6 @@
 p {
   margin: 0;
+  padding: 0;
 }
 
 .firstviewmain_container {
@@ -95,11 +96,15 @@ p {
   font-size: 2.25rem;
   font-weight: 700;
   color: #303030;
-  margin-bottom: 1rem;
 }
 
 .sv_mainheading span {
   color: #f78c40;
+}
+
+.sv_tagline {
+  margin-top: 0rem;
+  font-family: "Poppins", sans-serif;
 }
 
 .sv_point {
@@ -120,4 +125,38 @@ p {
 
 .svp_image {
   width: 3.15rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  .secondviewmain_container {
+    max-width: 1200px;
+    display: block;
+    margin: auto;
+    text-align: center;
+  }
+  .sv_mainheading {
+    font-size: 2.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .sv_points {
+    margin-top: 2rem;
+    display: flex;
+  }
+
+  .sv_point {
+    margin: 1rem;
+  }
+
+  .sv_tagline {
+    width: 60%;
+    display: block;
+    margin: auto;
+    font-size: 1.1rem;
+  }
+
+  .svp_text {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.02rem;
+  }
 }
