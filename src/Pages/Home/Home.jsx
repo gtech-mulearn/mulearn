@@ -2,6 +2,10 @@ import React from "react";
 import styles from "../Home/Home.module.css";
 import illustration from "./assets/illustration.png";
 
+import involvement from "./assets/involvement.png";
+import interactive from "./assets/interactive.png";
+import innovation from "./assets/innovation.png";
+
 const Home = () => {
   return (
     <>
@@ -28,11 +32,12 @@ const Home = () => {
       <div className={styles.secondviewmain_container}>
         <div className={styles.secondview_container}>
           <div className={styles.second_view}>
-            <div className={styles.sv_mainheading}>
-              What is <span>Mulearn?</span>{" "}
-            </div>
+            <p className={styles.sv_mainheading}>
+              Knowing more about <span>µLearn</span>{" "}
+            </p>
             <div className={styles.sv_points}>
               <div className={styles.sv_point}>
+                <img src={involvement} alt="" className={styles.svp_image} />
                 <div className={styles.svp_heading}>Involve</div>
                 <div className={styles.svp_text}>
                   Mulearn is a place for everyone. A place where one could
@@ -42,6 +47,7 @@ const Home = () => {
                 </div>
               </div>
               <div className={styles.sv_point}>
+                <img src={interactive} alt="" className={styles.svp_image} />
                 <div className={styles.svp_heading}>Interact</div>
                 <div className={styles.svp_text}>
                   A Interactive space where each one of you could interact with
@@ -50,6 +56,7 @@ const Home = () => {
                 </div>
               </div>
               <div className={styles.sv_point}>
+                <img src={innovation} alt="" className={styles.svp_image} />
                 <div className={styles.svp_heading}>Innovate</div>
                 <div className={styles.svp_text}>
                   A space full of opportunties for you to innovate and create

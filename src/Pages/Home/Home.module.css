@@ -86,63 +86,38 @@ p {
 /* Second Section Styles */
 
 .secondviewmain_container {
-  padding: 1rem;
+  padding: 2rem;
   padding-top: 3rem;
 }
 
 .sv_mainheading {
   font-family: "Noto Sans", sans-serif;
-  font-size: 2rem;
-  font-weight: 600;
+  font-size: 2.25rem;
+  font-weight: 700;
   color: #303030;
-  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .sv_mainheading span {
-  font-weight: 600;
   color: #f78c40;
 }
 
-.sv_points {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.sv_point {
+  margin: 2rem 0;
 }
 
 .svp_heading {
   font-family: "Noto Sans", sans-serif;
-  margin-bottom: 0.5rem;
   font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
 }
 
 .svp_text {
   font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
 }
 
-@media only screen and (min-width: 1000px) {
-  .secondview_container {
-    max-width: 1000px;
-    display: block;
-    margin: auto;
-  }
-
-  .sv_mainheading {
-    font-family: "Noto Sans", sans-serif;
-    font-size: 2.75rem;
-    font-weight: 600;
-  }
-
-  .sv_points {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .sv_point {
-    text-align: center;
-    margin: 0 1rem;
-  }
+.svp_image {
+  width: 3.15rem;
 }
