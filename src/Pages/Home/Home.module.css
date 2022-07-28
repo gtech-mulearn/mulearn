@@ -88,7 +88,8 @@ p {
 
 .secondviewmain_container {
   padding: 2rem;
-  padding-top: 3rem;
+  padding-top: 4rem;
+  padding-bottom: 5rem;
 }
 
 .sv_mainheading {
@@ -129,7 +130,7 @@ p {
 
 @media only screen and (min-width: 1000px) {
   .secondviewmain_container {
-    max-width: 1200px;
+    max-width: 1300px;
     display: block;
     margin: auto;
     text-align: center;
@@ -140,7 +141,7 @@ p {
   }
 
   .sv_points {
-    margin-top: 2rem;
+    margin-top: 4rem;
     display: flex;
   }
 

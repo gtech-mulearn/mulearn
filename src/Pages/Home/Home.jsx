@@ -72,6 +72,15 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      <div className={styles.thirdviewmain_container}>
+        <div className={styles.thirdview_container}>
+          <div className={styles.third_view}>
+
+          </div>
+        </div>
+      </div>
+
     </>
   );
 };
