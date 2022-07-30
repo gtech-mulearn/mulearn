@@ -5,6 +5,7 @@ import illustration from "./assets/illustration.png";
 import involvement from "./assets/involvement.png";
 import interactive from "./assets/interactive.png";
 import innovation from "./assets/innovation.png";
+import join from "./assets/join.png";
 import Footer from "../../Components/Footer/Footer";
 const Home = () => {
   return (
@@ -117,6 +118,36 @@ const Home = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.joinviewmain_container}>
+        <div className={styles.joinview_container}>
+          <div className={styles.join_view}>
+            <div className={styles.jv_texts}>
+              <p className={styles.jv_heading}>
+                {" "}
+                Learn and Grow <span> Together</span> as a{" "}
+                <span>Community</span>
+              </p>
+              <p className={styles.jv_content}>
+                So are your ready to you learn, grow and upskill youself to the
+                next level!. Come join in the community and lets starts learning
+                in a new way. Call in you friends also, because things are going
+                to change once you experience it and it more effective when done
+                with a group.
+              </p>
+              <div className={styles.highlights}>
+                <p className={styles.highlight_text}>
+                  Karma Points • Digitial Profile • Interest Groups • Peer
+                  Learning • Learning Circles • Enablement Tasks.{" "}
+                  <span> and much more ..</span>
+                </p>
+              </div>
+              <button className={styles.primary}>Join Discord Server</button>
+            </div>
+            <img src={join} alt="" className={styles.join_img} />
           </div>
         </div>
       </div>
