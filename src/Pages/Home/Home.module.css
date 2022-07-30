@@ -88,7 +88,7 @@ p {
 
 .secondviewmain_container {
   padding: 2rem;
-  padding-top: 4rem;
+  padding-top: 2rem;
   padding-bottom: 0rem;
 }
 
@@ -177,7 +177,7 @@ p {
 }
 
 .third_view {
-  padding: 0 2rem;
+  padding: 1rem 2rem;
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -226,7 +226,7 @@ p {
     margin: auto;
   }
   .third_view {
-    margin: 5rem 0;
+    margin: 2rem 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -251,5 +251,39 @@ p {
 
   .tvp_text {
     font-size: 1rem;
+  }
+}
+
+.partner {
+  height: 3.5rem;
+}
+
+.tech_slideshow {
+  height: 200px;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.tech_slideshow > div {
+  height: 200px;
+  width: 2526px;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/collage.jpg);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transform: translate3d(0, 0, 0);
+}
+.tech_slideshow .mover_1 {
+  animation: moveSlideshow 12s linear infinite;
+}
+
+
+@keyframes moveSlideshow {
+  100% {
+    transform: translateX(-66.6666%);
   }
 }

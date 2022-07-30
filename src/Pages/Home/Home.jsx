@@ -5,6 +5,14 @@ import illustration from "./assets/illustration.png";
 import involvement from "./assets/involvement.png";
 import interactive from "./assets/interactive.png";
 import innovation from "./assets/innovation.png";
+import asap from "./assets/partners/asap.png";
+import blockchain from "./assets/partners/blockchain.png";
+import fof from "./assets/partners/fof.png";
+import foxlab from "./assets/partners/foxlab.png";
+import ieee from "./assets/partners/ieee.png";
+import kites from "./assets/partners/kites.png";
+import pygrammers from "./assets/partners/pygrammers.png";
+import xtrudar from "./assets/partners/xtrudar.png";
 
 const Home = () => {
   return (
@@ -26,6 +34,71 @@ const Home = () => {
             <button className={styles.primary}>Join Us</button>
           </div>
           <img className={styles.fv_image} src={illustration} alt="" />
+        </div>
+      </div>
+
+      <div className={styles.partnersmain_con}>
+        <div className={styles.partners_container}>
+          <div class={styles.tech_slideshow}>
+            <div class={styles.mover_1}></div>
+            <img src={asap} alt="" className={styles.partner} />
+            <img src={blockchain} alt="" className={styles.partner} />
+            <img src={fof} alt="" className={styles.partner} />
+            <img src={foxlab} alt="" className={styles.partner} />
+            <img src={ieee} alt="" className={styles.partner} />
+            <img src={kites} alt="" className={styles.partner} />
+            <img src={pygrammers} alt="" className={styles.partner} />
+            <img src={xtrudar} alt="" className={styles.partner} />
+          </div>
+          <div className={styles.partners}></div>
+        </div>
+      </div>
+
+      <div className={styles.thirdviewmain_container}>
+        <div className={styles.thirdview_container}>
+          <div className={styles.third_view}>
+            <div className={styles.tv_texts}>
+              <p className={styles.tv_mainheading}>
+                Exloring the Events at <span>µLearn.</span>{" "}
+              </p>
+
+              <p className={styles.tv_tagline}>
+                Each week multiple events are conducted at µLearn. Events full
+                of stories, learning experience, inspirations and much more
+                awaits you there. Events are key to opening the doors of
+                Interactions.{" "}
+              </p>
+            </div>
+            <div className={styles.tv_points}>
+              <div className={styles.tv_point}>
+                <p className={styles.tvp_heading}>Inspiration Station Radio</p>
+                <p className={styles.tvp_text}>
+                  ISR is one of event which is conducted at Mulearn on weekly,
+                  an event where student come in and share their stories and
+                  inspirations for listeners like to learn.
+                </p>
+              </div>
+              <div className={styles.tv_point}>
+                <p className={styles.tvp_heading}>Let's Chill</p>
+                <p className={styles.tvp_text}>
+                  30 minutes to chillout. Join lobby vc every day at 6.30 pm to
+                  unwind, connect, and mingle with new people from campuses all
+                  over the state. Take part in conversations and other enjoyable
+                  activities. Connect and advance.
+                </p>
+              </div>
+              <div className={styles.tv_point}>
+                <p className={styles.tvp_heading}>Learning Circles</p>
+                <p className={styles.tvp_text}>
+                  An informal mechanism for bringing together learners who are
+                  interested in the same topic from across different fields and
+                  disciplines. A fantastic way to spend a small amount of time
+                  learning about new things with a group of people with same
+                  interests!
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -67,41 +140,6 @@ const Home = () => {
                   peers with same mindset and mentors with marvellous mindset.
                   If you interact well it could even turn into an Internship.
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.thirdviewmain_container}>
-        <div className={styles.thirdview_container}>
-          <div className={styles.third_view}>
-            <div className={styles.tv_texts}>
-              <p className={styles.tv_mainheading}>
-                Exloring the Events at <span>µLearn.</span>{" "}
-              </p>
-
-              <p className={styles.tv_tagline}>
-                Each week multiple events are conducted at µLearn. Events full
-                of stories, learning experience, inspirations and much more
-                awaits you there. Events are key to opening the doors of
-                Interactions.{" "}
-              </p>
-            </div>
-            <div className={styles.tv_points}>
-              <div className={styles.tv_point}>
-                <p className={styles.tvp_heading}>Inspiration Station Radio</p>
-                <p className={styles.tvp_text}>
-                  ISR is one of event which is conducted at Mulearn on weekly,
-                  an event where student come in and share their stories and
-                  inspirations for listeners like to learn.
-                </p>
-              </div>
-              <div className={styles.tv_point}>
-                <p className={styles.tvp_heading}>Let's Chill</p>
-                <p className={styles.tvp_text}>
-                30 minutes to chillout. Join lobby vc every day at 6.30 pm to unwind, connect, and mingle with new people from campuses all over the state. Take part in conversations and other enjoyable activities. Connect and advance.
-                </p>
               </div>
             </div>
           </div>
