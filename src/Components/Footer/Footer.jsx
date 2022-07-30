@@ -26,13 +26,6 @@ const Footer = () => {
 
           <div className={styles.fs_rightside}>
             <a
-              href="http://www.facebook.com/gtechmulearn"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src={facebook} alt="" className={styles.social} />
-            </a>
-            <a
               href="http://twitter.com/GtechMulearn"
               target="_blank"
               rel="noopener noreferrer"
@@ -61,6 +54,13 @@ const Footer = () => {
               rel="noopener noreferrer"
             >
               <img src={youtube} alt="" className={styles.social} />
+            </a>
+            <a
+              href="http://www.facebook.com/gtechmulearn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={facebook} alt="" className={styles.social} />
             </a>
           </div>
         </div>

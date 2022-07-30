@@ -3,13 +3,13 @@ p {
   padding: 0;
 }
 
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
 
 .firstviewmain_container {
-  padding-top: 5rem;
+  padding-top: 3rem;
   background-color: #f2f3f9;
   opacity: 1;
   background-image: repeating-radial-gradient(

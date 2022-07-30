@@ -7,9 +7,11 @@ import interactive from "./assets/interactive.png";
 import innovation from "./assets/innovation.png";
 import join from "./assets/join.png";
 import Footer from "../../Components/Footer/Footer";
+import Navbar from "../../Components/Navbar/Navbar";
 const Home = () => {
   return (
     <>
+      <Navbar />
       <div className={styles.firstviewmain_container}>
         <div className={styles.firstview_container}>
           <div className={styles.first_view}>
@@ -140,9 +142,8 @@ const Home = () => {
               </p>
               <div className={styles.highlights}>
                 <p className={styles.highlight_text}>
-                  Karma Points • Digitial Profile • Interest Groups • Peer
-                  Learning • Learning Circles • Enablement Tasks.{" "}
-                  <span> and much more ..</span>
+                  Karma Points • Interest Groups • Learning Circles • Enablement Tasks.{" "}
+                  <span> and to know more..</span>
                 </p>
               </div>
               <button className={styles.primary}>Join Discord Server</button>
