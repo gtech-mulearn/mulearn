@@ -5,15 +5,7 @@ import illustration from "./assets/illustration.png";
 import involvement from "./assets/involvement.png";
 import interactive from "./assets/interactive.png";
 import innovation from "./assets/innovation.png";
-import asap from "./assets/partners/asap.png";
-import blockchain from "./assets/partners/blockchain.png";
-import fof from "./assets/partners/fof.png";
-import foxlab from "./assets/partners/foxlab.png";
-import ieee from "./assets/partners/ieee.png";
-import kites from "./assets/partners/kites.png";
-import pygrammers from "./assets/partners/pygrammers.png";
-import xtrudar from "./assets/partners/xtrudar.png";
-
+import Footer from "../../Components/Footer/Footer";
 const Home = () => {
   return (
     <>
@@ -34,23 +26,6 @@ const Home = () => {
             <button className={styles.primary}>Join Us</button>
           </div>
           <img className={styles.fv_image} src={illustration} alt="" />
-        </div>
-      </div>
-
-      <div className={styles.partnersmain_con}>
-        <div className={styles.partners_container}>
-          <div class={styles.tech_slideshow}>
-            <div class={styles.mover_1}></div>
-            <img src={asap} alt="" className={styles.partner} />
-            <img src={blockchain} alt="" className={styles.partner} />
-            <img src={fof} alt="" className={styles.partner} />
-            <img src={foxlab} alt="" className={styles.partner} />
-            <img src={ieee} alt="" className={styles.partner} />
-            <img src={kites} alt="" className={styles.partner} />
-            <img src={pygrammers} alt="" className={styles.partner} />
-            <img src={xtrudar} alt="" className={styles.partner} />
-          </div>
-          <div className={styles.partners}></div>
         </div>
       </div>
 
@@ -145,6 +120,8 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 };

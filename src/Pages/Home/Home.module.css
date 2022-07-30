@@ -254,36 +254,3 @@ p {
   }
 }
 
-.partner {
-  height: 3.5rem;
-}
-
-.tech_slideshow {
-  height: 200px;
-  max-width: 800px;
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0, 0, 0);
-}
-
-.tech_slideshow > div {
-  height: 200px;
-  width: 2526px;
-  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/collage.jpg);
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  transform: translate3d(0, 0, 0);
-}
-.tech_slideshow .mover_1 {
-  animation: moveSlideshow 12s linear infinite;
-}
-
-
-@keyframes moveSlideshow {
-  100% {
-    transform: translateX(-66.6666%);
-  }
-}
