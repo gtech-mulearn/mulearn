@@ -18,6 +18,8 @@ import kites from "./assets/partners/kites.png";
 import pygrammers from "./assets/partners/pygrammers.png";
 import xtrudar from "./assets/partners/xtrudar.png";
 
+import CountUp from "react-countup";
+
 const Home = () => {
   return (
     <>
@@ -31,9 +33,9 @@ const Home = () => {
               </p>
               <p className={styles.fv_tagline}>
                 µLearn is a synergic philosophy of education, with a culture of
-                mutual learning through micro groups of peers. µLearn is here to
-                assist you in breaking through the echo chambers and free you
-                from the shackles that have you grounded.
+                mutual learning through micro peer groups. We are here to assist
+                you in breaking through the echo chambers and free you from the
+                shackles that have you grounded.
               </p>
             </div>
             <button className={styles.primary}>Join Us</button>
@@ -79,27 +81,28 @@ const Home = () => {
               <div className={styles.tv_point}>
                 <p className={styles.tvp_heading}>Inspiration Station Radio</p>
                 <p className={styles.tvp_text}>
-                  ISR is one of event which is conducted at µLearn on weekly, an
-                  event where student come in and share their stories and
-                  inspirations for listeners like to learn.
+                  ISR is an event conducted at µLearn weekly. Here students come
+                  in and share their stories and inspirations for listeners who
+                  like to learn.
                 </p>
               </div>
               <div className={styles.tv_point}>
                 <p className={styles.tvp_heading}>Let's Chill</p>
                 <p className={styles.tvp_text}>
-                  30 minutes to chillout. Join lobby vc every day at 6.30 pm to
-                  unwind, connect, and mingle with new people from campuses all
-                  over the state. Take part in conversations and other enjoyable
-                  activities. Connect and advance.
+                  A 30 minutes chill-out spot. Join the lobby voice channel in
+                  our discord server every day at 6.30 pm to unwind, connect,
+                  and socialize with our community members. Take part in
+                  conversations and other enjoyable activities. Connect and
+                  progress.
                 </p>
               </div>
               <div className={styles.tv_point}>
                 <p className={styles.tvp_heading}>Learning Circles</p>
                 <p className={styles.tvp_text}>
-                  An informal mechanism for bringing together learners who are
-                  interested in the same topic from across different fields and
-                  disciplines. A fantastic way to spend a small amount of time
-                  learning about new things with a group of people with same
+                  An informal mechanism for bringing together learners who have
+                  interests in similar topics across different fields and
+                  disciplines. A fantastic way to spend your limited time
+                  learning and exploring with a group of people with the same
                   interests!
                 </p>
               </div>
@@ -115,8 +118,8 @@ const Home = () => {
               Knowing more about <span>µLearn!</span>{" "}
             </p>
             <p className={styles.sv_tagline}>
-              Curious know more about µLearn and explore what all magic we can
-              do together, come lets witness it!
+              Curious to know more about µLearn? Wanna explore what all wonders
+              we can do as a team? Come, witness it by yourself!
             </p>
             <div className={styles.sv_points}>
               <div className={styles.sv_point}>
@@ -124,27 +127,68 @@ const Home = () => {
                 <div className={styles.svp_heading}>Involve</div>
                 <div className={styles.svp_text}>
                   µLearn is a place for everyone. A place where one could
-                  involve the most and enjoy our interesting events like{" "}
-                  <span>Inspiration Radio</span>, <span>Let's Chill</span> and
-                  Much more.. to their fullest
+                  involve and evolve the most. Be a part of our intriguing
+                  events like <span>Inspiration Radio</span>,{" "}
+                  <span>Let's Chill</span> and make the most out of it.
                 </div>
               </div>
               <div className={styles.sv_point}>
                 <img src={innovation} alt="" className={styles.svp_image} />
                 <div className={styles.svp_heading}>Innovate</div>
                 <div className={styles.svp_text}>
-                  A space full of opportunties to innovate and create amazing
-                  creations. To showcase yourself. You Improve yourself and
-                  Innovate yourself!.
+                  A place brimming with possibilities for innovation and
+                  astonishing creations. A perfect spot to display your works.
+                  Here you always advance and invent yourself!
                 </div>
               </div>
               <div className={styles.sv_point}>
                 <img src={interactive} alt="" className={styles.svp_image} />
                 <div className={styles.svp_heading}>Interact</div>
                 <div className={styles.svp_text}>
-                  A Interactive space where each one of you could interact with
-                  peers with same mindset and mentors with marvellous mindset.
-                  If you interact well it could even turn into an Internship.
+                  An Interactive setting where each one of you could connect
+                  with folks and mentors having a remarkable mindset. Your
+                  involvements, and dedication to the community can even get you
+                  an internship opportunity.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.countviewmain_container}>
+        <div className={styles.countview_container}>
+          <div className={styles.count_view}>
+            <div className={styles.left_side}>
+              <p className={styles.cv_heading}>
+                {" "}
+                The <span>Impact</span> of <span>µLearn.</span>
+              </p>
+              <p className={styles.cv_text}>
+                Over the span of the last one year we as a community has
+                impacted a large number of students, mentors and Enablers
+                allowing them to gain more knowledge about the ecosystem and
+                upskill themselves.
+              </p>
+            </div>
+            <div className={styles.rightside}>
+              <div className={styles.countcontainer}>
+                <div className={styles.count}>
+                  <p className={styles.cvc_heading}><CountUp end={16000} duration={10} />+</p>
+                  <p className={styles.cvc_text}>Members</p>
+                </div>
+
+                <div className={styles.count}>
+                  <p className={styles.cvc_heading}><CountUp end={120} duration={10} />+</p>
+                  <p className={styles.cvc_text}>Enablers</p>
+                </div>
+                <div className={styles.count}>
+                  <p className={styles.cvc_heading}><CountUp end={100} duration={10} />+</p>
+                  <p className={styles.cvc_text}>Mentors</p>
+                </div>
+                <div className={styles.count}>
+                  <p className={styles.cvc_heading}><CountUp end={10} duration={10} />+</p>
+                  <p className={styles.cvc_text}>Companies</p>
                 </div>
               </div>
             </div>
@@ -162,11 +206,11 @@ const Home = () => {
                 <span>Community</span>
               </p>
               <p className={styles.jv_content}>
-                So are your ready to you learn, grow and upskill youself to the
-                next level!. Come join in the community and lets starts learning
-                in a new way. Call in you friends also, because things are going
-                to change once you experience it and it more effective when done
-                with a group.
+                Are you ready to learn, grow and upskill yourself to the next
+                level? Come, be a part of the community, and let's start
+                learning in a new better way. Call in your friends as well,
+                because things are going to change once you experience it and it
+                is more effective when done with a group.
               </p>
               <div className={styles.highlights}>
                 <p className={styles.highlight_text}>
