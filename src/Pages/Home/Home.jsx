@@ -8,6 +8,16 @@ import innovation from "./assets/innovation.png";
 import join from "./assets/join.png";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
+
+import asap from "./assets/partners/asap.png";
+import blockchain from "./assets/partners/blockchain.png";
+import fof from "./assets/partners/fof.png";
+import foxlab from "./assets/partners/foxlab.png";
+import ieee from "./assets/partners/ieee.png";
+import kites from "./assets/partners/kites.png";
+import pygrammers from "./assets/partners/pygrammers.png";
+import xtrudar from "./assets/partners/xtrudar.png";
+
 const Home = () => {
   return (
     <>
@@ -29,6 +39,24 @@ const Home = () => {
             <button className={styles.primary}>Join Us</button>
           </div>
           <img className={styles.fv_image} src={illustration} alt="" />
+        </div>
+      </div>
+
+      <div className={styles.supportsviewmain_container}>
+        <div className={styles.supportersview_container}>
+          <p className={styles.supporter_heading}>
+            Community Partners at <span>µLearn.</span>{" "}
+          </p>
+          <div className={styles.supporters}>
+            <img src={asap} alt="" className={styles.supporter} />
+            <img src={blockchain} alt="" className={styles.supporter} />
+            <img src={fof} alt="" className={styles.supporter} />
+            <img src={foxlab} alt="" className={styles.supporter} />
+            <img src={ieee} alt="" className={styles.supporter} />
+            <img src={kites} alt="" className={styles.supporter} />
+            <img src={pygrammers} alt="" className={styles.supporter} />
+            <img src={xtrudar} alt="" className={styles.supporter} />
+          </div>
         </div>
       </div>
 

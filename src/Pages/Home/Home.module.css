@@ -89,6 +89,58 @@ a {
   }
 }
 
+/* Supporter View */
+
+.supportersview_container {
+  margin: 0 2rem;
+  margin-top: 3rem;
+}
+
+.supporter_heading {
+  line-height: 2rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #303030;
+  margin-bottom: 1rem;
+}
+
+.supporter {
+  margin: 0.5rem 0.5rem;
+  width: 3.5rem;
+}
+
+.supporter_heading span {
+  color: #f78c40;
+}
+
+@media only screen and (min-width: 1000px) {
+  .supportersview_container {
+    max-width: 1000px;
+    display: block;
+    margin: auto;
+  }
+
+  .supporter_heading {
+    margin-top: 4rem;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+    font-size: 2.2rem;
+    text-align: center;
+  }
+
+  .supporter {
+    margin: 0.5rem 0.5rem;
+    width: 4.55rem;
+  }
+
+  .supporters {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}
+
 /* Second Section Styles */
 
 .secondviewmain_container {
@@ -183,6 +235,7 @@ a {
 
 .third_view {
   padding: 1rem 2rem;
+  padding-top: 0;
   z-index: 1000;
   display: flex;
   flex-direction: column;
