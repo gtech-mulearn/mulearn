@@ -160,22 +160,22 @@ const Home = () => {
         <div className={styles.countview_container}>
           <div className={styles.count_view}>
             <div className={styles.left_side}>
-              <div className={styles.iframevideodesk}>
+              {/* <div className={styles.iframevideodesk}>
                 <iframe
                   src="https://drive.google.com/file/d/1jlJ1BCSZ8yGQkcGcSCqsMZkd5sjlXOY8/preview"
                   width="420"
                   height="240"
                   allow="autoplay"
                 ></iframe>
-              </div>
-              <div className={styles.iframevideomob}>
+              </div> */}
+              {/* <div className={styles.iframevideomob}>
                 <iframe
                   src="https://drive.google.com/file/d/1jlJ1BCSZ8yGQkcGcSCqsMZkd5sjlXOY8/preview"
                   width="320"
                   height="220"
                   allow="autoplay"
                 ></iframe>
-              </div>
+              </div> */}
               <p className={styles.cv_heading}>
                 {" "}
                 The <span>Impact</span> of <span>µLearn.</span>
