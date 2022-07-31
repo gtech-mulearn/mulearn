@@ -17,13 +17,25 @@ const Footer = () => {
             <img src={µLearn} alt="" className={styles.mulearn} />
 
             <div className={styles.links}>
-              <a href="https://mulearn.org/careers/" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://mulearn.org/careers/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <p className={styles.link}>Career Labs</p>
               </a>
-              <a href="https://mulearn.org/events" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://mulearn.org/events"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <p className={styles.link}>Blog</p>
               </a>
-              <a href="https://gtechmulearn.medium.com/" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://gtechmulearn.medium.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <p className={styles.link}>Events</p>
               </a>
             </div>
@@ -72,13 +84,35 @@ const Footer = () => {
 
         <div className={styles.line}></div>
 
-        <div className={styles.address_container}>
-          <p className={styles.address}>
-            Technopark Trivandrum, Kazhakkoottam, Trivandrum - 695581, Kerala,
-            India
-          </p>
+        <div className={styles.bottom_section}>
+          <div className={styles.address_container}>
+            <div className={styles.fleft_side}>
+              <p className={styles.address}>
+                Technopark Trivandrum, Kazhakkoottam, Trivandrum - 695581,
+                Kerala, India
+              </p>
 
-          <p className={styles.mail}>Mail Us: hi@mulearn.org</p>
+              <p className={styles.mail}>Mail Us: hi@mulearn.org</p>
+            </div>
+          </div>
+
+          <div className={styles.fright_side}>
+            <div class={styles.fsection2}>
+              <div class={styles.newsletter}>
+                <p class={styles.fheadingtext}>Join Our Mailing List</p>
+                <p class={styles.fparagraph}>
+                  Join Our Mailing List Be the first to know about upcoming
+                  coding workshops, new coding tools, and other Mulearn related
+                  news.
+                </p>
+
+                <div class={styles.invite_container}>
+                  <input type="email" placeholder="Enter your email" />
+                  <button>Join</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

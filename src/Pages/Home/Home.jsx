@@ -140,15 +140,7 @@ const Home = () => {
                   <span>Let's Chill</span> and make the most out of it.
                 </div>
               </div>
-              <div className={styles.sv_point}>
-                <img src={innovation} alt="" className={styles.svp_image} />
-                <div className={styles.svp_heading}>Innovate</div>
-                <div className={styles.svp_text}>
-                  A place brimming with possibilities for innovation and
-                  astonishing creations. A perfect spot to display your works.
-                  Here you always advance and invent yourself!
-                </div>
-              </div>
+              
               <div className={styles.sv_point}>
                 <img src={interactive} alt="" className={styles.svp_image} />
                 <div className={styles.svp_heading}>Interact</div>
@@ -157,6 +149,16 @@ const Home = () => {
                   with folks and mentors having a remarkable mindset. Your
                   involvements, and dedication to the community can even get you
                   an internship opportunity.
+                </div>
+              </div>
+
+              <div className={styles.sv_point}>
+                <img src={innovation} alt="" className={styles.svp_image} />
+                <div className={styles.svp_heading}>Innovate</div>
+                <div className={styles.svp_text}>
+                  A place brimming with possibilities for innovation and
+                  astonishing creations. A perfect spot to display your works.
+                  Here you always advance and invent yourself!
                 </div>
               </div>
             </div>
