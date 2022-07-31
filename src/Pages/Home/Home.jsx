@@ -20,10 +20,10 @@ const Home = () => {
                 Let's <span>break the Echo Chambers</span> Together.
               </p>
               <p className={styles.fv_tagline}>
-                µLearn is a synergic philosophy of education, with a culture of
-                mutual learning through micro groups of peers. µLearn is here to
-                assist you in breaking through the echo chambers and free you
-                from the shackles that have you grounded.
+                is a synergic philosophy of education, with a culture of mutual
+                learning through micro groups of peers. µLearn is here to assist
+                you in breaking through the echo chambers and free you from the
+                shackles that have you grounded.
               </p>
             </div>
             <button className={styles.primary}>Join Us</button>
@@ -51,8 +51,8 @@ const Home = () => {
               <div className={styles.tv_point}>
                 <p className={styles.tvp_heading}>Inspiration Station Radio</p>
                 <p className={styles.tvp_text}>
-                  ISR is one of event which is conducted at Mulearn on weekly,
-                  an event where student come in and share their stories and
+                  ISR is one of event which is conducted at µLearn on weekly, an
+                  event where student come in and share their stories and
                   inspirations for listeners like to learn.
                 </p>
               </div>
@@ -95,7 +95,7 @@ const Home = () => {
                 <img src={involvement} alt="" className={styles.svp_image} />
                 <div className={styles.svp_heading}>Involve</div>
                 <div className={styles.svp_text}>
-                  Mulearn is a place for everyone. A place where one could
+                  µLearn is a place for everyone. A place where one could
                   involve the most and enjoy our interesting events like{" "}
                   <span>Inspiration Radio</span>, <span>Let's Chill</span> and
                   Much more.. to their fullest
@@ -142,8 +142,8 @@ const Home = () => {
               </p>
               <div className={styles.highlights}>
                 <p className={styles.highlight_text}>
-                  Karma Points • Interest Groups • Learning Circles • Enablement Tasks.{" "}
-                  <span> and to know more..</span>
+                  Karma Points • Interest Groups • Learning Circles • Enablement
+                  Tasks. <span> and to know more..</span>
                 </p>
               </div>
               <button className={styles.primary}>Join Discord Server</button>
