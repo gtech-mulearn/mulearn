@@ -136,15 +136,19 @@ const Home = () => {
                 <img src={innovation} alt="" className={styles.svp_image} />
                 <div className={styles.svp_heading}>Innovate</div>
                 <div className={styles.svp_text}>
-                A place brimming with possibilities for innovation and astonishing creations. A perfect spot to display your works. Here you always advance and invent yourself!
-
+                  A place brimming with possibilities for innovation and
+                  astonishing creations. A perfect spot to display your works.
+                  Here you always advance and invent yourself!
                 </div>
               </div>
               <div className={styles.sv_point}>
                 <img src={interactive} alt="" className={styles.svp_image} />
                 <div className={styles.svp_heading}>Interact</div>
                 <div className={styles.svp_text}>
-                An Interactive setting where each one of you could connect with folks and mentors having a  remarkable mindset. Your involvements, and dedication to the community can even get you an internship opportunity.
+                  An Interactive setting where each one of you could connect
+                  with folks and mentors having a remarkable mindset. Your
+                  involvements, and dedication to the community can even get you
+                  an internship opportunity.
                 </div>
               </div>
             </div>
@@ -156,6 +160,22 @@ const Home = () => {
         <div className={styles.countview_container}>
           <div className={styles.count_view}>
             <div className={styles.left_side}>
+              <div className={styles.iframevideodesk}>
+                <iframe
+                  src="https://drive.google.com/file/d/1jlJ1BCSZ8yGQkcGcSCqsMZkd5sjlXOY8/preview"
+                  width="420"
+                  height="240"
+                  allow="autoplay"
+                ></iframe>
+              </div>
+              <div className={styles.iframevideomob}>
+                <iframe
+                  src="https://drive.google.com/file/d/1jlJ1BCSZ8yGQkcGcSCqsMZkd5sjlXOY8/preview"
+                  width="320"
+                  height="220"
+                  allow="autoplay"
+                ></iframe>
+              </div>
               <p className={styles.cv_heading}>
                 {" "}
                 The <span>Impact</span> of <span>µLearn.</span>
@@ -194,6 +214,20 @@ const Home = () => {
                   </p>
                   <p className={styles.cvc_text}>Companies</p>
                 </div>
+
+                <div className={styles.count}>
+                  <p className={styles.cvc_heading}>
+                    <CountUp end={10} duration={10} />+
+                  </p>
+                  <p className={styles.cvc_text}>Communities</p>
+                </div>
+
+                <div className={styles.count}>
+                  <p className={styles.cvc_heading}>
+                    <CountUp end={2} duration={3} />+
+                  </p>
+                  <p className={styles.cvc_text}>Companies</p>
+                </div>
               </div>
             </div>
           </div>
@@ -210,7 +244,11 @@ const Home = () => {
                 <span>Community</span>
               </p>
               <p className={styles.jv_content}>
-              Are you ready to learn, grow and upskill yourself to the next level? Come, be a part of the community, and let's start learning in a new better way. Call in your friends as well, because things are going to change once you experience it and it is more effective when done with a group.
+                Are you ready to learn, grow and upskill yourself to the next
+                level? Come, be a part of the community, and let's start
+                learning in a new better way. Call in your friends as well,
+                because things are going to change once you experience it and it
+                is more effective when done with a group.
               </p>
               <div className={styles.highlights}>
                 <p className={styles.highlight_text}>

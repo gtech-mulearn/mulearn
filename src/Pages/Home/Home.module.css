@@ -368,7 +368,7 @@ a {
   }
 
   .join_view {
-    margin: 5rem 0;
+    margin: 5rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -418,7 +418,7 @@ a {
 }
 
 .count {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .cvc_heading {
@@ -442,7 +442,7 @@ a {
   }
 
   .count_view {
-    margin: 8rem 0;
+    margin: 8rem 2rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -450,11 +450,11 @@ a {
   }
 
   .left_side {
-    width: 45%;
+    width: 50%;
   }
 
   .right_side {
-    width: 45%;
+    width: 50%;
   }
 
   .cv_heading {
@@ -486,7 +486,7 @@ a {
     font-size: 3.25rem;
   }
 
-  .cv_text{
+  .cv_text {
     width: 90%;
   }
 
@@ -495,5 +495,19 @@ a {
     font-weight: 500;
     margin-top: -0.2rem;
     font-family: "Poppins", sans-serif;
+  }
+}
+
+.iframevideodesk {
+  display: none;
+}
+
+@media only screen and (min-width: 1000px) {
+  .iframevideodesk {
+    display: block;
+  }
+
+  .iframevideomob {
+    display: none;
   }
 }
