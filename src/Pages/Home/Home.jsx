@@ -35,7 +35,7 @@ const Home = () => {
                 µLearn is a synergic philosophy of education, with a culture of
                 mutual learning through micro peer groups. We are here to assist
                 you in breaking through the echo chambers and free you from the
-                shackles that have you grounded.
+                shackles you have grounded yourself in.
               </p>
             </div>
             <button className={styles.primary}>Join Us</button>
@@ -136,19 +136,15 @@ const Home = () => {
                 <img src={innovation} alt="" className={styles.svp_image} />
                 <div className={styles.svp_heading}>Innovate</div>
                 <div className={styles.svp_text}>
-                  A place brimming with possibilities for innovation and
-                  astonishing creations. A perfect spot to display your works.
-                  Here you always advance and invent yourself!
+                A place brimming with possibilities for innovation and astonishing creations. A perfect spot to display your works. Here you always advance and invent yourself!
+
                 </div>
               </div>
               <div className={styles.sv_point}>
                 <img src={interactive} alt="" className={styles.svp_image} />
                 <div className={styles.svp_heading}>Interact</div>
                 <div className={styles.svp_text}>
-                  An Interactive setting where each one of you could connect
-                  with folks and mentors having a remarkable mindset. Your
-                  involvements, and dedication to the community can even get you
-                  an internship opportunity.
+                An Interactive setting where each one of you could connect with folks and mentors having a  remarkable mindset. Your involvements, and dedication to the community can even get you an internship opportunity.
                 </div>
               </div>
             </div>
@@ -174,20 +170,28 @@ const Home = () => {
             <div className={styles.rightside}>
               <div className={styles.countcontainer}>
                 <div className={styles.count}>
-                  <p className={styles.cvc_heading}><CountUp end={16000} duration={10} />+</p>
+                  <p className={styles.cvc_heading}>
+                    <CountUp end={16000} duration={10} />+
+                  </p>
                   <p className={styles.cvc_text}>Members</p>
                 </div>
 
                 <div className={styles.count}>
-                  <p className={styles.cvc_heading}><CountUp end={120} duration={10} />+</p>
+                  <p className={styles.cvc_heading}>
+                    <CountUp end={120} duration={10} />+
+                  </p>
                   <p className={styles.cvc_text}>Enablers</p>
                 </div>
                 <div className={styles.count}>
-                  <p className={styles.cvc_heading}><CountUp end={100} duration={10} />+</p>
+                  <p className={styles.cvc_heading}>
+                    <CountUp end={100} duration={10} />+
+                  </p>
                   <p className={styles.cvc_text}>Mentors</p>
                 </div>
                 <div className={styles.count}>
-                  <p className={styles.cvc_heading}><CountUp end={10} duration={10} />+</p>
+                  <p className={styles.cvc_heading}>
+                    <CountUp end={10} duration={10} />+
+                  </p>
                   <p className={styles.cvc_text}>Companies</p>
                 </div>
               </div>
@@ -206,11 +210,7 @@ const Home = () => {
                 <span>Community</span>
               </p>
               <p className={styles.jv_content}>
-                Are you ready to learn, grow and upskill yourself to the next
-                level? Come, be a part of the community, and let's start
-                learning in a new better way. Call in your friends as well,
-                because things are going to change once you experience it and it
-                is more effective when done with a group.
+              Are you ready to learn, grow and upskill yourself to the next level? Come, be a part of the community, and let's start learning in a new better way. Call in your friends as well, because things are going to change once you experience it and it is more effective when done with a group.
               </p>
               <div className={styles.highlights}>
                 <p className={styles.highlight_text}>
