@@ -17,7 +17,7 @@ import ieee from "./assets/partners/ieee.png";
 import kites from "./assets/partners/kites.png";
 import pygrammers from "./assets/partners/pygrammers.png";
 import xtrudar from "./assets/partners/xtrudar.png";
-import ksum from "./assets/partners/ksum.png"
+import ksum from "./assets/partners/ksum.png";
 
 import CountUp from "react-countup";
 
@@ -189,10 +189,10 @@ const Home = () => {
                 The <span>Impact</span> of <span>µLearn.</span>
               </p>
               <p className={styles.cv_text}>
-                Over the span of the last one year we as a community has
-                impacted a large number of students, mentors and Enablers
-                allowing them to gain more knowledge about the ecosystem and
-                upskill themselves.
+                Over the last year, we as a community have made an impact on a
+                significant number of students, mentors, and facilitators
+                enabling them to gain more knowledge about the ecosystem of
+                learning and was able to upskill themselves.
               </p>
             </div>
             <div className={styles.rightside}>
