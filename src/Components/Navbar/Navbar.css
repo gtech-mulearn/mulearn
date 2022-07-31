@@ -1,0 +1,53 @@
+a:hover {
+  color: inherit;
+}
+
+nav {
+  padding: 1rem 2rem;
+  background-color: white;
+}
+
+.mulearn-logo {
+  width: 6rem;
+}
+
+.nav-barbtn button {
+  border: 2.5px solid #F67916;
+  padding: 0.65rem 0.96rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  background-color: #F67916;
+  color: white;
+  margin-top: 2vh;
+}
+
+.dropdown {
+  font-size: 1rem;
+}
+
+.dropdown-item {
+  font-size: 0.9rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  nav {
+    padding: 0rem;
+  }
+
+  .container-fluid {
+    padding: 0.55rem 4.3rem;
+  }
+
+  .navbar-styles {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .nav-barbtn button {
+    margin-top: 0;
+  }
+
+  .nav-barbtn {
+    padding-bottom: 0vh;
+  }
+}
