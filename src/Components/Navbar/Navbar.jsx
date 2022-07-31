@@ -33,7 +33,8 @@ const Navbar = () => {
                   <a
                     class="nav-link dropdown-toggle"
                     href="#"
-                    target="_blank" rel="noopener noreferrer" 
+                    target="_blank"
+                    rel="noopener noreferrer"
                     id="navbarDropdownMenuLink"
                     role="button"
                     data-bs-toggle="dropdown"
@@ -46,15 +47,10 @@ const Navbar = () => {
                     aria-labelledby="navbarDropdownMenuLink"
                   >
                     <li>
-
-                      <a class="dropdown-item" target="_blank" rel="noopener noreferrer" href="https://yip.mulearn.org">
-                        YIP
-                      </a>
-                    </li>
-                    <li>
                       <a
                         class="dropdown-item"
-                        target="_blank" rel="noopener noreferrer" 
+                        target="_blank"
+                        rel="noopener noreferrer"
                         href="https://mulearn.org/events"
                       >
                         Events
@@ -66,15 +62,10 @@ const Navbar = () => {
                 <li class="nav-item dropdown">
                   <a
                     class="nav-link"
-                    target="_blank" rel="noopener noreferrer" 
-                    href="https://atfg.gtechindia.org/participate/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://mulearn.org/careers/"
                   >
-                    Participate
-                  </a>
-                </li>
-
-                <li class="nav-item dropdown">
-                  <a class="nav-link"  target="_blank" rel="noopener noreferrer"  href="https://mulearn.org/careers/">
                     {" "}
                     Careers{" "}
                   </a>
@@ -84,7 +75,8 @@ const Navbar = () => {
                   <a
                     class="nav-link dropdown-toggle"
                     href="#"
-                    target="_blank" rel="noopener noreferrer" 
+                    target="_blank"
+                    rel="noopener noreferrer"
                     id="navbarDropdownMenuLink"
                     role="button"
                     data-bs-toggle="dropdown"
@@ -97,7 +89,12 @@ const Navbar = () => {
                     aria-labelledby="navbarDropdownMenuLink"
                   >
                     <li>
-                      <a class="dropdown-item"  target="_blank" rel="noopener noreferrer"  href="https://mulearn.org/team">
+                      <a
+                        class="dropdown-item"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://mulearn.org/team"
+                      >
                         Our Team
                       </a>
                     </li>
@@ -107,7 +104,8 @@ const Navbar = () => {
             </div>
 
             <div class="nav-barbtn">
-              <a href="https://discord.com/invite/Jt7sv3chZP">
+              
+              <a target="_blank" rel="noopener noreferrer" href="https://discord.com/invite/Jt7sv3chZP">
                 <button class="join-discord">Join Discord Server</button>
               </a>
             </div>

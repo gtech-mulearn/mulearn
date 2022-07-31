@@ -17,10 +17,15 @@ const Footer = () => {
             <img src={µLearn} alt="" className={styles.mulearn} />
 
             <div className={styles.links}>
-              <p className={styles.link}>FAQ</p>
-              <p className={styles.link}>Career Labs</p>
-              <p className={styles.link}>Blog</p>
-              <p className={styles.link}>Events</p>
+              <a href="https://mulearn.org/careers/" target="_blank" rel="noopener noreferrer">
+                <p className={styles.link}>Career Labs</p>
+              </a>
+              <a href="https://mulearn.org/events" target="_blank" rel="noopener noreferrer">
+                <p className={styles.link}>Blog</p>
+              </a>
+              <a href="https://gtechmulearn.medium.com/" target="_blank" rel="noopener noreferrer">
+                <p className={styles.link}>Events</p>
+              </a>
             </div>
           </div>
 

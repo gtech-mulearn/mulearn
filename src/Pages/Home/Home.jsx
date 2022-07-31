@@ -17,6 +17,7 @@ import ieee from "./assets/partners/ieee.png";
 import kites from "./assets/partners/kites.png";
 import pygrammers from "./assets/partners/pygrammers.png";
 import xtrudar from "./assets/partners/xtrudar.png";
+import ksum from "./assets/partners/ksum.png"
 
 import CountUp from "react-countup";
 
@@ -38,7 +39,13 @@ const Home = () => {
                 shackles you have grounded yourself in.
               </p>
             </div>
-            <button className={styles.primary}>Join Us</button>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://discord.com/invite/Jt7sv3chZP"
+            >
+              <button className={styles.primary}>Join Us</button>
+            </a>
           </div>
           <img className={styles.fv_image} src={illustration} alt="" />
         </div>
@@ -58,6 +65,7 @@ const Home = () => {
             <img src={kites} alt="" className={styles.supporter} />
             <img src={pygrammers} alt="" className={styles.supporter} />
             <img src={xtrudar} alt="" className={styles.supporter} />
+            <img src={ksum} alt="" className={styles.supporter} />
           </div>
         </div>
       </div>
@@ -195,7 +203,18 @@ const Home = () => {
                   </p>
                   <p className={styles.cvc_text}>Members</p>
                 </div>
-
+                <div className={styles.count}>
+                  <p className={styles.cvc_heading}>
+                    <CountUp end={400} duration={10} />+
+                  </p>
+                  <p className={styles.cvc_text}>Institutions</p>
+                </div>
+                <div className={styles.count}>
+                  <p className={styles.cvc_heading}>
+                    <CountUp end={200} duration={10} />+
+                  </p>
+                  <p className={styles.cvc_text}>Companies</p>
+                </div>
                 <div className={styles.count}>
                   <p className={styles.cvc_heading}>
                     <CountUp end={120} duration={10} />+
@@ -208,25 +227,12 @@ const Home = () => {
                   </p>
                   <p className={styles.cvc_text}>Mentors</p>
                 </div>
-                <div className={styles.count}>
-                  <p className={styles.cvc_heading}>
-                    <CountUp end={10} duration={10} />+
-                  </p>
-                  <p className={styles.cvc_text}>Companies</p>
-                </div>
 
                 <div className={styles.count}>
                   <p className={styles.cvc_heading}>
                     <CountUp end={10} duration={10} />+
                   </p>
                   <p className={styles.cvc_text}>Communities</p>
-                </div>
-
-                <div className={styles.count}>
-                  <p className={styles.cvc_heading}>
-                    <CountUp end={2} duration={3} />+
-                  </p>
-                  <p className={styles.cvc_text}>Companies</p>
                 </div>
               </div>
             </div>
@@ -256,7 +262,13 @@ const Home = () => {
                   Tasks. <span> and to know more..</span>
                 </p>
               </div>
-              <button className={styles.primary}>Join Discord Server</button>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://discord.com/invite/Jt7sv3chZP"
+              >
+                <button className={styles.primary}>Join Discord Server</button>
+              </a>
             </div>
             <img src={join} alt="" className={styles.join_img} />
           </div>
