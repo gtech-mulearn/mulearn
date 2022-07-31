@@ -466,7 +466,7 @@ a {
 
   .countcontainer {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 30% 30% 30%;
     row-gap: 0rem;
     column-gap: 2.5rem;
     margin-top: 0rem;
