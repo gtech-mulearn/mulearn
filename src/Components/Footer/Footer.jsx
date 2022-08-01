@@ -96,7 +96,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className={styles.fright_side}>
+          {/* <div className={styles.fright_side}>
             <div class={styles.fsection2}>
               <div class={styles.newsletter}>
                 <p class={styles.fheadingtext}>Join Our Mailing List</p>
@@ -112,7 +112,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
