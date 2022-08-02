@@ -18,6 +18,7 @@ import kites from "./assets/partners/kites.png";
 import pygrammers from "./assets/partners/pygrammers.png";
 import xtrudar from "./assets/partners/xtrudar.png";
 import ksum from "./assets/partners/ksum.png";
+import kdisc from "./assets/partners/kdisc.png"
 
 import CountUp from "react-countup";
 
@@ -66,6 +67,7 @@ const Home = () => {
             <img src={pygrammers} alt="" className={styles.supporter} />
             <img src={xtrudar} alt="" className={styles.supporter} />
             <img src={ksum} alt="" className={styles.supporter} />
+            <img src={kdisc} alt="" className={styles.supporter} />
           </div>
         </div>
       </div>
