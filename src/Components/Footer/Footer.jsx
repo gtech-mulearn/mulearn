@@ -18,21 +18,21 @@ const Footer = () => {
 
             <div className={styles.links}>
               <a
-                href="https://mulearn.org/careers/"
+                href="https://careers.mulearn.org/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <p className={styles.link}>Career Labs</p>
               </a>
               <a
-                href="https://mulearn.org/events"
+                href="https://gtechmulearn.medium.com/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <p className={styles.link}>Blog</p>
               </a>
               <a
-                href="https://gtechmulearn.medium.com/"
+                href="https://events.mulearn.org/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -66,7 +66,7 @@ const Footer = () => {
               <img src={linkedin} alt="" className={styles.social} />
             </a>
             <a
-              href="http://www.youtube.com/channel/UCuBrylE2ued66MJIMpuOSQg"
+              href="https://www.youtube.com/c/mulearn"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -92,7 +92,7 @@ const Footer = () => {
                 Kerala, India
               </p>
 
-              <p className={styles.mail}>Mail Us: hi@mulearn.org</p>
+              <p className={styles.mail}>Mail Us: mulearn@gtechindia.org</p>
             </div>
           </div>
 

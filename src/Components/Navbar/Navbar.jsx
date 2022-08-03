@@ -51,7 +51,7 @@ const Navbar = () => {
                         class="dropdown-item"
                         target="_blank"
                         rel="noopener noreferrer"
-                        href="https://mulearn.org/events"
+                        href="https://events.mulearn.org/"
                       >
                         Events
                       </a>
@@ -64,7 +64,7 @@ const Navbar = () => {
                     class="nav-link"
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://mulearn.org/careers/"
+                    href="https://careers.mulearn.org/"
                   >
                     {" "}
                     Careers{" "}
@@ -93,7 +93,7 @@ const Navbar = () => {
                         class="dropdown-item"
                         target="_blank"
                         rel="noopener noreferrer"
-                        href="https://mulearn.org/team"
+                        href="https://team.mulearn.org/"
                       >
                         Our Team
                       </a>
