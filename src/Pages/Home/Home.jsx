@@ -100,7 +100,7 @@ const Home = () => {
                 <p className={styles.tvp_heading}>Let's Chill</p>
                 <p className={styles.tvp_text}>
                   A 30 minutes chill-out spot. Join the lobby voice channel in
-                  our discord server every day at 6.30 pm to unwind, connect,
+                  our discord server every day at 9:00 pm to unwind, connect,
                   and socialize with our community members. Take part in
                   conversations and other enjoyable activities. Connect and
                   progress.
