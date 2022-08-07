@@ -71,6 +71,19 @@ const Navbar = () => {
                   </a>
                 </li>
 
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://learn.mulearn.org/"
+                  >
+                    {" "}
+                    Interest Groups{" "}
+                  </a>
+                </li>
+
                 <li class="nav-item dropdown">
                   <a
                     class="nav-link dropdown-toggle"
