@@ -107,7 +107,7 @@ const Home = () => {
           <div className={styles.third_view}>
             <div className={styles.tv_texts}>
               <p className={styles.tv_mainheading}>
-                Exloring the Events at <span>µLearn.</span>{" "}
+                Exploring the Events at <span>µLearn.</span>{" "}
               </p>
 
               <p className={styles.tv_tagline}>
