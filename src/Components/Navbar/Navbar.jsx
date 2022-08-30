@@ -56,6 +56,14 @@ const Navbar = () => {
                         Events
                       </a>
                     </li>
+                  <li>
+                    <a class="dropdown-item" class="dropdown-item"
+                        target="_blank"
+                        rel="noopener noreferrer" href="https://rebrand.ly/mulearncalendar"
+                      >
+                        Global Calendar
+                      </a>
+                  </li>
                   </ul>
                 </li>
 
