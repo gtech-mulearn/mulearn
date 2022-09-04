@@ -20,6 +20,7 @@ import ksum from "./assets/partners/ksum.png";
 import kdisc from "./assets/partners/kdisc.png";
 import ether_logo from "./assets/partners/ether_logo.png";
 import productpack from "./assets/partners/productpack.png";
+import kuttycoders from "./assets/partners/kuttycoders.jpeg"
 
 import CountUp from "react-countup";
 
@@ -95,6 +96,13 @@ const Home = () => {
               <img
                 src={productpack}
                 alt="product pack"
+                className={styles.supporter}
+              />
+            </a>
+            <a href="https://kuttycoders.in/" target="_blank" rel="noopener noreferrer">
+              <img
+                src={kuttycoders}
+                alt="Kutty Coders"
                 className={styles.supporter}
               />
             </a>

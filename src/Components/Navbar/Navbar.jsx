@@ -33,8 +33,6 @@ const Navbar = () => {
                   <a
                     class="nav-link dropdown-toggle"
                     href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
                     id="navbarDropdownMenuLink"
                     role="button"
                     data-bs-toggle="dropdown"
@@ -49,15 +47,13 @@ const Navbar = () => {
                     <li>
                       <a
                         class="dropdown-item"
-                        target="_blank"
-                        rel="noopener noreferrer"
                         href="https://events.mulearn.org/"
                       >
                         Events
                       </a>
                     </li>
                   <li>
-                    <a class="dropdown-item" class="dropdown-item"
+                    <a class="dropdown-item" 
                         target="_blank"
                         rel="noopener noreferrer" href="https://rebrand.ly/mulearncalendar"
                       >
@@ -70,8 +66,6 @@ const Navbar = () => {
                 <li class="nav-item dropdown">
                   <a
                     class="nav-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
                     href="https://careers.mulearn.org/"
                   >
                     {" "}
@@ -83,8 +77,6 @@ const Navbar = () => {
                 <li class="nav-item dropdown">
                   <a
                     class="nav-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
                     href="https://learn.mulearn.org/"
                   >
                     {" "}
@@ -112,8 +104,6 @@ const Navbar = () => {
                     <li>
                       <a
                         class="dropdown-item"
-                        target="_blank"
-                        rel="noopener noreferrer"
                         href="https://team.mulearn.org/"
                       >
                         Our Team

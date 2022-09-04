@@ -19,22 +19,16 @@ const Footer = () => {
             <div className={styles.links}>
               <a
                 href="https://careers.mulearn.org/"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 <p className={styles.link}>Career Labs</p>
               </a>
               <a
                 href="https://gtechmulearn.medium.com/"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 <p className={styles.link}>Blog</p>
               </a>
               <a
                 href="https://events.mulearn.org/"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 <p className={styles.link}>Events</p>
               </a>
