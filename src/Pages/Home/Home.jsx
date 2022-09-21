@@ -20,7 +20,7 @@ import ksum from "./assets/partners/ksum.png";
 import kdisc from "./assets/partners/kdisc.png";
 import ether_logo from "./assets/partners/ether_logo.png";
 import productpack from "./assets/partners/productpack.png";
-import kuttycoders from "./assets/partners/kuttycoders.jpeg"
+import kuttycoders from "./assets/partners/kuttycoders.jpeg";
 
 import CountUp from "react-countup";
 
@@ -60,46 +60,82 @@ const Home = () => {
             Community Partners at <span>µLearn.</span>{" "}
           </p>
           <div className={styles.supporters}>
-            <a href="https://kdisc.kerala.gov.in/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://kdisc.kerala.gov.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img src={kdisc} alt="" className={styles.supporter} />
             </a>
-            <a href="https://iedc.startupmission.in/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://iedc.startupmission.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img src={ksum} alt="" className={styles.supporter} />
             </a>
-            <a href="https://asapkerala.gov.in/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://asapkerala.gov.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img src={asap} alt="" className={styles.supporter} />
             </a>
-            <a href="https://ieeekerala.org/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://ieeekerala.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img src={ieee} alt="" className={styles.supporter} />
             </a>
             <a href="https://kba.ai/" target="_blank" rel="noopener noreferrer">
               <img src={blockchain} alt="" className={styles.supporter} />
             </a>
-            <a href="https://kitesfoundation.org/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://kitesfoundation.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img src={kites} alt="" className={styles.supporter} />
             </a>
             <a href="http://" target="_blank" rel="noopener noreferrer">
               {" "}
               <img src={foxlab} alt="" className={styles.supporter} />
             </a>
-            <a href="https://etherindia.org/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://etherindia.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img src={ether_logo} alt="ether" className={styles.supporter} />
             </a>
-            <a href="http://pygrammers.org/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="http://pygrammers.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img src={pygrammers} alt="" className={styles.supporter} />
             </a>
             <a href="http://" target="_blank" rel="noopener noreferrer">
               {" "}
               <img src={xtrudar} alt="" className={styles.supporter} />
             </a>
-            <a href="https://www.productpack.in/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.productpack.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
                 src={productpack}
                 alt="product pack"
                 className={styles.supporter}
               />
             </a>
-            <a href="https://kuttycoders.in/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://kuttycoders.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
                 src={kuttycoders}
                 alt="Kutty Coders"
@@ -313,6 +349,33 @@ const Home = () => {
               </a>
             </div>
             <img src={join} alt="" className={styles.join_img} />
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.calendar_view_container}>
+        <div className={styles.calendar_view}>
+          <div className={styles.cv_texts}>
+            <p className={styles.cv_heading}>
+              <span>µLearn</span> Calendar
+            </p>
+            <p className={styles.cv_text}>
+              There are a lot of opportunties for you to learn and improve
+              yourself. Want to join and learn from such opportunties. Keep a close
+              watch on this calendar. We have many surpises for you on the way!
+            </p>
+          </div>
+          <div className={styles.iframe_container}>
+            <iframe
+              class="airtable-embed"
+              title="calendar"
+              src="https://airtable.com/embed/shrUHMmdVuDRrYzYx?backgroundColor=yellow&viewControls=on"
+              frameborder="0"
+              onmousewheel=""
+              width="100%"
+              height="533"
+              style={{ background: "transparent", border: "1px solid #ccc" }}
+            ></iframe>
           </div>
         </div>
       </div>
