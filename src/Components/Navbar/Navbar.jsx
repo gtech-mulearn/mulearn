@@ -52,11 +52,6 @@ const Navbar = () => {
                         Events
                       </a>
                     </li>
-                    <li>
-                      <a class="dropdown-item" href="#calendardiv">
-                        Global Calendar
-                      </a>
-                    </li>
                   </ul>
                 </li>
 
