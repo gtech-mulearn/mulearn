@@ -353,7 +353,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className={styles.calendar_view_container}>
+      <div id="calendardiv" className={styles.calendar_view_container}>
         <div className={styles.calendar_view}>
           <div className={styles.cv_texts}>
             <p className={styles.cv_heading}>

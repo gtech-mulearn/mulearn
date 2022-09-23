@@ -52,33 +52,23 @@ const Navbar = () => {
                         Events
                       </a>
                     </li>
-                  <li>
-                    <a class="dropdown-item" 
-                        target="_blank"
-                        rel="noopener noreferrer" href="https://rebrand.ly/mulearncalendar"
-                      >
+                    <li>
+                      <a class="dropdown-item" href="#calendardiv">
                         Global Calendar
                       </a>
-                  </li>
+                    </li>
                   </ul>
                 </li>
 
                 <li class="nav-item dropdown">
-                  <a
-                    class="nav-link"
-                    href="https://careers.mulearn.org/"
-                  >
+                  <a class="nav-link" href="https://careers.mulearn.org/">
                     {" "}
                     Careers{" "}
                   </a>
                 </li>
 
-
                 <li class="nav-item dropdown">
-                  <a
-                    class="nav-link"
-                    href="https://learn.mulearn.org/"
-                  >
+                  <a class="nav-link" href="https://learn.mulearn.org/">
                     {" "}
                     Interest Groups{" "}
                   </a>
@@ -102,10 +92,7 @@ const Navbar = () => {
                     aria-labelledby="navbarDropdownMenuLink"
                   >
                     <li>
-                      <a
-                        class="dropdown-item"
-                        href="https://team.mulearn.org/"
-                      >
+                      <a class="dropdown-item" href="https://team.mulearn.org/">
                         Our Team
                       </a>
                     </li>
@@ -115,8 +102,11 @@ const Navbar = () => {
             </div>
 
             <div class="nav-barbtn">
-              
-              <a target="_blank" rel="noopener noreferrer" href="https://discord.com/invite/Jt7sv3chZP">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://discord.com/invite/Jt7sv3chZP"
+              >
                 <button class="join-discord">Join Discord Server</button>
               </a>
             </div>
