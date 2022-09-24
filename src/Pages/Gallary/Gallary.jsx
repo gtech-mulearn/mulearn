@@ -29,6 +29,27 @@ const Gallary = () => {
             </div>
           </div>
         </div>
+
+        <div className={styles.second_view_container}>
+          <div className={styles.second_view}>
+            <div className={styles.sv_texts}>
+              <p className={styles.sv_heading}>
+                Select <span>Category</span>
+              </p>
+              <p className={styles.sv_tagline}>
+                Lot of things running through your minds?. Don't worry we have
+                things sorted out.
+              </p>
+            </div>
+            <div className={styles.sv_category_container}>
+              <div className={styles.category_box}>All</div>
+              <div className={styles.category_box}>Images</div>
+              <div className={styles.category_box}>Videos</div>
+              <div className={styles.category_box}>Meetups</div>
+              <div className={styles.category_box}>Others</div>
+            </div>
+          </div>
+        </div>
       </div>
       <Footer />
     </>
