@@ -47,3 +47,13 @@ blockquote {
   font-family: "Poppins", sans-serif;
   padding: 0 30px;
 }
+
+@media only screen and (max-width: 500px) {
+  .main {
+    height: 150px;
+    max-width: 350px;
+  }
+  .quote {
+    font-size: 12px;
+  }
+}

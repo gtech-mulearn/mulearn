@@ -5,8 +5,10 @@ import Style from "./testimonial.module.css";
 
 export const Testimonail = () => {
   return (
+  <>
+    <h1 className={Style.head}>Testimonials</h1>
     <div className={`${Style.box} center`}>
-      <Marquee speed={50} pauseOnHover={true}>
+      <Marquee speed={30} pauseOnHover={true} pauseOnClick={true}>
         <Card />
         <Card />
         <Card />
@@ -15,5 +17,6 @@ export const Testimonail = () => {
         <Card />
       </Marquee>
     </div>
+  </>
   );
 };
