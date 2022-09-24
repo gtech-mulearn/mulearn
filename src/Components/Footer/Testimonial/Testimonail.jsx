@@ -8,7 +8,7 @@ export const Testimonail = () => {
   <>
     <h1 className={Style.head}>Testimonials</h1>
     <div className={`${Style.box} center`}>
-      <Marquee speed={30} pauseOnHover={true} pauseOnClick={true}>
+      <Marquee speed={30} pauseOnHover={true} pauseOnClick={true} gradient={false}>
         <Card />
         <Card />
         <Card />

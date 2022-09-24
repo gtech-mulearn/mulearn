@@ -3,7 +3,7 @@
   max-width: 400px;
   background: white;
   border-radius: 12px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 10px;
   margin: 0 20px;
 }
 .main:hover {
