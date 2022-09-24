@@ -43,10 +43,127 @@ const Gallary = () => {
             </div>
             <div className={styles.sv_category_container}>
               <div className={styles.category_box}>All</div>
-              <div className={styles.category_box}>Images</div>
-              <div className={styles.category_box}>Videos</div>
-              <div className={styles.category_box}>Meetups</div>
-              <div className={styles.category_box}>Others</div>
+              <div className={styles.category_box}>Photo Gallary</div>
+              <div className={styles.category_box}>Video Gallary</div>
+              <div className={styles.category_box}>News & Events</div>
+              <div className={styles.category_box}>Downloads</div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.cards_view_container}>
+          <div className={styles.cards_view}>
+            <div className={styles.card_container}>
+              <img
+                src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
+                alt=""
+                className={styles.card_img}
+              />
+
+              <p className={styles.card_heading}>
+                µLearn Featured on Malayala Manorama
+              </p>
+
+              <p className={styles.card_description}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Repudiandae, sunt.
+              </p>
+            </div>
+            <div className={styles.card_container}>
+              <img
+                src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
+                alt=""
+                className={styles.card_img}
+              />
+
+              <p className={styles.card_heading}>
+                µLearn Featured on Malayala Manorama
+              </p>
+
+              <p className={styles.card_description}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Repudiandae, sunt.
+              </p>
+            </div>
+            <div className={styles.card_container}>
+              <img
+                src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
+                alt=""
+                className={styles.card_img}
+              />
+
+              <p className={styles.card_heading}>
+                µLearn Featured on Malayala Manorama
+              </p>
+
+              <p className={styles.card_description}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Repudiandae, sunt.
+              </p>
+            </div>
+            <div className={styles.card_container}>
+              <img
+                src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
+                alt=""
+                className={styles.card_img}
+              />
+
+              <p className={styles.card_heading}>
+                µLearn Featured on Malayala Manorama
+              </p>
+
+              <p className={styles.card_description}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Repudiandae, sunt.
+              </p>
+            </div>
+            <div className={styles.card_container}>
+              <img
+                src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
+                alt=""
+                className={styles.card_img}
+              />
+
+              <p className={styles.card_heading}>
+                µLearn Featured on Malayala Manorama
+              </p>
+
+              <p className={styles.card_description}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Repudiandae, sunt.
+              </p>
+            </div>
+            <div className={styles.card_container}>
+              <img
+                src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
+                alt=""
+                className={styles.card_img}
+              />
+
+              <p className={styles.card_heading}>
+                µLearn Featured on Malayala Manorama
+              </p>
+
+              <p className={styles.card_description}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Repudiandae, sunt.
+              </p>
+            </div>
+            <div className={styles.card_container}>
+              <img
+                src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
+                alt=""
+                className={styles.card_img}
+              />
+
+              <p className={styles.card_heading}>
+                µLearn Featured on Malayala Manorama
+              </p>
+
+              <p className={styles.card_description}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Repudiandae, sunt.
+              </p>
             </div>
           </div>
         </div>
