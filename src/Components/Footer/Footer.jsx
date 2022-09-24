@@ -7,10 +7,12 @@ import twitter from "./assets/twitter.png";
 import youtube from "./assets/youtube.png";
 import linkedin from "./assets/linkedin.png";
 import facebook from "./assets/facebook.png";
+import { Testimonail } from "./Testimonial";
 
 const Footer = () => {
   return (
-    <div className={styles.mainfooter_container}>
+    <>
+    <Testimonail /><div className={styles.mainfooter_container}>
       <div className={styles.footer_container}>
         <div className={styles.first_section}>
           <div className={styles.fs_leftside}>
@@ -91,25 +93,25 @@ const Footer = () => {
           </div>
 
           {/* <div className={styles.fright_side}>
-            <div class={styles.fsection2}>
-              <div class={styles.newsletter}>
-                <p class={styles.fheadingtext}>Join Our Mailing List</p>
-                <p class={styles.fparagraph}>
-                  Join Our Mailing List Be the first to know about upcoming
-                  coding workshops, new coding tools, and other Mulearn related
-                  news.
-                </p>
+      <div class={styles.fsection2}>
+        <div class={styles.newsletter}>
+          <p class={styles.fheadingtext}>Join Our Mailing List</p>
+          <p class={styles.fparagraph}>
+            Join Our Mailing List Be the first to know about upcoming
+            coding workshops, new coding tools, and other Mulearn related
+            news.
+          </p>
 
-                <div class={styles.invite_container}>
-                  <input type="email" placeholder="Enter your email" />
-                  <button>Join</button>
-                </div>
-              </div>
-            </div>
-          </div> */}
+          <div class={styles.invite_container}>
+            <input type="email" placeholder="Enter your email" />
+            <button>Join</button>
+          </div>
         </div>
       </div>
-    </div>
+    </div> */}
+        </div>
+      </div>
+    </div></>
   );
 };
 

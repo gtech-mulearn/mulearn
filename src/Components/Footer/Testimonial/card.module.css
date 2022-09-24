@@ -1,0 +1,49 @@
+.main {
+  min-height: 180px;
+  max-width: 400px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  margin: 0 20px;
+}
+.main:hover {
+  cursor: pointer;
+}
+.profile {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  outline: 4px solid #f78c40;
+}
+.info {
+  margin-right: 80px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+.info h5 {
+  color: #f78c40;
+  font-size: 19px;
+}
+.info span {
+  color: grey;
+  font-size: 14px;
+}
+.section {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+blockquote::before {
+  content: open-quote;
+}
+blockquote::after {
+  content: close-quote;
+}
+blockquote {
+  quotes: "“" "”" "‘" "’";
+}
+.quote {
+  font-family: "Poppins", sans-serif;
+  padding: 0 30px;
+}
