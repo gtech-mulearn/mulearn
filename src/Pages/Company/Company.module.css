@@ -1,0 +1,269 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.first_view_container {
+  padding: 2rem;
+  background-color: #fdfdfd;
+}
+
+.fv_img {
+  width: 20rem;
+  display: block;
+  margin: auto;
+  margin-top: 0rem;
+}
+
+.fv_texts {
+  text-align: center;
+}
+
+.fv_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #303030;
+}
+
+.fv_heading span {
+  font-weight: 600;
+  color: #f78c40;
+}
+
+.fv_tagline {
+  margin-top: 0.5rem;
+  font-family: "Poppins", sans-serif;
+}
+
+@media only screen and (min-width: 1000px) {
+  .first_view_container {
+    padding: 6rem;
+  }
+
+  .first_view {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .fv_img {
+    display: block;
+    margin: auto;
+    width: 35rem;
+  }
+
+  .fv_texts {
+    text-align: left;
+    width: 50%;
+  }
+
+  .fv_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 4.55rem;
+    line-height: 5rem;
+    font-weight: 600;
+  }
+
+  .fv_tagline {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    width: 90%;
+  }
+}
+
+/* Second Section Styles */
+
+.second_view_container {
+  padding: 2rem;
+  background-color: #fdfdfd;
+}
+
+.sv_heading {
+  font-size: 1.95rem;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+}
+
+.sv_heading span {
+  color: #f78c40;
+}
+
+.sv_tagline {
+  font-size: 0.9rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.company_logo {
+  width: 3rem;
+}
+
+.company_name {
+  margin-left: 0.75rem;
+  text-align: right;
+  font-size: 0.95rem;
+}
+
+.card {
+  margin: 1rem 0rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #404040;
+  padding: 0.5rem 0.75rem;
+  border-radius: 5px;
+}
+
+@media only screen and (min-width: 568px) {
+  .sv_cards_container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 0.75rem;
+  }
+
+  .card {
+    margin: 0.5rem 0rem;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .sv_cards_container {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    column-gap: 0.75rem;
+  }
+
+  .card {
+    margin: 0.5rem 0rem;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .second_view_container {
+    padding: 0 6rem;
+  }
+
+  .second_view {
+    max-width: 1300px;
+    margin: auto;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .sv_texts {
+    margin-bottom: 2rem;
+    width: 40%;
+  }
+
+  .sv_heading {
+    font-size: 2.25rem;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 600;
+  }
+
+  .sv_tagline {
+    font-size: 1rem;
+    width: 90%;
+    font-family: "Poppins", sans-serif;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .sv_cards_container {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    column-gap: 0.75rem;
+  }
+
+  .card {
+    margin: 0.5rem 0rem;
+  }
+}
+
+/* Third View Styles */
+.third_view_container {
+  padding: 2rem;
+  background-color: #fdfdfd;
+}
+
+@media only screen and (min-width: 1000px) {
+  .third_view_container {
+    padding: 0 6rem;
+  }
+
+  .third_view {
+    max-width: 1300px;
+    margin: auto;
+    margin-top: 5rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.tcard_img {
+  width: 19rem;
+  height: 19rem;
+  object-fit: cover;
+  border-radius: 5px;
+  margin: 1rem 0rem;
+}
+
+.tcard_description {
+  font-family: "Poppins", sans-serif;
+  width: 90%;
+  font-size: 0.9rem;
+}
+
+.tcard_name {
+  font-size: 1.35rem;
+  color: #404040;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+}
+
+.tcard_date {
+  font-size: 0.9rem;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.tv_cards_container {
+  margin-top: 2rem;
+}
+
+.tv_cards {
+  margin-top: 5rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .tv_cards_container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    row-gap: 1.5rem;
+    columns: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .tcard_img {
+    width: 19rem;
+    border-radius: 5px;
+    margin: 1rem 0rem;
+  }
+
+  .tv_cards {
+    width: 20rem;
+  }
+
+  .tv_cards_container {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    row-gap: 1.5rem;
+    columns: 1.5rem;
+  }
+}

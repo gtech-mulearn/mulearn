@@ -6,6 +6,9 @@ import Calendar from "./Pages/Calendar/Calendar";
 import Gallary from "./Pages/Gallary/Gallary";
 import MuAnnouncements from "./Pages/Events/MuAnnouncements/MuAnnouncements";
 import ISR from "./Pages/Events/ISR/ISR";
+import Company from "./Pages/Company/Company";
+
+
 
 function App() {
   return (
@@ -18,6 +21,7 @@ function App() {
           <Route path="/gallary" element={<Gallary />} />
           <Route path="/announcements" element={<MuAnnouncements />} />
           <Route path="/events/isr" element={<ISR />} />
+          <Route path="/company" element={<Company/>} />
         </Routes>
       </Router>
     </div>
