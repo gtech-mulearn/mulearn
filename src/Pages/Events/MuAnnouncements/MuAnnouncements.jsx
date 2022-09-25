@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./MuAnnouncements.module.css";
 
 import fvimg from "./assets/fvimg.png";
-import Navbar from "../../Components/Navbar/Navbar";
-import Footer from "../../Components/Footer/Footer";
+import Navbar from "../../../Components/Navbar/Navbar";
+import Footer from "../../../Components/Footer/Footer";
 
 import college100k from "./data/college100k";
 import college200k from "./data/college200k";
