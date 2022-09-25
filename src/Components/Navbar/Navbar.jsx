@@ -73,6 +73,11 @@ const Navbar = () => {
                       </a>
                     </li>
                     <li>
+                      <a class="dropdown-item" href="/events/isr">
+                       Inspiration Station
+                      </a>
+                    </li>
+                    <li>
                       <a
                         class="dropdown-item"
                         href="https://events.mulearn.org/"
