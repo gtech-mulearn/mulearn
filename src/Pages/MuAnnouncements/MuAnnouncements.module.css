@@ -111,9 +111,17 @@
   font-family: "Poppins", sans-serif;
 }
 
+@media only screen and (min-width: 768px) {
+  .sv_cards_container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    row-gap: 1.5rem;
+    columns: 1.5rem;
+  }
+}
+
 @media only screen and (min-width: 1000px) {
   .second_view_container {
-    padding: 0rem 6rem;
     max-width: 1300px;
     margin: auto;
   }
@@ -123,8 +131,6 @@
   }
 
   .sv_texts {
-    max-width: 1300px;
-    margin: auto;
     margin-bottom: 2rem;
   }
 
@@ -143,7 +149,7 @@
   .card_img {
     width: 19rem;
     border-radius: 5px;
-    margin: 1rem 1rem;
+    margin: 1rem 0rem;
   }
 
   .sv_cards {
@@ -151,41 +157,9 @@
   }
 
   .sv_cards_container {
-    display: flex;
-    flex-direction: row;
-    width: 1000px;
-    overflow-y: auto;
-    overflow-x: scroll;
-  }
-
-  /* width */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  /* Track */
-  ::-webkit-scrollbar-track {
-    border-radius: 8px;
-  }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #404040;
-    border-radius: 8px;
-  }
-}
-
-@media only screen and (min-width: 1300px) {
-  .second_view_container {
-    padding: 0rem 2rem;
-    max-width: 1300px;
-    margin: auto;
-  }
-  .sv_cards_container {
-    display: flex;
-    flex-direction: row;
-    width: 1300px;
-    overflow-y: auto;
-    overflow-x: scroll;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    row-gap: 1.5rem;
+    columns: 1.5rem;
   }
 }
