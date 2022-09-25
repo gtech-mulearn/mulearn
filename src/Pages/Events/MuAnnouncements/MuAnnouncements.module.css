@@ -38,9 +38,8 @@
 
 @media only screen and (min-width: 1000px) {
   .first_view_container {
-    padding: 6rem;
+    padding: 3rem;
   }
-
   .first_view {
     max-width: 1300px;
     margin: auto;

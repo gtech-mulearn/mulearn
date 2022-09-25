@@ -45,7 +45,23 @@ const Navbar = () => {
                     aria-labelledby="navbarDropdownMenuLink"
                   >
                     <li>
-                      <a class="dropdown-item" href="https://rebrand.ly/mulearncalendar">
+                      <a class="dropdown-item" href="https://yip.mulearn.org">
+                        YIP
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="https://foundation.mulearn.org"
+                      >
+                        Foundation Program
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="https://rebrand.ly/mulearncalendar"
+                      >
                         Global Calendar
                       </a>
                     </li>
@@ -74,7 +90,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <a class="dropdown-item" href="/events/isr">
-                       Inspiration Station
+                        Inspiration Station
                       </a>
                     </li>
                     <li>
