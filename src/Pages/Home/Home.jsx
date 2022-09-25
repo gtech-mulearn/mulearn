@@ -21,6 +21,8 @@ import kdisc from "./assets/partners/kdisc.png";
 import ether_logo from "./assets/partners/ether_logo.png";
 import productpack from "./assets/partners/productpack.png";
 import kuttycoders from "./assets/partners/kuttycoders.jpeg";
+import gdsc from "./assets/partners/gdsc.png";
+import google_android from "./assets/partners/google_android.png";
 
 import CountUp from "react-countup";
 
@@ -140,6 +142,21 @@ const Home = () => {
                 src={kuttycoders}
                 alt="Kutty Coders"
                 className={styles.supporter}
+              />
+            </a>
+
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <img
+                src={gdsc}
+                alt="Google Developer Students Club"
+                className={styles.gsupporter}
+              />
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <img
+                src={google_android}
+                alt="Google Android Educators"
+                className={styles.gsupporter}
               />
             </a>
           </div>
@@ -352,7 +369,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-{/* 
+      {/* 
       <div id="calendardiv" className={styles.calendar_view_container}>
         <div className={styles.calendar_view}>
           <div className={styles.cv_texts}>

@@ -109,6 +109,11 @@ a {
   width: 3.5rem;
 }
 
+.gsupporter {
+  margin: 0.5rem 0.5rem;
+  width: 3.75rem;
+}
+
 .supporter_heading span {
   color: #f78c40;
 }
@@ -132,6 +137,12 @@ a {
     margin: 0.5rem 0.5rem;
     width: 4.55rem;
   }
+
+  .gsupporter {
+    margin: 0.5rem 0.5rem;
+    width: 5.75rem;
+  }
+  
 
   .supporters {
     display: flex;
