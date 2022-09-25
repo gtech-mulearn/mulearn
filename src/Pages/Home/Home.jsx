@@ -352,7 +352,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-
+{/* 
       <div id="calendardiv" className={styles.calendar_view_container}>
         <div className={styles.calendar_view}>
           <div className={styles.cv_texts}>
@@ -378,7 +378,7 @@ const Home = () => {
             ></iframe>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <Footer />
     </>

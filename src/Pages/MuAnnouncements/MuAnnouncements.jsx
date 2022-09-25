@@ -20,7 +20,7 @@ const MuAnnouncements = () => {
                 Welcome to <span>µLearn</span> Announcements
               </p>
               <p className={styles.fv_tagline}>
-                Lots of amazing things filled with happyness and joy is happening around you each day. Listed below are few such amazing moments that have been announced in µLearn
+                Lots of amazing things filled with happiness and joy is happening around you each day. Listed below are few such amazing moments that have been announced in µLearn.
               </p>
             </div>
             <div className={styles.fv_images}>

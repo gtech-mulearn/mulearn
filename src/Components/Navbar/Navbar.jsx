@@ -45,16 +45,39 @@ const Navbar = () => {
                     aria-labelledby="navbarDropdownMenuLink"
                   >
                     <li>
+                      <a class="dropdown-item" href="https://rebrand.ly/mulearncalendar">
+                        Global Calendar
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Events
+                  </a>
+                  <ul
+                    class="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink"
+                  >
+                    <li>
+                      <a class="dropdown-item" href="/announcements">
+                        MuAnnouncements
+                      </a>
+                    </li>
+                    <li>
                       <a
                         class="dropdown-item"
                         href="https://events.mulearn.org/"
                       >
                         Events
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#calendardiv">
-                        Global Calendar
                       </a>
                     </li>
                   </ul>
