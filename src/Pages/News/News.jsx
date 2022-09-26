@@ -30,7 +30,7 @@ const News = () => {
                 <div class={styles.hvr_grow}>
                   <img
                     src={news.image}
-                    alt="News Image"
+                    alt="News"
                     className={styles.news_image}
                   />
                 </div>

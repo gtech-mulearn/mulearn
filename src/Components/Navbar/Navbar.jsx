@@ -10,7 +10,7 @@ const Navbar = () => {
             <img
               className="mulearn-logo"
               src="assets/navbar/µLearn.png"
-              alt="Mulearn"
+              alt="µLearn"
             />
           </a>
 
@@ -92,7 +92,7 @@ const Navbar = () => {
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="/events/isr">
+                      <a class="dropdown-item" href="/isr">
                         Inspiration Station
                       </a>
                     </li>

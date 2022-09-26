@@ -7,16 +7,6 @@ import Footer from "../../../Components/Footer/Footer";
 
 import ISRData from "./data/ISRData";
 
-import TimeAgo from "javascript-time-ago";
-
-// English.
-import en from "javascript-time-ago/locale/en";
-
-TimeAgo.addDefaultLocale(en);
-
-// Create formatter (English).
-const timeAgo = new TimeAgo("en-US");
-
 const ISR = () => {
   return (
     <>
@@ -67,7 +57,7 @@ const ISR = () => {
                         {isr.description.substring(0, 250)}{" "}
                         {isr.description.length >= 20 && "..."}
                       </p>
-                      <p className={styles.card_date}>Held On:{(isr.date)}</p>
+                      <p className={styles.card_date}>Held On:{isr.date}</p>
                     </div>
                   </div>
                 ))}
