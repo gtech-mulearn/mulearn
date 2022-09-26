@@ -97,11 +97,8 @@ const Navbar = () => {
                       </a>
                     </li>
                     <li>
-                      <a
-                        class="dropdown-item"
-                        href="https://events.mulearn.org/"
-                      >
-                        Events
+                      <a class="dropdown-item" href="/artofteaching">
+                        Art of teaching
                       </a>
                     </li>
                   </ul>

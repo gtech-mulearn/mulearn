@@ -24,8 +24,8 @@ function App() {
           <Route path="/gallary" element={<Gallary />} />
           <Route path="/announcements" element={<MuAnnouncements />} />
           <Route path="/events/isr" element={<ISR />} />
-          <Route path="/company" element={<Company />} />
-          <Route path="/community" element={<CommunityPartner />} />
+          <Route path="/company-partners" element={<Company />} />
+          <Route path="/community-partners" element={<CommunityPartner />} />
           <Route path="/artofteaching" element={<ArtOfTeaching />} />
         </Routes>
       </Router>
