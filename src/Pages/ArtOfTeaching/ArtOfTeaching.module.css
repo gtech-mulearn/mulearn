@@ -374,3 +374,56 @@
     padding-top: 6rem;
   }
 }
+
+/* Judge Panel View */
+.judge_view_container {
+  padding: 2rem;
+  background-color: #ffffff;
+  padding-top: 2rem;
+}
+
+.judge_view_view {
+  margin-top: 2rem;
+}
+
+.jv_heading {
+  font-family: "Noto Sans", sans-serif;
+  color: #404040;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.jv_text {
+  margin-top: 0rem;
+}
+
+.jv_heading span {
+  color: #f78c40;
+}
+
+@media only screen and (min-width: 1000px) {
+  .judge_view_container {
+    max-width: 1300px;
+    margin: auto;
+    margin-top: 8rem;
+  }
+
+  .judges_card_container {
+    display: grid;
+    column-gap: 1.5rem;
+    grid-template-columns: 30% 30% 30%;
+  }
+
+  .judge_view {
+  }
+
+  .jv_text {
+    margin-top: 0;
+    width: 40%;
+  }
+
+  .jv_heading {
+    font-size: 2.25rem;
+  }
+}

@@ -8,6 +8,8 @@ import Faq from "react-faq-component";
 
 import fvimg from "./assets/fvimg.gif";
 
+import MentorCard from "../../Components/MentorCard/MentorCard";
+
 const ArtOfTeaching = () => {
   const data = {
     title: "Frequently Asked Questions",
@@ -93,7 +95,7 @@ const ArtOfTeaching = () => {
                 <p className={styles.card_description}>
                   The participants can choose any topic which is related to
                   emerging topics in their field and they can create video on
-                  that topic. Some sample topics are given below.
+                  that topic.
                 </p>
               </div>
             </div>
@@ -150,6 +152,38 @@ const ArtOfTeaching = () => {
           </div>
         </div>
 
+        <div className={styles.judge_view_container}>
+          <div className={styles.judge_view}>
+            <div className={styles.jv_texts}>
+              <p className={styles.jv_heading}>The <span> Judging Panel</span></p>
+              <p className={styles.jv_text}>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere
+                illum corporis incidunt dicta repellendus cumque.
+              </p>
+              <div className={styles.judges_card_container}>
+                <div className={styles.judges_card}>
+                  <MentorCard
+                    name={"Aswin Asok"}
+                    designation={"Chief Creative Office at Aswin.Inc"}
+                  />
+                </div>
+                <div className={styles.judges_card}>
+                  <MentorCard
+                    name={"Aswin Asok"}
+                    designation={"Chief Creative Office at Aswin.Inc"}
+                  />
+                </div>
+                <div className={styles.judges_card}>
+                  <MentorCard
+                    name={"Aswin Asok"}
+                    designation={"Chief Creative Office at Aswin.Inc"}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className={styles.fourth_view_container}>
           <div className={styles.fourth_view}>
             <div className={styles.left_side}>
@@ -175,7 +209,7 @@ const ArtOfTeaching = () => {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
                 ></iframe>
-                 <iframe
+                <iframe
                   className={styles.mobile}
                   width="280"
                   height="158"
