@@ -20,9 +20,9 @@ const CommunityPartner = () => {
                 <span>µLearn Community</span> Partners
               </p>
               <p className={styles.fv_tagline}>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non
-                laborum vitae obcaecati vero excepturi recusandae placeat
-                dolorum hic sequi dolorem.
+                When a group of like-minded people come together interesting
+                things take place. What if multiple communties join their hands
+                together for a common aim things get much more interesting!.
               </p>
             </div>
             <div className={styles.fv_images}>
@@ -37,8 +37,9 @@ const CommunityPartner = () => {
                 <span>Community</span> Partners
               </p>
               <p className={styles.sv_tagline}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Excepturi consequatur dicta, vitae sequi alias suscipit.
+                µLearn has partnered with multiple communties to provide the
+                peers the best resouces and events to learn and upskill
+                themselves.
               </p>
             </div>
             <br />
