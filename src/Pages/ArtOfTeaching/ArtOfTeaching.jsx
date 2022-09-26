@@ -20,9 +20,14 @@ const ArtOfTeaching = () => {
           "The maximum length of the video can be 3 minutes. Fact check of the information provided in the video. Clarity of the topic taught. Way of Presentation etc..",
       },
       {
-        title: "Can I submit multiple videos?",
+        title: "What all are the event Guidelines?",
         content:
-          "or a unified and seamless judging, multiple entries are not allowed",
+          "The maximum length of the video can be 3 minutes. It is not necessary that you send a 'lecture' video, you can also send in a screen recording of you teaching a concept in a creative manner.",
+      },
+      {
+        title: "What is the Registration Process",
+        content:
+          "Register using the airtable form given above. Upon registration you'll receive a ticket of participation. Which ensures your slot in the contest. You'll then receive another link to submit your video within a day. When submitting the video you are supposed to upload the ticket of participation. You will then receive an acknowledgement of submission.",
       },
       {
         title: "Can I resubmit my video?",
@@ -55,6 +60,19 @@ const ArtOfTeaching = () => {
                 partnering with Google developers, KTU and Kerala University for
                 Art of Teaching 2.0.
               </p>
+              <a
+                href="https://airtable.com/shrC6h0CFSAZLaZUk"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button
+                  style={{ fontSize: "1rem" }}
+                  className={styles.detailsbtn}
+                  type="submit"
+                >
+                  Register Now!
+                </button>
+              </a>
             </div>
             <div className={styles.fv_images}>
               <img src={fvimg} alt="" className={styles.fv_img} />
@@ -74,35 +92,43 @@ const ArtOfTeaching = () => {
                 of them teaching any of the following topic in a creative
                 manner.{" "}
               </p>
+
+              <a
+                href="https://mulearn.notion.site/Art-of-Teaching-2-0-Lessons-of-Future-96eed1e8cf524d4c88d996e6fbed7fe7"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className={styles.detailsbtn} type="submit">
+                  View More Details
+                </button>
+              </a>
             </div>
 
             <div className={styles.cards_container}>
               <div className={styles.topic_card}>
-                <p className={styles.topic}>Topic 1</p>
                 <p className={styles.card_heading}>
                   Android Development with Kotlin by Google.
                 </p>
                 <p className={styles.card_description}>
                   The participants have to learn the Android Development with
                   Kotlin course and they have to create a 3 minute video summary
-                  of the course.
+                  of the course. 
                 </p>
               </div>
 
               <div className={styles.topic_card}>
-                <p className={styles.topic}>Topic 2</p>
                 <p className={styles.card_heading}>Own Topic</p>
                 <p className={styles.card_description}>
                   The participants can choose any topic which is related to
                   emerging topics in their field and they can create video on
-                  that topic.
+                  that topic.Click view more button to see more details.
                 </p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className={styles.third_view_container}>
+        {/* <div className={styles.third_view_container}>
           <div className={styles.third_view}>
             <div className={styles.tv_texts}>
               <div className={styles.tv_text}>
@@ -150,39 +176,7 @@ const ArtOfTeaching = () => {
               </div>
             </div>
           </div>
-        </div>
-
-        <div className={styles.judge_view_container}>
-          <div className={styles.judge_view}>
-            <div className={styles.jv_texts}>
-              <p className={styles.jv_heading}>The <span> Judging Panel</span></p>
-              <p className={styles.jv_text}>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere
-                illum corporis incidunt dicta repellendus cumque.
-              </p>
-              <div className={styles.judges_card_container}>
-                <div className={styles.judges_card}>
-                  <MentorCard
-                    name={"Aswin Asok"}
-                    designation={"Chief Creative Office at Aswin.Inc"}
-                  />
-                </div>
-                <div className={styles.judges_card}>
-                  <MentorCard
-                    name={"Aswin Asok"}
-                    designation={"Chief Creative Office at Aswin.Inc"}
-                  />
-                </div>
-                <div className={styles.judges_card}>
-                  <MentorCard
-                    name={"Aswin Asok"}
-                    designation={"Chief Creative Office at Aswin.Inc"}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        </div> */}
 
         <div className={styles.fourth_view_container}>
           <div className={styles.fourth_view}>
@@ -211,14 +205,57 @@ const ArtOfTeaching = () => {
                 ></iframe>
                 <iframe
                   className={styles.mobile}
-                  width="280"
-                  height="158"
+                  width="300"
+                  height="178"
                   src="https://www.youtube.com/embed/vPLuA5kXoBI"
                   title="YouTube video player"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
                 ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.judge_view_container}>
+          <div className={styles.judge_view}>
+            <div className={styles.jv_texts}>
+              <p className={styles.jv_heading}>
+                The <span> Judging Panel</span>
+              </p>
+              <p className={styles.jv_text}>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere
+                illum corporis incidunt dicta repellendus cumque.
+              </p>
+              <div className={styles.judges_card_container}>
+                <div className={styles.judges_card}>
+                  <MentorCard
+                    name={"Deepu S Nath"}
+                    designation={"Managing Director at FAYA"}
+                    image={
+                      "https://media-exp1.licdn.com/dms/image/C5603AQF_OnmtHn2N2w/profile-displayphoto-shrink_200_200/0/1605360722064?e=1669852800&v=beta&t=bOHAURczpul1un_L-8aiGuJVGHPxq_w3K-PDgA0-9-0"
+                    }
+                  />
+                </div>
+                <div className={styles.judges_card}>
+                  <MentorCard
+                    name={"Deepu S Nath"}
+                    designation={"Managing Director at FAYA"}
+                    image={
+                      "https://media-exp1.licdn.com/dms/image/C5603AQF_OnmtHn2N2w/profile-displayphoto-shrink_200_200/0/1605360722064?e=1669852800&v=beta&t=bOHAURczpul1un_L-8aiGuJVGHPxq_w3K-PDgA0-9-0"
+                    }
+                  />
+                </div>
+                <div className={styles.judges_card}>
+                  <MentorCard
+                    name={"Deepu S Nath"}
+                    designation={"Managing Director at FAYA"}
+                    image={
+                      "https://media-exp1.licdn.com/dms/image/C5603AQF_OnmtHn2N2w/profile-displayphoto-shrink_200_200/0/1605360722064?e=1669852800&v=beta&t=bOHAURczpul1un_L-8aiGuJVGHPxq_w3K-PDgA0-9-0"
+                    }
+                  />
+                </div>
               </div>
             </div>
           </div>
