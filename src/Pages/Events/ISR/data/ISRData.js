@@ -11,7 +11,7 @@ const ISRData = [
 
   {
     id: "2",
-    speaker: "Eveline DuromR",
+    speaker: "Eveline Durom",
     image:
       "https://media.discordapp.net/attachments/771679365124718612/851776520774483988/Eveline.png?width=640&height=640",
     description:
@@ -21,7 +21,7 @@ const ISRData = [
 
   {
     id: "3",
-    speaker: "KEVIN JACOB",
+    speaker: "Kevin Jacob",
     image:
       "https://media.discordapp.net/attachments/771679365124718612/854242417413980190/kev.png?width=1228&height=1228",
     description:
@@ -31,7 +31,7 @@ const ISRData = [
 
   {
     id: "4",
-    speaker: "NIZMA PARVIN",
+    speaker: "Nizma Parvin",
     image:
       "https://media.discordapp.net/attachments/771679365124718612/859161592309481472/nizma_isr.png",
     description:
@@ -61,7 +61,7 @@ const ISRData = [
 
   {
     id: "7",
-    speaker: " FREDY SOMY",
+    speaker: " Fredy Somy",
     image:
       "https://media.discordapp.net/attachments/771679365124718612/887245090211373096/fredy.png",
     description:
