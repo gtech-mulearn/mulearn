@@ -8,6 +8,8 @@ import fvimg from "./assets/fvimg.gif";
 import companiesonboarded from "./data/companiesonboarded";
 import companyevents from "./data/companyevents";
 
+import CommunityCard from "../../Components/CommunityCard/CommunityCard";
+
 const Company = () => {
   return (
     <>
@@ -20,9 +22,9 @@ const Company = () => {
                 <span>µLearn Partnered</span> Companies
               </p>
               <p className={styles.fv_tagline}>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non
-                laborum vitae obcaecati vero excepturi recusandae placeat
-                dolorum hic sequi dolorem.
+                There are multiple opportunities around you right now. All you
+                have to do is look out for the best one that suits you as well
+                as your passion and skills.
               </p>
             </div>
             <div className={styles.fv_images}>
@@ -37,20 +39,13 @@ const Company = () => {
                 Company <span>Onboardings</span>
               </p>
               <p className={styles.sv_tagline}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
-                ratione ducimus repellat dignissimos cum officiis?
+                µLearn has partnered with multiple communties to provide the
+                student the best resouces and opportunies possible
               </p>
             </div>
             <div className={styles.sv_cards_container}>
               {companiesonboarded.map((company) => (
-                <div className={styles.card}>
-                  <img
-                    src={company.logo}
-                    alt=""
-                    className={styles.company_logo}
-                  />
-                  <p className={styles.company_name}>{company.name}</p>
-                </div>
+                <CommunityCard cname={company.name} cimage={company.logo} />
               ))}
             </div>
           </div>
@@ -63,8 +58,8 @@ const Company = () => {
                 Company <span>Events</span>
               </p>
               <p className={styles.sv_tagline}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
-                ratione ducimus repellat dignissimos cum officiis?
+                These are the list of events which were conducted successfully
+                by the oboarded companies.
               </p>
             </div>
             <div className={styles.tv_cards_container}>
