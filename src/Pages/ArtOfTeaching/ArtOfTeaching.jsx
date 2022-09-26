@@ -70,13 +70,13 @@ const ArtOfTeaching = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button
+                {/* <button
                   style={{ fontSize: "1rem" }}
                   className={styles.detailsbtn}
                   type="submit"
                 >
                   Register Now!
-                </button>
+                </button> */}
               </a>
             </div>
             <div className={styles.fv_images}>
@@ -95,7 +95,7 @@ const ArtOfTeaching = () => {
               <p className={styles.sv_tagline}>
                 A 3-minute video contest, where the teachers can send in a video
                 of them teaching any of the following topic in a creative
-                manner.{" "}
+                manner.
               </p>
             </div>
 

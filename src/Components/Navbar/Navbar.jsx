@@ -9,7 +9,7 @@ const Navbar = () => {
           <a class="navbar-brand" href="/">
             <img
               className="mulearn-logo"
-              src="assets/navbar/µLearn.png"
+              src="assets/navbar/µLearn.svg"
               alt="µLearn"
             />
           </a>
@@ -36,6 +36,31 @@ const Navbar = () => {
                   <a
                     class="nav-link dropdown-toggle"
                     href="/#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    About
+                  </a>
+                  <ul
+                    class="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink"
+                  >
+                    <li>
+                      <a class="dropdown-item" href="https://team.mulearn.org/">
+                        Our Team
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="/#"
                     id="navbarDropdownMenuLink"
                     role="button"
                     data-bs-toggle="dropdown"
@@ -52,20 +77,19 @@ const Navbar = () => {
                         YIP
                       </a>
                     </li>
+
+                    <li>
+                      <a class="dropdown-item" href="/artofteaching">
+                        Art of teaching
+                      </a>
+                    </li>
+
                     <li>
                       <a
                         class="dropdown-item"
                         href="https://foundation.mulearn.org"
                       >
                         Foundation Program
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="https://rebrand.ly/mulearncalendar"
-                      >
-                        Global Calendar
                       </a>
                     </li>
                   </ul>
@@ -87,18 +111,20 @@ const Navbar = () => {
                     aria-labelledby="navbarDropdownMenuLink"
                   >
                     <li>
+                      <a class="dropdown-item" href="/calendar">
+                        Global Calendar
+                      </a>
+                    </li>
+
+                    <li>
                       <a class="dropdown-item" href="/announcements">
                         µ-Announcements
                       </a>
                     </li>
+
                     <li>
                       <a class="dropdown-item" href="/isr">
                         Inspiration Station
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="/artofteaching">
-                        Art of teaching
                       </a>
                     </li>
                   </ul>
@@ -114,31 +140,6 @@ const Navbar = () => {
                   <a class="nav-link" href="https://learn.mulearn.org/">
                     Interest Groups
                   </a>
-                </li>
-
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link dropdown-toggle"
-                    href="/#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    id="navbarDropdownMenuLink"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    About
-                  </a>
-                  <ul
-                    class="dropdown-menu"
-                    aria-labelledby="navbarDropdownMenuLink"
-                  >
-                    <li>
-                      <a class="dropdown-item" href="https://team.mulearn.org/">
-                        Our Team
-                      </a>
-                    </li>
-                  </ul>
                 </li>
               </ul>
             </div>
