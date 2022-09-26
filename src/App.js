@@ -8,7 +8,7 @@ import MuAnnouncements from "./Pages/Events/MuAnnouncements/MuAnnouncements";
 import ISR from "./Pages/Events/ISR/ISR";
 import Company from "./Pages/Company/Company";
 
-
+import CommunityPartner from "./Pages/CommPartners/CommPartners";
 
 function App() {
   return (
@@ -16,12 +16,13 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/news" element={<News />} />
+          <Route path="/news" element={<News />} />
           <Route path="/calendar" element={<Calendar />} />
-          <Route path="/gallary" element={<Gallary />} /> */}
+          <Route path="/gallary" element={<Gallary />} />
           <Route path="/announcements" element={<MuAnnouncements />} />
           <Route path="/events/isr" element={<ISR />} />
-          {/* <Route path="/company" element={<Company/>} /> */}
+          <Route path="/company" element={<Company />} />
+          <Route path="/community" element={<CommunityPartner />} />
         </Routes>
       </Router>
     </div>
