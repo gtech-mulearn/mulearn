@@ -10,6 +10,7 @@ import Company from "./Pages/Company/Company";
 
 import CommunityPartner from "./Pages/CommPartners/CommPartners";
 import ArtOfTeaching from "./Pages/ArtOfTeaching/ArtOfTeaching";
+import Career from "./Pages/Career/Career";
 
 function App() {
   return (
@@ -17,13 +18,14 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/news" element={<News />} /> */}
+          <Route path="/careers" element={<Career />} />
+          <Route path="/news" element={<News />} />
           <Route path="/calendar" element={<Calendar />} />
           {/* <Route path="/gallary" element={<Gallary />} /> */}
           <Route path="/announcements" element={<MuAnnouncements />} />
-          <Route path="/events/isr" element={<ISR />} />
-          <Route path="/company" element={<Company />} />
-          <Route path="/community" element={<CommunityPartner />} />
+          <Route path="/isr" element={<ISR />} />
+          <Route path="/company-partners" element={<Company />} />
+          <Route path="/community-partners" element={<CommunityPartner />} />
           {/* <Route path="/artofteaching" element={<ArtOfTeaching />} /> */}
         </Routes>
       </Router>

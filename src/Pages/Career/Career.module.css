@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.first__section {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+}
+
+.fstexts {
+  text-align: center;
+  width: 40%;
+}
+
+.fsheading {
+  font-size: 5rem;
+  line-height: 5rem;
+  font-family: "Outfit";
+  font-weight: 600;
+}
+
+.fstagline {
+  font-size: 1.15rem;
+}
+
+.fsillustration {
+  width: 40vh;
+}
+
+.second__section {
+  /* padding: 2rem; */
+  margin: 2rem 6rem 0;
+}
+
+.ssheading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 2.5rem;
+
+}
+
+@media only screen and (min-width: 1000px) {
+  .opportunities {
+    display: grid;
+    grid-template-columns: 35% 35%;
+    column-gap: 2rem;
+  }
+}
