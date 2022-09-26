@@ -8,7 +8,7 @@ const Footer = () => {
         <div className={styles.first_section}>
           <div className={styles.fs_leftside}>
             <img
-              src="assets/footer/µLearn.png"
+              src="assets/navbar/µLearn.png"
               alt=""
               className={styles.mulearn}
             />
