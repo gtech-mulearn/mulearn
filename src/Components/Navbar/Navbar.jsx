@@ -9,7 +9,7 @@ const Navbar = () => {
           <a class="navbar-brand" href="/">
             <img
               className="mulearn-logo"
-              src="assets/navbar/µLearn.svg"
+              src="assets/navbar/µLearn.png"
               alt="µLearn"
             />
           </a>
