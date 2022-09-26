@@ -68,25 +68,26 @@ const Company = () => {
               </p>
             </div>
             <div className={styles.tv_cards_container}>
-              {companyevents
-                .map((event) => (
-                  <div className={styles.tv_cards}>
-                    <div className={styles.tcard}>
-                      <img
-                        src={event.image || event.companylogo}
-                        alt=""
-                        className={styles.tcard_img}
-                      />
-                      <p className={styles.tcard_name}>{event.name}</p>
+              {companyevents.map((event) => (
+                <div className={styles.tv_cards}>
+                  <div className={styles.tcard}>
+                    <img
+                      src={event.image || event.companylogo}
+                      alt=""
+                      className={styles.tcard_img}
+                    />
+                    <p className={styles.tcard_name}>{event.name}</p>
 
-                      <p className={styles.tcard_description}>
-                        {event.description.substring(0, 250)}{" "}
-                        {event.description.length >= 20 && "..."}
-                      </p>
-                      <p className={styles.tcard_date}>Company:{event.companyname}</p>
-                    </div>
+                    <p className={styles.tcard_description}>
+                      {event.description.substring(0, 250)}{" "}
+                      {event.description.length >= 20 && "..."}
+                    </p>
+                    <p className={styles.tcard_date}>
+                      Company:{event.companyname}
+                    </p>
                   </div>
-                ))}
+                </div>
+              ))}
             </div>
           </div>
         </div>
