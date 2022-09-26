@@ -150,6 +150,46 @@ const ArtOfTeaching = () => {
           </div>
         </div>
 
+        <div className={styles.fourth_view_container}>
+          <div className={styles.fourth_view}>
+            <div className={styles.left_side}>
+              <p className={styles.fr_heading}>
+                Art of Teaching <span>First Edition</span>
+              </p>
+              <p className={styles.fr_tagline}>
+                The First Edition of Art of Teaching was a huge success with
+                more than 100 distinct entries,all of which used creative
+                teaching methods to simplify a topic for better understanding by
+                a student.
+              </p>
+            </div>
+            <div className={styles.right_side}>
+              <div className={styles.ytplayer}>
+                <iframe
+                  className={styles.desktop}
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/vPLuA5kXoBI"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+                 <iframe
+                  className={styles.mobile}
+                  width="280"
+                  height="158"
+                  src="https://www.youtube.com/embed/vPLuA5kXoBI"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className={styles.faq_view_container}>
           <div className={styles.faq_view}>
             <Faq data={data} styles={fstyles} />
