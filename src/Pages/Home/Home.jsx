@@ -300,9 +300,21 @@ const Home = () => {
                 </div>
                 <div className={styles.count}>
                   <p className={styles.cvc_heading}>
-                    <CountUp end={400} duration={10} />+
+                    <CountUp end={550} duration={10} />+
                   </p>
                   <p className={styles.cvc_text}>Institutions</p>
+                </div>
+                <div className={styles.count}>
+                  <p className={styles.cvc_heading}>
+                    <CountUp end={1000} duration={10} />+
+                  </p>
+                  <p className={styles.cvc_text}>Learning Circles</p>
+                </div>
+                <div className={styles.count}>
+                  <p className={styles.cvc_heading}>
+                    <CountUp end={200} duration={10} />+
+                  </p>
+                  <p className={styles.cvc_text}>Events</p>
                 </div>
                 <div className={styles.count}>
                   <p className={styles.cvc_heading}>
@@ -312,7 +324,7 @@ const Home = () => {
                 </div>
                 <div className={styles.count}>
                   <p className={styles.cvc_heading}>
-                    <CountUp end={120} duration={10} />+
+                    <CountUp end={100} duration={10} />+
                   </p>
                   <p className={styles.cvc_text}>Enablers</p>
                 </div>
@@ -325,10 +337,17 @@ const Home = () => {
 
                 <div className={styles.count}>
                   <p className={styles.cvc_heading}>
-                    <CountUp end={10} duration={10} />+
+                    <CountUp end={20} duration={10} />+
                   </p>
                   <p className={styles.cvc_text}>Communities</p>
                 </div>
+                <div className={styles.count}>
+                  <p className={styles.cvc_heading}>
+                    <CountUp end={15} duration={10} />+
+                  </p>
+                  <p className={styles.cvc_text}>Interest Groups</p>
+                </div>
+               
               </div>
             </div>
           </div>
