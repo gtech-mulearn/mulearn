@@ -444,3 +444,21 @@
   font-size: 0.9rem;
   padding: 0.5rem 1.25rem;
 }
+
+.yt_video {
+  width: 80vw;
+  min-height: 30vh;
+  border-radius: 8px;
+  margin: 5vh 0;
+}
+
+@media only screen and (min-width: 1000px) {
+
+
+.yt_video {
+    width: 30vw;
+    min-height: 35vh;
+    border-radius: 8px;
+    margin: 5vh 0;
+  }
+}

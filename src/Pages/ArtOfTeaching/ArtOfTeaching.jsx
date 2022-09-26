@@ -30,6 +30,11 @@ const ArtOfTeaching = () => {
           "Register using the airtable form given above. Upon registration you'll receive a ticket of participation. Which ensures your slot in the contest. You'll then receive another link to submit your video within a day. When submitting the video you are supposed to upload the ticket of participation. You will then receive an acknowledgement of submission.",
       },
       {
+        title: "Can I submit multiple videos?",
+        content:
+          "For a unified and seamless judging, multiple entries are not allowed.",
+      },
+      {
         title: "Can I resubmit my video?",
         content:
           "Yes, you can resubmit your entry if you think your previous submission lacked a certain element that you aimed for.",
@@ -93,15 +98,7 @@ const ArtOfTeaching = () => {
                 manner.{" "}
               </p>
 
-              <a
-                href="https://mulearn.notion.site/Art-of-Teaching-2-0-Lessons-of-Future-96eed1e8cf524d4c88d996e6fbed7fe7"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className={styles.detailsbtn} type="submit">
-                  View More Details
-                </button>
-              </a>
+             
             </div>
 
             <div className={styles.cards_container}>
@@ -114,6 +111,15 @@ const ArtOfTeaching = () => {
                   Kotlin course and they have to create a 3 minute video summary
                   of the course. 
                 </p>
+                <a
+                href="https://mulearn.notion.site/Art-of-Teaching-2-0-Lessons-of-Future-96eed1e8cf524d4c88d996e6fbed7fe7"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className={styles.detailsbtn} type="submit">
+                  View More Details
+                </button>
+              </a>
               </div>
 
               <div className={styles.topic_card}>
@@ -123,6 +129,15 @@ const ArtOfTeaching = () => {
                   emerging topics in their field and they can create video on
                   that topic.Click view more button to see more details.
                 </p>
+                <a
+                href="https://mulearn.notion.site/Art-of-Teaching-2-0-Lessons-of-Future-96eed1e8cf524d4c88d996e6fbed7fe7"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className={styles.detailsbtn} type="submit">
+                  View More Details
+                </button>
+              </a>
               </div>
             </div>
           </div>
@@ -194,19 +209,7 @@ const ArtOfTeaching = () => {
             <div className={styles.right_side}>
               <div className={styles.ytplayer}>
                 <iframe
-                  className={styles.desktop}
-                  width="560"
-                  height="315"
-                  src="https://www.youtube.com/embed/vPLuA5kXoBI"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-                <iframe
-                  className={styles.mobile}
-                  width="300"
-                  height="178"
+                  className={styles.yt_video}
                   src="https://www.youtube.com/embed/vPLuA5kXoBI"
                   title="YouTube video player"
                   frameborder="0"
@@ -236,6 +239,7 @@ const ArtOfTeaching = () => {
                     image={
                       "https://media-exp1.licdn.com/dms/image/C5603AQF_OnmtHn2N2w/profile-displayphoto-shrink_200_200/0/1605360722064?e=1669852800&v=beta&t=bOHAURczpul1un_L-8aiGuJVGHPxq_w3K-PDgA0-9-0"
                     }
+                    linkedIn={"https://www.linkedin.com/in/deepusnath/"}
                   />
                 </div>
                 <div className={styles.judges_card}>
@@ -245,6 +249,7 @@ const ArtOfTeaching = () => {
                     image={
                       "https://media-exp1.licdn.com/dms/image/C5603AQF_OnmtHn2N2w/profile-displayphoto-shrink_200_200/0/1605360722064?e=1669852800&v=beta&t=bOHAURczpul1un_L-8aiGuJVGHPxq_w3K-PDgA0-9-0"
                     }
+                    linkedIn={"https://www.linkedin.com/in/deepusnath/"}
                   />
                 </div>
                 <div className={styles.judges_card}>
@@ -254,6 +259,7 @@ const ArtOfTeaching = () => {
                     image={
                       "https://media-exp1.licdn.com/dms/image/C5603AQF_OnmtHn2N2w/profile-displayphoto-shrink_200_200/0/1605360722064?e=1669852800&v=beta&t=bOHAURczpul1un_L-8aiGuJVGHPxq_w3K-PDgA0-9-0"
                     }
+                    linkedIn={"https://www.linkedin.com/in/deepusnath/"}
                   />
                 </div>
               </div>
