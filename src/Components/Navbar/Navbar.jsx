@@ -1,6 +1,5 @@
 import React from "react";
 import "./Navbar.css";
-import Mulearn from "./assets/Mulearn.png";
 
 const Navbar = () => {
   return (
@@ -8,7 +7,11 @@ const Navbar = () => {
       <div class="navbar navbar-expand-lg navbar-light ">
         <div class="container">
           <a class="navbar-brand" href="/">
-            <img className="mulearn-logo" src={Mulearn} alt="Mulearn" />
+            <img
+              className="mulearn-logo"
+              src="assets/navbar/µLearn.png"
+              alt="Mulearn"
+            />
           </a>
 
           <button
