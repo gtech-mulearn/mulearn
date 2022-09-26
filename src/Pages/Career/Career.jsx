@@ -11,7 +11,7 @@ const Career = () => {
         <div className={styles.first__section}>
           <div className={styles.fstexts}>
             <p className={styles.fsheading}>
-              Mulearn <br />
+              µLearn <br />
               Career Labs.
             </p>
             <p className={styles.fstagline}>

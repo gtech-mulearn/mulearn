@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 .first__section {
   padding: 2rem;
   display: flex;
@@ -15,7 +17,7 @@
 .fsheading {
   font-size: 5rem;
   line-height: 5rem;
-  /* font-family: "Poppins", sans-serif; */
+  font-family: "Outfit";
   font-weight: 600;
 }
 
