@@ -10,6 +10,7 @@ import Company from "./Pages/Company/Company";
 
 import CommunityPartner from "./Pages/CommPartners/CommPartners";
 import ArtOfTeaching from "./Pages/ArtOfTeaching/ArtOfTeaching";
+import Career from "./Pages/Career/Career";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/careers" element={<Career />} />
           <Route path="/news" element={<News />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/gallary" element={<Gallary />} />

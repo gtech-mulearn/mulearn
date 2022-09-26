@@ -1,0 +1,18 @@
+.first__section {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+.fstexts {
+  text-align: center;
+}
+
+.fsheading {
+  font-size: 3.75rem;
+  line-height: 3.25rem;
+  font-family: "Outfit";
+  font-weight: 600;
+}

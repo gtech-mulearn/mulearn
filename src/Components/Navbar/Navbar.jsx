@@ -108,7 +108,7 @@ const Navbar = () => {
                 </li>
 
                 <li class="nav-item dropdown">
-                  <a class="nav-link" href="https://careers.mulearn.org/">
+                  <a class="nav-link" href="/careers">
                     Careers
                   </a>
                 </li>
