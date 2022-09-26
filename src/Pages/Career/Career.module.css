@@ -8,11 +8,40 @@
 
 .fstexts {
   text-align: center;
+  width: 40%;
 }
 
 .fsheading {
-  font-size: 3.75rem;
-  line-height: 3.25rem;
-  font-family: "Outfit";
+  font-size: 5rem;
+  line-height: 5rem;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
+}
+
+.fstagline {
+  font-size: 1.15rem;
+}
+
+.fsillustration {
+  width: 40vh;
+}
+
+.second__section {
+  /* padding: 2rem; */
+  margin: 0 6rem;
+}
+
+.ssheading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 2.5rem;
+
+}
+
+@media only screen and (min-width: 1000px) {
+  .opportunities {
+    display: grid;
+    grid-template-columns: 35% 35%;
+    column-gap: 2rem;
+  }
 }

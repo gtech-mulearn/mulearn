@@ -14,17 +14,23 @@ const Career = () => {
               Mulearn <br />
               Career Labs.
             </p>
-            <p className="fstagline">
+            <p className={styles.fstagline}>
               In search of a job opportunity / internship? µLearn Career Labs
               helps you connect with opportunities from the industry.
             </p>
           </div>
-          <div className="fsimage">
+          <div className={styles.fsimage}>
             <img
-              src="assets/illustration.png"
-              className="fsillustration"
+              src="assets/careers/illustration.png"
+              className={styles.fsillustration}
               alt=""
             />
+          </div>
+        </div>
+        <div className={styles.second__section}>
+          <p className={styles.ssheading}>Open Opportunities</p>
+          <div className={styles.opportunities}>
+            <p>New openings coming soon!</p>
           </div>
         </div>
       </main>
