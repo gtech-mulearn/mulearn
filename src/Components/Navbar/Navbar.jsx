@@ -32,7 +32,7 @@ const Navbar = () => {
                 <li class="nav-item dropdown">
                   <a
                     class="nav-link dropdown-toggle"
-                    href="#"
+                    href="/#"
                     id="navbarDropdownMenuLink"
                     role="button"
                     data-bs-toggle="dropdown"
@@ -71,7 +71,7 @@ const Navbar = () => {
                 <li class="nav-item dropdown">
                   <a
                     class="nav-link dropdown-toggle"
-                    href="#"
+                    href="/#"
                     id="navbarDropdownMenuLink"
                     role="button"
                     data-bs-toggle="dropdown"
@@ -106,22 +106,20 @@ const Navbar = () => {
 
                 <li class="nav-item dropdown">
                   <a class="nav-link" href="https://careers.mulearn.org/">
-                    {" "}
-                    Careers{" "}
+                    Careers
                   </a>
                 </li>
 
                 <li class="nav-item dropdown">
                   <a class="nav-link" href="https://learn.mulearn.org/">
-                    {" "}
-                    Interest Groups{" "}
+                    Interest Groups
                   </a>
                 </li>
 
                 <li class="nav-item dropdown">
                   <a
                     class="nav-link dropdown-toggle"
-                    href="#"
+                    href="/#"
                     target="_blank"
                     rel="noopener noreferrer"
                     id="navbarDropdownMenuLink"
@@ -147,9 +145,9 @@ const Navbar = () => {
 
             <div class="nav-barbtn">
               <a
+                href="https://discord.com/invite/Jt7sv3chZP"
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://discord.com/invite/Jt7sv3chZP"
               >
                 <button class="join-discord">Join Discord Server</button>
               </a>

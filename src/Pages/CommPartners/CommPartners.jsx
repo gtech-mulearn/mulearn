@@ -4,7 +4,6 @@ import Navbar from "../../Components/Navbar/Navbar";
 import styles from "./CommPartners.module.css";
 
 import partners from "./data/partners";
-import events from "./data/events";
 
 import fvimg from "./assets/fvimg.gif";
 import CommunityCard from "../../Components/CommunityCard/CommunityCard";

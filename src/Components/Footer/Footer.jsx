@@ -1,12 +1,5 @@
 import React from "react";
 import styles from "./Footer.module.css";
-import µLearn from "./assets/µLearn.png";
-
-import instagram from "./assets/instagram.png";
-import twitter from "./assets/twitter.png";
-import youtube from "./assets/youtube.png";
-import linkedin from "./assets/linkedin.png";
-import facebook from "./assets/facebook.png";
 
 const Footer = () => {
   return (
@@ -14,22 +7,20 @@ const Footer = () => {
       <div className={styles.footer_container}>
         <div className={styles.first_section}>
           <div className={styles.fs_leftside}>
-            <img src={µLearn} alt="" className={styles.mulearn} />
+            <img
+              src="assets/footer/µLearn.png"
+              alt=""
+              className={styles.mulearn}
+            />
 
             <div className={styles.links}>
-              <a
-                href="https://careers.mulearn.org/"
-              >
+              <a href="https://careers.mulearn.org/">
                 <p className={styles.link}>Career Labs</p>
               </a>
-              <a
-                href="https://gtechmulearn.medium.com/"
-              >
+              <a href="https://gtechmulearn.medium.com/">
                 <p className={styles.link}>Blog</p>
               </a>
-              <a
-                href="https://events.mulearn.org/"
-              >
+              <a href="https://events.mulearn.org/">
                 <p className={styles.link}>Events</p>
               </a>
             </div>
@@ -41,37 +32,55 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {" "}
-              <img src={twitter} alt="" className={styles.social} />
+              <img
+                src="assets/footer/twitter.png"
+                alt=""
+                className={styles.social}
+              />
             </a>
             <a
               href="http://www.instagram.com/gtechmulearn/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              {" "}
-              <img src={instagram} alt="" className={styles.social} />
+              <img
+                src="assets/footer/instagram.png"
+                alt="ig"
+                className={styles.social}
+              />
             </a>
             <a
               href="http://www.linkedin.com/company/gtechmulearn/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={linkedin} alt="" className={styles.social} />
+              <img
+                src="assets/footer/linkedin.png"
+                alt="li"
+                className={styles.social}
+              />
             </a>
             <a
               href="https://www.youtube.com/c/mulearn"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={youtube} alt="" className={styles.social} />
+              <img
+                src="assets/footer/youtube.png"
+                alt="yt"
+                className={styles.social}
+              />
             </a>
             <a
               href="http://www.facebook.com/gtechmulearn"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={facebook} alt="" className={styles.social} />
+              <img
+                src="assets/footer/facebook.png"
+                alt="fb"
+                className={styles.social}
+              />
             </a>
           </div>
         </div>

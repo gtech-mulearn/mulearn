@@ -145,14 +145,14 @@ const Home = () => {
               />
             </a>
 
-            <a href="#" target="_blank" rel="noopener noreferrer">
+            <a href="/#" target="_blank" rel="noopener noreferrer">
               <img
                 src={gdsc}
                 alt="Google Developer Students Club"
                 className={styles.gsupporter}
               />
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
+            <a href="/#" target="_blank" rel="noopener noreferrer">
               <img
                 src={google_android}
                 alt="Google Android Educators"
