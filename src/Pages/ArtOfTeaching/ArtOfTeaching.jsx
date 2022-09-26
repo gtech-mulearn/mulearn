@@ -4,9 +4,39 @@ import Footer from "../../Components/Footer/Footer";
 
 import styles from "./ArtOfTeaching.module.css";
 
+import Faq from "react-faq-component";
+
 import fvimg from "./assets/fvimg.gif";
 
 const ArtOfTeaching = () => {
+  const data = {
+    title: "Frequently Asked Questions",
+    rows: [
+      {
+        title: "What are the Judgement Criteria?",
+        content:
+          "The maximum length of the video can be 3 minutes. Fact check of the information provided in the video. Clarity of the topic taught. Way of Presentation etc..",
+      },
+      {
+        title: "Can I submit multiple videos?",
+        content:
+          "or a unified and seamless judging, multiple entries are not allowed",
+      },
+      {
+        title: "Can I resubmit my video?",
+        content:
+          "Yes, you can resubmit your entry if you think your previous submission lacked a certain element that you aimed for.",
+      },
+    ],
+  };
+
+  const fstyles = {
+    // bgColor: 'white',
+    titleTextColor: "#f78c40",
+    rowTitleColor: "#404040",
+    rowContentColor: "#373737",
+    arrowColor: "#f78c40",
+  };
   return (
     <>
       <Navbar />
@@ -117,6 +147,12 @@ const ArtOfTeaching = () => {
                 </ul>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className={styles.faq_view_container}>
+          <div className={styles.faq_view}>
+            <Faq data={data} styles={fstyles} />
           </div>
         </div>
       </div>

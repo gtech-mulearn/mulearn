@@ -244,13 +244,12 @@
     justify-content: space-between;
   }
 
-  .tv_text{
+  .tv_text {
     margin-top: 2rem;
     width: 40%;
   }
 
   .tv_heading {
-
     font-size: 2.25rem;
   }
 
@@ -266,5 +265,30 @@
   .third_view_container {
     padding: 0rem;
     background-color: #ffffff;
+  }
+}
+
+/* FAQ Styles */
+
+.faq_view_container {
+  padding: 2rem;
+  background-color: #ffffff;
+  padding-top: 2rem;
+}
+
+.faq_view {
+  margin-top: 2rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  .faq_view_container {
+    max-width: 1300px;
+    margin: auto;
+  }
+
+  .faq_view_container {
+    padding: 2rem;
+    background-color: #ffffff;
+    padding-top: 6rem;
   }
 }
