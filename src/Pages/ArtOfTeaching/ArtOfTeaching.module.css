@@ -1,0 +1,270 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.first_view_container {
+  padding: 2rem;
+  background-color: #fdfdfd;
+}
+
+.fv_img {
+  width: 18rem;
+  display: block;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.fv_texts {
+  text-align: center;
+}
+
+.fv_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #303030;
+}
+
+.fv_heading span {
+  font-weight: 600;
+  color: #f78c40;
+}
+
+.fv_tagline {
+  margin-top: 0.5rem;
+  font-family: "Poppins", sans-serif;
+}
+
+@media only screen and (min-width: 1000px) {
+  .first_view_container {
+    padding: 3rem 3rem;
+  }
+
+  .first_view {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .fv_img {
+    display: block;
+    margin: auto;
+    width: 30rem;
+  }
+
+  .fv_texts {
+    text-align: left;
+    width: 50%;
+  }
+
+  .fv_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 4.55rem;
+    line-height: 5rem;
+    font-weight: 600;
+  }
+
+  .fv_tagline {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    width: 90%;
+  }
+}
+
+/* Second Section Styles */
+
+.second_view_container {
+  padding: 2rem;
+  background-color: #ffffff;
+}
+
+.second_view {
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.sv_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #303030;
+}
+
+.theme {
+  margin-top: 0.5rem;
+  font-size: 1.05rem;
+  color: #404040;
+  font-weight: 400;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.sv_heading > span {
+  color: #f78c40;
+}
+
+.sv_tagline {
+  margin-top: 0.5rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.topic_card {
+  margin: 2rem 0rem;
+  box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.05);
+  padding: 20px 20px;
+  border-radius: 10px;
+}
+
+.topic_heading {
+  margin-top: 0.75rem;
+}
+
+.card_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #f78c40;
+}
+
+.card_description {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  margin-top: 0.75rem;
+}
+
+.topic {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #404040;
+}
+
+@media only screen and (min-width: 1000px) {
+  .second_view_container {
+    max-width: 1300px;
+    margin: auto;
+  }
+
+  .second_view {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card_heading {
+    width: 80%;
+    font-size: 1.5rem;
+  }
+
+  .topic_card {
+    max-width: 500px;
+  }
+
+  .second_view {
+    margin-top: 5rem;
+  }
+
+  .sv_texts {
+    width: 50%;
+  }
+
+  .theme {
+    font-size: 1.4rem;
+  }
+
+  .sv_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 4.55rem;
+    line-height: 5rem;
+    font-weight: 600;
+  }
+
+  .sv_tagline {
+    width: 80%;
+    margin-top: 0.5rem;
+    font-family: "Poppins", sans-serif;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .second_view_container {
+    padding: 0rem;
+    background-color: #ffffff;
+  }
+}
+
+/* Third Section Styles */
+
+.third_view_container {
+  padding: 2rem;
+  background-color: #ffffff;
+  padding-top: 1rem;
+}
+
+.third_view {
+  margin-top: 2rem;
+}
+
+.tv_heading {
+  font-family: "Noto Sans", sans-serif;
+  color: #404040;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.tv_text {
+  margin-top: 2rem;
+}
+
+.tv_heading span {
+  color: #f78c40;
+}
+
+.tv_list_item {
+  font-family: "Poppins", sans-serif;
+}
+
+@media only screen and (min-width: 1000px) {
+  .third_view_container {
+    max-width: 1300px;
+    margin: auto;
+  }
+  .third_view {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .tv_text{
+    margin-top: 2rem;
+    width: 40%;
+  }
+
+  .tv_heading {
+
+    font-size: 2.25rem;
+  }
+
+  .tv_texts {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .third_view_container {
+    padding: 0rem;
+    background-color: #ffffff;
+  }
+}

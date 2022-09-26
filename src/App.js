@@ -9,6 +9,7 @@ import ISR from "./Pages/Events/ISR/ISR";
 import Company from "./Pages/Company/Company";
 
 import CommunityPartner from "./Pages/CommPartners/CommPartners";
+import ArtOfTeaching from "./Pages/ArtOfTeaching/ArtOfTeaching";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/events/isr" element={<ISR />} />
           <Route path="/company" element={<Company />} />
           <Route path="/community" element={<CommunityPartner />} />
+          <Route path="/artofteaching" element={<ArtOfTeaching />} />
         </Routes>
       </Router>
     </div>
