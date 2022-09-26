@@ -4,6 +4,7 @@
   flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
+  font-family: "Inter", sans-serif;
 }
 
 .fstexts {
@@ -14,7 +15,7 @@
 .fsheading {
   font-size: 5rem;
   line-height: 5rem;
-  font-family: "Poppins", sans-serif;
+  /* font-family: "Poppins", sans-serif; */
   font-weight: 600;
 }
 
@@ -28,7 +29,7 @@
 
 .second__section {
   /* padding: 2rem; */
-  margin: 0 6rem;
+  margin: 2rem 6rem 0;
 }
 
 .ssheading {
