@@ -397,6 +397,7 @@
 
 .jv_text {
   margin-top: 0rem;
+  font-family: "Poppins", sans-serif;
 }
 
 .jv_heading span {
@@ -453,9 +454,7 @@
 }
 
 @media only screen and (min-width: 1000px) {
-
-
-.yt_video {
+  .yt_video {
     width: 30vw;
     min-height: 35vh;
     border-radius: 8px;

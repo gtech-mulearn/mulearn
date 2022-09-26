@@ -97,8 +97,6 @@ const ArtOfTeaching = () => {
                 of them teaching any of the following topic in a creative
                 manner.{" "}
               </p>
-
-             
             </div>
 
             <div className={styles.cards_container}>
@@ -109,17 +107,17 @@ const ArtOfTeaching = () => {
                 <p className={styles.card_description}>
                   The participants have to learn the Android Development with
                   Kotlin course and they have to create a 3 minute video summary
-                  of the course. 
+                  of the course.
                 </p>
                 <a
-                href="https://mulearn.notion.site/Art-of-Teaching-2-0-Lessons-of-Future-96eed1e8cf524d4c88d996e6fbed7fe7"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className={styles.detailsbtn} type="submit">
-                  View More Details
-                </button>
-              </a>
+                  href="https://mulearn.notion.site/Art-of-Teaching-2-0-Lessons-of-Future-96eed1e8cf524d4c88d996e6fbed7fe7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className={styles.detailsbtn} type="submit">
+                    View More Details
+                  </button>
+                </a>
               </div>
 
               <div className={styles.topic_card}>
@@ -130,14 +128,14 @@ const ArtOfTeaching = () => {
                   that topic.Click view more button to see more details.
                 </p>
                 <a
-                href="https://mulearn.notion.site/Art-of-Teaching-2-0-Lessons-of-Future-96eed1e8cf524d4c88d996e6fbed7fe7"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className={styles.detailsbtn} type="submit">
-                  View More Details
-                </button>
-              </a>
+                  href="https://mulearn.notion.site/Art-of-Teaching-2-0-Lessons-of-Future-96eed1e8cf524d4c88d996e6fbed7fe7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className={styles.detailsbtn} type="submit">
+                    View More Details
+                  </button>
+                </a>
               </div>
             </div>
           </div>
@@ -228,8 +226,9 @@ const ArtOfTeaching = () => {
                 The <span> Judging Panel</span>
               </p>
               <p className={styles.jv_text}>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere
-                illum corporis incidunt dicta repellendus cumque.
+                We do need some really creative and people to amazing mentoring
+                skills to judge all your submissions. Presenting our Judgeing
+                Panel for The Art of Teaching 2.0.
               </p>
               <div className={styles.judges_card_container}>
                 <div className={styles.judges_card}>
