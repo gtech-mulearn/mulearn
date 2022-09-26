@@ -85,7 +85,7 @@ const Navbar = () => {
                   >
                     <li>
                       <a class="dropdown-item" href="/announcements">
-                        MuAnnouncements
+                        µ-Announcements
                       </a>
                     </li>
                     <li>
