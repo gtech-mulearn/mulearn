@@ -1,5 +1,4 @@
-// import asap from "../assets/partners/asap.png";
-// import ksum from "../assets/partners/ksum.png";
+
 
 const events = [
 	{
