@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import styles from "./Gallary.module.css";
 
+import Box from "@mui/material/Box";
+import Tabs, { tabsClasses } from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+
 import fvimg from "./assets/fvimg.png";
 
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import "react-tabs/style/react-tabs.css";
-
 const Gallary = () => {
+  const [evalue, setEValue] = React.useState(0);
+
+  const ehandleChange = (event, newValue) => {
+    setEValue(newValue);
+  };
+
+  const [nvalue, setNValue] = React.useState(0);
+
+  const nhandleChange = (event, newValue) => {
+    setNValue(newValue);
+  };
+
+  const [program, setProgram] = useState(1);
+
   return (
     <>
       <Navbar />
@@ -34,164 +49,217 @@ const Gallary = () => {
         </div>
         <div className={styles.second_view_container}>
           <div className={styles.second_view}>
-            <div className={styles.sv_texts}></div>
-            <div className={styles.sv_tabs_container}>
-              <Tabs forceRenderTabPanel defaultIndex={1}>
-                <TabList>
-                  <Tab>News Articles</Tab>
-                  <Tab>Media Gallary</Tab>
-                </TabList>
-                <TabPanel>
-                  <Tabs forceRenderTabPanel>
-                    <TabList>
-                      <Tab>Malayala Manarama</Tab>
-                      <Tab>The Hindu</Tab>
-                      <Tab>The Times Of India</Tab>
-                    </TabList>
-                    <TabPanel>
-                      <div className={styles.cards_view_container}>
-                        <div className={styles.cards_view}>
-                          <div className={styles.card_container}>
-                            <img
-                              src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
-                              alt=""
-                              className={styles.card_img}
-                            />
-
-                            <p className={styles.card_heading}>
-                              µLearn Featured on Malayala Manorama
-                            </p>
-
-                            <p className={styles.card_description}>
-                              Lorem ipsum dolor sit amet consectetur adipisicing
-                              elit. Repudiandae, sunt.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </TabPanel>
-                    <TabPanel>
-                      <div className={styles.cards_view_container}>
-                        <div className={styles.cards_view}>
-                          <div className={styles.card_container}>
-                            <img
-                              src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
-                              alt=""
-                              className={styles.card_img}
-                            />
-
-                            <p className={styles.card_heading}>
-                              µLearn Featured on Malayala Manorama
-                            </p>
-
-                            <p className={styles.card_description}>
-                              Lorem ipsum dolor sit amet consectetur adipisicing
-                              elit. Repudiandae, sunt.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </TabPanel>
-                    <TabPanel>
-                      <div className={styles.cards_view_container}>
-                        <div className={styles.cards_view}>
-                          <div className={styles.card_container}>
-                            <img
-                              src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
-                              alt=""
-                              className={styles.card_img}
-                            />
-
-                            <p className={styles.card_heading}>
-                              µLearn Featured on Malayala Manorama
-                            </p>
-
-                            <p className={styles.card_description}>
-                              Lorem ipsum dolor sit amet consectetur adipisicing
-                              elit. Repudiandae, sunt.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </TabPanel>
-                  </Tabs>
-                </TabPanel>
-                <TabPanel>
-                  <Tabs forceRenderTabPanel>
-                    <TabList>
-                      <Tab>Google I/O</Tab>
-                      <Tab>IEEE</Tab>
-                      <Tab>Interest Group Meetups</Tab>
-                    </TabList>
-                    <TabPanel>
-                      <div className={styles.cards_view_container}>
-                        <div className={styles.cards_view}>
-                          <div className={styles.card_container}>
-                            <img
-                              src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
-                              alt=""
-                              className={styles.card_img}
-                            />
-
-                            <p className={styles.card_heading}>
-                              µLearn Featured on Malayala Manorama
-                            </p>
-
-                            <p className={styles.card_description}>
-                              Lorem ipsum dolor sit amet consectetur adipisicing
-                              elit. Repudiandae, sunt.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </TabPanel>
-                    <TabPanel>
-                      <div className={styles.cards_view_container}>
-                        <div className={styles.cards_view}>
-                          <div className={styles.card_container}>
-                            <img
-                              src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
-                              alt=""
-                              className={styles.card_img}
-                            />
-
-                            <p className={styles.card_heading}>
-                              µLearn Featured on Malayala Manorama
-                            </p>
-
-                            <p className={styles.card_description}>
-                              Lorem ipsum dolor sit amet consectetur adipisicing
-                              elit. Repudiandae, sunt.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </TabPanel>
-                    <TabPanel>
-                      <div className={styles.cards_view_container}>
-                        <div className={styles.cards_view}>
-                          <div className={styles.card_container}>
-                            <img
-                              src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
-                              alt=""
-                              className={styles.card_img}
-                            />
-
-                            <p className={styles.card_heading}>
-                              µLearn Featured on Malayala Manorama
-                            </p>
-
-                            <p className={styles.card_description}>
-                              Lorem ipsum dolor sit amet consectetur adipisicing
-                              elit. Repudiandae, sunt.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </TabPanel>
-                  </Tabs>
-                </TabPanel>
+            <div className={styles.sv_texts}>
+              <p className={styles.sv_heading}>
+                {" "}
+                <span>µLearn</span> Community Event Gallary.
+              </p>
+              <p className={styles.sv_tagline}>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi
+                maxime ea quisquam sequi.impedit hic!
+              </p>
+            </div>
+            <Box
+              sx={{
+                flexGrow: 1,
+                maxWidth: { xs: 320, sm: 480, md: 720, lg: 1000, xl: 1300 },
+                bgcolor: "background.paper",
+              }}
+            >
+              <Tabs
+                value={evalue}
+                onChange={ehandleChange}
+                variant="scrollable"
+                scrollButtons
+                aria-label="visible arrows tabs example"
+                sx={{
+                  [`& .${tabsClasses.scrollButtons}`]: {
+                    "&.Mui-disabled": { opacity: 0.3 },
+                  },
+                }}
+              >
+                <Tab
+                  onClick={() => {
+                    setProgram(1);
+                  }}
+                  label="Launch of MuLearn"
+                />
+                <Tab
+                  onClick={() => {
+                    setProgram(2);
+                  }}
+                  label="MuOnam"
+                />
+                <Tab label="CTF Award Ceremony at KTU" />
+                <Tab label="Session on skill gap at KTU Fresher's Induction Program" />
+                <Tab label="YIP events" />
+                <Tab label="MoU with IEEE Kerala Section" />
+                <Tab label="MoU with Ether India" />
               </Tabs>
+            </Box>
+            <div className={styles.cards_view_container}>
+              {program == 1 && (
+                <div className={styles.cards_view}>
+                  <div className={styles.card_container}>
+                    <img
+                      src="https://drive.google.com/uc?export=view&id=1aa5OxeKsmHevobh6-eS1eHDc6Dcr1ab7"
+                      alt=""
+                      className={styles.card_img}
+                    />
+                  </div>
+                  <div className={styles.card_container}>
+                    <img
+                      src="https://drive.google.com/uc?export=view&id=1aF7AfZfzch3MOfkbdoDiPJ7MqQlc0fIE"
+                      alt=""
+                      className={styles.card_img}
+                    />
+                  </div>
+                  <div className={styles.card_container}>
+                    <img
+                      src="https://drive.google.com/uc?export=view&id=1-5eAtkEWG8ERms-QbYf595dgOyut3ugR"
+                      alt=""
+                      className={styles.card_img}
+                    />
+                  </div>
+                </div>
+              )}
+              {program == 2 && (
+                <div className={styles.cards_view}>
+                  <div className={styles.card_container}>
+                    <img
+                      src="https://drive.google.com/uc?export=view&id=1o81t_EcS8I_oQCEIPfiR52wGsr-SiJPu"
+                      alt=""
+                      className={styles.card_img}
+                    />
+                  </div>
+                  <div className={styles.card_container}>
+                    <img
+                      src="https://drive.google.com/uc?export=view&id=1KkOM77XPvk4tSaDbPQNK_tHp8Kl5eGbq"
+                      alt=""
+                      className={styles.card_img}
+                    />
+                  </div>
+                  <div className={styles.card_container}>
+                    <img
+                      src="https://drive.google.com/uc?export=view&id=1l-KGFUjC57e5zRqoaOL3iy5Eb3BvtXXp"
+                      alt=""
+                      className={styles.card_img}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.second_view_container}>
+          <div className={styles.second_view}>
+            <div className={styles.sv_texts}>
+              <p className={styles.sv_heading}>
+                {" "}
+                <span>µLearn</span> News Articles.
+              </p>
+              <p className={styles.sv_tagline}>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi
+                maxime ea quisquam sequi.impedit hic!
+              </p>
+            </div>
+            <Box
+              sx={{
+                flexGrow: 1,
+                maxWidth: { xs: 320, sm: 480, md:720, lg:1000, xl:1300 },
+                bgcolor: "background.paper",
+              }}
+            >
+              <Tabs
+                value={nvalue}
+                onChange={nhandleChange}
+                variant="scrollable"
+                scrollButtons
+                aria-label="visible arrows tabs example"
+                sx={{
+                  [`& .${tabsClasses.scrollButtons}`]: {
+                    "&.Mui-disabled": { opacity: 0.3 },
+                  },
+                }}
+              >
+                <Tab
+                  onClick={() => {
+                    setProgram(1);
+                  }}
+                  label="Launch of MuLearn"
+                />
+                <Tab
+                  onClick={() => {
+                    setProgram(2);
+                  }}
+                  label="MuOnam"
+                />
+                <Tab label="CTF Award Ceremony at KTU" />
+                <Tab label="Session on skill gap at KTU Fresher's Induction Program" />
+                <Tab label="YIP events" />
+                <Tab label="MoU with IEEE Kerala Section" />
+                <Tab label="MoU with Ether India" />
+              </Tabs>
+            </Box>
+            <div className={styles.cards_view_container}>
+              {program == 1 && (
+                <div className={styles.cards_view}>
+                  <div className={styles.card_container}>
+                    <img
+                      src="https://drive.google.com/uc?export=view&id=1aa5OxeKsmHevobh6-eS1eHDc6Dcr1ab7"
+                      alt=""
+                      className={styles.card_img}
+                    />
+                  </div>
+                  <div className={styles.card_container}>
+                    <img
+                      src="https://drive.google.com/uc?export=view&id=1aa5OxeKsmHevobh6-eS1eHDc6Dcr1ab7"
+                      alt=""
+                      className={styles.card_img}
+                    />
+                  </div>
+                  <div className={styles.card_container}>
+                    <img
+                      src="https://drive.google.com/uc?export=view&id=1aF7AfZfzch3MOfkbdoDiPJ7MqQlc0fIE"
+                      alt=""
+                      className={styles.card_img}
+                    />
+                  </div>
+                  <div className={styles.card_container}>
+                    <img
+                      src="https://drive.google.com/uc?export=view&id=1-5eAtkEWG8ERms-QbYf595dgOyut3ugR"
+                      alt=""
+                      className={styles.card_img}
+                    />
+                  </div>
+                </div>
+              )}
+              {program == 2 && (
+                <div className={styles.cards_view}>
+                  <div className={styles.card_container}>
+                    <img
+                      src="https://drive.google.com/uc?export=view&id=1o81t_EcS8I_oQCEIPfiR52wGsr-SiJPu"
+                      alt=""
+                      className={styles.card_img}
+                    />
+                  </div>
+                  <div className={styles.card_container}>
+                    <img
+                      src="https://drive.google.com/uc?export=view&id=1KkOM77XPvk4tSaDbPQNK_tHp8Kl5eGbq"
+                      alt=""
+                      className={styles.card_img}
+                    />
+                  </div>
+                  <div className={styles.card_container}>
+                    <img
+                      src="https://drive.google.com/uc?export=view&id=1l-KGFUjC57e5zRqoaOL3iy5Eb3BvtXXp"
+                      alt=""
+                      className={styles.card_img}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
