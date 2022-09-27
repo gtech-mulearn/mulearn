@@ -54,6 +54,16 @@ const Navbar = () => {
                         Our Team
                       </a>
                     </li>
+                    <li>
+                      <a class="dropdown-item" href="/company-partners">
+                        Company Partners
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/community-partners">
+                        Community Partners
+                      </a>
+                    </li>
                   </ul>
                 </li>
 
