@@ -86,27 +86,12 @@
   }
 }
 
-/* Second Section Styles */
+/* Second View Container */
 
 .second_view_container {
   padding: 2rem;
-  background-color: #fff;
-}
-
-.sv_category_container {
-  display: grid;
-  grid-template-columns: 45% 45%;
-  row-gap: 0.5rem;
-  column-gap: 0.5rem;
-}
-
-.category_box {
-  padding: 0.2rem 1rem;
-  font-size: 1rem;
-  font-weight: 300;
-  background-color: #f78c40;
-  color: white;
-  border-radius: 5px;
+  padding-top: 5rem;
+  background-color: #ffffff;
 }
 
 .sv_heading {
@@ -129,39 +114,20 @@
 
 @media only screen and (min-width: 1000px) {
   .second_view_container {
-    padding: 2rem 6rem;
+    padding: 3rem;
+    padding-top: 6rem;
   }
 
   .second_view {
     max-width: 1300px;
     margin: auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .sv_category_container {
-    display: flex;
-  }
-
-  .category_box {
-    margin-right: 0.5rem;
-  }
-
-  .sv_tagline {
-    font-size: 1rem;
-    width: 60%;
-    margin-top: 0.75rem;
   }
 }
 
 /* Cards View Styles */
 
 .cards_view_container {
-  padding: 2rem;
+  padding: 0rem;
   background-color: #fff;
 }
 
@@ -217,7 +183,7 @@
 
 @media only screen and (min-width: 1240px) {
   .cards_view_container {
-    padding: 2rem 6rem;
+    padding: 0;
   }
 
   .cards_view {

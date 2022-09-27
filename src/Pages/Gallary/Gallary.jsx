@@ -5,6 +5,9 @@ import styles from "./Gallary.module.css";
 
 import fvimg from "./assets/fvimg.png";
 
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
+
 const Gallary = () => {
   return (
     <>
@@ -29,141 +32,166 @@ const Gallary = () => {
             </div>
           </div>
         </div>
-
         <div className={styles.second_view_container}>
           <div className={styles.second_view}>
-            <div className={styles.sv_texts}>
-              <p className={styles.sv_heading}>
-                Select <span>Category</span>
-              </p>
-              <p className={styles.sv_tagline}>
-                Lot of things running through your minds?. Don't worry we have
-                things sorted out.
-              </p>
-            </div>
-            <div className={styles.sv_category_container}>
-              <div className={styles.category_box}>All</div>
-              <div className={styles.category_box}>Photo Gallary</div>
-              <div className={styles.category_box}>Video Gallary</div>
-              <div className={styles.category_box}>News & Events</div>
-              <div className={styles.category_box}>Downloads</div>
-            </div>
-          </div>
-        </div>
+            <div className={styles.sv_texts}></div>
+            <div className={styles.sv_tabs_container}>
+              <Tabs forceRenderTabPanel defaultIndex={1}>
+                <TabList>
+                  <Tab>News Articles</Tab>
+                  <Tab>Media Gallary</Tab>
+                </TabList>
+                <TabPanel>
+                  <Tabs forceRenderTabPanel>
+                    <TabList>
+                      <Tab>Malayala Manarama</Tab>
+                      <Tab>The Hindu</Tab>
+                      <Tab>The Times Of India</Tab>
+                    </TabList>
+                    <TabPanel>
+                      <div className={styles.cards_view_container}>
+                        <div className={styles.cards_view}>
+                          <div className={styles.card_container}>
+                            <img
+                              src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
+                              alt=""
+                              className={styles.card_img}
+                            />
 
-        <div className={styles.cards_view_container}>
-          <div className={styles.cards_view}>
-            <div className={styles.card_container}>
-              <img
-                src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
-                alt=""
-                className={styles.card_img}
-              />
+                            <p className={styles.card_heading}>
+                              µLearn Featured on Malayala Manorama
+                            </p>
 
-              <p className={styles.card_heading}>
-                µLearn Featured on Malayala Manorama
-              </p>
+                            <p className={styles.card_description}>
+                              Lorem ipsum dolor sit amet consectetur adipisicing
+                              elit. Repudiandae, sunt.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </TabPanel>
+                    <TabPanel>
+                      <div className={styles.cards_view_container}>
+                        <div className={styles.cards_view}>
+                          <div className={styles.card_container}>
+                            <img
+                              src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
+                              alt=""
+                              className={styles.card_img}
+                            />
 
-              <p className={styles.card_description}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repudiandae, sunt.
-              </p>
-            </div>
-            <div className={styles.card_container}>
-              <img
-                src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
-                alt=""
-                className={styles.card_img}
-              />
+                            <p className={styles.card_heading}>
+                              µLearn Featured on Malayala Manorama
+                            </p>
 
-              <p className={styles.card_heading}>
-                µLearn Featured on Malayala Manorama
-              </p>
+                            <p className={styles.card_description}>
+                              Lorem ipsum dolor sit amet consectetur adipisicing
+                              elit. Repudiandae, sunt.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </TabPanel>
+                    <TabPanel>
+                      <div className={styles.cards_view_container}>
+                        <div className={styles.cards_view}>
+                          <div className={styles.card_container}>
+                            <img
+                              src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
+                              alt=""
+                              className={styles.card_img}
+                            />
 
-              <p className={styles.card_description}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repudiandae, sunt.
-              </p>
-            </div>
-            <div className={styles.card_container}>
-              <img
-                src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
-                alt=""
-                className={styles.card_img}
-              />
+                            <p className={styles.card_heading}>
+                              µLearn Featured on Malayala Manorama
+                            </p>
 
-              <p className={styles.card_heading}>
-                µLearn Featured on Malayala Manorama
-              </p>
+                            <p className={styles.card_description}>
+                              Lorem ipsum dolor sit amet consectetur adipisicing
+                              elit. Repudiandae, sunt.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </TabPanel>
+                  </Tabs>
+                </TabPanel>
+                <TabPanel>
+                  <Tabs forceRenderTabPanel>
+                    <TabList>
+                      <Tab>Google I/O</Tab>
+                      <Tab>IEEE</Tab>
+                      <Tab>Interest Group Meetups</Tab>
+                    </TabList>
+                    <TabPanel>
+                      <div className={styles.cards_view_container}>
+                        <div className={styles.cards_view}>
+                          <div className={styles.card_container}>
+                            <img
+                              src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
+                              alt=""
+                              className={styles.card_img}
+                            />
 
-              <p className={styles.card_description}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repudiandae, sunt.
-              </p>
-            </div>
-            <div className={styles.card_container}>
-              <img
-                src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
-                alt=""
-                className={styles.card_img}
-              />
+                            <p className={styles.card_heading}>
+                              µLearn Featured on Malayala Manorama
+                            </p>
 
-              <p className={styles.card_heading}>
-                µLearn Featured on Malayala Manorama
-              </p>
+                            <p className={styles.card_description}>
+                              Lorem ipsum dolor sit amet consectetur adipisicing
+                              elit. Repudiandae, sunt.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </TabPanel>
+                    <TabPanel>
+                      <div className={styles.cards_view_container}>
+                        <div className={styles.cards_view}>
+                          <div className={styles.card_container}>
+                            <img
+                              src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
+                              alt=""
+                              className={styles.card_img}
+                            />
 
-              <p className={styles.card_description}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repudiandae, sunt.
-              </p>
-            </div>
-            <div className={styles.card_container}>
-              <img
-                src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
-                alt=""
-                className={styles.card_img}
-              />
+                            <p className={styles.card_heading}>
+                              µLearn Featured on Malayala Manorama
+                            </p>
 
-              <p className={styles.card_heading}>
-                µLearn Featured on Malayala Manorama
-              </p>
+                            <p className={styles.card_description}>
+                              Lorem ipsum dolor sit amet consectetur adipisicing
+                              elit. Repudiandae, sunt.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </TabPanel>
+                    <TabPanel>
+                      <div className={styles.cards_view_container}>
+                        <div className={styles.cards_view}>
+                          <div className={styles.card_container}>
+                            <img
+                              src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
+                              alt=""
+                              className={styles.card_img}
+                            />
 
-              <p className={styles.card_description}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repudiandae, sunt.
-              </p>
-            </div>
-            <div className={styles.card_container}>
-              <img
-                src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
-                alt=""
-                className={styles.card_img}
-              />
+                            <p className={styles.card_heading}>
+                              µLearn Featured on Malayala Manorama
+                            </p>
 
-              <p className={styles.card_heading}>
-                µLearn Featured on Malayala Manorama
-              </p>
-
-              <p className={styles.card_description}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repudiandae, sunt.
-              </p>
-            </div>
-            <div className={styles.card_container}>
-              <img
-                src="https://drive.google.com/uc?export=view&id=1TAoIi1TqapKFqcq6yDjLyfmESCFqNm5U"
-                alt=""
-                className={styles.card_img}
-              />
-
-              <p className={styles.card_heading}>
-                µLearn Featured on Malayala Manorama
-              </p>
-
-              <p className={styles.card_description}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repudiandae, sunt.
-              </p>
+                            <p className={styles.card_description}>
+                              Lorem ipsum dolor sit amet consectetur adipisicing
+                              elit. Repudiandae, sunt.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </TabPanel>
+                  </Tabs>
+                </TabPanel>
+              </Tabs>
             </div>
           </div>
         </div>
