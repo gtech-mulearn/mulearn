@@ -4,8 +4,8 @@ import Navbar from "../../Components/Navbar/Navbar";
 import styles from "./LeaderBoard.module.css";
 
 import fvimg from "./assets/fvimg.png";
-import score from "./assets/score.png";
-import student from "./assets/student.png"
+import score from "../../../public/assets/pages/leaderBoard/score.webp"
+import student from "../../../public/assets/pages/leaderBoard/student.webp"
 //import CommunityCard from "../../Components/CommunityCard/CommunityCard";
 
 const LeaderBoard = () => {
