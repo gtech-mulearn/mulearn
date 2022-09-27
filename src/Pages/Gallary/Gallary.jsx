@@ -16,7 +16,7 @@ const Gallary = () => {
     setValue(newValue);
   };
 
-  const [program, setProgram] = useState(0);
+  const [program, setProgram] = useState(1);
 
   return (
     <>

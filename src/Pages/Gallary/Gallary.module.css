@@ -48,6 +48,7 @@
 @media only screen and (min-width: 1000px) {
   .first_view_container {
     padding: 3rem;
+    margin-bottom: 3rem;
   }
 
   .first_view {
@@ -113,7 +114,7 @@
 @media only screen and (min-width: 1000px) {
   .second_view_container {
     padding: 3rem;
-    padding-top: 6rem;
+    padding-top: 3rem;
   }
 
   .second_view {
@@ -154,18 +155,19 @@
 @media only screen and (min-width: 1000px) {
   .sv_texts {
     margin-bottom: 2rem;
-    width: 40%;
+    width: 50%;
   }
 
   .sv_heading {
-    font-size: 2.75rem;
+    font-size: 2.25rem;
     font-family: "Noto Sans", sans-serif;
     font-weight: 600;
+    width: 55%;
   }
 
   .sv_tagline {
     font-size: 1rem;
-    width: 90%;
+    width: 55%;
     font-family: "Poppins", sans-serif;
   }
 
