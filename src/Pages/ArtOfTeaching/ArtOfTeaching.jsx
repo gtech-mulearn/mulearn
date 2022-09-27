@@ -249,7 +249,7 @@ const ArtOfTeaching = () => {
                     name={"Deepu S Nath"}
                     designation={"Managing Director at FAYA"}
                     image={
-                      "https://media-exp1.licdn.com/dms/image/C5603AQF_OnmtHn2N2w/profile-displayphoto-shrink_200_200/0/1605360722064?e=1669852800&v=beta&t=bOHAURczpul1un_L-8aiGuJVGHPxq_w3K-PDgA0-9-0"
+                      "assets/artofteaching/deepu.jpeg"
                     }
                     linkedIn={"https://www.linkedin.com/in/deepusnath/"}
                   />
