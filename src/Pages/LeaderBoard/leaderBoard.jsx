@@ -4,8 +4,6 @@ import Navbar from "../../Components/Navbar/Navbar";
 import styles from "./LeaderBoard.module.css";
 
 import fvimg from "./assets/fvimg.png";
-import score from "../../../public/assets/pages/leaderBoard/score.webp"
-import student from "../../../public/assets/pages/leaderBoard/student.webp"
 //import CommunityCard from "../../Components/CommunityCard/CommunityCard";
 
 const LeaderBoard = () => {
@@ -38,7 +36,7 @@ const LeaderBoard = () => {
                     <span>College Leader Board</span>
                 </p>
                 <div className={styles.fv_images}>
-                    <img src={score} alt="college score board" className={styles.fv_img} />
+                    <img src="/assets/pages/leaderBoard/score.webp" alt="college score board" className={styles.fv_img} />
                 </div>
             </div>
             <div className={styles.right_side}>
@@ -46,7 +44,7 @@ const LeaderBoard = () => {
                     <span>Student Leader Board</span>
                 </p>
             <div className={styles.fv_images}>
-                    <img src={student} alt="college score board" className={styles.fv_img} />
+                    <img src="/assets/pages/leaderBoard/student.webp" alt="college score board" className={styles.fv_img} />
                 </div>
             </div>
           </div>
