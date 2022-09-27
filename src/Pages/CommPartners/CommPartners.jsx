@@ -22,7 +22,7 @@ const CommunityPartner = () => {
               <p className={styles.fv_tagline}>
                 When a group of like-minded people come together interesting
                 things take place. What if multiple communties join their hands
-                together for a common aim things get much more interesting!.
+                together for a common aim things get much more interesting!
               </p>
             </div>
             <div className={styles.fv_images}>
