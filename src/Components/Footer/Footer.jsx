@@ -99,7 +99,11 @@ const Footer = () => {
 								Kerala, India
 							</p>
 
-							<p className={styles.mail}>Mail Us: mulearn@gtechindia.org</p>
+							<p className={styles.mail}>
+								<a href="mailto:mulearn@gtechindia.org">
+									mulearn@gtechindia.org
+								</a>
+							</p>
 						</div>
 					</div>
 

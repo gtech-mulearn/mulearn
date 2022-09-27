@@ -9,8 +9,8 @@ const Navbar = () => {
 					<a className="navbar-brand" href="/">
 						<img
 							className="mulearn-logo"
-							src="//assets/navbar/µLearn.png"
-							alt="Mulearn"
+							src="/assets/navbar/µLearn.png"
+							alt="µ"
 						/>
 					</a>
 
@@ -30,11 +30,11 @@ const Navbar = () => {
 						class="navbar-styles collapse navbar-collapse"
 						id="navbarNavDropdown"
 					>
-						<div class="navbar-dropdowns">
-							<ul class="navbar-nav">
-								<li class="nav-item dropdown">
+						<div className="navbar-dropdowns">
+							<ul className="navbar-nav">
+								<li className="nav-item dropdown">
 									<a
-										class="nav-link dropdown-toggle"
+										className="nav-link dropdown-toggle"
 										href="/#"
 										target="_blank"
 										rel="noopener noreferrer"
@@ -46,30 +46,30 @@ const Navbar = () => {
 										About
 									</a>
 									<ul
-										class="dropdown-menu"
+										className="dropdown-menu"
 										aria-labelledby="navbarDropdownMenuLink"
 									>
 										<li>
-											<a class="dropdown-item" href="/team">
+											<a className="dropdown-item" href="/team">
 												Our Team
 											</a>
 										</li>
 										<li>
-											<a class="dropdown-item" href="/company-partners">
+											<a className="dropdown-item" href="/company-partners">
 												Company Partners
 											</a>
 										</li>
 										<li>
-											<a class="dropdown-item" href="/community-partners">
+											<a className="dropdown-item" href="/community-partners">
 												Community Partners
 											</a>
 										</li>
 									</ul>
 								</li>
 
-								<li class="nav-item dropdown">
+								<li className="nav-item dropdown">
 									<a
-										class="nav-link dropdown-toggle"
+										className="nav-link dropdown-toggle"
 										href="/#"
 										id="navbarDropdownMenuLink"
 										role="button"
@@ -79,24 +79,27 @@ const Navbar = () => {
 										Program
 									</a>
 									<ul
-										class="dropdown-menu"
+										className="dropdown-menu"
 										aria-labelledby="navbarDropdownMenuLink"
 									>
 										<li>
-											<a class="dropdown-item" href="https://yip.mulearn.org">
+											<a
+												className="dropdown-item"
+												href="https://yip.mulearn.org"
+											>
 												YIP
 											</a>
 										</li>
 
 										<li>
-											<a class="dropdown-item" href="/artofteaching">
+											<a className="dropdown-item" href="/artofteaching">
 												Art of teaching
 											</a>
 										</li>
 
 										<li>
 											<a
-												class="dropdown-item"
+												className="dropdown-item"
 												href="https://foundation.mulearn.org"
 											>
 												Foundation Program
@@ -105,9 +108,9 @@ const Navbar = () => {
 									</ul>
 								</li>
 
-								<li class="nav-item dropdown">
+								<li className="nav-item dropdown">
 									<a
-										class="nav-link dropdown-toggle"
+										className="nav-link dropdown-toggle"
 										href="/#"
 										id="navbarDropdownMenuLink"
 										role="button"
@@ -117,37 +120,37 @@ const Navbar = () => {
 										Events
 									</a>
 									<ul
-										class="dropdown-menu"
+										className="dropdown-menu"
 										aria-labelledby="navbarDropdownMenuLink"
 									>
 										<li>
-											<a class="dropdown-item" href="/calendar">
+											<a className="dropdown-item" href="/calendar">
 												Global Calendar
 											</a>
 										</li>
 
 										<li>
-											<a class="dropdown-item" href="/announcements">
+											<a className="dropdown-item" href="/announcements">
 												µ-Announcements
 											</a>
 										</li>
 
 										<li>
-											<a class="dropdown-item" href="/isr">
+											<a className="dropdown-item" href="/isr">
 												Inspiration Station
 											</a>
 										</li>
 									</ul>
 								</li>
 
-								<li class="nav-item dropdown">
-									<a class="nav-link" href="/careers">
+								<li className="nav-item dropdown">
+									<a className="nav-link" href="/careers">
 										Careers
 									</a>
 								</li>
 
-								<li class="nav-item dropdown">
-									<a class="nav-link" href="https://learn.mulearn.org/">
+								<li className="nav-item dropdown">
+									<a className="nav-link" href="https://learn.mulearn.org/">
 										Interest Groups
 									</a>
 								</li>
