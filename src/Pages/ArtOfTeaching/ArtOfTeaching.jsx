@@ -273,7 +273,7 @@ const ArtOfTeaching = () => {
                 Art of Teaching <span>Archives</span>
               </p>
               <p className={styles.vv_tagline}>
-                Take a look at the top submission by the teachers from the the frist edition of The Art of Teaching.
+                Take a look at the top submissions by the teachers from the the first edition of The Art of Teaching.
               </p>
             </div>
             <div className={styles.videos_container}>
