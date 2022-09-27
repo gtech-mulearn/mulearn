@@ -26,7 +26,7 @@ function App() {
           <Route path="/isr" element={<ISR />} />
           <Route path="/company-partners" element={<Company />} />
           <Route path="/community-partners" element={<CommunityPartner />} />
-          {/* <Route path="/artofteaching" element={<ArtOfTeaching />} /> */}
+          <Route path="/artofteaching" element={<ArtOfTeaching />} />
         </Routes>
       </Router>
     </div>

@@ -266,6 +266,51 @@ const ArtOfTeaching = () => {
           </div>
         </div>
 
+        <div className={styles.videos_view_container}>
+          <div className={styles.videos_view}>
+            <div className={styles.vvtexts}>
+              <p className={styles.vv_heading}>
+                Art of Teaching <span>Archives</span>
+              </p>
+              <p className={styles.vv_tagline}>
+                Take a look at the top submission by the teachers from the the frist edition of The Art of Teaching.
+              </p>
+            </div>
+            <div className={styles.videos_container}>
+              <div className={styles.video}>
+                <iframe
+                  className={styles.ytvideo}
+                  src="https://www.youtube.com/embed/Wmo0StqW9Kc"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div className={styles.video}>
+                <iframe
+                  className={styles.ytvideo}
+                  src="https://www.youtube.com/embed/TEylubYDzhQ"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div className={styles.video}>
+                <iframe
+                  className={styles.ytvideo}
+                  src="https://www.youtube.com/embed/jRcseEVk2sk"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className={styles.faq_view_container}>
           <div className={styles.faq_view}>
             <Faq data={data} styles={fstyles} />
