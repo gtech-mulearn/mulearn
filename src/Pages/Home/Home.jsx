@@ -1,28 +1,8 @@
 import React from "react";
 import styles from "../Home/Home.module.css";
-import illustration from "./assets/illustration.png";
 
-import involvement from "./assets/involvement.png";
-import interactive from "./assets/interactive.png";
-import innovation from "./assets/innovation.png";
-import join from "./assets/join.png";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
-
-import asap from "./assets/partners/asap.png";
-import blockchain from "./assets/partners/blockchain.png";
-import foxlab from "./assets/partners/foxlab.png";
-import ieee from "./assets/partners/ieee.png";
-import kites from "./assets/partners/kites.png";
-import pygrammers from "./assets/partners/pygrammers.png";
-import xtrudar from "./assets/partners/xtrudar.png";
-import ksum from "./assets/partners/ksum.png";
-import kdisc from "./assets/partners/kdisc.png";
-import ether_logo from "./assets/partners/ether_logo.png";
-import productpack from "./assets/partners/productpack.png";
-import kuttycoders from "./assets/partners/kuttycoders.jpeg";
-import gdsc from "./assets/partners/gdsc.png";
-import google_android from "./assets/partners/google_android.png";
 
 import CountUp from "react-countup";
 
@@ -52,7 +32,11 @@ const Home = () => {
               <button className={styles.primary}>Join Us</button>
             </a>
           </div>
-          <img className={styles.fv_image} src={illustration} alt="" />
+          <img
+            className={styles.fv_image}
+            src="assets/home/illustration.webp"
+            alt="illustration"
+          />
         </div>
       </div>
 
@@ -67,60 +51,107 @@ const Home = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={kdisc} alt="" className={styles.supporter} />
+              <img
+                src="assets/home/partnerkdisc.webp"
+                alt=""
+                className={styles.supporter}
+              />
             </a>
             <a
               href="https://iedc.startupmission.in/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={ksum} alt="" className={styles.supporter} />
+              <img
+                src="assets/home/partnerksum.webp"
+                alt=""
+                className={styles.supporter}
+              />
             </a>
             <a
               href="https://asapkerala.gov.in/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={asap} alt="" className={styles.supporter} />
+              <img
+                src="assets/home/partners/asap.webp"
+                alt=""
+                className={styles.supporter}
+              />
             </a>
             <a
               href="https://ieeekerala.org/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={ieee} alt="" className={styles.supporter} />
+              <img
+                src="assets/home/partners/ieee.webp"
+                alt=""
+                className={styles.supporter}
+              />
             </a>
             <a href="https://kba.ai/" target="_blank" rel="noopener noreferrer">
-              <img src={blockchain} alt="" className={styles.supporter} />
+              <img
+                src="assets/home/partners/blockchain.webp"
+                alt=""
+                className={styles.supporter}
+              />
             </a>
             <a
               href="https://kitesfoundation.org/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={kites} alt="" className={styles.supporter} />
+              <img
+                src="assets/home/partners/kites.webp"
+                alt=""
+                className={styles.supporter}
+              />
             </a>
-            <a href="http://" target="_blank" rel="noopener noreferrer">
-              {" "}
-              <img src={foxlab} alt="" className={styles.supporter} />
+            <a
+              href="https://www.linkedin.com/company/foxlab-makerspace/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="assets/home/partners/foxlab.webp"
+                alt=""
+                className={styles.supporter}
+              />
             </a>
+
             <a
               href="https://etherindia.org/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={ether_logo} alt="ether" className={styles.supporter} />
+              <img
+                src="assets/home/partners/ether_logo.webp"
+                alt="ether"
+                className={styles.supporter}
+              />
             </a>
             <a
               href="http://pygrammers.org/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={pygrammers} alt="" className={styles.supporter} />
+              <img
+                src="assets/home/partners/pygrammers.webp"
+                alt=""
+                className={styles.supporter}
+              />
             </a>
-            <a href="http://" target="_blank" rel="noopener noreferrer">
-              {" "}
-              <img src={xtrudar} alt="" className={styles.supporter} />
+            <a
+              href="https://xtrudar.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="assets/home/partners/xtrudar.webp"
+                alt=""
+                className={styles.supporter}
+              />
             </a>
             <a
               href="https://www.productpack.in/"
@@ -128,7 +159,7 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src={productpack}
+                src="assets/home/partners/productpack.webp"
                 alt="product pack"
                 className={styles.supporter}
               />
@@ -139,22 +170,30 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src={kuttycoders}
+                src="assets/home/partners/kuttycoders.webp"
                 alt="Kutty Coders"
                 className={styles.supporter}
               />
             </a>
 
-            <a href="/#" target="_blank" rel="noopener noreferrer">
+            <a
+              href="/https://gdg.community.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
-                src={gdsc}
-                alt="Google Developer Students Club"
+                src="assets/home/partners/gdsc.webp"
+                alt="Google Developer Groups"
                 className={styles.gsupporter}
               />
             </a>
-            <a href="/#" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://developer.android.com/teach"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
-                src={google_android}
+                src="assets/home/partners/google_android.webp"
                 alt="Google Android Educators"
                 className={styles.gsupporter}
               />
@@ -224,7 +263,11 @@ const Home = () => {
             </p>
             <div className={styles.sv_points}>
               <div className={styles.sv_point}>
-                <img src={involvement} alt="" className={styles.svp_image} />
+                <img
+                  src="assets/home/involvement.webp"
+                  alt=""
+                  className={styles.svp_image}
+                />
                 <div className={styles.svp_heading}>Involve</div>
                 <div className={styles.svp_text}>
                   µLearn is a place for everyone. A place where one could
@@ -235,7 +278,11 @@ const Home = () => {
               </div>
 
               <div className={styles.sv_point}>
-                <img src={interactive} alt="" className={styles.svp_image} />
+                <img
+                  src="assets/home/interactive.webp"
+                  alt=""
+                  className={styles.svp_image}
+                />
                 <div className={styles.svp_heading}>Interact</div>
                 <div className={styles.svp_text}>
                   An Interactive setting where each one of you could connect
@@ -246,7 +293,11 @@ const Home = () => {
               </div>
 
               <div className={styles.sv_point}>
-                <img src={innovation} alt="" className={styles.svp_image} />
+                <img
+                  src="assets/home/innovation.webp"
+                  alt=""
+                  className={styles.svp_image}
+                />
                 <div className={styles.svp_heading}>Innovate</div>
                 <div className={styles.svp_text}>
                   A place brimming with possibilities for innovation and
@@ -347,7 +398,6 @@ const Home = () => {
                   </p>
                   <p className={styles.cvc_text}>Interest Groups</p>
                 </div>
-               
               </div>
             </div>
           </div>
@@ -384,7 +434,11 @@ const Home = () => {
                 <button className={styles.primary}>Join Discord Server</button>
               </a>
             </div>
-            <img src={join} alt="" className={styles.join_img} />
+            <img
+              src="assets/home/join.webp"
+              alt="join"
+              className={styles.join_img}
+            />
           </div>
         </div>
       </div>

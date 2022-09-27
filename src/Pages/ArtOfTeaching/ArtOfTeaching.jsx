@@ -70,13 +70,13 @@ const ArtOfTeaching = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button
+                {/* <button
                   style={{ fontSize: "1rem" }}
                   className={styles.detailsbtn}
                   type="submit"
                 >
                   Register Now!
-                </button>
+                </button> */}
               </a>
             </div>
             <div className={styles.fv_images}>
@@ -95,7 +95,7 @@ const ArtOfTeaching = () => {
               <p className={styles.sv_tagline}>
                 A 3-minute video contest, where the teachers can send in a video
                 of them teaching any of the following topic in a creative
-                manner.{" "}
+                manner.
               </p>
             </div>
 
@@ -223,42 +223,43 @@ const ArtOfTeaching = () => {
           <div className={styles.judge_view}>
             <div className={styles.jv_texts}>
               <p className={styles.jv_heading}>
-                The <span> Judging Panel</span>
+                The Former <span> Judging Panel</span>
               </p>
               <p className={styles.jv_text}>
-                We do need some really creative and people to amazing mentoring
-                skills to judge all your submissions. Presenting our Judgeing
-                Panel for The Art of Teaching 2.0.
+                We do needed some really creative and people to amazing
+                mentoring skills to judge all your submissions. Listed below
+                were our judges for the first edition of Art of Teaching.
               </p>
               <div className={styles.judges_card_container}>
                 <div className={styles.judges_card}>
                   <MentorCard
+                    name={"Dr T M George"}
+                    designation={
+                      "Former Principal at Mar Baselios College of Engineering and Technology"
+                    }
+                    image={"assets/artofteaching/j2.jpeg"}
+                    linkedIn={
+                      "https://www.linkedin.com/in/dr-t-m-george-87b86028/?originalSubdomain=in"
+                    }
+                  />
+                </div>
+
+                <div className={styles.judges_card}>
+                  <MentorCard
                     name={"Deepu S Nath"}
                     designation={"Managing Director at FAYA"}
                     image={
-                      "https://media-exp1.licdn.com/dms/image/C5603AQF_OnmtHn2N2w/profile-displayphoto-shrink_200_200/0/1605360722064?e=1669852800&v=beta&t=bOHAURczpul1un_L-8aiGuJVGHPxq_w3K-PDgA0-9-0"
+                      "assets/artofteaching/deepu.jpeg"
                     }
                     linkedIn={"https://www.linkedin.com/in/deepusnath/"}
                   />
                 </div>
                 <div className={styles.judges_card}>
                   <MentorCard
-                    name={"Deepu S Nath"}
-                    designation={"Managing Director at FAYA"}
-                    image={
-                      "https://media-exp1.licdn.com/dms/image/C5603AQF_OnmtHn2N2w/profile-displayphoto-shrink_200_200/0/1605360722064?e=1669852800&v=beta&t=bOHAURczpul1un_L-8aiGuJVGHPxq_w3K-PDgA0-9-0"
-                    }
-                    linkedIn={"https://www.linkedin.com/in/deepusnath/"}
-                  />
-                </div>
-                <div className={styles.judges_card}>
-                  <MentorCard
-                    name={"Deepu S Nath"}
-                    designation={"Managing Director at FAYA"}
-                    image={
-                      "https://media-exp1.licdn.com/dms/image/C5603AQF_OnmtHn2N2w/profile-displayphoto-shrink_200_200/0/1605360722064?e=1669852800&v=beta&t=bOHAURczpul1un_L-8aiGuJVGHPxq_w3K-PDgA0-9-0"
-                    }
-                    linkedIn={"https://www.linkedin.com/in/deepusnath/"}
+                    name={"Rajeev J Sebastian"}
+                    designation={"CEO Alokin Software Private Limited"}
+                    image={"assets/artofteaching/j1.jpeg"}
+                    linkedIn={"https://www.linkedin.com/in/rajeevjs"}
                   />
                 </div>
               </div>
@@ -273,7 +274,8 @@ const ArtOfTeaching = () => {
                 Art of Teaching <span>Archives</span>
               </p>
               <p className={styles.vv_tagline}>
-                Take a look at the top submissions by the teachers from the the first edition of The Art of Teaching.
+                Take a look at the top submissions by the teachers from the the
+                first edition of The Art of Teaching.
               </p>
             </div>
             <div className={styles.videos_container}>

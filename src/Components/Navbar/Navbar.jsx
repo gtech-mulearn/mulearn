@@ -27,14 +27,49 @@ const Navbar = () => {
 					</button>
 
 					<div
-						className="navbar-styles collapse navbar-collapse"
+						class="navbar-styles collapse navbar-collapse"
 						id="navbarNavDropdown"
 					>
-						<div className="navbar-dropdowns">
-							<ul className="navbar-nav">
-								<li className="nav-item dropdown">
+						<div class="navbar-dropdowns">
+							<ul class="navbar-nav">
+								<li class="nav-item dropdown">
 									<a
-										className="nav-link dropdown-toggle"
+										class="nav-link dropdown-toggle"
+										href="/#"
+										target="_blank"
+										rel="noopener noreferrer"
+										id="navbarDropdownMenuLink"
+										role="button"
+										data-bs-toggle="dropdown"
+										aria-expanded="false"
+									>
+										About
+									</a>
+									<ul
+										class="dropdown-menu"
+										aria-labelledby="navbarDropdownMenuLink"
+									>
+										<li>
+											<a class="dropdown-item" href="/team">
+												Our Team
+											</a>
+										</li>
+										<li>
+											<a class="dropdown-item" href="/company-partners">
+												Company Partners
+											</a>
+										</li>
+										<li>
+											<a class="dropdown-item" href="/community-partners">
+												Community Partners
+											</a>
+										</li>
+									</ul>
+								</li>
+
+								<li class="nav-item dropdown">
+									<a
+										class="nav-link dropdown-toggle"
 										href="/#"
 										id="navbarDropdownMenuLink"
 										role="button"
@@ -44,31 +79,27 @@ const Navbar = () => {
 										Program
 									</a>
 									<ul
-										className="dropdown-menu"
+										class="dropdown-menu"
 										aria-labelledby="navbarDropdownMenuLink"
 									>
 										<li>
-											<a
-												className="dropdown-item"
-												href="https://yip.mulearn.org"
-											>
+											<a class="dropdown-item" href="https://yip.mulearn.org">
 												YIP
 											</a>
 										</li>
+
+										<li>
+											<a class="dropdown-item" href="/artofteaching">
+												Art of teaching
+											</a>
+										</li>
+
 										<li>
 											<a
-												className="dropdown-item"
+												class="dropdown-item"
 												href="https://foundation.mulearn.org"
 											>
 												Foundation Program
-											</a>
-										</li>
-										<li>
-											<a
-												className="dropdown-item"
-												href="https://rebrand.ly/mulearncalendar"
-											>
-												Global Calendar
 											</a>
 										</li>
 									</ul>
@@ -90,18 +121,20 @@ const Navbar = () => {
 										aria-labelledby="navbarDropdownMenuLink"
 									>
 										<li>
+											<a class="dropdown-item" href="/calendar">
+												Global Calendar
+											</a>
+										</li>
+
+										<li>
 											<a class="dropdown-item" href="/announcements">
 												µ-Announcements
 											</a>
 										</li>
+
 										<li>
 											<a class="dropdown-item" href="/isr">
 												Inspiration Station
-											</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="/artofteaching">
-												Art of teaching
 											</a>
 										</li>
 									</ul>
@@ -113,38 +146,10 @@ const Navbar = () => {
 									</a>
 								</li>
 
-								<li className="nav-item dropdown">
-									<a className="nav-link" href="https://learn.mulearn.org/">
+								<li class="nav-item dropdown">
+									<a class="nav-link" href="https://learn.mulearn.org/">
 										Interest Groups
 									</a>
-								</li>
-
-								<li className="nav-item dropdown">
-									<a
-										className="nav-link dropdown-toggle"
-										href="/#"
-										target="_blank"
-										rel="noopener noreferrer"
-										id="navbarDropdownMenuLink"
-										role="button"
-										data-bs-toggle="dropdown"
-										aria-expanded="false"
-									>
-										About
-									</a>
-									<ul
-										className="dropdown-menu"
-										aria-labelledby="navbarDropdownMenuLink"
-									>
-										<li>
-											<a
-												className="dropdown-item"
-												href="https://team.mulearn.org/"
-											>
-												Our Team
-											</a>
-										</li>
-									</ul>
 								</li>
 							</ul>
 						</div>
