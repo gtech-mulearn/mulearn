@@ -233,34 +233,79 @@ const ArtOfTeaching = () => {
               <div className={styles.judges_card_container}>
                 <div className={styles.judges_card}>
                   <MentorCard
-                    name={"Deepu S Nath"}
-                    designation={"Managing Director at FAYA"}
+                    name={"Rajeev J Sebastian"}
+                    designation={"CEO Alokin Software Private Limited"}
                     image={
-                      "https://media-exp1.licdn.com/dms/image/C5603AQF_OnmtHn2N2w/profile-displayphoto-shrink_200_200/0/1605360722064?e=1669852800&v=beta&t=bOHAURczpul1un_L-8aiGuJVGHPxq_w3K-PDgA0-9-0"
+                      "assets/artofteaching/j1.jpeg"
                     }
-                    linkedIn={"https://www.linkedin.com/in/deepusnath/"}
+                    linkedIn={"https://www.linkedin.com/in/rajeevjs"}
                   />
                 </div>
                 <div className={styles.judges_card}>
                   <MentorCard
-                    name={"Deepu S Nath"}
-                    designation={"Managing Director at FAYA"}
+                    name={"Dr T M George"}
+                    designation={"Former Principal at Mar Baselios College of Engineering and Technology"}
                     image={
-                      "https://media-exp1.licdn.com/dms/image/C5603AQF_OnmtHn2N2w/profile-displayphoto-shrink_200_200/0/1605360722064?e=1669852800&v=beta&t=bOHAURczpul1un_L-8aiGuJVGHPxq_w3K-PDgA0-9-0"
+                      "assets/artofteaching/j2.jpeg"
                     }
-                    linkedIn={"https://www.linkedin.com/in/deepusnath/"}
+                    linkedIn={"https://www.linkedin.com/in/dr-t-m-george-87b86028/?originalSubdomain=in"}
                   />
                 </div>
                 <div className={styles.judges_card}>
                   <MentorCard
-                    name={"Deepu S Nath"}
-                    designation={"Managing Director at FAYA"}
+                    name={"Unnikrishnan Dr Potheri Vasudevan"}
+                    designation={"Member Secretary, Kerala Development and Innovation Strategic Council "}
                     image={
-                      "https://media-exp1.licdn.com/dms/image/C5603AQF_OnmtHn2N2w/profile-displayphoto-shrink_200_200/0/1605360722064?e=1669852800&v=beta&t=bOHAURczpul1un_L-8aiGuJVGHPxq_w3K-PDgA0-9-0"
+                      "assets/artofteaching/j3.png"
                     }
-                    linkedIn={"https://www.linkedin.com/in/deepusnath/"}
+                    linkedIn={"https://www.linkedin.com/in/unnikrishnan-dr-potheri-vasudevan-b2763039/?originalSubdomain=in"}
                   />
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.videos_view_container}>
+          <div className={styles.videos_view}>
+            <div className={styles.vvtexts}>
+              <p className={styles.vv_heading}>
+                Art of Teaching <span>Archives</span>
+              </p>
+              <p className={styles.vv_tagline}>
+                Take a look at the top submissions by the teachers from the the first edition of The Art of Teaching.
+              </p>
+            </div>
+            <div className={styles.videos_container}>
+              <div className={styles.video}>
+                <iframe
+                  className={styles.ytvideo}
+                  src="https://www.youtube.com/embed/Wmo0StqW9Kc"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div className={styles.video}>
+                <iframe
+                  className={styles.ytvideo}
+                  src="https://www.youtube.com/embed/TEylubYDzhQ"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div className={styles.video}>
+                <iframe
+                  className={styles.ytvideo}
+                  src="https://www.youtube.com/embed/jRcseEVk2sk"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
               </div>
             </div>
           </div>
