@@ -11,6 +11,7 @@ import Company from "./Pages/Company/Company";
 import CommunityPartner from "./Pages/CommPartners/CommPartners";
 import ArtOfTeaching from "./Pages/ArtOfTeaching/ArtOfTeaching";
 import Career from "./Pages/Career/Career";
+import LeaderBoard from "./Pages/LeaderBoard/leaderBoard";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/company-partners" element={<Company />} />
           <Route path="/community-partners" element={<CommunityPartner />} />
           <Route path="/artofteaching" element={<ArtOfTeaching />} />
+          <Route path="/leaderboard" element={<LeaderBoard />} />
         </Routes>
       </Router>
     </div>
