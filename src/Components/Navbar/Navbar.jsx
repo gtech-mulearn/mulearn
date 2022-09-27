@@ -74,9 +74,9 @@ const Navbar = () => {
 									</ul>
 								</li>
 
-								<li className="nav-item dropdown">
+								<li class="nav-item dropdown">
 									<a
-										className="nav-link dropdown-toggle"
+										class="nav-link dropdown-toggle"
 										href="/#"
 										id="navbarDropdownMenuLink"
 										role="button"
@@ -86,32 +86,29 @@ const Navbar = () => {
 										Events
 									</a>
 									<ul
-										className="dropdown-menu"
+										class="dropdown-menu"
 										aria-labelledby="navbarDropdownMenuLink"
 									>
 										<li>
-											<a className="dropdown-item" href="/announcements">
+											<a class="dropdown-item" href="/announcements">
 												µ-Announcements
 											</a>
 										</li>
 										<li>
-											<a className="dropdown-item" href="/events/isr">
+											<a class="dropdown-item" href="/isr">
 												Inspiration Station
 											</a>
 										</li>
 										<li>
-											<a
-												className="dropdown-item"
-												href="https://events.mulearn.org/"
-											>
-												Events
+											<a class="dropdown-item" href="/artofteaching">
+												Art of teaching
 											</a>
 										</li>
 									</ul>
 								</li>
 
-								<li className="nav-item dropdown">
-									<a className="nav-link" href="https://careers.mulearn.org/">
+								<li class="nav-item dropdown">
+									<a class="nav-link" href="/careers">
 										Careers
 									</a>
 								</li>

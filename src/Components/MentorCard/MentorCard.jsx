@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./MentorCard.module.css";
 
 import linkedin from "./assets/linkedin.png";
-import placeholder from "./assets/placeholder.jpeg";
 
 const MentorCard = ({
 	name,
@@ -16,7 +15,7 @@ const MentorCard = ({
 		<div className={styles.mentor_card_container}>
 			<div className={styles.mentor_card}>
 				<div className={styles.box}>
-					<img src={image || placeholder} alt="" className={styles.mentorimg} />
+					<img src={image} alt="" className={styles.mentorimg} />
 					<div className={styles.textdiv}>
 						{interest && <p className={styles.mentor_interest}>{interest}</p>}
 

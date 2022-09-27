@@ -158,10 +158,12 @@ button:focus {
   .right_side {
     width: 30%;
   }
+
   .newsletter {
     width: 20rem;
     text-align: right;
   }
+
   .bottom_section {
     display: flex;
     flex-direction: row;
