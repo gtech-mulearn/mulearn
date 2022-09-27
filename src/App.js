@@ -12,6 +12,7 @@ import CommunityPartner from "./Pages/CommPartners/CommPartners";
 import ArtOfTeaching from "./Pages/ArtOfTeaching/ArtOfTeaching";
 import YIP from "./Pages/Teams/YIP/YIP";
 import Community from "./Pages/Teams/Community/Community";
+import Execom from "./Pages/Teams/Execom/Execom";
 import Career from "./Pages/Career/Career";
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
 					<Route path="/artofteaching" element={<ArtOfTeaching />} />
 					<Route path="/team">
 						<Route path="" element={<Teams />} />
-						<Route path="execom" element={<YIP />} />
+						<Route path="execom" element={<Execom />} />
 						<Route path="yip" element={<YIP />} />
 						<Route path="community" element={<Community />} />
 					</Route>
