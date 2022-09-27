@@ -8,6 +8,7 @@ import Tabs, { tabsClasses } from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
 import Events from "./data/Events";
+import News from "./data/News";
 
 import fvimg from "./assets/fvimg.png";
 
@@ -25,6 +26,7 @@ const Gallery = () => {
   };
 
   const [program, setProgram] = useState(Events[0]);
+  const [news, setNews] = useState(News[0]);
 
   return (
     <>
@@ -146,7 +148,7 @@ const Gallery = () => {
           </div>
         </div>
 
-        {/* <div className={styles.second_view_container}>
+        <div className={styles.second_view_container}>
           <div className={styles.second_view}>
             <div className={styles.sv_texts}>
               <p className={styles.sv_heading}>
@@ -161,7 +163,7 @@ const Gallery = () => {
             <Box
               sx={{
                 flexGrow: 1,
-                maxWidth: { xs: 320, sm: 480, md:720, lg:1000, xl:1300 },
+                maxWidth: { xs: 320, sm: 480, md: 720, lg: 1000, xl: 1300 },
                 bgcolor: "background.paper",
               }}
             >
@@ -177,86 +179,82 @@ const Gallery = () => {
                   },
                 }}
               >
-                <Tab
-                  onClick={() => {
-                    setProgram(1);
-                  }}
-                  label="Launch of MuLearn"
-                />
-                <Tab
-                  onClick={() => {
-                    setProgram(2);
-                  }}
-                  label="MuOnam"
-                />
-                <Tab label="CTF Award Ceremony at KTU" />
-                <Tab label="Session on skill gap at KTU Fresher's Induction Program" />
-                <Tab label="YIP events" />
-                <Tab label="MoU with IEEE Kerala Section" />
-                <Tab label="MoU with Ether India" />
+                {News.map((news) => (
+                  <Tab
+                    onClick={() => {
+                      setNews(news);
+                      console.log(news);
+                    }}
+                    label={news.Event_Name}
+                  />
+                ))}
               </Tabs>
             </Box>
             <div className={styles.cards_view_container}>
-              {program == 1 && (
+              {news && (
                 <div className={styles.cards_view}>
-                  <div className={styles.card_container}>
-                    <img
-                      src="https://drive.google.com/uc?export=view&id=1aa5OxeKsmHevobh6-eS1eHDc6Dcr1ab7"
-                      alt=""
-                      className={styles.card_img}
-                    />
-                  </div>
-                  <div className={styles.card_container}>
-                    <img
-                      src="https://drive.google.com/uc?export=view&id=1aa5OxeKsmHevobh6-eS1eHDc6Dcr1ab7"
-                      alt=""
-                      className={styles.card_img}
-                    />
-                  </div>
-                  <div className={styles.card_container}>
-                    <img
-                      src="https://drive.google.com/uc?export=view&id=1aF7AfZfzch3MOfkbdoDiPJ7MqQlc0fIE"
-                      alt=""
-                      className={styles.card_img}
-                    />
-                  </div>
-                  <div className={styles.card_container}>
-                    <img
-                      src="https://drive.google.com/uc?export=view&id=1-5eAtkEWG8ERms-QbYf595dgOyut3ugR"
-                      alt=""
-                      className={styles.card_img}
-                    />
-                  </div>
-                </div>
-              )}
-              {program == 2 && (
-                <div className={styles.cards_view}>
-                  <div className={styles.card_container}>
-                    <img
-                      src="https://drive.google.com/uc?export=view&id=1o81t_EcS8I_oQCEIPfiR52wGsr-SiJPu"
-                      alt=""
-                      className={styles.card_img}
-                    />
-                  </div>
-                  <div className={styles.card_container}>
-                    <img
-                      src="https://drive.google.com/uc?export=view&id=1KkOM77XPvk4tSaDbPQNK_tHp8Kl5eGbq"
-                      alt=""
-                      className={styles.card_img}
-                    />
-                  </div>
-                  <div className={styles.card_container}>
-                    <img
-                      src="https://drive.google.com/uc?export=view&id=1l-KGFUjC57e5zRqoaOL3iy5Eb3BvtXXp"
-                      alt=""
-                      className={styles.card_img}
-                    />
-                  </div>
+                  {news.p1 && (
+                    <a href={news.p1} target="_blank" rel="noopener noreferrer">
+                      <div className={styles.card_container}>
+                        <img src={news.p1} alt="" className={styles.card_img} />
+                      </div>
+                    </a>
+                  )}
+
+                  {news.p2 && (
+                    <a href={news.p2} target="_blank" rel="noopener noreferrer">
+                      <div className={styles.card_container}>
+                        <img src={news.p2} alt="" className={styles.card_img} />
+                      </div>
+                    </a>
+                  )}
+                  {news.p3 && (
+                    <a href={news.p3} target="_blank" rel="noopener noreferrer">
+                      <div className={styles.card_container}>
+                        <img src={news.p3} alt="" className={styles.card_img} />
+                      </div>
+                    </a>
+                  )}
+                  {news.p4 && (
+                    <a href={news.p4} target="_blank" rel="noopener noreferrer">
+                      <div className={styles.card_container}>
+                        <img src={news.p4} alt="" className={styles.card_img} />
+                      </div>
+                    </a>
+                  )}
+                  {news.p5 && (
+                    <a href={news.p5} target="_blank" rel="noopener noreferrer">
+                      <div className={styles.card_container}>
+                        <img src={news.p5} alt="" className={styles.card_img} />
+                      </div>
+                    </a>
+                  )}
+                  {news.p6 && (
+                    <a href={news.p6} target="_blank" rel="noopener noreferrer">
+                      <div className={styles.card_container}>
+                        <img src={news.p6} alt="" className={styles.card_img} />
+                      </div>
+                    </a>
+                  )}
+                  {news.p7 && (
+                    <a href={news.p7} target="_blank" rel="noopener noreferrer">
+                      <div className={styles.card_container}>
+                        <img src={news.p7} alt="" className={styles.card_img} />
+                      </div>
+                    </a>
+                  )}
+                  {news.p8 && (
+                    <a href={news.p8} target="_blank" rel="noopener noreferrer">
+                      <div className={styles.card_container}>
+                        <img src={news.p8} alt="" className={styles.card_img} />
+                      </div>
+                    </a>
+                  )}
                 </div>
               )}
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
       <Footer />
     </>
