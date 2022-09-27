@@ -21,7 +21,7 @@ const Career = () => {
           </div>
           <div className={styles.fsimage}>
             <img
-              src="assets/careers/illustration.png"
+              src="/assets/careers/illustration.png"
               className={styles.fsillustration}
               alt=""
             />
