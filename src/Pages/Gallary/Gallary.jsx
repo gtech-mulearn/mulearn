@@ -10,10 +10,16 @@ import Tab from "@mui/material/Tab";
 import fvimg from "./assets/fvimg.png";
 
 const Gallary = () => {
-  const [value, setValue] = React.useState(0);
+  const [evalue, setEValue] = React.useState(0);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const ehandleChange = (event, newValue) => {
+    setEValue(newValue);
+  };
+
+  const [nvalue, setNValue] = React.useState(0);
+
+  const nhandleChange = (event, newValue) => {
+    setNValue(newValue);
   };
 
   const [program, setProgram] = useState(1);
@@ -56,13 +62,13 @@ const Gallary = () => {
             <Box
               sx={{
                 flexGrow: 1,
-                maxWidth: { xs: 320, sm: 480, md:720, lg:1000, xl:1300 },
+                maxWidth: { xs: 320, sm: 480, md: 720, lg: 1000, xl: 1300 },
                 bgcolor: "background.paper",
               }}
             >
               <Tabs
-                value={value}
-                onChange={handleChange}
+                value={evalue}
+                onChange={ehandleChange}
                 variant="scrollable"
                 scrollButtons
                 aria-label="visible arrows tabs example"
@@ -166,8 +172,8 @@ const Gallary = () => {
               }}
             >
               <Tabs
-                value={value}
-                onChange={handleChange}
+                value={nvalue}
+                onChange={nhandleChange}
                 variant="scrollable"
                 scrollButtons
                 aria-label="visible arrows tabs example"
@@ -199,6 +205,13 @@ const Gallary = () => {
             <div className={styles.cards_view_container}>
               {program == 1 && (
                 <div className={styles.cards_view}>
+                  <div className={styles.card_container}>
+                    <img
+                      src="https://drive.google.com/uc?export=view&id=1aa5OxeKsmHevobh6-eS1eHDc6Dcr1ab7"
+                      alt=""
+                      className={styles.card_img}
+                    />
+                  </div>
                   <div className={styles.card_container}>
                     <img
                       src="https://drive.google.com/uc?export=view&id=1aa5OxeKsmHevobh6-eS1eHDc6Dcr1ab7"
