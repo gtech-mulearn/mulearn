@@ -60,7 +60,7 @@ const YIP = () => {
 					{yipTeam.map((member) => {
 						console.log(member.domain);
 						console.log(filters[filter]);
-						if (filter == 0 || member.domain === filters[filter]) {
+						if (filter === 0 || member.domain === filters[filter]) {
 							return (
 								<MentorCard
 									key={member.name}
@@ -71,7 +71,7 @@ const YIP = () => {
 									linkedIn={member.linkedin}
 								/>
 							);
-						}
+						} else return <></>;
 					})}
 				</div>
 			</div>

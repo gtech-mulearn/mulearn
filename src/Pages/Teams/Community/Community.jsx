@@ -7,7 +7,6 @@ import districtHeads from "./data/district.js";
 import zonalHeads from "./data/zonal.js";
 
 import MentorCard from "../../../Components/MentorCard/MentorCard";
-import { useState } from "react";
 
 const Community = () => {
 	return (
