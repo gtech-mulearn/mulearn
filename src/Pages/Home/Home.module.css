@@ -106,7 +106,7 @@ a {
 
 .supporter {
   margin: 0.5rem 0.5rem;
-  width: 3.5rem;
+  width: 2.5rem;
 }
 
 .gsupporter {
@@ -189,10 +189,26 @@ a {
 .svp_text {
   font-family: "Poppins", sans-serif;
   font-size: 0.95rem;
+  text-align: center;
 }
 
 .svp_image {
   width: 3.15rem;
+}
+
+@media screen and (max-width:999px) {
+
+  .svp_image {
+    width: 3.15rem;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+  }
+  .svp_heading {
+   position: relative;
+    text-align: center;
+  }
+  
 }
 
 @media only screen and (min-width: 1000px) {
@@ -322,9 +338,7 @@ a {
   }
 }
 
-.join_img {
-  display: none;
-}
+
 
 .join_view {
   margin: 0 2rem;
@@ -360,6 +374,28 @@ a {
   font-weight: 400;
 }
 
+@media screen and (min-width:600px) {
+  .join_img {
+    height: 40rem;
+    position: relative;
+    left: 50%;
+    margin-top: 2rem;
+    transform: translate(-50%);
+  }
+  
+}
+
+@media screen and (max-width:599px) {
+  .join_img {
+    height: 30rem;
+    position: relative;
+    left: 50%;
+    margin-top: 3rem;
+    transform: translate(-50%);
+  }
+  
+}
+
 @media only screen and (min-width: 1000px) {
   .joinviewmain_container {
     max-width: 1300px;
@@ -392,6 +428,7 @@ a {
   .join_img {
     display: block;
     height: 50rem;
+    left: 20%;
   }
 
   .jv_content {
@@ -429,6 +466,8 @@ a {
 
 .count {
   margin: 0.5rem 0;
+  position: relative;
+  text-align: center;
 }
 
 .cvc_heading {
@@ -539,6 +578,8 @@ a {
 .chart_img {
   margin-top: 2rem;
   width: 20rem;
+  margin-left: 50%;
+  transform: translate(-50%);
 }
 
 @media only screen and (min-width: 768px) {
