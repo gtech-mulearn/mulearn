@@ -3,6 +3,7 @@ import Pits from "../assets/companies/Pits.jpeg";
 import Softnotions from "../assets/companies/Softnotions.jpeg";
 import SunTec from "../assets/companies/SunTec.jpeg";
 import EY from "../assets/companies/EY.jpeg";
+import Dspace from "../assets/companies/Dspace.png"
 
 const companyevents = [
   {
@@ -223,6 +224,15 @@ const companyevents = [
       "Join the PIT Solutions family! At PITS, you don't just do something #good, WE strive for #excellence and think much #bigger, #better, and #bolder. Work location: Thiruvananthapuram or Cochin, Kerala* - 3D Designer - https://lnkd.in/gmCDH7rh - Senior Odoo Developer - https://lnkd.in/gxvK3xs3 - Microsoft Chatbot Developer - https://lnkd.in/gDidXRY6 - Automation Test Lead - https://lnkd.in/g_SvNGCM - Senior Azure Data Engineer - https://lnkd.in/gDtE94P3 - Ruby On Rails Developer - https://lnkd.in/gFWTvCkF - Senior Frontend developer - https://lnkd.in/g8ZfTsVA - .NET Developer-https://lnkd.in/g6ZenvtA - .NET Senior - https://lnkd.in/gtM5P9Sn - .NET Lead-https://lnkd.in/gbs5dSNw - Project Manager .NET -https://lnkd.in/gYzhDWqT",
     companyname: "PIT Solutions",
     companylogo: Pits,
+    image: "",
+  },
+  {
+    id: "22",
+    name: "Meet with dSPACE",
+    description:
+      "Are you ready to join hands with dSPACE (Germany)? Come on, Let's interact with the technologists from Germany with dSPACE, are of world's leading providers of Automotie, Areospace, and Medical Engineering tools. Gtech µLearn - Student community partner of dSPACE(Germany) for interaction with student groups in India",
+    companyname: "dSPACE",
+    companylogo: Dspace,
     image: "",
   },
 ];
