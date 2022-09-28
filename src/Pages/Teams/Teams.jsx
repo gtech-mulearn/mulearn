@@ -15,9 +15,10 @@ const Teams = () => {
                 The <span>Gears</span> Behind The Machine.
               </p>
               <p className={styles.fv_tagline}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed dou
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam.
+                The 'µLearn' community's growth to this moment would not have
+                been possible without the team's soul and heart. Our team has a
+                big impact on how well we do our work. Here is the team to which
+                we are addressing.
               </p>
             </div>
             <div className={styles.fv_illustration}>

@@ -18,7 +18,11 @@ const LeaderBoard = () => {
                 Welcome to <span>#scoreboard!</span>
               </p>
               <p className={styles.fv_tagline}>
-              Through our scoreboards, you may keep track of your progress and that of your college. You and your college will advance thanks to all of your arduously earned <span>karma points</span>. This is your opportunity to compete against the top scores and see how you match up!
+                Through our scoreboards, you may keep track of your progress and
+                that of your college. You and your college will advance thanks
+                to all of your arduously earned <span>karma points</span>. This
+                is your opportunity to compete against the top scores and see
+                how you match up!
               </p>
             </div>
             <div className={styles.fv_images}>
@@ -28,24 +32,30 @@ const LeaderBoard = () => {
         </div>
         <div className={styles.fourth_view_container}>
           <div className={styles.fourth_view}>
-            <div>
-
-            </div>
+            <div></div>
             <div className={styles.left_side}>
-                <p className={styles.sv_heading}>
-                    <span>College Leader Board</span>
-                </p>
-                <div className={styles.fv_images}>
-                    <img src="/assets/pages/leaderBoard/score.webp" alt="college score board" className={styles.fv_img} />
-                </div>
+              <p className={styles.sv_heading}>
+                <span>College Leader Board</span>
+              </p>
+              <div className={styles.fv_images}>
+                <img
+                  src="/assets/pages/leaderBoard/score.png"
+                  alt="college score board"
+                  className={styles.fv_img}
+                />
+              </div>
             </div>
             <div className={styles.right_side}>
-            <p className={styles.sv_heading}>
-                    <span>Student Leader Board</span>
-                </p>
-            <div className={styles.fv_images}>
-                    <img src="/assets/pages/leaderBoard/student.webp" alt="college score board" className={styles.fv_img} />
-                </div>
+              <p className={styles.sv_heading}>
+                <span>Student Leader Board</span>
+              </p>
+              <div className={styles.fv_images}>
+                <img
+                  src="/assets/pages/leaderBoard/student.png"
+                  alt="college score board"
+                  className={styles.fv_img}
+                />
+              </div>
             </div>
           </div>
         </div>

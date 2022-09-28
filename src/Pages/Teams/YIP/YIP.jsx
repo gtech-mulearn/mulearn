@@ -32,10 +32,8 @@ const YIP = () => {
                 <span>Young Innovators Programme</span> Organization Team
               </p>
               <p className={styles.fv_tagline}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+                Here are the members of the crew and interns who helped to make
+                the Yip a big success.
               </p>
             </div>
           </div>
