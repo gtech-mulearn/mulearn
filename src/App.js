@@ -33,7 +33,7 @@ function App() {
           <Route path="/company-partners" element={<Company />} />
           <Route path="/community-partners" element={<CommunityPartner />} />
           <Route path="/artofteaching" element={<ArtOfTeaching />} />
-          {/* <Route path="/courses" element={<Courses />} /> */}
+          <Route path="/courses" element={<Courses />} />
           <Route path="/wikisyllabus" element={<WikiSyllabus />} />
           <Route path="/team">
             <Route path="" element={<Teams />} />

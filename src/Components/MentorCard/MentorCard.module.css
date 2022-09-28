@@ -1,70 +1,80 @@
 .mentor_card_container {
-	margin-top: 1rem;
-	max-width: 400px;
-	box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
-	-webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
-	-moz-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
-	padding: 30px 25px;
-	border-radius: 10px;
+  margin-top: 1rem;
+  max-width: 400px;
+  box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  padding: 30px 25px;
+  border-radius: 10px;
 }
 
 .mentorimg {
-	object-fit: cover;
-	width: 5rem;
-	height: 5rem;
-	border-radius: 5px;
+  object-fit: cover;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 5px;
+}
+
+.comingsoon {
+  background-color: #f78c40;
+  color: white;
+  margin-top: 1rem;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 5px;
 }
 
 .mentor_name {
-	margin-top: 0.5rem;
-	font-family: "Inter", sans-serif;
-	font-weight: 500;
-	font-size: 1.1rem;
+  margin-top: 0.5rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 1.1rem;
 }
 
 .box {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .mentor_interest {
-	opacity: 0.5;
-	font-size: 0.9rem;
-	text-align: right;
-	font-weight: 600;
-	width: 150px;
+  opacity: 0.5;
+  font-size: 0.9rem;
+  text-align: right;
+  font-weight: 600;
+  width: 150px;
 }
 
 .mentor_source {
-	opacity: 0.5;
-	font-size: 0.9rem;
-	text-align: left;
-	font-weight: 600;
-	width: 150px;
+  opacity: 0.5;
+  font-size: 0.9rem;
+  text-align: left;
+  font-weight: 600;
+  width: 150px;
 }
 
 .mentor_designation {
-	width: 90%;
-	margin-top: 0.4rem;
-	font-family: "Poppins", sans-serif;
-	font-size: 0.95rem;
+  width: 90%;
+  margin-top: 0.4rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
 }
 
 .linkedinimg {
-	height: 1.75rem;
-	width: 1.75rem;
-	margin-top: 0.5rem;
+  height: 1.75rem;
+  width: 1.75rem;
+  margin-top: 0.5rem;
 }
 
 .textdiv {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 @media only screen and (min-width: 600px) {
-	.mentor_card_container {
-		margin-top: 1.5rem;
-		margin-bottom: 1.5rem;
-	}
+  .mentor_card_container {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
 }
