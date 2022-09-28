@@ -93,6 +93,7 @@
   object-fit: cover;
   border-radius: 5px;
   margin: 1rem 0rem;
+  height: 21rem;
 }
 
 .sv_heading {
@@ -141,9 +142,10 @@
 @media only screen and (min-width: 768px) {
   .sv_cards_container {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 48% 48%;
     row-gap: 1.5rem;
     columns: 1.5rem;
+    justify-content: space-between;
   }
 }
 
@@ -178,7 +180,6 @@
     border-radius: 5px;
     margin: 1rem 0rem;
   }
-
 
   .sv_cards_container {
     display: grid;
