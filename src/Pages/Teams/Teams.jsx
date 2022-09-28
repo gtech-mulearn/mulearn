@@ -38,30 +38,21 @@ const Teams = () => {
         <div className={styles.team_list}>
           <span className={styles.team_card}>
             <h5>Executive Committee</h5>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
+            
             <Link to="/team/execom">
               <button className={styles.join_button}>View</button>
             </Link>
           </span>
           <span className={styles.team_card}>
             <h5>YIP Team</h5>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
+            
             <Link to="/team/yip">
               <button className={styles.join_button}>View</button>
             </Link>
           </span>
           <span className={styles.team_card}>
             <h5>Community Team</h5>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
+            
             <Link to="/team/community">
               <button className={styles.join_button}>View</button>
             </Link>
