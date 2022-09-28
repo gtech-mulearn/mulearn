@@ -16,7 +16,7 @@ const Calendar = () => {
               </p>
               <p className={styles.fv_tagline}>
                 There are a lot of opportunties for you to learn and improve
-                yourself. Want to join and learn from such opportunties. Keep a
+                yourself. Want to join and learn from such opportunties? Keep a
                 close watch on this calendar. We have many surpises for you on
                 the way!
               </p>

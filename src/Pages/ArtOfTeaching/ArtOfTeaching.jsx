@@ -198,8 +198,8 @@ const ArtOfTeaching = () => {
                 Art of Teaching <span>First Edition</span>
               </p>
               <p className={styles.fr_tagline}>
-                The First Edition of Art of Teaching was a huge success with
-                more than 100 distinct entries,all of which used creative
+                The First Edition of Art of Teaching was a huge success, with
+                more than 100 distinct entries, all of which used creative
                 teaching methods to simplify a topic for better understanding by
                 a student.
               </p>
@@ -226,7 +226,7 @@ const ArtOfTeaching = () => {
                 The Former <span> Judging Panel</span>
               </p>
               <p className={styles.jv_text}>
-                We do needed some really creative and people to amazing
+                We had some really creative and people with amazing
                 mentoring skills to judge all your submissions. Listed below
                 were our judges for the first edition of Art of Teaching.
               </p>
@@ -274,8 +274,8 @@ const ArtOfTeaching = () => {
                 Art of Teaching <span>Archives</span>
               </p>
               <p className={styles.vv_tagline}>
-                Take a look at the top submissions by the teachers from the the
-                first edition of The Art of Teaching.
+                Take a look at the top submissions by the teachers from the
+                first edition of the Art of Teaching.
               </p>
             </div>
             <div className={styles.videos_container}>

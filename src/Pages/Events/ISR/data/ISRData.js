@@ -321,11 +321,11 @@ const ISRData = [
 
   {
     id: "33",
-    speaker: "Ashwin S S",
+    speaker: "Aswin S Seshadri",
     image:
       "https://media.discordapp.net/attachments/771679365124718612/978565667483705394/ISR_Aswin_Seshadri_14.png?width=729&height=1227",
     description:
-      "This edition of the ISR, we have Ashwin S S, renown for his eagerness to learn and willingness to contribute. Currently a Program Associate at GTech µLearn, Team Lead Product Pack, he is a true Product Management enthusiast, and has played a significant role in building the Product Management Interest group.  To those who don't know, he was one of the main folks responsible for our TFP promo, made using only Scratch",
+      "This edition of the ISR, we have Aswin S Seshadri, renown for his eagerness to learn and willingness to contribute. Currently a Program Associate at GTech µLearn, Team Lead Product Pack, he is a true Product Management enthusiast, and has played a significant role in building the Product Management Interest group.  To those who don't know, he was one of the main folks responsible for our TFP promo, made using only Scratch",
     date: "24/05/2022",
   },
 

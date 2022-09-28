@@ -18,10 +18,9 @@ const Home = () => {
                 Let's <span>break the Echo Chambers</span> Together.
               </p>
               <p className={styles.fv_tagline}>
-                µLearn is a synergic philosophy of education, with a culture of
-                mutual learning through micro peer groups. We are here to assist
-                you in breaking through the echo chambers and free you from the
-                shackles you have grounded yourself in.
+                µLearn is a synergic philosophy of education with a culture of mutual learning through
+micro-peer groups. We are here to assist you in breaking through the echo chambers and
+freeing yourself from the shackles you have grounded yourself in.
               </p>
             </div>
             <a
@@ -221,29 +220,26 @@ const Home = () => {
               <div className={styles.tv_point}>
                 <p className={styles.tvp_heading}>Inspiration Station Radio</p>
                 <p className={styles.tvp_text}>
-                  ISR is an event conducted at µLearn weekly. Here students come
-                  in and share their stories and inspirations for listeners who
-                  like to learn.
+                ISR is an event conducted at µLearn weekly. Here, students come in and share their stories and
+                inspirations with listeners who like to learn.
+
                 </p>
               </div>
               <div className={styles.tv_point}>
                 <p className={styles.tvp_heading}>Let's Chill</p>
                 <p className={styles.tvp_text}>
-                  A 30 minutes chill-out spot. Join the lobby voice channel in
-                  our discord server every day at 9:00 pm to unwind, connect,
-                  and socialize with our community members. Take part in
-                  conversations and other enjoyable activities. Connect and
-                  progress.
+                A 30-minute chill-out spot. Join the lobby voice channel on our discord server every day at 9:00
+                pm to unwind, connect, and socialise with our community members. Take part in conversations
+                and other enjoyable activities. Connect and progress.
+
                 </p>
               </div>
               <div className={styles.tv_point}>
                 <p className={styles.tvp_heading}>Learning Circles</p>
                 <p className={styles.tvp_text}>
-                  An informal mechanism for bringing together learners who have
-                  interests in similar topics across different fields and
-                  disciplines. A fantastic way to spend your limited time
-                  learning and exploring with a group of people with the same
-                  interests!
+                An informal mechanism for bringing together learners who have an interest in similar
+                topics across different fields and disciplines. A fantastic way to spend your limited time
+                learning and exploring with a group of people who have the same interests!
                 </p>
               </div>
             </div>
@@ -258,7 +254,7 @@ const Home = () => {
               Knowing more about <span>µLearn!</span>{" "}
             </p>
             <p className={styles.sv_tagline}>
-              Curious to know more about µLearn? Wanna explore what all wonders
+              Curious to know more about µLearn? Wanna explore all wonders
               we can do as a team? Come, witness it by yourself!
             </p>
             <div className={styles.sv_points}>
