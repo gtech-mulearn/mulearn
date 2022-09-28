@@ -443,6 +443,29 @@ const Home = () => {
         </div>
       </div>
 
+      <div className={styles.chart_view_container}>
+        <div className={styles.chart_view}>
+          <div className={styles.cv_texts}>
+            <p className={styles.cv_heading}>
+              Working Ecosystem of <span>µLearn.</span>
+            </p>
+            <p className={styles.cv_text}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
+              laudantium minus cumque nesciunt neque quibusdam provident
+              officiis quos nihil eum officia perspiciatis est molestias non eos
+              eius assumenda qui architecto!
+            </p>
+          </div>
+          <div>
+            <img
+              src="assets/home/Chart.svg"
+              alt="Chart Image"
+              className={styles.chart_img}
+            />
+          </div>
+        </div>
+      </div>
+
       <Footer />
     </>
   );
