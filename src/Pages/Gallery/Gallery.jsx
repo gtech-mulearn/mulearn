@@ -142,6 +142,60 @@ const Gallery = () => {
                       />
                     </div>
                   )}
+                  {program.Photo_6 && (
+                    <div className={styles.card_container}>
+                      <img
+                        src={program.Photo_6}
+                        alt=""
+                        className={styles.card_img}
+                      />
+                    </div>
+                  )}
+                  {program.Photo_7 && (
+                    <div className={styles.card_container}>
+                      <img
+                        src={program.Photo_7}
+                        alt=""
+                        className={styles.card_img}
+                      />
+                    </div>
+                  )}
+                  {program.Photo_8 && (
+                    <div className={styles.card_container}>
+                      <img
+                        src={program.Photo_8}
+                        alt=""
+                        className={styles.card_img}
+                      />
+                    </div>
+                  )}
+                  {program.Photo_9 && (
+                    <div className={styles.card_container}>
+                      <img
+                        src={program.Photo_9}
+                        alt=""
+                        className={styles.card_img}
+                      />
+                    </div>
+                  )}
+                  {program.Photo_10 && (
+                    <div className={styles.card_container}>
+                      <img
+                        src={program.Photo_10}
+                        alt=""
+                        className={styles.card_img}
+                      />
+                    </div>
+                  )}
+                  {program.Photo_11 && (
+                    <div className={styles.card_container}>
+                      <img
+                        src={program.Photo_11}
+                        alt=""
+                        className={styles.card_img}
+                      />
+                    </div>
+                  )}
                 </div>
               )}
             </div>

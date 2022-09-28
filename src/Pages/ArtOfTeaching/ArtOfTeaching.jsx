@@ -226,7 +226,11 @@ const ArtOfTeaching = () => {
                 The Former <span> Judging Panel</span>
               </p>
               <p className={styles.jv_text}>
+<<<<<<< HEAD
                 We had some really creative and people with amazing
+=======
+                We do needed some really creative people with amazing
+>>>>>>> 339a3d5fe4df367b411c37725261c802e673e669
                 mentoring skills to judge all your submissions. Listed below
                 were our judges for the first edition of Art of Teaching.
               </p>
@@ -237,7 +241,7 @@ const ArtOfTeaching = () => {
                     designation={
                       "Former Principal at Mar Baselios College of Engineering and Technology"
                     }
-                    image={"assets/artofteaching/j2.jpeg"}
+                    image={"assets/artofteaching/j1.jpeg"}
                     linkedIn={
                       "https://www.linkedin.com/in/dr-t-m-george-87b86028/?originalSubdomain=in"
                     }
@@ -246,10 +250,10 @@ const ArtOfTeaching = () => {
 
                 <div className={styles.judges_card}>
                   <MentorCard
-                    name={"Deepu S Nath"}
-                    designation={"Managing Director at FAYA"}
+                    name={"Ann Andrews"}
+                    designation={"Product | Technology & Data Strategy | NYU & Columbia Fellow"}
                     image={
-                      "assets/artofteaching/deepu.jpeg"
+                      "assets/artofteaching/j2.jpeg"
                     }
                     linkedIn={"https://www.linkedin.com/in/deepusnath/"}
                   />
@@ -258,7 +262,7 @@ const ArtOfTeaching = () => {
                   <MentorCard
                     name={"Rajeev J Sebastian"}
                     designation={"CEO Alokin Software Private Limited"}
-                    image={"assets/artofteaching/j1.jpeg"}
+                    image={"assets/artofteaching/j3.png"}
                     linkedIn={"https://www.linkedin.com/in/rajeevjs"}
                   />
                 </div>
