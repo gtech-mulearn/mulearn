@@ -24,7 +24,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/careers" element={<Career />} />
-					<Route path="/news" element={<News />} />
+					{/* <Route path="/news" element={<News />} /> */}
 					<Route path="/calendar" element={<Calendar />} />
 					<Route path="/gallery" element={<Gallery />} />
 					<Route path="/announcements" element={<MuAnnouncements />} />
@@ -32,7 +32,7 @@ function App() {
 					<Route path="/company-partners" element={<Company />} />
 					<Route path="/community-partners" element={<CommunityPartner />} />
 					<Route path="/artofteaching" element={<ArtOfTeaching />} />
-					<Route path="/courses" element={<Courses />} />
+					{/* <Route path="/courses" element={<Courses />} /> */}
 					<Route path="/team">
 						<Route path="" element={<Teams />} />
 						<Route path="execom" element={<Execom />} />
