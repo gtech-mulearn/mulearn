@@ -33,7 +33,7 @@ const MentorCard = ({
 				<p className={styles.mentor_designation}>{designation}</p>
 				<p className={styles.mentor_source}>{source}</p>
 
-				<a href={clink} target="_blank" rel="noopener noreferrer"> <button className={styles.comingsoon}>Checkout Course</button></a>
+				{clink && <a href={clink} target="_blank" rel="noopener noreferrer"> <button className={styles.comingsoon}>Checkout Course</button></a>}
 				
 			</div>
 		</div>
