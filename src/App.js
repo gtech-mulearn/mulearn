@@ -16,35 +16,37 @@ import Execom from "./Pages/Teams/Execom/Execom";
 import Career from "./Pages/Career/Career";
 import LeaderBoard from "./Pages/LeaderBoard/leaderBoard";
 import Courses from "./Pages/Courses/Courses";
+import WikiSyllabus from "./Pages/WikiSyllabus/WikiSyllabus";
 
 function App() {
-	return (
-		<div className="App">
-			<Router>
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/careers" element={<Career />} />
-					{/* <Route path="/news" element={<News />} /> */}
-					<Route path="/calendar" element={<Calendar />} />
-					<Route path="/gallery" element={<Gallery />} />
-					<Route path="/announcements" element={<MuAnnouncements />} />
-					<Route path="/isr" element={<ISR />} />
-					<Route path="/company-partners" element={<Company />} />
-					<Route path="/community-partners" element={<CommunityPartner />} />
-					<Route path="/artofteaching" element={<ArtOfTeaching />} />
-					{/* <Route path="/courses" element={<Courses />} /> */}
-					<Route path="/team">
-						<Route path="" element={<Teams />} />
-						<Route path="execom" element={<Execom />} />
-						<Route path="yip" element={<YIP />} />
-						<Route path="community" element={<Community />} />
-					</Route>
+  return (
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/careers" element={<Career />} />
+          {/* <Route path="/news" element={<News />} /> */}
+          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/announcements" element={<MuAnnouncements />} />
+          <Route path="/isr" element={<ISR />} />
+          <Route path="/company-partners" element={<Company />} />
+          <Route path="/community-partners" element={<CommunityPartner />} />
+          <Route path="/artofteaching" element={<ArtOfTeaching />} />
+          {/* <Route path="/courses" element={<Courses />} /> */}
+          <Route path="/wikisyllabus" element={<WikiSyllabus />} />
+          <Route path="/team">
+            <Route path="" element={<Teams />} />
+            <Route path="execom" element={<Execom />} />
+            <Route path="yip" element={<YIP />} />
+            <Route path="community" element={<Community />} />
+          </Route>
           <Route path="/leaderboard" element={<LeaderBoard />} />
-					{/* <Route path="/community" element={ }/> */}
-				</Routes>
-			</Router>
-		</div>
-	);
+          {/* <Route path="/community" element={ }/> */}
+        </Routes>
+      </Router>
+    </div>
+  );
 }
 
 export default App;

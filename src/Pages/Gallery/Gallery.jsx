@@ -210,8 +210,7 @@ const Gallery = () => {
                 <span>µLearn</span> News Articles.
               </p>
               <p className={styles.sv_tagline}>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi
-                maxime ea quisquam sequi.impedit hic!
+               These are the various news paper cuttings and articles from various online media and press.
               </p>
             </div>
             <Box

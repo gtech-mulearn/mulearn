@@ -127,6 +127,9 @@
 
   .second_view {
     margin-top: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   .sv_texts {
@@ -142,7 +145,7 @@
 
   .sv_tagline {
     font-size: 1rem;
-    width: 90%;
+    width: 100%;
     font-family: "Poppins", sans-serif;
   }
 }
@@ -153,6 +156,50 @@
   }
 
   .partners_view {
+    grid-template-columns: 25% 25% 25% 25%;
+  }
+}
+
+/* Third View Styles */
+
+.third_view_container {
+  padding: 2rem;
+  padding-top: 0rem;
+  background-color: #ffffff;
+}
+
+.third_view_container {
+  margin-top: 2rem;
+}
+
+.contributors_cards{
+  display: grid;
+  row-gap: 1rem;
+  column-gap: 1rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  .third_view_container {
+    padding: 2rem;
+    max-width: 1300px;
+    margin: auto;
+  }
+
+  .third_view {
+    margin-top: 5rem;
+  }
+
+  .contributors_cards {
+    grid-template-columns: 30% 30% 30%;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .third_view_container {
+    padding: 0rem;
+  }
+
+  .contributors_cards {
     grid-template-columns: 25% 25% 25% 25%;
   }
 }
