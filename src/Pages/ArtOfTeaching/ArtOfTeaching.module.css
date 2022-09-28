@@ -415,6 +415,7 @@
     display: grid;
     column-gap: 1.5rem;
     grid-template-columns: 30% 30% 30%;
+    justify-content: space-between;
   }
 
   .jv_text {
@@ -516,6 +517,7 @@
     display: grid;
     grid-template-columns: 30% 30% 30%;
     column-gap: 2rem;
+    justify-content: space-between;
   }
   .videos_view_container {
     max-width: 1300px;

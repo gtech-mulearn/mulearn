@@ -89,8 +89,7 @@
 }
 
 .card_img {
-  width: 19rem;
-  height: 19rem;
+  width: 100%;
   object-fit: cover;
   border-radius: 5px;
   margin: 1rem 0rem;
@@ -176,19 +175,16 @@
   }
 
   .card_img {
-    width: 19rem;
     border-radius: 5px;
     margin: 1rem 0rem;
   }
 
-  .sv_cards {
-    width: 20rem;
-  }
 
   .sv_cards_container {
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 30% 30% 30%;
     row-gap: 1.5rem;
     columns: 1.5rem;
+    justify-content: space-between;
   }
 }

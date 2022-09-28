@@ -106,7 +106,6 @@
   .team_collection {
     max-width: 1300px;
     margin: auto;
-    margin-top: 5rem;
   }
 
   .team_heading,
@@ -149,5 +148,6 @@
   .team_heading,
   .team_list {
     margin: 0rem;
+    margin-bottom: 1.5rem;
   }
 }
