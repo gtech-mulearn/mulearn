@@ -14,6 +14,7 @@ import YIP from "./Pages/Teams/YIP/YIP";
 import Community from "./Pages/Teams/Community/Community";
 import Execom from "./Pages/Teams/Execom/Execom";
 import Career from "./Pages/Career/Career";
+import LeaderBoard from "./Pages/LeaderBoard/leaderBoard";
 
 function App() {
 	return (
@@ -36,6 +37,7 @@ function App() {
 						<Route path="yip" element={<YIP />} />
 						<Route path="community" element={<Community />} />
 					</Route>
+          <Route path="/leaderboard" element={<LeaderBoard />} />
 					{/* <Route path="/community" element={ }/> */}
 				</Routes>
 			</Router>

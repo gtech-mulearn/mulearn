@@ -34,7 +34,7 @@ const Home = () => {
           </div>
           <img
             className={styles.fv_image}
-            src="assets/home/illustration.webp"
+            src="/assets/home/illustration.webp"
             alt="illustration"
           />
         </div>
@@ -52,7 +52,7 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="assets/home/partnerkdisc.webp"
+                src="/assets/home/partnerkdisc.webp"
                 alt=""
                 className={styles.supporter}
               />
@@ -63,7 +63,7 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="assets/home/partnerksum.webp"
+                src="/assets/home/partnerksum.webp"
                 alt=""
                 className={styles.supporter}
               />
@@ -74,7 +74,7 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="assets/home/partners/asap.webp"
+                src="/assets/home/partners/asap.webp"
                 alt=""
                 className={styles.supporter}
               />
@@ -85,14 +85,14 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="assets/home/partners/ieee.webp"
+                src="/assets/home/partners/ieee.webp"
                 alt=""
                 className={styles.supporter}
               />
             </a>
             <a href="https://kba.ai/" target="_blank" rel="noopener noreferrer">
               <img
-                src="assets/home/partners/blockchain.webp"
+                src="/assets/home/partners/blockchain.webp"
                 alt=""
                 className={styles.supporter}
               />
@@ -103,7 +103,7 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="assets/home/partners/kites.webp"
+                src="/assets/home/partners/kites.webp"
                 alt=""
                 className={styles.supporter}
               />
@@ -114,7 +114,7 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="assets/home/partners/foxlab.webp"
+                src="/assets/home/partners/foxlab.webp"
                 alt=""
                 className={styles.supporter}
               />
@@ -126,7 +126,7 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="assets/home/partners/ether_logo.webp"
+                src="/assets/home/partners/ether_logo.webp"
                 alt="ether"
                 className={styles.supporter}
               />
@@ -137,7 +137,7 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="assets/home/partners/pygrammers.webp"
+                src="/assets/home/partners/pygrammers.webp"
                 alt=""
                 className={styles.supporter}
               />
@@ -148,7 +148,7 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="assets/home/partners/xtrudar.webp"
+                src="/assets/home/partners/xtrudar.webp"
                 alt=""
                 className={styles.supporter}
               />
@@ -159,7 +159,7 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="assets/home/partners/productpack.webp"
+                src="/assets/home/partners/productpack.webp"
                 alt="product pack"
                 className={styles.supporter}
               />
@@ -170,7 +170,7 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="assets/home/partners/kuttycoders.webp"
+                src="/assets/home/partners/kuttycoders.webp"
                 alt="Kutty Coders"
                 className={styles.supporter}
               />
@@ -182,7 +182,7 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="assets/home/partners/gdsc.webp"
+                src="/assets/home/partners/gdsc.webp"
                 alt="Google Developer Groups"
                 className={styles.gsupporter}
               />
@@ -193,7 +193,7 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="assets/home/partners/google_android.webp"
+                src="/assets/home/partners/google_android.webp"
                 alt="Google Android Educators"
                 className={styles.gsupporter}
               />
@@ -264,7 +264,7 @@ const Home = () => {
             <div className={styles.sv_points}>
               <div className={styles.sv_point}>
                 <img
-                  src="assets/home/involvement.webp"
+                  src="/assets/home/involvement.webp"
                   alt=""
                   className={styles.svp_image}
                 />
@@ -279,7 +279,7 @@ const Home = () => {
 
               <div className={styles.sv_point}>
                 <img
-                  src="assets/home/interactive.webp"
+                  src="/assets/home/interactive.webp"
                   alt=""
                   className={styles.svp_image}
                 />
@@ -294,7 +294,7 @@ const Home = () => {
 
               <div className={styles.sv_point}>
                 <img
-                  src="assets/home/innovation.webp"
+                  src="/assets/home/innovation.webp"
                   alt=""
                   className={styles.svp_image}
                 />
@@ -435,7 +435,7 @@ const Home = () => {
               </a>
             </div>
             <img
-              src="assets/home/join.webp"
+              src="/assets/home/join.webp"
               alt="join"
               className={styles.join_img}
             />
