@@ -136,6 +136,12 @@ const Navbar = () => {
                     </li>
 
                     <li>
+                      <a className="dropdown-item" href="/gallery">
+                        µ-gallery
+                      </a>
+                    </li>
+
+                    <li>
                       <a className="dropdown-item" href="/isr">
                         Inspiration Station
                       </a>
