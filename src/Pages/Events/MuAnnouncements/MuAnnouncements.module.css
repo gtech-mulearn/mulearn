@@ -3,8 +3,7 @@
   margin: 0;
 }
 
-.main_container
-{
+.main_container {
   background-color: #f9f9f9;
 }
 .first_view_container {
@@ -50,7 +49,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;;
+    justify-content: space-between;
   }
 
   .fv_img {

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
 .first__section {
   padding: 2rem;
@@ -38,7 +38,6 @@
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 2.5rem;
-
 }
 
 @media only screen and (min-width: 1000px) {

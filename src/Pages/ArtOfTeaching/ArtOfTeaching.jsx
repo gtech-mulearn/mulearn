@@ -226,9 +226,9 @@ const ArtOfTeaching = () => {
                 The Former <span> Judging Panel</span>
               </p>
               <p className={styles.jv_text}>
-                We do needed some really creative people with amazing
-                mentoring skills to judge all your submissions. Listed below
-                were our judges for the first edition of Art of Teaching.
+                We do needed some really creative people with amazing mentoring
+                skills to judge all your submissions. Listed below were our
+                judges for the first edition of Art of Teaching.
               </p>
               <div className={styles.judges_card_container}>
                 <div className={styles.judges_card}>
@@ -247,10 +247,10 @@ const ArtOfTeaching = () => {
                 <div className={styles.judges_card}>
                   <MentorCard
                     name={"Ann Andrews"}
-                    designation={"Product | Technology & Data Strategy | NYU & Columbia Fellow"}
-                    image={
-                      "assets/artofteaching/j2.jpeg"
+                    designation={
+                      "Product | Technology & Data Strategy | NYU & Columbia Fellow"
                     }
+                    image={"assets/artofteaching/j2.jpeg"}
                     linkedIn={"https://www.linkedin.com/in/deepusnath/"}
                   />
                 </div>

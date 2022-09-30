@@ -8,7 +8,6 @@
   border-radius: 10px;
 }
 
-
 .communityimg {
   width: 4rem;
   border-radius: 5px;
@@ -36,7 +35,6 @@
   width: 150px;
 }
 
-
 .community_source {
   opacity: 0.5;
   font-size: 0.9rem;
@@ -52,15 +50,13 @@
   font-size: 0.95rem;
 }
 
-.linkedinimg
-{
+.linkedinimg {
   height: 1.75rem;
   width: 1.75rem;
   margin-top: 0.5rem;
 }
 
-
-.textdiv{
+.textdiv {
   display: flex;
   flex-direction: column;
   align-items: flex-end;

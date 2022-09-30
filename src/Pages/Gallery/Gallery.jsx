@@ -41,9 +41,9 @@ const Gallery = () => {
               <p className={styles.fv_tagline}>
                 Welcome, to µLearn Gallery, Listed below are the key pictures of
                 various milestones accomplished by µLearn in the past one year.
-                Together, we learned and witnessed a lot of things and going back
-                and taking a look at those wonderful memories again is a always
-                something special!.{" "}
+                Together, we learned and witnessed a lot of things and going
+                back and taking a look at those wonderful memories again is a
+                always something special!.{" "}
               </p>
             </div>
             <div className={styles.fv_images}>
@@ -59,8 +59,9 @@ const Gallery = () => {
                 <span>µLearn</span> Community Event Gallery.
               </p>
               <p className={styles.sv_tagline}>
-                Beautiful memories often need to be documented, so that you could
-                revisit them. These are some of the pictures from our events.
+                Beautiful memories often need to be documented, so that you
+                could revisit them. These are some of the pictures from our
+                events.
               </p>
             </div>
             <Box
@@ -210,7 +211,8 @@ const Gallery = () => {
                 <span>µLearn</span> News Articles.
               </p>
               <p className={styles.sv_tagline}>
-               These are the various news paper cuttings and articles from various online media and press.
+                These are the various news paper cuttings and articles from
+                various online media and press.
               </p>
             </div>
             <Box

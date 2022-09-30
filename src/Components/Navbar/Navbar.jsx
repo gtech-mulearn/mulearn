@@ -54,11 +54,19 @@ const Navbar = () => {
                         Our Team
                       </a>
                     </li>
+
+                    <li>
+                      <a className="dropdown-item" href="/gallery">
+                        µ-gallery
+                      </a>
+                    </li>
+
                     <li>
                       <a className="dropdown-item" href="/company-partners">
                         Company Partners
                       </a>
                     </li>
+
                     <li>
                       <a className="dropdown-item" href="/community-partners">
                         Community Partners
@@ -132,12 +140,6 @@ const Navbar = () => {
                     <li>
                       <a className="dropdown-item" href="/announcements">
                         µ-Announcements
-                      </a>
-                    </li>
-
-                    <li>
-                      <a className="dropdown-item" href="/gallery">
-                        µ-gallery
                       </a>
                     </li>
 
