@@ -123,9 +123,7 @@ const ArtOfTeaching = () => {
               <div className={styles.topic_card}>
                 <p className={styles.card_heading}>Own Topic</p>
                 <p className={styles.card_description}>
-                  The participants can choose any topic which is related to
-                  emerging topics in their field and they can create video on
-                  that topic.Click view more button to see more details.
+                The participants can choose any topic which is related to emerging topics in their field, and they can create a video on that topic. Click the "view more" button to see more details.
                 </p>
                 <a
                   href="https://mulearn.notion.site/Art-of-Teaching-2-0-Lessons-of-Future-96eed1e8cf524d4c88d996e6fbed7fe7"
@@ -198,10 +196,9 @@ const ArtOfTeaching = () => {
                 Art of Teaching <span>First Edition</span>
               </p>
               <p className={styles.fr_tagline}>
-                The First Edition of Art of Teaching was a huge success with
-                more than 100 distinct entries,all of which used creative
-                teaching methods to simplify a topic for better understanding by
-                a student.
+              The first edition of the Art of Teaching was a huge success, 
+              with more than 100 distinct entries, 
+              all of which used creative teaching methods to simplify a topic for better understanding by a student.
               </p>
             </div>
             <div className={styles.right_side}>
@@ -226,9 +223,7 @@ const ArtOfTeaching = () => {
                 The Former <span> Judging Panel</span>
               </p>
               <p className={styles.jv_text}>
-                We do needed some really creative people with amazing
-                mentoring skills to judge all your submissions. Listed below
-                were our judges for the first edition of Art of Teaching.
+              To judge all of your submissions, we really required some incredibly imaginative individuals with outstanding mentoring abilities. The judges for the first Art of Teaching competition are listed below.
               </p>
               <div className={styles.judges_card_container}>
                 <div className={styles.judges_card}>
