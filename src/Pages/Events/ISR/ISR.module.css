@@ -136,7 +136,8 @@
 }
 
 .sv_cards {
-  margin-top: 2rem;
+  margin: 2rem auto 0;
+  max-width: 19rem;
 }
 
 @media only screen and (min-width: 768px) {
@@ -144,7 +145,9 @@
     display: grid;
     grid-template-columns: 50% 50%;
     row-gap: 1.5rem;
-    columns: 1.5rem;
+    /* columns: 1.5rem; */
+    justify-content: space-between;
+    justify-items: center;
   }
 }
 
@@ -181,9 +184,9 @@
     margin: 1rem 0rem;
   }
 
-  .sv_cards {
-    width: 20rem;
-  }
+  /* .sv_cards {
+    max-width: 20rem;
+  } */
 
   .sv_cards_container {
     display: grid;
