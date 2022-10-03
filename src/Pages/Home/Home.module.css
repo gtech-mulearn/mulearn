@@ -12,11 +12,9 @@ a {
   padding-top: 3rem;
   background-color: #f2f3f9;
   opacity: 1;
-  background-image: repeating-radial-gradient(
-      circle at 0 0,
+  background-image: repeating-radial-gradient(circle at 0 0,
       transparent 0,
-      #f2f3f9 15px
-    ),
+      #f2f3f9 15px),
     repeating-linear-gradient(#fdf1e755, #fdf1e7);
 }
 
@@ -202,6 +200,7 @@ a {
     margin: auto;
     text-align: center;
   }
+
   .sv_mainheading {
     font-size: 2.75rem;
     margin-bottom: 0.5rem;
@@ -293,6 +292,7 @@ a {
     max-width: 1300px;
     margin: auto;
   }
+
   .third_view {
     margin: 2rem 0;
     display: flex;
@@ -378,7 +378,7 @@ a {
   }
 
   .join_view {
-    margin: 5rem 2rem;
+    margin: 5rem 2rem 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -452,7 +452,7 @@ a {
   }
 
   .count_view {
-    margin: 8rem 2rem;
+    margin: 5rem 2rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -573,6 +573,6 @@ a {
 
 @media only screen and (min-width: 1000px) {
   .chart_view {
-    margin: 4rem 0rem;
+    margin: 3rem 0rem;
   }
 }

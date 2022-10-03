@@ -3,10 +3,10 @@
   margin: 0;
 }
 
-.main_container
-{
+.main_container {
   background-color: #f9f9f9;
 }
+
 .first_view_container {
   padding: 2rem;
   background-color: #f9f9f9;
@@ -44,13 +44,15 @@
   .first_view_container {
     padding-top: 3rem;
   }
+
   .first_view {
     max-width: 1300px;
     margin: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;;
+    justify-content: space-between;
+    ;
   }
 
   .fv_img {
@@ -126,9 +128,9 @@
     margin: auto;
   }
 
-  .second_view {
+  /* .second_view {
     margin-top: 5rem;
-  }
+  } */
 
   .sv_texts {
     margin-bottom: 2rem;
