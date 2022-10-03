@@ -150,12 +150,7 @@ const ArtOfTeaching = () => {
                         The participants have to learn the Android Development
                         with Kotlin course and they have to create a 3 minute
                         video summary of the course.
-                        <br />
-                        <br />
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Fugiat earum quibusdam animi esse possimus nemo
-                        quo quos quia, assumenda ex laborum repellendus fuga
-                        vitae! Modi dolores beatae odio dolorem tempora!
+                        
                       </p>
                     </div>
                   </div>
