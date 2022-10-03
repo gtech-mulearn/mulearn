@@ -10,14 +10,13 @@ import fvimg from "./assets/fvimg.gif";
 
 import MentorCard from "../../Components/MentorCard/MentorCard";
 
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/navigation";
+import "swiper/css/pagination";
 
-import { Navigation } from "swiper";
+import { Pagination } from "swiper";
 
 const ArtOfTeaching = () => {
   const data = {
@@ -136,8 +135,7 @@ const ArtOfTeaching = () => {
 
             <div className={styles.cards_container_desktop}>
               <Swiper
-                navigation={true}
-                modules={[Navigation]}
+                pagination={true} modules={[Pagination]}
                 className={styles.swiper}
               >
                 <SwiperSlide>
