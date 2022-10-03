@@ -84,9 +84,9 @@
   background-color: #ffffff;
 }
 
-.second_view {
+/* .second_view {
   margin-top: 2rem;
-}
+} */
 
 .sv_heading {
   font-size: 1.75rem;
@@ -125,9 +125,9 @@
     grid-template-columns: 30% 30% 30%;
   }
 
-  .second_view {
+  /* .second_view {
     margin-top: 5rem;
-  }
+  } */
 
   .sv_texts {
     margin-bottom: 2rem;
