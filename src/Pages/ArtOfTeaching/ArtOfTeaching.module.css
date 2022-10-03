@@ -124,7 +124,6 @@
 
 .second_view {
   margin-top: 2rem;
-  padding-bottom: 1rem;
 }
 
 .sv_heading {
@@ -161,7 +160,7 @@
 
 .card_heading {
   font-family: "Noto Sans", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 500;
   color: #404040;
   width: 80%;
@@ -216,7 +215,7 @@
 
   .card_heading {
     width: 80%;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 
   .topic_card {
@@ -284,7 +283,6 @@
 .third_view_container {
   padding: 2rem;
   background-color: #ffffff;
-  padding-top: 1rem;
 }
 
 .third_view {

@@ -106,7 +106,7 @@ const ArtOfTeaching = () => {
                   className={styles.detailsbtn}
                   type="submit"
                 >
-                  Register Now!
+                  Pre-Register Now!
                 </button>
               </a>
             </div>
@@ -204,7 +204,7 @@ const ArtOfTeaching = () => {
             <div className={styles.cards_container_mobile}>
               <div className={styles.topic_card}>
                 <p className={styles.card_heading}>
-                  Android Development with Kotlin by Google.
+                  <span>Android Development with Kotlin</span> by Google.
                 </p>
                 <p className={styles.card_description}>
                   The participants have to learn the Android Development with
@@ -214,7 +214,7 @@ const ArtOfTeaching = () => {
               </div>
 
               <div className={styles.topic_card}>
-                <p className={styles.card_heading}>Lessons of Future</p>
+                <p className={styles.card_heading}><span>Lessons of</span> Future</p>
                 <p className={styles.card_description}>
                   The participants can choose any topic which is related to
                   emerging topics in their field and they can create video on
