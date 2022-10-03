@@ -70,13 +70,13 @@ const ArtOfTeaching = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {/* <button
+                <button
                   style={{ fontSize: "1rem" }}
                   className={styles.detailsbtn}
                   type="submit"
                 >
                   Register Now!
-                </button> */}
+                </button>
               </a>
             </div>
             <div className={styles.fv_images}>
@@ -121,7 +121,7 @@ const ArtOfTeaching = () => {
               </div>
 
               <div className={styles.topic_card}>
-                <p className={styles.card_heading}>Own Topic</p>
+                <p className={styles.card_heading}>Lessons of Future</p>
                 <p className={styles.card_description}>
                   The participants can choose any topic which is related to
                   emerging topics in their field and they can create video on
