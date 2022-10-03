@@ -10,6 +10,15 @@ import fvimg from "./assets/fvimg.gif";
 
 import MentorCard from "../../Components/MentorCard/MentorCard";
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+
+import { Navigation } from "swiper";
+
 const ArtOfTeaching = () => {
   const data = {
     title: "Frequently Asked Questions",
@@ -118,11 +127,81 @@ const ArtOfTeaching = () => {
                 Teaching is an art and teachers are the artists, calling all the
                 artists to present their masterpieces of teaching to the world.
                 <br />
-                <br />Art of Teaching is a 3-minute video contest, where the teachers can send in a video of them teaching any of the following topic in a creative manner.
+                <br />
+                Art of Teaching is a 3-minute video contest, where the teachers
+                can send in a video of them teaching any of the following topic
+                in a creative manner.
               </p>
             </div>
 
-            <div className={styles.cards_container}>
+            <div className={styles.cards_container_desktop}>
+              <Swiper
+                navigation={true}
+                modules={[Navigation]}
+                className={styles.swiper}
+              >
+                <SwiperSlide>
+                  <div className={styles.topic_card_android}>
+                    <div className={styles.topic_card}>
+                      <p className={styles.card_heading}>
+                        <span>Android Development with Kotlin</span> by Google.
+                      </p>
+                      <p className={styles.card_description}>
+                        The participants have to learn the Android Development
+                        with Kotlin course and they have to create a 3 minute
+                        video summary of the course.
+                        <br />
+                        <br />
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Fugiat earum quibusdam animi esse possimus nemo
+                        quo quos quia, assumenda ex laborum repellendus fuga
+                        vitae! Modi dolores beatae odio dolorem tempora!
+                      </p>
+                    </div>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className={styles.topic_card}>
+                    <p className={styles.card_heading}><span>Lessons of</span> Future</p>
+                    <p className={styles.card_description}>
+                      The participants can choose any topic which is related to
+                      emerging topics in their field and they can create video
+                      on that topic. Some sample topics are given below.
+                    </p>
+                    <ul className={styles.examples}>
+                      <li>
+                        <span>Civil Engineering</span> : BIM, Smart city
+                        planning. etc..
+                      </li>
+                      <li>
+                        <span>Mechanical Engineering</span>: 3D Printing,
+                        Friction Stir Welding etc..
+                      </li>
+                      <li>
+                        <span>Electronics Engineering</span>: IoT, Quantum
+                        Computing, Bioelectronics etc..
+                      </li>
+                      <li>
+                        <span>Electrical Engineering</span>: Battery Technology,
+                        Fast Charging, wireless charging, smart grid etc..
+                      </li>
+                      <li>
+                        <span>Chemical Engineering</span>: Nanomaterials, Water
+                        Purification etc ..
+                      </li>
+                      <li>
+                        <span>Arts & Sciences</span>: Impact of Artificial
+                        Intelligence and Machine Learning in their respective
+                        fields like driverless tractor in Agriculture to
+                        Election Campaign strategies for Social Media. etc..
+                      </li>
+                    </ul>
+                  </div>
+                </SwiperSlide>
+              </Swiper>
+            </div>
+
+            <div className={styles.cards_container_mobile}>
               <div className={styles.topic_card}>
                 <p className={styles.card_heading}>
                   Android Development with Kotlin by Google.
@@ -132,15 +211,6 @@ const ArtOfTeaching = () => {
                   Kotlin course and they have to create a 3 minute video summary
                   of the course.
                 </p>
-                <a
-                  href="https://mulearn.notion.site/Art-of-Teaching-2-0-Lessons-of-Future-96eed1e8cf524d4c88d996e6fbed7fe7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button className={styles.detailsbtn} type="submit">
-                    View More Details
-                  </button>
-                </a>
               </div>
 
               <div className={styles.topic_card}>
@@ -148,71 +218,40 @@ const ArtOfTeaching = () => {
                 <p className={styles.card_description}>
                   The participants can choose any topic which is related to
                   emerging topics in their field and they can create video on
-                  that topic.Click view more button to see more details.
+                  that topic. Some sample topics are given below.
                 </p>
-                <a
-                  href="https://mulearn.notion.site/Art-of-Teaching-2-0-Lessons-of-Future-96eed1e8cf524d4c88d996e6fbed7fe7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button className={styles.detailsbtn} type="submit">
-                    View More Details
-                  </button>
-                </a>
+                <ul className={styles.examples}>
+                  <li>
+                    <span>Civil Engineering</span> : BIM, Smart city planning.
+                    etc..
+                  </li>
+                  <li>
+                    <span>Mechanical Engineering</span>: 3D Printing, Friction
+                    Stir Welding etc..
+                  </li>
+                  <li>
+                    <span>Electronics Engineering</span>: IoT, Quantum
+                    Computing, Bioelectronics etc..
+                  </li>
+                  <li>
+                    <span>Electrical Engineering</span>: Battery Technology,
+                    Fast Charging, wireless charging, smart grid etc..
+                  </li>
+                  <li>
+                    <span>Chemical Engineering</span>: Nanomaterials, Water
+                    Purification etc ..
+                  </li>
+                  <li>
+                    <span>Arts & Sciences</span>: Impact of Artificial
+                    Intelligence and Machine Learning in their respective fields
+                    like driverless tractor in Agriculture to Election Campaign
+                    strategies for Social Media. etc..
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
-
-        {/* <div className={styles.third_view_container}>
-          <div className={styles.third_view}>
-            <div className={styles.tv_texts}>
-              <div className={styles.tv_text}>
-                <p className={styles.tv_heading}>
-                  <span>Contest</span> Guidelines
-                </p>
-                <ul className={styles.tv_lists}>
-                  <li className={styles.tv_list_item}>
-                    The maximum length of the video can be 3 minutes.
-                  </li>
-                  <li className={styles.tv_list_item}>
-                    It is not necessary that you send a 'lecture' video, you can
-                    also send in a screen recording of you teaching a concept in
-                    a creative manner.
-                  </li>
-                  <li className={styles.tv_list_item}>
-                    The submission closes on 30th September midnight
-                  </li>
-                </ul>
-              </div>
-              <div className={styles.tv_text}>
-                <p className={styles.tv_heading}>
-                  <span>Registration</span> Process
-                </p>
-                <ul className={styles.tv_lists}>
-                  <li className={styles.tv_list_item}>
-                    Register using airtable form
-                  </li>
-                  <li className={styles.tv_list_item}>
-                    Upon registration you'll receive a ticket of participation.
-                    Which ensures your slot in the contest.
-                  </li>
-                  <li className={styles.tv_list_item}>
-                    You'll then receive another link to submit your video within
-                    a day.
-                  </li>
-                  <li className={styles.tv_list_item}>
-                    When submitting the video you are supposed to upload the
-                    ticket of participation.
-                  </li>
-                  <li className={styles.tv_list_item}>
-                    You'll then receive an acknowledgement of submission.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div> */}
 
         <div className={styles.fourth_view_container}>
           <div className={styles.fourth_view}>

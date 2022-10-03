@@ -179,6 +179,28 @@
   color: #404040;
 }
 
+.cards_container_desktop {
+  display: none;
+}
+
+.cards_container_mobile {
+  display: block;
+}
+
+.examples li {
+  margin: 0.5rem 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+}
+
+.examples span {
+  font-weight: 600;
+}
+
+.card_heading span {
+  color: #f78c40;
+}
+
 @media only screen and (min-width: 1000px) {
   .second_view_container {
     max-width: 1300px;
@@ -199,6 +221,7 @@
 
   .topic_card {
     max-width: 500px;
+    margin: 0 75px;
   }
 
   .second_view {
@@ -211,6 +234,19 @@
 
   .theme {
     font-size: 1.4rem;
+  }
+
+  .swiper {
+    width: 600px;
+    /* height: 600px; */
+  }
+
+  .cards_container_desktop {
+    display: block;
+  }
+
+  .cards_container_mobile {
+    display: none;
   }
 
   .sv_heading {
@@ -229,6 +265,10 @@
   .card_description {
     width: 90%;
     font-size: 1rem;
+  }
+
+  .topic_card_android {
+    margin-top: 4rem;
   }
 }
 
