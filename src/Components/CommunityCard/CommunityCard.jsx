@@ -9,7 +9,9 @@ const CommunityCard = ({ cname, cimage, clink, interest }) => {
           <div className={styles.box}>
             <img src={cimage} alt="" className={styles.communityimg} />
 
-            {cname && <span className={styles.community_interest}>{cname}</span>}
+            {cname && (
+              <span className={styles.community_interest}>{cname}</span>
+            )}
           </div>
         </a>
       </div>

@@ -37,5 +37,4 @@ const college100k = [
   },
 ];
 
-
 export default college100k;

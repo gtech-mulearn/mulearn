@@ -10,9 +10,8 @@ import kdisc from "../assets/partners/kdisc.png";
 import ether_logo from "../assets/partners/ether_logo.png";
 import productpack from "../assets/partners/productpack.png";
 import kuttycoders from "../assets/partners/kuttycoders.jpeg";
-import google_android from "../assets/partners/google_android.png"
-import gdsc from "../assets/partners/gdsc.png"
-
+import google_android from "../assets/partners/google_android.png";
+import gdsc from "../assets/partners/gdsc.png";
 
 const partners = [
   {

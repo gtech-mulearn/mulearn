@@ -172,7 +172,7 @@
   margin-top: 2rem;
 }
 
-.contributors_cards{
+.contributors_cards {
   display: grid;
   row-gap: 1rem;
   column-gap: 1rem;

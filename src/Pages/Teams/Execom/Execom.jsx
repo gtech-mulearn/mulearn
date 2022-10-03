@@ -18,7 +18,7 @@ const Execom = () => {
               </p>
               <p className={styles.fv_tagline}>
                 The Executive Members are those who serve as the community's
-                skeleton and propel it forward from the rear
+                skeleton and propel it forward from the rear.
               </p>
             </div>
           </div>

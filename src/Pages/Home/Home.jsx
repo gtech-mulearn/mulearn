@@ -450,7 +450,15 @@ const Home = () => {
               Working Ecosystem of <span>µLearn.</span>
             </p>
             <p className={styles.cv_text}>
-            The Academia and Technology Focus Group (ATFG) framework was created and maintained to assist students in becoming industry ready. µLearn, associated with this ATFG framework,  is a synergic philosophy of education with a culture of mutual learning through micro peer groups. This ecosystem, harbouring a network of participants such as universities, online communities, nodal agencies and the industry, integrates its participants and their contributions into a holistic system, providing mutual benefits to all.
+              The Academia and Technology Focus Group (ATFG) framework was
+              created and maintained to assist students in becoming industry
+              ready. µLearn, associated with this ATFG framework, is a synergic
+              philosophy of education with a culture of mutual learning through
+              micro peer groups. This ecosystem, harbouring a network of
+              participants such as universities, online communities, nodal
+              agencies and the industry, integrates its participants and their
+              contributions into a holistic system, providing mutual benefits to
+              all.
             </p>
           </div>
           <div>

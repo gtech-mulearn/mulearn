@@ -35,12 +35,13 @@ const Teams = () => {
         <h2 className={styles.team_heading}>
           View The <span>Team Members</span>
         </h2>
+        <div></div>
         <div className={styles.team_list}>
           <span className={styles.team_card}>
             <h5>Executive Committee</h5>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              The Executive Members are those who serve as the community's
+              skeleton and propel it forward from the rear.
             </p>
             <Link to="/team/execom">
               <button className={styles.join_button}>View</button>
@@ -49,8 +50,8 @@ const Teams = () => {
           <span className={styles.team_card}>
             <h5>YIP Team</h5>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Here are the members of the crew and interns who helped to make
+              the Yip a big success.
             </p>
             <Link to="/team/yip">
               <button className={styles.join_button}>View</button>
@@ -59,8 +60,9 @@ const Teams = () => {
           <span className={styles.team_card}>
             <h5>Community Team</h5>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              The Community Team was the one who brought the achievements at the
+              most; it links industry and academia and forges connections
+              between students, faculty, mentors, and others.
             </p>
             <Link to="/team/community">
               <button className={styles.join_button}>View</button>

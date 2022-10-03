@@ -18,7 +18,8 @@ const Courses = () => {
                 <span>µLearn Courses</span>
               </p>
               <p className={styles.fv_tagline}>
-                Here we have listed down a set of free courses which you can use to practice and upskill yourself.
+                Here we have listed down a set of free courses which you can use
+                to practice and upskill yourself.
               </p>
             </div>
             <div className={styles.fv_images}>
@@ -33,7 +34,6 @@ const Courses = () => {
 
         <div className={styles.second_view_container}>
           <div className={styles.second_view}>
-            
             <div className={styles.courses_container}>
               <div className={styles.course}>
                 {courses.map((course) => {
