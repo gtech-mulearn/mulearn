@@ -115,9 +115,10 @@ const ArtOfTeaching = () => {
               </p>
 
               <p className={styles.sv_tagline}>
-                A 3-minute video contest, where the teachers can send in a video
-                of them teaching any of the following topic in a creative
-                manner.
+                Teaching is an art and teachers are the artists, calling all the
+                artists to present their masterpieces of teaching to the world.
+                <br />
+                <br />Art of Teaching is a 3-minute video contest, where the teachers can send in a video of them teaching any of the following topic in a creative manner.
               </p>
             </div>
 

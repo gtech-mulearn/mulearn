@@ -153,11 +153,6 @@
 
 .topic_card {
   margin: 2rem 0rem;
-  box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.05);
-  -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.05);
-  padding: 20px 20px;
-  border-radius: 10px;
 }
 
 .topic_heading {
@@ -168,7 +163,8 @@
   font-family: "Noto Sans", sans-serif;
   font-size: 1.2rem;
   font-weight: 500;
-  color: #f78c40;
+  color: #404040;
+  width: 80%;
 }
 
 .card_description {
@@ -228,6 +224,11 @@
     width: 80%;
     margin-top: 0.5rem;
     font-family: "Poppins", sans-serif;
+  }
+
+  .card_description {
+    width: 90%;
+    font-size: 1rem;
   }
 }
 
