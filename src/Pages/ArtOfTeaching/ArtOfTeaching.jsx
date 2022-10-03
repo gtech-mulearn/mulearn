@@ -59,25 +59,47 @@ const ArtOfTeaching = () => {
               <p className={styles.fv_heading}>
                 <span>µLearn Art</span> of Teaching 2.0
               </p>
+
               <p className={styles.fv_tagline}>
                 µLearn is back with Art of Teaching to honor teachers who are
                 the one who mould our future generation. GTech µLearn is
                 partnering with Google developers, KTU and Kerala University for
                 Art of Teaching 2.0.
               </p>
-              <a
-                href="https://airtable.com/shrC6h0CFSAZLaZUk"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button
-                  style={{ fontSize: "1rem" }}
-                  className={styles.detailsbtn}
-                  type="submit"
+              <div className={styles.event_partners}>
+                <a
+                  href="https://airtable.com/shrC6h0CFSAZLaZUk"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  Register Now!
-                </button>
-              </a>
+                  <button
+                    style={{ fontSize: "1rem" }}
+                    className={styles.detailsbtn}
+                    type="submit"
+                  >
+                    Register Now!
+                  </button>
+                </a>
+                <div className={styles.partners}>
+                  <p className={styles.event_partners_heading}>
+                    Event Partners
+                  </p>
+                  <div className={styles.partner}>
+                    <img
+                      src="assets/artofteaching/ktu.png"
+                      alt=""
+                      className={styles.partner_image}
+                    />
+                  </div>
+                  <div className={styles.partner}>
+                    <img
+                      src="assets/artofteaching/google_android.webp"
+                      alt=""
+                      className={styles.partner_image}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
             <div className={styles.fv_images}>
               <img src={fvimg} alt="" className={styles.fv_img} />
