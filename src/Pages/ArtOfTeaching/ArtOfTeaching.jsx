@@ -15,8 +15,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 
-import { Pagination } from "swiper";
+import { Pagination, Navigation } from "swiper";
 
 const ArtOfTeaching = () => {
   const data = {
@@ -135,7 +136,7 @@ const ArtOfTeaching = () => {
 
             <div className={styles.cards_container_desktop}>
               <Swiper
-                pagination={true} modules={[Pagination]}
+                pagination={true} navigation={true} modules={[Pagination, Navigation]}
                 className={styles.swiper}
               >
                 <SwiperSlide>
