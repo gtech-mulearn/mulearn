@@ -67,19 +67,6 @@ const ArtOfTeaching = () => {
                 Art of Teaching 2.0.
               </p>
               <div className={styles.event_partners}>
-                <a
-                  href="https://airtable.com/shrC6h0CFSAZLaZUk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button
-                    style={{ fontSize: "1rem" }}
-                    className={styles.detailsbtn}
-                    type="submit"
-                  >
-                    Register Now!
-                  </button>
-                </a>
                 <div className={styles.partners}>
                   <p className={styles.event_partners_heading}>
                     Event Partners
@@ -100,6 +87,19 @@ const ArtOfTeaching = () => {
                   </div>
                 </div>
               </div>
+              <a
+                href="https://airtable.com/shrC6h0CFSAZLaZUk"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button
+                  style={{ fontSize: "1rem" }}
+                  className={styles.detailsbtn}
+                  type="submit"
+                >
+                  Register Now!
+                </button>
+              </a>
             </div>
             <div className={styles.fv_images}>
               <img src={fvimg} alt="" className={styles.fv_img} />

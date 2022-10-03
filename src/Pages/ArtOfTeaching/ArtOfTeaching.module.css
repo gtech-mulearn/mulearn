@@ -71,19 +71,9 @@
     padding: 3rem 3rem;
   }
 
-  .detailsbtn {
-    margin-top: 0rem;
-  }
-
-  .event_partners {
-    display: flex;
-    margin-top: 0.75rem;
-    align-items: center;
-  }
-
   .partners {
-    display: flex;
     justify-content: left;
+    align-self: left;
   }
 
   .first_view {
@@ -99,7 +89,7 @@
   .fv_img {
     display: block;
     margin: auto;
-    width: 30rem;
+    width: 28rem;
   }
 
   .fv_texts {
