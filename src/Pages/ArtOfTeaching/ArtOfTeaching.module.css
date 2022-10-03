@@ -271,9 +271,9 @@
 
 /* Fourth Section Styles */
 .fourth_view_container {
-  padding: 2rem;
+  padding: 0 2rem 2rem;
   background-color: #ffffff;
-  padding-top: 2rem;
+  /* padding-top: 2rem; */
 }
 
 /* .fourth_view {
