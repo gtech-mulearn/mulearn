@@ -3,6 +3,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 
 import styles from "./ArtOfTeaching.module.css";
+import "./ArtOfTeaching.scss";
 
 import Faq from "react-faq-component";
 
@@ -136,8 +137,10 @@ const ArtOfTeaching = () => {
 
             <div className={styles.cards_container_desktop}>
               <Swiper
-                pagination={true} navigation={true} modules={[Pagination, Navigation]}
-                className={styles.swiper}
+                pagination={true}
+                navigation={true}
+                modules={[Pagination, Navigation]}
+                className="swiper"
               >
                 <SwiperSlide>
                   <div className={styles.topic_card_android}>
@@ -149,14 +152,15 @@ const ArtOfTeaching = () => {
                         The participants have to learn the Android Development
                         with Kotlin course and they have to create a 3 minute
                         video summary of the course.
-                        
                       </p>
                     </div>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
                   <div className={styles.topic_card}>
-                    <p className={styles.card_heading}><span>Lessons of</span> Future</p>
+                    <p className={styles.card_heading}>
+                      <span>Lessons of</span> Future
+                    </p>
                     <p className={styles.card_description}>
                       The participants can choose any topic which is related to
                       emerging topics in their field and they can create video
@@ -208,7 +212,9 @@ const ArtOfTeaching = () => {
               </div>
 
               <div className={styles.topic_card}>
-                <p className={styles.card_heading}><span>Lessons of</span> Future</p>
+                <p className={styles.card_heading}>
+                  <span>Lessons of</span> Future
+                </p>
                 <p className={styles.card_description}>
                   The participants can choose any topic which is related to
                   emerging topics in their field and they can create video on
