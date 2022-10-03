@@ -33,7 +33,7 @@ const ArtOfTeaching = () => {
           "The maximum length of the video can be 3 minutes. It is not necessary that you send a 'lecture' video, you can also send in a screen recording of you teaching a concept in a creative manner.",
       },
       {
-        title: "What is the Registration Process",
+        title: "What is the Registration Process?",
         content:
           "Register using the airtable form given above. Upon registration you'll receive a ticket of participation. Which ensures your slot in the contest. You'll then receive another link to submit your video within a day. When submitting the video you are supposed to upload the ticket of participation. You will then receive an acknowledgement of submission.",
       },
