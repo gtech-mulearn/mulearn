@@ -38,7 +38,7 @@
 
 @media only screen and (min-width: 1000px) {
   .first_view_container {
-    padding: 3rem;
+    padding: 0 3rem;
   }
 
   .first_view {
@@ -48,8 +48,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
+    /* margin-top: 2.5rem; */
+    /* margin-bottom: 2.5rem; */
   }
 
   .fv_img {
@@ -84,9 +84,9 @@
   background-color: #ffffff;
 }
 
-.second_view {
+/* .second_view {
   margin-top: 2rem;
-}
+} */
 
 .sv_heading {
   font-size: 1.75rem;
@@ -125,9 +125,9 @@
     grid-template-columns: 30% 30% 30%;
   }
 
-  .second_view {
+  /* .second_view {
     margin-top: 5rem;
-  }
+  } */
 
   .sv_texts {
     margin-bottom: 2rem;

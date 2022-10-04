@@ -38,7 +38,7 @@
 
 @media only screen and (min-width: 1000px) {
   .first_view_container {
-    padding: 3rem 3rem;
+    padding: 3rem 3rem 0;
   }
 
   .first_view {
@@ -85,7 +85,7 @@
 }
 
 .second_view {
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
   padding-bottom: 1rem;
 }
 
@@ -104,7 +104,7 @@
   font-family: "Noto Sans", sans-serif;
 }
 
-.sv_heading > span {
+.sv_heading>span {
   color: #f78c40;
 }
 
@@ -167,9 +167,9 @@
     max-width: 500px;
   }
 
-  .second_view {
+  /* .second_view {
     margin-top: 5rem;
-  }
+  } */
 
   .sv_texts {
     width: 50%;
@@ -237,6 +237,7 @@
     max-width: 1300px;
     margin: auto;
   }
+
   .third_view {
     display: flex;
     flex-direction: row;
@@ -270,14 +271,14 @@
 
 /* Fourth Section Styles */
 .fourth_view_container {
-  padding: 2rem;
+  padding: 0 2rem 2rem;
   background-color: #ffffff;
-  padding-top: 2rem;
+  /* padding-top: 2rem; */
 }
 
-.fourth_view {
+/* .fourth_view {
   margin-top: 2rem;
-}
+} */
 
 .fr_heading {
   font-family: "Noto Sans", sans-serif;
@@ -316,6 +317,7 @@
   .desktop {
     display: block;
   }
+
   .mobile {
     display: none;
   }
@@ -325,8 +327,9 @@
   .fourth_view_container {
     max-width: 1300px;
     margin: auto;
-    margin-top: 8rem;
+    /* margin-top: 8rem; */
   }
+
   .fourth_view {
     display: flex;
     flex-direction: row;
@@ -372,7 +375,7 @@
     margin: auto;
     padding: 2rem;
     background-color: #ffffff;
-    padding-top: 6rem;
+    /* padding-top: 6rem; */
   }
 }
 
@@ -408,13 +411,14 @@
   .judge_view_container {
     max-width: 1300px;
     margin: auto;
-    margin-top: 8rem;
+    /* margin-top: 8rem; */
   }
 
   .judges_card_container {
     display: grid;
     column-gap: 1.5rem;
     grid-template-columns: 30% 30% 30%;
+    justify-content: space-between;
   }
 
   .jv_text {
@@ -487,6 +491,7 @@
 .vv_heading span {
   color: #f78c40;
 }
+
 .videos_container {
   margin-top: 1rem;
 }
@@ -497,7 +502,8 @@
   border-radius: 8px;
   margin: 2rem 0;
   overflow: hidden;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  padding-top: 56.25%;
+  /* 16:9 Aspect Ratio */
 }
 
 .ytvideo {
@@ -516,11 +522,13 @@
     display: grid;
     grid-template-columns: 30% 30% 30%;
     column-gap: 2rem;
+    justify-content: space-between;
   }
+
   .videos_view_container {
     max-width: 1300px;
     margin: auto;
-    margin-top: 8rem;
+    /* margin-top: 8rem; */
   }
 
   .vv_tagline {
