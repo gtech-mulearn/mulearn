@@ -113,7 +113,7 @@ a {
 
 .gsupporter {
   margin: 0.5rem 0.5rem;
-  width: 3.75rem;
+  width: 3.25rem;
 }
 
 .supporter_heading span {
@@ -637,7 +637,8 @@ a {
 }
 
 .testmonial_card {
-  text-align: center;
+  text-align: left;
+  margin-top: 1rem;
 }
 
 .tperson_img {
@@ -654,7 +655,7 @@ a {
 
 .tperson_designation {
   font-size: 1.1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.25rem;
 }
 
 @media only screen and (min-width: 1000px) {
@@ -662,15 +663,23 @@ a {
     max-width: 1300px;
     margin: auto;
   }
-  
+
   .testimonial_view {
     margin: 2rem 0;
     display: flex;
     flex-direction: column;
   }
 
+  .testmonial_card {
+    margin-top: 0rem;
+    margin-right: 5rem;
+    text-align: left;
+  }
+
   .testmonial_card_container {
     margin-top: 3rem;
+    display: flex;
+    flex-direction: row;
   }
 
   .test_heading {

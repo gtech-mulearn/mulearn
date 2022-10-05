@@ -1,20 +1,10 @@
 import React from "react";
 import styles from "../Home/Home.module.css";
-import "./Home.scss";
 
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 
 import CountUp from "react-countup";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-
-import { Pagination, Navigation } from "swiper";
 
 const Home = () => {
   return (
@@ -324,22 +314,6 @@ const Home = () => {
         <div className={styles.countview_container}>
           <div className={styles.count_view}>
             <div className={styles.left_side}>
-              {/* <div className={styles.iframevideodesk}>
-                <iframe
-                  src="https://drive.google.com/file/d/1jlJ1BCSZ8yGQkcGcSCqsMZkd5sjlXOY8/preview"
-                  width="420"
-                  height="240"
-                  allow="autoplay"
-                ></iframe>
-              </div> */}
-              {/* <div className={styles.iframevideomob}>
-                <iframe
-                  src="https://drive.google.com/file/d/1jlJ1BCSZ8yGQkcGcSCqsMZkd5sjlXOY8/preview"
-                  width="320"
-                  height="220"
-                  allow="autoplay"
-                ></iframe>
-              </div> */}
               <p className={styles.cv_heading}>
                 {" "}
                 The <span>Impact</span> of <span>µLearn.</span>
@@ -493,53 +467,62 @@ const Home = () => {
             </p>
           </div>
           <div className={styles.testmonial_card_container}>
-            <Swiper
-              pagination={true}
-              navigation={true}
-              modules={[Pagination, Navigation]}
-              className="swiper"
-            >
-              <SwiperSlide>
-                <div className={styles.testmonial_card}>
-                  <div className={styles.tcard_heading}>
-                    <img
-                      src="https://via.placeholder.com/150"
-                      alt=""
-                      className={styles.tperson_img}
-                    />
-                    <p className={styles.tperson_name}>Aswin Asok</p>
-                    <p className={styles.tperson_designation}>
-                      FrontEnd Developer and Designer
-                    </p>
-                  </div>
-                  <p className={styles.tcard_content}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolor ullam beatae suscipit odit! Esse laborum architecto,
-                    fugit nulla doloribus numquam.
-                  </p>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className={styles.testmonial_card}>
-                  <div className={styles.tcard_heading}>
-                    <img
-                      src="https://via.placeholder.com/150"
-                      alt=""
-                      className={styles.tperson_img}
-                    />
-                    <p className={styles.tperson_name}>Aswin Asok</p>
-                    <p className={styles.tperson_designation}>
-                      FrontEnd Developer and Designer
-                    </p>
-                  </div>
-                  <p className={styles.tcard_content}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolor ullam beatae suscipit odit! Esse laborum architecto,
-                    fugit nulla doloribus numquam.
-                  </p>
-                </div>
-              </SwiperSlide>
-            </Swiper>
+            <div className={styles.testmonial_card}>
+              <div className={styles.tcard_heading}>
+                <img
+                  src="https://via.placeholder.com/150"
+                  alt=""
+                  className={styles.tperson_img}
+                />
+                <p className={styles.tperson_name}>Aswin Asok</p>
+                <p className={styles.tperson_designation}>
+                  FrontEnd Developer and Designer
+                </p>
+              </div>
+              <p className={styles.tcard_content}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
+                ullam beatae suscipit odit! Esse laborum architecto, fugit nulla
+                doloribus numquam.
+              </p>
+            </div>
+
+            <div className={styles.testmonial_card}>
+              <div className={styles.tcard_heading}>
+                <img
+                  src="https://via.placeholder.com/150"
+                  alt=""
+                  className={styles.tperson_img}
+                />
+                <p className={styles.tperson_name}>Aswin Asok</p>
+                <p className={styles.tperson_designation}>
+                  FrontEnd Developer and Designer
+                </p>
+              </div>
+              <p className={styles.tcard_content}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
+                ullam beatae suscipit odit! Esse laborum architecto, fugit nulla
+                doloribus numquam.
+              </p>
+            </div>
+
+            <div className={styles.testmonial_card}>
+              <div className={styles.tcard_heading}>
+                <img
+                  src="https://via.placeholder.com/150"
+                  alt=""
+                  className={styles.tperson_img}
+                />
+                <p className={styles.tperson_name}>Aswin Asok</p>
+                <p className={styles.tperson_designation}>
+                  FrontEnd Developer and Designer
+                </p>
+              </div>
+              <p className={styles.tcard_content}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
+                ullam beatae suscipit odit! Esse laborum architecto, fugit nulla
+                doloribus numquam.
+              </p>
+            </div>
           </div>
         </div>
       </div>
