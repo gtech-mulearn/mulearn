@@ -177,7 +177,7 @@ const Home = () => {
             </a>
 
             <a
-              href="/https://gdg.community.dev/"
+              href="https://gdg.community.dev/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -464,7 +464,7 @@ const Home = () => {
           <div>
             <img
               src="assets/home/Chart.svg"
-              alt="Chart Image"
+              alt="Chart"
               className={styles.chart_img}
             />
           </div>
