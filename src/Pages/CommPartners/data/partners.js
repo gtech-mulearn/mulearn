@@ -23,7 +23,7 @@ const partners = [
   {
     name: "Kerala Startup Mission",
     image: ksum,
-    link: "",
+    link: "https://iedc.startupmission.in/",
   },
 
   {
@@ -60,7 +60,7 @@ const partners = [
   {
     name: "Kerala Development and Innovation Strategic Council",
     image: kdisc,
-    link: "",
+    link: "https://kdisc.kerala.gov.in/",
   },
   {
     name: "Ether India",

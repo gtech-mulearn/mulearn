@@ -52,7 +52,7 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="/assets/home/partnerkdisc.webp"
+                src="/assets/home/partners/kdisc.webp"
                 alt=""
                 className={styles.supporter}
               />
@@ -63,7 +63,7 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="/assets/home/partnerksum.webp"
+                src="/assets/home/partners/ksum.webp"
                 alt=""
                 className={styles.supporter}
               />

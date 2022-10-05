@@ -1,6 +1,6 @@
 import Home from "./Pages/Home/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import News from "./Pages/News/News";
+// import News from "./Pages/News/News";
 import Calendar from "./Pages/Calendar/Calendar";
 import Gallery from "./Pages/Gallery/Gallery";
 import MuAnnouncements from "./Pages/Events/MuAnnouncements/MuAnnouncements";
