@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./MuAnnouncements.module.css";
 
-import fvimg from "./assets/fvimg.png";
 import Navbar from "../../../Components/Navbar/Navbar";
 import Footer from "../../../Components/Footer/Footer";
 
@@ -26,7 +25,7 @@ const MuAnnouncements = () => {
               </p>
             </div>
             <div className={styles.fv_images}>
-              <img src={fvimg} alt="" className={styles.fv_img} />
+              <img src="assets/announcements/fvimg.gif" alt="" className={styles.fv_img} />
             </div>
           </div>
         </div>
