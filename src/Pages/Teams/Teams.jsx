@@ -40,7 +40,7 @@ const Teams = () => {
           <span className={styles.team_card}>
             <h5>Executive Committee</h5>
             <p>
-              The Executive Members are those who serve as the community's
+              The executive members are those who serve as the community's
               skeleton and propel it forward from the rear.
             </p>
             <Link to="/team/execom">
@@ -60,11 +60,21 @@ const Teams = () => {
           <span className={styles.team_card}>
             <h5>Community Team</h5>
             <p>
-              The Community Team was the one who brought the achievements at the
+              The community team was the one who brought the achievements at the
               most; it links industry and academia and forges connections
               between students, faculty, mentors, and others.
             </p>
             <Link to="/team/community">
+              <button className={styles.join_button}>View</button>
+            </Link>
+          </span>
+          <span className={styles.team_card}>
+            <h5>Tech Team</h5>
+            <p>
+              The tech team is the one who is responsible for the website and
+              bot development.
+            </p>
+            <Link to="/team/tech">
               <button className={styles.join_button}>View</button>
             </Link>
           </span>

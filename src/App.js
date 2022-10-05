@@ -16,6 +16,7 @@ import Career from "./Pages/Career/Career";
 import LeaderBoard from "./Pages/LeaderBoard/leaderBoard";
 import Courses from "./Pages/Courses/Courses";
 import WikiSyllabus from "./Pages/WikiSyllabus/WikiSyllabus";
+import Tech from "./Pages/Teams/Tech/Tech";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             <Route path="execom" element={<Execom />} />
             <Route path="yip" element={<YIP />} />
             <Route path="community" element={<Community />} />
+            <Route path="tech" element={<Tech />} />
           </Route>
           <Route path="/leaderboard" element={<LeaderBoard />} />
           {/* <Route path="/community" element={ }/> */}
