@@ -98,19 +98,23 @@ const Navbar = () => {
                         YIP
                       </a>
                     </li>
-
                     <li>
                       <a className="dropdown-item" href="/artofteaching">
                         Art of teaching
                       </a>
                     </li>
-
                     <li>
                       <a
                         className="dropdown-item"
                         href="https://foundation.mulearn.org"
                       >
                         Foundation Program
+                      </a>
+                    </li>
+
+                    <li>
+                      <a className="dropdown-item" href="/wikisyllabus">
+                        Wiki Syllabus
                       </a>
                     </li>
                   </ul>
