@@ -33,7 +33,9 @@ a {
 }
 
 .fv_image {
-  display: none;
+  display: block;
+  margin: auto;
+  width: 30rem;
 }
 
 .fv_heading {
@@ -196,19 +198,16 @@ a {
   width: 3.15rem;
 }
 
-@media screen and (max-width:999px) {
-
-  .svp_image {
-    width: 3.15rem;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%);
-  }
+@media screen and (max-width: 999px) {
   .svp_heading {
-   position: relative;
+    display: block;
     text-align: center;
   }
-  
+
+  .svp_image {
+    display: block;
+    margin: auto;
+  }
 }
 
 @media only screen and (min-width: 1000px) {
@@ -338,8 +337,6 @@ a {
   }
 }
 
-
-
 .join_view {
   margin: 0 2rem;
 }
@@ -374,26 +371,22 @@ a {
   font-weight: 400;
 }
 
-@media screen and (min-width:600px) {
+@media screen and (min-width: 600px) {
   .join_img {
     height: 40rem;
-    position: relative;
-    left: 50%;
+    display: block;
+    margin: auto;
     margin-top: 2rem;
-    transform: translate(-50%);
   }
-  
 }
 
-@media screen and (max-width:599px) {
+@media screen and (max-width: 599px) {
   .join_img {
     height: 30rem;
-    position: relative;
-    left: 50%;
+    display: block;
+    margin: auto;
     margin-top: 3rem;
-    transform: translate(-50%);
   }
-  
 }
 
 @media only screen and (min-width: 1000px) {
@@ -576,10 +569,10 @@ a {
 }
 
 .chart_img {
-  margin-top: 2rem;
   width: 20rem;
-  margin-left: 50%;
-  transform: translate(-50%);
+  display: block;
+  margin: auto;
+  margin-top: 2rem;
 }
 
 @media only screen and (min-width: 768px) {
