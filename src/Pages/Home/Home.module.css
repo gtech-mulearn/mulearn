@@ -35,7 +35,7 @@ a {
 .fv_image {
   display: block;
   margin: auto;
-  width: 30rem;
+  width: 22rem;
 }
 
 .fv_heading {
@@ -248,14 +248,6 @@ a {
 
 .thirdviewmain_container {
   padding-top: 2rem;
-  /* background-color: #f2f3f9;
-  opacity: 1;
-  background-image: repeating-radial-gradient(
-      circle at 0 0,
-      transparent 0,
-      #f2f3f9 15px
-    ),
-    repeating-linear-gradient(#fdf1e755, #fdf1e7); */
 }
 
 .third_view {
@@ -608,5 +600,87 @@ a {
 @media only screen and (min-width: 1000px) {
   .chart_view {
     margin: 4rem 0rem;
+  }
+}
+
+/* Testimonials View Styles */
+
+.testimonial_view_container {
+  padding-top: 2rem;
+}
+
+.testimonial_view {
+  padding: 1rem 2rem;
+  padding-top: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.test_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #303030;
+}
+
+.test_heading span {
+  color: #f78c40;
+}
+
+.test_content {
+  font-family: "Poppins", sans-serif;
+}
+
+.testmonial_card_container {
+  margin-top: 2rem;
+}
+
+.testmonial_card {
+  text-align: center;
+}
+
+.tperson_img {
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.tperson_name {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1.25rem;
+  color: #f78c40;
+  font-weight: 500;
+}
+
+.tperson_designation {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  .testimonial_view_container {
+    max-width: 1300px;
+    margin: auto;
+  }
+  
+  .testimonial_view {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testmonial_card_container {
+    margin-top: 3rem;
+  }
+
+  .test_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 3.25rem;
+    font-weight: 700;
+    color: #303030;
+  }
+
+  .test_content {
+    width: 80%;
   }
 }
