@@ -9,7 +9,7 @@ a {
 }
 
 @media screen and (max-width: 999px) {
-  a {
+  .joinbutton {
     display: flex;
     justify-content: center;
     align-items: center;

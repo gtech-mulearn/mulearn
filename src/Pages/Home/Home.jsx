@@ -427,6 +427,7 @@ const Home = () => {
                 </p>
               </div>
               <a
+                className={styles.joinbutton}
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://discord.com/invite/Jt7sv3chZP"
