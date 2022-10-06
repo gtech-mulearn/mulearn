@@ -27,7 +27,7 @@ const Career = () => {
             />
           </div>
         </div>
-        <div className={styles.second__section}>
+        <div className={styles.second_section}>
           <p className={styles.ssheading}>Open Opportunities</p>
           <div className={styles.opportunities}>
             <p>New openings coming soon!</p>

@@ -7,7 +7,7 @@ const News = [
     p5: "https://drive.google.com/uc?export=view&id=1FejgL-MK-XexPbqzY381vPkH229DpaGc",
 
     Sl_No: 1,
-    Event_Name: "µLearn Launch",
+    Event_Name: "MuLearn Launch",
   },
   {
     p1: "https://drive.google.com/uc?export=view&id=1yua4VR3ZS2Fczcd0bQH3gkG_losNpf05",
@@ -19,13 +19,13 @@ const News = [
     p7: "https://drive.google.com/uc?export=view&id=1YbjGUV2peOCUs6HfGdbAKa9FXWlFmfIM",
     p8: "https://drive.google.com/uc?export=view&id=1PJdhY3iEdnNzrUriBjobiygtL5CJDofU",
     Sl_No: 2,
-    Event_Name: "µOnam",
+    Event_Name: "MuOnam",
   },
   {
     p1: "https://drive.google.com/uc?export=view&id=1GFMao7eC2d_lJl-rx3UV63mnnfyxS00b",
 
     Sl_No: 3,
-    Event_Name: "µlearn Featured",
+    Event_Name: "Mulearn Featured",
   },
   {
     p1: "https://drive.google.com/uc?export=view&id=1raxse4BHupmZrAyjnJm8QLgrE0KSffb2",
