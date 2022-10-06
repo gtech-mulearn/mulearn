@@ -11,18 +11,20 @@
 
 .fstexts {
   text-align: center;
-  width: 40%;
+  width: 100%;
 }
 
 .fsheading {
-  font-size: 5rem;
-  line-height: 5rem;
-  font-family: "Outfit";
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.5rem;
   font-weight: 600;
+  color: #303030;
 }
 
 .fstagline {
-  font-size: 1.15rem;
+  margin-top: 0.5rem;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
 }
 
 .fsillustration {
@@ -30,8 +32,7 @@
 }
 
 .second__section {
-  /* padding: 2rem; */
-  margin: 2rem 6rem 0;
+  margin: 2rem 2rem 0;
 }
 
 .ssheading {
@@ -40,10 +41,53 @@
   margin-bottom: 2.5rem;
 }
 
+.second_section {
+  margin: 2rem;
+}
+
 @media only screen and (min-width: 1000px) {
   .opportunities {
     display: grid;
     grid-template-columns: 35% 35%;
     column-gap: 2rem;
+  }
+
+  .fsheading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 4.55rem;
+    line-height: 5rem;
+    font-weight: 600;
+  }
+
+  .fstagline {
+    font-size: 1.1rem;
+    width: 60%;
+    margin: auto;
+    margin-top: 1rem;
+  }
+
+  .first__section {
+    max-width: 1300px;
+    margin: auto;
+  }
+
+  .second_section {
+    max-width: 1300px;
+    margin: auto;
+    margin-top: 3rem;
+  }
+}
+
+.ssvheading {
+  font-size: 1.75rem;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+}
+
+@media only screen and (min-width: 1000px) {
+  .ssheading {
+    font-size: 2.25rem;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 600;
   }
 }
