@@ -8,6 +8,14 @@ a {
   color: inherit;
 }
 
+@media screen and (max-width: 999px) {
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 .firstviewmain_container {
   padding-top: 3rem;
   background-color: #f2f3f9;
