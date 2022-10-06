@@ -6,6 +6,17 @@ import Navbar from "../../Components/Navbar/Navbar";
 
 import CountUp from "react-countup";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import { Pagination, Navigation } from "swiper";
+
+import "./Home.scss";
+
 const Home = () => {
   return (
     <>
@@ -467,62 +478,57 @@ const Home = () => {
             </p>
           </div>
           <div className={styles.testmonial_card_container}>
-            <div className={styles.testmonial_card}>
-              <div className={styles.tcard_heading}>
-                <img
-                  src="https://via.placeholder.com/150"
-                  alt=""
-                  className={styles.tperson_img}
-                />
-                <p className={styles.tperson_name}>Aswin Asok</p>
-                <p className={styles.tperson_designation}>
-                  FrontEnd Developer and Designer
-                </p>
-              </div>
-              <p className={styles.tcard_content}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
-                ullam beatae suscipit odit! Esse laborum architecto, fugit nulla
-                doloribus numquam.
-              </p>
-            </div>
-
-            <div className={styles.testmonial_card}>
-              <div className={styles.tcard_heading}>
-                <img
-                  src="https://via.placeholder.com/150"
-                  alt=""
-                  className={styles.tperson_img}
-                />
-                <p className={styles.tperson_name}>Aswin Asok</p>
-                <p className={styles.tperson_designation}>
-                  FrontEnd Developer and Designer
-                </p>
-              </div>
-              <p className={styles.tcard_content}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
-                ullam beatae suscipit odit! Esse laborum architecto, fugit nulla
-                doloribus numquam.
-              </p>
-            </div>
-
-            <div className={styles.testmonial_card}>
-              <div className={styles.tcard_heading}>
-                <img
-                  src="https://via.placeholder.com/150"
-                  alt=""
-                  className={styles.tperson_img}
-                />
-                <p className={styles.tperson_name}>Aswin Asok</p>
-                <p className={styles.tperson_designation}>
-                  FrontEnd Developer and Designer
-                </p>
-              </div>
-              <p className={styles.tcard_content}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
-                ullam beatae suscipit odit! Esse laborum architecto, fugit nulla
-                doloribus numquam.
-              </p>
-            </div>
+            <Swiper
+              pagination={true}
+              navigation={true}
+              modules={[Pagination, Navigation]}
+              className="hswiper"
+            >
+              <SwiperSlide>
+                <div className={styles.tcard_row}>
+                  <div className={styles.testmonial_card}>
+                    <div className={styles.tcard_heading}>
+                      <img
+                        src="https://via.placeholder.com/150"
+                        alt=""
+                        className={styles.tperson_img}
+                      />
+                      <p className={styles.tperson_name}>Aswin Asok</p>
+                      <p className={styles.tperson_designation}>
+                        FrontEnd Developer and Designer
+                      </p>
+                    </div>
+                    <p className={styles.tcard_content}>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Dolor ullam beatae suscipit odit! Esse laborum architecto,
+                      fugit nulla doloribus numquam.
+                    </p>
+                  </div>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className={styles.tcard_row}>
+                  <div className={styles.testmonial_card}>
+                    <div className={styles.tcard_heading}>
+                      <img
+                        src="https://via.placeholder.com/150"
+                        alt=""
+                        className={styles.tperson_img}
+                      />
+                      <p className={styles.tperson_name}>Aswin Asok</p>
+                      <p className={styles.tperson_designation}>
+                        FrontEnd Developer and Designer
+                      </p>
+                    </div>
+                    <p className={styles.tcard_content}>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Dolor ullam beatae suscipit odit! Esse laborum architecto,
+                      fugit nulla doloribus numquam.
+                    </p>
+                  </div>
+                </div>
+              </SwiperSlide>
+            </Swiper>
           </div>
         </div>
       </div>

@@ -140,7 +140,7 @@ const ArtOfTeaching = () => {
                 pagination={true}
                 navigation={true}
                 modules={[Pagination, Navigation]}
-                className="swiper"
+                className="aswiper"
               >
                 <SwiperSlide>
                   <div className={styles.topic_card_android}>

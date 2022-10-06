@@ -658,10 +658,21 @@ a {
   margin-bottom: 0.25rem;
 }
 
+.tcard_row {
+  padding: 4rem;
+}
+
 @media only screen and (min-width: 1000px) {
   .testimonial_view_container {
     max-width: 1300px;
     margin: auto;
+  }
+
+  .tcard_row {
+    display: flex;
+    flex-direction: row;
+    padding: 0 6rem;
+    margin-top: 3rem;
   }
 
   .testimonial_view {
