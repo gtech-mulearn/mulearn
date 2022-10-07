@@ -71,8 +71,8 @@ const ArtOfTeaching = () => {
               </p>
 
               <p className={styles.fv_tagline}>
-                µLearn is back with Art of Teaching to honor teachers who are
-                the one who mould our future generation. GTech µLearn is
+                µLearn is back with Art of Teaching to honor teachers who
+                mould our future generation. GTech µLearn is
                 partnering with Google developers, KTU and Kerala University for
                 Art of Teaching 2.0.
               </p>
