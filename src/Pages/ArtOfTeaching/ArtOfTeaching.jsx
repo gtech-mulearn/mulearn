@@ -3,12 +3,22 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 
 import styles from "./ArtOfTeaching.module.css";
+import "./ArtOfTeaching.scss";
 
 import Faq from "react-faq-component";
 
 import fvimg from "./assets/fvimg.gif";
 
 import MentorCard from "../../Components/MentorCard/MentorCard";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import { Pagination, Navigation } from "swiper";
 
 const ArtOfTeaching = () => {
   const data = {
@@ -25,7 +35,7 @@ const ArtOfTeaching = () => {
           "The maximum length of the video can be 3 minutes. It is not necessary that you send a 'lecture' video, you can also send in a screen recording of you teaching a concept in a creative manner.",
       },
       {
-        title: "What is the Registration Process",
+        title: "What is the Registration Process?",
         content:
           "Register using the airtable form given above. Upon registration you'll receive a ticket of participation. Which ensures your slot in the contest. You'll then receive another link to submit your video within a day. When submitting the video you are supposed to upload the ticket of participation. You will then receive an acknowledgement of submission.",
       },
@@ -59,24 +69,46 @@ const ArtOfTeaching = () => {
               <p className={styles.fv_heading}>
                 <span>µLearn Art</span> of Teaching 2.0
               </p>
+
               <p className={styles.fv_tagline}>
-                µLearn is back with Art of Teaching to honor teachers who are
-                the one who mould our future generation. GTech µLearn is
+                µLearn is back with Art of Teaching to honor teachers who
+                mould our future generation. GTech µLearn is
                 partnering with Google developers, KTU and Kerala University for
                 Art of Teaching 2.0.
               </p>
+              <div className={styles.event_partners}>
+                <div className={styles.partners}>
+                  <p className={styles.event_partners_heading}>
+                    Event Partners
+                  </p>
+                  <div className={styles.partner}>
+                    <img
+                      src="assets/artofteaching/ktu.png"
+                      alt=""
+                      className={styles.partner_image}
+                    />
+                  </div>
+                  <div className={styles.partner}>
+                    <img
+                      src="assets/artofteaching/google_android.webp"
+                      alt=""
+                      className={styles.partner_image}
+                    />
+                  </div>
+                </div>
+              </div>
               <a
                 href="https://airtable.com/shrC6h0CFSAZLaZUk"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {/* <button
+                <button
                   style={{ fontSize: "1rem" }}
                   className={styles.detailsbtn}
                   type="submit"
                 >
-                  Register Now!
-                </button> */}
+                  Pre-Register Now!
+                </button>
               </a>
             </div>
             <div className={styles.fv_images}>
@@ -93,103 +125,133 @@ const ArtOfTeaching = () => {
               </p>
 
               <p className={styles.sv_tagline}>
-                A 3-minute video contest, where the teachers can send in a video
-                of them teaching any of the following topic in a creative
-                manner.
+                Teaching is an art and teachers are the artists, calling all the
+                artists to present their masterpieces of teaching to the world.
+                <br />
+                <br />
+                Art of Teaching is a 3-minute video contest, where the teachers
+                can send in a video of them teaching any of the following topic
+                in a creative manner.
               </p>
             </div>
 
-            <div className={styles.cards_container}>
+            <div className={styles.cards_container_desktop}>
+              <Swiper
+                pagination={true}
+                navigation={true}
+                modules={[Pagination, Navigation]}
+                className="swiper"
+              >
+                <SwiperSlide>
+                  <div className={styles.topic_card_android}>
+                    <div className={styles.topic_card}>
+                      <p className={styles.card_heading}>
+                        <span>Android Development with Kotlin</span> by Google.
+                      </p>
+                      <p className={styles.card_description}>
+                        The participants have to learn the Android Development
+                        with Kotlin course and they have to create a 3 minute
+                        video summary of the course.
+                      </p>
+                    </div>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className={styles.topic_card}>
+                    <p className={styles.card_heading}>
+                      <span>Lessons of</span> Future
+                    </p>
+                    <p className={styles.card_description}>
+                      The participants can choose any topic which is related to
+                      emerging topics in their field and they can create video
+                      on that topic. Some sample topics are given below.
+                    </p>
+                    <ul className={styles.examples}>
+                      <li>
+                        <span>Civil Engineering</span> : BIM, Smart city
+                        planning. etc..
+                      </li>
+                      <li>
+                        <span>Mechanical Engineering</span>: 3D Printing,
+                        Friction Stir Welding etc..
+                      </li>
+                      <li>
+                        <span>Electronics Engineering</span>: IoT, Quantum
+                        Computing, Bioelectronics etc..
+                      </li>
+                      <li>
+                        <span>Electrical Engineering</span>: Battery Technology,
+                        Fast Charging, wireless charging, smart grid etc..
+                      </li>
+                      <li>
+                        <span>Chemical Engineering</span>: Nanomaterials, Water
+                        Purification etc ..
+                      </li>
+                      <li>
+                        <span>Arts & Sciences</span>: Impact of Artificial
+                        Intelligence and Machine Learning in their respective
+                        fields like driverless tractor in Agriculture to
+                        Election Campaign strategies for Social Media. etc..
+                      </li>
+                    </ul>
+                  </div>
+                </SwiperSlide>
+              </Swiper>
+            </div>
+
+            <div className={styles.cards_container_mobile}>
               <div className={styles.topic_card}>
                 <p className={styles.card_heading}>
-                  Android Development with Kotlin by Google.
+                  <span>Android Development with Kotlin</span> by Google.
                 </p>
                 <p className={styles.card_description}>
                   The participants have to learn the Android Development with
                   Kotlin course and they have to create a 3 minute video summary
                   of the course.
                 </p>
-                <a
-                  href="https://mulearn.notion.site/Art-of-Teaching-2-0-Lessons-of-Future-96eed1e8cf524d4c88d996e6fbed7fe7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button className={styles.detailsbtn} type="submit">
-                    View More Details
-                  </button>
-                </a>
               </div>
 
               <div className={styles.topic_card}>
-                <p className={styles.card_heading}>Own Topic</p>
+                <p className={styles.card_heading}>
+                  <span>Lessons of</span> Future
+                </p>
                 <p className={styles.card_description}>
                   The participants can choose any topic which is related to
                   emerging topics in their field and they can create video on
-                  that topic.Click view more button to see more details.
+                  that topic. Some sample topics are given below.
                 </p>
-                <a
-                  href="https://mulearn.notion.site/Art-of-Teaching-2-0-Lessons-of-Future-96eed1e8cf524d4c88d996e6fbed7fe7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button className={styles.detailsbtn} type="submit">
-                    View More Details
-                  </button>
-                </a>
+                <ul className={styles.examples}>
+                  <li>
+                    <span>Civil Engineering</span> : BIM, Smart city planning.
+                    etc..
+                  </li>
+                  <li>
+                    <span>Mechanical Engineering</span>: 3D Printing, Friction
+                    Stir Welding etc..
+                  </li>
+                  <li>
+                    <span>Electronics Engineering</span>: IoT, Quantum
+                    Computing, Bioelectronics etc..
+                  </li>
+                  <li>
+                    <span>Electrical Engineering</span>: Battery Technology,
+                    Fast Charging, wireless charging, smart grid etc..
+                  </li>
+                  <li>
+                    <span>Chemical Engineering</span>: Nanomaterials, Water
+                    Purification etc ..
+                  </li>
+                  <li>
+                    <span>Arts & Sciences</span>: Impact of Artificial
+                    Intelligence and Machine Learning in their respective fields
+                    like driverless tractor in Agriculture to Election Campaign
+                    strategies for Social Media. etc..
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
-
-        {/* <div className={styles.third_view_container}>
-          <div className={styles.third_view}>
-            <div className={styles.tv_texts}>
-              <div className={styles.tv_text}>
-                <p className={styles.tv_heading}>
-                  <span>Contest</span> Guidelines
-                </p>
-                <ul className={styles.tv_lists}>
-                  <li className={styles.tv_list_item}>
-                    The maximum length of the video can be 3 minutes.
-                  </li>
-                  <li className={styles.tv_list_item}>
-                    It is not necessary that you send a 'lecture' video, you can
-                    also send in a screen recording of you teaching a concept in
-                    a creative manner.
-                  </li>
-                  <li className={styles.tv_list_item}>
-                    The submission closes on 30th September midnight
-                  </li>
-                </ul>
-              </div>
-              <div className={styles.tv_text}>
-                <p className={styles.tv_heading}>
-                  <span>Registration</span> Process
-                </p>
-                <ul className={styles.tv_lists}>
-                  <li className={styles.tv_list_item}>
-                    Register using airtable form
-                  </li>
-                  <li className={styles.tv_list_item}>
-                    Upon registration you'll receive a ticket of participation.
-                    Which ensures your slot in the contest.
-                  </li>
-                  <li className={styles.tv_list_item}>
-                    You'll then receive another link to submit your video within
-                    a day.
-                  </li>
-                  <li className={styles.tv_list_item}>
-                    When submitting the video you are supposed to upload the
-                    ticket of participation.
-                  </li>
-                  <li className={styles.tv_list_item}>
-                    You'll then receive an acknowledgement of submission.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div> */}
 
         <div className={styles.fourth_view_container}>
           <div className={styles.fourth_view}>
@@ -226,9 +288,9 @@ const ArtOfTeaching = () => {
                 The Former <span> Judging Panel</span>
               </p>
               <p className={styles.jv_text}>
-                We do needed some really creative people with amazing
-                mentoring skills to judge all your submissions. Listed below
-                were our judges for the first edition of Art of Teaching.
+                We do needed some really creative people with amazing mentoring
+                skills to judge all your submissions. Listed below were our
+                judges for the first edition of Art of Teaching.
               </p>
               <div className={styles.judges_card_container}>
                 <div className={styles.judges_card}>
@@ -247,10 +309,10 @@ const ArtOfTeaching = () => {
                 <div className={styles.judges_card}>
                   <MentorCard
                     name={"Ann Andrews"}
-                    designation={"Product | Technology & Data Strategy | NYU & Columbia Fellow"}
-                    image={
-                      "assets/artofteaching/j2.jpeg"
+                    designation={
+                      "Product | Technology & Data Strategy | NYU & Columbia Fellow"
                     }
+                    image={"assets/artofteaching/j2.jpeg"}
                     linkedIn={"https://www.linkedin.com/in/deepusnath/"}
                   />
                 </div>

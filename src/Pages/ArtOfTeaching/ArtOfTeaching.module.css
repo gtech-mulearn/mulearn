@@ -8,6 +8,11 @@
   background-color: #ffffff;
 }
 
+.first_view {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .fv_img {
   width: 18rem;
   display: block;
@@ -36,9 +41,39 @@
   font-family: "Poppins", sans-serif;
 }
 
+.event_partners_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  margin-right: 1rem;
+}
+
+.partners {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  margin: 1rem 0;
+}
+
+.partner_image {
+  height: 2.5rem;
+  margin-right: 0.5rem;
+  display: block;
+}
+
+.detailsbtn {
+  margin-top: 1rem;
+}
+
 @media only screen and (min-width: 1000px) {
   .first_view_container {
     padding: 3rem 3rem;
+  }
+
+  .partners {
+    justify-content: left;
+    align-self: left;
   }
 
   .first_view {
@@ -48,14 +83,13 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
+    margin-top: 4rem;
   }
 
   .fv_img {
     display: block;
     margin: auto;
-    width: 30rem;
+    width: 28rem;
   }
 
   .fv_texts {
@@ -72,8 +106,12 @@
 
   .fv_tagline {
     margin-top: 1rem;
-    font-size: 1.1rem;
-    width: 90%;
+    font-size: 1rem;
+    width: 80%;
+  }
+
+  .detailsbtn {
+    margin-right: 1rem;
   }
 }
 
@@ -86,7 +124,6 @@
 
 .second_view {
   margin-top: 2rem;
-  padding-bottom: 1rem;
 }
 
 .sv_heading {
@@ -115,11 +152,6 @@
 
 .topic_card {
   margin: 2rem 0rem;
-  box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.05);
-  -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.05);
-  padding: 20px 20px;
-  border-radius: 10px;
 }
 
 .topic_heading {
@@ -128,9 +160,10 @@
 
 .card_heading {
   font-family: "Noto Sans", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 500;
-  color: #f78c40;
+  color: #404040;
+  width: 80%;
 }
 
 .card_description {
@@ -143,6 +176,28 @@
   font-weight: 500;
   margin-bottom: 0.5rem;
   color: #404040;
+}
+
+.cards_container_desktop {
+  display: none;
+}
+
+.cards_container_mobile {
+  display: block;
+}
+
+.examples li {
+  margin: 0.5rem 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+}
+
+.examples span {
+  font-weight: 600;
+}
+
+.card_heading span {
+  color: #f78c40;
 }
 
 @media only screen and (min-width: 1000px) {
@@ -160,15 +215,16 @@
 
   .card_heading {
     width: 80%;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 
   .topic_card {
     max-width: 500px;
+    margin: 0 75px;
   }
 
   .second_view {
-    margin-top: 5rem;
+    margin-top: 3rem;
   }
 
   .sv_texts {
@@ -177,6 +233,18 @@
 
   .theme {
     font-size: 1.4rem;
+  }
+
+  .swiper {
+    
+  }
+
+  .cards_container_desktop {
+    display: block;
+  }
+
+  .cards_container_mobile {
+    display: none;
   }
 
   .sv_heading {
@@ -190,6 +258,15 @@
     width: 80%;
     margin-top: 0.5rem;
     font-family: "Poppins", sans-serif;
+  }
+
+  .card_description {
+    width: 90%;
+    font-size: 1rem;
+  }
+
+  .topic_card_android {
+    margin-top: 9rem;
   }
 }
 
@@ -205,7 +282,6 @@
 .third_view_container {
   padding: 2rem;
   background-color: #ffffff;
-  padding-top: 1rem;
 }
 
 .third_view {
@@ -242,10 +318,10 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin-top: 8rem;
   }
 
   .tv_text {
-    margin-top: 2rem;
     width: 40%;
   }
 
@@ -438,7 +514,6 @@
   color: white;
   border: none;
   border-radius: 5px;
-  margin-top: 1rem;
   font-size: 0.9rem;
   padding: 0.5rem 1.25rem;
 }

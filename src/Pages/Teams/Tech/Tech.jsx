@@ -1,25 +1,18 @@
 import Navbar from "../../../Components/Navbar/Navbar";
 import Footer from "../../../Components/Footer/Footer";
-import styles from "./YIP.module.css";
-import yipTeam from "./data/yip-team.js";
+import styles from "./Tech.module.css";
+// import yipTeam from "./data/yip-team.js";s
 import MentorCard from "../../../Components/MentorCard/MentorCard";
 import { useState } from "react";
 
-const YIP = () => {
+const Tech = () => {
   const [filter, setfilter] = useState(0);
 
   const handleFilterChange = (e) => {
     setfilter(e.target.value);
   };
 
-  const filters = [
-    "",
-    "Interest Group Management",
-    "Delivery Management",
-    "Data, documentation & Finance",
-    "People Management",
-    "Discord Mangement",
-  ];
+  const filters = ["", "µ-Web", "µ-300", "µ-JSON", "µ-Bot"];
 
   return (
     <>
@@ -29,11 +22,12 @@ const YIP = () => {
           <div className={styles.first_view}>
             <div className={styles.fv_texts}>
               <p className={styles.fv_heading}>
-                <span>Young Innovators Programme</span> Organization Team
+                <span>Tech</span> Team
               </p>
               <p className={styles.fv_tagline}>
-                Here are the members of the crew and interns who helped to make
-                the Yip a big success.
+                Here are the members of the crew who contributed developing the
+                website and bot, collected resources and gave suggestions about
+                UX.
               </p>
             </div>
           </div>
@@ -48,13 +42,12 @@ const YIP = () => {
           <option value="0" selected>
             Filter by Domain
           </option>
-          <option value="1">Interest Group Management</option>
-          <option value="2">Delivery Management</option>
-          <option value="3">Data, documentation & Finance</option>
-          <option value="4">People Management</option>
-          <option value="5">Discord Mangement</option>
+          <option value="1">µ-Web</option>
+          <option value="2">µ-300</option>
+          <option value="3">µ-JSON</option>
+          <option value="4">µ-Bot</option>
         </select>
-        <div className={styles.team_list}>
+        {/* <div className={styles.team_list}>
           {yipTeam.map((member) => {
             console.log(member.domain);
             console.log(filters[filter]);
@@ -71,11 +64,11 @@ const YIP = () => {
               );
             } else return <></>;
           })}
-        </div>
+        </div> */}
       </div>
       <Footer />
     </>
   );
 };
 
-export default YIP;
+export default Tech;

@@ -12,11 +12,11 @@ nav {
 }
 
 .nav-barbtn button {
-  border: 2.5px solid #F67916;
+  border: 2.5px solid #f67916;
   padding: 0.65rem 0.96rem;
   border-radius: 5px;
   font-size: 0.8rem;
-  background-color: #F67916;
+  background-color: #f67916;
   color: white;
   margin-top: 2vh;
 }

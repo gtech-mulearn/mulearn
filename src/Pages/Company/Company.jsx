@@ -45,7 +45,13 @@ const Company = () => {
             </div>
             <div className={styles.sv_cards_container}>
               {companiesonboarded.map((company) => (
-                <CommunityCard cname={company.name} cimage={company.logo} />
+                <a
+                  href={company.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <CommunityCard cname={company.name} cimage={company.logo} />
+                </a>
               ))}
             </div>
           </div>

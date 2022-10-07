@@ -8,6 +8,14 @@ a {
   color: inherit;
 }
 
+@media screen and (max-width: 999px) {
+  .joinbutton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 .firstviewmain_container {
   padding-top: 3rem;
   background-color: #f2f3f9;
@@ -33,7 +41,9 @@ a {
 }
 
 .fv_image {
-  display: none;
+  display: block;
+  margin: auto;
+  width: 22rem;
 }
 
 .fv_heading {
@@ -111,7 +121,7 @@ a {
 
 .gsupporter {
   margin: 0.5rem 0.5rem;
-  width: 3.75rem;
+  width: 3.25rem;
 }
 
 .supporter_heading span {
@@ -196,19 +206,16 @@ a {
   width: 3.15rem;
 }
 
-@media screen and (max-width:999px) {
-
-  .svp_image {
-    width: 3.15rem;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%);
-  }
+@media screen and (max-width: 999px) {
   .svp_heading {
-   position: relative;
+    display: block;
     text-align: center;
   }
-  
+
+  .svp_image {
+    display: block;
+    margin: auto;
+  }
 }
 
 @media only screen and (min-width: 1000px) {
@@ -249,14 +256,6 @@ a {
 
 .thirdviewmain_container {
   padding-top: 2rem;
-  /* background-color: #f2f3f9;
-  opacity: 1;
-  background-image: repeating-radial-gradient(
-      circle at 0 0,
-      transparent 0,
-      #f2f3f9 15px
-    ),
-    repeating-linear-gradient(#fdf1e755, #fdf1e7); */
 }
 
 .third_view {
@@ -338,8 +337,6 @@ a {
   }
 }
 
-
-
 .join_view {
   margin: 0 2rem;
 }
@@ -374,26 +371,22 @@ a {
   font-weight: 400;
 }
 
-@media screen and (min-width:600px) {
+@media screen and (min-width: 600px) {
   .join_img {
     height: 40rem;
-    position: relative;
-    left: 50%;
+    display: block;
+    margin: auto;
     margin-top: 2rem;
-    transform: translate(-50%);
   }
-  
 }
 
-@media screen and (max-width:599px) {
+@media screen and (max-width: 599px) {
   .join_img {
     height: 30rem;
-    position: relative;
-    left: 50%;
+    display: block;
+    margin: auto;
     margin-top: 3rem;
-    transform: translate(-50%);
   }
-  
 }
 
 @media only screen and (min-width: 1000px) {
@@ -576,10 +569,10 @@ a {
 }
 
 .chart_img {
-  margin-top: 2rem;
   width: 20rem;
-  margin-left: 50%;
-  transform: translate(-50%);
+  display: block;
+  margin: auto;
+  margin-top: 2rem;
 }
 
 @media only screen and (min-width: 768px) {
