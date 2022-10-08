@@ -358,12 +358,13 @@ a {
 }
 
 .highlight_text {
-  margin-top: 1rem;
   color: #f78c40;
-  font-size: 1rem;
-  width: 95%;
-  font-weight: 500;
   font-family: "Noto Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 1rem auto 0;
+  text-align: center;
+  width: 95%;
 }
 
 .highlight_text span {
@@ -377,6 +378,11 @@ a {
     display: block;
     margin: auto;
     margin-top: 2rem;
+  }
+
+  .highlight_text {
+    text-align: left;
+    margin: 1rem 0 0;
   }
 }
 
