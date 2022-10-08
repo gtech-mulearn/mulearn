@@ -157,6 +157,19 @@
     margin: 1rem 0rem;
   }
 
+  .card_title {
+    font-size: 1.35rem;
+    color: #f78c40;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 600;
+  }
+
+  .card_description {
+    font-family: "Poppins", sans-serif;
+    text-align: left;
+    font-size: 0.9rem;
+  }
+
   .sv_cards {
     width: 20rem;
     margin: 0 auto;
