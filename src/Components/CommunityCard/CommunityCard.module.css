@@ -16,6 +16,7 @@
   width: 4rem;
   border-radius: 5px;
   object-fit: contain;
+  margin-right: 2rem;
 }
 
 .community_name {
