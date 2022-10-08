@@ -7,6 +7,7 @@ import Footer from "../../../Components/Footer/Footer";
 import college100k from "./data/college100k";
 import college200k from "./data/college200k";
 import bootcamps from "./data/bootcamps"
+import hackathons from "./data/hackathons";
 
 const MuAnnouncements = () => {
   return (
@@ -85,6 +86,7 @@ const MuAnnouncements = () => {
           </div>
 
 
+          {/* ---------- Bootcamp ---------- */}
           <div className={styles.second_view}>
             <div className={styles.sv_texts}>
               <p className={styles.sv_heading}>
@@ -118,6 +120,39 @@ const MuAnnouncements = () => {
             </div>
           </div>
 
+          {/* ---------- Bootcamp ---------- */}
+          <div className={styles.second_view}>
+            <div className={styles.sv_texts}>
+              <p className={styles.sv_heading}>
+                <span>Hackathons</span>
+              </p>
+              <p className={styles.sv_tagline}>
+                {/* tagline */}
+              </p>
+            </div>
+            <div className={styles.sv_cards_container}>
+              {hackathons.map((hackathon) => (
+                <div className={styles.sv_cards}>
+                  <div className={styles.card}>
+                    <img
+                      src={hackathon.image}
+                      alt=""
+                      className={styles.card_img}
+                      onError={({ currentTarget }) => {
+                        currentTarget.onerror = null;
+                        currentTarget.src = "assets/common/img-error-replace.png";
+                      }}
+                    />
+                    <p className={styles.card_title}>{hackathon.title}</p>
+                    <p className={styles.card_description}>
+                      {hackathon.description.substring(0, 250)}{" "}
+                      {hackathon.description.length >= 20 && "..."}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
 
         </div>

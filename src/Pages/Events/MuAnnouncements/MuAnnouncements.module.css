@@ -91,6 +91,13 @@
   margin-top: 2rem;
 }
 
+.card_title {
+  font-size: 1.35rem;
+  color: #f78c40;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+}
+
 .card_img {
   width: 20rem;
   height: 20rem;
@@ -136,7 +143,7 @@
   } */
 
   .sv_texts {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   .sv_heading {
@@ -157,12 +164,7 @@
     margin: 1rem 0rem;
   }
 
-  .card_title {
-    font-size: 1.35rem;
-    color: #f78c40;
-    font-family: "Noto Sans", sans-serif;
-    font-weight: 600;
-  }
+
 
   .card_description {
     font-family: "Poppins", sans-serif;
