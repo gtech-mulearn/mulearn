@@ -4,7 +4,7 @@
 }
 
 .first_view_container {
-  padding: 2rem;
+  padding: 0 2rem;
   background-color: #ffffff;
 }
 
@@ -38,7 +38,7 @@
 
 @media only screen and (min-width: 1000px) {
   .first_view_container {
-    padding: 2rem;
+    padding: 0 2rem;
   }
 
   .first_view {
@@ -149,7 +149,7 @@
   .second_view {
     max-width: 1300px;
     margin: auto;
-    margin-top: 2.5rem;
+    /* margin-top: 2.5rem; */
     margin-bottom: 2.5rem;
   }
 
@@ -203,8 +203,8 @@
 }
 
 .tcard_img {
-  width: 19rem;
-  height: 19rem;
+  width: 100%;
+  max-width: 20rem;
   object-fit: cover;
   border-radius: 5px;
   margin: 1rem 0rem;
@@ -228,6 +228,7 @@
   font-family: "Noto Sans", sans-serif;
   font-weight: 600;
   opacity: 0.8;
+  margin-top: .5rem;
 }
 
 .tv_cards_container {
@@ -244,12 +245,13 @@
     grid-template-columns: 50% 50%;
     row-gap: 1.5rem;
     columns: 1.5rem;
+    justify-items: center;
   }
 }
 
 @media only screen and (min-width: 1000px) {
   .tcard_img {
-    width: 19rem;
+    width: 100%;
     border-radius: 5px;
     margin: 1rem 0rem;
   }

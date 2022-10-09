@@ -53,6 +53,10 @@
   margin: 2rem;
 }
 
+.team_collection .team_heading {
+  margin-bottom: 2rem;
+}
+
 .team_list {
   display: grid;
   grid-template-columns: 1fr;
@@ -106,7 +110,7 @@
   .team_collection {
     max-width: 1300px;
     margin: auto;
-    margin-top: 5rem;
+    /* margin-top: 5rem; */
   }
 
   .team_heading,
@@ -146,6 +150,7 @@
 }
 
 @media only screen and (min-width: 1300px) {
+
   .team_heading,
   .team_list {
     margin: 0rem;

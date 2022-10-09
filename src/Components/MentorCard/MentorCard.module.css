@@ -75,7 +75,6 @@
 
 @media only screen and (min-width: 600px) {
   .mentor_card_container {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin: 1.5rem auto;
   }
 }
