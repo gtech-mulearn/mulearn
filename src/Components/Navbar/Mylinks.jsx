@@ -1,172 +1,58 @@
 export const links = [
   {
-    name: "Men",
+    name: "About",
     submenu: true,
     sublinks: [
       {
-        Head: "Topwear",
+        Head: "The Team",
         sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
-      },
-      {
-        Head: "Bottomwear",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
-      },
-      {
-        Head: "innerwear",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
-      },
-
-      {
-        Head: "sleepwear",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
-      },
-      {
-        Head: "footwear",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
+          { name: "Our Team", link: "/team" },
+          { name: "Executive Committe", link: "/team/execom" },
+          { name: "YIP Team", link: "/team/yip" },
+          { name: "Community Team", link: "/team/community" },
         ],
       },
     ],
   },
   {
-    name: "Women",
+    name: "Programs",
     submenu: true,
     sublinks: [
       {
-        Head: "Topwear",
+        Head: "Past Program",
         sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
+          { name: "YIP 2021", link: "https://yip.mulearn.org" },
+          {
+            name: "Foundation Program",
+            link: "https://foundation.mulearn.org",
+          },
         ],
       },
       {
-        Head: "Bottomwear",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
+        Head: "Ongoing Program",
+        sublink: [{ name: "Art of Teaching", link: "/artofteaching" }],
       },
       {
-        Head: "innerwear",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
-      },
-
-      {
-        Head: "sleepwear",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
-      },
-      {
-        Head: "footwear",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
+        Head: "Others",
+        sublink: [{ name: "Wiki Syllabus", link: "/wikisyllabus" }],
       },
     ],
   },
   {
-    name: "Kid's",
+    name: "Events Page",
     submenu: true,
     sublinks: [
       {
-        Head: "Topwear",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
+        Head: "Global Calendar",
+        sublink: [{ name: "Calendar", link: "/calendar" }],
       },
       {
-        Head: "Bottomwear",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
+        Head: "Announcements",
+        sublink: [{ name: "Mu-Announcements", link: "/announcements" }],
       },
       {
-        Head: "innerwear",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
-      },
-
-      {
-        Head: "sleepwear",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
-      },
-      {
-        Head: "footwear",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
+        Head: "Weekly Events",
+        sublink: [{ name: "Inspiration Station", link: "/isr" }],
       },
     ],
   },
