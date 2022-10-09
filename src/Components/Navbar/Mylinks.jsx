@@ -26,7 +26,7 @@ export const links = [
     submenu: true,
     sublinks: [
       {
-        Head: "Past Program",
+        Head: "Flagship",
         sublink: [
           { name: "YIP 2021", link: "https://yip.mulearn.org" },
           {
@@ -36,7 +36,7 @@ export const links = [
         ],
       },
       {
-        Head: "Ongoing Program",
+        Head: "Ongoing",
         sublink: [{ name: "Art of Teaching", link: "/artofteaching" }],
       },
       {
@@ -67,6 +67,15 @@ export const links = [
     name: "Interest Group",
     submenu: true,
     sublinks: [
+      {
+        Head: "Home",
+        sublink: [
+          {
+            name: "Home",
+            link: "https://learn.mulearn.org/",
+          },
+        ],
+      },
       {
         Head: "Search",
         sublink: [
