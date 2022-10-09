@@ -51,12 +51,24 @@ const NavLinks = () => {
                         </h1>
                         {mysublinks.sublink.map((slink) => (
                           <li className="text-sm text-gray-600 my-2.5">
-                            <a
-                              href={slink.link}
-                              className="hover:text-orange-500"
-                            >
-                              {slink.name}
-                            </a>
+                            {slink.foreign && (
+                              <a
+                                href={slink.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-orange-500"
+                              >
+                                {slink.name}
+                              </a>
+                            )}
+                            {!slink.foreign && (
+                              <a
+                                href={slink.link}
+                                className="hover:text-orange-500"
+                              >
+                                {slink.name}
+                              </a>
+                            )}
                           </li>
                         ))}
                       </div>

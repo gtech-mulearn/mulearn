@@ -28,10 +28,11 @@ export const links = [
       {
         Head: "Flagship",
         sublink: [
-          { name: "YIP 2021", link: "https://yip.mulearn.org" },
+          { name: "YIP 2021", link: "https://yip.mulearn.org", foreign: true },
           {
             name: "Foundation Program",
             link: "https://foundation.mulearn.org",
+            foreign: true,
           },
         ],
       },
