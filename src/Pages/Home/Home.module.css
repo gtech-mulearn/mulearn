@@ -128,6 +128,11 @@ a {
   color: #f78c40;
 }
 
+.supporters {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20%;
+}
+
 @media only screen and (min-width: 1000px) {
   .supportersview_container {
     max-width: 1000px;
@@ -204,17 +209,14 @@ a {
 
 .svp_image {
   width: 3.15rem;
+  display: block;
+  margin: auto;
 }
 
 @media screen and (max-width: 999px) {
   .svp_heading {
     display: block;
     text-align: center;
-  }
-
-  .svp_image {
-    display: block;
-    margin: auto;
   }
 }
 

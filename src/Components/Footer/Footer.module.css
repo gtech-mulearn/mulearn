@@ -153,6 +153,9 @@ button:focus {
   display: flex;
   flex-direction: row;
 }
+.fs_rightside {
+  display: flex;
+}
 
 @media only screen and (min-width: 1000px) {
   .right_side {
