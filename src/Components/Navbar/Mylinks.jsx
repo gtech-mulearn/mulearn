@@ -12,6 +12,13 @@ export const links = [
           { name: "Community Team", link: "/team/community" },
         ],
       },
+      {
+        Head: "Partners",
+        sublink: [
+          { name: "Community Partners", link: "/community-partners" },
+          { name: "Company Partners", link: "/company-partners" },
+        ],
+      },
     ],
   },
   {
