@@ -23,7 +23,7 @@ const Navbar = () => {
         <ul className="lg:flex hidden uppercase items-center gap-8 font-[Poppins]">
           <NavLinks />
 
-          <Link to="/careers" className="py-7 px-3 inline-block">
+          <Link to="/careers" className="text-black py-7 px-3 inline-block">
             Careers
           </Link>
         </ul>
