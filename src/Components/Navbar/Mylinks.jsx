@@ -55,11 +55,76 @@ export const links = [
       },
       {
         Head: "Announcements",
-        sublink: [{ name: "Mu-Announcements", link: "/announcements" }],
+        sublink: [{ name: "Announcements", link: "/announcements" }],
       },
       {
         Head: "Weekly Events",
         sublink: [{ name: "Inspiration Station", link: "/isr" }],
+      },
+    ],
+  },
+  {
+    name: "Interest Group",
+    submenu: true,
+    sublinks: [
+      {
+        Head: "Search",
+        sublink: [
+          {
+            name: "Mentor Directory",
+            link: "https://learn.mulearn.org/mentors",
+          },
+          {
+            name: "Existing Circles",
+            link: "https://learn.mulearn.org/searchcircles",
+          },
+        ],
+      },
+      {
+        Head: "Pratice",
+        sublink: [
+          {
+            name: "Problem Shelf",
+            link: "https://learn.mulearn.org/problemshelves",
+          },
+          {
+            name: "Challenges",
+            link: "https://learn.mulearn.org/challenges",
+          },
+          {
+            name: "Courses",
+            link: "https://learn.mulearn.org/courses",
+          },
+        ],
+      },
+      {
+        Head: "Interest Groups",
+        sublink: [
+          {
+            name: "Web Development",
+            link: "https://learn.mulearn.org/web",
+          },
+          {
+            name: "Android Development",
+            link: "https://learn.mulearn.org/android",
+          },
+          {
+            name: "UI / UX",
+            link: "https://learn.mulearn.org/uiux",
+          },
+          {
+            name: "Product Management",
+            link: "https://learn.mulearn.org/pm",
+          },
+          {
+            name: "IoT",
+            link: "https://learn.mulearn.org/iot",
+          },
+          {
+            name: "Cyber Security",
+            link: "https://learn.mulearn.org/cybersec",
+          },
+        ],
       },
     ],
   },

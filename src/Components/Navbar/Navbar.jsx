@@ -22,17 +22,10 @@ const Navbar = () => {
         </div>
         <ul className="lg:flex hidden uppercase items-center gap-8 font-[Poppins]">
           <NavLinks />
+
           <Link to="/careers" className="py-7 px-3 inline-block">
             Careers
           </Link>
-          <a
-            href="https://learn.mulearn.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="py-7 px-3 inline-block"
-          >
-            Interest Groups
-          </a>
         </ul>
         <div className="lg:block hidden">
           <a
@@ -53,16 +46,24 @@ const Navbar = () => {
     duration-500 ${open ? "left-0" : "left-[-100%]"}
     `}
         >
+          <NavLinks />
           <li>
-            <Link to="/" className="py-7 px-3 inline-block">
-              Home
+            <Link to="/careers" className="py-7 px-3 inline-block">
+              Career
             </Link>
           </li>
-          <NavLinks />
-          <div className="py-5">
-            <button className="bg-orange text-white  px-6 py-2 rounded-full">
-              Get Started
-            </button>
+
+          <div className="grid justify-items-center">
+            <a
+              href="https://discord.com/invite/Jt7sv3chZP"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-7 px-28 "
+            >
+              <button className="bg-orange-400 text-white  px-6 py-2 rounded-md ">
+                Join Discord
+              </button>
+            </a>
           </div>
         </ul>
       </div>
