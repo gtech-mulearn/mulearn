@@ -6,7 +6,7 @@ import NavLinks from "./NavLinks";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   return (
-    <nav className="bg-white">
+    <nav className="bg-white ">
       <div className="flex items-center font-medium justify-around">
         <div className="z-50 p-5 mt-1 lg:w-auto w-full flex justify-between">
           <Link to="/">
@@ -25,17 +25,26 @@ const Navbar = () => {
           <Link to="/careers" className="py-7 px-3 inline-block">
             Careers
           </Link>
-          <Link
-            to="https://learn.mulearn.org"
+          <a
+            href="https://learn.mulearn.org"
+            target="_blank"
+            rel="noopener noreferrer"
             className="py-7 px-3 inline-block"
           >
             Interest Groups
-          </Link>
+          </a>
         </ul>
         <div className="lg:block hidden">
-          <button className="bg-orange-500 text-white  px-6 py-2 rounded-full">
-            Get Started
-          </button>
+          <a
+            href="https://discord.com/invite/Jt7sv3chZP"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="py-7 px-3 inline-block"
+          >
+            <button className="bg-orange-400 text-white  px-6 py-2 rounded-md">
+              Join Discord
+            </button>
+          </a>
         </div>
         {/* Mobile nav */}
         <ul

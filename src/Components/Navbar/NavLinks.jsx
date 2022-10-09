@@ -41,10 +41,10 @@ const NavLinks = () => {
                   <div className="bg-white p-5 grid grid-cols-3 gap-10">
                     {link.sublinks.map((mysublinks) => (
                       <div>
-                        <h1 className="text-lg font-semibold">
+                        <h1 className="text-lg font-medium">
                           <Link
                             to={mysublinks.link}
-                            className="hover:text-primary"
+                            className="hover:text-orange-500"
                           >
                             {mysublinks.Head}
                           </Link>
@@ -53,7 +53,7 @@ const NavLinks = () => {
                           <li className="text-sm text-gray-600 my-2.5">
                             <Link
                               to={slink.link}
-                              className="hover:text-primary"
+                              className="hover:text-orange-500"
                             >
                               {slink.name}
                             </Link>
@@ -82,7 +82,7 @@ const NavLinks = () => {
                         ? setSubHeading(slinks.Head)
                         : setSubHeading("")
                     }
-                    className="py-4 pl-7 font-semibold md:pr-0 pr-5 flex justify-between items-center md:pr-0 pr-5"
+                    className="py-4 pl-7 font-medium md:pr-0 pr-5 flex justify-between items-center md:pr-0 pr-5"
                   >
                     {slinks.Head}
 
