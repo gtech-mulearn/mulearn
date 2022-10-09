@@ -17,6 +17,7 @@ const Home = () => {
               <p className={styles.fv_heading}>
                 Let's <span>break the Echo Chambers</span> Together.
               </p>
+
               <p className={styles.fv_tagline}>
                 µLearn is a synergic philosophy of education, with a culture of
                 mutual learning through micro peer groups. We are here to assist
