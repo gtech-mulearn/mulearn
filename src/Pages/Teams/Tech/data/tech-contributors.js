@@ -175,14 +175,14 @@ const techTeam = [
   //   image:
   //     "https://drive.google.com/uc?export=view&id=1-vjsR_BWScAz2WWSSM255ON3kzuAyu_B",
   // },
-  // {
-  //   id: 24,
-  //   name: "Amal Sony",
-  //   team: "µ-JSON",
-  //   linkedin: "https://www.linkedin.com/in/amal-sony-264993205",
-  //   image:
-  //     "https://drive.google.com/uc?export=view&id=1JBuUAmwCdTq16IQDe4LHD8jPDEp1M_l6",
-  // },
+  {
+    id: 24,
+    name: "Amal Sony",
+    team: "µ-JSON",
+    linkedin: "https://www.linkedin.com/in/amal-sony-264993205",
+    image:
+      "https://drive.google.com/uc?export=view&id=1JBuUAmwCdTq16IQDe4LHD8jPDEp1M_l6",
+  },
   {
     id: 25,
     name: "Arjun M S",
