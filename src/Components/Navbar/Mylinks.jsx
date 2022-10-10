@@ -10,6 +10,10 @@ export const links = [
           { name: "Executive Committe", link: "/team/execom" },
           { name: "YIP Team", link: "/team/yip" },
           { name: "Community Team", link: "/team/community" },
+          {
+            name: "Tech Team",
+            link: "/team/tech",
+          },
         ],
       },
       {
