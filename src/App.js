@@ -44,7 +44,7 @@ function App() {
             <Route path="tech" element={<Tech />} />
           </Route>
           <Route path="/leaderboard" element={<LeaderBoard />} />
-          <Route path="/campus-community" element={<CampusCommunity />} />
+          <Route path="/campuscommunity" element={<CampusCommunity />} />
         </Routes>
       </Router>
     </div>
