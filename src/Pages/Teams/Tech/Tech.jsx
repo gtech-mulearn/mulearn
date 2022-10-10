@@ -1,7 +1,7 @@
 import Navbar from "../../../Components/Navbar/Navbar";
 import Footer from "../../../Components/Footer/Footer";
 import styles from "./Tech.module.css";
-// import yipTeam from "./data/yip-team.js";s
+import techTeam from "./data/tech-contributors.js";
 import MentorCard from "../../../Components/MentorCard/MentorCard";
 import { useState } from "react";
 
@@ -34,7 +34,7 @@ const Tech = () => {
         </div>
       </div>
       <div className={styles.team_collection}>
-        <select
+        {/* <select
           className={`${styles.select} form-select form-select-lg mb-3`}
           value={filter}
           onChange={handleFilterChange}
@@ -46,9 +46,9 @@ const Tech = () => {
           <option value="2">µ-300</option>
           <option value="3">µ-JSON</option>
           <option value="4">µ-Bot</option>
-        </select>
-        {/* <div className={styles.team_list}>
-          {yipTeam.map((member) => {
+        </select> */}
+        <div className={styles.team_list}>
+          {techTeam.map((member) => {
             console.log(member.domain);
             console.log(filters[filter]);
             if (filter === 0 || member.domain === filters[filter]) {
@@ -56,15 +56,15 @@ const Tech = () => {
                 <MentorCard
                   key={member.name}
                   name={member.name}
-                  designation={member.designation}
+                  // designation={member.team}
                   image={member.image}
-                  interest={member.domain ? member.domain : ""}
+                  interest={member.team ? member.team : ""}
                   linkedIn={member.linkedin}
                 />
               );
             } else return <></>;
           })}
-        </div> */}
+        </div>
       </div>
       <Footer />
     </>
