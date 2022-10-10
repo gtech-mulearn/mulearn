@@ -131,7 +131,7 @@
   font-weight: 600;
   opacity: 0.8;
   text-align: left;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .sv_cards_container {
@@ -139,9 +139,13 @@
 }
 
 .sv_cards {
+  width: 20rem;
   margin: 2rem auto 0;
   text-align: center;
+}
 
+.sv_texts {
+  margin: 2rem;
 }
 
 @media only screen and (min-width: 768px) {
@@ -165,7 +169,6 @@
   } */
 
   .sv_texts {
-    margin-bottom: 2rem;
     width: 40%;
   }
 
@@ -196,5 +199,11 @@
     grid-template-columns: 33% 33% 33%;
     row-gap: 1.5rem;
     columns: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .sv_texts {
+    margin: 0;
   }
 }
