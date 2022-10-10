@@ -19,6 +19,15 @@ export const links = [
           { name: "Company Partners", link: "/company-partners" },
         ],
       },
+      {
+        Head: "Gallery",
+        sublink: [
+          {
+            name: "Gallery",
+            link: "/gallery",
+          },
+        ],
+      },
     ],
   },
   {
