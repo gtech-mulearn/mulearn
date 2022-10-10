@@ -1,0 +1,228 @@
+const techTeam = [
+  {
+    id: 1,
+    name: "Vinu Balagopal A P",
+    team: "Dev Rel",
+    linkedin: "https://www.linkedin.com/in/vinubalagopalap/",
+    image:
+      "https://drive.google.com/uc?export=view&id=18Q20mpmGv7cOrgAc5Rikp1SKW__Utx6l",
+  },
+  {
+    id: 2,
+    name: "Aswin Asok",
+    team: "µ-Web",
+    linkedin: "https://www.linkedin.com/in/-aswinasok/",
+    image:
+      "https://drive.google.com/uc?export=view&id=15q2sG6cBIFpwbNW_kyZKakQN0HqxC0tl",
+  },
+  // {
+  //   id: 4,
+  //   name: "Ansan Johny",
+  //   team: "µ-300",
+  //   linkedin: "https://www.linkedin.com/in/ansan-johny-6092aa190",
+  //   image:
+  //     "https://drive.google.com/uc?export=view&id=19ieIvI15BX5AjJsfVODmWwXb3jaW7frp",
+  // },
+  {
+    id: 5,
+    name: "Angel Rose T J",
+    team: "µ-JSON",
+    linkedin: "https://www.linkedin.com/in/angelrosetj",
+    image:
+      "https://drive.google.com/uc?export=view&id=1DulaYotm4tFmQMOU5Gx1p7NkAfXsTa21",
+  },
+  // {
+  //   id: 6,
+  //   name: "Kevin Paul Babu",
+  //   team: "µ-300",
+  //   linkedin: "https://www.linkedin.com/in/kevin-paul-babu-737b28187",
+  //   image:
+  //     "https://drive.google.com/drive/folders/1fc6HQ5BoIY8_2yuBAVdxPZkCVMJHIQmo",
+  // },
+  {
+    id: 7,
+    name: "Andria Rose Aureo",
+    team: "µ-JSON",
+    linkedin: "https://www.linkedin.com/in/andria-rose-aureo-29a296202",
+    image:
+      "https://drive.google.com/uc?export=view&id=1K9uPrHg5AMSdaoYI3f_tABmbdkec6Ifx ",
+  },
+  // {
+  //   id: 8,
+  //   name: "Abhijith E S",
+  //   team: "µ-300",
+  //   linkedin: "https://www.linkedin.com/in/abhijithes",
+  //   image:
+  //     "https://drive.google.com/drive/folders/12KSuL0dVAs1lUhAI2u7jEJ9qFv-aW3U4",
+  // },
+  {
+    id: 9,
+    name: "Sivaprasad C",
+    team: "µ-300",
+    linkedin: "https://www.linkedin.com/in/sivaprasad-c-02662b166/",
+    image:
+      "https://drive.google.com/uc?export=view&id=1bLz9vZ_2dwRTU_ZgQUZaQ5JSHBRHG303 ",
+  },
+  {
+    id: 10,
+    name: "Basith P",
+    team: "µ-Web",
+    linkedin: "https://www.linkedin.com/in/basithp9/",
+    image:
+      "https://drive.google.com/uc?export=view&id=1YgTwcYnvrg4oZxAM71OkaxJSLq8ZQqFN ",
+  },
+  {
+    id: 11,
+    name: "Muhammed Zafar M M",
+    team: "µ-JSON",
+    linkedin: "https://www.linkedin.com/in/muhammed-zafar-b4462a22a",
+    image:
+      "https://drive.google.com/uc?export=view&id=1XqIzadQBMPZ-NGRNhMeO5M69ayIAQxrn",
+  },
+  {
+    id: 12,
+    name: "Sooraj P",
+    team: "µ-JSON",
+    linkedin: "https://www.linkedin.com/in/soorajksd/",
+    image:
+      "https://drive.google.com/uc?export=view&id=10O0hN1IJ16oCf8avzbsxFPg2llhUBWfA",
+  },
+  // {
+  //   id: 13,
+  //   name: "K U Anupama",
+  //   team: "µ-JSON",
+  //   linkedin: "https://www.linkedin.com/in/k-u-anupama-44b853205",
+  //   image:
+  //     "https://photos.google.com/share/AF1QipN7z--VF7v00fbuMUXrYkxnqHy6gHHVG64HA7_iiVpqNA3orp6rQgG2FJSOoMdQFw?key=Z3hhRl9PS0FhLVU5TGg2ZUpBaHNFN2tUMlA2c2tn",
+  // },
+  {
+    id: 14,
+    name: "Ann Elizabeth James",
+    team: "µ-300",
+    linkedin: "https://www.linkedin.com/in/ann-elizabeth-james-a48b2b221",
+    image:
+      "https://drive.google.com/uc?export=view&id=1QYWIJ73b4bFL3beoSuhAdey5duAD6LhI",
+  },
+  // {
+  //   id: 15,
+  //   name: "Rajat Mathew",
+  //   team: "µ-Web",
+  //   linkedin: "http://linkedin.com/in/rajatmathew",
+  //   image:
+  //     "https://drive.google.com/uc?export=view&id=1QP-UGBOgrXklCut7ckR9XPkpNCjc3269",
+  // },
+  // {
+  //   id: 16,
+  //   name: "Kevin Joseph Hendry",
+  //   team: "µ-300",
+  //   linkedin: "https://www.linkedin.com/in/kevin-joseph-hendry-504732227/",
+  //   image:
+  //     "https://drive.google.com/uc?export=view&id=12orP0dMqOAoXCeulPnbDN3ktO_ItHDIY",
+  // },
+  // {
+  //   id: 17,
+  //   name: "Akash Santhosh",
+  //   team: "µ-Web",
+  //   linkedin: "http://linkedin.com/in/akashsanthosh",
+  //   image:
+  //     "https://aksone-my.sharepoint.com/personal/hey_aks_one/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fhey%5Faks%5Fone%2FDocuments%2FIMG%5F20200522%5F123314%5F671%2Ejpeg&parent=%2Fpersonal%2Fhey%5Faks%5Fone%2FDocuments&ga=1",
+  // },
+  {
+    id: 18,
+    name: "Mohamed Faraz M S",
+    team: "µ-JSON",
+    linkedin: "https://www.linkedin.com/in/mohamed-faraz-m-s/",
+    image:
+      "https://drive.google.com/uc?export=view&id=1h2Udr_b7OHXQUDIOgSWuWd6pm0r3TAAQ ",
+  },
+  {
+    id: 19,
+    name: "Finu Shaheem",
+    team: "µ-Web",
+    linkedin: "https://www.linkedin.com/in/finushaheem/",
+    image:
+      "https://drive.google.com/uc?export=view&id=1LMcAHqV_TDfpqSCITmo1PqrfDJf1uF0X ",
+  },
+  {
+    id: 20,
+    name: "Chaitanya Liz",
+    team: "µ-JSON",
+    linkedin: "https://www.linkedin.com/in/lizchaitanya",
+    image:
+      "https://drive.google.com/uc?export=view&id=10CN0aN3Dk_ZVkYCFcc5nXy6YMent-Mo8 ",
+  },
+  {
+    id: 21,
+    name: "Edwin liby",
+    team: "µ-JSON",
+    linkedin: "https://www.linkedin.com/in/edwin-liby-12b7a5220/",
+    image:
+      "https://drive.google.com/uc?export=view&id=1ANZdHLP8jg8EKRJ45xqtqgFku0f7XKlQ",
+  },
+  {
+    id: 22,
+    name: "Moosa Fayas",
+    team: "µ-JSON",
+    linkedin: "https://www.linkedin.com/in/moosafayaz",
+    image:
+      "https://drive.google.com/uc?export=view&id=10eeDzobzgaQkEsgnmc3KX0-B2xD5LvKp",
+  },
+  // {
+  //   id: 23,
+  //   name: "Irfan Ansari",
+  //   team: "µ-JSON",
+  //   linkedin: "https://www.linkedin.com/in/irfan-ansari-634174132",
+  //   image:
+  //     "https://drive.google.com/uc?export=view&id=1-vjsR_BWScAz2WWSSM255ON3kzuAyu_B",
+  // },
+  {
+    id: 24,
+    name: "Amal Sony",
+    team: "µ-JSON",
+    linkedin: "https://www.linkedin.com/in/amal-sony-264993205",
+    image:
+      "https://drive.google.com/uc?export=view&id=1JBuUAmwCdTq16IQDe4LHD8jPDEp1M_l6",
+  },
+  {
+    id: 25,
+    name: "Arjun M S",
+    team: "µ-Bot",
+    linkedin: "https://www.linkedin.com/in/the-arjun-ms",
+    image:
+      "https://drive.google.com/uc?export=view&id=1s6cVAFrz9wYIlCO1IvCvFuZKEWEIXRVH",
+  },
+  {
+    id: 26,
+    name: "Adheel Ahmed Chelakkot",
+    team: "µ-Web",
+    linkedin: "https://www.linkedin.com/in/a-h-m-e-d/",
+    image:
+      "https://drive.google.com/uc?export=view&id=1W64kB8sdHsUKEJcf5HYIJEdaGhz4jfxA",
+  },
+  // {
+  //   id: 27,
+  //   name: "Kochouseph John",
+  //   team: "µ-JSON",
+  //   linkedin: "https://www.linkedin.com/in/kochouseph-john-b86149212",
+  //   image:
+  //     "https://drive.google.com/uc?export=view&id=1wz89naFQKsq1Osq1i7zpM4-SgSvA7HiA",
+  // },
+  {
+    id: 28,
+    name: "Jovit Mathew",
+    team: "µ-300",
+    linkedin: "https://www.linkedin.com/in/jovit-mathew-844590205",
+    image:
+      "https://drive.google.com/uc?export=view&id=1ykHk_Wa-r9mQEWYy0PzoFdwWyUjHXmU7",
+  },
+  {
+    id: 29,
+    name: "Vishnu C R",
+    team: "µ-300",
+    linkedin: "https://www.linkedin.com/in/vishnu-c-r-821a31201",
+    image:
+      "https://drive.google.com/uc?export=view&id=17uxC5i9Y2IwL3MmzWOE-k134NVQBpVL3",
+  },
+];
+
+export default techTeam;

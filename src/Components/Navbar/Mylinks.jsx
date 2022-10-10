@@ -10,6 +10,10 @@ export const links = [
           { name: "Executive Committe", link: "/team/execom" },
           { name: "YIP Team", link: "/team/yip" },
           { name: "Community Team", link: "/team/community" },
+          {
+            name: "Tech Team",
+            link: "/team/tech",
+          },
         ],
       },
       {
@@ -17,6 +21,15 @@ export const links = [
         sublink: [
           { name: "Community Partners", link: "/community-partners" },
           { name: "Company Partners", link: "/company-partners" },
+        ],
+      },
+      {
+        Head: "Gallery",
+        sublink: [
+          {
+            name: "Gallery",
+            link: "/gallery",
+          },
         ],
       },
     ],
