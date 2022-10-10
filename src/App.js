@@ -17,6 +17,7 @@ import LeaderBoard from "./Pages/LeaderBoard/leaderBoard";
 import Courses from "./Pages/Courses/Courses";
 import WikiSyllabus from "./Pages/WikiSyllabus/WikiSyllabus";
 import Tech from "./Pages/Teams/Tech/Tech";
+import CampusCommunity from "./Pages/CampusCommunity/CampusCommunity";
 
 function App() {
   return (
@@ -43,7 +44,7 @@ function App() {
             <Route path="tech" element={<Tech />} />
           </Route>
           <Route path="/leaderboard" element={<LeaderBoard />} />
-          {/* <Route path="/community" element={ }/> */}
+          <Route path="/campus-community" element={<CampusCommunity />} />
         </Routes>
       </Router>
     </div>

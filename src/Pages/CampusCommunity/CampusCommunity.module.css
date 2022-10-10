@@ -1,0 +1,281 @@
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.main_container {
+  padding: 2rem;
+}
+
+.first_view {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.fv_img {
+  display: block;
+  margin: auto;
+  width: 20rem;
+}
+
+.fv_texts {
+  text-align: center;
+}
+
+.fv_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #303030;
+}
+
+.fv_heading span {
+  font-weight: 600;
+  color: #f78c40;
+}
+
+.leadcampus {
+  background-color: #f78c40;
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border: none;
+  margin-top: 1rem;
+  border-radius: 5px;
+}
+
+.fv_tagline {
+  margin-top: 0.5rem;
+  font-family: "Poppins", sans-serif;
+}
+
+@media only screen and (min-width: 1000px) {
+  .first_view_container {
+    padding: 3rem 3rem;
+  }
+
+  .first_view {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4rem;
+  }
+
+  .fv_img {
+    display: block;
+    margin: auto;
+    width: 30rem;
+  }
+
+  .fv_texts {
+    text-align: left;
+    width: 50%;
+  }
+
+  .fv_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 4.55rem;
+    line-height: 5rem;
+    font-weight: 600;
+  }
+
+  .fv_tagline {
+    margin-top: 1rem;
+    font-size: 1rem;
+    width: 80%;
+  }
+}
+
+/* Second View Styles */
+
+.second_view {
+  margin-top: 3rem;
+}
+
+.sv_pheading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-variant: small-caps;
+}
+
+.sv_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #303030;
+}
+
+.sv_heading span {
+  color: #f78c40;
+}
+
+.d_number {
+  background-color: #f78c40;
+  color: white;
+  font-weight: 600;
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1000px;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.d_text {
+  font-family: "Poppins", sans-serif;
+}
+
+.d_heading span {
+  font-weight: 500;
+  font-size: 1.1rem;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.d_text span {
+  font-weight: 600;
+}
+
+.d_main_container {
+  margin-top: 1rem;
+}
+
+.d_container {
+  margin-top: 1.5rem;
+}
+
+.d_video_container {
+  margin-top: 2rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  .second_view_container {
+    padding: 3rem 3rem;
+  }
+
+  .second_view {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 4rem;
+  }
+
+  .sv_img {
+    display: block;
+    margin: auto;
+    width: 30rem;
+  }
+
+  .sv_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 2.5rem;
+    line-height: 5rem;
+    font-weight: 600;
+  }
+
+  .sv_tagline {
+    margin-top: 1rem;
+    font-size: 1rem;
+    width: 80%;
+  }
+
+  .sv_texts {
+    text-align: left;
+    width: 50%;
+  }
+
+  .sv_pheading {
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-variant: small-caps;
+  }
+
+  .d_video_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .d_video iframe {
+    width: 35rem;
+    height: 19rem;
+    margin-right: 3rem;
+  }
+
+  .d_main_container {
+    margin-top: 0;
+    width: 50%;
+  }
+
+  .d_text {
+    font-size: 1rem;
+  }
+}
+
+/* Third Section Styles */
+
+.third_view_container {
+  padding-top: 2rem;
+}
+
+.tv_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #303030;
+}
+
+.tv_heading span {
+  color: #f78c40;
+}
+
+.story_img {
+  border-radius: 5px;
+}
+
+.tv_story {
+  margin-top: 2rem;
+}
+
+.story_name {
+  font-family: "Noto Sans", sans-serif;
+  margin-top: 1rem;
+  font-size: 1.3rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  .third_view_container {
+    padding: 3rem 3rem;
+  }
+
+  .third_view {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 4rem;
+  }
+
+  .tv_story {
+    margin-right: 5rem;
+  }
+
+  .tv_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+
+  .tv_tagline {
+    font-size: 1.1rem;
+    width: 70%;
+  }
+
+  .tv_story_container {
+    display: flex;
+  }
+}
