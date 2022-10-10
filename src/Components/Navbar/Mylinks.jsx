@@ -104,7 +104,7 @@ export const links = [
         ],
       },
       {
-        Head: "Pratice",
+        Head: "Practice",
         sublink: [
           {
             name: "Problem Shelf",
