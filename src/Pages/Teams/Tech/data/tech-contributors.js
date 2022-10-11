@@ -15,14 +15,14 @@ const techTeam = [
     image:
       "https://drive.google.com/uc?export=view&id=15q2sG6cBIFpwbNW_kyZKakQN0HqxC0tl",
   },
-  // {
-  //   id: 4,
-  //   name: "Ansan Johny",
-  //   team: "µ-300",
-  //   linkedin: "https://www.linkedin.com/in/ansan-johny-6092aa190",
-  //   image:
-  //     "https://drive.google.com/uc?export=view&id=19ieIvI15BX5AjJsfVODmWwXb3jaW7frp",
-  // },
+  {
+    id: 4,
+    name: "Ansan Johny",
+    team: "µ-300",
+    linkedin: "https://www.linkedin.com/in/ansan-johny-6092aa190",
+    image:
+      "https://drive.google.com/uc?export=view&id=19ieIvI15BX5AjJsfVODmWwXb3jaW7frp",
+  },
   {
     id: 5,
     name: "Angel Rose T J",
@@ -199,14 +199,14 @@ const techTeam = [
     image:
       "https://drive.google.com/uc?export=view&id=1W64kB8sdHsUKEJcf5HYIJEdaGhz4jfxA",
   },
-  // {
-  //   id: 27,
-  //   name: "Kochouseph John",
-  //   team: "µ-JSON",
-  //   linkedin: "https://www.linkedin.com/in/kochouseph-john-b86149212",
-  //   image:
-  //     "https://drive.google.com/uc?export=view&id=1wz89naFQKsq1Osq1i7zpM4-SgSvA7HiA",
-  // },
+  {
+    id: 27,
+    name: "Kochouseph John",
+    team: "µ-JSON",
+    linkedin: "https://www.linkedin.com/in/kochouseph-john-b86149212",
+    image:
+      "https://drive.google.com/uc?export=view&id=1yBN8F0cosBcQwFak7szgsqSXvNFFDtn8",
+  },
   {
     id: 28,
     name: "Jovit Mathew",
