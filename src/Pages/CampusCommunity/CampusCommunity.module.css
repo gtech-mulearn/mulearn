@@ -246,6 +246,18 @@ p {
   font-size: 1.3rem;
 }
 
+.story_img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.read_more {
+  margin-top: 1rem;
+  font-family: "Noto Sans", sans-serif;
+  color: #f78c40;
+}
+
 @media only screen and (min-width: 1000px) {
   .third_view_container {
     padding: 3rem 3rem;

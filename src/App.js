@@ -18,6 +18,7 @@ import Courses from "./Pages/Courses/Courses";
 import WikiSyllabus from "./Pages/WikiSyllabus/WikiSyllabus";
 import Tech from "./Pages/Teams/Tech/Tech";
 import CampusCommunity from "./Pages/CampusCommunity/CampusCommunity";
+import BlogPage from "./Pages/CampusCommunity/BlogPage/BlogPage";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           </Route>
           <Route path="/leaderboard" element={<LeaderBoard />} />
           <Route path="/campuscommunity" element={<CampusCommunity />} />
+          <Route path="/blog" element={<BlogPage />} />
         </Routes>
       </Router>
     </div>

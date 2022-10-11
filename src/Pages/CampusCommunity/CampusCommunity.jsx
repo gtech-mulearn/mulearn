@@ -3,6 +3,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 
 import styles from "./CampusCommunity.module.css";
+import { Link } from "react-router-dom";
 
 const CampusCommunity = () => {
   return (
@@ -114,13 +115,31 @@ const CampusCommunity = () => {
                 <span>Campus</span> Success Stories
               </p>
               <p className={styles.tv_tagline}>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt quod unde fugiat quisquam libero? Corrupti voluptatibus nisi commodi. Sint, sunt!
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Incidunt quod unde fugiat quisquam libero? Corrupti voluptatibus
+                nisi commodi. Sint, sunt!
               </p>
             </div>
             <div className={styles.tv_story_container}>
               <div className={styles.tv_story}>
                 <img
-                  src="https://via.placeholder.com/150"
+                  src="/assets/campuscommunity/sandra.jpg"
+                  alt=""
+                  className={styles.story_img}
+                />
+                <p className={styles.story_name}>Jessno Oommen Jose</p>
+                <p className={styles.story_text}>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Nulla aperiam nemo dolorum magni. In excepturi, at blanditiis
+                  consequuntur consequatur aliquid.
+                </p>
+                <Link to="/blog">
+                  <p className={styles.read_more}>Read More...</p>
+                </Link>
+              </div>
+              <div className={styles.tv_story}>
+                <img
+                  src="/assets/campuscommunity/jessno.jpg"
                   alt=""
                   className={styles.story_img}
                 />
@@ -133,20 +152,7 @@ const CampusCommunity = () => {
               </div>
               <div className={styles.tv_story}>
                 <img
-                  src="https://via.placeholder.com/150"
-                  alt=""
-                  className={styles.story_img}
-                />
-                <p className={styles.story_name}>Jessno Oommen Jose</p>
-                <p className={styles.story_text}>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Nulla aperiam nemo dolorum magni. In excepturi, at blanditiis
-                  consequuntur consequatur aliquid.
-                </p>
-              </div>
-              <div className={styles.tv_story}>
-                <img
-                  src="https://via.placeholder.com/150"
+                  src="/assets/campuscommunity/amritha.jpeg"
                   alt=""
                   className={styles.story_img}
                 />
