@@ -40,6 +40,10 @@
   height: 2px;
 }
 
+a{
+  font-weight: 500;
+}
+
 .address,
 .mail {
   margin-top: 2rem;
@@ -78,6 +82,10 @@
     font-weight: 300;
     width: 75%;
   }
+}
+
+.mail{
+  font-weight: 600;
 }
 
 .mailus {
@@ -152,6 +160,9 @@ button:focus {
   color: white;
   display: flex;
   flex-direction: row;
+}
+.fs_rightside {
+  display: flex;
 }
 
 @media only screen and (min-width: 1000px) {

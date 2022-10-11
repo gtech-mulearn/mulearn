@@ -1,190 +1,71 @@
-import React from "react";
-import "./Navbar.css";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
+import NavLinks from "./NavLinks";
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
   return (
-    <nav>
-      <div className="navbar navbar-expand-lg navbar-light ">
-        <div className="container">
-          <a className="navbar-brand" href="/">
+    <nav className="bg-white ">
+      <div className="flex items-center font-medium justify-around">
+        <div className="z-50 p-5 mt-1 lg:w-auto w-full flex justify-between">
+          <Link to="/">
             <img
-              className="mulearn-logo"
               src="/assets/navbar/µLearn.png"
-              alt="µ"
+              alt="logo"
+              className="lg:cursor-pointer h-8"
             />
-          </a>
-
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-
-          <div
-            class="navbar-styles collapse navbar-collapse"
-            id="navbarNavDropdown"
-          >
-            <div className="navbar-dropdowns">
-              <ul className="navbar-nav">
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="/#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    id="navbarDropdownMenuLink"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    About
-                  </a>
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="navbarDropdownMenuLink"
-                  >
-                    <li>
-                      <a className="dropdown-item" href="/team">
-                        Our Team
-                      </a>
-                    </li>
-
-                    <li>
-                      <a className="dropdown-item" href="/gallery">
-                        µ-gallery
-                      </a>
-                    </li>
-
-                    <li>
-                      <a className="dropdown-item" href="/company-partners">
-                        Company Partners
-                      </a>
-                    </li>
-
-                    <li>
-                      <a className="dropdown-item" href="/community-partners">
-                        Community Partners
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="/#"
-                    id="navbarDropdownMenuLink"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Program
-                  </a>
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="navbarDropdownMenuLink"
-                  >
-                    <li>
-                      <a
-                        className="dropdown-item"
-                        href="https://yip.mulearn.org"
-                      >
-                        YIP
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="/artofteaching">
-                        Art of teaching
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="dropdown-item"
-                        href="https://foundation.mulearn.org"
-                      >
-                        Foundation Program
-                      </a>
-                    </li>
-
-                    <li>
-                      <a className="dropdown-item" href="/wikisyllabus">
-                        Wiki Syllabus
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="/#"
-                    id="navbarDropdownMenuLink"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Events
-                  </a>
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="navbarDropdownMenuLink"
-                  >
-                    <li>
-                      <a className="dropdown-item" href="/calendar">
-                        Global Calendar
-                      </a>
-                    </li>
-
-                    <li>
-                      <a className="dropdown-item" href="/announcements">
-                        µ-Announcements
-                      </a>
-                    </li>
-
-                    <li>
-                      <a className="dropdown-item" href="/isr">
-                        Inspiration Station
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li className="nav-item dropdown">
-                  <a className="nav-link" href="/careers">
-                    Careers
-                  </a>
-                </li>
-
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link"
-                    href="https://learn.mulearn.org/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Interest Groups
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="nav-barbtn">
-              <a
-                href="https://discord.com/invite/Jt7sv3chZP"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className="join-discord">Join Discord Server</button>
-              </a>
-            </div>
+          </Link>
+          <div className="text-3xl lg:hidden" onClick={() => setOpen(!open)}>
+            <ion-icon name={`${open ? "close" : "menu"}`}></ion-icon>
           </div>
         </div>
+        <ul className="lg:flex hidden uppercase items-center gap-8 font-[Poppins]">
+          <NavLinks />
+
+          <Link to="/careers" className="text-black py-7 px-3 inline-block">
+            Careers
+          </Link>
+        </ul>
+        <div className="lg:block hidden">
+          <a
+            href="https://discord.com/invite/Jt7sv3chZP"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="py-7 px-3 inline-block"
+          >
+            <button className="bg-orange-400 text-white  px-6 py-2 rounded-md">
+              Join Discord
+            </button>
+          </a>
+        </div>
+        {/* Mobile nav */}
+        <ul
+          className={`
+    lg:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24 pl-4
+    duration-500 ${open ? "left-0" : "left-[-100%]"}
+    `}
+        >
+          <NavLinks />
+          <li>
+            <Link to="/careers" className="py-7 px-3 inline-block">
+              Career
+            </Link>
+          </li>
+
+          <div className="grid justify-items-center">
+            <a
+              href="https://discord.com/invite/Jt7sv3chZP"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-7 px-28 "
+            >
+              <button className="bg-orange-400 text-white  px-6 py-2 rounded-md ">
+                Join Discord
+              </button>
+            </a>
+          </div>
+        </ul>
       </div>
     </nav>
   );
