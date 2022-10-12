@@ -103,13 +103,14 @@
   height: 20rem;
   object-fit: cover;
   border-radius: 5px;
-  margin: 1rem 0rem;
+  margin: 1rem auto;
 }
 
 .sv_heading {
   font-size: 1.75rem;
   font-family: "Noto Sans", sans-serif;
   font-weight: 600;
+
 }
 
 .sv_heading span {
@@ -143,7 +144,7 @@
   } */
 
   .sv_texts {
-    margin-bottom: 1rem;
+    margin: 0 0 1rem 2rem;
   }
 
   .sv_heading {
@@ -183,5 +184,11 @@
     row-gap: 1.5rem;
     columns: 1.5rem;
     justify-content: space-between;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .sv_texts {
+    margin-left: 0;
   }
 }
