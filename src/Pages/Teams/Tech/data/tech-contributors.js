@@ -223,6 +223,14 @@ const techTeam = [
     image:
       "https://drive.google.com/uc?export=view&id=17uxC5i9Y2IwL3MmzWOE-k134NVQBpVL3",
   },
+  {
+    id: 30,
+    name: "Jithesh Raj M",
+    team: "µ-300",
+    linkedin: "https://www.linkedin.com/in/vishnu-c-r-821a31201",
+    image:
+      "https://drive.google.com/uc?export=view&id=1YgNosOZEb-7mfEiq4XSGkLYeBt8RAu80",
+  },
 ];
 
 export default techTeam;
