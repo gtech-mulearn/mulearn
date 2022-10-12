@@ -87,14 +87,14 @@ const techTeam = [
     image:
       "https://drive.google.com/uc?export=view&id=10O0hN1IJ16oCf8avzbsxFPg2llhUBWfA",
   },
-  // {
-  //   id: 13,
-  //   name: "K U Anupama",
-  //   team: "µ-JSON",
-  //   linkedin: "https://www.linkedin.com/in/k-u-anupama-44b853205",
-  //   image:
-  //     "https://photos.google.com/share/AF1QipN7z--VF7v00fbuMUXrYkxnqHy6gHHVG64HA7_iiVpqNA3orp6rQgG2FJSOoMdQFw?key=Z3hhRl9PS0FhLVU5TGg2ZUpBaHNFN2tUMlA2c2tn",
-  // },
+  {
+    id: 13,
+    name: "K U Anupama",
+    team: "µ-JSON",
+    linkedin: "https://www.linkedin.com/in/k-u-anupama-44b853205",
+    image:
+      "https://drive.google.com/uc?export=view&id=1kAEqmQwDBCyMgiD3a-xxzmL594sAlo-2",
+  },
   {
     id: 14,
     name: "Ann Elizabeth James",
@@ -231,6 +231,14 @@ const techTeam = [
     image:
       "https://drive.google.com/uc?export=view&id=1VqH1iz7F77sFOXB6NKslKQ0PISZGMvE5",
   },
+  // {
+  //   id: 31,
+  //   name: "Irfan Ansari",
+  //   team: "µ-JSON",
+  //   linkedin: "https://www.linkedin.com/in/irfan-ansari-634174132",
+  //   image:
+  //     "https://drive.google.com/uc?export=view&id=1VqH1iz7F77sFOXB6NKslKQ0PISZGMvE5",
+  // },
 ];
 
 export default techTeam;
