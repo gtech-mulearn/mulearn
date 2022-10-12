@@ -71,8 +71,15 @@
   border: 1px solid hsla(0, 0%, 100%, 0.18);
   border-radius: 10px;
   box-shadow: 0 1px 12px 0 rgb(193 195 211 / 37%);
-  padding: 3rem 2rem;
+  padding: 1.5rem 2rem 5rem;
   position: relative;
+}
+
+
+
+.team_card a {
+  position: absolute;
+  bottom: 2rem;
 }
 
 .join_button {
@@ -146,6 +153,13 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 3rem;
+  }
+
+  .team_card p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
   }
 }
 

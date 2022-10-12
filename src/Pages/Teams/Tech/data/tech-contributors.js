@@ -31,14 +31,14 @@ const techTeam = [
     image:
       "https://drive.google.com/uc?export=view&id=1DulaYotm4tFmQMOU5Gx1p7NkAfXsTa21",
   },
-  // {
-  //   id: 6,
-  //   name: "Kevin Paul Babu",
-  //   team: "µ-300",
-  //   linkedin: "https://www.linkedin.com/in/kevin-paul-babu-737b28187",
-  //   image:
-  //     "https://drive.google.com/drive/folders/1fc6HQ5BoIY8_2yuBAVdxPZkCVMJHIQmo",
-  // },
+  {
+    id: 6,
+    name: "Kevin Paul Babu",
+    team: "µ-300",
+    linkedin: "https://www.linkedin.com/in/kevin-paul-babu-737b28187",
+    image:
+      "https://drive.google.com/uc?export=view&id=1E2mZ-N0KEWjq8JyuHLB14A7fxXcKSu2o",
+  },
   {
     id: 7,
     name: "Andria Rose Aureo",
@@ -47,14 +47,14 @@ const techTeam = [
     image:
       "https://drive.google.com/uc?export=view&id=1K9uPrHg5AMSdaoYI3f_tABmbdkec6Ifx ",
   },
-  // {
-  //   id: 8,
-  //   name: "Abhijith E S",
-  //   team: "µ-300",
-  //   linkedin: "https://www.linkedin.com/in/abhijithes",
-  //   image:
-  //     "https://drive.google.com/drive/folders/12KSuL0dVAs1lUhAI2u7jEJ9qFv-aW3U4",
-  // },
+  {
+    id: 8,
+    name: "Abhijith E S",
+    team: "µ-300",
+    linkedin: "https://www.linkedin.com/in/abhijithes",
+    image:
+      "https://drive.google.com/uc?export=view&id=12Qao14a7s_UZnz5qUcmHf4KboOmDlS9G",
+  },
   {
     id: 9,
     name: "Sivaprasad C",
@@ -87,14 +87,14 @@ const techTeam = [
     image:
       "https://drive.google.com/uc?export=view&id=10O0hN1IJ16oCf8avzbsxFPg2llhUBWfA",
   },
-  // {
-  //   id: 13,
-  //   name: "K U Anupama",
-  //   team: "µ-JSON",
-  //   linkedin: "https://www.linkedin.com/in/k-u-anupama-44b853205",
-  //   image:
-  //     "https://photos.google.com/share/AF1QipN7z--VF7v00fbuMUXrYkxnqHy6gHHVG64HA7_iiVpqNA3orp6rQgG2FJSOoMdQFw?key=Z3hhRl9PS0FhLVU5TGg2ZUpBaHNFN2tUMlA2c2tn",
-  // },
+  {
+    id: 13,
+    name: "K U Anupama",
+    team: "µ-JSON",
+    linkedin: "https://www.linkedin.com/in/k-u-anupama-44b853205",
+    image:
+      "https://drive.google.com/uc?export=view&id=1kAEqmQwDBCyMgiD3a-xxzmL594sAlo-2",
+  },
   {
     id: 14,
     name: "Ann Elizabeth James",
@@ -111,22 +111,22 @@ const techTeam = [
   //   image:
   //     "https://drive.google.com/uc?export=view&id=1QP-UGBOgrXklCut7ckR9XPkpNCjc3269",
   // },
-  // {
-  //   id: 16,
-  //   name: "Kevin Joseph Hendry",
-  //   team: "µ-300",
-  //   linkedin: "https://www.linkedin.com/in/kevin-joseph-hendry-504732227/",
-  //   image:
-  //     "https://drive.google.com/uc?export=view&id=12orP0dMqOAoXCeulPnbDN3ktO_ItHDIY",
-  // },
-  // {
-  //   id: 17,
-  //   name: "Akash Santhosh",
-  //   team: "µ-Web",
-  //   linkedin: "http://linkedin.com/in/akashsanthosh",
-  //   image:
-  //     "https://aksone-my.sharepoint.com/personal/hey_aks_one/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fhey%5Faks%5Fone%2FDocuments%2FIMG%5F20200522%5F123314%5F671%2Ejpeg&parent=%2Fpersonal%2Fhey%5Faks%5Fone%2FDocuments&ga=1",
-  // },
+  {
+    id: 16,
+    name: "Kevin Joseph Hendry",
+    team: "µ-300",
+    linkedin: "https://www.linkedin.com/in/kevin-joseph-hendry-504732227/",
+    image:
+      "https://drive.google.com/uc?export=view&id=1BlBRtS_6TVHL-_MKrnJyiXBstPjHOpBz",
+  },
+  {
+    id: 17,
+    name: "Akash Santhosh",
+    team: "µ-Web",
+    linkedin: "http://linkedin.com/in/akashsanthosh",
+    image:
+      "https://drive.google.com/uc?export=view&id=18cHFIDAudrcOoD179RFXwcqtypT1QQvk",
+  },
   {
     id: 18,
     name: "Mohamed Faraz M S",
@@ -229,7 +229,15 @@ const techTeam = [
     team: "µ-300",
     linkedin: "https://www.linkedin.com/in/vishnu-c-r-821a31201",
     image:
-      "https://drive.google.com/uc?export=view&id=1YgNosOZEb-7mfEiq4XSGkLYeBt8RAu80",
+      "https://drive.google.com/uc?export=view&id=1VqH1iz7F77sFOXB6NKslKQ0PISZGMvE5",
+  },
+  {
+    id: 31,
+    name: "Irfan Ansari",
+    team: "µ-JSON",
+    linkedin: "https://www.linkedin.com/in/irfan-ansari-634174132",
+    image:
+      "https://drive.google.com/uc?export=view&id=1-vjsR_BWScAz2WWSSM255ON3kzuAyu_B",
   },
 ];
 
