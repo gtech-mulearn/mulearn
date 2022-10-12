@@ -119,14 +119,14 @@ const techTeam = [
     image:
       "https://drive.google.com/uc?export=view&id=1BlBRtS_6TVHL-_MKrnJyiXBstPjHOpBz",
   },
-  //
-  //   id: 17,
-  //   name: "Akash Santhosh",
-  //   team: "µ-Web",
-  //   linkedin: "http://linkedin.com/in/akashsanthosh",
-  //   image:
-  //     "https://aksone-my.sharepoint.com/personal/hey_aks_one/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fhey%5Faks%5Fone%2FDocuments%2FIMG%5F20200522%5F123314%5F671%2Ejpeg&parent=%2Fpersonal%2Fhey%5Faks%5Fone%2FDocuments&ga=1",
-  // },
+  {
+    id: 17,
+    name: "Akash Santhosh",
+    team: "µ-Web",
+    linkedin: "http://linkedin.com/in/akashsanthosh",
+    image:
+      "https://drive.google.com/uc?export=view&id=18cHFIDAudrcOoD179RFXwcqtypT1QQvk",
+  },
   {
     id: 18,
     name: "Mohamed Faraz M S",
