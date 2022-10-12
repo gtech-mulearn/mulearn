@@ -31,14 +31,14 @@ const techTeam = [
     image:
       "https://drive.google.com/uc?export=view&id=1DulaYotm4tFmQMOU5Gx1p7NkAfXsTa21",
   },
-  // {
-  //   id: 6,
-  //   name: "Kevin Paul Babu",
-  //   team: "µ-300",
-  //   linkedin: "https://www.linkedin.com/in/kevin-paul-babu-737b28187",
-  //   image:
-  //     "https://drive.google.com/drive/folders/1fc6HQ5BoIY8_2yuBAVdxPZkCVMJHIQmo",
-  // },
+  {
+    id: 6,
+    name: "Kevin Paul Babu",
+    team: "µ-300",
+    linkedin: "https://www.linkedin.com/in/kevin-paul-babu-737b28187",
+    image:
+      "https://drive.google.com/uc?export=view&id=1E2mZ-N0KEWjq8JyuHLB14A7fxXcKSu2o",
+  },
   {
     id: 7,
     name: "Andria Rose Aureo",
@@ -47,14 +47,14 @@ const techTeam = [
     image:
       "https://drive.google.com/uc?export=view&id=1K9uPrHg5AMSdaoYI3f_tABmbdkec6Ifx ",
   },
-  // {
-  //   id: 8,
-  //   name: "Abhijith E S",
-  //   team: "µ-300",
-  //   linkedin: "https://www.linkedin.com/in/abhijithes",
-  //   image:
-  //     "https://drive.google.com/drive/folders/12KSuL0dVAs1lUhAI2u7jEJ9qFv-aW3U4",
-  // },
+  {
+    id: 8,
+    name: "Abhijith E S",
+    team: "µ-300",
+    linkedin: "https://www.linkedin.com/in/abhijithes",
+    image:
+      "https://drive.google.com/uc?export=view&id=12Qao14a7s_UZnz5qUcmHf4KboOmDlS9G",
+  },
   {
     id: 9,
     name: "Sivaprasad C",
@@ -111,15 +111,15 @@ const techTeam = [
   //   image:
   //     "https://drive.google.com/uc?export=view&id=1QP-UGBOgrXklCut7ckR9XPkpNCjc3269",
   // },
-  // {
-  //   id: 16,
-  //   name: "Kevin Joseph Hendry",
-  //   team: "µ-300",
-  //   linkedin: "https://www.linkedin.com/in/kevin-joseph-hendry-504732227/",
-  //   image:
-  //     "https://drive.google.com/uc?export=view&id=12orP0dMqOAoXCeulPnbDN3ktO_ItHDIY",
-  // },
-  // {
+  {
+    id: 16,
+    name: "Kevin Joseph Hendry",
+    team: "µ-300",
+    linkedin: "https://www.linkedin.com/in/kevin-joseph-hendry-504732227/",
+    image:
+      "https://drive.google.com/uc?export=view&id=1BlBRtS_6TVHL-_MKrnJyiXBstPjHOpBz",
+  },
+  //
   //   id: 17,
   //   name: "Akash Santhosh",
   //   team: "µ-Web",
@@ -229,7 +229,7 @@ const techTeam = [
     team: "µ-300",
     linkedin: "https://www.linkedin.com/in/vishnu-c-r-821a31201",
     image:
-      "https://drive.google.com/uc?export=view&id=1YgNosOZEb-7mfEiq4XSGkLYeBt8RAu80",
+      "https://drive.google.com/uc?export=view&id=1VqH1iz7F77sFOXB6NKslKQ0PISZGMvE5",
   },
 ];
 
