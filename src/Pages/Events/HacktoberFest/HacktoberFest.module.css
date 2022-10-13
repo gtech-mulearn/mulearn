@@ -40,10 +40,30 @@
   width: 20rem;
 }
 
+.primary_btn {
+  background-color: #f78c40;
+  margin-top: 1rem;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.signup {
+  border: 2px solid #f78c40;
+  color: #f78c40;
+  border-radius: 5px;
+  margin-top: 1rem;
+  padding: 0.4rem 1.75rem;
+}
+
 @media only screen and (min-width: 1024px) {
   .fv_texts {
     width: 50%;
     text-align: center;
+  }
+
+  .signup {
+    margin-left: 1rem;
   }
 
   .header {
@@ -178,7 +198,7 @@
   .sv_point {
     text-align: center;
     margin: 2rem;
-    width: 22rem;
+    width: 25rem;
   }
 
   .svp_heading {
