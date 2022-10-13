@@ -38,7 +38,7 @@
 
 @media only screen and (min-width: 1000px) {
   .first_view_container {
-    padding: 3rem;
+    padding: 0rem 3rem;
   }
 
   .first_view {
@@ -48,14 +48,14 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-top: 2.5rem;
+    margin-top: 0rem;
     margin-bottom: 2.5rem;
   }
 
   .fv_img {
     display: block;
     margin: auto;
-    width: 35rem;
+    width: 33rem;
   }
 
   .fv_texts {
@@ -99,9 +99,10 @@
   .fourth_view_container {
     max-width: 1300px;
     margin: auto;
-    margin-top: 8rem;
+    margin-top: 4rem;
   }
   .fourth_view {
+    margin-top: 30px;
     display: flex;
     flex-direction: row;
     align-items: center;
