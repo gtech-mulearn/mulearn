@@ -20,9 +20,9 @@
   padding-bottom: 4rem;
 }
 .header {
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 2.45rem;
-  color: #f78c40;
+  color: #1f172e;
   font-weight: 600;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .primary_btn {
-  background-color: #f78c40;
+  background-color: #1f172e;
   margin-top: 1rem;
   color: white;
   padding: 0.5rem 1rem;
@@ -49,8 +49,8 @@
 }
 
 .signup {
-  border: 2px solid #f78c40;
-  color: #f78c40;
+  border: 2px solid #1f172e;
+  color: #1f172e;
   border-radius: 5px;
   margin-top: 1rem;
   padding: 0.4rem 1.75rem;
@@ -67,7 +67,7 @@
   }
 
   .header {
-    font-family: "Noto Sans", sans-serif;
+    font-family: "Raleway", sans-serif;
     font-size: 4.55rem;
     line-height: 5rem;
     font-weight: 600;
@@ -123,14 +123,14 @@
 }
 
 .svheader {
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 2.45rem;
-  color: #f78c40;
+  color: #1f172e;
   font-weight: 600;
 }
 
 .svp_heading {
-  color: #f78c40;
+  color: #1f172e;
 }
 
 .svtagline {
@@ -146,7 +146,7 @@
 }
 
 .svp_heading {
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
 }
@@ -183,7 +183,7 @@
   }
 
   .svheader {
-    font-family: "Noto Sans", sans-serif;
+    font-family: "Raleway", sans-serif;
     text-align: center;
     font-size: 2.25rem;
     font-weight: 600;
@@ -201,7 +201,7 @@
   }
 
   .svp_heading {
-    font-family: "Noto Sans", sans-serif;
+    font-family: "Raleway", sans-serif;
     font-size: 1.75rem;
     font-weight: 600;
   }
@@ -226,9 +226,9 @@
 }
 
 .tvheader {
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 2.45rem;
-  color: #f78c40;
+  color: #1f172e;
   font-weight: 600;
 }
 
@@ -283,7 +283,7 @@
   }
 
   .tvheader {
-    font-family: "Noto Sans", sans-serif;
+    font-family: "Raleway", sans-serif;
     font-size: 2.25rem;
     font-weight: 600;
   }
@@ -309,9 +309,9 @@
 }
 
 .stv_heading {
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 2.45rem;
-  color: #f78c40;
+  color: #1f172e;
   font-weight: 600;
 }
 
@@ -323,7 +323,7 @@
 
 .step_heading {
   color: #404040;
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: 600;
   font-size: 1.25rem;
 }
@@ -334,7 +334,7 @@
 }
 
 .link {
-  color: #f78c40;
+  color: #1f172e;
   text-decoration: underline;
 }
 

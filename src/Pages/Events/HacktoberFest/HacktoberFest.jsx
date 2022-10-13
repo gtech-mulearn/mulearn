@@ -33,7 +33,7 @@ const HacktoberFest = () => {
                 <button className={styles.signup}>Join Hacktoberfest</button>
               </a>
             </div>
-            <img src="/assets/events/hacktoberfest/fvimg.gif" />
+            <img src="/assets/events/hacktoberfest/fvimgd.gif" />
           </div>
         </div>
 
