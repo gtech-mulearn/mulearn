@@ -11,7 +11,9 @@ const HacktoberFest = () => {
         <div className={styles.first_view_container}>
           <div className={styles.first_view}>
             <div className={styles.fv_texts}>
-              <p className={styles.header}>Bring Every Buissness Online</p>
+              <p className={styles.header}>
+                Bring Every <span>Buissness Online</span>
+              </p>
               <p className={styles.tagline}>
                 Bring Every Buissness Onine is an Open Source Initative to make
                 an open source collection of webpages for every business out
@@ -40,7 +42,9 @@ const HacktoberFest = () => {
         <div className={styles.second_view_container}>
           <div className={styles.second_view}>
             <div className={styles.sv_texts}>
-              <p className={styles.svheader}>About HacktoberFest</p>
+              <p className={styles.svheader}>
+                About <span>HacktoberFest</span>
+              </p>
               <p className={styles.svtagline}>
                 Put simply, Hacktoberfest is Digital Ocean’s annual event that
                 seeks to encourage people to make open-source contributions
@@ -51,6 +55,11 @@ const HacktoberFest = () => {
             </div>
             <div className={styles.sv_points}>
               <div className={styles.sv_point}>
+                <img
+                  src="/assets/events/hacktoberfest/season.png"
+                  alt=""
+                  className={styles.sv_image}
+                />
                 <div className={styles.svp_heading}>New Season</div>
                 <div className={styles.svp_text}>
                   This time around, Hacktoberfest isn’t just about code!For the
@@ -59,6 +68,11 @@ const HacktoberFest = () => {
                 </div>
               </div>
               <div className={styles.sv_point}>
+                <img
+                  src="/assets/events/hacktoberfest/participate.png"
+                  alt=""
+                  className={styles.sv_image}
+                />
                 <div className={styles.svp_heading}>To Participate</div>
                 <div className={styles.svp_text}>
                   To register authorize access to your GitHub or GitLab account,
@@ -69,6 +83,11 @@ const HacktoberFest = () => {
               </div>
 
               <div className={styles.sv_point}>
+                <img
+                  src="/assets/events/hacktoberfest/surprises.png"
+                  alt=""
+                  className={styles.sv_image}
+                />
                 <div className={styles.svp_heading}>New Surprises</div>
                 <div className={styles.svp_text}>
                   Stay tuned to our social media handles for some cool updates.
@@ -83,7 +102,9 @@ const HacktoberFest = () => {
         <div className={styles.second_view_container}>
           <div className={styles.second_view}>
             <div className={styles.sv_texts}>
-              <p className={styles.svheader}>How to Contribute?</p>
+              <p className={styles.svheader}>
+                How to <span>Contribute?</span>
+              </p>
               <p className={styles.svtagline}>
                 You can build a webpage for a local businees that you know, or
                 you frequently visit using simple HTML, CSS and JS. It could
@@ -92,6 +113,11 @@ const HacktoberFest = () => {
             </div>
             <div className={styles.sv_points}>
               <div className={styles.sv_point}>
+                <img
+                  src="/assets/events/hacktoberfest/fork.png"
+                  alt=""
+                  className={styles.sv_image}
+                />
                 <div className={styles.svp_heading}>Fork</div>
                 <div className={styles.svp_text}>
                   To start contributing to this <span>Awesome project</span>.
@@ -101,6 +127,11 @@ const HacktoberFest = () => {
               </div>
 
               <div className={styles.sv_point}>
+                <img
+                  src="/assets/events/hacktoberfest/create.png"
+                  alt=""
+                  className={styles.sv_image}
+                />
                 <div className={styles.svp_heading}>Create</div>
                 <div className={styles.svp_text}>
                   Next is the core step in this challenge. You have to create a
@@ -110,6 +141,11 @@ const HacktoberFest = () => {
               </div>
 
               <div className={styles.sv_point}>
+                <img
+                  src="/assets/events/hacktoberfest/contribute.png"
+                  alt=""
+                  className={styles.sv_image}
+                />
                 <div className={styles.svp_heading}>Contribute</div>
                 <div className={styles.svp_text}>
                   Since you have created a website for a buissness nearby you
@@ -124,7 +160,9 @@ const HacktoberFest = () => {
         <div className={styles.steps_view_container}>
           <div className={styles.steps_view}>
             <div className={styles.stv_texts}>
-              <p className={styles.stv_heading}>Steps for Contributing.</p>
+              <p className={styles.stv_heading}>
+                Steps for <span>Contributing.</span>
+              </p>
               <p className={styles.stv_tagline}>
                 Below given is the step by step breakdown of how you can
                 contribute to this project and create an online presence for a
@@ -187,7 +225,9 @@ const HacktoberFest = () => {
         <div className={styles.third_view_container}>
           <div className={styles.third_view}>
             <div className={styles.tv_texts}>
-              <p className={styles.tvheader}>Minimum Requirements</p>
+              <p className={styles.tvheader}>
+                Minimum <span>Requirements</span>
+              </p>
               <p className={styles.tvtagline}>
                 Please make sure that you upload the shop's consent letter in
                 the PR comments. It could even be a screenshot of a consent mail
