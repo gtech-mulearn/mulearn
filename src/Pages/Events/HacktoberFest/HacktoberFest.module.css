@@ -315,6 +315,27 @@
   margin-top: 0.5rem;
 }
 
+.step_heading {
+  color: #404040;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.step_text {
+  font-family: "Poppins", sans-serif;
+  margin-top: 0.25rem;
+}
+
+.link {
+  color: #f78c40;
+  text-decoration: underline;
+}
+
+.step {
+  margin: 1rem 0rem;
+}
+
 @media only screen and (min-width: 1024px) {
   .steps_view_container {
     max-width: 1300px;
@@ -324,6 +345,19 @@
 
   .steps_view {
     display: flex;
+    flex-direction: column;
+  }
+
+  .steps_container {
+    display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .step {
+    width: 20rem;
+    margin: 1.5rem;
+    margin-right: 3rem;
+    margin-left: 0;
   }
 }

@@ -126,6 +126,56 @@ const HacktoberFest = () => {
                 buisness nearby.
               </p>
             </div>
+            <div className={styles.steps_container}>
+              <div className={styles.step}>
+                <p className={styles.step_heading}>Step 1</p>
+                <p className={styles.step_text}>
+                  Before starting you would have to signup for hacktoberfest
+                  using the link which is provided above.Once that is done you
+                  can{" "}
+                  <a
+                    href="https://github.com/gtech-mulearn/mulearn/"
+                    className={styles.link}
+                  >
+                    fork
+                  </a>{" "}
+                  this repository from github.
+                </p>
+              </div>
+              <div className={styles.step}>
+                <p className={styles.step_heading}>Step 2</p>
+                <p className={styles.step_text}>
+                  There is folder inside the public folder named as India,
+                  inside which there is folder called kerala having sub-folders
+                  of each district. You can contribute to the disctrict in which
+                  the buisness belongs to.
+                </p>
+              </div>
+              <div className={styles.step}>
+                <p className={styles.step_heading}>Step 3</p>
+                <p className={styles.step_text}>
+                  Make sure that the website that you are making for the
+                  buisness satisfies all the basic requirements which are
+                  specified below.
+                </p>
+              </div>
+              <div className={styles.step}>
+                <p className={styles.step_heading}>Step 4</p>
+                <p className={styles.step_text}>
+                  Once you have completed making the website. You can create a
+                  pull request mentioning the sufficient details and create a
+                  pull request.
+                </p>
+              </div>
+              <div className={styles.step}>
+                <p className={styles.step_heading}>Step 5</p>
+                <p className={styles.step_text}>
+                  Soon, our team will be quality checking the pull request and
+                  will be merging it with the parent repository. Which ensures
+                  and completes your participation.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
