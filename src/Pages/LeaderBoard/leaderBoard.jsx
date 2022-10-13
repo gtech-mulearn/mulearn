@@ -39,7 +39,7 @@ const LeaderBoard = () => {
               </p>
               <div className={styles.fv_images}>
                 <img
-                  src="/assets/pages/leaderBoard/score.png"
+                  src="/assets/leaderBoard/college.webp"
                   alt="college score board"
                   className={styles.fv_img}
                 />
@@ -51,12 +51,28 @@ const LeaderBoard = () => {
               </p>
               <div className={styles.fv_images}>
                 <img
-                  src="/assets/pages/leaderBoard/student.png"
+                  src="/assets/leaderBoard/student.webp"
                   alt="college score board"
                   className={styles.fv_img}
                 />
               </div>
             </div>
+          </div>
+          <div className={styles.fourth_view}>
+            <div></div>
+            <div className={styles.left_side}>
+              <p className={styles.sv_heading}>
+                <span>Monthly College Board</span>
+              </p>
+              <div className={styles.fv_images}>
+                <img
+                  src="/assets/leaderBoard/monthly.webp"
+                  alt="college score board"
+                  className={styles.fv_img}
+                />
+              </div>
+            </div>
+            <div></div>
           </div>
         </div>
       </div>
