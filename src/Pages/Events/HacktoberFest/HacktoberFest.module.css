@@ -222,7 +222,6 @@
 .third_view {
   display: flex;
   flex-direction: column;
-
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
@@ -258,6 +257,12 @@
     margin-top: 3rem;
   }
 
+  .listitem {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+  }
+
   .third_view {
     display: flex;
     flex-direction: row;
@@ -281,5 +286,44 @@
     font-family: "Noto Sans", sans-serif;
     font-size: 2.25rem;
     font-weight: 600;
+  }
+}
+
+/* Steps Styles */
+
+.steps_view_container {
+  margin: 2rem;
+}
+
+.steps_view {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.stv_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.45rem;
+  color: #f78c40;
+  font-weight: 600;
+}
+
+.stv_tagline {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+@media only screen and (min-width: 1024px) {
+  .steps_view_container {
+    max-width: 1300px;
+    margin: auto;
+    margin-top: 3rem;
+  }
+
+  .steps_view {
+    display: flex;
+    flex-direction: row;
   }
 }

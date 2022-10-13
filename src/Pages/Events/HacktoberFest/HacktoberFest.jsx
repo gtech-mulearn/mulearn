@@ -116,17 +116,32 @@ const HacktoberFest = () => {
           </div>
         </div>
 
+        <div className={styles.steps_view_container}>
+          <div className={styles.steps_view}>
+            <div className={styles.stv_texts}>
+              <p className={styles.stv_heading}>Steps for Contributing.</p>
+              <p className={styles.stv_tagline}>
+                Below given is the step by step breakdown of how you can
+                contribute to this project and create an online presence for a
+                buisness nearby.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div className={styles.third_view_container}>
           <div className={styles.third_view}>
             <div className={styles.tv_texts}>
               <p className={styles.tvheader}>Minimum Requirements</p>
               <p className={styles.tvtagline}>
-                While making the pull request to our repository make sure there
-                are no duplicates.
+                Please make sure that you upload the shop's consent letter in
+                the PR comments. It could even be a screenshot of a consent mail
+                from the store.Please try to include as much info you can
+                collect about the shop in the website that you are building.
               </p>
             </div>
             <div className={styles.tvpoints}>
-              <ul>
+              <ol>
                 <li className={styles.listitem}>
                   The webpage should have images of the buisness
                 </li>
@@ -140,7 +155,7 @@ const HacktoberFest = () => {
                 <li className={styles.listitem}>
                   Make the webpage as creative as possible.
                 </li>
-              </ul>
+              </ol>
             </div>
           </div>
         </div>
