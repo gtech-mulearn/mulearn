@@ -28,7 +28,7 @@ export const links = [
         sublink: [
           {
             name: "Gallery",
-            link: "/gallery",
+            link: "/newgallery",
           },
           {
             name: "Leaderboard",

@@ -55,7 +55,6 @@ const Gallery = () => {
           <div className={styles.second_view}>
             <div className={styles.sv_texts}>
               <p className={styles.sv_heading}>
-                {" "}
                 <span>µLearn</span> Community Event Gallery.
               </p>
               <p className={styles.sv_tagline}>
