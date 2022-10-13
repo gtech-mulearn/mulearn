@@ -62,7 +62,7 @@ const LeaderBoard = () => {
             <div></div>
             <div className={styles.left_side}>
               <p className={styles.sv_heading}>
-                <span>Monthly College Board</span>
+                <span>Monthly College Leader Board</span>
               </p>
               <div className={styles.fv_images}>
                 <img
