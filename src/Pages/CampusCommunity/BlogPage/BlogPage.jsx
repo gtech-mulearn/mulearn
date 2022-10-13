@@ -22,7 +22,7 @@ const BlogPage = () => {
                 Graduate in Electrical and Electronics Engineering from Trinity
                 College of Engineering Thiruvananthapuram
               </p>
-              <p className={styles.quote}>
+              <p className={styles.heading}>
                 Read the Story of a Graduate in Electrial and Electronics and
                 the way she steered her college as one of the top-performing
                 colleges among the 200+ onboarded across the state.{" "}
