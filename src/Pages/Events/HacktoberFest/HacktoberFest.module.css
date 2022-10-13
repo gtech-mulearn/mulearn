@@ -1,0 +1,265 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.main_container {
+  min-height: 100vh;
+}
+
+.first_view_container {
+  margin: 2rem;
+}
+
+.first_view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.header {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.45rem;
+  color: #f78c40;
+  font-weight: 600;
+}
+
+.tagline {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+.fv_texts {
+  text-align: center;
+}
+
+.first_view img {
+  margin-top: 2rem;
+  width: 20rem;
+}
+
+@media only screen and (min-width: 1024px) {
+  .fv_texts {
+    width: 50%;
+    text-align: center;
+  }
+
+  .header {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 4.55rem;
+    line-height: 5rem;
+    font-weight: 600;
+  }
+
+  .first_view_container {
+    margin-top: 3rem;
+    max-width: 1300px;
+    margin: auto;
+  }
+
+  .first_view {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .fv_texts {
+    text-align: left;
+    padding: 3rem;
+    background-color: #fcfcfc;
+    opacity: 1;
+    background-image: linear-gradient(#f1f1f1 1.3px, transparent 1.3px),
+      linear-gradient(to right, #f1f1f1 1.3px, #fcfcfc 1.3px);
+    background-size: 26px 26px;
+  }
+
+  .first_view img {
+    width: 30rem;
+  }
+
+  .tagline {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Second Section Styles */
+
+.second_view_container {
+  margin: 2rem;
+  margin-top: 0;
+}
+
+.second_view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.svheader {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.45rem;
+  color: #f78c40;
+  font-weight: 600;
+}
+
+.svp_heading {
+  color: #f78c40;
+}
+
+.svtagline {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.sv_points {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.svp_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.svp_text {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+}
+
+.sv_point {
+  margin: 1rem 0rem;
+}
+
+@media only screen and (min-width: 1024px) {
+  .second_view_container {
+    max-width: 1300px;
+    margin: auto;
+    margin-top: 3rem;
+  }
+
+  .second_view {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .svtagline {
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    font-size: 1rem;
+    width: 60%;
+    margin: auto;
+    margin-top: 0.5rem;
+  }
+
+  .svheader {
+    font-family: "Noto Sans", sans-serif;
+    text-align: center;
+    font-size: 2.25rem;
+    font-weight: 600;
+  }
+
+  .sv_points {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .sv_point {
+    text-align: center;
+    margin: 2rem;
+    width: 22rem;
+  }
+
+  .svp_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+  }
+
+  .svp_text {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+  }
+}
+
+/* Third Section Styles */
+
+.third_view_container {
+  margin: 2rem;
+}
+
+.third_view {
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.tvheader {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.45rem;
+  color: #f78c40;
+  font-weight: 600;
+}
+
+.tvtagline {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.tvpoints {
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.listitem {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+@media only screen and (min-width: 1024px) {
+  .third_view_container {
+    max-width: 1300px;
+    margin: auto;
+    margin-top: 3rem;
+  }
+
+  .third_view {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tv_texts {
+    width: 60%;
+  }
+
+  .tvtagline {
+    font-family: "Poppins", sans-serif;
+    text-align: left;
+    font-size: 1rem;
+    width: 60%;
+    margin-top: 0.5rem;
+  }
+
+  .tvheader {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 2.25rem;
+    font-weight: 600;
+  }
+}
