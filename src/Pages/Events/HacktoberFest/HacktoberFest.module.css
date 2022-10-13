@@ -198,7 +198,6 @@
   .sv_point {
     text-align: center;
     margin: 2rem;
-    width: 25rem;
   }
 
   .svp_heading {
@@ -268,6 +267,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin: 2rem;
   }
 
   .tv_texts {
@@ -286,6 +286,12 @@
     font-family: "Noto Sans", sans-serif;
     font-size: 2.25rem;
     font-weight: 600;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .third_view {
+    margin: 0;
   }
 }
 
@@ -344,6 +350,7 @@
   }
 
   .steps_view {
+    margin: 2rem;
     display: flex;
     flex-direction: column;
   }
@@ -359,5 +366,11 @@
     margin: 1.5rem;
     margin-right: 3rem;
     margin-left: 0;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .steps_view {
+    margin: 0;
   }
 }

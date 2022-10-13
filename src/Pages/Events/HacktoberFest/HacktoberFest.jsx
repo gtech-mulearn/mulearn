@@ -18,8 +18,13 @@ const HacktoberFest = () => {
                 there. To contribute to this project all you have to do is build
                 a website for a store or buiness online.
               </p>
-              <button className={styles.primary_btn}>Contribute Now!</button>
-
+              <a
+                href="http://mulearn.org/hacktoberfest-form"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className={styles.primary_btn}>Contribute Now!</button>
+              </a>
               <a
                 href="https://hacktoberfest.com/"
                 target="_blank"
