@@ -30,6 +30,10 @@ export const links = [
             name: "Gallery",
             link: "/gallery",
           },
+          {
+            name: "Leaderboard",
+            link: "/leaderboard",
+          },
         ],
       },
     ],
@@ -104,7 +108,7 @@ export const links = [
         ],
       },
       {
-        Head: "Pratice",
+        Head: "Practice",
         sublink: [
           {
             name: "Problem Shelf",

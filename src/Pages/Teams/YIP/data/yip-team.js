@@ -77,7 +77,7 @@ const yipTeam = [
     domain: "Delivery Management",
     designation: "Program Associate",
     image:
-      "https://drive.google.com/uc?export=view&id=1xznD4mapnicctnj-sOsaOIZZ33I8mZc7",
+      "https://drive.google.com/uc?export=view&id=1PI81QOS0Br8EJSxzRT2Hr4imRwILw1T7",
     linkedin: "https://www.linkedin.com/in/finushaheem/",
   },
   {
