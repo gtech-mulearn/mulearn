@@ -33,6 +33,10 @@
   font-size: 0.9rem;
 }
 
+.link:hover {
+  color: #f1954a;
+}
+
 .line {
   margin-top: 2rem;
   background-color: rgb(97, 97, 97);
@@ -40,7 +44,7 @@
   height: 2px;
 }
 
-a{
+a {
   font-weight: 500;
 }
 
@@ -84,7 +88,7 @@ a{
   }
 }
 
-.mail{
+.mail {
   font-weight: 600;
 }
 
@@ -161,6 +165,7 @@ button:focus {
   display: flex;
   flex-direction: row;
 }
+
 .fs_rightside {
   display: flex;
 }
