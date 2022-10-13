@@ -20,6 +20,8 @@
 }
 
 .sv_image {
+  display: block;
+  margin: auto;
   width: 3rem;
   margin-bottom: 0.25rem;
 }
@@ -175,6 +177,7 @@
 }
 
 .sv_point {
+  text-align: center;
   margin: 1rem 0rem;
 }
 
@@ -216,7 +219,6 @@
   .sv_point {
     text-align: center;
     margin: 1rem;
-    width: 23rem;
   }
 
   .svp_heading {
@@ -389,5 +391,9 @@
 @media only screen and (min-width: 1300px) {
   .steps_view {
     margin: 0;
+  }
+
+  .sv_point {
+    width: 23rem;
   }
 }
