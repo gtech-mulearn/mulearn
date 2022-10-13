@@ -267,6 +267,7 @@
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
   margin-top: 0.5rem;
+  display: list-item;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -280,6 +281,7 @@
     font-family: "Poppins", sans-serif;
     font-size: 1.1rem;
     margin-top: 0.5rem;
+    display: list-item;
   }
 
   .third_view {
@@ -359,6 +361,11 @@
 
 .step {
   margin: 1rem 0rem;
+  box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  padding: 30px 25px;
+  border-radius: 10px;
 }
 
 @media only screen and (min-width: 1024px) {
