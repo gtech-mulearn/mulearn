@@ -71,10 +71,9 @@ const ArtOfTeaching = () => {
               </p>
 
               <p className={styles.fv_tagline}>
-                µLearn is back with Art of Teaching to honor teachers who
-                mould our future generation. GTech µLearn is
-                partnering with Google developers, KTU and Kerala University for
-                Art of Teaching 2.0.
+                µLearn is back with Art of Teaching to honor teachers who mould
+                our future generation. GTech µLearn is partnering with Google
+                developers, KTU and Kerala University for Art of Teaching 2.0.
               </p>
               <div className={styles.event_partners}>
                 <div className={styles.partners}>
@@ -153,6 +152,19 @@ const ArtOfTeaching = () => {
                         with Kotlin course and they have to create a 3 minute
                         video summary of the course.
                       </p>
+                      <a
+                        href="https://developer.android.com/courses/android-basics-compose/course"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <button
+                          style={{ fontSize: "1rem" }}
+                          className={styles.detailsbtn}
+                          type="submit"
+                        >
+                          View Course
+                        </button>
+                      </a>
                     </div>
                   </div>
                 </SwiperSlide>
@@ -209,6 +221,19 @@ const ArtOfTeaching = () => {
                   Kotlin course and they have to create a 3 minute video summary
                   of the course.
                 </p>
+                <a
+                  href="https://developer.android.com/courses/android-basics-compose/course"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button
+                    style={{ fontSize: "1rem" }}
+                    className={styles.detailsbtn}
+                    type="submit"
+                  >
+                    View Course
+                  </button>
+                </a>
               </div>
 
               <div className={styles.topic_card}>
