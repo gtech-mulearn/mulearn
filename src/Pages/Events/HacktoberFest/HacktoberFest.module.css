@@ -39,7 +39,7 @@
   padding-bottom: 3rem;
 }
 .header {
-  font-family: "Raleway", sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-size: 2.55rem;
   color: #1f172e;
   font-weight: 600;
@@ -92,7 +92,7 @@
   }
 
   .header {
-    font-family: "Raleway", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-size: 4.55rem;
     line-height: 5rem;
     font-weight: 600;
@@ -147,7 +147,7 @@
 }
 
 .svheader {
-  font-family: "Raleway", sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-size: 2.45rem;
   color: #1f172e;
   font-weight: 600;
@@ -170,7 +170,7 @@
 }
 
 .svp_heading {
-  font-family: "Raleway", sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
 }
@@ -220,7 +220,7 @@
   }
 
   .svheader {
-    font-family: "Raleway", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     text-align: center;
     font-size: 2.25rem;
     font-weight: 600;
@@ -238,7 +238,7 @@
   }
 
   .svp_heading {
-    font-family: "Raleway", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-size: 1.75rem;
     font-weight: 600;
   }
@@ -262,7 +262,7 @@
 }
 
 .tvheader {
-  font-family: "Raleway", sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-size: 2.45rem;
   color: #1f172e;
   font-weight: 600;
@@ -291,7 +291,7 @@
     max-width: 1300px;
     margin: auto;
     margin-top: 3rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
   }
 
   .listitem {
@@ -322,7 +322,7 @@
   }
 
   .tvheader {
-    font-family: "Raleway", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-size: 2.25rem;
     font-weight: 600;
   }
@@ -347,7 +347,7 @@
 }
 
 .stv_heading {
-  font-family: "Raleway", sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-size: 2.45rem;
   color: #1f172e;
   font-weight: 600;
@@ -361,7 +361,7 @@
 
 .step_heading {
   color: #404040;
-  font-family: "Raleway", sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-weight: 600;
   font-size: 1.25rem;
 }
