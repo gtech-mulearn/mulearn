@@ -32,7 +32,7 @@ const LeaderBoard = () => {
         </div>
         <div className={styles.fourth_view_container}>
           <div className={styles.fourth_view}>
-            <div></div>
+            {/* <div></div> */}
             <div className={styles.left_side}>
               <p className={styles.sv_heading}>
                 <span>College Leader Board</span>
