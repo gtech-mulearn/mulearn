@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+.tvpoints ol{
+  list-style: lower-alpha
+}
+
 .main_container {
   min-height: 100vh;
 }
@@ -109,7 +113,7 @@
   .fv_texts {
     text-align: left;
     padding: 3rem;
-    background-color: #fcfcfc;
+    background-color: #ffffff;
     opacity: 1;
     background-image: linear-gradient(#f1f1f1 1.3px, transparent 1.3px),
       linear-gradient(to right, #f1f1f1 1.3px, #fcfcfc 1.3px);
@@ -181,11 +185,23 @@
   margin: 1rem 0rem;
 }
 
+.orange_bg {
+  margin: 2rem 0;
+  padding: 2rem 0;
+  background-color: #f78c40;
+  color: white;
+}
+
 @media only screen and (min-width: 1024px) {
   .second_view_container {
     max-width: 1300px;
     margin: auto;
     margin-top: 3rem;
+  }
+
+  .orange_bg {
+    margin: 1rem 0;
+    padding: 1rem 0;
   }
 
   .second_view {

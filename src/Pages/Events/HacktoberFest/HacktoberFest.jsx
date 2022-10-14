@@ -15,10 +15,10 @@ const HacktoberFest = () => {
                 µLearn <span> HactoberFest</span>
               </p>
               <p className={styles.tagline}>
-                Put simply, Hacktoberfest is Digital Ocean’s annual event that
-                seeks to encourage people to make open-source contributions
-                throughout the month of October.It wouldn’t be wrong to say that
-                the Hacktoberfest has played an integral role in building the
+                Hacktoberfest is Digital Ocean’s annual event that seeks to
+                encourage people to make open-source contributions throughout
+                the month of October.It wouldn’t be wrong to say that the
+                Hacktoberfest has played an integral role in building the
                 open-source community over the years.
               </p>
               <a
@@ -93,60 +93,77 @@ const HacktoberFest = () => {
             </div>
           </div>
         </div>
-
-        <div className={styles.second_view_container}>
-          <div className={styles.second_view}>
-            <div className={styles.sv_texts}>
-              <p className={styles.svheader}>
-                About Project <span>Awesome!</span>
-              </p>
-              <p className={styles.svtagline}>
-                Project Awesome aka Bring Every Buissness Onine is an Open Source Initative to make
-                an open source collection of webpages for every business out
-                there. To contribute to the project all you have to do is build
-                a website for a store or buiness online.
-              </p>
-            </div>
-            <div className={styles.sv_points}>
-              <div className={styles.sv_point}>
-                <img
-                  src="/assets/events/hacktoberfest/fork.png"
-                  alt=""
-                  className={styles.sv_image}
-                />
-                <div className={styles.svp_heading}>Fork</div>
-                <div className={styles.svp_text}>
-                  To start contributing to the <span>Awesome project</span>.
-                  Your first step would be to <span>Fork</span> the repository
-                  to your own github account.
-                </div>
+        <div className={styles.orange_bg}>
+          <div className={styles.second_view_container}>
+            <div className={styles.second_view}>
+              <div className={styles.sv_texts}>
+                <p style={{ color: "white" }} className={styles.svheader}>
+                  About Project Awesome!
+                </p>
+                <p className={styles.svtagline}>
+                  Project Awesome aka Bring Every Buissness Onine is an Open
+                  Source Initative to make an open source collection of webpages
+                  for every business out there. To contribute to the project all
+                  you have to do is build a website for a store or buiness
+                  online.
+                </p>
               </div>
-
-              <div className={styles.sv_point}>
-                <img
-                  src="/assets/events/hacktoberfest/create.png"
-                  alt=""
-                  className={styles.sv_image}
-                />
-                <div className={styles.svp_heading}>Create</div>
-                <div className={styles.svp_text}>
-                  Next is the core step in the challenge. You have to create a
-                  website for a buissness nearby by following the requirements
-                  specified below.
+              <div className={styles.sv_points}>
+                <div className={styles.sv_point}>
+                  <img
+                    src="/assets/events/hacktoberfest/github.png"
+                    alt=""
+                    className={styles.sv_image}
+                  />
+                  <div
+                    style={{ color: "white" }}
+                    className={styles.svp_heading}
+                  >
+                    Fork
+                  </div>
+                  <div className={styles.svp_text}>
+                    To start contributing to the <span>Awesome project</span>.
+                    Your first step would be to <span>Fork</span> the repository
+                    to your own github account.
+                  </div>
                 </div>
-              </div>
 
-              <div className={styles.sv_point}>
-                <img
-                  src="/assets/events/hacktoberfest/contribute.png"
-                  alt=""
-                  className={styles.sv_image}
-                />
-                <div className={styles.svp_heading}>Contribute</div>
-                <div className={styles.svp_text}>
-                  Since you have created a website for a buissness nearby you
-                  are ready to contribute to the project. For that all you have
-                  to do is make Pull request to our repository.
+                <div className={styles.sv_point}>
+                  <img
+                    src="/assets/events/hacktoberfest/create.png"
+                    alt=""
+                    className={styles.sv_image}
+                  />
+                  <div
+                    style={{ color: "white" }}
+                    className={styles.svp_heading}
+                  >
+                    Create
+                  </div>
+                  <div className={styles.svp_text}>
+                    For the Next step in the challenge. You have to create a
+                    website for a buissness nearby by following the requirements
+                    which are specified below.
+                  </div>
+                </div>
+
+                <div className={styles.sv_point}>
+                  <img
+                    src="/assets/events/hacktoberfest/contribute.png"
+                    alt=""
+                    className={styles.sv_image}
+                  />
+                  <div
+                    style={{ color: "white" }}
+                    className={styles.svp_heading}
+                  >
+                    Contribute
+                  </div>
+                  <div className={styles.svp_text}>
+                    Since you have created a website for a buissness nearby you
+                    are ready to contribute to the project. For that all you
+                    have to do is make Pull request to our repository.
+                  </div>
                 </div>
               </div>
             </div>
@@ -231,6 +248,7 @@ const HacktoberFest = () => {
                 collect about the shop in the website that you are building.
               </p>
             </div>
+
             <div className={styles.tvpoints}>
               <ol>
                 <li className={styles.listitem}>
