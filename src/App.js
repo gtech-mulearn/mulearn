@@ -46,7 +46,7 @@ function App() {
             <Route path="tech" element={<Tech />} />
           </Route>
           <Route path="/leaderboard" element={<LeaderBoard />} />
-          <Route path="/events/hacktoberfest" element={<HacktoberFest />} />
+          <Route path="/hacktoberfest" element={<HacktoberFest />} />
           {/* <Route path="/community" element={ }/> */}
         </Routes>
       </Router>
