@@ -55,7 +55,10 @@ export const links = [
       },
       {
         Head: "Ongoing",
-        sublink: [{ name: "Art of Teaching", link: "/artofteaching" }],
+        sublink: [
+          { name: "Art of Teaching", link: "/artofteaching" },
+          { name: "Hacktober Fest", link: "/hacktoberfest" },
+        ],
       },
       {
         Head: "Others",
