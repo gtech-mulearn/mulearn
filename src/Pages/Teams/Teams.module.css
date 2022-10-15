@@ -75,7 +75,9 @@
   position: relative;
 }
 
-
+.team_card h5 {
+  font-weight: bold;
+}
 
 .team_card a {
   position: absolute;
@@ -96,6 +98,7 @@
     margin: 6rem;
     max-width: 1300px;
     margin: auto;
+    padding-top: 0;
   }
 
   .fv_texts {

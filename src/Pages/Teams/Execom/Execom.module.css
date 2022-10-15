@@ -15,6 +15,7 @@
 
 .fv_texts {
   text-align: center;
+  max-width: 40rem;
 }
 
 .fv_illustration {
@@ -50,8 +51,8 @@
   display: grid;
   grid-template-columns: 1fr;
   column-gap: 3rem;
-  width: 90%;
-  margin: 0 auto;
+  margin: 0;
+  width: 100%;
 }
 
 .select {
@@ -60,7 +61,7 @@
 
 @media only screen and (min-width: 600px) {
   .firstviewmain_container {
-    margin: 3rem;
+    margin: 0 3rem;
   }
 
   .team_list {
@@ -69,9 +70,7 @@
 }
 
 @media only screen and (min-width: 1200px) {
-  .firstviewmain_container {
-    margin: 6rem;
-  }
+
 
   .firstview_container {
     display: block;

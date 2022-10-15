@@ -50,7 +50,7 @@
   display: grid;
   grid-template-columns: 1fr;
   column-gap: 3rem;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -58,9 +58,14 @@
   max-width: 400px;
 }
 
+.team_collection h2 {
+  margin: 0;
+  font-weight: 500;
+}
+
 @media only screen and (min-width: 600px) {
   .firstviewmain_container {
-    margin: 3rem;
+    margin: 1rem 3rem;
   }
 
   .team_list {
@@ -70,7 +75,7 @@
 
 @media only screen and (min-width: 1200px) {
   .firstviewmain_container {
-    margin: 6rem;
+    margin: 2rem 6rem;
   }
 
   .firstview_container {
