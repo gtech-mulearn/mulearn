@@ -22,7 +22,7 @@ const HacktoberFest = () => {
                 open-source community over the years.
               </p>
               <a
-                href="http://mulearn.org/hacktoberfest-form"
+                href="https://awesome.mulearn.org/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
