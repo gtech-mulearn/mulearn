@@ -17,6 +17,8 @@ import LeaderBoard from "./Pages/LeaderBoard/leaderBoard";
 import Courses from "./Pages/Courses/Courses";
 import WikiSyllabus from "./Pages/WikiSyllabus/WikiSyllabus";
 import Tech from "./Pages/Teams/Tech/Tech";
+import HacktoberFest from "./Pages/Events/HacktoberFest/HacktoberFest";
+import Yip from "./Pages/YIP/Yip";
 import CampusCommunity from "./Pages/CampusCommunity/CampusCommunity";
 import BlogPage from "./Pages/CampusCommunity/BlogPage/BlogPage";
 
@@ -37,6 +39,7 @@ function App() {
           <Route path="/artofteaching" element={<ArtOfTeaching />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/wikisyllabus" element={<WikiSyllabus />} />
+          <Route path="/yip" element={<Yip />} />
           <Route path="/team">
             <Route path="" element={<Teams />} />
             <Route path="execom" element={<Execom />} />
@@ -45,6 +48,7 @@ function App() {
             <Route path="tech" element={<Tech />} />
           </Route>
           <Route path="/leaderboard" element={<LeaderBoard />} />
+          <Route path="/hacktoberfest" element={<HacktoberFest />} />
           <Route path="/campuscommunity" element={<CampusCommunity />} />
           <Route path="/blog" element={<BlogPage />} />
         </Routes>
