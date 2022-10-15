@@ -22,7 +22,7 @@ const HacktoberFest = () => {
                 open-source community over the years.
               </p>
               <a
-                href="http://mulearn.org/hacktoberfest-form"
+                href="https://awesome.mulearn.org/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -182,8 +182,7 @@ const HacktoberFest = () => {
               </p>
 
               <p className={styles.ev_tagline}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
-                maxime beatae repellendus saepe incidunt cupiditate.
+                
               </p>
             </div>
             <div className={styles.events_container}>
