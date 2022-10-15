@@ -1,9 +1,5 @@
-* {
-  /* font-family: "Poppins", sans-serif; */
-}
-
 nav {
-  padding: 1.75rem;
+  padding: 0 1.75rem;
   background-color: white;
 }
 
@@ -310,7 +306,8 @@ button:focus {
     max-width: unset;
   }
 }
-.stext{
+
+.stext {
   margin-top: 20px;
 }
 

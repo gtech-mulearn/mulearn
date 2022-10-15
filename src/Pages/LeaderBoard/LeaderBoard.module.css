@@ -95,23 +95,27 @@
   color: #f78c40;
 }
 
+.fourth_view_container {
+  margin: 0 auto 1rem;
+  padding: 0 2rem;
+}
+
 @media only screen and (min-width: 1000px) {
   .fourth_view_container {
     max-width: 1300px;
-    margin: auto;
     margin-top: 4rem;
   }
+
   .fourth_view {
-    margin-top: 30px;
+    align-items: center;
+    column-gap: 2rem;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
+    margin-top: 30px;
   }
 
-  .left_side {
-    width: 40%;
-  }
+
 
   .fr_heading {
     font-size: 3.5rem;
@@ -120,11 +124,5 @@
   .fr_tagline {
     font-family: "Poppins";
     width: 80%;
-  }
-}
-
-@media only screen and (min-width: 1300px) {
-  .fourth_view_container {
-    padding: 0rem;
   }
 }
