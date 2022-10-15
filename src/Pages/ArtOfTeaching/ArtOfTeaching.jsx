@@ -106,7 +106,7 @@ const ArtOfTeaching = () => {
                   className={styles.detailsbtn}
                   type="submit"
                 >
-                  Pre-Register Now!
+                  Register Now!
                 </button>
               </a>
             </div>
