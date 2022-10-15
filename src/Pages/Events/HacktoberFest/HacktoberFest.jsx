@@ -182,8 +182,7 @@ const HacktoberFest = () => {
               </p>
 
               <p className={styles.ev_tagline}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
-                maxime beatae repellendus saepe incidunt cupiditate.
+                
               </p>
             </div>
             <div className={styles.events_container}>
