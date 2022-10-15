@@ -4,8 +4,10 @@ import styles from "./Gallery.module.css";
 import kakt from "./Kk.module.css";
 
 import fvimg from "./assets/fvimg.png";
+import GalleryTabs from "../../Components/GalleryTabs/GalleryTabs";
 
 const Newgallery = () => {
+  
   return (
     <>
       <Navbar />
@@ -42,12 +44,13 @@ const Newgallery = () => {
               revisit them. These are some of the pictures from our events.
             </p>
           </div>
+          <GalleryTabs />
         </div>
       </div>
 
       <section className={kakt.gallerySection}>
         {/* <h2 className={kakt.galleryHeading}>Gallery</h2> */}
-
+        
         <div className={kakt.row}>
           <div className={kakt.column}>
             <div className={kakt.img_wrapper}>

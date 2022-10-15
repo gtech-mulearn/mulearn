@@ -18,6 +18,7 @@ import Courses from "./Pages/Courses/Courses";
 import WikiSyllabus from "./Pages/WikiSyllabus/WikiSyllabus";
 import Tech from "./Pages/Teams/Tech/Tech";
 import Yip from "./Pages/YIP/Yip";
+import Newgallery from "./Pages/Newgallery/Newgallery"
 
 function App() {
   return (
