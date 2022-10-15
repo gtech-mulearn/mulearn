@@ -18,6 +18,7 @@ import Courses from "./Pages/Courses/Courses";
 import WikiSyllabus from "./Pages/WikiSyllabus/WikiSyllabus";
 import Tech from "./Pages/Teams/Tech/Tech";
 import HacktoberFest from "./Pages/Events/HacktoberFest/HacktoberFest";
+import Yip from "./Pages/YIP/Yip";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/artofteaching" element={<ArtOfTeaching />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/wikisyllabus" element={<WikiSyllabus />} />
+          <Route path="/yip" element={<Yip />} />
           <Route path="/team">
             <Route path="" element={<Teams />} />
             <Route path="execom" element={<Execom />} />
