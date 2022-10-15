@@ -36,7 +36,10 @@ const HacktoberFest = () => {
                 <button className={styles.signup}>Join Hacktoberfest</button>
               </a>
             </div>
-            <img src="/assets/events/hacktoberfest/fvimgd.gif" />
+            <img
+              alt="Illustration"
+              src="/assets/events/hacktoberfest/fvimgd.gif"
+            />
           </div>
         </div>
 
@@ -165,6 +168,48 @@ const HacktoberFest = () => {
                     have to do is make Pull request to our repository.
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.events_view_container}>
+          <div className={styles.events_view}>
+            <div className={styles.ev_texts}>
+              <p className={styles.ev_header}>
+                {" "}
+                <span>HacktoberFest</span> Events
+              </p>
+
+              <p className={styles.ev_tagline}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
+                maxime beatae repellendus saepe incidunt cupiditate.
+              </p>
+            </div>
+            <div className={styles.events_container}>
+              <div className={styles.event}>
+                <img
+                  src="https://media.discordapp.net/attachments/771679365124718612/1030081742180204544/hactober_fest.png?width=640&height=640"
+                  alt="Rohit Event Poster"
+                  className={styles.event_img}
+                />
+                <p className={styles.event_header}>Git and GitHub Session</p>
+                <p className={styles.event_text}>
+                  Woohoo! It's time to kick off our Hacktoberfest journey.
+                  Really excited to start your journey but wary if you have the
+                  required skills? Join us for this exciting session on Git and
+                  GitHub to learn all you need to get started with your
+                  Hacktoberfest journey.{" "}
+                </p>
+              </div>
+              <div className={styles.event}>
+                <img
+                  src="/assets/events/hacktoberfest/soon.png"
+                  alt="Coming Soon"
+                  className={styles.event_img}
+                />
+                <p className={styles.event_headerb}></p>
+                <p className={styles.event_textb}></p>
               </div>
             </div>
           </div>
