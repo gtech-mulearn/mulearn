@@ -10,24 +10,24 @@ const BlogPage = () => {
       <div className={styles.main_container}>
         <div className={styles.first_view_container}>
           <div className={styles.first_view}>
-            <img
-              src="/assets/campuscommunity/amritha.jpeg"
-              alt=""
-              className={styles.story_img}
-            />
             <div className={styles.about}>
+              <img
+                src="/assets/campuscommunity/amritha.jpeg"
+                alt=""
+                className={styles.story_img}
+              />
               <p className={styles.name}>Amritha G S</p>
               <p className={styles.details}>
                 {" "}
                 Graduate in Electrical and Electronics Engineering from Trinity
                 College of Engineering Thiruvananthapuram
               </p>
-              <p className={styles.heading}>
-                Read the Story of a Graduate in Electrial and Electronics and
-                the way she steered her college as one of the top-performing
-                colleges among the 200+ onboarded across the state.{" "}
-              </p>
             </div>
+            <p className={styles.heading}>
+              Read the Story of a Graduate in Electrial and Electronics and the
+              way she steered her college as one of the top-performing colleges
+              among the 200+ onboarded across the state.{" "}
+            </p>
           </div>
         </div>
 

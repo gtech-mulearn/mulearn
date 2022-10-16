@@ -14,20 +14,22 @@ const CampusCommunity = () => {
           <div className={styles.first_view}>
             <div className={styles.fv_texts}>
               <p className={styles.fv_heading}>
-                Welcome to <span>µLearn</span> Campus Community
+                Welcome to <span>µLearn</span> Campus Chapters
               </p>
               <p className={styles.fv_tagline}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
-                consectetur non perferendis quasi vero consequuntur corrupti,
-                recusandae quaerat molestias eaque dolorum impedit eius rem ut
-                optio laboriosam natus saepe nesciunt neque asperiores cum.
-                Minus, neque!
+                Each campus has its own culture, with students having their
+                specific interests and liking. Campus chapters seek to bring
+                together students within a college, developing the μLearn
+                culture from within. Campus Chapters thus act as a body that
+                allows μLearn to reach out to its members with their specific
+                needs and provide them with all necessary resources to help them
+                venture into their interests.
               </p>
               <button className={styles.leadcampus}>Lead a Campus</button>
             </div>
             <div className={styles.fv_image}>
               <img
-                src="assets/campuscommunity/fvimg.gif"
+                src="/assets/campuscommunity/fvimg.gif"
                 alt=""
                 className={styles.fv_img}
               />
@@ -37,23 +39,20 @@ const CampusCommunity = () => {
         <div className={styles.second_view_container}>
           <div className={styles.second_view}>
             <div className={styles.sv_texts}>
-              <p className={styles.sv_pheading}>Lorem, ipsum dolor.</p>
-              <p className={styles.sv_heading}>
-                Lorem <span>ipsum dolor</span> sit amet.
-              </p>
+              {/* <p className={styles.sv_pheading}>Lorem, ipsum dolor.</p> */}
+              <p className={styles.sv_heading}>Why µLearn for Campuses?</p>
             </div>
             <div className={styles.d_main_container}>
               <div style={{ marginTop: 0 }} className={styles.d_container}>
                 <div className={styles.d_heading}>
                   <div className={styles.d_number}>1</div>
-                  <span>Lorem, ipsum dolor.</span>
+                  <span>Echo Chambers</span>
                 </div>
                 <p className={styles.d_text}>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Soluta consectetur non perferendis quasi vero consequuntur
-                  corrupti, recusandae quaerat molestias eaque dolorum impedit
-                  eius rem ut optio laboriosam natus saepe nesciunt neque
-                  asperiores cum. Minus, neque!
+                  Regular Communities teach us upskilling and knowledge at a
+                  limited resource, post which they all tend to fall into the
+                  echo chamber and leave students with the belief that they are
+                  well versed while just being at an average level.
                 </p>
               </div>
             </div>
@@ -72,35 +71,33 @@ const CampusCommunity = () => {
                 <div className={styles.d_container}>
                   <div className={styles.d_heading}>
                     <div className={styles.d_number}>2</div>
-                    <span>Lorem, ipsum dolor.</span>
+                    <span>Quality Resources</span>
                   </div>
                   <p className={styles.d_text}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Soluta consectetur non perferendis quasi vero consequuntur
-                    corrupti, recusandae quaerat molestias eaque dolorum impedit
-                    e
+                    Students get privileged access to core and relevant courses,
+                    such as those provided by our community partner Google.u
                   </p>
                 </div>
                 <div className={styles.d_container}>
                   <div className={styles.d_heading}>
                     <div className={styles.d_number}>3</div>
-                    <span>Lorem, ipsum dolor.</span>
+                    <span>The Real World</span>
                   </div>
                   <p className={styles.d_text}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Soluta consectetur non perferendis quasi vero consequuntur
-                    corrupti,
+                    µLearn campus chapters help to break the echo chambers and
+                    move out and experience the real world.Get mentored by
+                    experienced company professionals from various domains.
                   </p>
                 </div>
                 <div className={styles.d_container}>
                   <div className={styles.d_heading}>
                     <div className={styles.d_number}>4</div>
-                    <span>Lorem, ipsum dolor.</span>
+                    <span>Infinite Opportunties.</span>
                   </div>
                   <p className={styles.d_text}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Soluta consectetur non perferendis quasi vero consequuntur
-                    corrupti.
+                    At µLearn, the students get connected with the rest of the
+                    community chapters, so they are in an infinite loop of
+                    upskilling and connecting with new opportunities.
                   </p>
                 </div>
               </div>
@@ -115,9 +112,8 @@ const CampusCommunity = () => {
                 <span>Campus</span> Success Stories
               </p>
               <p className={styles.tv_tagline}>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Incidunt quod unde fugiat quisquam libero? Corrupti voluptatibus
-                nisi commodi. Sint, sunt!
+                Let's hear from them itself. The students who have upbring the
+                feeling of a community in their own campus from scratch.
               </p>
             </div>
             <div className={styles.tv_story_container}>
