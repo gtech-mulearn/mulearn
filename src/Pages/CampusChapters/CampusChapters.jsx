@@ -76,6 +76,7 @@ const CampusChapters = () => {
             </div>
           </div>
         </div>
+
         <div className={styles.second_view_container}>
           <div className={styles.second_view}>
             <div className={styles.sv_texts}>
@@ -145,6 +146,32 @@ const CampusChapters = () => {
           </div>
         </div>
 
+        <div className={styles.generator_view_container}>
+          <div className={styles.generator_view}>
+            <div className={styles.gv_texts}>
+              <p className={styles.gv_heading}>µLearn Campus Logo Generator</p>
+              <p className={styles.gv_tagline}>
+                Create a unique face for your Campus Chapter and transform it to
+                the next level with this logo generator.
+              </p>
+              <a
+                href="http://mulearn.org/campus-logo-generator"
+                target="_blank"
+                className={styles.createlogo}
+                rel="noopener noreferrer"
+              >
+                Create Logo
+              </a>
+            </div>
+
+            <img
+              src="/assets/campuscommunity/logogen.png"
+              alt=""
+              className={styles.gv_img}
+            />
+          </div>
+        </div>
+
         <div className={styles.third_view_container}>
           <div className={styles.third_view}>
             <div className={styles.tv_texts}>
@@ -204,11 +231,11 @@ const CampusChapters = () => {
                 </p>
               </div> */}
             </div>
-            <div className={styles.faq_view_container}>
-              <div className={styles.faq_view}>
-                <Faq data={data} styles={fstyles} />
-              </div>
-            </div>
+          </div>
+        </div>
+        <div className={styles.faq_view_container}>
+          <div className={styles.faq_view}>
+            <Faq data={data} styles={fstyles} />
           </div>
         </div>
       </div>
