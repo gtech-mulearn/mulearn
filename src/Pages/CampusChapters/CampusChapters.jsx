@@ -181,12 +181,16 @@ const CampusChapters = () => {
                 />
                 <p className={styles.story_name}>Jessno Oommen Jose</p>
                 <p className={styles.story_text}>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Nulla aperiam nemo dolorum magni. In excepturi, at blanditiis
-                  consequuntur consequatur aliquid.
+                  Read the Story of a Graduate in Electronics and Communication
+                  Engineering and how she placed her college in the first
+                  position in the state and became the Kerala state lead of
+                  𝝁Learn.
                 </p>
+                <Link to="/blog/jessno">
+                  <p className={styles.read_more}>Read More...</p>
+                </Link>
               </div>
-              <div className={styles.tv_story}>
+              {/* <div className={styles.tv_story}>
                 <img
                   src="/assets/campuscommunity/sandra.jpg"
                   alt=""
@@ -198,7 +202,7 @@ const CampusChapters = () => {
                   Nulla aperiam nemo dolorum magni. In excepturi, at blanditiis
                   consequuntur consequatur aliquid.
                 </p>
-              </div>
+              </div> */}
             </div>
             <div className={styles.faq_view_container}>
               <div className={styles.faq_view}>

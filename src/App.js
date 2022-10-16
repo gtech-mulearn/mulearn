@@ -21,6 +21,7 @@ import HacktoberFest from "./Pages/Events/HacktoberFest/HacktoberFest";
 import Yip from "./Pages/YIP/Yip";
 import CampusChapters from "./Pages/CampusChapters/CampusChapters";
 import BlogPage from "./Pages/CampusChapters/AmrithaBlogPage/BlogPage";
+import JBlogPage from "./Pages/CampusChapters/JessnoBlogPage/JBlogPage";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           <Route path="/hacktoberfest" element={<HacktoberFest />} />
           <Route path="/campuschapters" element={<CampusChapters />} />
           <Route path="/blog/amirthags" element={<BlogPage />} />
+          <Route path="/blog/jessno" element={<JBlogPage />} />
         </Routes>
       </Router>
     </div>
