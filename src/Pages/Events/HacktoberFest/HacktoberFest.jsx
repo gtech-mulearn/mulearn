@@ -125,9 +125,10 @@ const HacktoberFest = () => {
                     Fork
                   </div>
                   <div className={styles.svp_text}>
-                    To start contributing to the <span>Awesome project</span>.
-                    Your first step would be to <span>Fork</span> the repository
-                    to your own github account.
+                    To start contributing to the{" "}
+                    <span>The Awesome Project </span>. Your first step would be
+                    to <span>Fork</span> the repository to your own github
+                    account.
                   </div>
                 </div>
 
@@ -181,9 +182,7 @@ const HacktoberFest = () => {
                 <span>HacktoberFest</span> Events
               </p>
 
-              <p className={styles.ev_tagline}>
-                
-              </p>
+              <p className={styles.ev_tagline}></p>
             </div>
             <div className={styles.events_container}>
               <div className={styles.event}>
