@@ -79,7 +79,6 @@ p {
     font-size: 4.55rem;
     line-height: 5rem;
     font-weight: 600;
-
   }
 
   .fv_tagline {
@@ -290,5 +289,27 @@ p {
 
   .tv_story_container {
     display: flex;
+  }
+}
+
+/* FAQ Styles */
+
+.faq_view_container {
+  padding: 2rem;
+  background-color: #ffffff;
+  padding-top: 2rem;
+}
+
+.faq_view {
+  margin-top: 2rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  .faq_view_container {
+    max-width: 1300px;
+    margin: auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    /* padding-top: 6rem; */
   }
 }
