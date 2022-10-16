@@ -23,6 +23,7 @@ import CampusChapters from "./Pages/CampusChapters/CampusChapters";
 import BlogPage from "./Pages/CampusChapters/AmrithaBlogPage/BlogPage";
 import JBlogPage from "./Pages/CampusChapters/JessnoBlogPage/JBlogPage";
 import Welcome from "./Pages/CampusChapters/Register/Welcome/Welcome";
+import FindCampus from "./Pages/CampusChapters/Register/FindCampus/FindCampus";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
           <Route path="/campuschapters">
             <Route path="" element={<CampusChapters />} />
             <Route path="welcome" element={<Welcome />} />
+            <Route path="findcampus" element={<FindCampus />} />
           </Route>
           <Route path="/blog/amirthags" element={<BlogPage />} />
           <Route path="/blog/jessno" element={<JBlogPage />} />

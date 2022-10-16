@@ -68,7 +68,9 @@ const CampusChapters = () => {
               <Link to="welcome">
                 <button className={styles.leadcampus}>Lead a Campus</button>
               </Link>
-              <button className={styles.leadcampus}>Find Campus</button>
+              <Link to="findcampus">
+                <button className={styles.leadcampus}>Find Campus</button>
+              </Link>
             </div>
             <div className={styles.fv_image}>
               <img
