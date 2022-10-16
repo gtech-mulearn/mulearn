@@ -12,7 +12,7 @@ const HacktoberFest = () => {
           <div className={styles.first_view}>
             <div className={styles.fv_texts}>
               <p className={styles.header}>
-                µLearn <span> HactoberFest</span>
+                µLearn <span> HacktoberFest</span>
               </p>
               <p className={styles.tagline}>
                 Hacktoberfest is Digital Ocean’s annual event that seeks to
