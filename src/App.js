@@ -22,6 +22,7 @@ import Yip from "./Pages/YIP/Yip";
 import CampusChapters from "./Pages/CampusChapters/CampusChapters";
 import BlogPage from "./Pages/CampusChapters/AmrithaBlogPage/BlogPage";
 import JBlogPage from "./Pages/CampusChapters/JessnoBlogPage/JBlogPage";
+import Welcome from "./Pages/CampusChapters/Register/Welcome/Welcome";
 
 function App() {
   return (
@@ -50,7 +51,10 @@ function App() {
           </Route>
           <Route path="/leaderboard" element={<LeaderBoard />} />
           <Route path="/hacktoberfest" element={<HacktoberFest />} />
-          <Route path="/campuschapters" element={<CampusChapters />} />
+          <Route path="/campuschapters">
+            <Route path="" element={<CampusChapters />} />
+            <Route path="welcome" element={<Welcome />} />
+          </Route>
           <Route path="/blog/amirthags" element={<BlogPage />} />
           <Route path="/blog/jessno" element={<JBlogPage />} />
         </Routes>

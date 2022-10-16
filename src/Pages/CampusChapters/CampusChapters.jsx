@@ -65,7 +65,10 @@ const CampusChapters = () => {
                 needs and provide them with all necessary resources to help them
                 venture into their interests.
               </p>
-              <button className={styles.leadcampus}>Lead a Campus</button>
+              <Link to="welcome">
+                <button className={styles.leadcampus}>Lead a Campus</button>
+              </Link>
+              <button className={styles.leadcampus}>Find Campus</button>
             </div>
             <div className={styles.fv_image}>
               <img
