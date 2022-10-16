@@ -50,7 +50,7 @@ p {
 
 @media only screen and (min-width: 1000px) {
   .first_view_container {
-    padding: 3rem 3rem;
+    /* padding: 3rem 3rem; */
   }
 
   .first_view {
@@ -60,7 +60,6 @@ p {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-top: 4rem;
   }
 
   .fv_img {
@@ -150,9 +149,9 @@ p {
 }
 
 @media only screen and (min-width: 1000px) {
-  .second_view_container {
+  /* .second_view_container {
     padding: 3rem 3rem;
-  }
+  } */
 
   .second_view {
     max-width: 1300px;
@@ -259,9 +258,9 @@ p {
 }
 
 @media only screen and (min-width: 1000px) {
-  .third_view_container {
+  /* .third_view_container {
     padding: 3rem 3rem;
-  }
+  } */
 
   .third_view {
     max-width: 1300px;
@@ -295,7 +294,6 @@ p {
 /* FAQ Styles */
 
 .faq_view_container {
-  padding: 2rem;
   background-color: #ffffff;
   padding-top: 2rem;
 }
@@ -360,9 +358,9 @@ p {
 }
 
 @media only screen and (min-width: 1000px) {
-  .generator_view_container {
+  /* .generator_view_container {
     padding: 3rem 3rem;
-  }
+  } */
 
   .generator_view {
     max-width: 1300px;
