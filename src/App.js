@@ -19,8 +19,8 @@ import WikiSyllabus from "./Pages/WikiSyllabus/WikiSyllabus";
 import Tech from "./Pages/Teams/Tech/Tech";
 import HacktoberFest from "./Pages/Events/HacktoberFest/HacktoberFest";
 import Yip from "./Pages/YIP/Yip";
-import CampusCommunity from "./Pages/CampusCommunity/CampusCommunity";
-import BlogPage from "./Pages/CampusCommunity/BlogPage/BlogPage";
+import CampusChapters from "./Pages/CampusChapters/CampusChapters";
+import BlogPage from "./Pages/CampusChapters/AmrithaBlogPage/BlogPage";
 
 function App() {
   return (
@@ -49,8 +49,8 @@ function App() {
           </Route>
           <Route path="/leaderboard" element={<LeaderBoard />} />
           <Route path="/hacktoberfest" element={<HacktoberFest />} />
-          <Route path="/campuscommunity" element={<CampusCommunity />} />
-          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/campuschapters" element={<CampusChapters />} />
+          <Route path="/blog/amirthags" element={<BlogPage />} />
         </Routes>
       </Router>
     </div>

@@ -2,12 +2,12 @@ import React from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 
-import styles from "./CampusCommunity.module.css";
+import styles from "./CampusChapters.module.css";
 import { Link } from "react-router-dom";
 
 import Faq from "react-faq-component";
 
-const CampusCommunity = () => {
+const CampusChapters = () => {
   const data = {
     title: "Frequently Asked Questions",
     rows: [
@@ -169,7 +169,7 @@ const CampusCommunity = () => {
                   the way she steered her college as one of the top-performing
                   colleges among the 200+ onboarded across the state.
                 </p>
-                <Link to="/blog">
+                <Link to="/blog/amirthags">
                   <p className={styles.read_more}>Read More...</p>
                 </Link>
               </div>
@@ -213,4 +213,4 @@ const CampusCommunity = () => {
   );
 };
 
-export default CampusCommunity;
+export default CampusChapters;
