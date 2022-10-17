@@ -288,6 +288,7 @@ p {
 
   .tv_tagline {
     font-size: 1.1rem;
+    font-family: "Poppins", sans-serif;
     width: 70%;
   }
 
@@ -482,10 +483,6 @@ p {
   .onboarding_view {
     max-width: 1300px;
     margin: auto;
-    /* display: flex; */
-    /* flex-direction: row; */
-    /* align-items: center;
-    justify-content: center; */
     margin-top: 4rem;
     text-align: center;
   }
@@ -496,5 +493,25 @@ p {
 
   .onboarding_steps_container {
     display: flex;
+  }
+}
+
+.share_story {
+  margin-top: 2rem;
+}
+
+.share_btn {
+  background-color: #f78c40;
+  color: white;
+  margin-top: 1rem;
+  border-radius: 5px;
+  padding: 0.5rem 1.95rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  .share_story {
+    max-width: 1300px;
+    margin: auto;
+    margin-top: 4rem;
   }
 }

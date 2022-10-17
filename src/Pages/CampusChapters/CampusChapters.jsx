@@ -328,9 +328,9 @@ const CampusChapters = () => {
                 <span>Share</span> Your Success Stories
               </p>
               <p className={styles.tv_tagline}>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-                explicabo necessitatibus maxime, incidunt aliquid vel?
+                Share your experience to get featured on the μLearn Website
               </p>
+              <button className={styles.share_btn}>Share Story</button>
             </div>
           </div>
         </div>
