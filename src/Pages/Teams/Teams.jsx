@@ -41,7 +41,7 @@ const Teams = () => {
         </div>
       </div>
 
-      <section className={styles.team_group}>
+      <section id={styles.execom} className={styles.team_group}>
         <p className={styles.team_title}>Executive Committee</p>
         <p className={styles.team_desc}>The Executive Members are those who serve as the community's skeleton and propel it forward from the rear.</p>
         <div className={styles.members_list}>

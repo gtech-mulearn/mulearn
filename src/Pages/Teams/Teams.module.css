@@ -1,6 +1,6 @@
 .firstviewmain_container {
   opacity: 1;
-  padding: 2rem;
+  padding: 2rem 2rem 0;
 }
 
 .first_view {
@@ -77,6 +77,10 @@
   margin: 1rem auto 0;
   max-width: 1300px;
   row-gap: 1rem;
+}
+
+#execom {
+  margin-top: 1rem;
 }
 
 @media only screen and (min-width: 768px) {
