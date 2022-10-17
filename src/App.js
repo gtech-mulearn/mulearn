@@ -9,14 +9,10 @@ import Company from "./Pages/Company/Company";
 import Teams from "./Pages/Teams/Teams";
 import CommunityPartner from "./Pages/CommPartners/CommPartners";
 import ArtOfTeaching from "./Pages/ArtOfTeaching/ArtOfTeaching";
-import YIP from "./Pages/Teams/YIP/YIP";
-import Community from "./Pages/Teams/Community/Community";
-import Execom from "./Pages/Teams/Execom/Execom";
 import Career from "./Pages/Career/Career";
 import LeaderBoard from "./Pages/LeaderBoard/leaderBoard";
 import Courses from "./Pages/Courses/Courses";
 import WikiSyllabus from "./Pages/WikiSyllabus/WikiSyllabus";
-import Tech from "./Pages/Teams/Tech/Tech";
 import HacktoberFest from "./Pages/Events/HacktoberFest/HacktoberFest";
 import Yip from "./Pages/YIP/Yip";
 
@@ -40,10 +36,6 @@ function App() {
           <Route path="/yip" element={<Yip />} />
           <Route path="/team">
             <Route path="" element={<Teams />} />
-            <Route path="execom" element={<Execom />} />
-            <Route path="yip" element={<YIP />} />
-            <Route path="community" element={<Community />} />
-            <Route path="tech" element={<Tech />} />
           </Route>
           <Route path="/leaderboard" element={<LeaderBoard />} />
           <Route path="/hacktoberfest" element={<HacktoberFest />} />
