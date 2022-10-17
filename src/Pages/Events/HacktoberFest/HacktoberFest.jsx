@@ -186,6 +186,29 @@ const HacktoberFest = () => {
             </div>
             <div className={styles.events_container}>
               <div className={styles.event}>
+                <div className={styles.event}>
+                  <img
+                    src="/assets/events/hacktoberfest/Alwin.jpg"
+                    alt="Alwin Event Poster"
+                    className={styles.event_img}
+                  />
+                  <p className={styles.event_header}>Github Expert Advice</p>
+                  <p className={styles.event_text}>
+                    Contributions to Hacktoberfest have started pouring in!
+                    Don’t want to be left behind? It's never too late to start.
+                    Join us for “Expert Advice”, a series of sessions to help
+                    you ace your Hacktoberfest journey.
+                  </p>
+                  <a
+                    href="https://mulearn.org/hacktoberfest-form"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className={styles.primary_btn}>Register Now</button>
+                  </a>
+                </div>
+              </div>
+              <div className={styles.event}>
                 <img
                   src="https://media.discordapp.net/attachments/771679365124718612/1030081742180204544/hactober_fest.png?width=640&height=640"
                   alt="Rohit Event Poster"
@@ -199,15 +222,6 @@ const HacktoberFest = () => {
                   GitHub to learn all you need to get started with your
                   Hacktoberfest journey.{" "}
                 </p>
-              </div>
-              <div className={styles.event}>
-                <img
-                  src="/assets/events/hacktoberfest/soon.png"
-                  alt="Coming Soon"
-                  className={styles.event_img}
-                />
-                <p className={styles.event_headerb}></p>
-                <p className={styles.event_textb}></p>
               </div>
             </div>
           </div>
@@ -277,7 +291,7 @@ const HacktoberFest = () => {
             </div>
           </div>
         </div> */}
-
+        {/* 
         <div className={styles.third_view_container}>
           <div className={styles.third_view}>
             <div className={styles.tv_texts}>
@@ -310,7 +324,7 @@ const HacktoberFest = () => {
               </ol>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       <Footer />
     </>
