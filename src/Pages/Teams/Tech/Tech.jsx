@@ -1,7 +1,7 @@
 import Navbar from "../../../Components/Navbar/Navbar";
 import Footer from "../../../Components/Footer/Footer";
 import styles from "./Tech.module.css";
-import techTeam from "./data/tech-contributors.js";
+import techTeam from "../data/tech-contributors.js";
 import MentorCard from "../../../Components/MentorCard/MentorCard";
 import { useState } from "react";
 

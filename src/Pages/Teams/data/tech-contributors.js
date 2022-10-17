@@ -2,7 +2,7 @@ const techTeam = [
   {
     id: 1,
     name: "Vinu Balagopal A P",
-    team: "Dev Rel",
+    team: "µ-Web",
     linkedin: "https://www.linkedin.com/in/vinubalagopalap/",
     image:
       "https://drive.google.com/uc?export=view&id=18Q20mpmGv7cOrgAc5Rikp1SKW__Utx6l",

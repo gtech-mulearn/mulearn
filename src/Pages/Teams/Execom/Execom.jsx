@@ -3,7 +3,7 @@ import Footer from "../../../Components/Footer/Footer";
 import styles from "./Execom.module.css";
 
 import MentorCard from "../../../Components/MentorCard/MentorCard";
-import execom from "./data/execom";
+import execom from "../data/execom";
 
 const Execom = () => {
   return (

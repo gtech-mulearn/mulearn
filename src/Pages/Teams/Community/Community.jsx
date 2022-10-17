@@ -1,10 +1,10 @@
 import Navbar from "../../../Components/Navbar/Navbar";
 import Footer from "../../../Components/Footer/Footer";
 import styles from "./Community.module.css";
-import coreTeam from "./data/core.js";
-import campusAmbassadors from "./data/ca.js";
-import districtHeads from "./data/district.js";
-import zonalHeads from "./data/zonal.js";
+import coreTeam from "../data/community/core.js";
+import campusAmbassadors from "../data/community/ca.js";
+import districtHeads from "../data/community/district.js";
+import zonalHeads from "../data/community/zonal.js";
 
 import MentorCard from "../../../Components/MentorCard/MentorCard";
 

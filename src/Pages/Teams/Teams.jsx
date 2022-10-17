@@ -2,6 +2,15 @@ import { Link } from "react-router-dom";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import styles from "./Teams.module.css";
+import MentorCard from "../../Components/MentorCard/MentorCard";
+
+import execom from "./data/execom";
+import yipteam from "./data/yip-team";
+import communitycoreTeam from "./data/community/core.js";
+import zonalHeads from "./data/community/zonal.js";
+import campusAmbassadors from "./data/community/ca.js";
+import districtHeads from "./data/community/district.js";
+import techTeam from "./data/tech-contributors.js";
 
 const Teams = () => {
   return (
@@ -31,55 +40,122 @@ const Teams = () => {
           </div>
         </div>
       </div>
-      <div className={styles.team_collection}>
-        <h2 className={styles.team_heading}>
-          View The <span>Team Members</span>
-        </h2>
-        <div></div>
-        <div className={styles.team_list}>
-          <span className={styles.team_card}>
-            <h5>Executive Committee</h5>
-            <p>
-              The executive members are those who serve as the community's
-              skeleton and propel it forward from the rear.
-            </p>
-            <Link to="/team/execom">
-              <button className={styles.join_button}>View</button>
-            </Link>
-          </span>
-          <span className={styles.team_card}>
-            <h5>YIP Team</h5>
-            <p>
-              Here are the members of the crew and interns who helped to make
-              the Yip a big success.
-            </p>
-            <Link to="/team/yip">
-              <button className={styles.join_button}>View</button>
-            </Link>
-          </span>
-          <span className={styles.team_card}>
-            <h5>Community Team</h5>
-            <p>
-              The community team was the one who brought the achievements at the
-              most; it links industry and academia and forges connections
-              between students, faculty, mentors, and others.
-            </p>
-            <Link to="/team/community">
-              <button className={styles.join_button}>View</button>
-            </Link>
-          </span>
-          <span className={styles.team_card}>
-            <h5>Tech Team</h5>
-            <p>
-              The tech team is the one who is responsible for the website and
-              bot development.
-            </p>
-            <Link to="/team/tech">
-              <button className={styles.join_button}>View</button>
-            </Link>
-          </span>
+
+      <section className={styles.team_group}>
+        <p className={styles.team_title}>Executive Committee</p>
+        <p className={styles.team_desc}>The Executive Members are those who serve as the community's skeleton and propel it forward from the rear.</p>
+        <div className={styles.members_list}>
+          {execom.map((member) => {
+            return (
+              <MentorCard
+                key={member.name}
+                name={member.name}
+                designation={member.designation}
+                image={member.image}
+                linkedIn={member.linkedin ? member.linkedin : ""}
+              />
+            );
+          })}
         </div>
-      </div>
+      </section>
+
+      <section className={styles.team_group}>
+        <p className={styles.team_title}>YIP Organization Team</p>
+        <p className={styles.team_desc}>Here are the members of the crew and interns who helped to make the Yip a big success.</p>
+        <div className={styles.members_list}>
+          {yipteam.map((member) => {
+            return (
+              <MentorCard
+                key={member.name}
+                name={member.name}
+                designation={member.designation}
+                image={member.image}
+                linkedIn={member.linkedin ? member.linkedin : ""}
+              />
+            );
+          })}
+        </div>
+      </section>
+
+      <section className={styles.team_group}>
+        <p className={styles.team_title}>Community Team</p>
+        <p className={styles.team_desc}>The Community Team was the one who brought the achievements at the most; it links industry and academia and forges connections between students, faculty, mentors, and others.</p>
+        <p className={styles.sub_team_title}>Core Team</p>
+        <div className={styles.members_list}>
+          {communitycoreTeam.map((member) => {
+            return (
+              <MentorCard
+                key={member.name}
+                name={member.name}
+                designation={member.designation}
+                image={member.image}
+                linkedIn={member.linkedin ? member.linkedin : ""}
+              />
+            );
+          })}
+        </div>
+        <p className={styles.sub_team_title}>Zonal Heads</p>
+        <div className={styles.members_list}>
+          {zonalHeads.map((member) => {
+            return (
+              <MentorCard
+                key={member.name}
+                name={member.name}
+                designation={member.designation}
+                image={member.image}
+                linkedIn={member.linkedin ? member.linkedin : ""}
+              />
+            );
+          })}
+        </div>
+        <p className={styles.sub_team_title}>District Heads</p>
+        <div className={styles.members_list}>
+          {districtHeads.map((member) => {
+            return (
+              <MentorCard
+                key={member.name}
+                name={member.name}
+                designation={member.designation}
+                image={member.image}
+                linkedIn={member.linkedin ? member.linkedin : ""}
+              />
+            );
+          })}
+        </div>
+        <p className={styles.sub_team_title}>Campus Ambassadors</p>
+        <div className={styles.members_list}>
+          {campusAmbassadors.map((member) => {
+            return (
+              <MentorCard
+                key={member.name}
+                name={member.name}
+                designation={member.designation}
+                image={member.image}
+                linkedIn={member.linkedin ? member.linkedin : ""}
+              />
+            );
+          })}
+        </div>
+      </section>
+
+      <section className={styles.team_group}>
+        <p className={styles.team_title}>Tech Team</p>
+        <p className={styles.team_desc}>Here are the members of the crew who contributed developing the website and bot, collected resources and gave suggestions about UX.</p>
+        <div className={styles.members_list}>
+          {techTeam.map((member) => {
+            return (
+              <MentorCard
+                key={member.name}
+                name={member.name}
+                image={member.image}
+                interest={member.team ? member.team : ""}
+                linkedIn={member.linkedin ? member.linkedin : ""}
+              />
+            );
+          })}
+        </div>
+      </section>
+
       <Footer />
     </>
   );
