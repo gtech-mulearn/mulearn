@@ -121,7 +121,7 @@ const CampusChapters = () => {
                   </div>
                   <p className={styles.d_text}>
                     Students get privileged access to core and relevant courses,
-                    such as those provided by our community partner Google.u
+                    such as those provided by our community partner Google.
                   </p>
                 </div>
                 <div className={styles.d_container}>
@@ -154,26 +154,39 @@ const CampusChapters = () => {
         <div className={styles.generator_view_container}>
           <div className={styles.generator_view}>
             <div className={styles.gv_texts}>
-              <p className={styles.gv_heading}>µLearn Campus Logo Generator</p>
+              <p className={styles.gv_heading}>The Campus Logo Generator</p>
               <p className={styles.gv_tagline}>
-                Create a unique face for your Campus Chapter and transform it to
-                the next level with this logo generator.
+                Interations are much more interesting when you are interacting
+                face-to-face with each other.
               </p>
-              <a
-                href="http://mulearn.org/campus-logo-generator"
-                target="_blank"
-                className={styles.createlogo}
-                rel="noopener noreferrer"
-              >
-                Create Logo
-              </a>
-            </div>
 
+              <div className={styles.redirection_container}>
+                <div className={styles.redirection_text}>
+                  <p className={styles.redirection_heading}>
+                    Looking for a Campus Logo?
+                  </p>
+                  <p className={styles.redirection_tagline}>
+                    Checkout out our Campus Logo Generator to create a face for
+                    your campus
+                  </p>
+                </div>
+                <a
+                  href="http://mulearn.org/campus-logo-generator"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className={styles.redirection_button}>
+                    Create Now
+                  </button>
+                </a>
+              </div>
+            </div>
+            {/* 
             <img
               src="/assets/campuscommunity/logogen.png"
               alt=""
               className={styles.gv_img}
-            />
+            /> */}
           </div>
         </div>
 
@@ -184,8 +197,9 @@ const CampusChapters = () => {
                 <span>Campus</span> Success Stories
               </p>
               <p className={styles.tv_tagline}>
-                Let's hear from them itself. The students who have upbring the
-                feeling of a community in their own campus from scratch.
+                Get insights into how μLearn Campus Chapters have collaborated
+                with Student heroes to build a vibrant campus community and
+                share best practices.
               </p>
             </div>
             <div className={styles.tv_story_container}>
@@ -222,19 +236,6 @@ const CampusChapters = () => {
                   <p className={styles.read_more}>Read More...</p>
                 </Link>
               </div>
-              {/* <div className={styles.tv_story}>
-                <img
-                  src="/assets/campuscommunity/sandra.jpg"
-                  alt=""
-                  className={styles.story_img}
-                />
-                <p className={styles.story_name}>Jessno Oommen Jose</p>
-                <p className={styles.story_text}>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Nulla aperiam nemo dolorum magni. In excepturi, at blanditiis
-                  consequuntur consequatur aliquid.
-                </p>
-              </div> */}
             </div>
           </div>
         </div>
