@@ -7,6 +7,12 @@ import { Link } from "react-router-dom";
 
 import Faq from "react-faq-component";
 
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { Button, CardActionArea, CardActions } from "@mui/material";
+
 const CampusChapters = () => {
   const data = {
     title: "Frequently Asked Questions",
@@ -14,22 +20,22 @@ const CampusChapters = () => {
       {
         title: "Why the µLearn chapter?",
         content:
-          "The world is evolving at a quicker rate than it has ever been in human history. The employment economy is continuously changing, and learning tools are expanding as well. All we have to do now is adjust to these tremendous waves of change. We must also guarantee that no one is left behind as the world becomes more digital. As a result, we established the club to ensure that our youth have access to the tools they need to engage in and contribute to 21st-century technological breakthroughs. To be flag bearers of a change of this scale, we need our students to innovate, learn to learn, solve problems and collaborate on a massive scale. We have built programs, projects and resources that revolve around these core areas.",
+          "Campus Chapters are a concept that are to be implemented in-house by the Students for the Students. Campus chapters seek to bring together students within a college, developing the μLearn culture from within.",
       },
       {
         title: "What is the µLearn Chapter?",
         content:
-          "The Campus community is key to ensuring μLearn’s activities and initiatives properly reaches its desired audience. This vertical is crucial to taking μLearn forward and plays an in-express-able role in the future of our community.",
+          "Each campus has its own culture, with students having their specific interests and liking. Campus chapters seek to bring together students within a college, developing the μLearn culture from within.",
       },
       {
         title: "What’s the chapter’s focus and why?",
         content:
-          "µLearn, is an industry-enabled digital platform for peer learning to nurture students with the necessary expertise in industry from their college days.Through Mu Learn, students will get the opportunity to network, acquire and demonstrate their skills with the help of mentors and industry leaders, along with internships and training.Tech communities have had an unprecedented impact on student development in these last couple of years. These communities have helped students to think together with industry leaders, find their tech niches, and participate in boot camps to perfect their crafts.",
+          "µLearn, is an industry-enabled digital platform for peer learning to nurture students with the necessary expertise in industry from their college days. Through Mu Learn, students will get the opportunity to network, acquire and demonstrate their skills with the help of mentors and industry leaders, along with internships and training.Tech communities have had an unprecedented impact on student development in these last couple of years. These communities have helped students to think together with industry leaders, find their tech niches, and participate in boot camps to perfect their crafts.",
       },
       {
         title: "How to start a µLearn Chapter?",
         content:
-          "To start a new chapter, the college must have 100k Karma Points in µLearn community, with minimum 100 chapter members. It must have a core team with an enabler. To be leads of the chapter, student must acquire 1k karma points and previous experience in conducting events.",
+          "To start a new chapter, the college must have 100k Karma Points in the µLearn community, with minimum 100 chapter members. It must have a core team with an enabler. To be leads of the chapter, student must acquire 1k karma points and previous experience in conducting events would be an added advantage. In addition to these , each applying campus should have a minimum of 3 Learning Circles.",
       },
       {
         title: "Who is a chapter member?",
@@ -159,7 +165,10 @@ const CampusChapters = () => {
                 <span>Apply today</span> to start your µLearn Campus Chapter
               </p>
               <p className={styles.gv_tagline}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus rerum nihil dolorum harum culpa deserunt neque mollitia tenetur ducimus temporibus saepe cupiditate minus aliquid, labore tempora voluptatem doloremque modi amet?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Voluptatibus rerum nihil dolorum harum culpa deserunt neque
+                mollitia tenetur ducimus temporibus saepe cupiditate minus
+                aliquid, labore tempora voluptatem doloremque modi amet?
               </p>
             </div>
             <div className={styles.onboarding_steps_container}>
@@ -183,8 +192,8 @@ const CampusChapters = () => {
                 />
                 <p className={styles.step_heading}>2). Onboarding Call</p>
                 <p className={styles.step_text}>
-                  Hop on to an onboarding call with someone from the µLearn
-                  Core Team
+                  Hop on to an onboarding call with someone from the µLearn Core
+                  Team
                 </p>
               </div>
               <div className={styles.step}>
@@ -232,12 +241,6 @@ const CampusChapters = () => {
                 </a>
               </div>
             </div>
-            {/* 
-            <img
-              src="/assets/campuscommunity/logogen.png"
-              alt=""
-              className={styles.gv_img}
-            /> */}
           </div>
         </div>
 
@@ -253,39 +256,67 @@ const CampusChapters = () => {
                 share best practices.
               </p>
             </div>
+
             <div className={styles.tv_story_container}>
               <div className={styles.tv_story}>
-                <img
-                  src="/assets/campuscommunity/amritha.jpeg"
-                  alt=""
-                  className={styles.story_img}
-                />
-                <p className={styles.story_name}>Amritha G S</p>
-                <p className={styles.story_text}>
-                  Read the Story of a Graduate in Electrial and Electronics and
-                  the way she steered her college as one of the top-performing
-                  colleges among the 200+ onboarded across the state.
-                </p>
-                <Link to="/blog/amirthags">
-                  <p className={styles.read_more}>Read More...</p>
-                </Link>
+                <Card sx={{ maxWidth: 345 }}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      height="30"
+                      image="/assets/campuscommunity/amritha.jpeg"
+                      alt="Amritha G S"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        Amritha G S
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Read the Story of a Graduate in Electrial and
+                        Electronics and the way she steered her college as one
+                        of the top-performing colleges among the 200+ onboarded
+                        across the state.
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                  <CardActions>
+                    <Link to="/blog/amirthags">
+                      <Button size="small">
+                        <span>Read More...</span>
+                      </Button>
+                    </Link>
+                  </CardActions>
+                </Card>
               </div>
               <div className={styles.tv_story}>
-                <img
-                  src="/assets/campuscommunity/jessno.jpg"
-                  alt=""
-                  className={styles.story_img}
-                />
-                <p className={styles.story_name}>Jessno Oommen Jose</p>
-                <p className={styles.story_text}>
-                  Read the Story of a Graduate in Electronics and Communication
-                  Engineering and how she placed her college in the first
-                  position in the state and became the Kerala state lead of
-                  𝝁Learn.
-                </p>
-                <Link to="/blog/jessno">
-                  <p className={styles.read_more}>Read More...</p>
-                </Link>
+                <Card sx={{ maxWidth: 345 }}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      height="30"
+                      image="/assets/campuscommunity/jessno.jpg"
+                      alt="Jessno Oommen Jose"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        Jessno Oommen Jose
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Read the Story of a Graduate in Electronics and
+                        Communication Engineering and how she placed her college
+                        in the first position in the state and became the Kerala
+                        state lead of 𝝁Learn.
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                  <CardActions>
+                    <Link to="/blog/jessno">
+                      <Button size="small">
+                        <span>Read More...</span>
+                      </Button>
+                    </Link>
+                  </CardActions>
+                </Card>
               </div>
             </div>
           </div>
