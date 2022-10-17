@@ -321,6 +321,19 @@ const CampusChapters = () => {
             </div>
           </div>
         </div>
+        <div className={styles.share_story_container}>
+          <div className={styles.share_story}>
+            <div className={styles.tv_texts}>
+              <p className={styles.tv_heading}>
+                <span>Share</span> Your Success Stories
+              </p>
+              <p className={styles.tv_tagline}>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
+                explicabo necessitatibus maxime, incidunt aliquid vel?
+              </p>
+            </div>
+          </div>
+        </div>
         <div className={styles.faq_view_container}>
           <div className={styles.faq_view}>
             <Faq data={data} styles={fstyles} />
