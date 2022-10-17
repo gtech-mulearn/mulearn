@@ -151,6 +151,57 @@ const CampusChapters = () => {
           </div>
         </div>
 
+        <div className={styles.onboarding_view_container}>
+          <div className={styles.onboarding_view}>
+            <div>
+              <p className={styles.gv_heading}>
+                {" "}
+                <span>Apply today</span> to start your µLearn Campus Chapter
+              </p>
+              <p className={styles.gv_tagline}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus rerum nihil dolorum harum culpa deserunt neque mollitia tenetur ducimus temporibus saepe cupiditate minus aliquid, labore tempora voluptatem doloremque modi amet?
+              </p>
+            </div>
+            <div className={styles.onboarding_steps_container}>
+              <div className={styles.step}>
+                <img
+                  src="/assets/campuscommunity/application.png"
+                  alt=""
+                  className={styles.step_image}
+                />
+                <p className={styles.step_heading}>1). Application</p>
+                <p className={styles.step_text}>
+                  Start by telling us about your campus chaoter and who's
+                  leading it
+                </p>
+              </div>
+              <div className={styles.step}>
+                <img
+                  src="/assets/campuscommunity/onboarding.png"
+                  alt=""
+                  className={styles.step_image}
+                />
+                <p className={styles.step_heading}>2). Onboarding Call</p>
+                <p className={styles.step_text}>
+                  Hop on to an onboarding call with someone from the µLearn
+                  Core Team
+                </p>
+              </div>
+              <div className={styles.step}>
+                <img
+                  src="/assets/campuscommunity/meeting.png"
+                  alt=""
+                  className={styles.step_image}
+                />
+                <p className={styles.step_heading}>3). First Meeting</p>
+                <p className={styles.step_text}>
+                  Schedulte your campus chapter's first meeting and get going.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className={styles.generator_view_container}>
           <div className={styles.generator_view}>
             <div className={styles.gv_texts}>
