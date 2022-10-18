@@ -241,6 +241,11 @@ const CampusChapters = () => {
                 </a>
               </div>
             </div>
+            <img
+              src="/assets/campuscommunity/generator.gif"
+              alt=""
+              className={styles.logoimage}
+            />
           </div>
         </div>
 
@@ -259,7 +264,7 @@ const CampusChapters = () => {
 
             <div className={styles.tv_story_container}>
               <div className={styles.tv_story}>
-                <Card sx={{ maxWidth: 345 }}>
+                <Card sx={{ maxWidth: 345, height: 550 }}>
                   <CardActionArea>
                     <CardMedia
                       component="img"
@@ -289,7 +294,7 @@ const CampusChapters = () => {
                 </Card>
               </div>
               <div className={styles.tv_story}>
-                <Card sx={{ maxWidth: 345 }}>
+                <Card sx={{ maxWidth: 345, height: 550 }}>
                   <CardActionArea>
                     <CardMedia
                       component="img"

@@ -401,9 +401,9 @@ p {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 4rem;
-    text-align: center;
+    /* text-align: center; */
   }
 
   .gv_img {
@@ -421,13 +421,13 @@ p {
   .gv_tagline {
     font-size: 1rem;
     width: 70%;
-    display: block;
-    margin: auto;
+    /* display: block;
+    margin: auto; */
   }
 
   .redirection_tagline {
-    width: 32rem;
-    text-align: center;
+    width: 25rem;
+    /* text-align: center; */
   }
 
   .redirection_button {
@@ -437,6 +437,7 @@ p {
   }
 
   .redirection_container {
+    width: 40rem;
     margin-top: 1rem;
     display: flex;
     align-items: center;
@@ -506,6 +507,10 @@ p {
   margin-top: 1rem;
   border-radius: 5px;
   padding: 0.5rem 1.95rem;
+}
+
+.logoimage {
+  width: 25rem;
 }
 
 @media only screen and (min-width: 1000px) {
