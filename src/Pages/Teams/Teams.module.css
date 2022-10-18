@@ -12,7 +12,7 @@
 }
 
 .fv_texts {
-  text-align: left;
+  text-align: center;
 }
 
 .fv_illustration {
@@ -42,8 +42,24 @@
   font-family: "Poppins", sans-serif;
 }
 
+.select_wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.select {
+  /* appearance: none; */
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 15rem;
+  border: 2px solid #ffc297;
+  padding: 0.5rem 1rem;
+  /* background-image: url("../../../public/assets/common/down_arrow.svg") no-repeat right #ffc297; */
+
+}
+
 .team_group {
-  margin: 7rem 2rem 0;
+  margin: 5rem 2rem 0;
 }
 
 .team_title,
@@ -79,9 +95,6 @@
   row-gap: 1rem;
 }
 
-#execom {
-  margin-top: 1rem;
-}
 
 @media only screen and (min-width: 768px) {
   .team_title {
@@ -108,15 +121,19 @@
     max-width: 1300px;
     margin: auto;
     padding-top: 0;
+    padding-bottom: 2rem;
   }
 
   .fv_texts {
     width: 32vw;
+    text-align: left;
   }
 
   .fv_image {
     width: 35rem;
   }
+
+
 
   .firstview_container {
     display: block;
