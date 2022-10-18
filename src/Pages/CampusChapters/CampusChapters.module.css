@@ -421,8 +421,8 @@ p {
   .gv_tagline {
     font-size: 1rem;
     width: 70%;
-    /* display: block;
-    margin: auto; */
+    display: block;
+    margin: auto;
   }
 
   .redirection_tagline {
