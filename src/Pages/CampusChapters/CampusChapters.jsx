@@ -184,7 +184,7 @@ const CampusChapters = () => {
                 />
                 <p className={styles.step_heading}>1). Application</p>
                 <p className={styles.step_text}>
-                  Start by telling us about your campus chaoter and who's
+                  Start by telling us about your campus chapter and who's
                   leading it
                 </p>
               </div>
