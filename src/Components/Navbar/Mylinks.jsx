@@ -40,6 +40,15 @@ export const links = [
           },
         ],
       },
+      {
+        Head: "Campus Chapters",
+        sublink: [
+          {
+            name: "Home Page",
+            link: "/campuschapters",
+          },
+        ],
+      },
     ],
   },
   {
