@@ -1,5 +1,39 @@
 const Events = [
   {
+    Sl_No: 0,
+    Event_Name: "Images",
+    Photo_1:
+      "https://drive.google.com/uc?export=view&id=1-5eAtkEWG8ERms-QbYf595dgOyut3ugR",
+    Photo_2:
+      "https://drive.google.com/uc?export=view&id=1aF7AfZfzch3MOfkbdoDiPJ7MqQlc0fIE",
+    Photo_3:
+      "https://drive.google.com/uc?export=view&id=1aa5OxeKsmHevobh6-eS1eHDc6Dcr1ab7",
+    Photo_4:
+      "https://drive.google.com/uc?export=view&id=1vTpReQlDvsdx55b7WnZ4OvSQccBQTwYo",
+    Photo_5:
+      "https://drive.google.com/uc?export=view&id=1kB5YF1FNn8wQ0mK8t0ouGaztbsIXRaNa",
+    Photo_6:
+      "https://drive.google.com/uc?export=view&id=11cOAIlrF-Fus5hPSpV6EVKV7pWra5EBL",
+    Photo_7:
+      "https://drive.google.com/uc?export=view&id=172f3v2CII42uRMEzSJrmwHrtvT0TA1fF",
+    Photo_8:
+      "https://drive.google.com/uc?export=view&id=1_Xlzj62DXhSu9AiLRUvwQZoNTtIeLhDu",
+    Photo_9:
+      "https://drive.google.com/uc?export=view&id=1mGdayhcAkqMJ6FLVohv92PEjvwfcCBK7",
+    Photo_10:
+      "https://drive.google.com/uc?export=view&id=1SOVGZcQt6Q5GUhLn04IcUOSUfV62Atr_",
+    Photo_11:
+      "https://drive.google.com/uc?export=view&id=1cX-juHiiHQtdhiv7kOEjpyEOA5WPtupD",
+    Photo_12:
+      "https://drive.google.com/uc?export=view&id=1M2ny3i6BGZyibn0IuA3d7D4--FGcSNQS",
+    Photo_13:
+      "https://drive.google.com/uc?export=view&id=1AcmXBbHUO9A4L6tqsLPPtYt-K2vnMFIi",
+    Photo_14:
+      "https://drive.google.com/uc?export=view&id=1GW75rGpzP5MsWYe_q_ce0uBUkIAsxW7X",
+    Photo_15:
+      "https://drive.google.com/uc?export=view&id=1Q2fbYUFDRCvHHbBmNMxNkDuYNdmkitqq",
+  },
+  {
     Sl_No: 1,
     Event_Name: "Launch of MuLearn by Dr. R. Bindhu",
     Date: "15 July 2021",

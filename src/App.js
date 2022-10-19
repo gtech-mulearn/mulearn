@@ -18,7 +18,6 @@ import Courses from "./Pages/Courses/Courses";
 import WikiSyllabus from "./Pages/WikiSyllabus/WikiSyllabus";
 import Tech from "./Pages/Teams/Tech/Tech";
 import Yip from "./Pages/YIP/Yip";
-import Newgallery from "./Pages/Newgallery/Newgallery"
 
 function App() {
   return (
@@ -27,7 +26,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/careers" element={<Career />} />
-          {/* <Route path="/news" element={<News />} /> */}
+ 
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/announcements" element={<MuAnnouncements />} />
@@ -46,8 +45,8 @@ function App() {
             <Route path="tech" element={<Tech />} />
           </Route>
           <Route path="/leaderboard" element={<LeaderBoard />} />
-          <Route path="/newgallery" element={<Newgallery />} />
-          {/* <Route path="/community" element={ }/> */}
+
+
         </Routes>
       </Router>
     </div>
