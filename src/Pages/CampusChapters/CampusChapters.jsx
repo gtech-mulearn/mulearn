@@ -165,10 +165,10 @@ const CampusChapters = () => {
                 <span>Apply today</span> to start your µLearn Campus Chapter
               </p>
               <p className={styles.gv_tagline}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptatibus rerum nihil dolorum harum culpa deserunt neque
-                mollitia tenetur ducimus temporibus saepe cupiditate minus
-                aliquid, labore tempora voluptatem doloremque modi amet?
+                Changes always starts from within! Want to establish a Campus
+                Chapter at your Institution? The Application Process is as
+                simple as the three steps mentioned below. Take that 1st step
+                today and create a difference
               </p>
             </div>
             <div className={styles.onboarding_steps_container}>
@@ -215,10 +215,6 @@ const CampusChapters = () => {
           <div className={styles.generator_view}>
             <div className={styles.gv_texts}>
               <p className={styles.gv_heading}>The Campus Logo Generator</p>
-              <p className={styles.gv_tagline}>
-                Interations are much more interesting when you are interacting
-                face-to-face with each other.
-              </p>
 
               <div className={styles.redirection_container}>
                 <div className={styles.redirection_text}>
@@ -257,8 +253,7 @@ const CampusChapters = () => {
               </p>
               <p className={styles.tv_tagline}>
                 Get insights into how μLearn Campus Chapters have collaborated
-                with Student heroes to build a vibrant campus community and
-                share best practices.
+                with Student heroes to build a vibrant campus community.
               </p>
             </div>
 
@@ -278,7 +273,7 @@ const CampusChapters = () => {
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
                         Read the Story of a Graduate in Electrial and
-                        Electronics and the way she steered her college as one
+                        Electronics Engineering and the way she steered her college as one
                         of the top-performing colleges among the 200+ onboarded
                         across the state.
                       </Typography>

@@ -24,7 +24,7 @@ const BlogPage = () => {
               </p>
             </div>
             <p className={styles.heading}>
-              Read the Story of a Graduate in Electrial and Electronics and the
+              Read the Story of a Graduate in Electrial and Electronics Engineering and the
               way she steered her college as one of the top-performing colleges
               among the 200+ onboarded across the state.{" "}
             </p>
