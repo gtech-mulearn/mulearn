@@ -7,13 +7,13 @@ export const links = [
         Head: "The Team",
         sublink: [
           { name: "Our Team", link: "/team" },
-          { name: "Executive Committe", link: "/team/execom" },
-          { name: "YIP Team", link: "/team/yip" },
-          { name: "Community Team", link: "/team/community" },
-          {
-            name: "Tech Team",
-            link: "/team/tech",
-          },
+          // { name: "Executive Committe", link: "/team/execom" },
+          // { name: "YIP Team", link: "/team/yip" },
+          // { name: "Community Team", link: "/team/community" },
+          // {
+          //   name: "Tech Team",
+          //   link: "/team/tech",
+          // },
         ],
       },
       {
@@ -24,12 +24,16 @@ export const links = [
         ],
       },
       {
-        Head: "Gallery",
+        Head: "Media",
         sublink: [
           {
             name: "Gallery",
             link: "/gallery",
           },
+          // {
+          //   name: "News",
+          //   link: "/news",
+          // },
           {
             name: "Leaderboard",
             link: "/leaderboard",
@@ -45,7 +49,7 @@ export const links = [
       {
         Head: "Flagship",
         sublink: [
-          { name: "YIP 2021", link: "/yip"},
+          { name: "YIP 2021", link: "/yip" },
           {
             name: "Foundation Program",
             link: "https://foundation.mulearn.org",

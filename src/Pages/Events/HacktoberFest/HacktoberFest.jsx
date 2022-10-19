@@ -12,7 +12,7 @@ const HacktoberFest = () => {
           <div className={styles.first_view}>
             <div className={styles.fv_texts}>
               <p className={styles.header}>
-                µLearn <span> HactoberFest</span>
+                µLearn <span> HacktoberFest</span>
               </p>
               <p className={styles.tagline}>
                 Hacktoberfest is Digital Ocean’s annual event that seeks to
@@ -125,9 +125,10 @@ const HacktoberFest = () => {
                     Fork
                   </div>
                   <div className={styles.svp_text}>
-                    To start contributing to the <span>Awesome project</span>.
-                    Your first step would be to <span>Fork</span> the repository
-                    to your own github account.
+                    To start contributing to the{" "}
+                    <span>The Awesome Project </span>. Your first step would be
+                    to <span>Fork</span> the repository to your own github
+                    account.
                   </div>
                 </div>
 
@@ -181,11 +182,32 @@ const HacktoberFest = () => {
                 <span>HacktoberFest</span> Events
               </p>
 
-              <p className={styles.ev_tagline}>
-                
-              </p>
+              <p className={styles.ev_tagline}></p>
             </div>
             <div className={styles.events_container}>
+              <div className={styles.event}>
+                <div className={styles.event}>
+                  <img
+                    src="/assets/events/hacktoberfest/Alwin.jpg"
+                    alt="Alwin Event Poster"
+                    className={styles.event_img}
+                  />
+                  <p className={styles.event_header}>Github Expert Advice</p>
+                  <p className={styles.event_text}>
+                    Contributions to Hacktoberfest have started pouring in!
+                    Don’t want to be left behind? It's never too late to start.
+                    Join us for “Expert Advice”, a series of sessions to help
+                    you ace your Hacktoberfest journey.
+                  </p>
+                  <a
+                    href="https://mulearn.org/hacktoberfest-form"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className={styles.primary_btn}>Register Now</button>
+                  </a>
+                </div>
+              </div>
               <div className={styles.event}>
                 <img
                   src="https://media.discordapp.net/attachments/771679365124718612/1030081742180204544/hactober_fest.png?width=640&height=640"
@@ -201,114 +223,55 @@ const HacktoberFest = () => {
                   Hacktoberfest journey.{" "}
                 </p>
               </div>
-              <div className={styles.event}>
-                <img
-                  src="/assets/events/hacktoberfest/soon.png"
-                  alt="Coming Soon"
-                  className={styles.event_img}
-                />
-                <p className={styles.event_headerb}></p>
-                <p className={styles.event_textb}></p>
-              </div>
             </div>
           </div>
         </div>
-
-        {/* <div className={styles.steps_view_container}>
-          <div className={styles.steps_view}>
-            <div className={styles.stv_texts}>
-              <p className={styles.stv_heading}>
-                Steps for <span>Contributing.</span>
-              </p>
-              <p className={styles.stv_tagline}>
-                Below given is the step by step breakdown of how you can
-                contribute to the project and create an online presence for a
-                buisness nearby.
-              </p>
-            </div>
-            <div className={styles.steps_container}>
-              <div className={styles.step}>
-                <p className={styles.step_heading}>Step 1</p>
-                <p className={styles.step_text}>
-                  Before starting you would have to signup for hacktoberfest
-                  using the link which is provided above.Once that is done you
-                  can{" "}
-                  <a
-                    href="https://github.com/gtech-mulearn/mulearn/"
-                    className={styles.link}
-                  >
-                    fork
-                  </a>{" "}
-                  the repository from github.
-                </p>
-              </div>
-              <div className={styles.step}>
-                <p className={styles.step_heading}>Step 2</p>
-                <p className={styles.step_text}>
-                  There is folder inside the public folder named as India,
-                  inside which there is folder called kerala having sub-folders
-                  of each district. You can contribute to the disctrict in which
-                  the buisness belongs to.
-                </p>
-              </div>
-              <div className={styles.step}>
-                <p className={styles.step_heading}>Step 3</p>
-                <p className={styles.step_text}>
-                  Make sure that the website that you are making for the
-                  buisness satisfies all the basic requirements which are
-                  specified below.
-                </p>
-              </div>
-              <div className={styles.step}>
-                <p className={styles.step_heading}>Step 4</p>
-                <p className={styles.step_text}>
-                  Once you have completed making the website. You can create a
-                  pull request mentioning the sufficient details and create a
-                  pull request.
-                </p>
-              </div>
-              <div className={styles.step}>
-                <p className={styles.step_heading}>Step 5</p>
-                <p className={styles.step_text}>
-                  Soon, our team will be quality checking the pull request and
-                  will be merging it with the parent repository. Which ensures
-                  and completes your participation.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div> */}
 
         <div className={styles.third_view_container}>
           <div className={styles.third_view}>
             <div className={styles.tv_texts}>
               <p className={styles.tvheader}>
-                Minimum <span>Requirements</span>
+                µLearn <span> Supported</span> Repositories
               </p>
               <p className={styles.tvtagline}>
-                Please make sure that you upload the shop's consent letter in
-                the PR comments. It could even be a screenshot of a consent mail
-                from the store.Please try to include as much info you can
-                collect about the shop in the website that you are building.
+                These are the open-source repositories which are supported by
+                µLearn. Happy Contributing.
               </p>
             </div>
-
-            <div className={styles.tvpoints}>
-              <ol>
-                <li className={styles.listitem}>
-                  The webpage should have images of the buisness
-                </li>
-                <li className={styles.listitem}>
-                  Basic Details such as location, working hours etc.. should be
-                  present.
-                </li>
-                <li className={styles.listitem}>
-                  Contact Details of the buissness should be added.
-                </li>
-                <li className={styles.listitem}>
-                  Make the webpage as creative as possible.
-                </li>
-              </ol>
+            <div className={styles.supporting_container}>
+              <div className={styles.supporters}>
+                <p className={styles.projectname}>Project Awesome</p>
+                <p className={styles.projectorganiser}>Organiser: µLearn</p>
+                <p className={styles.projectdecription}>
+                  An Open Source Initiative to make an open source collection of
+                  web-pages for every business out there. To contribute to the
+                  project, all you have to do is build a website for a store or
+                  business.
+                </p>
+                <a
+                  href="http://awesome.mulearn.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className={styles.primary_btn}>Contribute Now</button>
+                </a>
+              </div>
+              <div className={styles.supporters}>
+                <p className={styles.projectname}>Road-to-OSS</p>
+                <p className={styles.projectorganiser}>Organiser: Pygrammers</p>
+                <p className={styles.projectdecription}>
+                  Learn some basic workflow of git and GitHub in a few steps.
+                  Afterward, let's start contributing to several open-source
+                  projects. And be a part of hackctober fest also.
+                </p>
+                <a
+                  href="https://github.com/pygrammers-org/Road-to-OSS"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className={styles.primary_btn}>Contribute Now</button>
+                </a>
+              </div>
             </div>
           </div>
         </div>
