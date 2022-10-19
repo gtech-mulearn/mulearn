@@ -2,7 +2,7 @@ const techTeam = [
   {
     id: 1,
     name: "Vinu Balagopal A P",
-    team: "Dev Rel",
+    team: "µ-Web",
     linkedin: "https://www.linkedin.com/in/vinubalagopalap/",
     image:
       "https://drive.google.com/uc?export=view&id=18Q20mpmGv7cOrgAc5Rikp1SKW__Utx6l",
@@ -167,14 +167,14 @@ const techTeam = [
     image:
       "https://drive.google.com/uc?export=view&id=10eeDzobzgaQkEsgnmc3KX0-B2xD5LvKp",
   },
-  // {
-  //   id: 23,
-  //   name: "Irfan Ansari",
-  //   team: "µ-JSON",
-  //   linkedin: "https://www.linkedin.com/in/irfan-ansari-634174132",
-  //   image:
-  //     "https://drive.google.com/uc?export=view&id=1-vjsR_BWScAz2WWSSM255ON3kzuAyu_B",
-  // },
+  {
+    id: 23,
+    name: "Irfan Ansari",
+    team: "µ-JSON",
+    linkedin: "https://www.linkedin.com/in/irfan-ansari-634174132",
+    image:
+      "https://drive.google.com/uc?export=view&id=1-vjsR_BWScAz2WWSSM255ON3kzuAyu_B",
+  },
   {
     id: 24,
     name: "Amal Sony",
@@ -230,14 +230,6 @@ const techTeam = [
     linkedin: "https://www.linkedin.com/in/vishnu-c-r-821a31201",
     image:
       "https://drive.google.com/uc?export=view&id=1VqH1iz7F77sFOXB6NKslKQ0PISZGMvE5",
-  },
-  {
-    id: 31,
-    name: "Irfan Ansari",
-    team: "µ-JSON",
-    linkedin: "https://www.linkedin.com/in/irfan-ansari-634174132",
-    image:
-      "https://drive.google.com/uc?export=view&id=1-vjsR_BWScAz2WWSSM255ON3kzuAyu_B",
   },
 ];
 
