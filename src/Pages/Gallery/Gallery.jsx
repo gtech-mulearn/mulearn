@@ -64,36 +64,20 @@ const Gallery = () => {
                 events.
               </p>
             </div>
-            <Box
-              sx={{
-                flexGrow: 1,
-                maxWidth: { xs: 320, sm: 480, md: 720, lg: 1000, xl: 1300 },
-                bgcolor: "background.paper",
-              }}
-            >
-              <Tabs
-                value={evalue}
-                onChange={ehandleChange}
-                variant="scrollable"
-                scrollButtons
-                aria-label="visible arrows tabs example"
-                sx={{
-                  [`& .${tabsClasses.scrollButtons}`]: {
-                    "&.Mui-disabled": { opacity: 0.3 },
-                  },
-                }}
-              >
-                {Events.map((event) => (
-                  <Tab
-                    onClick={() => {
-                      setProgram(event);
-                      console.log(event);
-                    }}
-                    label={event.Event_Name}
-                  />
-                ))}
-              </Tabs>
-            </Box>
+
+            <div className={styles.tabs_container}>
+              {Events.map((event) => (
+                <p
+                  className={styles.tab}
+                  onClick={() => {
+                    setProgram(event);
+                    console.log(event);
+                  }}
+                >
+                  {event.Event_Name}
+                </p>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -105,7 +89,7 @@ const Gallery = () => {
                   {program.Photo_1 && (
                     <img
                       src={program.Photo_1}
-                      alt="Hi"
+                      alt=""
                       className={kakt.gallery_img}
                     />
                   )}
@@ -137,7 +121,7 @@ const Gallery = () => {
                   {program.Photo_2 && (
                     <img
                       src={program.Photo_2}
-                      alt="Hi"
+                      alt=""
                       className={kakt.gallery_img}
                     />
                   )}
@@ -169,7 +153,7 @@ const Gallery = () => {
                   {program.Photo_3 && (
                     <img
                       src={program.Photo_3}
-                      alt="Hi"
+                      alt=""
                       className={kakt.gallery_img}
                     />
                   )}
@@ -201,7 +185,7 @@ const Gallery = () => {
                   {program.Photo_4 && (
                     <img
                       src={program.Photo_4}
-                      alt="Hi"
+                      alt=""
                       className={kakt.gallery_img}
                     />
                   )}
@@ -231,199 +215,6 @@ const Gallery = () => {
             </div>
           </section>
         )}
-
-        <div className={styles.second_view_container}>
-          <div className={styles.second_view}>
-            <div className={styles.sv_texts}>
-              <p className={styles.sv_heading}>
-                {" "}
-                <span>µLearn</span> News Articles.
-              </p>
-              <p className={styles.sv_tagline}>
-                These are the various news paper cuttings and articles from
-                various online media and press.
-              </p>
-            </div>
-            <Box
-              sx={{
-                flexGrow: 1,
-                maxWidth: { xs: 320, sm: 480, md: 720, lg: 1000, xl: 1300 },
-                bgcolor: "background.paper",
-              }}
-            >
-              <Tabs
-                value={nvalue}
-                onChange={nhandleChange}
-                variant="scrollable"
-                scrollButtons
-                aria-label="visible arrows tabs example"
-                sx={{
-                  [`& .${tabsClasses.scrollButtons}`]: {
-                    "&.Mui-disabled": { opacity: 0.3 },
-                  },
-                }}
-              >
-                {News.map((news) => (
-                  <Tab
-                    onClick={() => {
-                      setNews(news);
-                      console.log(news);
-                    }}
-                    label={news.Event_Name}
-                  />
-                ))}
-              </Tabs>
-            </Box>
-
-            {/* {news && (
-                <div className={styles.cards_view}>
-                  {news.p1 && (
-                    <a href={news.p1} target="_blank" rel="noopener noreferrer">
-                      <div className={styles.card_container}>
-                        <img src={news.p1} alt="" className={styles.card_img} />
-                      </div>
-                    </a>
-                  )}
-
-                  {news.p2 && (
-                    <a href={news.p2} target="_blank" rel="noopener noreferrer">
-                      <div className={styles.card_container}>
-                        <img src={news.p2} alt="" className={styles.card_img} />
-                      </div>
-                    </a>
-                  )}
-                  {news.p3 && (
-                    <a href={news.p3} target="_blank" rel="noopener noreferrer">
-                      <div className={styles.card_container}>
-                        <img src={news.p3} alt="" className={styles.card_img} />
-                      </div>
-                    </a>
-                  )}
-                  {news.p4 && (
-                    <a href={news.p4} target="_blank" rel="noopener noreferrer">
-                      <div className={styles.card_container}>
-                        <img src={news.p4} alt="" className={styles.card_img} />
-                      </div>
-                    </a>
-                  )}
-                  {news.p5 && (
-                    <a href={news.p5} target="_blank" rel="noopener noreferrer">
-                      <div className={styles.card_container}>
-                        <img src={news.p5} alt="" className={styles.card_img} />
-                      </div>
-                    </a>
-                  )}
-                  {news.p6 && (
-                    <a href={news.p6} target="_blank" rel="noopener noreferrer">
-                      <div className={styles.card_container}>
-                        <img src={news.p6} alt="" className={styles.card_img} />
-                      </div>
-                    </a>
-                  )}
-                  {news.p7 && (
-                    <a href={news.p7} target="_blank" rel="noopener noreferrer">
-                      <div className={styles.card_container}>
-                        <img src={news.p7} alt="" className={styles.card_img} />
-                      </div>
-                    </a>
-                  )}
-                  {news.p8 && (
-                    <a href={news.p8} target="_blank" rel="noopener noreferrer">
-                      <div className={styles.card_container}>
-                        <img src={news.p8} alt="" className={styles.card_img} />
-                      </div>
-                    </a>
-                  )}
-                </div>
-              )} */}
-          </div>
-          {news && (
-            <section className={kakt.gallerySection}>
-              <div className={kakt.row}>
-                <div className={kakt.column}>
-                  <div className={kakt.img_wrapper}>
-                    {news.p1 && (
-                      <img
-                        src={news.p1}
-                        alt=""
-                        className={kakt.gallery_img}
-                      />
-                    )}
-                    {news.p5 && (
-                      <img src={news.p5} alt="" className={kakt.gallery_img} />
-                    )}
-                    {news.p9 && (
-                      <img src={news.p9} alt="" className={kakt.gallery_img} />
-                    )}
-                    {news.p13 && (
-                      <img src={news.p13} alt="" className={kakt.gallery_img} />
-                    )}
-                  </div>
-                </div>
-                <div className={kakt.column}>
-                  <div className={kakt.img_wrapper}>
-                    {news.p2 && (
-                      <img
-                        src={news.p2}
-                        alt="Hi"
-                        className={kakt.gallery_img}
-                      />
-                    )}
-                    {news.p6 && (
-                      <img src={news.p6} alt="" className={kakt.gallery_img} />
-                    )}
-                    {news.p10 && (
-                      <img src={news.p10} alt="" className={kakt.gallery_img} />
-                    )}
-                    {news.p14 && (
-                      <img src={news.p14} alt="" className={kakt.gallery_img} />
-                    )}
-                  </div>
-                </div>
-                <div className={kakt.column}>
-                  <div className={kakt.img_wrapper}>
-                    {news.p3 && (
-                      <img
-                        src={news.p3}
-                        alt="Hi"
-                        className={kakt.gallery_img}
-                      />
-                    )}
-                    {news.p7 && (
-                      <img src={news.p7} alt="" className={kakt.gallery_img} />
-                    )}
-                    {news.p11 && (
-                      <img src={news.p11} alt="" className={kakt.gallery_img} />
-                    )}
-                    {news.p15 && (
-                      <img src={news.p15} alt="" className={kakt.gallery_img} />
-                    )}
-                  </div>
-                </div>
-                <div className={kakt.column}>
-                  <div className={kakt.img_wrapper}>
-                    {news.p4 && (
-                      <img
-                        src={news.p4}
-                        alt="Hi"
-                        className={kakt.gallery_img}
-                      />
-                    )}
-                    {news.p8 && (
-                      <img src={news.p8} alt="" className={kakt.gallery_img} />
-                    )}
-                    {news.p12 && (
-                      <img src={news.p12} alt="" className={kakt.gallery_img} />
-                    )}
-                    {news.p16 && (
-                      <img src={news.p16} alt="" className={kakt.gallery_img} />
-                    )}
-                  </div>
-                </div>
-              </div>
-            </section>
-          )}
-        </div>
       </div>
       <Footer />
     </>

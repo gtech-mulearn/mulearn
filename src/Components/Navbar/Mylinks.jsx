@@ -24,12 +24,16 @@ export const links = [
         ],
       },
       {
-        Head: "Gallery",
+        Head: "Media",
         sublink: [
           {
             name: "Gallery",
-            link: "/newgallery",
+            link: "/gallery",
           },
+          // {
+          //   name: "News",
+          //   link: "/news",
+          // },
           {
             name: "Leaderboard",
             link: "/leaderboard",
