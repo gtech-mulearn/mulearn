@@ -46,8 +46,8 @@ function App() {
           <Route path="/hacktoberfest" element={<HacktoberFest />} />
           <Route path="/campuschapters">
             <Route path="" element={<CampusChapters />} />
-            <Route path="welcome" element={<Welcome />} />
-            <Route path="findcampus" element={<FindCampus />} />
+            {/* <Route path="welcome" element={<Welcome />} />
+            <Route path="findcampus" element={<FindCampus />} /> */}
           </Route>
           <Route path="/blog/amirthags" element={<BlogPage />} />
           <Route path="/blog/jessno" element={<JBlogPage />} />
