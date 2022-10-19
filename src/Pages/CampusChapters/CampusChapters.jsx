@@ -238,7 +238,7 @@ const CampusChapters = () => {
               </div>
             </div>
             <img
-              src="/assets/campuscommunity/generator.gif"
+              src="/assets/campuscommunity/logogen.png"
               alt=""
               className={styles.logoimage}
             />
@@ -273,9 +273,9 @@ const CampusChapters = () => {
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
                         Read the Story of a Graduate in Electrial and
-                        Electronics Engineering and the way she steered her college as one
-                        of the top-performing colleges among the 200+ onboarded
-                        across the state.
+                        Electronics Engineering and the way she steered her
+                        college as one of the top-performing colleges among the
+                        200+ onboarded across the state.
                       </Typography>
                     </CardContent>
                   </CardActionArea>
