@@ -71,12 +71,12 @@ const CampusChapters = () => {
                 needs and provide them with all necessary resources to help them
                 venture into their interests.
               </p>
-              <Link to="welcome">
+              {/* <Link to="welcome">
                 <button className={styles.leadcampus}>Lead a Campus</button>
               </Link>
               <Link to="findcampus">
                 <button className={styles.leadcampus}>Find Campus</button>
-              </Link>
+              </Link> */}
             </div>
             <div className={styles.fv_image}>
               <img
@@ -321,7 +321,7 @@ const CampusChapters = () => {
             </div>
           </div>
         </div>
-        <div className={styles.share_story_container}>
+        {/* <div className={styles.share_story_container}>
           <div className={styles.share_story}>
             <div className={styles.tv_texts}>
               <p className={styles.tv_heading}>
@@ -333,7 +333,7 @@ const CampusChapters = () => {
               <button className={styles.share_btn}>Share Story</button>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className={styles.faq_view_container}>
           <div className={styles.faq_view}>
             <Faq data={data} styles={fstyles} />
