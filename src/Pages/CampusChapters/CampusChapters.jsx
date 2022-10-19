@@ -71,10 +71,14 @@ const CampusChapters = () => {
                 needs and provide them with all necessary resources to help them
                 venture into their interests.
               </p>
-              {/* <Link to="welcome">
+              <a
+                href="https://airtable.com/shr5U1mJKfPCTqfab"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <button className={styles.leadcampus}>Lead a Campus</button>
-              </Link>
-              <Link to="findcampus">
+              </a>
+              {/* <Link to="findcampus">
                 <button className={styles.leadcampus}>Find Campus</button>
               </Link> */}
             </div>
