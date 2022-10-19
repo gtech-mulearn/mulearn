@@ -274,8 +274,8 @@ const Gallery = () => {
                 ))}
               </Tabs>
             </Box>
-            <div className={styles.cards_view_container}>
-              {news && (
+
+            {/* {news && (
                 <div className={styles.cards_view}>
                   {news.p1 && (
                     <a href={news.p1} target="_blank" rel="noopener noreferrer">
@@ -335,9 +335,94 @@ const Gallery = () => {
                     </a>
                   )}
                 </div>
-              )}
-            </div>
+              )} */}
           </div>
+          {news && (
+            <section className={kakt.gallerySection}>
+              <div className={kakt.row}>
+                <div className={kakt.column}>
+                  <div className={kakt.img_wrapper}>
+                    {news.p1 && (
+                      <img
+                        src={news.p1}
+                        alt=""
+                        className={kakt.gallery_img}
+                      />
+                    )}
+                    {news.p5 && (
+                      <img src={news.p5} alt="" className={kakt.gallery_img} />
+                    )}
+                    {news.p9 && (
+                      <img src={news.p9} alt="" className={kakt.gallery_img} />
+                    )}
+                    {news.p13 && (
+                      <img src={news.p13} alt="" className={kakt.gallery_img} />
+                    )}
+                  </div>
+                </div>
+                <div className={kakt.column}>
+                  <div className={kakt.img_wrapper}>
+                    {news.p2 && (
+                      <img
+                        src={news.p2}
+                        alt="Hi"
+                        className={kakt.gallery_img}
+                      />
+                    )}
+                    {news.p6 && (
+                      <img src={news.p6} alt="" className={kakt.gallery_img} />
+                    )}
+                    {news.p10 && (
+                      <img src={news.p10} alt="" className={kakt.gallery_img} />
+                    )}
+                    {news.p14 && (
+                      <img src={news.p14} alt="" className={kakt.gallery_img} />
+                    )}
+                  </div>
+                </div>
+                <div className={kakt.column}>
+                  <div className={kakt.img_wrapper}>
+                    {news.p3 && (
+                      <img
+                        src={news.p3}
+                        alt="Hi"
+                        className={kakt.gallery_img}
+                      />
+                    )}
+                    {news.p7 && (
+                      <img src={news.p7} alt="" className={kakt.gallery_img} />
+                    )}
+                    {news.p11 && (
+                      <img src={news.p11} alt="" className={kakt.gallery_img} />
+                    )}
+                    {news.p15 && (
+                      <img src={news.p15} alt="" className={kakt.gallery_img} />
+                    )}
+                  </div>
+                </div>
+                <div className={kakt.column}>
+                  <div className={kakt.img_wrapper}>
+                    {news.p4 && (
+                      <img
+                        src={news.p4}
+                        alt="Hi"
+                        className={kakt.gallery_img}
+                      />
+                    )}
+                    {news.p8 && (
+                      <img src={news.p8} alt="" className={kakt.gallery_img} />
+                    )}
+                    {news.p12 && (
+                      <img src={news.p12} alt="" className={kakt.gallery_img} />
+                    )}
+                    {news.p16 && (
+                      <img src={news.p16} alt="" className={kakt.gallery_img} />
+                    )}
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
         </div>
       </div>
       <Footer />
