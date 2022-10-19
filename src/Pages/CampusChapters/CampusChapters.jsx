@@ -272,7 +272,7 @@ const CampusChapters = () => {
                         Amritha G S
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        Read the Story of a Graduate in Electrial and
+                        Read the Story of a Graduate in Electrical and
                         Electronics Engineering and the way she steered her
                         college as one of the top-performing colleges among the
                         200+ onboarded across the state.
