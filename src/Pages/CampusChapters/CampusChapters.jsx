@@ -208,7 +208,7 @@ const CampusChapters = () => {
                 />
                 <p className={styles.step_heading}>3). First Meeting</p>
                 <p className={styles.step_text}>
-                  Schedulte your campus chapter's first meeting and get going.
+                  Schedule your campus chapter's first meeting and get going.
                 </p>
               </div>
             </div>
