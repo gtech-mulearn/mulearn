@@ -102,7 +102,7 @@ export const links = [
     submenu: true,
     sublinks: [
       {
-        Head: "Home",
+        Head: "Home Page",
         sublink: [
           {
             foreign: true,
