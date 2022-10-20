@@ -105,7 +105,6 @@ export const links = [
         Head: "Home",
         sublink: [
           {
-            foreign: true,
             name: "Home",
             link: "https://learn.mulearn.org/",
           },
@@ -115,12 +114,10 @@ export const links = [
         Head: "Search",
         sublink: [
           {
-            foreign: true,
             name: "Mentor Directory",
             link: "https://learn.mulearn.org/mentors",
           },
           {
-            foreign: true,
             name: "Existing Circles",
             link: "https://learn.mulearn.org/searchcircles",
           },
@@ -130,17 +127,14 @@ export const links = [
         Head: "Practice",
         sublink: [
           {
-            foreign: true,
             name: "Problem Shelf",
             link: "https://learn.mulearn.org/problemshelves",
           },
           {
-            foreign: true,
             name: "Challenges",
             link: "https://learn.mulearn.org/challenges",
           },
           {
-            foreign: true,
             name: "Courses",
             link: "https://learn.mulearn.org/courses",
           },
@@ -150,32 +144,26 @@ export const links = [
         Head: "Interest Groups",
         sublink: [
           {
-            foreign: true,
             name: "Web Development",
             link: "https://learn.mulearn.org/web",
           },
           {
-            foreign: true,
             name: "Android Development",
             link: "https://learn.mulearn.org/android",
           },
           {
-            foreign: true,
             name: "UI / UX",
             link: "https://learn.mulearn.org/uiux",
           },
           {
-            foreign: true,
             name: "Product Management",
             link: "https://learn.mulearn.org/pm",
           },
           {
-            foreign: true,
             name: "IoT",
             link: "https://learn.mulearn.org/iot",
           },
           {
-            foreign: true,
             name: "Cyber Security",
             link: "https://learn.mulearn.org/cybersec",
           },
