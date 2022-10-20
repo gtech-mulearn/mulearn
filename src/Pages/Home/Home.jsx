@@ -199,6 +199,17 @@ const Home = () => {
                 className={styles.gsupporter}
               />
             </a>
+            <a
+              href="https://duk.ac.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/assets/home/partners/duk.webp"
+                alt="Digital University Kerala"
+                className={styles.gsupporter}
+              />
+            </a>
           </div>
         </div>
       </div>
