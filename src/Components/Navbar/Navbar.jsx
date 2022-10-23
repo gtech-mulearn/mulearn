@@ -55,7 +55,7 @@ const Navbar = () => {
 
           <div className="grid justify-items-center">
             <a
-              href="https://discord.com/invite/Jt7sv3chZP"
+              href="https://discord.mulearn.org/"
               target="_blank"
               rel="noopener noreferrer"
               className="py-7 px-28 "
