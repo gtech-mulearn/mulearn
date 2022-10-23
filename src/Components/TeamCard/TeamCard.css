@@ -1,0 +1,37 @@
+img {
+  max-width: none;
+}
+
+.team-card {
+  display: flex;
+  column-gap: 1rem;
+  margin: 1rem auto 0;
+  max-width: 400px;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 100%;
+
+  font-family: "Inter", sans-serif;
+
+  box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+}
+
+.team-card__image img {
+  border-radius: 0.5rem;
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+}
+
+.team-card__name {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.linkedinimg {
+  height: 1.75rem;
+  width: 1.75rem;
+  margin-top: 0.5rem;
+}
