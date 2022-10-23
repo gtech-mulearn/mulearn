@@ -104,7 +104,7 @@ const HacktoberFest = () => {
                   About Project Awesome!
                 </p>
                 <p className={styles.svtagline}>
-                  Project Awesome aka Bring Every Buissness Onine is an Open
+                  Project Awesome aka Bring Every Buisness Onine is an Open
                   Source Initative to make an open source collection of webpages
                   for every business out there. To contribute to the project all
                   you have to do is build a website for a store or buiness
