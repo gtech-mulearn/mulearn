@@ -35,3 +35,14 @@ img {
   width: 1.75rem;
   margin-top: 0.5rem;
 }
+
+@media screen and (max-width: 390px) {
+  .team-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .team-card__image {
+    margin-bottom: 1rem;
+  }
+}
