@@ -617,7 +617,7 @@ const yipTeam = [
     domain: "Interest Group Management",
     designation: "Intern",
     image:
-      "https://drive.google.com/uc?export=view&id=1nfY2Zqqvh23Z2pC7TuLDn1I2nMrl0ad5",
+      "https://drive.google.com/uc?export=view&id=1gqBBI8fITma8j5IG7WYE6MXhvhWaSmCq",
     linkedin: "https://www.linkedin.com/in/mariya-merlin-255372227/",
   },
   {
