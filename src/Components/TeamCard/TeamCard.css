@@ -25,9 +25,21 @@ img {
   object-fit: cover;
 }
 
+.team-card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 0.5rem;
+  width: 100%;
+}
+
 .team-card__name {
   font-size: 1.1rem;
   font-weight: 600;
+}
+
+.team-card__linkedin {
+  align-self: end;
 }
 
 .linkedinimg {

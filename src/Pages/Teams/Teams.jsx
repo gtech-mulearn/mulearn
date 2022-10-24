@@ -124,7 +124,6 @@ const Teams = () => {
                   name={member.name}
                   designation={member.designation}
                   image={member.image}
-                  linkedIn={member.linkedin ? member.linkedin : ""}
                 />
               );
             })}
@@ -137,7 +136,6 @@ const Teams = () => {
                   name={member.name}
                   designation={member.designation}
                   image={member.image}
-                  linkedIn={member.linkedin ? member.linkedin : ""}
                 />
               );
             })}
@@ -150,7 +148,6 @@ const Teams = () => {
                   name={member.name}
                   designation={member.designation}
                   image={member.image}
-                  linkedIn={member.linkedin ? member.linkedin : ""}
                 />
               );
             })}
@@ -163,7 +160,6 @@ const Teams = () => {
                   name={member.name}
                   designation={member.designation}
                   image={member.image}
-                  linkedIn={member.linkedin ? member.linkedin : ""}
                 />
               );
             })}
@@ -184,7 +180,7 @@ const Teams = () => {
                 <TeamCard
                   name={member.name}
                   image={member.image}
-                  interest={member.team ? member.team : ""}
+                  designation={member.team ? member.team : ""}
                   linkedIn={member.linkedin ? member.linkedin : ""}
                 />
               );
