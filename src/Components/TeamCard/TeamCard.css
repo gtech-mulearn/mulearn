@@ -18,7 +18,7 @@ img {
   -moz-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
 }
 
-.team-card__image img {
+.photo {
   border-radius: 0.5rem;
   width: 8rem;
   height: 8rem;
@@ -42,6 +42,10 @@ img {
   align-self: end;
 }
 
+.mobile-linkedin {
+  display: none;
+}
+
 .linkedinimg {
   height: 1.75rem;
   width: 1.75rem;
@@ -56,5 +60,22 @@ img {
 
   .team-card__image {
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .photo {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .team-card__linkedin {
+    display: none;
+  }
+
+  .mobile-linkedin {
+    display: inline-block;
   }
 }

@@ -6,7 +6,17 @@ const TeamCard = ({ name, designation, image, linkedIn }) => {
   return (
     <div className='team-card'>
       <div className='team-card__image'>
-        <img src={image} alt={name} loading='lazy' />
+        <img className='photo' src={image} alt={name} loading='lazy' />
+        {linkedIn && (
+          <a
+            href={linkedIn}
+            target='_blank'
+            rel='noreferrer'
+            className='mobile-linkedin'
+          >
+            <img src={linkedin} alt='' className='linkedinimg' />
+          </a>
+        )}
       </div>
       <div className='team-card__content'>
         <div className='details'>
