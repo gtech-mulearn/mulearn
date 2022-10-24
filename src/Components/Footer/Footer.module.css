@@ -66,6 +66,13 @@ a {
   margin-right: 1rem;
 }
 
+.social:hover{
+-webkit-transform: scale(0.8);
+-ms-transform: scale(0.8);
+transform: scale(0.8);
+transition: 0.5s ease;
+}
+
 @media only screen and (min-width: 1000px) {
   .first_section {
     display: flex;
