@@ -199,13 +199,7 @@ const HacktoberFest = () => {
                     Join us for “Expert Advice”, a series of sessions to help
                     you ace your Hacktoberfest journey.
                   </p>
-                  <a
-                    href="https://mulearn.org/hacktoberfest-form"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <button className={styles.primary_btn}>Register Now</button>
-                  </a>
+                  
                 </div>
               </div>
               <div className={styles.event}>
