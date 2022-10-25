@@ -231,6 +231,30 @@ const techTeam = [
     image:
       "https://drive.google.com/uc?export=view&id=1VqH1iz7F77sFOXB6NKslKQ0PISZGMvE5",
   },
+  {
+    id: 31,
+    name: "Abin T Sunil",
+    team: "µ-Web",
+    linkedin: "",
+    image:
+      "https://drive.google.com/uc?export=view&id=16bIs5WxcKxhn7rVpufykzpzJAC7vdRp1",
+  },
+  {
+    id: 32,
+    name: "Aravind S",
+    team: "µ-Bot",
+    linkedin: "https://www.linkedin.com/in/aravinds-arv/",
+    image:
+      "https://drive.google.com/uc?export=view&id=18mW7O2ahIKRwuRH9243XdUJWa-Y8yC4q",
+  },
+  {
+    id: 33,
+    name: "Sandra M A",
+    team: "µ-Web",
+    linkedin: "https://www.linkedin.com/in/sandra-rosa-antony-66a964220",
+    image:
+      "https://drive.google.com/uc?export=view&id=14FieQgkyq_cR0H7c1720clb5DUSFA-nK",
+  },
 ];
 
 export default techTeam;
