@@ -96,19 +96,24 @@ const ArtOfTeaching = () => {
                   </div>
                 </div>
               </div>
-              <a
-                href="https://airtable.com/shrC6h0CFSAZLaZUk"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button
-                  style={{ fontSize: "1rem" }}
-                  className={styles.detailsbtn}
-                  type="submit"
+
+              <div className={styles.fv_buttons}>
+                <a
+                  href="https://airtable.com/shrC6h0CFSAZLaZUk"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  Register Now!
-                </button>
-              </a>
+                  <button className={styles.create}>Register Now!</button>
+                </a>
+
+                <a
+                  href="https://mulearn.org/aotnominations"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className={styles.nomination_button}>Nominate</button>
+                </a>
+              </div>
             </div>
             <div className={styles.fv_images}>
               <img src={fvimg} alt="" className={styles.fv_img} />

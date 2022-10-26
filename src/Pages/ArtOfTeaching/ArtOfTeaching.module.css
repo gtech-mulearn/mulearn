@@ -141,7 +141,7 @@
   font-family: "Noto Sans", sans-serif;
 }
 
-.sv_heading>span {
+.sv_heading > span {
   color: #f78c40;
 }
 
@@ -200,7 +200,42 @@
   color: #f78c40;
 }
 
+.create {
+  background-color: #f6842c;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 5px;
+}
+
+.nomination_button {
+  background-color: white;
+  color: #f78c40;
+  border: solid;
+  padding: 0.4rem 1.5rem;
+  font-size: 0.9rem;
+  border: 2px solid #f78c40;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+.fv_buttons {
+  /* margin-top: 1rem; */
+  display: flex;
+  flex-direction: column;
+}
+
 @media only screen and (min-width: 1000px) {
+  .fv_buttons {
+    /* margin-top: 1rem; */
+    display: flex;
+    flex-direction: row;
+  }
+
+  .nomination_button {
+    margin-left: 0rem;
+  }
   .second_view_container {
     max-width: 1300px;
     margin: auto;
@@ -235,8 +270,6 @@
     font-size: 1.4rem;
   }
 
-  .swiper {}
-
   .cards_container_desktop {
     display: block;
   }
@@ -265,6 +298,11 @@
 
   .topic_card_android {
     margin-top: 9rem;
+  }
+
+  .nomination_button {
+    margin-left: 0.5rem;
+    margin-top: 0rem;
   }
 }
 
