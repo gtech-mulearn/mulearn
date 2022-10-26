@@ -1,7 +1,41 @@
 const Events = [
   {
+    Sl_No: 0,
+    Event_Name: "Images",
+    Photo_1:
+      "https://drive.google.com/uc?export=view&id=1-5eAtkEWG8ERms-QbYf595dgOyut3ugR",
+    Photo_2:
+      "https://drive.google.com/uc?export=view&id=1aF7AfZfzch3MOfkbdoDiPJ7MqQlc0fIE",
+    Photo_3:
+      "https://drive.google.com/uc?export=view&id=1aa5OxeKsmHevobh6-eS1eHDc6Dcr1ab7",
+    Photo_4:
+      "https://drive.google.com/uc?export=view&id=1vTpReQlDvsdx55b7WnZ4OvSQccBQTwYo",
+    Photo_5:
+      "https://drive.google.com/uc?export=view&id=1kB5YF1FNn8wQ0mK8t0ouGaztbsIXRaNa",
+    Photo_6:
+      "https://drive.google.com/uc?export=view&id=11cOAIlrF-Fus5hPSpV6EVKV7pWra5EBL",
+    Photo_7:
+      "https://drive.google.com/uc?export=view&id=172f3v2CII42uRMEzSJrmwHrtvT0TA1fF",
+    Photo_8:
+      "https://drive.google.com/uc?export=view&id=1_Xlzj62DXhSu9AiLRUvwQZoNTtIeLhDu",
+    Photo_9:
+      "https://drive.google.com/uc?export=view&id=1mGdayhcAkqMJ6FLVohv92PEjvwfcCBK7",
+    Photo_10:
+      "https://drive.google.com/uc?export=view&id=1SOVGZcQt6Q5GUhLn04IcUOSUfV62Atr_",
+    Photo_11:
+      "https://drive.google.com/uc?export=view&id=1cX-juHiiHQtdhiv7kOEjpyEOA5WPtupD",
+    Photo_12:
+      "https://drive.google.com/uc?export=view&id=1M2ny3i6BGZyibn0IuA3d7D4--FGcSNQS",
+    Photo_13:
+      "https://drive.google.com/uc?export=view&id=1AcmXBbHUO9A4L6tqsLPPtYt-K2vnMFIi",
+    Photo_14:
+      "https://drive.google.com/uc?export=view&id=1GW75rGpzP5MsWYe_q_ce0uBUkIAsxW7X",
+    Photo_15:
+      "https://drive.google.com/uc?export=view&id=1Q2fbYUFDRCvHHbBmNMxNkDuYNdmkitqq",
+  },
+  {
     Sl_No: 1,
-    Event_Name: "Launch of MuLearn by Dr. R. Bindhu",
+    Event_Name: "Launch of MuLearn",
     Date: "15 July 2021",
     "Drive Link":
       "https://drive.google.com/drive/folders/1nSNbVRh9SNq428likBkIubS8VDdP8Agm?usp=sharing",
@@ -11,12 +45,11 @@ const Events = [
       "https://drive.google.com/uc?export=view&id=1aF7AfZfzch3MOfkbdoDiPJ7MqQlc0fIE",
     Photo_3:
       "https://drive.google.com/uc?export=view&id=1aa5OxeKsmHevobh6-eS1eHDc6Dcr1ab7",
-    Photo_4: "",
-    Photo_5: "",
+
   },
   {
     Sl_No: 2,
-    Event_Name: "CTF Award Ceremony at KTU",
+    Event_Name: "CTF Award Ceremony",
     Date: "28 September 2021",
     "Drive Link":
       "https://drive.google.com/drive/folders/1QAyzSy6HPi9k4l5BlBghB--ucp8w541a?usp=sharing",
@@ -45,7 +78,7 @@ const Events = [
   },
   {
     Sl_No: 3,
-    Event_Name: "Session on skill gap at KTU Fresher's Induction Program",
+    Event_Name: "KTU Fresher's Induction Program",
     Date: "26 November 2021",
     "Drive Link":
       "https://drive.google.com/drive/folders/1J1EFdglla8pttmCctvlgr2wA0Og--9JH?usp=sharing",
@@ -62,7 +95,7 @@ const Events = [
   },
   {
     Sl_No: 4,
-    Event_Name: "YIP events",
+    Event_Name: "YIP Events",
     Date: "8 January 2022",
     "Drive Link":
       "https://drive.google.com/drive/folders/16gPGrMGSNVKMKBd0erQE1t3gqBxngCrn?usp=sharing",
@@ -79,33 +112,27 @@ const Events = [
   },
   {
     Sl_No: 5,
-    Event_Name: "signed MoU with IEEE Kerala Section",
+    Event_Name: "MoU IEEE Kerala Section",
     Date: "22 March 2022",
     "Drive Link":
       "https://drive.google.com/drive/folders/1w5pZ27wojq_pVxBojWbidEhasp3brIEr?usp=sharing",
     Photo_1:
       "https://drive.google.com/uc?export=view&id=1z61lbXbhsyvxnBxlhUn0L5aXkF11tNtf",
-    Photo_2: "",
-    Photo_3: "",
-    Photo_4: "",
-    Photo_5: "",
+
   },
   {
     Sl_No: 6,
-    Event_Name: "signed MoU with Ether India",
+    Event_Name: " MoU Ether India",
     Date: "22 March 2022",
     "Drive Link":
       "https://drive.google.com/drive/folders/1CAFBHD5LKeeq_4dcDguUdqeKQsaA-a71?usp=sharing",
     Photo_1:
       "https://drive.google.com/uc?export=view&id=1vTpReQlDvsdx55b7WnZ4OvSQccBQTwYo",
-    Photo_2: "",
-    Photo_3: "",
-    Photo_4: "",
-    Photo_5: "",
+
   },
   {
     Sl_No: 7,
-    Event_Name: "Google I/O Watch Party",
+    Event_Name: "Google I/O",
     Date: "11 May 2022",
     "Drive Link":
       "https://drive.google.com/drive/folders/1RGXla_q1HtbkNeq02kf-NzHW8ul8ilR9?usp=sharing",
@@ -122,7 +149,7 @@ const Events = [
   },
   {
     Sl_No: 8,
-    Event_Name: "Buildathon at Kerala Innovation Week",
+    Event_Name: "Buildathon",
     Date: "25, 26 May 2022",
     "Drive Link":
       "https://drive.google.com/drive/folders/17dURUd59UbngOc8WBKs8wI6Of6fOOyAS?usp=sharing",
@@ -156,7 +183,7 @@ const Events = [
   },
   {
     Sl_No: 10,
-    Event_Name: "Enabler community launch & Art of Teaching Prize distribution",
+    Event_Name: "Enabler Community Launch",
     Date: "1 July 2022",
     "Drive Link":
       "https://drive.google.com/drive/folders/1S7M652NKmcY7sjgWLYwIxNBYTc0caXrV?usp=sharing",
@@ -164,13 +191,11 @@ const Events = [
       "https://drive.google.com/uc?export=view&id=1osK9as40kB_ViYuwlUVEr-TvMjS-zqK7",
     Photo_2:
       "https://drive.google.com/uc?export=view&id=1rse-OZBtVdjfvpR5izbg1O0TTugzCefE",
-    Photo_3: "",
-    Photo_4: "",
-    Photo_5: "",
+
   },
   {
     Sl_No: 11,
-    Event_Name: "Meet with German Technologists from dSpace Germany",
+    Event_Name: "dSpace Event",
     Date: "22 July 2022",
     "Drive Link":
       "https://drive.google.com/drive/folders/1rB8x3NRl9XnCQaqMHhbzlr5mZ20spb3P?usp=sharing",
@@ -254,7 +279,7 @@ const Events = [
   },
   {
     Sl_No: 16,
-    Event_Name: "Kdisc meetup",
+    Event_Name: "Kdisc Meetup",
     Date: "February 19",
     "Drive Link":
       "https://drive.google.com/drive/folders/1yDGEi8IugTpd1ejEjzXhbJJQuMqj5jpL?usp=sharing",
@@ -271,7 +296,7 @@ const Events = [
   },
   {
     Sl_No: 17,
-    Event_Name: "HackARthon by Xtrudar",
+    Event_Name: "HackARthon",
     Date: "April 14",
     "Drive Link":
       "https://drive.google.com/drive/folders/1IWfzv2ghd-A6m4x8TVBNgTTxUJSyaBaV?usp=sharing",
@@ -322,7 +347,7 @@ const Events = [
   },
   {
     Sl_No: 20,
-    Event_Name: "Community Leaders Summit , Kites Foundation",
+    Event_Name: "Community Leaders Summit",
     Date: "",
     "Drive Link":
       "https://drive.google.com/drive/folders/1fuXOkoAiCOu1z6ByT6wAAGTYl8gw-t0X?usp=sharing",
@@ -337,7 +362,7 @@ const Events = [
   },
   {
     Sl_No: 21,
-    Event_Name: "Amp up , Intro to GDG Cloud",
+    Event_Name: "Intro to GDG Cloud",
     Date: "",
     "Drive Link":
       "https://drive.google.com/drive/folders/1C87KXxVIZH9wYOD_2ZFthkaqIu-jMdpN?usp=sharing",
@@ -360,10 +385,7 @@ const Events = [
       "https://drive.google.com/drive/folders/18si9bjs2zLMIZlXUDrgMPy5-NwtI4EfA?usp=sharing",
     Photo_1:
       "https://drive.google.com/uc?export=view&id=1NOw2Mcr9KFaCevBJXqwl0CIs6yr--PEB",
-    Photo_2: "",
-    Photo_3: "",
-    Photo_4: "",
-    Photo_5: "",
+
   },
   {
     Sl_No: 19,

@@ -1,0 +1,83 @@
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.main_container {
+  min-height: 100vh;
+}
+
+.first_view_container {
+  padding: 0 2rem;
+}
+
+.first_view {
+  display: flex;
+  flex-direction: column;
+}
+
+.story_img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.about {
+  width: 250px;
+}
+
+.heading {
+  margin-top: 1rem;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.name {
+  margin-top: 1rem;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: inline;
+}
+
+.details {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  .first_view {
+    max-width: 1300px;
+    margin: auto;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+  }
+
+  .details {
+    width: 250px;
+  }
+
+  .heading {
+    font-size: 2rem;
+    width: 80%;
+  }
+}
+
+.second_view_container {
+  padding: 2rem;
+}
+
+.second_view {
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 1000px) {
+  .second_view {
+    max-width: 1300px;
+    margin: auto;
+  }
+}

@@ -3,6 +3,26 @@
   margin: 0;
 }
 
+.tabs_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab {
+  margin: 0.25rem;
+  font-family: "Noto Sans";
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #696969;
+}
+
+.tab:hover {
+  color: #f78c40;
+}
+
 .first_view_container {
   padding: 2rem;
   background-color: #ececee;
@@ -93,6 +113,7 @@
   padding: 2rem;
   padding-top: 5rem;
   background-color: #ffffff;
+  text-align: center;
 }
 
 .sv_heading {
@@ -165,20 +186,20 @@
 @media only screen and (min-width: 1000px) {
   .sv_texts {
     margin-bottom: 2rem;
-    width: 50%;
   }
 
   .sv_heading {
     font-size: 2.25rem;
     font-family: "Noto Sans", sans-serif;
     font-weight: 600;
-    width: 55%;
   }
 
   .sv_tagline {
     font-size: 1rem;
-    width: 55%;
+    width: 60%;
     font-family: "Poppins", sans-serif;
+    display: flex;
+    margin: auto;
   }
 
   .card_img {

@@ -32,14 +32,14 @@ const LeaderBoard = () => {
         </div>
         <div className={styles.fourth_view_container}>
           <div className={styles.fourth_view}>
-            <div></div>
+            {/* <div></div> */}
             <div className={styles.left_side}>
               <p className={styles.sv_heading}>
                 <span>College Leader Board</span>
               </p>
               <div className={styles.fv_images}>
                 <img
-                  src="/assets/pages/leaderBoard/score.png"
+                  src="/assets/leaderBoard/college.webp"
                   alt="college score board"
                   className={styles.fv_img}
                 />
@@ -51,7 +51,33 @@ const LeaderBoard = () => {
               </p>
               <div className={styles.fv_images}>
                 <img
-                  src="/assets/pages/leaderBoard/student.png"
+                  src="/assets/leaderBoard/student.webp"
+                  alt="college score board"
+                  className={styles.fv_img}
+                />
+              </div>
+            </div>
+          </div>
+          <div className={styles.fourth_view}>
+            <div className={styles.left_side}>
+              <p className={styles.sv_heading}>
+                <span>Monthly College Leader Board</span>
+              </p>
+              <div className={styles.fv_images}>
+                <img
+                  src="/assets/leaderBoard/monthly.webp"
+                  alt="college score board"
+                  className={styles.fv_img}
+                />
+              </div>
+            </div>
+            <div className={styles.left_side}>
+              <p className={styles.sv_heading}>
+                <span>Monthly Student Leader Board</span>
+              </p>
+              <div className={styles.fv_images}>
+                <img
+                  src="/assets/leaderBoard/monthly_student.webp"
                   alt="college score board"
                   className={styles.fv_img}
                 />

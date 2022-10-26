@@ -1,0 +1,522 @@
+.main_container span {
+  color: #f78c40;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.main_container {
+  padding: 2rem;
+}
+
+.first_view {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.fv_img {
+  display: block;
+  margin: auto;
+  width: 20rem;
+}
+
+.fv_texts {
+  text-align: center;
+}
+
+.fv_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #303030;
+}
+
+.fv_heading span {
+  font-weight: 600;
+  color: #f78c40;
+}
+
+.leadcampus {
+  background-color: #f78c40;
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border: none;
+  margin-top: 1rem;
+  border-radius: 5px;
+  margin: 1rem 0.25rem;
+}
+
+.fv_tagline {
+  margin-top: 0.5rem;
+  font-family: "Poppins", sans-serif;
+}
+
+@media only screen and (min-width: 1000px) {
+  .first_view_container {
+    /* padding: 3rem 3rem; */
+  }
+
+  .first_view {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .fv_img {
+    display: block;
+    margin: auto;
+    width: 35rem;
+  }
+
+  .fv_texts {
+    text-align: left;
+    width: 50%;
+  }
+
+  .fv_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 4.55rem;
+    line-height: 5rem;
+    font-weight: 600;
+  }
+
+  .fv_tagline {
+    margin-top: 1rem;
+    font-size: 1rem;
+    width: 80%;
+  }
+}
+
+/* Second View Styles */
+
+.second_view {
+  margin-top: 3rem;
+}
+
+.sv_pheading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-variant: small-caps;
+}
+
+.sv_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #303030;
+}
+
+.sv_heading span {
+  color: #f78c40;
+}
+
+.d_number {
+  background-color: #f78c40;
+  color: white;
+  font-weight: 600;
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1000px;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.d_text {
+  font-family: "Poppins", sans-serif;
+}
+
+.d_heading span {
+  font-weight: 500;
+  font-size: 1.1rem;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.d_text span {
+  font-weight: 600;
+}
+
+.d_main_container {
+  margin-top: 1rem;
+}
+
+.d_container {
+  margin-top: 1.5rem;
+}
+
+.d_video_container {
+  margin-top: 2rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  /* .second_view_container {
+    padding: 3rem 3rem;
+  } */
+
+  .second_view {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 4rem;
+  }
+
+  .sv_img {
+    display: block;
+    margin: auto;
+    width: 30rem;
+  }
+
+  .sv_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 2.5rem;
+    line-height: 5rem;
+    font-weight: 600;
+  }
+
+  .sv_tagline {
+    margin-top: 1rem;
+    font-size: 1rem;
+    width: 80%;
+  }
+
+  .sv_texts {
+    text-align: left;
+    width: 50%;
+  }
+
+  .sv_pheading {
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-variant: small-caps;
+  }
+
+  .d_video_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .d_video iframe {
+    width: 35rem;
+    height: 19rem;
+    margin-right: 3rem;
+  }
+
+  .d_main_container {
+    margin-top: 0;
+    width: 50%;
+  }
+
+  .d_text {
+    font-size: 1rem;
+  }
+}
+
+/* Third Section Styles */
+
+.third_view_container {
+  padding-top: 2rem;
+}
+
+.tv_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #303030;
+}
+
+.tv_heading span {
+  color: #f78c40;
+}
+
+.story_img {
+  border-radius: 5px;
+}
+
+.tv_story {
+  margin-top: 2rem;
+}
+
+.story_name {
+  font-family: "Noto Sans", sans-serif;
+  margin-top: 1rem;
+  font-size: 1.3rem;
+}
+
+.story_img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.read_more {
+  margin-top: 1rem;
+  font-family: "Noto Sans", sans-serif;
+  color: #f78c40;
+}
+
+@media only screen and (min-width: 1000px) {
+  /* .third_view_container {
+    padding: 3rem 3rem;
+  } */
+
+  .third_view {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 4rem;
+  }
+
+  .tv_story {
+    margin-right: 5rem;
+  }
+
+  .tv_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+
+  .tv_tagline {
+    font-size: 1.1rem;
+    font-family: "Poppins", sans-serif;
+    width: 70%;
+  }
+
+  .tv_story_container {
+    display: flex;
+  }
+}
+
+/* FAQ Styles */
+
+.faq_view_container {
+  background-color: #ffffff;
+  padding-top: 2rem;
+}
+
+.faq_view {
+  margin-top: 2rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  .faq_view_container {
+    max-width: 1300px;
+    margin: auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    /* padding-top: 6rem; */
+  }
+}
+
+/* Logo Generator Styles */
+
+.generator_view {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.gv_img {
+  /* display: block;
+  margin: auto; */
+  width: 20rem;
+}
+
+/* .gv_texts {
+  text-align: center;
+} */
+
+.gv_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #303030;
+}
+
+.gv_heading span {
+  color: #f78c40;
+}
+
+.createlogo {
+  background-color: #f78c40;
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border: none;
+  margin-top: 2rem;
+  border-radius: 5px;
+}
+
+.redirection_container {
+  background-color: #f78c40;
+  color: white;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 1rem;
+}
+
+.redirection_tagline {
+  margin-top: 0.25rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.redirection_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.redirection_button {
+  background-color: #ffffff;
+  color: #f78c40;
+  margin-top: 1rem;
+  border-radius: 5px;
+  padding: 0.5rem 1.95rem;
+}
+
+.gv_tagline {
+  margin-top: 0.5rem;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  /* .generator_view_container {
+    padding: 3rem 3rem;
+  } */
+
+  .generator_view {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4rem;
+    /* text-align: center; */
+  }
+
+  .gv_img {
+    display: block;
+    margin: auto;
+    width: 35rem;
+  }
+
+  .gv_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+
+  .gv_tagline {
+    font-size: 1rem;
+    width: 70%;
+    display: block;
+    margin: auto;
+  }
+
+  .redirection_tagline {
+    width: 25rem;
+    /* text-align: center; */
+  }
+
+  .redirection_button {
+    margin-left: 1rem;
+    margin-top: 0;
+    padding: 0.75rem 2.25rem;
+  }
+
+  .redirection_container {
+    width: 40rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Onboarding View */
+
+.onboarding_view_container {
+  padding-top: 2rem;
+}
+
+.step {
+  margin: 1rem 0rem;
+  background-color: #f78c40;
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.step_image {
+  width: 2.25rem;
+  display: block;
+  margin: auto;
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.step_heading {
+  font-size: 1.35rem;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+}
+
+.step_text {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+
+  margin-top: 0.25rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  .onboarding_view {
+    max-width: 1300px;
+    margin: auto;
+    margin-top: 4rem;
+    text-align: center;
+  }
+
+  .step {
+    margin: 1rem;
+  }
+
+  .onboarding_steps_container {
+    display: flex;
+  }
+}
+
+.share_story {
+  margin-top: 2rem;
+}
+
+.share_btn {
+  background-color: #f78c40;
+  color: white;
+  margin-top: 1rem;
+  border-radius: 5px;
+  padding: 0.5rem 1.95rem;
+}
+
+.logoimage {
+  width: 25rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  .share_story {
+    max-width: 1300px;
+    margin: auto;
+    margin-top: 4rem;
+  }
+}

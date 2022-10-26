@@ -71,10 +71,9 @@ const ArtOfTeaching = () => {
               </p>
 
               <p className={styles.fv_tagline}>
-                µLearn is back with Art of Teaching to honor teachers who
-                mould our future generation. GTech µLearn is
-                partnering with Google developers, KTU and Kerala University for
-                Art of Teaching 2.0.
+                µLearn is back with Art of Teaching to honor teachers who mould
+                our future generation. GTech µLearn is partnering with Google
+                developers, KTU and Kerala University for Art of Teaching 2.0.
               </p>
               <div className={styles.event_partners}>
                 <div className={styles.partners}>
@@ -97,19 +96,24 @@ const ArtOfTeaching = () => {
                   </div>
                 </div>
               </div>
-              <a
-                href="https://airtable.com/shrC6h0CFSAZLaZUk"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button
-                  style={{ fontSize: "1rem" }}
-                  className={styles.detailsbtn}
-                  type="submit"
+
+              <div className={styles.fv_buttons}>
+                <a
+                  href="https://airtable.com/shrC6h0CFSAZLaZUk"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  Pre-Register Now!
-                </button>
-              </a>
+                  <button className={styles.create}>Register Now!</button>
+                </a>
+
+                <a
+                  href="https://mulearn.org/aotnominations"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className={styles.nomination_button}>Nominate</button>
+                </a>
+              </div>
             </div>
             <div className={styles.fv_images}>
               <img src={fvimg} alt="" className={styles.fv_img} />
@@ -121,17 +125,21 @@ const ArtOfTeaching = () => {
             <div className={styles.sv_texts}>
               <p className={styles.theme}>Theme: Lessons of The Future.</p>
               <p className={styles.sv_heading}>
-                What is <span>The Contest?</span>
+                What is <span>Art of Teaching???</span>
               </p>
 
               <p className={styles.sv_tagline}>
-                Teaching is an art and teachers are the artists, calling all the
-                artists to present their masterpieces of teaching to the world.
+                {/* Teaching is an art and teachers are the artists, calling all the
+                artists to present their masterpieces of teaching to the world. */}
+                Art of teaching is a contest, custom made for Educators.
                 <br />
                 <br />
-                Art of Teaching is a 3-minute video contest, where the teachers
+                {/* Art of Teaching is a 3-minute video contest, where the teachers
                 can send in a video of them teaching any of the following topic
-                in a creative manner.
+                in a creative manner. */}
+                In-order to participate in this contest, all one has to do is
+                create a 3 minute video of them teaching a specific topic in a
+                creative way.
               </p>
             </div>
 
@@ -153,6 +161,19 @@ const ArtOfTeaching = () => {
                         with Kotlin course and they have to create a 3 minute
                         video summary of the course.
                       </p>
+                      <a
+                        href="https://developer.android.com/courses/android-basics-compose/course"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <button
+                          style={{ fontSize: "1rem" }}
+                          className={styles.detailsbtn}
+                          type="submit"
+                        >
+                          View Course
+                        </button>
+                      </a>
                     </div>
                   </div>
                 </SwiperSlide>
@@ -209,6 +230,19 @@ const ArtOfTeaching = () => {
                   Kotlin course and they have to create a 3 minute video summary
                   of the course.
                 </p>
+                <a
+                  href="https://developer.android.com/courses/android-basics-compose/course"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button
+                    style={{ fontSize: "1rem" }}
+                    className={styles.detailsbtn}
+                    type="submit"
+                  >
+                    View Course
+                  </button>
+                </a>
               </div>
 
               <div className={styles.topic_card}>

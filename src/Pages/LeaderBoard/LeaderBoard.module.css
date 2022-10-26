@@ -38,7 +38,7 @@
 
 @media only screen and (min-width: 1000px) {
   .first_view_container {
-    padding: 3rem;
+    padding: 0rem 3rem;
   }
 
   .first_view {
@@ -48,14 +48,14 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-top: 2.5rem;
+    margin-top: 0rem;
     margin-bottom: 2.5rem;
   }
 
   .fv_img {
     display: block;
     margin: auto;
-    width: 35rem;
+    width: 33rem;
   }
 
   .fv_texts {
@@ -95,22 +95,27 @@
   color: #f78c40;
 }
 
+.fourth_view_container {
+  margin: 0 auto 1rem;
+  padding: 0 2rem;
+}
+
 @media only screen and (min-width: 1000px) {
   .fourth_view_container {
     max-width: 1300px;
-    margin: auto;
-    margin-top: 8rem;
-  }
-  .fourth_view {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    margin-top: 4rem;
   }
 
-  .left_side {
-    width: 40%;
+  .fourth_view {
+    align-items: center;
+    column-gap: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 30px;
   }
+
+
 
   .fr_heading {
     font-size: 3.5rem;
@@ -119,11 +124,5 @@
   .fr_tagline {
     font-family: "Poppins";
     width: 80%;
-  }
-}
-
-@media only screen and (min-width: 1300px) {
-  .fourth_view_container {
-    padding: 0rem;
   }
 }

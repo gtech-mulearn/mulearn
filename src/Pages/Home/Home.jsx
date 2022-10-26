@@ -17,6 +17,7 @@ const Home = () => {
               <p className={styles.fv_heading}>
                 Let's <span>break the Echo Chambers</span> Together.
               </p>
+
               <p className={styles.fv_tagline}>
                 µLearn is a synergic philosophy of education, with a culture of
                 mutual learning through micro peer groups. We are here to assist
@@ -195,6 +196,17 @@ const Home = () => {
               <img
                 src="/assets/home/partners/google_android.webp"
                 alt="Google Android Educators"
+                className={styles.gsupporter}
+              />
+            </a>
+            <a
+              href="https://duk.ac.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/assets/home/partners/duk.webp"
+                alt="Digital University Kerala"
                 className={styles.gsupporter}
               />
             </a>

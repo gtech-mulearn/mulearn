@@ -9,6 +9,8 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "flowbite": "^1.5.3",
+    "flowbite-react": "^0.2.0",
     "react": "^18.2.0",
     "react-countup": "^6.3.0",
     "react-dom": "^18.2.0",
@@ -44,6 +46,9 @@
     ]
   },
   "devDependencies": {
-    "sass": "^1.55.0"
+    "autoprefixer": "^10.4.12",
+    "postcss": "^8.4.17",
+    "sass": "^1.55.0",
+    "tailwindcss": "^3.1.8"
   }
 }

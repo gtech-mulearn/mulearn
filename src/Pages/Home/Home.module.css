@@ -20,11 +20,9 @@ a {
   padding-top: 3rem;
   background-color: #f2f3f9;
   opacity: 1;
-  background-image: repeating-radial-gradient(
-      circle at 0 0,
+  background-image: repeating-radial-gradient(circle at 0 0,
       transparent 0,
-      #f2f3f9 15px
-    ),
+      #f2f3f9 15px),
     repeating-linear-gradient(#fdf1e755, #fdf1e7);
 }
 
@@ -128,6 +126,14 @@ a {
   color: #f78c40;
 }
 
+.supporters {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20%;
+  justify-content: space-between;
+  justify-items: center;
+
+}
+
 @media only screen and (min-width: 1000px) {
   .supportersview_container {
     max-width: 1000px;
@@ -154,9 +160,9 @@ a {
   }
 
   .supporters {
-    display: flex;
-    flex-direction: row;
+    display: grid;
     align-items: center;
+    grid-template-columns: auto auto auto auto auto auto auto;
     justify-content: space-evenly;
   }
 }
@@ -204,17 +210,14 @@ a {
 
 .svp_image {
   width: 3.15rem;
+  display: block;
+  margin: auto;
 }
 
 @media screen and (max-width: 999px) {
   .svp_heading {
     display: block;
     text-align: center;
-  }
-
-  .svp_image {
-    display: block;
-    margin: auto;
   }
 }
 
@@ -225,6 +228,7 @@ a {
     margin: auto;
     text-align: center;
   }
+
   .sv_mainheading {
     font-size: 2.75rem;
     margin-bottom: 0.5rem;
@@ -308,6 +312,7 @@ a {
     max-width: 1300px;
     margin: auto;
   }
+
   .third_view {
     margin: 2rem 0;
     display: flex;
@@ -358,12 +363,13 @@ a {
 }
 
 .highlight_text {
-  margin-top: 1rem;
   color: #f78c40;
-  font-size: 1rem;
-  width: 95%;
-  font-weight: 500;
   font-family: "Noto Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 1rem auto 0;
+  text-align: center;
+  width: 95%;
 }
 
 .highlight_text span {
@@ -377,6 +383,11 @@ a {
     display: block;
     margin: auto;
     margin-top: 2rem;
+  }
+
+  .highlight_text {
+    text-align: left;
+    margin: 1rem 0 0;
   }
 }
 
@@ -407,7 +418,6 @@ a {
   }
 
   .join_view {
-    margin: 5rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -484,7 +494,7 @@ a {
   }
 
   .count_view {
-    margin: 8rem 2rem;
+    margin: 4rem 2rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
