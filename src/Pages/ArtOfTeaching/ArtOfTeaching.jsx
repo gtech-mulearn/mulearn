@@ -139,7 +139,8 @@ const ArtOfTeaching = () => {
                 in a creative manner. */}
                 In-order to participate in this contest, all one has to do is
                 create a 3 minute video of them teaching a specific topics in a
-                creative way.
+                creative way or learn android and create a 3 minute summary of
+                the course Android Development with Kotlin.
               </p>
             </div>
 
@@ -157,9 +158,11 @@ const ArtOfTeaching = () => {
                         <span>Android Development with Kotlin</span> by Google.
                       </p>
                       <p className={styles.card_description}>
-                        The participants have to learn the Android Development
-                        with Kotlin course and they have to create a 3 minute
-                        video summary of the course.
+                        {" "}
+                        If you choose android development as the content you
+                        would have to learn the Android Development with Kotlin
+                        course and have to create a 3 minute video summary of
+                        the course.
                       </p>
                       <a
                         href="https://developer.android.com/courses/android-basics-compose/course"
@@ -226,9 +229,9 @@ const ArtOfTeaching = () => {
                   <span>Android Development with Kotlin</span> by Google.
                 </p>
                 <p className={styles.card_description}>
-                  The participants have to learn the Android Development with
-                  Kotlin course and they have to create a 3 minute video summary
-                  of the course.
+                  If you choose android development as the content you would
+                  have to learn the Android Development with Kotlin course and
+                  have to create a 3 minute video summary of the course.
                 </p>
                 <a
                   href="https://developer.android.com/courses/android-basics-compose/course"
