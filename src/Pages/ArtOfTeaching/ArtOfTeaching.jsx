@@ -158,11 +158,10 @@ const ArtOfTeaching = () => {
                         <span>Android Development with Kotlin</span> by Google.
                       </p>
                       <p className={styles.card_description}>
-                        {" "}
-                        If you choose android development as the content you
+                        If you choose Android Development as the content you
                         would have to learn the Android Development with Kotlin
-                        course and have to create a 3 minute video summary of
-                        the course.
+                        and have to create a 3 minute video summary of the
+                        course.
                       </p>
                       <a
                         href="https://developer.android.com/courses/android-basics-compose/course"
@@ -229,9 +228,9 @@ const ArtOfTeaching = () => {
                   <span>Android Development with Kotlin</span> by Google.
                 </p>
                 <p className={styles.card_description}>
-                  If you choose android development as the content you would
-                  have to learn the Android Development with Kotlin course and
-                  have to create a 3 minute video summary of the course.
+                  If you choose Android Development as the content you would
+                  have to learn the Android Development with Kotlin and have to
+                  create a 3 minute video summary of the course.
                 </p>
                 <a
                   href="https://developer.android.com/courses/android-basics-compose/course"
