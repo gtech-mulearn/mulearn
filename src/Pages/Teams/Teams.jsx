@@ -171,7 +171,7 @@ const Teams = () => {
         <section className={styles.team_group}>
           <p className={styles.team_title}>Tech Team</p>
           <p className={styles.team_desc}>
-            Here are the members of the crew who contributed developing the
+            Here are the members of the crew who contributed to developing the
             website and bot, collected resources and gave suggestions about UX.
           </p>
           <div className={styles.members_list}>

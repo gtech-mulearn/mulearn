@@ -138,7 +138,7 @@ const ArtOfTeaching = () => {
                 can send in a video of them teaching any of the following topic
                 in a creative manner. */}
                 In-order to participate in this contest, all one has to do is
-                create a 3 minute video of them teaching a specific topic in a
+                create a 3 minute video of them teaching a specific topics in a
                 creative way.
               </p>
             </div>
@@ -322,7 +322,7 @@ const ArtOfTeaching = () => {
                 The Former <span> Judging Panel</span>
               </p>
               <p className={styles.jv_text}>
-                We do needed some really creative people with amazing mentoring
+                We needed some really creative people with amazing mentoring
                 skills to judge all your submissions. Listed below were our
                 judges for the first edition of Art of Teaching.
               </p>
@@ -370,7 +370,7 @@ const ArtOfTeaching = () => {
                 Art of Teaching <span>Archives</span>
               </p>
               <p className={styles.vv_tagline}>
-                Take a look at the top submissions by the teachers from the the
+                Take a look at the top submissions by the teachers from the
                 first edition of The Art of Teaching.
               </p>
             </div>

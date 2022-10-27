@@ -39,8 +39,8 @@ const Company = () => {
                 Company <span>Onboardings</span>
               </p>
               <p className={styles.sv_tagline}>
-                µLearn has partnered with multiple communties to provide the
-                student the best resouces and opportunies possible
+                µLearn has partnered with multiple Communities to provide the
+                student the best Resources and Opportunities possible
               </p>
             </div>
             <div className={styles.sv_cards_container}>

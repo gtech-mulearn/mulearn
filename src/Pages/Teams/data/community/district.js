@@ -1,7 +1,7 @@
 const districtHeads = [
   {
     id: 0,
-    name: "Abhijithh K P",
+    name: "Abhijith K P",
     designation: "Kasaragod District Head",
     image:
       "https://team.mulearn.org//assets/photos/district heads/Abhijith K P.jpeg",
