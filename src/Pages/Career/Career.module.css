@@ -91,3 +91,78 @@
     font-weight: 600;
   }
 }
+
+/* Cards Styling */
+
+.opportunity {
+  display: flex;
+  align-items: center;
+  min-width: 20rem;
+  border: 1.5px solid #666666;
+  border-radius: 5px;
+  padding: 0.75rem;
+  margin-top: 1rem;
+}
+
+.company_logo {
+  width: 4rem;
+}
+
+.op_texts {
+  margin-left: 1rem;
+}
+
+.op_header {
+  font-size: 1.5rem;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.op_duration {
+  font-family: "Poppins", sans-serif;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.op_duration span {
+  display: block;
+  font-weight: 600;
+}
+
+.op_buttons {
+  margin-top: 1rem;
+}
+
+.op_jobdescription {
+  margin: 0.25rem 0;
+  background-color: #404040;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+}
+
+.op_applynow {
+  margin: 0.25rem 0.25rem;
+  color: #404040;
+  border: 1.5px solid #303030;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+}
+
+@media only screen and (min-width: 1000px) {
+  .op_duration {
+    font-size: 1.1rem;
+  }
+
+  .company_logo {
+    width: 4rem;
+    margin: 0 1rem;
+  }
+
+  .opportunities {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

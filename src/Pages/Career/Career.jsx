@@ -30,7 +30,141 @@ const Career = () => {
         <div className={styles.second_section}>
           <p className={styles.ssheading}>Open Opportunities</p>
           <div className={styles.opportunities}>
-            <p>New openings coming soon!</p>
+            <div className={styles.opportunity}>
+              <div className={styles.op_logo}>
+                <img
+                  src="/assets/careers/softnotion.png"
+                  alt=""
+                  className={styles.company_logo}
+                />
+              </div>
+              <div className={styles.op_texts}>
+                <p className={styles.op_header}>React.js Intern</p>
+                <p className={styles.op_duration}>
+                  <span>Duration: </span>3months
+                </p>
+                <p className={styles.op_duration}>
+                  <span>Package: </span>12k to 15k per month
+                </p>
+                <p className={styles.op_duration}>
+                  <span>Criteria: </span>BTech (Recent Passouts)
+                </p>
+                <div className={styles.op_buttons}>
+                  <button className={styles.op_jobdescription}>
+                    View More
+                  </button>
+                  <button className={styles.op_applynow}>Apply Now</button>
+                </div>
+              </div>
+            </div>
+            <div className={styles.opportunity}>
+              <div className={styles.op_logo}>
+                <img
+                  src="/assets/careers/softnotion.png"
+                  alt=""
+                  className={styles.company_logo}
+                />
+              </div>
+              <div className={styles.op_texts}>
+                <p className={styles.op_header}>React.js Intern</p>
+                <p className={styles.op_duration}>
+                  <span>Duration: </span>3months
+                </p>
+                <p className={styles.op_duration}>
+                  <span>Package: </span>12k to 15k per month
+                </p>
+                <p className={styles.op_duration}>
+                  <span>Criteria: </span>BTech (Recent Passouts)
+                </p>
+                <div className={styles.op_buttons}>
+                  <button className={styles.op_jobdescription}>
+                    View More
+                  </button>
+                  <button className={styles.op_applynow}>Apply Now</button>
+                </div>
+              </div>
+            </div>
+            <div className={styles.opportunity}>
+              <div className={styles.op_logo}>
+                <img
+                  src="/assets/careers/softnotion.png"
+                  alt=""
+                  className={styles.company_logo}
+                />
+              </div>
+              <div className={styles.op_texts}>
+                <p className={styles.op_header}>React.js Intern</p>
+                <p className={styles.op_duration}>
+                  <span>Duration: </span>3months
+                </p>
+                <p className={styles.op_duration}>
+                  <span>Package: </span>12k to 15k per month
+                </p>
+                <p className={styles.op_duration}>
+                  <span>Criteria: </span>BTech (Recent Passouts)
+                </p>
+                <div className={styles.op_buttons}>
+                  <button className={styles.op_jobdescription}>
+                    View More
+                  </button>
+                  <button className={styles.op_applynow}>Apply Now</button>
+                </div>
+              </div>
+            </div>
+            <div className={styles.opportunity}>
+              <div className={styles.op_logo}>
+                <img
+                  src="/assets/careers/softnotion.png"
+                  alt=""
+                  className={styles.company_logo}
+                />
+              </div>
+              <div className={styles.op_texts}>
+                <p className={styles.op_header}>React.js Intern</p>
+                <p className={styles.op_duration}>
+                  <span>Duration: </span>3months
+                </p>
+                <p className={styles.op_duration}>
+                  <span>Package: </span>12k to 15k per month
+                </p>
+                <p className={styles.op_duration}>
+                  <span>Criteria: </span>BTech (Recent Passouts)
+                </p>
+                <div className={styles.op_buttons}>
+                  <button className={styles.op_jobdescription}>
+                    View More
+                  </button>
+                  <button className={styles.op_applynow}>Apply Now</button>
+                </div>
+              </div>
+            </div>
+            <div className={styles.opportunity}>
+              <div className={styles.op_logo}>
+                <img
+                  src="/assets/careers/softnotion.png"
+                  alt=""
+                  className={styles.company_logo}
+                />
+              </div>
+              <div className={styles.op_texts}>
+                <p className={styles.op_header}>React.js Intern</p>
+                <p className={styles.op_duration}>
+                  <span>Duration: </span>3months
+                </p>
+                <p className={styles.op_duration}>
+                  <span>Package: </span>12k to 15k per month
+                </p>
+                <p className={styles.op_duration}>
+                  <span>Criteria: </span>BTech (Recent Passouts)
+                </p>
+                <div className={styles.op_buttons}>
+                  <button className={styles.op_jobdescription}>
+                    View More
+                  </button>
+                  <button className={styles.op_applynow}>Apply Now</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </main>
