@@ -20,6 +20,7 @@ import BlogPage from "./Pages/CampusChapters/AmrithaBlogPage/BlogPage";
 import JBlogPage from "./Pages/CampusChapters/JessnoBlogPage/JBlogPage";
 import Welcome from "./Pages/CampusChapters/Register/Welcome/Welcome";
 import FindCampus from "./Pages/CampusChapters/Register/FindCampus/FindCampus";
+import EnablersOnboarding from "./Pages/EnablersOnboarding/EnablersOnboarding";
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/careers" element={<Career />} />
- 
+
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/announcements" element={<MuAnnouncements />} />
@@ -51,6 +52,7 @@ function App() {
           </Route>
           <Route path="/blog/amirthags" element={<BlogPage />} />
           <Route path="/blog/jessno" element={<JBlogPage />} />
+          <Route path="/enablers" element={<EnablersOnboarding />} />
         </Routes>
       </Router>
     </div>
