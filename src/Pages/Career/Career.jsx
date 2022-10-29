@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import CareersCard from "../../Components/CareersCard/CareersCard";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import styles from "./Career.module.css";
@@ -30,38 +31,51 @@ const Career = () => {
         <div className={styles.second_section}>
           <p className={styles.ssheading}>Open Opportunities</p>
           <div className={styles.opportunities}>
-            <div className={styles.opportunity}>
-              <div className={styles.op_logo}>
-                <img
-                  src="/assets/careers/softnotion.png"
-                  alt=""
-                  className={styles.company_logo}
-                />
-              </div>
-              <div className={styles.op_texts}>
-                <p className={styles.op_header}>React.js Intern</p>
-                <div className={styles.card_contents}>
-                  <p className={styles.op_text}>
-                    <span>Duration: </span>3 months
-                  </p>
-                  <p className={styles.op_text}>
-                    <span>Package: </span>12k to 15k per month
-                  </p>
-                  <p className={styles.op_text}>
-                    <span>Criteria: </span>BTech (Recent Passouts)
-                  </p>
-                  <p className={styles.op_text}>
-                    <span>Last Date To Apply: </span>31st October
-                  </p>
-                </div>
-                <div className={styles.op_buttons}>
-                  <button className={styles.op_jobdescription}>
-                    View More
-                  </button>
-                  <button className={styles.op_applynow}>Apply Now</button>
-                </div>
-              </div>
-            </div>
+            <CareersCard
+              title="React.js Intern"
+              duration="3 months"
+              payment="12k to 15k per month"
+              criteria="BTech (Recent Passouts)"
+              lastdate="31st October"
+              jdlink="https://drive.google.com/file/d/1KB4xi_GXJm1zgspZ-O_Qui9C-tZXWOiz/view?usp=sharing"
+              applylink=""
+            />
+            <CareersCard
+              title="Quality Testing Intern"
+              duration="3 months"
+              payment="12k to 15k per month"
+              criteria="BTech (Recent Passouts)"
+              lastdate="31st October"
+              jdlink="https://drive.google.com/file/d/14oAv0A2b6ClNuf28ETwTcGI8IgNDOlPs/view?usp=sharing"
+              applylink=""
+            />
+            <CareersCard
+              title="Node JS Intern"
+              duration="3 months"
+              payment="12k to 15k per month"
+              criteria="BTech (Recent Passouts)"
+              lastdate="31st October"
+              jdlink="https://drive.google.com/file/d/1C8iUqa7BUXyeJSgST5dWaWmDsRJRj4Ip/view?usp=sharing"
+              applylink=""
+            />
+            <CareersCard
+              title="iOS Intern"
+              duration="3 months"
+              payment="12k to 15k per month"
+              criteria="BTech (Recent Passouts)"
+              lastdate="31st October"
+              jdlink="https://drive.google.com/file/d/1qqfSlVDQ4t78dFMdv5n5RJwxc03-rELd/view?usp=sharing"
+              applylink=""
+            />
+            <CareersCard
+              title="Android Intern"
+              duration="3 months"
+              payment="12k to 15k per month"
+              criteria="BTech (Recent Passouts)"
+              lastdate="31st October"
+              jdlink="https://drive.google.com/file/d/1Gq6s5GDkZ4aR0kWYjnH05av-ZaRq6Wsm/view?usp=sharing"
+              applylink=""
+            />
           </div>
         </div>
       </main>
