@@ -46,11 +46,6 @@
 }
 
 @media only screen and (min-width: 1000px) {
-  .opportunities {
-    display: grid;
-    grid-template-columns: 35% 35%;
-    column-gap: 2rem;
-  }
 
   .fsheading {
     font-family: "Noto Sans", sans-serif;
@@ -160,9 +155,15 @@
     margin: 0 1rem;
   }
 
+  .opportunity{
+    margin: 0.5rem;
+  }
+
   .opportunities {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
   }
 }

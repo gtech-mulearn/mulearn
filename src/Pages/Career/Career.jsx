@@ -37,17 +37,21 @@ const Career = () => {
                   alt=""
                   className={styles.company_logo}
                 />
+               
               </div>
               <div className={styles.op_texts}>
                 <p className={styles.op_header}>React.js Intern</p>
                 <p className={styles.op_duration}>
-                  <span>Duration: </span>3months
+                  <span>Duration: </span>3 months
                 </p>
                 <p className={styles.op_duration}>
                   <span>Package: </span>12k to 15k per month
                 </p>
                 <p className={styles.op_duration}>
                   <span>Criteria: </span>BTech (Recent Passouts)
+                </p>
+                 <p className={styles.op_duration}>
+                  <span>Last Date: </span>31st October
                 </p>
                 <div className={styles.op_buttons}>
                   <button className={styles.op_jobdescription}>
@@ -64,17 +68,21 @@ const Career = () => {
                   alt=""
                   className={styles.company_logo}
                 />
+               
               </div>
               <div className={styles.op_texts}>
                 <p className={styles.op_header}>React.js Intern</p>
                 <p className={styles.op_duration}>
-                  <span>Duration: </span>3months
+                  <span>Duration: </span>3 months
                 </p>
                 <p className={styles.op_duration}>
                   <span>Package: </span>12k to 15k per month
                 </p>
                 <p className={styles.op_duration}>
                   <span>Criteria: </span>BTech (Recent Passouts)
+                </p>
+                 <p className={styles.op_duration}>
+                  <span>Last Date: </span>31st October
                 </p>
                 <div className={styles.op_buttons}>
                   <button className={styles.op_jobdescription}>
@@ -91,17 +99,21 @@ const Career = () => {
                   alt=""
                   className={styles.company_logo}
                 />
+               
               </div>
               <div className={styles.op_texts}>
                 <p className={styles.op_header}>React.js Intern</p>
                 <p className={styles.op_duration}>
-                  <span>Duration: </span>3months
+                  <span>Duration: </span>3 months
                 </p>
                 <p className={styles.op_duration}>
                   <span>Package: </span>12k to 15k per month
                 </p>
                 <p className={styles.op_duration}>
                   <span>Criteria: </span>BTech (Recent Passouts)
+                </p>
+                 <p className={styles.op_duration}>
+                  <span>Last Date: </span>31st October
                 </p>
                 <div className={styles.op_buttons}>
                   <button className={styles.op_jobdescription}>
@@ -118,17 +130,21 @@ const Career = () => {
                   alt=""
                   className={styles.company_logo}
                 />
+               
               </div>
               <div className={styles.op_texts}>
                 <p className={styles.op_header}>React.js Intern</p>
                 <p className={styles.op_duration}>
-                  <span>Duration: </span>3months
+                  <span>Duration: </span>3 months
                 </p>
                 <p className={styles.op_duration}>
                   <span>Package: </span>12k to 15k per month
                 </p>
                 <p className={styles.op_duration}>
                   <span>Criteria: </span>BTech (Recent Passouts)
+                </p>
+                 <p className={styles.op_duration}>
+                  <span>Last Date: </span>31st October
                 </p>
                 <div className={styles.op_buttons}>
                   <button className={styles.op_jobdescription}>
@@ -145,17 +161,21 @@ const Career = () => {
                   alt=""
                   className={styles.company_logo}
                 />
+               
               </div>
               <div className={styles.op_texts}>
                 <p className={styles.op_header}>React.js Intern</p>
                 <p className={styles.op_duration}>
-                  <span>Duration: </span>3months
+                  <span>Duration: </span>3 months
                 </p>
                 <p className={styles.op_duration}>
                   <span>Package: </span>12k to 15k per month
                 </p>
                 <p className={styles.op_duration}>
                   <span>Criteria: </span>BTech (Recent Passouts)
+                </p>
+                 <p className={styles.op_duration}>
+                  <span>Last Date: </span>31st October
                 </p>
                 <div className={styles.op_buttons}>
                   <button className={styles.op_jobdescription}>
