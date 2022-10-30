@@ -21,6 +21,7 @@
 
 .tab:hover {
   color: #f78c40;
+  cursor: pointer;
 }
 
 .first_view_container {
