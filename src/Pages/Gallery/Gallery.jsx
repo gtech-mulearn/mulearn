@@ -5,52 +5,34 @@ import styles from "./Gallery.module.css";
 import "./Gallery.css";
 
 import EventPics from "./data/EventPics";
-import News from "./data/News";
 
 import fvimg from "./assets/fvimg.png";
 
-function shuffleArray(array) {
-  for (var i = array.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-  }
-  console.log("array Shuffled");
-  return array;
-}
-
-let allPics = [];
-
 const Gallery = () => {
-  EventPics.map((item) => {
-    item.pics.map((pic) => {
-      allPics.push(pic);
-    });
-  });
-  allPics = shuffleArray(allPics);
-  // useEffect(() => {
-  //   EventPics.map((item) => {
-  //     item.pics.map((pic) => {
-  //       allPics.push(pic);
-  //     });
-  //   });
-  // }, []);
-
-  // const [evalue, setEValue] = React.useState(0);
-
-  // const ehandleChange = (event, newValue) => {
-  // setEValue(newValue);
-  // };
-
-  // const [nvalue, setNValue] = React.useState(0);
-
-  // const nhandleChange = (event, newValue) => {
-  //   setNValue(newValue);
-  // };
-
+  const [allimages, setAllImage] = useState();
   const [program, setProgram] = useState(EventPics[0]);
-  // const [news, setNews] = useState(News[0]);
+
+  useEffect(() => {
+    function shuffleArray(array) {
+      for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+      }
+      return array;
+    }
+
+    let allPics = [];
+
+    EventPics.map((item) => {
+      item.pics.map((pic) => {
+        allPics.push(pic);
+      });
+    });
+
+    setAllImage(shuffleArray(allPics));
+  }, [program]);
 
   return (
     <>
@@ -71,7 +53,7 @@ const Gallery = () => {
               </p>
             </div>
             <div className={styles.fv_images}>
-              <img src={fvimg} alt='' className={styles.fv_img} />
+              <img src={fvimg} alt="" className={styles.fv_img} />
             </div>
           </div>
         </div>
@@ -113,17 +95,20 @@ const Gallery = () => {
 
         {/* Gallery Body */}
         {program && (
-          <section id='gallery'>
-            <div className='gallery_grid'>
-              {(program.Event_Name == "All Images" ? allPics : program.pics)
+          <section id="gallery">
+            <div className="gallery_grid">
+              {(program.Event_Name == "All Images" && allimages
+                ? allimages
+                : program.pics
+              )
                 .slice(0, 20)
                 .map((pic) => (
-                  <div className='gallery_item'>
+                  <div className="gallery_item">
                     <img
-                      className='gallery_img'
+                      className="gallery_img"
                       src={pic}
-                      alt=''
-                      loading='lazy'
+                      alt=""
+                      loading="lazy"
                     />
                   </div>
                 ))}
