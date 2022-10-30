@@ -7,14 +7,15 @@ import fvimg from "./assets/fvimg.png";
 import axios from "axios";
 
 const LeaderBoard = () => {
-  const [college, setCollege] = useState("");
+  const [colleges, setColleges] = useState("");
   const [student, setStudent] = useState("");
 
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_LEADERBOARD_API}/colleges`)
       .then(function (response) {
-        console.log(response);
+        console.log(response.data.data);
+        setColleges(response.data.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -44,9 +45,41 @@ const LeaderBoard = () => {
             </div>
           </div>
         </div>
-        <div className={styles.fourth_view_container}>
+
+        <div className={styles.second_view_container}>
+          <div className={styles.second_view}>
+            <div className={styles.sv_texts}>
+              {" "}
+              <p className={styles.sv_heading}>
+                <span>College</span> Leader Board
+              </p>
+            </div>
+
+            <div className={styles.sv_cards_container}>
+              {colleges &&
+                colleges.map((college, position) => {
+                  return (
+                    <div className={styles.sv_card}>
+                      <p className={styles.card_position}>
+                        {position + 1} <span>Position</span>
+                      </p>
+                      <p className={styles.card_code}>
+                        College Code: {college.code}
+                      </p>
+                      <p className={styles.card_college}>{college.name}</p>
+                      <p className={styles.total_karma}>Karma Points: {college.total_karma}</p>
+                      <p className={styles.card_membercount}>
+                        Total Members: {college.member_count}
+                      </p>
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
+        </div>
+
+        {/* <div className={styles.fourth_view_container}>
           <div className={styles.fourth_view}>
-            {/* <div></div> */}
             <div className={styles.left_side}>
               <p className={styles.sv_heading}>
                 <span>College Leader Board</span>
@@ -98,7 +131,7 @@ const LeaderBoard = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       <Footer />
     </>
