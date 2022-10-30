@@ -29,6 +29,8 @@ const Gallery = () => {
   const [program, setProgram] = useState(Events[0]);
   const [news, setNews] = useState(News[0]);
 
+  const allImages = Events.map((item) => item.image);
+
   return (
     <>
       <Navbar />
@@ -48,10 +50,12 @@ const Gallery = () => {
               </p>
             </div>
             <div className={styles.fv_images}>
-              <img src={fvimg} alt="" className={styles.fv_img} />
+              <img src={fvimg} alt='' className={styles.fv_img} />
             </div>
           </div>
         </div>
+
+        {/* Gallery Header */}
         <div className={styles.second_view_container}>
           <div className={styles.second_view}>
             <div className={styles.sv_texts}>
@@ -81,36 +85,38 @@ const Gallery = () => {
           </div>
         </div>
 
+        {/* Gallery Images */}
         {program && (
           <section className={kakt.gallerySection}>
+            <h1>{`${Events}`}</h1>
             <div className={kakt.row}>
               <div className={kakt.column}>
                 <div className={kakt.img_wrapper}>
                   {program.Photo_1 && (
                     <img
                       src={program.Photo_1}
-                      alt=""
+                      alt=''
                       className={kakt.gallery_img}
                     />
                   )}
                   {program.Photo_5 && (
                     <img
                       src={program.Photo_5}
-                      alt=""
+                      alt=''
                       className={kakt.gallery_img}
                     />
                   )}
                   {program.Photo_9 && (
                     <img
                       src={program.Photo_9}
-                      alt=""
+                      alt=''
                       className={kakt.gallery_img}
                     />
                   )}
                   {program.Photo_13 && (
                     <img
                       src={program.Photo_13}
-                      alt=""
+                      alt=''
                       className={kakt.gallery_img}
                     />
                   )}
@@ -121,28 +127,28 @@ const Gallery = () => {
                   {program.Photo_2 && (
                     <img
                       src={program.Photo_2}
-                      alt=""
+                      alt=''
                       className={kakt.gallery_img}
                     />
                   )}
                   {program.Photo_6 && (
                     <img
                       src={program.Photo_6}
-                      alt=""
+                      alt=''
                       className={kakt.gallery_img}
                     />
                   )}
                   {program.Photo_10 && (
                     <img
                       src={program.Photo_10}
-                      alt=""
+                      alt=''
                       className={kakt.gallery_img}
                     />
                   )}
                   {program.Photo_14 && (
                     <img
                       src={program.Photo_14}
-                      alt=""
+                      alt=''
                       className={kakt.gallery_img}
                     />
                   )}
@@ -153,28 +159,28 @@ const Gallery = () => {
                   {program.Photo_3 && (
                     <img
                       src={program.Photo_3}
-                      alt=""
+                      alt=''
                       className={kakt.gallery_img}
                     />
                   )}
                   {program.Photo_7 && (
                     <img
                       src={program.Photo_7}
-                      alt=""
+                      alt=''
                       className={kakt.gallery_img}
                     />
                   )}
                   {program.Photo_11 && (
                     <img
                       src={program.Photo_11}
-                      alt=""
+                      alt=''
                       className={kakt.gallery_img}
                     />
                   )}
                   {program.Photo_15 && (
                     <img
                       src={program.Photo_15}
-                      alt=""
+                      alt=''
                       className={kakt.gallery_img}
                     />
                   )}
@@ -185,28 +191,28 @@ const Gallery = () => {
                   {program.Photo_4 && (
                     <img
                       src={program.Photo_4}
-                      alt=""
+                      alt=''
                       className={kakt.gallery_img}
                     />
                   )}
                   {program.Photo_8 && (
                     <img
                       src={program.Photo_8}
-                      alt=""
+                      alt=''
                       className={kakt.gallery_img}
                     />
                   )}
                   {program.Photo_12 && (
                     <img
                       src={program.Photo_12}
-                      alt=""
+                      alt=''
                       className={kakt.gallery_img}
                     />
                   )}
                   {program.Photo_16 && (
                     <img
                       src={program.Photo_16}
-                      alt=""
+                      alt=''
                       className={kakt.gallery_img}
                     />
                   )}
