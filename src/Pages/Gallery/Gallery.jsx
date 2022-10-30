@@ -110,7 +110,7 @@ const Gallery = () => {
           <section id='gallery'>
             <div className='gallery_grid'>
               {(program.Event_Name == "All Images" ? allPics : program.pics)
-                .slice(0, 50)
+                .slice(0, 30)
                 .map((pic) => (
                   <div className='gallery_item'>
                     <img
