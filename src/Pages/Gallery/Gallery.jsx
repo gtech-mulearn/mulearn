@@ -2,16 +2,29 @@ import React, { useState } from "react";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import styles from "./Gallery.module.css";
-import kakt from "./Kk.module.css";
+import "./Gallery.css";
 
 import Box from "@mui/material/Box";
 import Tabs, { tabsClasses } from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
-import Events from "./data/Events";
+import EventPics from "./data/EventPics";
 import News from "./data/News";
 
 import fvimg from "./assets/fvimg.png";
+
+function shuffleArray(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+    // Generate random number
+    var j = Math.floor(Math.random() * (i + 1));
+
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+
+  return array;
+}
 
 const Gallery = () => {
   const [evalue, setEValue] = React.useState(0);
@@ -26,8 +39,10 @@ const Gallery = () => {
     setNValue(newValue);
   };
 
-  const [program, setProgram] = useState(Events[0]);
+  const [program, setProgram] = useState(EventPics[0]);
   const [news, setNews] = useState(News[0]);
+
+  const allPics = shuffleArray(EventPics.map((event) => event.pics).flat());
 
   return (
     <>
@@ -48,10 +63,12 @@ const Gallery = () => {
               </p>
             </div>
             <div className={styles.fv_images}>
-              <img src={fvimg} alt="" className={styles.fv_img} />
+              <img src={fvimg} alt='' className={styles.fv_img} />
             </div>
           </div>
         </div>
+
+        {/* Gallery Header */}
         <div className={styles.second_view_container}>
           <div className={styles.second_view}>
             <div className={styles.sv_texts}>
@@ -66,9 +83,16 @@ const Gallery = () => {
             </div>
 
             <div className={styles.tabs_container}>
-              {Events.map((event) => (
+              {EventPics.map((event) => (
                 <p
                   className={styles.tab}
+                  // inline style to change the color of the selected tab
+                  style={{
+                    color:
+                      program.Event_Name === event.Event_Name
+                        ? "#f78c40"
+                        : "#696969",
+                  }}
                   onClick={() => {
                     setProgram(event);
                     console.log(event);
@@ -81,137 +105,22 @@ const Gallery = () => {
           </div>
         </div>
 
+        {/* Gallery Body */}
         {program && (
-          <section className={kakt.gallerySection}>
-            <div className={kakt.row}>
-              <div className={kakt.column}>
-                <div className={kakt.img_wrapper}>
-                  {program.Photo_1 && (
+          <section id='gallery'>
+            <div className='gallery_grid'>
+              {(program.Event_Name == "All Images" ? allPics : program.pics)
+                .slice(0, 30)
+                .map((pic) => (
+                  <div className='gallery_item'>
                     <img
-                      src={program.Photo_1}
-                      alt=""
-                      className={kakt.gallery_img}
+                      className='gallery_img'
+                      src={pic}
+                      alt=''
+                      loading='lazy'
                     />
-                  )}
-                  {program.Photo_5 && (
-                    <img
-                      src={program.Photo_5}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_9 && (
-                    <img
-                      src={program.Photo_9}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_13 && (
-                    <img
-                      src={program.Photo_13}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                </div>
-              </div>
-              <div className={kakt.column}>
-                <div className={kakt.img_wrapper}>
-                  {program.Photo_2 && (
-                    <img
-                      src={program.Photo_2}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_6 && (
-                    <img
-                      src={program.Photo_6}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_10 && (
-                    <img
-                      src={program.Photo_10}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_14 && (
-                    <img
-                      src={program.Photo_14}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                </div>
-              </div>
-              <div className={kakt.column}>
-                <div className={kakt.img_wrapper}>
-                  {program.Photo_3 && (
-                    <img
-                      src={program.Photo_3}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_7 && (
-                    <img
-                      src={program.Photo_7}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_11 && (
-                    <img
-                      src={program.Photo_11}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_15 && (
-                    <img
-                      src={program.Photo_15}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                </div>
-              </div>
-              <div className={kakt.column}>
-                <div className={kakt.img_wrapper}>
-                  {program.Photo_4 && (
-                    <img
-                      src={program.Photo_4}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_8 && (
-                    <img
-                      src={program.Photo_8}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_12 && (
-                    <img
-                      src={program.Photo_12}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_16 && (
-                    <img
-                      src={program.Photo_16}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                </div>
-              </div>
+                  </div>
+                ))}
             </div>
           </section>
         )}
