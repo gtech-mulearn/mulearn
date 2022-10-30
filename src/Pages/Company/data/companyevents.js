@@ -89,7 +89,7 @@ const companyevents = [
   },
   {
     id: "9",
-    name: "Leardership Talk",
+    name: "Leadership Talk",
     description:
       "The key to being an effective leader is a willingness to make a difference by empowering others. A strong foundation of leadership training will help you, Effectively direct your team towards success. The desire to be a leader is a powerful thing. It can push you to do things that you never thought possible and instill in you a desire to be a better person. A person who has the passion and drive to lead the potential to leave their mark on the world.",
     companyname: "Softnotions Technologies ",
@@ -111,7 +111,7 @@ const companyevents = [
   },
   {
     id: "11",
-    name: "Creative Design Challange Winners",
+    name: "Creative Design Challenge Winners",
     description:
       "We are bewildered to see such creative assignments. You guys made it a big hit again...CHEEEERS! 🥳🥳👏🏻👏🏻👏🏻 The beauty and essence of designing lies within the unique nuances and perspectives that amalgamate to formulate a masterpiece! With that being said, Here is the list of our Winners for the design challenge 🌟 whose assignments best behold the essence of designing: 1st WINNER 🏆 ROHIT K @Rohit K TOP 5 1. 🏅 ALEN VARGHESE @Alen Varghese 2. 🏅 ASHWIN ASHOK @Ashwin Binu Abraham 3. 🏅 EDWIN LIBY @Edwin_liby 4. 🏅 GAYATRI @Gayathri Satheeshkumar 5. 🏅 SHIFFIN GEORGE @Shifin George",
     companyname: "Team Ecesis - Claruz Digital",

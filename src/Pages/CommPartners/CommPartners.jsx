@@ -21,7 +21,7 @@ const CommunityPartner = () => {
               </p>
               <p className={styles.fv_tagline}>
                 When a group of like-minded people come together interesting
-                things take place. What if multiple communties join their hands
+                things take place. What if multiple Communities join their hands
                 together for a common aim things get much more interesting!
               </p>
             </div>
@@ -37,8 +37,8 @@ const CommunityPartner = () => {
                 <span>Community</span> Partners
               </p>
               <p className={styles.sv_tagline}>
-                µLearn has partnered with multiple communties to provide the
-                peers the best resouces and events to learn and upskill
+                µLearn has partnered with multiple communities to provide the
+                peers the best resources and events to learn and up-skill
                 themselves.
               </p>
             </div>

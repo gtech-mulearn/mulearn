@@ -82,7 +82,7 @@ const ArtOfTeaching = () => {
                   </p>
                   <div className={styles.partner}>
                     <img
-                      src="assets/artofteaching/ktu.png"
+                      src="assets/artofteaching/ktu.webp"
                       alt=""
                       className={styles.partner_image}
                     />
@@ -138,8 +138,9 @@ const ArtOfTeaching = () => {
                 can send in a video of them teaching any of the following topic
                 in a creative manner. */}
                 In-order to participate in this contest, all one has to do is
-                create a 3 minute video of them teaching a specific topic in a
-                creative way.
+                create a 3 minute video of them teaching a specific topics in a
+                creative way or learn android and create a 3 minute summary of
+                the course Android Development with Kotlin.
               </p>
             </div>
 
@@ -157,9 +158,10 @@ const ArtOfTeaching = () => {
                         <span>Android Development with Kotlin</span> by Google.
                       </p>
                       <p className={styles.card_description}>
-                        The participants have to learn the Android Development
-                        with Kotlin course and they have to create a 3 minute
-                        video summary of the course.
+                        If you choose Android Development as the content you
+                        would have to learn the Android Development with Kotlin
+                        and have to create a 3 minute video summary of the
+                        course.
                       </p>
                       <a
                         href="https://developer.android.com/courses/android-basics-compose/course"
@@ -226,9 +228,9 @@ const ArtOfTeaching = () => {
                   <span>Android Development with Kotlin</span> by Google.
                 </p>
                 <p className={styles.card_description}>
-                  The participants have to learn the Android Development with
-                  Kotlin course and they have to create a 3 minute video summary
-                  of the course.
+                  If you choose Android Development as the content you would
+                  have to learn the Android Development with Kotlin and have to
+                  create a 3 minute video summary of the course.
                 </p>
                 <a
                   href="https://developer.android.com/courses/android-basics-compose/course"
@@ -322,7 +324,7 @@ const ArtOfTeaching = () => {
                 The Former <span> Judging Panel</span>
               </p>
               <p className={styles.jv_text}>
-                We do needed some really creative people with amazing mentoring
+                We needed some really creative people with amazing mentoring
                 skills to judge all your submissions. Listed below were our
                 judges for the first edition of Art of Teaching.
               </p>
@@ -333,7 +335,7 @@ const ArtOfTeaching = () => {
                     designation={
                       "Former Principal at Mar Baselios College of Engineering and Technology"
                     }
-                    image={"assets/artofteaching/j1.jpeg"}
+                    image={"assets/artofteaching/j1.webp"}
                     linkedIn={
                       "https://www.linkedin.com/in/dr-t-m-george-87b86028/?originalSubdomain=in"
                     }
@@ -346,7 +348,7 @@ const ArtOfTeaching = () => {
                     designation={
                       "Product | Technology & Data Strategy | NYU & Columbia Fellow"
                     }
-                    image={"assets/artofteaching/j2.jpeg"}
+                    image={"assets/artofteaching/j2.webp"}
                     linkedIn={"https://www.linkedin.com/in/deepusnath/"}
                   />
                 </div>
@@ -354,7 +356,7 @@ const ArtOfTeaching = () => {
                   <MentorCard
                     name={"Rajeev J Sebastian"}
                     designation={"CEO Alokin Software Private Limited"}
-                    image={"assets/artofteaching/j3.png"}
+                    image={"assets/artofteaching/j3.webp"}
                     linkedIn={"https://www.linkedin.com/in/rajeevjs"}
                   />
                 </div>
@@ -370,7 +372,7 @@ const ArtOfTeaching = () => {
                 Art of Teaching <span>Archives</span>
               </p>
               <p className={styles.vv_tagline}>
-                Take a look at the top submissions by the teachers from the the
+                Take a look at the top submissions by the teachers from the
                 first edition of The Art of Teaching.
               </p>
             </div>

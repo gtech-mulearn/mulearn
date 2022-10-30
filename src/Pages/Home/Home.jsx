@@ -357,7 +357,7 @@ const Home = () => {
               <div className={styles.countcontainer}>
                 <div className={styles.count}>
                   <p className={styles.cvc_heading}>
-                    <CountUp end={17611} duration={10} />+
+                    <CountUp end={17000} duration={10} />+
                   </p>
                   <p className={styles.cvc_text}>Members</p>
                 </div>

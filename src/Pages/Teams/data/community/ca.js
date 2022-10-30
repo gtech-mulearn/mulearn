@@ -86,21 +86,21 @@ const campusAmbassadors = [
   {
     id: 12,
     name: "Arjun P",
-    designation: "KMCT College of Enginnering",
+    designation: "KMCT College of Engineering",
     image:
       "https://team.mulearn.org//assets/photos/ambassadors/KMCTCE/Arjun P.jpg",
   },
   {
     id: 13,
     name: "Hridya Nanda",
-    designation: "KMCT College of Enginnering",
+    designation: "KMCT College of Engineering",
     image:
       "https://team.mulearn.org//assets/photos/ambassadors/KMCTCE/Hridya Nanda.jpg",
   },
   {
     id: 14,
     name: "Jibin",
-    designation: "KMCT College of Enginnering",
+    designation: "KMCT College of Engineering",
     image:
       "https://team.mulearn.org//assets/photos/ambassadors/KMCTCE/Jibin.jpg",
   },
@@ -128,21 +128,21 @@ const campusAmbassadors = [
   {
     id: 18,
     name: "Abisa M",
-    designation: "College of Enginnering Perumon",
+    designation: "College of Engineering Perumon",
     image:
       "https://team.mulearn.org//assets/photos/ambassadors/College of Engineering Perumon/Abisa M.jpg",
   },
   {
     id: 19,
     name: "Aldrin Andrew",
-    designation: "College of Enginnering Perumon",
+    designation: "College of Engineering Perumon",
     image:
       "https://team.mulearn.org//assets/photos/ambassadors/College of Engineering Perumon/Aldrin Andrew.jpeg",
   },
   {
     id: 20,
     name: "Gregory Jobe C",
-    designation: "College of Enginnering Perumon",
+    designation: "College of Engineering Perumon",
     image:
       "https://team.mulearn.org//assets/photos/ambassadors/College of Engineering Perumon/Gregory jobe c .jpg",
   },
