@@ -86,6 +86,13 @@ const Gallery = () => {
               {EventPics.map((event) => (
                 <p
                   className={styles.tab}
+                  // inline style to change the color of the selected tab
+                  style={{
+                    color:
+                      program.Event_Name === event.Event_Name
+                        ? "#f78c40"
+                        : "#696969",
+                  }}
                   onClick={() => {
                     setProgram(event);
                     console.log(event);
@@ -103,7 +110,7 @@ const Gallery = () => {
           <section id='gallery'>
             <div className='gallery_grid'>
               {(program.Event_Name == "All Images" ? allPics : program.pics)
-                .slice(0, 30)
+                .slice(0, 50)
                 .map((pic) => (
                   <div className='gallery_item'>
                     <img
