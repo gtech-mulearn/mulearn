@@ -8,7 +8,7 @@ const Footer = () => {
         <div className={styles.first_section}>
           <div className={styles.fs_leftside}>
             <img
-              src="/assets/footer/µLearn-white.png"
+              src="/assets/footer/µLearn-white.webp"
               alt=""
               className={styles.mulearn}
             />
@@ -37,7 +37,7 @@ const Footer = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="/assets/footer/twitter.png"
+                src="/assets/footer/twitter.webp"
                 alt=""
                 className={styles.social}
               />
@@ -48,7 +48,7 @@ const Footer = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="/assets/footer/instagram.png"
+                src="/assets/footer/instagram.webp"
                 alt="ig"
                 className={styles.social}
               />
@@ -59,7 +59,7 @@ const Footer = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="/assets/footer/linkedin.png"
+                src="/assets/footer/linkedin.webp"
                 alt="li"
                 className={styles.social}
               />
@@ -70,7 +70,7 @@ const Footer = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="/assets/footer/youtube.png"
+                src="/assets/footer/youtube.webp"
                 alt="yt"
                 className={styles.social}
               />
@@ -81,7 +81,7 @@ const Footer = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="/assets/footer/facebook.png"
+                src="/assets/footer/facebook.webp"
                 alt="fb"
                 className={styles.social}
               />
