@@ -1,12 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import styles from "./Gallery.module.css";
 import "./Gallery.css";
-
-import Box from "@mui/material/Box";
-import Tabs, { tabsClasses } from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 
 import EventPics from "./data/EventPics";
 import News from "./data/News";
@@ -15,34 +11,46 @@ import fvimg from "./assets/fvimg.png";
 
 function shuffleArray(array) {
   for (var i = array.length - 1; i > 0; i--) {
-    // Generate random number
     var j = Math.floor(Math.random() * (i + 1));
-
     var temp = array[i];
     array[i] = array[j];
     array[j] = temp;
   }
-
+  console.log("array Shuffled");
   return array;
 }
 
+let allPics = [];
+
 const Gallery = () => {
-  const [evalue, setEValue] = React.useState(0);
+  EventPics.map((item) => {
+    item.pics.map((pic) => {
+      allPics.push(pic);
+    });
+  });
+  allPics = shuffleArray(allPics);
+  // useEffect(() => {
+  //   EventPics.map((item) => {
+  //     item.pics.map((pic) => {
+  //       allPics.push(pic);
+  //     });
+  //   });
+  // }, []);
 
-  const ehandleChange = (event, newValue) => {
-    setEValue(newValue);
-  };
+  // const [evalue, setEValue] = React.useState(0);
 
-  const [nvalue, setNValue] = React.useState(0);
+  // const ehandleChange = (event, newValue) => {
+  // setEValue(newValue);
+  // };
 
-  const nhandleChange = (event, newValue) => {
-    setNValue(newValue);
-  };
+  // const [nvalue, setNValue] = React.useState(0);
+
+  // const nhandleChange = (event, newValue) => {
+  //   setNValue(newValue);
+  // };
 
   const [program, setProgram] = useState(EventPics[0]);
-  const [news, setNews] = useState(News[0]);
-
-  const allPics = shuffleArray(EventPics.map((event) => event.pics).flat());
+  // const [news, setNews] = useState(News[0]);
 
   return (
     <>
@@ -86,7 +94,6 @@ const Gallery = () => {
               {EventPics.map((event) => (
                 <p
                   className={styles.tab}
-                  // inline style to change the color of the selected tab
                   style={{
                     color:
                       program.Event_Name === event.Event_Name
@@ -95,7 +102,6 @@ const Gallery = () => {
                   }}
                   onClick={() => {
                     setProgram(event);
-                    console.log(event);
                   }}
                 >
                   {event.Event_Name}
@@ -110,7 +116,7 @@ const Gallery = () => {
           <section id='gallery'>
             <div className='gallery_grid'>
               {(program.Event_Name == "All Images" ? allPics : program.pics)
-                .slice(0, 30)
+                .slice(0, 20)
                 .map((pic) => (
                   <div className='gallery_item'>
                     <img
