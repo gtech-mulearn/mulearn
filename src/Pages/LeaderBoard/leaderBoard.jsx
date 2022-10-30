@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import styles from "./LeaderBoard.module.css";
 
 import fvimg from "./assets/fvimg.png";
-//import CommunityCard from "../../Components/CommunityCard/CommunityCard";
+import axios from "axios";
 
 const LeaderBoard = () => {
+  const [college, setCollege] = useState("");
+  const [student, setStudent] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_LEADERBOARD_API}/colleges`)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <>
       <Navbar />
