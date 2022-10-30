@@ -13,6 +13,19 @@ import News from "./data/News";
 
 import fvimg from "./assets/fvimg.png";
 
+function shuffleArray(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+    // Generate random number
+    var j = Math.floor(Math.random() * (i + 1));
+
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+
+  return array;
+}
+
 const Gallery = () => {
   const [evalue, setEValue] = React.useState(0);
 
@@ -29,7 +42,7 @@ const Gallery = () => {
   const [program, setProgram] = useState(EventPics[0]);
   const [news, setNews] = useState(News[0]);
 
-  const allPics = EventPics.map((event) => event.pics).flat();
+  const allPics = shuffleArray(EventPics.map((event) => event.pics).flat());
 
   return (
     <>
