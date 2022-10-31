@@ -21,6 +21,7 @@
 
 .tab:hover {
   color: #f78c40;
+  cursor: pointer;
 }
 
 .first_view_container {
@@ -202,11 +203,6 @@
     margin: auto;
   }
 
-  .card_img {
-    /* width: 20rem;
-    height: 20rem;
-    object-fit: cover; */
-  }
   .card_container {
     /* width: 23rem; */
     margin: 1rem 0;
