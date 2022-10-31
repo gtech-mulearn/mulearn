@@ -8,7 +8,7 @@ import axios from "axios";
 
 const LeaderBoard = () => {
   const [colleges, setColleges] = useState("");
-  const [student, setStudent] = useState("");
+  const [students, setStudents] = useState("");
 
   useEffect(() => {
     axios
@@ -16,6 +16,16 @@ const LeaderBoard = () => {
       .then(function (response) {
         console.log(response.data.data);
         setColleges(response.data.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    axios
+      .get(`${process.env.REACT_APP_LEADERBOARD_API}/students_meta`)
+      .then(function (response) {
+        console.log(response.data.data);
+        setStudents(response.data.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -67,9 +77,42 @@ const LeaderBoard = () => {
                         College Code: {college.code}
                       </p>
                       <p className={styles.card_college}>{college.name}</p>
-                      <p className={styles.total_karma}>Karma Points: {college.total_karma}</p>
+                      <p className={styles.total_karma}>
+                        Karma Points: {college.total_karma}
+                      </p>
                       <p className={styles.card_membercount}>
                         Total Members: {college.member_count}
+                      </p>
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.second_view_container}>
+          <div className={styles.second_view}>
+            <div className={styles.sv_texts}>
+              {" "}
+              <p className={styles.sv_heading}>
+                <span>Students</span> Leader Board
+              </p>
+            </div>
+
+            <div className={styles.sv_cards_container}>
+              {students &&
+                students.map((student, position) => {
+                  return (
+                    <div className={styles.sv_card}>
+                      <p className={styles.card_position}>
+                        {position + 1} <span>Position</span>
+                      </p>
+                      <p className={styles.card_code}>
+                        College Code: {student.institution}
+                      </p>
+                      <p className={styles.card_college}>{student.name}</p>
+                      <p className={styles.total_karma}>
+                        Karma Points: {student.total_karma}
                       </p>
                     </div>
                   );
