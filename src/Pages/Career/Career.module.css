@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
 .first__section {
-  padding: 2rem;
+  padding: 1rem 0;
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;
@@ -22,7 +22,6 @@
 }
 
 .fstagline {
-  margin-top: 0.5rem;
   font-family: "Poppins", sans-serif;
   text-align: center;
 }
@@ -38,11 +37,11 @@
 .ssheading {
   font-size: 1.8rem;
   font-weight: 600;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .second_section {
-  margin: 2rem;
+  margin: 1rem;
 }
 
 @media only screen and (min-width: 1000px) {
@@ -57,27 +56,19 @@
     font-size: 1.1rem;
     width: 60%;
     margin: auto;
-    margin-top: 1rem;
   }
 
   .first__section {
     max-width: 1300px;
     margin: auto;
   }
-
-  /* .second_section {
-    max-width: 1300px;
-    margin: auto;
-    margin-top: 3rem;
-    m
-  } */
 }
 
 @media only screen and (min-width: 1300px) {
   .second_section {
     max-width: 1300px;
     margin: auto;
-    margin-top: 3rem;
+    margin-top: 1rem;
   }
 }
 
@@ -98,10 +89,10 @@
 
 @media only screen and (min-width: 1000px) {
   .opportunities {
+    align-items: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: space-around;
   }
 }
