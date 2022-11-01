@@ -12,7 +12,7 @@ const BlogPage = () => {
           <div className={styles.first_view}>
             <div className={styles.about}>
               <img
-                src="/assets/campuscommunity/amritha.jpeg"
+                src="/assets/campuscommunity/amritha.webp"
                 alt=""
                 className={styles.story_img}
               />

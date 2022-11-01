@@ -12,7 +12,7 @@ const JBlogPage = () => {
           <div className={styles.first_view}>
             <div className={styles.about}>
               <img
-                src="/assets/campuscommunity/jessno.jpg"
+                src="/assets/campuscommunity/jessno.webp"
                 alt=""
                 className={styles.story_img}
               />
