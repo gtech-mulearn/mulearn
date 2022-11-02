@@ -8,8 +8,17 @@ import Travancore from "../assets/companies/Travancore.jpeg";
 import Travenleo from "../assets/companies/Travenleo.jpeg";
 import Triassic from "../assets/companies/Triassic.jpeg";
 import Zerone from "../assets/companies/Zerone.jpeg";
+import Google from "../assets/companies/Google-logo.png"
 
 const companiesonboarded = [
+  {
+    id: "0",
+    name: "Google",
+    logo: Google,
+    link: "https://about.google/",
+    image:
+      "",
+  },
   {
     id: "1",
     name: "SunTec Business Solutions Pvt. Ltd",
