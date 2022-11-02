@@ -3,7 +3,7 @@ import CareersCard from "../../Components/CareersCard/CareersCard";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import styles from "./Career.module.css";
-
+import ClosedCareers from "../../Components/ClosedCareers/ClosedCareers"
 const Career = () => {
   return (
     <Fragment>
@@ -75,6 +75,19 @@ const Career = () => {
               lastdate="1st November"
               jdlink="https://drive.google.com/file/d/1Gq6s5GDkZ4aR0kWYjnH05av-ZaRq6Wsm/view?usp=sharing"
               applylink="https://airtable.com/shr5Wy2PVLHFVOgkA"
+            />
+          </div>
+        </div>
+        <div className={styles.second_section}>
+          <p className={styles.ssheading}>Closed Opportunities</p>
+          <div className={styles.opportunities}>
+            <ClosedCareers
+              title="React.js Intern"
+              duration="3 months"
+              payment="12k to 15k per month"
+              criteria="BTech (Recent Passouts)"
+              lastdate="1st November"
+              jdlink="https://drive.google.com/file/d/1KB4xi_GXJm1zgspZ-O_Qui9C-tZXWOiz/view?usp=sharing"
             />
           </div>
         </div>
