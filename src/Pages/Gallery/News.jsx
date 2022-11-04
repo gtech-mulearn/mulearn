@@ -3,13 +3,13 @@ import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import "./News.css";
 
-import EventPics from "./data/EventPics";
+import NewsData from "./data/News";
 
 import fvimg from "./assets/fvimg.png";
 
 const News = () => {
   const [allimages, setAllImage] = useState();
-  const [program, setProgram] = useState(EventPics[0]);
+  const [program, setProgram] = useState(NewsData[0]);
 
   useEffect(() => {
     function shuffleArray(array) {
@@ -24,7 +24,7 @@ const News = () => {
 
     let allPics = [];
 
-    EventPics.map((item) => {
+    NewsData.map((item) => {
       item.pics.map((pic) => {
         allPics.push(pic);
       });
@@ -41,7 +41,7 @@ const News = () => {
           <div className='first_view'>
             <div className='fv_texts'>
               <p className='fv_heading'>
-                Welcome to <span>µLearn </span> Gallery
+                Welcome to <span>µLearn </span> News Gallery
               </p>
               <p className='fv_tagline'>
                 Welcome, to µLearn Gallery, Listed below are the key pictures of
@@ -72,7 +72,7 @@ const News = () => {
             </div>
 
             <div className='tabs_container'>
-              {EventPics.map((event) => (
+              {NewsData.map((event) => (
                 <p
                   className='tab'
                   style={{

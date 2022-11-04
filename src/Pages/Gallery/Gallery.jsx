@@ -53,7 +53,7 @@ const Gallery = () => {
               </p>
             </div>
             <div className={styles.fv_images}>
-              <img src={fvimg} alt="" className={styles.fv_img} />
+              <img src={fvimg} alt='' className={styles.fv_img} />
             </div>
           </div>
         </div>
@@ -95,20 +95,20 @@ const Gallery = () => {
 
         {/* Gallery Body */}
         {program && (
-          <section id="gallery">
-            <div className="gallery_grid">
+          <section id='gallery'>
+            <div className='gallery_grid'>
               {(program.Event_Name == "All Images" && allimages
                 ? allimages
                 : program.pics
               )
                 .slice(0, 20)
                 .map((pic) => (
-                  <div className="gallery_item">
+                  <div className='gallery_item'>
                     <img
-                      className="gallery_img"
+                      className='gallery_img'
                       src={pic}
-                      alt=""
-                      loading="lazy"
+                      alt=''
+                      loading='lazy'
                     />
                   </div>
                 ))}
