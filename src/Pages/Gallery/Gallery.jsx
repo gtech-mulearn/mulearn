@@ -109,6 +109,8 @@ const Gallery = () => {
                       src={pic}
                       alt=''
                       loading='lazy'
+                      width='100%'
+                      height='100%'
                     />
                   </div>
                 ))}
