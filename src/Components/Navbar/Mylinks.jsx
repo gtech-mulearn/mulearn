@@ -30,10 +30,10 @@ export const links = [
             name: "Gallery",
             link: "/gallery",
           },
-          // {
-          //   name: "News",
-          //   link: "/news",
-          // },
+          {
+            name: "News",
+            link: "/news",
+          },
           {
             name: "Leaderboard",
             link: "/leaderboard",

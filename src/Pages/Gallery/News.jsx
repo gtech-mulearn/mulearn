@@ -109,6 +109,7 @@ const News = () => {
                       alt=''
                       loading='lazy'
                     />
+                    {/* <p>{pic}</p> */}
                   </div>
                 ))}
             </div>
