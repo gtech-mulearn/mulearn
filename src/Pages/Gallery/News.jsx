@@ -44,11 +44,13 @@ const News = () => {
                 Welcome to <span>µLearn </span> News Gallery
               </p>
               <p className='fv_tagline'>
-                Welcome, to µLearn Gallery, Listed below are the key pictures of
-                various milestones accomplished by µLearn in the past one year.
-                Together, we learned and witnessed a lot of things and going
-                back and taking a look at those wonderful memories again is a
-                always something special!.{" "}
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Molestiae recusandae excepturi cum, accusamus minus esse nihil
+                nostrum perspiciatis cumque mollitia sit obcaecati tenetur
+                architecto qui voluptatibus reprehenderit veniam molestias
+                explicabo? Quos eum possimus velit vel blanditiis vitae
+                corporis, quasi illum asperiores dolorem consequatur facere
+                praesentium nisi dolorum quisquam! Accusantium,
               </p>
             </div>
             <div className='fv_images'>
@@ -96,7 +98,7 @@ const News = () => {
         {program && (
           <section id='gallery'>
             <div className='gallery_grid'>
-              {(program.Event_Name == "All Images" && allimages
+              {(program.Event_Name == "All News" && allimages
                 ? allimages
                 : program.pics
               )
