@@ -68,14 +68,14 @@ export const links = [
       },
       {
         Head: "Ongoing",
-        sublink: [
-          { name: "Art of Teaching", link: "/artofteaching" },
-          { name: "Hacktober Fest", link: "/hacktoberfest" },
-        ],
+        sublink: [{ name: "Art of Teaching", link: "/artofteaching" }],
       },
       {
         Head: "Others",
-        sublink: [{ name: "Wiki Syllabus", link: "/wikisyllabus" }],
+        sublink: [
+          { name: "Wiki Syllabus", link: "/wikisyllabus" },
+          { name: "Hacktober Fest", link: "/hacktoberfest" },
+        ],
       },
     ],
   },
