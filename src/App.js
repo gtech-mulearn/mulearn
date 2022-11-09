@@ -20,6 +20,7 @@ import BlogPage from "./Pages/CampusChapters/AmrithaBlogPage/BlogPage";
 import JBlogPage from "./Pages/CampusChapters/JessnoBlogPage/JBlogPage";
 import Welcome from "./Pages/CampusChapters/Register/Welcome/Welcome";
 import FindCampus from "./Pages/CampusChapters/Register/FindCampus/FindCampus";
+import SandraBlogPage from "./Pages/CampusChapters/SandraBlogPage/SandraBlogPage";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
           </Route>
           <Route path="/blog/amirthags" element={<BlogPage />} />
           <Route path="/blog/jessno" element={<JBlogPage />} />
+          <Route path="/blog/sandra" element={<SandraBlogPage />} />
         </Routes>
       </Router>
     </div>

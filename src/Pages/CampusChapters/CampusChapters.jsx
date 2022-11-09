@@ -263,7 +263,7 @@ const CampusChapters = () => {
 
             <div className={styles.tv_story_container}>
               <div className={styles.tv_story}>
-                <Card sx={{ maxWidth: 345, height: 550 }}>
+                <Card sx={{ maxWidth: 345, height: 600 }}>
                   <CardActionArea>
                     <CardMedia
                       component="img"
@@ -293,7 +293,7 @@ const CampusChapters = () => {
                 </Card>
               </div>
               <div className={styles.tv_story}>
-                <Card sx={{ maxWidth: 345, height: 550 }}>
+                <Card sx={{ maxWidth: 345, height: 600 }}>
                   <CardActionArea>
                     <CardMedia
                       component="img"
@@ -315,6 +315,36 @@ const CampusChapters = () => {
                   </CardActionArea>
                   <CardActions>
                     <Link to="/blog/jessno">
+                      <Button size="small">
+                        <span>Read More...</span>
+                      </Button>
+                    </Link>
+                  </CardActions>
+                </Card>
+              </div>
+
+              <div className={styles.tv_story}>
+                <Card sx={{ maxWidth: 345, height: 600 }}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      height="10"
+                      image="/assets/campuscommunity/sandra.jpg"
+                      alt="Jessno Oommen Jose"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        Sandra Pramod
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Read the Story of a graduate of Computer Science and
+                        Engineering who transformed her college to the
+                        top-performing college for the academic year 2021–2022
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                  <CardActions>
+                    <Link to="/blog/sandra">
                       <Button size="small">
                         <span>Read More...</span>
                       </Button>
