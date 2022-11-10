@@ -25,7 +25,7 @@ const CareersCard = ({
         <p className={styles.op_header}>{title}</p>
         <div className={styles.card_contents}>
           <p className={styles.op_text}>
-            <span>Duration: </span>
+            <span>Tenure: </span>
             {duration}
           </p>
           <p className={styles.op_text}>

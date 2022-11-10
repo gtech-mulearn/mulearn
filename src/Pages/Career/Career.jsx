@@ -92,7 +92,7 @@ const Career = () => {
               payment="INR 15K - 30K"
               criteria="Click View More Button"
               vacancy="14"
-              location="All over Kerala"
+              location="Across Kerala"
               lastdate="13th November"
               jdlink="https://mulearn.notion.site/District-Coordinator-4f10c75f117a49a3a9507a87f8ce2318"
               applylink="https://airtable.com/shr6A31lS1RwjxvqD"
