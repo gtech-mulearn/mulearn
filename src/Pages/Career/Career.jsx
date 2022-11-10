@@ -49,15 +49,15 @@ const Career = () => {
             rel="noopener noreferrer"
           >
             <button className={styles.op_jobdescription}>
-              Roles & Responsibilities
+              Hiring Call Details
             </button>
           </a>
           <div className={styles.opportunities}>
             <CareersCard
               title="Program Manager"
               duration="1 Year"
-              payment="INR 60K - 80K"
-              criteria="Click View More Button"
+              payment="INR 60K - 80K/Month"
+              criteria="Click View More"
               vacancy="01"
               location="Trivandrum"
               lastdate="13th November"
@@ -67,9 +67,9 @@ const Career = () => {
             <CareersCard
               title="Operations Coordinator"
               duration="1 Year"
-              payment="INR 20K - 40K"
-              criteria="Click View More Button"
-              vacancy="01"
+              payment="INR 20K - 40K/Month"
+              criteria="Click View More"
+              vacancy="06"
               location="Trivandrum"
               lastdate="13th November"
               jdlink="https://mulearn.notion.site/Operations-Coordinator-67535a48b8974ba1ba3e77151f4ae938"
@@ -78,8 +78,8 @@ const Career = () => {
             <CareersCard
               title="Zonal Coordinator"
               duration="1 Year"
-              payment="INR 20K - 40K"
-              criteria="Click View More Button"
+              payment="INR 20K - 40K/Month"
+              criteria="Click View More"
               vacancy="03"
               location="Trivandrum"
               lastdate="13th November"
@@ -89,8 +89,8 @@ const Career = () => {
             <CareersCard
               title="District Coordinator"
               duration="1 Year"
-              payment="INR 15K - 30K"
-              criteria="Click View More Button"
+              payment="INR 15K - 30K/Month"
+              criteria="Click View More"
               vacancy="14"
               location="Across Kerala"
               lastdate="13th November"
@@ -100,8 +100,8 @@ const Career = () => {
             <CareersCard
               title="Creative Coordinator"
               duration="1 Year"
-              payment="INR 20K - 40K"
-              criteria="Click View More Button"
+              payment="INR 20K - 40K/Month"
+              criteria="Click View More"
               vacancy="01"
               location="Trivandrum"
               lastdate="13th November"
@@ -109,12 +109,12 @@ const Career = () => {
               applylink="https://airtable.com/shr6A31lS1RwjxvqD"
             />
             <CareersCard
-              title="Zonal Coordinator"
+              title="Temporary Intern"
               duration="As per requirement"
               payment="INR 500/Day+TA"
-              criteria="Click View More Button"
+              criteria="Click View More"
               vacancy="140"
-              location="Trivandrum"
+              location="Across Kerala"
               lastdate="13th November"
               jdlink="https://mulearn.notion.site/Temporary-Intern-b413ce986e7b410d918a7b2aba3ae879"
               applylink="https://airtable.com/shr6A31lS1RwjxvqD"
