@@ -6,6 +6,7 @@ const CareersCard = ({
   duration,
   payment,
   vacancy,
+  location,
   criteria,
   lastdate,
   jdlink,
@@ -32,12 +33,17 @@ const CareersCard = ({
             {payment}
           </p>
           <p className={styles.op_text}>
+            <span>Criteria: </span>
+            {criteria}
+          </p>
+          <p className={styles.op_text}>
             <span>No. of Vacancy: </span>
             {vacancy}
           </p>
+
           <p className={styles.op_text}>
-            <span>Criteria: </span>
-            {criteria}
+            <span>Location: </span>
+            {location}
           </p>
           <p className={styles.op_text}>
             <span>Last Date To Apply: </span>
