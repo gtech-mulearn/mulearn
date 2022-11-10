@@ -130,12 +130,27 @@
   color: #404040;
 }
 
+.sectionseperator {
+  display: none;
+}
+
 @media only screen and (min-width: 1000px) {
   .ssheading {
     font-size: 2.25rem;
     font-family: "Noto Sans", sans-serif;
     font-weight: 600;
     margin-left: 1rem;
+  }
+
+  .sectionseperator {
+    display: block;
+    margin: auto;
+    max-width: 1000px;
+  }
+
+  .sectionseperator_container {
+    width: 100vw;
+    background-color: #f9514c;
   }
 
   .op_jobdescription {
@@ -148,6 +163,14 @@
     display: block;
     margin: auto;
     margin-bottom: 2rem;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .sectionseperator {
+    display: block;
+    margin: auto;
+    max-width: 1300px;
   }
 }
 
