@@ -5,6 +5,7 @@ const CareersCard = ({
   title,
   duration,
   payment,
+  vacancy,
   criteria,
   lastdate,
   jdlink,
@@ -13,11 +14,11 @@ const CareersCard = ({
   return (
     <div className={styles.opportunity}>
       <div className={styles.op_logo}>
-        <img
+        {/* <img
           src="/assets/careers/softnotion.png"
           alt=""
           className={styles.company_logo}
-        />
+        /> */}
       </div>
       <div className={styles.op_texts}>
         <p className={styles.op_header}>{title}</p>
@@ -27,8 +28,12 @@ const CareersCard = ({
             {duration}
           </p>
           <p className={styles.op_text}>
-            <span>Package: </span>
+            <span>Remuneration: </span>
             {payment}
+          </p>
+          <p className={styles.op_text}>
+            <span>No. of Vacancy: </span>
+            {vacancy}
           </p>
           <p className={styles.op_text}>
             <span>Criteria: </span>

@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;
-  align-items: center;
   font-family: "Inter", sans-serif;
 }
 
@@ -38,6 +37,10 @@
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 1rem;
+}
+
+.ssheadingspan {
+  color: #f9514c;
 }
 
 .second_section {
@@ -94,5 +97,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    align-items: stretch;
   }
 }

@@ -31,20 +31,44 @@ const Career = () => {
             />
           </div>
         </div>
-        {/* <div className={styles.second_section}>
-          <p className={styles.ssheading}>Open Opportunities</p>
+        <div className={styles.second_section}>
+          <p className={styles.ssheading}>
+            <span className={styles.ssheadingspan}>µLearn X Yip</span> Hiring
+            Call
+          </p>
           <div className={styles.opportunities}>
             <CareersCard
-              title="React.js Intern"
-              duration="3 months"
-              payment="12k to 15k per month"
-              criteria="BTech (Recent Passouts)"
-              lastdate="1st November"
-              jdlink="https://drive.google.com/file/d/1KB4xi_GXJm1zgspZ-O_Qui9C-tZXWOiz/view?usp=sharing"
+              title="Program Manager"
+              duration="1 Year"
+              payment="INR 60K - 80K"
+              criteria="Click View More Button"
+              vacancy="01"
+              lastdate="21st November"
+              jdlink="https://mulearn.notion.site/Program-Manager-6aba62240dd34826b37f44afb24d95f4"
+              applylink="https://airtable.com/shr5Wy2PVLHFVOgkA"
+            />
+            <CareersCard
+              title="Program Manager"
+              duration="1 Year"
+              payment="INR 60K - 80K"
+              criteria="Click View More Button"
+              vacancy="01"
+              lastdate="21st November"
+              jdlink="https://mulearn.notion.site/Program-Manager-6aba62240dd34826b37f44afb24d95f4"
+              applylink="https://airtable.com/shr5Wy2PVLHFVOgkA"
+            />
+            <CareersCard
+              title="Program Manager"
+              duration="1 Year"
+              payment="INR 60K - 80K"
+              criteria="Click View More Button"
+              vacancy="01"
+              lastdate="21st November"
+              jdlink="https://mulearn.notion.site/Program-Manager-6aba62240dd34826b37f44afb24d95f4"
               applylink="https://airtable.com/shr5Wy2PVLHFVOgkA"
             />
           </div>
-        </div> */}
+        </div>
         <div className={styles.second_section}>
           <p className={styles.ssheading}>Previous Hiring Calls</p>
           <div className={styles.opportunities}>
