@@ -29,7 +29,7 @@ const ClosedCarrersData = [
       "Event Management",
     ],
     poster:
-      "https://drive.google.com/file/d/1ip_n_y91ARwt35hITRDRoGWAAmhN9gVR/view?usp=sharing",
+      "https://media.discordapp.net/attachments/771679365124718612/1007975429317070878/GTech_intern_call.jpeg?width=357&height=635",
   },
   {
     id: 3,
@@ -50,7 +50,7 @@ const ClosedCarrersData = [
       "Diploma",
     ],
     poster:
-      "https://drive.google.com/file/d/1ip_n_y91ARwt35hITRDRoGWAAmhN9gVR/view?usp=sharing",
+      "https://media.discordapp.net/attachments/771679365124718612/996661239675621436/Hiring_-_Sun_Tech.png?width=357&height=634",
   },
   // {
   //   id: 4,
@@ -60,7 +60,7 @@ const ClosedCarrersData = [
   //   Company: "Cirrus Labs",
   //   Stipend: "20,000 / Month",
   //   poster:
-  //     "https://drive.google.com/file/d/1Yuqr_PN4fIxI_bT0_zYw4YJbT-dr_JiF/view?usp=sharing",
+  //     "https://media.discordapp.net/attachments/771679365124718612/996042039588294757/Hiring-_Cirrus_Labs_2.png?width=357&height=635",
   // },
   {
     id: 5,
@@ -71,7 +71,7 @@ const ClosedCarrersData = [
     Roles: ["Android Developer"],
     Duration: "3 Months",
     poster:
-      "https://drive.google.com/file/d/1vjn_pP7yJa_ry3LH1VYfiyZONrfQJmLH/view?usp=sharing",
+      "https://media.discordapp.net/attachments/771679365124718612/985548840021147698/Hiring_-_Softnotions.png?width=357&height=635",
   },
   {
     id: 6,
@@ -95,7 +95,7 @@ const ClosedCarrersData = [
       "Post completion of probation, the candidate will be given a raise to 3.6 LPA",
     ],
     poster:
-      "https://drive.google.com/file/d/19tiWhfBm_t3njcKYLdqhfAposLXLj5e-/view?usp=sharing",
+      "https://media.discordapp.net/attachments/771679365124718612/966592691037171712/Hiring_-_Alokin_Cocoon_2.0_1.png?width=357&height=634",
   },
   // {
   //   id: 7,
@@ -105,7 +105,7 @@ const ClosedCarrersData = [
   //   Company: "Cirrus Labs",
   //   Stipend: "20,000 / Month",
   //   poster:
-  //     "https://drive.google.com/file/d/1LJtYZkRg_olK0sx_laC-jOSgDKczX5Lg/view?usp=sharing",
+  //     "https://media.discordapp.net/attachments/771679365124718612/964148486176124958/Hiring-_Cirrus_Labs-1.png?width=357&height=635",
   // },
   {
     id: 8,
@@ -120,7 +120,7 @@ const ClosedCarrersData = [
       "People management",
     ],
     poster:
-      "https://drive.google.com/file/d/1Yvz-BiRuU1jtQrrgo1AekxXjXYAsW0dL/view?usp=sharing",
+      "https://media.discordapp.net/attachments/771679365124718612/926832199330852864/We_Are_Hiring_Poster_Facebook_Post_6.png?width=720&height=604",
   },
   {
     id: 9,
@@ -131,7 +131,7 @@ const ClosedCarrersData = [
     Roles: ["Be a part of building Aaron Chettan (Discord-bot)"],
     Qualifications: ["Python programmer"],
     poster:
-      "https://drive.google.com/file/d/1mDklPqyOOgDu4aD4Om_pbop3zluL-4tW/view?usp=sharing",
+      "https://media.discordapp.net/attachments/771679365124718612/922891893254266910/bot-dev.jpeg?width=635&height=635",
   },
   {
     id: 10,
