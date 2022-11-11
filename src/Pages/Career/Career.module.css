@@ -28,7 +28,7 @@
 }
 
 .fsillustration {
-  width: 30rem;
+  width: 24rem;
 }
 
 .second__section {
@@ -183,6 +183,11 @@
     align-items: stretch;
     row-gap: 1rem;
   }
+
+  .fsillustration {
+  width: 30rem;
+}
+
 }
 
 .closedcareerscontainer {
