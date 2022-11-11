@@ -31,14 +31,14 @@ const Career = () => {
             />
           </div>
         </div>
-        {/* <div className={styles.sectionseperator_container}>
+        <div className={styles.sectionseperator_container}>
           <img
             className={styles.sectionseperator}
             src="/assets/careers/fsbg.png"
             alt=""
           />
-        </div> */}
-        {/* <div className={styles.second_section}>
+        </div>
+        <div className={styles.second_section}>
           <p className={styles.ssheading}>
             <span className={styles.ssheadingspan}>µLearn X Yip</span> Hiring
             Call
@@ -67,7 +67,7 @@ const Career = () => {
               criteria="Click View More"
               vacancy="01"
               location="Trivandrum"
-              lastdate="12th November"
+              lastdate="14th November"
               jdlink="https://mulearn.notion.site/Program-Manager-6aba62240dd34826b37f44afb24d95f4"
               applylink="https://airtable.com/shr6A31lS1RwjxvqD"
             />
@@ -78,7 +78,7 @@ const Career = () => {
               criteria="Click View More"
               vacancy="06"
               location="Trivandrum"
-              lastdate="12th November"
+              lastdate="14th November"
               jdlink="https://mulearn.notion.site/Operations-Coordinator-67535a48b8974ba1ba3e77151f4ae938"
               applylink="https://airtable.com/shr6A31lS1RwjxvqD"
             />
@@ -89,7 +89,7 @@ const Career = () => {
               criteria="Click View More"
               vacancy="03"
               location="Trivandrum"
-              lastdate="12th November"
+              lastdate="14th November"
               jdlink="https://mulearn.notion.site/Zonal-Coordinator-edbed256b1d04703b7a444b6c070bfbb"
               applylink="https://airtable.com/shr6A31lS1RwjxvqD"
             />
@@ -100,7 +100,7 @@ const Career = () => {
               criteria="Click View More"
               vacancy="14"
               location="Across Kerala"
-              lastdate="12th November"
+              lastdate="14th November"
               jdlink="https://mulearn.notion.site/District-Coordinator-4f10c75f117a49a3a9507a87f8ce2318"
               applylink="https://airtable.com/shr6A31lS1RwjxvqD"
             />
@@ -111,28 +111,28 @@ const Career = () => {
               criteria="Click View More"
               vacancy="01"
               location="Trivandrum"
-              lastdate="12th November"
+              lastdate="14th November"
               jdlink="https://mulearn.notion.site/Creative-Coordinator-a5083823e02a48c0a023dc86828b74b9"
               applylink="https://airtable.com/shr6A31lS1RwjxvqD"
             />
-            <CareersCard
+            {/* <CareersCard
               title="Temporary Intern"
               duration="As per requirement"
               payment="INR 500/Day+TA"
               criteria="Click View More"
               vacancy="140"
               location="Across Kerala"
-              lastdate="12th November"
+              lastdate="14th November"
               jdlink="https://mulearn.notion.site/Temporary-Intern-b413ce986e7b410d918a7b2aba3ae879"
               applylink="https://airtable.com/shr6A31lS1RwjxvqD"
-            />
+            /> */}
             <p className={styles.ssheadingposttagline}>
               If you think you embody these values, we would love to see some of
               them! Apply for a full-time/part-time/paid/volunteer position with
               us here.
             </p>
           </div>
-        </div> */}
+        </div>
         <div className={styles.closedcareerscontainer}>
           <div className={styles.second_section}>
             <p className={styles.ssheading}>Previous Hiring Calls</p>
