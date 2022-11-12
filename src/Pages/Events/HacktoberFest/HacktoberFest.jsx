@@ -21,20 +21,7 @@ const HacktoberFest = () => {
                 Hacktoberfest has played an integral role in building the
                 open-source community over the years.
               </p>
-              <a
-                href="https://awesome.mulearn.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className={styles.primary_btn}>Contribute Now!</button>
-              </a>
-              <a
-                href="https://hacktoberfest.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className={styles.signup}>Join Hacktoberfest</button>
-              </a>
+              
             </div>
             <img
               alt="Illustration"
