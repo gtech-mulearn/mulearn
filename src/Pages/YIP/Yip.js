@@ -47,7 +47,7 @@ function Yip() {
           <span className="iconify upbtn" data-icon="mdi:arrow-up-bold"></span>
         </button> */}
 
-        <Navbar/>
+        <Navbar />
 
         <main>
           <div className="first-section">
@@ -63,7 +63,7 @@ function Yip() {
                 challenge.
               </p>
 
-              <form name="gform" method="post" >
+              <form name="gform" method="post">
                 <p
                   className="stext"
                   style={{ color: "#f6832a", fontWeight: "600" }}
@@ -78,7 +78,7 @@ function Yip() {
                   id="email"
                 />
 
-                <button className="submit-btn" id="submit" type="submit" >
+                <button className="submit-btn" id="submit" type="submit">
                   Notify Me!
                 </button>
 
@@ -211,9 +211,9 @@ function Yip() {
                             <b>Click Here to Login</b>
                           </span>
                         </a>
-                        ,After Logging in Click the Open the left navbar option
-                        and from the options listed there click the
-                        <b>Profile Completion</b> option. Fill in all your
+                        ,&nbsp;After Logging in Click the Open the left navbar
+                        option and from the options listed there click the
+                        <b>&nbsp;Profile Completion</b> option. Fill in all your
                         details correctly and according to the mentioned
                         specifications. Finally Submit the form and click OK.
                       </p>
@@ -237,7 +237,7 @@ function Yip() {
                     <div className="timeline__event__description">
                       <p>
                         After completing your Profile and submitting it, You can
-                        check the left navbar again to find the
+                        check the left navbar again to find the &nbsp;
                         <b>Voice of Customer(VOC)</b> option. By clicking that
                         you will be directed to the course page where you can
                         complete it.
@@ -265,13 +265,13 @@ function Yip() {
                         After completing the VOC Course and attending the quiz
                         there.
                         <b>
-                          You can form a team consisting of minimum 2 members
-                          and maximum 5 members by clicking the Group Formation
-                          Button from the left navbar. Only one person from a
-                          group is required to form the group
+                          &nbsp;You can form a team consisting of minimum 2
+                          members and maximum 5 members by clicking the Group
+                          Formation Button from the left navbar. Only one person
+                          from a group is required to form the group
                         </b>
-                        while the other members can join it using the team's
-                        name and password.
+                        &nbsp;while the other members can join it using the
+                        team's name and password.
                       </p>
                     </div>
                   </div>
@@ -295,7 +295,7 @@ function Yip() {
                         After forming a team and finding an idea which suits the
                         given themes, the <b>person who formed the team</b> can
                         submit the idea by going to the
-                        <b>Idea Submission Option</b> from his/her Navbar.
+                        <b>&nbsp;Idea Submission Option</b> from his/her Navbar.
                       </p>
                     </div>
                   </div>
@@ -342,9 +342,10 @@ function Yip() {
                       <p>
                         Once your Idea is approved by the institution, it is put
                         forward for a preliminary evaluation and
-                        <b>8000 teams</b> are selected from District Level and
-                        <b>2000 teams</b> are selected from State Level and are
-                        awarded prizes upto <b>Rs.50000</b>
+                        <b>&nbsp;8000 teams</b> are selected from District Level
+                        and
+                        <b>&nbsp;2000 teams</b> are selected from State Level
+                        and are awarded prizes upto <b>Rs.50000</b>
                       </p>
                     </div>
                   </div>
@@ -369,8 +370,8 @@ function Yip() {
                         Finally the winners are annouced and out of the 2000
                         teams selected at state level
                         <b>
-                          900 teams are provided financial and mentoring support
-                          for the next 3 years.
+                          &nbsp;900 teams are provided financial and mentoring
+                          support for the next 3 years.
                         </b>
                       </p>
                     </div>
@@ -381,10 +382,9 @@ function Yip() {
           </div>
         </main>
 
-        <Footer/>
+        <Footer />
       </body>
-    </div >
-
+    </div>
   );
 }
 
