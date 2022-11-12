@@ -126,12 +126,12 @@ const Career = () => {
               jdlink="https://mulearn.notion.site/Temporary-Intern-b413ce986e7b410d918a7b2aba3ae879"
               applylink="https://airtable.com/shr6A31lS1RwjxvqD"
             /> */}
-            <p className={styles.ssheadingposttagline}>
+          </div>
+          <p className={styles.ssheadingposttagline}>
               If you think you embody these values, we would love to see some of
               them! Apply for a full-time/part-time/paid/volunteer position with
               us here.
             </p>
-          </div>
         </div>
         <div className={styles.closedcareerscontainer}>
           <div className={styles.second_section}>
