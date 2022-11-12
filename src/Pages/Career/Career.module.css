@@ -19,6 +19,7 @@
   font-size: 2.5rem;
   font-weight: 600;
   color: #303030;
+  margin-top: -2rem;
 }
 
 .fstagline {
@@ -27,7 +28,7 @@
 }
 
 .fsillustration {
-  width: 40vh;
+  width: 24rem;
 }
 
 .second__section {
@@ -35,9 +36,28 @@
 }
 
 .ssheading {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
+  text-align: center;
+}
+
+.ssheadingtagline {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.ssheadingposttagline {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.ssheadingspan {
+  color: #f9514c;
 }
 
 .second_section {
@@ -52,6 +72,25 @@
     font-weight: 600;
   }
 
+  .ssheadingtagline {
+    width: 75%;
+    font-size: 1.1rem;
+    display: block;
+    margin: auto;
+    margin-bottom: 0.75rem;
+  }
+
+  .ssheadingposttagline {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+
+    width: 60%;
+    display: block;
+    margin: auto;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
   .fstagline {
     font-size: 1.1rem;
     width: 60%;
@@ -61,14 +100,26 @@
   .first__section {
     max-width: 1300px;
     margin: auto;
+    margin-bottom: 2rem;
   }
+}
+
+.op_jobdescription {
+  margin: 0.25rem 0;
+  background-color: #f9514c;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  display: block;
+  margin: auto;
+  margin-bottom: 1rem;
 }
 
 @media only screen and (min-width: 1300px) {
   .second_section {
     max-width: 1300px;
     margin: auto;
-    margin-top: 1rem;
+    margin-top: 3rem;
   }
 }
 
@@ -79,11 +130,46 @@
   color: #404040;
 }
 
+.sectionseperator {
+  display: none;
+}
+
 @media only screen and (min-width: 1000px) {
   .ssheading {
     font-size: 2.25rem;
     font-family: "Noto Sans", sans-serif;
     font-weight: 600;
+    margin-left: 1rem;
+  }
+
+  .sectionseperator {
+    display: block;
+    margin: auto;
+    max-width: 1000px;
+  }
+
+  .sectionseperator_container {
+    background-color: #f9514c;
+  }
+
+  .op_jobdescription {
+    margin: 0.25rem 0;
+    background-color: #f9514c;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    margin-left: 1rem;
+    display: block;
+    margin: auto;
+    margin-bottom: 2rem;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .sectionseperator {
+    display: block;
+    margin: auto;
+    max-width: 1300px;
   }
 }
 
@@ -94,5 +180,16 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    align-items: stretch;
+    row-gap: 1rem;
   }
+
+  .fsillustration {
+  width: 30rem;
+}
+
+}
+
+.closedcareerscontainer {
+  margin-top: 2rem;
 }

@@ -25,41 +25,131 @@ const Career = () => {
           </div>
           <div className={styles.fsimage}>
             <img
-              src="/assets/careers/illustration.webp"
+              src="/assets/careers/fsimg.gif"
               className={styles.fsillustration}
               alt=""
             />
           </div>
         </div>
-        {/* <div className={styles.second_section}>
-          <p className={styles.ssheading}>Open Opportunities</p>
+        <div className={styles.sectionseperator_container}>
+          <img
+            className={styles.sectionseperator}
+            src="/assets/careers/fsbg.png"
+            alt=""
+          />
+        </div>
+        <div className={styles.second_section}>
+          <p className={styles.ssheading}>
+            <span className={styles.ssheadingspan}>µLearn X Yip</span> Hiring
+            Call
+          </p>
+          <p className={styles.ssheadingtagline}>
+            We want people with integrity, who are fair, impartial, honest, and
+            truthful. We are looking for dynamic and adaptable individuals who
+            are not afraid to think creatively and to be proactive, flexible,
+            and responsive.
+          </p>
+
+          <a
+            href="https://mulearn.notion.site/Roles-Responsibilities-2c4bec241ba742c1a4508f3a94531c2e"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className={styles.op_jobdescription}>
+              Hiring Call Details
+            </button>
+          </a>
           <div className={styles.opportunities}>
             <CareersCard
-              title="React.js Intern"
-              duration="3 months"
-              payment="12k to 15k per month"
-              criteria="BTech (Recent Passouts)"
-              lastdate="1st November"
-              jdlink="https://drive.google.com/file/d/1KB4xi_GXJm1zgspZ-O_Qui9C-tZXWOiz/view?usp=sharing"
-              applylink="https://airtable.com/shr5Wy2PVLHFVOgkA"
+              title="Program Manager"
+              duration="1 Year"
+              payment="INR 60K - 80K/Month"
+              criteria="Click View More"
+              vacancy="01"
+              location="Trivandrum"
+              lastdate="14th November"
+              jdlink="https://mulearn.notion.site/Program-Manager-6aba62240dd34826b37f44afb24d95f4"
+              applylink="https://airtable.com/shr6A31lS1RwjxvqD"
             />
+            <CareersCard
+              title="Operations Coordinator"
+              duration="1 Year"
+              payment="INR 20K - 40K/Month"
+              criteria="Click View More"
+              vacancy="06"
+              location="Trivandrum"
+              lastdate="14th November"
+              jdlink="https://mulearn.notion.site/Operations-Coordinator-67535a48b8974ba1ba3e77151f4ae938"
+              applylink="https://airtable.com/shr6A31lS1RwjxvqD"
+            />
+            <CareersCard
+              title="Zonal Coordinator"
+              duration="1 Year"
+              payment="INR 20K - 40K/Month"
+              criteria="Click View More"
+              vacancy="03"
+              location="Trivandrum"
+              lastdate="14th November"
+              jdlink="https://mulearn.notion.site/Zonal-Coordinator-edbed256b1d04703b7a444b6c070bfbb"
+              applylink="https://airtable.com/shr6A31lS1RwjxvqD"
+            />
+            <CareersCard
+              title="District Coordinator"
+              duration="1 Year"
+              payment="INR 15K - 30K/Month"
+              criteria="Click View More"
+              vacancy="14"
+              location="Across Kerala"
+              lastdate="14th November"
+              jdlink="https://mulearn.notion.site/District-Coordinator-4f10c75f117a49a3a9507a87f8ce2318"
+              applylink="https://airtable.com/shr6A31lS1RwjxvqD"
+            />
+            <CareersCard
+              title="Creative Coordinator"
+              duration="1 Year"
+              payment="INR 20K - 40K/Month"
+              criteria="Click View More"
+              vacancy="01"
+              location="Trivandrum"
+              lastdate="14th November"
+              jdlink="https://mulearn.notion.site/Creative-Coordinator-a5083823e02a48c0a023dc86828b74b9"
+              applylink="https://airtable.com/shr6A31lS1RwjxvqD"
+            />
+            {/* <CareersCard
+              title="Temporary Intern"
+              duration="As per requirement"
+              payment="INR 500/Day+TA"
+              criteria="Click View More"
+              vacancy="140"
+              location="Across Kerala"
+              lastdate="14th November"
+              jdlink="https://mulearn.notion.site/Temporary-Intern-b413ce986e7b410d918a7b2aba3ae879"
+              applylink="https://airtable.com/shr6A31lS1RwjxvqD"
+            /> */}
           </div>
-        </div> */}
-        <div className={styles.second_section}>
-          <p className={styles.ssheading}>Previous Hiring Calls</p>
-          <div className={styles.opportunities}>
-            {ClosedCarrersData.map((data) => (
-              <ClosedCareers
-                company={data.Company}
-                title={data.Title}
-                duration={data.Duration}
-                payment={data.Stipend || data.Package}
-                criteria={data.Qualifications && data.Qualifications[0]}
-                date={data.date}
-                roles={data.Roles}
-                jdlink={data.poster}
-              />
-            ))}
+          <p className={styles.ssheadingposttagline}>
+              If you think you embody these values, we would love to see some of
+              them! Apply for a full-time/part-time/paid/volunteer position with
+              us here.
+            </p>
+        </div>
+        <div className={styles.closedcareerscontainer}>
+          <div className={styles.second_section}>
+            <p className={styles.ssheading}>Previous Hiring Calls</p>
+            <div className={styles.opportunities}>
+              {ClosedCarrersData.map((data) => (
+                <ClosedCareers
+                  company={data.Company}
+                  title={data.Title}
+                  duration={data.Duration}
+                  payment={data.Stipend || data.Package}
+                  criteria={data.Qualifications && data.Qualifications[0]}
+                  date={data.date}
+                  roles={data.Roles}
+                  jdlink={data.poster}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </main>

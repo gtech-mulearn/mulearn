@@ -52,11 +52,13 @@ const CareersCard = ({
             </p>
           )}
         </div>
-        <div className={styles.op_buttons}>
-          <a href={jdlink} target="_blank" rel="noopener noreferrer">
-            <button className={styles.op_jobdescription}>View More</button>
-          </a>
-        </div>
+        {jdlink && (
+          <div className={styles.op_buttons}>
+            <a href={jdlink} target="_blank" rel="noopener noreferrer">
+              <button className={styles.op_jobdescription}>View More</button>
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );

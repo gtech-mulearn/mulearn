@@ -8,10 +8,11 @@
   padding: 1.5rem;
   border-radius: 10px;
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   font-family: "Inter", sans-serif;
   justify-content: center;
   align-items: center;
+  border: 2px solid #ee8784;
 
   box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
   -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
@@ -32,7 +33,7 @@
   font-family: "Noto Sans", sans-serif;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #404040;
+  color: #F9514C;
 }
 
 .op_text {
@@ -44,7 +45,7 @@
 }
 
 .op_text span {
-  color: #6291c7;
+  color: #404040;
   display: block;
   font-weight: 600;
 }
@@ -55,7 +56,7 @@
 
 .op_jobdescription {
   margin: 0.25rem 0;
-  background-color: #404040;
+  background-color: #F9514C;
   color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 5px;
@@ -64,8 +65,8 @@
 
 .op_applynow {
   margin: 0.25rem 0rem;
-  color: #252525;
-  border: 1.5px solid #303030;
+  color: #F9514C;
+  border: 1.5px solid #F9514C;
   padding: 0.4rem 1.5rem;
   border-radius: 5px;
 }
