@@ -73,7 +73,7 @@ const ISRData = [
     id: "8",
     speaker: "Ajmal Basheer",
     image:
-      "https://drive.google.com/uc?export=view&id=1NNvNr0WimML2QdyzplIOhu-qc0VwP0jU",
+      "assets/events/isr/ISRPictures/Ajmal Basheer.webp",
     description:
       "Today on air we have: A fourth year Engineering student, an avid Entrepreneur, who is the Founder and Chief Executive Officer of Healthified.         Ajmal Basheer  He is a Tech Savvy who believes in deciphering problems with the implementation of new and innovative technologies into any Business. Let's hear it from the Developer, speaker, and Entrepreneur all at the age of 21, while still in college. ",
     date: "21/09/2021",
