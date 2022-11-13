@@ -16,7 +16,7 @@
 }
 
 .gallery_grid:hover .gallery_img {
-  filter: grayscale(1) blur(2px) brightness(0.8);
+  filter: blur(2px);
 }
 
 .gallery_item:hover .gallery_img {
