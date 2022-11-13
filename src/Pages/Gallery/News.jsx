@@ -6,10 +6,17 @@ import "./News.css";
 import NewsData from "./data/News";
 
 import fvimg from "./assets/fvimg.png";
+import Modal from "../../Components/Modal/Modal";
 
 const News = () => {
   const [allimages, setAllImage] = useState();
   const [program, setProgram] = useState(NewsData[0]);
+  const [clickedImg, setClickedImg] = useState(null);
+
+  const handleClick = (img) => {
+    setClickedImg(img);
+    document.body.style.overflow = "hidden";
+  };
 
   useEffect(() => {
     function shuffleArray(array) {
@@ -112,6 +119,9 @@ const News = () => {
                       loading='lazy'
                       width='100%'
                       height='100%'
+                      onClick={() => {
+                        handleClick(pic);
+                      }}
                     />
                   </div>
                 ))}
@@ -119,6 +129,9 @@ const News = () => {
           </section>
         )}
       </div>
+      {clickedImg && (
+        <Modal clickedImg={clickedImg} setClickedImg={setClickedImg} />
+      )}
       <Footer />
     </>
   );

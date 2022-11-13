@@ -176,6 +176,7 @@
 .card_description {
   margin-left: 0.5rem;
 }
+
 @media only screen and (min-width: 768px) {
   .cards_view {
     display: grid;
@@ -240,38 +241,5 @@
     display: grid;
     column-gap: 1rem;
     grid-template-columns: 25% 25% 25% 25%;
-  }
-}
-
-/* Images Grid */
-.gallery_grid {
-  columns: 20rem;
-  column-gap: 0.5rem;
-}
-
-.gallery_item {
-  overflow: hidden;
-  margin: 0 0 0.5rem;
-  max-height: 40rem;
-}
-
-.gallery_img {
-  width: 100%;
-  transition: all 0.2s ease-out;
-  transform: scale(1.1);
-}
-
-.gallery_grid:hover .gallery_img {
-  filter: grayscale(1) blur(2px) brightness(0.8);
-}
-
-.gallery_item:hover .gallery_img {
-  filter: grayscale(0);
-  transform: scale(1.2);
-}
-
-@media only screen and (max-width: 976px) {
-  .gallery_grid {
-    margin: 0 1rem;
   }
 }
