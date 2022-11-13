@@ -26,6 +26,11 @@
   color: #303030;
 }
 
+.readhide{
+  color: #f78c40;
+  cursor: pointer;
+}
+
 .fv_heading span {
   font-weight: 600;
   color: #f78c40;
