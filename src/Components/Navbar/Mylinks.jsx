@@ -138,6 +138,10 @@ export const links = [
             name: "Courses",
             link: "https://learn.mulearn.org/courses",
           },
+          {
+            name: "APISetu",
+            link: "https://learn.mulearn.org/apisetu",
+          },
         ],
       },
       {
