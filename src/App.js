@@ -1,6 +1,6 @@
 import Home from "./Pages/Home/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import News from "./Pages/News/News";
+import News from "./Pages/Gallery/News";
 import Calendar from "./Pages/Calendar/Calendar";
 import Gallery from "./Pages/Gallery/Gallery";
 import MuAnnouncements from "./Pages/Events/MuAnnouncements/MuAnnouncements";
@@ -32,6 +32,7 @@ function App() {
  
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/news" element={<News />} />
           <Route path="/announcements" element={<MuAnnouncements />} />
           <Route path="/isr" element={<ISR />} />
           <Route path="/company-partners" element={<Company />} />
