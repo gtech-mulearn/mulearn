@@ -7,6 +7,7 @@
   overflow: hidden;
   margin: 0 0 0.5rem;
   max-height: 40rem;
+  position: relative;
 }
 
 .gallery_img {
