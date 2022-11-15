@@ -263,12 +263,12 @@ const CampusChapters = () => {
 
             <div className={styles.tv_story_container}>
               <div className={styles.tv_story}>
-                <Card sx={{ maxWidth: 345, height: 600 }}>
+                <Card sx={{ maxWidth: 345, height: 500 }}>
                   <CardActionArea>
                     <CardMedia
                       component="img"
                       height="30"
-                      image="/assets/campuscommunity/amritha.jpeg"
+                      image="/assets/campuscommunity/amirtha.jpg"
                       alt="Amritha G S"
                     />
                     <CardContent>
@@ -293,7 +293,7 @@ const CampusChapters = () => {
                 </Card>
               </div>
               <div className={styles.tv_story}>
-                <Card sx={{ maxWidth: 345, height: 600 }}>
+                <Card sx={{ maxWidth: 345, height: 500 }}>
                   <CardActionArea>
                     <CardMedia
                       component="img"
@@ -324,7 +324,7 @@ const CampusChapters = () => {
               </div>
 
               <div className={styles.tv_story}>
-                <Card sx={{ maxWidth: 345, height: 600 }}>
+                <Card sx={{ maxWidth: 345, height: 500 }}>
                   <CardActionArea>
                     <CardMedia
                       component="img"
