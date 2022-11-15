@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../../../Components/Footer/Footer";
 import Navbar from "../../../Components/Navbar/Navbar";
 import styles from "./BlogPage.module.css";
 
 const BlogPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Navbar />
@@ -24,9 +27,9 @@ const BlogPage = () => {
               </p>
             </div>
             <p className={styles.heading}>
-              Read the Story of a Graduate in Electrical and Electronics Engineering and the
-              way she steered her college as one of the top-performing colleges
-              among the 200+ onboarded across the state.{" "}
+              Read the Story of a Graduate in Electrical and Electronics
+              Engineering and the way she steered her college as one of the
+              top-performing colleges among the 200+ onboarded across the state.{" "}
             </p>
           </div>
         </div>
