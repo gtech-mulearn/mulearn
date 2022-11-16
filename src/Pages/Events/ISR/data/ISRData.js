@@ -2,7 +2,7 @@ const ISRData = [
   {
     id: "1",
     speaker: "Khaleel Gibran",
-    image: "assets/events/isr/ISRPictures/HappyMeal 2.webp",
+    image: "s3://vinu/assets/Evelin1.webp",
     description:
       "📢 Hola! Welcome to the first ever session on the Inspiration Station Radio.Inspiration Station Radio, runs every Tuesday to provide you a chance to greet, meet and learn with, Awesome tinkerers and builders around us. Today we have a 14 year old school student, who is a Developer, Started building websites when he was 11 years old and more awesome stuff later on.Let's hear the story of Khaleel Gibran, A.K.A 'Lord Khaleel' 😜 , today, 07:00 pm, at Inspiration Station 🗣 Voice Channel.",
     date: "01/06/2021",

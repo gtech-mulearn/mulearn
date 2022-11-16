@@ -7,6 +7,8 @@ import Footer from "../../../Components/Footer/Footer";
 
 import ISRData from "./data/ISRData";
 
+import { downloadImagefromS3 } from "...../src/aws/awsClient.js"
+
 const ISR = () => {
   const ReadMore = ({ children }) => {
     const text = children;
@@ -64,6 +66,12 @@ const ISR = () => {
               {ISRData.slice(0)
                 .reverse()
                 .map((isr) => (
+
+                  // url = isr.image
+                  // imageByteBlob = download_from_s3(url)
+                  // how to display byteblob on html image tag
+                  
+
                   <div className={styles.sv_cards}>
                     <div className={styles.card}>
                       <img src={isr.image} alt="" className={styles.card_img} />
@@ -84,3 +92,13 @@ const ISR = () => {
 };
 
 export default ISR;
+
+// download_from_s3(url: String) -> Blob {
+//   let awsClient = aws.Client({
+//     token:
+//     access_token:
+//     secret_key:
+//   });
+
+//   let image: ByteArray = awsClient.download(url);
+// }
