@@ -96,7 +96,7 @@ const Career = () => {
             <CareersCard
               title="District Coordinator"
               duration="1 Year"
-              payment="INR 15K - 30K/Month"
+              payment="INR 15K - 20K/Month"
               criteria="Click View More"
               vacancy="14"
               location="Across Kerala"
