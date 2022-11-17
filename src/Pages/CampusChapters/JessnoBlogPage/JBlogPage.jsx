@@ -1,9 +1,12 @@
-import React from "react";
+import React,{useEffect} from "react";
 import Footer from "../../../Components/Footer/Footer";
 import Navbar from "../../../Components/Navbar/Navbar";
 import styles from "./JBlogPage.module.css";
 
 const JBlogPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <>
       <Navbar />
