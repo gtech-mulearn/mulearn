@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { links } from "./Links";
 
 import './Navbar.css';  /* Added CSS*/
@@ -8,8 +7,6 @@ const NavLinks = ({ closeButton }) => {
     const [currentLink, setCurrent] = useState("");
     const [visible, setVisibility] = useState(false);
     const [prev, setPrev] = useState("");
-    const [leftern, setLeft] = useState(false);
-    const [right, setRight] = useState(false);
     return (
         <>
             <>{links.map((link) => (
