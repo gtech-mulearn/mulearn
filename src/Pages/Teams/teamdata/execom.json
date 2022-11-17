@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "name": "Deepu S. Nath",
+        "position": "Convenor GTech \u00b5Learn",
+        "image": "assets/team/execom/Deepu S. Nath.webp",
+        "linkedin": "https://linkedin.com/in/deepusnath"
+    },
+    {
+        "id": 2,
+        "name": "Anoop Ambika",
+        "position": "Director Industry Need Aggregation",
+        "image": "assets/team/execom/Anoop Ambika.webp",
+        "linkedin": "https://linkedin.com/in/anoopambika"
+    },
+    {
+        "id": 3,
+        "name": "Dinesh Thambi",
+        "position": "Director Faculty Enablement",
+        "image": "assets/team/execom/Dinesh Thambi.webp",
+        "linkedin": "https://linkedin.com/in/dinesh-thampi-b0b54713b"
+    },
+    {
+        "id": 4,
+        "name": "Rejah Rahim",
+        "position": "Director Technical Community",
+        "image": "assets/team/execom/Rejah Rahim.webp",
+        "linkedin": "https://www.https://linkedin.com/in/rejah"
+    },
+    {
+        "id": 5,
+        "name": "Rajeev J Sebastian",
+        "position": "Director Student Community",
+        "image": "assets/team/execom/Rajeev J Sebastian.webp",
+        "linkedin": "https://linkedin.com/in/rajeevjs"
+    },
+    {
+        "id": 6,
+        "name": "Karthik Kalathil",
+        "position": "",
+        "image": "assets/team/execom/Karthik Kalathil.webp",
+        "linkedin": "https://linkedin.com/in/kalathil-karthik"
+    },
+    {
+        "id": 7,
+        "name": "Suhail V P",
+        "position": "Director Network Partners",
+        "image": "assets/team/execom/Suhail V P.webp",
+        "linkedin": "https://linkedin.com/in/suhail-v-p-25807613"
+    },
+    {
+        "id": 8,
+        "name": "Richard Antony",
+        "position": "",
+        "image": "assets/team/execom/Richard Antony.webp",
+        "linkedin": "https://linkedin.com/in/richard-antony-6305784"
+    }
+]
