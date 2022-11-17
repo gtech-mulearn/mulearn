@@ -1,0 +1,80 @@
+[
+    {
+        "id": 0,
+        "name": "Akshaya Rajesh",
+        "designation": "Director, GTech Community",
+        "image": "assets/team/core/Akshaya Rajesh.webp"
+    },
+    {
+        "id": 1,
+        "name": "Bijoy Sijo",
+        "designation": "Director, GTech Operations",
+        "image": "assets/team/core/Bijoy Sijo.webp"
+    },
+    {
+        "id": 2,
+        "name": "Angel Rose",
+        "designation": "Joint Director, Student Community",
+        "image": "assets/team/core/Angel Rose.webp"
+    },
+    {
+        "id": 3,
+        "name": "Chaithanya Liz R T",
+        "designation": "Joint Director, Technical Community",
+        "image": "assets/team/core/Chaithanya Liz R T.webp"
+    },
+    {
+        "id": 4,
+        "name": "Vinu Balagopal A P",
+        "designation": "Joint Director, Need Aggregation",
+        "image": "assets/team/core/Vinu Balagopal A P.webp"
+    },
+    {
+        "id": 5,
+        "name": "Aswin S Seshdari",
+        "designation": "Joint Director, Faculty Enablement",
+        "image": "assets/team/core/Aswin S Seshdari.webp"
+    },
+    {
+        "id": 6,
+        "name": "Finu Muhammed Shameem",
+        "designation": "Joint Director, Community",
+        "image": "assets/team/core/Finu Muhammed Shameem.webp"
+    },
+    {
+        "id": 7,
+        "name": "Jessno Oommen Jose",
+        "designation": "Joint Director, Network Partners",
+        "image": "assets/team/core/Jessno Oommen Jose.webp"
+    },
+    {
+        "id": 8,
+        "name": "Andrea Rose Aureo",
+        "designation": "Joint Director, Operations",
+        "image": "assets/team/core/Andrea Rose Aureo.webp"
+    },
+    {
+        "id": 9,
+        "name": "Mohamed Faraz M S",
+        "designation": "Joint Director, Operations",
+        "image": "assets/team/core/Mohamed Faraz M S.webp"
+    },
+    {
+        "id": 10,
+        "name": "Adithyan Jayakumar",
+        "designation": "Media Lead",
+        "image": "assets/team/core/Adithyan Jayakumar.webp"
+    },
+    {
+        "id": 11,
+        "name": "Arjun Krishna",
+        "designation": "Media Lead",
+        "image": "assets/team/core/Arjun Krishna.webp"
+    },
+    {
+        "id": 12,
+        "name": "Akash Santosh",
+        "designation": "Tech Lead",
+        "image": "assets/team/core/Akash Santosh.webp"
+    }
+]
