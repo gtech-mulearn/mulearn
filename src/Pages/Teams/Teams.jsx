@@ -6,16 +6,17 @@ import Navbar from "../../Components/Navbar/Navbar";
 import styles from "./Teams.module.css";
 import TeamCard from "../../Components/TeamCard/TeamCard";
 
-import execom from "./data/execom";
 import yipteam from "./data/yip-team";
-import communitycoreTeam from "./data/community/core.js";
-import zonalHeads from "./data/community/zonal.js";
-import campusAmbassadors from "./data/community/ca.js";
-import districtHeads from "./data/community/district.js";
 import techTeam from "./data/tech-contributors.js";
 
 const Teams = () => {
   const [teamName, setTeamfilter] = useState("all");
+
+  let execom = require("./teamdata/execom.json");
+  let core = require("./teamdata/core.json");
+  let zonal = require("./teamdata/zonal.json");
+  let district = require("./teamdata/district.json");
+  let ca = require("./teamdata/ca.json");
 
   const handleFilterChange = (e) => {
     setTeamfilter(e.target.value);
@@ -40,8 +41,8 @@ const Teams = () => {
             <div className={styles.fv_illustration}>
               <img
                 className={styles.fv_image}
-                src='assets/team/illustration.gif'
-                alt=''
+                src="assets/team/illustration.gif"
+                alt=""
               />
             </div>
           </div>
@@ -54,13 +55,13 @@ const Teams = () => {
           value={teamName}
           onChange={handleFilterChange}
         >
-          <option value='all' selected>
+          <option value="all" selected>
             All
           </option>
-          <option value='execom'>Execom</option>
-          <option value='yip'>YIP Team</option>
-          <option value='community'>Community Team</option>
-          <option value='tech'>Tech Team</option>
+          <option value="execom">Execom</option>
+          <option value="yip">YIP Team</option>
+          <option value="community">Community Team</option>
+          <option value="tech">Tech Team</option>
         </select>
       </div>
 
@@ -76,7 +77,7 @@ const Teams = () => {
               return (
                 <TeamCard
                   name={member.name}
-                  designation={member.designation}
+                  designation={member.position}
                   image={member.image}
                   linkedIn={member.linkedin ? member.linkedin : ""}
                 />
@@ -118,7 +119,7 @@ const Teams = () => {
           </p>
           <p className={styles.sub_team_title}>Core Team</p>
           <div className={styles.members_list}>
-            {communitycoreTeam.map((member) => {
+            {core.map((member) => {
               return (
                 <TeamCard
                   name={member.name}
@@ -130,7 +131,7 @@ const Teams = () => {
           </div>
           <p className={styles.sub_team_title}>Zonal Heads</p>
           <div className={styles.members_list}>
-            {zonalHeads.map((member) => {
+            {zonal.map((member) => {
               return (
                 <TeamCard
                   name={member.name}
@@ -142,7 +143,7 @@ const Teams = () => {
           </div>
           <p className={styles.sub_team_title}>District Heads</p>
           <div className={styles.members_list}>
-            {districtHeads.map((member) => {
+            {district.map((member) => {
               return (
                 <TeamCard
                   name={member.name}
@@ -154,7 +155,7 @@ const Teams = () => {
           </div>
           <p className={styles.sub_team_title}>Campus Ambassadors</p>
           <div className={styles.members_list}>
-            {campusAmbassadors.map((member) => {
+            {ca.map((member) => {
               return (
                 <TeamCard
                   name={member.name}
