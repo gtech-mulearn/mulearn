@@ -97,7 +97,7 @@ const Gallery = () => {
         {program && (
           <section id="gallery">
             <div className="gallery_grid">
-              {(program.Event_Name == "All Images" && allimages
+              {(program.Event_Name === "All Images" && allimages
                 ? allimages
                 : program.pics
               )
@@ -109,6 +109,8 @@ const Gallery = () => {
                       src={pic}
                       alt=""
                       loading="lazy"
+                      width="100%"
+                      height="100%"
                     />
                   </div>
                 ))}
