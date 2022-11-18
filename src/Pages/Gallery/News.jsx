@@ -123,6 +123,14 @@ const News = () => {
                         handleClick(pic);
                       }}
                     />
+                    <img
+                      className='zoom_icon'
+                      src={require("../../UI icons/zoom.svg").default}
+                      alt=''
+                      onClick={() => {
+                        handleClick(pic);
+                      }}
+                    />
                   </div>
                 ))}
             </div>
