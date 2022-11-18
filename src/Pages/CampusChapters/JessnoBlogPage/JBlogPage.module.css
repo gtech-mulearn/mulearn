@@ -54,7 +54,7 @@ p {
     margin-top: 4rem;
     display: flex;
     flex-direction: row;
-    align-items: end;
+    align-items:flex-end;
   }
 
   .details {

@@ -1,0 +1,10 @@
+@media screen and (min-width:1024px) {
+    .dashBar {
+        position: relative;
+        width: calc(100% + 10px);
+        height: 3px;
+    }
+    .dashOnHover:hover .dashBar{
+        background-color:black;
+    }
+}

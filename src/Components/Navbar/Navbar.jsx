@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import NavLinks from "./NavLinks";
-
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   return (
@@ -21,9 +20,9 @@ const Navbar = () => {
           </div>
         </div>
         <ul className="lg:flex hidden uppercase items-center gap-8 font-[Poppins]">
-          <NavLinks />
+          <NavLinks Open={open} />
 
-          <Link to="/careers" className="text-black py-7 px-3 inline-block">
+          <Link to="/careers" className="text-black py-7 px-3 inline-block hover:text-orange-500">
             Careers
           </Link>
         </ul>
@@ -42,13 +41,13 @@ const Navbar = () => {
         {/* Mobile nav */}
         <ul
           className={`
-    lg:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24 pl-4
+    lg:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24 
     duration-500 ${open ? "left-0" : "left-[-100%]"}
     `}
         >
           <NavLinks />
           <li>
-            <Link to="/careers" className="py-7 px-3 inline-block">
+            <Link to="/careers" className="py-7 px-7 inline-block uppercase hover:text-orange-500">
               Career
             </Link>
           </li>
