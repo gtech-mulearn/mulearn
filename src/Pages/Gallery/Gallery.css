@@ -6,6 +6,8 @@
 .gallery_item {
   overflow: hidden;
   margin: 0 0 0.5rem;
+  max-height: 40rem;
+  position: relative;
 }
 
 .gallery_img {
@@ -14,12 +16,7 @@
   transform: scale(1.1);
 }
 
-.gallery_grid:hover .gallery_img {
-  filter: grayscale(1) blur(2px) brightness(0.8);
-}
-
 .gallery_item:hover .gallery_img {
-  filter: grayscale(0);
   transform: scale(1.2);
 }
 

@@ -16,11 +16,21 @@ export const links = [
           // },
         ],
       },
+
       {
         Head: "Partners",
         sublink: [
           { name: "Community Partners", link: "/community-partners" },
           { name: "Company Partners", link: "/company-partners" },
+        ],
+      },
+      {
+        Head: "Leaderboard",
+        sublink: [
+          {
+            name: "Leaderboards",
+            link: "/leaderboard",
+          },
         ],
       },
       {
@@ -30,13 +40,9 @@ export const links = [
             name: "Gallery",
             link: "/gallery",
           },
-          // {
-          //   name: "News",
-          //   link: "/news",
-          // },
           {
-            name: "Leaderboard",
-            link: "/leaderboard",
+            name: "News",
+            link: "/news",
           },
         ],
       },
@@ -102,11 +108,35 @@ export const links = [
     submenu: true,
     sublinks: [
       {
-        Head: "Home Page",
+        Head: "Interest Groups",
         sublink: [
           {
             name: "Home",
             link: "https://learn.mulearn.org/",
+          },
+          {
+            name: "Web Development",
+            link: "https://learn.mulearn.org/web",
+          },
+          {
+            name: "Android Development",
+            link: "https://learn.mulearn.org/android",
+          },
+          {
+            name: "UI / UX",
+            link: "https://learn.mulearn.org/uiux",
+          },
+          {
+            name: "Product Management",
+            link: "https://learn.mulearn.org/pm",
+          },
+          {
+            name: "IoT",
+            link: "https://learn.mulearn.org/iot",
+          },
+          {
+            name: "Cyber Security",
+            link: "https://learn.mulearn.org/cybersec",
           },
         ],
       },
@@ -141,35 +171,6 @@ export const links = [
           {
             name: "APISetu",
             link: "https://learn.mulearn.org/apisetu",
-          },
-        ],
-      },
-      {
-        Head: "Interest Groups",
-        sublink: [
-          {
-            name: "Web Development",
-            link: "https://learn.mulearn.org/web",
-          },
-          {
-            name: "Android Development",
-            link: "https://learn.mulearn.org/android",
-          },
-          {
-            name: "UI / UX",
-            link: "https://learn.mulearn.org/uiux",
-          },
-          {
-            name: "Product Management",
-            link: "https://learn.mulearn.org/pm",
-          },
-          {
-            name: "IoT",
-            link: "https://learn.mulearn.org/iot",
-          },
-          {
-            name: "Cyber Security",
-            link: "https://learn.mulearn.org/cybersec",
           },
         ],
       },

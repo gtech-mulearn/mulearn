@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
-import styles from "./Gallery.module.css";
-import "./Gallery.css";
+import "./News.css";
 
-import EventPics from "./data/EventPics";
+import NewsData from "./data/News";
 
 import fvimg from "./assets/fvimg.png";
+import Modal from "../../Components/Modal/Modal";
 
-const Gallery = () => {
+const News = () => {
   const [allimages, setAllImage] = useState();
-  const [program, setProgram] = useState(EventPics[0]);
+  const [program, setProgram] = useState(NewsData[0]);
+  const [clickedImg, setClickedImg] = useState(null);
+
+  const handleClick = (img) => {
+    setClickedImg(img);
+    document.body.style.overflow = "hidden";
+  };
 
   useEffect(() => {
     function shuffleArray(array) {
@@ -25,7 +31,7 @@ const Gallery = () => {
 
     let allPics = [];
 
-    EventPics.map((item) => {
+    NewsData.map((item) => {
       item.pics.map((pic) => {
         allPics.push(pic);
       });
@@ -37,45 +43,47 @@ const Gallery = () => {
   return (
     <>
       <Navbar />
-      <div className={styles.main_container}>
-        <div className={styles.first_view_container}>
-          <div className={styles.first_view}>
-            <div className={styles.fv_texts}>
-              <p className={styles.fv_heading}>
-                Welcome to <span>µLearn </span> Gallery
+      <div className='main_container'>
+        <div className='first_view_container'>
+          <div className='first_view'>
+            <div className='fv_texts'>
+              <p className='fv_heading'>
+                Welcome to <span>µLearn </span> News Gallery
               </p>
-              <p className={styles.fv_tagline}>
-                Welcome, to µLearn Gallery, Listed below are the key pictures of
-                various milestones accomplished by µLearn in the past one year.
-                Together, we learned and witnessed a lot of things and going
-                back and taking a look at those wonderful memories again is a
-                always something special!.{" "}
+              <p className='fv_tagline'>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Molestiae recusandae excepturi cum, accusamus minus esse nihil
+                nostrum perspiciatis cumque mollitia sit obcaecati tenetur
+                architecto qui voluptatibus reprehenderit veniam molestias
+                explicabo? Quos eum possimus velit vel blanditiis vitae
+                corporis, quasi illum asperiores dolorem consequatur facere
+                praesentium nisi dolorum quisquam! Accusantium,
               </p>
             </div>
-            <div className={styles.fv_images}>
-              <img src={fvimg} alt='' className={styles.fv_img} />
+            <div className='fv_images'>
+              <img src={fvimg} alt='' className='fv_img' />
             </div>
           </div>
         </div>
 
         {/* Gallery Header */}
-        <div className={styles.second_view_container}>
-          <div className={styles.second_view}>
-            <div className={styles.sv_texts}>
-              <p className={styles.sv_heading}>
+        <div className='second_view_container'>
+          <div className='second_view'>
+            <div className='sv_texts'>
+              <p className='sv_heading'>
                 <span>µLearn</span> Community Event Gallery.
               </p>
-              <p className={styles.sv_tagline}>
+              <p className='sv_tagline'>
                 Beautiful memories often need to be documented, so that you
                 could revisit them. These are some of the pictures from our
                 events.
               </p>
             </div>
 
-            <div className={styles.tabs_container}>
-              {EventPics.map((event) => (
+            <div className='tabs_container'>
+              {NewsData.map((event) => (
                 <p
-                  className={styles.tab}
+                  className='tab'
                   style={{
                     color:
                       program.Event_Name === event.Event_Name
@@ -97,7 +105,7 @@ const Gallery = () => {
         {program && (
           <section id='gallery'>
             <div className='gallery_grid'>
-              {(program.Event_Name == "All Images" && allimages
+              {(program.Event_Name == "All News" && allimages
                 ? allimages
                 : program.pics
               )
@@ -111,6 +119,17 @@ const Gallery = () => {
                       loading='lazy'
                       width='100%'
                       height='100%'
+                      onClick={() => {
+                        handleClick(pic);
+                      }}
+                    />
+                    <img
+                      className='zoom_icon'
+                      src={require("../../UI icons/zoom.svg").default}
+                      alt=''
+                      onClick={() => {
+                        handleClick(pic);
+                      }}
                     />
                   </div>
                 ))}
@@ -118,9 +137,12 @@ const Gallery = () => {
           </section>
         )}
       </div>
+      {clickedImg && (
+        <Modal clickedImg={clickedImg} setClickedImg={setClickedImg} />
+      )}
       <Footer />
     </>
   );
 };
 
-export default Gallery;
+export default News;
