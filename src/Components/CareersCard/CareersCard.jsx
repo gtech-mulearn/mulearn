@@ -3,7 +3,7 @@ import styles from "./CareersCard.module.css";
 
 const CareersCard = ({
   title,
-  duration,
+  about,
   payment,
   vacancy,
   location,
@@ -24,16 +24,15 @@ const CareersCard = ({
       <div className={styles.op_texts}>
         <p className={styles.op_header}>{title}</p>
         <div className={styles.card_contents}>
+          <p className={styles.op_text}>{about}</p>
+          {payment && (
+            <p className={styles.op_text}>
+              <span>Remuneration: </span>
+              {payment}
+            </p>
+          )}
           <p className={styles.op_text}>
-            <span>Tenure: </span>
-            {duration}
-          </p>
-          <p className={styles.op_text}>
-            <span>Remuneration: </span>
-            {payment}
-          </p>
-          <p className={styles.op_text}>
-            <span>Criteria: </span>
+            <span>Responsiblities: </span>
             {criteria}
           </p>
           <p className={styles.op_text}>

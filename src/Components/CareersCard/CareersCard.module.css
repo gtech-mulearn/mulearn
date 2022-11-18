@@ -12,7 +12,7 @@
   font-family: "Inter", sans-serif;
   justify-content: center;
   align-items: center;
-  border: 2px solid #ee8784;
+  border: 2px solid #5d81f7;
 
   box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
   -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
@@ -33,7 +33,7 @@
   font-family: "Noto Sans", sans-serif;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #F9514C;
+  color: #3362FF;
 }
 
 .op_text {
@@ -56,7 +56,7 @@
 
 .op_jobdescription {
   margin: 0.25rem 0;
-  background-color: #F9514C;
+  background-color: #3362FF;
   color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 5px;
@@ -65,8 +65,8 @@
 
 .op_applynow {
   margin: 0.25rem 0rem;
-  color: #F9514C;
-  border: 1.5px solid #F9514C;
+  color: #3362FF;
+  border: 1.5px solid #3362FF;
   padding: 0.4rem 1.5rem;
   border-radius: 5px;
 }
