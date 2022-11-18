@@ -22,7 +22,7 @@ const Navbar = () => {
         <ul className="lg:flex hidden uppercase items-center gap-8 font-[Poppins]">
           <NavLinks Open={open} />
 
-          <Link to="/careers" className="text-black py-7 px-3 inline-block">
+          <Link to="/careers" className="text-black py-7 px-3 inline-block hover:text-orange-500">
             Careers
           </Link>
         </ul>
@@ -33,7 +33,7 @@ const Navbar = () => {
             rel="noopener noreferrer"
             className="py-7 px-3 inline-block"
           >
-            <button className="bg-orange-400 text-white  px-6 py-2 rounded-md">
+            <button className="bg-orange-400 text-white  px-6 py-2 rounded-md animate-bounce">
               Join Discord
             </button>
           </a>
@@ -47,7 +47,7 @@ const Navbar = () => {
         >
           <NavLinks />
           <li>
-            <Link to="/careers" className="py-7 px-7 inline-block uppercase">
+            <Link to="/careers" className="py-7 px-7 inline-block uppercase hover:text-orange-500">
               Career
             </Link>
           </li>

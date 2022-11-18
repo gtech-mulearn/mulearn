@@ -85,7 +85,7 @@ const NavLinks = ({ closeButton }) => {
                     {
                         visible && (
                             <div className={`
-                            lg:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24 
+                            lg:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24 border-t 
                             `}>
                                 <div className="flex justify-between items-center p-5 border-y">
                                     <span className="text-xl flex items-center" onClick={() => {
@@ -103,7 +103,7 @@ const NavLinks = ({ closeButton }) => {
                                     {
                                         currentLink.submenu && (
                                             currentLink.sublinks.map((link) => (
-                                                <div className={`px-7 py-5 text-left flex justify-between items-center`}>
+                                                <div className="px-7 py-5 text-left flex justify-between items-center">
                                                     <h1>{link.name}</h1>
 
                                                     {link.submenu && (<span className=" flex items-center" onClick={() => {
