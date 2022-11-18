@@ -49,8 +49,8 @@ const Career = () => {
               vacancy="1"
               location="Kochi, Kerala, India"
               lastdate="24th November"
-              jdlink="#"
-              applylink="#"
+              jdlink="https://drive.google.com/file/d/1qyMnTbRK11ryyFoZfVzLNZQ3pDJrf7Ii/view?usp=sharing"
+              applylink="https://airtable.com/shrDuyaALoq29Wkdh"
             />
             <CareersCard
               title="Content Writer Intern"
@@ -60,8 +60,8 @@ const Career = () => {
               vacancy="1"
               location="Kochi, Kerala, India"
               lastdate="24th November"
-              jdlink="#"
-              applylink="#"
+              jdlink="https://drive.google.com/file/d/1w48QCkxLd7AhCePtceWjBzV2g1uEFyUe/view?usp=sharing"
+              applylink="https://airtable.com/shrDuyaALoq29Wkdh"
             />
             <CareersCard
               title="MEAN Stack Developer Intern"
@@ -69,11 +69,11 @@ const Career = () => {
               is an excellent opportunity to learn and be involved in developing a cung-edge no-code plaorm.
               The internship will last for three months, with the possibility of being hired aer the internship."
               criteria="Click View More"
-              vacancy="1"
+              vacancy="2"
               location="Kochi, Kerala, India"
               lastdate="24th November"
-              jdlink="#"
-              applylink="#"
+              jdlink="https://drive.google.com/file/d/1Oh0lhi36JheqMUn33IXCbd0msN4APxMQ/view?usp=sharing"
+              applylink="https://airtable.com/shrDuyaALoq29Wkdh"
             />
           </div>
         </div>
