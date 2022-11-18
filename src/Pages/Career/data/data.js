@@ -17,11 +17,29 @@ const ClosedCarrersData = [
   //     "https://drive.google.com/file/d/1uKk3zmfhP_cndtZ3lNUXTPJlWjriWpke/view?usp=sharing",
   // },
   {
+    id: 1,
+    date: "11/18/2022",
+    Title: "µLearn X Yip Hiring Call",
+    Company: "µLearn",
+    Duration: "1 Year",
+    Qualifications: ["Click View More"],
+    Roles: [
+      "Program Manager",
+      "Operations Coordinator",
+      "Zonal Coordinator",
+      "District Coordinator",
+      "Creative Coordinator",
+    ],
+    poster:
+      "https://mulearn.notion.site/Roles-Responsibilities-2c4bec241ba742c1a4508f3a94531c2e",
+  },
+  {
     id: 2,
     date: "08/13/2022",
     Title: "Hiring Call GTech",
     Company: "GTech",
     Duration: "6 Months to 1 year",
+    Package: "INR 15K - 80K",
     Qualifications: ["Graduation / Post Graduate in Management"],
     Roles: [
       "Research and Report Creation",
