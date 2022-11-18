@@ -33,7 +33,7 @@ const Navbar = () => {
             rel="noopener noreferrer"
             className="py-7 px-3 inline-block"
           >
-            <button className="bg-orange-400 text-white  px-6 py-2 rounded-md animate-bounce">
+            <button className="bg-orange-400 text-white  px-6 py-2 rounded-md">
               Join Discord
             </button>
           </a>

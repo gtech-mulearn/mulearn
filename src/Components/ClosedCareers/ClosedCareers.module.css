@@ -8,7 +8,7 @@
   width: 100%;
   max-width: 400px;
   font-family: "Inter", sans-serif;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
   -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);

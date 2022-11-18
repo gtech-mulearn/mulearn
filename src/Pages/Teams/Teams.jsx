@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import Footer from "../../Components/Footer/Footer";
@@ -65,7 +64,7 @@ const Teams = () => {
         </select>
       </div>
 
-      {(teamName === "all" || teamName == "execom") && (
+      {(teamName === "all" || teamName === "execom") && (
         <section id={styles.execom} className={styles.team_group}>
           <p className={styles.team_title}>Executive Committee</p>
           <p className={styles.team_desc}>
@@ -87,7 +86,7 @@ const Teams = () => {
         </section>
       )}
 
-      {(teamName === "all" || teamName == "yip") && (
+      {(teamName === "all" || teamName === "yip") && (
         <section className={styles.team_group}>
           <p className={styles.team_title}>YIP Organization Team</p>
           <p className={styles.team_desc}>
@@ -109,7 +108,7 @@ const Teams = () => {
         </section>
       )}
 
-      {(teamName === "all" || teamName == "community") && (
+      {(teamName === "all" || teamName === "community") && (
         <section className={styles.team_group}>
           <p className={styles.team_title}>Community Team</p>
           <p className={styles.team_desc}>
@@ -168,7 +167,7 @@ const Teams = () => {
         </section>
       )}
 
-      {(teamName === "all" || teamName == "tech") && (
+      {(teamName === "all" || teamName === "tech") && (
         <section className={styles.team_group}>
           <p className={styles.team_title}>Tech Team</p>
           <p className={styles.team_desc}>

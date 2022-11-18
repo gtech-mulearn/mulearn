@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { links } from "./Links";
+import { links } from "./Mylinks";
 
 import './Navbar.css';  /* Added CSS*/
 
