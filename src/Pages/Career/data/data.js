@@ -1,6 +1,6 @@
 const ClosedCarrersData = [
   // {
-  //   id: 1,
+  //   id: 0,
   //   date: "09/17/2022",
   //   Title: "Citizen Digital Foundation",
   //   Company: "Citizen Digital Foundation",
@@ -22,24 +22,72 @@ const ClosedCarrersData = [
     Title: "µLearn X Yip Hiring Call",
     Company: "µLearn",
     Duration: "1 Year",
+    Package: "INR 15K - 80K",
     Qualifications: ["Click View More"],
-    Roles: [
-      "Program Manager",
-      "Operations Coordinator",
-      "Zonal Coordinator",
-      "District Coordinator",
-      "Creative Coordinator",
-    ],
+    Roles: ["Program Manager"],
+    location: "Trivandrum",
     poster:
       "https://mulearn.notion.site/Roles-Responsibilities-2c4bec241ba742c1a4508f3a94531c2e",
   },
   {
     id: 2,
+    date: "11/18/2022",
+    Title: "µLearn X Yip Hiring Call",
+    Company: "µLearn",
+    Duration: "1 Year",
+    Package: "INR 15K - 80K",
+    Qualifications: ["Click View More"],
+    Roles: ["Operations Coordinator"],
+    location: "Trivandrum",
+    poster:
+      "https://mulearn.notion.site/Roles-Responsibilities-2c4bec241ba742c1a4508f3a94531c2e",
+  },
+  {
+    id: 3,
+    date: "11/18/2022",
+    Title: "µLearn X Yip Hiring Call",
+    Company: "µLearn",
+    Duration: "1 Year",
+    Package: "INR 15K - 80K",
+    Qualifications: ["Click View More"],
+    Roles: ["Zonal Coordinator"],
+    location: "Across Kerala",
+    poster:
+      "https://mulearn.notion.site/Roles-Responsibilities-2c4bec241ba742c1a4508f3a94531c2e",
+  },
+  {
+    id: 4,
+    date: "11/18/2022",
+    Title: "µLearn X Yip Hiring Call",
+    Company: "µLearn",
+    Duration: "1 Year",
+    Package: "INR 15K - 80K",
+    Qualifications: ["Click View More"],
+    Roles: ["District Coordinator"],
+    location: "Across Kerala",
+    poster:
+      "https://mulearn.notion.site/Roles-Responsibilities-2c4bec241ba742c1a4508f3a94531c2e",
+  },
+  {
+    id: 5,
+    date: "11/18/2022",
+    Title: "µLearn X Yip Hiring Call",
+    Company: "µLearn",
+    Duration: "1 Year",
+    Package: "INR 15K - 80K",
+    Qualifications: ["Click View More"],
+    location: "Trivandrum",
+    Roles: ["Creative Coordinator"],
+    poster:
+      "https://mulearn.notion.site/Roles-Responsibilities-2c4bec241ba742c1a4508f3a94531c2e",
+  },
+  {
+    id: 6,
     date: "08/13/2022",
     Title: "Hiring Call GTech",
     Company: "GTech",
     Duration: "6 Months to 1 year",
-    Package: "INR 15K - 80K",
+
     Qualifications: ["Graduation / Post Graduate in Management"],
     Roles: [
       "Research and Report Creation",
@@ -50,7 +98,7 @@ const ClosedCarrersData = [
       "https://media.discordapp.net/attachments/771679365124718612/1007975429317070878/GTech_intern_call.jpeg?width=357&height=635",
   },
   {
-    id: 3,
+    id: 7,
     date: "07/13/2022",
     Title: "SunTec Hiring Call",
     Company: "SunTec",
@@ -71,7 +119,7 @@ const ClosedCarrersData = [
       "https://media.discordapp.net/attachments/771679365124718612/996661239675621436/Hiring_-_Sun_Tech.png?width=357&height=634",
   },
   // {
-  //   id: 4,
+  //   id: 8,
   //   date: "07/11/2022",
   //   Title: "Cirrus Labs Hiring Call",
   //   Qualifications: null,
@@ -81,7 +129,7 @@ const ClosedCarrersData = [
   //     "https://media.discordapp.net/attachments/771679365124718612/996042039588294757/Hiring-_Cirrus_Labs_2.png?width=357&height=635",
   // },
   {
-    id: 5,
+    id: 9,
     date: "06/12/2022",
     Title: "Softnotions Intern Call",
     Company: "Softnotions",
@@ -92,7 +140,7 @@ const ClosedCarrersData = [
       "https://media.discordapp.net/attachments/771679365124718612/985548840021147698/Hiring_-_Softnotions.png?width=357&height=635",
   },
   {
-    id: 6,
+    id: 10,
     date: "04/21/2022",
     Title: "Alokin Cocoon 2.0",
     Company: "Alokin",
@@ -116,7 +164,7 @@ const ClosedCarrersData = [
       "https://media.discordapp.net/attachments/771679365124718612/966592691037171712/Hiring_-_Alokin_Cocoon_2.0_1.png?width=357&height=634",
   },
   // {
-  //   id: 7,
+  //   id: 11,
   //   date: "04/19/2022",
   //   Title: "Cirrus Labs Hiring Call",
   //   Qualifications: null,
@@ -126,7 +174,7 @@ const ClosedCarrersData = [
   //     "https://media.discordapp.net/attachments/771679365124718612/964148486176124958/Hiring-_Cirrus_Labs-1.png?width=357&height=635",
   // },
   {
-    id: 8,
+    id: 12,
     date: "01/01/2022",
     Title: "GTech µLearn | Hiring Call",
     Company: "GTech µLearn",
@@ -141,7 +189,7 @@ const ClosedCarrersData = [
       "https://media.discordapp.net/attachments/771679365124718612/926832199330852864/We_Are_Hiring_Poster_Facebook_Post_6.png?width=720&height=604",
   },
   {
-    id: 9,
+    id: 13,
     date: "12/21/2021",
     Title: "GTech µLearn | Call for Interns",
     Company: "GTech µLearn",
@@ -152,7 +200,7 @@ const ClosedCarrersData = [
       "https://media.discordapp.net/attachments/771679365124718612/922891893254266910/bot-dev.jpeg?width=635&height=635",
   },
   {
-    id: 10,
+    id: 14,
     date: "12/11/2021",
     Title: "Team Ecesis - Claruz Digital",
     Company: "Ecesis",
@@ -164,7 +212,7 @@ const ClosedCarrersData = [
     poster: "",
   },
   // {
-  //   id: 11,
+  //   id: 15,
   //   date: "10/27/2021",
   //   Title: "GTech µLearn | Call for Interns",
   //   Company: "GTech µLearn",
@@ -173,7 +221,7 @@ const ClosedCarrersData = [
   //     "https://drive.google.com/file/d/1KjTawkuNqjr36gxnFv11rKNM6Ug0FE79/view?usp=sharing",
   // },
   {
-    id: 12,
+    id: 16,
     date: "09/09/2021",
     Title: "TATA ELXSI Hiring Call",
     Company: "Tata Elxsi",

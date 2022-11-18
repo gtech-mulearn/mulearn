@@ -91,6 +91,7 @@ const Career = () => {
                   date={data.date}
                   roles={data.Roles}
                   jdlink={data.poster}
+                  location={data.location}
                 />
               ))}
             </div>

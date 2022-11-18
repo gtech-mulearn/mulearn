@@ -1,6 +1,7 @@
 .opportunity {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   column-gap: 1rem;
   margin: 1rem auto 0;
   padding: 1.5rem;
@@ -8,7 +9,7 @@
   width: 100%;
   max-width: 400px;
   font-family: "Inter", sans-serif;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
   -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
@@ -30,6 +31,7 @@
   font-weight: 600;
   margin-bottom: 0.5rem;
   color: #404040;
+  text-align: center;
 }
 
 .op_text {
