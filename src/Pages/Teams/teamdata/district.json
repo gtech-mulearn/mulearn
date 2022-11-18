@@ -1,248 +1,248 @@
 [
-    {
-        "id": 0,
-        "name": "Abhijithh K P",
-        "designation": "Kasaragod District Head",
-        "image": "assets/team/district/Abhijithh K P.webp"
-    },
-    {
-        "id": 1,
-        "name": "Adil S",
-        "designation": "Idukki District Head",
-        "image": "assets/team/district/Adil S.webp"
-    },
-    {
-        "id": 2,
-        "name": "Abdul Sameeu",
-        "designation": "Ernakulam District Head",
-        "image": "assets/team/district/Abdul Sameeu.webp"
-    },
-    {
-        "id": 3,
-        "name": "Adith V Mohanan",
-        "designation": "Kozhikode District Head",
-        "image": "assets/team/district/Adith V Mohanan.webp"
-    },
-    {
-        "id": 4,
-        "name": "Adithya S Renu",
-        "designation": "District Head",
-        "image": "assets/team/district/Adithya S Renu.webp"
-    },
-    {
-        "id": 5,
-        "name": "Akhil K John",
-        "designation": "Pathanamthitta District Head",
-        "image": "assets/team/district/Akhil K John.webp"
-    },
-    {
-        "id": 6,
-        "name": "Akshay AN",
-        "designation": "Idukki District Head",
-        "image": "assets/team/district/Akshay AN.webp"
-    },
-    {
-        "id": 7,
-        "name": "Aldrin Andrew",
-        "designation": "Pathanamthitta District Head",
-        "image": "assets/team/district/Aldrin Andrew.webp"
-    },
-    {
-        "id": 8,
-        "name": "Ameena Nuwaira Thwahir Ameen",
-        "designation": "Wayanad District Head",
-        "image": "assets/team/district/Ameena Nuwaira Thwahir Ameen.webp"
-    },
-    {
-        "id": 9,
-        "name": "Amritha G S",
-        "designation": "Trivandrum District Head",
-        "image": "assets/team/district/Amritha G S.webp"
-    },
-    {
-        "id": 10,
-        "name": "Ananthakrishnan",
-        "designation": "District Head",
-        "image": "assets/team/district/Ananthakrishnan.webp"
-    },
-    {
-        "id": 11,
-        "name": "Anjana V",
-        "designation": "Kozhikode District Head",
-        "image": "assets/team/district/Anjana V.webp"
-    },
-    {
-        "id": 12,
-        "name": "Anupam A B",
-        "designation": "District Head",
-        "image": "assets/team/district/Anupam A B.webp"
-    },
-    {
-        "id": 13,
-        "name": "Aswin C Baiju",
-        "designation": "Wayanad District Head",
-        "image": "assets/team/district/Aswin C Baiju.webp"
-    },
-    {
-        "id": 14,
-        "name": "Athul Benny",
-        "designation": "Kannur District Head",
-        "image": "assets/team/district/Athul Benny.webp"
-    },
-    {
-        "id": 15,
-        "name": "Henna Jelwa U K",
-        "designation": "Malappuram District Head",
-        "image": "assets/team/district/Henna Jelwa U K.webp"
-    },
-    {
-        "id": 16,
-        "name": "Jaison Joshi",
-        "designation": "Palakkad District Head",
-        "image": "assets/team/district/Jaison Joshi.webp"
-    },
-    {
-        "id": 17,
-        "name": "Jayasankar J P",
-        "designation": "Pathanamthitta District Head",
-        "image": "assets/team/district/Jayasankar J P.webp"
-    },
-    {
-        "id": 18,
-        "name": "Jeevan Joseph",
-        "designation": "Kottayam District Head",
-        "image": "assets/team/district/Jeevan Joseph.webp"
-    },
-    {
-        "id": 19,
-        "name": "Jesin Vengilatt",
-        "designation": "Wayanad District Head",
-        "image": "assets/team/district/Jesin Vengilatt.webp"
-    },
-    {
-        "id": 20,
-        "name": "Majesty Raj",
-        "designation": "Kozhikode District Head",
-        "image": "assets/team/district/Majesty Raj.webp"
-    },
-    {
-        "id": 21,
-        "name": "Melvin",
-        "designation": "District Head",
-        "image": "assets/team/district/Melvin.webp"
-    },
-    {
-        "id": 22,
-        "name": "Merin Susan",
-        "designation": "Trivandrum District Head",
-        "image": "assets/team/district/Merin Susan.webp"
-    },
-    {
-        "id": 23,
-        "name": "Milan Deepak",
-        "designation": "Ernakulam District Head",
-        "image": "assets/team/district/Milan Deepak.webp"
-    },
-    {
-        "id": 24,
-        "name": "Muhammed Nabeel T K",
-        "designation": "Kasaragod District Head",
-        "image": "assets/team/district/Muhammed Nabeel T K.webp"
-    },
-    {
-        "id": 25,
-        "name": "Naaja F",
-        "designation": "Kollam District Head",
-        "image": "assets/team/district/Naaja F.webp"
-    },
-    {
-        "id": 26,
-        "name": "Navya K",
-        "designation": "Kannur District Head",
-        "image": "assets/team/district/Navya K.webp"
-    },
-    {
-        "id": 27,
-        "name": "Neeraj Menon",
-        "designation": "Palakkad District Head",
-        "image": "assets/team/district/Neeraj Menon.webp"
-    },
-    {
-        "id": 28,
-        "name": "Rajeev R",
-        "designation": "Palakkad District Head",
-        "image": "assets/team/district/Rajeev R.webp"
-    },
-    {
-        "id": 29,
-        "name": "Rishikesh V K",
-        "designation": "Kannur District Head",
-        "image": "assets/team/district/Rishikesh V K.webp"
-    },
-    {
-        "id": 30,
-        "name": "Saieedha Mol N K",
-        "designation": "Malappuram District Head",
-        "image": "assets/team/district/Saieedha Mol N K.webp"
-    },
-    {
-        "id": 31,
-        "name": "Sandra Krishnan",
-        "designation": "Kottayam District Head",
-        "image": "assets/team/district/Sandra Krishnan.webp"
-    },
-    {
-        "id": 32,
-        "name": "Sandra",
-        "designation": "Kottayam District Head",
-        "image": "assets/team/district/Sandra.webp"
-    },
-    {
-        "id": 33,
-        "name": "Silsa Shaji",
-        "designation": "Ernakulam District Head",
-        "image": "assets/team/district/Silsa Shaji.webp"
-    },
-    {
-        "id": 34,
-        "name": "Sneha PV",
-        "designation": "Kollam District Head",
-        "image": "assets/team/district/Sneha PV.webp"
-    },
-    {
-        "id": 35,
-        "name": "Sooraj P",
-        "designation": "Kasaragod District Head",
-        "image": "assets/team/district/Sooraj P.webp"
-    },
-    {
-        "id": 36,
-        "name": "Steena Xavier",
-        "designation": "Thrissur District Head",
-        "image": "assets/team/district/Steena Xavier.webp"
-    },
-    {
-        "id": 37,
-        "name": "Swathi R",
-        "designation": "District Head",
-        "image": "assets/team/district/Swathi R.webp"
-    },
-    {
-        "id": 38,
-        "name": "Terrance Johnson",
-        "designation": "Thrissur District Head",
-        "image": "assets/team/district/Terrance Johnson.webp"
-    },
-    {
-        "id": 39,
-        "name": "Vishnu Prathap",
-        "designation": "Idukki District Head",
-        "image": "assets/team/district/Vishnu Prathap.webp"
-    },
-    {
-        "id": 40,
-        "name": "Gowrishankar V. V",
-        "designation": "Alappuzha District Head",
-        "image": "assets/team/district/Gowrishankar V. V.webp"
-    }
+  {
+    "id": 0,
+    "name": "Abhijithh K P",
+    "designation": "Kasaragod District Head",
+    "image": "assets/team/district/Abhijithh K P.webp"
+  },
+  {
+    "id": 1,
+    "name": "Adil S",
+    "designation": "Idukki District Head",
+    "image": "assets/team/district/Adil S.webp"
+  },
+  {
+    "id": 2,
+    "name": "Abdul Sameeu",
+    "designation": "Ernakulam District Head",
+    "image": "assets/team/district/Abdul Sameeu.webp"
+  },
+  {
+    "id": 3,
+    "name": "Adith V Mohanan",
+    "designation": "Kozhikode District Head",
+    "image": "assets/team/district/Adith V Mohanan.webp"
+  },
+  {
+    "id": 4,
+    "name": "Adithya S Renu",
+    "designation": "District Head",
+    "image": "assets/team/district/Adithya S Renu.webp"
+  },
+  {
+    "id": 5,
+    "name": "Akhil K John",
+    "designation": "Pathanamthitta District Head",
+    "image": "assets/team/district/Akhil K John.webp"
+  },
+  {
+    "id": 6,
+    "name": "Akshay AN",
+    "designation": "Idukki District Head",
+    "image": "assets/team/district/Akshay AN.webp"
+  },
+  {
+    "id": 7,
+    "name": "Aldrin Andrew",
+    "designation": "Pathanamthitta District Head",
+    "image": "assets/team/district/Aldrin Andrew.webp"
+  },
+  {
+    "id": 8,
+    "name": "Ameena Nuwaira Thwahir Ameen",
+    "designation": "Wayanad District Head",
+    "image": "assets/team/district/Ameena Nuwaira Thwahir Ameen.webp"
+  },
+  {
+    "id": 9,
+    "name": "Amritha G S",
+    "designation": "Trivandrum District Head",
+    "image": "assets/team/district/Amritha G S.webp"
+  },
+  {
+    "id": 10,
+    "name": "Ananthakrishnan",
+    "designation": "District Head",
+    "image": "assets/team/district/Ananthakrishnan.webp"
+  },
+  {
+    "id": 11,
+    "name": "Anjana V",
+    "designation": "Kozhikode District Head",
+    "image": "assets/team/district/Anjana V.webp"
+  },
+  {
+    "id": 12,
+    "name": "Anupam A B",
+    "designation": "District Head",
+    "image": "assets/team/district/Anupam A B.webp"
+  },
+  {
+    "id": 13,
+    "name": "Aswin C Baiju",
+    "designation": "Wayanad District Head",
+    "image": "assets/team/district/Aswin C Baiju.webp"
+  },
+  {
+    "id": 14,
+    "name": "Athul Benny",
+    "designation": "Kannur District Head",
+    "image": "assets/team/district/Athul Benny.webp"
+  },
+  {
+    "id": 15,
+    "name": "Henna Jelwa U K",
+    "designation": "Malappuram District Head",
+    "image": "assets/team/district/Henna Jelwa U K.webp"
+  },
+  {
+    "id": 16,
+    "name": "Jaison Joshi",
+    "designation": "Palakkad District Head",
+    "image": "assets/team/district/Jaison Joshi.webp"
+  },
+  {
+    "id": 17,
+    "name": "Jayasankar J P",
+    "designation": "Pathanamthitta District Head",
+    "image": "assets/team/district/Jayasankar J P.webp"
+  },
+  {
+    "id": 18,
+    "name": "Jeevan Joseph",
+    "designation": "Kottayam District Head",
+    "image": "assets/team/district/Jeevan Joseph.webp"
+  },
+  {
+    "id": 19,
+    "name": "Jesin Vengilatt",
+    "designation": "Wayanad District Head",
+    "image": "assets/team/district/Jesin Vengilatt.webp"
+  },
+  {
+    "id": 20,
+    "name": "Majesty Raj",
+    "designation": "Kozhikode District Head",
+    "image": "assets/team/district/Majesty Raj.webp"
+  },
+  {
+    "id": 21,
+    "name": "Melvin",
+    "designation": "District Head",
+    "image": "assets/team/district/Melvin.webp"
+  },
+  {
+    "id": 22,
+    "name": "Merin Susan",
+    "designation": "Trivandrum District Head",
+    "image": "assets/team/district/Merin Susan.webp"
+  },
+  {
+    "id": 23,
+    "name": "Milan Deepak",
+    "designation": "Ernakulam District Head",
+    "image": "assets/team/district/Milan Deepak.webp"
+  },
+  {
+    "id": 24,
+    "name": "Muhammed Nabeel T K",
+    "designation": "Kasaragod District Head",
+    "image": "assets/team/district/Muhammed Nabeel T K.webp"
+  },
+  {
+    "id": 25,
+    "name": "Naaja F",
+    "designation": "Kollam District Head",
+    "image": "assets/team/district/Naaja F.webp"
+  },
+  {
+    "id": 26,
+    "name": "Navya K",
+    "designation": "Kannur District Head",
+    "image": "assets/team/district/Navya K.webp"
+  },
+  {
+    "id": 27,
+    "name": "Neeraj Menon",
+    "designation": "Palakkad District Head",
+    "image": "assets/team/district/Neeraj Menon.webp"
+  },
+  {
+    "id": 28,
+    "name": "Rajeev R",
+    "designation": "Palakkad District Head",
+    "image": "assets/team/district/Rajeev R.webp"
+  },
+  {
+    "id": 29,
+    "name": "Rishikesh V K",
+    "designation": "Kannur District Head",
+    "image": "assets/team/district/Rishikesh V K.webp"
+  },
+  {
+    "id": 30,
+    "name": "Saieedha Mol N K",
+    "designation": "Malappuram District Head",
+    "image": "assets/team/district/Saieedha Mol N K.webp"
+  },
+  {
+    "id": 31,
+    "name": "Sandra Krishnan",
+    "designation": "Kottayam District Head",
+    "image": "assets/team/district/Sandra Krishnan.webp"
+  },
+  {
+    "id": 32,
+    "name": "Sandra",
+    "designation": "Kottayam District Head",
+    "image": "assets/team/district/Sandra.webp"
+  },
+  {
+    "id": 33,
+    "name": "Silsa Shaji",
+    "designation": "Ernakulam District Head",
+    "image": "assets/team/district/Silsa Shaji.webp"
+  },
+  {
+    "id": 34,
+    "name": "Sneha PV",
+    "designation": "Kollam District Head",
+    "image": "assets/team/district/Sneha PV.webp"
+  },
+  {
+    "id": 35,
+    "name": "Sooraj P",
+    "designation": "Kasaragod District Head",
+    "image": "assets/team/district/Sooraj P.webp"
+  },
+  {
+    "id": 36,
+    "name": "Steena Xavier",
+    "designation": "Thrissur District Head",
+    "image": "assets/team/district/Steena Xavier.webp"
+  },
+  {
+    "id": 37,
+    "name": "Swathi R",
+    "designation": "District Head",
+    "image": "assets/team/district/Swathi R.webp"
+  },
+  {
+    "id": 38,
+    "name": "Terrance Johnson",
+    "designation": "Thrissur District Head",
+    "image": "assets/team/district/Terrance Johnson.webp"
+  },
+  {
+    "id": 39,
+    "name": "Vishnu Prathap",
+    "designation": "Idukki District Head",
+    "image": "assets/team/district/Vishnu Prathap.webp"
+  },
+  {
+    "id": 40,
+    "name": "Gowrishankar V. V",
+    "designation": "Alappuzha District Head",
+    "image": "assets/team/district/Gowrishankar V. V.webp"
+  }
 ]
