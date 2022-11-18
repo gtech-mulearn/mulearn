@@ -18,8 +18,8 @@ import Yip from "./Pages/YIP/Yip";
 import CampusChapters from "./Pages/CampusChapters/CampusChapters";
 import BlogPage from "./Pages/CampusChapters/AmrithaBlogPage/BlogPage";
 import JBlogPage from "./Pages/CampusChapters/JessnoBlogPage/JBlogPage";
-import Welcome from "./Pages/CampusChapters/Register/Welcome/Welcome";
-import FindCampus from "./Pages/CampusChapters/Register/FindCampus/FindCampus";
+// import Welcome from "./Pages/CampusChapters/Register/Welcome/Welcome";
+// import FindCampus from "./Pages/CampusChapters/Register/FindCampus/FindCampus";
 import SandraBlogPage from "./Pages/CampusChapters/SandraBlogPage/SandraBlogPage";
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/careers" element={<Career />} />
- 
+
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/news" element={<News />} />
