@@ -21,6 +21,7 @@ import JBlogPage from "./Pages/CampusChapters/JessnoBlogPage/JBlogPage";
 // import Welcome from "./Pages/CampusChapters/Register/Welcome/Welcome";
 // import FindCampus from "./Pages/CampusChapters/Register/FindCampus/FindCampus";
 import SandraBlogPage from "./Pages/CampusChapters/SandraBlogPage/SandraBlogPage";
+import BlogTemplate from "./Pages/CampusChapters/BlogTemplate/BlogTemplate";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/careers" element={<Career />} />
+          <Route path="/blog" element={<BlogTemplate />} />
 
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/gallery" element={<Gallery />} />
