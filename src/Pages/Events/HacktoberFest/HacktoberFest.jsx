@@ -21,7 +21,6 @@ const HacktoberFest = () => {
                 Hacktoberfest has played an integral role in building the
                 open-source community over the years.
               </p>
-              
             </div>
             <img
               alt="Illustration"
@@ -86,7 +85,7 @@ const HacktoberFest = () => {
         <div className={styles.orange_bg}>
           <div className={styles.second_view_container}>
             <div className={styles.second_view}>
-              <div className={styles.sv_texts}>
+              {/* <div className={styles.sv_texts}>
                 <p style={{ color: "white" }} className={styles.svheader}>
                   About Project Awesome!
                 </p>
@@ -97,7 +96,7 @@ const HacktoberFest = () => {
                   you have to do is build a website for a store or buiness
                   online.
                 </p>
-              </div>
+              </div> */}
               <div className={styles.sv_points}>
                 <div className={styles.sv_point}>
                   <img
@@ -186,7 +185,6 @@ const HacktoberFest = () => {
                     Join us for “Expert Advice”, a series of sessions to help
                     you ace your Hacktoberfest journey.
                   </p>
-                  
                 </div>
               </div>
               <div className={styles.event}>
