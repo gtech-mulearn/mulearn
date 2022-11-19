@@ -215,7 +215,7 @@ const CampusChapters = () => {
           </div>
         </div>
 
-        <div className={styles.generator_view_container}>
+        <div className={styles.generator_view_container} id="logo-generator">
           <div className={styles.generator_view}>
             <div className={styles.gv_texts}>
               <p className={styles.gv_heading}>The Campus Logo Generator</p>
@@ -249,7 +249,7 @@ const CampusChapters = () => {
           </div>
         </div>
 
-        <div className={styles.third_view_container}>
+        <div className={styles.third_view_container} id="success-stories">
           <div className={styles.third_view}>
             <div className={styles.tv_texts}>
               <p className={styles.tv_heading}>

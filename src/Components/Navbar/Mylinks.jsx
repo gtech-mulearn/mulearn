@@ -78,6 +78,20 @@ export const links = [
             link: "/campuschapters",
             foreign: false,
           },
+          {
+            name: "Campus Logo Generator",
+            submenu: false,
+            sublinks: [],
+            link: "/campuschapters/#logo-generator",
+            foreign: false,
+          },
+          {
+            name: "Success Stories",
+            submenu: false,
+            sublinks: [],
+            link: "/campuschapters/#success-stories",
+            foreign: false,
+          },
         ],
       },
     ],
@@ -205,7 +219,7 @@ export const links = [
         submenu: true,
         sublinks: [
           {
-            name: "Home",
+            name: "Home Page",
             link: "https://learn.mulearn.org/",
             submenu: false,
             sublinks: [],
