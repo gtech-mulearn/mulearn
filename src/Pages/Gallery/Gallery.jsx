@@ -25,8 +25,8 @@ const Gallery = () => {
 
     let allPics = [];
 
-    EventPics.map((item) => {
-      item.pics.map((pic) => {
+    EventPics.forEach((item) => {
+      item.pics.forEach((pic) => {
         allPics.push(pic);
       });
     });
