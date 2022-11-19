@@ -35,8 +35,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-bottom: 1rem;
 }
 .header {
   font-family: "Noto Sans", sans-serif;
