@@ -42,8 +42,8 @@ const Career = () => {
           <div className={styles.opportunities}>
             <CareersCard
               title="Sales and Marketing Intern"
-              about="We are looking for a digital markeng intern who is passionate about making a difference. This is a great
-              opportunity for someone who is passionate about markeng and wants to learn more about the
+              about="We are looking for a digital marketing intern who is passionate about making a difference. This is a great
+              opportunity for someone who is passionate about marketing and wants to learn more about the
               industry."
               criteria="Click View More"
               vacancy="1"
@@ -65,9 +65,9 @@ const Career = () => {
             />
             <CareersCard
               title="MEAN Stack Developer Intern"
-              about="We are looking for a MEAN Stack Full Stack Intern to join our Core Plaorm Development team. This
-              is an excellent opportunity to learn and be involved in developing a cung-edge no-code plaorm.
-              The internship will last for three months, with the possibility of being hired aer the internship."
+              about="We are looking for a MEAN Stack Intern to join our core platform development team. This
+              is an excellent opportunity to learn and be involved in developing a cung-edge no-code platform.
+              The internship will last for three months, with the possibility of being hired after the internship."
               criteria="Click View More"
               vacancy="2"
               location="Kochi, Kerala, India"
