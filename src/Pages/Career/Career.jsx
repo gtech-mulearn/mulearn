@@ -47,8 +47,9 @@ const Career = () => {
               industry."
               criteria="Click View More"
               vacancy="1"
+              payment="INR 5K-10K"
               location="Kochi, Kerala, India"
-              lastdate="24th November"
+              lastdate="25th November"
               jdlink="https://drive.google.com/file/d/1qyMnTbRK11ryyFoZfVzLNZQ3pDJrf7Ii/view?usp=sharing"
               applylink="https://airtable.com/shrDuyaALoq29Wkdh"
             />
@@ -58,8 +59,9 @@ const Career = () => {
               a global brand. You will create excellent content that will wow our prospects and educate our clients."
               criteria="Click View More"
               vacancy="1"
+              payment="INR 5K-10K"
               location="Kochi, Kerala, India"
-              lastdate="24th November"
+              lastdate="25th November"
               jdlink="https://drive.google.com/file/d/1w48QCkxLd7AhCePtceWjBzV2g1uEFyUe/view?usp=sharing"
               applylink="https://airtable.com/shrDuyaALoq29Wkdh"
             />
@@ -70,8 +72,9 @@ const Career = () => {
               The internship will last for three months, with the possibility of being hired after the internship."
               criteria="Click View More"
               vacancy="2"
+              payment="INR 5K-10K"
               location="Kochi, Kerala, India"
-              lastdate="24th November"
+              lastdate="25th November"
               jdlink="https://drive.google.com/file/d/1Oh0lhi36JheqMUn33IXCbd0msN4APxMQ/view?usp=sharing"
               applylink="https://airtable.com/shrDuyaALoq29Wkdh"
             />
