@@ -42,8 +42,12 @@
   -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
   -moz-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
   padding: 20px 30px;
-  border: 1px solid #404040;
+  border: 1px solid #5e5e5e;
   border-radius: 10px;
+}
+
+a{
+  cursor: pointer;
 }
 
 .notification_header {
