@@ -1,3 +1,4 @@
+const mainlink = "https://learn.mulearn.org";
 export const links = [
   {
     head: -1,
@@ -220,49 +221,49 @@ export const links = [
         sublinks: [
           {
             name: "Home Page",
-            link: "https://learn.mulearn.org/",
+            link: mainlink + "/",
             submenu: false,
             sublinks: [],
             foreign: false,
           },
           {
             name: "Web Development",
-            link: "https://learn.mulearn.org/web",
+            link: mainlink + "/web",
             submenu: false,
             sublinks: [],
             foreign: false,
           },
           {
             name: "Android Development",
-            link: "https://learn.mulearn.org/android",
+            link: mainlink + "/android",
             submenu: false,
             sublinks: [],
             foreign: false,
           },
           {
             name: "UI / UX",
-            link: "https://learn.mulearn.org/uiux",
+            link: mainlink + "/uiux",
             submenu: false,
             sublinks: [],
             foreign: false,
           },
           {
             name: "Product Management",
-            link: "https://learn.mulearn.org/pm",
+            link: mainlink + "/pm",
             submenu: false,
             sublinks: [],
             foreign: false,
           },
           {
             name: "IoT",
-            link: "https://learn.mulearn.org/iot",
+            link: mainlink + "/iot",
             submenu: false,
             sublinks: [],
             foreign: false,
           },
           {
             name: "Cyber Security",
-            link: "https://learn.mulearn.org/cybersec",
+            link: mainlink + "/cybersec",
             submenu: false,
             sublinks: [],
             foreign: false,
@@ -276,14 +277,14 @@ export const links = [
         sublinks: [
           {
             name: "Mentor Directory",
-            link: "https://learn.mulearn.org/mentors",
+            link: mainlink + "/mentors",
             submenu: false,
             sublinks: [],
             foreign: false,
           },
           {
             name: "Existing Circles",
-            link: "https://learn.mulearn.org/searchcircles",
+            link: mainlink + "/searchcircles",
             submenu: false,
             sublinks: [],
             foreign: false,
@@ -297,28 +298,28 @@ export const links = [
         sublinks: [
           {
             name: "Problem Shelf",
-            link: "https://learn.mulearn.org/problemshelves",
+            link: mainlink + "/problemshelves",
             submenu: false,
             sublinks: [],
             foreign: false,
           },
           {
             name: "Challenges",
-            link: "https://learn.mulearn.org/challenges",
+            link: mainlink + "/challenges",
             submenu: false,
             sublinks: [],
             foreign: false,
           },
           {
             name: "Courses",
-            link: "https://learn.mulearn.org/courses",
+            link: mainlink + "/courses",
             submenu: false,
             sublinks: [],
             foreign: false,
           },
           {
             name: "APISetu",
-            link: "https://learn.mulearn.org/apisetu",
+            link: mainlink + "/apisetu",
             submenu: false,
             sublinks: [],
             foreign: false,
