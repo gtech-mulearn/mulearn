@@ -36,6 +36,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+.third_view_container .sv_texts {
+  width: 100%;
+}
+
 @media only screen and (min-width: 1000px) {
   .first_view_container {
     padding: 0 3rem;
@@ -150,7 +154,7 @@
 
 @media only screen and (min-width: 1300px) {
   .second_view_container {
-    padding: 0rem;
+    padding: 0 0 2rem;
   }
 
   .partners_view {
@@ -166,10 +170,6 @@
   background-color: #ffffff;
 }
 
-.third_view_container {
-  margin-top: 2rem;
-}
-
 .contributors_cards {
   display: grid;
   row-gap: 1rem;
@@ -181,10 +181,6 @@
     padding: 2rem;
     max-width: 1300px;
     margin: auto;
-  }
-
-  .third_view {
-    margin-top: 5rem;
   }
 
   .contributors_cards {
