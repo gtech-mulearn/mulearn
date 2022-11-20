@@ -31,8 +31,8 @@ const News = () => {
 
     let allPics = [];
 
-    NewsData.map((item) => {
-      item.pics.map((pic) => {
+    NewsData.forEach((item) => {
+      item.pics.forEach((pic) => {
         allPics.push(pic);
       });
     });
@@ -50,15 +50,6 @@ const News = () => {
               <p className="fv_heading">
                 Welcome to <span>µLearn </span> News Gallery
               </p>
-              <p className="fv_tagline">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestiae recusandae excepturi cum, accusamus minus esse nihil
-                nostrum perspiciatis cumque mollitia sit obcaecati tenetur
-                architecto qui voluptatibus reprehenderit veniam molestias
-                explicabo? Quos eum possimus velit vel blanditiis vitae
-                corporis, quasi illum asperiores dolorem consequatur facere
-                praesentium nisi dolorum quisquam! Accusantium,
-              </p>
             </div>
             <div className="fv_images">
               <img src={fvimg} alt="" className="fv_img" />
@@ -71,7 +62,7 @@ const News = () => {
           <div className="second_view">
             <div className="sv_texts">
               <p className="sv_heading">
-                <span>µLearn</span> Community Event Gallery.
+                <span>µLearn</span> News Gallery
               </p>
               <p className="sv_tagline">
                 Beautiful memories often need to be documented, so that you

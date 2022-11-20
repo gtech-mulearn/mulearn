@@ -21,7 +21,6 @@ const HacktoberFest = () => {
                 Hacktoberfest has played an integral role in building the
                 open-source community over the years.
               </p>
-              
             </div>
             <img
               alt="Illustration"
@@ -83,7 +82,7 @@ const HacktoberFest = () => {
             </div>
           </div>
         </div>
-        <div className={styles.orange_bg}>
+        {/* <div className={styles.orange_bg}>
           <div className={styles.second_view_container}>
             <div className={styles.second_view}>
               <div className={styles.sv_texts}>
@@ -159,7 +158,7 @@ const HacktoberFest = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className={styles.events_view_container}>
           <div className={styles.events_view}>
@@ -186,7 +185,6 @@ const HacktoberFest = () => {
                     Join us for “Expert Advice”, a series of sessions to help
                     you ace your Hacktoberfest journey.
                   </p>
-                  
                 </div>
               </div>
               <div className={styles.event}>

@@ -22,7 +22,10 @@ const Navbar = () => {
         <ul className="lg:flex hidden uppercase items-center gap-8 font-[Poppins]">
           <NavLinks Open={open} />
 
-          <Link to="/careers" className="text-black py-7 px-3 inline-block hover:text-orange-500">
+          <Link
+            to="/careers"
+            className="text-black py-7 px-3 inline-block hover:text-orange-500"
+          >
             Careers
           </Link>
         </ul>
@@ -47,7 +50,10 @@ const Navbar = () => {
         >
           <NavLinks />
           <li>
-            <Link to="/careers" className="py-7 px-7 inline-block uppercase hover:text-orange-500">
+            <Link
+              to="/careers"
+              className="py-7 px-7 inline-block uppercase hover:text-orange-500"
+            >
               Career
             </Link>
           </li>
