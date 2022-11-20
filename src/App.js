@@ -19,6 +19,7 @@ import BlogPage from "./Pages/CampusChapters/AmrithaBlogPage/BlogPage";
 import JBlogPage from "./Pages/CampusChapters/JessnoBlogPage/JBlogPage";
 import SandraBlogPage from "./Pages/CampusChapters/SandraBlogPage/SandraBlogPage";
 import BlogTemplate from "./Pages/CampusChapters/BlogTemplate/BlogTemplate";
+import Notifications from "./Pages/Notifications/Notifications";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/careers" element={<Career />} />
+          <Route path="/notifications" element={<Notifications />} />
           <Route path="/blog" element={<BlogTemplate />} />
 
           <Route path="/calendar" element={<Calendar />} />
