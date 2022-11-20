@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+
 import styles from "./Notifications.module.css";
+import ReactTimeAgo from "react-time-ago";
 
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en";
 
 const Notifications = () => {
   let notifications = require("./data/notifications.json");
-  console.log(notifications);
+  console.log(new Date());
+
+  TimeAgo.setDefaultLocale(en.locale);
+  TimeAgo.addLocale(en);
+  const timeAgo = new TimeAgo("en-US");
 
   return (
     <>
@@ -30,7 +38,10 @@ const Notifications = () => {
                 notifications.new.map((notification) => (
                   <div className={styles.notification}>
                     <p className={styles.notification_header}>
-                      {notification.title} <span>3 Days Ago</span>
+                      {notification.title}{" "}
+                      <span>
+                        <ReactTimeAgo date={notification.date} locale="en-US" />
+                      </span>
                     </p>
                     <p className={styles.notification_text}>
                       {notification.description}
@@ -52,7 +63,10 @@ const Notifications = () => {
                 notifications.old.map((notification) => (
                   <div className={styles.notification}>
                     <p className={styles.notification_header}>
-                      {notification.title} <span>3 Days Ago</span>
+                      {notification.title}{" "}
+                      <span>
+                        <ReactTimeAgo date={notification.date} locale="en-US" />
+                      </span>
                     </p>
                     <p className={styles.notification_text}>
                       {notification.description}
