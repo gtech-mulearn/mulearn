@@ -82,10 +82,10 @@ const HacktoberFest = () => {
             </div>
           </div>
         </div>
-        <div className={styles.orange_bg}>
+        {/* <div className={styles.orange_bg}>
           <div className={styles.second_view_container}>
             <div className={styles.second_view}>
-              {/* <div className={styles.sv_texts}>
+              <div className={styles.sv_texts}>
                 <p style={{ color: "white" }} className={styles.svheader}>
                   About Project Awesome!
                 </p>
@@ -96,7 +96,7 @@ const HacktoberFest = () => {
                   you have to do is build a website for a store or buiness
                   online.
                 </p>
-              </div> */}
+              </div>
               <div className={styles.sv_points}>
                 <div className={styles.sv_point}>
                   <img
@@ -158,7 +158,7 @@ const HacktoberFest = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className={styles.events_view_container}>
           <div className={styles.events_view}>
