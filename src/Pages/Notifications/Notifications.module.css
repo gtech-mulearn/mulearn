@@ -31,6 +31,7 @@
 
 .line {
   margin-top: 1rem;
+  cursor: pointer;
 }
 
 /* Notifications Styling */
