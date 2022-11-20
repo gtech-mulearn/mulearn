@@ -5,6 +5,9 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 
 const Notifications = () => {
+  let notifications = require("./data/notifications.json");
+  console.log(notifications);
+
   return (
     <>
       <Navbar />
@@ -23,18 +26,46 @@ const Notifications = () => {
           <div className={styles.notications_view_container}>
             <div className={styles.notifications_view}>
               <p className={styles.timeline}>This Week</p>
-              <div className={styles.notification}>
-                <p className={styles.notification_header}>
-                  Undaku Hiring Call <span>3 Days Ago</span>
-                </p>
-                <p className={styles.notification_text}>
-                  Undaku is a ‘SasSiest No-code Plaorm with more flexibility to
-                  solve complex Logic B2B use cases. They are presently looking
-                  for Sales and Marketing Intern, Content Writer Intern and two
-                  MEAN Stack Developer Interns
-                </p>
-                <p className={styles.link}>Read More</p>
-              </div>
+              {notifications &&
+                notifications.new.map((notification) => (
+                  <div className={styles.notification}>
+                    <p className={styles.notification_header}>
+                      {notification.title} <span>3 Days Ago</span>
+                    </p>
+                    <p className={styles.notification_text}>
+                      {notification.description}
+                    </p>
+                    <a
+                      href={notification.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <p className={styles.link}>Read More</p>
+                    </a>
+                  </div>
+                ))}
+            </div>
+            <hr className={styles.line} />
+            <div className={styles.notifications_view}>
+              <p className={styles.timeline}>Past Notifications</p>
+              {notifications &&
+                notifications.old.map((notification) => (
+                  <div className={styles.notification}>
+                    <p className={styles.notification_header}>
+                      {notification.title} <span>3 Days Ago</span>
+                    </p>
+                    <p className={styles.notification_text}>
+                      {notification.description}
+                    </p>
+                    <a
+                      href={notification.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <p className={styles.link}>Read More</p>
+                    </a>
+                  </div>
+                ))}
             </div>
           </div>
         </div>
