@@ -112,20 +112,23 @@ const NotificationNav = () => {
   TimeAgo.setDefaultLocale(en.locale);
   TimeAgo.addLocale(en);
   // ./data/notifications.json
+  const [seenAll, setSeenAll] = useState(false);
   let notifications = require("../../Pages/Notifications/data/notifications.json");
   return (
     <>
       <div className=" px-3 py-4 text-white  bg-[#4c4f57] text-sm">This Week</div>
-      <div className=" px-3 py-2 text-white bg-[rgba(0,0,0,.2)] text-[9px] text-center capitalize select-none ">
+      <div className={`px-3 py-2 ${seenAll ? 'text-white/50' : 'text-white'}  bg-[rgba(0,0,0,.2)] text-[9px] text-center capitalize select-none active:text-black`} onClick={() => {
+        setSeenAll(true);
+      }}>
         <li>Mark all as seen</li>
       </div>
       <div className=" overflow-y-hidden">
         {notifications && notifications.new.map((notification) => (
-          <div className=' px-5 py-2 capitalize text-white border-b '>
+          <div className={`px-5 py-2 capitalize ${seenAll ? 'text-white/50' : 'text-white'} border-b`}  >
             <a href={notification.url} >
               <div className="py-2 ">{notification.title}</div>
               <p className="py-2 text-justify disabled:decoration-current text-[10px] ">{notification.description}</p>
-              <div className="text-right text-[8px]"><ReactTimeAgo date={notification.date} locale="en-US" /></div>
+              <div className="text-right text-[11px]"><ReactTimeAgo date={notification.date} locale="en-US" /></div>
             </a>
           </div>
         ))}
@@ -134,7 +137,7 @@ const NotificationNav = () => {
             <a href={notification.url} >
               <div className="py-2 ">{notification.title}</div>
               <p className="py-2 text-justify disabled:decoration-current text-[10px] ">{notification.description}</p>
-              <div className="text-right text-[8px]"><ReactTimeAgo date={notification.date} locale="en-US" /></div>
+              <div className="text-right text-[11px]"><ReactTimeAgo date={notification.date} locale="en-US" /></div>
             </a>
           </div>
         ))}
