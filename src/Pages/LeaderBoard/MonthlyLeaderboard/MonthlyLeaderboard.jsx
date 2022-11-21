@@ -78,6 +78,7 @@ const MonthlyLeaderboard = () => {
                       <p className={styles.total_karma}>
                         Monthly Karma Points: {college.karma.monthly}
                       </p>
+                      <br/>
                     </div>
                   );
                 })}
@@ -112,6 +113,7 @@ const MonthlyLeaderboard = () => {
                       <p className={styles.total_karma}>
                         Overall Karma Points: {student.karma.overall}
                       </p>
+                      <br/>
                     </div>
                   );
                 })}
