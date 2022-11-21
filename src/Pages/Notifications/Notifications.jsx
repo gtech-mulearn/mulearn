@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import styles from "./Notifications.module.css";
 import ReactTimeAgo from "react-time-ago";
@@ -14,6 +14,7 @@ const Notifications = () => {
 
   TimeAgo.setDefaultLocale(en.locale);
   TimeAgo.addLocale(en);
+  // eslint-disable-next-line
   const timeAgo = new TimeAgo("en-US");
 
   return (
