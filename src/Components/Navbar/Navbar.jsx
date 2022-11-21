@@ -31,7 +31,7 @@ const Navbar = () => {
               </div>
               {/* Notification menu */}
               <div className={` absolute w-[300px] bg-[#3c3e48]  
-              border-0 rounded-md overflow-y-scroll text-xs  left-5 mt-3  h-4/5 special ${notificationOpen ? 'block' : 'hidden'}`}>
+              border-0 rounded-md overflow-y-scroll text-xs  left-8 mt-3  h-4/5 special ${notificationOpen ? 'block' : 'hidden'}`}>
                 <NotificationNav />
               </div>
 
