@@ -5,7 +5,6 @@ import "./News.css";
 
 import NewsData from "./data/News";
 
-import fvimg from "./assets/fvimg.png";
 import Modal from "../../Components/Modal/Modal";
 
 const News = () => {
@@ -52,7 +51,7 @@ const News = () => {
               </p>
             </div>
             <div className="fv_images">
-              <img src={fvimg} alt="" className="fv_img" />
+              <img src="/assets/gallery/fvimg.png" alt="" className="fv_img" />
             </div>
           </div>
         </div>
