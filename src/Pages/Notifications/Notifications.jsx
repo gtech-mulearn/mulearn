@@ -47,7 +47,7 @@ const Notifications = () => {
                       {notification.description}
                     </p>
                     <a
-                      href={notification.link}
+                      href={notification.url}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -72,7 +72,7 @@ const Notifications = () => {
                       {notification.description}
                     </p>
                     <a
-                      href={notification.link}
+                      href={notification.url}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
