@@ -31,7 +31,7 @@ const Navbar = () => {
               </div>
               {/* Notification menu */}
               <div className={` absolute w-[300px] bg-white text-orange-500 border-orange-600/20
-              border rounded-md overflow-y-scroll text-xs  left-8 mt-3  h-4/5 special ${notificationOpen ? 'block' : 'hidden'}`}>
+              border rounded-md text-xs  left-8 mt-3  ${notificationOpen ? 'block' : 'hidden'}`}>
                 <NotificationNav />
               </div>
 
@@ -56,7 +56,7 @@ const Navbar = () => {
               <ion-icon name="notifications-circle-outline"></ion-icon>
             </div>
             <div className={`hidden group-hover:lg:block hover:lg:block absolute w-[300px] bg-white  
-              border border-orange-600/20  rounded-md overflow-y-scroll text-xs  mt-3  text-orange-500 h-4/5 special ${notificationOpen ? 'block' : ''}`}>
+              border border-black-600/20 rounded-xl text-xs mt-3 drop-shadow-md text-orange-500  ${notificationOpen ? 'block' : ''}`}>
               <NotificationNav />
             </div>
           </div >
@@ -117,33 +117,35 @@ const NotificationNav = () => {
   return (
     <>
       <div className=" px-5 py-4 bg-white/90 text-sm">This Week</div>
-      <div className={`px-3 border-y py-2 ${seenAll ? 'text-orange-500/70' : ''}  bg-[#ffffff1a] text-xs text-center capitalize select-none active:text-black`} onClick={() => {
+      {/* <div className={`px-3 border-y py-2 ${seenAll ? 'text-orange-500/70' : ''}  bg-[#ffffff1a] text-xs text-center capitalize select-none active:text-black`} onClick={() => {
         setSeenAll(true);
       }}>
         <li>Mark all as seen</li>
-      </div>
+      </div> */}
       <div className=" overflow-y-hidden">
         {notifications && notifications.new.map((notification) => (
           <div className={`px-5 py-2 capitalize ${seenAll ? 'text-orange-500/70' : ''} border-b`}  >
             <a href={notification.url} >
-              <div className="py-2 text-md uppercase decoration font-bold">{notification.title}</div>
-              <p className="py-2 pl-5 text-justify  text-xs text-gray-600">{notification.description}</p>
+              <div className="py-2 text-md  decoration text-black font-bold">{notification.title}</div>
+              <p className="py-2 text-justify  text-xs text-gray-600 truncate">{notification.description}</p>
               <div className="text-right text-xs"><ReactTimeAgo date={notification.date} locale="en-US" /></div>
             </a>
           </div>
         ))}
-        {notifications && notifications.old.map((notification) => (
+        {/* {notifications && notifications.old.map((notification) => (
           <div className=' px-5 py-2 capitalize text-orange-500/70 border-b  '>
             <a href={notification.url} >
               <div className="py-2 text-md uppercase decoration font-bold">{notification.title}</div>
-              <p className="py-2 pl-5 text-justify text-gray-600/70  text-xs ">{notification.description}</p>
-              <div className="text-right text-[11px]"><ReactTimeAgo date={notification.date} locale="en-US" /></div>
+
+              <p className="py-2 pl-5 text-justify text-gray-600/70  text-xs  truncate">{notification.description}</p>
+
+              <div className="text-right text-[11px] "><ReactTimeAgo date={notification.date} locale="en-US" /></div>
             </a>
           </div>
-        ))}
+        ))} */}
       </div>
       <Link to='/notifications'>
-        <div className=" px-3 py-3 border-x text-orange-500 text-sm bg-[rgba(255,255,255,.2)] text-s text-center select-none ">
+        <div className=" px-5 py-3 border-y text-orange-500 text-sm bg-[rgba(255,255,255,.2)] text-center select-none ">
           View All
         </div>
       </Link>
