@@ -20,6 +20,7 @@ import JBlogPage from "./Pages/CampusChapters/JessnoBlogPage/JBlogPage";
 import SandraBlogPage from "./Pages/CampusChapters/SandraBlogPage/SandraBlogPage";
 import BlogTemplate from "./Pages/CampusChapters/BlogTemplate/BlogTemplate";
 import Notifications from "./Pages/Notifications/Notifications";
+import MonthlyLeaderboard from "./Pages/LeaderBoard/MonthlyLeaderboard/MonthlyLeaderboard";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
             <Route path="" element={<Teams />} />
           </Route>
           <Route path="/leaderboard" element={<LeaderBoard />} />
+          <Route path="/leaderboard/monthly" element={<MonthlyLeaderboard />} />
           <Route path="/hacktoberfest" element={<HacktoberFest />} />
           <Route path="/campuschapters">
             <Route path="" element={<CampusChapters />} />
