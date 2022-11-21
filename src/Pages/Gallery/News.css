@@ -68,8 +68,10 @@
 
 @media only screen and (min-width: 1000px) {
   .first_view_container {
-    padding: 3rem;
-    margin-bottom: 3rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 
   .first_view {
