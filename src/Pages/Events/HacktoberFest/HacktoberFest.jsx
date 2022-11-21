@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "../../../Components/Footer/Footer";
 import Navbar from "../../../Components/Navbar/Navbar";
 import styles from "./HacktoberFest.module.css";
+import Github from "../../../Components/Github/Github";
 
 const HacktoberFest = () => {
   return (
@@ -21,7 +22,6 @@ const HacktoberFest = () => {
                 Hacktoberfest has played an integral role in building the
                 open-source community over the years.
               </p>
-              
             </div>
             <img
               alt="Illustration"
@@ -186,7 +186,6 @@ const HacktoberFest = () => {
                     Join us for “Expert Advice”, a series of sessions to help
                     you ace your Hacktoberfest journey.
                   </p>
-                  
                 </div>
               </div>
               <div className={styles.event}>
@@ -254,6 +253,7 @@ const HacktoberFest = () => {
                 </a>
               </div>
             </div>
+            <Github />
           </div>
         </div>
       </div>
