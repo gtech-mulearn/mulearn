@@ -318,7 +318,7 @@ export const links = [
             foreign: false,
           },
           {
-            name: "APISetu",
+            name: "API Setu",
             link: mainlink + "/apisetu",
             submenu: false,
             sublinks: [],
