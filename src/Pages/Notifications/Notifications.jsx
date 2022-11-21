@@ -14,7 +14,6 @@ const Notifications = () => {
 
   TimeAgo.setDefaultLocale(en.locale);
   TimeAgo.addLocale(en);
-  // eslint-disable-next-line
   const timeAgo = new TimeAgo("en-US");
 
   return (
