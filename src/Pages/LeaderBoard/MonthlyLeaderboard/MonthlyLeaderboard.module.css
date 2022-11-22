@@ -1,0 +1,181 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.first_view_container {
+  padding: 2rem;
+  background-color: #fdfdfd;
+}
+
+.fv_img {
+  width: 20rem;
+  display: block;
+  margin: auto;
+  margin-top: 0rem;
+}
+
+.fv_texts {
+  text-align: center;
+}
+
+.fv_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #303030;
+}
+
+.fv_heading span {
+  font-weight: 600;
+  color: #f78c40;
+}
+
+.fv_tagline {
+  margin-top: 0.5rem;
+  font-family: "Poppins", sans-serif;
+}
+
+@media only screen and (min-width: 1000px) {
+  .first_view_container {
+    padding: 0rem 3rem;
+  }
+
+  .first_view {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .fv_img {
+    display: block;
+    margin: auto;
+    width: 33rem;
+  }
+
+  .fv_texts {
+    text-align: left;
+    width: 50%;
+  }
+
+  .fv_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 4.55rem;
+    line-height: 5rem;
+    font-weight: 600;
+  }
+
+  .fv_tagline {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    width: 90%;
+  }
+
+  .fv_tagline span {
+    color: #f78c40;
+    font-weight: bold;
+  }
+}
+
+/* Second View Styles */
+.sv_heading {
+  font-size: 1.75rem;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  color: #404040;
+}
+
+.sv_heading span {
+  color: #f78c40;
+}
+
+.second_view_container {
+  margin: 2rem;
+}
+
+.sv_tagline {
+  font-family: "Poppins";
+}
+
+.sv_card {
+  position: relative;
+  column-gap: 1rem;
+  margin-right: 0rem;
+  margin-top: 1rem;
+  max-width: 400px;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 100%;
+  /* min-height: 15rem; */
+
+  font-family: "Inter", sans-serif;
+
+  box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+}
+
+.sv_card p {
+  margin: 0.5rem 0;
+}
+
+.card_college {
+  font-family: "Noto Sans";
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.sv_cards_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: none;
+}
+
+.card_position {
+  position: absolute;
+  font-size: 2rem;
+  bottom: 5px;
+  right: 25px;
+  color: #f78c40;
+  font-weight: 600;
+}
+
+.card_position span {
+  font-size: 1rem;
+  margin-left: -0.25rem;
+  font-weight: 500;
+  color: #404040;
+}
+
+@media only screen and (min-width: 768px) {
+  .sv_card {
+    margin-right: 1rem;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .second_view_container {
+    max-width: 1300px;
+    margin: auto;
+    margin-top: 4rem;
+  }
+
+  .sv_tagline {
+    width: 50%;
+  }
+
+  .fr_heading {
+    font-size: 3.5rem;
+  }
+
+  .fr_tagline {
+    font-family: "Poppins";
+    width: 80%;
+  }
+}

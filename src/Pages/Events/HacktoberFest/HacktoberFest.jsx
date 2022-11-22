@@ -21,11 +21,10 @@ const HacktoberFest = () => {
                 Hacktoberfest has played an integral role in building the
                 open-source community over the years.
               </p>
-              
             </div>
             <img
-              alt="Illustration"
-              src="/assets/events/hacktoberfest/fvimgd.gif"
+              alt='Illustration'
+              src='/assets/events/hacktoberfest/fvimgd.gif'
             />
           </div>
         </div>
@@ -41,8 +40,8 @@ const HacktoberFest = () => {
             <div className={styles.sv_points}>
               <div className={styles.sv_point}>
                 <img
-                  src="/assets/events/hacktoberfest/season.png"
-                  alt=""
+                  src='/assets/events/hacktoberfest/season.png'
+                  alt=''
                   className={styles.sv_image}
                 />
                 <div className={styles.svp_heading}>New Season</div>
@@ -54,8 +53,8 @@ const HacktoberFest = () => {
               </div>
               <div className={styles.sv_point}>
                 <img
-                  src="/assets/events/hacktoberfest/participate.png"
-                  alt=""
+                  src='/assets/events/hacktoberfest/participate.png'
+                  alt=''
                   className={styles.sv_image}
                 />
                 <div className={styles.svp_heading}>To Participate</div>
@@ -69,8 +68,8 @@ const HacktoberFest = () => {
 
               <div className={styles.sv_point}>
                 <img
-                  src="/assets/events/hacktoberfest/surprises.png"
-                  alt=""
+                  src='/assets/events/hacktoberfest/surprises.png'
+                  alt=''
                   className={styles.sv_image}
                 />
                 <div className={styles.svp_heading}>New Surprises</div>
@@ -86,7 +85,7 @@ const HacktoberFest = () => {
         <div className={styles.orange_bg}>
           <div className={styles.second_view_container}>
             <div className={styles.second_view}>
-              <div className={styles.sv_texts}>
+              {/* <div className={styles.sv_texts}>
                 <p style={{ color: "white" }} className={styles.svheader}>
                   About Project Awesome!
                 </p>
@@ -97,12 +96,12 @@ const HacktoberFest = () => {
                   you have to do is build a website for a store or buiness
                   online.
                 </p>
-              </div>
+              </div> */}
               <div className={styles.sv_points}>
                 <div className={styles.sv_point}>
                   <img
-                    src="/assets/events/hacktoberfest/github.png"
-                    alt=""
+                    src='/assets/events/hacktoberfest/github.png'
+                    alt=''
                     className={styles.sv_image}
                   />
                   <div
@@ -121,8 +120,8 @@ const HacktoberFest = () => {
 
                 <div className={styles.sv_point}>
                   <img
-                    src="/assets/events/hacktoberfest/create.png"
-                    alt=""
+                    src='/assets/events/hacktoberfest/create.png'
+                    alt=''
                     className={styles.sv_image}
                   />
                   <div
@@ -140,8 +139,8 @@ const HacktoberFest = () => {
 
                 <div className={styles.sv_point}>
                   <img
-                    src="/assets/events/hacktoberfest/contribute.png"
-                    alt=""
+                    src='/assets/events/hacktoberfest/contribute.png'
+                    alt=''
                     className={styles.sv_image}
                   />
                   <div
@@ -171,12 +170,33 @@ const HacktoberFest = () => {
 
               <p className={styles.ev_tagline}></p>
             </div>
-            <div className={styles.events_container}>
+            <div className={styles.yt_vids_grid}>
+              <div className={styles.yt_vid_container}>
+                <iframe
+                  src='https://www.youtube-nocookie.com/embed/eu2ydNGlsLk'
+                  title='YouTube video player'
+                  frameborder='0'
+                  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div className={styles.yt_vid_container}>
+                <iframe
+                  src='https://www.youtube-nocookie.com/embed/B_cfyfShw3I'
+                  title='Github Expert Advice'
+                  frameborder='0'
+                  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                  allowfullscreen
+                ></iframe>
+              </div>
+              {/* <div className={styles.yt_vid_container}></div> */}
+            </div>
+            {/* <div className={styles.events_container}>
               <div className={styles.event}>
                 <div className={styles.event}>
                   <img
-                    src="/assets/events/hacktoberfest/Alwin.jpg"
-                    alt="Alwin Event Poster"
+                    src='/assets/events/hacktoberfest/Alwin.jpg'
+                    alt='Alwin Event Poster'
                     className={styles.event_img}
                   />
                   <p className={styles.event_header}>Github Expert Advice</p>
@@ -186,13 +206,12 @@ const HacktoberFest = () => {
                     Join us for “Expert Advice”, a series of sessions to help
                     you ace your Hacktoberfest journey.
                   </p>
-                  
                 </div>
               </div>
               <div className={styles.event}>
                 <img
-                  src="https://media.discordapp.net/attachments/771679365124718612/1030081742180204544/hactober_fest.png?width=640&height=640"
-                  alt="Rohit Event Poster"
+                  src='https://media.discordapp.net/attachments/771679365124718612/1030081742180204544/hactober_fest.png?width=640&height=640'
+                  alt='Rohit Event Poster'
                   className={styles.event_img}
                 />
                 <p className={styles.event_header}>Git and GitHub Session</p>
@@ -204,7 +223,7 @@ const HacktoberFest = () => {
                   Hacktoberfest journey.{" "}
                 </p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -230,9 +249,9 @@ const HacktoberFest = () => {
                   business.
                 </p>
                 <a
-                  href="http://awesome.mulearn.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href='http://awesome.mulearn.org'
+                  target='_blank'
+                  rel='noopener noreferrer'
                 >
                   <button className={styles.primary_btn}>Contribute Now</button>
                 </a>
@@ -246,9 +265,9 @@ const HacktoberFest = () => {
                   projects. And be a part of hackctober fest also.
                 </p>
                 <a
-                  href="https://github.com/pygrammers-org/Road-to-OSS"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href='https://github.com/pygrammers-org/Road-to-OSS'
+                  target='_blank'
+                  rel='noopener noreferrer'
                 >
                   <button className={styles.primary_btn}>Contribute Now</button>
                 </a>
