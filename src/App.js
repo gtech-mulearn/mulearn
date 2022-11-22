@@ -11,17 +11,21 @@ import CommunityPartner from "./Pages/CommPartners/CommPartners";
 import ArtOfTeaching from "./Pages/ArtOfTeaching/ArtOfTeaching";
 import Career from "./Pages/Career/Career";
 import LeaderBoard from "./Pages/LeaderBoard/leaderBoard";
-import Courses from "./Pages/Courses/Courses";
 import WikiSyllabus from "./Pages/WikiSyllabus/WikiSyllabus";
 import HacktoberFest from "./Pages/Events/HacktoberFest/HacktoberFest";
 import Yip from "./Pages/YIP/Yip";
 import CampusChapters from "./Pages/CampusChapters/CampusChapters";
 import BlogPage from "./Pages/CampusChapters/AmrithaBlogPage/BlogPage";
 import JBlogPage from "./Pages/CampusChapters/JessnoBlogPage/JBlogPage";
-// import Welcome from "./Pages/CampusChapters/Register/Welcome/Welcome";
-// import FindCampus from "./Pages/CampusChapters/Register/FindCampus/FindCampus";
 import SandraBlogPage from "./Pages/CampusChapters/SandraBlogPage/SandraBlogPage";
+import GigWork from "./Pages/GigWork/GigWork";
+import BlogsLandingSandra from "./Pages/CampusChapters/Blogs/BlogsLandingSandra";
+import BlogsLandingAmirtha from "./Pages/CampusChapters/Blogs/BlogsLandingAmirtha";
+import BlogsLandingJessno from "./Pages/CampusChapters/Blogs/BlogsLandingJessno";
+import BlogLanding from "./Pages/CampusChapters/Blogs/BlogLanding";
 import BlogTemplate from "./Pages/CampusChapters/BlogTemplate/BlogTemplate";
+import Notifications from "./Pages/Notifications/Notifications";
+import MonthlyLeaderboard from "./Pages/LeaderBoard/MonthlyLeaderboard/MonthlyLeaderboard";
 
 function App() {
   return (
@@ -30,6 +34,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/careers" element={<Career />} />
+          <Route path="/blogs" element={<BlogLanding />} />
+          <Route path="/blogs/sandra-pramod" element={<BlogsLandingSandra />} />
+          <Route path="/blogs/amirtha-gs" element={<BlogsLandingAmirtha />} />
+          <Route path="/blogs/jessno-oomen" element={<BlogsLandingJessno />} />
+          <Route path="/gig-work" element={<GigWork />} />
+          <Route path="/notifications" element={<Notifications />} />
           <Route path="/blog" element={<BlogTemplate />} />
 
           <Route path="/calendar" element={<Calendar />} />
@@ -40,18 +50,16 @@ function App() {
           <Route path="/company-partners" element={<Company />} />
           <Route path="/community-partners" element={<CommunityPartner />} />
           <Route path="/artofteaching" element={<ArtOfTeaching />} />
-          <Route path="/courses" element={<Courses />} />
           <Route path="/wikisyllabus" element={<WikiSyllabus />} />
           <Route path="/yip" element={<Yip />} />
           <Route path="/team">
             <Route path="" element={<Teams />} />
           </Route>
           <Route path="/leaderboard" element={<LeaderBoard />} />
+          <Route path="/leaderboard/monthly" element={<MonthlyLeaderboard />} />
           <Route path="/hacktoberfest" element={<HacktoberFest />} />
           <Route path="/campuschapters">
             <Route path="" element={<CampusChapters />} />
-            {/* <Route path="welcome" element={<Welcome />} />
-            <Route path="findcampus" element={<FindCampus />} /> */}
           </Route>
           <Route path="/blog/amirthags" element={<BlogPage />} />
           <Route path="/blog/jessno" element={<JBlogPage />} />

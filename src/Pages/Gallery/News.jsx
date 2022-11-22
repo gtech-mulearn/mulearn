@@ -5,7 +5,6 @@ import "./News.css";
 
 import NewsData from "./data/News";
 
-import fvimg from "./assets/fvimg.png";
 import Modal from "../../Components/Modal/Modal";
 
 const News = () => {
@@ -31,8 +30,8 @@ const News = () => {
 
     let allPics = [];
 
-    NewsData.map((item) => {
-      item.pics.map((pic) => {
+    NewsData.forEach((item) => {
+      item.pics.forEach((pic) => {
         allPics.push(pic);
       });
     });
@@ -50,10 +49,9 @@ const News = () => {
               <p className="fv_heading">
                 Welcome to <span>µLearn </span> News Gallery
               </p>
-              
             </div>
             <div className="fv_images">
-              <img src={fvimg} alt="" className="fv_img" />
+              <img src="/assets/gallery/fvimg.png" alt="" className="fv_img" />
             </div>
           </div>
         </div>

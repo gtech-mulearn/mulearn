@@ -35,8 +35,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-bottom: 1rem;
 }
 .header {
   font-family: "Noto Sans", sans-serif;
@@ -192,11 +191,34 @@
   color: white;
 }
 
-@media only screen and (min-width: 1024px) {
+.yt_vids_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+}
+
+.yt_vid_container {
+  position: relative;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  padding-top: 56.25%;
+}
+
+.yt_vids_grid iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media only screen and (min-width: 991px) {
   .second_view_container {
     max-width: 1300px;
     margin: auto;
-    margin-top: 3rem;
+    /* margin-top: 3rem; */
   }
 
   .orange_bg {
@@ -246,6 +268,22 @@
   .svp_text {
     font-family: "Poppins", sans-serif;
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .yt_vids_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .yt_vids_grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 2rem;
   }
 }
 

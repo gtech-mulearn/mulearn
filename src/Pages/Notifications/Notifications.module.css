@@ -1,0 +1,75 @@
+.main_view_container {
+  margin: 2rem;
+}
+
+.fv_header {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #f78c40;
+}
+
+.fv_tagline {
+  font-family: "Poppins", sans-serif;
+}
+
+@media only screen and (min-width: 1000px) {
+  .main_view_container {
+    max-width: 1300px;
+    display: block;
+    margin: auto;
+  }
+}
+
+.timeline {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  letter-spacing: 0.025rem;
+}
+
+.line {
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+/* Notifications Styling */
+.notification {
+  margin-top: 1rem;
+  margin: 1rem auto 0;
+  box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  padding: 20px 30px;
+  border: 1px solid #5e5e5e;
+  border-radius: 10px;
+}
+
+a{
+  cursor: pointer;
+}
+
+.notification_header {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.notification_header span {
+  font-size: 0.8rem;
+  color: #585858;
+}
+
+.notification_text {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+}
+
+.link {
+  margin-top: 0.5rem;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  color: #f78c40;
+}
