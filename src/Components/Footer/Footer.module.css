@@ -4,6 +4,7 @@
   color: white;
   font-family: "Poppins", sans-serif;
   position: relative;
+  z-index: -1;
 }
 
 .footer_container {
@@ -68,11 +69,11 @@ a {
   margin-right: 1rem;
 }
 
-.social:hover{
--webkit-transform: scale(0.8);
--ms-transform: scale(0.8);
-transform: scale(0.8);
-transition: 0.5s ease;
+.social:hover {
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+  transition: 0.5s ease;
 }
 
 @media only screen and (min-width: 1000px) {
@@ -196,7 +197,8 @@ button:focus {
     justify-content: space-between;
   }
 }
-.bottomcopyright{
+
+.bottomcopyright {
   position: absolute;
   bottom: 0;
   color: white;
