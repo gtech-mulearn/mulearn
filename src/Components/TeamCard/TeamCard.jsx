@@ -13,7 +13,7 @@ const TeamCard = ({ name, designation, image, linkedIn }) => {
             className="mobile-linkedin"
           >
             <img
-              src="/assets/placholder/linkedin.webp"
+              src="/assets/placeholder/linkedin.webp"
               alt=""
               className="linkedinimg"
             />
@@ -33,7 +33,7 @@ const TeamCard = ({ name, designation, image, linkedIn }) => {
             className="team-card__linkedin"
           >
             <img
-              src="/assets/placholder/linkedin.webp"
+              src="/assets/placeholder/linkedin.webp"
               alt=""
               className="linkedinimg"
             />
