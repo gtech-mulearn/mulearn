@@ -18,17 +18,14 @@ import CampusChapters from "./Pages/CampusChapters/CampusChapters";
 import BlogPage from "./Pages/CampusChapters/AmrithaBlogPage/BlogPage";
 import JBlogPage from "./Pages/CampusChapters/JessnoBlogPage/JBlogPage";
 import SandraBlogPage from "./Pages/CampusChapters/SandraBlogPage/SandraBlogPage";
-<<<<<<< HEAD
 import GigWork from "./Pages/GigWork/GigWork";
 import BlogsLandingSandra from "./Pages/CampusChapters/Blogs/BlogsLandingSandra";
 import BlogsLandingAmirtha from "./Pages/CampusChapters/Blogs/BlogsLandingAmirtha";
 import BlogsLandingJessno from "./Pages/CampusChapters/Blogs/BlogsLandingJessno";
 import BlogLanding from "./Pages/CampusChapters/Blogs/BlogLanding";
-=======
 import BlogTemplate from "./Pages/CampusChapters/BlogTemplate/BlogTemplate";
 import Notifications from "./Pages/Notifications/Notifications";
 import MonthlyLeaderboard from "./Pages/LeaderBoard/MonthlyLeaderboard/MonthlyLeaderboard";
->>>>>>> c99ef137d06f1c0cb4bf36d0c4a6a04784897982
 
 function App() {
   return (
@@ -37,16 +34,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/careers" element={<Career />} />
-<<<<<<< HEAD
           <Route path="/blogs" element={<BlogLanding />} />
           <Route path="/blogs/sandra-pramod" element={<BlogsLandingSandra />} />
           <Route path="/blogs/amirtha-gs" element={<BlogsLandingAmirtha />} />
           <Route path="/blogs/jessno-oomen" element={<BlogsLandingJessno />} />
           <Route path="/gig-work" element={<GigWork />} />
-=======
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/blog" element={<BlogTemplate />} />
->>>>>>> c99ef137d06f1c0cb4bf36d0c4a6a04784897982
 
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/gallery" element={<Gallery />} />
