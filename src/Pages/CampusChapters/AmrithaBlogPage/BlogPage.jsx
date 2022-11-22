@@ -15,7 +15,7 @@ const BlogPage = () => {
           <div className={styles.first_view}>
             <div className={styles.about}>
               <img
-                src="/assets/campuscommunity/amirtha.jpg"
+                src="/assets/campuscommunity/amirtha.webp"
                 alt=""
                 className={styles.story_img}
               />

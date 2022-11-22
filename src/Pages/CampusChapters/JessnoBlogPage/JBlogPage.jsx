@@ -1,12 +1,12 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import Footer from "../../../Components/Footer/Footer";
 import Navbar from "../../../Components/Navbar/Navbar";
 import styles from "./JBlogPage.module.css";
 
 const JBlogPage = () => {
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Navbar />
@@ -15,7 +15,7 @@ const JBlogPage = () => {
           <div className={styles.first_view}>
             <div className={styles.about}>
               <img
-                src="/assets/campuscommunity/jessno.jpg"
+                src="/assets/campuscommunity/jessno.webp"
                 alt=""
                 className={styles.story_img}
               />

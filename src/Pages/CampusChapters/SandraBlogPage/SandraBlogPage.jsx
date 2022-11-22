@@ -1,12 +1,12 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import Navbar from "../../../Components/Navbar/Navbar";
 import Footer from "../../../Components/Footer/Footer";
 import styles from "./SandraBlogPage.module.css";
 
 const SandraBlogPage = () => {
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Navbar />
@@ -15,7 +15,7 @@ const SandraBlogPage = () => {
           <div className={styles.first_view}>
             <div className={styles.about}>
               <img
-                src="/assets/campuscommunity/sandra.jpg"
+                src="/assets/campuscommunity/sandra.webp"
                 alt=""
                 className={styles.story_img}
               />
@@ -28,8 +28,8 @@ const SandraBlogPage = () => {
             </div>
             <p className={styles.heading}>
               Read the Story of a graduate of Computer Science and Engineering
-              from St. Joseph’s College of Engineering and Technology and how she
-              transformed her college to the top-performing college for the
+              from St. Joseph’s College of Engineering and Technology and how
+              she transformed her college to the top-performing college for the
               academic year 2021–2022
             </p>
           </div>
