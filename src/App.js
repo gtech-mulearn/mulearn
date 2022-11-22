@@ -18,11 +18,12 @@ import Yip from "./Pages/YIP/Yip";
 import CampusChapters from "./Pages/CampusChapters/CampusChapters";
 import BlogPage from "./Pages/CampusChapters/AmrithaBlogPage/BlogPage";
 import JBlogPage from "./Pages/CampusChapters/JessnoBlogPage/JBlogPage";
-// import Welcome from "./Pages/CampusChapters/Register/Welcome/Welcome";
-// import FindCampus from "./Pages/CampusChapters/Register/FindCampus/FindCampus";
 import SandraBlogPage from "./Pages/CampusChapters/SandraBlogPage/SandraBlogPage";
-import BlogTemplate from "./Pages/CampusChapters/BlogTemplate/BlogTemplate";
 import GigWork from "./Pages/GigWork/GigWork";
+import BlogsLandingSandra from "./Pages/CampusChapters/Blogs/BlogsLandingSandra";
+import BlogsLandingAmirtha from "./Pages/CampusChapters/Blogs/BlogsLandingAmirtha";
+import BlogsLandingJessno from "./Pages/CampusChapters/Blogs/BlogsLandingJessno";
+import BlogLanding from "./Pages/CampusChapters/Blogs/BlogLanding";
 
 function App() {
   return (
@@ -31,7 +32,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/careers" element={<Career />} />
-          <Route path="/blog" element={<BlogTemplate />} />
+          <Route path="/blogs" element={<BlogLanding />} />
+          <Route path="/blogs/sandra-pramod" element={<BlogsLandingSandra />} />
+          <Route path="/blogs/amirtha-gs" element={<BlogsLandingAmirtha />} />
+          <Route path="/blogs/jessno-oomen" element={<BlogsLandingJessno />} />
           <Route path="/gig-work" element={<GigWork />} />
 
           <Route path="/calendar" element={<Calendar />} />
