@@ -19,7 +19,6 @@
   font-size: 2.5rem;
   font-weight: 600;
   color: #303030;
-  margin-top: -2rem;
 }
 
 .fstagline {
@@ -57,7 +56,7 @@
 }
 
 .ssheadingspan {
-  color: #f9514c;
+  color: #3362ff;
 }
 
 .second_section {
@@ -99,6 +98,7 @@
 
   .first__section {
     max-width: 1300px;
+    flex-direction: row;
     margin: auto;
     margin-bottom: 2rem;
   }
@@ -106,7 +106,7 @@
 
 .op_jobdescription {
   margin: 0.25rem 0;
-  background-color: #f9514c;
+  background-color: #3362ff;
   color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 5px;
@@ -142,6 +142,17 @@
     margin-left: 1rem;
   }
 
+  .fstexts {
+    text-align: left;
+    width: 100%;
+  }
+
+  .fstagline {
+    text-align: left;
+    margin-left: 0;
+    /* width: 60%; */
+  }
+
   .sectionseperator {
     display: block;
     margin: auto;
@@ -149,12 +160,12 @@
   }
 
   .sectionseperator_container {
-    background-color: #f9514c;
+    background-color: #3362ff;
   }
 
   .op_jobdescription {
     margin: 0.25rem 0;
-    background-color: #f9514c;
+    background-color: #3362ff;
     color: white;
     padding: 0.5rem 1.5rem;
     border-radius: 5px;
@@ -185,9 +196,8 @@
   }
 
   .fsillustration {
-  width: 30rem;
-}
-
+    width: 30rem;
+  }
 }
 
 .closedcareerscontainer {

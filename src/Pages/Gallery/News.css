@@ -1,0 +1,270 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.tabs_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab {
+  margin: 0.25rem;
+  font-family: "Noto Sans";
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #696969;
+}
+
+.tab:hover {
+  color: #f78c40;
+  cursor: pointer;
+}
+
+.first_view_container {
+  padding: 2rem;
+  background-color: #ececee;
+  opacity: 1;
+  background-size: 36px 36px;
+  background-image: repeating-linear-gradient(
+    0deg,
+    #e8e8e8,
+    #e8e8e8 1.8px,
+    #ececee 1.8px,
+    #ececee
+  );
+}
+
+.fv_img {
+  width: 18rem;
+  display: block;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.fv_texts {
+  text-align: center;
+}
+
+.fv_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #303030;
+}
+
+.fv_heading span {
+  font-weight: 600;
+  color: #f78c40;
+}
+
+.fv_tagline {
+  margin-top: 0.5rem;
+  font-family: "Poppins", sans-serif;
+}
+
+@media only screen and (min-width: 1000px) {
+  .first_view_container {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .first_view {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .fv_img {
+    display: block;
+    margin: auto;
+    width: 25rem;
+  }
+
+  .fv_texts {
+    text-align: left;
+    width: 50%;
+  }
+
+  .fv_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 4.55rem;
+    line-height: 5rem;
+    font-weight: 600;
+  }
+
+  .fv_tagline {
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    width: 90%;
+  }
+}
+
+/* Second View Container */
+
+.second_view_container {
+  padding: 2rem;
+  padding-top: 5rem;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.sv_heading {
+  font-size: 1.75rem;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+}
+
+.sv_heading span {
+  color: #f78c40;
+}
+
+.sv_tagline {
+  font-size: 0.9rem;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  .second_view_container {
+    padding: 3rem;
+    padding-top: 3rem;
+  }
+
+  .second_view {
+    max-width: 1300px;
+    margin: auto;
+  }
+}
+
+/* Cards View Styles */
+
+.cards_view_container {
+  padding: 0rem;
+  background-color: #fff;
+}
+
+.card_container {
+  width: 19rem;
+  margin: 1rem 0;
+}
+
+.card_heading {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #303030;
+  margin-bottom: 0.25rem;
+}
+
+.card_img {
+  width: 18rem;
+  height: 18rem;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.card_heading,
+.card_description {
+  margin-left: 0.5rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .cards_view {
+    display: grid;
+    column-gap: 1rem;
+    grid-template-columns: 50% 50%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .sv_texts {
+    margin-bottom: 2rem;
+  }
+
+  .sv_heading {
+    font-size: 2.25rem;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 600;
+  }
+
+  .sv_tagline {
+    font-size: 1rem;
+    width: 60%;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    margin: auto;
+  }
+
+  .card_container {
+    /* width: 23rem; */
+    margin: 1rem 0;
+  }
+  .cards_view_container {
+    padding: 2rem 0rem;
+  }
+
+  .cards_view {
+    max-width: 1300px;
+    margin: auto;
+    display: grid;
+    column-gap: 1rem;
+    grid-template-columns: 30% 30% 30%;
+  }
+
+  .card_heading {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #303030;
+    margin-bottom: 0.25rem;
+  }
+}
+
+.zoom_icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3rem;
+  height: 3rem;
+  opacity: 0;
+  transition: 0.3s ease-out;
+}
+
+.gallery_item:hover .gallery_img {
+  filter: brightness(0.5);
+  cursor: pointer;
+}
+
+.gallery_item:hover .zoom_icon {
+  opacity: 1;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 1240px) {
+  .cards_view_container {
+    padding: 0;
+    padding-top: 2rem;
+  }
+
+  .cards_view {
+    max-width: 1300px;
+    margin: auto;
+    display: grid;
+    column-gap: 1rem;
+    grid-template-columns: 25% 25% 25% 25%;
+  }
+}

@@ -1,171 +1,353 @@
+const mainlink = "https://learn.mulearn.org";
 export const links = [
   {
+    head: -1,
     name: "About",
     submenu: true,
     sublinks: [
       {
-        Head: "The Team",
-        sublink: [
-          { name: "Our Team", link: "/team" },
-          // { name: "Executive Committe", link: "/team/execom" },
-          // { name: "YIP Team", link: "/team/yip" },
-          // { name: "Community Team", link: "/team/community" },
-          // {
-          //   name: "Tech Team",
-          //   link: "/team/tech",
-          // },
-        ],
-      },
-      {
-        Head: "Partners",
-        sublink: [
-          { name: "Community Partners", link: "/community-partners" },
-          { name: "Company Partners", link: "/company-partners" },
-        ],
-      },
-      {
-        Head: "Media",
-        sublink: [
+        name: "The Team",
+        submenu: true,
+        sublinks: [
           {
-            name: "Gallery",
-            link: "/gallery",
+            name: "Our Team",
+            submenu: false,
+            sublinks: [],
+            link: "/team",
+            foreign: false,
           },
-          // {
-          //   name: "News",
-          //   link: "/news",
-          // },
+        ],
+      },
+      {
+        name: "Partners",
+        submenu: true,
+        sublinks: [
           {
-            name: "Leaderboard",
+            name: "Community Partners",
+            submenu: false,
+            sublinks: [],
+            link: "/community-partners",
+            foreign: false,
+          },
+          {
+            name: "Company Partners",
+            submenu: false,
+            sublinks: [],
+            link: "/company-partners",
+            foreign: false,
+          },
+        ],
+      },
+      {
+        name: "Leaderboard",
+        submenu: true,
+        sublinks: [
+          {
+            name: "Overall Leaderboards",
             link: "/leaderboard",
           },
+          {
+            name: "Monthly Leaderboards",
+            link: "/leaderboard/monthly",
+          },
         ],
       },
       {
-        Head: "Campus Chapters",
-        sublink: [
+        name: "Media",
+        submenu: true,
+        sublinks: [
+          {
+            name: "Gallery",
+            submenu: false,
+            sublinks: [],
+            link: "/gallery",
+            foreign: false,
+          },
+          {
+            name: "News",
+            submenu: false,
+            sublinks: [],
+            link: "/news",
+            foreign: false,
+          },
+        ],
+      },
+      {
+        name: "Campus Chapters",
+        submenu: true,
+        sublinks: [
           {
             name: "Home Page",
+            submenu: false,
+            sublinks: [],
             link: "/campuschapters",
+            foreign: false,
+          },
+          {
+            name: "Campus Logo Generator",
+            submenu: false,
+            sublinks: [],
+            link: "/campuschapters/#logo-generator",
+            foreign: false,
+          },
+          {
+            name: "Success Stories",
+            submenu: false,
+            sublinks: [],
+            link: "/campuschapters/#success-stories",
+            foreign: false,
           },
         ],
       },
     ],
   },
   {
+    head: -1,
     name: "Programs",
     submenu: true,
     sublinks: [
       {
-        Head: "Flagship",
-        sublink: [
-          { name: "YIP 2021", link: "/yip" },
+        head: 1,
+        name: "Flagship",
+        submenu: true,
+        sublinks: [
+          {
+            name: "YIP 2021",
+            submenu: false,
+            sublinks: [],
+            link: "/yip",
+            foreign: false,
+          },
           {
             name: "Foundation Program",
+            submenu: false,
+            sublinks: [],
             link: "https://foundation.mulearn.org",
             foreign: true,
           },
         ],
       },
       {
-        Head: "Ongoing",
-        sublink: [{ name: "Art of Teaching", link: "/artofteaching" }],
+        head: 1,
+        name: "Ongoing",
+        submenu: true,
+        sublinks: [
+          {
+            name: "Art of Teaching",
+            submenu: false,
+            sublinks: [],
+            link: "/artofteaching",
+            foreign: false,
+          },
+        ],
       },
       {
-        Head: "Others",
-        sublink: [
-          { name: "Wiki Syllabus", link: "/wikisyllabus" },
-          { name: "Hacktober Fest", link: "/hacktoberfest" },
+        head: 1,
+        name: "Others",
+        submenu: true,
+        sublinks: [
+          {
+            name: "Wiki Syllabus",
+            submenu: false,
+            sublinks: [],
+            link: "/wikisyllabus",
+            foreign: false,
+          },
+          {
+            name: "Hacktober Fest",
+            submenu: false,
+            sublinks: [],
+            link: "/hacktoberfest",
+            foreign: false,
+          },
         ],
       },
     ],
   },
   {
+    head: -1,
     name: "Events Page",
     submenu: true,
     sublinks: [
       {
-        Head: "Global Calendar",
-        sublink: [{ name: "Calendar", link: "/calendar" }],
+        head: 2,
+        name: "Global Calendar",
+        submenu: true,
+        sublinks: [
+          {
+            name: "Calendar",
+            link: "/calendar",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+        ],
       },
       {
-        Head: "Announcements",
-        sublink: [{ name: "Announcements", link: "/announcements" }],
+        head: 2,
+        name: "Announcements",
+        submenu: true,
+        sublinks: [
+          {
+            name: "Announcements",
+            link: "/announcements",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+        ],
       },
       {
-        Head: "Weekly Events",
-        sublink: [{ name: "Inspiration Station", link: "/isr" }],
+        head: 2,
+        name: "Weekly Events",
+        submenu: true,
+        sublinks: [
+          {
+            name: "Inspiration Station",
+            link: "/isr",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+        ],
       },
     ],
   },
   {
+    head: -1,
     name: "Interest Group",
     submenu: true,
     sublinks: [
       {
-        Head: "Home Page",
-        sublink: [
+        head: 3,
+        name: "Interest Groups",
+        submenu: true,
+        sublinks: [
           {
-            name: "Home",
-            link: "https://learn.mulearn.org/",
+            name: "Home Page",
+            link: mainlink + "/",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
           },
-        ],
-      },
-      {
-        Head: "Search",
-        sublink: [
-          {
-            name: "Mentor Directory",
-            link: "https://learn.mulearn.org/mentors",
-          },
-          {
-            name: "Existing Circles",
-            link: "https://learn.mulearn.org/searchcircles",
-          },
-        ],
-      },
-      {
-        Head: "Practice",
-        sublink: [
-          {
-            name: "Problem Shelf",
-            link: "https://learn.mulearn.org/problemshelves",
-          },
-          {
-            name: "Challenges",
-            link: "https://learn.mulearn.org/challenges",
-          },
-          {
-            name: "Courses",
-            link: "https://learn.mulearn.org/courses",
-          },
-        ],
-      },
-      {
-        Head: "Interest Groups",
-        sublink: [
           {
             name: "Web Development",
-            link: "https://learn.mulearn.org/web",
+            link: mainlink + "/web",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
           },
           {
             name: "Android Development",
-            link: "https://learn.mulearn.org/android",
+            link: mainlink + "/android",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
           },
           {
             name: "UI / UX",
-            link: "https://learn.mulearn.org/uiux",
+            link: mainlink + "/uiux",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
           },
           {
             name: "Product Management",
-            link: "https://learn.mulearn.org/pm",
+            link: mainlink + "/pm",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
           },
           {
             name: "IoT",
-            link: "https://learn.mulearn.org/iot",
+            link: mainlink + "/iot",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
           },
           {
             name: "Cyber Security",
-            link: "https://learn.mulearn.org/cybersec",
+            link: mainlink + "/cybersec",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+        ],
+      },
+      {
+        head: 3,
+        name: "Search",
+        submenu: true,
+        sublinks: [
+          {
+            name: "Mentor Directory",
+            link: mainlink + "/mentors",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+          {
+            name: "Existing Circles",
+            link: mainlink + "/searchcircles",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+        ],
+      },
+      {
+        head: 3,
+        name: "Practice",
+        submenu: true,
+        sublinks: [
+          {
+            name: "Problem Shelf",
+            link: mainlink + "/problemshelves",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+          {
+            name: "Challenges",
+            link: mainlink + "/challenges",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+          {
+            name: "Courses",
+            link: mainlink + "/courses",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+          {
+            name: "API Setu",
+            link: mainlink + "/apisetu",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+        ],
+      },
+      {
+        head: 3,
+        name: "Learning Circles",
+        submenu: true,
+        sublinks: [
+          {
+            name: "Create Circle",
+            link: mainlink + "/create",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+          {
+            name: "Join Circles",
+            link: mainlink + "/join",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
           },
         ],
       },

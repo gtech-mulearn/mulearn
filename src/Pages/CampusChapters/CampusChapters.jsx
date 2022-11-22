@@ -215,7 +215,7 @@ const CampusChapters = () => {
           </div>
         </div>
 
-        <div className={styles.generator_view_container}>
+        <div className={styles.generator_view_container} id="logo-generator">
           <div className={styles.generator_view}>
             <div className={styles.gv_texts}>
               <p className={styles.gv_heading}>The Campus Logo Generator</p>
@@ -249,7 +249,7 @@ const CampusChapters = () => {
           </div>
         </div>
 
-        <div className={styles.third_view_container}>
+        <div className={styles.third_view_container} id="success-stories">
           <div className={styles.third_view}>
             <div className={styles.tv_texts}>
               <p className={styles.tv_heading}>
@@ -263,12 +263,12 @@ const CampusChapters = () => {
 
             <div className={styles.tv_story_container}>
               <div className={styles.tv_story}>
-                <Card sx={{ maxWidth: 345, height: 600 }}>
+                <Card sx={{ maxWidth: 345, height: 500 }}>
                   <CardActionArea>
                     <CardMedia
                       component="img"
                       height="30"
-                      image="/assets/campuscommunity/amritha.jpeg"
+                      image="/assets/campuscommunity/amirtha.jpg"
                       alt="Amritha G S"
                     />
                     <CardContent>
@@ -293,7 +293,7 @@ const CampusChapters = () => {
                 </Card>
               </div>
               <div className={styles.tv_story}>
-                <Card sx={{ maxWidth: 345, height: 600 }}>
+                <Card sx={{ maxWidth: 345, height: 500 }}>
                   <CardActionArea>
                     <CardMedia
                       component="img"
@@ -324,7 +324,7 @@ const CampusChapters = () => {
               </div>
 
               <div className={styles.tv_story}>
-                <Card sx={{ maxWidth: 345, height: 600 }}>
+                <Card sx={{ maxWidth: 345, height: 500 }}>
                   <CardActionArea>
                     <CardMedia
                       component="img"

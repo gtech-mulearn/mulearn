@@ -31,107 +31,54 @@ const Career = () => {
             />
           </div>
         </div>
-        <div className={styles.sectionseperator_container}>
-          <img
-            className={styles.sectionseperator}
-            src="/assets/careers/fsbg.png"
-            alt=""
-          />
-        </div>
         <div className={styles.second_section}>
           <p className={styles.ssheading}>
-            <span className={styles.ssheadingspan}>µLearn X Yip</span> Hiring
-            Call
+            <span className={styles.ssheadingspan}>Undaku</span> Hiring Call
           </p>
           <p className={styles.ssheadingtagline}>
-            We want people with integrity, who are fair, impartial, honest, and
-            truthful. We are looking for dynamic and adaptable individuals who
-            are not afraid to think creatively and to be proactive, flexible,
-            and responsive.
+            Undaku is a ‘SasSiest No-code Plaorm with more flexibility to solve
+            complex Logic B2B use cases.
           </p>
-
-          <a
-            href="https://mulearn.notion.site/Roles-Responsibilities-2c4bec241ba742c1a4508f3a94531c2e"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button className={styles.op_jobdescription}>
-              Hiring Call Details
-            </button>
-          </a>
           <div className={styles.opportunities}>
             <CareersCard
-              title="Program Manager"
-              duration="1 Year"
-              payment="INR 60K - 80K/Month"
+              title="Sales and Marketing Intern"
+              about="We are looking for a digital marketing intern who is passionate about making a difference. This is a great
+              opportunity for someone who is passionate about marketing and wants to learn more about the
+              industry."
               criteria="Click View More"
-              vacancy="01"
-              location="Trivandrum"
-              lastdate="14th November"
-              jdlink="https://mulearn.notion.site/Program-Manager-6aba62240dd34826b37f44afb24d95f4"
-              applylink="https://airtable.com/shr6A31lS1RwjxvqD"
+              vacancy="1"
+              payment="INR 5K-10K"
+              location="Kochi, Kerala, India"
+              lastdate="25th November"
+              jdlink="https://drive.google.com/file/d/1qyMnTbRK11ryyFoZfVzLNZQ3pDJrf7Ii/view?usp=sharing"
+              applylink="https://airtable.com/shrDuyaALoq29Wkdh"
             />
             <CareersCard
-              title="Operations Coordinator"
-              duration="1 Year"
-              payment="INR 20K - 40K/Month"
+              title="Content Writer Intern"
+              about="We're looking for a talented content writer to help us tell our story to the world and establish Undaku as
+              a global brand. You will create excellent content that will wow our prospects and educate our clients."
               criteria="Click View More"
-              vacancy="06"
-              location="Trivandrum"
-              lastdate="14th November"
-              jdlink="https://mulearn.notion.site/Operations-Coordinator-67535a48b8974ba1ba3e77151f4ae938"
-              applylink="https://airtable.com/shr6A31lS1RwjxvqD"
+              vacancy="1"
+              payment="INR 5K-10K"
+              location="Kochi, Kerala, India"
+              lastdate="25th November"
+              jdlink="https://drive.google.com/file/d/1w48QCkxLd7AhCePtceWjBzV2g1uEFyUe/view?usp=sharing"
+              applylink="https://airtable.com/shrDuyaALoq29Wkdh"
             />
             <CareersCard
-              title="Zonal Coordinator"
-              duration="1 Year"
-              payment="INR 20K - 40K/Month"
+              title="MEAN Stack Developer Intern"
+              about="We are looking for a MEAN Stack Intern to join our core platform development team. This
+              is an excellent opportunity to learn and be involved in developing a cung-edge no-code platform.
+              The internship will last for three months, with the possibility of being hired after the internship."
               criteria="Click View More"
-              vacancy="03"
-              location="Trivandrum"
-              lastdate="14th November"
-              jdlink="https://mulearn.notion.site/Zonal-Coordinator-edbed256b1d04703b7a444b6c070bfbb"
-              applylink="https://airtable.com/shr6A31lS1RwjxvqD"
+              vacancy="2"
+              payment="INR 5K-10K"
+              location="Kochi, Kerala, India"
+              lastdate="25th November"
+              jdlink="https://drive.google.com/file/d/1Oh0lhi36JheqMUn33IXCbd0msN4APxMQ/view?usp=sharing"
+              applylink="https://airtable.com/shrDuyaALoq29Wkdh"
             />
-            <CareersCard
-              title="District Coordinator"
-              duration="1 Year"
-              payment="INR 15K - 30K/Month"
-              criteria="Click View More"
-              vacancy="14"
-              location="Across Kerala"
-              lastdate="14th November"
-              jdlink="https://mulearn.notion.site/District-Coordinator-4f10c75f117a49a3a9507a87f8ce2318"
-              applylink="https://airtable.com/shr6A31lS1RwjxvqD"
-            />
-            <CareersCard
-              title="Creative Coordinator"
-              duration="1 Year"
-              payment="INR 20K - 40K/Month"
-              criteria="Click View More"
-              vacancy="01"
-              location="Trivandrum"
-              lastdate="14th November"
-              jdlink="https://mulearn.notion.site/Creative-Coordinator-a5083823e02a48c0a023dc86828b74b9"
-              applylink="https://airtable.com/shr6A31lS1RwjxvqD"
-            />
-            {/* <CareersCard
-              title="Temporary Intern"
-              duration="As per requirement"
-              payment="INR 500/Day+TA"
-              criteria="Click View More"
-              vacancy="140"
-              location="Across Kerala"
-              lastdate="14th November"
-              jdlink="https://mulearn.notion.site/Temporary-Intern-b413ce986e7b410d918a7b2aba3ae879"
-              applylink="https://airtable.com/shr6A31lS1RwjxvqD"
-            /> */}
           </div>
-          <p className={styles.ssheadingposttagline}>
-              If you think you embody these values, we would love to see some of
-              them! Apply for a full-time/part-time/paid/volunteer position with
-              us here.
-            </p>
         </div>
         <div className={styles.closedcareerscontainer}>
           <div className={styles.second_section}>
@@ -147,6 +94,7 @@ const Career = () => {
                   date={data.date}
                   roles={data.Roles}
                   jdlink={data.poster}
+                  location={data.location}
                 />
               ))}
             </div>

@@ -6,8 +6,6 @@ import "./Gallery.css";
 
 import EventPics from "./data/EventPics";
 
-import fvimg from "./assets/fvimg.png";
-
 const Gallery = () => {
   const [allimages, setAllImage] = useState();
   const [program, setProgram] = useState(EventPics[0]);
@@ -25,8 +23,8 @@ const Gallery = () => {
 
     let allPics = [];
 
-    EventPics.map((item) => {
-      item.pics.map((pic) => {
+    EventPics.forEach((item) => {
+      item.pics.forEach((pic) => {
         allPics.push(pic);
       });
     });
@@ -53,7 +51,11 @@ const Gallery = () => {
               </p>
             </div>
             <div className={styles.fv_images}>
-              <img src={fvimg} alt="" className={styles.fv_img} />
+              <img
+                src="/assets/gallery/new_frame.webp"
+                alt=""
+                className={styles.fv_img}
+              />
             </div>
           </div>
         </div>
@@ -97,7 +99,7 @@ const Gallery = () => {
         {program && (
           <section id="gallery">
             <div className="gallery_grid">
-              {(program.Event_Name == "All Images" && allimages
+              {(program.Event_Name === "All Images" && allimages
                 ? allimages
                 : program.pics
               )
@@ -109,6 +111,8 @@ const Gallery = () => {
                       src={pic}
                       alt=""
                       loading="lazy"
+                      width="100%"
+                      height="100%"
                     />
                   </div>
                 ))}

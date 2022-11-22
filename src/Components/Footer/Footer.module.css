@@ -3,10 +3,12 @@
   background-color: #3a3a3a;
   color: white;
   font-family: "Poppins", sans-serif;
+  position: relative;
+  z-index: -1;
 }
 
 .footer_container {
-  padding: 3rem 2rem;
+  padding: 2rem;
 }
 
 @media only screen and (min-width: 1000px) {
@@ -50,7 +52,7 @@ a {
 
 .address,
 .mail {
-  margin-top: 2rem;
+  margin-top: 1rem;
   font-size: 0.8rem;
   font-weight: 300;
   width: 75%;
@@ -58,6 +60,7 @@ a {
 
 .mail {
   color: #f1954a;
+  margin-bottom: 0.5rem;
 }
 
 .social {
@@ -66,11 +69,11 @@ a {
   margin-right: 1rem;
 }
 
-.social:hover{
--webkit-transform: scale(0.8);
--ms-transform: scale(0.8);
-transform: scale(0.8);
-transition: 0.5s ease;
+.social:hover {
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+  transition: 0.5s ease;
 }
 
 @media only screen and (min-width: 1000px) {
@@ -193,4 +196,15 @@ button:focus {
     align-items: center;
     justify-content: space-between;
   }
+}
+
+.bottomcopyright {
+  position: absolute;
+  bottom: 0;
+  color: white;
+  background-color: #3a3a3a;
+  width: 100%;
+  text-align: center;
+  padding: 5px 0px 5px 0px;
+  font-size: 0.6rem;
 }

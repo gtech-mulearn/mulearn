@@ -26,6 +26,11 @@
   color: #303030;
 }
 
+.readhide {
+  color: #f78c40;
+  cursor: pointer;
+}
+
 .fv_heading span {
   font-weight: 600;
   color: #f78c40;
@@ -129,7 +134,7 @@
   font-size: 0.9rem;
   font-family: "Noto Sans", sans-serif;
   font-weight: 600;
-  opacity: 0.8;
+  color: #303030;
   text-align: left;
   margin-top: 0.5rem;
 }
