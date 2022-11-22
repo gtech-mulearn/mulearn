@@ -330,6 +330,27 @@ export const links = [
           },
         ],
       },
+      {
+        head: 3,
+        name: "Learning Circles",
+        submenu: true,
+        sublinks: [
+          {
+            name: "Create Circle",
+            link: "/create",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+          {
+            name: "Join Circles",
+            link: "/join",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+        ],
+      },
     ],
   },
 ];
