@@ -1,0 +1,36 @@
+{
+  "new": [
+    {
+      "title": "Getting Companies to fight for you 🤼‍♂️",
+      "date": "Fri Nov 25 2022 00:00:00 GMT+0530 (India Standard Time)",
+      "description": "GTech μLearn presents Mentor Connect 👨🏽‍🏫, an original initiative as part of Weekly Twitch. Occurring every Friday at 7pm, this initiative will give members an opportunity to interact, learn, and explore their interests with mentors from the Indust",
+      "url": "https://mulearn.org/mentorconnect"
+    },
+    {
+      "title": "Undaku Hiring Call",
+      "date": "Fri Nov 18 2022 00:00:00 GMT+0530 (India Standard Time)",
+      "description": "Undaku is a ‘SasSiest No-code Platform with more flexibility to solve complex Logic B2B use cases. They are presently looking for Sales and Marketing Intern, Content Writer Intern and two MEAN Stack Developer Interns",
+      "url": "https://mulearn.org/careers"
+    },
+    {
+        "title": "BUILD.MYWEB | Web Interest Group",
+        "date": "Fri Nov 18 2022 00:00:00 GMT+0530 (India Standard Time)",
+        "description": "Introducing BUILD.MYWEB, a Web Design Bootcamp which will help you to gain the necessary skills ✅ required to start building some dope 💥 websites. ",
+        "url": "https://mulearn.org/buildmyweb"
+      }
+  ],
+  "old": [
+    {
+      "title": "Touch Typing Task(1000 Karma)",
+      "date": "Sat Nov 12 2022 00:00:00 GMT+0530 (India Standard Time)",
+      "description": "Do you know, The faster you type, the faster you communicate with others. Let's work on our rapid fingers and earn some karma. Karma points can be availed at level 126, 285, 460 and 685.",
+      "url": "https://learn.mulearn.org/challenge/typing"
+    },
+    {
+      "title": "Defensive Driving Task(400 Karma)",
+      "date": "Thu Oct 20 2022 00:00:00 GMT+0530 (India Standard Time)",
+      "description": "This challenge is intended to teach you about defensive driving and how you can apply its guidelines and practices to make the roads a safer place for all road users.",
+      "url": "https://learn.mulearn.org/challenge/defensivedriving"
+    }
+  ]
+}
