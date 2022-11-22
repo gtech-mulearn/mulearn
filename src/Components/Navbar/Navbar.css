@@ -18,7 +18,6 @@
 
 .special::-webkit-scrollbar {
   width: 5px;
-
 }
 
 /* Track */
@@ -33,7 +32,4 @@
 .special::-webkit-scrollbar-thumb {
   background: hsla(32, 100%, 44%, 0.247);
   border-radius: 10px;
-
 }
-
-.descri {}
