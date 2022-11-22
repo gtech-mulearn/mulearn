@@ -337,14 +337,14 @@ export const links = [
         sublinks: [
           {
             name: "Create Circle",
-            link: "/create",
+            link: mainlink + "/create",
             submenu: false,
             sublinks: [],
             foreign: false,
           },
           {
             name: "Join Circles",
-            link: "/join",
+            link: mainlink + "/join",
             submenu: false,
             sublinks: [],
             foreign: false,
