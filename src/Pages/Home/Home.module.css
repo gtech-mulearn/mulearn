@@ -584,7 +584,7 @@ a {
   width: 20rem;
   display: block;
   margin: auto;
-  margin-top: 2rem;
+  margin-top: 0.5rem;
 }
 
 @media only screen and (min-width: 768px) {
