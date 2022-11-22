@@ -33,7 +33,7 @@
 }
 
 .community_interest {
-  opacity: 0.5;
+  color: gray;
   font-size: 0.9rem;
   text-align: right;
   font-weight: 600;

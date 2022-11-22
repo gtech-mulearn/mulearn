@@ -14,7 +14,6 @@ const Notifications = () => {
 
   TimeAgo.setDefaultLocale(en.locale);
   TimeAgo.addLocale(en);
-  const timeAgo = new TimeAgo("en-US");
 
   return (
     <>
