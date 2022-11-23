@@ -23,8 +23,8 @@ const HacktoberFest = () => {
               </p>
             </div>
             <img
-              alt='Illustration'
-              src='/assets/events/hacktoberfest/fvimgd.gif'
+              alt="Illustration"
+              src="/assets/events/hacktoberfest/fvimgd.gif"
             />
           </div>
         </div>
@@ -40,8 +40,8 @@ const HacktoberFest = () => {
             <div className={styles.sv_points}>
               <div className={styles.sv_point}>
                 <img
-                  src='/assets/events/hacktoberfest/season.png'
-                  alt=''
+                  src="/assets/events/hacktoberfest/season.webp"
+                  alt=""
                   className={styles.sv_image}
                 />
                 <div className={styles.svp_heading}>New Season</div>
@@ -53,8 +53,8 @@ const HacktoberFest = () => {
               </div>
               <div className={styles.sv_point}>
                 <img
-                  src='/assets/events/hacktoberfest/participate.png'
-                  alt=''
+                  src="/assets/events/hacktoberfest/participate.webp"
+                  alt=""
                   className={styles.sv_image}
                 />
                 <div className={styles.svp_heading}>To Participate</div>
@@ -68,8 +68,8 @@ const HacktoberFest = () => {
 
               <div className={styles.sv_point}>
                 <img
-                  src='/assets/events/hacktoberfest/surprises.png'
-                  alt=''
+                  src="/assets/events/hacktoberfest/surprises.webp"
+                  alt=""
                   className={styles.sv_image}
                 />
                 <div className={styles.svp_heading}>New Surprises</div>
@@ -100,8 +100,8 @@ const HacktoberFest = () => {
               <div className={styles.sv_points}>
                 <div className={styles.sv_point}>
                   <img
-                    src='/assets/events/hacktoberfest/github.png'
-                    alt=''
+                    src="/assets/events/hacktoberfest/github.webp"
+                    alt=""
                     className={styles.sv_image}
                   />
                   <div
@@ -120,8 +120,8 @@ const HacktoberFest = () => {
 
                 <div className={styles.sv_point}>
                   <img
-                    src='/assets/events/hacktoberfest/create.png'
-                    alt=''
+                    src="/assets/events/hacktoberfest/create.webp"
+                    alt=""
                     className={styles.sv_image}
                   />
                   <div
@@ -139,8 +139,8 @@ const HacktoberFest = () => {
 
                 <div className={styles.sv_point}>
                   <img
-                    src='/assets/events/hacktoberfest/contribute.png'
-                    alt=''
+                    src="/assets/events/hacktoberfest/contribute.webp"
+                    alt=""
                     className={styles.sv_image}
                   />
                   <div
@@ -173,19 +173,19 @@ const HacktoberFest = () => {
             <div className={styles.yt_vids_grid}>
               <div className={styles.yt_vid_container}>
                 <iframe
-                  src='https://www.youtube-nocookie.com/embed/eu2ydNGlsLk'
-                  title='YouTube video player'
-                  frameborder='0'
-                  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                  src="https://www.youtube-nocookie.com/embed/eu2ydNGlsLk"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
                 ></iframe>
               </div>
               <div className={styles.yt_vid_container}>
                 <iframe
-                  src='https://www.youtube-nocookie.com/embed/B_cfyfShw3I'
-                  title='Github Expert Advice'
-                  frameborder='0'
-                  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                  src="https://www.youtube-nocookie.com/embed/B_cfyfShw3I"
+                  title="Github Expert Advice"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
                 ></iframe>
               </div>
@@ -249,9 +249,9 @@ const HacktoberFest = () => {
                   business.
                 </p>
                 <a
-                  href='http://awesome.mulearn.org'
-                  target='_blank'
-                  rel='noopener noreferrer'
+                  href="http://awesome.mulearn.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <button className={styles.primary_btn}>Contribute Now</button>
                 </a>
@@ -265,9 +265,9 @@ const HacktoberFest = () => {
                   projects. And be a part of hackctober fest also.
                 </p>
                 <a
-                  href='https://github.com/pygrammers-org/Road-to-OSS'
-                  target='_blank'
-                  rel='noopener noreferrer'
+                  href="https://github.com/pygrammers-org/Road-to-OSS"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <button className={styles.primary_btn}>Contribute Now</button>
                 </a>
