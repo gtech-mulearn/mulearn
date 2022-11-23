@@ -3,6 +3,8 @@ import React from "react";
 import Footer from "../../../Components/Footer/Footer";
 import Navbar from "../../../Components/Navbar/Navbar";
 import styles from "./HacktoberFest.module.css";
+import Github from "../../../Components/Github/Github";
+
 
 const HacktoberFest = () => {
   const profiles = require("./data/hactoberfestcomplete.json");
@@ -274,6 +276,7 @@ const HacktoberFest = () => {
                 </a>
               </div>
             </div>
+            <Github/>
           </div>
         </div>
       </div>
