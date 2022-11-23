@@ -51,7 +51,11 @@ const News = () => {
               </p>
             </div>
             <div className="fv_images">
-              <img src="/assets/gallery/fvimg.png" alt="" className="fv_img" />
+              <img
+                src="/assets/gallery/news_frame.webp"
+                alt=""
+                className="fv_img"
+              />
             </div>
           </div>
         </div>
