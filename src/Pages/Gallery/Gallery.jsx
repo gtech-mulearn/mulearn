@@ -103,7 +103,7 @@ const Gallery = () => {
                 ? allimages
                 : program.pics
               )
-                .slice(0, 300)
+                // .slice(0, 300)
                 .map((pic) => (
                   <div className="gallery_item">
                     <img
