@@ -42,7 +42,7 @@ const HacktoberFest = () => {
             <div className={styles.sv_points}>
               <div className={styles.sv_point}>
                 <img
-                  src="/assets/events/hacktoberfest/season.png"
+                  src="/assets/events/hacktoberfest/season.webp"
                   alt=""
                   className={styles.sv_image}
                 />
@@ -55,7 +55,7 @@ const HacktoberFest = () => {
               </div>
               <div className={styles.sv_point}>
                 <img
-                  src="/assets/events/hacktoberfest/participate.png"
+                  src="/assets/events/hacktoberfest/participate.webp"
                   alt=""
                   className={styles.sv_image}
                 />
@@ -70,7 +70,7 @@ const HacktoberFest = () => {
 
               <div className={styles.sv_point}>
                 <img
-                  src="/assets/events/hacktoberfest/surprises.png"
+                  src="/assets/events/hacktoberfest/surprises.webp"
                   alt=""
                   className={styles.sv_image}
                 />
@@ -90,7 +90,7 @@ const HacktoberFest = () => {
               <div className={styles.sv_points}>
                 <div className={styles.sv_point}>
                   <img
-                    src="/assets/events/hacktoberfest/github.png"
+                    src="/assets/events/hacktoberfest/github.webp"
                     alt=""
                     className={styles.sv_image}
                   />
@@ -110,7 +110,7 @@ const HacktoberFest = () => {
 
                 <div className={styles.sv_point}>
                   <img
-                    src="/assets/events/hacktoberfest/create.png"
+                    src="/assets/events/hacktoberfest/create.webp"
                     alt=""
                     className={styles.sv_image}
                   />
@@ -129,7 +129,7 @@ const HacktoberFest = () => {
 
                 <div className={styles.sv_point}>
                   <img
-                    src="/assets/events/hacktoberfest/contribute.png"
+                    src="/assets/events/hacktoberfest/contribute.webp"
                     alt=""
                     className={styles.sv_image}
                   />

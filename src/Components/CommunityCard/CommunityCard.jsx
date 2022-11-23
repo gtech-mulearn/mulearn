@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./CommunityCard.module.css";
 
-const CommunityCard = ({ cname, cimage, clink, interest }) => {
+const CommunityCard = ({ cname, cimage, clink }) => {
   return (
     <div className={styles.community_card_container}>
       <div className={styles.community_card}>

@@ -20,9 +20,11 @@ a {
   padding-top: 3rem;
   background-color: #f2f3f9;
   opacity: 1;
-  background-image: repeating-radial-gradient(circle at 0 0,
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
       transparent 0,
-      #f2f3f9 15px),
+      #f2f3f9 15px
+    ),
     repeating-linear-gradient(#fdf1e755, #fdf1e7);
 }
 
@@ -131,7 +133,7 @@ a {
   grid-template-columns: 20% 20% 20% 20%;
   justify-content: space-between;
   justify-items: center;
-
+  align-items: center;
 }
 
 @media only screen and (min-width: 1000px) {
@@ -582,7 +584,7 @@ a {
   width: 20rem;
   display: block;
   margin: auto;
-  margin-top: 2rem;
+  margin-top: 0.5rem;
 }
 
 @media only screen and (min-width: 768px) {

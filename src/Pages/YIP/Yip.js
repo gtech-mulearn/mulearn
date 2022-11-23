@@ -1,12 +1,7 @@
-// import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import "./steps.css";
-import  "./yip.css";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "bootstrap-icons/font/bootstrap-icons.css";
-// import MenuIcon from "@material-ui/icons/Menu";
-// import swal from 'sweetalert';
+import "./yip.css";
 
 function Yip() {
   // //Get the button
@@ -90,7 +85,7 @@ function Yip() {
 
             <div className="right-section">
               <img
-                src={require("./assets/Illustration.png")}
+                src={require("./assets/Illustration.webp")}
                 alt=""
                 className="illustration"
               />
@@ -101,7 +96,7 @@ function Yip() {
             <div className="bulb-container">
               <img
                 className="paper-bulb"
-                src={require("./assets/Paper Bulb.png")}
+                src={require("./assets/Paper Bulb.webp")}
                 alt=""
               />
             </div>
@@ -162,7 +157,7 @@ function Yip() {
                 <div className="timeline__event animated fadeInUp delay-3s timeline__event--type1">
                   <div className="timeline__event__icon">
                     <img
-                      src={require("./assets/procedure/prereg.png")}
+                      src={require("./assets/procedure/prereg.webp")}
                       alt=""
                       className="lni-cake"
                     />
@@ -192,7 +187,7 @@ function Yip() {
                 <div className="timeline__event animated fadeInUp delay-2s timeline__event--type2">
                   <div className="timeline__event__icon">
                     <img
-                      src={require("./assets/procedure/studentreg.png")}
+                      src={require("./assets/procedure/studentreg.webp")}
                       alt=""
                       className="lni-cake"
                     />
@@ -223,7 +218,7 @@ function Yip() {
                 <div className="timeline__event animated fadeInUp delay-1s timeline__event--type3">
                   <div className="timeline__event__icon">
                     <img
-                      src={require("./assets/procedure/yip-voc.png")}
+                      src={require("./assets/procedure/yip-voc.webp")}
                       alt=""
                       className="lni-cake"
                     />
@@ -248,7 +243,7 @@ function Yip() {
                 <div className="timeline__event animated fadeInUp timeline__event--type1">
                   <div className="timeline__event__icon">
                     <img
-                      src={require("./assets/procedure/team.png")}
+                      src={require("./assets/procedure/team.webp")}
                       alt=""
                       className="lni-cake"
                     />
@@ -279,7 +274,7 @@ function Yip() {
                 <div className="timeline__event animated fadeInUp delay-3s timeline__event--type1">
                   <div className="timeline__event__icon">
                     <img
-                      src={require("./assets/procedure/ideafind.png")}
+                      src={require("./assets/procedure/ideafind.webp")}
                       alt=""
                       className="lni-cake"
                     />
@@ -303,7 +298,7 @@ function Yip() {
                 <div className="timeline__event animated fadeInUp delay-2s timeline__event--type2">
                   <div className="timeline__event__icon">
                     <img
-                      src={require("./assets/procedure/approved.png")}
+                      src={require("./assets/procedure/approved.webp")}
                       alt=""
                       className="lni-cake"
                     />
@@ -327,7 +322,7 @@ function Yip() {
                 <div className="timeline__event animated fadeInUp delay-1s timeline__event--type3">
                   <div className="timeline__event__icon">
                     <img
-                      src={require("./assets/procedure/evaluation.png")}
+                      src={require("./assets/procedure/evaluation.webp")}
                       alt=""
                       className="lni-cake"
                     />
@@ -353,7 +348,7 @@ function Yip() {
                 <div className="timeline__event animated fadeInUp timeline__event--type1">
                   <div className="timeline__event__icon">
                     <img
-                      src={require("./assets/procedure/winner annoucement.png")}
+                      src={require("./assets/procedure/winner annoucement.webp")}
                       alt=""
                       className="lni-cake"
                     />

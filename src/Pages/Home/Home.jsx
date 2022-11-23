@@ -476,7 +476,7 @@ const Home = () => {
           </div>
           <div>
             <img
-              src="assets/home/Chart.svg"
+              src="assets/home/Chart.webp"
               alt="Chart"
               className={styles.chart_img}
             />
