@@ -610,6 +610,7 @@
 .name {
   font-family: "Noto Sans", sans-serif;
   font-weight: 500;
+  text-align: center;
 }
 
 .hacktoberfest {
@@ -643,11 +644,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 12rem;
+}
+
+.py_profile {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 8rem;
 }
 
 .profile_picture {
   width: 5rem;
-  border-radius: 100px;
+  height: 5rem;
+  object-fit: contain;
+  border-radius: 1000px;
 }
 
 @media only screen and (min-width: 1024px) {

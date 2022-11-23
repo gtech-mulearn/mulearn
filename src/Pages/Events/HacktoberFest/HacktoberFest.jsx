@@ -1,13 +1,11 @@
-import axios from "axios";
 import React from "react";
 import Footer from "../../../Components/Footer/Footer";
 import Navbar from "../../../Components/Navbar/Navbar";
 import styles from "./HacktoberFest.module.css";
-import Github from "../../../Components/Github/Github";
-
 
 const HacktoberFest = () => {
   const profiles = require("./data/hactoberfestcomplete.json");
+  const py_profiles = require("./data/info.json");
   return (
     <>
       <Navbar />
@@ -232,7 +230,7 @@ const HacktoberFest = () => {
 
         <div className={styles.third_view_container}>
           <div className={styles.third_view}>
-            <div className={styles.tv_texts}>
+            {/* <div className={styles.tv_texts}>
               <p className={styles.tvheader}>
                 µLearn <span> Supported</span> Repositories
               </p>
@@ -275,8 +273,47 @@ const HacktoberFest = () => {
                   <button className={styles.primary_btn}>Contribute Now</button>
                 </a>
               </div>
+            </div> */}
+          </div>
+        </div>
+        <div className={styles.third_view_container}>
+          <div className={styles.third_view}>
+            <div className={styles.road_to_oss_container}>
+              <div className={styles.road_to_oss}>
+                <p className={styles.tvheader}>
+                  µLearn <span>Road to OSS</span> Contributors
+                </p>
+                <p className={styles.tvtagline}>
+                  Below showcased are the list of people who have contributed to
+                  the Opensource initative by Pygrammers during HacktoberFest
+                  2022.
+                </p>
+                <div className={styles.profile_container}>
+                  {py_profiles &&
+                    py_profiles.map((profile) => {
+                      return (
+                        <div className={styles.py_profile}>
+                          <img
+                            src={`/assets/events/hacktoberfest/py_profile/${profile.image}`}
+                            alt=""
+                            className={styles.profile_picture}
+                          />
+                          <p className={styles.name}>{profile.name}</p>
+                          <a
+                            href={`https://github.com/${profile.gh_username}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <p className={styles.username}>
+                              {profile.gh_username}
+                            </p>
+                          </a>
+                        </div>
+                      );
+                    })}
+                </div>
+              </div>
             </div>
-            <Github/>
           </div>
         </div>
       </div>
