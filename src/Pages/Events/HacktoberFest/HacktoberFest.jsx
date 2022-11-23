@@ -281,7 +281,7 @@ const HacktoberFest = () => {
             <div className={styles.road_to_oss_container}>
               <div className={styles.road_to_oss}>
                 <p className={styles.tvheader}>
-                  µLearn <span>Road to OSS</span> Contributors
+                  <span>Road to OSS</span> Contributors
                 </p>
                 <p className={styles.tvtagline}>
                   Below showcased are the list of people who have contributed to
