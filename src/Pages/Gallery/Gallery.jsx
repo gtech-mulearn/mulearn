@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import GalleryImages from "../../Components/Gallery/GalleryImages";
@@ -9,30 +9,6 @@ import "./Gallery.css";
 import EventPics from "./data/EventPics";
 
 const Gallery = () => {
-  const [allimages, setAllImage] = useState();
-  const [program, setProgram] = useState(EventPics[0]);
-
-  useEffect(() => {
-    function shuffleArray(array) {
-      for (var i = array.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-      }
-      return array;
-    }
-
-    let allPics = [];
-
-    EventPics.forEach((item) => {
-      item.pics.forEach((pic) => {
-        allPics.push(pic);
-      });
-    });
-
-    setAllImage(shuffleArray(allPics));
-  }, [program]);
 
   return (
     <>
@@ -76,8 +52,8 @@ const Gallery = () => {
                 events.
               </p>
             </div>
-  
-            <GalleryImages />
+
+            <GalleryImages events={EventPics} />
             {/* <div className={styles.tabs_container}>
               {EventPics.map((event) => (
                 <p
