@@ -1,7 +1,27 @@
-[  {
+[
+  {
     "Sl_No": 0,
     "Event_Name": "All News",
-    "pics": []
+    "pics": [
+      "assets/news/news_1.webp",
+      "assets/news/news_2.webp",
+      "assets/news/news_3.webp",
+      "assets/news/news_4.webp",
+      "assets/news/news_5.webp",
+      "assets/news/news_6.webp",
+      "assets/news/news_7.webp",
+      "assets/news/news_8.webp",
+      "assets/news/news_9.webp",
+      "assets/news/news_10.webp",
+      "assets/news/news_11.webp",
+      "assets/news/news_12.webp",
+      "assets/news/news_13.webp",
+      "assets/news/news_14.webp",
+      "assets/news/news_15.webp",
+      "assets/news/news_16.webp",
+      "assets/news/news_17.webp",
+      "assets/news/news_18.webp"
+    ]
   },
   {
     "Sl_No": 1,
