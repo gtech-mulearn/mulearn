@@ -8,6 +8,11 @@
   background-color: #ffffff;
 }
 
+.first_view{
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .fv_img {
   width: 18rem;
   display: block;
@@ -85,7 +90,7 @@
 /* Second Section Styles */
 
 .second_view_container {
-  padding: 0 2rem;
+  padding: 0 0rem;
   background-color: #ffffff;
 }
 
