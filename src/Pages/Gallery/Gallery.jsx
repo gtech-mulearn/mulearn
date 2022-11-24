@@ -53,6 +53,8 @@ const Gallery = () => {
               </p>
             </div>
 
+            <GalleryImages />
+
             <GalleryImages events={EventPics} />
             {/* <div className={styles.tabs_container}>
               {EventPics.map((event) => (

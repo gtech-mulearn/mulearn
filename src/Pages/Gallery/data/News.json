@@ -2,52 +2,72 @@
   {
     "Sl_No": 0,
     "Event_Name": "All News",
-    "pics": []
+    "pics": [
+      "assets/news/news_1.webp",
+      "assets/news/news_2.webp",
+      "assets/news/news_3.webp",
+      "assets/news/news_4.webp",
+      "assets/news/news_5.webp",
+      "assets/news/news_6.webp",
+      "assets/news/news_7.webp",
+      "assets/news/news_8.webp",
+      "assets/news/news_9.webp",
+      "assets/news/news_10.webp",
+      "assets/news/news_11.webp",
+      "assets/news/news_12.webp",
+      "assets/news/news_13.webp",
+      "assets/news/news_14.webp",
+      "assets/news/news_15.webp",
+      "assets/news/news_16.webp",
+      "assets/news/news_17.webp",
+      "assets/news/news_18.webp"
+    ]
   },
   {
     "Sl_No": 1,
     "Event_Name": "µLearn Launch",
     "pics": [
-      "https://drive.google.com/uc?export=view&id=14tE3u2WtlSJMn8K8MQ634Z82DwVo5WcW",
-      "https://drive.google.com/uc?export=view&id=1-uBUC3Z0zmOaJWT-lJHcmVLebfEj69kS",
-      "https://drive.google.com/uc?export=view&id=1H1yM_RBfYivygMGVjzYXOP87x0kmGRjy",
-      "https://drive.google.com/uc?export=view&id=10tmc7TrvpBIs7wEF0TNqV764MAFPmJGX",
-      "https://drive.google.com/uc?export=view&id=1FejgL-MK-XexPbqzY381vPkH229DpaGc"
+      "assets/news/news_1.webp",
+      "assets/news/news_3.webp",
+      "assets/news/news_4.webp",
+      "assets/news/news_5.webp",
+      "assets/news/news_6.webp",
+      "assets/news/news_18.webp"
     ]
   },
   {
     "Sl_No": 2,
     "Event_Name": "µ-Onam",
     "pics": [
-      "https://drive.google.com/uc?export=view&id=1yua4VR3ZS2Fczcd0bQH3gkG_losNpf05",
-      "https://drive.google.com/uc?export=view&id=1_7fxnrkxAh6Nm8EXh3JKLFbjmtn_V1dR",
-      "https://drive.google.com/uc?export=view&id=1PLgDCon3x3tbDuv9Tq_u3R5JjKHiHSL_",
-      "https://drive.google.com/uc?export=view&id=1ngZQdY88MBPiB1Nm86IA3pVTcMXDOZ6Q",
-      "https://drive.google.com/uc?export=view&id=1BiuSTI6OyAwcRruaQ4N2S5JLE7k-6rp4",
-      "https://drive.google.com/uc?export=view&id=1adlgimWQd1ia6ApxmCKZ-mtOH79wn9Ai",
-      "https://drive.google.com/uc?export=view&id=1YbjGUV2peOCUs6HfGdbAKa9FXWlFmfIM",
-      "https://drive.google.com/uc?export=view&id=1PJdhY3iEdnNzrUriBjobiygtL5CJDofU"
+      "assets/news/news_8.webp",
+      "assets/news/news_9.webp",
+      "assets/news/news_10.webp",
+      "assets/news/news_11.webp",
+      "assets/news/news_12.webp",
+      "assets/news/news_15.webp",
+      "assets/news/news_16.webp",
+      "assets/news/news_17.webp"
     ]
   },
   {
     "Sl_No": 3,
     "Event_Name": "µLearn Featured",
-    "pics": [
-      "https://drive.google.com/uc?export=view&id=1GFMao7eC2d_lJl-rx3UV63mnnfyxS00b"
-    ]
+    "pics": ["assets/news/news_2.webp"]
   },
   {
     "Sl_No": 4,
     "Event_Name": "IEEE Job fair",
-    "pics": [
-      "https://drive.google.com/uc?export=view&id=1raxse4BHupmZrAyjnJm8QLgrE0KSffb2"
-    ]
+
+    "pics": ["assets/news/news_7.webp"]
   },
   {
     "Sl_No": 5,
     "Event_Name": "Art of Teaching",
-    "pics": [
-      "https://drive.google.com/uc?export=view&id=1ThwtDnMo5kBOtUqTCFcJduTeWjGZdsuA"
-    ]
+    "pics": ["assets/news/news_13.webp"]
+  },
+  {
+    "Sl_No": 6,
+    "Event_Name": "MoU with Google & Digital University",
+    "pics": ["assets/news/news_14.webp"]
   }
 ]
