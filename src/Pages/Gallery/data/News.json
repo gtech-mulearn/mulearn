@@ -1,11 +1,12 @@
-[  {
+[
+  {
     "Sl_No": 0,
     "Event_Name": "All News",
     "pics": []
   },
   {
     "Sl_No": 1,
-    "Event_Name": "MuLearn Launch",
+    "Event_Name": "µLearn Launch",
     "pics": [
       "https://drive.google.com/uc?export=view&id=14tE3u2WtlSJMn8K8MQ634Z82DwVo5WcW",
       "https://drive.google.com/uc?export=view&id=1-uBUC3Z0zmOaJWT-lJHcmVLebfEj69kS",
@@ -16,7 +17,7 @@
   },
   {
     "Sl_No": 2,
-    "Event_Name": "MuOnam",
+    "Event_Name": "µ-Onam",
     "pics": [
       "https://drive.google.com/uc?export=view&id=1yua4VR3ZS2Fczcd0bQH3gkG_losNpf05",
       "https://drive.google.com/uc?export=view&id=1_7fxnrkxAh6Nm8EXh3JKLFbjmtn_V1dR",
@@ -30,7 +31,7 @@
   },
   {
     "Sl_No": 3,
-    "Event_Name": "Mulearn Featured",
+    "Event_Name": "µLearn Featured",
     "pics": [
       "https://drive.google.com/uc?export=view&id=1GFMao7eC2d_lJl-rx3UV63mnnfyxS00b"
     ]
