@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import events from '../../Pages/Gallery/data/EventPics.json'
 import styles from "../../Pages/Gallery/Gallery.module.css";
-
+const img = new Image();
 const GalleryImages = () => {
 
     const [program, setProgram] = useState(events[0]);
     const [currentIndex, setIndex] = useState(0);
     const [imageView, setImageView] = useState(false);
+    const [imageHeight, setHeight] = useState(undefined);
     return (
         <>
 
@@ -64,14 +65,17 @@ const GalleryImages = () => {
                             if (currentIndex > 0) {
                                 setIndex(currentIndex - 1);
                             }
+
+                            img.src = program.pics[currentIndex];
+                            setHeight(img.height);
                         }}>
                         <ion-icon name="caret-back-outline"></ion-icon>
                     </div>
 
                     {/* The Selected Image */}
 
-                    <div className="flex">
-                        <img src={program.pics[currentIndex]} alt='Unavailable Try Later' width={"100%"} height={"100%"} />
+                    <div className="flex h-full">
+                        <img src={program.pics[currentIndex]} alt='Unavailable Try Later' width={"100%"} className={`h-[${imageHeight}]`} />
                     </div>
 
                     {/*Forward switch */}
