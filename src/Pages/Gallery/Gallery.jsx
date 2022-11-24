@@ -52,56 +52,9 @@ const Gallery = () => {
                 events.
               </p>
             </div>
-
-            <GalleryImages />
-
             <GalleryImages events={EventPics} />
-            {/* <div className={styles.tabs_container}>
-              {EventPics.map((event) => (
-                <p
-                  className={styles.tab}
-                  style={{
-                    color:
-                      program.Event_Name === event.Event_Name
-                        ? "#f78c40"
-                        : "#696969",
-                  }}
-                  onClick={() => {
-                    setProgram(event);
-                  }}
-                >
-                  {event.Event_Name}
-                </p>
-              ))}
-            </div> */}
           </div>
         </div>
-
-        {/* Gallery Body */}
-
-        {/* {program && (
-          <section id="gallery">
-            <div className="gallery_grid">
-              {(program.Event_Name === "All Images" && allimages
-                ? allimages
-                : program.pics
-              )
-                // .slice(0, 300)
-                .map((pic) => (
-                  <div className="gallery_item">
-                    <img
-                      className="gallery_img"
-                      src={pic}
-                      alt=""
-                      loading="lazy"
-                      width="100%"
-                      height="100%"
-                    />
-                  </div>
-                ))}
-            </div>
-          </section>
-        )} */}
       </div>
       <Footer />
     </>

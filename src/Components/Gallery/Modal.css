@@ -65,6 +65,8 @@
   border-radius: 0.5rem;
   min-height: 100px;
   min-width: 100px;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.397);
+  height: 300px;
 }
 
 .galleryImages img {
