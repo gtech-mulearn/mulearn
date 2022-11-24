@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
+import GalleryImages from "../../Components/Gallery/GalleryImages";
+import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop";
 import styles from "./Gallery.module.css";
 import "./Gallery.css";
 
@@ -35,6 +37,7 @@ const Gallery = () => {
   return (
     <>
       <Navbar />
+      <ScrollToTop />
       <div className={styles.main_container}>
         <div className={styles.first_view_container}>
           <div className={styles.first_view}>
@@ -73,8 +76,8 @@ const Gallery = () => {
                 events.
               </p>
             </div>
-
-            <div className={styles.tabs_container}>
+            <GalleryImages />
+            {/* <div className={styles.tabs_container}>
               {EventPics.map((event) => (
                 <p
                   className={styles.tab}
@@ -91,19 +94,20 @@ const Gallery = () => {
                   {event.Event_Name}
                 </p>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
 
         {/* Gallery Body */}
-        {program && (
+
+        {/* {program && (
           <section id="gallery">
             <div className="gallery_grid">
               {(program.Event_Name === "All Images" && allimages
                 ? allimages
                 : program.pics
               )
-                .slice(0, 20)
+                // .slice(0, 300)
                 .map((pic) => (
                   <div className="gallery_item">
                     <img
@@ -118,7 +122,7 @@ const Gallery = () => {
                 ))}
             </div>
           </section>
-        )}
+        )} */}
       </div>
       <Footer />
     </>
