@@ -74,8 +74,8 @@ const GalleryImages = () => {
 
                     {/* The Selected Image */}
 
-                    <div className="flex h-full">
-                        <img src={program.pics[currentIndex]} alt='Unavailable Try Later' width={"100%"} className={`h-[${imageHeight}]`} />
+                    <div className="flex lg:h-full">
+                        <img src={program.pics[currentIndex]} alt='Unavailable Try Later' width={"100%"} className={`lg:h-[${imageHeight}] h-[100%]`} />
                     </div>
 
                     {/*Forward switch */}
