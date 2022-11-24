@@ -11,7 +11,6 @@
       "assets/gallery/mu_onam/mu_onam_2.webp",
       "assets/gallery/mu_onam/mu_onam_3.webp",
       "assets/gallery/kec/kec_1.webp",
-      "assets/gallery/kec/kec_2.webp",
       "assets/gallery/kec/kec_3.webp",
       "assets/gallery/kec/kec_4.webp",
       "assets/gallery/cle/cle_1.webp",
@@ -23,22 +22,9 @@
       "assets/gallery/cle/cle_7.webp",
       "assets/gallery/mou_mbcet/mou_mbcet_1.webp",
       "assets/gallery/mou_mbcet/mou_mbcet_2.webp",
-      "assets/gallery/mou_mbcet/mou_mbcet_3.webp",
       "assets/gallery/mou_mbcet/mou_mbcet_4.webp",
       "assets/gallery/mou_mbcet/mou_mbcet_5.webp",
-      "assets/gallery/mou_mbcet/mou_mbcet_6.webp",
       "assets/gallery/mou_mbcet/mou_mbcet_7.webp",
-      "assets/gallery/mou_mbcet/mou_mbcet_8.webp",
-      "assets/gallery/mou_mbcet/mou_mbcet_9.webp",
-      "assets/gallery/mou_mbcet/mou_mbcet_1.webp",
-      "assets/gallery/mou_mbcet/mou_mbcet_2.webp",
-      "assets/gallery/mou_mbcet/mou_mbcet_3.webp",
-      "assets/gallery/mou_mbcet/mou_mbcet_4.webp",
-      "assets/gallery/mou_mbcet/mou_mbcet_5.webp",
-      "assets/gallery/mou_mbcet/mou_mbcet_6.webp",
-      "assets/gallery/mou_mbcet/mou_mbcet_7.webp",
-      "assets/gallery/mou_mbcet/mou_mbcet_8.webp",
-      "assets/gallery/mou_mbcet/mou_mbcet_9.webp",
       "assets/gallery/mou_asap/mou_asap.webp",
       "assets/gallery/gdg_tvm/gdg_tvm_1.webp",
       "assets/gallery/gdg_tvm/gdg_tvm_2.webp",
@@ -130,7 +116,6 @@
       "assets/gallery/ecl/ecl_1.webp",
       "assets/gallery/ecl/ecl_2.webp",
       "assets/gallery/ieee/ieee_1.webp",
-      "assets/gallery/ieee/ieee_2.webp",
       "assets/gallery/ieee/ieee_3.webp",
       "assets/gallery/ieee/ieee_4.webp",
       "assets/gallery/ieee/ieee_5.webp",
@@ -159,7 +144,6 @@
       "assets/gallery/yip_event/yip_event_1.webp",
       "assets/gallery/yip_event/yip_event_2.webp",
       "assets/gallery/yip_event/yip_event_3.webp",
-      "assets/gallery/yip_event/yip_event_4.webp",
       "assets/gallery/yip_event/yip_event_5.webp",
       "assets/gallery/yip_event/yip_event_6.webp",
       "assets/gallery/yip_event/yip_event_7.webp",
@@ -210,7 +194,6 @@
       "assets/gallery/dspace/dspace_1.webp",
       "assets/gallery/dspace/dspace_2.webp",
       "assets/gallery/dspace/dspace_3.webp",
-      "assets/gallery/dspace/dspace_4.webp",
       "assets/gallery/permute/permute_1.webp",
       "assets/gallery/permute/permute_2.webp",
       "assets/gallery/permute/permute_3.webp",
@@ -321,7 +304,6 @@
       "assets/gallery/yip_event/yip_event_1.webp",
       "assets/gallery/yip_event/yip_event_2.webp",
       "assets/gallery/yip_event/yip_event_3.webp",
-      "assets/gallery/yip_event/yip_event_4.webp",
       "assets/gallery/yip_event/yip_event_5.webp",
       "assets/gallery/yip_event/yip_event_6.webp",
       "assets/gallery/yip_event/yip_event_7.webp",
@@ -403,7 +385,6 @@
     "Drive Link": "https://drive.google.com/drive/folders/1EZYxhTOVgxjmtGfUveBIbUxL_PWyfwT5?usp=sharing",
     "pics": [
       "assets/gallery/ieee/ieee_1.webp",
-      "assets/gallery/ieee/ieee_2.webp",
       "assets/gallery/ieee/ieee_3.webp",
       "assets/gallery/ieee/ieee_4.webp",
       "assets/gallery/ieee/ieee_5.webp",
@@ -607,13 +588,9 @@
     "pics": [
       "assets/gallery/mou_mbcet/mou_mbcet_1.webp",
       "assets/gallery/mou_mbcet/mou_mbcet_2.webp",
-      "assets/gallery/mou_mbcet/mou_mbcet_3.webp",
       "assets/gallery/mou_mbcet/mou_mbcet_4.webp",
       "assets/gallery/mou_mbcet/mou_mbcet_5.webp",
-      "assets/gallery/mou_mbcet/mou_mbcet_6.webp",
-      "assets/gallery/mou_mbcet/mou_mbcet_7.webp",
-      "assets/gallery/mou_mbcet/mou_mbcet_8.webp",
-      "assets/gallery/mou_mbcet/mou_mbcet_9.webp"
+      "assets/gallery/mou_mbcet/mou_mbcet_7.webp"
     ]
   },
   {
@@ -638,7 +615,6 @@
     "Drive Link": "",
     "pics": [
       "assets/gallery/kec/kec_1.webp",
-      "assets/gallery/kec/kec_2.webp",
       "assets/gallery/kec/kec_3.webp",
       "assets/gallery/kec/kec_4.webp"
     ]
