@@ -1,0 +1,216 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.first_view_container {
+  padding: 2rem;
+  background-color: #ffffff;
+}
+
+.fv_img {
+  width: 18rem;
+  display: block;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.fv_texts {
+  text-align: center;
+}
+
+.fv_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #303030;
+}
+
+.readhide {
+  color: #f78c40;
+  cursor: pointer;
+}
+
+.fv_heading span {
+  font-weight: 600;
+  color: #f78c40;
+}
+
+.fv_tagline {
+  margin-top: 0.5rem;
+  font-family: "Poppins", sans-serif;
+}
+
+@media only screen and (min-width: 1000px) {
+  .first_view_container {
+    padding: 0 3rem;
+  }
+
+  .first_view {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .fv_img {
+    display: block;
+    margin: auto;
+    width: 30rem;
+  }
+
+  .fv_texts {
+    text-align: left;
+    width: 50%;
+  }
+
+  .fv_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 4.55rem;
+    line-height: 5rem;
+    font-weight: 600;
+  }
+
+  .fv_tagline {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    width: 90%;
+  }
+}
+
+/* Second Section Styles */
+
+.second_view_container {
+  padding: 0 2rem;
+  background-color: #ffffff;
+}
+
+/* .second_view {
+    margin-top: 2rem;
+  } */
+
+.card_img {
+  width: 20rem;
+  height: 20rem;
+  object-fit: cover;
+  border-radius: 5px;
+  margin: 1rem 0rem;
+}
+
+.sv_heading {
+  font-size: 1.75rem;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+}
+
+.sv_heading span {
+  color: #f78c40;
+}
+
+.sv_tagline {
+  font-size: 0.9rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.card_description {
+  font-family: "Poppins", sans-serif;
+  /* width: 90%; */
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.card_name {
+  font-size: 1.35rem;
+  color: #f78c40;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+}
+
+.card_date {
+  font-size: 0.9rem;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  color: #303030;
+  text-align: left;
+  margin-top: 0.5rem;
+}
+
+.sv_cards_container {
+  margin-top: 2rem;
+}
+
+.sv_cards {
+  width: 20rem;
+  margin: 2rem auto 0;
+  text-align: center;
+}
+
+.sv_texts {
+  margin: 2rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .sv_cards_container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    row-gap: 1.5rem;
+    columns: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .second_view_container {
+    max-width: 1300px;
+    margin: auto;
+    padding: 0;
+  }
+
+  /* .second_view {
+      margin-top: 5rem;
+    } */
+
+  .sv_texts {
+    width: 40%;
+  }
+
+  .sv_heading {
+    font-size: 2.25rem;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 600;
+  }
+
+  .sv_tagline {
+    font-size: 1rem;
+    width: 90%;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .card_img {
+    width: 20rem;
+    border-radius: 5px;
+    margin: 1rem 0rem;
+    object-fit: cover;
+    object-position: bottom;
+  }
+
+  .sv_cards {
+    width: 20rem;
+  }
+
+  .sv_cards_container {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    row-gap: 1.5rem;
+    columns: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .sv_texts {
+    margin: 0;
+  }
+}

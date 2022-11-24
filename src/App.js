@@ -21,6 +21,7 @@ import SandraBlogPage from "./Pages/CampusChapters/SandraBlogPage/SandraBlogPage
 import BlogTemplate from "./Pages/CampusChapters/BlogTemplate/BlogTemplate";
 import Notifications from "./Pages/Notifications/Notifications";
 import MonthlyLeaderboard from "./Pages/LeaderBoard/MonthlyLeaderboard/MonthlyLeaderboard";
+import MentorConnect from "./Pages/Events/MentorConnect/MentorConnect";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="/news" element={<News />} />
           <Route path="/announcements" element={<MuAnnouncements />} />
           <Route path="/isr" element={<ISR />} />
+          <Route path="/events/mentorconnect" element={<MentorConnect />} />
           <Route path="/company-partners" element={<Company />} />
           <Route path="/community-partners" element={<CommunityPartner />} />
           <Route path="/artofteaching" element={<ArtOfTeaching />} />
