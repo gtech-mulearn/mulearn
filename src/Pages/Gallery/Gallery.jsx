@@ -9,7 +9,9 @@ import "./Gallery.css";
 import EventPics from "./data/EventPics";
 
 const Gallery = () => {
+  // eslint-disable-next-line
   const [allimages, setAllImage] = useState();
+  // eslint-disable-next-line
   const [program, setProgram] = useState(EventPics[0]);
 
   useEffect(() => {
@@ -76,7 +78,7 @@ const Gallery = () => {
                 events.
               </p>
             </div>
-  
+
             <GalleryImages />
             {/* <div className={styles.tabs_container}>
               {EventPics.map((event) => (
