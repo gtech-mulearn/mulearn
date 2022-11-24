@@ -3,6 +3,10 @@
   margin: 0;
 }
 
+.spacing {
+  margin-top: 2rem;
+}
+
 .tabs_container {
   display: flex;
   flex-direction: row;
