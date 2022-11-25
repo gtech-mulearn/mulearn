@@ -49,7 +49,7 @@ const GalleryImages = ({ events }) => {
                 <ion-icon name="expand"></ion-icon>
                 <span className="text-sm text-white/10">Expand</span>
               </div>
-              <img src={pic} alt="Unavailable Try Later" loading="lazy" className=" group-hover:opacity-20" />
+              <img src={pic} alt="Unavailable Try Later" className=" group-hover:opacity-20" />
             </div>
           </>
         ))}
