@@ -1,0 +1,16 @@
+[
+  {
+    "id": 0,
+    "name": "Open Mic #1",
+    "image": "/assets/events/openmic/mic1.webp",
+    "description": "This edition of Open Mic, we have Fahaz Bazil, a 3rd year Engineering Student at KMEA College of Engineering. Fahaz is a great artist and an integral part of our Music Interest Group and its activities.",
+    "date": "17/11/2022"
+  },
+  {
+    "id": 1,
+    "name": "Open Mic #2",
+    "image": "/assets/events/openmic/mic2.webp",
+    "description": "This edition of Open Mic, we have Bibin Jose, a 3rd year Engineering Student at St. Joseph's College of Engineering and Technology, Palai. Bibin is a wonderful singer as well a great artist.",
+    "date": "24/11/2022"
+  }
+]
