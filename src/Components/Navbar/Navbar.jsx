@@ -6,16 +6,18 @@ import en from "javascript-time-ago/locale/en";
 import NavLinks from "./NavLinks";
 
 const Navbar = () => {
+  function handleScrolling(setter) {
+    if (setter)
+      document.body.style.overflow = "unset";
+    else
+      document.body.style.overflow = 'hidden';
+  }
   const [open, setOpen] = useState(false);
   const [notificationOpen, setNotificationOpen] = useState(false);
   return (
     <nav className="bg-white ">
       <div className="flex items-center font-medium justify-around">
-        <div
-          className={`z-30 p-5 mt-1 bg-white lg:w-auto w-full flex justify-between ${
-            open ? "fixed top-1" : ""
-          }`}
-        >
+        <div className={`mobile-nav-bar lg:w-auto w-full ${open ? "absolute top-1" : ""}`}>
           <Link to="/">
             <img
               src="/assets/navbar/µLearn.webp"
@@ -30,21 +32,20 @@ const Navbar = () => {
               onClick={() => {
                 setNotificationOpen(!notificationOpen);
                 setOpen(false);
+                handleScrolling(true);
               }}
             >
               <div
-                className={`text-3xl ${
-                  notificationOpen ? " text-orange-500" : "text-black"
-                }`}
+                className={`text-3xl ${notificationOpen ? " text-orange-500" : "text-black"
+                  }`}
               >
                 <ion-icon name="notifications-circle-outline"></ion-icon>
               </div>
               {/* Notification menu */}
               <div
                 className={` absolute w-[300px] bg-white text-orange-500 border-orange-600/20
-              border rounded-md text-xs  left-8 mt-3  ${
-                notificationOpen ? "block" : "hidden"
-              }`}
+              border rounded-md text-xs  left-8 mt-3  ${notificationOpen ? "block" : "hidden"
+                  }`}
               >
                 <NotificationNav />
               </div>
@@ -55,6 +56,7 @@ const Navbar = () => {
               onClick={() => {
                 setOpen(!open);
                 setNotificationOpen(false);
+                handleScrolling(open);
               }}
             >
               <ion-icon name={`${open ? "close" : "menu"}`}></ion-icon>
@@ -75,10 +77,7 @@ const Navbar = () => {
               <ion-icon name="notifications-circle-outline"></ion-icon>
             </div>
             <div
-              className={`hidden group-hover:lg:block hover:lg:block absolute w-[300px] bg-white  
-              border border-black-600/20 rounded-xl text-xs mt-3 drop-shadow-md text-orange-500  ${
-                notificationOpen ? "block" : ""
-              }`}
+              className={`notifications group-hover:lg:block hover:lg:block ${notificationOpen ? "block" : "hidden"}`}
             >
               <NotificationNav />
             </div>
@@ -149,9 +148,8 @@ const NotificationNav = () => {
         {notifications &&
           notifications.new.map((notification) => (
             <div
-              className={`px-5 py-2 capitalize ${
-                seenAll ? "text-orange-500/70" : ""
-              } border-b`}
+              className={`px-5 py-2 capitalize ${seenAll ? "text-orange-500/70" : ""
+                } border-b`}
             >
               <a href={notification.url}>
                 <div className="py-2 text-md  decoration text-black font-bold">

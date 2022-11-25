@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "./Modal.css";
+import "./gallery.css";
 
 const GalleryImages = ({ events }) => {
 
