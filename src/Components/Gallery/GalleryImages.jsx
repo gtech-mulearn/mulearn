@@ -41,12 +41,13 @@ const GalleryImages = ({ events }) => {
       </div>
       <div className=" mt-8"></div>
       {/* Gallery */}
-      <div className={`flex flex-wrap gap-5 justify-center min-w-screen`}>
+      <div className={` flex flex-wrap gap-5 justify-center min-w-screen gallery-item`}>
         {program.pics.map((pic, index) => (
           <>
             <div className=" group galleryImages lg:w-1/5 md:w-1/3" onClick={() => galleryViewOn(index)}>
-              <div className="absolute z-10 group-hover:flex hidden text-white/70 text-5xl">
-                <ion-icon name="eye-outline"></ion-icon>
+              <div className="gallery-setter  group-hover:flex hidden">
+                <ion-icon name="expand"></ion-icon>
+                <span className="text-sm text-white/10">Expand</span>
               </div>
               <img src={pic} alt="Unavailable Try Later" className=" group-hover:opacity-20" />
             </div>

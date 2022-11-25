@@ -21,6 +21,9 @@ import SandraBlogPage from "./Pages/CampusChapters/SandraBlogPage/SandraBlogPage
 import BlogTemplate from "./Pages/CampusChapters/BlogTemplate/BlogTemplate";
 import Notifications from "./Pages/Notifications/Notifications";
 import MonthlyLeaderboard from "./Pages/LeaderBoard/MonthlyLeaderboard/MonthlyLeaderboard";
+import MentorConnect from "./Pages/Events/MentorConnect/MentorConnect";
+import SaltMangoTree from "./Pages/Events/SaltMangoTree/SaltMangoTree";
+import OpenMic from "./Pages/Events/OpenMic/OpenMic";
 
 function App() {
   return (
@@ -37,6 +40,9 @@ function App() {
           <Route path="/news" element={<News />} />
           <Route path="/announcements" element={<MuAnnouncements />} />
           <Route path="/isr" element={<ISR />} />
+          <Route path="/events/mentorconnect" element={<MentorConnect />} />
+          <Route path="/events/saltmangotree" element={<SaltMangoTree />} />
+          <Route path="/events/openmic" element={<OpenMic />} />
           <Route path="/company-partners" element={<Company />} />
           <Route path="/community-partners" element={<CommunityPartner />} />
           <Route path="/artofteaching" element={<ArtOfTeaching />} />

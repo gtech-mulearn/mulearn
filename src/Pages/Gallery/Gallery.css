@@ -1,6 +1,7 @@
 .gallery_grid {
+  padding: 0 1rem;
   columns: 20rem;
-  column-gap: 0.5rem;
+  column-gap: 1rem;
 }
 
 .gallery_item {

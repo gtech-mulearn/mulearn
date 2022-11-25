@@ -95,8 +95,8 @@
 }
 
 /* .second_view {
-  margin-top: 2rem;
-} */
+    margin-top: 2rem;
+  } */
 
 .card_img {
   width: 20rem;
@@ -175,8 +175,8 @@
   }
 
   /* .second_view {
-    margin-top: 5rem;
-  } */
+      margin-top: 5rem;
+    } */
 
   .sv_texts {
     width: 40%;
@@ -198,6 +198,8 @@
     width: 20rem;
     border-radius: 5px;
     margin: 1rem 0rem;
+    object-fit: cover;
+    object-position: bottom;
   }
 
   .sv_cards {

@@ -5,7 +5,7 @@ import "./News.css";
 
 import NewsData from "./data/News";
 
-import GalleryImages from "../../Components/Gallery/GalleryImages";
+import NewsImages from "../../Components/Gallery/NewsImages";
 
 
 const News = () => {
@@ -45,7 +45,7 @@ const News = () => {
               </p>
             </div>
             {/* Gallery Body */}
-            <GalleryImages events={NewsData} />
+            <NewsImages events={NewsData} />
           </div>
         </div>
       </div>
