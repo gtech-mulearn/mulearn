@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "./Modal.css";
+import "./gallery.css";
 
 const GalleryImages = ({ events }) => {
 
@@ -49,7 +49,7 @@ const GalleryImages = ({ events }) => {
                 <ion-icon name="expand"></ion-icon>
                 <span className="text-sm text-white/10">Expand</span>
               </div>
-              <img src={pic} alt="Unavailable Try Later" className=" group-hover:opacity-20" />
+              <img src={pic} alt="Unavailable Try Later" loading="lazy" className=" group-hover:opacity-20" />
             </div>
           </>
         ))}
@@ -62,7 +62,7 @@ const GalleryImages = ({ events }) => {
           <span className={`direction ${currentIndex > 0 ? "" : "opacity-0"}`} onClick={() => goBackward(currentIndex)}>
             <ion-icon name="caret-back-outline" />
           </span>
-          <img src={program.pics[currentIndex]} alt="ImageUnavaialble \n Try again later" />
+          <img src={program.pics[currentIndex]} loading="urgent" alt="ImageUnavaialble Try again later" />
           <span className={`direction ${currentIndex + 1 < program.pics.length ? "" : "opacity-0"}`} onClick={() => goForward(currentIndex)}>
             <ion-icon name="caret-forward-outline" />
           </span>
