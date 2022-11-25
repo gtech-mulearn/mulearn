@@ -1,43 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import "./News.css";
 
 import NewsData from "./data/News";
 
-import Modal from "../../Components/Modal/Modal";
+import NewsImages from "../../Components/Gallery/NewsImages";
+
 
 const News = () => {
-  const [allimages, setAllImage] = useState();
-  const [program, setProgram] = useState(NewsData[0]);
-  const [clickedImg, setClickedImg] = useState(null);
-
-  const handleClick = (img) => {
-    setClickedImg(img);
-    document.body.style.overflow = "hidden";
-  };
-
-  useEffect(() => {
-    function shuffleArray(array) {
-      for (var i = array.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-      }
-      return array;
-    }
-
-    let allPics = [];
-
-    NewsData.forEach((item) => {
-      item.pics.forEach((pic) => {
-        allPics.push(pic);
-      });
-    });
-
-    setAllImage(shuffleArray(allPics));
-  }, [program]);
 
   return (
     <>
@@ -73,67 +44,12 @@ const News = () => {
                 events.
               </p>
             </div>
-
-            <div className="tabs_container">
-              {NewsData.map((event) => (
-                <p
-                  className="tab"
-                  style={{
-                    color:
-                      program.Event_Name === event.Event_Name
-                        ? "#f78c40"
-                        : "#696969",
-                  }}
-                  onClick={() => {
-                    setProgram(event);
-                  }}
-                >
-                  {event.Event_Name}
-                </p>
-              ))}
-            </div>
+            {/* Gallery Body */}
+            <NewsImages events={NewsData} />
           </div>
         </div>
-
-        {/* Gallery Body */}
-        {program && (
-          <section id="gallery">
-            <div className="gallery_grid">
-              {(program.Event_Name === "All News" && allimages
-                ? allimages
-                : program.pics
-              )
-                .slice(0, 20)
-                .map((pic) => (
-                  <div className="gallery_item">
-                    <img
-                      className="gallery_img"
-                      src={pic}
-                      alt=""
-                      loading="lazy"
-                      width="100%"
-                      height="100%"
-                      onClick={() => {
-                        handleClick(pic);
-                      }}
-                    />
-                    <img
-                      className="zoom_icon"
-                      src={require("../../UI icons/zoom.svg").default}
-                      alt=""
-                      onClick={() => {
-                        handleClick(pic);
-                      }}
-                    />
-                  </div>
-                ))}
-            </div>
-          </section>
-        )}
       </div>
-      {clickedImg && (
-        <Modal clickedImg={clickedImg} setClickedImg={setClickedImg} />
-      )}
+
       <Footer />
     </>
   );
