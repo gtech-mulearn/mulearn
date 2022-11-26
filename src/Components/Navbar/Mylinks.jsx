@@ -94,7 +94,7 @@ export const links = [
             name: "Success Stories",
             submenu: false,
             sublinks: [],
-            link: "/campuschapters/#success-stories",
+            link: "/blogs",
             foreign: false,
           },
         ],

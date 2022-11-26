@@ -15,10 +15,8 @@ import WikiSyllabus from "./Pages/WikiSyllabus/WikiSyllabus";
 import HacktoberFest from "./Pages/Events/HacktoberFest/HacktoberFest";
 import Yip from "./Pages/YIP/Yip";
 import CampusChapters from "./Pages/CampusChapters/CampusChapters";
-import BlogPage from "./Pages/CampusChapters/AmrithaBlogPage/BlogPage";
-import JBlogPage from "./Pages/CampusChapters/JessnoBlogPage/JBlogPage";
-import SandraBlogPage from "./Pages/CampusChapters/SandraBlogPage/SandraBlogPage";
-import BlogTemplate from "./Pages/CampusChapters/BlogTemplate/BlogTemplate";
+import BlogLanding from "./Pages/CampusChapters/Blogs/BlogLanding";
+import BlogTemplate from "./Pages/CampusChapters/Blogs/BlogTemplate/BlogTemplate";
 import Notifications from "./Pages/Notifications/Notifications";
 import MonthlyLeaderboard from "./Pages/LeaderBoard/MonthlyLeaderboard/MonthlyLeaderboard";
 import MentorConnect from "./Pages/Events/MentorConnect/MentorConnect";
@@ -32,9 +30,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/careers" element={<Career />} />
+          <Route path="/blogs" element={<BlogLanding />} />
+          <Route path="/blogs/:id" element={<BlogTemplate />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/blog" element={<BlogTemplate />} />
-
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/news" element={<News />} />
@@ -57,9 +56,6 @@ function App() {
           <Route path="/campuschapters">
             <Route path="" element={<CampusChapters />} />
           </Route>
-          <Route path="/blog/amirthags" element={<BlogPage />} />
-          <Route path="/blog/jessno" element={<JBlogPage />} />
-          <Route path="/blog/sandra" element={<SandraBlogPage />} />
         </Routes>
       </Router>
     </div>

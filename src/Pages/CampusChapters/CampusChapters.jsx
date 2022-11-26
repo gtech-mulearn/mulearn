@@ -284,7 +284,7 @@ const CampusChapters = () => {
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
-                    <Link to="/blog/amirthags">
+                    <Link to="/blogs/amirtha-gs">
                       <Button size="small">
                         <span>Read More...</span>
                       </Button>
@@ -314,7 +314,7 @@ const CampusChapters = () => {
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
-                    <Link to="/blog/jessno">
+                    <Link to="/blogs/jessno-oomen">
                       <Button size="small">
                         <span>Read More...</span>
                       </Button>
@@ -344,7 +344,7 @@ const CampusChapters = () => {
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
-                    <Link to="/blog/sandra">
+                    <Link to="/blogs/sandra-pramod">
                       <Button size="small">
                         <span>Read More...</span>
                       </Button>
