@@ -30,7 +30,7 @@ const ClosedCarrersData = [
     location: "Kochi, Kerala, India",
     Qualifications: ["Click View More"],
     poster:
-      "https://media.discordapp.net/attachments/771679365124718612/996661239675621436/Hiring_-_Sun_Tech.png?width=357&height=634",
+      "https://drive.google.com/drive/folders/1opmVcSOXbgnGmih61tp4qlmG7QBrWyYC?usp=sharing",
   },
   {
     id: 2,
