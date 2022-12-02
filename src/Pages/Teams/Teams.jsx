@@ -99,7 +99,7 @@ const Teams = () => {
                 <TeamCard
                   name={member.name}
                   designation={member.designation}
-                  image={member.image}
+                  image={`/assets/team/yip-team/${member.name}.webp`}
                   linkedIn={member.linkedin ? member.linkedin : ""}
                 />
               );
