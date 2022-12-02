@@ -3,8 +3,11 @@ import styles from "../Home/Home.module.css";
 
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
-
+import Testimonials from "../../Components/Testimonials/Testimonials";
 import CountUp from "react-countup";
+
+
+import "./Home.scss";
 
 const Home = () => {
   return (
@@ -326,22 +329,6 @@ const Home = () => {
         <div className={styles.countview_container}>
           <div className={styles.count_view}>
             <div className={styles.left_side}>
-              {/* <div className={styles.iframevideodesk}>
-                <iframe
-                  src="https://drive.google.com/file/d/1jlJ1BCSZ8yGQkcGcSCqsMZkd5sjlXOY8/preview"
-                  width="420"
-                  height="240"
-                  allow="autoplay"
-                ></iframe>
-              </div> */}
-              {/* <div className={styles.iframevideomob}>
-                <iframe
-                  src="https://drive.google.com/file/d/1jlJ1BCSZ8yGQkcGcSCqsMZkd5sjlXOY8/preview"
-                  width="320"
-                  height="220"
-                  allow="autoplay"
-                ></iframe>
-              </div> */}
               <p className={styles.cv_heading}>
                 {" "}
                 The <span>Impact</span> of <span>µLearn.</span>
@@ -483,7 +470,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-
+      <Testimonials />
       <Footer />
     </>
   );

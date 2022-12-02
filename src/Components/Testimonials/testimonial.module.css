@@ -1,0 +1,62 @@
+/* .box {
+    background: #f7f3f3;
+    width: 100%;
+    min-width: 100%;
+    height: 270px;
+    display: flex;
+    position: relative;
+    align-items: center;
+
+} */
+
+/* .navigate {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    width: fit-content;
+    color: rgba(0, 0, 0, 0.466);
+    position: absolute;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    z-index: 10;
+
+} */
+
+/* .testimonialOne {
+    overflow: hidden;
+    display: flex !important;
+    flex-direction: row !important;
+    position: relative;
+    width: 100%;
+}
+
+.testimonialTwo {
+    flex: 0 0 auto;
+    min-width: 100%;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    animation-name: robo;
+    animation-iteration-count: infinite;
+    animation-duration: 100s;
+    animation-timing-function: linear;
+}
+
+@keyframes robo {
+    0% {
+        transform: translateX(-calc(100vw - 50%));
+    }
+
+    100% {
+        transform: translateX(calc(100vw - 100%));
+    }
+} */
+
+.head {
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 1.875rem;
+    margin-top: -0.2rem;
+}
