@@ -36,9 +36,13 @@
   font-family: "Poppins", sans-serif;
 }
 
+.third_view_container .sv_texts {
+  width: 100%;
+}
+
 @media only screen and (min-width: 1000px) {
   .first_view_container {
-    padding: 3rem;
+    padding: 0 3rem;
   }
 
   .first_view {
@@ -48,8 +52,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
   }
 
   .fv_img {
@@ -126,7 +128,7 @@
   }
 
   .second_view {
-    margin-top: 5rem;
+    /* margin-top: 5rem; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -152,7 +154,7 @@
 
 @media only screen and (min-width: 1300px) {
   .second_view_container {
-    padding: 0rem;
+    padding: 0 0 2rem;
   }
 
   .partners_view {
@@ -168,10 +170,6 @@
   background-color: #ffffff;
 }
 
-.third_view_container {
-  margin-top: 2rem;
-}
-
 .contributors_cards {
   display: grid;
   row-gap: 1rem;
@@ -183,10 +181,6 @@
     padding: 2rem;
     max-width: 1300px;
     margin: auto;
-  }
-
-  .third_view {
-    margin-top: 5rem;
   }
 
   .contributors_cards {

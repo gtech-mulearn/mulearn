@@ -11,6 +11,10 @@
 # production
 /build
 
+.env
+
+workflow.md
+
 # misc
 .DS_Store
 .env.local

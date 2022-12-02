@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ISR.module.css";
 
 import fvimg from "./assets/fvimg.gif";
@@ -8,6 +8,22 @@ import Footer from "../../../Components/Footer/Footer";
 import ISRData from "./data/ISRData";
 
 const ISR = () => {
+  const ReadMore = ({ children }) => {
+    const text = children;
+    const [isReadMore, setIsReadMore] = useState(true);
+    const toggleReadMore = () => {
+      setIsReadMore(!isReadMore);
+    };
+    return (
+      <p className={styles.card_description}>
+        {isReadMore ? text.slice(0, 150) : text}
+        <span onClick={toggleReadMore} className={styles.readhide}>
+          {isReadMore ? "...read more" : " show less"}
+        </span>
+      </p>
+    );
+  };
+
   return (
     <>
       <Navbar />
@@ -23,7 +39,7 @@ const ISR = () => {
                 passion, the story of learning new things and much more. Often
                 times these stories are filled with fun and inspirations which
                 fuel others to start their own journey. Join in every
-                Tuesday@7:00PM to get Inspired.
+                Tuesday@8:00PM to get Inspired.
               </p>
             </div>
             <div className={styles.fv_images}>
@@ -53,10 +69,7 @@ const ISR = () => {
                       <img src={isr.image} alt="" className={styles.card_img} />
                       <p className={styles.card_name}>{isr.speaker}</p>
 
-                      <p className={styles.card_description}>
-                        {isr.description.substring(0, 250)}{" "}
-                        {isr.description.length >= 20 && "..."}
-                      </p>
+                      <ReadMore>{isr.description}</ReadMore>
                       <p className={styles.card_date}>Held On:{isr.date}</p>
                     </div>
                   </div>

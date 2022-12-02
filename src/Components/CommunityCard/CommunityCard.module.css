@@ -1,17 +1,22 @@
 .community_card_container {
-  margin-top: 1rem;
+  margin: 1rem auto 0;
   max-width: 300px;
   box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
   -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
   -moz-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
   padding: 15px;
   border-radius: 10px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .communityimg {
   width: 4rem;
   border-radius: 5px;
   object-fit: contain;
+  margin-right: 2rem;
 }
 
 .community_name {
@@ -28,7 +33,7 @@
 }
 
 .community_interest {
-  opacity: 0.5;
+  color: gray;
   font-size: 0.9rem;
   text-align: right;
   font-weight: 600;

@@ -1,0 +1,28 @@
+.gallery_grid {
+  padding: 0 1rem;
+  columns: 20rem;
+  column-gap: 1rem;
+}
+
+.gallery_item {
+  overflow: hidden;
+  margin: 0 0 0.5rem;
+  max-height: 40rem;
+  position: relative;
+}
+
+.gallery_img {
+  width: 100%;
+  transition: all 0.2s ease-out;
+  transform: scale(1.1);
+}
+
+.gallery_item:hover .gallery_img {
+  transform: scale(1.2);
+}
+
+@media only screen and (max-width: 976px) {
+  .gallery_grid {
+    margin: 0 1rem;
+  }
+}

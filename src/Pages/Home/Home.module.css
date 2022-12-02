@@ -8,15 +8,21 @@ a {
   color: inherit;
 }
 
+@media screen and (max-width: 999px) {
+  .joinbutton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 .firstviewmain_container {
   padding-top: 3rem;
   background-color: #f2f3f9;
   opacity: 1;
-  background-image: repeating-radial-gradient(
-      circle at 0 0,
+  background-image: repeating-radial-gradient(circle at 0 0,
       transparent 0,
-      #f2f3f9 15px
-    ),
+      #f2f3f9 15px),
     repeating-linear-gradient(#fdf1e755, #fdf1e7);
 }
 
@@ -120,6 +126,14 @@ a {
   color: #f78c40;
 }
 
+.supporters {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20%;
+  justify-content: space-between;
+  justify-items: center;
+  align-items: center;
+}
+
 @media only screen and (min-width: 1000px) {
   .supportersview_container {
     max-width: 1000px;
@@ -146,9 +160,9 @@ a {
   }
 
   .supporters {
-    display: flex;
-    flex-direction: row;
+    display: grid;
     align-items: center;
+    grid-template-columns: auto auto auto auto auto auto auto;
     justify-content: space-evenly;
   }
 }
@@ -196,18 +210,24 @@ a {
 
 .svp_image {
   width: 3.15rem;
+  display: block;
+  margin: auto;
 }
 
-@media screen and (max-width: 999px) {
+@media screen and (max-width:999px) {
+
+  .svp_image {
+    width: 3.15rem;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+  }
+
   .svp_heading {
-    display: block;
+    position: relative;
     text-align: center;
   }
 
-  .svp_image {
-    display: block;
-    margin: auto;
-  }
 }
 
 @media only screen and (min-width: 1000px) {
@@ -217,6 +237,7 @@ a {
     margin: auto;
     text-align: center;
   }
+
   .sv_mainheading {
     font-size: 2.75rem;
     margin-bottom: 0.5rem;
@@ -300,6 +321,7 @@ a {
     max-width: 1300px;
     margin: auto;
   }
+
   .third_view {
     margin: 2rem 0;
     display: flex;
@@ -350,12 +372,13 @@ a {
 }
 
 .highlight_text {
-  margin-top: 1rem;
   color: #f78c40;
-  font-size: 1rem;
-  width: 95%;
-  font-weight: 500;
   font-family: "Noto Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 1rem auto 0;
+  text-align: center;
+  width: 95%;
 }
 
 .highlight_text span {
@@ -363,13 +386,14 @@ a {
   font-weight: 400;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width:600px) {
   .join_img {
     height: 40rem;
     display: block;
     margin: auto;
     margin-top: 2rem;
   }
+
 }
 
 @media screen and (max-width: 599px) {
@@ -379,149 +403,85 @@ a {
     margin: auto;
     margin-top: 3rem;
   }
-}
 
-@media only screen and (min-width: 1000px) {
-  .joinviewmain_container {
-    max-width: 1300px;
-    margin: auto;
+  @media only screen and (min-width: 1000px) {
+    .joinviewmain_container {
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    .jv_texts {
+      width: 60%;
+    }
+
+    .jv_heading {
+      font-family: "Noto Sans", sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #303030;
+    }
+
+    .join_view {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .highlight_text {
+      font-size: 1rem;
+      width: 55%;
+    }
+
+    .join_img {
+      display: block;
+      height: 50rem;
+      left: 20%;
+    }
+
+    .jv_content {
+      width: 90%;
+    }
   }
 
-  .jv_texts {
-    width: 60%;
-  }
-
-  .jv_heading {
-    font-family: "Noto Sans", sans-serif;
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: #303030;
-  }
-
-  .join_view {
-    margin: 5rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .highlight_text {
-    font-size: 1rem;
-    width: 55%;
-  }
-
-  .join_img {
-    display: block;
-    height: 50rem;
-    left: 20%;
-  }
-
-  .jv_content {
-    width: 90%;
-  }
-}
-
-/* Count View Styles */
-
-.count_view {
-  margin: 2rem;
-}
-
-.cv_heading {
-  font-family: "Noto Sans", sans-serif;
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: #303030;
-}
-
-.cv_heading span {
-  color: #f78c40;
-}
-
-.cv_text {
-  margin-top: 0.5rem;
-  font-family: "Poppins", sans-serif;
-}
-
-.countcontainer {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  margin-top: 2rem;
-}
-
-.count {
-  margin: 0.5rem 0;
-  position: relative;
-  text-align: center;
-}
-
-.cvc_heading {
-  font-weight: 600;
-  color: #f78c40;
-  font-family: "Noto Sans", sans-serif;
-  font-size: 2.25rem;
-}
-
-.cvc_text {
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin-top: -0.2rem;
-  font-family: "Poppins", sans-serif;
-}
-
-@media only screen and (min-width: 1000px) {
-  .countviewmain_container {
-    max-width: 1300px;
-    margin: auto;
-  }
+  /* Count View Styles */
 
   .count_view {
-    margin: 8rem 2rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .left_side {
-    width: 50%;
-  }
-
-  .right_side {
-    width: 50%;
+    margin: 2rem;
   }
 
   .cv_heading {
     font-family: "Noto Sans", sans-serif;
-    font-size: 3.75rem;
+    font-size: 2.25rem;
     font-weight: 700;
     color: #303030;
   }
 
+  .cv_heading span {
+    color: #f78c40;
+  }
+
+  .cv_text {
+    margin-top: 0.5rem;
+    font-family: "Poppins", sans-serif;
+  }
+
   .countcontainer {
     display: grid;
-    grid-template-columns: 30% 30% 30%;
-    row-gap: 0rem;
-    column-gap: 2.5rem;
-    margin-top: 0rem;
+    grid-template-columns: 50% 50%;
+    margin-top: 2rem;
   }
 
   .count {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin: 0.5rem 0;
+
+    text-align: center;
   }
 
   .cvc_heading {
     font-weight: 600;
     color: #f78c40;
     font-family: "Noto Sans", sans-serif;
-    font-size: 3.25rem;
-  }
-
-  .cv_text {
-    width: 90%;
+    font-size: 2.25rem;
   }
 
   .cvc_text {
@@ -530,177 +490,239 @@ a {
     margin-top: -0.2rem;
     font-family: "Poppins", sans-serif;
   }
-}
 
-.iframevideodesk {
-  display: none;
-}
+  @media only screen and (min-width: 1000px) {
+    .countviewmain_container {
+      max-width: 1300px;
+      margin: auto;
+    }
 
-@media only screen and (min-width: 1000px) {
-  .iframevideodesk {
-    display: block;
+    .count_view {
+      margin: 4rem 2rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .left_side {
+      width: 50%;
+    }
+
+    .right_side {
+      width: 50%;
+    }
+
+    .cv_heading {
+      font-family: "Noto Sans", sans-serif;
+      font-size: 3.75rem;
+      font-weight: 700;
+      color: #303030;
+    }
+
+    .countcontainer {
+      display: grid;
+      grid-template-columns: 30% 30% 30%;
+      row-gap: 0rem;
+      column-gap: 2.5rem;
+      margin-top: 0rem;
+    }
+
+    .count {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cvc_heading {
+      font-weight: 600;
+      color: #f78c40;
+      font-family: "Noto Sans", sans-serif;
+      font-size: 3.25rem;
+    }
+
+    .cv_text {
+      width: 90%;
+    }
+
+    .cvc_text {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-top: -0.2rem;
+      font-family: "Poppins", sans-serif;
+    }
   }
 
-  .iframevideomob {
+  .iframevideodesk {
     display: none;
   }
-}
 
-/* Chart View Styles */
+  @media only screen and (min-width: 1000px) {
+    .iframevideodesk {
+      display: block;
+    }
 
-.chart_view_container {
-  padding-top: 2rem;
-}
-
-.chart_view {
-  padding: 1rem 2rem;
-  padding-top: 0;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-}
-
-.chart_img {
-  width: 20rem;
-  display: block;
-  margin: auto;
-  margin-top: 2rem;
-}
-
-@media only screen and (min-width: 768px) {
-  .chart_img {
-    margin-top: 2rem;
-    width: 28rem;
+    .iframevideomob {
+      display: none;
+    }
   }
-}
 
-@media only screen and (min-width: 1000px) {
+  /* Chart View Styles */
+
   .chart_view_container {
-    max-width: 1300px;
-    margin: auto;
+    padding-top: 2rem;
   }
 
   .chart_view {
-    margin: 4rem 2rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .cv_texts {
-    width: 48%;
-  }
-
-  .chart_img {
-    width: 32rem;
-  }
-}
-
-@media only screen and (min-width: 1000px) {
-  .chart_view {
-    margin: 4rem 0rem;
-  }
-}
-
-/* Testimonials View Styles */
-
-.testimonial_view_container {
-  padding-top: 2rem;
-}
-
-.testimonial_view {
-  padding: 1rem 2rem;
-  padding-top: 0;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-}
-
-.test_heading {
-  font-family: "Noto Sans", sans-serif;
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: #303030;
-}
-
-.test_heading span {
-  color: #f78c40;
-}
-
-.test_content {
-  font-family: "Poppins", sans-serif;
-}
-
-.testmonial_card_container {
-  margin-top: 2rem;
-}
-
-.testmonial_card {
-  text-align: left;
-  margin-top: 1rem;
-}
-
-.tperson_img {
-  border-radius: 5px;
-  margin-bottom: 1rem;
-}
-
-.tperson_name {
-  font-family: "Noto Sans", sans-serif;
-  font-size: 1.25rem;
-  color: #f78c40;
-  font-weight: 500;
-}
-
-.tperson_designation {
-  font-size: 1.1rem;
-  margin-bottom: 0.25rem;
-}
-
-.tcard_row {
-  padding: 4rem;
-}
-
-@media only screen and (min-width: 1000px) {
-  .testimonial_view_container {
-    max-width: 1300px;
-    margin: auto;
-  }
-
-  .tcard_row {
-    display: flex;
-    flex-direction: row;
-    padding: 0 6rem;
-    margin-top: 3rem;
-  }
-
-  .testimonial_view {
-    margin: 2rem 0;
+    padding: 1rem 2rem;
+    padding-top: 0;
+    z-index: 1000;
     display: flex;
     flex-direction: column;
   }
 
-  .testmonial_card {
-    margin-top: 0rem;
-    margin-right: 5rem;
-    text-align: left;
+  .chart_img {
+    margin-top: 2rem;
+    width: 20rem;
+    margin-left: 50%;
+    transform: translate(-50%);
   }
 
-  .testmonial_card_container {
-    margin-top: 3rem;
+  @media only screen and (min-width: 768px) {
+    .chart_img {
+      margin-top: 2rem;
+      width: 28rem;
+    }
+  }
+
+  @media only screen and (min-width: 1000px) {
+    .chart_view_container {
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    .chart_view {
+      margin: 4rem 2rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cv_texts {
+      width: 48%;
+    }
+
+    .chart_img {
+      width: 32rem;
+    }
+  }
+
+  @media only screen and (min-width: 1000px) {
+    .chart_view {
+      margin: 4rem 0rem;
+    }
+  }
+
+  /* Testimonials View Styles */
+
+  .testimonial_view_container {
+    padding-top: 2rem;
+  }
+
+  .testimonial_view {
+    padding: 1rem 2rem;
+    padding-top: 0;
+    z-index: 1000;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
   }
 
   .test_heading {
     font-family: "Noto Sans", sans-serif;
-    font-size: 3.25rem;
+    font-size: 2.25rem;
     font-weight: 700;
     color: #303030;
   }
 
-  .test_content {
-    width: 80%;
+  .test_heading span {
+    color: #f78c40;
   }
-}
+
+  .test_content {
+    font-family: "Poppins", sans-serif;
+  }
+
+  .testmonial_card_container {
+    margin-top: 2rem;
+  }
+
+  .testmonial_card {
+    text-align: left;
+    margin-top: 1rem;
+  }
+
+  .tperson_img {
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
+
+  .tperson_name {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 1.25rem;
+    color: #f78c40;
+    font-weight: 500;
+  }
+
+  .tperson_designation {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .tcard_row {
+    padding: 4rem;
+  }
+
+  @media only screen and (min-width: 1000px) {
+    .testimonial_view_container {
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    .tcard_row {
+      display: flex;
+      flex-direction: row;
+      padding: 0 6rem;
+      margin-top: 3rem;
+    }
+
+    .testimonial_view {
+      margin: 2rem 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testmonial_card {
+      margin-top: 0rem;
+      margin-right: 5rem;
+      text-align: left;
+    }
+
+    .testmonial_card_container {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .test_heading {
+      font-family: "Noto Sans", sans-serif;
+      font-size: 3.25rem;
+      font-weight: 700;
+      color: #303030;
+    }
+
+    .test_content {
+      width: 80%;
+    }
+  }

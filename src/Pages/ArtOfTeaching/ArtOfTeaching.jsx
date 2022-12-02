@@ -71,10 +71,9 @@ const ArtOfTeaching = () => {
               </p>
 
               <p className={styles.fv_tagline}>
-                µLearn is back with Art of Teaching to honor teachers who are
-                the one who mould our future generation. GTech µLearn is
-                partnering with Google developers, KTU and Kerala University for
-                Art of Teaching 2.0.
+                µLearn is back with Art of Teaching to honor teachers who mould
+                our future generation. GTech µLearn is partnering with Google
+                developers, KTU and Kerala University for Art of Teaching 2.0.
               </p>
               <div className={styles.event_partners}>
                 <div className={styles.partners}>
@@ -83,7 +82,7 @@ const ArtOfTeaching = () => {
                   </p>
                   <div className={styles.partner}>
                     <img
-                      src="assets/artofteaching/ktu.png"
+                      src="assets/artofteaching/ktu.webp"
                       alt=""
                       className={styles.partner_image}
                     />
@@ -97,19 +96,24 @@ const ArtOfTeaching = () => {
                   </div>
                 </div>
               </div>
-              <a
-                href="https://airtable.com/shrC6h0CFSAZLaZUk"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button
-                  style={{ fontSize: "1rem" }}
-                  className={styles.detailsbtn}
-                  type="submit"
+
+              <div className={styles.fv_buttons}>
+                <a
+                  href="https://airtable.com/shrC6h0CFSAZLaZUk"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  Pre-Register Now!
-                </button>
-              </a>
+                  <button className={styles.create}>Register Now!</button>
+                </a>
+
+                <a
+                  href="https://mulearn.org/aotnominations"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className={styles.nomination_button}>Nominate</button>
+                </a>
+              </div>
             </div>
             <div className={styles.fv_images}>
               <img src={fvimg} alt="" className={styles.fv_img} />
@@ -121,17 +125,22 @@ const ArtOfTeaching = () => {
             <div className={styles.sv_texts}>
               <p className={styles.theme}>Theme: Lessons of The Future.</p>
               <p className={styles.sv_heading}>
-                What is <span>The Contest?</span>
+                What is <span>Art of Teaching???</span>
               </p>
 
               <p className={styles.sv_tagline}>
-                Teaching is an art and teachers are the artists, calling all the
-                artists to present their masterpieces of teaching to the world.
+                {/* Teaching is an art and teachers are the artists, calling all the
+                artists to present their masterpieces of teaching to the world. */}
+                Art of teaching is a contest, custom made for Educators.
                 <br />
                 <br />
-                Art of Teaching is a 3-minute video contest, where the teachers
+                {/* Art of Teaching is a 3-minute video contest, where the teachers
                 can send in a video of them teaching any of the following topic
-                in a creative manner.
+                in a creative manner. */}
+                In-order to participate in this contest, all one has to do is
+                create a 3 minute video of them teaching a specific topics in a
+                creative way or learn android and create a 3 minute summary of
+                the course Android Development with Kotlin.
               </p>
             </div>
 
@@ -149,10 +158,24 @@ const ArtOfTeaching = () => {
                         <span>Android Development with Kotlin</span> by Google.
                       </p>
                       <p className={styles.card_description}>
-                        The participants have to learn the Android Development
-                        with Kotlin course and they have to create a 3 minute
-                        video summary of the course.
+                        If you choose Android Development as the content you
+                        would have to learn the Android Development with Kotlin
+                        and have to create a 3 minute video summary of the
+                        course.
                       </p>
+                      <a
+                        href="https://developer.android.com/courses/android-basics-compose/course"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <button
+                          style={{ fontSize: "1rem" }}
+                          className={styles.detailsbtn}
+                          type="submit"
+                        >
+                          View Course
+                        </button>
+                      </a>
                     </div>
                   </div>
                 </SwiperSlide>
@@ -205,10 +228,23 @@ const ArtOfTeaching = () => {
                   <span>Android Development with Kotlin</span> by Google.
                 </p>
                 <p className={styles.card_description}>
-                  The participants have to learn the Android Development with
-                  Kotlin course and they have to create a 3 minute video summary
-                  of the course.
+                  If you choose Android Development as the content you would
+                  have to learn the Android Development with Kotlin and have to
+                  create a 3 minute video summary of the course.
                 </p>
+                <a
+                  href="https://developer.android.com/courses/android-basics-compose/course"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button
+                    style={{ fontSize: "1rem" }}
+                    className={styles.detailsbtn}
+                    type="submit"
+                  >
+                    View Course
+                  </button>
+                </a>
               </div>
 
               <div className={styles.topic_card}>
@@ -288,7 +324,7 @@ const ArtOfTeaching = () => {
                 The Former <span> Judging Panel</span>
               </p>
               <p className={styles.jv_text}>
-                We do needed some really creative people with amazing mentoring
+                We needed some really creative people with amazing mentoring
                 skills to judge all your submissions. Listed below were our
                 judges for the first edition of Art of Teaching.
               </p>
@@ -299,7 +335,7 @@ const ArtOfTeaching = () => {
                     designation={
                       "Former Principal at Mar Baselios College of Engineering and Technology"
                     }
-                    image={"assets/artofteaching/j1.jpeg"}
+                    image={"assets/artofteaching/j1.webp"}
                     linkedIn={
                       "https://www.linkedin.com/in/dr-t-m-george-87b86028/?originalSubdomain=in"
                     }
@@ -312,7 +348,7 @@ const ArtOfTeaching = () => {
                     designation={
                       "Product | Technology & Data Strategy | NYU & Columbia Fellow"
                     }
-                    image={"assets/artofteaching/j2.jpeg"}
+                    image={"assets/artofteaching/j2.webp"}
                     linkedIn={"https://www.linkedin.com/in/deepusnath/"}
                   />
                 </div>
@@ -320,7 +356,7 @@ const ArtOfTeaching = () => {
                   <MentorCard
                     name={"Rajeev J Sebastian"}
                     designation={"CEO Alokin Software Private Limited"}
-                    image={"assets/artofteaching/j3.png"}
+                    image={"assets/artofteaching/j3.webp"}
                     linkedIn={"https://www.linkedin.com/in/rajeevjs"}
                   />
                 </div>
@@ -336,7 +372,7 @@ const ArtOfTeaching = () => {
                 Art of Teaching <span>Archives</span>
               </p>
               <p className={styles.vv_tagline}>
-                Take a look at the top submissions by the teachers from the the
+                Take a look at the top submissions by the teachers from the
                 first edition of The Art of Teaching.
               </p>
             </div>

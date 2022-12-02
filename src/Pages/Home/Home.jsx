@@ -28,6 +28,7 @@ const Home = () => {
               <p className={styles.fv_heading}>
                 Let's <span>break the Echo Chambers</span> Together.
               </p>
+
               <p className={styles.fv_tagline}>
                 µLearn is a synergic philosophy of education, with a culture of
                 mutual learning through micro peer groups. We are here to assist
@@ -63,7 +64,7 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="/assets/home/partnerkdisc.webp"
+                src="/assets/home/partners/kdisc.webp"
                 alt=""
                 className={styles.supporter}
               />
@@ -74,7 +75,7 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="/assets/home/partnerksum.webp"
+                src="/assets/home/partners/ksum.webp"
                 alt=""
                 className={styles.supporter}
               />
@@ -209,6 +210,17 @@ const Home = () => {
                 className={styles.gsupporter}
               />
             </a>
+            <a
+              href="https://duk.ac.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/assets/home/partners/duk.webp"
+                alt="Digital University Kerala"
+                className={styles.gsupporter}
+              />
+            </a>
           </div>
         </div>
       </div>
@@ -340,7 +352,7 @@ const Home = () => {
               <div className={styles.countcontainer}>
                 <div className={styles.count}>
                   <p className={styles.cvc_heading}>
-                    <CountUp end={16000} duration={10} />+
+                    <CountUp end={18000} duration={10} />+
                   </p>
                   <p className={styles.cvc_text}>Members</p>
                 </div>
@@ -422,6 +434,7 @@ const Home = () => {
                 </p>
               </div>
               <a
+                className={styles.joinbutton}
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://discord.com/invite/Jt7sv3chZP"
@@ -458,7 +471,7 @@ const Home = () => {
           </div>
           <div>
             <img
-              src="assets/home/Chart.svg"
+              src="assets/home/Chart.webp"
               alt="Chart"
               className={styles.chart_img}
             />

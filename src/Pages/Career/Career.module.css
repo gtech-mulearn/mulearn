@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
 .first__section {
-  padding: 2rem;
+  padding: 1rem 0;
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;
@@ -11,39 +11,195 @@
 
 .fstexts {
   text-align: center;
-  width: 40%;
+  width: 100%;
 }
 
 .fsheading {
-  font-size: 5rem;
-  line-height: 5rem;
-  font-family: "Outfit";
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.5rem;
   font-weight: 600;
+  color: #303030;
 }
 
 .fstagline {
-  font-size: 1.15rem;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
 }
 
 .fsillustration {
-  width: 40vh;
+  width: 24rem;
 }
 
 .second__section {
-  /* padding: 2rem; */
-  margin: 2rem 6rem 0;
+  margin: 2rem 2rem 0;
 }
 
 .ssheading {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 600;
-  margin-bottom: 2.5rem;
+  margin-bottom: 0rem;
+  text-align: center;
+}
+
+.ssheadingtagline {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.ssheadingposttagline {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.ssheadingspan {
+  color: #3362ff;
+}
+
+.second_section {
+  margin: 1rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  .fsheading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 4.55rem;
+    line-height: 5rem;
+    font-weight: 600;
+  }
+
+  .ssheadingtagline {
+    width: 75%;
+    font-size: 1.1rem;
+    display: block;
+    margin: auto;
+    margin-bottom: 0.75rem;
+  }
+
+  .ssheadingposttagline {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+
+    width: 60%;
+    display: block;
+    margin: auto;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .fstagline {
+    font-size: 1.1rem;
+    width: 60%;
+    margin: auto;
+  }
+
+  .first__section {
+    max-width: 1300px;
+    flex-direction: row;
+    margin: auto;
+    margin-bottom: 2rem;
+  }
+}
+
+.op_jobdescription {
+  margin: 0.25rem 0;
+  background-color: #3362ff;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  display: block;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 1300px) {
+  .second_section {
+    max-width: 1300px;
+    margin: auto;
+    margin-top: 3rem;
+  }
+}
+
+.ssvheading {
+  font-size: 1.75rem;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  color: #404040;
+}
+
+.sectionseperator {
+  display: none;
+}
+
+@media only screen and (min-width: 1000px) {
+  .ssheading {
+    font-size: 2.25rem;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 600;
+    margin-left: 1rem;
+  }
+
+  .fstexts {
+    text-align: left;
+    width: 100%;
+  }
+
+  .fstagline {
+    text-align: left;
+    margin-left: 0;
+    /* width: 60%; */
+  }
+
+  .sectionseperator {
+    display: block;
+    margin: auto;
+    max-width: 1000px;
+  }
+
+  .sectionseperator_container {
+    background-color: #3362ff;
+  }
+
+  .op_jobdescription {
+    margin: 0.25rem 0;
+    background-color: #3362ff;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    margin-left: 1rem;
+    display: block;
+    margin: auto;
+    margin-bottom: 2rem;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .sectionseperator {
+    display: block;
+    margin: auto;
+    max-width: 1300px;
+  }
 }
 
 @media only screen and (min-width: 1000px) {
   .opportunities {
-    display: grid;
-    grid-template-columns: 35% 35%;
-    column-gap: 2rem;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+    row-gap: 1rem;
   }
+
+  .fsillustration {
+    width: 30rem;
+  }
+}
+
+.closedcareerscontainer {
+  margin-top: 2rem;
 }

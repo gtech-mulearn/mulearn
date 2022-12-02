@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "./MentorCard.module.css";
 
-import linkedin from "./assets/linkedin.png";
-
 const MentorCard = ({
   name,
   designation,
@@ -16,13 +14,24 @@ const MentorCard = ({
     <div className={styles.mentor_card_container}>
       <div className={styles.mentor_card}>
         <div className={styles.box}>
-          {image && <img src={image} alt="" className={styles.mentorimg} />}
+          {image && (
+            <img
+              src={image}
+              loading="lazy"
+              alt=""
+              className={styles.mentorimg}
+            />
+          )}
           <div className={styles.textdiv}>
             {interest && <p className={styles.mentor_interest}>{interest}</p>}
 
-            {linkedIn && linkedIn != "" && (
+            {linkedIn && linkedIn !== "" && (
               <a href={linkedIn} target="_blank" rel="noopener noreferrer">
-                <img src={linkedin} alt="" className={styles.linkedinimg} />
+                <img
+                  src="/assets/placeholder/linkedin.webp"
+                  alt=""
+                  className={styles.linkedinimg}
+                />
               </a>
             )}
           </div>

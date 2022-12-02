@@ -8,6 +8,11 @@
   background-color: #ffffff;
 }
 
+.first_view{
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .fv_img {
   width: 18rem;
   display: block;
@@ -26,6 +31,11 @@
   color: #303030;
 }
 
+.readhide {
+  color: #f78c40;
+  cursor: pointer;
+}
+
 .fv_heading span {
   font-weight: 600;
   color: #f78c40;
@@ -38,7 +48,7 @@
 
 @media only screen and (min-width: 1000px) {
   .first_view_container {
-    padding: 3rem 3rem;
+    padding: 0 3rem;
   }
 
   .first_view {
@@ -80,17 +90,17 @@
 /* Second Section Styles */
 
 .second_view_container {
-  padding: 2rem;
+  padding: 0 0rem;
   background-color: #ffffff;
 }
 
-.second_view {
+/* .second_view {
   margin-top: 2rem;
-}
+} */
 
 .card_img {
-  width: 19rem;
-  height: 19rem;
+  width: 20rem;
+  height: 20rem;
   object-fit: cover;
   border-radius: 5px;
   margin: 1rem 0rem;
@@ -113,7 +123,8 @@
 
 .card_description {
   font-family: "Poppins", sans-serif;
-  width: 90%;
+  /* width: 90%; */
+  text-align: left;
   font-size: 0.9rem;
 }
 
@@ -128,7 +139,9 @@
   font-size: 0.9rem;
   font-family: "Noto Sans", sans-serif;
   font-weight: 600;
-  opacity: 0.8;
+  color: #303030;
+  text-align: left;
+  margin-top: 0.5rem;
 }
 
 .sv_cards_container {
@@ -136,7 +149,13 @@
 }
 
 .sv_cards {
-  margin-top: 2rem;
+  width: 20rem;
+  margin: 2rem auto 0;
+  text-align: center;
+}
+
+.sv_texts {
+  margin: 2rem;
 }
 
 @media only screen and (min-width: 768px) {
@@ -152,14 +171,14 @@
   .second_view_container {
     max-width: 1300px;
     margin: auto;
+    padding: 0;
   }
 
-  .second_view {
+  /* .second_view {
     margin-top: 5rem;
-  }
+  } */
 
   .sv_texts {
-    margin-bottom: 2rem;
     width: 40%;
   }
 
@@ -176,7 +195,7 @@
   }
 
   .card_img {
-    width: 19rem;
+    width: 20rem;
     border-radius: 5px;
     margin: 1rem 0rem;
   }
@@ -190,5 +209,11 @@
     grid-template-columns: 33% 33% 33%;
     row-gap: 1.5rem;
     columns: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .sv_texts {
+    margin: 0;
   }
 }

@@ -1,0 +1,106 @@
+/* Cards Styling */
+
+.opportunity {
+  display: flex;
+  flex-direction: column;
+  column-gap: 1rem;
+  margin: 1rem auto 0;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  font-family: "Inter", sans-serif;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #5d81f7;
+
+  box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+}
+
+.company_logo {
+  width: 10rem;
+  margin-bottom: 1rem;
+}
+
+.op_texts {
+  margin-left: 1rem;
+}
+
+.op_header {
+  font-size: 1.5rem;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #3362ff;
+}
+
+.op_text {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  margin: 0.5rem;
+  margin-right: 1rem;
+  margin-left: 0;
+}
+
+.op_text span {
+  color: #404040;
+  display: block;
+  font-weight: 600;
+}
+
+.op_buttons {
+  margin-top: 1rem;
+}
+
+.op_jobdescription {
+  margin: 0.25rem 0;
+  background-color: #3362ff;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  margin-right: 0.25rem;
+}
+
+.op_applynow {
+  margin: 0.25rem 0rem;
+  color: #3362ff;
+  border: 1.5px solid #3362ff;
+  padding: 0.4rem 1.5rem;
+  border-radius: 5px;
+}
+
+.card_contents {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+@media only screen and (min-width: 1000px) {
+  .op_duration {
+    font-size: 1.1rem;
+  }
+
+  .company_logo {
+    width: 10rem;
+    margin: 0 1rem;
+  }
+
+  .opportunity {
+    margin: 0.5rem;
+  }
+
+  .op_applynow {
+    margin-left: 0.25rem;
+  }
+
+  .opportunities {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
