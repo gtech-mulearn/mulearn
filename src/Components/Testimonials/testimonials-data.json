@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Vladimir putin",
+        "image_link": "https://images.theconversation.com/files/489721/original/file-20221014-26-wuk9op.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop",
+        "about": "President of Russia",
+        "testimony": "Never have I seen such bald and shameless attempts at garnering an audiences' approval through frosted deliciousness."
+    },
+    {
+        "name": "Nelson Mandela",
+        "image_link": "https://cdn.britannica.com/67/75567-050-4EBBE84D/Nelson-Mandela.jpg?w=400&h=300&c=crop",
+        "about": "Former President of South Africa",
+        "testimony": "The greatest glory in living lies not in never falling, but in rising every time we fall"
+    },
+    {
+        "name": "Walt Disney",
+        "image_link": "https://m.media-amazon.com/images/M/MV5BMjIxMTUyNjc5OF5BMl5BanBnXkFtZTcwMjMwNjYwNA@@._V1_.jpg",
+        "about": "Founder of Disney",
+        "testimony": "The way to get started is to quit talking and begin doing."
+    },
+    {
+        "name": "Steve Jobs",
+        "image_link": "https://assets.entrepreneur.com/content/3x2/2000/1617286255-GettyImages-80145055.jpg?crop=1:1",
+        "about": "Former CEO of Apple",
+        "testimony": "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma which is living with the results of other people's thinking."
+    },
+    {
+        "name": "Eleanor Roosevelt",
+        "image_link": "https://cdn.britannica.com/78/19578-050-E720BE72/Eleanor-Roosevelt-1950.jpg?w=400&h=300&c=crop",
+        "about": "American Political Figure",
+        "testimony": "If life were predictable it would cease to be life, and be without flavor"
+    },
+    {
+        "name": "Oprah Winfrey",
+        "image_link": "https://images.news18.com/ibnlive/uploads/2021/09/oprah-winfrey.jpg",
+        "about": "American Television Host",
+        "testimony": "If you look at what you have in life, you'll always have more. If you look at what you don't have in life, you'll never have enough."
+    },
+    {
+        "name": "James Cameron",
+        "image_link": "https://pyxis.nymag.com/v1/imgs/536/266/a0aea6b49b884f7d048f94cf216fb16fb8-14-james-cameron.rsquare.w700.jpg",
+        "about": "Hollywood Director",
+        "testimony": "If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success."
+    },
+    {
+        "name": "John Lennon",
+        "image_link": "https://nationaltoday.com/wp-content/uploads/2022/09/John-Lennon-Birthday-640x514.jpg.webp",
+        "about": "English Singer",
+        "testimony": "Life is what happens when you're busy making other plans."
+    }
+]
