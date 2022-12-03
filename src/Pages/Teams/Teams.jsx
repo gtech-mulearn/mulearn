@@ -179,7 +179,7 @@ const Teams = () => {
               return (
                 <TeamCard
                   name={member.name}
-                  image={member.image}
+                  image={`/assets/team/tech-contributors/${member.name}.webp`}
                   designation={member.team ? member.team : ""}
                   linkedIn={member.linkedin ? member.linkedin : ""}
                 />
