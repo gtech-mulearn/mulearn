@@ -22,6 +22,7 @@ import MonthlyLeaderboard from "./Pages/LeaderBoard/MonthlyLeaderboard/MonthlyLe
 import MentorConnect from "./Pages/Events/MentorConnect/MentorConnect";
 import SaltMangoTree from "./Pages/Events/SaltMangoTree/SaltMangoTree";
 import OpenMic from "./Pages/Events/OpenMic/OpenMic";
+import BuildForTeam from "./Pages/Events/BuildForTeam/BuildForTeam";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/careers" element={<Career />} />
           <Route path="/blogs" element={<BlogLanding />} />
           <Route path="/blogs/:id" element={<BlogTemplate />} />
+          <Route path="/buildforteam" element={<BuildForTeam />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/blog" element={<BlogTemplate />} />
           <Route path="/calendar" element={<Calendar />} />

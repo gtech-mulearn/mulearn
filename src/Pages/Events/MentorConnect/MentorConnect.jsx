@@ -74,7 +74,7 @@ const MentorConnect = () => {
                       <p className={styles.card_name}>{event.name}</p>
 
                       <ReadMore>{event.description}</ReadMore>
-                      <p className={styles.card_date}>Happening On:{event.date}</p>
+                      <p className={styles.card_date}>Happened On:{event.date}</p>
                     </div>
                   </div>
                 ))}

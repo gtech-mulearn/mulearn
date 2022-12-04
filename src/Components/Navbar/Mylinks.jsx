@@ -192,6 +192,20 @@ export const links = [
       },
       {
         head: 2,
+        name: "Ongoing Events",
+        submenu: true,
+        sublinks: [
+          {
+            name: "Build For Team",
+            link: "/buildforteam",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+        ],
+      },
+      {
+        head: 2,
         name: "Announcements",
         submenu: true,
         sublinks: [
