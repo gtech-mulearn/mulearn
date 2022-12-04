@@ -70,6 +70,20 @@
   box-shadow: 0 1px 12px 0 rgba(193, 195, 211, 0.37);
 }
 
+.registerfixed {
+  background-color: #fff;
+  border: 2px solid #f33e41;
+  border-radius: 8px;
+  padding: 0.5rem 1.75rem;
+  color: #f33e41;
+
+  margin-top: 1rem;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 411;
+}
+
 @media only screen and (min-width: 1000px) {
   .first_view {
     max-width: 1300px;
@@ -78,20 +92,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-  }
-
-  .registerfixed {
-    background-color: #fff;
-    border: 2px solid #f33e41;
-    border-radius: 8px;
-    padding: 0.5rem 1.75rem;
-    color: #f33e41;
-
-    margin-top: 1rem;
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
-    z-index: 411;
   }
 
   .supporters {
