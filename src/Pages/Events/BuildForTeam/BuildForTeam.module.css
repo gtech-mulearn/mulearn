@@ -13,15 +13,15 @@
   font-weight: 700;
   line-height: 4.25rem;
   letter-spacing: 0.15rem;
-  color: #f78c40;
+  color: #F33E41;
   margin-bottom: 1rem;
   text-align: center;
 }
 
 .fv_heading span {
   color: #ffffff;
-  text-shadow: -2px -2px 0 #f78c40, 2px -2px 0 #f78c40, -2px 2px 0 #f78c40,
-    2px 2px 0 #f78c40;
+  text-shadow: -2px -2px 0 #F33E41, 2px -2px 0 #F33E41, -2px 2px 0 #F33E41,
+    2px 2px 0 #F33E41;
 }
 
 .fv_tagline {
@@ -38,7 +38,7 @@
 }
 
 .register {
-  background-color: #f78c40;
+  background-color: #F33E41;
   border-radius: 8px;
   padding: 0.5rem 1.75rem;
   color: white;
@@ -105,7 +105,7 @@
 }
 
 .sv_heading {
-  color: #f78c40;
+  color: #F33E41;
   font-family: "Noto Sans", sans-serif;
   font-weight: 600;
   font-size: 1.75rem;
@@ -206,7 +206,7 @@
 }
 
 .tv_heading {
-  color: #f78c40;
+  color: #F33E41;
   font-family: "Noto Sans", sans-serif;
   font-weight: 600;
   font-size: 1.75rem;
@@ -228,7 +228,7 @@
   }
 
   .tv_heading {
-    color: #f78c40;
+    color: #F33E41;
     font-family: "Noto Sans", sans-serif;
     font-weight: 600;
     font-size: 3rem;

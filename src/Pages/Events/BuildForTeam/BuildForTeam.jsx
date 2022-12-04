@@ -47,7 +47,7 @@ const Build4Team = () => {
               </a>
             </div>
             <img
-              src="/assets/events/build4team/fvimg.gif"
+              src="/assets/events/build4team/fvimgr.gif"
               alt=""
               className={styles.fv_image}
             />
