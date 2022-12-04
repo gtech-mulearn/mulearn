@@ -138,6 +138,10 @@
   font-size: 0.9rem;
 }
 
+.svp_text span{
+  font-weight: 500;
+}
+
 .sv_image {
   font-size: 2.5rem;
   margin-bottom: 1rem;
@@ -245,6 +249,10 @@ li {
     font-weight: 600;
     font-size: 2.25rem;
     margin-bottom: 0.25rem;
+  }
+
+  .svp_text a{
+    text-decoration: underline;
   }
 
   .tv_tagline {

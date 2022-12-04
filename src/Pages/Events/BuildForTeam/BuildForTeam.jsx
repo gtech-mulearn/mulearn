@@ -68,10 +68,11 @@ const Build4Team = () => {
                   <p className={styles.sv_image}>⚒️</p>
                   <div className={styles.svp_heading}>Build</div>
                   <div className={styles.svp_text}>
-                    To Participate in BuildForTeam Event, You have to Build an
-                    awesome website for your favourite World Cup team to express
-                    your love and support. Priority will be given for responsive
-                    websites.
+                    To participate in <span>BuildForTeam</span>, all you have to
+                    do is <span>Build </span>
+                    an awesome website for your favourite World Cup team to
+                    express your love and support. Priority will be given for
+                    responsive websites.
                   </div>
                 </div>
                 <div className={styles.sv_point}>
@@ -79,8 +80,9 @@ const Build4Team = () => {
                   <div className={styles.svp_heading}>Learn</div>
                   <div className={styles.svp_text}>
                     By building a website for your favourite football team, you
-                    are improving yourself by learning new technology and web
-                    development skills⚽.
+                    are not just showcasing your love for your team but also
+                    your Web development skills. See this as an opportunity to
+                    learn, practice and showcase your skills in a fun way!
                   </div>
                 </div>
 
@@ -88,10 +90,17 @@ const Build4Team = () => {
                   <p className={styles.sv_image}>🏆</p>
                   <div className={styles.svp_heading}>Earn</div>
                   <div className={styles.svp_text}>
-                    Once you’re done crafting the website, fill the form given
-                    above stand a chance to win the jersey of your favorite
-                    team. 💥 Selected participants also stand a chance of
-                    winning cool goodies.
+                    Once you’re done crafting the website, fill{" "}
+                    <a
+                      href="https://bit.ly/BuildForTeam"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      This Form
+                    </a>{" "}
+                    and stand a chance to win your favorite team's jersey. 💥
+                    Selected participants also stand a chance of winning cool
+                    goodies.
                   </div>
                 </div>
               </div>
@@ -102,13 +111,17 @@ const Build4Team = () => {
           <div className={styles.third_view}>
             <p className={styles.tv_heading}>Selection Criteria</p>
             <p className={styles.tv_tagline}>
-              The competition will be open to the public, but Build.MyWeb
-              participants will be given priority; at least one of the winners
-              must be from Build.MyWeb V5, and one must be from any previous
-              Build.MyWeb. All registrations will be validated in the first
-              phase, and all web sites that meet the minimal requirements will
-              be qualified for the second phase. Five winners will be chosen in
-              the second phase.
+              <ul>
+                <li>
+                  First level filteration will be there from which all the valid
+                  websites will be selected and they enter to phase two.
+                </li>
+                <li>From phase two, 5 winners will be selected with prizes</li>
+                <li>
+                  2 winners will be from participants in build.myweb (web desing
+                  bootcamp)
+                </li>
+              </ul>
             </p>
           </div>
           <div className={styles.third_view}>
@@ -128,10 +141,23 @@ const Build4Team = () => {
 
         <div className={styles.third_view_container}>
           <div className={styles.third_view}>
+            <p className={styles.tv_heading}>Rules & Guidelines</p>
+            <p className={styles.tv_tagline}>
+              <ol>
+                <li>Your Last Date for Submission is 12th December.</li>
+                <li>Websites should be responsive.</li>
+                <li>
+                  You can use predefined templates, but websites without
+                  templates will be given priority
+                </li>
+              </ol>
+            </p>
+          </div>
+          <div className={styles.third_view}>
             <p className={styles.tv_heading}>Have Doubts?</p>
             <p className={styles.tv_tagline}>
-              IIf you have any questions or concerns about this event, or if you
-              encounter any difficulties while participating, Feel free to
+              If you have any questions or concerns about this event, or if you
+              encounter any difficulties while participating, feel free to
               contact us via Discord.
             </p>
             <a
