@@ -70,7 +70,8 @@ const Build4Team = () => {
                   <div className={styles.svp_text}>
                     To Participate in BuildForTeam Event, You have to Build an
                     awesome website for your favourite World Cup team to express
-                    your love and support.
+                    your love and support. Priority will be given for responsive
+                    websites.
                   </div>
                 </div>
                 <div className={styles.sv_point}>
@@ -88,8 +89,9 @@ const Build4Team = () => {
                   <div className={styles.svp_heading}>Earn</div>
                   <div className={styles.svp_text}>
                     Once you’re done crafting the website, fill the form given
-                    above and earn Karma points 💥 Selected participants also
-                    stand a chance of winning cool goodies.
+                    above stand a chance to win the jersey of your favorite
+                    team. 💥 Selected participants also stand a chance of
+                    winning cool goodies.
                   </div>
                 </div>
               </div>
@@ -98,19 +100,29 @@ const Build4Team = () => {
         </div>
         <div className={styles.third_view_container}>
           <div className={styles.third_view}>
-            <p className={styles.tv_heading}>Have Doubts?</p>
+            <p className={styles.tv_heading}>Selection Criteria</p>
             <p className={styles.tv_tagline}>
-              IIf you have any questions or concerns about this event, or if you
-              encounter any difficulties while participating, Feel free to
-              contact us via Discord.
+              The competition will be open to the public, but Build.MyWeb
+              participants will be given priority; at least one of the winners
+              must be from Build.MyWeb V5, and one must be from any previous
+              Build.MyWeb. All registrations will be validated in the first
+              phase, and all web sites that meet the minimal requirements will
+              be qualified for the second phase. Five winners will be chosen in
+              the second phase.
             </p>
-            <a
-              href="https://discord.mulearn.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <button className={styles.register}>Join Discord</button>
-            </a>
+          </div>
+          <div className={styles.third_view}>
+            <p className={styles.tv_heading}>Karma Awarding</p>
+            <p className={styles.tv_tagline}>
+              <ul>
+                <li>20 karma points will be awarded for participation.</li>
+                <li>
+                  200 karma points will be awarded to those who qualify for the
+                  second phase.
+                </li>
+                <li> 400 karma points will be awarded to the five winners</li>
+              </ul>
+            </p>
           </div>
         </div>
       </div>
