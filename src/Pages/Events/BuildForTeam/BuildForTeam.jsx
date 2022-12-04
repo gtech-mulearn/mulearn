@@ -125,6 +125,24 @@ const Build4Team = () => {
             </p>
           </div>
         </div>
+
+        <div className={styles.third_view_container}>
+          <div className={styles.third_view}>
+            <p className={styles.tv_heading}>Have Doubts?</p>
+            <p className={styles.tv_tagline}>
+              IIf you have any questions or concerns about this event, or if you
+              encounter any difficulties while participating, Feel free to
+              contact us via Discord.
+            </p>
+            <a
+              href="https://discord.mulearn.org"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className={styles.register}>Join Discord</button>
+            </a>
+          </div>
+        </div>
       </div>
       <Footer />
     </>
