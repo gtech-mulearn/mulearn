@@ -7,6 +7,13 @@ import Footer from "../../../Components/Footer/Footer";
 const Build4Team = () => {
   return (
     <>
+      <a
+        href="https://bit.ly/BuildForTeam"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <button className={styles.registerfixed}>Register Now</button>
+      </a>
       <Navbar />
       <div className={styles.main_container}>
         <div className={styles.first_view_container}>
@@ -17,9 +24,9 @@ const Build4Team = () => {
               </p>
               <p className={styles.fv_tagline}>
                 GTech μLearn in association with Pygrammers present
-                BuildForTeam, your chance to build your favorite team’s website.
-                With your favourite teams battling it out on the Football field,
-                it’s up to you to build them an awesome website.
+                BuildForTeam, your chance to build your favourite team’s
+                website. With your favourite teams battling it out on the
+                Football field, it’s up to you to build them an awesome website.
               </p>
               <div class={styles.supporters}>
                 <span>Supported By </span>
@@ -113,13 +120,15 @@ const Build4Team = () => {
             <p className={styles.tv_tagline}>
               <ul>
                 <li>
-                  First level filteration will be there from which all the valid
-                  websites will be selected and they enter to phase two.
+                  • First level filteration will be there from which all the
+                  valid websites will be selected and they enter to phase two.
                 </li>
-                <li>From phase two, 5 winners will be selected with prizes</li>
                 <li>
-                  2 winners will be from participants in build.myweb (web desing
-                  bootcamp)
+                  • From phase two, 5 winners will be selected with prizes
+                </li>
+                <li>
+                  • 2 winners will be from participants in build.myweb (web
+                  design bootcamp)
                 </li>
               </ul>
             </p>
@@ -128,12 +137,12 @@ const Build4Team = () => {
             <p className={styles.tv_heading}>Karma Awarding</p>
             <p className={styles.tv_tagline}>
               <ul>
-                <li>20 karma points will be awarded for participation.</li>
+                <li>• 20 karma points will be awarded for participation.</li>
                 <li>
-                  200 karma points will be awarded to those who qualify for the
-                  second phase.
+                  • 200 karma points will be awarded to those who qualify for
+                  the second phase.
                 </li>
-                <li> 400 karma points will be awarded to the five winners</li>
+                <li>• 400 karma points will be awarded to the five winners</li>
               </ul>
             </p>
           </div>
@@ -144,10 +153,13 @@ const Build4Team = () => {
             <p className={styles.tv_heading}>Rules & Guidelines</p>
             <p className={styles.tv_tagline}>
               <ol>
-                <li>Your Last Date for Submission is 12th December.</li>
-                <li>Websites should be responsive.</li>
+                <li>• Your Last Date for Submission is 12th December.</li>
+                <li>• Websites should be responsive.</li>
                 <li>
-                  You can use predefined templates, but websites without
+                  • You should use html and css, You can use any other libraries
+                </li>
+                <li>
+                  • You can use predefined templates, but websites without
                   templates will be given priority
                 </li>
               </ol>

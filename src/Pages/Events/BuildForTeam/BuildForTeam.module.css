@@ -80,6 +80,20 @@
     justify-content: space-between;
   }
 
+  .registerfixed {
+    background-color: #fff;
+    border: 2px solid #f33e41;
+    border-radius: 8px;
+    padding: 0.5rem 1.75rem;
+    color: #f33e41;
+
+    margin-top: 1rem;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 411;
+  }
+
   .supporters {
     justify-content: flex-start;
   }
@@ -138,7 +152,7 @@
   font-size: 0.9rem;
 }
 
-.svp_text span{
+.svp_text span {
   font-weight: 500;
 }
 
@@ -251,7 +265,7 @@ li {
     margin-bottom: 0.25rem;
   }
 
-  .svp_text a{
+  .svp_text a {
     text-decoration: underline;
   }
 
