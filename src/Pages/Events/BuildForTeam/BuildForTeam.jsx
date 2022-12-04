@@ -7,13 +7,6 @@ import Footer from "../../../Components/Footer/Footer";
 const Build4Team = () => {
   return (
     <>
-      <a
-        href="https://bit.ly/BuildForTeam"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <button className={styles.registerfixed}>Register Now</button>
-      </a>
       <Navbar />
       <div className={styles.main_container}>
         <div className={styles.first_view_container}>
@@ -50,7 +43,7 @@ const Build4Team = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button className={styles.register}>Register Now</button>
+                <button className={styles.register}>Participate Now</button>
               </a>
             </div>
             <img
@@ -82,6 +75,7 @@ const Build4Team = () => {
                     responsive websites.
                   </div>
                 </div>
+
                 <div className={styles.sv_point}>
                   <p className={styles.sv_image}>🖥</p>
                   <div className={styles.svp_heading}>Learn</div>
@@ -91,6 +85,13 @@ const Build4Team = () => {
                     your Web development skills. See this as an opportunity to
                     learn, practice and showcase your skills in a fun way!
                   </div>
+                  <a
+                    href="https://bit.ly/BuildForTeam"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className={styles.register}>Participate Now</button>
+                  </a>
                 </div>
 
                 <div className={styles.sv_point}>

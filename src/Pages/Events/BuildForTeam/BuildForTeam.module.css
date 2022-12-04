@@ -203,6 +203,10 @@
   .sv_point {
     text-align: center;
     margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
   }
 
   .svp_heading {
