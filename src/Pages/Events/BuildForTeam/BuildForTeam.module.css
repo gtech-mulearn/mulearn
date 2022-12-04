@@ -7,6 +7,13 @@
   min-height: 45vh;
 }
 
+.lastdate {
+  font-family: "Poppins", sans-serif;
+  margin-top: 0.5rem;
+  color: #363636;
+  font-weight: 500;
+}
+
 .fv_heading {
   font-family: "Noto Sans", sans-serif;
   font-size: 4.5rem;
@@ -250,7 +257,6 @@ li {
 
     max-width: 1300px;
     margin: auto;
-
   }
 
   .third_view {
