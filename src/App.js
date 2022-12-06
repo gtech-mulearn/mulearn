@@ -59,7 +59,7 @@ function App() {
           <Route path="/campuschapters">
             <Route path="" element={<CampusChapters />} />
           </Route>
-          <Route path="/enablers" element={<EnablersOnboarding />} />
+          <Route path="/participate" element={<EnablersOnboarding />} />
         </Routes>
       </Router>
     </div>

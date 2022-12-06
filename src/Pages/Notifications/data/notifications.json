@@ -1,12 +1,6 @@
 {
   "new": [
     {
-      "title": "Rust 101",
-      "date": "Tue Dec 04 2022 19:00:00 GMT+0530 (India Standard Time)",
-      "description": "GTech µLearn presents to you Rust 101, a comprehensive session on Rust, one of the most in-demand programming languages! Learn how to build solid fundamentals with the World's most loved ❤️ programming language - Rust⚡",
-      "url": "https://mulearn.org/rust101"
-    },
-    {
       "title": "Inspiration Station Radio",
       "date": "Tue Dec 06 2022 00:00:00 GMT+0530 (India Standard Time)",
       "description": "Everyone has a story to tell, the story about finding their passion, the story of learning new things and much more. Often times these stories are filled with fun and inspirations which fuel others to start their own journey. Join in this Tuesday@8:00PM to get Inspired.",
@@ -20,6 +14,12 @@
     }
   ],
   "old": [
+    {
+      "title": "Rust 101",
+      "date": "Tue Dec 04 2022 19:00:00 GMT+0530 (India Standard Time)",
+      "description": "GTech µLearn presents to you Rust 101, a comprehensive session on Rust, one of the most in-demand programming languages! Learn how to build solid fundamentals with the World's most loved ❤️ programming language - Rust⚡",
+      "url": "https://mulearn.org/rust101"
+    },
     {
       "title": "Getting Companies to fight for you 🤼‍♂️",
       "date": "Fri Nov 25 2022 00:00:00 GMT+0530 (India Standard Time)",
