@@ -23,6 +23,7 @@ import MentorConnect from "./Pages/Events/MentorConnect/MentorConnect";
 import SaltMangoTree from "./Pages/Events/SaltMangoTree/SaltMangoTree";
 import OpenMic from "./Pages/Events/OpenMic/OpenMic";
 import BuildForTeam from "./Pages/Events/BuildForTeam/BuildForTeam";
+import EnablersOnboarding from "./Pages/EnablersOnboarding/EnablersOnboarding";
 
 function App() {
   return (
@@ -58,8 +59,6 @@ function App() {
           <Route path="/campuschapters">
             <Route path="" element={<CampusChapters />} />
           </Route>
-          <Route path="/blog/amirthags" element={<BlogPage />} />
-          <Route path="/blog/jessno" element={<JBlogPage />} />
           <Route path="/enablers" element={<EnablersOnboarding />} />
         </Routes>
       </Router>

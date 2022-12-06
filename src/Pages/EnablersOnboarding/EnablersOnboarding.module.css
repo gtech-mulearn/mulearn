@@ -52,6 +52,7 @@
   font-family: "Poppins", sans-serif;
   font-size: 0.9rem;
   border-radius: 5px;
+  margin-right: 0.5rem;
 }
 
 @media only screen and (min-width: 1000px) {

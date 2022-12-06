@@ -13,7 +13,7 @@ const EnablersOnboarding = () => {
             <div className={styles.fv_texts}>
               <p className={styles.fv_heading}>
                 {" "}
-                <span>µLearn</span> Enablers
+                <span>µLearn</span> Enablers and Mentors
               </p>
               <p className={styles.fv_tagline}>
                 Our program involves contributions from individuals and
@@ -27,8 +27,19 @@ const EnablersOnboarding = () => {
                 initiatives within ATFG such as moderation, UI/UX design, bot
                 development, etc
               </p>
-              <a target="_blank" rel="noopener noreferrer" href="#">
-                <button className={styles.primary}>Join Now</button>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSe1pnerwvYeUOSUtVTJHDYD7eDkPtv69FsNP3iSu8gwI7euew/viewform"
+              >
+                <button className={styles.primary}>Join as Enabler</button>
+              </a>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfvyMA5f6ZUAfJMHoV81Nx6PlsM5F4krJzwP4fZWOIqx7XQ3w/viewform"
+              >
+                <button className={styles.primary}>Join as Mentor</button>
               </a>
             </div>
             <div className={styles.fv_images}>
