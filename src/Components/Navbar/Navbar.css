@@ -1,0 +1,56 @@
+@media screen and (min-width: 1024px) {
+  .dashBar {
+    position: relative;
+    width: calc(100% + 10px);
+    height: 3px;
+  }
+
+  .dashOnHover:hover .dashBar {
+    background-color: black;
+  }
+}
+
+.special {
+  font-family: Montserrat, Arial;
+  line-height: 1.3em;
+  text-decoration: none;
+}
+
+.special::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.special::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(255, 136, 0, 0.795);
+  border-radius: 10px;
+  padding: 0 5px;
+  max-height: max-content;
+}
+
+/* Handle */
+.special::-webkit-scrollbar-thumb {
+  background: hsla(32, 100%, 44%, 0.247);
+  border-radius: 10px;
+}
+
+.notifications {
+  position: absolute;
+  width: 300px;
+  background-color: white;
+  color: rgb(255, 90, 31);
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 0px 3px rgba(0 0 0 /0.07);
+}
+
+.mobile-nav-bar {
+  display: flex;
+  z-index: 30;
+  padding: 1.25rem;
+  margin-top: .25rem;
+  background-color: white;
+  justify-content: space-between;
+}

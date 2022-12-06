@@ -1,0 +1,146 @@
+[
+  {
+    "id": 0,
+    "name": "Albin Mathews Ali",
+    "designation": "Vimal Jyothi",
+    "image": "assets/team/ca/Albin Mathews Ali.webp"
+  },
+  {
+    "id": 1,
+    "name": "Muhammed Rashid",
+    "designation": "Vimal Jyothi",
+    "image": "assets/team/ca/Muhammed Rashid.webp"
+  },
+  {
+    "id": 2,
+    "name": "Prince Judit Das",
+    "designation": "Vimal Jyothi",
+    "image": "assets/team/ca/Prince Judit Das.webp"
+  },
+  {
+    "id": 3,
+    "name": "Amritha G S",
+    "designation": "Trinity College of Engineering",
+    "image": "assets/team/ca/Amritha G S.webp"
+  },
+  {
+    "id": 4,
+    "name": "Unnikrishnan GB",
+    "designation": "Trinity College of Engineering",
+    "image": "assets/team/ca/Unnikrishnan GB.webp"
+  },
+  {
+    "id": 5,
+    "name": "Arjun B S",
+    "designation": "Trinity College of Engineering",
+    "image": "assets/team/ca/Arjun B S.webp"
+  },
+  {
+    "id": 6,
+    "name": "Kusanath",
+    "designation": "St Joseph's College",
+    "image": "assets/team/ca/Kusanath.webp"
+  },
+  {
+    "id": 7,
+    "name": "Nishanth",
+    "designation": "St Joseph's College",
+    "image": "assets/team/ca/Nishanth.webp"
+  },
+  {
+    "id": 8,
+    "name": "Sandra Pramod",
+    "designation": "St Joseph's College",
+    "image": "assets/team/ca/Sandra Pramod.webp"
+  },
+  {
+    "id": 9,
+    "name": "B. Raj Shankar Menon",
+    "designation": "Mar Baselios College",
+    "image": "assets/team/ca/B. Raj Shankar Menon.webp"
+  },
+  {
+    "id": 10,
+    "name": "Gopeekrishnan G S",
+    "designation": "Mar Baselios College",
+    "image": "assets/team/ca/Gopeekrishnan G S.webp"
+  },
+  {
+    "id": 11,
+    "name": "Jessno Oommen Jose",
+    "designation": "Mar Baselios College",
+    "image": "assets/team/ca/Jessno Oommen Jose.webp"
+  },
+  {
+    "id": 12,
+    "name": "Arjun P",
+    "designation": "KMCT College of Enginnering",
+    "image": "assets/team/ca/Arjun P.webp"
+  },
+  {
+    "id": 13,
+    "name": "Hridya Nanda",
+    "designation": "KMCT College of Enginnering",
+    "image": "assets/team/ca/Hridya Nanda.webp"
+  },
+  {
+    "id": 14,
+    "name": "Jibin",
+    "designation": "KMCT College of Enginnering",
+    "image": "assets/team/ca/Jibin.webp"
+  },
+  {
+    "id": 15,
+    "name": "Jesin Vengilatt",
+    "designation": "GEC Wayanad",
+    "image": "assets/team/ca/Jesin Vengilatt.webp"
+  },
+  {
+    "id": 16,
+    "name": "Aswin C Baiju",
+    "designation": "GEC Wayanad",
+    "image": "assets/team/ca/Aswin C Baiju.webp"
+  },
+  {
+    "id": 17,
+    "name": "Ameena Nuwaira Thwahir Ameen",
+    "designation": "GEC Wayanad",
+    "image": "assets/team/ca/Ameena Nuwaira Thwahir Ameen.webp"
+  },
+  {
+    "id": 18,
+    "name": "Abisa M",
+    "designation": "College of Enginnering Perumon",
+    "image": "assets/team/ca/Abisa M.webp"
+  },
+  {
+    "id": 19,
+    "name": "Aldrin Andrew",
+    "designation": "College of Enginnering Perumon",
+    "image": "assets/team/ca/Aldrin Andrew.webp"
+  },
+  {
+    "id": 20,
+    "name": "Gregory Jobe C",
+    "designation": "College of Enginnering Perumon",
+    "image": "assets/team/ca/Gregory Jobe C.webp"
+  },
+  {
+    "id": 21,
+    "name": "Anoop",
+    "designation": "Christ College of Engineering",
+    "image": "assets/team/ca/Anoop.webp"
+  },
+  {
+    "id": 22,
+    "name": "Arun Joseph",
+    "designation": "Christ College of Engineering",
+    "image": "assets/team/ca/Arun Joseph.webp"
+  },
+  {
+    "id": 23,
+    "name": "Austin S",
+    "designation": "Christ College of Engineering",
+    "image": "assets/team/ca/Austin S.webp"
+  }
+]

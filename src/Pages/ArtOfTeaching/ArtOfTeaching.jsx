@@ -82,7 +82,7 @@ const ArtOfTeaching = () => {
                   </p>
                   <div className={styles.partner}>
                     <img
-                      src="assets/artofteaching/ktu.png"
+                      src="assets/artofteaching/ktu.webp"
                       alt=""
                       className={styles.partner_image}
                     />
@@ -335,7 +335,7 @@ const ArtOfTeaching = () => {
                     designation={
                       "Former Principal at Mar Baselios College of Engineering and Technology"
                     }
-                    image={"assets/artofteaching/j1.jpeg"}
+                    image={"assets/artofteaching/j1.webp"}
                     linkedIn={
                       "https://www.linkedin.com/in/dr-t-m-george-87b86028/?originalSubdomain=in"
                     }
@@ -348,7 +348,7 @@ const ArtOfTeaching = () => {
                     designation={
                       "Product | Technology & Data Strategy | NYU & Columbia Fellow"
                     }
-                    image={"assets/artofteaching/j2.jpeg"}
+                    image={"assets/artofteaching/j2.webp"}
                     linkedIn={"https://www.linkedin.com/in/deepusnath/"}
                   />
                 </div>
@@ -356,7 +356,7 @@ const ArtOfTeaching = () => {
                   <MentorCard
                     name={"Rajeev J Sebastian"}
                     designation={"CEO Alokin Software Private Limited"}
-                    image={"assets/artofteaching/j3.png"}
+                    image={"assets/artofteaching/j3.webp"}
                     linkedIn={"https://www.linkedin.com/in/rajeevjs"}
                   />
                 </div>

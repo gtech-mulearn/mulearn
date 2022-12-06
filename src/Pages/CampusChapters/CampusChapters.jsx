@@ -178,7 +178,7 @@ const CampusChapters = () => {
             <div className={styles.onboarding_steps_container}>
               <div className={styles.step}>
                 <img
-                  src="/assets/campuscommunity/application.png"
+                  src="/assets/campuscommunity/application.webp"
                   alt=""
                   className={styles.step_image}
                 />
@@ -190,7 +190,7 @@ const CampusChapters = () => {
               </div>
               <div className={styles.step}>
                 <img
-                  src="/assets/campuscommunity/onboarding.png"
+                  src="/assets/campuscommunity/onboarding.webp"
                   alt=""
                   className={styles.step_image}
                 />
@@ -202,7 +202,7 @@ const CampusChapters = () => {
               </div>
               <div className={styles.step}>
                 <img
-                  src="/assets/campuscommunity/meeting.png"
+                  src="/assets/campuscommunity/meeting.webp"
                   alt=""
                   className={styles.step_image}
                 />
@@ -215,7 +215,7 @@ const CampusChapters = () => {
           </div>
         </div>
 
-        <div className={styles.generator_view_container}>
+        <div className={styles.generator_view_container} id="logo-generator">
           <div className={styles.generator_view}>
             <div className={styles.gv_texts}>
               <p className={styles.gv_heading}>The Campus Logo Generator</p>
@@ -242,14 +242,14 @@ const CampusChapters = () => {
               </div>
             </div>
             <img
-              src="/assets/campuscommunity/logogen.png"
+              src="/assets/campuscommunity/logogen.webp"
               alt=""
               className={styles.logoimage}
             />
           </div>
         </div>
 
-        <div className={styles.third_view_container}>
+        <div className={styles.third_view_container} id="success-stories">
           <div className={styles.third_view}>
             <div className={styles.tv_texts}>
               <p className={styles.tv_heading}>
@@ -263,12 +263,12 @@ const CampusChapters = () => {
 
             <div className={styles.tv_story_container}>
               <div className={styles.tv_story}>
-                <Card sx={{ maxWidth: 345, height: 550 }}>
+                <Card sx={{ maxWidth: 345, height: 500 }}>
                   <CardActionArea>
                     <CardMedia
                       component="img"
                       height="30"
-                      image="/assets/campuscommunity/amritha.jpeg"
+                      image="/assets/campuscommunity/amirtha.webp"
                       alt="Amritha G S"
                     />
                     <CardContent>
@@ -284,7 +284,7 @@ const CampusChapters = () => {
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
-                    <Link to="/blog/amirthags">
+                    <Link to="/blogs/amirtha-gs">
                       <Button size="small">
                         <span>Read More...</span>
                       </Button>
@@ -293,12 +293,12 @@ const CampusChapters = () => {
                 </Card>
               </div>
               <div className={styles.tv_story}>
-                <Card sx={{ maxWidth: 345, height: 550 }}>
+                <Card sx={{ maxWidth: 345, height: 500 }}>
                   <CardActionArea>
                     <CardMedia
                       component="img"
                       height="30"
-                      image="/assets/campuscommunity/jessno.jpg"
+                      image="/assets/campuscommunity/jessno.webp"
                       alt="Jessno Oommen Jose"
                     />
                     <CardContent>
@@ -314,7 +314,37 @@ const CampusChapters = () => {
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
-                    <Link to="/blog/jessno">
+                    <Link to="/blogs/jessno-oomen">
+                      <Button size="small">
+                        <span>Read More...</span>
+                      </Button>
+                    </Link>
+                  </CardActions>
+                </Card>
+              </div>
+
+              <div className={styles.tv_story}>
+                <Card sx={{ maxWidth: 345, height: 500 }}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      height="10"
+                      image="/assets/campuscommunity/sandra.webp"
+                      alt="Jessno Oommen Jose"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        Sandra Pramod
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Read the Story of a graduate of Computer Science and
+                        Engineering who transformed her college to the
+                        top-performing college for the academic year 2021–2022
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                  <CardActions>
+                    <Link to="/blogs/sandra-pramod">
                       <Button size="small">
                         <span>Read More...</span>
                       </Button>

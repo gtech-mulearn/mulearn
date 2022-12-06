@@ -4,6 +4,8 @@ import Navbar from "../../../Components/Navbar/Navbar";
 import styles from "./HacktoberFest.module.css";
 
 const HacktoberFest = () => {
+  const profiles = require("./data/hactoberfestcomplete.json");
+  const py_profiles = require("./data/info.json");
   return (
     <>
       <Navbar />
@@ -21,20 +23,6 @@ const HacktoberFest = () => {
                 Hacktoberfest has played an integral role in building the
                 open-source community over the years.
               </p>
-              <a
-                href="https://awesome.mulearn.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className={styles.primary_btn}>Contribute Now!</button>
-              </a>
-              <a
-                href="https://hacktoberfest.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className={styles.signup}>Join Hacktoberfest</button>
-              </a>
             </div>
             <img
               alt="Illustration"
@@ -54,7 +42,7 @@ const HacktoberFest = () => {
             <div className={styles.sv_points}>
               <div className={styles.sv_point}>
                 <img
-                  src="/assets/events/hacktoberfest/season.png"
+                  src="/assets/events/hacktoberfest/season.webp"
                   alt=""
                   className={styles.sv_image}
                 />
@@ -67,7 +55,7 @@ const HacktoberFest = () => {
               </div>
               <div className={styles.sv_point}>
                 <img
-                  src="/assets/events/hacktoberfest/participate.png"
+                  src="/assets/events/hacktoberfest/participate.webp"
                   alt=""
                   className={styles.sv_image}
                 />
@@ -82,7 +70,7 @@ const HacktoberFest = () => {
 
               <div className={styles.sv_point}>
                 <img
-                  src="/assets/events/hacktoberfest/surprises.png"
+                  src="/assets/events/hacktoberfest/surprises.webp"
                   alt=""
                   className={styles.sv_image}
                 />
@@ -99,22 +87,10 @@ const HacktoberFest = () => {
         <div className={styles.orange_bg}>
           <div className={styles.second_view_container}>
             <div className={styles.second_view}>
-              <div className={styles.sv_texts}>
-                <p style={{ color: "white" }} className={styles.svheader}>
-                  About Project Awesome!
-                </p>
-                <p className={styles.svtagline}>
-                  Project Awesome aka Bring Every Buisness Onine is an Open
-                  Source Initative to make an open source collection of webpages
-                  for every business out there. To contribute to the project all
-                  you have to do is build a website for a store or buiness
-                  online.
-                </p>
-              </div>
               <div className={styles.sv_points}>
                 <div className={styles.sv_point}>
                   <img
-                    src="/assets/events/hacktoberfest/github.png"
+                    src="/assets/events/hacktoberfest/github.webp"
                     alt=""
                     className={styles.sv_image}
                   />
@@ -134,7 +110,7 @@ const HacktoberFest = () => {
 
                 <div className={styles.sv_point}>
                   <img
-                    src="/assets/events/hacktoberfest/create.png"
+                    src="/assets/events/hacktoberfest/create.webp"
                     alt=""
                     className={styles.sv_image}
                   />
@@ -153,7 +129,7 @@ const HacktoberFest = () => {
 
                 <div className={styles.sv_point}>
                   <img
-                    src="/assets/events/hacktoberfest/contribute.png"
+                    src="/assets/events/hacktoberfest/contribute.webp"
                     alt=""
                     className={styles.sv_image}
                   />
@@ -184,46 +160,77 @@ const HacktoberFest = () => {
 
               <p className={styles.ev_tagline}></p>
             </div>
-            <div className={styles.events_container}>
-              <div className={styles.event}>
-                <div className={styles.event}>
-                  <img
-                    src="/assets/events/hacktoberfest/Alwin.jpg"
-                    alt="Alwin Event Poster"
-                    className={styles.event_img}
-                  />
-                  <p className={styles.event_header}>Github Expert Advice</p>
-                  <p className={styles.event_text}>
-                    Contributions to Hacktoberfest have started pouring in!
-                    Don’t want to be left behind? It's never too late to start.
-                    Join us for “Expert Advice”, a series of sessions to help
-                    you ace your Hacktoberfest journey.
-                  </p>
-                  
-                </div>
+            <div className={styles.yt_vids_grid}>
+              <div className={styles.yt_vid_container}>
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/eu2ydNGlsLk"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
               </div>
-              <div className={styles.event}>
-                <img
-                  src="https://media.discordapp.net/attachments/771679365124718612/1030081742180204544/hactober_fest.png?width=640&height=640"
-                  alt="Rohit Event Poster"
-                  className={styles.event_img}
-                />
-                <p className={styles.event_header}>Git and GitHub Session</p>
-                <p className={styles.event_text}>
-                  Woohoo! It's time to kick off our Hacktoberfest journey.
-                  Really excited to start your journey but wary if you have the
-                  required skills? Join us for this exciting session on Git and
-                  GitHub to learn all you need to get started with your
-                  Hacktoberfest journey.{" "}
-                </p>
+              <div className={styles.yt_vid_container}>
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/B_cfyfShw3I"
+                  title="Github Expert Advice"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.expert_advice_container}>
+          <div className={styles.expert_advice}>
+            <p className={styles.tvheader}>
+              µLearn <span> Expert Advice</span> Completed
+            </p>
+            <p className={styles.tvtagline}>
+              Below showcased are the list of people who have maintained their
+              profiles and have updated their readme.md and try out completing
+              HacktoberFest 2022.
+            </p>
+            <div className={styles.profile_container}>
+              {profiles &&
+                profiles.map((profile) => {
+                  return (
+                    <div className={styles.profile}>
+                      <img
+                        src={`/assets/events/hacktoberfest/ExpertAdvice/${profile.github}.webp`}
+                        alt=""
+                        className={styles.profile_picture}
+                      />
+                      <p className={styles.name}>{profile.name}</p>
+                      <a
+                        href={`https://github.com/${profile.github}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <p className={styles.username}>{profile.github}</p>
+                        {profile.hacktoberfest && (
+                          <p className={styles.hacktoberfest}>
+                            HacktoberFest Completed
+                          </p>
+                        )}
+                        {profile.profilecompletion && (
+                          <span className={styles.profile_completed}>
+                            Profile Completed
+                          </span>
+                        )}
+                      </a>
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </div>
 
         <div className={styles.third_view_container}>
           <div className={styles.third_view}>
-            <div className={styles.tv_texts}>
+            {/* <div className={styles.tv_texts}>
               <p className={styles.tvheader}>
                 µLearn <span> Supported</span> Repositories
               </p>
@@ -265,6 +272,46 @@ const HacktoberFest = () => {
                 >
                   <button className={styles.primary_btn}>Contribute Now</button>
                 </a>
+              </div>
+            </div> */}
+          </div>
+        </div>
+        <div className={styles.third_view_container}>
+          <div className={styles.third_view}>
+            <div className={styles.road_to_oss_container}>
+              <div className={styles.road_to_oss}>
+                <p className={styles.tvheader}>
+                  <span>Road to OSS</span> Contributors
+                </p>
+                <p className={styles.tvtagline}>
+                  Below showcased are the list of people who have contributed to
+                  the Opensource initative by Pygrammers during HacktoberFest
+                  2022.
+                </p>
+                <div className={styles.profile_container}>
+                  {py_profiles &&
+                    py_profiles.map((profile) => {
+                      return (
+                        <div className={styles.py_profile}>
+                          <img
+                            src={`/assets/events/hacktoberfest/py_profile/${profile.image}`}
+                            alt=""
+                            className={styles.profile_picture}
+                          />
+                          <p className={styles.name}>{profile.name}</p>
+                          <a
+                            href={`https://github.com/${profile.gh_username}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <p className={styles.username}>
+                              {profile.gh_username}
+                            </p>
+                          </a>
+                        </div>
+                      );
+                    })}
+                </div>
               </div>
             </div>
           </div>

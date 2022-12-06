@@ -106,7 +106,7 @@ const MuAnnouncements = () => {
                       className={styles.card_img}
                       onError={({ currentTarget }) => {
                         currentTarget.onerror = null;
-                        currentTarget.src = "assets/common/img-error-replace.png";
+                        currentTarget.src = "assets/common/img-error-replace.webp";
                       }}
                     />
                     <p className={styles.card_title}>{bootcamp.title}</p>
@@ -140,7 +140,7 @@ const MuAnnouncements = () => {
                       className={styles.card_img}
                       onError={({ currentTarget }) => {
                         currentTarget.onerror = null;
-                        currentTarget.src = "assets/common/img-error-replace.png";
+                        currentTarget.src = "assets/common/img-error-replace.webp";
                       }}
                     />
                     <p className={styles.card_title}>{hackathon.title}</p>

@@ -1,12 +1,7 @@
-// import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import "./steps.css";
-import  "./yip.css";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "bootstrap-icons/font/bootstrap-icons.css";
-// import MenuIcon from "@material-ui/icons/Menu";
-// import swal from 'sweetalert';
+import "./yip.css";
 
 function Yip() {
   // //Get the button
@@ -47,7 +42,7 @@ function Yip() {
           <span className="iconify upbtn" data-icon="mdi:arrow-up-bold"></span>
         </button> */}
 
-        <Navbar/>
+        <Navbar />
 
         <main>
           <div className="first-section">
@@ -63,7 +58,7 @@ function Yip() {
                 challenge.
               </p>
 
-              <form name="gform" method="post" >
+              <form name="gform" method="post">
                 <p
                   className="stext"
                   style={{ color: "#f6832a", fontWeight: "600" }}
@@ -78,7 +73,7 @@ function Yip() {
                   id="email"
                 />
 
-                <button className="submit-btn" id="submit" type="submit" >
+                <button className="submit-btn" id="submit" type="submit">
                   Notify Me!
                 </button>
 
@@ -90,7 +85,7 @@ function Yip() {
 
             <div className="right-section">
               <img
-                src={require("./assets/Illustration.png")}
+                src={require("./assets/Illustration.webp")}
                 alt=""
                 className="illustration"
               />
@@ -101,7 +96,7 @@ function Yip() {
             <div className="bulb-container">
               <img
                 className="paper-bulb"
-                src={require("./assets/Paper Bulb.png")}
+                src={require("./assets/Paper Bulb.webp")}
                 alt=""
               />
             </div>
@@ -162,7 +157,7 @@ function Yip() {
                 <div className="timeline__event animated fadeInUp delay-3s timeline__event--type1">
                   <div className="timeline__event__icon">
                     <img
-                      src={require("./assets/procedure/prereg.png")}
+                      src={require("./assets/procedure/prereg.webp")}
                       alt=""
                       className="lni-cake"
                     />
@@ -192,7 +187,7 @@ function Yip() {
                 <div className="timeline__event animated fadeInUp delay-2s timeline__event--type2">
                   <div className="timeline__event__icon">
                     <img
-                      src={require("./assets/procedure/studentreg.png")}
+                      src={require("./assets/procedure/studentreg.webp")}
                       alt=""
                       className="lni-cake"
                     />
@@ -211,9 +206,9 @@ function Yip() {
                             <b>Click Here to Login</b>
                           </span>
                         </a>
-                        ,After Logging in Click the Open the left navbar option
-                        and from the options listed there click the
-                        <b>Profile Completion</b> option. Fill in all your
+                        ,&nbsp;After Logging in Click the Open the left navbar
+                        option and from the options listed there click the
+                        <b>&nbsp;Profile Completion</b> option. Fill in all your
                         details correctly and according to the mentioned
                         specifications. Finally Submit the form and click OK.
                       </p>
@@ -223,7 +218,7 @@ function Yip() {
                 <div className="timeline__event animated fadeInUp delay-1s timeline__event--type3">
                   <div className="timeline__event__icon">
                     <img
-                      src={require("./assets/procedure/yip-voc.png")}
+                      src={require("./assets/procedure/yip-voc.webp")}
                       alt=""
                       className="lni-cake"
                     />
@@ -237,7 +232,7 @@ function Yip() {
                     <div className="timeline__event__description">
                       <p>
                         After completing your Profile and submitting it, You can
-                        check the left navbar again to find the
+                        check the left navbar again to find the &nbsp;
                         <b>Voice of Customer(VOC)</b> option. By clicking that
                         you will be directed to the course page where you can
                         complete it.
@@ -248,7 +243,7 @@ function Yip() {
                 <div className="timeline__event animated fadeInUp timeline__event--type1">
                   <div className="timeline__event__icon">
                     <img
-                      src={require("./assets/procedure/team.png")}
+                      src={require("./assets/procedure/team.webp")}
                       alt=""
                       className="lni-cake"
                     />
@@ -265,13 +260,13 @@ function Yip() {
                         After completing the VOC Course and attending the quiz
                         there.
                         <b>
-                          You can form a team consisting of minimum 2 members
-                          and maximum 5 members by clicking the Group Formation
-                          Button from the left navbar. Only one person from a
-                          group is required to form the group
+                          &nbsp;You can form a team consisting of minimum 2
+                          members and maximum 5 members by clicking the Group
+                          Formation Button from the left navbar. Only one person
+                          from a group is required to form the group
                         </b>
-                        while the other members can join it using the team's
-                        name and password.
+                        &nbsp;while the other members can join it using the
+                        team's name and password.
                       </p>
                     </div>
                   </div>
@@ -279,7 +274,7 @@ function Yip() {
                 <div className="timeline__event animated fadeInUp delay-3s timeline__event--type1">
                   <div className="timeline__event__icon">
                     <img
-                      src={require("./assets/procedure/ideafind.png")}
+                      src={require("./assets/procedure/ideafind.webp")}
                       alt=""
                       className="lni-cake"
                     />
@@ -295,7 +290,7 @@ function Yip() {
                         After forming a team and finding an idea which suits the
                         given themes, the <b>person who formed the team</b> can
                         submit the idea by going to the
-                        <b>Idea Submission Option</b> from his/her Navbar.
+                        <b>&nbsp;Idea Submission Option</b> from his/her Navbar.
                       </p>
                     </div>
                   </div>
@@ -303,7 +298,7 @@ function Yip() {
                 <div className="timeline__event animated fadeInUp delay-2s timeline__event--type2">
                   <div className="timeline__event__icon">
                     <img
-                      src={require("./assets/procedure/approved.png")}
+                      src={require("./assets/procedure/approved.webp")}
                       alt=""
                       className="lni-cake"
                     />
@@ -327,7 +322,7 @@ function Yip() {
                 <div className="timeline__event animated fadeInUp delay-1s timeline__event--type3">
                   <div className="timeline__event__icon">
                     <img
-                      src={require("./assets/procedure/evaluation.png")}
+                      src={require("./assets/procedure/evaluation.webp")}
                       alt=""
                       className="lni-cake"
                     />
@@ -342,9 +337,10 @@ function Yip() {
                       <p>
                         Once your Idea is approved by the institution, it is put
                         forward for a preliminary evaluation and
-                        <b>8000 teams</b> are selected from District Level and
-                        <b>2000 teams</b> are selected from State Level and are
-                        awarded prizes upto <b>Rs.50000</b>
+                        <b>&nbsp;8000 teams</b> are selected from District Level
+                        and
+                        <b>&nbsp;2000 teams</b> are selected from State Level
+                        and are awarded prizes upto <b>Rs.50000</b>
                       </p>
                     </div>
                   </div>
@@ -352,7 +348,7 @@ function Yip() {
                 <div className="timeline__event animated fadeInUp timeline__event--type1">
                   <div className="timeline__event__icon">
                     <img
-                      src={require("./assets/procedure/winner annoucement.png")}
+                      src={require("./assets/procedure/winner annoucement.webp")}
                       alt=""
                       className="lni-cake"
                     />
@@ -369,8 +365,8 @@ function Yip() {
                         Finally the winners are annouced and out of the 2000
                         teams selected at state level
                         <b>
-                          900 teams are provided financial and mentoring support
-                          for the next 3 years.
+                          &nbsp;900 teams are provided financial and mentoring
+                          support for the next 3 years.
                         </b>
                       </p>
                     </div>
@@ -381,10 +377,9 @@ function Yip() {
           </div>
         </main>
 
-        <Footer/>
+        <Footer />
       </body>
-    </div >
-
+    </div>
   );
 }
 

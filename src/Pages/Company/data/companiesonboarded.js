@@ -1,15 +1,23 @@
-import Ecesis from "../assets/companies/Ecesis.jpeg";
-import Experion from "../assets/companies/Experion.jpeg";
-import Pits from "../assets/companies/Pits.jpeg";
-import Softnotions from "../assets/companies/Softnotions.jpeg";
-import SunTec from "../assets/companies/SunTec.jpeg";
-import Thinkpalm from "../assets/companies/Thinkpalm.jpeg";
-import Travancore from "../assets/companies/Travancore.jpeg";
-import Travenleo from "../assets/companies/Travenleo.jpeg";
-import Triassic from "../assets/companies/Triassic.jpeg";
-import Zerone from "../assets/companies/Zerone.jpeg";
+import Ecesis from "../assets/companies/Ecesis.webp";
+import Experion from "../assets/companies/Experion.webp";
+import Pits from "../assets/companies/Pits.webp";
+import Softnotions from "../assets/companies/Softnotions.webp";
+import SunTec from "../assets/companies/SunTec.webp";
+import Thinkpalm from "../assets/companies/Thinkpalm.webp";
+import Travancore from "../assets/companies/Travancore.webp";
+import Travenleo from "../assets/companies/Travenleo.webp";
+import Triassic from "../assets/companies/Triassic.webp";
+import Zerone from "../assets/companies/Zerone.webp";
+import Google from "../assets/companies/Google-logo.webp";
 
 const companiesonboarded = [
+  {
+    id: "0",
+    name: "Google",
+    logo: Google,
+    link: "https://about.google/",
+    image: "",
+  },
   {
     id: "1",
     name: "SunTec Business Solutions Pvt. Ltd",

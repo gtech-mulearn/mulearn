@@ -1,7 +1,11 @@
 import React, { Fragment } from "react";
+// import CareersCard from "../../Components/CareersCard/CareersCard";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import styles from "./Career.module.css";
+import ClosedCareers from "../../Components/ClosedCareers/ClosedCareers";
+
+import ClosedCarrersData from "./data/data";
 
 const Career = () => {
   return (
@@ -21,16 +25,30 @@ const Career = () => {
           </div>
           <div className={styles.fsimage}>
             <img
-              src="/assets/careers/illustration.png"
+              src="/assets/careers/fsimg.gif"
               className={styles.fsillustration}
               alt=""
             />
           </div>
         </div>
-        <div className={styles.second_section}>
-          <p className={styles.ssheading}>Open Opportunities</p>
-          <div className={styles.opportunities}>
-            <p>New openings coming soon!</p>
+        <div className={styles.closedcareerscontainer}>
+          <div className={styles.second_section}>
+            <p className={styles.ssheading}>Previous Hiring Calls</p>
+            <div className={styles.opportunities}>
+              {ClosedCarrersData.map((data) => (
+                <ClosedCareers
+                  company={data.Company}
+                  title={data.Title}
+                  duration={data.Duration}
+                  payment={data.Stipend || data.Package}
+                  criteria={data.Qualifications && data.Qualifications[0]}
+                  date={data.date}
+                  roles={data.Roles}
+                  jdlink={data.poster}
+                  location={data.location}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </main>

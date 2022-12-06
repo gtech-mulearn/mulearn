@@ -357,7 +357,7 @@ const Home = () => {
               <div className={styles.countcontainer}>
                 <div className={styles.count}>
                   <p className={styles.cvc_heading}>
-                    <CountUp end={16000} duration={10} />+
+                    <CountUp end={18000} duration={10} />+
                   </p>
                   <p className={styles.cvc_text}>Members</p>
                 </div>
@@ -476,7 +476,7 @@ const Home = () => {
           </div>
           <div>
             <img
-              src="assets/home/Chart.svg"
+              src="assets/home/Chart.webp"
               alt="Chart"
               className={styles.chart_img}
             />

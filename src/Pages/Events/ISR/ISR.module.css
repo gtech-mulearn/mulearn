@@ -8,6 +8,11 @@
   background-color: #ffffff;
 }
 
+.first_view{
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .fv_img {
   width: 18rem;
   display: block;
@@ -24,6 +29,11 @@
   font-size: 2.5rem;
   font-weight: 600;
   color: #303030;
+}
+
+.readhide {
+  color: #f78c40;
+  cursor: pointer;
 }
 
 .fv_heading span {
@@ -80,7 +90,7 @@
 /* Second Section Styles */
 
 .second_view_container {
-  padding: 0 2rem;
+  padding: 0 0rem;
   background-color: #ffffff;
 }
 
@@ -129,7 +139,7 @@
   font-size: 0.9rem;
   font-family: "Noto Sans", sans-serif;
   font-weight: 600;
-  opacity: 0.8;
+  color: #303030;
   text-align: left;
   margin-top: 0.5rem;
 }

@@ -1,37 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
+import GalleryImages from "../../Components/Gallery/GalleryImages";
+import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop";
 import styles from "./Gallery.module.css";
-import kakt from "./Kk.module.css";
+import "./Gallery.css";
 
-import Box from "@mui/material/Box";
-import Tabs, { tabsClasses } from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-
-import Events from "./data/Events";
-import News from "./data/News";
-
-import fvimg from "./assets/fvimg.png";
+import EventPics from "./data/EventPics";
 
 const Gallery = () => {
-  const [evalue, setEValue] = React.useState(0);
-
-  const ehandleChange = (event, newValue) => {
-    setEValue(newValue);
-  };
-
-  const [nvalue, setNValue] = React.useState(0);
-
-  const nhandleChange = (event, newValue) => {
-    setNValue(newValue);
-  };
-
-  const [program, setProgram] = useState(Events[0]);
-  const [news, setNews] = useState(News[0]);
 
   return (
     <>
       <Navbar />
+      <ScrollToTop />
       <div className={styles.main_container}>
         <div className={styles.first_view_container}>
           <div className={styles.first_view}>
@@ -48,10 +30,16 @@ const Gallery = () => {
               </p>
             </div>
             <div className={styles.fv_images}>
-              <img src={fvimg} alt="" className={styles.fv_img} />
+              <img
+                src="/assets/gallery/new_frame.webp"
+                alt=""
+                className={styles.fv_img}
+              />
             </div>
           </div>
         </div>
+
+        {/* Gallery Header */}
         <div className={styles.second_view_container}>
           <div className={styles.second_view}>
             <div className={styles.sv_texts}>
@@ -64,157 +52,9 @@ const Gallery = () => {
                 events.
               </p>
             </div>
-
-            <div className={styles.tabs_container}>
-              {Events.map((event) => (
-                <p
-                  className={styles.tab}
-                  onClick={() => {
-                    setProgram(event);
-                    console.log(event);
-                  }}
-                >
-                  {event.Event_Name}
-                </p>
-              ))}
-            </div>
+            <GalleryImages events={EventPics} />
           </div>
         </div>
-
-        {program && (
-          <section className={kakt.gallerySection}>
-            <div className={kakt.row}>
-              <div className={kakt.column}>
-                <div className={kakt.img_wrapper}>
-                  {program.Photo_1 && (
-                    <img
-                      src={program.Photo_1}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_5 && (
-                    <img
-                      src={program.Photo_5}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_9 && (
-                    <img
-                      src={program.Photo_9}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_13 && (
-                    <img
-                      src={program.Photo_13}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                </div>
-              </div>
-              <div className={kakt.column}>
-                <div className={kakt.img_wrapper}>
-                  {program.Photo_2 && (
-                    <img
-                      src={program.Photo_2}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_6 && (
-                    <img
-                      src={program.Photo_6}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_10 && (
-                    <img
-                      src={program.Photo_10}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_14 && (
-                    <img
-                      src={program.Photo_14}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                </div>
-              </div>
-              <div className={kakt.column}>
-                <div className={kakt.img_wrapper}>
-                  {program.Photo_3 && (
-                    <img
-                      src={program.Photo_3}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_7 && (
-                    <img
-                      src={program.Photo_7}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_11 && (
-                    <img
-                      src={program.Photo_11}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_15 && (
-                    <img
-                      src={program.Photo_15}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                </div>
-              </div>
-              <div className={kakt.column}>
-                <div className={kakt.img_wrapper}>
-                  {program.Photo_4 && (
-                    <img
-                      src={program.Photo_4}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_8 && (
-                    <img
-                      src={program.Photo_8}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_12 && (
-                    <img
-                      src={program.Photo_12}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                  {program.Photo_16 && (
-                    <img
-                      src={program.Photo_16}
-                      alt=""
-                      className={kakt.gallery_img}
-                    />
-                  )}
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
       </div>
       <Footer />
     </>
