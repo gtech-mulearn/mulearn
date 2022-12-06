@@ -18,6 +18,7 @@ export const links = [
           },
         ],
       },
+
       {
         name: "Partners",
         submenu: true,
@@ -34,6 +35,19 @@ export const links = [
             submenu: false,
             sublinks: [],
             link: "/company-partners",
+            foreign: false,
+          },
+        ],
+      },
+      {
+        name: "Participate",
+        submenu: true,
+        sublinks: [
+          {
+            name: "Enablers & Mentors",
+            submenu: false,
+            sublinks: [],
+            link: "/participate",
             foreign: false,
           },
         ],
