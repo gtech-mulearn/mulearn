@@ -39,13 +39,24 @@ const Build4Team = () => {
                   </a>
                 </div>
               </div>
-              <a
-                href="https://bit.ly/BuildForTeam"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className={styles.register}>Participate Now</button>
-              </a>
+              <div className={styles.buttons}>
+                <a
+                  href="https://bit.ly/BuildForTeam"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className={styles.register}>Participate Now</button>
+                </a>
+                <a
+                  href="https://chat.whatsapp.com/HXO8x10Zg0zJ8LaBlcvJXg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className={styles.register}>
+                    Join Whatsapp Group
+                  </button>
+                </a>
+              </div>
             </div>
             <img
               src="/assets/events/build4team/fvimgr.gif"

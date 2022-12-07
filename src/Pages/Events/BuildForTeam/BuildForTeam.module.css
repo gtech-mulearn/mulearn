@@ -189,9 +189,14 @@
     text-align: left;
   }
 
+  .buttons {
+    display: flex;
+  }
+
   .register {
     margin: 0rem;
     margin-top: 1rem;
+    margin-right: 0.5rem;
   }
 
   .sv_heading {
