@@ -26,6 +26,13 @@
   },
 
   {
+    "name": "Vinu Balagopal A P",
+    "github": "VinuBalagopalAP",
+    "hacktoberfest": true,
+    "profilecompletion": false
+  },
+
+  {
     "name": "Shibin Shibu",
     "github": "shibinshibu01",
     "hacktoberfest": true,
@@ -74,7 +81,7 @@
     "hacktoberfest": true,
     "profilecompletion": true
   },
-  
+
   {
     "name": "R Ashwin",
     "github": "ashwin417",
@@ -115,6 +122,12 @@
   {
     "name": "Gopika",
     "github": "Gops229",
+    "hacktoberfest": true,
+    "profilecompletion": false
+  },
+  {
+    "name": "Bestin K Benny",
+    "github": "bestin015",
     "hacktoberfest": true,
     "profilecompletion": false
   }
