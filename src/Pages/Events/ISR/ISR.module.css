@@ -133,6 +133,8 @@
   color: #f78c40;
   font-family: "Noto Sans", sans-serif;
   font-weight: 600;
+  text-align: left;
+  margin-bottom: 0.25rem;
 }
 
 .card_date {
