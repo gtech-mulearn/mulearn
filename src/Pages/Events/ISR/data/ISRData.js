@@ -553,7 +553,7 @@ const ISRData = [
     id: "56",
     speaker: "Angel",
     image:
-      "assets/events/isr/ISRPictures/Bharath Srinivasan.webp",
+      "assets/events/isr/ISRPictures/Angel.webp",
     description:
       "Inspiring others to bring out the best in themselves is a daunting task, one that very few can master‼This week on Inspiration Station  Radio, we have Angel Rose 😇🌹 , Program Associate, GTech µLearn. Angel is a 3rd year Engineering student at GEC Palakad. Her exceptional people skills and countless contributions have truly made her an indispensable asset to the Student Community. ",
     date: "01/11/2022",
