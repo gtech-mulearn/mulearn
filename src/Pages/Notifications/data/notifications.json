@@ -1,14 +1,21 @@
 {
   "new": [
     {
+      "title": "Build For Team",
+      "date": "Tue Dec 16 2022 00:00:00 GMT+0530 (India Standard Time)",
+      "description": "GTech μLearn in association with Pygrammers present BuildForTeam, your chance to build your favourite team’s website. With your favourite teams battling it out on the Football field, it’s up to you to build them an awesome website.",
+      "url": "https://mulearn.org/BuildForTeam"
+    },
+
+    {
       "title": "Inspiration Station Radio",
-      "date": "Tue Dec 06 2022 00:00:00 GMT+0530 (India Standard Time)",
+      "date": "Tue Dec 13 2022 00:00:00 GMT+0530 (India Standard Time)",
       "description": "Everyone has a story to tell, the story about finding their passion, the story of learning new things and much more. Often times these stories are filled with fun and inspirations which fuel others to start their own journey. Join in this Tuesday@8:00PM to get Inspired.",
       "url": "https://discord.mulearn.org"
     },
     {
       "title": "Salt Mango Tree",
-      "date": "Wed Dec 07 2022 00:00:00 GMT+0530 (India Standard Time)",
+      "date": "Wed Dec 14 2022 00:00:00 GMT+0530 (India Standard Time)",
       "description": "English! English! English! I avoid I don't like it, but English likes me, I can't avoid! Well since avoiding English isn't an option, let's try to work towards improving our knowledge of English, by practicing, together. Join in this Wednesday@8:00Pm to talk and learn.",
       "url": "https://discord.mulearn.org"
     }
@@ -16,7 +23,7 @@
   "old": [
     {
       "title": "Rust 101",
-      "date": "Tue Dec 04 2022 19:00:00 GMT+0530 (India Standard Time)",
+      "date": "Tue Dec 1 2022 19:00:00 GMT+0530 (India Standard Time)",
       "description": "GTech µLearn presents to you Rust 101, a comprehensive session on Rust, one of the most in-demand programming languages! Learn how to build solid fundamentals with the World's most loved ❤️ programming language - Rust⚡",
       "url": "https://mulearn.org/rust101"
     },
