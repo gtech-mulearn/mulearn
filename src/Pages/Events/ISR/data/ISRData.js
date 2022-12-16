@@ -145,7 +145,7 @@ const ISRData = [
 
   {
     id: "17",
-    speaker: "ISR Irene",
+    speaker: "Irene Anna Kurien",
     image: "assets/events/isr/ISRPictures/ISR Irene.webp",
     description:
       "Today on air ✈️ We have Irene Anna Kurien A student and a web Developer who is a vGHC Scholar of the year for 2021. Irene is currently a Learning Initiative Intern at TinkerHub Foundation. A 3rd year B.Tech student at RIT,Kottayam. Irene's journey of learning to be a web developer while being a student and her contributions to the community is remarkable. Curious to hear Irene's story?",
