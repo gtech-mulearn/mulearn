@@ -21,7 +21,7 @@ const Build4Team = () => {
                 website. With your favourite teams battling it out on the
                 Football field, it’s up to you to build them an awesome website.
               </p>
-              <p className={styles.lastdate}>Last Date is 16th December 2022</p>
+              <p className={styles.lastdate}>Registrations Closed</p>
               <div class={styles.supporters}>
                 <span>Supported By </span>
 
@@ -39,14 +39,14 @@ const Build4Team = () => {
                   </a>
                 </div>
               </div>
-              <div className={styles.buttons}>
+              {/* <div className={styles.buttons}>
                 <a
                   href="https://bit.ly/BuildForTeam"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <button className={styles.register}>Participate Now</button>
-                </a>
+                </a> */}
                 <a
                   href="https://chat.whatsapp.com/HXO8x10Zg0zJ8LaBlcvJXg"
                   target="_blank"
