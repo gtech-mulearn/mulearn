@@ -46,7 +46,7 @@ const Build4Team = () => {
                   rel="noopener noreferrer"
                 >
                   <button className={styles.register}>Participate Now</button>
-                </a> */}
+                </a>
                 <a
                   href="https://chat.whatsapp.com/HXO8x10Zg0zJ8LaBlcvJXg"
                   target="_blank"
@@ -56,7 +56,7 @@ const Build4Team = () => {
                     Join Whatsapp Group
                   </button>
                 </a>
-              </div>
+              </div> */}
             </div>
             <img
               src="/assets/events/build4team/fvimgr.gif"
@@ -97,30 +97,15 @@ const Build4Team = () => {
                     your Web development skills. See this as an opportunity to
                     learn, practice and showcase your skills in a fun way!
                   </div>
-                  <a
-                    href="https://bit.ly/BuildForTeam"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <button className={styles.register}>Participate Now</button>
-                  </a>
                 </div>
 
                 <div className={styles.sv_point}>
                   <p className={styles.sv_image}>🏆</p>
                   <div className={styles.svp_heading}>Earn</div>
                   <div className={styles.svp_text}>
-                    Once you’re done crafting the website, fill{" "}
-                    <a
-                      href="https://bit.ly/BuildForTeam"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      This Form
-                    </a>{" "}
-                    and stand a chance to win your favorite team's jersey. 💥
-                    Selected participants also stand a chance of winning cool
-                    goodies.
+                    Once you’re done crafting the website, fill the and stand a
+                    chance to win your favorite team's jersey. 💥 Selected
+                    participants also stand a chance of winning cool goodies.
                   </div>
                 </div>
               </div>
