@@ -160,13 +160,6 @@ export const links = [
             link: "/artofteaching",
             foreign: false,
           },
-          {
-            name: "Build For Team",
-            submenu: false,
-            sublinks: [],
-            link: "/buildforteam",
-            foreign: false,
-          },
         ],
       },
       {
@@ -186,6 +179,13 @@ export const links = [
             submenu: false,
             sublinks: [],
             link: "/hacktoberfest",
+            foreign: false,
+          },
+          {
+            name: "Build For Team",
+            submenu: false,
+            sublinks: [],
+            link: "/buildforteam",
             foreign: false,
           },
         ],
