@@ -343,6 +343,13 @@ export const links = [
         submenu: true,
         sublinks: [
           {
+            name: "OpenSource Projects",
+            link: mainlink + "/opensource",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+          {
             name: "Problem Shelf",
             link: mainlink + "/problemshelves",
             submenu: false,
