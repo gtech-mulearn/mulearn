@@ -24,6 +24,7 @@ import SaltMangoTree from "./Pages/Events/SaltMangoTree/SaltMangoTree";
 import OpenMic from "./Pages/Events/OpenMic/OpenMic";
 import BuildForTeam from "./Pages/Events/BuildForTeam/BuildForTeam";
 import EnablersOnboarding from "./Pages/EnablersOnboarding/EnablersOnboarding";
+import HackathonKarma from "./Pages/HackathonKarma/HackathonKarma";
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
             <Route path="" element={<CampusChapters />} />
           </Route>
           <Route path="/participate" element={<EnablersOnboarding />} />
+          <Route path="/howto" element={<HackathonKarma />} />
         </Routes>
       </Router>
     </div>

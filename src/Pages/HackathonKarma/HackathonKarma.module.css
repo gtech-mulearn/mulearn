@@ -3,6 +3,10 @@
   margin: 0;
 }
 
+ol {
+  list-style: decimal;
+}
+
 .first_view_container {
   padding: 2rem;
   background-color: #fdfdfd;
@@ -35,6 +39,18 @@
   margin-top: 0.5rem;
   font-family: "Poppins", sans-serif;
 }
+
+.primary {
+    background-color: #f78c40;
+    padding: 0.7rem 2rem;
+    border: none;
+    margin-top: 1rem;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    margin-right: 0.5rem;
+  }
 
 @media only screen and (min-width: 1000px) {
   .first_view_container {
@@ -83,6 +99,7 @@
 }
 
 /* Second View Styles */
+
 .sv_heading {
   font-size: 1.75rem;
   font-family: "Noto Sans", sans-serif;
@@ -102,81 +119,28 @@
   font-family: "Poppins";
 }
 
-.sv_card {
-  position: relative;
-  column-gap: 1rem;
-  margin-right: 0rem;
-  margin-top: 1rem;
-  max-width: 400px;
-  padding: 1.5rem;
-  border-radius: 10px;
-  width: 100%;
-  /* min-height: 15rem; */
-
-  font-family: "Inter", sans-serif;
-
-  box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
-  -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
-  -moz-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+.sv_steps {
+  margin: 1rem;
+  font-weight: 400;
 }
 
-.sv_card p {
-  margin: 0.5rem 0;
-}
-
-.card_college {
-  font-family: "Noto Sans";
+.step {
+  max-width: 45rem;
+  margin: 1rem 0rem;
   font-size: 1.05rem;
-  font-weight: 500;
-}
-
-.sv_cards_container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: none;
-}
-
-.card_position {
-  position: absolute;
-  font-size: 2rem;
-  bottom: 5px;
-  right: 25px;
-  color: #f78c40;
-  font-weight: 600;
-}
-
-.card_position span {
-  font-size: 1rem;
-  margin-left: -0.25rem;
-  font-weight: 500;
-  color: #404040;
-}
-
-
-@media only screen and (min-width: 768px) {
-  .sv_card {
-    margin-right: 1rem;
-  }
 }
 
 @media only screen and (min-width: 1000px) {
   .second_view_container {
     max-width: 1300px;
     margin: auto;
-    margin-top: 4rem;
+    margin-bottom: 5rem;
+  }
+  .sv_heading {
+    font-size: 2.25rem;
   }
 
   .sv_tagline {
     width: 50%;
-  }
-
-  .fr_heading {
-    font-size: 3.5rem;
-  }
-
-  .fr_tagline {
-    font-family: "Poppins";
-    width: 80%;
   }
 }
