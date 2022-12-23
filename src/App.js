@@ -61,7 +61,7 @@ function App() {
             <Route path="" element={<CampusChapters />} />
           </Route>
           <Route path="/participate" element={<EnablersOnboarding />} />
-          <Route path="/howto" element={<HackathonKarma />} />
+          <Route path="/earnkarma" element={<HackathonKarma />} />
         </Routes>
       </Router>
     </div>
