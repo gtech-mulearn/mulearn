@@ -400,6 +400,20 @@ export const links = [
           },
         ],
       },
+      {
+        head: 3,
+        name: "Bootcamps",
+        submenu: true,
+        sublinks: [
+          {
+            name: "Android",
+            link: mainlink + "/bootcamps/android",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          }
+        ],
+      },
     ],
   },
 ];
