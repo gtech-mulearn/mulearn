@@ -21,7 +21,7 @@ const Build4Team = () => {
                 website. With your favourite teams battling it out on the
                 Football field, it’s up to you to build them an awesome website.
               </p>
-              <p className={styles.lastdate}>Registrations Closed</p>
+              {/* <p className={styles.lastdate}>Registrations Closed</p> */}
               <div class={styles.supporters}>
                 <span>Supported By </span>
 
