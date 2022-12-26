@@ -411,6 +411,13 @@ export const links = [
             submenu: false,
             sublinks: [],
             foreign: false,
+          },
+          {
+            name: "CTF",
+            link: mainlink + "/bootcamps/ctf",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
           }
         ],
       },
