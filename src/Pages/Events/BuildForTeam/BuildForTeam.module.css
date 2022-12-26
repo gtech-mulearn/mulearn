@@ -271,17 +271,18 @@
 }
 
 .winner_team {
+  margin-top: 0.5rem;
   color: #404040;
   font-family: "Noto Sans", sans-seif;
-  font-size: 2rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 
 .winner_name {
   color: #f33e41;
   font-family: "Poppins", sans-serif;
   font-size: 1.25rem;
-  margin-top: -0.5rem;
+  margin-top: -0.25rem;
   font-weight: 400;
 }
 
