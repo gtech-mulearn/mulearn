@@ -318,25 +318,26 @@ export const links = [
       },
       {
         head: 3,
-        name: "Search",
+        name: "Bootcamps",
         submenu: true,
         sublinks: [
           {
-            name: "Mentor Directory",
-            link: mainlink + "/mentors",
+            name: "Android",
+            link: mainlink + "/bootcamps/android",
             submenu: false,
             sublinks: [],
             foreign: false,
           },
           {
-            name: "Existing Circles",
-            link: mainlink + "/searchcircles",
+            name: "CTF",
+            link: mainlink + "/bootcamps/ctf",
             submenu: false,
             sublinks: [],
             foreign: false,
           },
         ],
       },
+
       {
         head: 3,
         name: "Practice",
@@ -402,23 +403,23 @@ export const links = [
       },
       {
         head: 3,
-        name: "Bootcamps",
+        name: "Search",
         submenu: true,
         sublinks: [
           {
-            name: "Android",
-            link: mainlink + "/bootcamps/android",
+            name: "Mentor Directory",
+            link: mainlink + "/mentors",
             submenu: false,
             sublinks: [],
             foreign: false,
           },
           {
-            name: "CTF",
-            link: mainlink + "/bootcamps/ctf",
+            name: "Existing Circles",
+            link: mainlink + "/searchcircles",
             submenu: false,
             sublinks: [],
             foreign: false,
-          }
+          },
         ],
       },
     ],
