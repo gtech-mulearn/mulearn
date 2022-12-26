@@ -243,7 +243,7 @@ const Build4Team = () => {
           <div className={styles.third_view}>
             <p className={styles.tv_heading}>Rules & Guidelines</p>
             <p className={styles.tv_tagline}>
-              <ol>
+              <ul>
                 <li>• Your Last Date for Submission is 12th December.</li>
                 <li>• Websites should be responsive.</li>
                 <li>
@@ -253,7 +253,7 @@ const Build4Team = () => {
                   • You can use predefined templates, but websites without
                   templates will be given priority
                 </li>
-              </ol>
+              </ul>
             </p>
           </div>
 
