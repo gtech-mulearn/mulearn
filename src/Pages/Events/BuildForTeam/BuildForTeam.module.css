@@ -238,6 +238,67 @@
   }
 }
 
+/* Winner View Container */
+
+.winner_view_container {
+  padding: 2rem;
+}
+
+.winner {
+  max-width: 20rem;
+}
+
+.sv_tagline b{
+  font-weight: 500;
+  color: #404040;
+}
+
+.winners {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.winner_image:hover {
+  transform: scale(1.1);
+}
+
+.winner_image {
+  width: 20rem;
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.winner_team {
+  color: #404040;
+  font-family: "Noto Sans", sans-seif;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.winner_name {
+  color: #f33e41;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.25rem;
+  margin-top: -0.5rem;
+  font-weight: 400;
+}
+
+@media only screen and (max-width: 1000px) {
+  .winner_view_container {
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .winner_view {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+  }
+}
 .third_view {
   margin: 2rem;
   text-align: center;

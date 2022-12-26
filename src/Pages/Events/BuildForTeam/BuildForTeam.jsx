@@ -112,6 +112,99 @@ const Build4Team = () => {
             </div>
           </div>
         </div>
+        <div className={styles.winner_view_container}>
+          <div className={styles.winner_view}>
+            <p className={styles.sv_heading}>Winning Websites</p>
+            <p className={styles.sv_tagline}>
+              The best performers in this event are listed below.
+              Congratulations to everyone who came in and made a great effort to
+              make this event a success.{" "}
+              <b>Click on the image to view the websites.</b>
+            </p>
+            <br />
+            <div className={styles.winners}>
+              <div className={styles.winner}>
+                <a
+                  href="https://sivaprasad43.github.io/Brazil-Team-Website/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {" "}
+                  <img
+                    src="/assets/events/build4team/Sivaprasad.png"
+                    alt=""
+                    className={styles.winner_image}
+                  />
+                </a>
+                <p className={styles.winner_team}>Brazil</p>
+                <p className={styles.winner_name}>Sivaprasad C</p>
+              </div>
+              <div className={styles.winner}>
+                <a
+                  href="https://edwinliby.github.io/FIFA-Portugal/#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="/assets/events/build4team/Edwin.png"
+                    alt=""
+                    className={styles.winner_image}
+                  />
+                </a>
+                <p className={styles.winner_team}>Portugal</p>
+                <p className={styles.winner_name}>Edwin liby</p>
+              </div>
+              <div className={styles.winner}>
+                <a
+                  href="https://ilyasbabu.github.io/france-football-mulearn-pygrammer/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="/assets/events/build4team/Ilyas.png"
+                    alt=""
+                    className={styles.winner_image}
+                  />
+                </a>
+
+                <p className={styles.winner_team}>France</p>
+                <p className={styles.winner_name}>Ilyas Babu</p>
+              </div>
+              <div className={styles.winner}>
+                <a
+                  href="https://muhdfarseen.github.io/Brazil_site.github.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="/assets/events/build4team/Farseen.png"
+                    alt=""
+                    className={styles.winner_image}
+                  />
+                </a>
+
+                <p className={styles.winner_team}>Brazil</p>
+                <p className={styles.winner_name}>Muhammed Farseen T P</p>
+              </div>
+              <div className={styles.winner}>
+                <a
+                  href="https://farragoweb.me/BUILD-4-TEAM/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {" "}
+                  <img
+                    src="/assets/events/build4team/Hashim.png"
+                    alt=""
+                    className={styles.winner_image}
+                  />
+                </a>
+                <p className={styles.winner_team}>Brazil</p>
+                <p className={styles.winner_name}>Muhammed Hashim T</p>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className={styles.third_view_container}>
           <div className={styles.third_view}>
             <p className={styles.tv_heading}>Selection Criteria</p>
@@ -163,6 +256,7 @@ const Build4Team = () => {
               </ol>
             </p>
           </div>
+
           <div className={styles.third_view}>
             <p className={styles.tv_heading}>Have Doubts?</p>
             <p className={styles.tv_tagline}>
