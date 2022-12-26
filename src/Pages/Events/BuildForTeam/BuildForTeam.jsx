@@ -199,7 +199,7 @@ const Build4Team = () => {
                     className={styles.winner_image}
                   />
                 </a>
-                <p className={styles.winner_team}>Brazil</p>
+                <p className={styles.winner_team}>Argentina</p>
                 <p className={styles.winner_name}>Muhammed Hashim T</p>
               </div>
             </div>
