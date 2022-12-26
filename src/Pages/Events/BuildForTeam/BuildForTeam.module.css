@@ -248,7 +248,7 @@
   max-width: 20rem;
 }
 
-.sv_tagline b{
+.sv_tagline b {
   font-weight: 500;
   color: #404040;
 }
@@ -288,6 +288,10 @@
 @media only screen and (max-width: 1000px) {
   .winner_view_container {
     text-align: center;
+  }
+
+  .winners {
+    justify-content: center;
   }
 }
 
