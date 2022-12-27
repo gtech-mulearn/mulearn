@@ -335,6 +335,20 @@ export const links = [
             sublinks: [],
             foreign: false,
           },
+          {
+            name: "Flutter",
+            link: mainlink + "/bootcamps/flutter",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+          {
+            name: "Rust",
+            link: mainlink + "/bootcamps/rust",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
         ],
       },
 
