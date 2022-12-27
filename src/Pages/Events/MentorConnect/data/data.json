@@ -6,5 +6,13 @@
     "speaker": "Aravind Panicker",
     "description": "Working at our dream company- Isn't that a dream we all have ‼ Wish you could interact with Mentors from the Industry, who've been there, accomplished their goals and are doing what they love ❓.Join us on 25th November for the first edition of Mentor Connect with Mr. Aravind Panicker, Application Engineer at Google.",
     "date": "25/11/2022"
+  },
+  {
+    "id": 1,
+    "name": "Finding your true passion",
+    "image": "/assets/events/mentorconnect/mentorconnect2.webp",
+    "speaker": " Ann Andrews",
+    "description": "The impact that a proper career choice could have on your life in monumental. Still on the search for your true passion? Join us for Mentor Connect on 2nd December, at 8:00 PM and listen to Ann Andrews, Founder - Techfunic, as she shares some tips to help you find your true passion.",
+    "date": "02/12/2022"
   }
 ]

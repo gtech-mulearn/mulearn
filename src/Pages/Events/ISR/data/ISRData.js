@@ -145,7 +145,7 @@ const ISRData = [
 
   {
     id: "17",
-    speaker: "ISR Irene",
+    speaker: "Irene Anna Kurien",
     image: "assets/events/isr/ISRPictures/ISR Irene.webp",
     description:
       "Today on air ✈️ We have Irene Anna Kurien A student and a web Developer who is a vGHC Scholar of the year for 2021. Irene is currently a Learning Initiative Intern at TinkerHub Foundation. A 3rd year B.Tech student at RIT,Kottayam. Irene's journey of learning to be a web developer while being a student and her contributions to the community is remarkable. Curious to hear Irene's story?",
@@ -501,6 +501,57 @@ const ISRData = [
     description:
       "Inspiring others to bring out the best in themselves is a daunting task, one that very few can master‼This week on Inspiration Station  Radio, we have Angel Rose 😇🌹 , Program Associate, GTech µLearn. Angel is a 3rd year Engineering student at GEC Palakad. Her exceptional people skills and countless contributions have truly made her an indispensable asset to the Student Community. ",
     date: "01/11/2022",
+  },
+
+  {
+    id: "57",
+    speaker: "Hafis C P",
+    image: "assets/events/isr/ISRPictures/Hafis C P.webp",
+    description:
+      "This week on Inspiration Station Radio, we have Hafis C P, a final year student at College of Engineering Vadakara. Hafis has been a part of several organizations, with diverse missions, and has left a lasting impression in all of them. Hafis is the chairperson of IEEE SB CEV, he was previously an intern at GTech µLearn and we are extremely proud of his achievements and efforts towards making the student community a better place. He also has experience working with many organizations Pygrammers, IEDC, NSS etc are a few of them. Apart from community activities he is the social media manager LucidPixl Designs.",
+    date: "08/11/2022",
+  },
+
+  {
+    id: "58",
+    speaker: "Mufeed Hamzakutty",
+    image: "assets/events/isr/ISRPictures/Mufeed Hamzakutty.webp",
+    description:
+      "Hurray✨ It's time for yet another edition of Inspiration Station Radio‼️Featuring on this edition of Inspiration Station Radio, we have Mufeed Hamzakutty, Founder of lyminal.space and Open-source Security Researcher. Mufeed, a cyber security enthusiast 👨🏽‍💻, is an All India Nationals Gold Medal Winner for Cyber Security at IndiaSkills and has represented India for Cyber Security at the WorldSkills 2022 Competition held at South Korea.Mufeed is an autodidact(self-learner) and insists that most of the skills or knowldege he has acquired has been a side-effect of this trait. His long list of achievements(yes, there's tons of them) are just proof of his will to keep improving. ",
+    date: "15/11/2022",
+  },
+
+  {
+    id: "59",
+    speaker: "Rohit TP",
+    image: "assets/events/isr/ISRPictures/Rohith T P.webp",
+    description:
+      "This week on Inspiration Station Radio, we have Rohit TP, a second year Computer Science Engineering student at CUSAT. Rohit, CTO at Trebuchet Systems and Intern at Tinkerhub Foundation, is an extremely curious and passionate techie  and his passion is what fuels his desire to keep improving his technical expertise. Rohit is also a part of SOCE, GramUp and various other communities. He is an OpenSource advocate and believes that collaboration is key to unlocking the future. ",
+    date: "22/11/2022",
+  },
+  {
+    id: "60",
+    speaker: "Ashish",
+    image: "assets/events/isr/ISRPictures/Ashish.webp",
+    description:
+      "𝝁Learn is back with yet another fabulous episode of Inspiration Station Radio. This week we have Ashish Kurian from CE Chengannur, an individual who has spent a considerable amount of his college life with communities.Ashish, Chairman IEEE PES SBC CE Chengannur and IEEE R10 PES Sub Committee member, is a youthful tech enthusiast who enjoys participating in open talks and sessions, and believe in sharing knowledge whenever possible.He has also served as a mentor and guest speaker for initiatives centered on Arduino projects and FABLAB. Additionally he leads the content team of the IEEE SPS Kerala Chapter.",
+    date: "29/11/2022",
+  },
+  {
+    id: "61",
+    speaker: "Varsha Renjith",
+    image: "assets/events/isr/ISRPictures/Varsha Renjith.webp",
+    description:
+      "Keep trying until you keep winning‼ Sustained efforts are truly the key to success but it requires a good deal of Inspiration. This week on Inspiration Station Radio, we have Varsha Renjith, a 3rd Year Computer Science Engineering student at MBCET. Varsha is the current lead of the GDSC at MBCET. Passionate about UI/UX and designing 🎨, Varsha has held several creative roles across many college clubs and organizations. She was awarded🎖 the Diana Award'19 for her efforts towards bringing a positive change to the lives of others. Well that's the recognition that true heroes get❕",
+    date: "05/12/2022",
+  },
+  {
+    id: "62",
+    speaker: "Jobin Selvanose",
+    image: "assets/events/isr/ISRPictures/Jobin Selvanose.webp",
+    description:
+      "𝝁Learn is back with yet another fabulous episode of Inspiration Station Radio. This week, meet Jobin Selvanose, an 18-year-old, who became a Software Engineer at a Kolkata-based company while he was still in school. Having embarked the Journey of a Full Stack Web Developer👨‍💻, Jobin is an extraordinary personality that you should definitely meet!😎With the laptop gifted by his father, he began his journey from Class 7th. He started his self-learning through YouTube, and developed his skills over the years.",
+    date: "13/12/2022",
   },
 ];
 

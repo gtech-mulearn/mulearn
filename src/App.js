@@ -22,6 +22,9 @@ import MonthlyLeaderboard from "./Pages/LeaderBoard/MonthlyLeaderboard/MonthlyLe
 import MentorConnect from "./Pages/Events/MentorConnect/MentorConnect";
 import SaltMangoTree from "./Pages/Events/SaltMangoTree/SaltMangoTree";
 import OpenMic from "./Pages/Events/OpenMic/OpenMic";
+import BuildForTeam from "./Pages/Events/BuildForTeam/BuildForTeam";
+import EnablersOnboarding from "./Pages/EnablersOnboarding/EnablersOnboarding";
+import HackathonKarma from "./Pages/HackathonKarma/HackathonKarma";
 
 function App() {
   return (
@@ -32,6 +35,7 @@ function App() {
           <Route path="/careers" element={<Career />} />
           <Route path="/blogs" element={<BlogLanding />} />
           <Route path="/blogs/:id" element={<BlogTemplate />} />
+          <Route path="/buildforteam" element={<BuildForTeam />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/blog" element={<BlogTemplate />} />
           <Route path="/calendar" element={<Calendar />} />
@@ -56,6 +60,8 @@ function App() {
           <Route path="/campuschapters">
             <Route path="" element={<CampusChapters />} />
           </Route>
+          <Route path="/participate" element={<EnablersOnboarding />} />
+          <Route path="/earnkarma" element={<HackathonKarma />} />
         </Routes>
       </Router>
     </div>

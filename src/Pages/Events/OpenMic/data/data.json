@@ -1,16 +1,37 @@
 [
   {
     "id": 0,
-    "name": "Open Mic #1",
+    "name": "Open Mic #1 ft.Fahaz",
     "image": "/assets/events/openmic/mic1.webp",
     "description": "This edition of Open Mic, we have Fahaz Bazil, a 3rd year Engineering Student at KMEA College of Engineering. Fahaz is a great artist and an integral part of our Music Interest Group and its activities.",
     "date": "17/11/2022"
   },
   {
     "id": 1,
-    "name": "Open Mic #2",
+    "name": "Open Mic #2 ft.Bibin",
     "image": "/assets/events/openmic/mic2.webp",
     "description": "This edition of Open Mic, we have Bibin Jose, a 3rd year Engineering Student at St. Joseph's College of Engineering and Technology, Palai. Bibin is a wonderful singer as well a great artist.",
     "date": "24/11/2022"
+  },
+  {
+    "id": 2,
+    "name": "Open Mic #3 ft.Arjun",
+    "image": "/assets/events/openmic/mic3.webp",
+    "description": "Wouldn't a little music 🎸 make your day better❓ Join us for Open Mic at 8:00 PM today on our Instagram Handle. This edition of Open Mic 👨‍🎤, we have Arjun Jaypal, a 3rd year engineering student at GEC Idukki. ",
+    "date": "01/12/2022"
+  },
+  {
+    "id": 3,
+    "name": "Open Mic #4 ft.Ramakrishnan",
+    "image": "/assets/events/openmic/mic4.webp",
+    "description": "This time we have with us Ramakrishnan Hareesh, a 4th year Engineering Student at MBCET. Ramakrishnan is a music composer and loves to experiment with music to create art. Join us live on Instagram at 8pm on the 8th of December and witness Ramakrishnan create some magic 🪄 with music 🎼",
+    "date": "08/12/2022"
+  },
+  {
+    "id": 4,
+    "name": "Open Mic #5 ft.@s_o_d_666 & sabareesh___k",
+    "image": "/assets/events/openmic/mic5.webp",
+    "description": "This time we have with us George Ben Christy & Sabareesh K. Join us live on Instagram at 8pm on the 8th of December and witness Ramakrishnan create some magic 🪄 with music 🎼",
+    "date": "15/12/2022"
   }
 ]
