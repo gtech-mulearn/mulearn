@@ -44,7 +44,7 @@ function App() {
           <Route path="/announcements" element={<MuAnnouncements />} />
           <Route path="/isr" element={<ISR />} />
           <Route path="/events/mentorconnect" element={<MentorConnect />} />
-          <Route path="/events/saltmangotree" element={<SaltMangoTree />} />
+          <Route path="/events/saltman otree" element={<SaltMangoTree />} />
           <Route path="/events/openmic" element={<OpenMic />} />
           <Route path="/company-partners" element={<Company />} />
           <Route path="/community-partners" element={<CommunityPartner />} />
