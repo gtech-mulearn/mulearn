@@ -33,7 +33,7 @@
   font-family: "Noto Sans", sans-serif;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #3362FF;
+  color: #3362ff;
 }
 
 .op_text {
@@ -56,7 +56,7 @@
 
 .op_jobdescription {
   margin: 0.25rem 0;
-  background-color: #3362FF;
+  background-color: #3362ff;
   color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 5px;
@@ -65,8 +65,8 @@
 
 .op_applynow {
   margin: 0.25rem 0rem;
-  color: #3362FF;
-  border: 1.5px solid #3362FF;
+  color: #3362ff;
+  border: 1.5px solid #3362ff;
   padding: 0.4rem 1.5rem;
   border-radius: 5px;
 }

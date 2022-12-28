@@ -573,6 +573,7 @@
     font-size: 1rem;
     width: 60%;
     margin-top: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   .tvheader {
@@ -585,5 +586,88 @@
 @media only screen and (min-width: 1300px) {
   .third_view {
     margin: 0;
+  }
+}
+
+/* Expert Advice Container */
+.expert_advice_container {
+  margin: 2rem;
+}
+
+.expert_advice {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+}
+
+.profile_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.name {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  text-align: center;
+}
+
+.hacktoberfest {
+  font-size: 0.75rem;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  background-color: #f59c5d;
+  border-radius: 10px;
+}
+
+.username {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  text-align: center;
+}
+
+.profile_completed {
+  color: #f59c5d;
+  border: 1px solid #f59c5d;
+  padding: 0.25rem 0.75rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  display: block;
+}
+
+.profile {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 12rem;
+}
+
+.py_profile {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 8rem;
+}
+
+.profile_picture {
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+  border-radius: 1000px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .expert_advice_container {
+    max-width: 1300px;
+    margin: auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
   }
 }

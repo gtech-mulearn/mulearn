@@ -39,7 +39,7 @@ const ISR = () => {
                 passion, the story of learning new things and much more. Often
                 times these stories are filled with fun and inspirations which
                 fuel others to start their own journey. Join in every
-                Tuesday@7:00PM to get Inspired.
+                Tuesday@8:00PM to get Inspired.
               </p>
             </div>
             <div className={styles.fv_images}>

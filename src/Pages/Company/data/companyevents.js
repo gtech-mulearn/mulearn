@@ -1,8 +1,8 @@
-import Ecesis from "../assets/companies/Ecesis.jpeg";
-import Pits from "../assets/companies/Pits.jpeg";
-import Softnotions from "../assets/companies/Softnotions.jpeg";
-import SunTec from "../assets/companies/SunTec.jpeg";
-import EY from "../assets/companies/EY.jpeg";
+import Ecesis from "../assets/companies/Ecesis.webp";
+import Pits from "../assets/companies/Pits.webp";
+import Softnotions from "../assets/companies/Softnotions.webp";
+import SunTec from "../assets/companies/SunTec.webp";
+import EY from "../assets/companies/EY.webp";
 
 const companyevents = [
   {

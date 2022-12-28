@@ -18,6 +18,7 @@ export const links = [
           },
         ],
       },
+
       {
         name: "Partners",
         submenu: true,
@@ -34,6 +35,19 @@ export const links = [
             submenu: false,
             sublinks: [],
             link: "/company-partners",
+            foreign: false,
+          },
+        ],
+      },
+      {
+        name: "Participate",
+        submenu: true,
+        sublinks: [
+          {
+            name: "Enablers & Mentors",
+            submenu: false,
+            sublinks: [],
+            link: "/participate",
             foreign: false,
           },
         ],
@@ -70,6 +84,13 @@ export const links = [
             link: "/news",
             foreign: false,
           },
+          {
+            name: "Blogs",
+            submenu: false,
+            sublinks: [],
+            link: "/blogs",
+            foreign: false,
+          },
         ],
       },
       {
@@ -94,7 +115,7 @@ export const links = [
             name: "Success Stories",
             submenu: false,
             sublinks: [],
-            link: "/campuschapters/#success-stories",
+            link: "/blogs",
             foreign: false,
           },
         ],
@@ -160,6 +181,13 @@ export const links = [
             link: "/hacktoberfest",
             foreign: false,
           },
+          {
+            name: "Build For Team",
+            submenu: false,
+            sublinks: [],
+            link: "/buildforteam",
+            foreign: false,
+          },
         ],
       },
     ],
@@ -205,6 +233,20 @@ export const links = [
           {
             name: "Inspiration Station",
             link: "/isr",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+          {
+            name: "Mentor Connect",
+            link: "/events/mentorconnect",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+          {
+            name: "Open Mic",
+            link: "/events/openmic",
             submenu: false,
             sublinks: [],
             foreign: false,
@@ -276,30 +318,38 @@ export const links = [
       },
       {
         head: 3,
-        name: "Search",
+        name: "Bootcamps",
         submenu: true,
         sublinks: [
           {
-            name: "Mentor Directory",
-            link: mainlink + "/mentors",
+            name: "Android",
+            link: mainlink + "/bootcamps/android",
             submenu: false,
             sublinks: [],
             foreign: false,
           },
           {
-            name: "Existing Circles",
-            link: mainlink + "/searchcircles",
+            name: "CTF",
+            link: mainlink + "/bootcamps/ctf",
             submenu: false,
             sublinks: [],
             foreign: false,
           },
         ],
       },
+
       {
         head: 3,
         name: "Practice",
         submenu: true,
         sublinks: [
+          {
+            name: "OpenSource Projects",
+            link: mainlink + "/opensource",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
           {
             name: "Problem Shelf",
             link: mainlink + "/problemshelves",
@@ -345,6 +395,27 @@ export const links = [
           {
             name: "Join Circles",
             link: mainlink + "/join",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+        ],
+      },
+      {
+        head: 3,
+        name: "Search",
+        submenu: true,
+        sublinks: [
+          {
+            name: "Mentor Directory",
+            link: mainlink + "/mentors",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+          {
+            name: "Existing Circles",
+            link: mainlink + "/searchcircles",
             submenu: false,
             sublinks: [],
             foreign: false,

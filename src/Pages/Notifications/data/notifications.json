@@ -1,6 +1,38 @@
 {
   "new": [
     {
+      "title": "Inspiration Station Radio",
+      "date": "Tue Dec 27 2022 20:00:00 GMT+0530 (India Standard Time)",
+      "description": "Everyone has a story to tell, the story about finding their passion, the story of learning new things and much more. Often times these stories are filled with fun and inspirations which fuel others to start their own journey. Join in this Tuesday@8:00PM to get Inspired.",
+      "url": "https://discord.mulearn.org"
+    },
+    {
+      "title": "Salt Mango Tree",
+      "date": "Wed Dec 28 2022 20:00:00 GMT+0530 (India Standard Time)",
+      "description": "English! English! English! I avoid I don't like it, but English likes me, I can't avoid! Well since avoiding English isn't an option, let's try to work towards improving our knowledge of English, by practicing, together. Join in this Wednesday@8:00Pm to talk and learn.",
+      "url": "https://discord.mulearn.org"
+    }
+  ],
+  "old": [
+    {
+      "title": "Mu'tate ",
+      "date": "Tue Dec 17 2022 12:00:00 GMT+0530 (India Standard Time)",
+      "description": "A meeting exclusively for the minds that shape MuLearn, to plan for the future. We will also celebrate what we have achieved so far!",
+      "url": "https://mulearn.org"
+    },
+    {
+      "title": "Build For Team",
+      "date": "Tue Dec 17 2022 00:00:00 GMT+0530 (India Standard Time)",
+      "description": "GTech μLearn in association with Pygrammers present BuildForTeam, your chance to build your favourite team’s website. With your favourite teams battling it out on the Football field, it’s up to you to build them an awesome website.",
+      "url": "https://mulearn.org/BuildForTeam"
+    },
+    {
+      "title": "Rust 101",
+      "date": "Tue Dec 1 2022 19:00:00 GMT+0530 (India Standard Time)",
+      "description": "GTech µLearn presents to you Rust 101, a comprehensive session on Rust, one of the most in-demand programming languages! Learn how to build solid fundamentals with the World's most loved ❤️ programming language - Rust⚡",
+      "url": "https://mulearn.org/rust101"
+    },
+    {
       "title": "Getting Companies to fight for you 🤼‍♂️",
       "date": "Fri Nov 25 2022 00:00:00 GMT+0530 (India Standard Time)",
       "description": "GTech μLearn presents Mentor Connect 👨🏽‍🏫, an original initiative as part of Weekly Twitch. Occurring every Friday at 7pm, this initiative will give members an opportunity to interact, learn, and explore their interests with mentors from the Indust",
@@ -13,13 +45,11 @@
       "url": "https://mulearn.org/careers"
     },
     {
-        "title": "BUILD.MYWEB | Web Interest Group",
-        "date": "Fri Nov 18 2022 00:00:00 GMT+0530 (India Standard Time)",
-        "description": "Introducing BUILD.MYWEB, a Web Design Bootcamp which will help you to gain the necessary skills ✅ required to start building some dope 💥 websites. ",
-        "url": "https://mulearn.org/buildmyweb"
-      }
-  ],
-  "old": [
+      "title": "BUILD.MYWEB | Web Interest Group",
+      "date": "Fri Nov 18 2022 00:00:00 GMT+0530 (India Standard Time)",
+      "description": "Introducing BUILD.MYWEB, a Web Design Bootcamp which will help you to gain the necessary skills ✅ required to start building some dope 💥 websites. ",
+      "url": "https://mulearn.org/buildmyweb"
+    },
     {
       "title": "Touch Typing Task(1000 Karma)",
       "date": "Sat Nov 12 2022 00:00:00 GMT+0530 (India Standard Time)",
