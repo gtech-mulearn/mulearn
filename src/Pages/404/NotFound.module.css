@@ -11,19 +11,16 @@
     flex-direction: column;
     height: 100vh;
 }
-img{
+.nf_img{
     width: 350px;
     object-fit: contain;
 }
-h1{
+.h1{
     margin-top: -20px;
     font-size: 1.5rem;
     font-weight: bolder;
 }
-p{
+.p{
     min-width: 350px;
     max-width: 400px;
-}
-button{
-    margin-top: 20px;
 }
