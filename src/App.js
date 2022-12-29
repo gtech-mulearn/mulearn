@@ -26,12 +26,14 @@ import BlogLanding from "./Pages/CampusChapters/Blogs/BlogLanding";
 import BlogTemplate from "./Pages/CampusChapters/BlogTemplate/BlogTemplate";
 import Notifications from "./Pages/Notifications/Notifications";
 import MonthlyLeaderboard from "./Pages/LeaderBoard/MonthlyLeaderboard/MonthlyLeaderboard";
+import NotFound from "./Pages/404/NotFound";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
+          <Route path="*" element={<NotFound />} />
           <Route path="/" element={<Home />} />
           <Route path="/careers" element={<Career />} />
           <Route path="/blogs" element={<BlogLanding />} />
