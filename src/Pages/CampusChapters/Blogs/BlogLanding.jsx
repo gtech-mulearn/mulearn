@@ -55,7 +55,7 @@ const BlogLanding = () => {
                                     <CardMedia
                                         component="img"
                                         height="30"
-                                        image="/assets/campuscommunity/amirtha.jpg"
+                                        image="/assets/campuscommunity/amirtha.webp"
                                         alt="Amritha G S"
                                     />
                                     <CardContent>
@@ -88,7 +88,7 @@ const BlogLanding = () => {
                                     <CardMedia
                                         component="img"
                                         height="30"
-                                        image="/assets/campuscommunity/jessno.jpg"
+                                        image="/assets/campuscommunity/jessno.webp"
                                         alt="Jessno Oommen Jose"
                                     />
                                     <CardContent>
@@ -122,7 +122,7 @@ const BlogLanding = () => {
                                     <CardMedia
                                         component="img"
                                         height="10"
-                                        image="/assets/campuscommunity/sandra.jpg"
+                                        image="/assets/campuscommunity/sandra.webp"
                                         alt="Jessno Oommen Jose"
                                     />
                                     <CardContent>

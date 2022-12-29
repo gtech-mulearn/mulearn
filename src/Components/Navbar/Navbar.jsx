@@ -4,13 +4,20 @@ import ReactTimeAgo from "react-time-ago";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 import NavLinks from "./NavLinks";
+
 const Navbar = () => {
+  function handleScrolling(setter) {
+    if (setter)
+      document.body.style.overflow = "unset";
+    else
+      document.body.style.overflow = 'hidden';
+  }
   const [open, setOpen] = useState(false);
   const [notificationOpen, setNotificationOpen] = useState(false);
   return (
     <nav className="bg-white ">
       <div className="flex items-center font-medium justify-around">
-        <div className={`z-30 p-5 mt-1 bg-white lg:w-auto w-full flex justify-between ${open ? "fixed top-1" : ""}`}>
+        <div className={`mobile-nav-bar lg:w-auto w-full ${open ? "absolute top-1" : ""}`}>
           <Link to="/">
             <img
               src="/assets/navbar/µLearn.webp"
@@ -20,24 +27,38 @@ const Navbar = () => {
           </Link>
           <div className="flex justify-between">
             {/* Notification */}
-            <div className={`group lg:hidden text-black  inline-block  pr-5 `}
+            <div
+              className={`group lg:hidden text-black  inline-block  pr-5 `}
               onClick={() => {
                 setNotificationOpen(!notificationOpen);
                 setOpen(false);
-              }}>
-
-              <div className={`text-3xl ${notificationOpen ? ' text-orange-500' : 'text-black'}`}>
+                handleScrolling(true);
+              }}
+            >
+              <div
+                className={`text-3xl ${notificationOpen ? " text-orange-500" : "text-black"
+                  }`}
+              >
                 <ion-icon name="notifications-circle-outline"></ion-icon>
               </div>
               {/* Notification menu */}
-              <div className={` absolute w-[300px] bg-white text-orange-500 border-orange-600/20
-              border rounded-md text-xs  left-8 mt-3  ${notificationOpen ? 'block' : 'hidden'}`}>
+              <div
+                className={` absolute w-[300px] bg-white text-orange-500 border-orange-600/20
+              border rounded-md text-xs  left-8 mt-3  ${notificationOpen ? "block" : "hidden"
+                  }`}
+              >
                 <NotificationNav />
               </div>
-
-            </div >
+            </div>
             {/* Menu */}
-            <div className="text-3xl lg:hidden" onClick={() => { setOpen(!open); setNotificationOpen(false) }}>
+            <div
+              className="text-3xl lg:hidden"
+              onClick={() => {
+                setOpen(!open);
+                setNotificationOpen(false);
+                handleScrolling(open);
+              }}
+            >
               <ion-icon name={`${open ? "close" : "menu"}`}></ion-icon>
             </div>
           </div>
@@ -55,11 +76,12 @@ const Navbar = () => {
             <div className="text-3xl ">
               <ion-icon name="notifications-circle-outline"></ion-icon>
             </div>
-            <div className={`hidden group-hover:lg:block hover:lg:block absolute w-[300px] bg-white  
-              border border-black-600/20 rounded-xl text-xs mt-3 drop-shadow-md text-orange-500  ${notificationOpen ? 'block' : ''}`}>
+            <div
+              className={`notifications group-hover:lg:block hover:lg:block ${notificationOpen ? "block" : "hidden"}`}
+            >
               <NotificationNav />
             </div>
-          </div >
+          </div>
         </ul>
         <div className="lg:block hidden">
           <a
@@ -97,14 +119,14 @@ const Navbar = () => {
               rel="noopener noreferrer"
               className="py-7 px-28 "
             >
-              <button className="bg-orange-400 text-white  px-6 py-2 rounded-md " >
+              <button className="bg-orange-400 text-white  px-6 py-2 rounded-md ">
                 Join Discord
               </button>
             </a>
           </div>
         </ul>
       </div>
-    </nav >
+    </nav>
   );
 };
 
@@ -112,7 +134,7 @@ const NotificationNav = () => {
   TimeAgo.setDefaultLocale(en.locale);
   TimeAgo.addLocale(en);
   // ./data/notifications.json
-  const [seenAll, setSeenAll] = useState(false);
+  const [seenAll] = useState(false);
   let notifications = require("../../Pages/Notifications/data/notifications.json");
   return (
     <>
@@ -123,15 +145,25 @@ const NotificationNav = () => {
         <li>Mark all as seen</li>
       </div> */}
       <div className=" overflow-y-hidden">
-        {notifications && notifications.new.map((notification) => (
-          <div className={`px-5 py-2 capitalize ${seenAll ? 'text-orange-500/70' : ''} border-b`}  >
-            <a href={notification.url} >
-              <div className="py-2 text-md  decoration text-black font-bold">{notification.title}</div>
-              <p className="py-2 text-justify  text-xs text-gray-600 truncate">{notification.description}</p>
-              <div className="text-right text-xs"><ReactTimeAgo date={notification.date} locale="en-US" /></div>
-            </a>
-          </div>
-        ))}
+        {notifications &&
+          notifications.new.map((notification) => (
+            <div
+              className={`px-5 py-2 capitalize ${seenAll ? "text-orange-500/70" : ""
+                } border-b`}
+            >
+              <a href={notification.url}>
+                <div className="py-2 text-md  decoration text-black font-bold">
+                  {notification.title}
+                </div>
+                <p className="py-2 text-justify  text-xs text-gray-600 truncate">
+                  {notification.description}
+                </p>
+                <div className="text-right text-xs">
+                  <ReactTimeAgo date={notification.date} locale="en-US" />
+                </div>
+              </a>
+            </div>
+          ))}
         {/* {notifications && notifications.old.map((notification) => (
           <div className=' px-5 py-2 capitalize text-orange-500/70 border-b  '>
             <a href={notification.url} >
@@ -144,12 +176,12 @@ const NotificationNav = () => {
           </div>
         ))} */}
       </div>
-      <Link to='/notifications'>
+      <Link to="/notifications">
         <div className=" px-5 py-3 border-y text-orange-500 text-sm bg-[rgba(255,255,255,.2)] text-center select-none ">
           View All
         </div>
       </Link>
     </>
-  )
-}
+  );
+};
 export default Navbar;

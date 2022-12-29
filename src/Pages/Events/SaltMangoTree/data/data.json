@@ -1,0 +1,37 @@
+[
+  {
+    "id": 0,
+    "name": "Salt Mango Tree #1",
+    "image": "/assets/events/saltmangotree/intro.webp",
+    "description": " English! English! English! I avoid I don't like it, but English likes me, I can't avoid! Well since avoiding English isn't an option, let's try to work towards improving our knowledge of English, by practicing, together.",
+    "date": "26/10/2022"
+  },
+  {
+    "id": 1,
+    "name": "Salt Mango Tree #2",
+    "image": "/assets/events/saltmangotree/intro.webp",
+    "description": " English! English! English! I avoid I don't like it, but English likes me, I can't avoid! Well since avoiding English isn't an option, let's try to work towards improving our knowledge of English, by practicing, together.",
+    "date": "02/11/2022"
+  },
+  {
+    "id": 2,
+    "name": "Salt Mango Tree #3",
+    "image": "/assets/events/saltmangotree/fifa.webp",
+    "description": " English! English! English! I avoid I don't like it, but English likes me, I can't avoid! Well since avoiding English isn't an option, let's try to work towards improving our knowledge of English, by practicing, together.",
+    "date": "09/11/2022"
+  },
+  {
+    "id": 3,
+    "name": "Salt Mango Tree #4",
+    "image": "/assets/events/saltmangotree/intro.webp",
+    "description": " English! English! English! I avoid I don't like it, but English likes me, I can't avoid! Well since avoiding English isn't an option, let's try to work towards improving our knowledge of English, by practicing, together.",
+    "date": "16/11/2022"
+  },
+  {
+    "id": 4,
+    "name": "Salt Mango Tree #5",
+    "image": "/assets/events/saltmangotree/intro.webp",
+    "description": " English! English! English! I avoid I don't like it, but English likes me, I can't avoid! Well since avoiding English isn't an option, let's try to work towards improving our knowledge of English, by practicing, together.",
+    "date": "23/11/2022"
+  }
+]

@@ -178,7 +178,7 @@ const CampusChapters = () => {
             <div className={styles.onboarding_steps_container}>
               <div className={styles.step}>
                 <img
-                  src="/assets/campuscommunity/application.png"
+                  src="/assets/campuscommunity/application.webp"
                   alt=""
                   className={styles.step_image}
                 />
@@ -190,7 +190,7 @@ const CampusChapters = () => {
               </div>
               <div className={styles.step}>
                 <img
-                  src="/assets/campuscommunity/onboarding.png"
+                  src="/assets/campuscommunity/onboarding.webp"
                   alt=""
                   className={styles.step_image}
                 />
@@ -202,7 +202,7 @@ const CampusChapters = () => {
               </div>
               <div className={styles.step}>
                 <img
-                  src="/assets/campuscommunity/meeting.png"
+                  src="/assets/campuscommunity/meeting.webp"
                   alt=""
                   className={styles.step_image}
                 />
@@ -242,7 +242,7 @@ const CampusChapters = () => {
               </div>
             </div>
             <img
-              src="/assets/campuscommunity/logogen.png"
+              src="/assets/campuscommunity/logogen.webp"
               alt=""
               className={styles.logoimage}
             />
@@ -268,7 +268,7 @@ const CampusChapters = () => {
                     <CardMedia
                       component="img"
                       height="30"
-                      image="/assets/campuscommunity/amirtha.jpg"
+                      image="/assets/campuscommunity/amirtha.webp"
                       alt="Amritha G S"
                     />
                     <CardContent>
@@ -284,7 +284,7 @@ const CampusChapters = () => {
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
-                    <Link to="/blog/amirthags">
+                    <Link to="/blogs/amirtha-gs">
                       <Button size="small">
                         <span>Read More...</span>
                       </Button>
@@ -298,7 +298,7 @@ const CampusChapters = () => {
                     <CardMedia
                       component="img"
                       height="30"
-                      image="/assets/campuscommunity/jessno.jpg"
+                      image="/assets/campuscommunity/jessno.webp"
                       alt="Jessno Oommen Jose"
                     />
                     <CardContent>
@@ -314,7 +314,7 @@ const CampusChapters = () => {
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
-                    <Link to="/blog/jessno">
+                    <Link to="/blogs/jessno-oomen">
                       <Button size="small">
                         <span>Read More...</span>
                       </Button>
@@ -329,7 +329,7 @@ const CampusChapters = () => {
                     <CardMedia
                       component="img"
                       height="10"
-                      image="/assets/campuscommunity/sandra.jpg"
+                      image="/assets/campuscommunity/sandra.webp"
                       alt="Jessno Oommen Jose"
                     />
                     <CardContent>
@@ -344,7 +344,7 @@ const CampusChapters = () => {
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
-                    <Link to="/blog/sandra">
+                    <Link to="/blogs/sandra-pramod">
                       <Button size="small">
                         <span>Read More...</span>
                       </Button>

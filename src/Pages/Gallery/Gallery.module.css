@@ -3,6 +3,10 @@
   margin: 0;
 }
 
+.spacing {
+  margin-top: 2rem;
+}
+
 .tabs_container {
   display: flex;
   flex-direction: row;
@@ -29,13 +33,11 @@
   background-color: #ececee;
   opacity: 1;
   background-size: 36px 36px;
-  background-image: repeating-linear-gradient(
-    0deg,
-    #e8e8e8,
-    #e8e8e8 1.8px,
-    #ececee 1.8px,
-    #ececee
-  );
+  background-image: repeating-linear-gradient(0deg,
+      #e8e8e8,
+      #e8e8e8 1.8px,
+      #ececee 1.8px,
+      #ececee);
 }
 
 .fv_img {
@@ -178,6 +180,7 @@
 .card_description {
   margin-left: 0.5rem;
 }
+
 @media only screen and (min-width: 768px) {
   .cards_view {
     display: grid;
@@ -209,6 +212,7 @@
     /* width: 23rem; */
     margin: 1rem 0;
   }
+
   .cards_view_container {
     padding: 2rem 0rem;
   }
