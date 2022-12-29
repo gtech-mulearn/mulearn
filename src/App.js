@@ -25,12 +25,14 @@ import OpenMic from "./Pages/Events/OpenMic/OpenMic";
 import BuildForTeam from "./Pages/Events/BuildForTeam/BuildForTeam";
 import EnablersOnboarding from "./Pages/EnablersOnboarding/EnablersOnboarding";
 import HackathonKarma from "./Pages/HackathonKarma/HackathonKarma";
+import NotFound from "./Pages/404/NotFound";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
+          <Route path="*" element={<NotFound />} />
           <Route path="/" element={<Home />} />
           <Route path="/careers" element={<Career />} />
           <Route path="/blogs" element={<BlogLanding />} />
@@ -44,7 +46,7 @@ function App() {
           <Route path="/announcements" element={<MuAnnouncements />} />
           <Route path="/isr" element={<ISR />} />
           <Route path="/events/mentorconnect" element={<MentorConnect />} />
-          <Route path="/events/saltman otree" element={<SaltMangoTree />} />
+          <Route path="/events/saltmangotree" element={<SaltMangoTree />} />
           <Route path="/events/openmic" element={<OpenMic />} />
           <Route path="/company-partners" element={<Company />} />
           <Route path="/community-partners" element={<CommunityPartner />} />
