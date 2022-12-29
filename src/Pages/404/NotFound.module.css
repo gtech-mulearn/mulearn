@@ -1,0 +1,26 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.notfoundpage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+.nf_img{
+    width: 350px;
+    object-fit: contain;
+}
+.h1{
+    margin-top: -20px;
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+.p{
+    min-width: 350px;
+    max-width: 400px;
+}
