@@ -25,12 +25,14 @@ import OpenMic from "./Pages/Events/OpenMic/OpenMic";
 import BuildForTeam from "./Pages/Events/BuildForTeam/BuildForTeam";
 import EnablersOnboarding from "./Pages/EnablersOnboarding/EnablersOnboarding";
 import HackathonKarma from "./Pages/HackathonKarma/HackathonKarma";
+import NotFound from "./Pages/404/NotFound";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
+          <Route path="*" element={<NotFound />} />
           <Route path="/" element={<Home />} />
           <Route path="/careers" element={<Career />} />
           <Route path="/blogs" element={<BlogLanding />} />
