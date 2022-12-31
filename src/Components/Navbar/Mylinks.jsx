@@ -160,6 +160,13 @@ export const links = [
             link: "/artofteaching",
             foreign: false,
           },
+          {
+            name: "Bootcamps",
+            submenu: false,
+            sublinks: [],
+            link: "/bootcamps",
+            foreign: false,
+          },
         ],
       },
       {
@@ -352,6 +359,20 @@ export const links = [
           {
             name: "Rust",
             link: mainlink + "/bootcamps/rust",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+          {
+            name: "JavaScript",
+            link: mainlink + "/bootcamps/javascript",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+          {
+            name: "Python",
+            link: mainlink + "/bootcamps/python",
             submenu: false,
             sublinks: [],
             foreign: false,
