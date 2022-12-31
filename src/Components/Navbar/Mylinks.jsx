@@ -160,6 +160,13 @@ export const links = [
             link: "/artofteaching",
             foreign: false,
           },
+          {
+            name: "Bootcamps",
+            submenu: false,
+            sublinks: [],
+            link: "/bootcamps",
+            foreign: false,
+          },
         ],
       },
       {
