@@ -363,6 +363,13 @@ export const links = [
             sublinks: [],
             foreign: false,
           },
+          {
+            name: "Python",
+            link: mainlink + "/bootcamps/python",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
         ],
       },
 
