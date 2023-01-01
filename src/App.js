@@ -26,6 +26,7 @@ import BuildForTeam from "./Pages/Events/BuildForTeam/BuildForTeam";
 import EnablersOnboarding from "./Pages/EnablersOnboarding/EnablersOnboarding";
 import HackathonKarma from "./Pages/HackathonKarma/HackathonKarma";
 import NotFound from "./Pages/404/NotFound";
+import EventsHome from "./Pages/Events/EventsHome/EventsHome";
 
 function App() {
   return (
@@ -64,6 +65,7 @@ function App() {
           </Route>
           <Route path="/participate" element={<EnablersOnboarding />} />
           <Route path="/earnkarma" element={<HackathonKarma />} />
+          <Route path="/events" element={<EventsHome />} />
         </Routes>
       </Router>
     </div>

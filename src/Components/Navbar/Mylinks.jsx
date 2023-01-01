@@ -238,6 +238,13 @@ export const links = [
         submenu: true,
         sublinks: [
           {
+            name: "Home",
+            link: "/events",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+          {
             name: "Inspiration Station",
             link: "/isr",
             submenu: false,
@@ -254,6 +261,13 @@ export const links = [
           {
             name: "Open Mic",
             link: "/events/openmic",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+          {
+            name: "Salt Mango Tree",
+            link: "/events/saltmangotree",
             submenu: false,
             sublinks: [],
             foreign: false,

@@ -33,5 +33,33 @@
     "image": "/assets/events/saltmangotree/intro.webp",
     "description": " English! English! English! I avoid I don't like it, but English likes me, I can't avoid! Well since avoiding English isn't an option, let's try to work towards improving our knowledge of English, by practicing, together.",
     "date": "23/11/2022"
+  },
+  {
+    "id": 5,
+    "name": "Salt Mango Tree #6",
+    "image": "/assets/events/saltmangotree/ott.webp",
+    "description": " English! English! English! I avoid I don't like it, but English likes me, I can't avoid! Well since avoiding English isn't an option, let's try t work towards improving our knowledge of English, by practicing, togetherIts time to brush up on your English skills ‼ Join us for Salt Mango Tree at 8:00 PM today  and continue your journey to master the English language. This edition, we'll discuss The pros and cons of OTT Platforms over traditional cinema theaters..",
+    "date": "30/11/2022"
+  },
+  {
+    "id": 6,
+    "name": "Salt Mango Tree #7",
+    "image": "/assets/events/saltmangotree/robo.webp",
+    "description": " The Matrix, Terminator, I-Robot, Avengers, Transformers, Enthiran - countless movies have argued that Artificial Intelligence will enslave the Human Race. Famous personalities like Elon Musk have also expressed concern over this very fact‼ The Emergence of AI 🤖 : The beginning of the end or superstition created by years of fiction. ",
+    "date": "14/12/2022"
+  },
+  {
+    "id": 7,
+    "name": "Salt Mango Tree #8",
+    "image": "/assets/events/saltmangotree/chatgpt.webp",
+    "description": "Speak, speak and continue to speak - that's the only true way to master a language. Ever been in awkward situations just because of your poor grasp of English. Time to fix that‼️Join us for Salt Mango Tree 🧂🥭🎄 at 8PM today on the µLearn Discord Server. Today's Topic : Chat GPT - A turning point in Tech💥 or just an overhyped Chatbot🙃 ",
+    "date": "21/12/2022"
+  },
+  {
+    "id": 8,
+    "name": "Salt Mango Tree #9",
+    "image": "/assets/events/saltmangotree/newyear.webp",
+    "description": "The more you practice, the better you get💯 Ever been in awkward situations just because of your poor grasp of English. Time to fix that‼️Join us for Salt Mango Tree 🧂🥭🎄 at 8PM today on Lobby. Topic : 2022 - The best, the worst or somewhere in the middle?",
+    "date": "28/12/2022"
   }
 ]
