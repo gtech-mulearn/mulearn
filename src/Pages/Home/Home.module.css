@@ -216,12 +216,12 @@ a {
 
 @media screen and (max-width:999px) {
 
-  .svp_image {
+  /* .svp_image {
     width: 3.15rem;
     position: relative;
     left: 50%;
     transform: translate(-50%);
-  }
+  } */
 
   .svp_heading {
     position: relative;
@@ -376,8 +376,9 @@ a {
   font-family: "Noto Sans", sans-serif;
   font-size: 1rem;
   font-weight: 500;
-  margin: 1rem auto 0;
-  text-align: center;
+  margin-top: 1rem;
+  /* margin: 1rem auto 0; */
+  /* text-align: center; */
   width: 95%;
 }
 

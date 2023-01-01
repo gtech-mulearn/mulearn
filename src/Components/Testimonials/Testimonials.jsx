@@ -41,8 +41,10 @@ const Testimonails = () => {
         </p>
 
         <p className={styles.tv_tagline}>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod velit
-          cupiditate atque nisi laudantium? Iure.
+          Many have expressed their admiration and support for μLearn,
+          highlighting its innovative approach to education and professional
+          development. We're extremely grateful for all the kind words and we
+          shall strive to keep innovating the Education Ecosystem.
         </p>
       </div>
       <div className="py-5 bg-[#f7f3f3]">
