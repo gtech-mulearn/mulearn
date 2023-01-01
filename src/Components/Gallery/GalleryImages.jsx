@@ -45,10 +45,6 @@ const GalleryImages = ({ events }) => {
         {program.pics.map((pic, index) => (
           <>
             <div className=" group galleryImages lg:w-1/5 md:w-1/3" onClick={() => galleryViewOn(index)}>
-              <div className="gallery-setter  group-hover:flex hidden">
-                <ion-icon name="expand"></ion-icon>
-                <span className="text-sm text-white/10">Expand</span>
-              </div>
               <img src={pic} alt="Unavailable Try Later" className=" group-hover:opacity-20" />
             </div>
           </>
