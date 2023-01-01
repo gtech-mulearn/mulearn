@@ -50,8 +50,8 @@ const Testimonails = () => {
       <div className="py-5 bg-[#f7f3f3]">
         <Carousel
           responsive={responsive}
-          infinite={true}
-          autoPlay={true}
+          infinite={false}
+          autoPlay={false}
           autoPlaySpeed={1500}
           transitionDuration={1500}
         >
