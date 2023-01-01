@@ -35,6 +35,7 @@
   .tv_tagline {
     width: 50%;
     margin-bottom: 1rem;
+    margin-left: 2rem;
   }
 
   .tv_mainheading {
@@ -42,6 +43,8 @@
     font-family: "Noto Sans", sans-serif;
     font-size: 3.5rem;
     font-weight: 700;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
     color: #303030;
   }
 }
