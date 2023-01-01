@@ -1,7 +1,6 @@
 * {
   padding: 0;
   margin: 0;
-  text-align: center;
 }
 
 .notfoundpage {
@@ -12,18 +11,22 @@
   height: 100vh;
   margin: 2rem;
 }
+
 .nf_img {
   width: 350px;
   object-fit: contain;
 }
+
 .h1 {
   margin-top: -50px;
   font-size: 1.75rem;
   color: #404040;
   font-family: "Noto Sans";
 }
+
 .p {
   min-width: 350px;
   max-width: 400px;
   font-family: "Poppins";
+  text-align: center;
 }
