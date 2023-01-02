@@ -27,6 +27,7 @@ import EnablersOnboarding from "./Pages/EnablersOnboarding/EnablersOnboarding";
 import HackathonKarma from "./Pages/HackathonKarma/HackathonKarma";
 import NotFound from "./Pages/404/NotFound";
 import EventsHome from "./Pages/Events/EventsHome/EventsHome";
+import CommunityLanding from "./Pages/CommunityLanding/CommunityLanding";
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
           <Route path="/participate" element={<EnablersOnboarding />} />
           <Route path="/earnkarma" element={<HackathonKarma />} />
           <Route path="/events" element={<EventsHome />} />
+          <Route path="/community/:id" element={<CommunityLanding />} />
         </Routes>
       </Router>
     </div>
