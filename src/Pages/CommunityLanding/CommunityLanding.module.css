@@ -111,7 +111,8 @@
   color: #f78c40;
 }
 
-.section_content {
+.section_content,
+.section_contentpara {
   font-family: "Poppins", sans-serif;
 }
 
@@ -122,6 +123,10 @@
 
   .section_header {
     font-size: 2rem;
+  }
+
+  .section_contentpara {
+    width: 60%;
   }
 
   .second_view {
