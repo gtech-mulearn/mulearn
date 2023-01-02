@@ -55,6 +55,7 @@ const CommunityPartner = () => {
                       cname={partner.name}
                       cimage={partner.image}
                       clink={partner.link}
+                      customlink={partner.customlink}
                       interst="InterestGrp Name"
                     />
                   </a>

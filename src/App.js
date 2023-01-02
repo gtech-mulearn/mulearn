@@ -67,7 +67,7 @@ function App() {
           <Route path="/participate" element={<EnablersOnboarding />} />
           <Route path="/earnkarma" element={<HackathonKarma />} />
           <Route path="/events" element={<EventsHome />} />
-          <Route path="/community/:id" element={<CommunityLanding />} />
+          <Route path="/community-partners/:id" element={<CommunityLanding />} />
         </Routes>
       </Router>
     </div>
