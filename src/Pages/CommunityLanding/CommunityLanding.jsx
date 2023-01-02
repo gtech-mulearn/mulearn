@@ -22,16 +22,19 @@ const CommunityLanding = () => {
           <div className={styles.first_view}>
             <div className={styles.fv_texts}>
               <p className={styles.fv_heading}>{data[0].community}</p>
-              {/* <p className={styles.fv_tagline}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-                pariatur repellat aperiam sed enim, voluptatem saepe explicabo
-                eius ex iure hic dolorum iste numquam vel dolores animi
-                doloribus quibusdam adipisci ipsa similique aut vero! Nihil,
-                tempore?
-              </p> */}
-              <a target="_blank" rel="noopener noreferrer" href="#">
-                <button className={styles.primary}>Official Website</button>
-              </a>
+              {data[0].description.length > 100 &&
+                data[0].description.length < 500 && (
+                  <p className={styles.fv_tagline}>{data[0].description}</p>
+                )}
+              {data[0].website.length > 0 && (
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={data[0].website}
+                >
+                  <button className={styles.primary}>Official Website</button>
+                </a>
+              )}
             </div>
             <div className={styles.fv_images}>
               <img
@@ -41,13 +44,15 @@ const CommunityLanding = () => {
               />
             </div>
           </div>
-          {data[0].description.length > 0 && (
+          {data[0].description.length > 500 && (
             <div className={styles.description_view_container}>
               <div className={styles.description_view}>
                 <p className={styles.section_header}>
                   About {data[0].community}
                 </p>
-                <p className={styles.section_contentpara}>{data[0].description}</p>
+                <p className={styles.section_contentpara}>
+                  {data[0].description}
+                </p>
               </div>
             </div>
           )}
@@ -55,7 +60,9 @@ const CommunityLanding = () => {
             <div className={styles.description_view_container}>
               <div className={styles.description_view}>
                 <p className={styles.section_header}>Our Speicalities</p>
-                <p className={styles.section_contentpara}>{data[0].specialities}</p>
+                <p className={styles.section_contentpara}>
+                  {data[0].specialities}
+                </p>
               </div>
             </div>
           )}
