@@ -144,7 +144,7 @@
 /* Description View Container */
 
 .description_view_container {
-  padding: 2rem;
+  padding-top: 2rem;
 }
 
 @media only screen and (min-width: 1000px) {

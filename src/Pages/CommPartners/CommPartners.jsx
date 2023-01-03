@@ -46,19 +46,13 @@ const CommunityPartner = () => {
             <div className={styles.partners_view_container}>
               <div className={styles.partners_view}>
                 {partners.map((partner) => (
-                  <a
-                    href={partner.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <CommunityCard
-                      cname={partner.name}
-                      cimage={partner.image}
-                      clink={partner.link}
-                      customlink={partner.customlink}
-                      interst="InterestGrp Name"
-                    />
-                  </a>
+                  <CommunityCard
+                    cname={partner.name}
+                    cimage={partner.image}
+                    clink={partner.link}
+                    customlink={partner.customlink}
+                    interst="InterestGrp Name"
+                  />
                 ))}
               </div>
             </div>
