@@ -1,24 +1,13 @@
-/assets/mail/*    https://assets.mulearn.org/mail/:splat
-/teachersday   https://airtable.com/shrtVWDZKbKk2x7Gi
-/permute-images  https://drive.google.com/drive/folders/1b2NBrzJeyg4DrHTkXyH-S3Tm2qMX33bM
-/permute-feedback  https://airtable.com/shrAMnnwl5ikvQjbv
-/robotics       https://www.startupindia.gov.in/content/sih/en/ams-application/challenge.html?applicationId=63076443e4b080c62a86edfd
+/assets/mail/* https://assets.mulearn.org/mail/:splat
 /socialmedia   https://znap.link/mulearn
+
+/teachersday   https://airtable.com/shrtVWDZKbKk2x7Gi
 /hacktoberfest-form  https://airtable.com/shrdL020Lg928MzkT
-/campus-logo-generator  https://mulearn-logo-gen.surge.sh 
 /incubation  https://airtable.com/shrd165qphYXfddxj
-/ktuinduction   https://drive.google.com/drive/folders/1wkWKLuKg7yIo37iQ150MuTmot-zr9O_6?usp=sharing
+/permute-feedback  https://airtable.com/shrAMnnwl5ikvQjbv
 /aotnominations  https://airtable.com/shrM6RYXi7mzRicJU
-/µsic  https://meet.google.com/uos-gepp-fek
-/pcbdesign https://us06web.zoom.us/j/89714447782?pwd=Q1dwNmtYemxxZlF1dVgxUlJNS1Fwdz09
 /android-educators https://airtable.com/shrAFdReoJ9aA26vh
-/jd https://mulearn.notion.site/Roles-Responsibilities-2c4bec241ba742c1a4508f3a94531c2e
-/community-poc https://docs.google.com/spreadsheets/d/1xyeFGBXSmqLZio2UTbMdtYhShN4ym8rSZ2abOXr2faQ/edit?usp=sharing
 /communityform https://airtable.com/shrD0wpcLHliy9xoy
-/tech-team-whatsapp https://chat.whatsapp.com/K2OtVGStN6zILqwdti6E4C
-/ui-team-whatsapp https://chat.whatsapp.com/BsuXrfT7BszEgxPzz5twzb
-/announcements-whatsapp https://chat.whatsapp.com/IPxUtfw5E0TELhvX59ceci
-/campus-leads-whatsapp https://chat.whatsapp.com/GK0UZpP5NZFEHyHUyGtt7T
 /mentorconnect https://airtable.com/shrN31odTfGgLXVML
 /buildmyweb https://airtable.com/shr2Msdg85Fhv5Bhc
 /eventkarma https://airtable.com/shrKUsvYAguP8BYAQ
@@ -28,7 +17,27 @@
 /rust101 https://airtable.com/shr2FCJwD6rn83WTu
 /uxtask https://airtable.com/shr7MY3a3D2VAMIvK
 /huddleregister https://airtable.com/shr4l8cGXHbzIg3gD
+/fie https://airtable.com/shrz7Cim38N0NpUIL
+
+/permute-images  https://drive.google.com/drive/folders/1b2NBrzJeyg4DrHTkXyH-S3Tm2qMX33bM
+/ktuinduction   https://drive.google.com/drive/folders/1wkWKLuKg7yIo37iQ150MuTmot-zr9O_6?usp=sharing
+/ktuinduction   https://drive.google.com/drive/folders/1wkWKLuKg7yIo37iQ150MuTmot-zr9O_6?usp=sharing
+/community-poc https://docs.google.com/spreadsheets/d/1xyeFGBXSmqLZio2UTbMdtYhShN4ym8rSZ2abOXr2faQ/edit?usp=sharing
+
+/robotics  https://www.startupindia.gov.in/content/sih/en/ams-application/challenge.html?applicationId=63076443e4b080c62a86edfd
+/pcbdesign https://us06web.zoom.us/j/89714447782?pwd=Q1dwNmtYemxxZlF1dVgxUlJNS1Fwdz09
+
+/campus-logo-generator  https://mulearn-logo-gen.surge.sh
+/jd https://mulearn.notion.site/Roles-Responsibilities-2c4bec241ba742c1a4508f3a94531c2e
 /howto https://mulearn.org/earnkarma
+
+/µsic  https://meet.google.com/uos-gepp-fek
+
+/tech-team-whatsapp https://chat.whatsapp.com/K2OtVGStN6zILqwdti6E4C
+/ui-team-whatsapp https://chat.whatsapp.com/BsuXrfT7BszEgxPzz5twzb
+/announcements-whatsapp https://chat.whatsapp.com/IPxUtfw5E0TELhvX59ceci
+/campus-leads-whatsapp https://chat.whatsapp.com/GK0UZpP5NZFEHyHUyGtt7T
+
 /android https://learn.mulearn.org/bootcamps/android
 /ctf https://learn.mulearn.org/bootcamps/ctf
 /CTF https://learn.mulearn.org/bootcamps/ctf
@@ -36,15 +45,16 @@
 /flutter https://learn.mulearn.org/bootcamps/flutter
 /javascript https://learn.mulearn.org/bootcamps/javascript
 /python https://learn.mulearn.org/bootcamps/python
+/bootcamps https://learn.mulearn.org/bootcamps
+
 /cybersec-whatsapp https://chat.whatsapp.com/IrJW3M1OT7QKn68Z1actPB
 /flutter-whatsapp https://chat.whatsapp.com/EdTVYMeI89Q5HsQqXMD0My
 /rust-whatsapp https://chat.whatsapp.com/LpW6Dou0GeQ9AHOvATdoT1
 /android-whatsapp https://chat.whatsapp.com/IvMd2T9IUxk8gpwm5MtAM7
 /javascript-ig-whatsapp https://chat.whatsapp.com/ETHl9MKGRxG1NFMwXbG8Ih
 /python-ig-whatsapp https://chat.whatsapp.com/LZmE3xWU9OmEM13nYrs2aT
-/bootcamps https://learn.mulearn.org/bootcamps
+
 /bootcamps-youtube https://youtu.be/uY4bY4Sz64g
 /ctf-youtube https://youtu.be/nl2WfEOzkhc
-/fie https://airtable.com/shrz7Cim38N0NpUIL
 
 /*  /index.html 200
