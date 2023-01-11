@@ -67,16 +67,15 @@ const Career = () => {
               payment="INR 15K - 20K/Month"
               criteria="Click View More"
               vacancy="02"
-              location="Respective Districts"
+              location="Kottayam & Malappuram"
               lastdate="18th January"
-              jdlink="https://mulearn.notion.site/District-Coordinator-4f10c75f117a49a3a9507a87f8ce2318"
-              applylink="https://airtable.com/shr6A31lS1RwjxvqD"
+              jdlink="http://mulearn.org/jd"
+              applylink="https://airtable.com/shrxkzH8Iv8GHcXCM"
             />
           </div>
           <p className={styles.ssheadingposttagline}>
             If you think you embody these values, we would love to see some of
-            them! Apply for a full-time/part-time/paid/volunteer position with
-            us here.
+            them! Apply for a position with us here.
           </p>
         </div>
         <div className={styles.closedcareerscontainer}>

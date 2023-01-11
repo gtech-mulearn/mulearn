@@ -56,7 +56,7 @@
 }
 
 .ssheadingspan {
-  color: #F5504D;
+  color: #f5504d;
 }
 
 .second_section {
@@ -69,6 +69,10 @@
     font-size: 4.55rem;
     line-height: 5rem;
     font-weight: 600;
+  }
+
+  .fstexts {
+    margin: 2rem;
   }
 
   .ssheadingtagline {
@@ -106,7 +110,7 @@
 
 .op_jobdescription {
   margin: 0.25rem 0;
-  background-color: #F5504D;
+  background-color: #f5504d;
   color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 5px;
@@ -160,12 +164,12 @@
   }
 
   .sectionseperator_container {
-    background-color: #F5504D;
+    background-color: #f5504d;
   }
 
   .op_jobdescription {
     margin: 0.25rem 0;
-    background-color: #F5504D;
+    background-color: #f5504d;
     color: white;
     padding: 0.5rem 1.5rem;
     border-radius: 5px;
