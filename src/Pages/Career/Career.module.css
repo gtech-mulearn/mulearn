@@ -56,7 +56,7 @@
 }
 
 .ssheadingspan {
-  color: #3362ff;
+  color: #F5504D;
 }
 
 .second_section {
@@ -106,7 +106,7 @@
 
 .op_jobdescription {
   margin: 0.25rem 0;
-  background-color: #3362ff;
+  background-color: #F5504D;
   color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 5px;
@@ -160,12 +160,12 @@
   }
 
   .sectionseperator_container {
-    background-color: #3362ff;
+    background-color: #F5504D;
   }
 
   .op_jobdescription {
     margin: 0.25rem 0;
-    background-color: #3362ff;
+    background-color: #F5504D;
     color: white;
     padding: 0.5rem 1.5rem;
     border-radius: 5px;

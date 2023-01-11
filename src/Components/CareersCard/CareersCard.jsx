@@ -24,7 +24,7 @@ const CareersCard = ({
       <div className={styles.op_texts}>
         <p className={styles.op_header}>{title}</p>
         <div className={styles.card_contents}>
-          <p className={styles.op_text}>{about}</p>
+          {/* <p className={styles.op_text}>{about}</p> */}
           {payment && (
             <p className={styles.op_text}>
               <span>Remuneration: </span>
