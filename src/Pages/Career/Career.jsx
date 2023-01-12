@@ -38,8 +38,8 @@ const Career = () => {
             src="/assets/careers/fsbg.webp"
             alt=""
           />
-        </div>
-        <div className={styles.second_section}>
+        </div> */}
+        {/* <div className={styles.second_section}>
           <p className={styles.ssheading}>
             <span className={styles.ssheadingspan}>µLearn X Yip</span> Hiring
             Call
@@ -51,7 +51,7 @@ const Career = () => {
             and responsive.
           </p>
 
-          {/* <a
+          <a
             href="https://mulearn.notion.site/Roles-Responsibilities-2c4bec241ba742c1a4508f3a94531c2e"
             target="_blank"
             rel="noopener noreferrer"
@@ -59,7 +59,7 @@ const Career = () => {
             <button className={styles.op_jobdescription}>
               Hiring Call Details
             </button>
-          </a> */}
+          </a>
           <div className={styles.opportunities}>
             <CareersCard
               title="District Coordinator"
