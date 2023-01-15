@@ -8,6 +8,7 @@ const CareersCard = ({
   vacancy,
   location,
   criteria,
+  duration,
   lastdate,
   jdlink,
   applylink,
@@ -31,14 +32,18 @@ const CareersCard = ({
               {payment}
             </p>
           )}
+
           <p className={styles.op_text}>
             <span>Responsiblities: </span>
             {criteria}
           </p>
-          <p className={styles.op_text}>
-            <span>No. of Vacancy: </span>
-            {vacancy}
-          </p>
+
+          {vacancy && (
+            <p className={styles.op_text}>
+              <span>No. of Vacancy: </span>
+              {vacancy}
+            </p>
+          )}
 
           <p className={styles.op_text}>
             <span>Location: </span>
@@ -48,6 +53,12 @@ const CareersCard = ({
             <span>Last Date To Apply: </span>
             {lastdate}
           </p>
+          {duration && (
+            <p className={styles.op_text}>
+              <span>Duration </span>
+              {duration}
+            </p>
+          )}
         </div>
         <div className={styles.op_buttons}>
           <a href={jdlink} target="_blank" rel="noopener noreferrer">
