@@ -32,13 +32,71 @@ const Career = () => {
             />
           </div>
         </div>
-        {/* <div className={styles.sectionseperator_container}>
+        <div className={styles.sectionseperator_container}>
           <img
             className={styles.sectionseperator}
-            src="/assets/careers/fsbg.webp"
+            src="/assets/careers/internsbanner.png"
             alt=""
           />
-        </div> */}
+        </div>
+        <div className={styles.second_section}>
+          <p className={styles.ssheading}>
+            <span className={styles.ssheadingspan}>GTech µLearn</span> Intern
+            Call Call
+          </p>
+          <p className={styles.ssheadingtagline}>
+            We want people with integrity, who are fair, impartial, honest, and
+            truthful. We are looking for dynamic and adaptable individuals who
+            are not afraid to think creatively and to be proactive, flexible,
+            and responsive.
+          </p>
+
+          <a
+            href="https://airtable.com/shrTET7ltEPJggVcT"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className={styles.op_jobdescription}>Apply Now</button>
+          </a>
+          <div className={styles.opportunities}>
+            <CareersCard
+              title="Content Writers"
+              duration="3 months"
+              criteria="Click View More"
+              location="Remote"
+              lastdate="18th January"
+              jdlink="#"
+              applylink="https://airtable.com/shrTET7ltEPJggVcT"
+            />
+            <CareersCard
+              title="Creative Designer"
+              duration="3 months"
+              criteria="Click View More"
+              location="Remote"
+              lastdate="18th January"
+              jdlink="#"
+              applylink="https://airtable.com/shrTET7ltEPJggVcT"
+            />
+            <CareersCard
+              title="Social Media Manager"
+              duration="3 months"
+              criteria="Click View More"
+              location="Remote"
+              lastdate="18th January"
+              jdlink="#"
+              applylink="https://airtable.com/shrTET7ltEPJggVcT"
+            />
+            <CareersCard
+              title="Video Editors"
+              duration="3 months"
+              criteria="Click View More"
+              location="Remote"
+              lastdate="18th January"
+              jdlink="#"
+              applylink="https://airtable.com/shrTET7ltEPJggVcT"
+            />
+          </div>
+        </div>
         {/* <div className={styles.second_section}>
           <p className={styles.ssheading}>
             <span className={styles.ssheadingspan}>µLearn X Yip</span> Hiring
