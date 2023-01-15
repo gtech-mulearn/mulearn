@@ -43,7 +43,7 @@
 
 .ssheadingtagline {
   font-family: "Poppins", sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-align: center;
   margin-bottom: 0.5rem;
 }
@@ -56,7 +56,7 @@
 }
 
 .ssheadingspan {
-  color: #14110A;
+  color: #14110a;
 }
 
 .second_section {
@@ -110,7 +110,7 @@
 
 .op_jobdescription {
   margin: 0.25rem 0;
-  background-color: #14110A;
+  background-color: #14110a;
   color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 5px;
@@ -135,7 +135,7 @@
 }
 
 .sectionseperator {
-  display: none;
+  width: 100vw;
 }
 
 @media only screen and (min-width: 1000px) {
@@ -164,12 +164,12 @@
   }
 
   .sectionseperator_container {
-    background-color: #14110A;
+    background-color: #14110a;
   }
 
   .op_jobdescription {
     margin: 0.25rem 0;
-    background-color: #14110A;
+    background-color: #14110a;
     color: white;
     padding: 0.5rem 1.5rem;
     border-radius: 5px;

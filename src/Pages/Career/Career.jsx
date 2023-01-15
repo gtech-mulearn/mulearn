@@ -69,7 +69,7 @@ const Career = () => {
               applylink="https://airtable.com/shrTET7ltEPJggVcT"
             />
             <CareersCard
-              title="Creative Designer"
+              title="Creative Designers"
               duration="3 months"
               criteria="Click View More"
               location="Remote"
