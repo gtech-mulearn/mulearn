@@ -64,7 +64,7 @@ const Career = () => {
               duration="3 months"
               criteria="Click View More"
               location="Remote"
-              lastdate="18th January"
+              lastdate="22nd January"
               jdlink="#"
               applylink="https://airtable.com/shrTET7ltEPJggVcT"
             />
@@ -73,7 +73,7 @@ const Career = () => {
               duration="3 months"
               criteria="Click View More"
               location="Remote"
-              lastdate="18th January"
+              lastdate="18nd January"
               jdlink="#"
               applylink="https://airtable.com/shrTET7ltEPJggVcT"
             />
@@ -82,7 +82,7 @@ const Career = () => {
               duration="3 months"
               criteria="Click View More"
               location="Remote"
-              lastdate="18th January"
+              lastdate="22nd January"
               jdlink="#"
               applylink="https://airtable.com/shrTET7ltEPJggVcT"
             />
@@ -91,7 +91,7 @@ const Career = () => {
               duration="3 months"
               criteria="Click View More"
               location="Remote"
-              lastdate="18th January"
+              lastdate="22nd January"
               jdlink="#"
               applylink="https://airtable.com/shrTET7ltEPJggVcT"
             />
