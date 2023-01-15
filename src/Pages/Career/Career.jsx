@@ -73,7 +73,7 @@ const Career = () => {
               duration="3 months"
               criteria="Click View More"
               location="Remote"
-              lastdate="18nd January"
+              lastdate="22nd January"
               jdlink="#"
               applylink="https://airtable.com/shrTET7ltEPJggVcT"
             />
