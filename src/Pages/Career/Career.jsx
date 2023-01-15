@@ -42,7 +42,7 @@ const Career = () => {
         <div className={styles.second_section}>
           <p className={styles.ssheading}>
             <span className={styles.ssheadingspan}>GTech µLearn</span> Intern
-            Call Call
+            Call 
           </p>
           <p className={styles.ssheadingtagline}>
             We want people with integrity, who are fair, impartial, honest, and
