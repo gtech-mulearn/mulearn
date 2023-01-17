@@ -52,7 +52,7 @@ const Career = () => {
           </p>
 
           <a
-            href="https://airtable.com/shrTET7ltEPJggVcT"
+            href="https://www.notion.so/mulearn/Roles-Responsibilities-a3b213ddc2dc49179f5fbbcaa1ce909a"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -64,8 +64,8 @@ const Career = () => {
               duration="3 months"
               criteria="Click View More"
               location="Remote"
-              lastdate="22nd January"
-              jdlink="#"
+              lastdate="24th January"
+              jdlink="https://www.notion.so/mulearn/Content-Writer-Intern-a447df56f2964e68a448d3eae580f929"
               applylink="https://airtable.com/shrTET7ltEPJggVcT"
             />
             <CareersCard
@@ -73,8 +73,8 @@ const Career = () => {
               duration="3 months"
               criteria="Click View More"
               location="Remote"
-              lastdate="22nd January"
-              jdlink="#"
+              lastdate="24th January"
+              jdlink="https://www.notion.so/mulearn/Creative-Designer-Interns-07d3c27dd2ec4bb6bea5eda7f843973d"
               applylink="https://airtable.com/shrTET7ltEPJggVcT"
             />
             <CareersCard
@@ -82,8 +82,8 @@ const Career = () => {
               duration="3 months"
               criteria="Click View More"
               location="Remote"
-              lastdate="22nd January"
-              jdlink="#"
+              lastdate="24th January"
+              jdlink="https://www.notion.so/mulearn/Social-Media-Manager-Interns-2dc4a48bfc57496eadb40eaffa5ad989"
               applylink="https://airtable.com/shrTET7ltEPJggVcT"
             />
             <CareersCard
@@ -91,8 +91,8 @@ const Career = () => {
               duration="3 months"
               criteria="Click View More"
               location="Remote"
-              lastdate="22nd January"
-              jdlink="#"
+              lastdate="24th January"
+              jdlink="https://www.notion.so/mulearn/Video-Editors-Interns-bce20bc1f84649078958a3e8a2e0a4d3"
               applylink="https://airtable.com/shrTET7ltEPJggVcT"
             />
           </div>
