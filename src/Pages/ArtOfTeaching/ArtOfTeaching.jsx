@@ -349,7 +349,7 @@ const ArtOfTeaching = () => {
                       "Product | Technology & Data Strategy | NYU & Columbia Fellow"
                     }
                     image={"assets/artofteaching/j2.webp"}
-                    linkedIn={"https://www.linkedin.com/in/deepusnath/"}
+                    linkedIn={"https://www.linkedin.com/in/annandrews/"}
                   />
                 </div>
                 <div className={styles.judges_card}>
