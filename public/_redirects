@@ -1,5 +1,5 @@
 /assets/mail/* https://assets.mulearn.org/mail/:splat
-/socialmedia   https://znap.link/mulearn
+/socialmedia   https://zaap.bio/mulearn
 
 /teachersday   https://airtable.com/shrtVWDZKbKk2x7Gi
 /hacktoberfest-form  https://airtable.com/shrdL020Lg928MzkT
@@ -8,7 +8,7 @@
 /aotnominations  https://airtable.com/shrM6RYXi7mzRicJU
 /android-educators https://airtable.com/shrAFdReoJ9aA26vh
 /communityform https://airtable.com/shrD0wpcLHliy9xoy
-/mentorconnect https://airtable.com/shrN31odTfGgLXVML
+/mentorconnect https://airtable.com/shrCYJKz2PVziARnr
 /buildmyweb https://airtable.com/shr2Msdg85Fhv5Bhc
 /eventkarma https://airtable.com/shrKUsvYAguP8BYAQ
 /eventfeedback https://airtable.com/shrVrEqQOOTtYXJCb
@@ -22,6 +22,7 @@
 /javascript-bootcamp-status https://airtable.com/shr8i6cZ9KIcsQ6Nf
 /flutter-bootcamp-status https://airtable.com/shrpGlR2ZgWvyK7zk
 /rust-bootcamp-status https://airtable.com/shr2HlyB0vPlWSgPU
+/examprep https://airtable.com/shrTcoedWYzANgLph
 
 /permute-images  https://drive.google.com/drive/folders/1b2NBrzJeyg4DrHTkXyH-S3Tm2qMX33bM
 /ktuinduction   https://drive.google.com/drive/folders/1wkWKLuKg7yIo37iQ150MuTmot-zr9O_6?usp=sharing
@@ -60,5 +61,6 @@
 
 /bootcamps-youtube https://youtu.be/uY4bY4Sz64g
 /ctf-youtube https://youtu.be/nl2WfEOzkhc
+/yipsprint https://us06web.zoom.us/meeting/register/tZYocumtrD4qEtKsCt3XrkmtV0WPn6y6eSBb
 
 /*  /index.html 200
