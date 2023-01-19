@@ -12,6 +12,7 @@ import productpack from "../assets/partners/productpack.webp";
 import kuttycoders from "../assets/partners/kuttycoders.webp";
 import google_android from "../assets/partners/google_android.webp";
 import gdsc from "../assets/partners/gdsc.webp";
+import icfoss from "../assets/partners/icfoss.webp";
 
 const partners = [
   {
@@ -94,6 +95,11 @@ const partners = [
     name: "Google Developer Students Club",
     image: gdsc,
     link: "https://gdg.community-partners.dev/",
+  },
+  {
+    name: "ICFOSS",
+    image: icfoss,
+    link: "https://icfoss.in/",
   },
 ];
 

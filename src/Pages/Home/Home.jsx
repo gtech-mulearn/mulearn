@@ -213,6 +213,17 @@ const Home = () => {
                 className={styles.gsupporter}
               />
             </a>
+            <a
+              href="https://icfoss.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/assets/home/partners/icfoss.webp"
+                alt="International Centre For Free and Open Source Software"
+                className={styles.gsupporter}
+              />
+            </a>
           </div>
         </div>
       </div>
