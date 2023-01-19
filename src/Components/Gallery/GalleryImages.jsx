@@ -54,7 +54,7 @@ const GalleryImages = ({ events }) => {
 
       {/* The Image view */}
       <div className={`${imageView ? "" : "hidden"} select-none`}>
-        <div className='overlay'>
+        <div className='overlay-mains'>
           <span className={`direction ${currentIndex > 0 ? "" : "opacity-0"}`} onClick={() => goBackward(currentIndex)}>
             <ion-icon name="caret-back-outline" />
           </span>

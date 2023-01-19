@@ -58,7 +58,7 @@ const GalleryImages = ({ events }) => {
             </div>
             {/* The Image view */}
             <div className={`${imageView ? "" : "hidden"} select-none`}>
-                <div className='overlay overflow-y-scroll'>
+                <div className='overlay-mains overflow-y-scroll'>
                     <span className={`direction ${currentIndex > 0 ? "" : "opacity-0"}`} onClick={() => goBackward(currentIndex)}>
                         <ion-icon name="caret-back-outline" />
                     </span>
