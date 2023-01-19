@@ -1,4 +1,4 @@
-.overlay {
+.overlay-mains {
   /*Display stuff*/
   display: flex;
   align-items: center;
@@ -49,7 +49,7 @@
   color: rgb(255 138 76);
 }
 
-.overlay img {
+.overlay-mains img {
   /*Display stuff*/
   display: block;
   /*Positioning stuff*/
