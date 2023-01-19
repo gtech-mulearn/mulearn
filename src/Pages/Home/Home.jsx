@@ -147,7 +147,7 @@ const Home = () => {
               />
             </a>
             <a
-              href="https://xtrudar.com/"
+              href=""
               target="_blank"
               rel="noopener noreferrer"
             >
