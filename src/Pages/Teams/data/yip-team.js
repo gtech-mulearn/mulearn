@@ -1005,7 +1005,7 @@ const yipTeam = [
     designation: "Intern",
     image:
       "https://drive.google.com/uc?export=view&id=1yLtxtT66nPIwJffrCoS5GT_JtE4eRqx8",
-    linkedin: "https://www.linkedin.com/in/milan-deepak/",
+    linkedin: "assets/team/district/Milan Deepak.webp",
   },
   {
     id: 113,
