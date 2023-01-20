@@ -100,7 +100,7 @@ ol {
 
 /* Second View Styles */
 
-sv_heading {
+.sv_heading {
   font-size: 1.95rem;
   font-family: "Noto Sans", sans-serif;
   font-weight: 600;
@@ -158,6 +158,7 @@ sv_heading {
   }
   .sv_heading {
     font-size: 2.25rem;
+    text-align: left;
   }
 
   .sv_tagline {
