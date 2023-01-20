@@ -147,7 +147,7 @@ const Home = () => {
               />
             </a>
             <a
-              href=""
+              href="#id"
               target="_blank"
               rel="noopener noreferrer"
             >

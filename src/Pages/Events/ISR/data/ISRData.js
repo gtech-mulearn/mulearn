@@ -553,6 +553,41 @@ const ISRData = [
       "𝝁Learn is back with yet another fabulous episode of Inspiration Station Radio. This week, meet Jobin Selvanose, an 18-year-old, who became a Software Engineer at a Kolkata-based company while he was still in school. Having embarked the Journey of a Full Stack Web Developer👨‍💻, Jobin is an extraordinary personality that you should definitely meet!😎With the laptop gifted by his father, he began his journey from Class 7th. He started his self-learning through YouTube, and developed his skills over the years.",
     date: "13/12/2022",
   },
+  {
+    id: 63,
+    image: "assets/events/isr/ISRPictures/Moosa Fayaz.webp",
+    speaker: "Moosa Fayaz",
+    description: "Behind every successful man, there's a woman. It was later that Inspiration was discovered 😜 .This edition of Inspiration Station Radio, we'll be interacting with Moosa Fayaz, a 3rd year Engineering Student at KMCT College of Engineering. .Moosa Fayaz is the founder of Laetus creations and is also serving as the Finance Lead of IEDC KMCT CE. He has also served as an intern for GTech µLearn and has made significant contributions. .He loves to experiment with design 🎨 and keeps creating awesome media each time he tries💥💯 ",
+    date: "20/12/2022",
+  },
+  {
+    id: "64",
+    speaker: "Jomon Chacko",
+    image: "assets/events/isr/ISRPictures/Jomon Chacko.webp",
+    description: "Change-makers have the special trait of inspiring all around them💥 This week on Inspiration Station Radio, we have Jomon Chacko, a 2nd year BCA student  at Kristu Jyoti College of Management and Technology Changanacherry and Founder of  Lancelots. Intrigued by the world of design, Jomon learned After Effects at the young age of 14 and made video designing his passion ❤‍🔥. He believes in constantly updating his skills and has  completed 3 internships and has taken part in several contests.",
+    date: "27/12/2022",
+  },
+  {
+    id: "65",
+    speaker: " Jeevan Joseph",
+    image: "assets/events/isr/ISRPictures/Jeevan Joseph.webp",
+    description: " Hola Amigoss 👋🏻,The Year has just started and now is the perfect time to start working on your goals!!Start your year the Inspired Way 💫 with Inspiration Station Radio ‼️ This week on Inspiration Station Radio , we have Jeevan Joseph , a 3rd year BCA student at Kristu Jyothi College of Management & Technology , Changanacherry, and CEO of Inovus Labs IEDC. Fueled🔥 by his passion for technology and his desire to contribute to the Learning Ecosystem, Jeevan spends a significant amount of his time in several communities. He was previously a Discord Manager for GTech μLearn.",
+    date: "03/12/2022",
+  },
+  {
+    id: "66",
+    speaker: "Hari Sankar",
+    image: "assets/events/isr/ISRPictures/Hari Sankar.webp",
+    description: " If you're inspired enough, no task will ever seem too big💯. This week on Inspiration Station Radio, we have Hari Sankar, Core Team member at Pygrammers. Hari Sankar is currently pursuing his Bachelors in Computer Science at Mar Ivanious College.He is a Python🐍 expert and has been mentoring students for more than a year. He is also a self taught cyber security researcher and he loves to spend his time playing CTFs. ",
+    date: "10/01/2023",
+  },
+  {
+    id: "67",
+    speaker: "Hamza Shaheem",
+    image: "assets/events/isr/ISRPictures/Hamza Shaheem.webp",
+    description: "Life doesn't give us a purpose. We give life purpose. – The Flash(from DC) once said this and we agree!! Find your goal and get yourself inspired enough to chase it - that's the secret to success 👑.This week on Inspiration Station Radio, we have Hamza Shaheem, a 3rd year Computer Science Engineering Student at AWH Engineering College. Hamza is very enthusiastic about Web3 technology and its potential to revolutionize the World.Hamza is currently a Flutter Developer and Software Testing intern at Cyber System Technologies LLP and has had the opportunity to work on many amazing projects 💥. While most students struggle to secure an internship, Hamza was able to land this opportunity while he was still in his 3rd semester 🤯",
+    date: "17/01/2023",
+  }
 ];
 
 export default ISRData;

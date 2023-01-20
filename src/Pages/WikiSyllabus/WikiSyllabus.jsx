@@ -10,7 +10,7 @@ const WikiSyllabus = () => {
   return (
     <>
       <Navbar />
-      <div className={styles.mmain_container}>
+      <div className={styles.main_container}>
         <div className={styles.first_view_container}>
           <div className={styles.first_view}>
             <div className={styles.fv_texts}>

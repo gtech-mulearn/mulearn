@@ -29,7 +29,7 @@ const techTeam = [
     team: "µ-JSON",
     linkedin: "https://www.linkedin.com/in/angelrosetj",
     image:
-      "https://drive.google.com/uc?export=view&id=1DulaYotm4tFmQMOU5Gx1p7NkAfXsTa21",
+      "assets/team/core/Angel Rose.webp",
   },
   {
     id: 6,
@@ -149,7 +149,7 @@ const techTeam = [
     team: "µ-JSON",
     linkedin: "https://www.linkedin.com/in/lizchaitanya",
     image:
-      "https://drive.google.com/uc?export=view&id=10CN0aN3Dk_ZVkYCFcc5nXy6YMent-Mo8 ",
+      "assets/team/core/Chaithanya Liz R T.webp",
   },
   {
     id: 21,
