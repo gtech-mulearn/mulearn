@@ -165,12 +165,12 @@
 /* Third View Styles */
 
 .third_view_container {
-  padding: 2rem;
   padding-top: 0rem;
   background-color: #ffffff;
 }
 
 .contributors_cards {
+  justify-content: center;
   display: grid;
   row-gap: 1rem;
   column-gap: 1rem;
