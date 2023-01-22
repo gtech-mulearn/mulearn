@@ -152,7 +152,7 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="/assets/home/partners/xtrudar.webp"
+                src="/assets/home/partners/riglabs.webp"
                 alt=""
                 className={styles.supporter}
               />
