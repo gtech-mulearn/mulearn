@@ -1,22 +1,28 @@
 {
   "new": [
     {
-      "title": "Leveraging the Powers of Social Media | Mentor Connect#3",
-      "date": "Fri Jan 20 2023 20:00:00 GMT+0530 (India Standard Time)",
-      "description": "GTech μLearn presents Mentor Connect 👨🏽‍🏫, an original initiative as part of Weekly Twitch. Occurring Friday at 8pm, this initiative will give members an opportunity to interact, learn, and explore their interests with mentors from the Industry",
-      "url": "https://mulearn.org/mentorconnect"
+      "title": "Launch of Kerala Skills Express",
+      "date": "Mon Jan 23 2023 18:00:00 GMT+0530 (India Standard Time)",
+      "description": "We're signing an MOU with Kerala Knowledge Economy Mission, setting the foundation to our long journey together.But that's not all!! We're also launching Kerala Skills Express, a unique initiative that is bound to change the way skilling initiatives are administered. Kerala Skills Express will present a carnival of opportunities for students to learn, showcase their skills and compete, eventually promoting talent-based hiring.",
+      "url": "https://mulearn.org"
     },
     {
-      "title": "Hiring Interns",
-      "date": "Tue Jan 24 2023 20:00:00 GMT+0530 (India Standard Time)",
-      "description": "GTech μLearn is happy to announce that we’re taking in interns to help us build our community and bring about real change!! This part time opportunity is unpaid, but as interns, you shall find ample opportunities to explore your skills, interact with Industry experts and create a reputation for yourself!",
-      "url": "https://mulearn.org/careers"
+      "title": "Bridge the gap symposium",
+      "date": "Mon Jan 23 2023 16:00:00 GMT+0530 (India Standard Time)",
+      "description": "A forum with CEO's,Community Leaders,Teachers & Students aimed at discussions on Providing more hands-on and vocational training, and fostering stronger partnerships between schools and businesses",
+      "url": "https://mulearn.org"
     },
     {
       "title": "Inspiration Station Radio",
       "date": "Tue Jan 24 2023 20:00:00 GMT+0530 (India Standard Time)",
       "description": "Everyone has a story to tell, the story about finding their passion, the story of learning new things and much more. Often times these stories are filled with fun and inspirations which fuel others to start their own journey. Join in this Tuesday@8:00PM to get Inspired.",
       "url": "https://discord.mulearn.org"
+    },
+    {
+      "title": "Hiring Interns",
+      "date": "Tue Jan 24 2023 20:00:00 GMT+0530 (India Standard Time)",
+      "description": "GTech muLearn is happy to announce that we’re taking in interns to help us build our community and bring about real change!! This part time opportunity is unpaid, but as interns, you shall find ample opportunities to explore your skills, interact with Industry experts and create a reputation for yourself!",
+      "url": "https://mulearn.org/careers"
     },
     {
       "title": "Salt Mango Tree",
@@ -27,7 +33,13 @@
   ],
   "old": [
     {
-      "title": "µLearn Bootcamps",
+      "title": "Leveraging the Powers of Social Media | Mentor Connect#3",
+      "date": "Fri Jan 20 2023 20:00:00 GMT+0530 (India Standard Time)",
+      "description": "GTech muLearn presents Mentor Connect 👨🏽‍🏫, an original initiative as part of Weekly Twitch. Occurring Friday at 8pm, this initiative will give members an opportunity to interact, learn, and explore their interests with mentors from the Industry",
+      "url": "https://mulearn.org/mentorconnect"
+    },
+    {
+      "title": "muLearn Bootcamps",
       "date": "Sun Jan 01 2023 18:00:00 GMT+0530 (India Standard Time)",
       "description": "Been thinking of mastering a skill for some time now? Don't procrastinate anymore. Join our Bootcamps and make it your New Year's resolution to master a new skill. Register using the below links and Master your next skill starting 1st January 2023. #NewYearNewSkill #ResolutionsRequireResolve",
       "url": "https://learn.mulearn.org/bootcamps"
@@ -41,19 +53,19 @@
     {
       "title": "Build For Team",
       "date": "Tue Dec 17 2022 00:00:00 GMT+0530 (India Standard Time)",
-      "description": "GTech μLearn in association with Pygrammers present BuildForTeam, your chance to build your favourite team’s website. With your favourite teams battling it out on the Football field, it’s up to you to build them an awesome website.",
+      "description": "GTech muLearn in association with Pygrammers present BuildForTeam, your chance to build your favourite team’s website. With your favourite teams battling it out on the Football field, it’s up to you to build them an awesome website.",
       "url": "https://mulearn.org/BuildForTeam"
     },
     {
       "title": "Rust 101",
       "date": "Tue Dec 1 2022 19:00:00 GMT+0530 (India Standard Time)",
-      "description": "GTech µLearn presents to you Rust 101, a comprehensive session on Rust, one of the most in-demand programming languages! Learn how to build solid fundamentals with the World's most loved ❤️ programming language - Rust⚡",
+      "description": "GTech muLearn presents to you Rust 101, a comprehensive session on Rust, one of the most in-demand programming languages! Learn how to build solid fundamentals with the World's most loved ❤️ programming language - Rust⚡",
       "url": "https://mulearn.org/rust101"
     },
     {
       "title": "Getting Companies to fight for you 🤼‍♂️",
       "date": "Fri Nov 25 2022 00:00:00 GMT+0530 (India Standard Time)",
-      "description": "GTech μLearn presents Mentor Connect 👨🏽‍🏫, an original initiative as part of Weekly Twitch. Occurring every Friday at 7pm, this initiative will give members an opportunity to interact, learn, and explore their interests with mentors from the Indust",
+      "description": "GTech muLearn presents Mentor Connect 👨🏽‍🏫, an original initiative as part of Weekly Twitch. Occurring every Friday at 7pm, this initiative will give members an opportunity to interact, learn, and explore their interests with mentors from the Indust",
       "url": "https://mulearn.org/mentorconnect"
     },
     {
