@@ -2,10 +2,10 @@ import React from "react";
 import Card from "./Card";
 import people from "./testimonials-data.json";
 import styles from "./testimonial.module.css";
-import { useState } from "react";
+// import { useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Marquee from "react-fast-marquee";
+// import Marquee from "react-fast-marquee";
 
 const Testimonails = () => {
   const responsive = {
