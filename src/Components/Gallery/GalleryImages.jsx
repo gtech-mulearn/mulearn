@@ -45,7 +45,7 @@ const GalleryImages = ({ events }) => {
         {program.pics.map((pic, index) => (
           <>
             <div className=" group galleryImages lg:w-1/5 md:w-1/3" onClick={() => galleryViewOn(index)}>
-              <img src={pic} alt="Unavailable Try Later" className=" group-hover:opacity-20" />
+              <img src={pic} loading="lazy" alt="Unavailable Try Later" className=" group-hover:opacity-20" />
             </div>
           </>
         ))}
