@@ -335,6 +335,13 @@ export const links = [
             sublinks: [],
             foreign: false,
           },
+          {
+            name: "Artificial Intelligence",
+            link: mainlink + "/ai",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
         ],
       },
       {
