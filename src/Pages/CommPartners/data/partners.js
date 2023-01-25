@@ -8,7 +8,6 @@ import xtrudar from "../assets/partners/xtrudar.webp";
 import ksum from "../assets/partners/ksum.webp";
 import kdisc from "../assets/partners/kdisc.webp";
 import ether_logo from "../assets/partners/ether_logo.webp";
-import productpack from "../assets/partners/productpack.webp";
 import kuttycoders from "../assets/partners/kuttycoders.webp";
 import google_android from "../assets/partners/google_android.webp";
 import gdsc from "../assets/partners/gdsc.webp";
@@ -82,11 +81,6 @@ const partners = [
     name: "Ether India",
     image: ether_logo,
     link: "https://etherindia.org/",
-  },
-  {
-    name: "Product Pack",
-    image: productpack,
-    link: "https://www.productpack.in/",
   },
   {
     name: "Kuttycoders",

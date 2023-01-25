@@ -158,17 +158,6 @@ const Home = () => {
               />
             </a>
             <a
-              href="https://www.productpack.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="/assets/home/partners/productpack.webp"
-                alt="product pack"
-                className={styles.supporter}
-              />
-            </a>
-            <a
               href="https://kuttycoders.in/"
               target="_blank"
               rel="noopener noreferrer"
