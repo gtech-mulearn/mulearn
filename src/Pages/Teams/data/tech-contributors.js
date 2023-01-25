@@ -5,7 +5,7 @@ const techTeam = [
     team: "µ-Web",
     linkedin: "https://www.linkedin.com/in/vinubalagopalap/",
     image:
-      "https://drive.google.com/uc?export=view&id=18Q20mpmGv7cOrgAc5Rikp1SKW__Utx6l",
+      "public/assets/team/tech-contributors/Vinu Balagopal A P.webp",
   },
   {
     id: 2,
@@ -255,6 +255,13 @@ const techTeam = [
     image:
       "https://drive.google.com/uc?export=view&id=14FieQgkyq_cR0H7c1720clb5DUSFA-nK",
   },
+  {
+    id: 34,
+    name: "Bijo Mathew Jose",
+    team: "µ-Web",
+    linkedin: "https://www.linkedin.com/in/bijomathewjose/",
+    image: "assets/team/tech-contributors/bijo.webp"
+  }
 ];
 
 export default techTeam;
