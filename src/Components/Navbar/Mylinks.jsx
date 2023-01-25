@@ -294,13 +294,6 @@ export const links = [
             foreign: false,
           },
           {
-            name: "Web Development",
-            link: mainlink + "/web",
-            submenu: false,
-            sublinks: [],
-            foreign: false,
-          },
-          {
             name: "Android Development",
             link: mainlink + "/android",
             submenu: false,
@@ -308,15 +301,15 @@ export const links = [
             foreign: false,
           },
           {
-            name: "UI / UX",
-            link: mainlink + "/uiux",
+            name: "Artificial Intelligence",
+            link: mainlink + "/ai",
             submenu: false,
             sublinks: [],
             foreign: false,
           },
           {
-            name: "Product Management",
-            link: mainlink + "/pm",
+            name: "Cyber Security",
+            link: mainlink + "/cybersec",
             submenu: false,
             sublinks: [],
             foreign: false,
@@ -329,12 +322,27 @@ export const links = [
             foreign: false,
           },
           {
-            name: "Cyber Security",
-            link: mainlink + "/cybersec",
+            name: "Product Management",
+            link: mainlink + "/pm",
             submenu: false,
             sublinks: [],
             foreign: false,
           },
+          {
+            name: "UI / UX",
+            link: mainlink + "/uiux",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+          {
+            name: "Web Development",
+            link: mainlink + "/web",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+
         ],
       },
       {

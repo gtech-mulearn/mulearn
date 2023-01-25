@@ -18,6 +18,22 @@ const ClosedCarrersData = [
   // },
   {
     id: 1,
+    date: "01/24/2023",
+    Title: "µLearn Interns Call",
+    Company: "GTech µLearn",
+    Roles: [
+      "Creative Designer",
+      "Content Writers",
+      "Social Media Manager",
+      "Video Editors",
+    ],
+    location: "Remote",
+    Qualifications: ["Click View More"],
+    poster:
+      "https://www.notion.so/mulearn/Roles-Responsibilities-a3b213ddc2dc49179f5fbbcaa1ce909a",
+  },
+  {
+    id: 1,
     date: "11/25/2022",
     Title: "Undaku Hiring Call",
     Company: "Undaku",

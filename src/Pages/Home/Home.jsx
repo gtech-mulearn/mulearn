@@ -152,19 +152,8 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <img
-                src="/assets/home/partners/xtrudar.webp"
+                src="/assets/home/partners/riglabs.webp"
                 alt=""
-                className={styles.supporter}
-              />
-            </a>
-            <a
-              href="https://www.productpack.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="/assets/home/partners/productpack.webp"
-                alt="product pack"
                 className={styles.supporter}
               />
             </a>
