@@ -32,7 +32,14 @@ const Career = () => {
             />
           </div>
         </div>
-        {/* <div className={styles.second_section}>
+        <div className={styles.sectionseperator_container}>
+          <img
+            className={styles.sectionseperator}
+            src="/assets/careers/fsbg.webp"
+            alt=""
+          />
+        </div>
+        <div className={styles.second_section}>
           <p className={styles.ssheading}>
             <span className={styles.ssheadingspan}>µLearn X Yip</span> Hiring
             Call
@@ -70,7 +77,7 @@ const Career = () => {
             If you think you embody these values, we would love to see some of
             them! Apply for a position with us here.
           </p>
-        </div> */}
+        </div>
         <div className={styles.closedcareerscontainer}>
           <div className={styles.second_section}>
             <p className={styles.ssheading}>Previous Hiring Calls</p>
