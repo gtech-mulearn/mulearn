@@ -52,7 +52,7 @@ const Career = () => {
           </p>
 
           <a
-            href="https://mulearn.notion.site/Roles-Responsibilities-2c4bec241ba742c1a4508f3a94531c2e"
+            href="https://mulearn.org/jd"
             target="_blank"
             rel="noopener noreferrer"
           >
