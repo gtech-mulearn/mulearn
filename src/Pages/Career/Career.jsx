@@ -68,7 +68,7 @@ const Career = () => {
               criteria="Click View More"
               vacancy="02"
               location="Kottayam & Malappuram"
-              lastdate="18th January"
+              lastdate="3rd February"
               jdlink="http://mulearn.org/jd"
               applylink="https://airtable.com/shrxkzH8Iv8GHcXCM"
             />
