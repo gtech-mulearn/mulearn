@@ -18,10 +18,8 @@
 /uxtask https://airtable.com/shr7MY3a3D2VAMIvK
 /huddleregister https://airtable.com/shr4l8cGXHbzIg3gD
 /fie https://airtable.com/shrz7Cim38N0NpUIL
-/android-bootcamp-status https://airtable.com/shrL5PGs8WNtjuk8r
-/javascript-bootcamp-status https://airtable.com/shr8i6cZ9KIcsQ6Nf
-/flutter-bootcamp-status https://airtable.com/shrpGlR2ZgWvyK7zk
-/rust-bootcamp-status https://airtable.com/shr2HlyB0vPlWSgPU
+/zero2maker https://midnight-jacket-695.notion.site/Zero2Maker-30daa5bf23ac4a419cdcd4d2de552a72
+
 /examprep https://airtable.com/shrTcoedWYzANgLph
 /mucalendar https://airtable.com/shr06RYRNJ4Pd3tor
 /exercism https://airtable.com/shrG9YpKaxySO8cMk
@@ -43,12 +41,43 @@
 /µsic  https://meet.google.com/uos-gepp-fek
 /mentorumer http://meet.google.com/pan-ynyp-jbz
 
+
+/structure-history-sheet https://docs.google.com/spreadsheets/d/1rEc1k2sdDJO_ANVeV_GEr34_CZRw_aPYSnpme0S3hhE/edit?usp=sharing
+
+
 /tech-team-whatsapp https://chat.whatsapp.com/K2OtVGStN6zILqwdti6E4C
+/backend-team-whatsapp https://chat.whatsapp.com/Kush7ELXmEO7SmOutunlRf
+/backend-core-whatsapp https://chat.whatsapp.com/DIsojfiEPbIAUFPffFXA2d
 /ui-team-whatsapp https://chat.whatsapp.com/BsuXrfT7BszEgxPzz5twzb
+/discord-team-whatsapp https://chat.whatsapp.com/JHRxur6yQLx4ydjvt3Q5uh
+
+
+
 /announcements-whatsapp https://chat.whatsapp.com/IPxUtfw5E0TELhvX59ceci
+
+/hq-whatsapp https://chat.whatsapp.com/KBvymVWlqmkAQ3CjSlMKbu
+
+
+/campus-hq-whatsapp https://chat.whatsapp.com/HYnvV7CoqbmBFZJn0zVfdr
 /campus-leads-whatsapp https://chat.whatsapp.com/GK0UZpP5NZFEHyHUyGtt7T
+/zonal-leads-whatsapp https://chat.whatsapp.com/J0VzMyPimb08hp6Yt0PORU
+/ig-leads-whatsapp https://chat.whatsapp.com/Lv1hOCc7C8kItFWG8kgTtB
+/mutate-2022-whatsapp https://chat.whatsapp.com/HZ8wTg2AP1LBvYFmntmUV0
+
+
+/om-twitch-whatsapp https://chat.whatsapp.com/CdIbCg4hH2n0zZUI5olM0i
+/sm-twitch-whatsapp https://chat.whatsapp.com/FyLm5lZcn1oDgdh7eJRpuq
+/isr-twitch-whatsapp https://chat.whatsapp.com/IC58tBvXgKxF7Ocgn6k0pA
+
+
+
+/enablers-2022-whatsapp https://chat.whatsapp.com/DttUA2WibukDxUEZ2roNj6
+/enablers-2023-whatsapp https://chat.whatsapp.com/CfFkLdDQmtBIRNkzEIVQkx
+
+
 
 /android https://learn.mulearn.org/bootcamps/android
+/ai https://learn.mulearn.org/bootcamps/ai
 /ctf https://learn.mulearn.org/bootcamps/ctf
 /CTF https://learn.mulearn.org/bootcamps/ctf
 /rust https://learn.mulearn.org/bootcamps/rust
@@ -57,6 +86,15 @@
 /python https://learn.mulearn.org/bootcamps/python
 /bootcamps https://learn.mulearn.org/bootcamps
 
+
+
+/android-bootcamp-status https://airtable.com/shrL5PGs8WNtjuk8r
+/javascript-bootcamp-status https://airtable.com/shr8i6cZ9KIcsQ6Nf
+/flutter-bootcamp-status https://airtable.com/shrpGlR2ZgWvyK7zk
+/rust-bootcamp-status https://airtable.com/shr2HlyB0vPlWSgPU
+
+
+
 /cybersec-whatsapp https://chat.whatsapp.com/IrJW3M1OT7QKn68Z1actPB
 /flutter-whatsapp https://chat.whatsapp.com/EdTVYMeI89Q5HsQqXMD0My
 /rust-whatsapp https://chat.whatsapp.com/LpW6Dou0GeQ9AHOvATdoT1
@@ -64,6 +102,22 @@
 /javascript-ig-whatsapp https://chat.whatsapp.com/ETHl9MKGRxG1NFMwXbG8Ih
 /python-ig-whatsapp https://chat.whatsapp.com/LZmE3xWU9OmEM13nYrs2aT
 /ai-ig-whatsapp https://chat.whatsapp.com/EivnqLDTGqv8qZzmw9X4RY
+/music-ig-whatsapp https://chat.whatsapp.com/CdiwRO0OnerD36wwXGH56G
+/web-ig-whatsapp https://chat.whatsapp.com/GCsHGgfbsU63sadN6m5uip
+/paperswelove-ig-whatsapp https://chat.whatsapp.com/LDWmn6nCeOP81HnfRLff1y
+/devops-ig-whatsapp https://chat.whatsapp.com/BwsJ5tEnS3o5XVfVR3IUBN
+
+
+/ai-think-tank https://chat.whatsapp.com/KYj1Lh5Xci7EZrjaj0ZDGK
+/iot-think-tank https://chat.whatsapp.com/LmPmA89t0wS33fLF3nLrBM
+/ar-vr-think-tank https://chat.whatsapp.com/KogCUQg3PSW4I6wv556T72
+/mad-think-tank https://chat.whatsapp.com/GHLjbo0kj2V7SscJKR9E5n
+/cs-think-tank https://chat.whatsapp.com/BF5KecG6yAeFPNS2CYOoSx
+/web-think-tank https://chat.whatsapp.com/CBnGqLBsXbQ5oy3Hmj8Fg7
+/ios-think-tank https://chat.whatsapp.com/DByTPAyyA1v7Snv8wH9oWe
+/uiux-think-tank https://chat.whatsapp.com/LgSDCNoBTviJ1QDIchJhTS
+
+
 
 /bootcamps-youtube https://youtu.be/uY4bY4Sz64g
 /ctf-youtube https://youtu.be/nl2WfEOzkhc
