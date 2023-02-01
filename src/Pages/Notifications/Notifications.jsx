@@ -70,13 +70,6 @@ const Notifications = () => {
                     <p className={styles.notification_text}>
                       {notification.description}
                     </p>
-                    <a
-                      href={notification.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <p className={styles.link}>Read More</p>
-                    </a>
                   </div>
                 ))}
             </div>
