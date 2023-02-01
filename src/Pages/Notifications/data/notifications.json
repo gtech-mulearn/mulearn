@@ -1,14 +1,20 @@
 {
   "new": [
     {
+      "title": "Artifiical Intelligence Bootcamp",
+      "date": "Sun Feb 03 2023 18:00:00 GMT+0530 (India Standard Time)",
+      "description": "Ready to embark on a new journey of learning and discovery? Embrace the power of AI and join our AI Bootcamp starting on 3rd February 2023. Register now using the link below and take your first step towards becoming an AI master.",
+      "url": "https://learn.mulearn.org/bootcamps/ai"
+    },
+    {
       "title": "Salt Mango Tree",
-      "date": "Wed Jan 25 2023 20:00:00 GMT+0530 (India Standard Time)",
+      "date": "Wed Feb 1 2023 20:00:00 GMT+0530 (India Standard Time)",
       "description": "English! English! English! I avoid I don't like it, but English likes me, I can't avoid! Well since avoiding English isn't an option, let's try to work towards improving our knowledge of English, by practicing, together. Join in this Wednesday@8:00Pm to talk and learn.",
       "url": "https://discord.mulearn.org"
     },
     {
       "title": "Inspiration Station Radio",
-      "date": "Tue Jan 31 2023 20:00:00 GMT+0530 (India Standard Time)",
+      "date": "Tue Feb 7 2023 20:00:00 GMT+0530 (India Standard Time)",
       "description": "Everyone has a story to tell, the story about finding their passion, the story of learning new things and much more. Often times these stories are filled with fun and inspirations which fuel others to start their own journey. Join in this Tuesday@8:00PM to get Inspired.",
       "url": "https://discord.mulearn.org"
     }
@@ -39,7 +45,7 @@
       "url": "https://mulearn.org/mentorconnect"
     },
     {
-      "title": "muLearn Bootcamps",
+      "title": "MuLearn Bootcamps",
       "date": "Sun Jan 01 2023 18:00:00 GMT+0530 (India Standard Time)",
       "description": "Been thinking of mastering a skill for some time now? Don't procrastinate anymore. Join our Bootcamps and make it your New Year's resolution to master a new skill. Register using the below links and Master your next skill starting 1st January 2023. #NewYearNewSkill #ResolutionsRequireResolve",
       "url": "https://learn.mulearn.org/bootcamps"
