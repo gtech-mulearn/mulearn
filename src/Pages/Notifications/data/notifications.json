@@ -1,25 +1,43 @@
 {
   "new": [
     {
-      "title": "ExamPrep Reels Competition",
-      "date": "Tue Jan 24 2023 20:00:00 GMT+0530 (India Standard Time)",
-      "description": "ഈ ടോപ്പേഴ്സ് ഒക്കെ ഇത് എങ്ങനെയാണോ പഠിക്കുന്നത്?🤔 അതിന്റെ സൂത്രം അറിഞ്ഞിരുന്നേൽ തകർത്തേനെ!എന്നാപ്പിന്നെ തകർക്കാൻ റെഡി ആയിക്കോളൂ.🤩 GTech മ്യുലേൺ എക്സാം സ്പെഷ്യൽ 🎥വീഡിയോഗ്രാഫി മത്സരത്തിൽ നിങ്ങളുടെ ക്യാമ്പസ്സിലെ പരീക്ഷയെ മറികടക്കാനുള്ള പൊടിക്കൈകൾ ഉൾപ്പെടുത്തിക്കൊണ്ട് ഒരു തകർപ്പൻ വീഡിയോ പകർത്തൂ... ശേഷം ഞങ്ങൾക്ക് അയച്ചു തരൂ  🎁വിജയിക്ക് അടിപൊളി സമ്മാനവും കാത്തിരിക്കുന്നുണ്ടേ...",
-      "url": "https://mulearn.org/examprepvideo"
+      "title": "Artifiical Intelligence Bootcamp",
+      "date": "Sun Feb 03 2023 18:00:00 GMT+0530 (India Standard Time)",
+      "description": "Ready to embark on a new journey of learning and discovery? Embrace the power of AI and join our AI Bootcamp starting on 3rd February 2023. Register now using the link below and take your first step towards becoming an AI master.",
+      "url": "https://learn.mulearn.org/bootcamps/ai"
+    },
+    {
+      "title": "Zero2Maker",
+      "date": "Wed Feb 4 2023 23:59:59 GMT+0530 (India Standard Time)",
+      "description": "On the hunt for folks who love teaching and being creative.Guiding high school students in the exciting world of electronics, mechanical design, coding, and making cool stuff.No need to have prior experience; we've got you covered with training.",
+      "url": "mulearn.org/zero2maker"
     },
     {
       "title": "Salt Mango Tree",
-      "date": "Wed Jan 25 2023 20:00:00 GMT+0530 (India Standard Time)",
+      "date": "Wed Feb 1 2023 20:00:00 GMT+0530 (India Standard Time)",
       "description": "English! English! English! I avoid I don't like it, but English likes me, I can't avoid! Well since avoiding English isn't an option, let's try to work towards improving our knowledge of English, by practicing, together. Join in this Wednesday@8:00Pm to talk and learn.",
       "url": "https://discord.mulearn.org"
     },
     {
       "title": "Inspiration Station Radio",
-      "date": "Tue Jan 31 2023 20:00:00 GMT+0530 (India Standard Time)",
+      "date": "Tue Feb 7 2023 20:00:00 GMT+0530 (India Standard Time)",
       "description": "Everyone has a story to tell, the story about finding their passion, the story of learning new things and much more. Often times these stories are filled with fun and inspirations which fuel others to start their own journey. Join in this Tuesday@8:00PM to get Inspired.",
       "url": "https://discord.mulearn.org"
     }
   ],
   "old": [
+    {
+      "title": "It's Exercism",
+      "date": "Mon Jan 28 2023 19:00:00 GMT+0530 (India Standard Time)",
+      "description": "Want to take your coding to the next level but tired of the same generic advice? GTech µLearn's Exercism program is here to change that. Our experts will assess your code and give you personalized steps to improve during our live interactive sessions. Don't miss out on this exclusive opportunity for a tailored coding experience!",
+      "url": "mulearn.org/exercism"
+    },
+    {
+      "title": "Let's Ace Exams | Data Structures ",
+      "date": "Mon Jan 28 2023 16:00:00 GMT+0530 (India Standard Time)",
+      "description": "Join us for the Data Structures (S3 CSE) session of Let's Ace Exams Season 2 led by Asst Prof. Anoop S.K.M , on the 29th of January 2023 at 4PM. This interactive session will cover key-topics in the upcoming semester exam. Don't miss out - register now!",
+      "url": "https://mulearn.org/examprep"
+    },
     {
       "title": "Launch of Kerala Skills Express",
       "date": "Mon Jan 23 2023 18:00:00 GMT+0530 (India Standard Time)",
@@ -45,7 +63,7 @@
       "url": "https://mulearn.org/mentorconnect"
     },
     {
-      "title": "muLearn Bootcamps",
+      "title": "MuLearn Bootcamps",
       "date": "Sun Jan 01 2023 18:00:00 GMT+0530 (India Standard Time)",
       "description": "Been thinking of mastering a skill for some time now? Don't procrastinate anymore. Join our Bootcamps and make it your New Year's resolution to master a new skill. Register using the below links and Master your next skill starting 1st January 2023. #NewYearNewSkill #ResolutionsRequireResolve",
       "url": "https://learn.mulearn.org/bootcamps"

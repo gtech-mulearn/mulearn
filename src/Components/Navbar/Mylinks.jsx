@@ -365,6 +365,13 @@ export const links = [
             foreign: false,
           },
           {
+            name: "Artificial Intelligence",
+            link: mainlink + "/bootcamps/ai",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+          {
             name: "CTF",
             link: mainlink + "/bootcamps/ctf",
             submenu: false,
