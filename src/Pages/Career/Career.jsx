@@ -1,12 +1,12 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from "react"
 // import CareersCard from "../../Components/CareersCard/CareersCard";
-import Footer from "../../Components/Footer/Footer";
-import Navbar from "../../Components/Navbar/Navbar";
-import styles from "./Career.module.css";
-import ClosedCareers from "../../Components/ClosedCareers/ClosedCareers";
-import CareersCard from "../../Components/CareersCard/CareersCard";
+import Footer from "../../Components/Footer/Footer"
+import Navbar from "../../Components/Navbar/Navbar"
+import styles from "./Career.module.css"
+import ClosedCareers from "../../Components/ClosedCareers/ClosedCareers"
+import CareersCard from "../../Components/CareersCard/CareersCard"
 
-import ClosedCarrersData from "./data/data";
+import ClosedCarrersData from "./data/data"
 
 const Career = () => {
   return (
@@ -32,6 +32,7 @@ const Career = () => {
             />
           </div>
         </div>
+
         <div className={styles.closedcareerscontainer}>
           <div className={styles.second_section}>
             <p className={styles.ssheading}>Previous Hiring Calls</p>
@@ -55,7 +56,7 @@ const Career = () => {
       </main>
       <Footer />
     </Fragment>
-  );
-};
+  )
+}
 
-export default Career;
+export default Career
