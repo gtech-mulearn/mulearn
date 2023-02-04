@@ -591,9 +591,16 @@ const ISRData = [
   {
     id: "68",
     speaker: "Abhijith ES",
-    image: "assets/events/isr/ISRPictures/isr_68.webp",
+    image: "assets/events/isr/ISRPictures/Abhijith ES.webp",
     description: "🚨Work output ~ Inspiration🚨 This week on Inspiration Station Radio, we have Abhijith ES, a final year Civil Engineering Student at St. Joseph's College of Engineering and Technology, Palai. Abhijith is currently a Fellow at µLearn, was previously a People Management Intern, and has always been one our most active contributors. He has held several leadership roles in multiple organisations,  and has a diverse set of skills to showcase💥 If there's one thing we can say for sure - if you give him a task, he'll do it (regardless of whether it's design, tech or anything else😅) . Join us at 8pm today in the #lobby voice channel and hear Abhijith share his unique and inspiring journey ✈️",
     date: "24/01/2023",
+  },
+  {
+    id: "69",
+    speaker: "Amritha G S",
+    image: "assets/events/isr/ISRPictures/Amritha G S.webp",
+    description: "Keep trying until you keep winning  - That's a good motto to live byThis week on Inspiration Station Radio, we have Amritha G S, an Electrical & Electronics Engineering Graduate from Trinity College Of Engineering. Amritha is currently a Product Development Intern at Gapinuvi Health Allianz Private Limited. She was a Discord Manager Intern at GTech 𝝁Learn and is currently a Moderator. Amritha is the backbone of our operations on Discord(Yup, thank her for quickly checking your submissions 💯) ",
+    date: "31/01/2023",
   }
 ];
 
