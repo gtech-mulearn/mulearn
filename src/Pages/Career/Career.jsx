@@ -32,7 +32,23 @@ const Career = () => {
             />
           </div>
         </div>
-
+        <div className={styles.second_section}>
+          <p className={styles.ssheading}>
+            <span className={styles.ssheadingspan}>Citizen Digital</span> Hiring
+            Call
+          </p>
+          <p className={styles.sstagline}>Citizen Digital Foundation (CDF) is a pioneering non-profit organization, providing knowledge solutions for Digital & Media Literacy and Responsible Tech Innovation across sections of society, business, and government.</p>
+          <div className={styles.opportunities}>
+            <CareersCard
+              title="Fundraising Intern"
+              duration="2-3 months"
+              payment="Paid(Based on funds raised)"
+              location="Remote"
+              lastdate="21st February"
+              applylink="https://airtable.com/shrsPBZTpSUBzMVkY"
+            />
+          </div>
+        </div>
         <div className={styles.closedcareerscontainer}>
           <div className={styles.second_section}>
             <p className={styles.ssheading}>Previous Hiring Calls</p>

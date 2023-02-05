@@ -24,6 +24,15 @@
 .fstagline {
   font-family: "Poppins", sans-serif;
   text-align: center;
+  margin: 1rem;
+}
+
+.sstagline{
+  font-family: "Poppins";
+  max-width: 40rem;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .fsillustration {

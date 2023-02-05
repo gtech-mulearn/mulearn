@@ -33,10 +33,10 @@ const CareersCard = ({
             </p>
           )}
 
-          <p className={styles.op_text}>
+          {criteria && <p className={styles.op_text}>
             <span>Responsiblities: </span>
             {criteria}
-          </p>
+          </p>}
 
           {vacancy && (
             <p className={styles.op_text}>
@@ -61,12 +61,12 @@ const CareersCard = ({
           )}
         </div>
         <div className={styles.op_buttons}>
-          <a href={jdlink} target="_blank" rel="noopener noreferrer">
+          {jdlink && <a href={jdlink} target="_blank" rel="noopener noreferrer">
             <button className={styles.op_jobdescription}>View More</button>
-          </a>
-          <a href={applylink} target="_blank" rel="noopener noreferrer">
-            <button className={styles.op_applynow}>Apply Now</button>
-          </a>
+          </a>}
+          {applylink && <a href={applylink} target="_blank" rel="noopener noreferrer">
+            <button className={styles.op_jobdescription}>Apply Now</button>
+          </a>}
         </div>
       </div>
     </div>
