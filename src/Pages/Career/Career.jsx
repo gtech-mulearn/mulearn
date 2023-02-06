@@ -55,6 +55,45 @@ const Career = () => {
             />
           </div>
         </div>
+
+        {/* <div className={styles.second_section}>
+          <p className={styles.ssheading}>
+            <span className={styles.ssheadingspan}>
+              Calicut Forum for Information Technology - CAFIT
+            </span>{" "}
+            Hiring Call
+          </p>
+          <p className={styles.sstagline}>
+            CafIT – Calicut forum for IT is a non profit organisation formed by
+            the IT professionals of Calicut to bring the companies under a
+            single umbrella and to promote the city as a viable destination for
+            IT and IT enabled services. The members consist of established
+            software houses from the city and malabar region, Kinfra IT park ,
+            Technology Business Incubator (NITC),Govt Cyberpark and UL
+            Cyberpark.
+          </p>
+          <div className={styles.opportunities}>
+            <CareersCard
+              title="Operations Intern"
+              image="/assets/careers/cafit_logo.jpg"
+              duration="2-3 months"
+              payment="Voluntary"
+              location="Remote"
+              lastdate="12th February"
+              applylink=""
+            />
+            <CareersCard
+              title="Content Management Intern"
+              image="/assets/careers/cafit_logo.jpg"
+              duration="2-3 months"
+              payment="Voluntary"
+              location="Remote"
+              lastdate="12th February"
+              applylink=""
+            />
+          </div>
+        </div> */}
+
         <div className={styles.second_section}>
           <p className={styles.ssheading}>
             <span className={styles.ssheadingspan}>
@@ -80,7 +119,7 @@ const Career = () => {
             />
           </div>
         </div>
-        
+
         <div className={styles.closedcareerscontainer}>
           <div className={styles.second_section}>
             <p className={styles.ssheading}>Previous Hiring Calls</p>
