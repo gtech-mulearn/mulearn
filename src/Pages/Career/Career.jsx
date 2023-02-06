@@ -34,6 +34,29 @@ const Career = () => {
         </div>
         <div className={styles.second_section}>
           <p className={styles.ssheading}>
+            <span className={styles.ssheadingspan}>Techfunic</span> Hiring Call
+          </p>
+          <p className={styles.sstagline}>
+            Techfunic envisions democratizing education, by providing small
+            group tutoring for children in the US in Math & Coding. We are
+            young, started in June 2020, growing strong and steady with a
+            customer base of 100+ parents and 1000+ classes to date, with a
+            positive revenue flow.
+          </p>
+          <div className={styles.opportunities}>
+            <CareersCard
+              title="Blockchain Tutor"
+              image="/assets/careers/techfunic_logo.png"
+              duration="Upto 1 year"
+              payment="300 INR/hour (Post completion of Training)"
+              location="Remote"
+              lastdate="10th February"
+              applylink=" https://airtable.com/shrH01GtdWTExjOrx"
+            />
+          </div>
+        </div>
+        <div className={styles.second_section}>
+          <p className={styles.ssheading}>
             <span className={styles.ssheadingspan}>
               Citizen Digital Foundation
             </span>{" "}
@@ -57,29 +80,7 @@ const Career = () => {
             />
           </div>
         </div>
-        <div className={styles.second_section}>
-          <p className={styles.ssheading}>
-            <span className={styles.ssheadingspan}>Techfunic</span> Hiring Call
-          </p>
-          <p className={styles.sstagline}>
-            Techfunic envisions democratizing education, by providing small
-            group tutoring for children in the US in Math & Coding. We are
-            young, started in June 2020, growing strong and steady with a
-            customer base of 100+ parents and 1000+ classes to date, with a
-            positive revenue flow.
-          </p>
-          <div className={styles.opportunities}>
-            <CareersCard
-              title="Blockchain Tutor"
-              image="/assets/careers/techfunic_logo.png"
-              duration="Upto 1 year"
-              payment="300 INR/hour (Post completion of Training)"
-              location="Remote"
-              lastdate="10th February"
-              applylink=" https://airtable.com/shrH01GtdWTExjOrx"
-            />
-          </div>
-        </div>
+        
         <div className={styles.closedcareerscontainer}>
           <div className={styles.second_section}>
             <p className={styles.ssheading}>Previous Hiring Calls</p>
