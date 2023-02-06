@@ -1,12 +1,12 @@
-import React, { Fragment } from "react"
+import React, { Fragment } from "react";
 // import CareersCard from "../../Components/CareersCard/CareersCard";
-import Footer from "../../Components/Footer/Footer"
-import Navbar from "../../Components/Navbar/Navbar"
-import styles from "./Career.module.css"
-import ClosedCareers from "../../Components/ClosedCareers/ClosedCareers"
-import CareersCard from "../../Components/CareersCard/CareersCard"
+import Footer from "../../Components/Footer/Footer";
+import Navbar from "../../Components/Navbar/Navbar";
+import styles from "./Career.module.css";
+import ClosedCareers from "../../Components/ClosedCareers/ClosedCareers";
+import CareersCard from "../../Components/CareersCard/CareersCard";
 
-import ClosedCarrersData from "./data/data"
+import ClosedCarrersData from "./data/data";
 
 const Career = () => {
   return (
@@ -34,18 +34,49 @@ const Career = () => {
         </div>
         <div className={styles.second_section}>
           <p className={styles.ssheading}>
-            <span className={styles.ssheadingspan}>Citizen Digital</span> Hiring
-            Call
+            <span className={styles.ssheadingspan}>
+              Citizen Digital Foundation
+            </span>{" "}
+            Hiring Call
           </p>
-          <p className={styles.sstagline}>Citizen Digital Foundation (CDF) is a pioneering non-profit organization, providing knowledge solutions for Digital & Media Literacy and Responsible Tech Innovation across sections of society, business, and government.</p>
+          <p className={styles.sstagline}>
+            Citizen Digital Foundation (CDF) is a pioneering non-profit
+            organization, providing knowledge solutions for Digital & Media
+            Literacy and Responsible Tech Innovation across sections of society,
+            business, and government.
+          </p>
           <div className={styles.opportunities}>
             <CareersCard
               title="Fundraising Intern"
+              image="/assets/careers/cdf_logo.webp"
               duration="2-3 months"
               payment="Paid(Based on funds raised)"
               location="Remote"
               lastdate="21st February"
               applylink="https://airtable.com/shrsPBZTpSUBzMVkY"
+            />
+          </div>
+        </div>
+        <div className={styles.second_section}>
+          <p className={styles.ssheading}>
+            <span className={styles.ssheadingspan}>Techfunic</span> Hiring Call
+          </p>
+          <p className={styles.sstagline}>
+            Techfunic envisions democratizing education, by providing small
+            group tutoring for children in the US in Math & Coding. We are
+            young, started in June 2020, growing strong and steady with a
+            customer base of 100+ parents and 1000+ classes to date, with a
+            positive revenue flow.
+          </p>
+          <div className={styles.opportunities}>
+            <CareersCard
+              title="Blockchain Tutor"
+              image="/assets/careers/techfunic_logo.png"
+              duration="Upto 1 year"
+              payment="300 INR/hour (Post completion of Training)"
+              location="Remote"
+              lastdate="10th February"
+              applylink=" https://airtable.com/shrH01GtdWTExjOrx"
             />
           </div>
         </div>
@@ -72,7 +103,7 @@ const Career = () => {
       </main>
       <Footer />
     </Fragment>
-  )
-}
+  );
+};
 
-export default Career
+export default Career;

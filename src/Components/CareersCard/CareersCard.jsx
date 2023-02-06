@@ -3,6 +3,7 @@ import styles from "./CareersCard.module.css";
 
 const CareersCard = ({
   title,
+  image,
   about,
   payment,
   vacancy,
@@ -15,15 +16,13 @@ const CareersCard = ({
 }) => {
   return (
     <div className={styles.opportunity}>
-      <div className={styles.op_logo}>
-        {/* <img
-          src="/assets/careers/softnotion.png"
-          alt=""
-          className={styles.company_logo}
-        /> */}
-      </div>
       <div className={styles.op_texts}>
-        <p className={styles.op_header}>{title}</p>
+        <div className={styles.head_logo}>
+          <p className={styles.op_header}>{title}</p>
+          <div className={styles.op_logo}>
+            <img src={image} alt="" className={styles.company_logo} />
+          </div>
+        </div>
         <div className={styles.card_contents}>
           {/* <p className={styles.op_text}>{about}</p> */}
           {payment && (

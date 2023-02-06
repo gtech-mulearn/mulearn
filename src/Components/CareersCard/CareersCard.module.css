@@ -20,8 +20,13 @@
 }
 
 .company_logo {
-  width: 10rem;
+  width: 8rem;
   margin-bottom: 1rem;
+}
+
+.head_logo {
+  display: flex;
+  justify-content: center;
 }
 
 .op_texts {
@@ -34,6 +39,8 @@
   font-weight: 600;
   margin-bottom: 0.5rem;
   color: #14110a;
+  display: flex;
+  justify-content: center;
 }
 
 .op_text {
@@ -86,7 +93,7 @@
   }
 
   .company_logo {
-    width: 10rem;
+    width: 8rem;
     margin: 0 1rem;
   }
 
