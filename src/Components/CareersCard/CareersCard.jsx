@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./CareersCard.module.css";
+import React from "react"
+import styles from "./CareersCard.module.css"
 
 const CareersCard = ({
   title,
@@ -34,7 +34,7 @@ const CareersCard = ({
 
           {criteria && (
             <p className={styles.op_text}>
-              <span>Responsiblities: </span>
+              <span>Criteria: </span>
               {criteria}
             </p>
           )}
@@ -46,10 +46,12 @@ const CareersCard = ({
             </p>
           )}
 
-          <p className={styles.op_text}>
-            <span>Location: </span>
-            {location}
-          </p>
+          {location && (
+            <p className={styles.op_text}>
+              <span>Location: </span>
+              {location}
+            </p>
+          )}
           <p className={styles.op_text}>
             <span>Last Date To Apply: </span>
             {lastdate}
@@ -73,7 +75,7 @@ const CareersCard = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CareersCard;
+export default CareersCard

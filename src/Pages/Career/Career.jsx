@@ -1,12 +1,12 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from "react"
 // import CareersCard from "../../Components/CareersCard/CareersCard";
-import Footer from "../../Components/Footer/Footer";
-import Navbar from "../../Components/Navbar/Navbar";
-import styles from "./Career.module.css";
-import ClosedCareers from "../../Components/ClosedCareers/ClosedCareers";
-import CareersCard from "../../Components/CareersCard/CareersCard";
+import Footer from "../../Components/Footer/Footer"
+import Navbar from "../../Components/Navbar/Navbar"
+import styles from "./Career.module.css"
+import ClosedCareers from "../../Components/ClosedCareers/ClosedCareers"
+import CareersCard from "../../Components/CareersCard/CareersCard"
 
-import ClosedCarrersData from "./data/data";
+import ClosedCarrersData from "./data/data"
 
 const Career = () => {
   return (
@@ -96,6 +96,31 @@ const Career = () => {
 
         <div className={styles.second_section}>
           <p className={styles.ssheading}>
+            <span className={styles.ssheadingspan}>CareStack Hiring Call</span>{" "}
+            Hiring Call
+          </p>
+          <p className={styles.sstagline}>
+            CareStack is a state-of-the-art all-in-one cloud-based Dental
+            Practise Management Software. Our platform streamlines processes for
+            the Dental Practices, allowing them to run more efficiently and
+            effectively. Our ambition is to become a transformative force in the
+            global dental industry.
+          </p>
+          <div className={styles.opportunities}>
+            <CareersCard
+              title="Software Development Intern"
+              image="/assets/careers/carestack.webp"
+              duration="2 months"
+              criteria="B.Tech 6th Semester Students Only"
+              payment="20K/Month"
+              lastdate="21st February"
+              applylink="https://airtable.com/shrdnHSS3OTu7ng6n"
+            />
+          </div>
+        </div>
+
+        <div className={styles.second_section}>
+          <p className={styles.ssheading}>
             <span className={styles.ssheadingspan}>
               Citizen Digital Foundation
             </span>{" "}
@@ -143,7 +168,7 @@ const Career = () => {
       </main>
       <Footer />
     </Fragment>
-  );
-};
+  )
+}
 
-export default Career;
+export default Career
