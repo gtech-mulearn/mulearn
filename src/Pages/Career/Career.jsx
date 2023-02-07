@@ -94,7 +94,7 @@ const Career = () => {
           </div>
         </div>
 
-        <div className={styles.second_section}>
+        {/* <div className={styles.second_section}>
           <p className={styles.ssheading}>
             <span className={styles.ssheadingspan}>CareStack Hiring Call</span>{" "}
             Hiring Call
@@ -117,7 +117,7 @@ const Career = () => {
               applylink="https://airtable.com/shrdnHSS3OTu7ng6n"
             />
           </div>
-        </div>
+        </div> */}
 
         <div className={styles.second_section}>
           <p className={styles.ssheading}>
