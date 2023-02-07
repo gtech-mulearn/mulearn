@@ -51,12 +51,12 @@ const Career = () => {
               payment="300 INR/hour (Post completion of Training)"
               location="Remote"
               lastdate="10th February"
-              applylink=" https://airtable.com/shrH01GtdWTExjOrx"
+              applylink="https://airtable.com/shrH01GtdWTExjOrx"
             />
           </div>
         </div>
 
-        {/* <div className={styles.second_section}>
+        <div className={styles.second_section}>
           <p className={styles.ssheading}>
             <span className={styles.ssheadingspan}>
               Calicut Forum for Information Technology - CAFIT
@@ -80,7 +80,7 @@ const Career = () => {
               payment="Voluntary"
               location="Remote"
               lastdate="12th February"
-              applylink=""
+              applylink="https://airtable.com/shroaC1cR6hfXwFLu"
             />
             <CareersCard
               title="Content Management Intern"
@@ -89,10 +89,10 @@ const Career = () => {
               payment="Voluntary"
               location="Remote"
               lastdate="12th February"
-              applylink=""
+              applylink="https://airtable.com/shroaC1cR6hfXwFLu"
             />
           </div>
-        </div> */}
+        </div>
 
         <div className={styles.second_section}>
           <p className={styles.ssheading}>
