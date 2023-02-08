@@ -12,6 +12,7 @@
 .first_view_container {
   padding: 2rem;
   background-color: #ffffff;
+  max-width: 128rem;
 }
 
 .fv_img {
