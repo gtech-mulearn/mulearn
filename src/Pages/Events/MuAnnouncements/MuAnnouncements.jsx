@@ -4,18 +4,12 @@ import styles from "./MuAnnouncements.module.css";
 import Navbar from "../../../Components/Navbar/Navbar";
 import Footer from "../../../Components/Footer/Footer";
 
-import college100k from "./data/college100k";
-import college200k from "./data/college200k";
-import bootcamps from "./data/bootcamps";
-import hackathons from "./data/hackathons";
-
 import announcementsData from "./data/Announcements.json";
-import { fontFamily } from "@mui/system";
 
 const GridItem = ({ item }) => {
-  const description = item["Event Discription"];
+  const description = item["desc"];
   let shortDescription = "";
-  let posterLink = item["Link for event poster"];
+  let posterLink = item["poster"];
   if (posterLink.includes("\n")) {
     posterLink = posterLink.split("\n")[0];
   }
@@ -36,7 +30,7 @@ const GridItem = ({ item }) => {
       <img src={posterLink} className="w-full max-h-60 object-cover" alt="" />
       <div className="p-4 ">
         <p className="py-1 text-xl font-medium" style={{ color: "#f78c40" }}>
-          {item["Event Name"]}
+          {item["title"]}
         </p>
         <p className="py-1">{shortDescription}</p>
         <p className="py-1 text-slate-600">{item.Date}</p>
@@ -91,6 +85,7 @@ const MuAnnouncements = () => {
   const categories = [
     "All",
     "Event / Programs",
+    "Achievement",
     "ISR",
     "Mentor Connect",
     "Hiring",
@@ -99,7 +94,6 @@ const MuAnnouncements = () => {
     "Open mike",
     "Lets Chill",
     "General announcements",
-    "Achivement",
   ];
   return (
     <>
@@ -135,126 +129,6 @@ const MuAnnouncements = () => {
           />
           <Grid data={announcementsData} selectedCategory={selectedCategory} />
         </section>
-
-        <div className={styles.second_view_container}>
-          <div className={styles.second_view}>
-            <div className={styles.sv_texts}>
-              <p className={styles.sv_heading}>
-                <span>200K Karma</span> Points
-              </p>
-              <p className={styles.sv_tagline}>
-                These are the list of Mulearn Campuses which have achieved a
-                total of 200K Karma Points for their contributions and
-                achievements.
-              </p>
-            </div>
-            <div className={styles.sv_cards_container}>
-              {college200k.map((college) => (
-                <div className={styles.sv_cards}>
-                  <div className={styles.card}>
-                    <img
-                      src={college.image}
-                      alt=""
-                      className={styles.card_img}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className={styles.second_view}>
-            <div className={styles.sv_texts}>
-              <p className={styles.sv_heading}>
-                <span>100K Karma</span> Points
-              </p>
-              <p className={styles.sv_tagline}>
-                Students are individually awarded Karma Points for their
-                achievements. When a group of several student join hands
-                together big achievements are made.
-              </p>
-            </div>
-            <div className={styles.sv_cards_container}>
-              {college100k.map((college) => (
-                <div className={styles.sv_cards}>
-                  <div className={styles.card}>
-                    <img
-                      src={college.image}
-                      alt=""
-                      className={styles.card_img}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* ---------- Bootcamp ---------- */}
-          <div className={styles.second_view}>
-            <div className={styles.sv_texts}>
-              <p className={styles.sv_heading}>
-                <span>Bootcamps</span>
-              </p>
-              <p className={styles.sv_tagline}>{/* tagline */}</p>
-            </div>
-            <div className={styles.sv_cards_container}>
-              {bootcamps.map((bootcamp) => (
-                <div className={styles.sv_cards}>
-                  <div className={styles.card}>
-                    <img
-                      src={bootcamp.image}
-                      alt=""
-                      className={styles.card_img}
-                      onError={({ currentTarget }) => {
-                        currentTarget.onerror = null;
-                        currentTarget.src =
-                          "assets/common/img-error-replace.webp";
-                      }}
-                    />
-                    <p className={styles.card_title}>{bootcamp.title}</p>
-                    <p className={styles.card_description}>
-                      {bootcamp.description.substring(0, 250)}{" "}
-                      {bootcamp.description.length >= 20 && "..."}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* ---------- Bootcamp ---------- */}
-          <div className={styles.second_view}>
-            <div className={styles.sv_texts}>
-              <p className={styles.sv_heading}>
-                <span>Hackathons</span>
-              </p>
-              <p className={styles.sv_tagline}>{/* tagline */}</p>
-            </div>
-            <div className={styles.sv_cards_container}>
-              {hackathons.map((hackathon) => (
-                <div className={styles.sv_cards}>
-                  <div className={styles.card}>
-                    <img
-                      src={hackathon.image}
-                      alt=""
-                      className={styles.card_img}
-                      onError={({ currentTarget }) => {
-                        currentTarget.onerror = null;
-                        currentTarget.src =
-                          "assets/common/img-error-replace.webp";
-                      }}
-                    />
-                    <p className={styles.card_title}>{hackathon.title}</p>
-                    <p className={styles.card_description}>
-                      {hackathon.description.substring(0, 250)}{" "}
-                      {hackathon.description.length >= 20 && "..."}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
       <Footer />
     </>
