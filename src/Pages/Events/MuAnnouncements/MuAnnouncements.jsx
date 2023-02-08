@@ -21,8 +21,8 @@ const GridItem = ({ item }) => {
   }
   if (!posterLink) {
     shortDescription =
-      description.length > 500
-        ? description.substring(0, 300) + "..."
+      description.length > 350
+        ? description.substring(0, 350) + "..."
         : description;
   } else {
     shortDescription =
@@ -56,7 +56,7 @@ const Grid = ({ data, selectedCategory }) => {
   });
 
   return (
-    <div className="grid grid-cols-4 gap-8 p-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-8 p-4">
       {filteredData.map((item) => (
         <GridItem key={item["Sl .No"]} item={item} />
       ))}
