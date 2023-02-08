@@ -14,6 +14,9 @@ module.exports = {
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif']
       },
+      fontFamily: {
+        'noto-sans': ['Noto Sans', 'sans-serif']
+      },
     },
   },
   plugins: [require("flowbite/plugin")],
