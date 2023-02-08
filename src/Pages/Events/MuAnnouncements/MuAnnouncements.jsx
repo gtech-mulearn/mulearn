@@ -12,23 +12,41 @@ import hackathons from "./data/hackathons";
 import announcementsData from "./data/Announcements.json";
 import { fontFamily } from "@mui/system";
 
-const GridItem = ({ item }) => (
-  <div
-    className="p-4 bg-white rounded-lg shadow text-normal"
-    style={{ fontFamily: "poppins" }}
-  >
-    <img src={item["Link for event poster"]} className="w-full max-h-60" alt="" />
-    <p>Date: {item.Date}</p>
-    <p>Event Name: {item["Event Name"]}</p>
-    <p>
-      {item["Event Discription"].length > 100
-        ? `${item["Event Discription"].substring(0, 100)}...`
-        : item["Event Discription"]}
-    </p>
-    <p>Category: {item.Category}</p>
-    <p>Event Type: {item["Event Type"]}</p>
-  </div>
-);
+const GridItem = ({ item }) => {
+  const description = item["Event Discription"];
+  let shortDescription = "";
+  
+  if (!item["Link for event poster"]) {
+    shortDescription =
+      description.length > 500
+        ? description.substring(0, 300) + "..."
+        : description;
+  } else {
+    shortDescription =
+      description.length > 100
+        ? description.substring(0, 100) + "..."
+        : description;
+  }
+
+  return (
+    <div
+      className="bg-white rounded-lg shadow text-normal overflow-hidden"
+      style={{ fontFamily: "poppins" }}
+    >
+      <img
+        src={item["Link for event poster"]}
+        className="w-full max-h-60 object-cover"
+        alt=""
+      />
+      <div className="p-4 ">
+        <p className="py-1 text-xl font-medium" style={{color: "#f78c40"}}>{item["Event Name"]}</p>
+        <p className="py-1">{shortDescription}</p>
+        <p className="py-1 text-slate-600">{item.Date}</p>
+        {/* <p>Event Type: {item["Event Type"]}</p> */}
+      </div>
+    </div>
+  );
+};
 
 const Grid = ({ data, selectedCategory }) => {
   const filteredData = data.filter((item) => {
@@ -40,7 +58,7 @@ const Grid = ({ data, selectedCategory }) => {
   });
 
   return (
-    <div className="grid grid-cols-3 gap-4 p-4">
+    <div className="grid grid-cols-3 gap-8 p-4">
       {filteredData.map((item) => (
         <GridItem key={item["Sl .No"]} item={item} />
       ))}
