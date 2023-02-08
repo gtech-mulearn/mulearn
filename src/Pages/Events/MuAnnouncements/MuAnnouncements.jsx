@@ -15,8 +15,11 @@ import { fontFamily } from "@mui/system";
 const GridItem = ({ item }) => {
   const description = item["Event Discription"];
   let shortDescription = "";
-  
-  if (!item["Link for event poster"]) {
+  let posterLink = item["Link for event poster"];
+  if (posterLink.includes("\n")) {
+    posterLink = posterLink.split("\n")[0];
+  }
+  if (!posterLink) {
     shortDescription =
       description.length > 500
         ? description.substring(0, 300) + "..."
@@ -34,7 +37,7 @@ const GridItem = ({ item }) => {
       style={{ fontFamily: "poppins" }}
     >
       <img
-        src={item["Link for event poster"]}
+        src={posterLink}
         className="w-full max-h-60 object-cover"
         alt=""
       />
