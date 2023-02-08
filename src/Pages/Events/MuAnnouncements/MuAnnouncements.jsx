@@ -32,17 +32,12 @@ const GridItem = ({ item }) => {
   }
 
   return (
-    <div
-      className="bg-white rounded-lg shadow text-normal overflow-hidden"
-      style={{ fontFamily: "poppins" }}
-    >
-      <img
-        src={posterLink}
-        className="w-full max-h-60 object-cover"
-        alt=""
-      />
+    <div className="bg-white font-poppins rounded-lg shadow-lg border text-normal overflow-hidden">
+      <img src={posterLink} className="w-full max-h-60 object-cover" alt="" />
       <div className="p-4 ">
-        <p className="py-1 text-xl font-medium" style={{color: "#f78c40"}}>{item["Event Name"]}</p>
+        <p className="py-1 text-xl font-medium" style={{ color: "#f78c40" }}>
+          {item["Event Name"]}
+        </p>
         <p className="py-1">{shortDescription}</p>
         <p className="py-1 text-slate-600">{item.Date}</p>
         {/* <p>Event Type: {item["Event Type"]}</p> */}
@@ -61,7 +56,7 @@ const Grid = ({ data, selectedCategory }) => {
   });
 
   return (
-    <div className="grid grid-cols-3 gap-8 p-4">
+    <div className="grid grid-cols-4 gap-8 p-4">
       {filteredData.map((item) => (
         <GridItem key={item["Sl .No"]} item={item} />
       ))}
@@ -74,14 +69,14 @@ const CategorySwitch = ({
   selectedCategory,
   setSelectedCategory,
 }) => (
-  <div className="flex justify-center gap-4 mb-4 flex-wrap">
+  <div className="flex justify-center gap-3 mb-4 flex-wrap p-4">
     {categories.map((category) => (
       <button
         key={category}
-        className={`p-2  text-sm font-medium leading-5 ${
+        className={`font-poppins box-border border border-gray-300 font-normal px-3 py-1  text-sm font-medium leading-5  rounded-md ${
           category === selectedCategory
             ? "bg-gray-900 text-white"
-            : "bg-gray-300 text-gray-700"
+            : "bg-transparent text-gray-700"
         }`}
         onClick={() => setSelectedCategory(category)}
       >
