@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./MuAnnouncements.module.css";
 
 import Navbar from "../../../Components/Navbar/Navbar";
@@ -6,10 +6,85 @@ import Footer from "../../../Components/Footer/Footer";
 
 import college100k from "./data/college100k";
 import college200k from "./data/college200k";
-import bootcamps from "./data/bootcamps"
+import bootcamps from "./data/bootcamps";
 import hackathons from "./data/hackathons";
 
+import announcementsData from "./data/Announcements.json";
+import { fontFamily } from "@mui/system";
+
+const GridItem = ({ item }) => (
+  <div
+    className="p-4 bg-white rounded-lg shadow text-normal"
+    style={{ fontFamily: "poppins" }}
+  >
+    <img src={item["Link for event poster"]} className="w-full max-h-60" alt="" />
+    <p>Date: {item.Date}</p>
+    <p>Event Name: {item["Event Name"]}</p>
+    <p>
+      {item["Event Discription"].length > 100
+        ? `${item["Event Discription"].substring(0, 100)}...`
+        : item["Event Discription"]}
+    </p>
+    <p>Category: {item.Category}</p>
+    <p>Event Type: {item["Event Type"]}</p>
+  </div>
+);
+
+const Grid = ({ data, selectedCategory }) => {
+  const filteredData = data.filter((item) => {
+    if (selectedCategory === "All") {
+      return true;
+    }
+
+    return item.Category === selectedCategory;
+  });
+
+  return (
+    <div className="grid grid-cols-3 gap-4 p-4">
+      {filteredData.map((item) => (
+        <GridItem key={item["Sl .No"]} item={item} />
+      ))}
+    </div>
+  );
+};
+
+const CategorySwitch = ({
+  categories,
+  selectedCategory,
+  setSelectedCategory,
+}) => (
+  <div className="flex justify-center gap-4 mb-4 flex-wrap">
+    {categories.map((category) => (
+      <button
+        key={category}
+        className={`p-2  text-sm font-medium leading-5 ${
+          category === selectedCategory
+            ? "bg-gray-900 text-white"
+            : "bg-gray-300 text-gray-700"
+        }`}
+        onClick={() => setSelectedCategory(category)}
+      >
+        {category}
+      </button>
+    ))}
+  </div>
+);
+
 const MuAnnouncements = () => {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const categories = [
+    "All",
+    "Event / Programs",
+    "ISR",
+    "Mentor Connect",
+    "Hiring",
+    "Salt Mango Tree",
+    "Task announcement",
+    "Open mike",
+    "Lets Chill",
+    "General announcements",
+    "Achivement",
+  ];
   return (
     <>
       <Navbar />
@@ -27,10 +102,23 @@ const MuAnnouncements = () => {
               </p>
             </div>
             <div className={styles.fv_images}>
-              <img src="assets/announcements/fvimg.gif" alt="" className={styles.fv_img} />
+              <img
+                src="assets/announcements/fvimg.gif"
+                alt=""
+                className={styles.fv_img}
+              />
             </div>
           </div>
         </div>
+
+        <section className="container max-w-7xl mx-auto">
+          <CategorySwitch
+            categories={categories}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+          />
+          <Grid data={announcementsData} selectedCategory={selectedCategory} />
+        </section>
 
         <div className={styles.second_view_container}>
           <div className={styles.second_view}>
@@ -85,16 +173,13 @@ const MuAnnouncements = () => {
             </div>
           </div>
 
-
           {/* ---------- Bootcamp ---------- */}
           <div className={styles.second_view}>
             <div className={styles.sv_texts}>
               <p className={styles.sv_heading}>
                 <span>Bootcamps</span>
               </p>
-              <p className={styles.sv_tagline}>
-                {/* tagline */}
-              </p>
+              <p className={styles.sv_tagline}>{/* tagline */}</p>
             </div>
             <div className={styles.sv_cards_container}>
               {bootcamps.map((bootcamp) => (
@@ -106,7 +191,8 @@ const MuAnnouncements = () => {
                       className={styles.card_img}
                       onError={({ currentTarget }) => {
                         currentTarget.onerror = null;
-                        currentTarget.src = "assets/common/img-error-replace.webp";
+                        currentTarget.src =
+                          "assets/common/img-error-replace.webp";
                       }}
                     />
                     <p className={styles.card_title}>{bootcamp.title}</p>
@@ -126,9 +212,7 @@ const MuAnnouncements = () => {
               <p className={styles.sv_heading}>
                 <span>Hackathons</span>
               </p>
-              <p className={styles.sv_tagline}>
-                {/* tagline */}
-              </p>
+              <p className={styles.sv_tagline}>{/* tagline */}</p>
             </div>
             <div className={styles.sv_cards_container}>
               {hackathons.map((hackathon) => (
@@ -140,7 +224,8 @@ const MuAnnouncements = () => {
                       className={styles.card_img}
                       onError={({ currentTarget }) => {
                         currentTarget.onerror = null;
-                        currentTarget.src = "assets/common/img-error-replace.webp";
+                        currentTarget.src =
+                          "assets/common/img-error-replace.webp";
                       }}
                     />
                     <p className={styles.card_title}>{hackathon.title}</p>
@@ -153,8 +238,6 @@ const MuAnnouncements = () => {
               ))}
             </div>
           </div>
-
-
         </div>
       </div>
       <Footer />
