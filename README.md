@@ -1,115 +1,86 @@
 # GTech µLearn
 
-![GTech µLearn Logo](public/helpers/µLearn-banner.png)
+#### An informal mechanism for bringing together learners who are interested in the same topic from across different fields and disciplines. A fantastic way to spend a small amount of time learning about new things with a group of people with same interests!
 
-### µLearn is a synergic philosophy of education, with a culture of mutual learning through micro groups of peers. µLearn is here to assist you in breaking through the echo chambers and free you from the shackles that have you grounded.
+<br/>
 
-<br>
-<br>
+# µLearn Website
 
-Working with Git
-=================
-## Git Basic Commands
+This repository contains the the source code files for the µLearn Landing Page. Kindly read through the following to get a hold on the naming and contributions standards
 
-To clone a project
+The central repository holds four main branches with two branches having infinte lifetime(dev-server & production)
 
-  ```git clone git@github.com:gtech-mulearn/mulearn.git```
+- dev (Open To Contributors)
+- dev-server (hosted)
+- staging (Open To Contributors, HotFix Only!)
+- production (hosted)
 
-**Note:** Project url can be obtained from www.mulearn.org
+origin/production is the main branch where the source code of HEAD always reflects a production-ready state.
 
-Create a new feature branch  
-
-  ```git branch feature-login```
-
-Switch to the new branch
-
-  ```git checkout feature-login```
-
-Do the necessary changes on the files, add the files
-
-  ```git add -A```
-
-Commit the changes
-
-  ```git commit -m "Implemented the login feature"```
-
-Pull the changes from the server ( not applicable for the first push )
-
-  ```git pull origin feature-login```
-
-Push the changes to server for the first time
-
-  ```git push origin feature-login```
-
-Once the feature is complete, merge the changes to the develop branch ( the team lead does this )
-
-  ```git checkout develop```
-
-  ```git merge feature-login```
-
-Make sure you pull the changes from the required repo and keep your branch updated. 
-
-![Gitdashflow](public/helpers/flow.png)
-
-The central repository holds two main branches with an infinite lifetime:
-  - master
-  - develop
-
-origin/master is the main branch where the source code of HEAD always reflects a production-ready state.
-origin/develop is the main branch where the source code of HEAD always reflects a state with the latest delivered development changes for the next release
+origin/staging is the main branch where the source code of HEAD always reflects a state with the latest delivered development changes for the next release
 
 ## Supporting branches
-  - Feature branches
-  - Release branches
-  - Hotfix branches
+
+- Feature branches
+- Staging branches
+- QuickUpdate branches
+- Hotfix branches
 
 ## Feature Branch
-  - May branch off from: ```develop```
-  - Must merge back into: ```develop```
-  - Branch naming convention: anything except ```master```, ```develop```, ```release-*```, or ```hotfix-*```
-  - Branches should be prefixed with ```feature-```
-  - They should be in small letter casing with multiple words separated by ```-```
 
-Eg: feature-signup, feature-taskid123
+- May branch off from: `dev`
+- Must merge back into: `dev`
+- Branches should be prefixed with `feature-`
+- They should be in small letter casing with multiple words separated by `-`
+
+Eg: feature-signup-page, feature-ig-page
+
+## QuickUpdate Branch
+
+- May branch off from: `staging`
+- Must merge back into: `staging`, `dev`, `dev-server`
+- Branches should be prefixed with `quickupdate-`
+- They should be in small letter casing with multiple words separated by `-`
+
+Eg: quickupdate-notifications-page
+
 ## Bugfix Branch
-  - May branch off from: ```develop```
-  - Must merge back into: ```develop```
-  - Branch naming convention: ```bugfix-*```
-  - Branches should be prefixed with ```bugfix-*```
-  - They should be in small letter casing with multiple words separated by ```-```
 
-## Release Branch
-  - May branch off from: ```develop```
-  - Must merge back into: ```develop```
-  - Branch naming convention: anything except ```master```, ```develop```, ```release-*```, or ```hotfix-*```
-  - Branches should be prefixed with ```release-*```
-  - They should be in small letter casing with multiple words separated by ```-```
+- May branch off from: `dev`
+- Must merge back into: `dev`
+- Branch naming convention: `bugfix-*`
+- Branches should be prefixed with `bugfix-*`
+- They should be in small letter casing with multiple words separated by `-`
 
-Eg: release-v1.1
+Eg: bugfix-spelling-fix, bugfix-style-correction
 
 ## Hotfix Branch
-  - May branch off from: ```master```
-  - Must merge back into: ```develop``` and ```master```
-  - Branch naming convention: ```hotfix-*```
-  - Branches should be prefixed with ```hotfix-*```
-  - They should be in small letter casing with multiple words separated by ```-```
+
+- May branch off from: `staging`
+- Must merge back into: `staging`, `dev`, `dev-server`
+- Branch naming convention: `hotfix-*`
+- Branches should be prefixed with `hotfix-*`
+- They should be in small letter casing with multiple words separated by `-`
 
 Eg: hotfix-signup-failure, hotfix-taskid123
 
-## Simultaneous Multiple Versions
 
-If your project has multiple versions which are live simultaneously, you would need multiple master and develop branches for them .
+## Contributing
 
-For example, If your project has a lite and a standard version. Suppose the light version has reduced feature set than the standard version. In that case, you would need to create two master branches and two develop branches individually for them
-- master-lite
-- master-standard
-- develop-lite
-- develop-standard
+Contributions are always welcome!
 
+See [contributing.md](/contributing.md) for ways to get started.
 
+## Maintainer
 
-## Further References
-  - https://www.conventionalcommits.org/en/v1.0.0/
-  - http://www.gitimmerssion.com
-  - http://git-scm.com/
-  - https://fayausa.github.io/Git-commands/
+- If you are a maintainer of the project, you will be the person responsible for reviewing the pull request and merging them to respective branches.
+
+### Pull Request Flow
+
+- The pull request from the developers can only be received on the **dev**(feature, bugfix) and the **staging**(hotfix) branch.
+
+- After reviewing the request you can merge them to the dev-server/production depending upon the type of request
+
+## Quality Tester
+
+- If you are a Quality Tester you can verify the dev-server for testing the upcoming features and the production for features which are already in release.
