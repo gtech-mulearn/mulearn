@@ -9,10 +9,10 @@ const CategorySwitch = ({
       {categories.map((category) => (
         <button
           key={category}
-          className={`font-poppins box-border border border-gray-300 font-normal px-3 py-1  text-sm font-medium leading-5  rounded-md ${
+          className={`font-poppins box-border font-normal px-3 py-1  text-sm font-medium leading-5  rounded-md ${
             category === selectedCategory
               ? "bg-gray-900 text-white"
-              : "bg-transparent text-gray-700"
+              : "bg-transparent text-gray-700 border border-gray-300"
           }`}
           onClick={() => setSelectedCategory(category)}
         >
