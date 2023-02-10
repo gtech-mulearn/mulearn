@@ -12,7 +12,7 @@ const Grid = ({ data, selectedCategory }) => {
     });
   
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-8 p-4">
+      <div id='grid-view' className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-8 p-4">
         {filteredData.map((item) => (
           <GridItem key={item["Sl .No"]} item={item} />
         )).reverse()}

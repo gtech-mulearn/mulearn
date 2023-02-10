@@ -30,7 +30,7 @@ const GridItem = ({ item }) => {
       />
       <div className="p-4 ">
         <p className="py-1 text-slate-600 font-semibold text-sm">{item.Date}</p>
-        <p className="py-1 text-xl font-semibold" style={{ color: "#f78c40" }}>
+        <p className="py-1 text-xl font-semibold text-muorange">
           {item["title"]}
         </p>
         <p className="py-1">{isExpanded ? description : shortDescription}</p>
