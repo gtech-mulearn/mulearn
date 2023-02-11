@@ -1,13 +1,12 @@
-import React from "react";
-import styles from "../Home/Home.module.css";
+import React from "react"
+import styles from "../Home/Home.module.css"
 
-import Footer from "../../Components/Footer/Footer";
-import Navbar from "../../Components/Navbar/Navbar";
-import Testimonials from "../../Components/Testimonials/Testimonials";
-import CountUp from "react-countup";
+import Footer from "../../Components/Footer/Footer"
+import Navbar from "../../Components/Navbar/Navbar"
+import Testimonials from "../../Components/Testimonials/Testimonials"
+import CountUp from "react-countup"
 
-
-import "./Home.scss";
+import "./Home.scss"
 
 const Home = () => {
   return (
@@ -146,11 +145,7 @@ const Home = () => {
                 className={styles.supporter}
               />
             </a>
-            <a
-              href="#id"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="#id" target="_blank" rel="noopener noreferrer">
               <img
                 src="/assets/home/partners/riglabs.webp"
                 alt=""
@@ -242,13 +237,12 @@ const Home = () => {
                 </p>
               </div>
               <div className={styles.tv_point}>
-                <p className={styles.tvp_heading}>Let's Chill</p>
+                <p className={styles.tvp_heading}>Office Hours</p>
                 <p className={styles.tvp_text}>
-                  A 30 minutes chill-out spot. Join the lobby voice channel in
-                  our discord server every day at 9:00 pm to unwind, connect,
-                  and socialize with our community members. Take part in
-                  conversations and other enjoyable activities. Connect and
-                  progress.
+                  Office Hours, an hour-long weekly virtual meet-up hosted by
+                  the respective interest groups will review project , discuss
+                  new activities, and brainstrom on specific topics, udner the
+                  guidance of mentors.
                 </p>
               </div>
               <div className={styles.tv_point}>
@@ -473,7 +467,7 @@ const Home = () => {
       <Testimonials />
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
