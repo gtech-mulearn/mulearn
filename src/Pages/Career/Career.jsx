@@ -34,55 +34,6 @@ const Career = () => {
         </div>
         <div className={styles.second_section}>
           <p className={styles.ssheading}>
-            <span className={styles.ssheadingspan}>CareStack Hiring Call</span>{" "}
-            Hiring Call
-          </p>
-          <p className={styles.sstagline}>
-            CareStack is a state-of-the-art all-in-one cloud-based Dental
-            Practise Management Software. Our platform streamlines processes for
-            the Dental Practices, allowing them to run more efficiently and
-            effectively. Our ambition is to become a transformative force in the
-            global dental industry.
-          </p>
-          <div className={styles.opportunities}>
-            <CareersCard
-              title="Software Development Intern"
-              image="/assets/careers/carestack.webp"
-              duration="2 months"
-              criteria="B.Tech 6th Semester Students Only"
-              payment="20K/Month"
-              lastdate="21st February"
-              applylink="https://airtable.com/shrdnHSS3OTu7ng6n"
-            />
-          </div>
-        </div>
-
-        <div className={styles.second_section}>
-          <p className={styles.ssheading}>
-            <span className={styles.ssheadingspan}>Techfunic</span> Hiring Call
-          </p>
-          <p className={styles.sstagline}>
-            Techfunic envisions democratizing education, by providing small
-            group tutoring for children in the US in Math & Coding. We are
-            young, started in June 2020, growing strong and steady with a
-            customer base of 100+ parents and 1000+ classes to date, with a
-            positive revenue flow.
-          </p>
-          <div className={styles.opportunities}>
-            <CareersCard
-              title="Blockchain Tutor"
-              image="/assets/careers/techfunic_logo.png"
-              duration="Upto 1 year"
-              payment="300 INR/hour (Post completion of Training)"
-              location="Remote"
-              lastdate="10th February"
-              applylink="https://airtable.com/shrH01GtdWTExjOrx"
-            />
-          </div>
-        </div>
-
-        <div className={styles.second_section}>
-          <p className={styles.ssheading}>
             <span className={styles.ssheadingspan}>
               Calicut Forum for Information Technology - CAFIT
             </span>{" "}
@@ -115,6 +66,31 @@ const Career = () => {
               location="Remote"
               lastdate="12th February"
               applylink="https://airtable.com/shroaC1cR6hfXwFLu"
+            />
+          </div>
+        </div>
+
+        <div className={styles.second_section}>
+          <p className={styles.ssheading}>
+            <span className={styles.ssheadingspan}>CareStack Hiring Call</span>{" "}
+            Hiring Call
+          </p>
+          <p className={styles.sstagline}>
+            CareStack is a state-of-the-art all-in-one cloud-based Dental
+            Practise Management Software. Our platform streamlines processes for
+            the Dental Practices, allowing them to run more efficiently and
+            effectively. Our ambition is to become a transformative force in the
+            global dental industry.
+          </p>
+          <div className={styles.opportunities}>
+            <CareersCard
+              title="Software Development Intern"
+              image="/assets/careers/carestack.webp"
+              duration="2 months"
+              criteria="B.Tech 6th Semester Students Only"
+              payment="20K/Month"
+              lastdate="21st February"
+              applylink="https://airtable.com/shrdnHSS3OTu7ng6n"
             />
           </div>
         </div>
