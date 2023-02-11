@@ -1,162 +1,61 @@
-import React from "react";
-import styles from "./MuAnnouncements.module.css";
+import React, { useState } from "react";
 
 import Navbar from "../../../Components/Navbar/Navbar";
 import Footer from "../../../Components/Footer/Footer";
 
-import college100k from "./data/college100k";
-import college200k from "./data/college200k";
-import bootcamps from "./data/bootcamps"
-import hackathons from "./data/hackathons";
+import announcementsData from "./Announcements.json";
+
+import Grid from "../../../Components/Grid/Grid";
+import CategorySwitch from "../../../Components/Grid/CategorySwitch";
 
 const MuAnnouncements = () => {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const categories = [
+    "All",
+    "Event / Programs",
+    "Achievement",
+    "ISR",
+    "Mentor Connect",
+    "Hiring",
+    "Salt Mango Tree",
+    "Task announcement",
+    "Open mike",
+    "Lets Chill",
+    "General announcements",
+  ];
   return (
     <>
       <Navbar />
-      <div className={styles.main_container}>
-        <div className={styles.first_view_container}>
-          <div className={styles.first_view}>
-            <div className={styles.fv_texts}>
-              <p className={styles.fv_heading}>
-                Welcome to <span>µLearn</span> Announcements
-              </p>
-              <p className={styles.fv_tagline}>
-                Lots of amazing things filled with happiness and joy is
-                happening around you each day. Listed below are few such amazing
-                moments that have been announced in µLearn.
-              </p>
-            </div>
-            <div className={styles.fv_images}>
-              <img src="assets/announcements/fvimg.gif" alt="" className={styles.fv_img} />
-            </div>
-          </div>
+      <section className="container mb-4 max-w-7xl mx-auto p-8 flex flex flex-col md:flex-row justify-between items-center ">
+        <div className="max-w-lg md:max-w-2xl text-center md:text-left">
+          <p
+            className="font-noto-sans text-4xl font-semibold leading-snug lg:text-6xl lg:leading-snug"
+            style={{ color: "#303030" }}
+          >
+            Welcome to <span style={{ color: "#f78c40" }}>µLearn</span>{" "}
+            Announcements
+          </p>
+          <p className="mt-2 font-poppins md:mt-4 md:text-lg">
+            Lots of amazing things filled with happiness and joy is happening
+            around you each day. Listed below are few such amazing moments that
+            have been announced in µLearn.
+          </p>
         </div>
+          <img
+            src="assets/announcements/fvimg.gif"
+            alt=""
+            className="mt-8 md:mt-0 w-72 md:w-96"
+          />
+      </section>
 
-        <div className={styles.second_view_container}>
-          <div className={styles.second_view}>
-            <div className={styles.sv_texts}>
-              <p className={styles.sv_heading}>
-                <span>200K Karma</span> Points
-              </p>
-              <p className={styles.sv_tagline}>
-                These are the list of Mulearn Campuses which have achieved a
-                total of 200K Karma Points for their contributions and
-                achievements.
-              </p>
-            </div>
-            <div className={styles.sv_cards_container}>
-              {college200k.map((college) => (
-                <div className={styles.sv_cards}>
-                  <div className={styles.card}>
-                    <img
-                      src={college.image}
-                      alt=""
-                      className={styles.card_img}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className={styles.second_view}>
-            <div className={styles.sv_texts}>
-              <p className={styles.sv_heading}>
-                <span>100K Karma</span> Points
-              </p>
-              <p className={styles.sv_tagline}>
-                Students are individually awarded Karma Points for their
-                achievements. When a group of several student join hands
-                together big achievements are made.
-              </p>
-            </div>
-            <div className={styles.sv_cards_container}>
-              {college100k.map((college) => (
-                <div className={styles.sv_cards}>
-                  <div className={styles.card}>
-                    <img
-                      src={college.image}
-                      alt=""
-                      className={styles.card_img}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-
-          {/* ---------- Bootcamp ---------- */}
-          <div className={styles.second_view}>
-            <div className={styles.sv_texts}>
-              <p className={styles.sv_heading}>
-                <span>Bootcamps</span>
-              </p>
-              <p className={styles.sv_tagline}>
-                {/* tagline */}
-              </p>
-            </div>
-            <div className={styles.sv_cards_container}>
-              {bootcamps.map((bootcamp) => (
-                <div className={styles.sv_cards}>
-                  <div className={styles.card}>
-                    <img
-                      src={bootcamp.image}
-                      alt=""
-                      className={styles.card_img}
-                      onError={({ currentTarget }) => {
-                        currentTarget.onerror = null;
-                        currentTarget.src = "assets/common/img-error-replace.webp";
-                      }}
-                    />
-                    <p className={styles.card_title}>{bootcamp.title}</p>
-                    <p className={styles.card_description}>
-                      {bootcamp.description.substring(0, 250)}{" "}
-                      {bootcamp.description.length >= 20 && "..."}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* ---------- Bootcamp ---------- */}
-          <div className={styles.second_view}>
-            <div className={styles.sv_texts}>
-              <p className={styles.sv_heading}>
-                <span>Hackathons</span>
-              </p>
-              <p className={styles.sv_tagline}>
-                {/* tagline */}
-              </p>
-            </div>
-            <div className={styles.sv_cards_container}>
-              {hackathons.map((hackathon) => (
-                <div className={styles.sv_cards}>
-                  <div className={styles.card}>
-                    <img
-                      src={hackathon.image}
-                      alt=""
-                      className={styles.card_img}
-                      onError={({ currentTarget }) => {
-                        currentTarget.onerror = null;
-                        currentTarget.src = "assets/common/img-error-replace.webp";
-                      }}
-                    />
-                    <p className={styles.card_title}>{hackathon.title}</p>
-                    <p className={styles.card_description}>
-                      {hackathon.description.substring(0, 250)}{" "}
-                      {hackathon.description.length >= 20 && "..."}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-
-        </div>
-      </div>
+      <section className="container max-w-7xl mx-auto">
+        <CategorySwitch
+          categories={categories}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
+        <Grid data={announcementsData} selectedCategory={selectedCategory} />
+      </section>
       <Footer />
     </>
   );
