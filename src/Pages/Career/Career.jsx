@@ -48,7 +48,7 @@ const Career = () => {
               duration="6 months"
               payment="Paid"
               location="Kochi or Trivandrum"
-              lastdate="18th February"
+              lastdate="21st February"
               applylink="https://airtable.com/shrx9rKtLdFG2Edfv"
             />
             <CareersCard
@@ -57,7 +57,7 @@ const Career = () => {
               duration="6 months"
               payment="Paid"
               location="Kochi or Trivandrum"
-              lastdate="20th February"
+              lastdate="21st February"
               applylink="https://airtable.com/shrx9rKtLdFG2Edfv"
             />
             <CareersCard
