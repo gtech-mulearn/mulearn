@@ -34,6 +34,55 @@ const Career = () => {
         </div>
         <div className={styles.second_section}>
           <p className={styles.ssheading}>
+            <span className={styles.ssheadingspan}>EY - Hiring Call</span>{" "}
+            Hiring Call
+          </p>
+          <p className={styles.sstagline}>
+            EY provides consulting, assurance, tax and transaction services that
+            help solve our client's toughest challenges and build a better
+            working world for all.
+          </p>
+          <div className={styles.opportunities}>
+            <CareersCard
+              title="Project Manager Intern"
+              image="/assets/careers/EY.webp"
+              duration="6 months"
+              payment="Paid"
+              location="Kochi or Trivandrum"
+              lastdate="18th February"
+              applylink="https://airtable.com/shrx9rKtLdFG2Edfv"
+            />
+            <CareersCard
+              title="Buisness Analyst Intern"
+              image="/assets/careers/EY.webp"
+              duration="6 months"
+              payment="Paid"
+              location="Kochi or Trivandrum"
+              lastdate="20th February"
+              applylink="https://airtable.com/shrx9rKtLdFG2Edfv"
+            />
+            <CareersCard
+              title="Full Stack Developer Intern"
+              image="/assets/careers/EY.webp"
+              duration="6 months"
+              payment="Paid"
+              location="Kochi or Trivandrum"
+              lastdate="21st February"
+              applylink="https://airtable.com/shrx9rKtLdFG2Edfv"
+            />
+            <CareersCard
+              title="Database Consultant Intern Intern"
+              image="/assets/careers/EY.webp"
+              duration="6 months"
+              payment="Paid"
+              location="Kochi or Trivandrum"
+              lastdate="21st February"
+              applylink="https://airtable.com/shrx9rKtLdFG2Edfv"
+            />
+          </div>
+        </div>
+        <div className={styles.second_section}>
+          <p className={styles.ssheading}>
             <span className={styles.ssheadingspan}>
               Calicut Forum for Information Technology - CAFIT
             </span>{" "}
