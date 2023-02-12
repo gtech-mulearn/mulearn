@@ -35,7 +35,6 @@ const Career = () => {
         <div className={styles.second_section}>
           <p className={styles.ssheading}>
             <span className={styles.ssheadingspan}>EY - Hiring Call</span>{" "}
-            Hiring Call
           </p>
           <p className={styles.sstagline}>
             EY provides consulting, assurance, tax and transaction services that
