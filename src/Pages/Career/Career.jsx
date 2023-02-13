@@ -34,6 +34,30 @@ const Career = () => {
         </div>
         <div className={styles.second_section}>
           <p className={styles.ssheading}>
+            <span className={styles.ssheadingspan}>CareStack Hiring Call</span>{" "}
+            Hiring Call
+          </p>
+          <p className={styles.sstagline}>
+            CareStack is a state-of-the-art all-in-one cloud-based Dental
+            Practise Management Software. Our platform streamlines processes for
+            the Dental Practices, allowing them to run more efficiently and
+            effectively. Our ambition is to become a transformative force in the
+            global dental industry.
+          </p>
+          <div className={styles.opportunities}>
+            <CareersCard
+              title="Software Development Intern"
+              image="/assets/careers/carestack.webp"
+              duration="2 months"
+              criteria="B.Tech 6th Semester Students Only"
+              payment="20K/Month"
+              lastdate="14th February"
+              applylink="https://airtable.com/shrdnHSS3OTu7ng6n"
+            />
+          </div>
+        </div>
+        <div className={styles.second_section}>
+          <p className={styles.ssheading}>
             <span className={styles.ssheadingspan}>EY - Hiring Call</span>{" "}
           </p>
           <p className={styles.sstagline}>
@@ -77,68 +101,6 @@ const Career = () => {
               location="Kochi or Trivandrum"
               lastdate="21st February"
               applylink="https://airtable.com/shrx9rKtLdFG2Edfv"
-            />
-          </div>
-        </div>
-        <div className={styles.second_section}>
-          <p className={styles.ssheading}>
-            <span className={styles.ssheadingspan}>
-              Calicut Forum for Information Technology - CAFIT
-            </span>{" "}
-            Hiring Call
-          </p>
-          <p className={styles.sstagline}>
-            CafIT – Calicut forum for IT is a non profit organisation formed by
-            the IT professionals of Calicut to bring the companies under a
-            single umbrella and to promote the city as a viable destination for
-            IT and IT enabled services. The members consist of established
-            software houses from the city and malabar region, Kinfra IT park ,
-            Technology Business Incubator (NITC),Govt Cyberpark and UL
-            Cyberpark.
-          </p>
-          <div className={styles.opportunities}>
-            <CareersCard
-              title="Operations Intern"
-              image="/assets/careers/cafit_logo.jpg"
-              duration="2-3 months"
-              payment="Voluntary"
-              location="Remote"
-              lastdate="12th February"
-              applylink="https://airtable.com/shroaC1cR6hfXwFLu"
-            />
-            <CareersCard
-              title="Content Management Intern"
-              image="/assets/careers/cafit_logo.jpg"
-              duration="2-3 months"
-              payment="Voluntary"
-              location="Remote"
-              lastdate="12th February"
-              applylink="https://airtable.com/shroaC1cR6hfXwFLu"
-            />
-          </div>
-        </div>
-
-        <div className={styles.second_section}>
-          <p className={styles.ssheading}>
-            <span className={styles.ssheadingspan}>CareStack Hiring Call</span>{" "}
-            Hiring Call
-          </p>
-          <p className={styles.sstagline}>
-            CareStack is a state-of-the-art all-in-one cloud-based Dental
-            Practise Management Software. Our platform streamlines processes for
-            the Dental Practices, allowing them to run more efficiently and
-            effectively. Our ambition is to become a transformative force in the
-            global dental industry.
-          </p>
-          <div className={styles.opportunities}>
-            <CareersCard
-              title="Software Development Intern"
-              image="/assets/careers/carestack.webp"
-              duration="2 months"
-              criteria="B.Tech 6th Semester Students Only"
-              payment="20K/Month"
-              lastdate="21st February"
-              applylink="https://airtable.com/shrdnHSS3OTu7ng6n"
             />
           </div>
         </div>
