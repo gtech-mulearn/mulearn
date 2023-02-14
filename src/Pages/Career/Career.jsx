@@ -50,20 +50,22 @@ const Career = () => {
             effect={"creative"}
             modules={[Navigation, Pagination, Autoplay, Scrollbar, A11y, Keyboard, EffectCreative]}
             spaceBetween={50}
-            slidesPerView={1}
+            // slidesPerView={2}
             navigation
-            creativeEffect={{
-              prev: {
-                // shadow: true,
-                translate: [0, 0, -400],
+            breakpoints={{
+              400: {
+                // width: 576,
+                slidesPerView: 1,
               },
-              next: {
-                translate: ["100%", 0, 0],
+              1600: {
+                // width: 768,
+                slidesPerView: 2,
               },
             }}
             loop={true}
             grabCursor={true}
             pagination={{ clickable: true }}
+            centeredSlides={true}
             keyboard={true}
             autoplay={{ delay: "8000" }}
           // scrollbar={{ draggable: true }}
@@ -123,7 +125,7 @@ const Career = () => {
                     grabCursor={true}
                     centeredSlides={true}
                     coverflowEffect={{
-                      shadow:false,
+                      shadow: false,
                       rotate: 50,
                       stretch: 0,
                       depth: 100,
@@ -285,21 +287,52 @@ const Career = () => {
           <div className={styles.closedcareerscontainer}>
             <div className={styles.second_section}>
               <p className={styles.ssheading}>Previous Hiring Calls</p>
-              <div className={styles.opportunities}>
-                {ClosedCarrersData.map((data) => (
-                  <ClosedCareers
-                    company={data.Company}
-                    title={data.Title}
-                    duration={data.Duration}
-                    payment={data.Stipend || data.Package}
-                    criteria={data.Qualifications && data.Qualifications[0]}
-                    date={data.date}
-                    roles={data.Roles}
-                    jdlink={data.poster}
-                    location={data.location}
-                  />
-                ))}
-              </div>
+
+              <Swiper
+                // effect={"creative"}
+                modules={[Navigation, Pagination, Autoplay, Scrollbar, A11y, Keyboard, EffectCreative]}
+                spaceBetween={50}
+                // slidesPerView={3}
+                navigation
+                grabCursor={true}
+                centeredSlides={true}
+                breakpoints={{
+                  400: {
+                    // width: 576,
+                    slidesPerView: 1,
+                  },
+                  1300: {
+                    // width: 768,
+                    slidesPerView: 3,
+                  },
+                }}
+
+                loop={true}
+                pagination={{ clickable: true }}
+                keyboard={true}
+                autoplay={{ delay: "8000" }}
+              // scrollbar={{ draggable: true }}
+              // onSwiper={(swiper) => console.log(swiper)}
+              // onSlideChange={() => console.log('slide change')}
+              >
+                <div className={styles.opportunities}>
+                  {ClosedCarrersData.map((data) => (
+                    <SwiperSlide>
+                      <ClosedCareers
+                        company={data.Company}
+                        title={data.Title}
+                        duration={data.Duration}
+                        payment={data.Stipend || data.Package}
+                        criteria={data.Qualifications && data.Qualifications[0]}
+                        date={data.date}
+                        roles={data.Roles}
+                        jdlink={data.poster}
+                        location={data.location}
+                      />
+                    </SwiperSlide>
+                  ))}
+                </div>
+              </Swiper>
             </div>
           </div>
         </div>

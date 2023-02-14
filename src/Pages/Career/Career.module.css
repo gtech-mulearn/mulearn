@@ -33,6 +33,7 @@
   margin: auto;
   text-align: center;
   margin-bottom: 2rem;
+  min-height: 145px;
 }
 
 .fsillustration {
@@ -69,7 +70,7 @@
 }
 
 .second_section_container {
-  display: flex;
+  /* display: flex; */
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
@@ -135,9 +136,9 @@
     margin-bottom: 2rem;
   }
 
-  .second_section_a {
-    /* margin: 10px; */
-  }
+  /* .second_section_a {
+    margin: 10px;
+  } */
 }
 
 .op_jobdescription {
@@ -153,7 +154,7 @@
 
 @media only screen and (min-width: 1300px) {
   .second_section {
-    max-width: 1300px;
+    max-width: 100vw;
     margin: auto;
     margin-top: 3rem;
   }
@@ -176,6 +177,7 @@
     font-family: "Noto Sans", sans-serif;
     font-weight: 600;
     margin-left: 1rem;
+    min-height: 90px;
   }
 
   .fstexts {
@@ -222,13 +224,13 @@
 
 @media only screen and (min-width: 1000px) {
   .opportunities {
-    align-items: center;
+    /* align-items: center; */
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: stretch;
-    row-gap: 1rem;
+    row-gap: 1rem; */
   }
 
   .fsillustration {

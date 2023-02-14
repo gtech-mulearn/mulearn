@@ -3,11 +3,13 @@
   flex-direction: column;
   justify-content: space-between;
   column-gap: 1rem;
-  margin: 1rem auto 0;
+  /* margin: 1rem auto 0; */
+  margin: 40px auto;
   padding: 1.5rem;
   border-radius: 10px;
   width: 100%;
   max-width: 400px;
+  min-height: 485px;
   font-family: "Inter", sans-serif;
   justify-content: space-between;
   align-items: center;
@@ -87,9 +89,9 @@
     margin: 0 1rem;
   }
 
-  .opportunity {
+  /* .opportunity {
     margin: 0.5rem;
-  }
+  } */
 
   .op_applynow {
     margin-left: 0.25rem;

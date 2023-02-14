@@ -14,6 +14,7 @@
 }
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 .swiper-button-next {
   color: #ff8a4c !important;
@@ -28,7 +29,7 @@ html {
 .swiper-button-prev:after{
   font-size: 2rem !important;
 }
-@media only screen and (min-width: 1000px){
+/* @media only screen and (min-width: 1000px){
   .swiper-button-next:after {
       margin-right: 500px !important;
     }
@@ -36,4 +37,4 @@ html {
     .swiper-button-prev:after {
       margin-left: 500px !important;
     }
-}
+} */
