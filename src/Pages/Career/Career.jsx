@@ -35,6 +35,24 @@ const Career = () => {
 
         <div className={styles.second_section}>
           <p className={styles.ssheading}>
+            <span className={styles.ssheadingspan}>Nucore</span>{" "}
+            Hiring Call
+          </p>
+
+          <div className={styles.opportunities}>
+            <CareersCard
+              title="Founders Intern"
+              image="/assets/careers/nucore-logo.png"
+              duration="6 months"
+              payment="12K - 15K"
+              lastdate="21st February"
+              applylink="https://airtable.com/shrmbFmOfdZXm77Jt"
+            />
+          </div>
+        </div>
+
+        <div className={styles.second_section}>
+          <p className={styles.ssheading}>
             <span className={styles.ssheadingspan}>EY - Hiring Call</span>{" "}
           </p>
           <p className={styles.sstagline}>
