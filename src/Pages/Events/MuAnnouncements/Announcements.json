@@ -1,19 +1,5 @@
 [
   {
-    "Sl .No": "200K1",
-    "title": "AWH College of Engineering, Kozhikode",
-    "poster": "https://cdn.discordapp.com/attachments/771679365124718612/961856072715501568/Karma_Score_Poster_AWH_4.jpg",
-    "desc": "Achieved 200K Karma Points!",
-    "Category": "Achievement"
-  },
-  {
-    "Sl .No": "200K2",
-    "title": "Trinity College of Engineering, Pallichal",
-    "poster": "https://cdn.discordapp.com/attachments/771679365124718612/936852199357689906/Trinity_College_Rank_v2.jpg",
-    "desc": "Achieved 200K Karma Points!",
-    "Category": "Achievement"
-  },
-  {
     "Sl .No": "100K1",
     "title": "Mar Baselious College Of Engineering And Technology, Trivandrum",
     "poster": "https://cdn.discordapp.com/attachments/771679365124718612/851178371572695070/Congrats_MBCET.png",
@@ -53,6 +39,20 @@
     "title": "Kristu Jyoti College of Management & Technology, Chethipuzha",
     "poster": "https://cdn.discordapp.com/attachments/771679365124718612/935761922626822185/Congrats_KJCMT.jpg",
     "desc": "Achieved 100K Karma Points!",
+    "Category": "Achievement"
+  },
+  {
+    "Sl .No": "200K1",
+    "title": "AWH College of Engineering, Kozhikode",
+    "poster": "https://cdn.discordapp.com/attachments/771679365124718612/961856072715501568/Karma_Score_Poster_AWH_4.jpg",
+    "desc": "Achieved 200K Karma Points!",
+    "Category": "Achievement"
+  },
+  {
+    "Sl .No": "200K2",
+    "title": "Trinity College of Engineering, Pallichal",
+    "poster": "https://cdn.discordapp.com/attachments/771679365124718612/936852199357689906/Trinity_College_Rank_v2.jpg",
+    "desc": "Achieved 200K Karma Points!",
     "Category": "Achievement"
   },
   {
@@ -1880,7 +1880,7 @@
     "Date": "11/17/2022",
     "title": "Open Mic- Fahaz Bazil",
     "desc": "Already too exhausted by your weekly chores? \nInsert Open Mic 🎤 into the equation and your weak becomes much more fun! \n\n Open Mic is an original initiative by µLearn held every Thursday at 8:00 PM as part of Weekly Twitch. The event aims to provide members an open stage to exhibit their skills and talents to the community. \n\nThis edition of Open Mic, we have Fahaz Bazil, a 3rd year Engineering Student at KMEA College of Engineering. \nFahaz is a great artist and an integral part of our Music Interest Group and its activities.\n\nJoin us at 8pm today on our Instagram live to catch Fahaz performing 🎼\n\nhttps://www.instagram.com/gtechmulearn?upcoming_event_id=18203442571206179.",
-    "Category": "Open mike",
+    "Category": "Open Mic",
     "Event Type": "online",
     "poster": "https://cdn.discordapp.com/attachments/771679365124718612/1042749957809131580/E844AFC0-7F8F-4DDA-92D7-E145ECE24D6D.jpg",
     "Link for program pictures": ""
@@ -1970,7 +1970,7 @@
     "Date": "12/01/2022",
     "title": "Open Mic-Arjun Jaypal",
     "desc": "It's Thursday and we know you must be exhausted‼\n\nWouldn't a little music 🎸 make your day better❓ Join us for Open Mic at 8:00 PM today on our Instagram Handle. \n\nThis edition of Open Mic we have Arjun Jaypal, a 3rd year engineering student at GEC Idukki. \n\nDon't forget to join ‼\nhttps://www.instagram.com/gtechmulearn?upcoming_event_id=17849836736880273",
-    "Category": "Open mike",
+    "Category": "Open Mic",
     "Event Type": "online",
     "poster": "https://cdn.discordapp.com/attachments/771679365124718612/1047766969904009216/WhatsApp_Image_2022-12-01_at_11.53.56.jpg",
     "Link for program pictures": ""

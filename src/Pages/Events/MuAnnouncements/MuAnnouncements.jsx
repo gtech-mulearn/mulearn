@@ -19,7 +19,7 @@ const MuAnnouncements = () => {
     "Hiring",
     "Salt Mango Tree",
     "Task announcement",
-    "Open mike",
+    "Open Mic",
     "Lets Chill",
     "General announcements",
   ];
@@ -32,7 +32,7 @@ const MuAnnouncements = () => {
             className="font-noto-sans text-4xl font-semibold leading-snug lg:text-6xl lg:leading-snug"
             style={{ color: "#303030" }}
           >
-            Welcome to <span style={{ color: "#f78c40" }}>µLearn</span>{" "}
+            Welcome to <span className="text-muorange">µLearn</span>{" "}
             Announcements
           </p>
           <p className="mt-2 font-poppins md:mt-4 md:text-lg">
