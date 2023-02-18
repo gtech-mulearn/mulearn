@@ -44,7 +44,8 @@ const Career = () => {
               title="Founders Intern"
               image="/assets/careers/nucore-logo.png"
               duration="6 months"
-              payment="12K - 15K"
+              payment="10K - 15K"
+              location="Work from Office"
               lastdate="21st February"
               applylink="https://airtable.com/shrmbFmOfdZXm77Jt"
             />
