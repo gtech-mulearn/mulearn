@@ -98,7 +98,7 @@ const ArtOfTeaching = () => {
               </div>
 
               <div className={styles.fv_buttons}>
-                <button className={styles.create}>Registerations Closed</button>
+                <button className={styles.create}>Registrations Closed</button>
               </div>
             </div>
             <div className={styles.fv_images}>
