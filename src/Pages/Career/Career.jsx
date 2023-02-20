@@ -35,8 +35,38 @@ const Career = () => {
 
         <div className={styles.second_section}>
           <p className={styles.ssheading}>
-            <span className={styles.ssheadingspan}>Nucore</span>{" "}
-            Hiring Call
+            <span className={styles.ssheadingspan}>µLearn X Yip</span> Hiring
+            Call
+          </p>
+          <p className={styles.ssheadingtagline}>
+            We want people with integrity, who are fair, impartial, honest, and
+            truthful. We are looking for dynamic and adaptable individuals who
+            are not afraid to think creatively and to be proactive, flexible,
+            and responsive.
+          </p>
+          <div className={styles.opportunities}>
+            <CareersCard
+              title="District Coordinator"
+              duration="1 Year"
+              payment="INR 15K - 20K/Month"
+              criteria="Click View More"
+              vacancy="03"
+              location="Respective Districts"
+              lastdate="27th February"
+              jdlink="https://mulearn.org/jd"
+              applylink="https://mulearn.org/jd"
+            />
+          </div>
+          <p className={styles.ssheadingposttagline}>
+            If you think you embody these values, we would love to see some of
+            them! Apply for a full-time/part-time/paid/volunteer position with
+            us here.
+          </p>
+        </div>
+
+        <div className={styles.second_section}>
+          <p className={styles.ssheading}>
+            <span className={styles.ssheadingspan}>Nucore</span> Hiring Call
           </p>
 
           <div className={styles.opportunities}>
