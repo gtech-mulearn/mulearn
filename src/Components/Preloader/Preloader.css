@@ -1,0 +1,19 @@
+.preloader-wrapper {
+  display: grid;
+}
+
+.preloader,
+.preloader-logo {
+  grid-area: 1 / 1;
+}
+
+.preloader-logo img {
+  width: 70px;
+}
+
+.preloader-logo {
+  z-index: 10;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
