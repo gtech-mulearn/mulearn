@@ -52,7 +52,7 @@ const Career = () => {
               criteria="Click View More"
               vacancy="03"
               location="Respective Districts"
-              lastdate="27th February"
+              lastdate="24th February"
               jdlink="https://mulearn.org/jd"
               applylink="https://mulearn.org/jd"
             />
