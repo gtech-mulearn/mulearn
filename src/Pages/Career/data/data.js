@@ -18,6 +18,40 @@ const ClosedCarrersData = [
   // },
   {
     id: 1,
+    date: "21/092/2022",
+    Title: "Nucore Hiring Call",
+    Company: "Nucore",
+    Roles: ["Founders Intern"],
+    Duration: "6 months",
+    location: "Work from Office",
+    poster: "",
+  },
+  {
+    id: 2,
+    date: "21/02/2023",
+    Title: "EY - Hiring Call",
+    Company: "EY",
+    Roles: [
+      "Project Manager Intern",
+      "Buisness Analyst Intern",
+      "Full Stack Developer Intern",
+      "Database Consultant Intern Intern",
+    ],
+    location: "Kochi or Trivandrum",
+    poster: "",
+  },
+  {
+    id: 3,
+    date: "22/02/2023",
+    Title: "Citizen Digital - Hiring Call",
+    Company: "Citizen Digitial",
+    Duration: "2-3 months",
+    Roles: ["Fundraising Intern"],
+    location: "Remote",
+    poster: "",
+  },
+  {
+    id: 4,
     date: "01/24/2023",
     Title: "µLearn Interns Call",
     Company: "GTech µLearn",
@@ -33,7 +67,7 @@ const ClosedCarrersData = [
       "https://www.notion.so/mulearn/Roles-Responsibilities-a3b213ddc2dc49179f5fbbcaa1ce909a",
   },
   {
-    id: 1,
+    id: 5,
     date: "11/25/2022",
     Title: "Undaku Hiring Call",
     Company: "Undaku",
@@ -49,7 +83,7 @@ const ClosedCarrersData = [
       "https://drive.google.com/drive/folders/1opmVcSOXbgnGmih61tp4qlmG7QBrWyYC?usp=sharing",
   },
   {
-    id: 2,
+    id: 6,
     date: "11/18/2022",
     Title: "µLearn X Yip Hiring Call",
     Company: "µLearn",
@@ -62,7 +96,7 @@ const ClosedCarrersData = [
       "https://mulearn.notion.site/Roles-Responsibilities-2c4bec241ba742c1a4508f3a94531c2e",
   },
   {
-    id: 3,
+    id: 7,
     date: "11/18/2022",
     Title: "µLearn X Yip Hiring Call",
     Company: "µLearn",
@@ -75,7 +109,7 @@ const ClosedCarrersData = [
       "https://mulearn.notion.site/Roles-Responsibilities-2c4bec241ba742c1a4508f3a94531c2e",
   },
   {
-    id: 4,
+    id: 8,
     date: "11/18/2022",
     Title: "µLearn X Yip Hiring Call",
     Company: "µLearn",
@@ -88,7 +122,7 @@ const ClosedCarrersData = [
       "https://mulearn.notion.site/Roles-Responsibilities-2c4bec241ba742c1a4508f3a94531c2e",
   },
   {
-    id: 5,
+    id: 9,
     date: "11/18/2022",
     Title: "µLearn X Yip Hiring Call",
     Company: "µLearn",
@@ -101,7 +135,7 @@ const ClosedCarrersData = [
       "https://mulearn.notion.site/Roles-Responsibilities-2c4bec241ba742c1a4508f3a94531c2e",
   },
   {
-    id: 6,
+    id: 10,
     date: "11/18/2022",
     Title: "µLearn X Yip Hiring Call",
     Company: "µLearn",
@@ -114,7 +148,7 @@ const ClosedCarrersData = [
       "https://mulearn.notion.site/Roles-Responsibilities-2c4bec241ba742c1a4508f3a94531c2e",
   },
   {
-    id: 7,
+    id: 11,
     date: "08/13/2022",
     Title: "Hiring Call GTech",
     Company: "GTech",
@@ -130,7 +164,7 @@ const ClosedCarrersData = [
       "https://media.discordapp.net/attachments/771679365124718612/1007975429317070878/GTech_intern_call.jpeg?width=357&height=635",
   },
   {
-    id: 8,
+    id: 12,
     date: "07/13/2022",
     Title: "SunTec Hiring Call",
     Company: "SunTec",
@@ -161,7 +195,7 @@ const ClosedCarrersData = [
   //     "https://media.discordapp.net/attachments/771679365124718612/996042039588294757/Hiring-_Cirrus_Labs_2.png?width=357&height=635",
   // },
   {
-    id: 10,
+    id: 13,
     date: "06/12/2022",
     Title: "Softnotions Intern Call",
     Company: "Softnotions",
@@ -172,7 +206,7 @@ const ClosedCarrersData = [
       "https://media.discordapp.net/attachments/771679365124718612/985548840021147698/Hiring_-_Softnotions.png?width=357&height=635",
   },
   {
-    id: 11,
+    id: 14,
     date: "04/21/2022",
     Title: "Alokin Cocoon 2.0",
     Company: "Alokin",
@@ -206,7 +240,7 @@ const ClosedCarrersData = [
   //     "https://media.discordapp.net/attachments/771679365124718612/964148486176124958/Hiring-_Cirrus_Labs-1.png?width=357&height=635",
   // },
   {
-    id: 13,
+    id: 15,
     date: "01/01/2022",
     Title: "GTech µLearn | Hiring Call",
     Company: "GTech µLearn",
@@ -221,7 +255,7 @@ const ClosedCarrersData = [
       "https://media.discordapp.net/attachments/771679365124718612/926832199330852864/We_Are_Hiring_Poster_Facebook_Post_6.png?width=720&height=604",
   },
   {
-    id: 14,
+    id: 16,
     date: "12/21/2021",
     Title: "GTech µLearn | Call for Interns",
     Company: "GTech µLearn",
@@ -232,7 +266,7 @@ const ClosedCarrersData = [
       "https://media.discordapp.net/attachments/771679365124718612/922891893254266910/bot-dev.jpeg?width=635&height=635",
   },
   {
-    id: 15,
+    id: 17,
     date: "12/11/2021",
     Title: "Team Ecesis - Claruz Digital",
     Company: "Ecesis",
@@ -268,6 +302,6 @@ const ClosedCarrersData = [
     poster:
       "https://cdn.discordapp.com/attachments/771679365124718612/1022379252701728778/DDP-_Post.png",
   },
-];
+]
 
-export default ClosedCarrersData;
+export default ClosedCarrersData
