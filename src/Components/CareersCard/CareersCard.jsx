@@ -1,81 +1,69 @@
 import React from "react"
 import styles from "./CareersCard.module.css"
 
-const CareersCard = ({
-  title,
-  image,
-  about,
-  payment,
-  vacancy,
+const Card = ({
+  role,
+  remuneration,
+  vacancies,
   location,
-  criteria,
-  duration,
   lastdate,
-  jdlink,
+  duration,
+  logo,
   applylink,
+  jdlink,
 }) => {
   return (
-    <div className={styles.opportunity}>
-      <div className={styles.op_texts}>
-        <div className={styles.head_logo}>
-          <p className={styles.op_header}>{title}</p>
-          <div className={styles.op_logo}>
-            <img src={image} alt="" className={styles.company_logo} />
-          </div>
-        </div>
-        <div className={styles.card_contents}>
-          {/* <p className={styles.op_text}>{about}</p> */}
-          {payment && (
-            <p className={styles.op_text}>
-              <span>Remuneration: </span>
-              {payment}
-            </p>
-          )}
-
-          {criteria && (
-            <p className={styles.op_text}>
-              <span>Criteria: </span>
-              {criteria}
-            </p>
-          )}
-
-          {vacancy && (
-            <p className={styles.op_text}>
-              <span>No. of Vacancy: </span>
-              {vacancy}
-            </p>
-          )}
-
-          {location && (
-            <p className={styles.op_text}>
-              <span>Location: </span>
-              {location}
-            </p>
-          )}
-          <p className={styles.op_text}>
-            <span>Last Date To Apply: </span>
-            {lastdate}
-          </p>
-          {duration && (
-            <p className={styles.op_text}>
-              <span>Duration </span>
-              {duration}
-            </p>
-          )}
-        </div>
-        <div className={styles.op_buttons}>
-          {/* {jdlink && <a href={jdlink} target="_blank" rel="noopener noreferrer">
-            <button className={styles.op_jobdescription}>View More</button>
-          </a>} */}
-          {applylink && (
-            <a href={applylink} target="_blank" rel="noopener noreferrer">
-              <button className={styles.op_jobdescription}>Apply Now</button>
-            </a>
-          )}
-        </div>
+    <div className={styles.card}>
+      <img src={logo} alt="Company Logo" className={styles.card_logo} />
+      <p className={styles.card_title}>{role}</p>
+      <p className={styles.card_info}>
+        {remuneration && (
+          <>
+            <span className={styles.card_label}>Remuneration:</span>
+            <span className={styles.card_value}>{remuneration}</span>
+          </>
+        )}
+        {vacancies && (
+          <>
+            <span className={styles.card_label}>Vacancies:</span>
+            <span className={styles.card_value}>{vacancies}</span>
+          </>
+        )}
+      </p>
+      <p className={styles.card_info}>
+        {location && (
+          <>
+            <span className={styles.card_label}>Location:</span>
+            <span className={styles.card_value}>{location}</span>
+          </>
+        )}
+        {lastdate && (
+          <>
+            <span className={styles.card_label}>Last Date:</span>
+            <span className={styles.card_value}>{lastdate}</span>
+          </>
+        )}
+        {duration && (
+          <>
+            <span className={styles.card_label}>Duration:</span>
+            <span className={styles.card_value}>{duration}</span>
+          </>
+        )}
+      </p>
+      <div className={styles.card_buttons}>
+        {applylink && (
+          <a href={applylink} target="_blank" rel="noopener noreferrer">
+            <button className={styles.card_button}>Apply Now</button>
+          </a>
+        )}
+        {jdlink && (
+          <a href={jdlink} target="_blank" rel="noopener noreferrer">
+            <button className={styles.card_button}>View JD</button>
+          </a>
+        )}
       </div>
     </div>
   )
 }
 
-export default CareersCard
+export default Card
