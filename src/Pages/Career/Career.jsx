@@ -81,6 +81,30 @@ const Career = () => {
           </div>
         </div>
       </div>
+      <div className={styles.main_container}>
+        <div className={styles.second_view_container}>
+          <div className={styles.hiring_name}>Previous Hiring Calls</div>
+          <div className={styles.hiring_tagline}>
+            Listed below are the list of hiring calls that were announced
+            through career labs previously.
+          </div>
+          <div className={styles.cards_container}>
+            {newHiring.yip.map((role) => (
+              <CareersCard
+                logo={role.logo}
+                role={role.role}
+                remuneration={role.remuneration}
+                vacancies={role.vacancies}
+                location={role.location}
+                lastdate={role.lastdate}
+                applylink={role.applylink}
+                jdlink={role.jdlink}
+                duration={role.duration}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
       <Footer />
     </>
   )
