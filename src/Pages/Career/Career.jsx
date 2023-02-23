@@ -4,10 +4,13 @@ import Navbar from "../../Components/Navbar/Navbar"
 import styles from "./Career.module.css"
 
 import CareersCard from "../../Components/CareersCard/CareersCard"
+import ClosedCareersCard from "../../Components/ClosedCareers/ClosedCareers"
 
 const Career = () => {
   let companies = require("./data/companies.json")
   let newHiring = require("./data/newHiringCall.json")
+  let previousHiring = require("./data/previousHiringCall.json")
+
   return (
     <>
       <Navbar />
@@ -89,16 +92,19 @@ const Career = () => {
             through career labs previously.
           </div>
           <div className={styles.cards_container}>
-            {newHiring.yip.map((role) => (
-              <CareersCard
+            {previousHiring.map((role) => (
+              <ClosedCareersCard
                 logo={role.logo}
-                role={role.role}
+                title={role.title}
+                company={role.company}
+                qualifications={role.qualifications}
+                remumeration={role.remumeration}
+                date={role.date}
+                roles={role.roles}
                 remuneration={role.remuneration}
-                vacancies={role.vacancies}
                 location={role.location}
                 lastdate={role.lastdate}
-                applylink={role.applylink}
-                jdlink={role.jdlink}
+                poster={role.poster}
                 duration={role.duration}
               />
             ))}

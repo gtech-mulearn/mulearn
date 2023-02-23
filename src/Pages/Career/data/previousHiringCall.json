@@ -74,7 +74,7 @@
       "Content Writer Intern",
       "MEAN Stack Developer Intern"
     ],
-    "Package": "INR 5K-10K",
+    "remuneration": "INR 5K-10K",
     "location": "Kochi, Kerala, India",
     "qualifications": ["Click View More"],
     "poster": "https://drive.google.com/drive/folders/1opmVcSOXbgnGmih61tp4qlmG7QBrWyYC?usp=sharing"
@@ -85,7 +85,7 @@
     "title": "µLearn X Yip Hiring Call",
     "company": "µLearn",
     "duration": "1 Year",
-    "Package": "INR 60K - 80K/Month",
+    "remuneration": "INR 60K - 80K/Month",
     "qualifications": ["Click View More"],
     "roles": ["Program Manager"],
     "location": "Trivandrum",
@@ -97,7 +97,7 @@
     "title": "µLearn X Yip Hiring Call",
     "company": "µLearn",
     "duration": "1 Year",
-    "Package": "INR 20K - 40K/Month",
+    "remuneration": "INR 20K - 40K/Month",
     "qualifications": ["Click View More"],
     "roles": ["Operations Coordinator"],
     "location": "Trivandrum",
@@ -109,7 +109,7 @@
     "title": "µLearn X Yip Hiring Call",
     "company": "µLearn",
     "duration": "1 Year",
-    "Package": "INR 20K - 40K/Month",
+    "remuneration": "INR 20K - 40K/Month",
     "qualifications": ["Click View More"],
     "roles": ["Zonal Coordinator"],
     "location": "Across Kerala",
@@ -121,7 +121,7 @@
     "title": "µLearn X Yip Hiring Call",
     "company": "µLearn",
     "duration": "1 Year",
-    "Package": "INR 15K - 20K/Month",
+    "remuneration": "INR 15K - 20K/Month",
     "qualifications": ["Click View More"],
     "roles": ["District Coordinator"],
     "location": "Across Kerala",
@@ -133,7 +133,7 @@
     "title": "µLearn X Yip Hiring Call",
     "company": "µLearn",
     "duration": "1 Year",
-    "Package": "INR 20K - 40K/Month",
+    "remuneration": "INR 20K - 40K/Month",
     "qualifications": ["Click View More"],
     "location": "Trivandrum",
     "roles": ["Creative Coordinator"],
@@ -160,7 +160,7 @@
     "title": "SunTec Hiring Call",
     "company": "SunTec",
     "roles": ["Associate Software Engineers"],
-    "Package": "5 LPA",
+    "remuneration": "5 LPA",
     "qualifications": [
       "Year of Graduation – 2021/2022",
       "65% marks throughout education (no active back logs)",
@@ -178,9 +178,8 @@
     "id": 9,
     "date": "07/11/2022",
     "title": "Cirrus Labs Hiring Call",
-    "qualifications": null,
     "company": "Cirrus Labs",
-    "Stipend": "20,000 / Month",
+    "remuneration": "20,000 / Month",
     "poster": "https://media.discordapp.net/attachments/771679365124718612/996042039588294757/Hiring-_Cirrus_Labs_2.png?width=357&height=635"
   },
   {
@@ -210,19 +209,14 @@
       "Computer Science/MCA/MTech in IT",
       "Computer Science/ MSc Software Engineering"
     ],
-    "Stipend": [
-      "During the training & probation period the candidate will be paid a monthly CTC of Rs.25,000/-",
-      "Post completion of probation, the candidate will be given a raise to 3.6 LPA"
-    ],
     "poster": "https://media.discordapp.net/attachments/771679365124718612/966592691037171712/Hiring_-_Alokin_Cocoon_2.0_1.png?width=357&height=634"
   },
   {
     "id": 12,
     "date": "04/19/2022",
     "title": "Cirrus Labs Hiring Call",
-    "qualifications": null,
     "company": "Cirrus Labs",
-    "Stipend": "20,000 / Month",
+    "remuneration": "20,000 / Month",
     "poster": "https://media.discordapp.net/attachments/771679365124718612/964148486176124958/Hiring-_Cirrus_Labs-1.png?width=357&height=635"
   },
   {
@@ -256,11 +250,7 @@
     "company": "Ecesis",
     "duration": "3 Months | 6 Months",
     "roles": ["Digital Marketing", "UI UX Designing", "Content Writing"],
-    "Stipend": [
-      "For 6 months - 15 k per month",
-      "For 3 months - 20 k in total"
-    ],
-    "qualifications": "Students currently enrolled in the 2nd/3rd/4th Year Of technical degrees from recognized universities can apply",
+    "qualifications": ["Students currently enrolled in the 2nd/3rd/4th Year Of technical degrees from recognized universities can apply"],
     "poster": ""
   },
   {
