@@ -1,5 +1,19 @@
 [
   {
+    "date": "02/24/2022",
+    "logo": "/assets/careers/companies/yip.webp",
+    "roles": ["District Coordinator"],
+    "company": "Yip",
+    "title": "Yip x µLearn",
+    "remuneration": "INR 15K - 20K/Month",
+    "vacancies": "03",
+    "location": "Respective Districts",
+    "lastdate": "24th February",
+    "duration": "1 Year",
+    "applylink": "https://mulearn.org/jd",
+    "jdlink": ""
+  },
+  {
     "id": 0,
     "date": "09/17/2022",
     "title": "Citizen Digital Foundation",
@@ -250,7 +264,9 @@
     "company": "Ecesis",
     "duration": "3 Months | 6 Months",
     "roles": ["Digital Marketing", "UI UX Designing", "Content Writing"],
-    "qualifications": ["Students currently enrolled in the 2nd/3rd/4th Year Of technical degrees from recognized universities can apply"],
+    "qualifications": [
+      "Students currently enrolled in the 2nd/3rd/4th Year Of technical degrees from recognized universities can apply"
+    ],
     "poster": ""
   },
   {
