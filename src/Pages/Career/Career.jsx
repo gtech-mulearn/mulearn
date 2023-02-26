@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react"
-import Footer from "../../Components/Footer/Footer"
-import Navbar from "../../Components/Navbar/Navbar"
-import styles from "./Career.module.css"
+import React, { useEffect, useState } from "react";
+import Footer from "../../Components/Footer/Footer";
+import Navbar from "../../Components/Navbar/Navbar";
+import styles from "./Career.module.css";
 
-import CareersCard from "../../Components/CareersCard/CareersCard"
-import ClosedCareersCard from "../../Components/ClosedCareers/ClosedCareers"
+import CareersCard from "../../Components/CareersCard/CareersCard";
+import ClosedCareersCard from "../../Components/ClosedCareers/ClosedCareers";
 
 const Career = () => {
-  let companies = require("./data/companies.json")
-  let newHiring = require("./data/newHiringCall.json")
-  let previousHiring = require("./data/previousHiringCall.json")
+  let companies = require("./data/companies.json");
+  let newHiring = require("./data/newHiringCall.json");
+  let previousHiring = require("./data/previousHiringCall.json");
 
   return (
     <>
@@ -36,9 +36,7 @@ const Career = () => {
               </p>
               <p className={styles.hiring_count}>
                 <span className={styles.count}>20+</span>
-                <span className={styles.count_text}>
-                  Companies
-                </span>
+                <span className={styles.count_text}>Companies</span>
               </p>
               <p className={styles.hiring_count}>
                 <span className={styles.count}>30+</span>
@@ -60,8 +58,13 @@ const Career = () => {
       </div>
       <div className={styles.main_container}>
         <div className={styles.second_view_container}>
+          <div className={styles.hiring_name}>New Hiring Calls</div>
+          <div className={styles.hiring_tagline}>
+            Listed below are the list of hiring calls that were announced
+            through career labs previously.
+          </div>
           <div className={styles.cards_container}>
-            {newHiring.yip.map((role) => (
+            {newHiring.techfunic.map((role) => (
               <CareersCard
                 logo={role.logo}
                 role={role.role}
@@ -106,7 +109,7 @@ const Career = () => {
       </div>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Career
+export default Career;

@@ -180,4 +180,6 @@
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: stretch;
+  row-gap: 1rem;
+  column-gap: 1rem;
 }

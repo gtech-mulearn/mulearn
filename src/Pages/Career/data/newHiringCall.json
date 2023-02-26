@@ -1,5 +1,48 @@
 {
-  "yip": [
-    
+  "techfunic": [
+    {
+      "logo": "/assets/careers/companies/techfunic.webp",
+      "role": "Operation Intern",
+      "remuneration": "INR 5K - 10K/Month",
+      "vacancies": "01",
+      "location": "Remote",
+      "lastdate": "1st March",
+      "duration": "3 - 6 Months",
+      "applylink": "",
+      "jdlink": ""
+    },
+    {
+      "logo": "/assets/careers/companies/techfunic.webp",
+      "role": "Marketing Intern",
+      "remuneration": "INR 10K",
+      "vacancies": "01",
+      "location": "Remote",
+      "lastdate": "1st March",
+      "duration": "3 - 6 Months",
+      "applylink": "https://mulearn.org/jd",
+      "jdlink": ""
+    },
+    {
+      "logo": "/assets/careers/companies/faya.jpg",
+      "role": "Angular Interns",
+      "remuneration": "INR 20K",
+      "vacancies": "01",
+      "location": "Remote",
+      "lastdate": "1st March",
+      "duration": "3 Months",
+      "applylink": "",
+      "jdlink": ""
+    },
+    {
+      "logo": "/assets/careers/companies/nucore.webp",
+      "role": "Customer Support Analytics Intern",
+      "remuneration": "INR 10K",
+      "vacancies": "01",
+      "location": "Remote",
+      "lastdate": "1st March",
+      "duration": "4 - 6 Months",
+      "applylink": "",
+      "jdlink": ""
+    }
   ]
 }
