@@ -17,4 +17,4 @@ RUN npm run build
 
 FROM nginx:1.23.3-alpine
 EXPOSE 80
-COPY --from=builder ./usr/src/app/build /usr/share/nginx/html
+COPY --from=builder ./usr/src/app/dist /usr/share/nginx/html
