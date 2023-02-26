@@ -16,5 +16,15 @@ RUN npm run build
 
 
 FROM nginx:1.23.3-alpine
+
+# Remove the default Nginx configuration file
+RUN rm /etc/nginx/conf.d/default.conf 
+
+# Copy nginx custome configuration file
+COPY ./nginx/default.conf  /etc/nginx/conf.d
+
+# Expose port 80 to the host machine
 EXPOSE 80
-COPY --from=builder ./usr/src/app/dist /usr/share/nginx/html
+
+# Copy the  build files to the container
+COPY --from=builder ./usr/src/app/build /usr/share/nginx/html
