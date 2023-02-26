@@ -60,11 +60,10 @@ const Career = () => {
         <div className={styles.second_view_container}>
           <div className={styles.hiring_name}>New Hiring Calls</div>
           <div className={styles.hiring_tagline}>
-            Listed below are the list of hiring calls that were announced
-            through career labs previously.
+          Unlock your potential and accelerate your career growth with the endless opportunities available on Career Labs
           </div>
           <div className={styles.cards_container}>
-            {newHiring.techfunic.map((role) => (
+            {newHiring.newcalls.map((role) => (
               <CareersCard
                 logo={role.logo}
                 role={role.role}
