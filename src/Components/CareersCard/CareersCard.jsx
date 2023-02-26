@@ -64,7 +64,7 @@ const Card = ({
         )}
         {jdlink && (
           <a href={jdlink} target="_blank" rel="noopener noreferrer">
-            <button className={styles.card_button}>View JD</button>
+            <button className={styles.card_button_outline}>View JD</button>
           </a>
         )}
       </div>
