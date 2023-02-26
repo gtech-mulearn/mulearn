@@ -23,6 +23,8 @@ const Card = ({
             <span className={styles.card_value}>{remuneration}</span>
           </>
         )}
+      </p>
+      <p className={styles.card_info}>
         {vacancies && (
           <>
             <span className={styles.card_label}>Vacancies:</span>
@@ -37,12 +39,16 @@ const Card = ({
             <span className={styles.card_value}>{location}</span>
           </>
         )}
+      </p>
+      <p className={styles.card_info}>
         {lastdate && (
           <>
             <span className={styles.card_label}>Last Date:</span>
             <span className={styles.card_value}>{lastdate}</span>
           </>
         )}
+      </p>
+      <p className={styles.card_info}>
         {duration && (
           <>
             <span className={styles.card_label}>Duration:</span>

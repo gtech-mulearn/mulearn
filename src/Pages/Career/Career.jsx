@@ -37,7 +37,7 @@ const Career = () => {
               <p className={styles.hiring_count}>
                 <span className={styles.count}>20+</span>
                 <span className={styles.count_text}>
-                  Companies & Organisations
+                  Companies
                 </span>
               </p>
               <p className={styles.hiring_count}>
@@ -60,13 +60,6 @@ const Career = () => {
       </div>
       <div className={styles.main_container}>
         <div className={styles.second_view_container}>
-          <div className={styles.hiring_name}>Yip X µLearn Hiring Call</div>
-          <div className={styles.hiring_tagline}>
-            We want people with integrity, who are fair, impartial, honest, and
-            truthful. We are looking for dynamic and adaptable individuals who
-            are not afraid to think creatively and to be proactive, flexible,
-            and responsive.
-          </div>
           <div className={styles.cards_container}>
             {newHiring.yip.map((role) => (
               <CareersCard
