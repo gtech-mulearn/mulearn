@@ -27,4 +27,4 @@ COPY ./nginx/default.conf  /etc/nginx/conf.d
 EXPOSE 80
 
 # Copy the  build files to the container
-COPY --from=builder ./usr/src/app/dist /usr/share/nginx/html
+COPY --from=builder ./usr/src/app/dist/portal /usr/share/nginx/html
