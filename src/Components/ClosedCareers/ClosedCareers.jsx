@@ -47,11 +47,11 @@ const ClosedCareersCard = ({
               <strong>Location:</strong> {location}
             </li>
           )}
-          {poster && (
+          {/* {poster && (
             <a href={poster} target="_blank" rel="noopener noreferrer">
               <button className={styles.apply}>View More</button>
             </a>
-          )}
+          )} */}
         </ul>
       </div>
     </div>
