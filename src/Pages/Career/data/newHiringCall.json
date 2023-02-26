@@ -1,5 +1,24 @@
 {
-  "yip": [
-    
+  "newcalls": [
+    {
+      "logo": "/assets/careers/companies/nucore.webp",
+      "role": "Customer Support Analytics Intern",
+      "remuneration": "INR 10K",
+      "location": "Remote",
+      "lastdate": "1st March",
+      "duration": "4 - 6 Months",
+      "applylink": "https://airtable.com/shrb8jQAvm9m4xjzk",
+      "jdlink": ""
+    },
+    {
+      "logo": "/assets/careers/companies/faya.jpg",
+      "role": "Angular Interns",
+      "remuneration": "INR 20K",
+      "location": "Work From Office",
+      "lastdate": "1st March",
+      "duration": "3 Months",
+      "applylink": "https://airtable.com/shrWhtam9ja5GxNfr",
+      "jdlink": ""
+    }
   ]
 }

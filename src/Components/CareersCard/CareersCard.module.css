@@ -4,7 +4,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 24px;
   font-family: sans-serif;
-  max-width: 350px;
+  width: 20rem;
   border: 2px solid #1e3760;
 }
 h2 {
