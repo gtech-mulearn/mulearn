@@ -1,0 +1,398 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    color: #172B4D;
+}
+
+/* Navbar */
+
+.nav {
+    min-height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 100px;
+    background-color: #fff;
+    box-shadow: 0px 1.9821px 9.91048px rgba(0, 0, 0, 0.15);
+}
+
+.nav .logo {
+    background-image: url(./assets/images/Logo.png);
+    height: 30px;
+    width: 100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.nav .profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 200px;
+}
+
+.nav .profile img {
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+    border-radius: 15px 15px 0px 0px;
+    cursor: pointer;
+}
+
+/* profile */
+
+
+.profile_page {
+    padding: 60px;
+    background: linear-gradient(180deg, #E5F1F5 0%, #F2F8FA 100%);
+    min-height: 100vh;
+}
+
+.profile_page .profile_container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 70%;
+    margin: auto;
+    /* flex-wrap: wrap; */
+}
+
+.profile_page .profile_container .profile {
+    min-height: 400px;
+    min-width: 650px;
+    max-height: 500px;
+    background-color: #fff;
+    border-radius: 15px;
+    margin: 20px;
+}
+
+.profile_page .profile_container .profile .cover_image img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.profile_page .profile_container .profile .profile_details_div {
+    padding: 20px;
+}
+
+.profile_page .profile_container .profile .profile_details_div img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: -90px;
+}
+
+.profile_page .profile_container .profile .profile_details_div .profile_details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.profile_page .profile_container .profile .profile_details_div .profile_details .profile_detail h1 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.profile_page .profile_container .profile .profile_details_div .profile_details .profile_detail .area_of_intersts {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+.profile_page .profile_container .profile .profile_details_div .profile_details .profile_detail .area_of_intersts p {
+    padding: 2px 8px;
+    font-size: 12px;
+    color: #2791B5;
+    font-weight: 500;
+    border-radius: 30px;
+    border: 1px solid #2791B5;
+    margin-top: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.profile_page .profile_container .profile .profile_details_div .profile_details .profile_social {
+    display: flex;
+    width: 200px;
+    justify-content: space-around;
+}
+
+.profile_page .profile_container .profile .profile_details_div .profile_details .profile_social p {
+    background: #F2F8FA;
+    padding: 10px;
+    border-radius: 100px;
+    min-width: 35px;
+    min-height: 35px;
+    color: #2791B5;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Task */
+
+.tasks {
+    min-height: 550px;
+    min-width: 650px;
+    max-height: 550px;
+    background-color: #fff;
+    border-radius: 15px;
+    margin: 20px;
+    padding: 20px;
+}
+
+.tasks h2 {
+    color: #2791B5;
+    font-weight: 500;
+}
+
+.tasks .tasks_div {
+    margin-top: 20px;
+}
+
+.tasks .tasks_div .task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.tasks .tasks_div .task p {
+    color: #686868;
+}
+
+/* karma */
+
+.karma {
+    min-height: 200px;
+    min-width: 350px;
+    max-height: 250px;
+    background-color: #fff;
+    border-radius: 15px;
+    margin: 20px;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+    color: #404D61;
+}
+
+.karma .bg_img {
+    background-image: url(./assets/images/karmabg.png);
+    height: 160px;
+    width: 160px;
+    background-repeat: no-repeat;
+    mix-blend-mode: luminosity;
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+}
+
+.karma .flex_div {
+    display: flex;
+    flex-direction: column;
+}
+
+.karma .karma_coin_img_div {
+    height: 80px;
+    width: 80px;
+    margin: auto auto 20px auto;
+    background: rgba(255, 191, 25, 0.16);
+    border-radius: 50%;
+    /* margin: auto; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.karma .karma_coin_img_div .karma_coin_img {
+    background-image: url(./assets/images/karmacoin.png);
+    height: 70%;
+    width: 70%;
+    background-repeat: no-repeat;
+    margin: auto;
+}
+
+.karma .karma_point {
+    font-size: 4rem;
+    font-weight: 700;
+    color: black;
+    text-align: center;
+    line-height: 70px;
+}
+
+/* Recent */
+
+.recent {
+    min-height: 350px;
+    min-width: 350px;
+    max-height: 250px;
+    background-color: #fff;
+    border-radius: 15px;
+    margin: 20px;
+    padding: 20px;
+    position: relative;
+    color: #404D61;
+}
+
+.recent h2 {
+    color: #2791B5;
+    font-weight: 500;
+}
+
+.recent .recent_div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0px;
+}
+
+/* Roles */
+
+.roles {
+    min-height: 350px;
+    min-width: 350px;
+    max-height: 250px;
+    background-color: #fff;
+    border-radius: 15px;
+    margin: 20px;
+    padding: 20px;
+    position: relative;
+    color: #404D61;
+}
+
+.roles h2 {
+    color: #2791B5;
+    font-weight: 500;
+}
+
+.roles .roles_div {
+    margin: 10px 25px;
+
+}
+
+.roles .roles_div li {
+    color: #868686;
+}
+
+/* responsive */
+
+@media screen and (max-width: 1500px) {
+    .profile_page .profile_container {
+        justify-content: space-evenly;
+        max-width: 80%;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+
+    .profile_page .profile_container .profile,
+    .tasks {
+        min-width: 550px;
+    }
+}
+
+@media screen and (max-width: 980px) {
+
+    .profile_page .profile_container .profile,
+    .tasks {
+        min-width: 450px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .profile_page .profile_container {
+        flex-wrap: wrap;
+    }
+
+    .karma {
+        min-height: 150px;
+    }
+
+    .karma .flex_div {
+        height: 140px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .profile_page .profile_container .profile,
+    .tasks,
+    .karma,
+    .recent,
+    .roles {
+        min-width: 550px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .nav {
+        padding: 20px 20px;
+    }
+
+    .profile_page .profile_container .profile,
+    .tasks,
+    .karma,
+    .recent,
+    .roles {
+        min-width: 450px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .profile_page .profile_container .profile .profile_details_div .profile_details {
+        flex-direction: column;
+    }
+
+    .profile_page .profile_container .profile .profile_details_div {
+        text-align: center;
+    }
+
+    .profile_page .profile_container .profile .profile_details_div img {
+        margin: -90px auto auto;
+    }
+
+    .profile_page .profile_container .profile .profile_details_div .profile_details .profile_social {
+        margin-top: 20px;
+    }
+
+    .tasks {
+        min-height: auto;
+    }
+
+    .tasks .tasks_div .task p:nth-child(2) {
+        display: none;
+    }
+
+    .profile_page .profile_container .profile,
+    .tasks,
+    .karma,
+    .recent,
+    .roles {
+        min-width: 380px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .nav .profile {
+        justify-content: flex-end;
+    }
+
+    .nav .profile p {
+        display: none;
+    }
+
+    .profile_page .profile_container .profile,
+    .tasks,
+    .karma,
+    .recent,
+    .roles {
+        min-width: 350px;
+    }
+}
