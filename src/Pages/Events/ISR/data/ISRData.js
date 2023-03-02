@@ -601,6 +601,13 @@ const ISRData = [
     image: "assets/events/isr/ISRPictures/Amritha G S.webp",
     description: "Keep trying until you keep winning  - That's a good motto to live byThis week on Inspiration Station Radio, we have Amritha G S, an Electrical & Electronics Engineering Graduate from Trinity College Of Engineering. Amritha is currently a Product Development Intern at Gapinuvi Health Allianz Private Limited. She was a Discord Manager Intern at GTech 𝝁Learn and is currently a Moderator. Amritha is the backbone of our operations on Discord(Yup, thank her for quickly checking your submissions 💯) ",
     date: "31/01/2023",
+  },
+  {
+    id: "70",
+    speaker: "Saurav S Chandran",
+    image: "assets/events/isr/ISRPictures/Saurav S Chandran",
+    description: "Have you ever struggled with managing multiple things at once ❓ Today we'll meet an expert in that category. This week on Inspiration Station Radio, we have Sourav S Chandran , who is currently persuing a career in film making and music. Sourav has been playing the violin 🎻 for the last ten years and is a session artist, and has performed in several shows. He is passionate about film making🎥 and as a motion designer, he has worked with experts from several gaming industry titans including EA Sports, Ubisoft ,Rockstar and Walt Disney. He has previously done work for companies like Amazon , Swiggy, and Flipkart 🤩",
+    date: "07/02/2023",
   }
 ];
 
