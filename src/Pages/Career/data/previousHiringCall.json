@@ -1,6 +1,39 @@
 [
   {
-    "date": "02/24/2022",
+    "logo": "/assets/careers/companies/faya.jpg",
+    "title": "Faya Hiring Call",
+    "roles": ["Angular Interns"],
+    "remuneration": "INR 20K/Month",
+    "location": "Work From Office",
+    "lastdate": "1st March",
+    "duration": "3 Months",
+    "applylink": "",
+    "jdlink": "https://drive.google.com/file/d/1b3wj7s66DLgr0CtDjyngQqBRButmvpvp/view?usp=sharing"
+  },
+  {
+    "logo": "/assets/careers/companies/techfunic.webp",
+    "title": "Techfunic Hiring Call",
+    "roles": ["Operation Intern"],
+    "remuneration": "INR 5K - 10K/Month",
+    "location": "Remote",
+    "lastdate": "1st March",
+    "duration": "3 - 6 Months",
+    "applylink": "",
+    "jdlink": "https://drive.google.com/file/d/1r8C9GnuENpPX5P5FFTFky_nRPdujI6Ur/view?usp=sharing"
+  },
+  {
+    "logo": "/assets/careers/companies/techfunic.webp",
+    "title": "Techfunic Hiring Call",
+    "roles": ["Marketing Intern"],
+    "remuneration": "INR 10K/Month",
+    "location": "Remote",
+    "lastdate": "1st March",
+    "duration": "3 - 6 Months",
+    "applylink": "",
+    "jdlink": ""
+  },
+  {
+    "date": "02/24/2023",
     "logo": "/assets/careers/companies/yip.webp",
     "roles": ["District Coordinator"],
     "company": "Yip",
@@ -15,7 +48,7 @@
   },
   {
     "id": 0,
-    "date": "09/17/2022",
+    "date": "09/17/2023",
     "title": "Citizen Digital Foundation",
     "company": "Citizen Digital Foundation",
     "roles": [
@@ -31,7 +64,7 @@
   },
   {
     "id": 1,
-    "date": "21/02/2022",
+    "date": "21/02/2023",
     "title": "Nucore Hiring Call",
     "company": "Nucore",
     "roles": ["Founders Intern"],
