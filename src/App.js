@@ -28,6 +28,7 @@ import HackathonKarma from "./Pages/HackathonKarma/HackathonKarma";
 import NotFound from "./Pages/404/NotFound";
 import EventsHome from "./Pages/Events/EventsHome/EventsHome";
 import CommunityLanding from "./Pages/CommunityLanding/CommunityLanding";
+import CampusLogoGenerator from "./Pages/CampusLogoGen/CampusLogoGen";
 
 function App() {
   return (
@@ -68,6 +69,7 @@ function App() {
           <Route path="/earnkarma" element={<HackathonKarma />} />
           <Route path="/events" element={<EventsHome />} />
           <Route path="/community-partners/:id" element={<CommunityLanding />} />
+          <Route path="/campus-logo" element={<CampusLogoGenerator />} />
         </Routes>
       </Router>
     </div>
