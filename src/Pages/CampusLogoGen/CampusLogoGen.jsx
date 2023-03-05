@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as htmlToImage from "html-to-image";
 
 import styles from "./campusLogoGen.module.css";
@@ -7,6 +7,10 @@ import logoWhite from "../../images/campuslogo/logo-white.svg";
 import stripes from "../../images/campuslogo/stripes.svg";
 
 const CampusLogoGenerator = () => {
+  useEffect(() => {
+    document.title = "Campus Logo Generator";
+  }, []);
+
   const domEl = useRef(null);
 
   const [campusCode, setCampusCode] = useState("");
@@ -130,9 +134,9 @@ const CampusLogoGenerator = () => {
           value={campusCode}
           onChange={handleTextChange}
         />
-          <span className="mb-8  text-sm text-gray-500 self-end">
-            {charCount}/{MAX_CHARS}
-          </span>
+        <span className="mb-8  text-sm text-gray-500 self-end">
+          {charCount}/{MAX_CHARS}
+        </span>
 
         <label class="block mb-3 text-sm font-medium">Logo Type</label>
         <div className="flex gap-4 mb-8">

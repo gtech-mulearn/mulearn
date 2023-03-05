@@ -231,7 +231,7 @@ const CampusChapters = () => {
                   </p>
                 </div>
                 <a
-                  href="http://mulearn.org/campus-logo-generator"
+                  href="/campus-logo-generator"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
