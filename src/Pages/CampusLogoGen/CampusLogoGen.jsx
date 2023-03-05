@@ -43,12 +43,12 @@ const CampusLogoGenerator = () => {
   };
 
   return (
-    <div className="flex">
-      <div className="flex justify-center items-center gap-24 w-full h-screen p-8 border-r-2 bg-gray-500">
+    <div className="flex flex-col sm:flex-row">
+      <div className="flex justify-center items-center gap-24 w-full sm:h-screen p-8 border-r-2 bg-gray-500">
         {/* Square Display */}
         <div
           ref={domEl}
-          className="relative w-80 h-80 flex justify-center"
+          className="relative w-72 h-72 flex justify-center"
           style={
             logoType === "Transparent Bg"
               ? { backgroundColor: "#00000000", color: logoColor }
@@ -71,7 +71,7 @@ const CampusLogoGenerator = () => {
             <img src={stripes} className="absolute w-full h-full" />
           )}
 
-          <span id={styles.campusCode} className="absolute text-2xl">
+          <span id={styles.campusCode} className="absolute text-xl">
             {campusCode ? campusCode : "Campus Code"}
           </span>
         </div>
@@ -79,7 +79,7 @@ const CampusLogoGenerator = () => {
         {/* Round Display */}
         {logoType === "Profile Pic" && (
           <div
-            className="relative rounded-full w-80 h-80 flex justify-center"
+            className="relative hidden rounded-full w-72 h-72 lg:flex justify-center"
             style={
               logoType === "Transparent Bg"
                 ? { backgroundColor: "#00000000", color: logoColor }
@@ -102,14 +102,15 @@ const CampusLogoGenerator = () => {
               src={stripes}
               className="absolute w-full h-full rounded-full"
             />
-            <span id={styles.campusCode} className="absolute text-2xl">
+            <span id={styles.campusCode} className="absolute text-xl">
               {campusCode ? campusCode : "Campus Code"}
             </span>
           </div>
         )}
-        
       </div>
-      <form className="w-1/2 max-w-sm h-screen p-8 flex flex-col">
+
+      {/* Controls */}
+      <form className="w-full md:w-1/2 sm:max-w-lg h-screen p-8 flex flex-col">
         <label class="block mb-3 text-sm font-medium">Campus Code</label>
         <input
           type="text"
@@ -127,7 +128,7 @@ const CampusLogoGenerator = () => {
                 logoType === type
                   ? "bg-gray-800 text-white"
                   : "border border-gray-300 text-gray-900"
-              } px-4 py-2 rounded-lg cursor-pointer`}
+              } px-4 py-2 rounded-lg cursor-pointer text-center`}
               onClick={() => setLogoType(type)}
             >
               {type}
