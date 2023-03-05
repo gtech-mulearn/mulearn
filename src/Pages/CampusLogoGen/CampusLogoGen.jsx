@@ -4,11 +4,12 @@ import * as htmlToImage from "html-to-image";
 import styles from "./campusLogoGen.module.css";
 import logoBlack from "../../images/campuslogo/logo-black.svg";
 import logoWhite from "../../images/campuslogo/logo-white.svg";
+import stripes from "../../images/campuslogo/stripes.svg";
 
 const CampusLogoGenerator = () => {
   const domEl = useRef(null);
 
-  const [campusCode, setCampusCode] = useState("Campus Code");
+  const [campusCode, setCampusCode] = useState("");
   const [logoType, setLogoType] = useState("Profile Pic");
   const [logoColor, setLogoColor] = useState("#ffffff");
   const [logoBgColor, setLogoBgColor] = useState("#f5365c");
@@ -64,8 +65,12 @@ const CampusLogoGenerator = () => {
             className="w-2/3"
             alt="Logo"
           />
+          <img
+            src={stripes}
+            className="absolute w-full h-full"
+            />
           <span id={styles.campusCode} className="absolute text-2xl">
-            {campusCode}
+            {campusCode ? campusCode : "Campus Code"}
           </span>
         </div>
       </div>
