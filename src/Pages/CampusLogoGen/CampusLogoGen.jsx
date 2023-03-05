@@ -44,10 +44,11 @@ const CampusLogoGenerator = () => {
 
   return (
     <div className="flex">
-      <div className="flex justify-center items-center w-full h-screen p-8 border-r-2 bg-gray-500">
+      <div className="flex justify-center items-center gap-24 w-full h-screen p-8 border-r-2 bg-gray-500">
+        {/* Square Display */}
         <div
           ref={domEl}
-          className="relative w-80 h-80 flex align-middle justify-center"
+          className="relative w-80 h-80 flex justify-center"
           style={
             logoType === "Transparent Bg"
               ? { backgroundColor: "#00000000", color: logoColor }
@@ -65,14 +66,48 @@ const CampusLogoGenerator = () => {
             className="w-2/3"
             alt="Logo"
           />
-          <img
-            src={stripes}
-            className="absolute w-full h-full"
-            />
+
+          {logoType === "Profile Pic" && (
+            <img src={stripes} className="absolute w-full h-full" />
+          )}
+
           <span id={styles.campusCode} className="absolute text-2xl">
             {campusCode ? campusCode : "Campus Code"}
           </span>
         </div>
+
+        {/* Round Display */}
+        {logoType === "Profile Pic" && (
+          <div
+            className="relative rounded-full w-80 h-80 flex justify-center"
+            style={
+              logoType === "Transparent Bg"
+                ? { backgroundColor: "#00000000", color: logoColor }
+                : { backgroundColor: logoBgColor, color: "#ffffff" }
+            }
+          >
+            <img
+              src={
+                logoType === "Profile Pic"
+                  ? logoWhite
+                  : logoColor == "#ffffff"
+                  ? logoWhite
+                  : logoBlack
+              }
+              className="w-2/3"
+              alt="Logo"
+            />
+
+            <img
+              src={stripes}
+              className="absolute w-full h-full rounded-full"
+            />
+            <span id={styles.campusCode} className="absolute text-2xl">
+              {campusCode ? campusCode : "Campus Code"}
+            </span>
+          </div>
+        )}
+        
       </div>
       <form className="w-1/2 max-w-sm h-screen p-8 flex flex-col">
         <label class="block mb-3 text-sm font-medium">Campus Code</label>
