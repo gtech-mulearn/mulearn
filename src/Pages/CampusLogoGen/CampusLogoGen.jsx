@@ -110,7 +110,7 @@ const CampusLogoGenerator = () => {
       </div>
 
       {/* Controls */}
-      <form className="w-full md:w-1/2 sm:max-w-lg h-screen p-8 flex flex-col">
+      <form className="w-full sm:w-1/2 md:w-1/3 sm:max-w-lg h-screen p-8 flex flex-col">
         <label class="block mb-3 text-sm font-medium">Campus Code</label>
         <input
           type="text"
