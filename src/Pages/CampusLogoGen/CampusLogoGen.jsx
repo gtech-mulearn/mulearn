@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as htmlToImage from "html-to-image";
 
 import styles from "./campusLogoGen.module.css";
@@ -7,18 +7,32 @@ import logoWhite from "../../images/campuslogo/logo-white.svg";
 import stripes from "../../images/campuslogo/stripes.svg";
 
 const CampusLogoGenerator = () => {
+  useEffect(() => {
+    document.title = "Campus Logo Generator";
+  }, []);
+
   const domEl = useRef(null);
 
   const [campusCode, setCampusCode] = useState("");
+  const [charCount, setCharCount] = useState(0);
   const [logoType, setLogoType] = useState("Profile Pic");
   const [logoColor, setLogoColor] = useState("#ffffff");
   const [logoBgColor, setLogoBgColor] = useState("#f5365c");
   const [fileType, setFileType] = useState("PNG");
 
+  const MAX_CHARS = 15;
   const logoTypes = ["Profile Pic", "Transparent Bg"];
   const logoColors = ["#ffffff", "#000000"];
   const logoBgColors = ["#f5365c", "#172b4d", "#fb6340", "#12bbda", "#5e72e4"];
   const fileTypes = ["PNG", "SVG"];
+
+  function handleTextChange(event) {
+    const value = event.target.value;
+    if (value.length <= MAX_CHARS) {
+      setCampusCode(value);
+      setCharCount(value.length);
+    }
+  }
 
   const downloadImg = async () => {
     let dataUrl;
@@ -48,7 +62,7 @@ const CampusLogoGenerator = () => {
         {/* Square Display */}
         <div
           ref={domEl}
-          className="relative w-72 h-72 flex justify-center"
+          className="relative overflow-hidden w-72 h-72 flex justify-center"
           style={
             logoType === "Transparent Bg"
               ? { backgroundColor: "#00000000", color: logoColor }
@@ -79,7 +93,7 @@ const CampusLogoGenerator = () => {
         {/* Round Display */}
         {logoType === "Profile Pic" && (
           <div
-            className="relative hidden rounded-full w-72 h-72 lg:flex justify-center"
+            className="relative overflow-hidden hidden rounded-full w-72 h-72 lg:flex justify-center"
             style={
               logoType === "Transparent Bg"
                 ? { backgroundColor: "#00000000", color: logoColor }
@@ -115,11 +129,15 @@ const CampusLogoGenerator = () => {
         <input
           type="text"
           id="campusCode"
-          class="mb-8 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-muorange focus:border-muorange block w-full p-2.5"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-muorange focus:border-muorange block w-full p-2.5"
           placeholder="Enter Campus Code"
           value={campusCode}
-          onChange={(e) => setCampusCode(e.target.value)}
+          onChange={handleTextChange}
         />
+        <span className="mb-8  text-sm text-gray-500 self-end">
+          {charCount}/{MAX_CHARS}
+        </span>
+
         <label class="block mb-3 text-sm font-medium">Logo Type</label>
         <div className="flex gap-4 mb-8">
           {logoTypes.map((type) => (
