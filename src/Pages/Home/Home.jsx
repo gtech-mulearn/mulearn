@@ -7,6 +7,8 @@ import Testimonials from "../../Components/Testimonials/Testimonials"
 import CountUp from "react-countup"
 
 import "./Home.scss"
+import MyComponent from "../../Components/TermsAndConditionsModel/TermsAndConditionsModel"
+import TermsAndConditionsModal from "../../Components/TermsAndConditionsModel/TermsAndConditionsModel"
 
 const Home = () => {
   return (
@@ -465,6 +467,8 @@ const Home = () => {
         </div>
       </div>
       <Testimonials />
+     <TermsAndConditionsModal/>
+     <MyComponent/>
       <Footer />
     </>
   )
