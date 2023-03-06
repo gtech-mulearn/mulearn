@@ -1,32 +1,7 @@
-.submenu {
-  border: 2px solid #F78C40;
-  padding: 0rem 0.3rem;
-  margin-right: 0.1rem;
-  border-radius: 5px;
-  transition: background-color 0.2s ease, border-radius 0.2s ease;
-}
-
-.submenu:hover{
-  background-color: #f59b5b;
-  color: white;
-  cursor: pointer;
-  border-radius:0;
-  border-color: #111827;
-  
-}
-.active_submenu {
-  background-color: #F78C40;
-  color: white;
-  cursor: pointer;
-  border-radius: 0;
-}
-
-
 .firstviewmain_container {
   opacity: 1;
   padding: 2rem 2rem 0;
 }
-
 
 .first_view {
   display: flex;
@@ -138,7 +113,6 @@
     grid-template-columns: 1fr 1fr;
     column-gap: 2rem;
   }
- 
 }
 
 @media only screen and (min-width: 992px) {
