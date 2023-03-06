@@ -1,5 +1,7 @@
 /assets/mail/* https://assets.mulearn.org/mail/:splat
 /socialmedia   https://zaap.bio/mulearn
+/logo-assets   https://mulearn.notion.site/Logo-9d35ee1a1fb34f36a95a38370c79ffee
+/gtechmarathon https://registrations.indiarunning.com/gtech-marathon-2023
 
 /teachersday   https://airtable.com/shrtVWDZKbKk2x7Gi
 /hacktoberfest-form  https://airtable.com/shrdL020Lg928MzkT
@@ -19,10 +21,14 @@
 /huddleregister https://airtable.com/shr4l8cGXHbzIg3gD
 /fie https://airtable.com/shrz7Cim38N0NpUIL
 /zero2maker https://midnight-jacket-695.notion.site/Zero2Maker-30daa5bf23ac4a419cdcd4d2de552a72
+/fosshack https://fossunited.org/fosshack/2023/online-ticket/new
+/FOSS-CIL https://airtable.com/shr4s62F1B2ryclXy
 
+/feb-intern-meet https://docs.google.com/spreadsheets/d/1bk-0l5Z87pydpX8jBlRpm9WT81tfTB6WLXw25nDrDno/edit#gid=137636792
 /examprep https://airtable.com/shrTcoedWYzANgLph
 /mucalendar https://airtable.com/shr06RYRNJ4Pd3tor
 /exercism https://airtable.com/shrG9YpKaxySO8cMk
+/oh-fd-response https://airtable.com/shrnGWbG51WgpguXb/tblUgEIRKIHV6545t
 
 /examprepvideo https://mulearn.notion.site/Reel-Competition-52a5fdfef3d449b6a2aa5cd36cd2aaa2
 
@@ -34,7 +40,6 @@
 /robotics  https://www.startupindia.gov.in/content/sih/en/ams-application/challenge.html?applicationId=63076443e4b080c62a86edfd
 /pcbdesign https://us06web.zoom.us/j/89714447782?pwd=Q1dwNmtYemxxZlF1dVgxUlJNS1Fwdz09
 
-/campus-logo-generator  https://mulearn-logo-gen.surge.sh
 /jd https://bubbly-weaver-662.notion.site/District-Coordinator-d2d7748ad0954332b45bea7734fcdfa4
 /howto https://mulearn.org/earnkarma
 
@@ -52,19 +57,22 @@
 /ui-team-whatsapp https://chat.whatsapp.com/BsuXrfT7BszEgxPzz5twzb
 /discord-team-whatsapp https://chat.whatsapp.com/JHRxur6yQLx4ydjvt3Q5uh
 
-
+/marathon-whatsapp https://chat.whatsapp.com/BrLgfKVjk057tp1ZdZOeoA
 
 /announcements-whatsapp https://chat.whatsapp.com/IPxUtfw5E0TELhvX59ceci
 
 /hq-whatsapp https://chat.whatsapp.com/KBvymVWlqmkAQ3CjSlMKbu
 /career-labs-hq https://chat.whatsapp.com/BiQZDto7WSH3BiNpkT2BWV
 /apprentices https://chat.whatsapp.com/ENQCkRy64zI3dIROBKsO34
-
+/socialmedia https://chat.whatsapp.com/GuMUQHiriDO4M2e475LFes
+/frontend https://chat.whatsapp.com/DDMcBEDAkRs6UV9aBKZS1L
+/whatsapp-community https://chat.whatsapp.com/IHx7eFJERYk6ysaVf2rFI0
 
 /campus-hq-whatsapp https://chat.whatsapp.com/HYnvV7CoqbmBFZJn0zVfdr
 /campus-leads-whatsapp https://chat.whatsapp.com/GK0UZpP5NZFEHyHUyGtt7T
 /zonal-leads-whatsapp https://chat.whatsapp.com/J0VzMyPimb08hp6Yt0PORU
 /ig-leads-whatsapp https://chat.whatsapp.com/Lv1hOCc7C8kItFWG8kgTtB
+/campus-ig-leads-whatsapp https://chat.whatsapp.com/DBAnxd7UY3G71PUFFLDuZY 
 /mutate-2022-whatsapp https://chat.whatsapp.com/HZ8wTg2AP1LBvYFmntmUV0
 
 
@@ -88,7 +96,11 @@
 /javascript https://learn.mulearn.org/bootcamps/javascript
 /python https://learn.mulearn.org/bootcamps/python
 /bootcamps https://learn.mulearn.org/bootcamps
+/marathon https://learn.mulearn.org/challenge/marathon
+/hackout https://learn.mulearn.org/challenge/hackout
 
+
+/office-hours-feedback https://airtable.com/shrMl6evpiQjyKcyM
 
 
 /android-bootcamp-status https://airtable.com/shrL5PGs8WNtjuk8r
@@ -111,6 +123,7 @@
 /web-ig-whatsapp https://chat.whatsapp.com/GCsHGgfbsU63sadN6m5uip
 /paperswelove-ig-whatsapp https://chat.whatsapp.com/LDWmn6nCeOP81HnfRLff1y
 /devops-ig-whatsapp https://chat.whatsapp.com/BwsJ5tEnS3o5XVfVR3IUBN
+/mad-ig-whatsapp https://chat.whatsapp.com/CV6uugWwRCIJ1OoU8PPZZU
 
 
 /ai-think-tank https://chat.whatsapp.com/KYj1Lh5Xci7EZrjaj0ZDGK
@@ -131,5 +144,6 @@
 /yipsprint1 https://us06web.zoom.us/meeting/register/tZUkde6hqT0vHdQkCbtuMvcaZC1MYH7tiOPg
 /yipsprint2 https://us06web.zoom.us/meeting/register/tZckduurqTIuGdw9kBO0Hu3YutZKUmWJaXck
 /portfolio https://airtable.com/shrNp3V8qNpiN1LPS
+/magazine https://online.fliphtml5.com/jqxey/vjgf/
 
 /*  /index.html 200
