@@ -1,4 +1,4 @@
-name: React CI
+name: Prod React CI/CD
 
 on:
   push:
