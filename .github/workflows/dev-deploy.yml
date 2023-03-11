@@ -1,0 +1,51 @@
+name: React CI
+
+on:
+  push:
+    branches: [ "dev-server" ]
+  pull_request:
+    branches: [ "dev-server" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm install
+
+    # - name: Run the tests
+    #   run: npm run test
+
+    - name: Build
+      env:
+        REACT_APP_LEADERBOARD_API: ${{ secrets.REACT_APP_LEADERBOARD_API }}
+      run: npm run build
+    
+    - name: Configure SSH key
+      uses: webfactory/ssh-agent@v0.4.1
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }} 
+
+    - name: Deploy
+      env:
+        REMOTE_IP: ${{ secrets.REMOTE_IP }}
+        FRONT_PROJECT_PATH: ${{ secrets.FRONT_PROJECT_PATH }}
+      run: |
+        ssh -o StrictHostKeyChecking=no ubuntu@$REMOTE_IP "rm -f $FRONT_PROJECT_PATH/*"
+        rsync -avz -e "ssh -o StrictHostKeyChecking=no" build/* ubuntu@$REMOTE_IP:$FRONT_PROJECT_PATH
