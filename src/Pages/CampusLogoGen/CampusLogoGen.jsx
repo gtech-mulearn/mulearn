@@ -82,7 +82,7 @@ const CampusLogoGenerator = () => {
           />
 
           {logoType === "Profile Pic" && (
-            <img alt="imageprofile" src={stripes} className="absolute w-full h-full" />
+            <img alt="picprofile" src={stripes} className="absolute w-full h-full" />
           )}
 
           <span id={styles.campusCode} className="absolute text-xl">
@@ -114,7 +114,7 @@ const CampusLogoGenerator = () => {
 
             <img
               src={stripes}
-              alt="stripes image"
+              alt="stripespic"
               className="absolute w-full h-full rounded-full"
             />
             <span id={styles.campusCode} className="absolute text-xl">
