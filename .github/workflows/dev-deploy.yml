@@ -47,5 +47,5 @@ jobs:
         REMOTE_IP: ${{ secrets.REMOTE_IP }}
         FRONT_PROJECT_PATH: ${{ secrets.FRONT_PROJECT_PATH }}
       run: |
-        ssh -o StrictHostKeyChecking=no ubuntu@$REMOTE_IP "rm -f $FRONT_PROJECT_PATH/*"
+        ssh -o StrictHostKeyChecking=no ubuntu@$REMOTE_IP "rm -fr $FRONT_PROJECT_PATH/*"
         rsync -avz -e "ssh -o StrictHostKeyChecking=no" build/* ubuntu@$REMOTE_IP:$FRONT_PROJECT_PATH
