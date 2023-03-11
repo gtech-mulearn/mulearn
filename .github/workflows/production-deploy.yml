@@ -2,9 +2,9 @@ name: React CI
 
 on:
   push:
-    branches: [ "dev-server" ]
+    branches: [ "production" ]
   pull_request:
-    branches: [ "dev-server" ]
+    branches: [ "production" ]
   workflow_dispatch:
 
 jobs:
@@ -40,11 +40,11 @@ jobs:
     - name: Configure SSH key
       uses: webfactory/ssh-agent@v0.4.1
       with:
-        ssh-private-key: ${{ secrets.DEV_SSH_PRIVATE_KEY }} 
+        ssh-private-key: ${{ secrets.PROD_SSH_PRIVATE_KEY }} 
 
     - name: Deploy
       env:
-        REMOTE_IP: ${{ secrets.DEV_REMOTE_IP }}
+        REMOTE_IP: ${{ secrets.PROD_REMOTE_IP }}
         FRONT_PROJECT_PATH: ${{ secrets.FRONT_PROJECT_PATH }}
       run: |
         ssh -o StrictHostKeyChecking=no ubuntu@$REMOTE_IP "rm -fr $FRONT_PROJECT_PATH/*"
