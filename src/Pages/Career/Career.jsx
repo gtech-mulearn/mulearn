@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import Footer from "../../Components/Footer/Footer";
-import Navbar from "../../Components/Navbar/Navbar";
-import styles from "./Career.module.css";
+import React from "react"
+import Footer from "../../Components/Footer/Footer"
+import Navbar from "../../Components/Navbar/Navbar"
+import styles from "./Career.module.css"
 
-import CareersCard from "../../Components/CareersCard/CareersCard";
-import ClosedCareersCard from "../../Components/ClosedCareers/ClosedCareers";
+import CareersCard from "../../Components/CareersCard/CareersCard"
+import ClosedCareersCard from "../../Components/ClosedCareers/ClosedCareers"
 
 const Career = () => {
-  let companies = require("./data/companies.json");
-  let newHiring = require("./data/newHiringCall.json");
-  let previousHiring = require("./data/previousHiringCall.json");
+  let companies = require("./data/companies.json")
+  let newHiring = require("./data/newHiringCall.json")
+  let previousHiring = require("./data/previousHiringCall.json")
 
   return (
     <>
@@ -56,29 +56,32 @@ const Career = () => {
           />
         ))}
       </div>
-      <div className={styles.main_container}>
-        <div className={styles.second_view_container}>
-          <div className={styles.hiring_name}>New Hiring Calls</div>
-          <div className={styles.hiring_tagline}>
-          Unlock your potential and accelerate your career growth with the endless opportunities available on Career Labs
-          </div>
-          <div className={styles.cards_container}>
-            {newHiring.newcalls.map((role) => (
-              <CareersCard
-                logo={role.logo}
-                role={role.role}
-                remuneration={role.remuneration}
-                vacancies={role.vacancies}
-                location={role.location}
-                lastdate={role.lastdate}
-                applylink={role.applylink}
-                jdlink={role.jdlink}
-                duration={role.duration}
-              />
-            ))}
+      {newHiring.newcalls.length > 0 && (
+        <div className={styles.main_container}>
+          <div className={styles.second_view_container}>
+            <div className={styles.hiring_name}>New Hiring Calls</div>
+            <div className={styles.hiring_tagline}>
+              Unlock your potential and accelerate your career growth with the
+              endless opportunities available on Career Labs
+            </div>
+            <div className={styles.cards_container}>
+              {newHiring.newcalls.map((role) => (
+                <CareersCard
+                  logo={role.logo}
+                  role={role.role}
+                  remuneration={role.remuneration}
+                  vacancies={role.vacancies}
+                  location={role.location}
+                  lastdate={role.lastdate}
+                  applylink={role.applylink}
+                  jdlink={role.jdlink}
+                  duration={role.duration}
+                />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <div className={styles.main_container}>
         <div className={styles.second_view_container}>
           <div className={styles.hiring_name}>Previous Hiring Calls</div>
@@ -108,7 +111,7 @@ const Career = () => {
       </div>
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default Career;
+export default Career

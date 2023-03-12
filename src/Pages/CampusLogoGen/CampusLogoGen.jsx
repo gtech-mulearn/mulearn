@@ -73,7 +73,7 @@ const CampusLogoGenerator = () => {
             src={
               logoType === "Profile Pic"
                 ? logoWhite
-                : logoColor == "#ffffff"
+                : logoColor === "#ffffff"
                 ? logoWhite
                 : logoBlack
             }
@@ -82,7 +82,7 @@ const CampusLogoGenerator = () => {
           />
 
           {logoType === "Profile Pic" && (
-            <img src={stripes} className="absolute w-full h-full" />
+            <img alt="picprofile" src={stripes} className="absolute w-full h-full" />
           )}
 
           <span id={styles.campusCode} className="absolute text-xl">
@@ -104,7 +104,7 @@ const CampusLogoGenerator = () => {
               src={
                 logoType === "Profile Pic"
                   ? logoWhite
-                  : logoColor == "#ffffff"
+                  : logoColor === "#ffffff"
                   ? logoWhite
                   : logoBlack
               }
@@ -114,6 +114,7 @@ const CampusLogoGenerator = () => {
 
             <img
               src={stripes}
+              alt="stripespic"
               className="absolute w-full h-full rounded-full"
             />
             <span id={styles.campusCode} className="absolute text-xl">
