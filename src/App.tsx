@@ -11,9 +11,9 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/portal/user/validate/:token" element={<Validate />} />
-      <Route path="/portal/user/onboarding" element={<Onboarding />} />
-      <Route path="/portal/user/profile" element={<Profile />} />
+      <Route path="user/validate/:token" element={<Validate />} />
+      <Route path="user/onboarding" element={<Onboarding />} />
+      <Route path="user/profile" element={<Profile />} />
     </Routes>
   );
 }

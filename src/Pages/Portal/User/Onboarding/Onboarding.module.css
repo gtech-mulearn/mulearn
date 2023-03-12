@@ -114,6 +114,38 @@ form .form_buttons button[type="reset"] {
   color: #5570F1;
 }
 
+.aoi_container {
+  margin-top: 20px;
+  min-width: 100%;
+}
+
+.aoi_container label {
+  cursor: pointer;
+}
+
+.aoi_container label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.aoi_container label span {
+  position: relative;
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #dde2e5;
+  border-radius: 10px;
+  margin-left: 5px;
+  user-select: none;
+}
+
+.aoi_container label input[type="checkbox"]:checked~span {
+  background-color: #5570F1;
+  color: white;
+}
+
 @media screen and (max-width: 500px) {
   .onboarding_page {
     padding: 0px;
