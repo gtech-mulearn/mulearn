@@ -137,7 +137,7 @@ form .form_buttons button[type="reset"] {
   padding: 5px 10px;
   border: 1px solid #dde2e5;
   border-radius: 10px;
-  margin-left: 5px;
+  margin: 5px 5px 5px 0px;
   user-select: none;
 }
 

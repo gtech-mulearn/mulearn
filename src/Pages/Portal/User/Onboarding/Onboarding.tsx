@@ -1,4 +1,4 @@
-import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, useDisclosure } from "@chakra-ui/react";
+// import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, useDisclosure } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import styles from "./Onboarding.module.css";
 type Props = {};
@@ -13,21 +13,21 @@ const Onboarding = (props: Props) => {
   const [phone, setPhone] = useState(0);
   const [gender, setGender] = useState("");
   const [dob, setDob] = useState("");
-  const [role, setRole] = useState("");
-  const [college, setCollege] = useState("");
-  const [company, setCompany] = useState("");
-  const [district, setDistrict] = useState("");
+  const [role, setRole] = useState([{ id: "", title: "" }]);
+  // const [college, setCollege] = useState("");
+  // const [company, setCompany] = useState("");
+  // const [district, setDistrict] = useState("");
   const [dept, setDept] = useState("");
   const [yof, setYof] = useState("");
   const [mentorRole, setMentorRole] = useState("");
-  const [hasError, setHasError] = useState(true)
+  const [hasError, setHasError] = useState({ error: false, statusCode: 0, message: "" });
 
   const [areaOfInterest, setAreaOfInterest] = useState<String[] | []>([]);
   const [orgnization, setOrgnization] = useState("");
 
-  const [newCompany, setNewCompany] = useState("");
-  const [newCollege, setNewCollege] = useState("");
-  const [newDomain, setNewDomain] = useState("");
+  // const [newCompany, setNewCompany] = useState("");
+  // const [newCollege, setNewCollege] = useState("");
+  // const [newDomain, setNewDomain] = useState("");
 
   const [collegeAPI, setCollegeAPI] = useState([{ id: "", title: "" }])
   const [departmentAPI, setDepartmentAPI] = useState([{ id: "", title: "" }])
@@ -36,33 +36,30 @@ const Onboarding = (props: Props) => {
   const [roleAPI, setRoleAPI] = useState([{ id: "", title: "" }])
   const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }])
 
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const initialRef = React.useRef(null);
-  const finalRef = React.useRef(null);
-
-  const student = "603faa33-43f8-4d1a-aaf8-8cfb739e5905"
-  const mentor = "ba71344d-3f2b-4382-8720-1005b1d9931c"
-  const enabler = "eab367b4-86b4-4f96-a531-cfbacd7fab02"
+  // const initialRef = React.useRef(null);
+  // const finalRef = React.useRef(null);
 
   //api check
   // console.log(token);
-  useEffect(() => {    
+  useEffect(() => {
     const token_check = {
       method: "GET",
-      url: import.meta.env.VITE_BACKEND_URL+'/api/v1/user/register/jwt/validate',
+      url: import.meta.env.VITE_BACKEND_URL + '/api/v1/user/register/jwt/validate',
       headers: { Authorization: 'Bearer ' + token, 'content-type': 'application/json' }
     };
     axios.request(token_check).then((response) => {
       // console.log(response.data.response);
-      setHasError(response.data.hasError);
+      setHasError({ error: response.data.hasError, statusCode: response.data.statusCode, message: response.data.message });
     }).catch((error) => {
+      setHasError(error)
       console.error(error);
     });
 
     const college = {
       method: 'GET',
-      url: import.meta.env.VITE_BACKEND_URL+'/api/v1/user/register/college/list',
+      url: import.meta.env.VITE_BACKEND_URL + '/api/v1/user/register/college/list',
       headers: { Authorization: 'Bearer ' + token, 'content-type': 'application/json' }
     };
     axios.request(college).then(function (response) {
@@ -75,7 +72,7 @@ const Onboarding = (props: Props) => {
 
     const company = {
       method: 'GET',
-      url: import.meta.env.VITE_BACKEND_URL+'/api/v1/user/register/company/list',
+      url: import.meta.env.VITE_BACKEND_URL + '/api/v1/user/register/company/list',
       headers: { Authorization: 'Bearer ' + token, 'content-type': 'application/json' }
     };
     axios.request(company).then(function (response) {
@@ -87,7 +84,7 @@ const Onboarding = (props: Props) => {
 
     const role = {
       method: 'GET',
-      url: import.meta.env.VITE_BACKEND_URL+'/api/v1/user/register/role/list',
+      url: import.meta.env.VITE_BACKEND_URL + '/api/v1/user/register/role/list',
       headers: { Authorization: 'Bearer ' + token, 'content-type': 'application/json' }
     };
 
@@ -99,7 +96,7 @@ const Onboarding = (props: Props) => {
 
     const aoi = {
       method: 'GET',
-      url: import.meta.env.VITE_BACKEND_URL+'/api/v1/user/register/areaofinterst/list',
+      url: import.meta.env.VITE_BACKEND_URL + '/api/v1/user/register/areaofinterst/list',
       headers: { Authorization: 'Bearer ' + token, 'content-type': 'application/json' }
     };
     axios.request(aoi).then(function (response) {
@@ -110,7 +107,7 @@ const Onboarding = (props: Props) => {
 
     const comunity = {
       method: 'GET',
-      url: import.meta.env.VITE_BACKEND_URL+'/api/v1/user/register/comunity/list',
+      url: import.meta.env.VITE_BACKEND_URL + '/api/v1/user/register/comunity/list',
       headers: { Authorization: 'Bearer ' + token, 'content-type': 'application/json' }
     };
     axios.request(comunity).then(function (response) {
@@ -119,7 +116,6 @@ const Onboarding = (props: Props) => {
       console.error(error);
     });
   }, [])
-
 
   return (
     <div className={styles.onboarding_page}>
@@ -179,7 +175,7 @@ const Onboarding = (props: Props) => {
           </ModalFooter>
         </ModalContent>
       </Modal> */}
-      {!hasError ? <div className={styles.form_container}>
+      {!hasError.error ? <div className={styles.form_container}>
         <h1>User Information</h1>
         <p>
           Please enter all the required information in the fields provided
@@ -191,11 +187,11 @@ const Onboarding = (props: Props) => {
             <div className={styles.inputs}>
               <div className={styles.input_container}>
                 <label htmlFor="">Full name</label>
-                <input type="text" placeholder="First name" className={styles.input} onChange={(e) => { setFirstName(e.target.value); }} />
+                <input type="text" placeholder="First name" className={styles.input} onChange={(e) => { setFirstName(e.target.value); }} required />
               </div>
               <div className={styles.input_container}>
                 <label htmlFor=""></label>
-                <input type="text" placeholder="Last name" className={styles.input} onChange={(e) => { setLastName(e.target.value); }} />
+                <input type="text" placeholder="Last name" className={styles.input} onChange={(e) => { setLastName(e.target.value); }} required />
               </div>
             </div>
             {/* <div className={styles.inputs}>
@@ -211,7 +207,7 @@ const Onboarding = (props: Props) => {
             <div className={styles.inputs}>
               <div className={styles.input_container}>
                 <label htmlFor="">Email address</label>
-                <input type="email" placeholder="username@domain.com" className={styles.input} onChange={(e) => { setEmail(e.target.value); }} />
+                <input type="email" placeholder="username@domain.com" className={styles.input} onChange={(e) => { setEmail(e.target.value); }} required />
               </div>
               <div className={styles.input_container}>
                 <label htmlFor="">Phone number</label>
@@ -219,7 +215,7 @@ const Onboarding = (props: Props) => {
                   <select style={{ width: "20%", textAlign: "center" }} name="" id="" >
                     <option value="+91">+91</option>
                   </select>
-                  <input style={{ width: "78%" }} type="number" placeholder="8023456789" onChange={(e) => { setPhone(e.target.valueAsNumber); }} />
+                  <input style={{ width: "78%" }} type="number" placeholder="8023456789" onChange={(e) => { setPhone(e.target.valueAsNumber); }} required />
                 </div>
               </div>
             </div>
@@ -239,14 +235,13 @@ const Onboarding = (props: Props) => {
                   </div>
                   <div style={{ width: "49%" }} className={styles.input_container}>
                     <label htmlFor="">Date of Birth</label>
-                    <input type="date" placeholder="dd/mm/yyyy" className={styles.input} onChange={(e) => { setDob(e.target.value); }}
-                    />
+                    <input type="date" placeholder="dd/mm/yyyy" className={styles.input} onChange={(e) => { setDob(e.target.value); }} required />
                   </div>
                 </div>
               </div>
               <div className={styles.input_container}>
                 <label htmlFor="">Role</label>
-                <select name="" id="" onChange={(e) => { setRole(e.target.value); }}>
+                <select name="" id="" onChange={(e) => { roleAPI.map((role) => { role.id === e.target.value ? setRole([{ id: e.target.value, title: role.title }]) : null }) }} required>
                   <option value="">Select</option>
                   {
                     roleAPI.map((role, i) => {
@@ -273,15 +268,15 @@ const Onboarding = (props: Props) => {
               </div>
             </div> */}
             <div className={styles.inputs}>
-              {role == student || role == enabler ? (
+              {role[0].title == "Student" || role[0].title == "Enabler" ? (
                 <>
                   <div className={styles.input_container}>
                     <div className={styles.grouped_inputs}>
-                      <div style={role == student ? { width: "78%" } : { width: "100%" }} className={styles.input_container}>
+                      <div style={role[0].title == "Student" ? { width: "78%" } : { width: "100%" }} className={styles.input_container}>
                         <label htmlFor="">College</label>
                         <div className={styles.grouped_inputs}>
                           <select style={{ width: "100%" }} //78%
-                            name="" id="" onChange={(e) => { setOrgnization(e.target.value); }}>
+                            name="" id="" onChange={(e) => { setOrgnization(e.target.value); }} required>
                             <option value="">Select</option>
                             {
                               collegeAPI.map((college, index) => {
@@ -297,15 +292,15 @@ const Onboarding = (props: Props) => {
                           /> */}
                         </div>
                       </div>
-                      {role == student ? <div style={{ width: "20%" }} className={styles.input_container}>
+                      {role[0].title == "Student" ? <div style={{ width: "20%" }} className={styles.input_container}>
                         <label htmlFor="">YOG</label>
-                        <input type="number" onChange={(e) => setYof(e.target.value)} />
+                        <input type="number" onChange={(e) => setYof(e.target.value)} required />
                       </div> : null}
                     </div>
                   </div>
                   <div className={styles.input_container}>
                     <label htmlFor="">Dept</label>
-                    <select name="" id="" onChange={(e) => { setDept(e.target.value); }} >
+                    <select name="" id="" onChange={(e) => { setDept(e.target.value); }} required>
                       <option value="">Select</option>
                       {
                         departmentAPI.map((dept, index) => {
@@ -317,28 +312,30 @@ const Onboarding = (props: Props) => {
                 </>
               ) : (
                 <>
-                  <div className={styles.input_container}>
-                    <label htmlFor="">Type</label>
-                    <div className={styles.grouped_inputs}>
-                      <select
-                        style={{ width: "100%" }} //78%
-                        name="" id="" onChange={(e) => { setMentorRole(e.target.value); }}>
-                        <option value="Select">Select</option>
-                        <option value="Company">Company</option>
-                        <option value="Community Partner">Community Partner</option>
-                        <option value="Induvidual">Induvidual</option>
-                      </select>
-                      {/* <input
+                  {
+                    role[0].title == "Mentor" ? <div className={styles.input_container}>
+                      <label htmlFor="">Type</label>
+                      <div className={styles.grouped_inputs}>
+                        <select
+                          style={{ width: "100%" }} //78%
+                          name="" id="" onChange={(e) => { setMentorRole(e.target.value); }} required>
+                          <option value="Select">Select</option>
+                          <option value="Company">Company</option>
+                          <option value="Community Partner">Community Partner</option>
+                          <option value="Induvidual">Induvidual</option>
+                        </select>
+                        {/* <input
                       style={{ width: "20%" }}
                       type="button"
                       value="ADD"
                       onClick={onOpen}
                     /> */}
-                    </div>
-                  </div>
+                      </div>
+                    </div> : null
+                  }
                   {mentorRole == "Company" ? <div className={styles.input_container}>
                     <label htmlFor="">Company</label>
-                    <select name="" id="" onChange={(e) => { setOrgnization(e.target.value); }} >
+                    <select name="" id="" onChange={(e) => { setOrgnization(e.target.value); }} required>
                       <option value="">Select</option>
                       {
                         companyAPI.map((company, index) => {
@@ -350,7 +347,7 @@ const Onboarding = (props: Props) => {
                   {mentorRole == "Community Partner" ?
                     <div className={styles.input_container}>
                       <label htmlFor="">Community</label>
-                      <select name="" id="" onChange={(e) => { setOrgnization(e.target.value); }} >
+                      <select name="" id="" onChange={(e) => { setOrgnization(e.target.value); }} required>
                         <option value="">Select</option>
                         {
                           communityAPI.map((company, index) => {
@@ -385,7 +382,7 @@ const Onboarding = (props: Props) => {
                       <label key={i}>
                         <input value={aoi.id} type="checkbox" onChange={(e) => {
                           e.target.checked ? setAreaOfInterest([...areaOfInterest, aoi.id]) : setAreaOfInterest(areaOfInterest.filter((aois) => aois != aoi.id));
-                        }} />
+                        }} required />
                         <span>{aoi.name}</span>
                       </label>
                     )
@@ -400,10 +397,9 @@ const Onboarding = (props: Props) => {
             <button type="reset">Cancel</button>
             <button type="submit" onClick={(e) => {
               e.preventDefault();
-              console.log("submit");
               const options = {
                 method: 'POST',
-                url: import.meta.env.VITE_BACKEND_URL+'/api/v1/user/register/',
+                url: import.meta.env.VITE_BACKEND_URL + '/api/v1/user/register/',
                 headers: { Authorization: 'Bearer ' + token, 'content-type': 'application/json' },
                 data: {
                   firstName: firstName,
@@ -423,12 +419,12 @@ const Onboarding = (props: Props) => {
               axios.request(options).then(function (response) {
                 console.log(response.data);
               }).catch(function (error) {
-                console.error(error);
+                console.log(error);
               });
             }}>Submit</button>
           </div>
         </form>
-      </div> : <div>error</div>}
+      </div> : <div>{hasError ? hasError.message : "Loading..."}</div>}
     </div>
   );
 };
