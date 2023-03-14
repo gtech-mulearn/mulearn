@@ -8,7 +8,7 @@
     "redirect": "https://zaap.bio/mulearn"
   },
   {
-    "route": "https://mulearn.org/logo-assets",
+    "route": "/logo-assets",
     "redirect": "https://mulearn.notion.site/Logo-9d35ee1a1fb34f36a95a38370c79ffee"
   },
   {
