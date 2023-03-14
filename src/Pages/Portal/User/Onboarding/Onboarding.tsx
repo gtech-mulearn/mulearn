@@ -408,7 +408,7 @@ const Onboarding = (props: Props) => {
                   mobile: phone,
                   gender,
                   dob,
-                  role,
+                  role : role[0]['id'],
                   organization: orgnization,
                   dept,
                   yearOfGraduation: yof,//string
