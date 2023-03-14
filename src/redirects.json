@@ -1,0 +1,274 @@
+[
+  {
+    "route": "/assets/mail/*",
+    "redirect": "https://assets.mulearn.org/mail/:splat"
+  },
+  {
+    "route": "/socialmedia",
+    "redirect": "https://zaap.bio/mulearn"
+  },
+  {
+    "route": "https://mulearn.org/logo-assets",
+    "redirect": "https://mulearn.notion.site/Logo-9d35ee1a1fb34f36a95a38370c79ffee"
+  },
+  {
+    "route": "/gtechmarathon",
+    "redirect": "https://registrations.indiarunning.com/gtech-marathon-2023"
+  },
+  {
+    "route": "/teachersday",
+    "redirect": "https://airtable.com/shrtVWDZKbKk2x7Gi"
+  },
+  {
+    "route": "/hacktoberfest-form",
+    "redirect": "https://airtable.com/shrdL020Lg928MzkT"
+  },
+  {
+    "route": "/incubation",
+    "redirect": "https://airtable.com/shrd165qphYXfddxj"
+  },
+  {
+    "route": "/permute-feedback",
+    "redirect": "https://airtable.com/shrAMnnwl5ikvQjbv"
+  },
+  {
+    "route": "/aotnominations",
+    "redirect": "https://airtable.com/shrM6RYXi7mzRicJU"
+  },
+  {
+    "route": "/android-educators",
+    "redirect": "https://airtable.com/shrAFdReoJ9aA26vh"
+  },
+  {
+    "route": "/communityform",
+    "redirect": "https://airtable.com/shrD0wpcLHliy9xoy"
+  },
+  {
+    "route": "/mentorconnect",
+    "redirect": "https://airtable.com/shrCYJKz2PVziARnr"
+  },
+  {
+    "route": "/buildmyweb",
+    "redirect": "https://airtable.com/shr2Msdg85Fhv5Bhc"
+  },
+  {
+    "route": "/eventkarma",
+    "redirect": "https://airtable.com/shrKUsvYAguP8BYAQ"
+  },
+  {
+    "route": "/eventfeedback",
+    "redirect": "https://airtable.com/shrVrEqQOOTtYXJCb"
+  },
+  {
+    "route": "/augmentedreality",
+    "redirect": "https://airtable.com/shrg6fd5aAf4fCule"
+  },
+  {
+    "route": "/quasso-liberum",
+    "redirect": "https://airtable.com/shrbps9DGNzU52wTo"
+  },
+  {
+    "route": "/rust101",
+    "redirect": "https://airtable.com/shr2FCJwD6rn83WTu"
+  },
+  {
+    "route": "/uxtask",
+    "redirect": "https://airtable.com/shr7MY3a3D2VAMIvK"
+  },
+  {
+    "route": "/huddleregister",
+    "redirect": "https://airtable.com/shr4l8cGXHbzIg3gD"
+  },
+  {
+    "route": "/fie",
+    "redirect": "https://airtable.com/shrz7Cim38N0NpUIL"
+  },
+  {
+    "route": "/zero2maker",
+    "redirect": "https://midnight-jacket-695.notion.site/Zero2Maker-30daa5bf23ac4a419cdcd4d2de552a72"
+  },
+  {
+    "route": "/fosshack",
+    "redirect": "https://fossunited.org/fosshack/2023/online-ticket/new"
+  },
+  {
+    "route": "/FOSS-CIL",
+    "redirect": "https://airtable.com/shr4s62F1B2ryclXy"
+  },
+  {
+    "route": "/feb-intern-meet",
+    "redirect": "https://docs.google.com/spreadsheets/d/1bk-0l5Z87pydpX8jBlRpm9WT81tfTB6WLXw25nDrDno/edit#gid=137636792"
+  },
+  {
+    "route": "/examprep",
+    "redirect": "https://airtable.com/shrTcoedWYzANgLph"
+  },
+  {
+    "route": "/mucalendar",
+    "redirect": "https://airtable.com/shr06RYRNJ4Pd3tor"
+  },
+  {
+    "route": "/exercism",
+    "redirect": "https://airtable.com/shrG9YpKaxySO8cMk"
+  },
+  {
+    "route": "/oh-fd-response",
+    "redirect": "https://airtable.com/shrnGWbG51WgpguXb/tblUgEIRKIHV6545t"
+  },
+  {
+    "route": "/examprepvideo",
+    "redirect": "https://mulearn.notion.site/Reel-Competition-52a5fdfef3d449b6a2aa5cd36cd2aaa2"
+  },
+  {
+    "route": "/permute-images",
+    "redirect": "https://drive.google.com/drive/folders/1b2NBrzJeyg4DrHTkXyH-S3Tm2qMX33bM"
+  },
+  {
+    "route": "/ktuinduction",
+    "redirect": "https://drive.google.com/drive/folders/1wkWKLuKg7yIo37iQ150MuTmot-zr9O_6?usp=sharing"
+  },
+  {
+    "route": "/ktuinduction",
+    "redirect": "https://drive.google.com/drive/folders/1wkWKLuKg7yIo37iQ150MuTmot-zr9O_6?usp=sharing"
+  },
+  {
+    "route": "/community-poc",
+    "redirect": "https://docs.google.com/spreadsheets/d/1xyeFGBXSmqLZio2UTbMdtYhShN4ym8rSZ2abOXr2faQ/edit?usp=sharing"
+  },
+  {
+    "route": "/robotics",
+    "redirect": "https://www.startupindia.gov.in/content/sih/en/ams-application/challenge.html?applicationId=63076443e4b080c62a86edfd"
+  },
+  {
+    "route": "/pcbdesign",
+    "redirect": "https://us06web.zoom.us/j/89714447782?pwd=Q1dwNmtYemxxZlF1dVgxUlJNS1Fwdz09"
+  },
+  {
+    "route": "/jd",
+    "redirect": "https://bubbly-weaver-662.notion.site/District-Coordinator-d2d7748ad0954332b45bea7734fcdfa4"
+  },
+  {
+    "route": "/howto",
+    "redirect": "https://mulearn.org/earnkarma"
+  },
+  {
+    "route": "/µsic",
+    "redirect": "https://meet.google.com/uos-gepp-fek"
+  },
+  {
+    "route": "/mentorumer",
+    "redirect": "http://meet.google.com/pan-ynyp-jbz"
+  },
+  {
+    "route": "/structure-history-sheet",
+    "redirect": "https://docs.google.com/spreadsheets/d/1rEc1k2sdDJO_ANVeV_GEr34_CZRw_aPYSnpme0S3hhE/edit?usp=sharing"
+  },
+  {
+    "route": "/ig-activation-sheet",
+    "redirect": "https://docs.google.com/spreadsheets/d/1dU_pFMDqTiaxhAhLPH-RHs4AaUGlM2ISWZonpM3u_QU/edit?usp=sharing"
+  },
+  {
+    "route": "/ig-report-sheet",
+    "redirect": "https://docs.google.com/spreadsheets/d/1pwlz-SIL1DfqwKwSOFy1fdTRtHJRBWNaWXE1vN8JE78/edit?usp=sharing"
+  },
+  {
+    "route": "/tech-team-whatsapp",
+    "redirect": "https://chat.whatsapp.com/K2OtVGStN6zILqwdti6E4C"
+  },
+  {
+    "route": "/backend-team-whatsapp",
+    "redirect": "https://chat.whatsapp.com/Kush7ELXmEO7SmOutunlRf"
+  },
+  {
+    "route": "/backend-core-whatsapp",
+    "redirect": "https://chat.whatsapp.com/DIsojfiEPbIAUFPffFXA2d"
+  },
+  {
+    "route": "/ui-team-whatsapp",
+    "redirect": "https://chat.whatsapp.com/BsuXrfT7BszEgxPzz5twzb"
+  },
+  {
+    "route": "/discord-team-whatsapp",
+    "redirect": "https://chat.whatsapp.com/JHRxur6yQLx4ydjvt3Q5uh"
+  },
+  {
+    "route": "/marathon-whatsapp",
+    "redirect": "https://chat.whatsapp.com/BrLgfKVjk057tp1ZdZOeoA"
+  },
+  {
+    "route": "/announcements-whatsapp",
+    "redirect": "https://chat.whatsapp.com/IPxUtfw5E0TELhvX59ceci"
+  },
+  {
+    "route": "/hq-whatsapp",
+    "redirect": "https://chat.whatsapp.com/KBvymVWlqmkAQ3CjSlMKbu"
+  },
+  {
+    "route": "/career-labs-hq",
+    "redirect": "https://chat.whatsapp.com/BiQZDto7WSH3BiNpkT2BWV"
+  },
+  {
+    "route": "/apprentices",
+    "redirect": "https://chat.whatsapp.com/ENQCkRy64zI3dIROBKsO34"
+  },
+  {
+    "route": "/socialmedia",
+    "redirect": "https://chat.whatsapp.com/GuMUQHiriDO4M2e475LFes"
+  },
+  {
+    "route": "/frontend",
+    "redirect": "https://chat.whatsapp.com/DDMcBEDAkRs6UV9aBKZS1L"
+  },
+  {
+    "route": "/whatsapp-community",
+    "redirect": "https://chat.whatsapp.com/IHx7eFJERYk6ysaVf2rFI0"
+  },
+  {
+    "route": "/campus-hq-whatsapp",
+    "redirect": "https://chat.whatsapp.com/HYnvV7CoqbmBFZJn0zVfdr"
+  },
+  {
+    "route": "/campus-leads-whatsapp",
+    "redirect": "https://chat.whatsapp.com/GK0UZpP5NZFEHyHUyGtt7T"
+  },
+  {
+    "route": "/zonal-leads-whatsapp",
+    "redirect": "https://chat.whatsapp.com/J0VzMyPimb08hp6Yt0PORU"
+  },
+  {
+    "route": "/ig-leads-whatsapp",
+    "redirect": "https://chat.whatsapp.com/Lv1hOCc7C8kItFWG8kgTtB"
+  },
+  {
+    "route": "/campus-ig-leads-whatsapp",
+    "redirect": "https://chat.whatsapp.com/DBAnxd7UY3G71PUFFLDuZY"
+  },
+  {
+    "route": "/mutate-2022-whatsapp",
+    "redirect": "https://chat.whatsapp.com/HZ8wTg2AP1LBvYFmntmUV0"
+  },
+  {
+    "route": "/om-twitch-whatsapp",
+    "redirect": "https://chat.whatsapp.com/CdIbCg4hH2n0zZUI5olM0i"
+  },
+  {
+    "route": "/sm-twitch-whatsapp",
+    "redirect": "https://chat.whatsapp.com/FyLm5lZcn1oDgdh7eJRpuq"
+  },
+  {
+    "route": "/isr-twitch-whatsapp",
+    "redirect": "https://chat.whatsapp.com/IC58tBvXgKxF7Ocgn6k0pA"
+  },
+  {
+    "route": "/enablers-2022-whatsapp",
+    "redirect": "https://chat.whatsapp.com/DttUA2WibukDxUEZ2roNj6"
+  },
+  {
+    "route": "/enablers-2023-whatsapp",
+    "redirect": "https://chat.whatsapp.com/CfFkLdDQmtBIRNkzEIVQkx"
+  },
+  {
+    "route": "/solution-challenge",
+    "redirect": "https://learn.mulearn.org/challenge/googlesolution"
+  }
+]
