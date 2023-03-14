@@ -145,7 +145,7 @@ const Home = () => {
                 className={styles.supporter}
               />
             </a>
-            <a href="#id" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.riglabs.co/" target="_blank" rel="noopener noreferrer">
               <img
                 src="/assets/home/partners/riglabs.webp"
                 alt=""
