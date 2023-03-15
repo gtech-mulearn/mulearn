@@ -52,6 +52,8 @@ h2 {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
 }
 
 .card_button {
@@ -66,7 +68,6 @@ h2 {
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-
 
 .card_button_outline {
   color: #1e3760;
