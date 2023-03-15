@@ -270,5 +270,13 @@
   {
     "route": "/solution-challenge",
     "redirect": "https://learn.mulearn.org/challenge/googlesolution"
+  },
+  {
+    "route": "/magazine",
+    "redirect": "https://online.fliphtml5.com/jqxey/vjgf/"
+  },
+  {
+    "route": "/discord",
+    "redirect": "https://discord.gg/mulearn"
   }
 ]
