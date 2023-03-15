@@ -11,6 +11,9 @@ const Card = ({
   logo,
   applylink,
   jdlink,
+  extraField,
+  extraContent,
+  extraButton,
 }) => {
   return (
     <div className={styles.card}>
@@ -56,15 +59,28 @@ const Card = ({
           </>
         )}
       </p>
+      <p className={styles.card_info}>
+        {extraField && extraContent && (
+          <>
+            <span className={styles.card_label}>{extraField}</span>
+            <span className={styles.card_value}>{extraContent}</span>
+          </>
+        )}
+      </p>
       <div className={styles.card_buttons}>
         {applylink && (
           <a href={applylink} target="_blank" rel="noopener noreferrer">
-            <button className={styles.card_button}>Apply Now</button>
+            <button className={styles.card_button}>Apply</button>
           </a>
         )}
         {jdlink && (
           <a href={jdlink} target="_blank" rel="noopener noreferrer">
             <button className={styles.card_button_outline}>View JD</button>
+          </a>
+        )}
+        {extraButton && (
+          <a href={extraButton} target="_blank" rel="noopener noreferrer">
+            <button className={styles.card_button_outline}>View Challenge</button>
           </a>
         )}
       </div>

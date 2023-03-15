@@ -76,6 +76,9 @@ const Career = () => {
                   applylink={role.applylink}
                   jdlink={role.jdlink}
                   duration={role.duration}
+                  extraField={role.extrafield?.name}
+                  extraContent={role.extrafield?.value}
+                  extraButton={role.extrafield?.link}
                 />
               ))}
             </div>
