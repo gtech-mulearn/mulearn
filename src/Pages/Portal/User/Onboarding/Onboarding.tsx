@@ -112,12 +112,15 @@ const Onboarding = (props: Props) => {
     axios
       .request(college)
       .then(function (response) {
-        // console.log(response.data.response.colleges);
-        setCollegeAPI(response.data.response.colleges)
+        const colleges = response.data.response.colleges
+        setCollegeAPI(colleges)
         setCollegeOptions(
-          collegeAPI
-            .sort((a, b) => a.title.localeCompare(b.title))
-            .map((college) => ({ value: college.id, label: college.title }))
+          colleges
+            .sort((a: any, b: any) => a.title.localeCompare(b.title))
+            .map((college: any) => ({
+              value: college.id,
+              label: college.title,
+            }))
         )
         setDepartmentAPI(response.data.response.departments)
       })
