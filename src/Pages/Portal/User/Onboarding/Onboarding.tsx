@@ -192,10 +192,10 @@ const Onboarding = (props: Props) => {
                     <div className={styles.grouped_inputs}>
                       <div style={role[0].title == "Student" ? { width: "78%" } : { width: "100%" }} className={styles.input_container}>
                         <label htmlFor="">College</label>
-                        <div className={styles.grouped_inputs}>
+                        {/* <div className={styles.grouped_inputs}>
                           <input type="text" placeholder="select college" />
-                        </div>
-                        {/* <select style={{ width: "100%" }} //78%
+                        </div> */}
+                        <select style={{ width: "100%" }} //78%
                           name="" id="" onChange={(e) => { setOrgnization(e.target.value); }} required>
                           <option value="">Select</option>
                           {
@@ -203,7 +203,7 @@ const Onboarding = (props: Props) => {
                               return <option key={index} value={college.id}>{college.title}</option>
                             })
                           }
-                        </select> */}
+                        </select>
                       </div>
 
 
