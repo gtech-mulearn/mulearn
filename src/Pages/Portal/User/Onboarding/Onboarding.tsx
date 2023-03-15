@@ -3,6 +3,7 @@ import styles from "./Onboarding.module.css"
 type Props = {}
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import ReactSelect from "react-select"
 
 const Onboarding = (props: Props) => {
   const navigate = useNavigate()
@@ -29,11 +30,43 @@ const Onboarding = (props: Props) => {
   const [orgnization, setOrgnization] = useState("")
 
   const [collegeAPI, setCollegeAPI] = useState([{ id: "", title: "" }])
+  const [collegeOptions, setCollegeOptions] = useState([
+    {
+      value: "",
+      label: "",
+    },
+  ])
   const [departmentAPI, setDepartmentAPI] = useState([{ id: "", title: "" }])
   const [companyAPI, setCompanyAPI] = useState([{ id: "", title: "" }])
   const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }])
   const [roleAPI, setRoleAPI] = useState([{ id: "", title: "" }])
   const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }])
+
+  const customStyles = {
+    control: (provided: any) => ({
+      ...provided,
+      border: "none",
+      background: "rgba(239, 241, 249, 0.6)",
+      borderRadius: "6px",
+      outline: "none",
+      marginTop: "10px",
+    }),
+    option: (provided: any, state: any) => ({
+      ...provided,
+      backgroundColor: state.isFocused ? "#F8F8F8" : "white",
+      color: "#4A4A4A",
+      padding: "8px 20px",
+      "&:hover": {
+        backgroundColor: "#F8F8F8",
+      },
+    }),
+    menu: (provided: any) => ({
+      ...provided,
+      marginTop: "0",
+      borderRadius: "0",
+      boxShadow: "none",
+    }),
+  }
 
   const yof_year = [
     2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026,
@@ -79,8 +112,16 @@ const Onboarding = (props: Props) => {
     axios
       .request(college)
       .then(function (response) {
-        // console.log(response.data.response.colleges);
-        setCollegeAPI(response.data.response.colleges)
+        const colleges = response.data.response.colleges
+        setCollegeAPI(colleges)
+        setCollegeOptions(
+          colleges
+            .sort((a: any, b: any) => a.title.localeCompare(b.title))
+            .map((college: any) => ({
+              value: college.id,
+              label: college.title,
+            }))
+        )
         setDepartmentAPI(response.data.response.departments)
       })
       .catch(function (error) {
@@ -326,24 +367,24 @@ const Onboarding = (props: Props) => {
                           {/* <div className={styles.grouped_inputs}>
                           <input type="text" placeholder="select college" />
                         </div> */}
-                          <select
-                            id="college_field"
-                            style={{ width: "100%" }} //78%
-                            name=""
-                            onChange={(e) => {
-                              setOrgnization(e.target.value)
-                            }}
-                            required
-                          >
-                            <option value="">Select</option>
-                            {collegeAPI.map((college, index) => {
-                              return (
-                                <option key={index} value={college.id}>
-                                  {college.title}
-                                </option>
-                              )
-                            })}
-                          </select>
+                          <ReactSelect
+                            value={collegeOptions.find(
+                              (college) => college.value === orgnization
+                            )}
+                            onChange={(option) =>
+                              option && setOrgnization(option.value)
+                            }
+                            options={collegeOptions}
+                            isClearable={false}
+                            placeholder="Select college..."
+                            noOptionsMessage={() => "No colleges found."}
+                            filterOption={({ label }, inputValue) =>
+                              label
+                                .toLowerCase()
+                                .includes(inputValue.toLowerCase())
+                            }
+                            styles={customStyles}
+                          />
                         </div>
 
                         {role[0].title == "Student" ? (
