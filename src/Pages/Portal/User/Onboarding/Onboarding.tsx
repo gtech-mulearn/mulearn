@@ -112,7 +112,6 @@ const Onboarding = (props: Props) => {
       console.error(error);
     });
   }, [])
-
   return (
     <div className={styles.onboarding_page}>
       {!hasError.error ? <div className={styles.form_container}>
@@ -127,17 +126,17 @@ const Onboarding = (props: Props) => {
             <div className={styles.inputs}>
               <div className={styles.input_container}>
                 <label htmlFor="">Full name</label>
-                <input type="text" placeholder="First name" className={styles.input} onChange={(e) => { setFirstName(e.target.value); }} required />
+                <input id="first_name" type="text" placeholder="First name" className={styles.input} onChange={(e) => { setFirstName(e.target.value); }} required />
               </div>
               <div className={styles.input_container}>
                 <label htmlFor=""></label>
-                <input type="text" placeholder="Last name" className={styles.input} onChange={(e) => { setLastName(e.target.value); }} required />
+                <input type="text" placeholder="Last name" className={styles.input} onChange={(e) => { setLastName(e.target.value); }} />
               </div>
             </div>
             <div className={styles.inputs}>
               <div className={styles.input_container}>
                 <label htmlFor="">Email address</label>
-                <input type="email" placeholder="username@domain.com" className={styles.input} onChange={(e) => { setEmail(e.target.value); }} required />
+                <input id="email_field" type="email" placeholder="username@domain.com" className={styles.input} onChange={(e) => { setEmail(e.target.value); }} required />
               </div>
               <div className={styles.input_container}>
                 <label htmlFor="">Phone number</label>
@@ -145,7 +144,7 @@ const Onboarding = (props: Props) => {
                   <select style={{ width: "20%", textAlign: "center" }} name="" id="" >
                     <option value="+91">+91</option>
                   </select>
-                  <input style={{ width: "78%" }} type="number" placeholder="8023456789" onChange={(e) => { setPhone(e.target.valueAsNumber); }} required />
+                  <input id="phone_field" style={{ width: "78%" }} type="number" placeholder="8023456789" onChange={(e) => { setPhone(e.target.valueAsNumber); }} required />
                 </div>
               </div>
             </div>
@@ -167,13 +166,13 @@ const Onboarding = (props: Props) => {
                   </div>
                   <div style={{ width: "49%" }} className={styles.input_container}>
                     <label htmlFor="">Date of Birth</label>
-                    <input type="date" placeholder="dd/mm/yyyy" className={styles.input} onChange={(e) => { setDob(e.target.value); }} required />
+                    <input id="gender_field" type="date" placeholder="dd/mm/yyyy" className={styles.input} onChange={(e) => { setDob(e.target.value); }} />
                   </div>
                 </div>
               </div>
               <div className={styles.input_container}>
                 <label htmlFor="">Role</label>
-                <select name="" id="" onChange={(e) => { roleAPI.map((role) => { role.id === e.target.value ? setRole([{ id: e.target.value, title: role.title }]) : null }) }} required>
+                <select id="role_field" name="" onChange={(e) => { roleAPI.map((role) => { e.target.value == "" ? setRole([{ id: "", title: "" }]) : role.id == e.target.value ? setRole([{ id: e.target.value, title: role.title }]) : null }) }} required>
                   <option value="">Select</option>
                   {
                     roleAPI.map((role, i) => {
@@ -195,8 +194,8 @@ const Onboarding = (props: Props) => {
                         {/* <div className={styles.grouped_inputs}>
                           <input type="text" placeholder="select college" />
                         </div> */}
-                        <select style={{ width: "100%" }} //78%
-                          name="" id="" onChange={(e) => { setOrgnization(e.target.value); }} required>
+                        <select id="college_field" style={{ width: "100%" }} //78%
+                          name="" onChange={(e) => { setOrgnization(e.target.value); }} required>
                           <option value="">Select</option>
                           {
                             collegeAPI.map((college, index) => {
@@ -209,23 +208,21 @@ const Onboarding = (props: Props) => {
 
                       {role[0].title == "Student" ? <div style={{ width: "20%" }} className={styles.input_container}>
                         <label htmlFor="">YOG</label>
-                        <select style={{ width: "100%" }} //78%
-                          name="" id="" onChange={(e) => setYof(e.target.value)} required>
+                        <select id="yog_field" style={{ width: "100%" }} //78%
+                          name="" onChange={(e) => setYof(e.target.value)} required>
                           <option value="">Select</option>
                           {
-                            yof_year.map((year, index) => {
-                              return <option value={year}>{year}</option>
+                            yof_year.map((year, i) => {
+                              return <option key={i} value={year}>{year}</option>
                             })
                           }
-
-
                         </select>
                       </div> : null}
                     </div>
                   </div>
                   <div className={styles.input_container}>
                     <label htmlFor="">Dept</label>
-                    <select name="" id="" onChange={(e) => { setDept(e.target.value); }} required>
+                    <select id="dept_field" name="" onChange={(e) => { setDept(e.target.value); }} required>
                       <option value="">Select</option>
                       {
                         departmentAPI.map((dept, index) => {
@@ -242,8 +239,8 @@ const Onboarding = (props: Props) => {
                       <label htmlFor="">Type</label>
                       <div className={styles.grouped_inputs}>
                         <select
-                          style={{ width: "100%" }} //78%
-                          name="" id="" onChange={(e) => { setMentorRole(e.target.value); }} required>
+                          id="mentortype_filed" style={{ width: "100%" }} //78%
+                          name="" onChange={(e) => { setMentorRole(e.target.value); }} required>
                           <option value="Select">Select</option>
                           <option value="Company">Company</option>
                           <option value="Community Partner">Community Partner</option>
@@ -254,7 +251,7 @@ const Onboarding = (props: Props) => {
                   }
                   {mentorRole == "Company" ? <div className={styles.input_container}>
                     <label htmlFor="">Company</label>
-                    <select name="" id="" onChange={(e) => { setOrgnization(e.target.value); }} required>
+                    <select id="company_field" name="" onChange={(e) => { setOrgnization(e.target.value); }} required>
                       <option value="">Select</option>
                       {
                         companyAPI.map((company, index) => {
@@ -266,7 +263,7 @@ const Onboarding = (props: Props) => {
                   {mentorRole == "Community Partner" ?
                     <div className={styles.input_container}>
                       <label htmlFor="">Community</label>
-                      <select name="" id="" onChange={(e) => { setOrgnization(e.target.value); }} required>
+                      <select id="community_field" onChange={(e) => { setOrgnization(e.target.value); }} required>
                         <option value="">Select</option>
                         {
                           communityAPI.map((company, index) => {
@@ -315,20 +312,53 @@ const Onboarding = (props: Props) => {
                   mobile: phone,
                   gender,
                   dob,
-                  role : role[0]['id'],
+                  role: role[0]['id'],
                   organization: orgnization,
                   dept,
                   yearOfGraduation: yof,//string
                   areaOfInterest
                 }
               };
-
-              axios.request(options).then(function (response) {
-                console.log(response.data);
-                navigate("/user/onboarding/success");
-              }).catch(function (error) {
-                console.log(error);
-              });
+              if (firstName != '' && email != '' && phone != 0 && role[0]['id'] != '' && orgnization != '' && areaOfInterest.length > 0) {
+                console.log("success");
+                if (role[0].title == "Student" || role[0].title == "Enabler") {
+                  if (dept != '' && yof != '') {
+                    console.log("success2");
+                    // axios.request(options).then(function (response) {
+                    //   console.log(response.data);
+                    //   navigate("/user/onboarding/success");
+                    // }).catch(function (error) {
+                    //   console.log(error);
+                    // });
+                  }
+                }
+              } else {
+                if (firstName == '') {
+                  let first_name: HTMLInputElement = document.getElementById('first_name') as HTMLInputElement;
+                  first_name.style.border = "1px solid red";
+                } else if (email == '') {
+                  let email_field: HTMLInputElement = document.getElementById('email_field') as HTMLInputElement;
+                  email_field.style.border = "1px solid red";
+                } else if (phone == 0) {
+                  let phone_field: HTMLInputElement = document.getElementById('phone_field') as HTMLInputElement;
+                  phone_field.style.border = "1px solid red";
+                } else if (role[0]['id'] == '') {
+                  let role_field: HTMLInputElement = document.getElementById('role_field') as HTMLInputElement;
+                  role_field.style.border = "1px solid red";
+                } else if (orgnization == '') {
+                  if (role[0].title == "Student" || role[0].title == "Enabler") {
+                    let dept_field: HTMLInputElement = document.getElementById('dept_field') as HTMLInputElement;
+                    dept_field.style.border = "1px solid red";
+                    let yof_field: HTMLInputElement = document.getElementById('yof_field') as HTMLInputElement;
+                    yof_field.style.border = "1px solid red";
+                  } else {
+                    let mentortype_filed: HTMLInputElement = document.getElementById('mentortype_filed') as HTMLInputElement;
+                    mentortype_filed.style.border = "1px solid red";
+                  }
+                } else if (areaOfInterest.length < 1) {
+                  alert("Please select atleast 1 area of interest")
+                }
+              }
             }}>Submit</button>
           </div>
         </form>
