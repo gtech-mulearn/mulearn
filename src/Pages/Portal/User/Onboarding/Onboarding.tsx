@@ -5,6 +5,13 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import ReactSelect from "react-select"
 
+//TODO: Success Page in same page on button click
+//TODO: Gender by Default Select
+//TODO: Form Validations(On Submit)
+//TODO: Favicon
+//TODO: Registered Users Show Success Page
+//TODO: JWT Token Wrong(Show Error Page)
+
 const Onboarding = (props: Props) => {
   const navigate = useNavigate()
   const queryParameters = new URLSearchParams(window.location.search)
@@ -26,13 +33,19 @@ const Onboarding = (props: Props) => {
   const [dept, setDept] = useState("")
   const [yog, setYog] = useState("")
   const [mentorRole, setMentorRole] = useState("")
-  const [hasError, setHasError] = useState({ error: false, statusCode: 0, message: "", })
+  const [hasError, setHasError] = useState({
+    error: false,
+    statusCode: 0,
+    message: "",
+  })
 
-  const [areaOfInterest, setAreaOfInterest] = useState<String[] | []>([])
+  const [areaOfInterest, setAreaOfInterest] = useState<string[]>([])
   const [orgnization, setOrgnization] = useState("")
 
   const [collegeAPI, setCollegeAPI] = useState([{ id: "", title: "" }])
-  const [collegeOptions, setCollegeOptions] = useState([{ value: "", label: "", },])
+  const [collegeOptions, setCollegeOptions] = useState([
+    { value: "", label: "" },
+  ])
 
   useEffect(() => {
     if (onboardingCall) {
@@ -217,7 +230,7 @@ const Onboarding = (props: Props) => {
           setModal(aoi_message)
           setTimeout(() => {
             navigate("/user/onboarding/success")
-          }, 5000)
+          }, 3000)
         })
         .catch(function (error) {
           const aoi_message = {
@@ -257,66 +270,110 @@ const Onboarding = (props: Props) => {
 
     // request for college list
     const college = {
-      method: 'GET',
-      url: import.meta.env.VITE_BACKEND_URL + '/api/v1/user/register/college/list',
-      headers: { Authorization: 'Bearer ' + token, 'content-type': 'application/json' }
-    };
-    axios.request(college).then(function (response) {
-      // console.log(response.data.response.colleges);
-      setCollegeAPI(response.data.response.colleges)
-      setDepartmentAPI(response.data.response.departments)
-    }).catch(function (error) {
-      console.error(error);
-    });
+      method: "GET",
+      url:
+        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/college/list",
+      headers: {
+        Authorization: "Bearer " + token,
+        "content-type": "application/json",
+      },
+    }
+    axios
+      .request(college)
+      .then(function (response) {
+        const colleges = response.data.response.colleges
+        setCollegeAPI(colleges)
+        setCollegeOptions(
+          colleges
+            .sort((a: any, b: any) => a.title.localeCompare(b.title))
+            .map((college: any) => ({
+              value: college.id,
+              label: college.title,
+            }))
+        )
+        setDepartmentAPI(response.data.response.departments)
+      })
+      .catch(function (error) {
+        console.error(error)
+      })
 
     // request for company list
     const company = {
-      method: 'GET',
-      url: import.meta.env.VITE_BACKEND_URL + '/api/v1/user/register/company/list',
-      headers: { Authorization: 'Bearer ' + token, 'content-type': 'application/json' }
-    };
-    axios.request(company).then(function (response) {
-      // console.log(response.data.response);
-      setCompanyAPI(response.data.response.companies)
-    }).catch(function (error) {
-      console.error(error);
-    });
+      method: "GET",
+      url:
+        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/company/list",
+      headers: {
+        Authorization: "Bearer " + token,
+        "content-type": "application/json",
+      },
+    }
+    axios
+      .request(company)
+      .then(function (response) {
+        // console.log(response.data.response);
+        setCompanyAPI(response.data.response.companies)
+      })
+      .catch(function (error) {
+        console.error(error)
+      })
 
     // request for role list
     const role = {
-      method: 'GET',
-      url: import.meta.env.VITE_BACKEND_URL + '/api/v1/user/register/role/list',
-      headers: { Authorization: 'Bearer ' + token, 'content-type': 'application/json' }
-    };
-    axios.request(role).then(function (response) {
-      setRoleAPI(response.data.response.roles)
-    }).catch(function (error) {
-      console.error(error);
-    });
+      method: "GET",
+      url: import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/role/list",
+      headers: {
+        Authorization: "Bearer " + token,
+        "content-type": "application/json",
+      },
+    }
+    axios
+      .request(role)
+      .then(function (response) {
+        setRoleAPI(response.data.response.roles)
+      })
+      .catch(function (error) {
+        console.error(error)
+      })
 
     // request for area of intersts list
     const aoi = {
-      method: 'GET',
-      url: import.meta.env.VITE_BACKEND_URL + '/api/v1/user/register/areaofinterst/list',
-      headers: { Authorization: 'Bearer ' + token, 'content-type': 'application/json' }
-    };
-    axios.request(aoi).then(function (response) {
-      setAoiAPI(response.data.response.aois)
-    }).catch(function (error) {
-      console.error(error);
-    });
+      method: "GET",
+      url:
+        import.meta.env.VITE_BACKEND_URL +
+        "/api/v1/user/register/areaofinterst/list",
+      headers: {
+        Authorization: "Bearer " + token,
+        "content-type": "application/json",
+      },
+    }
+    axios
+      .request(aoi)
+      .then(function (response) {
+        setAoiAPI(response.data.response.aois)
+      })
+      .catch(function (error) {
+        console.error(error)
+      })
 
     // request for community list
     const comunity = {
-      method: 'GET',
-      url: import.meta.env.VITE_BACKEND_URL + '/api/v1/user/register/comunity/list',
-      headers: { Authorization: 'Bearer ' + token, 'content-type': 'application/json' }
-    };
-    axios.request(comunity).then(function (response) {
-      setCommunityAPI(response.data.response.communities)
-    }).catch(function (error) {
-      console.error(error);
-    });
+      method: "GET",
+      url:
+        import.meta.env.VITE_BACKEND_URL +
+        "/api/v1/user/register/comunity/list",
+      headers: {
+        Authorization: "Bearer " + token,
+        "content-type": "application/json",
+      },
+    }
+    axios
+      .request(comunity)
+      .then(function (response) {
+        setCommunityAPI(response.data.response.communities)
+      })
+      .catch(function (error) {
+        console.error(error)
+      })
   }, [])
   return (
     <>
@@ -628,24 +685,32 @@ const Onboarding = (props: Props) => {
                 </div>
                 <div className={styles.inputs}>
                   {/* <div className={styles.input_container}> */}
-                  <label htmlFor="">Areas of Interest / Stack</label>
+                  <label htmlFor="">Areas of Interest / Stack*</label>
 
                   <div className={styles.aoi_container}>
                     {aoiAPI.map((aoi, i) => {
+                      const checked = areaOfInterest.includes(aoi.id as string)
+                      const disabled = areaOfInterest.length >= 3 && !checked
                       return (
                         <label key={i}>
                           <input
                             value={aoi.id}
-                            disabled={areaOfInterest.length < 3 ? false : true}
                             type="checkbox"
+                            checked={checked}
+                            disabled={disabled}
                             onChange={(e) => {
-                              e.target.checked
-                                ? setAreaOfInterest([...areaOfInterest, aoi.id])
-                                : setAreaOfInterest(
-                                    areaOfInterest.filter(
-                                      (aois) => aois != aoi.id
-                                    )
+                              const selectedId = aoi.id
+                              if (checked) {
+                                setAreaOfInterest(
+                                  areaOfInterest.filter(
+                                    (aois) => aois !== selectedId
                                   )
+                                )
+                              } else {
+                                setAreaOfInterest(
+                                  [...areaOfInterest, selectedId].slice(-3)
+                                )
+                              }
                             }}
                             required
                           />
