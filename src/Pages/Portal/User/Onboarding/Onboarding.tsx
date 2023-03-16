@@ -125,19 +125,19 @@ const Onboarding = (props: Props) => {
         setValidation(false)
       } else {
         setBorderStyle(role_field, false)
-        if (dept_field.value === "") {
-          setBorderStyle(dept_field, true)
-        } else {
-          setBorderStyle(dept_field, false)
-          setValidation(true)
-        }
-        if (yog_field.value === "") {
-          setBorderStyle(yog_field, true)
-          setValidation(false)
-        } else {
-          setBorderStyle(yog_field, false)
-          setValidation(true)
-        }
+        // if (dept_field.value === "") {
+        //   setBorderStyle(dept_field, true)
+        // } else {
+        //   setBorderStyle(dept_field, false)
+        //   setValidation(true)
+        // }
+        // if (yog_field.value === "") {
+        //   setBorderStyle(yog_field, true)
+        //   setValidation(false)
+        // } else {
+        //   setBorderStyle(yog_field, false)
+        //   setValidation(true)
+        // }
       }
 
       if (areaOfInterest.length < 1) {
@@ -209,15 +209,15 @@ const Onboarding = (props: Props) => {
       },
       data: {
         firstName: firstName,
-        lastName: lastName,
+        lastName: lastName === '' ? null : lastName,
         email: email,
         mobile: phone,
-        gender,
-        dob,
+        gender: gender === '' ? null : gender,
+        dob: dob === '' ? null : dob,
         role: role[0]["id"],
-        organization: orgnization,
-        dept,
-        yearOfGraduation: yog, //string
+        organization: orgnization === '' ? null : orgnization,
+        dept: dept === '' ? null : dept,
+        yearOfGraduation: yog === '' ? null : yog, //string
         areaOfInterest,
       },
     }
@@ -259,7 +259,7 @@ const Onboarding = (props: Props) => {
     axios
       .request(token_check)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
       })
       .catch((error) => {
         setHasError({
@@ -377,7 +377,7 @@ const Onboarding = (props: Props) => {
         console.error(error)
       })
   }, [])
-  console.log(hasError);
+  // console.log(role);
 
   return (
     <>
@@ -400,7 +400,7 @@ const Onboarding = (props: Props) => {
                 <div>
                   <div className={styles.inputs}>
                     <div className={styles.input_container}>
-                      <label htmlFor="">First Name*</label>
+                      <label htmlFor="">First Name <span className={styles.required}>*</span></label>
                       <input
                         id="first_name"
                         type="text"
@@ -426,7 +426,7 @@ const Onboarding = (props: Props) => {
                   </div>
                   <div className={styles.inputs}>
                     <div className={styles.input_container}>
-                      <label htmlFor="">Email address*</label>
+                      <label htmlFor="">Email address <span className={styles.required}>*</span></label>
                       <input
                         id="email_field"
                         type="email"
@@ -505,7 +505,7 @@ const Onboarding = (props: Props) => {
                       </div>
                     </div>
                     <div className={styles.input_container}>
-                      <label htmlFor="">Role*</label>
+                      <label htmlFor="">Role <span className={styles.required}>*</span></label>
                       <select
                         id="role_field"
                         name=""
@@ -546,7 +546,7 @@ const Onboarding = (props: Props) => {
                               }
                               className={styles.input_container}
                             >
-                              <label htmlFor="">College*</label>
+                              <label htmlFor="">College <span className={styles.required}>*</span></label>
                               {/* <div className={styles.grouped_inputs}>
                           <input type="text" placeholder="select college" />
                         </div> */}
@@ -576,7 +576,7 @@ const Onboarding = (props: Props) => {
                                 style={{ width: "20%" }}
                                 className={styles.input_container}
                               >
-                                <label htmlFor="">Graduation Year*</label>
+                                <label htmlFor="">Graduation Year <span className={styles.required}>*</span></label>
                                 <select
                                   id="yog_field"
                                   style={{ width: "100%" }} //78%
@@ -598,7 +598,7 @@ const Onboarding = (props: Props) => {
                           </div>
                         </div>
                         <div className={styles.input_container}>
-                          <label htmlFor="">Department*</label>
+                          <label htmlFor="">Department <span className={styles.required}>*</span></label>
                           <select
                             id="dept_field"
                             name=""
@@ -622,7 +622,7 @@ const Onboarding = (props: Props) => {
                       <>
                         {role[0].title == "Mentor" ? (
                           <div className={styles.input_container}>
-                            <label htmlFor="">Type*</label>
+                            <label htmlFor="">Type <span className={styles.required}>*</span></label>
                             <div className={styles.grouped_inputs}>
                               <select
                                 id="mentortype_filed"
@@ -691,7 +691,7 @@ const Onboarding = (props: Props) => {
                   </div>
                   <div className={styles.inputs}>
                     {/* <div className={styles.input_container}> */}
-                    <label htmlFor="">Areas of Interest / Stack*</label>
+                    <label htmlFor="">Areas of Interest / Stack <span className={styles.required}>*</span></label>
 
                     <div className={styles.aoi_container}>
                       {aoiAPI.map((aoi, i) => {

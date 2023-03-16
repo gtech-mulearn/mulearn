@@ -36,6 +36,10 @@ form label {
   font-weight: 600;
 }
 
+.required {
+  color: red;
+}
+
 form input,
 form select {
   border: none;
@@ -150,7 +154,7 @@ form .form_buttons button[type="reset"] {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
   background-color: #e8f3f7;
 }
@@ -166,7 +170,7 @@ form .form_buttons button[type="reset"] {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
   background-color: #e8f3f7;
 }
