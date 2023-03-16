@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
       </div>
 
       <div className="terms-container">
-        <h2>TERMS OF SERVICES</h2>
+        <h2>PRIVACY POLICY</h2>
         <p>
           This Policy is issued by µLearn, which includes its parent,
           subsidiaries and affiliates (together, “µLearn”, or <strong>"We"</strong>or <strong>"us"</strong> or
