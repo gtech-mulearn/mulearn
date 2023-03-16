@@ -18,10 +18,13 @@ const Onboarding = (props: Props) => {
   const [role, setRole] = useState([{ id: "", title: "" }])
   const [onboardingCall, setOnboardingCall] = useState(false)
   const [validation, setValidation] = useState(false)
-  const [modal, setModal] = useState("false")
+  const [modal, setModal] = useState({
+    visible: false,
+    message: "",
+  })
 
   const [dept, setDept] = useState("")
-  const [yof, setYof] = useState("")
+  const [yog, setYog] = useState("")
   const [mentorRole, setMentorRole] = useState("")
   const [hasError, setHasError] = useState({
     error: false,
@@ -57,8 +60,8 @@ const Onboarding = (props: Props) => {
       const dept_field: HTMLInputElement = document.getElementById(
         "dept_field"
       ) as HTMLInputElement
-      const yof_field: HTMLInputElement = document.getElementById(
-        "yof_field"
+      const yog_field: HTMLInputElement = document.getElementById(
+        "yog_field"
       ) as HTMLInputElement
       const mentortype_filed: HTMLInputElement = document.getElementById(
         "mentortype_filed"
@@ -99,7 +102,7 @@ const Onboarding = (props: Props) => {
         role[0].id === "" ||
         (orgnization === "" &&
           ["Student", "Enabler"].includes(role[0].title) &&
-          (dept_field.value === "" || yof_field.value === "")) ||
+          (dept_field.value === "" || yog_field.value === "")) ||
         (orgnization === "" &&
           ["Mentor"].includes(role[0].title) &&
           mentortype_filed.value === "")
@@ -115,12 +118,28 @@ const Onboarding = (props: Props) => {
           setBorderStyle(dept_field, false)
           setValidation(true)
         }
+        if (yog_field.value === "") {
+          setBorderStyle(yog_field, true)
+          setValidation(false)
+        } else {
+          setBorderStyle(yog_field, false)
+          setValidation(true)
+        }
       }
 
       if (areaOfInterest.length < 1) {
-        setModal("Please select at least 1 area of interest")
+        const aoi_message = {
+          visible: true,
+          message: "Please select at least 1 area of interest",
+        }
+        setModal(aoi_message)
         setValidation(false)
       } else {
+        const aoi_message = {
+          visible: false,
+          message: "",
+        }
+        setModal(aoi_message)
         setValidation(true)
       }
     }
@@ -167,7 +186,7 @@ const Onboarding = (props: Props) => {
     }),
   }
 
-  const yof_year = [
+  const yog_year = [
     2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026,
     2027, 2028, 2029, 2030,
   ]
@@ -191,7 +210,7 @@ const Onboarding = (props: Props) => {
         role: role[0]["id"],
         organization: orgnization,
         dept,
-        yearOfGraduation: yof, //string
+        yearOfGraduation: yog, //string
         areaOfInterest,
       },
     }
@@ -200,10 +219,21 @@ const Onboarding = (props: Props) => {
         .request(options)
         .then(function (response) {
           console.log(response.data)
-          navigate("/user/onboarding/success")
+          const aoi_message = {
+            visible: true,
+            message: "Onboarding Success!",
+          }
+          setModal(aoi_message)
+          setTimeout(() => {
+            navigate("/user/onboarding/success")
+          }, 5000)
         })
         .catch(function (error) {
-          console.log(error)
+          const aoi_message = {
+            visible: true,
+            message: error.response.data.message,
+          }
+          setModal(aoi_message)
         })
     }
   }
@@ -343,6 +373,11 @@ const Onboarding = (props: Props) => {
   }, [])
   return (
     <>
+      {modal.visible && (
+        <div className={styles.modal}>
+          <div className={styles.modal_content}>{modal.message}</div>
+        </div>
+      )}
       <div className={styles.onboarding_page}>
         {!hasError.error ? (
           <div className={styles.form_container}>
@@ -356,7 +391,7 @@ const Onboarding = (props: Props) => {
               <div>
                 <div className={styles.inputs}>
                   <div className={styles.input_container}>
-                    <label htmlFor="">Full name</label>
+                    <label htmlFor="">First Name*</label>
                     <input
                       id="first_name"
                       type="text"
@@ -369,7 +404,7 @@ const Onboarding = (props: Props) => {
                     />
                   </div>
                   <div className={styles.input_container}>
-                    <label htmlFor=""></label>
+                    <label htmlFor="">Last Name</label>
                     <input
                       type="text"
                       placeholder="Last name"
@@ -382,7 +417,7 @@ const Onboarding = (props: Props) => {
                 </div>
                 <div className={styles.inputs}>
                   <div className={styles.input_container}>
-                    <label htmlFor="">Email address</label>
+                    <label htmlFor="">Email address*</label>
                     <input
                       id="email_field"
                       type="email"
@@ -460,7 +495,7 @@ const Onboarding = (props: Props) => {
                     </div>
                   </div>
                   <div className={styles.input_container}>
-                    <label htmlFor="">Role</label>
+                    <label htmlFor="">Role*</label>
                     <select
                       id="role_field"
                       name=""
@@ -501,7 +536,7 @@ const Onboarding = (props: Props) => {
                             }
                             className={styles.input_container}
                           >
-                            <label htmlFor="">College</label>
+                            <label htmlFor="">College*</label>
                             {/* <div className={styles.grouped_inputs}>
                           <input type="text" placeholder="select college" />
                         </div> */}
@@ -531,16 +566,16 @@ const Onboarding = (props: Props) => {
                               style={{ width: "20%" }}
                               className={styles.input_container}
                             >
-                              <label htmlFor="">Graduation Year</label>
+                              <label htmlFor="">Graduation Year*</label>
                               <select
                                 id="yog_field"
                                 style={{ width: "100%" }} //78%
                                 name=""
-                                onChange={(e) => setYof(e.target.value)}
+                                onChange={(e) => setYog(e.target.value)}
                                 required
                               >
                                 <option value="">Select</option>
-                                {yof_year.map((year, i) => {
+                                {yog_year.map((year, i) => {
                                   return (
                                     <option key={i} value={year}>
                                       {year}
@@ -553,7 +588,7 @@ const Onboarding = (props: Props) => {
                         </div>
                       </div>
                       <div className={styles.input_container}>
-                        <label htmlFor="">Dept</label>
+                        <label htmlFor="">Department*</label>
                         <select
                           id="dept_field"
                           name=""
@@ -577,7 +612,7 @@ const Onboarding = (props: Props) => {
                     <>
                       {role[0].title == "Mentor" ? (
                         <div className={styles.input_container}>
-                          <label htmlFor="">Type</label>
+                          <label htmlFor="">Type*</label>
                           <div className={styles.grouped_inputs}>
                             <select
                               id="mentortype_filed"
@@ -681,6 +716,7 @@ const Onboarding = (props: Props) => {
                 <button
                   type="submit"
                   onClick={(e) => {
+                    e.preventDefault()
                     onboard()
                   }}
                 >
