@@ -1,17 +1,17 @@
-import React, { useState } from "react"
-import { Link } from "react-router-dom"
-import ReactTimeAgo from "react-time-ago"
-import TimeAgo from "javascript-time-ago"
-import en from "javascript-time-ago/locale/en"
-import NavLinks from "./NavLinks"
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import ReactTimeAgo from "react-time-ago";
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en";
+import NavLinks from "./NavLinks";
 
 const Navbar = () => {
   function handleScrolling(setter) {
-    if (setter) document.body.style.overflow = "unset"
-    else document.body.style.overflow = "hidden"
+    if (setter) document.body.style.overflow = "unset";
+    else document.body.style.overflow = "hidden";
   }
-  const [open, setOpen] = useState(false)
-  const [notificationOpen, setNotificationOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const [notificationOpen, setNotificationOpen] = useState(false);
   return (
     <nav className="bg-white ">
       <div className="flex items-center font-medium justify-around">
@@ -32,9 +32,9 @@ const Navbar = () => {
             <div
               className={`group lg:hidden text-black  inline-block  pr-5 `}
               onClick={() => {
-                setNotificationOpen(!notificationOpen)
-                setOpen(false)
-                handleScrolling(true)
+                setNotificationOpen(!notificationOpen);
+                setOpen(false);
+                handleScrolling(true);
               }}
             >
               <div
@@ -58,9 +58,9 @@ const Navbar = () => {
             <div
               className="text-3xl lg:hidden"
               onClick={() => {
-                setOpen(!open)
-                setNotificationOpen(false)
-                handleScrolling(open)
+                setOpen(!open);
+                setNotificationOpen(false);
+                handleScrolling(open);
               }}
             >
               <ion-icon name={`${open ? "close" : "menu"}`}></ion-icon>
@@ -124,6 +124,11 @@ const Navbar = () => {
             <Link
               to="/careers"
               className="py-7 px-7 inline-block uppercase hover:text-orange-500"
+              onClick={() => {
+                setOpen(false);
+                setNotificationOpen(false);
+                handleScrolling(true);
+              }}
             >
               Career
             </Link>
@@ -141,28 +146,28 @@ const Navbar = () => {
               </button>
             </a>
             <a
-            href="http://mulearn.org/magazine"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="py-3 px-3 inline-block"
-          >
-            <button className="border-2 border-orange-400 text-orange-400 px-6 py-2 rounded-md">
-              Magazine
-            </button>
-          </a>
+              href="http://mulearn.org/magazine"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-3 px-3 inline-block"
+            >
+              <button className="border-2 border-orange-400 text-orange-400 px-6 py-2 rounded-md">
+                Magazine
+              </button>
+            </a>
           </div>
         </ul>
       </div>
     </nav>
-  )
-}
+  );
+};
 
 const NotificationNav = () => {
-  TimeAgo.setDefaultLocale(en.locale)
-  TimeAgo.addLocale(en)
+  TimeAgo.setDefaultLocale(en.locale);
+  TimeAgo.addLocale(en);
   // ./data/notifications.json
-  const [seenAll] = useState(false)
-  let notifications = require("../../Pages/Notifications/data/notifications.json")
+  const [seenAll] = useState(false);
+  let notifications = require("../../Pages/Notifications/data/notifications.json");
   return (
     <>
       <div className=" px-5 py-4 bg-white/90 text-sm">This Week</div>
@@ -210,6 +215,6 @@ const NotificationNav = () => {
         </div>
       </Link>
     </>
-  )
-}
-export default Navbar
+  );
+};
+export default Navbar;
