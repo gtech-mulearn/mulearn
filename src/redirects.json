@@ -278,5 +278,9 @@
   {
     "route": "/discord",
     "redirect": "https://discord.gg/mulearn"
+  },
+  {
+    "route": "/office-hours-feedback",
+    "redirect": "https://airtable.com/shrMl6evpiQjyKcyM"
   }
 ]
