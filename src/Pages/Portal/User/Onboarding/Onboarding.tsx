@@ -4,13 +4,15 @@ type Props = {}
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import ReactSelect from "react-select"
+import Error from "./assets/Error"
+import Success from "./Success"
 
-//TODO: Success Page in same page on button click
-//TODO: Gender by Default Select
-//TODO: Form Validations(On Submit)
-//TODO: Favicon
-//TODO: Registered Users Show Success Page
-//TODO: JWT Token Wrong(Show Error Page)
+//TODO: Success Page in same page on button click (Done!)
+//TODO: Gender by Default Select (Done!)
+//TODO: Form Validations(On Submit) (I think already done)
+//TODO: Favicon (Done!)
+//TODO: Registered Users Show Success Page (Done!)
+//TODO: JWT Token Wrong(Show Error Page) (Done!)
 
 const Onboarding = (props: Props) => {
   const navigate = useNavigate()
@@ -33,6 +35,7 @@ const Onboarding = (props: Props) => {
   const [dept, setDept] = useState("")
   const [yog, setYog] = useState("")
   const [mentorRole, setMentorRole] = useState("")
+  const [formSuccess, setFormSuccess] = useState(false)
   const [hasError, setHasError] = useState({
     error: false,
     statusCode: 0,
@@ -46,6 +49,12 @@ const Onboarding = (props: Props) => {
   const [collegeOptions, setCollegeOptions] = useState([
     { value: "", label: "" },
   ])
+  const [departmentAPI, setDepartmentAPI] = useState([{ id: "", title: "" }])
+  const [companyAPI, setCompanyAPI] = useState([{ id: "", title: "" }])
+  const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }])
+  const [roleAPI, setRoleAPI] = useState([{ id: "", title: "" }])
+  const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }])
+
 
   useEffect(() => {
     if (onboardingCall) {
@@ -158,12 +167,6 @@ const Onboarding = (props: Props) => {
     dept,
   ])
 
-  const [departmentAPI, setDepartmentAPI] = useState([{ id: "", title: "" }])
-  const [companyAPI, setCompanyAPI] = useState([{ id: "", title: "" }])
-  const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }])
-  const [roleAPI, setRoleAPI] = useState([{ id: "", title: "" }])
-  const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }])
-
   const customStyles = {
     control: (provided: any) => ({
       ...provided,
@@ -229,7 +232,7 @@ const Onboarding = (props: Props) => {
           }
           setModal(aoi_message)
           setTimeout(() => {
-            navigate("/user/onboarding/success")
+            setFormSuccess(true)
           }, 3000)
         })
         .catch(function (error) {
@@ -256,15 +259,14 @@ const Onboarding = (props: Props) => {
     axios
       .request(token_check)
       .then((response) => {
-        // console.log(response.data.response);
-        setHasError({
-          error: response.data.hasError,
-          statusCode: response.data.statusCode,
-          message: response.data.message,
-        })
+        console.log(response);
       })
       .catch((error) => {
-        setHasError(error)
+        setHasError({
+          error: error.response.data.hasError,
+          statusCode: error.response.data.statusCode,
+          message: error.response.data.message,
+        })
         console.error(error)
       })
 
@@ -375,6 +377,8 @@ const Onboarding = (props: Props) => {
         console.error(error)
       })
   }, [])
+  console.log(hasError.error);
+
   return (
     <>
       {modal.visible && (
@@ -383,363 +387,374 @@ const Onboarding = (props: Props) => {
         </div>
       )}
       <div className={styles.onboarding_page}>
-        {!hasError.error ? (
-          <div className={styles.form_container}>
-            <h1>User Information</h1>
-            <p>
-              Please enter all the required information in the fields provided
-              below. Please be aware that once you have submitted this
-              information, you will not be able to make any changes or updates.
-            </p>
-            <form action="">
-              <div>
-                <div className={styles.inputs}>
-                  <div className={styles.input_container}>
-                    <label htmlFor="">First Name*</label>
-                    <input
-                      id="first_name"
-                      type="text"
-                      placeholder="First name"
-                      className={styles.input}
-                      onChange={(e) => {
-                        setFirstName(e.target.value)
-                      }}
-                      required
-                    />
-                  </div>
-                  <div className={styles.input_container}>
-                    <label htmlFor="">Last Name</label>
-                    <input
-                      type="text"
-                      placeholder="Last name"
-                      className={styles.input}
-                      onChange={(e) => {
-                        setLastName(e.target.value)
-                      }}
-                    />
-                  </div>
-                </div>
-                <div className={styles.inputs}>
-                  <div className={styles.input_container}>
-                    <label htmlFor="">Email address*</label>
-                    <input
-                      id="email_field"
-                      type="email"
-                      placeholder="username@domain.com"
-                      className={styles.input}
-                      onChange={(e) => {
-                        setEmail(e.target.value)
-                      }}
-                      required
-                    />
-                  </div>
-                  <div className={styles.input_container}>
-                    <label htmlFor="">Phone number</label>
-                    <div className={styles.grouped_inputs}>
-                      <select
-                        style={{ width: "20%", textAlign: "center" }}
-                        name=""
-                        id=""
-                      >
-                        <option value="+91">+91</option>
-                      </select>
+        {!hasError.error ?
+          <>
+            {!formSuccess ? <div className={styles.form_container}>
+              <h1>User Information</h1>
+              <p>
+                Please enter all the required information in the fields provided
+                below. Please be aware that once you have submitted this
+                information, you will not be able to make any changes or updates.
+              </p>
+              <form action="">
+                <div>
+                  <div className={styles.inputs}>
+                    <div className={styles.input_container}>
+                      <label htmlFor="">First Name*</label>
                       <input
-                        id="phone_field"
-                        style={{ width: "78%" }}
-                        type="number"
-                        placeholder="8023456789"
+                        id="first_name"
+                        type="text"
+                        placeholder="First name"
+                        className={styles.input}
                         onChange={(e) => {
-                          setPhone(e.target.valueAsNumber)
+                          setFirstName(e.target.value)
                         }}
                         required
                       />
                     </div>
+                    <div className={styles.input_container}>
+                      <label htmlFor="">Last Name</label>
+                      <input
+                        type="text"
+                        placeholder="Last name"
+                        className={styles.input}
+                        onChange={(e) => {
+                          setLastName(e.target.value)
+                        }}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className={styles.inputs}>
-                  <div className={styles.input_container}>
-                    <div className={styles.grouped_inputs}>
-                      <div
-                        style={{ width: "49%" }}
-                        className={styles.input_container}
-                      >
-                        <label htmlFor="">Gender</label>
+                  <div className={styles.inputs}>
+                    <div className={styles.input_container}>
+                      <label htmlFor="">Email address*</label>
+                      <input
+                        id="email_field"
+                        type="email"
+                        placeholder="username@domain.com"
+                        className={styles.input}
+                        onChange={(e) => {
+                          setEmail(e.target.value)
+                        }}
+                        required
+                      />
+                    </div>
+                    <div className={styles.input_container}>
+                      <label htmlFor="">Phone number</label>
+                      <div className={styles.grouped_inputs}>
                         <select
+                          style={{ width: "20%", textAlign: "center" }}
                           name=""
                           id=""
-                          onChange={(e) => {
-                            setGender(e.target.value)
-                          }}
                         >
-                          <option value="male">
-                            <span className={styles.gender}>♂</span> Male
-                          </option>
-                          <option value="male">
-                            <span className={styles.gender}>♀</span> Female
-                          </option>
-                          <option value="other">Other</option>
-                          <option value="not to say">Prefer not to say</option>
+                          <option value="+91">+91</option>
                         </select>
-                      </div>
-                      <div
-                        style={{ width: "49%" }}
-                        className={styles.input_container}
-                      >
-                        <label htmlFor="">Date of Birth</label>
                         <input
-                          id="gender_field"
-                          type="date"
-                          placeholder="dd/mm/yyyy"
-                          className={styles.input}
+                          id="phone_field"
+                          style={{ width: "78%" }}
+                          type="number"
+                          placeholder="8023456789"
                           onChange={(e) => {
-                            setDob(e.target.value)
+                            setPhone(e.target.valueAsNumber)
                           }}
+                          required
                         />
                       </div>
                     </div>
                   </div>
-                  <div className={styles.input_container}>
-                    <label htmlFor="">Role*</label>
-                    <select
-                      id="role_field"
-                      name=""
-                      onChange={(e) => {
-                        roleAPI.map((role) => {
-                          e.target.value == ""
-                            ? setRole([{ id: "", title: "" }])
-                            : role.id == e.target.value
-                            ? setRole([
-                                { id: e.target.value, title: role.title },
-                              ])
-                            : null
-                        })
-                      }}
-                      required
-                    >
-                      <option value="">Select</option>
-                      {roleAPI.map((role, i) => {
-                        return (
-                          <option key={i} value={role.id}>
-                            {role.title}
-                          </option>
-                        )
-                      })}
-                    </select>
-                  </div>
-                </div>
-                <div className={styles.inputs}>
-                  {role[0].title == "Student" || role[0].title == "Enabler" ? (
-                    <>
-                      <div className={styles.input_container}>
-                        <div className={styles.grouped_inputs}>
-                          <div
-                            style={
-                              role[0].title == "Student"
-                                ? { width: "78%" }
-                                : { width: "100%" }
-                            }
-                            className={styles.input_container}
+                  <div className={styles.inputs}>
+                    <div className={styles.input_container}>
+                      <div className={styles.grouped_inputs}>
+                        <div
+                          style={{ width: "49%" }}
+                          className={styles.input_container}
+                        >
+                          <label htmlFor="">Gender</label>
+                          <select
+                            name=""
+                            id=""
+                            onChange={(e) => {
+                              setGender(e.target.value)
+                            }}
                           >
-                            <label htmlFor="">College*</label>
-                            {/* <div className={styles.grouped_inputs}>
-                          <input type="text" placeholder="select college" />
-                        </div> */}
-                            <ReactSelect
-                              id="college_field"
-                              value={collegeOptions.find(
-                                (college) => college.value === orgnization
-                              )}
-                              onChange={(option) =>
-                                option && setOrgnization(option.value)
-                              }
-                              options={collegeOptions}
-                              isClearable={false}
-                              placeholder="Select college..."
-                              noOptionsMessage={() => "No colleges found."}
-                              filterOption={({ label }, inputValue) =>
-                                label
-                                  .toLowerCase()
-                                  .includes(inputValue.toLowerCase())
-                              }
-                              styles={customStyles}
-                            />
-                          </div>
-
-                          {role[0].title == "Student" ? (
-                            <div
-                              style={{ width: "20%" }}
-                              className={styles.input_container}
-                            >
-                              <label htmlFor="">Graduation Year*</label>
-                              <select
-                                id="yog_field"
-                                style={{ width: "100%" }} //78%
-                                name=""
-                                onChange={(e) => setYog(e.target.value)}
-                                required
-                              >
-                                <option value="">Select</option>
-                                {yog_year.map((year, i) => {
-                                  return (
-                                    <option key={i} value={year}>
-                                      {year}
-                                    </option>
-                                  )
-                                })}
-                              </select>
-                            </div>
-                          ) : null}
+                            <option value="">Select gender</option>
+                            <option value="male">
+                              <span className={styles.gender}>♂</span> Male
+                            </option>
+                            <option value="male">
+                              <span className={styles.gender}>♀</span> Female
+                            </option>
+                            <option value="other">Other</option>
+                            <option value="not to say">Prefer not to say</option>
+                          </select>
+                        </div>
+                        <div
+                          style={{ width: "49%" }}
+                          className={styles.input_container}
+                        >
+                          <label htmlFor="">Date of Birth</label>
+                          <input
+                            id="gender_field"
+                            type="date"
+                            placeholder="dd/mm/yyyy"
+                            className={styles.input}
+                            onChange={(e) => {
+                              setDob(e.target.value)
+                            }}
+                          />
                         </div>
                       </div>
-                      <div className={styles.input_container}>
-                        <label htmlFor="">Department*</label>
-                        <select
-                          id="dept_field"
-                          name=""
-                          onChange={(e) => {
-                            setDept(e.target.value)
-                          }}
-                          required
-                        >
-                          <option value="">Select</option>
-                          {departmentAPI.map((dept, index) => {
-                            return (
-                              <option key={index} value={dept.id}>
-                                {dept.title}
-                              </option>
-                            )
-                          })}
-                        </select>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      {role[0].title == "Mentor" ? (
+                    </div>
+                    <div className={styles.input_container}>
+                      <label htmlFor="">Role*</label>
+                      <select
+                        id="role_field"
+                        name=""
+                        onChange={(e) => {
+                          roleAPI.map((role) => {
+                            e.target.value == ""
+                              ? setRole([{ id: "", title: "" }])
+                              : role.id == e.target.value
+                                ? setRole([
+                                  { id: e.target.value, title: role.title },
+                                ])
+                                : null
+                          })
+                        }}
+                        required
+                      >
+                        <option value="">Select</option>
+                        {roleAPI.map((role, i) => {
+                          return (
+                            <option key={i} value={role.id}>
+                              {role.title}
+                            </option>
+                          )
+                        })}
+                      </select>
+                    </div>
+                  </div>
+                  <div className={styles.inputs}>
+                    {role[0].title == "Student" || role[0].title == "Enabler" ? (
+                      <>
                         <div className={styles.input_container}>
-                          <label htmlFor="">Type*</label>
                           <div className={styles.grouped_inputs}>
+                            <div
+                              style={
+                                role[0].title == "Student"
+                                  ? { width: "78%" }
+                                  : { width: "100%" }
+                              }
+                              className={styles.input_container}
+                            >
+                              <label htmlFor="">College*</label>
+                              {/* <div className={styles.grouped_inputs}>
+                          <input type="text" placeholder="select college" />
+                        </div> */}
+                              <ReactSelect
+                                id="college_field"
+                                value={collegeOptions.find(
+                                  (college) => college.value === orgnization
+                                )}
+                                onChange={(option) =>
+                                  option && setOrgnization(option.value)
+                                }
+                                options={collegeOptions}
+                                isClearable={false}
+                                placeholder="Select college..."
+                                noOptionsMessage={() => "No colleges found."}
+                                filterOption={({ label }, inputValue) =>
+                                  label
+                                    .toLowerCase()
+                                    .includes(inputValue.toLowerCase())
+                                }
+                                styles={customStyles}
+                              />
+                            </div>
+
+                            {role[0].title == "Student" ? (
+                              <div
+                                style={{ width: "20%" }}
+                                className={styles.input_container}
+                              >
+                                <label htmlFor="">Graduation Year*</label>
+                                <select
+                                  id="yog_field"
+                                  style={{ width: "100%" }} //78%
+                                  name=""
+                                  onChange={(e) => setYog(e.target.value)}
+                                  required
+                                >
+                                  <option value="">Select</option>
+                                  {yog_year.map((year, i) => {
+                                    return (
+                                      <option key={i} value={year}>
+                                        {year}
+                                      </option>
+                                    )
+                                  })}
+                                </select>
+                              </div>
+                            ) : null}
+                          </div>
+                        </div>
+                        <div className={styles.input_container}>
+                          <label htmlFor="">Department*</label>
+                          <select
+                            id="dept_field"
+                            name=""
+                            onChange={(e) => {
+                              setDept(e.target.value)
+                            }}
+                            required
+                          >
+                            <option value="">Select</option>
+                            {departmentAPI.map((dept, index) => {
+                              return (
+                                <option key={index} value={dept.id}>
+                                  {dept.title}
+                                </option>
+                              )
+                            })}
+                          </select>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        {role[0].title == "Mentor" ? (
+                          <div className={styles.input_container}>
+                            <label htmlFor="">Type*</label>
+                            <div className={styles.grouped_inputs}>
+                              <select
+                                id="mentortype_filed"
+                                style={{ width: "100%" }} //78%
+                                name=""
+                                onChange={(e) => {
+                                  setMentorRole(e.target.value)
+                                }}
+                                required
+                              >
+                                <option value="Select">Select</option>
+                                <option value="Company">Company</option>
+                                <option value="Community Partner">
+                                  Community Partner
+                                </option>
+                                <option value="Induvidual">Induvidual</option>
+                              </select>
+                            </div>
+                          </div>
+                        ) : null}
+                        {mentorRole == "Company" ? (
+                          <div className={styles.input_container}>
+                            <label htmlFor="">Company</label>
                             <select
-                              id="mentortype_filed"
-                              style={{ width: "100%" }} //78%
+                              id="company_field"
                               name=""
                               onChange={(e) => {
-                                setMentorRole(e.target.value)
+                                setOrgnization(e.target.value)
                               }}
                               required
                             >
-                              <option value="Select">Select</option>
-                              <option value="Company">Company</option>
-                              <option value="Community Partner">
-                                Community Partner
-                              </option>
-                              <option value="Induvidual">Induvidual</option>
+                              <option value="">Select</option>
+                              {companyAPI.map((company, index) => {
+                                return (
+                                  <option key={index} value={company.id}>
+                                    {company.title}
+                                  </option>
+                                )
+                              })}
                             </select>
                           </div>
-                        </div>
-                      ) : null}
-                      {mentorRole == "Company" ? (
-                        <div className={styles.input_container}>
-                          <label htmlFor="">Company</label>
-                          <select
-                            id="company_field"
-                            name=""
-                            onChange={(e) => {
-                              setOrgnization(e.target.value)
-                            }}
-                            required
-                          >
-                            <option value="">Select</option>
-                            {companyAPI.map((company, index) => {
-                              return (
-                                <option key={index} value={company.id}>
-                                  {company.title}
-                                </option>
-                              )
-                            })}
-                          </select>
-                        </div>
-                      ) : null}
-                      {mentorRole == "Community Partner" ? (
-                        <div className={styles.input_container}>
-                          <label htmlFor="">Community</label>
-                          <select
-                            id="community_field"
-                            onChange={(e) => {
-                              setOrgnization(e.target.value)
-                            }}
-                            required
-                          >
-                            <option value="">Select</option>
-                            {communityAPI.map((company, index) => {
-                              return (
-                                <option key={index} value={company.id}>
-                                  {company.title}
-                                </option>
-                              )
-                            })}
-                          </select>
-                        </div>
-                      ) : null}
-                    </>
-                  )}
-                </div>
-                <div className={styles.inputs}>
-                  {/* <div className={styles.input_container}> */}
-                  <label htmlFor="">Areas of Interest / Stack*</label>
-
-                  <div className={styles.aoi_container}>
-                    {aoiAPI.map((aoi, i) => {
-                      const checked = areaOfInterest.includes(aoi.id as string)
-                      const disabled = areaOfInterest.length >= 3 && !checked
-                      return (
-                        <label key={i}>
-                          <input
-                            value={aoi.id}
-                            type="checkbox"
-                            checked={checked}
-                            disabled={disabled}
-                            onChange={(e) => {
-                              const selectedId = aoi.id
-                              if (checked) {
-                                setAreaOfInterest(
-                                  areaOfInterest.filter(
-                                    (aois) => aois !== selectedId
-                                  )
+                        ) : null}
+                        {mentorRole == "Community Partner" ? (
+                          <div className={styles.input_container}>
+                            <label htmlFor="">Community</label>
+                            <select
+                              id="community_field"
+                              onChange={(e) => {
+                                setOrgnization(e.target.value)
+                              }}
+                              required
+                            >
+                              <option value="">Select</option>
+                              {communityAPI.map((company, index) => {
+                                return (
+                                  <option key={index} value={company.id}>
+                                    {company.title}
+                                  </option>
                                 )
-                              } else {
-                                setAreaOfInterest(
-                                  [...areaOfInterest, selectedId].slice(-3)
-                                )
-                              }
-                            }}
-                            required
-                          />
-                          <span>{aoi.name}</span>
-                        </label>
-                      )
-                    })}
+                              })}
+                            </select>
+                          </div>
+                        ) : null}
+                      </>
+                    )}
                   </div>
+                  <div className={styles.inputs}>
+                    {/* <div className={styles.input_container}> */}
+                    <label htmlFor="">Areas of Interest / Stack*</label>
 
-                  {/* </div> */}
+                    <div className={styles.aoi_container}>
+                      {aoiAPI.map((aoi, i) => {
+                        const checked = areaOfInterest.includes(aoi.id as string)
+                        const disabled = areaOfInterest.length >= 3 && !checked
+                        return (
+                          <label key={i}>
+                            <input
+                              value={aoi.id}
+                              type="checkbox"
+                              checked={checked}
+                              disabled={disabled}
+                              onChange={(e) => {
+                                const selectedId = aoi.id
+                                if (checked) {
+                                  setAreaOfInterest(
+                                    areaOfInterest.filter(
+                                      (aois) => aois !== selectedId
+                                    )
+                                  )
+                                } else {
+                                  setAreaOfInterest(
+                                    [...areaOfInterest, selectedId].slice(-3)
+                                  )
+                                }
+                              }}
+                              required
+                            />
+                            <span>{aoi.name}</span>
+                          </label>
+                        )
+                      })}
+                    </div>
+
+                    {/* </div> */}
+                  </div>
                 </div>
-              </div>
-              <div className={styles.form_buttons}>
-                <button type="reset">Cancel</button>
-                <button
-                  type="submit"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    onboard()
-                  }}
-                >
-                  Submit
-                </button>
-              </div>
-            </form>
+                <div className={styles.form_buttons}>
+                  <button type="reset">Cancel</button>
+                  <button
+                    type="submit"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      onboard()
+                    }}
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div> : <Success />}
+          </>
+          :
+          <div className={styles.error_msg}>
+            <div className={styles.tik}>
+              <Error />
+            </div>
+            <br /><br />
+            <p>
+              {hasError ? hasError.message : "Loading..."}
+            </p>
           </div>
-        ) : (
-          <div>{hasError ? hasError.message : "Loading..."}</div>
-        )}
+        }
       </div>
     </>
   )

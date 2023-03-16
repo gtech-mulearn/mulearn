@@ -11,7 +11,7 @@ const Success = (props: Props) => {
                 <Tik />
             </div>
             <br /><br />
-            <p>Woooohh! You successfully registerd</p>
+            <p>Woooohh! You successfully registered</p>
         </div>
     )
 }

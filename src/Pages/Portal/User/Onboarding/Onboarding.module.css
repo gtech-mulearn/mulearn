@@ -140,9 +140,23 @@ form .form_buttons button[type="reset"] {
   user-select: none;
 }
 
-.aoi_container label input[type="checkbox"]:checked ~ span {
+.aoi_container label input[type="checkbox"]:checked~span {
   background-color: #5570f1;
   color: white;
+}
+
+.onboarding_page .error_msg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: #e8f3f7;
+}
+
+.onboarding_page .tik {
+  animation: pop 0.5s ease-in-out;
 }
 
 /* success page atyles */
