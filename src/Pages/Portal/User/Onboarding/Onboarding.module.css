@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
 * {
   margin: 0%;
   padding: 0%;
   box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
-  color: #404D61;
+  font-family: "Open Sans", sans-serif;
+  color: #404d61;
 }
 
 .onboarding_page .form_container h1 {
@@ -24,7 +24,7 @@
   border: 1px solid #dde2e5;
   border-radius: 15px;
   min-height: 90vh;
-  max-width: 70vw;
+  max-width: 1000px;
   padding: 50px;
 }
 
@@ -52,13 +52,13 @@ select {
 }
 
 select .gender {
-  color: #3180AC;
+  color: #3180ac;
 }
 
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #5A6474;
-  opacity: .9;
+  color: #5a6474;
+  opacity: 0.9;
   font-weight: 500;
   /* Firefox */
 }
@@ -85,7 +85,6 @@ form .input_container .grouped_inputs {
 
 form .input {
   width: 100%;
-
 }
 
 form .form_buttons {
@@ -105,13 +104,13 @@ form .form_buttons button {
 }
 
 form .form_buttons button[type="submit"] {
-  background-color: #5570F1;
+  background-color: #5570f1;
   color: white;
 }
 
 form .form_buttons button[type="reset"] {
-  background: #F6F7FB;
-  color: #5570F1;
+  background: #f6f7fb;
+  color: #5570f1;
 }
 
 .aoi_container {
@@ -141,8 +140,8 @@ form .form_buttons button[type="reset"] {
   user-select: none;
 }
 
-.aoi_container label input[type="checkbox"]:checked~span {
-  background-color: #5570F1;
+.aoi_container label input[type="checkbox"]:checked ~ span {
+  background-color: #5570f1;
   color: white;
 }
 
@@ -212,3 +211,24 @@ form .form_buttons button[type="reset"] {
     flex-direction: column;
   }
 }
+
+/* Modal Styles */
+
+.modal {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.modal_content {
+  background-color: #5570f1;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Hide the modal by default */
