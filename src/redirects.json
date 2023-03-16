@@ -270,5 +270,9 @@
   {
     "route": "/solution-challenge",
     "redirect": "https://learn.mulearn.org/challenge/googlesolution"
+  },
+  {
+    "route": "/office-hours-feedback",
+    "redirect": "https://airtable.com/shrMl6evpiQjyKcyM"
   }
 ]
