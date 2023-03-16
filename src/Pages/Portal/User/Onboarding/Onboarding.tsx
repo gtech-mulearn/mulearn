@@ -267,7 +267,7 @@ const Onboarding = (props: Props) => {
           statusCode: error.response.data.statusCode,
           message: error.response.data.message,
         })
-        console.error(error)
+        console.log(error)
       })
 
     // request for college list
@@ -377,7 +377,7 @@ const Onboarding = (props: Props) => {
         console.error(error)
       })
   }, [])
-  console.log(hasError.error);
+  console.log(hasError);
 
   return (
     <>
