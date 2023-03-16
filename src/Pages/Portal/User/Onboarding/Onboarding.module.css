@@ -24,7 +24,7 @@
   border: 1px solid #dde2e5;
   border-radius: 15px;
   min-height: 90vh;
-  max-width: 70vw;
+  max-width: 1000px;
   padding: 50px;
 }
 
@@ -211,4 +211,35 @@ form .form_buttons button[type="reset"] {
     justify-content: center;
     flex-direction: column;
   }
+}
+
+
+/* Modal Styles */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal_content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Hide the modal by default */
+.modal {
+  display: none;
 }
