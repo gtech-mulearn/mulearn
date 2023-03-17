@@ -280,6 +280,74 @@
     "redirect": "https://discord.gg/mulearn"
   },
   {
+    "route": "/cybersec-whatsapp",
+    "redirect": "https://chat.whatsapp.com/IrJW3M1OT7QKn68Z1actPB"
+  },
+  {
+    "route": "/flutter-whatsapp",
+    "redirect": "https://chat.whatsapp.com/EdTVYMeI89Q5HsQqXMD0My"
+  },
+  {
+    "route": "/rust-whatsapp",
+    "redirect": "https://chat.whatsapp.com/LpW6Dou0GeQ9AHOvATdoT1"
+  },
+  {
+    "route": "/android-whatsapp",
+    "redirect": "https://chat.whatsapp.com/IvMd2T9IUxk8gpwm5MtAM7"
+  },
+  {
+    "route": "/javascript-ig-whatsapp",
+    "redirect": "https://chat.whatsapp.com/ETHl9MKGRxG1NFMwXbG8Ih"
+  },
+  {
+    "route": "/python-ig-whatsapp",
+    "redirect": "https://chat.whatsapp.com/LZmE3xWU9OmEM13nYrs2aT"
+  },
+  {
+    "route": "/ai-ig-whatsapp",
+    "redirect": "https://chat.whatsapp.com/EivnqLDTGqv8qZzmw9X4RY"
+  },
+  {
+    "route": "/music-ig-whatsapp",
+    "redirect": "https://chat.whatsapp.com/CdiwRO0OnerD36wwXGH56G"
+  },
+  {
+    "route": "/web-ig-whatsapp",
+    "redirect": "https://chat.whatsapp.com/GCsHGgfbsU63sadN6m5uip"
+  },
+  {
+    "route": "/paperswelove-ig-whatsapp",
+    "redirect": "https://chat.whatsapp.com/LDWmn6nCeOP81HnfRLff1y"
+  },
+  {
+    "route": "/devops-ig-whatsapp",
+    "redirect": "https://chat.whatsapp.com/BwsJ5tEnS3o5XVfVR3IUBN"
+  },
+  {
+    "route": "/mad-ig-whatsapp",
+    "redirect": "https://chat.whatsapp.com/CV6uugWwRCIJ1OoU8PPZZU"
+  },
+  {
+    "route": "/campus-ig-leads-whatsapp",
+    "redirect": "https://chat.whatsapp.com/DBAnxd7UY3G71PUFFLDuZY"
+  },
+  {
+    "route": "/android-bootcamp-status",
+    "redirect": "https://airtable.com/shrL5PGs8WNtjuk8r"
+  },
+  {
+    "route": "/javascript-bootcamp-status",
+    "redirect": "https://airtable.com/shr8i6cZ9KIcsQ6Nf"
+  },
+  {
+    "route": "/flutter-bootcamp-status",
+    "redirect": "https://airtable.com/shrpGlR2ZgWvyK7zk"
+  },
+  {
+    "route": "/rust-bootcamp-status",
+    "redirect": "https://airtable.com/shr2HlyB0vPlWSgPU"
+  },
+  {
     "route": "/office-hours-feedback",
     "redirect": "https://airtable.com/shrMl6evpiQjyKcyM"
   }
