@@ -240,7 +240,8 @@ form .form_buttons button[type="reset"] {
 }
 
 .modal_content {
-  background-color: #5570f1;
+  /* background-color: #5570f1; */
+  background-color: #f15555;
   color: #ffffff;
   padding: 10px;
   border-radius: 5px;

@@ -233,12 +233,14 @@ const Onboarding = (props: Props) => {
           setModal(aoi_message)
           setTimeout(() => {
             setFormSuccess(true)
-          }, 3000)
+          }, 1000)
         })
         .catch(function (error) {
+          console.log(error.response.data.message.email[0]);
+
           const aoi_message = {
             visible: true,
-            message: error.response.data.message,
+            message: error.response.data.message.email[0],
           }
           setModal(aoi_message)
         })
