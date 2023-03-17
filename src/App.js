@@ -30,6 +30,7 @@ import EventsHome from "./Pages/Events/EventsHome/EventsHome";
 import CommunityLanding from "./Pages/CommunityLanding/CommunityLanding";
 import CampusLogoGenerator from "./Pages/CampusLogoGen/CampusLogoGen";
 import TermsAndCondition from "./Pages/TermsAndCondition/TermsAndCondition";
+import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 
 import redirects from "./redirects.json";
 import Redirection from "./Components/Redirection/Redirection";
@@ -89,7 +90,7 @@ function App() {
             element={<CampusLogoGenerator />}
           />
           <Route path="/termsandcondition" element={<TermsAndCondition />} />
-          <Route path="/privacypolicy" element={<CampusLogoGenerator />} />
+          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         </Routes>
       </Router>
     </div>
