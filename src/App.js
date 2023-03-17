@@ -31,6 +31,9 @@ import CommunityLanding from "./Pages/CommunityLanding/CommunityLanding";
 import CampusLogoGenerator from "./Pages/CampusLogoGen/CampusLogoGen";
 import TermsAndCondition from "./Pages/TermsAndCondition/TermsAndCondition";
 
+import redirects from "./redirects.json";
+import Redirection from "./Components/Redirection/Redirection";
+
 function App() {
   return (
     <div className="App">
@@ -77,14 +80,20 @@ function App() {
           <Route path="/participate" element={<EnablersOnboarding />} />
           <Route path="/earnkarma" element={<HackathonKarma />} />
           <Route path="/events" element={<EventsHome />} />
-          <Route path="/community-partners/:id" element={<CommunityLanding />} />
-          <Route path="/campus-logo-generator" element={<CampusLogoGenerator />} />
+          <Route
+            path="/community-partners/:id"
+            element={<CommunityLanding />}
+          />
+          <Route
+            path="/campus-logo-generator"
+            element={<CampusLogoGenerator />}
+          />
           <Route path="/termsandcondition" element={<TermsAndCondition />} />
           <Route path="/privacypolicy" element={<CampusLogoGenerator />} />
         </Routes>
       </Router>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
