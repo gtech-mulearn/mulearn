@@ -292,6 +292,44 @@ const Onboarding = (props: Props) => {
         }
       }
 
+      if (role[0].title === "Student") {
+        if (orgnization === "") {
+          setValidations((prevValidations) => ({
+            ...prevValidations,
+            student: {
+              ...prevValidations.student,
+              organization: false,
+            },
+          }));
+        } else {
+          setValidations((prevValidations) => ({
+            ...prevValidations,
+            student: {
+              ...prevValidations.student,
+              organization: true,
+            },
+          }));
+        }
+
+        if (dept_field.value === "") {
+          setValidations((prevValidations) => ({
+            ...prevValidations,
+            student: {
+              ...prevValidations.student,
+              department: false,
+            },
+          }));
+        } else {
+          setValidations((prevValidations) => ({
+            ...prevValidations,
+            student: {
+              ...prevValidations.student,
+              department: true,
+            },
+          }));
+        }
+      }
+
       if (areaOfInterest.length < 1) {
         console.log("Area of Interest is empty");
         setValidations((prevValidations) => ({
@@ -802,7 +840,7 @@ const Onboarding = (props: Props) => {
                               })}
                             </select>
                             {submitTrigger &&
-                              !validations.student.yearOfGraduation && (
+                              !validations.student.department && (
                                 <p className={styles.error_message}>
                                   This field is required
                                 </p>
