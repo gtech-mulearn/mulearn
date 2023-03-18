@@ -1,106 +1,106 @@
-import React, { useEffect, useState } from "react"
-import styles from "./Onboarding.module.css"
-type Props = {}
-import axios from "axios"
-import { useNavigate } from "react-router-dom"
-import ReactSelect from "react-select"
-import Error from "./assets/Error"
-import Success from "./Success"
+import React, { useEffect, useState } from "react";
+import styles from "./Onboarding.module.css";
+type Props = {};
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import ReactSelect from "react-select";
+import Error from "./assets/Error";
+import Success from "./Success";
 
 const Onboarding = (props: Props) => {
-  const navigate = useNavigate()
-  const queryParameters = new URLSearchParams(window.location.search)
-  const token = queryParameters.get("id")
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [email, setEmail] = useState("")
-  const [phone, setPhone] = useState(0)
-  const [gender, setGender] = useState("")
-  const [dob, setDob] = useState("")
-  const [role, setRole] = useState([{ id: "", title: "" }])
-  const [onboardingCall, setOnboardingCall] = useState(false)
-  const [validation, setValidation] = useState(false)
+  const navigate = useNavigate();
+  const queryParameters = new URLSearchParams(window.location.search);
+  const token = queryParameters.get("id");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState(0);
+  const [gender, setGender] = useState("");
+  const [dob, setDob] = useState("");
+  const [role, setRole] = useState([{ id: "", title: "" }]);
+  const [onboardingCall, setOnboardingCall] = useState(false);
+  const [validation, setValidation] = useState(false);
   const [modal, setModal] = useState({
     visible: false,
     message: "",
-  })
+  });
 
-  const [dept, setDept] = useState("")
-  const [yog, setYog] = useState("")
-  const [mentorRole, setMentorRole] = useState("")
-  const [formSuccess, setFormSuccess] = useState(false)
+  const [dept, setDept] = useState("");
+  const [yog, setYog] = useState("");
+  const [mentorRole, setMentorRole] = useState("");
+  const [formSuccess, setFormSuccess] = useState(false);
   const [hasError, setHasError] = useState({
     error: false,
     statusCode: 0,
     message: "",
-  })
+  });
 
-  const [areaOfInterest, setAreaOfInterest] = useState<string[]>([])
-  const [orgnization, setOrgnization] = useState("")
+  const [areaOfInterest, setAreaOfInterest] = useState<string[]>([]);
+  const [orgnization, setOrgnization] = useState("");
 
-  const [collegeAPI, setCollegeAPI] = useState([{ id: "", title: "" }])
+  const [collegeAPI, setCollegeAPI] = useState([{ id: "", title: "" }]);
   const [collegeOptions, setCollegeOptions] = useState([
     { value: "", label: "" },
-  ])
-  const [departmentAPI, setDepartmentAPI] = useState([{ id: "", title: "" }])
-  const [companyAPI, setCompanyAPI] = useState([{ id: "", title: "" }])
-  const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }])
-  const [roleAPI, setRoleAPI] = useState([{ id: "", title: "" }])
-  const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }])
+  ]);
+  const [departmentAPI, setDepartmentAPI] = useState([{ id: "", title: "" }]);
+  const [companyAPI, setCompanyAPI] = useState([{ id: "", title: "" }]);
+  const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }]);
+  const [roleAPI, setRoleAPI] = useState([{ id: "", title: "" }]);
+  const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }]);
 
   useEffect(() => {
     if (onboardingCall) {
       const first_name: HTMLInputElement = document.getElementById(
         "first_name"
-      ) as HTMLInputElement
+      ) as HTMLInputElement;
       const email_field: HTMLInputElement = document.getElementById(
         "email_field"
-      ) as HTMLInputElement
+      ) as HTMLInputElement;
       const phone_field: HTMLInputElement = document.getElementById(
         "phone_field"
-      ) as HTMLInputElement
+      ) as HTMLInputElement;
       const role_field: HTMLInputElement = document.getElementById(
         "role_field"
-      ) as HTMLInputElement
+      ) as HTMLInputElement;
       const dept_field: HTMLInputElement = document.getElementById(
         "dept_field"
-      ) as HTMLInputElement
+      ) as HTMLInputElement;
       const yog_field: HTMLInputElement = document.getElementById(
         "yog_field"
-      ) as HTMLInputElement
+      ) as HTMLInputElement;
       const mentortype_filed: HTMLInputElement = document.getElementById(
         "mentortype_filed"
-      ) as HTMLInputElement
+      ) as HTMLInputElement;
 
       const setBorderStyle = (
         element: HTMLInputElement,
         condition: boolean
       ) => {
-        element.style.border = condition ? "1px solid red" : "none"
-      }
+        element.style.border = condition ? "1px solid red" : "none";
+      };
 
       if (firstName === "") {
-        setBorderStyle(first_name, true)
-        setValidation(false)
+        setBorderStyle(first_name, true);
+        setValidation(false);
       } else {
-        setBorderStyle(first_name, false)
-        setValidation(true)
+        setBorderStyle(first_name, false);
+        setValidation(true);
       }
 
       if (email === "") {
-        setBorderStyle(email_field, true)
-        setValidation(false)
+        setBorderStyle(email_field, true);
+        setValidation(false);
       } else {
-        setBorderStyle(email_field, false)
-        setValidation(true)
+        setBorderStyle(email_field, false);
+        setValidation(true);
       }
 
       if (phone === 0) {
-        setBorderStyle(phone_field, true)
-        setValidation(false)
+        setBorderStyle(phone_field, true);
+        setValidation(false);
       } else {
-        setBorderStyle(phone_field, false)
-        setValidation(true)
+        setBorderStyle(phone_field, false);
+        setValidation(true);
       }
 
       if (
@@ -112,35 +112,35 @@ const Onboarding = (props: Props) => {
           ["Mentor"].includes(role[0].title) &&
           mentortype_filed.value === "")
       ) {
-        setBorderStyle(role_field, true)
-        setValidation(false)
+        setBorderStyle(role_field, true);
+        setValidation(false);
       } else {
-        setBorderStyle(role_field, false)
+        setBorderStyle(role_field, false);
       }
 
       if (["Student", "Enabler"].includes(role[0].title)) {
         if (role[0].title === "Student") {
           if (dept_field.value === "") {
-            setBorderStyle(dept_field, true)
-            setValidation(false)
+            setBorderStyle(dept_field, true);
+            setValidation(false);
           } else {
-            setBorderStyle(dept_field, false)
-            setValidation(true)
+            setBorderStyle(dept_field, false);
+            setValidation(true);
           }
           if (yog_field.value === "") {
-            setBorderStyle(yog_field, true)
-            setValidation(false)
+            setBorderStyle(yog_field, true);
+            setValidation(false);
           } else {
-            setBorderStyle(yog_field, false)
-            setValidation(true)
+            setBorderStyle(yog_field, false);
+            setValidation(true);
           }
         } else if (role[0].title === "Enabler") {
           if (dept_field.value === "") {
-            setBorderStyle(dept_field, true)
-            setValidation(false)
+            setBorderStyle(dept_field, true);
+            setValidation(false);
           } else {
-            setBorderStyle(dept_field, false)
-            setValidation(true)
+            setBorderStyle(dept_field, false);
+            setValidation(true);
           }
         }
       }
@@ -149,16 +149,16 @@ const Onboarding = (props: Props) => {
         const aoi_message = {
           visible: true,
           message: "Please select at least 1 area of interest",
-        }
-        setModal(aoi_message)
-        setValidation(false)
+        };
+        setModal(aoi_message);
+        setValidation(false);
       } else {
         const aoi_message = {
           visible: false,
           message: "",
-        }
-        setModal(aoi_message)
-        setValidation(true)
+        };
+        setModal(aoi_message);
+        setValidation(true);
       }
     }
   }, [
@@ -171,7 +171,7 @@ const Onboarding = (props: Props) => {
     onboardingCall,
     dept,
     yog,
-  ])
+  ]);
 
   const customStyles = {
     control: (provided: any) => ({
@@ -197,15 +197,15 @@ const Onboarding = (props: Props) => {
       borderRadius: "0",
       boxShadow: "none",
     }),
-  }
+  };
 
   const yog_year = [
     2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026,
     2027, 2028, 2029, 2030,
-  ]
+  ];
 
   const onboard = () => {
-    setOnboardingCall(true)
+    setOnboardingCall(true);
     const options = {
       method: "POST",
       url: import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/",
@@ -226,30 +226,43 @@ const Onboarding = (props: Props) => {
         yearOfGraduation: yog === "" ? null : yog, //string
         areaOfInterest,
       },
-    }
+    };
     if (validation) {
       axios
         .request(options)
         .then(function (response) {
-          console.log(response.data)
+          console.log(response.data);
           const aoi_message = {
             visible: true,
             message: "Onboarding Success!",
-          }
-          setModal(aoi_message)
-          setTimeout(() => {
-            setFormSuccess(true)
-          }, 3000)
+          };
+          setModal(aoi_message);
+          setFormSuccess(true);
         })
         .catch(function (error) {
+          const errorMessage = error.response.data.message;
+          let modalMessage = "";
+
+          if (typeof errorMessage === "string") {
+            modalMessage = errorMessage;
+          } else if (typeof errorMessage === "object") {
+            const messages = Object.entries(errorMessage).map(
+              ([key, value]: [string, any]) => {
+                return `${key}: ${value.join("\n")}`;
+              }
+            );
+
+            modalMessage = messages.join("\n");
+          }
+
           const aoi_message = {
             visible: true,
-            message: error.response.data.message,
-          }
-          setModal(aoi_message)
-        })
+            message: modalMessage,
+          };
+          setModal(aoi_message);
+        });
     }
-  }
+  };
 
   useEffect(() => {
     // request for token verification
@@ -261,7 +274,7 @@ const Onboarding = (props: Props) => {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
       },
-    }
+    };
     axios
       .request(token_check)
       .then((response) => {
@@ -272,9 +285,9 @@ const Onboarding = (props: Props) => {
           error: error.response.data.hasError,
           statusCode: error.response.data.statusCode,
           message: error.response.data.message,
-        })
-        console.log(error)
-      })
+        });
+        console.log(error);
+      });
 
     // request for college list
     const college = {
@@ -285,12 +298,12 @@ const Onboarding = (props: Props) => {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
       },
-    }
+    };
     axios
       .request(college)
       .then(function (response) {
-        const colleges = response.data.response.colleges
-        setCollegeAPI(colleges)
+        const colleges = response.data.response.colleges;
+        setCollegeAPI(colleges);
         setCollegeOptions(
           colleges
             .sort((a: any, b: any) => a.title.localeCompare(b.title))
@@ -298,12 +311,12 @@ const Onboarding = (props: Props) => {
               value: college.id,
               label: college.title,
             }))
-        )
-        setDepartmentAPI(response.data.response.departments)
+        );
+        setDepartmentAPI(response.data.response.departments);
       })
       .catch(function (error) {
-        console.error(error)
-      })
+        console.error(error);
+      });
 
     // request for company list
     const company = {
@@ -314,16 +327,16 @@ const Onboarding = (props: Props) => {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
       },
-    }
+    };
     axios
       .request(company)
       .then(function (response) {
         // console.log(response.data.response);
-        setCompanyAPI(response.data.response.companies)
+        setCompanyAPI(response.data.response.companies);
       })
       .catch(function (error) {
-        console.error(error)
-      })
+        console.error(error);
+      });
 
     // request for role list
     const role = {
@@ -333,15 +346,15 @@ const Onboarding = (props: Props) => {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
       },
-    }
+    };
     axios
       .request(role)
       .then(function (response) {
-        setRoleAPI(response.data.response.roles)
+        setRoleAPI(response.data.response.roles);
       })
       .catch(function (error) {
-        console.error(error)
-      })
+        console.error(error);
+      });
 
     // request for area of intersts list
     const aoi = {
@@ -353,15 +366,15 @@ const Onboarding = (props: Props) => {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
       },
-    }
+    };
     axios
       .request(aoi)
       .then(function (response) {
-        setAoiAPI(response.data.response.aois)
+        setAoiAPI(response.data.response.aois);
       })
       .catch(function (error) {
-        console.error(error)
-      })
+        console.error(error);
+      });
 
     // request for community list
     const comunity = {
@@ -373,23 +386,31 @@ const Onboarding = (props: Props) => {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
       },
-    }
+    };
     axios
       .request(comunity)
       .then(function (response) {
-        setCommunityAPI(response.data.response.communities)
+        setCommunityAPI(response.data.response.communities);
       })
       .catch(function (error) {
-        console.error(error)
-      })
-  }, [])
+        console.error(error);
+      });
+  }, []);
   // console.log(role);
 
   return (
     <>
       {modal.visible && (
         <div className={styles.modal}>
-          <div className={styles.modal_content}>{modal.message}</div>
+          {Array.isArray(modal.message) ? (
+            modal.message.map((message, index) => (
+              <div key={index} className={styles.modal_content}>
+                {message}
+              </div>
+            ))
+          ) : (
+            <div className={styles.modal_content}>{modal.message}</div>
+          )}
         </div>
       )}
       <div className={styles.onboarding_page}>
@@ -417,7 +438,7 @@ const Onboarding = (props: Props) => {
                           placeholder="First name"
                           className={styles.input}
                           onChange={(e) => {
-                            setFirstName(e.target.value)
+                            setFirstName(e.target.value);
                           }}
                           required
                         />
@@ -429,7 +450,7 @@ const Onboarding = (props: Props) => {
                           placeholder="Last name"
                           className={styles.input}
                           onChange={(e) => {
-                            setLastName(e.target.value)
+                            setLastName(e.target.value);
                           }}
                         />
                       </div>
@@ -446,7 +467,7 @@ const Onboarding = (props: Props) => {
                           placeholder="username@domain.com"
                           className={styles.input}
                           onChange={(e) => {
-                            setEmail(e.target.value)
+                            setEmail(e.target.value);
                           }}
                           required
                         />
@@ -467,7 +488,7 @@ const Onboarding = (props: Props) => {
                             type="number"
                             placeholder="8023456789"
                             onChange={(e) => {
-                              setPhone(e.target.valueAsNumber)
+                              setPhone(e.target.valueAsNumber);
                             }}
                             required
                           />
@@ -486,7 +507,7 @@ const Onboarding = (props: Props) => {
                               name=""
                               id=""
                               onChange={(e) => {
-                                setGender(e.target.value)
+                                setGender(e.target.value);
                               }}
                             >
                               <option value="">Select gender</option>
@@ -513,7 +534,7 @@ const Onboarding = (props: Props) => {
                               placeholder="dd/mm/yyyy"
                               className={styles.input}
                               onChange={(e) => {
-                                setDob(e.target.value)
+                                setDob(e.target.value);
                               }}
                             />
                           </div>
@@ -534,8 +555,8 @@ const Onboarding = (props: Props) => {
                                 ? setRole([
                                     { id: e.target.value, title: role.title },
                                   ])
-                                : null
-                            })
+                                : null;
+                            });
                           }}
                           required
                         >
@@ -545,7 +566,7 @@ const Onboarding = (props: Props) => {
                               <option key={i} value={role.id}>
                                 {role.title}
                               </option>
-                            )
+                            );
                           })}
                         </select>
                       </div>
@@ -614,7 +635,7 @@ const Onboarding = (props: Props) => {
                                         <option key={i} value={year}>
                                           {year}
                                         </option>
-                                      )
+                                      );
                                     })}
                                   </select>
                                 </div>
@@ -630,7 +651,7 @@ const Onboarding = (props: Props) => {
                               id="dept_field"
                               name=""
                               onChange={(e) => {
-                                setDept(e.target.value)
+                                setDept(e.target.value);
                               }}
                               required
                             >
@@ -640,7 +661,7 @@ const Onboarding = (props: Props) => {
                                   <option key={index} value={dept.id}>
                                     {dept.title}
                                   </option>
-                                )
+                                );
                               })}
                             </select>
                           </div>
@@ -658,7 +679,7 @@ const Onboarding = (props: Props) => {
                                   style={{ width: "100%" }} //78%
                                   name=""
                                   onChange={(e) => {
-                                    setMentorRole(e.target.value)
+                                    setMentorRole(e.target.value);
                                   }}
                                   required
                                 >
@@ -679,7 +700,7 @@ const Onboarding = (props: Props) => {
                                 id="company_field"
                                 name=""
                                 onChange={(e) => {
-                                  setOrgnization(e.target.value)
+                                  setOrgnization(e.target.value);
                                 }}
                                 required
                               >
@@ -689,7 +710,7 @@ const Onboarding = (props: Props) => {
                                     <option key={index} value={company.id}>
                                       {company.title}
                                     </option>
-                                  )
+                                  );
                                 })}
                               </select>
                             </div>
@@ -700,7 +721,7 @@ const Onboarding = (props: Props) => {
                               <select
                                 id="community_field"
                                 onChange={(e) => {
-                                  setOrgnization(e.target.value)
+                                  setOrgnization(e.target.value);
                                 }}
                                 required
                               >
@@ -710,7 +731,7 @@ const Onboarding = (props: Props) => {
                                     <option key={index} value={company.id}>
                                       {company.title}
                                     </option>
-                                  )
+                                  );
                                 })}
                               </select>
                             </div>
@@ -729,9 +750,9 @@ const Onboarding = (props: Props) => {
                         {aoiAPI.map((aoi, i) => {
                           const checked = areaOfInterest.includes(
                             aoi.id as string
-                          )
+                          );
                           const disabled =
-                            areaOfInterest.length >= 3 && !checked
+                            areaOfInterest.length >= 3 && !checked;
                           return (
                             <label key={i}>
                               <input
@@ -740,24 +761,24 @@ const Onboarding = (props: Props) => {
                                 checked={checked}
                                 disabled={disabled}
                                 onChange={(e) => {
-                                  const selectedId = aoi.id
+                                  const selectedId = aoi.id;
                                   if (checked) {
                                     setAreaOfInterest(
                                       areaOfInterest.filter(
                                         (aois) => aois !== selectedId
                                       )
-                                    )
+                                    );
                                   } else {
                                     setAreaOfInterest(
                                       [...areaOfInterest, selectedId].slice(-3)
-                                    )
+                                    );
                                   }
                                 }}
                                 required
                               />
                               <span>{aoi.name}</span>
                             </label>
-                          )
+                          );
                         })}
                       </div>
 
@@ -769,8 +790,8 @@ const Onboarding = (props: Props) => {
                     <button
                       type="submit"
                       onClick={(e) => {
-                        e.preventDefault()
-                        onboard()
+                        e.preventDefault();
+                        onboard();
                       }}
                     >
                       Submit
@@ -794,7 +815,7 @@ const Onboarding = (props: Props) => {
         )}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Onboarding
+export default Onboarding;
