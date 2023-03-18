@@ -74,11 +74,18 @@ form .inputs {
   margin: 10px 0px 20px 0px;
 }
 
+.error_message {
+  color: red;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
 form .inputs .input_container {
   width: 49%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 form .input_container .grouped_inputs {
@@ -144,7 +151,7 @@ form .form_buttons button[type="reset"] {
   user-select: none;
 }
 
-.aoi_container label input[type="checkbox"]:checked~span {
+.aoi_container label input[type="checkbox"]:checked ~ span {
   background-color: #5570f1;
   color: white;
 }

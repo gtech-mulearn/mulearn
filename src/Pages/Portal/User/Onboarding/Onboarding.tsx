@@ -94,6 +94,10 @@ const Onboarding = (props: Props) => {
 
     if (firstName === "") {
       setBorderStyle(first_name, true);
+      setValidations((prevValidations) => ({
+        ...prevValidations,
+        firstName: false,
+      }));
     } else {
       setBorderStyle(first_name, false);
       setValidations((prevValidations) => ({
@@ -104,6 +108,10 @@ const Onboarding = (props: Props) => {
 
     if (email === "") {
       setBorderStyle(email_field, true);
+      setValidations((prevValidations) => ({
+        ...prevValidations,
+        email: false,
+      }));
     } else {
       setBorderStyle(email_field, false);
       setValidations((prevValidations) => ({
@@ -114,6 +122,10 @@ const Onboarding = (props: Props) => {
 
     if (phone === 0) {
       setBorderStyle(phone_field, true);
+      setValidations((prevValidations) => ({
+        ...prevValidations,
+        phone: false,
+      }));
     } else {
       setBorderStyle(phone_field, false);
       setValidations((prevValidations) => ({
@@ -132,11 +144,15 @@ const Onboarding = (props: Props) => {
         mentortype_filed.value === "")
     ) {
       setBorderStyle(role_field, true);
+      setValidations((prevValidations) => ({
+        ...prevValidations,
+        role: false,
+      }));
     } else {
       setBorderStyle(role_field, false);
       setValidations((prevValidations) => ({
         ...prevValidations,
-        areaOfInterest: true,
+        role: true,
       }));
     }
 
@@ -144,6 +160,13 @@ const Onboarding = (props: Props) => {
       if (role[0].title === "Student") {
         if (dept_field.value === "") {
           setBorderStyle(dept_field, true);
+          setValidations((prevValidations) => ({
+            ...prevValidations,
+            student: {
+              ...prevValidations.student,
+              department: false,
+            },
+          }));
         } else {
           setBorderStyle(dept_field, false);
           setValidations((prevValidations) => ({
@@ -156,18 +179,39 @@ const Onboarding = (props: Props) => {
         }
         if (yog_field.value === "") {
           setBorderStyle(yog_field, true);
-        } else {
-          setBorderStyle(yog_field, false);
-        }
-      } else if (role[0].title === "Enabler") {
-        if (dept_field.value === "") {
-          setBorderStyle(dept_field, true);
-        } else {
-          setBorderStyle(dept_field, false);
           setValidations((prevValidations) => ({
             ...prevValidations,
             student: {
               ...prevValidations.student,
+              yearOfGraduation: false,
+            },
+          }));
+        } else {
+          setBorderStyle(yog_field, false);
+          setValidations((prevValidations) => ({
+            ...prevValidations,
+            student: {
+              ...prevValidations.student,
+              yearOfGraduation: true,
+            },
+          }));
+        }
+      } else if (role[0].title === "Enabler") {
+        if (dept_field.value === "") {
+          setBorderStyle(dept_field, true);
+          setValidations((prevValidations) => ({
+            ...prevValidations,
+            enabler: {
+              ...prevValidations.enabler,
+              department: false,
+            },
+          }));
+        } else {
+          setBorderStyle(dept_field, false);
+          setValidations((prevValidations) => ({
+            ...prevValidations,
+            enabler: {
+              ...prevValidations.enabler,
               department: true,
             },
           }));
@@ -177,6 +221,10 @@ const Onboarding = (props: Props) => {
 
     if (areaOfInterest.length < 1) {
       console.log("Area of Interest is empty");
+      setValidations((prevValidations) => ({
+        ...prevValidations,
+        areaOfInterest: false,
+      }));
     } else {
       console.log("Area of Interest is not empty");
       setValidations((prevValidations) => ({
@@ -236,17 +284,17 @@ const Onboarding = (props: Props) => {
         "content-type": "application/json",
       },
       data: {
-        firstName: firstName,
+        firstName: firstName, //required
         lastName: lastName === "" ? null : lastName,
-        email: email,
-        mobile: phone,
+        email: email, //required
+        mobile: phone, //required
         gender: gender === "" ? null : gender,
         dob: dob === "" ? null : dob,
-        role: role[0]["id"],
-        organization: orgnization === "" ? null : orgnization,
-        dept: dept === "" ? null : dept,
-        yearOfGraduation: yog === "" ? null : yog, //string
-        areaOfInterest,
+        role: role[0]["id"], //required
+        organization: orgnization === "" ? null : orgnization, //required except for individual
+        dept: dept === "" ? null : dept, //required for student and enabler
+        yearOfGraduation: yog === "" ? null : yog, //required for student
+        areaOfInterest, //required
       },
     };
     axios
@@ -426,6 +474,9 @@ const Onboarding = (props: Props) => {
                           }}
                           required
                         />
+                        <p className={styles.error_message}>
+                          This field is required
+                        </p>
                       </div>
                       <div className={styles.input_container}>
                         <label htmlFor="">Last Name</label>
@@ -455,6 +506,9 @@ const Onboarding = (props: Props) => {
                           }}
                           required
                         />
+                        <p className={styles.error_message}>
+                          This field is required
+                        </p>
                       </div>
                       <div className={styles.input_container}>
                         <label htmlFor="">Phone number</label>
@@ -476,6 +530,9 @@ const Onboarding = (props: Props) => {
                             }}
                             required
                           />
+                          <p className={styles.error_message}>
+                            This field is required
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -553,6 +610,9 @@ const Onboarding = (props: Props) => {
                             );
                           })}
                         </select>
+                        <p className={styles.error_message}>
+                          This field is required
+                        </p>
                       </div>
                     </div>
                     <div className={styles.inputs}>
@@ -619,6 +679,9 @@ const Onboarding = (props: Props) => {
                                       );
                                     })}
                                   </select>
+                                  <p className={styles.error_message}>
+                                    This field is required
+                                  </p>
                                 </div>
                               ) : null}
                             </div>
@@ -645,6 +708,9 @@ const Onboarding = (props: Props) => {
                                 );
                               })}
                             </select>
+                            <p className={styles.error_message}>
+                              This field is required
+                            </p>
                           </div>
                         </>
                       ) : (
@@ -672,6 +738,9 @@ const Onboarding = (props: Props) => {
                                   <option value="Induvidual">Induvidual</option>
                                 </select>
                               </div>
+                              <p className={styles.error_message}>
+                                This field is required
+                              </p>
                             </div>
                           ) : null}
                           {mentorRole == "Company" ? (
@@ -694,6 +763,9 @@ const Onboarding = (props: Props) => {
                                   );
                                 })}
                               </select>
+                              <p className={styles.error_message}>
+                                This field is required
+                              </p>
                             </div>
                           ) : null}
                           {mentorRole == "Community Partner" ? (
@@ -715,6 +787,9 @@ const Onboarding = (props: Props) => {
                                   );
                                 })}
                               </select>
+                              <p className={styles.error_message}>
+                                This field is required
+                              </p>
                             </div>
                           ) : null}
                         </>
