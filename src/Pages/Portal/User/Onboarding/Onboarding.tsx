@@ -18,12 +18,6 @@ const Onboarding = (props: Props) => {
   const [gender, setGender] = useState("");
   const [dob, setDob] = useState("");
   const [role, setRole] = useState([{ id: "", title: "" }]);
-  const [onboardingCall, setOnboardingCall] = useState(false);
-  const [validation, setValidation] = useState(false);
-  const [modal, setModal] = useState({
-    visible: false,
-    message: "",
-  });
 
   const [dept, setDept] = useState("");
   const [yog, setYog] = useState("");
@@ -48,118 +42,147 @@ const Onboarding = (props: Props) => {
   const [roleAPI, setRoleAPI] = useState([{ id: "", title: "" }]);
   const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }]);
 
+  const [submitTrigger, setSubmitTrigger] = useState(false);
+  const [validations, setValidations] = useState({
+    firstName: false,
+    email: false,
+    phone: false,
+    role: false,
+    student: {
+      organization: false,
+      department: false,
+      yearOfGraduation: false,
+    },
+    enabler: {
+      organization: false,
+      department: false,
+    },
+    mentor: {
+      organization: false,
+      mentorRole: false,
+      type: "",
+    },
+    areaOfInterest: false,
+  });
+
   useEffect(() => {
-    if (onboardingCall) {
-      const first_name: HTMLInputElement = document.getElementById(
-        "first_name"
-      ) as HTMLInputElement;
-      const email_field: HTMLInputElement = document.getElementById(
-        "email_field"
-      ) as HTMLInputElement;
-      const phone_field: HTMLInputElement = document.getElementById(
-        "phone_field"
-      ) as HTMLInputElement;
-      const role_field: HTMLInputElement = document.getElementById(
-        "role_field"
-      ) as HTMLInputElement;
-      const dept_field: HTMLInputElement = document.getElementById(
-        "dept_field"
-      ) as HTMLInputElement;
-      const yog_field: HTMLInputElement = document.getElementById(
-        "yog_field"
-      ) as HTMLInputElement;
-      const mentortype_filed: HTMLInputElement = document.getElementById(
-        "mentortype_filed"
-      ) as HTMLInputElement;
+    const first_name: HTMLInputElement = document.getElementById(
+      "first_name"
+    ) as HTMLInputElement;
+    const email_field: HTMLInputElement = document.getElementById(
+      "email_field"
+    ) as HTMLInputElement;
+    const phone_field: HTMLInputElement = document.getElementById(
+      "phone_field"
+    ) as HTMLInputElement;
+    const role_field: HTMLInputElement = document.getElementById(
+      "role_field"
+    ) as HTMLInputElement;
+    const dept_field: HTMLInputElement = document.getElementById(
+      "dept_field"
+    ) as HTMLInputElement;
+    const yog_field: HTMLInputElement = document.getElementById(
+      "yog_field"
+    ) as HTMLInputElement;
+    const mentortype_filed: HTMLInputElement = document.getElementById(
+      "mentortype_filed"
+    ) as HTMLInputElement;
 
-      const setBorderStyle = (
-        element: HTMLInputElement,
-        condition: boolean
-      ) => {
-        element.style.border = condition ? "1px solid red" : "none";
-      };
+    const setBorderStyle = (element: HTMLInputElement, condition: boolean) => {
+      element.style.border = condition ? "1px solid red" : "none";
+    };
 
-      if (firstName === "") {
-        setBorderStyle(first_name, true);
-        setValidation(false);
-      } else {
-        setBorderStyle(first_name, false);
-        setValidation(true);
-      }
+    if (firstName === "") {
+      setBorderStyle(first_name, true);
+    } else {
+      setBorderStyle(first_name, false);
+      setValidations((prevValidations) => ({
+        ...prevValidations,
+        firstName: true,
+      }));
+    }
 
-      if (email === "") {
-        setBorderStyle(email_field, true);
-        setValidation(false);
-      } else {
-        setBorderStyle(email_field, false);
-        setValidation(true);
-      }
+    if (email === "") {
+      setBorderStyle(email_field, true);
+    } else {
+      setBorderStyle(email_field, false);
+      setValidations((prevValidations) => ({
+        ...prevValidations,
+        email: true,
+      }));
+    }
 
-      if (phone === 0) {
-        setBorderStyle(phone_field, true);
-        setValidation(false);
-      } else {
-        setBorderStyle(phone_field, false);
-        setValidation(true);
-      }
+    if (phone === 0) {
+      setBorderStyle(phone_field, true);
+    } else {
+      setBorderStyle(phone_field, false);
+      setValidations((prevValidations) => ({
+        ...prevValidations,
+        phone: true,
+      }));
+    }
 
-      if (
-        role[0].id === "" ||
-        (orgnization === "" &&
-          ["Student", "Enabler"].includes(role[0].title) &&
-          (dept_field.value === "" || yog_field.value === "")) ||
-        (orgnization === "" &&
-          ["Mentor"].includes(role[0].title) &&
-          mentortype_filed.value === "")
-      ) {
-        setBorderStyle(role_field, true);
-        setValidation(false);
-      } else {
-        setBorderStyle(role_field, false);
-      }
+    if (
+      role[0].id === "" ||
+      (orgnization === "" &&
+        ["Student", "Enabler"].includes(role[0].title) &&
+        (dept_field.value === "" || yog_field.value === "")) ||
+      (orgnization === "" &&
+        ["Mentor"].includes(role[0].title) &&
+        mentortype_filed.value === "")
+    ) {
+      setBorderStyle(role_field, true);
+    } else {
+      setBorderStyle(role_field, false);
+      setValidations((prevValidations) => ({
+        ...prevValidations,
+        areaOfInterest: true,
+      }));
+    }
 
-      if (["Student", "Enabler"].includes(role[0].title)) {
-        if (role[0].title === "Student") {
-          if (dept_field.value === "") {
-            setBorderStyle(dept_field, true);
-            setValidation(false);
-          } else {
-            setBorderStyle(dept_field, false);
-            setValidation(true);
-          }
-          if (yog_field.value === "") {
-            setBorderStyle(yog_field, true);
-            setValidation(false);
-          } else {
-            setBorderStyle(yog_field, false);
-            setValidation(true);
-          }
-        } else if (role[0].title === "Enabler") {
-          if (dept_field.value === "") {
-            setBorderStyle(dept_field, true);
-            setValidation(false);
-          } else {
-            setBorderStyle(dept_field, false);
-            setValidation(true);
-          }
+    if (["Student", "Enabler"].includes(role[0].title)) {
+      if (role[0].title === "Student") {
+        if (dept_field.value === "") {
+          setBorderStyle(dept_field, true);
+        } else {
+          setBorderStyle(dept_field, false);
+          setValidations((prevValidations) => ({
+            ...prevValidations,
+            student: {
+              ...prevValidations.student,
+              department: true,
+            },
+          }));
+        }
+        if (yog_field.value === "") {
+          setBorderStyle(yog_field, true);
+        } else {
+          setBorderStyle(yog_field, false);
+        }
+      } else if (role[0].title === "Enabler") {
+        if (dept_field.value === "") {
+          setBorderStyle(dept_field, true);
+        } else {
+          setBorderStyle(dept_field, false);
+          setValidations((prevValidations) => ({
+            ...prevValidations,
+            student: {
+              ...prevValidations.student,
+              department: true,
+            },
+          }));
         }
       }
+    }
 
-      if (areaOfInterest.length < 1) {
-        const aoi_message = {
-          visible: true,
-          message: "Please select at least 1 area of interest",
-        };
-        setModal(aoi_message);
-        setValidation(false);
-      } else {
-        const aoi_message = {
-          visible: false,
-          message: "",
-        };
-        setModal(aoi_message);
-        setValidation(true);
-      }
+    if (areaOfInterest.length < 1) {
+      console.log("Area of Interest is empty");
+    } else {
+      console.log("Area of Interest is not empty");
+      setValidations((prevValidations) => ({
+        ...prevValidations,
+        areaOfInterest: true,
+      }));
     }
   }, [
     firstName,
@@ -168,9 +191,9 @@ const Onboarding = (props: Props) => {
     role,
     orgnization,
     areaOfInterest,
-    onboardingCall,
     dept,
     yog,
+    submitTrigger,
   ]);
 
   const customStyles = {
@@ -205,7 +228,6 @@ const Onboarding = (props: Props) => {
   ];
 
   const onboard = () => {
-    setOnboardingCall(true);
     const options = {
       method: "POST",
       url: import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/",
@@ -227,41 +249,16 @@ const Onboarding = (props: Props) => {
         areaOfInterest,
       },
     };
-    if (validation) {
-      axios
-        .request(options)
-        .then(function (response) {
-          console.log(response.data);
-          const aoi_message = {
-            visible: true,
-            message: "Onboarding Success!",
-          };
-          setModal(aoi_message);
-          setFormSuccess(true);
-        })
-        .catch(function (error) {
-          const errorMessage = error.response.data.message;
-          let modalMessage = "";
-
-          if (typeof errorMessage === "string") {
-            modalMessage = errorMessage;
-          } else if (typeof errorMessage === "object") {
-            const messages = Object.entries(errorMessage).map(
-              ([key, value]: [string, any]) => {
-                return `${key}: ${value.join("\n")}`;
-              }
-            );
-
-            modalMessage = messages.join("\n");
-          }
-
-          const aoi_message = {
-            visible: true,
-            message: modalMessage,
-          };
-          setModal(aoi_message);
-        });
-    }
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+        setFormSuccess(true);
+      })
+      .catch(function (error) {
+        const errorMessage = error.response.data.message;
+        console.log(errorMessage);
+      });
   };
 
   useEffect(() => {
@@ -281,11 +278,12 @@ const Onboarding = (props: Props) => {
         // console.log(response);
       })
       .catch((error) => {
-        setHasError({
-          error: error.response.data.hasError,
-          statusCode: error.response.data.statusCode,
-          message: error.response.data.message,
-        });
+        //TODO: Uncomment this commented to bypass already onboarded user
+        // setHasError({
+        //   error: error.response.data.hasError,
+        //   statusCode: error.response.data.statusCode,
+        //   message: error.response.data.message,
+        // });
         console.log(error);
       });
 
@@ -396,23 +394,9 @@ const Onboarding = (props: Props) => {
         console.error(error);
       });
   }, []);
-  // console.log(role);
 
   return (
     <>
-      {modal.visible && (
-        <div className={styles.modal}>
-          {Array.isArray(modal.message) ? (
-            modal.message.map((message, index) => (
-              <div key={index} className={styles.modal_content}>
-                {message}
-              </div>
-            ))
-          ) : (
-            <div className={styles.modal_content}>{modal.message}</div>
-          )}
-        </div>
-      )}
       <div className={styles.onboarding_page}>
         {!hasError.error ? (
           <>
@@ -589,9 +573,6 @@ const Onboarding = (props: Props) => {
                                   College{" "}
                                   <span className={styles.required}>*</span>
                                 </label>
-                                {/* <div className={styles.grouped_inputs}>
-                          <input type="text" placeholder="select college" />
-                        </div> */}
                                 <ReactSelect
                                   id="college_field"
                                   value={collegeOptions.find(
@@ -791,6 +772,7 @@ const Onboarding = (props: Props) => {
                       type="submit"
                       onClick={(e) => {
                         e.preventDefault();
+                        setSubmitTrigger(true);
                         onboard();
                       }}
                     >
