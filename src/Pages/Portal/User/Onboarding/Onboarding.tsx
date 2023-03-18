@@ -10,7 +10,9 @@ import Success from "./Success";
 const Onboarding = (props: Props) => {
   const navigate = useNavigate();
   const queryParameters = new URLSearchParams(window.location.search);
+  //Getting the token from the URL
   const token = queryParameters.get("id");
+  //State Variables for the From
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -22,6 +24,7 @@ const Onboarding = (props: Props) => {
   const [dept, setDept] = useState("");
   const [yog, setYog] = useState("");
   const [mentorRole, setMentorRole] = useState("");
+  //State Variable for the Form Submission Validation
   const [formSuccess, setFormSuccess] = useState(false);
   const [hasError, setHasError] = useState({
     error: false,
@@ -29,19 +32,30 @@ const Onboarding = (props: Props) => {
     message: "",
   });
 
+  //State Array for storing the Area of Interests
   const [areaOfInterest, setAreaOfInterest] = useState<string[]>([]);
+  //State Array for Storing the Organization(Company, Community, College)
   const [orgnization, setOrgnization] = useState("");
 
+  //State Array for storing the College Options
   const [collegeAPI, setCollegeAPI] = useState([{ id: "", title: "" }]);
+  //State Array for storing the College Options(Search)
   const [collegeOptions, setCollegeOptions] = useState([
     { value: "", label: "" },
   ]);
+
+  //State Array for storing the Department Options
   const [departmentAPI, setDepartmentAPI] = useState([{ id: "", title: "" }]);
+  //State Array for storing the Company Options
   const [companyAPI, setCompanyAPI] = useState([{ id: "", title: "" }]);
+  //State Array for storing the Community Options
   const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }]);
+  //State Array for storing the Mentor Role Options
   const [roleAPI, setRoleAPI] = useState([{ id: "", title: "" }]);
+  //State Array for storing the Area of Interest Options
   const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }]);
 
+  //State Varaible t
   const [submitTrigger, setSubmitTrigger] = useState(false);
   const [validations, setValidations] = useState({
     firstName: false,
@@ -66,6 +80,7 @@ const Onboarding = (props: Props) => {
   });
 
   useEffect(() => {
+    //Getting the Input Field Elements
     const first_name: HTMLInputElement = document.getElementById(
       "first_name"
     ) as HTMLInputElement;
@@ -141,15 +156,8 @@ const Onboarding = (props: Props) => {
         }));
       }
 
-      if (
-        role[0].id === "" ||
-        (orgnization === "" &&
-          ["Student", "Enabler"].includes(role[0].title) &&
-          (dept_field.value === "" || yog_field.value === "")) ||
-        (orgnization === "" &&
-          ["Mentor"].includes(role[0].title) &&
-          mentortype_filed.value === "")
-      ) {
+      //Validation for the Role Field(Mentory, Student or E)
+      if (role[0].id === "") {
         setBorderStyle(role_field, true);
         setValidations((prevValidations) => ({
           ...prevValidations,
@@ -161,138 +169,7 @@ const Onboarding = (props: Props) => {
           ...prevValidations,
           role: true,
         }));
-      }
 
-      if (["Mentor"].includes(role[0].title)) {
-        if (mentorRole === "") {
-          setBorderStyle(mentortype_filed, true);
-          setValidations((prevValidations) => ({
-            ...prevValidations,
-            mentor: {
-              ...prevValidations.mentor,
-              mentorRole: false,
-            },
-          }));
-        } else {
-          setBorderStyle(mentortype_filed, false);
-          setValidations((prevValidations) => ({
-            ...prevValidations,
-            mentor: {
-              ...prevValidations.mentor,
-              mentorRole: true,
-            },
-          }));
-        }
-      }
-
-      if (["Mentor"].includes(role[0].title)) {
-        if (mentorRole === "Company") {
-          if (orgnization === "") {
-            setBorderStyle(company_field, true);
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              mentor: {
-                ...prevValidations.mentor,
-                organization: false,
-              },
-            }));
-          } else {
-            setBorderStyle(company_field, false);
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              mentor: {
-                ...prevValidations.mentor,
-                organization: true,
-              },
-            }));
-          }
-        } else if (mentorRole === "Community Partner") {
-          if (orgnization === "") {
-            setBorderStyle(community_field, true);
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              mentor: {
-                ...prevValidations.mentor,
-                organization: false,
-              },
-            }));
-          } else {
-            setBorderStyle(community_field, false);
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              mentor: {
-                ...prevValidations.mentor,
-                organization: true,
-              },
-            }));
-          }
-        }
-      }
-
-      if (["Student", "Enabler"].includes(role[0].title)) {
-        if (role[0].title === "Student") {
-          if (dept_field.value === "") {
-            setBorderStyle(dept_field, true);
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              student: {
-                ...prevValidations.student,
-                department: false,
-              },
-            }));
-          } else {
-            setBorderStyle(dept_field, false);
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              student: {
-                ...prevValidations.student,
-                department: true,
-              },
-            }));
-          }
-          if (yog_field.value === "") {
-            setBorderStyle(yog_field, true);
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              student: {
-                ...prevValidations.student,
-                yearOfGraduation: false,
-              },
-            }));
-          } else {
-            setBorderStyle(yog_field, false);
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              student: {
-                ...prevValidations.student,
-                yearOfGraduation: true,
-              },
-            }));
-          }
-        } else if (role[0].title === "Enabler") {
-          if (dept_field.value === "") {
-            setBorderStyle(dept_field, true);
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              enabler: {
-                ...prevValidations.enabler,
-                department: false,
-              },
-            }));
-          } else {
-            setBorderStyle(dept_field, false);
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              enabler: {
-                ...prevValidations.enabler,
-                department: true,
-              },
-            }));
-          }
-        }
-      }
-
-      if (role[0].title === "Student") {
         if (orgnization === "") {
           setValidations((prevValidations) => ({
             ...prevValidations,
@@ -311,25 +188,180 @@ const Onboarding = (props: Props) => {
           }));
         }
 
-        if (dept_field.value === "") {
-          setValidations((prevValidations) => ({
-            ...prevValidations,
-            student: {
-              ...prevValidations.student,
-              department: false,
-            },
-          }));
-        } else {
-          setValidations((prevValidations) => ({
-            ...prevValidations,
-            student: {
-              ...prevValidations.student,
-              department: true,
-            },
-          }));
+        //Validation for the Mentor Role Field(Company, Community, College)
+        if (["Mentor"].includes(role[0].title)) {
+          if (mentorRole === "") {
+            setBorderStyle(mentortype_filed, true);
+            setValidations((prevValidations) => ({
+              ...prevValidations,
+              mentor: {
+                ...prevValidations.mentor,
+                mentorRole: false,
+              },
+            }));
+          } else {
+            setBorderStyle(mentortype_filed, false);
+            setValidations((prevValidations) => ({
+              ...prevValidations,
+              mentor: {
+                ...prevValidations.mentor,
+                mentorRole: true,
+              },
+            }));
+          }
+        }
+
+        //Validation for the Role Field Values
+        if (["Mentor"].includes(role[0].title)) {
+          //Validation for the Mentor Role Field(Company)
+          if (mentorRole === "Company") {
+            if (orgnization === "") {
+              setBorderStyle(company_field, true);
+              setValidations((prevValidations) => ({
+                ...prevValidations,
+                mentor: {
+                  ...prevValidations.mentor,
+                  organization: false,
+                },
+              }));
+            } else {
+              setBorderStyle(company_field, false);
+              setValidations((prevValidations) => ({
+                ...prevValidations,
+                mentor: {
+                  ...prevValidations.mentor,
+                  organization: true,
+                },
+              }));
+            }
+            //Validation for the Mentor Role Field(Community)
+          } else if (mentorRole === "Community Partner") {
+            if (orgnization === "") {
+              setBorderStyle(community_field, true);
+              setValidations((prevValidations) => ({
+                ...prevValidations,
+                mentor: {
+                  ...prevValidations.mentor,
+                  organization: false,
+                },
+              }));
+            } else {
+              setBorderStyle(community_field, false);
+              setValidations((prevValidations) => ({
+                ...prevValidations,
+                mentor: {
+                  ...prevValidations.mentor,
+                  organization: true,
+                },
+              }));
+            }
+          }
+        }
+
+        //Validation for the Student and Enabler Role Field Values
+        if (["Student", "Enabler"].includes(role[0].title)) {
+          //Validation for the Student Role Field Values(Year of Graduation, Department, Organization)
+          if (role[0].title === "Student") {
+            if (yog_field.value === "") {
+              setBorderStyle(yog_field, true);
+              setValidations((prevValidations) => ({
+                ...prevValidations,
+                student: {
+                  ...prevValidations.student,
+                  yearOfGraduation: false,
+                },
+              }));
+            } else {
+              setBorderStyle(yog_field, false);
+              setValidations((prevValidations) => ({
+                ...prevValidations,
+                student: {
+                  ...prevValidations.student,
+                  yearOfGraduation: true,
+                },
+              }));
+            }
+
+            if (dept_field.value === "") {
+              setBorderStyle(dept_field, true);
+              setValidations((prevValidations) => ({
+                ...prevValidations,
+                student: {
+                  ...prevValidations.student,
+                  department: false,
+                },
+              }));
+            } else {
+              setBorderStyle(dept_field, false);
+              setValidations((prevValidations) => ({
+                ...prevValidations,
+                student: {
+                  ...prevValidations.student,
+                  department: true,
+                },
+              }));
+            }
+
+            if (orgnization === "") {
+              setValidations((prevValidations) => ({
+                ...prevValidations,
+                student: {
+                  ...prevValidations.student,
+                  organization: false,
+                },
+              }));
+            } else {
+              setValidations((prevValidations) => ({
+                ...prevValidations,
+                student: {
+                  ...prevValidations.student,
+                  organization: true,
+                },
+              }));
+            }
+
+            //Validation for the Enabler Role Field Values(Department, Organization)
+          } else if (role[0].title === "Enabler") {
+            if (dept_field.value === "") {
+              setBorderStyle(dept_field, true);
+              setValidations((prevValidations) => ({
+                ...prevValidations,
+                enabler: {
+                  ...prevValidations.enabler,
+                  department: false,
+                },
+              }));
+            } else {
+              setBorderStyle(dept_field, false);
+              setValidations((prevValidations) => ({
+                ...prevValidations,
+                enabler: {
+                  ...prevValidations.enabler,
+                  department: true,
+                },
+              }));
+            }
+            if (orgnization === "") {
+              setValidations((prevValidations) => ({
+                ...prevValidations,
+                enabler: {
+                  ...prevValidations.enabler,
+                  organization: false,
+                },
+              }));
+            } else {
+              setValidations((prevValidations) => ({
+                ...prevValidations,
+                enabler: {
+                  ...prevValidations.enabler,
+                  organization: true,
+                },
+              }));
+            }
+          }
         }
       }
-
+      //Validation for the Area of Interest Field
       if (areaOfInterest.length < 1) {
         console.log("Area of Interest is empty");
         setValidations((prevValidations) => ({
@@ -440,11 +472,11 @@ const Onboarding = (props: Props) => {
       })
       .catch((error) => {
         //TODO: Uncomment this commented to bypass already onboarded user
-        // setHasError({
-        //   error: error.response.data.hasError,
-        //   statusCode: error.response.data.statusCode,
-        //   message: error.response.data.message,
-        // });
+        setHasError({
+          error: error.response.data.hasError,
+          statusCode: error.response.data.statusCode,
+          message: error.response.data.message,
+        });
         console.log(error);
       });
 
@@ -996,7 +1028,38 @@ const Onboarding = (props: Props) => {
                       onClick={(e) => {
                         e.preventDefault();
                         setSubmitTrigger(true);
-                        onboard();
+                        console.log(validations);
+                        if (
+                          validations.firstName &&
+                          validations.email &&
+                          validations.phone &&
+                          validations.role &&
+                          validations.areaOfInterest
+                        ) {
+                          if (role[0].title == "Student") {
+                            if (
+                              validations.student.department &&
+                              validations.student.organization &&
+                              validations.student.yearOfGraduation
+                            ) {
+                              onboard();
+                            }
+                          } else if (role[0].title == "Mentor") {
+                            if (
+                              validations.mentor.mentorRole &&
+                              validations.mentor.organization
+                            ) {
+                              onboard();
+                            }
+                          } else if (role[0].title == "Enabler") {
+                            if (
+                              validations.enabler.organization &&
+                              validations.enabler.department
+                            ) {
+                              onboard();
+                            }
+                          }
+                        }
                       }}
                     >
                       Submit
