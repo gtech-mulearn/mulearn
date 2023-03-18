@@ -472,11 +472,11 @@ const Onboarding = (props: Props) => {
       })
       .catch((error) => {
         //TODO: Uncomment this commented to bypass already onboarded user
-        setHasError({
-          error: error.response.data.hasError,
-          statusCode: error.response.data.statusCode,
-          message: error.response.data.message,
-        });
+        // setHasError({
+        //   error: error.response.data.hasError,
+        //   statusCode: error.response.data.statusCode,
+        //   message: error.response.data.message,
+        // });
         console.log(error);
       });
 
@@ -872,7 +872,9 @@ const Onboarding = (props: Props) => {
                               })}
                             </select>
                             {submitTrigger &&
-                              !validations.student.department && (
+                              ((role[0].title == "Student" &&
+                                !validations.student.department) ||
+                                !validations.enabler.department) && (
                                 <p className={styles.error_message}>
                                   This field is required
                                 </p>
