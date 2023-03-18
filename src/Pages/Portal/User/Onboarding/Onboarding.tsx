@@ -87,150 +87,224 @@ const Onboarding = (props: Props) => {
     const mentortype_filed: HTMLInputElement = document.getElementById(
       "mentortype_filed"
     ) as HTMLInputElement;
+    const company_field: HTMLInputElement = document.getElementById(
+      "company_field"
+    ) as HTMLInputElement;
+    const community_field: HTMLInputElement = document.getElementById(
+      "community_field"
+    ) as HTMLInputElement;
 
     const setBorderStyle = (element: HTMLInputElement, condition: boolean) => {
       element.style.border = condition ? "1px solid red" : "none";
     };
 
-    if (firstName === "") {
-      setBorderStyle(first_name, true);
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        firstName: false,
-      }));
-    } else {
-      setBorderStyle(first_name, false);
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        firstName: true,
-      }));
-    }
+    if (submitTrigger) {
+      if (firstName === "") {
+        setBorderStyle(first_name, true);
+        setValidations((prevValidations) => ({
+          ...prevValidations,
+          firstName: false,
+        }));
+      } else {
+        setBorderStyle(first_name, false);
+        setValidations((prevValidations) => ({
+          ...prevValidations,
+          firstName: true,
+        }));
+      }
 
-    if (email === "") {
-      setBorderStyle(email_field, true);
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        email: false,
-      }));
-    } else {
-      setBorderStyle(email_field, false);
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        email: true,
-      }));
-    }
+      if (email === "") {
+        setBorderStyle(email_field, true);
+        setValidations((prevValidations) => ({
+          ...prevValidations,
+          email: false,
+        }));
+      } else {
+        setBorderStyle(email_field, false);
+        setValidations((prevValidations) => ({
+          ...prevValidations,
+          email: true,
+        }));
+      }
 
-    if (phone === 0) {
-      setBorderStyle(phone_field, true);
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        phone: false,
-      }));
-    } else {
-      setBorderStyle(phone_field, false);
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        phone: true,
-      }));
-    }
+      if (phone === 0) {
+        setBorderStyle(phone_field, true);
+        setValidations((prevValidations) => ({
+          ...prevValidations,
+          phone: false,
+        }));
+      } else {
+        setBorderStyle(phone_field, false);
+        setValidations((prevValidations) => ({
+          ...prevValidations,
+          phone: true,
+        }));
+      }
 
-    if (
-      role[0].id === "" ||
-      (orgnization === "" &&
-        ["Student", "Enabler"].includes(role[0].title) &&
-        (dept_field.value === "" || yog_field.value === "")) ||
-      (orgnization === "" &&
-        ["Mentor"].includes(role[0].title) &&
-        mentortype_filed.value === "")
-    ) {
-      setBorderStyle(role_field, true);
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        role: false,
-      }));
-    } else {
-      setBorderStyle(role_field, false);
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        role: true,
-      }));
-    }
+      if (
+        role[0].id === "" ||
+        (orgnization === "" &&
+          ["Student", "Enabler"].includes(role[0].title) &&
+          (dept_field.value === "" || yog_field.value === "")) ||
+        (orgnization === "" &&
+          ["Mentor"].includes(role[0].title) &&
+          mentortype_filed.value === "")
+      ) {
+        setBorderStyle(role_field, true);
+        setValidations((prevValidations) => ({
+          ...prevValidations,
+          role: false,
+        }));
+      } else {
+        setBorderStyle(role_field, false);
+        setValidations((prevValidations) => ({
+          ...prevValidations,
+          role: true,
+        }));
+      }
 
-    if (["Student", "Enabler"].includes(role[0].title)) {
-      if (role[0].title === "Student") {
-        if (dept_field.value === "") {
-          setBorderStyle(dept_field, true);
+      if (["Mentor"].includes(role[0].title)) {
+        if (mentorRole === "") {
+          setBorderStyle(mentortype_filed, true);
           setValidations((prevValidations) => ({
             ...prevValidations,
-            student: {
-              ...prevValidations.student,
-              department: false,
+            mentor: {
+              ...prevValidations.mentor,
+              mentorRole: false,
             },
           }));
         } else {
-          setBorderStyle(dept_field, false);
+          setBorderStyle(mentortype_filed, false);
           setValidations((prevValidations) => ({
             ...prevValidations,
-            student: {
-              ...prevValidations.student,
-              department: true,
-            },
-          }));
-        }
-        if (yog_field.value === "") {
-          setBorderStyle(yog_field, true);
-          setValidations((prevValidations) => ({
-            ...prevValidations,
-            student: {
-              ...prevValidations.student,
-              yearOfGraduation: false,
-            },
-          }));
-        } else {
-          setBorderStyle(yog_field, false);
-          setValidations((prevValidations) => ({
-            ...prevValidations,
-            student: {
-              ...prevValidations.student,
-              yearOfGraduation: true,
-            },
-          }));
-        }
-      } else if (role[0].title === "Enabler") {
-        if (dept_field.value === "") {
-          setBorderStyle(dept_field, true);
-          setValidations((prevValidations) => ({
-            ...prevValidations,
-            enabler: {
-              ...prevValidations.enabler,
-              department: false,
-            },
-          }));
-        } else {
-          setBorderStyle(dept_field, false);
-          setValidations((prevValidations) => ({
-            ...prevValidations,
-            enabler: {
-              ...prevValidations.enabler,
-              department: true,
+            mentor: {
+              ...prevValidations.mentor,
+              mentorRole: true,
             },
           }));
         }
       }
-    }
 
-    if (areaOfInterest.length < 1) {
-      console.log("Area of Interest is empty");
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        areaOfInterest: false,
-      }));
-    } else {
-      console.log("Area of Interest is not empty");
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        areaOfInterest: true,
-      }));
+      if (["Mentor"].includes(role[0].title)) {
+        if (mentorRole === "Company") {
+          if (orgnization === "") {
+            setBorderStyle(company_field, true);
+            setValidations((prevValidations) => ({
+              ...prevValidations,
+              mentor: {
+                ...prevValidations.mentor,
+                organization: false,
+              },
+            }));
+          } else {
+            setBorderStyle(company_field, false);
+            setValidations((prevValidations) => ({
+              ...prevValidations,
+              mentor: {
+                ...prevValidations.mentor,
+                organization: true,
+              },
+            }));
+          }
+        } else if (mentorRole === "Community Partner") {
+          if (orgnization === "") {
+            setBorderStyle(community_field, true);
+            setValidations((prevValidations) => ({
+              ...prevValidations,
+              mentor: {
+                ...prevValidations.mentor,
+                organization: false,
+              },
+            }));
+          } else {
+            setBorderStyle(community_field, false);
+            setValidations((prevValidations) => ({
+              ...prevValidations,
+              mentor: {
+                ...prevValidations.mentor,
+                organization: true,
+              },
+            }));
+          }
+        }
+      }
+
+      if (["Student", "Enabler"].includes(role[0].title)) {
+        if (role[0].title === "Student") {
+          if (dept_field.value === "") {
+            setBorderStyle(dept_field, true);
+            setValidations((prevValidations) => ({
+              ...prevValidations,
+              student: {
+                ...prevValidations.student,
+                department: false,
+              },
+            }));
+          } else {
+            setBorderStyle(dept_field, false);
+            setValidations((prevValidations) => ({
+              ...prevValidations,
+              student: {
+                ...prevValidations.student,
+                department: true,
+              },
+            }));
+          }
+          if (yog_field.value === "") {
+            setBorderStyle(yog_field, true);
+            setValidations((prevValidations) => ({
+              ...prevValidations,
+              student: {
+                ...prevValidations.student,
+                yearOfGraduation: false,
+              },
+            }));
+          } else {
+            setBorderStyle(yog_field, false);
+            setValidations((prevValidations) => ({
+              ...prevValidations,
+              student: {
+                ...prevValidations.student,
+                yearOfGraduation: true,
+              },
+            }));
+          }
+        } else if (role[0].title === "Enabler") {
+          if (dept_field.value === "") {
+            setBorderStyle(dept_field, true);
+            setValidations((prevValidations) => ({
+              ...prevValidations,
+              enabler: {
+                ...prevValidations.enabler,
+                department: false,
+              },
+            }));
+          } else {
+            setBorderStyle(dept_field, false);
+            setValidations((prevValidations) => ({
+              ...prevValidations,
+              enabler: {
+                ...prevValidations.enabler,
+                department: true,
+              },
+            }));
+          }
+        }
+      }
+
+      if (areaOfInterest.length < 1) {
+        console.log("Area of Interest is empty");
+        setValidations((prevValidations) => ({
+          ...prevValidations,
+          areaOfInterest: false,
+        }));
+      } else {
+        console.log("Area of Interest is not empty");
+        setValidations((prevValidations) => ({
+          ...prevValidations,
+          areaOfInterest: true,
+        }));
+      }
     }
   }, [
     firstName,
@@ -242,6 +316,7 @@ const Onboarding = (props: Props) => {
     dept,
     yog,
     submitTrigger,
+    mentorRole,
   ]);
 
   const customStyles = {
@@ -474,9 +549,11 @@ const Onboarding = (props: Props) => {
                           }}
                           required
                         />
-                        <p className={styles.error_message}>
-                          This field is required
-                        </p>
+                        {submitTrigger && !validations.firstName && (
+                          <p className={styles.error_message}>
+                            This field is required
+                          </p>
+                        )}
                       </div>
                       <div className={styles.input_container}>
                         <label htmlFor="">Last Name</label>
@@ -506,9 +583,11 @@ const Onboarding = (props: Props) => {
                           }}
                           required
                         />
-                        <p className={styles.error_message}>
-                          This field is required
-                        </p>
+                        {submitTrigger && !validations.email && (
+                          <p className={styles.error_message}>
+                            This field is required
+                          </p>
+                        )}
                       </div>
                       <div className={styles.input_container}>
                         <label htmlFor="">Phone number</label>
@@ -530,9 +609,11 @@ const Onboarding = (props: Props) => {
                             }}
                             required
                           />
-                          <p className={styles.error_message}>
-                            This field is required
-                          </p>
+                          {submitTrigger && !validations.phone && (
+                            <p className={styles.error_message}>
+                              This field is required
+                            </p>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -610,9 +691,11 @@ const Onboarding = (props: Props) => {
                             );
                           })}
                         </select>
-                        <p className={styles.error_message}>
-                          This field is required
-                        </p>
+                        {submitTrigger && !validations.role && (
+                          <p className={styles.error_message}>
+                            This field is required
+                          </p>
+                        )}
                       </div>
                     </div>
                     <div className={styles.inputs}>
@@ -651,7 +734,14 @@ const Onboarding = (props: Props) => {
                                       .includes(inputValue.toLowerCase())
                                   }
                                   styles={customStyles}
+                                  required
                                 />
+                                {submitTrigger &&
+                                  !validations.student.organization && (
+                                    <p className={styles.error_message}>
+                                      This field is required
+                                    </p>
+                                  )}
                               </div>
 
                               {role[0].title == "Student" ? (
@@ -679,9 +769,12 @@ const Onboarding = (props: Props) => {
                                       );
                                     })}
                                   </select>
-                                  <p className={styles.error_message}>
-                                    This field is required
-                                  </p>
+                                  {submitTrigger &&
+                                    !validations.student.yearOfGraduation && (
+                                      <p className={styles.error_message}>
+                                        This field is required
+                                      </p>
+                                    )}
                                 </div>
                               ) : null}
                             </div>
@@ -708,9 +801,12 @@ const Onboarding = (props: Props) => {
                                 );
                               })}
                             </select>
-                            <p className={styles.error_message}>
-                              This field is required
-                            </p>
+                            {submitTrigger &&
+                              !validations.student.yearOfGraduation && (
+                                <p className={styles.error_message}>
+                                  This field is required
+                                </p>
+                              )}
                           </div>
                         </>
                       ) : (
@@ -738,9 +834,12 @@ const Onboarding = (props: Props) => {
                                   <option value="Induvidual">Induvidual</option>
                                 </select>
                               </div>
-                              <p className={styles.error_message}>
-                                This field is required
-                              </p>
+                              {submitTrigger &&
+                                !validations.mentor.mentorRole && (
+                                  <p className={styles.error_message}>
+                                    This field is required
+                                  </p>
+                                )}
                             </div>
                           ) : null}
                           {mentorRole == "Company" ? (
@@ -763,9 +862,12 @@ const Onboarding = (props: Props) => {
                                   );
                                 })}
                               </select>
-                              <p className={styles.error_message}>
-                                This field is required
-                              </p>
+                              {submitTrigger &&
+                                !validations.mentor.organization && (
+                                  <p className={styles.error_message}>
+                                    This field is required
+                                  </p>
+                                )}
                             </div>
                           ) : null}
                           {mentorRole == "Community Partner" ? (
@@ -787,9 +889,12 @@ const Onboarding = (props: Props) => {
                                   );
                                 })}
                               </select>
-                              <p className={styles.error_message}>
-                                This field is required
-                              </p>
+                              {submitTrigger &&
+                                !validations.mentor.organization && (
+                                  <p className={styles.error_message}>
+                                    This field is required
+                                  </p>
+                                )}
                             </div>
                           ) : null}
                         </>
@@ -803,6 +908,11 @@ const Onboarding = (props: Props) => {
                       </label>
 
                       <div className={styles.aoi_container}>
+                        {submitTrigger && !validations.areaOfInterest && (
+                          <p className={styles.error_message}>
+                            Please select at least one area of interest
+                          </p>
+                        )}
                         {aoiAPI.map((aoi, i) => {
                           const checked = areaOfInterest.includes(
                             aoi.id as string
