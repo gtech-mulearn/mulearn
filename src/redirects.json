@@ -282,5 +282,34 @@
   {
     "route": "/office-hours-feedback",
     "redirect": "https://airtable.com/shrMl6evpiQjyKcyM"
+  },
+  {
+    "route": "/android",
+    "redirect": "https://learn.mulearn.org/bootcamps/android"
+  },
+  { "route": "/ai", "redirect": "https://learn.mulearn.org/bootcamps/ai" },
+  { "route": "/ctf", "redirect": "https://learn.mulearn.org/bootcamps/ctf" },
+  { "route": "/CTF", "redirect": "https://learn.mulearn.org/bootcamps/ctf" },
+  { "route": "/rust", "redirect": "https://learn.mulearn.org/bootcamps/rust" },
+  {
+    "route": "/flutter",
+    "redirect": "https://learn.mulearn.org/bootcamps/flutter"
+  },
+  {
+    "route": "/javascript",
+    "redirect": "https://learn.mulearn.org/bootcamps/javascript"
+  },
+  {
+    "route": "/python",
+    "redirect": "https://learn.mulearn.org/bootcamps/python"
+  },
+  { "route": "/bootcamps", "redirect": "https://learn.mulearn.org/bootcamps" },
+  {
+    "route": "/marathon",
+    "redirect": "https://learn.mulearn.org/challenge/marathon"
+  },
+  {
+    "route": "/hackout",
+    "redirect": "https://learn.mulearn.org/challenge/hackout"
   }
 ]
