@@ -1,62 +1,62 @@
-import React, { useEffect, useState } from "react";
-import styles from "./Onboarding.module.css";
-type Props = {};
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import ReactSelect from "react-select";
-import Error from "./assets/Error";
-import Success from "./Success";
+import React, { useEffect, useState } from "react"
+import styles from "./Onboarding.module.css"
+type Props = {}
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
+import ReactSelect from "react-select"
+import Error from "./assets/Error"
+import Success from "./Success"
 
 const Onboarding = (props: Props) => {
-  const navigate = useNavigate();
-  const queryParameters = new URLSearchParams(window.location.search);
+  const navigate = useNavigate()
+  const queryParameters = new URLSearchParams(window.location.search)
   //Getting the token from the URL
-  const token = queryParameters.get("id");
+  const token = queryParameters.get("id")
   //State Variables for the From
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState(0);
-  const [gender, setGender] = useState("");
-  const [dob, setDob] = useState("");
-  const [role, setRole] = useState([{ id: "", title: "" }]);
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState(0)
+  const [gender, setGender] = useState("")
+  const [dob, setDob] = useState("")
+  const [role, setRole] = useState([{ id: "", title: "" }])
 
-  const [dept, setDept] = useState("");
-  const [yog, setYog] = useState("");
-  const [mentorRole, setMentorRole] = useState("");
+  const [dept, setDept] = useState("")
+  const [yog, setYog] = useState("")
+  const [mentorRole, setMentorRole] = useState("")
   //State Variable for the Form Submission Validation
-  const [formSuccess, setFormSuccess] = useState(false);
+  const [formSuccess, setFormSuccess] = useState(false)
   const [hasError, setHasError] = useState({
     error: false,
     statusCode: 0,
     message: "",
-  });
+  })
 
   //State Array for storing the Area of Interests
-  const [areaOfInterest, setAreaOfInterest] = useState<string[]>([]);
+  const [areaOfInterest, setAreaOfInterest] = useState<string[]>([])
   //State Array for Storing the Organization(Company, Community, College)
-  const [orgnization, setOrgnization] = useState("");
+  const [orgnization, setOrgnization] = useState("")
 
   //State Array for storing the College Options
-  const [collegeAPI, setCollegeAPI] = useState([{ id: "", title: "" }]);
+  const [collegeAPI, setCollegeAPI] = useState([{ id: "", title: "" }])
   //State Array for storing the College Options(Search)
   const [collegeOptions, setCollegeOptions] = useState([
     { value: "", label: "" },
-  ]);
+  ])
 
   //State Array for storing the Department Options
-  const [departmentAPI, setDepartmentAPI] = useState([{ id: "", title: "" }]);
+  const [departmentAPI, setDepartmentAPI] = useState([{ id: "", title: "" }])
   //State Array for storing the Company Options
-  const [companyAPI, setCompanyAPI] = useState([{ id: "", title: "" }]);
+  const [companyAPI, setCompanyAPI] = useState([{ id: "", title: "" }])
   //State Array for storing the Community Options
-  const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }]);
+  const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }])
   //State Array for storing the Mentor Role Options
-  const [roleAPI, setRoleAPI] = useState([{ id: "", title: "" }]);
+  const [roleAPI, setRoleAPI] = useState([{ id: "", title: "" }])
   //State Array for storing the Area of Interest Options
-  const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }]);
+  const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }])
 
   //State Varaible t
-  const [submitTrigger, setSubmitTrigger] = useState(false);
+  const [submitTrigger, setSubmitTrigger] = useState(false)
   const [validations, setValidations] = useState({
     firstName: false,
     email: false,
@@ -77,98 +77,98 @@ const Onboarding = (props: Props) => {
       type: "",
     },
     areaOfInterest: false,
-  });
+  })
 
   useEffect(() => {
     //Getting the Input Field Elements
     const first_name: HTMLInputElement = document.getElementById(
       "first_name"
-    ) as HTMLInputElement;
+    ) as HTMLInputElement
     const email_field: HTMLInputElement = document.getElementById(
       "email_field"
-    ) as HTMLInputElement;
+    ) as HTMLInputElement
     const phone_field: HTMLInputElement = document.getElementById(
       "phone_field"
-    ) as HTMLInputElement;
+    ) as HTMLInputElement
     const role_field: HTMLInputElement = document.getElementById(
       "role_field"
-    ) as HTMLInputElement;
+    ) as HTMLInputElement
     const dept_field: HTMLInputElement = document.getElementById(
       "dept_field"
-    ) as HTMLInputElement;
+    ) as HTMLInputElement
     const yog_field: HTMLInputElement = document.getElementById(
       "yog_field"
-    ) as HTMLInputElement;
+    ) as HTMLInputElement
     const mentortype_filed: HTMLInputElement = document.getElementById(
       "mentortype_filed"
-    ) as HTMLInputElement;
+    ) as HTMLInputElement
     const company_field: HTMLInputElement = document.getElementById(
       "company_field"
-    ) as HTMLInputElement;
+    ) as HTMLInputElement
     const community_field: HTMLInputElement = document.getElementById(
       "community_field"
-    ) as HTMLInputElement;
+    ) as HTMLInputElement
 
     const setBorderStyle = (element: HTMLInputElement, condition: boolean) => {
-      element.style.border = condition ? "1px solid red" : "none";
-    };
+      element.style.border = condition ? "1px solid red" : "none"
+    }
 
     if (submitTrigger) {
       if (firstName === "") {
-        setBorderStyle(first_name, true);
+        setBorderStyle(first_name, true)
         setValidations((prevValidations) => ({
           ...prevValidations,
           firstName: false,
-        }));
+        }))
       } else {
-        setBorderStyle(first_name, false);
+        setBorderStyle(first_name, false)
         setValidations((prevValidations) => ({
           ...prevValidations,
           firstName: true,
-        }));
+        }))
       }
 
       if (email === "") {
-        setBorderStyle(email_field, true);
+        setBorderStyle(email_field, true)
         setValidations((prevValidations) => ({
           ...prevValidations,
           email: false,
-        }));
+        }))
       } else {
-        setBorderStyle(email_field, false);
+        setBorderStyle(email_field, false)
         setValidations((prevValidations) => ({
           ...prevValidations,
           email: true,
-        }));
+        }))
       }
 
       if (phone === 0) {
-        setBorderStyle(phone_field, true);
+        setBorderStyle(phone_field, true)
         setValidations((prevValidations) => ({
           ...prevValidations,
           phone: false,
-        }));
+        }))
       } else {
-        setBorderStyle(phone_field, false);
+        setBorderStyle(phone_field, false)
         setValidations((prevValidations) => ({
           ...prevValidations,
           phone: true,
-        }));
+        }))
       }
 
       //Validation for the Role Field(Mentory, Student or E)
       if (role[0].id === "") {
-        setBorderStyle(role_field, true);
+        setBorderStyle(role_field, true)
         setValidations((prevValidations) => ({
           ...prevValidations,
           role: false,
-        }));
+        }))
       } else {
-        setBorderStyle(role_field, false);
+        setBorderStyle(role_field, false)
         setValidations((prevValidations) => ({
           ...prevValidations,
           role: true,
-        }));
+        }))
 
         if (orgnization === "") {
           setValidations((prevValidations) => ({
@@ -177,7 +177,7 @@ const Onboarding = (props: Props) => {
               ...prevValidations.student,
               organization: false,
             },
-          }));
+          }))
         } else {
           setValidations((prevValidations) => ({
             ...prevValidations,
@@ -185,29 +185,29 @@ const Onboarding = (props: Props) => {
               ...prevValidations.student,
               organization: true,
             },
-          }));
+          }))
         }
 
         //Validation for the Mentor Role Field(Company, Community, College)
         if (["Mentor"].includes(role[0].title)) {
           if (mentorRole === "") {
-            setBorderStyle(mentortype_filed, true);
+            setBorderStyle(mentortype_filed, true)
             setValidations((prevValidations) => ({
               ...prevValidations,
               mentor: {
                 ...prevValidations.mentor,
                 mentorRole: false,
               },
-            }));
+            }))
           } else {
-            setBorderStyle(mentortype_filed, false);
+            setBorderStyle(mentortype_filed, false)
             setValidations((prevValidations) => ({
               ...prevValidations,
               mentor: {
                 ...prevValidations.mentor,
                 mentorRole: true,
               },
-            }));
+            }))
           }
         }
 
@@ -216,44 +216,54 @@ const Onboarding = (props: Props) => {
           //Validation for the Mentor Role Field(Company)
           if (mentorRole === "Company") {
             if (orgnization === "") {
-              setBorderStyle(company_field, true);
+              setBorderStyle(company_field, true)
               setValidations((prevValidations) => ({
                 ...prevValidations,
                 mentor: {
                   ...prevValidations.mentor,
                   organization: false,
                 },
-              }));
+              }))
             } else {
-              setBorderStyle(company_field, false);
+              setBorderStyle(company_field, false)
               setValidations((prevValidations) => ({
                 ...prevValidations,
                 mentor: {
                   ...prevValidations.mentor,
                   organization: true,
                 },
-              }));
+              }))
             }
             //Validation for the Mentor Role Field(Community)
           } else if (mentorRole === "Community Partner") {
             if (orgnization === "") {
-              setBorderStyle(community_field, true);
+              setBorderStyle(community_field, true)
               setValidations((prevValidations) => ({
                 ...prevValidations,
                 mentor: {
                   ...prevValidations.mentor,
                   organization: false,
                 },
-              }));
+              }))
             } else {
-              setBorderStyle(community_field, false);
+              setBorderStyle(community_field, false)
               setValidations((prevValidations) => ({
                 ...prevValidations,
                 mentor: {
                   ...prevValidations.mentor,
                   organization: true,
                 },
-              }));
+              }))
+            }
+          } else {
+            if (mentorRole === "Individual") {
+              setValidations((prevValidations) => ({
+                ...prevValidations,
+                mentor: {
+                  ...prevValidations.mentor,
+                  organization: true,
+                },
+              }))
             }
           }
         }
@@ -263,43 +273,43 @@ const Onboarding = (props: Props) => {
           //Validation for the Student Role Field Values(Year of Graduation, Department, Organization)
           if (role[0].title === "Student") {
             if (yog_field.value === "") {
-              setBorderStyle(yog_field, true);
+              setBorderStyle(yog_field, true)
               setValidations((prevValidations) => ({
                 ...prevValidations,
                 student: {
                   ...prevValidations.student,
                   yearOfGraduation: false,
                 },
-              }));
+              }))
             } else {
-              setBorderStyle(yog_field, false);
+              setBorderStyle(yog_field, false)
               setValidations((prevValidations) => ({
                 ...prevValidations,
                 student: {
                   ...prevValidations.student,
                   yearOfGraduation: true,
                 },
-              }));
+              }))
             }
 
             if (dept_field.value === "") {
-              setBorderStyle(dept_field, true);
+              setBorderStyle(dept_field, true)
               setValidations((prevValidations) => ({
                 ...prevValidations,
                 student: {
                   ...prevValidations.student,
                   department: false,
                 },
-              }));
+              }))
             } else {
-              setBorderStyle(dept_field, false);
+              setBorderStyle(dept_field, false)
               setValidations((prevValidations) => ({
                 ...prevValidations,
                 student: {
                   ...prevValidations.student,
                   department: true,
                 },
-              }));
+              }))
             }
 
             if (orgnization === "") {
@@ -309,7 +319,7 @@ const Onboarding = (props: Props) => {
                   ...prevValidations.student,
                   organization: false,
                 },
-              }));
+              }))
             } else {
               setValidations((prevValidations) => ({
                 ...prevValidations,
@@ -317,29 +327,29 @@ const Onboarding = (props: Props) => {
                   ...prevValidations.student,
                   organization: true,
                 },
-              }));
+              }))
             }
 
             //Validation for the Enabler Role Field Values(Department, Organization)
           } else if (role[0].title === "Enabler") {
             if (dept_field.value === "") {
-              setBorderStyle(dept_field, true);
+              setBorderStyle(dept_field, true)
               setValidations((prevValidations) => ({
                 ...prevValidations,
                 enabler: {
                   ...prevValidations.enabler,
                   department: false,
                 },
-              }));
+              }))
             } else {
-              setBorderStyle(dept_field, false);
+              setBorderStyle(dept_field, false)
               setValidations((prevValidations) => ({
                 ...prevValidations,
                 enabler: {
                   ...prevValidations.enabler,
                   department: true,
                 },
-              }));
+              }))
             }
             if (orgnization === "") {
               setValidations((prevValidations) => ({
@@ -348,7 +358,7 @@ const Onboarding = (props: Props) => {
                   ...prevValidations.enabler,
                   organization: false,
                 },
-              }));
+              }))
             } else {
               setValidations((prevValidations) => ({
                 ...prevValidations,
@@ -356,24 +366,25 @@ const Onboarding = (props: Props) => {
                   ...prevValidations.enabler,
                   organization: true,
                 },
-              }));
+              }))
             }
           }
         }
       }
+
       //Validation for the Area of Interest Field
       if (areaOfInterest.length < 1) {
-        console.log("Area of Interest is empty");
+        console.log("Area of Interest is empty")
         setValidations((prevValidations) => ({
           ...prevValidations,
           areaOfInterest: false,
-        }));
+        }))
       } else {
-        console.log("Area of Interest is not empty");
+        console.log("Area of Interest is not empty")
         setValidations((prevValidations) => ({
           ...prevValidations,
           areaOfInterest: true,
-        }));
+        }))
       }
     }
   }, [
@@ -387,7 +398,7 @@ const Onboarding = (props: Props) => {
     yog,
     submitTrigger,
     mentorRole,
-  ]);
+  ])
 
   const customStyles = {
     control: (provided: any) => ({
@@ -413,12 +424,12 @@ const Onboarding = (props: Props) => {
       borderRadius: "0",
       boxShadow: "none",
     }),
-  };
+  }
 
   const yog_year = [
     2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026,
     2027, 2028, 2029, 2030,
-  ];
+  ]
 
   const onboard = () => {
     const options = {
@@ -441,18 +452,18 @@ const Onboarding = (props: Props) => {
         yearOfGraduation: yog === "" ? null : yog, //required for student
         areaOfInterest, //required
       },
-    };
+    }
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data);
-        setFormSuccess(true);
+        console.log(response.data)
+        setFormSuccess(true)
       })
       .catch(function (error) {
-        const errorMessage = error.response.data.message;
-        console.log(errorMessage);
-      });
-  };
+        const errorMessage = error.response.data.message
+        console.log(errorMessage)
+      })
+  }
 
   useEffect(() => {
     // request for token verification
@@ -464,7 +475,7 @@ const Onboarding = (props: Props) => {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
       },
-    };
+    }
     axios
       .request(token_check)
       .then((response) => {
@@ -472,13 +483,13 @@ const Onboarding = (props: Props) => {
       })
       .catch((error) => {
         //TODO: Uncomment this commented to bypass already onboarded user
-        // setHasError({
-        //   error: error.response.data.hasError,
-        //   statusCode: error.response.data.statusCode,
-        //   message: error.response.data.message,
-        // });
-        console.log(error);
-      });
+        setHasError({
+          error: error.response.data.hasError,
+          statusCode: error.response.data.statusCode,
+          message: error.response.data.message,
+        });
+        console.log(error)
+      })
 
     // request for college list
     const college = {
@@ -489,12 +500,12 @@ const Onboarding = (props: Props) => {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
       },
-    };
+    }
     axios
       .request(college)
       .then(function (response) {
-        const colleges = response.data.response.colleges;
-        setCollegeAPI(colleges);
+        const colleges = response.data.response.colleges
+        setCollegeAPI(colleges)
         setCollegeOptions(
           colleges
             .sort((a: any, b: any) => a.title.localeCompare(b.title))
@@ -502,12 +513,12 @@ const Onboarding = (props: Props) => {
               value: college.id,
               label: college.title,
             }))
-        );
-        setDepartmentAPI(response.data.response.departments);
+        )
+        setDepartmentAPI(response.data.response.departments)
       })
       .catch(function (error) {
-        console.error(error);
-      });
+        console.error(error)
+      })
 
     // request for company list
     const company = {
@@ -518,16 +529,16 @@ const Onboarding = (props: Props) => {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
       },
-    };
+    }
     axios
       .request(company)
       .then(function (response) {
         // console.log(response.data.response);
-        setCompanyAPI(response.data.response.companies);
+        setCompanyAPI(response.data.response.companies)
       })
       .catch(function (error) {
-        console.error(error);
-      });
+        console.error(error)
+      })
 
     // request for role list
     const role = {
@@ -537,15 +548,15 @@ const Onboarding = (props: Props) => {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
       },
-    };
+    }
     axios
       .request(role)
       .then(function (response) {
-        setRoleAPI(response.data.response.roles);
+        setRoleAPI(response.data.response.roles)
       })
       .catch(function (error) {
-        console.error(error);
-      });
+        console.error(error)
+      })
 
     // request for area of intersts list
     const aoi = {
@@ -557,15 +568,15 @@ const Onboarding = (props: Props) => {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
       },
-    };
+    }
     axios
       .request(aoi)
       .then(function (response) {
-        setAoiAPI(response.data.response.aois);
+        setAoiAPI(response.data.response.aois)
       })
       .catch(function (error) {
-        console.error(error);
-      });
+        console.error(error)
+      })
 
     // request for community list
     const comunity = {
@@ -577,16 +588,16 @@ const Onboarding = (props: Props) => {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
       },
-    };
+    }
     axios
       .request(comunity)
       .then(function (response) {
-        setCommunityAPI(response.data.response.communities);
+        setCommunityAPI(response.data.response.communities)
       })
       .catch(function (error) {
-        console.error(error);
-      });
-  }, []);
+        console.error(error)
+      })
+  }, [])
 
   return (
     <>
@@ -615,7 +626,7 @@ const Onboarding = (props: Props) => {
                           placeholder="First name"
                           className={styles.input}
                           onChange={(e) => {
-                            setFirstName(e.target.value);
+                            setFirstName(e.target.value)
                           }}
                           required
                         />
@@ -632,7 +643,7 @@ const Onboarding = (props: Props) => {
                           placeholder="Last name"
                           className={styles.input}
                           onChange={(e) => {
-                            setLastName(e.target.value);
+                            setLastName(e.target.value)
                           }}
                         />
                       </div>
@@ -649,7 +660,7 @@ const Onboarding = (props: Props) => {
                           placeholder="username@domain.com"
                           className={styles.input}
                           onChange={(e) => {
-                            setEmail(e.target.value);
+                            setEmail(e.target.value)
                           }}
                           required
                         />
@@ -675,7 +686,7 @@ const Onboarding = (props: Props) => {
                             type="number"
                             placeholder="8023456789"
                             onChange={(e) => {
-                              setPhone(e.target.valueAsNumber);
+                              setPhone(e.target.valueAsNumber)
                             }}
                             required
                           />
@@ -699,7 +710,7 @@ const Onboarding = (props: Props) => {
                               name=""
                               id=""
                               onChange={(e) => {
-                                setGender(e.target.value);
+                                setGender(e.target.value)
                               }}
                             >
                               <option value="">Select gender</option>
@@ -726,7 +737,7 @@ const Onboarding = (props: Props) => {
                               placeholder="dd/mm/yyyy"
                               className={styles.input}
                               onChange={(e) => {
-                                setDob(e.target.value);
+                                setDob(e.target.value)
                               }}
                             />
                           </div>
@@ -747,8 +758,8 @@ const Onboarding = (props: Props) => {
                                 ? setRole([
                                     { id: e.target.value, title: role.title },
                                   ])
-                                : null;
-                            });
+                                : null
+                            })
                           }}
                           required
                         >
@@ -758,7 +769,7 @@ const Onboarding = (props: Props) => {
                               <option key={i} value={role.id}>
                                 {role.title}
                               </option>
-                            );
+                            )
                           })}
                         </select>
                         {submitTrigger && !validations.role && (
@@ -836,7 +847,7 @@ const Onboarding = (props: Props) => {
                                         <option key={i} value={year}>
                                           {year}
                                         </option>
-                                      );
+                                      )
                                     })}
                                   </select>
                                   {submitTrigger &&
@@ -858,7 +869,7 @@ const Onboarding = (props: Props) => {
                               id="dept_field"
                               name=""
                               onChange={(e) => {
-                                setDept(e.target.value);
+                                setDept(e.target.value)
                               }}
                               required
                             >
@@ -868,7 +879,7 @@ const Onboarding = (props: Props) => {
                                   <option key={index} value={dept.id}>
                                     {dept.title}
                                   </option>
-                                );
+                                )
                               })}
                             </select>
                             {submitTrigger &&
@@ -894,7 +905,7 @@ const Onboarding = (props: Props) => {
                                   style={{ width: "100%" }} //78%
                                   name=""
                                   onChange={(e) => {
-                                    setMentorRole(e.target.value);
+                                    setMentorRole(e.target.value)
                                   }}
                                   required
                                 >
@@ -903,7 +914,7 @@ const Onboarding = (props: Props) => {
                                   <option value="Community Partner">
                                     Community Partner
                                   </option>
-                                  <option value="Induvidual">Induvidual</option>
+                                  <option value="Individual">Individual</option>
                                 </select>
                               </div>
                               {submitTrigger &&
@@ -921,7 +932,7 @@ const Onboarding = (props: Props) => {
                                 id="company_field"
                                 name=""
                                 onChange={(e) => {
-                                  setOrgnization(e.target.value);
+                                  setOrgnization(e.target.value)
                                 }}
                                 required
                               >
@@ -931,7 +942,7 @@ const Onboarding = (props: Props) => {
                                     <option key={index} value={company.id}>
                                       {company.title}
                                     </option>
-                                  );
+                                  )
                                 })}
                               </select>
                               {submitTrigger &&
@@ -948,7 +959,7 @@ const Onboarding = (props: Props) => {
                               <select
                                 id="community_field"
                                 onChange={(e) => {
-                                  setOrgnization(e.target.value);
+                                  setOrgnization(e.target.value)
                                 }}
                                 required
                               >
@@ -958,7 +969,7 @@ const Onboarding = (props: Props) => {
                                     <option key={index} value={company.id}>
                                       {company.title}
                                     </option>
-                                  );
+                                  )
                                 })}
                               </select>
                               {submitTrigger &&
@@ -988,9 +999,9 @@ const Onboarding = (props: Props) => {
                         {aoiAPI.map((aoi, i) => {
                           const checked = areaOfInterest.includes(
                             aoi.id as string
-                          );
+                          )
                           const disabled =
-                            areaOfInterest.length >= 3 && !checked;
+                            areaOfInterest.length >= 3 && !checked
                           return (
                             <label key={i}>
                               <input
@@ -999,24 +1010,24 @@ const Onboarding = (props: Props) => {
                                 checked={checked}
                                 disabled={disabled}
                                 onChange={(e) => {
-                                  const selectedId = aoi.id;
+                                  const selectedId = aoi.id
                                   if (checked) {
                                     setAreaOfInterest(
                                       areaOfInterest.filter(
                                         (aois) => aois !== selectedId
                                       )
-                                    );
+                                    )
                                   } else {
                                     setAreaOfInterest(
                                       [...areaOfInterest, selectedId].slice(-3)
-                                    );
+                                    )
                                   }
                                 }}
                                 required
                               />
                               <span>{aoi.name}</span>
                             </label>
-                          );
+                          )
                         })}
                       </div>
 
@@ -1028,9 +1039,9 @@ const Onboarding = (props: Props) => {
                     <button
                       type="submit"
                       onClick={(e) => {
-                        e.preventDefault();
-                        setSubmitTrigger(true);
-                        console.log(validations);
+                        e.preventDefault()
+                        setSubmitTrigger(true)
+                        console.log(validations)
                         if (
                           validations.firstName &&
                           validations.email &&
@@ -1044,21 +1055,21 @@ const Onboarding = (props: Props) => {
                               validations.student.organization &&
                               validations.student.yearOfGraduation
                             ) {
-                              onboard();
+                              onboard()
                             }
                           } else if (role[0].title == "Mentor") {
                             if (
                               validations.mentor.mentorRole &&
                               validations.mentor.organization
                             ) {
-                              onboard();
+                              onboard()
                             }
                           } else if (role[0].title == "Enabler") {
                             if (
                               validations.enabler.organization &&
                               validations.enabler.department
                             ) {
-                              onboard();
+                              onboard()
                             }
                           }
                         }
@@ -1085,7 +1096,7 @@ const Onboarding = (props: Props) => {
         )}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Onboarding;
+export default Onboarding
