@@ -81,33 +81,18 @@ const Onboarding = (props: Props) => {
 
   useEffect(() => {
     //Getting the Input Field Elements
-    const first_name: HTMLInputElement = document.getElementById(
-      "first_name"
-    ) as HTMLInputElement
-    const email_field: HTMLInputElement = document.getElementById(
-      "email_field"
-    ) as HTMLInputElement
-    const phone_field: HTMLInputElement = document.getElementById(
-      "phone_field"
-    ) as HTMLInputElement
-    const role_field: HTMLInputElement = document.getElementById(
-      "role_field"
-    ) as HTMLInputElement
-    const dept_field: HTMLInputElement = document.getElementById(
-      "dept_field"
-    ) as HTMLInputElement
-    const yog_field: HTMLInputElement = document.getElementById(
-      "yog_field"
-    ) as HTMLInputElement
-    const mentortype_filed: HTMLInputElement = document.getElementById(
-      "mentortype_filed"
-    ) as HTMLInputElement
-    const company_field: HTMLInputElement = document.getElementById(
-      "company_field"
-    ) as HTMLInputElement
-    const community_field: HTMLInputElement = document.getElementById(
-      "community_field"
-    ) as HTMLInputElement
+    const getInputElem = (id: string): HTMLInputElement =>
+      document.getElementById(id) as HTMLInputElement
+
+    const first_name = getInputElem("first_name")
+    const email_field = getInputElem("email_field")
+    const phone_field = getInputElem("phone_field")
+    const role_field = getInputElem("role_field")
+    const dept_field = getInputElem("dept_field")
+    const yog_field = getInputElem("yog_field")
+    const mentortype_filed = getInputElem("mentortype_filed")
+    const company_field = getInputElem("company_field")
+    const community_field = getInputElem("community_field")
 
     const setBorderStyle = (element: HTMLInputElement, condition: boolean) => {
       element.style.border = condition ? "1px solid red" : "none"
@@ -736,6 +721,7 @@ const Onboarding = (props: Props) => {
                             setYog("")
                             setDept("")
                             setMentorRole("")
+                            setOrgnization("")
                             setValidations((prevState) => ({
                               ...prevState,
                               student: {
@@ -805,9 +791,12 @@ const Onboarding = (props: Props) => {
                                 </label>
                                 <ReactSelect
                                   id="college_field"
-                                  value={collegeOptions.find(
-                                    (college) => college.value === orgnization
-                                  )}
+                                  value={
+                                    orgnization.length > 0 &&
+                                    collegeOptions.find(
+                                      (college) => college.value === orgnization
+                                    )
+                                  }
                                   onChange={(option) =>
                                     option && setOrgnization(option.value)
                                   }
@@ -880,6 +869,7 @@ const Onboarding = (props: Props) => {
                               onChange={(e) => {
                                 setDept(e.target.value)
                               }}
+                              value={dept}
                               required
                             >
                               <option value="">Select</option>
