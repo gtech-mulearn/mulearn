@@ -450,11 +450,11 @@ const Onboarding = (props: Props) => {
       })
       .catch((error) => {
         //TODO: Uncomment this commented to bypass already onboarded user
-        // setHasError({
-        //   error: error.response.data.hasError,
-        //   statusCode: error.response.data.statusCode,
-        //   message: error.response.data.message,
-        // });
+        setHasError({
+          error: error.response.data.hasError,
+          statusCode: error.response.data.statusCode,
+          message: error.response.data.message,
+        });
         console.log(error)
       })
 
@@ -776,56 +776,88 @@ const Onboarding = (props: Props) => {
                       role[0].title == "Enabler" ? (
                         <>
                           <div className={styles.input_container}>
+                            <label htmlFor="">
+                              College <span className={styles.required}>*</span>
+                            </label>
+                            <ReactSelect
+                              id="college_field"
+                              value={
+                                orgnization.length > 0 &&
+                                collegeOptions.find(
+                                  (college) => college.value === orgnization
+                                )
+                              }
+                              onChange={(option) =>
+                                option && setOrgnization(option.value)
+                              }
+                              options={collegeOptions}
+                              isClearable={false}
+                              placeholder="Select college..."
+                              noOptionsMessage={() => "No colleges found."}
+                              filterOption={({ label }, inputValue) =>
+                                label
+                                  .toLowerCase()
+                                  .includes(inputValue.toLowerCase())
+                              }
+                              styles={customStyles}
+                              required
+                            />
+                            {submitTrigger &&
+                              ((role[0].title === "Student" &&
+                                !validations.student.organization) ||
+                                (role[0].title === "Enabler" &&
+                                  !validations.enabler.organization)) && (
+                                <p className={styles.error_message}>
+                                  This field is required
+                                </p>
+                              )}
+                          </div>
+
+                          <div className={styles.input_container}>
                             <div className={styles.grouped_inputs}>
                               <div
                                 style={
-                                  role[0].title == "Student"
-                                    ? { width: "78%" }
+                                  role[0].title === "Student"
+                                    ? { width: "58%" }
                                     : { width: "100%" }
                                 }
                                 className={styles.input_container}
                               >
                                 <label htmlFor="">
-                                  College{" "}
+                                  Department{" "}
                                   <span className={styles.required}>*</span>
                                 </label>
-                                <ReactSelect
-                                  id="college_field"
-                                  value={
-                                    orgnization.length > 0 &&
-                                    collegeOptions.find(
-                                      (college) => college.value === orgnization
-                                    )
-                                  }
-                                  onChange={(option) =>
-                                    option && setOrgnization(option.value)
-                                  }
-                                  options={collegeOptions}
-                                  isClearable={false}
-                                  placeholder="Select college..."
-                                  noOptionsMessage={() => "No colleges found."}
-                                  filterOption={({ label }, inputValue) =>
-                                    label
-                                      .toLowerCase()
-                                      .includes(inputValue.toLowerCase())
-                                  }
-                                  styles={customStyles}
+                                <select
+                                  id="dept_field"
+                                  name=""
+                                  onChange={(e) => {
+                                    setDept(e.target.value)
+                                  }}
+                                  value={dept}
                                   required
-                                />
+                                >
+                                  <option value="">Select</option>
+                                  {departmentAPI.map((dept, index) => {
+                                    return (
+                                      <option key={index} value={dept.id}>
+                                        {dept.title}
+                                      </option>
+                                    )
+                                  })}
+                                </select>
                                 {submitTrigger &&
                                   ((role[0].title === "Student" &&
-                                    !validations.student.organization) ||
+                                    !validations.student.department) ||
                                     (role[0].title === "Enabler" &&
-                                      !validations.enabler.organization)) && (
+                                      !validations.enabler.department)) && (
                                     <p className={styles.error_message}>
                                       This field is required
                                     </p>
                                   )}
                               </div>
-
                               {role[0].title == "Student" ? (
                                 <div
-                                  style={{ width: "20%" }}
+                                  style={{ width: "40%" }}
                                   className={styles.input_container}
                                 >
                                   <label htmlFor="">
@@ -857,39 +889,6 @@ const Onboarding = (props: Props) => {
                                 </div>
                               ) : null}
                             </div>
-                          </div>
-                          <div className={styles.input_container}>
-                            <label htmlFor="">
-                              Department{" "}
-                              <span className={styles.required}>*</span>
-                            </label>
-                            <select
-                              id="dept_field"
-                              name=""
-                              onChange={(e) => {
-                                setDept(e.target.value)
-                              }}
-                              value={dept}
-                              required
-                            >
-                              <option value="">Select</option>
-                              {departmentAPI.map((dept, index) => {
-                                return (
-                                  <option key={index} value={dept.id}>
-                                    {dept.title}
-                                  </option>
-                                )
-                              })}
-                            </select>
-                            {submitTrigger &&
-                              ((role[0].title === "Student" &&
-                                !validations.student.department) ||
-                                (role[0].title === "Enabler" &&
-                                  !validations.enabler.department)) && (
-                                <p className={styles.error_message}>
-                                  This field is required
-                                </p>
-                              )}
                           </div>
                         </>
                       ) : (
@@ -1035,7 +1034,14 @@ const Onboarding = (props: Props) => {
                     </div>
                   </div>
                   <div className={styles.form_buttons}>
-                    <button type="reset">Cancel</button>
+                    <button
+                      onClick={() => {
+                        setAreaOfInterest([])
+                      }}
+                      type="reset"
+                    >
+                      Cancel
+                    </button>
                     <button
                       type="submit"
                       onClick={(e) => {
