@@ -557,58 +557,106 @@ const ISRData = [
     id: 63,
     image: "assets/events/isr/ISRPictures/Moosa Fayaz.webp",
     speaker: "Moosa Fayaz",
-    description: "Behind every successful man, there's a woman. It was later that Inspiration was discovered 😜 .This edition of Inspiration Station Radio, we'll be interacting with Moosa Fayaz, a 3rd year Engineering Student at KMCT College of Engineering. .Moosa Fayaz is the founder of Laetus creations and is also serving as the Finance Lead of IEDC KMCT CE. He has also served as an intern for GTech µLearn and has made significant contributions. .He loves to experiment with design 🎨 and keeps creating awesome media each time he tries💥💯 ",
+    description:
+      "Behind every successful man, there's a woman. It was later that Inspiration was discovered 😜 .This edition of Inspiration Station Radio, we'll be interacting with Moosa Fayaz, a 3rd year Engineering Student at KMCT College of Engineering. .Moosa Fayaz is the founder of Laetus creations and is also serving as the Finance Lead of IEDC KMCT CE. He has also served as an intern for GTech µLearn and has made significant contributions. .He loves to experiment with design 🎨 and keeps creating awesome media each time he tries💥💯 ",
     date: "20/12/2022",
   },
   {
     id: "64",
     speaker: "Jomon Chacko",
     image: "assets/events/isr/ISRPictures/Jomon Chacko.webp",
-    description: "Change-makers have the special trait of inspiring all around them💥 This week on Inspiration Station Radio, we have Jomon Chacko, a 2nd year BCA student  at Kristu Jyoti College of Management and Technology Changanacherry and Founder of  Lancelots. Intrigued by the world of design, Jomon learned After Effects at the young age of 14 and made video designing his passion ❤‍🔥. He believes in constantly updating his skills and has  completed 3 internships and has taken part in several contests.",
+    description:
+      "Change-makers have the special trait of inspiring all around them💥 This week on Inspiration Station Radio, we have Jomon Chacko, a 2nd year BCA student  at Kristu Jyoti College of Management and Technology Changanacherry and Founder of  Lancelots. Intrigued by the world of design, Jomon learned After Effects at the young age of 14 and made video designing his passion ❤‍🔥. He believes in constantly updating his skills and has  completed 3 internships and has taken part in several contests.",
     date: "27/12/2022",
   },
   {
     id: "65",
     speaker: " Jeevan Joseph",
     image: "assets/events/isr/ISRPictures/Jeevan Joseph.webp",
-    description: " Hola Amigoss 👋🏻,The Year has just started and now is the perfect time to start working on your goals!!Start your year the Inspired Way 💫 with Inspiration Station Radio ‼️ This week on Inspiration Station Radio , we have Jeevan Joseph , a 3rd year BCA student at Kristu Jyothi College of Management & Technology , Changanacherry, and CEO of Inovus Labs IEDC. Fueled🔥 by his passion for technology and his desire to contribute to the Learning Ecosystem, Jeevan spends a significant amount of his time in several communities. He was previously a Discord Manager for GTech μLearn.",
+    description:
+      " Hola Amigoss 👋🏻,The Year has just started and now is the perfect time to start working on your goals!!Start your year the Inspired Way 💫 with Inspiration Station Radio ‼️ This week on Inspiration Station Radio , we have Jeevan Joseph , a 3rd year BCA student at Kristu Jyothi College of Management & Technology , Changanacherry, and CEO of Inovus Labs IEDC. Fueled🔥 by his passion for technology and his desire to contribute to the Learning Ecosystem, Jeevan spends a significant amount of his time in several communities. He was previously a Discord Manager for GTech μLearn.",
     date: "03/12/2022",
   },
   {
     id: "66",
     speaker: "Hari Sankar",
     image: "assets/events/isr/ISRPictures/Hari Sankar.webp",
-    description: " If you're inspired enough, no task will ever seem too big💯. This week on Inspiration Station Radio, we have Hari Sankar, Core Team member at Pygrammers. Hari Sankar is currently pursuing his Bachelors in Computer Science at Mar Ivanious College.He is a Python🐍 expert and has been mentoring students for more than a year. He is also a self taught cyber security researcher and he loves to spend his time playing CTFs. ",
+    description:
+      " If you're inspired enough, no task will ever seem too big💯. This week on Inspiration Station Radio, we have Hari Sankar, Core Team member at Pygrammers. Hari Sankar is currently pursuing his Bachelors in Computer Science at Mar Ivanious College.He is a Python🐍 expert and has been mentoring students for more than a year. He is also a self taught cyber security researcher and he loves to spend his time playing CTFs. ",
     date: "10/01/2023",
   },
   {
     id: "67",
     speaker: "Hamza Shaheem",
     image: "assets/events/isr/ISRPictures/Hamza Shaheem.webp",
-    description: "Life doesn't give us a purpose. We give life purpose. – The Flash(from DC) once said this and we agree!! Find your goal and get yourself inspired enough to chase it - that's the secret to success 👑.This week on Inspiration Station Radio, we have Hamza Shaheem, a 3rd year Computer Science Engineering Student at AWH Engineering College. Hamza is very enthusiastic about Web3 technology and its potential to revolutionize the World.Hamza is currently a Flutter Developer and Software Testing intern at Cyber System Technologies LLP and has had the opportunity to work on many amazing projects 💥. While most students struggle to secure an internship, Hamza was able to land this opportunity while he was still in his 3rd semester 🤯",
+    description:
+      "Life doesn't give us a purpose. We give life purpose. – The Flash(from DC) once said this and we agree!! Find your goal and get yourself inspired enough to chase it - that's the secret to success 👑.This week on Inspiration Station Radio, we have Hamza Shaheem, a 3rd year Computer Science Engineering Student at AWH Engineering College. Hamza is very enthusiastic about Web3 technology and its potential to revolutionize the World.Hamza is currently a Flutter Developer and Software Testing intern at Cyber System Technologies LLP and has had the opportunity to work on many amazing projects 💥. While most students struggle to secure an internship, Hamza was able to land this opportunity while he was still in his 3rd semester 🤯",
     date: "17/01/2023",
   },
   {
     id: "68",
     speaker: "Abhijith ES",
     image: "assets/events/isr/ISRPictures/Abhijith ES.webp",
-    description: "🚨Work output ~ Inspiration🚨 This week on Inspiration Station Radio, we have Abhijith ES, a final year Civil Engineering Student at St. Joseph's College of Engineering and Technology, Palai. Abhijith is currently a Fellow at µLearn, was previously a People Management Intern, and has always been one our most active contributors. He has held several leadership roles in multiple organisations,  and has a diverse set of skills to showcase💥 If there's one thing we can say for sure - if you give him a task, he'll do it (regardless of whether it's design, tech or anything else😅) . Join us at 8pm today in the #lobby voice channel and hear Abhijith share his unique and inspiring journey ✈️",
+    description:
+      "🚨Work output ~ Inspiration🚨 This week on Inspiration Station Radio, we have Abhijith ES, a final year Civil Engineering Student at St. Joseph's College of Engineering and Technology, Palai. Abhijith is currently a Fellow at µLearn, was previously a People Management Intern, and has always been one our most active contributors. He has held several leadership roles in multiple organisations,  and has a diverse set of skills to showcase💥 If there's one thing we can say for sure - if you give him a task, he'll do it (regardless of whether it's design, tech or anything else😅) . Join us at 8pm today in the #lobby voice channel and hear Abhijith share his unique and inspiring journey ✈️",
     date: "24/01/2023",
   },
   {
     id: "69",
     speaker: "Amritha G S",
     image: "assets/events/isr/ISRPictures/Amritha G S.webp",
-    description: "Keep trying until you keep winning  - That's a good motto to live byThis week on Inspiration Station Radio, we have Amritha G S, an Electrical & Electronics Engineering Graduate from Trinity College Of Engineering. Amritha is currently a Product Development Intern at Gapinuvi Health Allianz Private Limited. She was a Discord Manager Intern at GTech 𝝁Learn and is currently a Moderator. Amritha is the backbone of our operations on Discord(Yup, thank her for quickly checking your submissions 💯) ",
+    description:
+      "Keep trying until you keep winning  - That's a good motto to live byThis week on Inspiration Station Radio, we have Amritha G S, an Electrical & Electronics Engineering Graduate from Trinity College Of Engineering. Amritha is currently a Product Development Intern at Gapinuvi Health Allianz Private Limited. She was a Discord Manager Intern at GTech 𝝁Learn and is currently a Moderator. Amritha is the backbone of our operations on Discord(Yup, thank her for quickly checking your submissions 💯) ",
     date: "31/01/2023",
   },
   {
     id: "70",
     speaker: "Saurav S Chandran",
-    image: "assets/events/isr/ISRPictures/Saurav S Chandran",
-    description: "Have you ever struggled with managing multiple things at once ❓ Today we'll meet an expert in that category. This week on Inspiration Station Radio, we have Sourav S Chandran , who is currently persuing a career in film making and music. Sourav has been playing the violin 🎻 for the last ten years and is a session artist, and has performed in several shows. He is passionate about film making🎥 and as a motion designer, he has worked with experts from several gaming industry titans including EA Sports, Ubisoft ,Rockstar and Walt Disney. He has previously done work for companies like Amazon , Swiggy, and Flipkart 🤩",
+    image: "assets/events/isr/ISRPictures/Saurav S Chandran.webp",
+    description:
+      "Have you ever struggled with managing multiple things at once ❓ Today we'll meet an expert in that category. This week on Inspiration Station Radio, we have Sourav S Chandran , who is currently persuing a career in film making and music. Sourav has been playing the violin 🎻 for the last ten years and is a session artist, and has performed in several shows. He is passionate about film making🎥 and as a motion designer, he has worked with experts from several gaming industry titans including EA Sports, Ubisoft ,Rockstar and Walt Disney. He has previously done work for companies like Amazon , Swiggy, and Flipkart 🤩",
     date: "07/02/2023",
-  }
-];
+  },
+  {
+    id: "71",
+    speaker: "Enric S Neelamkavil",
+    image: "assets/events/isr/ISRPictures/Enric S Neelamkavil.webp",
+    description:
+      "This week on Inspiration Station Radio, meet Enric S Neelamkavil, a 3rd year undergrad at Christ College of Engineering. He is currently a design intern at GTech μLearn and his passion for design is something that inspires the entire team to produce content of the highest quality. A passionate graphic designer, Enric has been a part of GDSC at his college and various other organizations. He is also the President of Community of Developers. Want to start your journey as a graphic designer in today’s era? Be sure to jump on the Inspiration Radio Station wagon and gain some insights.",
+    date: "14/02/2023",
+  },
+  {
+    id: "72",
+    speaker: "Aaron K",
+    image: "assets/events/isr/ISRPictures/Aaron K.webp",
+    description:
+      "We'll you're in luck💯. This week on Inspiration station radio, we have Aaron, a 2nd year undergrad at MBCET Trivandrum. He is the Campus Lead of the µLearn MBCET Chapter and our Web development intern. He is also one of our best content writer. In a single sentence, we may characterise him as a person who is extremely committed and gives everything he has to whatever he does. Are you curious about how he manages all of these?",
+    date: "21/02/2023",
+  },
+  {
+    id: "73",
+    speaker: "Abhiram Krishna",
+    image: "assets/events/isr/ISRPictures/Abhiram Krishna.webp",
+    description:
+      "Breaking News ‼️Inspiration Station Radio is moving to Twitter spaces We are now shifting this week's📻 Inspiration Station Radio featuring Abhiram Krishna R S 👱 to Twitter spaces instead of our Discord server.Don't forget to join us at 8:00 pm today 💯 on Twitter spaces to gain valuable insights from Abhiram, an experienced Web Developer and a seasoned leader who holds various leadership positions in IEEE and IET. He is currently the Social Media Manager 👨🏾‍💻at GTech μLearn.",
+    date: "28/02/2023",
+  },
+  {
+    id: "74",
+    speaker: "Muhammed Farseen",
+    image: "assets/events/isr/ISRPictures/Muhammed Farseen.webp",
+    description:
+      "This week on Inspiration Station Converation, we have Muhammed Farseen, an engineering student👨‍🎓 from College of Engineering Thalassery. Farseen is currently a part of our UI design team 🎨 and is also doing UI internships at two other firms. Design is passion for Farseen and he loves spending his time figuring out new ways to use his skill 🚀.There's more to this story! Come tune in to Inspiration Station Conversation, where we'll be droppin' some mad inspiration to get you hustlin', grindin', and chasing your dreams like a boss!",
+    date: "07/02/2023",
+  },
+  {
+    id: "75",
+    speaker: "Vivek K J",
+    image: "assets/events/isr/ISRPictures/Vivek K J.webp",
+    description:
+      "Joining us on Inspiration Radio this week is Vivek K J, a Computer Science undergrad at Sahrdaya College of Engineering and Technology. He is a full-stack developer and a free software enthusiast, who is a prominent figure in the Tech Community through his contributions to several open-source projects like Debian, Wikipedia, SMC, etc.",
+    date: "21/02/2023",
+  },
+]
 
-export default ISRData;
+export default ISRData

@@ -84,10 +84,38 @@
     "date": "01/02/2023"
   },
   {
-    "id": 11,
+    "id": 12,
     "name": "Salt Mango Tree #13",
     "image": "/assets/events/saltmangotree/Chatgbt vs Bard.webp",
     "description": "The more you practice, the better you get💯 Ever been in awkward situations just because of your poor grasp of English. Time to fix that‼️Join us for Salt Mango Tree 🧂🥭🎄 at 8PM , Wednesday (8th Feb) on the µLearn Discord Server. Topic :  The AI Battle : Chat GPT vs Bard",
     "date": "08/02/2023"
+  },
+  {
+    "id": 13,
+    "name": "Salt Mango Tree #14",
+    "image": "/assets/events/saltmangotree/saltMangoTree_14.webp",
+    "description": "The more you practice, the better you get💯 Ever been in awkward situations just because of your poor grasp of English. Time to fix that‼️Join us for Salt Mango Tree 🧂🥭🎄 at 8PM , Wednesday (15th Feb) on the µLearn Discord Server.",
+    "date": "15/02/2023"
+  },
+  {
+    "id": 14,
+    "name": "Salt Mango Tree #15",
+    "image": "/assets/events/saltmangotree/saltMangoTree_15.webp",
+    "description": "The more you practice, the better you get💯 Ever been in awkward situations just because of your poor grasp of English. Time to fix that‼️Join us for Salt Mango Tree 🧂🥭🎄 at 8PM , Wednesday (01 Mar) on the µLearn Discord Server.",
+    "date": "01/03/2023"
+  },
+  {
+    "id": 15,
+    "name": "Salt Mango Tree #16",
+    "image": "/assets/events/saltmangotree/saltMangoTree_16.webp",
+    "description": "The more you practice, the better you get💯 Ever been in awkward situations just because of your poor grasp of English. Time to fix that‼️Join us for Salt Mango Tree 🧂🥭🎄 at 8PM , Wednesday (08th Mar) on the µLearn Discord Server.",
+    "date": "08/03/2023"
+  },
+  {
+    "id": 16,
+    "name": "Salt Mango Tree #17",
+    "image": "/assets/events/saltmangotree/saltMangoTree_17.webp",
+    "description": "The more you practice, the better you get💯 Ever been in awkward situations just because of your poor grasp of English. Time to fix that‼️Join us for Salt Mango Tree 🧂🥭🎄 at 8PM , Wednesday (08th Mar) on the µLearn Discord Server.",
+    "date": "15/03/2023"
   }
 ]
