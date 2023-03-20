@@ -1,20 +1,6 @@
 {
   "newcalls": [
-    {
-      "date": "02/15/2023",
-      "logo": "/assets/careers/companies/zilicon.png",
-      "role": "Qualified & Skilled Mentors(Multiple Domains Available)",
-      "company": "Zilicon & Riglabs",
-      "title": "Zilicon & Riglabs Mentor Call",
-      "remuneration": "Upto 3.02LPA",
-      "location": "Hybrid",
-      "lastdate": "18th March",
-      "applylink": "https://airtable.com/shrJWlSFtF6vRoYcH",
-      "extrafield": {
-        "name": "Domains",
-        "value": "3D Multimedia, Edge IoT, 3D CAD, ArchViz, Cyber Security, XR[AR,VR]. Robotics and Automation"
-      }
-    },
+
     {
       "date": "02/15/2023",
       "logo": "/assets/careers/companies/faya.jpg",
@@ -31,34 +17,6 @@
         "value": "English Language Writing, Blogging, Content Research, Marketing Sense, Sense of marketing strategy, Knowledge of Social Media Marketing",
         "link": "https://learn.mulearn.org/challenge/digitalmarketing"
       }
-    },
-    {
-      "date": "02/24/2023",
-      "logo": "/assets/careers/companies/yip.webp",
-      "role": "District Coordinator",
-      "company": "Yip",
-      "title": "Yip x µLearn",
-      "remuneration": "INR 15K - 20K/Month",
-      "vacancies": "01",
-      "location": "Pathanamthitta HQ",
-      "lastdate": "19th March",
-      "duration": "1 Year",
-      "applylink": "https://airtable.com/shrxkzH8Iv8GHcXCM",
-      "jdlink": "https://mulearn.org/jd"
-    },
-    {
-      "date": "02/24/2023",
-      "logo": "/assets/careers/companies/yip.webp",
-      "role": "District Coordinator",
-      "company": "Yip",
-      "title": "Yip x µLearn",
-      "remuneration": "INR 15K - 20K/Month",
-      "vacancies": "01",
-      "location": "Malapuram HQ",
-      "lastdate": "19th March",
-      "duration": "1 Year",
-      "applylink": "https://airtable.com/shrxkzH8Iv8GHcXCM",
-      "jdlink": "https://mulearn.org/jd"
     }
   ]
 }
