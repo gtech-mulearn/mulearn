@@ -142,7 +142,7 @@ const Onboarding = (props: Props) => {
         }))
       }
 
-      if (phone === 0) {
+      if (phone === 0 && phone.toString().length !== 10) {
         setBorderStyle(phone_field, true)
         setValidations((prevValidations) => ({
           ...prevValidations,
@@ -169,24 +169,6 @@ const Onboarding = (props: Props) => {
           ...prevValidations,
           role: true,
         }))
-
-        if (orgnization === "") {
-          setValidations((prevValidations) => ({
-            ...prevValidations,
-            student: {
-              ...prevValidations.student,
-              organization: false,
-            },
-          }))
-        } else {
-          setValidations((prevValidations) => ({
-            ...prevValidations,
-            student: {
-              ...prevValidations.student,
-              organization: true,
-            },
-          }))
-        }
 
         //Validation for the Mentor Role Field(Company, Community, College)
         if (["Mentor"].includes(role[0].title)) {
@@ -483,11 +465,11 @@ const Onboarding = (props: Props) => {
       })
       .catch((error) => {
         //TODO: Uncomment this commented to bypass already onboarded user
-        setHasError({
-          error: error.response.data.hasError,
-          statusCode: error.response.data.statusCode,
-          message: error.response.data.message,
-        });
+        // setHasError({
+        //   error: error.response.data.hasError,
+        //   statusCode: error.response.data.statusCode,
+        //   message: error.response.data.message,
+        // });
         console.log(error)
       })
 
@@ -751,6 +733,30 @@ const Onboarding = (props: Props) => {
                           id="role_field"
                           name=""
                           onChange={(e) => {
+                            setYog("")
+                            setDept("")
+                            setMentorRole("")
+                            setValidations((prevState) => ({
+                              ...prevState,
+                              student: {
+                                ...prevState.student,
+                                organization: false,
+                                department: false,
+                                yearOfGraduation: false,
+                              },
+                              enabler: {
+                                ...prevState.enabler,
+                                organization: false,
+                                department: false,
+                              },
+                              mentor: {
+                                ...prevState.mentor,
+                                organization: false,
+                                mentorRole: false,
+                                type: "",
+                              },
+                            }))
+
                             roleAPI.map((role) => {
                               e.target.value == ""
                                 ? setRole([{ id: "", title: "" }])
@@ -818,7 +824,10 @@ const Onboarding = (props: Props) => {
                                   required
                                 />
                                 {submitTrigger &&
-                                  !validations.student.organization && (
+                                  ((role[0].title === "Student" &&
+                                    !validations.student.organization) ||
+                                    (role[0].title === "Enabler" &&
+                                      !validations.enabler.organization)) && (
                                     <p className={styles.error_message}>
                                       This field is required
                                     </p>
@@ -883,9 +892,10 @@ const Onboarding = (props: Props) => {
                               })}
                             </select>
                             {submitTrigger &&
-                              ((role[0].title == "Student" &&
+                              ((role[0].title === "Student" &&
                                 !validations.student.department) ||
-                                !validations.enabler.department) && (
+                                (role[0].title === "Enabler" &&
+                                  !validations.enabler.department)) && (
                                 <p className={styles.error_message}>
                                   This field is required
                                 </p>
