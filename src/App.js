@@ -89,7 +89,7 @@ function App() {
             path="/campus-logo-generator"
             element={<CampusLogoGenerator />}
           />
-          <Route path="/termsandcondition" element={<TermsAndCondition />} />
+          <Route path="/termsandconditions" element={<TermsAndCondition />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         </Routes>
       </Router>

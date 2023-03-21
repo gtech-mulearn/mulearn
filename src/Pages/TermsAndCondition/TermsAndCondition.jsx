@@ -1,7 +1,7 @@
-import React from "react";
-import Footer from "../../Components/Footer/Footer";
-import Navbar from "../../Components/Navbar/Navbar";
-import "./TermsAndCondition.css";
+import React from "react"
+import Footer from "../../Components/Footer/Footer"
+import Navbar from "../../Components/Navbar/Navbar"
+import "./TermsAndCondition.css"
 
 const TermsAndCondition = () => {
   return (
@@ -12,7 +12,7 @@ const TermsAndCondition = () => {
 
       <div className="terms-container">
         <h2>TERMS OF SERVICES</h2>
-        <p style={{fontSize:"18px", fontWeight:"700"}}>
+        <p style={{ fontSize: "18px", fontWeight: "700" }}>
           These Terms of Services (“Terms” or “Agreement”) shall apply to use of
           μLearn platform (“μLearn” or “We” or “us). By becoming a registered
           user of µLearn platform and by clicking the "I Accept" button on this
@@ -23,7 +23,7 @@ const TermsAndCondition = () => {
         <ol>
           <li>
             <strong>Definitions:</strong>
-            <ol style={{ listStyleType: "lower-roman",paddingLeft: "10px"  }}>
+            <ol style={{ listStyleType: "lower-roman", paddingLeft: "10px" }}>
               <li>
                 <strong>Confidential Information</strong> means information
                 provided by one party to the other including in written,
@@ -75,7 +75,7 @@ const TermsAndCondition = () => {
           <li>
             <strong>Services:</strong>
 
-            <ol style={{ listStyleType: "lower-roman" ,paddingLeft: "10px" }}>
+            <ol style={{ listStyleType: "lower-roman", paddingLeft: "10px" }}>
               <li>
                 A description of our Services together with the Playbook are
                 available in our Website. Pursuant to these Terms, we will
@@ -101,7 +101,7 @@ const TermsAndCondition = () => {
           <li>
             <strong>Password Use and Security:</strong>
 
-            <ol style={{ listStyleType: "lower-roman" ,paddingLeft: "10px" }}>
+            <ol style={{ listStyleType: "lower-roman", paddingLeft: "10px" }}>
               <li>
                 By registering in the µLearn platform, you acknowledge that the
                 account registered by you in µLearn platform is for your
@@ -132,7 +132,7 @@ const TermsAndCondition = () => {
           <li>
             <strong>License Grant and Proprietary Rights:</strong>
 
-            <ol style={{ listStyleType: "lower-roman",paddingLeft: "10px"  }}>
+            <ol style={{ listStyleType: "lower-roman", paddingLeft: "10px" }}>
               <li>
                 μLearn hereby grants you a personal, limited, non-transferable,
                 non-exclusive and revocable license (without the right to
@@ -156,7 +156,7 @@ const TermsAndCondition = () => {
               <li>
                 Except as expressed granted in these Terms, you are not
                 authorized to:-
-                <ol style={{ listStyleType: "disc" ,paddingLeft: "10px" }}>
+                <ol style={{ listStyleType: "disc", paddingLeft: "10px" }}>
                   <li>
                     copy, modify, reproduce, re-publish, sub-licence, sell,
                     upload, broadcast, post, transmit, distribute, disseminate
@@ -215,7 +215,7 @@ const TermsAndCondition = () => {
           <li>
             <strong>Code of Conduct: </strong>
 
-            <ol style={{ listStyleType: "lower-roman",paddingLeft: "10px"  }}>
+            <ol style={{ listStyleType: "lower-roman", paddingLeft: "10px" }}>
               <li>
                 You should be kind, respectful, inclusive, and supportive in all
                 your communications associated with μLearn.
@@ -245,24 +245,21 @@ const TermsAndCondition = () => {
                 activity or illegal or prohibited content of the Website.
                 <br></br>
                 <br></br>
-                <br></br>
                 Failing to adhere the above rules as in this Clause 5 of this
-                Terms, you will be moved to suspension channel which will be
-                revoked based on your written explanation to μLearn HR official
-                and those who are in suspension channel for more than 7 days
-                will be removed from the μLearn server permanently. The above
-                listed rules in this Clause 5 of this Terms are not exhaustive,
-                and our moderation team will step in if they feel that you are
-                not following proper protocols. You are expected to listen to
-                and act upon the guidelines and directions of our moderation
-                team.
+                Terms, Failing to adhere the above rules as in this Clause 5 of
+                this Terms, you will be suspended from the server and will be
+                revoked from accessing other discord channels. The above listed
+                rules in this Clause 5 of this Terms are not exhaustive, and our
+                moderation team will step in if they feel that you are not
+                following proper protocols. You are expected to listen to and
+                act upon the guidelines and directions of our moderation team.
               </li>
             </ol>
           </li>
           <li>
             <strong>Liability:</strong>
 
-            <ol style={{ listStyleType: "lower-roman" ,paddingLeft: "10px" }}>
+            <ol style={{ listStyleType: "lower-roman", paddingLeft: "10px" }}>
               <li>
                 Except as expressly set forth in these Terms, neither Party
                 shall be liable for any indirect, consequential, exemplary,
@@ -290,7 +287,7 @@ const TermsAndCondition = () => {
           <li>
             <strong>Disclaimer: </strong>
 
-            <ol style={{ listStyleType: "lower-roman" ,paddingLeft: "10px" }}>
+            <ol style={{ listStyleType: "lower-roman", paddingLeft: "10px" }}>
               <li>
                 Our content is created by experts and goes through strict
                 quality checks. The Website is available to users, including
@@ -320,7 +317,7 @@ const TermsAndCondition = () => {
           <li>
             <strong>Confidentiality: </strong>
 
-            <ol style={{ listStyleType: "lower-roman" ,paddingLeft: "10px" }}>
+            <ol style={{ listStyleType: "lower-roman", paddingLeft: "10px" }}>
               <li>
                 Each party agrees to preserve the confidential and secret nature
                 of the other’s Confidential Information and to use the
@@ -359,7 +356,7 @@ const TermsAndCondition = () => {
           <li>
             <strong>Termination: </strong>
 
-            <ol style={{ listStyleType: "lower-roman" ,paddingLeft: "10px" }}>
+            <ol style={{ listStyleType: "lower-roman", paddingLeft: "10px" }}>
               <li>
                 We shall be entitled to terminate these Terms and cease to
                 provide you with any Services with immediate effect in the event
@@ -489,9 +486,10 @@ const TermsAndCondition = () => {
               you can contact us by any of the following methods:
               <br></br>
               <br></br>
-              Email :  _____________________ <br></br>
-              Postal Address : _____________________ <br></br>
-              Telephone : _____________________<br></br>
+              Email :  mulearnadmin@gtechindia.org <br></br>
+              Postal Address : Technopark Trivandrum, Kazhakkoottam, Trivandrum
+              - 695581, Kerala, India<br></br>
+              Telephone : +91 99957 10101 <br></br>
             </ol>
             <li>
               <strong>Cookies and similar technologies:</strong>
@@ -515,18 +513,27 @@ const TermsAndCondition = () => {
               <ol style={{ listStyleType: "lower-roman" }}>
                 Please use English language for all official communications.
                 Should you have any questions regarding these Terms, please feel
-                free to reach out to ___________. 
+                free to reach out to mulearnadmin@gtechindia.org.
                 <br></br>
                 <br></br>
-                All use of our Website(s), or our Services is subject to these Terms. We recommend that you review our Terms of Use regularly, in order to review any changes we might make from time to time. Any changes to this Agreement will be posted on the Website and will become effective and be binding on you immediately upon posting in our Website. µLearn may also change the terms by notifying you by any other reasonable form of notification, effective immediately upon notice being provided. Your continued use of the µLearn platform constitutes your acceptance of those changes.
+                All use of our Website(s), or our Services is subject to
+                these Terms. We recommend that you review our Terms of Use
+                regularly, in order to review any changes we might make from
+                time to time. Any changes to this Agreement will be posted on
+                the Website and will become effective and be binding on you
+                immediately upon posting in our Website. µLearn may also change
+                the terms by notifying you by any other reasonable form of
+                notification, effective immediately upon notice being provided.
+                Your continued use of the µLearn platform constitutes your
+                acceptance of those changes.
               </ol>
             </li>
           </li>
         </ol>
       </div>
-      <Footer/>
+      <Footer />
     </>
-  );
-};
+  )
+}
 
-export default TermsAndCondition;
+export default TermsAndCondition
