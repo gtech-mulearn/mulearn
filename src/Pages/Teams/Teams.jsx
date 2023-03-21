@@ -1,25 +1,27 @@
-import { useState } from "react";
+import { useState } from "react"
 
-import Footer from "../../Components/Footer/Footer";
-import Navbar from "../../Components/Navbar/Navbar";
-import styles from "./Teams.module.css";
-import TeamCard from "../../Components/TeamCard/TeamCard";
+import Footer from "../../Components/Footer/Footer"
+import Navbar from "../../Components/Navbar/Navbar"
+import styles from "./Teams.module.css"
+import TeamCard from "../../Components/TeamCard/TeamCard"
 
-import yipteam from "./data/yip-team";
-import techTeam from "./data/tech-contributors.js";
+import yipteam from "./data/yip-team"
+import techTeam from "./data/tech-contributors.js"
 
 const Teams = () => {
-  const [teamName, setTeamfilter] = useState("all");
+  const [teamName, setTeamfilter] = useState("all")
 
-  let execom = require("./teamdata/execom.json");
-  let core = require("./teamdata/core.json");
-  let zonal = require("./teamdata/zonal.json");
-  let district = require("./teamdata/district.json");
-  let ca = require("./teamdata/ca.json");
+  let execom = require("./teamdata/execom.json")
+  let core = require("./teamdata/core.json")
+  let zonal = require("./teamdata/zonal.json")
+  let district = require("./teamdata/district.json")
+  let ca = require("./teamdata/ca.json")
+  let pillars = require("./2023/pillars.json")
+  let mulearnhq = require("./2023/mulearnhq.json")
 
   const handleFilterChange = (e) => {
-    setTeamfilter(e.target.value);
-  };
+    setTeamfilter(e.target.value)
+  }
   return (
     <>
       <Navbar />
@@ -57,10 +59,16 @@ const Teams = () => {
           <option value="all" selected>
             All
           </option>
-          <option value="execom">Execom</option>
-          <option value="yip">YIP Team</option>
-          <option value="community">Community Team</option>
-          <option value="tech">Tech Team</option>
+          <optgroup label="2023">
+            <option value="mulearnhq">µLearn HQ</option>
+            <option value="mulearnpillar">µLearn Pillars</option>
+          </optgroup>
+          <optgroup label="2022">
+            <option value="execom">Execom</option>
+            <option value="yip">YIP Team</option>
+            <option value="community">Community Team</option>
+            <option value="tech">Tech Team</option>
+          </optgroup>
         </select>
       </div>
 
@@ -80,7 +88,51 @@ const Teams = () => {
                   image={member.image}
                   linkedIn={member.linkedin ? member.linkedin : ""}
                 />
-              );
+              )
+            })}
+          </div>
+        </section>
+      )}
+
+      {(teamName === "all" || teamName === "mulearnhq") && (
+        <section id={styles.execom} className={styles.team_group}>
+          <p className={styles.team_title}>µLearn HQ</p>
+          <p className={styles.team_desc}>
+            The Executive Members are those who serve as the community's
+            skeleton and propel it forward from the rear.
+          </p>
+          <div className={styles.members_list}>
+            {mulearnhq.map((member) => {
+              return (
+                <TeamCard
+                  name={member.name}
+                  designation={member.position}
+                  image={member.image}
+                  linkedIn={member.linkedin ? member.linkedin : ""}
+                />
+              )
+            })}
+          </div>
+        </section>
+      )}
+
+      {(teamName === "all" || teamName === "mulearnpillar") && (
+        <section id={styles.execom} className={styles.team_group}>
+          <p className={styles.team_title}>Pillars of µLearn</p>
+          <p className={styles.team_desc}>
+            The Executive Members are those who serve as the community's
+            skeleton and propel it forward from the rear.
+          </p>
+          <div className={styles.members_list}>
+            {pillars.map((member) => {
+              return (
+                <TeamCard
+                  name={member.name}
+                  designation={member.team}
+                  image={member.image}
+                  linkedIn={member.linkedin ? member.linkedin : ""}
+                />
+              )
             })}
           </div>
         </section>
@@ -102,7 +154,7 @@ const Teams = () => {
                   image={`/assets/team/yip-team/${member.name}.webp`}
                   linkedIn={member.linkedin ? member.linkedin : ""}
                 />
-              );
+              )
             })}
           </div>
         </section>
@@ -125,7 +177,7 @@ const Teams = () => {
                   designation={member.designation}
                   image={member.image}
                 />
-              );
+              )
             })}
           </div>
           <p className={styles.sub_team_title}>Zonal Heads</p>
@@ -137,7 +189,7 @@ const Teams = () => {
                   designation={member.designation}
                   image={member.image}
                 />
-              );
+              )
             })}
           </div>
           <p className={styles.sub_team_title}>District Heads</p>
@@ -149,7 +201,7 @@ const Teams = () => {
                   designation={member.designation}
                   image={member.image}
                 />
-              );
+              )
             })}
           </div>
           <p className={styles.sub_team_title}>Campus Ambassadors</p>
@@ -161,7 +213,7 @@ const Teams = () => {
                   designation={member.designation}
                   image={member.image}
                 />
-              );
+              )
             })}
           </div>
         </section>
@@ -183,7 +235,7 @@ const Teams = () => {
                   designation={member.team ? member.team : ""}
                   linkedIn={member.linkedin ? member.linkedin : ""}
                 />
-              );
+              )
             })}
           </div>
         </section>
@@ -191,7 +243,7 @@ const Teams = () => {
 
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default Teams;
+export default Teams
