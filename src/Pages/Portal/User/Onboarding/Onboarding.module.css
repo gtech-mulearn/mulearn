@@ -104,9 +104,10 @@ form .form_buttons {
   margin-top: 20px;
 }
 
-form .form_buttons button {
+form .form_buttons button,
+.button {
   padding: 10px 50px;
-  margin-top: 40px;
+  margin-top: 20px;
   margin-left: 20px;
   border: none;
   outline: none;
@@ -114,8 +115,26 @@ form .form_buttons button {
   cursor: pointer;
 }
 
-form .form_buttons button[type="submit"] {
+.add_college {
+  color: red;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+form .form_buttons button[type="submit"],
+.button {
   background-color: #5570f1;
+  color: white;
+}
+
+.button:hover {
+  background-color: #6c82f1;
   color: white;
 }
 

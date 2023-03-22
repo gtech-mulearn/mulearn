@@ -341,13 +341,11 @@ const Onboarding = (props: Props) => {
 
       //Validation for the Area of Interest Field
       if (areaOfInterest.length < 1) {
-        console.log("Area of Interest is empty")
         setValidations((prevValidations) => ({
           ...prevValidations,
           areaOfInterest: false,
         }))
       } else {
-        console.log("Area of Interest is not empty")
         setValidations((prevValidations) => ({
           ...prevValidations,
           areaOfInterest: true,
@@ -423,12 +421,10 @@ const Onboarding = (props: Props) => {
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data)
         setFormSuccess(true)
       })
       .catch(function (error) {
         const errorMessage = error.response.data.message
-        console.log(errorMessage)
       })
   }
 
@@ -445,17 +441,13 @@ const Onboarding = (props: Props) => {
     }
     axios
       .request(token_check)
-      .then((response) => {
-        // console.log(response);
-      })
+      .then((response) => {})
       .catch((error) => {
-        //TODO: Uncomment this commented to bypass already onboarded user
         setHasError({
           error: error.response.data.hasError,
           statusCode: error.response.data.statusCode,
           message: error.response.data.message,
-        });
-        console.log(error)
+        })
       })
 
     // request for college list
@@ -500,7 +492,6 @@ const Onboarding = (props: Props) => {
     axios
       .request(company)
       .then(function (response) {
-        // console.log(response.data.response);
         setCompanyAPI(response.data.response.companies)
       })
       .catch(function (error) {
@@ -793,7 +784,17 @@ const Onboarding = (props: Props) => {
                               options={collegeOptions}
                               isClearable={false}
                               placeholder="Select college..."
-                              noOptionsMessage={() => "No colleges found."}
+                              noOptionsMessage={() => (
+                                <a
+                                  href="https://airtable.com/shrfongm5JG8J53rD"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  <p className={styles.add_college}>
+                                    College Not Found, Add College
+                                  </p>
+                                </a>
+                              )}
                               filterOption={({ label }, inputValue) =>
                                 label
                                   .toLowerCase()
@@ -1047,7 +1048,6 @@ const Onboarding = (props: Props) => {
                       onClick={(e) => {
                         e.preventDefault()
                         setSubmitTrigger(true)
-                        console.log(validations)
                         if (
                           validations.firstName &&
                           validations.email &&
