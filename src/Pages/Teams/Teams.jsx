@@ -60,11 +60,11 @@ const Teams = () => {
             All
           </option>
           <optgroup label="2023">
+            <option value="execom">Execom</option>
             <option value="mulearnhq">µLearn HQ</option>
             <option value="mulearnpillar">µLearn Pillars</option>
           </optgroup>
           <optgroup label="2022">
-            <option value="execom">Execom</option>
             <option value="yip">YIP Team</option>
             <option value="community">Community Team</option>
             <option value="tech">Tech Team</option>
@@ -98,8 +98,9 @@ const Teams = () => {
         <section id={styles.execom} className={styles.team_group}>
           <p className={styles.team_title}>µLearn HQ</p>
           <p className={styles.team_desc}>
-            The Executive Members are those who serve as the community's
-            skeleton and propel it forward from the rear.
+            The HQ members are the ones who are the backbone of the community.
+            They are the ones who are responsible for the smooth functioning
+            different teams and the community as a whole.
           </p>
           <div className={styles.members_list}>
             {mulearnhq.map((member) => {
@@ -118,10 +119,11 @@ const Teams = () => {
 
       {(teamName === "all" || teamName === "mulearnpillar") && (
         <section id={styles.execom} className={styles.team_group}>
-          <p className={styles.team_title}>Pillars of µLearn</p>
+          <p className={styles.team_title}>µLearn Interns</p>
           <p className={styles.team_desc}>
-            The Executive Members are those who serve as the community's
-            skeleton and propel it forward from the rear.
+            The Interns of µLearn are the people who are the pillars of the
+            MuLearn Community. They are a group of students who support the HQ
+            members in their work and help the community grow.
           </p>
           <div className={styles.members_list}>
             {pillars.map((member) => {
@@ -138,7 +140,7 @@ const Teams = () => {
         </section>
       )}
 
-      {(teamName === "all" || teamName === "yip") && (
+      {teamName === "yip" && (
         <section className={styles.team_group}>
           <p className={styles.team_title}>YIP Organization Team</p>
           <p className={styles.team_desc}>
@@ -160,7 +162,7 @@ const Teams = () => {
         </section>
       )}
 
-      {(teamName === "all" || teamName === "community") && (
+      {teamName === "community" && (
         <section className={styles.team_group}>
           <p className={styles.team_title}>Community Team</p>
           <p className={styles.team_desc}>
@@ -219,7 +221,7 @@ const Teams = () => {
         </section>
       )}
 
-      {(teamName === "all" || teamName === "tech") && (
+      {teamName === "tech" && (
         <section className={styles.team_group}>
           <p className={styles.team_title}>Tech Team</p>
           <p className={styles.team_desc}>
