@@ -2,7 +2,7 @@
 
 /* Default styles */
 
-.modal-wrapper {
+.modal_wrapper {
   position: fixed;
   z-index: 1000;
   top: 0;
@@ -30,22 +30,22 @@
 
 .modal h1 {
   margin-top: 0;
-  font-size: medium;
+  font-size: large;
   color: white;
 }
 
 .modal p {
   margin-bottom: 10px;
-  font-size: small;
+  font-size: medium;
   color: white;
 }
 
-.button-container {
+.button_container {
   display: flex;
   justify-content: center;
 }
 
-.button-container button {
+.button_container button {
   margin: 0 10px;
   padding: 5px 70px;
   border: none;
@@ -57,10 +57,15 @@
   font-size: 12px;
   font-family: "Roboto", "Open Sans", Arial, Helvetica;
 }
-.button-decline button {
+
+.modal a {
+  text-decoration: underline;
+}
+
+.button_decline button {
   margin: 0 10px;
   padding: 5px 70px;
-  border: 2px solid ;
+  border: 2px solid;
   border-radius: 5px;
   font-weight: 500;
   cursor: pointer;
@@ -70,13 +75,13 @@
   background: transparent;
   border-color: rgb(255, 255, 255);
 }
-.button-align {
+.button_align {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.button-container button:focus {
+.button_container button:focus {
   outline: none;
 }
 
@@ -88,12 +93,12 @@
     max-height: 80%;
   }
 
-  .button-container button {
+  .button_container button {
     padding: 5px 40px;
     font-size: 10px;
   }
 
-  .button-decline button {
+  .button_decline button {
     padding: 5px 40px;
     font-size: 10px;
   }
@@ -106,9 +111,9 @@ button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
+  font-size: 12px;
   cursor: pointer;
 }
-
 
 button:focus {
   outline: none;

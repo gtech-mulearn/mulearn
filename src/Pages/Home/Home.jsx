@@ -7,8 +7,7 @@ import Testimonials from "../../Components/Testimonials/Testimonials"
 import CountUp from "react-countup"
 
 import "./Home.scss"
-import MyComponent from "../../Components/TermsAndConditionsModel/TermsAndConditionsModel"
-import TermsAndConditionsModal from "../../Components/TermsAndConditionsModel/TermsAndConditionsModel"
+import TermsAndConditionsModal from "../../Components/TermsAndConditionsModel/TermsAndConditionsModal"
 
 const Home = () => {
   return (
@@ -147,7 +146,11 @@ const Home = () => {
                 className={styles.supporter}
               />
             </a>
-            <a href="https://www.riglabs.co/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.riglabs.co/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
                 src="/assets/home/partners/riglabs.webp"
                 alt=""
@@ -467,8 +470,8 @@ const Home = () => {
         </div>
       </div>
       <Testimonials />
-     <TermsAndConditionsModal/>
-     <MyComponent/>
+      <TermsAndConditionsModal />
+
       <Footer />
     </>
   )
