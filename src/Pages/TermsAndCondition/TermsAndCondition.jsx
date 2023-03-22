@@ -1,17 +1,17 @@
 import React from "react"
 import Footer from "../../Components/Footer/Footer"
 import Navbar from "../../Components/Navbar/Navbar"
-import "./TermsAndCondition.css"
+import styles from "./TermsAndCondition.module.css"
 
 const TermsAndCondition = () => {
   return (
     <>
-      <div className="header">
+      <div className={styles.header}>
         <Navbar />
       </div>
 
-      <div className="terms-container">
-        <h2>TERMS OF SERVICES</h2>
+      <div className={styles.terms_container}>
+        <h2 className={styles.tcheader}>TERMS OF SERVICES</h2>
         <p style={{ fontSize: "18px", fontWeight: "700" }}>
           These Terms of Services (“Terms” or “Agreement”) shall apply to use of
           μLearn platform (“μLearn” or “We” or “us). By becoming a registered
@@ -21,6 +21,7 @@ const TermsAndCondition = () => {
           to be bound by all of the terms and conditions of this Agreement.
         </p>
         <ol>
+          <br />
           <li>
             <strong>Definitions:</strong>
             <ol style={{ listStyleType: "lower-roman", paddingLeft: "10px" }}>
@@ -72,6 +73,7 @@ const TermsAndCondition = () => {
               </li>
             </ol>
           </li>
+          <br />
           <li>
             <strong>Services:</strong>
 
@@ -98,6 +100,7 @@ const TermsAndCondition = () => {
               </li>
             </ol>
           </li>
+          <br />
           <li>
             <strong>Password Use and Security:</strong>
 
@@ -129,6 +132,7 @@ const TermsAndCondition = () => {
               </li>
             </ol>
           </li>
+          <br />
           <li>
             <strong>License Grant and Proprietary Rights:</strong>
 
@@ -212,6 +216,7 @@ const TermsAndCondition = () => {
               </li>
             </ol>
           </li>
+          <br />
           <li>
             <strong>Code of Conduct: </strong>
 
@@ -256,6 +261,7 @@ const TermsAndCondition = () => {
               </li>
             </ol>
           </li>
+          <br />
           <li>
             <strong>Liability:</strong>
 
@@ -284,6 +290,7 @@ const TermsAndCondition = () => {
               </li>
             </ol>
           </li>
+          <br />
           <li>
             <strong>Disclaimer: </strong>
 
@@ -314,6 +321,7 @@ const TermsAndCondition = () => {
               </li>
             </ol>
           </li>
+          <br />
           <li>
             <strong>Confidentiality: </strong>
 
@@ -353,6 +361,7 @@ const TermsAndCondition = () => {
               </li>
             </ol>
           </li>
+          <br />
           <li>
             <strong>Termination: </strong>
 
@@ -407,6 +416,7 @@ const TermsAndCondition = () => {
               </ol>
             </li>
           </li>
+          <br />
           <li>
             <strong>Indemnification: </strong>
 
@@ -420,6 +430,7 @@ const TermsAndCondition = () => {
               behalf of any of these Terms.
             </ol>
           </li>
+          <br />
           <li>
             <strong>Force Majeure: </strong>
 
@@ -435,6 +446,7 @@ const TermsAndCondition = () => {
               period equal to the effect of time lost by reason of the delay.
             </ol>
           </li>
+          <br />
           <li>
             <strong>Amendment: </strong>
 
@@ -450,6 +462,7 @@ const TermsAndCondition = () => {
               Website Use.
             </ol>
           </li>
+          <br />
           <li>
             <strong>General terms:</strong>
 
@@ -464,6 +477,7 @@ const TermsAndCondition = () => {
               without being impaired or invalidated in any way.
             </ol>
           </li>
+          <br />
           <li>
             <strong>Governing Law & Jurisdiction:</strong>
 
@@ -476,6 +490,7 @@ const TermsAndCondition = () => {
               matter.
             </ol>
           </li>
+          <br />
           <li>
             <strong>Contact Information: </strong>
 
@@ -529,6 +544,7 @@ const TermsAndCondition = () => {
               </ol>
             </li>
           </li>
+          <br />
         </ol>
       </div>
       <Footer />

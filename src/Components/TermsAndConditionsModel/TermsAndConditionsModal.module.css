@@ -104,26 +104,3 @@
   }
 }
 
-/* MyComponent.css */
-
-button {
-  margin: 10px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-button:focus {
-  outline: none;
-}
-
-/* Styles for smaller screens */
-
-@media (max-width: 768px) {
-  button {
-    padding: 5px 20px;
-    font-size: 10px;
-  }
-}
