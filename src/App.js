@@ -1,40 +1,39 @@
-import Home from "./Pages/Home/Home"
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route
-} from "react-router-dom"
-import News from "./Pages/Gallery/News"
-import Calendar from "./Pages/Calendar/Calendar"
-import Gallery from "./Pages/Gallery/Gallery"
-import MuAnnouncements from "./Pages/Events/MuAnnouncements/MuAnnouncements"
-import ISR from "./Pages/Events/ISR/ISR"
-import Company from "./Pages/Company/Company"
-import Teams from "./Pages/Teams/Teams"
-import CommunityPartner from "./Pages/CommPartners/CommPartners"
-import ArtOfTeaching from "./Pages/ArtOfTeaching/ArtOfTeaching"
-import Career from "./Pages/Career/Career"
-import LeaderBoard from "./Pages/LeaderBoard/leaderBoard"
-import WikiSyllabus from "./Pages/WikiSyllabus/WikiSyllabus"
-import HacktoberFest from "./Pages/Events/HacktoberFest/HacktoberFest"
-import Yip from "./Pages/YIP/Yip"
-import CampusChapters from "./Pages/CampusChapters/CampusChapters"
-import BlogLanding from "./Pages/CampusChapters/Blogs/BlogLanding"
-import BlogTemplate from "./Pages/CampusChapters/Blogs/BlogTemplate/BlogTemplate"
-import Notifications from "./Pages/Notifications/Notifications"
-import MonthlyLeaderboard from "./Pages/LeaderBoard/MonthlyLeaderboard/MonthlyLeaderboard"
-import MentorConnect from "./Pages/Events/MentorConnect/MentorConnect"
-import SaltMangoTree from "./Pages/Events/SaltMangoTree/SaltMangoTree"
-import OpenMic from "./Pages/Events/OpenMic/OpenMic"
-import BuildForTeam from "./Pages/Events/BuildForTeam/BuildForTeam"
-import EnablersOnboarding from "./Pages/EnablersOnboarding/EnablersOnboarding"
-import HackathonKarma from "./Pages/HackathonKarma/HackathonKarma"
-import NotFound from "./Pages/404/NotFound"
-import EventsHome from "./Pages/Events/EventsHome/EventsHome"
-import CommunityLanding from "./Pages/CommunityLanding/CommunityLanding"
-import CampusLogoGenerator from "./Pages/CampusLogoGen/CampusLogoGen"
-import redirects from "./redirects.json"
-import Redirection from "./Components/Redirection/Redirection"
+import Home from "./Pages/Home/Home";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import News from "./Pages/Gallery/News";
+import Calendar from "./Pages/Calendar/Calendar";
+import Gallery from "./Pages/Gallery/Gallery";
+import MuAnnouncements from "./Pages/Events/MuAnnouncements/MuAnnouncements";
+import ISR from "./Pages/Events/ISR/ISR";
+import Company from "./Pages/Company/Company";
+import Teams from "./Pages/Teams/Teams";
+import CommunityPartner from "./Pages/CommPartners/CommPartners";
+import ArtOfTeaching from "./Pages/ArtOfTeaching/ArtOfTeaching";
+import Career from "./Pages/Career/Career";
+import LeaderBoard from "./Pages/LeaderBoard/leaderBoard";
+import WikiSyllabus from "./Pages/WikiSyllabus/WikiSyllabus";
+import HacktoberFest from "./Pages/Events/HacktoberFest/HacktoberFest";
+import Yip from "./Pages/YIP/Yip";
+import CampusChapters from "./Pages/CampusChapters/CampusChapters";
+import BlogLanding from "./Pages/CampusChapters/Blogs/BlogLanding";
+import BlogTemplate from "./Pages/CampusChapters/Blogs/BlogTemplate/BlogTemplate";
+import Notifications from "./Pages/Notifications/Notifications";
+import MonthlyLeaderboard from "./Pages/LeaderBoard/MonthlyLeaderboard/MonthlyLeaderboard";
+import MentorConnect from "./Pages/Events/MentorConnect/MentorConnect";
+import SaltMangoTree from "./Pages/Events/SaltMangoTree/SaltMangoTree";
+import OpenMic from "./Pages/Events/OpenMic/OpenMic";
+import BuildForTeam from "./Pages/Events/BuildForTeam/BuildForTeam";
+import EnablersOnboarding from "./Pages/EnablersOnboarding/EnablersOnboarding";
+import HackathonKarma from "./Pages/HackathonKarma/HackathonKarma";
+import NotFound from "./Pages/404/NotFound";
+import EventsHome from "./Pages/Events/EventsHome/EventsHome";
+import CommunityLanding from "./Pages/CommunityLanding/CommunityLanding";
+import CampusLogoGenerator from "./Pages/CampusLogoGen/CampusLogoGen";
+import TermsAndCondition from "./Pages/TermsAndCondition/TermsAndCondition";
+import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
+
+import redirects from "./redirects.json";
+import Redirection from "./Components/Redirection/Redirection";
 
 function App() {
   return (
@@ -90,10 +89,12 @@ function App() {
             path="/campus-logo-generator"
             element={<CampusLogoGenerator />}
           />
+          <Route path="/termsandconditions" element={<TermsAndCondition />} />
+          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         </Routes>
       </Router>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
