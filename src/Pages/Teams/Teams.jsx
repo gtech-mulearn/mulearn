@@ -18,6 +18,7 @@ const Teams = () => {
   let ca = require("./teamdata/ca.json")
   let pillars = require("./2023/pillars.json")
   let mulearnhq = require("./2023/mulearnhq.json")
+  let communityteam = require("./2023/communityteam.json")
 
   const handleFilterChange = (e) => {
     setTeamfilter(e.target.value)
@@ -63,6 +64,7 @@ const Teams = () => {
             <option value="execom">Execom</option>
             <option value="mulearnhq">µLearn HQ</option>
             <option value="mulearnpillar">µLearn Pillars</option>
+            <option value="communityteam">Community Team</option>
           </optgroup>
           <optgroup label="2022">
             <option value="yip">YIP Team</option>
@@ -121,9 +123,9 @@ const Teams = () => {
         <section id={styles.execom} className={styles.team_group}>
           <p className={styles.team_title}>µLearn Interns</p>
           <p className={styles.team_desc}>
-            The Interns of µLearn are the people who are the pillars of the
-            MuLearn Community. They are a group of students who support the HQ
-            members in their work and help the community grow.
+            The Interns of Learn are the ones who support the µLearn Community.
+            They are a group of students who assist the peers with their work
+            and help the community thrive.
           </p>
           <div className={styles.members_list}>
             {pillars.map((member) => {
@@ -131,6 +133,24 @@ const Teams = () => {
                 <TeamCard
                   name={member.name}
                   designation={member.team}
+                  image={member.image}
+                  linkedIn={member.linkedin ? member.linkedin : ""}
+                />
+              )
+            })}
+          </div>
+        </section>
+      )}
+
+      {(teamName === "all" || teamName === "communityteam") && (
+        <section id={styles.execom} className={styles.team_group}>
+          <p className={styles.team_title}>Community Contributors</p>
+          <div className={styles.members_list}>
+            {communityteam.map((member) => {
+              return (
+                <TeamCard
+                  name={member.name}
+                  designation={member.position}
                   image={member.image}
                   linkedIn={member.linkedin ? member.linkedin : ""}
                 />
