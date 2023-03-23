@@ -101,7 +101,7 @@ const Teams = () => {
           <p className={styles.team_title}>µLearn HQ</p>
           <p className={styles.team_desc}>
             The HQ members are the ones who are the backbone of the community.
-            They are the ones who are responsible for the smooth functioning
+            They are the ones who are responsible for the smooth functioning of
             different teams and the community as a whole.
           </p>
           <div className={styles.members_list}>
@@ -121,9 +121,9 @@ const Teams = () => {
 
       {(teamName === "all" || teamName === "mulearnpillar") && (
         <section id={styles.execom} className={styles.team_group}>
-          <p className={styles.team_title}>µLearn Interns</p>
+          <p className={styles.team_title}>µLearn Pillars</p>
           <p className={styles.team_desc}>
-            The Interns of Learn are the ones who support the µLearn Community.
+            The Pillars of µLearn are the ones who support the µLearn Community.
             They are a group of students who assist the peers with their work
             and help the community thrive.
           </p>
