@@ -275,4 +275,26 @@ form .form_buttons button[type="reset"] {
   overflow-y: auto;
 }
 
-/* Hide the modal by default */
+.checkbox_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.input_checkbox {
+  width: min-content;
+  margin: 0;
+  margin: 10px;
+  width: 1rem;
+  height: 1rem;
+}
+
+.bottom_section {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}

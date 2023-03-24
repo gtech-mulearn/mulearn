@@ -32,6 +32,8 @@ const Onboarding = (props: Props) => {
     message: "",
   })
 
+  const [roleVerified, setRoleVerified] = useState(false)
+
   //State Array for storing the Area of Interests
   const [areaOfInterest, setAreaOfInterest] = useState<string[]>([])
   //State Array for Storing the Organization(Company, Community, College)
@@ -77,6 +79,7 @@ const Onboarding = (props: Props) => {
       type: "",
     },
     areaOfInterest: false,
+    termsandcondtions: false,
   })
 
   useEffect(() => {
@@ -422,6 +425,8 @@ const Onboarding = (props: Props) => {
       .request(options)
       .then(function (response) {
         setFormSuccess(true)
+        console.log(response.data)
+        setRoleVerified(response.data.roleVerified)
       })
       .catch(function (error) {
         const errorMessage = error.response.data.message
@@ -927,7 +932,10 @@ const Onboarding = (props: Props) => {
                           ) : null}
                           {mentorRole == "Company" ? (
                             <div className={styles.input_container}>
-                              <label htmlFor="">Company</label>
+                              <label htmlFor="">
+                                Company{" "}
+                                <span className={styles.required}>*</span>
+                              </label>
                               <select
                                 id="company_field"
                                 name=""
@@ -955,7 +963,10 @@ const Onboarding = (props: Props) => {
                           ) : null}
                           {mentorRole == "Community Partner" ? (
                             <div className={styles.input_container}>
-                              <label htmlFor="">Community</label>
+                              <label htmlFor="">
+                                Community{" "}
+                                <span className={styles.required}>*</span>
+                              </label>
                               <select
                                 id="community_field"
                                 onChange={(e) => {
@@ -1034,60 +1045,81 @@ const Onboarding = (props: Props) => {
                       {/* </div> */}
                     </div>
                   </div>
-                  <div className={styles.form_buttons}>
-                    <button
-                      onClick={() => {
-                        setAreaOfInterest([])
-                      }}
-                      type="reset"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="submit"
-                      onClick={(e) => {
-                        e.preventDefault()
-                        setSubmitTrigger(true)
-                        if (
-                          validations.firstName &&
-                          validations.email &&
-                          validations.phone &&
-                          validations.role &&
-                          validations.areaOfInterest
-                        ) {
-                          if (role[0].title == "Student") {
-                            if (
-                              validations.student.department &&
-                              validations.student.organization &&
-                              validations.student.yearOfGraduation
-                            ) {
-                              onboard()
-                            }
-                          } else if (role[0].title == "Mentor") {
-                            if (
-                              validations.mentor.mentorRole &&
-                              validations.mentor.organization
-                            ) {
-                              onboard()
-                            }
-                          } else if (role[0].title == "Enabler") {
-                            if (
-                              validations.enabler.organization &&
-                              validations.enabler.department
-                            ) {
-                              onboard()
+                  <div className={styles.bottom_section}>
+                    <div className={styles.checkbox_container}>
+                      <input
+                        className={styles.input_checkbox}
+                        type="checkbox"
+                        name="termsandcondtions"
+                        id=""
+                        required
+                        onChange={() => {
+                          setValidations((prevValidations) => ({
+                            ...prevValidations,
+                            termsandcondtions: !validations.termsandcondtions,
+                          }))
+                        }}
+                      />
+                      <p className={styles.checkbox_text}>
+                        I agree, all the Terms and Condtions.
+                      </p>
+                    </div>
+                    <div className={styles.form_buttons}>
+                      <button
+                        onClick={() => {
+                          setAreaOfInterest([])
+                        }}
+                        type="reset"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="submit"
+                        onClick={(e) => {
+                          e.preventDefault()
+                          setSubmitTrigger(true)
+                          if (
+                            validations.firstName &&
+                            validations.email &&
+                            validations.phone &&
+                            validations.role &&
+                            validations.areaOfInterest &&
+                            validations.termsandcondtions
+                          ) {
+                            if (role[0].title == "Student") {
+                              if (
+                                validations.student.department &&
+                                validations.student.organization &&
+                                validations.student.yearOfGraduation
+                              ) {
+                                onboard()
+                              }
+                            } else if (role[0].title == "Mentor") {
+                              if (
+                                validations.mentor.mentorRole &&
+                                validations.mentor.organization
+                              ) {
+                                onboard()
+                              }
+                            } else if (role[0].title == "Enabler") {
+                              if (
+                                validations.enabler.organization &&
+                                validations.enabler.department
+                              ) {
+                                onboard()
+                              }
                             }
                           }
-                        }
-                      }}
-                    >
-                      Submit
-                    </button>
+                        }}
+                      >
+                        Submit
+                      </button>
+                    </div>
                   </div>
                 </form>
               </div>
             ) : (
-              <Success />
+              <Success roleVerified={roleVerified} />
             )}
           </>
         ) : (
