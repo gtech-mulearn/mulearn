@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Bijo Mathew Jose",
+    "position": "Associate Gamification",
+    "image": "assets/team/mulearnhq/Bijo Mathew Jose.webp",
+    "drive": "",
+    "linkedin": ""
+  },
+  {
+    "name": "Adnan Kattekaden",
+    "position": "Backend Developer",
+    "image": "assets/team/communitycontributors/Adnan Kattekaden.webp",
+    "linkedin": "https://www.linkedin.com/in/adnankattekaden/"
+  },
+  {
+    "name": "Arjun A G",
+    "position": "Django Developer",
+    "image": "assets/team/communitycontributors/Arjun A G.webp",
+    "linkedin": "https://www.linkedin.com/in/abhijithes/"
+  },
+  {
+    "name": "Amjed Saleel K",
+    "position": "Devops Engineer",
+    "image": "assets/team/communitycontributors/Amjed Saleel K.webp",
+    "linkedin": "https://www.linkedin.com/in/amjedsaleelk/"
+  }
+]

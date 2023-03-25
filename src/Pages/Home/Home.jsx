@@ -471,7 +471,6 @@ const Home = () => {
       </div>
       <Testimonials />
       <TermsAndConditionsModal />
-
       <Footer />
     </>
   )
