@@ -7,7 +7,7 @@ export const links = [
     sublinks: [
       {
         name: "The Team",
-        submenu: false,
+        submenu: true,
         sublinks: [
           {
             name: "Our Team",
