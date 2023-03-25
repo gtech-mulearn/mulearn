@@ -492,11 +492,11 @@ const Onboarding = (props: Props) => {
       .request(token_check)
       .then((response) => {})
       .catch((error) => {
-        // setHasError({
-        //   error: error.response.data.hasError,
-        //   statusCode: error.response.data.statusCode,
-        //   message: error.response.data.message,
-        // })
+        setHasError({
+          error: error.response.data.hasError,
+          statusCode: error.response.data.statusCode,
+          message: error.response.data.message,
+        })
       })
 
     // request for college list
