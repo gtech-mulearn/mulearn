@@ -1,0 +1,129 @@
+/* Terms.css */
+
+/* Default styles */
+
+.modal_wrapper {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.modal {
+  background-color: #f78c40;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px rgba(57, 57, 57, 0.5);
+  text-align: center;
+  max-width: 35rem;
+  max-height: 15rem;
+}
+
+.modal h1 {
+  margin-top: 0;
+  font-size: large;
+  color: white;
+}
+
+.modal p {
+  margin-bottom: 10px;
+  font-size: medium;
+  color: white;
+}
+
+.button_container {
+  display: flex;
+  justify-content: center;
+}
+
+.button_container button {
+  margin: 0 10px;
+  padding: 5px 70px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: "Roboto", "Open Sans", Arial, Helvetica;
+}
+
+.modal a {
+  text-decoration: underline;
+}
+
+.button_decline button {
+  margin: 0 10px;
+  padding: 5px 70px;
+  border: 2px solid;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: "Roboto", "Open Sans", Arial, Helvetica;
+  font-size: 12px;
+  color: rgb(255, 255, 255);
+  background: transparent;
+  border-color: rgb(255, 255, 255);
+}
+.button_align {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.button_container button:focus {
+  outline: none;
+}
+
+/* Styles for smaller screens */
+
+@media (max-width: 768px) {
+  .modal {
+    max-width: 90%;
+    max-height: 80%;
+  }
+
+  .button_container button {
+    padding: 5px 40px;
+    font-size: 10px;
+  }
+
+  .button_decline button {
+    padding: 5px 40px;
+    font-size: 10px;
+  }
+}
+
+/* MyComponent.css */
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+/* Styles for smaller screens */
+
+@media (max-width: 768px) {
+  button {
+    padding: 5px 20px;
+    font-size: 10px;
+  }
+}
