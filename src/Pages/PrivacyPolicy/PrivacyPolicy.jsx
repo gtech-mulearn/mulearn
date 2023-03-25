@@ -147,7 +147,7 @@ const PrivacyPolicy = () => {
               Website and user experience and in accordance with our TOS. If you
               wish that your Information be permanently deleted from our
               database when you stop using our Services, please notify us at
-              ______________<br></br>
+              mulearnadmin@gtechindia.org<br></br>
               <br></br>
               µLearn is an Indian company. If you are located outside India and
               choose to provide information to us, µLearn transfers your
@@ -191,7 +191,7 @@ const PrivacyPolicy = () => {
               Authorities. We may require proof of your identity before we can
               give effect to these rights.
               <br></br>
-              <br></br>``
+              <br></br>
             </p>
           </li>
           <li>

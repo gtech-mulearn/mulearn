@@ -6,7 +6,7 @@ export const links = [
     submenu: true,
     sublinks: [
       {
-        name: "The Team",
+        name: "Key Pages",
         submenu: true,
         sublinks: [
           {
@@ -14,6 +14,20 @@ export const links = [
             submenu: false,
             sublinks: [],
             link: "/team",
+            foreign: false,
+          },
+          {
+            name: "Terms & Conditions",
+            submenu: false,
+            sublinks: [],
+            link: "/termsandconditions",
+            foreign: false,
+          },
+          {
+            name: "Privacy Policy",
+            submenu: false,
+            sublinks: [],
+            link: "/privacypolicy",
             foreign: false,
           },
         ],

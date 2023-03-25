@@ -470,7 +470,7 @@ const Home = () => {
         </div>
       </div>
       <Testimonials />
-      <TermsAndConditionsModal />
+      
       <Footer />
     </>
   )
