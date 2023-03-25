@@ -57,7 +57,7 @@ const Onboarding = (props: Props) => {
   //State Array for storing the Area of Interest Options
   const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }])
 
-  //State Varaible t
+  //State Varaibles
   const [submitTrigger, setSubmitTrigger] = useState(false)
   const [validations, setValidations] = useState({
     firstName: false,
@@ -1104,7 +1104,7 @@ const Onboarding = (props: Props) => {
                           href="http://mulearn.org/termsandcondtions"
                         >
                           Terms and Condtions
-                        </a>{" "}
+                        </a>
                         .
                       </p>
                     </div>
