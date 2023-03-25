@@ -7,7 +7,6 @@ import Testimonials from "../../Components/Testimonials/Testimonials"
 import CountUp from "react-countup"
 
 import "./Home.scss"
-import TermsAndConditionsModal from "../../Components/TermsAndConditionsModel/TermsAndConditionsModal"
 
 const Home = () => {
   return (
