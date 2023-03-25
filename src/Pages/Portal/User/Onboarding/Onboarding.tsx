@@ -100,6 +100,22 @@ const Onboarding = (props: Props) => {
     const setBorderStyle = (element: HTMLInputElement, condition: boolean) => {
       if (submitTrigger) {
         element.style.border = condition ? "1px solid red" : "none"
+      } else {
+        const inputs = [
+          first_name,
+          email_field,
+          phone_field,
+          role_field,
+          dept_field,
+          yog_field,
+          mentortype_filed,
+          company_field,
+          community_field,
+        ]
+
+        inputs.forEach((input) => {
+          input && (input.style.border = "none")
+        })
       }
     }
 
@@ -1033,17 +1049,19 @@ const Onboarding = (props: Props) => {
                     </div>
                     <div className={styles.inputs}>
                       {/* <div className={styles.input_container}> */}
-                      <label htmlFor="">
-                        Areas of Interest / Stack{" "}
-                        <span className={styles.required}>*</span>
-                      </label>
-
-                      <div className={styles.aoi_container}>
+                      <div className={styles.label_container}>
+                        <label htmlFor="">
+                          Areas of Interest / Stack{" "}
+                          <span className={styles.required}>*</span>
+                        </label>
                         {submitTrigger && !validations.areaOfInterest && (
                           <p className={styles.error_message}>
                             Please select at least one area of interest
                           </p>
                         )}
+                      </div>
+
+                      <div className={styles.aoi_container}>
                         {aoiAPI.map((aoi, i) => {
                           const checked = areaOfInterest.includes(
                             aoi.id as string
@@ -1097,6 +1115,8 @@ const Onboarding = (props: Props) => {
                         setOrgnization("")
                         setYog("")
                         setMentorRole("")
+
+                        setSubmitTrigger(false)
                       }}
                       type="reset"
                     >
