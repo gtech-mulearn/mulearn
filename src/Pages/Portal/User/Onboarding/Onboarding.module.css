@@ -9,7 +9,6 @@
   /* color: #404d61; */
 }
 
-
 .onboarding_page .form_container h1 {
   font-size: 1.5rem;
   font-weight: 700;
@@ -305,10 +304,19 @@ form .form_buttons button[type="reset"] {
   padding: 10px 50px;
   right: 30px;
   top: 30px;
-  background-color: #5570F2;
+  background-color: #5570f2;
 
   font-size: 1rem;
   border-radius: 5px;
+}
+
+.tc_span {
+  color: #6a80f0;
+  text-decoration: underline;
+}
+
+.tc_text {
+  max-width: 20rem;
 }
 
 .validation_error_message p {

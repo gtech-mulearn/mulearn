@@ -400,7 +400,7 @@ const Onboarding = (props: Props) => {
     yog,
     submitTrigger,
     mentorRole,
-    tcChecked
+    tcChecked,
   ])
 
   const customStyles = {
@@ -663,7 +663,7 @@ const Onboarding = (props: Props) => {
                     Please enter all the required information in the fields
                     provided below. Please be aware that once you have submitted
                     this information, you will not be able to make any changes
-                    or updates. <b>Don't use autofill to fill in.</b>
+                    or updates. <b>Don't use autofill to fill in the form.</b>
                   </p>
                   <form autoComplete="off" action="">
                     <div>
@@ -678,7 +678,6 @@ const Onboarding = (props: Props) => {
                             type="text"
                             placeholder="First name"
                             className={styles.input}
-
                             onChange={(e) => {
                               setFirstName(e.target.value)
                             }}
@@ -1161,8 +1160,27 @@ const Onboarding = (props: Props) => {
                             }
                           }}
                         />
-                        <label htmlFor="">
-                          I Agree, the Terms and Conditions
+                        <label className={styles.tc_text} htmlFor="">
+                          I Agree, the{" "}
+                          <a
+                            href="http://mulearn.org/termsandconditions"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <span className={styles.tc_span}>
+                              Terms and Conditions
+                            </span>
+                          </a>
+                          {" "} and the{" "}
+                          <a
+                            href="http://mulearn.org/privacypolicy"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <span className={styles.tc_span}>
+                              Privacy Policy
+                            </span>
+                          </a>
                         </label>
                       </div>
                       <div className={styles.form_buttons}>
