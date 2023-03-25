@@ -7,6 +7,7 @@ import styles from "./Gallery.module.css";
 import "./Gallery.css";
 
 import EventPics from "./data/EventPics";
+import TermsAndConditionsModal from "../../Components/TermsAndConditionsModel/TermsAndConditionsModal";
 
 const Gallery = () => {
 
@@ -56,6 +57,7 @@ const Gallery = () => {
           </div>
         </div>
       </div>
+      <TermsAndConditionsModal />
       <Footer />
     </>
   );

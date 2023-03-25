@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Calendar.module.css";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
+import TermsAndConditionsModal from "../../Components/TermsAndConditionsModel/TermsAndConditionsModal";
 
 const Calendar = () => {
   return (
@@ -42,6 +43,7 @@ const Calendar = () => {
           </div>
         </div>
       </div>
+      <TermsAndConditionsModal />
       <Footer />
     </>
   );

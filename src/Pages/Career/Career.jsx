@@ -5,6 +5,7 @@ import styles from "./Career.module.css"
 
 import CareersCard from "../../Components/CareersCard/CareersCard"
 import ClosedCareersCard from "../../Components/ClosedCareers/ClosedCareers"
+import TermsAndConditionsModal from "../../Components/TermsAndConditionsModel/TermsAndConditionsModal"
 
 const Career = () => {
   let companies = require("./data/companies.json")
@@ -112,6 +113,8 @@ const Career = () => {
           </div>
         </div>
       </div>
+      
+ <TermsAndConditionsModal />
       <Footer />
     </>
   )

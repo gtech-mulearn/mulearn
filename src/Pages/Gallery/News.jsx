@@ -6,6 +6,7 @@ import "./News.css";
 import NewsData from "./data/News";
 
 import NewsImages from "../../Components/Gallery/NewsImages";
+import TermsAndConditionsModal from "../../Components/TermsAndConditionsModel/TermsAndConditionsModal";
 
 
 const News = () => {
@@ -49,7 +50,7 @@ const News = () => {
           </div>
         </div>
       </div>
-
+      <TermsAndConditionsModal />
       <Footer />
     </>
   );

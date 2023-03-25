@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./CommunityLanding.module.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
-
+import TermsAndConditionsModal from "../../Components/TermsAndConditionsModel/TermsAndConditionsModal";
 import { useParams } from "react-router-dom";
 
 const CommunityLanding = () => {
@@ -85,6 +85,7 @@ const CommunityLanding = () => {
           </div>
         </div>
       </div>
+      <TermsAndConditionsModal />
       <Footer />
     </>
   );

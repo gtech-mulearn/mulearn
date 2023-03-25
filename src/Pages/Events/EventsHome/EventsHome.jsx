@@ -5,6 +5,7 @@ import Navbar from "../../../Components/Navbar/Navbar";
 import Footer from "../../../Components/Footer/Footer";
 import { Link } from "react-router-dom";
 
+
 const EventsHome = () => {
   return (
     <>
@@ -96,8 +97,11 @@ const EventsHome = () => {
             </div>
           </div>
         </div>
+      
       </div>
+     
       <Footer />
+    
     </>
   );
 };

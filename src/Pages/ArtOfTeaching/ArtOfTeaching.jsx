@@ -19,7 +19,7 @@ import "swiper/css/pagination"
 import "swiper/css/navigation"
 
 import { Pagination, Navigation } from "swiper"
-
+import TermsAndConditionsModal from "../../Components/TermsAndConditionsModel/TermsAndConditionsModal"
 const ArtOfTeaching = () => {
   const data = {
     title: "Frequently Asked Questions",
@@ -403,6 +403,7 @@ const ArtOfTeaching = () => {
           </div>
         </div>
       </div>
+      <TermsAndConditionsModal />
       <Footer />
     </>
   )

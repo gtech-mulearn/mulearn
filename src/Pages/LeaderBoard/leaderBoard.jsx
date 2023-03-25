@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import styles from "./LeaderBoard.module.css";
-
+import TermsAndConditionsModal from "../../Components/TermsAndConditionsModel/TermsAndConditionsModal";
 import fvimg from "./assets/fvimg.png";
 import axios from "axios";
 
@@ -176,6 +176,7 @@ const LeaderBoard = () => {
           </div>
         </div> */}
       </div>
+      <TermsAndConditionsModal />
       <Footer />
     </>
   );

@@ -9,6 +9,7 @@ import companiesonboarded from "./data/companiesonboarded";
 import companyevents from "./data/companyevents";
 
 import CommunityCard from "../../Components/CommunityCard/CommunityCard";
+import TermsAndConditionsModal from "../../Components/TermsAndConditionsModel/TermsAndConditionsModal";
 
 const Company = () => {
   return (
@@ -92,6 +93,7 @@ const Company = () => {
           </div>
         </div>
       </div>
+      <TermsAndConditionsModal />
       <Footer />
     </>
   );

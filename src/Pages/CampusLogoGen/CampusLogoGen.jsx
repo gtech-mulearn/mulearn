@@ -5,6 +5,7 @@ import styles from "./campusLogoGen.module.css";
 import logoBlack from "../../images/campuslogo/logo-black.svg";
 import logoWhite from "../../images/campuslogo/logo-white.svg";
 import stripes from "../../images/campuslogo/stripes.svg";
+import TermsAndConditionsModal from "../../Components/TermsAndConditionsModel/TermsAndConditionsModal";
 
 const CampusLogoGenerator = () => {
   useEffect(() => {
@@ -209,8 +210,11 @@ const CampusLogoGenerator = () => {
           Download
         </button>
       </form>
+      <TermsAndConditionsModal />
     </div>
+    
   );
+  
 };
 
 export default CampusLogoGenerator;

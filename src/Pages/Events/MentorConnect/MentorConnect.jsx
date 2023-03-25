@@ -4,6 +4,8 @@ import styles from "./MentorConnect.module.css";
 import Navbar from "../../../Components/Navbar/Navbar";
 import Footer from "../../../Components/Footer/Footer";
 
+
+
 const MentorConnect = () => {
   const data = require("./data/data.json");
   const ReadMore = ({ children }) => {
@@ -82,6 +84,7 @@ const MentorConnect = () => {
           </div>
         </div>
       </div>
+     
       <Footer />
     </>
   );

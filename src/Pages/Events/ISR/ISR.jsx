@@ -78,6 +78,7 @@ const ISR = () => {
           </div>
         </div>
       </div>
+     
       <Footer />
     </>
   );

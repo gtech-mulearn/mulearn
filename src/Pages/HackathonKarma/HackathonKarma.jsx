@@ -3,6 +3,7 @@ import styles from "./HackathonKarma.module.css";
 
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
+import TermsAndConditionsModal from "../../Components/TermsAndConditionsModel/TermsAndConditionsModal";
 
 const HackathonKarma = () => {
   return (
@@ -124,6 +125,7 @@ const HackathonKarma = () => {
           </div>
         </div>
       </div>
+      <TermsAndConditionsModal />
       <Footer />
     </>
   );

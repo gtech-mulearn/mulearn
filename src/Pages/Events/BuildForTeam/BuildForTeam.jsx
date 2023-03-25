@@ -4,6 +4,7 @@ import styles from "./BuildForTeam.module.css";
 import Navbar from "../../../Components/Navbar/Navbar";
 import Footer from "../../../Components/Footer/Footer";
 
+
 const Build4Team = () => {
   return (
     <>
@@ -274,6 +275,7 @@ const Build4Team = () => {
           </div>
         </div>
       </div>
+     
       <Footer />
     </>
   );

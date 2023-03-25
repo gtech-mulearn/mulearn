@@ -1,6 +1,8 @@
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import styles from "./EnablersOnboarding.module.css";
+import TermsAndConditionsModal from "../../Components/TermsAndConditionsModel/TermsAndConditionsModal";
+ 
 import React from "react";
 
 const EnablersOnboarding = () => {
@@ -52,6 +54,8 @@ const EnablersOnboarding = () => {
           </div>
         </div>
       </div>
+      
+ <TermsAndConditionsModal />
       <Footer />
     </>
   );

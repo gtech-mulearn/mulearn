@@ -5,6 +5,8 @@ import Footer from "../../../Components/Footer/Footer";
 
 import announcementsData from "./Announcements.json";
 
+
+
 import Grid from "../../../Components/Grid/Grid";
 import CategorySwitch from "../../../Components/Grid/CategorySwitch";
 
@@ -56,6 +58,7 @@ const MuAnnouncements = () => {
         />
         <Grid data={announcementsData} selectedCategory={selectedCategory} />
       </section>
+      
       <Footer />
     </>
   );

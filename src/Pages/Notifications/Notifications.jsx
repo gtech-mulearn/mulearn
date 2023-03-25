@@ -7,6 +7,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
+import TermsAndConditionsModal from "../../Components/TermsAndConditionsModel/TermsAndConditionsModal";
 
 const Notifications = () => {
   let notifications = require("./data/notifications.json");
@@ -76,6 +77,7 @@ const Notifications = () => {
           </div>
         </div>
       </div>
+      <TermsAndConditionsModal />
       <Footer />
     </>
   );

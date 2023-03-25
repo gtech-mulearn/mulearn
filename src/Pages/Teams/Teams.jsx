@@ -7,7 +7,7 @@ import TeamCard from "../../Components/TeamCard/TeamCard"
 
 import yipteam from "./data/yip-team"
 import techTeam from "./data/tech-contributors.js"
-
+import TermsAndConditionsModal from "../../Components/TermsAndConditionsModel/TermsAndConditionsModal";
 const Teams = () => {
   const [teamName, setTeamfilter] = useState("all")
 
@@ -262,7 +262,7 @@ const Teams = () => {
           </div>
         </section>
       )}
-
+<TermsAndConditionsModal />
       <Footer />
     </>
   )

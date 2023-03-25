@@ -5,7 +5,7 @@ import styles from "./WikiSyllabus.module.css";
 
 import profile from "./data/profile";
 import MentorCard from "../../Components/MentorCard/MentorCard";
-
+import TermsAndConditionsModal from "../../Components/TermsAndConditionsModel/TermsAndConditionsModal";
 const WikiSyllabus = () => {
   return (
     <>
@@ -104,6 +104,7 @@ const WikiSyllabus = () => {
           </div>
         </div>
       </div>
+      <TermsAndConditionsModal />
       <Footer />
     </>
   );

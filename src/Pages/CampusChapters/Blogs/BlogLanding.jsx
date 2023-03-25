@@ -153,6 +153,7 @@ const BlogLanding = () => {
             {/* <ThemeProvider theme={theme}>
       // MUI components
             </ThemeProvider> */}
+            
             <Footer />
         </>
     )

@@ -7,6 +7,8 @@ import partners from "./data/partners";
 
 import fvimg from "./assets/fvimg.gif";
 import CommunityCard from "../../Components/CommunityCard/CommunityCard";
+import TermsAndConditionsModal from "../../Components/TermsAndConditionsModel/TermsAndConditionsModal";
+
 
 const CommunityPartner = () => {
   return (
@@ -59,6 +61,7 @@ const CommunityPartner = () => {
           </div>
         </div>
       </div>
+      <TermsAndConditionsModal />
       <Footer />
     </>
   );
