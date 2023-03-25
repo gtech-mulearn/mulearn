@@ -5,8 +5,10 @@
   padding: 0%;
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
-  color: #404d61;
+  transition: all 0.3s ease-in;
+  /* color: #404d61; */
 }
+
 
 .onboarding_page .form_container h1 {
   font-size: 1.5rem;
@@ -96,12 +98,6 @@ form .input_container .grouped_inputs {
 
 form .input {
   width: 100%;
-}
-
-form .form_buttons {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
 }
 
 form .form_buttons button,
@@ -252,11 +248,12 @@ form .form_buttons button[type="reset"] {
     margin-top: 10px;
     margin-left: 0px;
   }
+}
 
-  form .form_buttons {
-    justify-content: center;
-    flex-direction: column;
-  }
+.form_buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 /* Modal Styles */
@@ -289,15 +286,31 @@ form .form_buttons button[type="reset"] {
   width: min-content;
   margin: 0;
   margin: 10px;
+  margin-top: 12px;
   width: 1rem;
-  height: 1rem;
+  /* height: 1rem; */
 }
 
-.bottom_section {
+.form_bottom {
   font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+}
+
+.validation_error_message {
+  position: absolute;
+  padding: 10px 50px;
+  right: 30px;
+  top: 30px;
+  background-color: #5570F2;
+
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.validation_error_message p {
+  color: #ffffff;
 }

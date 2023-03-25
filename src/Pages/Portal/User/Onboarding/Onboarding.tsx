@@ -20,6 +20,7 @@ const Onboarding = (props: Props) => {
   const [gender, setGender] = useState("")
   const [dob, setDob] = useState("")
   const [role, setRole] = useState([{ id: "", title: "" }])
+  const [tcChecked, setTcChecked] = useState(false)
 
   const [dept, setDept] = useState("")
   const [yog, setYog] = useState("")
@@ -29,6 +30,11 @@ const Onboarding = (props: Props) => {
   const [hasError, setHasError] = useState({
     error: false,
     statusCode: 0,
+    message: "",
+  })
+
+  const [hasValidationError, setHasValidationError] = useState({
+    error: false,
     message: "",
   })
 
@@ -359,6 +365,18 @@ const Onboarding = (props: Props) => {
       }
     }
 
+    if (!tcChecked) {
+      setValidations((prevValidations) => ({
+        ...prevValidations,
+        termsandcondtions: false,
+      }))
+    } else {
+      setValidations((prevValidations) => ({
+        ...prevValidations,
+        termsandcondtions: true,
+      }))
+    }
+
     //Validation for the Area of Interest Field
     if (areaOfInterest.length < 1) {
       setValidations((prevValidations) => ({
@@ -382,6 +400,7 @@ const Onboarding = (props: Props) => {
     yog,
     submitTrigger,
     mentorRole,
+    tcChecked
   ])
 
   const customStyles = {
@@ -445,7 +464,16 @@ const Onboarding = (props: Props) => {
         setRoleVerified(response.data.roleVerified)
       })
       .catch(function (error) {
-        const errorMessage = error.response.data.message
+        setHasValidationError({
+          error: true,
+          message: error.response.data.message,
+        })
+        setTimeout(() => {
+          setHasValidationError({
+            error: false,
+            message: "",
+          })
+        }, 3000)
       })
   }
 
@@ -621,550 +649,656 @@ const Onboarding = (props: Props) => {
         {!hasError.error ? (
           <>
             {!formSuccess ? (
-              <div className={styles.form_container}>
-                <h1>User Information</h1>
-                <p>
-                  Please enter all the required information in the fields
-                  provided below. Please be aware that once you have submitted
-                  this information, you will not be able to make any changes or
-                  updates.
-                </p>
-                <form autoComplete="off" action="">
-                  <div>
-                    <div className={styles.inputs}>
-                      <div className={styles.input_container}>
-                        <label htmlFor="">
-                          First Name <span className={styles.required}>*</span>
-                        </label>
-                        <input
-                          id="first_name"
-                          type="text"
-                          placeholder="First name"
-                          className={styles.input}
-                          onChange={(e) => {
-                            setFirstName(e.target.value)
-                          }}
-                          required
-                        />
-                        {submitTrigger && !validations.firstName && (
-                          <p className={styles.error_message}>
-                            This field is required
-                          </p>
-                        )}
-                      </div>
-                      <div className={styles.input_container}>
-                        <label htmlFor="">Last Name</label>
-                        <input
-                          type="text"
-                          placeholder="Last name"
-                          className={styles.input}
-                          onChange={(e) => {
-                            setLastName(e.target.value)
-                          }}
-                        />
-                      </div>
-                    </div>
-                    <div className={styles.inputs}>
-                      <div className={styles.input_container}>
-                        <label htmlFor="">
-                          Email address{" "}
-                          <span className={styles.required}>*</span>
-                        </label>
-                        <input
-                          id="email_field"
-                          type="email"
-                          placeholder="username@domain.com"
-                          className={styles.input}
-                          onChange={(e) => {
-                            setEmail(e.target.value)
-                          }}
-                          required
-                        />
-                        {submitTrigger && !validations.email && (
-                          <p className={styles.error_message}>
-                            This field is required
-                          </p>
-                        )}
-                      </div>
-                      <div className={styles.input_container}>
-                        <label htmlFor="">Phone number</label>
-                        <div className={styles.grouped_inputs}>
-                          <select
-                            style={{ width: "20%", textAlign: "center" }}
-                            name=""
-                            id=""
-                          >
-                            <option value="+91">+91</option>
-                          </select>
+              <>
+                {hasValidationError.error ? (
+                  <div className={styles.validation_error_message}>
+                    <p>{hasValidationError.message}</p>
+                  </div>
+                ) : (
+                  ""
+                )}
+                <div className={styles.form_container}>
+                  <h1>User Information</h1>
+                  <p>
+                    Please enter all the required information in the fields
+                    provided below. Please be aware that once you have submitted
+                    this information, you will not be able to make any changes
+                    or updates. <b>Don't use autofill to fill in.</b>
+                  </p>
+                  <form autoComplete="off" action="">
+                    <div>
+                      <div className={styles.inputs}>
+                        <div className={styles.input_container}>
+                          <label htmlFor="">
+                            First Name{" "}
+                            <span className={styles.required}>*</span>
+                          </label>
                           <input
-                            id="phone_field"
-                            style={{ width: "78%" }}
-                            type="number"
-                            placeholder="8023456789"
+                            id="first_name"
+                            type="text"
+                            placeholder="First name"
+                            className={styles.input}
+
                             onChange={(e) => {
-                              setPhone(e.target.valueAsNumber)
+                              setFirstName(e.target.value)
                             }}
                             required
                           />
-                          {submitTrigger && !validations.phone && (
+                          {submitTrigger && !validations.firstName && (
+                            <p className={styles.error_message}>
+                              This field is required
+                            </p>
+                          )}
+                        </div>
+                        <div className={styles.input_container}>
+                          <label htmlFor="">Last Name</label>
+                          <input
+                            type="text"
+                            placeholder="Last name"
+                            className={styles.input}
+                            onChange={(e) => {
+                              setLastName(e.target.value)
+                            }}
+                          />
+                        </div>
+                      </div>
+                      <div className={styles.inputs}>
+                        <div className={styles.input_container}>
+                          <label htmlFor="">
+                            Email address{" "}
+                            <span className={styles.required}>*</span>
+                          </label>
+                          <input
+                            id="email_field"
+                            type="email"
+                            placeholder="username@domain.com"
+                            className={styles.input}
+                            onChange={(e) => {
+                              setEmail(e.target.value)
+                            }}
+                            required
+                          />
+                          {submitTrigger && !validations.email && (
+                            <p className={styles.error_message}>
+                              This field is required
+                            </p>
+                          )}
+                        </div>
+                        <div className={styles.input_container}>
+                          <label htmlFor="">Phone number</label>
+                          <div className={styles.grouped_inputs}>
+                            <select
+                              style={{ width: "20%", textAlign: "center" }}
+                              name=""
+                              id=""
+                            >
+                              <option value="+91">+91</option>
+                            </select>
+                            <input
+                              id="phone_field"
+                              style={{ width: "78%" }}
+                              type="number"
+                              placeholder="8023456789"
+                              onChange={(e) => {
+                                setPhone(e.target.valueAsNumber)
+                              }}
+                              required
+                            />
+                            {submitTrigger && !validations.phone && (
+                              <p className={styles.error_message}>
+                                This field is required
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                      <div className={styles.inputs}>
+                        <div className={styles.input_container}>
+                          <div className={styles.grouped_inputs}>
+                            <div
+                              style={{ width: "49%" }}
+                              className={styles.input_container}
+                            >
+                              <label htmlFor="">Gender</label>
+                              <select
+                                name=""
+                                id=""
+                                onChange={(e) => {
+                                  setGender(e.target.value)
+                                }}
+                              >
+                                <option value="">Select gender</option>
+                                <option value="male">
+                                  <span className={styles.gender}>♂</span> Male
+                                </option>
+                                <option value="male">
+                                  <span className={styles.gender}>♀</span>{" "}
+                                  Female
+                                </option>
+                                <option value="other">Other</option>
+                                <option value="not to say">
+                                  Prefer not to say
+                                </option>
+                              </select>
+                            </div>
+                            <div
+                              style={{ width: "49%" }}
+                              className={styles.input_container}
+                            >
+                              <label htmlFor="">Date of Birth</label>
+                              <input
+                                id="gender_field"
+                                type="date"
+                                placeholder="dd/mm/yyyy"
+                                className={styles.input}
+                                onChange={(e) => {
+                                  setDob(e.target.value)
+                                }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div className={styles.input_container}>
+                          <label htmlFor="">
+                            Role <span className={styles.required}>*</span>
+                          </label>
+                          <select
+                            id="role_field"
+                            name=""
+                            onChange={(e) => {
+                              setYog("")
+                              setDept("")
+                              setMentorRole("")
+                              setOrgnization("")
+                              setValidations((prevState) => ({
+                                ...prevState,
+                                student: {
+                                  ...prevState.student,
+                                  organization: false,
+                                  department: false,
+                                  yearOfGraduation: false,
+                                },
+                                enabler: {
+                                  ...prevState.enabler,
+                                  organization: false,
+                                  department: false,
+                                },
+                                mentor: {
+                                  ...prevState.mentor,
+                                  organization: false,
+                                  mentorRole: false,
+                                  type: "",
+                                },
+                              }))
+
+                              roleAPI.map((role) => {
+                                e.target.value == ""
+                                  ? setRole([{ id: "", title: "" }])
+                                  : role.id == e.target.value
+                                  ? setRole([
+                                      { id: e.target.value, title: role.title },
+                                    ])
+                                  : null
+                              })
+                            }}
+                            required
+                          >
+                            <option value="">Select</option>
+                            {roleAPI.map((role, i) => {
+                              return (
+                                <option key={i} value={role.id}>
+                                  {role.title}
+                                </option>
+                              )
+                            })}
+                          </select>
+                          {submitTrigger && !validations.role && (
                             <p className={styles.error_message}>
                               This field is required
                             </p>
                           )}
                         </div>
                       </div>
-                    </div>
-                    <div className={styles.inputs}>
-                      <div className={styles.input_container}>
-                        <div className={styles.grouped_inputs}>
-                          <div
-                            style={{ width: "49%" }}
-                            className={styles.input_container}
-                          >
-                            <label htmlFor="">Gender</label>
-                            <select
-                              name=""
-                              id=""
-                              onChange={(e) => {
-                                setGender(e.target.value)
-                              }}
-                            >
-                              <option value="">Select gender</option>
-                              <option value="male">
-                                <span className={styles.gender}>♂</span> Male
-                              </option>
-                              <option value="male">
-                                <span className={styles.gender}>♀</span> Female
-                              </option>
-                              <option value="other">Other</option>
-                              <option value="not to say">
-                                Prefer not to say
-                              </option>
-                            </select>
-                          </div>
-                          <div
-                            style={{ width: "49%" }}
-                            className={styles.input_container}
-                          >
-                            <label htmlFor="">Date of Birth</label>
-                            <input
-                              id="gender_field"
-                              type="date"
-                              placeholder="dd/mm/yyyy"
-                              className={styles.input}
-                              onChange={(e) => {
-                                setDob(e.target.value)
-                              }}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className={styles.input_container}>
-                        <label htmlFor="">
-                          Role <span className={styles.required}>*</span>
-                        </label>
-                        <select
-                          id="role_field"
-                          name=""
-                          onChange={(e) => {
-                            setYog("")
-                            setDept("")
-                            setMentorRole("")
-                            setOrgnization("")
-                            setValidations((prevState) => ({
-                              ...prevState,
-                              student: {
-                                ...prevState.student,
-                                organization: false,
-                                department: false,
-                                yearOfGraduation: false,
-                              },
-                              enabler: {
-                                ...prevState.enabler,
-                                organization: false,
-                                department: false,
-                              },
-                              mentor: {
-                                ...prevState.mentor,
-                                organization: false,
-                                mentorRole: false,
-                                type: "",
-                              },
-                            }))
-
-                            roleAPI.map((role) => {
-                              e.target.value == ""
-                                ? setRole([{ id: "", title: "" }])
-                                : role.id == e.target.value
-                                ? setRole([
-                                    { id: e.target.value, title: role.title },
-                                  ])
-                                : null
-                            })
-                          }}
-                          required
-                        >
-                          <option value="">Select</option>
-                          {roleAPI.map((role, i) => {
-                            return (
-                              <option key={i} value={role.id}>
-                                {role.title}
-                              </option>
-                            )
-                          })}
-                        </select>
-                        {submitTrigger && !validations.role && (
-                          <p className={styles.error_message}>
-                            This field is required
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                    <div className={styles.inputs}>
-                      {role[0].title == "Student" ||
-                      role[0].title == "Enabler" ? (
-                        <>
-                          <div className={styles.input_container}>
-                            <label htmlFor="">
-                              College <span className={styles.required}>*</span>
-                            </label>
-                            <ReactSelect
-                              id="college_field"
-                              value={
-                                orgnization.length > 0 &&
-                                collegeOptions.find(
-                                  (college) => college.value === orgnization
-                                )
-                              }
-                              onChange={(option) =>
-                                option && setOrgnization(option.value)
-                              }
-                              options={collegeOptions}
-                              isClearable={false}
-                              placeholder="Select college..."
-                              noOptionsMessage={() => (
-                                <a
-                                  href="https://airtable.com/shrfongm5JG8J53rD"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                >
-                                  <p className={styles.add_college}>
-                                    College Not Found, Add College
-                                  </p>
-                                </a>
-                              )}
-                              filterOption={({ label }, inputValue) =>
-                                label
-                                  .toLowerCase()
-                                  .includes(inputValue.toLowerCase())
-                              }
-                              styles={customStyles}
-                              required
-                            />
-                            {submitTrigger &&
-                              ((role[0].title === "Student" &&
-                                !validations.student.organization) ||
-                                (role[0].title === "Enabler" &&
-                                  !validations.enabler.organization)) && (
-                                <p className={styles.error_message}>
-                                  This field is required
-                                </p>
-                              )}
-                          </div>
-
-                          <div className={styles.input_container}>
-                            <div className={styles.grouped_inputs}>
-                              <div
-                                style={
-                                  role[0].title === "Student"
-                                    ? { width: "58%" }
-                                    : { width: "100%" }
+                      <div className={styles.inputs}>
+                        {role[0].title == "Student" ||
+                        role[0].title == "Enabler" ? (
+                          <>
+                            <div className={styles.input_container}>
+                              <label htmlFor="">
+                                College{" "}
+                                <span className={styles.required}>*</span>
+                              </label>
+                              <ReactSelect
+                                id="college_field"
+                                value={
+                                  orgnization.length > 0 &&
+                                  collegeOptions.find(
+                                    (college) => college.value === orgnization
+                                  )
                                 }
-                                className={styles.input_container}
-                              >
-                                <label htmlFor="">
-                                  Department{" "}
-                                  <span className={styles.required}>*</span>
-                                </label>
-                                <select
-                                  id="dept_field"
-                                  name=""
-                                  onChange={(e) => {
-                                    setDept(e.target.value)
-                                  }}
-                                  value={dept}
-                                  required
-                                >
-                                  <option value="">Select</option>
-                                  {departmentAPI.map((dept, index) => {
-                                    return (
-                                      <option key={index} value={dept.id}>
-                                        {dept.title}
-                                      </option>
-                                    )
-                                  })}
-                                </select>
-                                {submitTrigger &&
-                                  ((role[0].title === "Student" &&
-                                    !validations.student.department) ||
-                                    (role[0].title === "Enabler" &&
-                                      !validations.enabler.department)) && (
-                                    <p className={styles.error_message}>
-                                      This field is required
+                                onChange={(option) =>
+                                  option && setOrgnization(option.value)
+                                }
+                                options={collegeOptions}
+                                isClearable={false}
+                                placeholder="Select college..."
+                                noOptionsMessage={() => (
+                                  <a
+                                    href="https://airtable.com/shrfongm5JG8J53rD"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    <p className={styles.add_college}>
+                                      College Not Found, Add College
                                     </p>
-                                  )}
-                              </div>
-                              {role[0].title == "Student" ? (
+                                  </a>
+                                )}
+                                filterOption={({ label }, inputValue) =>
+                                  label
+                                    .toLowerCase()
+                                    .includes(inputValue.toLowerCase())
+                                }
+                                styles={customStyles}
+                                required
+                              />
+                              {submitTrigger &&
+                                ((role[0].title === "Student" &&
+                                  !validations.student.organization) ||
+                                  (role[0].title === "Enabler" &&
+                                    !validations.enabler.organization)) && (
+                                  <p className={styles.error_message}>
+                                    This field is required
+                                  </p>
+                                )}
+                            </div>
+
+                            <div className={styles.input_container}>
+                              <div className={styles.grouped_inputs}>
                                 <div
-                                  style={{ width: "40%" }}
+                                  style={
+                                    role[0].title === "Student"
+                                      ? { width: "58%" }
+                                      : { width: "100%" }
+                                  }
                                   className={styles.input_container}
                                 >
                                   <label htmlFor="">
-                                    Graduation Year{" "}
+                                    Department{" "}
                                     <span className={styles.required}>*</span>
                                   </label>
                                   <select
-                                    id="yog_field"
-                                    style={{ width: "100%" }} //78%
+                                    id="dept_field"
                                     name=""
-                                    onChange={(e) => setYog(e.target.value)}
+                                    onChange={(e) => {
+                                      setDept(e.target.value)
+                                    }}
+                                    value={dept}
                                     required
                                   >
                                     <option value="">Select</option>
-                                    {yog_year.map((year, i) => {
+                                    {departmentAPI.map((dept, index) => {
                                       return (
-                                        <option key={i} value={year}>
-                                          {year}
+                                        <option key={index} value={dept.id}>
+                                          {dept.title}
                                         </option>
                                       )
                                     })}
                                   </select>
                                   {submitTrigger &&
-                                    !validations.student.yearOfGraduation && (
+                                    ((role[0].title === "Student" &&
+                                      !validations.student.department) ||
+                                      (role[0].title === "Enabler" &&
+                                        !validations.enabler.department)) && (
                                       <p className={styles.error_message}>
                                         This field is required
                                       </p>
                                     )}
                                 </div>
-                              ) : null}
+                                {role[0].title == "Student" ? (
+                                  <div
+                                    style={{ width: "40%" }}
+                                    className={styles.input_container}
+                                  >
+                                    <label htmlFor="">
+                                      Graduation Year{" "}
+                                      <span className={styles.required}>*</span>
+                                    </label>
+                                    <select
+                                      id="yog_field"
+                                      style={{ width: "100%" }} //78%
+                                      name=""
+                                      onChange={(e) => setYog(e.target.value)}
+                                      required
+                                    >
+                                      <option value="">Select</option>
+                                      {yog_year.map((year, i) => {
+                                        return (
+                                          <option key={i} value={year}>
+                                            {year}
+                                          </option>
+                                        )
+                                      })}
+                                    </select>
+                                    {submitTrigger &&
+                                      !validations.student.yearOfGraduation && (
+                                        <p className={styles.error_message}>
+                                          This field is required
+                                        </p>
+                                      )}
+                                  </div>
+                                ) : null}
+                              </div>
                             </div>
-                          </div>
-                        </>
-                      ) : (
-                        <>
-                          {role[0].title == "Mentor" ? (
-                            <div className={styles.input_container}>
-                              <label htmlFor="">
-                                Type <span className={styles.required}>*</span>
-                              </label>
-                              <div className={styles.grouped_inputs}>
+                          </>
+                        ) : (
+                          <>
+                            {role[0].title == "Mentor" ? (
+                              <div className={styles.input_container}>
+                                <label htmlFor="">
+                                  Type{" "}
+                                  <span className={styles.required}>*</span>
+                                </label>
+                                <div className={styles.grouped_inputs}>
+                                  <select
+                                    id="mentortype_filed"
+                                    style={{ width: "100%" }} //78%
+                                    name=""
+                                    onChange={(e) => {
+                                      setMentorRole(e.target.value)
+                                    }}
+                                    required
+                                  >
+                                    <option value="Select">Select</option>
+                                    <option value="Company">Company</option>
+                                    <option value="Community Partner">
+                                      Community Partner
+                                    </option>
+                                    <option value="Individual">
+                                      Individual
+                                    </option>
+                                  </select>
+                                </div>
+                                {submitTrigger &&
+                                  !validations.mentor.mentorRole && (
+                                    <p className={styles.error_message}>
+                                      This field is required
+                                    </p>
+                                  )}
+                              </div>
+                            ) : null}
+                            {mentorRole == "Company" ? (
+                              <div className={styles.input_container}>
+                                <label htmlFor="">
+                                  Company{" "}
+                                  <span className={styles.required}>*</span>
+                                </label>
                                 <select
-                                  id="mentortype_filed"
-                                  style={{ width: "100%" }} //78%
+                                  id="company_field"
                                   name=""
                                   onChange={(e) => {
-                                    setMentorRole(e.target.value)
+                                    setOrgnization(e.target.value)
                                   }}
                                   required
                                 >
-                                  <option value="Select">Select</option>
-                                  <option value="Company">Company</option>
-                                  <option value="Community Partner">
-                                    Community Partner
-                                  </option>
-                                  <option value="Individual">Individual</option>
+                                  <option value="">Select</option>
+                                  {companyAPI.map((company, index) => {
+                                    return (
+                                      <option key={index} value={company.id}>
+                                        {company.title}
+                                      </option>
+                                    )
+                                  })}
                                 </select>
+                                {submitTrigger &&
+                                  !validations.mentor.organization && (
+                                    <p className={styles.error_message}>
+                                      This field is required
+                                    </p>
+                                  )}
                               </div>
-                              {submitTrigger &&
-                                !validations.mentor.mentorRole && (
-                                  <p className={styles.error_message}>
-                                    This field is required
-                                  </p>
-                                )}
-                            </div>
-                          ) : null}
-                          {mentorRole == "Company" ? (
-                            <div className={styles.input_container}>
-                              <label htmlFor="">
-                                Company{" "}
-                                <span className={styles.required}>*</span>
-                              </label>
-                              <select
-                                id="company_field"
-                                name=""
-                                onChange={(e) => {
-                                  setOrgnization(e.target.value)
-                                }}
-                                required
-                              >
-                                <option value="">Select</option>
-                                {companyAPI.map((company, index) => {
-                                  return (
-                                    <option key={index} value={company.id}>
-                                      {company.title}
-                                    </option>
-                                  )
-                                })}
-                              </select>
-                              {submitTrigger &&
-                                !validations.mentor.organization && (
-                                  <p className={styles.error_message}>
-                                    This field is required
-                                  </p>
-                                )}
-                            </div>
-                          ) : null}
-                          {mentorRole == "Community Partner" ? (
-                            <div className={styles.input_container}>
-                              <label htmlFor="">
-                                Community{" "}
-                                <span className={styles.required}>*</span>
-                              </label>
-                              <select
-                                id="community_field"
-                                onChange={(e) => {
-                                  setOrgnization(e.target.value)
-                                }}
-                                required
-                              >
-                                <option value="">Select</option>
-                                {communityAPI.map((company, index) => {
-                                  return (
-                                    <option key={index} value={company.id}>
-                                      {company.title}
-                                    </option>
-                                  )
-                                })}
-                              </select>
-                              {submitTrigger &&
-                                !validations.mentor.organization && (
-                                  <p className={styles.error_message}>
-                                    This field is required
-                                  </p>
-                                )}
-                            </div>
-                          ) : null}
-                        </>
-                      )}
-                    </div>
-                    <div className={styles.inputs}>
-                      {/* <div className={styles.input_container}> */}
-                      <div className={styles.label_container}>
-                        <label htmlFor="">
-                          Areas of Interest / Stack{" "}
-                          <span className={styles.required}>*</span>
-                        </label>
-                        {submitTrigger && !validations.areaOfInterest && (
-                          <p className={styles.error_message}>
-                            Please select at least one area of interest
-                          </p>
+                            ) : null}
+                            {mentorRole == "Community Partner" ? (
+                              <div className={styles.input_container}>
+                                <label htmlFor="">
+                                  Community{" "}
+                                  <span className={styles.required}>*</span>
+                                </label>
+                                <select
+                                  id="community_field"
+                                  onChange={(e) => {
+                                    setOrgnization(e.target.value)
+                                  }}
+                                  required
+                                >
+                                  <option value="">Select</option>
+                                  {communityAPI.map((company, index) => {
+                                    return (
+                                      <option key={index} value={company.id}>
+                                        {company.title}
+                                      </option>
+                                    )
+                                  })}
+                                </select>
+                                {submitTrigger &&
+                                  !validations.mentor.organization && (
+                                    <p className={styles.error_message}>
+                                      This field is required
+                                    </p>
+                                  )}
+                              </div>
+                            ) : null}
+                          </>
                         )}
                       </div>
+                      <div className={styles.inputs}>
+                        {/* <div className={styles.input_container}> */}
+                        <div className={styles.label_container}>
+                          <label htmlFor="">
+                            Areas of Interest / Stack{" "}
+                            <span className={styles.required}>*</span>
+                          </label>
+                          {submitTrigger && !validations.areaOfInterest && (
+                            <p className={styles.error_message}>
+                              Please select at least one area of interest
+                            </p>
+                          )}
+                        </div>
 
-                      <div className={styles.aoi_container}>
-                        {aoiAPI.map((aoi, i) => {
-                          const checked = areaOfInterest.includes(
-                            aoi.id as string
-                          )
-                          const disabled =
-                            areaOfInterest.length >= 3 && !checked
-                          return (
-                            <label key={i}>
-                              <input
-                                value={aoi.id}
-                                type="checkbox"
-                                checked={checked}
-                                disabled={disabled}
-                                onChange={(e) => {
-                                  const selectedId = aoi.id
-                                  if (checked) {
-                                    setAreaOfInterest(
-                                      areaOfInterest.filter(
-                                        (aois) => aois !== selectedId
+                        <div className={styles.aoi_container}>
+                          {aoiAPI.map((aoi, i) => {
+                            const checked = areaOfInterest.includes(
+                              aoi.id as string
+                            )
+                            const disabled =
+                              areaOfInterest.length >= 3 && !checked
+                            return (
+                              <label key={i}>
+                                <input
+                                  value={aoi.id}
+                                  type="checkbox"
+                                  checked={checked}
+                                  disabled={disabled}
+                                  onChange={(e) => {
+                                    const selectedId = aoi.id
+                                    if (checked) {
+                                      setAreaOfInterest(
+                                        areaOfInterest.filter(
+                                          (aois) => aois !== selectedId
+                                        )
                                       )
-                                    )
-                                  } else {
-                                    setAreaOfInterest(
-                                      [...areaOfInterest, selectedId].slice(-3)
-                                    )
-                                  }
-                                }}
-                                required
-                              />
-                              <span>{aoi.name}</span>
-                            </label>
-                          )
-                        })}
+                                    } else {
+                                      setAreaOfInterest(
+                                        [...areaOfInterest, selectedId].slice(
+                                          -3
+                                        )
+                                      )
+                                    }
+                                  }}
+                                  required
+                                />
+                                <span>{aoi.name}</span>
+                              </label>
+                            )
+                          })}
+                        </div>
+
+                        {/* </div> */}
                       </div>
-
-                      {/* </div> */}
                     </div>
-                  </div>
-                  <div className={styles.form_buttons}>
-                    <button
-                      onClick={() => {
-                        setAreaOfInterest([])
-
-                        setFirstName("")
-                        setLastName("")
-                        setEmail("")
-                        setPhone(0)
-
-                        setRole([{ id: "", title: "" }])
-                        setDept("")
-                        setOrgnization("")
-                        setYog("")
-                        setMentorRole("")
-
-                        setSubmitTrigger(false)
-                      }}
-                      type="reset"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="submit"
-                      onClick={(e) => {
-                        e.preventDefault()
-                        setSubmitTrigger(true)
-                        if (
-                          validations.firstName &&
-                          validations.email &&
-                          validations.phone &&
-                          validations.role &&
-                          validations.areaOfInterest
-                        ) {
-                          if (role[0].title == "Student") {
-                            if (
-                              validations.student.department &&
-                              validations.student.organization &&
-                              validations.student.yearOfGraduation
-                            ) {
-                              onboard()
+                    <div className={styles.form_bottom}>
+                      <div className={styles.checkbox}>
+                        <input
+                          className={styles.input_checkbox}
+                          type="checkbox"
+                          checked={tcChecked}
+                          name=""
+                          id=""
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setTcChecked(true)
+                            } else {
+                              setTcChecked(false)
                             }
-                          } else if (role[0].title == "Mentor") {
-                            if (
-                              validations.mentor.mentorRole &&
-                              validations.mentor.organization
-                            ) {
-                              onboard()
-                            }
-                          } else if (role[0].title == "Enabler") {
-                            if (
-                              validations.enabler.organization &&
-                              validations.enabler.department
-                            ) {
-                              onboard()
-                            }
+                          }}
+                        />
+                        <label htmlFor="">
+                          I Agree, the Terms and Conditions
+                        </label>
+                      </div>
+                      <div className={styles.form_buttons}>
+                        <button
+                          onClick={() => {
+                            setAreaOfInterest([])
+
+                            setFirstName("")
+                            setLastName("")
+                            setEmail("")
+                            setPhone(0)
+
+                            setRole([{ id: "", title: "" }])
+                            setDept("")
+                            setOrgnization("")
+                            setYog("")
+                            setMentorRole("")
+                            setTcChecked(false)
+                            setSubmitTrigger(false)
+                          }}
+                          type="reset"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          type="submit"
+                          style={
+                            tcChecked
+                              ? { backgroundColor: "#5570f1" }
+                              : { backgroundColor: "#5570f1", opacity: "0.5" }
                           }
-                        }
-                      }}
-                    >
-                      Submit
-                    </button>
-                  </div>
-                </form>
-              </div>
+                          onClick={(e) => {
+                            e.preventDefault()
+                            setSubmitTrigger(true)
+                            console.log(validations)
+                            if (
+                              validations.firstName &&
+                              validations.email &&
+                              validations.phone &&
+                              validations.role &&
+                              validations.areaOfInterest &&
+                              validations.termsandcondtions
+                            ) {
+                              if (role[0].title == "Student") {
+                                if (
+                                  validations.student.department &&
+                                  validations.student.organization &&
+                                  validations.student.yearOfGraduation
+                                ) {
+                                  onboard()
+                                } else {
+                                  // Set the error message and set error to true
+                                  setHasValidationError({
+                                    error: true,
+                                    message:
+                                      "Kindly, fill in all the required fields!",
+                                  })
+
+                                  // Wait for 3 seconds and set error to false
+                                  setTimeout(() => {
+                                    setHasValidationError({
+                                      error: false,
+                                      message: "",
+                                    })
+                                  }, 2000)
+                                }
+                              } else if (role[0].title == "Mentor") {
+                                if (
+                                  validations.mentor.mentorRole &&
+                                  validations.mentor.organization
+                                ) {
+                                  onboard()
+                                } else {
+                                  // Set the error message and set error to true
+                                  setHasValidationError({
+                                    error: true,
+                                    message:
+                                      "Kindly, fill in all the required fields!",
+                                  })
+
+                                  // Wait for 3 seconds and set error to false
+                                  setTimeout(() => {
+                                    setHasValidationError({
+                                      error: false,
+                                      message: "",
+                                    })
+                                  }, 2000)
+                                }
+                              } else if (role[0].title == "Enabler") {
+                                if (
+                                  validations.enabler.organization &&
+                                  validations.enabler.department
+                                ) {
+                                  onboard()
+                                } else {
+                                  // Set the error message and set error to true
+                                  setHasValidationError({
+                                    error: true,
+                                    message:
+                                      "Kindly, fill in all the required fields!",
+                                  })
+
+                                  // Wait for 3 seconds and set error to false
+                                  setTimeout(() => {
+                                    setHasValidationError({
+                                      error: false,
+                                      message: "",
+                                    })
+                                  }, 2000)
+                                }
+                              }
+                            } else {
+                              // Set the error message and set error to true
+                              setHasValidationError({
+                                error: true,
+                                message:
+                                  "Kindly, fill in all the required fields!",
+                              })
+
+                              // Wait for 3 seconds and set error to false
+                              setTimeout(() => {
+                                setHasValidationError({
+                                  error: false,
+                                  message: "",
+                                })
+                              }, 2000)
+                            }
+                          }}
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </>
             ) : (
               <Success roleVerified={roleVerified} />
             )}
