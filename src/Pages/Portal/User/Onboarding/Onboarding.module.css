@@ -182,6 +182,8 @@ form .form_buttons button[type="reset"] {
   flex-direction: column;
   /* width: 100vw; */
   height: 100vh;
+  margin: 2rem;
+  text-align: center;
   background-color: #e8f3f7;
 }
 
@@ -198,6 +200,7 @@ form .form_buttons button[type="reset"] {
   flex-direction: column;
   /* width: 100vw; */
   height: 100vh;
+  margin: 2rem;
   background-color: #e8f3f7;
 }
 

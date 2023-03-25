@@ -425,7 +425,7 @@ const Onboarding = (props: Props) => {
       .request(options)
       .then(function (response) {
         setFormSuccess(true)
-        console.log(response.data)
+
         setRoleVerified(response.data.roleVerified)
       })
       .catch(function (error) {
@@ -448,11 +448,11 @@ const Onboarding = (props: Props) => {
       .request(token_check)
       .then((response) => {})
       .catch((error) => {
-        setHasError({
-          error: error.response.data.hasError,
-          statusCode: error.response.data.statusCode,
-          message: error.response.data.message,
-        })
+        // setHasError({
+        //   error: error.response.data.hasError,
+        //   statusCode: error.response.data.statusCode,
+        //   message: error.response.data.message,
+        // })
       })
 
     // request for college list
@@ -481,7 +481,14 @@ const Onboarding = (props: Props) => {
         setDepartmentAPI(response.data.response.departments)
       })
       .catch(function (error) {
-        console.error(error)
+        if (error.response.status === 404 || error.response.status === 500) {
+          const errorMessage = {
+            error: true,
+            statusCode: error.response.data.status,
+            message: "Something went wrong, Please try again Later",
+          }
+          setHasError(errorMessage)
+        }
       })
 
     // request for company list
@@ -500,7 +507,14 @@ const Onboarding = (props: Props) => {
         setCompanyAPI(response.data.response.companies)
       })
       .catch(function (error) {
-        console.error(error)
+        if (error.response.status === 404 || error.response.status === 500) {
+          const errorMessage = {
+            error: true,
+            statusCode: error.response.data.status,
+            message: "Something went wrong, Please try again Later",
+          }
+          setHasError(errorMessage)
+        }
       })
 
     // request for role list
@@ -518,7 +532,16 @@ const Onboarding = (props: Props) => {
         setRoleAPI(response.data.response.roles)
       })
       .catch(function (error) {
-        console.error(error)
+        if (
+          error.response.data.statusCode === 404 ||
+          error.response.data.statusCode === 500
+        ) {
+          setHasError({
+            error: true,
+            statusCode: error.response.data.statusCode,
+            message: "Something went wrong, please try again later",
+          })
+        }
       })
 
     // request for area of intersts list
@@ -538,7 +561,14 @@ const Onboarding = (props: Props) => {
         setAoiAPI(response.data.response.aois)
       })
       .catch(function (error) {
-        console.error(error)
+        if (error.response.status === 404 || error.response.status === 500) {
+          const errorMessage = {
+            error: true,
+            statusCode: error.response.data.status,
+            message: "Something went wrong, Please try again Later",
+          }
+          setHasError(errorMessage)
+        }
       })
 
     // request for community list
@@ -558,7 +588,14 @@ const Onboarding = (props: Props) => {
         setCommunityAPI(response.data.response.communities)
       })
       .catch(function (error) {
-        console.error(error)
+        if (error.response.status === 404 || error.response.status === 500) {
+          const errorMessage = {
+            error: true,
+            statusCode: error.response.data.status,
+            message: "Something went wrong, Please try again Later",
+          }
+          setHasError(errorMessage)
+        }
       })
   }, [])
 
@@ -1061,7 +1098,14 @@ const Onboarding = (props: Props) => {
                         }}
                       />
                       <p className={styles.checkbox_text}>
-                        I agree, all the Terms and Condtions.
+                        I agree, all the{" "}
+                        <a
+                          target="_blank"
+                          href="http://mulearn.org/termsandcondtions"
+                        >
+                          Terms and Condtions
+                        </a>{" "}
+                        .
                       </p>
                     </div>
                     <div className={styles.form_buttons}>
@@ -1074,6 +1118,18 @@ const Onboarding = (props: Props) => {
                         Cancel
                       </button>
                       <button
+                        style={
+                          validations.termsandcondtions
+                            ? {
+                                backgroundColor: "#6a80f0",
+                                transition: "ease-in-out 0.5s",
+                              }
+                            : {
+                                backgroundColor: "#F5F7FB",
+                                color: "#404040",
+                                cursor: "not-allowed",
+                              }
+                        }
                         type="submit"
                         onClick={(e) => {
                           e.preventDefault()
