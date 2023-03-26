@@ -1,11 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
-
 * {
   margin: 0%;
   padding: 0%;
   box-sizing: border-box;
-  font-family: "Open Sans", sans-serif;
-  color: #404d61;
+  transition: all 0.3s ease-in;
+  /* color: #404d61; */
 }
 
 .onboarding_page .form_container h1 {
@@ -74,11 +72,18 @@ form .inputs {
   margin: 10px 0px 20px 0px;
 }
 
+.error_message {
+  color: red;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
 form .inputs .input_container {
   width: 49%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 form .input_container .grouped_inputs {
@@ -91,15 +96,10 @@ form .input {
   width: 100%;
 }
 
-form .form_buttons {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
-}
-
-form .form_buttons button {
+form .form_buttons button,
+.button {
   padding: 10px 50px;
-  margin-top: 40px;
+  margin-top: 20px;
   margin-left: 20px;
   border: none;
   outline: none;
@@ -107,8 +107,26 @@ form .form_buttons button {
   cursor: pointer;
 }
 
-form .form_buttons button[type="submit"] {
+.add_college {
+  color: red;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+form .form_buttons button[type="submit"],
+.button {
   background-color: #5570f1;
+  color: white;
+}
+
+.button:hover {
+  background-color: #6c82f1;
   color: white;
 }
 
@@ -156,6 +174,8 @@ form .form_buttons button[type="reset"] {
   flex-direction: column;
   /* width: 100vw; */
   height: 100vh;
+  margin: 2rem;
+  text-align: center;
   background-color: #e8f3f7;
 }
 
@@ -172,6 +192,7 @@ form .form_buttons button[type="reset"] {
   flex-direction: column;
   /* width: 100vw; */
   height: 100vh;
+  margin: 2rem;
   background-color: #e8f3f7;
 }
 
@@ -223,11 +244,12 @@ form .form_buttons button[type="reset"] {
     margin-top: 10px;
     margin-left: 0px;
   }
+}
 
-  form .form_buttons {
-    justify-content: center;
-    flex-direction: column;
-  }
+.form_buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 /* Modal Styles */
@@ -240,8 +262,7 @@ form .form_buttons button[type="reset"] {
 }
 
 .modal_content {
-  /* background-color: #5570f1; */
-  background-color: #f15555;
+  background-color: #6a80f0;
   color: #ffffff;
   padding: 10px;
   border-radius: 5px;
@@ -250,4 +271,51 @@ form .form_buttons button[type="reset"] {
   overflow-y: auto;
 }
 
-/* Hide the modal by default */
+.checkbox_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.input_checkbox {
+  width: min-content;
+  margin: 0;
+  margin: 10px;
+  margin-top: 12px;
+  width: 1rem;
+  /* height: 1rem; */
+}
+
+.form_bottom {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.validation_error_message {
+  position: absolute;
+  padding: 10px 50px;
+  right: 30px;
+  top: 30px;
+  background-color: #5570f2;
+
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.tc_span {
+  color: #6a80f0;
+  text-decoration: underline;
+}
+
+.tc_text {
+  max-width: 20rem;
+}
+
+.validation_error_message p {
+  color: #ffffff;
+}
