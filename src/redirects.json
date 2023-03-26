@@ -381,5 +381,9 @@
   {
     "route": "/hackout",
     "redirect": "https://learn.mulearn.org/challenge/hackout"
+  },
+  {
+    "route": "/feedback",
+    "redirect": "https://airtable.com/shrQiUF32iKp2G6D3"
   }
 ]
