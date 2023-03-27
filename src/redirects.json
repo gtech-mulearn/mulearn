@@ -145,7 +145,7 @@
   },
   {
     "route": "/jd",
-    "redirect": "https://bubbly-weaver-662.notion.site/District-Coordinator-d2d7748ad0954332b45bea7734fcdfa4"
+    "redirect": "https://mulearn.notion.site/Program-Manager-6aba62240dd34826b37f44afb24d95f4"
   },
   {
     "route": "/howto",
@@ -376,10 +376,17 @@
     "route": "/marathon",
     "redirect": "https://learn.mulearn.org/challenge/marathon"
   },
-  { "route": "/mascot", 
-  "redirect": "https://airtable.com/shrTVGHerZK1ZYKv1" },
+  { "route": "/mascot", "redirect": "https://airtable.com/shrTVGHerZK1ZYKv1" },
   {
     "route": "/hackout",
     "redirect": "https://learn.mulearn.org/challenge/hackout"
+  },
+  {
+    "route": "/feedback",
+    "redirect": "https://airtable.com/shrQiUF32iKp2G6D3"
+  },
+  {
+    "route": "/gdsc-india-app",
+    "redirect": "https://goo.gle/gdsc-india-app"
   }
 ]
