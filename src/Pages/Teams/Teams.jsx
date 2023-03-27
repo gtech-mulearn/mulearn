@@ -19,6 +19,7 @@ const Teams = () => {
   let pillars = require("./2023/pillars.json")
   let mulearnhq = require("./2023/mulearnhq.json")
   let communityteam = require("./2023/communityteam.json")
+  let associates = require("./2023/associates.json")
 
   const handleFilterChange = (e) => {
     setTeamfilter(e.target.value)
@@ -63,6 +64,7 @@ const Teams = () => {
           <optgroup label="2023">
             <option value="execom">Execom</option>
             <option value="mulearnhq">µLearn HQ</option>
+            <option value="associates">Associates</option>
             <option value="mulearnpillar">µLearn Pillars</option>
             <option value="communityteam">Community Team</option>
           </optgroup>
@@ -106,6 +108,25 @@ const Teams = () => {
           </p>
           <div className={styles.members_list}>
             {mulearnhq.map((member) => {
+              return (
+                <TeamCard
+                  name={member.name}
+                  designation={member.position}
+                  image={member.image}
+                  linkedIn={member.linkedin ? member.linkedin : ""}
+                />
+              )
+            })}
+          </div>
+        </section>
+      )}
+
+      {(teamName === "all" || teamName === "associates") && (
+        <section id={styles.execom} className={styles.team_group}>
+          <p className={styles.team_title}>µLearn Associates</p>
+          <p className={styles.team_desc}></p>
+          <div className={styles.members_list}>
+            {associates.map((member) => {
               return (
                 <TeamCard
                   name={member.name}
