@@ -376,8 +376,7 @@
     "route": "/marathon",
     "redirect": "https://learn.mulearn.org/challenge/marathon"
   },
-  { "route": "/mascot", 
-  "redirect": "https://airtable.com/shrTVGHerZK1ZYKv1" },
+  { "route": "/mascot", "redirect": "https://airtable.com/shrTVGHerZK1ZYKv1" },
   {
     "route": "/hackout",
     "redirect": "https://learn.mulearn.org/challenge/hackout"
@@ -385,5 +384,9 @@
   {
     "route": "/feedback",
     "redirect": "https://airtable.com/shrQiUF32iKp2G6D3"
+  },
+  {
+    "route": "/gdsc-india-app",
+    "redirect": "http://mulearn.org/gdsc-india-app"
   }
 ]
