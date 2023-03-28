@@ -26,7 +26,7 @@ const MuAnnouncements = () => {
   return (
     <>
       <Navbar />
-      <section className="container mb-4 max-w-7xl mx-auto p-8 flex flex flex-col md:flex-row justify-between items-center ">
+      <section className="container mb-4 max-w-7xl mx-auto p-8 flex flex-col md:flex-row justify-between items-center ">
         <div className="max-w-lg md:max-w-2xl text-center md:text-left">
           <p
             className="font-noto-sans text-4xl font-semibold leading-snug lg:text-6xl lg:leading-snug"
