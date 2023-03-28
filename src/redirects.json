@@ -390,15 +390,15 @@
     "redirect": "https://goo.gle/gdsc-india-app"
   },
   {
-    "route": "/career-labs"
+    "route": "/career-labs",
     "redirect": "https://mulearn.org/careers"
   },
   {
-    "route": "/civil-registrations"
+    "route": "/civil-registrations",
     "redirect": "https://airtable.com/shrGm01rWNYWf9Fyv"
   },
   {
-    "route": "/superpowers"
+    "route": "/superpowers",
     "redirect": "https://meet.google.com/bmu-gywc-rft"
   }
 ]
