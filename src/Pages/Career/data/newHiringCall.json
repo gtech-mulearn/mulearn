@@ -13,6 +13,38 @@
       "lastdate": "1st April",
       "applylink": "https://airtable.com/shr6A31lS1RwjxvqD",
       "jdlink": "https://mulearn.org/jd"
+    },
+    {
+      "date": "03/29/2023",
+      "logo": "/assets/careers/companies/skillactz.png",
+      "role": "Java Developer",
+      "company": "SkillActz",
+      "title": "SkillActz Hiring Call",
+      "remuneration": "6 LPA (3.5 LPA during training period )",
+      "duration": "1 Year",
+      "location": "Trivandrum",
+      "lastdate": "31st March",
+      "applylink": "https://airtable.com/shrXbW9iNRqz4hRcx",
+      "extrafield": {
+        "name": "Eligibility",
+        "value": "BTech graduate, Good programming skills, Certification in J2ee, Spring, Hibernate, Year of Graduation - 2020, 2021, 2022, Willing to work from office"
+      }
+    },
+    {
+      "date": "03/29/2023",
+      "logo": "/assets/careers/companies/skillactz.png",
+      "role": "Software Developer",
+      "company": "SkillActz",
+      "title": "SkillActz Hiring Call",
+      "remuneration": "3 - 6 LPA",
+      "duration": "1 Year",
+      "location": "Trivandrum",
+      "lastdate": "31st March",
+      "applylink": "https://airtable.com/shrVGyRdfhK9J2kyf",
+      "extrafield": {
+        "name": "Eligibility",
+        "value": "BTech graduate, Done classroom courses in either Java, Python, .Net, RPA, Excellent programming skills, Year of Graduation - 2021, 2022 Willing to work from office"
+      }
     }
   ]
 }

@@ -49,10 +49,11 @@ function App() {
               element={<Redirection link={redirect.redirect} />}
             />
           ))}
+          <Route path="/careers" element={<Career />} />
           <Route path="*" element={<NotFound />} />
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
-            <Route path="/careers" element={<Career />} />
+
             <Route path="/blogs" element={<BlogLanding />} />
             <Route path="/blogs/:id" element={<BlogTemplate />} />
             <Route path="/buildforteam" element={<BuildForTeam />} />
