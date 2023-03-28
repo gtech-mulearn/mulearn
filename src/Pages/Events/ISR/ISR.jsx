@@ -53,7 +53,7 @@ const ISR = () => {
             <div className="text-2xl mb-2 font-medium font-poppins">
               Do you like to speak at ISR?
             </div>
-            <div className="text-lg font-poppins mb-4">
+            <div className="font-poppins text-base lg:text-lg mb-4">
               If you have a story to tell, a journey to share, or a passion to
               inspire others with, then ISR is the place for you. Click on the
               button below and be our guest.
