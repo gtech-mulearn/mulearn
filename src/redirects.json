@@ -388,5 +388,9 @@
   {
     "route": "/gdsc-india-app",
     "redirect": "https://goo.gle/gdsc-india-app"
+  },
+  {
+    "route": "/career-labs"
+    "redirect": "https://mulearn.org/careers"
   }
 ]
