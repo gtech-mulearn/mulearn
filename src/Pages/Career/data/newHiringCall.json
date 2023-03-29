@@ -1,9 +1,22 @@
 {
   "newcalls": [
     {
+      "date": "02/29/2023",
+      "logo": "/assets/careers/companies/yip.webp",
+      "role": ["District Coordinator"],
+      "company": "Yip",
+      "title": "Yip x µLearn",
+      "remuneration": "Based on Experience",
+      "vacancies": "01",
+      "location": "Malapuram HQ",
+      "lastdate": "3rd April",
+      "duration": "1 Year",
+      "jdlink": "https://mulearn.org/jd"
+    },
+    {
       "date": "03/28/2023",
       "logo": "/assets/careers/companies/yip.webp",
-      "role": "Program Manager",
+      "role": ["Program Manager"],
       "company": "Yip",
       "title": "Yip x µLearn",
       "remuneration": "INR 60K - 80K/Month",
