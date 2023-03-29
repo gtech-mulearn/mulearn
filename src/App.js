@@ -51,9 +51,10 @@ function App() {
           ))}
           <Route path="/careers" element={<Career />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/termsandconditions" element={<TermsAndCondition />} />
+          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
-
             <Route path="/blogs" element={<BlogLanding />} />
             <Route path="/blogs/:id" element={<BlogTemplate />} />
             <Route path="/buildforteam" element={<BuildForTeam />} />
@@ -95,8 +96,6 @@ function App() {
               path="/campus-logo-generator"
               element={<CampusLogoGenerator />}
             />
-            <Route path="/termsandconditions" element={<TermsAndCondition />} />
-            <Route path="/privacypolicy" element={<PrivacyPolicy />} />
           </Route>
         </Routes>
       </Router>
