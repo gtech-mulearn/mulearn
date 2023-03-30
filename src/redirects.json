@@ -408,5 +408,9 @@
   {
     "route": "/aiworkshop",
     "redirect": "https://airtable.com/shrKqKG4OhsAOZUlj"
+  },
+    {
+    "route": "/isropencall",
+    "redirect": "https://airtable.com/shrxGWVmFffYnM7oa"
   }
 ]
