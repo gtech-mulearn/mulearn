@@ -400,5 +400,9 @@
   {
     "route": "/superpowers",
     "redirect": "https://meet.google.com/bmu-gywc-rft"
+  },
+  {
+    "route": "/ama",
+    "redirect": "https://airtable.com/shr1fPUL853kXHubi"
   }
-]
+]}
