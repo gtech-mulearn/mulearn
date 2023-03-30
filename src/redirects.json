@@ -404,5 +404,9 @@
   {
     "route": "/ama",
     "redirect": "https://airtable.com/shr1fPUL853kXHubi"
+  },
+  {
+    "route": "/aiworkshop",
+    "redirect": "https://airtable.com/shrKqKG4OhsAOZUlj"
   }
 ]
