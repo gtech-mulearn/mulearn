@@ -47,6 +47,30 @@ const ISR = () => {
             </div>
           </div>
         </div>
+        <section className=" container px-10 sm:px-12 my-14 mx-auto max-w-7xl flex justify-evenly items-center align-middle w-full">
+          <img className="hidden sm:flex flex-1 object-contain max-w-48 max-h-48" src={fvimg} alt="join ISR" />
+          <div className="flex-1 flex flex-col items-start">
+            <div className="text-2xl mb-2 font-medium font-poppins">
+              Do you like to speak at ISR?
+            </div>
+            <div className="font-poppins text-base lg:text-lg mb-4">
+              If you have a story to tell, a journey to share, or a passion to
+              inspire others with, then ISR is the place for you. Click on the
+              button below and be our guest.
+              </div>
+            <div className="flex justify-center">
+              <a
+                href="https://forms.gle/9Z9Z9Z9Z9Z9Z9Z9Z9"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <button className="bg-muorange text-white font-medium font-poppins py-2 px-4 rounded-md">
+                  Yes, I'm In!
+                </button>
+              </a>
+              </div>
+          </div>
+        </section>
         <div className={styles.second_view_container}>
           <div className={styles.second_view}>
             <div className={styles.sv_texts}>
