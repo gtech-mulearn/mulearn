@@ -316,6 +316,10 @@
     "redirect": "https://chat.whatsapp.com/GCsHGgfbsU63sadN6m5uip"
   },
   {
+    "route": "/civil-ig-whatsapp",
+    "redirect": "https://chat.whatsapp.com/FkPJM1dLTfU2wYTe7xxg6k"
+  },
+  {
     "route": "/paperswelove-ig-whatsapp",
     "redirect": "https://chat.whatsapp.com/LDWmn6nCeOP81HnfRLff1y"
   },
