@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import styles from "./ISR.module.css";
+import React, { useState } from "react"
+import styles from "./ISR.module.css"
 
-import fvimg from "./assets/fvimg.gif";
-import Navbar from "../../../Components/Navbar/Navbar";
-import Footer from "../../../Components/Footer/Footer";
+import fvimg from "./assets/fvimg.gif"
+import Navbar from "../../../Components/Navbar/Navbar"
+import Footer from "../../../Components/Footer/Footer"
 
-import ISRData from "./data/ISRData";
+import ISRData from "./data/ISRData"
 
 const ISR = () => {
   const ReadMore = ({ children }) => {
-    const text = children;
-    const [isReadMore, setIsReadMore] = useState(true);
+    const text = children
+    const [isReadMore, setIsReadMore] = useState(true)
     const toggleReadMore = () => {
-      setIsReadMore(!isReadMore);
-    };
+      setIsReadMore(!isReadMore)
+    }
     return (
       <p className={styles.card_description}>
         {isReadMore ? text.slice(0, 150) : text}
@@ -21,8 +21,8 @@ const ISR = () => {
           {isReadMore ? "...read more" : " show less"}
         </span>
       </p>
-    );
-  };
+    )
+  }
 
   return (
     <>
@@ -47,6 +47,7 @@ const ISR = () => {
             </div>
           </div>
         </div>
+        {/*
         <section className=" container px-10 sm:px-12 my-14 mx-auto max-w-7xl flex justify-evenly items-center align-middle w-full">
           <img className="hidden sm:flex flex-1 object-contain max-w-48 max-h-48" src={fvimg} alt="join ISR" />
           <div className="flex-1 flex flex-col items-start">
@@ -70,7 +71,7 @@ const ISR = () => {
               </a>
               </div>
           </div>
-        </section>
+        </section> */}
         <div className={styles.second_view_container}>
           <div className={styles.second_view}>
             <div className={styles.sv_texts}>
@@ -104,7 +105,7 @@ const ISR = () => {
       </div>
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default ISR;
+export default ISR
