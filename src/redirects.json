@@ -404,5 +404,25 @@
   {
     "route": "/superpowers",
     "redirect": "https://meet.google.com/bmu-gywc-rft"
+  },
+  {
+    "route": "/ama",
+    "redirect": "https://airtable.com/shr1fPUL853kXHubi"
+  },
+  {
+    "route": "/aiworkshop",
+    "redirect": "https://airtable.com/shrKqKG4OhsAOZUlj"
+  },
+  {
+    "route": "/isr-open-call",
+    "redirect": "https://airtable.com/shrxGWVmFffYnM7oa"
+  },
+  {
+    "route": "/isropencall",
+    "redirect": "https://airtable.com/shrxGWVmFffYnM7oa"
+  },
+  {
+    "route": "/onboardingflow",
+    "redirect": "https://drive.google.com/file/d/1jZgX97l02xAhD3GIOCGT2ig9zzQ-6gkX/view?usp=sharing"
   }
 ]
