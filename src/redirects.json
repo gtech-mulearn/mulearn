@@ -380,7 +380,7 @@
     "route": "/marathon",
     "redirect": "https://learn.mulearn.org/challenge/marathon"
   },
-  { "route": "/mascot", "redirect": "https://airtable.com/shrTVGHerZK1ZYKv1" },
+  { "route": "/mascot-submission", "redirect": "https://docs.google.com/document/d/1Rt3nbnfD6SG1fvhu0qGk9GIV6JOVMxCGYTD_Wz4Qkjc/edit" },
   {
     "route": "/hackout",
     "redirect": "https://learn.mulearn.org/challenge/hackout"
@@ -423,6 +423,6 @@
   },
   {
     "route": "/onboardingflow",
-    "redirect": "https://drive.google.com/file/d/1jZgX97l02xAhD3GIOCGT2ig9zzQ-6gkX/view?usp=sharing"
+    "redirect": "https://drive.google.com/file/d/1BnDjG_Tux5FgDzS6bYLjPKErzk6TzIEh/view?usp=sharing"
   }
 ]
