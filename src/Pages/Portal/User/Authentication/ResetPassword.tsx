@@ -10,8 +10,6 @@ const ResetPassword = (props: Props) => {
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
 
-  
-
   return (
     <div className={styles.login_page}>
       <div className={styles.login_container}>

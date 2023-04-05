@@ -6,9 +6,9 @@ import Validate from "./Pages/Portal/User/Validate/Validate";
 import Onboarding from "./Pages/Portal/User/Onboarding/Onboarding";
 import Profile from "./Pages/Portal/User/Profile/Profile";
 import Success from "./Pages/Portal/User/Onboarding/Success";
-import Login from "./Pages/admin/Login";
-import ForgetPassword from "./Pages/admin/ForgetPassword";
-import ResetPassword from "./Pages/admin/ResetPassword";
+import Login from "./Pages/Portal/User/Authentication/Login";
+import ForgetPassword from "./Pages/Portal/User/Authentication/ForgetPassword";
+import ResetPassword from "./Pages/Portal/User/Authentication/ResetPassword";
 
 function App() {
 
@@ -21,9 +21,9 @@ function App() {
         element={<Success roleVerified={false} />}
       />
       <Route path="user/profile" element={<Profile />} />
-      <Route path="admin/login" element={<Login />} />
-      <Route path="admin/forget" element={<ForgetPassword />} />
-      <Route path="admin/reset" element={<ResetPassword />} />
+      <Route path="user/login" element={<Login />} />
+      <Route path="user/forget" element={<ForgetPassword />} />
+      <Route path="user/reset" element={<ResetPassword />} />
     </Routes>
   );
 }
