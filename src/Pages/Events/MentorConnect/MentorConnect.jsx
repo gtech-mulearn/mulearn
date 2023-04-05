@@ -7,17 +7,20 @@ import axios from "axios";
 
 const MentorConnect = () => {
   const [mentorConnectData, setMentorConnectData] = useState([]);
+  const [error,setError] =useState()
 
   useEffect(() => {
     axios
       .get(
-        "https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/mentorconnect"
+        "https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/mentorconnec"
       )
       .then((response) => {
         setMentorConnectData(response.data);
       })
       .catch((error) => {
         console.log(error);
+        setError("We are currently facing some difficulties in fetching the data at the moment, will be back soon.")
+        
       });
   }, []);
 
@@ -96,6 +99,20 @@ const MentorConnect = () => {
                   </div>
                 ))}
             </div>
+            {error && (
+                  <div>
+                    <h1 style={{
+                      width:"auto",
+                      display: 'flex',
+                      justifyContent:'center',
+                      alignContent:'center',
+                      fontSize:'1.5rem',
+                      fontWeight:'500',
+                      padding:"10px"
+                    }} >{error}</h1>
+                  </div>
+
+                )}
           </div>
         </div>
       </div>

@@ -12,11 +12,17 @@ import axios from "axios";
 const MuAnnouncements = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [announcementData,setannouncementData] = useState([])
+  const [error,setError] = useState()
   axios.get("https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/muannouncement").then(
     (response)=>{
       setannouncementData(response.data)
     }
   )
+  .catch((error)=>{
+    console.log(error)
+    setError("We are currently facing some difficulties in fetching the data at the moment, will be back soon.")
+
+  })
   const categories = [
     "All",
     "Event / Programs",
@@ -61,7 +67,7 @@ const MuAnnouncements = () => {
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
         />
-        <Grid data={announcementData} selectedCategory={selectedCategory} />
+        <Grid data={announcementData} error={error} selectedCategory={selectedCategory} />
       </section>
       <Footer />
     </>
