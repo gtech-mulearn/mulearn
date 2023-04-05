@@ -1,11 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./MentorConnect.module.css";
 
 import Navbar from "../../../Components/Navbar/Navbar";
 import Footer from "../../../Components/Footer/Footer";
+import axios from "axios";
 
 const MentorConnect = () => {
-  const data = require("./data/data.json");
+  const [mentorConnectData, setMentorConnectData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/mentorconnect"
+      )
+      .then((response) => {
+        setMentorConnectData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   const ReadMore = ({ children }) => {
     const text = children;
     const [isReadMore, setIsReadMore] = useState(true);
@@ -21,6 +36,7 @@ const MentorConnect = () => {
       </p>
     );
   };
+
   return (
     <>
       <Navbar />
@@ -51,7 +67,6 @@ const MentorConnect = () => {
           <div className={styles.second_view}>
             <div className={styles.sv_texts}>
               <p className={styles.sv_heading}>
-                {" "}
                 <span>Events </span> On Mentor Connect
               </p>
               <p className={styles.sv_tagline}>
@@ -60,11 +75,11 @@ const MentorConnect = () => {
               </p>
             </div>
             <div className={styles.sv_cards_container}>
-              {data
+              {mentorConnectData
                 .slice(0)
                 .reverse()
-                .map((event) => (
-                  <div className={styles.sv_cards}>
+                .map((event, index) => (
+                  <div className={styles.sv_cards} key={index}>
                     <div className={styles.card}>
                       <img
                         src={event.image}
@@ -74,7 +89,9 @@ const MentorConnect = () => {
                       <p className={styles.card_name}>{event.name}</p>
 
                       <ReadMore>{event.description}</ReadMore>
-                      <p className={styles.card_date}>Happened On:{event.date}</p>
+                      <p className={styles.card_date}>
+                        Happened On: {event.date}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -84,6 +101,7 @@ const MentorConnect = () => {
       </div>
       <Footer />
     </>
+
   );
 };
 

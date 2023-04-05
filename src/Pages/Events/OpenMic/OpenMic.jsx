@@ -3,9 +3,15 @@ import styles from "./OpenMic.module.css";
 
 import Navbar from "../../../Components/Navbar/Navbar";
 import Footer from "../../../Components/Footer/Footer";
+import axios from "axios";
 
 const OpenMic = () => {
-  const data = require("./data/data.json");
+  const [data,setData] = useState([])
+  axios.get("https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/openmic").then(
+  (response)=>{
+    setData(response.data)
+  })
+ 
   const ReadMore = ({ children }) => {
     const text = children;
     const [isReadMore, setIsReadMore] = useState(true);

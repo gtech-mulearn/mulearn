@@ -3,13 +3,20 @@ import React, { useState } from "react";
 import Navbar from "../../../Components/Navbar/Navbar";
 import Footer from "../../../Components/Footer/Footer";
 
-import announcementsData from "./Announcements.json";
+
 
 import Grid from "../../../Components/Grid/Grid";
 import CategorySwitch from "../../../Components/Grid/CategorySwitch";
+import axios from "axios";
 
 const MuAnnouncements = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [announcementData,setannouncementData] = useState([])
+  axios.get("https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/muannouncement").then(
+    (response)=>{
+      setannouncementData(response.data)
+    }
+  )
   const categories = [
     "All",
     "Event / Programs",
@@ -54,7 +61,7 @@ const MuAnnouncements = () => {
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
         />
-        <Grid data={announcementsData} selectedCategory={selectedCategory} />
+        <Grid data={announcementData} selectedCategory={selectedCategory} />
       </section>
       <Footer />
     </>

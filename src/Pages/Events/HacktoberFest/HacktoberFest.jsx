@@ -1,11 +1,21 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import Footer from "../../../Components/Footer/Footer";
 import Navbar from "../../../Components/Navbar/Navbar";
 import styles from "./HacktoberFest.module.css";
 
 const HacktoberFest = () => {
-  const profiles = require("./data/hactoberfestcomplete.json");
-  const py_profiles = require("./data/info.json");
+  const [profiles,setProfiles] = useState([])
+  const [pyProfiles,setpyProfiles] = useState([])
+  axios.get("https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/hacktoberfest").then(
+  (response)=>{
+    setProfiles(response.data)
+  })
+  axios.get("https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/info").then(
+  (response)=>{
+    setpyProfiles(response.data)
+  })
+
   return (
     <>
       <Navbar />
@@ -289,8 +299,8 @@ const HacktoberFest = () => {
                   2022.
                 </p>
                 <div className={styles.profile_container}>
-                  {py_profiles &&
-                    py_profiles.map((profile) => {
+                  {pyProfiles &&
+                    pyProfiles.map((profile) => {
                       return (
                         <div className={styles.py_profile}>
                           <img

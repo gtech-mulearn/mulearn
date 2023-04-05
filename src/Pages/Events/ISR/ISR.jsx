@@ -4,10 +4,19 @@ import styles from "./ISR.module.css"
 import fvimg from "./assets/fvimg.gif"
 import Navbar from "../../../Components/Navbar/Navbar"
 import Footer from "../../../Components/Footer/Footer"
+import axios from "axios"
 
-import ISRData from "./data/ISRData"
+
 
 const ISR = () => {
+  const [isrData,setisrData] = useState([])
+  axios.get("https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/isrcsv").then(
+    (response) =>{
+      setisrData(response.data)
+    }
+  )
+
+
   const ReadMore = ({ children }) => {
     const text = children
     const [isReadMore, setIsReadMore] = useState(true)
@@ -86,7 +95,7 @@ const ISR = () => {
               </p>
             </div>
             <div className={styles.sv_cards_container}>
-              {ISRData.slice(0)
+              {isrData.slice(0)
                 .reverse()
                 .map((isr) => (
                   <div className={styles.sv_cards}>
