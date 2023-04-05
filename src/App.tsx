@@ -11,7 +11,6 @@ import ForgetPassword from "./Pages/admin/ForgetPassword";
 import ResetPassword from "./Pages/admin/ResetPassword";
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <Routes>

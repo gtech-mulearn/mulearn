@@ -1,11 +1,16 @@
-import React, { useState } from "react";
-import Eye from "./assets/Eye";
-import styles from "./Login.module.css";
+import React, { useState } from "react"
+import Eye from "./assets/Eye"
+import styles from "./Login.module.css"
 
-type Props = {};
+type Props = {}
 
 const ResetPassword = (props: Props) => {
-  const [showOrHidePassword, setShowOrHidePassword] = useState("password");
+  const [showOrHidePassword, setShowOrHidePassword] = useState("password")
+  const [muid, setMuID] = useState("")
+  const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+
+  
 
   return (
     <div className={styles.login_page}>
@@ -18,22 +23,26 @@ const ResetPassword = (props: Props) => {
           <form>
             <input
               type="text"
-              placeholder="Your µID :  muhammedfaris-1@mulearn"
+              placeholder="Your µID"
               required
+              value={muid}
+              onChange={(e) => setMuID(e.target.value)}
             />
             <div className={styles.password_div}>
               <input
                 type={showOrHidePassword}
                 placeholder="Enter new password"
                 required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 className={styles.password_icon}
                 onClick={(e) => {
-                  e.preventDefault();
+                  e.preventDefault()
                   showOrHidePassword == "password"
                     ? setShowOrHidePassword("text")
-                    : setShowOrHidePassword("password");
+                    : setShowOrHidePassword("password")
                 }}
               >
                 <Eye />
@@ -44,14 +53,16 @@ const ResetPassword = (props: Props) => {
                 type={showOrHidePassword}
                 placeholder="Re-enter your new password"
                 required
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
               <button
                 className={styles.password_icon}
                 onClick={(e) => {
-                  e.preventDefault();
+                  e.preventDefault()
                   showOrHidePassword == "password"
                     ? setShowOrHidePassword("text")
-                    : setShowOrHidePassword("password");
+                    : setShowOrHidePassword("password")
                 }}
               >
                 <Eye />
@@ -64,7 +75,7 @@ const ResetPassword = (props: Props) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ResetPassword;
+export default ResetPassword
