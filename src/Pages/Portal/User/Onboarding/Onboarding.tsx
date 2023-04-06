@@ -7,6 +7,8 @@ import ReactSelect from "react-select"
 import Error from "./assets/Error"
 import Success from "./Success"
 
+//TODO: Handle Backend Errors
+
 const Onboarding = () => {
   const navigate = useNavigate()
   const [roleVerified, setRoleVerified] = useState(false)
