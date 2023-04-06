@@ -12,7 +12,7 @@ const Notification = () => {
     let notifications = require("../../Pages/Notifications/data/notifications.json");
     return (
         <>
-            <div className=" px-5 py-4 bg-white/90 text-sm">This Week</div>
+            <div className=" px-5 py-4 bg-white/90 text-orange-500/70 text-sm">This Week</div>
             <div className=" overflow-y-hidden">
                 {notifications &&
                     notifications.new.map((notification) => (

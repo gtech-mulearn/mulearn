@@ -12,7 +12,7 @@ const MentorConnect = () => {
   useEffect(() => {
     axios
       .get(
-        "https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/mentorconnec"
+        "https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/mentorconnect"
       )
       .then((response) => {
         setMentorConnectData(response.data);
