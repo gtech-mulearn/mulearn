@@ -5,12 +5,12 @@ import axios from "axios"
 type Props = {}
 
 const ForgetPassword = (props: Props) => {
-  const [email, setEmail] = useState("")
+  const [muid, setMuid] = useState("")
 
   const handleForgetPassword = () => {
     axios
-      .post(import.meta.env.VITE_BACKEND_URL + "/api/v1/user/forgot-password", {
-        muid: email,
+      .post(import.meta.env.VITE_BACKEND_URL + "/api/v1/user/forgot-password/", {
+        muid: muid,
       })
       .then((res) => {
         console.log(res.data)
@@ -26,22 +26,22 @@ const ForgetPassword = (props: Props) => {
         <div className={styles.login_form}>
           <h1>Forgot Password</h1>
           <p className={styles.p_welcome}>
-            Don't worry, enter your details to reset your password
+            Don't worry, enter your muid to reset your password
           </p>
           <form>
             <input
               type="text"
-              placeholder="Enter your email address"
+              placeholder="Enter your Muid"
               required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={muid}
+              onChange={(e) => setMuid(e.target.value)}
             />
             <br />
             <br />
             <button
               onClick={(e) => {
                 e.preventDefault()
-                if (email.length > 0) {
+                if (muid.length > 0) {
                   handleForgetPassword()
                 }
               }}
@@ -50,7 +50,7 @@ const ForgetPassword = (props: Props) => {
               Reset password
             </button>
             <p className={styles.p_welcome}>
-              We've just sent you an email with a reset link. Please check your
+              We've just sent you an muid with a reset link. Please check your
               mail inbox.
             </p>
           </form>

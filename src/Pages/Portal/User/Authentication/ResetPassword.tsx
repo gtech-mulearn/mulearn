@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
+import { useNavigate, useSearchParams } from "react-router-dom"
 import Eye from "./assets/Eye"
 import styles from "./Login.module.css"
 
@@ -9,6 +10,12 @@ const ResetPassword = (props: Props) => {
   const [muid, setMuID] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
+  const [searchParams] = useSearchParams()
+
+  useEffect(() => {
+    const token = searchParams.get("token") as string
+    console.log(token)
+  })
 
   return (
     <div className={styles.login_page}>
@@ -16,7 +23,7 @@ const ResetPassword = (props: Props) => {
         <div className={styles.login_form}>
           <h1>Reset Password</h1>
           <p className={styles.p_welcome}>
-            Choose a new, strong password to keep your information secure
+            Choose a new, strong password to keep your information securee
           </p>
           <form>
             <input
