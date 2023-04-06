@@ -4,10 +4,26 @@ import styles from "./ISR.module.css"
 import fvimg from "./assets/fvimg.gif"
 import Navbar from "../../../Components/Navbar/Navbar"
 import Footer from "../../../Components/Footer/Footer"
+import axios from "axios"
+import { padding } from "@mui/system"
 
-import ISRData from "./data/ISRData"
+
 
 const ISR = () => {
+  const [isrData,setisrData] = useState([])
+  const [error,setError] = useState()
+  axios.get("https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/isrcsv").then(
+    (response) =>{
+      setisrData(response.data)
+    }
+  )
+  .catch((error)=>{
+    console.log(error)
+    setError("We are currently facing some difficulties in fetching the data at the moment, will be back soon.")
+
+  })
+
+
   const ReadMore = ({ children }) => {
     const text = children
     const [isReadMore, setIsReadMore] = useState(true)
@@ -86,7 +102,7 @@ const ISR = () => {
               </p>
             </div>
             <div className={styles.sv_cards_container}>
-              {ISRData.slice(0)
+              {isrData.slice(0)
                 .reverse()
                 .map((isr) => (
                   <div className={styles.sv_cards}>
@@ -100,6 +116,19 @@ const ISR = () => {
                   </div>
                 ))}
             </div>
+            {error && (
+              <div>
+              <h1 style={{
+                width:"auto",
+                display: 'flex',
+                justifyContent:'center',
+                alignContent:'center',
+                fontSize:'1.5rem',
+                fontWeight:'500',
+                padding:"10px"
+              }} >{error}</h1>
+            </div>
+            )}
           </div>
         </div>
       </div>
