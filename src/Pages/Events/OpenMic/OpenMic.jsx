@@ -8,7 +8,7 @@ import axios from "axios";
 const OpenMic = () => {
   const [data,setData] = useState([])
   const [error,setError] = useState()
-  axios.get("https://pensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/openmic").then(
+  axios.get("https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/openmic").then(
   (response)=>{
     setData(response.data)
   })
