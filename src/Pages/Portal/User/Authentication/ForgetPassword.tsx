@@ -9,8 +9,8 @@ const ForgetPassword = (props: Props) => {
 
   const handleForgetPassword = () => {
     axios
-      .post(import.meta.env.VITE_BACKEND_URL + "api/v1/user/forgot-password", {
-        email: email,
+      .post(import.meta.env.VITE_BACKEND_URL + "/api/v1/user/forgot-password", {
+        muid: email,
       })
       .then((res) => {
         console.log(res.data)
