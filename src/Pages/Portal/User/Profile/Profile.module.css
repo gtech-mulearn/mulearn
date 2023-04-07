@@ -101,6 +101,7 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 5px;
+    justify-content: center;
 }
 
 .profile_page .profile_container .profile .profile_details_div .profile_details .profile_detail .area_of_intersts p {

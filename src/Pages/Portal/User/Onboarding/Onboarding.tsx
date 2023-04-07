@@ -10,6 +10,12 @@ import Success from "./Success";
 const Onboarding = (props: Props) => {
   const navigate = useNavigate();
   const queryParameters = new URLSearchParams(window.location.search);
+  // for hide and question container
+  const [display, setDisplay] = useState("flex");
+  const [display2, setDisplay2] = useState("flex");
+  const [opacity, setOpacity] = useState(1);
+  const [opacity2, setOpacity2] = useState(1);
+  const [secondQuesion, setSecondQuesion] = useState(false);
   //Getting the token from the URL
   const token = queryParameters.get("id");
   //State Variables for the From
@@ -642,7 +648,6 @@ const Onboarding = (props: Props) => {
         }
       });
   }, []);
-
   return (
     <>
       <div className={styles.onboarding_page}>
@@ -658,6 +663,122 @@ const Onboarding = (props: Props) => {
                   ""
                 )}
                 <div className={styles.form_container}>
+                  <div
+                    style={{ display: display, opacity: opacity }}
+                    className={styles.question_container}
+                  >
+                    <div className={styles.question_box}>
+                      <div className={styles.question}>
+                        <h3>What is your role ?</h3>
+                        <div className={styles.answers}>
+                          <button
+                            onClick={() => {
+                              roleAPI.map((role: any) => {
+                                if (role.title === "Student") {
+                                  setRole([{ id: role.id, title: role.title }]);
+                                }
+                              });
+                              setOpacity(0);
+                              setTimeout(() => {
+                                setDisplay("none");
+                              }, 1000);
+                            }}
+                          >
+                            I'm currently studying
+                          </button>
+                          <button
+                            onClick={() => {
+                              roleAPI.map((role: any) => {
+                                if (role.title === "Mentor") {
+                                  setRole([{ id: role.id, title: role.title }]);
+                                }
+                              });
+
+                              setOpacity(0);
+                              setSecondQuesion(true);
+                              setTimeout(() => {
+                                setDisplay("none");
+                              }, 1000);
+                            }}
+                          >
+                            I'm currently working professional
+                          </button>
+                          <button
+                            onClick={() => {
+                              roleAPI.map((role: any) => {
+                                if (role.title === "Enabler") {
+                                  setRole([{ id: role.id, title: role.title }]);
+                                }
+                              });
+
+                              setOpacity(0);
+                              setTimeout(() => {
+                                setDisplay("none");
+                              }, 1000);
+                            }}
+                          >
+                            I'm teaching in a institute
+                          </button>
+                          <button
+                            onClick={() => {
+                              setOpacity(0);
+                              setSecondQuesion(true);
+                              setTimeout(() => {
+                                setDisplay("none");
+                              }, 1000);
+                            }}
+                          >
+                            I'm a freelancer
+                          </button>
+                          <button>I'm not working, not studying</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/*2nd question if the user is working prof. or freelancer  */}
+                  {secondQuesion ? (
+                    <div
+                      style={{ display: display2, opacity: opacity2 }}
+                      className={styles.question_container}
+                    >
+                      <div className={styles.question_box}>
+                        <div className={styles.question}>
+                          <h3>Did you like to become a Mentor ?</h3>
+                          <div className={styles.answers}>
+                            <button
+                              onClick={() => {
+                                setRole([{ id: "", title: "" }]);
+                                setOpacity2(0);
+                                setTimeout(() => {
+                                  setDisplay2("none");
+                                }, 1000);
+                              }}
+                            >
+                              No
+                            </button>
+                            <button
+                              onClick={() => {
+                                roleAPI.map((role: any) => {
+                                  if (role.title === "Mentor") {
+                                    setRole([
+                                      { id: role.id, title: role.title },
+                                    ]);
+                                  }
+                                });
+
+                                setOpacity2(0);
+                                setTimeout(() => {
+                                  setDisplay2("none");
+                                }, 1000);
+                              }}
+                            >
+                              Yes
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
                   <h1>User Information</h1>
                   <p>
                     Please enter all the required information in the fields
@@ -798,7 +919,22 @@ const Onboarding = (props: Props) => {
                           </div>
                         </div>
                         <div className={styles.input_container}>
-                          <label htmlFor="">
+                          <div
+                            style={{ width: "100%" }}
+                            className={styles.input_container}
+                          >
+                            <label htmlFor="">Community</label>
+                            <input
+                              id="community_field"
+                              type="text"
+                              placeholder="Community"
+                              className={styles.input}
+                              onChange={(e) => {
+                                setDob(e.target.value);
+                              }}
+                            />
+                          </div>
+                          {/*  <label htmlFor="">
                             Role <span className={styles.required}>*</span>
                           </label>
                           <select
@@ -846,7 +982,13 @@ const Onboarding = (props: Props) => {
                             {roleAPI.map((role, i) => {
                               return (
                                 <option key={i} value={role.id}>
-                                  {role.title}
+                                  {role.title == "Student"
+                                    ? "Are u a currently studying?"
+                                    : role.title == "Enabler"
+                                    ? "Are u a currently working professional?"
+                                    : role.title == "Mentor"
+                                    ? "Are u teaching in a institute?"
+                                    : null}
                                 </option>
                               );
                             })}
@@ -855,7 +997,7 @@ const Onboarding = (props: Props) => {
                             <p className={styles.error_message}>
                               This field is required
                             </p>
-                          )}
+                          )} */}
                         </div>
                       </div>
                       <div className={styles.inputs}>

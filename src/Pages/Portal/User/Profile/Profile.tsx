@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Profile.module.css";
 import Tasks from "./components/Tasks";
 import Karma from "./components/Karma";
@@ -8,16 +8,54 @@ import Instagram from "./assets/svgs/Instagram";
 import Discord from "./assets/svgs/Discord";
 import Home from "./assets/svgs/Home";
 import Navbar from "./components/Navbar";
+import axios from "axios";
 
 type Props = {};
 
 const Profile = (props: Props) => {
   const width = window.innerWidth;
-  console.log(width);
+  const queryParameters = new URLSearchParams(window.location.search);
+  const muid = queryParameters.get("muid");
+  // console.log(width);
+  const [name, setName] = useState("");
+  const [karma, setKarma] = useState(0);
+  const [roles, setRoles] = useState();
+  const [tasks, setTasks] = useState();
+  const [interstGroup, setInterstGroup] = useState([]);
+  const [organization, setOrganization] = useState([]);
+
+  useEffect(() => {
+    const options = {
+      method: "POST",
+      url:
+        import.meta.env.VITE_BACKEND_URL +
+        "/api/v1/portal/profile/user/" +
+        muid,
+    };
+
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data.response.interest_groups);
+        setName(
+          response.data.response.first_name +
+            " " +
+            response.data.response.last_name
+        );
+        setKarma(response.data.response.karma);
+        setRoles(response.data.response.roles);
+        setTasks(response.data.response.tasks);
+        setInterstGroup(response.data.response.interest_groups);
+        setOrganization(response.data.response.organization[0].name);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }, []);
 
   return (
     <>
-      <Navbar />
+      <Navbar name={name} />
       <div className={styles.profile_page}>
         <div className={styles.profile_container}>
           <div>
@@ -31,12 +69,16 @@ const Profile = (props: Props) => {
                 </div>
                 <div className={styles.profile_details}>
                   <div className={styles.profile_detail}>
-                    <h1>James Ronald</h1>
-                    <p>College Of Engineering Something</p>
+                    <h1>{name}</h1>
+                    <p>{organization}</p>
                     <div className={styles.area_of_intersts}>
-                      <p>UI Designing</p>
-                      <p>Blockchain</p>
-                      <p>Intresteed fields</p>
+                      {interstGroup.map((item) => {
+                        return (
+                          <div className={styles.area_of_interest}>
+                            <p>{item}</p>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                   <div className={styles.profile_social}>
@@ -53,14 +95,14 @@ const Profile = (props: Props) => {
                 </div>
               </div>
             </div>
-            {width < 900 ? <Karma /> : null}
+            {width < 900 ? <Karma karma={karma} /> : null}
 
-            <Tasks />
+            <Tasks tasks={tasks} />
           </div>
           <div>
-            {width > 900 ? <Karma /> : null}
+            {width > 900 ? <Karma karma={karma} /> : null}
             <Recent />
-            <Roles />
+            <Roles roles={roles} />
           </div>
         </div>
       </div>
