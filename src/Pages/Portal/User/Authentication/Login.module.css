@@ -3,6 +3,14 @@
   min-height: 100vh;
 }
 
+.login_page{
+  transition: opacity 0.5s ease-in-out;
+}
+
+.login_page .hidden {
+  opacity: 0;
+}
+
 .login_container {
   min-height: 100vh;
   display: flex;

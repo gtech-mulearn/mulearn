@@ -1,19 +1,18 @@
 import React, { useState } from "react"
 import styles from "./Login.module.css"
+import { useNavigate } from "react-router-dom"
 import axios from "axios"
+import { useToast } from "@chakra-ui/react"
 
 type Props = {}
 
-const ForgetPassword = (props: Props) => {
+const ForgotPassword = (props: Props) => {
   const [muid, setMuid] = useState("")
-  const [apiTrigger, setAPITrigger] = useState(false)
-  const [hasError, setHasError] = useState({
-    error: false,
-    statusCode: 0,
-    message: "",
-  })
 
-  const handleForgetPassword = () => {
+  const navigate = useNavigate()
+  const toast = useToast()
+
+  const handleForgotPassword = () => {
     axios
       .post(
         import.meta.env.VITE_BACKEND_URL + "/api/v1/user/forgot-password/",
@@ -23,36 +22,30 @@ const ForgetPassword = (props: Props) => {
       )
       .then((res) => {
         console.log(res.data)
-        setAPITrigger(true)
-      })
-      .catch((error) => {
-        console.log(error)
-        setHasError({
-          error: error.response.data.hasError,
-          statusCode: error.response.data.statusCode,
-          message:
-            error.response.data.message.length > 0
-              ? error.response.data.message
-              : "Some Error Has Occured",
+        toast({
+          title: "Token Mail Sent",
+          description: "Kindly check your mail for the reset password link",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
         })
 
         setTimeout(() => {
-          setHasError({
-            error: false,
-            statusCode: 0,
-            message: "",
-          })
-        }, 2000)
+          navigate("/user/login")
+        }, 5000)
+      })
+      .catch((error) => {
+        toast({
+          title: error.response?.data?.message?.general[0],
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        })
       })
   }
 
   return (
     <div className={styles.login_page}>
-      {hasError.error && (
-        <div className={styles.validation_error_message}>
-          <p>{hasError.message}</p>
-        </div>
-      )}
       <div className={styles.login_container}>
         <div className={styles.login_form}>
           <h1>Forgot Password</h1>
@@ -73,23 +66,17 @@ const ForgetPassword = (props: Props) => {
               onClick={(e) => {
                 e.preventDefault()
                 if (muid.length > 0) {
-                  handleForgetPassword()
+                  handleForgotPassword()
                 }
               }}
               type="submit"
             >
               Reset password
             </button>
-            {apiTrigger && (
-              <p className={styles.p_welcome}>
-                We've just sent you an muid with a reset link. Please check your
-                mail inbox.
-              </p>
-            )}
           </form>
         </div>
       </div>
     </div>
   )
 }
-export default ForgetPassword
+export default ForgotPassword

@@ -7,7 +7,7 @@ import Onboarding from "./Pages/Portal/User/Onboarding/Onboarding"
 import Profile from "./Pages/Portal/User/Profile/Profile"
 import Success from "./Pages/Portal/User/Onboarding/Success"
 import Login from "./Pages/Portal/User/Authentication/Login"
-import ForgetPassword from "./Pages/Portal/User/Authentication/ForgetPassword"
+import ForgotPassword from "./Pages/Portal/User/Authentication/ForgotPassword"
 import ResetPassword from "./Pages/Portal/User/Authentication/ResetPassword"
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
       />
       <Route path="user/profile" element={<Profile />} />
       <Route path="user/login" element={<Login />} />
-      <Route path="user/forget-password" element={<ForgetPassword />} />
+      <Route path="user/forgot-password" element={<ForgotPassword />} />
       <Route path="user/reset-password" element={<ResetPassword />} />
     </Routes>
   )
