@@ -7,8 +7,11 @@ import ReactSelect from "react-select";
 import Error from "./assets/Error";
 import Success from "./Success";
 
-const Onboarding = (props: Props) => {
+//TODO: Handle Backend Errors
+
+const Onboarding = () => {
   const navigate = useNavigate();
+  const [roleVerified, setRoleVerified] = useState(false);
   const queryParameters = new URLSearchParams(window.location.search);
   // for hide and question container
   const [display, setDisplay] = useState("flex");
@@ -43,8 +46,6 @@ const Onboarding = (props: Props) => {
     error: false,
     message: "",
   });
-
-  const [roleVerified, setRoleVerified] = useState(false);
 
   //State Array for storing the Area of Interests
   const [areaOfInterest, setAreaOfInterest] = useState<string[]>([]);
@@ -488,7 +489,8 @@ const Onboarding = (props: Props) => {
     const token_check = {
       method: "GET",
       url:
-        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/jwt/validate",
+        import.meta.env.VITE_BACKEND_URL +
+        "/api/v1/user/register/jwt/validate/",
       headers: {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
@@ -509,7 +511,8 @@ const Onboarding = (props: Props) => {
     const college = {
       method: "GET",
       url:
-        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/college/list",
+        import.meta.env.VITE_BACKEND_URL +
+        "/api/v1/user/register/college/list/",
       headers: {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
@@ -545,7 +548,8 @@ const Onboarding = (props: Props) => {
     const company = {
       method: "GET",
       url:
-        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/company/list",
+        import.meta.env.VITE_BACKEND_URL +
+        "/api/v1/user/register/company/list/",
       headers: {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
@@ -570,7 +574,8 @@ const Onboarding = (props: Props) => {
     // request for role list
     const role = {
       method: "GET",
-      url: import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/role/list",
+      url:
+        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/role/list/",
       headers: {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
@@ -599,7 +604,7 @@ const Onboarding = (props: Props) => {
       method: "GET",
       url:
         import.meta.env.VITE_BACKEND_URL +
-        "/api/v1/user/register/areaofinterst/list",
+        "/api/v1/user/register/area-of-interest/list/",
       headers: {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
@@ -626,7 +631,7 @@ const Onboarding = (props: Props) => {
       method: "GET",
       url:
         import.meta.env.VITE_BACKEND_URL +
-        "/api/v1/user/register/comunity/list",
+        "/api/v1/user/register/community/list/",
       headers: {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
@@ -941,10 +946,10 @@ const Onboarding = (props: Props) => {
                             id="role_field"
                             name=""
                             onChange={(e) => {
-                              setYog("");
-                              setDept("");
-                              setMentorRole("");
-                              setOrgnization("");
+                              setYog("")
+                              setDept("")
+                              setMentorRole("")
+                              setOrgnization("")
                               setValidations((prevState) => ({
                                 ...prevState,
                                 student: {
@@ -964,7 +969,7 @@ const Onboarding = (props: Props) => {
                                   mentorRole: false,
                                   type: "",
                                 },
-                              }));
+                              }))
 
                               roleAPI.map((role) => {
                                 e.target.value == ""
@@ -973,8 +978,8 @@ const Onboarding = (props: Props) => {
                                   ? setRole([
                                       { id: e.target.value, title: role.title },
                                     ])
-                                  : null;
-                              });
+                                  : null
+                              })
                             }}
                             required
                           >
@@ -990,7 +995,7 @@ const Onboarding = (props: Props) => {
                                     ? "Are u teaching in a institute?"
                                     : null}
                                 </option>
-                              );
+                              )
                             })}
                           </select>
                           {submitTrigger && !validations.role && (

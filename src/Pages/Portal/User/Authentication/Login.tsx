@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import Eye from "./assets/Eye"
 import styles from "./Login.module.css"
 import axios from "axios"
+import { useToast } from "@chakra-ui/react"
 
 type Props = {}
 
@@ -9,6 +10,7 @@ const Login = (props: Props) => {
   const [showOrHidePassword, setShowOrHidePassword] = useState("password")
   const [muid, setMuID] = useState("")
   const [password, setPassword] = useState("")
+  const toast = useToast()
 
   const handleLogin = () => {
     axios
@@ -24,10 +26,23 @@ const Login = (props: Props) => {
         if (res.data.hasError == false) {
           localStorage.setItem("access_token", res.data.response.access_token)
           localStorage.setItem("refresh_token", res.data.response.refresh_token)
+          toast({
+            title: "Login Successful",
+            description: "You have been logged in successfully",
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+          })
         }
       })
-      .catch((err) => {
-        console.log(err)
+      .catch((error) => {
+        console.log(error)
+        toast({
+          title: error.response.data.message.general[0],
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        })
       })
   }
 
@@ -69,7 +84,7 @@ const Login = (props: Props) => {
               </button>
             </div>
             <p style={{ textAlign: "left" }}>
-              <a href="forget">
+              <a href="forgot-password">
                 Forgot your <b>password?</b>
               </a>
             </p>
@@ -84,11 +99,6 @@ const Login = (props: Props) => {
             >
               Sign in
             </button>
-            <p>
-              <a href="/">
-                Don’t have an account ? <b>Join now</b>
-              </a>
-            </p>
           </form>
         </div>
       </div>
