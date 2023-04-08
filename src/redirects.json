@@ -425,6 +425,9 @@
     "route": "/isropencall",
     "redirect": "https://airtable.com/shrxGWVmFffYnM7oa"
   },
+  {"route":"/hackathon-registration"
+   "redirect":"https://airtable.com/shrp0oGwAS5jfIo4K"
+  },
   {
     "route": "/onboardingflow",
     "redirect": "https://drive.google.com/file/d/1BnDjG_Tux5FgDzS6bYLjPKErzk6TzIEh/view?usp=sharing"
