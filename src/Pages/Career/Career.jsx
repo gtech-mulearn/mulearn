@@ -35,11 +35,11 @@ const Career = () => {
                 <span className={styles.count_text}>Hired Candidates</span>
               </p>
               <p className={styles.hiring_count}>
-                <span className={styles.count}>20+</span>
+                <span className={styles.count}>100+</span>
                 <span className={styles.count_text}>Companies</span>
               </p>
               <p className={styles.hiring_count}>
-                <span className={styles.count}>30+</span>
+                <span className={styles.count}>60+</span>
                 <span className={styles.count_text}>Hiring Calls</span>
               </p>
             </div>
