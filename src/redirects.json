@@ -426,6 +426,10 @@
     "redirect": "https://airtable.com/shrxGWVmFffYnM7oa"
   },
   {
+    "route": "/basic-survey",
+    "redirect": "https://airtable.com/shrOOVx94tftNGSWr"
+  },
+  {
     "route": "/onboardingflow",
     "redirect": "https://drive.google.com/file/d/1BnDjG_Tux5FgDzS6bYLjPKErzk6TzIEh/view?usp=sharing"
   }
