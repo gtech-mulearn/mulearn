@@ -425,6 +425,9 @@
     "route": "/isropencall",
     "redirect": "https://airtable.com/shrxGWVmFffYnM7oa"
   },
+  {"route": "/campus-orientation",
+    "redirect": "https://drive.google.com/drive/folders/1wDKiLtyb-T7rGbjVJy0pJ1-Ppq76d1fn?usp=share_link"
+  },
   {
     "route": "/onboardingflow",
     "redirect": "https://drive.google.com/file/d/1BnDjG_Tux5FgDzS6bYLjPKErzk6TzIEh/view?usp=sharing"
