@@ -83,48 +83,26 @@
   margin-top: -90px;
 }
 
-.profile_page
-  .profile_container
-  .profile
-  .profile_details_div
-  .profile_details {
+.profile_page .profile_container .profile .profile_details_div .profile_details {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
 }
 
-.profile_page
-  .profile_container
-  .profile
-  .profile_details_div
-  .profile_details
-  .profile_detail
-  h1 {
+.profile_page .profile_container .profile .profile_details_div .profile_details .profile_detail h1 {
   font-size: 20px;
   font-weight: 700;
 }
 
-.profile_page
-  .profile_container
-  .profile
-  .profile_details_div
-  .profile_details
-  .profile_detail
-  .area_of_intersts {
+.profile_page .profile_container .profile .profile_details_div .profile_details .profile_detail .area_of_intersts {
   display: flex;
   flex-wrap: wrap;
   margin-top: 5px;
+  justify-content: center;
 }
 
-.profile_page
-  .profile_container
-  .profile
-  .profile_details_div
-  .profile_details
-  .profile_detail
-  .area_of_intersts
-  p {
+.profile_page .profile_container .profile .profile_details_div .profile_details .profile_detail .area_of_intersts p {
   padding: 2px 8px;
   font-size: 12px;
   color: #2791b5;
@@ -136,24 +114,13 @@
   cursor: pointer;
 }
 
-.profile_page
-  .profile_container
-  .profile
-  .profile_details_div
-  .profile_details
-  .profile_social {
+.profile_page .profile_container .profile .profile_details_div .profile_details .profile_social {
   display: flex;
   width: 200px;
   justify-content: space-around;
 }
 
-.profile_page
-  .profile_container
-  .profile
-  .profile_details_div
-  .profile_details
-  .profile_social
-  p {
+.profile_page .profile_container .profile .profile_details_div .profile_details .profile_social p {
   background: #f2f8fa;
   padding: 10px;
   border-radius: 100px;
@@ -321,6 +288,7 @@
 }
 
 @media screen and (max-width: 1100px) {
+
   .profile_page .profile_container .profile,
   .tasks {
     min-width: 550px;
@@ -328,6 +296,7 @@
 }
 
 @media screen and (max-width: 980px) {
+
   .profile_page .profile_container .profile,
   .tasks {
     min-width: 450px;
@@ -374,11 +343,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .profile_page
-    .profile_container
-    .profile
-    .profile_details_div
-    .profile_details {
+  .profile_page .profile_container .profile .profile_details_div .profile_details {
     flex-direction: column;
   }
 
@@ -390,12 +355,7 @@
     margin: -90px auto auto;
   }
 
-  .profile_page
-    .profile_container
-    .profile
-    .profile_details_div
-    .profile_details
-    .profile_social {
+  .profile_page .profile_container .profile .profile_details_div .profile_details .profile_social {
     margin-top: 20px;
   }
 

@@ -3,7 +3,7 @@ import styles from "./../Profile.module.css";
 
 type Props = {};
 
-const Karma = (props: Props) => {
+const Karma = ({ karma = 0 }) => {
   return (
     <div className={styles.karma}>
       <p className={styles.bg_img}></p>
@@ -13,7 +13,7 @@ const Karma = (props: Props) => {
         </div>
         <div>
           <p>Karma Point</p>
-          <p className={styles.karma_point}>10208</p>
+          <p className={styles.karma_point}>{karma}</p>
         </div>
       </div>
     </div>

@@ -1,71 +1,76 @@
-import React, { useEffect, useState } from "react"
-import styles from "./Onboarding.module.css"
-type Props = {}
-import axios from "axios"
-import { useNavigate } from "react-router-dom"
-import ReactSelect from "react-select"
-import Error from "./assets/Error"
-import Success from "./Success"
+import React, { useEffect, useState } from "react";
+import styles from "./Onboarding.module.css";
+type Props = {};
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import ReactSelect from "react-select";
+import Error from "./assets/Error";
+import Success from "./Success";
 
-//TODO: Handle Backend Errors
-
-const Onboarding = () => {
-  const navigate = useNavigate()
-  const [roleVerified, setRoleVerified] = useState(false)
-  const queryParameters = new URLSearchParams(window.location.search)
+const Onboarding = (props: Props) => {
+  const navigate = useNavigate();
+  const queryParameters = new URLSearchParams(window.location.search);
+  // for hide and question container
+  const [display, setDisplay] = useState("flex");
+  const [display2, setDisplay2] = useState("flex");
+  const [opacity, setOpacity] = useState(1);
+  const [opacity2, setOpacity2] = useState(1);
+  const [secondQuesion, setSecondQuesion] = useState(false);
   //Getting the token from the URL
-  const token = queryParameters.get("id")
+  const token = queryParameters.get("id");
   //State Variables for the From
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [email, setEmail] = useState("")
-  const [phone, setPhone] = useState(0)
-  const [gender, setGender] = useState("")
-  const [dob, setDob] = useState("")
-  const [role, setRole] = useState([{ id: "", title: "" }])
-  const [tcChecked, setTcChecked] = useState(false)
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState(0);
+  const [gender, setGender] = useState("");
+  const [dob, setDob] = useState("");
+  const [role, setRole] = useState([{ id: "", title: "" }]);
+  const [tcChecked, setTcChecked] = useState(false);
 
-  const [dept, setDept] = useState("")
-  const [yog, setYog] = useState("")
-  const [mentorRole, setMentorRole] = useState("")
+  const [dept, setDept] = useState("");
+  const [yog, setYog] = useState("");
+  const [mentorRole, setMentorRole] = useState("");
   //State Variable for the Form Submission Validation
-  const [formSuccess, setFormSuccess] = useState(false)
+  const [formSuccess, setFormSuccess] = useState(false);
   const [hasError, setHasError] = useState({
     error: false,
     statusCode: 0,
     message: "",
-  })
+  });
 
   const [hasValidationError, setHasValidationError] = useState({
     error: false,
     message: "",
-  })
+  });
+
+  const [roleVerified, setRoleVerified] = useState(false);
 
   //State Array for storing the Area of Interests
-  const [areaOfInterest, setAreaOfInterest] = useState<string[]>([])
+  const [areaOfInterest, setAreaOfInterest] = useState<string[]>([]);
   //State Array for Storing the Organization(Company, Community, College)
-  const [orgnization, setOrgnization] = useState("")
+  const [orgnization, setOrgnization] = useState("");
 
   //State Array for storing the College Options
-  const [collegeAPI, setCollegeAPI] = useState([{ id: "", title: "" }])
+  const [collegeAPI, setCollegeAPI] = useState([{ id: "", title: "" }]);
   //State Array for storing the College Options(Search)
   const [collegeOptions, setCollegeOptions] = useState([
     { value: "", label: "" },
-  ])
+  ]);
 
   //State Array for storing the Department Options
-  const [departmentAPI, setDepartmentAPI] = useState([{ id: "", title: "" }])
+  const [departmentAPI, setDepartmentAPI] = useState([{ id: "", title: "" }]);
   //State Array for storing the Company Options
-  const [companyAPI, setCompanyAPI] = useState([{ id: "", title: "" }])
+  const [companyAPI, setCompanyAPI] = useState([{ id: "", title: "" }]);
   //State Array for storing the Community Options
-  const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }])
+  const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }]);
   //State Array for storing the Mentor Role Options
-  const [roleAPI, setRoleAPI] = useState([{ id: "", title: "" }])
+  const [roleAPI, setRoleAPI] = useState([{ id: "", title: "" }]);
   //State Array for storing the Area of Interest Options
-  const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }])
+  const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }]);
 
   //State Varaibles
-  const [submitTrigger, setSubmitTrigger] = useState(false)
+  const [submitTrigger, setSubmitTrigger] = useState(false);
   const [validations, setValidations] = useState({
     firstName: false,
     email: false,
@@ -87,26 +92,26 @@ const Onboarding = () => {
     },
     areaOfInterest: false,
     termsandcondtions: false,
-  })
+  });
 
   useEffect(() => {
     //Getting the Input Field Elements
     const getInputElem = (id: string): HTMLInputElement =>
-      document.getElementById(id) as HTMLInputElement
+      document.getElementById(id) as HTMLInputElement;
 
-    const first_name = getInputElem("first_name")
-    const email_field = getInputElem("email_field")
-    const phone_field = getInputElem("phone_field")
-    const role_field = getInputElem("role_field")
-    const dept_field = getInputElem("dept_field")
-    const yog_field = getInputElem("yog_field")
-    const mentortype_filed = getInputElem("mentortype_filed")
-    const company_field = getInputElem("company_field")
-    const community_field = getInputElem("community_field")
+    const first_name = getInputElem("first_name");
+    const email_field = getInputElem("email_field");
+    const phone_field = getInputElem("phone_field");
+    const role_field = getInputElem("role_field");
+    const dept_field = getInputElem("dept_field");
+    const yog_field = getInputElem("yog_field");
+    const mentortype_filed = getInputElem("mentortype_filed");
+    const company_field = getInputElem("company_field");
+    const community_field = getInputElem("community_field");
 
     const setBorderStyle = (element: HTMLInputElement, condition: boolean) => {
       if (submitTrigger) {
-        element.style.border = condition ? "1px solid red" : "none"
+        element.style.border = condition ? "1px solid red" : "none";
       } else {
         const inputs = [
           first_name,
@@ -118,90 +123,90 @@ const Onboarding = () => {
           mentortype_filed,
           company_field,
           community_field,
-        ]
+        ];
 
         inputs.forEach((input) => {
-          input && (input.style.border = "none")
-        })
+          input && (input.style.border = "none");
+        });
       }
-    }
+    };
 
     if (firstName === "") {
-      setBorderStyle(first_name, true)
+      setBorderStyle(first_name, true);
       setValidations((prevValidations) => ({
         ...prevValidations,
         firstName: false,
-      }))
+      }));
     } else {
-      setBorderStyle(first_name, false)
+      setBorderStyle(first_name, false);
       setValidations((prevValidations) => ({
         ...prevValidations,
         firstName: true,
-      }))
+      }));
     }
 
     if (email === "") {
-      setBorderStyle(email_field, true)
+      setBorderStyle(email_field, true);
       setValidations((prevValidations) => ({
         ...prevValidations,
         email: false,
-      }))
+      }));
     } else {
-      setBorderStyle(email_field, false)
+      setBorderStyle(email_field, false);
       setValidations((prevValidations) => ({
         ...prevValidations,
         email: true,
-      }))
+      }));
     }
 
     if (phone === 0 && phone.toString().length !== 10) {
-      setBorderStyle(phone_field, true)
+      setBorderStyle(phone_field, true);
       setValidations((prevValidations) => ({
         ...prevValidations,
         phone: false,
-      }))
+      }));
     } else {
-      setBorderStyle(phone_field, false)
+      setBorderStyle(phone_field, false);
       setValidations((prevValidations) => ({
         ...prevValidations,
         phone: true,
-      }))
+      }));
     }
 
     //Validation for the Role Field(Mentory, Student or E)
     if (role[0].id === "") {
-      setBorderStyle(role_field, true)
+      setBorderStyle(role_field, true);
       setValidations((prevValidations) => ({
         ...prevValidations,
         role: false,
-      }))
+      }));
     } else {
-      setBorderStyle(role_field, false)
+      setBorderStyle(role_field, false);
       setValidations((prevValidations) => ({
         ...prevValidations,
         role: true,
-      }))
+      }));
 
       //Validation for the Mentor Role Field(Company, Community, College)
       if (["Mentor"].includes(role[0].title)) {
         if (mentorRole === "") {
-          setBorderStyle(mentortype_filed, true)
+          setBorderStyle(mentortype_filed, true);
           setValidations((prevValidations) => ({
             ...prevValidations,
             mentor: {
               ...prevValidations.mentor,
               mentorRole: false,
             },
-          }))
+          }));
         } else {
-          setBorderStyle(mentortype_filed, false)
+          setBorderStyle(mentortype_filed, false);
           setValidations((prevValidations) => ({
             ...prevValidations,
             mentor: {
               ...prevValidations.mentor,
               mentorRole: true,
             },
-          }))
+          }));
         }
       }
 
@@ -210,44 +215,44 @@ const Onboarding = () => {
         //Validation for the Mentor Role Field(Company)
         if (mentorRole === "Company") {
           if (orgnization === "") {
-            setBorderStyle(company_field, true)
+            setBorderStyle(company_field, true);
             setValidations((prevValidations) => ({
               ...prevValidations,
               mentor: {
                 ...prevValidations.mentor,
                 organization: false,
               },
-            }))
+            }));
           } else {
-            setBorderStyle(company_field, false)
+            setBorderStyle(company_field, false);
             setValidations((prevValidations) => ({
               ...prevValidations,
               mentor: {
                 ...prevValidations.mentor,
                 organization: true,
               },
-            }))
+            }));
           }
           //Validation for the Mentor Role Field(Community)
         } else if (mentorRole === "Community Partner") {
           if (orgnization === "") {
-            setBorderStyle(community_field, true)
+            setBorderStyle(community_field, true);
             setValidations((prevValidations) => ({
               ...prevValidations,
               mentor: {
                 ...prevValidations.mentor,
                 organization: false,
               },
-            }))
+            }));
           } else {
-            setBorderStyle(community_field, false)
+            setBorderStyle(community_field, false);
             setValidations((prevValidations) => ({
               ...prevValidations,
               mentor: {
                 ...prevValidations.mentor,
                 organization: true,
               },
-            }))
+            }));
           }
         } else {
           if (mentorRole === "Individual") {
@@ -257,7 +262,7 @@ const Onboarding = () => {
                 ...prevValidations.mentor,
                 organization: true,
               },
-            }))
+            }));
           }
         }
       }
@@ -267,43 +272,43 @@ const Onboarding = () => {
         //Validation for the Student Role Field Values(Year of Graduation, Department, Organization)
         if (role[0].title === "Student") {
           if (yog_field.value === "") {
-            setBorderStyle(yog_field, true)
+            setBorderStyle(yog_field, true);
             setValidations((prevValidations) => ({
               ...prevValidations,
               student: {
                 ...prevValidations.student,
                 yearOfGraduation: false,
               },
-            }))
+            }));
           } else {
-            setBorderStyle(yog_field, false)
+            setBorderStyle(yog_field, false);
             setValidations((prevValidations) => ({
               ...prevValidations,
               student: {
                 ...prevValidations.student,
                 yearOfGraduation: true,
               },
-            }))
+            }));
           }
 
           if (dept_field.value === "") {
-            setBorderStyle(dept_field, true)
+            setBorderStyle(dept_field, true);
             setValidations((prevValidations) => ({
               ...prevValidations,
               student: {
                 ...prevValidations.student,
                 department: false,
               },
-            }))
+            }));
           } else {
-            setBorderStyle(dept_field, false)
+            setBorderStyle(dept_field, false);
             setValidations((prevValidations) => ({
               ...prevValidations,
               student: {
                 ...prevValidations.student,
                 department: true,
               },
-            }))
+            }));
           }
 
           if (orgnization === "") {
@@ -313,7 +318,7 @@ const Onboarding = () => {
                 ...prevValidations.student,
                 organization: false,
               },
-            }))
+            }));
           } else {
             setValidations((prevValidations) => ({
               ...prevValidations,
@@ -321,29 +326,29 @@ const Onboarding = () => {
                 ...prevValidations.student,
                 organization: true,
               },
-            }))
+            }));
           }
 
           //Validation for the Enabler Role Field Values(Department, Organization)
         } else if (role[0].title === "Enabler") {
           if (dept_field.value === "") {
-            setBorderStyle(dept_field, true)
+            setBorderStyle(dept_field, true);
             setValidations((prevValidations) => ({
               ...prevValidations,
               enabler: {
                 ...prevValidations.enabler,
                 department: false,
               },
-            }))
+            }));
           } else {
-            setBorderStyle(dept_field, false)
+            setBorderStyle(dept_field, false);
             setValidations((prevValidations) => ({
               ...prevValidations,
               enabler: {
                 ...prevValidations.enabler,
                 department: true,
               },
-            }))
+            }));
           }
           if (orgnization === "") {
             setValidations((prevValidations) => ({
@@ -352,7 +357,7 @@ const Onboarding = () => {
                 ...prevValidations.enabler,
                 organization: false,
               },
-            }))
+            }));
           } else {
             setValidations((prevValidations) => ({
               ...prevValidations,
@@ -360,7 +365,7 @@ const Onboarding = () => {
                 ...prevValidations.enabler,
                 organization: true,
               },
-            }))
+            }));
           }
         }
       }
@@ -370,12 +375,12 @@ const Onboarding = () => {
       setValidations((prevValidations) => ({
         ...prevValidations,
         termsandcondtions: false,
-      }))
+      }));
     } else {
       setValidations((prevValidations) => ({
         ...prevValidations,
         termsandcondtions: true,
-      }))
+      }));
     }
 
     //Validation for the Area of Interest Field
@@ -383,12 +388,12 @@ const Onboarding = () => {
       setValidations((prevValidations) => ({
         ...prevValidations,
         areaOfInterest: false,
-      }))
+      }));
     } else {
       setValidations((prevValidations) => ({
         ...prevValidations,
         areaOfInterest: true,
-      }))
+      }));
     }
   }, [
     firstName,
@@ -402,7 +407,7 @@ const Onboarding = () => {
     submitTrigger,
     mentorRole,
     tcChecked,
-  ])
+  ]);
 
   const customStyles = {
     control: (provided: any) => ({
@@ -428,12 +433,12 @@ const Onboarding = () => {
       borderRadius: "0",
       boxShadow: "none",
     }),
-  }
+  };
 
   const yog_year = [
     2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026,
     2027, 2028, 2029, 2030,
-  ]
+  ];
 
   const onboard = () => {
     const options = {
@@ -456,39 +461,39 @@ const Onboarding = () => {
         yearOfGraduation: yog === "" ? null : yog, //required for student
         areaOfInterest, //required
       },
-    }
+    };
     axios
       .request(options)
       .then(function (response) {
-        setFormSuccess(true)
+        setFormSuccess(true);
 
-        setRoleVerified(response.data.roleVerified)
+        setRoleVerified(response.data.roleVerified);
       })
       .catch(function (error) {
         setHasValidationError({
           error: true,
           message: error.response.data.message,
-        })
+        });
         setTimeout(() => {
           setHasValidationError({
             error: false,
             message: "",
-          })
-        }, 3000)
-      })
-  }
+          });
+        }, 3000);
+      });
+  };
 
   useEffect(() => {
     // request for token verification
     const token_check = {
       method: "GET",
       url:
-        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/jwt/validate/",
+        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/jwt/validate",
       headers: {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
       },
-    }
+    };
     axios
       .request(token_check)
       .then((response) => {})
@@ -497,24 +502,24 @@ const Onboarding = () => {
           error: error.response.data.hasError,
           statusCode: error.response.data.statusCode,
           message: error.response.data.message,
-        })
-      })
+        });
+      });
 
     // request for college list
     const college = {
       method: "GET",
       url:
-        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/college/list/",
+        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/college/list",
       headers: {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
       },
-    }
+    };
     axios
       .request(college)
       .then(function (response) {
-        const colleges = response.data.response.colleges
-        setCollegeAPI(colleges)
+        const colleges = response.data.response.colleges;
+        setCollegeAPI(colleges);
         setCollegeOptions(
           colleges
             .sort((a: any, b: any) => a.title.localeCompare(b.title))
@@ -522,8 +527,8 @@ const Onboarding = () => {
               value: college.id,
               label: college.title,
             }))
-        )
-        setDepartmentAPI(response.data.response.departments)
+        );
+        setDepartmentAPI(response.data.response.departments);
       })
       .catch(function (error) {
         if (error.response.status === 404 || error.response.status === 500) {
@@ -531,25 +536,25 @@ const Onboarding = () => {
             error: true,
             statusCode: error.response.data.status,
             message: "Something went wrong, Please try again Later",
-          }
-          setHasError(errorMessage)
+          };
+          setHasError(errorMessage);
         }
-      })
+      });
 
     // request for company list
     const company = {
       method: "GET",
       url:
-        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/company/list/",
+        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/company/list",
       headers: {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
       },
-    }
+    };
     axios
       .request(company)
       .then(function (response) {
-        setCompanyAPI(response.data.response.companies)
+        setCompanyAPI(response.data.response.companies);
       })
       .catch(function (error) {
         if (error.response.status === 404 || error.response.status === 500) {
@@ -557,24 +562,24 @@ const Onboarding = () => {
             error: true,
             statusCode: error.response.data.status,
             message: "Something went wrong, Please try again Later",
-          }
-          setHasError(errorMessage)
+          };
+          setHasError(errorMessage);
         }
-      })
+      });
 
     // request for role list
     const role = {
       method: "GET",
-      url: import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/role/list/",
+      url: import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/role/list",
       headers: {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
       },
-    }
+    };
     axios
       .request(role)
       .then(function (response) {
-        setRoleAPI(response.data.response.roles)
+        setRoleAPI(response.data.response.roles);
       })
       .catch(function (error) {
         if (
@@ -585,25 +590,25 @@ const Onboarding = () => {
             error: true,
             statusCode: error.response.data.statusCode,
             message: "Something went wrong, please try again later",
-          })
+          });
         }
-      })
+      });
 
     // request for area of intersts list
     const aoi = {
       method: "GET",
       url:
         import.meta.env.VITE_BACKEND_URL +
-        "/api/v1/user/register/area-of-interest/list/",
+        "/api/v1/user/register/areaofinterst/list",
       headers: {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
       },
-    }
+    };
     axios
       .request(aoi)
       .then(function (response) {
-        setAoiAPI(response.data.response.aois)
+        setAoiAPI(response.data.response.aois);
       })
       .catch(function (error) {
         if (error.response.status === 404 || error.response.status === 500) {
@@ -611,26 +616,26 @@ const Onboarding = () => {
             error: true,
             statusCode: error.response.data.status,
             message: "Something went wrong, Please try again Later",
-          }
-          setHasError(errorMessage)
+          };
+          setHasError(errorMessage);
         }
-      })
+      });
 
     // request for community list
     const comunity = {
       method: "GET",
       url:
         import.meta.env.VITE_BACKEND_URL +
-        "/api/v1/user/register/community/list/",
+        "/api/v1/user/register/comunity/list",
       headers: {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
       },
-    }
+    };
     axios
       .request(comunity)
       .then(function (response) {
-        setCommunityAPI(response.data.response.communities)
+        setCommunityAPI(response.data.response.communities);
       })
       .catch(function (error) {
         if (error.response.status === 404 || error.response.status === 500) {
@@ -638,12 +643,11 @@ const Onboarding = () => {
             error: true,
             statusCode: error.response.data.status,
             message: "Something went wrong, Please try again Later",
-          }
-          setHasError(errorMessage)
+          };
+          setHasError(errorMessage);
         }
-      })
-  }, [])
-
+      });
+  }, []);
   return (
     <>
       <div className={styles.onboarding_page}>
@@ -659,6 +663,122 @@ const Onboarding = () => {
                   ""
                 )}
                 <div className={styles.form_container}>
+                  <div
+                    style={{ display: display, opacity: opacity }}
+                    className={styles.question_container}
+                  >
+                    <div className={styles.question_box}>
+                      <div className={styles.question}>
+                        <h3>What is your role ?</h3>
+                        <div className={styles.answers}>
+                          <button
+                            onClick={() => {
+                              roleAPI.map((role: any) => {
+                                if (role.title === "Student") {
+                                  setRole([{ id: role.id, title: role.title }]);
+                                }
+                              });
+                              setOpacity(0);
+                              setTimeout(() => {
+                                setDisplay("none");
+                              }, 1000);
+                            }}
+                          >
+                            I'm currently studying
+                          </button>
+                          <button
+                            onClick={() => {
+                              roleAPI.map((role: any) => {
+                                if (role.title === "Mentor") {
+                                  setRole([{ id: role.id, title: role.title }]);
+                                }
+                              });
+
+                              setOpacity(0);
+                              setSecondQuesion(true);
+                              setTimeout(() => {
+                                setDisplay("none");
+                              }, 1000);
+                            }}
+                          >
+                            I'm currently working professional
+                          </button>
+                          <button
+                            onClick={() => {
+                              roleAPI.map((role: any) => {
+                                if (role.title === "Enabler") {
+                                  setRole([{ id: role.id, title: role.title }]);
+                                }
+                              });
+
+                              setOpacity(0);
+                              setTimeout(() => {
+                                setDisplay("none");
+                              }, 1000);
+                            }}
+                          >
+                            I'm teaching in a institute
+                          </button>
+                          <button
+                            onClick={() => {
+                              setOpacity(0);
+                              setSecondQuesion(true);
+                              setTimeout(() => {
+                                setDisplay("none");
+                              }, 1000);
+                            }}
+                          >
+                            I'm a freelancer
+                          </button>
+                          <button>I'm not working, not studying</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/*2nd question if the user is working prof. or freelancer  */}
+                  {secondQuesion ? (
+                    <div
+                      style={{ display: display2, opacity: opacity2 }}
+                      className={styles.question_container}
+                    >
+                      <div className={styles.question_box}>
+                        <div className={styles.question}>
+                          <h3>Did you like to become a Mentor ?</h3>
+                          <div className={styles.answers}>
+                            <button
+                              onClick={() => {
+                                setRole([{ id: "", title: "" }]);
+                                setOpacity2(0);
+                                setTimeout(() => {
+                                  setDisplay2("none");
+                                }, 1000);
+                              }}
+                            >
+                              No
+                            </button>
+                            <button
+                              onClick={() => {
+                                roleAPI.map((role: any) => {
+                                  if (role.title === "Mentor") {
+                                    setRole([
+                                      { id: role.id, title: role.title },
+                                    ]);
+                                  }
+                                });
+
+                                setOpacity2(0);
+                                setTimeout(() => {
+                                  setDisplay2("none");
+                                }, 1000);
+                              }}
+                            >
+                              Yes
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
                   <h1>User Information</h1>
                   <p>
                     Please enter all the required information in the fields
@@ -680,7 +800,7 @@ const Onboarding = () => {
                             placeholder="First name"
                             className={styles.input}
                             onChange={(e) => {
-                              setFirstName(e.target.value)
+                              setFirstName(e.target.value);
                             }}
                             required
                           />
@@ -697,7 +817,7 @@ const Onboarding = () => {
                             placeholder="Last name"
                             className={styles.input}
                             onChange={(e) => {
-                              setLastName(e.target.value)
+                              setLastName(e.target.value);
                             }}
                           />
                         </div>
@@ -714,7 +834,7 @@ const Onboarding = () => {
                             placeholder="username@domain.com"
                             className={styles.input}
                             onChange={(e) => {
-                              setEmail(e.target.value)
+                              setEmail(e.target.value);
                             }}
                             required
                           />
@@ -740,7 +860,7 @@ const Onboarding = () => {
                               type="number"
                               placeholder="8023456789"
                               onChange={(e) => {
-                                setPhone(e.target.valueAsNumber)
+                                setPhone(e.target.valueAsNumber);
                               }}
                               required
                             />
@@ -764,7 +884,7 @@ const Onboarding = () => {
                                 name=""
                                 id=""
                                 onChange={(e) => {
-                                  setGender(e.target.value)
+                                  setGender(e.target.value);
                                 }}
                               >
                                 <option value="">Select gender</option>
@@ -792,24 +912,39 @@ const Onboarding = () => {
                                 placeholder="dd/mm/yyyy"
                                 className={styles.input}
                                 onChange={(e) => {
-                                  setDob(e.target.value)
+                                  setDob(e.target.value);
                                 }}
                               />
                             </div>
                           </div>
                         </div>
                         <div className={styles.input_container}>
-                          <label htmlFor="">
+                          <div
+                            style={{ width: "100%" }}
+                            className={styles.input_container}
+                          >
+                            <label htmlFor="">Community</label>
+                            <input
+                              id="community_field"
+                              type="text"
+                              placeholder="Community"
+                              className={styles.input}
+                              onChange={(e) => {
+                                setDob(e.target.value);
+                              }}
+                            />
+                          </div>
+                          {/*  <label htmlFor="">
                             Role <span className={styles.required}>*</span>
                           </label>
                           <select
                             id="role_field"
                             name=""
                             onChange={(e) => {
-                              setYog("")
-                              setDept("")
-                              setMentorRole("")
-                              setOrgnization("")
+                              setYog("");
+                              setDept("");
+                              setMentorRole("");
+                              setOrgnization("");
                               setValidations((prevState) => ({
                                 ...prevState,
                                 student: {
@@ -829,7 +964,7 @@ const Onboarding = () => {
                                   mentorRole: false,
                                   type: "",
                                 },
-                              }))
+                              }));
 
                               roleAPI.map((role) => {
                                 e.target.value == ""
@@ -838,8 +973,8 @@ const Onboarding = () => {
                                   ? setRole([
                                       { id: e.target.value, title: role.title },
                                     ])
-                                  : null
-                              })
+                                  : null;
+                              });
                             }}
                             required
                           >
@@ -847,16 +982,22 @@ const Onboarding = () => {
                             {roleAPI.map((role, i) => {
                               return (
                                 <option key={i} value={role.id}>
-                                  {role.title}
+                                  {role.title == "Student"
+                                    ? "Are u a currently studying?"
+                                    : role.title == "Enabler"
+                                    ? "Are u a currently working professional?"
+                                    : role.title == "Mentor"
+                                    ? "Are u teaching in a institute?"
+                                    : null}
                                 </option>
-                              )
+                              );
                             })}
                           </select>
                           {submitTrigger && !validations.role && (
                             <p className={styles.error_message}>
                               This field is required
                             </p>
-                          )}
+                          )} */}
                         </div>
                       </div>
                       <div className={styles.inputs}>
@@ -930,7 +1071,7 @@ const Onboarding = () => {
                                     id="dept_field"
                                     name=""
                                     onChange={(e) => {
-                                      setDept(e.target.value)
+                                      setDept(e.target.value);
                                     }}
                                     value={dept}
                                     required
@@ -941,7 +1082,7 @@ const Onboarding = () => {
                                         <option key={index} value={dept.id}>
                                           {dept.title}
                                         </option>
-                                      )
+                                      );
                                     })}
                                   </select>
                                   {submitTrigger &&
@@ -976,7 +1117,7 @@ const Onboarding = () => {
                                           <option key={i} value={year}>
                                             {year}
                                           </option>
-                                        )
+                                        );
                                       })}
                                     </select>
                                     {submitTrigger &&
@@ -1004,7 +1145,7 @@ const Onboarding = () => {
                                     style={{ width: "100%" }} //78%
                                     name=""
                                     onChange={(e) => {
-                                      setMentorRole(e.target.value)
+                                      setMentorRole(e.target.value);
                                     }}
                                     required
                                   >
@@ -1036,7 +1177,7 @@ const Onboarding = () => {
                                   id="company_field"
                                   name=""
                                   onChange={(e) => {
-                                    setOrgnization(e.target.value)
+                                    setOrgnization(e.target.value);
                                   }}
                                   required
                                 >
@@ -1046,7 +1187,7 @@ const Onboarding = () => {
                                       <option key={index} value={company.id}>
                                         {company.title}
                                       </option>
-                                    )
+                                    );
                                   })}
                                 </select>
                                 {submitTrigger &&
@@ -1066,7 +1207,7 @@ const Onboarding = () => {
                                 <select
                                   id="community_field"
                                   onChange={(e) => {
-                                    setOrgnization(e.target.value)
+                                    setOrgnization(e.target.value);
                                   }}
                                   required
                                 >
@@ -1076,7 +1217,7 @@ const Onboarding = () => {
                                       <option key={index} value={company.id}>
                                         {company.title}
                                       </option>
-                                    )
+                                    );
                                   })}
                                 </select>
                                 {submitTrigger &&
@@ -1108,9 +1249,9 @@ const Onboarding = () => {
                           {aoiAPI.map((aoi, i) => {
                             const checked = areaOfInterest.includes(
                               aoi.id as string
-                            )
+                            );
                             const disabled =
-                              areaOfInterest.length >= 3 && !checked
+                              areaOfInterest.length >= 3 && !checked;
                             return (
                               <label key={i}>
                                 <input
@@ -1119,26 +1260,26 @@ const Onboarding = () => {
                                   checked={checked}
                                   disabled={disabled}
                                   onChange={(e) => {
-                                    const selectedId = aoi.id
+                                    const selectedId = aoi.id;
                                     if (checked) {
                                       setAreaOfInterest(
                                         areaOfInterest.filter(
                                           (aois) => aois !== selectedId
                                         )
-                                      )
+                                      );
                                     } else {
                                       setAreaOfInterest(
                                         [...areaOfInterest, selectedId].slice(
                                           -3
                                         )
-                                      )
+                                      );
                                     }
                                   }}
                                   required
                                 />
                                 <span>{aoi.name}</span>
                               </label>
-                            )
+                            );
                           })}
                         </div>
 
@@ -1155,9 +1296,9 @@ const Onboarding = () => {
                           id=""
                           onChange={(e) => {
                             if (e.target.checked) {
-                              setTcChecked(true)
+                              setTcChecked(true);
                             } else {
-                              setTcChecked(false)
+                              setTcChecked(false);
                             }
                           }}
                         />
@@ -1187,20 +1328,20 @@ const Onboarding = () => {
                       <div className={styles.form_buttons}>
                         <button
                           onClick={() => {
-                            setAreaOfInterest([])
+                            setAreaOfInterest([]);
 
-                            setFirstName("")
-                            setLastName("")
-                            setEmail("")
-                            setPhone(0)
+                            setFirstName("");
+                            setLastName("");
+                            setEmail("");
+                            setPhone(0);
 
-                            setRole([{ id: "", title: "" }])
-                            setDept("")
-                            setOrgnization("")
-                            setYog("")
-                            setMentorRole("")
-                            setTcChecked(false)
-                            setSubmitTrigger(false)
+                            setRole([{ id: "", title: "" }]);
+                            setDept("");
+                            setOrgnization("");
+                            setYog("");
+                            setMentorRole("");
+                            setTcChecked(false);
+                            setSubmitTrigger(false);
                           }}
                           type="reset"
                         >
@@ -1214,9 +1355,9 @@ const Onboarding = () => {
                               : { backgroundColor: "#5570f1", opacity: "0.5" }
                           }
                           onClick={(e) => {
-                            e.preventDefault()
-                            setSubmitTrigger(true)
-                            console.log(validations)
+                            e.preventDefault();
+                            setSubmitTrigger(true);
+                            console.log(validations);
                             if (
                               validations.firstName &&
                               validations.email &&
@@ -1231,66 +1372,66 @@ const Onboarding = () => {
                                   validations.student.organization &&
                                   validations.student.yearOfGraduation
                                 ) {
-                                  onboard()
+                                  onboard();
                                 } else {
                                   // Set the error message and set error to true
                                   setHasValidationError({
                                     error: true,
                                     message:
                                       "Kindly, fill in all the required fields!",
-                                  })
+                                  });
 
                                   // Wait for 3 seconds and set error to false
                                   setTimeout(() => {
                                     setHasValidationError({
                                       error: false,
                                       message: "",
-                                    })
-                                  }, 2000)
+                                    });
+                                  }, 2000);
                                 }
                               } else if (role[0].title == "Mentor") {
                                 if (
                                   validations.mentor.mentorRole &&
                                   validations.mentor.organization
                                 ) {
-                                  onboard()
+                                  onboard();
                                 } else {
                                   // Set the error message and set error to true
                                   setHasValidationError({
                                     error: true,
                                     message:
                                       "Kindly, fill in all the required fields!",
-                                  })
+                                  });
 
                                   // Wait for 3 seconds and set error to false
                                   setTimeout(() => {
                                     setHasValidationError({
                                       error: false,
                                       message: "",
-                                    })
-                                  }, 2000)
+                                    });
+                                  }, 2000);
                                 }
                               } else if (role[0].title == "Enabler") {
                                 if (
                                   validations.enabler.organization &&
                                   validations.enabler.department
                                 ) {
-                                  onboard()
+                                  onboard();
                                 } else {
                                   // Set the error message and set error to true
                                   setHasValidationError({
                                     error: true,
                                     message:
                                       "Kindly, fill in all the required fields!",
-                                  })
+                                  });
 
                                   // Wait for 3 seconds and set error to false
                                   setTimeout(() => {
                                     setHasValidationError({
                                       error: false,
                                       message: "",
-                                    })
-                                  }, 2000)
+                                    });
+                                  }, 2000);
                                 }
                               }
                             } else {
@@ -1299,15 +1440,15 @@ const Onboarding = () => {
                                 error: true,
                                 message:
                                   "Kindly, fill in all the required fields!",
-                              })
+                              });
 
                               // Wait for 3 seconds and set error to false
                               setTimeout(() => {
                                 setHasValidationError({
                                   error: false,
                                   message: "",
-                                })
-                              }, 2000)
+                                });
+                              }, 2000);
                             }
                           }}
                         >
@@ -1334,7 +1475,7 @@ const Onboarding = () => {
         )}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Onboarding
+export default Onboarding;

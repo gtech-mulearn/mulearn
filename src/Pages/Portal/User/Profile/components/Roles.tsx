@@ -1,24 +1,20 @@
-import React from 'react'
-import styles from './../Profile.module.css'
+import React from "react";
+import styles from "./../Profile.module.css";
 
-type Props = {}
+type Props = {};
 
-const Roles = (props: Props) => {
-    return (
-        <div className={styles.roles}>
-            <h2>Roles</h2>
-            <div className={styles.roles_div}>
-                <ul>
-                    <li>Sunteec</li>
-                    <li>Zorone</li>
-                    <li>Cyber - sec</li>
-                    <li>Student</li>
-                    <li>tfp - learner</li>
-                    <li>Entrepreneurship</li>
-                </ul>
-            </div>
-        </div>
-    )
-}
+const Roles = ({ roles = { main_role: "", authority_roles: "" } }) => {
+  return (
+    <div className={styles.roles}>
+      <h2>Roles</h2>
+      <div className={styles.roles_div}>
+        <ul>
+          <li>{roles.main_role}</li>
+          <li>{roles.authority_roles}</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
 
-export default Roles
+export default Roles;
