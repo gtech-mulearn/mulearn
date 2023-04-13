@@ -28,8 +28,8 @@
 }
 
 .form_container .question_container {
-  position: absolute;
-  height: 100%;
+  position: fixed;
+  height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
