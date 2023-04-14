@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom";
 import ReactSelect from "react-select";
 import Error from "./assets/Error";
 import Success from "./Success";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
+
+const animatedComponents = makeAnimated();
 
 const Onboarding = (props: Props) => {
   const navigate = useNavigate();
@@ -599,7 +603,7 @@ const Onboarding = (props: Props) => {
       method: "GET",
       url:
         import.meta.env.VITE_BACKEND_URL +
-        "/api/v1/user/register/areaofinterst/list",
+        "/api/v1/user/register/area-of-interest/list",
       headers: {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
@@ -626,7 +630,7 @@ const Onboarding = (props: Props) => {
       method: "GET",
       url:
         import.meta.env.VITE_BACKEND_URL +
-        "/api/v1/user/register/comunity/list",
+        "/api/v1/user/register/community/list",
       headers: {
         Authorization: "Bearer " + token,
         "content-type": "application/json",
@@ -688,12 +692,6 @@ const Onboarding = (props: Props) => {
                           </button>
                           <button
                             onClick={() => {
-                              roleAPI.map((role: any) => {
-                                if (role.title === "Mentor") {
-                                  setRole([{ id: role.id, title: role.title }]);
-                                }
-                              });
-
                               setOpacity(0);
                               setSecondQuesion(true);
                               setTimeout(() => {
@@ -923,16 +921,44 @@ const Onboarding = (props: Props) => {
                             style={{ width: "100%" }}
                             className={styles.input_container}
                           >
-                            <label htmlFor="">Community</label>
-                            <input
+                            <label htmlFor="">
+                              Community{" "}
+                              <span className={styles.required}>*</span>
+                            </label>
+                            {/* <select
                               id="community_field"
-                              type="text"
-                              placeholder="Community"
-                              className={styles.input}
                               onChange={(e) => {
-                                setDob(e.target.value);
+                                setOrgnization(e.target.value);
                               }}
+                              required
+                            >
+                              <option value="">Select</option>
+                              {communityAPI.map((company, index) => {
+                                return (
+                                  <option key={index} value={company.id}>
+                                    {company.title}
+                                  </option>
+                                );
+                              })}
+                            </select> */}
+                            <Select
+                              closeMenuOnSelect={false}
+                              components={animatedComponents}
+                              isMulti
+                              options={communityAPI.map((company) => {
+                                return {
+                                  value: company.id,
+                                  label: company.title,
+                                };
+                              })}
                             />
+                            {submitTrigger &&
+                              !validations.mentor.organization && (
+                                <p className={styles.error_message}>
+                                  This field is required
+                                </p>
+                              )}
+                            {/* </div> */}
                           </div>
                           {/*  <label htmlFor="">
                             Role <span className={styles.required}>*</span>
