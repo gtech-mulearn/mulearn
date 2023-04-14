@@ -15,7 +15,7 @@
 .css-13cymwt-control{
     border: none !important;
     background: rgba(239, 241, 249, 0.6) !important;
-    border-radius: 6px;
+    border-radius: 6px !important;
     padding: 5px;
     outline: none;
     width: 100%;

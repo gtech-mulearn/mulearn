@@ -728,7 +728,16 @@ const Onboarding = (props: Props) => {
                           >
                             I'm a freelancer
                           </button>
-                          <button>I'm not working, not studying</button>
+                          <button
+                            onClick={() => {
+                              setOpacity(0);
+                              setTimeout(() => {
+                                setDisplay("none");
+                              }, 1000);
+                            }}
+                          >
+                            I'm not working, not studying
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -1177,9 +1186,9 @@ const Onboarding = (props: Props) => {
                                   >
                                     <option value="Select">Select</option>
                                     <option value="Company">Company</option>
-                                    <option value="Community Partner">
+                                    {/* <option value="Community Partner">
                                       Community Partner
-                                    </option>
+                                    </option> */}
                                     <option value="Individual">
                                       Individual
                                     </option>
