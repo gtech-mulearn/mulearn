@@ -54,6 +54,7 @@ const Onboarding = (props: Props) => {
   const [areaOfInterest, setAreaOfInterest] = useState<string[]>([]);
   //State Array for Storing the Organization(Company, Community, College)
   const [orgnization, setOrgnization] = useState("");
+  const [community, setCommunity] = useState([""]);
 
   //State Array for storing the College Options
   const [collegeAPI, setCollegeAPI] = useState([{ id: "", title: "" }]);
@@ -97,6 +98,11 @@ const Onboarding = (props: Props) => {
     areaOfInterest: false,
     termsandcondtions: false,
   });
+
+  interface Community {
+    value: string;
+    label: string;
+}
 
   useEffect(() => {
     //Getting the Input Field Elements
@@ -728,7 +734,16 @@ const Onboarding = (props: Props) => {
                           >
                             I'm a freelancer
                           </button>
-                          <button>I'm not working, not studying</button>
+                          <button
+                            onClick={() => {
+                              setOpacity(0);
+                              setTimeout(() => {
+                                setDisplay("none");
+                              }, 1000);
+                            }}
+                          >
+                            I'm not working, not studying
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -942,6 +957,10 @@ const Onboarding = (props: Props) => {
                               })}
                             </select> */}
                             <Select
+                            onChange={(OnChangeValue) => {
+                              // console.log(OnChangeValue.map((value={value:"", label:""}) => value.value));        
+                              setCommunity(OnChangeValue.map((community:Community) => community.value));                                                            
+                            }}
                               closeMenuOnSelect={false}
                               components={animatedComponents}
                               isMulti
@@ -1177,9 +1196,9 @@ const Onboarding = (props: Props) => {
                                   >
                                     <option value="Select">Select</option>
                                     <option value="Company">Company</option>
-                                    <option value="Community Partner">
+                                    {/* <option value="Community Partner">
                                       Community Partner
-                                    </option>
+                                    </option> */}
                                     <option value="Individual">
                                       Individual
                                     </option>
