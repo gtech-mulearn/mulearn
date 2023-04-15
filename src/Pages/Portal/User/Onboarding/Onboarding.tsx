@@ -54,7 +54,7 @@ const Onboarding = (props: Props) => {
   const [areaOfInterest, setAreaOfInterest] = useState<string[]>([]);
   //State Array for Storing the Organization(Company, Community, College)
   const [orgnization, setOrgnization] = useState("");
-  const [community, setCommunity] = useState([""]);
+  const [community, setCommunity] = useState<string[]>([]);
 
   //State Array for storing the College Options
   const [collegeAPI, setCollegeAPI] = useState([{ id: "", title: "" }]);
@@ -120,7 +120,7 @@ const Onboarding = (props: Props) => {
     const community_field = getInputElem("community_field");
 
     const setBorderStyle = (element: HTMLInputElement, condition: boolean) => {
-      if (submitTrigger) {
+      if (submitTrigger && element && element.style) {
         element.style.border = condition ? "1px solid red" : "none";
       } else {
         const inputs = [
@@ -451,6 +451,7 @@ const Onboarding = (props: Props) => {
   ];
 
   const onboard = () => {
+    community.push(orgnization);
     const options = {
       method: "POST",
       url: import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/",
@@ -466,12 +467,12 @@ const Onboarding = (props: Props) => {
         gender: gender === "" ? null : gender,
         dob: dob === "" ? null : dob,
         role: role[0]["id"], //required
-        organization: orgnization === "" ? null : orgnization, //required except for individual
+        organizations: orgnization === "" && community.length === 0 ? null : community, //required except for individual
         dept: dept === "" ? null : dept, //required for student and enabler
         yearOfGraduation: yog === "" ? null : yog, //required for student
-        areaOfInterest, //required
+        areaOfInterests : areaOfInterest, //required
       },
-    };
+    };    
     axios
       .request(options)
       .then(function (response) {
@@ -508,10 +509,12 @@ const Onboarding = (props: Props) => {
       .request(token_check)
       .then((response) => {})
       .catch((error) => {
+        console.log(error);
+        
         setHasError({
           error: error.response.data.hasError,
           statusCode: error.response.data.statusCode,
-          message: error.response.data.message,
+          message: error.response.data.message.general,
         });
       });
 
@@ -959,7 +962,14 @@ const Onboarding = (props: Props) => {
                             <Select
                             onChange={(OnChangeValue) => {
                               // console.log(OnChangeValue.map((value={value:"", label:""}) => value.value));        
-                              setCommunity(OnChangeValue.map((community:Community) => community.value));                                                            
+                              // setCommunity(OnChangeValue.map((community:Community) => community.value));
+                              OnChangeValue.map(
+                                (value: unknown, index: number, array: readonly unknown[]) => {
+                                  const typedValue = value as { value: string; label: string };
+                                  setCommunity([...community, typedValue.value])
+                                }
+                              )
+                                                          
                             }}
                               closeMenuOnSelect={false}
                               components={animatedComponents}
