@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import styles from "./ISR.module.css"
 
 import fvimg from "./assets/fvimg.gif"
+import rvimg from "./assets/rvimg.gif"
 import Navbar from "../../../Components/Navbar/Navbar"
 import Footer from "../../../Components/Footer/Footer"
 import axios from "axios"
@@ -62,31 +63,30 @@ const ISR = () => {
             </div>
           </div>
         </div>
-        {/*
-        <section className=" container px-10 sm:px-12 my-14 mx-auto max-w-7xl flex justify-evenly items-center align-middle w-full">
-          <img className="hidden sm:flex flex-1 object-contain max-w-48 max-h-48" src={fvimg} alt="join ISR" />
-          <div className="flex-1 flex flex-col items-start">
-            <div className="text-2xl mb-2 font-medium font-poppins">
-              Do you like to speak at ISR?
+        <div className={styles.request_view_container}>
+          <div className={styles.request_view}>
+            <div className={styles.rv_images}>
+              <img src={rvimg} alt="" className={styles.rv_img} />
             </div>
-            <div className="font-poppins text-base lg:text-lg mb-4">
-              If you have a story to tell, a journey to share, or a passion to
-              inspire others with, then ISR is the place for you. Click on the
-              button below and be our guest.
-              </div>
-            <div className="flex justify-center">
+            <div className={styles.rv_texts}>
+              <p className={styles.rv_heading}>
+                Become <span>Inspiration Station Radio</span> Speaker
+              </p>
+              <p className={styles.rv_tagline}>
+                If you have a story to tell, or you know someone who has a story
+                to tell, then you can request them to come to the Inspiration
+                Station Radio and share their story with our listeners.
+              </p>
               <a
-                href="https://forms.gle/9Z9Z9Z9Z9Z9Z9Z9Z9"
+                href="https://mulearn.org/isropencall"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
-                <button className="bg-muorange text-white font-medium font-poppins py-2 px-4 rounded-md">
-                  Yes, I'm In!
-                </button>
+                <button className={styles.rv_button}>Apply Now</button>
               </a>
-              </div>
+            </div>
           </div>
-        </section> */}
+        </div>
         <div className={styles.second_view_container}>
           <div className={styles.second_view}>
             <div className={styles.sv_texts}>
