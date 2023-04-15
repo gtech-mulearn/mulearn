@@ -12,7 +12,7 @@
     outline: none;
 }
 
-.css-13cymwt-control{
+.css-13cymwt-control,.css-t3ipsp-control{
     border: none !important;
     background: rgba(239, 241, 249, 0.6) !important;
     border-radius: 6px !important;
@@ -20,7 +20,4 @@
     outline: none;
     width: 100%;
     margin-top: 10px;
-}
-.css-t3psp-control:hover{
-    transform: scale(0);
 }
