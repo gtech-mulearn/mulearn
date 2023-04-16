@@ -150,12 +150,15 @@ const Teams = () => {
           </p>
           <div className={styles.members_list}>
             {pillars.map((member) => {
+              console.log(member)
               return (
                 <TeamCard
                   name={member.name}
                   designation={member.team}
                   image={member.image}
                   linkedIn={member.linkedin ? member.linkedin : ""}
+                  github={member.github ? member.github : ""}
+                  twitter={member.twitter ? member.twitter : ""}
                 />
               )
             })}

@@ -79,3 +79,10 @@ img {
     display: inline-block;
   }
 }
+.social_icons {
+  display : flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  column-gap: 5px;
+}
