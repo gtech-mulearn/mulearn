@@ -447,5 +447,9 @@
   {
     "route": "/challenge-typingmastery",
     "redirect": "https://docs.google.com/spreadsheets/d/1TeGv6a8jsIRX_7wRyokic_EatIbJ8a0TwMcziYDdp84/edit#gid=0"
+  },
+  {
+    "route": "/innovation-registration",
+    "redirect": "https://airtable.com/shrCX7GLwqK427aTf",
   }
 ]
