@@ -8,6 +8,7 @@ import Error from "./assets/Error";
 import Success from "./Success";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
+import Looder from "./assets/Looder";
 
 const animatedComponents = makeAnimated();
 
@@ -15,6 +16,12 @@ const Onboarding = (props: Props) => {
   const navigate = useNavigate();
   const queryParameters = new URLSearchParams(window.location.search);
   // for hide and question container
+  const [displayLoader, setDisplayLoader] = useState("flex");
+  const [opacityLoader, setOpacityLoader] = useState(1);
+  setTimeout(() => {
+    setDisplayLoader("none")
+    setOpacityLoader(0)
+  }, 5000)
   const [display, setDisplay] = useState("flex");
   const [display2, setDisplay2] = useState("flex");
   const [opacity, setOpacity] = useState(1);
@@ -98,11 +105,6 @@ const Onboarding = (props: Props) => {
     areaOfInterest: false,
     termsandcondtions: false,
   });
-
-  interface Community {
-    value: string;
-    label: string;
-}
 
   useEffect(() => {
     //Getting the Input Field Elements
@@ -467,12 +469,13 @@ const Onboarding = (props: Props) => {
         gender: gender === "" ? null : gender,
         dob: dob === "" ? null : dob,
         role: role[0]["id"], //required
-        organizations: orgnization === "" && community.length === 0 ? null : community, //required except for individual
+        organizations:
+          orgnization === "" && community.length === 0 ? null : community, //required except for individual
         dept: dept === "" ? null : dept, //required for student and enabler
         yearOfGraduation: yog === "" ? null : yog, //required for student
-        areaOfInterests : areaOfInterest, //required
+        areaOfInterests: areaOfInterest, //required
       },
-    };    
+    };
     axios
       .request(options)
       .then(function (response) {
@@ -510,7 +513,7 @@ const Onboarding = (props: Props) => {
       .then((response) => {})
       .catch((error) => {
         console.log(error);
-        
+
         setHasError({
           error: error.response.data.hasError,
           statusCode: error.response.data.statusCode,
@@ -676,6 +679,14 @@ const Onboarding = (props: Props) => {
                   ""
                 )}
                 <div className={styles.form_container}>
+
+                  <div className={styles.loader_container} style={{display: displayLoader ,opacity:opacityLoader}}>
+                    <div className={styles.loader}>
+                      <Looder />
+                    </div>
+                    <p>We are cooking things for you</p>
+                  </div>
+
                   <div
                     style={{ display: display, opacity: opacity }}
                     className={styles.question_container}
@@ -939,10 +950,7 @@ const Onboarding = (props: Props) => {
                             style={{ width: "100%" }}
                             className={styles.input_container}
                           >
-                            <label htmlFor="">
-                              Community{" "}
-                              <span className={styles.required}>*</span>
-                            </label>
+                            <label htmlFor="">Community </label>
                             {/* <select
                               id="community_field"
                               onChange={(e) => {
@@ -960,17 +968,26 @@ const Onboarding = (props: Props) => {
                               })}
                             </select> */}
                             <Select
-                            onChange={(OnChangeValue) => {
-                              // console.log(OnChangeValue.map((value={value:"", label:""}) => value.value));        
-                              // setCommunity(OnChangeValue.map((community:Community) => community.value));
-                              OnChangeValue.map(
-                                (value: unknown, index: number, array: readonly unknown[]) => {
-                                  const typedValue = value as { value: string; label: string };
-                                  setCommunity([...community, typedValue.value])
-                                }
-                              )
-                                                          
-                            }}
+                              onChange={(OnChangeValue) => {
+                                // console.log(OnChangeValue.map((value={value:"", label:""}) => value.value));
+                                // setCommunity(OnChangeValue.map((community:Community) => community.value));
+                                OnChangeValue.map(
+                                  (
+                                    value: unknown,
+                                    index: number,
+                                    array: readonly unknown[]
+                                  ) => {
+                                    const typedValue = value as {
+                                      value: string;
+                                      label: string;
+                                    };
+                                    setCommunity([
+                                      ...community,
+                                      typedValue.value,
+                                    ]);
+                                  }
+                                );
+                              }}
                               closeMenuOnSelect={false}
                               components={animatedComponents}
                               isMulti
@@ -981,12 +998,6 @@ const Onboarding = (props: Props) => {
                                 };
                               })}
                             />
-                            {submitTrigger &&
-                              !validations.mentor.organization && (
-                                <p className={styles.error_message}>
-                                  This field is required
-                                </p>
-                              )}
                             {/* </div> */}
                           </div>
                           {/*  <label htmlFor="">
@@ -1404,6 +1415,7 @@ const Onboarding = (props: Props) => {
                         </button>
                         <button
                           type="submit"
+                          disabled={!tcChecked}
                           style={
                             tcChecked
                               ? { backgroundColor: "#5570f1" }
