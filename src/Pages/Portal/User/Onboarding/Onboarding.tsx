@@ -497,7 +497,7 @@ const Onboarding = (props: Props) => {
         mobile: phone, //required
         gender: gender === "" ? null : gender,
         dob: dob === "" ? null : dob,
-        role: role[0]["id"], //required
+        role: role[0]["id"] === "" ? null : role[0]["id"], //required
         organizations:
           orgnization === "" && community.length === 0 ? null : community, //required except for individual
         dept: dept === "" ? null : dept, //required for student and enabler
@@ -505,7 +505,6 @@ const Onboarding = (props: Props) => {
         areaOfInterests: areaOfInterest, //required
       },
     };
-
 
     axios
       .request(options)
@@ -548,7 +547,6 @@ const Onboarding = (props: Props) => {
       .request(token_check)
       .then((response) => {})
       .catch((error) => {
-
         setHasError({
           error: error.response.data.hasError,
           statusCode: error.response.data.statusCode,
@@ -1372,7 +1370,6 @@ const Onboarding = (props: Props) => {
                           onClick={(e) => {
                             e.preventDefault();
                             setSubmitTrigger(true);
-
                             if (
                               validations.firstName &&
                               validations.email &&
@@ -1448,6 +1445,8 @@ const Onboarding = (props: Props) => {
                                     });
                                   }, 2000);
                                 }
+                              } else if (roleException) {
+                                onboard();
                               }
                             } else {
                               // Set the error message and set error to true
