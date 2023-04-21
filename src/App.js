@@ -1,3 +1,4 @@
+import axios from "axios"
 import Home from "./Pages/Home/Home"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import News from "./Pages/Gallery/News"
@@ -32,11 +33,25 @@ import CampusLogoGenerator from "./Pages/CampusLogoGen/CampusLogoGen"
 import TermsAndCondition from "./Pages/TermsAndCondition/TermsAndCondition"
 import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy"
 
-import redirects from "./redirects.json"
+//import redirects from "./redirects.json"
 import Redirection from "./Components/Redirection/Redirection"
 import Layout from "./Layout"
+import { useEffect, useState } from "react"
 
 function App() {
+  const[redirects, setRedirects] = useState([]);
+  useEffect(()=>{
+    axios
+    .get(
+      "https://opensheet.elk.sh/1ylhC8QHDxBLheCtYliSasQNWjuOkb_N-A_BRh8aMpe4/redirections"
+    )
+    .then((response) => {
+      setRedirects(response.data)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  })
   return (
     <div className="App">
       <Router>
