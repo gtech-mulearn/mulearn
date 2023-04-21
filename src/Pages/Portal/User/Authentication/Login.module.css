@@ -1,0 +1,116 @@
+.login_page {
+  background-color: #fbfbfb;
+  min-height: 100vh;
+}
+
+.login_page{
+  transition: opacity 0.5s ease-in-out;
+}
+
+.login_page .hidden {
+  opacity: 0;
+}
+
+.login_container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_page .login_container .login_form {
+  background: #ffffff;
+  border: 1px solid #dde2e5;
+  border-radius: 20px;
+  display: flex;
+  max-width: 500px;
+  /* min-height: 500px; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 45px 30px;
+  text-align: center;
+}
+
+.login_page .login_container .login_form h1 {
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 46px;
+  color: #404d61;
+  /* padding: 20px; */
+}
+
+.login_page .login_container .login_form .p_welcome {
+  /* padding: 20px 50px; */
+  max-width: 320px;
+  margin: auto;
+}
+
+.login_page .login_container .login_form p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #404d61;
+  padding: 20px 0px;
+}
+
+.login_page .login_container .login_form form {
+  min-width: 380px;
+}
+
+.login_page .login_container .login_form .password_div {
+  position: relative;
+}
+
+.login_page .login_container .login_form .password_div .password_icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  background: none;
+  padding: 14px 0px;
+  min-width: unset;
+}
+
+.login_page .login_container .login_form button {
+  background: #5570f1;
+  color: white;
+  padding: 8px 0px;
+  min-width: 200px;
+  border-radius: 10px;
+}
+
+.login_page .login_container .login_form b {
+  font-weight: 600;
+}
+
+@media screen and (max-width: 500px) {
+  .login_page {
+    background-color: #fff;
+  }
+
+  .login_page .login_container .login_form {
+    border: none;
+    padding: 0px;
+  }
+
+  .login_page .login_container .login_form form {
+    min-width: 350px;
+    margin: 0px 20px;
+  }
+}
+
+.validation_error_message {
+  position: absolute;
+  padding: 10px 50px;
+  right: 30px;
+  top: 30px;
+  background-color: #5570f2;
+  
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.validation_error_message p {
+  color: white;
+}
