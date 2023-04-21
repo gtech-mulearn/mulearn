@@ -514,10 +514,11 @@ const Onboarding = (props: Props) => {
         setRoleVerified(response.data.roleVerified);
       })
       .catch(function (error) {
+        console.log(error);
         setHasError({
           error: error.response?.data?.hasError,
           statusCode: error.response?.data?.statusCode,
-          message: error.response?.data?.message?.general,
+          message: error.response?.data?.message?.general[0].email,
         });
         setHasValidationError({
           error: true,
