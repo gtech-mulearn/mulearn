@@ -912,7 +912,7 @@ const Onboarding = (props: Props) => {
                           )}
                         </div>
                         <div className={styles.input_container}>
-                          <label htmlFor="">Phone number</label>
+                          <label htmlFor="">Phone number <span className={styles.required}>*</span></label>
                           <div className={styles.grouped_inputs}>
                             <select
                               style={{ width: "20%", textAlign: "center" }}
