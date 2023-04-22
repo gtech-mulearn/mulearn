@@ -19,9 +19,9 @@ const Onboarding = (props: Props) => {
   const [displayLoader, setDisplayLoader] = useState("flex");
   const [opacityLoader, setOpacityLoader] = useState(1);
   setTimeout(() => {
-    setDisplayLoader("none")
-    setOpacityLoader(0)
-  }, 5000)
+    setDisplayLoader("none");
+    setOpacityLoader(0);
+  }, 5000);
   const [display, setDisplay] = useState("flex");
   const [display2, setDisplay2] = useState("flex");
   const [opacity, setOpacity] = useState(1);
@@ -80,6 +80,7 @@ const Onboarding = (props: Props) => {
   const [roleAPI, setRoleAPI] = useState([{ id: "", title: "" }]);
   //State Array for storing the Area of Interest Options
   const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }]);
+  const [roleException, setRoleException] = useState(true);
 
   //State Varaibles
   const [submitTrigger, setSubmitTrigger] = useState(false);
@@ -452,8 +453,36 @@ const Onboarding = (props: Props) => {
     2027, 2028, 2029, 2030,
   ];
 
+  const handleIndividualMentor = () => {
+    if (orgnization.length > 0) {
+      const indexToRemove = community.indexOf(orgnization);
+
+      // Remove the value at the specified index
+      if (indexToRemove !== -1) {
+        community.splice(indexToRemove, 1);
+      }
+
+      setOrgnization("");
+    }
+  };
+
   const onboard = () => {
-    community.push(orgnization);
+    if (community.length === 0 && orgnization !== "") {
+      community.push(orgnization);
+    } else {
+      let alreadyExists = false;
+
+      community.forEach((element) => {
+        if (element === orgnization || community.includes(orgnization)) {
+          alreadyExists = true;
+        }
+      });
+
+      if (!alreadyExists && orgnization !== "") {
+        community.push(orgnization);
+      }
+    }
+
     const options = {
       method: "POST",
       url: import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/",
@@ -468,7 +497,7 @@ const Onboarding = (props: Props) => {
         mobile: phone, //required
         gender: gender === "" ? null : gender,
         dob: dob === "" ? null : dob,
-        role: role[0]["id"], //required
+        role: role[0]["id"] === "" ? null : role[0]["id"], //required
         organizations:
           orgnization === "" && community.length === 0 ? null : community, //required except for individual
         dept: dept === "" ? null : dept, //required for student and enabler
@@ -476,6 +505,7 @@ const Onboarding = (props: Props) => {
         areaOfInterests: areaOfInterest, //required
       },
     };
+
     axios
       .request(options)
       .then(function (response) {
@@ -484,6 +514,12 @@ const Onboarding = (props: Props) => {
         setRoleVerified(response.data.roleVerified);
       })
       .catch(function (error) {
+        console.log(error);
+        setHasError({
+          error: error.response?.data?.hasError,
+          statusCode: error.response?.data?.statusCode,
+          message: error.response?.data?.message?.general[0].email,
+        });
         setHasValidationError({
           error: true,
           message: error.response.data.message,
@@ -512,8 +548,6 @@ const Onboarding = (props: Props) => {
       .request(token_check)
       .then((response) => {})
       .catch((error) => {
-        console.log(error);
-
         setHasError({
           error: error.response.data.hasError,
           statusCode: error.response.data.statusCode,
@@ -664,6 +698,7 @@ const Onboarding = (props: Props) => {
         }
       });
   }, []);
+
   return (
     <>
       <div className={styles.onboarding_page}>
@@ -679,8 +714,10 @@ const Onboarding = (props: Props) => {
                   ""
                 )}
                 <div className={styles.form_container}>
-
-                  <div className={styles.loader_container} style={{display: displayLoader ,opacity:opacityLoader}}>
+                  <div
+                    className={styles.loader_container}
+                    style={{ display: displayLoader, opacity: opacityLoader }}
+                  >
                     <div className={styles.loader}>
                       <Looder />
                     </div>
@@ -750,6 +787,8 @@ const Onboarding = (props: Props) => {
                           </button>
                           <button
                             onClick={() => {
+                              setRoleException(true);
+
                               setOpacity(0);
                               setTimeout(() => {
                                 setDisplay("none");
@@ -774,6 +813,7 @@ const Onboarding = (props: Props) => {
                           <div className={styles.answers}>
                             <button
                               onClick={() => {
+                                setRoleException(true); //For updating the role to true as they aren't required for mentor
                                 setRole([{ id: "", title: "" }]);
                                 setOpacity2(0);
                                 setTimeout(() => {
@@ -951,10 +991,10 @@ const Onboarding = (props: Props) => {
                             className={styles.input_container}
                           >
                             <label htmlFor="">Community </label>
+
                             <Select
                               onChange={(OnChangeValue) => {
-                                // console.log(OnChangeValue.map((value={value:"", label:""}) => value.value));
-                                // setCommunity(OnChangeValue.map((community:Community) => community.value));
+                                setCommunity([]);
                                 OnChangeValue.map(
                                   (
                                     value: unknown,
@@ -965,8 +1005,9 @@ const Onboarding = (props: Props) => {
                                       value: string;
                                       label: string;
                                     };
-                                    setCommunity([
-                                      ...community,
+
+                                    setCommunity((prev) => [
+                                      ...prev,
                                       typedValue.value,
                                     ]);
                                   }
@@ -982,7 +1023,6 @@ const Onboarding = (props: Props) => {
                                 };
                               })}
                             />
-                            {/* </div> */}
                           </div>
                         </div>
                       </div>
@@ -1003,9 +1043,18 @@ const Onboarding = (props: Props) => {
                                     (college) => college.value === orgnization
                                   )
                                 }
-                                onChange={(option) =>
-                                  option && setOrgnization(option.value)
-                                }
+                                onChange={(option) => {
+                                  // Find the index of the value to remove
+                                  const indexToRemove =
+                                    community.indexOf(orgnization);
+
+                                  // Remove the value at the specified index
+                                  if (indexToRemove !== -1) {
+                                    community.splice(indexToRemove, 1);
+                                  }
+
+                                  option && setOrgnization(option.value);
+                                }}
                                 options={collegeOptions}
                                 isClearable={false}
                                 placeholder="Select college..."
@@ -1137,9 +1186,6 @@ const Onboarding = (props: Props) => {
                                   >
                                     <option value="Select">Select</option>
                                     <option value="Company">Company</option>
-                                    {/* <option value="Community Partner">
-                                      Community Partner
-                                    </option> */}
                                     <option value="Individual">
                                       Individual
                                     </option>
@@ -1163,6 +1209,14 @@ const Onboarding = (props: Props) => {
                                   id="company_field"
                                   name=""
                                   onChange={(e) => {
+                                    const indexToRemove =
+                                      community.indexOf(orgnization);
+
+                                    // Remove the value at the specified index
+                                    if (indexToRemove !== -1) {
+                                      community.splice(indexToRemove, 1);
+                                    }
+
                                     setOrgnization(e.target.value);
                                   }}
                                   required
@@ -1184,36 +1238,9 @@ const Onboarding = (props: Props) => {
                                   )}
                               </div>
                             ) : null}
-                            {mentorRole == "Community Partner" ? (
-                              <div className={styles.input_container}>
-                                <label htmlFor="">
-                                  Community{" "}
-                                  <span className={styles.required}>*</span>
-                                </label>
-                                <select
-                                  id="community_field"
-                                  onChange={(e) => {
-                                    setOrgnization(e.target.value);
-                                  }}
-                                  required
-                                >
-                                  <option value="">Select</option>
-                                  {communityAPI.map((company, index) => {
-                                    return (
-                                      <option key={index} value={company.id}>
-                                        {company.title}
-                                      </option>
-                                    );
-                                  })}
-                                </select>
-                                {submitTrigger &&
-                                  !validations.mentor.organization && (
-                                    <p className={styles.error_message}>
-                                      This field is required
-                                    </p>
-                                  )}
-                              </div>
-                            ) : null}
+                            {mentorRole == "Individual"
+                              ? handleIndividualMentor()
+                              : null}
                           </>
                         )}
                       </div>
@@ -1344,12 +1371,11 @@ const Onboarding = (props: Props) => {
                           onClick={(e) => {
                             e.preventDefault();
                             setSubmitTrigger(true);
-                            console.log(validations);
                             if (
                               validations.firstName &&
                               validations.email &&
                               validations.phone &&
-                              validations.role &&
+                              (validations.role || roleException) &&
                               validations.areaOfInterest &&
                               validations.termsandcondtions
                             ) {
@@ -1420,6 +1446,8 @@ const Onboarding = (props: Props) => {
                                     });
                                   }, 2000);
                                 }
+                              } else if (roleException) {
+                                onboard();
                               }
                             } else {
                               // Set the error message and set error to true

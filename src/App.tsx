@@ -11,7 +11,6 @@ import ForgotPassword from "./Pages/Portal/User/Authentication/ForgotPassword"
 import ResetPassword from "./Pages/Portal/User/Authentication/ResetPassword"
 
 function App() {
-
   return (
     <Routes>
       <Route path="user/validate/:token" element={<Validate />} />
