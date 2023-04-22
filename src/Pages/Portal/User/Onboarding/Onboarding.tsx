@@ -178,10 +178,10 @@ const Onboarding = (props: Props) => {
         phone: false,
       }));
     } else {
-      setBorderStyle(phone_field, false);
+      setBorderStyle(phone_field, true);
       setValidations((prevValidations) => ({
         ...prevValidations,
-        phone: true,
+        phone: false,
       }));
     }
 
@@ -410,7 +410,7 @@ const Onboarding = (props: Props) => {
   }, [
     firstName,
     email,
-    phone,
+    // phone,
     role,
     orgnization,
     areaOfInterest,
@@ -891,11 +891,11 @@ const Onboarding = (props: Props) => {
                               }}
                               required
                             />
-                            {submitTrigger && !validations.phone && (
+                            {/* {submitTrigger && !validations.phone && (
                               <p className={styles.error_message}>
                                 This field is required
                               </p>
-                            )}
+                            )} */}
                           </div>
                         </div>
                       </div>
@@ -951,22 +951,6 @@ const Onboarding = (props: Props) => {
                             className={styles.input_container}
                           >
                             <label htmlFor="">Community </label>
-                            {/* <select
-                              id="community_field"
-                              onChange={(e) => {
-                                setOrgnization(e.target.value);
-                              }}
-                              required
-                            >
-                              <option value="">Select</option>
-                              {communityAPI.map((company, index) => {
-                                return (
-                                  <option key={index} value={company.id}>
-                                    {company.title}
-                                  </option>
-                                );
-                              })}
-                            </select> */}
                             <Select
                               onChange={(OnChangeValue) => {
                                 // console.log(OnChangeValue.map((value={value:"", label:""}) => value.value));
@@ -1000,70 +984,6 @@ const Onboarding = (props: Props) => {
                             />
                             {/* </div> */}
                           </div>
-                          {/*  <label htmlFor="">
-                            Role <span className={styles.required}>*</span>
-                          </label>
-                          <select
-                            id="role_field"
-                            name=""
-                            onChange={(e) => {
-                              setYog("");
-                              setDept("");
-                              setMentorRole("");
-                              setOrgnization("");
-                              setValidations((prevState) => ({
-                                ...prevState,
-                                student: {
-                                  ...prevState.student,
-                                  organization: false,
-                                  department: false,
-                                  yearOfGraduation: false,
-                                },
-                                enabler: {
-                                  ...prevState.enabler,
-                                  organization: false,
-                                  department: false,
-                                },
-                                mentor: {
-                                  ...prevState.mentor,
-                                  organization: false,
-                                  mentorRole: false,
-                                  type: "",
-                                },
-                              }));
-
-                              roleAPI.map((role) => {
-                                e.target.value == ""
-                                  ? setRole([{ id: "", title: "" }])
-                                  : role.id == e.target.value
-                                  ? setRole([
-                                      { id: e.target.value, title: role.title },
-                                    ])
-                                  : null;
-                              });
-                            }}
-                            required
-                          >
-                            <option value="">Select</option>
-                            {roleAPI.map((role, i) => {
-                              return (
-                                <option key={i} value={role.id}>
-                                  {role.title == "Student"
-                                    ? "Are u a currently studying?"
-                                    : role.title == "Enabler"
-                                    ? "Are u a currently working professional?"
-                                    : role.title == "Mentor"
-                                    ? "Are u teaching in a institute?"
-                                    : null}
-                                </option>
-                              );
-                            })}
-                          </select>
-                          {submitTrigger && !validations.role && (
-                            <p className={styles.error_message}>
-                              This field is required
-                            </p>
-                          )} */}
                         </div>
                       </div>
                       <div className={styles.inputs}>
@@ -1428,7 +1348,7 @@ const Onboarding = (props: Props) => {
                             if (
                               validations.firstName &&
                               validations.email &&
-                              validations.phone &&
+                              // validations.phone &&
                               validations.role &&
                               validations.areaOfInterest &&
                               validations.termsandcondtions
