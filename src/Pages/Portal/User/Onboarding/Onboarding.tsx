@@ -178,10 +178,10 @@ const Onboarding = (props: Props) => {
         phone: false,
       }));
     } else {
-      setBorderStyle(phone_field, true);
+      setBorderStyle(phone_field, false);
       setValidations((prevValidations) => ({
         ...prevValidations,
-        phone: false,
+        phone: true,
       }));
     }
 
@@ -410,7 +410,7 @@ const Onboarding = (props: Props) => {
   }, [
     firstName,
     email,
-    // phone,
+    phone,
     role,
     orgnization,
     areaOfInterest,
@@ -872,7 +872,7 @@ const Onboarding = (props: Props) => {
                           )}
                         </div>
                         <div className={styles.input_container}>
-                          <label htmlFor="">Phone number</label>
+                          <label htmlFor="">Phone number <span className={styles.required}>*</span></label>
                           <div className={styles.grouped_inputs}>
                             <select
                               style={{ width: "20%", textAlign: "center" }}
@@ -891,11 +891,11 @@ const Onboarding = (props: Props) => {
                               }}
                               required
                             />
-                            {/* {submitTrigger && !validations.phone && (
+                            {submitTrigger && !validations.phone && (
                               <p className={styles.error_message}>
                                 This field is required
                               </p>
-                            )} */}
+                            )}
                           </div>
                         </div>
                       </div>
@@ -1348,7 +1348,7 @@ const Onboarding = (props: Props) => {
                             if (
                               validations.firstName &&
                               validations.email &&
-                              // validations.phone &&
+                              validations.phone &&
                               validations.role &&
                               validations.areaOfInterest &&
                               validations.termsandcondtions
