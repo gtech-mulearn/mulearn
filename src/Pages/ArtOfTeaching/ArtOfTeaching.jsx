@@ -1,24 +1,24 @@
-import React from "react";
-import Navbar from "../../Components/Navbar/Navbar";
-import Footer from "../../Components/Footer/Footer";
+import React from "react"
+import Navbar from "../../Components/Navbar/Navbar"
+import Footer from "../../Components/Footer/Footer"
 
-import styles from "./ArtOfTeaching.module.css";
-import "./ArtOfTeaching.scss";
+import styles from "./ArtOfTeaching.module.css"
+import "./ArtOfTeaching.scss"
 
-import Faq from "react-faq-component";
+import Faq from "react-faq-component"
 
-import fvimg from "./assets/fvimg.gif";
+import fvimg from "./assets/fvimg.gif"
 
-import MentorCard from "../../Components/MentorCard/MentorCard";
+import MentorCard from "../../Components/MentorCard/MentorCard"
 
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react"
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+import "swiper/css"
+import "swiper/css/pagination"
+import "swiper/css/navigation"
 
-import { Pagination, Navigation } from "swiper";
+import { Pagination, Navigation } from "swiper"
 
 const ArtOfTeaching = () => {
   const data = {
@@ -50,7 +50,7 @@ const ArtOfTeaching = () => {
           "Yes, you can resubmit your entry if you think your previous submission lacked a certain element that you aimed for.",
       },
     ],
-  };
+  }
 
   const fstyles = {
     // bgColor: 'white',
@@ -58,7 +58,7 @@ const ArtOfTeaching = () => {
     rowTitleColor: "#404040",
     rowContentColor: "#373737",
     arrowColor: "#f78c40",
-  };
+  }
   return (
     <>
       <Navbar />
@@ -98,21 +98,7 @@ const ArtOfTeaching = () => {
               </div>
 
               <div className={styles.fv_buttons}>
-                <a
-                  href="https://airtable.com/shrC6h0CFSAZLaZUk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button className={styles.create}>Register Now!</button>
-                </a>
-
-                <a
-                  href="https://mulearn.org/aotnominations"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button className={styles.nomination_button}>Nominate</button>
-                </a>
+                <button className={styles.create}>Registrations Closed</button>
               </div>
             </div>
             <div className={styles.fv_images}>
@@ -419,7 +405,7 @@ const ArtOfTeaching = () => {
       </div>
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default ArtOfTeaching;
+export default ArtOfTeaching

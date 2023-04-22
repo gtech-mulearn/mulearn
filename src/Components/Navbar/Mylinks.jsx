@@ -1,4 +1,4 @@
-const mainlink = "https://learn.mulearn.org";
+const mainlink = "https://learn.mulearn.org"
 export const links = [
   {
     head: -1,
@@ -6,7 +6,7 @@ export const links = [
     submenu: true,
     sublinks: [
       {
-        name: "The Team",
+        name: "Key Pages",
         submenu: true,
         sublinks: [
           {
@@ -14,6 +14,20 @@ export const links = [
             submenu: false,
             sublinks: [],
             link: "/team",
+            foreign: false,
+          },
+          {
+            name: "Terms & Conditions",
+            submenu: false,
+            sublinks: [],
+            link: "/termsandconditions",
+            foreign: false,
+          },
+          {
+            name: "Privacy Policy",
+            submenu: false,
+            sublinks: [],
+            link: "/privacypolicy",
             foreign: false,
           },
         ],
@@ -133,18 +147,18 @@ export const links = [
         submenu: true,
         sublinks: [
           {
-            name: "YIP 2021",
-            submenu: false,
-            sublinks: [],
-            link: "/yip",
-            foreign: false,
-          },
-          {
             name: "Foundation Program",
             submenu: false,
             sublinks: [],
             link: "https://foundation.mulearn.org",
             foreign: true,
+          },
+          {
+            name: "Art of Teaching",
+            submenu: false,
+            sublinks: [],
+            link: "/artofteaching",
+            foreign: false,
           },
         ],
       },
@@ -153,13 +167,6 @@ export const links = [
         name: "Ongoing",
         submenu: true,
         sublinks: [
-          {
-            name: "Art of Teaching",
-            submenu: false,
-            sublinks: [],
-            link: "/artofteaching",
-            foreign: false,
-          },
           {
             name: "Bootcamps",
             submenu: false,
@@ -201,7 +208,7 @@ export const links = [
   },
   {
     head: -1,
-    name: "Events Page",
+    name: "Events",
     submenu: true,
     sublinks: [
       {
@@ -308,6 +315,13 @@ export const links = [
             foreign: false,
           },
           {
+            name: "Civil Engineering",
+            link: mainlink + "/civil",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+          {
             name: "Cyber Security",
             link: mainlink + "/cybersec",
             submenu: false,
@@ -329,8 +343,8 @@ export const links = [
             foreign: false,
           },
           {
-            name: "UI / UX",
-            link: mainlink + "/uiux",
+            name: "UX",
+            link: mainlink + "/ux",
             submenu: false,
             sublinks: [],
             foreign: false,
@@ -342,7 +356,6 @@ export const links = [
             sublinks: [],
             foreign: false,
           },
-
         ],
       },
       {
@@ -495,4 +508,4 @@ export const links = [
       },
     ],
   },
-];
+]

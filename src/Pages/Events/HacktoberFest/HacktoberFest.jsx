@@ -1,11 +1,32 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import Footer from "../../../Components/Footer/Footer";
 import Navbar from "../../../Components/Navbar/Navbar";
 import styles from "./HacktoberFest.module.css";
 
 const HacktoberFest = () => {
-  const profiles = require("./data/hactoberfestcomplete.json");
-  const py_profiles = require("./data/info.json");
+  const [error,setError]= useState()
+  const [profiles,setProfiles] = useState([])
+  const [pyProfiles,setpyProfiles] = useState([])
+  axios.get("https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/hacktoberfest").then(
+  (response)=>{
+    setProfiles(response.data)
+  })
+  .catch((error) => {
+    console.log(error);
+    setError("We are currently facing some difficulties in fetching the data at the moment, will be back soon.")
+    
+  });
+  axios.get("https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/info").then(
+  (response)=>{
+    setpyProfiles(response.data)
+  })
+  .catch((error) => {
+    console.log(error);
+    setError("We are currently facing some difficulties in fetching the data at the moment, will be back soon.")
+    
+  });
+
   return (
     <>
       <Navbar />
@@ -224,6 +245,20 @@ const HacktoberFest = () => {
                     </div>
                   );
                 })}
+                {error && (
+                  <div>
+                    <h1 style={{
+                      width:"auto",
+                      display: 'flex',
+                      justifyContent:'center',
+                      alignContent:'center',
+                      fontSize:'1.5rem',
+                      fontWeight:'500',
+                      padding:"10px"
+                    }} >{error}</h1>
+                  </div>
+
+                )}
             </div>
           </div>
         </div>
@@ -289,8 +324,8 @@ const HacktoberFest = () => {
                   2022.
                 </p>
                 <div className={styles.profile_container}>
-                  {py_profiles &&
-                    py_profiles.map((profile) => {
+                  {pyProfiles &&
+                    pyProfiles.map((profile) => {
                       return (
                         <div className={styles.py_profile}>
                           <img
@@ -311,6 +346,20 @@ const HacktoberFest = () => {
                         </div>
                       );
                     })}
+                    {error && (
+                  <div>
+                    <h1 style={{
+                      width:"auto",
+                      display: 'flex',
+                      justifyContent:'center',
+                      alignContent:'center',
+                      fontSize:'1.5rem',
+                      fontWeight:'500',
+                      padding:"10px"
+                    }} >{error}</h1>
+                  </div>
+
+                )}
                 </div>
               </div>
             </div>

@@ -1,19 +1,35 @@
-import React, { useState } from "react";
-import styles from "./ISR.module.css";
+import React, { useState } from "react"
+import styles from "./ISR.module.css"
 
-import fvimg from "./assets/fvimg.gif";
-import Navbar from "../../../Components/Navbar/Navbar";
-import Footer from "../../../Components/Footer/Footer";
-
-import ISRData from "./data/ISRData";
+import fvimg from "./assets/fvimg.gif"
+import rvimg from "./assets/rvimg.gif"
+import Navbar from "../../../Components/Navbar/Navbar"
+import Footer from "../../../Components/Footer/Footer"
+import axios from "axios"
 
 const ISR = () => {
+  const [isrData, setisrData] = useState([])
+  const [error, setError] = useState()
+  axios
+    .get(
+      "https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/isrcsv"
+    )
+    .then((response) => {
+      setisrData(response.data)
+    })
+    .catch((error) => {
+      console.log(error)
+      setError(
+        "We are currently facing some difficulties in fetching the data at the moment, will be back soon."
+      )
+    })
+
   const ReadMore = ({ children }) => {
-    const text = children;
-    const [isReadMore, setIsReadMore] = useState(true);
+    const text = children
+    const [isReadMore, setIsReadMore] = useState(true)
     const toggleReadMore = () => {
-      setIsReadMore(!isReadMore);
-    };
+      setIsReadMore(!isReadMore)
+    }
     return (
       <p className={styles.card_description}>
         {isReadMore ? text.slice(0, 150) : text}
@@ -21,8 +37,8 @@ const ISR = () => {
           {isReadMore ? "...read more" : " show less"}
         </span>
       </p>
-    );
-  };
+    )
+  }
 
   return (
     <>
@@ -47,6 +63,30 @@ const ISR = () => {
             </div>
           </div>
         </div>
+        <div className={styles.request_view_container}>
+          <div className={styles.request_view}>
+            <div className={styles.rv_images}>
+              <img src={rvimg} alt="" className={styles.rv_img} />
+            </div>
+            <div className={styles.rv_texts}>
+              <p className={styles.rv_heading}>
+                Become <span>Inspiration Station Radio</span> Speaker
+              </p>
+              <p className={styles.rv_tagline}>
+                If you have a story to tell, or you know someone who has a story
+                to tell, then you can request them to come to the Inspiration
+                Station Radio and share their story with our listeners.
+              </p>
+              <a
+                href="https://mulearn.org/isropencall"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className={styles.rv_button}>Apply Now</button>
+              </a>
+            </div>
+          </div>
+        </div>
         <div className={styles.second_view_container}>
           <div className={styles.second_view}>
             <div className={styles.sv_texts}>
@@ -61,7 +101,8 @@ const ISR = () => {
               </p>
             </div>
             <div className={styles.sv_cards_container}>
-              {ISRData.slice(0)
+              {isrData
+                .slice(0)
                 .reverse()
                 .map((isr) => (
                   <div className={styles.sv_cards}>
@@ -75,12 +116,29 @@ const ISR = () => {
                   </div>
                 ))}
             </div>
+            {error && (
+              <div>
+                <h1
+                  style={{
+                    width: "auto",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignContent: "center",
+                    fontSize: "1.5rem",
+                    fontWeight: "500",
+                    padding: "10px",
+                  }}
+                >
+                  {error}
+                </h1>
+              </div>
+            )}
           </div>
         </div>
       </div>
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default ISR;
+export default ISR

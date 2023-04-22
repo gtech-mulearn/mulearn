@@ -1,115 +1,62 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+.main_container {
+  max-width: 1300px;
+  display: block;
+  margin: auto;
+}
 
-.first__section {
-  padding: 1rem 0;
+.first_view_container {
+  margin: 2rem;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  font-family: "Inter", sans-serif;
 }
 
-.fstexts {
-  text-align: center;
-  width: 100%;
-}
-
-.fsheading {
-  font-family: "Noto Sans", sans-serif;
-  font-size: 2.5rem;
+.fv_heading {
+  font-family: Noto Sans, sans-serif;
+  font-size: 3.5rem;
+  margin-top: -4rem;
   font-weight: 600;
-  color: #303030;
-}
-
-.fstagline {
-  font-family: "Poppins", sans-serif;
+  line-height: 5rem;
+  color: #404040;
   text-align: center;
-  margin: 1rem;
+  line-height: 4rem;
 }
 
-.sstagline {
+.fv_tagline {
   font-family: "Poppins";
-  max-width: 40rem;
-  margin: auto;
-  text-align: center;
-  margin-bottom: 2rem;
-  min-height: 145px;
-}
-
-.fsillustration {
-  width: 24rem;
-}
-
-.second__section {
-  margin: 2rem 2rem 0;
-}
-
-.ssheading {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 0rem;
+  font-size: 1.1rem;
+  max-width: 30rem;
   text-align: center;
 }
 
-.ssheadingtagline {
-  font-family: "Poppins", sans-serif;
-  font-size: 0.9rem;
-  text-align: center;
-  margin-bottom: 0.5rem;
+.fv_heading span {
+  color: #f68227;
 }
 
-.ssheadingposttagline {
-  font-family: "Poppins", sans-serif;
-  font-size: 1rem;
-  margin-top: 1rem;
-  text-align: center;
-}
-
-.ssheadingspan {
-  color: #14110a;
-}
-
-.second_section_container {
-  /* display: flex; */
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.second_section_a {
-  max-width: 720px;
-  /* background-color: #ffc77342; */
-  background-color: #fff;
-  border-radius: 5px;
-  padding: 40px 10px;
-  min-height: 700px;
-  max-height: 760px;
-  margin: auto;
-}
-
-.second_section {
-  margin: 1rem;
+.fv_image {
+  width: 20rem;
 }
 
 @media only screen and (min-width: 1000px) {
-  .fsheading {
-    font-family: "Noto Sans", sans-serif;
-    font-size: 4.55rem;
-    line-height: 5rem;
-    font-weight: 600;
+  .fv_image {
+    width: 30rem;
   }
 
-  .fstexts {
-    margin: 2rem;
+  .first_view_container {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .ssheadingtagline {
-    width: 75%;
-    font-size: 1.1rem;
-    display: block;
-    margin: auto;
-    margin-bottom: 0.75rem;
+  .fv_heading {
+    font-size: 4.5rem;
+    max-width: 30rem;
+    text-align: left;
+    line-height: normal;
   }
 
   .ssheadingposttagline {
@@ -135,114 +82,124 @@
     margin: auto;
     margin-bottom: 2rem;
   }
-
-  /* .second_section_a {
-    margin: 10px;
-  } */
 }
 
-.op_jobdescription {
-  margin: 0.25rem 0;
-  background-color: #14110a;
-  color: white;
-  padding: 0.5rem 1.5rem;
-  border-radius: 5px;
-  display: block;
-  margin: auto;
+.image_container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   margin-bottom: 1rem;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
-@media only screen and (min-width: 1300px) {
-  .second_section {
-    max-width: 100vw;
-    margin: auto;
-    margin-top: 3rem;
+.image_container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+.image_container img {
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  margin: 0 1rem;
+  filter: grayscale(100%);
+  width: 8rem;
+
+  animation: move-left 15s linear infinite;
+}
+
+@keyframes move-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
   }
 }
 
-.ssvheading {
-  font-size: 1.75rem;
-  font-family: "Noto Sans", sans-serif;
+.counts {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.count {
+  font-family: "Noto Sans";
   font-weight: 600;
   color: #404040;
+  font-size: 1.75rem;
 }
 
-.sectionseperator {
-  width: 100vw;
+.count_text {
+  font-family: "Poppins";
+  font-size: 1rem;
+}
+
+.hiring_count {
+  margin: 1rem;
+  max-width: 8rem;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
 }
 
 @media only screen and (min-width: 1000px) {
-  .ssheading {
-    font-size: 1.8rem;
-    font-family: "Noto Sans", sans-serif;
-    font-weight: 600;
-    margin-left: 1rem;
-    min-height: 90px;
-  }
-
-  .fstexts {
-    text-align: left;
-    width: 100%;
-  }
-
-  .fstagline {
-    text-align: left;
+  .hiring_count {
+    margin: 2rem;
+    margin-top: 1rem;
     margin-left: 0;
-    /* width: 60%; */
+    text-align: left;
   }
 
-  .sectionseperator {
-    display: block;
-    margin: auto;
-    max-width: 1000px;
+  .count {
+    font-size: 2.2rem;
   }
 
-  .sectionseperator_container {
-    background-color: #F5504D;
-  }
-
-  .op_jobdescription {
-    margin: 0.25rem 0;
-    background-color: #F5504D;
-    color: white;
-    padding: 0.5rem 1.5rem;
-    border-radius: 5px;
-    margin-left: 1rem;
-    display: block;
-    margin: auto;
-    margin-bottom: 2rem;
+  .counts {
+    justify-content: start;
   }
 }
 
-@media only screen and (min-width: 1300px) {
-  .sectionseperator {
-    display: block;
-    margin: auto;
-    max-width: 1300px;
-  }
+.second_view_container {
+  margin: 2rem;
 }
 
-@media only screen and (min-width: 1000px) {
-  .opportunities {
-    /* align-items: center; */
-    display: flex;
-    /* flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: stretch;
-    row-gap: 1rem; */
-  }
-
-  .fsillustration {
-    width: 30rem;
-  }
-}
-@media only screen and (max-width: 400px) {
-  .second_section_a {
-      max-height: 850px;
-    }
-}
-
-.closedcareerscontainer {
+.hiring_name {
+  font-family: "Noto Sans";
+  font-size: 2rem;
   margin-top: 2rem;
+  font-weight: 600;
+  color: #1e3760;
+  text-align: center;
+}
+
+.hiring_tagline {
+  font-family: "Poppins";
+  font-size: 1rem;
+  max-width: 40rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  display: block;
+  margin: auto;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+
+.cards_container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+  row-gap: 1rem;
+  column-gap: 1rem;
 }

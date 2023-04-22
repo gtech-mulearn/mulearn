@@ -10,7 +10,17 @@ module.exports = {
         orange: "#f78c40",
       },
     },
-    extend: {},
+    colors: {
+      'muorange': "#f78c40",
+    },
+    extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
+      fontFamily: {
+        "noto-sans": ["Noto Sans", "sans-serif"],
+      },
+    },
   },
   plugins: [require("flowbite/plugin")],
 };

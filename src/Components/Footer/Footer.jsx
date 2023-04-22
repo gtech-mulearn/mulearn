@@ -32,6 +32,17 @@ const Footer = () => {
 
           <div className={styles.fs_rightside}>
             <a
+              href="http://mulearn.org/whatsapp-community"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/assets/footer/whatsapp.svg"
+                alt="li"
+                className={styles.social}
+              />
+            </a>
+            <a
               href="http://twitter.com/GtechMulearn"
               target="_blank"
               rel="noopener noreferrer"
@@ -64,6 +75,7 @@ const Footer = () => {
                 className={styles.social}
               />
             </a>
+
             <a
               href="https://www.youtube.com/c/mulearn"
               target="_blank"

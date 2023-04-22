@@ -67,13 +67,13 @@ a {
   width: 2rem;
   margin-top: 2rem;
   margin-right: 1rem;
+  transition: 0.5s ease;
 }
 
 .social:hover {
   -webkit-transform: scale(0.8);
   -ms-transform: scale(0.8);
   transform: scale(0.8);
-  transition: 0.5s ease;
 }
 
 @media only screen and (min-width: 1000px) {
