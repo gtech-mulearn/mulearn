@@ -9,6 +9,7 @@ import Success from "./Success";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import Looder from "./assets/Looder";
+import { useFormik } from "formik";
 
 const animatedComponents = makeAnimated();
 
@@ -30,18 +31,8 @@ const Onboarding = (props: Props) => {
   //Getting the token from the URL
   const token = queryParameters.get("id");
   //State Variables for the From
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState(0);
-  const [gender, setGender] = useState("");
-  const [dob, setDob] = useState("");
   const [role, setRole] = useState([{ id: "", title: "" }]);
   const [tcChecked, setTcChecked] = useState(false);
-
-  const [dept, setDept] = useState("");
-  const [yog, setYog] = useState("");
-  const [mentorRole, setMentorRole] = useState("");
   //State Variable for the Form Submission Validation
   const [formSuccess, setFormSuccess] = useState(false);
   const [hasError, setHasError] = useState({
@@ -57,8 +48,6 @@ const Onboarding = (props: Props) => {
 
   const [roleVerified, setRoleVerified] = useState(false);
 
-  //State Array for storing the Area of Interests
-  const [areaOfInterest, setAreaOfInterest] = useState<string[]>([]);
   //State Array for Storing the Organization(Company, Community, College)
   const [orgnization, setOrgnization] = useState("");
   const [community, setCommunity] = useState<string[]>([]);
@@ -80,347 +69,6 @@ const Onboarding = (props: Props) => {
   const [roleAPI, setRoleAPI] = useState([{ id: "", title: "" }]);
   //State Array for storing the Area of Interest Options
   const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }]);
-  const [roleException, setRoleException] = useState(true);
-
-  //State Varaibles
-  const [submitTrigger, setSubmitTrigger] = useState(false);
-  const [validations, setValidations] = useState({
-    firstName: false,
-    email: false,
-    phone: false,
-    role: false,
-    student: {
-      organization: false,
-      department: false,
-      yearOfGraduation: false,
-    },
-    enabler: {
-      organization: false,
-      department: false,
-    },
-    mentor: {
-      organization: false,
-      mentorRole: false,
-      type: "",
-    },
-    areaOfInterest: false,
-    termsandcondtions: false,
-  });
-
-  useEffect(() => {
-    //Getting the Input Field Elements
-    const getInputElem = (id: string): HTMLInputElement =>
-      document.getElementById(id) as HTMLInputElement;
-
-    const first_name = getInputElem("first_name");
-    const email_field = getInputElem("email_field");
-    const phone_field = getInputElem("phone_field");
-    const role_field = getInputElem("role_field");
-    const dept_field = getInputElem("dept_field");
-    const yog_field = getInputElem("yog_field");
-    const mentortype_filed = getInputElem("mentortype_filed");
-    const company_field = getInputElem("company_field");
-    const community_field = getInputElem("community_field");
-
-    const setBorderStyle = (element: HTMLInputElement, condition: boolean) => {
-      if (submitTrigger && element && element.style) {
-        element.style.border = condition ? "1px solid red" : "none";
-      } else {
-        const inputs = [
-          first_name,
-          email_field,
-          phone_field,
-          role_field,
-          dept_field,
-          yog_field,
-          mentortype_filed,
-          company_field,
-          community_field,
-        ];
-
-        inputs.forEach((input) => {
-          input && (input.style.border = "none");
-        });
-      }
-    };
-
-    if (firstName === "") {
-      setBorderStyle(first_name, true);
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        firstName: false,
-      }));
-    } else {
-      setBorderStyle(first_name, false);
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        firstName: true,
-      }));
-    }
-
-    if (email === "") {
-      setBorderStyle(email_field, true);
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        email: false,
-      }));
-    } else {
-      setBorderStyle(email_field, false);
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        email: true,
-      }));
-    }
-
-    if (phone === 0 && phone.toString().length !== 10) {
-      setBorderStyle(phone_field, true);
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        phone: false,
-      }));
-    } else {
-      setBorderStyle(phone_field, false);
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        phone: true,
-      }));
-    }
-
-    //Validation for the Role Field(Mentory, Student or E)
-    if (role[0].id === "") {
-      setBorderStyle(role_field, true);
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        role: false,
-      }));
-    } else {
-      setBorderStyle(role_field, false);
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        role: true,
-      }));
-
-      //Validation for the Mentor Role Field(Company, Community, College)
-      if (["Mentor"].includes(role[0].title)) {
-        if (mentorRole === "") {
-          setBorderStyle(mentortype_filed, true);
-          setValidations((prevValidations) => ({
-            ...prevValidations,
-            mentor: {
-              ...prevValidations.mentor,
-              mentorRole: false,
-            },
-          }));
-        } else {
-          setBorderStyle(mentortype_filed, false);
-          setValidations((prevValidations) => ({
-            ...prevValidations,
-            mentor: {
-              ...prevValidations.mentor,
-              mentorRole: true,
-            },
-          }));
-        }
-      }
-
-      //Validation for the Role Field Values
-      if (["Mentor"].includes(role[0].title)) {
-        //Validation for the Mentor Role Field(Company)
-        if (mentorRole === "Company") {
-          if (orgnization === "") {
-            setBorderStyle(company_field, true);
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              mentor: {
-                ...prevValidations.mentor,
-                organization: false,
-              },
-            }));
-          } else {
-            setBorderStyle(company_field, false);
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              mentor: {
-                ...prevValidations.mentor,
-                organization: true,
-              },
-            }));
-          }
-          //Validation for the Mentor Role Field(Community)
-        } else if (mentorRole === "Community Partner") {
-          if (orgnization === "") {
-            setBorderStyle(community_field, true);
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              mentor: {
-                ...prevValidations.mentor,
-                organization: false,
-              },
-            }));
-          } else {
-            setBorderStyle(community_field, false);
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              mentor: {
-                ...prevValidations.mentor,
-                organization: true,
-              },
-            }));
-          }
-        } else {
-          if (mentorRole === "Individual") {
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              mentor: {
-                ...prevValidations.mentor,
-                organization: true,
-              },
-            }));
-          }
-        }
-      }
-
-      //Validation for the Student and Enabler Role Field Values
-      if (["Student", "Enabler"].includes(role[0].title)) {
-        //Validation for the Student Role Field Values(Year of Graduation, Department, Organization)
-        if (role[0].title === "Student") {
-          if (yog_field.value === "") {
-            setBorderStyle(yog_field, true);
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              student: {
-                ...prevValidations.student,
-                yearOfGraduation: false,
-              },
-            }));
-          } else {
-            setBorderStyle(yog_field, false);
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              student: {
-                ...prevValidations.student,
-                yearOfGraduation: true,
-              },
-            }));
-          }
-
-          if (dept_field.value === "") {
-            setBorderStyle(dept_field, true);
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              student: {
-                ...prevValidations.student,
-                department: false,
-              },
-            }));
-          } else {
-            setBorderStyle(dept_field, false);
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              student: {
-                ...prevValidations.student,
-                department: true,
-              },
-            }));
-          }
-
-          if (orgnization === "") {
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              student: {
-                ...prevValidations.student,
-                organization: false,
-              },
-            }));
-          } else {
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              student: {
-                ...prevValidations.student,
-                organization: true,
-              },
-            }));
-          }
-
-          //Validation for the Enabler Role Field Values(Department, Organization)
-        } else if (role[0].title === "Enabler") {
-          if (dept_field.value === "") {
-            setBorderStyle(dept_field, true);
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              enabler: {
-                ...prevValidations.enabler,
-                department: false,
-              },
-            }));
-          } else {
-            setBorderStyle(dept_field, false);
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              enabler: {
-                ...prevValidations.enabler,
-                department: true,
-              },
-            }));
-          }
-          if (orgnization === "") {
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              enabler: {
-                ...prevValidations.enabler,
-                organization: false,
-              },
-            }));
-          } else {
-            setValidations((prevValidations) => ({
-              ...prevValidations,
-              enabler: {
-                ...prevValidations.enabler,
-                organization: true,
-              },
-            }));
-          }
-        }
-      }
-    }
-
-    if (!tcChecked) {
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        termsandcondtions: false,
-      }));
-    } else {
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        termsandcondtions: true,
-      }));
-    }
-
-    //Validation for the Area of Interest Field
-    if (areaOfInterest.length < 1) {
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        areaOfInterest: false,
-      }));
-    } else {
-      setValidations((prevValidations) => ({
-        ...prevValidations,
-        areaOfInterest: true,
-      }));
-    }
-  }, [
-    firstName,
-    email,
-    phone,
-    role,
-    orgnization,
-    areaOfInterest,
-    dept,
-    yog,
-    submitTrigger,
-    mentorRole,
-    tcChecked,
-  ]);
 
   const customStyles = {
     control: (provided: any) => ({
@@ -453,86 +101,6 @@ const Onboarding = (props: Props) => {
     2027, 2028, 2029, 2030,
   ];
 
-  const handleIndividualMentor = () => {
-    if (orgnization.length > 0) {
-      const indexToRemove = community.indexOf(orgnization);
-
-      // Remove the value at the specified index
-      if (indexToRemove !== -1) {
-        community.splice(indexToRemove, 1);
-      }
-
-      setOrgnization("");
-    }
-  };
-
-  const onboard = () => {
-    if (community.length === 0 && orgnization !== "") {
-      community.push(orgnization);
-    } else {
-      let alreadyExists = false;
-
-      community.forEach((element) => {
-        if (element === orgnization || community.includes(orgnization)) {
-          alreadyExists = true;
-        }
-      });
-
-      if (!alreadyExists && orgnization !== "") {
-        community.push(orgnization);
-      }
-    }
-
-    const options = {
-      method: "POST",
-      url: import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/",
-      headers: {
-        Authorization: "Bearer " + token,
-        "content-type": "application/json",
-      },
-      data: {
-        firstName: firstName, //required
-        lastName: lastName === "" ? null : lastName,
-        email: email, //required
-        mobile: phone, //required
-        gender: gender === "" ? null : gender,
-        dob: dob === "" ? null : dob,
-        role: role[0]["id"] === "" ? null : role[0]["id"], //required
-        organizations:
-          orgnization === "" && community.length === 0 ? null : community, //required except for individual
-        dept: dept === "" ? null : dept, //required for student and enabler
-        yearOfGraduation: yog === "" ? null : yog, //required for student
-        areaOfInterests: areaOfInterest, //required
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        setFormSuccess(true);
-
-        setRoleVerified(response.data.roleVerified);
-      })
-      .catch(function (error) {
-        console.log(error);
-        setHasError({
-          error: error.response?.data?.hasError,
-          statusCode: error.response?.data?.statusCode,
-          message: error.response?.data?.message?.general[0].email,
-        });
-        setHasValidationError({
-          error: true,
-          message: error.response.data.message,
-        });
-        setTimeout(() => {
-          setHasValidationError({
-            error: false,
-            message: "",
-          });
-        }, 3000);
-      });
-  };
-
   useEffect(() => {
     // request for token verification
     const token_check = {
@@ -548,6 +116,8 @@ const Onboarding = (props: Props) => {
       .request(token_check)
       .then((response) => {})
       .catch((error) => {
+        console.log(error);
+
         setHasError({
           error: error.response.data.hasError,
           statusCode: error.response.data.statusCode,
@@ -699,6 +269,110 @@ const Onboarding = (props: Props) => {
       });
   }, []);
 
+  // formik
+
+  const initialValues = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: void 0,
+    gender: "",
+    dob: "",
+    role: "",
+    orgnization: "",
+    community,
+    dept: "",
+    yog: "",
+    mentorRole: "",
+    areaOfInterest: [],
+  };
+  const onSubmit = (values: any) => {
+    console.log(values);
+    values.community.id.push(values.orgnization);
+    const options = {
+      method: "POST",
+      url: import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/",
+      headers: {
+        Authorization: "Bearer " + token,
+        "content-type": "application/json",
+      },
+      data: {
+        firstName: values.firstName, //required
+        lastName: values.lastName === "" ? null : values.lastName,
+        email: values.email, //required
+        mobile: values.phone, //required
+        gender: values.gender === "" ? null : values.gender,
+        dob: values.dob === "" ? null : values.dob,
+        role: role[0]["id"], //required
+        organizations:
+          values.orgnization === "" && values.community.id.length === 0
+            ? null
+            : values.community.id, //required except for individual
+        dept: values.dept === "" ? null : values.dept, //required for student and enabler
+        yearOfGraduation: values.yog === "" ? null : values.yog, //required for student
+        areaOfInterests: values.areaOfInterest, //required
+      },
+    };
+    axios
+      .request(options)
+      .then(function (response) {
+        setFormSuccess(true);
+        setRoleVerified(response.data.roleVerified);
+      })
+      .catch(function (error) {
+        setHasValidationError({
+          error: true,
+          message: error.response.data.message,
+        });
+        setTimeout(() => {
+          setHasValidationError({
+            error: false,
+            message: "",
+          });
+        }, 3000);
+      });
+  };
+
+  const validate = (values: any) => {
+    let errors: any = {};
+    if (!values.firstName) {
+      errors.firstName = "First name is required";
+    }
+    if (!values.email) {
+      errors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+      errors.email = "Email address is invalid";
+    }
+    if (!values.phone) {
+      errors.phone = "Phone number is required";
+    } else if (values.phone.toString().length != 10) {
+      errors.phone = "Phone number is invalid";
+    }
+    if (!values.orgnization) {
+      errors.orgnization = "This field is required";
+    }
+    if (!values.dept) {
+      errors.dept = "Department is required";
+    }
+    if (!values.yog) {
+      errors.yog = "Year of graduation is required";
+    }
+    if (!values.mentorRole) {
+      errors.mentorRole = "Type is required";
+    }
+    if (!values.areaOfInterest) {
+      errors.areaOfInterest = "Area of interest is required";
+    }
+    return errors;
+  };
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+    validate,
+  });
+
+  // console.log(formik.values);
+
   return (
     <>
       <div className={styles.onboarding_page}>
@@ -714,7 +388,7 @@ const Onboarding = (props: Props) => {
                   ""
                 )}
                 <div className={styles.form_container}>
-                  <div
+                  {/* <div
                     className={styles.loader_container}
                     style={{ display: displayLoader, opacity: opacityLoader }}
                   >
@@ -722,7 +396,7 @@ const Onboarding = (props: Props) => {
                       <Looder />
                     </div>
                     <p>We are cooking things for you</p>
-                  </div>
+                  </div> */}
 
                   <div
                     style={{ display: display, opacity: opacity }}
@@ -787,8 +461,6 @@ const Onboarding = (props: Props) => {
                           </button>
                           <button
                             onClick={() => {
-                              setRoleException(true);
-
                               setOpacity(0);
                               setTimeout(() => {
                                 setDisplay("none");
@@ -813,7 +485,6 @@ const Onboarding = (props: Props) => {
                           <div className={styles.answers}>
                             <button
                               onClick={() => {
-                                setRoleException(true); //For updating the role to true as they aren't required for mentor
                                 setRole([{ id: "", title: "" }]);
                                 setOpacity2(0);
                                 setTimeout(() => {
@@ -853,7 +524,7 @@ const Onboarding = (props: Props) => {
                     this information, you will not be able to make any changes
                     or updates. <b>Don't use autofill to fill in the form.</b>
                   </p>
-                  <form autoComplete="off" action="">
+                  <form onSubmit={formik.handleSubmit} autoComplete="off">
                     <div>
                       <div className={styles.inputs}>
                         <div className={styles.input_container}>
@@ -864,28 +535,30 @@ const Onboarding = (props: Props) => {
                           <input
                             id="first_name"
                             type="text"
+                            name="firstName"
                             placeholder="First name"
                             className={styles.input}
-                            onChange={(e) => {
-                              setFirstName(e.target.value);
-                            }}
-                            required
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.firstName}
                           />
-                          {submitTrigger && !validations.firstName && (
-                            <p className={styles.error_message}>
-                              This field is required
-                            </p>
-                          )}
+                          {formik.touched.firstName &&
+                          formik.errors.firstName ? (
+                            <div className={styles.error_message}>
+                              {formik.errors.firstName}
+                            </div>
+                          ) : null}
                         </div>
                         <div className={styles.input_container}>
                           <label htmlFor="">Last Name</label>
                           <input
                             type="text"
+                            name="lastName"
                             placeholder="Last name"
                             className={styles.input}
-                            onChange={(e) => {
-                              setLastName(e.target.value);
-                            }}
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.lastName}
                           />
                         </div>
                       </div>
@@ -896,23 +569,26 @@ const Onboarding = (props: Props) => {
                             <span className={styles.required}>*</span>
                           </label>
                           <input
-                            id="email_field"
                             type="email"
+                            name="email"
                             placeholder="username@domain.com"
                             className={styles.input}
-                            onChange={(e) => {
-                              setEmail(e.target.value);
-                            }}
-                            required
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.email}
+                            // required
                           />
-                          {submitTrigger && !validations.email && (
-                            <p className={styles.error_message}>
-                              This field is required
-                            </p>
-                          )}
+                          {formik.touched.email && formik.errors.email ? (
+                            <div className={styles.error_message}>
+                              {formik.errors.email}
+                            </div>
+                          ) : null}
                         </div>
                         <div className={styles.input_container}>
-                          <label htmlFor="">Phone number <span className={styles.required}>*</span></label>
+                          <label htmlFor="">
+                            Phone number{" "}
+                            <span className={styles.required}>*</span>
+                          </label>
                           <div className={styles.grouped_inputs}>
                             <select
                               style={{ width: "20%", textAlign: "center" }}
@@ -923,19 +599,20 @@ const Onboarding = (props: Props) => {
                             </select>
                             <input
                               id="phone_field"
+                              name="phone"
                               style={{ width: "78%" }}
                               type="number"
                               placeholder="8023456789"
-                              onChange={(e) => {
-                                setPhone(e.target.valueAsNumber);
-                              }}
-                              required
+                              onBlur={formik.handleBlur}
+                              onChange={formik.handleChange}
+                              value={formik.values.phone}
+                              // required
                             />
-                            {submitTrigger && !validations.phone && (
-                              <p className={styles.error_message}>
-                                This field is required
-                              </p>
-                            )}
+                            {formik.touched.phone && formik.errors.phone ? (
+                              <div className={styles.error_message}>
+                                {formik.errors.phone}
+                              </div>
+                            ) : null}
                           </div>
                         </div>
                       </div>
@@ -948,11 +625,10 @@ const Onboarding = (props: Props) => {
                             >
                               <label htmlFor="">Gender</label>
                               <select
-                                name=""
-                                id=""
-                                onChange={(e) => {
-                                  setGender(e.target.value);
-                                }}
+                                name="gender"
+                                onBlur={formik.handleBlur}
+                                onChange={formik.handleChange}
+                                value={formik.values.gender}
                               >
                                 <option value="">Select gender</option>
                                 <option value="male">
@@ -975,12 +651,13 @@ const Onboarding = (props: Props) => {
                               <label htmlFor="">Date of Birth</label>
                               <input
                                 id="gender_field"
+                                name="dob"
                                 type="date"
                                 placeholder="dd/mm/yyyy"
                                 className={styles.input}
-                                onChange={(e) => {
-                                  setDob(e.target.value);
-                                }}
+                                onBlur={formik.handleBlur}
+                                onChange={formik.handleChange}
+                                value={formik.values.dob}
                               />
                             </div>
                           </div>
@@ -991,10 +668,12 @@ const Onboarding = (props: Props) => {
                             className={styles.input_container}
                           >
                             <label htmlFor="">Community </label>
-
                             <Select
+                              name="community.id"
+                              // value={}
                               onChange={(OnChangeValue) => {
-                                setCommunity([]);
+                                // console.log(OnChangeValue.map((value={value:"", label:""}) => value.value));
+                                // setCommunity(OnChangeValue.map((community:Community) => community.value));
                                 OnChangeValue.map(
                                   (
                                     value: unknown,
@@ -1005,11 +684,16 @@ const Onboarding = (props: Props) => {
                                       value: string;
                                       label: string;
                                     };
-
-                                    setCommunity((prev) => [
-                                      ...prev,
+                                    setCommunity([
+                                      ...community,
                                       typedValue.value,
                                     ]);
+                                    formik.handleChange({
+                                      target: {
+                                        name: "community.id",
+                                        value: [...community, typedValue.value],
+                                      },
+                                    });
                                   }
                                 );
                               }}
@@ -1023,6 +707,7 @@ const Onboarding = (props: Props) => {
                                 };
                               })}
                             />
+                            {/* </div> */}
                           </div>
                         </div>
                       </div>
@@ -1037,6 +722,7 @@ const Onboarding = (props: Props) => {
                               </label>
                               <ReactSelect
                                 id="college_field"
+                                name="orgnization"
                                 value={
                                   orgnization.length > 0 &&
                                   collegeOptions.find(
@@ -1044,16 +730,13 @@ const Onboarding = (props: Props) => {
                                   )
                                 }
                                 onChange={(option) => {
-                                  // Find the index of the value to remove
-                                  const indexToRemove =
-                                    community.indexOf(orgnization);
-
-                                  // Remove the value at the specified index
-                                  if (indexToRemove !== -1) {
-                                    community.splice(indexToRemove, 1);
-                                  }
-
                                   option && setOrgnization(option.value);
+                                  formik.handleChange({
+                                    target: {
+                                      name: "orgnization",
+                                      value: option && option.value,
+                                    },
+                                  });
                                 }}
                                 options={collegeOptions}
                                 isClearable={false}
@@ -1075,17 +758,15 @@ const Onboarding = (props: Props) => {
                                     .includes(inputValue.toLowerCase())
                                 }
                                 styles={customStyles}
-                                required
+                                onBlur={formik.handleBlur}
+                                // required
                               />
-                              {submitTrigger &&
-                                ((role[0].title === "Student" &&
-                                  !validations.student.organization) ||
-                                  (role[0].title === "Enabler" &&
-                                    !validations.enabler.organization)) && (
-                                  <p className={styles.error_message}>
-                                    This field is required
-                                  </p>
-                                )}
+                              {formik.touched.orgnization &&
+                              formik.errors.orgnization ? (
+                                <div className={styles.error_message}>
+                                  {formik.errors.orgnization}
+                                </div>
+                              ) : null}
                             </div>
 
                             <div className={styles.input_container}>
@@ -1104,12 +785,12 @@ const Onboarding = (props: Props) => {
                                   </label>
                                   <select
                                     id="dept_field"
-                                    name=""
-                                    onChange={(e) => {
-                                      setDept(e.target.value);
-                                    }}
-                                    value={dept}
-                                    required
+                                    name="dept"
+                                    onBlur={formik.handleBlur}
+                                    onChange={formik.handleChange}
+                                    value={formik.values.dept}
+                                    // value={dept}
+                                    // required
                                   >
                                     <option value="">Select</option>
                                     {departmentAPI.map((dept, index) => {
@@ -1120,15 +801,11 @@ const Onboarding = (props: Props) => {
                                       );
                                     })}
                                   </select>
-                                  {submitTrigger &&
-                                    ((role[0].title === "Student" &&
-                                      !validations.student.department) ||
-                                      (role[0].title === "Enabler" &&
-                                        !validations.enabler.department)) && (
-                                      <p className={styles.error_message}>
-                                        This field is required
-                                      </p>
-                                    )}
+                                  {formik.touched.dept && formik.errors.dept ? (
+                                    <div className={styles.error_message}>
+                                      {formik.errors.dept}
+                                    </div>
+                                  ) : null}
                                 </div>
                                 {role[0].title == "Student" ? (
                                   <div
@@ -1142,9 +819,11 @@ const Onboarding = (props: Props) => {
                                     <select
                                       id="yog_field"
                                       style={{ width: "100%" }} //78%
-                                      name=""
-                                      onChange={(e) => setYog(e.target.value)}
-                                      required
+                                      name="yog"
+                                      onBlur={formik.handleBlur}
+                                      onChange={formik.handleChange}
+                                      value={formik.values.yog}
+                                      // required
                                     >
                                       <option value="">Select</option>
                                       {yog_year.map((year, i) => {
@@ -1155,12 +834,11 @@ const Onboarding = (props: Props) => {
                                         );
                                       })}
                                     </select>
-                                    {submitTrigger &&
-                                      !validations.student.yearOfGraduation && (
-                                        <p className={styles.error_message}>
-                                          This field is required
-                                        </p>
-                                      )}
+                                    {formik.touched.yog && formik.errors.yog ? (
+                                      <div className={styles.error_message}>
+                                        {formik.errors.yog}
+                                      </div>
+                                    ) : null}
                                   </div>
                                 ) : null}
                               </div>
@@ -1178,28 +856,28 @@ const Onboarding = (props: Props) => {
                                   <select
                                     id="mentortype_filed"
                                     style={{ width: "100%" }} //78%
-                                    name=""
-                                    onChange={(e) => {
-                                      setMentorRole(e.target.value);
-                                    }}
-                                    required
+                                    name="mentorRole"
+                                    onBlur={formik.handleBlur}
+                                    onChange={formik.handleChange}
+                                    value={formik.values.mentorRole}
+                                    // required
                                   >
-                                    <option value="Select">Select</option>
+                                    <option value="">Select</option>
                                     <option value="Company">Company</option>
                                     <option value="Individual">
                                       Individual
                                     </option>
                                   </select>
+                                  {formik.touched.mentorRole &&
+                                  formik.errors.mentorRole ? (
+                                    <div className={styles.error_message}>
+                                      {formik.errors.mentorRole}
+                                    </div>
+                                  ) : null}
                                 </div>
-                                {submitTrigger &&
-                                  !validations.mentor.mentorRole && (
-                                    <p className={styles.error_message}>
-                                      This field is required
-                                    </p>
-                                  )}
                               </div>
                             ) : null}
-                            {mentorRole == "Company" ? (
+                            {formik.values.mentorRole == "Company" ? (
                               <div className={styles.input_container}>
                                 <label htmlFor="">
                                   Company{" "}
@@ -1207,18 +885,10 @@ const Onboarding = (props: Props) => {
                                 </label>
                                 <select
                                   id="company_field"
-                                  name=""
-                                  onChange={(e) => {
-                                    const indexToRemove =
-                                      community.indexOf(orgnization);
-
-                                    // Remove the value at the specified index
-                                    if (indexToRemove !== -1) {
-                                      community.splice(indexToRemove, 1);
-                                    }
-
-                                    setOrgnization(e.target.value);
-                                  }}
+                                  name="orgnization"
+                                  onBlur={formik.handleBlur}
+                                  onChange={formik.handleChange}
+                                  value={formik.values.orgnization}
                                   required
                                 >
                                   <option value="">Select</option>
@@ -1230,73 +900,77 @@ const Onboarding = (props: Props) => {
                                     );
                                   })}
                                 </select>
-                                {submitTrigger &&
-                                  !validations.mentor.organization && (
-                                    <p className={styles.error_message}>
-                                      This field is required
-                                    </p>
-                                  )}
+                                {formik.touched.orgnization &&
+                                formik.errors.orgnization ? (
+                                  <div className={styles.error_message}>
+                                    {formik.errors.orgnization}
+                                  </div>
+                                ) : null}
                               </div>
                             ) : null}
-                            {mentorRole == "Individual"
-                              ? handleIndividualMentor()
-                              : null}
                           </>
                         )}
                       </div>
+
                       <div className={styles.inputs}>
-                        {/* <div className={styles.input_container}> */}
                         <div className={styles.label_container}>
                           <label htmlFor="">
                             Areas of Interest / Stack{" "}
                             <span className={styles.required}>*</span>
                           </label>
-                          {submitTrigger && !validations.areaOfInterest && (
-                            <p className={styles.error_message}>
-                              Please select at least one area of interest
-                            </p>
-                          )}
                         </div>
 
                         <div className={styles.aoi_container}>
                           {aoiAPI.map((aoi, i) => {
-                            const checked = areaOfInterest.includes(
-                              aoi.id as string
-                            );
+                            const checked =
+                              formik.values.areaOfInterest.includes(
+                                aoi.id as never
+                              );
                             const disabled =
-                              areaOfInterest.length >= 3 && !checked;
+                              formik.values.areaOfInterest.length >= 3 &&
+                              !checked;
                             return (
                               <label key={i}>
                                 <input
-                                  value={aoi.id}
+                                  name="areaOfInterest"
+                                  onBlur={formik.handleBlur}
+                                  value={formik.values.areaOfInterest}
+                                  // value={aoi.id}
                                   type="checkbox"
                                   checked={checked}
                                   disabled={disabled}
                                   onChange={(e) => {
                                     const selectedId = aoi.id;
                                     if (checked) {
-                                      setAreaOfInterest(
-                                        areaOfInterest.filter(
+                                      formik.setFieldValue(
+                                        "areaOfInterest",
+                                        formik.values.areaOfInterest.filter(
                                           (aois) => aois !== selectedId
                                         )
                                       );
                                     } else {
-                                      setAreaOfInterest(
-                                        [...areaOfInterest, selectedId].slice(
-                                          -3
-                                        )
+                                      formik.setFieldValue(
+                                        "areaOfInterest",
+                                        [
+                                          ...formik.values.areaOfInterest,
+                                          selectedId,
+                                        ].slice(-3)
                                       );
                                     }
                                   }}
-                                  required
+                                  // required
                                 />
                                 <span>{aoi.name}</span>
                               </label>
                             );
                           })}
+                          {formik.touched.areaOfInterest &&
+                          formik.values.areaOfInterest.length == 0 ? (
+                            <div className={styles.error_message}>
+                              Please select atleast one area of interest
+                            </div>
+                          ) : null}
                         </div>
-
-                        {/* </div> */}
                       </div>
                     </div>
                     <div className={styles.form_bottom}>
@@ -1340,23 +1014,20 @@ const Onboarding = (props: Props) => {
                       </div>
                       <div className={styles.form_buttons}>
                         <button
-                          onClick={() => {
-                            setAreaOfInterest([]);
-
-                            setFirstName("");
-                            setLastName("");
-                            setEmail("");
-                            setPhone(0);
-
-                            setRole([{ id: "", title: "" }]);
-                            setDept("");
-                            setOrgnization("");
-                            setYog("");
-                            setMentorRole("");
-                            setTcChecked(false);
-                            setSubmitTrigger(false);
-                          }}
                           type="reset"
+                          onClick={() => {
+                            formik.values.areaOfInterest = [];
+
+                            formik.values.firstName = "";
+                            formik.values.lastName = "";
+                            formik.values.email = "";
+                            formik.values.phone = void 0;
+                            // setRole([{ id: "", title: "" }]);
+                            formik.values.dept = "";
+                            formik.values.orgnization = "";
+                            formik.values.yog = "";
+                            formik.values.mentorRole = "";
+                          }}
                         >
                           Cancel
                         </button>
@@ -1369,101 +1040,34 @@ const Onboarding = (props: Props) => {
                               : { backgroundColor: "#5570f1", opacity: "0.5" }
                           }
                           onClick={(e) => {
-                            e.preventDefault();
-                            setSubmitTrigger(true);
+                            validate(formik.values);
                             if (
-                              validations.firstName &&
-                              validations.email &&
-                              validations.phone &&
-                              (validations.role || roleException) &&
-                              validations.areaOfInterest &&
-                              validations.termsandcondtions
+                              formik.values.firstName == "" ||
+                              formik.errors.firstName ||
+                              formik.errors.email ||
+                              formik.errors.phone ||
+                              formik.errors.areaOfInterest ||
+                              (role[0]["title"] == "Student"
+                                ? formik.errors.orgnization ||
+                                  formik.errors.dept ||
+                                  formik.errors.yog
+                                : null) ||
+                              (role[0]["title"] == "Mentor"
+                                ? formik.errors.mentorRole
+                                : null) ||
+                              (formik.values.mentorRole == "Company"
+                                ? formik.errors.orgnization
+                                : null) ||
+                              (formik.values.areaOfInterest.length == 0
+                                ? true
+                                : null)
                             ) {
-                              if (role[0].title == "Student") {
-                                if (
-                                  validations.student.department &&
-                                  validations.student.organization &&
-                                  validations.student.yearOfGraduation
-                                ) {
-                                  onboard();
-                                } else {
-                                  // Set the error message and set error to true
-                                  setHasValidationError({
-                                    error: true,
-                                    message:
-                                      "Kindly, fill in all the required fields!",
-                                  });
-
-                                  // Wait for 3 seconds and set error to false
-                                  setTimeout(() => {
-                                    setHasValidationError({
-                                      error: false,
-                                      message: "",
-                                    });
-                                  }, 2000);
-                                }
-                              } else if (role[0].title == "Mentor") {
-                                if (
-                                  validations.mentor.mentorRole &&
-                                  validations.mentor.organization
-                                ) {
-                                  onboard();
-                                } else {
-                                  // Set the error message and set error to true
-                                  setHasValidationError({
-                                    error: true,
-                                    message:
-                                      "Kindly, fill in all the required fields!",
-                                  });
-
-                                  // Wait for 3 seconds and set error to false
-                                  setTimeout(() => {
-                                    setHasValidationError({
-                                      error: false,
-                                      message: "",
-                                    });
-                                  }, 2000);
-                                }
-                              } else if (role[0].title == "Enabler") {
-                                if (
-                                  validations.enabler.organization &&
-                                  validations.enabler.department
-                                ) {
-                                  onboard();
-                                } else {
-                                  // Set the error message and set error to true
-                                  setHasValidationError({
-                                    error: true,
-                                    message:
-                                      "Kindly, fill in all the required fields!",
-                                  });
-
-                                  // Wait for 3 seconds and set error to false
-                                  setTimeout(() => {
-                                    setHasValidationError({
-                                      error: false,
-                                      message: "",
-                                    });
-                                  }, 2000);
-                                }
-                              } else if (roleException) {
-                                onboard();
-                              }
+                              console.log("error");
                             } else {
-                              // Set the error message and set error to true
-                              setHasValidationError({
-                                error: true,
-                                message:
-                                  "Kindly, fill in all the required fields!",
-                              });
+                              console.log(formik.values);
 
-                              // Wait for 3 seconds and set error to false
-                              setTimeout(() => {
-                                setHasValidationError({
-                                  error: false,
-                                  message: "",
-                                });
-                              }, 2000);
+                              console.log("no error");
+                              onSubmit(formik.values);
                             }
                           }}
                         >
