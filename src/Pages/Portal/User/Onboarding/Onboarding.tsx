@@ -49,7 +49,7 @@ const Onboarding = (props: Props) => {
   const [roleVerified, setRoleVerified] = useState(false);
 
   //State Array for Storing the Organization(Company, Community, College)
-  const [orgnization, setOrgnization] = useState("");
+  const [organization, setOrganization] = useState("");
   const [community, setCommunity] = useState<string[]>([]);
 
   //State Array for storing the College Options
@@ -279,7 +279,7 @@ const Onboarding = (props: Props) => {
     gender: "",
     dob: "",
     role: "",
-    orgnization: "",
+    organization: "",
     community,
     dept: "",
     yog: "",
@@ -288,7 +288,7 @@ const Onboarding = (props: Props) => {
   };
   const onSubmit = (values: any) => {
     console.log(values);
-    values.community.id.push(values.orgnization);
+    values.community.id.push(values.organization);
     const options = {
       method: "POST",
       url: import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/",
@@ -305,7 +305,7 @@ const Onboarding = (props: Props) => {
         dob: values.dob === "" ? null : values.dob,
         role: role[0]["id"], //required
         organizations:
-          values.orgnization === "" && values.community.id.length === 0
+          values.organization === "" && values.community.id.length === 0
             ? null
             : values.community.id, //required except for individual
         dept: values.dept === "" ? null : values.dept, //required for student and enabler
@@ -348,8 +348,8 @@ const Onboarding = (props: Props) => {
     } else if (values.phone.toString().length != 10) {
       errors.phone = "Phone number is invalid";
     }
-    if (!values.orgnization) {
-      errors.orgnization = "This field is required";
+    if (!values.organization) {
+      errors.organization = "This field is required";
     }
     if (!values.dept) {
       errors.dept = "Department is required";
@@ -722,18 +722,18 @@ const Onboarding = (props: Props) => {
                               </label>
                               <ReactSelect
                                 id="college_field"
-                                name="orgnization"
+                                name="organization"
                                 value={
-                                  orgnization.length > 0 &&
+                                  organization.length > 0 &&
                                   collegeOptions.find(
-                                    (college) => college.value === orgnization
+                                    (college) => college.value === organization
                                   )
                                 }
                                 onChange={(option) => {
-                                  option && setOrgnization(option.value);
+                                  option && setOrganization(option.value);
                                   formik.handleChange({
                                     target: {
-                                      name: "orgnization",
+                                      name: "organization",
                                       value: option && option.value,
                                     },
                                   });
@@ -761,10 +761,10 @@ const Onboarding = (props: Props) => {
                                 onBlur={formik.handleBlur}
                                 // required
                               />
-                              {formik.touched.orgnization &&
-                              formik.errors.orgnization ? (
+                              {formik.touched.organization &&
+                              formik.errors.organization ? (
                                 <div className={styles.error_message}>
-                                  {formik.errors.orgnization}
+                                  {formik.errors.organization}
                                 </div>
                               ) : null}
                             </div>
@@ -885,10 +885,10 @@ const Onboarding = (props: Props) => {
                                 </label>
                                 <select
                                   id="company_field"
-                                  name="orgnization"
+                                  name="organization"
                                   onBlur={formik.handleBlur}
                                   onChange={formik.handleChange}
-                                  value={formik.values.orgnization}
+                                  value={formik.values.organization}
                                   required
                                 >
                                   <option value="">Select</option>
@@ -900,10 +900,10 @@ const Onboarding = (props: Props) => {
                                     );
                                   })}
                                 </select>
-                                {formik.touched.orgnization &&
-                                formik.errors.orgnization ? (
+                                {formik.touched.organization &&
+                                formik.errors.organization ? (
                                   <div className={styles.error_message}>
-                                    {formik.errors.orgnization}
+                                    {formik.errors.organization}
                                   </div>
                                 ) : null}
                               </div>
@@ -1024,7 +1024,7 @@ const Onboarding = (props: Props) => {
                             formik.values.phone = void 0;
                             // setRole([{ id: "", title: "" }]);
                             formik.values.dept = "";
-                            formik.values.orgnization = "";
+                            formik.values.organization = "";
                             formik.values.yog = "";
                             formik.values.mentorRole = "";
                           }}
@@ -1048,7 +1048,7 @@ const Onboarding = (props: Props) => {
                               formik.errors.phone ||
                               formik.errors.areaOfInterest ||
                               (role[0]["title"] == "Student"
-                                ? formik.errors.orgnization ||
+                                ? formik.errors.organization ||
                                   formik.errors.dept ||
                                   formik.errors.yog
                                 : null) ||
@@ -1056,7 +1056,7 @@ const Onboarding = (props: Props) => {
                                 ? formik.errors.mentorRole
                                 : null) ||
                               (formik.values.mentorRole == "Company"
-                                ? formik.errors.orgnization
+                                ? formik.errors.organization
                                 : null) ||
                               (formik.values.areaOfInterest.length == 0
                                 ? true
@@ -1067,7 +1067,7 @@ const Onboarding = (props: Props) => {
                               console.log(formik.values);
 
                               console.log("no error");
-                              onSubmit(formik.values);
+                              // onSubmit(formik.values);
                             }
                           }}
                         >
