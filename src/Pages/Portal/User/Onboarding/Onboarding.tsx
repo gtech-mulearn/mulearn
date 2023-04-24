@@ -101,27 +101,27 @@ const Onboarding = (props: Props) => {
 
   useEffect(() => {
     // request for token verification
-    const token_check = {
-      method: "GET",
-      url:
-        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/jwt/validate",
-      headers: {
-        Authorization: "Bearer " + token,
-        "content-type": "application/json",
-      },
-    };
-    axios
-      .request(token_check)
-      .then((response) => {})
-      .catch((error) => {
-        console.log(error);
+    // const token_check = {
+    //   method: "GET",
+    //   url:
+    //     import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/jwt/validate",
+    //   headers: {
+    //     Authorization: "Bearer " + token,
+    //     "content-type": "application/json",
+    //   },
+    // };
+    // axios
+    //   .request(token_check)
+    //   .then((response) => {})
+    //   .catch((error) => {
+    //     console.log(error);
 
-        setHasError({
-          error: error.response.data.hasError,
-          statusCode: error.response.data.statusCode,
-          message: error.response.data.message.general,
-        });
-      });
+    //     setHasError({
+    //       error: error.response.data.hasError,
+    //       statusCode: error.response.data.statusCode,
+    //       message: error.response.data.message.general,
+    //     });
+    //   });
 
     // request for college list
     const college = {
@@ -286,7 +286,7 @@ const Onboarding = (props: Props) => {
   };
   const onSubmit = (values: any) => {
     console.log(values);
-    values.community.id.push(values.organization);
+    values.community.push(values.organization);
     const options = {
       method: "POST",
       url: import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/",
@@ -303,9 +303,9 @@ const Onboarding = (props: Props) => {
         dob: values.dob === "" ? null : values.dob,
         role: role[0]["id"], //required
         organizations:
-          values.organization === "" && values.community.id.length === 0
+          values.organization === "" && values.community.length === 0
             ? null
-            : values.community.id, //required except for individual
+            : values.community, //required except for individual
         dept: values.dept === "" ? null : values.dept, //required for student and enabler
         yearOfGraduation: values.yog === "" ? null : values.yog, //required for student
         areaOfInterests: values.areaOfInterest, //required
