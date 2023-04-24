@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 
@@ -16,6 +16,23 @@ import campusJsonData from "./data.json";
 
 const CampusChapters = () => {
   const [campusData, setCampusData] = useState(campusJsonData);
+  const [selectedZone, setSelectedZone] = useState("all");
+  const [districts, setDistricts] = useState([]);
+  const [selectedDistrict, setSelectedDistrict] = useState("all");
+
+  //iternate through the campusData and form a array with the unique districts and sort it in alphabetical order
+  useEffect(() => {
+    const districts = campusData.reduce((acc, campus) => {
+      if (!acc.includes(campus.district)) {
+        acc.push(campus.district);
+      }
+      return acc;
+    }, []);
+    console.log(districts);
+    districts.sort();
+    setDistricts(districts);
+  }, [campusData]);
+
   const data = {
     title: "Frequently Asked Questions",
     rows: [
@@ -98,30 +115,126 @@ const CampusChapters = () => {
           <div className={styles.search_view}>
             <div className={styles.sv_texts}>
               <p className={styles.sv_heading}>
-                Find a <span>Campus Chapter</span>
+                Find a <span> Campus Chapter </span>
               </p>
+              <p className={styles.fv_tagline}>
+                Select your zone and district to find the campus chapters near
+                you. µLearn Campus Chapters are a concept that are to be
+                implemented in-house by the Students for the Students.
+              </p>
+            </div>
+            <div className={styles.dropdowns}>
+              <div className={styles.select_wrapper}>
+                <select
+                  className={styles.select}
+                  value={selectedZone}
+                  onChange={(event) => {
+                    setSelectedZone(event.target.value);
+                  }}
+                >
+                  <option value="all" selected>
+                    Select Zone
+                  </option>
+                  <option value="North">North</option>
+                  <option value="Central">Central</option>
+                  <option value="South">South</option>
+                </select>
+              </div>
+              <div className={styles.select_wrapper}>
+                <select
+                  className={styles.select}
+                  value={selectedDistrict}
+                  onChange={(event) => {
+                    setSelectedDistrict(event.target.value);
+                  }}
+                >
+                  <option value="all" selected>
+                    Select District
+                  </option>
+                  {
+                    //iterate through the districts array and return the option element
+                    districts.map((district) => {
+                      return <option value={district}>{district}</option>;
+                    })
+                  }
+                </select>
+              </div>
             </div>
             <div className={styles.sv_search_container}>
               <div className={styles.colleges}>
                 {campusData.map((campus) => {
-                  return (
-                    <div className={styles.college}>
-                      <div className={styles.college_name}>
-                        <p>{campus.name}</p>
-                      </div>
-                      <div className={styles.college_location}>
-                        <p>{campus.district}</p>
-                      </div>
-                      <div className={styles.college_location}>
-                        <p>Campus Lead: {campus.lead}</p>
-                      </div>
-                      {campus.email && (
-                        <div className={styles.college_location}>
-                          <p>Email Address: {campus.email}</p>
+                  //if the selected zone is all, then return all the campuses
+                  if (selectedZone === "all") {
+                    return (
+                      <div className={styles.college}>
+                        <div className={styles.college_name}>{campus.name}</div>
+                        <div className={styles.college_district}>
+                          {campus.district}
                         </div>
-                      )}
-                    </div>
-                  );
+                        <div className={styles.college_zone}>
+                          Zone: {campus.zone}
+                        </div>
+                        <div className={styles.college_lead}>
+                          Campus Lead: {campus.lead}
+                        </div>
+                        {campus.email && (
+                          <div className={styles.college_email}>
+                            Email Address: {campus.email}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  }
+                  //if the selected zone is not all, then return the campuses that match the selected zone
+                  else if (
+                    campus.zone === selectedZone &&
+                    selectedDistrict === "all"
+                  ) {
+                    return (
+                      <div className={styles.college}>
+                        <div className={styles.college_name}>{campus.name}</div>
+                        <div className={styles.college_district}>
+                          {campus.district}
+                        </div>
+                        <div className={styles.college_zone}>
+                          Zone: {campus.zone}
+                        </div>
+                        <div className={styles.college_lead}>
+                          Campus Lead: {campus.lead}
+                        </div>
+                        {campus.email && (
+                          <div className={styles.college_email}>
+                            Email Address: {campus.email}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  }
+                  //if the selected zone is not all, then return the campuses that match the selected zone and district
+                  else if (
+                    campus.zone === selectedZone &&
+                    campus.district === selectedDistrict
+                  ) {
+                    return (
+                      <div className={styles.college}>
+                        <div className={styles.college_name}>{campus.name}</div>
+                        <div className={styles.college_district}>
+                          {campus.district}
+                        </div>
+                        <div className={styles.college_zone}>
+                          Zone: {campus.zone}
+                        </div>
+                        <div className={styles.college_lead}>
+                          Campus Lead: {campus.lead}
+                        </div>
+                        {campus.email && (
+                          <div className={styles.college_email}>
+                            Email Address: {campus.email}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  }
                 })}
               </div>
             </div>

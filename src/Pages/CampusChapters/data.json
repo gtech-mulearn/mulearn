@@ -146,13 +146,13 @@
     },
     {
         "zone": "Central",
-        "name": "MAC Kottayam ",
-        "district": "Kottayam "
+        "name": "MAC Kottayam",
+        "district": "Kottayam"
     },
     {
         "zone": "Central",
         "name": "Union Christian College, Aluva",
-        "district": "Ernakulam ",
+        "district": "Ernakulam",
         "lead": "Famitha"
     },
     {
@@ -242,6 +242,6 @@
     {
         "zone": "South",
         "name": "Bioinformatics Karyavattom ",
-        "district": "Trivandrum "
+        "district": "Trivandrum"
     }
 ]
