@@ -101,27 +101,27 @@ const Onboarding = (props: Props) => {
 
   useEffect(() => {
     // request for token verification
-    // const token_check = {
-    //   method: "GET",
-    //   url:
-    //     import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/jwt/validate",
-    //   headers: {
-    //     Authorization: "Bearer " + token,
-    //     "content-type": "application/json",
-    //   },
-    // };
-    // axios
-    //   .request(token_check)
-    //   .then((response) => {})
-    //   .catch((error) => {
-    //     console.log(error);
+    const token_check = {
+      method: "GET",
+      url:
+        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/jwt/validate",
+      headers: {
+        Authorization: "Bearer " + token,
+        "content-type": "application/json",
+      },
+    };
+    axios
+      .request(token_check)
+      .then((response) => {})
+      .catch((error) => {
+        console.log(error);
 
-    //     setHasError({
-    //       error: error.response.data.hasError,
-    //       statusCode: error.response.data.statusCode,
-    //       message: error.response.data.message.general,
-    //     });
-    //   });
+        setHasError({
+          error: error.response.data.hasError,
+          statusCode: error.response.data.statusCode,
+          message: error.response.data.message.general,
+        });
+      });
 
     // request for college list
     const college = {
