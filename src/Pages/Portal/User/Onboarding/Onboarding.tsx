@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styles from "./Onboarding.module.css";
 type Props = {};
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import ReactSelect from "react-select";
 import Error from "./assets/Error";
 import Success from "./Success";
@@ -14,7 +13,6 @@ import { useFormik } from "formik";
 const animatedComponents = makeAnimated();
 
 const Onboarding = (props: Props) => {
-  const navigate = useNavigate();
   const queryParameters = new URLSearchParams(window.location.search);
   // for hide and question container
   const [displayLoader, setDisplayLoader] = useState("flex");
@@ -388,7 +386,7 @@ const Onboarding = (props: Props) => {
                   ""
                 )}
                 <div className={styles.form_container}>
-                  {/* <div
+                  <div
                     className={styles.loader_container}
                     style={{ display: displayLoader, opacity: opacityLoader }}
                   >
@@ -396,7 +394,7 @@ const Onboarding = (props: Props) => {
                       <Looder />
                     </div>
                     <p>We are cooking things for you</p>
-                  </div> */}
+                  </div>
 
                   <div
                     style={{ display: display, opacity: opacity }}
@@ -672,29 +670,12 @@ const Onboarding = (props: Props) => {
                               name="community.id"
                               // value={}
                               onChange={(OnChangeValue) => {
-                                // console.log(OnChangeValue.map((value={value:"", label:""}) => value.value));
-                                // setCommunity(OnChangeValue.map((community:Community) => community.value));
-                                OnChangeValue.map(
-                                  (
-                                    value: unknown,
-                                    index: number,
-                                    array: readonly unknown[]
-                                  ) => {
-                                    const typedValue = value as {
-                                      value: string;
-                                      label: string;
-                                    };
-                                    setCommunity([
-                                      ...community,
-                                      typedValue.value,
-                                    ]);
-                                    formik.handleChange({
-                                      target: {
-                                        name: "community.id",
-                                        value: [...community, typedValue.value],
-                                      },
-                                    });
-                                  }
+                                formik.setFieldValue(
+                                  "community",
+                                  OnChangeValue.map(
+                                    (value = { value: "", label: "" }) =>
+                                      value.value
+                                  )
                                 );
                               }}
                               closeMenuOnSelect={false}
@@ -1067,7 +1048,7 @@ const Onboarding = (props: Props) => {
                               console.log(formik.values);
 
                               console.log("no error");
-                              // onSubmit(formik.values);
+                              onSubmit(formik.values);
                             }
                           }}
                         >
