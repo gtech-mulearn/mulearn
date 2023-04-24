@@ -15,7 +15,7 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 import campusJsonData from "./data.json";
 
 const CampusChapters = () => {
-  const [campusData, setCampusData] = useState(campusJsonData);
+  const campusData = campusJsonData;
   const [selectedZone, setSelectedZone] = useState("all");
   const [districts, setDistricts] = useState([]);
   const [selectedDistrict, setSelectedDistrict] = useState("all");
@@ -235,6 +235,7 @@ const CampusChapters = () => {
                       </div>
                     );
                   }
+                  return null;
                 })}
               </div>
             </div>
