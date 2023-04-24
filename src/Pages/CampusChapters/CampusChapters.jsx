@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 
@@ -12,8 +12,10 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
+import campusJsonData from "./data.json";
 
 const CampusChapters = () => {
+  const [campusData, setCampusData] = useState(campusJsonData);
   const data = {
     title: "Frequently Asked Questions",
     rows: [
@@ -88,6 +90,40 @@ const CampusChapters = () => {
                 alt=""
                 className={styles.fv_img}
               />
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.search_view_container}>
+          <div className={styles.search_view}>
+            <div className={styles.sv_texts}>
+              <p className={styles.sv_heading}>
+                Find a <span>Campus Chapter</span>
+              </p>
+            </div>
+            <div className={styles.sv_search_container}>
+              <div className={styles.colleges}>
+                {campusData.map((campus) => {
+                  return (
+                    <div className={styles.college}>
+                      <div className={styles.college_name}>
+                        <p>{campus.name}</p>
+                      </div>
+                      <div className={styles.college_location}>
+                        <p>{campus.district}</p>
+                      </div>
+                      <div className={styles.college_location}>
+                        <p>Campus Lead: {campus.lead}</p>
+                      </div>
+                      {campus.email && (
+                        <div className={styles.college_location}>
+                          <p>Email Address: {campus.email}</p>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>

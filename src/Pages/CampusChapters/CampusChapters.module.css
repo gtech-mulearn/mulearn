@@ -520,3 +520,66 @@ p {
     margin-top: 4rem;
   }
 }
+
+@media only screen and (min-width: 1000px) {
+  /* .generator_view_container {
+    padding: 3rem 3rem;
+  } */
+
+  .search_view_container {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4rem;
+    /* text-align: center; */
+  }
+}
+
+.colleges {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.college {
+  margin: 1rem auto 0;
+  width: 300px;
+  box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  padding: 15px;
+  border-radius: 10px;
+  height: 200px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.college_name {
+  margin-top: 0.25rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.college_location {
+  margin-top: 0.25rem;
+  color: rgb(85, 84, 84);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.college_lead {
+  margin-top: 0.25rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+}
+
+.college_email {
+  margin-top: 0.25rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+}
