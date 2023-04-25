@@ -9,8 +9,13 @@ import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import Looder from "./assets/Looder";
 import { useFormik } from "formik";
+import PopUpQuestions from "./PopUpQuestions";
 
 const animatedComponents = makeAnimated();
+
+interface BackendErrors {
+  [fieldName: string]: string[];
+}
 
 const Onboarding = (props: Props) => {
   const queryParameters = new URLSearchParams(window.location.search);
@@ -268,6 +273,19 @@ const Onboarding = (props: Props) => {
   }, []);
 
   // formik
+  const [backendError, setBackendError] = useState<BackendErrors>({});
+
+  const handleBackendErrors = (errors: BackendErrors) => {
+    console.log(errors);
+
+    const formattedErrors: BackendErrors = {};
+    Object.entries(errors).forEach(([fieldName, errorMessages]) => {
+      formattedErrors[fieldName] = errorMessages;
+    });
+    console.log(formattedErrors);
+
+    setBackendError(formattedErrors);
+  };
 
   const initialValues = {
     firstName: "",
@@ -277,16 +295,19 @@ const Onboarding = (props: Props) => {
     gender: "",
     dob: "",
     role: "",
-    organization: "",
+    organization,
     community,
     dept: "",
     yog: "",
     mentorRole: "",
     areaOfInterest: [],
+    general: "",
   };
-  const onSubmit = (values: any) => {
-    console.log(values);
-    values.community.push(values.organization);
+  const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
+    // console.log(values);
+    if (organization != "") {
+      values.community.push(organization);
+    }
     const options = {
       method: "POST",
       url: import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/",
@@ -301,7 +322,7 @@ const Onboarding = (props: Props) => {
         mobile: values.phone, //required
         gender: values.gender === "" ? null : values.gender,
         dob: values.dob === "" ? null : values.dob,
-        role: role[0]["id"], //required
+        role: role[0]["id"] == "" ? null : role[0]["id"], //required
         organizations:
           values.organization === "" && values.community.length === 0
             ? null
@@ -318,10 +339,24 @@ const Onboarding = (props: Props) => {
         setRoleVerified(response.data.roleVerified);
       })
       .catch(function (error) {
-        setHasValidationError({
-          error: true,
-          message: error.response.data.message,
-        });
+        // setHasValidationError({
+        //   error: true,
+        //   message: error.response.data.message,
+        // });
+        if (
+          error.response.data.message &&
+          Object.keys(error.response.data.message).length > 0
+        ) {
+          console.log(error.response.data.message);
+          Object.entries(error.response.data.message).forEach(
+            ([fieldName, errorMessage]) => {
+              console.log(errorMessage);
+              if (Array.isArray(errorMessage)){
+                formik.setFieldError(fieldName, errorMessage?.join(", ") || "");
+              }
+            }
+          );
+        }
         setTimeout(() => {
           setHasValidationError({
             error: false,
@@ -369,7 +404,7 @@ const Onboarding = (props: Props) => {
     validate,
   });
 
-  // console.log(formik.values);
+  console.log(formik.values);
 
   return (
     <>
@@ -471,6 +506,8 @@ const Onboarding = (props: Props) => {
                       </div>
                     </div>
                   </div>
+                  {/* <PopUpQuestions questions="Did you like to become a Mentor ?" answers={["Yes","No"]}/> */}
+                  {/* <PopUpQuestions questions="What is your role ?" answers={[" I'm currently studying","I'm currently working professional","I'm teaching in a institute","I'm a freelancer"]}/> */}
                   {/*2nd question if the user is working prof. or freelancer  */}
                   {secondQuesion ? (
                     <div
@@ -673,7 +710,7 @@ const Onboarding = (props: Props) => {
                                 formik.setFieldValue(
                                   "community",
                                   OnChangeValue.map(
-                                    (value = { value: "", label: "" }) =>
+                                    (value: any = { value: "", label: "" }) =>
                                       value.value
                                   )
                                 );
@@ -711,6 +748,12 @@ const Onboarding = (props: Props) => {
                                   )
                                 }
                                 onChange={(option) => {
+                                  const indexToRemove =
+                                    formik.values.community.indexOf(organization);
+                                  // Remove the value at the specified index
+                                  if (indexToRemove !== -1) {
+                                    formik.values.community.splice(indexToRemove, 1);
+                                  }
                                   option && setOrganization(option.value);
                                   formik.handleChange({
                                     target: {
@@ -954,6 +997,9 @@ const Onboarding = (props: Props) => {
                         </div>
                       </div>
                     </div>
+                    <div className={styles.error_message}>
+                      {formik.errors.general || ""}
+                    </div>
                     <div className={styles.form_bottom}>
                       <div className={styles.checkbox}>
                         <input
@@ -1045,10 +1091,9 @@ const Onboarding = (props: Props) => {
                             ) {
                               console.log("error");
                             } else {
-                              console.log(formik.values);
-
+                              // console.log(formik.values);
                               console.log("no error");
-                              onSubmit(formik.values);
+                              onSubmit(formik.values,{});
                             }
                           }}
                         >
