@@ -14,7 +14,7 @@ import Career from "./Pages/Career/Career";
 import LeaderBoard from "./Pages/LeaderBoard/leaderBoard";
 import WikiSyllabus from "./Pages/WikiSyllabus/WikiSyllabus";
 import HacktoberFest from "./Pages/Events/HacktoberFest/HacktoberFest";
-import Yip from "./Pages/YIP/Yip";
+// import Yip from "./Pages/YIP/Yip";
 import CampusChapters from "./Pages/CampusChapters/CampusChapters";
 import BlogLanding from "./Pages/CampusChapters/Blogs/BlogLanding";
 import BlogTemplate from "./Pages/CampusChapters/Blogs/BlogTemplate/BlogTemplate";
