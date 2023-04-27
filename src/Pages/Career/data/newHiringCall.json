@@ -12,6 +12,36 @@
       "lastdate": "6th May",
       "applylink": "https://airtable.com/shrxkzH8Iv8GHcXCM",
       "jdlink": "https://mulearn.org/jd"
+    },
+    {
+      "date": "04/27/2023",
+      "logo": "/assets/careers/companies/skillactz.png",
+      "role": "Firmware and Embedded Systems Engineer",
+      "company": "SkillActz",
+      "title": "SkillActz Hiring Call",
+      "remuneration": "4 - 5 LPA",
+      "location": "Trivandrum",
+      "lastdate": "April 29th",
+      "applylink": "https://airtable.com/shrdFwXpwvZydYQcn",
+      "extrafield": {
+        "name": "Eligibility",
+        "value": "Graduate(BE/BTech, ME/MTech, BCA, MCA), Excellent programming skills, Year of Graduation - 2021, 2022 or 2023, Willing to work from office"
+      }
+    },
+    {
+      "date": "04/27/2023",
+      "logo": "/assets/careers/companies/skillactz.png",
+      "role": "Software Engineer",
+      "company": "SkillActz",
+      "title": "SkillActz Hiring Call",
+      "remuneration": "3 LPA",
+      "location": "Trivandrum",
+      "lastdate": "April 29th",
+      "applylink": "https://airtable.com/shr0n811j79PAzh6K",
+      "extrafield": {
+        "name": "Eligibility",
+        "value": "Graduate(BE/BTech, BCA, MCA), Excellent programming skills, Year of Graduation - 2021, 2022 or 2023, Willing to work from office"
+      }
     }
   ]
 }
