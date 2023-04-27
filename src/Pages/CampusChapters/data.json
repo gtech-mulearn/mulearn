@@ -1,0 +1,247 @@
+[
+    {
+        "zone": "North",
+        "name": "NSS College of Engineering",
+        "district": "Palakkad",
+        "lead": "Vinil Nair",
+        "email": "vinil2yy@gmail.com"
+    },
+    {
+        "zone": "North",
+        "name": "Vidya Academy of Science and Technology",
+        "district": "Thrissur",
+        "lead": "Kochouseph John",
+        "email": "kochousephjohn26@gmail.com"
+    },
+    {
+        "zone": "North",
+        "name": "LBS College of Engineering",
+        "district": "Kasaragod",
+        "lead": "Sooraj"
+    },
+    {
+        "zone": "North",
+        "name": "Safi Institute of Advanced Study",
+        "district": "Malappuram",
+        "lead": "Jithin M",
+        "email": "jithinragesh@gmail.com"
+    },
+    {
+        "zone": "North",
+        "name": "Jyothi Engineering College",
+        "district": "Thrissur",
+        "lead": "Abhijith Suresh",
+        "email": "abhijithts402@gmail.com"
+    },
+    {
+        "zone": "North",
+        "name": "Christ College of Engineering",
+        "district": "Thrissur",
+        "lead": "Savio"
+    },
+    {
+        "zone": "North",
+        "name": "ERANAD KNOWLEDGECITY TECHNICAL CAMPUS",
+        "district": "Malappuram",
+        "lead": "Saieedhamol"
+    },
+    {
+        "zone": "North",
+        "name": "GOVERNMENT ENGINEERING COLLEGE  Kozhikode",
+        "district": "Kozhikode",
+        "lead": "Anjana"
+    },
+    {
+        "zone": "Central",
+        "name": "College Of Applied Sciences Perisserry",
+        "district": "Alappuzha",
+        "lead": "Akshay s rajan",
+        "email": "akshaysrajanofficial@gmail.com"
+    },
+    {
+        "zone": "Central",
+        "name": "AISAT  TECHNICAL CAMPUS",
+        "district": "Ernakulam",
+        "lead": "Raina"
+    },
+    {
+        "zone": "Central",
+        "name": "COLLEGE OF ENGINEERING AND MANAGEMENT  PUNNAPRA",
+        "district": "Alappuzha",
+        "lead": "Gowrisankar"
+    },
+    {
+        "zone": "Central",
+        "name": "COLLEGE OF ENGINEERING CHENGANNUR",
+        "district": "Alappuzha",
+        "lead": "Abin T Sunil",
+        "email": "abintsunil@gmail.com"
+    },
+    {
+        "zone": "Central",
+        "name": "KRISTU JYOTI COLLEGE OF MANAGEMENT AND TECHNOLOGY",
+        "district": "Kottayam",
+        "lead": "Aryadevi"
+    },
+    {
+        "zone": "Central",
+        "name": "MUTHOOT INSTITUTE OF TECHNOLOGY & SCIENCE",
+        "district": "Ernakulam",
+        "lead": "Milan Deepak",
+        "email": "milandeepak06@gmail.com"
+    },
+    {
+        "zone": "Central",
+        "name": "ST JOSEPHS COLLEGE OF ENGINEERING AND TECHNOLOGY PALAI",
+        "district": "Kottayam",
+        "lead": "Ansan Johny ",
+        "email": "ansanjohny03@gmail.com"
+    },
+    {
+        "zone": "Central",
+        "name": "TOC H INSTITUTE OF SCIENCE & TECHNOLOGY",
+        "district": "Ernakulam",
+        "lead": "Prithvi Ullas"
+    },
+    {
+        "zone": "Central",
+        "name": "Sree Narayana Guru Institute of Science and Technology ",
+        "district": "Ernakulam",
+        "lead": "Jenin Joseph ",
+        "email": "jenin8282@gmail.com"
+    },
+    {
+        "zone": "Central",
+        "name": "GOVERNMENT ENGINEERING COLLEGE IDUKKI",
+        "district": "Idukki",
+        "lead": "Fasna c",
+        "email": "fasnayousaf2020@gmail.com "
+    },
+    {
+        "zone": "Central",
+        "name": "MAR BASELIOS CHRISTIAN COLLEGE OF ENGINEERING & TECHNOLOGY",
+        "district": "Idukki",
+        "lead": "Abhiram  T Sabu"
+    },
+    {
+        "zone": "Central",
+        "name": "Nirmala Arts and Science College Mulanthuruthy",
+        "district": "Ernakulam",
+        "lead": "Efron",
+        "email": "antonyefron007@gmail.com "
+    },
+    {
+        "zone": "Central",
+        "name": "CUSAT SOE",
+        "district": "Ernakulam",
+        "lead": "Ajnas N B",
+        "email": "ajnasnb@gmail.com "
+    },
+    {
+        "zone": "Central",
+        "name": "KMEA Engineering College,  Ernakulam ",
+        "district": "Ernakulam",
+        "lead": "Mansoor Majeed",
+        "email": "mansoormajeedcr7@gmail.com"
+    },
+    {
+        "zone": "Central",
+        "name": "MAC Kottayam",
+        "district": "Kottayam"
+    },
+    {
+        "zone": "Central",
+        "name": "Union Christian College, Aluva",
+        "district": "Ernakulam",
+        "lead": "Famitha"
+    },
+    {
+        "zone": "South",
+        "name": "COLLEGE OF ENGINEERING ARANMULA",
+        "district": "Pathanamthitta",
+        "lead": "Lezin V M",
+        "email": "lezinhere@gmail.com"
+    },
+    {
+        "zone": "South",
+        "name": "Digital University",
+        "district": "Trivandrum",
+        "lead": "Rahulraj P V ",
+        "email": "rahulraj.cs22@duk.ac.in "
+    },
+    {
+        "zone": "South",
+        "name": "MARIAN ENGINEERING COLLEGE",
+        "district": "Trivandrum",
+        "lead": "Aswin Asok",
+        "email": "aswinasokofficial@gmail.com"
+    },
+    {
+        "zone": "South",
+        "name": "Trinity College Of Engineering, Trivandrum",
+        "district": "Trivandrum",
+        "lead": "Anugrah S S",
+        "email": "anugrah.s.s.2002@gmail.com"
+    },
+    {
+        "zone": "South",
+        "name": "University College Kariavattom",
+        "district": "Trivandrum",
+        "lead": "Shakeel Nooh M",
+        "email": "shakeelnoohm2727@gmail.com"
+    },
+    {
+        "zone": "South",
+        "name": "College Of Engineering Perumon",
+        "district": "Kollam",
+        "lead": "Asin Sayed Ali ",
+        "email": "asinsayedali@gmail.com"
+    },
+    {
+        "zone": "South",
+        "name": "TKM College Of Engineering ",
+        "district": "Kollam",
+        "lead": "Renchu Laji",
+        "email": "renchulaji@gmail.com"
+    },
+    {
+        "zone": "South",
+        "name": "College of Engineering Trivandrum ",
+        "district": "Trivandrum",
+        "lead": "Sooraj Mathew ",
+        "email": "soorajsejal@gmail.com"
+    },
+    {
+        "zone": "South",
+        "name": "MBCET",
+        "district": "Trivandrum",
+        "lead": "Aaron K",
+        "email": "aaron03.k@gmail.com "
+    },
+    {
+        "zone": "South",
+        "name": "Sree Chitra Thirunal College of engineering ",
+        "district": "Trivandrum",
+        "lead": "Akhil Sankar",
+        "email": "akhilsankarsctce@gmail.com"
+    },
+    {
+        "zone": "South",
+        "name": "LBSITW",
+        "district": "Trivandrum",
+        "lead": "Shivani Nair Lakshmi",
+        "email": "shivaninairlekshmi@gmail.com"
+    },
+    {
+        "zone": "South",
+        "name": "St thomas insititute for science and technology",
+        "district": "Trivandrum",
+        "lead": "Muhammed R",
+        "email": "muhammedr7025@gmail.com"
+    },
+    {
+        "zone": "South",
+        "name": "Bioinformatics Karyavattom ",
+        "district": "Trivandrum"
+    }
+]

@@ -2,9 +2,9 @@ name: Prod React CI/CD
 
 on:
   push:
-    branches: [ "production" ]
+    branches: [ "old-production" ]
   pull_request:
-    branches: [ "production" ]
+    branches: [ "old-production" ]
   workflow_dispatch:
 
 jobs:

@@ -51,13 +51,10 @@ p {
 .fv_tagline {
   margin-top: 0.5rem;
   font-family: "Poppins", sans-serif;
+  max-width: 35rem;
 }
 
 @media only screen and (min-width: 1000px) {
-  .first_view_container {
-    /* padding: 3rem 3rem; */
-  }
-
   .first_view {
     max-width: 1300px;
     margin: auto;
@@ -176,19 +173,12 @@ p {
   .sv_heading {
     font-family: "Noto Sans", sans-serif;
     font-size: 2.5rem;
-    line-height: 5rem;
     font-weight: 600;
   }
 
   .sv_tagline {
-    margin-top: 1rem;
     font-size: 1rem;
     width: 80%;
-  }
-
-  .sv_texts {
-    text-align: left;
-    width: 50%;
   }
 
   .sv_pheading {
@@ -519,4 +509,109 @@ p {
     margin: auto;
     margin-top: 4rem;
   }
+}
+
+@media only screen and (min-width: 1000px) {
+  /* .generator_view_container {
+    padding: 3rem 3rem;
+  } */
+
+  .search_view_container {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 4rem;
+    /* text-align: center; */
+  }
+}
+
+.dropdowns {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  row-gap: 1rem;
+  column-gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.colleges {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.college {
+  margin: 1rem auto 0;
+  width: 300px;
+  box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  padding: 15px;
+  border-radius: 10px;
+  height: 200px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.college_name {
+  margin-top: 0.25rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #fc9b56;
+}
+
+.college_location {
+  margin-top: 0.25rem;
+  color: rgb(85, 84, 84);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.college_lead {
+  margin-top: 0.25rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+}
+
+.college_email {
+  margin-top: 0.25rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+}
+
+.select_wrapper {
+  width: 200px;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 20px;
+  border: 2px solid #ccc;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.select {
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+  color: #333;
+  padding: 0 20px;
+  border: none;
+  appearance: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.select:focus {
+  outline: none;
+}
+
+.select option {
+  background-color: #fff;
+  color: #333;
 }
