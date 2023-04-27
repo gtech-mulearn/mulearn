@@ -31,7 +31,7 @@ const Career = () => {
             </p>
             <div className={styles.counts}>
               <p className={styles.hiring_count}>
-                <span className={styles.count}>340+</span>
+                <span className={styles.count}>600+</span>
                 <span className={styles.count_text}>Hired Candidates</span>
               </p>
               <p className={styles.hiring_count}>
