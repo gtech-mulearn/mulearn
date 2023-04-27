@@ -276,13 +276,13 @@ const Onboarding = (props: Props) => {
   const [backendError, setBackendError] = useState<BackendErrors>({});
 
   const handleBackendErrors = (errors: BackendErrors) => {
-    console.log(errors);
+    // console.log(errors);
 
     const formattedErrors: BackendErrors = {};
     Object.entries(errors).forEach(([fieldName, errorMessages]) => {
       formattedErrors[fieldName] = errorMessages;
     });
-    console.log(formattedErrors);
+    // console.log(formattedErrors);
 
     setBackendError(formattedErrors);
   };
@@ -347,10 +347,10 @@ const Onboarding = (props: Props) => {
           error.response.data.message &&
           Object.keys(error.response.data.message).length > 0
         ) {
-          console.log(error.response.data.message);
+          // console.log(error.response.data.message);
           Object.entries(error.response.data.message).forEach(
             ([fieldName, errorMessage]) => {
-              console.log(errorMessage);
+              // console.log(errorMessage);
               if (Array.isArray(errorMessage)){
                 formik.setFieldError(fieldName, errorMessage?.join(", ") || "");
               }
@@ -404,7 +404,7 @@ const Onboarding = (props: Props) => {
     validate,
   });
 
-  console.log(formik.values);
+  // console.log(formik.values);
 
   return (
     <>
@@ -1089,10 +1089,10 @@ const Onboarding = (props: Props) => {
                                 ? true
                                 : null)
                             ) {
-                              console.log("error");
+                              // console.log("error");
                             } else {
                               // console.log(formik.values);
-                              console.log("no error");
+                              // console.log("no error");
                               onSubmit(formik.values,{});
                             }
                           }}
