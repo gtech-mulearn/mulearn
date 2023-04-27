@@ -1,0 +1,24 @@
+.main_container {
+  max-width: 1300px;
+  display: block;
+  margin: auto;
+}
+
+.box_one {
+  display: flex;
+  flex-direction: row;
+  background-color: #c0defb;
+  color: 502e45;
+  max-width: 855px;
+  max-height: 410px;
+  border-radius: 12px;
+}
+
+.box_one_texts {
+  padding: 1rem;
+}
+
+.box_one
+{
+    
+}

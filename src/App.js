@@ -37,6 +37,7 @@ import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import Redirection from "./Components/Redirection/Redirection";
 import Layout from "./Layout";
 import { useEffect, useState } from "react";
+import YIP2023 from "./Pages/YIP2023/YIP2023";
 
 function App() {
   const [redirects, setRedirects] = useState([]);
@@ -65,12 +66,12 @@ function App() {
             />
           ))}
           {/* //Redirect /yip to https://yip.kerala.gov.in/yipapp/index.php/idea2022 */}
-          <Route
+          {/* <Route
             path="/yip"
             element={
               <Redirection link="https://yip.kerala.gov.in/" />
             }
-          />
+          /> */}
           <Route path="/careers" element={<Career />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/termsandconditions" element={<TermsAndCondition />} />
@@ -94,7 +95,7 @@ function App() {
             <Route path="/community-partners" element={<CommunityPartner />} />
             <Route path="/artofteaching" element={<ArtOfTeaching />} />
             <Route path="/wikisyllabus" element={<WikiSyllabus />} />
-            {/* <Route path="/yip" element={<Yip />} /> */}
+            <Route path="/yip" element={<YIP2023 />} />
             <Route path="/team">
               <Route path="" element={<Teams />} />
             </Route>
