@@ -11,6 +11,8 @@
   justify-content: space-evenly;
   margin-top: 2rem;
   flex-wrap: wrap;
+  position: relative;
+    z-index: -1;
 }
 
 .box_one {
