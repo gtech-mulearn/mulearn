@@ -1,0 +1,283 @@
+.main_container {
+  max-width: 1600px;
+  margin: 0 auto;
+  font-family: "Poppins", sans-serif;
+}
+
+.first_view {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.box_one {
+  max-width: 855px;
+  box-shadow: 0px 0px 23px rgba(130, 177, 255, 0.22);
+  border-radius: 25px;
+  margin: 1rem;
+}
+
+.upper_box {
+  background-color: #c0defb;
+  display: flex;
+  z-index: 0;
+  flex-direction: row;
+  border-radius: 25px;
+  position: relative;
+}
+
+.ub_texts {
+  padding: 2rem;
+}
+
+.ub_heading {
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 47px;
+  /* or 101% */
+  max-width: 28rem;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+
+  color: #674063;
+}
+
+.ub_text {
+  margin-top: -2rem;
+  font-style: normal;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  font-size: 2rem;
+  max-width: 20rem;
+  line-height: 33px;
+  /* or 98% */
+
+  text-transform: capitalize;
+
+  color: #674063;
+}
+
+.lines {
+  margin-top: -3rem;
+  max-width: 18rem;
+}
+
+.boxoneimg {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 18rem;
+  border-radius: 0 0 25px 0;
+}
+
+.lb_texts {
+  margin-top: 2rem;
+  padding: 2rem;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.55rem;
+  line-height: 30px;
+}
+
+/* If width less than 685px hide the image boxoneimg */
+@media (max-width: 685px) {
+  .boxoneimg {
+    display: none;
+  }
+}
+
+.apply_now {
+  position: absolute;
+  margin-top: -2rem;
+  margin-left: 2rem;
+  z-index: 1;
+  background: #ffffff;
+  box-shadow: 0px 17px 31px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.25rem;
+  padding: 0.75rem 4.5rem;
+  line-height: 33px;
+  /* identical to box height, or 98% */
+
+  text-transform: capitalize;
+
+  color: #674063;
+}
+
+.box_two {
+  max-width: 538px;
+  padding: 2rem;
+  box-shadow: 0px 0px 23px rgba(130, 177, 255, 0.22);
+  border-radius: 25px;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.right_side {
+  display: block;
+  margin: auto;
+}
+
+.bt_header {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.25rem;
+  line-height: 47px;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+  margin-left: 1rem;
+  max-width: 20rem;
+}
+
+.box_two_bottom_section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.bt_qrcode {
+  height: 12rem;
+}
+
+.bt_img {
+  height: 12rem;
+}
+
+.box_three {
+  max-width: 538px;
+  padding: 2rem;
+  box-shadow: 0px 0px 23px rgba(130, 177, 255, 0.22);
+  border-radius: 25px;
+  margin: 1rem;
+}
+
+.bth_header {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36.7864px;
+  line-height: 36px;
+  /* or 98% */
+
+  text-transform: capitalize;
+
+  color: #030a1a;
+}
+
+.oglines {
+  margin-top: -2rem;
+}
+
+.bth_text {
+  font-weight: light;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 21px;
+}
+
+.btn_text b {
+  font-weight: 400;
+  font-size: 1.25rem;
+}
+
+.bth_img {
+  margin-top: 2rem;
+}
+
+@media (max-width: 1460px) {
+  .right_side {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 1048px) {
+  .right_side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 460px) {
+  .bt_img {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .ub_heading {
+    font-size: 2rem;
+  }
+
+  .ub_text {
+    font-size: 1.75rem;
+  }
+
+  .lb_texts {
+    font-size: 1.25rem;
+  }
+
+  .bt_header {
+    font-size: 1.75rem;
+  }
+
+  .bth_header {
+    font-size: 1.75rem;
+  }
+
+  .bth_text {
+    font-size: 1.1rem;
+  }
+
+  .btn_text b {
+    font-size: 1.1rem;
+  }
+}
+
+/*Add a hover effect to all button apply_now*/
+
+.apply_now:hover {
+  background-color: #704a6c;
+  color: #ffffff;
+  transition: ease-in-out 0.3s;
+}
+
+/*Add transitions and effect to changes this proejct to the next level*/
+
+.box_one:hover {
+  box-shadow: 0px 0px 23px rgba(130, 177, 255, 0.22);
+  transition: ease-in-out 0.3s;
+}
+
+.box_two:hover {
+  box-shadow: 0px 0px 23px rgba(130, 177, 255, 0.22);
+  transition: ease-in-out 0.3s;
+}
+
+.box_three:hover {
+  box-shadow: 0px 0px 23px rgba(130, 177, 255, 0.22);
+  transition: ease-in-out 0.3s;
+}
+
+/*Add a hover effect to all button apply_now*/
+
+.apply_now:hover {
+  background-color: #704a6c;
+  color: #ffffff;
+  transition: ease-in-out 0.3s;
+}
+
+
+
+
