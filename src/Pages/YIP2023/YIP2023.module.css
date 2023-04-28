@@ -8,7 +8,8 @@
 .first_view {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  align-items: stretch;
   margin-top: 2rem;
   flex-wrap: wrap;
   position: relative;
@@ -52,7 +53,7 @@
   font-style: normal;
   margin-bottom: 2rem;
   font-weight: 500;
-  font-size: 2rem;
+  font-size: 2.5rem;
   max-width: 20rem;
   line-height: 33px;
   /* or 98% */
@@ -122,10 +123,10 @@
   justify-content: space-between;
 }
 
-.right_side {
+/* .right_side {
   display: block;
   margin: auto;
-}
+} */
 
 .bt_header {
   font-style: normal;
@@ -191,7 +192,8 @@
 }
 
 .bth_img {
-  margin-top: 2rem;
+  margin-top: -3rem;
+  height: 10rem;
 }
 
 @media (max-width: 1460px) {
@@ -273,6 +275,53 @@
   transition: ease-in-out 0.3s;
 }
 
+.apply_now:hover {
+  background-color: #704a6c;
+  color: #ffffff;
+  transition: ease-in-out 0.3s;
+}
+
+.box_four {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #db4569;
+  padding: 2rem;
+  margin: 2rem;
+
+  width: 100%;
+  margin: 1rem;
+  border-radius: 25px;
+}
+
+.bfr_texts {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.75rem;
+  line-height: 36px;
+  max-width: 38rem;
+  /* or 101% */
+
+  color: #ffffff;
+}
 
 
+/*descre the font-size for the foruth box when size is less than 786px maintaining the ratio*/
 
+@media (max-width: 768px) {
+  .bfr_texts {
+    font-size: 1.35rem;
+    line-height: 24px;
+  }
+
+  .box_fourimg {
+    height: 13rem;
+    display: block;
+    margin: auto;
+    margin-top: 2rem;
+  }
+}
