@@ -237,10 +237,47 @@
   }
 
   .bth_text {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   .btn_text b {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 }
+
+/*Add a hover effect to all button apply_now*/
+
+.apply_now:hover {
+  background-color: #704a6c;
+  color: #ffffff;
+  transition: ease-in-out 0.3s;
+}
+
+/*Add transitions and effect to changes this proejct to the next level*/
+
+.box_one:hover {
+  box-shadow: 0px 0px 23px rgba(130, 177, 255, 0.22);
+  transition: ease-in-out 0.3s;
+}
+
+.box_two:hover {
+  box-shadow: 0px 0px 23px rgba(130, 177, 255, 0.22);
+  transition: ease-in-out 0.3s;
+}
+
+.box_three:hover {
+  box-shadow: 0px 0px 23px rgba(130, 177, 255, 0.22);
+  transition: ease-in-out 0.3s;
+}
+
+/*Add a hover effect to all button apply_now*/
+
+.apply_now:hover {
+  background-color: #704a6c;
+  color: #ffffff;
+  transition: ease-in-out 0.3s;
+}
+
+
+
+
