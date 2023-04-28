@@ -8,6 +8,7 @@ import oglines from "./assets/oglines.png";
 import bthimg from "./assets/bthimg.png";
 import qrcode from "./assets/qrcode.png";
 import cat from "./assets/cat.png";
+import box_fourimg from "./assets/box_fourimg.png";
 
 const YIP2023 = () => {
   return (
@@ -32,7 +33,11 @@ const YIP2023 = () => {
                   <img src={boxoneimg} alt="" className={styles.boxoneimg} />
                 </div>
               </div>
-              <a href="https://yip.kerala.gov.in/" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://yip.kerala.gov.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <button className={styles.apply_now}>Apply Now</button>
               </a>
               <div className={styles.lower_box}>
@@ -62,16 +67,33 @@ const YIP2023 = () => {
                   Brainstorm, Collaborate, And Create
                 </p>
                 <img src={oglines} alt="" className={styles.oglines} />
-                <p className={styles.bth_text}>
+                {/* <p className={styles.bth_text}>
                   Join forces with your{" "}
                   <b>
                     friends and other young innovators from across the state to
                     brainstorm, collaborate, and create innovative
                   </b>{" "}
                   solutions to real-world problems.
-                </p>
+                </p> */}
                 <img src={bthimg} alt="" className={styles.bth_img} />
               </div>
+            </div>
+            <div className={styles.box_four}>
+              <div className={styles.bfr_texts}>
+                Pitch your{" "}
+                <b>
+                  ideas and work alongside industry experts to solve real-life
+                  problems.
+                </b>{" "}
+                <br />
+                <br />
+                Get valuable{" "}
+                <b>
+                  feedback and mentorship to refine your solutions and make a
+                  meaningful impact.
+                </b>
+              </div>
+              <img src={box_fourimg} alt="" className={styles.box_fourimg} />
             </div>
           </div>
         </div>
