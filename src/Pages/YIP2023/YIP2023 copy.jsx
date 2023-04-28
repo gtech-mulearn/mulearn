@@ -8,8 +8,6 @@ import oglines from "./assets/oglines.png";
 import bthimg from "./assets/bthimg.png";
 import qrcode from "./assets/qrcode.png";
 import cat from "./assets/cat.png";
-import "./steps.css";
-import "./yip.css";
 import box_fourimg from "./assets/box_fourimg.png";
 
 const YIP2023 = () => {
