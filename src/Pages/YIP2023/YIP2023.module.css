@@ -2,6 +2,7 @@
   max-width: 1600px;
   margin: 0 auto;
   font-family: "Poppins", sans-serif;
+  z-index: -50;
 }
 
 .first_view {
