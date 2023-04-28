@@ -27,11 +27,14 @@ const YIP2023 = () => {
                     Young Innovators Programme 5.0
                   </p>
                 </div>
+
                 <div className={styles.ub_img}>
                   <img src={boxoneimg} alt="" className={styles.boxoneimg} />
                 </div>
               </div>
-              <button className={styles.apply_now}>Apply Now</button>
+              <a href="https://yip.kerala.gov.in/" target="_blank" rel="noopener noreferrer">
+                <button className={styles.apply_now}>Apply Now</button>
+              </a>
               <div className={styles.lower_box}>
                 <p className={styles.lb_texts}>
                   YIP 5.0 is here and{" "}
