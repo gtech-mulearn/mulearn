@@ -23,7 +23,7 @@ const YIP2023 = () => {
               <div className={styles.upper_box}>
                 <div className={styles.ub_texts}>
                   <p className={styles.ub_heading}>
-                    The Kerala's Biggest Innovation Celebration is Here!
+                    Kerala's Biggest <b>Innovation Celebration is here!</b>
                   </p>
                   <img src={lines} alt="" className={styles.lines} />
                   <p className={styles.ub_text}>
