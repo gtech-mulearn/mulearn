@@ -8,13 +8,13 @@
 .first_view {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content:center;
   align-items: stretch;
   margin-top: 2rem;
   margin: 1rem;
   flex-wrap: wrap;
   position: relative;
-    z-index: -1;
+  z-index: -1;
 }
 
 .box_one {
@@ -22,6 +22,7 @@
   box-shadow: 0px 0px 23px rgba(130, 177, 255, 0.22);
   border-radius: 25px;
   margin: 1rem;
+  position: relative;
 }
 
 .upper_box {
@@ -39,7 +40,7 @@
 
 .ub_heading {
   font-weight: 400;
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   line-height: 47px;
   /* or 101% */
   max-width: 28rem;
@@ -54,7 +55,7 @@
   font-style: normal;
   margin-bottom: 2rem;
   font-weight: 500;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   max-width: 20rem;
   line-height: 33px;
   /* or 98% */
@@ -82,7 +83,7 @@
   padding: 2rem;
   font-style: normal;
   font-weight: 300;
-  font-size: 1.55rem;
+  font-size: 1.35rem;
   line-height: 30px;
 }
 
@@ -96,7 +97,8 @@
 .apply_now {
   position: absolute;
   margin-top: -2rem;
-  margin-left: 2rem;
+  margin-right: 3rem;
+  right: 0;
   z-index: 1;
   background: #ffffff;
   box-shadow: 0px 17px 31px rgba(0, 0, 0, 0.12);
@@ -131,18 +133,18 @@
 
 .bt_header {
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 2.25rem;
   line-height: 47px;
   letter-spacing: 0.02em;
   text-transform: capitalize;
   margin-left: 1rem;
-  max-width: 20rem;
+  text-align: right;
 }
 
 .box_two_bottom_section {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: space-between;
   flex-wrap: wrap;
 }
@@ -153,6 +155,7 @@
 
 .bt_img {
   height: 12rem;
+  transform: scaleX(-1);
 }
 
 .box_three {
@@ -166,7 +169,7 @@
 .bth_header {
   font-style: normal;
   font-weight: 500;
-  font-size: 36.7864px;
+  font-size: 2.25rem;
   line-height: 36px;
   /* or 98% */
 
@@ -195,6 +198,7 @@
 .bth_img {
   margin-top: -3rem;
   height: 10rem;
+  /*move this image to the right of the box*/
 }
 
 @media (max-width: 1460px) {
@@ -223,6 +227,24 @@
   .bth_img {
     margin-top: -3rem;
     height: 8rem;
+  }
+}
+
+@media (max-width: 490px) {
+  .box_two_bottom_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bt_header {
+    text-align: center;
+  }
+
+  .bt_qrcode {
+    display: block;
+    margin-top: 2rem;
   }
 }
 
@@ -267,7 +289,8 @@
 /*Add transitions and effect to changes this proejct to the next level*/
 
 .box_one:hover {
-  box-shadow: 0px 0px 23px rgba(130, 177, 255, 0.22);
+  box-shadow: 0px 
+  0px 23px rgba(130, 177, 255, 0.22);
   transition: ease-in-out 0.3s;
 }
 
@@ -314,7 +337,6 @@
 
   color: #ffffff;
 }
-
 
 /*descre the font-size for the foruth box when size is less than 786px maintaining the ratio*/
 

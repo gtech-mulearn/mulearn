@@ -58,7 +58,9 @@ const YIP2023 = () => {
             </div>
             <div className={styles.right_side}>
               <div className={styles.box_two}>
-                <p className={styles.bt_header}>Download the YIP App Now!</p>
+                <p className={styles.bt_header}>
+                  Download the <br /> YIP App Now!
+                </p>
                 <div className={styles.box_two_bottom_section}>
                   <img src={qrcode} alt="" className={styles.bt_qrcode} />
                   <img src={cat} alt="" className={styles.bt_img} />
