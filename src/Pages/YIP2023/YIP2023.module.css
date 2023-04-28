@@ -273,14 +273,6 @@
   transition: ease-in-out 0.3s;
 }
 
-/*Add a hover effect to all button apply_now*/
-
-.apply_now:hover {
-  background-color: #704a6c;
-  color: #ffffff;
-  transition: ease-in-out 0.3s;
-}
-
 
 
 
