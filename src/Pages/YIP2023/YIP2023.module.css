@@ -117,13 +117,14 @@
 
 .box_two {
   max-width: 538px;
+  min-width: 20rem;
   padding: 2rem;
   box-shadow: 0px 0px 23px rgba(130, 177, 255, 0.22);
   border-radius: 25px;
   margin: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: stretch;
 }
 
 /* .right_side {
