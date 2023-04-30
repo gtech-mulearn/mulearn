@@ -29,7 +29,13 @@ const BeWebDev = () => {
                 <span>Supported By</span>
                 <img className={styles.pygrammers} src={pygrammers} alt="" />
               </div>
+              <a
+              href="https://airtable.com/shrurK8gfrunRK7ab"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <button className={styles.register_now}>Register Now</button>
+            </a>
             </div>
             <img src={fv_img} alt="" className={styles.fv_image} />
           </div>
@@ -108,7 +114,13 @@ const BeWebDev = () => {
               So, what are you waiting for? Register now and unlock your full
               stacker potential!
             </p>
-            <button className={styles.register_now}>Register Now</button>
+            <a
+              href="https://airtable.com/shrurK8gfrunRK7ab"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className={styles.register_now}>Register Now</button>
+            </a>
           </div>
         </div>
         <div className={styles.third_view_container}>
