@@ -38,6 +38,7 @@ import Redirection from "./Components/Redirection/Redirection";
 import Layout from "./Layout";
 import { useEffect, useState } from "react";
 import YIP2023 from "./Pages/YIP2023/YIP2023";
+import BeWebDev from "./Pages/Events/BeWebDev/BeWebDev";
 
 function App() {
   const [redirects, setRedirects] = useState([]);
@@ -96,6 +97,7 @@ function App() {
             <Route path="/artofteaching" element={<ArtOfTeaching />} />
             <Route path="/wikisyllabus" element={<WikiSyllabus />} />
             <Route path="/yip" element={<YIP2023 />} />
+            <Route path="/events/bewebdev" element={<BeWebDev />} />
             <Route path="/team">
               <Route path="" element={<Teams />} />
             </Route>
