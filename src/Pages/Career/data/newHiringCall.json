@@ -1,6 +1,21 @@
 {
   "newcalls": [
     {
+      "date": "04/29/2023",
+      "logo": "/assets/careers/companies/faya.jpg",
+      "role": "Senior Python Django Developer",
+      "company": "Faya",
+      "title": "Faya Hiring Call",
+      "remuneration": "6 -12 LPA",
+      "lastdate": "30st April, 2023",
+      "location": "Offline, 5 days working (Monday-Friday)",
+      "applylink": "https://airtable.com/shrXe1HlyltRgyO1R",
+      "extrafield": {
+        "name": "Preferred",
+        "value": "E2+ years of experience in Django Rest Framework, Proficiency in Versioning tools Perks : Refreshments (Around the clock ⏰ )"
+      }
+    },
+    {
       "date": "04/26/2023",
       "logo": "/assets/careers/companies/yip.webp",
       "role": "District Coordinator",
