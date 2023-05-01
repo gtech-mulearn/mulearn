@@ -9,7 +9,7 @@ import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import Looder from "./assets/Looder";
 import { useFormik } from "formik";
-import PopUpQuestions from "./PopUpQuestions";
+import apiGateway from "../../../../services/apiGateway";
 
 const animatedComponents = makeAnimated();
 
@@ -33,6 +33,7 @@ const Onboarding = (props: Props) => {
   const [secondQuesion, setSecondQuesion] = useState(false);
   //Getting the token from the URL
   const token = queryParameters.get("id");
+
   //State Variables for the From
   const [role, setRole] = useState([{ id: "", title: "" }]);
   const [tcChecked, setTcChecked] = useState(false);
@@ -105,22 +106,12 @@ const Onboarding = (props: Props) => {
   ];
 
   useEffect(() => {
+    localStorage.setItem("token", queryParameters.get("id") as string);
     // request for token verification
-    const token_check = {
-      method: "GET",
-      url:
-        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/jwt/validate",
-      headers: {
-        Authorization: "Bearer " + token,
-        "content-type": "application/json",
-      },
-    };
-    axios
-      .request(token_check)
+    apiGateway
+      .get("/api/v1/user/register/jwt/validate")
       .then((response) => {})
       .catch((error) => {
-        console.log(error);
-
         setHasError({
           error: error.response.data.hasError,
           statusCode: error.response.data.statusCode,
@@ -129,18 +120,9 @@ const Onboarding = (props: Props) => {
       });
 
     // request for college list
-    const college = {
-      method: "GET",
-      url:
-        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/college/list",
-      headers: {
-        Authorization: "Bearer " + token,
-        "content-type": "application/json",
-      },
-    };
-    axios
-      .request(college)
-      .then(function (response) {
+    apiGateway
+      .get("/api/v1/user/register/college/list")
+      .then((response) => {
         const colleges = response.data.response.colleges;
         setCollegeAPI(colleges);
         setCollegeOptions(
@@ -153,7 +135,7 @@ const Onboarding = (props: Props) => {
         );
         setDepartmentAPI(response.data.response.departments);
       })
-      .catch(function (error) {
+      .catch((error) => {
         if (error.response.status === 404 || error.response.status === 500) {
           const errorMessage = {
             error: true,
@@ -351,7 +333,7 @@ const Onboarding = (props: Props) => {
           Object.entries(error.response.data.message).forEach(
             ([fieldName, errorMessage]) => {
               // console.log(errorMessage);
-              if (Array.isArray(errorMessage)){
+              if (Array.isArray(errorMessage)) {
                 formik.setFieldError(fieldName, errorMessage?.join(", ") || "");
               }
             }
@@ -749,10 +731,15 @@ const Onboarding = (props: Props) => {
                                 }
                                 onChange={(option) => {
                                   const indexToRemove =
-                                    formik.values.community.indexOf(organization);
+                                    formik.values.community.indexOf(
+                                      organization
+                                    );
                                   // Remove the value at the specified index
                                   if (indexToRemove !== -1) {
-                                    formik.values.community.splice(indexToRemove, 1);
+                                    formik.values.community.splice(
+                                      indexToRemove,
+                                      1
+                                    );
                                   }
                                   option && setOrganization(option.value);
                                   formik.handleChange({
@@ -1093,7 +1080,7 @@ const Onboarding = (props: Props) => {
                             } else {
                               // console.log(formik.values);
                               // console.log("no error");
-                              onSubmit(formik.values,{});
+                              onSubmit(formik.values, {});
                             }
                           }}
                         >
