@@ -9,7 +9,10 @@ import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import Looder from "./assets/Looder";
 import { useFormik } from "formik";
+
+// Services Imports
 import apiGateway from "../../../../services/apiGateway";
+import { onboardingRoutes } from "../../../../services/urls";
 
 const animatedComponents = makeAnimated();
 
@@ -118,9 +121,8 @@ const Onboarding = (props: Props) => {
 
   useEffect(() => {
     localStorage.setItem("token", queryParameters.get("id") as string);
-    // request for token verification
     apiGateway
-      .get("/api/v1/user/register/jwt/validate")
+      .get(onboardingRoutes.validate)
       .then((response) => {})
       .catch((error) => {
         setHasError({
@@ -132,7 +134,7 @@ const Onboarding = (props: Props) => {
 
     // request for college list
     apiGateway
-      .get("/api/v1/user/register/college/list")
+      .get(onboardingRoutes.collegeList)
       .then((response) => {
         const colleges = response.data.response.colleges;
         setCollegeAPI(colleges);
@@ -153,7 +155,7 @@ const Onboarding = (props: Props) => {
     // request for company list
 
     apiGateway
-      .get("/api/v1/user/register/company/list")
+      .get(onboardingRoutes.companyList)
       .then((response) => {
         setCompanyAPI(response.data.response.companies);
       })
@@ -163,7 +165,7 @@ const Onboarding = (props: Props) => {
 
     // request for role list
     apiGateway
-      .get("/api/v1/user/register/role/list")
+      .get(onboardingRoutes.roleList)
       .then((response) => {
         setRoleAPI(response.data.response.roles);
       })
@@ -173,7 +175,7 @@ const Onboarding = (props: Props) => {
 
     // request for area of intersts list
     apiGateway
-      .get("/api/v1/user/register/area-of-interest/list")
+      .get(onboardingRoutes.areaOfInterestList)
       .then((response) => {
         setAoiAPI(response.data.response.aois);
       })
@@ -183,7 +185,7 @@ const Onboarding = (props: Props) => {
 
     // request for community list
     apiGateway
-      .get("/api/v1/user/register/community/list")
+      .get(onboardingRoutes.communityList)
       .then((response) => {
         setCommunityAPI(response.data.response.communities);
       })
