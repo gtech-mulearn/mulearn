@@ -116,6 +116,16 @@
   margin-top: 40px;
 }
 
+.form_container .question_container .question_box .question .answers .verify_email button {
+  width: 100%;
+  background-color: #5570f1;
+  padding: 10px;
+  border: 1px solid #dde2e5;
+  border-radius: 9px;
+  color: white;
+  margin-top: 10px;
+  text-align: center;
+}
 .form_container .question_container .question_box .question .answers button {
   width: 100%;
   /* background-color: #5570f1; */
