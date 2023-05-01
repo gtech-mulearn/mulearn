@@ -71,14 +71,6 @@ const YIP2023 = () => {
                   Brainstorm, Collaborate, And Create
                 </p>
                 <img src={oglines} alt="" className={styles.oglines} />
-                {/* <p className={styles.bth_text}>
-                  Join forces with your{" "}
-                  <b>
-                    friends and other young innovators from across the state to
-                    brainstorm, collaborate, and create innovative
-                  </b>{" "}
-                  solutions to real-world problems.
-                </p> */}
                 <img src={bthimg} alt="" className={styles.bth_img} />
               </div>
             </div>
