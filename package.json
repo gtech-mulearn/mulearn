@@ -25,7 +25,7 @@
     "react-scripts": "5.0.1",
     "react-tabs": "^5.1.0",
     "react-time-ago": "^7.2.1",
-    "swiper": "^8.4.2",
+    "swiper": "^8.4.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

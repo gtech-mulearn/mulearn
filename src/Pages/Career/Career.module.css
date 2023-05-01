@@ -59,8 +59,28 @@
     line-height: normal;
   }
 
-  .fv_tagline {
-    text-align: left;
+  .ssheadingposttagline {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+
+    width: 60%;
+    display: block;
+    margin: auto;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .fstagline {
+    font-size: 1.1rem;
+    width: 60%;
+    margin: auto;
+  }
+
+  .first__section {
+    max-width: 1300px;
+    flex-direction: row;
+    margin: auto;
+    margin-bottom: 2rem;
   }
 }
 
