@@ -105,6 +105,17 @@ const Onboarding = (props: Props) => {
     2027, 2028, 2029, 2030,
   ];
 
+  const errorHandler = (status: number, dataStatus: number) => {
+    if (status === 404 || status === 500) {
+      const errorMessage = {
+        error: true,
+        statusCode: dataStatus,
+        message: "Something went wrong, Please try again Later",
+      };
+      setHasError(errorMessage);
+    }
+  };
+
   useEffect(() => {
     localStorage.setItem("token", queryParameters.get("id") as string);
     // request for token verification
@@ -136,14 +147,7 @@ const Onboarding = (props: Props) => {
         setDepartmentAPI(response.data.response.departments);
       })
       .catch((error) => {
-        if (error.response.status === 404 || error.response.status === 500) {
-          const errorMessage = {
-            error: true,
-            statusCode: error.response.data.status,
-            message: "Something went wrong, Please try again Later",
-          };
-          setHasError(errorMessage);
-        }
+        errorHandler(error.response.status, error.response.data.status);
       });
 
     // request for company list
@@ -154,14 +158,7 @@ const Onboarding = (props: Props) => {
         setCompanyAPI(response.data.response.companies);
       })
       .catch((error) => {
-        if (error.response.status === 404 || error.response.status === 500) {
-          const errorMessage = {
-            error: true,
-            statusCode: error.response.data.status,
-            message: "Something went wrong, Please try again Later",
-          };
-          setHasError(errorMessage);
-        }
+        errorHandler(error.response.status, error.response.data.status);
       });
 
     // request for role list
@@ -171,16 +168,7 @@ const Onboarding = (props: Props) => {
         setRoleAPI(response.data.response.roles);
       })
       .catch((error) => {
-        if (
-          error.response.data.statusCode === 404 ||
-          error.response.data.statusCode === 500
-        ) {
-          setHasError({
-            error: true,
-            statusCode: error.response.data.statusCode,
-            message: "Something went wrong, please try again later",
-          });
-        }
+        errorHandler(error.response.status, error.response.data.status);
       });
 
     // request for area of intersts list
@@ -190,14 +178,7 @@ const Onboarding = (props: Props) => {
         setAoiAPI(response.data.response.aois);
       })
       .catch((error) => {
-        if (error.response.status === 404 || error.response.status === 500) {
-          const errorMessage = {
-            error: true,
-            statusCode: error.response.data.status,
-            message: "Something went wrong, Please try again Later",
-          };
-          setHasError(errorMessage);
-        }
+        errorHandler(error.response.status, error.response.data.status);
       });
 
     // request for community list
@@ -207,14 +188,7 @@ const Onboarding = (props: Props) => {
         setCommunityAPI(response.data.response.communities);
       })
       .catch((error) => {
-        if (error.response.status === 404 || error.response.status === 500) {
-          const errorMessage = {
-            error: true,
-            statusCode: error.response.data.status,
-            message: "Something went wrong, Please try again Later",
-          };
-          setHasError(errorMessage);
-        }
+        errorHandler(error.response.status, error.response.data.status);
       });
   }, []);
 
