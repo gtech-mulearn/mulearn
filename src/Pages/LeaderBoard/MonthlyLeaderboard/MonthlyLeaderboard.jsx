@@ -11,20 +11,20 @@ const MonthlyLeaderboard = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_LEADERBOARD_API}/monthly/colleges`)
+      .get(`${process.env.REACT_APP_LEADERBOARD_API}/api/v1/leaderboard/college-monthly/`)
       .then(function (response) {
-        console.log(response.data.data);
-        setColleges(response.data.data);
+        // console.log(response.data.response);
+        setColleges(response.data.response);
       })
       .catch(function (error) {
         console.log(error);
       });
 
     axios
-      .get(`${process.env.REACT_APP_LEADERBOARD_API}/monthly/students`)
+      .get(`${process.env.REACT_APP_LEADERBOARD_API}/api/v1/leaderboard/students-monthly/`)
       .then(function (response) {
-        console.log(response.data.data);
-        setStudents(response.data.data);
+        // console.log(response.data.response);
+        setStudents(response.data.response);
       })
       .catch(function (error) {
         console.log(error);
