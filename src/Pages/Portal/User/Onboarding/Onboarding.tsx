@@ -13,6 +13,14 @@ import { useFormik } from "formik";
 // Services Imports
 import apiGateway from "../../../../services/apiGateway";
 import { onboardingRoutes } from "../../../../services/urls";
+import {
+  getColleges,
+  getCommunties,
+  getCompanies,
+  getInterests,
+  getRoles,
+  validateToken,
+} from "./helpers/apis";
 
 const animatedComponents = makeAnimated();
 
@@ -121,77 +129,17 @@ const Onboarding = (props: Props) => {
 
   useEffect(() => {
     localStorage.setItem("token", queryParameters.get("id") as string);
-    apiGateway
-      .get(onboardingRoutes.validate)
-      .then((response) => {})
-      .catch((error) => {
-        setHasError({
-          error: error.response.data.hasError,
-          statusCode: error.response.data.statusCode,
-          message: error.response.data.message.general,
-        });
-      });
-
-    // request for college list
-    apiGateway
-      .get(onboardingRoutes.collegeList)
-      .then((response) => {
-        const colleges = response.data.response.colleges;
-        setCollegeAPI(colleges);
-        setCollegeOptions(
-          colleges
-            .sort((a: any, b: any) => a.title.localeCompare(b.title))
-            .map((college: any) => ({
-              value: college.id,
-              label: college.title,
-            }))
-        );
-        setDepartmentAPI(response.data.response.departments);
-      })
-      .catch((error) => {
-        errorHandler(error.response.status, error.response.data.status);
-      });
-
-    // request for company list
-
-    apiGateway
-      .get(onboardingRoutes.companyList)
-      .then((response) => {
-        setCompanyAPI(response.data.response.companies);
-      })
-      .catch((error) => {
-        errorHandler(error.response.status, error.response.data.status);
-      });
-
-    // request for role list
-    apiGateway
-      .get(onboardingRoutes.roleList)
-      .then((response) => {
-        setRoleAPI(response.data.response.roles);
-      })
-      .catch((error) => {
-        errorHandler(error.response.status, error.response.data.status);
-      });
-
-    // request for area of intersts list
-    apiGateway
-      .get(onboardingRoutes.areaOfInterestList)
-      .then((response) => {
-        setAoiAPI(response.data.response.aois);
-      })
-      .catch((error) => {
-        errorHandler(error.response.status, error.response.data.status);
-      });
-
-    // request for community list
-    apiGateway
-      .get(onboardingRoutes.communityList)
-      .then((response) => {
-        setCommunityAPI(response.data.response.communities);
-      })
-      .catch((error) => {
-        errorHandler(error.response.status, error.response.data.status);
-      });
+    validateToken(setHasError);
+    getColleges(
+      setCollegeAPI,
+      setCollegeOptions,
+      setDepartmentAPI,
+      errorHandler
+    );
+    getCommunties(errorHandler, setCompanyAPI);
+    getCompanies(errorHandler, setCompanyAPI);
+    getInterests(errorHandler, setAoiAPI);
+    getRoles(errorHandler, setRoleAPI);
   }, []);
 
   // formik
@@ -230,49 +178,37 @@ const Onboarding = (props: Props) => {
     if (organization != "") {
       values.community.push(organization);
     }
-    const options = {
-      method: "POST",
-      url: import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/",
-      headers: {
-        Authorization: "Bearer " + token,
-        "content-type": "application/json",
-      },
-      data: {
-        firstName: values.firstName, //required
-        lastName: values.lastName === "" ? null : values.lastName,
-        email: values.email, //required
-        mobile: values.phone, //required
-        gender: values.gender === "" ? null : values.gender,
-        dob: values.dob === "" ? null : values.dob,
-        role: role[0]["id"] == "" ? null : role[0]["id"], //required
-        organizations:
-          values.organization === "" && values.community.length === 0
-            ? null
-            : values.community, //required except for individual
-        dept: values.dept === "" ? null : values.dept, //required for student and enabler
-        yearOfGraduation: values.yog === "" ? null : values.yog, //required for student
-        areaOfInterests: values.areaOfInterest, //required
-      },
+
+    const userData = {
+      firstName: values.firstName, //required
+      lastName: values.lastName === "" ? null : values.lastName,
+      email: values.email, //required
+      mobile: values.phone, //required
+      gender: values.gender === "" ? null : values.gender,
+      dob: values.dob === "" ? null : values.dob,
+      role: role[0]["id"] == "" ? null : role[0]["id"], //required
+      organizations:
+        values.organization === "" && values.community.length === 0
+          ? null
+          : values.community, //required except for individual
+      dept: values.dept === "" ? null : values.dept, //required for student and enabler
+      yearOfGraduation: values.yog === "" ? null : values.yog, //required for student
+      areaOfInterests: values.areaOfInterest, //required
     };
-    axios
-      .request(options)
-      .then(function (response) {
+
+    apiGateway
+      .post(onboardingRoutes.register, userData)
+      .then((response) => {
         setFormSuccess(true);
         setRoleVerified(response.data.roleVerified);
       })
-      .catch(function (error) {
-        // setHasValidationError({
-        //   error: true,
-        //   message: error.response.data.message,
-        // });
+      .catch((error) => {
         if (
           error.response.data.message &&
           Object.keys(error.response.data.message).length > 0
         ) {
-          // console.log(error.response.data.message);
           Object.entries(error.response.data.message).forEach(
             ([fieldName, errorMessage]) => {
-              // console.log(errorMessage);
               if (Array.isArray(errorMessage)) {
                 formik.setFieldError(fieldName, errorMessage?.join(", ") || "");
               }
@@ -325,8 +261,6 @@ const Onboarding = (props: Props) => {
     onSubmit,
     validate,
   });
-
-  // console.log(formik.values);
 
   return (
     <>
