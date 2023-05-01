@@ -195,8 +195,6 @@ const Onboarding = (props: Props) => {
       areaOfInterests: values.areaOfInterest, //required
     };
 
-    console.log("Yayy!")
-
     registerUser(
       setFormSuccess,
       setRoleVerified,
