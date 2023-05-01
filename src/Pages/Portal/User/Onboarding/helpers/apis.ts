@@ -1,8 +1,12 @@
 import apiGateway from "../../../../../services/apiGateway";
 import { onboardingRoutes } from "../../../../../services/urls";
-
+import { FormikErrors, FormikProps, FormikTouched, FormikValues } from "formik";
 import { Dispatch, SetStateAction } from "react";
 
+// Define the type of the function parameter
+type MyFunction = () => void;
+
+// Define the type of MyValues
 type hasError = Dispatch<
   SetStateAction<{
     error: boolean;
@@ -38,8 +42,19 @@ type collegeOptions = Dispatch<
   >
 >;
 
+type hasValidationError = Dispatch<
+  SetStateAction<{
+    error: boolean;
+    message: string;
+  }>
+>;
+
+type FormSuccess = Dispatch<SetStateAction<boolean>>;
+type RoleVerified = Dispatch<SetStateAction<boolean>>;
+
 type errorHandler = (status: number, dataStatus: number) => void;
 
+// request for token validation
 export const validateToken = (setHasError: hasError) => {
   apiGateway
     .get(onboardingRoutes.validate)
@@ -53,6 +68,7 @@ export const validateToken = (setHasError: hasError) => {
     });
 };
 
+// request for colleges list
 export const getColleges = (
   setCollegeAPI: getAPI,
   setCollegeOptions: collegeOptions,
@@ -80,7 +96,6 @@ export const getColleges = (
 };
 
 // request for company list
-
 export const getCompanies = (
   errorHandler: errorHandler,
   setCompanyAPI: getAPI
@@ -131,5 +146,42 @@ export const getCommunties = (
     })
     .catch((error) => {
       errorHandler(error.response.status, error.response.data.status);
+    });
+};
+
+// POST request for registration
+export const registerUser = (
+  setFormSuccess: FormSuccess,
+  setRoleVerified: RoleVerified,
+  formik: any,
+  setHasValidationError: hasValidationError,
+  userData: unknown
+) => {
+  apiGateway
+    .post(onboardingRoutes.register, userData)
+    .then((response) => {
+      setFormSuccess(true);
+      console.log(response)
+      setRoleVerified(response.data.roleVerified);
+    })
+    .catch((error) => {
+      if (
+        error.response.data.message &&
+        Object.keys(error.response.data.message).length > 0
+      ) {
+        Object.entries(error.response.data.message).forEach(
+          ([fieldName, errorMessage]) => {
+            if (Array.isArray(errorMessage)) {
+              formik.setFieldError(fieldName, errorMessage?.join(", ") || "");
+            }
+          }
+        );
+      }
+      setTimeout(() => {
+        setHasValidationError({
+          error: false,
+          message: "",
+        });
+      }, 3000);
     });
 };

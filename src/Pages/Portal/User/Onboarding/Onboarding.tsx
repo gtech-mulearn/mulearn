@@ -10,15 +10,14 @@ import makeAnimated from "react-select/animated";
 import Looder from "./assets/Looder";
 import { useFormik } from "formik";
 
-// Services Imports
-import apiGateway from "../../../../services/apiGateway";
-import { onboardingRoutes } from "../../../../services/urls";
+
 import {
   getColleges,
   getCommunties,
   getCompanies,
   getInterests,
   getRoles,
+  registerUser,
   validateToken,
 } from "./helpers/apis";
 
@@ -136,7 +135,7 @@ const Onboarding = (props: Props) => {
       setDepartmentAPI,
       errorHandler
     );
-    getCommunties(errorHandler, setCompanyAPI);
+    getCommunties(errorHandler, setCommunityAPI);
     getCompanies(errorHandler, setCompanyAPI);
     getInterests(errorHandler, setAoiAPI);
     getRoles(errorHandler, setRoleAPI);
@@ -196,32 +195,15 @@ const Onboarding = (props: Props) => {
       areaOfInterests: values.areaOfInterest, //required
     };
 
-    apiGateway
-      .post(onboardingRoutes.register, userData)
-      .then((response) => {
-        setFormSuccess(true);
-        setRoleVerified(response.data.roleVerified);
-      })
-      .catch((error) => {
-        if (
-          error.response.data.message &&
-          Object.keys(error.response.data.message).length > 0
-        ) {
-          Object.entries(error.response.data.message).forEach(
-            ([fieldName, errorMessage]) => {
-              if (Array.isArray(errorMessage)) {
-                formik.setFieldError(fieldName, errorMessage?.join(", ") || "");
-              }
-            }
-          );
-        }
-        setTimeout(() => {
-          setHasValidationError({
-            error: false,
-            message: "",
-          });
-        }, 3000);
-      });
+    console.log("Yayy!")
+
+    registerUser(
+      setFormSuccess,
+      setRoleVerified,
+      formik,
+      setHasValidationError,
+      userData
+    );
   };
 
   const validate = (values: any) => {
