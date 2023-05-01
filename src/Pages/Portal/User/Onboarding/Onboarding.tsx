@@ -147,21 +147,13 @@ const Onboarding = (props: Props) => {
       });
 
     // request for company list
-    const company = {
-      method: "GET",
-      url:
-        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/company/list",
-      headers: {
-        Authorization: "Bearer " + token,
-        "content-type": "application/json",
-      },
-    };
-    axios
-      .request(company)
-      .then(function (response) {
+
+    apiGateway
+      .get("/api/v1/user/register/company/list")
+      .then((response) => {
         setCompanyAPI(response.data.response.companies);
       })
-      .catch(function (error) {
+      .catch((error) => {
         if (error.response.status === 404 || error.response.status === 500) {
           const errorMessage = {
             error: true,
@@ -173,20 +165,12 @@ const Onboarding = (props: Props) => {
       });
 
     // request for role list
-    const role = {
-      method: "GET",
-      url: import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/role/list",
-      headers: {
-        Authorization: "Bearer " + token,
-        "content-type": "application/json",
-      },
-    };
-    axios
-      .request(role)
-      .then(function (response) {
+    apiGateway
+      .get("/api/v1/user/register/role/list")
+      .then((response) => {
         setRoleAPI(response.data.response.roles);
       })
-      .catch(function (error) {
+      .catch((error) => {
         if (
           error.response.data.statusCode === 404 ||
           error.response.data.statusCode === 500
@@ -200,22 +184,12 @@ const Onboarding = (props: Props) => {
       });
 
     // request for area of intersts list
-    const aoi = {
-      method: "GET",
-      url:
-        import.meta.env.VITE_BACKEND_URL +
-        "/api/v1/user/register/area-of-interest/list",
-      headers: {
-        Authorization: "Bearer " + token,
-        "content-type": "application/json",
-      },
-    };
-    axios
-      .request(aoi)
-      .then(function (response) {
+    apiGateway
+      .get("/api/v1/user/register/area-of-interest/list")
+      .then((response) => {
         setAoiAPI(response.data.response.aois);
       })
-      .catch(function (error) {
+      .catch((error) => {
         if (error.response.status === 404 || error.response.status === 500) {
           const errorMessage = {
             error: true,
@@ -227,22 +201,12 @@ const Onboarding = (props: Props) => {
       });
 
     // request for community list
-    const comunity = {
-      method: "GET",
-      url:
-        import.meta.env.VITE_BACKEND_URL +
-        "/api/v1/user/register/community/list",
-      headers: {
-        Authorization: "Bearer " + token,
-        "content-type": "application/json",
-      },
-    };
-    axios
-      .request(comunity)
-      .then(function (response) {
+    apiGateway
+      .get("/api/v1/user/register/community/list")
+      .then((response) => {
         setCommunityAPI(response.data.response.communities);
       })
-      .catch(function (error) {
+      .catch((error) => {
         if (error.response.status === 404 || error.response.status === 500) {
           const errorMessage = {
             error: true,
