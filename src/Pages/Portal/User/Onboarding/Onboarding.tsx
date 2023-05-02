@@ -10,7 +10,6 @@ import makeAnimated from "react-select/animated";
 import Looder from "./assets/Looder";
 import { useFormik } from "formik";
 
-
 import {
   getColleges,
   getCommunties,
@@ -135,7 +134,6 @@ const Onboarding = (props: Props) => {
 
   useEffect(() => {
     localStorage.setItem("token", queryParameters.get("id") as string);
-    validateToken(setHasError);
     getColleges(
       setCollegeAPI,
       setCollegeOptions,
@@ -184,69 +182,32 @@ const Onboarding = (props: Props) => {
     if (organization != "") {
       values.community.push(organization);
     }
-    const options = {
-      method: "POST",
-      url: import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/",
-      headers: {
-        "content-type": "application/json",
-      },
-      data: {
-        firstName: values.firstName, //required
-        lastName: values.lastName === "" ? null : values.lastName,
-        email: values.email, //required
-        mobile: values.phone, //required
-        gender: values.gender === "" ? null : values.gender,
-        dob: values.dob === "" ? null : values.dob,
-        role: role[0]["id"] == "" ? null : role[0]["id"], //required
-        organizations:
-          values.organization === "" && values.community.length === 0
-            ? null
-            : values.community, //required except for individual
-        dept: values.dept === "" ? null : values.dept, //required for student and enabler
-        yearOfGraduation: values.yog === "" ? null : values.yog, //required for student
-        areaOfInterests: values.areaOfInterest, //required,
-        password: "123", //required
-      },
+
+    const userData = {
+      firstName: values.firstName, //required
+      lastName: values.lastName === "" ? null : values.lastName,
+      email: values.email, //required
+      mobile: values.phone, //required
+      gender: values.gender === "" ? null : values.gender,
+      dob: values.dob === "" ? null : values.dob,
+      role: role[0]["id"] == "" ? null : role[0]["id"], //required
+      organizations:
+        values.organization === "" && values.community.length === 0
+          ? null
+          : values.community, //required except for individual
+      dept: values.dept === "" ? null : values.dept, //required for student and enabler
+      yearOfGraduation: values.yog === "" ? null : values.yog, //required for student
+      areaOfInterests: values.areaOfInterest, //required,
+      password: "123", //required
     };
-    axios
-      .request(options)
-      .then(function (response) {
-        setFormSuccess(true);
-        setRoleVerified(response.data.roleVerified);
-        console.log(response);
-        localStorage.setItem("accessToken", response.data.response.accessToken);
-        localStorage.setItem(
-          "refreshToken",
-          response.data.response.refreshToken
-        );
-        navigate("/user/connect-discord");
-      })
-      .catch(function (error) {
-        // setHasValidationError({
-        //   error: true,
-        //   message: error.response.data.message,
-        // });
-        if (
-          error.response.data.message &&
-          Object.keys(error.response.data.message).length > 0
-        ) {
-          // console.log(error.response.data.message);
-          Object.entries(error.response.data.message).forEach(
-            ([fieldName, errorMessage]) => {
-              // console.log(errorMessage);
-              if (Array.isArray(errorMessage)) {
-                formik.setFieldError(fieldName, errorMessage?.join(", ") || "");
-              }
-            }
-          );
-        }
-        setTimeout(() => {
-          setHasValidationError({
-            error: false,
-            message: "",
-          });
-        }, 3000);
-      });
+
+    registerUser(
+      setFormSuccess,
+      setRoleVerified,
+      formik,
+      setHasValidationError,
+      userData
+    );
   };
 
   const validate = (values: any) => {

@@ -159,12 +159,15 @@ export const registerUser = (
 ) => {
   apiGateway
     .post(onboardingRoutes.register, userData)
-    .then((response) => {
+    .then(function (response) {
       setFormSuccess(true);
-      console.log(response)
       setRoleVerified(response.data.roleVerified);
+      console.log(response);
+      localStorage.setItem("accessToken", response.data.response.accessToken);
+      localStorage.setItem("refreshToken", response.data.response.refreshToken);
+      // navigate("/user/connect-discord");
     })
-    .catch((error) => {
+    .catch(function (error) {
       if (
         error.response.data.message &&
         Object.keys(error.response.data.message).length > 0
