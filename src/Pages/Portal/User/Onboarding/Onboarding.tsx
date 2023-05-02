@@ -10,6 +10,7 @@ import makeAnimated from "react-select/animated";
 import Looder from "./assets/Looder";
 import { useFormik } from "formik";
 import PopUpQuestions from "./PopUpQuestions";
+import { useNavigate } from "react-router-dom";
 
 const animatedComponents = makeAnimated();
 
@@ -19,6 +20,7 @@ interface BackendErrors {
 
 const Onboarding = (props: Props) => {
   const queryParameters = new URLSearchParams(window.location.search);
+  const navigate = useNavigate();
   // for hide and question container
   const [displayLoader, setDisplayLoader] = useState("flex");
   const [opacityLoader, setOpacityLoader] = useState(1);
@@ -26,10 +28,15 @@ const Onboarding = (props: Props) => {
     setDisplayLoader("none");
     setOpacityLoader(0);
   }, 5000);
+  const [display0, setDisplay0] = useState("flex");
   const [display, setDisplay] = useState("flex");
   const [display2, setDisplay2] = useState("flex");
+  const [opacity0, setOpacity0] = useState(1);
   const [opacity, setOpacity] = useState(1);
   const [opacity2, setOpacity2] = useState(1);
+  const [emailVerificationResultBtn, setEmailVerificationResultBtn] =
+    useState("Verify");
+  const [firstQuesion, setFirstQuesion] = useState(false);
   const [secondQuesion, setSecondQuesion] = useState(false);
   //Getting the token from the URL
   const token = queryParameters.get("id");
@@ -106,27 +113,27 @@ const Onboarding = (props: Props) => {
 
   useEffect(() => {
     // request for token verification
-    const token_check = {
-      method: "GET",
-      url:
-        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/jwt/validate",
-      headers: {
-        Authorization: "Bearer " + token,
-        "content-type": "application/json",
-      },
-    };
-    axios
-      .request(token_check)
-      .then((response) => {})
-      .catch((error) => {
-        console.log(error);
+    // const token_check = {
+    //   method: "GET",
+    //   url:
+    //     import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/jwt/validate",
+    //   headers: {
+    //     Authorization: "Bearer " + token,
+    //     "content-type": "application/json",
+    //   },
+    // };
+    // axios
+    //   .request(token_check)
+    //   .then((response) => {})
+    //   .catch((error) => {
+    //     console.log(error);
 
-        setHasError({
-          error: error.response.data.hasError,
-          statusCode: error.response.data.statusCode,
-          message: error.response.data.message.general,
-        });
-      });
+    //     setHasError({
+    //       error: error.response.data.hasError,
+    //       statusCode: error.response.data.statusCode,
+    //       message: error.response.data.message.general,
+    //     });
+    //   });
 
     // request for college list
     const college = {
@@ -312,7 +319,6 @@ const Onboarding = (props: Props) => {
       method: "POST",
       url: import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/",
       headers: {
-        Authorization: "Bearer " + token,
         "content-type": "application/json",
       },
       data: {
@@ -329,7 +335,8 @@ const Onboarding = (props: Props) => {
             : values.community, //required except for individual
         dept: values.dept === "" ? null : values.dept, //required for student and enabler
         yearOfGraduation: values.yog === "" ? null : values.yog, //required for student
-        areaOfInterests: values.areaOfInterest, //required
+        areaOfInterests: values.areaOfInterest, //required,
+        password: "123", //required
       },
     };
     axios
@@ -337,6 +344,13 @@ const Onboarding = (props: Props) => {
       .then(function (response) {
         setFormSuccess(true);
         setRoleVerified(response.data.roleVerified);
+        console.log(response);
+        localStorage.setItem("accessToken", response.data.response.accessToken);
+        localStorage.setItem(
+          "refreshToken",
+          response.data.response.refreshToken
+        );
+        navigate("/user/connect-discord");
       })
       .catch(function (error) {
         // setHasValidationError({
@@ -351,7 +365,7 @@ const Onboarding = (props: Props) => {
           Object.entries(error.response.data.message).forEach(
             ([fieldName, errorMessage]) => {
               // console.log(errorMessage);
-              if (Array.isArray(errorMessage)){
+              if (Array.isArray(errorMessage)) {
                 formik.setFieldError(fieldName, errorMessage?.join(", ") || "");
               }
             }
@@ -374,7 +388,7 @@ const Onboarding = (props: Props) => {
     if (!values.email) {
       errors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-      errors.email = "Email address is invalid";
+      errors.email = "Invalid email address";
     }
     if (!values.phone) {
       errors.phone = "Phone number is required";
@@ -404,8 +418,10 @@ const Onboarding = (props: Props) => {
     validate,
   });
 
+  useEffect(() => {
+    setEmailVerificationResultBtn("Verify");
+  }, [formik.values.email]);
   // console.log(formik.values);
-
   return (
     <>
       <div className={styles.onboarding_page}>
@@ -421,7 +437,7 @@ const Onboarding = (props: Props) => {
                   ""
                 )}
                 <div className={styles.form_container}>
-                  <div
+                  {/* <div
                     className={styles.loader_container}
                     style={{ display: displayLoader, opacity: opacityLoader }}
                   >
@@ -429,83 +445,158 @@ const Onboarding = (props: Props) => {
                       <Looder />
                     </div>
                     <p>We are cooking things for you</p>
-                  </div>
+                  </div> */}
 
                   <div
-                    style={{ display: display, opacity: opacity }}
+                    style={{ display: display0, opacity: opacity0 }}
                     className={styles.question_container}
                   >
                     <div className={styles.question_box}>
                       <div className={styles.question}>
-                        <h3>What is your role ?</h3>
+                        <h3>Please verify your email</h3>
                         <div className={styles.answers}>
-                          <button
-                            onClick={() => {
-                              roleAPI.map((role: any) => {
-                                if (role.title === "Student") {
-                                  setRole([{ id: role.id, title: role.title }]);
-                                }
-                              });
-                              setOpacity(0);
-                              setTimeout(() => {
-                                setDisplay("none");
-                              }, 1000);
-                            }}
-                          >
-                            I'm currently studying
-                          </button>
-                          <button
-                            onClick={() => {
-                              setOpacity(0);
-                              setSecondQuesion(true);
-                              setTimeout(() => {
-                                setDisplay("none");
-                              }, 1000);
-                            }}
-                          >
-                            I'm currently working professional
-                          </button>
-                          <button
-                            onClick={() => {
-                              roleAPI.map((role: any) => {
-                                if (role.title === "Enabler") {
-                                  setRole([{ id: role.id, title: role.title }]);
-                                }
-                              });
+                          <form className={styles.verify_email}>
+                            <input
+                              type="email"
+                              name="email"
+                              className={styles.input}
+                              onBlur={formik.handleBlur}
+                              onChange={formik.handleChange}
+                              value={formik.values.email}
+                              placeholder="Enter your email"
+                            />
+                            {formik.touched.email && formik.errors.email ? (
+                              <div className={styles.error_message}>
+                                {formik.errors.email}
+                              </div>
+                            ) : null}
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault();
+                                const emailVerificationCall = {
+                                  method: "POST",
+                                  url: "http://127.0.0.1:8000/api/v1/user/email-verification/",
+                                  data: { email: formik.values.email },
+                                };
+                                emailVerificationResultBtn == "Verify"
+                                  ? !formik.errors.email &&
+                                    formik.values.email != ""
+                                    ? axios
+                                        .request(emailVerificationCall)
+                                        .then(function (response) {
+                                          setFirstQuesion(
+                                            !response.data.response.value
+                                          );
 
-                              setOpacity(0);
-                              setTimeout(() => {
-                                setDisplay("none");
-                              }, 1000);
-                            }}
-                          >
-                            I'm teaching in a institute
-                          </button>
-                          <button
-                            onClick={() => {
-                              setOpacity(0);
-                              setSecondQuesion(true);
-                              setTimeout(() => {
-                                setDisplay("none");
-                              }, 1000);
-                            }}
-                          >
-                            I'm a freelancer
-                          </button>
-                          <button
-                            onClick={() => {
-                              setOpacity(0);
-                              setTimeout(() => {
-                                setDisplay("none");
-                              }, 1000);
-                            }}
-                          >
-                            I'm not working, not studying
-                          </button>
+                                          if (response.data.response.value) {
+                                            formik.errors.email =
+                                              response.data.message.general;
+                                            setEmailVerificationResultBtn(
+                                              "Login"
+                                            );
+                                          } else {
+                                            setTimeout(() => {
+                                              setOpacity0(0);
+                                              setDisplay0("none");
+                                            }, 1000);
+                                          }
+                                        })
+                                        .catch(function (error) {
+                                          console.error(error);
+                                        })
+                                    : null
+                                  : navigate("/user/login");
+                              }}
+                            >
+                              {emailVerificationResultBtn}
+                            </button>
+                          </form>
                         </div>
                       </div>
                     </div>
                   </div>
+
+                  {firstQuesion ? (
+                    <div
+                      style={{ display: display, opacity: opacity }}
+                      className={styles.question_container}
+                    >
+                      <div className={styles.question_box}>
+                        <div className={styles.question}>
+                          <h3>What is your role ?</h3>
+                          <div className={styles.answers}>
+                            <button
+                              onClick={() => {
+                                roleAPI.map((role: any) => {
+                                  if (role.title === "Student") {
+                                    setRole([
+                                      { id: role.id, title: role.title },
+                                    ]);
+                                  }
+                                });
+                                setOpacity(0);
+                                setTimeout(() => {
+                                  setDisplay("none");
+                                }, 1000);
+                              }}
+                            >
+                              I'm currently studying
+                            </button>
+                            <button
+                              onClick={() => {
+                                setOpacity(0);
+                                setSecondQuesion(true);
+                                setTimeout(() => {
+                                  setDisplay("none");
+                                }, 1000);
+                              }}
+                            >
+                              I'm currently working professional
+                            </button>
+                            <button
+                              onClick={() => {
+                                roleAPI.map((role: any) => {
+                                  if (role.title === "Enabler") {
+                                    setRole([
+                                      { id: role.id, title: role.title },
+                                    ]);
+                                  }
+                                });
+
+                                setOpacity(0);
+                                setTimeout(() => {
+                                  setDisplay("none");
+                                }, 1000);
+                              }}
+                            >
+                              I'm teaching in a institute
+                            </button>
+                            <button
+                              onClick={() => {
+                                setOpacity(0);
+                                setSecondQuesion(true);
+                                setTimeout(() => {
+                                  setDisplay("none");
+                                }, 1000);
+                              }}
+                            >
+                              I'm a freelancer
+                            </button>
+                            <button
+                              onClick={() => {
+                                setOpacity(0);
+                                setTimeout(() => {
+                                  setDisplay("none");
+                                }, 1000);
+                              }}
+                            >
+                              I'm not working, not studying
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
                   {/* <PopUpQuestions questions="Did you like to become a Mentor ?" answers={["Yes","No"]}/> */}
                   {/* <PopUpQuestions questions="What is your role ?" answers={[" I'm currently studying","I'm currently working professional","I'm teaching in a institute","I'm a freelancer"]}/> */}
                   {/*2nd question if the user is working prof. or freelancer  */}
@@ -749,10 +840,15 @@ const Onboarding = (props: Props) => {
                                 }
                                 onChange={(option) => {
                                   const indexToRemove =
-                                    formik.values.community.indexOf(organization);
+                                    formik.values.community.indexOf(
+                                      organization
+                                    );
                                   // Remove the value at the specified index
                                   if (indexToRemove !== -1) {
-                                    formik.values.community.splice(indexToRemove, 1);
+                                    formik.values.community.splice(
+                                      indexToRemove,
+                                      1
+                                    );
                                   }
                                   option && setOrganization(option.value);
                                   formik.handleChange({
@@ -1093,7 +1189,7 @@ const Onboarding = (props: Props) => {
                             } else {
                               // console.log(formik.values);
                               // console.log("no error");
-                              onSubmit(formik.values,{});
+                              onSubmit(formik.values, {});
                             }
                           }}
                         >

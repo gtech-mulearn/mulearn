@@ -24,8 +24,8 @@ const Login = (props: Props) => {
       .then((res) => {
         console.log(res.data)
         if (res.data.hasError == false) {
-          localStorage.setItem("access_token", res.data.response.access_token)
-          localStorage.setItem("refresh_token", res.data.response.refresh_token)
+          localStorage.setItem("accessToken", res.data.response.accessToken)
+          localStorage.setItem("refreshToken", res.data.response.refreshToken)
           toast({
             title: "Login Successful",
             description: "You have been logged in successfully",
