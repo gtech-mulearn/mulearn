@@ -91,7 +91,7 @@ const CampusChapters = () => {
                 venture into their interests.
               </p>
               <a
-                href="https://airtable.com/shr5U1mJKfPCTqfab"
+                href="https://airtable.com/shrmtngt3zopg8eVh"
                 target="_blank"
                 rel="noopener noreferrer"
               >
