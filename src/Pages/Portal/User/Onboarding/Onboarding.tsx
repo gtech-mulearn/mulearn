@@ -18,6 +18,7 @@ import {
   getRoles,
   registerUser,
   validateToken,
+  emailVerification,
 } from "./helpers/apis";
 import { useNavigate } from "react-router-dom";
 
@@ -291,40 +292,23 @@ const Onboarding = (props: Props) => {
                             <button
                               onClick={(e) => {
                                 e.preventDefault();
-                                const emailVerificationCall = {
-                                  method: "POST",
-                                  url: "https://dev.mulearn.org/api/v1/user/email-verification/",
-                                  data: { email: formik.values.email },
-                                };
-                                emailVerificationResultBtn == "Verify"
-                                  ? !formik.errors.email &&
+                                if (emailVerificationResultBtn == "Verify") {
+                                  if (
+                                    !formik.errors.email &&
                                     formik.values.email != ""
-                                    ? axios
-                                        .request(emailVerificationCall)
-                                        .then(function (response) {
-                                          setFirstQuesion(
-                                            !response.data.response.value
-                                          );
-
-                                          if (response.data.response.value) {
-                                            console.log(response.data)
-                                            formik.errors.email =
-                                              response.data.response.key;
-                                            setEmailVerificationResultBtn(
-                                              "Login"
-                                            );
-                                          } else {
-                                            setTimeout(() => {
-                                              setOpacity0(0);
-                                              setDisplay0("none");
-                                            }, 1000);
-                                          }
-                                        })
-                                        .catch(function (error) {
-                                          console.error(error);
-                                        })
-                                    : null
-                                  : navigate("/user/login");
+                                  ) {
+                                    emailVerification(
+                                      formik.values.email,
+                                      setFirstQuesion,
+                                      formik,
+                                      setEmailVerificationResultBtn,
+                                      setOpacity0,
+                                      setDisplay0
+                                    );
+                                  }
+                                } else {
+                                  navigate("/user/login");
+                                }
                               }}
                             >
                               {emailVerificationResultBtn}

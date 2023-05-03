@@ -1,6 +1,5 @@
 import apiGateway from "../../../../../services/apiGateway";
 import { onboardingRoutes } from "../../../../../services/urls";
-import { FormikErrors, FormikProps, FormikTouched, FormikValues } from "formik";
 import { Dispatch, SetStateAction } from "react";
 
 // Define the type of the function parameter
@@ -51,6 +50,10 @@ type hasValidationError = Dispatch<
 
 type FormSuccess = Dispatch<SetStateAction<boolean>>;
 type RoleVerified = Dispatch<SetStateAction<boolean>>;
+type firstQuesion = Dispatch<SetStateAction<boolean>>;
+type emailVerificationResultBtn = Dispatch<SetStateAction<string>>;
+type opacity0 = Dispatch<SetStateAction<number>>;
+type display0 = Dispatch<SetStateAction<string>>;
 
 type errorHandler = (status: number, dataStatus: number) => void;
 
@@ -186,5 +189,34 @@ export const registerUser = (
           message: "",
         });
       }, 3000);
+    });
+};
+
+export const emailVerification = (
+  email: string,
+  setFirstQuesion: firstQuesion,
+  formik: any,
+  setEmailVerificationResultBtn: emailVerificationResultBtn,
+  setOpacity0: opacity0,
+  setDisplay0: display0
+) => {
+  apiGateway
+    .post(onboardingRoutes.emailVerification, { email: email })
+    .then(function (response) {
+      setFirstQuesion(!response.data.response.value);
+
+      if (response.data.response.value) {
+        console.log(response.data);
+        formik.errors.email = response.data.message.general;
+        setEmailVerificationResultBtn("Login");
+      } else {
+        setTimeout(() => {
+          setOpacity0(0);
+          setDisplay0("none");
+        }, 1000);
+      }
+    })
+    .catch(function (error) {
+      console.error(error);
     });
 };
