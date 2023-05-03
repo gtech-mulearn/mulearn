@@ -14,30 +14,7 @@ const ForgotPassword = (props: Props) => {
   const navigate = useNavigate();
   const toast = useToast();
 
-  useEffect(() => {
-    if (success) {
-      toast({
-        title: "Token Mail Sent",
-        description: "Kindly check your mail for the reset password link",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-      });
 
-      setTimeout(() => {
-        navigate("/user/login");
-      }, 5000);
-    } else {
-      if (error.length > 0) {
-        toast({
-          title: error,
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
-      }
-    }
-  }, [success]);
 
   return (
     <div className={styles.login_page}>
@@ -61,7 +38,7 @@ const ForgotPassword = (props: Props) => {
               onClick={(e) => {
                 e.preventDefault();
                 if (muid.length > 0) {
-                  forgetPassword(muid, setSuccess, setError);
+                  forgetPassword(muid, toast, navigate);
                 }
               }}
               type="submit"

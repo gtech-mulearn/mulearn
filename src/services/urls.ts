@@ -11,4 +11,5 @@ export const onboardingRoutes = {
 
 export const authRoutes = {
   forgetPassword: "/api/v1/user/forgot-password/",
+  login: "/api/v1/auth/user-authentication/",
 };
