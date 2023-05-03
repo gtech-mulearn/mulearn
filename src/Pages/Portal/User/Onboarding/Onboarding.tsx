@@ -9,7 +9,17 @@ import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import Looder from "./assets/Looder";
 import { useFormik } from "formik";
-import PopUpQuestions from "./PopUpQuestions";
+
+import {
+  getColleges,
+  getCommunties,
+  getCompanies,
+  getInterests,
+  getRoles,
+  registerUser,
+  validateToken,
+  emailVerification,
+} from "./helpers/apis";
 import { useNavigate } from "react-router-dom";
 
 const animatedComponents = makeAnimated();
@@ -40,6 +50,7 @@ const Onboarding = (props: Props) => {
   const [secondQuesion, setSecondQuesion] = useState(false);
   //Getting the token from the URL
   const token = queryParameters.get("id");
+
   //State Variables for the From
   const [role, setRole] = useState([{ id: "", title: "" }]);
   const [tcChecked, setTcChecked] = useState(false);
@@ -111,172 +122,29 @@ const Onboarding = (props: Props) => {
     2027, 2028, 2029, 2030,
   ];
 
+  const errorHandler = (status: number, dataStatus: number) => {
+    if (status === 404 || status === 500) {
+      const errorMessage = {
+        error: true,
+        statusCode: dataStatus,
+        message: "Something went wrong, Please try again Later",
+      };
+      setHasError(errorMessage);
+    }
+  };
+
   useEffect(() => {
-    // request for token verification
-    // const token_check = {
-    //   method: "GET",
-    //   url:
-    //     import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/jwt/validate",
-    //   headers: {
-    //     Authorization: "Bearer " + token,
-    //     "content-type": "application/json",
-    //   },
-    // };
-    // axios
-    //   .request(token_check)
-    //   .then((response) => {})
-    //   .catch((error) => {
-    //     console.log(error);
-
-    //     setHasError({
-    //       error: error.response.data.hasError,
-    //       statusCode: error.response.data.statusCode,
-    //       message: error.response.data.message.general,
-    //     });
-    //   });
-
-    // request for college list
-    const college = {
-      method: "GET",
-      url:
-        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/college/list",
-      headers: {
-        Authorization: "Bearer " + token,
-        "content-type": "application/json",
-      },
-    };
-    axios
-      .request(college)
-      .then(function (response) {
-        const colleges = response.data.response.colleges;
-        setCollegeAPI(colleges);
-        setCollegeOptions(
-          colleges
-            .sort((a: any, b: any) => a.title.localeCompare(b.title))
-            .map((college: any) => ({
-              value: college.id,
-              label: college.title,
-            }))
-        );
-        setDepartmentAPI(response.data.response.departments);
-      })
-      .catch(function (error) {
-        if (error.response.status === 404 || error.response.status === 500) {
-          const errorMessage = {
-            error: true,
-            statusCode: error.response.data.status,
-            message: "Something went wrong, Please try again Later",
-          };
-          setHasError(errorMessage);
-        }
-      });
-
-    // request for company list
-    const company = {
-      method: "GET",
-      url:
-        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/company/list",
-      headers: {
-        Authorization: "Bearer " + token,
-        "content-type": "application/json",
-      },
-    };
-    axios
-      .request(company)
-      .then(function (response) {
-        setCompanyAPI(response.data.response.companies);
-      })
-      .catch(function (error) {
-        if (error.response.status === 404 || error.response.status === 500) {
-          const errorMessage = {
-            error: true,
-            statusCode: error.response.data.status,
-            message: "Something went wrong, Please try again Later",
-          };
-          setHasError(errorMessage);
-        }
-      });
-
-    // request for role list
-    const role = {
-      method: "GET",
-      url: import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/role/list",
-      headers: {
-        Authorization: "Bearer " + token,
-        "content-type": "application/json",
-      },
-    };
-    axios
-      .request(role)
-      .then(function (response) {
-        setRoleAPI(response.data.response.roles);
-      })
-      .catch(function (error) {
-        if (
-          error.response.data.statusCode === 404 ||
-          error.response.data.statusCode === 500
-        ) {
-          setHasError({
-            error: true,
-            statusCode: error.response.data.statusCode,
-            message: "Something went wrong, please try again later",
-          });
-        }
-      });
-
-    // request for area of intersts list
-    const aoi = {
-      method: "GET",
-      url:
-        import.meta.env.VITE_BACKEND_URL +
-        "/api/v1/user/register/area-of-interest/list",
-      headers: {
-        Authorization: "Bearer " + token,
-        "content-type": "application/json",
-      },
-    };
-    axios
-      .request(aoi)
-      .then(function (response) {
-        setAoiAPI(response.data.response.aois);
-      })
-      .catch(function (error) {
-        if (error.response.status === 404 || error.response.status === 500) {
-          const errorMessage = {
-            error: true,
-            statusCode: error.response.data.status,
-            message: "Something went wrong, Please try again Later",
-          };
-          setHasError(errorMessage);
-        }
-      });
-
-    // request for community list
-    const comunity = {
-      method: "GET",
-      url:
-        import.meta.env.VITE_BACKEND_URL +
-        "/api/v1/user/register/community/list",
-      headers: {
-        Authorization: "Bearer " + token,
-        "content-type": "application/json",
-      },
-    };
-    axios
-      .request(comunity)
-      .then(function (response) {
-        setCommunityAPI(response.data.response.communities);
-      })
-      .catch(function (error) {
-        if (error.response.status === 404 || error.response.status === 500) {
-          const errorMessage = {
-            error: true,
-            statusCode: error.response.data.status,
-            message: "Something went wrong, Please try again Later",
-          };
-          setHasError(errorMessage);
-        }
-      });
+    localStorage.setItem("token", queryParameters.get("id") as string);
+    getColleges(
+      setCollegeAPI,
+      setCollegeOptions,
+      setDepartmentAPI,
+      errorHandler
+    );
+    getCommunties(errorHandler, setCommunityAPI);
+    getCompanies(errorHandler, setCompanyAPI);
+    getInterests(errorHandler, setAoiAPI);
+    getRoles(errorHandler, setRoleAPI);
   }, []);
 
   // formik
@@ -313,73 +181,35 @@ const Onboarding = (props: Props) => {
     general: "",
   };
   const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
-    // console.log(values);
     if (organization != "") {
       values.community.push(organization);
     }
-    const options = {
-      method: "POST",
-      url: import.meta.env.VITE_BACKEND_URL + "/api/v1/user/register/",
-      headers: {
-        "content-type": "application/json",
-      },
-      data: {
-        firstName: values.firstName, //required
-        lastName: values.lastName === "" ? null : values.lastName,
-        email: values.email, //required
-        mobile: values.phone, //required
-        gender: values.gender === "" ? null : values.gender,
-        dob: values.dob === "" ? null : values.dob,
-        role: role[0]["id"] == "" ? null : role[0]["id"], //required
-        organizations:
-          values.organization === "" && values.community.length === 0
-            ? null
-            : values.community, //required except for individual
-        dept: values.dept === "" ? null : values.dept, //required for student and enabler
-        yearOfGraduation: values.yog === "" ? null : values.yog, //required for student
-        areaOfInterests: values.areaOfInterest, //required,
-        password: values.password, //required
-      },
+
+    const userData = {
+      firstName: values.firstName, //required
+      lastName: values.lastName === "" ? null : values.lastName,
+      email: values.email, //required
+      mobile: values.phone, //required
+      gender: values.gender === "" ? null : values.gender,
+      dob: values.dob === "" ? null : values.dob,
+      role: role[0]["id"] == "" ? null : role[0]["id"], //required
+      organizations:
+        values.organization === "" && values.community.length === 0
+          ? null
+          : values.community, //required except for individual
+      dept: values.dept === "" ? null : values.dept, //required for student and enabler
+      yearOfGraduation: values.yog === "" ? null : values.yog, //required for student
+      areaOfInterests: values.areaOfInterest, //required,
+      password: values.password, //required
     };
-    axios
-      .request(options)
-      .then(function (response) {
-        setFormSuccess(true);
-        setRoleVerified(response.data.roleVerified);
-        console.log(response);
-        localStorage.setItem("accessToken", response.data.response.accessToken);
-        localStorage.setItem(
-          "refreshToken",
-          response.data.response.refreshToken
-        );
-        navigate("/user/connect-discord");
-      })
-      .catch(function (error) {
-        // setHasValidationError({
-        //   error: true,
-        //   message: error.response.data.message,
-        // });
-        if (
-          error.response.data.message &&
-          Object.keys(error.response.data.message).length > 0
-        ) {
-          // console.log(error.response.data.message);
-          Object.entries(error.response.data.message).forEach(
-            ([fieldName, errorMessage]) => {
-              // console.log(errorMessage);
-              if (Array.isArray(errorMessage)) {
-                formik.setFieldError(fieldName, errorMessage?.join(", ") || "");
-              }
-            }
-          );
-        }
-        setTimeout(() => {
-          setHasValidationError({
-            error: false,
-            message: "",
-          });
-        }, 3000);
-      });
+
+    registerUser(
+      setFormSuccess,
+      setRoleVerified,
+      formik,
+      setHasValidationError,
+      userData
+    );
   };
 
   const validate = (values: any) => {
@@ -433,7 +263,6 @@ const Onboarding = (props: Props) => {
   useEffect(() => {
     setEmailVerificationResultBtn("Verify");
   }, [formik.values.email]);
-  // console.log(formik.values);
   return (
     <>
       <div className={styles.onboarding_page}>
@@ -449,16 +278,6 @@ const Onboarding = (props: Props) => {
                   ""
                 )}
                 <div className={styles.form_container}>
-                  {/* <div
-                    className={styles.loader_container}
-                    style={{ display: displayLoader, opacity: opacityLoader }}
-                  >
-                    <div className={styles.loader}>
-                      <Looder />
-                    </div>
-                    <p>We are cooking things for you</p>
-                  </div> */}
-
                   <div
                     style={{ display: display0, opacity: opacity0 }}
                     className={styles.question_container}
@@ -485,39 +304,23 @@ const Onboarding = (props: Props) => {
                             <button
                               onClick={(e) => {
                                 e.preventDefault();
-                                const emailVerificationCall = {
-                                  method: "POST",
-                                  url: "http://127.0.0.1:8000/api/v1/user/email-verification/",
-                                  data: { email: formik.values.email },
-                                };
-                                emailVerificationResultBtn == "Verify"
-                                  ? !formik.errors.email &&
+                                if (emailVerificationResultBtn == "Verify") {
+                                  if (
+                                    !formik.errors.email &&
                                     formik.values.email != ""
-                                    ? axios
-                                        .request(emailVerificationCall)
-                                        .then(function (response) {
-                                          setFirstQuesion(
-                                            !response.data.response.value
-                                          );
-
-                                          if (response.data.response.value) {
-                                            formik.errors.email =
-                                              response.data.message.general;
-                                            setEmailVerificationResultBtn(
-                                              "Login"
-                                            );
-                                          } else {
-                                            setTimeout(() => {
-                                              setOpacity0(0);
-                                              setDisplay0("none");
-                                            }, 1000);
-                                          }
-                                        })
-                                        .catch(function (error) {
-                                          console.error(error);
-                                        })
-                                    : null
-                                  : navigate("/user/login");
+                                  ) {
+                                    emailVerification(
+                                      formik.values.email,
+                                      setFirstQuesion,
+                                      formik,
+                                      setEmailVerificationResultBtn,
+                                      setOpacity0,
+                                      setDisplay0
+                                    );
+                                  }
+                                } else {
+                                  navigate("/user/login");
+                                }
                               }}
                             >
                               {emailVerificationResultBtn}
