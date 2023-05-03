@@ -178,7 +178,6 @@ const Onboarding = (props: Props) => {
     general: "",
   };
   const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
-    // console.log(values);
     if (organization != "") {
       values.community.push(organization);
     }
@@ -251,7 +250,6 @@ const Onboarding = (props: Props) => {
   useEffect(() => {
     setEmailVerificationResultBtn("Verify");
   }, [formik.values.email]);
-  // console.log(formik.values);
   return (
     <>
       <div className={styles.onboarding_page}>
@@ -267,16 +265,6 @@ const Onboarding = (props: Props) => {
                   ""
                 )}
                 <div className={styles.form_container}>
-                  {/* <div
-                    className={styles.loader_container}
-                    style={{ display: displayLoader, opacity: opacityLoader }}
-                  >
-                    <div className={styles.loader}>
-                      <Looder />
-                    </div>
-                    <p>We are cooking things for you</p>
-                  </div> */}
-
                   <div
                     style={{ display: display0, opacity: opacity0 }}
                     className={styles.question_container}
@@ -305,7 +293,7 @@ const Onboarding = (props: Props) => {
                                 e.preventDefault();
                                 const emailVerificationCall = {
                                   method: "POST",
-                                  url: "http://127.0.0.1:8000/api/v1/user/email-verification/",
+                                  url: "https://dev.mulearn.org/api/v1/user/email-verification/",
                                   data: { email: formik.values.email },
                                 };
                                 emailVerificationResultBtn == "Verify"
@@ -319,8 +307,9 @@ const Onboarding = (props: Props) => {
                                           );
 
                                           if (response.data.response.value) {
+                                            console.log(response.data)
                                             formik.errors.email =
-                                              response.data.message.general;
+                                              response.data.response.key;
                                             setEmailVerificationResultBtn(
                                               "Login"
                                             );
