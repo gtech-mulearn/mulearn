@@ -166,6 +166,8 @@ const Onboarding = (props: Props) => {
     firstName: "",
     lastName: "",
     email: "",
+    password:"",
+    confirmPassword:"",
     phone: void 0,
     gender: "",
     dob: "",
@@ -198,7 +200,7 @@ const Onboarding = (props: Props) => {
       dept: values.dept === "" ? null : values.dept, //required for student and enabler
       yearOfGraduation: values.yog === "" ? null : values.yog, //required for student
       areaOfInterests: values.areaOfInterest, //required,
-      password: "123", //required
+      password: values.password, //required
     };
 
     registerUser(
@@ -219,6 +221,16 @@ const Onboarding = (props: Props) => {
       errors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(values.email)) {
       errors.email = "Invalid email address";
+    }
+    if (!values.password) {
+      errors.password = "Password is required";
+    } else if (values.password == ""|| values.password.length < 8|| values.password.length > 16 || !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(values.password)) {
+      errors.password = "Password must be 8-16 characters long, should contain at least one uppercase, one lowercase and one number";
+    }
+    if (!values.confirmPassword) {
+      errors.confirmPassword = "Please confirm your password";
+    } else if (values.confirmPassword == ""|| values.password != values.confirmPassword) {
+      errors.confirmPassword = "Password does not match";
     }
     if (!values.phone) {
       errors.phone = "Phone number is required";
@@ -543,6 +555,49 @@ const Onboarding = (props: Props) => {
                               </div>
                             ) : null}
                           </div>
+                        </div>
+                      </div>
+                      <div className={styles.inputs}>
+                        <div className={styles.input_container}>
+                          <label htmlFor="">
+                            Password <span className={styles.required}>*</span>
+                          </label>
+                          <input
+                            id="password"
+                            type="password"
+                            name="password"
+                            placeholder="password"
+                            className={styles.input}
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.password}
+                          />
+                          {formik.touched.password &&
+                          formik.errors.password ? (
+                            <div className={styles.error_message}>
+                              {formik.errors.password}
+                            </div>
+                          ) : null}
+                        </div>
+                        <div className={styles.input_container}>
+                          <label htmlFor="">
+                            Confirm password{" "}
+                            <span className={styles.required}>*</span>
+                          </label>
+                          <input
+                            type="password"
+                            name="confirmPassword"
+                            placeholder="confirm password"
+                            className={styles.input}
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.confirmPassword}
+                          />
+                          {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
+                              <div className={styles.error_message}>
+                                {formik.errors.confirmPassword}
+                              </div>
+                            ) : null}
                         </div>
                       </div>
                       <div className={styles.inputs}>
