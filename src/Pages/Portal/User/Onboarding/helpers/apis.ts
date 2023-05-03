@@ -206,7 +206,6 @@ export const emailVerification = (
       setFirstQuesion(!response.data.response.value);
 
       if (response.data.response.value) {
-        console.log(response.data);
         formik.errors.email = response.data.message.general;
         setEmailVerificationResultBtn("Login");
       } else {
