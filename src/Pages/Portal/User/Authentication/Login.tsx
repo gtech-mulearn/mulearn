@@ -15,7 +15,7 @@ const Login = (props: Props) => {
   const handleLogin = () => {
     axios
       .post(
-        import.meta.env.VITE_BACKEND_URL + "/api/v1/auth/user-authentication/",
+        import.meta.env.VITE_BACKEND_URL_AUTH + "/api/v1/auth/user-authentication/",
         {
           muid: muid,
           password: password,

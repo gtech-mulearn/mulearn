@@ -1,0 +1,22 @@
+* {
+    transition: none;
+  }
+  
+.btn{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    border-radius: 10px;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+.btn:hover{
+    background: #014BB2;
+    color: #fff;
+}
+.btn .btn_icon{
+    margin-right: 20px;
+}

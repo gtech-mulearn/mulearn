@@ -1,0 +1,110 @@
+.fullpage {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    color: #014BB2;
+}
+
+.side_nav_bar_container {
+    width: 20%;
+    height: 100%;
+    flex: 2;
+    display: flex;
+    background-color: #F0F0F0;
+    padding: 80px 40px;
+    justify-content: center;
+}
+
+.side_nav_bar_container .side_nav_bar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #014BB2;
+    font-size: larger;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.side_nav_bar_container .side_nav_bar .mulearn_brand {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.side_nav_bar_container .side_nav_bar .side_nav_bar_items{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.side_nav_bar_container .side_nav_bar .side_nav_bar_items .side_nav_bar_item{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    border-radius: 20px;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+.side_nav_bar_item :hover{
+    background: #014BB2;
+    color: #fff;
+}
+.side_nav_bar_container .side_nav_bar .side_nav_bar_items .side_nav_bar_item .side_nav_bar_item_icon{
+    margin-right: 20px;
+}
+
+.right_side {
+    width: 100%;
+    height: 100%;
+    flex: 10;
+}
+.right_side .top_nav .nav{
+    padding: 40px 40px;
+}
+.right_side .top_nav .nav .nav_items{
+    width: 100%;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.right_side .top_nav .nav .nav_items .greetings{ 
+    font-weight: 700;
+}
+.right_side .top_nav .nav .nav_items .menu{ 
+    width: 160px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.right_side .top_nav .nav .nav_items .menu .profile{ 
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* responsive */
+
+@media screen and (max-width: 500px) {
+    .side_nav_bar_container {
+        display: none;
+    }
+    .right_side {
+        flex: 1;
+    }
+}
+
+.right_side .top_nav  .nav hr{
+    margin-top: 20px;
+}
