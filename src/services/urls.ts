@@ -8,3 +8,10 @@ export const onboardingRoutes = {
   register: "/api/v1/user/register/",
   emailVerification: "/api/v1/user/email-verification/",
 };
+
+export const authRoutes = {
+  forgetPassword: "/api/v1/user/forgot-password/",
+  login: "/api/v1/auth/user-authentication/",
+  getMuid: "/api/v1/user/reset-password/verify-token/${token}/",
+  resetPassword: "/api/v1/user/reset-password/${token}/",
+};

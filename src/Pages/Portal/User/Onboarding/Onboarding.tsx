@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Onboarding.module.css";
 type Props = {};
-import axios from "axios";
 import ReactSelect from "react-select";
 import Error from "./assets/Error";
 import Success from "./Success";
