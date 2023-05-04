@@ -1,7 +1,7 @@
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import React from "react";
 import { NavigateFunction } from "react-router-dom";
-import publicGateway from "../../../../../services/apiGateway";
+import { publicGateway } from "../../../../../services/apiGateways";
 import { authRoutes } from "../../../../../services/urls";
 
 type setSuccess = React.Dispatch<React.SetStateAction<boolean>>;

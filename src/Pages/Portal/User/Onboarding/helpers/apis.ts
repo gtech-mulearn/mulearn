@@ -1,10 +1,7 @@
-import publicGateway from "../../../../../services/apiGateway";
+import {publicGateway} from "../../../../../services/apiGateways";
 import { onboardingRoutes } from "../../../../../services/urls";
 import { Dispatch, SetStateAction } from "react";
-import { AxiosResponse, AxiosError } from "axios";
 
-// Define the type of the function parameter
-type MyFunction = () => void;
 
 // Define the type of MyValues
 type hasError = Dispatch<
