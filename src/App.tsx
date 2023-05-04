@@ -17,6 +17,7 @@ import {
   MuLearnAdmin,
 } from "./views/DashboardView/exports";
 import ConnectDscord from "./Pages/Portal/User/ConnectDiscord/ConnectDscord";
+import SideNavBar from "./Components/Dashboard/SideNavBar";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       <Route path="user/login" element={<Login />} />
       <Route path="user/forgot-password" element={<ForgotPassword />} />
       <Route path="user/reset-password" element={<ResetPassword />} />
+      <Route path="user/testnav" element={<SideNavBar />} />
 
       {/* Private Routes */}
       <Route element={<PrivateRoutes />}>
