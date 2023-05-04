@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Eye from "./assets/Eye";
 import styles from "./Login.module.css";
-import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 import { login } from "./helpers/apis";
 

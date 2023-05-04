@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Eye from "./assets/Eye";
 import styles from "./Login.module.css";
-import axios from "axios";
 import { Button, useToast } from "@chakra-ui/react";
 import { getMuid, resetPassword } from "./helpers/apis";
 
 type Props = {};
 
-//TODO: Add Error Handling
+//TODO: Add Error Handling 
 //TOOD: Login => Reset Password Mail(Message: Mail Ayichiund) => Reset Password Page => Reset Password => Login Page
 
 const ResetPassword = (props: Props) => {
