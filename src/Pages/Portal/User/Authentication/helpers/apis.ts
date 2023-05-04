@@ -1,7 +1,7 @@
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import React from "react";
 import { NavigateFunction } from "react-router-dom";
-import apiGateway from "../../../../../services/apiGateway";
+import publicGateway from "../../../../../services/apiGateway";
 import { authRoutes } from "../../../../../services/urls";
 
 type setSuccess = React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,7 +14,7 @@ export const forgetPassword = (
   toast: (options?: UseToastOptions | undefined) => ToastId,
   navigate: NavigateFunction
 ) => {
-  apiGateway
+  publicGateway
     .post(authRoutes.forgetPassword, { muid })
     .then((response) => {
       toast({
@@ -43,7 +43,7 @@ export const login = (
   password: string,
   toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
-  apiGateway
+  publicGateway
     .post(authRoutes.login, { muid, password })
     .then((response) => {
       if (response.data.hasError == false) {
@@ -77,7 +77,7 @@ export const getMuid = (
   navigate: NavigateFunction,
   setMuID: setMuID
 ) => {
-  apiGateway
+  publicGateway
     .post(authRoutes.getMuid.replace("${token}", token))
     .then((response) => {
       console.log(response.data);
@@ -111,7 +111,7 @@ export const resetPassword = (
   toast: (options?: UseToastOptions | undefined) => ToastId,
   navigate: NavigateFunction
 ) => {
-  apiGateway
+  publicGateway
     .post(authRoutes.resetPassword.replace("${token}", token), { new_password })
     .then((response) => {
       if (response.data.statusCode === 200) {

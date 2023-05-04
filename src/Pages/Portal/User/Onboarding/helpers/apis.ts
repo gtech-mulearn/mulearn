@@ -1,6 +1,7 @@
-import apiGateway from "../../../../../services/apiGateway";
+import publicGateway from "../../../../../services/apiGateway";
 import { onboardingRoutes } from "../../../../../services/urls";
 import { Dispatch, SetStateAction } from "react";
+import { AxiosResponse, AxiosError } from "axios";
 
 // Define the type of the function parameter
 type MyFunction = () => void;
@@ -59,7 +60,7 @@ type errorHandler = (status: number, dataStatus: number) => void;
 
 // request for token validation
 export const validateToken = (setHasError: hasError) => {
-  apiGateway
+  publicGateway
     .get(onboardingRoutes.validate)
     .then((response) => {})
     .catch((error) => {
@@ -78,7 +79,7 @@ export const getColleges = (
   setDepartmentAPI: getAPI,
   errorHandler: errorHandler
 ) => {
-  apiGateway
+  publicGateway
     .get(onboardingRoutes.collegeList)
     .then((response) => {
       const colleges = response.data.response.colleges;
@@ -103,7 +104,7 @@ export const getCompanies = (
   errorHandler: errorHandler,
   setCompanyAPI: getAPI
 ) => {
-  apiGateway
+  publicGateway
     .get(onboardingRoutes.companyList)
     .then((response) => {
       setCompanyAPI(response.data.response.companies);
@@ -115,7 +116,7 @@ export const getCompanies = (
 
 // request for role list
 export const getRoles = (errorHandler: errorHandler, setRoleAPI: getAPI) => {
-  apiGateway
+  publicGateway
     .get(onboardingRoutes.roleList)
     .then((response) => {
       setRoleAPI(response.data.response.roles);
@@ -127,7 +128,7 @@ export const getRoles = (errorHandler: errorHandler, setRoleAPI: getAPI) => {
 
 // request for area of intersts list
 export const getInterests = (errorHandler: errorHandler, setAoiAPI: AoiAPI) => {
-  apiGateway
+  publicGateway
     .get(onboardingRoutes.areaOfInterestList)
     .then((response) => {
       setAoiAPI(response.data.response.aois);
@@ -142,7 +143,7 @@ export const getCommunties = (
   errorHandler: errorHandler,
   setCommunityAPI: getAPI
 ) => {
-  apiGateway
+  publicGateway
     .get(onboardingRoutes.communityList)
     .then((response) => {
       setCommunityAPI(response.data.response.communities);
@@ -160,7 +161,7 @@ export const registerUser = (
   setHasValidationError: hasValidationError,
   userData: unknown
 ) => {
-  apiGateway
+  publicGateway
     .post(onboardingRoutes.register, userData)
     .then(function (response) {
       setFormSuccess(true);
@@ -200,7 +201,7 @@ export const emailVerification = (
   setOpacity0: opacity0,
   setDisplay0: display0
 ) => {
-  apiGateway
+  publicGateway
     .post(onboardingRoutes.emailVerification, { email: email })
     .then(function (response) {
       setFirstQuesion(!response.data.response.value);
