@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./SideNavBar.module.css";
 import MulearnBrand from "./assets/MulearnBrand";
 import companyLogo from "./assets/images/profile.png";
@@ -18,9 +18,18 @@ import MuButton from "../MuCompenents/MuButton";
 type Props = {};
 
 const SideNavBar = (props: Props) => {
+  const [marginTop, setMarginTop] = useState("0px");
+  const [transform, setTransform] = useState("0deg");
+  const [transform2, setTransform2] = useState("0deg");
+  const [transform3, setTransform3] = useState("0deg");
+  const [display, setDisplay] = useState("block");
+  const [display2, setDisplay2] = useState("unset");
   return (
     <div className={styles.fullpage}>
-      <div className={styles.side_nav_bar_container}>
+      <div
+        className={styles.side_nav_bar_container}
+        style={{ display: `${display2 === "none" ? "block" : ""}` }}
+      >
         <div className={styles.side_nav_bar}>
           <div className={styles.mulearn_brand}>
             <MulearnBrand />
@@ -41,9 +50,40 @@ const SideNavBar = (props: Props) => {
           <div className={styles.nav}>
             <div className={styles.nav_items}>
               <div className={styles.greetings}>Hello, &nbsp; Jenny 👋</div>
+
+              <div
+                className={styles.menu_btn}
+                onClick={() => {
+                  setMarginTop(marginTop === "0px" ? "-15px" : "0px");
+                  setTransform2(transform2 === "0deg" ? "45deg" : "0deg");
+                  setTransform3(transform3 === "0deg" ? "135deg" : "0deg");
+                  setDisplay(display === "block" ? "none" : "block");
+                  setDisplay2(display2 === "none" ? "block" : "none");
+                }}
+              >
+                <p
+                  style={{ transform: `rotate(${transform2})` }}
+                  className={styles.lines}
+                ></p>
+                <p
+                  style={{
+                    transform: `rotate(${transform3})`,
+                    marginTop: `${marginTop}`,
+                  }}
+                  className={styles.lines}
+                ></p>
+                <p
+                  style={{ display: `${display}` }}
+                  className={styles.lines}
+                ></p>
+              </div>
+
+              <div className={styles.mulearn_brand2}>
+                <MulearnBrand />
+              </div>
               <div className={styles.menu}>
-                <MdSettings style={{fontSize:"20px"}}/>
-                <MdNotifications style={{fontSize:"20px"}}/>
+                <MdSettings style={{ fontSize: "20px" }} />
+                <MdNotifications style={{ fontSize: "20px" }} />
                 <div className={styles.profile}>
                   <img src={companyLogo} alt="" />
                 </div>
@@ -52,6 +92,15 @@ const SideNavBar = (props: Props) => {
             <hr />
           </div>
         </div>
+
+        <div className={styles.main_content}>
+          <h1>Organization management</h1>
+          <p>
+            Manage your onboarding requests from colleges, communities, and
+            companies.
+          </p>
+        </div>
+
       </div>
     </div>
   );
