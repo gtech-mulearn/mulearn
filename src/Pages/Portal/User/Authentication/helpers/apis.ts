@@ -1,11 +1,8 @@
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import React from "react";
-import { NavigateFunction } from "react-router-dom";
+import { useNavigate, NavigateFunction } from "react-router-dom";
 import { publicGateway } from "../../../../../services/apiGateways";
 import { authRoutes } from "../../../../../services/urls";
-
-type setSuccess = React.Dispatch<React.SetStateAction<boolean>>;
-type setError = React.Dispatch<React.SetStateAction<string>>;
 
 type setMuID = React.Dispatch<React.SetStateAction<string>>;
 
@@ -41,7 +38,8 @@ export const forgetPassword = (
 export const login = (
   muid: string,
   password: string,
-  toast: (options?: UseToastOptions | undefined) => ToastId
+  toast: (options?: UseToastOptions | undefined) => ToastId,
+  navigate: NavigateFunction
 ) => {
   publicGateway
     .post(authRoutes.login, { muid, password })
@@ -59,6 +57,7 @@ export const login = (
           duration: 3000,
           isClosable: true,
         });
+        navigate("/user/connect-discord");
       }
     })
     .catch((error) => {

@@ -28,7 +28,7 @@ function App() {
       <Route path="user/login" element={<Login />} />
       <Route path="user/forgot-password" element={<ForgotPassword />} />
       <Route path="user/reset-password" element={<ResetPassword />} />
-      <Route path="user/testnav" element={<SideNavBar />} />
+      <Route path="user/testnav" element={<SideNavBar component={null} />} />
 
       {/* Private Routes */}
       <Route element={<PrivateRoutes />}>
