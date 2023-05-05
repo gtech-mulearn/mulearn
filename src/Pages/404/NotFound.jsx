@@ -26,8 +26,10 @@ const NotFound = ({ isLoaded }) => {
         </>
       ) : (
         <div className="flex justify-center items-center flex-col gap-8">
-          <div className="animate-spin rounded-full h-20 w-20 border-t-2 border-l-2 border-gray-900"></div>
-          <p className="text-3xl font-medium">Please wait...</p>
+          <div className="animate-spin rounded-full h-15 w-15 border-t-2 border-l-2 border-orange-400"></div>
+          <p className="text-2xl font-medium text-orange-400">
+            Please wait...
+          </p>
         </div>
       )}
     </div>

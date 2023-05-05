@@ -12,6 +12,10 @@
   margin: 2rem;
 }
 
+.font-noto {
+  font-family: "Noto Sans", sans-serif;
+}
+
 .nf_img {
   width: 350px;
   object-fit: contain;
