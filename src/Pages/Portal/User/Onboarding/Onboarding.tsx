@@ -809,7 +809,7 @@ const Onboarding = (props: Props) => {
                     >
                       <div className={styles.question_box}>
                         <div className={styles.question}>
-                          <h3>Did you like to become a Mentor ?</h3>
+                          <h3>Would you like to become a Mentor?</h3>
                           <div className={styles.answers}>
                             <button
                               onClick={() => {
@@ -1171,7 +1171,7 @@ const Onboarding = (props: Props) => {
                             {role[0].title == "Mentor" ? (
                               <div className={styles.input_container}>
                                 <label htmlFor="">
-                                  Type{" "}
+                                  Mentor Type{" "}
                                   <span className={styles.required}>*</span>
                                 </label>
                                 <div className={styles.grouped_inputs}>
