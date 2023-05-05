@@ -71,7 +71,7 @@ export const SubMenu = ({ submenu, sublinks }) => {
     <>
       {submenu && (
         <div>
-          <div className="absolute mt-5 bg-white left-0  right-0 hidden group-hover:lg:block hover:lg:block w-full">
+          <div className="absolute mt-5 bg-white left-0  right-0 hidden group-hover:lg:block hover:lg:block w-full setIndex">
             <div className=" p-10 flex gap-x-10 addition justify-around border-t border-b">
               <div className="grid grid-cols-3 gap-10 px-10">
                 {sublinks.map((mysublinks) => (

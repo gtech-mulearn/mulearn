@@ -1,4 +1,4 @@
-const mainlink = "https://learn.mulearn.org"
+const mainlink = "https://learn.mulearn.org";
 export const links = [
   {
     head: -1,
@@ -147,6 +147,13 @@ export const links = [
         submenu: true,
         sublinks: [
           {
+            name: "YIP",
+            submenu: false,
+            sublinks: [],
+            link: "/yip",
+            foreign: false,
+          },
+          {
             name: "Foundation Program",
             submenu: false,
             sublinks: [],
@@ -172,6 +179,13 @@ export const links = [
             submenu: false,
             sublinks: [],
             link: "/bootcamps",
+            foreign: false,
+          },
+          {
+            name: "Beweb.dev",
+            submenu: false,
+            sublinks: [],
+            link: "/events/bewebdev",
             foreign: false,
           },
         ],
@@ -508,4 +522,4 @@ export const links = [
       },
     ],
   },
-]
+];

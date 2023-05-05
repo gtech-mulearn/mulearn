@@ -12,20 +12,20 @@ const LeaderBoard = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_LEADERBOARD_API}/colleges`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/leaderboard/college/`)
       .then(function (response) {
-        console.log(response.data.data);
-        setColleges(response.data.data);
+        // console.log(response.data.response);
+        setColleges(response.data.response);
       })
       .catch(function (error) {
         console.log(error);
       });
 
     axios
-      .get(`${process.env.REACT_APP_LEADERBOARD_API}/students_meta`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/leaderboard/students/`)
       .then(function (response) {
-        console.log(response.data.data);
-        setStudents(response.data.data);
+        // console.log(response.data.response);
+        setStudents(response.data.response);
       })
       .catch(function (error) {
         console.log(error);
