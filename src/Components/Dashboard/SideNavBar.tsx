@@ -15,9 +15,7 @@ import {
 } from "react-icons/md";
 import MuButton from "../MuCompenents/MuButton";
 
-type Props = {};
-
-const SideNavBar = (props: Props) => {
+const SideNavBar = (props: { component: any }) => {
   const [marginTop, setMarginTop] = useState("0px");
   const [transform, setTransform] = useState("0deg");
   const [transform2, setTransform2] = useState("0deg");
@@ -92,15 +90,7 @@ const SideNavBar = (props: Props) => {
             <hr />
           </div>
         </div>
-
-        <div className={styles.main_content}>
-          <h1>Organization management</h1>
-          <p>
-            Manage your onboarding requests from colleges, communities, and
-            companies.
-          </p>
-        </div>
-
+        {props.component}
       </div>
     </div>
   );
