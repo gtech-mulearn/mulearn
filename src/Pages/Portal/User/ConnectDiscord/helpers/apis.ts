@@ -15,15 +15,5 @@ export const connectDiscord = (
     })
     .catch((error) => {
       console.log(error);
-    //   toast({
-    //     title: "Session Expired",
-    //     description: "Kindly login again, you will be redirected!",
-    //     status: "error",
-    //     duration: 3000,
-    //     isClosable: true,
-    //   });
-    //   setTimeout(() => {
-    //     navigate("/user/login");
-    //   }, 5000);
     });
 };

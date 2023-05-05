@@ -45,6 +45,7 @@ export const login = (
     .post(authRoutes.login, { muid, password })
     .then((response) => {
       if (response.data.hasError == false) {
+        console.log(response.data.response.accessToken);
         localStorage.setItem("accessToken", response.data.response.accessToken);
         localStorage.setItem(
           "refreshToken",

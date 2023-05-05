@@ -12,16 +12,35 @@ export const privateGateway = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL as string,
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
   },
 });
 
+// Add a request interceptor
+privateGateway.interceptors.request.use(
+  function (config) {
+    if (localStorage.getItem("accessToken") !== null) {
+      config.headers["Authorization"] = `Bearer ${localStorage.getItem(
+        "accessToken"
+      )}`;
+    }
+
+    return config;
+  },
+  function (error) {
+    // Do something with request error
+    return Promise.reject(error);
+  }
+);
+
+// Add a response interceptor
 privateGateway.interceptors.response.use(
   function (response) {
     console.log(response);
     return response;
   },
   function (error) {
+
+    //TODO: if error occurs and status isn't 1000 nothing will happenend
     console.log(error.response.data);
 
     if (error.response.data.statusCode === 1000) {
@@ -52,7 +71,7 @@ privateGateway.interceptors.response.use(
           });
         })
         .catch((error) => {
-          
+          console.log(error);
         });
     }
 
