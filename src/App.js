@@ -42,6 +42,8 @@ import BeWebDev from "./Pages/Events/BeWebDev/BeWebDev";
 
 function App() {
   const [redirects, setRedirects] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
     axios
       .get(
@@ -52,8 +54,11 @@ function App() {
       })
       .catch((error) => {
         console.log(error);
+      })
+      .finally(() => {
+        setIsLoaded(true);
       });
-  },[]);
+  }, []);
   return (
     <div className="App">
       <Router>
@@ -74,7 +79,7 @@ function App() {
             }
           /> */}
           <Route path="/careers" element={<Career />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound isLoaded={isLoaded} />} />
           <Route path="/termsandconditions" element={<TermsAndCondition />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
           <Route element={<Layout />}>
