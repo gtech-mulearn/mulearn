@@ -1,7 +1,6 @@
 import React, { ReactFragment } from "react";
 import styles from "./Mucompnents.module.css";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
-type Props = {};
 
 const MuButton = (props:{text:string, icon:ReactJSXElement}) => {
   return (
