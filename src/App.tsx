@@ -16,7 +16,7 @@ import {
   LearningCircles,
   MuLearnAdmin,
 } from "./views/DashboardView/exports";
-import ConnectDscord from "./Pages/Portal/User/ConnectDiscord/ConnectDscord";
+import ConnectDscord from "./Pages/Portal/User/ConnectDiscord/ConnectDiscord";
 import SideNavBar from "./Components/Dashboard/SideNavBar";
 
 function App() {

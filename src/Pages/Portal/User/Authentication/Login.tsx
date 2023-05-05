@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Eye from "./assets/Eye";
 import styles from "./Login.module.css";
 import { useToast } from "@chakra-ui/react";
@@ -13,6 +13,11 @@ const Login = (props: Props) => {
   const [password, setPassword] = useState("");
   const toast = useToast();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+  }, []);
 
   return (
     <div className={styles.login_page}>
