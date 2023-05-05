@@ -1,0 +1,199 @@
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.levels_headingtext {
+  text-align: center;
+}
+
+.levels_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.levels_view {
+  display: flex;
+  flex-direction: column;
+}
+
+.levels_img {
+  display: block;
+  margin: auto;
+  width: 20rem;
+}
+
+.levels_cards {
+  border: 1px solid rgb(131, 131, 131);
+  width: 600px;
+  height: 400px;
+  border-radius: 10px;
+  margin: auto;
+  box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+}
+
+.second_card {
+  border-radius: 8px;
+  border: 1px solid rgba(131, 131, 131);
+  margin: 50px;
+  text-align: center;
+  box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
+}
+
+.levels_headingcard {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  color: #303030;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.sd_cardtext span {
+  color: black;
+}
+
+.levels_headingcard span {
+  font-weight: 600;
+  color: #f78c40;
+}
+
+.sd_cardtext {
+  margin: 50px;
+  font-family: Poppins, sans-serif;
+  font-size: 1rem;
+
+}
+
+.levels_texts {
+  text-align: left;
+}
+
+.levels_headingtext {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #303030;
+  margin-bottom: 10px;
+}
+
+
+.levels_heading span {
+  font-weight: 600;
+  color: #f78c40;
+}
+
+.levels_tagline {
+  margin-top: 3.5rem;
+  font-family: "Poppins", sans-serif;
+  max-width: 35rem;
+  margin: 0 auto;
+
+}
+
+@media only screen and (min-width: 1000px) {
+  .levels_view {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .levels_img {
+    display: block;
+    margin: auto;
+    width: 35rem;
+  }
+
+  .levels_texts {
+    text-align: left;
+    width: 50%;
+  }
+
+  .levels_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 3.55rem;
+    line-height: 5rem;
+    font-weight: 600;
+  }
+
+
+  .levels_tagline {
+    margin-top: 1rem;
+    font-size: 1rem;
+    width: 80%;
+  }
+
+
+}
+
+@media only screen and (max-width: 767px) {
+  .levels_cards {
+    border: 1px solid rgba(131, 131, 131);
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+
+    margin: 20px auto;
+  }
+
+  .sd_cardtext {
+    margin: 25px;
+    font-size: 1rem;
+
+  }
+
+  .second_card {
+    width: 225px;
+    margin: 20px auto;
+
+  }
+
+  .levels_headingcard {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: #303030;
+    font-weight: 600;
+  }
+
+  .levels_headingcard span {
+    font-weight: 600;
+    color: #f78c40;
+  }
+
+  .levels_headingtext {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 2.55rem;
+    line-height: 3rem;
+    font-weight: 600;
+  }
+
+  .levels_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 2.55rem;
+    line-height: 3rem;
+    font-weight: 600;
+    margin: 20px 0;
+  }
+
+  .levels_image {
+    display: none;
+  }
+
+  .sd_cardtextin {
+    display: none;
+  }
+
+  .levels_tagline{
+    margin-bottom: 30px;
+  }
+}

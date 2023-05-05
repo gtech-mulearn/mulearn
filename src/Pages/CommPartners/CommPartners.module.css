@@ -146,12 +146,15 @@
     font-size: 2.25rem;
     font-family: "Noto Sans", sans-serif;
     font-weight: 600;
+ 
+    
   }
 
   .sv_tagline {
     font-size: 1rem;
     width: 90%;
     font-family: "Poppins", sans-serif;
+   
   }
 }
 
