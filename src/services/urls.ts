@@ -14,4 +14,10 @@ export const authRoutes = {
   login: "/api/v1/auth/user-authentication/",
   getMuid: "/api/v1/user/reset-password/verify-token/${token}/",
   resetPassword: "/api/v1/user/reset-password/${token}/",
+  getAccessToken: "/api/v1/auth/get-access-token/",
+};
+
+export const dashboardRoutes = {
+  connectDiscord: "/api/v1/user/test/",
+  getmuid: "/api/v1/user/user-muid/",
 };

@@ -9,14 +9,14 @@ import Profile from "./Pages/Portal/User/Profile/Profile";
 import Login from "./Pages/Portal/User/Authentication/Login";
 import ForgotPassword from "./Pages/Portal/User/Authentication/ForgotPassword";
 import ResetPassword from "./Pages/Portal/User/Authentication/ResetPassword";
-import PrivateRoutes from "./utils/PrivateRoutes";
+import PrivateRoutes from "./Components/PrivateRoutes";
 import {
   Dashboard,
   DashboardRootLayout,
   LearningCircles,
   MuLearnAdmin,
 } from "./views/DashboardView/exports";
-import ConnectDscord from "./Pages/Portal/User/ConnectDiscord/ConnectDscord";
+import ConnectDscord from "./Pages/Portal/User/ConnectDiscord/ConnectDiscord";
 import SideNavBar from "./Components/Dashboard/SideNavBar";
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
       <Route path="user/login" element={<Login />} />
       <Route path="user/forgot-password" element={<ForgotPassword />} />
       <Route path="user/reset-password" element={<ResetPassword />} />
-      <Route path="user/testnav" element={<SideNavBar />} />
+      <Route path="user/testnav" element={<SideNavBar component={null} />} />
 
       {/* Private Routes */}
       <Route element={<PrivateRoutes />}>

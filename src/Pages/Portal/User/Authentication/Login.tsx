@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Eye from "./assets/Eye";
 import styles from "./Login.module.css";
 import { useToast } from "@chakra-ui/react";
 import { login } from "./helpers/apis";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
@@ -11,6 +12,7 @@ const Login = (props: Props) => {
   const [muid, setMuID] = useState("");
   const [password, setPassword] = useState("");
   const toast = useToast();
+  const navigate = useNavigate();
 
   return (
     <div className={styles.login_page}>
@@ -58,7 +60,8 @@ const Login = (props: Props) => {
               onClick={(e) => {
                 e.preventDefault();
                 if (muid != "" && password != "") {
-                  login(muid, password, toast);
+                  login(muid, password, toast, navigate);
+                  console.log("Hoi");
                 }
               }}
               type="submit"
