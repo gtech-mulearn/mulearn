@@ -1,0 +1,173 @@
+.main_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: calc(100% - 160px);
+    justify-content: flex-start;
+    text-align: center;
+}
+
+.main_content .conect_dicord_conatianer {
+    width: 90%;
+    height: 500px;
+    /* padding: 20px 30px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background: #F3F8FF;
+    border: 1px solid #DDE2E5;
+    border-radius: 20px;
+}
+
+.main_content .conect_dicord_conatianer .content {
+    padding: 40px 20px;
+}
+
+.main_content .conect_dicord_conatianer h1 {
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.main_content .conect_dicord_conatianer .content .muid_and_btn {
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_content .conect_dicord_conatianer .muid_and_btn p {
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    text-align: center;
+    background: #CCDBF0;
+    padding: 10px 20px;
+    border-radius: 10px;
+    align-items: center;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.main_content .conect_dicord_conatianer .muid_and_btn button {
+    background: #014BB2;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: flex;
+    margin: 10px;
+    align-items: center;
+}
+
+.main_content .conect_dicord_conatianer .images {
+    display: flex;
+    height: 300px;
+    width: 100%;
+    justify-content: space-between;
+    position: relative;
+}
+
+.main_content .conect_dicord_conatianer .images .image {
+    display: flex;
+    height: 300px;
+    width: 580px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.main_content .conect_dicord_conatianer .images p:nth-child(1) {
+    background-image: url(./assets/images/connectdiscordpng1.png);
+    position: absolute;
+    left: 0;
+}
+
+.main_content .conect_dicord_conatianer .images p:nth-child(2) {
+    background-image: url(./assets/images/connectdiscordpng2.png);
+    position: absolute;
+    right: -30px;
+    bottom: -35px;
+}
+
+/* responsive */
+
+
+@media (max-width: 1380px) {
+    .main_content .conect_dicord_conatianer {
+        height: 400px;
+    }
+    .main_content .conect_dicord_conatianer .images .image {
+        width: 38vw;
+    }
+
+    .main_content .conect_dicord_conatianer .images p:nth-child(1) {
+        left: 0;
+        bottom: calc(-130px - -9vw);
+    }
+
+    .main_content .conect_dicord_conatianer .images p:nth-child(2) {
+        right: -20px;
+        bottom: calc(-151px - -9vw);
+    }
+}
+
+@media (max-width: 710px) {
+    .main_content .conect_dicord_conatianer {
+        height: 430px;
+    }
+
+    .main_content .conect_dicord_conatianer .content {
+        padding: 40px 10px;
+    }
+
+    .main_content .conect_dicord_conatianer .content .muid_and_btn {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .main_content .conect_dicord_conatianer .images .image {
+        /* height: 410px; */
+        width: 380px;
+    }
+
+    .main_content .conect_dicord_conatianer .images p:nth-child(1) {
+        display: none;
+    }
+
+    .main_content .conect_dicord_conatianer .images p:nth-child(2) {
+        right: -2px;
+        bottom: -65px;
+    }
+
+    .main_content .conect_dicord_conatianer h1 {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 395px) {
+    .main_content .conect_dicord_conatianer {
+        height: 470px;
+    }
+    .main_content .conect_dicord_conatianer .images .image {
+        width: 300px;
+    }
+    .main_content .conect_dicord_conatianer .images p:nth-child(2) {
+        bottom: -80px;
+    }
+}
+
+@media (max-width: 308px) {
+    .main_content .conect_dicord_conatianer .images .image {
+        height: 410px;
+        width: 290px;
+    }
+
+    .main_content .conect_dicord_conatianer .images p:nth-child(2) {
+        right: -2px;
+        bottom: -140px;
+    }
+
+    .main_content .conect_dicord_conatianer .muid_and_btn p {
+        padding: 10px 10px;
+    }
+}
