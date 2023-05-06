@@ -9,7 +9,7 @@ import Profile from "./Pages/Portal/User/Profile/Profile";
 import Login from "./Pages/Portal/User/Authentication/Login";
 import ForgotPassword from "./Pages/Portal/User/Authentication/ForgotPassword";
 import ResetPassword from "./Pages/Portal/User/Authentication/ResetPassword";
-import PrivateRoutes from "./utils/PrivateRoutes";
+import PrivateRoutes from "./Components/PrivateRoutes";
 import {
   Dashboard,
   DashboardRootLayout,
