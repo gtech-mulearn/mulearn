@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
-
 import styles from "./CampusChapters.module.css";
 import { Link } from "react-router-dom";
-
 import Faq from "react-faq-component";
-
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import campusJsonData from "./data.json";
+import Levels from "./Levels/Levels";
 
 const CampusChapters = () => {
   const campusData = campusJsonData;
@@ -82,13 +80,9 @@ const CampusChapters = () => {
                 Welcome to <span>µLearn</span> Campus Chapters
               </p>
               <p className={styles.fv_tagline}>
-                Each campus has its own culture, with students having their
-                specific interests and liking. Campus chapters seek to bring
-                together students within a college, developing the μLearn
-                culture from within. Campus Chapters thus act as a body that
-                allows μLearn to reach out to its members with their specific
-                needs and provide them with all necessary resources to help them
-                venture into their interests.
+                Campus cultures vary based on student interests. μLearn campus
+                chapters unite students, offer tailored resources, and meet
+                individual needs, promoting the μLearn culture.
               </p>
               <a
                 href="https://airtable.com/shrmtngt3zopg8eVh"
@@ -110,14 +104,15 @@ const CampusChapters = () => {
             </div>
           </div>
         </div>
-
+        {/*Added updated contents from levels component*/}
+        <Levels />
         <div className={styles.search_view_container}>
           <div className={styles.search_view}>
             <div className={styles.sv_texts}>
               <p className={styles.sv_heading}>
-                Find a <span> Campus Chapter </span>
+                Find a<span> Campus Chapter </span>
               </p>
-              <p className={styles.fv_tagline}>
+              <p className={styles.gv_tagline}>
                 Select your zone and district to find the campus chapters near
                 you. µLearn Campus Chapters are a concept that are to be
                 implemented in-house by the Students for the Students.
@@ -163,30 +158,8 @@ const CampusChapters = () => {
             <div className={styles.sv_search_container}>
               <div className={styles.colleges}>
                 {campusData.map((campus) => {
-                  //if the selected zone is all, then return all the campuses
-                  if (selectedZone === "all") {
-                    return (
-                      <div className={styles.college}>
-                        <div className={styles.college_name}>{campus.name}</div>
-                        <div className={styles.college_district}>
-                          {campus.district}
-                        </div>
-                        <div className={styles.college_zone}>
-                          Zone: {campus.zone}
-                        </div>
-                        <div className={styles.college_lead}>
-                          Campus Lead: {campus.lead}
-                        </div>
-                        {campus.email && (
-                          <div className={styles.college_email}>
-                            Email Address: {campus.email}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  }
-                  //if the selected zone is not all, then return the campuses that match the selected zone
-                  else if (
+                  // return the campuses that match the selected zone
+                  if (
                     campus.zone === selectedZone &&
                     selectedDistrict === "all"
                   ) {
@@ -210,7 +183,7 @@ const CampusChapters = () => {
                       </div>
                     );
                   }
-                  //if the selected zone is not all, then return the campuses that match the selected zone and district
+                  //return the campuses that match the selected zone and district
                   else if (
                     campus.zone === selectedZone &&
                     campus.district === selectedDistrict
@@ -237,75 +210,6 @@ const CampusChapters = () => {
                   }
                   return null;
                 })}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.second_view_container}>
-          <div className={styles.second_view}>
-            <div className={styles.sv_texts}>
-              {/* <p className={styles.sv_pheading}>Lorem, ipsum dolor.</p> */}
-              <p className={styles.sv_heading}>Why µLearn for Campuses?</p>
-            </div>
-            <div className={styles.d_main_container}>
-              <div style={{ marginTop: 0 }} className={styles.d_container}>
-                <div className={styles.d_heading}>
-                  <div className={styles.d_number}>1</div>
-                  <span>Echo Chambers</span>
-                </div>
-                <p className={styles.d_text}>
-                  Regular Communities teach us upskilling and knowledge at a
-                  limited resource, post which they all tend to fall into the
-                  echo chamber and leave students with the belief that they are
-                  well versed while just being at an average level.
-                </p>
-              </div>
-            </div>
-            <div className={styles.d_video_container}>
-              <div className={styles.d_video}>
-                <iframe
-                  src="https://www.youtube.com/embed/pEwJhL9A7xc"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-              </div>
-
-              <div className={styles.d_main_container}>
-                <div className={styles.d_container}>
-                  <div className={styles.d_heading}>
-                    <div className={styles.d_number}>2</div>
-                    <span>Quality Resources</span>
-                  </div>
-                  <p className={styles.d_text}>
-                    Students get privileged access to core and relevant courses,
-                    such as those provided by our community partner Google.
-                  </p>
-                </div>
-                <div className={styles.d_container}>
-                  <div className={styles.d_heading}>
-                    <div className={styles.d_number}>3</div>
-                    <span>The Real World</span>
-                  </div>
-                  <p className={styles.d_text}>
-                    µLearn campus chapters help to break the echo chambers and
-                    move out and experience the real world.Get mentored by
-                    experienced company professionals from various domains.
-                  </p>
-                </div>
-                <div className={styles.d_container}>
-                  <div className={styles.d_heading}>
-                    <div className={styles.d_number}>4</div>
-                    <span>Infinite Opportunties.</span>
-                  </div>
-                  <p className={styles.d_text}>
-                    At µLearn, the students get connected with the rest of the
-                    community chapters, so they are in an infinite loop of
-                    upskilling and connecting with new opportunities.
-                  </p>
-                </div>
               </div>
             </div>
           </div>
@@ -360,6 +264,87 @@ const CampusChapters = () => {
                 <p className={styles.step_text}>
                   Schedule your campus chapter's first meeting and get going.
                 </p>
+              </div>
+              <div className={styles.step}>
+                <img
+                  src="/assets/campuscommunity/Badge.svg"
+                  alt=""
+                  className={styles.step_image}
+                />
+                <p className={styles.step_heading}>4). µLearn Chaptership</p>
+                <p className={styles.step_text}>
+                  Impliment chaptership to unlocks benefits from µLearn
+                  Foundation .
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.second_view_container}>
+          <div className={styles.second_view}>
+            <div className={styles.sv_texts}>
+              {/* <p className={styles.sv_pheading}>Lorem, ipsum dolor.</p> */}
+              <p className={styles.sv_heading}>Why µLearn for Campuses?</p>
+            </div>
+            <div className={styles.d_video_container}>
+              <div className={styles.d_video}>
+                <iframe
+                  src="https://www.youtube.com/embed/pEwJhL9A7xc"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+
+              <div className={styles.d_main_container}>
+                <div className={styles.d_container}>
+                  <div className={styles.d_heading}>
+                    <div className={styles.d_number}>1</div>
+                    <span>Echo Chambers</span>
+                  </div>
+                  <p className={styles.d_text}>
+                    Regular Communities teach us upskilling and knowledge at a
+                    limited resource, post which they all tend to fall into the
+                    echo chamber and leave students with the belief that they
+                    are well versed while just being at an average level.
+                  </p>
+                </div>
+
+                <div className={styles.d_container}>
+                  <div className={styles.d_heading}>
+                    <div className={styles.d_number}>2</div>
+                    <span>Quality Resources</span>
+                  </div>
+                  <p className={styles.d_text}>
+                    Students get privileged access to core and relevant courses,
+                    such as those provided by our community partner Google.
+                  </p>
+                </div>
+
+                <div className={styles.d_container}>
+                  <div className={styles.d_heading}>
+                    <div className={styles.d_number}>3</div>
+                    <span>The Real World</span>
+                  </div>
+                  <p className={styles.d_text}>
+                    µLearn campus chapters help to break the echo chambers and
+                    move out and experience the real world.Get mentored by
+                    experienced company professionals from various domains.
+                  </p>
+                </div>
+                <div className={styles.d_container}>
+                  <div className={styles.d_heading}>
+                    <div className={styles.d_number}>4</div>
+                    <span>Infinite Opportunties.</span>
+                  </div>
+                  <p className={styles.d_text}>
+                    At µLearn, the students get connected with the rest of the
+                    community chapters, so they are in an infinite loop of
+                    upskilling and connecting with new opportunities.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
