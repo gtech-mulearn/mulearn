@@ -23,7 +23,7 @@ const Levels = () => {
                 <button className={styles.leadcampus}>Find Campus</button>
               </Link> */}
           </div>
-          <div className={styles.levels_image1}>
+          <div className={styles.levels_image}>
             <img
               src="/assets/campuscommunity/chaptership.svg"
               alt=""
@@ -38,7 +38,7 @@ const Levels = () => {
         </p>
       </div>
       <div className={styles.levels_view_container}>
-        <div className={styles.levels_view}>
+        <div className={styles.levels_view1}>
           <div className={styles.levels_image}>
             <img
               src="/assets/campuscommunity/level1.svg"
@@ -108,10 +108,10 @@ const Levels = () => {
         </div>
       </div>
       <div className={styles.levels_view_container}>
-        <div className={styles.levels_view}>
+        <div className={styles.levels_view1}>
           <div className={styles.levels_image}>
             <img
-              src="/assets/campuscommunity/level1.svg"
+              src="/assets/campuscommunity/level3.svg"
               alt=""
               className={styles.levels_img}
             />
@@ -169,7 +169,7 @@ const Levels = () => {
           </div>
           <div className={styles.levels_image}>
             <img
-              src="/assets/campuscommunity/level2.svg"
+              src="/assets/campuscommunity/level4.svg"
               alt=""
               className={styles.levels_img}
             />
@@ -177,10 +177,10 @@ const Levels = () => {
         </div>
       </div>
       <div className={styles.levels_view_container}>
-        <div className={styles.levels_view}>
+        <div className={styles.levels_view1}>
           <div className={styles.levels_image}>
             <img
-              src="/assets/campuscommunity/level1.svg"
+              src="/assets/campuscommunity/level5.svg"
               alt=""
               className={styles.levels_img}
             />

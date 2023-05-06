@@ -19,16 +19,22 @@ p {
   flex-direction: column;
 }
 
+.levels_view1 {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .levels_img {
   display: block;
   margin: auto;
   width: 20rem;
 }
 
+
 .levels_cards {
   border: 1px solid rgb(131, 131, 131);
   width: 600px;
-  height: 400px;
+  height: auto;
   border-radius: 10px;
   margin: auto;
   box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
@@ -107,10 +113,19 @@ p {
     justify-content: space-between;
   }
 
+  .levels_view1 {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .levels_img {
     display: block;
-    margin: auto;
-    width: 35rem;
+    margin: 0px 10px 40px 40px;
+    width: 30rem;
   }
 
   .levels_texts {
@@ -123,6 +138,9 @@ p {
     font-size: 3.55rem;
     line-height: 5rem;
     font-weight: 600;
+    text-align: left;
+    margin-left: 40px;
+    align-items: center;
   }
 
 
@@ -130,6 +148,8 @@ p {
     margin-top: 1rem;
     font-size: 1rem;
     width: 80%;
+    text-align: left;
+    margin-left: 40px;
   }
 
 
@@ -141,7 +161,6 @@ p {
     width: 300px;
     height: auto;
     border-radius: 10px;
-
     margin: 20px auto;
   }
 
@@ -183,17 +202,31 @@ p {
     line-height: 3rem;
     font-weight: 600;
     margin: 20px 0;
+    text-align: left;
   }
 
-  .levels_image {
-    display: none;
-  }
+
 
   .sd_cardtextin {
     display: none;
   }
 
-  .levels_tagline{
+  .levels_tagline {
     margin-bottom: 30px;
+
+  }
+
+  .levels_view1 {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .levels_img {
+    margin-bottom: 30px;
+
   }
 }
