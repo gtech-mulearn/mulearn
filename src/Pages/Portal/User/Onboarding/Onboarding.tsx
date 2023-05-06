@@ -223,8 +223,8 @@ const Onboarding = (props: Props) => {
     }
     if (!values.password) {
       errors.password = "Password is required";
-    } else if (values.password == ""|| values.password.length < 8|| values.password.length > 16 || !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(values.password)) {
-      errors.password = "Password must be 8-16 characters long, should contain at least one uppercase, one lowercase and one number";
+    } else if (values.password == "") {
+      errors.password = "Password should not be empty";
     }
     if (!values.confirmPassword) {
       errors.confirmPassword = "Please confirm your password";
