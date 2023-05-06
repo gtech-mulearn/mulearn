@@ -1058,7 +1058,8 @@ const Onboarding = (props: Props) => {
                 </div>
               </>
             ) : (
-              <Success roleVerified={roleVerified} />
+              // <Success roleVerified={roleVerified} />
+              navigate("/user/connect-discord")
             )}
           </>
         ) : (
