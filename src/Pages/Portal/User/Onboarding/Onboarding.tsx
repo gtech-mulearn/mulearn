@@ -411,8 +411,6 @@ const Onboarding = (props: Props) => {
                       </div>
                     </div>
                   ) : null}
-                  {/* <PopUpQuestions questions="Did you like to become a Mentor ?" answers={["Yes","No"]}/> */}
-                  {/* <PopUpQuestions questions="What is your role ?" answers={[" I'm currently studying","I'm currently working professional","I'm teaching in a institute","I'm a freelancer"]}/> */}
                   {/*2nd question if the user is working prof. or freelancer  */}
                   {secondQuesion ? (
                     <div
