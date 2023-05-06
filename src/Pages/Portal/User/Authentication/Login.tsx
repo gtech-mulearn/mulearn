@@ -1,50 +1,18 @@
-import React, { useState } from "react"
-import Eye from "./assets/Eye"
-import styles from "./Login.module.css"
-import axios from "axios"
-import { useToast } from "@chakra-ui/react"
+import React, { useEffect, useState } from "react";
+import Eye from "./assets/Eye";
+import styles from "./Login.module.css";
+import { useToast } from "@chakra-ui/react";
+import { login } from "./helpers/apis";
+import { useNavigate } from "react-router-dom";
 
-type Props = {}
+type Props = {};
 
 const Login = (props: Props) => {
-  const [showOrHidePassword, setShowOrHidePassword] = useState("password")
-  const [muid, setMuID] = useState("")
-  const [password, setPassword] = useState("")
-  const toast = useToast()
-
-  const handleLogin = () => {
-    axios
-      .post(
-        import.meta.env.VITE_BACKEND_URL + "/api/v1/auth/user-authentication/",
-        {
-          muid: muid,
-          password: password,
-        }
-      )
-      .then((res) => {
-        console.log(res.data)
-        if (res.data.hasError == false) {
-          localStorage.setItem("accessToken", res.data.response.accessToken)
-          localStorage.setItem("refreshToken", res.data.response.refreshToken)
-          toast({
-            title: "Login Successful",
-            description: "You have been logged in successfully",
-            status: "success",
-            duration: 3000,
-            isClosable: true,
-          })
-        }
-      })
-      .catch((error) => {
-        console.log(error)
-        toast({
-          title: error.response.data.message.general[0],
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        })
-      })
-  }
+  const [showOrHidePassword, setShowOrHidePassword] = useState("password");
+  const [muid, setMuID] = useState("");
+  const [password, setPassword] = useState("");
+  const toast = useToast();
+  const navigate = useNavigate();
 
   return (
     <div className={styles.login_page}>
@@ -74,10 +42,10 @@ const Login = (props: Props) => {
               <button
                 className={styles.password_icon}
                 onClick={(e) => {
-                  e.preventDefault()
+                  e.preventDefault();
                   showOrHidePassword == "password"
                     ? setShowOrHidePassword("text")
-                    : setShowOrHidePassword("password")
+                    : setShowOrHidePassword("password");
                 }}
               >
                 <Eye />
@@ -90,9 +58,10 @@ const Login = (props: Props) => {
             </p>
             <button
               onClick={(e) => {
-                e.preventDefault()
+                e.preventDefault();
                 if (muid != "" && password != "") {
-                  handleLogin()
+                  login(muid, password, toast, navigate);
+                  console.log("Hoi");
                 }
               }}
               type="submit"
@@ -103,7 +72,7 @@ const Login = (props: Props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
