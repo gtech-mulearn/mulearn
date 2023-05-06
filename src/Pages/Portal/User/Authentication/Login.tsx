@@ -14,11 +14,6 @@ const Login = (props: Props) => {
   const toast = useToast();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
-  }, []);
-
   return (
     <div className={styles.login_page}>
       <div className={styles.login_container}>

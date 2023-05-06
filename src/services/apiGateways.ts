@@ -1,5 +1,8 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { authRoutes } from "./urls";
+import { createStandaloneToast } from "@chakra-ui/react";
+
+const { toast } = createStandaloneToast();
 
 export const publicGateway = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL as string,
@@ -39,7 +42,6 @@ privateGateway.interceptors.response.use(
     return response;
   },
   function (error) {
-
     //TODO: if error occurs and status isn't 1000 nothing will happenend
     console.log(error.response.data);
 
@@ -72,6 +74,21 @@ privateGateway.interceptors.response.use(
         })
         .catch((error) => {
           console.log(error);
+          toast.closeAll();
+          toast({
+            title: "Your session has expired.",
+            description: "Please login again.",
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+          });
+
+          //wait for 3 seconds
+
+          setTimeout(() => {
+            localStorage.clear();
+            window.location.href = "/user/login";
+          }, 3000);
         });
     }
 
