@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./SideNavBar.module.css";
 import MulearnBrand from "./assets/MulearnBrand";
+import { getname } from "./helpers/apis";
+
 // import companyLogo from "./assets/images/profile.png";
 // import {
 //   MdHome,
@@ -23,10 +25,39 @@ const SideNavBar = (props: { component: any }) => {
   const [transform3, setTransform3] = useState("0deg");
   const [display, setDisplay] = useState("block");
   const [display2, setDisplay2] = useState("unset");
-  // const [position, setPosition] = useState("unset");
+  const [name, setName] = useState("");
   // const [opacity, setOpacity] = useState(null);
+  useEffect(() => {
+    getname(setName);
+  });
   return (
     <div className={styles.fullpage}>
+      <div
+        className={styles.menu_btn}
+        onClick={() => {
+          setMarginTop(marginTop === "0px" ? "-15px" : "0px");
+          setTransform2(transform2 === "0deg" ? "45deg" : "0deg");
+          setTransform3(transform3 === "0deg" ? "135deg" : "0deg");
+          setDisplay(display === "block" ? "none" : "block");
+          // setOpacity(opacity === 1 ? 0 : 1);
+          setDisplay2(display2 === "none" ? "block" : "none");
+          // setTimeout(() => {
+          // }, 1000);
+        }}
+      >
+        <p
+          style={{ transform: `rotate(${transform2})` }}
+          className={styles.lines}
+        ></p>
+        <p
+          style={{
+            transform: `rotate(${transform3})`,
+            marginTop: `${marginTop}`,
+          }}
+          className={styles.lines}
+        ></p>
+        <p style={{ display: `${display}` }} className={styles.lines}></p>
+      </div>
       <div
         className={styles.side_nav_bar_container}
         style={{ display: `${display2 === "none" ? "block" : ""}` }}
@@ -46,7 +77,6 @@ const SideNavBar = (props: { component: any }) => {
             <MuButton
               text="Profile"
               icon={<i className="fi fi-sr-clipboard-user"></i>}
-              style={{}}
             />
             <MuButton
               text="Connect Discord"
@@ -64,39 +94,7 @@ const SideNavBar = (props: { component: any }) => {
         <div className={styles.top_nav}>
           <div className={styles.nav}>
             <div className={styles.nav_items}>
-              <div className={styles.greetings}>Hello, &nbsp; Jenny 👋</div>
-
-              <div
-                className={styles.menu_btn}
-                onClick={() => {
-                  setMarginTop(marginTop === "0px" ? "-15px" : "0px");
-                  setTransform2(transform2 === "0deg" ? "45deg" : "0deg");
-                  setTransform3(transform3 === "0deg" ? "135deg" : "0deg");
-                  setDisplay(display === "block" ? "none" : "block");
-                  // setPosition(position === "unset" ? "fixed" : "unset");
-                  // setOpacity(opacity === 1 ? 0 : 1);
-                  setDisplay2(display2 === "none" ? "block" : "none");
-                  // setTimeout(() => {
-                  // }, 1000);
-                }}
-                // style={{ position: `${position}` }}
-              >
-                <p
-                  style={{ transform: `rotate(${transform2})` }}
-                  className={styles.lines}
-                ></p>
-                <p
-                  style={{
-                    transform: `rotate(${transform3})`,
-                    marginTop: `${marginTop}`,
-                  }}
-                  className={styles.lines}
-                ></p>
-                <p
-                  style={{ display: `${display}` }}
-                  className={styles.lines}
-                ></p>
-              </div>
+              <div className={styles.greetings}>Hello, &nbsp; {name} 👋</div>
 
               <div className={styles.mulearn_brand2}>
                 <MulearnBrand />

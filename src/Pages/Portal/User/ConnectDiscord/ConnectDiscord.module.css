@@ -5,6 +5,7 @@
     height: calc(100% - 160px);
     justify-content: flex-start;
     text-align: center;
+    margin-top: 16vh;
 }
 
 .main_content .conect_dicord_conatianer {
@@ -146,8 +147,23 @@
     height: 200px;
     width: 300px;
     background-color: #D9D9D9;
+    display: flex;
+    justify-content: center;
 }
 
+.main_content .onboarding_flow_container .content .onboarding_flow .box p,
+.main_content .onboarding_flow_container .content .onboarding_flow .box2 p,
+.main_content .onboarding_flow_container .content .onboarding_flow .box3 p,
+.main_content .onboarding_flow_container .content .onboarding_flow .box4 p {
+    position: absolute;
+    bottom: -80px;
+    font-size: 25px;
+    font-weight: 600;
+    width: 450px;
+}
+.main_content .onboarding_flow_container .content .onboarding_flow .box p{
+    bottom: -50px;
+}
 .main_content .onboarding_flow_container .content .onboarding_flow .box {
     left: 60px;
     top: 30px;
@@ -175,7 +191,7 @@
     .main_content .conect_dicord_conatianer {
         height: 400px;
     }
-
+    
     .main_content .conect_dicord_conatianer .images .image {
         width: 38vw;
     }
@@ -230,12 +246,12 @@
         height: 540px;
         width: 60vw;
     }
-
+    
     .main_content .onboarding_flow_container .content .onboarding_flow .box2 {
         left: 390px;
         top: 180px;
     }
-
+    
     .main_content .onboarding_flow_container .content .onboarding_flow .box3 {
         top: 360px;
     }
@@ -430,6 +446,17 @@
 
     .main_content .onboarding_flow_container .content .onboarding_flow .box4 {
         top: 17em;
+    }
+    .main_content .onboarding_flow_container .content .onboarding_flow .box p,
+    .main_content .onboarding_flow_container .content .onboarding_flow .box2 p,
+    .main_content .onboarding_flow_container .content .onboarding_flow .box3 p,
+    .main_content .onboarding_flow_container .content .onboarding_flow .box4 p {
+        bottom: -30px;
+        font-size: 10px;
+        width: 160px;
+    }
+    .main_content .onboarding_flow_container .content .onboarding_flow .box p{
+        bottom: -20px;
     }
 }
 

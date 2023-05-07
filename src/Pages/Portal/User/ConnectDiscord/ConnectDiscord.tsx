@@ -13,6 +13,7 @@ const ConnectDiscord = (props: Props) => {
   const navigate = useNavigate();
   const toast = useToast();
   const [muid, setMuid] = useState("");
+  const [name, setName] = useState("");
 
   useEffect(() => {
     console.log("Connect Discord");
@@ -62,10 +63,20 @@ const ConnectDiscord = (props: Props) => {
                 <h1>Onboarding Flow</h1>
                 <div className={styles.onboarding_flow}>
                   <p className={styles.lines}></p>
-                  <p className={styles.box}></p>
-                  <p className={styles.box2}></p>
-                  <p className={styles.box3}></p>
-                  <p className={styles.box4}></p>
+                  <div className={styles.box}>
+                    <p>Copy your µid from above. </p>
+                  </div>
+                  <div className={styles.box2}>
+                    <p>
+                      Open Discord, and Join the GTech µLearn Discord server.
+                    </p>
+                  </div>
+                  <div className={styles.box3}>
+                    <p>Choose the #on-boarding channel and click Connect. </p>
+                  </div>
+                  <div className={styles.box4}>
+                    <p>Paste the µid in the space provided. Click okay! </p>
+                  </div>
                 </div>
               </div>
             </div>
