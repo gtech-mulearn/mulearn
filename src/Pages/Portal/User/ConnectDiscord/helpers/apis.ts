@@ -13,7 +13,7 @@ export const connectDiscord = (
   privateGateway
     .get(dashboardRoutes.connectDiscord)
     .then((response) => {
-      console.log(response);
+      // console.log(response);
     })
     .catch((error) => {
       console.log(error);
@@ -28,7 +28,7 @@ export const getmuid = (
   privateGateway
     .post(dashboardRoutes.getmuid)
     .then((response) => {
-      console.log(response);
+      // console.log(response);
       setmuid(response.data.response);
     })
     .catch((error) => {
