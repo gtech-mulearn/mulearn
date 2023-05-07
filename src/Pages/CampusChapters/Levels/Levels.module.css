@@ -30,7 +30,6 @@ p {
   width: 20rem;
 }
 
-
 .levels_cards {
   border: 1px solid rgb(131, 131, 131);
   width: 600px;
@@ -74,7 +73,6 @@ p {
   margin: 50px;
   font-family: Poppins, sans-serif;
   font-size: 1rem;
-
 }
 
 .levels_texts {
@@ -89,7 +87,6 @@ p {
   margin-bottom: 10px;
 }
 
-
 .levels_heading span {
   font-weight: 600;
   color: #f78c40;
@@ -98,9 +95,10 @@ p {
 .levels_tagline {
   margin-top: 3.5rem;
   font-family: "Poppins", sans-serif;
-  max-width: 35rem;
+  max-width: 40rem;
+  margin-bottom: 2rem;
   margin: 0 auto;
-
+  text-align: center;
 }
 
 @media only screen and (min-width: 1000px) {
@@ -139,20 +137,16 @@ p {
     line-height: 5rem;
     font-weight: 600;
     text-align: left;
-    margin-left: 40px;
     align-items: center;
   }
-
 
   .levels_tagline {
     margin-top: 1rem;
     font-size: 1rem;
+    margin: 0;
     width: 80%;
     text-align: left;
-    margin-left: 40px;
   }
-
-
 }
 
 @media only screen and (max-width: 767px) {
@@ -167,13 +161,11 @@ p {
   .sd_cardtext {
     margin: 25px;
     font-size: 1rem;
-
   }
 
   .second_card {
     width: 225px;
     margin: 20px auto;
-
   }
 
   .levels_headingcard {
@@ -194,6 +186,7 @@ p {
     font-size: 2.55rem;
     line-height: 3rem;
     font-weight: 600;
+    text-align: left;
   }
 
   .levels_heading {
@@ -205,15 +198,13 @@ p {
     text-align: left;
   }
 
-
-
   .sd_cardtextin {
     display: none;
   }
 
   .levels_tagline {
     margin-bottom: 30px;
-
+    text-align: left;
   }
 
   .levels_view1 {
@@ -227,6 +218,5 @@ p {
 
   .levels_img {
     margin-bottom: 30px;
-
   }
 }

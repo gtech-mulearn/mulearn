@@ -77,7 +77,7 @@ const CampusChapters = () => {
           <div className={styles.first_view}>
             <div className={styles.fv_texts}>
               <p className={styles.fv_heading}>
-                Welcome to <span>µLearn</span> Campus Chapters
+                <span>µLearn</span> Campus Chapters
               </p>
               <p className={styles.fv_tagline}>
                 Campus cultures vary based on student interests. μLearn campus
