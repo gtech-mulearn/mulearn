@@ -5,7 +5,7 @@ import { connectDiscord, getmuid } from "./helpers/apis";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { MdContentCopy } from "react-icons/md";
-import { BsDiscord} from "react-icons/bs";
+import { BsDiscord } from "react-icons/bs";
 
 type Props = {};
 
@@ -28,24 +28,45 @@ const ConnectDiscord = (props: Props) => {
               <div className={styles.content}>
                 <h1>Join Discord using your µid</h1>
                 <div className={styles.muid_and_btn}>
-                  <p onClick={() => {navigator.clipboard.writeText(muid);
-                  toast({
-                    title: 'Copied to clipboard',
-                    description: "Please paste it in discord to connect your account",
-                    status: 'success',
-                    duration: 9000,
-                    isClosable: true,
-                  })
-                  }}>
-                    <MdContentCopy />&nbsp; &nbsp;
+                  <p
+                    onClick={() => {
+                      navigator.clipboard.writeText(muid);
+                      toast({
+                        title: "Copied to clipboard",
+                        description:
+                          "Please paste it in discord to connect your account",
+                        status: "success",
+                        duration: 9000,
+                        isClosable: true,
+                      });
+                    }}
+                  >
+                    <MdContentCopy />
+                    &nbsp; &nbsp;
                     {muid}
                   </p>
-                  <button><BsDiscord/>&nbsp; &nbsp; Connect Discord</button>
+                  <button>
+                    <BsDiscord />
+                    &nbsp; &nbsp; Connect Discord
+                  </button>
                 </div>
               </div>
               <div className={styles.images}>
                 <p className={styles.image}></p>
                 <p className={styles.image}></p>
+              </div>
+            </div>
+
+            <div className={styles.onboarding_flow_container}>
+              <div className={styles.content}>
+                <h1>Onboarding Flow</h1>
+                <div className={styles.onboarding_flow}>
+                  <p className={styles.lines}></p>
+                  <p className={styles.box}></p>
+                  <p className={styles.box2}></p>
+                  <p className={styles.box3}></p>
+                  <p className={styles.box4}></p>
+                </div>
               </div>
             </div>
           </div>
