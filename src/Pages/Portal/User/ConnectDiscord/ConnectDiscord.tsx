@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ConnectDiscord.module.css";
 import SideNavBar from "../../../../Components/Dashboard/SideNavBar";
-import { connectDiscord, getmuid } from "./helpers/apis";
+import { getInfo } from "./helpers/apis";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { MdContentCopy } from "react-icons/md";
@@ -17,7 +17,7 @@ const ConnectDiscord = (props: Props) => {
 
   useEffect(() => {
     console.log("Connect Discord");
-    getmuid(toast, navigate, setMuid);
+    getInfo(toast, navigate, setMuid);
   });
 
   return (
@@ -46,10 +46,16 @@ const ConnectDiscord = (props: Props) => {
                     &nbsp; &nbsp;
                     {muid}
                   </p>
-                  <button>
-                    <BsDiscord />
-                    &nbsp; &nbsp; Connect Discord
-                  </button>
+                  <a
+                    href="http://discord.mulearn.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button>
+                      <BsDiscord />
+                      &nbsp; &nbsp; Connect Discord
+                    </button>
+                  </a>
                 </div>
               </div>
               <div className={styles.images}>

@@ -126,7 +126,7 @@ const SideNavBar = (props: { component?: any }) => {
         <div className={styles.top_nav}>
           <div className={styles.nav}>
             <div className={styles.nav_items}>
-              <div className={styles.greetings}>Hello, &nbsp; {name} 👋</div>
+              <div className={styles.greetings}>Hello, {name} 👋</div>
 
               <div className={styles.mulearn_brand2}>
                 <MulearnBrand />

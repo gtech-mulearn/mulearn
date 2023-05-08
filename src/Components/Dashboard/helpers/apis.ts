@@ -6,12 +6,11 @@ import { NavigateFunction } from "react-router-dom";
 
 type name = React.Dispatch<React.SetStateAction<string>>;
 
-export const getname = (setname: name) => {
+export const getname = (setName: name) => {
   privateGateway
-    .get(dashboardRoutes.getname)
+    .get(dashboardRoutes.getInfo)
     .then((response) => {
-      // console.log(response);
-      setname(response.data.response);
+      setName(response.data.response.first_name);
     })
     .catch((error) => {
       console.log(error);
