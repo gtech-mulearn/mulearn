@@ -2,10 +2,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: calc(100% - 160px);
+    /* height: calc(100% - 160px); */
     justify-content: flex-start;
     text-align: center;
     margin-top: 16vh;
+    overflow-x: hidden;
 }
 
 .main_content .conect_dicord_conatianer {
@@ -132,17 +133,18 @@
 .main_content .onboarding_flow_container .content .onboarding_flow .lines {
     position: absolute;
     height: 640px;
-    width: 1060px;
+    width: 100%;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     background-image: url(./assets/images/lines.png);
 }
 
-.main_content .onboarding_flow_container .content .onboarding_flow div{
+.main_content .onboarding_flow_container .content .onboarding_flow div {
     position: absolute;
     height: 200px;
-    width: 300px;
+    /* width: 300px; */
+    width: 35%;
     background-color: #D9D9D9;
     display: flex;
     justify-content: center;
@@ -152,10 +154,11 @@
     transition: .3s ease-in-out;
     align-items: center;
 }
+
 .main_content .onboarding_flow_container .content .onboarding_flow div p:nth-child(1) {
     color: white;
     font-weight: 500;
-    font-size: 1.5vw;
+    font-size: .9rem;
     backdrop-filter: blur(4px);
     width: 100%;
     border-radius: 10px;
@@ -168,12 +171,15 @@
     padding: 10px;
     cursor: default
 }
+
 .main_content .onboarding_flow_container .content .onboarding_flow div:hover {
     transform: translateY(-5px);
 }
-.main_content .onboarding_flow_container .content .onboarding_flow div:hover p:nth-child(1){
+
+.main_content .onboarding_flow_container .content .onboarding_flow div:hover p:nth-child(1) {
     opacity: 1;
 }
+
 .main_content .onboarding_flow_container .content .onboarding_flow div p:nth-child(2) {
     position: absolute;
     bottom: -50px;
@@ -189,26 +195,26 @@
 }
 
 .main_content .onboarding_flow_container .content .onboarding_flow .box {
-    left: 60px;
+    left: 0;
     top: 30px;
     background-image: url(./assets/images/onboardingflow1.png);
 }
 
 .main_content .onboarding_flow_container .content .onboarding_flow .box2 {
-    left: 640px;
-    top: 200px;
+    right: 0;
+    top: 35%;
     background-image: url(./assets/images/onboardingflow2.png)
 }
 
 .main_content .onboarding_flow_container .content .onboarding_flow .box3 {
     left: 0px;
-    top: 440px;
+    top: 65%;
     background-image: url(./assets/images/onboardingflow3.png)
 }
 
 .main_content .onboarding_flow_container .content .onboarding_flow .box4 {
-    left: 570px;
-    top: 650px;
+    right: 50px;
+    top: 100%;
     background-image: url(./assets/images/onboardingflow4.png)
 }
 
@@ -236,104 +242,31 @@
 
     .main_content .onboarding_flow_container .content .onboarding_flow .lines {
         height: 620px;
-        width: 830px;
+        /* width: 830px; */
     }
 
-    .main_content .onboarding_flow_container .content .onboarding_flow div{
-        height: 140px;
-        width: 200px;
+    .main_content .onboarding_flow_container .content .onboarding_flow div p:nth-child(2) {
+        bottom: -40px;
+        font-size: 20px;
+        width: 330px;
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
     .main_content .onboarding_flow_container .content .onboarding_flow .lines {
-        height: 560px;
+        height: 600px;
         width: 770px;
     }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box2 {
-        left: 510px;
-        top: 180px;
-    }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box3 {
-        top: 360px;
-    }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box4 {
-        left: 460px;
-        top: 580px;
-    }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1230px) {
     .main_content .onboarding_flow_container .content .onboarding_flow .lines {
-        height: 540px;
+        height: 670px;
         width: 60vw;
     }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box2 {
-        left: 390px;
-        top: 180px;
-    }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box3 {
-        top: 360px;
-    }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box4 {
-        left: 380px;
-        top: 550px;
-    }
 }
 
-@media (max-width: 1000px) {
-    .main_content .onboarding_flow_container .content .onboarding_flow .box2 {
-        left: 390px;
-        top: 180px;
-    }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box3 {
-        top: 340px;
-        left: -30px;
-    }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box4 {
-        left: 340px;
-        top: 530px;
-    }
-}
-
-@media (max-width: 900px) {
-    .main_content .onboarding_flow_container .content .onboarding_flow .box2 {
-        left: 350px;
-        top: 190px;
-    }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box4 {
-        left: 310px;
-        top: 510px;
-    }
-}
-
-@media (max-width: 800px) {
-    .main_content .onboarding_flow_container .content .onboarding_flow .box2 {
-        left: 290px;
-        top: 210px;
-    }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box3 {
-        top: 330px;
-        left: -50px;
-    }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box4 {
-        left: 250px;
-        top: 470px;
-    }
-}
-
-@media (max-width: 720px) {
+@media (max-width: 840px) {
     .main_content .onboarding_flow_container .content .onboarding_flow .lines {
         height: 540px;
         width: 80vw;
@@ -343,24 +276,9 @@
         height: 140px;
         width: 200px;
     }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box2 {
-        left: 360px;
-        top: 200px;
-    }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box3 {
-        top: 330px;
-        left: -50px;
-    }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box4 {
-        left: 320px;
-        top: 510px;
-    }
 }
 
-@media (max-width: 710px) {
+@media (max-width: 830px) {
     .main_content .conect_dicord_conatianer {
         height: 430px;
     }
@@ -409,30 +327,19 @@
         width: 70vw;
     }
 
+    .main_content .onboarding_flow_container .content .onboarding_flow div p:nth-child(1) {
+        font-size: .5rem;
+    }
+
     .main_content .onboarding_flow_container .content .onboarding_flow .box {
-        left: -20px;
-        top: 10vh;
+        /* left: -20px;
+        top: 10vh; */
         height: 20vw;
         width: 30vw;
     }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box2 {
-        left: 50vw;
-        top: 19vh;
-    }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box3 {
-        top: 330px;
-        left: -30px;
-    }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box4 {
-        left: 50vw;
-        top: 28em;
-    }
 }
 
-@media (max-width: 395px) {
+@media (max-width: 500px) {
     .main_content .onboarding_flow_container .content .onboarding_flow {
         height: 40ch;
     }
@@ -450,26 +357,8 @@
     }
 
     .main_content .onboarding_flow_container .content .onboarding_flow .lines {
-        height: 290px;
-    }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box {
-        left: -20px;
-        top: 5vh;
-    }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box2 {
-        left: 50vw;
-        top: 12vh;
-    }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box3 {
-        top: 180px;
-        left: -30px;
-    }
-
-    .main_content .onboarding_flow_container .content .onboarding_flow .box4 {
-        top: 17em;
+        height: 90vw;
+        width: 90vw;
     }
 
     .main_content .onboarding_flow_container .content .onboarding_flow div p:nth-child(2) {
@@ -480,6 +369,11 @@
 
     .main_content .onboarding_flow_container .content .onboarding_flow .box .p {
         bottom: -30px;
+    }
+
+    .main_content .onboarding_flow_container .content .onboarding_flow .box4 {
+        right: 0px;
+        top: 93%;
     }
 }
 
