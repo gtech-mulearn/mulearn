@@ -114,7 +114,7 @@ const SideNavBar = (props: { component?: any }) => {
               onClick={() => {
                 localStorage.clear();
                 toast({
-                  title: "Loged out",
+                  title: "Logged out",
                   description: "Redirecting to login page.",
                   status: "error",
                   duration: 9000,

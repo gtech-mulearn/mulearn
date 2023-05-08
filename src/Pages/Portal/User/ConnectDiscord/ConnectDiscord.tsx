@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { MdContentCopy } from "react-icons/md";
 import { BsDiscord } from "react-icons/bs";
+import { GridLoader } from "react-spinners";
 
 type Props = {};
 
@@ -22,7 +23,7 @@ const ConnectDiscord = (props: Props) => {
 
   return (
     <div>
-      {muid && muid.length > 0 && (
+      {muid && muid.length > 0 ? (
         <SideNavBar
           component={
             <div className={styles.main_content}>
@@ -111,6 +112,16 @@ const ConnectDiscord = (props: Props) => {
             </div>
           }
         />
+      ) : (
+        <div className={styles.spinner_container}>
+          <div className={styles.spinner}>
+            <GridLoader
+              style={{ display: "block" }}
+              className={styles.loader}
+              color="#014bb2"
+            />
+          </div>
+        </div>
       )}
     </div>
   );

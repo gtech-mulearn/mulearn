@@ -429,3 +429,15 @@
     padding: 10px 10px;
   }
 }
+
+.spinner_container {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.spinner_container .spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
