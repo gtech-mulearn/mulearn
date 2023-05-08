@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ConnectDiscord.module.css";
 import SideNavBar from "../../../../Components/Dashboard/SideNavBar";
-import cdimage from "./assets/images/connectdiscordpng1.png"
+import cdimage from "./assets/images/connectdiscordpng1.png";
 import { getInfo } from "./helpers/apis";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
