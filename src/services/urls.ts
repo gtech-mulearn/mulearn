@@ -18,6 +18,5 @@ export const authRoutes = {
 };
 
 export const dashboardRoutes = {
-  connectDiscord: "/api/v1/user/test/",
-  getmuid: "/api/v1/user/user-muid/",
+  getInfo: "/api/v1/user/info/",
 };

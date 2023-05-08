@@ -61,7 +61,7 @@ const Login = (props: Props) => {
                 e.preventDefault();
                 if (muid != "" && password != "") {
                   login(muid, password, toast, navigate);
-                  console.log("Hoi");
+                  // console.log("Hoi");
                 }
               }}
               type="submit"

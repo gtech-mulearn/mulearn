@@ -9,10 +9,9 @@ import Discord from "./assets/svgs/Discord";
 import Home from "./assets/svgs/Home";
 import Navbar from "./components/Navbar";
 import axios from "axios";
+import SideNavBar from "../../../../Components/Dashboard/SideNavBar";
 
-type Props = {};
-
-const Profile = (props: Props) => {
+const Profile = () => {
   const width = window.innerWidth;
   const queryParameters = new URLSearchParams(window.location.search);
   const muid = queryParameters.get("muid");
@@ -55,57 +54,62 @@ const Profile = (props: Props) => {
 
   return (
     <>
-      <Navbar name={name} />
-      <div className={styles.profile_page}>
-        <div className={styles.profile_container}>
-          <div>
-            <div className={styles.profile}>
-              <div className={styles.cover_image}>
-                <img src="https://marketplace.canva.com/EAEmB3DmXk0/1/0/1600w/canva-bright-gradient-lettering-rainbow-facebook-cover-0Z5QgybLshE.jpg" />
-              </div>
-              <div className={styles.profile_details_div}>
-                <div className={styles.profile_pic}>
-                  <img src="https://whatsondisneyplus.com/wp-content/uploads/2021/12/merida-avatar-wodp.png" />
-                </div>
-                <div className={styles.profile_details}>
-                  <div className={styles.profile_detail}>
-                    <h1>{name}</h1>
-                    <p>{organization}</p>
-                    <div className={styles.area_of_intersts}>
-                      {interstGroup.map((item) => {
-                        return (
-                          <div className={styles.area_of_interest}>
-                            <p>{item}</p>
-                          </div>
-                        );
-                      })}
+      <SideNavBar
+        component={
+          <div className={styles.profile_page}>
+            <div className={styles.profile_container}>
+              {/* <div>
+                <div className={styles.profile}>
+                  <div className={styles.cover_image}>
+                    <img src="https://marketplace.canva.com/EAEmB3DmXk0/1/0/1600w/canva-bright-gradient-lettering-rainbow-facebook-cover-0Z5QgybLshE.jpg" />
+                  </div>
+                  <div className={styles.profile_details_div}>
+                    <div className={styles.profile_pic}>
+                      <img src="https://whatsondisneyplus.com/wp-content/uploads/2021/12/merida-avatar-wodp.png" />
+                    </div>
+                    <div className={styles.profile_details}>
+                      <div className={styles.profile_detail}>
+                        <h1>{name}</h1>
+                        <p>{organization}</p>
+                        <div className={styles.area_of_intersts}>
+                          {interstGroup.map((item) => {
+                            return (
+                              <div className={styles.area_of_interest}>
+                                <p>{item}</p>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                      <div className={styles.profile_social}>
+                        <p className="social">
+                          <Home /> Kannur
+                        </p>
+                        <p className="social">
+                          <Instagram />
+                        </p>
+                        <p className="social">
+                          <Discord />
+                        </p>
+                      </div>
                     </div>
                   </div>
-                  <div className={styles.profile_social}>
-                    <p className="social">
-                      <Home /> Kannur
-                    </p>
-                    <p className="social">
-                      <Instagram />
-                    </p>
-                    <p className="social">
-                      <Discord />
-                    </p>
-                  </div>
                 </div>
-              </div>
-            </div>
-            {width < 900 ? <Karma karma={karma} /> : null}
+                {width < 900 ? <Karma karma={karma} /> : null}
 
-            <Tasks tasks={tasks} />
+                <Tasks tasks={tasks} />
+              </div> */}
+              {/* <div>
+                {width > 900 ? <Karma karma={karma} /> : null}
+                <Recent />
+                <Roles roles={roles} />
+              </div> */}
+              <p><b><i>Its Comming brooooo...</i></b></p>
+              <p>Wait for it</p>
+            </div>
           </div>
-          <div>
-            {width > 900 ? <Karma karma={karma} /> : null}
-            <Recent />
-            <Roles roles={roles} />
-          </div>
-        </div>
-      </div>
+        }
+      />
     </>
   );
 };
