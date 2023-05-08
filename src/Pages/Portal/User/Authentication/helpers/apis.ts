@@ -65,10 +65,14 @@ export const login = (
           .get(dashboardRoutes.getInfo)
           .then((response) => {
             console.log(response);
+            localStorage.setItem(
+              "userInfo",
+              JSON.stringify(response.data.response)
+            );
             if (response.data.response.exist_in_guild) {
               navigate("/user/profile");
             } else {
-              navigate("/user/connect-discord")
+              navigate("/user/connect-discord");
             }
           })
           .catch((error) => {

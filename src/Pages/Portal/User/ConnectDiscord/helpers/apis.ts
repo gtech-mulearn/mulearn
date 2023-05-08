@@ -7,8 +7,6 @@ import { NavigateFunction } from "react-router-dom";
 type muid = React.Dispatch<React.SetStateAction<string>>;
 
 export const getInfo = (
-  toast: (options?: UseToastOptions | undefined) => ToastId,
-  navigate: NavigateFunction,
   setmuid: muid,
 ) => {
   privateGateway

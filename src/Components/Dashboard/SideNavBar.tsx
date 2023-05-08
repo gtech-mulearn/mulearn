@@ -33,8 +33,14 @@ const SideNavBar = (props: { component?: any }) => {
   const [connected, setConnected] = useState(false);
   // const [opacity, setOpacity] = useState(null);
   useEffect(() => {
-    getname(setName);
-    getInfo(setConnected);
+    if (
+      localStorage.getItem("userInfo") &&
+      JSON.parse(localStorage.getItem("userInfo")!).exist_in_guild
+    ) {
+      setConnected(
+        JSON.parse(localStorage.getItem("userInfo")!).exist_in_guild
+      );
+    }
   });
   return (
     <div className={styles.fullpage}>

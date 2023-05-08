@@ -12,14 +12,18 @@ import { GridLoader } from "react-spinners";
 type Props = {};
 
 const ConnectDiscord = (props: Props) => {
-  const navigate = useNavigate();
-  const toast = useToast();
   const [muid, setMuid] = useState("");
+  const toast = useToast();
 
   useEffect(() => {
     console.log("Connect Discord");
-    getInfo(toast, navigate, setMuid);
-  });
+    if (
+      localStorage.getItem("userInfo") &&
+      JSON.parse(localStorage.getItem("userInfo")!).mu_id
+    ) {
+      setMuid(JSON.parse(localStorage.getItem("userInfo")!).mu_id);
+    }
+  }, []);
 
   return (
     <div>
