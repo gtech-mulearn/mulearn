@@ -6,14 +6,13 @@ import { NavigateFunction } from "react-router-dom";
 
 type muid = React.Dispatch<React.SetStateAction<string>>;
 
-export const getInfo = (
-  setmuid: muid,
-) => {
+export const getInfo = (setMuid: muid) => {
   privateGateway
     .get(dashboardRoutes.getInfo)
     .then((response) => {
       console.log(response);
-      setmuid(response.data.response.mu_id);
+      localStorage.setItem("userInfo", JSON.stringify(response.data.response));
+      setMuid(response.data.response.mu_id);
     })
     .catch((error) => {
       console.log(error);

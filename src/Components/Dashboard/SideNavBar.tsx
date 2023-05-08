@@ -41,6 +41,13 @@ const SideNavBar = (props: { component?: any }) => {
         JSON.parse(localStorage.getItem("userInfo")!).exist_in_guild
       );
     }
+
+    if (
+      localStorage.getItem("userInfo") &&
+      JSON.parse(localStorage.getItem("userInfo")!).first_name
+    ) {
+      setName(JSON.parse(localStorage.getItem("userInfo")!).first_name);
+    }
   });
   return (
     <div className={styles.fullpage}>

@@ -8,6 +8,7 @@ import { useToast } from "@chakra-ui/react";
 import { MdContentCopy } from "react-icons/md";
 import { BsDiscord } from "react-icons/bs";
 import { GridLoader } from "react-spinners";
+import { privateGateway } from "../../../../services/apiGateways";
 
 type Props = {};
 
@@ -16,12 +17,16 @@ const ConnectDiscord = (props: Props) => {
   const toast = useToast();
 
   useEffect(() => {
-    console.log("Connect Discord");
+    console.log("I'm Here")
     if (
       localStorage.getItem("userInfo") &&
       JSON.parse(localStorage.getItem("userInfo")!).mu_id
     ) {
+      console.log("MuId Und")
       setMuid(JSON.parse(localStorage.getItem("userInfo")!).mu_id);
+    } else {
+      console.log("Getting ID")
+      getInfo(setMuid);
     }
   }, []);
 

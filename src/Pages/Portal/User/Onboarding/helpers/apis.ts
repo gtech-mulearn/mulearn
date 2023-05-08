@@ -1,7 +1,7 @@
-import {publicGateway} from "../../../../../services/apiGateways";
+import { publicGateway } from "../../../../../services/apiGateways";
 import { onboardingRoutes } from "../../../../../services/urls";
 import { Dispatch, SetStateAction } from "react";
-
+import { NavigateFunction } from "react-router-dom";
 
 // Define the type of MyValues
 type hasError = Dispatch<
@@ -156,7 +156,8 @@ export const registerUser = (
   setRoleVerified: RoleVerified,
   formik: any,
   setHasValidationError: hasValidationError,
-  userData: unknown
+  userData: unknown,
+  navigate: NavigateFunction
 ) => {
   publicGateway
     .post(onboardingRoutes.register, userData)
@@ -166,7 +167,7 @@ export const registerUser = (
       console.log(response);
       localStorage.setItem("accessToken", response.data.response.accessToken);
       localStorage.setItem("refreshToken", response.data.response.refreshToken);
-      // navigate("/user/connect-discord");
+      navigate("/user/connect-discord");
     })
     .catch(function (error) {
       if (
