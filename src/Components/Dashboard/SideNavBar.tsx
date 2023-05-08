@@ -17,8 +17,12 @@ import { getname } from "./helpers/apis";
 // } from "react-icons/md";
 import MuButton from "../MuCompenents/MuButton";
 import MuButtonLight from "../MuCompenents/MuButtonLight";
+import { useToast } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
-const SideNavBar = (props: { component: any }) => {
+const SideNavBar = (props: { component?: any }) => {
+  const toast = useToast();
+  const navigate = useNavigate();
   const [marginTop, setMarginTop] = useState("0px");
   const [transform, setTransform] = useState("0deg");
   const [transform2, setTransform2] = useState("0deg");
@@ -77,15 +81,36 @@ const SideNavBar = (props: { component: any }) => {
             <MuButton
               text="Profile"
               icon={<i className="fi fi-sr-clipboard-user"></i>}
+              style={window.location.pathname === "/user/profile" ?{ background: "#014BB2", color: "#fff" } : {}}
+              onClick={() => {
+                navigate("/user/profile");
+              }}
             />
             <MuButton
               text="Connect Discord"
               icon={<i className="fi fi-sr-data-transfer"></i>}
-              style={{ background: "#014BB2", color: "#fff" }}
+              style={window.location.pathname === "/user/connect-discord" ?{ background: "#014BB2", color: "#fff" } : {}}
+              onClick={() => {                
+                navigate("/user/connect-discord");
+              }}
             />
             <MuButtonLight
               text="Logout"
               icon={<i className="fi fi-sr-key"></i>}
+              onClick={() => {
+                localStorage.clear();
+                toast({
+                  title: "Loged out",
+                  description:
+                    "Redirecting to login page.",
+                  status: "error",
+                  duration: 9000,
+                  isClosable: true,
+                });
+                setTimeout(() => {
+                  window.location.reload();
+                }, 900);
+              }}
             />
           </div>
         </div>

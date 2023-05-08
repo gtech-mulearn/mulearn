@@ -64,18 +64,31 @@ const ConnectDiscord = (props: Props) => {
                 <div className={styles.onboarding_flow}>
                   <p className={styles.lines}></p>
                   <div className={styles.box}>
-                    <p>Copy your µid from above. </p>
+                    <p>
+                      Click the connect discord button to join our discord
+                      server and complete the registration progress
+                    </p>
+                    <p className={styles.p}>
+                      Onboard Discord Server Accept the invitation
+                    </p>
                   </div>
                   <div className={styles.box2}>
                     <p>
-                      Open Discord, and Join the GTech µLearn Discord server.
+                      From the menu shown aside select the onboarding channel to
+                      continue.
                     </p>
+                    <p className={styles.p}>Select the Onboarding Channel</p>
                   </div>
                   <div className={styles.box3}>
-                    <p>Choose the #on-boarding channel and click Connect. </p>
+                    <p>From the opened channel click the join now button.</p>
+                    <p className={styles.p}>Join Now!</p>
                   </div>
                   <div className={styles.box4}>
-                    <p>Paste the µid in the space provided. Click okay! </p>
+                    <p>
+                      Inside the modal that is opened enter the muid you copied
+                      and click submit.
+                    </p>
+                    <p className={styles.p}>Enter Your muid</p>
                   </div>
                 </div>
               </div>

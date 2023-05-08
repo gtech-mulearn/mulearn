@@ -26,7 +26,7 @@ export const getmuid = (
   setmuid: muid
 ) => {
   privateGateway
-    .post(dashboardRoutes.getmuid)
+    .get(dashboardRoutes.getmuid)
     .then((response) => {
       // console.log(response);
       setmuid(response.data.response);

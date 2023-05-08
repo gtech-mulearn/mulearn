@@ -139,49 +139,77 @@
     background-image: url(./assets/images/lines.png);
 }
 
-.main_content .onboarding_flow_container .content .onboarding_flow .box,
-.main_content .onboarding_flow_container .content .onboarding_flow .box2,
-.main_content .onboarding_flow_container .content .onboarding_flow .box3,
-.main_content .onboarding_flow_container .content .onboarding_flow .box4 {
+.main_content .onboarding_flow_container .content .onboarding_flow div{
     position: absolute;
     height: 200px;
     width: 300px;
     background-color: #D9D9D9;
     display: flex;
     justify-content: center;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    transition: .3s ease-in-out;
+    align-items: center;
 }
-
-.main_content .onboarding_flow_container .content .onboarding_flow .box p,
-.main_content .onboarding_flow_container .content .onboarding_flow .box2 p,
-.main_content .onboarding_flow_container .content .onboarding_flow .box3 p,
-.main_content .onboarding_flow_container .content .onboarding_flow .box4 p {
+.main_content .onboarding_flow_container .content .onboarding_flow div p:nth-child(1) {
+    color: white;
+    font-weight: 500;
+    font-size: 1.5vw;
+    backdrop-filter: blur(4px);
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    height: 100%;
+    margin: auto;
+    transition: .5s ease-in-out;
+    opacity: 0;
+    align-items: center;
+    padding: 10px;
+    cursor: default
+}
+.main_content .onboarding_flow_container .content .onboarding_flow div:hover {
+    transform: translateY(-5px);
+}
+.main_content .onboarding_flow_container .content .onboarding_flow div:hover p:nth-child(1){
+    opacity: 1;
+}
+.main_content .onboarding_flow_container .content .onboarding_flow div p:nth-child(2) {
     position: absolute;
-    bottom: -80px;
+    bottom: -50px;
     font-size: 25px;
     font-weight: 600;
     width: 450px;
+    color: #014BB2;
+    display: block;
 }
-.main_content .onboarding_flow_container .content .onboarding_flow .box p{
-    bottom: -50px;
+
+.main_content .onboarding_flow_container .content .onboarding_flow .box .p {
+    bottom: -80px;
 }
+
 .main_content .onboarding_flow_container .content .onboarding_flow .box {
     left: 60px;
     top: 30px;
+    background-image: url(./assets/images/onboardingflow1.png);
 }
 
 .main_content .onboarding_flow_container .content .onboarding_flow .box2 {
     left: 640px;
     top: 200px;
+    background-image: url(./assets/images/onboardingflow2.png)
 }
 
 .main_content .onboarding_flow_container .content .onboarding_flow .box3 {
     left: 0px;
     top: 440px;
+    background-image: url(./assets/images/onboardingflow3.png)
 }
 
 .main_content .onboarding_flow_container .content .onboarding_flow .box4 {
     left: 570px;
     top: 650px;
+    background-image: url(./assets/images/onboardingflow4.png)
 }
 
 /* responsive */
@@ -191,7 +219,7 @@
     .main_content .conect_dicord_conatianer {
         height: 400px;
     }
-    
+
     .main_content .conect_dicord_conatianer .images .image {
         width: 38vw;
     }
@@ -211,10 +239,7 @@
         width: 830px;
     }
 
-    .main_content .onboarding_flow_container .content .onboarding_flow .box,
-    .main_content .onboarding_flow_container .content .onboarding_flow .box2,
-    .main_content .onboarding_flow_container .content .onboarding_flow .box3,
-    .main_content .onboarding_flow_container .content .onboarding_flow .box4 {
+    .main_content .onboarding_flow_container .content .onboarding_flow div{
         height: 140px;
         width: 200px;
     }
@@ -246,12 +271,12 @@
         height: 540px;
         width: 60vw;
     }
-    
+
     .main_content .onboarding_flow_container .content .onboarding_flow .box2 {
         left: 390px;
         top: 180px;
     }
-    
+
     .main_content .onboarding_flow_container .content .onboarding_flow .box3 {
         top: 360px;
     }
@@ -374,10 +399,7 @@
         justify-content: center;
     }
 
-    .main_content .onboarding_flow_container .content .onboarding_flow .box,
-    .main_content .onboarding_flow_container .content .onboarding_flow .box2,
-    .main_content .onboarding_flow_container .content .onboarding_flow .box3,
-    .main_content .onboarding_flow_container .content .onboarding_flow .box4 {
+    .main_content .onboarding_flow_container .content .onboarding_flow div {
         height: 20vw;
         width: 30vw;
     }
@@ -390,6 +412,8 @@
     .main_content .onboarding_flow_container .content .onboarding_flow .box {
         left: -20px;
         top: 10vh;
+        height: 20vw;
+        width: 30vw;
     }
 
     .main_content .onboarding_flow_container .content .onboarding_flow .box2 {
@@ -447,16 +471,15 @@
     .main_content .onboarding_flow_container .content .onboarding_flow .box4 {
         top: 17em;
     }
-    .main_content .onboarding_flow_container .content .onboarding_flow .box p,
-    .main_content .onboarding_flow_container .content .onboarding_flow .box2 p,
-    .main_content .onboarding_flow_container .content .onboarding_flow .box3 p,
-    .main_content .onboarding_flow_container .content .onboarding_flow .box4 p {
-        bottom: -30px;
+
+    .main_content .onboarding_flow_container .content .onboarding_flow div p:nth-child(2) {
+        bottom: -20px;
         font-size: 10px;
         width: 160px;
     }
-    .main_content .onboarding_flow_container .content .onboarding_flow .box p{
-        bottom: -20px;
+
+    .main_content .onboarding_flow_container .content .onboarding_flow .box .p {
+        bottom: -30px;
     }
 }
 
