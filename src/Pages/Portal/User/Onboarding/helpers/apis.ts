@@ -55,19 +55,6 @@ type display0 = Dispatch<SetStateAction<string>>;
 
 type errorHandler = (status: number, dataStatus: number) => void;
 
-// request for token validation
-export const validateToken = (setHasError: hasError) => {
-  publicGateway
-    .get(onboardingRoutes.validate)
-    .then((response) => {})
-    .catch((error) => {
-      setHasError({
-        error: error.response.data.hasError,
-        statusCode: error.response.data.statusCode,
-        message: error.response.data.message.general,
-      });
-    });
-};
 
 // request for colleges list
 export const getColleges = (
