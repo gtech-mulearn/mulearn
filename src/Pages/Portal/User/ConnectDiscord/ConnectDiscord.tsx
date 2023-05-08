@@ -28,6 +28,11 @@ const ConnectDiscord = (props: Props) => {
       console.log("Getting ID")
       getInfo(setMuid);
     }
+
+    
+
+
+
   }, []);
 
   return (
