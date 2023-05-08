@@ -64,7 +64,7 @@ export const MobileMenu = ({ setNotificationOpen, setOpen, handleScrolling, open
 
             <div className="grid justify-items-center">
                 <a
-                    href="https://discord.mulearn.org/"
+                    href="https://app.mulearn.org/user/register"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="py-3 px-28 "

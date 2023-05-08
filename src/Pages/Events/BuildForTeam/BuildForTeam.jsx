@@ -265,7 +265,7 @@ const Build4Team = () => {
               contact us via Discord.
             </p>
             <a
-              href="https://discord.mulearn.org"
+              href="https://app.mulearn.org/user/register"
               target="_blank"
               rel="noopener noreferrer"
             >
