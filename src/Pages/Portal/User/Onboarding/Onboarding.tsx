@@ -16,7 +16,6 @@ import {
   getInterests,
   getRoles,
   registerUser,
-  validateToken,
   emailVerification,
 } from "./helpers/apis";
 import { useNavigate } from "react-router-dom";
