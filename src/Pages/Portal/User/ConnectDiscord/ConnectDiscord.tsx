@@ -17,22 +17,14 @@ const ConnectDiscord = (props: Props) => {
   const toast = useToast();
 
   useEffect(() => {
-    console.log("I'm Here")
     if (
       localStorage.getItem("userInfo") &&
       JSON.parse(localStorage.getItem("userInfo")!).mu_id
     ) {
-      console.log("MuId Und")
       setMuid(JSON.parse(localStorage.getItem("userInfo")!).mu_id);
     } else {
-      console.log("Getting ID")
       getInfo(setMuid);
     }
-
-    
-
-
-
   }, []);
 
   return (

@@ -6,11 +6,21 @@ const AuthRoutes: React.FC = () => {
   const navigate = useNavigate();
 
   let refreshToken = localStorage.getItem("refreshToken");
-  console.log(refreshToken);
 
-  return refreshToken && refreshToken.length > 0 ? (
+  let onboardingStatus = null;
+
+  if (localStorage.getItem("userInfo") !== null) {
+    onboardingStatus = JSON.parse(
+      localStorage.getItem("userInfo")!
+    ).exist_in_guild;
+  }
+
+  return refreshToken &&
+    refreshToken.length > 0 &&
+    onboardingStatus !== null ? (
     <>
-      <Navigate to="user/connect-discord" />
+      onboardingStatus ? <Navigate to="/user/profile" /> :{" "}
+      <Navigate to="/user/connect-discord" />
     </>
   ) : (
     <Outlet />
