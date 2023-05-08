@@ -14,20 +14,15 @@ const ConnectDiscord = (props: Props) => {
   const navigate = useNavigate();
   const toast = useToast();
   const [muid, setMuid] = useState("");
-  const [connected, setConnected] = useState(false);
 
   useEffect(() => {
     console.log("Connect Discord");
-    getInfo(toast, navigate, setMuid, setConnected);
-
-    if (connected) {
-      navigate("/user/profile");
-    }
+    getInfo(toast, navigate, setMuid);
   });
 
   return (
     <div>
-      {muid && muid.length > 0 && !connected && (
+      {muid && muid.length > 0 && (
         <SideNavBar
           component={
             <div className={styles.main_content}>

@@ -1,8 +1,11 @@
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import React from "react";
 import { useNavigate, NavigateFunction } from "react-router-dom";
-import { publicGateway } from "../../../../../services/apiGateways";
-import { authRoutes } from "../../../../../services/urls";
+import {
+  privateGateway,
+  publicGateway,
+} from "../../../../../services/apiGateways";
+import { authRoutes, dashboardRoutes } from "../../../../../services/urls";
 
 type setMuID = React.Dispatch<React.SetStateAction<string>>;
 
@@ -58,7 +61,19 @@ export const login = (
           duration: 3000,
           isClosable: true,
         });
-        navigate("/user/connect-discord");
+        privateGateway
+          .get(dashboardRoutes.getInfo)
+          .then((response) => {
+            console.log(response);
+            if (response.data.response.exist_in_guild) {
+              navigate("/user/profile");
+            } else {
+              navigate("/user/connect-discord")
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
     })
     .catch((error) => {
