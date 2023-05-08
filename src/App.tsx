@@ -23,13 +23,12 @@ function App() {
   return (
     <Routes>
       {/* Public Routes */}
+      <Route path="*" element={<p>404 Page not found</p>} />
       <Route path="user/validate/:token" element={<Validate />} />
-      <Route path="user/onboarding" element={<Onboarding />} />
+      <Route path="user/register" element={<Onboarding />} />
       <Route path="user/login" element={<Login />} />
       <Route path="user/forgot-password" element={<ForgotPassword />} />
       <Route path="user/reset-password" element={<ResetPassword />} />
-      <Route path="user/testnav" element={<SideNavBar component={null} />} />
-
       {/* Private Routes */}
       <Route element={<PrivateRoutes />}>
         <Route path="user/connect-discord" element={<ConnectDscord />} />
