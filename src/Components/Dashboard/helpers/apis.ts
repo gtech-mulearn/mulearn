@@ -16,3 +16,17 @@ export const getname = (setName: name) => {
       console.log(error);
     });
 };
+
+export const getInfo = (
+  setConnected: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+  privateGateway
+    .get(dashboardRoutes.getInfo)
+    .then((response) => {
+      console.log(response);
+      setConnected(response.data.response.exist_in_guild);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};

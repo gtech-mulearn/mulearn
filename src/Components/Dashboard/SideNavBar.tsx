@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./SideNavBar.module.css";
 import MulearnBrand from "./assets/MulearnBrand";
-import { getname } from "./helpers/apis";
+import { getname, getInfo } from "./helpers/apis";
 
 // import companyLogo from "./assets/images/profile.png";
 // import {
@@ -30,9 +30,11 @@ const SideNavBar = (props: { component?: any }) => {
   const [display, setDisplay] = useState("block");
   const [display2, setDisplay2] = useState("unset");
   const [name, setName] = useState("");
+  const [connected, setConnected] = useState(false);
   // const [opacity, setOpacity] = useState(null);
   useEffect(() => {
     getname(setName);
+    getInfo(setConnected);
   });
   return (
     <div className={styles.fullpage}>
@@ -78,30 +80,34 @@ const SideNavBar = (props: { component?: any }) => {
             <MuButton text="Tasks" icon={<i className="fi fi-sr-box"></i>} />
             <MuButton text="Activity" icon={<i className="fi fi-sr-copy-alt"></i>} />
             <MuButton text="History" icon={<i className="fi fi-sr-search-alt"></i>} /> */}
-            <MuButton
-              text="Profile"
-              icon={<i className="fi fi-sr-clipboard-user"></i>}
-              style={
-                window.location.pathname === "/user/profile"
-                  ? { background: "#014BB2", color: "#fff" }
-                  : {}
-              }
-              onClick={() => {
-                navigate("/user/profile");
-              }}
-            />
-            <MuButton
-              text="Connect Discord"
-              icon={<i className="fi fi-sr-data-transfer"></i>}
-              style={
-                window.location.pathname === "/user/connect-discord"
-                  ? { background: "#014BB2", color: "#fff" }
-                  : {}
-              }
-              onClick={() => {
-                navigate("/user/connect-discord");
-              }}
-            />
+            <div>
+              <MuButton
+                text="Profile"
+                icon={<i className="fi fi-sr-clipboard-user"></i>}
+                style={
+                  window.location.pathname === "/user/profile" || connected
+                    ? { background: "#014BB2", color: "#fff" }
+                    : {}
+                }
+                onClick={() => {
+                  navigate("/user/profile");
+                }}
+              />
+              {!connected && (
+                <MuButton
+                  text="Connect Discord"
+                  icon={<i className="fi fi-sr-data-transfer"></i>}
+                  style={
+                    window.location.pathname === "/user/connect-discord"
+                      ? { background: "#014BB2", color: "#fff" }
+                      : {}
+                  }
+                  onClick={() => {
+                    navigate("/user/connect-discord");
+                  }}
+                />
+              )}
+            </div>
             <MuButtonLight
               text="Logout"
               icon={<i className="fi fi-sr-key"></i>}
