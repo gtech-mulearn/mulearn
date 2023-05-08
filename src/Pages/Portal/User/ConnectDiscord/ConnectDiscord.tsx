@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ConnectDiscord.module.css";
 import SideNavBar from "../../../../Components/Dashboard/SideNavBar";
+import cdimage from "./assets/images/connectdiscordpng1.png"
 import { getInfo } from "./helpers/apis";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
@@ -28,6 +29,11 @@ const ConnectDiscord = (props: Props) => {
             <div className={styles.conect_dicord_conatianer}>
               <div className={styles.content}>
                 <h1>Join Discord using your µid</h1>
+                <p className={styles.content_tagline}>
+                  To join our discord server you need to connect your account
+                  with discord. To do so you need to copy your µid and paste it
+                  in the discord server.
+                </p>
                 <div className={styles.muid_and_btn}>
                   <p
                     onClick={() => {
@@ -58,10 +64,8 @@ const ConnectDiscord = (props: Props) => {
                   </a>
                 </div>
               </div>
-              <div className={styles.images}>
-                <p className={styles.image}></p>
-                <p className={styles.image}></p>
-              </div>
+
+              <img className={styles.fb_image} src={cdimage} alt="" />
             </div>
 
             <div className={styles.onboarding_flow_container}>
