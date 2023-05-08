@@ -81,7 +81,11 @@ const SideNavBar = (props: { component?: any }) => {
             <MuButton
               text="Profile"
               icon={<i className="fi fi-sr-clipboard-user"></i>}
-              style={window.location.pathname === "/user/profile" ?{ background: "#014BB2", color: "#fff" } : {}}
+              style={
+                window.location.pathname === "/user/profile"
+                  ? { background: "#014BB2", color: "#fff" }
+                  : {}
+              }
               onClick={() => {
                 navigate("/user/profile");
               }}
@@ -89,8 +93,12 @@ const SideNavBar = (props: { component?: any }) => {
             <MuButton
               text="Connect Discord"
               icon={<i className="fi fi-sr-data-transfer"></i>}
-              style={window.location.pathname === "/user/connect-discord" ?{ background: "#014BB2", color: "#fff" } : {}}
-              onClick={() => {                
+              style={
+                window.location.pathname === "/user/connect-discord"
+                  ? { background: "#014BB2", color: "#fff" }
+                  : {}
+              }
+              onClick={() => {
                 navigate("/user/connect-discord");
               }}
             />
@@ -101,8 +109,7 @@ const SideNavBar = (props: { component?: any }) => {
                 localStorage.clear();
                 toast({
                   title: "Loged out",
-                  description:
-                    "Redirecting to login page.",
+                  description: "Redirecting to login page.",
                   status: "error",
                   duration: 9000,
                   isClosable: true,

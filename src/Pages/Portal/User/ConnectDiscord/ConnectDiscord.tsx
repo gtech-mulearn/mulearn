@@ -62,34 +62,35 @@ const ConnectDiscord = (props: Props) => {
               <div className={styles.content}>
                 <h1>Onboarding Flow</h1>
                 <div className={styles.onboarding_flow}>
-                  <p className={styles.lines}></p>
-                  <div className={styles.box}>
-                    <p>
-                      Click the connect discord button to join our discord
-                      server and complete the registration progress
-                    </p>
-                    <p className={styles.p}>
-                      Onboard Discord Server Accept the invitation
-                    </p>
-                  </div>
-                  <div className={styles.box2}>
-                    <p>
-                      From the menu shown aside select the onboarding channel to
-                      continue.
-                    </p>
-                    <p className={styles.p}>Select the Onboarding Channel</p>
-                  </div>
-                  <div className={styles.box3}>
-                    <p>From the opened channel click the join now button.</p>
-                    <p className={styles.p}>Join Now!</p>
-                  </div>
-                  <div className={styles.box4}>
-                    <p>
-                      Inside the modal that is opened enter the muid you copied
-                      and click submit.
-                    </p>
-                    <p className={styles.p}>Enter Your muid</p>
-                  </div>
+                  <p className={styles.lines}>
+                    <div className={styles.box}>
+                      <p>
+                        Click the connect discord button to join our discord
+                        server and complete the registration progress
+                      </p>
+                      <p className={styles.p}>
+                        Onboard Discord Server Accept the invitation
+                      </p>
+                    </div>
+                    <div className={styles.box2}>
+                      <p>
+                        From the menu shown aside select the onboarding channel
+                        to continue.
+                      </p>
+                      <p className={styles.p}>Select the Onboarding Channel</p>
+                    </div>
+                    <div className={styles.box3}>
+                      <p>From the opened channel click the join now button.</p>
+                      <p className={styles.p}>Join Now!</p>
+                    </div>
+                    <div className={styles.box4}>
+                      <p>
+                        Inside the modal that is opened enter the muid you
+                        copied and click submit.
+                      </p>
+                      <p className={styles.p}>Enter Your muid</p>
+                    </div>
+                  </p>
                 </div>
               </div>
             </div>
