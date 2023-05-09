@@ -1,25 +1,44 @@
 import {
   Flex,
   Input,
-  Table,
+  Table as MuTable,
   Thead,
-  Tbody,
   Tr,
   Th,
   Td,
+  Tbody,
   TableContainer,
   InputRightElement,
   InputGroup,
+  Box,
 } from "@chakra-ui/react";
 import { BsFillPencilFill, BsFilterLeft, BsSearch } from "react-icons/bs";
 
 import CustomBtn from "../../../Components/CustomBtn";
-import Chip from "../../../Components/MuCompenents/Chip/Chip";
+import Table from "../../../Components/MuCompenents/Table/Table";
+import TBody from "../../../Components/MuCompenents/Table/TBody";
+import THead from "../../../Components/MuCompenents/Table/THead";
+import TRow from "../../../Components/MuCompenents/Table/TRow";
 
 const Dashboard = () => {
   return (
     <>
-      <Chip label="College" isSelected />
+      <Table >
+        <THead columns={['Name', 'Age', 'DOB']} />
+        <TBody>
+          <TRow data={[
+            'John Doe',
+            '20',
+            '01/01/2000'
+          ]} />
+          <TRow data={[
+            'John Doe',
+            '20',
+            '01/01/2000'
+          ]} />
+        </TBody>
+      </Table>
+      <Box mt={8} />
       <Flex justifyContent="space-between" gap={12}>
         <CustomBtn
           name="Enable Filters"
@@ -47,7 +66,7 @@ const Dashboard = () => {
         borderColor="gray.200"
         borderRadius="3xl"
       >
-        <Table variant="simple">
+        <MuTable variant="simple">
           <Thead>
             <Tr>
               <Th>First Name</Th>
@@ -131,7 +150,7 @@ const Dashboard = () => {
               <Td>Admin</Td>
             </Tr>
           </Tbody>
-        </Table>
+        </MuTable>
       </TableContainer>
     </>
   );
