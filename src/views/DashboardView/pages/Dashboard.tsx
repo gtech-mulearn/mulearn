@@ -14,15 +14,17 @@ import {
 import { BsFillPencilFill, BsFilterLeft, BsSearch } from "react-icons/bs";
 
 import CustomBtn from "../../../Components/CustomBtn";
+import Chip from "../../../Components/MuCompenents/Chip/Chip";
 
 const Dashboard = () => {
   return (
     <>
+      <Chip label="College" isSelected />
       <Flex justifyContent="space-between" gap={12}>
         <CustomBtn
           name="Enable Filters"
           icon={<BsFilterLeft />}
-          handleClick={() => {}}
+          handleClick={() => { }}
         />
         <InputGroup>
           <Input placeholder="Search" />
@@ -36,7 +38,7 @@ const Dashboard = () => {
         <CustomBtn
           name="Edit Coloumns"
           icon={<BsFillPencilFill />}
-          handleClick={() => {}}
+          handleClick={() => { }}
         />
       </Flex>
       <TableContainer
