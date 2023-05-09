@@ -1,48 +1,20 @@
-import React, { useState } from "react"
-import styles from "./Login.module.css"
-import { useNavigate } from "react-router-dom"
-import axios from "axios"
-import { useToast } from "@chakra-ui/react"
+import React, { useEffect, useState } from "react";
+import { forgetPassword } from "./helpers/apis";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
+import styles from "./Login.module.css";
 
-type Props = {}
+type Props = {};
 
 const ForgotPassword = (props: Props) => {
-  const [muid, setMuid] = useState("")
+  const [muid, setMuid] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
-  const navigate = useNavigate()
-  const toast = useToast()
+  const navigate = useNavigate();
+  const toast = useToast();
 
-  const handleForgotPassword = () => {
-    axios
-      .post(
-        import.meta.env.VITE_BACKEND_URL + "/api/v1/user/forgot-password/",
-        {
-          muid: muid,
-        }
-      )
-      .then((res) => {
-        console.log(res.data)
-        toast({
-          title: "Token Mail Sent",
-          description: "Kindly check your mail for the reset password link",
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        })
 
-        setTimeout(() => {
-          navigate("/user/login")
-        }, 5000)
-      })
-      .catch((error) => {
-        toast({
-          title: error.response?.data?.message?.general[0],
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        })
-      })
-  }
 
   return (
     <div className={styles.login_page}>
@@ -64,9 +36,9 @@ const ForgotPassword = (props: Props) => {
             <br />
             <button
               onClick={(e) => {
-                e.preventDefault()
+                e.preventDefault();
                 if (muid.length > 0) {
-                  handleForgotPassword()
+                  forgetPassword(muid, toast, navigate);
                 }
               }}
               type="submit"
@@ -77,6 +49,6 @@ const ForgotPassword = (props: Props) => {
         </div>
       </div>
     </div>
-  )
-}
-export default ForgotPassword
+  );
+};
+export default ForgotPassword;

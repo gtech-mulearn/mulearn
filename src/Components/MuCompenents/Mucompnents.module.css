@@ -1,0 +1,35 @@
+* {
+    transition: none;
+}
+
+.btn,
+.btn_light {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    border-radius: 10px;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+.btn_light {
+    background-color: #CCDBF0;
+    font-size: 15px;
+}
+
+.btn:hover {
+    background: #014BB2;
+    color: #fff;
+}
+
+.btn_light:hover {
+    background-color: #a9c8f3
+}
+
+.btn .btn_icon,
+.btn_light .btn_icon {
+    margin-right: 20px;
+}
