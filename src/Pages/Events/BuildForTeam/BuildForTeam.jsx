@@ -269,7 +269,7 @@ const Build4Team = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button className={styles.register}>Join Discord</button>
+              <button className={styles.register}>Join µLearn</button>
             </a>
           </div>
         </div>
