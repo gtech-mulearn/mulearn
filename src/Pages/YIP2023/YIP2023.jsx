@@ -13,6 +13,25 @@ import "./yip.css";
 import box_fourimg from "./assets/box_fourimg.png";
 
 const YIP2023 = () => {
+  const applyButton = () => {
+    const isiOS =
+      navigator.userAgent.match("iPhone") || navigator.userAgent.match("iPad");
+    const isAndroid = navigator.userAgent.match("Android");
+
+    if (isiOS) {
+      window.open(
+        "https://play.google.com/store/apps/details?id=com.yip.yipapp",
+        "_blank"
+      );
+    } else if (isAndroid) {
+      window.open(
+        "https://play.google.com/store/apps/details?id=com.yip.yipapp",
+        "_blank"
+      );
+    } else {
+      window.open("https://yip.kerala.gov.in/yipapp/index.php/idea2022", "_blank");
+    }
+  };
   return (
     <>
       <Navbar />
@@ -35,13 +54,9 @@ const YIP2023 = () => {
                   <img src={boxoneimg} alt="" className={styles.boxoneimg} />
                 </div>
               </div>
-              <a
-                href="https://yip.kerala.gov.in/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className={styles.apply_now}>Apply Now</button>
-              </a>
+              <button className={styles.apply_now} onClick={applyButton}>
+                Apply Now
+              </button>
               <div className={styles.lower_box}>
                 <p className={styles.lb_texts}>
                   YIP 5.0 is here and{" "}
