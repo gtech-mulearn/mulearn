@@ -1,24 +1,21 @@
 export const onboardingRoutes = {
-  validate: "/api/v1/user/register/jwt/validate/",
-  collegeList: "/api/v1/user/register/college/list/",
-  companyList: "/api/v1/user/register/company/list/",
-  roleList: "/api/v1/user/register/role/list/",
-  areaOfInterestList: "/api/v1/user/register/area-of-interest/list/",
-  communityList: "/api/v1/user/register/community/list/",
-  register: "/api/v1/user/register/",
-  emailVerification: "/api/v1/user/email-verification/",
+  collegeList: "/api/v1/register/register/college/list/",
+  companyList: "/api/v1/register/register/company/list/",
+  roleList: "/api/v1/register/register/role/list/",
+  areaOfInterestList: "/api/v1/register/register/area-of-interest/list/",
+  communityList: "/api/v1/register/register/community/list/",
+  register: "/api/v1/register/register/",
+  emailVerification: "/api/v1/register/email-verification/",
 };
 
 export const authRoutes = {
-  forgetPassword: "/api/v1/user/forgot-password/",
+  forgetPassword: "/api/v1/register/forgot-password/",
   login: "/api/v1/auth/user-authentication/",
-  getMuid: "/api/v1/user/reset-password/verify-token/${token}/",
-  resetPassword: "/api/v1/user/reset-password/${token}/",
+  getMuid: "/api/v1/register/reset-password/verify-token/${token}/",
+  resetPassword: "/api/v1/register/reset-password/${token}/",
   getAccessToken: "/api/v1/auth/get-access-token/",
 };
 
 export const dashboardRoutes = {
-  connectDiscord: "/api/v1/user/test/",
-  getmuid: "/api/v1/user/get-muid/",
-  getname: "/api/v1/user/get-name/",
+  getInfo: "/api/v1/register/info/",
 };

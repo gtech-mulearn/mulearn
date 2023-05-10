@@ -18,6 +18,7 @@ import {
 } from "./views/DashboardView/exports";
 import ConnectDscord from "./Pages/Portal/User/ConnectDiscord/ConnectDiscord";
 import SideNavBar from "./Components/Dashboard/SideNavBar";
+import AuthRoutes from "./Components/AuthRoutes";
 
 function App() {
   return (
@@ -25,10 +26,14 @@ function App() {
       {/* Public Routes */}
       <Route path="*" element={<p>404 Page not found</p>} />
       <Route path="user/validate/:token" element={<Validate />} />
-      <Route path="user/register" element={<Onboarding />} />
-      <Route path="user/login" element={<Login />} />
-      <Route path="user/forgot-password" element={<ForgotPassword />} />
-      <Route path="user/reset-password" element={<ResetPassword />} />
+
+      <Route element={<AuthRoutes />}>
+        <Route path="user/register" element={<Onboarding />} />
+        <Route path="user/login" element={<Login />} />
+        <Route path="user/forgot-password" element={<ForgotPassword />} />
+        <Route path="user/reset-password" element={<ResetPassword />} />
+      </Route>
+
       {/* Private Routes */}
       <Route element={<PrivateRoutes />}>
         <Route path="user/connect-discord" element={<ConnectDscord />} />
