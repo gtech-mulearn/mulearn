@@ -186,7 +186,6 @@ const Onboarding = (props: Props) => {
       values.community.push(values.organization);
     }
     console.log(values.community);
-    
 
     const userData = {
       firstName: values.firstName, //required
@@ -268,7 +267,7 @@ const Onboarding = (props: Props) => {
 
   useEffect(() => {
     setEmailVerificationResultBtn("Verify");
-  }, [formik.values.email]);  
+  }, [formik.values.email]);
   return (
     <>
       <div className={styles.onboarding_page}>
@@ -328,6 +327,11 @@ const Onboarding = (props: Props) => {
                                   navigate("/user/login");
                                 }
                               }}
+                              style={
+                                emailVerificationResultBtn === "Login"
+                                  ? { backgroundColor: "#6af155" }
+                                  : {}
+                              }
                             >
                               {emailVerificationResultBtn}
                             </button>
@@ -569,7 +573,7 @@ const Onboarding = (props: Props) => {
                             id="password"
                             type="password"
                             name="password"
-                            placeholder="password"
+                            placeholder="Password"
                             className={styles.input}
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
@@ -589,7 +593,7 @@ const Onboarding = (props: Props) => {
                           <input
                             type="password"
                             name="confirmPassword"
-                            placeholder="confirm password"
+                            placeholder="Confirm password"
                             className={styles.input}
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}

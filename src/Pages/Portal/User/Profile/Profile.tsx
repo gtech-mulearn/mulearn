@@ -104,7 +104,7 @@ const Profile = () => {
                 <Recent />
                 <Roles roles={roles} />
               </div> */}
-              <p><b><i>Its Comming brooooo...</i></b></p>
+              <p><b><i>Coming Soon!</i></b></p>
               <p>Wait for it</p>
             </div>
           </div>

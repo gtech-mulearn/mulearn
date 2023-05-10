@@ -51,9 +51,12 @@ const Login = (props: Props) => {
                 <Eye />
               </button>
             </div>
-            <p style={{ textAlign: "left" }}>
+            <p style={{ textAlign: "left"}}>
               <a href="forgot-password">
                 Forgot your <b>password?</b>
+              </a>
+              <a href="register">
+                <b>SignUp?</b>
               </a>
             </p>
             <button

@@ -1,10 +1,9 @@
-
 .login_page {
   background-color: #fbfbfb;
   min-height: 100vh;
 }
 
-.login_page{
+.login_page {
   transition: opacity 0.5s ease-in-out;
 }
 
@@ -73,6 +72,16 @@
   min-width: unset;
 }
 
+.login_page .login_container .login_form form p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login_page .login_container .login_form form p a:hover {
+  color: #5570f1;
+}
+
 .login_page .login_container .login_form button {
   background: #5570f1;
   color: white;
@@ -107,7 +116,7 @@
   right: 30px;
   top: 30px;
   background-color: #5570f2;
-  
+
   font-size: 1rem;
   border-radius: 5px;
 }
