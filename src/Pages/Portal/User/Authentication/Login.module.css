@@ -81,7 +81,9 @@
 .login_page .login_container .login_form form p a:hover {
   color: #5570f1;
 }
-
+.login_page .login_container .login_form i{
+  color: #404d61;
+}
 .login_page .login_container .login_form button {
   background: #5570f1;
   color: white;

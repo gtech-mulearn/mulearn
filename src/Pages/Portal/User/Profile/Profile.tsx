@@ -7,10 +7,9 @@ const Profile = () => {
     <>
       <SideNavBar
         component={
-          <div className={styles.profile_page}>
+          <div className={styles.main_content}>
             <div className={styles.profile_container}>
               <p className={styles.heading}>Coming Soon!</p>
-
               <p className={styles.tagline}>Wait for it</p>
             </div>
           </div>
