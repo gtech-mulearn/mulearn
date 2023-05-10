@@ -977,12 +977,12 @@ const Onboarding = (props: Props) => {
                               formik.errors.dept ||
                               formik.errors.yog
                             : null) ||
-                          (role[0]["title"] == "Mentor"
-                            ? formik.errors.mentorRole
-                            : null) ||
-                          (formik.values.mentorRole == "Company"
-                            ? formik.errors.organization
-                            : null) ||
+                          // (role[0]["title"] == "Mentor"
+                          //   ? formik.errors.mentorRole
+                          //   : null) ||
+                          // (formik.values.mentorRole == "Company"
+                          //   ? formik.errors.organization
+                          //   : null) ||
                           (formik.values.areaOfInterest.length == 0
                             ? true
                             : null)
