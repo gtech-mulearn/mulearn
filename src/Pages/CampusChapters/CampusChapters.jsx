@@ -9,14 +9,27 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
-import campusJsonData from "./data.json";
 import Levels from "./Levels/Levels";
+import axios from "axios";
 
 const CampusChapters = () => {
-  const campusData = campusJsonData;
   const [selectedZone, setSelectedZone] = useState("all");
   const [districts, setDistricts] = useState([]);
   const [selectedDistrict, setSelectedDistrict] = useState("all");
+  const [campusData, setCampusData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/campuschapter"
+      )
+      .then((response) => {
+        setCampusData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   //iternate through the campusData and form a array with the unique districts and sort it in alphabetical order
   useEffect(() => {
