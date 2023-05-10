@@ -606,7 +606,7 @@ const Onboarding = (props: Props) => {
                             <option value="male">
                               <span className={styles.gender}>♂</span> Male
                             </option>
-                            <option value="male">
+                            <option value="female">
                               <span className={styles.gender}>♀</span> Female
                             </option>
                             <option value="other">Other</option>
