@@ -28,7 +28,7 @@ const SideNavBar = (props: { component?: any }) => {
   const [transform2, setTransform2] = useState("0deg");
   const [transform3, setTransform3] = useState("0deg");
   const [display, setDisplay] = useState("block");
-  const [display2, setDisplay2] = useState("unset");
+  const [display2, setDisplay2] = useState("");
   const [name, setName] = useState("");
   // const [opacity, setOpacity] = useState(null);
   useEffect(() => {
@@ -44,7 +44,7 @@ const SideNavBar = (props: { component?: any }) => {
           setTransform3(transform3 === "0deg" ? "135deg" : "0deg");
           setDisplay(display === "block" ? "none" : "block");
           // setOpacity(opacity === 1 ? 0 : 1);
-          setDisplay2(display2 === "none" ? "block" : "none");
+          setDisplay2(display2 === "block" ? "none" : "block");
           // setTimeout(() => {
           // }, 1000);
         }}
@@ -64,7 +64,7 @@ const SideNavBar = (props: { component?: any }) => {
       </div>
       <div
         className={styles.side_nav_bar_container}
-        style={{ display: `${display2 === "none" ? "block" : ""}` }}
+        style={{ opacity: `${display2 === "none" ? 0 : 1}` ,display: `${display2}`}}
       >
         <div className={styles.side_nav_bar}>
           <div className={styles.mulearn_brand}>
