@@ -20,7 +20,7 @@ const YIP2023 = () => {
 
     if (isiOS) {
       window.open(
-        "https://play.google.com/store/apps/details?id=com.yip.yipapp",
+        "https://apps.apple.com/in/app/young-innovators-programme/id6443935839",
         "_blank"
       );
     } else if (isAndroid) {
