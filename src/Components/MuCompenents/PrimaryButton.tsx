@@ -1,24 +1,42 @@
+import React, { ButtonHTMLAttributes } from 'react';
 
-type Props = {
-    text: string
-    handleClick?: () => void
-    bgColor?: string
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+    text: string;
+    handleClick?: () => void;
+    bgColor?: string;
+    prefixIcon?: JSX.Element;
+    margin?: string;
 }
 
-const PrimaryButton = (props: Props) => {
+const PrimaryButton: React.FC<Props> = ({
+    text,
+    handleClick,
+    bgColor = 'white',
+    prefixIcon,
+    margin,
+    ...rest
+}) => {
     return (
         <button
-            onClick={props.handleClick}
+            onClick={handleClick}
             style={{
-                padding: "6px 16px",
-                border: "1px solid rgba(1, 75, 178, .5)",
-                borderRadius: "8px",
-                color: "rgba(1, 75, 178, 1)",
-                backgroundColor: props.bgColor ?? "white",
-            }}>
-            <span>{props.text}</span>
+                padding: '6px 16px',
+                border: '1px solid rgba(1, 75, 178, .5)',
+                borderRadius: '8px',
+                color: 'rgba(1, 75, 178, 1)',
+                backgroundColor: bgColor,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: margin,
+                fontWeight: "600",
+            }}
+            {...rest}
+        >
+            {prefixIcon && <div style={{ marginRight: '8px' }}>{prefixIcon}</div>}
+            <span>{text}</span>
         </button>
-    )
-}
+    );
+};
 
-export default PrimaryButton
+export default PrimaryButton;
