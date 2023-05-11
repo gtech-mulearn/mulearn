@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./SideNavBar.module.css";
 import MulearnBrand from "./assets/MulearnBrand";
-import { getname } from "./helpers/apis";
+import { getname, getInfo } from "./helpers/apis";
 
 // import companyLogo from "./assets/images/profile.png";
 // import {
@@ -30,9 +30,24 @@ const SideNavBar = (props: { component?: any }) => {
   const [display, setDisplay] = useState("block");
   const [display2, setDisplay2] = useState("unset");
   const [name, setName] = useState("");
+  const [connected, setConnected] = useState(false);
   // const [opacity, setOpacity] = useState(null);
   useEffect(() => {
-    getname(setName);
+    if (
+      localStorage.getItem("userInfo") &&
+      JSON.parse(localStorage.getItem("userInfo")!).exist_in_guild
+    ) {
+      setConnected(
+        JSON.parse(localStorage.getItem("userInfo")!).exist_in_guild
+      );
+    }
+
+    if (
+      localStorage.getItem("userInfo") &&
+      JSON.parse(localStorage.getItem("userInfo")!).first_name
+    ) {
+      setName(JSON.parse(localStorage.getItem("userInfo")!).first_name);
+    }
   });
   return (
     <div className={styles.fullpage}>
@@ -78,37 +93,41 @@ const SideNavBar = (props: { component?: any }) => {
             <MuButton text="Tasks" icon={<i className="fi fi-sr-box"></i>} />
             <MuButton text="Activity" icon={<i className="fi fi-sr-copy-alt"></i>} />
             <MuButton text="History" icon={<i className="fi fi-sr-search-alt"></i>} /> */}
-            <MuButton
-              text="Profile"
-              icon={<i className="fi fi-sr-clipboard-user"></i>}
-              style={
-                window.location.pathname === "/user/profile"
-                  ? { background: "#014BB2", color: "#fff" }
-                  : {}
-              }
-              onClick={() => {
-                navigate("/user/profile");
-              }}
-            />
-            <MuButton
-              text="Connect Discord"
-              icon={<i className="fi fi-sr-data-transfer"></i>}
-              style={
-                window.location.pathname === "/user/connect-discord"
-                  ? { background: "#014BB2", color: "#fff" }
-                  : {}
-              }
-              onClick={() => {
-                navigate("/user/connect-discord");
-              }}
-            />
+            <div>
+              <MuButton
+                text="Profile"
+                icon={<i className="fi fi-sr-clipboard-user"></i>}
+                style={
+                  window.location.pathname === "/user/profile" || connected
+                    ? { background: "#014BB2", color: "#fff" }
+                    : {}
+                }
+                onClick={() => {
+                  navigate("/user/profile");
+                }}
+              />
+              {!connected && (
+                <MuButton
+                  text="Connect Discord"
+                  icon={<i className="fi fi-sr-data-transfer"></i>}
+                  style={
+                    window.location.pathname === "/user/connect-discord"
+                      ? { background: "#014BB2", color: "#fff" }
+                      : {}
+                  }
+                  onClick={() => {
+                    navigate("/user/connect-discord");
+                  }}
+                />
+              )}
+            </div>
             <MuButtonLight
               text="Logout"
               icon={<i className="fi fi-sr-key"></i>}
               onClick={() => {
                 localStorage.clear();
                 toast({
-                  title: "Loged out",
+                  title: "Logged out",
                   description: "Redirecting to login page.",
                   status: "error",
                   duration: 9000,
@@ -126,7 +145,7 @@ const SideNavBar = (props: { component?: any }) => {
         <div className={styles.top_nav}>
           <div className={styles.nav}>
             <div className={styles.nav_items}>
-              <div className={styles.greetings}>Hello, &nbsp; {name} 👋</div>
+              <div className={styles.greetings}>Hello, {name} 👋</div>
 
               <div className={styles.mulearn_brand2}>
                 <MulearnBrand />

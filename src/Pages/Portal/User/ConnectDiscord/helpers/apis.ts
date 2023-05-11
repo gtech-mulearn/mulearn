@@ -6,30 +6,13 @@ import { NavigateFunction } from "react-router-dom";
 
 type muid = React.Dispatch<React.SetStateAction<string>>;
 
-export const connectDiscord = (
-  toast: (options?: UseToastOptions | undefined) => ToastId,
-  navigate: NavigateFunction
-) => {
+export const getInfo = (setMuid: muid) => {
   privateGateway
-    .get(dashboardRoutes.connectDiscord)
+    .get(dashboardRoutes.getInfo)
     .then((response) => {
-      // console.log(response);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
-
-export const getmuid = (
-  toast: (options?: UseToastOptions | undefined) => ToastId,
-  navigate: NavigateFunction,
-  setmuid: muid
-) => {
-  privateGateway
-    .get(dashboardRoutes.getmuid)
-    .then((response) => {
-      // console.log(response);
-      setmuid(response.data.response);
+      console.log(response);
+      localStorage.setItem("userInfo", JSON.stringify(response.data.response));
+      setMuid(response.data.response.mu_id);
     })
     .catch((error) => {
       console.log(error);
