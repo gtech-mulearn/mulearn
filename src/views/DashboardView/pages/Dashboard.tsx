@@ -15,29 +15,17 @@ import {
 import { BsFillPencilFill, BsFilterLeft, BsSearch } from "react-icons/bs";
 
 import CustomBtn from "../../../Components/CustomBtn";
+import Pagination from "../../../Components/MuCompenents/Pagination";
 import Table from "../../../Components/MuCompenents/Table/Table";
 import TBody from "../../../Components/MuCompenents/Table/TBody";
+import TFooter from "../../../Components/MuCompenents/Table/TFooter";
 import THead from "../../../Components/MuCompenents/Table/THead";
 import TRow from "../../../Components/MuCompenents/Table/TRow";
 
 const Dashboard = () => {
   return (
     <>
-      <Table >
-        <THead columns={['Name', 'Age', 'DOB']} />
-        <TBody>
-          <TRow data={[
-            'John Doe',
-            '20',
-            '01/01/2000'
-          ]} />
-          <TRow data={[
-            'John Doe',
-            '20',
-            '01/01/2000'
-          ]} />
-        </TBody>
-      </Table>
+
       <Box mt={8} />
       <Flex justifyContent="space-between" gap={12}>
         <CustomBtn
@@ -60,6 +48,22 @@ const Dashboard = () => {
           handleClick={() => { }}
         />
       </Flex>
+      <Table margin="16px 0">
+        <THead columns={['Name', 'Age', 'DOB']} />
+        <TBody>
+          <TRow data={[
+            'John Doe',
+            '20',
+            '01/01/2000'
+          ]} />
+          <TRow data={[
+            'John Doe',
+            '20',
+            '01/01/2000'
+          ]} />
+        </TBody>
+      </Table>
+      <Pagination currentPage={1} totalPages={10} margin="16px 0" />
       <TableContainer
         mt={8}
         border="2px"
