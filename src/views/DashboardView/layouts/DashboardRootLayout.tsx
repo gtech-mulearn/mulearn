@@ -1,6 +1,7 @@
 import { Grid, GridItem, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
+import SideNavBar from "../../../Components/Dashboard/SideNavBar";
 import DashboardTopBar from "../components/DashboardTopBar";
 import Sidebar from "../components/Sidebar";
 
