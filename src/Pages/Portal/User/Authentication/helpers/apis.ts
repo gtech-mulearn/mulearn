@@ -8,6 +8,7 @@ import {
 import { authRoutes, dashboardRoutes } from "../../../../../services/urls";
 
 type setMuID = React.Dispatch<React.SetStateAction<string>>;
+type setHasError = React.Dispatch<React.SetStateAction<boolean>>;
 
 export const forgetPassword = (
   muid: string,
@@ -157,5 +158,112 @@ export const resetPassword = (
       setTimeout(() => {
         navigate("/user/forgot-password");
       }, 4000);
+    });
+};
+
+export const requestEmailOtp = (
+  email: string,
+  toast: (options?: UseToastOptions | undefined) => ToastId,
+  setHasError: setHasError
+  // navigate: NavigateFunction
+) => {
+  publicGateway
+    .post(authRoutes.requestEmailOtp, { email })
+    .then((response) => {
+      console.log(response.data);
+      if (response.data.hasError == false) {
+        setHasError(false);
+        toast({
+          title: "OTP Sented",
+          description: "OTP has been sent to your email",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
+      }
+    })
+    .catch((error) => {
+      toast({
+        title: "Invalid Email",
+        description: "Kindly enter a valid email",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    });
+};
+
+export const requestMuidOtp = (
+  muid: string,
+  toast: (options?: UseToastOptions | undefined) => ToastId,
+  setHasError: setHasError
+  // navigate: NavigateFunction
+) => {
+  publicGateway
+    .post(authRoutes.requestMuidOtp, { muid })
+    .then((response) => {
+      console.log(response.data);
+      if (response.data.hasError == false) {
+        setHasError(false);
+        toast({
+          title: "OTP Sented",
+          description: "OTP has been sent to your email",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
+      }
+    })
+    .catch((error) => {
+      toast({
+        title: "Invalid Muid",
+        description: "Kindly enter a valid Muid",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    });
+};
+
+export const otpVerification = (
+  otp: string,
+  toast: (options?: UseToastOptions | undefined) => ToastId,
+  navigate: NavigateFunction
+) => {
+  publicGateway
+    .post(authRoutes.otpVerification, { otp })
+    .then((response) => {
+      console.log(response.data);
+      localStorage.setItem("accessToken", response.data.response.accessToken);
+      localStorage.setItem("refreshToken", response.data.response.refreshToken);
+      if (response.data.hasError == false) {
+        toast({
+          title: "OTP verified",
+          description: "You will be redirected to home page",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
+      }
+    });
+  privateGateway
+    .get(dashboardRoutes.getInfo)
+    .then((response) => {
+      console.log(response);
+      localStorage.setItem("userInfo", JSON.stringify(response.data.response));
+      if (response.data.response.exist_in_guild) {
+        navigate("/user/profile");
+      } else {
+        navigate("/user/connect-discord");
+      }
+    })
+    .catch((error) => {
+      toast({
+        title: "Invalid OTP",
+        description: "Kindly enter a valid OTP",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
     });
 };

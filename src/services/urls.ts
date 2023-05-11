@@ -14,6 +14,9 @@ export const authRoutes = {
   getMuid: "/api/v1/register/reset-password/verify-token/${token}/",
   resetPassword: "/api/v1/register/reset-password/${token}/",
   getAccessToken: "/api/v1/auth/get-access-token/",
+  requestEmailOtp: "/api/v1/auth/request-email-otp/",
+  requestMuidOtp: "/api/v1/auth/request-muid-otp/",
+  otpVerification: "/api/v1/auth/otp-verification/",
 };
 
 export const dashboardRoutes = {
