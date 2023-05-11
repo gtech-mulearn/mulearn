@@ -48,12 +48,19 @@ const Login = (props: Props) => {
                     : setShowOrHidePassword("password");
                 }}
               >
-                <Eye />
+                {showOrHidePassword === "text" ? (
+                  <i className="fi fi-sr-eye"></i>
+                ) : (
+                  <i className="fi fi-sr-eye-crossed"></i>
+                )}
               </button>
             </div>
             <p style={{ textAlign: "left" }}>
               <a href="forgot-password">
                 Forgot your <b>password?</b>
+              </a>
+              <a href="register">
+                <b>SignUp?</b>
               </a>
             </p>
             <button

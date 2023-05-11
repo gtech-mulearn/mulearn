@@ -175,12 +175,7 @@
   align-items: center;
 }
 
-.main_content
-  .onboarding_flow_container
-  .content
-  .onboarding_flow
-  div
-  p:nth-child(1) {
+.main_content .onboarding_flow_container .content .onboarding_flow div p:nth-child(1) {
   color: white;
   font-weight: 500;
   font-size: 0.9rem;
@@ -201,21 +196,11 @@
   transform: translateY(-5px);
 }
 
-.main_content
-  .onboarding_flow_container
-  .content
-  .onboarding_flow
-  div:hover
-  p:nth-child(1) {
+.main_content .onboarding_flow_container .content .onboarding_flow div:hover p:nth-child(1) {
   opacity: 1;
 }
 
-.main_content
-  .onboarding_flow_container
-  .content
-  .onboarding_flow
-  div
-  p:nth-child(2) {
+.main_content .onboarding_flow_container .content .onboarding_flow div p:nth-child(2) {
   position: absolute;
   bottom: -50px;
   font-size: 25px;
@@ -275,12 +260,7 @@
     /* width: 830px; */
   }
 
-  .main_content
-    .onboarding_flow_container
-    .content
-    .onboarding_flow
-    div
-    p:nth-child(2) {
+  .main_content .onboarding_flow_container .content .onboarding_flow div p:nth-child(2) {
     bottom: -40px;
     font-size: 20px;
     width: 330px;
@@ -358,12 +338,7 @@
     width: 70vw;
   }
 
-  .main_content
-    .onboarding_flow_container
-    .content
-    .onboarding_flow
-    div
-    p:nth-child(1) {
+  .main_content .onboarding_flow_container .content .onboarding_flow div p:nth-child(1) {
     font-size: 0.5rem;
   }
 
@@ -393,12 +368,7 @@
     width: 90vw;
   }
 
-  .main_content
-    .onboarding_flow_container
-    .content
-    .onboarding_flow
-    div
-    p:nth-child(2) {
+  .main_content .onboarding_flow_container .content .onboarding_flow div p:nth-child(2) {
     bottom: -20px;
     font-size: 10px;
     width: 160px;

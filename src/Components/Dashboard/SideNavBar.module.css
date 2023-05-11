@@ -20,7 +20,7 @@
     background-color: #014BB2;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
-    transition: all .5s ease-in-out;
+    transition: all .3s ease-in-out;
 }
 
 .fullpage {
@@ -42,7 +42,7 @@
     background-color: #f3f8ff;
     padding: 60px 40px;
     justify-content: center;
-    transition: all .5s ease-in-out;
+    transition: all .3s ease-in-out;
 }
 
 .side_nav_bar_container .side_nav_bar {
@@ -176,12 +176,13 @@
 
 @media screen and (max-width: 830px) {
 
-    .side_nav_bar_container,
     .right_side .top_nav .nav .nav_items .greetings,
     .right_side .top_nav .nav .nav_items .menu svg {
         display: none;
     }
-
+    .side_nav_bar_container{
+        display: none;
+    }
     .side_nav_bar_container .side_nav_bar {
         height: calc(100vh - 120px);
     }

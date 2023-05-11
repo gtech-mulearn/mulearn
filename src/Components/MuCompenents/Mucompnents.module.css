@@ -5,6 +5,7 @@
 .btn,
 .btn_light {
     width: 100%;
+    min-width: 200px;
     padding: 10px 20px;
     display: flex;
     border-radius: 10px;

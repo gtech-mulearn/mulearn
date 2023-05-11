@@ -178,10 +178,13 @@ const Onboarding = (props: Props) => {
     areaOfInterest: [],
     general: "",
   };
+
   const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
-    if (organization != "") {
-      values.community.push(organization);
+    if (values.organization != "") {
+      // console.log("hi");
+      values.community.push(values.organization);
     }
+    console.log(values.community);
 
     const userData = {
       firstName: values.firstName, //required
@@ -207,7 +210,7 @@ const Onboarding = (props: Props) => {
       formik,
       setHasValidationError,
       userData,
-      navigate,
+      navigate
     );
   };
 
@@ -322,6 +325,11 @@ const Onboarding = (props: Props) => {
                               navigate("/user/login");
                             }
                           }}
+                          style={
+                            emailVerificationResultBtn === "Login"
+                              ? { backgroundColor: "#6af155" }
+                              : {}
+                          }
                         >
                           {emailVerificationResultBtn}
                         </button>
@@ -522,7 +530,6 @@ const Onboarding = (props: Props) => {
                         <select
                           style={{ width: "20%", textAlign: "center" }}
                           name=""
-                          id=""
                         >
                           <option value="+91">+91</option>
                         </select>
@@ -554,7 +561,7 @@ const Onboarding = (props: Props) => {
                         id="password"
                         type="password"
                         name="password"
-                        placeholder="password"
+                        placeholder="Password"
                         className={styles.input}
                         onBlur={formik.handleBlur}
                         onChange={formik.handleChange}
@@ -574,7 +581,7 @@ const Onboarding = (props: Props) => {
                       <input
                         type="password"
                         name="confirmPassword"
-                        placeholder="confirm password"
+                        placeholder="Confirm password"
                         className={styles.input}
                         onBlur={formik.handleBlur}
                         onChange={formik.handleChange}
@@ -808,65 +815,25 @@ const Onboarding = (props: Props) => {
                       </>
                     ) : (
                       <>
-                        {role[0].title == "Mentor" ? (
-                          <div className={styles.input_container}>
-                            <label htmlFor="">
-                              Mentor Type{" "}
-                              <span className={styles.required}>*</span>
-                            </label>
-                            <div className={styles.grouped_inputs}>
-                              <select
-                                id="mentortype_filed"
-                                style={{ width: "100%" }} //78%
-                                name="mentorRole"
-                                onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
-                                value={formik.values.mentorRole}
-                                // required
-                              >
-                                <option value="">Select</option>
-                                <option value="Company">Company</option>
-                                <option value="Individual">Individual</option>
-                              </select>
-                              {formik.touched.mentorRole &&
-                              formik.errors.mentorRole ? (
-                                <div className={styles.error_message}>
-                                  {formik.errors.mentorRole}
-                                </div>
-                              ) : null}
-                            </div>
-                          </div>
-                        ) : null}
-                        {formik.values.mentorRole == "Company" ? (
-                          <div className={styles.input_container}>
-                            <label htmlFor="">
-                              Company <span className={styles.required}>*</span>
-                            </label>
-                            <select
-                              id="company_field"
-                              name="organization"
-                              onBlur={formik.handleBlur}
-                              onChange={formik.handleChange}
-                              value={formik.values.organization}
-                              required
-                            >
-                              <option value="">Select</option>
-                              {companyAPI.map((company, index) => {
-                                return (
-                                  <option key={index} value={company.id}>
-                                    {company.title}
-                                  </option>
-                                );
-                              })}
-                            </select>
-                            {formik.touched.organization &&
-                            formik.errors.organization ? (
-                              <div className={styles.error_message}>
-                                {formik.errors.organization}
-                              </div>
-                            ) : null}
-                          </div>
-                        ) : null}
+                        <div className={styles.input_container}>
+                          <label htmlFor="">Company </label>
+                          <select
+                            id="company_field"
+                            name="organization"
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.organization}
+                          >
+                            <option value="">Select</option>
+                            {companyAPI.map((company, index) => {
+                              return (
+                                <option key={index} value={company.id}>
+                                  {company.title}
+                                </option>
+                              );
+                            })}
+                          </select>
+                        </div>
                       </>
                     )}
                   </div>
@@ -1010,12 +977,12 @@ const Onboarding = (props: Props) => {
                               formik.errors.dept ||
                               formik.errors.yog
                             : null) ||
-                          (role[0]["title"] == "Mentor"
-                            ? formik.errors.mentorRole
-                            : null) ||
-                          (formik.values.mentorRole == "Company"
-                            ? formik.errors.organization
-                            : null) ||
+                          // (role[0]["title"] == "Mentor"
+                          //   ? formik.errors.mentorRole
+                          //   : null) ||
+                          // (formik.values.mentorRole == "Company"
+                          //   ? formik.errors.organization
+                          //   : null) ||
                           (formik.values.areaOfInterest.length == 0
                             ? true
                             : null)
