@@ -3,7 +3,6 @@ import styles from "./SideNavBar.module.css";
 import MulearnBrand from "./assets/MulearnBrand";
 import { getname, getInfo } from "./helpers/apis";
 
-// import companyLogo from "./assets/images/profile.png";
 // import {
 //   MdHome,
 //   MdSupervisorAccount,
@@ -12,24 +11,22 @@ import { getname, getInfo } from "./helpers/apis";
 //   MdBackupTable,
 //   MdArticle,
 //   MdWorkHistory,
-//   MdSettings,
-//   MdNotifications,
 // } from "react-icons/md";
-import MuButton from "../MuCompenents/MuButton";
-import MuButtonLight from "../MuCompenents/MuButtonLight";
+
+import MuButton from "../MuComponents/MuButton";
+import MuButtonLight from "../MuComponents/MuButtonLight";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
-const SideNavBar = (props: { component?: any }) => {
+const SideNavBar = () => {
   const toast = useToast();
   const navigate = useNavigate();
   const [marginTop, setMarginTop] = useState("0px");
-  const [transform, setTransform] = useState("0deg");
+  // const [transform, setTransform] = useState("0deg");
   const [transform2, setTransform2] = useState("0deg");
   const [transform3, setTransform3] = useState("0deg");
   const [display, setDisplay] = useState("block");
   const [display2, setDisplay2] = useState("");
-  const [name, setName] = useState("");
   const [connected, setConnected] = useState(false);
   // const [opacity, setOpacity] = useState(null);
   useEffect(() => {
@@ -41,16 +38,9 @@ const SideNavBar = (props: { component?: any }) => {
         JSON.parse(localStorage.getItem("userInfo")!).exist_in_guild
       );
     }
-
-    if (
-      localStorage.getItem("userInfo") &&
-      JSON.parse(localStorage.getItem("userInfo")!).first_name
-    ) {
-      setName(JSON.parse(localStorage.getItem("userInfo")!).first_name);
-    }
   });
   return (
-    <div className={styles.fullpage}>
+    <>
       <div
         className={styles.menu_btn}
         onClick={() => {
@@ -79,7 +69,10 @@ const SideNavBar = (props: { component?: any }) => {
       </div>
       <div
         className={styles.side_nav_bar_container}
-        style={{ opacity: `${display2 === "none" ? 0 : 1}` ,display: `${display2}`}}
+        style={{
+          opacity: `${display2 === "none" ? 0 : 1}`,
+          display: `${display2}`,
+        }}
       >
         <div className={styles.side_nav_bar}>
           <div className={styles.mulearn_brand}>
@@ -87,12 +80,12 @@ const SideNavBar = (props: { component?: any }) => {
           </div>
           <div className={styles.side_nav_bar_items}>
             {/* <MuButton text="Home" icon={<i className="fi fi-sr-home"></i>} />
-            <MuButton text="Team" icon={<i className="fi fi-sr-address-book"></i>} />
-            <MuButton text="Management" icon={<i className="fi fi-sr-layout-fluid"></i>} />
-            <MuButton text="Projects" icon={<i className="fi fi-sr-book-arrow-right"></i>} />
-            <MuButton text="Tasks" icon={<i className="fi fi-sr-box"></i>} />
-            <MuButton text="Activity" icon={<i className="fi fi-sr-copy-alt"></i>} />
-            <MuButton text="History" icon={<i className="fi fi-sr-search-alt"></i>} /> */}
+                <MuButton text="Team" icon={<i className="fi fi-sr-address-book"></i>} />
+                <MuButton text="Management" icon={<i className="fi fi-sr-layout-fluid"></i>} />
+                <MuButton text="Projects" icon={<i className="fi fi-sr-book-arrow-right"></i>} />
+                <MuButton text="Tasks" icon={<i className="fi fi-sr-box"></i>} />
+                <MuButton text="Activity" icon={<i className="fi fi-sr-copy-alt"></i>} />
+                <MuButton text="History" icon={<i className="fi fi-sr-search-alt"></i>} /> */}
             <div>
               <MuButton
                 text="Profile"
@@ -141,29 +134,7 @@ const SideNavBar = (props: { component?: any }) => {
           </div>
         </div>
       </div>
-      <div className={styles.right_side}>
-        <div className={styles.top_nav}>
-          <div className={styles.nav}>
-            <div className={styles.nav_items}>
-              <div className={styles.greetings}>Hello, {name} 👋</div>
-
-              <div className={styles.mulearn_brand2}>
-                <MulearnBrand />
-              </div>
-              <div className={styles.menu}>
-                {/* <MdSettings style={{ fontSize: "30px" }} />
-                <MdNotifications style={{ fontSize: "30px" }} />
-                <div className={styles.profile}>
-                  <img src={companyLogo} alt="" />
-                </div> */}
-              </div>
-            </div>
-            <hr />
-          </div>
-        </div>
-        {props.component}
-      </div>
-    </div>
+    </>
   );
 };
 

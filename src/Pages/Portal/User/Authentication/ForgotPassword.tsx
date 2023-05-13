@@ -27,7 +27,7 @@ const ForgotPassword = (props: Props) => {
           <form>
             <input
               type="text"
-              placeholder="Enter your Muid"
+              placeholder="Enter your µID or Email"
               required
               value={muid}
               onChange={(e) => setMuid(e.target.value)}
