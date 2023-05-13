@@ -33,7 +33,7 @@ const Login = () => {
             <form>
               <input
                 type="text"
-                placeholder="Enter µID"
+                placeholder="Enter µID or Email"
                 required
                 value={muid}
                 onChange={(e) => setMuID(e.target.value)}

@@ -18,13 +18,12 @@ import { BsFillPencilFill, BsFilterLeft, BsSearch } from "react-icons/bs";
 
 
 import CustomBtn from "../../../Components/CustomBtn";
-import InputField from "../../../Components/MuCompenents/InputField";
-import Pagination from "../../../Components/MuCompenents/Pagination";
-import PrimaryButton from "../../../Components/MuCompenents/PrimaryButton";
-import Table from "../../../Components/MuCompenents/Table/Table";
-import TBody from "../../../Components/MuCompenents/Table/TBody";
-import THead from "../../../Components/MuCompenents/Table/THead";
-import TRow from "../../../Components/MuCompenents/Table/TRow";
+import Pagination from "../../../Components/MuComponents/Pagination";
+import Table from "../../../Components/MuComponents/Table/Table";
+import TBody from "../../../Components/MuComponents/Table/TBody";
+import TFooter from "../../../Components/MuComponents/Table/TFooter";
+import THead from "../../../Components/MuComponents/Table/THead";
+import TRow from "../../../Components/MuComponents/Table/TRow";
 
 const Dashboard = () => {
 
