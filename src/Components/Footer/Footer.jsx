@@ -1,5 +1,14 @@
 import React from "react";
 import styles from "./Footer.module.css";
+import { Link } from "react-router-dom";
+
+function scrollTop(){
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  })
+}
+
 
 const Footer = () => {
   return (
@@ -13,6 +22,7 @@ const Footer = () => {
               className={styles.mulearn}
             />
 
+
             <div className={styles.links}>
               <a href="/careers">
                 <p className={styles.link}>Career Labs</p>
@@ -24,10 +34,25 @@ const Footer = () => {
                 href="https://learn.mulearn.org/"
                 target="_blank"
                 rel="noopener noreferrer"
-              >
+                >
                 <p className={styles.link}>Interest Groups</p>
               </a>
+             
+            
+           
             </div>
+            <div className={`${styles.links_mobile} ${styles.larger_screen}`}>
+
+
+              <Link to={"/termsandconditions"} onClick={scrollTop}>
+                <p className={styles.link}>Terms and Condition</p>
+              </Link>
+              <Link to={"/privacypolicy"} onClick={scrollTop}>
+                <p className={styles.link}>Privacy Policy</p>
+              </Link>
+            </div>
+            
+               
           </div>
 
           <div className={styles.fs_rightside}>

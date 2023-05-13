@@ -27,6 +27,13 @@
   display: flex;
   flex-direction: row;
 }
+@media(max-width:767px){
+  .links_mobile {
+   display: flex;
+  }
+}
+
+
 
 .link {
   margin-top: 0;
@@ -180,11 +187,22 @@ button:focus {
   display: flex;
 }
 
+
 @media only screen and (min-width: 1000px) {
   .right_side {
     width: 30%;
   }
+  .left_links{
+    display: flex;
+  
+  }
 
+  .larger_screen{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
   .newsletter {
     width: 20rem;
     text-align: right;
@@ -207,4 +225,15 @@ button:focus {
   text-align: center;
   padding: 5px 0px 5px 0px;
   font-size: 0.6rem;
+}
+@media (max-width: 767px) {
+  .mobile_line_break {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-line-break {
+    display: inline;
+  }
 }
