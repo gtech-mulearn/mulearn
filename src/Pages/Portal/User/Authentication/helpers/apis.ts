@@ -201,7 +201,7 @@ export const otpVerification = (
   navigate: NavigateFunction
 ) => {
   publicGateway
-    .post(authRoutes.otpVerification, { otp })
+    .post(authRoutes.otpVerification, { emailOrMuid, otp })
     .then((response) => {
       console.log(response.data);
       localStorage.setItem("accessToken", response.data.response.accessToken);
