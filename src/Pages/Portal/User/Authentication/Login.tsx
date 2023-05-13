@@ -2,12 +2,7 @@ import React, { useEffect, useState } from "react";
 import Eye from "./assets/Eye";
 import styles from "./Login.module.css";
 import { useToast } from "@chakra-ui/react";
-import {
-  login,
-  requestMuidOtp,
-  requestEmailOtp,
-  otpVerification,
-} from "./helpers/apis";
+import { login, requestEmailOrMuidOtp, otpVerification } from "./helpers/apis";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -15,12 +10,15 @@ const Login = () => {
   const [muid, setMuID] = useState("");
   const [emailOrMuid, setEmailOrMuid] = useState("");
   const [hasError, setHasError] = useState(true);
+  const [status, setStatus] = useState(0);
   const [password, setPassword] = useState("");
   const [otpForm, setOtpForm] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
   useEffect(() => {
     setHasError(true);
+    setPassword("");
+    setStatus(0);
   }, [emailOrMuid]);
   return (
     <div className={styles.login_page}>
@@ -112,7 +110,7 @@ const Login = () => {
                 value={emailOrMuid}
                 onChange={(e) => setEmailOrMuid(e.target.value)}
               />
-              {!hasError ? (
+              {status === 200 ? (
                 <div className={styles.password_div}>
                   <input
                     type={showOrHidePassword}
@@ -157,27 +155,30 @@ const Login = () => {
               </p>
               <button
                 onClick={(e) => {
+                  setHasError(false);
                   e.preventDefault();
                   if (emailOrMuid != "" && hasError) {
-                    emailOrMuid.includes("@mulearn")
-                      ? requestMuidOtp(emailOrMuid, toast, setHasError)
-                      : requestEmailOtp(emailOrMuid, toast, setHasError);
-                  } else {
-                    toast({
-                      title: "Error",
-                      description: "Please enter valid email or µID",
-                      status: "error",
-                      duration: 3000,
-                      isClosable: true,
-                    });
+                    requestEmailOrMuidOtp(
+                      emailOrMuid,
+                      toast,
+                      setHasError,
+                      setStatus
+                    );
                   }
-                  if (!hasError) {
-                    otpVerification(password, toast, navigate);
+                  if (!hasError && password != "") {
+                    otpVerification(emailOrMuid, password, toast, navigate);
                   }
                 }}
                 type="submit"
+                // disabled={status === 1 ? true : false}
               >
-                {hasError ? "Request OTP" : "Sign in"}
+                {hasError
+                  ? "Request OTP"
+                  : status === 0 && emailOrMuid != ""
+                  ? "processing"
+                  : emailOrMuid != ""
+                  ? "Sign in"
+                  : "Request OTP"}
               </button>
             </form>
           </div>

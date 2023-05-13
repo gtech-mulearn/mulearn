@@ -8,6 +8,7 @@ import {
 import { authRoutes, dashboardRoutes } from "../../../../../services/urls";
 
 type setMuID = React.Dispatch<React.SetStateAction<string>>;
+type setStatus = React.Dispatch<React.SetStateAction<number>>;
 type setHasError = React.Dispatch<React.SetStateAction<boolean>>;
 
 export const forgetPassword = (
@@ -161,20 +162,20 @@ export const resetPassword = (
     });
 };
 
-export const requestEmailOtp = (
-  email: string,
+export const requestEmailOrMuidOtp = (
+  emailOrMuid: string,
   toast: (options?: UseToastOptions | undefined) => ToastId,
-  setHasError: setHasError
-  // navigate: NavigateFunction
+  setHasError: setHasError,
+  setStatus: setStatus
 ) => {
   publicGateway
-    .post(authRoutes.requestEmailOtp, { email })
+    .post(authRoutes.requestEmailOrMuidOtp, { emailOrMuid })
     .then((response) => {
-      console.log(response.data);
+      setStatus(response.data.statusCode);
       if (response.data.hasError == false) {
         setHasError(false);
         toast({
-          title: "OTP Sented",
+          title: "OTP Sended",
           description: "OTP has been sent to your email",
           status: "success",
           duration: 5000,
@@ -184,40 +185,8 @@ export const requestEmailOtp = (
     })
     .catch((error) => {
       toast({
-        title: "Invalid Email",
-        description: "Kindly enter a valid email",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-      });
-    });
-};
-
-export const requestMuidOtp = (
-  muid: string,
-  toast: (options?: UseToastOptions | undefined) => ToastId,
-  setHasError: setHasError
-  // navigate: NavigateFunction
-) => {
-  publicGateway
-    .post(authRoutes.requestMuidOtp, { muid })
-    .then((response) => {
-      console.log(response.data);
-      if (response.data.hasError == false) {
-        setHasError(false);
-        toast({
-          title: "OTP Sented",
-          description: "OTP has been sent to your email",
-          status: "success",
-          duration: 5000,
-          isClosable: true,
-        });
-      }
-    })
-    .catch((error) => {
-      toast({
-        title: "Invalid Muid",
-        description: "Kindly enter a valid Muid",
+        title: "Invalid Email or Muid",
+        description: "Kindly enter a valid email or Muid",
         status: "error",
         duration: 5000,
         isClosable: true,
@@ -226,12 +195,13 @@ export const requestMuidOtp = (
 };
 
 export const otpVerification = (
+  emailOrMuid: string,
   otp: string,
   toast: (options?: UseToastOptions | undefined) => ToastId,
   navigate: NavigateFunction
 ) => {
   publicGateway
-    .post(authRoutes.otpVerification, { otp })
+    .post(authRoutes.otpVerification, { emailOrMuid, otp })
     .then((response) => {
       console.log(response.data);
       localStorage.setItem("accessToken", response.data.response.accessToken);
@@ -245,17 +215,23 @@ export const otpVerification = (
           isClosable: true,
         });
       }
-    });
-  privateGateway
-    .get(dashboardRoutes.getInfo)
-    .then((response) => {
-      console.log(response);
-      localStorage.setItem("userInfo", JSON.stringify(response.data.response));
-      if (response.data.response.exist_in_guild) {
-        navigate("/user/profile");
-      } else {
-        navigate("/user/connect-discord");
-      }
+      privateGateway
+        .get(dashboardRoutes.getInfo)
+        .then((response) => {
+          console.log(response);
+          localStorage.setItem(
+            "userInfo",
+            JSON.stringify(response.data.response)
+          );
+          if (response.data.response.exist_in_guild) {
+            navigate("/user/profile");
+          } else {
+            navigate("/user/connect-discord");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     })
     .catch((error) => {
       toast({
