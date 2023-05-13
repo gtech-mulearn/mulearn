@@ -12,12 +12,12 @@ type setStatus = React.Dispatch<React.SetStateAction<number>>;
 type setHasError = React.Dispatch<React.SetStateAction<boolean>>;
 
 export const forgetPassword = (
-  muid: string,
+  emailOrMuid: string,
   toast: (options?: UseToastOptions | undefined) => ToastId,
   navigate: NavigateFunction
 ) => {
   publicGateway
-    .post(authRoutes.forgetPassword, { muid })
+    .post(authRoutes.forgetPassword, { emailOrMuid })
     .then((response) => {
       toast({
         title: "Token Mail Sent",
@@ -41,13 +41,13 @@ export const forgetPassword = (
 };
 
 export const login = (
-  muid: string,
+  emailOrMuid: string,
   password: string,
   toast: (options?: UseToastOptions | undefined) => ToastId,
   navigate: NavigateFunction
 ) => {
   publicGateway
-    .post(authRoutes.login, { muid, password })
+    .post(authRoutes.login, { emailOrMuid, password })
     .then((response) => {
       if (response.data.hasError == false) {
         console.log(response.data.response.accessToken);

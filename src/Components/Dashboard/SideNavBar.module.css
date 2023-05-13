@@ -23,13 +23,14 @@
     transition: all .3s ease-in-out;
 }
 
-.fullpage {
+.full_page {
     height: 100vh;
-    width: 99vw;
+    width: 100vw;
     display: flex;
     flex-direction: row;
     background-color: #fff;
     color: #014BB2;
+    overflow-x: hidden;
 }
 
 .side_nav_bar_container {
@@ -154,6 +155,17 @@
     height: 50px;
     border-radius: 50%;
 }
+
+.main_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* height: calc(100% - 160px); */
+    justify-content: flex-start;
+    text-align: center;
+    margin-top: 16vh;
+    overflow-x: hidden;
+  }
 
 /* responsive */
 @media screen and (max-width: 1324px) {

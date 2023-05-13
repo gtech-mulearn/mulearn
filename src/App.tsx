@@ -16,9 +16,9 @@ import {
   LearningCircles,
   MuLearnAdmin,
 } from "./views/DashboardView/exports";
-import ConnectDscord from "./Pages/Portal/User/ConnectDiscord/ConnectDiscord";
-import SideNavBar from "./Components/Dashboard/SideNavBar";
+import ConnectDiscord from "./Pages/Portal/User/ConnectDiscord/ConnectDiscord";
 import AuthRoutes from "./Components/AuthRoutes";
+import UserDashboardLayout from "./Components/Dashboard/UserDashboardLayout";
 
 function App() {
   return (
@@ -36,8 +36,11 @@ function App() {
 
       {/* Private Routes */}
       <Route element={<PrivateRoutes />}>
-        <Route path="user/connect-discord" element={<ConnectDscord />} />
-        <Route path="user/profile" element={<Profile />} />
+        {/* user dashboard */}
+        <Route path="user" element={<UserDashboardLayout />}>
+          <Route index path="profile" element={<Profile />} />
+          <Route path="connect-discord" element={<ConnectDiscord />} />
+        </Route>
         {/* Dashboard */}
         <Route path="dashboard" element={<DashboardRootLayout />}>
           <Route index element={<Dashboard />} />
