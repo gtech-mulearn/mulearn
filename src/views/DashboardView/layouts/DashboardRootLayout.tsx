@@ -2,7 +2,7 @@ import { Grid, GridItem, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import SideNavBar from "../../../Components/Dashboard/SideNavBar";
-import MuSidebar from "../../../Components/MuCompenents/MuSidebar/MuSidebar";
+import MuSidebar from "../../../Components/MuComponents/MuSidebar/MuSidebar";
 import DashboardTopBar from "../components/DashboardTopBar";
 import DashboardSidebar from "../components/DashboardSidebar";
 

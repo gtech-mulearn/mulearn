@@ -1,10 +1,10 @@
 export const onboardingRoutes = {
-  collegeList: "/api/v1/register/register/college/list/",
-  companyList: "/api/v1/register/register/company/list/",
-  roleList: "/api/v1/register/register/role/list/",
-  areaOfInterestList: "/api/v1/register/register/area-of-interest/list/",
-  communityList: "/api/v1/register/register/community/list/",
-  register: "/api/v1/register/register/",
+  collegeList: "/api/v1/register/college/list/",
+  companyList: "/api/v1/register/company/list/",
+  roleList: "/api/v1/register/role/list/",
+  areaOfInterestList: "/api/v1/register/area-of-interest/list/",
+  communityList: "/api/v1/register/community/list/",
+  register: "/api/v1/register/",
   emailVerification: "/api/v1/register/email-verification/",
 };
 
