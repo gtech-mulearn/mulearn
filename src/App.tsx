@@ -19,6 +19,7 @@ import {
 import ConnectDiscord from "./Pages/Portal/User/ConnectDiscord/ConnectDiscord";
 import AuthRoutes from "./Components/AuthRoutes";
 import UserDashboardLayout from "./Components/Dashboard/UserDashboardLayout";
+import InterestGroupCreate from "./views/DashboardView/pages/InterestGroupCreate";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route path="learning-circles" element={<LearningCircles />} />
           <Route path="admin" element={<MuLearnAdmin />} />
+          <Route path="interest-group/create" element={<InterestGroupCreate />} />
         </Route>
       </Route>
     </Routes>

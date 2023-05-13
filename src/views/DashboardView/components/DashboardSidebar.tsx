@@ -7,8 +7,8 @@ import {
   AiFillPieChart,
   AiOutlineUser,
 } from "react-icons/ai";
-import MuSidebar from "../../../Components/MuCompenents/MuSidebar/MuSidebar";
-import SideBarItem from "../../../Components/MuCompenents/MuSidebar/SidebarItem";
+import MuSidebar from "../../../Components/MuComponents/MuSidebar/MuSidebar";
+import SideBarItem from "../../../Components/MuComponents/MuSidebar/SidebarItem";
 
 interface DashboardSidebarProps {
   setTitle: (title: string) => void;
@@ -23,7 +23,7 @@ export default function DashboardSidebar({ setTitle }: DashboardSidebarProps) {
   };
 
   return (
-    <MuSidebar >
+    <MuSidebar>
       {[
         {
           name: "Dashboard",
