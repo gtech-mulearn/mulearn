@@ -3,6 +3,14 @@
   min-height: 100vh;
 }
 
+.error_message {
+  color: red;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 5px;
+  text-align: left;
+}
+
 .login_page {
   transition: opacity 0.5s ease-in-out;
 }

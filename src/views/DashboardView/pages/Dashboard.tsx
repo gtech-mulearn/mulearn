@@ -24,6 +24,8 @@ import TBody from "../../../Components/MuComponents/Table/TBody";
 import TFooter from "../../../Components/MuComponents/Table/TFooter";
 import THead from "../../../Components/MuComponents/Table/THead";
 import TRow from "../../../Components/MuComponents/Table/TRow";
+import InputField from "../../../Components/MuComponents/InputField";
+import PrimaryButton from "../../../Components/MuComponents/PrimaryButton";
 
 const Dashboard = () => {
 

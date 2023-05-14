@@ -25,19 +25,19 @@ function App() {
     <Routes>
       {/* Public Routes */}
       <Route path="*" element={<p>404 Page not found</p>} />
-      <Route path="user/validate/:token" element={<Validate />} />
+      <Route path="/validate/:token" element={<Validate />} />
 
       <Route element={<AuthRoutes />}>
-        <Route path="user/register" element={<Onboarding />} />
-        <Route path="user/login" element={<Login />} />
-        <Route path="user/forgot-password" element={<ForgotPassword />} />
-        <Route path="user/reset-password" element={<ResetPassword />} />
+        <Route path="/register" element={<Onboarding />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
       </Route>
 
       {/* Private Routes */}
       <Route element={<PrivateRoutes />}>
         {/* user dashboard */}
-        <Route path="user" element={<UserDashboardLayout />}>
+        <Route path="/" element={<UserDashboardLayout />}>
           <Route index path="profile" element={<Profile />} />
           <Route path="connect-discord" element={<ConnectDiscord />} />
         </Route>
