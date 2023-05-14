@@ -4,6 +4,7 @@ import { useNavigate, NavigateFunction } from "react-router-dom";
 import {
   privateGateway,
   publicGateway,
+  publicGatewayAuth,
 } from "../../../../../services/apiGateways";
 import { authRoutes, dashboardRoutes } from "../../../../../services/urls";
 
@@ -16,7 +17,7 @@ export const forgetPassword = (
   toast: (options?: UseToastOptions | undefined) => ToastId,
   navigate: NavigateFunction
 ) => {
-  publicGateway
+  publicGatewayAuth
     .post(authRoutes.forgetPassword, { emailOrMuid })
     .then((response) => {
       toast({
@@ -46,7 +47,8 @@ export const login = (
   toast: (options?: UseToastOptions | undefined) => ToastId,
   navigate: NavigateFunction
 ) => {
-  publicGateway
+	publicGatewayAuth
+	// publicGateway
     .post(authRoutes.login, { emailOrMuid, password })
     .then((response) => {
       if (response.data.hasError == false) {
@@ -98,7 +100,8 @@ export const getMuid = (
   navigate: NavigateFunction,
   setMuID: setMuID
 ) => {
-  publicGateway
+	publicGatewayAuth
+	//publicGateway
     .post(authRoutes.getMuid.replace("${token}", token))
     .then((response) => {
       console.log(response.data);
@@ -132,7 +135,8 @@ export const resetPassword = (
   toast: (options?: UseToastOptions | undefined) => ToastId,
   navigate: NavigateFunction
 ) => {
-  publicGateway
+	publicGatewayAuth
+	// publicGateway
     .post(authRoutes.resetPassword.replace("${token}", token), { new_password })
     .then((response) => {
       if (response.data.statusCode === 200) {
@@ -168,7 +172,8 @@ export const requestEmailOrMuidOtp = (
   setHasError: setHasError,
   setStatus: setStatus
 ) => {
-  publicGateway
+	publicGatewayAuth
+	// publicGateway
     .post(authRoutes.requestEmailOrMuidOtp, { emailOrMuid })
     .then((response) => {
       setStatus(response.data.statusCode);
@@ -200,7 +205,8 @@ export const otpVerification = (
   toast: (options?: UseToastOptions | undefined) => ToastId,
   navigate: NavigateFunction
 ) => {
-  publicGateway
+	publicGatewayAuth
+	// publicGateway
     .post(authRoutes.otpVerification, { emailOrMuid, otp })
     .then((response) => {
       console.log(response.data);
