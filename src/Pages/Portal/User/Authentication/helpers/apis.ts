@@ -17,7 +17,8 @@ export const forgetPassword = (
   toast: (options?: UseToastOptions | undefined) => ToastId,
   navigate: NavigateFunction
 ) => {
-  publicGatewayAuth
+  // publicGatewayAuth
+  publicGateway
     .post(authRoutes.forgetPassword, { emailOrMuid })
     .then((response) => {
       toast({
@@ -28,7 +29,7 @@ export const forgetPassword = (
         isClosable: true,
       });
       setTimeout(() => {
-        navigate("/user/login");
+        navigate("/login");
       }, 5000);
     })
     .catch((error) => {
@@ -47,8 +48,8 @@ export const login = (
   toast: (options?: UseToastOptions | undefined) => ToastId,
   navigate: NavigateFunction
 ) => {
-	publicGatewayAuth
-	// publicGateway
+	// publicGatewayAuth
+	publicGateway
     .post(authRoutes.login, { emailOrMuid, password })
     .then((response) => {
       if (response.data.hasError == false) {
@@ -74,9 +75,9 @@ export const login = (
               JSON.stringify(response.data.response)
             );
             if (response.data.response.exist_in_guild) {
-              navigate("/user/profile");
+              navigate("/profile");
             } else {
-              navigate("/user/connect-discord");
+              navigate("/connect-discord");
             }
           })
           .catch((error) => {
@@ -100,8 +101,8 @@ export const getMuid = (
   navigate: NavigateFunction,
   setMuID: setMuID
 ) => {
-	publicGatewayAuth
-	//publicGateway
+	// publicGatewayAuth
+	publicGateway
     .post(authRoutes.getMuid.replace("${token}", token))
     .then((response) => {
       console.log(response.data);
@@ -124,19 +125,19 @@ export const getMuid = (
       });
 
       setTimeout(() => {
-        navigate("/user/forgot-password");
+        navigate("/forgot-password");
       }, 5000);
     });
 };
 
 export const resetPassword = (
   token: string,
-  new_password: string,
+  password: string,
   toast: (options?: UseToastOptions | undefined) => ToastId,
   navigate: NavigateFunction
 ) => {
-	publicGatewayAuth
-	// publicGateway
+	// publicGatewayAuth
+	publicGateway
     .post(authRoutes.resetPassword.replace("${token}", token), { new_password })
     .then((response) => {
       if (response.data.statusCode === 200) {
@@ -148,7 +149,7 @@ export const resetPassword = (
           isClosable: true,
         });
         setTimeout(() => {
-          navigate("/user/login");
+          navigate("/login");
         }, 4000);
       }
     })
@@ -161,7 +162,7 @@ export const resetPassword = (
         isClosable: true,
       });
       setTimeout(() => {
-        navigate("/user/forgot-password");
+        navigate("/forgot-password");
       }, 4000);
     });
 };
@@ -172,8 +173,8 @@ export const requestEmailOrMuidOtp = (
   setHasError: setHasError,
   setStatus: setStatus
 ) => {
-	publicGatewayAuth
-	// publicGateway
+	// publicGatewayAuth
+	publicGateway
     .post(authRoutes.requestEmailOrMuidOtp, { emailOrMuid })
     .then((response) => {
       setStatus(response.data.statusCode);
@@ -205,8 +206,8 @@ export const otpVerification = (
   toast: (options?: UseToastOptions | undefined) => ToastId,
   navigate: NavigateFunction
 ) => {
-	publicGatewayAuth
-	// publicGateway
+	// publicGatewayAuth
+	publicGateway
     .post(authRoutes.otpVerification, { emailOrMuid, otp })
     .then((response) => {
       console.log(response.data);
@@ -230,9 +231,9 @@ export const otpVerification = (
             JSON.stringify(response.data.response)
           );
           if (response.data.response.exist_in_guild) {
-            navigate("/user/profile");
+            navigate("/profile");
           } else {
-            navigate("/user/connect-discord");
+            navigate("/connect-discord");
           }
         })
         .catch((error) => {

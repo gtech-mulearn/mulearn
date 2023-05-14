@@ -91,12 +91,12 @@ const SideNavBar = () => {
                 text="Profile"
                 icon={<i className="fi fi-sr-clipboard-user"></i>}
                 style={
-                  window.location.pathname === "/user/profile" || connected
+                  window.location.pathname === "/profile" || connected
                     ? { background: "#014BB2", color: "#fff" }
                     : {}
                 }
                 onClick={() => {
-                  navigate("/user/profile");
+                  navigate("/profile");
                 }}
               />
               {!connected && (
@@ -104,12 +104,12 @@ const SideNavBar = () => {
                   text="Connect Discord"
                   icon={<i className="fi fi-sr-data-transfer"></i>}
                   style={
-                    window.location.pathname === "/user/connect-discord"
+                    window.location.pathname === "/connect-discord"
                       ? { background: "#014BB2", color: "#fff" }
                       : {}
                   }
                   onClick={() => {
-                    navigate("/user/connect-discord");
+                    navigate("/connect-discord");
                   }}
                 />
               )}
