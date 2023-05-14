@@ -22,3 +22,9 @@
 	border-top: 1px solid rgba(1, 75, 178, .5);
 	color: rgba(1, 75, 178, 1);
 }
+
+.page {
+	border-top: 1px solid rgba(1, 75, 178, .5);
+	width: 100%;
+	padding: 0 20px;
+}
