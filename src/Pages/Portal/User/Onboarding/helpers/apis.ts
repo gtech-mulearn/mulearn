@@ -154,7 +154,7 @@ export const registerUser = (
       console.log(response);
       localStorage.setItem("accessToken", response.data.response.accessToken);
       localStorage.setItem("refreshToken", response.data.response.refreshToken);
-      navigate("/user/connect-discord");
+      navigate("/connect-discord");
     })
     .catch(function (error) {
       if (

@@ -44,8 +44,8 @@ const Onboarding = (props: Props) => {
   const [opacity2, setOpacity2] = useState(1);
   const [emailVerificationResultBtn, setEmailVerificationResultBtn] =
     useState("Verify");
-  const [firstQuesion, setFirstQuesion] = useState(false);
-  const [secondQuesion, setSecondQuesion] = useState(false);
+  const [firstQuestion, setFirstQuestion] = useState(false);
+  const [secondQuestion, setSecondQuestion] = useState(false);
   //Getting the token from the URL
   const token = queryParameters.get("id");
 
@@ -88,6 +88,7 @@ const Onboarding = (props: Props) => {
   const [roleAPI, setRoleAPI] = useState([{ id: "", title: "" }]);
   //State Array for storing the Area of Interest Options
   const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }]);
+  const [showOrHidePassword, setShowOrHidePassword] = useState("password");
 
   const customStyles = {
     control: (provided: any) => ({
@@ -145,21 +146,21 @@ const Onboarding = (props: Props) => {
     getRoles(errorHandler, setRoleAPI);
   }, []);
 
-  // formik
   const [backendError, setBackendError] = useState<BackendErrors>({});
-
+  
   const handleBackendErrors = (errors: BackendErrors) => {
     // console.log(errors);
-
+    
     const formattedErrors: BackendErrors = {};
     Object.entries(errors).forEach(([fieldName, errorMessages]) => {
       formattedErrors[fieldName] = errorMessages;
     });
     // console.log(formattedErrors);
-
+    
     setBackendError(formattedErrors);
   };
-
+  
+  // formik
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -287,7 +288,15 @@ const Onboarding = (props: Props) => {
               >
                 <div className={styles.question_box}>
                   <div className={styles.question}>
-                    <h3>Please verify your email</h3>
+                    <h3
+                      style={
+                        emailVerificationResultBtn === "Login"
+                          ? { backgroundColor: "#9719CD" }
+                          : {}
+                      }
+                    >
+                      Please verify your email
+                    </h3>
                     <div className={styles.answers}>
                       <form className={styles.verify_email}>
                         <input
@@ -314,7 +323,7 @@ const Onboarding = (props: Props) => {
                               ) {
                                 emailVerification(
                                   formik.values.email,
-                                  setFirstQuesion,
+                                  setFirstQuestion,
                                   formik,
                                   setEmailVerificationResultBtn,
                                   setOpacity0,
@@ -322,12 +331,12 @@ const Onboarding = (props: Props) => {
                                 );
                               }
                             } else {
-                              navigate("/user/login");
+                              navigate("/login");
                             }
                           }}
                           style={
                             emailVerificationResultBtn === "Login"
-                              ? { backgroundColor: "#6af155" }
+                              ? { backgroundColor: "#9719CD" }
                               : {}
                           }
                         >
@@ -339,7 +348,7 @@ const Onboarding = (props: Props) => {
                 </div>
               </div>
 
-              {firstQuesion ? (
+              {firstQuestion ? (
                 <div
                   style={{ display: display, opacity: opacity }}
                   className={styles.question_container}
@@ -366,7 +375,7 @@ const Onboarding = (props: Props) => {
                         <button
                           onClick={() => {
                             setOpacity(0);
-                            setSecondQuesion(true);
+                            setSecondQuestion(true);
                             setTimeout(() => {
                               setDisplay("none");
                             }, 1000);
@@ -393,7 +402,7 @@ const Onboarding = (props: Props) => {
                         <button
                           onClick={() => {
                             setOpacity(0);
-                            setSecondQuesion(true);
+                            setSecondQuestion(true);
                             setTimeout(() => {
                               setDisplay("none");
                             }, 1000);
@@ -417,7 +426,7 @@ const Onboarding = (props: Props) => {
                 </div>
               ) : null}
               {/*2nd question if the user is working prof. or freelancer  */}
-              {secondQuesion ? (
+              {secondQuestion ? (
                 <div
                   style={{ display: display2, opacity: opacity2 }}
                   className={styles.question_container}
@@ -559,7 +568,7 @@ const Onboarding = (props: Props) => {
                       </label>
                       <input
                         id="password"
-                        type="password"
+                        type={showOrHidePassword}
                         name="password"
                         placeholder="Password"
                         className={styles.input}
@@ -567,6 +576,21 @@ const Onboarding = (props: Props) => {
                         onChange={formik.handleChange}
                         value={formik.values.password}
                       />
+                      <button
+                        className={styles.password_icon}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          showOrHidePassword == "password"
+                            ? setShowOrHidePassword("text")
+                            : setShowOrHidePassword("password");
+                        }}
+                      >
+                        {showOrHidePassword === "text" ? (
+                          <i className="fi fi-sr-eye"></i>
+                        ) : (
+                          <i className="fi fi-sr-eye-crossed"></i>
+                        )}
+                      </button>
                       {formik.touched.password && formik.errors.password ? (
                         <div className={styles.error_message}>
                           {formik.errors.password}
@@ -579,7 +603,7 @@ const Onboarding = (props: Props) => {
                         <span className={styles.required}>*</span>
                       </label>
                       <input
-                        type="password"
+                        type={showOrHidePassword}
                         name="confirmPassword"
                         placeholder="Confirm password"
                         className={styles.input}
@@ -587,6 +611,21 @@ const Onboarding = (props: Props) => {
                         onChange={formik.handleChange}
                         value={formik.values.confirmPassword}
                       />
+                      <button
+                        className={styles.password_icon}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          showOrHidePassword == "password"
+                            ? setShowOrHidePassword("text")
+                            : setShowOrHidePassword("password");
+                        }}
+                      >
+                        {showOrHidePassword === "text" ? (
+                          <i className="fi fi-sr-eye"></i>
+                        ) : (
+                          <i className="fi fi-sr-eye-crossed"></i>
+                        )}
+                      </button>
                       {formik.touched.confirmPassword &&
                       formik.errors.confirmPassword ? (
                         <div className={styles.error_message}>

@@ -4,17 +4,18 @@ import Eye from "./assets/Eye";
 import styles from "./Login.module.css";
 import { Button, useToast } from "@chakra-ui/react";
 import { getMuid, resetPassword } from "./helpers/apis";
+import { useFormik } from "formik";
 
 type Props = {};
 
-//TODO: Add Error Handling 
+//TODO: Add Error Handling
 //TOOD: Login => Reset Password Mail(Message: Mail Ayichiund) => Reset Password Page => Reset Password => Login Page
 
 const ResetPassword = (props: Props) => {
   const [showOrHidePassword, setShowOrHidePassword] = useState("password");
   const [muid, setMuID] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
   const [searchParams] = useSearchParams();
   const [token, setToken] = useState("");
 
@@ -30,13 +31,52 @@ const ResetPassword = (props: Props) => {
     }
   }, [token]);
 
+  // formik
+  const initialValues = {
+    email: "",
+    password: "",
+    confirmPassword: "",
+  };
+
+  const onSubmit = async (values: any) => {
+    resetPassword(token, values.password, toast, navigate);
+  };
+
+  const validate = (values: any) => {
+    let errors: any = {};
+    if (!values.email) {
+      errors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+      errors.email = "Invalid email address";
+    }
+    if (!values.password) {
+      errors.password = "Password is required";
+    } else if (values.password == "") {
+      errors.password = "Password should not be empty";
+    }
+    if (!values.confirmPassword) {
+      errors.confirmPassword = "Please confirm your password";
+    } else if (
+      values.confirmPassword == "" ||
+      values.password != values.confirmPassword
+    ) {
+      errors.confirmPassword = "Password does not match";
+    }
+    return errors;
+  };
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+    validate,
+  });
+
   return (
     <div className={styles.login_page}>
       <div className={styles.login_container}>
         <div className={styles.login_form}>
           <h1>Reset Password</h1>
           <p className={styles.p_welcome}>
-            Choose a new, strong password to keep your information securee
+            Choose a new, strong password to keep your information securer
           </p>
           <form>
             <input
@@ -51,9 +91,16 @@ const ResetPassword = (props: Props) => {
                 type={showOrHidePassword}
                 placeholder="Enter new password"
                 required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                name="password"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                value={formik.values.password}
               />
+              {formik.touched.password && formik.errors.password ? (
+                <div className={styles.error_message}>
+                  {formik.errors.password}
+                </div>
+              ) : null}
               <button
                 className={styles.password_icon}
                 onClick={(e) => {
@@ -63,7 +110,11 @@ const ResetPassword = (props: Props) => {
                     : setShowOrHidePassword("password");
                 }}
               >
-                <Eye />
+                {showOrHidePassword === "text" ? (
+                  <i className="fi fi-sr-eye"></i>
+                ) : (
+                  <i className="fi fi-sr-eye-crossed"></i>
+                )}
               </button>
             </div>
             <div className={styles.password_div}>
@@ -71,9 +122,17 @@ const ResetPassword = (props: Props) => {
                 type={showOrHidePassword}
                 placeholder="Re-enter your new password"
                 required
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
+                name="confirmPassword"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                value={formik.values.confirmPassword}
               />
+              {formik.touched.confirmPassword &&
+              formik.errors.confirmPassword ? (
+                <div className={styles.error_message}>
+                  {formik.errors.confirmPassword}
+                </div>
+              ) : null}
               <button
                 className={styles.password_icon}
                 onClick={(e) => {
@@ -83,7 +142,11 @@ const ResetPassword = (props: Props) => {
                     : setShowOrHidePassword("password");
                 }}
               >
-                <Eye />
+                {showOrHidePassword === "text" ? (
+                  <i className="fi fi-sr-eye"></i>
+                ) : (
+                  <i className="fi fi-sr-eye-crossed"></i>
+                )}
               </button>
             </div>
             <br />
@@ -91,13 +154,7 @@ const ResetPassword = (props: Props) => {
             <button
               onClick={(e) => {
                 e.preventDefault();
-                if (
-                  password == confirmPassword &&
-                  password.length > 0 &&
-                  confirmPassword.length > 0
-                ) {
-                  resetPassword(token, password, toast, navigate);
-                }
+                onSubmit(formik.values);
               }}
               type="submit"
             >

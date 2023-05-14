@@ -206,8 +206,18 @@ form .inputs .input_container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-}
 
+  position: relative;
+}
+form .inputs .input_container .password_icon {
+  position: absolute;
+  right: 20px;
+  top: 34px;
+  cursor: pointer;
+  background: none;
+  padding: 14px 0px;
+  min-width: unset;
+}
 form .input_container .grouped_inputs {
   display: flex;
   justify-content: space-between;

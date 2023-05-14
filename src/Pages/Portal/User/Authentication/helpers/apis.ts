@@ -27,7 +27,7 @@ export const forgetPassword = (
         isClosable: true,
       });
       setTimeout(() => {
-        navigate("/user/login");
+        navigate("/login");
       }, 5000);
     })
     .catch((error) => {
@@ -72,9 +72,9 @@ export const login = (
               JSON.stringify(response.data.response)
             );
             if (response.data.response.exist_in_guild) {
-              navigate("/user/profile");
+              navigate("/profile");
             } else {
-              navigate("/user/connect-discord");
+              navigate("/connect-discord");
             }
           })
           .catch((error) => {
@@ -121,19 +121,19 @@ export const getMuid = (
       });
 
       setTimeout(() => {
-        navigate("/user/forgot-password");
+        navigate("/forgot-password");
       }, 5000);
     });
 };
 
 export const resetPassword = (
   token: string,
-  new_password: string,
+  password: string,
   toast: (options?: UseToastOptions | undefined) => ToastId,
   navigate: NavigateFunction
 ) => {
   publicGateway
-    .post(authRoutes.resetPassword.replace("${token}", token), { new_password })
+    .post(authRoutes.resetPassword.replace("${token}", token), { password })
     .then((response) => {
       if (response.data.statusCode === 200) {
         toast({
@@ -144,7 +144,7 @@ export const resetPassword = (
           isClosable: true,
         });
         setTimeout(() => {
-          navigate("/user/login");
+          navigate("/login");
         }, 4000);
       }
     })
@@ -157,7 +157,7 @@ export const resetPassword = (
         isClosable: true,
       });
       setTimeout(() => {
-        navigate("/user/forgot-password");
+        navigate("/forgot-password");
       }, 4000);
     });
 };
@@ -224,9 +224,9 @@ export const otpVerification = (
             JSON.stringify(response.data.response)
           );
           if (response.data.response.exist_in_guild) {
-            navigate("/user/profile");
+            navigate("/profile");
           } else {
-            navigate("/user/connect-discord");
+            navigate("/connect-discord");
           }
         })
         .catch((error) => {
