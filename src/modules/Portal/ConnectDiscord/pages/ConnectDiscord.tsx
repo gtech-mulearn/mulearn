@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ConnectDiscord.module.css";
-import cdimage from "../assets/connectdiscordpng1.png";
+import cdimage from "../assets/images/connectdiscordpng1.png";
 import { getInfo } from "../services/apis";
 
 import { useToast } from "@chakra-ui/react";
