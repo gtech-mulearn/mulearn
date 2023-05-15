@@ -116,6 +116,14 @@
   margin-top: 40px;
 }
 
+.form_container .question_container .question_box .question .answers a {
+  font-weight: 500;
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+}
+
 .form_container .question_container .question_box .question .answers .verify_email button {
   width: 100%;
   background-color: #5570f1;
@@ -126,6 +134,7 @@
   margin-top: 10px;
   text-align: center;
 }
+
 .form_container .question_container .question_box .question .answers button {
   width: 100%;
   /* background-color: #5570f1; */
@@ -209,6 +218,7 @@ form .inputs .input_container {
 
   position: relative;
 }
+
 form .inputs .input_container .password_icon {
   position: absolute;
   right: 20px;
@@ -218,6 +228,7 @@ form .inputs .input_container .password_icon {
   padding: 14px 0px;
   min-width: unset;
 }
+
 form .input_container .grouped_inputs {
   display: flex;
   justify-content: space-between;
@@ -308,7 +319,7 @@ form .form_buttons button[type="reset"] {
   flex-direction: column;
   /* width: 100vw; */
   height: 100vh;
-  margin:0rem 2rem;
+  margin: 0rem 2rem;
   text-align: center;
   background-color: #e8f3f7;
 }

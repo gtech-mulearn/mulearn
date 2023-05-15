@@ -67,7 +67,7 @@ const Login = () => {
                   Forgot your <b>password?</b>
                 </a>
                 <a href="register">
-                  <b>SignUp?</b>
+                  <b>Sign up?</b>
                 </a>
               </p>
               <p className={styles.otp_link}>
