@@ -1,5 +1,5 @@
-import { publicGateway } from "../../../../../services/apiGateways";
-import { onboardingRoutes } from "../../../../../services/urls";
+import { publicGateway } from "../../../../../oldsrc/src/services/apiGateways";
+import { onboardingRoutes } from "../../../../../oldsrc/src/services/urls";
 import { Dispatch, SetStateAction } from "react";
 import { NavigateFunction } from "react-router-dom";
 

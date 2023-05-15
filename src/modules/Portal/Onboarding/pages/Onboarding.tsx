@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import styles from "./Onboarding.module.css";
 type Props = {};
 import ReactSelect from "react-select";
-import Error from "./assets/Error";
-import Success from "./Success";
+import Error from "../components/Error";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-import Looder from "./assets/Looder";
 import { useFormik } from "formik";
 
 import {
@@ -17,7 +15,7 @@ import {
   getRoles,
   registerUser,
   emailVerification,
-} from "./helpers/apis";
+} from "../services/apis";
 import { useNavigate } from "react-router-dom";
 
 const animatedComponents = makeAnimated();
