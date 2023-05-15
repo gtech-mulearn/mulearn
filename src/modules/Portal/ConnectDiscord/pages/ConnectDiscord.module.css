@@ -206,25 +206,25 @@
 .onboarding_flow_container .content .onboarding_flow .box {
   left: 0;
   top: 30px;
-  background-image: url(./assets/images/onboardingflow1.png);
+  background-image: url(../assets/onboardingflow1.png);
 }
 
 .onboarding_flow_container .content .onboarding_flow .box2 {
   right: 0;
   top: 35%;
-  background-image: url(./assets/images/onboardingflow2.png);
+  background-image: url(./assets/onboardingflow2.png);
 }
 
 .onboarding_flow_container .content .onboarding_flow .box3 {
   left: 0px;
   top: 65%;
-  background-image: url(./assets/images/onboardingflow3.png);
+  background-image: url(./assets/onboardingflow3.png);
 }
 
 .onboarding_flow_container .content .onboarding_flow .box4 {
   right: 50px;
   top: 100%;
-  background-image: url(./assets/images/onboardingflow4.png);
+  background-image: url(./assets/onboardingflow4.png);
 }
 
 /* responsive */
