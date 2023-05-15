@@ -79,8 +79,8 @@ const SideNavBar = () => {
             <MulearnBrand />
           </div>
           <div className={styles.side_nav_bar_items}>
-            {/* <MuButton text="Home" icon={<i className="fi fi-sr-home"></i>} />
-                <MuButton text="Team" icon={<i className="fi fi-sr-address-book"></i>} />
+            {/* <MuButton text="Home" icon={<i className="fi fi-sr-home"></i>} /> */}
+                {/* <MuButton text="Team" icon={<i className="fi fi-sr-address-book"></i>} />
                 <MuButton text="Management" icon={<i className="fi fi-sr-layout-fluid"></i>} />
                 <MuButton text="Projects" icon={<i className="fi fi-sr-book-arrow-right"></i>} />
                 <MuButton text="Tasks" icon={<i className="fi fi-sr-box"></i>} />

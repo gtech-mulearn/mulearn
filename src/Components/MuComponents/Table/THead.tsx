@@ -10,10 +10,7 @@ const THead = (props: Props) => {
                 <th
                     key={index}
                     style={{
-                        padding: "12px 16px",
-                        textAlign: "left",
-                        fontWeight: 600,
-                        color: "rgba(1, 75, 178, 1)",
+                        
                     }}
                 >
                     {column}

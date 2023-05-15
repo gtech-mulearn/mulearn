@@ -23,7 +23,7 @@ export default function DashboardSidebar({ setTitle }: DashboardSidebarProps) {
   };
 
   return (
-    <MuSidebar >
+    <MuSidebar>
       {[
         {
           name: "Dashboard",
