@@ -5,8 +5,8 @@ import {
   privateGateway,
   publicGateway,
   publicGatewayAuth,
-} from "../../../../../services/apiGateways";
-import { authRoutes, dashboardRoutes } from "../../../../../services/urls";
+} from "../../../../../oldsrc/src/services/apiGateways";
+import { authRoutes, dashboardRoutes } from "../../../../../oldsrc/src/services/urls";
 
 type setMuID = React.Dispatch<React.SetStateAction<string>>;
 type setStatus = React.Dispatch<React.SetStateAction<number>>;
