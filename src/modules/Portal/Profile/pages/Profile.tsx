@@ -1,6 +1,6 @@
 import styles from "./Profile.module.css";
 
-import SideNavBar from "../../../../Components/Dashboard/SideNavBar";
+import SideNavBar from "../../../../../oldsrc/src/Components/Dashboard/SideNavBar";
 
 const Profile = () => {
   return (

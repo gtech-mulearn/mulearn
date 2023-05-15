@@ -1,9 +1,5 @@
-import Table from "../../../../Components/MuComponents/Table/Table";
-import THead from "../../../../Components/MuComponents/Table/THead";
-import TBody from "../../../../Components/MuComponents/Table/TBody";
-import TRow from "../../../../Components/MuComponents/Table/TRow";
-import TableChat from "../../../../Components/MuComponents/Table/TableChat";
-import styles from "../../../../Components/MuComponents/Table/table.module.css";
+
+import TableChat from "../../../../components/MuComponents/Table/TableChat";
 type Data = {
   id: number;
   name: string;

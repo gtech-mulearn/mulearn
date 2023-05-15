@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styles from "./table.module.css";
-import Pagination from "../../../Components/MuComponents/Pagination";
+import Pagination from "../Pagination";
 
 type Data = {
   id: number;

@@ -7,9 +7,6 @@ import { useFormik } from "formik";
 
 type Props = {};
 
-//TODO: Add Error Handling
-//TOOD: Login => Reset Password Mail(Message: Mail Ayichiund) => Reset Password Page => Reset Password => Login Page
-
 const ResetPassword = (props: Props) => {
     const [showOrHidePassword, setShowOrHidePassword] = useState("password");
     const [muid, setMuID] = useState("");
