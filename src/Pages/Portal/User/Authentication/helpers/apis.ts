@@ -136,9 +136,8 @@ export const resetPassword = (
   toast: (options?: UseToastOptions | undefined) => ToastId,
   navigate: NavigateFunction
 ) => {
-	// publicGatewayAuth
 	publicGateway
-    .post(authRoutes.resetPassword.replace("${token}", token), { new_password })
+    .post(authRoutes.resetPassword.replace("${token}", token), { password })
     .then((response) => {
       if (response.data.statusCode === 200) {
         toast({
