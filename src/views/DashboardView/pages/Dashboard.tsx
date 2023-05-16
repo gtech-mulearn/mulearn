@@ -19,7 +19,6 @@ import { BsFillPencilFill, BsFilterLeft, BsSearch } from "react-icons/bs";
 import CustomBtn from "../../../Components/CustomBtn";
 import Pagination from "../../../Components/MuComponents/Pagination";
 import Table from "../../../Components/MuComponents/Table/Table";
-import TBody from "../../../Components/MuComponents/Table/TBody";
 import TFooter from "../../../Components/MuComponents/Table/TFooter";
 import THead from "../../../Components/MuComponents/Table/THead";
 import TRow from "../../../Components/MuComponents/Table/TRow";
@@ -92,11 +91,11 @@ const Dashboard = () => {
           />
         </div>
       </div>
-      <Table margin="16px 0">
+      {/* <Table margin="16px 0">
         <THead columns={["Name", "Age", "DOB", "Position", "District"]} />
-        <TBody>
+        <TBody> */}
           {/* generate some row usng loop */}
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, index) => (
+          {/* {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, index) => (
             <TRow
               key={index}
               data={[
@@ -111,7 +110,7 @@ const Dashboard = () => {
             />
           ))}
         </TBody>
-      </Table>
+      </Table> */}
       <Pagination currentPage={1} totalPages={10} margin="16px 0" />
     </>
   );

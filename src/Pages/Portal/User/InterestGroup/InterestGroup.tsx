@@ -1,22 +1,13 @@
-import Table from "../../../../Components/MuComponents/Table/Table";
+import Pagination from "../../../../Components/MuComponents/Pagination";
+import { Blank } from "../../../../Components/MuComponents/Table/Blank";
 import THead from "../../../../Components/MuComponents/Table/THead";
-import TBody from "../../../../Components/MuComponents/Table/TBody";
-import TRow from "../../../../Components/MuComponents/Table/TRow";
-import TableChat from "../../../../Components/MuComponents/Table/TableChat";
-import styles from "../../../../Components/MuComponents/Table/table.module.css";
+import Table from "../../../../Components/MuComponents/Table/Table";
+
 type Data = {
   id: number;
   name: string;
   description: string;
   type?:string
-};
-
-type THeadProps = {
-  columns: string[];
-};
-
-type TRowProps = {
-  data: Data[];
 };
 
 function InterestGroup() {
@@ -35,7 +26,11 @@ function InterestGroup() {
 
   return (
     <>
-			<TableChat columns={columns} rows={data} />    
+			<Table rows={data} >
+				<THead columns={columns} />
+				<Pagination currentPage={1} totalPages={10} margin="10px 0" />
+				{/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+			</Table>    
 		</>
   );
 }
