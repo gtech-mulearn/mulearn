@@ -5,9 +5,9 @@ import SideNavBar from "../SideNavBar";
 import TopNavBar from "../TopNavBar";
 import { useEffect, useState } from "react";
 
-import adminButtons from "../userwise_buttons_data/admin_buttons";
-import companyButtons from "../userwise_buttons_data/company_buttons";
-import userButtons from "../userwise_buttons_data/user_buttons";
+import adminButtons from "../userwiseButtonsData/adminButtons";
+import companyButtons from "../userwiseButtonsData/companyButtons";
+import userButtons from "../userwiseButtonsData/userButtons";
 
 const DashboardRootLayout = (props: { component?: any }) => {
   // const [opacity, setOpacity] = useState(null);
