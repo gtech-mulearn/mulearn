@@ -34,7 +34,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
         <table className={styles.tableActual}>
 					{props.children?.[0]}
           <tbody>
-            {props.rows.map((row: any, index: number) => (
+            {props.rows?.map((row: any, index: number) => (
               <tr key={index}>
                 {Object.keys(row).map((key: string) => (
                   <td className={styles.td} key={`${row.id}-${key}`}>

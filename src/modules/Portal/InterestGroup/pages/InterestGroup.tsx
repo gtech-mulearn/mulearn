@@ -1,66 +1,47 @@
 import Pagination from "../../../../Components/MuComponents/Pagination";
 import THead from "../../../../Components/MuComponents/Table/THead";
 import Table from "../../../../Components/MuComponents/Table/Table";
-import { privateGateway } from "../../../../services/apiGateways";
-
-type Data = {
-  id: number;
-  name: string;
-  description: string;
-  type?:string
-};
+import { useEffect, useState } from "react";
+import { getInterestGroups } from "../services/apis";
 
 function InterestGroup() {
-  const data: Data[] = [
-    { id: 1, name: 'Item 1', description: 'This is item 1', type: 'jenin'},
-    { id: 2, name: 'Item 2', description: 'This is item 2', type: 'jenin'},
-    { id: 3, name: 'Item 3', description: 'This is item 3', type: 'jenin'}
-  ];
+
+	const [data, setData] = useState<any[]>([])
+	const [currentPage, setCurrentPage] = useState(1)
+	const [totalPages, setTotalPages] = useState(1)
 
   const columns = [
-    'HEAD1',
-    'HEAD2',
-    'HEAD3',
-    'HEAD4'
+    'ID',
+    'NAME',
+		'Updated By',
+		'Updated On',
+    'Created By',
+    'Created On',
   ];
 
-	const IG_GET_URL = '/api/v1/dashboard/ig/'
+	const handleNextClick = () => {
+		const nextPage = currentPage + 1
+		setCurrentPage(nextPage)
+		getInterestGroups(setData, nextPage)
+	}
 
-	// const getInterestGroups = async () => {
-	// 	try {
-	// 		const response = await privateGateway.get(IG_GET_URL,
-	// 				{
-	// 					headers: { 
-	// 						'Content-Type': 'application/json',
-	// 						'Authorization': 'Bearer ' + access
-	// 					}
-	// 				}
-	// 		);
-	// 		const todo:any = (response?.data)
-	// 		console.log(todo)
-	// 		setTasks(todo);
-		
-	// 	} 
-	// 	catch (err: unknown) {
-	// 		const error = err as AxiosError;
-	// 		if (error?.response) {
-	// 			console.log(error.response)
-	// 			//notify3();
-	// 		}
-	// 	}
-	// }
+	const handlePreviousClick = () => {
+		const prevPage = currentPage - 1
+		setCurrentPage(prevPage)
+		getInterestGroups(setData, prevPage)
+	}
 
-
-
-
+	useEffect(() => {
+		getInterestGroups(setData, 1 , setTotalPages);
+	}, []);
 
   return (
     <>
-			<Table rows={data} >
+			{data && <Table rows={data} >
 				<THead columns={columns} />
-				<Pagination currentPage={1} totalPages={10} margin="10px 0" />
+				<Pagination currentPage={currentPage} totalPages={totalPages} margin="10px 0" handleNextClick = {handleNextClick} handlePreviousClick = {handlePreviousClick} />
 				{/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-			</Table>    
+			</Table> }   
 		</>
   );
 }
