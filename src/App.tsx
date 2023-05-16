@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, RouterProvider, Routes, createBrowserRouter } from "react-router-dom";
 import AuthRoutes from "./components/AuthRoutes";
 import Onboarding from "./modules/Portal/Onboarding/pages/Onboarding";
 import Login from "./modules/Portal/Authentication/pages/Login";
@@ -10,33 +10,43 @@ import UserDashboardLayout from "./components/Dashboard/UserDashboardLayout";
 import Profile from "./modules/Portal/Profile/pages/Profile";
 import ConnectDiscord from "./modules/Portal/ConnectDiscord/pages/ConnectDiscord";
 import InterestGroup from "./modules/Portal/InterestGroup/pages/InterestGroup";
+import NotFound from "./components/NotFound";
+
+const router = createBrowserRouter([
+    {
+        path: "*",
+        element: <NotFound />,
+    },
+    {
+        path: "/",
+        element: <AuthRoutes />,
+        children: [
+            { path: "register", element: <Onboarding /> },
+            { path: "login", element: <Login /> },
+            { path: "forgot-password", element: <ForgotPassword /> },
+            { path: "reset-password", element: <ResetPassword /> },
+        ],
+    },
+    {
+        path: "/",
+        element: <PrivateRoutes />,
+        children: [
+            {
+                path: "/",
+                element: <UserDashboardLayout />,
+                children: [
+                    { path: "profile", element: <Profile /> },
+                    { path: "connect-discord", element: <ConnectDiscord /> },
+                    { path: "interest-groups", element: <InterestGroup /> },
+                ],
+            },
+            // { path: "admin", element: <AdminDashboardLayout /> },
+        ],
+    },
+]);
 
 function App() {
-    return (
-        <Routes>
-            {/* Public Routes */}
-            <Route path="*" element={<p>404 Page not found</p>} />
-
-            <Route element={<AuthRoutes />}>
-                <Route path="/register" element={<Onboarding />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/forgot-password" element={<ForgotPassword />} />
-                <Route path="/reset-password" element={<ResetPassword />} />
-            </Route>
-
-            {/* Private Routes */}
-            <Route element={<PrivateRoutes />}>
-                {/* user dashboard */}
-                <Route path="/" element={<UserDashboardLayout />}>
-                    <Route index path="profile" element={<Profile />} />
-                    <Route path="connect-discord" element={<ConnectDiscord />}
-                />
-                    <Route path="interest-groups" element={<InterestGroup />} />
-                </Route>
-                {/* Dashboard */}
-            </Route>
-        </Routes>
-    );
+    return <RouterProvider router={router} />;
 }
 
 export default App;
