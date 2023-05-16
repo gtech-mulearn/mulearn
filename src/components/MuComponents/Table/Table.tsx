@@ -1,22 +1,56 @@
-import { border } from "@chakra-ui/react"
+import React, { FC } from "react";
+import styles from "./table.module.css";
 
-type Props = {
-    children: React.ReactNode
-    margin?: string
+type Data = {
+  id: number;
+  name: string;
+  description: string;
+};
+
+interface HeaderProps {
+  columns: string[];
 }
 
-const Table = (props: Props) => {
-    return (
-        <div style={{
-            borderRadius: "10px",
-            overflow: "clip",
-            border: "1px solid rgba(1, 75, 178, .5)",
-            width: "100%",
-            margin: props.margin ? props.margin : "0",
-        }}>
-            <table width="100%" >{props.children}</table>
+type FooterProps = {
+	handlePreviousClick?: () => void
+	handleNextClick?: () => void
+	currentPage: number
+	totalPages: number
+	margin?: string
+}
+
+type TableProps = {
+  rows: Data[];
+	children?: [React.ReactElement<HeaderProps>?, React.ReactElement<FooterProps>?, React.ReactElement?]
+};
+
+{/* IMPORTANT NOTE
+use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+
+const Table: FC<TableProps> = (props: TableProps) => {
+  return (
+    <>
+      <div className={styles.table}>
+        <table className={styles.tableActual}>
+					{props.children?.[0]}
+          <tbody>
+            {props.rows?.map((row: any, index: number) => (
+              <tr key={index}>
+                {Object.keys(row).map((key: string) => (
+                  <td className={styles.td} key={`${row.id}-${key}`}>
+                    {row[key]}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div className={styles.page}>
+					{props.children?.[1]}
         </div>
-    )
-}
+      </div>
+    </>
+  );
+};
 
-export default Table
+export default Table;
