@@ -1,0 +1,402 @@
+.connect_discord_container {
+  width: 90%;
+  /* padding: 20px 30px; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  background: #f3f8ff;
+  border: 1px solid #dde2e5;
+  border-radius: 20px;
+}
+
+.connect_discord_container .content {
+  padding: 40px 20px;
+}
+
+.connect_discord_container h1 {
+  font-size: 35px;
+  font-weight: 700;
+}
+
+.connect_discord_container .content .muid_and_btn {
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content_tagline {
+  font-size: 1rem;
+  max-width: 30rem;
+  font-weight: 500;
+  color: #014bb2;
+  margin-bottom: 20px;
+  margin: auto;
+}
+
+.connect_discord_container .muid_and_btn p {
+  font-size: 15px;
+  font-weight: 500;
+  display: flex;
+  text-align: center;
+  background: #ccdbf0;
+  padding: 10px 20px;
+  border-radius: 10px;
+  align-items: center;
+  margin: 10px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.connect_discord_container .muid_and_btn p:hover {
+  background: #a9c8f3;
+}
+
+.connect_discord_container .muid_and_btn button {
+  background: #014bb2;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: flex;
+  margin: 10px;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+}
+
+.connect_discord_container .muid_and_btn button:hover {
+  background: #003277;
+}
+
+.connect_discord_container .images {
+  display: flex;
+  height: 300px;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+}
+
+.connect_discord_container .images .image {
+  display: flex;
+  height: 300px;
+  width: 580px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.connect_discord_container .images p:nth-child(1) {
+  background-image: url(../assets/images/connectdiscordpng1.png);
+  position: absolute;
+  left: 0;
+}
+
+.connect_discord_container .images p:nth-child(2) {
+  background-image: url(../assets/images/connectdiscordpng2.png);
+  position: absolute;
+  right: -30px;
+  bottom: -35px;
+}
+
+.fb_image {
+  max-width: 20rem;
+}
+
+@media (min-width: 35rem) {
+  .fb_image {
+    max-width: 30rem;
+  }
+}
+
+/* onboarding flow */
+
+.onboarding_flow_container {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  width: 90%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.onboarding_flow_container .content {
+  width: 100%;
+}
+
+.onboarding_flow_container .content h1 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.onboarding_flow_container .content .onboarding_flow {
+  position: relative;
+  height: 100ch;
+  margin: 30px;
+  /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.onboarding_flow_container .content .onboarding_flow .lines {
+  position: absolute;
+  height: 640px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-image: url(../assets/images/lines.png);
+}
+
+.onboarding_flow_container .content .onboarding_flow div {
+  position: absolute;
+  height: 200px;
+  /* width: 300px; */
+  width: 35%;
+  background-color: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+  transition: 0.3s ease-in-out;
+  align-items: center;
+}
+
+.onboarding_flow_container .content .onboarding_flow div p:nth-child(1) {
+  color: white;
+  font-weight: 500;
+  font-size: 0.9rem;
+  backdrop-filter: blur(4px);
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  height: 100%;
+  margin: auto;
+  transition: 0.5s ease-in-out;
+  opacity: 0;
+  align-items: center;
+  padding: 10px;
+  cursor: default;
+}
+
+.onboarding_flow_container .content .onboarding_flow div:hover {
+  transform: translateY(-5px);
+}
+
+.onboarding_flow_container .content .onboarding_flow div:hover p:nth-child(1) {
+  opacity: 1;
+}
+
+.onboarding_flow_container .content .onboarding_flow div p:nth-child(2) {
+  position: absolute;
+  bottom: -50px;
+  font-size: 25px;
+  font-weight: 600;
+  width: 450px;
+  color: #014bb2;
+  display: block;
+}
+
+.onboarding_flow_container .content .onboarding_flow .box .p {
+  bottom: -80px;
+}
+
+.onboarding_flow_container .content .onboarding_flow .box {
+  left: 0;
+  top: 30px;
+  background-image: url(../assets/images/onboardingflow1.png);
+}
+
+.onboarding_flow_container .content .onboarding_flow .box2 {
+  right: 0;
+  top: 35%;
+  background-image: url(../assets/images/onboardingflow2.png);
+}
+
+.onboarding_flow_container .content .onboarding_flow .box3 {
+  left: 0px;
+  top: 65%;
+  background-image: url(../assets/images/onboardingflow3.png);
+}
+
+.onboarding_flow_container .content .onboarding_flow .box4 {
+  right: 50px;
+  top: 100%;
+  background-image: url(../assets/images/onboardingflow4.png);
+}
+
+/* responsive */
+
+@media (max-width: 1380px) {
+  .connect_discord_container .images .image {
+    width: 38vw;
+  }
+
+  .connect_discord_container .images p:nth-child(1) {
+    left: 0;
+    bottom: calc(-130px - -9vw);
+  }
+
+  .connect_discord_container .images p:nth-child(2) {
+    right: -20px;
+    bottom: calc(-151px - -9vw);
+  }
+
+  .onboarding_flow_container .content .onboarding_flow .lines {
+    height: 620px;
+    /* width: 830px; */
+  }
+
+  .onboarding_flow_container .content .onboarding_flow div p:nth-child(2) {
+    bottom: -40px;
+    font-size: 20px;
+    width: 330px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .onboarding_flow_container .content .onboarding_flow .lines {
+    height: 600px;
+    width: 770px;
+  }
+}
+
+@media (max-width: 1230px) {
+  .onboarding_flow_container .content .onboarding_flow .lines {
+    height: 670px;
+    width: 60vw;
+  }
+}
+
+@media (max-width: 840px) {
+  .onboarding_flow_container .content .onboarding_flow .lines {
+    height: 540px;
+    width: 80vw;
+  }
+
+  .onboarding_flow_container .content .onboarding_flow .box {
+    height: 140px;
+    width: 200px;
+  }
+}
+
+@media (max-width: 830px) {
+  .connect_discord_container .content {
+    padding: 40px 10px;
+  }
+
+  .connect_discord_container .content .muid_and_btn {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .connect_discord_container .images .image {
+    /* height: 410px; */
+    width: 380px;
+  }
+
+  .connect_discord_container .images p:nth-child(1) {
+    display: none;
+  }
+
+  .connect_discord_container .images p:nth-child(2) {
+    right: -2px;
+    bottom: -65px;
+  }
+
+  .connect_discord_container h1 {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 650px) {
+  .onboarding_flow_container .content .onboarding_flow {
+    display: flex;
+    justify-content: center;
+  }
+
+  .onboarding_flow_container .content .onboarding_flow div {
+    height: 20vw;
+    width: 30vw;
+  }
+
+  .onboarding_flow_container .content .onboarding_flow .lines {
+    height: 540px;
+    width: 70vw;
+  }
+
+  .onboarding_flow_container .content .onboarding_flow div p:nth-child(1) {
+    font-size: 0.5rem;
+  }
+
+  .onboarding_flow_container .content .onboarding_flow .box {
+    /* left: -20px;
+        top: 10vh; */
+    height: 20vw;
+    width: 30vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .onboarding_flow_container .content .onboarding_flow {
+    height: 40ch;
+  }
+
+  .connect_discord_container .images .image {
+    width: 300px;
+  }
+
+  .connect_discord_container .images p:nth-child(2) {
+    bottom: -80px;
+  }
+
+  .onboarding_flow_container .content .onboarding_flow .lines {
+    height: 90vw;
+    width: 90vw;
+  }
+
+  .onboarding_flow_container .content .onboarding_flow div p:nth-child(2) {
+    bottom: -20px;
+    font-size: 10px;
+    width: 160px;
+  }
+
+  .onboarding_flow_container .content .onboarding_flow .box .p {
+    bottom: -30px;
+  }
+
+  .onboarding_flow_container .content .onboarding_flow .box4 {
+    right: 0px;
+    top: 93%;
+  }
+}
+
+@media (max-width: 308px) {
+  .connect_discord_container .images .image {
+    height: 410px;
+    width: 290px;
+  }
+
+  .connect_discord_container .images p:nth-child(2) {
+    right: -2px;
+    bottom: -140px;
+  }
+
+  .connect_discord_container .muid_and_btn p {
+    padding: 10px 10px;
+  }
+}
+
+.spinner_container {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.spinner_container .spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

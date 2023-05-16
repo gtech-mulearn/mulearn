@@ -1,6 +1,0 @@
-
-export const Blank = () => {
-	return (
-		<></>
-	)
-}
