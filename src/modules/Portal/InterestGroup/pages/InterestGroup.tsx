@@ -1,8 +1,8 @@
-import Pagination from "../../../../Components/MuComponents/Pagination";
-import THead from "../../../../Components/MuComponents/Table/THead";
-import Table from "../../../../Components/MuComponents/Table/Table";
 import { useEffect, useState } from "react";
 import { getInterestGroups } from "../services/apis";
+import Table from "../../../../components/MuComponents/Table/Table";
+import THead from "../../../../components/MuComponents/Table/THead";
+import Pagination from "../../../../components/MuComponents/Pagination";
 
 function InterestGroup() {
 
