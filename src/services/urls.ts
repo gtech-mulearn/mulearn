@@ -20,4 +20,5 @@ export const authRoutes = {
 
 export const dashboardRoutes = {
   getInfo: "/api/v1/register/info/",
+	getIgData: '/api/v1/dashboard/ig/'
 };

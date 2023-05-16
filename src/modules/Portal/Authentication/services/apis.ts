@@ -4,6 +4,7 @@ import { useNavigate, NavigateFunction } from "react-router-dom";
 import {
   privateGateway,
   publicGateway,
+  // publicGatewayAuth,
 } from "../../../../../src/services/apiGateways";
 import { authRoutes, dashboardRoutes } from "../../../../../src/services/urls";
 
