@@ -6,7 +6,7 @@ import Login from "./modules/Portal/Authentication/pages/Login";
 import ForgotPassword from "./modules/Portal/Authentication/pages/ForgotPassword";
 import ResetPassword from "./modules/Portal/Authentication/pages/ResetPassword";
 import PrivateRoutes from "./components/PrivateRoutes";
-import DashboardRootLayout from "./components/Dashboard/layouts/DashboardRootLayout";
+import DashboardRootLayout from "./modules/Portal/Dashboard/layouts/DashboardRootLayout";
 import Profile from "./modules/Portal/Profile/pages/Profile";
 import ConnectDiscord from "./modules/Portal/ConnectDiscord/pages/ConnectDiscord";
 import InterestGroup from "./modules/Portal/InterestGroup/pages/InterestGroup";
