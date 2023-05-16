@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { getInterestGroups } from "../services/apis";
-import Table from "../../../../components/MuComponents/Table/Table";
-import THead from "../../../../components/MuComponents/Table/THead";
-import Pagination from "../../../../components/MuComponents/Pagination";
-
+import Table from "../../../../Components/MuComponents/Table/Table";
+import Pagination from "../../../../Components/MuComponents/Pagination";
+import THead from "../../../../Components/MuComponents/Table/THead";
+import TableTop from "../../../../Components/MuComponents/TableTop/TableTop";
 function InterestGroup() {
 
 	const [data, setData] = useState<any[]>([])
@@ -37,6 +37,7 @@ function InterestGroup() {
 
   return (
     <>
+			<TableTop/>
 			{data && <Table rows={data} >
 				<THead columns={columns} />
 				<Pagination currentPage={currentPage} totalPages={totalPages} margin="10px 0" handleNextClick = {handleNextClick} handlePreviousClick = {handlePreviousClick} />
