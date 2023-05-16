@@ -1,20 +1,25 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
 * {
-  margin: 0%;
-  padding: 0%;
-  box-sizing: border-box;
-  font-family: "Open Sans", sans-serif;
-  outline: none;
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    /* color: #404D61; */
+    outline: none;
 }
 
 .css-13cymwt-control,
 .css-t3ipsp-control {
-  border: none !important;
-  background: rgba(239, 241, 249, 0.6) !important;
-  border-radius: 6px !important;
-  padding: 5px;
-  outline: none;
-  width: 100%;
-  margin-top: 10px;
+    border: none !important;
+    background: rgba(239, 241, 249, 0.6) !important;
+    border-radius: 6px !important;
+    padding: 5px;
+    outline: none;
+    width: 100%;
+    margin-top: 10px;
 }
+
+::-webkit-scrollbar {
+    display: none;
+  }

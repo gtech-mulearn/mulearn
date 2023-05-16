@@ -70,7 +70,7 @@ const Login = () => {
                                     Forgot your <b>password?</b>
                                 </a>
                                 <a href="register">
-                                    <b>SignUp?</b>
+                                    <b>Sign up?</b>
                                 </a>
                             </p>
                             <p className={styles.otp_link}>
@@ -79,7 +79,7 @@ const Login = () => {
                                         setOtpForm(true);
                                     }}
                                 >
-                                    login with OTP
+                                    login with <b>OTP</b>
                                 </a>
                             </p>
                             <button
@@ -157,7 +157,7 @@ const Login = () => {
                                         setOtpForm(false);
                                     }}
                                 >
-                                    login with Password
+                                    login with <b>Password</b>
                                 </a>
                             </p>
                             <button

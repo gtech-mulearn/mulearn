@@ -41,7 +41,7 @@ const Onboarding = (props: Props) => {
   const [opacity, setOpacity] = useState(1);
   const [opacity2, setOpacity2] = useState(1);
   const [emailVerificationResultBtn, setEmailVerificationResultBtn] =
-    useState("Verify");
+    useState("Next");
   const [firstQuestion, setFirstQuestion] = useState(false);
   const [secondQuestion, setSecondQuestion] = useState(false);
   //Getting the token from the URL
@@ -265,7 +265,7 @@ const Onboarding = (props: Props) => {
   });
 
   useEffect(() => {
-    setEmailVerificationResultBtn("Verify");
+    setEmailVerificationResultBtn("Next");
   }, [formik.values.email]);
   return (
     <>
@@ -293,7 +293,7 @@ const Onboarding = (props: Props) => {
                           : {}
                       }
                     >
-                      Please verify your email
+                      Enter your email
                     </h3>
                     <div className={styles.answers}>
                       <form className={styles.verify_email}>
@@ -314,7 +314,7 @@ const Onboarding = (props: Props) => {
                         <button
                           onClick={(e) => {
                             e.preventDefault();
-                            if (emailVerificationResultBtn == "Verify") {
+                            if (emailVerificationResultBtn == "Next") {
                               if (
                                 !formik.errors.email &&
                                 formik.values.email != ""
@@ -341,6 +341,7 @@ const Onboarding = (props: Props) => {
                           {emailVerificationResultBtn}
                         </button>
                       </form>
+                      <a href="/login">Do you have an account ? Login</a>
                     </div>
                   </div>
                 </div>
