@@ -3,7 +3,8 @@
 }
 
 .btn,
-.btn_light {
+.btn_light,
+.dropdown_btn {
     width: 100%;
     min-width: 200px;
     padding: 10px 20px;
@@ -22,7 +23,8 @@
     font-size: 16px;
 }
 
-.btn:hover {
+.btn:hover,
+.dropdown_btn:hover {
     background: #014BB2;
     color: #fff;
 }
@@ -32,6 +34,27 @@
 }
 
 .btn .btn_icon,
-.btn_light .btn_icon {
+.btn_light .btn_icon,
+.dropdown_btn .btn_icon {
     margin-right: 20px;
+}
+
+/* dropdown button style */
+
+
+.dropdown_btn_container .drop_view {
+    width: 70%;
+    margin: auto;
+}
+
+.dropdown_btn_container .drop_view .btn {
+    min-width: unset;
+    font-size: 14px;
+    padding: 8px 18px;
+}
+
+.dropdown_btn_container .drop_view {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
 }
