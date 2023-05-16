@@ -18,7 +18,15 @@ import MuButtonLight from "../MuComponents/MuButtonLight";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
-const SideNavBar = () => {
+type Props = {
+    sidebarButtons: {
+        url: string;
+        title: string;
+        icon: any;
+    }[];
+}
+
+const SideNavBar = (props: Props) => {
     const toast = useToast();
     const navigate = useNavigate();
     const [marginTop, setMarginTop] = useState("0px");
@@ -92,58 +100,36 @@ const SideNavBar = () => {
                         {/* <MuButton text="Activity" icon={<i className="fi fi-sr-copy-alt"></i>} /> */}
                         {/* <MuButton text="History" icon={<i className="fi fi-sr-search-alt"></i>} /> */}
                         <div>
-                            <MuButton
-                                text="Profile"
-                                icon={
-                                    <i className="fi fi-sr-clipboard-user"></i>
-                                }
-                                style={
-                                    window.location.pathname === "/profile" ||
-                                    connected
-                                        ? {
-                                              background: "#014BB2",
-                                              color: "#fff"
-                                          }
-                                        : {}
-                                }
-                                onClick={() => {
-                                    navigate("/profile");
-                                }}
-                            />
-                            {!connected && (
-                                <MuButton
-                                    text="Connect Discord"
-                                    icon={
-                                        <i className="fi fi-sr-data-transfer"></i>
-                                    }
-                                    style={
-                                        window.location.pathname ===
-                                        "/connect-discord"
-                                            ? {
-                                                  background: "#014BB2",
-                                                  color: "#fff"
-                                              }
-                                            : {}
-                                    }
-                                    onClick={() => {
-                                        navigate("/connect-discord");
-                                    }}
-                                />
-                            )}
+                            {
+                                props.sidebarButtons.map((button) => (
+                                    <MuButton
+                                        text={button.title}
+                                        icon={button.icon}
+                                        style={
+                                            window.location.pathname === button.url
+                                                ? { background: "#014BB2", color: "#fff" }
+                                                : {}
+                                        }
+                                        onClick={() => {
+                                            navigate(button.url);
+                                        }}
+                                    />
+                                ))
+                            }
                             <DropDownButtons
                                 text="Management"
                                 icon={<i className="fi fi-sr-layout-fluid"></i>}
                                 style={
                                     window.location.pathname ===
-                                    "/interest-groups"
+                                        "/interest-groups"
                                         ? {
-                                              background: "#014BB2",
-                                              color: "#fff"
-                                          }
+                                            background: "#014BB2",
+                                            color: "#fff"
+                                        }
                                         : {}
                                 }
                                 onClick={() => {
-                                    navigate("/interest-groups");
+                                    // navigate("/interest-groups");
                                     setDropDownBtnDisplay(
                                         dropDownBtnDisplay === "0"
                                             ? "max-content"
@@ -156,24 +142,6 @@ const SideNavBar = () => {
                                     { text: "User" }
                                 ]}
                                 display={dropDownBtnDisplay}
-                            />
-                            <MuButton
-                                text="Projects"
-                                icon={
-                                    <i className="fi fi-sr-book-arrow-right"></i>
-                                }
-                                style={
-                                    window.location.pathname === "/projects" ||
-                                    connected
-                                        ? {
-                                              background: "#014BB2",
-                                              color: "#fff"
-                                          }
-                                        : {}
-                                }
-                                onClick={() => {
-                                    navigate("/profile");
-                                }}
                             />
                         </div>
 

@@ -6,7 +6,7 @@ import Login from "./modules/Portal/Authentication/pages/Login";
 import ForgotPassword from "./modules/Portal/Authentication/pages/ForgotPassword";
 import ResetPassword from "./modules/Portal/Authentication/pages/ResetPassword";
 import PrivateRoutes from "./components/PrivateRoutes";
-import UserDashboardLayout from "./components/Dashboard/UserDashboardLayout";
+import DashboardRootLayout from "./components/Dashboard/layouts/DashboardRootLayout";
 import Profile from "./modules/Portal/Profile/pages/Profile";
 import ConnectDiscord from "./modules/Portal/ConnectDiscord/pages/ConnectDiscord";
 import InterestGroup from "./modules/Portal/InterestGroup/pages/InterestGroup";
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <UserDashboardLayout />,
+                element: <DashboardRootLayout />,
                 children: [
                     { path: "profile", element: <Profile /> },
                     { path: "connect-discord", element: <ConnectDiscord /> },
