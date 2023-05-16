@@ -7,9 +7,9 @@ import { ChakraProvider } from "@chakra-ui/react";
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ChakraProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      {/* <BrowserRouter> */}
+      <App />
+      {/* </BrowserRouter> */}
     </ChakraProvider>
   </React.StrictMode>
 );
