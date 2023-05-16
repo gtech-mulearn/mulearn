@@ -2,6 +2,7 @@ import Pagination from "../../../../Components/MuComponents/Pagination";
 import { Blank } from "../../../../Components/MuComponents/Table/Blank";
 import THead from "../../../../Components/MuComponents/Table/THead";
 import Table from "../../../../Components/MuComponents/Table/Table";
+import { privateGateway } from "../../../../services/apiGateways";
 
 type Data = {
   id: number;
@@ -23,6 +24,36 @@ function InterestGroup() {
     'HEAD3',
     'HEAD4'
   ];
+
+	const IG_GET_URL = '/api/v1/dashboard/ig/'
+
+	// const getInterestGroups = async () => {
+	// 	try {
+	// 		const response = await privateGateway.get(IG_GET_URL,
+	// 				{
+	// 					headers: { 
+	// 						'Content-Type': 'application/json',
+	// 						'Authorization': 'Bearer ' + access
+	// 					}
+	// 				}
+	// 		);
+	// 		const todo:any = (response?.data)
+	// 		console.log(todo)
+	// 		setTasks(todo);
+		
+	// 	} 
+	// 	catch (err: unknown) {
+	// 		const error = err as AxiosError;
+	// 		if (error?.response) {
+	// 			console.log(error.response)
+	// 			//notify3();
+	// 		}
+	// 	}
+	// }
+
+
+
+
 
   return (
     <>
