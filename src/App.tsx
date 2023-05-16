@@ -10,6 +10,7 @@ import UserDashboardLayout from "./components/Dashboard/UserDashboardLayout";
 import Profile from "./modules/Portal/Profile/pages/Profile";
 import ConnectDiscord from "./modules/Portal/ConnectDiscord/pages/ConnectDiscord";
 import InterestGroup from "./modules/Portal/InterestGroup/pages/InterestGroup";
+import CampusStudentList from "./modules/Portal/CampusStudentList/CampusStudentList";
 
 function App() {
     return (
@@ -32,6 +33,7 @@ function App() {
                     <Route path="connect-discord" element={<ConnectDiscord />}
                 />
                     <Route path="interest-groups" element={<InterestGroup />} />
+                    <Route path="student-list" element={<CampusStudentList />} />
                 </Route>
                 {/* Dashboard */}
             </Route>

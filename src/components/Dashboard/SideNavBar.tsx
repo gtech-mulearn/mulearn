@@ -158,12 +158,12 @@ const SideNavBar = () => {
                                 display={dropDownBtnDisplay}
                             />
                             <MuButton
-                                text="Projects"
+                                text="Student List"
                                 icon={
                                     <i className="fi fi-sr-book-arrow-right"></i>
                                 }
                                 style={
-                                    window.location.pathname === "/projects" ||
+                                    window.location.pathname === "/student-list" ||
                                     connected
                                         ? {
                                               background: "#014BB2",
@@ -172,7 +172,7 @@ const SideNavBar = () => {
                                         : {}
                                 }
                                 onClick={() => {
-                                    navigate("/profile");
+                                    navigate("/student-list");
                                 }}
                             />
                         </div>

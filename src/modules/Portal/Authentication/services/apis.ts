@@ -4,7 +4,6 @@ import { useNavigate, NavigateFunction } from "react-router-dom";
 import {
   privateGateway,
   publicGateway,
-  publicGatewayAuth,
 } from "../../../../../src/services/apiGateways";
 import { authRoutes, dashboardRoutes } from "../../../../../src/services/urls";
 
@@ -17,7 +16,6 @@ export const forgetPassword = (
   toast: (options?: UseToastOptions | undefined) => ToastId,
   navigate: NavigateFunction
 ) => {
-  // publicGatewayAuth
   publicGateway
     .post(authRoutes.forgetPassword, { emailOrMuid })
     .then((response) => {
@@ -48,7 +46,6 @@ export const login = (
   toast: (options?: UseToastOptions | undefined) => ToastId,
   navigate: NavigateFunction
 ) => {
-	// publicGatewayAuth
 	publicGateway
     .post(authRoutes.login, { emailOrMuid, password })
     .then((response) => {
@@ -101,7 +98,6 @@ export const getMuid = (
   navigate: NavigateFunction,
   setMuID: setMuID
 ) => {
-	// publicGatewayAuth
 	publicGateway
     .post(authRoutes.getMuid.replace("${token}", token))
     .then((response) => {
@@ -172,7 +168,6 @@ export const requestEmailOrMuidOtp = (
   setHasError: setHasError,
   setStatus: setStatus
 ) => {
-	// publicGatewayAuth
 	publicGateway
     .post(authRoutes.requestEmailOrMuidOtp, { emailOrMuid })
     .then((response) => {
@@ -205,7 +200,6 @@ export const otpVerification = (
   toast: (options?: UseToastOptions | undefined) => ToastId,
   navigate: NavigateFunction
 ) => {
-	// publicGatewayAuth
 	publicGateway
     .post(authRoutes.otpVerification, { emailOrMuid, otp })
     .then((response) => {

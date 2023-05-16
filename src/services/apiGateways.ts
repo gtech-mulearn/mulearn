@@ -11,17 +11,6 @@ export const publicGateway = axios.create({
   },
 });
 
-
-// <--- Comment below code before PR, this is for backend testing
-export const publicGatewayAuth = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL_AUTH as string,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
-// --->
-
-
 export const privateGateway = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL as string,
   headers: {
@@ -57,8 +46,7 @@ privateGateway.interceptors.response.use(
     console.log(error.response.data);
 
     if (error.response.data.statusCode === 1000) {
-		publicGatewayAuth
-		// publicGateway
+      publicGateway
         .post(authRoutes.getAccessToken, {
           refresh_token: localStorage.getItem("refreshToken"),
         })
