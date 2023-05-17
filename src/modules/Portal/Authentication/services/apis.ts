@@ -18,6 +18,7 @@ export const forgetPassword = (
   navigate: NavigateFunction
 ) => {
   publicGateway
+  // publicGatewayAuth
     .post(authRoutes.forgetPassword, { emailOrMuid })
     .then((response) => {
       toast({
@@ -48,6 +49,7 @@ export const login = (
   navigate: NavigateFunction
 ) => {
 	publicGateway
+	// publicGatewayAuth
     .post(authRoutes.login, { emailOrMuid, password })
     .then((response) => {
       if (response.data.hasError == false) {
@@ -100,6 +102,7 @@ export const getMuid = (
   setMuID: setMuID
 ) => {
 	publicGateway
+	// publicGatewayAuth
     .post(authRoutes.getMuid.replace("${token}", token))
     .then((response) => {
       console.log(response.data);
@@ -171,6 +174,7 @@ export const requestEmailOrMuidOtp = (
   setStatus: setStatus
 ) => {
 	publicGateway
+	// publicGatewayAuth
     .post(authRoutes.requestEmailOrMuidOtp, { emailOrMuid })
     .then((response) => {
       setStatus(response.data.statusCode);
@@ -203,6 +207,7 @@ export const otpVerification = (
   navigate: NavigateFunction
 ) => {
 	publicGateway
+	// publicGatewayAuth
     .post(authRoutes.otpVerification, { emailOrMuid, otp })
     .then((response) => {
       console.log(response.data);

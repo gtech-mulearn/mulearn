@@ -93,17 +93,16 @@ const CampusStudentList = (props: Props) => {
                     </div>
                 </div>
             </div>
-
             <TableTop onSearchText={handleSearch} />
             <Table rows={data}>
                 <THead columns={columns} />
                 <Pagination
-                        currentPage={1}
-                        totalPages={1}
-                        margin="10px 0"
-                        // handleNextClick={handleNextClick}
-                        // handlePreviousClick={handlePreviousClick}
-                    />
+                    currentPage={1}
+                    totalPages={1}
+                    margin="10px 0"
+                    // handleNextClick={handleNextClick}
+                    // handlePreviousClick={handlePreviousClick}
+                />
                 {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
             </Table>
         </>
