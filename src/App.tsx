@@ -11,6 +11,7 @@ import Profile from "./modules/Portal/Profile/pages/Profile";
 import ConnectDiscord from "./modules/Portal/ConnectDiscord/pages/ConnectDiscord";
 import InterestGroup from "./modules/Portal/InterestGroup/pages/InterestGroup";
 import NotFound from "./components/NotFound";
+import { ManageUsers } from "./modules/Portal/Dashboard/modules";
 
 const router = createBrowserRouter([
     {
@@ -38,9 +39,9 @@ const router = createBrowserRouter([
                     { path: "profile", element: <Profile /> },
                     { path: "connect-discord", element: <ConnectDiscord /> },
                     { path: "interest-groups", element: <InterestGroup /> },
+                    { path: "manage-users", element: <ManageUsers /> },
                 ],
             },
-            // { path: "admin", element: <AdminDashboardLayout /> },
         ],
     },
 ]);
