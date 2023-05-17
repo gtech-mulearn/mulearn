@@ -57,8 +57,7 @@ privateGateway.interceptors.response.use(
     console.log(error.response.data);
 
     if (error.response.data.statusCode === 1000) {
-		// publicGatewayAuth
-		publicGateway
+      publicGateway
         .post(authRoutes.getAccessToken, {
           refresh_token: localStorage.getItem("refreshToken"),
         })

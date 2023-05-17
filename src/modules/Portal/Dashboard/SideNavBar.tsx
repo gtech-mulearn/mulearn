@@ -13,10 +13,10 @@ import { getname, getInfo } from "./helpers/apis";
 //   MdWorkHistory,
 // } from "react-icons/md";
 
-import { MuButton, DropDownButtons } from "../../../components/MuComponents/MuButton";
-import MuButtonLight from "../../../components/MuComponents/MuButtonLight";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { DropDownButtons, MuButton } from "../../../components/MuComponents/MuButtons/MuButton";
+import MuButtonLight from "../../../components/MuComponents/MuButtons/MuButtonLight";
 
 type Props = {
     sidebarButtons: {

@@ -1,5 +1,10 @@
 import "./App.css";
-import { Route, RouterProvider, Routes, createBrowserRouter } from "react-router-dom";
+import {
+    Route,
+    RouterProvider,
+    Routes,
+    createBrowserRouter
+} from "react-router-dom";
 import AuthRoutes from "./components/AuthRoutes";
 import Onboarding from "./modules/Portal/Onboarding/pages/Onboarding";
 import Login from "./modules/Portal/Authentication/pages/Login";
@@ -11,11 +16,12 @@ import Profile from "./modules/Portal/Profile/pages/Profile";
 import ConnectDiscord from "./modules/Portal/ConnectDiscord/pages/ConnectDiscord";
 import InterestGroup from "./modules/Portal/InterestGroup/pages/InterestGroup";
 import NotFound from "./components/NotFound";
+import CampusStudentList from "./modules/Portal/CampusStudentList/CampusStudentList";
 
 const router = createBrowserRouter([
     {
         path: "*",
-        element: <NotFound />,
+        element: <NotFound />
     },
     {
         path: "/",
@@ -24,8 +30,8 @@ const router = createBrowserRouter([
             { path: "register", element: <Onboarding /> },
             { path: "login", element: <Login /> },
             { path: "forgot-password", element: <ForgotPassword /> },
-            { path: "reset-password", element: <ResetPassword /> },
-        ],
+            { path: "reset-password", element: <ResetPassword /> }
+        ]
     },
     {
         path: "/",
@@ -38,11 +44,12 @@ const router = createBrowserRouter([
                     { path: "profile", element: <Profile /> },
                     { path: "connect-discord", element: <ConnectDiscord /> },
                     { path: "interest-groups", element: <InterestGroup /> },
-                ],
-            },
+                    { path: "student-list", element: <CampusStudentList /> }
+                ]
+            }
             // { path: "admin", element: <AdminDashboardLayout /> },
-        ],
-    },
+        ]
+    }
 ]);
 
 function App() {

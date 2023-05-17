@@ -37,7 +37,6 @@ function InterestGroup() {
 
     return (
         <>
-            <TableTop />
             {data && (
                 <Table rows={data}>
                     <THead columns={columns} />
