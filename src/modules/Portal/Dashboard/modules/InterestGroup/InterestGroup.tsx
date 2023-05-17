@@ -9,6 +9,7 @@ function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+    const [perPage, setPerPage] = useState(5);
 
     const columns = [
         "ID",
@@ -26,22 +27,51 @@ function InterestGroup() {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getInterestGroups(setData, nextPage);
+        getInterestGroups(setData, nextPage, perPage);
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getInterestGroups(setData, prevPage);
+        getInterestGroups(setData, prevPage, perPage);
     };
 
     useEffect(() => {
-        getInterestGroups(setData, 1, setTotalPages);
+        getInterestGroups(setData, 1, perPage, setTotalPages, '', '');
     }, []);
+
+<<<<<<< HEAD:src/modules/Portal/InterestGroup/pages/InterestGroup.tsx
+		const handleSearch = (search: string) => {
+			getInterestGroups(setData, 1, perPage, setTotalPages, search, '');
+		}
+
+
+		const handleSort = (sort: string) => {
+			if (sort === '1') {
+				getInterestGroups(setData, 1, perPage, setTotalPages, '', 'name');
+			}
+			if (sort === '2') {
+				getInterestGroups(setData, 1, perPage, setTotalPages, '', '-name');
+			}
+		}
+
+		const handlePerPageNumber = (selectedValue: number) => {
+			setPerPage(selectedValue)
+			getInterestGroups(setData, 1, selectedValue, setTotalPages, '', '')
+		}
 
     return (
         <>
+            <TableTop 
+								onSearchText={handleSearch}
+								onSortText={handleSort}
+								onPerPageNumber={handlePerPageNumber}
+						/>
+=======
+    return (
+        <>
             <TableTop onSearchText={handleSearch}/>
+>>>>>>> ce32864d22949f7863c64671bee070d480c1f8e6:src/modules/Portal/Dashboard/modules/InterestGroup/InterestGroup.tsx
             {data && (
                 <Table rows={data}>
                     <THead columns={columns} />
