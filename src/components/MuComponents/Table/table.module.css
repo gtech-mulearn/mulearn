@@ -2,10 +2,11 @@
 	border-radius: 10px;
 	overflow: clip;
 	border: 1px solid rgba(1, 75, 178, .5);
-	width: 95%;
+	width: 90%;
+	margin-top: 20px;
 }
 
-.tableActual{
+.tableActual {
 	width: 100%;
 }
 
@@ -16,7 +17,7 @@
 	color: rgba(1, 75, 178, 1);
 }
 
-.td{
+.td {
 	padding: 12px 16px;
 	text-align: left;
 	border-top: 1px solid rgba(1, 75, 178, .5);
