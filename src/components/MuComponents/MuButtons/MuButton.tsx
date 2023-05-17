@@ -1,5 +1,5 @@
 import React, { ReactFragment } from "react";
-import styles from "./MuComponents.module.css";
+import styles from "../MuComponents.module.css";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 
 // normal button

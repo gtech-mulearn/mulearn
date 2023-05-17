@@ -2,9 +2,9 @@ import React, { FC } from "react";
 import styles from "./table.module.css";
 
 type Data = {
-  id: number;
-  name: string;
-  description: string;
+  id?: number;
+  name?: string;
+  description?: string;
 };
 
 interface HeaderProps {

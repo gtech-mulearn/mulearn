@@ -1,0 +1,169 @@
+.campus_student_list_container {
+    width: 90%;
+    /* padding: 20px 30px; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    background: #f3f8ff;
+    border: 1px solid #dde2e5;
+    border-radius: 20px;
+}
+
+.campus_student_list_container .content {
+    width: 100%;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.campus_student_list_container .content .sec1 {
+    text-align: left;
+    width: 75%;
+}
+
+.campus_student_list_container .content .sec1 .campus_code {
+    background-color: #CFDEF3;
+    border-radius: 10px;
+    padding: 5px 31px;
+    width: fit-content;
+    font-weight: 600;
+}
+
+.campus_student_list_container .content .sec1 .clg_name {
+    max-width: 65%;
+}
+
+.campus_student_list_container .content .sec1 h1 {
+    font-size: xx-large;
+    /* max-width: 60%; */
+    font-weight: 600;
+}
+
+.campus_student_list_container .content .sec1 .campus_lead {
+    color: black;
+}
+
+.campus_student_list_container .content .sec1 .details_card {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+}
+
+.campus_student_list_container .content .sec1 .details_card .card {
+    width: 200px;
+    background: rgba(1, 75, 178, 0.15);
+    border-radius: 10px;
+    padding: 3px 30px;
+    text-align: center;
+    font-weight: 900;
+}
+
+.campus_student_list_container .content .sec1 .details_card .card:nth-child(1) {
+    color: white;
+    background: #014BB2;
+}
+
+.campus_student_list_container .content .sec2 {
+    text-align: right;
+}
+
+.campus_student_list_container .content .sec2 .clg_rank_div {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.campus_student_list_container .content .sec2 .clg_rank_div .clg_rank {
+    font-size: 140px;
+    line-height: 180px;
+    color: rgba(1, 75, 178, 0.2);
+    font-weight: 600;
+}
+
+.campus_student_list_container .content .sec2 .clg_rank_div .clg_rank_overlay {
+    position: absolute;
+    width: 170px;
+    color: white;
+    background-color: #014BB2;
+    /* text-align: center; */
+    letter-spacing: 30px;
+}
+
+.campus_student_list_container .content .sec2 .level_div h2 {
+    font-size: xx-large;
+    font-weight: 600;
+}
+
+.campus_student_list_container .content .sec2 .level_div p {
+    font-weight: 400;
+}
+
+
+/* responsive page */
+
+@media (max-width:1420px) {
+    .campus_student_list_container .content .sec1 .clg_name {
+        max-width: 75%;
+    }
+}
+
+@media (max-width:1300px) {
+    .campus_student_list_container .content .sec1 .clg_name {
+        max-width: 85%;
+    }
+}
+
+@media (max-width:1350px) {
+    .campus_student_list_container .content .sec1 .details_card {
+        gap: 10px;
+    }
+
+    .campus_student_list_container .content .sec1 .details_card .card {
+        width: 165px;
+        padding: 0px 12px;
+        font-size: 17px;
+        font-weight: 800;
+    }
+}
+
+@media (max-width:1155px) {
+
+    .campus_student_list_container .content .sec1 .details_card .card {
+        width: 140px;
+        padding: 2px 0px;
+        font-size: 15px;
+        font-weight: 800;
+    }
+
+    .campus_student_list_container .content .sec1 .details_card .card h1 {
+        font-size: 25px;
+    }
+}
+
+@media (max-width:1035px) {
+
+
+    .campus_student_list_container .content {
+        flex-direction: column;
+    }
+
+    .campus_student_list_container .content .sec1 {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .campus_student_list_container .content .sec1 .clg_name {
+        max-width: 100%;
+    }
+    .campus_student_list_container .content .sec2 {
+        text-align: center;
+    }
+}

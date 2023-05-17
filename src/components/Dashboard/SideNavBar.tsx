@@ -13,8 +13,8 @@ import { getname, getInfo } from "./helpers/apis";
 //   MdWorkHistory,
 // } from "react-icons/md";
 
-import { MuButton, DropDownButtons } from "../MuComponents/MuButton";
-import MuButtonLight from "../MuComponents/MuButtonLight";
+import { MuButton, DropDownButtons } from "../MuComponents/MuButtons/MuButton";
+import MuButtonLight from "../MuComponents/MuButtons/MuButtonLight";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
