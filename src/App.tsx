@@ -9,9 +9,9 @@ import PrivateRoutes from "./components/PrivateRoutes";
 import DashboardRootLayout from "./modules/Portal/Dashboard/layouts/DashboardRootLayout";
 import Profile from "./modules/Portal/Profile/pages/Profile";
 import ConnectDiscord from "./modules/Portal/ConnectDiscord/pages/ConnectDiscord";
-import InterestGroup from "./modules/Portal/InterestGroup/pages/InterestGroup";
 import NotFound from "./components/NotFound";
-import { ManageUsers } from "./modules/Portal/Dashboard/modules";
+
+import { ManageUsers, InterestGroup } from "./modules/Portal/Dashboard/modules";
 
 const router = createBrowserRouter([
     {
