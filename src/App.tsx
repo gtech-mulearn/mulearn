@@ -30,10 +30,15 @@ function App() {
                 {/* user dashboard */}
                 <Route path="/" element={<UserDashboardLayout />}>
                     <Route index path="profile" element={<Profile />} />
-                    <Route path="connect-discord" element={<ConnectDiscord />}
-                />
+                    <Route
+                        path="connect-discord"
+                        element={<ConnectDiscord />}
+                    />
                     <Route path="interest-groups" element={<InterestGroup />} />
-                    <Route path="student-list" element={<CampusStudentList />} />
+                    <Route
+                        path="student-list"
+                        element={<CampusStudentList />}
+                    />
                 </Route>
                 {/* Dashboard */}
             </Route>

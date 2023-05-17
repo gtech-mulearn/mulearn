@@ -44,9 +44,10 @@ export const DropDownButtons = (props: {
                 className={styles.drop_view}
                 style={{ maxHeight: props.display === "0" ? "0" : "300px" }}
             >
-                {props.listOfDropBtn?.map(btn => {
+                {props.listOfDropBtn?.map((btn, i) => {
                     return (
                         <div
+                            key={i}
                             className={styles.btn}
                             // style={btn.style}
                             // onClick={btn.onClick}
