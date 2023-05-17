@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Pagination from "../../../../components/MuComponents/Pagination";
-import Table from "../../../../components/MuComponents/Table/Table";
-import THead from "../../../../components/MuComponents/Table/THead";
-import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
-import { getInterestGroups } from "../services/apis";
+import Pagination from "../../../../../components/MuComponents/Pagination";
+import Table from "../../../../../components/MuComponents/Table/Table";
+import THead from "../../../../../components/MuComponents/Table/THead";
+import TableTop from "../../../../../components/MuComponents/TableTop/TableTop";
+import { getInterestGroups } from "./apis";
 
 function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
@@ -18,6 +18,10 @@ function InterestGroup() {
         "Created By",
         "Created On"
     ];
+
+    const handleSearch = (search: string) => {
+        getInterestGroups(setData, 1, setTotalPages, search);
+    };
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -37,7 +41,7 @@ function InterestGroup() {
 
     return (
         <>
-            <TableTop />
+            <TableTop onSearchText={handleSearch}/>
             {data && (
                 <Table rows={data}>
                     <THead columns={columns} />

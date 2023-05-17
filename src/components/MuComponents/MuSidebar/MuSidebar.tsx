@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import MulearnBrand from '../../Dashboard/assets/MulearnBrand';
+import MulearnBrand from '../../../modules/Portal/Dashboard/assets/MulearnBrand';
 
 interface SidebarProps {
     children: ReactNode;

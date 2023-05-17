@@ -41,7 +41,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
   }
 
   if (!connected) {
-    buttons.push({
+    buttons.splice(1, 0, {
       url: "connect-discord",
       title: "Connect Discord",
       icon: <i className="fi fi-sr-data-transfer"></i>,

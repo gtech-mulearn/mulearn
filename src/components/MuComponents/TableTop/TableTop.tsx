@@ -3,13 +3,18 @@ import { SearchBar } from "./SearchBar"
 import styles from "./tableTop.module.css";
 
 
-type Props = {}
+type Props = {
+	onSearchText: (data: string) => void;
+}
 
 const TableTop = (props: Props) => {
+	const handleData = (search: string) => {
+    props.onSearchText(search)
+  };
 	return (
 		<div className={styles.container}>
 			<div className={styles.body}>
-				<SearchBar/>
+				<SearchBar onSearch={handleData}/>
 				<FilterButton/>
 			</div>
 		</div>
