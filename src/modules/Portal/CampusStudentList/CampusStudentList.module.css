@@ -47,10 +47,10 @@
 }
 
 .campus_student_list_container .content .sec1 .details_card {
-    margin-top: 20px;
+    margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 50px;
 }
 
@@ -160,9 +160,15 @@
         align-items: center;
         width: 100%;
     }
+
     .campus_student_list_container .content .sec1 .clg_name {
         max-width: 100%;
     }
+
+    .campus_student_list_container .content .sec1 .details_card {
+        justify-content: center;
+    }
+
     .campus_student_list_container .content .sec2 {
         text-align: center;
     }
