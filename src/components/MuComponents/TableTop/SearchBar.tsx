@@ -21,7 +21,7 @@ export const SearchBar = (props: Props) => {
 	return (
 		<>
 				<form onSubmit={handleSubmit}> 
-					<input type="text" placeholder="Search" className={styles.searchBar} onChange={onChangeSearch} value={search}/>
+				<input type="text" placeholder="Search" className={styles.searchBar} onChange={onChangeSearch} value={search}/>
 				</form>
 		</>
 	)

@@ -5,8 +5,8 @@ const adminButtons = [
         icon: <i className="fi fi-sr-clipboard-user"></i>
     },
     {
-        url: "projects",
-        title: "Projects",
+        url: "student-list",
+        title: "Student List",
         icon: <i className="fi fi-sr-book-arrow-right"></i>
     },
     {

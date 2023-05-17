@@ -2,8 +2,8 @@
     border-radius: 10px;
     overflow: auto;
     border: 1px solid rgba(1, 75, 178, 0.5);
-    width: 95%;
-    margin: 20px 0px;
+    width: 90%;
+    margin-bottom: 10px;
 }
 
 .tableActual {

@@ -3,6 +3,8 @@ import styles from "./CampusStudentList.module.css";
 import Table from "../../../components/MuComponents/Table/Table";
 import THead from "../../../components/MuComponents/Table/THead";
 import { Blank } from "../../../components/MuComponents/Table/Blank";
+import TableTop from "../../../components/MuComponents/TableTop/TableTop";
+import Pagination from "../../../components/MuComponents/Pagination";
 
 type Props = {};
 
@@ -18,23 +20,25 @@ const CampusStudentList = (props: Props) => {
     ];
     const data = [
         {
-          no:"1",
+            no: "1",
             name: "jovit",
             karma: "10k",
             rank: "13",
             level: "2",
             year: "2",
             status: "dead"
-        },{
-          no:"1",
+        },
+        {
+            no: "1",
             name: "jovit",
             karma: "10k",
             rank: "13",
             level: "2",
             year: "2",
             status: "dead"
-        },{
-          no:"1",
+        },
+        {
+            no: "1",
             name: "jovit",
             karma: "10k",
             rank: "13",
@@ -43,6 +47,9 @@ const CampusStudentList = (props: Props) => {
             status: "dead"
         }
     ];
+    const handleSearch = (search: string) => {
+        // getInterestGroups(setData, 1, setTotalPages, search);
+    };
     return (
         <>
             <div className={styles.campus_student_list_container}>
@@ -87,9 +94,16 @@ const CampusStudentList = (props: Props) => {
                 </div>
             </div>
 
+            <TableTop onSearchText={handleSearch} />
             <Table rows={data}>
                 <THead columns={columns} />
-                <Blank />
+                <Pagination
+                        currentPage={1}
+                        totalPages={1}
+                        margin="10px 0"
+                        // handleNextClick={handleNextClick}
+                        // handlePreviousClick={handlePreviousClick}
+                    />
                 {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
             </Table>
         </>
