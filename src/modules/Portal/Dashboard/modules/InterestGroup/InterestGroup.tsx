@@ -20,10 +20,6 @@ function InterestGroup() {
         "Created On"
     ];
 
-    const handleSearch = (search: string) => {
-        getInterestGroups(setData, 1, setTotalPages, search);
-    };
-
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
@@ -37,41 +33,34 @@ function InterestGroup() {
     };
 
     useEffect(() => {
-        getInterestGroups(setData, 1, perPage, setTotalPages, '', '');
+        getInterestGroups(setData, 1, perPage, setTotalPages, "", "");
     }, []);
 
-<<<<<<< HEAD:src/modules/Portal/InterestGroup/pages/InterestGroup.tsx
-		const handleSearch = (search: string) => {
-			getInterestGroups(setData, 1, perPage, setTotalPages, search, '');
-		}
+    const handleSearch = (search: string) => {
+        getInterestGroups(setData, 1, perPage, setTotalPages, search, "");
+    };
 
+    const handleSort = (sort: string) => {
+        if (sort === "1") {
+            getInterestGroups(setData, 1, perPage, setTotalPages, "", "name");
+        }
+        if (sort === "2") {
+            getInterestGroups(setData, 1, perPage, setTotalPages, "", "-name");
+        }
+    };
 
-		const handleSort = (sort: string) => {
-			if (sort === '1') {
-				getInterestGroups(setData, 1, perPage, setTotalPages, '', 'name');
-			}
-			if (sort === '2') {
-				getInterestGroups(setData, 1, perPage, setTotalPages, '', '-name');
-			}
-		}
-
-		const handlePerPageNumber = (selectedValue: number) => {
-			setPerPage(selectedValue)
-			getInterestGroups(setData, 1, selectedValue, setTotalPages, '', '')
-		}
+    const handlePerPageNumber = (selectedValue: number) => {
+        setPerPage(selectedValue);
+        getInterestGroups(setData, 1, selectedValue, setTotalPages, "", "");
+    };
 
     return (
         <>
-            <TableTop 
-								onSearchText={handleSearch}
-								onSortText={handleSort}
-								onPerPageNumber={handlePerPageNumber}
-						/>
-=======
-    return (
-        <>
-            <TableTop onSearchText={handleSearch}/>
->>>>>>> ce32864d22949f7863c64671bee070d480c1f8e6:src/modules/Portal/Dashboard/modules/InterestGroup/InterestGroup.tsx
+            <TableTop
+                onSearchText={handleSearch}
+                onSortText={handleSort}
+                onPerPageNumber={handlePerPageNumber}
+            />
             {data && (
                 <Table rows={data}>
                     <THead columns={columns} />
