@@ -19,6 +19,10 @@ function InterestGroup() {
         "Created On"
     ];
 
+    const handleSearch = (search: string) => {
+        getInterestGroups(setData, 1, setTotalPages, search);
+    };
+
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
@@ -37,7 +41,7 @@ function InterestGroup() {
 
     return (
         <>
-            <TableTop  />
+            <TableTop onSearchText={handleSearch}/>
             {data && (
                 <Table rows={data}>
                     <THead columns={columns} />
