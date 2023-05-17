@@ -25,6 +25,22 @@ const CampusStudentList = (props: Props) => {
             level: "2",
             year: "2",
             status: "dead"
+        },{
+          no:"1",
+            name: "jovit",
+            karma: "10k",
+            rank: "13",
+            level: "2",
+            year: "2",
+            status: "dead"
+        },{
+          no:"1",
+            name: "jovit",
+            karma: "10k",
+            rank: "13",
+            level: "2",
+            year: "2",
+            status: "dead"
         }
     ];
     return (
@@ -64,8 +80,8 @@ const CampusStudentList = (props: Props) => {
                             <p className={styles.clg_rank_overlay}>RANK</p>
                         </div>
                         <div className={styles.level_div}>
-                            <h2>The Orientation</h2>
-                            <p>Campus Level: 1</p>
+                            <h2>Campus Zone</h2>
+                            <p>Central</p>
                         </div>
                     </div>
                 </div>
