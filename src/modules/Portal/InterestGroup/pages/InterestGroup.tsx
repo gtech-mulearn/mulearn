@@ -35,9 +35,13 @@ function InterestGroup() {
         getInterestGroups(setData, 1, setTotalPages);
     }, []);
 
+		const handleSearch = (search: string) => {
+			getInterestGroups(setData, 1, setTotalPages, search);
+		}
+
     return (
         <>
-            <TableTop />
+            <TableTop onSearchText={handleSearch} />
             {data && (
                 <Table rows={data}>
                     <THead columns={columns} />
