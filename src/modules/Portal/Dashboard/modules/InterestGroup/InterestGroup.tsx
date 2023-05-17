@@ -37,7 +37,7 @@ function InterestGroup() {
 
     return (
         <>
-            <TableTop />
+            <TableTop  />
             {data && (
                 <Table rows={data}>
                     <THead columns={columns} />
