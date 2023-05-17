@@ -51,7 +51,6 @@ const router = createBrowserRouter([
         ]
     }
 ]);
-import CampusStudentList from "./modules/Portal/CampusStudentList/CampusStudentList";
 
 function App() {
     return <RouterProvider router={router} />;
