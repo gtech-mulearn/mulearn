@@ -99,14 +99,14 @@ const SideNavBar = (props: Props) => {
                         {/* <MuButton text="Tasks" icon={<i className="fi fi-sr-box"></i>} /> */}
                         {/* <MuButton text="Activity" icon={<i className="fi fi-sr-copy-alt"></i>} /> */}
                         {/* <MuButton text="History" icon={<i className="fi fi-sr-search-alt"></i>} /> */}
-                        <div>
+                        <div className={styles.side_nav_bar_main_items}>
                             {
                                 props.sidebarButtons.map((button) => (
                                     <MuButton
                                         text={button.title}
                                         icon={button.icon}
                                         style={
-                                            window.location.pathname === button.url
+                                            window.location.pathname === `/${button.url}`
                                                 ? { background: "#014BB2", color: "#fff" }
                                                 : {}
                                         }
@@ -116,18 +116,18 @@ const SideNavBar = (props: Props) => {
                                     />
                                 ))
                             }
-                            <DropDownButtons
+                            {/* <DropDownButtons
                                 text="Management"
                                 icon={<i className="fi fi-sr-layout-fluid"></i>}
-                                style={
-                                    window.location.pathname ===
-                                        "/interest-groups"
-                                        ? {
-                                            background: "#014BB2",
-                                            color: "#fff"
-                                        }
-                                        : {}
-                                }
+                                // style={
+                                //     window.location.pathname ===
+                                //         "/interest-groups"
+                                //         ? {
+                                //             background: "#014BB2",
+                                //             color: "#fff"
+                                //         }
+                                //         : {}
+                                // }
                                 onClick={() => {
                                     // navigate("/interest-groups");
                                     setDropDownBtnDisplay(
@@ -142,7 +142,7 @@ const SideNavBar = (props: Props) => {
                                     { text: "User" }
                                 ]}
                                 display={dropDownBtnDisplay}
-                            />
+                            /> */}
                         </div>
 
                         <MuButtonLight
