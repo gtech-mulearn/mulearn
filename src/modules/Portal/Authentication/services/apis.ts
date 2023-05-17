@@ -4,7 +4,7 @@ import { useNavigate, NavigateFunction } from "react-router-dom";
 import {
   privateGateway,
   publicGateway,
-  // publicGatewayAuth,
+  // publicGatewayAuth
 } from "../../../../../src/services/apiGateways";
 import { authRoutes, dashboardRoutes } from "../../../../../src/services/urls";
 
@@ -133,6 +133,7 @@ export const resetPassword = (
   toast: (options?: UseToastOptions | undefined) => ToastId,
   navigate: NavigateFunction
 ) => {
+	// publicGatewayAuth
 	publicGateway
     .post(authRoutes.resetPassword.replace("${token}", token), { password })
     .then((response) => {
