@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Pagination from "../../../../components/MuComponents/Pagination";
-import Table from "../../../../components/MuComponents/Table/Table";
-import THead from "../../../../components/MuComponents/Table/THead";
-import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
 import { getInterestGroups } from "../services/apis";
+import TableTop from "../../../../Components/MuComponents/TableTop/TableTop";
+import Table from "../../../../Components/MuComponents/Table/Table";
+import THead from "../../../../Components/MuComponents/Table/THead";
+import Pagination from "../../../../Components/MuComponents/Pagination";
 
 function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
@@ -48,7 +48,7 @@ function InterestGroup() {
                         handleNextClick={handleNextClick}
                         handlePreviousClick={handlePreviousClick}
                     />
-                    {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                    {/*use <Blank/> when u don't need <THead /> or <Pagination /> inside <Table/> cause <Table /> needs atleast 2 children*/}
                 </Table>
             )}
         </>
