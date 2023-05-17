@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { getInterestGroups } from "../services/apis";
-import TableTop from "../../../../Components/MuComponents/TableTop/TableTop";
-import Table from "../../../../Components/MuComponents/Table/Table";
-import THead from "../../../../Components/MuComponents/Table/THead";
-import Pagination from "../../../../Components/MuComponents/Pagination";
+import Pagination from "../../../../../components/MuComponents/Pagination";
+import Table from "../../../../../components/MuComponents/Table/Table";
+import THead from "../../../../../components/MuComponents/Table/THead";
+import TableTop from "../../../../../components/MuComponents/TableTop/TableTop";
+import { getInterestGroups } from "./apis";
 
 function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
@@ -19,6 +19,10 @@ function InterestGroup() {
         "Created By",
         "Created On"
     ];
+
+    const handleSearch = (search: string) => {
+        getInterestGroups(setData, 1, setTotalPages, search);
+    };
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -36,6 +40,7 @@ function InterestGroup() {
         getInterestGroups(setData, 1, perPage, setTotalPages, '', '');
     }, []);
 
+<<<<<<< HEAD:src/modules/Portal/InterestGroup/pages/InterestGroup.tsx
 		const handleSearch = (search: string) => {
 			getInterestGroups(setData, 1, perPage, setTotalPages, search, '');
 		}
@@ -62,6 +67,11 @@ function InterestGroup() {
 								onSortText={handleSort}
 								onPerPageNumber={handlePerPageNumber}
 						/>
+=======
+    return (
+        <>
+            <TableTop onSearchText={handleSearch}/>
+>>>>>>> ce32864d22949f7863c64671bee070d480c1f8e6:src/modules/Portal/Dashboard/modules/InterestGroup/InterestGroup.tsx
             {data && (
                 <Table rows={data}>
                     <THead columns={columns} />
@@ -72,7 +82,7 @@ function InterestGroup() {
                         handleNextClick={handleNextClick}
                         handlePreviousClick={handlePreviousClick}
                     />
-                    {/*use <Blank/> when u don't need <THead /> or <Pagination /> inside <Table/> cause <Table /> needs atleast 2 children*/}
+                    {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                 </Table>
             )}
         </>

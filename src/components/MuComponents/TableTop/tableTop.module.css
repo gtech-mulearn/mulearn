@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .body {
 	background-color: #CCDBF0;
 	height: 6vh;
@@ -149,4 +150,62 @@
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdownPerPage :hover .perPage Btn {
   background-color: #CCDBF0;
+=======
+.container {
+	padding: 10px 0;
+	width: 90%;
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.container .body {
+	background-color: #CCDBF0;
+	height: 6vh;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	border-radius: 8px;
+	padding: 10px;
+}
+
+form i {
+	width: 20px;
+	height: 20px;
+}
+
+form .searchBar {
+	border-radius: 8px;
+	padding: 3px;
+	color: #014BB2;
+	padding-left: 30px;
+	margin: unset;
+	border: 1px solid #014BB2;
+	background-image: url(public/fi-br-search.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-color: #fff;
+	background-position-x: 2%;
+	box-shadow: none;
+}
+
+.searchBar::placeholder {
+	color: #014BB2 !important;
+}
+
+.filter {
+	border-radius: 8px;
+	background-color: #fff;
+	border: 1px solid #014BB2;
+	width: 6em;
+	padding: 3px;
+	background-image: url(public/filter-icon.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-color: #fff;
+	padding-left: 25px;
+	background-position-x: 12%;
+	box-shadow: none;
+>>>>>>> ce32864d22949f7863c64671bee070d480c1f8e6
 }
