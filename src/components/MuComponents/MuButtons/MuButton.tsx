@@ -9,10 +9,15 @@ export const MuButton = (props: {
     text: string; // text of button
     icon?: ReactJSXElement; // button icon
     style?: React.CSSProperties; // button style if wanted
+    className?: string; // button class name if wanted
     onClick?: React.MouseEventHandler; // onclick event if wanted
 }) => {
     return (
-        <div className={styles.btn} style={props.style} onClick={props.onClick}>
+        <div
+            className={props.className ? props.className : styles.btn}
+            style={props.style}
+            onClick={props.onClick}
+        >
             <div className={styles.btn_icon}>{props.icon}</div>
             <p>{props.text}</p>
         </div>

@@ -1,0 +1,44 @@
+.dropdown {
+    width: 300px;
+    text-align: start;
+}
+
+.select {
+    background-color: white;
+    color: black;
+    border: 2px solid #014ed8;
+    border-radius: 10px;
+    width: 100%;
+    padding: 20px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.icon {
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+.contents {
+    width: 100%;
+    background-color: white;
+    color: black;
+    border: 2px solid #9fb5ef;
+    border-radius: 10px;
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 150px;
+}
+
+.content {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.content:hover {
+    background-color: #e4ebfe;
+    color: #134d9f;
+    border-radius: 5px;
+    font-weight: 600;
+}
