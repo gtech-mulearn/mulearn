@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import styles from "./table.module.css";
+import styles from "./Table.module.css";
 
 type Data = {
     id?: number;
@@ -42,7 +42,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                     <tbody>
                         {props.rows?.map((row: any, index: number) => (
                             <tr key={index}>
-                                <td>{index+1}</td>
+                                <td>{index + 1}</td>
                                 {Object.keys(row).map((key: string) => (
                                     <td
                                         className={styles.td}

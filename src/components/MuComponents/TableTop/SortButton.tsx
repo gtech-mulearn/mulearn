@@ -1,4 +1,4 @@
-import styles from "./tableTop.module.css";
+import styles from "./TableTop.module.css";
 
 type Props = {
     onSort: (data: string) => void;
