@@ -116,8 +116,7 @@
 
 @media (max-width: 380px) {
 	.showLabel{
-		position: absolute;
-		left: 100em;
+		display: none;
 	}
 	.showSelect{
 		position: absolute;
