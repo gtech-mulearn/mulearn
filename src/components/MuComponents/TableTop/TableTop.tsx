@@ -1,5 +1,6 @@
-import { PerPage } from "./PerPage";
+import { useState } from "react";
 import { SearchBar } from "./SearchBar";
+import ShowPerPage from "./ShowPerPage";
 import { SortButton } from "./SortButton";
 import styles from "./TableTop.module.css"
 
@@ -17,15 +18,25 @@ const TableTop = (props: Props) => {
         const sortVar = sort;
         props.onSortText && props.onSortText(sortVar);
     };
-    const handlePerPage = (selectedValue: number) => {
-        props.onPerPageNumber && props.onPerPageNumber(selectedValue);
-    };
+	const [itemsPerPage, setItemsPerPage] = useState(5);
+	const handleOptionChange = (value: number) => {
+		setItemsPerPage(value);
+        props.onPerPageNumber && props.onPerPageNumber(value);
+	};
     return (
         <div className={styles.container}>
             <div className={styles.body}>
-                <SearchBar onSearch={handleData} />
-                <PerPage onPerPage={handlePerPage} />
-                <SortButton onSort={handleSort} />
+                <div className={styles.left}>
+                    <SearchBar onSearch={handleData} />
+                </div>
+                <div className={styles.right}>
+                    <ShowPerPage
+                        options={[5, 10, 20, 50, 100]}
+                        selectedOption={itemsPerPage}
+                        onOptionChange={handleOptionChange}
+                    />
+                    <SortButton onSort={handleSort} />
+                </div>
             </div>
         </div>
     );
