@@ -21,9 +21,7 @@ export const getInterestGroups = async (
         });
         const interestGroups: any = response?.data;
         setData(interestGroups.response.interestGroups);
-        setTotalPages(
-            Math.ceil(interestGroups.response.dataCount / selectedValue)
-        );
+        setTotalPages(interestGroups.response.pagination.totalPages);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

@@ -20,7 +20,7 @@
     margin-bottom: 10px;
     margin-left: 10px;
     border: 1px solid #014bb2;
-    background-image: url(public/fi-br-search.png);
+    background-image: url(src/assets/images/fi-br-search.png);
     padding-left: 30px;
     background-repeat: no-repeat;
     background-position: left center;
@@ -40,7 +40,7 @@
     border: 1px solid #014bb2;
     width: 6em;
     padding: 3px;
-    background-image: url(public/filter-icon.png);
+    background-image: url(src/assets/images/filter-icon.png);
     background-repeat: no-repeat;
     background-position: left center;
     background-color: #fff;
@@ -92,66 +92,35 @@
     background-color: #ccdbf0;
 }
 
-.perPageBtn {
-    border-radius: 8px;
-    background-color: #fff;
+.left {
+	width: 30%;
+}
+
+.right {
+	width: 70%;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+}
+
+.showContainer {
+	border-radius: 8px;
+}
+
+.showSelect {
+	border-radius: 8px;
+	padding: 0.25rem 0;
     border: 1px solid #014bb2;
-    width: 8em;
-    padding: 3px;
-    box-shadow: none;
-    cursor: pointer;
+	margin: 0 5px;
 }
 
-/* The container <div> - needed to position the dropdown content */
-.dropdownPerPage {
-    position: relative;
-    display: inline-block;
-}
-
-@media only screen and (min-width: 1000px) {
-    .dropdownPerPage {
-        margin-left: 43rem;
-    }
-}
-
-@media only screen and (max-width: 1000px) {
-    .dropdownPerPage {
-        margin-left: 12rem;
-    }
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdownContentPerPage {
-    display: none;
-    position: absolute;
-    border-radius: 8px;
-    background-color: #ccdbf0;
-    width: 8em;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdownContentPerPage button {
-    color: #014bb2;
-    padding: 10px 10px;
-    width: 100%;
-    border-radius: 8px;
-    text-decoration: none;
-    display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdownContentPerPage button:hover {
-    background-color: #ffffff;
-}
-
-/* Show the dropdown menu on hover */
-.dropdownPerPage:hover .dropdownContentPerPage {
-    display: block;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdownPerPage :hover .perPage Btn {
-    background-color: #ccdbf0;
+@media (max-width: 380px) {
+	.showLabel{
+		display: none;
+	}
+	.showSelect{
+		position: absolute;
+		right: 8rem;
+		top: 10.3rem;
+	}
 }
