@@ -4,10 +4,10 @@ import { Outlet } from "react-router-dom";
 import SideNavBar from "../components/SideNavBar";
 import TopNavBar from "../components/TopNavBar";
 import { useEffect, useState } from "react";
+import adminButtons from "../utils/userwiseButtonsData/adminButtons";
+import companyButtons from "../utils/userwiseButtonsData/companyButtons";
+import userButtons from "../utils/userwiseButtonsData/userButtons";
 
-import adminButtons from "../userwiseButtonsData/adminButtons";
-import companyButtons from "../userwiseButtonsData/companyButtons";
-import userButtons from "../userwiseButtonsData/userButtons";
 
 const DashboardRootLayout = (props: { component?: any }) => {
     // const [opacity, setOpacity] = useState(null);
