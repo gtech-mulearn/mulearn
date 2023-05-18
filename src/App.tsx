@@ -15,9 +15,8 @@ import DashboardRootLayout from "./modules/Portal/Dashboard/layouts/DashboardRoo
 import Profile from "./modules/Portal/Profile/pages/Profile";
 import ConnectDiscord from "./modules/Portal/ConnectDiscord/pages/ConnectDiscord";
 import NotFound from "./components/NotFound";
-import CampusStudentList from "./modules/Portal/CampusStudentList/CampusStudentList";
+import CampusStudentList from "./modules/Portal/CampusStudentList/pages/CampusStudentList";
 import { ManageUsers, InterestGroup } from "./modules/Portal/Dashboard/modules";
-
 
 const router = createBrowserRouter([
     {

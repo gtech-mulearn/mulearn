@@ -29,7 +29,7 @@
     box-shadow: none;
 }
 
-::placeholder {
+.searchBar::placeholder {
     color: #014bb2 !important;
 }
 
@@ -107,6 +107,7 @@
     position: relative;
     display: inline-block;
 }
+
 @media only screen and (min-width: 1000px) {
     .dropdownPerPage {
         margin-left: 43rem;
