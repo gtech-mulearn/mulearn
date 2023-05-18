@@ -1,7 +1,7 @@
 import { PerPage } from "./PerPage";
 import { SearchBar } from "./SearchBar";
 import { SortButton } from "./SortButton";
-import styles from "./TableTop.module.css";
+import styles from "./TableTop.module.css"
 
 type Props = {
     onSearchText?: (data: string) => void;
