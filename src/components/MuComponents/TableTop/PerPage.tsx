@@ -4,6 +4,8 @@ type Props = {
 	onPerPage: (data: number) => void;
 }
 
+//TODO: Jenin:Change buttons to MuOutlineButton
+
 export const PerPage = (props: Props) => {
 	const handleBtn = (event: React.MouseEvent<HTMLButtonElement>) => {
 		const selectedValue:number = parseInt(event.currentTarget.value, 10)

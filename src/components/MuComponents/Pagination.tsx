@@ -1,5 +1,5 @@
 import CustomBtn from "../CustomBtn";
-import PrimaryButton from "./MuButtons/PrimaryButton";
+import PrimaryButton from "./MuButtons/MuOutlinedButton";
 
 type Props = {
     handlePreviousClick?: () => void;

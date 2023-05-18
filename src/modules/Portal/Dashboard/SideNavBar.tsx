@@ -15,8 +15,11 @@ import { getname, getInfo } from "./helpers/apis";
 
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { DropDownButtons, MuButton } from "../../../components/MuComponents/MuButtons/MuButton";
-import MuButtonLight from "../../../components/MuComponents/MuButtons/MuButtonLight";
+import {
+    DropDownButtons,
+    MuButton
+} from "../../../components/MuComponents/MuButtons/MuButton";
+// import MuButtonLight from "../../../components/MuComponents/MuButtons/MuButtonLight";
 
 type Props = {
     sidebarButtons: {
@@ -24,7 +27,7 @@ type Props = {
         title: string;
         icon: any;
     }[];
-}
+};
 
 const SideNavBar = (props: Props) => {
     const toast = useToast();
@@ -41,10 +44,10 @@ const SideNavBar = (props: Props) => {
     useEffect(() => {
         if (
             localStorage.getItem("userInfo") &&
-            JSON.parse(localStorage.getItem("userInfo")!).exist_in_guild
+            JSON.parse(localStorage.getItem("userInfo")!).existInGuild
         ) {
             setConnected(
-                JSON.parse(localStorage.getItem("userInfo")!).exist_in_guild
+                JSON.parse(localStorage.getItem("userInfo")!).existInGuild
             );
         }
     });
@@ -100,22 +103,24 @@ const SideNavBar = (props: Props) => {
                         {/* <MuButton text="Activity" icon={<i className="fi fi-sr-copy-alt"></i>} /> */}
                         {/* <MuButton text="History" icon={<i className="fi fi-sr-search-alt"></i>} /> */}
                         <div className={styles.side_nav_bar_main_items}>
-                            {
-                                props.sidebarButtons.map((button) => (
-                                    <MuButton
-                                        text={button.title}
-                                        icon={button.icon}
-                                        style={
-                                            window.location.pathname === `/${button.url}`
-                                                ? { background: "#014BB2", color: "#fff" }
-                                                : {}
-                                        }
-                                        onClick={() => {
-                                            navigate(button.url);
-                                        }}
-                                    />
-                                ))
-                            }
+                            {props.sidebarButtons.map(button => (
+                                <MuButton
+                                    text={button.title}
+                                    icon={button.icon}
+                                    style={
+                                        window.location.pathname ===
+                                        `/${button.url}`
+                                            ? {
+                                                  background: "#014BB2",
+                                                  color: "#fff"
+                                              }
+                                            : {}
+                                    }
+                                    onClick={() => {
+                                        navigate(button.url);
+                                    }}
+                                />
+                            ))}
                             {/* <DropDownButtons
                                 text="Management"
                                 icon={<i className="fi fi-sr-layout-fluid"></i>}
@@ -145,9 +150,13 @@ const SideNavBar = (props: Props) => {
                             /> */}
                         </div>
 
-                        <MuButtonLight
+                        <MuButton
                             text="Logout"
                             icon={<i className="fi fi-sr-key"></i>}
+                            style={{
+                                backgroundColor: "#CCDBF0",
+                                fontSize: "16px"
+                            }}
                             onClick={() => {
                                 localStorage.clear();
                                 toast({

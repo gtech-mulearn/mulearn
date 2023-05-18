@@ -12,7 +12,7 @@ const AuthRoutes: React.FC = () => {
   if (localStorage.getItem("userInfo") !== null) {
     onboardingStatus = JSON.parse(
       localStorage.getItem("userInfo")!
-    ).exist_in_guild;
+    ).existInGuild;
   }
 
   return refreshToken &&

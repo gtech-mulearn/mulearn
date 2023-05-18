@@ -25,7 +25,7 @@ export const getInfo = (
     .get(dashboardRoutes.getInfo)
     .then((response) => {
       console.log(response);
-      setConnected(response.data.response.exist_in_guild);
+      setConnected(response.data.response.existInGuild);
     })
     .catch((error) => {
       console.log(error);

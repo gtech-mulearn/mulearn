@@ -21,9 +21,9 @@ const DashboardRootLayout = (props: { component?: any }) => {
 
     if (
       localStorage.getItem("userInfo") &&
-      JSON.parse(localStorage.getItem("userInfo")!).exist_in_guild
+      JSON.parse(localStorage.getItem("userInfo")!).existInGuild
     ) {
-      setConnected(JSON.parse(localStorage.getItem("userInfo")!).exist_in_guild);
+      setConnected(JSON.parse(localStorage.getItem("userInfo")!).existInGuild);
     }
   });
 
