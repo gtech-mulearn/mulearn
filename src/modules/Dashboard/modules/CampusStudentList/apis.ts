@@ -1,8 +1,8 @@
 import React from "react";
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { NavigateFunction } from "react-router-dom";
-import { privateGateway } from "../../../../../services/apiGateways";
-import { campusRoutes } from "../../../../../services/urls";
+import { privateGateway } from "../../../../services/apiGateways";
+import { campusRoutes } from "../../../../services/urls";
 
 type studentData = React.Dispatch<React.SetStateAction<any>>;
 type campusData = React.Dispatch<React.SetStateAction<any>>;

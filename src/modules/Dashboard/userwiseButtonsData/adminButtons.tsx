@@ -18,7 +18,7 @@ const adminButtons = [
         url: "manage-users",
         title: "Manage Users",
         icon: <i className="fi fi-sr-users"></i>
-    }
+    },
 ];
 
 export default adminButtons;

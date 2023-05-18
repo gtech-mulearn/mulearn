@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "./CampusStudentList.module.css";
 import { getCampusDetails, getStudentDetails } from "./apis";
-import TableTop from "../../../../../components/MuComponents/TableTop/TableTop";
-import Table from "../../../../../components/MuComponents/Table/Table";
-import THead from "../../../../../components/MuComponents/Table/THead";
-import Pagination from "../../../../../components/MuComponents/Pagination/Pagination";
+import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
+import Table from "../../../../components/MuComponents/Table/Table";
+import THead from "../../../../components/MuComponents/Table/THead";
+import Pagination from "../../../../components/MuComponents/Pagination/Pagination";
 
 type Props = {};
 

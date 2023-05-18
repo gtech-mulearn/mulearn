@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
-import { privateGateway } from "../../../../../services/apiGateways";
-import { dashboardRoutes } from "../../../../../services/urls";
+import { privateGateway } from "../../../../services/apiGateways";
+import { dashboardRoutes } from "../../../../services/urls";
 
 export const getUsersData = async (
     setData: any,

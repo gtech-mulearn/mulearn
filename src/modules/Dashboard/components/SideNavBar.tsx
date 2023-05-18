@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./SideNavBar.module.css";
-import MulearnBrand from "./assets/MulearnBrand";
+import MulearnBrand from "../assets/MulearnBrand";
 
 // import {
 //   MdHome,

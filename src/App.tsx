@@ -11,7 +11,7 @@ import Login from "./modules/Common/Authentication/pages/Login";
 import ForgotPassword from "./modules/Common/Authentication/pages/ForgotPassword";
 import ResetPassword from "./modules/Common/Authentication/pages/ResetPassword";
 import PrivateRoutes from "./components/PrivateRoutes";
-import DashboardRootLayout from "./modules/Portal/Dashboard/layouts/DashboardRootLayout";
+import DashboardRootLayout from "./modules/Dashboard/layouts/DashboardRootLayout";
 import NotFound from "./components/NotFound";
 import {
     ManageUsers,
@@ -19,7 +19,7 @@ import {
     Profile,
     ConnectDiscord,
     CampusStudentList
-} from "./modules/Portal/Dashboard/modules";
+} from "./modules/Dashboard/modules";
 
 const router = createBrowserRouter([
     {
