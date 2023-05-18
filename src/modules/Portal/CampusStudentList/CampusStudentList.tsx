@@ -82,7 +82,6 @@ const CampusStudentList = (props: Props) => {
                     </div>
                 </div>
             </div>
-
             <TableTop onSearchText={handleSearch} />
             <Table rows={data}>
                 <THead columns={columns} />
