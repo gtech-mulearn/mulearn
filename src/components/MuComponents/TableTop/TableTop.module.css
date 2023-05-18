@@ -20,7 +20,7 @@
     margin-bottom: 10px;
     margin-left: 10px;
     border: 1px solid #014bb2;
-    background-image: url(public/fi-br-search.png);
+    background-image: url(src/assets/images/fi-br-search.png);
     padding-left: 30px;
     background-repeat: no-repeat;
     background-position: left center;
@@ -40,7 +40,7 @@
     border: 1px solid #014bb2;
     width: 6em;
     padding: 3px;
-    background-image: url(public/filter-icon.png);
+    background-image: url(src/assets/images/filter-icon.png);
     background-repeat: no-repeat;
     background-position: left center;
     background-color: #fff;
