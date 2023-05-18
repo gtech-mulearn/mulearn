@@ -23,3 +23,8 @@ export const dashboardRoutes = {
     getIgData: "/api/v1/dashboard/ig/",
     getUsersData: "/api/v1/dashboard/user/"
 };
+
+export const campusRoutes = {
+    getStudentDetails: "/api/v1/campus/student-details/",
+    getCampusDetails: "/api/v1/campus/campus-details/",
+};
