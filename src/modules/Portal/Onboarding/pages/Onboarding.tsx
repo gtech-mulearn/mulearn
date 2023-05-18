@@ -87,6 +87,7 @@ const Onboarding = (props: Props) => {
   //State Array for storing the Area of Interest Options
   const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }]);
   const [showOrHidePassword, setShowOrHidePassword] = useState("password");
+  const [showOrHideCPassword, setShowOrHideCPassword] = useState("password");
 
   const customStyles = {
     control: (provided: any) => ({
@@ -602,7 +603,7 @@ const Onboarding = (props: Props) => {
                         <span className={styles.required}>*</span>
                       </label>
                       <input
-                        type={showOrHidePassword}
+                        type={showOrHideCPassword}
                         name="confirmPassword"
                         placeholder="Confirm password"
                         className={styles.input}
@@ -614,12 +615,12 @@ const Onboarding = (props: Props) => {
                         className={styles.password_icon}
                         onClick={(e) => {
                           e.preventDefault();
-                          showOrHidePassword == "password"
-                            ? setShowOrHidePassword("text")
-                            : setShowOrHidePassword("password");
+                          showOrHideCPassword == "password"
+                            ? setShowOrHideCPassword("text")
+                            : setShowOrHideCPassword("password");
                         }}
                       >
-                        {showOrHidePassword === "text" ? (
+                        {showOrHideCPassword === "text" ? (
                           <i className="fi fi-sr-eye"></i>
                         ) : (
                           <i className="fi fi-sr-eye-crossed"></i>
