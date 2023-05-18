@@ -15,7 +15,7 @@ import {
   getRoles,
   registerUser,
   emailVerification,
-} from "../services/apis";
+} from "../services/onboardingApis";
 import { useNavigate } from "react-router-dom";
 
 const animatedComponents = makeAnimated();
