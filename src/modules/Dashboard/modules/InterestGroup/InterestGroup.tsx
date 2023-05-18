@@ -4,6 +4,8 @@ import Table from "../../../../components/MuComponents/Table/Table";
 import THead from "../../../../components/MuComponents/Table/THead";
 import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
 import { getInterestGroups } from "./apis";
+import { Blank } from "../../../../components/MuComponents/Table/Blank";
+import styles from "./InterestGroup.module.css"
 
 function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
@@ -64,16 +66,19 @@ function InterestGroup() {
             {data && (
                 <Table rows={data}>
                     <THead columns={columns} />
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        margin="10px 0"
-                        handleNextClick={handleNextClick}
-                        handlePreviousClick={handlePreviousClick}
-                    />
+					<Blank/>
                     {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                 </Table>
             )}
+			<div className={styles.pageContainer}>
+				<Pagination
+					currentPage={currentPage}
+					totalPages={totalPages}
+					margin="10px 0"
+					handleNextClick={handleNextClick}
+					handlePreviousClick={handlePreviousClick}
+				/>
+			</div>
         </>
     );
 }
