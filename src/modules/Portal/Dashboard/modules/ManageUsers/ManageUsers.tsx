@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Pagination from "../../../../../components/MuComponents/Pagination";
+import Pagination from "../../../../../components/MuComponents/Pagination/Pagination";
 import { Blank } from "../../../../../components/MuComponents/Table/Blank";
 import Table from "../../../../../components/MuComponents/Table/Table";
 import THead from "../../../../../components/MuComponents/Table/THead";

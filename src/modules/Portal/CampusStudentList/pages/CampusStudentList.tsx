@@ -4,7 +4,7 @@ import Table from "../../../../components/MuComponents/Table/Table";
 import THead from "../../../../components/MuComponents/Table/THead";
 // import { Blank } from "../../../../components/MuComponents/Table/Blank";
 import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
-import Pagination from "../../../../components/MuComponents/Pagination";
+import Pagination from "../../../../components/MuComponents/Pagination/Pagination";
 import { getCampusDetails, getStudentDetails } from "../service/apis";
 
 type Props = {};
