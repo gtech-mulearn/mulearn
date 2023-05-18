@@ -1,7 +1,5 @@
 import styles from "./Profile.module.css";
 
-import SideNavBar from "../../../../../src/Components/Dashboard/SideNavBar";
-
 const Profile = () => {
   return (
     <>

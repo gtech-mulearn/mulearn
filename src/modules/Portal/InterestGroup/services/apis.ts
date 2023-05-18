@@ -2,20 +2,21 @@ import { AxiosError } from "axios";
 import { privateGateway } from "../../../../services/apiGateways";
 import { dashboardRoutes } from "../../../../services/urls";
 
-export const getInterestGroups = async (setData:any, page:number, setTotalPages?:any, search?:string) => {
+export const getInterestGroups = async (setData:any, page:number, selectedValue:number, setTotalPages?:any, search?:string, sortID?:string) => {
 	try {
 		const response = await privateGateway.get(dashboardRoutes.getIgData,
 				{
 					params: {
-						perPage: 5,
+						perPage: selectedValue,
 						pageIndex: page,
-						search: search
+						search: search,
+						sortBy: sortID
 					}
 				}
 		);
 		const interestGroups:any = (response?.data)
 		setData(interestGroups.response.interestGroups)
-		setTotalPages(Math.ceil(interestGroups.response.dataCount/5))
+		setTotalPages(Math.ceil(interestGroups.response.dataCount/selectedValue))
 	} 
 	catch (err: unknown) {
 		const error = err as AxiosError;

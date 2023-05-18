@@ -1,5 +1,5 @@
 .campus_student_list_container {
-    width: 90%;
+    width: 95%;
     /* padding: 20px 30px; */
     display: flex;
     flex-direction: row;
@@ -25,7 +25,7 @@
 }
 
 .campus_student_list_container .content .sec1 .campus_code {
-    background-color: #CFDEF3;
+    background-color: #cfdef3;
     border-radius: 10px;
     padding: 5px 31px;
     width: fit-content;
@@ -47,10 +47,10 @@
 }
 
 .campus_student_list_container .content .sec1 .details_card {
-    margin-top: 20px;
+    margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 50px;
 }
 
@@ -65,7 +65,7 @@
 
 .campus_student_list_container .content .sec1 .details_card .card:nth-child(1) {
     color: white;
-    background: #014BB2;
+    background: #014bb2;
 }
 
 .campus_student_list_container .content .sec2 {
@@ -90,7 +90,7 @@
     position: absolute;
     width: 170px;
     color: white;
-    background-color: #014BB2;
+    background-color: #014bb2;
     /* text-align: center; */
     letter-spacing: 30px;
 }
@@ -104,22 +104,21 @@
     font-weight: 400;
 }
 
-
 /* responsive page */
 
-@media (max-width:1420px) {
+@media (max-width: 1420px) {
     .campus_student_list_container .content .sec1 .clg_name {
         max-width: 75%;
     }
 }
 
-@media (max-width:1300px) {
+@media (max-width: 1300px) {
     .campus_student_list_container .content .sec1 .clg_name {
         max-width: 85%;
     }
 }
 
-@media (max-width:1350px) {
+@media (max-width: 1350px) {
     .campus_student_list_container .content .sec1 .details_card {
         gap: 10px;
     }
@@ -132,8 +131,7 @@
     }
 }
 
-@media (max-width:1155px) {
-
+@media (max-width: 1155px) {
     .campus_student_list_container .content .sec1 .details_card .card {
         width: 140px;
         padding: 2px 0px;
@@ -146,9 +144,7 @@
     }
 }
 
-@media (max-width:1035px) {
-
-
+@media (max-width: 1035px) {
     .campus_student_list_container .content {
         flex-direction: column;
     }
@@ -160,9 +156,15 @@
         align-items: center;
         width: 100%;
     }
+
     .campus_student_list_container .content .sec1 .clg_name {
         max-width: 100%;
     }
+
+    .campus_student_list_container .content .sec1 .details_card {
+        justify-content: center;
+    }
+
     .campus_student_list_container .content .sec2 {
         text-align: center;
     }
