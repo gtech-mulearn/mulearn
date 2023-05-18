@@ -16,7 +16,8 @@ import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import {
     DropDownButtons,
-    MuButton
+    MuButton,
+    MuButtonLight
 } from "../../../components/MuComponents/MuButtons/MuButton";
 // import MuButtonLight from "../../../components/MuComponents/MuButtons/MuButtonLight";
 
@@ -102,8 +103,9 @@ const SideNavBar = (props: Props) => {
                         {/* <MuButton text="Activity" icon={<i className="fi fi-sr-copy-alt"></i>} /> */}
                         {/* <MuButton text="History" icon={<i className="fi fi-sr-search-alt"></i>} /> */}
                         <div className={styles.side_nav_bar_main_items}>
-                            {props.sidebarButtons.map(button => (
+                            {props.sidebarButtons.map((button,i )=> (
                                 <MuButton
+                                key={i}
                                     text={button.title}
                                     icon={button.icon}
                                     style={
@@ -149,13 +151,9 @@ const SideNavBar = (props: Props) => {
                             /> */}
                         </div>
 
-                        <MuButton
+                        <MuButtonLight
                             text="Logout"
                             icon={<i className="fi fi-sr-key"></i>}
-                            style={{
-                                backgroundColor: "#CCDBF0",
-                                fontSize: "16px"
-                            }}
                             onClick={() => {
                                 localStorage.clear();
                                 toast({

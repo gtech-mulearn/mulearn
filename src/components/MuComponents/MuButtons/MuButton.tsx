@@ -1,5 +1,5 @@
 import React, { ReactFragment } from "react";
-import styles from "../MuComponents.module.css";
+import styles from "./MuButtons.module.css";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 
 // normal button
@@ -15,6 +15,25 @@ export const MuButton = (props: {
     return (
         <div
             className={props.className ? props.className : styles.btn}
+            style={props.style}
+            onClick={props.onClick}
+        >
+            <div className={styles.btn_icon}>{props.icon}</div>
+            <p>{props.text}</p>
+        </div>
+    );
+};
+
+export const MuButtonLight = (props: {
+    text: string; // text of button
+    icon?: ReactJSXElement; // button icon
+    style?: React.CSSProperties; // button style if wanted
+    className?: string; // button class name if wanted
+    onClick?: React.MouseEventHandler; // onclick event if wanted
+}) => {
+    return (
+        <div
+            className={props.className ? props.className : styles.btn_light}
             style={props.style}
             onClick={props.onClick}
         >

@@ -47,7 +47,16 @@ const router = createBrowserRouter([
                     { path: "profile", element: <Profile /> },
                     { path: "connect-discord", element: <ConnectDiscord /> },
                     { path: "interest-groups", element: <InterestGroup /> },
-                    { path: "campus-details", element: <CampusStudentList /> },
+                    {
+                        path: "campus-details",
+                        element:
+                            localStorage.getItem("userInfo") &&
+                            JSON.parse(
+                                localStorage.getItem("userInfo")!
+                            ).roles.includes("Campus Ambassador") ? (
+                                <CampusStudentList />
+                            ) : null
+                    },
                     { path: "manage-users", element: <ManageUsers /> }
                 ]
             }
