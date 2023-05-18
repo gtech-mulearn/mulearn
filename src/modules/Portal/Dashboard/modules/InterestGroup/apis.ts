@@ -1,4 +1,5 @@
 import { AxiosError } from "axios";
+import { log } from "console";
 import { privateGateway } from "../../../../../services/apiGateways";
 import { dashboardRoutes } from "../../../../../services/urls";
 

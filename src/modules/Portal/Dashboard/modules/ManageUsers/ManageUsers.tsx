@@ -5,6 +5,8 @@ import Table from "../../../../../components/MuComponents/Table/Table";
 import THead from "../../../../../components/MuComponents/Table/THead";
 import TableTop from "../../../../../components/MuComponents/TableTop/TableTop";
 
+import { useToast } from "@chakra-ui/react";
+
 import { getUsersData } from "./manageUsersApi";
 
 type Props = {}
@@ -13,6 +15,8 @@ const ManageUsers = (props: Props) => {
   const [data, setData] = useState<any>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+
+  const toast = useToast();
 
   useEffect(() => {
     getUsersData(setData, 1, setTotalPages);
@@ -35,10 +39,18 @@ const ManageUsers = (props: Props) => {
     cols.push(key.replace("_", " ").toUpperCase());
   }
 
+  const handleSearch = (search: string) => {
+    toast({
+      title: "Search",
+      description: `Searching for ${search}`,
+    });
+    getUsersData(setData, 1, setTotalPages, search);
+  };
+
 
   return (
     <>
-      <TableTop />
+      <TableTop onSearchText={handleSearch} />
       {data && (
         <Table rows={data}>
           <THead columns={cols} />
