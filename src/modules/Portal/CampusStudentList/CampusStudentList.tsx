@@ -9,43 +9,32 @@ import Pagination from "../../../components/MuComponents/Pagination";
 type Props = {};
 
 const CampusStudentList = (props: Props) => {
-    const columns = [
-        "SI NO",
-        "Name",
-        "Karma",
-        "Rank",
-        "Level",
-        "Year",
-        "Status"
-    ];
+    const columns = ["SI NO", "Name", "Email", "Phone", "Karma", "Rank"];
     const data = [
         {
             no: "1",
-            name: "jovit",
-            karma: "10k",
-            rank: "13",
-            level: "2",
-            year: "2",
-            status: "dead"
+            name: "Jovit",
+            email: "jovitmathew236@gmail.com",
+            phone: "13336547892",
+            karma: "2k",
+            rank: "12"
         },
         {
-            no: "1",
-            name: "jovit",
-            karma: "10k",
-            rank: "13",
-            level: "2",
-            year: "2",
-            status: "dead"
+            no: "2",
+            name: "Jovit",
+            email: "jovitmathew236@gmail.com",
+            phone: "13336547892",
+            karma: "2k",
+            rank: "12"
         },
         {
-            no: "1",
-            name: "jovit",
-            karma: "10k",
-            rank: "13",
-            level: "2",
-            year: "2",
-            status: "dead"
-        }
+            no: "3",
+            name: "Jovit",
+            email: "jovitmathew236@gmail.com",
+            phone: "13336547892",
+            karma: "2k",
+            rank: "12"
+        },
     ];
     const handleSearch = (search: string) => {
         // getInterestGroups(setData, 1, setTotalPages, search);
@@ -98,12 +87,12 @@ const CampusStudentList = (props: Props) => {
             <Table rows={data}>
                 <THead columns={columns} />
                 <Pagination
-                        currentPage={1}
-                        totalPages={1}
-                        margin="10px 0"
-                        // handleNextClick={handleNextClick}
-                        // handlePreviousClick={handlePreviousClick}
-                    />
+                    currentPage={1}
+                    totalPages={1}
+                    margin="10px 0"
+                    // handleNextClick={handleNextClick}
+                    // handlePreviousClick={handlePreviousClick}
+                />
                 {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
             </Table>
         </>
