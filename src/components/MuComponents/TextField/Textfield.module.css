@@ -1,0 +1,42 @@
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    background: grey;
+}
+.inputBox{
+    position: relative;
+    width: auto;
+    
+}
+.inputBox input{
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #014ed8;
+    border-radius: 10px;
+    outline: none;
+    color: black;
+    transition: 0.3s;
+    
+}
+.inputBox span{
+    position: absolute;
+    left: 0px;
+    color: black;
+    font-size: 1rem;
+    transition: 0.3s;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+.inputBox input:valid ~ span,.inputBox input:focus ~ span{
+transform: translateX(12px) translateY(-24px);
+font-size: 1.1rem;
+background: white;
+}
+.inputBox input:valid,.inputBox input:focus{
+    border: 2px solid #9fb5ef;
+}
