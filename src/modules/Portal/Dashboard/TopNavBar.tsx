@@ -12,9 +12,9 @@ const TopNavBar = () => {
   useEffect(() => {
     if (
       localStorage.getItem("userInfo") &&
-      JSON.parse(localStorage.getItem("userInfo")!).first_name
+      JSON.parse(localStorage.getItem("userInfo")!).firstName
     ) {
-      setName(JSON.parse(localStorage.getItem("userInfo")!).first_name);
+      setName(JSON.parse(localStorage.getItem("userInfo")!).firstName);
     }
   });
   return (

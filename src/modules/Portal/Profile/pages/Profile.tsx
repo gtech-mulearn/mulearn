@@ -1,4 +1,4 @@
-import Chip from "../../../../components/MuComponents/Chip";
+import Chip from "../../../../components/MuComponents/MuTab/Tab";
 import styles from "./Profile.module.css";
 
 const Profile = () => {
