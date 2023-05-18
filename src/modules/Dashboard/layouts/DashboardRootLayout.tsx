@@ -12,18 +12,34 @@ import userButtons from "../userwiseButtonsData/userButtons";
 const DashboardRootLayout = (props: { component?: any }) => {
     // const [opacity, setOpacity] = useState(null);
     const [connected, setConnected] = useState(false);
-    const [userType, setuserType] = useState("");
+    const [campusLead, setCampusLead] = useState(false);
+    const [userType, setUserType] = useState("");
 
     useEffect(() => {
         // TODO: check if user is admin or not for real
-        setuserType("admin");
+        setUserType("admin");
 
         if (
             localStorage.getItem("userInfo") &&
             JSON.parse(localStorage.getItem("userInfo")!).existInGuild
         ) {
             setConnected(
-                JSON.parse(localStorage.getItem("userInfo")!).existInGuild
+                JSON.parse(localStorage.getItem("userInfo")!).existInGuild ===
+                    "False"
+                    ? false
+                    : true
+            );
+        }
+        if (
+            localStorage.getItem("userInfo") &&
+            JSON.parse(localStorage.getItem("userInfo")!).roles.includes(
+                "Campus Ambassador"
+            )
+        ) {
+            setCampusLead(
+                JSON.parse(localStorage.getItem("userInfo")!).roles.includes(
+                    "Campus Ambassador"
+                )
             );
         }
     });
@@ -46,6 +62,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
             url: "connect-discord",
             title: "Connect Discord",
             icon: <i className="fi fi-sr-data-transfer"></i>
+        });
+    }
+    if (campusLead) {
+        buttons.splice(2, 0, {
+            url: "campus-details",
+            title: "Campus Details",
+            icon: <i className="fi fi-sr-book-arrow-right"></i>
         });
     }
 

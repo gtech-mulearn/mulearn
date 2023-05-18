@@ -24,6 +24,25 @@ export const MuButton = (props: {
     );
 };
 
+export const MuButtonLight = (props: {
+    text: string; // text of button
+    icon?: ReactJSXElement; // button icon
+    style?: React.CSSProperties; // button style if wanted
+    className?: string; // button class name if wanted
+    onClick?: React.MouseEventHandler; // onclick event if wanted
+}) => {
+    return (
+        <div
+            className={props.className ? props.className : styles.btn_light}
+            style={props.style}
+            onClick={props.onClick}
+        >
+            <div className={styles.btn_icon}>{props.icon}</div>
+            <p>{props.text}</p>
+        </div>
+    );
+};
+
 // dropdown button
 // need texts of main button and texts of sub buttons
 
