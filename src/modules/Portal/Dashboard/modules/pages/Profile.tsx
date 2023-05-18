@@ -1,4 +1,4 @@
-import Chip from "../../../../components/MuComponents/MuTab/Tab";
+import React from "react";
 import styles from "./Profile.module.css";
 
 const Profile = () => {

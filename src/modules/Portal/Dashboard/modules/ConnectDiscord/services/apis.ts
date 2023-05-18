@@ -1,8 +1,8 @@
 import React from "react";
-import { dashboardRoutes } from "../../../../../src/services/urls";
-import { privateGateway } from "../../../../../src/services/apiGateways";
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { NavigateFunction } from "react-router-dom";
+import { privateGateway } from "../../../../../../services/apiGateways";
+import { dashboardRoutes } from "../../../../../../services/urls";
 
 type muid = React.Dispatch<React.SetStateAction<string>>;
 
