@@ -5,15 +5,24 @@ import { dashboardRoutes } from "../../../../services/urls";
 export const getUsersData = async (
     setData: any,
     page: number,
+    selectedValue: number,
     setTotalPages?: any,
-    search?: string
+    search?: string,
+    sortID?: string
 ) => {
     try {
         console.log(`=====USER Data==>\n${page}`);
 
         const response = await privateGateway.get(
             dashboardRoutes.getUsersData,
-            { params: { perPage: 5, pageIndex: page, search: search } }
+            {
+                params: {
+                    perPage: selectedValue,
+                    pageIndex: page,
+                    search: search,
+                    sortBy: sortID
+                }
+            }
         );
         const usersData: any = response?.data;
         // localStorage.setItem('count', usersData.response.dataCount)
