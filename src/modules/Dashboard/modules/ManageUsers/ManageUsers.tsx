@@ -8,6 +8,8 @@ import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
 import { useToast } from "@chakra-ui/react";
 
 import { getUsersData } from "./manageUsersApi";
+import { isAdmin } from "../../../../services/common_functions";
+import { useNavigate } from "react-router-dom";
 
 type Props = {}
 
@@ -16,10 +18,13 @@ const ManageUsers = (props: Props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [perPage, setPerPage] = useState(5);
+  const navigate = useNavigate();
 
   const toast = useToast();
 
   useEffect(() => {
+    if (!isAdmin()) navigate("/404");
+
     getUsersData(setData, 1, perPage, setTotalPages, "", "");
   }, []);
 

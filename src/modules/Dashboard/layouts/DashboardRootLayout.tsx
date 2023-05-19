@@ -17,31 +17,22 @@ const DashboardRootLayout = (props: { component?: any }) => {
 
     useEffect(() => {
         // TODO: check if user is admin or not for real
-        setUserType("admin");
+        setUserType("user");
+        if (localStorage.getItem("userInfo")) {
+            const userInfo = JSON.parse(localStorage.getItem("userInfo")!);
 
-        if (
-            localStorage.getItem("userInfo") &&
-            JSON.parse(localStorage.getItem("userInfo")!).existInGuild
-        ) {
-            setConnected(
-                JSON.parse(localStorage.getItem("userInfo")!).existInGuild ===
-                    "False"
-                    ? false
-                    : true
-            );
+            if (userInfo.existInGuild) {
+                setConnected(userInfo.existInGuild === "False" ? false : true);
+            }
+            if (userInfo.roles.includes("Campus Ambassador")) {
+                setCampusLead(userInfo.roles.includes("Campus Ambassador"));
+            }
+            if (userInfo.roles.includes("Admins")) {
+                setUserType("admin");
+            }
         }
-        if (
-            localStorage.getItem("userInfo") &&
-            JSON.parse(localStorage.getItem("userInfo")!).roles.includes(
-                "Campus Ambassador"
-            )
-        ) {
-            setCampusLead(
-                JSON.parse(localStorage.getItem("userInfo")!).roles.includes(
-                    "Campus Ambassador"
-                )
-            );
-        }
+
+
     });
 
     const buttons = [];

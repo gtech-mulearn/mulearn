@@ -27,6 +27,10 @@ const router = createBrowserRouter([
         element: <NotFound />
     },
     {
+        path: "404",
+        element: <NotFound />
+    },
+    {
         path: "/",
         element: <AuthRoutes />,
         children: [
@@ -51,9 +55,9 @@ const router = createBrowserRouter([
                         path: "campus-details",
                         element:
                             localStorage.getItem("userInfo") &&
-                            JSON.parse(
-                                localStorage.getItem("userInfo")!
-                            ).roles.includes("Campus Ambassador") ? (
+                                JSON.parse(
+                                    localStorage.getItem("userInfo")!
+                                ).roles.includes("Campus Ambassador") ? (
                                 <CampusStudentList />
                             ) : null
                     },
