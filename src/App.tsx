@@ -18,68 +18,6 @@ import {
 import { roles } from "./services/types";
 import { useEffect, useState } from "react";
 
-// const router = createBrowserRouter([
-//     {
-//         path: "*",
-//         element: <NotFound />
-//     },
-//     {
-//         path: "/",
-//         element: <AuthRoutes />,
-//         children: [
-//             { path: "register", element: <Onboarding /> },
-//             { path: "login", element: <Login /> },
-//             { path: "forgot-password", element: <ForgotPassword /> },
-//             { path: "reset-password", element: <ResetPassword /> }
-//         ]
-//     },
-//     {
-//         path: "/",
-//         element: <PrivateRoutes />,
-//         children: [
-//             {
-//                 path: "/",
-//                 element: <DashboardRootLayout />,
-//                 children: [
-//                     { path: "profile", element: <Profile /> },
-//                     { path: "connect-discord", element: <ConnectDiscord /> },
-//                     {
-//                         path: "interest-groups",
-//                         element:
-//                             localStorage.getItem("userInfo") &&
-//                             JSON.parse(
-//                                 localStorage.getItem("userInfo")!
-//                             ).roles.includes(roles.ADMIN || roles.FELLOW) ? (
-//                                 <InterestGroup />
-//                             ) : null
-//                     },
-//                     {
-//                         path: "campus-details",
-//                         element: useEffect(() => {
-//                             localStorage.getItem("userInfo") &&
-//                             JSON.parse(
-//                                 localStorage.getItem("userInfo")!
-//                             ).roles.includes(roles.CAMPUS_AMBASSADOR) ? (
-//                                 <CampusStudentList />
-//                             ) : null;
-//                         })
-//                     },
-//                     {
-//                         path: "manage-users",
-//                         element:
-//                             localStorage.getItem("userInfo") &&
-//                             JSON.parse(
-//                                 localStorage.getItem("userInfo")!
-//                             ).roles.includes(roles.ADMIN || roles.FELLOW) ? (
-//                                 <ManageUsers />
-//                             ) : null
-//                     }
-//                 ]
-//             }
-//         ]
-//     }
-// ]);
-
 function App() {
     const [campusComponent, setCampusComponent] = useState(<></>);
     useEffect(() => {
