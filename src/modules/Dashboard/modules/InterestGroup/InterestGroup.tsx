@@ -16,6 +16,7 @@ function InterestGroup() {
 		"S/N",
         "ID",
         "NAME",
+		"Members",
         "Updated By",
         "Updated On",
         "Created By",
