@@ -5,6 +5,7 @@ import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
 import Table from "../../../../components/MuComponents/Table/Table";
 import THead from "../../../../components/MuComponents/Table/THead";
 import Pagination from "../../../../components/MuComponents/Pagination/Pagination";
+import { titleCase } from "title-case";
 
 type Props = {};
 
@@ -47,10 +48,10 @@ const CampusStudentList = (props: Props) => {
 
 	const handleSort = (sort: string) => {
         if (sort === "1") {
-            getStudentDetails(setStudentData, 1, perPage, setTotalPages, "", "name");
+            getStudentDetails(setStudentData, 1, perPage, setTotalPages, "", "-user");
         }
         if (sort === "2") {
-            getStudentDetails(setStudentData, 1, perPage, setTotalPages, "", "-name");
+            getStudentDetails(setStudentData, 1, perPage, setTotalPages, "", "user");
         }
     };
 
@@ -67,7 +68,7 @@ const CampusStudentList = (props: Props) => {
                             Campus code : {campusData.campusCode}
                         </p>
                         <h1 className={styles.clg_name}>
-                            {campusData.collegeName}
+                            {titleCase(campusData.collegeName.toLowerCase())}
                         </h1>
                         <p className={styles.campus_lead}>
                             Campus Lead : {campusData.campusLead}
