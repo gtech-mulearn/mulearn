@@ -1,9 +1,5 @@
 const adminButtons = [
-    {
-        url: "profile",
-        title: "Profile",
-        icon: <i className="fi fi-sr-clipboard-user"></i>
-    },
+
     {
         url: "interest-groups",
         title: "Interest Groups",
