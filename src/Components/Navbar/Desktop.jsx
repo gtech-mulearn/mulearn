@@ -34,7 +34,7 @@ export const Resources = ({ notificationOpen }) => {
       </div>
 
       <a
-        href="https://app.mulearn.org/user/register"
+        href="https://app.mulearn.org/register"
         target="_blank"
         rel="noopener noreferrer"
         className="py-7 px-3 inline-block"
