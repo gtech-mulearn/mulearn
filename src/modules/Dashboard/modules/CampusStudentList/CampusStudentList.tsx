@@ -10,7 +10,7 @@ import { titleCase } from "title-case";
 type Props = {};
 
 const CampusStudentList = (props: Props) => {
-    const columns = ["SI NO", "Name", "Email", "Phone", "Karma"];
+    const columns = ["SI NO", "Name", "Email", "Phone", "Karma","ɥId"];
     const [studentData, setStudentData] = useState<any[]>([]);
     const [perPage, setPerPage] = useState(5);
     const [currentPage, setCurrentPage] = useState(1);
