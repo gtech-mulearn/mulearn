@@ -5,17 +5,22 @@ import THead from "../../../../components/MuComponents/Table/THead";
 import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
 import { getInterestGroups } from "./apis";
 import { Blank } from "../../../../components/MuComponents/Table/Blank";
+import { roles } from "../../../../services/types";
+import { hasRole } from "../../../../services/common_functions";
+import { useNavigate } from "react-router-dom";
 
 function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(5);
+    const navigate = useNavigate();
 
     const columns = [
-		"S/N",
+        "S/N",
         "ID",
         "NAME",
+		"Members",
         "Updated By",
         "Updated On",
         "Created By",
@@ -35,6 +40,8 @@ function InterestGroup() {
     };
 
     useEffect(() => {
+        if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
+
         getInterestGroups(setData, 1, perPage, setTotalPages, "", "");
     }, []);
 
@@ -66,13 +73,13 @@ function InterestGroup() {
             {data && (
                 <Table rows={data} page={currentPage} perPage={perPage}>
                     <THead columns={columns} />
-					<Pagination
-						currentPage={currentPage}
-						totalPages={totalPages}
-						margin="10px 0"
-						handleNextClick={handleNextClick}
-						handlePreviousClick={handlePreviousClick}
-					/>
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        margin="10px 0"
+                        handleNextClick={handleNextClick}
+                        handlePreviousClick={handlePreviousClick}
+                    />
                     {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                 </Table>
             )}

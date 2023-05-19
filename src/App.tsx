@@ -16,7 +16,6 @@ import {
     CampusStudentList
 } from "./modules/Dashboard/modules";
 import { roles } from "./services/types";
-import { useEffect, useState } from "react";
 
 function App() {
     const [campusComponent, setCampusComponent] = useState(<></>);
