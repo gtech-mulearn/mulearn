@@ -60,7 +60,7 @@ privateGateway.interceptors.response.use(
       // publicGatewayAuth
       publicGateway
         .post(authRoutes.getAccessToken, {
-          refresh_token: localStorage.getItem("refreshToken"),
+          refreshToken: localStorage.getItem("refreshToken"),
         })
         .then((response) => {
           localStorage.setItem(

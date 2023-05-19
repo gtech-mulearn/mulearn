@@ -5,47 +5,41 @@ import SideNavBar from "../components/SideNavBar";
 import TopNavBar from "../components/TopNavBar";
 import { useEffect, useState } from "react";
 import adminButtons from "../utils/userwiseButtonsData/adminButtons";
-import companyButtons from "../utils/userwiseButtonsData/companyButtons";
-import userButtons from "../utils/userwiseButtonsData/userButtons";
-
+// import companyButtons from "../utils/userwiseButtonsData/companyButtons";
+// import userButtons from "../utils/userwiseButtonsData/userButtons";
+import { roles } from "../../../services/types";
 
 const DashboardRootLayout = (props: { component?: any }) => {
-    // const [opacity, setOpacity] = useState(null);
     const [connected, setConnected] = useState(false);
     const [campusLead, setCampusLead] = useState(false);
     const [userType, setUserType] = useState("");
 
     useEffect(() => {
-        // TODO: check if user is admin or not for real
-        setUserType("user");
-        if (localStorage.getItem("userInfo")) {
-            const userInfo = JSON.parse(localStorage.getItem("userInfo")!);
+        const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
+        const existInGuild = userInfo.existInGuild === "True";
+        const isCampusAmbassador = userInfo.roles?.includes(
+            roles.CAMPUS_AMBASSADOR
+        );
+        const isAdmin = userInfo.roles?.includes(roles.ADMIN);
 
-            if (userInfo.existInGuild) {
-                setConnected(userInfo.existInGuild === "False" ? false : true);
-            }
-            if (userInfo.roles.includes("Campus Ambassador")) {
-                setCampusLead(userInfo.roles.includes("Campus Ambassador"));
-            }
-            if (userInfo.roles.includes("Admins")) {
-                setUserType("admin");
-            }
+        setConnected(existInGuild);
+        setCampusLead(isCampusAmbassador);
+        setUserType(isAdmin ? "admin" : "user");
+
+    }, []);
+
+    const buttons = [
+        {
+            url: "profile",
+            title: "Profile",
+            icon: <i className="fi fi-sr-clipboard-user"></i>
         }
-
-
-    });
-
-    const buttons = [];
+    ];
 
     switch (userType) {
         case "admin":
             buttons.push(...adminButtons);
             break;
-        case "company":
-            buttons.push(...companyButtons);
-            break;
-        case "user":
-            buttons.push(...userButtons);
     }
 
     if (!connected) {

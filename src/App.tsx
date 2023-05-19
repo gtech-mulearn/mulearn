@@ -1,10 +1,5 @@
 import "./App.css";
-import {
-    Route,
-    RouterProvider,
-    Routes,
-    createBrowserRouter
-} from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AuthRoutes from "./components/AuthRoutes";
 import Onboarding from "./modules/Common/Authentication/pages/Onboarding";
 import Login from "./modules/Common/Authentication/pages/Login";
@@ -20,6 +15,7 @@ import {
     ConnectDiscord,
     CampusStudentList
 } from "./modules/Dashboard/modules";
+import { roles } from "./services/types";
 
 const router = createBrowserRouter([
     {
@@ -50,18 +46,36 @@ const router = createBrowserRouter([
                 children: [
                     { path: "profile", element: <Profile /> },
                     { path: "connect-discord", element: <ConnectDiscord /> },
-                    { path: "interest-groups", element: <InterestGroup /> },
+                    {
+                        path: "interest-groups",
+                        element:
+                            localStorage.getItem("userInfo") &&
+                                JSON.parse(
+                                    localStorage.getItem("userInfo")!
+                                ).roles?.includes(roles.ADMIN || roles.FELLOW) ? (
+                                <InterestGroup />
+                            ) : null
+                    },
                     {
                         path: "campus-details",
                         element:
                             localStorage.getItem("userInfo") &&
                                 JSON.parse(
                                     localStorage.getItem("userInfo")!
-                                ).roles.includes("Campus Ambassador") ? (
+                                ).roles?.includes(roles.CAMPUS_AMBASSADOR) ? (
                                 <CampusStudentList />
                             ) : null
                     },
-                    { path: "manage-users", element: <ManageUsers /> }
+                    {
+                        path: "manage-users",
+                        element:
+                            localStorage.getItem("userInfo") &&
+                                JSON.parse(
+                                    localStorage.getItem("userInfo")!
+                                ).roles?.includes(roles.ADMIN || roles.FELLOW) ? (
+                                <ManageUsers />
+                            ) : null
+                    }
                 ]
             }
         ]
