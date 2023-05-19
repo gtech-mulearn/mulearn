@@ -46,36 +46,9 @@ const router = createBrowserRouter([
                 children: [
                     { path: "profile", element: <Profile /> },
                     { path: "connect-discord", element: <ConnectDiscord /> },
-                    {
-                        path: "interest-groups",
-                        element:
-                            localStorage.getItem("userInfo") &&
-                                JSON.parse(
-                                    localStorage.getItem("userInfo")!
-                                ).roles?.includes(roles.ADMIN || roles.FELLOW) ? (
-                                <InterestGroup />
-                            ) : null
-                    },
-                    {
-                        path: "campus-details",
-                        element:
-                            localStorage.getItem("userInfo") &&
-                                JSON.parse(
-                                    localStorage.getItem("userInfo")!
-                                ).roles?.includes(roles.CAMPUS_AMBASSADOR) ? (
-                                <CampusStudentList />
-                            ) : null
-                    },
-                    {
-                        path: "manage-users",
-                        element:
-                            localStorage.getItem("userInfo") &&
-                                JSON.parse(
-                                    localStorage.getItem("userInfo")!
-                                ).roles?.includes(roles.ADMIN || roles.FELLOW) ? (
-                                <ManageUsers />
-                            ) : null
-                    }
+                    { path: "interest-groups", element: <InterestGroup /> },
+                    { path: "campus-details", element: <CampusStudentList /> },
+                    { path: "manage-users", element: <ManageUsers /> }
                 ]
             }
         ]
