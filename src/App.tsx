@@ -48,7 +48,7 @@ const router = createBrowserRouter([
                             localStorage.getItem("userInfo") &&
                             JSON.parse(
                                 localStorage.getItem("userInfo")!
-                            ).roles.includes(roles.ADMIN || roles.FELLOW) ? (
+                            ).roles?.includes(roles.ADMIN || roles.FELLOW) ? (
                                 <InterestGroup />
                             ) : null
                     },
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
                             localStorage.getItem("userInfo") &&
                             JSON.parse(
                                 localStorage.getItem("userInfo")!
-                            ).roles.includes(roles.CAMPUS_AMBASSADOR) ? (
+                            ).roles?.includes(roles.CAMPUS_AMBASSADOR) ? (
                                 <CampusStudentList />
                             ) : null
                     },
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
                             localStorage.getItem("userInfo") &&
                             JSON.parse(
                                 localStorage.getItem("userInfo")!
-                            ).roles.includes(roles.ADMIN || roles.FELLOW) ? (
+                            ).roles?.includes(roles.ADMIN || roles.FELLOW) ? (
                                 <ManageUsers />
                             ) : null
                     }
