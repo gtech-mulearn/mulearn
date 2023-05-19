@@ -40,7 +40,7 @@ const ManageUsers = (props: Props) => {
     <>
       <TableTop />
       {data && (
-        <Table rows={data}>
+        <Table rows={data} page={1} perPage={5}>
           <THead columns={cols} />
           <Pagination
             currentPage={currentPage}

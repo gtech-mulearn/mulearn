@@ -76,7 +76,7 @@ const CampusStudentList = (props: Props) => {
                 </div>
             </div>
             <TableTop onSearchText={handleSearch} />
-            <Table rows={studentData}>
+            <Table rows={studentData} page={1} perPage={5}>
                 <THead columns={columns} />
                 <Pagination
                     currentPage={1}

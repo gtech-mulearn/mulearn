@@ -38,18 +38,20 @@ use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <T
 const Table: FC<TableProps> = (props: TableProps) => {
 
 	function convertToNormalDate(dateString: string): string | null {
+		console.log(dateString);
         const numberRegex = /^[0-9]+$/;
 
-        if (dateString.match(numberRegex)) {
+        if (String(dateString).match(numberRegex)) {
             return dateString; // Return the original string as-is if it contains only numbers
         }
 		const dateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/;
 
-        if (!dateString.match(dateRegex)) {
+        if (!String(dateString).match(dateRegex)) {
             return dateString; // Return the original string as-is if it's not a valid date format
         }
 		try {
             const dateObj = new Date(dateString);
+			console.log(dateObj)
             const options = { year: 'numeric', month: 'long', day: 'numeric' } as Intl.DateTimeFormatOptions;
             const normalDate = dateObj.toLocaleDateString('en-US', options);
             return normalDate;
