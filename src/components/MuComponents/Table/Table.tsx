@@ -26,8 +26,8 @@ type TableProps = {
         React.ReactElement<FooterProps>?,
         React.ReactElement?
     ];
-	page: number
-	perPage: number
+    page: number;
+    perPage: number;
 };
 
 {
@@ -44,12 +44,13 @@ const Table: FC<TableProps> = (props: TableProps) => {
         if (String(dateString).match(numberRegex)) {
             return dateString; // Return the original string as-is if it contains only numbers
         }
-		const dateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/;
+
+        const dateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/;
 
         if (!String(dateString).match(dateRegex)) {
             return dateString; // Return the original string as-is if it's not a valid date format
         }
-		try {
+        try {
             const dateObj = new Date(dateString);
 			console.log(dateObj)
             const options = { year: 'numeric', month: 'long', day: 'numeric' } as Intl.DateTimeFormatOptions;
@@ -59,8 +60,8 @@ const Table: FC<TableProps> = (props: TableProps) => {
             return dateString; // Return the original string as-is
         }
     }
-	
-	const startIndex = (props.page - 1) * props.perPage;
+
+    const startIndex = (props.page - 1) * props.perPage;
 
     return (
         <>
@@ -70,7 +71,9 @@ const Table: FC<TableProps> = (props: TableProps) => {
                     <tbody>
                         {props.rows?.map((row: any, index: number) => (
                             <tr key={index}>
-                                <td className={styles.td}>{startIndex + index + 1}</td>
+                                <td className={styles.td}>
+                                    {startIndex + index + 1}
+                                </td>
                                 {Object.keys(row).map((key: string) => (
                                     <td
                                         className={styles.td}
@@ -84,7 +87,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                     </tbody>
                 </table>
             </div>
-			<div className={styles.page}>{props.children?.[1]}</div>
+            <div className={styles.page}>{props.children?.[1]}</div>
         </>
     );
 };
