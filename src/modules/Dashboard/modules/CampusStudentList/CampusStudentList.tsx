@@ -10,7 +10,11 @@ type Props = {};
 
 const CampusStudentList = (props: Props) => {
     const columns = ["SI NO", "Name", "Email", "Phone", "Karma"];
-    const [studentData, setStudentData] = useState([{}]);
+    const [studentData, setStudentData] = useState<any[]>([]);
+    const [perPage, setPerPage] = useState(5);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+
     const [campusData, setCampusData] = useState({
         collegeName: "",
         campusLead: "",
@@ -21,14 +25,39 @@ const CampusStudentList = (props: Props) => {
         activeMembers: "",
         rank: ""
     });
-    const handleSearch = (search: string) => {
-        // getInterestGroups(setData, 1, setTotalPages, search);
+
+	const handleNextClick = () => {
+        const nextPage = currentPage + 1;
+        setCurrentPage(nextPage);
+        getStudentDetails(setStudentData, nextPage, perPage);
+    };
+	const handlePreviousClick = () => {
+		const prevPage = currentPage - 1;
+        setCurrentPage(prevPage);
+		getStudentDetails(setStudentData, prevPage, perPage);
     };
     useEffect(() => {
-        getStudentDetails(setStudentData);
+		getStudentDetails(setStudentData, 1, perPage);
         getCampusDetails(setCampusData);
     }, []);
+	
+	const handleSearch = (search: string) => {
+		getStudentDetails(setStudentData, 1, perPage, setTotalPages, search, "");
+	};
 
+	const handleSort = (sort: string) => {
+        if (sort === "1") {
+            getStudentDetails(setStudentData, 1, perPage, setTotalPages, "", "name");
+        }
+        if (sort === "2") {
+            getStudentDetails(setStudentData, 1, perPage, setTotalPages, "", "-name");
+        }
+    };
+
+	const handlePerPageNumber = (selectedValue: number) => {
+        setPerPage(selectedValue);
+        getStudentDetails(setStudentData, 1, selectedValue, setTotalPages, "", "");
+    };
     return (
         <>
             <div className={styles.campus_student_list_container}>
@@ -75,15 +104,19 @@ const CampusStudentList = (props: Props) => {
                     </div>
                 </div>
             </div>
-            <TableTop onSearchText={handleSearch} />
-            <Table rows={studentData}>
+            <TableTop
+                onSearchText={handleSearch}
+                onSortText={handleSort}
+                onPerPageNumber={handlePerPageNumber}
+            />
+            <Table rows={studentData} page={currentPage} perPage={perPage}>
                 <THead columns={columns} />
                 <Pagination
-                    currentPage={1}
-                    totalPages={1}
+                    currentPage={currentPage}
+                    totalPages={totalPages}
                     margin="10px 0"
-                    // handleNextClick={handleNextClick}
-                    // handlePreviousClick={handlePreviousClick}
+                    handleNextClick={handleNextClick}
+                    handlePreviousClick={handlePreviousClick}
                 />
                 {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
             </Table>
