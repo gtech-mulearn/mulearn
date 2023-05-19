@@ -5,6 +5,8 @@ import Table from "../../../../components/MuComponents/Table/Table";
 import THead from "../../../../components/MuComponents/Table/THead";
 import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
 
+import { useToast } from "@chakra-ui/react";
+
 import { getUsersData } from "./manageUsersApi";
 
 type Props = {}
@@ -13,32 +15,57 @@ const ManageUsers = (props: Props) => {
   const [data, setData] = useState<any>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [perPage, setPerPage] = useState(5);
+
+  const toast = useToast();
 
   useEffect(() => {
-    getUsersData(setData, 1, setTotalPages);
+    getUsersData(setData, 1, perPage, setTotalPages, "", "");
   }, []);
 
   const handleNextClick = () => {
     const nextPage = currentPage + 1;
     setCurrentPage(nextPage);
-    getUsersData(setData, nextPage);
+    getUsersData(setData, nextPage, perPage);
   };
 
   const handlePreviousClick = () => {
     const prevPage = currentPage - 1;
     setCurrentPage(prevPage);
-    getUsersData(setData, prevPage);
+    getUsersData(setData, prevPage, perPage);
   };
 
-  const cols = [];
+  const cols = ['Sl No'];
   for (const key in data[0]) {
     cols.push(key.replace("_", " ").toUpperCase());
   }
 
+  const handleSearch = (search: string) => {
+    getUsersData(setData, 1, perPage, setTotalPages, search, "");
+  };
+
+  const handleSort = (sort: string) => {
+    if (sort === "1") {
+      getUsersData(setData, 1, perPage, setTotalPages, "", "first_name");
+    }
+    if (sort === "2") {
+      getUsersData(setData, 1, perPage, setTotalPages, "", "-first_name");
+    }
+  };
+
+  const handlePerPageNumber = (selectedValue: number) => {
+    setPerPage(selectedValue);
+    getUsersData(setData, 1, selectedValue, setTotalPages, "", "");
+  };
+
 
   return (
     <>
-      <TableTop />
+      <TableTop
+        onSearchText={handleSearch}
+        onSortText={handleSort}
+        onPerPageNumber={handlePerPageNumber}
+      />
       {data && (
         <Table rows={data} page={1} perPage={5}>
           <THead columns={cols} />
