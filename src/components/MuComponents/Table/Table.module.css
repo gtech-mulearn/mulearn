@@ -25,7 +25,8 @@
 }
 
 .page {
-    border-top: 1px solid rgba(1, 75, 178, 0.5);
-    width: 100%;
-    padding: 0 20px;
+	width: 95%;
+	border: 1px solid rgba(1, 75, 178, 0.5);
+	border-radius: 8px;
+	padding: 0 10px;
 }

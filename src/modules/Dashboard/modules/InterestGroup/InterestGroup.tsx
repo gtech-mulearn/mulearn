@@ -5,7 +5,6 @@ import THead from "../../../../components/MuComponents/Table/THead";
 import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
 import { getInterestGroups } from "./apis";
 import { Blank } from "../../../../components/MuComponents/Table/Blank";
-import styles from "./InterestGroup.module.css"
 
 function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
@@ -14,6 +13,7 @@ function InterestGroup() {
     const [perPage, setPerPage] = useState(5);
 
     const columns = [
+		"S/N",
         "ID",
         "NAME",
         "Updated By",
@@ -64,21 +64,18 @@ function InterestGroup() {
                 onPerPageNumber={handlePerPageNumber}
             />
             {data && (
-                <Table rows={data}>
+                <Table rows={data} page={currentPage} perPage={perPage}>
                     <THead columns={columns} />
-					<Blank/>
+					<Pagination
+						currentPage={currentPage}
+						totalPages={totalPages}
+						margin="10px 0"
+						handleNextClick={handleNextClick}
+						handlePreviousClick={handlePreviousClick}
+					/>
                     {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                 </Table>
             )}
-			<div className={styles.pageContainer}>
-				<Pagination
-					currentPage={currentPage}
-					totalPages={totalPages}
-					margin="10px 0"
-					handleNextClick={handleNextClick}
-					handlePreviousClick={handlePreviousClick}
-				/>
-			</div>
         </>
     );
 }
