@@ -67,7 +67,7 @@ const ManageUsers = (props: Props) => {
         onPerPageNumber={handlePerPageNumber}
       />
       {data && (
-        <Table rows={data}>
+        <Table rows={data} page={1} perPage={5}>
           <THead columns={cols} />
           <Pagination
             currentPage={currentPage}

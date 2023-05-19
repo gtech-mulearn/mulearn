@@ -36,7 +36,9 @@ use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <T
 }
 
 const Table: FC<TableProps> = (props: TableProps) => {
-    function convertToNormalDate(dateString: string): string | null {
+
+	function convertToNormalDate(dateString: string): string | null {
+		console.log(dateString);
         const numberRegex = /^[0-9]+$/;
 
         if (String(dateString).match(numberRegex)) {
@@ -50,12 +52,9 @@ const Table: FC<TableProps> = (props: TableProps) => {
         }
         try {
             const dateObj = new Date(dateString);
-            const options = {
-                year: "numeric",
-                month: "long",
-                day: "numeric"
-            } as Intl.DateTimeFormatOptions;
-            const normalDate = dateObj.toLocaleDateString("en-US", options);
+			console.log(dateObj)
+            const options = { year: 'numeric', month: 'long', day: 'numeric' } as Intl.DateTimeFormatOptions;
+            const normalDate = dateObj.toLocaleDateString('en-US', options);
             return normalDate;
         } catch (error) {
             return dateString; // Return the original string as-is
