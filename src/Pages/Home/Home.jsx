@@ -30,7 +30,7 @@ const Home = () => {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="https://app.mulearn.org/user/register"
+              href="https://app.mulearn.org/register"
             >
               <button className={styles.primary}>Join Us</button>
             </a>
