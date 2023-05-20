@@ -20,6 +20,7 @@ export const PrimaryButton: React.FC<Props> = ({
         <button
             onClick={handleClick}
             style={{
+                height:"max-content",
                 padding: '6px 16px',
                 border: '1px solid rgba(1, 75, 178, .5)',
                 borderRadius: '8px',

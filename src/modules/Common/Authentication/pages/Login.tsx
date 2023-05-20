@@ -148,11 +148,6 @@ const Login = () => {
                                 <a href="forgot-password">
                                     Forgot your <b>password?</b>
                                 </a>
-                                <a href="register">
-                                    <b>SignUp?</b>
-                                </a>
-                            </p>
-                            <p className={styles.otp_link}>
                                 <a
                                     onClick={() => {
                                         setOtpForm(false);
@@ -193,6 +188,11 @@ const Login = () => {
                                     ? "Sign in"
                                     : "Request OTP"}
                             </button>
+                            <span className={styles.register}>
+                                <a href="register">
+                                   Don't Have an Account? Sign up
+                                </a>
+                            </span>
                         </form>
                     </div>
                 ) : null}

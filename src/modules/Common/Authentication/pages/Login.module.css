@@ -101,7 +101,9 @@
   cursor: pointer;
   
 }
-
+.login_page .login_container .login_form form p a{
+  cursor: pointer;
+}
 .login_page .login_container .login_form form p a:hover {
   color: #5570f1;
 }

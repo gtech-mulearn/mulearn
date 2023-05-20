@@ -13,7 +13,8 @@ import {
     InterestGroup,
     Profile,
     ConnectDiscord,
-    CampusStudentList
+    CampusStudentList,
+    Organizations
 } from "./modules/Dashboard/modules";
 import { InterestGroupCreate } from "./modules/Dashboard/modules/InterestGroup/InterestGroupCreate";
 
@@ -49,7 +50,9 @@ const router = createBrowserRouter([
                     { path: "interest-groups", element: <InterestGroup /> },
                     { path: "interest-groups/create", element: <InterestGroupCreate /> },
                     { path: "campus-details", element: <CampusStudentList /> },
-                    { path: "manage-users", element: <ManageUsers /> }
+                    { path: "manage-users", element: <ManageUsers /> },
+                    { path: "organizations", element: <Organizations /> },
+
                 ]
             }
         ]

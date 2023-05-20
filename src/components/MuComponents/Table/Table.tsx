@@ -38,7 +38,7 @@ use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <T
 const Table: FC<TableProps> = (props: TableProps) => {
 
 	function convertToNormalDate(dateString: string): string | null {
-		console.log(dateString);
+		// console.log(dateString);
         const numberRegex = /^[0-9]+$/;
 
         if (String(dateString).match(numberRegex)) {
