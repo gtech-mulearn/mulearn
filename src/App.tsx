@@ -15,6 +15,7 @@ import {
     ConnectDiscord,
     CampusStudentList
 } from "./modules/Dashboard/modules";
+import { InterestGroupCreate } from "./modules/Dashboard/modules/InterestGroup/InterestGroupCreate";
 
 const router = createBrowserRouter([
     {
@@ -46,6 +47,7 @@ const router = createBrowserRouter([
                     { path: "profile", element: <Profile /> },
                     { path: "connect-discord", element: <ConnectDiscord /> },
                     { path: "interest-groups", element: <InterestGroup /> },
+                    { path: "interest-groups/create", element: <InterestGroupCreate /> },
                     { path: "campus-details", element: <CampusStudentList /> },
                     { path: "manage-users", element: <ManageUsers /> }
                 ]

@@ -1,0 +1,24 @@
+.form {
+    border: 2px solid #014ed8;
+	border-radius: 8px;
+	height: 13rem;
+	padding: 2rem 5rem;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.container {
+	width: 50vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 50vh;
+}
+
+.text {
+	padding: 0;
+	margin: 0;
+	font-size: 1.5rem;
+	font-weight: bold;
+}

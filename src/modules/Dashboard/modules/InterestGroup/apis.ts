@@ -1,6 +1,7 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "../../../../services/apiGateways";
 import { dashboardRoutes } from "../../../../services/urls";
+import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 
 export const getInterestGroups = async (
     setData: any,
@@ -29,3 +30,24 @@ export const getInterestGroups = async (
         }
     }
 };
+
+export const createInterestGroups = async (name:string, toast: (options?: UseToastOptions | undefined) => ToastId,) => {
+	try {
+        const response = await privateGateway.post(dashboardRoutes.getIgData, {
+			"name": name
+		});
+		toast({
+			title: "Interest Group created",
+			status: "success",
+			duration: 3000,
+			isClosable: true
+		});
+        const message: any = response?.data;
+		console.log(message);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+}
