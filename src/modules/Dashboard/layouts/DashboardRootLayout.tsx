@@ -55,6 +55,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-layout-fluid"></i>
         },
         {
+            url: "organizations",
+            title: "Organizations",
+            hasView: true,
+            roles: [roles.ADMIN],
+            icon: <i className="fi fi-sr-layout-fluid"></i>
+        },
+        {
             url: "manage-users",
             title: "Manage Users",
             hasView: true,
