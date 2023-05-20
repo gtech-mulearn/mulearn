@@ -27,13 +27,11 @@
   display: flex;
   flex-direction: row;
 }
-@media(max-width:767px){
+@media (max-width: 767px) {
   .links_mobile {
-   display: flex;
+    display: flex;
   }
 }
-
-
 
 .link {
   margin-top: 0;
@@ -71,6 +69,7 @@ a {
 }
 
 .social {
+  height: 2rem;
   width: 2rem;
   margin-top: 2rem;
   margin-right: 1rem;
@@ -185,17 +184,15 @@ button:focus {
   display: flex;
 }
 
-
 @media only screen and (min-width: 1000px) {
   .right_side {
     width: 30%;
   }
-  .left_links{
+  .left_links {
     display: flex;
-  
   }
 
-  .larger_screen{
+  .larger_screen {
     display: flex;
     flex-direction: row;
     align-items: center;
