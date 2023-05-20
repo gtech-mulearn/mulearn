@@ -8,7 +8,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     margin?: string;
 }
 
-const PrimaryButton: React.FC<Props> = ({
+export const PrimaryButton: React.FC<Props> = ({
     text,
     handleClick,
     bgColor = 'white',

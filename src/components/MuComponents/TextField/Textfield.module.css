@@ -9,7 +9,7 @@ body{
 }
 .inputBox{
     position: relative;
-    width: auto;
+    width: 90%;
     
 }
 .inputBox input{
@@ -33,7 +33,7 @@ body{
     padding-right: 10px;
 }
 .inputBox input:valid ~ span,.inputBox input:focus ~ span{
-transform: translateX(12px) translateY(-24px);
+transform: translateX(0px) translateY(-30px);
 font-size: 1.2rem;
 background: rgba(0, 0, 0, 0);
 }
