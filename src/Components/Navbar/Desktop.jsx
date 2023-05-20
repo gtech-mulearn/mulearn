@@ -25,7 +25,7 @@ export const Resources = ({ notificationOpen }) => {
           <ion-icon name="notifications-circle-outline"></ion-icon>
         </div>
         <div
-          className={`notifications group-hover:lg:block hover:lg:block ${
+          className={`notifications group-hover:lg:block hover:lg:block z-10 ${
             notificationOpen ? "block" : "hidden"
           }`}
         >
