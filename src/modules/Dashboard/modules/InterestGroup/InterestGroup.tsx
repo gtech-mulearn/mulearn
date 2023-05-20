@@ -49,10 +49,12 @@ function InterestGroup() {
     }, []);
 
     const handleSearch = (search: string) => {
+		setCurrentPage(1)
         getInterestGroups(setData, 1, perPage, setTotalPages, search, "");
     };
 
     const handleSort = (sort: string) => {
+		setCurrentPage(1)
         if (sort === "1") {
             getInterestGroups(setData, 1, perPage, setTotalPages, "", "name");
         }
@@ -62,6 +64,7 @@ function InterestGroup() {
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
+		setCurrentPage(1)
         setPerPage(selectedValue);
         getInterestGroups(setData, 1, selectedValue, setTotalPages, "", "");
     };
