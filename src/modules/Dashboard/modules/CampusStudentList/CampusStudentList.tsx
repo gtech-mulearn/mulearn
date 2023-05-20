@@ -49,6 +49,7 @@ const CampusStudentList = (props: Props) => {
     }, []);
 
     const handleSearch = (search: string) => {
+		setCurrentPage(1)
         getStudentDetails(
             setStudentData,
             1,
@@ -84,6 +85,7 @@ const CampusStudentList = (props: Props) => {
 
     const handlePerPageNumber = (selectedValue: number) => {
         setPerPage(selectedValue);
+		setCurrentPage(1)
         getStudentDetails(
             setStudentData,
             1,
