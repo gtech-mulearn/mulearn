@@ -1,10 +1,7 @@
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
-import { useToast } from "@chakra-ui/react";
 
+//To prevent a user from accessing the login page if they are already logged in.
 const AuthRoutes: React.FC = () => {
-  const toast = useToast();
-  const navigate = useNavigate();
-
   let refreshToken = localStorage.getItem("refreshToken");
 
   let onboardingStatus = null;

@@ -16,47 +16,46 @@ import {
     CampusStudentList
 } from "./modules/Dashboard/modules";
 
+const router = createBrowserRouter([
+    {
+        path: "*",
+        element: <NotFound />
+    },
+    {
+        path: "404",
+        element: <NotFound />
+    },
+    {
+        path: "/",
+        element: <AuthRoutes />,
+        children: [
+            { path: "register", element: <Onboarding /> },
+            { path: "login", element: <Login /> },
+            { path: "forgot-password", element: <ForgotPassword /> },
+            { path: "reset-password", element: <ResetPassword /> }
+        ]
+    },
+    {
+        path: "/",
+        element: <PrivateRoutes />,
+        children: [
+            {
+                path: "/",
+                element: <DashboardRootLayout />,
+                children: [
+                    { path: "profile", element: <Profile /> },
+                    { path: "connect-discord", element: <ConnectDiscord /> },
+                    { path: "interest-groups", element: <InterestGroup /> },
+                    { path: "campus-details", element: <CampusStudentList /> },
+                    { path: "manage-users", element: <ManageUsers /> }
+                ]
+            }
+        ]
+    }
+]);
+
 function App() {
-    return (
-        <RouterProvider
-            router={createBrowserRouter([
-                {
-                    path: "*",
-                    element: <NotFound />
-                },
-                {
-                    path: "/",
-                    element: <AuthRoutes />,
-                    children: [
-                        { path: "register", element: <Onboarding /> },
-                        { path: "login", element: <Login /> },
-                        {
-                            path: "forgot-password",
-                            element: <ForgotPassword />
-                        },
-                        { path: "reset-password", element: <ResetPassword /> }
-                    ]
-                },
-                {
-                    path: "/",
-                    element: <PrivateRoutes />,
-                    children: [
-                        {
-                            path: "/",
-                            element: <DashboardRootLayout />,
-                            children: [
-                                { path: "profile", element: <Profile /> },
-                                { path: "connect-discord",element: <ConnectDiscord /> },
-                                { path: "interest-groups",element: <InterestGroup />},
-                                { path: "campus-details",element: <CampusStudentList />},
-                                { path: "manage-users",element: <ManageUsers />}
-                            ]
-                        }
-                    ]
-                }
-            ])}
-        />
-    );
+    return <RouterProvider router={router} />;
 }
 
 export default App;

@@ -25,37 +25,65 @@ const DashboardRootLayout = (props: { component?: any }) => {
         setConnected(existInGuild);
         setCampusLead(isCampusAmbassador);
         setUserType(isAdmin ? "admin" : "user");
-
     }, []);
 
     const buttons = [
         {
             url: "profile",
             title: "Profile",
+            hasView: true,
             icon: <i className="fi fi-sr-clipboard-user"></i>
+        },
+        {
+            url: "connect-discord",
+            title: "Connect Discord",
+            hasView: !connected,
+            icon: <i className="fi fi-sr-data-transfer"></i>
+        },
+        {
+            url: "campus-details",
+            title: "Campus Details",
+            hasView: true,
+            roles: [roles.CAMPUS_AMBASSADOR],
+            icon: <i className="fi fi-sr-book-arrow-right"></i>
+        },
+        {
+            url: "interest-groups",
+            title: "Interest Groups",
+            hasView: true,
+            roles: [roles.ADMIN],
+            icon: <i className="fi fi-sr-layout-fluid"></i>
+        },
+        {
+            url: "manage-users",
+            title: "Manage Users",
+            hasView: true,
+            roles: [roles.ADMIN],
+            icon: <i className="fi fi-sr-users"></i>
         }
     ];
 
-    switch (userType) {
-        case "admin":
-            buttons.push(...adminButtons);
-            break;
-    }
+    // //Swtich Case not recommended
+    // switch (userType) {
+    //     case "admin":
+    //         buttons.push(...adminButtons);
+    //         break;
+    // }
 
-    if (!connected) {
-        buttons.splice(1, 0, {
-            url: "connect-discord",
-            title: "Connect Discord",
-            icon: <i className="fi fi-sr-data-transfer"></i>
-        });
-    }
-    if (campusLead) {
-        buttons.splice(2, 0, {
-            url: "campus-details",
-            title: "Campus Details",
-            icon: <i className="fi fi-sr-book-arrow-right"></i>
-        });
-    }
+    // if (!connected) {
+    //     buttons.splice(1, 0, {
+    //         url: "connect-discord",
+    //         title: "Connect Discord",
+    //         icon: <i className="fi fi-sr-data-transfer"></i>
+    //     });
+    // }
+    // if (campusLead) {
+    //     buttons.splice(2, 0, {
+    //         url: "campus-details",
+    //         title: "Campus Details",
+    //         icon: <i className="fi fi-sr-book-arrow-right"></i>
+    //     });
+    // }
 
     return (
         <div className={styles.full_page}>

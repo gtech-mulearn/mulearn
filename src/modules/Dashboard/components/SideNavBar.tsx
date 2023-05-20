@@ -25,6 +25,8 @@ type Props = {
     sidebarButtons: {
         url: string;
         title: string;
+        hasView: boolean;
+        roles?: string[];
         icon: any;
     }[];
 };
@@ -40,15 +42,12 @@ const SideNavBar = (props: Props) => {
     const [display2, setDisplay2] = useState("");
     const [dropDownBtnDisplay, setDropDownBtnDisplay] = useState("0");
     const [connected, setConnected] = useState(false);
-    // const [opacity, setOpacity] = useState(null);
+
+    const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
+
     useEffect(() => {
-        if (
-            localStorage.getItem("userInfo") &&
-            JSON.parse(localStorage.getItem("userInfo")!).existInGuild
-        ) {
-            setConnected(
-                JSON.parse(localStorage.getItem("userInfo")!).existInGuild
-            );
+        if (localStorage.getItem("userInfo") && userInfo.existInGuild) {
+            setConnected(userInfo.existInGuild);
         }
     });
 
@@ -103,25 +102,34 @@ const SideNavBar = (props: Props) => {
                         {/* <MuButton text="Activity" icon={<i className="fi fi-sr-copy-alt"></i>} /> */}
                         {/* <MuButton text="History" icon={<i className="fi fi-sr-search-alt"></i>} /> */}
                         <div className={styles.side_nav_bar_main_items}>
-                            {props.sidebarButtons.map((button,i )=> (
-                                <MuButton
-                                key={i}
-                                    text={button.title}
-                                    icon={button.icon}
-                                    style={
-                                        window.location.pathname ===
-                                        `/${button.url}`
-                                            ? {
-                                                  background: "#014BB2",
-                                                  color: "#fff"
-                                              }
-                                            : {}
-                                    }
-                                    onClick={() => {
-                                        navigate(button.url);
-                                    }}
-                                />
-                            ))}
+                            {props.sidebarButtons
+                                .filter(
+                                    button =>
+                                        button.hasView &&
+                                        (!button.roles ||
+                                            button.roles?.some(role =>
+                                                userInfo.roles.includes(role)
+                                            ))
+                                )
+                                .map((button, i) => (
+                                    <MuButton
+                                        key={i}
+                                        text={button.title}
+                                        icon={button.icon}
+                                        style={
+                                            window.location.pathname ===
+                                            `/${button.url}`
+                                                ? {
+                                                      background: "#014BB2",
+                                                      color: "#fff"
+                                                  }
+                                                : {}
+                                        }
+                                        onClick={() => {
+                                            navigate(button.url);
+                                        }}
+                                    />
+                                ))}
                             {/* <DropDownButtons
                                 text="Management"
                                 icon={<i className="fi fi-sr-layout-fluid"></i>}

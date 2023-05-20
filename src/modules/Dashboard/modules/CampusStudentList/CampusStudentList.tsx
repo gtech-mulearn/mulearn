@@ -13,13 +13,12 @@ import { useNavigate } from "react-router-dom";
 type Props = {};
 
 const CampusStudentList = (props: Props) => {
-    const columns = ["SI NO", "Name", "Email", "Phone", "Karma","MuId"];
+    const columns = ["SI NO", "Name", "Email", "Phone", "Karma", "MuId"];
     const [studentData, setStudentData] = useState<any[]>([]);
     const [perPage, setPerPage] = useState(5);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const navigate = useNavigate();
-
 
     const [campusData, setCampusData] = useState({
         collegeName: "",
@@ -50,21 +49,49 @@ const CampusStudentList = (props: Props) => {
     }, []);
 
     const handleSearch = (search: string) => {
-        getStudentDetails(setStudentData, 1, perPage, setTotalPages, search, "");
+        getStudentDetails(
+            setStudentData,
+            1,
+            perPage,
+            setTotalPages,
+            search,
+            ""
+        );
     };
 
     const handleSort = (sort: string) => {
         if (sort === "1") {
-            getStudentDetails(setStudentData, 1, perPage, setTotalPages, "", "-user");
+            getStudentDetails(
+                setStudentData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                "-user"
+            );
         }
         if (sort === "2") {
-            getStudentDetails(setStudentData, 1, perPage, setTotalPages, "", "user");
+            getStudentDetails(
+                setStudentData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                "user"
+            );
         }
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setPerPage(selectedValue);
-        getStudentDetails(setStudentData, 1, selectedValue, setTotalPages, "", "");
+        getStudentDetails(
+            setStudentData,
+            1,
+            selectedValue,
+            setTotalPages,
+            "",
+            ""
+        );
     };
     return (
         <>
