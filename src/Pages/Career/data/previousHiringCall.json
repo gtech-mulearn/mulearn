@@ -1,5 +1,42 @@
 [
   {
+    "date": "05/15/2023",
+    "logo": "/assets/careers/companies/ecesis.webp",
+    "roles": ["Buisness Development Profile"],
+    "company": "Ecesis",
+    "title": "Ecesis Hiring Call",
+    "location": "Thiruvanathapuram",
+    "remuneration": "Upto 20K",
+    "lastdate": "17th May",
+    "applylink": "https://airtable.com/shr933gbyLsI39C07"
+  },
+  {
+    "date": "05/11/2023",
+    "logo": "/assets/careers/companies/yip.webp",
+    "roles": ["District Coordinator"],
+    "company": "Yip",
+    "title": "Yip x µLearn",
+    "remuneration": "Based on Experience",
+    "vacancies": "03",
+    "location": "Alapuzha HQ ,Kottayam HQ ,Kozhikode HQ",
+    "lastdate": "18th May",
+    "applylink": "https://airtable.com/shrxkzH8Iv8GHcXCM",
+    "jdlink": "https://mulearn.org/jd"
+  },
+  {
+    "date": "05/11/2023",
+    "logo": "/assets/careers/companies/yip.webp",
+    "roles": ["Zonal Coordinator"],
+    "company": "Yip",
+    "title": "Yip x µLearn",
+    "remuneration": "Based on Experience",
+    "vacancies": "03",
+    "location": "Malapuram HQ, Kannur HQ, Kasargod HQ",
+    "lastdate": "18th May",
+    "duration": "1 Year",
+    "applylink": "https://airtable.com/shrUvFtlkqcvJqHfI"
+  },
+  {
     "date": "04/26/2023",
     "logo": "/assets/careers/companies/yip.webp",
     "roles": ["District Coordinator"],
