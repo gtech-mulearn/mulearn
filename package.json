@@ -22,6 +22,7 @@
     "react-router-dom": "^6.9.0",
     "react-select": "^5.7.2",
     "react-spinners": "^0.13.8",
+    "sass": "^1.62.1",
     "title-case": "^3.0.3"
   },
   "devDependencies": {
