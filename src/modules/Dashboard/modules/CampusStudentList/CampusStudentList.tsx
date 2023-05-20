@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 type Props = {};
 
 const CampusStudentList = (props: Props) => {
-    const columns = ["SI NO", "Name", "Email", "Phone", "Karma","ɥId"];
+    const columns = ["SI NO", "Name", "Email", "Phone", "Karma","MuId"];
     const [studentData, setStudentData] = useState<any[]>([]);
     const [perPage, setPerPage] = useState(5);
     const [currentPage, setCurrentPage] = useState(1);

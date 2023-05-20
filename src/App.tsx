@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AuthRoutes from "./components/AuthRoutes";
 import Onboarding from "./modules/Common/Authentication/pages/Onboarding";
 import Login from "./modules/Common/Authentication/pages/Login";
@@ -15,20 +15,8 @@ import {
     ConnectDiscord,
     CampusStudentList
 } from "./modules/Dashboard/modules";
-import { roles } from "./services/types";
 
 function App() {
-    const [campusComponent, setCampusComponent] = useState(<></>);
-    useEffect(() => {
-        localStorage.getItem("userInfo") &&
-        JSON.parse(localStorage.getItem("userInfo")!).roles.includes(
-            roles.CAMPUS_AMBASSADOR
-        )
-            ? setCampusComponent(<CampusStudentList />)
-            : setCampusComponent(<NotFound />);
-    });
-    // console.log(campusComponent);
-
     return (
         <RouterProvider
             router={createBrowserRouter([
@@ -58,40 +46,10 @@ function App() {
                             element: <DashboardRootLayout />,
                             children: [
                                 { path: "profile", element: <Profile /> },
-                                {
-                                    path: "connect-discord",
-                                    element: <ConnectDiscord />
-                                },
-                                {
-                                    path: "interest-groups",
-                                    element:
-                                        localStorage.getItem("userInfo") &&
-                                        JSON.parse(
-                                            localStorage.getItem("userInfo")!
-                                        ).roles.includes(
-                                            roles.ADMIN || roles.FELLOW
-                                        ) ? (
-                                            <InterestGroup />
-                                        ) : null
-                                },
-                                campusComponent !== <></>
-                                    ? {
-                                          path: "campus-details",
-                                          element: campusComponent
-                                      }
-                                    : {},
-                                {
-                                    path: "manage-users",
-                                    element:
-                                        localStorage.getItem("userInfo") &&
-                                        JSON.parse(
-                                            localStorage.getItem("userInfo")!
-                                        ).roles.includes(
-                                            roles.ADMIN || roles.FELLOW
-                                        ) ? (
-                                            <ManageUsers />
-                                        ) : null
-                                }
+                                { path: "connect-discord",element: <ConnectDiscord /> },
+                                { path: "interest-groups",element: <InterestGroup />},
+                                { path: "campus-details",element: <CampusStudentList />},
+                                { path: "manage-users",element: <ManageUsers />}
                             ]
                         }
                     ]

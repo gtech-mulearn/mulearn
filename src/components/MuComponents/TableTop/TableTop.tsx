@@ -35,7 +35,7 @@ const TableTop = (props: Props) => {
                         selectedOption={itemsPerPage}
                         onOptionChange={handleOptionChange}
                     />
-                    {/* <SortButton onSort={handleSort} /> */}
+                    <SortButton onSort={handleSort} />
                 </div>
             </div>
         </div>
