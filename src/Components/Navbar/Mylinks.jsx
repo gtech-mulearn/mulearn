@@ -298,7 +298,7 @@ export const links = [
             foreign: false,
           },
           {
-            name: "Interst Groups",
+            name: "Interest Groups",
             link: mainlink + "/",
             submenu: false,
             sublinks: [],
