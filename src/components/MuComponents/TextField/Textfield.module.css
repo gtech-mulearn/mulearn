@@ -9,7 +9,7 @@ body{
 }
 .inputBox{
     position: relative;
-    width: auto;
+    width: 90%;
     
 }
 .inputBox input{
@@ -18,24 +18,24 @@ body{
     border: 2px solid #014ed8;
     border-radius: 10px;
     outline: none;
-    color: black;
+    color: #014ed8;
     transition: 0.3s;
     
 }
 .inputBox span{
     position: absolute;
     left: 0px;
-    color: black;
-    font-size: 1rem;
+    color: #014ed8;
+    font-size: 1.2rem;
     transition: 0.3s;
     padding-left: 10px;
-    padding-top: 10px;
+    padding-top: 15px;
     padding-right: 10px;
 }
 .inputBox input:valid ~ span,.inputBox input:focus ~ span{
-transform: translateX(12px) translateY(-24px);
-font-size: 1.1rem;
-background: white;
+transform: translateX(0px) translateY(-30px);
+font-size: 1.2rem;
+background: rgba(0, 0, 0, 0);
 }
 .inputBox input:valid,.inputBox input:focus{
     border: 2px solid #9fb5ef;

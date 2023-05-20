@@ -8,6 +8,9 @@ import { Blank } from "../../../../components/MuComponents/Table/Blank";
 import { roles } from "../../../../services/types";
 import { hasRole } from "../../../../services/common_functions";
 import { useNavigate } from "react-router-dom";
+import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import { AiOutlinePlusCircle } from "react-icons/ai";
+import styles from "./InterestGroup.module.css";
 
 function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
@@ -20,7 +23,7 @@ function InterestGroup() {
         "S/N",
         "ID",
         "NAME",
-		"Members",
+        "Members",
         "Updated By",
         "Updated On",
         "Created By",
@@ -63,8 +66,20 @@ function InterestGroup() {
         getInterestGroups(setData, 1, selectedValue, setTotalPages, "", "");
     };
 
+	const handleCreate = () => {
+		navigate("/interest-groups/create");
+	}
+
     return (
         <>
+            <div className={styles.createBtnContainer}>
+                <MuButton
+                    className={styles.createBtn}
+                    text={"Create"}
+                    icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
+					onClick={handleCreate}
+                />
+            </div>
             <TableTop
                 onSearchText={handleSearch}
                 onSortText={handleSort}

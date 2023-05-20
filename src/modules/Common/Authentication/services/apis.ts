@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate, NavigateFunction } from "react-router-dom";
 import {
     privateGateway,
-    publicGateway
+    publicGateway,
     // publicGatewayAuth
 } from "../../../../services/apiGateways";
 import { authRoutes, dashboardRoutes } from "../../../../services/urls";
@@ -18,7 +18,7 @@ export const forgetPassword = (
     navigate: NavigateFunction
 ) => {
     publicGateway
-        // publicGatewayAuth
+    // publicGatewayAuth
         .post(authRoutes.forgetPassword, { emailOrMuid })
         .then(response => {
             toast({
@@ -50,7 +50,7 @@ export const login = (
     navigate: NavigateFunction
 ) => {
     publicGateway
-        // publicGatewayAuth
+    // publicGatewayAuth
         .post(authRoutes.login, { emailOrMuid, password })
         .then(response => {
             if (response.data.hasError == false) {
@@ -108,7 +108,7 @@ export const getMuid = (
     setMuID: setMuID
 ) => {
     publicGateway
-        // publicGatewayAuth
+    // publicGatewayAuth
         .post(authRoutes.getMuid.replace("${token}", token))
         .then(response => {
             console.log(response.data);
@@ -144,8 +144,8 @@ export const resetPassword = (
     toast: (options?: UseToastOptions | undefined) => ToastId,
     navigate: NavigateFunction
 ) => {
-    publicGateway
-        // publicGatewayAuth
+	publicGateway
+    // publicGatewayAuth
         .post(authRoutes.resetPassword.replace("${token}", token), { password })
         .then(response => {
             if (response.data.statusCode === 200) {
@@ -183,7 +183,7 @@ export const requestEmailOrMuidOtp = (
     setStatus: setStatus
 ) => {
     publicGateway
-        // publicGatewayAuth
+    // publicGatewayAuth
         .post(authRoutes.requestEmailOrMuidOtp, { emailOrMuid })
         .then(response => {
             setStatus(response.data.statusCode);
@@ -216,7 +216,7 @@ export const otpVerification = (
     navigate: NavigateFunction
 ) => {
     publicGateway
-        // publicGatewayAuth
+    // publicGatewayAuth
         .post(authRoutes.otpVerification, { emailOrMuid, otp })
         .then(response => {
             console.log(response.data);
