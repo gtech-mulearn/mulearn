@@ -86,10 +86,20 @@
   align-items: center;
 }
 
+.register{
+  font-weight: 500;
+  display: block;
+  width: 100%;
+  margin-top: 0.75rem;
+  text-align: center;
+  font-size: 15px;
+}
+
 .login_page .login_container .login_form form p.otp_link {
   padding-top: 0px;
   margin-top: -20px;
   cursor: pointer;
+  
 }
 
 .login_page .login_container .login_form form p a:hover {

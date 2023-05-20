@@ -6,15 +6,19 @@ import Table from "../../../../components/MuComponents/Table/Table";
 import THead from "../../../../components/MuComponents/Table/THead";
 import Pagination from "../../../../components/MuComponents/Pagination/Pagination";
 import { titleCase } from "title-case";
+import { hasRole } from "../../../../services/common_functions";
+import { roles } from "../../../../services/types";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
 const CampusStudentList = (props: Props) => {
-    const columns = ["SI NO", "Name", "Email", "Phone", "Karma"];
+    const columns = ["SI NO", "Name", "Email", "Phone", "Karma", "MuId"];
     const [studentData, setStudentData] = useState<any[]>([]);
     const [perPage, setPerPage] = useState(5);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+    const navigate = useNavigate();
 
     const [campusData, setCampusData] = useState({
         collegeName: "",
@@ -27,37 +31,67 @@ const CampusStudentList = (props: Props) => {
         rank: ""
     });
 
-	const handleNextClick = () => {
+    const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
         getStudentDetails(setStudentData, nextPage, perPage);
     };
-	const handlePreviousClick = () => {
-		const prevPage = currentPage - 1;
+    const handlePreviousClick = () => {
+        const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-		getStudentDetails(setStudentData, prevPage, perPage);
+        getStudentDetails(setStudentData, prevPage, perPage);
     };
     useEffect(() => {
-		getStudentDetails(setStudentData, 1, perPage);
+        if (!hasRole([roles.CAMPUS_AMBASSADOR])) navigate("/404");
+
+        getStudentDetails(setStudentData, 1, perPage);
         getCampusDetails(setCampusData);
     }, []);
-	
-	const handleSearch = (search: string) => {
-		getStudentDetails(setStudentData, 1, perPage, setTotalPages, search, "");
-	};
 
-	const handleSort = (sort: string) => {
+    const handleSearch = (search: string) => {
+        getStudentDetails(
+            setStudentData,
+            1,
+            perPage,
+            setTotalPages,
+            search,
+            ""
+        );
+    };
+
+    const handleSort = (sort: string) => {
         if (sort === "1") {
-            getStudentDetails(setStudentData, 1, perPage, setTotalPages, "", "-user");
+            getStudentDetails(
+                setStudentData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                "-user"
+            );
         }
         if (sort === "2") {
-            getStudentDetails(setStudentData, 1, perPage, setTotalPages, "", "user");
+            getStudentDetails(
+                setStudentData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                "user"
+            );
         }
     };
 
-	const handlePerPageNumber = (selectedValue: number) => {
+    const handlePerPageNumber = (selectedValue: number) => {
         setPerPage(selectedValue);
-        getStudentDetails(setStudentData, 1, selectedValue, setTotalPages, "", "");
+        getStudentDetails(
+            setStudentData,
+            1,
+            selectedValue,
+            setTotalPages,
+            "",
+            ""
+        );
     };
     return (
         <>
