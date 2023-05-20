@@ -1,0 +1,21 @@
+._table_tab_container{
+    width: 90%;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    ._table_tab_btn{
+        padding: 10px 30px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    .active{
+        background-color: rgba(1, 75, 178);
+        color: white;
+    }
+    .inactive {
+        background-color: white;
+        border: 2px solid rgba(1, 75, 178);
+        color: rgba(1, 75, 178);
+    }
+}

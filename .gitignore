@@ -23,7 +23,3 @@ dist-ssr
 *.sln
 *.sw?
 *.env
-src/modules/Dashboard/modules/Organizations/Organizations.tsx
-src/modules/Dashboard/modules/Organizations/Organizations.scss
-package-lock.json
-package.json

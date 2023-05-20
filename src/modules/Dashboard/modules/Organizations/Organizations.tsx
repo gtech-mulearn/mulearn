@@ -7,6 +7,8 @@ import Pagination from '../../../../components/MuComponents/Pagination/Paginatio
 import { getInterestGroups } from '../InterestGroup/apis'
 import { MuButtonLight } from '../../../../components/MuComponents/MuButtons/MuButton'
 import PrimaryButton from '../../../../components/MuComponents/MuButtons/MuOutlinedButton'
+import {columnsCollege,columnsCommunities,columnsCompanies} from "./THeaders"
+import TableTopTab from './TableTopTab'
 
 import "./Organizations.scss"
 
@@ -15,18 +17,10 @@ function Organizations() {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(5);
+    const [columns,setColumns] = useState(columnsCollege)
+    const [activeTab,setActiveTab] = useState("Colleges")
+
     const navigate = useNavigate();
-
-    const tabletopTab = ["Colleges", "Companies", "Communities"]
-
-    const columnsCollege = [
-        "S/N",
-        "Code",
-        "Rank",
-		"Affiliation",
-        "District",
-        "Zone"
-    ];
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -40,15 +34,27 @@ function Organizations() {
         getInterestGroups(setData, prevPage, perPage);
     };
 
+    const handleTabClick = (tab:string) => {
+        if(tab === "Colleges"){
+            setColumns(columnsCollege)
+        }else if (tab === "Companies") {
+            setColumns(columnsCompanies)
+        }else if(tab === "Communities") {
+            setColumns(columnsCommunities)
+        } else{
+            alert("Error to load Table Headers")
+        }
+        setActiveTab(tab)
+    }
+
   return (
     <>
-        Organization
-        <TableTopTab/>
+        <TableTopTab active={activeTab} onTabClick={handleTabClick}/>
         <TableTop
         />
         {data && (
                 <Table rows={data} page={currentPage} perPage={perPage}>
-                    <THead columns={columnsCollege} />
+                    <THead columns={columns} />
                     <Pagination
                         currentPage={currentPage}
                         totalPages={totalPages}
@@ -61,25 +67,6 @@ function Organizations() {
             )}
     </>
   )
-}
-
-const TableTopTab = () => {
-    return(
-        <div className='_table_tab_container'>
-            <MuButtonLight 
-                text="college"
-                style={{
-                    width:"max-content"
-                }}
-            />
-            <PrimaryButton 
-                text="college"
-            />
-            <PrimaryButton 
-                text="college"
-            />
-        </div>
-    )
 }
 
 export default Organizations
