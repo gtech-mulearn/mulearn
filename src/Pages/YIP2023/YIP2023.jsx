@@ -20,12 +20,12 @@ const YIP2023 = () => {
 
     if (isiOS) {
       window.open(
-        "https://apps.apple.com/in/app/young-innovators-programme/id6443935839",
+        "https://yip.kerala.gov.in/yipapp/index.php/idea2022",
         "_blank"
       );
     } else if (isAndroid) {
       window.open(
-        "https://play.google.com/store/apps/details?id=com.yip.yipapp",
+        "https://yip.kerala.gov.in/yipapp/index.php/idea2022",
         "_blank"
       );
     } else {
