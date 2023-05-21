@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 type Props = {
     onSearchText?: (data: string) => void;
     onPerPageNumber?: (data: number) => void;
-	CSV: string;
+	CSV?: string;
 };
 
 const TableTop = (props: Props) => {
@@ -23,7 +23,6 @@ const TableTop = (props: Props) => {
 		setItemsPerPage(value);
         props.onPerPageNumber && props.onPerPageNumber(value);
 	};
-	
     return (
         <div className={styles.container}>
             <div className={styles.body}>
@@ -37,7 +36,7 @@ const TableTop = (props: Props) => {
                         onOptionChange={handleOptionChange}
                     />
 					<a href={props.CSV} target="_blank">
-						<MuButton text={"CSV"} icon={<HiDownload/>}/>
+						<MuButton text={"CSV"} icon={<HiDownload/>} className={styles.csv}/>
 					</a>
                 </div>
             </div>
