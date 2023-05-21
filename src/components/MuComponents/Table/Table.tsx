@@ -1,11 +1,9 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import styles from "./Table.module.css";
 
-type Data = {
-    id?: number;
-    name?: string;
-    description?: string;
-};
+interface Data {
+	[key: string]: string | number | boolean;
+}
 
 interface HeaderProps {
     columns: string[];
@@ -28,6 +26,7 @@ type TableProps = {
     ];
     page: number;
     perPage: number;
+	columnOrder: string[];
 };
 
 {
@@ -36,28 +35,29 @@ use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <T
 }
 
 const Table: FC<TableProps> = (props: TableProps) => {
-
-	function convertToNormalDate(dateString: string): string | null {
-		// console.log(dateString);
+    function convertToNormalDate(dateString: any): string | null {
         const numberRegex = /^[0-9]+$/;
 
         if (String(dateString).match(numberRegex)) {
-            return dateString; // Return the original string as-is if it contains only numbers
+            return dateString;
         }
 
         const dateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/;
 
         if (!String(dateString).match(dateRegex)) {
-            return dateString; // Return the original string as-is if it's not a valid date format
+            return dateString; 
         }
         try {
             const dateObj = new Date(dateString);
-			console.log(dateObj)
-            const options = { year: 'numeric', month: 'long', day: 'numeric' } as Intl.DateTimeFormatOptions;
-            const normalDate = dateObj.toLocaleDateString('en-US', options);
+            const options = {
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            } as Intl.DateTimeFormatOptions;
+            const normalDate = dateObj.toLocaleDateString("en-US", options);
             return normalDate;
         } catch (error) {
-            return dateString; // Return the original string as-is
+            return dateString;
         }
     }
 
@@ -69,18 +69,11 @@ const Table: FC<TableProps> = (props: TableProps) => {
                 <table className={styles.tableActual}>
                     {props.children?.[0]}
                     <tbody>
-                        {props.rows?.map((row: any, index: number) => (
+                        {props.rows?.map((rowData, index) => (
                             <tr key={index}>
-                                <td className={styles.td}>
-                                    {startIndex + index + 1}
-                                </td>
-                                {Object.keys(row).map((key: string) => (
-                                    <td
-                                        className={styles.td}
-                                        key={`${row.id}-${key}`}
-                                    >
-                                        {convertToNormalDate(row[key])}
-                                    </td>
+                                <td className={styles.td}>{startIndex + index + 1}</td>{" "}
+                                {props.columnOrder.map(column => (
+                                    <td className={styles.td} key={column}>{convertToNormalDate(rowData[column])}</td>
                                 ))}
                             </tr>
                         ))}

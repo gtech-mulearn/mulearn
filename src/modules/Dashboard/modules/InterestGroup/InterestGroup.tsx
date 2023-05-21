@@ -17,17 +17,23 @@ function InterestGroup() {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(5);
+    const [sort, setSort] = useState('');
     const navigate = useNavigate();
 
-    const columns = [
-        "S/N",
-        "ID",
-        "NAME",
+    const columnOrder = [
+		"name",
+        "count",
+        "updated_by",
+        "created_by",
+        "created_at",
+    ];
+
+    const editableColumnNames = [
+		"NAME",
         "Members",
         "Updated By",
-        "Updated On",
         "Created By",
-        "Created On"
+        "Created On",
     ];
 
     const handleNextClick = () => {
@@ -49,29 +55,32 @@ function InterestGroup() {
     }, []);
 
     const handleSearch = (search: string) => {
-		setCurrentPage(1)
+        setCurrentPage(1);
         getInterestGroups(setData, 1, perPage, setTotalPages, search, "");
     };
 
-    const handleSort = (sort: string) => {
-		setCurrentPage(1)
-        if (sort === "1") {
-            getInterestGroups(setData, 1, perPage, setTotalPages, "", "name");
-        }
-        if (sort === "2") {
-            getInterestGroups(setData, 1, perPage, setTotalPages, "", "-name");
-        }
-    };
-
     const handlePerPageNumber = (selectedValue: number) => {
-		setCurrentPage(1)
+        setCurrentPage(1);
         setPerPage(selectedValue);
         getInterestGroups(setData, 1, selectedValue, setTotalPages, "", "");
     };
 
-	const handleCreate = () => {
-		navigate("/interest-groups/create");
-	}
+    const handleCreate = () => {
+        navigate("/interest-groups/create");
+    };
+
+    const handleIconClick = (column: string) => {
+		if(sort === column){
+			setSort(`-${column}`);
+			getInterestGroups(setData, 1, perPage, setTotalPages, "", sort);
+		}
+		else {
+			setSort(column);
+			getInterestGroups(setData, 1, perPage, setTotalPages, "", sort);
+		}
+		
+        console.log(`Icon clicked for column: ${column}`);
+    };
 
     return (
         <>
@@ -80,17 +89,25 @@ function InterestGroup() {
                     className={styles.createBtn}
                     text={"Create"}
                     icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
-					onClick={handleCreate}
+                    onClick={handleCreate}
                 />
             </div>
             <TableTop
                 onSearchText={handleSearch}
-                onSortText={handleSort}
                 onPerPageNumber={handlePerPageNumber}
             />
             {data && (
-                <Table rows={data} page={currentPage} perPage={perPage}>
-                    <THead columns={columns} />
+                <Table
+                    rows={data}
+                    page={currentPage}
+                    perPage={perPage}
+                    columnOrder={columnOrder}
+                >
+                    <THead
+                        columnOrder={columnOrder}
+                        editableColumnNames={editableColumnNames}
+                        onIconClick={handleIconClick}
+                    />
                     <Pagination
                         currentPage={currentPage}
                         totalPages={totalPages}
