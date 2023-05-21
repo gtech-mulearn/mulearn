@@ -44,7 +44,7 @@ const CampusStudentList = (props: Props) => {
     useEffect(() => {
         if (!hasRole([roles.CAMPUS_AMBASSADOR])) navigate("/404");
 
-        getStudentDetails(setStudentData, 1, perPage);
+        getStudentDetails(setStudentData, 1, perPage, setTotalPages);
         getCampusDetails(setCampusData);
     }, []);
 
