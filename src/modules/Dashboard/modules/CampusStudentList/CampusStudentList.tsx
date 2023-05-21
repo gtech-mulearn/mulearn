@@ -18,24 +18,12 @@ const CampusStudentList = (props: Props) => {
     const [perPage, setPerPage] = useState(5);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const [sort, setSort] = useState('');
+    const [sort, setSort] = useState("");
     const navigate = useNavigate();
 
-	const columnOrder = [
-		"name",
-        "email",
-        "phone",
-        "karma",
-        "mu_id",
-    ];
+    const columnOrder = ["name", "email", "phone", "karma", "mu_id"];
 
-    const editableColumnNames = [
-		"Name",
-		"Email",
-		"Phone",
-		"Karma",
-		"MuId"
-    ];
+    const editableColumnNames = ["Name", "Email", "Phone", "Karma", "MuId"];
 
     const [campusData, setCampusData] = useState({
         collegeName: "",
@@ -66,7 +54,7 @@ const CampusStudentList = (props: Props) => {
     }, []);
 
     const handleSearch = (search: string) => {
-		setCurrentPage(1)
+        setCurrentPage(1);
         getStudentDetails(
             setStudentData,
             1,
@@ -79,7 +67,7 @@ const CampusStudentList = (props: Props) => {
 
     const handlePerPageNumber = (selectedValue: number) => {
         setPerPage(selectedValue);
-		setCurrentPage(1)
+        setCurrentPage(1);
         getStudentDetails(
             setStudentData,
             1,
@@ -90,16 +78,29 @@ const CampusStudentList = (props: Props) => {
         );
     };
 
-	const handleIconClick = (column: string) => {
-		if(sort === column){
-			setSort(`-${column}`);
-			getStudentDetails(setStudentData, 1, perPage, setTotalPages, "", sort);
-		}
-		else {
-			setSort(column);
-			getStudentDetails(setStudentData, 1, perPage, setTotalPages, "", sort);
-		}
-		
+    const handleIconClick = (column: string) => {
+        if (sort === column) {
+            setSort(`-${column}`);
+            getStudentDetails(
+                setStudentData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                sort
+            );
+        } else {
+            setSort(column);
+            getStudentDetails(
+                setStudentData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                sort
+            );
+        }
+
         console.log(`Icon clicked for column: ${column}`);
     };
 
@@ -154,16 +155,16 @@ const CampusStudentList = (props: Props) => {
                 onPerPageNumber={handlePerPageNumber}
             />
             <Table
-                    rows={studentData}
-                    page={currentPage}
-                    perPage={perPage}
-                    columnOrder={columnOrder}
-                >
+                rows={studentData}
+                page={currentPage}
+                perPage={perPage}
+                columnOrder={columnOrder}
+            >
                 <THead
-                        columnOrder={columnOrder}
-                        editableColumnNames={editableColumnNames}
-                        onIconClick={handleIconClick}
-                    />
+                    columnOrder={columnOrder}
+                    editableColumnNames={editableColumnNames}
+                    onIconClick={handleIconClick}
+                />
                 <Pagination
                     currentPage={currentPage}
                     totalPages={totalPages}
