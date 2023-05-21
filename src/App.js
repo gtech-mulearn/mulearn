@@ -39,6 +39,7 @@ import Layout from "./Layout";
 import { useEffect, useState } from "react";
 import YIP2023 from "./Pages/YIP2023/YIP2023";
 import BeWebDev from "./Pages/Events/BeWebDev/BeWebDev";
+import YipForm from "./Pages/YIP/YIPAfterForm/YipForm";
 
 function App() {
   const [redirects, setRedirects] = useState([]);
@@ -126,6 +127,7 @@ function App() {
               path="/campus-logo-generator"
               element={<CampusLogoGenerator />}
             />
+            <Route path="/yipform" element={<YipForm />} />
           </Route>
         </Routes>
       </Router>
