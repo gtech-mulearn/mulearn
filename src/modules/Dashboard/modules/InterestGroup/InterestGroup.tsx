@@ -22,7 +22,7 @@ function InterestGroup() {
 
     const columnOrder = [
 		"name",
-        "user_ig_link_ig",
+		"user_ig_link_ig",
         "updated_by",
         "created_by",
         "created_at",
@@ -30,7 +30,7 @@ function InterestGroup() {
 
     const editableColumnNames = [
 		"NAME",
-        "Members",
+		"Members",
         "Updated By",
         "Created By",
         "Created On",
@@ -93,9 +93,9 @@ function InterestGroup() {
                 />
             </div>
             <TableTop
-                onSearchText={handleSearch}
-                onPerPageNumber={handlePerPageNumber}
-            />
+				onSearchText={handleSearch}
+				onPerPageNumber={handlePerPageNumber} 
+				CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}            />
             {data && (
                 <Table
                     rows={data}
