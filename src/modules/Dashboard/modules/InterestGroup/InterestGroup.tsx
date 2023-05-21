@@ -22,7 +22,7 @@ function InterestGroup() {
 
     const columnOrder = [
 		"name",
-        "count",
+        "user_ig_link_ig",
         "updated_by",
         "created_by",
         "created_at",
