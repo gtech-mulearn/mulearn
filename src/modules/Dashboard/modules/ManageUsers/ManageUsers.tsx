@@ -73,11 +73,6 @@ const editableColumnNames = [
     getUsersData(setData, prevPage, perPage);
   };
 
-  const cols = ['Sl No'];
-  for (const key in data[0]) {
-    cols.push(key.replace("_", " ").toUpperCase());
-  }
-
   const handleSearch = (search: string) => {
     getUsersData(setData, 1, perPage, setTotalPages, search, "");
   };
@@ -90,11 +85,11 @@ const editableColumnNames = [
   const handleIconClick = (column: string) => {
 	if(sort === column){
 		setSort(`-${column}`);
-		getStudentDetails(setStudentData, 1, perPage, setTotalPages, "", sort);
+		getUsersData(data, 1, perPage, setTotalPages, "", sort);
 	}
 	else {
 		setSort(column);
-		getStudentDetails(setStudentData, 1, perPage, setTotalPages, "", sort);
+		getUsersData(data, 1, perPage, setTotalPages, "", sort);
 	}
 	
 	console.log(`Icon clicked for column: ${column}`);
