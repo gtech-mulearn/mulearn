@@ -1,17 +1,35 @@
 import styles from "./Table.module.css";
+import { RxCaretSort } from "react-icons/rx";
 
-type Props = {
-    columns: string[];
-};
+interface TableHeadProps {
+    columnOrder: string[];
+    editableColumnNames: string[];
+    onIconClick: (column: string) => void;
+}
 
-const THead = (props: Props) => {
+const THead: React.FC<TableHeadProps> = ({
+    columnOrder,
+    editableColumnNames,
+    onIconClick
+}) => {
+    const handleIconClick = (column: string) => {
+        onIconClick(column);
+    };
     return (
         <thead>
-            {props.columns.map((column: string, index: number) => (
-                <th className={styles.th} key={index}>
-                    {column}
-                </th>
-            ))}
+            <tr>
+				<th>S/N</th>
+                {columnOrder.map((column, index) => (
+                    <th className={styles.th} key={column}>
+                        <div className={styles.thContainer}>
+                            <span>{editableColumnNames[index]}</span>
+                            <button className={styles.icon} onClick={() => handleIconClick(column)}>
+                                <RxCaretSort/>
+                            </button>
+                        </div>
+                    </th>
+                ))}
+            </tr>
         </thead>
     );
 };

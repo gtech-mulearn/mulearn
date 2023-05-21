@@ -28,8 +28,7 @@ export const getUsersData = async (
         // localStorage.setItem('count', usersData.response.dataCount)
         console.log(`===USER Data Res====>\n${usersData.response.users}`);
         setData(usersData.response.users);
-        setTotalPages(Math.ceil(usersData.response.dataCount / 5));
-        console.log(usersData.response.dataCount);
+        setTotalPages(usersData.response.pagination.totalPages);
     } catch (err: unknown) {
         console.log(`=====USER Data Error==>\n${err}`);
         const error = err as AxiosError;

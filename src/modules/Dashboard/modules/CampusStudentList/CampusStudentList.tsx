@@ -13,12 +13,29 @@ import { useNavigate } from "react-router-dom";
 type Props = {};
 
 const CampusStudentList = (props: Props) => {
-    const columns = ["SI NO", "Name", "Email", "Phone", "Karma", "MuId"];
+    const columns = [];
     const [studentData, setStudentData] = useState<any[]>([]);
     const [perPage, setPerPage] = useState(5);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+    const [sort, setSort] = useState('');
     const navigate = useNavigate();
+
+	const columnOrder = [
+		"name",
+        "email",
+        "phone",
+        "karma",
+        "mu_id",
+    ];
+
+    const editableColumnNames = [
+		"Name",
+		"Email",
+		"Phone",
+		"Karma",
+		"MuId"
+    ];
 
     const [campusData, setCampusData] = useState({
         collegeName: "",
@@ -44,7 +61,7 @@ const CampusStudentList = (props: Props) => {
     useEffect(() => {
         if (!hasRole([roles.CAMPUS_AMBASSADOR])) navigate("/404");
 
-        getStudentDetails(setStudentData, 1, perPage);
+        getStudentDetails(setStudentData, 1, perPage, setTotalPages);
         getCampusDetails(setCampusData);
     }, []);
 
@@ -60,29 +77,6 @@ const CampusStudentList = (props: Props) => {
         );
     };
 
-    const handleSort = (sort: string) => {
-        if (sort === "1") {
-            getStudentDetails(
-                setStudentData,
-                1,
-                perPage,
-                setTotalPages,
-                "",
-                "-user"
-            );
-        }
-        if (sort === "2") {
-            getStudentDetails(
-                setStudentData,
-                1,
-                perPage,
-                setTotalPages,
-                "",
-                "user"
-            );
-        }
-    };
-
     const handlePerPageNumber = (selectedValue: number) => {
         setPerPage(selectedValue);
 		setCurrentPage(1)
@@ -95,6 +89,20 @@ const CampusStudentList = (props: Props) => {
             ""
         );
     };
+
+	const handleIconClick = (column: string) => {
+		if(sort === column){
+			setSort(`-${column}`);
+			getStudentDetails(setStudentData, 1, perPage, setTotalPages, "", sort);
+		}
+		else {
+			setSort(column);
+			getStudentDetails(setStudentData, 1, perPage, setTotalPages, "", sort);
+		}
+		
+        console.log(`Icon clicked for column: ${column}`);
+    };
+
     return (
         <>
             <div className={styles.campus_student_list_container}>
@@ -143,11 +151,19 @@ const CampusStudentList = (props: Props) => {
             </div>
             <TableTop
                 onSearchText={handleSearch}
-                onSortText={handleSort}
                 onPerPageNumber={handlePerPageNumber}
             />
-            <Table rows={studentData} page={currentPage} perPage={perPage}>
-                <THead columns={columns} />
+            <Table
+                    rows={studentData}
+                    page={currentPage}
+                    perPage={perPage}
+                    columnOrder={columnOrder}
+                >
+                <THead
+                        columnOrder={columnOrder}
+                        editableColumnNames={editableColumnNames}
+                        onIconClick={handleIconClick}
+                    />
                 <Pagination
                     currentPage={currentPage}
                     totalPages={totalPages}
