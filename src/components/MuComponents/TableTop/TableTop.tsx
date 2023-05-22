@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { SearchBar } from "./SearchBar";
 import ShowPerPage from "./ShowPerPage";
-import styles from "./TableTop.module.css"
+import styles from "./TableTop.module.css";
 import { MuButton } from "../MuButtons/MuButton";
 import { HiDownload } from "react-icons/hi";
 import { getCSV } from "./apis";
@@ -9,24 +9,22 @@ import { getCSV } from "./apis";
 type Props = {
     onSearchText?: (data: string) => void;
     onPerPageNumber?: (data: number) => void;
-	CSV?: string;
+    CSV?: string;
 };
 
 const TableTop = (props: Props) => {
-    const [csv, setCsv] = useState('');
+    const [csv, setCsv] = useState("");
 
     const handleData = (search: string) => {
         props.onSearchText && props.onSearchText(search);
     };
-	const [itemsPerPage, setItemsPerPage] = useState(5);
-	const handleOptionChange = (value: number) => {
-		setItemsPerPage(value);
+    const [itemsPerPage, setItemsPerPage] = useState(5);
+    const handleOptionChange = (value: number) => {
+        setItemsPerPage(value);
         props.onPerPageNumber && props.onPerPageNumber(value);
-	};
-	useEffect(() => {
-		if (props.CSV) {
-			getCSV(props.CSV, setCsv)
-		}
+    };
+    useEffect(() => {
+        getCSV(setCsv);
     }, []);
     return (
         <div className={styles.container}>
@@ -40,16 +38,20 @@ const TableTop = (props: Props) => {
                         selectedOption={itemsPerPage}
                         onOptionChange={handleOptionChange}
                     />
-                    {csv && csv.length && <a
-                        href={`data:text/csv;charset=utf-8,${encodeURI(csv)}`}
-                        download="Table_data.csv"
-                    >
-                        <MuButton
-                            text={"CSV"}
-                            icon={<HiDownload />}
-                            className={styles.csv}
-                        />
-                    </a>}
+                    {csv && csv.length && (
+                        <a
+                            href={`data:text/csv;charset=utf-8,${encodeURI(
+                                csv
+                            )}`}
+                            download="Table_data.csv"
+                        >
+                            <MuButton
+                                text={"CSV"}
+                                icon={<HiDownload />}
+                                className={styles.csv}
+                            />
+                        </a>
+                    )}
                 </div>
             </div>
         </div>

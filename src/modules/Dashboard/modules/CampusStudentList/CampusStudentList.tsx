@@ -152,7 +152,7 @@ const CampusStudentList = (props: Props) => {
             <TableTop
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
-				CSV={"http://localhost:8000/api/v1/campus/student-details/csv/"} 
+				 
             />
             <Table
                 rows={studentData}
