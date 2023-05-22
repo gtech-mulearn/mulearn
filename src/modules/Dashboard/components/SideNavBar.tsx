@@ -108,7 +108,7 @@ const SideNavBar = (props: Props) => {
                                         button.hasView &&
                                         (!button.roles ||
                                             button.roles?.some(role =>
-                                                userInfo.roles.includes(role)
+                                                userInfo?.roles?.includes(role)
                                             ))
                                 )
                                 .map((button, i) => (
