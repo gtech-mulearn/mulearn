@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SearchBar } from "./SearchBar";
 import ShowPerPage from "./ShowPerPage";
 import styles from "./TableTop.module.css"
 import { MuButton } from "../MuButtons/MuButton";
 import { HiDownload } from "react-icons/hi";
-import { useNavigate } from "react-router-dom";
+import { getCSV } from "./apis";
 
 type Props = {
     onSearchText?: (data: string) => void;
@@ -13,7 +13,7 @@ type Props = {
 };
 
 const TableTop = (props: Props) => {
-    const navigate = useNavigate();
+    const [csv, setCsv] = useState('');
 
     const handleData = (search: string) => {
         props.onSearchText && props.onSearchText(search);
@@ -23,6 +23,11 @@ const TableTop = (props: Props) => {
 		setItemsPerPage(value);
         props.onPerPageNumber && props.onPerPageNumber(value);
 	};
+	useEffect(() => {
+		if (props.CSV) {
+			getCSV(props.CSV, setCsv)
+		}
+    }, []);
     return (
         <div className={styles.container}>
             <div className={styles.body}>
@@ -35,9 +40,16 @@ const TableTop = (props: Props) => {
                         selectedOption={itemsPerPage}
                         onOptionChange={handleOptionChange}
                     />
-					<a href={props.CSV} target="_blank">
-						<MuButton text={"CSV"} icon={<HiDownload/>} className={styles.csv}/>
-					</a>
+                    {csv && csv.length && <a
+                        href={`data:text/csv;charset=utf-8,${encodeURI(csv)}`}
+                        download="Table_data.csv"
+                    >
+                        <MuButton
+                            text={"CSV"}
+                            icon={<HiDownload />}
+                            className={styles.csv}
+                        />
+                    </a>}
                 </div>
             </div>
         </div>
