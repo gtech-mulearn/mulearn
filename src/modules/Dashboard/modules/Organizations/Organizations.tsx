@@ -1,47 +1,30 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Table from "../../../../components/MuComponents/Table/Table";
-import THead from "../../../../components/MuComponents/Table/THead";
-import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
-import Pagination from "../../../../components/MuComponents/Pagination/Pagination";
-import { getInterestGroups } from "../InterestGroup/apis";
-import { MuButtonLight } from "../../../../components/MuComponents/MuButtons/MuButton";
-import PrimaryButton from "../../../../components/MuComponents/MuButtons/MuOutlinedButton";
-import {
-    columnsCollege,
-    columnsCommunities,
-    columnsCompanies
-} from "./THeaders";
-import TableTopTab from "./TableTopTab";
+import React,{useState} from 'react'
+import { useNavigate } from 'react-router-dom'
+import Table from '../../../../components/MuComponents/Table/Table'
+import THead from '../../../../components/MuComponents/Table/THead'
+import TableTop from '../../../../components/MuComponents/TableTop/TableTop'
+import Pagination from '../../../../components/MuComponents/Pagination/Pagination'
+import { getInterestGroups } from '../InterestGroup/apis'
+import {columnsCollege,columnsCommunities,columnsCompanies,editableColumnNames} from "./THeaders"
+import TableTopTab from './TableTopTab' 
+import Textfield from '../../../../components/MuComponents/TextField/Textfield'
+import Dropdown from '../../../../components/MuComponents/Dropdown/Dropdown'
 
-import "./Organizations.scss";
+import "./Organizations.scss"
+import PrimaryButton from '../../../../components/MuComponents/MuButtons/MuOutlinedButton'
+import { MuButton } from '../../../../components/MuComponents/MuButtons/MuButton'
 
 function Organizations() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(5);
-    const [columns, setColumns] = useState(columnsCollege);
+    const [columns,setColumns] = useState(columnsCollege)
+    const [activeTab,setActiveTab] = useState("Colleges")
     const [sort, setSort] = useState('');
-    const [activeTab, setActiveTab] = useState("Colleges");
+    const [popupStatus,setPopupStatus] = useState(false)
 
     const navigate = useNavigate();
-
-	const columnOrder = [
-		"name",
-        "count",
-        "updated_by",
-        "created_by",
-        "created_at",
-    ];
-
-    const editableColumnNames = [
-		"NAME",
-        "Members",
-        "Updated By",
-        "Created By",
-        "Created On",
-    ];
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -55,7 +38,7 @@ function Organizations() {
         getInterestGroups(setData, prevPage, perPage);
     };
 
-	const handleSearch = (search: string) => {
+    const handleSearch = (search: string) => {
         setCurrentPage(1);
         getInterestGroups(setData, 1, perPage, setTotalPages, search, "");
     };
@@ -66,7 +49,21 @@ function Organizations() {
         getInterestGroups(setData, 1, selectedValue, setTotalPages, "", "");
     };
 
-	const handleIconClick = (column: string) => {
+    const handleTabClick = (tab:string) => {
+        if(tab === "Colleges"){
+            setColumns(columnsCollege)
+        }else if (tab === "Companies") {
+            setColumns(columnsCompanies)
+        }else if(tab === "Communities") {
+            setColumns(columnsCommunities)
+        } else{
+            alert("Error to load Table Headers")
+        }
+        setActiveTab(tab)
+        setPopupStatus(false)
+    }
+
+    const handleIconClick = (column: string) => {
 		if(sort === column){
 			setSort(`-${column}`);
 			getInterestGroups(setData, 1, perPage, setTotalPages, "", sort);
@@ -79,36 +76,41 @@ function Organizations() {
         console.log(`Icon clicked for column: ${column}`);
     };
 
-    const handleTabClick = (tab: string) => {
-        if (tab === "Colleges") {
-            setColumns(columnsCollege);
-        } else if (tab === "Companies") {
-            setColumns(columnsCompanies);
-        } else if (tab === "Communities") {
-            setColumns(columnsCommunities);
-        } else {
-            alert("Error to load Table Headers");
-        }
-        setActiveTab(tab);
-    };
+    const handleAddClickOpen = ()=> {
+        setPopupStatus(true)
+    }
 
-    return (
-        <>
-            <TableTopTab active={activeTab} onTabClick={handleTabClick} />
-            <TableTop
-                onSearchText={handleSearch}
-                onPerPageNumber={handlePerPageNumber}
+    const handleAddClickClose = ()=> {
+        setPopupStatus(false)
+    }
+
+  return (
+    <>
+            <TableTopTab 
+                active={activeTab} 
+                onTabClick={handleTabClick}
             />
+            <AddPopup 
+                active = {activeTab}
+                popupStatus = {popupStatus} 
+                onAddClickClose = {handleAddClickClose}
+            />
+            <TableTop
+				onSearchText={handleSearch}
+				onPerPageNumber={handlePerPageNumber} 
+				CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}        
+				// CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"} 
+			/>
             {data && (
                 <Table
                     rows={data}
                     page={currentPage}
                     perPage={perPage}
-                    columnOrder={columnOrder}
+                    columnOrder={columns}
                 >
                     <THead
-                        columnOrder={columnOrder}
-                        editableColumnNames={editableColumnNames}
+                        columnOrder={columns}
+                        editableColumnNames={columns}
                         onIconClick={handleIconClick}
                     />
                     <Pagination
@@ -122,7 +124,79 @@ function Organizations() {
                 </Table>
             )}
         </>
-    );
+  )
 }
 
-export default Organizations;
+const AddPopup = ({popupStatus,active,onAddClickClose}:any)=> {
+    const [input,setInput] = useState("")
+    return(
+        <>
+            <div className={popupStatus ? "popup_container" : "invisible"}>
+                <div className="popup_top_container">
+                    <h1 className='popup_title'>Add {active}</h1>
+                    <i 
+                        className="fi fi-sr-cross"
+                        onClick={()=>{
+                            onAddClickClose()
+                        }}
+                    ></i>
+                </div>
+                <Textfield
+						content={"IG Name"}
+						inputType={"text"}
+						setInput={setInput}
+						input={input}
+				/>
+                    <div className="popup_dropdown_container">
+                        <div className='inputfield_container'>
+                            <label>Affiliated University</label>
+                            <Dropdown 
+                                contents={["A","B","C"]}
+                                style={{
+                                    width: ""
+                                }}/>
+                        </div>
+                        <div className='inputfield_container'>
+                            <label>Country</label>
+                            <Dropdown 
+                                contents={["A","B","C"]}
+                                style={{
+                                    width: ""
+                                }}/>
+                        </div>
+                        <div className='inputfield_container'>
+                            <label>State</label>
+                            <Dropdown 
+                                contents={["A","B","C"]}
+                                style={{
+                                    width: ""
+                                }}/>
+                        </div>
+                        <div className='inputfield_container'>
+                            <label>District</label>
+                            <Dropdown 
+                                contents={["A","B","C"]}
+                                style={{
+                                    width: ""
+                                }}/>
+                        </div>
+                        <div className='inputfield_container'>
+                            <label>Zone</label>
+                            <Dropdown 
+                                contents={["A","B","C"]}
+                                style={{
+                                    width: ""
+                                }}/>
+                        </div>
+                    </div>
+                    <div className='submit_container'>
+                        <PrimaryButton 
+                            text="Submit"
+                        />
+                    </div>
+            </div>
+        </>
+    )
+}
+
+export default Organizations

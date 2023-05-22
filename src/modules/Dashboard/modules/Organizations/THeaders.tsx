@@ -1,5 +1,4 @@
 export const columnsCollege = [
-    "S/N",
     "Title",
     "Code",
     "Rank",
@@ -8,8 +7,15 @@ export const columnsCollege = [
     "Zone"
 ];
 
+export const editableColumnNames = [
+    "NAME",
+    "Members",
+    "Updated By",
+    "Created By",
+    "Created On",
+];
+
 export const columnsCompanies = [
-    "S/N",
     "Title",
     "Code",
     "District",
@@ -19,7 +25,6 @@ export const columnsCompanies = [
 ];
 
 export const columnsCommunities = [
-    "S/N",
     "State",
     "Zone"
 ];

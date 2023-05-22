@@ -1,21 +1,98 @@
-._table_tab_container{
-    width: 90%;
+.table_tab_container{
     display: flex;
-    gap: 20px;
-    justify-content: center;
-    padding: 20px;
-    ._table_tab_btn{
-        padding: 10px 30px;
-        border-radius: 10px;
-        cursor: pointer;
+    justify-content: space-between; 
+    width: 95%;
+    .table_tabs{
+        display: flex;
+        gap: 15px;
+        .table_tab_btn{
+            padding: 6px 24px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .active{
+            background-color: #014bb2;
+            color: white;
+        }
+        .inactive{
+            border: 1px solid #014bb2;
+            color: #014bb2;
+        }
     }
-    .active{
-        background-color: rgba(1, 75, 178);
-        color: white;
-    }
-    .inactive {
+    .org_create_btn{
         background-color: white;
-        border: 2px solid rgba(1, 75, 178);
-        color: rgba(1, 75, 178);
+        border: 1px solid #014bb2;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        padding: 8px 24px;
+        border-radius: 10px;
     }
 }
+.popup_container{
+    width: 60%;
+    height: max-content;
+    padding: 20px;
+    border: 1px solid #014bb2;
+    border-radius: 8px;
+    opacity: 1;
+    transition: opacity 0.3s linear;
+    max-height: max-content;
+    overflow: hidden;
+    .popup_title{
+        font-size: 20px;
+        font-weight: 800;
+        text-align: start;
+    }
+}
+.popup_dropdown_container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    margin: 10px 0;
+    .inputfield_container{
+        text-align: start;
+        label{
+            width: max-content;
+            height: max-content;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    }
+}
+.invisible {
+    opacity: 0;
+    max-height: 0; /* Adjust the value to accommodate your content */
+    transition: max-height 0.3s linear;
+}
+.popup_top_container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    i{
+        width: 35px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        &:hover{
+            background-color: #014bb21d;
+        }
+    }
+}
+.submit_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+@keyframes expandHeight {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: max-content;
+    }
+  }
