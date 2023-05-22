@@ -20,9 +20,9 @@ const THead: React.FC<TableHeadProps> = ({
                     <th className={styles.th} key={column}>
                         <div className={styles.thContainer}>
                             <span>{editableColumnNames[index]}</span>
-                            <button className={styles.icon} onClick={() => onIconClick(column)}>
+                            {/* <button className={styles.icon} onClick={() => onIconClick(column)}>
                                 <RxCaretSort/>
-                            </button>
+                            </button> */}
                         </div>
                     </th>
                 ))}
