@@ -87,7 +87,7 @@ const CampusStudentList = (props: Props) => {
                 perPage,
                 setTotalPages,
                 "",
-                sort
+                `-${column}`
             );
         } else {
             setSort(column);
@@ -97,10 +97,9 @@ const CampusStudentList = (props: Props) => {
                 perPage,
                 setTotalPages,
                 "",
-                sort
+                column
             );
         }
-
         console.log(`Icon clicked for column: ${column}`);
     };
 
@@ -153,6 +152,7 @@ const CampusStudentList = (props: Props) => {
             <TableTop
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
+				CSV={"http://localhost:8000/api/v1/campus/student-details/csv/"} 
             />
             <Table
                 rows={studentData}
