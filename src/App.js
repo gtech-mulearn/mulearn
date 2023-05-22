@@ -127,7 +127,7 @@ function App() {
               path="/campus-logo-generator"
               element={<CampusLogoGenerator />}
             />
-            <Route path="/yipform" element={<YipForm />} />
+            <Route path="/yipredirect" element={<YipForm />} />
           </Route>
         </Routes>
       </Router>

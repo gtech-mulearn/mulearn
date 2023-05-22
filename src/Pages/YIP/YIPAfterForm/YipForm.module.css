@@ -1,57 +1,60 @@
-.content{
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 5%;
-    margin-bottom: 15%;
+.content {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 6rem;
+  margin-bottom: 5rem;
 }
-.content h2{
-    margin: auto;
-    font-weight: 200;
-    max-width: 50%;
+.content h2 {
+  margin: auto;
+  font-size: 1.75rem;
+  font-family: "Poppins";
+  font-weight: 500;
+  color: #303030;
+  max-width: 60rem;
 }
-.content img{
-    width: 40rem;
-    margin: auto;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    margin-top: 0;
+.content img {
+  width: 25rem;
+  margin: auto;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-top: 0;
 }
-.content button{
-    color: white;
-    background: #fb6412da;
-    padding: 8px 20px;
-    border-radius: 5px;
+.content button {
+  color: white;
+  background: #fb6412da;
+  padding: 8px 20px;
+  border-radius: 5px;
 }
-.content button:hover{
-    color: white;
-    background: #f8742dda;
-    padding: 8px 20px;
-    border-radius: 5px;
-    transition: 0.5s;
+.content button:hover {
+  color: white;
+  background: #f8742dda;
+  padding: 8px 20px;
+  border-radius: 5px;
+  transition: 0.5s;
 }
-.content span{
-    color: #fb6412da;
-    font-weight: 450;
+.content span {
+  color: #fb6412da;
+  font-weight: 450;
 }
-@media only screen and (max-width: 700px){
-    .content h2{
-        max-width: 100%;
-        font-size: 1.5rem;
-        padding: 0 10px;
-        font-weight: 350;
-    }
-    .content img{
-        width: 23rem;
-        padding-bottom: 5px;
-    }
-   .content button{
+@media only screen and (max-width: 700px) {
+  .content h2 {
+    max-width: 100%;
+    font-size: 1.5rem;
+    padding: 0 10px;
+    font-weight: 350;
+  }
+  .content img {
+    width: 23rem;
+    padding-bottom: 5px;
+  }
+  .content button {
     padding: 5px 20px;
-   }
-   .content{
+  }
+  .content {
     margin-top: 100px;
     margin-bottom: 200px;
-   }
-  } 
+  }
+}

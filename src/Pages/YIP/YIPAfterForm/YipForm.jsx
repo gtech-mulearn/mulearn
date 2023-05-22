@@ -14,8 +14,9 @@ const YipForm = () => {
           grab <span>exciting awards</span> for best performing colleges.
         </h2>
         <img src={img} alt="Team Work" />
-        <a href="#" target="_blank" rel="noopener noreferrer">
-          <button>Check Out</button>
+        <br />
+        <a href="/" target="_blank" rel="noopener noreferrer">
+          <button>Check It Out Now!</button>
         </a>
       </div>
       <Footer />
