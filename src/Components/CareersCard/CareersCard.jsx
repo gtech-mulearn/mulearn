@@ -1,5 +1,5 @@
-import React from "react"
-import styles from "./CareersCard.module.css"
+import React from "react";
+import styles from "./CareersCard.module.css";
 
 const Card = ({
   role,
@@ -17,7 +17,9 @@ const Card = ({
 }) => {
   return (
     <div className={styles.card}>
-      <img src={logo} alt="Company Logo" className={styles.card_logo} />
+      {logo && (
+        <img src={logo} alt="Company Logo" className={styles.card_logo} />
+      )}
       <p className={styles.card_title}>{role}</p>
       <p className={styles.card_info}>
         {remuneration && (
@@ -80,12 +82,14 @@ const Card = ({
         )}
         {extraButton && (
           <a href={extraButton} target="_blank" rel="noopener noreferrer">
-            <button className={styles.card_button_outline}>View Challenge</button>
+            <button className={styles.card_button_outline}>
+              View Challenge
+            </button>
           </a>
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

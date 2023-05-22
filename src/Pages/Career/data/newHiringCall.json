@@ -1,5 +1,18 @@
 {
   "newcalls": [
-
+    {
+      "date": "05/24/2023",
+      "logo": "/assets/careers/companies/mulearn.png",
+      "role": "µLearn Hiring Call",
+      "company": "µLearn",
+      "title": "µLearn Hiring Call",
+      "location": "Remote",
+      "lastdate": "27th May",
+      "applylink": "https://airtable.com/shr2dmlnZZQt9bv9R",
+      "extrafield": {
+        "name": "Roles",
+        "value": "Multiple Roles like Operations, Development, People Management, Interest Groups etc."
+      }
+    }
   ]
 }
