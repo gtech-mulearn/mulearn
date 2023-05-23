@@ -51,7 +51,7 @@
     .inputfield_container{
         width: 100%;
         text-align: start;
-        margin-top: 20px;
+        margin-top: 8px;
     }
 }
 .invisible {
@@ -97,11 +97,14 @@
     transition: .3s ease-in-out;
 }
 
-@keyframes expandHeight {
-    0% {
-      height: 0;
+@media only screen and (max-width: 768px) {
+    .popup_container{
+        width: 100%;
     }
-    100% {
-      height: max-content;
+} 
+
+@media only screen and (max-width: 400px){
+    .popup_dropdown_container{
+        grid-template-columns: repeat(1, 1fr);   
     }
-  }
+}

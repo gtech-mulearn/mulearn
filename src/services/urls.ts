@@ -31,5 +31,6 @@ export const campusRoutes = {
 
 export const organizationRoutes = {
     getOrganizationsAll: "/api/v1/organisation/institutes/info/all_inst",
-    getCompany: "/api/v1/organisation/institutes/show/Company"
+    getCompany: "/api/v1/organisation/institutes/show/Company",
+    getCountry: "/api/v1/location/country"
 }

@@ -47,6 +47,34 @@ export const getOrganizations = async (
     }
 };
 
+interface CountryProps {
+    id: string;
+    name: string;
+    updated_at: string;
+    created_at: string;
+    updated_by: string;
+    created_by: string;
+}
+
+export const getCountry = async (setCountryData:any) => {
+    try {
+        await privateGateway.get(organizationRoutes.getCountry)
+        .then(response=>{
+            return response.data
+        })
+        .then(data => {
+            const countries:CountryProps[] = data.response.countries;
+            const countryNames = countries.map((country) => country.name);
+            setCountryData(countryNames);
+        })
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+}
+
 // export const createInterestGroups = async (name:string, toast: (options?: UseToastOptions | undefined) => ToastId,) => {
 // 	try {
 //         const response = await privateGateway.post(dashboardRoutes.getIgData, {
