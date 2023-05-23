@@ -12,9 +12,6 @@ const THead: React.FC<TableHeadProps> = ({
     editableColumnNames,
     onIconClick
 }) => {
-    const handleIconClick = (column: string) => {
-        onIconClick(column);
-    };
     return (
         <thead>
             <tr>
@@ -23,9 +20,9 @@ const THead: React.FC<TableHeadProps> = ({
                     <th className={styles.th} key={column}>
                         <div className={styles.thContainer}>
                             <span>{editableColumnNames[index]}</span>
-                            <button className={styles.icon} onClick={() => handleIconClick(column)}>
+                            {/* <button className={styles.icon} onClick={() => onIconClick(column)}>
                                 <RxCaretSort/>
-                            </button>
+                            </button> */}
                         </div>
                     </th>
                 ))}
