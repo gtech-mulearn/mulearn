@@ -1,4 +1,7 @@
 export const onboardingRoutes = {
+    countryList: "/api/v1/register/country/list/",
+    stateList: "/api/v1/register/state/list/",
+    districtList: "/api/v1/register/district/list/",
     collegeList: "/api/v1/register/college/list/",
     companyList: "/api/v1/register/company/list/",
     roleList: "/api/v1/register/role/list/",
