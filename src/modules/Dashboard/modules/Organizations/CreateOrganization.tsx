@@ -54,16 +54,12 @@ function CreateOrganization() {
         <div className="inputfield_container">
           <Dropdown
             contents={["A", "B", "C"]}
-            style={{
-              width: "100%"
-            }} />
+          />
         </div>
         <div className="inputfield_container">
           <Dropdown
             contents={["A", "B", "C"]}
-            style={{
-              width: "100%"
-            }} />
+          />
         </div>
       </div>
       <div className='submit_container'>
