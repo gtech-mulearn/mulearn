@@ -29,7 +29,10 @@ const YIP2023 = () => {
         "_blank"
       );
     } else {
-      window.open("https://yip.kerala.gov.in/yipapp/index.php/idea2022", "_blank");
+      window.open(
+        "https://yip.kerala.gov.in/yipapp/index.php/idea2022",
+        "_blank"
+      );
     }
   };
   return (
@@ -109,7 +112,7 @@ const YIP2023 = () => {
           </div>
         </div>
 
-        {/* <div className={styles.second_view_container}>
+        <div className={styles.second_view_container}>
           <div className={styles.second_view}>
             <div className="third-section" id="timeline">
               <p className="tsheading">YIP Idea Registration Procedure</p>
@@ -132,8 +135,12 @@ const YIP2023 = () => {
                       <div className="timeline__event__title">Step One</div>
                       <div className="timeline__event__description">
                         <p>
-                          <a href="https://yip.kerala.gov.in/yipapp/index.php/Idea2021/?utm_source=mulearn&utm_medium=link&utm_campaign=mulearn_directv1&utm_id=yip21v1&utm_term=new_reg">
-                            <span>
+                          <a
+                            target="_blank"
+                            rel="noreferrer"
+                            href="https://yip.kerala.gov.in/yipapp/index.php/Idea2022"
+                          >
+                            <span className="link">
                               <b>Click Here</b>{" "}
                             </span>
                           </a>
@@ -163,7 +170,7 @@ const YIP2023 = () => {
                       <div className="timeline__event__description">
                         <p>
                           <a href="https://yip.kerala.gov.in/yipapp/index.php/Init/">
-                            <span>
+                            <span className="link">
                               {" "}
                               <b>Click Here to Login</b>
                             </span>
@@ -187,7 +194,7 @@ const YIP2023 = () => {
                     </div>
                     <div className="timeline__event__date">
                       Voice of <br />
-                      Customer
+                      Stakeholder
                     </div>
                     <div className="timeline__event__content">
                       <div className="timeline__event__title">Step Three</div>
@@ -195,9 +202,9 @@ const YIP2023 = () => {
                         <p>
                           After completing your Profile and submitting it, You
                           can check the left navbar again to find the &nbsp;
-                          <b>Voice of Customer(VOC)</b> option. By clicking that
-                          you will be directed to the course page where you can
-                          complete it.
+                          <b>Voice of Stakeholder(VOS Module)</b> option. By
+                          clicking that you will be directed to the course page
+                          where you can complete it.
                         </p>
                       </div>
                     </div>
@@ -219,7 +226,7 @@ const YIP2023 = () => {
                       <div className="timeline__event__title">Step Four</div>
                       <div className="timeline__event__description">
                         <p>
-                          After completing the VOC Course and attending the quiz
+                          After completing the VOS Course and attending the quiz
                           there.
                           <b>
                             &nbsp;You can form a team consisting of minimum 2
@@ -340,7 +347,7 @@ const YIP2023 = () => {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
       <Footer />
     </>

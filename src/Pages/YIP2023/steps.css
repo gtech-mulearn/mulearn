@@ -20,7 +20,11 @@ h2 {
   flex-direction: column;
   margin: 40px auto;
   position: relative;
-  z-index: -1;
+  z-index: 5;
+}
+
+.link:hover {
+  color: #fa8322;
 }
 
 .timeline__event {
@@ -94,8 +98,10 @@ h2 {
 
 .timeline__event__content {
   padding: 20px;
-  -webkit-box-shadow: 0 15px 30px -6px rgba(187, 187, 187, 0.25), 0 9px 18px -9px rgba(0, 0, 0, 0.3), 0 -6px 18px -4px rgba(0, 0, 0, 0.025);
-  box-shadow: 0 15px 30px -6px rgba(187, 187, 187, 0.25), 0 9px 18px -9px rgba(0, 0, 0, 0.3), 0 -6px 18px -4px rgba(0, 0, 0, 0.025);
+  -webkit-box-shadow: 0 15px 30px -6px rgba(187, 187, 187, 0.25),
+    0 9px 18px -9px rgba(0, 0, 0, 0.3), 0 -6px 18px -4px rgba(0, 0, 0, 0.025);
+  box-shadow: 0 15px 30px -6px rgba(187, 187, 187, 0.25),
+    0 9px 18px -9px rgba(0, 0, 0, 0.3), 0 -6px 18px -4px rgba(0, 0, 0, 0.025);
   background: #fff;
   width: calc(40vw - 84px);
   border-radius: 0 6px 6px 0;
@@ -138,8 +144,10 @@ h2 {
   background: #ffc773;
   border-radius: 100%;
   width: 40px;
-  -webkit-box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
-  box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+  -webkit-box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
+    0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+  box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
+    0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
   padding: 40px;
   height: 40px;
   position: relative;
