@@ -72,7 +72,7 @@ const Card = ({
       <div className={styles.card_buttons}>
         {applylink && (
           <a href={applylink} target="_blank" rel="noopener noreferrer">
-            <button className={styles.card_button}>Apply</button>
+            <button className={styles.card_button}>Apply Now</button>
           </a>
         )}
         {jdlink && (

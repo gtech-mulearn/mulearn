@@ -44,6 +44,10 @@
     width: 30rem;
   }
 
+  .fv_tagline {
+    text-align: left;
+  }
+
   .first_view_container {
     display: flex;
     flex-direction: row-reverse;

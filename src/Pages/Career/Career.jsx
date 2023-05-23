@@ -59,7 +59,7 @@ const Career = () => {
       {newHiring.newcalls.length > 0 && (
         <div className={styles.main_container}>
           <div className={styles.second_view_container}>
-            <div className={styles.hiring_name}>New Hiring Calls</div>
+            <div className={styles.hiring_name}>µLearn Hiring Calls</div>
             <div className={styles.hiring_tagline}>
               Unlock your potential and accelerate your career growth with the
               endless opportunities available on Career Labs
