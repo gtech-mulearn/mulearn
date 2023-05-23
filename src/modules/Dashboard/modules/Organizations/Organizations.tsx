@@ -70,6 +70,7 @@ function Organizations() {
         } else{
             alert("Error to load Table Headers")
         }
+        setCurrentPage(1)
         setActiveTab(tab)
         setPopupStatus(false)
     }
@@ -96,11 +97,6 @@ function Organizations() {
             <TableTopTab 
                 active={activeTab} 
                 onTabClick={handleTabClick}
-            />
-            <AddPopup 
-                active = {activeTab}
-                popupStatus = {popupStatus} 
-                onAddClickClose = {handleAddClickClose}
             />
             <TableTop
 				onSearchText={handleSearch}
@@ -134,76 +130,76 @@ function Organizations() {
   )
 }
 
-const AddPopup = ({popupStatus,active,onAddClickClose}:any)=> {
-    const [input,setInput] = useState("")
-    return(
-        <>
-            <div className={popupStatus ? "popup_container" : "invisible"}>
-                <div className="popup_top_container">
-                    <h1 className='popup_title'>Add {active}</h1>
-                    <i 
-                        className="fi fi-sr-cross"
-                        onClick={()=>{
-                            onAddClickClose()
-                        }}
-                    ></i>
-                </div>
-                <Textfield
-						content={"IG Name"}
-						inputType={"text"}
-						setInput={setInput}
-						input={input}
-				/>
-                    <div className="popup_dropdown_container">
-                        <div className='inputfield_container'>
-                            <label>Affiliated University</label>
-                            <Dropdown 
-                                contents={["A","B","C"]}
-                                style={{
-                                    width: ""
-                                }}/>
-                        </div>
-                        <div className='inputfield_container'>
-                            <label>Country</label>
-                            <Dropdown 
-                                contents={["A","B","C"]}
-                                style={{
-                                    width: ""
-                                }}/>
-                        </div>
-                        <div className='inputfield_container'>
-                            <label>State</label>
-                            <Dropdown 
-                                contents={["A","B","C"]}
-                                style={{
-                                    width: ""
-                                }}/>
-                        </div>
-                        <div className='inputfield_container'>
-                            <label>District</label>
-                            <Dropdown 
-                                contents={["A","B","C"]}
-                                style={{
-                                    width: ""
-                                }}/>
-                        </div>
-                        <div className='inputfield_container'>
-                            <label>Zone</label>
-                            <Dropdown 
-                                contents={["A","B","C"]}
-                                style={{
-                                    width: ""
-                                }}/>
-                        </div>
-                    </div>
-                    <div className='submit_container'>
-                        <PrimaryButton 
-                            text="Submit"
-                        />
-                    </div>
-            </div>
-        </>
-    )
-}
+// const AddPopup = ({popupStatus,active,onAddClickClose}:any)=> {
+//     const [input,setInput] = useState("")
+//     return(
+//         <>
+//             <div className={popupStatus ? "popup_container" : "invisible"}>
+//                 <div className="popup_top_container">
+//                     <h1 className='popup_title'>Add {active}</h1>
+//                     <i 
+//                         className="fi fi-sr-cross"
+//                         onClick={()=>{
+//                             onAddClickClose()
+//                         }}
+//                     ></i>
+//                 </div>
+//                 <Textfield
+// 						content={"IG Name"}
+// 						inputType={"text"}
+// 						setInput={setInput}
+// 						input={input}
+// 				/>
+//                     <div className="popup_dropdown_container">
+//                         <div className='inputfield_container'>
+//                             <label>Affiliated University</label>
+//                             <Dropdown 
+//                                 contents={["A","B","C"]}
+//                                 style={{
+//                                     width: ""
+//                                 }}/>
+//                         </div>
+//                         <div className='inputfield_container'>
+//                             <label>Country</label>
+//                             <Dropdown 
+//                                 contents={["A","B","C"]}
+//                                 style={{
+//                                     width: ""
+//                                 }}/>
+//                         </div>
+//                         <div className='inputfield_container'>
+//                             <label>State</label>
+//                             <Dropdown 
+//                                 contents={["A","B","C"]}
+//                                 style={{
+//                                     width: ""
+//                                 }}/>
+//                         </div>
+//                         <div className='inputfield_container'>
+//                             <label>District</label>
+//                             <Dropdown 
+//                                 contents={["A","B","C"]}
+//                                 style={{
+//                                     width: ""
+//                                 }}/>
+//                         </div>
+//                         <div className='inputfield_container'>
+//                             <label>Zone</label>
+//                             <Dropdown 
+//                                 contents={["A","B","C"]}
+//                                 style={{
+//                                     width: ""
+//                                 }}/>
+//                         </div>
+//                     </div>
+//                     <div className='submit_container'>
+//                         <PrimaryButton 
+//                             text="Submit"
+//                         />
+//                     </div>
+//             </div>
+//         </>
+//     )
+// }
 
 export default Organizations
