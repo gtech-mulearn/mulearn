@@ -28,3 +28,8 @@ export const campusRoutes = {
     getStudentDetails: "/api/v1/campus/student-details/",
     getCampusDetails: "/api/v1/campus/campus-details/",
 };
+
+export const organizationRoutes = {
+    getOrganizationsAll: "/api/v1/organisation/institutes/info/all_inst",
+    getCompany: "/api/v1/organisation/institutes/show/Company"
+}

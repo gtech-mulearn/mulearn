@@ -27,6 +27,7 @@
         align-items: center;
         padding: 8px 24px;
         border-radius: 10px;
+        cursor: pointer;
     }
 }
 .popup_container{
@@ -35,9 +36,6 @@
     padding: 20px;
     border: 1px solid #014bb2;
     border-radius: 8px;
-    opacity: 1;
-    transition: opacity 0.3s linear;
-    max-height: max-content;
     overflow: hidden;
     .popup_title{
         font-size: 20px;
@@ -48,16 +46,12 @@
 .popup_dropdown_container{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
+    grid-column-gap: 15px;
     margin: 10px 0;
     .inputfield_container{
+        width: 100%;
         text-align: start;
-        label{
-            width: max-content;
-            height: max-content;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
+        margin-top: 20px;
     }
 }
 .invisible {
@@ -86,7 +80,22 @@
     display: flex;
     justify-content: center;
 }
-
+.btn {
+	background: #014BB2;
+    color: #fff;
+	width: 50%;
+    min-width: 200px;
+    padding: 10px 20px;
+    display: flex;
+    border-radius: 10px;
+    flex-direction: row;
+    align-items: center;
+	justify-content: center;
+    margin-top: 1.5rem;
+    font-size: 15px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
 
 @keyframes expandHeight {
     0% {

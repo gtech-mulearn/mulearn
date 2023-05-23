@@ -1,10 +1,12 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import Table from '../../../../components/MuComponents/Table/Table'
 import THead from '../../../../components/MuComponents/Table/THead'
 import TableTop from '../../../../components/MuComponents/TableTop/TableTop'
 import Pagination from '../../../../components/MuComponents/Pagination/Pagination'
-import { getInterestGroups } from '../InterestGroup/apis'
+import { getOrganizations } from './apis'
+import { hasRole } from '../../../../services/common_functions'
+import { roles } from '../../../../services/types'
 import {columnsCollege,columnsCommunities,columnsCompanies,editableColumnNames} from "./THeaders"
 import TableTopTab from './TableTopTab' 
 import Textfield from '../../../../components/MuComponents/TextField/Textfield'
@@ -26,36 +28,45 @@ function Organizations() {
 
     const navigate = useNavigate();
 
+    useEffect(() => {
+        if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
+
+        getOrganizations(activeTab,setData, 1, perPage, setTotalPages, "", "");
+    }, []);
+
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getInterestGroups(setData, nextPage, perPage);
+        getOrganizations(activeTab,setData, nextPage, perPage);
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getInterestGroups(setData, prevPage, perPage);
+        getOrganizations(activeTab,setData, prevPage, perPage);
     };
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getInterestGroups(setData, 1, perPage, setTotalPages, search, "");
+        getOrganizations(activeTab,setData, 1, perPage, setTotalPages, search, "");
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getInterestGroups(setData, 1, selectedValue, setTotalPages, "", "");
+        getOrganizations(activeTab,setData, 1, selectedValue, setTotalPages, "", "");
     };
 
     const handleTabClick = (tab:string) => {
         if(tab === "Colleges"){
             setColumns(columnsCollege)
+            getOrganizations(tab,setData, 1, perPage, setTotalPages, "", "");
         }else if (tab === "Companies") {
             setColumns(columnsCompanies)
+            getOrganizations(tab,setData, 1, perPage, setTotalPages, "", "");
         }else if(tab === "Communities") {
             setColumns(columnsCommunities)
+            getOrganizations(tab,setData, 1, perPage, setTotalPages, "", "");
         } else{
             alert("Error to load Table Headers")
         }
@@ -66,19 +77,15 @@ function Organizations() {
     const handleIconClick = (column: string) => {
 		if(sort === column){
 			setSort(`-${column}`);
-			getInterestGroups(setData, 1, perPage, setTotalPages, "", sort);
+			getOrganizations(activeTab,setData, 1, perPage, setTotalPages, "", sort);
 		}
 		else {
 			setSort(column);
-			getInterestGroups(setData, 1, perPage, setTotalPages, "", sort);
+			getOrganizations(activeTab,setData, 1, perPage, setTotalPages, "", sort);
 		}
 		
         console.log(`Icon clicked for column: ${column}`);
     };
-
-    const handleAddClickOpen = ()=> {
-        setPopupStatus(true)
-    }
 
     const handleAddClickClose = ()=> {
         setPopupStatus(false)
@@ -98,7 +105,7 @@ function Organizations() {
             <TableTop
 				onSearchText={handleSearch}
 				onPerPageNumber={handlePerPageNumber} 
-				CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}        
+				// CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}        
 				// CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"} 
 			/>
             {data && (
@@ -106,7 +113,7 @@ function Organizations() {
                     rows={data}
                     page={currentPage}
                     perPage={perPage}
-                    columnOrder={columns}
+                    columnOrder={editableColumnNames}
                 >
                     <THead
                         columnOrder={columns}

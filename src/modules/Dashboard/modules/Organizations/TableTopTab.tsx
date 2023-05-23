@@ -1,6 +1,7 @@
 import React from "react"
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 interface TableTopTabProps {
     active: string;
@@ -8,7 +9,14 @@ interface TableTopTabProps {
 }
 
 const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
+    
     const tabletopTab = ["Colleges", "Companies", "Communities"]
+
+    const navigate = useNavigate()
+
+    const handleCreate = () => {
+        navigate("/organizations/create");
+    };
 
     return (
         <div className='table_tab_container'>
@@ -16,6 +24,7 @@ const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
                 {
                     tabletopTab?.map((item: string): any => (
                         <MuButton
+                            key={item}
                             text={item}
                             className = { 
                                 active === item 
@@ -26,26 +35,13 @@ const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
                                 onTabClick(item)
                             }}
                         />
-                        // <div 
-                        //     key={item}
-                            // className = { 
-                            //     active === item 
-                            //     ? "_table_tab_btn active" 
-                            //     :  "_table_tab_btn inactive"
-                            // }
-                        //     onClick={()=>{
-                        //         onTabClick(item)
-                        //     }}
-                        // >
-                        // {item}
-                        // </div>
                     ))
                 }
             </div>
             <MuButton
                     className="org_create_btn"
                     text={"Create"}
-                    // onClick={handleCreate}
+                    onClick={handleCreate}
                     icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
                 />
         </div>
