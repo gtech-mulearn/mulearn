@@ -30,4 +30,5 @@ export const dashboardRoutes = {
 export const campusRoutes = {
     getStudentDetails: "/api/v1/campus/student-details/",
     getCampusDetails: "/api/v1/campus/campus-details/",
+    getStudentsList: "/api/v1/campus/student-details/csv/"
 };

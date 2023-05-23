@@ -22,7 +22,7 @@ function InterestGroup() {
 
     const columnOrder = [
 		"name",
-        "user_ig_link_ig",
+		"user_ig_link_ig",
         "updated_by",
         "created_by",
         "created_at",
@@ -30,7 +30,7 @@ function InterestGroup() {
 
     const editableColumnNames = [
 		"NAME",
-        "Members",
+		"Members",
         "Updated By",
         "Created By",
         "Created On",
@@ -72,11 +72,11 @@ function InterestGroup() {
     const handleIconClick = (column: string) => {
 		if(sort === column){
 			setSort(`-${column}`);
-			getInterestGroups(setData, 1, perPage, setTotalPages, "", sort);
+			getInterestGroups(setData, 1, perPage, setTotalPages, "", `-${column}`);
 		}
 		else {
 			setSort(column);
-			getInterestGroups(setData, 1, perPage, setTotalPages, "", sort);
+			getInterestGroups(setData, 1, perPage, setTotalPages, "", column);
 		}
 		
         console.log(`Icon clicked for column: ${column}`);
@@ -93,9 +93,11 @@ function InterestGroup() {
                 />
             </div>
             <TableTop
-                onSearchText={handleSearch}
-                onPerPageNumber={handlePerPageNumber}
-            />
+				onSearchText={handleSearch}
+				onPerPageNumber={handlePerPageNumber} 
+				CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}        
+				// CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"} 
+			/>
             {data && (
                 <Table
                     rows={data}
