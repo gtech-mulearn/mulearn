@@ -17,6 +17,7 @@ import {
     Organizations
 } from "./modules/Dashboard/modules";
 import { InterestGroupCreate } from "./modules/Dashboard/modules/InterestGroup/InterestGroupCreate";
+import CreateOrganization from "./modules/Dashboard/modules/Organizations/CreateOrganization";
 
 const router = createBrowserRouter([
     {
@@ -49,6 +50,7 @@ const router = createBrowserRouter([
                     { path: "connect-discord", element: <ConnectDiscord /> },
                     { path: "interest-groups", element: <InterestGroup /> },
                     { path: "interest-groups/create", element: <InterestGroupCreate /> },
+                    { path: "organizations/create", element: <CreateOrganization /> },
                     { path: "campus-details", element: <CampusStudentList /> },
                     { path: "manage-users", element: <ManageUsers /> },
                     { path: "organizations", element: <Organizations /> },
