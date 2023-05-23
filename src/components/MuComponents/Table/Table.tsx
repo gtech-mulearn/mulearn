@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styles from "./Table.module.css";
 
 interface Data {
-	[key: string]: string | number | boolean;
+    [key: string]: string | number | boolean;
 }
 
 interface HeaderProps {
@@ -26,7 +26,7 @@ type TableProps = {
     ];
     page: number;
     perPage: number;
-	columnOrder: string[];
+    columnOrder: string[];
 };
 
 {
@@ -37,6 +37,12 @@ use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <T
 const Table: FC<TableProps> = (props: TableProps) => {
     function convertToNormalDate(dateString: any): string | null {
         const numberRegex = /^[0-9]+$/;
+        if (String(dateString) == "true") {
+            return "true";
+        }
+        if (String(dateString) == "false") {
+            return "false";
+        }
 
         if (String(dateString).match(numberRegex)) {
             return dateString;
@@ -45,7 +51,10 @@ const Table: FC<TableProps> = (props: TableProps) => {
         const dateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/;
 
         if (!String(dateString).match(dateRegex)) {
-            return dateString; 
+            if (dateString == null) {
+                return "-";
+            }
+            return dateString;
         }
         try {
             const dateObj = new Date(dateString);
@@ -71,9 +80,13 @@ const Table: FC<TableProps> = (props: TableProps) => {
                     <tbody>
                         {props.rows?.map((rowData, index) => (
                             <tr key={index}>
-                                <td className={styles.td}>{startIndex + index + 1}</td>{" "}
+                                <td className={styles.td}>
+                                    {startIndex + index + 1}
+                                </td>{" "}
                                 {props.columnOrder.map(column => (
-                                    <td className={styles.td} key={column}>{convertToNormalDate(rowData[column])}</td>
+                                    <td className={styles.td} key={column}>
+                                        {convertToNormalDate(rowData[column])}
+                                    </td>
                                 ))}
                             </tr>
                         ))}

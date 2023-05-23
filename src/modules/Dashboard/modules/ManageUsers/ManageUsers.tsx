@@ -11,7 +11,6 @@ import { getUsersData } from "./manageUsersApi";
 import { hasRole } from "../../../../services/common_functions";
 import { useNavigate } from "react-router-dom";
 import { roles } from "../../../../services/types";
-
 type Props = {}
 
 const ManageUsers = (props: Props) => {
@@ -81,7 +80,10 @@ const editableColumnNames = [
     setPerPage(selectedValue);
     getUsersData(setData, 1, selectedValue, setTotalPages, "", "");
   };
-
+ const handleDelete = () => {
+  console.log("delete user")
+    //  navigate("/manage-users/delete");
+ };
   const handleIconClick = (column: string) => {
 	if(sort === column){
 		setSort(`-${column}`);
@@ -96,35 +98,36 @@ const editableColumnNames = [
 };
 
   return (
-    <>
-      <TableTop
-        onSearchText={handleSearch}
-        onPerPageNumber={handlePerPageNumber}
-      />
-      {data && (
-        <Table
-			rows={data}
-			page={currentPage}
-			perPage={perPage}
-			columnOrder={columnOrder}
-		>
-          <THead
-                        columnOrder={columnOrder}
-                        editableColumnNames={editableColumnNames}
-                        onIconClick={handleIconClick}
-                    />
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            margin="10px 0"
-            handleNextClick={handleNextClick}
-            handlePreviousClick={handlePreviousClick}
+      <>
+         
+          <TableTop
+              onSearchText={handleSearch}
+              onPerPageNumber={handlePerPageNumber}
           />
-          {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-        </Table>
-      )}
-    </>
-  )
+          {data && (
+              <Table
+                  rows={data}
+                  page={currentPage}
+                  perPage={perPage}
+                  columnOrder={columnOrder}
+              >
+                  <THead
+                      columnOrder={columnOrder}
+                      editableColumnNames={editableColumnNames}
+                      onIconClick={handleIconClick}
+                  />
+                  <Pagination
+                      currentPage={currentPage}
+                      totalPages={totalPages}
+                      margin="10px 0"
+                      handleNextClick={handleNextClick}
+                      handlePreviousClick={handlePreviousClick}
+                  />
+                  {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+              </Table>
+          )}
+      </>
+  );
 }
 
 export default ManageUsers
