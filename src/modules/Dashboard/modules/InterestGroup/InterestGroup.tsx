@@ -59,15 +59,21 @@ function InterestGroup() {
         setCurrentPage(1);
         getInterestGroups(setData, 1, perPage, setTotalPages, search, "");
     };
-
+    
+	const handleEdit = (id: string | number | boolean) => {
+        console.log(id);
+		localStorage.setItem('id', String(id));
+		navigate("/interest-groups/edit");
+    };
+	
     const handlePerPageNumber = (selectedValue: number) => {
-        setCurrentPage(1);
+		setCurrentPage(1);
         setPerPage(selectedValue);
         getInterestGroups(setData, 1, selectedValue, setTotalPages, "", "");
     };
-
+	
     const handleCreate = () => {
-        navigate("/interest-groups/create");
+		navigate("/interest-groups/create");
     };
 
     const handleIconClick = (column: string) => {
@@ -101,11 +107,12 @@ function InterestGroup() {
 			/>
             {data && (
                 <Table
-                    rows={data}
-                    page={currentPage}
-                    perPage={perPage}
-                    columnOrder={columnOrder}
-                >
+					rows={data}
+					page={currentPage}
+					perPage={perPage}
+					columnOrder={columnOrder}
+					id={['id']} 
+					onEditClick={handleEdit}                >
                     <THead
                         columnOrder={columnOrder}
                         editableColumnNames={editableColumnNames}

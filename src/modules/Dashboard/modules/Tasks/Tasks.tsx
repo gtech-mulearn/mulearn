@@ -93,7 +93,7 @@ export const Tasks = (props: Props) => {
             <TableTop
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
-                CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}
+                // CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}
                 // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
             />
             {data && (

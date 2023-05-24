@@ -20,6 +20,7 @@ import { InterestGroupCreate } from "./modules/Dashboard/modules/InterestGroup/I
 import { Tasks } from "./modules/Dashboard/modules/Tasks/Tasks";
 import CreateOrganization from "./modules/Dashboard/modules/Organizations/CreateOrganization";
 import ManageRoles from "./modules/Dashboard/modules/ManageRoles/ManageRoles";
+import InterestGroupEdit from "./modules/Dashboard/modules/InterestGroup/InterestGroupEdit";
 
 const router = createBrowserRouter([
     {
@@ -59,6 +60,7 @@ const router = createBrowserRouter([
                         path: "organizations/create",
                         element: <CreateOrganization />
                     },
+                    { path: "interest-groups/edit", element: <InterestGroupEdit /> },
                     { path: "campus-details", element: <CampusStudentList /> },
                     { path: "manage-users", element: <ManageUsers /> },
                     { path: "manage-roles", element: <ManageRoles /> },
