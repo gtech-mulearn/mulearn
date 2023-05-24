@@ -128,12 +128,8 @@ function App() {
               path="/campus-logo-generator"
               element={<CampusLogoGenerator />}
             />
-<<<<<<< HEAD
             <Route path="/yipredirect" element={<YipForm />} />
-=======
-            <Route path="/yipform" element={<YipForm />} />
             <Route path="/journey" element={<Journey/>}/>
->>>>>>> f41a2cc (Journey Page Structure)
           </Route>
         </Routes>
       </Router>
