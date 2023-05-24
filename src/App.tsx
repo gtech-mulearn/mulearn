@@ -19,6 +19,7 @@ import {
 import { InterestGroupCreate } from "./modules/Dashboard/modules/InterestGroup/InterestGroupCreate";
 import { Tasks } from "./modules/Dashboard/modules/Tasks/Tasks";
 import CreateOrganization from "./modules/Dashboard/modules/Organizations/CreateOrganization";
+import ManageRoles from "./modules/Dashboard/modules/ManageRoles/ManageRoles";
 import InterestGroupEdit from "./modules/Dashboard/modules/InterestGroup/InterestGroupEdit";
 
 const router = createBrowserRouter([
@@ -51,14 +52,20 @@ const router = createBrowserRouter([
                     { path: "profile", element: <Profile /> },
                     { path: "connect-discord", element: <ConnectDiscord /> },
                     { path: "interest-groups", element: <InterestGroup /> },
-                    { path: "interest-groups/create", element: <InterestGroupCreate /> },
+                    {
+                        path: "interest-groups/create",
+                        element: <InterestGroupCreate />
+                    },
+                    {
+                        path: "organizations/create",
+                        element: <CreateOrganization />
+                    },
                     { path: "interest-groups/edit", element: <InterestGroupEdit /> },
-                    { path: "organizations/create", element: <CreateOrganization /> },
                     { path: "campus-details", element: <CampusStudentList /> },
                     { path: "manage-users", element: <ManageUsers /> },
+                    { path: "manage-roles", element: <ManageRoles /> },
                     { path: "organizations", element: <Organizations /> },
-                    { path: "tasks", element: <Tasks /> },
-
+                    { path: "tasks", element: <Tasks /> }
                 ]
             }
         ]
