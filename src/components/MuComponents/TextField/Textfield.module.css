@@ -1,12 +1,12 @@
 
-body{
+/* body{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 20px;
     background: grey;
-}
+} */
 .inputBox{
     position: relative;
     width: 90%;
