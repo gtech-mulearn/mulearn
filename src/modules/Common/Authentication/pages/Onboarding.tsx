@@ -89,7 +89,9 @@ const Onboarding = (props: Props) => {
     const [district, setDistrict] = useState([{ value: "", label: "" }]);
 
     //State Array for storing the Department Options
-    const [departmentAPI, setDepartmentAPI] = useState([{ id: "", title: "" }]);
+    const [departmentAPI, setDepartmentAPI] = useState([
+        { value: "", label: "" }
+    ]);
     //State Array for storing the Company Options
     const [companyAPI, setCompanyAPI] = useState([{ id: "", title: "" }]);
     //State Array for storing the Community Options
@@ -127,9 +129,27 @@ const Onboarding = (props: Props) => {
         })
     };
 
+    // const yog_year = [
+    //     2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026,
+    //     2027, 2028, 2029, 2030
+    // ];
     const yog_year = [
-        2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026,
-        2027, 2028, 2029, 2030
+        { value: 2015, label: 2015 },
+        { value: 2016, label: 2016 },
+        { value: 2017, label: 2017 },
+        { value: 2018, label: 2018 },
+        { value: 2019, label: 2019 },
+        { value: 2020, label: 2020 },
+        { value: 2021, label: 2021 },
+        { value: 2022, label: 2022 },
+        { value: 2023, label: 2023 },
+        { value: 2024, label: 2024 },
+        { value: 2025, label: 2025 },
+        { value: 2026, label: 2026 },
+        { value: 2027, label: 2027 },
+        { value: 2028, label: 2028 },
+        { value: 2029, label: 2029 },
+        { value: 2030, label: 2030 }
     ];
 
     const errorHandler = (status: number, dataStatus: number) => {
@@ -1334,12 +1354,15 @@ const Onboarding = (props: Props) => {
                                                                 role[0]
                                                                     .title ===
                                                                 "Student"
-                                                                    ? {
-                                                                          width: "58%"
-                                                                      }
-                                                                    : {
-                                                                          width: "100%"
-                                                                      }
+                                                                    ? window.innerWidth >
+                                                                      500
+                                                                        ? {
+                                                                              width: "58%"
+                                                                          }
+                                                                        : {
+                                                                              width: "100%"
+                                                                          }
+                                                                    : {}
                                                             }
                                                             className={
                                                                 styles.input_container
@@ -1355,48 +1378,38 @@ const Onboarding = (props: Props) => {
                                                                     *
                                                                 </span>
                                                             </label>
-                                                            <select
-                                                                id="dept_field"
+                                                            <Select
                                                                 name="dept"
+                                                                onChange={option => {
+                                                                    formik.setFieldValue(
+                                                                        "dept",
+                                                                        option?.value
+                                                                    );
+                                                                }}
+                                                                options={
+                                                                    departmentAPI
+                                                                }
+                                                                isClearable={
+                                                                    false
+                                                                }
+                                                                placeholder="Select dept..."
+                                                                filterOption={(
+                                                                    { label },
+                                                                    inputValue
+                                                                ) =>
+                                                                    label
+                                                                        .toLowerCase()
+                                                                        .includes(
+                                                                            inputValue.toLowerCase()
+                                                                        )
+                                                                }
+                                                                styles={
+                                                                    customStyles
+                                                                }
                                                                 onBlur={
                                                                     formik.handleBlur
                                                                 }
-                                                                onChange={
-                                                                    formik.handleChange
-                                                                }
-                                                                value={
-                                                                    formik
-                                                                        .values
-                                                                        .dept
-                                                                }
-                                                                // value={dept}
-                                                                // required
-                                                            >
-                                                                <option value="">
-                                                                    Select
-                                                                </option>
-                                                                {departmentAPI.map(
-                                                                    (
-                                                                        dept,
-                                                                        index
-                                                                    ) => {
-                                                                        return (
-                                                                            <option
-                                                                                key={
-                                                                                    index
-                                                                                }
-                                                                                value={
-                                                                                    dept.id
-                                                                                }
-                                                                            >
-                                                                                {
-                                                                                    dept.title
-                                                                                }
-                                                                            </option>
-                                                                        );
-                                                                    }
-                                                                )}
-                                                            </select>
+                                                            />
                                                             {formik.touched
                                                                 .dept &&
                                                             formik.errors
@@ -1417,9 +1430,14 @@ const Onboarding = (props: Props) => {
                                                         {role[0].title ==
                                                         "Student" ? (
                                                             <div
-                                                                style={{
-                                                                    width: "40%"
-                                                                }}
+                                                                style={
+                                                                    window.innerWidth >
+                                                                    500
+                                                                        ? {
+                                                                              width: "40%"
+                                                                          }
+                                                                        : {}
+                                                                }
                                                                 className={
                                                                     styles.input_container
                                                                 }
@@ -1435,50 +1453,30 @@ const Onboarding = (props: Props) => {
                                                                         *
                                                                     </span>
                                                                 </label>
-                                                                <select
-                                                                    id="yog_field"
-                                                                    style={{
-                                                                        width: "100%"
-                                                                    }} //78%
+
+                                                                <Select
                                                                     name="yog"
+                                                                    onChange={option => {
+                                                                        formik.setFieldValue(
+                                                                            "yog",
+                                                                            option?.value
+                                                                        );
+                                                                    }}
+                                                                    options={
+                                                                        yog_year
+                                                                    }
+                                                                    isClearable={
+                                                                        false
+                                                                    }
+                                                                    placeholder="Select year..."
+                                                                    styles={
+                                                                        customStyles
+                                                                    }
                                                                     onBlur={
                                                                         formik.handleBlur
                                                                     }
-                                                                    onChange={
-                                                                        formik.handleChange
-                                                                    }
-                                                                    value={
-                                                                        formik
-                                                                            .values
-                                                                            .yog
-                                                                    }
                                                                     // required
-                                                                >
-                                                                    <option value="">
-                                                                        Select
-                                                                    </option>
-                                                                    {yog_year.map(
-                                                                        (
-                                                                            year,
-                                                                            i
-                                                                        ) => {
-                                                                            return (
-                                                                                <option
-                                                                                    key={
-                                                                                        i
-                                                                                    }
-                                                                                    value={
-                                                                                        year
-                                                                                    }
-                                                                                >
-                                                                                    {
-                                                                                        year
-                                                                                    }
-                                                                                </option>
-                                                                            );
-                                                                        }
-                                                                    )}
-                                                                </select>
+                                                                />
                                                                 {formik.touched
                                                                     .yog &&
                                                                 formik.errors

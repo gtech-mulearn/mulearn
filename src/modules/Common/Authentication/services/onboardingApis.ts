@@ -125,30 +125,36 @@ export const getDistrict = (
 
 // request for colleges list
 export const getColleges = (
-    setCollegeAPI: getAPI,
-    setCollegeOptions: collegeOptions,
-    setDepartmentAPI: getAPI,
-    errorHandler: errorHandler,
-    district: any
+  setCollegeAPI: getAPI,
+  setCollegeOptions: collegeOptions,
+  setDepartmentAPI: collegeOptions,
+  errorHandler: errorHandler,
+  district: any
 ) => {
-    publicGateway
-        .post(onboardingRoutes.collegeList, district)
-        .then(response => {
-            const colleges = response.data.response.colleges;
-            setCollegeAPI(colleges);
-            setCollegeOptions(
-                colleges
-                    .sort((a: any, b: any) => a.title.localeCompare(b.title))
-                    .map((college: any) => ({
-                        value: college.id,
-                        label: college.title
-                    }))
-            );
-            setDepartmentAPI(response.data.response.departments);
-        })
-        .catch(error => {
-            errorHandler(error.response.status, error.response.data.status);
-        });
+  publicGateway
+    .post(onboardingRoutes.collegeList, district)
+    .then(response => {
+      const colleges = response.data.response.colleges;      
+      setCollegeAPI(colleges);
+      setCollegeOptions(
+        colleges
+          .sort((a: any, b: any) => a.title.localeCompare(b.title))
+          .map((college: any) => ({
+            value: college.id,
+            label: college.title
+          }))
+      );
+      setDepartmentAPI(
+        response.data.response.departments
+          .map((dept: any) => ({
+            value: dept.id,
+            label: dept.title
+          }))
+      );
+    })
+    .catch(error => {
+      // errorHandler(error.response.status, error.response.data.status);
+    });
 };
 
 // request for company list
