@@ -9,7 +9,7 @@ import { getCSV } from "./apis";
 type Props = {
     onSearchText?: (data: string) => void;
     onPerPageNumber?: (data: number) => void;
-    CSV?: string;
+    CSV: string;
 };
 
 const TableTop = (props: Props) => {
@@ -24,7 +24,7 @@ const TableTop = (props: Props) => {
         props.onPerPageNumber && props.onPerPageNumber(value);
     };
     useEffect(() => {
-        getCSV(setCsv);
+        getCSV(props.CSV, setCsv);
     }, []);
     return (
         <div className={styles.container}>
