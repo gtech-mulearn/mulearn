@@ -161,7 +161,8 @@ form {
   margin: 10px 0px;
 }
 
-form label,.label_container {
+form label,
+.label_container {
   font-weight: 600;
   margin-top: 15px;
 }
@@ -238,6 +239,11 @@ form .input_container .grouped_inputs {
 
 form .input {
   width: 100%;
+}
+
+form .input:focus,
+form select:focus {
+  outline: 1px solid #2684ff;
 }
 
 form .form_buttons button,
@@ -376,7 +382,7 @@ form .form_buttons button[type="reset"] {
   .form_container {
     max-width: 100vw;
     /* padding: 60px; */
-    padding: 40px;
+    padding: 20px;
   }
 
   form .inputs .input_container {
