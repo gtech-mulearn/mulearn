@@ -17,6 +17,7 @@ import {
     Organizations
 } from "./modules/Dashboard/modules";
 import { InterestGroupCreate } from "./modules/Dashboard/modules/InterestGroup/InterestGroupCreate";
+import { Tasks } from "./modules/Dashboard/modules/Tasks/Tasks";
 
 const router = createBrowserRouter([
     {
@@ -52,6 +53,7 @@ const router = createBrowserRouter([
                     { path: "campus-details", element: <CampusStudentList /> },
                     { path: "manage-users", element: <ManageUsers /> },
                     { path: "organizations", element: <Organizations /> },
+                    { path: "tasks", element: <Tasks /> },
 
                 ]
             }

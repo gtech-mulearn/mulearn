@@ -21,7 +21,8 @@ export const authRoutes = {
 export const dashboardRoutes = {
     getInfo: "/api/v1/register/info/",
     getIgData: "/api/v1/dashboard/ig/",
-    getUsersData: "/api/v1/dashboard/user/"
+    getUsersData: "/api/v1/dashboard/user/",
+	getTasksData: "/api/v1/dashboard/task/"
 };
 
 export const campusRoutes = {
