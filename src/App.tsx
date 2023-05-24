@@ -51,6 +51,7 @@ const router = createBrowserRouter([
                     { path: "connect-discord", element: <ConnectDiscord /> },
                     { path: "interest-groups", element: <InterestGroup /> },
                     { path: "interest-groups/create", element: <InterestGroupCreate /> },
+                    { path: "interest-groups/edit", element: <InterestGroupCreate /> },
                     { path: "organizations/create", element: <CreateOrganization /> },
                     { path: "campus-details", element: <CampusStudentList /> },
                     { path: "manage-users", element: <ManageUsers /> },

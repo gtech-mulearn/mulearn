@@ -27,6 +27,8 @@ type TableProps = {
     page: number;
     perPage: number;
     columnOrder: string[];
+    id?: string[];
+    onEditClick?: (column: string | number | boolean) => void;
 };
 
 {
@@ -88,6 +90,21 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                         {convertToNormalDate(rowData[column])}
                                     </td>
                                 ))}
+                                {props.id &&
+                                    props.id.map(column => (
+                                        <td className={styles.td} key={column}>
+                                            <button
+                                                onClick={() =>
+                                                    props.onEditClick &&
+                                                    props.onEditClick(
+                                                        rowData[column]
+                                                    )
+                                                }
+                                            >
+                                                Edit
+                                            </button>
+                                        </td>
+                                    ))}
                             </tr>
                         ))}
                     </tbody>
