@@ -1,7 +1,6 @@
 .container {
   display: grid;
   justify-content: center;
-  max-width: 100%;
   margin-top: 8rem;
   margin-bottom: 10rem;
 }
@@ -13,25 +12,58 @@
   row-gap: 20px;
 }
 .layout {
-  background-color: rgba(205, 198, 198, 0.277);
-  width: 500px;
-  height: 200px;
+  /* background-color: rgba(205, 198, 198, 0.277); */
+  width: 700px;
+  height: auto;
   border-radius: 10px;
+  border: 1px solid #f1a661;
 }
-.layout:hover{
-    background-color: rgba(95, 95, 95, 0.378);
+.layout:hover {
+  color: white;
+  background-color: #f1a661;
 }
-.heading{
-    display: flex;
-    justify-content: start;
-    padding-left: 20px;
-    padding-top: 10px;
+
+.heading {
+  display: flex;
+  justify-content: start;
+  padding-left: 20px;
+  padding-top: 10px;
+  font-weight: 600;
+  font-size: 18px;
+  font-family: "Poppins";
 }
-.list{
-    padding-left: 50px;
+.list {
+  padding-left: 50px;
+  display: flex;
 }
 .list li {
-    list-style-type: disc; 
-    padding-left: 10px;
+  list-style-type: disc;
+  padding-left: 10px;
+}
+.list img {
+  width: 30%;
+  height: auto;
+  margin: 0px 10px;
+  object-fit: cover;
+}
+.list ul {
+  width: auto;
+  font-family: "Poppins", sans-serif;
+}
+@media only screen and (max-width: 700px) {
+  .journey_container {
+    grid-template-columns: 1fr;
+  }
+  .layout {
+    width: 90%;
+    height: auto;
+    margin: auto;
+  }
+  .list img {
+    display: none;
   }
 
+  .list ul {
+    padding: 5px;
+  }
+}
