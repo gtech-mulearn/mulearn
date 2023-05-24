@@ -65,14 +65,15 @@ function InterestGroup() {
 		localStorage.setItem('id', String(id));
 		navigate("/interest-groups/edit");
     };
-
+	
     const handlePerPageNumber = (selectedValue: number) => {
-        setCurrentPage(1);
+		setCurrentPage(1);
         setPerPage(selectedValue);
         getInterestGroups(setData, 1, selectedValue, setTotalPages, "", "");
     };
-
+	
     const handleCreate = () => {
+		navigate("/interest-groups/create");
     };
 
     const handleIconClick = (column: string) => {
