@@ -3,7 +3,7 @@
 .menu_btn {
     /* width: 50px; */
     left: 20px;
-    top: 40px;
+    top: 20px;
     position: fixed;
     height: 25px;
     display: none;
@@ -227,6 +227,9 @@
 
     .menu_btn {
         display: flex;
+    }
+    .main_content{
+        margin-top: 10vh;
     }
 }
 

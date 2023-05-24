@@ -161,8 +161,9 @@ form {
   margin: 10px 0px;
 }
 
-form label {
+form label,.label_container {
   font-weight: 600;
+  margin-top: 15px;
 }
 
 .required {
@@ -200,7 +201,7 @@ form .inputs {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 10px 0px 20px 0px;
+  /* margin: 10px 0px 20px 0px; */
 }
 
 .error_message {
@@ -222,7 +223,7 @@ form .inputs .input_container {
 form .inputs .input_container .password_icon {
   position: absolute;
   right: 20px;
-  top: 34px;
+  top: 45px;
   cursor: pointer;
   background: none;
   padding: 14px 0px;
@@ -279,7 +280,7 @@ form .form_buttons button[type="reset"] {
 }
 
 .aoi_container {
-  margin-top: 20px;
+  margin-top: 10px;
   min-width: 100%;
 }
 

@@ -7,6 +7,8 @@
     font-family: "Plus Jakarta Sans", sans-serif;
     /* color: #404D61; */
     outline: none;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
 }
 
 .css-13cymwt-control,

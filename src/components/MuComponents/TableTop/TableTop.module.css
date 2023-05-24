@@ -62,6 +62,7 @@
 
 .showContainer {
 	border-radius: 8px;
+    position: relative;
 }
 
 .showSelect {
@@ -76,8 +77,8 @@
 		display: none;
 	}
 	.showSelect{
-		position: absolute;
-		right: 8rem;
-		top: 10.3rem;
+        position: absolute;
+        right: 0rem;
+        top: -15.7px;
 	}
 }

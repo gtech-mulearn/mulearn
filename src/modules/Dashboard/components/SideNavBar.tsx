@@ -50,6 +50,14 @@ const SideNavBar = (props: Props) => {
             setConnected(userInfo.existInGuild);
         }
     });
+    const hideFunc = () => {
+        setMarginTop(marginTop === "0px" ? "-15px" : "0px");
+        setTransform2(transform2 === "0deg" ? "45deg" : "0deg");
+        setTransform3(transform3 === "0deg" ? "135deg" : "0deg");
+        setDisplay(display === "block" ? "none" : "block");
+        // setOpacity(opacity === 1 ? 0 : 1);
+        setDisplay2(display2 === "block" ? "none" : "block");
+    };
 
     return (
         <>
@@ -127,6 +135,7 @@ const SideNavBar = (props: Props) => {
                                         }
                                         onClick={() => {
                                             navigate(button.url);
+                                            hideFunc();
                                         }}
                                     />
                                 ))}
