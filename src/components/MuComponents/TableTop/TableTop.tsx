@@ -9,7 +9,7 @@ import { getCSV } from "./apis";
 type Props = {
     onSearchText?: (data: string) => void;
     onPerPageNumber?: (data: number) => void;
-    CSV: string;
+    CSV?: string;
 };
 
 const TableTop = (props: Props) => {
