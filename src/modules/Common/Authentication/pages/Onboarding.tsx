@@ -1623,7 +1623,7 @@ const Onboarding = (props: Props) => {
                                                         styles.error_message
                                                     }
                                                 >
-                                                    Please select atleast one
+                                                    Please select at least one
                                                     area of interest
                                                 </div>
                                             ) : null}
