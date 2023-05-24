@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./InterestGroup.module.css";
+import { dashboardRoutes } from "../../../../services/urls";
 
 function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
@@ -95,7 +96,7 @@ function InterestGroup() {
             <TableTop
 				onSearchText={handleSearch}
 				onPerPageNumber={handlePerPageNumber} 
-				CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}        
+				CSV={dashboardRoutes.getIgList}        
 				// CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"} 
 			/>
             {data && (

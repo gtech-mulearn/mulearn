@@ -1,13 +1,9 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "../../../services/apiGateways";
-import { campusRoutes } from "../../../services/urls";
 
-export const getCSV = async (setCsv: any) => {
+export const getCSV = async (CSV: string, setCsv: any) => {
     try {
-        const response = await privateGateway.get(
-            campusRoutes.getStudentsList,
-            {}
-        );
+        const response = await privateGateway.get(CSV, {});
         // toast({
         // 	title: "Interest Group created",
         // 	status: "success",
