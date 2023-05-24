@@ -135,7 +135,9 @@ const SideNavBar = (props: Props) => {
                                         }
                                         onClick={() => {
                                             navigate(button.url);
-                                            hideFunc();
+                                            window.innerWidth <= 500
+                                                ? hideFunc()
+                                                : null;
                                         }}
                                     />
                                 ))}
