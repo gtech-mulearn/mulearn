@@ -1028,12 +1028,12 @@ const Onboarding = (props: Props) => {
                                                                 role[0]
                                                                     .title ===
                                                                 "Student"
-                                                                    ? {
+                                                                    ? window.innerWidth > 500 ?{
                                                                           width: "58%"
                                                                       }
                                                                     : {
                                                                           width: "100%"
-                                                                      }
+                                                                      }:{}
                                                             }
                                                             className={
                                                                 styles.input_container
@@ -1110,9 +1110,9 @@ const Onboarding = (props: Props) => {
                                                         {role[0].title ==
                                                         "Student" ? (
                                                             <div
-                                                                style={{
+                                                                style={ window.innerWidth > 500 ?{
                                                                     width: "40%"
-                                                                }}
+                                                                }:{}}
                                                                 className={
                                                                     styles.input_container
                                                                 }
