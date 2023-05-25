@@ -166,12 +166,6 @@ const Onboarding = (props: Props) => {
     useEffect(() => {
         localStorage.setItem("token", queryParameters.get("id") as string);
         getCountries(errorHandler, setCountryOption);
-        // getColleges(
-        //   setCollegeAPI,
-        //   setCollegeOptions,
-        //   setDepartmentAPI,
-        //   errorHandler
-        // );
         getCommunties(errorHandler, setCommunityAPI);
         getCompanies(errorHandler, setCompanyAPI);
         getInterests(errorHandler, setAoiAPI);
@@ -217,7 +211,6 @@ const Onboarding = (props: Props) => {
 
     const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
         if (values.organization != "") {
-            // console.log("hi");
             values.community.push(values.organization);
         }
         console.log(values.community);
@@ -1108,6 +1101,14 @@ const Onboarding = (props: Props) => {
                                                                 styles={
                                                                     customStyles
                                                                 }
+                                                                isDisabled={
+                                                                    formik
+                                                                        .values
+                                                                        .country ===
+                                                                    ""
+                                                                        ? true
+                                                                        : false
+                                                                }
                                                                 onBlur={
                                                                     formik.handleBlur
                                                                 }
@@ -1195,6 +1196,14 @@ const Onboarding = (props: Props) => {
                                                                     }
                                                                     styles={
                                                                         customStyles
+                                                                    }
+                                                                    isDisabled={
+                                                                        formik
+                                                                            .values
+                                                                            .state ===
+                                                                        ""
+                                                                            ? true
+                                                                            : false
                                                                     }
                                                                     onBlur={
                                                                         formik.handleBlur
@@ -1317,6 +1326,12 @@ const Onboarding = (props: Props) => {
                                                                 )
                                                         }
                                                         styles={customStyles}
+                                                        isDisabled={
+                                                            formik.values
+                                                                .district === ""
+                                                                ? true
+                                                                : false
+                                                        }
                                                         onBlur={
                                                             formik.handleBlur
                                                         }
@@ -1406,6 +1421,14 @@ const Onboarding = (props: Props) => {
                                                                 styles={
                                                                     customStyles
                                                                 }
+                                                                isDisabled={
+                                                                    formik
+                                                                        .values
+                                                                        .organization ===
+                                                                    ""
+                                                                        ? true
+                                                                        : false
+                                                                }
                                                                 onBlur={
                                                                     formik.handleBlur
                                                                 }
@@ -1471,6 +1494,14 @@ const Onboarding = (props: Props) => {
                                                                     placeholder="Select year..."
                                                                     styles={
                                                                         customStyles
+                                                                    }
+                                                                    isDisabled={
+                                                                        formik
+                                                                            .values
+                                                                            .dept ===
+                                                                        ""
+                                                                            ? true
+                                                                            : false
                                                                     }
                                                                     onBlur={
                                                                         formik.handleBlur
