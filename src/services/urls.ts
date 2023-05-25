@@ -12,31 +12,26 @@ export const onboardingRoutes = {
 };
 
 export const authRoutes = {
-    forgetPassword: "/api/v1/register/forgot-password/",
     login: "/api/v1/auth/user-authentication/",
-    getMuid: "/api/v1/register/reset-password/verify-token/${token}/",
-    resetPassword: "/api/v1/register/reset-password/${token}/",
     getAccessToken: "/api/v1/auth/get-access-token/",
+    otpVerification: "/api/v1/auth/otp-verification/",
     requestEmailOrMuidOtp: "/api/v1/auth/request-otp/",
-    otpVerification: "/api/v1/auth/otp-verification/"
 };
 
 export const dashboardRoutes = {
-    getInfo: "/api/v1/register/info/",
+    forgetPassword: "/api/v1/dashboard/user/forgot-password/",
+    resetPassword: "/api/v1/dashboard/user/reset-password/${token}/",
+    resetPasswordVerify: "/api/v1/dashboard/user/reset-password/verify-token/${token}/",
+    getInfo: "/api/v1/dashboard/user/info/",
     getIgData: "/api/v1/dashboard/ig/",
     getIgList: "/api/v1/dashboard/ig/csv",
     getUsersData: "/api/v1/dashboard/user/",
     getTasksData: "/api/v1/dashboard/task/",
     getRolesData: "/api/v1/dashboard/roles/",
-    getRolesList: "api/v1/dashboard/roles/csv/"
-};
-
-export const campusRoutes = {
-    getStudentDetails: "/api/v1/campus/student-details/",
-    getCampusDetails: "/api/v1/campus/campus-details/",
-    getStudentsList: "/api/v1/campus/student-details/csv/",
-  
-    
+    getRolesList: "api/v1/dashboard/roles/csv/",
+    getStudentDetails: "/api/v1/dashboard/campus/student-details/",
+    getStudentsList: "/api/v1/dashboard/campus/student-details/csv/",
+    getCampusDetails: "/api/v1/dashboard/campus/campus-details/",
 };
 
 export const organizationRoutes = {
