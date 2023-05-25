@@ -24,7 +24,7 @@ const TableTop = (props: Props) => {
         props.onPerPageNumber && props.onPerPageNumber(value);
     };
     useEffect(() => {
-        getCSV(setCsv);
+        getCSV(props.CSV, setCsv);
     }, []);
     return (
         <div className={styles.container}>

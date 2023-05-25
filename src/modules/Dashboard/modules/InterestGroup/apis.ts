@@ -51,3 +51,17 @@ export const createInterestGroups = async (name:string, toast: (options?: UseToa
         }
     }
 }
+export const editInterestGroups = async (name:string, id:any) => {
+	try {
+        const response = await privateGateway.put(dashboardRoutes.getIgData + id + '/', {
+			"name": name
+		});
+        const message: any = response?.data;
+		console.log(message);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+}

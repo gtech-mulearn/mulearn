@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./InterestGroup.module.css";
+import { dashboardRoutes } from "../../../../services/urls";
 
 function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
@@ -58,15 +59,21 @@ function InterestGroup() {
         setCurrentPage(1);
         getInterestGroups(setData, 1, perPage, setTotalPages, search, "");
     };
-
+    
+	const handleEdit = (id: string | number | boolean) => {
+        console.log(id);
+		localStorage.setItem('id', String(id));
+		navigate("/interest-groups/edit");
+    };
+	
     const handlePerPageNumber = (selectedValue: number) => {
-        setCurrentPage(1);
+		setCurrentPage(1);
         setPerPage(selectedValue);
         getInterestGroups(setData, 1, selectedValue, setTotalPages, "", "");
     };
-
+	
     const handleCreate = () => {
-        navigate("/interest-groups/create");
+		navigate("/interest-groups/create");
     };
 
     const handleIconClick = (column: string) => {
@@ -95,16 +102,17 @@ function InterestGroup() {
             <TableTop
 				onSearchText={handleSearch}
 				onPerPageNumber={handlePerPageNumber} 
-				CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}        
+				CSV={dashboardRoutes.getIgList}        
 				// CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"} 
 			/>
             {data && (
                 <Table
-                    rows={data}
-                    page={currentPage}
-                    perPage={perPage}
-                    columnOrder={columnOrder}
-                >
+					rows={data}
+					page={currentPage}
+					perPage={perPage}
+					columnOrder={columnOrder}
+					id={['id']} 
+					onEditClick={handleEdit}                >
                     <THead
                         columnOrder={columnOrder}
                         editableColumnNames={editableColumnNames}

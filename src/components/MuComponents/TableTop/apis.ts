@@ -1,13 +1,9 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "../../../services/apiGateways";
-import { campusRoutes } from "../../../services/urls";
 
-export const getCSV = async (setCsv: any) => {
+export const getCSV = async (CSV: any, setCsv: any) => {
     try {
-        const response = await privateGateway.get(
-            campusRoutes.getStudentsList,
-            {}
-        );
+        const response = await privateGateway.get(CSV, {});
         // toast({
         // 	title: "Interest Group created",
         // 	status: "success",
@@ -15,7 +11,6 @@ export const getCSV = async (setCsv: any) => {
         // 	isClosable: true
         // });
         const message: any = response?.data;
-        console.log(message);
         setCsv(message);
     } catch (err: unknown) {
         const error = err as AxiosError;

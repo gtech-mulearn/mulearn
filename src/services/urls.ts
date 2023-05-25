@@ -24,13 +24,19 @@ export const authRoutes = {
 export const dashboardRoutes = {
     getInfo: "/api/v1/register/info/",
     getIgData: "/api/v1/dashboard/ig/",
-    getUsersData: "/api/v1/dashboard/user/"
+    getIgList: "/api/v1/dashboard/ig/csv",
+    getUsersData: "/api/v1/dashboard/user/",
+    getTasksData: "/api/v1/dashboard/task/",
+    getRolesData: "/api/v1/dashboard/roles/",
+    getRolesList: "api/v1/dashboard/roles/csv/"
 };
 
 export const campusRoutes = {
     getStudentDetails: "/api/v1/campus/student-details/",
     getCampusDetails: "/api/v1/campus/campus-details/",
-    getStudentsList: "/api/v1/campus/student-details/csv/"
+    getStudentsList: "/api/v1/campus/student-details/csv/",
+  
+    
 };
 
 export const organizationRoutes = {

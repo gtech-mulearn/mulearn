@@ -11,6 +11,7 @@ import { getUsersData } from "./manageUsersApi";
 import { hasRole } from "../../../../services/common_functions";
 import { useNavigate } from "react-router-dom";
 import { roles } from "../../../../services/types";
+import { campusRoutes } from "../../../../services/urls";
 type Props = {}
 
 const ManageUsers = (props: Props) => {
@@ -99,10 +100,10 @@ const editableColumnNames = [
 
   return (
       <>
-         
           <TableTop
               onSearchText={handleSearch}
               onPerPageNumber={handlePerPageNumber}
+              CSV={campusRoutes.getStudentsList}
           />
           {data && (
               <Table
