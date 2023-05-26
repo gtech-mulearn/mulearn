@@ -3,11 +3,12 @@ import { MuButton } from "../MuButtons/MuButton";
 import Textfield from "../TextField/Textfield";
 import styles from "./Form.module.css";
 import { Navigate } from "react-router-dom";
+import Dropdown from "../Dropdown/Dropdown";
 
 type Props = {
     title: string;
     handleSubmitClick: any;
-    formFields: {
+    formFields?: {
         content: string;
         inputType: string;
         input: string;
@@ -36,6 +37,7 @@ const Form = (props: Props) => {
                                 input={field.input}
                             />
                         ))}
+					<Dropdown contents={["1", '2', '3']} label={"Testing"}/>
                     <div className={styles.btn_container}>
                         <MuButton
                             text={"Decline"}
