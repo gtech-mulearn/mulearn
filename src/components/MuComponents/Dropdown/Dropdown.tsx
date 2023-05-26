@@ -7,6 +7,8 @@ const Dropdown = (props: {
     style?: React.CSSProperties;
     label?: string;
     default?: string;
+    setInput: React.Dispatch<React.SetStateAction<string>>;
+    input: string;
 }) => {
     const [selectedContent, setSelectedContent] = useState("Select");
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -31,7 +33,7 @@ const Dropdown = (props: {
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
                 {selectedContent}
-                <FaCaretDown className={styles.icon}/>
+                <FaCaretDown className={styles.icon} />
             </div>
             {isDropdownOpen && (
                 <div className={styles.contents}>
@@ -39,7 +41,7 @@ const Dropdown = (props: {
                         <div
                             key={index}
                             className={styles.content}
-                            onClick={() => handleContentSelect(content)}
+                            onClick={() => {handleContentSelect(content); props.setInput(content); console.log(props.input);}}
                         >
                             {content}
                         </div>

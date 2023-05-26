@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Form from "../../../../components/MuComponents/Form/Form";
-import { editInterestGroups } from "./apis";
+import { editInterestGroups, getIGDetails } from "./apis";
 import { useParams } from "react-router-dom";
 
 type Props = {};
@@ -11,11 +11,11 @@ const InterestGroupEdit = (props: Props) => {
     const [input3, setInput3] = useState("");
 
 	useEffect(() => {
-		setInput1('Test')
+		getIGDetails(id, setInput1);
 	}, [])
 	
 
-	const formFields = [
+	const inputFields = [
         {
             content: "IG Name",
             inputType: "text",
@@ -35,6 +35,22 @@ const InterestGroupEdit = (props: Props) => {
         //     setInput: setInput3
         // }
     ];
+	// const dropdownFields = [
+    //     {
+    //         contents: ["IG Name", "1", "2", "3"],
+    //         input: input2,
+    //         setInput: setInput2,
+    //         label: "Select Name",
+    //         default: "string"
+    //     },
+    //     {
+    //         contents: ["IG Name", "1", "2", "3"],
+    //         input: input3,
+    //         setInput: setInput3,
+    //         label: "Select test",
+    //         default: "select from following"
+    //     }
+    // ];
 	const {id} = useParams();
 	const handleSubmit = () => {
 		editInterestGroups(input1, id);
@@ -44,7 +60,8 @@ const InterestGroupEdit = (props: Props) => {
             <Form
                 title={"Edit Name of Interest Group"}
                 handleSubmitClick={handleSubmit}
-                formFields={formFields}
+                inputFields={inputFields}
+                // dropdownFields={dropdownFields}
             />
         </div>
     );

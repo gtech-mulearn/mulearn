@@ -72,3 +72,23 @@ export const editInterestGroups = async (name: string, id: any) => {
         }
     }
 };
+
+export const getIGDetails = async (
+    id: string | undefined,
+    setInput: React.Dispatch<React.SetStateAction<string>>
+) => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getIgData + "get/" + id + "/",
+        );
+        const message: any = response?.data;
+        console.log(message);
+		console.log(message.response.interestGroup.name);
+		setInput(message.response.interestGroup.name);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
