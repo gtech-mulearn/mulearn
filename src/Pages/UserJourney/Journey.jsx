@@ -2,15 +2,23 @@ import React from "react";
 import styles from "./Journey.module.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
+import onboard from './onboard.svg'
+import basics from './basics.svg'
+import enablement from './enablement.svg'
+import learningcircle from './learningcircle.svg'
+import grouptask from './grouptask.svg'
+import participate from './participate.svg'
 const Journey = () => {
   return (
-    <div>
+    <div className={styles.main}>
       <Navbar />
       <div className={styles.container}>
         <div className={styles.journey_container}>
           <div className={`${styles.journey_1} ${styles.layout}`}>
-            <div className={styles.heading}>The Onboarding</div>
+            <div className={styles.heading}><h3>1 . The Onboarding</h3></div>
             <div className={styles.list}>
+           
+
               <ul>
                 <li>
                   Create an account on µLearn at
@@ -22,10 +30,12 @@ const Journey = () => {
                   onboarding procedure.
                 </li>
               </ul>
+              <img src={onboard} alt="icon"></img>
+               
             </div>
           </div>
           <div className={`${styles.journey_2} ${styles.layout}`}>
-            <div className={styles.heading}>The Basics</div>
+            <div className={styles.heading}><h3>2 . The Basics</h3></div>
             <div className={styles.list}>
               <ul>
                 <li>
@@ -38,25 +48,30 @@ const Journey = () => {
                   the #introductions channel.
                 </li>
               </ul>
+              <img src={basics} alt="icon"></img>
+
             </div>
           </div>
           <div className={`${styles.journey_3} ${styles.layout}`}>
-            <div className={styles.heading}>The Enablement</div>
+            <div className={styles.heading}><h3>3 . The Enablement</h3></div>
             <div className={styles.list}>
               <ul>
                 <li>
                   Complete the basic enablement tasks at
-                  https://learn.mulearn.org/challenges.
+                  https://learn.mulearn.org
+                  /challenges.
                 </li>
                 <li>
                   These tasks are relevant regardless of the domain you choose.
                 </li>
                 <li>Earn Karma Points and improve your rank. </li>
               </ul>
+              <img src={enablement} alt="icon"></img>
+
             </div>
           </div>
           <div className={`${styles.journey_4} ${styles.layout}`}>
-            <div className={styles.heading}>Forming Learning Circles</div>
+            <div className={styles.heading}><h3>4 . Forming Learning Circles</h3></div>
             <div className={styles.list}>
               <ul>
                 <li>
@@ -68,10 +83,12 @@ const Journey = () => {
                   https://learn.mulearn.org/create.
                 </li>
               </ul>
+              <img src={learningcircle} alt="icon"></img>
+
             </div>
           </div>
           <div className={`${styles.journey_5} ${styles.layout}`}>
-            <div className={styles.heading}>Interest Group Tasks</div>
+            <div className={styles.heading}><h3>5 . Interest Group Tasks</h3></div>
             <div className={styles.list}>
               <ul>
                 <li>
@@ -87,10 +104,12 @@ const Journey = () => {
                   journey.
                 </li>
               </ul>
+              <img src={grouptask} alt="icon"></img>
+
             </div>
           </div>
           <div className={`${styles.journey_6} ${styles.layout}`}>
-            <div className={styles.heading}>Participate</div>
+            <div className={styles.heading}><h3>6 . Participate</h3></div>
             <div className={styles.list}>
               <ul>
                 <li>Grab Your Superpowers to meet
@@ -101,6 +120,8 @@ const Journey = () => {
                   
                 </li>
               </ul>
+              <img src={participate} alt="icon"></img>
+
             </div>
           </div>
         </div>
