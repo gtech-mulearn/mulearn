@@ -32,14 +32,9 @@ const UrlShortener = () => {
         message: ""
     });
 
-    const columnOrder = ["short_url", "long_url", ""];
+    const columnOrder = ["short_url", "long_url"];
 
-    const editableColumnNames = [
-        "Short URL",
-        "Long URL",
-        "Delete"
-        // "Status"
-    ];
+    const editableColumnNames = ["Short URL", "Long URL"];
     useEffect(() => {
         if (!hasRole([roles.ADMIN])) navigate("/404");
         getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
