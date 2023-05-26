@@ -67,6 +67,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
             hasView: true,
             roles: [roles.ADMIN],
             icon: <i className="fi fi-sr-users"></i>
+        },
+        {
+            url: "manage-roles",
+            title: "Manage Roles",
+            hasView: true,
+            roles: [roles.ADMIN],
+            icon: <i className="fi fi-sr-users"></i>
         }
     ];
 
