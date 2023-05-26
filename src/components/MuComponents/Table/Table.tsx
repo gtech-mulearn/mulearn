@@ -102,7 +102,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                     )
                                                 }
                                             >
-                                                Edit
+                                                <i className="fi fi-sr-file-edit"></i>
                                             </button>
                                         </td>
                                     ))}
@@ -117,7 +117,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                     )
                                                 }
                                             >
-                                                Delete
+                                                <i className="fi fi-sr-trash"></i>
                                             </button>
                                         </td>
                                     ))}
