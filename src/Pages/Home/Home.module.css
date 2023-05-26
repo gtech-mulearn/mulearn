@@ -730,10 +730,13 @@ a {
 }
 
 .karma_img {
-  max-width: 25rem;
+  max-width: 20rem;
 }
 
 @media screen and (min-width: 600px) {
+  .karma_img {
+    max-width: 25rem;
+  }
   .karma_img {
     display: block;
     margin: auto;
