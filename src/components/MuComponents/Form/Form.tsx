@@ -3,15 +3,23 @@ import { MuButton } from "../MuButtons/MuButton";
 import Textfield from "../TextField/Textfield";
 import styles from "./Form.module.css";
 import { Navigate } from "react-router-dom";
+import Dropdown from "../Dropdown/Dropdown";
 
 type Props = {
     title: string;
     handleSubmitClick: any;
-    formFields: {
+    inputFields?: {
         content: string;
         inputType: string;
         input: string;
         setInput: React.Dispatch<React.SetStateAction<string>>;
+    }[];
+    dropdownFields?: {
+        contents: string[];
+        input: string;
+        setInput: React.Dispatch<React.SetStateAction<string>>;
+        label: string;
+        default?: string;
     }[];
 };
 
@@ -27,11 +35,20 @@ const Form = (props: Props) => {
                 <h1 className={styles.text}>{props.title}</h1>
                 <br />
                 <div className={styles.inputContainer}>
-                    {props.formFields &&
-                        props.formFields.map(field => (
+                    {props.inputFields &&
+                        props.inputFields.map(field => (
                             <Textfield
                                 content={field.content}
                                 inputType={field.inputType}
+                                setInput={field.setInput}
+                                input={field.input}
+                            />
+                        ))}
+                    {props.dropdownFields &&
+                        props.dropdownFields.map(field => (
+                            <Dropdown
+                                contents={field.contents}
+                                label={field.label}
                                 setInput={field.setInput}
                                 input={field.input}
                             />
