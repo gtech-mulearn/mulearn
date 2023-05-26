@@ -20,9 +20,11 @@ a {
   padding-top: 3rem;
   background-color: #f2f3f9;
   opacity: 1;
-  background-image: repeating-radial-gradient(circle at 0 0,
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
       transparent 0,
-      #f2f3f9 15px),
+      #f2f3f9 15px
+    ),
     repeating-linear-gradient(#fdf1e755, #fdf1e7);
 }
 
@@ -214,8 +216,7 @@ a {
   margin: auto;
 }
 
-@media screen and (max-width:999px) {
-
+@media screen and (max-width: 999px) {
   /* .svp_image {
     width: 3.15rem;
     position: relative;
@@ -227,7 +228,6 @@ a {
     position: relative;
     text-align: center;
   }
-
 }
 
 @media only screen and (min-width: 1000px) {
@@ -363,6 +363,7 @@ a {
 .jv_heading {
   font-family: "Noto Sans", sans-serif;
   font-size: 2.25rem;
+  max-width: 43rem;
   font-weight: 700;
   color: #303030;
 }
@@ -387,14 +388,13 @@ a {
   font-weight: 400;
 }
 
-@media screen and (min-width:600px) {
+@media screen and (min-width: 600px) {
   .join_img {
-    height: 40rem;
+    height: 35rem;
     display: block;
     margin: auto;
     margin-top: 2rem;
   }
-
 }
 
 @media screen and (max-width: 599px) {
@@ -726,5 +726,17 @@ a {
 
   .test_content {
     width: 80%;
+  }
+}
+
+.karma_img {
+  max-width: 25rem;
+}
+
+@media screen and (min-width: 600px) {
+  .karma_img {
+    display: block;
+    margin: auto;
+    margin-top: 2rem;
   }
 }

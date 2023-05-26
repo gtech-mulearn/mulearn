@@ -1,12 +1,12 @@
-import React from "react"
-import styles from "../Home/Home.module.css"
+import React from "react";
+import styles from "../Home/Home.module.css";
 
-import Footer from "../../Components/Footer/Footer"
-import Navbar from "../../Components/Navbar/Navbar"
-import Testimonials from "../../Components/Testimonials/Testimonials"
-import CountUp from "react-countup"
+import Footer from "../../Components/Footer/Footer";
+import Navbar from "../../Components/Navbar/Navbar";
+import Testimonials from "../../Components/Testimonials/Testimonials";
+import CountUp from "react-countup";
 
-import "./Home.scss"
+import "./Home.scss";
 
 const Home = () => {
   return (
@@ -440,6 +440,31 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <br />
+      <div className={styles.joinviewmain_container}>
+        <div className={styles.joinview_container}>
+          <div className={styles.join_view}>
+            <div className={styles.jv_texts}>
+              <p className={styles.jv_heading}>
+                Let's Learn & Gain <span>Karma Points</span>
+              </p>
+              <p className={styles.jv_content}>
+                Karma points are points earned by completing tasks, challenges,
+                and boot camps in the uLearn platform Points serve as proof of
+                the work done by the students and can be used to obtain various
+                benefits, such as invitations to exclusive events and promotions
+                in the local community. The more Karma points a student has, the
+                more accomplished they are seen in the community.
+              </p>
+            </div>
+            <img
+              src="/assets/home/karma.png"
+              alt="join"
+              className={styles.karma_img}
+            />
+          </div>
+        </div>
+      </div>
 
       <div className={styles.chart_view_container}>
         <div className={styles.chart_view}>
@@ -469,10 +494,10 @@ const Home = () => {
         </div>
       </div>
       <Testimonials />
-      
+
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
