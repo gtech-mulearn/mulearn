@@ -23,19 +23,38 @@ const Form = (props: Props) => {
             >
                 <h1 className={styles.text}>{props.title}</h1>
                 <br />
-                <center className={styles.inputContainer}>
+                <div className={styles.inputContainer}>
                     <Textfield
                         content={"IG Name"}
                         inputType={"text"}
                         setInput={setInput}
                         input={input}
                     />
-                </center>
-                <MuButton
-                    text={"Submit"}
-                    className={styles.btn}
-                    onClick={() => props.handleSubmitClick(input)}
-                />
+                    <Textfield
+                        content={"Description"}
+                        inputType={"text"}
+                        setInput={setInput}
+                        input={input}
+                    />
+                    <Textfield
+                        content={"Description"}
+                        inputType={"text"}
+                        setInput={setInput}
+                        input={input}
+                    />
+                    <div className={styles.btn_container}>
+                        <MuButton
+                            text={"Decline"}
+                            className={styles.btn_cancel}
+                            onClick={() => props.handleSubmitClick(input)}
+                        />
+                        <MuButton
+                            text={"Confirm"}
+                            className={styles.btn_submit}
+                            onClick={() => props.handleSubmitClick(input)}
+                        />
+                    </div>
+                </div>
             </form>
         </div>
     );
