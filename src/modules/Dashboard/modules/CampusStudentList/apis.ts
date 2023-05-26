@@ -1,6 +1,6 @@
 import React from "react";
 import { privateGateway } from "../../../../services/apiGateways";
-import { campusRoutes } from "../../../../services/urls";
+import { dashboardRoutes } from "../../../../services/urls";
 
 type studentData = React.Dispatch<React.SetStateAction<any>>;
 type campusData = React.Dispatch<React.SetStateAction<any>>;
@@ -14,7 +14,7 @@ export const getStudentDetails = (
     sortID?: string
 ) => {
     privateGateway
-        .get(campusRoutes.getStudentDetails, {
+        .get(dashboardRoutes.getStudentDetails, {
             params: {
                 perPage: selectedValue,
                 pageIndex: page,
@@ -33,7 +33,7 @@ export const getStudentDetails = (
 };
 export const getCampusDetails = (setCampusData:campusData) => {
     privateGateway
-        .get(campusRoutes.getCampusDetails)
+        .get(dashboardRoutes.getCampusDetails)
         .then(response => {
             // console.log(response.data.response);
             setCampusData(response.data.response);

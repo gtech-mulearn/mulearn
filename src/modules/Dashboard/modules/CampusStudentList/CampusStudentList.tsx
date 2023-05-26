@@ -21,7 +21,7 @@ const CampusStudentList = (props: Props) => {
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
 
-    const columnOrder = ["name", "email", "phone", "karma", "mu_id"];
+    const columnOrder = ["fullname", "email", "phone", "karma", "muid"];
 
     const editableColumnNames = ["Name", "Email", "Phone", "Karma", "MuId"];
 
@@ -152,7 +152,6 @@ const CampusStudentList = (props: Props) => {
             <TableTop
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
-				 
             />
             <Table
                 rows={studentData}

@@ -17,7 +17,7 @@ export const forgetPassword = (
     navigate: NavigateFunction
 ) => {
     publicGateway
-        .post(authRoutes.forgetPassword, { emailOrMuid })
+        .post(dashboardRoutes.forgetPassword, { emailOrMuid })
         .then(response => {
             toast({
                 title: "Token Mail Sent",
@@ -105,7 +105,7 @@ export const getMuid = (
     setMuID: setMuID
 ) => {
     publicGateway
-        .post(authRoutes.getMuid.replace("${token}", token))
+        .post(dashboardRoutes.resetPasswordVerify.replace("${token}", token))
         .then(response => {
             console.log(response.data);
             toast({
@@ -141,7 +141,7 @@ export const resetPassword = (
     navigate: NavigateFunction
 ) => {
 	publicGateway
-        .post(authRoutes.resetPassword.replace("${token}", token), { password })
+        .post(dashboardRoutes.resetPassword.replace("${token}", token), { password })
         .then(response => {
             if (response.data.statusCode === 200) {
                 toast({
