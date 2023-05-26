@@ -21,7 +21,8 @@ export const getInterestGroups = async (
             }
         });
         const interestGroups: any = response?.data;
-        setData(interestGroups.response.interestGroups);
+
+        setData(interestGroups.response.data);
         setTotalPages(interestGroups.response.pagination.totalPages);
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -31,37 +32,43 @@ export const getInterestGroups = async (
     }
 };
 
-export const createInterestGroups = async (name:string, toast: (options?: UseToastOptions | undefined) => ToastId,) => {
-	try {
+export const createInterestGroups = async (
+    name: string,
+    toast: (options?: UseToastOptions | undefined) => ToastId
+) => {
+    try {
         const response = await privateGateway.post(dashboardRoutes.getIgData, {
-			"name": name
-		});
-		toast({
-			title: "Interest Group created",
-			status: "success",
-			duration: 3000,
-			isClosable: true
-		});
+            name: name
+        });
+        toast({
+            title: "Interest Group created",
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
         const message: any = response?.data;
-		console.log(message);
+        console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
         }
     }
-}
-export const editInterestGroups = async (name:string, id:any) => {
-	try {
-        const response = await privateGateway.put(dashboardRoutes.getIgData + id + '/', {
-			"name": name
-		});
+};
+export const editInterestGroups = async (name: string, id: any) => {
+    try {
+        const response = await privateGateway.put(
+            dashboardRoutes.getIgData + id + "/",
+            {
+                name: name
+            }
+        );
         const message: any = response?.data;
-		console.log(message);
+        console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
         }
     }
-}
+};
