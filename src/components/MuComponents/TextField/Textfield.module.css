@@ -1,42 +1,33 @@
+/* Textfield.module.css */
 
-/* body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-    background: grey;
-} */
-.inputBox{
-    position: relative;
-    width: 90%;
-    
+.inputBox {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-bottom: 10px;
+	padding: 8px;
+	background-color: #fff;
+	width: 50%;
 }
-.inputBox input{
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #014ed8;
-    border-radius: 10px;
-    outline: none;
-    color: #014ed8;
-    transition: 0.3s;
-    
+
+.inputBox span {
+	font-weight: bold;
+	color: black;
 }
-.inputBox span{
-    position: absolute;
-    left: 0px;
-    color: #014ed8;
-    font-size: 1.2rem;
-    transition: 0.3s;
-    padding-left: 10px;
-    padding-top: 15px;
-    padding-right: 10px;
+
+.inputBox input {
+	border: none;
+	width: 100%;
+	color: black;
+	border-radius: 8px;
+	background-color: #ebeaea9b;
+	outline: none;
+	box-sizing: border-box;
+	padding: 10px;
 }
-.inputBox input:valid ~ span,.inputBox input:focus ~ span{
-transform: translateX(0px) translateY(-30px);
-font-size: 1.2rem;
-background: rgba(0, 0, 0, 0);
-}
-.inputBox input:valid,.inputBox input:focus{
-    border: 2px solid #9fb5ef;
+
+@media (max-width: 768px) {
+	.inputBox {
+		width: 100%;
+	}
 }

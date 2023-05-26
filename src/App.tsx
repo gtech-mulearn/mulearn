@@ -61,7 +61,7 @@ const router = createBrowserRouter([
                         element: <CreateOrganization />
                     },
                     {
-                        path: "interest-groups/edit",
+                        path: "interest-groups/edit/:id",
                         element: <InterestGroupEdit />
                     },
                     { path: "campus-details", element: <CampusStudentList /> },

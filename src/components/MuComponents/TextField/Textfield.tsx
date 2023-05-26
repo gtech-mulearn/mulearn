@@ -6,10 +6,15 @@ const Textfield = (props: {
     content: string;
     style?: React.CSSProperties;
     onClick?: React.MouseEventHandler;
-    inputType: "text" | "number";
-	setInput: React.Dispatch<React.SetStateAction<string>>
-	input: string
+    inputType: string;
+    setInput?: React.Dispatch<React.SetStateAction<string>>;
+    input: string;
 }) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (props.setInput) {
+            props.setInput(e.target.value);
+        }
+    };
 
     return (
         <div
@@ -17,8 +22,13 @@ const Textfield = (props: {
             style={props.style}
             onClick={props.onClick}
         >
-            <input type={props.inputType} value={props.input} required onChange={(e) => {props.setInput(e.target.value)}}/>
-            <span>{props.content}</span>
+			<span>{props.content}</span>
+            <input
+                type={props.inputType}
+                value={props.input}
+                required
+                onChange={handleInputChange}
+            />
         </div>
     );
 };

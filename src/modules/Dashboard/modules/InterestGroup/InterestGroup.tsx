@@ -62,8 +62,7 @@ function InterestGroup() {
     
 	const handleEdit = (id: string | number | boolean) => {
         console.log(id);
-		localStorage.setItem('id', String(id));
-		navigate("/interest-groups/edit");
+		navigate(`/interest-groups/edit/${id}`);
     };
 	
     const handlePerPageNumber = (selectedValue: number) => {
