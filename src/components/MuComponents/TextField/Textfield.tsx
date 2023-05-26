@@ -6,7 +6,7 @@ const Textfield = (props: {
     content: string;
     style?: React.CSSProperties;
     onClick?: React.MouseEventHandler;
-    inputType: "text" | "number";
+    inputType: string;
     setInput?: React.Dispatch<React.SetStateAction<string>>;
     input: string;
 }) => {
