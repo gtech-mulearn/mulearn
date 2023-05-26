@@ -1,0 +1,56 @@
+.url_shortener_container {
+    width: 95%;
+    padding: 20px 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    background: #f3f8ff;
+    border: 1px solid #dde2e5;
+    border-radius: 20px;
+}
+
+.create_new_url {
+    width: 90%;
+}
+
+.url_shortener_container .create_new_url form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}
+
+.url_shortener_container .create_new_url form input {
+    background: #F0F0F0;
+    border: 1px solid rgba(1, 75, 178, 0.3);
+    border-radius: 12px;
+    padding: 10px;
+}
+.url_shortener_container .create_new_url form input:focus {
+    border: 1px solid rgba(1, 75, 178, 0.9);
+}
+
+.url_shortener_container .create_new_url form .title {
+    width: 50%;
+}
+
+.url_shortener_container .create_new_url form .short_url_input {
+    display: flex;
+    gap: 10px;
+}
+
+.url_shortener_container .create_new_url form .short_url_input .short_url {
+    width: 80%;
+}
+
+.url_shortener_container .create_new_url form .short_url_input .submit {
+    width: 20%;
+    background: #014BB2;
+    border-radius: 12px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 700
+}
