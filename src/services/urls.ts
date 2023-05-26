@@ -32,6 +32,10 @@ export const dashboardRoutes = {
     getStudentDetails: "/api/v1/dashboard/campus/student-details/",
     getStudentsList: "/api/v1/dashboard/campus/student-details/csv/",
     getCampusDetails: "/api/v1/dashboard/campus/campus-details/",
+    getShortenUrl: "/api/v1/url-shortener/list/",
+    createShortenUrl: "/api/v1/url-shortener/create/",
+    editShortenUrl: "/api/v1/url-shortener/edit/${urlId}/",
+    deleteShortenUrl: "/api/v1/url-shortener/delete/${urlId}/",
 };
 
 export const organizationRoutes = {

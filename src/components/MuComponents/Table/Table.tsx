@@ -29,6 +29,7 @@ type TableProps = {
     columnOrder: string[];
     id?: string[];
     onEditClick?: (column: string | number | boolean) => void;
+    onDeleteClick?: (column: string | number | boolean) => void;
 };
 
 {
@@ -102,6 +103,21 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                 }
                                             >
                                                 Edit
+                                            </button>
+                                        </td>
+                                    ))}
+                                {props.id &&
+                                    props.id.map(column => (
+                                        <td className={styles.td} key={column}>
+                                            <button
+                                                onClick={() =>
+                                                    props.onDeleteClick &&
+                                                    props.onDeleteClick(
+                                                        rowData[column]
+                                                    )
+                                                }
+                                            >
+                                                Delete
                                             </button>
                                         </td>
                                     ))}

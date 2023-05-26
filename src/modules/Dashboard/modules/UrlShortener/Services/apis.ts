@@ -1,12 +1,13 @@
 import React from "react";
 import { privateGateway } from "../../../../../services/apiGateways";
 import { dashboardRoutes } from "../../../../../services/urls";
+import { ToastId, UseToastOptions } from "@chakra-ui/react";
 
-type studentData = React.Dispatch<React.SetStateAction<any>>;
+type shortUrlData = React.Dispatch<React.SetStateAction<any>>;
 type campusData = React.Dispatch<React.SetStateAction<any>>;
 
-export const getStudentDetails = (
-	setStudentData: studentData,
+export const getShortenUrls = (
+    setShortUrlData: shortUrlData,
     page: number,
     selectedValue: number,
     setTotalPages?: any,
@@ -14,7 +15,7 @@ export const getStudentDetails = (
     sortID?: string
 ) => {
     privateGateway
-        .get(dashboardRoutes.getStudentDetails, {
+        .get(dashboardRoutes.getShortenUrl, {
             params: {
                 perPage: selectedValue,
                 pageIndex: page,
@@ -23,20 +24,75 @@ export const getStudentDetails = (
             }
         })
         .then(response => {
-            // console.log(response.data.response);
-            setStudentData(response.data.response.data);
-			setTotalPages(response.data.response.pagination.totalPages);
+            setShortUrlData(response.data.response);
+            // setTotalPages(response.data.response.pagination.totalPages);
         })
         .catch(error => {
             console.log(error);
         });
 };
-export const getCampusDetails = (setCampusData:campusData) => {
+
+export const createShortenUrl = (
+    toast: (options?: UseToastOptions | undefined) => ToastId,
+    urlData: any
+) => {
     privateGateway
-        .get(dashboardRoutes.getCampusDetails)
+        .post(dashboardRoutes.createShortenUrl, urlData)
         .then(response => {
-            // console.log(response.data.response);
-            setCampusData(response.data.response);
+            console.log(response.data.response);
+            toast({
+                title: "Shorten Url Created",
+                description: "its added to your list",
+                status: "success",
+                duration: 3000,
+                isClosable: true
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
+
+export const editShortenUrl = (
+    id: string,
+    toast: (options?: UseToastOptions | undefined) => ToastId,
+    urlEditedData: any
+) => {
+    privateGateway
+        .post(
+            dashboardRoutes.editShortenUrl.replace("${urlId}", id),
+            urlEditedData
+        )
+        .then(response => {
+            console.log(response.data.response);
+            toast({
+                title: "Shorten Url Edited",
+                description: "its added to your list",
+                status: "success",
+                duration: 3000,
+                isClosable: true
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
+
+export const deleteShortenUrl = (
+    id: string,
+    toast: (options?: UseToastOptions | undefined) => ToastId
+) => {
+    privateGateway
+        .delete(dashboardRoutes.deleteShortenUrl.replace("${urlId}", id))
+        .then(response => {
+            console.log(response.data.response);
+            toast({
+                title: "Shorten Url deleted",
+                description: "its added to your list",
+                status: "success",
+                duration: 3000,
+                isClosable: true
+            });
         })
         .catch(error => {
             console.log(error);

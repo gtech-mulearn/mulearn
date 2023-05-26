@@ -2,7 +2,7 @@ import styles from "./Table.module.css";
 import { RxCaretSort } from "react-icons/rx";
 
 interface TableHeadProps {
-    columnOrder: string[];
+    columnOrder: any[];
     editableColumnNames: string[];
     onIconClick: (column: string) => void;
 }

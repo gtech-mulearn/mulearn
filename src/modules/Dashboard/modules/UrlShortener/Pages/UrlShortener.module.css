@@ -18,7 +18,7 @@
 .url_shortener_container .create_new_url form {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    /* gap: 14px; */
     width: 100%;
 }
 
@@ -27,6 +27,7 @@
     border: 1px solid rgba(1, 75, 178, 0.3);
     border-radius: 12px;
     padding: 10px;
+    margin-top: 20px;
 }
 .url_shortener_container .create_new_url form input:focus {
     border: 1px solid rgba(1, 75, 178, 0.9);
@@ -54,3 +55,12 @@
     font-size: 20px;
     font-weight: 700
 }
+
+
+.error_message {
+    color: red;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 5px;
+    text-align: left;
+  }
