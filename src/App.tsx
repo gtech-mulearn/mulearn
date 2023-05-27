@@ -21,6 +21,7 @@ import { Tasks } from "./modules/Dashboard/modules/Tasks/Tasks";
 import CreateOrganization from "./modules/Dashboard/modules/Organizations/CreateOrganization";
 import ManageRoles from "./modules/Dashboard/modules/ManageRoles/ManageRoles";
 import InterestGroupEdit from "./modules/Dashboard/modules/InterestGroup/InterestGroupEdit";
+import UrlShortener from "./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener";
 
 const router = createBrowserRouter([
     {
@@ -68,7 +69,8 @@ const router = createBrowserRouter([
                     { path: "manage-users", element: <ManageUsers /> },
                     { path: "manage-roles", element: <ManageRoles /> },
                     { path: "organizations", element: <Organizations /> },
-                    { path: "tasks", element: <Tasks /> }
+                    { path: "tasks", element: <Tasks /> },
+                    { path: "url-shortener", element: <UrlShortener /> },
                 ]
             }
         ]
