@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Onboarding.module.css";
 type Props = {};
-import ReactSelect from "react-select";
+import ReactSelect, { SingleValue } from "react-select";
 import Error from "../components/Error";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
@@ -977,8 +977,36 @@ const Onboarding = (props: Props) => {
                                                         </span>
                                                     </label>
                                                     <Select
+                                                        key={
+                                                            formik.values
+                                                                .country
+                                                        }
+                                                        value={countryOption.find(
+                                                            (
+                                                                option: SingleValue<{
+                                                                    value: string;
+                                                                    label: string;
+                                                                }>
+                                                            ) =>
+                                                                option?.value ===
+                                                                formik.values
+                                                                    .country
+                                                        )}
                                                         name="country"
                                                         onChange={option => {
+                                                            formik.setFieldValue(
+                                                                "state",
+                                                                ""
+                                                            );
+
+                                                            formik.setFieldValue(
+                                                                "district",
+                                                                ""
+                                                            );
+                                                            formik.setFieldValue(
+                                                                "organization",
+                                                                ""
+                                                            );
                                                             formik.setFieldValue(
                                                                 "country",
                                                                 option?.value
@@ -1066,13 +1094,38 @@ const Onboarding = (props: Props) => {
                                                                 </span>
                                                             </label>
                                                             <Select
+                                                                key={
+                                                                    formik
+                                                                        .values
+                                                                        .state
+                                                                }
+                                                                value={stateOption.find(
+                                                                    (
+                                                                        option: SingleValue<{
+                                                                            value: string;
+                                                                            label: string;
+                                                                        }>
+                                                                    ) =>
+                                                                        option?.value ===
+                                                                        formik
+                                                                            .values
+                                                                            .state
+                                                                )}
                                                                 name="state"
-                                                                // value={formik.values.country}
                                                                 onChange={option => {
+                                                                    formik.setFieldValue(
+                                                                        "district",
+                                                                        ""
+                                                                    );
+                                                                    formik.setFieldValue(
+                                                                        "organization",
+                                                                        ""
+                                                                    );
                                                                     formik.setFieldValue(
                                                                         "state",
                                                                         option?.value
                                                                     );
+
                                                                     getDistrict(
                                                                         errorHandler,
                                                                         setDistrictOption,
@@ -1157,9 +1210,29 @@ const Onboarding = (props: Props) => {
                                                                     </span>
                                                                 </label>
                                                                 <Select
+                                                                    key={
+                                                                        formik
+                                                                            .values
+                                                                            .district
+                                                                    }
                                                                     name="district"
-                                                                    // value={formik.values.country}
+                                                                    value={districtOption.find(
+                                                                        (
+                                                                            option: SingleValue<{
+                                                                                value: string;
+                                                                                label: string;
+                                                                            }>
+                                                                        ) =>
+                                                                            option?.value ===
+                                                                            formik
+                                                                                .values
+                                                                                .district
+                                                                    )}
                                                                     onChange={option => {
+                                                                        formik.setFieldValue(
+                                                                            "organization",
+                                                                            ""
+                                                                        );
                                                                         formik.setFieldValue(
                                                                             "district",
                                                                             option?.value
@@ -1254,17 +1327,23 @@ const Onboarding = (props: Props) => {
                                                         </span>
                                                     </label>
                                                     <ReactSelect
+                                                        key={
+                                                            formik.values
+                                                                .organization
+                                                        }
                                                         id="college_field"
                                                         name="organization"
-                                                        value={
-                                                            organization.length >
-                                                                0 &&
-                                                            collegeOptions.find(
-                                                                college =>
-                                                                    college.value ===
-                                                                    organization
-                                                            )
-                                                        }
+                                                        value={collegeOptions.find(
+                                                            (
+                                                                option: SingleValue<{
+                                                                    value: string;
+                                                                    label: string;
+                                                                }>
+                                                            ) =>
+                                                                option?.value ===
+                                                                formik.values
+                                                                    .organization
+                                                        )}
                                                         onChange={option => {
                                                             const indexToRemove =
                                                                 formik.values.community.indexOf(
