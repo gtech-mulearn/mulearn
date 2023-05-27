@@ -64,7 +64,7 @@ function CreateOrganization() {
         </div>
         <div className="inputfield_container">
           <p>Affiliated University</p>
-          <Dropdown
+          {/* <Dropdown
             contents={["A", "B", "C"]}
           />
         </div>
@@ -90,7 +90,7 @@ function CreateOrganization() {
           <p>Zone</p>
           <Dropdown
             contents={["A", "B", "C"]}
-          />
+          /> */}
         </div>
       </div>
       <div className='submit_container'>
