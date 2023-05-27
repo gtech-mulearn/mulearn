@@ -186,6 +186,9 @@ const Onboarding = (props: Props) => {
         setBackendError(formattedErrors);
     };
 
+    console.log(stateOption);
+    console.log(countryOption);
+
     // formik
     const initialValues = {
         firstName: "",
@@ -983,9 +986,12 @@ const Onboarding = (props: Props) => {
                                                         }
                                                         value={countryOption.find(
                                                             option =>
+                                                                option?.value !==
+                                                                    "" &&
                                                                 option?.value ===
-                                                                formik.values
-                                                                    .country
+                                                                    formik
+                                                                        .values
+                                                                        .country
                                                         )}
                                                         name="country"
                                                         onChange={option => {
@@ -1095,10 +1101,12 @@ const Onboarding = (props: Props) => {
                                                                 }
                                                                 value={stateOption.find(
                                                                     option =>
+                                                                        option?.value !==
+                                                                            "" &&
                                                                         option?.value ===
-                                                                        formik
-                                                                            .values
-                                                                            .state
+                                                                            formik
+                                                                                .values
+                                                                                .state
                                                                 )}
                                                                 name="state"
                                                                 onChange={option => {
@@ -1207,10 +1215,12 @@ const Onboarding = (props: Props) => {
                                                                     name="district"
                                                                     value={districtOption.find(
                                                                         option =>
+                                                                            option?.value !==
+                                                                                "" &&
                                                                             option?.value ===
-                                                                            formik
-                                                                                .values
-                                                                                .district
+                                                                                formik
+                                                                                    .values
+                                                                                    .district
                                                                     )}
                                                                     onChange={option => {
                                                                         formik.setFieldValue(
@@ -1319,9 +1329,12 @@ const Onboarding = (props: Props) => {
                                                         name="organization"
                                                         value={collegeOptions.find(
                                                             option =>
+                                                                option?.value !==
+                                                                    "" &&
                                                                 option?.value ===
-                                                                formik.values
-                                                                    .organization
+                                                                    formik
+                                                                        .values
+                                                                        .organization
                                                         )}
                                                         onChange={option => {
                                                             const indexToRemove =
