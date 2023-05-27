@@ -2,23 +2,31 @@ import React from "react";
 import styles from "./Journey.module.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
-import onboard from './onboard.svg'
-import basics from './basics.svg'
-import enablement from './enablement.svg'
-import learningcircle from './learningcircle.svg'
-import grouptask from './grouptask.svg'
-import participate from './participate.svg'
+import onboard from "./onboard.svg";
+import basics from "./basics.svg";
+import enablement from "./enablement.svg";
+import learningcircle from "./learningcircle.svg";
+import grouptask from "./grouptask.svg";
+import participate from "./participate.svg";
 const Journey = () => {
   return (
     <div className={styles.main}>
       <Navbar />
       <div className={styles.container}>
+        <div className={styles.c_texts}>
+          <p className={styles.ct_heading}>How to get started with µLearn? </p>
+          <p className={styles.ct_text}>
+            µLearn is a community of learners. We are a community of learners
+            who are passionate about learning and sharing knowledge.Follow the 6
+            steps below to get started with µLearn.
+          </p>
+        </div>
         <div className={styles.journey_container}>
           <div className={`${styles.journey_1} ${styles.layout}`}>
-            <div className={styles.heading}><h3>1 . The Onboarding</h3></div>
+            <div className={styles.heading}>
+              <h3>1 . The Onboarding</h3>
+            </div>
             <div className={styles.list}>
-           
-
               <ul>
                 <li>
                   Create an account on µLearn at
@@ -31,11 +39,12 @@ const Journey = () => {
                 </li>
               </ul>
               <img src={onboard} alt="icon"></img>
-               
             </div>
           </div>
           <div className={`${styles.journey_2} ${styles.layout}`}>
-            <div className={styles.heading}><h3>2 . The Basics</h3></div>
+            <div className={styles.heading}>
+              <h3>2 . The Basics</h3>
+            </div>
             <div className={styles.list}>
               <ul>
                 <li>
@@ -49,17 +58,17 @@ const Journey = () => {
                 </li>
               </ul>
               <img src={basics} alt="icon"></img>
-
             </div>
           </div>
           <div className={`${styles.journey_3} ${styles.layout}`}>
-            <div className={styles.heading}><h3>3 . The Enablement</h3></div>
+            <div className={styles.heading}>
+              <h3>3 . The Enablement</h3>
+            </div>
             <div className={styles.list}>
               <ul>
                 <li>
                   Complete the basic enablement tasks at
-                  https://learn.mulearn.org
-                  /challenges.
+                  https://learn.mulearn.org /challenges.
                 </li>
                 <li>
                   These tasks are relevant regardless of the domain you choose.
@@ -67,11 +76,12 @@ const Journey = () => {
                 <li>Earn Karma Points and improve your rank. </li>
               </ul>
               <img src={enablement} alt="icon"></img>
-
             </div>
           </div>
           <div className={`${styles.journey_4} ${styles.layout}`}>
-            <div className={styles.heading}><h3>4 . Forming Learning Circles</h3></div>
+            <div className={styles.heading}>
+              <h3>4 . Forming Learning Circles</h3>
+            </div>
             <div className={styles.list}>
               <ul>
                 <li>
@@ -84,11 +94,12 @@ const Journey = () => {
                 </li>
               </ul>
               <img src={learningcircle} alt="icon"></img>
-
             </div>
           </div>
           <div className={`${styles.journey_5} ${styles.layout}`}>
-            <div className={styles.heading}><h3>5 . Interest Group Tasks</h3></div>
+            <div className={styles.heading}>
+              <h3>5 . Interest Group Tasks</h3>
+            </div>
             <div className={styles.list}>
               <ul>
                 <li>
@@ -105,23 +116,24 @@ const Journey = () => {
                 </li>
               </ul>
               <img src={grouptask} alt="icon"></img>
-
             </div>
           </div>
           <div className={`${styles.journey_6} ${styles.layout}`}>
-            <div className={styles.heading}><h3>6 . Participate</h3></div>
+            <div className={styles.heading}>
+              <h3>6 . Participate</h3>
+            </div>
             <div className={styles.list}>
               <ul>
-                <li>Grab Your Superpowers to meet
-                  and connect with new people with similar interests</li>
                 <li>
-                  Also participate in events such as: Office Hours, ISR, Salt Mango Tree
-                  
-                  
+                  Grab Your Superpowers to meet and connect with new people with
+                  similar interests
+                </li>
+                <li>
+                  Also participate in events such as: Office Hours, ISR, Salt
+                  Mango Tree
                 </li>
               </ul>
               <img src={participate} alt="icon"></img>
-
             </div>
           </div>
         </div>
