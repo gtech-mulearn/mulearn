@@ -112,7 +112,7 @@ const YIP2023 = () => {
           </div>
         </div>
 
-        <div className={styles.second_view_container}>
+        {/* <div className={styles.second_view_container}>
           <div className={styles.second_view}>
             <div className="third-section" id="timeline">
               <p className="tsheading">YIP Idea Registration Procedure</p>
@@ -347,7 +347,7 @@ const YIP2023 = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       <Footer />
     </>
