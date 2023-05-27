@@ -112,7 +112,7 @@ const YIP2023 = () => {
           </div>
         </div>
 
-        {/* <div className={styles.second_view_container}>
+        <div className={styles.second_view_container}>
           <div className={styles.second_view}>
             <div className="third-section" id="timeline">
               <p className="tsheading">YIP Idea Registration Procedure</p>
@@ -308,10 +308,8 @@ const YIP2023 = () => {
                         <p>
                           Once your Idea is approved by the institution, it is
                           put forward for a preliminary evaluation and
-                          <b>&nbsp;8000 teams</b> are selected from District
-                          Level and
-                          <b>&nbsp;2000 teams</b> are selected from State Level
-                          and are awarded prizes upto <b>Rs.50000</b>
+                          <b>&nbsp;teams</b> are selected from District Level
+                          and State Level and are awarded prizes.
                         </p>
                       </div>
                     </div>
@@ -327,17 +325,17 @@ const YIP2023 = () => {
                     <div className="timeline__event__date">
                       Winner
                       <br />
-                      Annoucement
+                      Announcement
                     </div>
                     <div className="timeline__event__content">
                       <div className="timeline__event__title">Step Eight</div>
                       <div className="timeline__event__description">
                         <p>
-                          Finally the winners are annouced and out of the 2000
+                          Finally the winners are announced and out of the total
                           teams selected at state level
                           <b>
-                            &nbsp;900 teams are provided financial and mentoring
-                            support for the next 3 years.
+                            &nbsp;the best of those teams are provided financial and
+                            mentoring support to implement their ideas.
                           </b>
                         </p>
                       </div>
@@ -347,7 +345,7 @@ const YIP2023 = () => {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
       <Footer />
     </>
