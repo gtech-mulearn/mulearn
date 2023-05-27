@@ -19,6 +19,7 @@ const Dropdown = (props: {
     }, []);
 
     const handleContentSelect = (content: string) => {
+		props.setInput(content);
         setSelectedContent(content);
         setIsDropdownOpen(false);
     };
@@ -41,7 +42,7 @@ const Dropdown = (props: {
                         <div
                             key={index}
                             className={styles.content}
-                            onClick={() => {handleContentSelect(content); props.setInput(content); console.log(props.input);}}
+                            onClick={() => { handleContentSelect(content)}}
                         >
                             {content}
                         </div>

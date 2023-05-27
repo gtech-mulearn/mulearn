@@ -1,5 +1,7 @@
 import React, { FC } from "react";
 import styles from "./Table.module.css";
+import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 interface Data {
     [key: string]: string | number | boolean;
@@ -29,6 +31,7 @@ type TableProps = {
     columnOrder: string[];
     id?: string[];
     onEditClick?: (column: string | number | boolean) => void;
+    onDeleteClick?: (column: string | number | boolean) => void;
 };
 
 {
@@ -93,23 +96,35 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                 {props.id &&
                                     props.id.map(column => (
                                         <td className={styles.td} key={column}>
-                                            <button
-                                                onClick={() =>
-                                                    props.onEditClick &&
-                                                    props.onEditClick(
-                                                        rowData[column]
-                                                    )
-                                                }
-                                            >
-                                                Edit
-                                            </button>
+											<div className={styles.icons}>
+												<button
+													onClick={() =>
+														props.onEditClick &&
+														props.onEditClick(
+															rowData[column]
+														)
+													}
+												>
+													<FaEdit/>
+												</button>
+												<button
+													onClick={() =>
+														props.onDeleteClick &&
+														props.onDeleteClick(
+															rowData[column]
+														)
+													}
+												>
+													<MdDelete/>
+												</button>
+											</div>
                                         </td>
                                     ))}
                             </tr>
                         ))}
                     </tbody>
                 </table>
-            </div>
+				</div>
             <div className={styles.page}>{props.children?.[1]}</div>
         </>
     );

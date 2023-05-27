@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { MuButton } from "../MuButtons/MuButton";
 import Textfield from "../TextField/Textfield";
 import styles from "./Form.module.css";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Dropdown from "../Dropdown/Dropdown";
 
 type Props = {
@@ -21,9 +21,11 @@ type Props = {
         label: string;
         default?: string;
     }[];
+	cancelPath: string
 };
 
 const Form = (props: Props) => {
+	const navigate = useNavigate();
 	
     return (
         <div className={styles.container}>
@@ -57,7 +59,7 @@ const Form = (props: Props) => {
                         <MuButton
                             text={"Decline"}
                             className={styles.btn_cancel}
-                            // onClick={() => Navigate}
+                            onClick={() => {navigate(props.cancelPath)}}
                         />
                         <MuButton
                             text={"Confirm"}

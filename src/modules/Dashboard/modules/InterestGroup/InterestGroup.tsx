@@ -65,6 +65,11 @@ function InterestGroup() {
 		navigate(`/interest-groups/edit/${id}`);
     };
 	
+	const handleDelete = (id: string | number | boolean) => {
+        console.log(id);
+        navigate(`/interest-groups/delete/${id}`);
+    };
+	
     const handlePerPageNumber = (selectedValue: number) => {
 		setCurrentPage(1);
         setPerPage(selectedValue);
@@ -111,7 +116,9 @@ function InterestGroup() {
 					perPage={perPage}
 					columnOrder={columnOrder}
 					id={['id']} 
-					onEditClick={handleEdit}                >
+					onEditClick={handleEdit}
+					onDeleteClick={handleDelete}
+					>
                     <THead
                         columnOrder={columnOrder}
                         editableColumnNames={editableColumnNames}
