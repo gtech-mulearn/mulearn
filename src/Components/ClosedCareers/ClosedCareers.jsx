@@ -1,12 +1,12 @@
-import React from "react"
-import styles from "./ClosedCareers.module.css"
+import React from "react";
+import styles from "./ClosedCareers.module.css";
 
 const ClosedCareersCard = ({
   date,
   title,
   location,
   qualifications,
-  roles,
+  role,
   duration,
   remuneration,
   poster,
@@ -19,7 +19,7 @@ const ClosedCareersCard = ({
         <ul>
           {qualifications && (
             <li>
-              <strong>Qualifications:</strong> {qualifications.join(", ")}
+              <strong>Qualifications:</strong> {qualifications}
             </li>
           )}
           {date && (
@@ -32,9 +32,9 @@ const ClosedCareersCard = ({
               <strong>Package:</strong> {remuneration}
             </li>
           )}
-          {roles && (
+          {role && (
             <li>
-              <strong>Roles:</strong> {roles.join(", ")}
+              <strong>Roles:</strong> {role}
             </li>
           )}
           {duration && (
@@ -55,7 +55,7 @@ const ClosedCareersCard = ({
         </ul>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ClosedCareersCard
+export default ClosedCareersCard;

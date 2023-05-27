@@ -1,15 +1,39 @@
-import React from "react"
-import Footer from "../../Components/Footer/Footer"
-import Navbar from "../../Components/Navbar/Navbar"
-import styles from "./Career.module.css"
+import React, { useEffect } from "react";
+import Footer from "../../Components/Footer/Footer";
+import Navbar from "../../Components/Navbar/Navbar";
+import styles from "./Career.module.css";
 
-import CareersCard from "../../Components/CareersCard/CareersCard"
-import ClosedCareersCard from "../../Components/ClosedCareers/ClosedCareers"
+import CareersCard from "../../Components/CareersCard/CareersCard";
+import ClosedCareersCard from "../../Components/ClosedCareers/ClosedCareers";
+import axios from "axios";
 
 const Career = () => {
-  let companies = require("./data/companies.json")
-  let newHiring = require("./data/newHiringCall.json")
-  let previousHiring = require("./data/previousHiringCall.json")
+  let companies = require("./data/companies.json");
+  const [newHiring, setNewHiring] = React.useState([]);
+  const [previousHiring, setPreviousHiring] = React.useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://opensheet.elk.sh/1Afdbru7Neywhh8S2f0ACv7NJBKvoLKrcFf0eajYpmOo/careersOld"
+      )
+      .then((response) => {
+        setPreviousHiring(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    axios
+      .get(
+        "https://opensheet.elk.sh/1Afdbru7Neywhh8S2f0ACv7NJBKvoLKrcFf0eajYpmOo/careersNew"
+      )
+      .then((response) => {
+        setNewHiring(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <>
@@ -56,7 +80,7 @@ const Career = () => {
           />
         ))}
       </div>
-      {newHiring.newcalls.length > 0 && (
+      {newHiring && newHiring.length > 0 && (
         <div className={styles.main_container}>
           <div className={styles.second_view_container}>
             <div className={styles.hiring_name}>µLearn Hiring Calls</div>
@@ -65,22 +89,23 @@ const Career = () => {
               endless opportunities available on Career Labs
             </div>
             <div className={styles.cards_container}>
-              {newHiring.newcalls.map((role) => (
-                <CareersCard
-                  logo={role.logo}
-                  role={role.role}
-                  remuneration={role.remuneration}
-                  vacancies={role.vacancies}
-                  location={role.location}
-                  lastdate={role.lastdate}
-                  applylink={role.applylink}
-                  jdlink={role.jdlink}
-                  duration={role.duration}
-                  extraField={role.extrafield?.name}
-                  extraContent={role.extrafield?.value}
-                  extraButton={role.extrafield?.link}
-                />
-              ))}
+              {newHiring &&
+                newHiring.map((role) => (
+                  <CareersCard
+                    logo={role.logo}
+                    role={role.role}
+                    remuneration={role.remuneration}
+                    vacancies={role.vacancies}
+                    location={role.location}
+                    lastdate={role.lastdate}
+                    applylink={role.applylink}
+                    jdlink={role.jdlink}
+                    duration={role.duration}
+                    extraField={role.extrafield?.name}
+                    extraContent={role.extrafield?.value}
+                    extraButton={role.extrafield?.link}
+                  />
+                ))}
             </div>
           </div>
         </div>
@@ -93,28 +118,29 @@ const Career = () => {
             through career labs previously.
           </div>
           <div className={styles.cards_container}>
-            {previousHiring.map((role) => (
-              <ClosedCareersCard
-                logo={role.logo}
-                title={role.title}
-                company={role.company}
-                qualifications={role.qualifications}
-                remumeration={role.remumeration}
-                date={role.date}
-                roles={role.roles}
-                remuneration={role.remuneration}
-                location={role.location}
-                lastdate={role.lastdate}
-                poster={role.poster}
-                duration={role.duration}
-              />
-            ))}
+            {previousHiring &&
+              previousHiring.map((role) => (
+                <ClosedCareersCard
+                  logo={role.logo}
+                  title={role.title}
+                  company={role.company}
+                  qualifications={role.qualifications}
+                  remumeration={role.remumeration}
+                  date={role.date}
+                  role={role.role}
+                  remuneration={role.remuneration}
+                  location={role.location}
+                  lastdate={role.lastdate}
+                  poster={role.poster}
+                  duration={role.duration}
+                />
+              ))}
           </div>
         </div>
       </div>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Career
+export default Career;
