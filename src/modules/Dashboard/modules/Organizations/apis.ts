@@ -63,7 +63,8 @@ export const getCountry = async (setCountryData:any) => {
             return response.data
         })
         .then(data => {
-            const countries:CountryProps[] = data.response.countries;
+            console.log("daaaata:",data.response.data)
+            const countries:CountryProps[] = data.response.data;
             const countryNames = countries.map((country) => country.name);
             setCountryData(countryNames);
         })

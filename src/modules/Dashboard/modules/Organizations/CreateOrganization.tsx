@@ -9,12 +9,18 @@ import { roles } from '../../../../services/types'
 import './Organizations.scss'
 import { MuButton } from '../../../../components/MuComponents/MuButtons/MuButton'
 import { getCountry } from './apis'
+import { useLocation } from 'react-router-dom'
 
 function CreateOrganization() {
 
   const navigate = useNavigate()
+  const location = useLocation()
 
-  const [input, setInput] = useState("")
+  const {activeItem} = location.state
+
+  const [inputName, setInputName] = useState("")
+  const [inputCode, setInputCode] = useState("")
+  const [selectCountry, setSelectCountry] = useState("")
   const [countryData,setCountryData] = useState<any[]>([])
 
   useEffect(() => {
@@ -31,7 +37,7 @@ function CreateOrganization() {
     
     <div className='popup_container'>
       <div className="popup_top_container">
-        <h1 className='popup_title'>Add College</h1>
+        <h1 className='popup_title'>Add {activeItem}</h1>
         <i
           className="fi fi-sr-cross"
           onClick={() => {
@@ -42,10 +48,10 @@ function CreateOrganization() {
       <div className='popup_dropdown_container'>
         <div className="inputfield_container">
           <Textfield
-            content={"College Name"}
+            content={`${activeItem} Name`}
             inputType={"text"}
-            setInput={setInput}
-            input={input}
+            setInput={setInputName}
+            input={inputName}
             style={{
               width: "100%"
             }}
@@ -55,8 +61,8 @@ function CreateOrganization() {
           <Textfield
             content={"Code"}
             inputType={"text"}
-            setInput={setInput}
-            input={input}
+            setInput={setInputCode}
+            input={inputCode}
             style={{
               width: "100%"
             }}
@@ -64,33 +70,43 @@ function CreateOrganization() {
         </div>
         <div className="inputfield_container">
           <p>Affiliated University</p>
-          {/* <Dropdown
-            contents={["A", "B", "C"]}
+          <Dropdown
+            contents={countryData}
+            input = {selectCountry}
+            setInput = {setSelectCountry}
           />
         </div>
         <div className="inputfield_container">
           <p>Country</p>
           <Dropdown
             contents={countryData}
+            input = {selectCountry}
+            setInput = {setSelectCountry}
           />
         </div>
         <div className="inputfield_container">
           <p>State</p>
           <Dropdown
-            contents={["A", "B", "C"]}
+            contents={countryData}
+            input = {selectCountry}
+            setInput = {setSelectCountry}
           />
         </div>
         <div className="inputfield_container">
           <p>District</p>
           <Dropdown
-            contents={["A", "B", "C"]}
+            contents={countryData}
+            input = {selectCountry}
+            setInput = {setSelectCountry}
           />
         </div>
         <div className="inputfield_container">
           <p>Zone</p>
           <Dropdown
-            contents={["A", "B", "C"]}
-          /> */}
+            contents={countryData}
+            input = {selectCountry}
+            setInput = {setSelectCountry}
+          />
         </div>
       </div>
       <div className='submit_container'>
