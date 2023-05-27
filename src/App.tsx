@@ -22,6 +22,7 @@ import CreateOrganization from "./modules/Dashboard/modules/Organizations/Create
 import ManageRoles from "./modules/Dashboard/modules/ManageRoles/ManageRoles";
 import InterestGroupEdit from "./modules/Dashboard/modules/InterestGroup/InterestGroupEdit";
 import UrlShortener from "./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener";
+import InterestGroupDelete from "./modules/Dashboard/modules/InterestGroup/InterestGroupDelete";
 
 const router = createBrowserRouter([
     {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
                     {
                         path: "interest-groups/edit/:id",
                         element: <InterestGroupEdit />
+                    },
+                    {
+                        path: "interest-groups/delete/:id",
+                        element: <InterestGroupDelete />
                     },
                     { path: "campus-details", element: <CampusStudentList /> },
                     { path: "manage-users", element: <ManageUsers /> },

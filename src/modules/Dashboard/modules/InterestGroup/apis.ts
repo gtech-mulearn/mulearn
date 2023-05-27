@@ -55,7 +55,8 @@ export const createInterestGroups = async (
         }
     }
 };
-export const editInterestGroups = async (name: string, id: any) => {
+
+export const editInterestGroups = async (name: string, id: string | undefined) => {
     try {
         const response = await privateGateway.put(
             dashboardRoutes.getIgData + id + "/",
@@ -85,6 +86,21 @@ export const getIGDetails = async (
         console.log(message);
 		console.log(message.response.interestGroup.name);
 		setInput(message.response.interestGroup.name);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
+
+export const deleteInterestGroups = async (id: string | undefined) => {
+    try {
+        const response = await privateGateway.delete(
+            dashboardRoutes.getIgData + id + "/"
+        );
+        const message: any = response?.data;
+        console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
