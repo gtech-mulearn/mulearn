@@ -134,14 +134,14 @@ const CampusStudentList = (props: Props) => {
                         </div>
                     </div>
                     <div className={styles.sec2}>
-                        {/* <div className={styles.clg_rank_div}>
+                        <div className={styles.clg_rank_div}>
                             <p className={styles.clg_rank}>
                                 {campusData.rank.toString().length === 1
                                     ? "0" + campusData.rank
                                     : campusData.rank}
                             </p>
                             <p className={styles.clg_rank_overlay}>RANK</p>
-                        </div> */}
+                        </div>
                         <div className={styles.level_div}>
                             <h2>Campus Zone</h2>
                             <p>{campusData.campusZone}</p>
