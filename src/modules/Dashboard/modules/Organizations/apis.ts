@@ -27,7 +27,6 @@ export const getOrganizations = async (
         })
         .then(data => {
             if(activeTab === "Colleges"){
-                console.log("api-data: ",data.response.pagination.colleges)
                 setData(data.response.data.colleges);
                 setTotalPages(data.response.pagination.colleges.totalPages);
             }else if (activeTab === "Companies"){
