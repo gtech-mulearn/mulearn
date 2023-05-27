@@ -7,6 +7,7 @@ import { hasRole } from "../../../../services/common_functions";
 import { roles } from "../../../../services/types";
 import { useNavigate } from "react-router-dom";
 import { getTasks } from "./TaskApis";
+import { dashboardRoutes } from "../../../../services/urls";
 
 type Props = {};
 
@@ -23,7 +24,6 @@ export const Tasks = (props: Props) => {
         "title",
         "hashtag",
         "active",
-        "channel",
         "karma",
         "usage_count",
         "variable_karma",
@@ -37,7 +37,6 @@ export const Tasks = (props: Props) => {
         "Title",
         "Hashtag",
         "Active",
-        "Channel",
         "Karma",
         "Usage Count",
         "Variable Karma",
@@ -61,8 +60,8 @@ export const Tasks = (props: Props) => {
 
     useEffect(() => {
         if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
-
         getTasks(setData, 1, perPage, setTotalPages, "", "");
+		console.log(data)
     }, []);
 
     const handleSearch = (search: string) => {
@@ -88,13 +87,22 @@ export const Tasks = (props: Props) => {
         console.log(`Icon clicked for column: ${column}`);
     };
 
+	const handleEdit = (id: string | number | boolean) => {
+        console.log(id);
+        navigate(`/tasks/edit/${id}`);
+    };
+
+    const handleDelete = (id: string | number | boolean) => {
+        console.log(id);
+        navigate(`/interest-groups/delete/${id}`);
+    };
+
     return (
         <>
             <TableTop
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
-                // CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}
-                // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
+                CSV={dashboardRoutes.getTasksData + 'csv/'}
             />
             {data && (
                 <Table
@@ -102,6 +110,9 @@ export const Tasks = (props: Props) => {
                     page={currentPage}
                     perPage={perPage}
                     columnOrder={columnOrder}
+                    id={["id"]}
+                    onEditClick={handleEdit}
+                    onDeleteClick={handleDelete}
                 >
                     <THead
                         columnOrder={columnOrder}

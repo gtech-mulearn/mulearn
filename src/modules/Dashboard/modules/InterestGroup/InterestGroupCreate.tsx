@@ -1,9 +1,7 @@
-import { SetStateAction, useState } from "react";
-import Textfield from "../../../../components/MuComponents/TextField/Textfield";
+import { useState } from "react";
 import { createInterestGroups } from "./apis";
 import styles from "./InterestGroup.module.css";
 import { useToast } from "@chakra-ui/react";
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 import Form from "../../../../components/MuComponents/Form/Form";
 import { useNavigate } from "react-router-dom";
 
