@@ -982,12 +982,7 @@ const Onboarding = (props: Props) => {
                                                                 .country
                                                         }
                                                         value={countryOption.find(
-                                                            (
-                                                                option: SingleValue<{
-                                                                    value: string;
-                                                                    label: string;
-                                                                }>
-                                                            ) =>
+                                                            option =>
                                                                 option?.value ===
                                                                 formik.values
                                                                     .country
@@ -998,7 +993,6 @@ const Onboarding = (props: Props) => {
                                                                 "state",
                                                                 ""
                                                             );
-
                                                             formik.setFieldValue(
                                                                 "district",
                                                                 ""
@@ -1100,12 +1094,7 @@ const Onboarding = (props: Props) => {
                                                                         .state
                                                                 }
                                                                 value={stateOption.find(
-                                                                    (
-                                                                        option: SingleValue<{
-                                                                            value: string;
-                                                                            label: string;
-                                                                        }>
-                                                                    ) =>
+                                                                    option =>
                                                                         option?.value ===
                                                                         formik
                                                                             .values
@@ -1217,12 +1206,7 @@ const Onboarding = (props: Props) => {
                                                                     }
                                                                     name="district"
                                                                     value={districtOption.find(
-                                                                        (
-                                                                            option: SingleValue<{
-                                                                                value: string;
-                                                                                label: string;
-                                                                            }>
-                                                                        ) =>
+                                                                        option =>
                                                                             option?.value ===
                                                                             formik
                                                                                 .values
@@ -1334,12 +1318,7 @@ const Onboarding = (props: Props) => {
                                                         id="college_field"
                                                         name="organization"
                                                         value={collegeOptions.find(
-                                                            (
-                                                                option: SingleValue<{
-                                                                    value: string;
-                                                                    label: string;
-                                                                }>
-                                                            ) =>
+                                                            option =>
                                                                 option?.value ===
                                                                 formik.values
                                                                     .organization
