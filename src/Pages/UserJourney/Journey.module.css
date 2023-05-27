@@ -51,7 +51,7 @@
 
 .heading {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   padding-left: 20px;
   padding-top: 10px;
   font-weight: 600;
