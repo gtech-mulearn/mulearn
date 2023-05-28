@@ -1,5 +1,9 @@
 import "./App.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+    RouterProvider,
+    createBrowserRouter,
+    Navigate
+} from "react-router-dom";
 import AuthRoutes from "./components/AuthRoutes";
 import Onboarding from "./modules/Common/Authentication/pages/Onboarding";
 import Login from "./modules/Common/Authentication/pages/Login";
@@ -26,6 +30,11 @@ import UrlShortener from "./modules/Dashboard/modules/UrlShortener/Pages/UrlShor
 import InterestGroupDelete from "./modules/Dashboard/modules/InterestGroup/InterestGroupDelete";
 
 const router = createBrowserRouter([
+    // Add redirect from '/' to '/login'
+    {
+        path: "/",
+        element: <Navigate to="/login" replace />
+    },
     {
         path: "*",
         element: <NotFound />
@@ -38,7 +47,6 @@ const router = createBrowserRouter([
         path: "/",
         element: <AuthRoutes />,
         children: [
-            { path: "/", element: <Login /> },
             { path: "register", element: <Onboarding /> },
             { path: "login", element: <Login /> },
             { path: "forgot-password", element: <ForgotPassword /> },
@@ -81,7 +89,7 @@ const router = createBrowserRouter([
                     { path: "manage-roles", element: <ManageRoles /> },
                     { path: "organizations", element: <Organizations /> },
                     { path: "tasks", element: <Tasks /> },
-                    { path: "url-shortener", element: <UrlShortener /> },
+                    { path: "url-shortener", element: <UrlShortener /> }
                 ]
             }
         ]
