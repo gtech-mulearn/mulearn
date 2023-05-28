@@ -37,6 +37,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <AuthRoutes />,
         children: [
+            { path: "/", element: <Login /> },
             { path: "register", element: <Onboarding /> },
             { path: "login", element: <Login /> },
             { path: "forgot-password", element: <ForgotPassword /> },
