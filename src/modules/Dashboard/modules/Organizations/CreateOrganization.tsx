@@ -10,6 +10,9 @@ import './Organizations.scss';
 import { MuButton } from '../../../../components/MuComponents/MuButtons/MuButton';
 import { getCountry } from './apis';
 import { useLocation } from 'react-router-dom';
+import { useToast } from "@chakra-ui/react";
+
+import { createOrganization } from './apis';
 
 import countries from './dummyData/Countries.json';
 import districts from './dummyData/Districts.json';
@@ -24,6 +27,8 @@ function CreateOrganization() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const toast = useToast();
+
   const { activeItem } = location.state;
 
   const [inputName, setInputName] = useState('');
@@ -36,6 +41,21 @@ function CreateOrganization() {
 
     getCountry(setCountryData);
   }, []);
+
+  const handleSubmit = (e: any) => {
+			e.preventDefault();
+      resetStates()
+			createOrganization(
+        inputName,
+        inputCode,
+        "KTU",
+        "India",
+        "Kerala",
+        "Kozhikode",
+        "North",
+        "College",
+        toast);
+  };
 
   function parseFunctionString(functionString: string) {
     return new Function(`return ${functionString}`)();
@@ -124,7 +144,9 @@ function CreateOrganization() {
                 className="btn light-btn"
                 onClick={resetStates}
               >Decline</div>
-              <div className="btn blue-btn">Submit</div>
+              <div 
+                className="btn blue-btn"
+                onClick={handleSubmit}>Submit</div>
             </div>
       </div>
     </div>
