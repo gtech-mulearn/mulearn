@@ -34,6 +34,7 @@ const CollegeForm = ({ ...props }: CollegeFormProps) => {
     <>
       <div className="inputfield_container">
         <p>Affiliated University</p>
+        <Select options={props.statesData} />
       </div>
       <div className="inputfield_container">
         <p>Country</p>

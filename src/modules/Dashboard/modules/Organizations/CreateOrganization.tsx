@@ -41,6 +41,11 @@ function CreateOrganization() {
     return new Function(`return ${functionString}`)();
   }
 
+  const resetStates = () => {
+    setInputName('');
+    setInputCode('');
+  };
+
   const FormData = ({ activeItem }: any) => {
     switch (activeItem) {
       case 'Colleges':
@@ -91,32 +96,36 @@ function CreateOrganization() {
         button to proceed for further process.
       </p>
       <div className="popup_dropdown_container">
-        <div className="inputfield_container">
-          <Textfield
-            content={`${activeItem} Name`}
-            inputType="text"
-            setInput={setInputName}
-            input={inputName}
-            style={{
-              width: '100%',
-            }}
-          />
-        </div>
-        <div className="inputfield_container">
-          <Textfield
-            content="Code"
-            inputType="text"
-            setInput={setInputCode}
-            input={inputCode}
-            style={{
-              width: '100%',
-            }}
-          />
-        </div>
-        <FormData activeItem={activeItem} />
-      </div>
-      <div className="submit_container">
-        <MuButton text="Submit" className="btn" />
+            <div className="inputfield_container">
+              <Textfield
+                content={`${activeItem} Name`}
+                inputType="text"
+                setInput={setInputName}
+                input={inputName}
+                style={{
+                  width: '100%',
+                }}
+              />
+            </div>
+            <div className="inputfield_container">
+              <Textfield
+                content="Code"
+                inputType="text"
+                setInput={setInputCode}
+                input={inputCode}
+                style={{
+                  width: '100%',
+                }}
+              />
+            </div>
+            <FormData activeItem={activeItem} />
+            <div className="inputfield_container grid-container">
+              <div 
+                className="btn light-btn"
+                onClick={resetStates}
+              >Decline</div>
+              <div className="btn blue-btn">Submit</div>
+            </div>
       </div>
     </div>
   );

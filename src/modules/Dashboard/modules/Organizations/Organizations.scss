@@ -44,7 +44,7 @@
     p{
         width: 90%;
         text-align: left;
-        font-size: 13px;
+        font-size: 14px;
         span{
             font-weight: bold;
             &::after{
@@ -54,15 +54,21 @@
     }
 }
 .popup_dropdown_container{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 15px;
+        margin: 10px 0;
+        .inputfield_container{
+            width: 100%;
+            text-align: start;
+            margin-top: 8px;
+            box-sizing: border-box;
+        }
+}
+.grid-container{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 15px;
-    margin: 10px 0;
-    .inputfield_container{
-        width: 100%;
-        text-align: start;
-        margin-top: 8px;
-    }
 }
 .invisible {
     opacity: 0;
@@ -91,11 +97,8 @@
     justify-content: center;
 }
 .btn {
-	background: #014BB2;
-    color: #fff;
-	width: 50%;
-    min-width: 200px;
-    padding: 10px 20px;
+	width: 100%;
+    padding: 8px;
     display: flex;
     border-radius: 10px;
     flex-direction: row;
@@ -105,6 +108,18 @@
     font-size: 15px;
     cursor: pointer;
     transition: .3s ease-in-out;
+    p{
+        text-align: center;
+    }
+}
+.blue-btn{
+	background: #014BB2;
+    color: #fff;
+}
+.light-btn{
+    background-color: #f5f7fb;
+    border: 1px solid #8c95a7;
+    color: #014BB2;
 }
 
 @media only screen and (max-width: 768px) {
