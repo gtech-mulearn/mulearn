@@ -83,7 +83,7 @@ const Career = () => {
       {newHiring && newHiring.length > 0 && (
         <div className={styles.main_container}>
           <div className={styles.second_view_container}>
-            <div className={styles.hiring_name}>µLearn Hiring Calls</div>
+            <div className={styles.hiring_name}>New Hiring Calls</div>
             <div className={styles.hiring_tagline}>
               Unlock your potential and accelerate your career growth with the
               endless opportunities available on Career Labs
@@ -101,9 +101,10 @@ const Career = () => {
                     applylink={role.applylink}
                     jdlink={role.jdlink}
                     duration={role.duration}
-                    extraField={role.extrafield?.name}
-                    extraContent={role.extrafield?.value}
-                    extraButton={role.extrafield?.link}
+                    extraField={role.extrafieldname}
+                    extraContent={role.extrafieldvalue}
+                    extraButton={role.extrafieldlink}
+                    organization={role.organization}
                   />
                 ))}
             </div>

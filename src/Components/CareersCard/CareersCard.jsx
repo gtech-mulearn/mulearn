@@ -14,6 +14,7 @@ const Card = ({
   extraField,
   extraContent,
   extraButton,
+  organization,
 }) => {
   return (
     <div className={styles.card}>
@@ -34,6 +35,14 @@ const Card = ({
           <>
             <span className={styles.card_label}>Vacancies:</span>
             <span className={styles.card_value}>{vacancies}</span>
+          </>
+        )}
+      </p>
+      <p className={styles.card_info}>
+        {organization && (
+          <>
+            <span className={styles.card_label}>Organization:</span>
+            <span className={styles.card_value}>{organization}</span>
           </>
         )}
       </p>
