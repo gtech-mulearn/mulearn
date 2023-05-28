@@ -86,6 +86,10 @@ function CreateOrganization() {
           }}
         ></i>
       </div>
+      <p>Kindly review the provided details and make sure that they are correct.
+        Once you have verified the information, please click the <span>Confirm</span>
+        button to proceed for further process.
+      </p>
       <div className="popup_dropdown_container">
         <div className="inputfield_container">
           <Textfield

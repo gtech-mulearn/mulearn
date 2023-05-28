@@ -41,6 +41,17 @@
         font-weight: 800;
         text-align: start;
     }
+    p{
+        width: 90%;
+        text-align: left;
+        font-size: 13px;
+        span{
+            font-weight: bold;
+            &::after{
+                content: " ";
+            }
+        }
+    }
 }
 .popup_dropdown_container{
     display: grid;
