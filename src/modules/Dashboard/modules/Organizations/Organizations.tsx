@@ -7,7 +7,14 @@ import Pagination from '../../../../components/MuComponents/Pagination/Paginatio
 import { getOrganizations } from './apis'
 import { hasRole } from '../../../../services/common_functions'
 import { roles } from '../../../../services/types'
-import {columnsCollege,columnsCommunities,columnsCompanies,editableColumnNames} from "./THeaders"
+import {
+    columnsCollege,
+    columnsCommunities,
+    columnsCompanies,
+    editableCollegeColumnNames,
+    editableCompaniesColumnNames,
+    editableCommunityColumnNames
+} from "./THeaders"
 import TableTopTab from './TableTopTab' 
 import Textfield from '../../../../components/MuComponents/TextField/Textfield'
 import Dropdown from '../../../../components/MuComponents/Dropdown/Dropdown'
@@ -22,6 +29,7 @@ function Organizations() {
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(5);
     const [columns,setColumns] = useState(columnsCollege)
+    const [editableColumns,setEditableColumns] = useState(editableCollegeColumnNames)
     const [activeTab,setActiveTab] = useState("Colleges")
     const [sort, setSort] = useState('');
     const [popupStatus,setPopupStatus] = useState(false)
@@ -60,12 +68,15 @@ function Organizations() {
     const handleTabClick = (tab:string) => {
         if(tab === "Colleges"){
             setColumns(columnsCollege)
+            setEditableColumns(editableCollegeColumnNames)
             getOrganizations(tab,setData, 1, perPage, setTotalPages, "", "");
         }else if (tab === "Companies") {
             setColumns(columnsCompanies)
+            setEditableColumns(editableCompaniesColumnNames)
             getOrganizations(tab,setData, 1, perPage, setTotalPages, "", "");
         }else if(tab === "Communities") {
             setColumns(columnsCommunities)
+            setEditableColumns(editableCommunityColumnNames)
             getOrganizations(tab,setData, 1, perPage, setTotalPages, "", "");
         } else{
             alert("Error to load Table Headers")
@@ -88,6 +99,11 @@ function Organizations() {
         console.log(`Icon clicked for column: ${column}`);
     };
 
+    const handleEdit = (id: string | number | boolean) => {
+        console.log(id);
+		navigate(`/interest-groups/edit/${id}`);
+    };
+
     const handleAddClickClose = ()=> {
         setPopupStatus(false)
     }
@@ -105,25 +121,26 @@ function Organizations() {
 				// CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"} 
 			/>
             {data && (
-                <Table
-                    rows={data}
-                    page={currentPage}
-                    perPage={perPage}
-                    columnOrder={editableColumnNames}
-                >
-                    <THead
-                        columnOrder={columns}
-                        editableColumnNames={columns}
-                        onIconClick={handleIconClick}
-                    />
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        margin="10px 0"
-                        handleNextClick={handleNextClick}
-                        handlePreviousClick={handlePreviousClick}
-                    />
-                    {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                               <Table
+                               rows={data}
+                               page={currentPage}
+                               perPage={perPage}
+                               columnOrder={columns}
+                               id={['id']} 
+                               onEditClick={handleEdit}                >
+                               <THead
+                                   columnOrder={columns}
+                                   editableColumnNames={editableColumns}
+                                   onIconClick={handleIconClick}
+                               />
+                               <Pagination
+                                   currentPage={currentPage}
+                                   totalPages={totalPages}
+                                   margin="10px 0"
+                                   handleNextClick={handleNextClick}
+                                   handlePreviousClick={handlePreviousClick}
+                               />
+                               {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                 </Table>
             )}
         </>

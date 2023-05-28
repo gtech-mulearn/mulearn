@@ -11,7 +11,7 @@ import { getRolesData } from "./manageRolesApi";
 import { hasRole } from "../../../../services/common_functions";
 import { useNavigate } from "react-router-dom";
 import { roles } from "../../../../services/types";
-import { campusRoutes, dashboardRoutes } from "../../../../services/urls";
+import { dashboardRoutes } from "../../../../services/urls";
 type Props = {};
 
 const ManageRoles = (props: Props) => {

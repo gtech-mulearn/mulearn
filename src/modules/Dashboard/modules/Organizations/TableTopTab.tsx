@@ -15,7 +15,7 @@ const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
     const navigate = useNavigate()
 
     const handleCreate = () => {
-        navigate("/organizations/create");
+        navigate("/organizations/create",{state:{activeItem:active}});
     };
 
     return (

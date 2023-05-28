@@ -27,14 +27,14 @@ export const getOrganizations = async (
         })
         .then(data => {
             if(activeTab === "Colleges"){
-                setData(data.response.colleges.data);
-                setTotalPages(data.response.colleges.pagination.totalPages);
+                setData(data.response.data.colleges);
+                setTotalPages(data.response.pagination.colleges.totalPages);
             }else if (activeTab === "Companies"){
-                setData(data.response.companies.data);
-                setTotalPages(data.response.companies.pagination.totalPages);
+                setData(data.response.data.companies);
+                setTotalPages(data.response.pagination.companies.totalPages);
             }else if(activeTab === "Communities"){
-                setData(data.response.communities.data);
-                setTotalPages(data.response.communities.pagination.totalPages);
+                setData(data.response.data.communities);
+                setTotalPages(data.response.pagination.communities.totalPages);
             }else{
                 alert("error to Load Data")
             }
@@ -63,7 +63,8 @@ export const getCountry = async (setCountryData:any) => {
             return response.data
         })
         .then(data => {
-            const countries:CountryProps[] = data.response.countries;
+            console.log("daaaata:",data.response.data)
+            const countries:CountryProps[] = data.response.data;
             const countryNames = countries.map((country) => country.name);
             setCountryData(countryNames);
         })
