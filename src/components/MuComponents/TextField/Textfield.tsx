@@ -26,6 +26,7 @@ const Textfield = (props: {
             <input
                 type={props.inputType}
                 value={props.input}
+                placeholder={`Type ${props.content}`}
                 required
                 onChange={handleInputChange}
             />
