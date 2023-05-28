@@ -4,7 +4,9 @@ import Table from '../../../../components/MuComponents/Table/Table'
 import THead from '../../../../components/MuComponents/Table/THead'
 import TableTop from '../../../../components/MuComponents/TableTop/TableTop'
 import Pagination from '../../../../components/MuComponents/Pagination/Pagination'
-import { getOrganizations } from './apis'
+import { getOrganizations,deleteOrganization } from './apis'
+import { useToast } from '@chakra-ui/react'
+
 import { hasRole } from '../../../../services/common_functions'
 import { roles } from '../../../../services/types'
 import {
@@ -33,8 +35,13 @@ function Organizations() {
     const [activeTab,setActiveTab] = useState("Colleges")
     const [sort, setSort] = useState('');
     const [popupStatus,setPopupStatus] = useState(false)
+    
+    const [isCreate,setIsCreate] = useState(false)
+    const [isEdit,setIsEdit] = useState(false)
 
     const navigate = useNavigate();
+
+    const toast = useToast()
 
     useEffect(() => {
         if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
@@ -101,8 +108,18 @@ function Organizations() {
 
     const handleEdit = (id: string | number | boolean) => {
         console.log(id);
-		navigate(`/interest-groups/edit/${id}`);
+        setIsEdit(true)
+		navigate("/organizations/edit",{state:
+            {
+                activeItem:activeTab,
+                rowId:id
+            }});
     };
+
+    const handleDelete = (id: string) => {
+        console.log("code:",id)
+        deleteOrganization(id,toast)
+    }
 
     const handleAddClickClose = ()=> {
         setPopupStatus(false)
@@ -126,8 +143,10 @@ function Organizations() {
                                page={currentPage}
                                perPage={perPage}
                                columnOrder={columns}
-                               id={['id']} 
-                               onEditClick={handleEdit}                >
+                               id={['code']} 
+                               onEditClick={handleEdit}
+                               onDeleteClick={()=>handleDelete}                
+                               >
                                <THead
                                    columnOrder={columns}
                                    editableColumnNames={editableColumns}
@@ -146,77 +165,5 @@ function Organizations() {
         </>
   )
 }
-
-// const AddPopup = ({popupStatus,active,onAddClickClose}:any)=> {
-//     const [input,setInput] = useState("")
-//     return(
-//         <>
-//             <div className={popupStatus ? "popup_container" : "invisible"}>
-//                 <div className="popup_top_container">
-//                     <h1 className='popup_title'>Add {active}</h1>
-//                     <i 
-//                         className="fi fi-sr-cross"
-//                         onClick={()=>{
-//                             onAddClickClose()
-//                         }}
-//                     ></i>
-//                 </div>
-//                 <Textfield
-// 						content={"IG Name"}
-// 						inputType={"text"}
-// 						setInput={setInput}
-// 						input={input}
-// 				/>
-//                     <div className="popup_dropdown_container">
-//                         <div className='inputfield_container'>
-//                             <label>Affiliated University</label>
-//                             <Dropdown 
-//                                 contents={["A","B","C"]}
-//                                 style={{
-//                                     width: ""
-//                                 }}/>
-//                         </div>
-//                         <div className='inputfield_container'>
-//                             <label>Country</label>
-//                             <Dropdown 
-//                                 contents={["A","B","C"]}
-//                                 style={{
-//                                     width: ""
-//                                 }}/>
-//                         </div>
-//                         <div className='inputfield_container'>
-//                             <label>State</label>
-//                             <Dropdown 
-//                                 contents={["A","B","C"]}
-//                                 style={{
-//                                     width: ""
-//                                 }}/>
-//                         </div>
-//                         <div className='inputfield_container'>
-//                             <label>District</label>
-//                             <Dropdown 
-//                                 contents={["A","B","C"]}
-//                                 style={{
-//                                     width: ""
-//                                 }}/>
-//                         </div>
-//                         <div className='inputfield_container'>
-//                             <label>Zone</label>
-//                             <Dropdown 
-//                                 contents={["A","B","C"]}
-//                                 style={{
-//                                     width: ""
-//                                 }}/>
-//                         </div>
-//                     </div>
-//                     <div className='submit_container'>
-//                         <PrimaryButton 
-//                             text="Submit"
-//                         />
-//                     </div>
-//             </div>
-//         </>
-//     )
-// }
 
 export default Organizations

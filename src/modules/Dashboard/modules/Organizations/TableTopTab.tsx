@@ -8,14 +8,18 @@ interface TableTopTabProps {
     onTabClick: (tab: string) => void;
 }
 
-const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
+const TableTopTab = ({ active, onTabClick}: TableTopTabProps) => {
     
     const tabletopTab = ["Colleges", "Companies", "Communities"]
 
     const navigate = useNavigate()
 
     const handleCreate = () => {
-        navigate("/organizations/create",{state:{activeItem:active}});
+        navigate("/organizations/create",{state:
+            {
+                activeItem:active,
+                isCreate: true
+            }});
     };
 
     return (

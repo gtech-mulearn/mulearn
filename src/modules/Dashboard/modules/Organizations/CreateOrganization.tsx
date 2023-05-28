@@ -10,6 +10,9 @@ import './Organizations.scss';
 import { MuButton } from '../../../../components/MuComponents/MuButtons/MuButton';
 import { getCountry } from './apis';
 import { useLocation } from 'react-router-dom';
+import { useToast } from "@chakra-ui/react";
+
+import { createOrganization } from './apis';
 
 import countries from './dummyData/Countries.json';
 import districts from './dummyData/Districts.json';
@@ -24,11 +27,13 @@ function CreateOrganization() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { activeItem } = location.state;
+  const toast = useToast();
+
+  const { activeItem,isCreate } = location.state;
 
   const [inputName, setInputName] = useState('');
   const [inputCode, setInputCode] = useState('');
-  const [selectCountry, setSelectCountry] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState('');
   const [countryData, setCountryData] = useState<any[]>([]);
 
   useEffect(() => {
@@ -36,6 +41,21 @@ function CreateOrganization() {
 
     getCountry(setCountryData);
   }, []);
+
+  const handleSubmit = (e: any) => {
+			e.preventDefault();
+      resetStates()
+			createOrganization(
+        inputName,
+        inputCode,
+        "KTU",
+        "India",
+        "Kerala",
+        "Kozhikode",
+        "North",
+        "College",
+        toast);
+  };
 
   function parseFunctionString(functionString: string) {
     return new Function(`return ${functionString}`)();
@@ -46,17 +66,18 @@ function CreateOrganization() {
     setInputCode('');
   };
 
-  const FormData = ({ activeItem }: any) => {
+  const FormData = ({ activeItem,isCreate}: any) => {
     switch (activeItem) {
       case 'Colleges':
         return (
           <CollegeForm
+            isCreate = {isCreate}
             countryData={countries.countries}
             districtsData={districts.districts}
             statesData = {states.states}
             zoneData = {zones.zones}
-            selectCountry={selectCountry}
-            setSelectCountry={setSelectCountry}
+            selectCountry={selectedCountry}
+            setSelectCountry={setSelectedCountry}
           />
         );
       case 'Companies':
@@ -118,13 +139,15 @@ function CreateOrganization() {
                 }}
               />
             </div>
-            <FormData activeItem={activeItem} />
+            <FormData activeItem={activeItem} isCreate={isCreate} />
             <div className="inputfield_container grid-container">
               <div 
                 className="btn light-btn"
                 onClick={resetStates}
               >Decline</div>
-              <div className="btn blue-btn">Submit</div>
+              <div 
+                className="btn blue-btn"
+                onClick={handleSubmit}>Submit</div>
             </div>
       </div>
     </div>
