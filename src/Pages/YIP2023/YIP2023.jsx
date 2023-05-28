@@ -204,7 +204,8 @@ const YIP2023 = () => {
                           can check the left navbar again to find the &nbsp;
                           <b>Voice of Stakeholder(VOS Module)</b> option. By
                           clicking that you will be directed to the course page
-                          where you can complete it.
+                          where you can complete it. Post it with the hashtag&nbsp;
+                          <b>#yip5.0-vos</b> to gain <b>400 Karma Points</b>
                         </p>
                       </div>
                     </div>
@@ -261,7 +262,10 @@ const YIP2023 = () => {
                           <b>person who formed the team</b> can submit the idea
                           by going to the
                           <b>&nbsp;Idea Submission Option</b> from his/her
-                          Navbar.
+                          Navbar.Post your idea submission certiciate with the
+                          hashtag&nbsp;
+                          <b>#yip5.0-idea</b> to gain <b>800 Karma Points</b>.
+                          You could submit upto 2 ideas per person.
                         </p>
                       </div>
                     </div>
@@ -334,8 +338,8 @@ const YIP2023 = () => {
                           Finally the winners are announced and out of the total
                           teams selected at state level
                           <b>
-                            &nbsp;the best of those teams are provided financial and
-                            mentoring support to implement their ideas.
+                            &nbsp;the best of those teams are provided financial
+                            and mentoring support to implement their ideas.
                           </b>
                         </p>
                       </div>
