@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Form from "../../../../components/MuComponents/Form/Form";
 import { editInterestGroups, getIGDetails } from "./apis";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 type Props = {};
 
@@ -52,16 +52,19 @@ const InterestGroupEdit = (props: Props) => {
     //     }
     // ];
 	const {id} = useParams();
+	const navigate = useNavigate();
 	const handleSubmit = () => {
 		editInterestGroups(input1, id);
+		navigate("/interest-groups");
     };
     return (
         <div>
             <Form
-                title={"Edit Name of Interest Group"}
-                handleSubmitClick={handleSubmit}
-                inputFields={inputFields}
-                // dropdownFields={dropdownFields}
+				title={"Edit Name of Interest Group"}
+				handleSubmitClick={handleSubmit}
+				inputFields={inputFields} 
+				cancelPath={"/interest-groups"}
+				// dropdownFields={dropdownFields}
             />
         </div>
     );

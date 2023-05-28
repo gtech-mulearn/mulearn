@@ -26,6 +26,7 @@ const THead: React.FC<TableHeadProps> = ({
                         </div>
                     </th>
                 ))}
+				<th>Action</th>
             </tr>
         </thead>
     );
