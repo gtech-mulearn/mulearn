@@ -35,6 +35,9 @@ function Organizations() {
     const [activeTab,setActiveTab] = useState("Colleges")
     const [sort, setSort] = useState('');
     const [popupStatus,setPopupStatus] = useState(false)
+    
+    const [isCreate,setIsCreate] = useState(false)
+    const [isEdit,setIsEdit] = useState(false)
 
     const navigate = useNavigate();
 
@@ -105,6 +108,7 @@ function Organizations() {
 
     const handleEdit = (id: string | number | boolean) => {
         console.log(id);
+        setIsEdit(true)
 		navigate("/organizations/edit",{state:
             {
                 activeItem:activeTab,

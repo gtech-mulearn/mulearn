@@ -32,10 +32,12 @@ function EditOrgnaization() {
     const location = useLocation();
   
     const {activeItem,rowId} = location.state
-  
+    
     const [inputName, setInputName] = useState('');
     const [inputCode, setInputCode] = useState('');
-    const [selectCountry, setSelectCountry] = useState('');
+    const [selectedCountry, setSelectedCountry] = useState('');
+    const [selectedState, setSelectedState] = useState('');
+    const [selectedZone, setSelectedZone] = useState('');
     const [countryData, setCountryData] = useState<any[]>([]);
   
     useEffect(() => {
@@ -45,6 +47,9 @@ function EditOrgnaization() {
       .then((data) => {
         setInputName(data.title)
         setInputCode(data.code)
+        setSelectedCountry(data.country)
+        setSelectedState(data.state)
+        setSelectedZone(data.zone)
         console.log("info",data)
       })
       .catch((error) => {
@@ -70,8 +75,9 @@ function EditOrgnaization() {
               districtsData={districts.districts}
               statesData = {states.states}
               zoneData = {zones.zones}
-              selectCountry={selectCountry}
-              setSelectCountry={setSelectCountry}
+              selectedCountry={selectedCountry}
+              selectedState={selectedState}
+              selectedZone={selectedZone}
             />
           );
         case 'Companies':

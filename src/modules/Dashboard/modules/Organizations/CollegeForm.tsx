@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Dropdown from "../../../../components/MuComponents/Dropdown/Dropdown";
 import "./Organizations.scss";
-import Select, { ActionMeta } from "react-select";
+import Select, { ActionMeta, GroupBase } from "react-select";
 
 interface Option {
   value: string;
@@ -9,52 +9,80 @@ interface Option {
 }
 
 interface CollegeFormProps {
+  isCreate: boolean;
   countryData: Option[];
   selectCountry: string;
   setSelectCountry: React.Dispatch<React.SetStateAction<string>>;
-  districtsData: Option[];
-  statesData: Option [];
-  zoneData: Option [];
+
+  selectedCountry?: string;
+  selectedState?: string;
+  selectedZone?: string;
 }
 
 const CollegeForm = ({ ...props }: CollegeFormProps) => {
   const [country, setCountry] = useState<Option | null>(null);
-  const [state, setState] = useState("");
+  const [state, setState] = useState<Option | null>(null);
   const [district, setDistrict] = useState("");
   const [zone, setZone] = useState("");
   const [affiliatedUniversity, setAffiliatedUniversity] = useState("");
 
-  const handleCountryChange = (option: Option | null, actionMeta: ActionMeta<Option>) => {
+  const handleCountryChange = (option: Option | null) => {
     if (option) {
       setCountry(option);
     }
+  };
+
+  const handleStateChange = (option: Option | null) => {
+    if (option) {
+      setState(option);
+    }
+  };
+  
+
+  const getDefaultValue = () => {
+    console.log("country:",props.selectedCountry)
+    if (!props.isCreate && props.selectedCountry) {
+      const defaultOption = props.countryData.find((option) => option.label.toUpperCase() === props.selectedCountry ? option.label : null);
+      return defaultOption || null;
+    }
+    return null;
   };
 
   return (
     <>
       <div className="inputfield_container">
         <p>Affiliated University</p>
-        <Select options={props.statesData} />
+        <Select
+          value={state}
+          onChange={handleStateChange}
+          options={props.countryData}
+        />
       </div>
       <div className="inputfield_container">
         <p>Country</p>
         <Select
-          value={country}
+          defaultValue={getDefaultValue}
           onChange={handleCountryChange}
           options={props.countryData}
         />
       </div>
       <div className="inputfield_container">
         <p>State</p>
-        <Select options={props.statesData} />
+        <Select
+          options={props.statesData}
+        />
       </div>
       <div className="inputfield_container">
         <p>District</p>
-        <Select options={props.districtsData} />
+        <Select
+          options={props.districtsData}
+        />
       </div>
       <div className="inputfield_container">
         <p>Zone</p>
-        <Select options={props.zoneData} />
+        <Select
+          options={props.zoneData}
+        />
       </div>
     </>
   );

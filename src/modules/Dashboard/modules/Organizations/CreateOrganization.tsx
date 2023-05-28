@@ -29,11 +29,11 @@ function CreateOrganization() {
 
   const toast = useToast();
 
-  const { activeItem } = location.state;
+  const { activeItem,isCreate } = location.state;
 
   const [inputName, setInputName] = useState('');
   const [inputCode, setInputCode] = useState('');
-  const [selectCountry, setSelectCountry] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState('');
   const [countryData, setCountryData] = useState<any[]>([]);
 
   useEffect(() => {
@@ -66,17 +66,18 @@ function CreateOrganization() {
     setInputCode('');
   };
 
-  const FormData = ({ activeItem }: any) => {
+  const FormData = ({ activeItem,isCreate}: any) => {
     switch (activeItem) {
       case 'Colleges':
         return (
           <CollegeForm
+            isCreate = {isCreate}
             countryData={countries.countries}
             districtsData={districts.districts}
             statesData = {states.states}
             zoneData = {zones.zones}
-            selectCountry={selectCountry}
-            setSelectCountry={setSelectCountry}
+            selectCountry={selectedCountry}
+            setSelectCountry={setSelectedCountry}
           />
         );
       case 'Companies':
@@ -138,7 +139,7 @@ function CreateOrganization() {
                 }}
               />
             </div>
-            <FormData activeItem={activeItem} />
+            <FormData activeItem={activeItem} isCreate={isCreate} />
             <div className="inputfield_container grid-container">
               <div 
                 className="btn light-btn"
