@@ -3,6 +3,7 @@ import axios from "axios";
 import { privateGateway } from "../../../../services/apiGateways";
 import { dashboardRoutes, organizationRoutes } from "../../../../services/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
+import countries from './dummyData/Countries.json'
 
 export const getOrganizations = async (
     activeTab:string,
@@ -63,7 +64,6 @@ export const getCountry = async (setCountryData:any) => {
             return response.data
         })
         .then(data => {
-            console.log("daaaata:",data.response.data)
             const countries:CountryProps[] = data.response.data;
             const countryNames = countries.map((country) => country.name);
             setCountryData(countryNames);

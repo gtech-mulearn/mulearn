@@ -20,7 +20,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.9.0",
-    "react-select": "^5.7.2",
+    "react-select": "^5.7.3",
     "react-spinners": "^0.13.8",
     "sass": "^1.62.1",
     "title-case": "^3.0.3"
