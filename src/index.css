@@ -9,6 +9,11 @@
   src: url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 }
 
+@font-face {
+  font-family: "Nasa";
+  src: url("./fonts/Nasa.ttf") format("truetype");
+}
+
 *,
 *::before,
 *::after {
@@ -16,7 +21,7 @@
   padding: 0;
 }
 
-.text-lg a:hover{
+.text-lg a:hover {
   color: black;
 }
 html {
@@ -29,11 +34,11 @@ html {
 .swiper-button-prev {
   color: #ff8a4c !important;
 }
-.swiper-pagination-bullet-active{
+.swiper-pagination-bullet-active {
   background-color: #ff8a4c !important;
 }
 .swiper-button-next:after,
-.swiper-button-prev:after{
+.swiper-button-prev:after {
   font-size: 2rem !important;
 }
 /* @media only screen and (min-width: 1000px){
