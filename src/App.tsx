@@ -24,6 +24,7 @@ import InterestGroupEdit from "./modules/Dashboard/modules/InterestGroup/Interes
 import UrlShortener from "./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener";
 import InterestGroupDelete from "./modules/Dashboard/modules/InterestGroup/InterestGroupDelete";
 import TaskEdit from "./modules/Dashboard/modules/Tasks/TaskEdit";
+import TaskCreate from "./modules/Dashboard/modules/Tasks/TaskCreate";
 
 const router = createBrowserRouter([
     {
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
                     { path: "manage-roles", element: <ManageRoles /> },
                     { path: "organizations", element: <Organizations /> },
                     { path: "tasks", element: <Tasks /> },
+                    { 
+						path: "tasks/create", 
+						element: <TaskCreate /> 
+					},
                     { 
 						path: "tasks/edit/:id", 
 						element: <TaskEdit /> 

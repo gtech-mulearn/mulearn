@@ -8,6 +8,9 @@ import { roles } from "../../../../services/types";
 import { useNavigate } from "react-router-dom";
 import { getTasks } from "./TaskApis";
 import { dashboardRoutes } from "../../../../services/urls";
+import styles from "../InterestGroup/InterestGroup.module.css";
+import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import { AiOutlinePlusCircle } from "react-icons/ai";
 
 type Props = {};
 
@@ -97,12 +100,24 @@ export const Tasks = (props: Props) => {
         navigate(`/interest-groups/delete/${id}`);
     };
 
+	const handleCreate = () => {
+        navigate("/tasks/create");
+    };
+
     return (
         <>
+            <div className={styles.createBtnContainer}>
+                <MuButton
+                    className={styles.createBtn}
+                    text={"Create"}
+                    icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
+                    onClick={handleCreate}
+                />
+            </div>
             <TableTop
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
-                CSV={dashboardRoutes.getTasksData + 'csv/'}
+                CSV={dashboardRoutes.getTasksData + "csv/"}
             />
             {data && (
                 <Table

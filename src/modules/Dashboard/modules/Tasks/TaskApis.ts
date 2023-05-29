@@ -83,3 +83,43 @@ export const editTask = async (
 		}
 	}
 };
+
+export const createTask = async (
+    hashtag: string,
+    title: string,
+    karma: string,
+    usage_count: string,
+    active: string,
+    variable_karma: string,
+    description: string,
+    channel_id: string,
+    type_id: string,
+    level_id: string,
+	ig_id: string,
+) => {
+    try {
+        const response = await privateGateway.post(
+            dashboardRoutes.getTasksData + "create/",
+            {
+                title: title,
+                hashtag: hashtag,
+                karma: parseInt(karma),
+                usage_count: parseInt(usage_count),
+                active: parseInt(active),
+                variable_karma: parseInt(variable_karma),
+                description: description,
+                channel_id: parseInt(channel_id),
+                type_id: parseInt(type_id),
+                level_id: parseInt(level_id),
+				ig_id: parseInt(ig_id)
+            }
+        );
+        const message: any = response?.data;
+        console.log(message);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
