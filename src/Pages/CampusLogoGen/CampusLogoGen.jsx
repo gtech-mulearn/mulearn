@@ -6,6 +6,9 @@ import logoBlack from "../../images/campuslogo/logo-black.svg";
 import logoWhite from "../../images/campuslogo/logo-white.svg";
 import stripes from "../../images/campuslogo/stripes.svg";
 
+import yipLogoRed from "../../images/yip_logo/yip-logo-red.svg";
+import yipLogoBlack from "../../images/yip_logo/yip-logo-black.svg";
+
 const CampusLogoGenerator = () => {
   useEffect(() => {
     document.title = "Campus Logo Generator";
@@ -15,13 +18,17 @@ const CampusLogoGenerator = () => {
 
   const [campusCode, setCampusCode] = useState("");
   const [charCount, setCharCount] = useState(0);
-  const [logoType, setLogoType] = useState("Profile Pic");
+  const [logoType, setLogoType] = useState("MuLearn");
+  const [muLogoVariant, setMuLogoVariant] = useState("Profile Pic");
+  const [yipLogoVariant, setYipLogoVariant] = useState("Black");
   const [logoColor, setLogoColor] = useState("#ffffff");
   const [logoBgColor, setLogoBgColor] = useState("#f5365c");
   const [fileType, setFileType] = useState("PNG");
 
   const MAX_CHARS = 15;
-  const logoTypes = ["Profile Pic", "Transparent Bg"];
+  const logoTypes = ["MuLearn", "YIP"];
+  const muLogoVariants = ["Profile Pic", "Transparent Bg"];
+  const yipLogoVariants = ["Black", "Red"];
   const logoColors = ["#ffffff", "#000000"];
   const logoBgColors = ["#f5365c", "#172b4d", "#fb6340", "#12bbda", "#5e72e4"];
   const fileTypes = ["PNG", "SVG"];
@@ -51,7 +58,8 @@ const CampusLogoGenerator = () => {
     }
 
     const link = document.createElement("a");
-    link.download = `campus-logo.${fileType.toLowerCase()}`;
+    const prefix = logoType == "MuLearn" ? "mulearn" : "yip";
+    link.download = `${prefix}-campus-logo.${fileType.toLowerCase()}`;
     link.href = dataUrl;
     link.click();
   };
@@ -64,61 +72,108 @@ const CampusLogoGenerator = () => {
           ref={domEl}
           className="relative overflow-hidden w-72 h-72 flex justify-center"
           style={
-            logoType === "Transparent Bg"
-              ? { backgroundColor: "#00000000", color: logoColor }
-              : { backgroundColor: logoBgColor, color: "#ffffff" }
+            logoType == "MuLearn"
+              ? muLogoVariant === "Transparent Bg"
+                ? { backgroundColor: "#00000000", color: logoColor }
+                : { backgroundColor: logoBgColor, color: "#ffffff" }
+              : { backgroundColor: "#ffffff", color: "#000" }
           }
         >
           <img
             src={
-              logoType === "Profile Pic"
-                ? logoWhite
-                : logoColor === "#ffffff"
-                ? logoWhite
-                : logoBlack
-            }
-            className="w-2/3"
-            alt="Logo"
-          />
-
-          {logoType === "Profile Pic" && (
-            <img alt="picprofile" src={stripes} className="absolute w-full h-full" />
-          )}
-
-          <span id={styles.campusCode} className="absolute text-xl">
-            {campusCode ? campusCode : "Campus Code"}
-          </span>
-        </div>
-
-        {/* Round Display */}
-        {logoType === "Profile Pic" && (
-          <div
-            className="relative overflow-hidden hidden rounded-full w-72 h-72 lg:flex justify-center"
-            style={
-              logoType === "Transparent Bg"
-                ? { backgroundColor: "#00000000", color: logoColor }
-                : { backgroundColor: logoBgColor, color: "#ffffff" }
-            }
-          >
-            <img
-              src={
-                logoType === "Profile Pic"
+              logoType == "MuLearn"
+                ? muLogoVariant === "Profile Pic"
                   ? logoWhite
                   : logoColor === "#ffffff"
                   ? logoWhite
                   : logoBlack
+                : yipLogoVariant === "Black"
+                ? yipLogoBlack
+                : yipLogoRed
+            }
+            className={logoType == "MuLearn" ? "w-2/3" : "w-1/2 top-6 absolute"}
+            alt="Logo"
+          />
+
+          {logoType == "MuLearn" && muLogoVariant === "Profile Pic" && (
+            <img
+              alt="picprofile"
+              src={stripes}
+              className="absolute w-full h-full"
+            />
+          )}
+
+          <span
+            className={
+              logoType == "MuLearn"
+                ? styles.campusCodeMulearn
+                : styles.campusCodeYip
+            }
+            style={
+              logoType == "YIP"
+                ? {
+                    color: yipLogoVariant === "Black" ? "#262626" : "#FA5252",
+                    fontFamily: "Nasa",
+                  }
+                : {}
+            }
+          >
+            {campusCode ? campusCode : "Campus"}
+          </span>
+        </div>
+
+        {/* Round Display */}
+        {(logoType == "YIP" || muLogoVariant === "Profile Pic") && (
+          <div
+            className="relative overflow-hidden hidden rounded-full w-72 h-72 lg:flex justify-center"
+            style={
+              logoType == "MuLearn"
+                ? muLogoVariant === "Transparent Bg"
+                  ? { backgroundColor: "#00000000", color: logoColor }
+                  : { backgroundColor: logoBgColor, color: "#ffffff" }
+                : { backgroundColor: "#ffffff", color: "#000" }
+            }
+          >
+            <img
+              src={
+                logoType == "MuLearn"
+                  ? muLogoVariant === "Profile Pic"
+                    ? logoWhite
+                    : logoColor === "#ffffff"
+                    ? logoWhite
+                    : logoBlack
+                  : yipLogoVariant === "Black"
+                  ? yipLogoBlack
+                  : yipLogoRed
               }
-              className="w-2/3"
+              className={
+                logoType == "MuLearn" ? "w-2/3" : "w-1/2 top-6 absolute"
+              }
               alt="Logo"
             />
-
-            <img
-              src={stripes}
-              alt="stripespic"
-              className="absolute w-full h-full rounded-full"
-            />
-            <span id={styles.campusCode} className="absolute text-xl">
-              {campusCode ? campusCode : "Campus Code"}
+            {logoType == "MuLearn" && muLogoVariant === "Profile Pic" && (
+              <img
+                src={stripes}
+                alt="stripespic"
+                className="absolute w-full h-full rounded-full"
+              />
+            )}
+            <span
+              className={
+                logoType == "MuLearn"
+                  ? styles.campusCodeMulearn
+                  : styles.campusCodeYip
+              }
+              style={
+                logoType == "YIP"
+                  ? {
+                      color: yipLogoVariant === "Black" ? "#262626" : "#FA5252",
+                      fontFamily: "Nasa",
+                    }
+                  : {}
+              }
+            >
+              {campusCode ? campusCode : "Campus"}
             </span>
           </div>
         )}
@@ -154,7 +209,38 @@ const CampusLogoGenerator = () => {
             </div>
           ))}
         </div>
-        {logoType === "Transparent Bg" && (
+
+        <label class="block mb-3 text-sm font-medium">Logo Variant</label>
+        <div className="flex gap-4 mb-8">
+          {logoType == "MuLearn" &&
+            muLogoVariants.map((variant) => (
+              <div
+                className={`${
+                  muLogoVariant === variant
+                    ? "bg-gray-800 text-white"
+                    : "border border-gray-300 text-gray-900"
+                } px-4 py-2 rounded-lg cursor-pointer text-center`}
+                onClick={() => setMuLogoVariant(variant)}
+              >
+                {variant}
+              </div>
+            ))}
+          {logoType == "YIP" &&
+            yipLogoVariants.map((variant) => (
+              <div
+                className={`${
+                  yipLogoVariant === variant
+                    ? "bg-gray-800 text-white"
+                    : "border border-gray-300 text-gray-900"
+                } px-4 py-2 rounded-lg cursor-pointer text-center`}
+                onClick={() => setYipLogoVariant(variant)}
+              >
+                {variant}
+              </div>
+            ))}
+        </div>
+
+        {muLogoVariant === "Transparent Bg" && (
           <>
             <label class="block mb-3 text-sm font-medium">Logo Color</label>
             <div className="flex mb-8 gap-4">
@@ -169,7 +255,7 @@ const CampusLogoGenerator = () => {
           </>
         )}
 
-        {logoType === "Profile Pic" && (
+        {logoType == "MuLearn" && muLogoVariant === "Profile Pic" && (
           <>
             <label class="block mb-3 text-sm font-medium">
               Background Color
