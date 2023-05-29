@@ -3,6 +3,7 @@ import axios from "axios";
 import { privateGateway } from "../../../../services/apiGateways";
 import { dashboardRoutes, organizationRoutes } from "../../../../services/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
+import countries from './dummyData/Countries.json'
 
 export const getOrganizations = async (
     activeTab:string,
@@ -27,6 +28,7 @@ export const getOrganizations = async (
         })
         .then(data => {
             if(activeTab === "Colleges"){
+                console.log(data.response.data.colleges)
                 setData(data.response.data.colleges);
                 setTotalPages(data.response.pagination.colleges.totalPages);
             }else if (activeTab === "Companies"){
@@ -63,7 +65,6 @@ export const getCountry = async (setCountryData:any) => {
             return response.data
         })
         .then(data => {
-            console.log("daaaata:",data.response.data)
             const countries:CountryProps[] = data.response.data;
             const countryNames = countries.map((country) => country.name);
             setCountryData(countryNames);
@@ -76,23 +77,69 @@ export const getCountry = async (setCountryData:any) => {
     }
 }
 
-// export const createInterestGroups = async (name:string, toast: (options?: UseToastOptions | undefined) => ToastId,) => {
-// 	try {
-//         const response = await privateGateway.post(dashboardRoutes.getIgData, {
-// 			"name": name
-// 		});
-// 		toast({
-// 			title: "Interest Group created",
-// 			status: "success",
-// 			duration: 3000,
-// 			isClosable: true
-// 		});
-//         const message: any = response?.data;
-// 		console.log(message);
-//     } catch (err: unknown) {
-//         const error = err as AxiosError;
-//         if (error?.response) {
-//             console.log(error.response);
-//         }
-//     }
-// }
+export const createOrganization = async (
+    title:string,
+    code:string,
+    affiliation: string,
+    country: string,
+    state: string,
+    district: string,
+    zone:string,
+    orgType:string, 
+    toast: (options?: UseToastOptions | undefined) => ToastId,) => {
+	try {
+        const response = await privateGateway.post(organizationRoutes.postAddOrganization, {
+			"title": title,
+            "code":code,
+            "affiliation":affiliation,
+            "country":country,
+            "state":state,
+            "district":district,
+            "zone":zone,
+            "orgType" : "College"
+		});
+		toast({
+			title: "Organizations created",
+			status: "success",
+			duration: 3000,
+			isClosable: true
+		});
+        const message: any = response?.data;
+		console.log(message);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+}
+
+export const deleteOrganization = async (
+    code:string,
+    toast: (options?: UseToastOptions | undefined) => ToastId,
+    ) => {
+	try {
+        const response = await privateGateway.delete(`${organizationRoutes.deleteOrgnaization}${code}`);
+        const message: any = response?.data;
+		console.log(message);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+}
+
+export const getInfo = async(
+    code:string
+) =>  {
+    try{
+        const response = await privateGateway.post(`${organizationRoutes.postGetInfo}${code}`);
+        return response.data.response.institution
+    }catch(err:unknown){
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+}

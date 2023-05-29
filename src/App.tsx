@@ -21,6 +21,7 @@ import { Tasks } from "./modules/Dashboard/modules/Tasks/Tasks";
 import CreateOrganization from "./modules/Dashboard/modules/Organizations/CreateOrganization";
 import ManageRoles from "./modules/Dashboard/modules/ManageRoles/ManageRoles";
 import InterestGroupEdit from "./modules/Dashboard/modules/InterestGroup/InterestGroupEdit";
+import EditOrgnaization from "./modules/Dashboard/modules/Organizations/EditOrgnaization";
 import UrlShortener from "./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener";
 import InterestGroupDelete from "./modules/Dashboard/modules/InterestGroup/InterestGroupDelete";
 import TaskEdit from "./modules/Dashboard/modules/Tasks/TaskEdit";
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <AuthRoutes />,
         children: [
+            { path: "/", element: <Login /> },
             { path: "register", element: <Onboarding /> },
             { path: "login", element: <Login /> },
             { path: "forgot-password", element: <ForgotPassword /> },
@@ -67,6 +69,10 @@ const router = createBrowserRouter([
                     {
                         path: "interest-groups/edit/:id",
                         element: <InterestGroupEdit />
+                    },
+                    {
+                        path: "organizations/edit",
+                        element: <EditOrgnaization />
                     },
                     {
                         path: "interest-groups/delete/:id",

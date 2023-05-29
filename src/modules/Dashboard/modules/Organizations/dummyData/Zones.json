@@ -1,0 +1,9 @@
+{
+    "zones": [
+      { "value": "north", "label": "North" },
+      { "value": "south", "label": "South" },
+      { "value": "west", "label": "West" },
+      { "value": "east", "label": "East" }
+    ]
+  }
+  
