@@ -58,7 +58,7 @@ const CampusLogoGenerator = () => {
     }
 
     const link = document.createElement("a");
-    const prefix = logoType == "MuLearn" ? "mulearn" : "yip";
+    const prefix = logoType === "MuLearn" ? "mulearn" : "yip";
     link.download = `${prefix}-campus-logo.${fileType.toLowerCase()}`;
     link.href = dataUrl;
     link.click();
