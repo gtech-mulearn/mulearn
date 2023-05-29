@@ -72,7 +72,7 @@ const CampusLogoGenerator = () => {
           ref={domEl}
           className="relative overflow-hidden w-72 h-72 flex justify-center"
           style={
-            logoType == "MuLearn"
+            logoType === "MuLearn"
               ? muLogoVariant === "Transparent Bg"
                 ? { backgroundColor: "#00000000", color: logoColor }
                 : { backgroundColor: logoBgColor, color: "#ffffff" }
@@ -81,7 +81,7 @@ const CampusLogoGenerator = () => {
         >
           <img
             src={
-              logoType == "MuLearn"
+              logoType === "MuLearn"
                 ? muLogoVariant === "Profile Pic"
                   ? logoWhite
                   : logoColor === "#ffffff"
@@ -91,11 +91,11 @@ const CampusLogoGenerator = () => {
                 ? yipLogoBlack
                 : yipLogoRed
             }
-            className={logoType == "MuLearn" ? "w-2/3" : "w-1/2 top-6 absolute"}
+            className={logoType === "MuLearn" ? "w-2/3" : "w-1/2 top-6 absolute"}
             alt="Logo"
           />
 
-          {logoType == "MuLearn" && muLogoVariant === "Profile Pic" && (
+          {logoType === "MuLearn" && muLogoVariant === "Profile Pic" && (
             <img
               alt="picprofile"
               src={stripes}
@@ -105,12 +105,12 @@ const CampusLogoGenerator = () => {
 
           <span
             className={
-              logoType == "MuLearn"
+              logoType === "MuLearn"
                 ? styles.campusCodeMulearn
                 : styles.campusCodeYip
             }
             style={
-              logoType == "YIP"
+              logoType === "YIP"
                 ? {
                     color: yipLogoVariant === "Black" ? "#262626" : "#FA5252",
                     fontFamily: "Nasa",
@@ -123,11 +123,11 @@ const CampusLogoGenerator = () => {
         </div>
 
         {/* Round Display */}
-        {(logoType == "YIP" || muLogoVariant === "Profile Pic") && (
+        {(logoType === "YIP" || muLogoVariant === "Profile Pic") && (
           <div
             className="relative overflow-hidden hidden rounded-full w-72 h-72 lg:flex justify-center"
             style={
-              logoType == "MuLearn"
+              logoType === "MuLearn"
                 ? muLogoVariant === "Transparent Bg"
                   ? { backgroundColor: "#00000000", color: logoColor }
                   : { backgroundColor: logoBgColor, color: "#ffffff" }
@@ -136,7 +136,7 @@ const CampusLogoGenerator = () => {
           >
             <img
               src={
-                logoType == "MuLearn"
+                logoType === "MuLearn"
                   ? muLogoVariant === "Profile Pic"
                     ? logoWhite
                     : logoColor === "#ffffff"
@@ -147,11 +147,11 @@ const CampusLogoGenerator = () => {
                   : yipLogoRed
               }
               className={
-                logoType == "MuLearn" ? "w-2/3" : "w-1/2 top-6 absolute"
+                logoType === "MuLearn" ? "w-2/3" : "w-1/2 top-6 absolute"
               }
               alt="Logo"
             />
-            {logoType == "MuLearn" && muLogoVariant === "Profile Pic" && (
+            {logoType === "MuLearn" && muLogoVariant === "Profile Pic" && (
               <img
                 src={stripes}
                 alt="stripespic"
@@ -160,12 +160,12 @@ const CampusLogoGenerator = () => {
             )}
             <span
               className={
-                logoType == "MuLearn"
+                logoType === "MuLearn"
                   ? styles.campusCodeMulearn
                   : styles.campusCodeYip
               }
               style={
-                logoType == "YIP"
+                logoType === "YIP"
                   ? {
                       color: yipLogoVariant === "Black" ? "#262626" : "#FA5252",
                       fontFamily: "Nasa",
@@ -212,7 +212,7 @@ const CampusLogoGenerator = () => {
 
         <label class="block mb-3 text-sm font-medium">Logo Variant</label>
         <div className="flex gap-4 mb-8">
-          {logoType == "MuLearn" &&
+          {logoType === "MuLearn" &&
             muLogoVariants.map((variant) => (
               <div
                 className={`${
@@ -225,7 +225,7 @@ const CampusLogoGenerator = () => {
                 {variant}
               </div>
             ))}
-          {logoType == "YIP" &&
+          {logoType === "YIP" &&
             yipLogoVariants.map((variant) => (
               <div
                 className={`${
@@ -255,7 +255,7 @@ const CampusLogoGenerator = () => {
           </>
         )}
 
-        {logoType == "MuLearn" && muLogoVariant === "Profile Pic" && (
+        {logoType === "MuLearn" && muLogoVariant === "Profile Pic" && (
           <>
             <label class="block mb-3 text-sm font-medium">
               Background Color
