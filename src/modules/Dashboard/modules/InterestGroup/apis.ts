@@ -34,18 +34,12 @@ export const getInterestGroups = async (
 
 export const createInterestGroups = async (
     name: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
         const response = await privateGateway.post(dashboardRoutes.getIgData, {
             name: name
         });
-        toast({
-            title: "Interest Group created",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
+        
         const message: any = response?.data;
         console.log(message);
     } catch (err: unknown) {
