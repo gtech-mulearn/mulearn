@@ -94,11 +94,20 @@ export const getIGDetails = async (
     }
 };
 
-export const deleteInterestGroups = async (id: string | undefined) => {
+export const deleteInterestGroups = async (
+    id: string | undefined,
+    toast: (options?: UseToastOptions | undefined) => ToastId
+) => {
     try {
         const response = await privateGateway.delete(
             dashboardRoutes.getIgData + id + "/"
         );
+		toast({
+            title: "Interest Group deleted",
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
         const message: any = response?.data;
         console.log(message);
     } catch (err: unknown) {

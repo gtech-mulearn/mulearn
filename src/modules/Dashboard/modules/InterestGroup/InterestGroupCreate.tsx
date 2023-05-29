@@ -1,42 +1,45 @@
-import { SetStateAction, useState } from "react";
-import Textfield from "../../../../components/MuComponents/TextField/Textfield";
+import { useState } from "react";
 import { createInterestGroups } from "./apis";
 import styles from "./InterestGroup.module.css";
 import { useToast } from "@chakra-ui/react";
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import Form from "../../../../components/MuComponents/Form/Form";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
 export const InterestGroupCreate = (props: Props) => {
     const [input, setInput] = useState("");
     const toast = useToast();
+	const navigate = useNavigate();
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = () => {
 		if (input !== ''){
-			e.preventDefault();
-			setInput('')
 			createInterestGroups(input, toast);
+			setInput('')
 		}
 		else {
 			console.log("IG name cannot be blank")
 		}
+		navigate("/interest-groups");
     };
+
+	const inputFields = [
+        {
+            content: "IG Name",
+            inputType: "text",
+            input: input,
+            setInput: setInput
+        },
+	]
 
     return (
         <div className={styles.container}>
-            <form action="" onSubmit={handleSubmit} className={styles.form}>
-                <h1 className={styles.text}>Create a new Interest Group</h1>
-                <br />
-				<center className={styles.inputContainer}>
-					<Textfield
-						content={"IG Name"}
-						inputType={"text"}
-						setInput={setInput}
-						input={input}
-						/>
-				</center>
-				<MuButton text={"Submit"} className={styles.btn} onClick={handleSubmit} />
-            </form>
+            <Form
+                title={"Create a new Interest Group"}
+                handleSubmitClick={handleSubmit}
+                inputFields={inputFields}
+                cancelPath={"/interest-groups"}
+            />
         </div>
     );
 };
