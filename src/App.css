@@ -25,3 +25,16 @@
 ::-webkit-scrollbar {
     display: none;
 }
+
+:root {
+	--Primary: #014BB2;
+	--PrimaryLight: #CCDBF0;
+	--Secondary: #9719CD;
+	--SecondaryGrey: #404040;
+	--DarkGreyHeading: #404D61;
+	--Dark: #1A1A1A;
+	--Light: #F5F7F9;
+	--White: #FFFFFF;
+	--Blue800: #00204C;
+	--InputDefaultBackground: #EFF1F9;
+}
