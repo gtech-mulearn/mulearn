@@ -105,7 +105,11 @@ const CampusLogoGenerator = () => {
                 : yipLogoImages[yipLogoVariant]
             }
             className={
-              logoType === "MuLearn" ? "w-2/3" : "w-1/2 top-6 absolute"
+              logoType === "MuLearn"
+                ? "w-2/3"
+                : yipLogoVariant === "Dark"
+                ? "ml-4 w-3/5 top-6 absolute"
+                : "w-1/2 top-6 absolute"
             }
             alt="Logo"
           />
@@ -162,7 +166,11 @@ const CampusLogoGenerator = () => {
                   : yipLogoImages[yipLogoVariant]
               }
               className={
-                logoType === "MuLearn" ? "w-2/3" : "w-1/2 top-6 absolute"
+                logoType === "MuLearn"
+                  ? "w-2/3"
+                  : yipLogoVariant === "Dark"
+                  ? "ml-4 w-3/5 top-6 absolute"
+                  : "w-1/2 top-6 absolute"
               }
               alt="Logo"
             />
