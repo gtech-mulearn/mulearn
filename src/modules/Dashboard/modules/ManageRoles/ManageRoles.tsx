@@ -1,29 +1,25 @@
 import { useEffect, useState } from "react";
 import Pagination from "../../../../components/MuComponents/Pagination/Pagination";
-import { Blank } from "../../../../components/MuComponents/Table/Blank";
 import Table from "../../../../components/MuComponents/Table/Table";
 import THead from "../../../../components/MuComponents/Table/THead";
 import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
-
-import { useToast } from "@chakra-ui/react";
-
-import { getRolesData } from "./manageRolesApi";
+import { getManageRoles } from "./apis";
+import { Blank } from "../../../../components/MuComponents/Table/Blank";
+import { roles } from "../../../../services/types";
 import { hasRole } from "../../../../services/common_functions";
 import { useNavigate } from "react-router-dom";
-import { roles } from "../../../../services/types";
+import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import { AiOutlinePlusCircle } from "react-icons/ai";
+import styles from "./Manageroles.module.css";
 import { dashboardRoutes } from "../../../../services/urls";
-type Props = {};
 
-const ManageRoles = (props: Props) => {
-    const [data, setData] = useState<any>([]);
+function ManageRoles() {
+    const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
-
     const navigate = useNavigate();
-
-    const toast = useToast();
 
     const columnOrder = [
         "id",
@@ -45,43 +41,63 @@ const ManageRoles = (props: Props) => {
         "Created At"
     ];
 
-    useEffect(() => {
-        if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
-
-        getRolesData(setData, 1, perPage, setTotalPages, "", "");
-    }, []);
-
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getRolesData(setData, nextPage, perPage);
+        getManageRoles(setData, nextPage, perPage);
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getRolesData(setData, prevPage, perPage);
+        getManageRoles(setData, prevPage, perPage);
     };
 
+    useEffect(() => {
+        if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
+
+        getManageRoles(setData, 1, perPage, setTotalPages, "", "");
+    }, []);
+
     const handleSearch = (search: string) => {
-        getRolesData(setData, 1, perPage, setTotalPages, search, "");
+        setCurrentPage(1);
+        getManageRoles(setData, 1, perPage, setTotalPages, search, "");
+    };
+
+    const handleEdit = (id: string | number | boolean) => {
+        console.log(id);
+        navigate(`/manage-roles/edit/${id}`);
+    };
+
+    const handleDelete = (id: string | number | boolean) => {
+        console.log(id);
+        navigate(`/manage-roles/delete/${id}`);
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
+        setCurrentPage(1);
         setPerPage(selectedValue);
-        getRolesData(setData, 1, selectedValue, setTotalPages, "", "");
+        getManageRoles(setData, 1, selectedValue, setTotalPages, "", "");
     };
-    const handleDelete = () => {
-        console.log("delete user");
-        //  navigate("/manage-users/delete");
+
+    const handleCreate = () => {
+        navigate("/manage-roles/create");
     };
+
     const handleIconClick = (column: string) => {
         if (sort === column) {
             setSort(`-${column}`);
-            getRolesData(data, 1, perPage, setTotalPages, "", sort);
+            getManageRoles(
+                setData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                `-${column}`
+            );
         } else {
             setSort(column);
-            getRolesData(data, 1, perPage, setTotalPages, "", sort);
+            getManageRoles(setData, 1, perPage, setTotalPages, "", column);
         }
 
         console.log(`Icon clicked for column: ${column}`);
@@ -89,10 +105,19 @@ const ManageRoles = (props: Props) => {
 
     return (
         <>
+            <div className={styles.createBtnContainer}>
+                <MuButton
+                    className={styles.createBtn}
+                    text={"Create"}
+                    icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
+                    onClick={handleCreate}
+                />
+            </div>
             <TableTop
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
-                CSV={dashboardRoutes.getRolesData}
+                CSV={dashboardRoutes.getRolesList}
+                // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
             />
             {data && (
                 <Table
@@ -100,6 +125,9 @@ const ManageRoles = (props: Props) => {
                     page={currentPage}
                     perPage={perPage}
                     columnOrder={columnOrder}
+                    id={["id"]}
+                    onEditClick={handleEdit}
+                    onDeleteClick={handleDelete}
                 >
                     <THead
                         columnOrder={columnOrder}
@@ -118,6 +146,6 @@ const ManageRoles = (props: Props) => {
             )}
         </>
     );
-};
+}
 
 export default ManageRoles;
