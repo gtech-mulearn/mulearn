@@ -98,8 +98,7 @@
 }
 
 .createBtn:hover {
-    background: var(--PrimaryLight);
-    color: var(--Primary);
+    background: var(--Blue800);
 }
 
 .createBtnContainer {
