@@ -33,42 +33,12 @@ function CreateOrganization() {
 
   const [inputName, setInputName] = useState('');
   const [inputCode, setInputCode] = useState('');
-
   const [selectedCountry, setSelectedCountry] = useState('');
-  const [countryData, setCountryData] = useState<any[]>([]);
-
   const [selectedState,setSelectedState] = useState('')
-  const [statesData,setStatesData] = useState<any[]>([])
-
   const [selectedZone,setSelectedZone] = useState('')
-  const [zonesData,setZonesData] = useState<any[]>([])
+  const [selectedDistrict,setSelectedDistrict] = useState('')
 
-  function camelCase(str:string) {
-    return str.replace(/\b[A-Z]+\b/g, (match) => match.charAt(0) + match.slice(1).toLowerCase());
-  }
 
-  useEffect(() => {
-    return () => {
-      if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate('/404');
-  
-      console.log("selected-country:",selectedCountry)
-      getCountry(setCountryData);
-    }
-  }, []);
-
-  useEffect(()=>{
-    if(selectedCountry !== ''){
-      console.log("now you can select states")
-      getStates(camelCase(selectedCountry),setStatesData)
-    }
-  },[selectedCountry])
-
-  useEffect(()=>{
-    if(selectedState !== ''){
-      console.log("you can select zone")
-      getZones(camelCase(selectedCountry),camelCase(selectedState),setZonesData)
-    }
-  },[selectedState])
 
   const orgType = "College"
 
@@ -79,10 +49,10 @@ function CreateOrganization() {
         inputName,
         inputCode,
         "KTU",
-        "India",
-        "Kerala",
-        "Kozhikode",
-        "North",
+        selectedCountry,
+        selectedState,
+        selectedDistrict,
+        selectedZone,
         orgType,
         toast);
       navigate('/organizations');
@@ -103,15 +73,11 @@ function CreateOrganization() {
         return (
           <CollegeForm
             isCreate = {isCreate}
-            countryData={countryData}
-            districtsData={districts.districts}
-            statesData = {statesData}
-            zoneData = {zonesData}
 
-            selectedCountry={selectedCountry}
-            setSelectCountry={setSelectedCountry}
-            setSelectState = {setSelectedState}
-            setSelectZone = {setSelectedZone}
+            setSelectedCountry = {setSelectedCountry}
+            setSelectedState = {setSelectedState}
+            setSelectedZone = {setSelectedZone}
+            setSelectedDistrict = {setSelectedDistrict}
           />
         );
       case 'Companies':

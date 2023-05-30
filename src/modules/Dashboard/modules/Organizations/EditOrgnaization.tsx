@@ -39,6 +39,7 @@ function EditOrgnaization() {
     const [selectedCountry, setSelectedCountry] = useState('');
     const [selectedState, setSelectedState] = useState('');
     const [selectedZone, setSelectedZone] = useState('');
+    const [selectedDistrict, setSelectedDistrict] = useState('');
 
     const [countryData, setCountryData] = useState<any[]>([]);
     const [selectCountry,setSelectCountry] = useState("")
@@ -81,13 +82,16 @@ function EditOrgnaization() {
           return (
             <CollegeForm
               isCreate = {false}
-              countryData={countries.countries}
-              districtsData={districts.districts}
-              statesData = {states.states}
-              zoneData = {zones.zones}
+              
+              setSelectedCountry={setSelectedCountry}
+              setSelectedState={setSelectedState}
+              setSelectedZone={setSelectedZone}
+              setSelectedDistrict={setSelectedDistrict}
+
               selectedCountry={selectedCountry}
               selectedState={selectedState}
               selectedZone={selectedZone}
+              selectedDistrict={selectedDistrict}
             />
           );
         case 'Companies':

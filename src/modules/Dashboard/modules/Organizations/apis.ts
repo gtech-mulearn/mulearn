@@ -99,12 +99,31 @@ export const getZones = async (country:string,state:string,setZonesData:any) => 
     try {
         await privateGateway.get(`${organizationRoutes.getLocation}/${country}/${state}/zone`)
         .then(response=>{
-            console.log("zones-data",response.data.response.data.zones)
+            console.log("zones-data",response.data.response.data.states)
             return response.data
         })
         .then(data => {
-            const states:CountryProps[] = data.response.data.zones;
+            const states:CountryProps[] = data.response.data.states;
             setZonesData(states);
+        })
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+}
+
+export const getDistricts = async (country:string,state:string,zone:string,setDistrictsData:any) => {
+    try {
+        await privateGateway.get(`${organizationRoutes.getLocation}/${country}/${state}/${zone}/district`)
+        .then(response=>{
+            console.log("districts-data",response.data.response.data.states)
+            return response.data
+        })
+        .then(data => {
+            const districts:CountryProps[] = data.response.data.states;
+            setDistrictsData(districts);
         })
     } catch (err: unknown) {
         const error = err as AxiosError;
