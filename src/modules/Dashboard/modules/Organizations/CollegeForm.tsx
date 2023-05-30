@@ -1,7 +1,6 @@
 import { useState } from "react";
-import Dropdown from "../../../../components/MuComponents/Dropdown/Dropdown";
+import Select, { ActionMeta } from "react-select";
 import "./Organizations.scss";
-import Select, { ActionMeta, GroupBase } from "react-select";
 
 interface Option {
   value: string;
@@ -11,8 +10,13 @@ interface Option {
 interface CollegeFormProps {
   isCreate: boolean;
   countryData: Option[];
-  selectCountry: string;
-  setSelectCountry: React.Dispatch<React.SetStateAction<string>>;
+  districtsData: Option[];
+  statesData: Option[];
+  zoneData: Option[];
+
+  setSelectCountry: any;
+  setSelectState: any;
+  setSelectZone: any;
 
   selectedCountry?: string;
   selectedState?: string;
@@ -26,23 +30,48 @@ const CollegeForm = ({ ...props }: CollegeFormProps) => {
   const [zone, setZone] = useState("");
   const [affiliatedUniversity, setAffiliatedUniversity] = useState("");
 
-  const handleCountryChange = (option: Option | null) => {
+  const handleCountryChange = (option: Option | null, action: ActionMeta<Option>) => {
     if (option) {
       setCountry(option);
+      props.setSelectCountry(option.value)
     }
   };
 
-  const handleStateChange = (option: Option | null) => {
+  const handleStateChange = (option: Option | null, action: ActionMeta<Option>) => {
     if (option) {
       setState(option);
+      props.setSelectState(option.value)
     }
   };
-  
 
-  const getDefaultValue = () => {
-    console.log("country:",props.selectedCountry)
-    if (!props.isCreate && props.selectedCountry) {
-      const defaultOption = props.countryData.find((option) => option.label.toUpperCase() === props.selectedCountry ? option.label : null);
+  const getCountryDefaultValue = () => {
+    if (!props.isCreate) {
+      const defaultOption = props.countryData.find(
+        (option) =>
+          option.label.toUpperCase() === props.selectedCountry?.toUpperCase()
+      );
+      return defaultOption || null;
+    }
+    return null;
+  };
+
+  const getStatesDefaultValue = () => {
+    if (!props.isCreate) {
+      const defaultOption = props.statesData.find(
+        (option) =>
+          option.label.toUpperCase() === props.selectedState?.toUpperCase()
+      );
+      return defaultOption || null;
+    }
+    return null;
+  };
+
+  const getZonesDefaultValue = () => {
+    if (!props.isCreate) {
+      const defaultOption = props.zoneData.find(
+        (option) =>
+          option.label.toUpperCase() === props.selectedZone?.toUpperCase()
+      );
       return defaultOption || null;
     }
     return null;
@@ -61,28 +90,33 @@ const CollegeForm = ({ ...props }: CollegeFormProps) => {
       <div className="inputfield_container">
         <p>Country</p>
         <Select
-          defaultValue={getDefaultValue}
+          defaultValue={
+            props.isCreate ? country : getCountryDefaultValue()
+          }
           onChange={handleCountryChange}
           options={props.countryData}
         />
       </div>
       <div className="inputfield_container">
         <p>State</p>
-        <Select
-          options={props.statesData}
-        />
+        <Select 
+          defaultValue={
+            props.isCreate ? state : getStatesDefaultValue()
+          }
+          onChange={handleStateChange}
+          options={props.statesData} />
       </div>
       <div className="inputfield_container">
         <p>District</p>
-        <Select
-          options={props.districtsData}
-        />
+        <Select options={props.districtsData} />
       </div>
       <div className="inputfield_container">
         <p>Zone</p>
-        <Select
-          options={props.zoneData}
-        />
+        <Select 
+          defaultValue={getZonesDefaultValue()}
+          onChange={handleCountryChange}
+          options={props.zoneData} 
+         />
       </div>
     </>
   );

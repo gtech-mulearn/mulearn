@@ -118,7 +118,13 @@ function Organizations() {
 
     const handleDelete = (id: string) => {
         console.log("code:",id)
-        deleteOrganization(id,toast)
+        const confirmed = confirm("Are you sure you want to delete?");
+        if(confirmed){
+            deleteOrganization(id,toast)
+            getOrganizations(activeTab,setData, 1, perPage, setTotalPages, "", "");
+        }else{
+            console.log("cancelled")
+        }
     }
 
     const handleAddClickClose = ()=> {
@@ -145,7 +151,7 @@ function Organizations() {
                                columnOrder={columns}
                                id={['code']} 
                                onEditClick={handleEdit}
-                               onDeleteClick={()=>handleDelete}                
+                               onDeleteClick={handleDelete}                
                                >
                                <THead
                                    columnOrder={columns}

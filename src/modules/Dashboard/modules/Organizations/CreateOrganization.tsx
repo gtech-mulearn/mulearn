@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import Textfield from '../../../../components/MuComponents/TextField/Textfield';
 import { useNavigate } from 'react-router-dom';
 import { MuButtonLight } from '../../../../components/MuComponents/MuButtons/MuButton';
@@ -8,7 +8,7 @@ import { hasRole } from '../../../../services/common_functions';
 import { roles } from '../../../../services/types';
 import './Organizations.scss';
 import { MuButton } from '../../../../components/MuComponents/MuButtons/MuButton';
-import { getCountry } from './apis';
+import { getCountry,getStates,getZones } from './apis';
 import { useLocation } from 'react-router-dom';
 import { useToast } from "@chakra-ui/react";
 
@@ -33,14 +33,44 @@ function CreateOrganization() {
 
   const [inputName, setInputName] = useState('');
   const [inputCode, setInputCode] = useState('');
+
   const [selectedCountry, setSelectedCountry] = useState('');
   const [countryData, setCountryData] = useState<any[]>([]);
 
-  useEffect(() => {
-    if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate('/404');
+  const [selectedState,setSelectedState] = useState('')
+  const [statesData,setStatesData] = useState<any[]>([])
 
-    getCountry(setCountryData);
+  const [selectedZone,setSelectedZone] = useState('')
+  const [zonesData,setZonesData] = useState<any[]>([])
+
+  function camelCase(str:string) {
+    return str.replace(/\b[A-Z]+\b/g, (match) => match.charAt(0) + match.slice(1).toLowerCase());
+  }
+
+  useEffect(() => {
+    return () => {
+      if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate('/404');
+  
+      console.log("selected-country:",selectedCountry)
+      getCountry(setCountryData);
+    }
   }, []);
+
+  useEffect(()=>{
+    if(selectedCountry !== ''){
+      console.log("now you can select states")
+      getStates(camelCase(selectedCountry),setStatesData)
+    }
+  },[selectedCountry])
+
+  useEffect(()=>{
+    if(selectedState !== ''){
+      console.log("you can select zone")
+      getZones(camelCase(selectedCountry),camelCase(selectedState),setZonesData)
+    }
+  },[selectedState])
+
+  const orgType = "College"
 
   const handleSubmit = (e: any) => {
 			e.preventDefault();
@@ -53,8 +83,9 @@ function CreateOrganization() {
         "Kerala",
         "Kozhikode",
         "North",
-        "College",
+        orgType,
         toast);
+      navigate('/organizations');
   };
 
   function parseFunctionString(functionString: string) {
@@ -72,28 +103,31 @@ function CreateOrganization() {
         return (
           <CollegeForm
             isCreate = {isCreate}
-            countryData={countries.countries}
+            countryData={countryData}
             districtsData={districts.districts}
-            statesData = {states.states}
-            zoneData = {zones.zones}
-            selectCountry={selectedCountry}
+            statesData = {statesData}
+            zoneData = {zonesData}
+
+            selectedCountry={selectedCountry}
             setSelectCountry={setSelectedCountry}
+            setSelectState = {setSelectedState}
+            setSelectZone = {setSelectedZone}
           />
         );
       case 'Companies':
         return (
           <CompaniesForm
             countryData={countryData}
-            selectCountry={selectCountry}
-            setSelectCountry={setSelectCountry}
+            selectCountry={selectedCountry}
+            setSelectCountry={setSelectedCountry}
           />
         );
       case 'Communities':
         return (
           <CommunitiesForm
             countryData={countryData}
-            selectCountry={selectCountry}
-            setSelectCountry={setSelectCountry}
+            selectCountry={selectedCountry}
+            setSelectCountry={setSelectedCountry}
           />
         );
       default:

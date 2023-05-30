@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { hasRole } from '../../../../services/common_functions';
 import { roles } from '../../../../services/types';
 import { getInfo } from './apis';
+import { getCountry } from './apis';
 import Textfield from '../../../../components/MuComponents/TextField/Textfield';
 
 import CollegeForm from './CollegeForm';
@@ -38,7 +39,9 @@ function EditOrgnaization() {
     const [selectedCountry, setSelectedCountry] = useState('');
     const [selectedState, setSelectedState] = useState('');
     const [selectedZone, setSelectedZone] = useState('');
+
     const [countryData, setCountryData] = useState<any[]>([]);
+    const [selectCountry,setSelectCountry] = useState("")
   
     useEffect(() => {
       if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate('/404');
@@ -56,6 +59,12 @@ function EditOrgnaization() {
         console.error(error);
       })
     }, []);
+
+    useEffect(() => {
+      if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate('/404');
+  
+      getCountry(setCountryData);
+    }, []);
   
     function parseFunctionString(functionString: string) {
       return new Function(`return ${functionString}`)();
@@ -71,6 +80,7 @@ function EditOrgnaization() {
         case 'Colleges':
           return (
             <CollegeForm
+              isCreate = {false}
               countryData={countries.countries}
               districtsData={districts.districts}
               statesData = {states.states}

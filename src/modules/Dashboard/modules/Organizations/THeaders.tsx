@@ -34,11 +34,15 @@ export const editableCompaniesColumnNames = [
 ];
 
 export const columnsCommunities = [
+    "title",
+    "code",
     "state",
     "zone"
 ];
 
 export const editableCommunityColumnNames = [
+    "Title",
+    "Code",
     "State",
     "Zone"
 ];

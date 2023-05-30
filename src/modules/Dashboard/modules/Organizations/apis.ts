@@ -28,7 +28,6 @@ export const getOrganizations = async (
         })
         .then(data => {
             if(activeTab === "Colleges"){
-                console.log(data.response.data.colleges)
                 setData(data.response.data.colleges);
                 setTotalPages(data.response.pagination.colleges.totalPages);
             }else if (activeTab === "Companies"){
@@ -60,14 +59,52 @@ interface CountryProps {
 
 export const getCountry = async (setCountryData:any) => {
     try {
-        await privateGateway.get(organizationRoutes.getCountry)
+        await privateGateway.get(organizationRoutes.getLocation+"/country")
         .then(response=>{
+            console.log("country-data",response.data.response.data.countries)
             return response.data
         })
         .then(data => {
-            const countries:CountryProps[] = data.response.data;
-            const countryNames = countries.map((country) => country.name);
-            setCountryData(countryNames);
+            const countries:CountryProps[] = data.response.data.countries;
+            setCountryData(countries);
+        })
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+}
+
+export const getStates = async (country:string,setStatesData:any) => {
+    try {
+        await privateGateway.get(`${organizationRoutes.getLocation}/${country}/states`)
+        .then(response=>{
+            console.log("states-data",response.data.response.data.states)
+            return response.data
+        })
+        .then(data => {
+            const states:CountryProps[] = data.response.data.states;
+            setStatesData(states);
+        })
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+}
+
+export const getZones = async (country:string,state:string,setZonesData:any) => {
+    try {
+        await privateGateway.get(`${organizationRoutes.getLocation}/${country}/${state}/zone`)
+        .then(response=>{
+            console.log("zones-data",response.data.response.data.zones)
+            return response.data
+        })
+        .then(data => {
+            const states:CountryProps[] = data.response.data.zones;
+            setZonesData(states);
         })
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -87,16 +124,17 @@ export const createOrganization = async (
     zone:string,
     orgType:string, 
     toast: (options?: UseToastOptions | undefined) => ToastId,) => {
+
 	try {
         const response = await privateGateway.post(organizationRoutes.postAddOrganization, {
 			"title": title,
             "code":code,
-            "affiliation":affiliation,
-            "country":country,
             "state":state,
-            "district":district,
             "zone":zone,
-            "orgType" : "College"
+            "district":district,
+            "country":country,
+            "affiliation":affiliation,
+            "orgType" : orgType
 		});
 		toast({
 			title: "Organizations created",
@@ -106,6 +144,8 @@ export const createOrganization = async (
 		});
         const message: any = response?.data;
 		console.log(message);
+        console.log("created a new "+orgType)
+
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

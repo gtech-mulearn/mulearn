@@ -41,7 +41,7 @@ export const dashboardRoutes = {
 export const organizationRoutes = {
     getOrganizationsAll: "/api/v1/organisation/institutes/info/all_inst",
     getCompany: "/api/v1/organisation/institutes/show/Company",
-    getCountry: "/api/v1/location/country",
+    getLocation: "/api/v1/location",
     postAddOrganization: "/api/v1/organisation/institutes/add",
     deleteOrgnaization: "/api/v1/organisation/institutes/",
     postGetInfo: "/api/v1/organisation/institutes/info/"
