@@ -19,7 +19,13 @@ import {
 import { InterestGroupCreate } from "./modules/Dashboard/modules/InterestGroup/InterestGroupCreate";
 import { Tasks } from "./modules/Dashboard/modules/Tasks/Tasks";
 import CreateOrganization from "./modules/Dashboard/modules/Organizations/CreateOrganization";
+import ManageUsersCreate from "./modules/Dashboard/modules/ManageUsers/ManageUsersCreate";
+import ManageUsersDelete from "./modules/Dashboard/modules/ManageUsers/ManageUsersDelete";
+import ManageUsersEdit from "./modules/Dashboard/modules/ManageUsers/ManageUsersEdit";
 import ManageRoles from "./modules/Dashboard/modules/ManageRoles/ManageRoles";
+import ManageRolesEdit from "./modules/Dashboard/modules/ManageRoles/ManageRolesEdit";
+import ManageRolesDelete from "./modules/Dashboard/modules/ManageRoles/ManageRolesDelete";
+import ManageRolesCreate from './modules/Dashboard/modules/ManageRoles/ManageRolesCreate';
 import InterestGroupEdit from "./modules/Dashboard/modules/InterestGroup/InterestGroupEdit";
 import EditOrgnaization from "./modules/Dashboard/modules/Organizations/EditOrgnaization";
 import UrlShortener from "./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener";
@@ -80,18 +86,42 @@ const router = createBrowserRouter([
                     },
                     { path: "campus-details", element: <CampusStudentList /> },
                     { path: "manage-users", element: <ManageUsers /> },
+                    {
+                        path: "manage-users/create",
+                        element: <ManageUsersCreate />
+                    },
+                    {
+                        path: "manage-users/delete/:id",
+                        element: <ManageUsersDelete />
+                    },
+                    {
+                        path: "manage-users/edit/:id",
+                        element: <ManageUsersEdit />
+                    },
                     { path: "manage-roles", element: <ManageRoles /> },
+                    {
+                        path: "manage-roles/edit/:id",
+                        element: <ManageRolesEdit />
+                    },
+                    {
+                        path: "manage-roles/delete/:id",
+                        element: <ManageRolesDelete />
+                    },
+                    {
+                        path: "manage-roles/create",
+                        element: <ManageRolesCreate />
+                    },
                     { path: "organizations", element: <Organizations /> },
                     { path: "tasks", element: <Tasks /> },
-                    { 
-						path: "tasks/create", 
-						element: <TaskCreate /> 
-					},
-                    { 
-						path: "tasks/edit/:id", 
-						element: <TaskEdit /> 
-					},
-                    { path: "url-shortener", element: <UrlShortener /> },
+                    {
+                        path: "tasks/create",
+                        element: <TaskCreate />
+                    },
+                    {
+                        path: "tasks/edit/:id",
+                        element: <TaskEdit />
+                    },
+                    { path: "url-shortener", element: <UrlShortener /> }
                 ]
             }
         ]
