@@ -1,74 +1,74 @@
 import { useEffect, useState } from "react";
-import Form from "../../../../components/MuComponents/Form/Form";
 import { editInterestGroups, getIGDetails } from "./apis";
 import { useNavigate, useParams } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
+import styles from "../../../../components/MuComponents/FormikComponents/form.module.css";
+import { Form, Formik } from "formik";
+import * as Yup from "yup";
+import { FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
+import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 
 type Props = {};
 
 const InterestGroupEdit = (props: Props) => {
-    const [input1, setInput1] = useState("");
-    const [input2, setInput2] = useState("");
-    const [input3, setInput3] = useState("");
+    const [name, setName] = useState("");
+    const { id } = useParams();
+    const navigate = useNavigate();
+	const toast = useToast();
+    useEffect(() => {
+		getIGDetails(id, setName);
+    }, []);
 
-	useEffect(() => {
-		getIGDetails(id, setInput1);
-	}, [])
-	
-
-	const inputFields = [
-        {
-            content: "IG Name",
-            inputType: "text",
-            input: input1,
-            setInput: setInput1
-        },
-        // {
-        //     content: "1234",
-        //     inputType: "text",
-        //     input: input2,
-        //     setInput: setInput2
-        // },
-        // {
-        //     content: "8553",
-        //     inputType: "text",
-        //     input: input3,
-        //     setInput: setInput3
-        // }
-    ];
-	// const dropdownFields = [
-    //     {
-    //         contents: ["IG Name", "1", "2", "3"],
-    //         input: input2,
-    //         setInput: setInput2,
-    //         label: "Select Name",
-    //         default: "string"
-    //     },
-    //     {
-    //         contents: ["IG Name", "1", "2", "3"],
-    //         input: input3,
-    //         setInput: setInput3,
-    //         label: "Select test",
-    //         default: "select from following"
-    //     }
-    // ];
-	const {id} = useParams();
-	const navigate = useNavigate();
-	const handleSubmit = () => {
-		editInterestGroups(input1, id);
-		navigate("/interest-groups");
-    };
     return (
-        <div>
-            <Form
-				title={"Edit Name of Interest Group"}
-				handleSubmitClick={handleSubmit}
-				inputFields={inputFields} 
-				cancelPath={"/interest-groups"}
-				// dropdownFields={dropdownFields}
-            />
+        <div className={styles.external_container}>
+            <div className={styles.container}>
+                <h1 className={styles.text}>IG Edit Page</h1>
+                <Formik
+                    enableReinitialize={true}
+                    initialValues={{
+                        igName: name
+                    }}
+                    validationSchema={Yup.object({
+                        igName: Yup.string()
+                            .max(30, "Must be 30 characters or less")
+                            .required("Required")
+                    })}
+                    onSubmit={values => {
+                        console.log(values.igName);
+                        editInterestGroups(values.igName, id);
+                        toast({
+                            title: "Interest Group created",
+                            status: "success",
+                            duration: 3000,
+                            isClosable: true
+                        });
+                        navigate("/interest-groups");
+                    }}
+                >
+                    <Form className={styles.inputContainer}>
+                        <FormikTextInput
+                            label="IG Name"
+                            name="igName"
+                            type="text"
+                            placeholder="Enter a name"
+                        />
+                        <div className={styles.btn_container}>
+                            <MuButton
+                                text={"Decline"}
+                                className={styles.btn_cancel}
+                                onClick={() => {
+                                    navigate("/interest-groups");
+                                }}
+                            />
+                            <button type="submit" className={styles.btn_submit}>
+                                Confirm
+                            </button>
+                        </div>
+                    </Form>
+                </Formik>
+            </div>
         </div>
     );
 };
 
 export default InterestGroupEdit;
-
