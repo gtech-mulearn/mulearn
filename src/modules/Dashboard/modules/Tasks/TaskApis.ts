@@ -3,6 +3,7 @@ import { privateGateway } from "../../../../services/apiGateways";
 import { dashboardRoutes } from "../../../../services/urls";
 import { parse } from "path";
 import { useState } from "react";
+import { ToastId, UseToastOptions } from "@chakra-ui/react";
 
 export const getTasks = async (
     setData: any,
@@ -114,6 +115,30 @@ export const createTask = async (
 				ig_id: parseInt(ig_id)
             }
         );
+        const message: any = response?.data;
+        console.log(message);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
+
+export const deleteTask = async (
+    id: string | undefined,
+    toast: (options?: UseToastOptions | undefined) => ToastId
+) => {
+    try {
+        const response = await privateGateway.patch(
+            dashboardRoutes.getTasksData + 'delete/' + id + "/"
+        );
+        toast({
+            title: "Interest Group deleted",
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
         const message: any = response?.data;
         console.log(message);
     } catch (err: unknown) {
