@@ -8,6 +8,7 @@ import stripes from "../../images/campuslogo/stripes.svg";
 
 import yipLogoRed from "../../images/yip_logo/yip-logo-red.svg";
 import yipLogoBlack from "../../images/yip_logo/yip-logo-black.svg";
+import yipLogoDark from "../../images/yip_logo/yip-logo-dark.svg";
 
 const CampusLogoGenerator = () => {
   useEffect(() => {
@@ -28,10 +29,22 @@ const CampusLogoGenerator = () => {
   const MAX_CHARS = 15;
   const logoTypes = ["MuLearn", "YIP"];
   const muLogoVariants = ["Profile Pic", "Transparent Bg"];
-  const yipLogoVariants = ["Black", "Red"];
+  const yipLogoVariants = ["Black", "Red", "Dark"];
   const logoColors = ["#ffffff", "#000000"];
   const logoBgColors = ["#f5365c", "#172b4d", "#fb6340", "#12bbda", "#5e72e4"];
   const fileTypes = ["PNG", "SVG"];
+
+  const yipLogoImages = {
+    Black: yipLogoBlack,
+    Red: yipLogoRed,
+    Dark: yipLogoDark,
+  };
+
+  const yipLogoTextColors = {
+    Black: "#262626",
+    Red: "#FA5252",
+    Dark: "#ffffff",
+  };
 
   function handleTextChange(event) {
     const value = event.target.value;
@@ -76,6 +89,8 @@ const CampusLogoGenerator = () => {
               ? muLogoVariant === "Transparent Bg"
                 ? { backgroundColor: "#00000000", color: logoColor }
                 : { backgroundColor: logoBgColor, color: "#ffffff" }
+              : yipLogoVariant === "Dark"
+              ? { backgroundColor: "#262626", color: "#ffffff" }
               : { backgroundColor: "#ffffff", color: "#000" }
           }
         >
@@ -87,11 +102,11 @@ const CampusLogoGenerator = () => {
                   : logoColor === "#ffffff"
                   ? logoWhite
                   : logoBlack
-                : yipLogoVariant === "Black"
-                ? yipLogoBlack
-                : yipLogoRed
+                : yipLogoImages[yipLogoVariant]
             }
-            className={logoType === "MuLearn" ? "w-2/3" : "w-1/2 top-6 absolute"}
+            className={
+              logoType === "MuLearn" ? "w-2/3" : "w-1/2 top-6 absolute"
+            }
             alt="Logo"
           />
 
@@ -112,7 +127,7 @@ const CampusLogoGenerator = () => {
             style={
               logoType === "YIP"
                 ? {
-                    color: yipLogoVariant === "Black" ? "#262626" : "#FA5252",
+                    color: yipLogoTextColors[yipLogoVariant],
                     fontFamily: "Nasa",
                   }
                 : {}
@@ -131,6 +146,8 @@ const CampusLogoGenerator = () => {
                 ? muLogoVariant === "Transparent Bg"
                   ? { backgroundColor: "#00000000", color: logoColor }
                   : { backgroundColor: logoBgColor, color: "#ffffff" }
+                : yipLogoVariant === "Dark"
+                ? { backgroundColor: "#262626", color: "#ffffff" }
                 : { backgroundColor: "#ffffff", color: "#000" }
             }
           >
@@ -142,9 +159,7 @@ const CampusLogoGenerator = () => {
                     : logoColor === "#ffffff"
                     ? logoWhite
                     : logoBlack
-                  : yipLogoVariant === "Black"
-                  ? yipLogoBlack
-                  : yipLogoRed
+                  : yipLogoImages[yipLogoVariant]
               }
               className={
                 logoType === "MuLearn" ? "w-2/3" : "w-1/2 top-6 absolute"
@@ -167,7 +182,7 @@ const CampusLogoGenerator = () => {
               style={
                 logoType === "YIP"
                   ? {
-                      color: yipLogoVariant === "Black" ? "#262626" : "#FA5252",
+                      color: yipLogoTextColors[yipLogoVariant],
                       fontFamily: "Nasa",
                     }
                   : {}
@@ -180,7 +195,7 @@ const CampusLogoGenerator = () => {
       </div>
 
       {/* Controls */}
-      <form className="w-full sm:w-1/2 md:w-1/3 sm:max-w-lg h-screen p-8 flex flex-col">
+      <form className="w-full sm:w-1/2 md:w-1/3 sm:max-w-lg sm:h-screen p-8 flex flex-col">
         <label class="block mb-3 text-sm font-medium">Campus Code</label>
         <input
           type="text"
