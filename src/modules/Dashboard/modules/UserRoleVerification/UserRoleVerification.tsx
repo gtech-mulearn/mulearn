@@ -41,8 +41,9 @@ function UsersRoleVerification() {
         "ID",
         "User Id",
         "Role Title",
+        "Role ID",
         "Verified",
-        "Role ID"
+        
     ];
 
     const handleNextClick = () => {
