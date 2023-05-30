@@ -34,7 +34,6 @@ const InterestGroupEdit = (props: Props) => {
                             .required("Required")
                     })}
                     onSubmit={values => {
-                        console.log(values.igName);
                         editInterestGroups(values.igName, id);
                         toast({
                             title: "Interest Group created",

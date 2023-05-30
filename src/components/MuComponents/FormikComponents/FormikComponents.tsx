@@ -16,3 +16,16 @@ export const FormikTextInput = ({ label, ...props }:any) => {
         </div>
     );
 };
+
+export const FormikSelect = ({ label, ...props }:any) => {
+    const [field, meta] = useField(props);
+    return (
+        <div className={styles.inputBox}>
+            <span>{label}</span>
+            <select {...field} {...props} />
+            {meta.touched && meta.error ? (
+                <div className="error">{meta.error}</div>
+            ) : null}
+        </div>
+    );
+};

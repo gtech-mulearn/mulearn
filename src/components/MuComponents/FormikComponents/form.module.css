@@ -32,6 +32,7 @@
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 10px;
+	color: red;
 }
 
 .textfield {
@@ -138,4 +139,8 @@
 	.inputBox {
 		width: 100%;
 	}
+}
+
+.inputBox select {
+	color: black;
 }
