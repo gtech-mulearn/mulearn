@@ -34,18 +34,12 @@ export const getInterestGroups = async (
 
 export const createInterestGroups = async (
     name: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
         const response = await privateGateway.post(dashboardRoutes.getIgData, {
             name: name
         });
-        toast({
-            title: "Interest Group created",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
+        
         const message: any = response?.data;
         console.log(message);
     } catch (err: unknown) {
@@ -55,7 +49,8 @@ export const createInterestGroups = async (
         }
     }
 };
-export const editInterestGroups = async (name: string, id: any) => {
+
+export const editInterestGroups = async (name: string, id: string | undefined) => {
     try {
         const response = await privateGateway.put(
             dashboardRoutes.getIgData + id + "/",
@@ -85,6 +80,30 @@ export const getIGDetails = async (
         console.log(message);
 		console.log(message.response.interestGroup.name);
 		setInput(message.response.interestGroup.name);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
+
+export const deleteInterestGroups = async (
+    id: string | undefined,
+    toast: (options?: UseToastOptions | undefined) => ToastId
+) => {
+    try {
+        const response = await privateGateway.delete(
+            dashboardRoutes.getIgData + id + "/"
+        );
+		toast({
+            title: "Interest Group deleted",
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
+        const message: any = response?.data;
+        console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

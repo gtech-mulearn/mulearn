@@ -23,7 +23,8 @@
     "react-select": "^5.7.3",
     "react-spinners": "^0.13.8",
     "sass": "^1.62.1",
-    "title-case": "^3.0.3"
+    "title-case": "^3.0.3",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@types/node": "^18.15.13",

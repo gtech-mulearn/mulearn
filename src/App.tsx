@@ -23,6 +23,9 @@ import ManageRoles from "./modules/Dashboard/modules/ManageRoles/ManageRoles";
 import InterestGroupEdit from "./modules/Dashboard/modules/InterestGroup/InterestGroupEdit";
 import EditOrgnaization from "./modules/Dashboard/modules/Organizations/EditOrgnaization";
 import UrlShortener from "./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener";
+import InterestGroupDelete from "./modules/Dashboard/modules/InterestGroup/InterestGroupDelete";
+import TaskEdit from "./modules/Dashboard/modules/Tasks/TaskEdit";
+import TaskCreate from "./modules/Dashboard/modules/Tasks/TaskCreate";
 
 const router = createBrowserRouter([
     {
@@ -37,6 +40,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <AuthRoutes />,
         children: [
+            { path: "/", element: <Login /> },
             { path: "register", element: <Onboarding /> },
             { path: "login", element: <Login /> },
             { path: "forgot-password", element: <ForgotPassword /> },
@@ -70,11 +74,23 @@ const router = createBrowserRouter([
                         path: "organizations/edit",
                         element: <EditOrgnaization />
                     },
+                    {
+                        path: "interest-groups/delete/:id",
+                        element: <InterestGroupDelete />
+                    },
                     { path: "campus-details", element: <CampusStudentList /> },
                     { path: "manage-users", element: <ManageUsers /> },
                     { path: "manage-roles", element: <ManageRoles /> },
                     { path: "organizations", element: <Organizations /> },
                     { path: "tasks", element: <Tasks /> },
+                    { 
+						path: "tasks/create", 
+						element: <TaskCreate /> 
+					},
+                    { 
+						path: "tasks/edit/:id", 
+						element: <TaskEdit /> 
+					},
                     { path: "url-shortener", element: <UrlShortener /> },
                 ]
             }

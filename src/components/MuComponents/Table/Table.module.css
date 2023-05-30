@@ -41,3 +41,9 @@
 	border-radius: 10px;
 	margin-left: 5px;
 }
+
+.icons {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
