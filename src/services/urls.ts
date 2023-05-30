@@ -43,6 +43,7 @@ export const organizationRoutes = {
     getCompany: "/api/v1/organisation/institutes/show/Company",
     getLocation: "/api/v1/location",
     postAddOrganization: "/api/v1/organisation/institutes/add",
+    putUpdateOrganization: "/api/v1/organisation/institutes",
     deleteOrgnaization: "/api/v1/organisation/institutes/",
     postGetInfo: "/api/v1/organisation/institutes/info/"
 }

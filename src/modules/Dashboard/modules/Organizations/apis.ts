@@ -173,6 +173,46 @@ export const createOrganization = async (
     }
 }
 
+export const updateOrganization = async (
+    title:string,
+    code:string,
+    affiliation: string,
+    country: string,
+    state: string,
+    district: string,
+    zone:string,
+    orgType:string, 
+    toast: (options?: UseToastOptions | undefined) => ToastId,) => {
+
+	try {
+        const response = await privateGateway.put(`${organizationRoutes.putUpdateOrganization}/${code}`, {
+			"title": title,
+            "code":code,
+            "state":state,
+            "zone":zone,
+            "district":district,
+            "country":country,
+            "affiliation":affiliation,
+            "orgType" : orgType
+		});
+		toast({
+			title: "Organizations created",
+			status: "success",
+			duration: 3000,
+			isClosable: true
+		});
+        const message: any = response?.data;
+		console.log(message);
+        console.log("created a new "+orgType)
+
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+}
+
 export const deleteOrganization = async (
     code:string,
     toast: (options?: UseToastOptions | undefined) => ToastId,

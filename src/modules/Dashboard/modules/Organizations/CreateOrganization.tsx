@@ -38,8 +38,6 @@ function CreateOrganization() {
   const [selectedZone,setSelectedZone] = useState('')
   const [selectedDistrict,setSelectedDistrict] = useState('')
 
-
-
   const orgType = "College"
 
   const handleSubmit = (e: any) => {
@@ -83,17 +81,21 @@ function CreateOrganization() {
       case 'Companies':
         return (
           <CompaniesForm
-            countryData={countryData}
-            selectCountry={selectedCountry}
-            setSelectCountry={setSelectedCountry}
+            isCreate = {isCreate}
+            setSelectedCountry = {setSelectedCountry}
+            setSelectedState = {setSelectedState}
+            setSelectedZone = {setSelectedZone}
+            setSelectedDistrict = {setSelectedDistrict}
           />
         );
       case 'Communities':
         return (
           <CommunitiesForm
-            countryData={countryData}
-            selectCountry={selectedCountry}
-            setSelectCountry={setSelectedCountry}
+          isCreate = {isCreate}
+          setSelectedCountry = {setSelectedCountry}
+          setSelectedState = {setSelectedState}
+          setSelectedZone = {setSelectedZone}
+          setSelectedDistrict = {setSelectedDistrict}
           />
         );
       default:

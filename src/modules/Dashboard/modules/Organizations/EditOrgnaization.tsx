@@ -4,8 +4,9 @@ import { useLocation } from 'react-router-dom';
 import { hasRole } from '../../../../services/common_functions';
 import { roles } from '../../../../services/types';
 import { getInfo } from './apis';
-import { getCountry } from './apis';
+import { getCountry,updateOrganization } from './apis';
 import Textfield from '../../../../components/MuComponents/TextField/Textfield';
+import { useToast } from "@chakra-ui/react";
 
 import CollegeForm from './CollegeForm';
 import CompaniesForm from './CompaniesForm';
@@ -33,6 +34,8 @@ function EditOrgnaization() {
     const location = useLocation();
   
     const {activeItem,rowId} = location.state
+
+    const toast = useToast();
     
     const [inputName, setInputName] = useState('');
     const [inputCode, setInputCode] = useState('');
@@ -43,6 +46,24 @@ function EditOrgnaization() {
 
     const [countryData, setCountryData] = useState<any[]>([]);
     const [selectCountry,setSelectCountry] = useState("")
+
+    const orgType= "College"
+
+    const handleSubmit = (e: any) => {
+			e.preventDefault();
+      resetStates()
+			updateOrganization(
+        inputName,
+        inputCode,
+        "KTU",
+        selectedCountry,
+        selectedState,
+        selectedDistrict,
+        selectedZone,
+        orgType,
+        toast);
+      navigate('/organizations');
+  };
   
     useEffect(() => {
       if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate('/404');
@@ -82,7 +103,7 @@ function EditOrgnaization() {
           return (
             <CollegeForm
               isCreate = {false}
-              
+
               setSelectedCountry={setSelectedCountry}
               setSelectedState={setSelectedState}
               setSelectedZone={setSelectedZone}
@@ -97,17 +118,33 @@ function EditOrgnaization() {
         case 'Companies':
           return (
             <CompaniesForm
-              countryData={countryData}
-              selectCountry={selectCountry}
-              setSelectCountry={setSelectCountry}
+              isCreate = {false}
+              
+              setSelectedCountry={setSelectedCountry}
+              setSelectedState={setSelectedState}
+              setSelectedZone={setSelectedZone}
+              setSelectedDistrict={setSelectedDistrict}
+
+              selectedCountry={selectedCountry}
+              selectedState={selectedState}
+              selectedZone={selectedZone}
+              selectedDistrict={selectedDistrict}
             />
           );
         case 'Communities':
           return (
             <CommunitiesForm
-              countryData={countryData}
-              selectCountry={selectCountry}
-              setSelectCountry={setSelectCountry}
+            isCreate = {false}
+              
+            setSelectedCountry={setSelectedCountry}
+            setSelectedState={setSelectedState}
+            setSelectedZone={setSelectedZone}
+            setSelectedDistrict={setSelectedDistrict}
+
+            selectedCountry={selectedCountry}
+            selectedState={selectedState}
+            selectedZone={selectedZone}
+            selectedDistrict={selectedDistrict}
             />
           );
         default:
@@ -159,7 +196,10 @@ function EditOrgnaization() {
                   className="btn light-btn"
                   onClick={resetStates}
                 >Decline</div>
-                <div className="btn blue-btn">Submit</div>
+                <div 
+                  className="btn blue-btn"
+                  onClick={handleSubmit}
+                  >Submit</div>
               </div>
         </div>
       </div>
