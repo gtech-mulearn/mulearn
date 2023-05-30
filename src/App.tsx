@@ -26,6 +26,9 @@ import ManageRoles from "./modules/Dashboard/modules/ManageRoles/ManageRoles";
 import ManageRolesEdit from "./modules/Dashboard/modules/ManageRoles/ManageRolesEdit";
 import ManageRolesDelete from "./modules/Dashboard/modules/ManageRoles/ManageRolesDelete";
 import ManageRolesCreate from './modules/Dashboard/modules/ManageRoles/ManageRolesCreate';
+import UserRoleVerification from "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerification";
+import UserRoleVerificationDelete from "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationDelete";
+import UserRoleVerificationEdit from "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationEdit";
 import InterestGroupEdit from "./modules/Dashboard/modules/InterestGroup/InterestGroupEdit";
 import EditOrgnaization from "./modules/Dashboard/modules/Organizations/EditOrgnaization";
 import UrlShortener from "./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener";
@@ -110,6 +113,18 @@ const router = createBrowserRouter([
                     {
                         path: "manage-roles/create",
                         element: <ManageRolesCreate />
+                    },
+                    {
+                        path: "user-role-verification",
+                        element: <UserRoleVerification />
+                    },
+                    {
+                        path: "user-role-verification/delete/:id",
+                        element: <UserRoleVerificationDelete />
+                    },
+                    {
+                        path: "user-role-verification/edit/:id",
+                        element: <UserRoleVerificationEdit />
                     },
                     { path: "organizations", element: <Organizations /> },
                     { path: "tasks", element: <Tasks /> },
