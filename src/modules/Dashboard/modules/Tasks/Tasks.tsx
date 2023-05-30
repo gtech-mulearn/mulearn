@@ -91,13 +91,11 @@ export const Tasks = (props: Props) => {
     };
 
 	const handleEdit = (id: string | number | boolean) => {
-        console.log(id);
         navigate(`/tasks/edit/${id}`);
     };
 
     const handleDelete = (id: string | number | boolean) => {
-        console.log(id);
-        navigate(`/interest-groups/delete/${id}`);
+        navigate(`/tasks/delete/${id}`);
     };
 
 	const handleCreate = () => {

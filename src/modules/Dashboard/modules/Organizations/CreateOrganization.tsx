@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import Textfield from '../../../../components/MuComponents/TextField/Textfield';
 import { useNavigate } from 'react-router-dom';
 import { MuButtonLight } from '../../../../components/MuComponents/MuButtons/MuButton';
@@ -8,7 +8,7 @@ import { hasRole } from '../../../../services/common_functions';
 import { roles } from '../../../../services/types';
 import './Organizations.scss';
 import { MuButton } from '../../../../components/MuComponents/MuButtons/MuButton';
-import { getCountry } from './apis';
+import { getCountry,getStates,getZones } from './apis';
 import { useLocation } from 'react-router-dom';
 import { useToast } from "@chakra-ui/react";
 
@@ -34,13 +34,11 @@ function CreateOrganization() {
   const [inputName, setInputName] = useState('');
   const [inputCode, setInputCode] = useState('');
   const [selectedCountry, setSelectedCountry] = useState('');
-  const [countryData, setCountryData] = useState<any[]>([]);
+  const [selectedState,setSelectedState] = useState('')
+  const [selectedZone,setSelectedZone] = useState('')
+  const [selectedDistrict,setSelectedDistrict] = useState('')
 
-  useEffect(() => {
-    if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate('/404');
-
-    getCountry(setCountryData);
-  }, []);
+  const orgType = "College"
 
   const handleSubmit = (e: any) => {
 			e.preventDefault();
@@ -49,12 +47,13 @@ function CreateOrganization() {
         inputName,
         inputCode,
         "KTU",
-        "India",
-        "Kerala",
-        "Kozhikode",
-        "North",
-        "College",
+        selectedCountry,
+        selectedState,
+        selectedDistrict,
+        selectedZone,
+        orgType,
         toast);
+      navigate('/organizations');
   };
 
   function parseFunctionString(functionString: string) {
@@ -72,28 +71,31 @@ function CreateOrganization() {
         return (
           <CollegeForm
             isCreate = {isCreate}
-            countryData={countries.countries}
-            districtsData={districts.districts}
-            statesData = {states.states}
-            zoneData = {zones.zones}
-            selectCountry={selectedCountry}
-            setSelectCountry={setSelectedCountry}
+
+            setSelectedCountry = {setSelectedCountry}
+            setSelectedState = {setSelectedState}
+            setSelectedZone = {setSelectedZone}
+            setSelectedDistrict = {setSelectedDistrict}
           />
         );
       case 'Companies':
         return (
           <CompaniesForm
-            countryData={countryData}
-            selectCountry={selectCountry}
-            setSelectCountry={setSelectCountry}
+            isCreate = {isCreate}
+            setSelectedCountry = {setSelectedCountry}
+            setSelectedState = {setSelectedState}
+            setSelectedZone = {setSelectedZone}
+            setSelectedDistrict = {setSelectedDistrict}
           />
         );
       case 'Communities':
         return (
           <CommunitiesForm
-            countryData={countryData}
-            selectCountry={selectCountry}
-            setSelectCountry={setSelectCountry}
+          isCreate = {isCreate}
+          setSelectedCountry = {setSelectedCountry}
+          setSelectedState = {setSelectedState}
+          setSelectedZone = {setSelectedZone}
+          setSelectedDistrict = {setSelectedDistrict}
           />
         );
       default:

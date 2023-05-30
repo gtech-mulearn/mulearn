@@ -35,6 +35,7 @@ import UrlShortener from "./modules/Dashboard/modules/UrlShortener/Pages/UrlShor
 import InterestGroupDelete from "./modules/Dashboard/modules/InterestGroup/InterestGroupDelete";
 import TaskEdit from "./modules/Dashboard/modules/Tasks/TaskEdit";
 import TaskCreate from "./modules/Dashboard/modules/Tasks/TaskCreate";
+import TaskDelete from "./modules/Dashboard/modules/Tasks/TaskDelete";
 
 const router = createBrowserRouter([
     {
@@ -136,7 +137,12 @@ const router = createBrowserRouter([
                         path: "tasks/edit/:id",
                         element: <TaskEdit />
                     },
-                    { path: "url-shortener", element: <UrlShortener /> }
+                    { path: "url-shortener", element: <UrlShortener /> },
+                    { 
+				             		path: "tasks/delete/:id", 
+						            element: <TaskDelete /> 
+					          },
+                    { path: "url-shortener", element: <UrlShortener /> },
                 ]
             }
         ]

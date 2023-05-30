@@ -1,5 +1,5 @@
 .form {
-    border: 2px solid #014bb229;
+    border: 2px solid var(--Blue800);
 	border-radius: 20px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.155);
 	height: 13rem;
@@ -58,8 +58,8 @@
 }
 
 .btn {
-	background: #014BB2;
-    color: #fff;
+	background: var(--Primary);
+    color: var(--White);
 	width: 50%;
     min-width: 200px;
     padding: 10px 20px;
@@ -75,19 +75,19 @@
 }
 
 .btn:hover {
-    background: #9fb5ef;
-    color: #000000;
+    background: var(--PrimaryLight);
+    color: var(--Dark);
 }
 
 .createBtn {
-	background: #fff;
-    color: #014BB2;
+	background: var(--Primary);
+    color: var(--White);
 	width: 10%;
     min-width: 100px;
     padding: 10px 20px;
     display: flex;
     border-radius: 10px;
-	border: 1px solid #014BB2;
+	border: 1px solid var(--Primary);
     flex-direction: row;
     align-items: center;
 	justify-content: center;
@@ -98,8 +98,7 @@
 }
 
 .createBtn:hover {
-    background: #014BB2;
-    color: #fff;
+    background: var(--Blue800);
 }
 
 .createBtnContainer {
