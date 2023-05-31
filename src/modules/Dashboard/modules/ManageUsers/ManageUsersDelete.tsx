@@ -7,12 +7,9 @@ import { useToast } from "@chakra-ui/react";
 type Props = {};
 
 const ManageUsersDelete = (props: Props) => {
-    const [input, setInput] = useState("");
+    
     const { id } = useParams();
     const toast = useToast();
-    useEffect(() => {
-        getManageUsersDetails(id, setInput);
-    }, []);
     const navigate = useNavigate();
     const handleSubmit = () => {
         deleteManageUsers(id, toast);
@@ -21,7 +18,7 @@ const ManageUsersDelete = (props: Props) => {
     return (
         <div>
             <Form
-                title={`Are you sure you want to delete ${input} ?`}
+                title={`Are you sure you want to delete ?`}
                 handleSubmitClick={handleSubmit}
                 cancelPath={"/manage-users"}
             />

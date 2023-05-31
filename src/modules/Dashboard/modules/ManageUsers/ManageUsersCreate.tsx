@@ -19,23 +19,38 @@ const ManageUsersCreate = (props: Props) => {
                 <h1 className={styles.text}>User Create Page</h1>
                 <Formik
                     initialValues={{
-                        userName: ""
+                        // userName: "",
+                        firstName: "",
+                        lastName: "",
+                        email: "",
+                        mobile: "",
+                        dob: "",
+                        gender: ""
                         // acceptedTerms: false, // added for our checkbox
                         // jobType: "" // added for our select
                     }}
                     validationSchema={Yup.object({
-                        userName: Yup.string()
-                            .max(30, "Must be 30 characters or less")
+                        // userName: Yup.string()
+                        //     .max(30, "Must be 30 characters or less")
+                        //     .required("Required"),
+                        firstName: Yup.string()
+                            .max(15, "Must be 15 characters or less")
+                            .required("Required"),
+                        lastName: Yup.string()
+                            .max(20, "Must be 20 characters or less")
+                            .required("Required"),
+                        email: Yup.string()
+                            .email("Invalid email address")
+                            .required("Required"),
+                        mobile: Yup.string()
+                            .email("Invalid mobile number")
+                            .required("Required"),
+                        dob: Yup.string()
+                            .email("Invalid Date of Birth")
+                            .required("Required"),
+                        gender: Yup.string()
+                            .email("Invalid gender")
                             .required("Required")
-                        // firstName: Yup.string()
-                        //     .max(15, "Must be 15 characters or less")
-                        //     .required("Required"),
-                        // lastName: Yup.string()
-                        //     .max(20, "Must be 20 characters or less")
-                        //     .required("Required"),
-                        // email: Yup.string()
-                        //     .email("Invalid email address")
-                        //     .required("Required"),
                         // acceptedTerms: Yup.boolean()
                         //     .required("Required")
                         //     .oneOf(
@@ -50,8 +65,15 @@ const ManageUsersCreate = (props: Props) => {
                         //     .required("Required")
                     })}
                     onSubmit={values => {
-                        console.log(values.userName);
-                        createManageUsers(values.userName);
+                        console.log(values.firstName);
+                        createManageUsers(
+                            values.firstName,
+                            values.lastName,
+                            values.email,
+                            values.mobile,
+                            values.dob,
+                            values.gender
+                        );
                         toast({
                             title: "User created",
                             status: "success",
@@ -63,10 +85,40 @@ const ManageUsersCreate = (props: Props) => {
                 >
                     <Form className={styles.inputContainer}>
                         <FormikTextInput
-                            label="User Name"
-                            name="User Name"
+                            label="User First Name"
+                            name="firstName"
                             type="text"
                             placeholder="Enter a name"
+                        />
+                        <FormikTextInput
+                            label="User Last Name"
+                            name="lastName"
+                            type="text"
+                            placeholder="Enter a name"
+                        />
+                        <FormikTextInput
+                            label="User Email"
+                            name="email"
+                            type="text"
+                            placeholder="Enter a email"
+                        />
+                        <FormikTextInput
+                            label="User Mobile Number"
+                            name="mobile"
+                            type="text"
+                            placeholder="Enter a mobile number"
+                        />
+                        <FormikTextInput
+                            label="User Date Of Birth"
+                            name="dob"
+                            type="text"
+                            placeholder="Enter a Date Of Birth"
+                        />
+                        <FormikTextInput
+                            label="User Gender"
+                            name="gender"
+                            type="text"
+                            placeholder="Enter a gender"
                         />
 
                         {/* <MySelect label="Job Type" name="jobType">
