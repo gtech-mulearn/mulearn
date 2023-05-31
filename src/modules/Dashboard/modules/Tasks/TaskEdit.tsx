@@ -5,22 +5,26 @@ import * as Yup from "yup";
 import { useToast } from "@chakra-ui/react";
 import styles from "../../../../components/MuComponents/FormikComponents/form.module.css";
 import { Form, Formik } from "formik";
-import { FormikSelect, FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
+import {
+    FormikSelect,
+    FormikTextInput
+} from "../../../../components/MuComponents/FormikComponents/FormikComponents";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import { TaskEditInterface } from "./TaskInterface";
 
 type Props = {};
 
 const TaskEdit = (props: Props) => {
-    const [data, setData] = useState<string[]>([]);
+    const [data, setData] = useState<TaskEditInterface>({});
     const { id } = useParams();
-	const navigate = useNavigate();
-	const toast = useToast();
+    const navigate = useNavigate();
+    const toast = useToast();
 
     useEffect(() => {
         getTaskDetails(id, setData);
     }, []);
 
-	const taskEditSchema = Yup.object().shape({
+    const taskEditSchema = Yup.object().shape({
         hashtag: Yup.string()
             .required("Required")
             .min(2, "Too Short!")
@@ -39,7 +43,7 @@ const TaskEdit = (props: Props) => {
             .truncate()
             .required("Mention the number of uses"),
         active: Yup.boolean().required("Select an option"),
-        variable_karma: Yup.boolean().required("Select an option"),
+        variable_karma: Yup.boolean().required("Select an option")
     });
 
     return (
@@ -49,16 +53,24 @@ const TaskEdit = (props: Props) => {
                 <Formik
                     enableReinitialize={true}
                     initialValues={{
-                        hashtag: data.hashtag,
-                        title: data.title,
-                        karma: data.karma,
-                        active: data.active,
-                        variable_karma: data.variable_karma,
-                        usage_count: data.usage_count,
+                        hashtag: data.hashtag || "",
+                        title: data.title || "",
+                        karma: data.karma || "",
+                        active: data.active || "",
+                        variable_karma: data.variable_karma || "",
+                        usage_count: data.usage_count || ""
                     }}
                     validationSchema={taskEditSchema}
                     onSubmit={values => {
-                        editTask(values.hashtag, values.title, values.karma, values.active, values.variable_karma, values.usage_count, id);
+                        editTask(
+                            values.hashtag,
+                            values.title,
+                            values.karma,
+                            values.active,
+                            values.variable_karma,
+                            values.usage_count,
+                            id
+                        );
                         toast({
                             title: "Interest Group created",
                             status: "success",
@@ -95,7 +107,7 @@ const TaskEdit = (props: Props) => {
                         <FormikSelect
                             label="Variable Karma"
                             name="variable_karma"
-							>
+                        >
                             <option value="">Select an option</option>
                             <option value="1">True</option>
                             <option value="0">False</option>

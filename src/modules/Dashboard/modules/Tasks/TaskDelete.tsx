@@ -3,11 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { deleteTask, getTaskDetails } from "./TaskApis";
 import Form from "../../../../components/MuComponents/Form/Form";
+import { TaskEditInterface } from "./TaskInterface";
 
 type Props = {};
 
 const TaskDelete = (props: Props) => {
-    const [input, setInput] = useState("");
+    const [input, setInput] = useState<TaskEditInterface>({});
     const { id } = useParams();
     const toast = useToast();
     useEffect(() => {
@@ -21,7 +22,7 @@ const TaskDelete = (props: Props) => {
     return (
         <div>
             <Form
-                title={`Are you sure you want to delete ${input} ?`}
+                title={`Are you sure you want to delete ${input.hashtag} ?`}
                 handleSubmitClick={handleSubmit}
                 cancelPath={"/interest-groups"}
             />
