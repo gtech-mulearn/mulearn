@@ -38,32 +38,10 @@ function CreateOrganization() {
   const [selectedZone,setSelectedZone] = useState('')
   const [selectedDistrict,setSelectedDistrict] = useState('')
 
-  const orgType = "College"
-
-  const handleSubmit = (e: any) => {
-			e.preventDefault();
-      resetStates()
-			createOrganization(
-        inputName,
-        inputCode,
-        "KTU",
-        selectedCountry,
-        selectedState,
-        selectedDistrict,
-        selectedZone,
-        orgType,
-        toast);
-      navigate('/organizations');
-  };
 
   function parseFunctionString(functionString: string) {
     return new Function(`return ${functionString}`)();
   }
-
-  const resetStates = () => {
-    setInputName('');
-    setInputCode('');
-  };
 
   const FormData = ({ activeItem,isCreate}: any) => {
     switch (activeItem) {
@@ -71,6 +49,7 @@ function CreateOrganization() {
         return (
           <CollegeForm
             isCreate = {isCreate}
+            activeItem = "College"
 
             setSelectedCountry = {setSelectedCountry}
             setSelectedState = {setSelectedState}
@@ -80,8 +59,10 @@ function CreateOrganization() {
         );
       case 'Companies':
         return (
-          <CompaniesForm
+          <CollegeForm
             isCreate = {isCreate}
+            activeItem = "Company"
+
             setSelectedCountry = {setSelectedCountry}
             setSelectedState = {setSelectedState}
             setSelectedZone = {setSelectedZone}
@@ -90,8 +71,10 @@ function CreateOrganization() {
         );
       case 'Communities':
         return (
-          <CommunitiesForm
+          <CollegeForm
           isCreate = {isCreate}
+          activeItem = "Community"
+
           setSelectedCountry = {setSelectedCountry}
           setSelectedState = {setSelectedState}
           setSelectedZone = {setSelectedZone}
@@ -119,38 +102,7 @@ function CreateOrganization() {
         button to proceed for further process.
       </p>
       <div className="popup_dropdown_container">
-            <div className="inputfield_container">
-              <Textfield
-                content={`${activeItem} Name`}
-                inputType="text"
-                setInput={setInputName}
-                input={inputName}
-                style={{
-                  width: '100%',
-                }}
-              />
-            </div>
-            <div className="inputfield_container">
-              <Textfield
-                content="Code"
-                inputType="text"
-                setInput={setInputCode}
-                input={inputCode}
-                style={{
-                  width: '100%',
-                }}
-              />
-            </div>
             <FormData activeItem={activeItem} isCreate={isCreate} />
-            <div className="inputfield_container grid-container">
-              <div 
-                className="btn light-btn"
-                onClick={resetStates}
-              >Decline</div>
-              <div 
-                className="btn blue-btn"
-                onClick={handleSubmit}>Submit</div>
-            </div>
       </div>
     </div>
   );

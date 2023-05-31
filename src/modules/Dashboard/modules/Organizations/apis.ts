@@ -24,6 +24,7 @@ export const getOrganizations = async (
             }
         })
         .then(response=>{
+            console.log("organizations-data",response.data.response.data)
             return response.data
         })
         .then(data => {
@@ -136,25 +137,56 @@ export const getDistricts = async (country:string,state:string,zone:string,setDi
 export const createOrganization = async (
     title:string,
     code:string,
-    affiliation: string,
     country: string,
     state: string,
-    district: string,
     zone:string,
+    district: string,
     orgType:string, 
-    toast: (options?: UseToastOptions | undefined) => ToastId,) => {
+    toast: (options?: UseToastOptions | undefined) => ToastId,
+    affiliation?: string,
+    ) => {
+
+    console.log(`
+        inputName: ${title}
+        inputCode: ${code}
+        selectedCountry: ${country}
+        selectedState: ${state}
+        selectedZone: ${zone}
+        selectedDistrict: ${district}
+        orgType: ${orgType}
+        affiliation : ${affiliation}
+      `)
+
+    const addDataProps = () => {
+        if(orgType === "College"){
+            return{
+                "title": title,
+                "code":code,
+                "state":state,
+                "zone":zone,
+                "district":district,
+                "country":country,
+                "affiliation":affiliation,
+                "orgType" : orgType
+            }
+        }
+        else {
+            return{
+                "title": title,
+                "code":code,
+                "state":state,
+                "zone":zone,
+                "district":district,
+                "country":country,
+                "orgType" : orgType
+            }
+        }
+    }
+
+    console.log(addDataProps())
 
 	try {
-        const response = await privateGateway.post(organizationRoutes.postAddOrganization, {
-			"title": title,
-            "code":code,
-            "state":state,
-            "zone":zone,
-            "district":district,
-            "country":country,
-            "affiliation":affiliation,
-            "orgType" : orgType
-		});
+        const response = await privateGateway.post(organizationRoutes.postAddOrganization, addDataProps());
 		toast({
 			title: "Organizations created",
 			status: "success",
@@ -185,6 +217,7 @@ export const updateOrganization = async (
     toast: (options?: UseToastOptions | undefined) => ToastId,) => {
 
 	try {
+        console.log(`update-link--> ${organizationRoutes.putUpdateOrganization}/${code}`)
         const response = await privateGateway.put(`${organizationRoutes.putUpdateOrganization}/${code}`, {
 			"title": title,
             "code":code,
