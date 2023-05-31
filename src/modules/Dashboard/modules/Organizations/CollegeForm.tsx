@@ -4,6 +4,11 @@ import { hasRole } from '../../../../services/common_functions';
 import { roles } from '../../../../services/types';
 import { getCountry,getStates,getZones,getDistricts } from './apis';
 import { useNavigate } from 'react-router-dom';
+import Textfield from '../../../../components/MuComponents/TextField/Textfield';
+
+import { createOrganization } from './apis';
+import { useToast } from "@chakra-ui/react";
+
 
 import "./Organizations.scss";
 
@@ -14,6 +19,9 @@ interface Option {
 
 interface CollegeFormProps {
   isCreate: boolean;
+  activeItem: string;
+  inputName: string;
+  inputCode: string;
 
   setSelectedCountry: any;
   setSelectedState: any;
@@ -27,9 +35,13 @@ interface CollegeFormProps {
 }
 
 const CollegeForm = ({ ...props }: CollegeFormProps) => {
+
+  const [inputName, setInputName] = useState('');
+  const [inputCode, setInputCode] = useState('');
+
   const [country, setCountry] = useState<any>("");
   const [state, setState] = useState<any>("");
-  const [district, setDistrict] = useState("");
+  const [district, setDistrict] = useState<any>("");
   const [zone, setZone] = useState<any>("");
   const [affiliatedUniversity, setAffiliatedUniversity] = useState("");
 
@@ -43,21 +55,83 @@ const CollegeForm = ({ ...props }: CollegeFormProps) => {
   const [selectedZone,setSelectedZone] = useState('')
   const [selectedDistrict,setSelectedDistrict] = useState('')
 
+  const [isCountryDataLoaded,setCountryDataLoaded] = useState(false)
+
   const navigate = useNavigate();
+  const toast = useToast();
 
   function camelCase(str:string) {
     return str?.replace(/\b[A-Z]+\b/g, (match) => match.charAt(0) + match.slice(1).toLowerCase());
   }
 
+  const resetStates = () => {
+    setInputName('');
+    setInputCode('');
+  };
+
+  const orgType = props.activeItem
+  const AffUni = "KTU"
+
+  const handleSubmit = (e: any) => {
+			e.preventDefault();
+      resetStates()
+
+      console.log(orgType)
+
+      const SelectBody = (item:string) => {
+        if(item === "College"){
+            return (
+              createOrganization(
+                inputName,
+                inputCode,
+                camelCase(country.value),
+                camelCase(state.value),
+                camelCase(zone.value),
+                camelCase(district.value),
+                orgType,
+                toast,
+                AffUni
+                )
+            );
+        }else{
+          return (
+            createOrganization(
+              inputName,
+              inputCode,
+              camelCase(country.value),
+              camelCase(state.value),
+              camelCase(zone.value),
+              camelCase(district.value),
+              orgType,
+              toast)
+          );
+        }
+      };
+
+      SelectBody(orgType)
+      navigate('/organizations');
+  };
+
   useEffect(() => {
-      if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate('/404');
+    if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate('/404');
   
-      console.log("getting country datas")
-      
+    console.log("getting country datas");
+  
+    console.log(isCountryDataLoaded);
+  
+    if (!isCountryDataLoaded) {
+      console.log("first");
       getCountry(setCountryData);
-      getStates(camelCase(props?.selectedCountry),setStatesData)
-      getZones(camelCase(props?.selectedCountry),camelCase(props?.selectedState),setZonesData)
-      getDistricts(camelCase(props?.selectedCountry),camelCase(props?.selectedState),camelCase(props?.selectedZone),setDistrictsData)
+      setCountryDataLoaded(true); 
+    }
+  
+    if (!props.isCreate) {
+      setInputName(props.inputName)
+      setInputCode(props.inputCode)
+      getStates(camelCase(props?.selectedCountry), setStatesData);
+      getZones(camelCase(props?.selectedCountry), camelCase(props?.selectedState), setZonesData);
+      getDistricts(camelCase(props?.selectedCountry), camelCase(props?.selectedState), camelCase(props?.selectedZone), setDistrictsData);
+    }
   }, []);
 
   useEffect(()=>{
@@ -84,7 +158,7 @@ const CollegeForm = ({ ...props }: CollegeFormProps) => {
   const handleCountryChange = (option: any ) => {
     if(option){
       setCountry(option);
-      setSelectedCountry(option.value as string);
+      setSelectedCountry(option.value as string)
     }
   };
 
@@ -155,14 +229,41 @@ const CollegeForm = ({ ...props }: CollegeFormProps) => {
 
   return (
     <>
-      <div className="inputfield_container">
-        <p>Affiliated University</p>
-        <Select
-          value={state}
-          onChange={handleStateChange}
-          options={countryData}
-        />
-      </div>
+    <div className="inputfield_container">
+              <Textfield
+                content={`${props.activeItem} Name`}
+                inputType="text"
+                setInput={setInputName}
+                input={inputName}
+                style={{
+                  width: '100%',
+                }}
+              />
+            </div>
+            <div className="inputfield_container">
+              <Textfield
+                content="Code"
+                inputType="text"
+                setInput={setInputCode}
+                input={inputCode}
+                style={{
+                  width: '100%',
+                }}
+              />
+            </div>
+            {
+              props.activeItem === "College" ? (
+                <div className="inputfield_container">
+                <p>Affiliated University</p>
+                <Select
+                  value={state}
+                  onChange={handleStateChange}
+                  options={countryData}
+                />
+              </div>
+              ):(null)
+            }
+
       <div className="inputfield_container">
         <p>Country</p>
         <Select
@@ -196,12 +297,21 @@ const CollegeForm = ({ ...props }: CollegeFormProps) => {
         <p>District</p>
         <Select 
           defaultValue={
-            props.isCreate ? state : getDistrictsDefaultValue()
+            props.isCreate ? district : getDistrictsDefaultValue()
           }
           onChange={handleDistrictChange}
           options={districtsData} 
         />
       </div>
+      <div className="inputfield_container grid-container">
+              <div 
+                className="btn light-btn"
+                onClick={resetStates}
+              >Decline</div>
+              <div 
+                className="btn blue-btn"
+                onClick={handleSubmit}>Submit</div>
+            </div>
     </>
   );
 };

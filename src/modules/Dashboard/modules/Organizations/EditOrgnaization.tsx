@@ -62,6 +62,7 @@ function EditOrgnaization() {
         selectedZone,
         orgType,
         toast);
+      
       navigate('/organizations');
   };
   
@@ -103,6 +104,9 @@ function EditOrgnaization() {
           return (
             <CollegeForm
               isCreate = {false}
+              activeItem = "College"
+              inputName = {inputName}
+              inputCode = {inputCode}
 
               setSelectedCountry={setSelectedCountry}
               setSelectedState={setSelectedState}
@@ -117,8 +121,9 @@ function EditOrgnaization() {
           );
         case 'Companies':
           return (
-            <CompaniesForm
+            <CollegeForm
               isCreate = {false}
+              activeItem = "Company"
               
               setSelectedCountry={setSelectedCountry}
               setSelectedState={setSelectedState}
@@ -133,8 +138,9 @@ function EditOrgnaization() {
           );
         case 'Communities':
           return (
-            <CommunitiesForm
+            <CollegeForm
             isCreate = {false}
+            activeItem = "Community"
               
             setSelectedCountry={setSelectedCountry}
             setSelectedState={setSelectedState}
@@ -168,39 +174,7 @@ function EditOrgnaization() {
           button to proceed for further process.
         </p>
         <div className="popup_dropdown_container">
-              <div className="inputfield_container">
-                <Textfield
-                  content={`${activeItem} Name`}
-                  inputType="text"
-                  setInput={setInputName}
-                  input={inputName}
-                  style={{
-                    width: '100%',
-                  }}
-                />
-              </div>
-              <div className="inputfield_container">
-                <Textfield
-                  content="Code"
-                  inputType="text"
-                  setInput={setInputCode}
-                  input={inputCode}
-                  style={{
-                    width: '100%',
-                  }}
-                />
-              </div>
               <FormData activeItem={activeItem} />
-              <div className="inputfield_container grid-container">
-                <div 
-                  className="btn light-btn"
-                  onClick={resetStates}
-                >Decline</div>
-                <div 
-                  className="btn blue-btn"
-                  onClick={handleSubmit}
-                  >Submit</div>
-              </div>
         </div>
       </div>
     )
