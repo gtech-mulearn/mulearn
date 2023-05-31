@@ -1,7 +1,7 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import NavLinks from "./NavLinks"
-import Notification from "./Notification"
+import React from "react";
+import { Link } from "react-router-dom";
+import NavLinks from "./NavLinks";
+import Notification from "./Notification";
 
 export const DesktopMenu = ({ open }) => {
   return (
@@ -14,8 +14,8 @@ export const DesktopMenu = ({ open }) => {
         Careers
       </Link>
     </ul>
-  )
-}
+  );
+};
 
 export const Resources = ({ notificationOpen }) => {
   return (
@@ -54,17 +54,17 @@ export const Resources = ({ notificationOpen }) => {
         </button>
       </a>
     </div>
-  )
-}
+  );
+};
 
-export const MenuName = ({ name }) => {
+export const MenuName = ({ name, link }) => {
   return (
     <div className="dashOnHover">
       <h1 className="change-text">{name}</h1>
       <div className="dashBar"> </div>
     </div>
-  )
-}
+  );
+};
 
 export const SubMenu = ({ submenu, sublinks }) => {
   return (
@@ -86,18 +86,28 @@ export const SubMenu = ({ submenu, sublinks }) => {
         </div>
       )}
     </>
-  )
-}
+  );
+};
 export const SubHeader = ({ link, name }) => {
   return (
     <h1 className="text-lg font-medium drop-shadow-sm opacity-100">
       <a href={link} className="hover:text-orange-500">
-        {" "}
-        {name}{" "}
+        {link ? (
+          <a
+            href={link}
+            style={{ color: "#000" }}
+            onMouseEnter={(e) => (e.target.style.color = "#FB923C")}
+            onMouseLeave={(e) => (e.target.style.color = "#000")}
+          >
+            {name}
+          </a>
+        ) : (
+          <span style={{ color: "#000" }}>{name}</span>
+        )}
       </a>
     </h1>
-  )
-}
+  );
+};
 export const SubLinks = ({ sublinks }) => {
   return (
     <>
@@ -120,5 +130,5 @@ export const SubLinks = ({ sublinks }) => {
         </div>
       ))}
     </>
-  )
-}
+  );
+};

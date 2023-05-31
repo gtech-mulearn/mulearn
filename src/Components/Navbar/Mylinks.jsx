@@ -338,14 +338,8 @@ export const links = [
         head: 3,
         name: "Interest Groups",
         submenu: true,
+        link: mainlink + "/",
         sublinks: [
-          {
-            name: "Home Page",
-            link: mainlink + "/",
-            submenu: false,
-            sublinks: [],
-            foreign: false,
-          },
           {
             name: "Android Development",
             link: mainlink + "/android",
@@ -407,15 +401,9 @@ export const links = [
       {
         head: 3,
         name: "Bootcamps",
+        link: mainlink + "/bootcamps",
         submenu: true,
         sublinks: [
-          {
-            name: "Home",
-            link: mainlink + "/bootcamps",
-            submenu: false,
-            sublinks: [],
-            foreign: false,
-          },
           {
             name: "Android",
             link: mainlink + "/bootcamps/android",
