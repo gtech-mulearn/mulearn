@@ -1,73 +1,87 @@
 import { useEffect, useState } from "react";
-import Form from "../../../../components/MuComponents/Form/Form";
 import { editManageRoles, getManageRolesDetails } from "./apis";
 import { useNavigate, useParams } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
+import { Form, Formik } from "formik";
+import * as Yup from "yup";
+import { FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
+import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import styles from "../../../../components/MuComponents/FormikComponents/form.module.css";
 
 type Props = {};
 
 const ManageRolesEdit = (props: Props) => {
-    const [input1, setInput1] = useState("");
-    const [input2, setInput2] = useState("");
-    const [input3, setInput3] = useState("");
+    const [name, setName] = useState("");
+    const [data, setData] = useState<string[]>([]);
 
-    useEffect(() => {
-        getManageRolesDetails(id, setInput1);
-    }, []);
-
-    const inputFields = [
-        {
-            content: "Role Name",
-            inputType: "text",
-            input: input1,
-            setInput: setInput1
-        }
-        // {
-        //     content: "1234",
-        //     inputType: "text",
-        //     input: input2,
-        //     setInput: setInput2
-        // },
-        // {
-        //     content: "8553",
-        //     inputType: "text",
-        //     input: input3,
-        //     setInput: setInput3
-        // }
-    ];
-    // const dropdownFields = [
-    //     {
-    //         contents: ["IG Name", "1", "2", "3"],
-    //         input: input2,
-    //         setInput: setInput2,
-    //         label: "Select Name",
-    //         default: "string"
-    //     },
-    //     {
-    //         contents: ["IG Name", "1", "2", "3"],
-    //         input: input3,
-    //         setInput: setInput3,
-    //         label: "Select test",
-    //         default: "select from following"
-    //     }
-    // ];
     const { id } = useParams();
     const navigate = useNavigate();
-    const handleSubmit = () => {
-        editManageRoles(input1, id);
-        navigate("/manage-roles");
-    };
+    const toast = useToast();
+    useEffect(() => {
+        getManageRolesDetails(id, setData);
+    }, []);
+
     return (
-        <div>
-            <Form
-                title={"Edit Name of Role"}
-                handleSubmitClick={handleSubmit}
-                inputFields={inputFields}
-                cancelPath={"/manage-roles"}
-                // dropdownFields={dropdownFields}
-            />
+        <div className={styles.external_container}>
+            <div className={styles.container}>
+                <h1 className={styles.text}>Role Edit Page</h1>
+                <Formik
+                    enableReinitialize={true}
+                    initialValues={{
+                        // igName: name
+                       
+                        description: data.description
+                    }}
+                    validationSchema={Yup.object({
+                        // igName: Yup.string()
+                        //     .max(30, "Must be 30 characters or less")
+                        //     .required("Required"),
+                        title: Yup.string()
+                            .max(15, "Enter the title")
+                            .required("Required"),
+                        description: Yup.string()
+                            .max(20, "Enter the description")
+                            .required("Required")
+                    })}
+                    onSubmit={values => {
+                        editManageRoles(id,  values.description);
+                        toast({
+                            title: "Rolescreated",
+                            status: "success",
+                            duration: 3000,
+                            isClosable: true
+                        });
+                        navigate("/manage-roles");
+                    }}
+                >
+                    <Form className={styles.inputContainer}>
+                       
+                        <FormikTextInput
+                            label="Role Description"
+                            name="description"
+                            type="text"
+                            placeholder="Enter a description"
+                        />
+
+                        <div className={styles.btn_container}>
+                            <MuButton
+                                text={"Decline"}
+                                className={styles.btn_cancel}
+                                onClick={() => {
+                                    navigate("/manage-roles");
+                                }}
+                            />
+                            <button type="submit" className={styles.btn_submit}>
+                                Confirm
+                            </button>
+                        </div>
+                    </Form>
+                </Formik>
+            </div>
         </div>
     );
 };
+
 
 export default ManageRolesEdit;
 
