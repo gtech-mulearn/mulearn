@@ -4,6 +4,8 @@ import { privateGateway } from "../../../../services/apiGateways";
 import { dashboardRoutes, organizationRoutes } from "../../../../services/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast"
 
+
+
 export const getOrganizations = async (
     activeTab:string,
     setData: any,
@@ -137,8 +139,10 @@ export const createOrganization = async (
     district: string,
     orgType:string, 
     toast: (options?: UseToastOptions | undefined) => ToastId,
-    affiliation?: string,
+    affiliation?:string,
+    setIsSuccess?:any,
     ) => {
+
     const addDataProps = () => {
         if(orgType === "College"){
             return{
@@ -175,11 +179,17 @@ export const createOrganization = async (
 		});
         const message: any = response?.data;
         console.log("created a new "+orgType)
+        setIsSuccess(true)
 
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            toast({
+                title:error?.response?.data?.message.general[0].code[0],
+                status: "error",
+                duration: 3000,
+                isClosable: true
+            });
         }
     }
 }

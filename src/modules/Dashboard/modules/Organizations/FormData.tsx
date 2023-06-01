@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Select, { ActionMeta } from "react-select";
+import Select from "react-select";
 import { hasRole } from '../../../../services/common_functions';
 import { roles } from '../../../../services/types';
 import { getCountry, getStates, getZones, getDistricts } from './apis';
@@ -51,10 +51,8 @@ const FormData = ({ ...props }: CollegeFormProps) => {
   const [selectedDistrict, setSelectedDistrict] = useState('')
 
   const [isCountryDataLoaded, setIsCountryDataLoaded] = useState(false)
-  const [isStateDataLoaded,setIsStateDataLoaded] = useState(false)
-  const [isZoneDataLoaded,setIsZoneDataLoaded] = useState(false)
-  const [isDistrictDataLoaded,setIsDistrictDataLoaded] = useState(false)
 
+  const [isSuccess,setIsSuccess] = useState(false)
 
   const navigate = useNavigate();
   const toast = useToast();
@@ -73,7 +71,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    resetStates()
+    // resetStates()
     interface SelectBodyProps {
       inputName: string;
       inputCode: string;
@@ -88,7 +86,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     const createOrUpdateOrganization = (
       params: SelectBodyProps,
       isCreate: boolean,
-      affUni?: string
+      affUni?: string,
     ) => {
       const {
         inputName,
@@ -112,7 +110,8 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             camelCase(district),
             orgType,
             toast,
-            affUni
+            affUni,
+            setIsSuccess
           );
         } else {
           createOrganization(
@@ -167,11 +166,11 @@ const FormData = ({ ...props }: CollegeFormProps) => {
       };
     
       createOrUpdateOrganization(params, props.isCreate, AffUni);
-      navigate('/organizations');
     };
     
     SelectBody(orgType);
-    navigate('/organizations');
+    console.log("Success Status-->",isSuccess)
+    navigate('/organizations')
   };
 
   useEffect(() => {
