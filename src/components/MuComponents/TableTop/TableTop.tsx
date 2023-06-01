@@ -25,6 +25,7 @@ const TableTop = (props: Props) => {
     };
     useEffect(() => {
         getCSV(props.CSV, setCsv);
+        console.log(props.CSV)
     }, []);
     return (
         <div className={styles.container}>

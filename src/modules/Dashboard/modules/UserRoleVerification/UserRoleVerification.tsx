@@ -3,17 +3,17 @@ import Pagination from "../../../../components/MuComponents/Pagination/Paginatio
 import Table from "../../../../components/MuComponents/Table/Table";
 import THead from "../../../../components/MuComponents/Table/THead";
 import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
-import { getManageRoles } from "./apis";
+import { getUserRoleVerification } from "./apis";
 import { Blank } from "../../../../components/MuComponents/Table/Blank";
 import { roles } from "../../../../services/types";
 import { hasRole } from "../../../../services/common_functions";
 import { useNavigate } from "react-router-dom";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import styles from "./Manageroles.module.css";
+import styles from "./UserRoleVerification.module.css";
 import { dashboardRoutes } from "../../../../services/urls";
 
-function ManageRoles() {
+function UsersRoleVerification() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
@@ -22,72 +22,80 @@ function ManageRoles() {
     const navigate = useNavigate();
 
     const columnOrder = [
+        "first_name",
+        "last_name",
+        "mu_id",
+        "discord_id",
         "id",
-        "title",
-        "description",
-        "updated_by",
-        "updated_at",
-        "created_by",
-        "created_at"
+        "user_id",
+        "role_title",
+        "role_id",
+        "verified"
     ];
 
     const editableColumnNames = [
+        "First Name",
+        "Last Name",
+        "Mu ID",
+        "Discord ID",
         "ID",
-        "Title",
-        "Description",
-        "Updated By",
-        "Updated At",
-        "Created By",
-        "Created At"
+        "User Id",
+        "Role Title",
+        "Role ID",
+        "Verified",
+        
     ];
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getManageRoles(setData, nextPage, perPage);
+        getUserRoleVerification(setData, nextPage, perPage);
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getManageRoles(setData, prevPage, perPage);
+        getUserRoleVerification(setData, prevPage, perPage);
     };
 
     useEffect(() => {
         if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
 
-        getManageRoles(setData, 1, perPage, setTotalPages, "", "");
+        getUserRoleVerification(setData, 1, perPage, setTotalPages, "", "");
     }, []);
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getManageRoles(setData, 1, perPage, setTotalPages, search, "");
+        getUserRoleVerification(setData, 1, perPage, setTotalPages, search, "");
     };
 
     const handleEdit = (id: string | number | boolean) => {
         console.log(id);
-        navigate(`/manage-roles/edit/${id}`);
+        navigate(`/user-role-verification/edit/${id}`);
     };
 
     const handleDelete = (id: string | number | boolean) => {
         console.log(id);
-        navigate(`/manage-roles/delete/${id}`);
+        navigate(`/user-role-verification/delete/${id}`);
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getManageRoles(setData, 1, selectedValue, setTotalPages, "", "");
-    };
-
-    const handleCreate = () => {
-        navigate("/manage-roles/create");
+        getUserRoleVerification(
+            setData,
+            1,
+            selectedValue,
+            setTotalPages,
+            "",
+            ""
+        );
     };
 
     const handleIconClick = (column: string) => {
         if (sort === column) {
             setSort(`-${column}`);
-            getManageRoles(
+            getUserRoleVerification(
                 setData,
                 1,
                 perPage,
@@ -97,7 +105,14 @@ function ManageRoles() {
             );
         } else {
             setSort(column);
-            getManageRoles(setData, 1, perPage, setTotalPages, "", column);
+            getUserRoleVerification(
+                setData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                column
+            );
         }
 
         console.log(`Icon clicked for column: ${column}`);
@@ -105,18 +120,10 @@ function ManageRoles() {
 
     return (
         <>
-            <div className={styles.createBtnContainer}>
-                <MuButton
-                    className={styles.createBtn}
-                    text={"Create"}
-                    icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
-                    onClick={handleCreate}
-                />
-            </div>
             <TableTop
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
-                CSV={dashboardRoutes.getRolesList}
+                CSV={dashboardRoutes.getUsersRoleVerificationList}
                 // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
             />
             {data && (
@@ -148,4 +155,4 @@ function ManageRoles() {
     );
 }
 
-export default ManageRoles;
+export default UsersRoleVerification;
