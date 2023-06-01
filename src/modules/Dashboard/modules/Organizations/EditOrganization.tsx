@@ -4,23 +4,8 @@ import { useLocation } from 'react-router-dom';
 import { hasRole } from '../../../../services/common_functions';
 import { roles } from '../../../../services/types';
 import { getInfo } from './apis';
-import { getCountry, updateOrganization } from './apis';
-import Textfield from '../../../../components/MuComponents/TextField/Textfield';
-import { useToast } from "@chakra-ui/react";
 
 import FormData from './FormData';
-
-
-interface infoProps {
-  affiliation: string;
-  code: string;
-  country: string;
-  district: string;
-  state: string;
-  title: string;
-  zone: string;
-}
-
 
 function EditOrganization() {
 
@@ -59,9 +44,9 @@ function EditOrganization() {
           <FormData
             isCreate={false}
             activeItem="College"
-
             inputName={inputName}
             inputCode={inputCode}
+
             selectedCountry={selectedCountry}
             selectedState={selectedState}
             selectedZone={selectedZone}
@@ -73,9 +58,9 @@ function EditOrganization() {
           <FormData
             isCreate={false}
             activeItem="Company"
-
             inputName={inputName}
             inputCode={inputCode}
+
             selectedCountry={selectedCountry}
             selectedState={selectedState}
             selectedZone={selectedZone}
@@ -87,9 +72,9 @@ function EditOrganization() {
           <FormData
             isCreate={false}
             activeItem="Community"
-
             inputName={inputName}
             inputCode={inputCode}
+            
             selectedCountry={selectedCountry}
             selectedState={selectedState}
             selectedZone={selectedZone}

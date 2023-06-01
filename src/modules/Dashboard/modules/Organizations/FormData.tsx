@@ -50,7 +50,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
   const [selectedZone, setSelectedZone] = useState('')
   const [selectedDistrict, setSelectedDistrict] = useState('')
 
-  const [isCountryDataLoaded, setCountryDataLoaded] = useState(false)
+  const [isCountryDataLoaded, setIsCountryDataLoaded] = useState(false)
   const [isStateDataLoaded,setIsStateDataLoaded] = useState(false)
   const [isZoneDataLoaded,setIsZoneDataLoaded] = useState(false)
   const [isDistrictDataLoaded,setIsDistrictDataLoaded] = useState(false)
@@ -179,7 +179,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
     if (!isCountryDataLoaded) {
       getCountry(setCountryData);
-      setCountryDataLoaded(true);
+      setIsCountryDataLoaded(true);
     }
 
     if (!props.isCreate) {
@@ -264,6 +264,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
         (option) =>
           option.label.toUpperCase() === props.selectedCountry?.toUpperCase()
       );
+      // console.log(defaultOption)
       return defaultOption || null;
     }
     return null;
