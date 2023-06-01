@@ -45,8 +45,10 @@ export const login = (
     emailOrMuid: string,
     password: string,
     toast: (options?: UseToastOptions | undefined) => ToastId,
-    navigate: NavigateFunction
+    navigate: NavigateFunction,
+    setIsLoading: (loading: boolean) => void
 ) => {
+    setIsLoading(true)
     publicGateway
         .post(authRoutes.login, { emailOrMuid, password })
         .then(response => {
@@ -85,10 +87,12 @@ export const login = (
                     })
                     .catch(error => {
                         console.log(error);
+                        setIsLoading(false)
                     });
             }
         })
         .catch(error => {
+            setIsLoading(false)
             toast({
                 title: error.response.data.message.general[0],
                 status: "error",
