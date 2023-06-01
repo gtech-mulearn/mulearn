@@ -21,7 +21,7 @@ import { Tasks } from "./modules/Dashboard/modules/Tasks/Tasks";
 import CreateOrganization from "./modules/Dashboard/modules/Organizations/CreateOrganization";
 import ManageRoles from "./modules/Dashboard/modules/ManageRoles/ManageRoles";
 import InterestGroupEdit from "./modules/Dashboard/modules/InterestGroup/InterestGroupEdit";
-import EditOrgnaization from "./modules/Dashboard/modules/Organizations/EditOrgnaization";
+import EditOrgnaization from "./modules/Dashboard/modules/Organizations/EditOrganization";
 import UrlShortener from "./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener";
 import InterestGroupDelete from "./modules/Dashboard/modules/InterestGroup/InterestGroupDelete";
 import TaskEdit from "./modules/Dashboard/modules/Tasks/TaskEdit";
