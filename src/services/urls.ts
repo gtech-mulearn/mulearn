@@ -21,11 +21,14 @@ export const authRoutes = {
 export const dashboardRoutes = {
     forgetPassword: "/api/v1/dashboard/user/forgot-password/",
     resetPassword: "/api/v1/dashboard/user/reset-password/${token}/",
-    resetPasswordVerify: "/api/v1/dashboard/user/reset-password/verify-token/${token}/",
+    resetPasswordVerify:
+        "/api/v1/dashboard/user/reset-password/verify-token/${token}/",
     getInfo: "/api/v1/dashboard/user/info/",
     getIgData: "/api/v1/dashboard/ig/",
     getIgList: "/api/v1/dashboard/ig/csv",
     getUsersData: "/api/v1/dashboard/user/",
+    getUsersRoleVerificationData: "/api/v1/dashboard/user/verification/",
+    getUsersRoleVerificationList: "/api/v1/dashboard/user/verification/csv",
     getTasksData: "/api/v1/dashboard/task/",
     getRolesData: "/api/v1/dashboard/roles/",
     getRolesList: "api/v1/dashboard/roles/csv/",
@@ -35,14 +38,15 @@ export const dashboardRoutes = {
     getShortenUrl: "/api/v1/url-shortener/list/",
     createShortenUrl: "/api/v1/url-shortener/create/",
     editShortenUrl: "/api/v1/url-shortener/edit/${urlId}/",
-    deleteShortenUrl: "/api/v1/url-shortener/delete/${urlId}/",
+    deleteShortenUrl: "/api/v1/url-shortener/delete/${urlId}/"
 };
 
 export const organizationRoutes = {
     getOrganizationsAll: "/api/v1/organisation/institutes/info/all_inst",
     getCompany: "/api/v1/organisation/institutes/show/Company",
-    getCountry: "/api/v1/location/country",
+    getLocation: "/api/v1/location",
     postAddOrganization: "/api/v1/organisation/institutes/add",
+    putUpdateOrganization: "/api/v1/organisation/institutes",
     deleteOrgnaization: "/api/v1/organisation/institutes/",
     postGetInfo: "/api/v1/organisation/institutes/info/"
 }

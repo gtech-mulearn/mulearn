@@ -86,7 +86,7 @@
   align-items: center;
 }
 
-.register{
+.register {
   font-weight: 500;
   display: block;
   width: 100%;
@@ -99,11 +99,13 @@
   padding-top: 0px;
   margin-top: -20px;
   cursor: pointer;
-  
+
 }
-.login_page .login_container .login_form form p a{
+
+.login_page .login_container .login_form form p a {
   cursor: pointer;
 }
+
 .login_page .login_container .login_form form p a:hover {
   color: #5570f1;
 }
@@ -146,11 +148,17 @@
   right: 30px;
   top: 30px;
   background-color: #5570f2;
-
   font-size: 1rem;
   border-radius: 5px;
 }
 
 .validation_error_message p {
   color: white;
+}
+
+.signin_loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
