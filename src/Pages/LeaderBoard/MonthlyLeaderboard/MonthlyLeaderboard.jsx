@@ -7,7 +7,7 @@ import axios from "axios";
 
 const MonthlyLeaderboard = () => {
   const [colleges, setColleges] = useState("");
-  const [students, setStudents] = useState("");
+  const [students, setStudents] = useState([]);
 
   useEffect(() => {
     axios
@@ -21,7 +21,7 @@ const MonthlyLeaderboard = () => {
       });
 
     axios
-      .get(`${process.env.REACT_APP_LEADERBOARD_API}/api/v1/leaderboard/students-monthly/`)
+      .get('https://dev.mulearn.org/api/v1/leaderboard/students/')
       .then(function (response) {
         // console.log(response.data.response);
         setStudents(response.data.response);
@@ -99,19 +99,19 @@ const MonthlyLeaderboard = () => {
               {students &&
                 students.map((student, position) => {
                   return (
-                    <div className={styles.sv_card}>
+                    <div className={styles.sv_card} >
                       <p className={styles.card_position}>
                         {position + 1} <span>Position</span>
                       </p>
                       <p className={styles.card_code}>
                         College Code: {student.institution}
                       </p>
-                      <p className={styles.card_college}>{student.name}</p>
+                      <p className={styles.card_college}>{student.fullName}</p>
                       <p className={styles.total_karma}>
-                        Monthly Karma Points: {student.karma.monthly}
+                        Monthly Karma Points: {student.totalKarma}
                       </p>
                       <p className={styles.total_karma}>
-                        Overall Karma Points: {student.karma.overall}
+                        {/* Overall Karma Points: {student.totalKarma} */}
                       </p>
                       <br/>
                     </div>
