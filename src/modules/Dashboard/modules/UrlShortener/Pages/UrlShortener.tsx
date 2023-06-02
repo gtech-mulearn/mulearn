@@ -32,9 +32,9 @@ const UrlShortener = () => {
         message: ""
     });
 
-    const columnOrder = ["short_url", "long_url"];
+    const columnOrder = ["title","shortUrl", "longUrl"];
 
-    const editableColumnNames = ["Short URL", "Long URL"];
+    const editableColumnNames = ["Title","Short URL", "Long URL"];
     useEffect(() => {
         if (!hasRole([roles.ADMIN])) navigate("/404");
         getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
@@ -56,20 +56,22 @@ const UrlShortener = () => {
         getShortenUrls(setShortUrlData, 1, perPage, setTotalPages, search, "");
     };
     const handleEdit = (id: string | number | boolean) => {
+        console.log(formik.values.id);
+        
         // navigate(`/interest-groups/edit/${id}`);
         formik.values.id = id.toString();
         formik.values.longUrl = shortUrlData.filter(
             item => item.id === id
-        )[0].long_url;
+        )[0].longUrl;
         formik.values.shortUrl = shortUrlData.filter(
             item => item.id === id
-        )[0].short_url;
+        )[0].shortUrl;
         formik.values.title = shortUrlData.filter(
             item => item.id === id
         )[0].title;
         setEditBtn(true);
     };
-    const handleDelete = (id: string | number | boolean) => {
+    const handleDelete = (id: string | number | boolean) => {        
         deleteShortenUrl(id.toString(), toast);
         getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
     };
@@ -217,7 +219,7 @@ const UrlShortener = () => {
                                 <input
                                     className={styles.submit}
                                     type="submit"
-                                    value="Shorten"
+                                    value="Create"
                                     onClick={e => {
                                         e.preventDefault();
                                         validate(formik.values);

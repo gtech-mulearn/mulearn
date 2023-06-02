@@ -24,7 +24,7 @@ export const getShortenUrls = (
             }
         })
         .then(response => {
-            setShortUrlData(response.data.response);
+            setShortUrlData(response.data.response.data);            
             // setTotalPages(response.data.response.pagination.totalPages);
         })
         .catch(error => {
@@ -59,7 +59,7 @@ export const editShortenUrl = (
     urlEditedData: any
 ) => {
     privateGateway
-        .post(
+        .put(
             dashboardRoutes.editShortenUrl.replace("${urlId}", id),
             urlEditedData
         )
