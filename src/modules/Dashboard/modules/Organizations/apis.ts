@@ -2,8 +2,9 @@ import { AxiosError } from "axios";
 import axios from "axios";
 import { privateGateway } from "../../../../services/apiGateways";
 import { dashboardRoutes, organizationRoutes } from "../../../../services/urls";
-import { ToastId, UseToastOptions } from "@chakra-ui/toast";
-import countries from './dummyData/Countries.json'
+import { ToastId, UseToastOptions } from "@chakra-ui/toast"
+
+
 
 export const getOrganizations = async (
     activeTab:string,
@@ -24,7 +25,6 @@ export const getOrganizations = async (
             }
         })
         .then(response=>{
-            console.log("organizations-data",response.data.response.data)
             return response.data
         })
         .then(data => {
@@ -62,7 +62,6 @@ export const getCountry = async (setCountryData:any) => {
     try {
         await privateGateway.get(organizationRoutes.getLocation+"/country")
         .then(response=>{
-            console.log("country-data",response.data.response.data.countries)
             return response.data
         })
         .then(data => {
@@ -81,7 +80,6 @@ export const getStates = async (country:string,setStatesData:any) => {
     try {
         await privateGateway.get(`${organizationRoutes.getLocation}/${country}/states`)
         .then(response=>{
-            console.log("states-data",response.data.response.data.states)
             return response.data
         })
         .then(data => {
@@ -100,7 +98,6 @@ export const getZones = async (country:string,state:string,setZonesData:any) => 
     try {
         await privateGateway.get(`${organizationRoutes.getLocation}/${country}/${state}/zone`)
         .then(response=>{
-            console.log("zones-data",response.data.response.data.states)
             return response.data
         })
         .then(data => {
@@ -119,7 +116,6 @@ export const getDistricts = async (country:string,state:string,zone:string,setDi
     try {
         await privateGateway.get(`${organizationRoutes.getLocation}/${country}/${state}/${zone}/district`)
         .then(response=>{
-            console.log("districts-data",response.data.response.data.states)
             return response.data
         })
         .then(data => {
@@ -143,19 +139,9 @@ export const createOrganization = async (
     district: string,
     orgType:string, 
     toast: (options?: UseToastOptions | undefined) => ToastId,
-    affiliation?: string,
+    affiliation?:string,
+    setIsSuccess?:any,
     ) => {
-
-    console.log(`
-        inputName: ${title}
-        inputCode: ${code}
-        selectedCountry: ${country}
-        selectedState: ${state}
-        selectedZone: ${zone}
-        selectedDistrict: ${district}
-        orgType: ${orgType}
-        affiliation : ${affiliation}
-      `)
 
     const addDataProps = () => {
         if(orgType === "College"){
@@ -183,8 +169,6 @@ export const createOrganization = async (
         }
     }
 
-    console.log(addDataProps())
-
 	try {
         const response = await privateGateway.post(organizationRoutes.postAddOrganization, addDataProps());
 		toast({
@@ -194,13 +178,18 @@ export const createOrganization = async (
 			isClosable: true
 		});
         const message: any = response?.data;
-		console.log(message);
         console.log("created a new "+orgType)
+        setIsSuccess(true)
 
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            toast({
+                title:error?.response?.data?.message.general[0].code[0],
+                status: "error",
+                duration: 3000,
+                isClosable: true
+            });
         }
     }
 }
@@ -208,26 +197,40 @@ export const createOrganization = async (
 export const updateOrganization = async (
     title:string,
     code:string,
-    affiliation: string,
     country: string,
     state: string,
-    district: string,
     zone:string,
+    district: string,
     orgType:string, 
-    toast: (options?: UseToastOptions | undefined) => ToastId,) => {
+    toast: (options?: UseToastOptions | undefined) => ToastId,
+    affiliation?: string,
+    ) => {
 
+    const addDataProps = () => {
+        if(orgType === "College"){
+            return{
+                "title": title,
+                "state":state,
+                "zone":zone,
+                "district":district,
+                "country":country,
+                "affiliation":affiliation,
+                "orgType" : orgType
+            }
+        }
+        else {
+            return{
+                "title": title,
+                "state":state,
+                "zone":zone,
+                "district":district,
+                "country":country,
+                "orgType" : orgType
+            }
+        }
+    }
 	try {
-        console.log(`update-link--> ${organizationRoutes.putUpdateOrganization}/${code}`)
-        const response = await privateGateway.put(`${organizationRoutes.putUpdateOrganization}/${code}`, {
-			"title": title,
-            "code":code,
-            "state":state,
-            "zone":zone,
-            "district":district,
-            "country":country,
-            "affiliation":affiliation,
-            "orgType" : orgType
-		});
+        const response = await privateGateway.put(`${organizationRoutes.putUpdateOrganization}/${code}`, addDataProps());
 		toast({
 			title: "Organizations created",
 			status: "success",
@@ -235,7 +238,6 @@ export const updateOrganization = async (
 			isClosable: true
 		});
         const message: any = response?.data;
-		console.log(message);
         console.log("created a new "+orgType)
 
     } catch (err: unknown) {

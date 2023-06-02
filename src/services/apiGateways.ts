@@ -47,7 +47,7 @@ privateGateway.interceptors.request.use(
 // Add a response interceptor
 privateGateway.interceptors.response.use(
     function (response) {
-        console.log(response);
+        // console.log(response);
         return response;
     },
     function (error) {
