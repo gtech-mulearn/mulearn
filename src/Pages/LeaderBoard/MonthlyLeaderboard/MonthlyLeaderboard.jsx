@@ -6,19 +6,19 @@ import Footer from "../../../Components/Footer/Footer";
 import axios from "axios";
 
 const MonthlyLeaderboard = () => {
-  const [colleges, setColleges] = useState("");
+  // const [colleges, setColleges] = useState("");
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_LEADERBOARD_API}/api/v1/leaderboard/college-monthly/`)
-      .then(function (response) {
-        // console.log(response.data.response);
-        setColleges(response.data.response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    // axios
+    //   .get(`${process.env.REACT_APP_LEADERBOARD_API}/api/v1/leaderboard/college-monthly/`)
+    //   .then(function (response) {
+    //     // console.log(response.data.response);
+    //     setColleges(response.data.response);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
 
     axios
       .get('https://dev.mulearn.org/api/v1/leaderboard/students/')
@@ -54,7 +54,7 @@ const MonthlyLeaderboard = () => {
           </div>
         </div>
 
-        <div className={styles.second_view_container}>
+        {/* <div className={styles.second_view_container}>
           <div className={styles.second_view}>
             <div className={styles.sv_texts}>
               {" "}
@@ -84,7 +84,7 @@ const MonthlyLeaderboard = () => {
                 })}
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className={styles.second_view_container}>
           <div className={styles.second_view}>
