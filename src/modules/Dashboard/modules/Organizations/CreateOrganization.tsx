@@ -1,84 +1,35 @@
-import React, { useState, useEffect,useRef } from 'react';
-import Textfield from '../../../../components/MuComponents/TextField/Textfield';
 import { useNavigate } from 'react-router-dom';
-import { MuButtonLight } from '../../../../components/MuComponents/MuButtons/MuButton';
-import PrimaryButton from '../../../../components/MuComponents/MuButtons/MuOutlinedButton';
-import Dropdown from '../../../../components/MuComponents/Dropdown/Dropdown';
-import { hasRole } from '../../../../services/common_functions';
-import { roles } from '../../../../services/types';
 import './Organizations.scss';
-import { MuButton } from '../../../../components/MuComponents/MuButtons/MuButton';
-import { getCountry,getStates,getZones } from './apis';
 import { useLocation } from 'react-router-dom';
-import { useToast } from "@chakra-ui/react";
-
-import { createOrganization } from './apis';
-
-import countries from './dummyData/Countries.json';
-import districts from './dummyData/Districts.json';
-import states from './dummyData/States.json'
-import zones from './dummyData/Zones.json'
-
-import CollegeForm from './CollegeForm';
-import CompaniesForm from './CompaniesForm';
-import CommunitiesForm from './CommunitiesForm';
+import FormData from './FormData';
 
 function CreateOrganization() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const toast = useToast();
+  const { activeItem } = location.state;
 
-  const { activeItem,isCreate } = location.state;
-
-  const [inputName, setInputName] = useState('');
-  const [inputCode, setInputCode] = useState('');
-  const [selectedCountry, setSelectedCountry] = useState('');
-  const [selectedState,setSelectedState] = useState('')
-  const [selectedZone,setSelectedZone] = useState('')
-  const [selectedDistrict,setSelectedDistrict] = useState('')
-
-
-  function parseFunctionString(functionString: string) {
-    return new Function(`return ${functionString}`)();
-  }
-
-  const FormData = ({ activeItem,isCreate}: any) => {
+  const RenderFormData = ({ activeItem }: any) => {
     switch (activeItem) {
       case 'Colleges':
         return (
-          <CollegeForm
-            isCreate = {isCreate}
-            activeItem = "College"
-
-            setSelectedCountry = {setSelectedCountry}
-            setSelectedState = {setSelectedState}
-            setSelectedZone = {setSelectedZone}
-            setSelectedDistrict = {setSelectedDistrict}
+          <FormData
+            isCreate={true}
+            activeItem="College"
           />
         );
       case 'Companies':
         return (
-          <CollegeForm
-            isCreate = {isCreate}
-            activeItem = "Company"
-
-            setSelectedCountry = {setSelectedCountry}
-            setSelectedState = {setSelectedState}
-            setSelectedZone = {setSelectedZone}
-            setSelectedDistrict = {setSelectedDistrict}
+          <FormData
+            isCreate={true}
+            activeItem="Company"
           />
         );
       case 'Communities':
         return (
-          <CollegeForm
-          isCreate = {isCreate}
-          activeItem = "Community"
-
-          setSelectedCountry = {setSelectedCountry}
-          setSelectedState = {setSelectedState}
-          setSelectedZone = {setSelectedZone}
-          setSelectedDistrict = {setSelectedDistrict}
+          <FormData
+            isCreate={true}
+            activeItem="Community"
           />
         );
       default:
@@ -102,7 +53,7 @@ function CreateOrganization() {
         button to proceed for further process.
       </p>
       <div className="popup_dropdown_container">
-            <FormData activeItem={activeItem} isCreate={isCreate} />
+        <RenderFormData activeItem={activeItem} />
       </div>
     </div>
   );

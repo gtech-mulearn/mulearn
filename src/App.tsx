@@ -30,7 +30,7 @@ import UserRoleVerification from "./modules/Dashboard/modules/UserRoleVerificati
 import UserRoleVerificationDelete from "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationDelete";
 import UserRoleVerificationEdit from "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationEdit";
 import InterestGroupEdit from "./modules/Dashboard/modules/InterestGroup/InterestGroupEdit";
-import EditOrgnaization from "./modules/Dashboard/modules/Organizations/EditOrgnaization";
+import EditOrgnaization from "./modules/Dashboard/modules/Organizations/EditOrganization";
 import UrlShortener from "./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener";
 import InterestGroupDelete from "./modules/Dashboard/modules/InterestGroup/InterestGroupDelete";
 import TaskEdit from "./modules/Dashboard/modules/Tasks/TaskEdit";

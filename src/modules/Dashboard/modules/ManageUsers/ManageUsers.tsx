@@ -90,9 +90,9 @@ function ManageRoles() {
         getManageUsers(setData, 1, selectedValue, setTotalPages, "", "");
     };
 
-    const handleCreate = () => {
-        navigate("/manage-users/create");
-    };
+    // const handleCreate = () => {
+    //     navigate("/manage-users/create");
+    // };
 
     const handleIconClick = (column: string) => {
         if (sort === column) {
@@ -115,14 +115,14 @@ function ManageRoles() {
 
     return (
         <>
-            <div className={styles.createBtnContainer}>
+            {/* <div className={styles.createBtnContainer}>
                 <MuButton
                     className={styles.createBtn}
                     text={"Create"}
                     icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
                     onClick={handleCreate}
                 />
-            </div>
+            </div> */}
             <TableTop
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}

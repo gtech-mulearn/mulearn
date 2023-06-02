@@ -2,7 +2,7 @@ import { AxiosError } from "axios";
 import { privateGateway } from "../../../../services/apiGateways";
 import { dashboardRoutes } from "../../../../services/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
-
+import { SetStateAction } from "react";
 export const getManageUsers = async (
     setData: any,
     page: number,
@@ -36,16 +36,26 @@ export const getManageUsers = async (
 };
 
 export const createManageUsers = async (
-    name: string,
+    firstName: string,
+    last_name: string,
+    email: string,
+    mobile: string,
+    dob:string,
+    gender:string
 ) => {
     try {
         const response = await privateGateway.post(
             dashboardRoutes.getUsersData,
             {
-                name: name
+                first_name: firstName,
+                last_name: last_name,
+                email: email,
+                mobile: mobile,
+                dob:dob,
+                gender:gender
             }
         );
-        
+
         const message: any = response?.data;
         console.log(message);
     } catch (err: unknown) {
@@ -56,16 +66,29 @@ export const createManageUsers = async (
     }
 };
 
-export const editManageUsers = async (name: string, id: string | undefined) => {
+export const editManageUsers = async (
+    id: string | undefined,
+    firstName: string,
+    last_name: string,
+    email: string,
+    mobile: string,
+    
+) => {
     try {
-        const response = await privateGateway.put(
+        const response = await privateGateway.patch(
             dashboardRoutes.getUsersData + id + "/",
             {
-                name: name
+                first_name: firstName,
+                last_name: last_name,
+                email: email,
+                mobile: mobile,
+                discord_id: discord_id,
+                mu_id: mu_id,
             }
         );
         const message: any = response?.data;
         console.log(message);
+        
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -76,16 +99,16 @@ export const editManageUsers = async (name: string, id: string | undefined) => {
 
 export const getManageUsersDetails = async (
     id: string | undefined,
-    setInput: React.Dispatch<React.SetStateAction<string>>
+    setData: React.Dispatch<SetStateAction<any[]>>
 ) => {
     try {
-        const response = await privateGateway.get(
-            dashboardRoutes.getUsersData + "get/" + id + "/"
+        const response = await privateGateway.patch(
+            dashboardRoutes.getUsersData + id + "/"
         );
         const message: any = response?.data;
         console.log(message);
-        console.log(message.response.interestGroup.name);
-        setInput(message.response.interestGroup.name);
+        console.log(message.response.users);
+        setData(message.response.users);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -102,7 +125,7 @@ export const deleteManageUsers = async (
         const response = await privateGateway.delete(
             dashboardRoutes.getUsersData + id + "/"
         );
-		toast({
+        toast({
             title: "User deleted",
             status: "success",
             duration: 3000,

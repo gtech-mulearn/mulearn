@@ -2,6 +2,7 @@ import { AxiosError } from "axios";
 import { privateGateway } from "../../../../services/apiGateways";
 import { dashboardRoutes } from "../../../../services/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
+import { SetStateAction } from "react";
 
 export const getManageRoles = async (
     setData: any,
@@ -12,14 +13,17 @@ export const getManageRoles = async (
     sortID?: string
 ) => {
     try {
-        const response = await privateGateway.get(dashboardRoutes.getRolesData, {
-            params: {
-                perPage: selectedValue,
-                pageIndex: page,
-                search: search,
-                sortBy: sortID
+        const response = await privateGateway.get(
+            dashboardRoutes.getRolesData,
+            {
+                params: {
+                    perPage: selectedValue,
+                    pageIndex: page,
+                    search: search,
+                    sortBy: sortID
+                }
             }
-        });
+        );
         const interestGroups: any = response?.data;
 
         setData(interestGroups.response.data);
@@ -34,9 +38,12 @@ export const getManageRoles = async (
 
 export const createManageRoles = async (name: string) => {
     try {
-        const response = await privateGateway.post(dashboardRoutes.getRolesData, {
-            name: name
-        });
+        const response = await privateGateway.post(
+            dashboardRoutes.getRolesData,
+            {
+                name: name
+            }
+        );
 
         const message: any = response?.data;
         console.log(message);
@@ -48,12 +55,16 @@ export const createManageRoles = async (name: string) => {
     }
 };
 
-export const editManageRoles = async (name: string, id: string | undefined) => {
+export const editManageRoles = async (
+    id: string | undefined,
+    description: string
+) => {
     try {
-        const response = await privateGateway.put(
+        const response = await privateGateway.patch(
             dashboardRoutes.getRolesData + id + "/",
             {
-                name: name
+                
+                description: description
             }
         );
         const message: any = response?.data;
@@ -68,16 +79,16 @@ export const editManageRoles = async (name: string, id: string | undefined) => {
 
 export const getManageRolesDetails = async (
     id: string | undefined,
-    setInput: React.Dispatch<React.SetStateAction<string>>
+    setData: React.Dispatch<SetStateAction<any[]>>
 ) => {
     try {
-        const response = await privateGateway.get(
-            dashboardRoutes.getRolesData + "get/" + id + "/"
+        const response = await privateGateway.patch(
+            dashboardRoutes.getRolesData + id + "/"
         );
         const message: any = response?.data;
         console.log(message);
-        console.log(message.response.interestGroup.name);
-        setInput(message.response.interestGroup.name);
+        console.log(message.response.data);
+        setData(message.response.data);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
