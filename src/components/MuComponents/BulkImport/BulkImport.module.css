@@ -1,0 +1,29 @@
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 60vh;
+}
+
+.upload_button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 80px;
+	height: 80px;
+	background-color: var(--PrimaryLight);
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.upload_button:hover {
+	background-color: var(--InputDefaultBackground);
+}
+
+.icon {
+	font-size: 4rem;
+}
+
+.text {
+	margin-top: 1rem;
+}
