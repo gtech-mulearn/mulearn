@@ -20,6 +20,7 @@ function EditOrganization() {
   const [selectedState, setSelectedState] = useState('');
   const [selectedZone, setSelectedZone] = useState('');
   const [selectedDistrict, setSelectedDistrict] = useState('');
+  const [selectedAffiliation, setSelectedAffiliation] = useState('');
 
   useEffect(() => {
     if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate('/404');
@@ -31,6 +32,9 @@ function EditOrganization() {
         setSelectedCountry(data.country)
         setSelectedState(data.state)
         setSelectedZone(data.zone)
+        setSelectedDistrict(data.district)
+        setSelectedAffiliation(data.affiliation)
+
       })
       .catch((error) => {
         console.error(error);
@@ -51,6 +55,7 @@ function EditOrganization() {
             selectedState={selectedState}
             selectedZone={selectedZone}
             selectedDistrict={selectedDistrict}
+            selectedAffiliation={selectedAffiliation}
           />
         );
       case 'Companies':
