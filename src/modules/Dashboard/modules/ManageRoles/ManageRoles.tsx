@@ -21,24 +21,13 @@ function ManageRoles() {
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
 
-    const columnOrder = [
-        "id",
-        "title",
-        "description",
-        "updated_by",
-        "updated_at",
-        "created_by",
-        "created_at"
-    ];
-
-    const editableColumnNames = [
-        "ID",
-        "Title",
-        "Description",
-        "Updated By",
-        "Updated At",
-        "Created By",
-        "Created At"
+	const columnOrder = [
+        { column: "id", Label: "ID", isSortable: true },
+        { column: "title", Label: "Title", isSortable: false },
+        { column: "description", Label: "Description", isSortable: false },
+        { column: "updated_by", Label: "Updated By", isSortable: true },
+        { column: "created_by", Label: "Created By", isSortable: false },
+        { column: "created_at", Label: "Created On", isSortable: true }
     ];
 
     const handleNextClick = () => {
@@ -131,7 +120,6 @@ function ManageRoles() {
                 >
                     <THead
                         columnOrder={columnOrder}
-                        editableColumnNames={editableColumnNames}
                         onIconClick={handleIconClick}
                     />
                     <Pagination

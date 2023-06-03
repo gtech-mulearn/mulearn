@@ -3,7 +3,7 @@ import { privateGateway } from "../../../../services/apiGateways";
 import { dashboardRoutes } from "../../../../services/urls";
 import { SetStateAction } from "react";
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
-
+import { TaskEditInterface } from "./TaskInterface";
 export const getTasks = async (
     setData: any,
     page: number,
@@ -13,14 +13,17 @@ export const getTasks = async (
     sortID?: string
 ) => {
     try {
-        const response = await privateGateway.get(dashboardRoutes.getTasksData, {
-            params: {
-                perPage: selectedValue,
-                pageIndex: page,
-                search: search,
-                sortBy: sortID
+        const response = await privateGateway.get(
+            dashboardRoutes.getTasksData,
+            {
+                params: {
+                    perPage: selectedValue,
+                    pageIndex: page,
+                    search: search,
+                    sortBy: sortID
+                }
             }
-        });
+        );
         const tasks: any = response?.data;
         setData(tasks.response.data);
         setTotalPages(tasks.response.pagination.totalPages);
@@ -34,7 +37,7 @@ export const getTasks = async (
 
 export const getTaskDetails = async (
     id: string | undefined,
-    setData: React.Dispatch<SetStateAction<any[]>>
+    setData: React.Dispatch<SetStateAction<TaskEditInterface>>,
 ) => {
     try {
         const response = await privateGateway.get(
@@ -52,35 +55,34 @@ export const getTaskDetails = async (
 };
 
 export const editTask = async (
-	hashtag: string,
-	title: string,
+    hashtag: string,
+    title: string,
     karma: string,
     active: string,
     variable_karma: string,
     usage_count: string,
     id: string | undefined
-	
 ) => {
-	try {
-		const response = await privateGateway.put(
-			dashboardRoutes.getTasksData + "edit/" + id + "/",
-			{
-				title: title,
-				hashtag: hashtag,
-				karma: parseInt(karma),
-				usage_count: parseInt(usage_count),
-				active: parseInt(active),
-				variable_karma: parseInt(variable_karma)
-			}
-		);
-		const message: any = response?.data;
-		console.log(message);
-	} catch (err: unknown) {
-		const error = err as AxiosError;
-		if (error?.response) {
-			console.log(error.response);
-		}
-	}
+    try {
+        const response = await privateGateway.put(
+            dashboardRoutes.getTasksData + "edit/" + id + "/",
+            {
+                title: title,
+                hashtag: hashtag,
+                karma: parseInt(karma),
+                usage_count: parseInt(usage_count),
+                active: parseInt(active),
+                variable_karma: parseInt(variable_karma)
+            }
+        );
+        const message: any = response?.data;
+        console.log(message);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
 };
 
 export const createTask = async (
@@ -94,7 +96,7 @@ export const createTask = async (
     channel_id: string,
     type_id: string,
     level_id: string,
-	ig_id: string,
+    ig_id: string
 ) => {
     try {
         const response = await privateGateway.post(
@@ -110,7 +112,7 @@ export const createTask = async (
                 channel_id: parseInt(channel_id),
                 type_id: parseInt(type_id),
                 level_id: parseInt(level_id),
-				ig_id: parseInt(ig_id)
+                ig_id: parseInt(ig_id)
             }
         );
         const message: any = response?.data;
@@ -129,7 +131,7 @@ export const deleteTask = async (
 ) => {
     try {
         const response = await privateGateway.patch(
-            dashboardRoutes.getTasksData + 'delete/' + id + "/"
+            dashboardRoutes.getTasksData + "delete/" + id + "/"
         );
         toast({
             title: "Interest Group deleted",

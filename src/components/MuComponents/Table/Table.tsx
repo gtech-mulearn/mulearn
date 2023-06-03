@@ -28,7 +28,11 @@ type TableProps = {
     ];
     page: number;
     perPage: number;
-    columnOrder: string[];
+    columnOrder: {
+        column: string;
+        Label: string;
+        isSortable: boolean;
+    }[];
     id?: string[];
     onEditClick?: (column: string | number | boolean) => void;
     onDeleteClick?: (column: string | number | boolean) => void;
@@ -89,8 +93,8 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                     {startIndex + index + 1}
                                 </td>{" "}
                                 {props.columnOrder.map(column => (
-                                    <td className={styles.td} key={column}>
-                                        {convertToNormalDate(rowData[column])}
+                                    <td className={styles.td} key={column.column}>
+                                        {convertToNormalDate(rowData[column.column])}
                                     </td>
                                 ))}
                                 {props.id &&

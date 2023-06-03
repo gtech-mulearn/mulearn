@@ -18,23 +18,15 @@ function InterestGroup() {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(5);
-    const [sort, setSort] = useState('');
+    const [sort, setSort] = useState("");
     const navigate = useNavigate();
 
     const columnOrder = [
-		"name",
-		"user_ig_link_ig",
-        "updated_by",
-        "created_by",
-        "created_at",
-    ];
-
-    const editableColumnNames = [
-		"NAME",
-		"Members",
-        "Updated By",
-        "Created By",
-        "Created On",
+        { column: "name", Label: "Name", isSortable: true },
+        { column: "user_ig_link_ig", Label: "Members", isSortable: false },
+        { column: "updated_by", Label: "Updated By", isSortable: true },
+        { column: "created_by", Label: "Created By", isSortable: false },
+        { column: "created_at", Label: "Created On", isSortable: true }
     ];
 
     const handleNextClick = () => {
@@ -59,37 +51,43 @@ function InterestGroup() {
         setCurrentPage(1);
         getInterestGroups(setData, 1, perPage, setTotalPages, search, "");
     };
-    
-	const handleEdit = (id: string | number | boolean) => {
+
+    const handleEdit = (id: string | number | boolean) => {
         console.log(id);
-		navigate(`/interest-groups/edit/${id}`);
+        navigate(`/interest-groups/edit/${id}`);
     };
-	
-	const handleDelete = (id: string | number | boolean) => {
+
+    const handleDelete = (id: string | number | boolean) => {
         console.log(id);
         navigate(`/interest-groups/delete/${id}`);
     };
-	
+
     const handlePerPageNumber = (selectedValue: number) => {
-		setCurrentPage(1);
+        setCurrentPage(1);
         setPerPage(selectedValue);
         getInterestGroups(setData, 1, selectedValue, setTotalPages, "", "");
     };
-	
+
     const handleCreate = () => {
-		navigate("/interest-groups/create");
+        navigate("/interest-groups/create");
     };
 
     const handleIconClick = (column: string) => {
-		if(sort === column){
-			setSort(`-${column}`);
-			getInterestGroups(setData, 1, perPage, setTotalPages, "", `-${column}`);
-		}
-		else {
-			setSort(column);
-			getInterestGroups(setData, 1, perPage, setTotalPages, "", column);
-		}
-		
+        if (sort === column) {
+            setSort(`-${column}`);
+            getInterestGroups(
+                setData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                `-${column}`
+            );
+        } else {
+            setSort(column);
+            getInterestGroups(setData, 1, perPage, setTotalPages, "", column);
+        }
+
         console.log(`Icon clicked for column: ${column}`);
     };
 
@@ -107,21 +105,19 @@ function InterestGroup() {
 				onSearchText={handleSearch}
 				onPerPageNumber={handlePerPageNumber} 
 				CSV={dashboardRoutes.getIgList}        
-				// CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"} 
 			/>
             {data && (
                 <Table
-					rows={data}
-					page={currentPage}
-					perPage={perPage}
-					columnOrder={columnOrder}
-					id={['id']} 
-					onEditClick={handleEdit}
-					onDeleteClick={handleDelete}
-					>
+                    rows={data}
+                    page={currentPage}
+                    perPage={perPage}
+                    columnOrder={columnOrder}
+                    id={["id"]}
+                    onEditClick={handleEdit}
+                    onDeleteClick={handleDelete}
+                >
                     <THead
                         columnOrder={columnOrder}
-                        editableColumnNames={editableColumnNames}
                         onIconClick={handleIconClick}
                     />
                     <Pagination
