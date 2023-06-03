@@ -76,12 +76,19 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-users"></i>
         },
         {
+            url: "user-role-verification",
+            title: "User Role Verification",
+            hasView: true,
+            roles: [roles.ADMIN],
+            icon: <i className="fi fi-sr-users"></i>
+        },
+        {
             url: "url-shortener",
             title: "URL Shortener",
             hasView: true,
             roles: [roles.ADMIN],
             icon: <i className="fi fi-sr-globe"></i>
-        },
+        }
     ];
 
     // //Swtich Case not recommended

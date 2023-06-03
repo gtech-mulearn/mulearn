@@ -7,6 +7,7 @@ import {
     otpVerification
 } from "../services/apis";
 import { useNavigate } from "react-router-dom";
+import { BeatLoader, ClipLoader } from "react-spinners";
 
 const Login = () => {
     const [showOrHidePassword, setShowOrHidePassword] = useState("password");
@@ -16,6 +17,7 @@ const Login = () => {
     const [status, setStatus] = useState(0);
     const [password, setPassword] = useState("");
     const [otpForm, setOtpForm] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const toast = useToast();
     const navigate = useNavigate();
     useEffect(() => {
@@ -77,22 +79,29 @@ const Login = () => {
                                     Login with <b>OTP</b>
                                 </a>
                             </p>
-
-                            <button
+                            <button 
                                 onClick={e => {
                                     e.preventDefault();
                                     if (muid != "" && password != "") {
-                                        login(muid, password, toast, navigate);
-                                        // console.log("Hoi");
+                                        login(muid, password, toast, navigate, setIsLoading);
                                     }
                                 }}
                                 type="submit"
                             >
-                                Sign in
+                                <div className={styles.signin_loading}>
+                                    {isLoading ?
+                                        <>
+                                            Sign in
+                                            <ClipLoader color="#fff" size={20} />
+                                        </>
+                                        :
+                                        'Sign in'
+                                    }
+                                </div>
                             </button>
                             <span className={styles.register}>
                                 <a href="register">
-                                   Don't Have an Account? Sign up
+                                    Don't Have an Account? Sign up
                                 </a>
                             </span>
                         </form>
@@ -132,8 +141,8 @@ const Login = () => {
                                             showOrHidePassword == "password"
                                                 ? setShowOrHidePassword("text")
                                                 : setShowOrHidePassword(
-                                                      "password"
-                                                  );
+                                                    "password"
+                                                );
                                         }}
                                     >
                                         {showOrHidePassword === "text" ? (
@@ -178,19 +187,19 @@ const Login = () => {
                                     }
                                 }}
                                 type="submit"
-                                // disabled={status === 1 ? true : false}
+                            // disabled={status === 1 ? true : false}
                             >
                                 {hasError
                                     ? "Request OTP"
                                     : status === 0 && emailOrMuid != ""
-                                    ? "processing"
-                                    : emailOrMuid != ""
-                                    ? "Sign in"
-                                    : "Request OTP"}
+                                        ? "processing"
+                                        : emailOrMuid != ""
+                                            ? "Sign in"
+                                            : "Request OTP"}
                             </button>
                             <span className={styles.register}>
                                 <a href="register">
-                                   Don't Have an Account? Sign up
+                                    Don't Have an Account? Sign up
                                 </a>
                             </span>
                         </form>
