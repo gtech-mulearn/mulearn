@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Select from "react-select";
 import { hasRole } from '../../../../services/common_functions';
 import { roles } from '../../../../services/types';
-import { getCountry, getStates, getZones, getDistricts } from './apis';
+import { getCountry, getStates, getZones, getDistricts, getAffiliation } from './apis';
 import { useNavigate } from 'react-router-dom';
 import Textfield from '../../../../components/MuComponents/TextField/Textfield';
 
@@ -34,17 +34,20 @@ const FormData = ({ ...props }: CollegeFormProps) => {
   const [inputName, setInputName] = useState('');
   const [inputCode, setInputCode] = useState('');
 
+  const [affiliation,setAffiliation] = useState<any>("")
   const [country, setCountry] = useState<any>("");
   const [state, setState] = useState<any>("");
   const [district, setDistrict] = useState<any>("");
   const [zone, setZone] = useState<any>("");
   const [affiliatedUniversity, setAffiliatedUniversity] = useState("");
 
+  const [affiliationData,setAffiliationData] = useState<any[]>([])
   const [countryData, setCountryData] = useState<any[]>([]);
   const [statesData, setStatesData] = useState<any[]>([])
   const [zonesData, setZonesData] = useState<any[]>([])
   const [districtsData, setDistrictsData] = useState<any[]>([])
 
+  const [selectedAffiliation,setSelectedAffiliation] = useState('')
   const [selectedCountry, setSelectedCountry] = useState('');
   const [selectedState, setSelectedState] = useState('')
   const [selectedZone, setSelectedZone] = useState('')
@@ -67,7 +70,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
   };
 
   const orgType = props.activeItem
-  const AffUni = "KTU"
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -86,7 +88,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     const createOrUpdateOrganization = (
       params: SelectBodyProps,
       isCreate: boolean,
-      affUni?: string,
+      affiliation?: string,
     ) => {
       const {
         inputName,
@@ -110,7 +112,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             camelCase(district),
             orgType,
             toast,
-            affUni,
+            affiliation,
             setIsSuccess
           );
         } else {
@@ -136,7 +138,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             camelCase(district),
             orgType,
             toast,
-            affUni
+            affiliation
           );
         } else {
           updateOrganization(
@@ -165,7 +167,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
         toast,
       };
     
-      createOrUpdateOrganization(params, props.isCreate, AffUni);
+      createOrUpdateOrganization(params, props.isCreate, affiliation.value);
     };
     
     SelectBody(orgType);
@@ -178,6 +180,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
     if (!isCountryDataLoaded) {
       getCountry(setCountryData);
+      getAffiliation(setAffiliationData);
       setIsCountryDataLoaded(true);
     }
 
@@ -233,6 +236,13 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     if (option) {
       setCountry(option);
       setSelectedCountry(option.value as string)
+    }
+  };
+
+  const handleAffiliationChange = (option: any) => {
+    if (option) {
+      setAffiliation(option);
+      setSelectedAffiliation(option.value as string)
     }
   };
 
@@ -331,9 +341,9 @@ const FormData = ({ ...props }: CollegeFormProps) => {
           <div className="inputfield_container">
             <p>Affiliated University</p>
             <Select
-              value={state}
-              onChange={handleStateChange}
-              options={countryData}
+              value={affiliation}
+              onChange={handleAffiliationChange}
+              options={affiliationData}
             />
           </div>
         ) : (null)
