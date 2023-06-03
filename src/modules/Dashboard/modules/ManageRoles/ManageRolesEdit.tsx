@@ -27,24 +27,26 @@ const ManageRolesEdit = (props: Props) => {
                 <h1 className={styles.text}>Role Edit Page</h1>
                 <Formik
                     enableReinitialize={true}
-                    initialValues={{
-                        // igName: name
-                       
-                        description: data.description
-                    }}
+                    initialValues={
+                        {
+                            // igName: name
+                            // title:data.title,
+                            // description:data.description
+                        }
+                    }
                     validationSchema={Yup.object({
                         // igName: Yup.string()
                         //     .max(30, "Must be 30 characters or less")
                         //     .required("Required"),
                         title: Yup.string()
-                            .max(15, "Enter the title")
+                            .max(30, "Must be 30 characters or less")
                             .required("Required"),
                         description: Yup.string()
-                            .max(20, "Enter the description")
+                            .max(30, "Must be 30 characters or less")
                             .required("Required")
                     })}
                     onSubmit={values => {
-                        editManageRoles(id,  values.description);
+                        editManageRoles(id, values.title, values.description);
                         toast({
                             title: "Rolescreated",
                             status: "success",
@@ -55,7 +57,12 @@ const ManageRolesEdit = (props: Props) => {
                     }}
                 >
                     <Form className={styles.inputContainer}>
-                       
+                        <FormikTextInput
+                            label="Role Title"
+                            name="title"
+                            type="text"
+                            placeholder="Enter a title"
+                        />
                         <FormikTextInput
                             label="Role Description"
                             name="description"

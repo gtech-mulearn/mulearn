@@ -36,12 +36,13 @@ export const getManageRoles = async (
     }
 };
 
-export const createManageRoles = async (name: string) => {
+export const createManageRoles = async (title: string, description: string) => {
     try {
         const response = await privateGateway.post(
             dashboardRoutes.getRolesData,
             {
-                name: name
+                title: title,
+                description: description
             }
         );
 
@@ -57,13 +58,14 @@ export const createManageRoles = async (name: string) => {
 
 export const editManageRoles = async (
     id: string | undefined,
+    title: string,
     description: string
 ) => {
     try {
         const response = await privateGateway.patch(
             dashboardRoutes.getRolesData + id + "/",
             {
-                
+                title: title,
                 description: description
             }
         );
