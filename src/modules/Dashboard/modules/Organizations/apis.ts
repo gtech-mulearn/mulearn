@@ -186,8 +186,6 @@ export const createOrganization = async (
         }
     }
 
-    console.log(addDataProps())
-
 	try {
         const response = await privateGateway.post(organizationRoutes.postAddOrganization, addDataProps());
 		toast({
