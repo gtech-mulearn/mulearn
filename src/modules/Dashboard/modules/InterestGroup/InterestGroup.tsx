@@ -99,7 +99,6 @@ function InterestGroup() {
 				onSearchText={handleSearch}
 				onPerPageNumber={handlePerPageNumber} 
 				CSV={dashboardRoutes.getIgList}        
-				// CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"} 
 			/>
             {data && (
                 <Table
@@ -113,7 +112,6 @@ function InterestGroup() {
 					>
                     <THead
                         columnOrder={columnOrder}
-                        // editableColumnNames={columnOrder}
                         onIconClick={handleIconClick}
                     />
                     <Pagination
