@@ -58,6 +58,23 @@ interface CountryProps {
     created_by: string;
 }
 
+export const getAffiliation = async (setAffiliationData:any) => {
+    try {
+        await privateGateway.get(organizationRoutes.getAffiliation)
+        .then(response=>{
+            return response.data
+        })
+        .then(data => {
+            const affiliation:CountryProps[] = data.response.data.affiliation;
+            setAffiliationData(affiliation);
+        })
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+}
 export const getCountry = async (setCountryData:any) => {
     try {
         await privateGateway.get(organizationRoutes.getLocation+"/country")
@@ -168,6 +185,8 @@ export const createOrganization = async (
             }
         }
     }
+
+    console.log(addDataProps())
 
 	try {
         const response = await privateGateway.post(organizationRoutes.postAddOrganization, addDataProps());
