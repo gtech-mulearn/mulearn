@@ -2,14 +2,16 @@ import styles from "./Table.module.css";
 import { RxCaretSort } from "react-icons/rx";
 
 interface TableHeadProps {
-    columnOrder: any[];
-    editableColumnNames: string[];
+    columnOrder: {
+        column: string;
+        Label: string;
+        isSortable: boolean;
+    }[];
     onIconClick: (column: string) => void;
 }
 
 const THead: React.FC<TableHeadProps> = ({
     columnOrder,
-    editableColumnNames,
     onIconClick
 }) => {
     return (
@@ -17,12 +19,12 @@ const THead: React.FC<TableHeadProps> = ({
             <tr>
 				<th>S/N</th>
                 {columnOrder.map((column, index) => (
-                    <th className={styles.th} key={column}>
+                    <th className={styles.th} key={column.column}>
                         <div className={styles.thContainer}>
-                            <span>{editableColumnNames[index]}</span>
-                            {/* <button className={styles.icon} onClick={() => onIconClick(column)}>
+                            <span>{column.Label}</span>
+                            {column.isSortable && <button className={styles.icon} onClick={() => onIconClick(column.column)}>
                                 <RxCaretSort/>
-                            </button> */}
+                            </button>}
                         </div>
                     </th>
                 ))}
