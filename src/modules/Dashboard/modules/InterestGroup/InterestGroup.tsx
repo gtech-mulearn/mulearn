@@ -22,19 +22,11 @@ function InterestGroup() {
     const navigate = useNavigate();
 
     const columnOrder = [
-		"name",
-		"user_ig_link_ig",
-        "updated_by",
-        "created_by",
-        "created_at",
-    ];
-
-    const editableColumnNames = [
-		"NAME",
-		"Members",
-        "Updated By",
-        "Created By",
-        "Created On",
+        { column: "name", Label: "Name", isSortable: true },
+        { column: "user_ig_link_ig", Label: "Members", isSortable: false },
+        { column: "updated_by", Label: "Updated By", isSortable: true },
+        { column: "created_by", Label: "Created By", isSortable: false },
+        { column: "created_at", Label: "Created On", isSortable: true }
     ];
 
     const handleNextClick = () => {
@@ -121,7 +113,7 @@ function InterestGroup() {
 					>
                     <THead
                         columnOrder={columnOrder}
-                        editableColumnNames={editableColumnNames}
+                        // editableColumnNames={columnOrder}
                         onIconClick={handleIconClick}
                     />
                     <Pagination
