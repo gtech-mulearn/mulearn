@@ -30,8 +30,8 @@ const ManageRolesEdit = (props: Props) => {
                     initialValues={
                         {
                             // igName: name
-                            // title:data.title,
-                            // description:data.description
+                            title:data.title,
+                            description:data.description
                         }
                     }
                     validationSchema={Yup.object({
