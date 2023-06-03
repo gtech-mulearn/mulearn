@@ -21,9 +21,13 @@ const CampusStudentList = (props: Props) => {
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
 
-    const columnOrder = ["fullname", "email", "phone", "karma", "muid"];
-
-    const editableColumnNames = ["Name", "Email", "Phone", "Karma", "MuId"];
+	const columnOrder = [
+        { column: "fullname", Label: "Name", isSortable: false },
+        { column: "email", Label: "Email", isSortable: false },
+        { column: "phone", Label: "Phone", isSortable: false },
+        { column: "karma", Label: "Karma", isSortable: false },
+        { column: "muid", Label: "MuId", isSortable: false }
+    ];
 
     const [campusData, setCampusData] = useState({
         collegeName: "",
@@ -161,7 +165,6 @@ const CampusStudentList = (props: Props) => {
             >
                 <THead
                     columnOrder={columnOrder}
-                    editableColumnNames={editableColumnNames}
                     onIconClick={handleIconClick}
                 />
                 <Pagination
