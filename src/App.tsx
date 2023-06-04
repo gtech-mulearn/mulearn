@@ -29,7 +29,7 @@ import ManageUsersEdit from "./modules/Dashboard/modules/ManageUsers/ManageUsers
 import ManageRoles from "./modules/Dashboard/modules/ManageRoles/ManageRoles";
 import ManageRolesEdit from "./modules/Dashboard/modules/ManageRoles/ManageRolesEdit";
 import ManageRolesDelete from "./modules/Dashboard/modules/ManageRoles/ManageRolesDelete";
-import ManageRolesCreate from './modules/Dashboard/modules/ManageRoles/ManageRolesCreate';
+import ManageRolesCreate from "./modules/Dashboard/modules/ManageRoles/ManageRolesCreate";
 import UserRoleVerification from "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerification";
 import UserRoleVerificationDelete from "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationDelete";
 import UserRoleVerificationEdit from "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationEdit";
@@ -40,6 +40,7 @@ import InterestGroupDelete from "./modules/Dashboard/modules/InterestGroup/Inter
 import TaskEdit from "./modules/Dashboard/modules/Tasks/TaskEdit";
 import TaskCreate from "./modules/Dashboard/modules/Tasks/TaskCreate";
 import TaskDelete from "./modules/Dashboard/modules/Tasks/TaskDelete";
+import TaskBulkImport from "./modules/Dashboard/modules/Tasks/TaskBulkImport";
 
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
@@ -145,12 +146,16 @@ const router = createBrowserRouter([
                         path: "tasks/edit/:id",
                         element: <TaskEdit />
                     },
+                    {
+                        path: "tasks/bulk-import",
+                        element: <TaskBulkImport />
+                    },
                     { path: "url-shortener", element: <UrlShortener /> },
-                    { 
-				             		path: "tasks/delete/:id", 
-						            element: <TaskDelete /> 
-					          },
-                    { path: "url-shortener", element: <UrlShortener /> },
+                    {
+                        path: "tasks/delete/:id",
+                        element: <TaskDelete />
+                    },
+                    { path: "url-shortener", element: <UrlShortener /> }
                 ]
             }
         ]

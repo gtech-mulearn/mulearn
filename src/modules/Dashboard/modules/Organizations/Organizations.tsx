@@ -13,7 +13,6 @@ import {
     columnsCollege,
     columnsCommunities,
     columnsCompanies,
-    editableCollegeColumnNames,
     editableCompaniesColumnNames,
     editableCommunityColumnNames
 } from "./THeaders"
@@ -31,7 +30,6 @@ function Organizations() {
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(5);
     const [columns,setColumns] = useState(columnsCollege)
-    const [editableColumns,setEditableColumns] = useState(editableCollegeColumnNames)
     const [activeTab,setActiveTab] = useState("Colleges")
     const [sort, setSort] = useState('');
     const [popupStatus,setPopupStatus] = useState(false)
@@ -75,15 +73,12 @@ function Organizations() {
     const handleTabClick = (tab:string) => {
         if(tab === "Colleges"){
             setColumns(columnsCollege)
-            setEditableColumns(editableCollegeColumnNames)
             getOrganizations(tab,setData, 1, perPage, setTotalPages, "", "");
         }else if (tab === "Companies") {
             setColumns(columnsCompanies)
-            setEditableColumns(editableCompaniesColumnNames)
             getOrganizations(tab,setData, 1, perPage, setTotalPages, "", "");
         }else if(tab === "Communities") {
             setColumns(columnsCommunities)
-            setEditableColumns(editableCommunityColumnNames)
             getOrganizations(tab,setData, 1, perPage, setTotalPages, "", "");
         } else{
             alert("Error to load Table Headers")
@@ -155,7 +150,6 @@ function Organizations() {
                                >
                                <THead
                                    columnOrder={columns}
-                                   editableColumnNames={editableColumns}
                                    onIconClick={handleIconClick}
                                />
                                <Pagination

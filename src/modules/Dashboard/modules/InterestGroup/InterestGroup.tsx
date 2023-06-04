@@ -22,32 +22,11 @@ function InterestGroup() {
     const navigate = useNavigate();
 
     const columnOrder = [
-        "name",
-        "user_ig_link_ig",
-        "updated_by",
-        "created_by",
-        "created_at"
-    ];
-
-    // const columnOrder1 = [
-    //     {
-    //         key: "name",
-    //         label: "NAME",
-    //         sortable: true
-    //     },
-    //     {
-    //         key: "members",
-    //         label: "Members",
-    //         sortable: true
-    //     }
-    // ];
-
-    const editableColumnNames = [
-        "NAME",
-        "Members",
-        "Updated By",
-        "Created By",
-        "Created On"
+        { column: "name", Label: "Name", isSortable: true },
+        { column: "user_ig_link_ig", Label: "Members", isSortable: false },
+        { column: "updated_by", Label: "Updated By", isSortable: true },
+        { column: "created_by", Label: "Created By", isSortable: false },
+        { column: "created_at", Label: "Created On", isSortable: true }
     ];
 
     const handleNextClick = () => {
@@ -123,11 +102,10 @@ function InterestGroup() {
                 />
             </div>
             <TableTop
-                onSearchText={handleSearch}
-                onPerPageNumber={handlePerPageNumber}
-                CSV={dashboardRoutes.getIgList}
-                // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
-            />
+				onSearchText={handleSearch}
+				onPerPageNumber={handlePerPageNumber} 
+				CSV={dashboardRoutes.getIgList}        
+			/>
             {data && (
                 <Table
                     rows={data}
@@ -140,7 +118,6 @@ function InterestGroup() {
                 >
                     <THead
                         columnOrder={columnOrder}
-                        editableColumnNames={editableColumnNames}
                         onIconClick={handleIconClick}
                     />
                     <Pagination

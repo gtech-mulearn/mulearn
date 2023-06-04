@@ -27,6 +27,7 @@ export const dashboardRoutes = {
     getIgData: "/api/v1/dashboard/ig/",
     getIgList: "/api/v1/dashboard/ig/csv",
     getUsersData: "/api/v1/dashboard/user/",
+    getUsersList: "/api/v1/dashboard/user/csv/",
     getUsersRoleVerificationData: "/api/v1/dashboard/user/verification/",
     getUsersRoleVerificationList: "/api/v1/dashboard/user/verification/csv",
     getTasksData: "/api/v1/dashboard/task/",
@@ -44,6 +45,7 @@ export const dashboardRoutes = {
 export const organizationRoutes = {
     getOrganizationsAll: "/api/v1/organisation/institutes/info/all_inst",
     getCompany: "/api/v1/organisation/institutes/show/Company",
+    getAffiliation: "/api/v1/organisation/institutes/org/affiliation",
     getLocation: "/api/v1/location",
     postAddOrganization: "/api/v1/organisation/institutes/add",
     putUpdateOrganization: "/api/v1/organisation/institutes",

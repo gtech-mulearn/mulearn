@@ -50,10 +50,10 @@ const ManageUsersEdit = (props: Props) => {
                             .email("Invalid email address")
                             .required("Required"),
                         mobile: Yup.string()
-                            .email("Invalid mobile number")
+                            .length(10,"Invalid mobile number")
                             .required("Required"),
                         discord_id: Yup.string()
-                            .email("Invalid discord id")
+                            .min(17, "Must be 17 characters or more")
                             .required("Required"),
                         mu_id: Yup.string()
                             .email("Invalid mu_id")
