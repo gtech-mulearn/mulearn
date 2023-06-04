@@ -111,7 +111,7 @@ function ManageRoles() {
             <TableTop
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
-                CSV={dashboardRoutes.getStudentsList}
+                CSV={dashboardRoutes.getUsersList}
                 // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
             />
             {data && (
