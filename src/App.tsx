@@ -37,6 +37,8 @@ import TaskEdit from "./modules/Dashboard/modules/Tasks/TaskEdit";
 import TaskCreate from "./modules/Dashboard/modules/Tasks/TaskCreate";
 import TaskDelete from "./modules/Dashboard/modules/Tasks/TaskDelete";
 import TaskBulkImport from "./modules/Dashboard/modules/Tasks/TaskBulkImport";
+import ZonalDashboard from "./modules/Dashboard/modules/zonalDashboard/zonaldashboard";
+import DistrictDashboard from "./modules/Dashboard/modules/districtDashboard/districtdashboard";
 
 const router = createBrowserRouter([
     {
@@ -127,6 +129,14 @@ const router = createBrowserRouter([
                     {
                         path: "user-role-verification/edit/:id",
                         element: <UserRoleVerificationEdit />
+                    },
+                    {
+                        path: "zonal-dashboard",
+                        element: <ZonalDashboard />
+                    },
+                    {
+                        path: "district-dashboard",
+                        element: <DistrictDashboard />
                     },
                     { path: "organizations", element: <Organizations /> },
                     { path: "tasks", element: <Tasks /> },
