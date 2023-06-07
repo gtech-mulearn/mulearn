@@ -2,7 +2,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	min-height: 60vh;
+	min-height: 50vh;
 }
 
 .upload_button {
@@ -26,4 +26,15 @@
 
 .text {
 	margin-top: 1rem;
+}
+
+.fileInfo {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.fileInfo span {
+	font-weight: bold;
 }

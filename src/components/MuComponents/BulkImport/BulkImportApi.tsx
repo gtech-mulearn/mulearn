@@ -1,15 +1,28 @@
-import { AxiosError } from "axios";
-import { privateGateway } from "../../../services/apiGateways";
+import FormData from "form-data";
+import axios from "axios";
+import { dashboardRoutes } from "../../../services/urls";
 
-export const bulkImport = async (data: any, path: string) => {
-    try {
-        const response = await privateGateway.post(path, data);
-        const message: any = response?.data;
-        console.log(message);
-    } catch (err: unknown) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
-    }
+export const bulkImport = (data: any, path: string) => {
+    axios
+        .post(
+            `${import.meta.env.VITE_BACKEND_URL}${
+                path
+            }`,
+			data,
+            {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem(
+                        "accessToken"
+                    )}`,
+                    "Content-Type": "multipart/form-data"
+                }
+            }
+        )
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => {
+            console.log(error);
+            // toast.error(error.response.data.message.general[0]);
+        });
 };

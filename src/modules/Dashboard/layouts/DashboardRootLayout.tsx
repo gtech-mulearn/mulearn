@@ -17,9 +17,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
     useEffect(() => {
         const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
         const existInGuild = userInfo.existInGuild === "True";
-        const isCampusAmbassador = userInfo.roles?.includes(
-            roles.CAMPUS_AMBASSADOR
-        );
+        const isCampusAmbassador = userInfo.roles?.includes(roles.CAMPUS_LEAD);
         const isAdmin = userInfo.roles?.includes(roles.ADMIN);
 
         setConnected(existInGuild);
@@ -44,7 +42,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
             url: "campus-details",
             title: "Campus Details",
             hasView: true,
-            roles: [roles.CAMPUS_AMBASSADOR],
+            roles: [roles.CAMPUS_LEAD],
             icon: <i className="fi fi-sr-book-arrow-right"></i>
         },
         {
@@ -85,6 +83,20 @@ const DashboardRootLayout = (props: { component?: any }) => {
         {
             url: "url-shortener",
             title: "URL Shortener",
+            hasView: true,
+            roles: [roles.ADMIN],
+            icon: <i className="fi fi-sr-globe"></i>
+        },
+        {
+            url: "zonal-dashboard",
+            title: "Zonal Dashboard",
+            hasView: true,
+            roles: [roles.ADMIN],
+            icon: <i className="fi fi-sr-globe"></i>
+        },
+        {
+            url: "district-dashboard",
+            title: "District Dashbaord",
             hasView: true,
             roles: [roles.ADMIN],
             icon: <i className="fi fi-sr-globe"></i>
