@@ -156,7 +156,7 @@ const TaskCreate = (props: Props) => {
                                 text={"Decline"}
                                 className={styles.btn_cancel}
                                 onClick={() => {
-                                    navigate("/interest-groups");
+                                    navigate("/tasks");
                                 }}
                             />
                             <button type="submit" className={styles.btn_submit}>

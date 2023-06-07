@@ -24,7 +24,7 @@ const TaskDelete = (props: Props) => {
             <Form
                 title={`Are you sure you want to delete ${input.hashtag} ?`}
                 handleSubmitClick={handleSubmit}
-                cancelPath={"/interest-groups"}
+                cancelPath={"/tasks"}
             />
         </div>
     );
