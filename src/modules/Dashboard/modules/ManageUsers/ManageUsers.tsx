@@ -31,7 +31,7 @@ function ManageRoles() {
         { column: "dob", Label: "DOB", isSortable: false },
         { column: "gender", Label: "Gender", isSortable: false },
         { column: "discord_id", Label: "Discord ID", isSortable: false },
-        { column: "id", Label: "ID", isSortable: false },
+        // { column: "id", Label: "ID", isSortable: false },
         { column: "active", Label: "Active", isSortable: false },
         { column: "created_at", Label: "Created On", isSortable: true }
     ];

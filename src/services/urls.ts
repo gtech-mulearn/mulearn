@@ -15,7 +15,7 @@ export const authRoutes = {
     login: "/api/v1/auth/user-authentication/",
     getAccessToken: "/api/v1/auth/get-access-token/",
     otpVerification: "/api/v1/auth/otp-verification/",
-    requestEmailOrMuidOtp: "/api/v1/auth/request-otp/",
+    requestEmailOrMuidOtp: "/api/v1/auth/request-otp/"
 };
 
 export const dashboardRoutes = {
@@ -39,7 +39,10 @@ export const dashboardRoutes = {
     getShortenUrl: "/api/v1/url-shortener/list/",
     createShortenUrl: "/api/v1/url-shortener/create/",
     editShortenUrl: "/api/v1/url-shortener/edit/${urlId}/",
-    deleteShortenUrl: "/api/v1/url-shortener/delete/${urlId}/"
+    deleteShortenUrl: "/api/v1/url-shortener/delete/${urlId}/",
+    zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
+    zonalStudentList: "/api/v1/dashboard/zonal/student-details/csv/",
+    zonalCampusDetails: "/api/v1/dashboard/zonal/campus-details/"
 };
 
 export const organizationRoutes = {
@@ -51,4 +54,4 @@ export const organizationRoutes = {
     putUpdateOrganization: "/api/v1/organisation/institutes",
     deleteOrgnaization: "/api/v1/organisation/institutes/",
     postGetInfo: "/api/v1/organisation/institutes/info/"
-}
+};
