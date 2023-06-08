@@ -32,9 +32,14 @@ const UrlShortener = () => {
         message: ""
     });
 
-    const columnOrder = ["title","shortUrl", "longUrl"];
+    // const columnOrder = ["title","shortUrl", "longUrl"];
+    const columnOrder = [
+        { column: "title", Label: "Title", isSortable: true },
+        { column: "shortUrl", Label: "Short URL", isSortable: false },
+        { column: "longUrl", Label: "Long URL", isSortable: false }
+    ];
 
-    const editableColumnNames = ["Title","Short URL", "Long URL"];
+    const editableColumnNames = ["Title", "Short URL", "Long URL"];
     useEffect(() => {
         if (!hasRole([roles.ADMIN])) navigate("/404");
         getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
@@ -57,7 +62,7 @@ const UrlShortener = () => {
     };
     const handleEdit = (id: string | number | boolean) => {
         console.log(formik.values.id);
-        
+
         // navigate(`/interest-groups/edit/${id}`);
         formik.values.id = id.toString();
         formik.values.longUrl = shortUrlData.filter(
@@ -71,7 +76,7 @@ const UrlShortener = () => {
         )[0].title;
         setEditBtn(true);
     };
-    const handleDelete = (id: string | number | boolean) => {        
+    const handleDelete = (id: string | number | boolean) => {
         deleteShortenUrl(id.toString(), toast);
         getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
     };
@@ -130,9 +135,9 @@ const UrlShortener = () => {
         console.log(urlEditedData);
         createShortenUrl(
             toast,
-            urlEditedData
-            // formik,
-            // setHasValidationError,
+            urlEditedData,
+            formik,
+            setHasValidationError
             // userData,
             // navigate
         );
@@ -144,19 +149,27 @@ const UrlShortener = () => {
             shortUrlNew: values.shortUrl
         };
         console.log(urlData);
-        editShortenUrl(values.id, toast, urlData);
+        editShortenUrl(
+            values.id,
+            toast,
+            urlData,
+            formik,
+            setHasValidationError
+        );
         getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
     };
 
     const validate = (values: any) => {
+        console.log(values);
+
         let errors: any = {};
-        if (!values.title) {
+        if (values.title === "" || values.title === undefined) {
             errors.title = "Required";
         }
-        if (!values.longUrl) {
+        if (values.longUrl === "" || values.longUrl === undefined) {
             errors.longUrl = "Required";
         }
-        if (!values.shortUrl) {
+        if (values.shortUrl === "" || values.shortUrl === undefined) {
             errors.shortUrl = "Required";
         }
         return errors;
@@ -173,6 +186,13 @@ const UrlShortener = () => {
     return (
         <>
             <div className={styles.url_shortener_container}>
+                {hasValidationError.error ? (
+                    <div className={styles.validation_error_message}>
+                        <p>{hasValidationError.message}</p>
+                    </div>
+                ) : (
+                    ""
+                )}
                 <div className={styles.create_new_url}>
                     <form onSubmit={formik.handleSubmit}>
                         <input
@@ -299,7 +319,7 @@ const UrlShortener = () => {
                 >
                     <THead
                         columnOrder={columnOrder}
-                        editableColumnNames={editableColumnNames}
+                        // editableColumnNames={editableColumnNames}
                         onIconClick={handleIconClick}
                     />
                     <Pagination

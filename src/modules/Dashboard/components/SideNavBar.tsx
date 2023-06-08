@@ -102,13 +102,6 @@ const SideNavBar = (props: Props) => {
                         <MulearnBrand />
                     </div>
                     <div className={styles.side_nav_bar_items}>
-                        {/* <MuButton text="Home" icon={<i className="fi fi-sr-home"></i>} /> */}
-                        {/* <MuButton text="Team" icon={<i className="fi fi-sr-address-book"></i>} /> */}
-                        {/* <MuButton text="Management" icon={<i className="fi fi-sr-layout-fluid"></i>} /> */}
-                        {/* <MuButton text="Projects" icon={<i className="fi fi-sr-book-arrow-right"></i>} /> */}
-                        {/* <MuButton text="Tasks" icon={<i className="fi fi-sr-box"></i>} /> */}
-                        {/* <MuButton text="Activity" icon={<i className="fi fi-sr-copy-alt"></i>} /> */}
-                        {/* <MuButton text="History" icon={<i className="fi fi-sr-search-alt"></i>} /> */}
                         <div className={styles.side_nav_bar_main_items}>
                             {props.sidebarButtons
                                 .filter(
