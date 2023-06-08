@@ -31,7 +31,7 @@ function ManageRoles() {
         { column: "dob", Label: "DOB", isSortable: false },
         { column: "gender", Label: "Gender", isSortable: false },
         { column: "discord_id", Label: "Discord ID", isSortable: false },
-        { column: "id", Label: "ID", isSortable: false },
+        // { column: "id", Label: "ID", isSortable: false },
         { column: "active", Label: "Active", isSortable: false },
         { column: "created_at", Label: "Created On", isSortable: true }
     ];
@@ -111,7 +111,7 @@ function ManageRoles() {
             <TableTop
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
-                CSV={dashboardRoutes.getStudentsList}
+                CSV={dashboardRoutes.getUsersList}
                 // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
             />
             {data && (

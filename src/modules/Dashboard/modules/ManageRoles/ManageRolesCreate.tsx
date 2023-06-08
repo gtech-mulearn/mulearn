@@ -1,7 +1,7 @@
 import { createManageRoles } from "./apis";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { Form, Formik} from "formik";
+import { Form, Formik } from "formik";
 import styles from "../../../../components/MuComponents/FormikComponents/form.module.css";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 import * as Yup from "yup";
@@ -10,9 +10,8 @@ import { FormikTextInput } from "../../../../components/MuComponents/FormikCompo
 type Props = {};
 
 const ManageRolesCreate = (props: Props) => {
-	
-	const toast = useToast();
-	const navigate = useNavigate();
+    const toast = useToast();
+    const navigate = useNavigate();
 
     return (
         <div className={styles.external_container}>
@@ -20,12 +19,16 @@ const ManageRolesCreate = (props: Props) => {
                 <h1 className={styles.text}>Role Create Page</h1>
                 <Formik
                     initialValues={{
-                        roleName: ""
+                        title: "",
+                        description: ""
                         // acceptedTerms: false, // added for our checkbox
                         // jobType: "" // added for our select
                     }}
                     validationSchema={Yup.object({
-                        roleName: Yup.string()
+                        title: Yup.string()
+                            .max(30, "Must be 30 characters or less")
+                            .required("Required"),
+                        description: Yup.string()
                             .max(30, "Must be 30 characters or less")
                             .required("Required")
                         // firstName: Yup.string()
@@ -51,8 +54,8 @@ const ManageRolesCreate = (props: Props) => {
                         //     .required("Required")
                     })}
                     onSubmit={values => {
-                        console.log(values.roleName);
-                        createManageRoles(values.roleName);
+                        console.log(values.title, values.description);
+                        createManageRoles(values.title, values.description);
                         toast({
                             title: "Roles created",
                             status: "success",
@@ -63,11 +66,23 @@ const ManageRolesCreate = (props: Props) => {
                     }}
                 >
                     <Form className={styles.inputContainer}>
-                        <FormikTextInput
+                        {/* <FormikTextInput
                             label="Role Name"
                             name="Role Name"
                             type="text"
                             placeholder="Enter a name"
+                        /> */}
+                        <FormikTextInput
+                            label="Title"
+                            name="title"
+                            type="text"
+                            placeholder="Enter a title"
+                        />
+                        <FormikTextInput
+                            label="Description"
+                            name="description"
+                            type="text"
+                            placeholder="Enter a description"
                         />
 
                         {/* <MySelect label="Job Type" name="jobType">
@@ -100,4 +115,4 @@ const ManageRolesCreate = (props: Props) => {
     );
 };
 
-export default ManageRolesCreate ;
+export default ManageRolesCreate;

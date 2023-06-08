@@ -16,6 +16,7 @@ export const authRoutes = {
     getAccessToken: "/api/v1/auth/get-access-token/",
     otpVerification: "/api/v1/auth/otp-verification/",
     requestEmailOrMuidOtp: "/api/v1/auth/request-otp/"
+    requestEmailOrMuidOtp: "/api/v1/auth/request-otp/"
 };
 
 export const dashboardRoutes = {
@@ -27,6 +28,7 @@ export const dashboardRoutes = {
     getIgData: "/api/v1/dashboard/ig/",
     getIgList: "/api/v1/dashboard/ig/csv",
     getUsersData: "/api/v1/dashboard/user/",
+    getUsersList: "/api/v1/dashboard/user/csv/",
     getUsersRoleVerificationData: "/api/v1/dashboard/user/verification/",
     getUsersRoleVerificationList: "/api/v1/dashboard/user/verification/csv",
     getTasksData: "/api/v1/dashboard/task/",

@@ -23,30 +23,21 @@ export const Tasks = (props: Props) => {
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
 
-    const columnOrder = [
-        "title",
-        "hashtag",
-        "active",
-        "karma",
-        "usage_count",
-        "variable_karma",
-        "updated_by",
-        "updated_at",
-        "created_by",
-        "created_at"
-    ];
-
-    const editableColumnNames = [
-        "Title",
-        "Hashtag",
-        "Active",
-        "Karma",
-        "Usage Count",
-        "Variable Karma",
-        "Updated By",
-        "Updated On",
-        "Created By",
-        "Created On"
+	const columnOrder = [
+        { column: "title", Label: "Title", isSortable: true },
+        { column: "hashtag", Label: "Hashtag", isSortable: false },
+        { column: "active", Label: "Active", isSortable: false },
+        { column: "karma", Label: "Karma", isSortable: true },
+        { column: "usage_count", Label: "Usage Count", isSortable: false },
+        {
+            column: "variable_karma",
+            Label: "Variable Karma",
+            isSortable: false
+        },
+        { column: "updated_by", Label: "Updated By", isSortable: true },
+        { column: "updated_at", Label: "Updated On", isSortable: true },
+        { column: "created_by", Label: "Created By", isSortable: false },
+        { column: "created_at", Label: "Created On", isSortable: true }
     ];
 
     const handleNextClick = () => {
@@ -129,7 +120,6 @@ export const Tasks = (props: Props) => {
                 >
                     <THead
                         columnOrder={columnOrder}
-                        editableColumnNames={editableColumnNames}
                         onIconClick={handleIconClick}
                     />
                     <Pagination
