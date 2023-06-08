@@ -22,7 +22,7 @@ function ManageRoles() {
     const navigate = useNavigate();
 
 	const columnOrder = [
-        { column: "id", Label: "ID", isSortable: true },
+        // { column: "id", Label: "ID", isSortable: true },
         { column: "title", Label: "Title", isSortable: false },
         { column: "description", Label: "Description", isSortable: false },
         { column: "updated_by", Label: "Updated By", isSortable: true },

@@ -84,3 +84,24 @@ export const DropDownButtons = (props: {
         </div>
     );
 };
+
+export const SingleButton = (props: {
+    text: string; // text of main button
+    icon?: ReactJSXElement; // main button icon
+    style?: React.CSSProperties; // main button style if wanted
+    onClick?: React.MouseEventHandler; // onclick event if wanted
+	link?: string;
+}) => {
+	return (
+        <div className={styles.createBtnContainer}>
+            <a href={props.link} target="_blank">
+                <MuButton
+                    className={styles.createBtn}
+                    text={props.text}
+                    icon={props.icon}
+                    onClick={props.onClick}
+                />
+            </a>
+        </div>
+    );
+}
