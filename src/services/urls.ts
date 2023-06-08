@@ -15,8 +15,7 @@ export const authRoutes = {
     login: "/api/v1/auth/user-authentication/",
     getAccessToken: "/api/v1/auth/get-access-token/",
     otpVerification: "/api/v1/auth/otp-verification/",
-    requestEmailOrMuidOtp: "/api/v1/auth/request-otp/"
-};
+    requestEmailOrMuidOtp: "/api/v1/auth/request-otp/"};
 
 export const dashboardRoutes = {
     forgetPassword: "/api/v1/dashboard/user/forgot-password/",
@@ -40,9 +39,14 @@ export const dashboardRoutes = {
     createShortenUrl: "/api/v1/url-shortener/create/",
     editShortenUrl: "/api/v1/url-shortener/edit/${urlId}/",
     deleteShortenUrl: "/api/v1/url-shortener/delete/${urlId}/",
-    zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
-    zonalStudentList: "/api/v1/dashboard/zonal/student-details/csv/",
-    zonalCampusDetails: "/api/v1/dashboard/zonal/campus-details/"
+
+    getUserProfile: "/api/v1/dashboard/profile/user-profile/",
+    editUserProfile: "/api/v1/dashboard/profile/edit-user-profile/",
+    getUserLog: "/api/v1/dashboard/profile/user-log/",
+    getUserTaskLog: "/api/v1/dashboard/profile/user-task-log/",
+    getUserIg: "/api/v1/dashboard/profile/user-ig/",
+    getUserSuggestion: "/api/v1/dashboard/profile/user-suggestion/",
+    getStudentLeaderBoard: "api/v1/leaderboard/students/"
 };
 
 export const organizationRoutes = {
