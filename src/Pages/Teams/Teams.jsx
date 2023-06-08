@@ -135,6 +135,7 @@ const Teams = () => {
                   designation={member.position}
                   image={member.image}
                   linkedIn={member.linkedin ? member.linkedin : ""}
+                  twitter={member.twitter ? member.twitter : ""}
                   github={member.github ? member.github : ""}
                 />
               )
