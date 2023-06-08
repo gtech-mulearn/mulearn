@@ -15,9 +15,7 @@ export const authRoutes = {
     login: "/api/v1/auth/user-authentication/",
     getAccessToken: "/api/v1/auth/get-access-token/",
     otpVerification: "/api/v1/auth/otp-verification/",
-    requestEmailOrMuidOtp: "/api/v1/auth/request-otp/"
-    requestEmailOrMuidOtp: "/api/v1/auth/request-otp/"
-};
+    requestEmailOrMuidOtp: "/api/v1/auth/request-otp/"};
 
 export const dashboardRoutes = {
     forgetPassword: "/api/v1/dashboard/user/forgot-password/",
