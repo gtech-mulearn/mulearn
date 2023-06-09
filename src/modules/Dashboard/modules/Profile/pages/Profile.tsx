@@ -239,41 +239,54 @@ const Profile = () => {
                                 <span>View More</span>
                             </div>
                             <div className={styles.data_card}>
-                                {userLog.map((log, i) => (
-                                    <div key={i} className={styles.card}>
-                                        <div className={styles.cardInfo}>
-                                            <img
-                                                src="/src/modules/Dashboard/modules/Profile/assets/images/karmaVector.png"
-                                                alt=""
-                                                style={{
-                                                    width: "3rem",
-                                                    height: "3rem",
-                                                    padding: ".5rem",
-                                                    backgroundColor: "#014BB2"
-                                                }}
-                                            />{" "}
-                                            <div className={styles.cardName}>
-                                                <p>
-                                                    <span
-                                                        style={{
-                                                            color: "#014BB2"
-                                                        }}
-                                                    >
-                                                        {log.karmaPoint}
-                                                    </span>{" "}
-                                                    awarded for {log.taskName}.
-                                                </p>
-                                                <p>
-                                                    {moment
-                                                        .utc(log.createdDate)
-                                                        .local()
-                                                        .startOf("seconds")
-                                                        .fromNow()}
-                                                </p>
+                                {userLog
+                                    .sort((a, b) => {
+                                        return (
+                                            new Date(b.createdDate).getTime() -
+                                            new Date(a.createdDate).getTime()
+                                        );
+                                    })
+                                    .map((log, i) => (
+                                        <div key={i} className={styles.card}>
+                                            <div className={styles.cardInfo}>
+                                                <img
+                                                    src="/src/modules/Dashboard/modules/Profile/assets/images/karmaVector.png"
+                                                    alt=""
+                                                    style={{
+                                                        width: "3rem",
+                                                        height: "3rem",
+                                                        padding: ".5rem",
+                                                        backgroundColor:
+                                                            "#014BB2"
+                                                    }}
+                                                />{" "}
+                                                <div
+                                                    className={styles.cardName}
+                                                >
+                                                    <p>
+                                                        <span
+                                                            style={{
+                                                                color: "#014BB2"
+                                                            }}
+                                                        >
+                                                            {log.karmaPoint}
+                                                        </span>{" "}
+                                                        awarded for{" "}
+                                                        {log.taskName}.
+                                                    </p>
+                                                    <p>
+                                                        {moment
+                                                            .utc(
+                                                                log.createdDate
+                                                            )
+                                                            .local()
+                                                            .startOf("seconds")
+                                                            .fromNow()}
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))}
                             </div>
                         </div>
                     </div>
