@@ -89,7 +89,7 @@
 
 .rightDash .profileDash .profile .profileInfo .profilePic {
   display: flex;
-  /* align-items: center; */
+  align-items: center;
   gap: 1rem;
   margin-top: 1rem;
 }
@@ -375,7 +375,12 @@
 }
 
 @media (max-width: 500px) {
-  .rightDash .profileDash .profile .profileInfo img {
+  .rightDash .profileDash .profile .profileInfo .profilePic .name {
+    margin-top: 0px;
+    text-align: center;
+  }
+
+  .rightDash .profileDash .profile .profileInfo .profilePic img {
     margin-left: 0rem;
   }
 
