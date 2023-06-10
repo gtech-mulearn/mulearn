@@ -13,7 +13,8 @@ type PieChartProps = {
 
 const MARGIN = 30;
 
-const colors = ["#7DAAE9", "#014BB2", "#A0C8FF", "#E0EDFF"];
+const colors = ["#55A5E8", "#003E7D", "#D1E8FF", "#8ABFFF", "#001B37", "#90C0FF", "#004080", "#C6E2FF", "#3299CC", "#003D73", "#B3D6FF", "#0067A3", "#C2E0FF", "#02519D", "#A5CBE3"];
+
 
 export const PieChart = ({ width, height, data }: PieChartProps) => {
     const radius = Math.min(width, height) / 2 - MARGIN;

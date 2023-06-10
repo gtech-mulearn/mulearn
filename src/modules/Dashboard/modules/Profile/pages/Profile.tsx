@@ -6,6 +6,9 @@ import { getUserLog, getUserProfile } from "../services/api";
 import { PieChart } from "../Piechart/PieChart";
 import HeatmapComponent from "../Heatmap/HeatmapComponent";
 import MulearnBrand from "../assets/svg/MulearnBrand";
+import karmaVector from "../assets/images/karmaVector.png";
+import rankVector from "../assets/images/rankVector.png";
+import dpm from "../assets/images/dpm.jpg";
 
 const Profile = () => {
     // const [karmaDist, setKarmaDist] = useState([{ name: "", value: "" }]);
@@ -93,7 +96,7 @@ const Profile = () => {
                                     src={
                                         userProfile?.profile_pic
                                             ? userProfile?.profile_pic
-                                            : "/src/modules/Dashboard/modules/Profile/assets/images/dpm.jpg"
+                                            : dpm
                                     }
                                     alt=""
                                 />
@@ -144,7 +147,7 @@ const Profile = () => {
                         <div className={styles.pointsList}>
                             <div className={styles.points}>
                                 <img
-                                    src="/src/modules/Dashboard/modules/Profile/assets/images/karmaVector.png"
+                                    src={karmaVector}
                                     alt=""
                                     style={{ objectFit: "contain" }}
                                 />
@@ -162,7 +165,7 @@ const Profile = () => {
                             </div>
                             <div className={styles.points}>
                                 <img
-                                    src="/src/modules/Dashboard/modules/Profile/assets/images/rankVector.png"
+                                    src={rankVector}
                                     alt=""
                                     style={{ objectFit: "contain" }}
                                 />
@@ -173,7 +176,7 @@ const Profile = () => {
                             </div>
                             <div className={styles.points}>
                                 <img
-                                    src="/src/modules/Dashboard/modules/Profile/assets/images/karmaVector.png"
+                                    src={karmaVector}
                                     alt=""
                                     style={{ objectFit: "contain" }}
                                 />
@@ -193,8 +196,8 @@ const Profile = () => {
                                                       monthDifference
                                               )
                                             ? 0
-                                            : parseInt(userProfile.karma) /
-                                              monthDifference}
+                                            : (parseInt(userProfile.karma) /
+                                              monthDifference).toPrecision(2)}
                                     </h1>
                                 </div>
                             </div>
@@ -307,7 +310,7 @@ const Profile = () => {
                                         <div key={i} className={styles.card}>
                                             <div className={styles.cardInfo}>
                                                 <img
-                                                    src="/src/modules/Dashboard/modules/Profile/assets/images/karmaVector.png"
+                                                    src={karmaVector}
                                                     alt=""
                                                     style={{
                                                         width: "3rem",
