@@ -170,7 +170,6 @@
   flex-direction: column;
 }
 
-
 .rightDash .profileDash .profile .interestGrp .igs_container {
   display: flex;
   flex-wrap: wrap;
@@ -186,7 +185,7 @@
   border-radius: 10px;
   display: flex;
   align-items: center;
-  height: 50px;
+  min-height: 50px;
 }
 
 .rightDash .profileDash .profile .interestGrp .igs_container .igs p {
@@ -372,6 +371,9 @@
     justify-content: center;
     /* width: 80%; */
   }
+  .rightDash .profileDash .profile .interestGrp .igs_container {
+    max-width: 90vw;
+  }
 }
 
 @media (max-width: 500px) {
@@ -394,5 +396,8 @@
     gap: 1rem;
     flex-direction: row;
     justify-content: center;
+  }
+  .rightDash .profileDash .profile .interestGrp .igs_container {
+    max-width: 90vw;
   }
 }
