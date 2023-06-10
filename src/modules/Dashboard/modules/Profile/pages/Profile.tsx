@@ -21,7 +21,8 @@ const Profile = () => {
         karma: "",
         rank: "",
         muid: "",
-        level: ""
+        level: "",
+        profile_pic: ""
     });
     const [userLog, setUserLog] = useState([
         {
@@ -90,7 +91,9 @@ const Profile = () => {
                             <div className={styles.profilePic}>
                                 <img
                                     src={
-                                        "/src/modules/Dashboard/modules/Profile/assets/images/dpm.jpg"
+                                        userProfile?.profile_pic
+                                            ? userProfile?.profile_pic
+                                            : "/src/modules/Dashboard/modules/Profile/assets/images/dpm.jpg"
                                     }
                                     alt=""
                                 />
