@@ -31,6 +31,7 @@
   width: 95%;
   text-align: left;
   margin-bottom: 40px;
+  margin-top: -40px;
   /* left: 20%; */
 }
 
@@ -371,6 +372,7 @@
     justify-content: center;
     /* width: 80%; */
   }
+
   .rightDash .profileDash .profile .interestGrp .igs_container {
     max-width: 90vw;
   }
@@ -397,6 +399,7 @@
     flex-direction: row;
     justify-content: center;
   }
+
   .rightDash .profileDash .profile .interestGrp .igs_container {
     max-width: 90vw;
   }
