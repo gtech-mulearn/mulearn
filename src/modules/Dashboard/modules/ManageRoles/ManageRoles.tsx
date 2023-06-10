@@ -25,6 +25,7 @@ function ManageRoles() {
         // { column: "id", Label: "ID", isSortable: true },
         { column: "title", Label: "Title", isSortable: false },
         { column: "description", Label: "Description", isSortable: false },
+        { column: "users_with_role", Label: "Members", isSortable: false },
         { column: "updated_by", Label: "Updated By", isSortable: true },
         { column: "created_by", Label: "Created By", isSortable: false },
         { column: "created_at", Label: "Created On", isSortable: true }
