@@ -68,7 +68,7 @@ const Profile = () => {
                 <div className={styles.profileDash}>
                     <div className={styles.profile}>
                         <div className={styles.banner}>
-                            <i className="fi fi-sr-settings"></i>
+                            {/* <i className="fi fi-sr-settings"></i> */}
 
                             <div className={styles.member_since}>
                                 <div>
