@@ -49,7 +49,13 @@ const Profile = () => {
         const endYear = endDate.getFullYear();
         const endMonth = endDate.getMonth();
 
-        return (endYear - startYear) * 12 + (endMonth - startMonth);
+        const result = (endYear - startYear) * 12 + (endMonth - startMonth);
+
+        //check if result is a number
+        if (isNaN(result)) {
+            return 1;
+        }
+        return result;
     }
     const startDate = new Date(userProfile.joined.slice(0, 10));
     const endDate = new Date(moment().format("YYYY-MM-DD"));
@@ -179,6 +185,11 @@ const Profile = () => {
                                                   monthDifference /
                                                   1000
                                               ).toPrecision(2) + "K"
+                                            : isNaN(
+                                                  parseInt(userProfile.karma) /
+                                                      monthDifference
+                                              )
+                                            ? 0
                                             : parseInt(userProfile.karma) /
                                               monthDifference}
                                     </h1>
@@ -222,7 +233,11 @@ const Profile = () => {
                                 </p>
                             </div>
                             <div className={styles.head}>
-                                <h2>Karma Distribution</h2>
+                                {data &&
+                                    data.reduce(
+                                        (sum, item) => sum + item.value,
+                                        0
+                                    ) > 0 && <h2>Karma Distribution</h2>}
                                 {/* <PieChart width={400} height={400}>
                                     <Pie
                                         data={data}
@@ -237,36 +252,46 @@ const Profile = () => {
                                     <Tooltip />
                                     <Legend />
                                 </PieChart> */}
-                                <div className={styles.pie_chart}>
-                                    <PieChart
-                                        data={data}
-                                        width={250}
-                                        height={250}
-                                    />
-                                    <div className={styles.data_details}>
-                                        {data.map((data, i) => {
-                                            return (
-                                                <div
-                                                    key={i}
-                                                    className={
-                                                        styles.data_details_list
-                                                    }
-                                                >
-                                                    <span></span>
-                                                    <p>{data.name}</p>
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
+                                {data &&
+                                    data.reduce(
+                                        (sum, item) => sum + item.value,
+                                        0
+                                    ) > 0 && (
+                                        <div className={styles.pie_chart}>
+                                            <PieChart
+                                                data={data}
+                                                width={250}
+                                                height={250}
+                                            />
+                                            <div
+                                                className={styles.data_details}
+                                            >
+                                                {data.map((data, i) => {
+                                                    return (
+                                                        <div
+                                                            key={i}
+                                                            className={
+                                                                styles.data_details_list
+                                                            }
+                                                        >
+                                                            <span></span>
+                                                            <p>{data.name}</p>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    )}
                             </div>
                         </div>
 
                         <div className={styles.leadboard}>
-                            <div className={styles.head}>
-                                <h2>Recent Activity</h2>
-                                <span>View More</span>
-                            </div>
+                            {userLog && userLog.length > 0 && (
+                                <div className={styles.head}>
+                                    <h2>Recent Activity</h2>
+                                    {/* <span>View More</span> */}
+                                </div>
+                            )}
                             <div className={styles.data_card}>
                                 {userLog
                                     .sort((a, b) => {
