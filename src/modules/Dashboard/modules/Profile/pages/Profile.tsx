@@ -84,9 +84,7 @@ const Profile = () => {
                             <div className={styles.profilePic}>
                                 <img
                                     src={
-                                        userProfile.gender === "male"
-                                            ? "/src/modules/Dashboard/modules/Profile/assets/images/dpm.jpg"
-                                            : "/src/modules/Dashboard/modules/Profile/assets/images/dpfm.jpeg"
+                                        "/src/modules/Dashboard/modules/Profile/assets/images/dpm.jpg"
                                     }
                                     alt=""
                                 />
