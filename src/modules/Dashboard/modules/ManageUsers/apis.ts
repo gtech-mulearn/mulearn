@@ -2,8 +2,7 @@ import { AxiosError } from "axios";
 import { privateGateway } from "../../../../services/apiGateways";
 import { dashboardRoutes } from "../../../../services/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
-import { SetStateAction } from "react";
-import { toast } from "react-toastify";
+import { Dispatch, SetStateAction } from "react";
 export const getManageUsers = async (
     setData: any,
     page: number,
@@ -106,9 +105,18 @@ export const editManageUsers = async (
     }
 };
 
+interface IData {
+    first_name: string;
+    last_name: string;
+    email: string;
+    mobile: string;
+    discord_id: string;
+    mu_id: string;
+  }
+
 export const getManageUsersDetails = async (
     id: string | undefined,
-    setData: React.Dispatch<SetStateAction<any[]>>
+    setData: Dispatch<SetStateAction<IData>>
 ) => {
     try {
         const response = await privateGateway.patch(

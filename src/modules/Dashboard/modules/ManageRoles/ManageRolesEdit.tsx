@@ -12,7 +12,17 @@ type Props = {};
 
 const ManageRolesEdit = (props: Props) => {
     const [name, setName] = useState("");
-    const [data, setData] = useState<string[]>([]);
+    interface IData {
+        title: string;
+        description: string;
+      }
+      
+      const [data, setData] = useState<IData[]>([
+        {
+          title: "",
+          description: ""
+        }
+      ]);
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -30,8 +40,8 @@ const ManageRolesEdit = (props: Props) => {
                     initialValues={
                         {
                             // igName: name
-                            title:data.title,
-                            description:data.description
+                            title: data[0].title,
+                            description: data[0].description
                         }
                     }
                     validationSchema={Yup.object({
