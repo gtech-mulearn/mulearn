@@ -45,7 +45,8 @@ const Login = () => {
     return (
         <div className={styles.login_page}>
           <Dropdown
-        contents={["en", "hi"]}
+        contents={["en", "hi",
+    "mal"]}
         input={language}
         setInput={handleLanguageChange}
       />
