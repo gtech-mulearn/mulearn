@@ -75,7 +75,7 @@
 }
 
 .btn:hover {
-    background: #9fb5ef;
+    background: var(--btn-secondary-bg);
     color: var(--Black);
 }
 
