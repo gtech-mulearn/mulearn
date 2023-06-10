@@ -43,11 +43,8 @@ export const dashboardRoutes = {
     getUserProfile: "/api/v1/dashboard/profile/user-profile/",
     editUserProfile: "/api/v1/dashboard/profile/edit-user-profile/",
     getUserLog: "/api/v1/dashboard/profile/user-log/",
-    getUserTaskLog: "/api/v1/dashboard/profile/user-task-log/",
-    getUserIg: "/api/v1/dashboard/profile/user-ig/",
     getUserSuggestion: "/api/v1/dashboard/profile/user-suggestion/",
     getStudentLeaderBoard: "api/v1/leaderboard/students/",
-
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
     zonalCampusDetails: "/api/v1/dashboard/zonal/campus-details/"
 };
