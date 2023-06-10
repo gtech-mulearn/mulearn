@@ -196,8 +196,10 @@ const Profile = () => {
                                                       monthDifference
                                               )
                                             ? 0
-                                            : Math.round(parseInt(userProfile.karma) /
-                                              monthDifference)
+                                            : Math.round(
+                                                  parseInt(userProfile.karma) /
+                                                      monthDifference
+                                              )}
                                     </h1>
                                 </div>
                             </div>
