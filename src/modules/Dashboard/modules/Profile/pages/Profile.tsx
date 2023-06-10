@@ -7,21 +7,6 @@ import { PieChart } from "../Piechart/PieChart";
 import HeatmapComponent from "../Heatmap/HeatmapComponent";
 import MulearnBrand from "../assets/svg/MulearnBrand";
 
-// import { PieChart, Pie, Legend, Tooltip } from "recharts";
-// const data = [
-//     { name: "Category 1", value: 40 },
-//     { name: "Category 2", value: 30 },
-//     { name: "Category 3", value: 20 },
-//     { name: "Category 4", value: 10 }
-// ];
-const data = [
-    { name: "Mark", value: 90 },
-    { name: "Robert", value: 12 },
-    { name: "Emily", value: 34 },
-    { name: "Marion", value: 53 }
-    // {name:"Nicolas", value: 98},
-];
-
 const Profile = () => {
     // const [karmaDist, setKarmaDist] = useState([{ name: "", value: "" }]);
     const [userProfile, setUserProfile] = useState({
@@ -57,7 +42,19 @@ const Profile = () => {
 
     const data = [...convertedData2, ...convertedData1];
 
-    console.log(data);
+    function getMonthDifference(startDate: Date, endDate: Date): number {
+        const startYear = startDate.getFullYear();
+        const startMonth = startDate.getMonth();
+
+        const endYear = endDate.getFullYear();
+        const endMonth = endDate.getMonth();
+
+        return (endYear - startYear) * 12 + (endMonth - startMonth);
+    }
+    const startDate = new Date(userProfile.joined.slice(0, 10));
+    const endDate = new Date(moment().format("YYYY-MM-DD"));
+
+    const monthDifference = getMonthDifference(startDate, endDate);
 
     useEffect(() => {
         getUserProfile(setUserProfile);
@@ -71,7 +68,7 @@ const Profile = () => {
                 <div className={styles.profileDash}>
                     <div className={styles.profile}>
                         <div className={styles.banner}>
-                            <i className="fi fi-sr-settings"></i>
+                            {/* <i className="fi fi-sr-settings"></i> */}
 
                             <div className={styles.member_since}>
                                 <div>
@@ -169,13 +166,24 @@ const Profile = () => {
                             </div>
                             <div className={styles.points}>
                                 <img
-                                    src="/src/modules/Dashboard/modules/Profile/assets/images/hatVector.png"
+                                    src="/src/modules/Dashboard/modules/Profile/assets/images/karmaVector.png"
                                     alt=""
                                     style={{ objectFit: "contain" }}
                                 />
                                 <div>
-                                    <span>College</span>
-                                    <h1>{userProfile.college_code}</h1>
+                                    <span>Avg.Karma/Month</span>
+                                    <h1>
+                                        {parseInt(userProfile.karma) /
+                                            monthDifference >
+                                        1000
+                                            ? (
+                                                  parseInt(userProfile.karma) /
+                                                  monthDifference /
+                                                  1000
+                                              ).toPrecision(2) + "K"
+                                            : parseInt(userProfile.karma) /
+                                              monthDifference}
+                                    </h1>
                                 </div>
                             </div>
                         </div>
