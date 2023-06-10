@@ -27,15 +27,17 @@
 }
 
 :root {
-	--Primary: #014BB2;
-	--PrimaryLight: #CCDBF0;
-	--Secondary: #9719CD;
-	--SecondaryGrey: #404040;
-	--DarkGreyHeading: #404D61;
-	--Dark: #1A1A1A;
-	--Light: #F5F7F9;
-	--White: #FFFFFF;
-	--Blue800: #00204C;
-	--InputDefaultBackground: #EFF1F9;
-	--Error: red;
+    --Primary: #014bb2;
+    --PrimaryLight: #ccdbf0;
+    --Secondary: #9719cd;
+    --SecondaryGrey: #404040;
+    --DarkGreyHeading: #404d61;
+    --Dark: #1a1a1a;
+    --Light: #f5f7f9;
+    --White: #ffffff;
+    --Black: #000000;
+    --Blue800: #00204c;
+    --InputDefaultBackground: #eff1f9;
+    --Error: red;
+    --btn-secondary-bg: #9fb5ef;
 }
