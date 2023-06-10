@@ -16,7 +16,7 @@
 
 .select {
 	border: none;
-	width: 100%;
+	width: auto;
 	color: black;
 	border-radius: 8px;
 	background-color: #ebeaea9b;
@@ -41,7 +41,7 @@
 }
 
 .contents {
-    width: 100%;
+    width: auto;
     background-color: white;
     color: black;
     border: 2px solid #82828281;
