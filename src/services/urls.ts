@@ -44,6 +44,9 @@ export const dashboardRoutes = {
     editUserProfile: "/api/v1/dashboard/profile/edit-user-profile/",
     getUserLog: "/api/v1/dashboard/profile/user-log/",
     getUserSuggestion: "/api/v1/dashboard/profile/user-suggestion/",
+    getStudentLeaderBoard: "api/v1/leaderboard/students/",
+    zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
+    zonalCampusDetails: "/api/v1/dashboard/zonal/campus-details/"
 };
 
 export const organizationRoutes = {
