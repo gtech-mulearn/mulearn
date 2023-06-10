@@ -30,37 +30,3 @@ export const getUserLog = (setUserLog: userLog) => {
       console.log(error);
     });
 };
-export const getUserIg = (setUserIg: userLog) => {
-  privateGateway
-    .get(dashboardRoutes.getUserIg)
-    .then((response) => {
-      console.log(response.data.response);
-      setUserIg(response.data.response);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
-export const getUserTaskLog = (setUserIg: userLog) => {
-  privateGateway
-    .get(dashboardRoutes.getUserTaskLog)
-    .then((response) => {
-      console.log(response.data.response);
-      setUserIg(response.data.response);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
-
-export const getStudentLeaderBoard = (setStudentLeaderBoard: userLog) => {
-  privateGateway
-    .get(dashboardRoutes.getStudentLeaderBoard)
-    .then((response) => {
-      console.log(response.data.response);
-      setStudentLeaderBoard(response.data.response);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};

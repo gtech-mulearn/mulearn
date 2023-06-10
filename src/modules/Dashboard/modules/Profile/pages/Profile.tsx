@@ -2,14 +2,10 @@ import { useEffect, useState } from "react";
 import { MuButton } from "../../../../../components/MuComponents/MuButtons/MuButton";
 import styles from "./Profile.module.css";
 import moment from "moment";
-import {
-    getUserLog,
-    getUserProfile,
-    getStudentLeaderBoard,
-    getUserIg,
-    getUserTaskLog
-} from "../services/api";
+import { getUserLog, getUserProfile } from "../services/api";
 import { PieChart } from "../Piechart/PieChart";
+import HeatmapComponent from "../Heatmap/HeatmapComponent";
+import MulearnBrand from "../assets/svg/MulearnBrand";
 
 // import { PieChart, Pie, Legend, Tooltip } from "recharts";
 // const data = [
@@ -18,7 +14,7 @@ import { PieChart } from "../Piechart/PieChart";
 //     { name: "Category 3", value: 20 },
 //     { name: "Category 4", value: 10 }
 // ];
-export const data = [
+const data = [
     { name: "Mark", value: 90 },
     { name: "Robert", value: 12 },
     { name: "Emily", value: 34 },
@@ -27,31 +23,20 @@ export const data = [
 ];
 
 const Profile = () => {
+    // const [karmaDist, setKarmaDist] = useState([{ name: "", value: "" }]);
     const [userProfile, setUserProfile] = useState({
-        dob: "",
-        email: "",
+        firstName: "",
+        lastName: "",
+        college_code: "",
+        interest_groups: [{ name: "", karma: 0 }],
+        karma_distribution: [{ task_type: "", karma: 0 }],
         gender: "",
-        mobile: "",
+        id: "",
+        joined: "",
+        karma: "",
+        rank: "",
         muid: "",
-        name: ""
-    });
-    const [studentLeaderBoard, setStudentLeaderBoard] = useState([
-        {
-            fullName: "",
-            totalKarma: "",
-            institution: "",
-            muid: ""
-        }
-    ]);
-    const [userIg, setUserIg] = useState([
-        {
-            interestGroup: ""
-        }
-    ]);
-    const [userTaskLog, setUserTaskLog] = useState({
-        userKarma: "",
-        OrgCode: "",
-        rank: ""
+        level: ""
     });
     const [userLog, setUserLog] = useState([
         {
@@ -60,36 +45,70 @@ const Profile = () => {
             createdDate: ""
         }
     ]);
+
+    const convertedData1 = userProfile.interest_groups.map(item => ({
+        name: item.name,
+        value: item.karma
+    }));
+    const convertedData2 = userProfile.karma_distribution.map(item => ({
+        name: item.task_type,
+        value: item.karma
+    }));
+
+    const data = [...convertedData2, ...convertedData1];
+
+    console.log(data);
+
     useEffect(() => {
         getUserProfile(setUserProfile);
         getUserLog(setUserLog);
-        getStudentLeaderBoard(setStudentLeaderBoard);
-        getUserIg(setUserIg);
-        getUserTaskLog(setUserTaskLog);
+        // setKarmaDist(userProfile.karma_distribution);
         console.log(setUserLog);
     }, []);
     return (
         <>
-            {/* <div classNameN{styles.me={styles.profile_container}>
-                <p classNameN{styles.me={styles.heading}>Coming Soon!</p>
-                <p classNameN{styles.me={styles.tagline}>Wait for it</p>
-            </div> */}
             <div className={styles.rightDash}>
                 <div className={styles.profileDash}>
                     <div className={styles.profile}>
                         <div className={styles.banner}>
-                            <i className="fi fi-rr-settings"></i>{" "}
+                            <i className="fi fi-sr-settings"></i>
+
+                            <div className={styles.member_since}>
+                                <div>
+                                    <MulearnBrand />
+                                </div>
+                                <p>
+                                    Member since{" "}
+                                    {userProfile.joined.slice(0, 4)}
+                                </p>
+                            </div>
                         </div>
                         <div className={styles.profileInfo}>
                             <div className={styles.profilePic}>
                                 <img
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9wSW1AgdW3SF4ZJTe0617555_uIDlAL01UQ&usqp=CAU"
+                                    src={
+                                        userProfile.gender === "male"
+                                            ? "/src/modules/Dashboard/modules/Profile/assets/images/dpm.jpg"
+                                            : "/src/modules/Dashboard/modules/Profile/assets/images/dpfm.jpeg"
+                                    }
                                     alt=""
                                 />
 
                                 <div className={styles.name}>
-                                    <h1>{userProfile.name}</h1>
-                                    <p>{userProfile.muid}</p>
+                                    <h1>
+                                        {userProfile.firstName}{" "}
+                                        {userProfile.lastName} (
+                                        {userProfile.college_code})
+                                    </h1>
+                                    <p style={{ marginTop: "-5px" }}>
+                                        {userProfile.muid}
+                                    </p>
+                                    <p style={{ color: "#014BB2" }}>
+                                        LEVEL{"     "}
+                                        {userProfile.level
+                                            ? userProfile.level.slice(3, 4)
+                                            : 0}
+                                    </p>
                                 </div>
                             </div>
 
@@ -127,7 +146,14 @@ const Profile = () => {
                                 />
                                 <div>
                                     <span>Karma</span>
-                                    <h1>{userTaskLog.userKarma}</h1>
+                                    <h1>
+                                        {parseInt(userProfile.karma) > 1000
+                                            ? (
+                                                  parseInt(userProfile.karma) /
+                                                  1000
+                                              ).toPrecision(2) + "K"
+                                            : userProfile.karma}
+                                    </h1>
                                 </div>
                             </div>
                             <div className={styles.points}>
@@ -138,7 +164,7 @@ const Profile = () => {
                                 />
                                 <div>
                                     <span>Rank</span>
-                                    <h1>{userTaskLog.rank}</h1>
+                                    <h1>{userProfile.rank}</h1>
                                 </div>
                             </div>
                             <div className={styles.points}>
@@ -149,23 +175,34 @@ const Profile = () => {
                                 />
                                 <div>
                                     <span>College</span>
-                                    <h1>{userTaskLog.OrgCode}</h1>
+                                    <h1>{userProfile.college_code}</h1>
                                 </div>
                             </div>
                         </div>
 
                         <div className={styles.interestGrp}>
                             <b>Interest Groups</b>
-                            <div>
-                                {userIg.map((data, i) => {
+                            <div className={styles.igs_container}>
+                                {userProfile.interest_groups.map((data, i) => {
                                     return (
-                                        <li key={i}>{data.interestGroup}</li>
+                                        <div className={styles.igs} key={i}>
+                                            {data.name}
+                                            <p>
+                                                {data.karma > 1000
+                                                    ? (
+                                                          data.karma / 1000
+                                                      ).toPrecision(2) + "K"
+                                                    : data.karma}
+                                            </p>
+                                        </div>
                                     );
                                 })}
                             </div>
                         </div>
 
-                        <div className={styles.heatmap}></div>
+                        <div className={styles.heatmap}>
+                            <HeatmapComponent data={userLog} />
+                        </div>
                     </div>
 
                     <div className={styles.notification}>
@@ -201,33 +238,19 @@ const Profile = () => {
                                         height={250}
                                     />
                                     <div className={styles.data_details}>
-                                        <div
-                                            className={styles.data_details_list}
-                                        >
-                                            <span></span>
-                                            <p>Bootcamps</p>
-                                        </div>
-                                        <div
-                                            className={styles.data_details_list}
-                                        >
-                                            {" "}
-                                            <span></span>
-                                            <p>Tasks</p>
-                                        </div>
-                                        <div
-                                            className={styles.data_details_list}
-                                        >
-                                            {" "}
-                                            <span></span>
-                                            <p>IG</p>
-                                        </div>
-                                        <div
-                                            className={styles.data_details_list}
-                                        >
-                                            {" "}
-                                            <span></span>
-                                            <p>Roles</p>
-                                        </div>
+                                        {data.map((data, i) => {
+                                            return (
+                                                <div
+                                                    key={i}
+                                                    className={
+                                                        styles.data_details_list
+                                                    }
+                                                >
+                                                    <span></span>
+                                                    <p>{data.name}</p>
+                                                </div>
+                                            );
+                                        })}
                                     </div>
                                 </div>
                             </div>

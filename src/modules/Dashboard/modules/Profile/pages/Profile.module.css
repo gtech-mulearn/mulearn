@@ -1,54 +1,8 @@
-/* * {
+* {
   margin: 0%;
   padding: 0%;
   box-sizing: border-box;
 }
-
-
-.profile_container {
-  width: 90%;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  background: #f3f8ff;
-  border: 1px solid #dde2e5;
-  border-radius: 20px;
-}
-
-.heading {
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: #1b4bb2;
-}
-
-.tagline {
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: #1b4bb2;
-} */
-
-/* 
-.user {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.user img {
-  width: 4rem;
-  height: 4rem;
-  object-fit: contain;
-  border-radius: 100%;
-}
-
-.user i {
-  font-size: 1.5rem;
-  color: #014BB2;
-  cursor: pointer;
-} */
 
 .rightDash h1 {
   font-size: 25px;
@@ -100,8 +54,20 @@
   border-top-right-radius: 20px;
   height: 10rem;
   width: 100%;
-  background-color: #E0EDFF;
+  background-color: #A0C8FF;
   position: relative;
+}
+
+.rightDash .profileDash .profile .banner .member_since {
+  position: absolute;
+  right: -20px;
+  bottom: 10px;
+}
+
+.rightDash .profileDash .profile .banner .member_since p {
+  font-size: 15px;
+  color: #014BB2;
+  font-weight: 500;
 }
 
 .rightDash .profileDash .profile .banner i {
@@ -121,18 +87,23 @@
   top: -3.5rem;
 }
 
-.rightDash .profileDash .profile .profileInfo img {
+.rightDash .profileDash .profile .profileInfo .profilePic {
+  display: flex;
+  /* align-items: center; */
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.rightDash .profileDash .profile .profileInfo .profilePic img {
   border-radius: 100%;
   border: 5px solid #fff;
   width: 10rem;
   margin-left: 2rem;
+  margin-top: -25px;
 }
 
-.rightDash .profileDash .profile .profileInfo .profilePic {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
+.rightDash .profileDash .profile .profileInfo .profilePic .name {
+  margin-top: 40px;
 }
 
 .rightDash .profileDash .profile .profileInfo button {
@@ -200,44 +171,80 @@
 }
 
 
-.rightDash .profileDash .profile .interestGrp div {
+.rightDash .profileDash .profile .interestGrp .igs_container {
   display: flex;
   flex-wrap: wrap;
   margin: 1rem 0 1.5rem 0;
   list-style: none;
   gap: 20px;
   justify-content: flex-start;
+  max-width: 50vw;
 }
 
-.rightDash .profileDash .profile .interestGrp div li {
+.rightDash .profileDash .profile .interestGrp .igs_container .igs {
   padding: .5rem 1rem;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  height: 50px;
 }
 
-.rightDash .profileDash .profile .interestGrp div li:nth-child(1) {
+.rightDash .profileDash .profile .interestGrp .igs_container .igs p {
+  padding: 5px;
+  width: 50px;
+  border-radius: 8px;
+  margin-left: 10px;
+  text-align: center;
+}
+
+.rightDash .profileDash .profile .interestGrp .igs_container .igs:nth-child(1) {
   background-color: rgb(255, 187, 89, .3);
   color: #D18E2C;
 }
 
-.rightDash .profileDash .profile .interestGrp div li:nth-child(2) {
+.rightDash .profileDash .profile .interestGrp .igs_container .igs:nth-child(1) p {
+  background-color: rgb(255, 187, 89, .9);
+  color: #FFF4E4;
+}
+
+.rightDash .profileDash .profile .interestGrp .igs_container .igs:nth-child(2) {
   background-color: rgb(255, 134, 152, .3);
   color: #FC7F92;
 }
 
-.rightDash .profileDash .profile .interestGrp div li:nth-child(3) {
+.rightDash .profileDash .profile .interestGrp .igs_container .igs:nth-child(2) p {
+  background-color: rgb(255, 134, 152, .9);
+  color: #FFF4E4;
+}
+
+.rightDash .profileDash .profile .interestGrp .igs_container .igs:nth-child(3) {
   background-color: rgb(34, 179, 210, .3);
   color: #22B3D2;
 }
 
-.rightDash .profileDash .profile .interestGrp div li:nth-child(4) {
+.rightDash .profileDash .profile .interestGrp .igs_container .igs:nth-child(3) p {
+  background-color: rgb(34, 179, 210, .9);
+  color: #FFF4E4;
+}
+
+.rightDash .profileDash .profile .interestGrp .igs_container .igs:nth-child(4) {
   background-color: rgb(45, 206, 137, .3);
   color: #2DCE89;
+}
+
+.rightDash .profileDash .profile .interestGrp .igs_container .igs:nth-child(4) p {
+  background-color: rgb(45, 206, 137, .9);
+  color: #FFF4E4;
+
 }
 
 .rightDash .profileDash .profile .heatmap {
   margin-top: 30px;
   display: flex;
   justify-content: center;
+  max-width: 770px;
+  width: 90vw;
+  overflow: scroll;
 }
 
 .rightDash .profileDash .profile .heatmap img {
@@ -271,6 +278,7 @@
 
 .rightDash .profileDash .notification .existing_roles .pie_chart .data_details p {
   color: #000;
+  font-size: 10px;
 }
 
 .rightDash .profileDash .notification .existing_roles .pie_chart .data_details .data_details_list {
