@@ -29,8 +29,8 @@ const ManageUsersEdit = (props: Props) => {
                     enableReinitialize={true}
                     initialValues={{
                         // igName: name
-                        firstName: data.first_name,
-                        lastName: data.last_name,
+                        first_name: data.first_name,
+                        last_name: data.last_name,
                         email: data.email,
                         mobile: data.mobile,
                         discord_id: data.discord_id,
@@ -40,10 +40,10 @@ const ManageUsersEdit = (props: Props) => {
                         // igName: Yup.string()
                         //     .max(30, "Must be 30 characters or less")
                         //     .required("Required"),
-                        firstName: Yup.string()
+                        first_name: Yup.string()
                             .max(15, "Must be 15 characters or less")
                             .required("Required"),
-                        lastName: Yup.string()
+                        last_name: Yup.string()
                             .max(20, "Must be 20 characters or less")
                             .required("Required"),
                         email: Yup.string()
@@ -62,32 +62,28 @@ const ManageUsersEdit = (props: Props) => {
                     onSubmit={values => {
                         editManageUsers(
                             id,
-                            values.firstName,
-                            values.lastName,
+                            values.first_name,
+                            values.last_name,
                             values.email,
                             values.mobile,
                             values.discord_id,
-                            values.mu_id
+                            values.mu_id,
+                            toast
                         );
-                        toast({
-                            title: "User created",
-                            status: "success",
-                            duration: 3000,
-                            isClosable: true
-                        });
+                       
                         navigate("/manage-users");
                     }}
                 >
                     <Form className={styles.inputContainer}>
                         <FormikTextInput
                             label="User First Name"
-                            name="firstName"
+                            name="first_name"
                             type="text"
                             placeholder="Enter a name"
                         />
                         <FormikTextInput
                             label="User Last Name"
-                            name="lastName"
+                            name="last_name"
                             type="text"
                             placeholder="Enter a name"
                         />

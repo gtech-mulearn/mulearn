@@ -10,12 +10,14 @@ export const columnsStudent = [
 ];
 
 export const columnsCampus = [
+    { column: "id", Label: "ID", isSortable: false },
     { column: "title", Label: "Title", isSortable: false },
     { column: "code", Label: "Code", isSortable: false },
     { column: "org_type", Label: "Org Type", isSortable: false },
-    { column: "district_name", Label: "District", isSortable: false },
-    { column: "total_members", Label: "Total Members", isSortable: false },
+    // { column: "district_name", Label: "District", isSortable: false },
     { column: "total_karma", Label: "Total Karma", isSortable: false },
-    { column: "active_members", Label: "Active Members", isSortable: false }
+    { column: "total_members", Label: "Total Members", isSortable: false },
+    { column: "active_members", Label: "Active Members", isSortable: false },
+    { column: "rank", Label: "Rank", isSortable: false }
 ];
 

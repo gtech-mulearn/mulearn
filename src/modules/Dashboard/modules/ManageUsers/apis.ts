@@ -3,6 +3,7 @@ import { privateGateway } from "../../../../services/apiGateways";
 import { dashboardRoutes } from "../../../../services/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 import { SetStateAction } from "react";
+import { toast } from "react-toastify";
 export const getManageUsers = async (
     setData: any,
     page: number,
@@ -40,8 +41,8 @@ export const createManageUsers = async (
     last_name: string,
     email: string,
     mobile: string,
-    dob:string,
-    gender:string
+    dob: string,
+    gender: string
 ) => {
     try {
         const response = await privateGateway.post(
@@ -50,9 +51,7 @@ export const createManageUsers = async (
                 first_name: firstName,
                 last_name: last_name,
                 email: email,
-                mobile: mobile,
-                dob:dob,
-                gender:gender
+                mobile: mobile
             }
         );
 
@@ -68,32 +67,42 @@ export const createManageUsers = async (
 
 export const editManageUsers = async (
     id: string | undefined,
-    firstName: string,
+    first_name: string,
     last_name: string,
     email: string,
     mobile: string,
-    
+    discord_id: string,
+    mu_id: string,
+    toast:any
 ) => {
     try {
         const response = await privateGateway.patch(
             dashboardRoutes.getUsersData + id + "/",
             {
-                first_name: firstName,
+                first_name: first_name,
                 last_name: last_name,
                 email: email,
                 mobile: mobile,
                 discord_id: discord_id,
-                mu_id: mu_id,
+                mu_id: mu_id
             }
         );
+        console.log(first_name, last_name, email);
         const message: any = response?.data;
         console.log(message);
-        
+         toast({
+             title: "User created",
+             status: "success",
+             duration: 3000,
+             isClosable: true
+         });
     } catch (err: unknown) {
         const error = err as AxiosError;
+      
         if (error?.response) {
             console.log(error.response);
         }
+        
     }
 };
 
