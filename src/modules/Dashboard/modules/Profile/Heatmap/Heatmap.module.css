@@ -1,0 +1,38 @@
+.heatmap_container {
+    width: 100%;
+}
+
+.heatmap_container .heatmap {
+    display: flex;
+    flex-wrap: wrap;
+    /* width: 400px; */
+    height: 110px;
+    align-content: space-between;
+    flex-direction: column;
+}
+
+.heatmap_container .months {
+    margin-left: 25px;
+    display: flex;
+    gap: 35px;
+    justify-content: flex-start;
+}
+
+.heatmap_container .weeks {
+    position: absolute;
+    font-size: 9.5px;
+}
+
+.heatmap_container .heatmap {
+    margin-left: 20px;
+}
+
+.heatmap_container .heatmap p {
+    height: 10px;
+    width: 10px;
+    margin: 2px;
+    text-align: center;
+    font-size: 9px;
+    border-radius: 3px;
+    background: aliceblue;
+}

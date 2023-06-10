@@ -89,8 +89,8 @@ export const getManageRolesDetails = async (
         );
         const message: any = response?.data;
         console.log(message);
-        console.log(message.response.roles);
-        setData(message.response.roles);
+        console.log(message.response.data);
+        setData(message.response.data);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
