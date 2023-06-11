@@ -36,6 +36,42 @@
   /* left: 20%; */
 }
 
+.rightDash .loader_container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  backdrop-filter: blur(11px);
+  transition: all .5s ease-in;
+  transform: scaleX(-1);
+}
+
+.rightDash .loader {
+  margin-bottom: 20px;
+  animation: loader 1s infinite linear;
+}
+
+.rightDash .loader_container p {
+  color: #5570f2;
+  transform: scaleX(-1);
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
 .rightDash .profileDash {
   position: relative;
   top: 2rem;
