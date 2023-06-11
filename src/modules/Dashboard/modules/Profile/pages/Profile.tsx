@@ -6,7 +6,6 @@ import { getUserLog, getUserProfile } from "../services/api";
 import { PieChart } from "../components/Piechart/PieChart";
 import HeatmapComponent from "../components/Heatmap/HeatmapComponent";
 import MulearnBrand from "../assets/svg/MulearnBrand";
-import Looder from "../assets/svg/Looder";
 import { GridLoader } from "react-spinners";
 
 const Profile = () => {
