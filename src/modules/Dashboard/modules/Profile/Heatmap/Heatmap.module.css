@@ -43,16 +43,19 @@
 @media (min-width: 2000px) {
     .heatmap_container .months {
         margin-left: 45px;
+        gap: 85px;
     }
 
     .heatmap_container .weeks {
         font-size: 16px;
         margin-top: -3px;
     }
+
     .heatmap_container .heatmap {
         height: 170px;
         margin-left: 40px;
     }
+
     .heatmap_container .heatmap p {
         height: 20px;
         width: 20px;
