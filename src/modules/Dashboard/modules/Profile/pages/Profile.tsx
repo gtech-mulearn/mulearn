@@ -7,6 +7,10 @@ import { PieChart } from "../components/Piechart/PieChart";
 import HeatmapComponent from "../components/Heatmap/HeatmapComponent";
 import MulearnBrand from "../assets/svg/MulearnBrand";
 import { GridLoader } from "react-spinners";
+import karmaVector from "../assets/images/karmaVector.png";
+import rankVecotr from "../assets/images/rankVector.png";
+import dpm from "../assets/images/dpm.jpg";
+import { userInfo } from "os";
 
 const Profile = () => {
     const [APILoadStatus, setAPILoadStatus] = useState(0);
@@ -22,7 +26,8 @@ const Profile = () => {
         karma: "",
         rank: "",
         muid: "",
-        level: ""
+        level: "",
+        profile_pic: ""
     });
     const [userLog, setUserLog] = useState([
         {
@@ -93,9 +98,9 @@ const Profile = () => {
                             <div className={styles.profilePic}>
                                 <img
                                     src={
-                                        userProfile.gender === "female"
-                                            ? "/src/modules/Dashboard/modules/Profile/assets/images/dpfm.jpeg"
-                                            : "/src/modules/Dashboard/modules/Profile/assets/images/dpm.jpg"
+                                        userProfile.profile_pic
+                                            ? userProfile.profile_pic
+                                            : dpm
                                     }
                                     alt=""
                                 />
@@ -150,7 +155,7 @@ const Profile = () => {
                         <div className={styles.pointsList}>
                             <div className={styles.points}>
                                 <img
-                                    src="/src/modules/Dashboard/modules/Profile/assets/images/karmaVector.png"
+                                    src={karmaVector}
                                     alt=""
                                     style={{ objectFit: "contain" }}
                                 />
@@ -168,7 +173,7 @@ const Profile = () => {
                             </div>
                             <div className={styles.points}>
                                 <img
-                                    src="/src/modules/Dashboard/modules/Profile/assets/images/rankVector.png"
+                                    src={rankVecotr}
                                     alt=""
                                     style={{ objectFit: "contain" }}
                                 />
@@ -179,7 +184,7 @@ const Profile = () => {
                             </div>
                             <div className={styles.points}>
                                 <img
-                                    src="/src/modules/Dashboard/modules/Profile/assets/images/karmaVector.png"
+                                    src={karmaVector}
                                     alt=""
                                     style={{ objectFit: "contain" }}
                                 />
@@ -274,7 +279,7 @@ const Profile = () => {
                                         <div key={i} className={styles.card}>
                                             <div className={styles.cardInfo}>
                                                 <img
-                                                    src="/src/modules/Dashboard/modules/Profile/assets/images/karmaVector.png"
+                                                    src={karmaVector}
                                                     alt=""
                                                     style={{
                                                         width: "3rem",
