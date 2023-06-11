@@ -147,7 +147,7 @@ const Profile = () => {
                                             ? (
                                                   parseInt(userProfile.karma) /
                                                   1000
-                                              ).toPrecision(2) + "K"
+                                              ).toPrecision(4) + "K"
                                             : userProfile.karma}
                                     </h1>
                                 </div>
@@ -179,7 +179,7 @@ const Profile = () => {
                                                   parseInt(userProfile.karma) /
                                                   monthDifference /
                                                   1000
-                                              ).toPrecision(2) + "K"
+                                              ).toPrecision(4) + "K"
                                             : (parseInt(userProfile.karma) /
                                               monthDifference).toPrecision(3)}
                                     </h1>
