@@ -7,6 +7,7 @@ import { PieChart } from "../components/Piechart/PieChart";
 import HeatmapComponent from "../components/Heatmap/HeatmapComponent";
 import MulearnBrand from "../assets/svg/MulearnBrand";
 import Looder from "../assets/svg/Looder";
+import { GridLoader } from "react-spinners";
 
 const Profile = () => {
     const [APILoadStatus, setAPILoadStatus] = useState(0);
@@ -68,10 +69,10 @@ const Profile = () => {
             <div className={styles.rightDash}>
                 {APILoadStatus === 0 ? (
                     <div className={styles.loader_container}>
-                        <div className={styles.loader}>
-                            <Looder />
-                        </div>
-                        <p>Loading...</p>
+                            <GridLoader
+                                color="#014bb2"
+                            />
+                        <p>Loading</p>
                     </div>
                 ) : null}
                 <div className={styles.profileDash}>
