@@ -47,9 +47,9 @@ export const dashboardRoutes = {
     getUserSuggestion: "/api/v1/dashboard/profile/user-suggestion/",
     getStudentLeaderBoard: "api/v1/leaderboard/students/",
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
-    zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv",
+    zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv/",
     zonalCampusDetails: "/api/v1/dashboard/zonal/campus-details/",
-    zonalCampusData: "/api/v1/dashboard/zonal/campus-details/csv"
+    zonalCampusData: "/api/v1/dashboard/zonal/campus-details/csv/"
 };
 
 export const organizationRoutes = {
