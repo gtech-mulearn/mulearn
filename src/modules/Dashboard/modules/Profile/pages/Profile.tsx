@@ -102,7 +102,7 @@ const Profile = () => {
                                             ? userProfile.profile_pic
                                             : dpm
                                     }
-                                    alt=""
+                                    alt={userProfile.firstName}
                                 />
 
                                 <div className={styles.name}>
@@ -133,7 +133,7 @@ const Profile = () => {
                                 style={{
                                     width: "unset",
                                     minWidth: "80px",
-                                    marginTop: "30px",
+                                    marginTop: "50px",
                                     height: "40px",
                                     background: "#014BB2",
                                     color: "#fff"
