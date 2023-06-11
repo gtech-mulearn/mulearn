@@ -28,7 +28,6 @@ export const getUserLog = (setUserLog: userLog) => {
     privateGateway
         .get(dashboardRoutes.getUserLog)
         .then(response => {
-            console.log(response.data.response);
             setUserLog(response.data.response);
         })
         .catch(error => {
