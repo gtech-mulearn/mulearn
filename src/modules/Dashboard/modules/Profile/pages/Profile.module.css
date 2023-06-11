@@ -250,10 +250,6 @@
   overflow: scroll;
 }
 
-.rightDash .profileDash .profile .heatmap img {
-  width: 100%;
-}
-
 /* leaderBoard and Recent Activity CSS Below */
 
 .rightDash .profileDash .notification {
@@ -364,6 +360,13 @@
 
 
 /* responvice CSS */
+
+@media (min-width: 2000px) {
+  .rightDash .profileDash .profile .heatmap {
+    max-width: unset;
+    width: unset;
+  }
+}
 
 @media (max-width: 1490px) {
   .rightDash .profileDash .profile {
