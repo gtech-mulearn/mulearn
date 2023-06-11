@@ -83,9 +83,9 @@ const Profile = () => {
                             <div className={styles.profilePic}>
                                 <img
                                     src={
-                                        userProfile.gender === "male"
-                                            ? "/src/modules/Dashboard/modules/Profile/assets/images/dpm.jpg"
-                                            : "/src/modules/Dashboard/modules/Profile/assets/images/dpfm.jpeg"
+                                        userProfile.gender === "female"
+                                            ? "/src/modules/Dashboard/modules/Profile/assets/images/dpfm.jpg"
+                                            : "/src/modules/Dashboard/modules/Profile/assets/images/dpm.jpeg"
                                     }
                                     alt=""
                                 />
@@ -93,8 +93,10 @@ const Profile = () => {
                                 <div className={styles.name}>
                                     <h1>
                                         {userProfile.firstName}{" "}
-                                        {userProfile.lastName} (
-                                        {userProfile.college_code})
+                                        {userProfile.lastName}{" "}
+                                        {userProfile.college_code
+                                            ? userProfile.college_code
+                                            : null}
                                     </h1>
                                     <p style={{ marginTop: "-5px" }}>
                                         {userProfile.muid}
@@ -180,8 +182,10 @@ const Profile = () => {
                                                   monthDifference /
                                                   1000
                                               ).toPrecision(4) + "K"
-                                            : (parseInt(userProfile.karma) /
-                                              monthDifference).toPrecision(3)}
+                                            : (
+                                                  parseInt(userProfile.karma) /
+                                                  monthDifference
+                                              ).toPrecision(3)}
                                     </h1>
                                 </div>
                             </div>
@@ -190,20 +194,31 @@ const Profile = () => {
                         <div className={styles.interestGrp}>
                             <b>Interest Groups</b>
                             <div className={styles.igs_container}>
-                                {userProfile.interest_groups.map((data, i) => {
-                                    return (
-                                        <div className={styles.igs} key={i}>
-                                            {data.name}
-                                            <p>
-                                                {data.karma > 1000
-                                                    ? (
-                                                          data.karma / 1000
-                                                      ).toPrecision(2) + "K"
-                                                    : data.karma}
-                                            </p>
-                                        </div>
-                                    );
-                                })}
+                                {userProfile.interest_groups.length != 0 ? (
+                                    userProfile.interest_groups.map(
+                                        (data, i) => {
+                                            return (
+                                                <div
+                                                    className={styles.igs}
+                                                    key={i}
+                                                >
+                                                    {data.name}
+                                                    <p>
+                                                        {data.karma > 1000
+                                                            ? (
+                                                                  data.karma /
+                                                                  1000
+                                                              ).toPrecision(2) +
+                                                              "K"
+                                                            : data.karma}
+                                                    </p>
+                                                </div>
+                                            );
+                                        }
+                                    )
+                                ) : (
+                                    <p>No Interest Groups</p>
+                                )}
                             </div>
                         </div>
 

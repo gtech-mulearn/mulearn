@@ -8,7 +8,7 @@ export const options = {
         3: { color: "#A0C8FF" },
         4: { color: "#E0EDFF" }
     },
-    fontSize: window.innerWidth > 2000 ? 20 : 10,
+    fontSize: window.innerWidth > 1800 ? 15 : 10,
 };
 export function PieChart({ data }: any) {
     return (
@@ -17,7 +17,7 @@ export function PieChart({ data }: any) {
             data={data}
             options={options}
             width={"100%"}
-            height={window.innerWidth > 2000 ? "500px" : "200px"}
+            height={window.innerWidth > 1800 ? "500px" : "200px"}
         />
     );
 }

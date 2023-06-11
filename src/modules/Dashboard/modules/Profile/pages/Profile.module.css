@@ -361,7 +361,7 @@
 
 /* responvice CSS */
 
-@media (min-width: 2000px) {
+@media (min-width: 1800px) {
   .rightDash .profileDash .profile .heatmap {
     max-width: unset;
     width: unset;
