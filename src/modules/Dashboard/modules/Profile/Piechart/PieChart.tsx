@@ -6,17 +6,18 @@ export const options = {
         0: { color: "#7DAAE9" },
         2: { color: "#2E85FE" },
         3: { color: "#A0C8FF" },
-        4: { color: "#E0EDFF" },
-      },
+        4: { color: "#E0EDFF" }
+    },
+    fontSize: window.innerWidth > 1800 ? 15 : 10,
 };
-export function PieChart({ data }: any) {    
+export function PieChart({ data }: any) {
     return (
         <Chart
             chartType="PieChart"
             data={data}
             options={options}
             width={"100%"}
-            height={"200px"}
+            height={window.innerWidth > 1800 ? "400px" : "200px"}
         />
     );
 }

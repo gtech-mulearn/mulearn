@@ -20,7 +20,6 @@ import {
     getDistrict
 } from "../services/onboardingApis";
 import { useNavigate } from "react-router-dom";
-import { title } from "process";
 
 const animatedComponents = makeAnimated();
 
@@ -129,10 +128,6 @@ const Onboarding = (props: Props) => {
         })
     };
 
-    // const yog_year = [
-    //     2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026,
-    //     2027, 2028, 2029, 2030
-    // ];
     const yog_year = [
         { value: 2015, label: 2015 },
         { value: 2016, label: 2016 },

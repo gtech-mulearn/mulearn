@@ -2,14 +2,7 @@
     width: 100%;
 }
 
-.heatmap_container .heatmap {
-    display: flex;
-    flex-wrap: wrap;
-    /* width: 400px; */
-    height: 110px;
-    align-content: space-between;
-    flex-direction: column;
-}
+
 
 .heatmap_container .months {
     margin-left: 25px;
@@ -22,9 +15,16 @@
     position: absolute;
     font-size: 9.5px;
     background-color: #fff;
+    margin-left: -1px;
 }
 
 .heatmap_container .heatmap {
+    display: flex;
+    flex-wrap: wrap;
+    /* width: 400px; */
+    height: 110px;
+    align-content: space-between;
+    flex-direction: column;
     margin-left: 20px;
 }
 
@@ -37,4 +37,28 @@
     border-radius: 3px;
     background: aliceblue;
     border: 0.2px solid rgba(171, 171, 171, 0.20);
+}
+
+
+@media (min-width: 1800px) {
+    .heatmap_container .months {
+        margin-left: 35px;
+        gap: 52px;
+    }
+
+    .heatmap_container .weeks {
+        font-size: 12px;
+        margin-top: -3px;
+    }
+
+    .heatmap_container .heatmap {
+        height: 130px;
+        margin-left: 30px;
+    }
+
+    .heatmap_container .heatmap p {
+        height: 13px;
+        width: 13px;
+        border-radius: 4px;
+    }
 }
