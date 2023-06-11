@@ -40,8 +40,8 @@ const ManageRolesEdit = (props: Props) => {
                     initialValues={
                         {
                             // igName: name
-                            title: data[0].title,
-                            description: data[0].description
+                            title: data.title,
+                            description: data.description
                         }
                     }
                     validationSchema={Yup.object({
@@ -56,13 +56,8 @@ const ManageRolesEdit = (props: Props) => {
                             .required("Required")
                     })}
                     onSubmit={values => {
-                        editManageRoles(id, values.title, values.description);
-                        toast({
-                            title: "Rolescreated",
-                            status: "success",
-                            duration: 3000,
-                            isClosable: true
-                        });
+                        editManageRoles(id, values.title, values.description,toast);
+                        
                         navigate("/manage-roles");
                     }}
                 >

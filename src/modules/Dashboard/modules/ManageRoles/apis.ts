@@ -59,7 +59,8 @@ export const createManageRoles = async (title: string, description: string) => {
 export const editManageRoles = async (
     id: string | undefined,
     title: string,
-    description: string
+    description: string,
+    toast:any
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -71,6 +72,12 @@ export const editManageRoles = async (
         );
         const message: any = response?.data;
         console.log(message);
+        toast({
+            title: "Rolescreated",
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
