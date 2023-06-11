@@ -17,7 +17,7 @@ export function PieChart({ data }: any) {
             data={data}
             options={options}
             width={"100%"}
-            height={window.innerWidth > 1800 ? "500px" : "200px"}
+            height={window.innerWidth > 1800 ? "400px" : "200px"}
         />
     );
 }
