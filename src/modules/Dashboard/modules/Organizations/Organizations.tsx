@@ -13,8 +13,8 @@ import {
     columnsCollege,
     columnsCommunities,
     columnsCompanies,
-    editableCompaniesColumnNames,
-    editableCommunityColumnNames
+    // editableCompaniesColumnNames,
+    // editableCommunityColumnNames
 } from "./THeaders"
 import TableTopTab from './TableTopTab' 
 import Textfield from '../../../../components/MuComponents/TextField/Textfield'
@@ -146,7 +146,7 @@ function Organizations() {
                                columnOrder={columns}
                                id={['code']} 
                                onEditClick={handleEdit}
-                               onDeleteClick={handleDelete}                
+                            //    onDeleteClick={handleDelete}                
                                >
                                <THead
                                    columnOrder={columns}

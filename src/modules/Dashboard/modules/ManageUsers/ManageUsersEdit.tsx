@@ -12,7 +12,23 @@ type Props = {};
 
 const ManageUsersEdit = (props: Props) => {
     const [name, setName] = useState("");
-    const [data, setData] = useState<string[]>([]);
+    interface IData {
+        first_name: string;
+        last_name: string;
+        email: string;
+        mobile: string;
+        discord_id: string;
+        mu_id: string;
+      }
+      
+      const [data, setData] = useState<IData>({
+        first_name: "",
+        last_name: "",
+        email: "",
+        mobile: "",
+        discord_id: "",
+        mu_id: ""
+      });
 
     const { id } = useParams();
     const navigate = useNavigate();

@@ -201,12 +201,12 @@ export const createOrganization = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            toast({
-                title:error?.response?.data?.message.general[0].code[0],
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+            // toast({
+            //     title:error?.response?.data?.message.general[0].code[0],
+            //     status: "error",
+            //     duration: 3000,
+            //     isClosable: true
+            // });
         }
     }
 }
