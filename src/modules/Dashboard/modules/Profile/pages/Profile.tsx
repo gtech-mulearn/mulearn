@@ -84,8 +84,8 @@ const Profile = () => {
                                 <img
                                     src={
                                         userProfile.gender === "female"
-                                            ? "/src/modules/Dashboard/modules/Profile/assets/images/dpfm.jpg"
-                                            : "/src/modules/Dashboard/modules/Profile/assets/images/dpm.jpeg"
+                                            ? "/src/modules/Dashboard/modules/Profile/assets/images/dpfm.jpeg"
+                                            : "/src/modules/Dashboard/modules/Profile/assets/images/dpm.jpg"
                                     }
                                     alt=""
                                 />
