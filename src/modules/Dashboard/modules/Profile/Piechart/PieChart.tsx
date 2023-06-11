@@ -1,47 +1,22 @@
-import { useMemo } from "react";
-import * as d3 from "d3";
+import { Chart } from "react-google-charts";
 
-type DataItem = {
-    name: string;
-    value: number;
+export const options = {
+    slices: {
+        1: { color: "#014BB2" },
+        0: { color: "#7DAAE9" },
+        2: { color: "#2E85FE" },
+        3: { color: "#A0C8FF" },
+        4: { color: "#E0EDFF" },
+      },
 };
-type PieChartProps = {
-    width: number;
-    height: number;
-    data: DataItem[];
-};
-
-const MARGIN = 30;
-
-const colors = ["#7DAAE9", "#014BB2", "#A0C8FF", "#E0EDFF"];
-
-export const PieChart = ({ width, height, data }: PieChartProps) => {
-    const radius = Math.min(width, height) / 2 - MARGIN;
-
-    const pie = useMemo(() => {
-        const pieGenerator = d3.pie<any, DataItem>().value(d => d.value);
-        return pieGenerator(data);
-    }, [data]);
-
-    const arcs = useMemo(() => {
-        const arcPathGenerator = d3.arc();
-        return pie.map(p =>
-            arcPathGenerator({
-                innerRadius: 0,
-                outerRadius: radius,
-                startAngle: p.startAngle,
-                endAngle: p.endAngle
-            })
-        );
-    }, [radius, pie]);
-
+export function PieChart({ data }: any) {    
     return (
-        <svg width={width} height={height} style={{ display: "inline-block" }}>
-            <g transform={`translate(${width / 2}, ${height / 2})`}>
-                {arcs.map((arc: any, i) => {
-                    return <path key={i} d={arc} fill={colors[i]} />;
-                })}
-            </g>
-        </svg>
+        <Chart
+            chartType="PieChart"
+            data={data}
+            options={options}
+            width={"100%"}
+            height={"200px"}
+        />
     );
-};
+}

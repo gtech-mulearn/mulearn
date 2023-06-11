@@ -8,7 +8,6 @@ import HeatmapComponent from "../Heatmap/HeatmapComponent";
 import MulearnBrand from "../assets/svg/MulearnBrand";
 
 const Profile = () => {
-    // const [karmaDist, setKarmaDist] = useState([{ name: "", value: "" }]);
     const [userProfile, setUserProfile] = useState({
         firstName: "",
         lastName: "",
@@ -31,37 +30,37 @@ const Profile = () => {
         }
     ]);
 
-    const convertedData1 = userProfile.interest_groups.map(item => ({
-        name: item.name,
-        value: item.karma
-    }));
-    const convertedData2 = userProfile.karma_distribution.map(item => ({
-        name: item.task_type,
-        value: item.karma
-    }));
-
-    const data = [...convertedData2, ...convertedData1];
+    const convertedData1 = userProfile.interest_groups.map(item => [
+        item.name,
+        item.karma
+    ]);
+    const convertedData2 = userProfile.karma_distribution.map(item => [
+        item.task_type,
+        item.karma
+    ]);
+    const data = [
+        ["Task", "Hours per Day"],
+        ...convertedData2,
+        ...convertedData1
+    ];
 
     function getMonthDifference(startDate: Date, endDate: Date): number {
         const startYear = startDate.getFullYear();
         const startMonth = startDate.getMonth();
-
         const endYear = endDate.getFullYear();
         const endMonth = endDate.getMonth();
-
         return (endYear - startYear) * 12 + (endMonth - startMonth);
     }
     const startDate = new Date(userProfile.joined.slice(0, 10));
     const endDate = new Date(moment().format("YYYY-MM-DD"));
-
     const monthDifference = getMonthDifference(startDate, endDate);
 
     useEffect(() => {
         getUserProfile(setUserProfile);
         getUserLog(setUserLog);
-        // setKarmaDist(userProfile.karma_distribution);
-        console.log(setUserLog);
+        // console.log(setUserLog);
     }, []);
+
     return (
         <>
             <div className={styles.rightDash}>
@@ -225,41 +224,8 @@ const Profile = () => {
                             </div>
                             <div className={styles.head}>
                                 <h2>Karma Distribution</h2>
-                                {/* <PieChart width={400} height={400}>
-                                    <Pie
-                                        data={data}
-                                        dataKey="value"
-                                        nameKey="name"
-                                        cx="50%"
-                                        cy="50%"
-                                        outerRadius={80}
-                                        fill="#8884d8"
-                                        label
-                                    />
-                                    <Tooltip />
-                                    <Legend />
-                                </PieChart> */}
                                 <div className={styles.pie_chart}>
-                                    <PieChart
-                                        data={data}
-                                        width={250}
-                                        height={250}
-                                    />
-                                    <div className={styles.data_details}>
-                                        {data.map((data, i) => {
-                                            return (
-                                                <div
-                                                    key={i}
-                                                    className={
-                                                        styles.data_details_list
-                                                    }
-                                                >
-                                                    <span></span>
-                                                    <p>{data.name}</p>
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
+                                    <PieChart data={data} />
                                 </div>
                             </div>
                         </div>
