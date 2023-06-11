@@ -45,8 +45,8 @@
 }
 
 .rightDash .profileDash .profile {
+  width: 65%;
   display: flex;
-  flex-grow: 1;
   flex-direction: column;
 }
 
@@ -255,7 +255,7 @@
 /* leaderBoard and Recent Activity CSS Below */
 
 .rightDash .profileDash .notification {
-  width: 23rem;
+  width: 32%;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -363,6 +363,21 @@
 
 /* responvice CSS */
 
+@media (max-width: 1490px) {
+  .rightDash .profileDash .profile {
+    width: 100%;
+  }
+
+  .rightDash .profileDash .notification {
+    flex-direction: row;
+    width: 100%;
+  }
+  .rightDash .profileDash .notification .existing_roles  {
+    min-width: 50%;
+  }
+
+}
+
 @media (max-width: 800px) {
   .rightDash {
     width: 100%;
@@ -376,6 +391,13 @@
 
   .rightDash .profileDash .profile .interestGrp .igs_container {
     max-width: 90vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .rightDash .profileDash .notification {
+    flex-direction: column;
+    width: 100%;
   }
 }
 
