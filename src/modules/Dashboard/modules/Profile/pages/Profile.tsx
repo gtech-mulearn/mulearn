@@ -100,7 +100,7 @@ const Profile = () => {
                                         {userProfile.firstName}{" "}
                                         {userProfile.lastName}{" "}
                                         {userProfile.college_code
-                                            ? userProfile.college_code
+                                            ? "("+userProfile.college_code+")"
                                             : null}
                                     </h1>
                                     <p style={{ marginTop: "-5px" }}>
@@ -222,7 +222,7 @@ const Profile = () => {
                                         }
                                     )
                                 ) : (
-                                    <p>No Interest Groups</p>
+                                    <p>No Interest Groups to show</p>
                                 )}
                             </div>
                         </div>
@@ -253,7 +253,7 @@ const Profile = () => {
                         <div className={styles.leadboard}>
                             <div className={styles.head}>
                                 <h2>Recent Activity</h2>
-                                <span>View More</span>
+                                {/* <span>View More</span> */}
                             </div>
                             <div className={styles.data_card}>
                                 {userLog
