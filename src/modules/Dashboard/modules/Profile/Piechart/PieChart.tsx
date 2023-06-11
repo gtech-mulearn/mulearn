@@ -8,7 +8,26 @@ export const options = {
         3: { color: "#A0C8FF" },
         4: { color: "#E0EDFF" }
     },
-    fontSize: window.innerWidth > 1800 ? 15 : 10,
+    // fontSize: window.innerWidth > 1800 ? 15 : 10,
+    // is3D: true,
+    pieHole: 0.4,
+    legend: {
+        alignment: "center",
+        textStyle: {
+            fontSize: window.innerWidth > 1800 ? 15 : 10
+        }
+    },
+    chartArea: {
+        width: "70%",
+        height: "100%"
+    },
+    backgroundColor: "transparent",
+    tooltip: {
+        textStyle: {
+            fontSize: window.innerWidth > 1800 ? 15 : 10
+        }
+    },
+    pieSliceBorderColor: "#fff"
 };
 export function PieChart({ data }: any) {
     return (
@@ -17,7 +36,13 @@ export function PieChart({ data }: any) {
             data={data}
             options={options}
             width={"100%"}
-            height={window.innerWidth > 1800 ? "400px" : "200px"}
+            height={
+                window.innerWidth > 1800
+                    ? "400px"
+                    : window.innerWidth < 1400 && window.innerWidth > 900
+                    ? "400px"
+                    : "200px"
+            }
         />
     );
 }
