@@ -3,15 +3,17 @@ import { MuButton } from "../../../../../components/MuComponents/MuButtons/MuBut
 import styles from "./Profile.module.css";
 import moment from "moment";
 import { getUserLog, getUserProfile } from "../services/api";
-import { PieChart } from "../Piechart/PieChart";
-import HeatmapComponent from "../Heatmap/HeatmapComponent";
+import { PieChart } from "../components/Piechart/PieChart";
+import HeatmapComponent from "../components/Heatmap/HeatmapComponent";
 import MulearnBrand from "../assets/svg/MulearnBrand";
+import { GridLoader } from "react-spinners";
 import karmaVector from "../assets/images/karmaVector.png";
 import rankVecotr from "../assets/images/rankVector.png";
 import dpm from "../assets/images/dpm.jpg";
 import { userInfo } from "os";
 
 const Profile = () => {
+    const [APILoadStatus, setAPILoadStatus] = useState(0);
     const [userProfile, setUserProfile] = useState({
         firstName: "",
         lastName: "",
@@ -61,7 +63,7 @@ const Profile = () => {
     const monthDifference = getMonthDifference(startDate, endDate);
 
     useEffect(() => {
-        getUserProfile(setUserProfile);
+        getUserProfile(setUserProfile, setAPILoadStatus);
         getUserLog(setUserLog);
         // console.log(setUserLog);
     }, []);
@@ -69,6 +71,14 @@ const Profile = () => {
     return (
         <>
             <div className={styles.rightDash}>
+                {APILoadStatus === 0 ? (
+                    <div className={styles.loader_container}>
+                            <GridLoader
+                                color="#014bb2"
+                            />
+                        <p>Loading</p>
+                    </div>
+                ) : null}
                 <div className={styles.profileDash}>
                     <div className={styles.profile}>
                         <div className={styles.banner}>
@@ -100,7 +110,9 @@ const Profile = () => {
                                         {userProfile.firstName}{" "}
                                         {userProfile.lastName}{" "}
                                         {userProfile.college_code
-                                            ? "("+userProfile.college_code+")"
+                                            ? "(" +
+                                              userProfile.college_code +
+                                              ")"
                                             : null}
                                     </h1>
                                     <p style={{ marginTop: "-5px" }}>
