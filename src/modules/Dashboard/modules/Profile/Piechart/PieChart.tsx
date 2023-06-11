@@ -1,10 +1,17 @@
-import { useMemo } from "react";
-import * as d3 from "d3";
+import { Chart } from "react-google-charts";
 
-type DataItem = {
-    name: string;
-    value: number;
+export const options = {
+    slices: {
+        1: { color: "#014BB2" },
+        0: { color: "#7DAAE9" },
+        2: { color: "#2E85FE" },
+        3: { color: "#A0C8FF" },
+        4: { color: "#E0EDFF" },
+      },
 };
+
+export function PieChart({ data }: any) {    
+    
 type PieChartProps = {
     width: number;
     height: number;
@@ -37,12 +44,12 @@ export const PieChart = ({ width, height, data }: PieChartProps) => {
     }, [radius, pie]);
 
     return (
-        <svg width={width} height={height} style={{ display: "inline-block" }}>
-            <g transform={`translate(${width / 2}, ${height / 2})`}>
-                {arcs.map((arc: any, i) => {
-                    return <path key={i} d={arc} fill={colors[i]} />;
-                })}
-            </g>
-        </svg>
+        <Chart
+            chartType="PieChart"
+            data={data}
+            options={options}
+            width={"100%"}
+            height={"200px"}
+        />
     );
-};
+}

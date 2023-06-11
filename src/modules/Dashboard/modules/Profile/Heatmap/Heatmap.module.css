@@ -21,6 +21,7 @@
 .heatmap_container .weeks {
     position: absolute;
     font-size: 9.5px;
+    background-color: #fff;
 }
 
 .heatmap_container .heatmap {
@@ -35,4 +36,5 @@
     font-size: 9px;
     border-radius: 3px;
     background: aliceblue;
+    border: 0.2px solid rgba(171, 171, 171, 0.20);
 }

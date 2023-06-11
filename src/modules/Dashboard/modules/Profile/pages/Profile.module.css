@@ -32,6 +32,7 @@
   text-align: left;
   margin-bottom: 40px;
   margin-top: -40px;
+  /* overflow-x: hidden; */
   /* left: 20%; */
 }
 
@@ -45,8 +46,8 @@
 }
 
 .rightDash .profileDash .profile {
+  width: 65%;
   display: flex;
-  flex-grow: 1;
   flex-direction: column;
 }
 
@@ -152,7 +153,8 @@
 
 .rightDash .profileDash .profile .pointsList {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow: scroll;
   gap: 5rem;
   margin: 2rem 0;
   justify-content: flex-start;
@@ -160,7 +162,7 @@
 
 .rightDash .profileDash .profile .pointsList .points {
   display: flex;
-  gap: 1rem;
+  gap: 10px;
   text-align: center;
   font-weight: 600;
 }
@@ -179,10 +181,11 @@
   gap: 20px;
   justify-content: flex-start;
   max-width: 50vw;
+  /* overflow: scroll; */
 }
 
 .rightDash .profileDash .profile .interestGrp .igs_container .igs {
-  padding: .5rem 1rem;
+  padding: 0px 10px;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -254,7 +257,7 @@
 /* leaderBoard and Recent Activity CSS Below */
 
 .rightDash .profileDash .notification {
-  width: 23rem;
+  width: 32%;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -362,6 +365,22 @@
 
 /* responvice CSS */
 
+@media (max-width: 1490px) {
+  .rightDash .profileDash .profile {
+    width: 100%;
+  }
+
+  .rightDash .profileDash .notification {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .rightDash .profileDash .notification .existing_roles {
+    min-width: 50%;
+  }
+
+}
+
 @media (max-width: 800px) {
   .rightDash {
     width: 100%;
@@ -378,7 +397,28 @@
   }
 }
 
+@media (max-width: 600px) {
+  .rightDash .profileDash .notification {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
 @media (max-width: 500px) {
+  .rightDash .profileDash .profile .banner .member_since {
+    right: 5px;
+  }
+
+  .rightDash .profileDash .profile .banner .member_since div svg {
+    margin-left: 43px;
+    width: 50px;
+  }
+
+  .rightDash .profileDash .profile .banner .member_since p {
+    font-size: 10px;
+    line-height: 0px;
+  }
+
   .rightDash .profileDash .profile .profileInfo .profilePic .name {
     margin-top: 0px;
     text-align: center;
@@ -395,9 +435,10 @@
   }
 
   .rightDash .profileDash .profile .pointsList {
-    gap: 1rem;
+    gap: 5rem;
+    width: 90vw;
     flex-direction: row;
-    justify-content: center;
+    /* justify-content: center; */
   }
 
   .rightDash .profileDash .profile .interestGrp .igs_container {
