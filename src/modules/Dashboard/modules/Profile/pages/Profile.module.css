@@ -32,6 +32,7 @@
   text-align: left;
   margin-bottom: 40px;
   margin-top: -40px;
+  /* overflow-x: hidden; */
   /* left: 20%; */
 }
 
@@ -180,6 +181,7 @@
   gap: 20px;
   justify-content: flex-start;
   max-width: 50vw;
+  /* overflow: scroll; */
 }
 
 .rightDash .profileDash .profile .interestGrp .igs_container .igs {
@@ -372,7 +374,8 @@
     flex-direction: row;
     width: 100%;
   }
-  .rightDash .profileDash .notification .existing_roles  {
+
+  .rightDash .profileDash .notification .existing_roles {
     min-width: 50%;
   }
 
@@ -402,6 +405,20 @@
 }
 
 @media (max-width: 500px) {
+  .rightDash .profileDash .profile .banner .member_since {
+    right: 5px;
+  }
+
+  .rightDash .profileDash .profile .banner .member_since div svg {
+    margin-left: 43px;
+    width: 50px;
+  }
+
+  .rightDash .profileDash .profile .banner .member_since p {
+    font-size: 10px;
+    line-height: 0px;
+  }
+
   .rightDash .profileDash .profile .profileInfo .profilePic .name {
     margin-top: 0px;
     text-align: center;
@@ -419,7 +436,7 @@
 
   .rightDash .profileDash .profile .pointsList {
     gap: 5rem;
-    width: 95vw;
+    width: 90vw;
     flex-direction: row;
     /* justify-content: center; */
   }
