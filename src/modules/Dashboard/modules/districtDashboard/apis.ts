@@ -55,6 +55,7 @@ export const getdistrictdashboard = async (
                 })
                 .then(data => {
                     setData(data.response.data);
+                    console.log(data.response.data);
                     setTotalPages(data.response.pagination.totalPages);
                 });
         } else if (activeTab === "Campus management") {

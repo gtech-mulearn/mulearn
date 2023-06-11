@@ -15,14 +15,12 @@ const ManageRolesEdit = (props: Props) => {
     interface IData {
         title: string;
         description: string;
-      }
-      
-      const [data, setData] = useState<IData[]>([
-        {
-          title: "",
-          description: ""
-        }
-      ]);
+    }
+
+    const [data, setData] = useState<IData>({
+        title: "",
+        description: ""
+    });
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -37,13 +35,11 @@ const ManageRolesEdit = (props: Props) => {
                 <h1 className={styles.text}>Role Edit Page</h1>
                 <Formik
                     enableReinitialize={true}
-                    initialValues={
-                        {
-                            // igName: name
-                            title: data.title,
-                            description: data.description
-                        }
-                    }
+                    initialValues={{
+                        // igName: name
+                        title: data.title,
+                        description: data.description
+                    }}
                     validationSchema={Yup.object({
                         // igName: Yup.string()
                         //     .max(30, "Must be 30 characters or less")
@@ -56,8 +52,13 @@ const ManageRolesEdit = (props: Props) => {
                             .required("Required")
                     })}
                     onSubmit={values => {
-                        editManageRoles(id, values.title, values.description,toast);
-                        
+                        editManageRoles(
+                            id,
+                            values.title,
+                            values.description,
+                            toast
+                        );
+
                         navigate("/manage-roles");
                     }}
                 >
@@ -94,6 +95,4 @@ const ManageRolesEdit = (props: Props) => {
     );
 };
 
-
 export default ManageRolesEdit;
-
