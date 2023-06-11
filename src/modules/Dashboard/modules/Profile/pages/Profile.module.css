@@ -48,6 +48,7 @@
   align-items: center;
   z-index: 200;
   backdrop-filter: blur(11px);
+  -webkit-backdrop-filter: blur(11px);
   transition: all .5s ease-in;
   transform: scaleX(-1);
 }
