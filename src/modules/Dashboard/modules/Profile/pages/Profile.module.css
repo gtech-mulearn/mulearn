@@ -36,6 +36,26 @@
   /* left: 20%; */
 }
 
+.rightDash .loader_container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  transition: all .5s ease-in;
+  transform: scaleX(-1);
+}
+
+.rightDash .loader_container p {
+  color: #5570f2;
+  transform: scaleX(-1);
+}
+
 .rightDash .profileDash {
   position: relative;
   top: 2rem;
@@ -153,8 +173,7 @@
 
 .rightDash .profileDash .profile .pointsList {
   display: flex;
-  flex-wrap: nowrap;
-  overflow: scroll;
+  flex-wrap: wrap;
   gap: 5rem;
   margin: 2rem 0;
   justify-content: flex-start;
@@ -237,6 +256,17 @@
 
 .rightDash .profileDash .profile .interestGrp .igs_container .igs:nth-child(4) p {
   background-color: rgb(45, 206, 137, .9);
+  color: #FFF4E4;
+
+}
+
+.rightDash .profileDash .profile .interestGrp .igs_container .igs:nth-child(5) {
+  background-color: rgb(255, 0, 0, .3);
+  color: #2DCE89;
+}
+
+.rightDash .profileDash .profile .interestGrp .igs_container .igs:nth-child(5) p {
+  background-color: rgb(255, 0, 0, .9);
   color: #FFF4E4;
 
 }
@@ -438,10 +468,10 @@
   }
 
   .rightDash .profileDash .profile .pointsList {
-    gap: 5rem;
+    gap: 1rem 5rem;
     width: 90vw;
     flex-direction: row;
-    /* justify-content: center; */
+    justify-content: center;
   }
 
   .rightDash .profileDash .profile .interestGrp .igs_container {

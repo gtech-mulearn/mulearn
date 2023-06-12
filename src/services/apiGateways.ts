@@ -52,7 +52,7 @@ privateGateway.interceptors.response.use(
     },
     function (error) {
         //TODO: if error occurs and status isn't 1000 nothing will happened
-        console.log(error.response.data);
+        
 
         if (error.response.data.statusCode === 1000) {
             // publicGatewayAuth
