@@ -7,7 +7,7 @@ import {
     otpVerification
 } from "../services/apis";
 import { useNavigate } from "react-router-dom";
-import { BeatLoader, ClipLoader } from "react-spinners";
+import { ClipLoader } from "react-spinners";
 
 const Login = () => {
     const [showOrHidePassword, setShowOrHidePassword] = useState("password");

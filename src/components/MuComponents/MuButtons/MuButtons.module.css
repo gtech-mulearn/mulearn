@@ -17,6 +17,11 @@
     cursor: pointer;
     transition: .3s ease-in-out;
 }
+
+.btn_loader {
+    margin-left: 18px;
+}
+
 .btn p{
     color: unset !important;; 
 }
