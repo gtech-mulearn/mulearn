@@ -60,6 +60,10 @@ const SideNavBar = (props: Props) => {
         setDisplay(display === "block" ? "none" : "block");
         // setOpacity(opacity === 1 ? 0 : 1);
         setDisplay2(display2 === "block" ? "none" : "block");
+        element.style.transition = ".5s ease-in-out";
+        element.style.transform === "scale(1.1)"
+            ? (element.style.transform = "scale(1)")
+            : (element.style.transform = "scale(1.1)");
     };
 
     return (
@@ -101,7 +105,10 @@ const SideNavBar = (props: Props) => {
                 className={styles.side_nav_bar_container}
                 style={
                     window.innerWidth <= 830
-                        ? { opacity: `${display2 === "none" ? 0 : 1}` ,zIndex: `${display2 === "none" ? 0 : 100}` }
+                        ? {
+                              opacity: `${display2 === "none" ? 0 : 1}`,
+                              zIndex: `${display2 === "none" ? 0 : 100}`
+                          }
                         : {}
                     // display: `${display2}`
                 }
@@ -175,6 +182,15 @@ const SideNavBar = (props: Props) => {
                         <MuButtonLight
                             text="Logout"
                             icon={<i className="fi fi-sr-key"></i>}
+                            style={
+                                window.innerHeight <= 820
+                                    ? {
+                                          border: "none",
+                                          borderRadius: "10px",
+                                          padding: "20px 20px"
+                                      }
+                                    : {}
+                            }
                             onClick={() => {
                                 localStorage.clear();
                                 toast({

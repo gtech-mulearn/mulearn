@@ -495,7 +495,7 @@
   }
 }
 
-@media (max-width: 370px) {
+@media (max-width: 380px) {
   .rightDash .profileDash .profile .profileInfo .profilePic img {
     width: 120px;
   }
