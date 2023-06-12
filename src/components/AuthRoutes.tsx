@@ -16,7 +16,7 @@ const AuthRoutes: React.FC = () => {
         refreshToken.length > 0 &&
         onboardingStatus !== null ? (
         <>
-            onboardingStatus ? <Navigate to="/profile" /> :
+            onboardingStatus ? <Navigate to="/profile" /> :{" "}
             <Navigate to="/connect-discord" />
         </>
     ) : (
