@@ -7,10 +7,10 @@ import { PieChart } from "../components/Piechart/PieChart";
 import HeatmapComponent from "../components/Heatmap/HeatmapComponent";
 import MulearnBrand from "../assets/svg/MulearnBrand";
 import { GridLoader } from "react-spinners";
-import karmaVector from "../assets/images/karmaVector.png";
-import rankVecotr from "../assets/images/rankVector.png";
 import dpm from "../assets/images/dpm.jpg";
 import { userInfo } from "os";
+import Rank from "../assets/svg/Rank";
+import Karma, { KarmaWhite } from "../assets/svg/Karma";
 
 const Profile = () => {
     const [APILoadStatus, setAPILoadStatus] = useState(0);
@@ -152,11 +152,7 @@ const Profile = () => {
 
                             <div className={styles.pointsList}>
                                 <div className={styles.points}>
-                                    <img
-                                        src={karmaVector}
-                                        alt=""
-                                        style={{ objectFit: "contain" }}
-                                    />
+                                    <Karma />
                                     <div>
                                         <span>Karma</span>
                                         <h1>
@@ -171,22 +167,14 @@ const Profile = () => {
                                     </div>
                                 </div>
                                 <div className={styles.points}>
-                                    <img
-                                        src={rankVecotr}
-                                        alt=""
-                                        style={{ objectFit: "contain" }}
-                                    />
+                                    <Rank />
                                     <div>
                                         <span>Rank</span>
                                         <h1>{userProfile.rank}</h1>
                                     </div>
                                 </div>
                                 <div className={styles.points}>
-                                    <img
-                                        src={karmaVector}
-                                        alt=""
-                                        style={{ objectFit: "contain" }}
-                                    />
+                                    <Karma />
                                     <div>
                                         <span>Avg.Karma/Month</span>
                                         <h1>
@@ -290,17 +278,13 @@ const Profile = () => {
                                                 <div
                                                     className={styles.cardInfo}
                                                 >
-                                                    <img
-                                                        src={karmaVector}
-                                                        alt=""
-                                                        style={{
-                                                            width: "3rem",
-                                                            height: "3rem",
-                                                            padding: ".5rem",
-                                                            backgroundColor:
-                                                                "#014BB2"
-                                                        }}
-                                                    />{" "}
+                                                    <div
+                                                        className={
+                                                            styles.card_icon
+                                                        }
+                                                    >
+                                                        <KarmaWhite />
+                                                    </div>
                                                     <div
                                                         className={
                                                             styles.cardName
