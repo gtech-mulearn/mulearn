@@ -41,12 +41,19 @@ const DashboardRootLayout = (props: { component?: any }) => {
             hasView: !connected,
             icon: <i className="fi fi-sr-data-transfer"></i>
         },
+        
         {
             url: "campus-details",
             title: "Campus Details",
             hasView: true,
             roles: [roles.CAMPUS_LEAD],
             icon: <i className="fi fi-sr-book-arrow-right"></i>
+        },
+        {
+            url: "hackathon",
+            title: "Hackathon",
+            hasView: true,
+            icon: <i className="fi fi-sr-clipboard-user"></i>
         },
         {
             url: "interest-groups",

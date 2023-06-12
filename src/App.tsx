@@ -43,6 +43,8 @@ import TaskDelete from "./modules/Dashboard/modules/Tasks/TaskDelete";
 import TaskBulkImport from "./modules/Dashboard/modules/Tasks/TaskBulkImport";
 import ZonalDashboard from "./modules/Dashboard/modules/zonalDashboard/zonaldashboard";
 import DistrictDashboard from "./modules/Dashboard/modules/districtDashboard/districtdashboard";
+import Hackathon from "./modules/Dashboard/modules/Hackathon/User/Hackathon";
+import HackathonCreate from "./modules/Dashboard/modules/Hackathon/Admin/HackathonCreate";
 
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
@@ -165,7 +167,9 @@ const router = createBrowserRouter([
                         path: "tasks/delete/:id",
                         element: <TaskDelete />
                     },
-                    { path: "url-shortener", element: <UrlShortener /> }
+                    { path: "url-shortener", element: <UrlShortener /> },
+                    { path: "hackathon", element: <Hackathon /> },
+                    { path: "hackathon-management", element: <HackathonCreate /> }
                 ]
             }
         ]
