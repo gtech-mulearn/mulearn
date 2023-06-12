@@ -1,5 +1,5 @@
 export const roles = {
-    ADMIN: "Admins",
+    ADMIN: "Admin",
     DISCORD_MODERATOR: "Discord Moderator",
     EX_OFFICIAL: "Ex Official",
     FELLOW: "Fellow",
