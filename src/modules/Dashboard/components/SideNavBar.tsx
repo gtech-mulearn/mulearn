@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./SideNavBar.module.css";
 import MulearnBrand from "../assets/MulearnBrand";
 
@@ -39,7 +39,7 @@ const SideNavBar = (props: Props) => {
     const [transform2, setTransform2] = useState("0deg");
     const [transform3, setTransform3] = useState("0deg");
     const [display, setDisplay] = useState("block");
-    const [display2, setDisplay2] = useState("");
+    const [display2, setDisplay2] = useState("none");
     const [dropDownBtnDisplay, setDropDownBtnDisplay] = useState("0");
     const [connected, setConnected] = useState(false);
 
@@ -50,6 +50,9 @@ const SideNavBar = (props: Props) => {
             setConnected(userInfo.existInGuild);
         }
     });
+    const myElementRef = useRef<HTMLDivElement>(null);
+    const elements = document.getElementById("right");
+    const element = elements as HTMLElement;
     const hideFunc = () => {
         setMarginTop(marginTop === "0px" ? "-15px" : "0px");
         setTransform2(transform2 === "0deg" ? "45deg" : "0deg");
@@ -57,6 +60,10 @@ const SideNavBar = (props: Props) => {
         setDisplay(display === "block" ? "none" : "block");
         // setOpacity(opacity === 1 ? 0 : 1);
         setDisplay2(display2 === "block" ? "none" : "block");
+        element.style.transition = ".5s ease-in-out";
+        element.style.transform === "scale(1.1)"
+            ? (element.style.transform = "scale(1)")
+            : (element.style.transform = "scale(1.1)");
     };
 
     return (
@@ -72,6 +79,10 @@ const SideNavBar = (props: Props) => {
                     setDisplay2(display2 === "block" ? "none" : "block");
                     // setTimeout(() => {
                     // }, 1000);
+                    element.style.transition = ".5s ease-in-out";
+                    element.style.transform === "scale(1.1)"
+                        ? (element.style.transform = "scale(1)")
+                        : (element.style.transform = "scale(1.1)");
                 }}
             >
                 <p
@@ -92,10 +103,15 @@ const SideNavBar = (props: Props) => {
             </div>
             <div
                 className={styles.side_nav_bar_container}
-                style={{
-                    opacity: `${display2 === "none" ? 0 : 1}`,
-                    display: `${display2}`
-                }}
+                style={
+                    window.innerWidth <= 830
+                        ? {
+                              opacity: `${display2 === "none" ? 0 : 1}`,
+                              zIndex: `${display2 === "none" ? 0 : 100}`
+                          }
+                        : {}
+                    // display: `${display2}`
+                }
             >
                 <div className={styles.side_nav_bar}>
                     <div className={styles.mulearn_brand}>
@@ -166,6 +182,15 @@ const SideNavBar = (props: Props) => {
                         <MuButtonLight
                             text="Logout"
                             icon={<i className="fi fi-sr-key"></i>}
+                            style={
+                                window.innerWidth <= 820
+                                    ? {
+                                          border: "none",
+                                          borderRadius: "10px",
+                                          padding: "20px 20px"
+                                      }
+                                    : {}
+                            }
                             onClick={() => {
                                 localStorage.clear();
                                 toast({
