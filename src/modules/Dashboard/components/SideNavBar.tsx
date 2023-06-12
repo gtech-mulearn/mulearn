@@ -183,7 +183,7 @@ const SideNavBar = (props: Props) => {
                             text="Logout"
                             icon={<i className="fi fi-sr-key"></i>}
                             style={
-                                window.innerHeight <= 820
+                                window.innerWidth <= 820
                                     ? {
                                           border: "none",
                                           borderRadius: "10px",
