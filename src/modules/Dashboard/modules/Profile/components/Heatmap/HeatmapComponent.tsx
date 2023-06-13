@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Heatmap.module.css";
 import { Tooltip } from "@chakra-ui/react";
 import moment from "moment";
@@ -8,14 +8,18 @@ type Props = {
 };
 
 const HeatmapComponent = (props: Props) => {
+    const [year, setYear] = useState(2023);
     let content: JSX.Element[] = [];
     let i = 1;
+    const dataYearFiltered = props.data.filter(item => {
+        return item.createdDate.slice(0, 4) === year.toString();
+    });
     do {
         let dateNumber = i.toLocaleString("en-US", {
             minimumIntegerDigits: 2,
             useGrouping: false
         });
-        props.data.forEach(item => {
+        dataYearFiltered.forEach(item => {
             let MonthNumber = 0;
             if (item.createdDate.slice(5, 7) === "01") {
                 MonthNumber = 0;
@@ -102,6 +106,45 @@ const HeatmapComponent = (props: Props) => {
                 <p>Sun</p>
             </div>
             <div className={styles.heatmap}>{content}</div>
+
+            <div className={styles.year_btns}>
+                <p
+                    style={
+                        year === 2023
+                            ? { backgroundColor: "#014bb2", color: "#fff" }
+                            : {}
+                    }
+                    onClick={() => {
+                        setYear(2023);
+                    }}
+                >
+                    2023
+                </p>
+                <p
+                    style={
+                        year === 2022
+                            ? { backgroundColor: "#014bb2", color: "#fff" }
+                            : {}
+                    }
+                    onClick={() => {
+                        setYear(2022);
+                    }}
+                >
+                    2022
+                </p>
+                <p
+                    style={
+                        year === 2021
+                            ? { backgroundColor: "#014bb2", color: "#fff" }
+                            : {}
+                    }
+                    onClick={() => {
+                        setYear(2021);
+                    }}
+                >
+                    2021
+                </p>
+            </div>
         </div>
     );
 };
