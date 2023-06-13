@@ -41,7 +41,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
             hasView: !connected,
             icon: <i className="fi fi-sr-data-transfer"></i>
         },
-        
+
         {
             url: "campus-details",
             title: "Campus Details",
@@ -50,9 +50,9 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-book-arrow-right"></i>
         },
         {
-            url: "hackathon",
-            title: "Hackathon",
-            hasView: false,
+            url: "hackathon-management",
+            title: "Hackathon Management",
+            hasView: true,
             icon: <i className="fi fi-sr-clipboard-user"></i>
         },
         {
@@ -96,6 +96,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
             hasView: true,
             roles: [roles.ADMIN],
             icon: <i className="fi fi-sr-globe"></i>
+        },
+        {
+            url: "tasks",
+            title: "Tasks",
+            hasView: true,
+            roles: [roles.ADMIN],
+            icon: <i className="fi fi-sr-clipboard-user"></i>
         },
         {
             url: "zonal-dashboard",

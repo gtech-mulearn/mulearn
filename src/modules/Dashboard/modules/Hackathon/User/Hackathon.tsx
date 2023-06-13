@@ -1,11 +1,15 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../../../../../assets/images/hackadmin.png"
 
 const Hackathon = () => {
     return (
-        <Link to="/hackathon-management">
-            <button>Create</button>
-        </Link>
+        <div>
+			<img src={logo}alt="" />
+
+            <Link to="/hackathon-management">
+                <button>Create</button>
+            </Link>
+        </div>
     );
 };
 

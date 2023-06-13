@@ -1,3 +1,70 @@
-.button {
-    color: red;
+.logo {
+	width: 7rem;
+}
+
+.topNav {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	padding: 0 20px;
+	width: 100%;
+}
+
+.navLinks {
+	display: flex;
+	justify-content: space-evenly;
+	width: 30%;
+	font-weight: bold;
+}
+.navLinks p:hover {
+	text-decoration: underline;
+}
+
+.main {
+	display: flex;
+	align-items: center;
+	margin-top: 5%;
+	padding: 0 20px;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.illustration img {
+	width: 100%;
+}
+
+.text img {
+	width: 80%;
+}
+.text h1 {
+	margin-top: 40px;
+	font-weight: bold;
+	font-size: large;
+	color: var(--Dark);
+}
+.text form, h1 {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: left;
+}
+.text form input {
+	margin-top: 0;
+	width: 50%;
+	border-radius: 8px;
+	background-color: var(--White);
+	box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.155);
+}
+.text form button {
+	background-color: var(--Primary);
+	margin-left: 10px;
+	padding: 12px;
+	border-radius: 50%;
+	color: var(--White);
+}
+.text {
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+	width: 60%;
 }
