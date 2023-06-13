@@ -5,7 +5,7 @@ type Props = {};
 const MulearnBrand = (props: Props) => {
     return (
         <svg
-            width="180"
+            width="190"
             height="22"
             viewBox="0 0 71 17"
             fill="none"
