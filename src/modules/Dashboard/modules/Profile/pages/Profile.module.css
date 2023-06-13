@@ -71,12 +71,24 @@
   flex-direction: column;
 }
 
+.rightDash .profileDash .profile .profile_div {
+  background: #FFFFFF;
+  box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  padding: 0px;
+  margin-bottom: 20px;
+}
+
 .rightDash .profileDash .profile .banner {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   height: 10rem;
   width: 100%;
-  background-color: #A0C8FF;
+  /* background-color: #A0C8FF; */
+  background-image: url(../assets/images/profile_banner.png);
+  background-position: bottom;
+  position: relative;
+  background-size: cover;
   position: relative;
 }
 
@@ -88,7 +100,7 @@
 
 .rightDash .profileDash .profile .banner .member_since p {
   font-size: 15px;
-  color: #014BB2;
+  color: #fff;
   font-weight: 500;
 }
 
@@ -150,6 +162,7 @@
   list-style: none;
   justify-content: space-between;
   margin-top: -1rem;
+  padding: 0px 10px;
 }
 
 .rightDash .profileDash .profile .profileList li:first-child {
@@ -177,6 +190,7 @@
   gap: 1rem 5rem;
   margin: 2rem 0;
   justify-content: flex-start;
+  padding: 0px 10px;
 }
 
 .rightDash .profileDash .profile .pointsList .points {
@@ -191,6 +205,10 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .rightDash .profileDash .profile .interestGrp .igs_container {
@@ -279,6 +297,10 @@
   max-width: 770px;
   width: 90vw;
   overflow: scroll;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  padding: 10px 5px;
 }
 
 /* leaderBoard and Recent Activity CSS Below */
@@ -291,13 +313,23 @@
   gap: 1rem;
 }
 
+.rightDash .profileDash .notification .existing_roles {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
 .rightDash .profileDash .notification .existing_roles p {
   margin-left: 10px;
   color: #014BB2;
 }
 
 .rightDash .profileDash .notification .existing_roles .head {
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
+  background: #FFFFFF;
+  box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  padding: 10px;
 }
 
 .rightDash .profileDash .notification .existing_roles .pie_chart {
@@ -322,6 +354,13 @@
   background-color: #014BB2;
   border-radius: 50%;
   display: block;
+}
+
+.rightDash .profileDash .notification .leadboard {
+  background: #FFFFFF;
+  box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  padding: 10px 0px;
 }
 
 .rightDash .profileDash .notification .leadboard .data_card {
@@ -393,14 +432,14 @@
   width: 3rem;
   height: 3rem;
   padding: 0.5rem;
-  background-color: rgb(1, 75, 178);
+  background: linear-gradient(133.8deg, #2E85FE -8.97%, #AF2EE6 91.41%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.rightDash .profileDash .notification .leadboard .card .cardInfo .card_icon svg path{
+.rightDash .profileDash .notification .leadboard .card .cardInfo .card_icon svg path {
   fill: "#fff";
 }
 

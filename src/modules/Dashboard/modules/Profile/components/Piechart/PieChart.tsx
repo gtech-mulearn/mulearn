@@ -9,8 +9,8 @@ export const options = {
         4: { color: "#E0EDFF" }
     },
     // fontSize: window.innerWidth > 1800 ? 15 : 10,
-    // is3D: true,
-    pieHole: 0.4,
+    is3D: true,
+    // pieHole: 0.4,
     legend: {
         alignment: "center",
         textStyle: {
