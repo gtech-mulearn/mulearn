@@ -18,9 +18,12 @@
     transition: .3s ease-in-out;
 }
 
-.btn p {
-    color: unset !important;
-    ;
+.btn_loader {
+    margin-left: 18px;
+}
+
+.btn p{
+    color: unset !important;; 
 }
 
 .btn_light {
