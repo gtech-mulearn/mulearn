@@ -111,6 +111,7 @@
     width: 100%;
     height: 100%;
     overflow-y: scroll;
+    transition: 1s ease;
 }
 
 .right_side .top_nav .nav {
@@ -191,17 +192,18 @@
         display: none;
     }
     .side_nav_bar_container {
-        display: none;
+        /* display: none; */
+        opacity: 0;
     }
     .side_nav_bar_container .side_nav_bar {
-        height: calc(100vh - 120px);
+        height: calc(100dvh - 90px);
     }
 
     .side_nav_bar_container {
         max-width: 100vw;
         width: 100vw;
         position: fixed;
-        z-index: 100;
+        z-index: 0;
     }
 
     .right_side .top_nav .nav .nav_items {

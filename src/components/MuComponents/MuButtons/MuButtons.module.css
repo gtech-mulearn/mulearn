@@ -18,6 +18,11 @@
     transition: .3s ease-in-out;
 }
 
+.btn p {
+    color: unset !important;
+    ;
+}
+
 .btn_light {
     background-color: #CCDBF0;
     font-size: 16px;
@@ -60,16 +65,16 @@
 }
 
 .createBtn {
-	background: var(--Primary);
+    background: var(--Primary);
     color: var(--White);
     min-width: 100px;
     padding: 10px 20px;
     display: flex;
     border-radius: 10px;
-	border: 1px solid var(--Primary);
+    border: 1px solid var(--Primary);
     flex-direction: row;
     align-items: center;
-	justify-content: center;
+    justify-content: center;
     margin-top: 1.5rem;
     font-size: 15px;
     cursor: pointer;
@@ -81,12 +86,21 @@
 }
 
 .createBtnContainer {
-	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: end;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
 }
 
 .createBtn p {
-	margin-left: 10px;
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 830px) {
+
+    .btn,
+    .btn_light,
+    .dropdown_btn {
+        margin-bottom: 0px;
+    }
 }

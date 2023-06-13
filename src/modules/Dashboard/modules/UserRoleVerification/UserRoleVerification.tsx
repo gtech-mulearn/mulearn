@@ -126,7 +126,7 @@ function UsersRoleVerification() {
                 CSV={dashboardRoutes.getUsersRoleVerificationList}
                 // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
             />
-            {data && (
+            {/* {data && (
                 <Table
                     rows={data}
                     page={currentPage}
@@ -148,9 +148,9 @@ function UsersRoleVerification() {
                         handleNextClick={handleNextClick}
                         handlePreviousClick={handlePreviousClick}
                     />
-                    {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                   
                 </Table>
-            )}
+            )} */}
         </>
     );
 }

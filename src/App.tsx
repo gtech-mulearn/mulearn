@@ -1,5 +1,9 @@
 import "./App.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+    RouterProvider,
+    createBrowserRouter,
+    Navigate
+} from "react-router-dom";
 import AuthRoutes from "./components/AuthRoutes";
 import Onboarding from "./modules/Common/Authentication/pages/Onboarding";
 import Login from "./modules/Common/Authentication/pages/Login";
@@ -39,8 +43,15 @@ import TaskDelete from "./modules/Dashboard/modules/Tasks/TaskDelete";
 import TaskBulkImport from "./modules/Dashboard/modules/Tasks/TaskBulkImport";
 import ZonalDashboard from "./modules/Dashboard/modules/zonalDashboard/zonaldashboard";
 import DistrictDashboard from "./modules/Dashboard/modules/districtDashboard/districtdashboard";
+import Hackathon from "./modules/Dashboard/modules/Hackathon/User/Hackathon";
+import HackathonCreate from "./modules/Dashboard/modules/Hackathon/Admin/HackathonCreate";
 
 const router = createBrowserRouter([
+    // Add redirect from '/' to '/login'
+    {
+        path: "/",
+        element: <Navigate to="/login" replace />
+    },
     {
         path: "*",
         element: <NotFound />
@@ -53,7 +64,6 @@ const router = createBrowserRouter([
         path: "/",
         element: <AuthRoutes />,
         children: [
-            { path: "/", element: <Login /> },
             { path: "register", element: <Onboarding /> },
             { path: "login", element: <Login /> },
             { path: "forgot-password", element: <ForgotPassword /> },
@@ -157,7 +167,9 @@ const router = createBrowserRouter([
                         path: "tasks/delete/:id",
                         element: <TaskDelete />
                     },
-                    { path: "url-shortener", element: <UrlShortener /> }
+                    { path: "url-shortener", element: <UrlShortener /> },
+                    { path: "hackathon", element: <Hackathon /> },
+                    { path: "hackathon-management", element: <HackathonCreate /> }
                 ]
             }
         ]
