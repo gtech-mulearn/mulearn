@@ -2,8 +2,6 @@
     width: 100%;
 }
 
-
-
 .heatmap_container .months {
     margin-left: 25px;
     display: flex;
@@ -35,8 +33,29 @@
     text-align: center;
     font-size: 9px;
     border-radius: 3px;
-    background: aliceblue;
+    background: #2dce891f;
     border: 0.2px solid rgba(171, 171, 171, 0.20);
+}
+
+.heatmap_container .year_btns {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.heatmap_container .year_btns p {
+    color: #2DCE89;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.heatmap_container .year_btns p:hover {
+    background-color: #2DCE89;
+    color: white;
 }
 
 

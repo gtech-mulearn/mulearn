@@ -15,7 +15,8 @@ export const authRoutes = {
     login: "/api/v1/auth/user-authentication/",
     getAccessToken: "/api/v1/auth/get-access-token/",
     otpVerification: "/api/v1/auth/otp-verification/",
-    requestEmailOrMuidOtp: "/api/v1/auth/request-otp/"};
+    requestEmailOrMuidOtp: "/api/v1/auth/request-otp/"
+};
 
 export const dashboardRoutes = {
     forgetPassword: "/api/v1/dashboard/user/forgot-password/",
@@ -46,7 +47,9 @@ export const dashboardRoutes = {
     getUserSuggestion: "/api/v1/dashboard/profile/user-suggestion/",
     getStudentLeaderBoard: "api/v1/leaderboard/students/",
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
-    zonalCampusDetails: "/api/v1/dashboard/zonal/campus-details/"
+    zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv/",
+    zonalCampusDetails: "/api/v1/dashboard/zonal/campus-details/",
+    zonalCampusData: "/api/v1/dashboard/zonal/campus-details/csv/"
 };
 
 export const organizationRoutes = {
