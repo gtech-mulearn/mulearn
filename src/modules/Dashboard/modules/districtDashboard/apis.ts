@@ -55,7 +55,8 @@ export const getdistrictdashboard = async (
                 })
                 .then(data => {
                     setData(data.response.data);
-                    setTotalPages(data.response.pagination.colleges.totalPages);
+                    console.log(data.response.data);
+                    setTotalPages(data.response.pagination.totalPages);
                 });
         } else if (activeTab === "Campus management") {
             await privateGateway
@@ -72,7 +73,7 @@ export const getdistrictdashboard = async (
                 })
                 .then(data => {
                     setData(data.response.data);
-                    setTotalPages(data.response.pagination.colleges.totalPages);
+                    setTotalPages(data.response.pagination.totalPages);
                 });
         } else {
             alert("error to Load Data");

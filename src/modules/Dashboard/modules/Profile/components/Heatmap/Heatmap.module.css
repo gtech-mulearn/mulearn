@@ -39,6 +39,26 @@
     border: 0.2px solid rgba(171, 171, 171, 0.20);
 }
 
+.heatmap_container .year_btns {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.heatmap_container .year_btns p {
+    color: #014bb2;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.heatmap_container .year_btns p:hover {
+    background-color: #014bb2;
+    color: white;
+}
+
 
 @media (min-width: 1800px) {
     .heatmap_container .months {
