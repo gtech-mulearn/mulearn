@@ -174,13 +174,14 @@
 .rightDash .profileDash .profile .pointsList {
   display: flex;
   flex-wrap: wrap;
-  gap: 5rem;
+  gap: 1rem 5rem;
   margin: 2rem 0;
   justify-content: flex-start;
 }
 
 .rightDash .profileDash .profile .pointsList .points {
   display: flex;
+  align-items: center;
   gap: 10px;
   text-align: center;
   font-weight: 600;
@@ -388,6 +389,21 @@
   font-size: .7rem;
 }
 
+.rightDash .profileDash .notification .leadboard .card .cardInfo .card_icon {
+  width: 3rem;
+  height: 3rem;
+  padding: 0.5rem;
+  background-color: rgb(1, 75, 178);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rightDash .profileDash .notification .leadboard .card .cardInfo .card_icon svg path{
+  fill: "#fff";
+}
+
 
 /* responvice CSS */
 
@@ -476,5 +492,16 @@
 
   .rightDash .profileDash .profile .interestGrp .igs_container {
     max-width: 90vw;
+  }
+}
+
+@media (max-width: 380px) {
+  .rightDash .profileDash .profile .profileInfo .profilePic img {
+    width: 120px;
+  }
+
+  .rightDash .profileDash .profile .profileInfo .profilePic .name {
+    margin-top: -10px;
+    font-size: 15px;
   }
 }
