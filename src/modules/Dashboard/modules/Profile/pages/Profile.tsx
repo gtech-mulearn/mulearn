@@ -79,53 +79,57 @@ const Profile = () => {
                 ) : (
                     <div className={styles.profileDash}>
                         <div className={styles.profile}>
-                            <div className={styles.banner}>
-                                {/* <i className="fi fi-sr-settings"></i> */}
+                            <div className={styles.profile_div}>
+                                <div className={styles.banner}>
+                                    {/* <i className="fi fi-sr-settings"></i> */}
 
-                                <div className={styles.member_since}>
-                                    <div>
-                                        <MulearnBrand />
-                                    </div>
-                                    <p>
-                                        Member since{" "}
-                                        {userProfile.joined.slice(0, 4)}
-                                    </p>
-                                </div>
-                            </div>
-                            <div className={styles.profileInfo}>
-                                <div className={styles.profilePic}>
-                                    <img
-                                        src={
-                                            userProfile.profile_pic
-                                                ? userProfile.profile_pic
-                                                : dpm
-                                        }
-                                        alt={userProfile.firstName}
-                                    />
-
-                                    <div className={styles.name}>
-                                        <h1>
-                                            {userProfile.firstName}{" "}
-                                            {userProfile.lastName}{" "}
-                                            {userProfile.college_code
-                                                ? "(" +
-                                                  userProfile.college_code +
-                                                  ")"
-                                                : null}
-                                        </h1>
-                                        <p style={{ marginTop: "-5px" }}>
-                                            {userProfile.muid}
-                                        </p>
-                                        <p style={{ color: "#014BB2" }}>
-                                            LEVEL{"     "}
-                                            {userProfile.level
-                                                ? userProfile.level.slice(3, 4)
-                                                : 0}
+                                    <div className={styles.member_since}>
+                                        <div>
+                                            <MulearnBrand />
+                                        </div>
+                                        <p>
+                                            Member since{" "}
+                                            {userProfile.joined.slice(0, 4)}
                                         </p>
                                     </div>
                                 </div>
+                                <div className={styles.profileInfo}>
+                                    <div className={styles.profilePic}>
+                                        <img
+                                            src={
+                                                userProfile.profile_pic
+                                                    ? userProfile.profile_pic
+                                                    : dpm
+                                            }
+                                            alt={userProfile.firstName}
+                                        />
 
-                                {/* <MuButton
+                                        <div className={styles.name}>
+                                            <h1>
+                                                {userProfile.firstName}{" "}
+                                                {userProfile.lastName}{" "}
+                                                {userProfile.college_code
+                                                    ? "(" +
+                                                      userProfile.college_code +
+                                                      ")"
+                                                    : null}
+                                            </h1>
+                                            <p style={{ marginTop: "-5px" }}>
+                                                {userProfile.muid}
+                                            </p>
+                                            <p style={{ color: "#014BB2" }}>
+                                                LEVEL{"     "}
+                                                {userProfile.level
+                                                    ? userProfile.level.slice(
+                                                          3,
+                                                          4
+                                                      )
+                                                    : 0}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    {/* <MuButton
                             text={"Edit Profile"}
                             icon={<i className="fi fi-sr-pencil"></i>}
                             style={{
@@ -137,63 +141,65 @@ const Profile = () => {
                                 color: "#fff"
                             }}
                         /> */}
-                            </div>
+                                </div>
 
-                            <div className={styles.profileList}>
-                                <li>Basic Details</li>
-                                {/* <li>Karma History</li>
+                                <div className={styles.profileList}>
+                                    <li>Basic Details</li>
+                                    {/* <li>Karma History</li>
                         <li>Join Mulearn</li>
                         <li>See More</li> */}
-                                <div>
-                                    <i className=".fa-solid fa-chevron-left"></i>
-                                    <i className="fi fi-ts-angle-right"></i>
+                                    <div>
+                                        <i className=".fa-solid fa-chevron-left"></i>
+                                        <i className="fi fi-ts-angle-right"></i>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className={styles.pointsList}>
-                                <div className={styles.points}>
-                                    <Karma />
-                                    <div>
-                                        <span>Karma</span>
-                                        <h1>
-                                            {parseInt(userProfile.karma) > 1000
-                                                ? (
-                                                      parseInt(
-                                                          userProfile.karma
-                                                      ) / 1000
-                                                  ).toPrecision(4) + "K"
-                                                : userProfile.karma}
-                                        </h1>
+                                <div className={styles.pointsList}>
+                                    <div className={styles.points}>
+                                        <Karma />
+                                        <div>
+                                            <span>Karma</span>
+                                            <h1>
+                                                {parseInt(userProfile.karma) >
+                                                1000
+                                                    ? (
+                                                          parseInt(
+                                                              userProfile.karma
+                                                          ) / 1000
+                                                      ).toPrecision(4) + "K"
+                                                    : userProfile.karma}
+                                            </h1>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className={styles.points}>
-                                    <Rank />
-                                    <div>
-                                        <span>Rank</span>
-                                        <h1>{userProfile.rank}</h1>
+                                    <div className={styles.points}>
+                                        <Rank />
+                                        <div>
+                                            <span>Rank</span>
+                                            <h1>{userProfile.rank}</h1>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className={styles.points}>
-                                    <Karma />
-                                    <div>
-                                        <span>Avg.Karma/Month</span>
-                                        <h1>
-                                            {parseInt(userProfile.karma) /
-                                                monthDifference >
-                                            1000
-                                                ? (
-                                                      parseInt(
-                                                          userProfile.karma
-                                                      ) /
-                                                      monthDifference /
-                                                      1000
-                                                  ).toPrecision(4) + "K"
-                                                : (
-                                                      parseInt(
-                                                          userProfile.karma
-                                                      ) / monthDifference
-                                                  ).toPrecision(3)}
-                                        </h1>
+                                    <div className={styles.points}>
+                                        <Karma />
+                                        <div>
+                                            <span>Avg.Karma/Month</span>
+                                            <h1>
+                                                {parseInt(userProfile.karma) /
+                                                    monthDifference >
+                                                1000
+                                                    ? (
+                                                          parseInt(
+                                                              userProfile.karma
+                                                          ) /
+                                                          monthDifference /
+                                                          1000
+                                                      ).toPrecision(4) + "K"
+                                                    : (
+                                                          parseInt(
+                                                              userProfile.karma
+                                                          ) / monthDifference
+                                                      ).toPrecision(3)}
+                                            </h1>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -231,7 +237,10 @@ const Profile = () => {
                             </div>
 
                             <div className={styles.heatmap}>
-                                <HeatmapComponent data={userLog} />
+                                <HeatmapComponent
+                                    data={userLog}
+                                    year={userProfile.joined.slice(0, 4)}
+                                />
                             </div>
                         </div>
 
