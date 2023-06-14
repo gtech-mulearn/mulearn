@@ -137,7 +137,7 @@ const SideNavBar = (props: Props) => {
                                             window.location.pathname ===
                                             `/${button.url}`
                                                 ? {
-                                                      background: "#014BB2",
+                                                      background: "#456FF6",
                                                       color: "#fff"
                                                   }
                                                 : {}
@@ -157,7 +157,7 @@ const SideNavBar = (props: Props) => {
                                 //     window.location.pathname ===
                                 //         "/interest-groups"
                                 //         ? {
-                                //             background: "#014BB2",
+                                //             background: "#456FF6",
                                 //             color: "#fff"
                                 //         }
                                 //         : {}

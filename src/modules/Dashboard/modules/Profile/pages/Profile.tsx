@@ -73,7 +73,7 @@ const Profile = () => {
             <div className={styles.rightDash}>
                 {APILoadStatus === 0 ? (
                     <div className={styles.loader_container}>
-                        <GridLoader color="#014bb2" />
+                        <GridLoader color="#456FF6" />
                         <p>Loading</p>
                     </div>
                 ) : (
@@ -117,7 +117,7 @@ const Profile = () => {
                                             <p style={{ marginTop: "-5px" }}>
                                                 {userProfile.muid}
                                             </p>
-                                            <p style={{ color: "#014BB2" }}>
+                                            <p style={{ color: "#456FF6" }}>
                                                 LEVEL{"     "}
                                                 {userProfile.level
                                                     ? userProfile.level.slice(
@@ -137,7 +137,7 @@ const Profile = () => {
                                 minWidth: "80px",
                                 marginTop: "50px",
                                 height: "40px",
-                                background: "#014BB2",
+                                background: "#456FF6",
                                 color: "#fff"
                             }}
                         /> */}
@@ -302,7 +302,7 @@ const Profile = () => {
                                                         <p>
                                                             <span
                                                                 style={{
-                                                                    color: "#014BB2"
+                                                                    color: "#456FF6"
                                                                 }}
                                                             >
                                                                 {log.karmaPoint}

@@ -65,7 +65,7 @@
 
 .campus_student_list_container .content .sec1 .details_card .card:nth-child(1) {
     color: white;
-    background: #014bb2;
+    background: #456FF6;
 }
 
 .campus_student_list_container .content .sec2 {
@@ -90,7 +90,7 @@
     position: absolute;
     width: 170px;
     color: white;
-    background-color: #014bb2;
+    background-color: #456FF6;
     /* text-align: center; */
     letter-spacing: 30px;
 }
