@@ -48,7 +48,12 @@ export const dashboardRoutes = {
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
     zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv/",
     zonalCampusDetails: "/api/v1/dashboard/zonal/campus-details/",
-    zonalCampusData: "/api/v1/dashboard/zonal/campus-details/csv/"
+    zonalCampusData: "/api/v1/dashboard/zonal/campus-details/csv/",
+
+    districtStudentDetails: "/api/v1/dashboard/district/student-details/",
+    districtStudentData: "/api/v1/dashboard/district/student-details/csv/",
+    districtCampusDetails: "/api/v1/dashboard/district/campus-details/",
+    districtCampusData: "/api/v1/dashboard/district/campus-details/csv/"
 };
 
 export const organizationRoutes = {

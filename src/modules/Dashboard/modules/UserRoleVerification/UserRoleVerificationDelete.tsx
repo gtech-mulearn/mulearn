@@ -10,12 +10,10 @@ import { useToast } from "@chakra-ui/react";
 type Props = {};
 
 const UserRoleVerificationDelete = (props: Props) => {
-    const [input, setInput] = useState("");
+
     const { id } = useParams();
     const toast = useToast();
-    useEffect(() => {
-        getUserRoleVerificationDetails(id, setInput);
-    }, []);
+   
     const navigate = useNavigate();
     const handleSubmit = () => {
         deleteUserRoleVerification(id, toast);
@@ -24,7 +22,7 @@ const UserRoleVerificationDelete = (props: Props) => {
     return (
         <div>
             <Form
-                title={`Are you sure you want to delete ${input} ?`}
+                title={`Are you sure you want to delete  ?`}
                 handleSubmitClick={handleSubmit}
                 cancelPath={"/user-role-verification"}
             />

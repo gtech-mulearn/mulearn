@@ -2,7 +2,7 @@ import { AxiosError } from "axios";
 import { privateGateway } from "../../../../services/apiGateways";
 import { dashboardRoutes } from "../../../../services/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
-
+import { Dispatch, SetStateAction } from "react";
 export const getUserRoleVerification = async (
     setData: any,
     page: number,
@@ -24,8 +24,9 @@ export const getUserRoleVerification = async (
             }
         );
         const manageusers: any = response?.data;
-
+        console.log(dashboardRoutes.getUsersRoleVerificationData);
         setData(manageusers.response.data);
+        console.log(manageusers.response.data);
         setTotalPages(manageusers.response.pagination.totalPages);
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -35,20 +36,26 @@ export const getUserRoleVerification = async (
     }
 };
 
-
 export const editUserRoleVerification = async (
-    name: string,
-    id: string | undefined
+    verified: boolean,
+    id: string | undefined,
+    toast: any
 ) => {
     try {
-        const response = await privateGateway.put(
-            dashboardRoutes.getUsersData + id + "/",
+        const response = await privateGateway.patch(
+            dashboardRoutes.getUsersRoleVerificationData + id + "/",
             {
-                name: name
+                verified: verified
             }
         );
         const message: any = response?.data;
         console.log(message);
+        toast({
+            title: "Role edited",
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -56,10 +63,12 @@ export const editUserRoleVerification = async (
         }
     }
 };
-
+interface IData {
+    verified: boolean;
+}
 export const getUserRoleVerificationDetails = async (
     id: string | undefined,
-    setInput: React.Dispatch<React.SetStateAction<string>>
+    setData: Dispatch<SetStateAction<IData>>
 ) => {
     try {
         const response = await privateGateway.get(
@@ -68,7 +77,7 @@ export const getUserRoleVerificationDetails = async (
         const message: any = response?.data;
         console.log(message);
         console.log(message.response.data);
-        setInput(message.response.data);
+        setData(message.response.data);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

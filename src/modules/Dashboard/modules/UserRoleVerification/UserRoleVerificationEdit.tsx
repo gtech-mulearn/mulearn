@@ -1,20 +1,30 @@
 import { useEffect, useState } from "react";
-import Form from "../../../../components/MuComponents/Form/Form";
 import {
     editUserRoleVerification,
     getUserRoleVerificationDetails
 } from "./apis";
+import { useToast } from "@chakra-ui/react";
+import { Form, Formik } from "formik";
+import * as Yup from "yup";
+import { FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
+import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import styles from "../../../../components/MuComponents/FormikComponents/form.module.css";
 
 type Props = {};
 
 const UserRoleVerificationEdit = (props: Props) => {
-    const [input1, setInput1] = useState("");
-    const [input2, setInput2] = useState("");
-    const [input3, setInput3] = useState("");
+    const [input1, setInput1] = useState(true);
 
+    interface IData {
+        verified: boolean;
+    }
+    const [data, setData] = useState<IData>({
+        verified: false
+    });
     useEffect(() => {
-        getUserRoleVerificationDetails(id, setInput1);
+        getUserRoleVerificationDetails(id, setData);
     }, []);
 
     const inputFields = [
@@ -24,53 +34,63 @@ const UserRoleVerificationEdit = (props: Props) => {
             input: input1,
             setInput: setInput1
         }
-        // {
-        //     content: "1234",
-        //     inputType: "text",
-        //     input: input2,
-        //     setInput: setInput2
-        // },
-        // {
-        //     content: "8553",
-        //     inputType: "text",
-        //     input: input3,
-        //     setInput: setInput3
-        // }
     ];
-    // const dropdownFields = [
-    //     {
-    //         contents: ["IG Name", "1", "2", "3"],
-    //         input: input2,
-    //         setInput: setInput2,
-    //         label: "Select Name",
-    //         default: "string"
-    //     },
-    //     {
-    //         contents: ["IG Name", "1", "2", "3"],
-    //         input: input3,
-    //         setInput: setInput3,
-    //         label: "Select test",
-    //         default: "select from following"
-    //     }
-    // ];
+
     const { id } = useParams();
     const navigate = useNavigate();
     const handleSubmit = () => {
-        editUserRoleVerification(input1, id);
+        editUserRoleVerification(input1, id, toast);
         navigate("/user-role-verification");
     };
     return (
-        <div>
-            <Form
-                title={"Edit User Role"}
-                handleSubmitClick={handleSubmit}
-                inputFields={inputFields}
-                cancelPath={"/user-role-verification"}
-                // dropdownFields={dropdownFields}
-            />
+        <div className={styles.external_container}>
+            <div className={styles.container}>
+                <h1 className={styles.text}>Edit User Verification</h1>
+                <Formik
+                    enableReinitialize={true}
+                    initialValues={{
+                        // igName: name
+                        verified: data.verified
+                    }}
+                    validationSchema={Yup.object({
+                        // igName: Yup.string()
+                        //     .max(30, "Must be 30 characters or less")
+                        //     .required("Required"),
+                        verified: Yup.string()
+                            .max(30, "Must be 30 characters or less")
+                            .required("Required")
+                    })}
+                    onSubmit={values => {
+                        editUserRoleVerification(values.verified, id, toast);
+
+                        navigate("/user-role-verification");
+                    }}
+                >
+                    <Form className={styles.inputContainer}>
+                        <FormikTextInput
+                            label="Verified"
+                            name="verified"
+                            type="boolean"
+                            placeholder="Change Verified"
+                        />
+
+                        <div className={styles.btn_container}>
+                            <MuButton
+                                text={"Decline"}
+                                className={styles.btn_cancel}
+                                onClick={() => {
+                                    navigate("/user-role-verification");
+                                }}
+                            />
+                            <button type="submit" className={styles.btn_submit}>
+                                Confirm
+                            </button>
+                        </div>
+                    </Form>
+                </Formik>
+            </div>
         </div>
     );
 };
 
 export default UserRoleVerificationEdit;
-
