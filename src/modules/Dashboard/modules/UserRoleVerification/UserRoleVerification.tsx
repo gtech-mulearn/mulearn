@@ -30,21 +30,10 @@ function UsersRoleVerification() {
         // { column: "user_id", Label: "User ID", isSortable: false },
         { column: "role_title", Label: "Role Title", isSortable: false },
         // { column: "role_id", Label: "Role ID", isSortable: false },
-        { column: "Verified", Label: "Verified", isSortable: false }
+        { column: "verified", Label: "Verified", isSortable: false }
     ];
 
-    const editableColumnNames = [
-        "First Name",
-        "Last Name",
-        "Mu ID",
-        "Discord ID",
-        "ID",
-        "User Id",
-        "Role Title",
-        "Role ID",
-        "Verified",
-        
-    ];
+  
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
