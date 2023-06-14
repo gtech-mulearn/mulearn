@@ -24,8 +24,9 @@ export const getUserRoleVerification = async (
             }
         );
         const manageusers: any = response?.data;
-
+        console.log(dashboardRoutes.getUsersRoleVerificationData);
         setData(manageusers.response.data);
+        console.log(manageusers.response.data);
         setTotalPages(manageusers.response.pagination.totalPages);
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -34,7 +35,6 @@ export const getUserRoleVerification = async (
         }
     }
 };
-
 
 export const editUserRoleVerification = async (
     name: string,
