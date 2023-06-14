@@ -42,7 +42,7 @@ export const getdistrictdashboard = async (
 
         if (activeTab === "Student management") {
             await privateGateway
-                .get(dashboardRoutes.zonalStudentDetails, {
+                .get(dashboardRoutes.districtStudentDetails, {
                     params: {
                         perPage: selectedValue,
                         pageIndex: page,
@@ -60,7 +60,7 @@ export const getdistrictdashboard = async (
                 });
         } else if (activeTab === "Campus management") {
             await privateGateway
-                .get(dashboardRoutes.zonalCampusDetails, {
+                .get(dashboardRoutes.districtCampusDetails, {
                     params: {
                         perPage: selectedValue,
                         pageIndex: page,
