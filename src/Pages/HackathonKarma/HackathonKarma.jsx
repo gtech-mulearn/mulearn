@@ -66,7 +66,7 @@ const HackathonKarma = () => {
                   <p className={styles.step_number}>Step 2</p>
                   <p className={styles.step_content}>
                     Next, navigate to the student channel in our Discord server.
-                    You can find this channel by looking for the #student
+                    You can find this channel by looking for the #task-dropbox
                     channel in the list of channels on the left side of the
                     Discord window.
                   </p>
