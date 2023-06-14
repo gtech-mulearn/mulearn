@@ -67,8 +67,8 @@ export const getUserRoleVerificationDetails = async (
         );
         const message: any = response?.data;
         console.log(message);
-        console.log(message.response.interestGroup.name);
-        setInput(message.response.interestGroup.name);
+        console.log(message.response.data);
+        setInput(message.response.data);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

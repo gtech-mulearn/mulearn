@@ -10,7 +10,6 @@ export const columnsStudent = [
 ];
 
 export const columnsCampus = [
-    { column: "id", Label: "ID", isSortable: false },
     { column: "title", Label: "Title", isSortable: false },
     { column: "code", Label: "Code", isSortable: false },
     { column: "org_type", Label: "Org Type", isSortable: false },

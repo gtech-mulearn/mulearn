@@ -123,7 +123,6 @@ function UsersRoleVerification() {
             <TableTop
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
-                CSV={dashboardRoutes.getUsersRoleVerificationList}
                 // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
             />
             {/* {data && (
