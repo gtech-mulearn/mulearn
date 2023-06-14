@@ -6,22 +6,22 @@ import Footer from "../../../Components/Footer/Footer";
 import axios from "axios";
 
 const MonthlyLeaderboard = () => {
-  // const [colleges, setColleges] = useState("");
+  const [colleges, setColleges] = useState("");
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    // axios
-    //   .get(`${process.env.REACT_APP_LEADERBOARD_API}/api/v1/leaderboard/college-monthly/`)
-    //   .then(function (response) {
-    //     // console.log(response.data.response);
-    //     setColleges(response.data.response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/leaderboard/college-monthly/`)
+      .then(function (response) {
+        // console.log(response.data.response);
+        setColleges(response.data.response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
     axios
-      .get('https://dev.mulearn.org/api/v1/leaderboard/students/')
+    .get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/leaderboard/students-monthly/`)
       .then(function (response) {
         // console.log(response.data.response);
         setStudents(response.data.response);
@@ -54,7 +54,7 @@ const MonthlyLeaderboard = () => {
           </div>
         </div>
 
-        {/* <div className={styles.second_view_container}>
+        <div className={styles.second_view_container}>
           <div className={styles.second_view}>
             <div className={styles.sv_texts}>
               {" "}
@@ -74,9 +74,9 @@ const MonthlyLeaderboard = () => {
                       <p className={styles.card_code}>
                         College Code: {college.code}
                       </p>
-                      <p className={styles.card_college}>{college.name}</p>
+                      <p className={styles.card_college}>{college.institution}</p>
                       <p className={styles.total_karma}>
-                        Monthly Karma Points: {college.karma.monthly}
+                        Monthly Karma Points: {college.totalKarma}
                       </p>
                       <br/>
                     </div>
@@ -84,7 +84,7 @@ const MonthlyLeaderboard = () => {
                 })}
             </div>
           </div>
-        </div> */}
+        </div>
 
         <div className={styles.second_view_container}>
           <div className={styles.second_view}>
