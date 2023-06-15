@@ -154,10 +154,10 @@ const CSV = (tabname: string) => {
         activeTab === "Student management" &&
         tabname === "Student management"
     ) {
-        return dashboardRoutes.zonalStudentData;
+        return dashboardRoutes.districtStudentData;
     }
     if (activeTab === "Campus management" && tabname === "Campus management") {
-        return dashboardRoutes.zonalCampusData;
+        return dashboardRoutes.districtCampusData;
     }
 };
 
