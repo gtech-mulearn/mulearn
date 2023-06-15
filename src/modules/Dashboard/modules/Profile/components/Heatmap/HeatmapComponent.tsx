@@ -36,9 +36,7 @@ const HeatmapComponent = (props: Props) => {
             },
             []
         );
-
-    // console.log(dataDayFiltered);
-
+        
     const monthMapping: Record<string, number> = {
         "01": 0,
         "02": 31,
