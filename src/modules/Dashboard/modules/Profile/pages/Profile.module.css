@@ -85,7 +85,7 @@
   height: 10rem;
   width: 100%;
   /* background-color: #A0C8FF; */
-  background-image: url(../assets/images/profile_banner.png);
+  background-image: url(../assets/images/profile_banner.webp);
   background-position: bottom;
   position: relative;
   background-size: cover;
@@ -150,7 +150,7 @@
   border-radius: 5px;
   border: none;
   font-weight: 600;
-  background-color: #014BB2;
+  background-color: #456FF6;
   color: #fff;
 }
 
@@ -162,7 +162,7 @@
   list-style: none;
   justify-content: space-between;
   margin-top: -1rem;
-  padding: 0px 10px;
+  padding: 0px 15px;
 }
 
 .rightDash .profileDash .profile .profileList li:first-child {
@@ -181,7 +181,7 @@
   bottom: -5px;
   width: 2rem;
   height: 3.5px;
-  background-color: #014BB2;
+  background-color: #456FF6;
 }
 
 .rightDash .profileDash .profile .pointsList {
@@ -190,7 +190,7 @@
   gap: 1rem 5rem;
   margin: 2rem 0;
   justify-content: flex-start;
-  padding: 0px 10px;
+  padding: 0px 15px;
 }
 
 .rightDash .profileDash .profile .pointsList .points {
@@ -321,7 +321,7 @@
 
 .rightDash .profileDash .notification .existing_roles p {
   margin-left: 10px;
-  color: #014BB2;
+  color: #456FF6;
 }
 
 .rightDash .profileDash .notification .existing_roles .head {
@@ -351,7 +351,7 @@
 .rightDash .profileDash .notification .existing_roles .pie_chart .data_details span {
   width: 10px;
   height: 10px;
-  background-color: #014BB2;
+  background-color: #456FF6;
   border-radius: 50%;
   display: block;
 }

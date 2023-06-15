@@ -31,7 +31,7 @@
   font-size: 1rem;
   max-width: 30rem;
   font-weight: 500;
-  color: #014bb2;
+  color: #456FF6;
   margin-bottom: 20px;
   margin: auto;
 }
@@ -55,7 +55,7 @@
 }
 
 .connect_discord_container .muid_and_btn button {
-  background: #014bb2;
+  background: #456FF6;
   color: white;
   padding: 10px 20px;
   border-radius: 10px;
@@ -195,7 +195,7 @@
   font-size: 25px;
   font-weight: 600;
   width: 450px;
-  color: #014bb2;
+  color: #456FF6;
   display: block;
 }
 

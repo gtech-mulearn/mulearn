@@ -123,7 +123,7 @@ const ConnectDiscord = () => {
                         <GridLoader
                             style={{ display: "block" }}
                             className={styles.loader}
-                            color="#014bb2"
+                            color="#456FF6"
                         />
                     </div>
                 </div>

@@ -7,7 +7,8 @@
     font-family: "Plus Jakarta Sans", sans-serif;
     /* color: #404D61; */
     outline: none;
-    -ms-overflow-style: none; /* IE and Edge */
+    -ms-overflow-style: none;
+    /* IE and Edge */
     scrollbar-width: none;
 }
 
@@ -27,7 +28,7 @@
 }
 
 :root {
-    --Primary: #014bb2;
+    --Primary: #456FF6;
     --PrimaryLight: #ccdbf0;
     --Secondary: #9719cd;
     --SecondaryGrey: #404040;

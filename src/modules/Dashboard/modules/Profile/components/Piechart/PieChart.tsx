@@ -2,7 +2,7 @@ import { Chart } from "react-google-charts";
 
 export const options = {
     slices: {
-        1: { color: "#014BB2" },
+        1: { color: "#456FF6" },
         0: { color: "#7DAAE9" },
         2: { color: "#2E85FE" },
         3: { color: "#A0C8FF" },
