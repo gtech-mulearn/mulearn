@@ -62,7 +62,7 @@ const SideNavBar = (props: Props) => {
         setDisplay2(display2 === "block" ? "none" : "block");
         element.style.transition = ".5s ease-in-out";
         element.style.transform === "scale(1.1)"
-            ? (element.style.transform = "scale(1)")
+            ? (element.style.transform = "")
             : (element.style.transform = "scale(1.1)");
     };
 
@@ -81,7 +81,7 @@ const SideNavBar = (props: Props) => {
                     // }, 1000);
                     element.style.transition = ".5s ease-in-out";
                     element.style.transform === "scale(1.1)"
-                        ? (element.style.transform = "scale(1)")
+                        ? (element.style.transform = "")
                         : (element.style.transform = "scale(1.1)");
                 }}
             >

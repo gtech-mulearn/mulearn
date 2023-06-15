@@ -162,7 +162,7 @@
   list-style: none;
   justify-content: space-between;
   margin-top: -1rem;
-  padding: 0px 10px;
+  padding: 0px 15px;
 }
 
 .rightDash .profileDash .profile .profileList li:first-child {
@@ -190,7 +190,7 @@
   gap: 1rem 5rem;
   margin: 2rem 0;
   justify-content: flex-start;
-  padding: 0px 10px;
+  padding: 0px 15px;
 }
 
 .rightDash .profileDash .profile .pointsList .points {

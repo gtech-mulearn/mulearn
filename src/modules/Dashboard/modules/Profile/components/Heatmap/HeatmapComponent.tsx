@@ -16,6 +16,29 @@ const HeatmapComponent = (props: Props) => {
     const dataYearFiltered = props.data.filter(item => {
         return item.createdDate.slice(0, 4) === year.toString();
     });
+
+    const dataDayFiltered: { date: string; sum: number; count: number }[] =
+        dataYearFiltered.reduce(
+            (acc: { date: string; sum: number; count: number }[], item) => {
+                const date = item.createdDate.slice(0, 10);
+                const existingItem = acc.find(el => el.date === date);
+                if (existingItem) {
+                    existingItem.sum += parseInt(item.karmaPoint);
+                    existingItem.count += 1;
+                } else {
+                    acc.push({
+                        date,
+                        sum: parseInt(item.karmaPoint),
+                        count: 1
+                    });
+                }
+                return acc;
+            },
+            []
+        );
+
+    // console.log(dataDayFiltered);
+
     const monthMapping: Record<string, number> = {
         "01": 0,
         "02": 31,
@@ -35,26 +58,28 @@ const HeatmapComponent = (props: Props) => {
             minimumIntegerDigits: 2,
             useGrouping: false
         });
-        dataYearFiltered.forEach(item => {
-            const month = item.createdDate.slice(5, 7);
+        let foundItem = false;
+        dataDayFiltered.forEach(item => {
+            const month = item.date.slice(5, 7);
             const monthNumber = monthMapping[month] || 0;
             if (
-                parseInt(item.createdDate.slice(8, 10)) + monthNumber ===
+                parseInt(item.date.slice(8, 10)) + monthNumber ===
                 parseInt(dateNumber)
             ) {
+                foundItem = true;
                 content.push(
                     <Tooltip
                         hasArrow
                         placement="top"
                         fontSize="12px"
                         label={
-                            "Task: " +
-                            item.taskName +
+                            "Total Task: " +
+                            item.count +
                             " , " +
-                            "Karma: " +
-                            item.karmaPoint +
+                            "Total Karma: " +
+                            item.sum +
                             " , " +
-                            moment(item.createdDate).format("ll")
+                            moment(item.date).format("ll")
                         }
                         aria-label="A tooltip"
                     >
@@ -69,8 +94,8 @@ const HeatmapComponent = (props: Props) => {
                 i++;
             }
         });
-        content.push(<p key={i}></p>);
-        i++;
+        !foundItem && content.push(<p key={i}></p>);
+        !foundItem && i++;
     } while (i <= 365);
 
     const renderYearButtons = () => {
@@ -92,9 +117,9 @@ const HeatmapComponent = (props: Props) => {
                 </p>
             );
         }
-
         return years;
     };
+
     return (
         <div className={styles.heatmap_container}>
             <div className={styles.months}>

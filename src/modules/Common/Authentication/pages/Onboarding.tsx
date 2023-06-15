@@ -1177,7 +1177,9 @@ const Onboarding = (props: Props) => {
                                                             ) : null}
                                                         </div>
                                                         {role[0].title ==
-                                                        "Student" ? (
+                                                            "Student" ||
+                                                        role[0].title ==
+                                                            "Enabler" ? (
                                                             <div
                                                                 style={
                                                                     window.innerWidth >
