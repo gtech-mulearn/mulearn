@@ -17,6 +17,7 @@ import Dropdown from '../../../../components/MuComponents/Dropdown/Dropdown'
 import "./Organizations.scss"
 import PrimaryButton from '../../../../components/MuComponents/MuButtons/MuOutlinedButton'
 import { MuButton } from '../../../../components/MuComponents/MuButtons/MuButton'
+import { dashboardRoutes } from '../../../../services/urls'
 
 function Organizations() {
     const [data, setData] = useState<any[]>([]);
@@ -36,7 +37,7 @@ function Organizations() {
     const toast = useToast()
 
     useEffect(() => {
-        if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
+        if (!hasRole([roles.ADMIN, roles.FELLOW,roles.DISTRICT_CAMPUS_LEAD])) navigate("/404");
 
         getdistrictdashboard(
             activeTab,
@@ -148,45 +149,49 @@ function Organizations() {
         console.log(`Icon clicked for column: ${column}`);
     };
 
-
+const CSV = (tabname: string) => {
+    if (
+        activeTab === "Student management" &&
+        tabname === "Student management"
+    ) {
+        return dashboardRoutes.districtStudentData;
+    }
+    if (activeTab === "Campus management" && tabname === "Campus management") {
+        return dashboardRoutes.districtCampusData;
+    }
+};
 
   return (
-    <>
-            <TableTopTab 
-                active={activeTab} 
-                onTabClick={handleTabClick}
-            />
-            <TableTop
-				onSearchText={handleSearch}
-				onPerPageNumber={handlePerPageNumber} 
-				// CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}        
-				// CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"} 
-			/>
-            {data && (
-                               <Table
-                               rows={data}
-                               page={currentPage}
-                               perPage={perPage}
-                               columnOrder={columns}
-                               id={['code']} 
-                                           
-                               >
-                               <THead
-                                   columnOrder={columns}
-                                   onIconClick={handleIconClick}
-                               />
-                               <Pagination
-                                   currentPage={currentPage}
-                                   totalPages={totalPages}
-                                   margin="10px 0"
-                                   handleNextClick={handleNextClick}
-                                   handlePreviousClick={handlePreviousClick}
-                               />
-                               {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-                </Table>
-            )}
-        </>
-  )
+      <>
+          <TableTopTab active={activeTab} onTabClick={handleTabClick} />
+          <TableTop
+              onSearchText={handleSearch}
+              onPerPageNumber={handlePerPageNumber}
+              CSV={CSV(activeTab)}
+              // CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}
+              // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
+          />
+          {data && (
+              <Table
+                  rows={data}
+                  page={currentPage}
+                  perPage={perPage}
+                  columnOrder={columns}
+                  id={["code"]}
+              >
+                  <THead columnOrder={columns} onIconClick={handleIconClick} />
+                  <Pagination
+                      currentPage={currentPage}
+                      totalPages={totalPages}
+                      margin="10px 0"
+                      handleNextClick={handleNextClick}
+                      handlePreviousClick={handlePreviousClick}
+                  />
+                  {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+              </Table>
+          )}
+      </>
+  );
 }
 
 export default Organizations

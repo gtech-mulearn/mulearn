@@ -2,7 +2,7 @@ import { AxiosError } from "axios";
 import { privateGateway } from "../../../../services/apiGateways";
 import { dashboardRoutes } from "../../../../services/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
-import { SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 export const getManageRoles = async (
     setData: any,
@@ -59,7 +59,8 @@ export const createManageRoles = async (title: string, description: string) => {
 export const editManageRoles = async (
     id: string | undefined,
     title: string,
-    description: string
+    description: string,
+    toast: any
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -71,6 +72,12 @@ export const editManageRoles = async (
         );
         const message: any = response?.data;
         console.log(message);
+        toast({
+            title: "Role edited",
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -78,10 +85,13 @@ export const editManageRoles = async (
         }
     }
 };
-
+interface IData {
+    title: string;
+    description: string;
+}
 export const getManageRolesDetails = async (
     id: string | undefined,
-    setData: React.Dispatch<SetStateAction<any[]>>
+    setData: Dispatch<SetStateAction<IData>>
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -108,7 +118,7 @@ export const deleteManageRoles = async (
             dashboardRoutes.getRolesData + id + "/"
         );
         toast({
-            title: "Roles deleted",
+            title: "Role deleted",
             status: "success",
             duration: 3000,
             isClosable: true

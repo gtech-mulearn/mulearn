@@ -42,7 +42,7 @@ export const getdistrictdashboard = async (
 
         if (activeTab === "Student management") {
             await privateGateway
-                .get(dashboardRoutes.zonalStudentDetails, {
+                .get(dashboardRoutes.districtStudentDetails, {
                     params: {
                         perPage: selectedValue,
                         pageIndex: page,
@@ -55,11 +55,12 @@ export const getdistrictdashboard = async (
                 })
                 .then(data => {
                     setData(data.response.data);
-                    setTotalPages(data.response.pagination.colleges.totalPages);
+                    console.log(data.response.data);
+                    setTotalPages(data.response.pagination.totalPages);
                 });
         } else if (activeTab === "Campus management") {
             await privateGateway
-                .get(dashboardRoutes.zonalCampusDetails, {
+                .get(dashboardRoutes.districtCampusDetails, {
                     params: {
                         perPage: selectedValue,
                         pageIndex: page,
@@ -72,7 +73,7 @@ export const getdistrictdashboard = async (
                 })
                 .then(data => {
                     setData(data.response.data);
-                    setTotalPages(data.response.pagination.colleges.totalPages);
+                    setTotalPages(data.response.pagination.totalPages);
                 });
         } else {
             alert("error to Load Data");

@@ -21,7 +21,7 @@ function ManageRoles() {
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
 
-	const columnOrder = [
+    const columnOrder = [
         // { column: "id", Label: "ID", isSortable: true },
         { column: "title", Label: "Title", isSortable: false },
         { column: "description", Label: "Description", isSortable: false },
