@@ -214,6 +214,7 @@ export const createOrganization = async (
 export const updateOrganization = async (
     title:string,
     code:string,
+    oldCode:string,
     country: string,
     state: string,
     zone:string,
@@ -238,6 +239,7 @@ export const updateOrganization = async (
         else {
             return{
                 "title": title,
+                "code":code,
                 "state":state,
                 "zone":zone,
                 "district":district,
@@ -247,9 +249,9 @@ export const updateOrganization = async (
         }
     }
 	try {
-        const response = await privateGateway.put(`${organizationRoutes.putUpdateOrganization}/${code}`, addDataProps());
+        const response = await privateGateway.put(`${organizationRoutes.putUpdateOrganization}/${oldCode}`, addDataProps());
 		toast({
-			title: "Organizations created",
+			title: "Organizations Updated",
 			status: "success",
 			duration: 3000,
 			isClosable: true
