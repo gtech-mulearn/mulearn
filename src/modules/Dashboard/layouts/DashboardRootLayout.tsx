@@ -53,6 +53,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
             url: "hackathon",
             title: "Hackathon",
             hasView: true,
+            roles: [roles.ADMIN],
             icon: <i className="fi fi-sr-clipboard-user"></i>
         },
         {
