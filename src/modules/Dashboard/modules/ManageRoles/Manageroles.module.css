@@ -1,7 +1,7 @@
 .form {
-    border: 2px solid #014bb229;
+	border: 2px solid #456FF629;
 	border-radius: 20px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.155);
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.155);
 	height: 13rem;
 	padding: 2rem 0;
 	display: flex;
@@ -15,6 +15,7 @@
 	.inputContainer {
 		width: 70%;
 	}
+
 	.container {
 		height: 50vh;
 	}
@@ -35,9 +36,11 @@
 		margin-top: 5rem;
 		height: 40vh;
 	}
+
 	.inputContainer {
 		width: 55%;
 	}
+
 	.form {
 		width: 75%;
 	}
@@ -58,48 +61,48 @@
 }
 
 .btn {
-	background: #014BB2;
-    color: #fff;
+	background: #456FF6;
+	color: #fff;
 	width: 50%;
-    min-width: 200px;
-    padding: 10px 20px;
-    display: flex;
-    border-radius: 10px;
-    flex-direction: row;
-    align-items: center;
+	min-width: 200px;
+	padding: 10px 20px;
+	display: flex;
+	border-radius: 10px;
+	flex-direction: row;
+	align-items: center;
 	justify-content: center;
-    margin-top: 1.5rem;
-    font-size: 15px;
-    cursor: pointer;
-    transition: .3s ease-in-out;
+	margin-top: 1.5rem;
+	font-size: 15px;
+	cursor: pointer;
+	transition: .3s ease-in-out;
 }
 
 .btn:hover {
-    background: #9fb5ef;
-    color: #000000;
+	background: #9fb5ef;
+	color: #000000;
 }
 
 .createBtn {
 	background: #fff;
-    color: #014BB2;
+	color: #456FF6;
 	width: 10%;
-    min-width: 100px;
-    padding: 10px 20px;
-    display: flex;
-    border-radius: 10px;
-	border: 1px solid #014BB2;
-    flex-direction: row;
-    align-items: center;
+	min-width: 100px;
+	padding: 10px 20px;
+	display: flex;
+	border-radius: 10px;
+	border: 1px solid #456FF6;
+	flex-direction: row;
+	align-items: center;
 	justify-content: center;
-    margin-top: 1.5rem;
-    font-size: 15px;
-    cursor: pointer;
-    transition: .3s ease-in-out;
+	margin-top: 1.5rem;
+	font-size: 15px;
+	cursor: pointer;
+	transition: .3s ease-in-out;
 }
 
 .createBtn:hover {
-    background: #014BB2;
-    color: #fff;
+	background: #456FF6;
+	color: #fff;
 }
 
 .createBtnContainer {

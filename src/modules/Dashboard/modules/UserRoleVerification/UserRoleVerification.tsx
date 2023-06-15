@@ -21,30 +21,19 @@ function UsersRoleVerification() {
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
 
+   
     const columnOrder = [
-        "first_name",
-        "last_name",
-        "mu_id",
-        "discord_id",
-        "id",
-        "user_id",
-        "role_title",
-        "role_id",
-        "verified"
+        { column: "full_name", Label: "Full Name", isSortable: true },
+        { column: "mu_id", Label: "Mu ID", isSortable: false },
+        { column: "discord_id", Label: "Discord ID", isSortable: false },
+        // { column: "id", Label: "ID", isSortable: false },
+        // { column: "user_id", Label: "User ID", isSortable: false },
+        { column: "role_title", Label: "Role Title", isSortable: false },
+        // { column: "role_id", Label: "Role ID", isSortable: false },
+        { column: "verified", Label: "Verified", isSortable: false }
     ];
 
-    const editableColumnNames = [
-        "First Name",
-        "Last Name",
-        "Mu ID",
-        "Discord ID",
-        "ID",
-        "User Id",
-        "Role Title",
-        "Role ID",
-        "Verified",
-        
-    ];
+  
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -123,10 +112,9 @@ function UsersRoleVerification() {
             <TableTop
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
-                CSV={dashboardRoutes.getUsersRoleVerificationList}
                 // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
             />
-            {/* {data && (
+            {data && (
                 <Table
                     rows={data}
                     page={currentPage}
@@ -138,7 +126,6 @@ function UsersRoleVerification() {
                 >
                     <THead
                         columnOrder={columnOrder}
-                        editableColumnNames={editableColumnNames}
                         onIconClick={handleIconClick}
                     />
                     <Pagination
@@ -150,7 +137,7 @@ function UsersRoleVerification() {
                     />
                    
                 </Table>
-            )} */}
+            )}
         </>
     );
 }

@@ -60,7 +60,7 @@ export const editManageRoles = async (
     id: string | undefined,
     title: string,
     description: string,
-    toast:any
+    toast: any
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -73,7 +73,7 @@ export const editManageRoles = async (
         const message: any = response?.data;
         console.log(message);
         toast({
-            title: "Rolescreated",
+            title: "Role edited",
             status: "success",
             duration: 3000,
             isClosable: true
@@ -118,7 +118,7 @@ export const deleteManageRoles = async (
             dashboardRoutes.getRolesData + id + "/"
         );
         toast({
-            title: "Roles deleted",
+            title: "Role deleted",
             status: "success",
             duration: 3000,
             isClosable: true

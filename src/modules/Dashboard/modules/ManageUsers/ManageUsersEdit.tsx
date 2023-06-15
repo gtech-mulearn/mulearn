@@ -68,12 +68,12 @@ const ManageUsersEdit = (props: Props) => {
                         mobile: Yup.string()
                             .length(10,"Invalid mobile number")
                             .required("Required"),
-                        discord_id: Yup.string()
-                            .min(17, "Must be 17 characters or more")
-                            .required("Required"),
-                        mu_id: Yup.string()
-                            .email("Invalid mu_id")
-                            .required("Required")
+                        // discord_id: Yup.string()
+                        //     .min(17, "Must be 17 characters or more")
+                        //     .required("Required"),
+                        // mu_id: Yup.string()
+                        //     .email("Invalid mu_id")
+                        //     .required("Required")
                     })}
                     onSubmit={values => {
                         editManageUsers(
@@ -115,7 +115,7 @@ const ManageUsersEdit = (props: Props) => {
                             type="text"
                             placeholder="Enter a mobile number"
                         />
-                        <FormikTextInput
+                        {/* <FormikTextInput
                             label="User Discord ID"
                             name="discord_id"
                             type="text"
@@ -126,7 +126,7 @@ const ManageUsersEdit = (props: Props) => {
                             name="mu_id"
                             type="text"
                             placeholder="Enter a mobile number"
-                        />
+                        /> */}
 
                         <div className={styles.btn_container}>
                             <MuButton
