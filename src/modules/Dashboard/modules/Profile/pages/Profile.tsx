@@ -193,6 +193,12 @@ const Profile = () => {
                                                           monthDifference /
                                                           1000
                                                       ).toPrecision(4) + "K"
+                                                    : isNaN(
+                                                          parseInt(
+                                                              userProfile.karma
+                                                          ) / monthDifference
+                                                      )
+                                                    ? "0"
                                                     : (
                                                           parseInt(
                                                               userProfile.karma

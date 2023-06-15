@@ -13,7 +13,6 @@ const AuthRoutes: React.FC = () => {
             setOnboardingStatus(
                 JSON.parse(localStorage.getItem("userInfo")!).existInGuild
             );
-            console.log(onboardingStatus);
         }
     }, [onboardingStatus]);
 
