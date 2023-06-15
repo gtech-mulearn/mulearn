@@ -89,15 +89,22 @@ function Organizations() {
     }
 
     const handleIconClick = (column: string) => {
-		if(sort === column){
-			setSort(`-${column}`);
-			getOrganizations(activeTab,setData, 1, perPage, setTotalPages, "", sort);
-		}
-		else {
-			setSort(column);
-			getOrganizations(activeTab,setData, 1, perPage, setTotalPages, "", sort);
-		}
-		
+        if (sort === column) {
+            setSort(`-${column}`);
+            getOrganizations(
+                activeTab,
+                setData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                `-${column}`
+            );
+        } else {
+            setSort(column);
+            getOrganizations(activeTab,setData, 1, perPage, setTotalPages, "", column);
+        }
+
         console.log(`Icon clicked for column: ${column}`);
     };
 

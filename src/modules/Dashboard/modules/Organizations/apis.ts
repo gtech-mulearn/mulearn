@@ -118,7 +118,7 @@ export const getZones = async (country:string,state:string,setZonesData:any) => 
             return response.data
         })
         .then(data => {
-            const states:CountryProps[] = data.response.data.states;
+            const states:CountryProps[] = data.response.data.zones;
             setZonesData(states);
         })
     } catch (err: unknown) {
@@ -136,7 +136,7 @@ export const getDistricts = async (country:string,state:string,zone:string,setDi
             return response.data
         })
         .then(data => {
-            const districts:CountryProps[] = data.response.data.states;
+            const districts:CountryProps[] = data.response.data.districts;
             setDistrictsData(districts);
         })
     } catch (err: unknown) {
