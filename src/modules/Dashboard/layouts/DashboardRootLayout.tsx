@@ -17,7 +17,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
 
     useEffect(() => {
         const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
-        const existInGuild = userInfo.existInGuild === "True";
+        const existInGuild = userInfo.existInGuild;
         const isCampusAmbassador = userInfo.roles?.includes(roles.CAMPUS_LEAD);
         const isAdmin = userInfo.roles?.includes(roles.ADMIN);
         const isZonalCampusLead = userInfo.roles?.includes(roles.ZONAL_CAMPUS_LEAD);
@@ -53,6 +53,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
             url: "hackathon",
             title: "Hackathon",
             hasView: true,
+            roles: [roles.ADMIN],
             icon: <i className="fi fi-sr-clipboard-user"></i>
         },
         {

@@ -9,7 +9,7 @@ import * as Yup from "yup";
 import { FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 import { useNavigate, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import styles from "../../../../components/MuComponents/FormikComponents/form.module.css";
 
 type Props = {};
@@ -39,7 +39,7 @@ const UserRoleVerificationEdit = (props: Props) => {
     const { id } = useParams();
     const navigate = useNavigate();
     const handleSubmit = () => {
-        editUserRoleVerification(input1, id, toast);
+        editUserRoleVerification(input1, id);
         navigate("/user-role-verification");
     };
     return (
@@ -61,7 +61,7 @@ const UserRoleVerificationEdit = (props: Props) => {
                             .required("Required")
                     })}
                     onSubmit={values => {
-                        editUserRoleVerification(values.verified, id, toast);
+                        editUserRoleVerification(values.verified, id);
 
                         navigate("/user-role-verification");
                     }}
