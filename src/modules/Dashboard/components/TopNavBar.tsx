@@ -20,8 +20,10 @@ const TopNavBar = () => {
         ) {
             setName(JSON.parse(localStorage.getItem("userInfo")!).firstName);
         }
-        getUserProfile(setProfilePic);
     });
+    useEffect(() => {
+        getUserProfile(setProfilePic);
+    }, []);
     return (
         <>
             <div className={styles.top_nav}>
@@ -36,7 +38,13 @@ const TopNavBar = () => {
                             {/* <MdSettings style={{ fontSize: "30px" }} /> */}
                             {/* <MdNotifications style={{ fontSize: "30px" }} /> */}
                             <div className={styles.profile}>
-                                <img onClick={()=>{navigate("/profile")}} src={profilePic} alt="" />
+                                <img
+                                    onClick={() => {
+                                        navigate("/profile");
+                                    }}
+                                    src={profilePic}
+                                    alt=""
+                                />
                             </div>
                         </div>
                     </div>
