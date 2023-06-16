@@ -268,13 +268,20 @@ export const updateOrganization = async (
 }
 
 export const deleteOrganization = async (
-    code:string,
+    code:any,
     toast: (options?: UseToastOptions | undefined) => ToastId,
     ) => {
 	try {
         const response = await privateGateway.delete(`${organizationRoutes.deleteOrgnaization}${code}`);
         const message: any = response?.data;
 		console.log(message);
+        toast({
+			title: "Organizations Deleted",
+			status: "success",
+			duration: 3000,
+			isClosable: true
+		});
+        
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
