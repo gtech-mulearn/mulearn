@@ -38,6 +38,7 @@ interface CollegeFormProps {
 const FormData = ({ ...props }: CollegeFormProps) => {
     const [inputName, setInputName] = useState("");
     const [inputCode, setInputCode] = useState("");
+    const [oldCode,setOldCode] = useState("");
 
     const [affiliation, setAffiliation] = useState<any>("");
     const [country, setCountry] = useState<any>("");
@@ -140,6 +141,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     updateOrganization(
                         inputName,
                         inputCode,
+                        oldCode,
                         camelCase(country),
                         camelCase(state),
                         camelCase(zone),
@@ -152,6 +154,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     updateOrganization(
                         inputName,
                         inputCode,
+                        oldCode,
                         camelCase(country),
                         camelCase(state),
                         camelCase(zone),
@@ -199,6 +202,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
         if (!props.isCreate) {
             setInputName(props.inputName || "");
             setInputCode(props.inputCode || "");
+            setOldCode(props.inputCode || "")
             setSelectedCountry(props.selectedCountry || "");
             setSelectedState(props.selectedState || "");
             setSelectedZone(props.selectedZone || "");

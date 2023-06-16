@@ -89,15 +89,22 @@ function Organizations() {
     }
 
     const handleIconClick = (column: string) => {
-		if(sort === column){
-			setSort(`-${column}`);
-			getOrganizations(activeTab,setData, 1, perPage, setTotalPages, "", sort);
-		}
-		else {
-			setSort(column);
-			getOrganizations(activeTab,setData, 1, perPage, setTotalPages, "", sort);
-		}
-		
+        if (sort === column) {
+            setSort(`-${column}`);
+            getOrganizations(
+                activeTab,
+                setData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                `-${column}`
+            );
+        } else {
+            setSort(column);
+            getOrganizations(activeTab,setData, 1, perPage, setTotalPages, "", column);
+        }
+
         console.log(`Icon clicked for column: ${column}`);
     };
 
@@ -111,15 +118,16 @@ function Organizations() {
             }});
     };
 
-    const handleDelete = (id: string) => {
+    const handleDelete = (id: string | number | boolean) => {
         console.log("code:",id)
-        const confirmed = confirm("Are you sure you want to delete?");
-        if(confirmed){
-            deleteOrganization(id,toast)
-            getOrganizations(activeTab,setData, 1, perPage, setTotalPages, "", "");
-        }else{
-            console.log("cancelled")
-        }
+        navigate(`delete/${id}`)
+        // const confirmed = confirm("Are you sure you want to delete?");
+        // if(confirmed){
+        //     deleteOrganization(id,toast)
+        //     getOrganizations(activeTab,setData, 1, perPage, setTotalPages, "", "");
+        // }else{
+        //     console.log("cancelled")
+        // }
     }
 
     const handleAddClickClose = ()=> {
@@ -146,7 +154,7 @@ function Organizations() {
                                columnOrder={columns}
                                id={['code']} 
                                onEditClick={handleEdit}
-                            //    onDeleteClick={handleDelete}                
+                               onDeleteClick={handleDelete}                
                                >
                                <THead
                                    columnOrder={columns}
