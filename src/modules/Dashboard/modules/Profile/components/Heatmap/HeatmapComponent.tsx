@@ -17,26 +17,32 @@ const HeatmapComponent = (props: Props) => {
         return item.createdDate.slice(0, 4) === year.toString();
     });
 
-    const dataDayFiltered: { date: string; sum: number; count: number }[] =
-        dataYearFiltered.reduce(
-            (acc: { date: string; sum: number; count: number }[], item) => {
-                const date = item.createdDate.slice(0, 10);
-                const existingItem = acc.find(el => el.date === date);
-                if (existingItem) {
-                    existingItem.sum += parseInt(item.karmaPoint);
-                    existingItem.count += 1;
-                } else {
-                    acc.push({
-                        date,
-                        sum: parseInt(item.karmaPoint),
-                        count: 1
-                    });
-                }
-                return acc;
-            },
-            []
-        );
-        
+    const dataDayFiltered: {
+        date: string;
+        totalKarma: number;
+        taskCount: number;
+    }[] = dataYearFiltered.reduce(
+        (
+            acc: { date: string; totalKarma: number; taskCount: number }[],
+            item
+        ) => {
+            const date = item.createdDate.slice(0, 10);
+            const existingItem = acc.find(el => el.date === date);
+            if (existingItem) {
+                existingItem.totalKarma += parseInt(item.karmaPoint);
+                existingItem.taskCount += 1;
+            } else {
+                acc.push({
+                    date,
+                    totalKarma: parseInt(item.karmaPoint),
+                    taskCount: 1
+                });
+            }
+            return acc;
+        },
+        []
+    );
+
     const monthMapping: Record<string, number> = {
         "01": 0,
         "02": 31,
@@ -72,10 +78,10 @@ const HeatmapComponent = (props: Props) => {
                         fontSize="12px"
                         label={
                             "Total Task: " +
-                            item.count +
+                            item.taskCount +
                             " , " +
                             "Total Karma: " +
-                            item.sum +
+                            item.totalKarma +
                             " , " +
                             moment(item.date).format("ll")
                         }
@@ -83,7 +89,16 @@ const HeatmapComponent = (props: Props) => {
                     >
                         <p
                             style={{
-                                backgroundColor: "#2DCE89"
+                                backgroundColor:
+                                    item.totalKarma >= 500
+                                        ? "#00814a"
+                                    :item.totalKarma >= 100
+                                        ? "#27b176"
+                                        : item.totalKarma >= 50
+                                        ? "#2dce89ba"
+                                        : item.totalKarma >= 10
+                                        ? "#2dce899e"
+                                        : "#2dce897d"
                             }}
                             key={i}
                         ></p>
