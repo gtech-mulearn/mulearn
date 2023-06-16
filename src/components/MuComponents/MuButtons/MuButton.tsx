@@ -1,6 +1,7 @@
 import React, { ReactFragment } from "react";
 import styles from "./MuButtons.module.css";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+import { ClipLoader } from "react-spinners";
 
 // normal button
 // need text for button
@@ -11,6 +12,7 @@ export const MuButton = (props: {
     style?: React.CSSProperties; // button style if wanted
     className?: string; // button class name if wanted
     onClick?: React.MouseEventHandler; // onclick event if wanted
+    isLoading?: boolean;// show loading spinner if neccessary.
 }) => {
     return (
         <div
@@ -20,6 +22,7 @@ export const MuButton = (props: {
         >
             <div className={styles.btn_icon}>{props.icon}</div>
             <p>{props.text}</p>
+            {props.isLoading && <ClipLoader size={20} color="#ff" className={styles.btn_loader} />}
         </div>
     );
 };
@@ -73,8 +76,8 @@ export const DropDownButtons = (props: {
                         <div
                             key={i}
                             className={styles.btn}
-                            // style={btn.style}
-                            // onClick={btn.onClick}
+                        // style={btn.style}
+                        // onClick={btn.onClick}
                         >
                             <p>{btn.text}</p>
                         </div>
@@ -84,3 +87,24 @@ export const DropDownButtons = (props: {
         </div>
     );
 };
+
+export const SingleButton = (props: {
+    text: string; // text of main button
+    icon?: ReactJSXElement; // main button icon
+    style?: React.CSSProperties; // main button style if wanted
+    onClick?: React.MouseEventHandler; // onclick event if wanted
+    link?: string;
+}) => {
+    return (
+        <div className={styles.createBtnContainer}>
+            <a href={props.link} target="_blank">
+                <MuButton
+                    className={styles.createBtn}
+                    text={props.text}
+                    icon={props.icon}
+                    onClick={props.onClick}
+                />
+            </a>
+        </div>
+    );
+}

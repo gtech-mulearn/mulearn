@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent, DragEvent } from "react";
 import styles from "./BulkImport.module.css";
 import { FiPlus } from "react-icons/fi";
 import { bulkImport } from "./BulkImportApi";
+import { SingleButton } from "../MuButtons/MuButton";
 
 type Props = {
 	path: string,
@@ -82,7 +83,7 @@ const BulkImport = (props: Props) => {
         if (selectedFile) {
             const renamedFile = renameFile(selectedFile, "task_list.xlsx");
             const formData = new FormData();
-            formData.append("file", renamedFile);
+            formData.append("task_list", renamedFile);
 			bulkImport(formData, props.path)
             // Make the POST API call with the formData
             // Example: axios.post('/api/upload', formData)
@@ -131,9 +132,10 @@ const BulkImport = (props: Props) => {
                     <p className="error-message">{errorMessage}</p>
                 )}
                 {selectedFile && (
-                    <div className="file-info">
+                    <div className={styles.fileInfo}>
                         <span>{selectedFile.name}</span>
-                        <button onClick={handleUpload}>Upload</button>
+                        {/* <button className={styles.upload} onClick={handleUpload}>Upload</button> */}
+						<SingleButton text={"Upload"} onClick={handleUpload}/>
                     </div>
                 )}
             </div>

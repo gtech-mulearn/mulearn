@@ -16,10 +16,10 @@
 .searchBar {
     border-radius: 8px;
     padding: 3px;
-    color: #014bb2;
+    color: #456FF6;
     margin-bottom: 10px;
     margin-left: 10px;
-    border: 1px solid #014bb2;
+    border: 1px solid #456FF6;
     background-image: url(src/assets/images/fi-br-search.png);
     padding-left: 30px;
     background-repeat: no-repeat;
@@ -30,55 +30,56 @@
 }
 
 .searchBar::placeholder {
-    color: #014bb2 !important;
+    color: #456FF6 !important;
 }
 
 .csv {
     border-radius: 8px;
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
     background-color: #fff;
     margin-right: 10px;
-    border: 1px solid #014bb2;
+    border: 1px solid #456FF6;
     padding: 3px 10px;
     box-shadow: none;
     cursor: pointer;
 }
 
-.csv div{
-	margin-right: 5px;
+.csv div {
+    margin-right: 5px;
 }
 
 .left {
-	width: 30%;
+    width: 30%;
 }
 
 .right {
-	width: 70%;
-	display: flex;
-	align-items: center;
-	justify-content: end;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
 }
 
 .showContainer {
-	border-radius: 8px;
+    border-radius: 8px;
     position: relative;
 }
 
 .showSelect {
-	border-radius: 8px;
-	padding: 0.25rem 0;
-    border: 1px solid #014bb2;
-	margin: 0 5px;
+    border-radius: 8px;
+    padding: 0.25rem 0;
+    border: 1px solid #456FF6;
+    margin: 0 5px;
 }
 
 @media (max-width: 380px) {
-	.showLabel{
-		display: none;
-	}
-	.showSelect{
+    .showLabel {
+        display: none;
+    }
+
+    .showSelect {
         position: absolute;
         right: 0rem;
         top: -15.7px;
-	}
+    }
 }

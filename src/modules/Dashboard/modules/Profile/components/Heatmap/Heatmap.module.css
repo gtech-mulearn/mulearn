@@ -1,0 +1,98 @@
+.heatmap_container {
+    width: 100%;
+}
+
+.heatmap_container .months {
+    margin-left: 25px;
+    display: flex;
+    gap: 33px;
+    justify-content: flex-start;
+}
+
+.heatmap_container .weeks {
+    position: absolute;
+    font-size: 9.5px;
+    background-color: #fff;
+    margin-left: -1px;
+}
+
+.heatmap_container .heatmap {
+    display: flex;
+    flex-wrap: wrap;
+    /* width: 400px; */
+    height: 110px;
+    align-content: space-between;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.heatmap_container .heatmap p {
+    height: 10px;
+    width: 10px;
+    margin: 2px;
+    text-align: center;
+    font-size: 9px;
+    border-radius: 3px;
+    background: #2dce891f;
+    border: 0.2px solid rgba(171, 171, 171, 0.20);
+}
+
+.heatmap_container .year_btns {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.heatmap_container .year_btns p {
+    color: #2DCE89;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.heatmap_container .year_btns p:hover {
+    background-color: #2DCE89;
+    color: white;
+}
+
+
+@media (min-width: 1800px) {
+    .heatmap_container .months {
+        margin-left: 35px;
+        gap: 52px;
+    }
+
+    .heatmap_container .weeks {
+        font-size: 12px;
+        margin-top: -3px;
+    }
+
+    .heatmap_container .heatmap {
+        height: 130px;
+        margin-left: 30px;
+    }
+
+    .heatmap_container .heatmap p {
+        height: 13px;
+        width: 13px;
+        border-radius: 4px;
+    }
+}
+
+@media (max-width: 800px) {
+    .heatmap_container {
+        height: 180px;
+    }
+
+    .heatmap_container .weeks {
+        margin-left: -5px;
+    }
+
+    .heatmap_container .year_btns {
+        position: absolute;
+        width: 100%;
+    }
+}

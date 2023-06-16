@@ -118,7 +118,7 @@ export const getZones = async (country:string,state:string,setZonesData:any) => 
             return response.data
         })
         .then(data => {
-            const states:CountryProps[] = data.response.data.states;
+            const states:CountryProps[] = data.response.data.zones;
             setZonesData(states);
         })
     } catch (err: unknown) {
@@ -136,7 +136,7 @@ export const getDistricts = async (country:string,state:string,zone:string,setDi
             return response.data
         })
         .then(data => {
-            const districts:CountryProps[] = data.response.data.states;
+            const districts:CountryProps[] = data.response.data.districts;
             setDistrictsData(districts);
         })
     } catch (err: unknown) {
@@ -201,12 +201,12 @@ export const createOrganization = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            toast({
-                title:error?.response?.data?.message.general[0].code[0],
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+            // toast({
+            //     title:error?.response?.data?.message.general[0].code[0],
+            //     status: "error",
+            //     duration: 3000,
+            //     isClosable: true
+            // });
         }
     }
 }
@@ -214,6 +214,7 @@ export const createOrganization = async (
 export const updateOrganization = async (
     title:string,
     code:string,
+    oldCode:string,
     country: string,
     state: string,
     zone:string,
@@ -238,6 +239,7 @@ export const updateOrganization = async (
         else {
             return{
                 "title": title,
+                "code":code,
                 "state":state,
                 "zone":zone,
                 "district":district,
@@ -247,9 +249,9 @@ export const updateOrganization = async (
         }
     }
 	try {
-        const response = await privateGateway.put(`${organizationRoutes.putUpdateOrganization}/${code}`, addDataProps());
+        const response = await privateGateway.put(`${organizationRoutes.putUpdateOrganization}/${oldCode}`, addDataProps());
 		toast({
-			title: "Organizations created",
+			title: "Organizations Updated",
 			status: "success",
 			duration: 3000,
 			isClosable: true
@@ -266,13 +268,20 @@ export const updateOrganization = async (
 }
 
 export const deleteOrganization = async (
-    code:string,
+    code:any,
     toast: (options?: UseToastOptions | undefined) => ToastId,
     ) => {
 	try {
         const response = await privateGateway.delete(`${organizationRoutes.deleteOrgnaization}${code}`);
         const message: any = response?.data;
 		console.log(message);
+        toast({
+			title: "Organizations Deleted",
+			status: "success",
+			duration: 3000,
+			isClosable: true
+		});
+        
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

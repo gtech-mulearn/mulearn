@@ -22,7 +22,7 @@ Switch to the new branch
 git checkout feature-loginpage
 ```
 
-Do the necessary changes on the files, add the files
+Do the necessary changes on the files, add the files.
 
 ```
 git add -A

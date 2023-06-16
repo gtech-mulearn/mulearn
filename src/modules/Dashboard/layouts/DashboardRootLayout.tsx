@@ -12,18 +12,19 @@ import { roles } from "../../../services/types";
 const DashboardRootLayout = (props: { component?: any }) => {
     const [connected, setConnected] = useState(false);
     const [campusLead, setCampusLead] = useState(false);
+    const [zonalcampusLead, setZonalCampusLead] = useState(false);
     const [userType, setUserType] = useState("");
 
     useEffect(() => {
         const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
-        const existInGuild = userInfo.existInGuild === "True";
-        const isCampusAmbassador = userInfo.roles?.includes(
-            roles.CAMPUS_AMBASSADOR
-        );
+        const existInGuild = userInfo.existInGuild;
+        const isCampusAmbassador = userInfo.roles?.includes(roles.CAMPUS_LEAD);
         const isAdmin = userInfo.roles?.includes(roles.ADMIN);
+        const isZonalCampusLead = userInfo.roles?.includes(roles.ZONAL_CAMPUS_LEAD);
 
         setConnected(existInGuild);
         setCampusLead(isCampusAmbassador);
+        setZonalCampusLead(isZonalCampusLead);
         setUserType(isAdmin ? "admin" : "user");
     }, []);
 
@@ -40,12 +41,20 @@ const DashboardRootLayout = (props: { component?: any }) => {
             hasView: !connected,
             icon: <i className="fi fi-sr-data-transfer"></i>
         },
+        
         {
             url: "campus-details",
             title: "Campus Details",
             hasView: true,
-            roles: [roles.CAMPUS_AMBASSADOR],
+            roles: [roles.CAMPUS_LEAD],
             icon: <i className="fi fi-sr-book-arrow-right"></i>
+        },
+        {
+            url: "hackathon",
+            title: "Hackathon",
+            hasView: true,
+            roles: [roles.ADMIN],
+            icon: <i className="fi fi-sr-clipboard-user"></i>
         },
         {
             url: "interest-groups",
@@ -88,6 +97,20 @@ const DashboardRootLayout = (props: { component?: any }) => {
             hasView: true,
             roles: [roles.ADMIN],
             icon: <i className="fi fi-sr-globe"></i>
+        },
+        {
+            url: "zonal-dashboard",
+            title: "Zonal Dashboard",
+            hasView: true,
+            roles: [roles.ZONAL_CAMPUS_LEAD],
+            icon: <i className="fi fi-sr-globe"></i>
+        },
+        {
+            url: "district-dashboard",
+            title: "District Dashbaord",
+            hasView: true,
+            roles: [roles.DISTRICT_CAMPUS_LEAD],
+            icon: <i className="fi fi-sr-globe"></i>
         }
     ];
 
@@ -116,7 +139,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
     return (
         <div className={styles.full_page}>
             <SideNavBar sidebarButtons={buttons} />
-            <div className={styles.right_side}>
+            <div className={styles.right_side} id="right">
                 <TopNavBar />
                 <div className={styles.main_content}>
                     <Outlet />

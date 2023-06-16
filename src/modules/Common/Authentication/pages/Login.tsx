@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { BeatLoader, ClipLoader } from "react-spinners";
 import Dropdown from "../../../../components/MuComponents/Dropdown/Dropdown";
 import i18n from "../../../../i18n";
+import { ClipLoader } from "react-spinners";
 
 const Login = () => {
     const [showOrHidePassword, setShowOrHidePassword] = useState("password");
@@ -71,7 +72,7 @@ const Login = () => {
                                     value={password}
                                     onChange={e => setPassword(e.target.value)}
                                 />
-                                <button
+                                <p
                                     className={styles.password_icon}
                                     onClick={e => {
                                         e.preventDefault();
@@ -85,7 +86,7 @@ const Login = () => {
                                     ) : (
                                         <i className="fi fi-sr-eye-crossed"></i>
                                     )}
-                                </button>
+                                </p>
                             </div>
                             <p style={{ textAlign: "left" }}>
                                 <a href="forgot-password">
@@ -163,7 +164,7 @@ const Login = () => {
                                             setPassword(e.target.value)
                                         }
                                     />
-                                    <button
+                                    <p
                                         className={styles.password_icon}
                                         onClick={e => {
                                             e.preventDefault();
@@ -179,7 +180,7 @@ const Login = () => {
                                         ) : (
                                             <i className="fi fi-sr-eye-crossed"></i>
                                         )}
-                                    </button>
+                                    </p>
                                 </div>
                             ) : null}
                             <p style={{ textAlign: "left" }}>

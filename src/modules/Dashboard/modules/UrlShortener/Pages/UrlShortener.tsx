@@ -32,9 +32,14 @@ const UrlShortener = () => {
         message: ""
     });
 
-    const columnOrder = ["short_url", "long_url"];
+    // const columnOrder = ["title","shortUrl", "longUrl"];
+    const columnOrder = [
+        { column: "title", Label: "Title", isSortable: true },
+        { column: "shortUrl", Label: "Short URL", isSortable: false },
+        { column: "longUrl", Label: "Long URL", isSortable: false }
+    ];
 
-    const editableColumnNames = ["Short URL", "Long URL"];
+    const editableColumnNames = ["Title", "Short URL", "Long URL"];
     useEffect(() => {
         if (!hasRole([roles.ADMIN])) navigate("/404");
         getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
@@ -56,14 +61,16 @@ const UrlShortener = () => {
         getShortenUrls(setShortUrlData, 1, perPage, setTotalPages, search, "");
     };
     const handleEdit = (id: string | number | boolean) => {
+        console.log(formik.values.id);
+
         // navigate(`/interest-groups/edit/${id}`);
         formik.values.id = id.toString();
         formik.values.longUrl = shortUrlData.filter(
             item => item.id === id
-        )[0].long_url;
+        )[0].longUrl;
         formik.values.shortUrl = shortUrlData.filter(
             item => item.id === id
-        )[0].short_url;
+        )[0].shortUrl;
         formik.values.title = shortUrlData.filter(
             item => item.id === id
         )[0].title;
@@ -128,9 +135,9 @@ const UrlShortener = () => {
         console.log(urlEditedData);
         createShortenUrl(
             toast,
-            urlEditedData
-            // formik,
-            // setHasValidationError,
+            urlEditedData,
+            formik,
+            setHasValidationError
             // userData,
             // navigate
         );
@@ -142,19 +149,27 @@ const UrlShortener = () => {
             shortUrlNew: values.shortUrl
         };
         console.log(urlData);
-        editShortenUrl(values.id, toast, urlData);
+        editShortenUrl(
+            values.id,
+            toast,
+            urlData,
+            formik,
+            setHasValidationError
+        );
         getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
     };
 
     const validate = (values: any) => {
+        console.log(values);
+
         let errors: any = {};
-        if (!values.title) {
+        if (values.title === "" || values.title === undefined) {
             errors.title = "Required";
         }
-        if (!values.longUrl) {
+        if (values.longUrl === "" || values.longUrl === undefined) {
             errors.longUrl = "Required";
         }
-        if (!values.shortUrl) {
+        if (values.shortUrl === "" || values.shortUrl === undefined) {
             errors.shortUrl = "Required";
         }
         return errors;
@@ -171,6 +186,13 @@ const UrlShortener = () => {
     return (
         <>
             <div className={styles.url_shortener_container}>
+                {hasValidationError.error ? (
+                    <div className={styles.validation_error_message}>
+                        <p>{hasValidationError.message}</p>
+                    </div>
+                ) : (
+                    ""
+                )}
                 <div className={styles.create_new_url}>
                     <form onSubmit={formik.handleSubmit}>
                         <input
@@ -217,7 +239,7 @@ const UrlShortener = () => {
                                 <input
                                     className={styles.submit}
                                     type="submit"
-                                    value="Shorten"
+                                    value="Create"
                                     onClick={e => {
                                         e.preventDefault();
                                         validate(formik.values);
@@ -297,7 +319,7 @@ const UrlShortener = () => {
                 >
                     <THead
                         columnOrder={columnOrder}
-                        editableColumnNames={editableColumnNames}
+                        // editableColumnNames={editableColumnNames}
                         onIconClick={handleIconClick}
                     />
                     <Pagination

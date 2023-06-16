@@ -57,7 +57,7 @@ const ManageRolesCreate = (props: Props) => {
                         console.log(values.title, values.description);
                         createManageRoles(values.title, values.description);
                         toast({
-                            title: "Roles created",
+                            title: "Role created",
                             status: "success",
                             duration: 3000,
                             isClosable: true
