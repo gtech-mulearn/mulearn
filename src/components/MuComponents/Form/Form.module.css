@@ -1,7 +1,8 @@
-.text{
+.text {
 	font-size: 1.5rem;
 	font-weight: bold;
 }
+
 .container {
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 	/* Add box shadow */
@@ -30,6 +31,7 @@
 	flex-basis: 100%;
 	margin-bottom: 10px;
 }
+
 @media (min-width: 1000px) {
 	.inputContainer {
 		width: 40rem !important;
@@ -77,11 +79,11 @@
 
 .btn_cancel {
 	background-color: #ebeaea9b;
-	color: #014bb2;
+	color: #456FF6;
 }
 
 .btn_submit {
-	background-color: #014bb2;
+	background-color: #456FF6;
 	color: #fff;
 }
 

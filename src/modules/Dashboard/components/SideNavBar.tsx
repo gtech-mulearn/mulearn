@@ -62,7 +62,7 @@ const SideNavBar = (props: Props) => {
         setDisplay2(display2 === "block" ? "none" : "block");
         element.style.transition = ".5s ease-in-out";
         element.style.transform === "scale(1.1)"
-            ? (element.style.transform = "scale(1)")
+            ? (element.style.transform = "")
             : (element.style.transform = "scale(1.1)");
     };
 
@@ -81,7 +81,7 @@ const SideNavBar = (props: Props) => {
                     // }, 1000);
                     element.style.transition = ".5s ease-in-out";
                     element.style.transform === "scale(1.1)"
-                        ? (element.style.transform = "scale(1)")
+                        ? (element.style.transform = "")
                         : (element.style.transform = "scale(1.1)");
                 }}
             >
@@ -137,7 +137,7 @@ const SideNavBar = (props: Props) => {
                                             window.location.pathname ===
                                             `/${button.url}`
                                                 ? {
-                                                      background: "#014BB2",
+                                                      background: "#456FF6",
                                                       color: "#fff"
                                                   }
                                                 : {}
@@ -157,7 +157,7 @@ const SideNavBar = (props: Props) => {
                                 //     window.location.pathname ===
                                 //         "/interest-groups"
                                 //         ? {
-                                //             background: "#014BB2",
+                                //             background: "#456FF6",
                                 //             color: "#fff"
                                 //         }
                                 //         : {}
