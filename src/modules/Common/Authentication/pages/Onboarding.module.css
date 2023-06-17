@@ -65,15 +65,23 @@
   }
 }
 
+
+.form_container .question_container::before {
+  backdrop-filter: blur(8px) contrast(60%);
+  -webkit-backdrop-filter: blur(8px) contrast(60%);
+}
+
 .form_container .question_container {
+  position: fixed;
   position: fixed;
   height: 100dvh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(8px);
   /* background-color: white; */
+  backdrop-filter: blur(8px) contrast(100%);
+  -webkit-backdrop-filter: blur(8px) contrast(100%);
   /* background: linear-gradient(0deg, rgb(163 163 163 / 19%), rgb(135 135 135 / 38%)), url("https://img.freepik.com/premium-vector/education-school-pattern-design_260839-1.jpg"); */
   left: 0;
   top: 0;
