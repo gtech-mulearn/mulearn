@@ -11,6 +11,7 @@
 	height: 100%;
 }
 
+
 @media (min-width: 500px) {
 	.inputContainer {
 		width: 70%;
@@ -22,12 +23,12 @@
 }
 
 .container {
-	width: 90vw;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 35vh;
-	margin-top: 5rem;
+    width: 90vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35vh;
+    margin-top: 5rem;
 }
 
 @media (min-width: 800px) {
@@ -47,17 +48,17 @@
 }
 
 @media (max-width: 400px) {
-	.inputContainer {
-		width: 90%;
-	}
+    .inputContainer {
+        width: 90%;
+    }
 }
 
 .text {
-	padding: 0;
-	margin: 0;
-	font-size: 1.5rem;
-	font-weight: bold;
-	width: 90%;
+    padding: 0;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 90%;
 }
 
 .btn {
@@ -106,12 +107,12 @@
 }
 
 .createBtnContainer {
-	width: 95%;
-	display: flex;
-	align-items: center;
-	justify-content: end;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
 }
 
 .createBtn p {
-	margin-left: 10px;
+    margin-left: 10px;
 }

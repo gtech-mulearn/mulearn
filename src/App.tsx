@@ -23,6 +23,7 @@ import {
 import { InterestGroupCreate } from "./modules/Dashboard/modules/InterestGroup/InterestGroupCreate";
 import { Tasks } from "./modules/Dashboard/modules/Tasks/Tasks";
 import CreateOrganization from "./modules/Dashboard/modules/Organizations/CreateOrganization";
+import DeleteOrganizations from "./modules/Dashboard/modules/Organizations/DeleteOrganizations";
 import ManageUsersCreate from "./modules/Dashboard/modules/ManageUsers/ManageUsersCreate";
 import ManageUsersDelete from "./modules/Dashboard/modules/ManageUsers/ManageUsersDelete";
 import ManageUsersEdit from "./modules/Dashboard/modules/ManageUsers/ManageUsersEdit";
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
                     {
                         path: "interest-groups/delete/:id",
                         element: <InterestGroupDelete />
+                    },
+                    {
+                        path: "organizations/delete/:id",
+                        element: <DeleteOrganizations />
                     },
                     { path: "campus-details", element: <CampusStudentList /> },
                     { path: "manage-users", element: <ManageUsers /> },
