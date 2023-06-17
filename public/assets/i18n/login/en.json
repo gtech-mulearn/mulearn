@@ -1,0 +1,12 @@
+{
+    "user_login": "User Login",
+    "welcome_text": "Hey welcome, Please enter your details to get sign in to your account",
+    "email": "Enter µID or Email",
+    "password": "Password",
+    "forgot_password": "Forgot your",
+    "forgot_password_bold": "password?",
+    "login_otp": "Login with",
+    "login_otp_bold": "OTP",
+    "sign_in": "Sign in",
+    "sign_up": "Don't Have an Account? Sign up"
+}
