@@ -181,9 +181,6 @@ const Onboarding = (props: Props) => {
         setBackendError(formattedErrors);
     };
 
-    console.log(stateOption);
-    console.log(countryOption);
-
     // formik
     const initialValues = {
         firstName: "",
@@ -1067,7 +1064,7 @@ const Onboarding = (props: Props) => {
                                                                     ? window.innerWidth >
                                                                       500
                                                                         ? {
-                                                                              width: "58%"
+                                                                              width: "48%"
                                                                           }
                                                                         : {
                                                                               width: "100%"
@@ -1185,7 +1182,7 @@ const Onboarding = (props: Props) => {
                                                                     window.innerWidth >
                                                                     500
                                                                         ? {
-                                                                              width: "40%"
+                                                                              width: "50%"
                                                                           }
                                                                         : {}
                                                                 }
@@ -1440,7 +1437,7 @@ const Onboarding = (props: Props) => {
                                                                     ? window.innerWidth >
                                                                       500
                                                                         ? {
-                                                                              width: "58%"
+                                                                              width: "48%"
                                                                           }
                                                                         : {
                                                                               width: "100%"
@@ -1525,7 +1522,7 @@ const Onboarding = (props: Props) => {
                                                                     window.innerWidth >
                                                                     500
                                                                         ? {
-                                                                              width: "40%"
+                                                                              width: "50%"
                                                                           }
                                                                         : {}
                                                                 }
@@ -1788,18 +1785,9 @@ const Onboarding = (props: Props) => {
                                         <button
                                             type="reset"
                                             onClick={() => {
-                                                formik.values.areaOfInterest =
-                                                    [];
-
-                                                formik.values.firstName = "";
-                                                formik.values.lastName = "";
-                                                formik.values.email = "";
-                                                formik.values.phone = void 0;
-                                                // setRole([{ id: "", title: "" }]);
-                                                formik.values.dept = "";
-                                                formik.values.organization = "";
-                                                formik.values.yog = "";
-                                                formik.values.mentorRole = "";
+                                                formik.handleReset(
+                                                    formik.values
+                                                );
                                             }}
                                         >
                                             Cancel
@@ -1827,6 +1815,9 @@ const Onboarding = (props: Props) => {
                                                     formik.errors.firstName ||
                                                     formik.errors.email ||
                                                     formik.errors.phone ||
+                                                    formik.errors.password ||
+                                                    formik.errors
+                                                        .confirmPassword ||
                                                     formik.errors
                                                         .areaOfInterest ||
                                                     (role[0]["title"] ==

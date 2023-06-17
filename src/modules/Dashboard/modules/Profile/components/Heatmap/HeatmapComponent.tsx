@@ -113,7 +113,7 @@ const HeatmapComponent = (props: Props) => {
 
     const renderYearButtons = () => {
         const years = [];
-        for (let y = currentYear; y >= props.year; y--) {
+        for (let y = props.year; y <= currentYear; y++) {
             years.push(
                 <p
                     key={y}
