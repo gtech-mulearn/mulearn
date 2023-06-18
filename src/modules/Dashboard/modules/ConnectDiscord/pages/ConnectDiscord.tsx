@@ -55,7 +55,7 @@ const ConnectDiscord = () => {
                                     {muid}
                                 </p>
                                 <a
-                                    href="http://discord.mulearn.org"
+                                    href={import.meta.env.VITE_DISCORD_INVITE_URL}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
