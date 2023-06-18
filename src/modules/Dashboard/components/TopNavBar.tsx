@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./SideNavBar.module.css";
 import MulearnBrand from "../assets/MulearnBrand";
 import { getUserProfile } from "./api";
+import { useNavigate } from "react-router-dom";
 // import companyLogo from "./assets/images/profile.png";
 // import {
 //   MdSettings,
@@ -9,6 +10,7 @@ import { getUserProfile } from "./api";
 // } from "react-icons/md";
 
 const TopNavBar = () => {
+    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [profilePic, setProfilePic] = useState("");
     useEffect(() => {
@@ -18,8 +20,10 @@ const TopNavBar = () => {
         ) {
             setName(JSON.parse(localStorage.getItem("userInfo")!).firstName);
         }
-        getUserProfile(setProfilePic);
     });
+    useEffect(() => {
+        getUserProfile(setProfilePic);
+    }, []);
     return (
         <>
             <div className={styles.top_nav}>
@@ -34,7 +38,13 @@ const TopNavBar = () => {
                             {/* <MdSettings style={{ fontSize: "30px" }} /> */}
                             {/* <MdNotifications style={{ fontSize: "30px" }} /> */}
                             <div className={styles.profile}>
-                                <img src={profilePic} alt="" />
+                                <img
+                                    onClick={() => {
+                                        navigate("/profile");
+                                    }}
+                                    src={profilePic}
+                                    alt=""
+                                />
                             </div>
                         </div>
                     </div>

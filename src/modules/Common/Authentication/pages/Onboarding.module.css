@@ -6,6 +6,14 @@
   /* color: #404d61; */
 }
 
+.next_btn_row{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  gap: 10px;
+}
+
 .onboarding_page .form_container h1 {
   font-size: 1.5rem;
   font-weight: 700;
@@ -31,7 +39,7 @@
 .form_container .loader_container {
   position: fixed;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   top: 0;
   left: 0;
   display: flex;
@@ -40,6 +48,7 @@
   align-items: center;
   z-index: 200;
   backdrop-filter: blur(11px);
+  -webkit-backdrop-filter: blur(11px);
   transition: all .5s ease-in;
   transform: scaleX(-1);
 }
@@ -64,15 +73,23 @@
   }
 }
 
+
+.form_container .question_container::before {
+  backdrop-filter: blur(8px) contrast(60%);
+  -webkit-backdrop-filter: blur(8px) contrast(60%);
+}
+
 .form_container .question_container {
   position: fixed;
-  height: 100vh;
+  position: fixed;
+  height: 100dvh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(8px);
   /* background-color: white; */
+  backdrop-filter: blur(8px) contrast(100%);
+  -webkit-backdrop-filter: blur(8px) contrast(100%);
   /* background: linear-gradient(0deg, rgb(163 163 163 / 19%), rgb(135 135 135 / 38%)), url("https://img.freepik.com/premium-vector/education-school-pattern-design_260839-1.jpg"); */
   left: 0;
   top: 0;
@@ -325,7 +342,7 @@ form .form_buttons button[type="reset"] {
   align-items: center;
   flex-direction: column;
   /* width: 100vw; */
-  height: 100vh;
+  height: 100dvh;
   margin: 0rem 2rem;
   text-align: center;
   background-color: #e8f3f7;
@@ -343,7 +360,7 @@ form .form_buttons button[type="reset"] {
   align-items: center;
   flex-direction: column;
   /* width: 100vw; */
-  height: 100vh;
+  height: 100dvh;
   margin: 0rem 2rem;
   background-color: #e8f3f7;
 }

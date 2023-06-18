@@ -55,7 +55,7 @@ const ConnectDiscord = () => {
                                     {muid}
                                 </p>
                                 <a
-                                    href="http://discord.mulearn.org"
+                                    href={import.meta.env.VITE_DISCORD_INVITE_URL}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -123,7 +123,7 @@ const ConnectDiscord = () => {
                         <GridLoader
                             style={{ display: "block" }}
                             className={styles.loader}
-                            color="#014bb2"
+                            color="#456FF6"
                         />
                     </div>
                 </div>

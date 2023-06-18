@@ -18,6 +18,7 @@ import "./Organizations.scss";
 import PrimaryButton from "../../../../components/MuComponents/MuButtons/MuOutlinedButton";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 import { dashboardRoutes } from "../../../../services/urls";
+import { Blank } from "../../../../components/MuComponents/Table/Blank";
 
 function ZonalDashboard() {
     const [data, setData] = useState<any[]>([]);

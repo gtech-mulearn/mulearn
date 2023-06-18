@@ -9,8 +9,10 @@ import * as Yup from "yup";
 import { FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 import { useNavigate, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import styles from "../../../../components/MuComponents/FormikComponents/form.module.css";
+import { NULL } from "sass";
+import "./UserRoleVerification.scss";
 
 type Props = {};
 
@@ -20,8 +22,14 @@ const UserRoleVerificationEdit = (props: Props) => {
     interface IData {
         verified: boolean;
     }
+    const [isChecked, setIsChecked] = useState(false);
+
+    const handleCheckboxChange = () => {
+        setIsChecked(!isChecked);
+    };
+
     const [data, setData] = useState<IData>({
-        verified: false
+        verified: isChecked
     });
     useEffect(() => {
         getUserRoleVerificationDetails(id, setData);
@@ -39,7 +47,7 @@ const UserRoleVerificationEdit = (props: Props) => {
     const { id } = useParams();
     const navigate = useNavigate();
     const handleSubmit = () => {
-        editUserRoleVerification(input1, id, toast);
+        editUserRoleVerification(input1, id);
         navigate("/user-role-verification");
     };
     return (
@@ -49,7 +57,6 @@ const UserRoleVerificationEdit = (props: Props) => {
                 <Formik
                     enableReinitialize={true}
                     initialValues={{
-                        // igName: name
                         verified: data.verified
                     }}
                     validationSchema={Yup.object({
@@ -61,30 +68,68 @@ const UserRoleVerificationEdit = (props: Props) => {
                             .required("Required")
                     })}
                     onSubmit={values => {
-                        editUserRoleVerification(values.verified, id, toast);
+                        editUserRoleVerification(isChecked, id);
 
                         navigate("/user-role-verification");
                     }}
                 >
                     <Form className={styles.inputContainer}>
-                        <FormikTextInput
-                            label="Verified"
-                            name="verified"
-                            type="boolean"
-                            placeholder="Change Verified"
-                        />
-
-                        <div className={styles.btn_container}>
-                            <MuButton
-                                text={"Decline"}
-                                className={styles.btn_cancel}
-                                onClick={() => {
-                                    navigate("/user-role-verification");
+                        <div style={{
+                            display:"flex",
+                            flexDirection:"column",
+                            width:"100%",
+                            alignItems:"center"
+                        }}>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    padding: 5,
+                                    width: "fit-content",
+                                    borderRadius: 10,
+                                    borderWidth: 3,
+                                    height: "50px",
+                                    borderColor: "#014BB2",
+                                    gap:5
                                 }}
-                            />
-                            <button type="submit" className={styles.btn_submit}>
-                                Confirm
-                            </button>
+                            >
+                                <input
+                                    style={{
+                                        width: "50px"
+                                    }}
+                                    id="s2d"
+                                    type="checkbox"
+                                    className="switch"
+                                    name="verified"
+                                    checked={isChecked}
+                                    onChange={handleCheckboxChange}
+                                />
+                                <p
+                                    style={{
+                                        color: "black",
+                                        width: "100%"
+                                    }}
+                                >
+                                    Verification
+                                </p>
+                            </div>
+
+                            <div className={styles.btn_container}>
+                                <MuButton
+                                    text={"Decline"}
+                                    className={styles.btn_cancel}
+                                    onClick={() => {
+                                        navigate("/user-role-verification");
+                                    }}
+                                />
+                                <button
+                                    type="submit"
+                                    className={styles.btn_submit}
+                                >
+                                    Confirm
+                                </button>
+                            </div>
                         </div>
                     </Form>
                 </Formik>

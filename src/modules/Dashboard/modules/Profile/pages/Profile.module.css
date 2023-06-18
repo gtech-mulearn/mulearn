@@ -39,7 +39,7 @@
 .rightDash .loader_container {
   position: fixed;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   top: 0;
   left: 0;
   display: flex;
@@ -74,7 +74,7 @@
 .rightDash .profileDash .profile .profile_div {
   background: #FFFFFF;
   box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06);
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 0px;
   margin-bottom: 20px;
 }
@@ -85,7 +85,7 @@
   height: 10rem;
   width: 100%;
   /* background-color: #A0C8FF; */
-  background-image: url(../assets/images/profile_banner.png);
+  background-image: url(../assets/images/profile_banner.webp);
   background-position: bottom;
   position: relative;
   background-size: cover;
@@ -150,7 +150,7 @@
   border-radius: 5px;
   border: none;
   font-weight: 600;
-  background-color: #014BB2;
+  background-color: #456FF6;
   color: #fff;
 }
 
@@ -162,7 +162,7 @@
   list-style: none;
   justify-content: space-between;
   margin-top: -1rem;
-  padding: 0px 10px;
+  padding: 0px 15px;
 }
 
 .rightDash .profileDash .profile .profileList li:first-child {
@@ -181,7 +181,7 @@
   bottom: -5px;
   width: 2rem;
   height: 3.5px;
-  background-color: #014BB2;
+  background-color: #456FF6;
 }
 
 .rightDash .profileDash .profile .pointsList {
@@ -190,7 +190,7 @@
   gap: 1rem 5rem;
   margin: 2rem 0;
   justify-content: flex-start;
-  padding: 0px 10px;
+  padding: 0px 15px;
 }
 
 .rightDash .profileDash .profile .pointsList .points {
@@ -208,13 +208,13 @@
   background: #FFFFFF;
   box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06);
   border-radius: 10px;
-  padding: 10px;
+  padding: 10px 15px;
 }
 
 .rightDash .profileDash .profile .interestGrp .igs_container {
   display: flex;
   flex-wrap: wrap;
-  margin: 1rem 0 1.5rem 0;
+  margin: 10px 0px;
   list-style: none;
   gap: 20px;
   justify-content: flex-start;
@@ -321,7 +321,7 @@
 
 .rightDash .profileDash .notification .existing_roles p {
   margin-left: 10px;
-  color: #014BB2;
+  color: #456FF6;
 }
 
 .rightDash .profileDash .notification .existing_roles .head {
@@ -351,7 +351,7 @@
 .rightDash .profileDash .notification .existing_roles .pie_chart .data_details span {
   width: 10px;
   height: 10px;
-  background-color: #014BB2;
+  background-color: #456FF6;
   border-radius: 50%;
   display: block;
 }
@@ -370,6 +370,9 @@
   max-height: 400px;
   overflow: scroll;
   padding: 10px 0px;
+  scroll-snap-type: mandatory;
+  scroll-snap-points-y: repeat(300px);
+  scroll-snap-type: y mandatory;
 }
 
 .rightDash .profileDash .notification .leadboard .head {
@@ -397,7 +400,7 @@
 .rightDash .profileDash .notification .leadboard .card {
   border-radius: 20px;
   background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
   margin: 0 1rem;
   padding: .5rem 1rem;
   display: flex;
@@ -405,6 +408,8 @@
   align-items: center;
   gap: 1rem;
   font-weight: 600;
+
+  scroll-snap-align: start;
 }
 
 .rightDash .profileDash .notification .leadboard .card img {
@@ -467,6 +472,14 @@
     min-width: 50%;
   }
 
+}
+
+@media (max-width: 980px) {
+
+  .rightDash .profileDash .profile .heatmap {
+    max-width: unset;
+    width: unset;
+  }
 }
 
 @media (max-width: 800px) {

@@ -1,27 +1,25 @@
+import { useEffect, useState } from "react";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 
 //To prevent a user from accessing the login page if they are already logged in.
 const AuthRoutes: React.FC = () => {
-    let refreshToken = localStorage.getItem("refreshToken");
+    // let refreshToken = localStorage.getItem("refreshToken");
+    const [onboardingStatus, setOnboardingStatus] = useState(false);
+    const [refreshToken, setRefreshToken] = useState("");
 
-    let onboardingStatus = null;
+    useEffect(() => {
+        setRefreshToken(localStorage.getItem("refreshToken") || "");
+        let userInfo = localStorage.getItem("userInfo");
+        console.log("userInfo", userInfo);
 
-    if (localStorage.getItem("userInfo") !== null) {
-        onboardingStatus = JSON.parse(
-            localStorage.getItem("userInfo")!
-        ).existInGuild;
-    }
+        if (userInfo !== null) {
+            setOnboardingStatus(JSON.parse(userInfo!).existInGuild);
+        }
+    }, [onboardingStatus]);
 
-    return refreshToken &&
-        refreshToken.length > 0 &&
-        onboardingStatus !== null ? (
-        <>
-            onboardingStatus ? <Navigate to="/profile" /> :
-            <Navigate to="/connect-discord" />
-        </>
-    ) : (
-        <Outlet />
-    );
+    return refreshToken && refreshToken.length > 0
+        ? <Navigate to={onboardingStatus ? "/profile" : "/connect-discord"} />
+        : <Outlet />;
 };
 
 export default AuthRoutes;

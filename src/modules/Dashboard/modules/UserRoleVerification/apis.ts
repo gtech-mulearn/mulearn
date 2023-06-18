@@ -39,7 +39,6 @@ export const getUserRoleVerification = async (
 export const editUserRoleVerification = async (
     verified: boolean,
     id: string | undefined,
-    toast: any
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -50,12 +49,6 @@ export const editUserRoleVerification = async (
         );
         const message: any = response?.data;
         console.log(message);
-        toast({
-            title: "Role edited",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

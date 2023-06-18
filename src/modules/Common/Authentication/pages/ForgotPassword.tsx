@@ -3,6 +3,7 @@ import { forgetPassword } from "../services/apis";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import styles from "./Login.module.css"
+import { PulseLoader } from "react-spinners";
 
 type Props = {};
 
@@ -10,7 +11,7 @@ const ForgotPassword = (props: Props) => {
     const [muid, setMuid] = useState("");
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState("");
-
+    const [showLoader, setShowLoader] = useState(false)
     const navigate = useNavigate();
     const toast = useToast();
 
@@ -36,12 +37,24 @@ const ForgotPassword = (props: Props) => {
                             onClick={e => {
                                 e.preventDefault();
                                 if (muid.length > 0) {
-                                    forgetPassword(muid, toast, navigate);
+                                    forgetPassword(
+                                        muid,
+                                        toast,
+                                        navigate,
+                                        setShowLoader
+                                    );
                                 }
                             }}
                             type="submit"
                         >
-                            Reset password
+                            {
+                                !showLoader ?
+                                    " Reset password"
+                                    :
+                                    <div className={styles.otp_loader}>
+                                        <PulseLoader size={10} color="#fff" />
+                                    </div>
+                            }
                         </button>
                     </form>
                 </div>

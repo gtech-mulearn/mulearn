@@ -1,6 +1,6 @@
 .login_page {
   background-color: #fbfbfb;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .error_message {
@@ -20,7 +20,7 @@
 }
 
 .login_container {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -162,3 +162,12 @@
   align-items: center;
   gap: 10px;
 }
+
+.otp_loader{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 5px;
+}
+

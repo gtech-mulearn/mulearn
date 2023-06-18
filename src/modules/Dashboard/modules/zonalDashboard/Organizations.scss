@@ -1,27 +1,27 @@
-.table_tab_container{
+.table_tab_container {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     width: 95%;
-    .table_tabs{
+    .table_tabs {
         display: flex;
         gap: 15px;
-        .table_tab_btn{
+        .table_tab_btn {
             padding: 6px 24px;
             border-radius: 10px;
             cursor: pointer;
         }
-        .active{
-            background-color: #014bb2;
+        .active {
+            background-color: #456ff6;
             color: white;
         }
-        .inactive{
-            border: 1px solid #014bb2;
-            color: #014bb2;
+        .inactive {
+            border: 1px solid #456ff6;
+            color: #456ff6;
         }
     }
-    .org_create_btn{
+    .org_create_btn {
         background-color: white;
-        border: 1px solid #014bb2;
+        border: 1px solid #456ff6;
         display: flex;
         gap: 8px;
         align-items: center;
@@ -30,44 +30,44 @@
         cursor: pointer;
     }
 }
-.popup_container{
+.popup_container {
     width: 60%;
     height: max-content;
     padding: 20px;
     // border: 1px solid #cbcbcb;
     border-radius: 8px;
     z-index: 0;
-    .popup_title{
+    .popup_title {
         font-size: 20px;
         font-weight: 800;
         text-align: start;
     }
-    p{
+    p {
         width: 90%;
         text-align: left;
         font-size: 14px;
-        span{
+        span {
             font-weight: bold;
-            &::after{
+            &::after {
                 content: " ";
             }
         }
     }
 }
-.popup_dropdown_container{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-column-gap: 15px;
-        margin: 10px 0;
-        z-index: 100;
-        .inputfield_container{
-            width: 100%;
-            text-align: start;
-            margin-top: 8px;
-            box-sizing: border-box;
-        }
+.popup_dropdown_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 15px;
+    margin: 10px 0;
+    z-index: 100;
+    .inputfield_container {
+        width: 100%;
+        text-align: start;
+        margin-top: 8px;
+        box-sizing: border-box;
+    }
 }
-.grid-container{
+.grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 15px;
@@ -77,61 +77,61 @@
     max-height: 0; /* Adjust the value to accommodate your content */
     transition: max-height 0.3s linear;
 }
-.popup_top_container{
+.popup_top_container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    i{
+    i {
         width: 35px;
         height: 35px;
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: 50%;
-        &:hover{
-            background-color: #014bb21d;
+        &:hover {
+            background-color: #456ff61d;
         }
     }
 }
-.submit_container{
+.submit_container {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 .btn {
-	width: 100%;
+    width: 100%;
     padding: 8px;
     display: flex;
     border-radius: 10px;
     flex-direction: row;
     align-items: center;
-	justify-content: center;
+    justify-content: center;
     margin-top: 1.5rem;
     font-size: 15px;
     cursor: pointer;
-    transition: .3s ease-in-out;
-    p{
+    transition: 0.3s ease-in-out;
+    p {
         text-align: center;
     }
 }
-.blue-btn{
-	background: #014BB2;
+.blue-btn {
+    background: #456ff6;
     color: #fff;
 }
-.light-btn{
+.light-btn {
     background-color: #f5f7fb;
     border: 1px solid #8c95a7;
-    color: #014BB2;
+    color: #456ff6;
 }
 
 @media only screen and (max-width: 768px) {
-    .popup_container{
+    .popup_container {
         width: 100%;
     }
-} 
+}
 
-@media only screen and (max-width: 400px){
-    .popup_dropdown_container{
-        grid-template-columns: repeat(1, 1fr);   
+@media only screen and (max-width: 400px) {
+    .popup_dropdown_container {
+        grid-template-columns: repeat(1, 1fr);
     }
 }
