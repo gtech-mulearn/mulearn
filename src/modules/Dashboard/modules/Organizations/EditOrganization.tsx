@@ -4,6 +4,9 @@ import { useLocation } from 'react-router-dom';
 import { hasRole } from '../../../../services/common_functions';
 import { roles } from '../../../../services/types';
 import { getInfo } from './apis';
+import styles from "../../../../components/MuComponents/FormikComponents/form.module.css";
+import { Formik } from 'formik';
+import * as Yup from "yup";
 
 import FormData from './FormData';
 
@@ -93,6 +96,7 @@ function EditOrganization() {
 
   return (
     <div className="popup_container">
+          <div className={styles.container}>
       <div className="popup_top_container">
         <h1 className="popup_title">Edit {activeItem}</h1>
         <i
@@ -108,6 +112,7 @@ function EditOrganization() {
       </p>
       <div className="popup_dropdown_container">
         <RenderFormData activeItem={activeItem} />
+      </div>
       </div>
     </div>
   )

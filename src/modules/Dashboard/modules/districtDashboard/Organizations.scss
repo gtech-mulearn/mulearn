@@ -34,7 +34,7 @@
     width: 60%;
     height: max-content;
     padding: 20px;
-    border: 1px solid #cbcbcb;
+    // border: 1px solid #cbcbcb;
     border-radius: 8px;
     z-index: 0;
     .popup_title{
@@ -56,7 +56,7 @@
 }
 .popup_dropdown_container{
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr 1fr;
         grid-column-gap: 15px;
         margin: 10px 0;
         z-index: 100;
@@ -127,6 +127,26 @@
 @media only screen and (max-width: 768px) {
     .popup_container{
         width: 100%;
+    }
+    .table_tab_container{
+        font-size: 15px;
+        flex-direction: column-reverse;
+        gap: 10px;
+        .table_tabs{
+            gap: 10px;
+            justify-content: center;
+            .table_tab_btn{
+                width: 33.33%;
+                padding: 6px 0;
+                border-radius: 6px;
+                cursor: touch;
+            }
+        }
+        .org_create_btn{
+            padding: 3px 12px;
+            border-radius: 6px;
+            justify-content: center;
+        }
     }
 } 
 

@@ -11,11 +11,14 @@ import {
 } from "./apis";
 import { useNavigate } from "react-router-dom";
 import Textfield from "../../../../components/MuComponents/TextField/Textfield";
-
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
 import { createOrganization, updateOrganization } from "./apis";
 import { useToast } from "@chakra-ui/react";
+import { FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
 
 import "./Organizations.scss";
+import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 
 interface Option {
     value: string;
@@ -38,7 +41,7 @@ interface CollegeFormProps {
 const FormData = ({ ...props }: CollegeFormProps) => {
     const [inputName, setInputName] = useState("");
     const [inputCode, setInputCode] = useState("");
-    const [oldCode,setOldCode] = useState("");
+    const [oldCode, setOldCode] = useState("");
 
     const [affiliation, setAffiliation] = useState<any>("");
     const [country, setCountry] = useState<any>("");
@@ -300,8 +303,53 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
     return (
         <>
-            <div className="inputfield_container">
-                <Textfield
+            <Formik
+                initialValues={{
+                    Name: props.inputName || "",
+                    Code: props.inputCode || ""
+                    // acceptedTerms: false, // added for our checkbox
+                    // jobType: "" // added for our select
+                }}
+                validationSchema={Yup.object({
+                    igName: Yup.string()
+                        .max(30, "Must be 30 characters or less")
+                        .required("Required")
+                    // firstName: Yup.string()
+                    //     .max(15, "Must be 15 characters or less")
+                    //     .required("Required"),
+                    // lastName: Yup.string()
+                    //     .max(20, "Must be 20 characters or less")
+                    //     .required("Required"),
+                    // email: Yup.string()
+                    //     .email("Invalid email address")
+                    //     .required("Required"),
+                    // acceptedTerms: Yup.boolean()
+                    //     .required("Required")
+                    //     .oneOf(
+                    //         [true],
+                    //         "You must accept the terms and conditions."
+                    //     ),
+                    // jobType: Yup.string()
+                    //     .oneOf(
+                    //         ["designer", "development", "product", "other"],
+                    //         "Invalid Job Type"
+                    //     )
+                    //     .required("Required")
+                })}
+                onSubmit={values => {
+                    console.log(values.Name);
+                    // createInterestGroups(values.igName);
+                    toast({
+                        title: "Interest Group created",
+                        status: "success",
+                        duration: 3000,
+                        isClosable: true
+                    });
+                    navigate("/interest-groups");
+                }}
+            >
+                <Form className="popup_dropdown_container">
+                        {/* <Textfield
                     content={`${props.activeItem} Name`}
                     inputType="text"
                     setInput={setInputName}
@@ -309,79 +357,93 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     style={{
                         width: "100%"
                     }}
-                />
-            </div>
-            <div className="inputfield_container">
-                <Textfield
-                    content="Code"
-                    inputType="text"
-                    setInput={setInputCode}
-                    input={inputCode}
-                    style={{
-                        width: "100%"
-                    }}
-                />
-            </div>
-            {props.activeItem === "College" ? (
+                /> */}
                 <div className="inputfield_container">
-                    <p>Affiliated University</p>
-                    <Select
-                        value={affiliationData.find(
-                            affiliation =>
-                                affiliation.value === selectedAffiliation
-                        )}
-                        onChange={handleAffiliationChange}
-                        options={affiliationData}
-                    />
-                </div>
-            ) : null}
+                        <FormikTextInput
+                            label={`${props.activeItem} Name`}
+                            name="Name"
+                            type="text"
+                            placeholder="Enter a name"
+                        />
+                        </div>
+                    <div className="inputfield_container">
+                    <FormikTextInput
+                            label="Code"
+                            name="Code"
+                            type="text"
+                            placeholder="Enter Code"
+                        />
+                    </div>
+                    {props.activeItem === "College" ? (
+                        <div className="inputfield_container">
+                            <p>Affiliated University</p>
+                            <Select
+                                value={affiliationData.find(
+                                    affiliation =>
+                                        affiliation.value === selectedAffiliation
+                                )}
+                                onChange={handleAffiliationChange}
+                                options={affiliationData}
+                                required
+                            />
+                        </div>
+                    ) : null}
 
-            <div className="inputfield_container">
-                <p>Country</p>
-                <Select
-                    value={countryData.find(
-                        country => country.value === selectedCountry
-                    )}
-                    onChange={handleCountryChange}
-                    options={countryData}
-                />
-            </div>
-            <div className="inputfield_container">
-                <p>State</p>
-                <Select
-                    value={statesData.find(
-                        state => state.value === selectedState
-                    )}
-                    onChange={handleStateChange}
-                    options={statesData}
-                />
-            </div>
-            <div className="inputfield_container">
-                <p>Zone</p>
-                <Select
-                    value={zonesData.find(zone => zone.value === selectedZone)}
-                    onChange={handleZoneChange}
-                    options={zonesData}
-                />
-            </div>
-            <div className="inputfield_container">
-                <p>District</p>
-                <Select
-                    value={districtsData.find(
-                        district => district.value === selectedDistrict
-                    )}
-                    onChange={handleDistrictChange}
-                    options={districtsData}
-                />
-            </div>
-            <div className="inputfield_container grid-container">
-                <div className="btn light-btn" onClick={resetStates}>
-                    Decline
-                </div>
-                <div className="btn blue-btn" onClick={handleSubmit}>
-                    Submit
-                </div>
-            </div>
+                    <div className="inputfield_container">
+                        <p>Country</p>
+                        <Select
+                            value={countryData.find(
+                                country => country.value === selectedCountry
+                            )}
+                            onChange={handleCountryChange}
+                            options={countryData}
+                        />
+                    </div>
+                    <div className="inputfield_container">
+                        <p>State</p>
+                        <Select
+                            value={statesData.find(
+                                state => state.value === selectedState
+                            )}
+                            onChange={handleStateChange}
+                            options={statesData}
+                        />
+                    </div>
+                    <div className="inputfield_container">
+                        <p>Zone</p>
+                        <Select
+                            value={zonesData.find(zone => zone.value === selectedZone)}
+                            onChange={handleZoneChange}
+                            options={zonesData}
+                        />
+                    </div>
+                    <div className="inputfield_container">
+                        <p>District</p>
+                        <Select
+                            value={districtsData.find(
+                                district => district.value === selectedDistrict
+                            )}
+                            onChange={handleDistrictChange}
+                            options={districtsData}
+                        />
+                    </div>
+                    <div className="inputfield_container grid-container">
+                        {/* <div className="btn light-btn" onClick={resetStates}>
+                            Decline
+                        </div> */}
+                                                    <MuButton
+                                text={"Decline"}
+                                className="btn light-btn"
+                                onClick={() => {
+                                    navigate("/organizations");
+                                }}
+                            />
+                        <button type="submit" className="btn blue-btn">
+                            Submit
+                        </button>
+                    </div>
+                </Form>
+            </Formik>
         </>
     );
 };
