@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Login.module.css";
 import { useToast } from "@chakra-ui/react";
 import {
@@ -79,7 +79,7 @@ const Login = () => {
                                     Login with <b>OTP</b>
                                 </a>
                             </p>
-                            <button 
+                            <button
                                 onClick={e => {
                                     e.preventDefault();
                                     if (muid != "" && password != "") {
