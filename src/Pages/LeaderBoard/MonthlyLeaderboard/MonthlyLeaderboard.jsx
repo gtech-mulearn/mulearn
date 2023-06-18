@@ -11,7 +11,7 @@ const MonthlyLeaderboard = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/leaderboard/college-monthly/`)
+      .get('https://mulearn.org/api/v1/leaderboard/college-monthly/')
       .then(function (response) {
         // console.log(response.data.response);
         setColleges(response.data.response);
@@ -21,7 +21,7 @@ const MonthlyLeaderboard = () => {
       });
 
     axios
-    .get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/leaderboard/students-monthly/`)
+    .get('https://mulearn.org/api/v1/leaderboard/students-monthly/')
       .then(function (response) {
         // console.log(response.data.response);
         setStudents(response.data.response);
