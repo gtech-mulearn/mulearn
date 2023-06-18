@@ -162,3 +162,12 @@
   align-items: center;
   gap: 10px;
 }
+
+.otp_loader{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 5px;
+}
+

@@ -7,7 +7,7 @@ import {
     otpVerification
 } from "../services/apis";
 import { useNavigate } from "react-router-dom";
-import { ClipLoader } from "react-spinners";
+import { ClipLoader, PulseLoader } from "react-spinners";
 
 const Login = () => {
     const [showOrHidePassword, setShowOrHidePassword] = useState("password");
@@ -18,6 +18,7 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [otpForm, setOtpForm] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [otpLoading, setOtpLoading] = useState(false);
     const toast = useToast();
     const navigate = useNavigate();
     useEffect(() => {
@@ -79,7 +80,7 @@ const Login = () => {
                                     Login with <b>OTP</b>
                                 </a>
                             </p>
-                            <button 
+                            <button
                                 onClick={e => {
                                     e.preventDefault();
                                     if (muid != "" && password != "") {
@@ -174,7 +175,8 @@ const Login = () => {
                                             emailOrMuid,
                                             toast,
                                             setHasError,
-                                            setStatus
+                                            setStatus,
+                                            setOtpLoading
                                         );
                                     }
                                     if (!hasError && password != "") {
@@ -182,7 +184,8 @@ const Login = () => {
                                             emailOrMuid,
                                             password,
                                             toast,
-                                            navigate
+                                            navigate,
+                                            setOtpLoading
                                         );
                                     }
                                 }}
@@ -194,8 +197,12 @@ const Login = () => {
                                     : status === 0 && emailOrMuid != ""
                                         ? "processing"
                                         : emailOrMuid != ""
-                                            ? "Sign in"
+                                            ?
+                                            <>
+                                                {!otpLoading ? <>Sign in</> : <div className={styles.otp_loader}> <PulseLoader size={10} color="#fff" /></div>}
+                                            </>
                                             : "Request OTP"}
+
                             </button>
                             <span className={styles.register}>
                                 <a href="register">
