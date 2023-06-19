@@ -14,11 +14,14 @@ type setHasError = React.Dispatch<React.SetStateAction<boolean>>;
 export const forgetPassword = (
     emailOrMuid: string,
     toast: (options?: UseToastOptions | undefined) => ToastId,
-    navigate: NavigateFunction
+    navigate: NavigateFunction,
+    setShowLoader: (showLoader: boolean) => void
 ) => {
+    setShowLoader(true);
     privateGateway
         .post(dashboardRoutes.forgetPassword, { emailOrMuid })
         .then(response => {
+            setShowLoader(false);
             toast({
                 title: "Token Mail Sent",
                 description:
@@ -29,9 +32,10 @@ export const forgetPassword = (
             });
             setTimeout(() => {
                 navigate("/login");
-            }, 5000);
+            }, 4000);
         })
         .catch(error => {
+            setShowLoader(false);
             toast({
                 title: error.response?.data?.message?.general[0],
                 status: "error",
@@ -144,7 +148,7 @@ export const resetPassword = (
     toast: (options?: UseToastOptions | undefined) => ToastId,
     navigate: NavigateFunction
 ) => {
-	privateGateway
+    privateGateway
         .post(dashboardRoutes.resetPassword.replace("${token}", token), { password })
         .then(response => {
             if (response.data.statusCode === 200) {
@@ -179,10 +183,13 @@ export const requestEmailOrMuidOtp = (
     emailOrMuid: string,
     toast: (options?: UseToastOptions | undefined) => ToastId,
     setHasError: setHasError,
-    setStatus: setStatus
+    setStatus: setStatus,
+    setOtpLoading: (otpLoading: boolean) => void
 ) => {
-    publicGateway        .post(authRoutes.requestEmailOrMuidOtp, { emailOrMuid })
+    setOtpLoading(true)
+    publicGateway.post(authRoutes.requestEmailOrMuidOtp, { emailOrMuid })
         .then(response => {
+            setOtpLoading(false)
             setStatus(response.data.statusCode);
             if (response.data.hasError == false) {
                 setHasError(false);
@@ -196,6 +203,7 @@ export const requestEmailOrMuidOtp = (
             }
         })
         .catch(error => {
+            setOtpLoading(false)
             toast({
                 title: "Invalid Email or Muid",
                 description: "Kindly enter a valid email or Muid",
@@ -210,8 +218,10 @@ export const otpVerification = (
     emailOrMuid: string,
     otp: string,
     toast: (options?: UseToastOptions | undefined) => ToastId,
-    navigate: NavigateFunction
+    navigate: NavigateFunction,
+    setOtpLoading: (otpLoading: boolean) => void
 ) => {
+    setOtpLoading(true);
     publicGateway
         .post(authRoutes.otpVerification, { emailOrMuid, otp })
         .then(response => {
@@ -225,6 +235,7 @@ export const otpVerification = (
                 response.data.response.refreshToken
             );
             if (response.data.hasError == false) {
+                setOtpLoading(false)
                 toast({
                     title: "OTP verified",
                     description: "You will be redirected to home page",
@@ -252,6 +263,7 @@ export const otpVerification = (
                 });
         })
         .catch(error => {
+            setOtpLoading(false)
             toast({
                 title: "Invalid OTP",
                 description: "Kindly enter a valid OTP",

@@ -6,6 +6,14 @@
   /* color: #404d61; */
 }
 
+.next_btn_row{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  gap: 10px;
+}
+
 .onboarding_page .form_container h1 {
   font-size: 1.5rem;
   font-weight: 700;
