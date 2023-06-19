@@ -157,7 +157,7 @@ const UrlShortener = () => {
             setHasValidationError
         );
         getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
-    };
+        !hasValidationError.error ? setEditBtn(false) : null;    };
 
     const validate = (values: any) => {
         console.log(values);
@@ -179,9 +179,10 @@ const UrlShortener = () => {
         onSubmit,
         validate
     });
-    useEffect(() => {
-        setEditBtn(false);
-    }, [formik.values.title]);
+    // useEffect(() => {
+    //     setEditBtn(false);
+    // }, [formik.handleChange]);
+    // console.log(hasValidationError.error);
 
     return (
         <>
@@ -287,6 +288,7 @@ const UrlShortener = () => {
                                                 perPage,
                                                 setTotalPages
                                             );
+                                            // formik.handleReset(formik.values);
                                         } else {
                                             validate(formik.values);
                                             console.log("error");
