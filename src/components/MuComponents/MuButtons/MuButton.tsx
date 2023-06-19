@@ -13,17 +13,19 @@ export const MuButton = (props: {
     className?: string; // button class name if wanted
     onClick?: React.MouseEventHandler; // onclick event if wanted
     isLoading?: boolean;// show loading spinner if neccessary.
+    disabled?: boolean;//disable the button if needed
 }) => {
     return (
-        <div
+        <button
             className={props.className ? props.className : styles.btn}
             style={props.style}
             onClick={props.onClick}
+            disabled={props.disabled}
         >
             <div className={styles.btn_icon}>{props.icon}</div>
-            <p>{props.text}</p>
+            <span>{props.text}</span>
             {props.isLoading && <ClipLoader size={20} color="#ff" className={styles.btn_loader} />}
-        </div>
+        </button>
     );
 };
 

@@ -7,7 +7,7 @@ import {
     otpVerification
 } from "../services/apis";
 import { useNavigate } from "react-router-dom";
-import { ClipLoader, PulseLoader } from "react-spinners";
+import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 
 const Login = () => {
     const [showOrHidePassword, setShowOrHidePassword] = useState("password");
@@ -18,7 +18,9 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [otpForm, setOtpForm] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [otpVerifyLoading, setOtpVerifyLoading] = useState(false);
     const [otpLoading, setOtpLoading] = useState(false);
+    const [otpError, setOtpError] = useState(false);
     const toast = useToast();
     const navigate = useNavigate();
     useEffect(() => {
@@ -80,26 +82,17 @@ const Login = () => {
                                     Login with <b>OTP</b>
                                 </a>
                             </p>
-                            <button
+                            <MuButton
+                                text={"signin"}
+                                className={styles.signin_button}
                                 onClick={e => {
                                     e.preventDefault();
                                     if (muid != "" && password != "") {
                                         login(muid, password, toast, navigate, setIsLoading);
                                     }
                                 }}
-                                type="submit"
-                            >
-                                <div className={styles.signin_loading}>
-                                    {isLoading ?
-                                        <>
-                                            Sign in
-                                            <ClipLoader color="#fff" size={20} />
-                                        </>
-                                        :
-                                        'Sign in'
-                                    }
-                                </div>
-                            </button>
+                                isLoading={isLoading}
+                            />
                             <span className={styles.register}>
                                 <a href="register">
                                     Don't Have an Account? Sign up
@@ -166,7 +159,7 @@ const Login = () => {
                                     login with <b>Password</b>
                                 </a>
                             </p>
-                            <button
+                            {/* <button
                                 onClick={e => {
                                     setHasError(false);
                                     e.preventDefault();
@@ -201,13 +194,50 @@ const Login = () => {
                                             <>
                                                 {!otpLoading ? <>Sign in</> : <div className={styles.otp_loader}> <PulseLoader size={10} color="#fff" /></div>}
                                             </>
-                                            : "Request OTP"}
-
-                            </button>
-                            <span className={styles.register}>
-                                <a href="register">
-                                    Don't Have an Account? Sign up
-                                </a>
+                                            : "Request OTP"
+                                        }
+                            </button> */}
+                            <MuButton
+                                text={
+                                    hasError
+                                        ? "Request OTP"
+                                        : otpLoading
+                                            ? "processing"
+                                            : otpError
+                                                ?
+                                                "Request OTP"
+                                                : "Signin"
+                                }
+                                className={styles.signin_button}
+                                onClick={e => {
+                                    setHasError(false);
+                                    e.preventDefault();
+                                    if (emailOrMuid != "" && hasError) {
+                                        requestEmailOrMuidOtp(
+                                            emailOrMuid,
+                                            toast,
+                                            setHasError,
+                                            setStatus,
+                                            setOtpLoading,
+                                            setOtpError
+                                        );
+                                    }
+                                    if (!hasError && password != "") {
+                                        otpVerification(
+                                            emailOrMuid,
+                                            password,
+                                            toast,
+                                            navigate,
+                                            setOtpVerifyLoading
+                                        );
+                                    }
+                                }}
+                                // disabled={status === 1 ? true : false}
+                                isLoading={otpLoading ? otpLoading : otpVerifyLoading}
+                            />
+                            <span className={styles.register}>                                <a href="register">
+                                Don't Have an Account? Sign up
+                            </a>
                             </span>
                         </form>
                     </div>

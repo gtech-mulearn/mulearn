@@ -141,7 +141,7 @@
   font-size: 15px;
 }
 
-.form_container .question_container .question_box .question .answers .verify_email button {
+.form_container .question_container .question_box .question .answers .verify_email .verify_button {
   width: 100%;
   background-color: #5570f1;
   padding: 10px;
@@ -150,6 +150,11 @@
   color: white;
   margin-top: 10px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  cursor: pointer;
 }
 
 .form_container .question_container .question_box .question .answers button {
@@ -271,6 +276,20 @@ form .form_buttons button,
   border: none;
   outline: none;
   border-radius: 10px;
+  cursor: pointer;
+}
+
+.submit_button {
+  background: #5570f1;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 0px;
+  width: 30%;
+  min-width: 200px;
+  border-radius: 10px;
+  align-self: center;
   cursor: pointer;
 }
 
