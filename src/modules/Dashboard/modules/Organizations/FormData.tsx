@@ -83,12 +83,12 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
     const orgType = props.activeItem;
 
-    const handleSubmit = (e: any) => {
-        e.preventDefault();
+    const handleSubmit = (Name:string,Code:string) => {
+        // e.preventDefault();
         // resetStates()
         interface SelectBodyProps {
-            inputName: string;
-            inputCode: string;
+            Name:string,
+            Code:string,
             country: string;
             state: string;
             zone: string;
@@ -103,8 +103,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             affiliation?: string
         ) => {
             const {
-                inputName,
-                inputCode,
                 country,
                 state,
                 zone,
@@ -116,8 +114,8 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             if (isCreate) {
                 if (orgType === "College") {
                     createOrganization(
-                        inputName,
-                        inputCode,
+                        Name,
+                        Code,
                         camelCase(country),
                         camelCase(state),
                         camelCase(zone),
@@ -129,8 +127,8 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     );
                 } else {
                     createOrganization(
-                        inputName,
-                        inputCode,
+                        Name,
+                        Code,
                         camelCase(country),
                         camelCase(state),
                         camelCase(zone),
@@ -142,8 +140,8 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             } else {
                 if (orgType === "College") {
                     updateOrganization(
-                        inputName,
-                        inputCode,
+                        Name,
+                        Code,
                         oldCode,
                         camelCase(country),
                         camelCase(state),
@@ -155,8 +153,8 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     );
                 } else {
                     updateOrganization(
-                        inputName,
-                        inputCode,
+                        Name,
+                        Code,
                         oldCode,
                         camelCase(country),
                         camelCase(state),
@@ -171,8 +169,8 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
         const SelectBody = (item: string) => {
             const params: SelectBodyProps = {
-                inputName,
-                inputCode,
+                Name,
+                Code,
                 country: country.value,
                 state: state.value,
                 zone: zone.value,
@@ -311,41 +309,17 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     // jobType: "" // added for our select
                 }}
                 validationSchema={Yup.object({
-                    igName: Yup.string()
+                    Name: Yup.string()
+                        .max(30, "Must be 30 characters or less")
+                        .required("Required"),
+                    Code: Yup.string()
                         .max(30, "Must be 30 characters or less")
                         .required("Required")
-                    // firstName: Yup.string()
-                    //     .max(15, "Must be 15 characters or less")
-                    //     .required("Required"),
-                    // lastName: Yup.string()
-                    //     .max(20, "Must be 20 characters or less")
-                    //     .required("Required"),
-                    // email: Yup.string()
-                    //     .email("Invalid email address")
-                    //     .required("Required"),
-                    // acceptedTerms: Yup.boolean()
-                    //     .required("Required")
-                    //     .oneOf(
-                    //         [true],
-                    //         "You must accept the terms and conditions."
-                    //     ),
-                    // jobType: Yup.string()
-                    //     .oneOf(
-                    //         ["designer", "development", "product", "other"],
-                    //         "Invalid Job Type"
-                    //     )
-                    //     .required("Required")
                 })}
                 onSubmit={values => {
                     console.log(values.Name);
-                    // createInterestGroups(values.igName);
-                    toast({
-                        title: "Interest Group created",
-                        status: "success",
-                        duration: 3000,
-                        isClosable: true
-                    });
-                    navigate("/interest-groups");
+                    handleSubmit(values.Name,values.Code);
+                    navigate("/ORGANIZATIONS");
                 }}
             >
                 <Form className="popup_dropdown_container">
@@ -397,6 +371,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             )}
                             onChange={handleCountryChange}
                             options={countryData}
+                            required
                         />
                     </div>
                     <div className="inputfield_container">
@@ -407,6 +382,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             )}
                             onChange={handleStateChange}
                             options={statesData}
+                            required
                         />
                     </div>
                     <div className="inputfield_container">
@@ -415,6 +391,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             value={zonesData.find(zone => zone.value === selectedZone)}
                             onChange={handleZoneChange}
                             options={zonesData}
+                            required
                         />
                     </div>
                     <div className="inputfield_container">
@@ -425,6 +402,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             )}
                             onChange={handleDistrictChange}
                             options={districtsData}
+                            required
                         />
                     </div>
                     <div className="inputfield_container grid-container">

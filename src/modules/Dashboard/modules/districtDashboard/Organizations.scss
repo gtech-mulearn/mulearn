@@ -54,18 +54,21 @@
         }
     }
 }
+.inputfield_container{
+    width: 100%;
+    text-align: start;
+    margin-top: 8px;
+    box-sizing: border-box;
+} 
 .popup_dropdown_container{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-column-gap: 15px;
         margin: 10px 0;
         z-index: 100;
-        .inputfield_container{
-            width: 100%;
-            text-align: start;
-            margin-top: 8px;
-            box-sizing: border-box;
-        }
+}
+.error{
+    color: red;
 }
 .grid-container {
     display: grid;
@@ -129,7 +132,7 @@
         width: 100%;
     }
     .table_tab_container{
-        font-size: 15px;
+        font-size: 14px;
         flex-direction: column-reverse;
         gap: 10px;
         .table_tabs{

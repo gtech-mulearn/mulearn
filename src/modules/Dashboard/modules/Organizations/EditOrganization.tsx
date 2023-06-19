@@ -110,9 +110,7 @@ function EditOrganization() {
         Once you have verified the information, please click the <span>Confirm</span>
         button to proceed for further process.
       </p>
-      <div className="popup_dropdown_container">
         <RenderFormData activeItem={activeItem} />
-      </div>
       </div>
     </div>
   )
