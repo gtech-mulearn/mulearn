@@ -4,6 +4,9 @@ import { privateGateway } from "../../../../services/apiGateways";
 import { dashboardRoutes, organizationRoutes } from "../../../../services/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast"
 
+import { useNavigate } from "react-router-dom";
+import { ErrorMessage } from "formik";
+
 
 
 export const getOrganizations = async (
@@ -197,19 +200,28 @@ export const createOrganization = async (
         const message: any = response?.data;
         console.log("created a new " + orgType)
         setIsSuccess(true)
-
-    } catch (err: unknown) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            // toast({
-            //     title:error?.response?.data?.message.general[0].code[0],
-            //     status: "error",
-            //     duration: 3000,
-            //     isClosable: true
-            // });
+    } catch (error:any) {
+        if (error.response) {
+          const errorMsg = error.response.data.message.general[0].code[0] || 'Something went wrong!';
+          toast({
+            title: `Error`,
+            description: errorMsg,
+            status: "error",
+            duration: 3000,
+            isClosable: true,
+          });
+        } else {
+        //   toast({
+        //     title: "Error occurred",
+        //     description: error.message,
+        //     status: "error",
+        //     duration: 3000,
+        //     isClosable: true,
+        //   });
         }
-    }
+      }
 }
+// const navigate = useNavigate()
 
 export const updateOrganization = async (
     title: string,
@@ -222,6 +234,7 @@ export const updateOrganization = async (
     orgType: string,
     toast: (options?: UseToastOptions | undefined) => ToastId,
     affiliation?: string,
+    setIsSuccess?: any,
 ) => {
 
     const addDataProps = () => {
@@ -248,31 +261,43 @@ export const updateOrganization = async (
             }
         }
     }
-    const response = await privateGateway.put(`${organizationRoutes.putUpdateOrganization}/${oldCode}`, addDataProps());
-    console.log("status is ", response.status)
-    interface responseStatusProps {
-        [key: number]: string;
-    }
-    const responseStatus: responseStatusProps = {
-        400: "Organizations already exist"
-    }
-    if (response.status == 200) {
-        toast({
+    try {
+        const response = await privateGateway.put(
+          `${organizationRoutes.putUpdateOrganization}/${oldCode}`,
+          addDataProps()
+        );
+        console.log("status is ", response.status);
+      
+        if (response.status === 200) {
+          toast({
             title: "Organizations Updated",
             status: "success",
             duration: 3000,
-            isClosable: true
-        });
-    } else {
-        const status = response.status
-        const errorMsg = responseStatus[status] || 'Something went wrong!'
-        toast({
-            title: errorMsg,
-            status: "success",
+            isClosable: true,
+          });
+          setIsSuccess(true)
+        }
+      } catch (error:any) {
+        if (error.response) {
+          const errorMsg = error.response.data.message.general[0] || 'Something went wrong!';
+          toast({
+            title: `Error`,
+            description: errorMsg,
+            status: "error",
             duration: 3000,
-            isClosable: true
-        });
-    }
+            isClosable: true,
+          });
+        } else {
+          toast({
+            title: "Error occurred",
+            description: error.message,
+            status: "error",
+            duration: 3000,
+            isClosable: true,
+          });
+        }
+      }
+      
 }
 
 export const deleteOrganization = async (

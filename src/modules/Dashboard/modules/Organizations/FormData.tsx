@@ -19,6 +19,7 @@ import { FormikTextInput } from "../../../../components/MuComponents/FormikCompo
 
 import "./Organizations.scss";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import { useRef } from 'react';
 
 interface Option {
     value: string;
@@ -37,6 +38,16 @@ interface CollegeFormProps {
     selectedDistrict?: string;
     selectedAffiliation?: string;
 }
+
+// export let myState = false; // Initial value
+
+// export const setMyState = (newValue:boolean) => {
+//   myState = newValue;
+// };
+
+
+
+
 
 const FormData = ({ ...props }: CollegeFormProps) => {
     const [inputName, setInputName] = useState("");
@@ -66,8 +77,18 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
     const [isSuccess, setIsSuccess] = useState(false);
 
+
     const navigate = useNavigate();
     const toast = useToast();
+
+
+    const myRef = useRef(false);
+
+    useEffect(()=>{
+        if(isSuccess){
+            navigate('/organizations')
+        }
+    })
 
     function camelCase(str: string) {
         return str?.replace(
@@ -82,6 +103,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     };
 
     const orgType = props.activeItem;
+
 
     const handleSubmit = (Name:string,Code:string) => {
         // e.preventDefault();
@@ -134,7 +156,9 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         camelCase(zone),
                         camelCase(district),
                         orgType,
-                        toast
+                        toast,
+                        "",
+                        setIsSuccess
                     );
                 }
             } else {
@@ -149,7 +173,8 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         camelCase(district),
                         orgType,
                         toast,
-                        affiliation
+                        affiliation,
+                        setIsSuccess
                     );
                 } else {
                     updateOrganization(
@@ -161,7 +186,9 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         camelCase(zone),
                         camelCase(district),
                         orgType,
-                        toast
+                        toast,
+                        "",
+                        setIsSuccess
                     );
                 }
             }
@@ -187,8 +214,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
         };
 
         SelectBody(orgType);
-        console.log("Success Status-->", isSuccess);
-        navigate("/organizations");
+        console.log("Success Status-->", myRef.current);
     };
 
     useEffect(() => {
@@ -319,7 +345,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                 onSubmit={values => {
                     console.log(values.Name);
                     handleSubmit(values.Name,values.Code);
-                    navigate("/ORGANIZATIONS");
                 }}
             >
                 <Form className="popup_dropdown_container">
@@ -365,9 +390,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
                     <div className="inputfield_container">
                         <p>Country</p>
-                        {
-                          console.log("Countires are : ",statesData,selectedState.toLowerCase())
-                        }
                         <Select
                             value={countryData.find(
                                 country => country.value === selectedCountry.toLowerCase()
