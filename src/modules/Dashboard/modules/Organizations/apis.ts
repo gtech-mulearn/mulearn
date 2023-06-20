@@ -161,6 +161,7 @@ export const createOrganization = async (
     toast: (options?: UseToastOptions | undefined) => ToastId,
     affiliation?: string,
     setIsSuccess?: any,
+    setIsLoading?: any,
 ) => {
 
     const addDataProps = () => {
@@ -201,6 +202,11 @@ export const createOrganization = async (
         console.log("created a new " + orgType)
         setIsSuccess(true)
     } catch (error:any) {
+        setIsLoading(true);
+        setTimeout(function() {
+            setIsLoading(false);
+          }, 1000);
+
         if (error.response) {
           const errorMsg = error.response.data.message.general[0].code[0] || 'Something went wrong!';
           toast({
@@ -235,6 +241,7 @@ export const updateOrganization = async (
     toast: (options?: UseToastOptions | undefined) => ToastId,
     affiliation?: string,
     setIsSuccess?: any,
+    setIsLoading?: any,
 ) => {
 
     const addDataProps = () => {
@@ -278,6 +285,10 @@ export const updateOrganization = async (
           setIsSuccess(true)
         }
       } catch (error:any) {
+        setIsLoading(true);
+        setTimeout(function() {
+            setIsLoading(false);
+          }, 1000); 
         if (error.response) {
           const errorMsg = error.response.data.message.general[0] || 'Something went wrong!';
           toast({

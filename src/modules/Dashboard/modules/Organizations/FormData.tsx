@@ -16,9 +16,9 @@ import * as Yup from "yup";
 import { createOrganization, updateOrganization } from "./apis";
 import { useToast } from "@chakra-ui/react";
 import { FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
+import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 
 import "./Organizations.scss";
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 import { useRef } from 'react';
 
 interface Option {
@@ -76,6 +76,8 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     const [isCountryDataLoaded, setIsCountryDataLoaded] = useState(false);
 
     const [isSuccess, setIsSuccess] = useState(false);
+    const [isLoading,setIsLoading] = useState(false)
+    const [isDisabled,setIsDisabled] = useState(false)
 
 
     const navigate = useNavigate();
@@ -87,6 +89,11 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     useEffect(()=>{
         if(isSuccess){
             navigate('/organizations')
+        }
+        if(isLoading){
+            setIsDisabled(true)
+        }else{
+            setIsDisabled(false)
         }
     })
 
@@ -145,7 +152,8 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         orgType,
                         toast,
                         affiliation,
-                        setIsSuccess
+                        setIsSuccess,
+                        setIsLoading,
                     );
                 } else {
                     createOrganization(
@@ -158,7 +166,8 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         orgType,
                         toast,
                         "",
-                        setIsSuccess
+                        setIsSuccess,
+                        setIsLoading
                     );
                 }
             } else {
@@ -174,7 +183,8 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         orgType,
                         toast,
                         affiliation,
-                        setIsSuccess
+                        setIsSuccess,
+                        setIsLoading
                     );
                 } else {
                     updateOrganization(
@@ -188,10 +198,12 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         orgType,
                         toast,
                         "",
-                        setIsSuccess
+                        setIsSuccess,
+                        setIsLoading
                     );
                 }
             }
+            setIsLoading(false)
         };
 
         const SelectBody = (item: string) => {
@@ -343,6 +355,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         .required("Required")
                 })}
                 onSubmit={values => {
+                    setIsLoading(true)
                     console.log(values.Name);
                     handleSubmit(values.Name,values.Code);
                 }}
@@ -441,8 +454,11 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                                     navigate("/organizations");
                                 }}
                             />
-                        <button type="submit" className="btn blue-btn">
-                            Submit
+                        <button type="submit" className="btn blue-btn" disabled={isDisabled}>
+                            {/* Submit */}
+                            {
+                                isLoading ? (<div className="custom-loader"></div>) : "Submit" 
+                            }
                         </button>
                     </div>
                 </Form>
@@ -452,3 +468,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 };
 
 export default FormData;
+function sleep(arg0: number) {
+    throw new Error("Function not implemented.");
+}
+
