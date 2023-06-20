@@ -83,7 +83,7 @@ const Login = () => {
                                 </a>
                             </p>
                             <MuButton
-                                text={"signin"}
+                                text={"Sign In"}
                                 className={styles.signin_button}
                                 onClick={e => {
                                     e.preventDefault();
@@ -156,7 +156,7 @@ const Login = () => {
                                         setOtpForm(false);
                                     }}
                                 >
-                                    login with <b>Password</b>
+                                    Login with <b>Password</b>
                                 </a>
                             </p>
                             {/* <button
@@ -188,7 +188,7 @@ const Login = () => {
                                 {hasError
                                     ? "Request OTP"
                                     : status === 0 && emailOrMuid != ""
-                                        ? "processing"
+                                        ? "Processing"
                                         : emailOrMuid != ""
                                             ?
                                             <>
@@ -202,7 +202,7 @@ const Login = () => {
                                     hasError
                                         ? "Request OTP"
                                         : otpLoading
-                                            ? "processing"
+                                            ? "Processing"
                                             : otpError
                                                 ?
                                                 "Request OTP"
