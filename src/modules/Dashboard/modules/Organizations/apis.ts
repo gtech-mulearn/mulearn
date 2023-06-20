@@ -191,6 +191,7 @@ export const createOrganization = async (
     }
 
     try {
+        setIsLoading(true);
         const response = await privateGateway.post(organizationRoutes.postAddOrganization, addDataProps());
         toast({
             title: "Organizations created",
@@ -201,31 +202,31 @@ export const createOrganization = async (
         const message: any = response?.data;
         console.log("created a new " + orgType)
         setIsSuccess(true)
-    } catch (error:any) {
+        setIsLoading(false);
+    } catch (error: any) {
         setIsLoading(true);
-        setTimeout(function() {
+        setTimeout(function () {
             setIsLoading(false);
-          }, 1000);
-
+        }, 2000);
         if (error.response) {
-          const errorMsg = error.response.data.message.general[0].code[0] || 'Something went wrong!';
-          toast({
-            title: `Error`,
-            description: errorMsg,
-            status: "error",
-            duration: 3000,
-            isClosable: true,
-          });
+            const errorMsg = error.response.data.message.general[0].code[0] || 'Something went wrong!';
+            toast({
+                title: `Error`,
+                description: errorMsg,
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
         } else {
-        //   toast({
-        //     title: "Error occurred",
-        //     description: error.message,
-        //     status: "error",
-        //     duration: 3000,
-        //     isClosable: true,
-        //   });
+            //   toast({
+            //     title: "Error occurred",
+            //     description: error.message,
+            //     status: "error",
+            //     duration: 3000,
+            //     isClosable: true,
+            //   });
         }
-      }
+    }
 }
 // const navigate = useNavigate()
 
@@ -269,46 +270,48 @@ export const updateOrganization = async (
         }
     }
     try {
+        setIsLoading(true);
         const response = await privateGateway.put(
-          `${organizationRoutes.putUpdateOrganization}/${oldCode}`,
-          addDataProps()
+            `${organizationRoutes.putUpdateOrganization}/${oldCode}`,
+            addDataProps()
         );
         console.log("status is ", response.status);
-      
+
         if (response.status === 200) {
-          toast({
-            title: "Organizations Updated",
-            status: "success",
-            duration: 3000,
-            isClosable: true,
-          });
-          setIsSuccess(true)
-        }
-      } catch (error:any) {
-        setIsLoading(true);
-        setTimeout(function() {
+            toast({
+                title: "Organizations Updated",
+                status: "success",
+                duration: 3000,
+                isClosable: true,
+            });
+            setIsSuccess(true)
             setIsLoading(false);
-          }, 1000); 
-        if (error.response) {
-          const errorMsg = error.response.data.message.general[0] || 'Something went wrong!';
-          toast({
-            title: `Error`,
-            description: errorMsg,
-            status: "error",
-            duration: 3000,
-            isClosable: true,
-          });
-        } else {
-          toast({
-            title: "Error occurred",
-            description: error.message,
-            status: "error",
-            duration: 3000,
-            isClosable: true,
-          });
         }
-      }
-      
+    } catch (error: any) {
+        setIsLoading(true);
+        setTimeout(function () {
+            setIsLoading(false);
+        }, 1000);
+        if (error.response) {
+            const errorMsg = error.response.data.message.general[0] || 'Something went wrong!';
+            toast({
+                title: `Error`,
+                description: errorMsg,
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
+        } else {
+            toast({
+                title: "Error occurred",
+                description: error.message,
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
+        }
+    }
+
 }
 
 export const deleteOrganization = async (
