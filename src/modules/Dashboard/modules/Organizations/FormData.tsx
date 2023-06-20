@@ -365,9 +365,12 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
                     <div className="inputfield_container">
                         <p>Country</p>
+                        {
+                          console.log("Countires are : ",statesData,selectedState.toLowerCase())
+                        }
                         <Select
                             value={countryData.find(
-                                country => country.value === selectedCountry
+                                country => country.value === selectedCountry.toLowerCase()
                             )}
                             onChange={handleCountryChange}
                             options={countryData}
@@ -378,7 +381,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         <p>State</p>
                         <Select
                             value={statesData.find(
-                                state => state.value === selectedState
+                                state => state.value === selectedState.toLowerCase()
                             )}
                             onChange={handleStateChange}
                             options={statesData}
@@ -388,7 +391,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     <div className="inputfield_container">
                         <p>Zone</p>
                         <Select
-                            value={zonesData.find(zone => zone.value === selectedZone)}
+                            value={zonesData.find(zone => zone.value === selectedZone.toLowerCase())}
                             onChange={handleZoneChange}
                             options={zonesData}
                             required
@@ -398,7 +401,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         <p>District</p>
                         <Select
                             value={districtsData.find(
-                                district => district.value === selectedDistrict
+                                district => district.value === selectedDistrict.toLowerCase()
                             )}
                             onChange={handleDistrictChange}
                             options={districtsData}
