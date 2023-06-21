@@ -23,6 +23,7 @@ import Dropdown from '../../../../components/MuComponents/Dropdown/Dropdown'
 import "./Organizations.scss"
 import PrimaryButton from '../../../../components/MuComponents/MuButtons/MuOutlinedButton'
 import { MuButton } from '../../../../components/MuComponents/MuButtons/MuButton'
+import { dashboardRoutes } from '../../../../services/urls'
 
 function Organizations() {
     const [data, setData] = useState<any[]>([]);
@@ -143,6 +144,7 @@ function Organizations() {
             <TableTop
 				onSearchText={handleSearch}
 				onPerPageNumber={handlePerPageNumber} 
+                CSV={dashboardRoutes.getIgList}   
 				// CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}        
 				// CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"} 
 			/>

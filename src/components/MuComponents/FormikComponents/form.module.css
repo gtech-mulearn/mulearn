@@ -116,7 +116,7 @@
 	margin-bottom: 10px;
 	padding: 8px;
 	background-color: var(--White);
-	width: 50%;
+	/* width: 50%; */
 }
 
 .inputBox span {
