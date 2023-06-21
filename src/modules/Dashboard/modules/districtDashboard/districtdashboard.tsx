@@ -19,7 +19,7 @@ import PrimaryButton from '../../../../components/MuComponents/MuButtons/MuOutli
 import { MuButton } from '../../../../components/MuComponents/MuButtons/MuButton'
 import { dashboardRoutes } from '../../../../services/urls'
 
-function Organizations() {
+function districtDashboard() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
@@ -194,4 +194,4 @@ const CSV = (tabname: string) => {
   );
 }
 
-export default Organizations
+export default districtDashboard

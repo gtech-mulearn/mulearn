@@ -157,7 +157,8 @@ const UrlShortener = () => {
             setHasValidationError
         );
         getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
-        !hasValidationError.error ? setEditBtn(false) : null;    };
+        !hasValidationError.error ? setEditBtn(false) : null;
+    };
 
     const validate = (values: any) => {
         console.log(values);
