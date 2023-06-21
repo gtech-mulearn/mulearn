@@ -276,6 +276,29 @@ const FormData = ({ ...props }: CollegeFormProps) => {
         }
     }, []);
 
+    useEffect(()=>{
+        if(!props.isCreate){
+            if(country.value !== props.selectedCountry){    
+                getStates(camelCase(selectedCountry), setStatesData);
+            }
+            if(state.value !== props.selectedState && state !== ""){
+                getZones(
+                    camelCase(selectedCountry),
+                    camelCase(selectedState),
+                    setZonesData
+                );
+            }
+            if(zone.value !== props.selectedZone && zone !== ""){
+                getDistricts(
+                    camelCase(selectedCountry),
+                    camelCase(selectedState),
+                    camelCase(selectedZone),
+                    setDistrictsData
+                );
+            }
+        }
+    },[country,state,zone])
+
     useEffect(() => {
         if (country !== "") {
             getStates(camelCase(country.value), setStatesData);
