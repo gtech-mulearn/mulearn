@@ -29,3 +29,29 @@ export const FormikSelect = ({ label, ...props }:any) => {
         </div>
     );
 };
+
+export const FormikTextInputWhite = ({ label, ...props }: any) => {
+    const [field, meta] = useField(props);
+    return (
+        <div className={styles.InputSet}>
+            <label className={styles.formLabel}>{label}</label>
+            <input className="text-input" {...field} {...props} />
+            {meta.touched && meta.error ? (
+                <div className="error">{meta.error}</div>
+            ) : null}
+        </div>
+    );
+};
+
+export const FormikTextAreaWhite = ({ label, ...props }: any) => {
+    const [field, meta] = useField(props);
+    return (
+        <div className={styles.InputSet}>
+            <label className={styles.formLabel}>{label}</label>
+            <textarea className="text-input" {...field} {...props} />
+            {meta.touched && meta.error ? (
+                <div className="error">{meta.error}</div>
+            ) : null}
+        </div>
+    );
+};
