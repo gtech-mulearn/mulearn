@@ -3,7 +3,7 @@ import Pagination from "../../../../components/MuComponents/Pagination/Paginatio
 import Table from "../../../../components/MuComponents/Table/Table";
 import THead from "../../../../components/MuComponents/Table/THead";
 import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
-import { getUserRoleVerification } from "./apis";
+import { editUserRoleVerification, getUserRoleVerification } from "./apis";
 import { Blank } from "../../../../components/MuComponents/Table/Blank";
 import { roles } from "../../../../services/types";
 import { hasRole } from "../../../../services/common_functions";
@@ -107,6 +107,12 @@ function UsersRoleVerification() {
         console.log(`Icon clicked for column: ${column}`);
     };
 
+	function handleVerify(id: string | number | boolean): void {
+		console.log(id);
+        editUserRoleVerification(true, id);
+        getUserRoleVerification(setData, 1, perPage, setTotalPages, "", "");
+	}
+
     return (
         <>
             <TableTop
@@ -121,9 +127,9 @@ function UsersRoleVerification() {
                     perPage={perPage}
                     columnOrder={columnOrder}
                     id={["id"]}
-                    // onEditClick={handleEdit}
-                    // onDeleteClick={handleDelete}
-					onVerifyClick={handleEdit}
+                    onVerifyClick={handleVerify}
+                    modalHeading="Verify"
+                    modalContent="Are you sure you want to verify this user ?"
                 >
                     <THead
                         columnOrder={columnOrder}

@@ -1,8 +1,8 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import styles from "./Table.module.css";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { BsFillCheckCircleFill } from "react-icons/bs";
+import Modal from "../Modal/Modal";
 
 interface Data {
     [key: string]: string | number | boolean;
@@ -38,6 +38,8 @@ type TableProps = {
     onEditClick?: (column: string | number | boolean) => void;
     onDeleteClick?: (column: string | number | boolean) => void;
     onVerifyClick?: (column: string | number | boolean) => void;
+	modalHeading?: string;
+	modalContent?: string;
 };
 
 {
@@ -46,6 +48,8 @@ use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <T
 }
 
 const Table: FC<TableProps> = (props: TableProps) => {
+    const [isOpen, setIsOpen] = useState(false);
+
     function convertToNormalDate(dateString: any): string | null {
         const numberRegex = /^[0-9]+$/;
         if (String(dateString) == "true") {
@@ -124,14 +128,20 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                     <button
                                                         className={styles.btns}
                                                         onClick={() =>
-                                                            props.onVerifyClick &&
-                                                            props.onVerifyClick(
-                                                                rowData[column]
-                                                            )
+                                                            setIsOpen(true)
                                                         }
                                                     >
                                                         Verify
                                                     </button>
+                                                )}
+                                                {isOpen && (
+                                                    <Modal
+														setIsOpen={setIsOpen}
+														id={rowData[column]}
+														heading={props.modalHeading}
+														content={props.modalContent} 
+														click={props.onVerifyClick} 
+													/>
                                                 )}
                                                 {props.onDeleteClick && (
                                                     <button

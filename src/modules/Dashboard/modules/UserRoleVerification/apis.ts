@@ -51,7 +51,7 @@ export const getUserRoleVerification = async (
 
 export const editUserRoleVerification = async (
     verified: boolean,
-    id: string | undefined,
+    id: string | number | boolean
 ) => {
     try {
         const response = await privateGateway.patch(
