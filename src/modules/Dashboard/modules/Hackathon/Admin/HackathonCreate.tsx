@@ -44,7 +44,7 @@ const HackathonCreate = () => {
                     endDate: "",
                     regStartDate: "",
                     regEndDate: "",
-                    participants: 0,
+                    participants: "",
                     about: ""
                 }}
                 onSubmit={handleSubmit}

@@ -121,12 +121,14 @@ function UsersRoleVerification() {
                     perPage={perPage}
                     columnOrder={columnOrder}
                     id={["id"]}
-                    onEditClick={handleEdit}
-                    onDeleteClick={handleDelete}
+                    // onEditClick={handleEdit}
+                    // onDeleteClick={handleDelete}
+					onVerifyClick={handleEdit}
                 >
                     <THead
                         columnOrder={columnOrder}
                         onIconClick={handleIconClick}
+                        verify={true}
                     />
                     <Pagination
                         currentPage={currentPage}
@@ -135,7 +137,6 @@ function UsersRoleVerification() {
                         handleNextClick={handleNextClick}
                         handlePreviousClick={handlePreviousClick}
                     />
-                   
                 </Table>
             )}
         </>

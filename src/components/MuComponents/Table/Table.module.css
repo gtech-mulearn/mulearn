@@ -47,3 +47,10 @@
 	justify-content: space-around;
 	align-items: center;
 }
+
+.btns {
+	background-color: var(--blue);
+	color: #fff;
+	border-radius: var(--borderRadius);
+	padding: 4px 6px;
+}

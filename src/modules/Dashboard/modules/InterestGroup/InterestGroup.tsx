@@ -117,9 +117,10 @@ function InterestGroup() {
                     onDeleteClick={handleDelete}
                 >
                     <THead
-                        columnOrder={columnOrder}
-                        onIconClick={handleIconClick}
-                    />
+						columnOrder={columnOrder}
+						onIconClick={handleIconClick} 
+						action={true}
+					/>
                     <Pagination
                         currentPage={currentPage}
                         totalPages={totalPages}
