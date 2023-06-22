@@ -17,6 +17,7 @@ import { createOrganization, updateOrganization } from "./apis";
 import { useToast } from "@chakra-ui/react";
 import { FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import { ClipLoader } from "react-spinners";
 
 import "./Organizations.scss";
 import { useRef } from 'react';
@@ -275,6 +276,29 @@ const FormData = ({ ...props }: CollegeFormProps) => {
         }
     }, []);
 
+    useEffect(()=>{
+        if(!props.isCreate){
+            if(country.value !== props.selectedCountry){    
+                getStates(camelCase(selectedCountry), setStatesData);
+            }
+            if(state.value !== props.selectedState && state !== ""){
+                getZones(
+                    camelCase(selectedCountry),
+                    camelCase(selectedState),
+                    setZonesData
+                );
+            }
+            if(zone.value !== props.selectedZone && zone !== ""){
+                getDistricts(
+                    camelCase(selectedCountry),
+                    camelCase(selectedState),
+                    camelCase(selectedZone),
+                    setDistrictsData
+                );
+            }
+        }
+    },[country,state,zone])
+
     useEffect(() => {
         if (country !== "") {
             getStates(camelCase(country.value), setStatesData);
@@ -400,7 +424,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             />
                         </div>
                     ) : null}
-
                     <div className="inputfield_container">
                         <p>Country</p>
                         <Select
@@ -455,9 +478,9 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                                 }}
                             />
                         <button type="submit" className="btn blue-btn" disabled={isDisabled}>
-                            {/* Submit */}
+                            Submit
                             {
-                                isLoading ? (<div className="custom-loader"></div>) : "Submit" 
+                                isLoading ? (<ClipLoader size={20} color="#fff" className="btn_loader"  />) : null
                             }
                         </button>
                     </div>
