@@ -8,11 +8,15 @@ interface TableHeadProps {
         isSortable: boolean;
     }[];
     onIconClick: (column: string) => void;
+	action?: true | false;
+	verify?: true | false;
 }
 
 const THead: React.FC<TableHeadProps> = ({
     columnOrder,
-    onIconClick
+    onIconClick,
+	action = false,
+	verify = false,
 }) => {
     return (
         <thead>
@@ -28,7 +32,8 @@ const THead: React.FC<TableHeadProps> = ({
                         </div>
                     </th>
                 ))}
-				{/* <th>Action</th> */}
+				{verify && <th>Verify</th>}
+				{action && <th>Action</th>}
             </tr>
         </thead>
     );
