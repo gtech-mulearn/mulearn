@@ -156,7 +156,11 @@
 .btns button:nth-child(2) {
     background-color: var(--blue);
     color: #fff;
+}
 
+.error {
+	color: red;
+	font-size: 12px;
 }
 
 @media (width<=768px) {

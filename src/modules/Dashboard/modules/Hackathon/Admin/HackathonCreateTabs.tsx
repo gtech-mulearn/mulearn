@@ -1,6 +1,7 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import styles from "./HackathonCreate.module.css";
-import { Form, Formik } from "formik";
+import { Formik, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import {
     FormikTextAreaWhite,
     FormikTextInputWhite
@@ -32,6 +33,27 @@ const HackathonCreateTabs = (props: Props) => {
 		}
     }
 
+	const hackathonSchema = Yup.object().shape({
+        name: Yup.string()
+            .required("Required")
+            .min(2, "Too Short!")
+            .max(30, "Too Long!"),
+        description: Yup.string()
+            .min(2, "Too Short!")
+            .max(50, "Too Long!")
+            .required("Required"),
+        startDate: Yup.date(),
+        endDate: Yup.date(),
+        regStartDate: Yup.date(),
+        regEndDate: Yup.date(),
+        participants: Yup.number()
+            .positive("number of users should be a positive value")
+            .min(10, "Needs to be at least 2 digits.")
+            .max(999999, "Should not exceed 4 digits")
+            .truncate()
+            .required("Karma is required")
+    });
+
     return (
         <div className={styles.hackNav}>
             <div className={styles.starImg}>
@@ -56,6 +78,7 @@ const HackathonCreateTabs = (props: Props) => {
                     participants: "",
                     about: ""
                 }}
+                validationSchema={hackathonSchema}
                 onSubmit={handleSubmit}
             >
                 <Form>
@@ -82,6 +105,11 @@ const HackathonCreateTabs = (props: Props) => {
                                     type="text"
                                     placeholder="what you are calling your hackathon"
                                 />
+                                <ErrorMessage
+                                    name="name"
+                                    component="div"
+                                    className={styles.error}
+                                />
 
                                 <FormikTextInputWhite
                                     label="Tagline"
@@ -89,10 +117,31 @@ const HackathonCreateTabs = (props: Props) => {
                                     type="text"
                                     placeholder="eg: worlds realest hackathon"
                                 />
+                                <ErrorMessage
+                                    name="description"
+                                    component="div"
+                                    className={styles.error}
+                                />
+                                <FormikTextInputWhite
+                                    label="Approx. Participants"
+                                    name="participants"
+                                    type="number"
+                                    placeholder="eg: 250."
+                                />
+                                <ErrorMessage
+                                    name="participants"
+                                    component="div"
+                                    className={styles.error}
+                                />
                                 <FormikTextAreaWhite
                                     label="About"
                                     name="about"
                                     placeholder="explain something"
+                                />
+                                <ErrorMessage
+                                    name="about"
+                                    component="div"
+                                    className={styles.error}
                                 />
                             </TabPanel>
 
@@ -102,26 +151,40 @@ const HackathonCreateTabs = (props: Props) => {
                                     name="startDate"
                                     type="date"
                                 />
+                                <ErrorMessage
+                                    name="startDate"
+                                    component="div"
+                                    className={styles.error}
+                                />
                                 <FormikTextInputWhite
                                     label="End Date"
                                     name="endDate"
                                     type="date"
+                                />
+                                <ErrorMessage
+                                    name="endDate"
+                                    component="div"
+                                    className={styles.error}
                                 />
                                 <FormikTextInputWhite
                                     label="Registration Start Date"
                                     name="regStartDate"
                                     type="date"
                                 />
+                                <ErrorMessage
+                                    name="regStartDate"
+                                    component="div"
+                                    className={styles.error}
+                                />
                                 <FormikTextInputWhite
                                     label="Registration End Date"
                                     name="regEndDate"
                                     type="date"
                                 />
-                                <FormikTextInputWhite
-                                    label="Approx. Participants"
-                                    name="participants"
-                                    type="number"
-                                    placeholder="eg: 250."
+                                <ErrorMessage
+                                    name="regEndDate"
+                                    component="div"
+                                    className={styles.error}
                                 />
                             </TabPanel>
                             <TabPanel className={styles.formGroup}>
