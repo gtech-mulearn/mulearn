@@ -5,13 +5,33 @@ import {
     FormikTextAreaWhite,
     FormikTextInputWhite
 } from "../../../../../components/MuComponents/FormikComponents/FormikComponents";
+import { useState } from "react";
 
 type Props = {};
 
 const HackathonCreateTabs = (props: Props) => {
+	const [tabIndex, setTabIndex] = useState(0)
     const handleSubmit = (values: any) => {
         console.log(values);
     };
+	function handleNext() {
+		if (tabIndex === 6) {
+			setTabIndex(6);
+		}
+		else {
+			setTabIndex(tabIndex + 1);
+		}
+    }
+	
+	function handleBack() {
+		if (tabIndex === 0) {
+            setTabIndex(0);
+        }
+		else {
+			setTabIndex(tabIndex - 1);
+		}
+    }
+
     return (
         <div className={styles.hackNav}>
             <div className={styles.starImg}>
@@ -39,7 +59,11 @@ const HackathonCreateTabs = (props: Props) => {
                 onSubmit={handleSubmit}
             >
                 <Form>
-                    <Tabs selectedTabClassName={styles.selectedTab}>
+                    <Tabs
+                        selectedTabClassName={styles.selectedTab}
+                        selectedIndex={tabIndex}
+                        onSelect={index => setTabIndex(index)}
+                    >
                         <TabList>
                             <Tab>basics</Tab>
                             <Tab>application</Tab>
@@ -106,8 +130,12 @@ const HackathonCreateTabs = (props: Props) => {
                             </TabPanel>
                         </div>
                         <div className={styles.btns}>
-                            <button className={styles.btn}>Go back</button>
-                            <button className={styles.btn}>Next</button>
+                            <button onClick={handleBack} className={styles.btn}>
+                                Go back
+                            </button>
+                            <button onClick={handleNext} className={styles.btn}>
+                                Next
+                            </button>
                         </div>
                     </Tabs>
                 </Form>
