@@ -88,6 +88,7 @@
 .hackNav ul li {
     padding: 0 1rem;
     position: relative;
+	cursor: pointer;
 }
 
 .hackNav ul span {
@@ -96,7 +97,7 @@
     height: 1.8rem;
 }
 
-.hackNav ul li:first-child {
+.selectedTab {
     color: var(--blue);
 }
 
@@ -106,6 +107,7 @@
     background-color: #fff;
     border-radius: var(--borderRadius);
     box-shadow: var(--boxShadow);
+	padding-bottom: 1px;
 }
 
 .formGroup {

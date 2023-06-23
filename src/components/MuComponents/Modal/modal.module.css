@@ -1,5 +1,4 @@
 .darkBG {
-	background-color: rgba(0, 0, 0, 0.2);
 	width: 100vw;
 	height: 100vh;
 	z-index: 0;
@@ -7,6 +6,7 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 	position: absolute;
+	backdrop-filter: blur(2px);
 }
 
 .centered {
@@ -23,7 +23,7 @@
 	color: white;
 	z-index: 10;
 	border-radius: 16px;
-	box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+	box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.253);
 }
 
 .modalHeader {
@@ -37,7 +37,7 @@
 .heading {
 	margin: 0;
 	padding: 10px;
-	color: #2c3e50;
+	color: var(--blue);
 	font-weight: 500;
 	font-size: 18px;
 	text-align: center;
@@ -46,7 +46,7 @@
 .modalContent {
 	padding: 10px;
 	font-size: 14px;
-	color: #2c3e50;
+	color: var(--blue);
 	text-align: center;
 }
 
@@ -83,7 +83,7 @@
 }
 
 .closeBtn:hover {
-	box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+	box-shadow: 0 5px 20px 0 rgba(51, 55, 56, 0.04);
 	transform: translate(-4px, 4px);
 }
 
@@ -101,7 +101,7 @@
 }
 
 .deleteBtn:hover {
-	box-shadow: 0 10px 20px -10px rgba(255, 62, 78, 0.6);
+	box-shadow: 0 10px 20px -10px rgba(62, 165, 255, 0.6);
 	transform: translateY(-5px);
 	background: var(--blue);
 }

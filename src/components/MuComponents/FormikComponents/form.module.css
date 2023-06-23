@@ -171,6 +171,7 @@
 
 .InputSet textarea {
 	padding: .7rem 1rem;
+	margin-bottom: 0;
 	border-radius: var(--borderRadius);
 	width: 100%;
 	min-width: 72rem; /*need to change this to make it responsive */
