@@ -17,7 +17,7 @@
 .menu_btn .lines {
     width: 25px;
     height: 4px;
-    background-color: #456FF6;
+    background-color: #456ff6;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
     transition: all 0.3s ease-in-out;
@@ -29,7 +29,7 @@
     display: flex;
     flex-direction: row;
     background-color: #fff;
-    color: #456FF6;
+    color: #456ff6;
     overflow-x: hidden;
 }
 
@@ -52,7 +52,7 @@
     height: calc(auto - 120px);
     display: flex;
     flex-direction: column;
-    color: #456FF6;
+    color: #456ff6;
     /* font-size: larger; */
     font-size: 20px;
     font-weight: 600;
@@ -95,11 +95,15 @@
 }
 
 .side_nav_bar_item :hover {
-    background: #456FF6;
+    background: #456ff6;
     color: #fff;
 }
 
-.side_nav_bar_container .side_nav_bar .side_nav_bar_items .side_nav_bar_item .side_nav_bar_item_icon {
+.side_nav_bar_container
+    .side_nav_bar
+    .side_nav_bar_items
+    .side_nav_bar_item
+    .side_nav_bar_item_icon {
     margin-right: 20px;
 }
 
@@ -107,7 +111,7 @@
     width: 100%;
     height: 100%;
     overflow-y: scroll;
-    transition: .5s ease;
+    transition: 0.5s ease;
     z-index: 50;
 }
 
@@ -170,16 +174,19 @@
 /* responsive */
 @media screen and (min-width: 1324px) {
     .right_side .top_nav .nav {
-        width: 88vw;
+        width: 86vw;
     }
 }
 
 @media screen and (max-width: 1324px) {
     .side_nav_bar_container {
-        max-width: 30%;
+        max-width: 35%;
     }
 
-    .side_nav_bar_container .side_nav_bar .side_nav_bar_items .side_nav_bar_item {
+    .side_nav_bar_container
+        .side_nav_bar
+        .side_nav_bar_items
+        .side_nav_bar_item {
         margin-bottom: 10px;
     }
 
@@ -193,7 +200,6 @@
 }
 
 @media screen and (max-width: 830px) {
-
     .right_side .top_nav .nav .nav_items .greetings,
     .right_side .top_nav .nav .nav_items .menu svg {
         display: none;
@@ -223,8 +229,8 @@
         width: auto;
     }
 
-    .side_nav_bar_container .side_nav_bar .side_nav_bar_items>* {
-        border: 1px solid #456FF6;
+    .side_nav_bar_container .side_nav_bar .side_nav_bar_items > * {
+        border: 1px solid #456ff6;
         border-radius: 0px;
         border-width: 1px 0px 1px 0px;
         margin-bottom: 0px;
