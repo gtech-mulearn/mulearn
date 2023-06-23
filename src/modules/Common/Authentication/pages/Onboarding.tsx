@@ -459,7 +459,7 @@ const Onboarding = (props: Props) => {
                                                         }, 1000);
                                                     }}
                                                 >
-                                                    I'm currently working
+                                                    I'm currently a working
                                                     professional
                                                 </button>
                                                 <button
