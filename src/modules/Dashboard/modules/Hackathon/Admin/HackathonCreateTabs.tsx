@@ -71,12 +71,12 @@ const HackathonCreateTabs = (props: Props) => {
                 initialValues={{
                     name: "",
                     description: "",
+                    participants: "",
+                    about: "",
                     startDate: "",
                     endDate: "",
                     regStartDate: "",
                     regEndDate: "",
-                    participants: "",
-                    about: ""
                 }}
                 validationSchema={hackathonSchema}
                 onSubmit={handleSubmit}

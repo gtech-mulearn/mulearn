@@ -1,7 +1,11 @@
-import { Form, Formik, useFormikContext } from "formik";
+import { Form, Formik, useFormikContext, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import styles from "./HackathonCreate.module.css";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import { FormikTextAreaWhite, FormikTextInputWhite } from "../../../../../components/MuComponents/FormikComponents/FormikComponents";
+import {
+    FormikTextAreaWhite,
+    FormikTextInputWhite
+} from "../../../../../components/MuComponents/FormikComponents/FormikComponents";
 import { useState } from "react";
 
 const SubmitButton = () => {
@@ -36,6 +40,29 @@ const HackathonCreate = () => {
             setTabIndex(tabIndex - 1);
         }
     }
+
+    const hackathonSchema = Yup.object().shape({
+        title: Yup.string()
+            .required("Required")
+            .min(2, "Too Short!")
+            .max(50, "Too Long!"),
+        description: Yup.string()
+            .min(2, "Too Short!")
+            .max(100, "Too Long!")
+            .required("Required"),
+        about: Yup.string().min(5, "Too Short!").required("Required"),
+        startDate: Yup.date().required("Required"),
+        endDate: Yup.date().required("Required"),
+        regStartDate: Yup.date().required("Required"),
+        regEndDate: Yup.date().required("Required"),
+        participants: Yup.number()
+            .positive("Number of users should be a positive value")
+            .min(10, "Needs to be at least 2 digits.")
+            .max(999999, "Should not exceed 6 digits")
+            .truncate()
+            .required("User count is required")
+    });
+
     return (
         <div className={styles.container}>
             <div className={styles.topText}>
@@ -58,7 +85,7 @@ const HackathonCreate = () => {
 
                     <Formik
                         initialValues={{
-                            name: "",
+                            title: "",
                             description: "",
                             startDate: "",
                             endDate: "",
@@ -67,8 +94,8 @@ const HackathonCreate = () => {
                             participants: "",
                             about: ""
                         }}
+                        validationSchema={hackathonSchema}
                         onSubmit={values => {
-                            // Handle form submission
                             console.log(values);
                         }}
                     >
@@ -92,7 +119,7 @@ const HackathonCreate = () => {
                                     <TabPanel className={styles.formGroup}>
                                         <FormikTextInputWhite
                                             label="Name"
-                                            name="name"
+                                            name="title"
                                             type="text"
                                             placeholder="what you are calling your hackathon"
                                         />
@@ -102,6 +129,12 @@ const HackathonCreate = () => {
                                             name="description"
                                             type="text"
                                             placeholder="eg: worlds realest hackathon"
+                                        />
+                                        <FormikTextInputWhite
+                                            label="Approx. Participants"
+                                            name="participants"
+                                            type="number"
+                                            placeholder="eg: 250."
                                         />
                                         <FormikTextAreaWhite
                                             label="About"
@@ -130,12 +163,6 @@ const HackathonCreate = () => {
                                             label="Registration End Date"
                                             name="regEndDate"
                                             type="date"
-                                        />
-                                        <FormikTextInputWhite
-                                            label="Approx. Participants"
-                                            name="participants"
-                                            type="number"
-                                            placeholder="eg: 250."
                                         />
                                     </TabPanel>
                                     <TabPanel className={styles.formGroup}>
