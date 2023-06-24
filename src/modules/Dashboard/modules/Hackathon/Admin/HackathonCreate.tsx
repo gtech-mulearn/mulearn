@@ -1,4 +1,4 @@
-import { Form, Formik, useFormikContext, ErrorMessage } from "formik";
+import { Form, Formik, useFormikContext } from "formik";
 import * as Yup from "yup";
 import styles from "./HackathonCreate.module.css";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
@@ -7,20 +7,6 @@ import {
     FormikTextInputWhite
 } from "../../../../../components/MuComponents/FormikComponents/FormikComponents";
 import { useState } from "react";
-
-const SubmitButton = () => {
-    const formik = useFormikContext();
-
-    const handleSubmit = () => {
-        formik.submitForm();
-    };
-
-    return (
-        <button onClick={handleSubmit} className={styles.btn}>
-            Save & Finish later
-        </button>
-    );
-};
 
 const HackathonCreate = () => {
     const [tabIndex, setTabIndex] = useState(0);
@@ -63,11 +49,23 @@ const HackathonCreate = () => {
             .required("User count is required")
     });
 
+	const handleSubmit = (values: any, { resetForm }: any) => {
+        console.log(values);
+        resetForm();
+    };
+
     return (
         <div className={styles.container}>
             <div className={styles.topText}>
                 <h1 className={styles.dashLine}>Lets Get Started</h1>
-                <SubmitButton />
+                <button
+                    // onClick={handleSubmit}
+                    type="submit"
+                    form="hackathon"
+                    className={styles.btn}
+                >
+                    Save & Finish later
+                </button>
             </div>
 
             <div>
@@ -95,11 +93,9 @@ const HackathonCreate = () => {
                             about: ""
                         }}
                         validationSchema={hackathonSchema}
-                        onSubmit={values => {
-                            console.log(values);
-                        }}
+                        onSubmit={handleSubmit}
                     >
-                        <Form>
+                        <Form id="hackathon">
                             <Tabs
                                 selectedTabClassName={styles.selectedTab}
                                 selectedIndex={tabIndex}
@@ -174,12 +170,14 @@ const HackathonCreate = () => {
                                     <button
                                         onClick={handleBack}
                                         className={styles.btn}
+										type="button"
                                     >
                                         Go back
                                     </button>
                                     <button
                                         onClick={handleNext}
                                         className={styles.btn}
+										type="button"
                                     >
                                         Next
                                     </button>
