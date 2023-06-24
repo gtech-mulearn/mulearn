@@ -6,16 +6,26 @@ import FormikReactSelect, {
     FormikTextAreaWhite,
     FormikTextInputWhite
 } from "../../../../../components/MuComponents/FormikComponents/FormikComponents";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getFormFields } from "./HackathonApis";
 
 const options = [
     { label: "Option 1", value: "111" },
     { label: "Option 2", value: "222" },
     { label: "Option 3", value: "333" }
 ];
+const options1 = [
+    { label: "Everyone", value: true },
+    { label: "Invite only", value: false },
+];
 
 const HackathonCreate = () => {
     const [tabIndex, setTabIndex] = useState(0);
+    const [formData, setFormData] = useState("");
+
+    useEffect(() => {
+        getFormFields(setFormData);
+    }, []);
 
     function handleNext() {
         if (tabIndex === 6) {
@@ -59,8 +69,9 @@ const HackathonCreate = () => {
             .required("User count is required")
     });
 
-	const handleSubmit = (values: any, { resetForm }: any) => {
+    const handleSubmit = (values: any, { resetForm }: any) => {
         console.log(values);
+		console.log(formData);
         resetForm();
     };
 
@@ -171,27 +182,26 @@ const HackathonCreate = () => {
                                     </TabPanel>
 
                                     <TabPanel className={styles.formGroup}>
-                                        <FormikTextInputWhite
-                                            label="Organization"
+                                        <FormikReactSelect
                                             name="orgId"
-                                            placeholder="name of organization"
-                                            type="text"
+                                            options={options}
+                                            label={"Organization"}
                                         />
                                         <FormikReactSelect
-											name="districtId"
-											options={options}
-											label={"District"}                                        />
+                                            name="districtId"
+                                            options={options}
+                                            label={"District"}
+                                        />
                                         <FormikTextInputWhite
                                             label="Place"
                                             name="place"
                                             placeholder="location of the hackathon"
                                             type="text"
                                         />
-                                        <FormikTextInputWhite
-                                            label="Type of the hackathon"
+                                        <FormikReactSelect
                                             name="isOpenToAll"
-                                            placeholder="open to all or not"
-                                            type="text"
+                                            options={options1}
+                                            label={"Type of the hackathon"}
                                         />
                                     </TabPanel>
 

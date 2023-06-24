@@ -171,10 +171,11 @@
 }
 
 .reactSelect {
-	/* padding: .7rem 1rem; */
 	padding-top: .7rem;
 	border-radius: var(--borderRadius);
 	width: 100%;
+	font-weight: 500;
+	color: var(--grey);
 	background-color: var(--White) !important;
 	min-width: 22rem;
 }
@@ -192,7 +193,8 @@
 @media (width<=768px) {
 
 	.InputSet input,
-	.InputSet textarea {
+	.InputSet textarea,
+	.reactSelect {
 		min-width: 18rem;
 	}
 }
