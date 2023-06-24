@@ -1,5 +1,8 @@
 import { useField } from "formik";
 import styles from "./form.module.css";
+import React from "react";
+import Select, { Props as SelectProps, StylesConfig } from "react-select";
+import OptionTypeBase from "react-select";
 
 export const FormikTextInput = ({ label, ...props }:any) => {
     // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
@@ -55,3 +58,74 @@ export const FormikTextAreaWhite = ({ label, ...props }: any) => {
         </div>
     );
 };
+
+
+interface Option {
+    label: string;
+    value: string;
+}
+
+const customStyles: any = {
+    control: (provided: any) => ({
+        ...provided,
+        backgroundColor: "white",
+		border: ".1px solid #CFD3D4",
+		borderRadius: "10px",
+		width: "100%",
+		padding: ".3rem .4rem",
+    })
+};
+
+interface FormikSelectProps extends SelectProps<Option> {
+    name: string;
+    label: string;
+    options: Option[];
+}
+
+const FormikReactSelect: React.FC<FormikSelectProps> = ({
+    name,
+    label,
+    options,
+    ...rest
+}) => {
+    const [field, meta, helpers] = useField(name);
+
+    const handleChange = (selectedOption: any) => {
+        helpers.setValue(selectedOption ? selectedOption.value : null);
+    };
+
+    const handleBlur = () => {
+        helpers.setTouched(true);
+    };
+
+    const getSelectedOption = () => {
+        if (!field.value) return null;
+        return options.find(option => option.value === field.value) || null;
+    };
+
+    return (
+        <div className={styles.InputSet}>
+            <label className={styles.formLabel} htmlFor={name}>
+                {label}
+            </label>
+            <Select
+                {...rest}
+                name={name}
+                id={name}
+                value={getSelectedOption()}
+                isSearchable
+                className={styles.reactSelect}
+                options={options}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                styles={customStyles}
+            />
+            {meta.touched && meta.error && (
+                <div className="error">{meta.error}</div>
+            )}
+        </div>
+    );
+};
+
+
+export default FormikReactSelect;

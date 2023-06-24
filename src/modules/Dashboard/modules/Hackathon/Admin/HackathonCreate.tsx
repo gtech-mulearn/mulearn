@@ -1,12 +1,18 @@
-import { Form, Formik, useFormikContext } from "formik";
+import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import styles from "./HackathonCreate.module.css";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import {
+import FormikReactSelect, {
     FormikTextAreaWhite,
     FormikTextInputWhite
 } from "../../../../../components/MuComponents/FormikComponents/FormikComponents";
 import { useState } from "react";
+
+const options = [
+    { label: "Option 1", value: "111" },
+    { label: "Option 2", value: "222" },
+    { label: "Option 3", value: "333" }
+];
 
 const HackathonCreate = () => {
     const [tabIndex, setTabIndex] = useState(0);
@@ -32,16 +38,20 @@ const HackathonCreate = () => {
             .required("Required")
             .min(2, "Too Short!")
             .max(50, "Too Long!"),
-        description: Yup.string()
+        tagline: Yup.string()
             .min(2, "Too Short!")
             .max(100, "Too Long!")
             .required("Required"),
-        about: Yup.string().min(5, "Too Short!").required("Required"),
-        startDate: Yup.date().required("Required"),
-        endDate: Yup.date().required("Required"),
-        regStartDate: Yup.date().required("Required"),
-        regEndDate: Yup.date().required("Required"),
-        participants: Yup.number()
+        orgId: Yup.string().min(2, "Too Short!").required("Required"),
+        place: Yup.string().min(2, "Too Short!").required("Required"),
+        districtId: Yup.string().min(2, "Too Short!").required("Required"),
+        isOpenToAll: Yup.boolean().required("Required"),
+        description: Yup.string().min(5, "Too Short!").required("Required"),
+        eventStart: Yup.date().required("Required"),
+        eventEnd: Yup.date().required("Required"),
+        applicationStart: Yup.date().required("Required"),
+        applicationEnds: Yup.date().required("Required"),
+        participantCount: Yup.number()
             .positive("Number of users should be a positive value")
             .min(10, "Needs to be at least 2 digits.")
             .max(999999, "Should not exceed 6 digits")
@@ -58,12 +68,7 @@ const HackathonCreate = () => {
         <div className={styles.container}>
             <div className={styles.topText}>
                 <h1 className={styles.dashLine}>Lets Get Started</h1>
-                <button
-                    // onClick={handleSubmit}
-                    type="submit"
-                    form="hackathon"
-                    className={styles.btn}
-                >
+                <button type="submit" form="hackathon" className={styles.btn}>
                     Save & Finish later
                 </button>
             </div>
@@ -84,13 +89,17 @@ const HackathonCreate = () => {
                     <Formik
                         initialValues={{
                             title: "",
+                            tagline: "",
                             description: "",
-                            startDate: "",
-                            endDate: "",
-                            regStartDate: "",
-                            regEndDate: "",
-                            participants: "",
-                            about: ""
+                            participantCount: "",
+                            eventStart: "",
+                            eventEnd: "",
+                            applicationStart: "",
+                            applicationEnds: "",
+                            orgId: "",
+                            place: "",
+                            districtId: "",
+                            isOpenToAll: ""
                         }}
                         validationSchema={hackathonSchema}
                         onSubmit={handleSubmit}
@@ -104,9 +113,9 @@ const HackathonCreate = () => {
                                 <TabList>
                                     <Tab>Basics</Tab>
                                     <Tab>Dates</Tab>
-                                    <Tab>Links</Tab>
+                                    <Tab>Details</Tab>
                                     <span></span>
-                                    <Tab>Prizes</Tab>
+                                    <Tab>Application</Tab>
                                     <Tab>Sponsors</Tab>
                                     <Tab>Events</Tab>
                                     <Tab>FAQs</Tab>
@@ -119,22 +128,21 @@ const HackathonCreate = () => {
                                             type="text"
                                             placeholder="what you are calling your hackathon"
                                         />
-
                                         <FormikTextInputWhite
                                             label="Tagline"
-                                            name="description"
+                                            name="tagline"
                                             type="text"
                                             placeholder="eg: worlds realest hackathon"
                                         />
                                         <FormikTextInputWhite
                                             label="Approx. Participants"
-                                            name="participants"
+                                            name="participantCount"
                                             type="number"
                                             placeholder="eg: 250."
                                         />
                                         <FormikTextAreaWhite
                                             label="About"
-                                            name="about"
+                                            name="description"
                                             placeholder="explain something"
                                         />
                                     </TabPanel>
@@ -142,42 +150,79 @@ const HackathonCreate = () => {
                                     <TabPanel className={styles.formGroup}>
                                         <FormikTextInputWhite
                                             label="Start Date"
-                                            name="startDate"
+                                            name="eventStart"
                                             type="date"
                                         />
                                         <FormikTextInputWhite
                                             label="End Date"
-                                            name="endDate"
+                                            name="eventEnd"
                                             type="date"
                                         />
                                         <FormikTextInputWhite
                                             label="Registration Start Date"
-                                            name="regStartDate"
+                                            name="applicationStart"
                                             type="date"
                                         />
                                         <FormikTextInputWhite
                                             label="Registration End Date"
-                                            name="regEndDate"
+                                            name="applicationEnds"
                                             type="date"
                                         />
                                     </TabPanel>
+
                                     <TabPanel className={styles.formGroup}>
-                                        <h2>Content for Tab 3</h2>
-                                        <p>This is the content of Tab 3.</p>
+                                        <FormikTextInputWhite
+                                            label="Organization"
+                                            name="orgId"
+                                            placeholder="name of organization"
+                                            type="text"
+                                        />
+                                        <FormikReactSelect
+											name="districtId"
+											options={options}
+											label={"District"}                                        />
+                                        <FormikTextInputWhite
+                                            label="Place"
+                                            name="place"
+                                            placeholder="location of the hackathon"
+                                            type="text"
+                                        />
+                                        <FormikTextInputWhite
+                                            label="Type of the hackathon"
+                                            name="isOpenToAll"
+                                            placeholder="open to all or not"
+                                            type="text"
+                                        />
                                     </TabPanel>
+
+                                    <TabPanel
+                                        className={styles.formGroup}
+                                    ></TabPanel>
+
+                                    <TabPanel
+                                        className={styles.formGroup}
+                                    ></TabPanel>
+
+                                    <TabPanel
+                                        className={styles.formGroup}
+                                    ></TabPanel>
+
+                                    <TabPanel
+                                        className={styles.formGroup}
+                                    ></TabPanel>
                                 </div>
                                 <div className={styles.btns}>
                                     <button
                                         onClick={handleBack}
                                         className={styles.btn}
-										type="button"
+                                        type="button"
                                     >
                                         Go back
                                     </button>
                                     <button
                                         onClick={handleNext}
                                         className={styles.btn}
-										type="button"
+                                        type="button"
                                     >
                                         Next
                                     </button>

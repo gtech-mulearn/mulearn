@@ -170,6 +170,15 @@
 	border: .1px solid #CFD3D4;
 }
 
+.reactSelect {
+	/* padding: .7rem 1rem; */
+	padding-top: .7rem;
+	border-radius: var(--borderRadius);
+	width: 100%;
+	background-color: var(--White) !important;
+	min-width: 22rem;
+}
+
 .InputSet textarea {
 	padding: .7rem 1rem;
 	margin-bottom: 0;
