@@ -112,6 +112,10 @@
   justify-content: space-between;
 }
 
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .link p {
+  width: 100%;
+}
+
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .link i {
   cursor: pointer;
 }
@@ -249,6 +253,9 @@
 .rightDash .profileDash .profile .profileInfo .share_btn {
   cursor: pointer;
   padding: 0px 20px;
+  position: absolute;
+  right: 0px;
+  top: 70px;
 }
 
 .rightDash .profileDash .profile .profileInfo button {
@@ -633,6 +640,10 @@
 }
 
 @media (max-width: 500px) {
+  .rightDash .share_pop_up_container .share_pop_up {
+    width: 330px;
+  }
+
   .rightDash .profileDash .profile .banner .member_since {
     right: 5px;
   }
