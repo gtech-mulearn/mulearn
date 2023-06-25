@@ -44,7 +44,8 @@ const Profile = () => {
         muid: "",
         level: "",
         profile_pic: "",
-        is_public: false
+        is_public: false,
+        roles: []
     });
     const [profileStatus, setProfileStatus] = useState<boolean>();
     const [userLog, setUserLog] = useState([
@@ -96,7 +97,13 @@ const Profile = () => {
         <>
             {(id && userProfile.is_public) || !id ? (
                 <div
-                    style={id ? { width: "100%", padding: "50px" } : {}}
+                    style={
+                        id
+                            ? window.innerWidth < 500
+                                ? { width: "100%", padding: "20px 10px" }
+                                : { width: "100%", padding: "50px" }
+                            : {}
+                    }
                     className={styles.rightDash}
                 >
                     {APILoadStatus === 0 ? (
@@ -114,6 +121,8 @@ const Profile = () => {
                                             transform: "scale(0)"
                                             // opacity: "0",
                                         }
+                                              transform: "scale(0)"
+                                          }
                                 }
                                 className={styles.share_pop_up_container}
                             >
@@ -158,18 +167,27 @@ const Profile = () => {
                                             className={styles.link}
                                         >
                                             <p>
-                                                https://app.mulearn.org/profile?id=
+                                                {
+                                                    import.meta.env
+                                                        .VITE_FRONTEND_URL as string
+                                                }
+                                                /profile/
                                                 {userProfile.muid}
                                             </p>
                                             <i
                                                 onClick={() => {
                                                     navigator.clipboard.writeText(
-                                                        `https://app.mulearn.org/profile/${userProfile.muid}`
+                                                        `${
+                                                            import.meta.env
+                                                                .VITE_FRONTEND_URL as string
+                                                        }/profile/${
+                                                            userProfile.muid
+                                                        }`
                                                     );
                                                     toast({
-                                                        title: "Copied yo clipboard",
+                                                        title: "Copied to clipboard",
                                                         description:
-                                                            "You will be redirected to login page shortly",
+                                                            "Your profile link has been copied to clipboard",
                                                         status: "success",
                                                         duration: 3000,
                                                         isClosable: true
@@ -414,11 +432,7 @@ const Profile = () => {
                                         <div className={styles.head}>
                                             <h2>Existing Roles</h2>
                                             <p>
-                                                {JSON.parse(
-                                                    localStorage.getItem(
-                                                        "userInfo"
-                                                    )!
-                                                ).roles.join(", ")}
+                                                {userProfile.roles.join(", ")}
                                             </p>
                                         </div>
                                         <div className={styles.head}>
@@ -436,7 +450,15 @@ const Profile = () => {
                                     >
                                         <div className={styles.head}>
                                             <h2>Recent Activity</h2>
-                                            {/* <span>View More</span> */}
+                                            <span
+                                                onClick={() =>
+                                                    setProfileList(
+                                                        "karma-history"
+                                                    )
+                                                }
+                                            >
+                                                View More
+                                            </span>
                                         </div>
                                         <div className={styles.data_card}>
                                             {userLog
