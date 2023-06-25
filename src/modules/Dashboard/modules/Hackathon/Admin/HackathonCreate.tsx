@@ -1,4 +1,4 @@
-import { Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import styles from "./HackathonCreate.module.css";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
@@ -71,8 +71,8 @@ const HackathonCreate = () => {
 
     const handleSubmit = (values: any, { resetForm }: any) => {
         console.log(values);
-		console.log(formData);
-        resetForm();
+        console.log(formData);
+        // resetForm();
     };
 
     return (
@@ -110,135 +110,172 @@ const HackathonCreate = () => {
                             orgId: "",
                             place: "",
                             districtId: "",
-                            isOpenToAll: ""
+                            isOpenToAll: "",
+                            formFields: []
                         }}
                         validationSchema={hackathonSchema}
                         onSubmit={handleSubmit}
                     >
-                        <Form id="hackathon">
-                            <Tabs
-                                selectedTabClassName={styles.selectedTab}
-                                selectedIndex={tabIndex}
-                                onSelect={index => setTabIndex(index)}
-                            >
-                                <TabList>
-                                    <Tab>Basics</Tab>
-                                    <Tab>Dates</Tab>
-                                    <Tab>Details</Tab>
-                                    <span></span>
-                                    <Tab>Application</Tab>
-                                    <Tab>Sponsors</Tab>
-                                    <Tab>Events</Tab>
-                                    <Tab>FAQs</Tab>
-                                </TabList>
-                                <div className={styles.form}>
-                                    <TabPanel className={styles.formGroup}>
-                                        <FormikTextInputWhite
-                                            label="Name"
-                                            name="title"
-                                            type="text"
-                                            placeholder="what you are calling your hackathon"
-                                        />
-                                        <FormikTextInputWhite
-                                            label="Tagline"
-                                            name="tagline"
-                                            type="text"
-                                            placeholder="eg: worlds realest hackathon"
-                                        />
-                                        <FormikTextInputWhite
-                                            label="Approx. Participants"
-                                            name="participantCount"
-                                            type="number"
-                                            placeholder="eg: 250."
-                                        />
-                                        <FormikTextAreaWhite
-                                            label="About"
-                                            name="description"
-                                            placeholder="explain something"
-                                        />
-                                    </TabPanel>
+                        {({ values, handleChange }) => (
+                            <Form id="hackathon">
+                                <Tabs
+                                    selectedTabClassName={styles.selectedTab}
+                                    selectedIndex={tabIndex}
+                                    onSelect={index => setTabIndex(index)}
+                                >
+                                    <TabList>
+                                        <Tab>Basics</Tab>
+                                        <Tab>Dates</Tab>
+                                        <Tab>Details</Tab>
+                                        <span></span>
+                                        <Tab>Application</Tab>
+                                        <Tab>Sponsors</Tab>
+                                        <Tab>Events</Tab>
+                                        <Tab>FAQs</Tab>
+                                    </TabList>
+                                    <div className={styles.form}>
+                                        <TabPanel className={styles.formGroup}>
+                                            <FormikTextInputWhite
+                                                label="Name"
+                                                name="title"
+                                                type="text"
+                                                placeholder="what you are calling your hackathon"
+                                            />
+                                            <FormikTextInputWhite
+                                                label="Tagline"
+                                                name="tagline"
+                                                type="text"
+                                                placeholder="eg: worlds realest hackathon"
+                                            />
+                                            <FormikTextInputWhite
+                                                label="Approx. Participants"
+                                                name="participantCount"
+                                                type="number"
+                                                placeholder="eg: 250."
+                                            />
+                                            <FormikTextAreaWhite
+                                                label="About"
+                                                name="description"
+                                                placeholder="explain something"
+                                            />
+                                        </TabPanel>
 
-                                    <TabPanel className={styles.formGroup}>
-                                        <FormikTextInputWhite
-                                            label="Start Date"
-                                            name="eventStart"
-                                            type="date"
-                                        />
-                                        <FormikTextInputWhite
-                                            label="End Date"
-                                            name="eventEnd"
-                                            type="date"
-                                        />
-                                        <FormikTextInputWhite
-                                            label="Registration Start Date"
-                                            name="applicationStart"
-                                            type="date"
-                                        />
-                                        <FormikTextInputWhite
-                                            label="Registration End Date"
-                                            name="applicationEnds"
-                                            type="date"
-                                        />
-                                    </TabPanel>
+                                        <TabPanel className={styles.formGroup}>
+                                            <FormikTextInputWhite
+                                                label="Start Date"
+                                                name="eventStart"
+                                                type="date"
+                                            />
+                                            <FormikTextInputWhite
+                                                label="End Date"
+                                                name="eventEnd"
+                                                type="date"
+                                            />
+                                            <FormikTextInputWhite
+                                                label="Registration Start Date"
+                                                name="applicationStart"
+                                                type="date"
+                                            />
+                                            <FormikTextInputWhite
+                                                label="Registration End Date"
+                                                name="applicationEnds"
+                                                type="date"
+                                            />
+                                        </TabPanel>
 
-                                    <TabPanel className={styles.formGroup}>
-                                        <FormikReactSelect
-                                            name="orgId"
-                                            options={options}
-                                            label={"Organization"}
-                                        />
-                                        <FormikReactSelect
-                                            name="districtId"
-                                            options={options}
-                                            label={"District"}
-                                        />
-                                        <FormikTextInputWhite
-                                            label="Place"
-                                            name="place"
-                                            placeholder="location of the hackathon"
-                                            type="text"
-                                        />
-                                        <FormikReactSelect
-                                            name="isOpenToAll"
-                                            options={options1}
-                                            label={"Type of the hackathon"}
-                                        />
-                                    </TabPanel>
+                                        <TabPanel className={styles.formGroup}>
+                                            <FormikReactSelect
+                                                name="orgId"
+                                                options={options}
+                                                label={"Organization"}
+                                            />
+                                            <FormikReactSelect
+                                                name="districtId"
+                                                options={options}
+                                                label={"District"}
+                                            />
+                                            <FormikTextInputWhite
+                                                label="Place"
+                                                name="place"
+                                                placeholder="location of the hackathon"
+                                                type="text"
+                                            />
+                                            <FormikReactSelect
+                                                name="isOpenToAll"
+                                                options={options1}
+                                                label={"Type of the hackathon"}
+                                            />
+                                        </TabPanel>
 
-                                    <TabPanel
-                                        className={styles.formGroup}
-                                    ></TabPanel>
+                                        <TabPanel className={styles.formGroup}>
+                                            <div id="checkbox-group">
+                                                Select fields for application
+                                                form
+                                            </div>
+                                            <div
+                                                role="group"
+                                                aria-labelledby="checkbox-group"
+                                            >
+                                                {Object.entries({
+                                                    bio: "system",
+                                                    college: "system",
+                                                    email: "system",
+                                                    experience: "input",
+                                                    gender: "system",
+                                                    github: "input",
+                                                    linkedin: "input",
+                                                    mobile: "system",
+                                                    name: "system"
+                                                }).map(([key, value]) => (
+                                                    <label key={key}>
+                                                        <Field
+                                                            type="checkbox"
+                                                            name="formFields"
+                                                            value={key}
+                                                            checked={values.formFields.includes(
+                                                                key as never
+                                                            )}
+                                                            onChange={
+                                                                handleChange
+                                                            }
+                                                        />
+                                                        {key}
+                                                    </label>
+                                                ))}
+                                            </div>
+                                        </TabPanel>
 
-                                    <TabPanel
-                                        className={styles.formGroup}
-                                    ></TabPanel>
+                                        <TabPanel
+                                            className={styles.formGroup}
+                                        ></TabPanel>
 
-                                    <TabPanel
-                                        className={styles.formGroup}
-                                    ></TabPanel>
+                                        <TabPanel
+                                            className={styles.formGroup}
+                                        ></TabPanel>
 
-                                    <TabPanel
-                                        className={styles.formGroup}
-                                    ></TabPanel>
-                                </div>
-                                <div className={styles.btns}>
-                                    <button
-                                        onClick={handleBack}
-                                        className={styles.btn}
-                                        type="button"
-                                    >
-                                        Go back
-                                    </button>
-                                    <button
-                                        onClick={handleNext}
-                                        className={styles.btn}
-                                        type="button"
-                                    >
-                                        Next
-                                    </button>
-                                </div>
-                            </Tabs>
-                        </Form>
+                                        <TabPanel
+                                            className={styles.formGroup}
+                                        ></TabPanel>
+                                    </div>
+                                    <div className={styles.btns}>
+                                        <button
+                                            onClick={handleBack}
+                                            className={styles.btn}
+                                            type="button"
+                                        >
+                                            Go back
+                                        </button>
+                                        <button
+                                            onClick={handleNext}
+                                            className={styles.btn}
+                                            type="button"
+                                        >
+                                            Next
+                                        </button>
+                                    </div>
+                                </Tabs>
+                            </Form>
+                        )}
                     </Formik>
                 </div>
             </div>
