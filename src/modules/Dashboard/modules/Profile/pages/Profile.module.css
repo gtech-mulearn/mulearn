@@ -109,6 +109,11 @@
   margin-top: 30px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .link i {
+  cursor: pointer;
 }
 
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_options {
@@ -437,7 +442,7 @@
   background: #FFFFFF;
   box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06);
   border-radius: 12px;
-  padding: 10px;
+  padding: 30px;
 }
 
 .rightDash .profileDash .notification .existing_roles .pie_chart {
@@ -476,7 +481,7 @@
   flex-direction: column;
   gap: 1rem;
   max-height: 400px;
-  overflow: scroll;
+  overflow: hidden;
   padding: 10px 0px;
 
   scroll-snap-type: mandatory;
@@ -490,6 +495,10 @@
   justify-content: space-between;
   padding: 0rem 1rem;
   margin-bottom: 20px;
+}
+
+.rightDash .profileDash .notification .recent_activity_container .head span {
+  cursor: pointer;
 }
 
 .rightDash .profileDash .notification .recent_activity_container .head .btns {
@@ -510,7 +519,7 @@
   border-radius: 20px;
   background-color: #fff;
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-  margin: 0 1rem;
+  /* margin: 0 1rem; */
   padding: .5rem 1rem;
   display: flex;
   justify-content: space-between;
