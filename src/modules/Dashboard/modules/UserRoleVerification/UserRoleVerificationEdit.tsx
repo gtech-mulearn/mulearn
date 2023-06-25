@@ -47,8 +47,10 @@ const UserRoleVerificationEdit = (props: Props) => {
     const { id } = useParams();
     const navigate = useNavigate();
     const handleSubmit = () => {
-        editUserRoleVerification(input1, id);
-        navigate("/user-role-verification");
+        if (id) {
+            editUserRoleVerification(input1, id);
+            navigate("/user-role-verification");
+        }
     };
     return (
         <div className={styles.external_container}>
@@ -68,18 +70,21 @@ const UserRoleVerificationEdit = (props: Props) => {
                             .required("Required")
                     })}
                     onSubmit={values => {
-                        editUserRoleVerification(isChecked, id);
-
+                        if (id) {
+                            editUserRoleVerification(isChecked, id);
+                        }
                         navigate("/user-role-verification");
                     }}
                 >
                     <Form className={styles.inputContainer}>
-                        <div style={{
-                            display:"flex",
-                            flexDirection:"column",
-                            width:"100%",
-                            alignItems:"center"
-                        }}>
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                width: "100%",
+                                alignItems: "center"
+                            }}
+                        >
                             <div
                                 style={{
                                     display: "flex",
@@ -91,7 +96,7 @@ const UserRoleVerificationEdit = (props: Props) => {
                                     borderWidth: 3,
                                     height: "50px",
                                     borderColor: "#014BB2",
-                                    gap:5
+                                    gap: 5
                                 }}
                             >
                                 <input
