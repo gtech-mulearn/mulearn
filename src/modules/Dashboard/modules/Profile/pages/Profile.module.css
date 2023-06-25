@@ -34,6 +34,107 @@
   margin-top: -40px;
   /* overflow-x: hidden; */
   /* left: 20%; */
+
+  display: flex;
+  justify-content: center;
+}
+
+.rightDash .share_pop_up_container {
+  position: fixed;
+  backdrop-filter: blur(5px);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 50;
+  display: flex;
+  /* transition: .5s ease; */
+  transform: scale(0);
+}
+
+.rightDash .share_pop_up_container .share_pop_up {
+  margin: auto;
+  height: auto;
+  width: 530px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 20px 1px #8c8c8c47;
+  position: relative;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .close_btn {
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  color: #999;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 10px solid;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .profile_state {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .profile_state .options {
+  display: flex;
+  margin-top: 10px;
+  gap: 20px;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .profile_state .options p {
+  background: #5570f1;
+  color: white;
+  padding: 6px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .link {
+  width: 100%;
+  background: #5570f124;
+  padding: 20px;
+  border-radius: 50px;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_options {
+  margin-top: 40px;
+  width: 100%;
+  overflow-x: scroll;
+  display: flex;
+  gap: 20px;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_options p {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  font-size: 40px;
+  text-align: center;
+  margin: auto;
+  /* background: darkgrey; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_options p i {
+  height: 55px;
+  cursor: pointer;
 }
 
 .rightDash .loader_container {
@@ -140,6 +241,11 @@
   margin-top: 40px;
 }
 
+.rightDash .profileDash .profile .profileInfo .share_btn {
+  cursor: pointer;
+  padding: 0px 20px;
+}
+
 .rightDash .profileDash .profile .profileInfo button {
   display: flex;
   gap: .5rem;
@@ -160,9 +266,19 @@
   flex-wrap: wrap;
   gap: 1rem;
   list-style: none;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-top: -1rem;
   padding: 0px 15px;
+}
+
+.rightDash .profileDash .profile .profileList .underline {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  width: 2rem;
+  height: 3.5px;
+  background-color: #456FF6;
+  transition: all .5s ease-in-out;
 }
 
 .rightDash .profileDash .profile .profileList li:first-child {
@@ -173,15 +289,7 @@
 .rightDash .profileDash .profile .profileList li {
   color: #7A7A7A;
   font-weight: 600;
-}
-
-.rightDash .profileDash .profile .profileList li:first-child:before {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  width: 2rem;
-  height: 3.5px;
-  background-color: #456FF6;
+  cursor: pointer;
 }
 
 .rightDash .profileDash .profile .pointsList {
@@ -356,26 +464,27 @@
   display: block;
 }
 
-.rightDash .profileDash .notification .leadboard {
+.rightDash .profileDash .notification .recent_activity_container {
   background: #FFFFFF;
   box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06);
   border-radius: 12px;
   padding: 10px 0px;
 }
 
-.rightDash .profileDash .notification .leadboard .data_card {
+.rightDash .profileDash .notification .recent_activity_container .data_card {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   max-height: 400px;
   overflow: scroll;
   padding: 10px 0px;
+
   scroll-snap-type: mandatory;
   scroll-snap-points-y: repeat(300px);
   scroll-snap-type: y mandatory;
 }
 
-.rightDash .profileDash .notification .leadboard .head {
+.rightDash .profileDash .notification .recent_activity_container .head {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -383,7 +492,7 @@
   margin-bottom: 20px;
 }
 
-.rightDash .profileDash .notification .leadboard .head .btns {
+.rightDash .profileDash .notification .recent_activity_container .head .btns {
   width: 3rem;
   height: 3rem;
   display: inline;
@@ -393,11 +502,11 @@
   background-color: #7A7A7A;
 }
 
-.rightDash .profileDash .notification .leadboard .head .btns:nth-child(3) {
+.rightDash .profileDash .notification .recent_activity_container .head .btns:nth-child(3) {
   z-index: -1;
 }
 
-.rightDash .profileDash .notification .leadboard .card {
+.rightDash .profileDash .notification .recent_activity_container .card {
   border-radius: 20px;
   background-color: #fff;
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
@@ -412,28 +521,28 @@
   scroll-snap-align: start;
 }
 
-.rightDash .profileDash .notification .leadboard .card img {
+.rightDash .profileDash .notification .recent_activity_container .card img {
   width: 5rem;
   height: 5rem;
   object-fit: contain;
   border-radius: 100%;
 }
 
-.rightDash .profileDash .notification .leadboard .card .cardInfo {
+.rightDash .profileDash .notification .recent_activity_container .card .cardInfo {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.rightDash .profileDash .notification .leadboard .card .cardInfo p {
+.rightDash .profileDash .notification .recent_activity_container .card .cardInfo p {
   font-size: .9rem;
 }
 
-.rightDash .profileDash .notification .leadboard .card .cardInfo p:nth-child(2) {
+.rightDash .profileDash .notification .recent_activity_container .card .cardInfo p:nth-child(2) {
   font-size: .7rem;
 }
 
-.rightDash .profileDash .notification .leadboard .card .cardInfo .card_icon {
+.rightDash .profileDash .notification .recent_activity_container .card .cardInfo .card_icon {
   width: 3rem;
   height: 3rem;
   padding: 0.5rem;
@@ -444,8 +553,17 @@
   justify-content: center;
 }
 
-.rightDash .profileDash .notification .leadboard .card .cardInfo .card_icon svg path {
+.rightDash .profileDash .notification .recent_activity_container .card .cardInfo .card_icon svg path {
   fill: "#fff";
+}
+
+.private_page_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  height: 100dvh;
+  color: #014BB2;
 }
 
 

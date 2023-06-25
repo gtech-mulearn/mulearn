@@ -24,7 +24,7 @@ const TopNavBar = () => {
     });
     return (
         <>
-            <div className={styles.top_nav}>
+            <div id="top_nav" className={styles.top_nav}>
                 <div className={styles.nav}>
                     <div className={styles.nav_items}>
                         <div className={styles.greetings}>Hello, {name} 👋</div>
