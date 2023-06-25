@@ -6,7 +6,7 @@
 .btn_light,
 .dropdown_btn {
     width: 100%;
-    min-width: 200px;
+    min-width: 230px;
     padding: 10px 20px;
     display: flex;
     border-radius: 10px;
@@ -14,31 +14,32 @@
     align-items: center;
     margin-bottom: 16px;
     font-size: 15px;
+    text-align: left;
     cursor: pointer;
-    transition: .3s ease-in-out;
+    transition: 0.3s ease-in-out;
 }
 
 .btn_loader {
     margin-left: 18px;
 }
 
-.btn p{
-    color: unset !important;; 
+.btn p {
+    color: unset !important;
 }
 
 .btn_light {
-    background-color: #CCDBF0;
+    background-color: #ccdbf0;
     font-size: 16px;
 }
 
 .btn:hover,
 .dropdown_btn:hover {
-    background: #456FF6;
+    background: #456ff6;
     color: #fff;
 }
 
 .btn_light:hover {
-    background-color: #a9c8f3
+    background-color: #a9c8f3;
 }
 
 .btn .btn_icon,
@@ -48,7 +49,6 @@
 }
 
 /* dropdown button style */
-
 
 .dropdown_btn_container .drop_view {
     width: 70%;
@@ -81,7 +81,7 @@
     margin-top: 1.5rem;
     font-size: 15px;
     cursor: pointer;
-    transition: .3s ease-in-out;
+    transition: 0.3s ease-in-out;
 }
 
 .createBtn:hover {
@@ -100,7 +100,6 @@
 }
 
 @media screen and (max-width: 830px) {
-
     .btn,
     .btn_light,
     .dropdown_btn {
