@@ -44,7 +44,8 @@ const Profile = () => {
         muid: "",
         level: "",
         profile_pic: "",
-        is_public: false
+        is_public: false,
+        roles: [],
     });
     const [profileStatus, setProfileStatus] = useState<boolean>();
     const [userLog, setUserLog] = useState([
@@ -155,13 +156,13 @@ const Profile = () => {
                                             className={styles.link}
                                         >
                                             <p>
-                                                https://app.mulearn.org/profile?id=
+                                                {import.meta.env.VITE_BACKEND_URL as string}/profile/
                                                 {userProfile.muid}
                                             </p>
                                             <i
                                                 onClick={() => {
                                                     navigator.clipboard.writeText(
-                                                        `https://app.mulearn.org/profile/${userProfile.muid}`
+                                                        `${import.meta.env.VITE_BACKEND_URL as string}/profile/${userProfile.muid}`
                                                     );
                                                     toast({
                                                         title: "Copied yo clipboard",
@@ -411,11 +412,7 @@ const Profile = () => {
                                         <div className={styles.head}>
                                             <h2>Existing Roles</h2>
                                             <p>
-                                                {JSON.parse(
-                                                    localStorage.getItem(
-                                                        "userInfo"
-                                                    )!
-                                                ).roles.join(", ")}
+                                                {userProfile.roles.join(", ")}
                                             </p>
                                         </div>
                                         <div className={styles.head}>
