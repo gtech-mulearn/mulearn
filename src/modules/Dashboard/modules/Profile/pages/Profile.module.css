@@ -109,6 +109,11 @@
   margin-top: 30px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .link i {
+  cursor: pointer;
 }
 
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_options {
@@ -490,6 +495,10 @@
   justify-content: space-between;
   padding: 0rem 1rem;
   margin-bottom: 20px;
+}
+
+.rightDash .profileDash .notification .recent_activity_container .head span {
+  cursor: pointer;
 }
 
 .rightDash .profileDash .notification .recent_activity_container .head .btns {
