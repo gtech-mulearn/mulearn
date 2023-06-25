@@ -5,6 +5,7 @@ import styles from "./TableTop.module.css";
 import { MuButton } from "../MuButtons/MuButton";
 import { HiDownload } from "react-icons/hi";
 import { getCSV } from "./apis";
+import { useToast } from "@chakra-ui/react";
 
 type Props = {
     onSearchText?: (data: string) => void;
@@ -15,6 +16,8 @@ type Props = {
 const TableTop = (props: Props) => {
     const [csv, setCsv] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [hasError,setHasError] = useState(false);
+    const toast = useToast();
 
     const handleData = (search: string) => {
         props.onSearchText && props.onSearchText(search);
@@ -27,7 +30,13 @@ const TableTop = (props: Props) => {
 
     const handleClick = async() => {
         try {
-            await getCSV(props.CSV, setCsv,setIsLoading);
+            await getCSV(
+                props.CSV, 
+                setCsv,
+                setIsLoading,
+                setHasError,
+                toast
+                );
             // Convert data to CSV format
             // await getCSV(props.CSV, setCsv);
             const csvContent = convertToCSV(csv);
@@ -77,6 +86,7 @@ const TableTop = (props: Props) => {
                         onClick={(e) => {
                             handleClick()
                         }}
+                        disabled={isLoading}
                         isLoading={isLoading}
                         icon={<HiDownload />}
                         className={styles.csv}
