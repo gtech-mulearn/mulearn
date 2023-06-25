@@ -121,8 +121,6 @@ const Profile = () => {
                                             transform: "scale(0)"
                                             // opacity: "0",
                                         }
-                                              transform: "scale(0)"
-                                          }
                                 }
                                 className={styles.share_pop_up_container}
                             >
