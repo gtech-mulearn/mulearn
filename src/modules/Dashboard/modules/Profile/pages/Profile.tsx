@@ -180,9 +180,9 @@ const Profile = () => {
                                                         }`
                                                     );
                                                     toast({
-                                                        title: "Copied yo clipboard",
+                                                        title: "Copied to clipboard",
                                                         description:
-                                                            "You will be redirected to login page shortly",
+                                                            "Your profile link has been copied to clipboard",
                                                         status: "success",
                                                         duration: 3000,
                                                         isClosable: true
@@ -445,7 +445,15 @@ const Profile = () => {
                                     >
                                         <div className={styles.head}>
                                             <h2>Recent Activity</h2>
-                                            <span onClick={()=>setProfileList("karma-history")}>View More</span>
+                                            <span
+                                                onClick={() =>
+                                                    setProfileList(
+                                                        "karma-history"
+                                                    )
+                                                }
+                                            >
+                                                View More
+                                            </span>
                                         </div>
                                         <div className={styles.data_card}>
                                             {userLog
