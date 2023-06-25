@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MuButton } from "../../../../../components/MuComponents/MuButtons/MuButton";
 import styles from "./Profile.module.css";
 import moment from "moment";
@@ -80,15 +80,18 @@ const Profile = () => {
     const startDate = new Date(userProfile.joined.slice(0, 10));
     const endDate = new Date(moment().format("YYYY-MM-DD"));
     const monthDifference = getMonthDifference(startDate, endDate);
-
+    const firstFetch = useRef(true)
     useEffect(() => {
-        if (!id) {
-            getUserProfile(setUserProfile, setAPILoadStatus, setProfileStatus);
-            getUserLog(setUserLog);
-        } else {
-            getPublicUserProfile(setUserProfile, setAPILoadStatus, id);
-            getPublicUserLog(setUserLog, id);
+        if (firstFetch.current) {
+            if (!id) {
+                getUserProfile(setUserProfile, setAPILoadStatus, setProfileStatus);
+                getUserLog(setUserLog);
+            } else {
+                getPublicUserProfile(setUserProfile, setAPILoadStatus, id);
+                getPublicUserLog(setUserLog, id);
+            }
         }
+        firstFetch.current = false
     }, []);
     return (
         <>
@@ -115,6 +118,9 @@ const Profile = () => {
                                     popUP
                                         ? { transform: "scale(1)" }
                                         : {
+                                            transform: "scale(0)"
+                                            // opacity: "0",
+                                        }
                                               transform: "scale(0)"
                                           }
                                 }
@@ -252,8 +258,8 @@ const Profile = () => {
                                                         {userProfile.lastName}{" "}
                                                         {userProfile.college_code
                                                             ? "(" +
-                                                              userProfile.college_code +
-                                                              ")"
+                                                            userProfile.college_code +
+                                                            ")"
                                                             : null}
                                                     </h1>
                                                     <p
@@ -271,9 +277,9 @@ const Profile = () => {
                                                         LEVEL{"     "}
                                                         {userProfile.level
                                                             ? userProfile.level.slice(
-                                                                  3,
-                                                                  4
-                                                              )
+                                                                3,
+                                                                4
+                                                            )
                                                             : 0}
                                                     </p>
                                                 </div>
@@ -307,15 +313,15 @@ const Profile = () => {
                                             <p
                                                 style={
                                                     profileList ===
-                                                    "basic-detials"
+                                                        "basic-detials"
                                                         ? { marginLeft: "0px" }
                                                         : profileList ===
-                                                          "karma-history"
-                                                        ? {
-                                                              marginLeft:
-                                                                  "115px"
-                                                          }
-                                                        : {}
+                                                            "karma-history"
+                                                            ? {
+                                                                marginLeft:
+                                                                    "115px"
+                                                            }
+                                                            : {}
                                                 }
                                                 className={styles.underline}
                                             ></p>
@@ -355,11 +361,11 @@ const Profile = () => {
                                                             userProfile.karma
                                                         ) > 1000
                                                             ? (
-                                                                  parseInt(
-                                                                      userProfile.karma
-                                                                  ) / 1000
-                                                              ).toPrecision(4) +
-                                                              "K"
+                                                                parseInt(
+                                                                    userProfile.karma
+                                                                ) / 1000
+                                                            ).toPrecision(4) +
+                                                            "K"
                                                             : userProfile.karma}
                                                     </h1>
                                                 </div>
@@ -380,28 +386,28 @@ const Profile = () => {
                                                             userProfile.karma
                                                         ) /
                                                             monthDifference >
-                                                        1000
+                                                            1000
                                                             ? (
-                                                                  parseInt(
-                                                                      userProfile.karma
-                                                                  ) /
-                                                                  monthDifference /
-                                                                  1000
-                                                              ).toPrecision(4) +
-                                                              "K"
+                                                                parseInt(
+                                                                    userProfile.karma
+                                                                ) /
+                                                                monthDifference /
+                                                                1000
+                                                            ).toPrecision(4) +
+                                                            "K"
                                                             : isNaN(
-                                                                  parseInt(
-                                                                      userProfile.karma
-                                                                  ) /
-                                                                      monthDifference
-                                                              )
-                                                            ? "0"
-                                                            : (
-                                                                  parseInt(
-                                                                      userProfile.karma
-                                                                  ) /
-                                                                  monthDifference
-                                                              ).toPrecision(3)}
+                                                                parseInt(
+                                                                    userProfile.karma
+                                                                ) /
+                                                                monthDifference
+                                                            )
+                                                                ? "0"
+                                                                : (
+                                                                    parseInt(
+                                                                        userProfile.karma
+                                                                    ) /
+                                                                    monthDifference
+                                                                ).toPrecision(3)}
                                                     </h1>
                                                 </div>
                                             </div>

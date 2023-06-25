@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Pagination from "../../../../components/MuComponents/Pagination/Pagination";
 import Table from "../../../../components/MuComponents/Table/Table";
 import THead from "../../../../components/MuComponents/Table/THead";
@@ -20,6 +20,7 @@ function ManageRoles() {
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
+    const firstFetch = useRef(true)
 
     const columnOrder = [
         { column: "first_name", Label: "First Name", isSortable: true },
@@ -30,9 +31,9 @@ function ManageRoles() {
         { column: "mobile", Label: "Nobile", isSortable: false },
         { column: "dob", Label: "DOB", isSortable: false },
         { column: "gender", Label: "Gender", isSortable: false },
-        
+
         { column: "college", Label: "Institute", isSortable: false },
-      
+
         { column: "discord_id", Label: "Discord ID", isSortable: false },
         // { column: "id", Label: "ID", isSortable: false },
         { column: "active", Label: "Active", isSortable: false },
@@ -52,9 +53,12 @@ function ManageRoles() {
     };
 
     useEffect(() => {
-        if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
+        if (firstFetch.current) {
+            if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
 
-        getManageUsers(setData, 1, perPage, setTotalPages, "", "");
+            getManageUsers(setData, 1, perPage, setTotalPages, "", "");
+        }
+        firstFetch.current = false;
     }, []);
 
     const handleSearch = (search: string) => {
@@ -115,7 +119,7 @@ function ManageRoles() {
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
                 CSV={dashboardRoutes.getUsersList}
-                // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
+            // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
             />
             {data && (
                 <Table

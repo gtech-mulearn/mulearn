@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Pagination from "../../../../components/MuComponents/Pagination/Pagination";
 import Table from "../../../../components/MuComponents/Table/Table";
 import THead from "../../../../components/MuComponents/Table/THead";
@@ -20,6 +20,7 @@ function ManageRoles() {
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
+    const firstFetch = useRef(true)
 
     const columnOrder = [
         // { column: "id", Label: "ID", isSortable: true },
@@ -44,9 +45,13 @@ function ManageRoles() {
     };
 
     useEffect(() => {
-        if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
+        if (firstFetch.current) {
 
-        getManageRoles(setData, 1, perPage, setTotalPages, "", "");
+            if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
+
+            getManageRoles(setData, 1, perPage, setTotalPages, "", "");
+        }
+        firstFetch.current = false;
     }, []);
 
     const handleSearch = (search: string) => {
@@ -107,7 +112,7 @@ function ManageRoles() {
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
                 CSV={dashboardRoutes.getRolesList}
-                // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
+            // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
             />
             {data && (
                 <Table
