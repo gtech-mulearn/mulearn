@@ -476,7 +476,7 @@
   flex-direction: column;
   gap: 1rem;
   max-height: 400px;
-  overflow: scroll;
+  overflow: hidden;
   padding: 10px 0px;
 
   scroll-snap-type: mandatory;

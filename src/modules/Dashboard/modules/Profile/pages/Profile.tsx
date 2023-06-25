@@ -445,7 +445,7 @@ const Profile = () => {
                                     >
                                         <div className={styles.head}>
                                             <h2>Recent Activity</h2>
-                                            {/* <span>View More</span> */}
+                                            <span onClick={()=>setProfileList("karma-history")}>View More</span>
                                         </div>
                                         <div className={styles.data_card}>
                                             {userLog

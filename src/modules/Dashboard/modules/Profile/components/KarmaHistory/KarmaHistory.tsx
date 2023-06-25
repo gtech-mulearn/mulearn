@@ -1,3 +1,4 @@
+import moment from "moment";
 import KarmaSymbol from "../../assets/svg/KarmaSymbol";
 import styles from "./KarmaHistory.module.css";
 type Props = {
@@ -23,13 +24,21 @@ const KarmaHistory = (props: Props) => {
                                 </h1>
                                 <h2>Karma</h2>
                                 <div className={styles.karma_div}>
-                                    <p style={{fontSize:"12px"}}>Awarded for</p>
+                                    <p style={{ fontSize: "12px" }}>
+                                        Awarded for
+                                    </p>
                                     <p className={styles.task_name}>
                                         #{log.taskName}
                                     </p>
                                 </div>
 
-                                <p className={styles.date}>01 DEC 2022</p>
+                                <p className={styles.date}>
+                                    {moment
+                                        .utc(log.createdDate)
+                                        .local()
+                                        .startOf("seconds")
+                                        .fromNow()}
+                                </p>
                             </div>
                         </div>
                     );
