@@ -102,6 +102,7 @@ const SideNavBar = (props: Props) => {
                 ></p>
             </div>
             <div
+                id="side_nav"
                 className={styles.side_nav_bar_container}
                 style={
                     window.innerWidth <= 830

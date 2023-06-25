@@ -115,6 +115,9 @@
     p {
         text-align: center;
     }
+    .btn_loader{
+        margin-left: 8px;
+    }
 }
 .blue-btn {
     background: #456ff6;
@@ -133,6 +136,14 @@
     align-items: center;
     justify-content: center;
 }
+  
+  @keyframes s3 {
+    100% {transform: rotate(1turn)}
+  }
+  
+  @keyframes s3 {
+    100% {transform: rotate(1turn)}
+  }
 
 @media only screen and (max-width: 768px) {
     .popup_container {

@@ -35,8 +35,8 @@ const Login = () => {
                     <div className={styles.login_form}>
                         <h1>User Login</h1>
                         <p className={styles.p_welcome}>
-                            Hey welcome, Please enter your details to get sign
-                            in to your account
+                            Hey welcome, please enter your details to sign in to
+                            your account
                         </p>
                         <form>
                             <input
@@ -88,14 +88,20 @@ const Login = () => {
                                 onClick={e => {
                                     e.preventDefault();
                                     if (muid != "" && password != "") {
-                                        login(muid, password, toast, navigate, setIsLoading);
+                                        login(
+                                            muid,
+                                            password,
+                                            toast,
+                                            navigate,
+                                            setIsLoading
+                                        );
                                     }
                                 }}
                                 isLoading={isLoading}
                             />
                             <span className={styles.register}>
                                 <a href="register">
-                                    Don't Have an Account? Sign up
+                                    Don't have an account? Sign up
                                 </a>
                             </span>
                         </form>
@@ -106,8 +112,8 @@ const Login = () => {
                     <div className={styles.login_form}>
                         <h1>User Login</h1>
                         <p className={styles.p_welcome}>
-                            Hey welcome, Please enter your details to get sign
-                            in to your account
+                            Hey welcome, please enter your details to sign in to
+                            your account
                         </p>
                         <form>
                             <input
@@ -135,8 +141,8 @@ const Login = () => {
                                             showOrHidePassword == "password"
                                                 ? setShowOrHidePassword("text")
                                                 : setShowOrHidePassword(
-                                                    "password"
-                                                );
+                                                      "password"
+                                                  );
                                         }}
                                     >
                                         {showOrHidePassword === "text" ? (
@@ -156,7 +162,7 @@ const Login = () => {
                                         setOtpForm(false);
                                     }}
                                 >
-                                    Login with <b>Password</b>
+                                    Login with <b>password</b>
                                 </a>
                             </p>
                             {/* <button
@@ -202,11 +208,10 @@ const Login = () => {
                                     hasError
                                         ? "Request OTP"
                                         : otpLoading
-                                            ? "Processing"
-                                            : otpError
-                                                ?
-                                                "Request OTP"
-                                                : "Signin"
+                                        ? "Processing"
+                                        : otpError
+                                        ? "Request OTP"
+                                        : "Signin"
                                 }
                                 className={styles.signin_button}
                                 onClick={e => {
@@ -233,11 +238,15 @@ const Login = () => {
                                     }
                                 }}
                                 // disabled={status === 1 ? true : false}
-                                isLoading={otpLoading ? otpLoading : otpVerifyLoading}
+                                isLoading={
+                                    otpLoading ? otpLoading : otpVerifyLoading
+                                }
                             />
-                            <span className={styles.register}>                                <a href="register">
-                                Don't Have an Account? Sign up
-                            </a>
+                            <span className={styles.register}>
+                                {" "}
+                                <a href="register">
+                                    Don't have an account? Sign up
+                                </a>
                             </span>
                         </form>
                     </div>

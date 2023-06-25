@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./ConnectDiscord.module.css";
 import cdimage from "../assets/images/connectdiscordpng1.png";
 import { getInfo } from "../services/apis";
@@ -11,16 +11,19 @@ import { GridLoader } from "react-spinners";
 const ConnectDiscord = () => {
     const [muid, setMuid] = useState("");
     const toast = useToast();
-
+    const firstFetch = useRef(true)
     useEffect(() => {
-        if (
-            localStorage.getItem("userInfo") &&
-            JSON.parse(localStorage.getItem("userInfo")!).mu_id
-        ) {
-            setMuid(JSON.parse(localStorage.getItem("userInfo")!).mu_id);
-        } else {
-            getInfo(setMuid);
+        if (firstFetch.current) {
+            if (
+                localStorage.getItem("userInfo") &&
+                JSON.parse(localStorage.getItem("userInfo")!).mu_id
+            ) {
+                setMuid(JSON.parse(localStorage.getItem("userInfo")!).mu_id);
+            } else {
+                getInfo(setMuid);
+            }
         }
+        firstFetch.current = false
     }, []);
 
     return (

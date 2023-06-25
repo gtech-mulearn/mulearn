@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./UrlShortener.module.css";
 import {
     getShortenUrls,
@@ -27,6 +27,8 @@ const UrlShortener = () => {
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
     const toast = useToast();
+    const firstFetch = useRef(true)
+
     const [hasValidationError, setHasValidationError] = useState({
         error: false,
         message: ""
@@ -41,8 +43,12 @@ const UrlShortener = () => {
 
     const editableColumnNames = ["Title", "Short URL", "Long URL"];
     useEffect(() => {
-        if (!hasRole([roles.ADMIN])) navigate("/404");
-        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
+        if (firstFetch.current) {
+
+            if (!hasRole([roles.ADMIN])) navigate("/404");
+            getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
+        }
+        firstFetch.current = false;
     }, []);
 
     const handleNextClick = () => {
@@ -157,7 +163,8 @@ const UrlShortener = () => {
             setHasValidationError
         );
         getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
-        !hasValidationError.error ? setEditBtn(false) : null;    };
+        !hasValidationError.error ? setEditBtn(false) : null;
+    };
 
     const validate = (values: any) => {
         console.log(values);

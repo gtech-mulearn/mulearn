@@ -16,9 +16,11 @@ import * as Yup from "yup";
 import { createOrganization, updateOrganization } from "./apis";
 import { useToast } from "@chakra-ui/react";
 import { FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
+import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import { ClipLoader } from "react-spinners";
 
 import "./Organizations.scss";
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import { useRef } from 'react';
 
 interface Option {
     value: string;
@@ -37,6 +39,16 @@ interface CollegeFormProps {
     selectedDistrict?: string;
     selectedAffiliation?: string;
 }
+
+// export let myState = false; // Initial value
+
+// export const setMyState = (newValue:boolean) => {
+//   myState = newValue;
+// };
+
+
+
+
 
 const FormData = ({ ...props }: CollegeFormProps) => {
     const [inputName, setInputName] = useState("");
@@ -65,9 +77,26 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     const [isCountryDataLoaded, setIsCountryDataLoaded] = useState(false);
 
     const [isSuccess, setIsSuccess] = useState(false);
+    const [isLoading,setIsLoading] = useState(false)
+    const [isDisabled,setIsDisabled] = useState(false)
+
 
     const navigate = useNavigate();
     const toast = useToast();
+
+
+    const myRef = useRef(false);
+
+    useEffect(()=>{
+        if(isSuccess){
+            navigate('/organizations')
+        }
+        if(isLoading){
+            setIsDisabled(true)
+        }else{
+            setIsDisabled(false)
+        }
+    })
 
     function camelCase(str: string) {
         return str?.replace(
@@ -82,6 +111,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     };
 
     const orgType = props.activeItem;
+
 
     const handleSubmit = (Name:string,Code:string) => {
         // e.preventDefault();
@@ -123,7 +153,8 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         orgType,
                         toast,
                         affiliation,
-                        setIsSuccess
+                        setIsSuccess,
+                        setIsLoading,
                     );
                 } else {
                     createOrganization(
@@ -134,7 +165,10 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         camelCase(zone),
                         camelCase(district),
                         orgType,
-                        toast
+                        toast,
+                        "",
+                        setIsSuccess,
+                        setIsLoading
                     );
                 }
             } else {
@@ -149,7 +183,9 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         camelCase(district),
                         orgType,
                         toast,
-                        affiliation
+                        affiliation,
+                        setIsSuccess,
+                        setIsLoading
                     );
                 } else {
                     updateOrganization(
@@ -161,10 +197,14 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         camelCase(zone),
                         camelCase(district),
                         orgType,
-                        toast
+                        toast,
+                        "",
+                        setIsSuccess,
+                        setIsLoading
                     );
                 }
             }
+            setIsLoading(false)
         };
 
         const SelectBody = (item: string) => {
@@ -187,8 +227,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
         };
 
         SelectBody(orgType);
-        console.log("Success Status-->", isSuccess);
-        navigate("/organizations");
+        console.log("Success Status-->", myRef.current);
     };
 
     useEffect(() => {
@@ -236,6 +275,29 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             }
         }
     }, []);
+
+    useEffect(()=>{
+        if(!props.isCreate){
+            if(country.value !== props.selectedCountry){    
+                getStates(camelCase(selectedCountry), setStatesData);
+            }
+            if(state.value !== props.selectedState && state !== ""){
+                getZones(
+                    camelCase(selectedCountry),
+                    camelCase(selectedState),
+                    setZonesData
+                );
+            }
+            if(zone.value !== props.selectedZone && zone !== ""){
+                getDistricts(
+                    camelCase(selectedCountry),
+                    camelCase(selectedState),
+                    camelCase(selectedZone),
+                    setDistrictsData
+                );
+            }
+        }
+    },[country,state,zone])
 
     useEffect(() => {
         if (country !== "") {
@@ -317,9 +379,9 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         .required("Required")
                 })}
                 onSubmit={values => {
+                    setIsLoading(true)
                     console.log(values.Name);
                     handleSubmit(values.Name,values.Code);
-                    navigate("/ORGANIZATIONS");
                 }}
             >
                 <Form className="popup_dropdown_container">
@@ -362,12 +424,11 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             />
                         </div>
                     ) : null}
-
                     <div className="inputfield_container">
                         <p>Country</p>
                         <Select
                             value={countryData.find(
-                                country => country.value === selectedCountry
+                                country => country.value === selectedCountry.toLowerCase()
                             )}
                             onChange={handleCountryChange}
                             options={countryData}
@@ -378,7 +439,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         <p>State</p>
                         <Select
                             value={statesData.find(
-                                state => state.value === selectedState
+                                state => state.value === selectedState.toLowerCase()
                             )}
                             onChange={handleStateChange}
                             options={statesData}
@@ -388,7 +449,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     <div className="inputfield_container">
                         <p>Zone</p>
                         <Select
-                            value={zonesData.find(zone => zone.value === selectedZone)}
+                            value={zonesData.find(zone => zone.value === selectedZone.toLowerCase())}
                             onChange={handleZoneChange}
                             options={zonesData}
                             required
@@ -398,7 +459,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         <p>District</p>
                         <Select
                             value={districtsData.find(
-                                district => district.value === selectedDistrict
+                                district => district.value === selectedDistrict.toLowerCase()
                             )}
                             onChange={handleDistrictChange}
                             options={districtsData}
@@ -416,8 +477,11 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                                     navigate("/organizations");
                                 }}
                             />
-                        <button type="submit" className="btn blue-btn">
+                        <button type="submit" className="btn blue-btn" disabled={isDisabled}>
                             Submit
+                            {
+                                isLoading ? (<ClipLoader size={20} color="#fff" className="btn_loader"  />) : null
+                            }
                         </button>
                     </div>
                 </Form>
@@ -427,3 +491,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 };
 
 export default FormData;
+function sleep(arg0: number) {
+    throw new Error("Function not implemented.");
+}
+
