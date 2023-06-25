@@ -7,7 +7,7 @@ import FormikReactSelect, {
     FormikTextInputWhite
 } from "../../../../../components/MuComponents/FormikComponents/FormikComponents";
 import { useEffect, useState } from "react";
-import { getFormFields } from "./HackathonApis";
+import { createHackathon, getFormFields } from "./HackathonApis";
 
 const options = [
     { label: "Option 1", value: "111" },
@@ -16,7 +16,7 @@ const options = [
 ];
 const options1 = [
     { label: "Everyone", value: true },
-    { label: "Invite only", value: false },
+    { label: "Invite only", value: false }
 ];
 
 const HackathonCreate = () => {
@@ -72,6 +72,42 @@ const HackathonCreate = () => {
     const handleSubmit = (values: any, { resetForm }: any) => {
         console.log(values);
         console.log(formData);
+        const fields: { [key: string]: string } = {
+            bio: "system",
+            college: "system",
+            email: "system",
+            experience: "input",
+            gender: "system",
+            github: "input",
+            linkedin: "input",
+            mobile: "system",
+            name: "system"
+        };
+
+        const selectedFields: { [key: string]: string } = {};
+
+        values.formFields.forEach((field: string) => {
+            if (fields.hasOwnProperty(field)) {
+                selectedFields[field] = fields[field];
+            }
+        });
+
+        console.log(selectedFields);
+        createHackathon(
+            values.title,
+            values.tagline,
+            values.description,
+            values.participantCount,
+            values.orgId,
+            values.districtId,
+            values.place,
+            values.isOpenToAll,
+            values.applicationStart,
+            values.applicationEnds,
+            values.eventStart,
+            values.eventEnd,
+			selectedFields
+        );
         // resetForm();
     };
 
@@ -216,32 +252,24 @@ const HackathonCreate = () => {
                                                 role="group"
                                                 aria-labelledby="checkbox-group"
                                             >
-                                                {Object.entries({
-                                                    bio: "system",
-                                                    college: "system",
-                                                    email: "system",
-                                                    experience: "input",
-                                                    gender: "system",
-                                                    github: "input",
-                                                    linkedin: "input",
-                                                    mobile: "system",
-                                                    name: "system"
-                                                }).map(([key, value]) => (
-                                                    <label key={key}>
-                                                        <Field
-                                                            type="checkbox"
-                                                            name="formFields"
-                                                            value={key}
-                                                            checked={values.formFields.includes(
-                                                                key as never
-                                                            )}
-                                                            onChange={
-                                                                handleChange
-                                                            }
-                                                        />
-                                                        {key}
-                                                    </label>
-                                                ))}
+                                                {Object.entries(formData).map(
+                                                    ([key, value]) => (
+                                                        <label key={key}>
+                                                            <Field
+                                                                type="checkbox"
+                                                                name="formFields"
+                                                                value={key}
+                                                                checked={values.formFields.includes(
+                                                                    key as never
+                                                                )}
+                                                                onChange={
+                                                                    handleChange
+                                                                }
+                                                            />
+                                                            {key}
+                                                        </label>
+                                                    )
+                                                )}
                                             </div>
                                         </TabPanel>
 
