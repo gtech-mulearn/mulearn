@@ -3,7 +3,7 @@ import { forgetPassword } from "../services/apis";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import styles from "./Login.module.css"
-import { PulseLoader } from "react-spinners";
+import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 
 type Props = {};
 
@@ -33,7 +33,9 @@ const ForgotPassword = (props: Props) => {
                         />
                         <br />
                         <br />
-                        <button
+                        <MuButton
+                            text={"Reset password"}
+                            className={styles.reset_button}
                             onClick={e => {
                                 e.preventDefault();
                                 if (muid.length > 0) {
@@ -45,17 +47,8 @@ const ForgotPassword = (props: Props) => {
                                     );
                                 }
                             }}
-                            type="submit"
-                        >
-                            {
-                                !showLoader ?
-                                    " Reset password"
-                                    :
-                                    <div className={styles.otp_loader}>
-                                        <PulseLoader size={10} color="#fff" />
-                                    </div>
-                            }
-                        </button>
+                            isLoading={showLoader}
+                        />
                     </form>
                 </div>
             </div>

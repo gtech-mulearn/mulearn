@@ -184,7 +184,8 @@ export const requestEmailOrMuidOtp = (
     toast: (options?: UseToastOptions | undefined) => ToastId,
     setHasError: setHasError,
     setStatus: setStatus,
-    setOtpLoading: (otpLoading: boolean) => void
+    setOtpLoading: (otpLoading: boolean) => void,
+    setOtpError: (otpError: boolean) => void,
 ) => {
     setOtpLoading(true)
     publicGateway.post(authRoutes.requestEmailOrMuidOtp, { emailOrMuid })
@@ -192,6 +193,7 @@ export const requestEmailOrMuidOtp = (
             setOtpLoading(false)
             setStatus(response.data.statusCode);
             if (response.data.hasError == false) {
+                setOtpError(false)
                 setHasError(false);
                 toast({
                     title: "OTP Sended",
@@ -204,6 +206,7 @@ export const requestEmailOrMuidOtp = (
         })
         .catch(error => {
             setOtpLoading(false)
+            setOtpError(true)
             toast({
                 title: "Invalid Email or Muid",
                 description: "Kindly enter a valid email or Muid",
@@ -219,9 +222,9 @@ export const otpVerification = (
     otp: string,
     toast: (options?: UseToastOptions | undefined) => ToastId,
     navigate: NavigateFunction,
-    setOtpLoading: (otpLoading: boolean) => void
+    setOtpVerifyLoading: (otpverifyLoading: boolean) => void
 ) => {
-    setOtpLoading(true);
+    setOtpVerifyLoading(true);
     publicGateway
         .post(authRoutes.otpVerification, { emailOrMuid, otp })
         .then(response => {
@@ -235,7 +238,7 @@ export const otpVerification = (
                 response.data.response.refreshToken
             );
             if (response.data.hasError == false) {
-                setOtpLoading(false)
+                setOtpVerifyLoading(false)
                 toast({
                     title: "OTP verified",
                     description: "You will be redirected to home page",
@@ -263,7 +266,7 @@ export const otpVerification = (
                 });
         })
         .catch(error => {
-            setOtpLoading(false)
+            setOtpVerifyLoading(false)
             toast({
                 title: "Invalid OTP",
                 description: "Kindly enter a valid OTP",

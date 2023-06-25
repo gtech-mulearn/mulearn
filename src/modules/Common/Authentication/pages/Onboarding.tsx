@@ -20,7 +20,7 @@ import {
     getDistrict
 } from "../services/onboardingApis";
 import { useNavigate } from "react-router-dom";
-import { ClipLoader, PulseLoader } from "react-spinners";
+import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 
 const animatedComponents = makeAnimated();
 
@@ -362,7 +362,9 @@ const Onboarding = (props: Props) => {
                                                         {formik.errors.email}
                                                     </div>
                                                 ) : null}
-                                                <button
+                                                <MuButton
+                                                    className={styles.verify_button}
+                                                    text={emailVerificationResultBtn}
                                                     onClick={e => {
                                                         e.preventDefault();
                                                         if (
@@ -400,19 +402,8 @@ const Onboarding = (props: Props) => {
                                                             }
                                                             : {}
                                                     }
-                                                >
-                                                    {
-                                                        !showLoader ?
-                                                            <>
-                                                                {emailVerificationResultBtn}
-                                                            </>
-                                                            :
-                                                            <div className={styles.next_btn_row}>
-                                                                Please wait...
-                                                                <ClipLoader size={21} color="#fff" />
-                                                            </div>
-                                                    }
-                                                </button>
+                                                    isLoading={showLoader}
+                                                />
                                             </form>
                                             <a href="/login">
                                                 Do you have an account ? Login
@@ -468,7 +459,7 @@ const Onboarding = (props: Props) => {
                                                         }, 1000);
                                                     }}
                                                 >
-                                                    I'm currently working
+                                                    I'm currently a working
                                                     professional
                                                 </button>
                                                 <button
@@ -1807,21 +1798,9 @@ const Onboarding = (props: Props) => {
                                         >
                                             Cancel
                                         </button>
-                                        <button
-                                            type="submit"
-                                            disabled={!tcChecked}
-                                            style={
-                                                tcChecked
-                                                    ? {
-                                                        backgroundColor:
-                                                            "#5570f1"
-                                                    }
-                                                    : {
-                                                        backgroundColor:
-                                                            "#5570f1",
-                                                        opacity: "0.5"
-                                                    }
-                                            }
+                                        <MuButton
+                                            className={styles.submit_button}
+                                            text={"Submit"}
                                             onClick={e => {
                                                 e.preventDefault();
                                                 validate(formik.values);
@@ -1863,16 +1842,21 @@ const Onboarding = (props: Props) => {
                                                     onSubmit(formik.values, {});
                                                 }
                                             }}
-                                        >
-                                            {
-                                            !showSubmitLoader ?
-                                                <>
-                                                    Submit
-                                                </>
-                                                :
-                                                <PulseLoader size={10} color="#ffff" />
+                                            isLoading={showSubmitLoader}
+                                            style={
+                                                tcChecked
+                                                    ? {
+                                                        backgroundColor:
+                                                            "#5570f1"
+                                                    }
+                                                    : {
+                                                        backgroundColor:
+                                                            "#5570f1",
+                                                        opacity: "0.5"
+                                                    }
                                             }
-                                        </button>
+                                            disabled={!tcChecked}
+                                        />
                                     </div>
                                 </div>
                             </form>
