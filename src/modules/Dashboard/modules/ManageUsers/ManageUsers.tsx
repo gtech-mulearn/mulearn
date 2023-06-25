@@ -130,6 +130,7 @@ function ManageRoles() {
                     <THead
                         columnOrder={columnOrder}
                         onIconClick={handleIconClick}
+                        action={true}
                     />
                     <Pagination
                         currentPage={currentPage}
