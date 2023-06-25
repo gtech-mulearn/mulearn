@@ -5,10 +5,10 @@
     width: 100%;
     padding: 0px;
     flex-wrap: wrap;
-    gap: 50px;
+    gap: 20px 44px;
     justify-content: space-between;
     overflow-y: scroll;
-    max-height: 370px;
+    max-height: 445px;
     scroll-snap-type: mandatory;
     scroll-snap-type: y mandatory;
 }
