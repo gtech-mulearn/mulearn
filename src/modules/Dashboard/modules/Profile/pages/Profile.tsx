@@ -116,7 +116,6 @@ const Profile = () => {
                                         ? { transform: "scale(1)" }
                                         : {
                                               transform: "scale(0)"
-                                              // opacity: "0",
                                           }
                                 }
                                 className={styles.share_pop_up_container}
