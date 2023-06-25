@@ -81,7 +81,7 @@ const Profile = () => {
     const monthDifference = getMonthDifference(startDate, endDate);
     const firstFetch = useRef(true)
     useEffect(() => {
-        if (firstFetch) {
+        if (firstFetch.current) {
             if (!id) {
                 getUserProfile(setUserProfile, setAPILoadStatus, setProfileStatus);
                 getUserLog(setUserLog);
