@@ -45,7 +45,7 @@ const Profile = () => {
         level: "",
         profile_pic: "",
         is_public: false,
-        roles: [],
+        roles: []
     });
     const [profileStatus, setProfileStatus] = useState<boolean>();
     const [userLog, setUserLog] = useState([
@@ -94,7 +94,13 @@ const Profile = () => {
         <>
             {(id && userProfile.is_public) || !id ? (
                 <div
-                    style={id ? { width: "100%", padding: "50px" } : {}}
+                    style={
+                        id
+                            ? window.innerWidth < 500
+                                ? { width: "100%", padding: "20px 10px" }
+                                : { width: "100%", padding: "50px" }
+                            : {}
+                    }
                     className={styles.rightDash}
                 >
                     {APILoadStatus === 0 ? (
@@ -156,13 +162,22 @@ const Profile = () => {
                                             className={styles.link}
                                         >
                                             <p>
-                                                {import.meta.env.VITE_BACKEND_URL as string}/profile/
+                                                {
+                                                    import.meta.env
+                                                        .VITE_BACKEND_URL as string
+                                                }
+                                                /profile/
                                                 {userProfile.muid}
                                             </p>
                                             <i
                                                 onClick={() => {
                                                     navigator.clipboard.writeText(
-                                                        `${import.meta.env.VITE_BACKEND_URL as string}/profile/${userProfile.muid}`
+                                                        `${
+                                                            import.meta.env
+                                                                .VITE_BACKEND_URL as string
+                                                        }/profile/${
+                                                            userProfile.muid
+                                                        }`
                                                     );
                                                     toast({
                                                         title: "Copied yo clipboard",
