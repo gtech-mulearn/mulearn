@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Pagination from "../../../../components/MuComponents/Pagination/Pagination";
 import Table from "../../../../components/MuComponents/Table/Table";
 import THead from "../../../../components/MuComponents/Table/THead";
@@ -20,8 +20,10 @@ function UsersRoleVerification() {
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
+    const firstFetch = useRef(true)
 
-   
+
+
     const columnOrder = [
         { column: "full_name", Label: "Full Name", isSortable: true },
         { column: "mu_id", Label: "Mu ID", isSortable: false },
@@ -33,7 +35,7 @@ function UsersRoleVerification() {
         { column: "verified", Label: "Verified", isSortable: false }
     ];
 
-  
+
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -48,9 +50,13 @@ function UsersRoleVerification() {
     };
 
     useEffect(() => {
-        if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
+        if (firstFetch.current) {
 
-        getUserRoleVerification(setData, 1, perPage, setTotalPages, "", "");
+            if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
+
+            getUserRoleVerification(setData, 1, perPage, setTotalPages, "", "");
+        }
+        firstFetch.current = false;
     }, []);
 
     const handleSearch = (search: string) => {
@@ -107,18 +113,18 @@ function UsersRoleVerification() {
         console.log(`Icon clicked for column: ${column}`);
     };
 
-	function handleVerify(id: string | number | boolean): void {
-		console.log(id);
+    function handleVerify(id: string | number | boolean): void {
+        console.log(id);
         editUserRoleVerification(true, id);
         getUserRoleVerification(setData, 1, perPage, setTotalPages, "", "");
-	}
+    }
 
     return (
         <>
             <TableTop
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
-                // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
+            // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
             />
             {data && (
                 <Table
