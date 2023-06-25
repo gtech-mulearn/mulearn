@@ -163,7 +163,7 @@ const Profile = () => {
                                             <p>
                                                 {
                                                     import.meta.env
-                                                        .VITE_BACKEND_URL as string
+                                                        .VITE_FRONTEND_URL as string
                                                 }
                                                 /profile/
                                                 {userProfile.muid}
@@ -173,7 +173,7 @@ const Profile = () => {
                                                     navigator.clipboard.writeText(
                                                         `${
                                                             import.meta.env
-                                                                .VITE_BACKEND_URL as string
+                                                                .VITE_FRONTEND_URL as string
                                                         }/profile/${
                                                             userProfile.muid
                                                         }`
