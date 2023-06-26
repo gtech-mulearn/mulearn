@@ -50,23 +50,27 @@ const HackathonCreate = () => {
             .max(50, "Too Long!"),
         tagline: Yup.string()
             .min(2, "Too Short!")
-            .max(100, "Too Long!")
-            .required("Required"),
-        orgId: Yup.string().min(2, "Too Short!").required("Required"),
-        place: Yup.string().min(2, "Too Short!").required("Required"),
-        districtId: Yup.string().min(2, "Too Short!").required("Required"),
-        isOpenToAll: Yup.boolean().required("Required"),
-        description: Yup.string().min(5, "Too Short!").required("Required"),
-        eventStart: Yup.date().required("Required"),
-        eventEnd: Yup.date().required("Required"),
-        applicationStart: Yup.date().required("Required"),
-        applicationEnds: Yup.date().required("Required"),
+            .max(100, "Too Long!"),
+            // .required("Required"),
+        orgId: Yup.string().min(2, "Too Short!"),
+			// .required("Required"),
+        place: Yup.string()
+			// .required("Required")
+			.min(2, "Too Short!"),
+        districtId: Yup.string().min(2, "Too Short!"),
+			// .required("Required"),
+        isOpenToAll: Yup.boolean(),
+			// .required("Required"),
+        description: Yup.string().min(5, "Too Short!"),
+        eventStart: Yup.date(),
+        eventEnd: Yup.date(),
+        applicationStart: Yup.date(),
+        applicationEnds: Yup.date(),
         participantCount: Yup.number()
             .positive("Number of users should be a positive value")
             .min(10, "Needs to be at least 2 digits.")
             .max(999999, "Should not exceed 6 digits")
             .truncate()
-            .required("User count is required")
     });
 
     const handleSubmit = (values: any, { resetForm }: any) => {
@@ -108,7 +112,7 @@ const HackathonCreate = () => {
             values.eventEnd,
 			selectedFields
         );
-        // resetForm();
+        resetForm();
     };
 
     return (
@@ -244,20 +248,46 @@ const HackathonCreate = () => {
                                         </TabPanel>
 
                                         <TabPanel className={styles.formGroup}>
-                                            <div id="checkbox-group">
-                                                Select fields for application
-                                                form
+                                            <div
+                                                id="checkbox-group"
+                                                className={styles.InputSet}
+                                            >
+                                                <label
+                                                    className={styles.formLabel}
+                                                >
+                                                    Select fields for
+                                                    application form
+                                                </label>
                                             </div>
                                             <div
                                                 role="group"
                                                 aria-labelledby="checkbox-group"
+												className={styles.checkboxOuter}
                                             >
                                                 {Object.entries(formData).map(
                                                     ([key, value]) => (
-                                                        <label key={key}>
+                                                        <label
+                                                            key={key}
+                                                            className={`${
+                                                                styles.checkBoxContainer
+                                                            } ${
+                                                                values.formFields.includes(
+                                                                    key as never
+                                                                )
+                                                                    ? styles.checked
+                                                                    : ""
+                                                            }`}
+                                                        >
                                                             <Field
                                                                 type="checkbox"
                                                                 name="formFields"
+                                                                className={
+                                                                    styles.formCheckbox
+                                                                }
+                                                                style={{
+                                                                    display:
+                                                                        "none"
+                                                                }}
                                                                 value={key}
                                                                 checked={values.formFields.includes(
                                                                     key as never

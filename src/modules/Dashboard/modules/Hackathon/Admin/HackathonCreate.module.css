@@ -178,3 +178,28 @@
         min-width: 18rem;
     }
 }
+.checkBoxContainer {
+	background-color: var(--Light);
+	color: var(--black);
+	padding: .5rem 1rem;
+	border-radius: var(--borderRadius);
+	cursor: pointer;
+	user-select: none;
+}
+
+.formCheckbox {
+	display: none;
+}
+
+.checked {
+	background-color: var(--blue);
+	color: var(--Light);
+	padding: .5rem 1rem;
+	border-radius: var(--borderRadius);
+}
+
+.checkboxOuter {
+	display: flex;
+	gap: 1.5rem;
+	flex-wrap: wrap;
+}
