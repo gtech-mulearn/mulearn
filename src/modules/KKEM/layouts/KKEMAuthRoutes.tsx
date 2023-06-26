@@ -7,7 +7,7 @@ export default function KKEMAuthRoutes() {
     const dwms_id = searchParams.get("dwms_id");
 
     if (dwms_id) {
-        return <KKEMAuth />;
+        return <KKEMAuth dwmsId={dwms_id} />;
     } else {
         return <Landing />;
     }

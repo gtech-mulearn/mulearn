@@ -2,7 +2,8 @@ import styles from "./Auth.module.css";
 /**
  * Page for KKEM auth when dwms_id is present in the URL
  */
-export default function KKEMAuth() {
+export default function KKEMAuth({ dwmsId }: { dwmsId: string }) {
+    console.log(dwmsId);
     return (
         <div className={styles.container}>
             <h1 className={styles.heading}>KKEM auth</h1>
