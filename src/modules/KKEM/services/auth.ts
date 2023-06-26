@@ -11,3 +11,14 @@ export const userAuth = async (mu_id: string, dwms_id: string) => {
             return error.response.data;
         });
 };
+
+export const userAuthConfirm = async (token: string) => {
+    return await publicGateway
+        .post(`${KKEMRoutes.userAuth}${token}/`)
+        .then(response => {
+            return response.data;
+        })
+        .catch(error => {
+            throw error.response.data;
+        });
+};
