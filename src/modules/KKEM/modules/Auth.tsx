@@ -14,6 +14,10 @@ export default function KKEMAuth({ dwmsId }: { dwmsId: string }) {
     const handleSubmit = useCallback(
         (e: FormEvent<HTMLFormElement>) => {
             e.preventDefault();
+            if (!muid || muid.length <= 0 || muid.trim().length <= 0) {
+                setError("Please enter a valid muid");
+                return;
+            }
             userAuth(muid, dwmsId).then(res => {
                 if (res.statusCode === 400) {
                     setError(res.message?.general?.toString());
@@ -22,7 +26,6 @@ export default function KKEMAuth({ dwmsId }: { dwmsId: string }) {
         },
         [muid]
     );
-    console.log(dwmsId);
     return (
         <div className={styles.container}>
             <h1 className={styles.heading}>KKEM auth</h1>
