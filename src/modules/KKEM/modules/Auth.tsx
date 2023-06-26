@@ -7,6 +7,7 @@ import { userAuth } from "../services/auth";
  */
 export default function KKEMAuth({ dwmsId }: { dwmsId: string }) {
     const [muid, setMuid] = useState("");
+    const [error, setError] = useState<string | null>(null);
     const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         setMuid(e.target.value);
     }, []);
@@ -14,7 +15,9 @@ export default function KKEMAuth({ dwmsId }: { dwmsId: string }) {
         (e: FormEvent<HTMLFormElement>) => {
             e.preventDefault();
             userAuth(muid, dwmsId).then(res => {
-                console.log(res);
+                if (res.statusCode === 400) {
+                    setError(res.message?.general?.toString());
+                }
             });
         },
         [muid]
@@ -32,6 +35,7 @@ export default function KKEMAuth({ dwmsId }: { dwmsId: string }) {
                     value={muid}
                     onChange={handleChange}
                 />
+                {error && <p className={styles.error}>{error}</p>}
                 <button type="submit" className={styles.submit}>
                     Submit
                 </button>
