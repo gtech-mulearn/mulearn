@@ -41,8 +41,11 @@ export const dashboardRoutes = {
     deleteShortenUrl: "/api/v1/url-shortener/delete/${urlId}/",
 
     getUserProfile: "/api/v1/dashboard/profile/user-profile/",
+    getPublicUserProfile: "/api/v1/dashboard/profile/user-profile/${muid}/",
     editUserProfile: "/api/v1/dashboard/profile/edit-user-profile/",
     getUserLog: "/api/v1/dashboard/profile/user-log/",
+    putIsPublic: "/api/v1/dashboard/profile/share-user-profile/",
+    getPublicUserLog: "/api/v1/dashboard/profile/user-log/${muid}/",
     getUserSuggestion: "/api/v1/dashboard/profile/user-suggestion/",
     getStudentLeaderBoard: "api/v1/leaderboard/students/",
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",

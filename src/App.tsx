@@ -178,7 +178,11 @@ const router = createBrowserRouter([
                 ]
             }
         ]
-    }
+    },
+    {
+        path: "profile/:id",
+        element: <Profile/>
+    },
 ]);
 
 function App() {
