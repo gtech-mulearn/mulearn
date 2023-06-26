@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
-import KKEMAuth from "../modules/Auth";
-import Landing from "../modules/Landing";
+import KKEMAuth from "../components/Auth";
+import Landing from "../components/Landing";
 import MulearnBrand from "../../Dashboard/assets/MulearnBrand";
 import styles from "./KKEMAuthRoutes.module.css";
 export default function KKEMAuthRoutes() {

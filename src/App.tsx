@@ -46,7 +46,7 @@ import ZonalDashboard from "./modules/Dashboard/modules/zonalDashboard/zonaldash
 import DistrictDashboard from "./modules/Dashboard/modules/districtDashboard/districtdashboard";
 import Hackathon from "./modules/Dashboard/modules/Hackathon/User/Hackathon";
 import HackathonCreate from "./modules/Dashboard/modules/Hackathon/Admin/HackathonCreate";
-import KKEMAuthRoutes from "./modules/KKEM/layouts/KKEMAuthRoutes";
+import KKEMAuthRoutes from "./modules/KKEM/modules/KKEMAuthRoutes";
 
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
