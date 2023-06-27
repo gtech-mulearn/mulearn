@@ -40,7 +40,7 @@ const Home = () => {
                 rel="noopener noreferrer"
                 href="https://mulearn.org/journey"
               >
-                <button className={styles.secondary}>Get Started</button>
+                <button className={styles.secondary}>Your Journey</button>
               </a>
             </div>
           </div>
