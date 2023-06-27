@@ -249,6 +249,7 @@ export const updateOrganization = async (
         if (orgType === "College") {
             return {
                 "title": title,
+                "code":code,
                 "state": state,
                 "zone": zone,
                 "district": district,
@@ -260,7 +261,7 @@ export const updateOrganization = async (
         else {
             return {
                 "title": title,
-                "code": code,
+                "code": oldCode,
                 "state": state,
                 "zone": zone,
                 "district": district,
