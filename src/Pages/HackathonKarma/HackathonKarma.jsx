@@ -28,7 +28,7 @@ const HackathonKarma = () => {
                 href="https://discord.com/channels/771670169691881483/782353185552465951"
               >
                 <button className={styles.primary}>
-                  Go To Students Channel
+                  Go To Task Dropbox Channel
                 </button>
               </a>
             </div>
@@ -65,7 +65,7 @@ const HackathonKarma = () => {
                 <div className={styles.step}>
                   <p className={styles.step_number}>Step 2</p>
                   <p className={styles.step_content}>
-                    Next, navigate to the student channel in our Discord server.
+                    Next, navigate to the task-dropbox channel in our Discord server.
                     You can find this channel by looking for the #task-dropbox
                     channel in the list of channels on the left side of the
                     Discord window.
@@ -74,7 +74,7 @@ const HackathonKarma = () => {
                 <div className={styles.step}>
                   <p className={styles.step_number}>Step 3</p>
                   <p className={styles.step_content}>
-                    Once you are in the student channel, click on the "Add a
+                    Once you are in the task-dropbox channel, click on the "Add a
                     message" field at the bottom of the channel window and type
                     in your message. Make sure to include the hashtag #hackathon
                     in your message so that we can properly track and review
