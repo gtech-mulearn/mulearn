@@ -1,0 +1,26 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.heading {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 10vh;
+}
+.submit {
+    padding: 1em 2em;
+    margin: 1em auto;
+    background: #d8d8d8;
+}
+.submit:hover {
+    background: #e5e5e5;
+}
+.submit:disabled {
+    opacity: 0.5;
+}
+.error {
+    color: red;
+    font-size: 0.8rem;
+    margin: 0.5em 0;
+}
