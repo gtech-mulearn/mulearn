@@ -4,7 +4,7 @@ import { Tooltip } from "@chakra-ui/react";
 import moment from "moment";
 
 type Props = {
-    data: { taskName: string; karmaPoint: string; createdDate: string }[];
+    data: { task_name: string; karma: string; created_date: string }[];
     year: any;
 };
 
@@ -17,7 +17,7 @@ const HeatmapComponent = (props: Props) => {
     const content: JSX.Element[] = [];
 
     const dataYearFiltered = props.data.filter(
-        item => item.createdDate.slice(0, 4) === year.toString()
+        item => item.created_date.slice(0, 4) === year.toString()
     );
 
     const dataDayFiltered: {
@@ -29,15 +29,15 @@ const HeatmapComponent = (props: Props) => {
             acc: { date: string; totalKarma: number; taskCount: number }[],
             item
         ) => {
-            const date = item.createdDate.slice(0, 10);
+            const date = item.created_date.slice(0, 10);
             const existingItem = acc.find(el => el.date === date);
             if (existingItem) {
-                existingItem.totalKarma += parseInt(item.karmaPoint);
+                existingItem.totalKarma += parseInt(item.karma);
                 existingItem.taskCount += 1;
             } else {
                 acc.push({
                     date,
-                    totalKarma: parseInt(item.karmaPoint),
+                    totalKarma: parseInt(item.karma),
                     taskCount: 1
                 });
             }

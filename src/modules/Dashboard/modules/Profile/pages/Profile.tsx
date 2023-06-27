@@ -51,7 +51,7 @@ const Profile = () => {
     const [userLog, setUserLog] = useState([
         {
             task_name: "",
-            karma_point: "",
+            karma: "",
             created_date: ""
         }
     ]);
@@ -504,7 +504,7 @@ const Profile = () => {
                                                                         }}
                                                                     >
                                                                         {
-                                                                            log.karma_point
+                                                                            log.karma
                                                                         }
                                                                     </span>{" "}
                                                                     awarded for{" "}

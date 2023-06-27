@@ -20,7 +20,7 @@ const KarmaHistory = (props: Props) => {
                             </p>
                             <div className={styles.content}>
                                 <h1 className={styles.karma}>
-                                    {log.karmaPoint} ϰ
+                                    {log.karma} ϰ
                                 </h1>
                                 <h2>Karma</h2>
                                 <div className={styles.karma_div}>
@@ -28,13 +28,13 @@ const KarmaHistory = (props: Props) => {
                                         Awarded for
                                     </p>
                                     <p className={styles.task_name}>
-                                        #{log.taskName}
+                                        #{log.task_name}
                                     </p>
                                 </div>
 
                                 <p className={styles.date}>
                                     {moment
-                                        .utc(log.createdDate)
+                                        .utc(log.created_date)
                                         .local()
                                         .startOf("seconds")
                                         .fromNow()}
