@@ -184,8 +184,15 @@ export const links = [
         link: "/campuschapters",
         sublinks: [
           {
-            name: "User Journey",
-            link: "/journey",
+            name: "Lead a Campus",
+            link: "https://airtable.com/shrmtngt3zopg8eVh",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+          {
+            name: "Find Your Campus",
+            link: "/campuschapters#findchapter",
             submenu: false,
             sublinks: [],
             foreign: false,
@@ -211,13 +218,6 @@ export const links = [
         name: "The Orientation",
         submenu: true,
         sublinks: [
-          {
-            name: "Lead a Campus",
-            link: "https://airtable.com/shrmtngt3zopg8eVh",
-            submenu: false,
-            sublinks: [],
-            foreign: false,
-          },
           {
             name: "Typing Mastery",
             link: mainlink + "/challenge/typing",

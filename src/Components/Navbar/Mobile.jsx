@@ -150,7 +150,9 @@ export const MobileNavHeader = ({ visible, test1 }) => {
               test1(link);
             }}
           >
-            <h1 className="text-[13px]">{link.name}</h1>
+            <a href={link.link}>
+              <h1 className="text-[13px]">{link.name}</h1>
+            </a>
             <span
               className="text-[13px] flex items-center"
               onClick={() => {
@@ -219,7 +221,14 @@ export const MobileSubHeader = ({ currentLink, goBack }) => {
       <span className="text-xl flex items-center" onClick={() => goBack()}>
         <ion-icon name="chevron-back-outline" />
       </span>
-      <div className="text-[13px]">{currentLink.name}</div>
+      {currentLink.link ? (
+        <a class="text-orange-400" href={currentLink.link}>
+          <div className="text-[13px]">{currentLink.name}</div>
+        </a>
+      ) : (
+        <div className="text-[13px]">{currentLink.name}</div>
+      )}
+
       <div></div>
     </div>
   );
