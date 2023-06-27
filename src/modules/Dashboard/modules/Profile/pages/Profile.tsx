@@ -294,17 +294,19 @@ const Profile = () => {
                                                 </p>
                                             ) : null}
                                             {/* <MuButton
-                            text={"Edit Profile"}
-                            icon={<i className="fi fi-sr-pencil"></i>}
-                            style={{
-                                width: "unset",
-                                minWidth: "80px",
-                                marginTop: "50px",
-                                height: "40px",
-                                background: "#456FF6",
-                                color: "#fff"
-                            }}
-                        /> */}
+                                                text={"Edit Profile"}
+                                                icon={
+                                                    <i className="fi fi-sr-pencil"></i>
+                                                }
+                                                style={{
+                                                    width: "unset",
+                                                    minWidth: "80px",
+                                                    marginTop: "50px",
+                                                    height: "40px",
+                                                    background: "#456FF6",
+                                                    color: "#fff"
+                                                }}
+                                            /> */}
                                         </div>
 
                                         <div className={styles.profileList}>
@@ -384,28 +386,31 @@ const Profile = () => {
                                                             userProfile.karma
                                                         ) /
                                                             monthDifference >
-                                                            1000
+                                                        1000
                                                             ? (
-                                                                parseInt(
-                                                                    userProfile.karma
-                                                                ) /
-                                                                monthDifference /
-                                                                1000
-                                                            ).toPrecision(4) +
-                                                            "K"
+                                                                  parseInt(
+                                                                      userProfile.karma
+                                                                  ) /
+                                                                  monthDifference /
+                                                                  1000
+                                                              ).toPrecision(4) +
+                                                              "K"
                                                             : isNaN(
-                                                                parseInt(
-                                                                    userProfile.karma
-                                                                ) /
-                                                                monthDifference
-                                                            )
-                                                                ? "0"
-                                                                : (
-                                                                    parseInt(
-                                                                        userProfile.karma
-                                                                    ) /
-                                                                    monthDifference
-                                                                ).toPrecision(3)}
+                                                                  parseInt(
+                                                                      userProfile.karma
+                                                                  ) /
+                                                                      monthDifference
+                                                              )
+                                                            ? "0"
+                                                            : monthDifference ===
+                                                              0
+                                                            ? "0"
+                                                            : (
+                                                                  parseInt(
+                                                                      userProfile.karma
+                                                                  ) /
+                                                                  monthDifference
+                                                              ).toPrecision(3)}
                                                     </h1>
                                                 </div>
                                             </div>

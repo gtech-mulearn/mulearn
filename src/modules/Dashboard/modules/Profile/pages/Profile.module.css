@@ -53,7 +53,7 @@
 }
 
 .rightDash .share_pop_up_container .share_pop_up {
-  margin: auto;
+  margin: 40dvh auto auto;
   height: auto;
   width: 530px;
   background: white;
@@ -176,7 +176,7 @@
 }
 
 .rightDash .profileDash .profile {
-  width: 65%;
+  width: 67%;
   display: flex;
   flex-direction: column;
 }
@@ -275,7 +275,7 @@
 .rightDash .profileDash .profile .profileList {
   position: relative;
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   gap: 1rem;
   list-style: none;
   justify-content: flex-start;
@@ -426,7 +426,7 @@
 /* leaderBoard and Recent Activity CSS Below */
 
 .rightDash .profileDash .notification {
-  width: 32%;
+  width: 30%;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
