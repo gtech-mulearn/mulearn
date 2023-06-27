@@ -238,7 +238,7 @@ export const links = [
         head: 2,
         name: "The Enablement",
         submenu: true,
-        link: "/challenges",
+        link: mainlink + "/challenges",
         sublinks: [
           {
             name: "Self Introduction",
