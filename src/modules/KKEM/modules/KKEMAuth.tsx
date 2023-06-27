@@ -9,9 +9,13 @@ export default function KKEMAuth() {
         if (!token) {
             return;
         }
-        userAuthConfirm(token).then(res => {
+        const controller = new AbortController();
+        userAuthConfirm(token, controller).then(res => {
             setSuccess(true);
         });
+        return () => {
+            controller.abort();
+        };
     }, [token]);
     return success ? (
         <p className={styles.content}>

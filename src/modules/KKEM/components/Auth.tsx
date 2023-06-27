@@ -8,21 +8,33 @@ import { userAuth } from "../services/auth";
 export default function KKEMAuth({ dwmsId }: { dwmsId: string }) {
     const [muid, setMuid] = useState("");
     const [error, setError] = useState<string | null>(null);
+    const [disabled, setDisabled] = useState(false);
     const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         setMuid(e.target.value);
     }, []);
     const handleSubmit = useCallback(
         (e: FormEvent<HTMLFormElement>) => {
             e.preventDefault();
+            setDisabled(true);
+            setError(null);
+            const controller = new AbortController();
             if (!muid || muid.length <= 0 || muid.trim().length <= 0) {
                 setError("Please enter a valid muid");
+                setDisabled(false);
                 return;
             }
-            userAuth(muid, dwmsId).then(res => {
+            userAuth(muid, dwmsId, controller).then(res => {
                 if (res.statusCode === 400) {
                     setError(res.message?.general?.toString());
                 }
+                if (res.statusCode === 200) {
+                    setError(null);
+                }
+                setDisabled(false);
             });
+            return () => {
+                controller.abort();
+            };
         },
         [muid]
     );
@@ -39,7 +51,11 @@ export default function KKEMAuth({ dwmsId }: { dwmsId: string }) {
                     onChange={handleChange}
                 />
                 {error && <p className={styles.error}>{error}</p>}
-                <button type="submit" className={styles.submit}>
+                <button
+                    type="submit"
+                    className={styles.submit}
+                    disabled={disabled}
+                >
                     Submit
                 </button>
             </form>
