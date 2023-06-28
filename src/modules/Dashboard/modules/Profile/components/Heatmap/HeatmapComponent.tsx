@@ -17,8 +17,8 @@ const HeatmapComponent = (props: Props) => {
     const content: JSX.Element[] = [];
 
     const dataYearFiltered = props.data.filter(
-        item => item.createdDate.slice(0, 4) === year.toString()
-    );
+        item => item.createdDate && item.createdDate.slice(0, 4) === year.toString()
+    );    
 
     const dataDayFiltered: {
         date: string;
