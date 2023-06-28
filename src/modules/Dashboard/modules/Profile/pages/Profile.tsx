@@ -274,7 +274,7 @@ const Profile = () => {
                                                     >
                                                         LEVEL{"     "}
                                                         {userProfile.level
-                                                            ? userProfile.level.slice(
+                                                            ? userProfile?.level?.slice(
                                                                 3,
                                                                 4
                                                             )

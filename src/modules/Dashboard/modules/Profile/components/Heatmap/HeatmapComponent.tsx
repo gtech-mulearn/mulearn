@@ -17,7 +17,7 @@ const HeatmapComponent = (props: Props) => {
     const content: JSX.Element[] = [];
 
     const dataYearFiltered = props.data.filter(
-        item => item.createdDate.slice(0, 4) === year.toString()
+        item => item.createdDate?.slice(0, 4) === year.toString()
     );
 
     const dataDayFiltered: {
@@ -29,7 +29,7 @@ const HeatmapComponent = (props: Props) => {
             acc: { date: string; totalKarma: number; taskCount: number }[],
             item
         ) => {
-            const date = item.createdDate.slice(0, 10);
+            const date = item.createdDate?.slice(0, 10);
             const existingItem = acc.find(el => el.date === date);
             if (existingItem) {
                 existingItem.totalKarma += parseInt(item.karmaPoint);
