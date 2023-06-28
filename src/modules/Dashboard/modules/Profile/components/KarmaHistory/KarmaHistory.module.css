@@ -1,4 +1,4 @@
-.karma_history_container {
+/* .karma_history_container {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -10,6 +10,15 @@
     overflow-y: scroll;
     max-height: 445px;
     scroll-snap-type: mandatory;
+    scroll-snap-type: y mandatory;
+} */
+.karma_history_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 204px);
+    gap: 20px;
+    justify-content: space-between;
+    /* overflow-y: scroll; */
+    max-height: 445px;
     scroll-snap-type: y mandatory;
 }
 
@@ -71,6 +80,7 @@
 @media (max-width: 460px) {
     .karma_history_container {
         justify-content: center;
+        grid-template-columns: repeat(auto-fill, 100%);
     }
 
     .karma_history_container .karma_history {
