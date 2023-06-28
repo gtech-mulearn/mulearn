@@ -17,8 +17,7 @@
     font-size: 30px;
     font-weight: 700;
     padding:0px;
-    min-width: 500px;
-    width: 500px;
+    width: 100%;
     margin: 0;
 }
 h1:first-child{
@@ -39,7 +38,7 @@ table,.tableContainer   {
     border-spacing: 10px;
     word-break: break;
     min-width: 500px;
-    width: 500px;
+    width: 600px;
 }
 th{
     text-align: center;

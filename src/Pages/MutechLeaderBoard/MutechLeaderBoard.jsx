@@ -42,16 +42,9 @@ const MutechLeaderBoard = () => {
                 if (da.getMonth() === month && da.getDate() < today) {
                     for (let person of people) {
                         if (work[person] !== null && work[person] !== undefined) {
-                            if (!work[person].toLowerCase().includes('not available') && !work[person].toLowerCase().includes('no task') && work[person].trim() !== ('')) {
-                                let x = work[person].split('\n')
-                                let score = 0
-                                if (work[person].toLowerCase().includes('done')) {
-                                    score = 10
-                                }
-                                else if (work[person].toLowerCase().includes('working')) {
-                                    score = 5
-                                }
-                                PeopleScoreBoard[person].streak += score ? 1 : 0
+                            if (work[person].toLowerCase().includes('done')) {
+                                let x = work[person].split('\n'), score = 10
+                                PeopleScoreBoard[person].streak += 1
                                 PeopleScoreBoard[person].score += x.length * score + (PeopleScoreBoard[person].streak <= 5 ? (PeopleScoreBoard[person].streak - 1) * score : 50)
                             }
                             else {
@@ -79,7 +72,7 @@ const MutechLeaderBoard = () => {
     function sortScore(PeopleScoreBoard) {
         const scoreSet = Object.values(PeopleScoreBoard)
         const scoreBoard = scoreSet.sort((a, b) => {
-            return b.score - a.score
+            return b.streak - a.streak
         })
         setScoreBoard(scoreBoard)
     }
@@ -102,7 +95,7 @@ const MutechLeaderBoard = () => {
                             <tr>
                                 <th >Rank</th>
                                 <th >Name</th>
-                                <th >Score</th>
+                                <th >Monthly Score</th>
                                 <th>Monthly Streak</th>
                                 <th>Overall Streak</th>
                             </tr>
