@@ -261,7 +261,7 @@ export const updateOrganization = async (
         else {
             return {
                 "title": title,
-                "code": oldCode,
+                "code": code,
                 "state": state,
                 "zone": zone,
                 "district": district,
