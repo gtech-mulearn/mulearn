@@ -71,7 +71,8 @@ export const organizationRoutes = {
     postAddOrganization: "/api/v1/organisation/institutes/add",
     putUpdateOrganization: "/api/v1/organisation/institutes",
     deleteOrgnaization: "/api/v1/organisation/institutes/",
-    postGetInfo: "/api/v1/organisation/institutes/info/"
+    postGetInfo: "/api/v1/organisation/institutes/info/",
+    getOrgCsv: "/api/v1/organisation/institutes/csv"
 };
 
 export const KKEMRoutes = {

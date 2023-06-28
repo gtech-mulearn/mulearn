@@ -390,7 +390,7 @@ const Profile = () => {
                                                             userProfile.karma
                                                         ) /
                                                             monthDifference >
-                                                        1000
+                                                        1000 && monthDifference !== 0
                                                             ? (
                                                                   parseInt(
                                                                       userProfile.karma

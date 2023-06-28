@@ -77,8 +77,15 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     const [isCountryDataLoaded, setIsCountryDataLoaded] = useState(false);
 
     const [isSuccess, setIsSuccess] = useState(false);
-    const [isLoading,setIsLoading] = useState(false)
-    const [isDisabled,setIsDisabled] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+    const [isDisabled, setIsDisabled] = useState(false)
+
+    const [selectionStatus, setSelectionStatus] = useState({
+        isCountrySelected: true,
+        isStateSelected: false,
+        isZoneSelected: false,
+        isDistrictSelected: false
+    })
 
 
     const navigate = useNavigate();
@@ -87,13 +94,13 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
     const myRef = useRef(false);
 
-    useEffect(()=>{
-        if(isSuccess){
+    useEffect(() => {
+        if (isSuccess) {
             navigate('/organizations')
         }
-        if(isLoading){
+        if (isLoading) {
             setIsDisabled(true)
-        }else{
+        } else {
             setIsDisabled(false)
         }
     })
@@ -113,12 +120,12 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     const orgType = props.activeItem;
 
 
-    const handleSubmit = (Name:string,Code:string) => {
+    const handleSubmit = (Name: string, Code: string) => {
         // e.preventDefault();
         // resetStates()
         interface SelectBodyProps {
-            Name:string,
-            Code:string,
+            Name: string,
+            Code: string,
             country: string;
             state: string;
             zone: string;
@@ -177,7 +184,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         Name,
                         Code,
                         oldCode,
-                        camelCase(country),
+                        camelCase(country),     
                         camelCase(state),
                         camelCase(zone),
                         camelCase(district),
@@ -211,9 +218,9 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             const params: SelectBodyProps = {
                 Name,
                 Code,
-                country: country.value,
-                state: state.value,
-                zone: zone.value,
+                country: country.value || props.selectedCountry,
+                state: state.value || props.selectedState,
+                zone: zone.value || props.selectedZone,
                 district: district.value,
                 orgType,
                 toast
@@ -227,7 +234,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
         };
 
         SelectBody(orgType);
-        console.log("Success Status-->", myRef.current);
+        // console.log("Success Status-->", myRef.current);
     };
 
     useEffect(() => {
@@ -240,6 +247,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
         }
 
         if (!props.isCreate) {
+
             setInputName(props.inputName || "");
             setInputCode(props.inputCode || "");
             setOldCode(props.inputCode || "")
@@ -251,6 +259,10 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
             if (props.selectedCountry) {
                 getStates(camelCase(props.selectedCountry), setStatesData);
+            }
+
+            if(props.selectedAffiliation){
+                getAffiliation(camelCase(props.selectedAffiliation))
             }
 
             if (props.selectedCountry && props.selectedState) {
@@ -276,28 +288,31 @@ const FormData = ({ ...props }: CollegeFormProps) => {
         }
     }, []);
 
-    useEffect(()=>{
-        if(!props.isCreate){
-            if(country.value !== props.selectedCountry){    
+    useEffect(() => {
+        if (!props.isCreate) {
+            if(props.activeItem == "College"){
                 getStates(camelCase(selectedCountry), setStatesData);
             }
-            if(state.value !== props.selectedState && state !== ""){
+            if (country.value !== props.selectedCountry && country !== "") {
+                getStates(camelCase(selectedCountry), setStatesData);
+            }
+            if (state.value !== props.selectedState && state !== "") {
                 getZones(
-                    camelCase(selectedCountry),
-                    camelCase(selectedState),
+                    camelCase(country.value),
+                    camelCase(state.value),
                     setZonesData
                 );
             }
-            if(zone.value !== props.selectedZone && zone !== ""){
+            if (zone.value !== props.selectedZone && zone !== "") {
                 getDistricts(
-                    camelCase(selectedCountry),
-                    camelCase(selectedState),
-                    camelCase(selectedZone),
+                    camelCase(props.selectedCountry || country),
+                    camelCase(props.selectedState || state),
+                    camelCase(zone.value),
                     setDistrictsData
                 );
             }
         }
-    },[country,state,zone])
+    }, [country, state, zone])
 
     useEffect(() => {
         if (country !== "") {
@@ -308,7 +323,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     useEffect(() => {
         if (state !== "") {
             getZones(
-                camelCase(country.value),
+                camelCase(country.value || props.selectedCountry),
                 camelCase(state.value),
                 setZonesData
             );
@@ -316,10 +331,10 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     }, [selectedState]);
 
     useEffect(() => {
-        if (state !== "") {
+        if (zone !== "") {
             getDistricts(
-                camelCase(country.value),
-                camelCase(state.value),
+                camelCase(country.value || props.selectedCountry),
+                camelCase(state.value || props.selectedCountry),
                 camelCase(zone.value),
                 setDistrictsData
             );
@@ -366,8 +381,9 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             <Formik
                 initialValues={{
                     Name: props.inputName || "",
-                    Code: props.inputCode || ""
-                    // acceptedTerms: false, // added for our checkbox
+                    Code: props.inputCode || "",
+                    Country: country.value || "",
+                    Affiliation: affiliation.value || ""                    // acceptedTerms: false, // added for our checkbox
                     // jobType: "" // added for our select
                 }}
                 validationSchema={Yup.object({
@@ -380,12 +396,11 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                 })}
                 onSubmit={values => {
                     setIsLoading(true)
-                    console.log(values.Name);
-                    handleSubmit(values.Name,values.Code);
+                    handleSubmit(values.Name, values.Code);
                 }}
             >
                 <Form className="popup_dropdown_container">
-                        {/* <Textfield
+                    {/* <Textfield
                     content={`${props.activeItem} Name`}
                     inputType="text"
                     setInput={setInputName}
@@ -394,16 +409,16 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         width: "100%"
                     }}
                 /> */}
-                <div className="inputfield_container">
+                    <div className="inputfield_container">
                         <FormikTextInput
                             label={`${props.activeItem} Name`}
                             name="Name"
                             type="text"
                             placeholder="Enter a name"
                         />
-                        </div>
+                    </div>
                     <div className="inputfield_container">
-                    <FormikTextInput
+                        <FormikTextInput
                             label="Code"
                             name="Code"
                             type="text"
@@ -415,9 +430,9 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             <p>Affiliated University</p>
                             <Select
                                 value={affiliationData.find(
-                                    affiliation =>
-                                        affiliation.value === selectedAffiliation
+                                    affiliation => affiliation.value === selectedAffiliation
                                 )}
+                                name="Affiliation"
                                 onChange={handleAffiliationChange}
                                 options={affiliationData}
                                 required
@@ -430,6 +445,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             value={countryData.find(
                                 country => country.value === selectedCountry.toLowerCase()
                             )}
+                            name="Country"
                             onChange={handleCountryChange}
                             options={countryData}
                             required
@@ -444,12 +460,15 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             onChange={handleStateChange}
                             options={statesData}
                             required
+                        // isDisabled={props.isCreate && selectedCountry ? false : true }
                         />
                     </div>
                     <div className="inputfield_container">
                         <p>Zone</p>
                         <Select
-                            value={zonesData.find(zone => zone.value === selectedZone.toLowerCase())}
+                            value={zonesData.find(
+                                zone => zone.value === selectedZone.toLowerCase()
+                            )}
                             onChange={handleZoneChange}
                             options={zonesData}
                             required
@@ -470,17 +489,17 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         {/* <div className="btn light-btn" onClick={resetStates}>
                             Decline
                         </div> */}
-                                                    <MuButton
-                                text={"Decline"}
-                                className="btn light-btn"
-                                onClick={() => {
-                                    navigate("/organizations");
-                                }}
-                            />
+                        <MuButton
+                            text={"Decline"}
+                            className="btn light-btn"
+                            onClick={() => {
+                                navigate("/organizations");
+                            }}
+                        />
                         <button type="submit" className="btn blue-btn" disabled={isDisabled}>
                             Submit
                             {
-                                isLoading ? (<ClipLoader size={20} color="#fff" className="btn_loader"  />) : null
+                                isLoading ? (<ClipLoader size={20} color="#fff" className="btn_loader" />) : null
                             }
                         </button>
                     </div>
