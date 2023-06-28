@@ -1,24 +1,16 @@
-import { useSearchParams } from "react-router-dom";
 import KKEMAuth from "../components/Auth";
-import Landing from "../components/Landing";
-import MulearnBrand from "../../Dashboard/assets/MulearnBrand";
-import styles from "./KKEMLanding.module.css";
-export default function KKEMLanding() {
+import Navbar from "../components/Navbar";
+import { useSearchParams } from "react-router-dom";
+/**
+ * Landing page for KKEM
+ */
+export default function Landing() {
     const [searchParams] = useSearchParams();
     const dwms_id = searchParams.get("dwms_id");
-    const muid = searchParams.get("mu_id");
-
     return (
-        <div className={styles.container}>
-            {(() => {
-                if (muid) {
-                    return <Landing />;
-                } else if (dwms_id) {
-                    return <KKEMAuth dwmsId={dwms_id} />;
-                } else {
-                    return <Landing />;
-                }
-            })()}
-        </div>
+        <>
+            <Navbar />
+            {dwms_id && <KKEMAuth dwmsId={dwms_id} />}
+        </>
     );
 }
