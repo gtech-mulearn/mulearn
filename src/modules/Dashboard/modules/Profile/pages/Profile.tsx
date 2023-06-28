@@ -31,8 +31,8 @@ const Profile = () => {
     const [display, setDisplay] = useState("flex");
     const [popUP, setPopUP] = useState(false);
     const [userProfile, setUserProfile] = useState({
-        firstName: "",
-        lastName: "",
+        first_name: "",
+        last_name: "",
         college_code: "",
         interest_groups: [{ name: "", karma: 0 }],
         karma_distribution: [{ task_type: "", karma: 0 }],
@@ -50,9 +50,9 @@ const Profile = () => {
     const [profileStatus, setProfileStatus] = useState<boolean>();
     const [userLog, setUserLog] = useState([
         {
-            taskName: "",
-            karmaPoint: "",
-            createdDate: ""
+            task_name: "",
+            karma: "",
+            created_date: ""
         }
     ]);
 
@@ -247,13 +247,13 @@ const Profile = () => {
                                                             ? userProfile.profile_pic
                                                             : dpm
                                                     }
-                                                    alt={userProfile.firstName}
+                                                    alt={userProfile.first_name}
                                                 />
 
                                                 <div className={styles.name}>
                                                     <h1>
-                                                        {userProfile.firstName}{" "}
-                                                        {userProfile.lastName}{" "}
+                                                        {userProfile.first_name}{" "}
+                                                        {userProfile.last_name}{" "}
                                                         {userProfile.college_code
                                                             ? "(" +
                                                             userProfile.college_code +
@@ -289,7 +289,7 @@ const Profile = () => {
                                                     }
                                                     className={styles.share_btn}
                                                 >
-                                                    <i className="fi fi-sr-share"></i>
+                                                    <i className="fi fi-br-share"></i>
                                                     {/* <i className="fi fi-sr-share-alt-square"></i> */}
                                                 </p>
                                             ) : null}
@@ -468,10 +468,10 @@ const Profile = () => {
                                                 .sort((a, b) => {
                                                     return (
                                                         new Date(
-                                                            b.createdDate
+                                                            b.created_date
                                                         ).getTime() -
                                                         new Date(
-                                                            a.createdDate
+                                                            a.created_date
                                                         ).getTime()
                                                     );
                                                 })
@@ -504,19 +504,19 @@ const Profile = () => {
                                                                         }}
                                                                     >
                                                                         {
-                                                                            log.karmaPoint
+                                                                            log.karma
                                                                         }
                                                                     </span>{" "}
                                                                     awarded for{" "}
                                                                     {
-                                                                        log.taskName
+                                                                        log.task_name
                                                                     }
                                                                     .
                                                                 </p>
                                                                 <p>
                                                                     {moment
                                                                         .utc(
-                                                                            log.createdDate
+                                                                            log.created_date
                                                                         )
                                                                         .local()
                                                                         .startOf(
