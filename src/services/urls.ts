@@ -59,7 +59,7 @@ export const dashboardRoutes = {
     districtCampusData: "/api/v1/dashboard/district/campus-details/csv/",
 
     getHackathonFormData: "/api/v1/hackathon/list-default-form-fields/",
-	createHackathon: "/api/v1/hackathon/create-hackathon/"
+    createHackathon: "/api/v1/hackathon/create-hackathon/"
 };
 
 export const organizationRoutes = {
@@ -70,5 +70,10 @@ export const organizationRoutes = {
     postAddOrganization: "/api/v1/organisation/institutes/add",
     putUpdateOrganization: "/api/v1/organisation/institutes",
     deleteOrgnaization: "/api/v1/organisation/institutes/",
-    postGetInfo: "/api/v1/organisation/institutes/info/"
+    postGetInfo: "/api/v1/organisation/institutes/info/",
+    getOrgCsv: "/api/v1/organisation/institutes/csv"
+};
+
+export const KKEMRoutes = {
+    userAuth: "/api/v1/integrations/kkem/authorization/"
 };
