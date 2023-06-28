@@ -85,7 +85,7 @@
 }
 
 .createBtn:hover {
-    background: var(--Blue800);
+    background: var(--blue);
 }
 
 .createBtnContainer {
