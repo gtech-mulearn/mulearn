@@ -53,8 +53,6 @@ const MutechLeaderBoard = () => {
                                 }
                                 PeopleScoreBoard[person].streak += score ? 1 : 0
                                 PeopleScoreBoard[person].score += x.length * score + (PeopleScoreBoard[person].streak <= 5 ? (PeopleScoreBoard[person].streak - 1) * score : 50)
-                                if (person === "Ansan")
-                                    console.log(score, x.length * score, PeopleScoreBoard[person].streak, (PeopleScoreBoard[person].streak - 1) * score)
                             }
                             else {
                                 PeopleScoreBoard[person].streak = 0
