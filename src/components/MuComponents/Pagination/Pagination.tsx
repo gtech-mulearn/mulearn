@@ -30,7 +30,7 @@ const Pagination = (props: Props) => {
             />
             <p
                 style={{
-                    color: "rgba(1, 75, 178, 1)"
+                    color: "var(--blue)"
                 }}
             >
                 Page <strong>{props.currentPage}</strong> of{" "}
