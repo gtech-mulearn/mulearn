@@ -1,12 +1,11 @@
 .container {
-    max-width: 600px;
-    margin: 0 auto;
+    background-color: #2e85fe;
+    padding: 2rem;
 }
 .heading {
     font-size: 2rem;
+    color: #fff;
     font-weight: 600;
-    text-align: center;
-    margin-top: 10vh;
 }
 .submit {
     padding: 1em 2em;
