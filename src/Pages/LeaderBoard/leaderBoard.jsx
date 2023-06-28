@@ -176,6 +176,7 @@ const LeaderBoard = () => {
           </div>
         </div> */}
       </div>
+
       <Footer />
     </>
   );

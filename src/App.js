@@ -41,6 +41,7 @@ import YIP2023 from "./Pages/YIP2023/YIP2023";
 import BeWebDev from "./Pages/Events/BeWebDev/BeWebDev";
 import YipForm from "./Pages/YIP/YIPAfterForm/YipForm";
 import Journey from "./Pages/UserJourney/Journey";
+import MutechLeaderboard  from "./Pages/MutechLeaderBoard/MutechLeaderBoard";
 
 function App() {
   const [redirects, setRedirects] = useState([]);
@@ -80,6 +81,8 @@ function App() {
               <Redirection link="https://yip.kerala.gov.in/" />
             }
           /> */}
+                  <Route path='mutech/leaderboard' element={<MutechLeaderboard />} />
+
           <Route path="/careers" element={<Career />} />
           <Route path="*" element={<NotFound isLoaded={isLoaded} />} />
           <Route path="/termsandconditions" element={<TermsAndCondition />} />
