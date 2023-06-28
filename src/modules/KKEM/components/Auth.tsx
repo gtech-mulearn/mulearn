@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import styles from "./Auth.module.css";
 import { userAuth } from "../services/auth";
+import { HiOutlineArrowRight } from "react-icons/hi";
 /**
  * Page for KKEM auth when dwms_id is present in the URL
  */
@@ -40,25 +41,26 @@ export default function KKEMAuth({ dwmsId }: { dwmsId: string }) {
     );
     return (
         <div className={styles.container}>
-            <h1 className={styles.heading}>KKEM auth</h1>
-            <form onSubmit={handleSubmit}>
+            <h2 className={styles.heading}>Embark on the Skill Express</h2>
+            <form onSubmit={handleSubmit} className={styles.form}>
                 <input
                     type="text"
                     name="muid"
                     id="muid"
-                    placeholder="muid"
+                    placeholder="Enter µ-Id"
                     value={muid}
                     onChange={handleChange}
                 />
-                {error && <p className={styles.error}>{error}</p>}
+
                 <button
                     type="submit"
                     className={styles.submit}
                     disabled={disabled}
                 >
-                    Submit
+                    <HiOutlineArrowRight />
                 </button>
             </form>
+            {error && <p className={styles.error}>{error}</p>}
         </div>
     );
 }

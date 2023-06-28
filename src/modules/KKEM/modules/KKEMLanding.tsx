@@ -1,6 +1,7 @@
 import KKEMAuth from "../components/Auth";
 import Navbar from "../components/Navbar";
 import { useSearchParams } from "react-router-dom";
+import styles from "./KKEmLanding.module.css";
 /**
  * Landing page for KKEM
  */
@@ -10,7 +11,20 @@ export default function Landing() {
     return (
         <>
             <Navbar />
-            {dwms_id && <KKEMAuth dwmsId={dwms_id} />}
+            {dwms_id && (
+                <div className={styles.muidSection}>
+                    <KKEMAuth dwmsId={dwms_id} />
+                    <p className={styles.muidSectionText}>
+                        To get started, please enter your{" "}
+                        <strong>µLearn ID</strong>. If you don't have a µLearn
+                        ID yet, click the button below to visit the{" "}
+                        <strong>µLearn website and create one</strong>.
+                    </p>
+                    <a href="#" className={styles.muidLink}>
+                        Still without a Mu-Id? Grab one now
+                    </a>
+                </div>
+            )}
         </>
     );
 }

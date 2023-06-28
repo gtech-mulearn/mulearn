@@ -1,3 +1,18 @@
-.container {
-    margin: 0rem;
+.muidSection {
+    background-color: #2e85fe;
+    padding: 0 5rem;
+}
+
+.muidSectionText {
+    color: #fff;
+    font-size: 1.5rem;
+    max-width: 600px;
+    font-weight: 300;
+}
+.muidLink {
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-decoration-line: underline;
+    line-height: 5rem;
 }
