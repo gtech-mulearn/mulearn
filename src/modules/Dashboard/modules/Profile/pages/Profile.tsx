@@ -289,7 +289,7 @@ const Profile = () => {
                                                     }
                                                     className={styles.share_btn}
                                                 >
-                                                    <i className="fi fi-sr-share"></i>
+                                                    <i className="fi fi-br-share"></i>
                                                     {/* <i className="fi fi-sr-share-alt-square"></i> */}
                                                 </p>
                                             ) : null}
@@ -386,7 +386,7 @@ const Profile = () => {
                                                             userProfile.karma
                                                         ) /
                                                             monthDifference >
-                                                        1000
+                                                        1000 && monthDifference !== 0
                                                             ? (
                                                                   parseInt(
                                                                       userProfile.karma

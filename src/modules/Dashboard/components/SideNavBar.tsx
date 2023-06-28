@@ -18,7 +18,7 @@ import {
     DropDownButtons,
     MuButton,
     MuButtonLight
-} from "../../../components/MuComponents/MuButtons/MuButton";
+} from "@Mulearn/MuButtons/MuButton";
 // import MuButtonLight from "../../../components/MuComponents/MuButtons/MuButtonLight";
 
 type Props = {
