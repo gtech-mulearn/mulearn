@@ -34,8 +34,10 @@ const MutechLeaderBoard = () => {
                 // eslint-disable-next-line array-callback-return
                 Object.keys(work).slice(1,).map((key, index) => {
                     if (!people.includes(key)) {
-                        people.push(key)
-                        PeopleScoreBoard[key] = { name: key, score: 0, streak: 0, longestStreak: 0, overallStreak: 0 }
+                        if (key !== "undefined") {
+                            people.push(key)
+                            PeopleScoreBoard[key] = { name: key, score: 0, streak: 0, longestStreak: 0, overallStreak: 0 }
+                        }
                     }
                 })
                 const da = new Date(work.Date)
