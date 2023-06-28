@@ -4,7 +4,8 @@
 }
 .container {
     display: flex;
-    width: fit-content;
+    justify-content: space-between;
+    max-width: 70rem;
     background-color: #fff;
     padding: 1rem 2rem;
     gap: 5rem;

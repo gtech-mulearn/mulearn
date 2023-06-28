@@ -1,3 +1,6 @@
+.container {
+    padding-top: 2rem;
+}
 .heading {
     font-size: 2rem;
     color: #fff;
@@ -31,7 +34,7 @@
     width: fit-content;
     position: relative;
     width: 100%;
-    max-width: 30rem;
+    max-width: 35rem;
     margin-top: 1rem;
     isolation: isolate;
 }
@@ -46,9 +49,9 @@
 }
 .form > input[type="text"] {
     background-color: #fff;
-    max-width: 30rem;
     width: 100%;
     margin-top: 0;
     border: none;
     border-radius: 1.5rem;
+    padding-left: 2rem;
 }

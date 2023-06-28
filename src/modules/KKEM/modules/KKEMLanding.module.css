@@ -1,13 +1,41 @@
 .muidSection {
     background-color: #2e85fe;
     padding: 0 5rem;
+    margin-bottom: 10rem;
+    isolation: isolate;
+}
+.muidSection::before {
+    display: block;
+    content: "";
+    width: 25rem;
+    height: calc(100% - 2rem);
+    background: url("../assets/µ_pl.svg") no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    right: 5rem;
+    top: 2rem;
+    opacity: 0.4;
+    z-index: -1;
+}
+.muidSection::after {
+    display: block;
+    content: "";
+    width: 100vw;
+    height: 10rem;
+    background: url("../assets/wave.png") repeat-x;
+    background-size: 100% 100%;
+    background-origin: 50%;
+    background-position: 10%;
+    position: absolute;
+    right: 0;
 }
 
 .muidSectionText {
     color: #fff;
     font-size: 1.5rem;
-    max-width: 600px;
+    max-width: 40rem;
     font-weight: 300;
+    margin-top: 2rem;
 }
 .muidLink {
     color: #fff;
