@@ -17,7 +17,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
 
     useEffect(() => {
         const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
-        const existInGuild = userInfo.existInGuild;
+        const existInGuild = userInfo.exist_in_guild;
         const isCampusAmbassador = userInfo.roles?.includes(roles.CAMPUS_LEAD);
         const isAdmin = userInfo.roles?.includes(roles.ADMIN);
         const isZonalCampusLead = userInfo.roles?.includes(roles.ZONAL_CAMPUS_LEAD);

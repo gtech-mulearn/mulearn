@@ -19,7 +19,7 @@ const TopNavBar = () => {
             JSON.parse(localStorage.getItem("userInfo")!).firstName
         ) {
             setName(JSON.parse(localStorage.getItem("userInfo")!).firstName);
-            setProfilePic(JSON.parse(localStorage.getItem("userInfo")!).profilePic);
+            setProfilePic(JSON.parse(localStorage.getItem("userInfo")!).profile_pic);
         }
     });
     return (

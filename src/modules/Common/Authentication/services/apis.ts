@@ -83,7 +83,7 @@ export const login = (
                             "userInfo",
                             JSON.stringify(response.data.response)
                         );
-                        if (response.data.response.existInGuild) {
+                        if (response.data.response.exist_in_guild) {
                             navigate("/profile");
                         } else {
                             navigate("/connect-discord");
@@ -255,7 +255,7 @@ export const otpVerification = (
                         "userInfo",
                         JSON.stringify(response.data.response)
                     );
-                    if (response.data.response.existInGuild) {
+                    if (response.data.response.exist_in_guild) {
                         navigate("/profile");
                     } else {
                         navigate("/connect-discord");

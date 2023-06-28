@@ -33,13 +33,13 @@ const CampusStudentList = (props: Props) => {
     ];
 
     const [campusData, setCampusData] = useState({
-        collegeName: "",
-        campusLead: "",
-        campusCode: "",
-        campusZone: "",
-        totalKarma: "",
-        totalMembers: "",
-        activeMembers: "",
+        college_name: "",
+        campus_lead: "",
+        campus_code: "",
+        campus_zone: "",
+        total_karma: "",
+        total_members: "",
+        active_members: "",
         rank: ""
     });
     const firstFetch = useRef(true)
@@ -124,38 +124,38 @@ const CampusStudentList = (props: Props) => {
                         <div className={styles.content}>
                             <div className={styles.sec1}>
                                 <p className={styles.campus_code}>
-                                    Campus code : {campusData.campusCode}
+                                    Campus code : {campusData.campus_code}
                                 </p>
                                 <h1 className={styles.clg_name}>
                                     {titleCase(
-                                        campusData.collegeName.toLowerCase()
+                                        campusData.college_name.toLowerCase()
                                     )}
                                 </h1>
                                 <p className={styles.campus_lead}>
-                                    Campus Lead : {campusData.campusLead}
+                                    Campus Lead : {campusData.campus_lead}
                                 </p>
 
                                 <div className={styles.details_card}>
                                     <div className={styles.card}>
                                         <p>Karma points</p>
                                         <h1>
-                                            {parseInt(campusData.totalKarma) >
+                                            {parseInt(campusData.total_karma) >
                                                 1000
                                                 ? (
                                                     parseInt(
-                                                        campusData.totalKarma
+                                                        campusData.total_karma
                                                     ) / 1000
                                                 ).toPrecision(4) + "K"
-                                                : campusData.totalKarma}
+                                                : campusData.total_karma}
                                         </h1>
                                     </div>
                                     <div className={styles.card}>
                                         <p>Total Members</p>
-                                        <h1>{campusData.totalMembers}</h1>
+                                        <h1>{campusData.total_members}</h1>
                                     </div>
                                     <div className={styles.card}>
                                         <p>Active Members</p>
-                                        <h1>{campusData.activeMembers}</h1>
+                                        <h1>{campusData.active_members}</h1>
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@ const CampusStudentList = (props: Props) => {
                                 </div>
                                 <div className={styles.level_div}>
                                     <h2>Campus Zone</h2>
-                                    <p>{campusData.campusZone}</p>
+                                    <p>{campusData.campus_zone}</p>
                                 </div>
                             </div>
                         </div>
