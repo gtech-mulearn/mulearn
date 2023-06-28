@@ -119,7 +119,7 @@ const CampusChapters = () => {
         </div>
         {/*Added updated contents from levels component*/}
         <Levels />
-        <div className={styles.search_view_container}>
+        <div id="findchapter" className={styles.search_view_container}>
           <div className={styles.search_view}>
             <div className={styles.sv_texts}>
               <p className={styles.sv_heading}>

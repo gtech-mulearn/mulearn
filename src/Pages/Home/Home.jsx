@@ -27,13 +27,22 @@ const Home = () => {
                 shackles you have grounded yourself in.
               </p>
             </div>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://app.mulearn.org/register"
-            >
-              <button className={styles.primary}>Join Us</button>
-            </a>
+            <div className={styles.buttons}>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://app.mulearn.org/register"
+              >
+                <button className={styles.primary}>Join Us</button>
+              </a>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://mulearn.org/journey"
+              >
+                <button className={styles.secondary}>Your Journey</button>
+              </a>
+            </div>
           </div>
           <img
             className={styles.fv_image}
