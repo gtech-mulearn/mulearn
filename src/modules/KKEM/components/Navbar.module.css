@@ -1,0 +1,28 @@
+.navbar {
+    background-color: #2e85fe;
+    padding: 2rem;
+}
+.container {
+    display: flex;
+    width: fit-content;
+    background-color: #fff;
+    padding: 1rem 2rem;
+    gap: 5rem;
+    border-radius: 1.2rem;
+}
+.logos {
+    display: flex;
+    gap: 0.5rem;
+}
+.links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+.links > a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    line-height: 1rem;
+}

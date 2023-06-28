@@ -10,7 +10,6 @@ export default function KKEMLanding() {
 
     return (
         <div className={styles.container}>
-            <MulearnBrand />
             {(() => {
                 if (muid) {
                     return <Landing />;
