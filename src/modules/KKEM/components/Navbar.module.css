@@ -38,4 +38,7 @@
     .navbar {
         padding: 1rem;
     }
+    .links {
+        display: none;
+    }
 }
