@@ -21,6 +21,7 @@ const Login = () => {
     const [otpVerifyLoading, setOtpVerifyLoading] = useState(false);
     const [otpLoading, setOtpLoading] = useState(false);
     const [otpError, setOtpError] = useState(false);
+    let ruri = window.location.href.split("=")[1];
     const toast = useToast();
     const navigate = useNavigate();
     useEffect(() => {
@@ -93,7 +94,8 @@ const Login = () => {
                                             password,
                                             toast,
                                             navigate,
-                                            setIsLoading
+                                            setIsLoading,
+                                            ruri
                                         );
                                     }
                                 }}
@@ -233,7 +235,8 @@ const Login = () => {
                                             password,
                                             toast,
                                             navigate,
-                                            setOtpVerifyLoading
+                                            setOtpVerifyLoading,
+                                            ruri
                                         );
                                     }
                                 }}
