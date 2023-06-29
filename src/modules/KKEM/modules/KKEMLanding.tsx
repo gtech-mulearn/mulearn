@@ -15,20 +15,24 @@ export default function Landing() {
         <main className={styles.main}>
             <Navbar />
             {dwms_id && (
-                <section id="muId" className={styles.muidSection}>
-                    <div>
-                        <KKEMAuth dwmsId={dwms_id} />
-                        <p className={styles.muidSectionText}>
-                            To get started, please enter your{" "}
-                            <strong>µLearn ID</strong>. If you don't have a
-                            µLearn ID yet, click the button below to visit the{" "}
-                            <strong>µLearn website and create one</strong>.
-                        </p>
-                        <a href="#" className={styles.muidLink}>
-                            Still without a Mu-Id? Grab one now
-                        </a>
-                    </div>
-                </section>
+                <>
+                    <section id="muId" className={styles.muidSection}>
+                        <div>
+                            <KKEMAuth dwmsId={dwms_id} />
+                            <p className={styles.muidSectionText}>
+                                To get started, please enter your{" "}
+                                <strong>µLearn ID</strong>. If you don't have a
+                                µLearn ID yet, click the button below to visit
+                                the{" "}
+                                <strong>µLearn website and create one</strong>.
+                            </p>
+                            <a href="#" className={styles.muidLink}>
+                                Still without a Mu-Id? Grab one now
+                            </a>
+                        </div>
+                    </section>
+                    <div className={styles.wave}></div>
+                </>
             )}
             <SkillExpress />
             <MulearnAbout />
