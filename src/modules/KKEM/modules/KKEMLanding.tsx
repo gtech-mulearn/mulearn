@@ -4,6 +4,7 @@ import SkillExpress from "../components/SkillExpress";
 import { useSearchParams } from "react-router-dom";
 import styles from "./KKEmLanding.module.css";
 import MulearnAbout from "../components/MulearnAbout";
+import Footer from "../components/Footer";
 /**
  * Landing page for KKEM
  */
@@ -31,6 +32,7 @@ export default function Landing() {
             )}
             <SkillExpress />
             <MulearnAbout />
+            <Footer />
         </main>
     );
 }
