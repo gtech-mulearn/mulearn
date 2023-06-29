@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styles from "./Login.module.css";
 import { useToast } from "@chakra-ui/react";
@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { BeatLoader, ClipLoader } from "react-spinners";
 import Dropdown from "../../../../components/MuComponents/Dropdown/Dropdown";
 import i18n from "../../../../i18n";
-import { ClipLoader } from "react-spinners";
+import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 
 const Login = () => {
     const [showOrHidePassword, setShowOrHidePassword] = useState("password");
@@ -22,6 +22,9 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [otpForm, setOtpForm] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [otpVerifyLoading, setOtpVerifyLoading] = useState(false);
+    const [otpLoading, setOtpLoading] = useState(false);
+    const [otpError, setOtpError] = useState(false);
     const [input, setInput] = useState("");
     const [language, setLanguage] = useState("en");
     const toast = useToast();
@@ -102,7 +105,9 @@ const Login = () => {
                                     <b>{t("login_otp_bold")}</b>
                                 </a>
                             </p>
-                            <button
+                            <MuButton
+                                text={"Sign In"}
+                                className={styles.signin_button}
                                 onClick={e => {
                                     e.preventDefault();
                                     if (muid != "" && password != "") {
@@ -142,8 +147,8 @@ const Login = () => {
                     <div className={styles.login_form}>
                         <h1>User Login</h1>
                         <p className={styles.p_welcome}>
-                            Hey welcome, Please enter your details to get sign
-                            in to your account
+                            Hey welcome, please enter your details to sign in to
+                            your account
                         </p>
                         <form>
                             <input
@@ -192,10 +197,10 @@ const Login = () => {
                                         setOtpForm(false);
                                     }}
                                 >
-                                    login with <b>Password</b>
+                                    Login with <b>password</b>
                                 </a>
                             </p>
-                            <button
+                            {/* <button
                                 onClick={e => {
                                     setHasError(false);
                                     e.preventDefault();
@@ -204,7 +209,8 @@ const Login = () => {
                                             emailOrMuid,
                                             toast,
                                             setHasError,
-                                            setStatus
+                                            setStatus,
+                                            setOtpLoading
                                         );
                                     }
                                     if (!hasError && password != "") {
@@ -212,7 +218,8 @@ const Login = () => {
                                             emailOrMuid,
                                             password,
                                             toast,
-                                            navigate
+                                            navigate,
+                                            setOtpLoading
                                         );
                                     }
                                 }}
@@ -228,8 +235,9 @@ const Login = () => {
                                     : "Request OTP"}
                             </button>
                             <span className={styles.register}>
+                                {" "}
                                 <a href="register">
-                                    Don't Have an Account? Sign up
+                                    Don't have an account? Sign up
                                 </a>
                             </span>
                         </form>

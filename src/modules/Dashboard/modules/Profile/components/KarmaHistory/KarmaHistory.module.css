@@ -1,0 +1,89 @@
+/* .karma_history_container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0px;
+    flex-wrap: wrap;
+    gap: 20px 44px;
+    justify-content: space-between;
+    overflow-y: scroll;
+    max-height: 445px;
+    scroll-snap-type: mandatory;
+    scroll-snap-type: y mandatory;
+} */
+.karma_history_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 204px);
+    gap: 20px;
+    justify-content: space-between;
+    /* overflow-y: scroll; */
+    max-height: 445px;
+    scroll-snap-type: y mandatory;
+}
+
+.karma_history_container .karma_history {
+    min-height: 250px;
+    min-width: 200px;
+    max-width: 200px;
+    border-radius: 13px;
+    border: 1px solid #CCE2FF;
+    background: #E1EDFF;
+    padding: 20px 5px;
+    display: flex;
+    box-shadow: 0px 0px 6px 0px rgba(1, 75, 178, 0.15);
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    scroll-snap-align: start;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.karma_history_container .karma_history:hover {
+    transform: scale(1.01);
+    box-shadow: 0px 0px 6px 0px rgba(1, 75, 178, 0.25);
+}
+
+.karma_history_container .karma_history .karma_history_box_bg {
+    position: absolute;
+    left: -50px;
+    z-index: 1;
+}
+
+.karma_history_container .karma_history .content {
+    z-index: 2;
+    text-align: center;
+}
+
+.karma_history_container .karma_history .content h1 {
+    color: #014BB2;
+}
+
+.karma_history_container .karma_history .content .karma_div {
+    margin-top: 20px;
+    font-size: 13px;
+}
+
+.karma_history_container .karma_history .content .karma_div .task_name {
+    color: #014BB2;
+    font-weight: 500;
+    border-radius: 2.003px;
+    background: rgba(203, 225, 255, 0.50);
+}
+
+.karma_history_container .karma_history .content .date {
+    margin-top: 40px;
+    font-size: 12px;
+}
+
+@media (max-width: 460px) {
+    .karma_history_container {
+        justify-content: center;
+        grid-template-columns: repeat(auto-fill, 100%);
+    }
+
+    .karma_history_container .karma_history {
+        min-width: 100%;
+    }
+}

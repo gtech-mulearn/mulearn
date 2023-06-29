@@ -42,7 +42,7 @@ export const createShortenUrl = (
     toast: (options?: UseToastOptions | undefined) => ToastId,
     urlData: any,
     formik: any,
-    setHasValidationError: hasValidationError,
+    setHasValidationError: hasValidationError
 ) => {
     privateGateway
         .post(dashboardRoutes.createShortenUrl, urlData)
@@ -57,29 +57,42 @@ export const createShortenUrl = (
             });
         })
         .catch(error => {
-            if (
-                error.response.data.message &&
-                Object.keys(error.response.data.message).length > 0
-            ) {
-                Object.entries(error.response.data.message).forEach(
-                    ([fieldName, errorMessage]) => {
-                        if (Array.isArray(errorMessage)) {
-                            console.log(errorMessage);
-                            
-                            formik.setFieldError(
-                                fieldName,
-                                errorMessage?.join(", ") || ""
-                            );
-                        }
-                    }
-                );
-            }
-            setTimeout(() => {
+            toast({
+                title: error.response.data.message.general[0],
+                description: "",
+                status: "error",
+                duration: 3000,
+                isClosable: true
+            });
+            if (error.response.data.message.general.length > 0) {
                 setHasValidationError({
-                    error: false,
-                    message: ""
+                    error: true,
+                    message: error.response.data.message.general[0]
                 });
-            }, 3000);
+            }
+            // if (
+            //     error.response.data.message &&
+            //     Object.keys(error.response.data.message).length > 0
+            // ) {
+            //     Object.entries(error.response.data.message).forEach(
+            //         ([fieldName, errorMessage]) => {
+            //             if (Array.isArray(errorMessage)) {
+            //                 console.log(errorMessage);
+
+            //                 formik.setFieldError(
+            //                     fieldName,
+            //                     errorMessage?.join(", ") || ""
+            //                 );
+            //             }
+            //         }
+            //     );
+            // }
+            // setTimeout(() => {
+            //     setHasValidationError({
+            //         error: false,
+            //         message: ""
+            //     });
+            // }, 3000);
         });
 };
 
@@ -88,7 +101,7 @@ export const editShortenUrl = (
     toast: (options?: UseToastOptions | undefined) => ToastId,
     urlEditedData: any,
     formik: any,
-    setHasValidationError: hasValidationError,
+    setHasValidationError: hasValidationError
 ) => {
     privateGateway
         .put(
@@ -106,27 +119,41 @@ export const editShortenUrl = (
             });
         })
         .catch(error => {
-            if (
-                error.response.data.message &&
-                Object.keys(error.response.data.message).length > 0
-            ) {
-                Object.entries(error.response.data.message).forEach(
-                    ([fieldName, errorMessage]) => {
-                        if (Array.isArray(errorMessage)) {
-                            formik.setFieldError(
-                                fieldName,
-                                errorMessage?.join(", ") || ""
-                            );
-                        }
-                    }
-                );
-            }
-            setTimeout(() => {
+            // console.log(error.response.data.message.general[0]);
+            toast({
+                title: error.response.data.message.general[0],
+                description: "",
+                status: "error",
+                duration: 3000,
+                isClosable: true
+            });
+            if (error.response.data.message.general.length > 0) {
                 setHasValidationError({
-                    error: false,
-                    message: ""
+                    error: true,
+                    message: error.response.data.message.general[0]
                 });
-            }, 3000);
+            }
+            // if (
+            //     error.response.data.message.general &&
+            //     Object.keys(error.response.data.message.general).length > 0
+            // ) {
+            //     Object.entries(error.response.data.message.general).forEach(
+            //         ([fieldName, errorMessage]) => {
+            //             if (Array.isArray(errorMessage)) {
+            //                 formik.setFieldError(
+            //                     fieldName,
+            //                     errorMessage?.join(", ") || ""
+            //                 );
+            //             }
+            //         }
+            //     );
+            // }
+            // setTimeout(() => {
+            //     setHasValidationError({
+            //         error: false,
+            //         message: ""
+            //     });
+            // }, 3000);
         });
 };
 

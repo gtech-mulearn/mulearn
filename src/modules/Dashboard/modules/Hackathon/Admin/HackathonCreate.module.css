@@ -88,6 +88,7 @@
 .hackNav ul li {
     padding: 0 1rem;
     position: relative;
+	cursor: pointer;
 }
 
 .hackNav ul span {
@@ -96,7 +97,7 @@
     height: 1.8rem;
 }
 
-.hackNav ul li:first-child {
+.selectedTab {
     color: var(--blue);
 }
 
@@ -106,13 +107,14 @@
     background-color: #fff;
     border-radius: var(--borderRadius);
     box-shadow: var(--boxShadow);
+	padding-bottom: 1px;
 }
 
 .formGroup {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 5px;
 }
 
 .InputSet {
@@ -154,7 +156,11 @@
 .btns button:nth-child(2) {
     background-color: var(--blue);
     color: #fff;
+}
 
+.error {
+	color: red;
+	font-size: 12px;
 }
 
 @media (width<=768px) {
@@ -171,4 +177,29 @@
     .InputSet textarea {
         min-width: 18rem;
     }
+}
+.checkBoxContainer {
+	background-color: var(--Light);
+	color: var(--black);
+	padding: .5rem 1rem;
+	border-radius: var(--borderRadius);
+	cursor: pointer;
+	user-select: none;
+}
+
+.formCheckbox {
+	display: none;
+}
+
+.checked {
+	background-color: var(--blue);
+	color: var(--Light);
+	padding: .5rem 1rem;
+	border-radius: var(--borderRadius);
+}
+
+.checkboxOuter {
+	display: flex;
+	gap: 1.5rem;
+	flex-wrap: wrap;
 }

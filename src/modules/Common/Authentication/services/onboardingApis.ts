@@ -218,8 +218,10 @@ export const registerUser = (
     formik: any,
     setHasValidationError: hasValidationError,
     userData: unknown,
-    navigate: NavigateFunction
+    navigate: NavigateFunction,
+    setShowSubmitLoader: (showSubmitLoader: boolean) => void
 ) => {
+    setShowSubmitLoader(true)
     publicGateway
         .post(onboardingRoutes.register, userData)
         .then(function (response) {
@@ -234,8 +236,10 @@ export const registerUser = (
                 response.data.response.refreshToken
             );
             navigate("/connect-discord");
+            setShowSubmitLoader(false)
         })
         .catch(function (error) {
+            setShowSubmitLoader(false)
             if (
                 error.response.data.message &&
                 Object.keys(error.response.data.message).length > 0
@@ -266,17 +270,21 @@ export const emailVerification = (
     formik: any,
     setEmailVerificationResultBtn: emailVerificationResultBtn,
     setOpacity0: opacity0,
-    setDisplay0: display0
+    setDisplay0: display0,
+    setShowLoader: (showLoader: boolean) => void
 ) => {
+    setShowLoader(true);
     publicGateway
         .post(onboardingRoutes.emailVerification, { email: email })
         .then(function (response) {
             setFirstQuesion(!response.data.response.value);
 
             if (response.data.response.value) {
+                setShowLoader(false);
                 formik.errors.email = response.data.message.general;
                 setEmailVerificationResultBtn("Login");
             } else {
+                setShowLoader(false);
                 setTimeout(() => {
                     setOpacity0(0);
                     setDisplay0("none");
@@ -284,6 +292,7 @@ export const emailVerification = (
             }
         })
         .catch(function (error) {
+            setShowLoader(false);
             console.error(error);
         });
 };

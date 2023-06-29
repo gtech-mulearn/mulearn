@@ -116,7 +116,7 @@
 	margin-bottom: 10px;
 	padding: 8px;
 	background-color: var(--White);
-	width: 50%;
+	/* width: 50%; */
 }
 
 .inputBox span {
@@ -143,4 +143,58 @@
 
 .inputBox select {
 	color: var(--Dark);
+}
+
+
+.InputSet {
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+	text-align: left;
+}
+
+.formLabel {
+	text-align: left;
+	font-size: 1.1rem;
+	font-weight: 600;
+	margin: 0;
+	color: #000;
+}
+
+.InputSet input {
+	padding: .7rem 1rem;
+	border-radius: var(--borderRadius);
+	width: 100%;
+	background-color: var(--White);
+	min-width: 22rem;
+	border: .1px solid #CFD3D4;
+}
+
+.reactSelect {
+	padding-top: .7rem;
+	border-radius: var(--borderRadius);
+	width: 100%;
+	font-weight: 500;
+	color: var(--grey);
+	background-color: var(--White) !important;
+	min-width: 22rem;
+}
+
+.InputSet textarea {
+	padding: .7rem 1rem;
+	margin-bottom: 0;
+	border-radius: var(--borderRadius);
+	width: 100%;
+	min-width: 72rem; /*need to change this to make it responsive */
+	min-height: 10rem;
+	border: .1px solid #CFD3D4;
+}
+
+@media (width<=768px) {
+
+	.InputSet input,
+	.InputSet textarea,
+	.reactSelect {
+		min-width: 18rem;
+	}
 }

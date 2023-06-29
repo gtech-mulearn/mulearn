@@ -2,6 +2,10 @@ import { useNavigate } from 'react-router-dom';
 import './Organizations.scss';
 import { useLocation } from 'react-router-dom';
 import FormData from './FormData';
+import Form from "../../../../components/MuComponents/Form/Form";
+import styles from "../../../../components/MuComponents/FormikComponents/form.module.css";
+import { Formik } from 'formik';
+import * as Yup from "yup";
 
 function CreateOrganization() {
   const navigate = useNavigate();
@@ -39,6 +43,7 @@ function CreateOrganization() {
 
   return (
     <div className="popup_container">
+    <div className={styles.container}>
       <div className="popup_top_container">
         <h1 className="popup_title">Add {activeItem}</h1>
         <i
@@ -52,9 +57,8 @@ function CreateOrganization() {
         Once you have verified the information, please click the <span>Confirm</span>
         button to proceed for further process.
       </p>
-      <div className="popup_dropdown_container">
-        <RenderFormData activeItem={activeItem} />
-      </div>
+      <RenderFormData activeItem={activeItem} />
+    </div>
     </div>
   );
 }

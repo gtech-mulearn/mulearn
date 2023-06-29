@@ -35,14 +35,18 @@ export const dashboardRoutes = {
     getStudentDetails: "/api/v1/dashboard/campus/student-details/",
     getStudentsList: "/api/v1/dashboard/campus/student-details/csv/",
     getCampusDetails: "/api/v1/dashboard/campus/campus-details/",
+    
     getShortenUrl: "/api/v1/url-shortener/list/",
     createShortenUrl: "/api/v1/url-shortener/create/",
     editShortenUrl: "/api/v1/url-shortener/edit/${urlId}/",
     deleteShortenUrl: "/api/v1/url-shortener/delete/${urlId}/",
 
     getUserProfile: "/api/v1/dashboard/profile/user-profile/",
+    getPublicUserProfile: "/api/v1/dashboard/profile/user-profile/${muid}/",
     editUserProfile: "/api/v1/dashboard/profile/edit-user-profile/",
     getUserLog: "/api/v1/dashboard/profile/user-log/",
+    putIsPublic: "/api/v1/dashboard/profile/share-user-profile/",
+    getPublicUserLog: "/api/v1/dashboard/profile/user-log/${muid}/",
     getUserSuggestion: "/api/v1/dashboard/profile/user-suggestion/",
     getStudentLeaderBoard: "api/v1/leaderboard/students/",
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
@@ -53,7 +57,10 @@ export const dashboardRoutes = {
     districtStudentDetails: "/api/v1/dashboard/district/student-details/",
     districtStudentData: "/api/v1/dashboard/district/student-details/csv/",
     districtCampusDetails: "/api/v1/dashboard/district/campus-details/",
-    districtCampusData: "/api/v1/dashboard/district/campus-details/csv/"
+    districtCampusData: "/api/v1/dashboard/district/campus-details/csv/",
+
+    getHackathonFormData: "/api/v1/hackathon/list-default-form-fields/",
+    createHackathon: "/api/v1/hackathon/create-hackathon/"
 };
 
 export const organizationRoutes = {
@@ -64,5 +71,10 @@ export const organizationRoutes = {
     postAddOrganization: "/api/v1/organisation/institutes/add",
     putUpdateOrganization: "/api/v1/organisation/institutes",
     deleteOrgnaization: "/api/v1/organisation/institutes/",
-    postGetInfo: "/api/v1/organisation/institutes/info/"
+    postGetInfo: "/api/v1/organisation/institutes/info/",
+    getOrgCsv: "/api/v1/organisation/institutes/csv"
+};
+
+export const KKEMRoutes = {
+    userAuth: "/api/v1/integrations/kkem/authorization/"
 };

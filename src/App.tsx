@@ -46,6 +46,8 @@ import ZonalDashboard from "./modules/Dashboard/modules/zonalDashboard/zonaldash
 import DistrictDashboard from "./modules/Dashboard/modules/districtDashboard/districtdashboard";
 import Hackathon from "./modules/Dashboard/modules/Hackathon/User/Hackathon";
 import HackathonCreate from "./modules/Dashboard/modules/Hackathon/Admin/HackathonCreate";
+import KKEMLanding from "./modules/KKEM/modules/KKEMLanding";
+import KKEMAuth from "./modules/KKEM/modules/KKEMAuth";
 
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
@@ -60,6 +62,14 @@ const router = createBrowserRouter([
     {
         path: "404",
         element: <NotFound />
+    },
+    {
+        path: "kkem",
+        element: <KKEMLanding />
+    },
+    {
+        path: "kkem/authorization/:token",
+        element: <KKEMAuth />
     },
     {
         path: "/",
@@ -174,10 +184,17 @@ const router = createBrowserRouter([
                     },
                     { path: "url-shortener", element: <UrlShortener /> },
                     { path: "hackathon", element: <Hackathon /> },
-                    { path: "hackathon-management", element: <HackathonCreate /> }
+                    {
+                        path: "hackathon-management",
+                        element: <HackathonCreate />
+                    }
                 ]
             }
         ]
+    },
+    {
+        path: "profile/:id",
+        element: <Profile />
     }
 ]);
 

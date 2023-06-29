@@ -5,7 +5,7 @@
 .heatmap_container .months {
     margin-left: 25px;
     display: flex;
-    gap: 33px;
+    gap: 2.1rem;
     justify-content: flex-start;
 }
 
@@ -19,7 +19,6 @@
 .heatmap_container .heatmap {
     display: flex;
     flex-wrap: wrap;
-    /* width: 400px; */
     height: 110px;
     align-content: space-between;
     flex-direction: column;
