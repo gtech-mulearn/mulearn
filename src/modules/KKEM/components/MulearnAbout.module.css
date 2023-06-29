@@ -21,6 +21,7 @@
     background: #67de82;
     margin-top: -1rem;
     border-radius: 0.5rem;
+    max-width: 100%;
 }
 .description {
     margin-top: 2rem;

@@ -2,6 +2,8 @@
     background-color: #2e85fe;
     padding: 2rem;
     height: 8rem;
+    display: flex;
+    flex-direction: column;
 }
 .container {
     display: flex;
@@ -14,6 +16,7 @@
     position: absolute;
     top: 2rem;
     z-index: 2;
+    perspective: 1000px;
 }
 .logos {
     display: flex;
@@ -34,11 +37,57 @@
 .links > a:hover {
     color: #2e85fe;
 }
-@media screen and (max-width: 800px) {
+.mobile {
+    display: none;
+}
+
+@media screen and (max-width: 860px) {
     .navbar {
         padding: 1rem;
     }
     .links {
         display: none;
+
+        transform: rotateX(90deg);
+        transform-origin: top;
+        animation: show 0.5s ease forwards;
+    }
+    .mobile {
+        display: grid;
+        place-items: center;
+        padding: 1rem;
+        background-color: #68df83;
+        border-radius: 50%;
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        z-index: 2;
+        font-size: xx-large;
+        color: #fff;
+        cursor: pointer;
+    }
+    .active {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        background-color: #fff;
+        position: absolute;
+        width: calc(100vw - 2rem);
+        padding: 5rem 1rem;
+        top: 5rem;
+        left: 0;
+        font-size: large;
+        transform: rotateX(90deg);
+        transform-origin: top;
+        animation: show 0.5s ease forwards;
+    }
+}
+
+@keyframes show {
+    0% {
+        transform: rotateX(90deg);
+    }
+    100% {
+        transform: rotateX(0deg);
     }
 }

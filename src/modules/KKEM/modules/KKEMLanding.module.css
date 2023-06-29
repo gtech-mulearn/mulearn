@@ -27,12 +27,12 @@ html {
 .wave {
     display: block;
     content: "";
-    width: 125vw;
+    width: 130vw;
     height: 10rem;
     background: url("../assets/wave.png") repeat-x;
     background-color: #fff;
     background-size: 100% 100%;
-    transform: translateX(-25vw);
+    transform: translateX(-30vw);
 }
 
 .muidSectionText {
