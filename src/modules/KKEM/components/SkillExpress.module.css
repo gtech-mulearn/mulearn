@@ -1,0 +1,107 @@
+.skillExpressSection {
+    padding: 3rem;
+}
+
+.title {
+    color: #293338;
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 111.5%;
+}
+
+.title::after {
+    content: "";
+    display: block;
+    width: calc(2rem * 23);
+    height: 0.6rem;
+    background: #4794ff;
+    margin-top: -1rem;
+    border-radius: 0.5rem;
+}
+.description {
+    margin-top: 5rem;
+    color: #293338;
+    font-size: 1.875rem;
+    font-family: Plus Jakarta Sans;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 127.5%;
+    width: 80%;
+}
+.featureText {
+    margin-top: 3rem;
+    color: #293338;
+    font-size: 1.875rem;
+    font-family: Plus Jakarta Sans;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 127.5%;
+    width: 80%;
+}
+
+.features {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-top: 3rem;
+    align-items: center;
+}
+.featureContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    justify-content: center;
+}
+.feature {
+    display: flex;
+    box-shadow: 0px 0px 37px 0px rgba(0, 0, 0, 0.07);
+    border-radius: 1.5rem;
+    padding: 1rem 2rem;
+    max-width: 50rem;
+    --color: #293338;
+}
+
+.featureGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
+}
+.featureTitle {
+    color: var(--color);
+    font-size: 2rem;
+    font-family: Plus Jakarta Sans;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.featureDescription {
+    color: var(--color);
+    font-size: 1rem;
+    font-family: Plus Jakarta Sans;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    max-width: 35rem;
+}
+.featureIcon {
+    width: 8rem;
+    height: 8rem;
+}
+
+.feature:hover {
+    --color: #456ff6;
+    outline: 3px solid #456ff6;
+}
+.featuresImage {
+    width: 50%;
+    height: 100%;
+    max-width: 50rem;
+}
+.featuresImage > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

@@ -14,7 +14,7 @@ export default function Navbar() {
                 <div className={styles.links}>
                     <a href="#">About µLearn</a>
                     <a href="#">About K-KEM</a>
-                    <a href="#">Kerala Skill Express?</a>
+                    <a href="#skillExpress">Kerala Skill Express?</a>
                 </div>
             </div>
         </nav>

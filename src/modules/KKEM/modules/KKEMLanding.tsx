@@ -1,5 +1,6 @@
 import KKEMAuth from "../components/Auth";
 import Navbar from "../components/Navbar";
+import SkillExpress from "../components/SkillExpress";
 import { useSearchParams } from "react-router-dom";
 import styles from "./KKEmLanding.module.css";
 /**
@@ -12,7 +13,7 @@ export default function Landing() {
         <>
             <Navbar />
             {dwms_id && (
-                <div className={styles.muidSection}>
+                <section id="muId" className={styles.muidSection}>
                     <KKEMAuth dwmsId={dwms_id} />
                     <p className={styles.muidSectionText}>
                         To get started, please enter your{" "}
@@ -23,8 +24,9 @@ export default function Landing() {
                     <a href="#" className={styles.muidLink}>
                         Still without a Mu-Id? Grab one now
                     </a>
-                </div>
+                </section>
             )}
+            <SkillExpress />
         </>
     );
 }
