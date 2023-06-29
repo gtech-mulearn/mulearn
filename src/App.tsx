@@ -48,6 +48,7 @@ import Hackathon from "./modules/Dashboard/modules/Hackathon/User/Hackathon";
 import HackathonCreate from "./modules/Dashboard/modules/Hackathon/Admin/HackathonCreate";
 import KKEMLanding from "./modules/KKEM/modules/KKEMLanding";
 import KKEMAuth from "./modules/KKEM/modules/KKEMAuth";
+import RankCard from "./modules/Embeds/modules/RankCard/pages/RankCard";
 
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
     {
         path: "kkem/authorization/:token",
         element: <KKEMAuth />
+    },
+    {
+        path: "embed/rankcard",
+        element: <RankCard />
     },
     {
         path: "/",
