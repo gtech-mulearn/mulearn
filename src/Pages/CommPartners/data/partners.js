@@ -25,8 +25,8 @@ const partners = [
   {
     name: "Kerala Startup Mission",
     image: ksum,
-    link: "",
-    customlink: "/community-partners/iedc",
+    link: "https://startupmission.kerala.gov.in/",
+    // customlink: "/community-partners/iedc",
   },
 
   {
@@ -45,8 +45,7 @@ const partners = [
   {
     name: "Riglabs",
     image: riglabs,
-    link: "",
-    customlink: "https://www.riglabs.co/",
+    link: "https://www.riglabs.co/",
   },
   {
     name: "Institute of Electrical and Electronics Engineers",
