@@ -201,7 +201,7 @@ export const requestEmailOrMuidOtp = (
                 setOtpError(false);
                 setHasError(false);
                 toast({
-                    title: "OTP Sended",
+                    title: "OTP Sent",
                     description: "OTP has been sent to your email",
                     status: "success",
                     duration: 5000,
@@ -264,7 +264,7 @@ export const otpVerification = (
                     if (response.data.response.existInGuild) {
                         navigate("/profile");
                     } else {
-                        navigate("/connect-discord");
+                        // navigate("/connect-discord");
                         navigate(`/${redirectPath}`);
                     }
                 })
