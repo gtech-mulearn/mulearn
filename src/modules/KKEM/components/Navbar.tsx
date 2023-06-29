@@ -12,7 +12,7 @@ export default function Navbar() {
                     <img src={kkemlogo} alt="KKEM Logo" />
                 </div>
                 <div className={styles.links}>
-                    <a href="#">About µLearn</a>
+                    <a href="#about">About µLearn</a>
                     <a href="#">About K-KEM</a>
                     <a href="#skillExpress">Kerala Skill Express?</a>
                 </div>

@@ -1,6 +1,7 @@
 .navbar {
     background-color: #2e85fe;
     padding: 2rem;
+    height: 8rem;
 }
 .container {
     display: flex;
@@ -10,6 +11,8 @@
     padding: 1rem 2rem;
     gap: 5rem;
     border-radius: 1.2rem;
+    position: absolute;
+    top: 2rem;
 }
 .logos {
     display: flex;
