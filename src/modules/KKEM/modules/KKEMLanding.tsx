@@ -5,12 +5,15 @@ import { useSearchParams } from "react-router-dom";
 import styles from "./KKEmLanding.module.css";
 import MulearnAbout from "../components/MulearnAbout";
 import Footer from "../components/Footer";
+import MuIDModal from "../components/MuIDModal";
+import { useState } from "react";
 /**
  * Landing page for KKEM
  */
 export default function Landing() {
     const [searchParams] = useSearchParams();
     const dwms_id = searchParams.get("dwms_id");
+    const [modalOpen, setModalOpen] = useState(false);
     return (
         <main className={styles.main}>
             <Navbar />
@@ -26,9 +29,16 @@ export default function Landing() {
                                 the{" "}
                                 <strong>µLearn website and create one</strong>.
                             </p>
-                            <a href="#" className={styles.muidLink}>
+                            <button
+                                className={styles.muidLink}
+                                onClick={() => setModalOpen(true)}
+                            >
                                 Still without a Mu-Id? Grab one now
-                            </a>
+                            </button>
+                            <MuIDModal
+                                open={modalOpen}
+                                setOpen={setModalOpen}
+                            />
                         </div>
                     </section>
                     <div className={styles.wave}></div>
