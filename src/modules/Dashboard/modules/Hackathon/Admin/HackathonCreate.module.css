@@ -163,7 +163,7 @@
 	font-size: 12px;
 }
 
-@media (width<=768px) {
+@media (width < 1080px) {
 
     .dashLine {
         font-size: 2.5rem;
@@ -172,10 +172,11 @@
     .dashLine::before {
         bottom: .7rem;
     }
+}
 
-    .InputSet input,
+@media (width<=768px) {
     .InputSet textarea {
-        min-width: 18rem;
+        min-width: 30vw;
     }
 }
 .checkBoxContainer {
