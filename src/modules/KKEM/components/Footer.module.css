@@ -67,3 +67,9 @@
         text-align: center;
     }
 }
+@media screen and (max-width: 800px) {
+    .footer {
+        padding: 3rem;
+        margin: 1rem;
+    }
+}

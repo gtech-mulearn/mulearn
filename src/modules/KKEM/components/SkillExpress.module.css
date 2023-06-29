@@ -151,3 +151,15 @@
         width: 100%;
     }
 }
+
+@media screen and (max-width: 800px) {
+    .skillExpressSection {
+        padding: 2rem;
+    }
+    .title {
+        font-size: 2.5rem;
+    }
+    .title::after {
+        width: calc(2.3rem * 10);
+    }
+}

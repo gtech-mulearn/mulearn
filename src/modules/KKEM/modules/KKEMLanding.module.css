@@ -75,3 +75,8 @@ html {
         font-size: 1.2rem;
     }
 }
+@media screen and (max-width: 800px) {
+    .muidSection {
+        padding: 0 3rem;
+    }
+}

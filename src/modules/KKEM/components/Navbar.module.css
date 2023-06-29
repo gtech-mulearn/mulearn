@@ -34,3 +34,8 @@
 .links > a:hover {
     color: #2e85fe;
 }
+@media screen and (max-width: 800px) {
+    .navbar {
+        padding: 1rem;
+    }
+}

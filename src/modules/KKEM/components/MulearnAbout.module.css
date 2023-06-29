@@ -88,3 +88,8 @@
         width: 30rem;
     }
 }
+@media screen and (max-width: 800px) {
+    .section {
+        padding: 2rem;
+    }
+}
