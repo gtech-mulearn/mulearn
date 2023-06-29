@@ -13,6 +13,7 @@
 .container {
     display: flex;
     justify-content: space-between;
+    gap: 5rem;
 }
 .footerSection {
     display: flex;
@@ -43,4 +44,26 @@
 }
 .copyRight {
     font-size: 0.9rem;
+}
+@media screen and (max-width: 1000px) {
+    .container {
+        flex-direction: column;
+    }
+    .footerSection {
+        display: none;
+    }
+    .footer > hr {
+        display: none;
+    }
+    .socialMedia {
+        justify-content: center;
+    }
+    .legal {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    .copyRight {
+        text-align: center;
+    }
 }
