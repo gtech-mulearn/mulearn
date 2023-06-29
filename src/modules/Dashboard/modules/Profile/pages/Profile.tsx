@@ -31,8 +31,8 @@ const Profile = () => {
     const [display, setDisplay] = useState("flex");
     const [popUP, setPopUP] = useState(false);
     const [userProfile, setUserProfile] = useState({
-        firstName: "",
-        lastName: "",
+        first_name: "",
+        last_name: "",
         college_code: "",
         interest_groups: [{ name: "", karma: 0 }],
         karma_distribution: [{ task_type: "", karma: 0 }],
@@ -50,9 +50,9 @@ const Profile = () => {
     const [profileStatus, setProfileStatus] = useState<boolean>();
     const [userLog, setUserLog] = useState([
         {
-            taskName: "",
-            karmaPoint: "",
-            createdDate: ""
+            task_name: "",
+            karma: "",
+            created_date: ""
         }
     ]);
 
@@ -80,18 +80,22 @@ const Profile = () => {
     const startDate = new Date(userProfile.joined.slice(0, 10));
     const endDate = new Date(moment().format("YYYY-MM-DD"));
     const monthDifference = getMonthDifference(startDate, endDate);
-    const firstFetch = useRef(true)
+    const firstFetch = useRef(true);
     useEffect(() => {
         if (firstFetch.current) {
             if (!id) {
-                getUserProfile(setUserProfile, setAPILoadStatus, setProfileStatus);
+                getUserProfile(
+                    setUserProfile,
+                    setAPILoadStatus,
+                    setProfileStatus
+                );
                 getUserLog(setUserLog);
             } else {
                 getPublicUserProfile(setUserProfile, setAPILoadStatus, id);
                 getPublicUserLog(setUserLog, id);
             }
         }
-        firstFetch.current = false
+        firstFetch.current = false;
     }, []);
     return (
         <>
@@ -118,9 +122,9 @@ const Profile = () => {
                                     popUP
                                         ? { transform: "scale(1)" }
                                         : {
-                                            transform: "scale(0)"
-                                            // opacity: "0",
-                                        }
+                                              transform: "scale(0)"
+                                              // opacity: "0",
+                                          }
                                 }
                                 className={styles.share_pop_up_container}
                             >
@@ -247,17 +251,17 @@ const Profile = () => {
                                                             ? userProfile.profile_pic
                                                             : dpm
                                                     }
-                                                    alt={userProfile.firstName}
+                                                    alt={userProfile.first_name}
                                                 />
 
                                                 <div className={styles.name}>
                                                     <h1>
-                                                        {userProfile.firstName}{" "}
-                                                        {userProfile.lastName}{" "}
+                                                        {userProfile.first_name}{" "}
+                                                        {userProfile.last_name}{" "}
                                                         {userProfile.college_code
                                                             ? "(" +
-                                                            userProfile.college_code +
-                                                            ")"
+                                                              userProfile.college_code +
+                                                              ")"
                                                             : null}
                                                     </h1>
                                                     <p
@@ -275,9 +279,9 @@ const Profile = () => {
                                                         LEVEL{"     "}
                                                         {userProfile.level
                                                             ? userProfile.level.slice(
-                                                                3,
-                                                                4
-                                                            )
+                                                                  3,
+                                                                  4
+                                                              )
                                                             : 0}
                                                     </p>
                                                 </div>
@@ -289,7 +293,7 @@ const Profile = () => {
                                                     }
                                                     className={styles.share_btn}
                                                 >
-                                                    <i className="fi fi-sr-share"></i>
+                                                    <i className="fi fi-br-share"></i>
                                                     {/* <i className="fi fi-sr-share-alt-square"></i> */}
                                                 </p>
                                             ) : null}
@@ -313,15 +317,15 @@ const Profile = () => {
                                             <p
                                                 style={
                                                     profileList ===
-                                                        "basic-detials"
+                                                    "basic-detials"
                                                         ? { marginLeft: "0px" }
                                                         : profileList ===
-                                                            "karma-history"
-                                                            ? {
-                                                                marginLeft:
-                                                                    "115px"
-                                                            }
-                                                            : {}
+                                                          "karma-history"
+                                                        ? {
+                                                              marginLeft:
+                                                                  "115px"
+                                                          }
+                                                        : {}
                                                 }
                                                 className={styles.underline}
                                             ></p>
@@ -361,11 +365,11 @@ const Profile = () => {
                                                             userProfile.karma
                                                         ) > 1000
                                                             ? (
-                                                                parseInt(
-                                                                    userProfile.karma
-                                                                ) / 1000
-                                                            ).toPrecision(4) +
-                                                            "K"
+                                                                  parseInt(
+                                                                      userProfile.karma
+                                                                  ) / 1000
+                                                              ).toPrecision(4) +
+                                                              "K"
                                                             : userProfile.karma}
                                                     </h1>
                                                 </div>
@@ -386,7 +390,7 @@ const Profile = () => {
                                                             userProfile.karma
                                                         ) /
                                                             monthDifference >
-                                                        1000
+                                                        1000 && monthDifference !== 0
                                                             ? (
                                                                   parseInt(
                                                                       userProfile.karma
@@ -468,10 +472,10 @@ const Profile = () => {
                                                 .sort((a, b) => {
                                                     return (
                                                         new Date(
-                                                            b.createdDate
+                                                            b.created_date
                                                         ).getTime() -
                                                         new Date(
-                                                            a.createdDate
+                                                            a.created_date
                                                         ).getTime()
                                                     );
                                                 })
@@ -504,19 +508,19 @@ const Profile = () => {
                                                                         }}
                                                                     >
                                                                         {
-                                                                            log.karmaPoint
+                                                                            log.karma
                                                                         }
                                                                     </span>{" "}
                                                                     awarded for{" "}
                                                                     {
-                                                                        log.taskName
+                                                                        log.task_name
                                                                     }
                                                                     .
                                                                 </p>
                                                                 <p>
                                                                     {moment
                                                                         .utc(
-                                                                            log.createdDate
+                                                                            log.created_date
                                                                         )
                                                                         .local()
                                                                         .startOf(
