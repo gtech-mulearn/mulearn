@@ -105,3 +105,49 @@
     height: 100%;
     object-fit: cover;
 }
+
+@media screen and (max-width: 1200px) {
+    .title {
+        font-size: 3rem;
+    }
+    .title::after {
+        width: calc(2rem * 14);
+        margin-top: -0.5rem;
+    }
+    .description {
+        font-size: 1.5rem;
+    }
+    .featureText {
+        font-size: 1.5rem;
+    }
+    .features {
+        gap: 3rem;
+    }
+    .featuresImage {
+        width: 70%;
+        height: 50%;
+    }
+    .feature {
+        max-width: 100%;
+    }
+    .featureIcon {
+        width: 5rem;
+        height: 5rem;
+    }
+    .featureTitle {
+        font-size: 1.5rem;
+    }
+    .featureDescription {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .featuresImage {
+        display: none;
+    }
+    .description {
+        margin-top: 2rem;
+        width: 100%;
+    }
+}
