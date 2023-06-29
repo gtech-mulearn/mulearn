@@ -12,7 +12,6 @@ import kuttycoders from "../assets/partners/kuttycoders.webp";
 import google_android from "../assets/partners/google_android.webp";
 import gdsc from "../assets/partners/gdsc.webp";
 import icfoss from "../assets/partners/icfoss.webp";
-import riglabs from "../assets/partners/riglabs.webp"
 
 const partners = [
   {
