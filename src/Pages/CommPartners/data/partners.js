@@ -43,11 +43,6 @@ const partners = [
     customlink: "/community-partners/foxlab",
   },
   {
-    name: "Riglabs",
-    image: riglabs,
-    link: "https://www.riglabs.co/",
-  },
-  {
     name: "Institute of Electrical and Electronics Engineers",
     image: ieee,
     link: "",
