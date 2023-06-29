@@ -11,8 +11,13 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
     useEffect(() => {
         const modal = modalRef.current;
         if (modal) {
-            if (open) modal.showModal();
-            else modal.close();
+            if (open) {
+                modal.showModal();
+                document.body.style.overflow = "hidden";
+            } else {
+                modal.close();
+                document.body.style.overflow = "auto";
+            }
         }
         return () => {
             if (modal) {
