@@ -1,0 +1,54 @@
+.section {
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    color: #293338;
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 111.5%;
+    margin-bottom: 5rem;
+}
+
+.title::after {
+    content: "";
+    display: block;
+    width: calc(2.3rem * 14);
+    height: 0.6rem;
+    background: #67de82;
+    margin-top: -1rem;
+    border-radius: 0.5rem;
+}
+.description {
+    margin-top: 2rem;
+    color: #293338;
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 127.5%;
+    max-width: 60vmax;
+}
+.description > a {
+    color: #2e85fe;
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 127.5%;
+    text-decoration: none;
+}
+.image {
+    animation: upDown 2s ease-in-out infinite;
+}
+
+@keyframes upDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-1rem);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
