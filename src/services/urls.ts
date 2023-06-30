@@ -45,10 +45,12 @@ export const dashboardRoutes = {
     getPublicUserProfile: "/api/v1/dashboard/profile/user-profile/${muid}/",
     editUserProfile: "/api/v1/dashboard/profile/edit-user-profile/",
     getUserLog: "/api/v1/dashboard/profile/user-log/",
+    getUserLevels:"/api/v1/dashboard/profile/get-user-levels/",
     putIsPublic: "/api/v1/dashboard/profile/share-user-profile/",
     getPublicUserLog: "/api/v1/dashboard/profile/user-log/${muid}/",
     getUserSuggestion: "/api/v1/dashboard/profile/user-suggestion/",
     getStudentLeaderBoard: "api/v1/leaderboard/students/",
+    
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
     zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv/",
     zonalCampusDetails: "/api/v1/dashboard/zonal/campus-details/",

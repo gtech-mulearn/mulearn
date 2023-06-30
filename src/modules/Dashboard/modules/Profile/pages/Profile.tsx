@@ -22,6 +22,7 @@ import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import { useParams } from "react-router-dom";
 import { bool } from "yup";
 import { useToast } from "@chakra-ui/react";
+import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
@@ -325,6 +326,12 @@ const Profile = () => {
                                                               marginLeft:
                                                                   "115px"
                                                           }
+                                                        : profileList ===
+                                                          "mu-voyage"
+                                                        ? {
+                                                              marginLeft:
+                                                                  "240px"
+                                                          }
                                                         : {}
                                                 }
                                                 className={styles.underline}
@@ -343,6 +350,13 @@ const Profile = () => {
                                                     setProfileList(
                                                         "karma-history"
                                                     )
+                                                }
+                                            >
+                                                Karma History
+                                            </li>
+                                            <li
+                                                onClick={() =>
+                                                    setProfileList("mu-voyage")
                                                 }
                                             >
                                                 Karma History
@@ -431,6 +445,8 @@ const Profile = () => {
                                             userProfile={userProfile}
                                             userLog={userLog}
                                         />
+                                    ) : profileList === "mu-voyage" ? (
+                                        <MuVoyage />
                                     ) : null}
                                 </div>
 
