@@ -359,7 +359,7 @@ const Profile = () => {
                                                     setProfileList("mu-voyage")
                                                 }
                                             >
-                                                Karma History
+                                                Mu Voyage
                                             </li>
                                             {/* <li>Join Mulearn</li> */}
                                             {/* <li>See More</li> */}
