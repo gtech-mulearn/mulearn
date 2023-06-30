@@ -55,7 +55,6 @@ const MuVoyage = () => {
                                 value={parseInt(userLevelTrackerPercentage)}
                                 size="xs"
                                 colorScheme="green"
-                                isAnimated={true}
                             />
                         </div>
 
