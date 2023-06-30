@@ -15,13 +15,13 @@ import { GridLoader } from "react-spinners";
 import dpm from "../assets/images/dpm.jpg";
 import Rank from "../assets/svg/Rank";
 import Karma, { KarmaWhite } from "../assets/svg/Karma";
-import { Switch } from "@chakra-ui/react";
+
 import BasicDetails from "../components/BasicDetails";
 import { profile } from "console";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import { useParams } from "react-router-dom";
 import { bool } from "yup";
-import { useToast } from "@chakra-ui/react";
+import { useToast, Switch } from "@chakra-ui/react";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 
 const Profile = () => {
@@ -318,19 +318,19 @@ const Profile = () => {
                                             <p
                                                 style={
                                                     profileList ===
-                                                    "basic-detials"
+                                                    "basic-details"
                                                         ? { marginLeft: "0px" }
                                                         : profileList ===
                                                           "karma-history"
                                                         ? {
                                                               marginLeft:
-                                                                  "115px"
+                                                                  "125px"
                                                           }
                                                         : profileList ===
                                                           "mu-voyage"
                                                         ? {
                                                               marginLeft:
-                                                                  "240px"
+                                                                  "250px"
                                                           }
                                                         : {}
                                                 }
@@ -342,6 +342,15 @@ const Profile = () => {
                                                         "basic-details"
                                                     )
                                                 }
+                                                style={
+                                                    profileList ===
+                                                    "basic-details"
+                                                        ? {
+                                                              fontSize: "600",
+                                                              color: "#000"
+                                                          }
+                                                        : {}
+                                                }
                                             >
                                                 Basic Details
                                             </li>
@@ -351,6 +360,15 @@ const Profile = () => {
                                                         "karma-history"
                                                     )
                                                 }
+                                                style={
+                                                    profileList ===
+                                                    "karma-history"
+                                                        ? {
+                                                              fontSize: "600",
+                                                              color: "#000"
+                                                          }
+                                                        : {}
+                                                }
                                             >
                                                 Karma History
                                             </li>
@@ -358,8 +376,16 @@ const Profile = () => {
                                                 onClick={() =>
                                                     setProfileList("mu-voyage")
                                                 }
+                                                style={
+                                                    profileList === "mu-voyage"
+                                                        ? {
+                                                              fontSize: "600",
+                                                              color: "#000"
+                                                          }
+                                                        : {}
+                                                }
                                             >
-                                                Karma History
+                                                Mu Voyage
                                             </li>
                                             {/* <li>Join Mulearn</li> */}
                                             {/* <li>See More</li> */}
@@ -404,7 +430,8 @@ const Profile = () => {
                                                             userProfile.karma
                                                         ) /
                                                             monthDifference >
-                                                        1000 && monthDifference !== 0
+                                                            1000 &&
+                                                        monthDifference !== 0
                                                             ? (
                                                                   parseInt(
                                                                       userProfile.karma
