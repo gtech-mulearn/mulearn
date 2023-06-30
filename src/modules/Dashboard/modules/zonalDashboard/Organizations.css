@@ -13,16 +13,16 @@
   cursor: pointer;
 }
 .table_tab_container .table_tabs .active {
-  background-color: #014bb2;
+  background-color: #456ff6;
   color: white;
 }
 .table_tab_container .table_tabs .inactive {
-  border: 1px solid #014bb2;
-  color: #014bb2;
+  border: 1px solid #456ff6;
+  color: #456ff6;
 }
 .table_tab_container .org_create_btn {
   background-color: white;
-  border: 1px solid #014bb2;
+  border: 1px solid #456ff6;
   display: flex;
   gap: 8px;
   align-items: center;
@@ -96,7 +96,7 @@
   border-radius: 50%;
 }
 .popup_top_container i:hover {
-  background-color: rgba(1, 75, 178, 0.1137254902);
+  background-color: rgba(69, 111, 246, 0.1137254902);
 }
 
 .submit_container {
@@ -123,14 +123,14 @@
 }
 
 .blue-btn {
-  background: #014BB2;
+  background: #456ff6;
   color: #fff;
 }
 
 .light-btn {
   background-color: #f5f7fb;
   border: 1px solid #8c95a7;
-  color: #014BB2;
+  color: #456ff6;
 }
 
 @media only screen and (max-width: 768px) {

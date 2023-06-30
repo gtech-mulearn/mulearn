@@ -63,7 +63,8 @@ export const dashboardRoutes = {
     districtCampusData: "/api/v1/dashboard/district/campus-details/csv/",
 
     getHackathonFormData: "/api/v1/hackathon/list-default-form-fields/",
-    createHackathon: "/api/v1/hackathon/create-hackathon/"
+    createHackathon: "/api/v1/hackathon/create-hackathon/",
+    getHackathons: "/api/v1/hackathon/list-hackathons/"
 };
 
 export const organizationRoutes = {

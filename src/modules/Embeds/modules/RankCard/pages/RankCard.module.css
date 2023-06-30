@@ -8,40 +8,37 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    margin: 1rem;
 }
 
 .RankCardDetails {
-    padding: 2rem 3rem 0rem 3rem;
+    padding: 1rem 2rem 0rem 2rem;
     display: flex;
     justify-content: center;
-    gap: 3rem;
+    gap: 1.5rem;
 }
 
 .ProfileDetails {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    width: fit-content;
+    gap: .8rem;
+    width: 18rem;
 }
 
 .ProfileName h1 {
-    font-size: 2rem;
-    line-height: 2.1rem;
-}
-
-.ProfileName p {
     font-size: 1.5rem;
+    line-height: 2rem;
 }
 
 .ProfileImg {
     display: flex;
+    align-items: center;
 }
 
 .ProfileImg img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    object-fit: contain;
+    border-radius: 100%;
     border: 7px solid #fff;
     background-color: #fff;
     overflow: hidden;
@@ -56,11 +53,14 @@
     text-align: center;
     border-radius: 8px;
     padding: .5rem 1rem;
-    width: 8rem;
-    line-height: 2rem;
-    font-size: 1.6rem;
+    width: 6rem;
+    line-height: 1.2rem;
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.Rank div b {
+    font-size: 1.3rem;
 }
 
 .Rank .karma {
@@ -79,14 +79,13 @@
     display: flex;
     flex-wrap: wrap;
     gap: .5rem;
-    width: 22rem;
-    font-size: .6rem;
+    font-size: .5rem;
 }
 
 .InterestGrp ul li {
     background-color: #4B4B4B;
-    padding: .5rem .5rem;
-    border-radius: 8px;
+    padding: .3rem .3rem;
+    border-radius: 4px;
 }
 
 .Bottom {
@@ -96,40 +95,50 @@
 }
 
 .Bottom p {
-    font-size: 3.5rem;
+    font-size: 2.2rem;
     font-weight: 900;
     color: #4B4B4B;
-    margin-bottom: -1rem;
-    margin-left: -.1rem;
+    margin-bottom: -.7rem;
+    margin-left: .2rem;
 }
 
 .Bottom img {
-    height: 2rem;
+    height: 1.5rem;
     margin-right: 1.5rem;
 }
 
 @media (width<720px) {
 
     .RankCardDetails {
-        flex-direction: column;
+        padding: 1rem 1rem 0rem 1rem;
         gap: 1rem;
     }
 
-    .ProfileImg {
-        justify-content: center;
+    .ProfileDetails {
+        width: 15rem;
+    }
+
+    .ProfileName h1 {
+        font-size: 1.3rem;
     }
 
     .ProfileImg img {
-        width: 120px;
-        height: 120px;
+        width: 6rem;
+        height: 6rem;
+        border: 5px solid #fff;
     }
 
     .Rank div {
-        width: 100%;
+        width: 4.8rem;
+        font-size: .8rem;
+    }
+
+    .Rank div b {
+        font-size: 1rem;
     }
 
     .InterestGrp ul {
-        width: 100%;
+        font-size: .4rem;
     }
 
     .Bottom {
@@ -143,7 +152,32 @@
     }
 
     .Bottom img {
-        height: 1.5rem;
-        margin-right: 1rem;
+        height: 1rem;
     }
 }
+
+@media (width<300px){
+
+    .ProfileDetails {
+        width: 10rem;
+    }
+
+    .ProfileImg img {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .Bottom {
+        margin-top: .5rem;
+    }
+
+    .Bottom p {
+        font-size: 1.5rem;
+        margin-left: .5rem;
+        margin-bottom: -.5rem;
+    }
+
+    .Bottom img {
+        height: .8rem;
+    }
+} 
