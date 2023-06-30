@@ -318,19 +318,19 @@ const Profile = () => {
                                             <p
                                                 style={
                                                     profileList ===
-                                                    "basic-detials"
+                                                    "basic-details"
                                                         ? { marginLeft: "0px" }
                                                         : profileList ===
                                                           "karma-history"
                                                         ? {
                                                               marginLeft:
-                                                                  "115px"
+                                                                  "125px"
                                                           }
                                                         : profileList ===
                                                           "mu-voyage"
                                                         ? {
                                                               marginLeft:
-                                                                  "240px"
+                                                                  "250px"
                                                           }
                                                         : {}
                                                 }
@@ -342,6 +342,15 @@ const Profile = () => {
                                                         "basic-details"
                                                     )
                                                 }
+                                                style={
+                                                    profileList ===
+                                                    "basic-details"
+                                                        ? {
+                                                              fontSize: "600",
+                                                              color: "#000"
+                                                          }
+                                                        : {}
+                                                }
                                             >
                                                 Basic Details
                                             </li>
@@ -351,12 +360,29 @@ const Profile = () => {
                                                         "karma-history"
                                                     )
                                                 }
+                                                style={
+                                                    profileList ===
+                                                    "karma-history"
+                                                        ? {
+                                                              fontSize: "600",
+                                                              color: "#000"
+                                                          }
+                                                        : {}
+                                                }
                                             >
                                                 Karma History
                                             </li>
                                             <li
                                                 onClick={() =>
                                                     setProfileList("mu-voyage")
+                                                }
+                                                style={
+                                                    profileList === "mu-voyage"
+                                                        ? {
+                                                              fontSize: "600",
+                                                              color: "#000"
+                                                          }
+                                                        : {}
                                                 }
                                             >
                                                 Mu Voyage
@@ -404,7 +430,8 @@ const Profile = () => {
                                                             userProfile.karma
                                                         ) /
                                                             monthDifference >
-                                                        1000 && monthDifference !== 0
+                                                            1000 &&
+                                                        monthDifference !== 0
                                                             ? (
                                                                   parseInt(
                                                                       userProfile.karma
