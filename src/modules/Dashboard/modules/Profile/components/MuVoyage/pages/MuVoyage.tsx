@@ -86,10 +86,10 @@ const MuVoyage = () => {
                                             htmlFor={`accordion_${i}`}
                                             className={styles.level}
                                         >
-                                            <p>
-                                                {levelData.name}
-                                            </p>
-                                            <div className={styles.test}>
+                                            <p>{levelData.name}</p>
+                                            <div
+                                                className={styles.task_details}
+                                            >
                                                 <CircularProgress
                                                     value={
                                                         !levelData.tasks.every(
@@ -109,13 +109,25 @@ const MuVoyage = () => {
                                                     thickness="12px"
                                                     size="15px"
                                                     capIsRound={true}
-                                                    trackColor="red.300"
-                                                />
+                                                    // trackColor="red.100"
+                                                >
+                                                    {levelData.tasks.every(
+                                                        e => e.completed
+                                                    ) ? (
+                                                        <CircularProgressLabel>
+                                                            <i
+                                                                className={`fi fi-ss-check-circle ${styles.tick}`}
+                                                            ></i>
+                                                        </CircularProgressLabel>
+                                                    ) : null}
+                                                </CircularProgress>
                                                 <p>
                                                     {levelData.tasks.length}{" "}
                                                     Tasks
                                                 </p>
-                                                <i className="fi fi-br-angle-down"></i>
+                                                <i
+                                                    className={`fi fi-br-angle-down ${styles.icon_down_arrow}`}
+                                                ></i>
                                             </div>
                                         </label>
                                         <div className={styles.content}>

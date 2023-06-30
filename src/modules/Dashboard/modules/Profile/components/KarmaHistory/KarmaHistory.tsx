@@ -3,6 +3,7 @@ import KarmaSymbol from "../../assets/svg/KarmaSymbol";
 import styles from "./KarmaHistory.module.css";
 import { Switch } from "@chakra-ui/react";
 import { useState } from "react";
+
 type Props = {
     userProfile: any;
     userLog: {
