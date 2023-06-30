@@ -1,25 +1,52 @@
-import { useSearchParams } from "react-router-dom";
 import KKEMAuth from "../components/Auth";
-import Landing from "../components/Landing";
-import MulearnBrand from "../../Dashboard/assets/MulearnBrand";
-import styles from "./KKEMLanding.module.css";
-export default function KKEMLanding() {
+import Navbar from "../components/Navbar";
+import SkillExpress from "../components/SkillExpress";
+import { useSearchParams } from "react-router-dom";
+import styles from "./KKEmLanding.module.css";
+import MulearnAbout from "../components/MulearnAbout";
+import Footer from "../components/Footer";
+import MuIDModal from "../components/MuIDModal";
+import { useState } from "react";
+/**
+ * Landing page for KKEM
+ */
+export default function Landing() {
     const [searchParams] = useSearchParams();
     const dwms_id = searchParams.get("dwms_id");
-    const muid = searchParams.get("mu_id");
-
+    const [modalOpen, setModalOpen] = useState(false);
     return (
-        <div className={styles.container}>
-            <MulearnBrand />
-            {(() => {
-                if (muid) {
-                    return <Landing />;
-                } else if (dwms_id) {
-                    return <KKEMAuth dwmsId={dwms_id} />;
-                } else {
-                    return <Landing />;
-                }
-            })()}
-        </div>
+        <main className={styles.main}>
+            <Navbar />
+            {dwms_id && (
+                <>
+                    <section id="muId" className={styles.muidSection}>
+                        <div>
+                            <KKEMAuth dwmsId={dwms_id} />
+                            <p className={styles.muidSectionText}>
+                                To get started, please enter your{" "}
+                                <strong>µLearn ID</strong>. If you don't have a
+                                µLearn ID yet, click the button below to visit
+                                the{" "}
+                                <strong>µLearn website and create one</strong>.
+                            </p>
+                            <button
+                                className={styles.muidLink}
+                                onClick={() => setModalOpen(true)}
+                            >
+                                Still without a Mu-Id? Grab one now
+                            </button>
+                            <MuIDModal
+                                open={modalOpen}
+                                setOpen={setModalOpen}
+                            />
+                        </div>
+                    </section>
+                    <div className={styles.wave}></div>
+                </>
+            )}
+            <SkillExpress />
+            <MulearnAbout />
+            <Footer />
+        </main>
     );
 }
