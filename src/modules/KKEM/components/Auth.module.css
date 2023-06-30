@@ -55,3 +55,12 @@
     border-radius: 1.5rem;
     padding-left: 2rem;
 }
+
+@media screen and (max-width: 600px) {
+    .form {
+        max-width: 100%;
+    }
+    .heading {
+        font-size: 1.5rem;
+    }
+}
