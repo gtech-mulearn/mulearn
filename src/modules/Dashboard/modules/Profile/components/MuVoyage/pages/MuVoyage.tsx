@@ -1,16 +1,24 @@
 import { useEffect, useState } from "react";
 import styles from "./MuVoyage.module.css";
-import { getUserLevels } from "../services/api";
 import {
     Progress,
     CircularProgress,
     CircularProgressLabel
 } from "@chakra-ui/react";
 
-const MuVoyage = () => {
-    const [userLevelData, setUserLevelData] = useState([
-        { name: "", tasks: [{ task_name: "", completed: false, hashtag: "" }] }
-    ]);
+type Props = {
+    userLevelData: {
+        name: string;
+        tasks: {
+            task_name: string;
+            completed: boolean;
+            hashtag: string;
+        }[];
+    }[];
+};
+
+const MuVoyage = (props: Props) => {
+    const [userLevelData, setUserLevelData] = useState(props.userLevelData);
     const [userLevelTrack, setUserLevelTrack] = useState({
         name: "",
         tasks: [{ task_name: "", completed: false, hashtag: "" }]
@@ -24,9 +32,6 @@ const MuVoyage = () => {
               100
           }`
         : "100";
-    useEffect(() => {
-        getUserLevels(setUserLevelData);
-    }, []);
     useEffect(() => {
         setUserLevelTrack(userLevelData[0]);
     });

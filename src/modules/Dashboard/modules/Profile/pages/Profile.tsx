@@ -7,7 +7,9 @@ import {
     getUserProfile,
     getPublicUserProfile,
     getPublicUserLog,
-    putIsPublic
+    putIsPublic,
+    getUserLevels,
+    getPublicUserLevels
 } from "../services/api";
 import { PieChart } from "../components/Piechart/PieChart";
 import MulearnBrand from "../assets/svg/MulearnBrand";
@@ -56,6 +58,9 @@ const Profile = () => {
             created_date: ""
         }
     ]);
+    const [userLevelData, setUserLevelData] = useState([
+        { name: "", tasks: [{ task_name: "", completed: false, hashtag: "" }] }
+    ]);
 
     const convertedData1 = userProfile.interest_groups.map(item => [
         item.name,
@@ -91,9 +96,11 @@ const Profile = () => {
                     setProfileStatus
                 );
                 getUserLog(setUserLog);
+                getUserLevels(setUserLevelData);
             } else {
                 getPublicUserProfile(setUserProfile, setAPILoadStatus, id);
                 getPublicUserLog(setUserLog, id);
+                getPublicUserLevels(setUserLevelData, id);
             }
         }
         firstFetch.current = false;
@@ -473,7 +480,9 @@ const Profile = () => {
                                             userLog={userLog}
                                         />
                                     ) : profileList === "mu-voyage" ? (
-                                        <MuVoyage />
+                                        <MuVoyage
+                                            userLevelData={userLevelData}
+                                        />
                                     ) : null}
                                 </div>
 
