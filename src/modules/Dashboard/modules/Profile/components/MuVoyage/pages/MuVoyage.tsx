@@ -87,17 +87,9 @@ const MuVoyage = () => {
                                             className={styles.level}
                                         >
                                             <p>
-                                                {levelData.name === "lvl1"
-                                                    ? "Level 1"
-                                                    : levelData.name === "lvl2"
-                                                    ? "Level 2"
-                                                    : levelData.name === "lvl3"
-                                                    ? "Level 3"
-                                                    : levelData.name === "lvl4"
-                                                    ? "Level 4"
-                                                    : ""}
+                                                {levelData.name}
                                             </p>
-                                            <div>
+                                            <div className={styles.test}>
                                                 <CircularProgress
                                                     value={
                                                         !levelData.tasks.every(
@@ -115,13 +107,15 @@ const MuVoyage = () => {
                                                     }
                                                     color="green.400"
                                                     thickness="12px"
-                                                    size='15px'
+                                                    size="15px"
+                                                    capIsRound={true}
+                                                    trackColor="red.300"
                                                 />
                                                 <p>
                                                     {levelData.tasks.length}{" "}
                                                     Tasks
                                                 </p>
-                                                <i className="fi fi-rr-angle-small-down"></i>
+                                                <i className="fi fi-br-angle-down"></i>
                                             </div>
                                         </label>
                                         <div className={styles.content}>
