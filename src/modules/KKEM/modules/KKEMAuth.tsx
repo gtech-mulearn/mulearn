@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { userAuthConfirm } from "../services/auth";
 import { useEffect, useState } from "react";
 import kkemlogo from "../assets/kkemlogo.png";
-import XSvg from "../assets/x.svg";
+import XSvg from "../assets/X.svg";
 import mulearnLogo from "../assets/µ.svg";
 import Astronaut from "../assets/astronaut.png";
 import navStyles from "../components/Navbar.module.css";

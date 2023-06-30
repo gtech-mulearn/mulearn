@@ -2,7 +2,7 @@ import KKEMAuth from "../components/Auth";
 import Navbar from "../components/Navbar";
 import SkillExpress from "../components/SkillExpress";
 import { useSearchParams } from "react-router-dom";
-import styles from "./KKEmLanding.module.css";
+import styles from "./KKEMLanding.module.css";
 import MulearnAbout from "../components/MulearnAbout";
 import Footer from "../components/Footer";
 import MuIDModal from "../components/MuIDModal";
