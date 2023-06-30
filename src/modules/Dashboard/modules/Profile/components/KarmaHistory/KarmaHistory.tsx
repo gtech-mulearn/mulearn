@@ -1,27 +1,52 @@
 import moment from "moment";
 import KarmaSymbol from "../../assets/svg/KarmaSymbol";
 import styles from "./KarmaHistory.module.css";
+import { Switch } from "@chakra-ui/react";
+import { useState } from "react";
 type Props = {
     userProfile: any;
-    userLog: any;
+    userLog: {
+        task_name: string;
+        karma: string;
+        created_date: string;
+    }[];
 };
 
 const KarmaHistory = (props: Props) => {
     // console.log(props.userLog);
+    const [userLog, setUserLog] = useState(props.userLog);
 
     return (
         <>
+            <p className={styles.hide_chat_karma}>
+                Hide daily chat karma{" "}
+                <span>
+                    <Switch
+                        size="lg"
+                        onChange={e => {
+                            if (e.target.checked) {
+                                setUserLog(
+                                    props.userLog.filter(
+                                        (log: any) =>
+                                            log.task_name !== "daily-chat-karma"
+                                    )
+                                );
+                            } else {
+                                setUserLog(props.userLog);
+                            }
+                        }}
+                    />
+                </span>
+            </p>
             <div className={styles.karma_history_container}>
-                {props.userLog.map((log: any) => {
+                {userLog.map((log: any) => {
                     return (
                         <div className={styles.karma_history}>
                             <p className={styles.karma_history_box_bg}>
                                 <KarmaSymbol />
                             </p>
                             <div className={styles.content}>
-                                <h1 className={styles.karma}>
-                                    {log.karma} ϰ
-                                </h1>
+                                <h1 className={styles.karma}>{log.karma} ϰ</h1>
                                 <h2>Karma</h2>
                                 <div className={styles.karma_div}>
                                     <p style={{ fontSize: "12px" }}>

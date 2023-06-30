@@ -15,13 +15,13 @@ import { GridLoader } from "react-spinners";
 import dpm from "../assets/images/dpm.jpg";
 import Rank from "../assets/svg/Rank";
 import Karma, { KarmaWhite } from "../assets/svg/Karma";
-import { Switch } from "@chakra-ui/react";
+
 import BasicDetails from "../components/BasicDetails";
 import { profile } from "console";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import { useParams } from "react-router-dom";
 import { bool } from "yup";
-import { useToast } from "@chakra-ui/react";
+import { useToast, Switch } from "@chakra-ui/react";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 
 const Profile = () => {
