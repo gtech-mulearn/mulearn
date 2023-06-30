@@ -573,8 +573,8 @@
 }
 
 .rightDash .profileDash .notification .recent_activity_container .card .cardInfo .card_icon {
-  width: 3rem;
-  height: 3rem;
+  min-width: 3rem;
+  min-height: 3rem;
   padding: 0.5rem;
   background: linear-gradient(133.8deg, #2E85FE -8.97%, #AF2EE6 91.41%);
   border-radius: 50%;
