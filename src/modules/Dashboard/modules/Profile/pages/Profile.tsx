@@ -7,7 +7,9 @@ import {
     getUserProfile,
     getPublicUserProfile,
     getPublicUserLog,
-    putIsPublic
+    putIsPublic,
+    getUserLevels,
+    getPublicUserLevels
 } from "../services/api";
 import { PieChart } from "../components/Piechart/PieChart";
 import MulearnBrand from "../assets/svg/MulearnBrand";
@@ -56,6 +58,9 @@ const Profile = () => {
             created_date: ""
         }
     ]);
+    const [userLevelData, setUserLevelData] = useState([
+        { name: "", tasks: [{ task_name: "", completed: false, hashtag: "" }] }
+    ]);
 
     const convertedData1 = userProfile.interest_groups.map(item => [
         item.name,
@@ -65,11 +70,7 @@ const Profile = () => {
         item.task_type,
         item.karma
     ]);
-    const data = [
-        ["Task", "Hours per Day"],
-        ...convertedData2,
-        ...convertedData1
-    ];
+    const data = [["Task", "0"], ...convertedData2, ...convertedData1];
 
     function getMonthDifference(startDate: Date, endDate: Date): number {
         const startYear = startDate.getFullYear();
@@ -91,9 +92,11 @@ const Profile = () => {
                     setProfileStatus
                 );
                 getUserLog(setUserLog);
+                getUserLevels(setUserLevelData);
             } else {
                 getPublicUserProfile(setUserProfile, setAPILoadStatus, id);
                 getPublicUserLog(setUserLog, id);
+                getPublicUserLevels(setUserLevelData, id);
             }
         }
         firstFetch.current = false;
@@ -473,7 +476,9 @@ const Profile = () => {
                                             userLog={userLog}
                                         />
                                     ) : profileList === "mu-voyage" ? (
-                                        <MuVoyage />
+                                        <MuVoyage
+                                            userLevelData={userLevelData}
+                                        />
                                     ) : null}
                                 </div>
 
@@ -488,7 +493,18 @@ const Profile = () => {
                                         <div className={styles.head}>
                                             <h2>Karma Distribution</h2>
                                             <div className={styles.pie_chart}>
-                                                <PieChart data={data} />
+                                                {!data.every(
+                                                    item => item[1].toString() === "0"
+                                                ) ? (
+                                                    <PieChart data={data} />
+                                                ) : (
+                                                    <p className={styles.msg}>
+                                                        Wanna track your Karma
+                                                        points? Send in those
+                                                        tasks and your stats
+                                                        won't disappoint!
+                                                    </p>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
@@ -511,70 +527,83 @@ const Profile = () => {
                                             </span>
                                         </div>
                                         <div className={styles.data_card}>
-                                            {userLog
-                                                .sort((a, b) => {
-                                                    return (
-                                                        new Date(
-                                                            b.created_date
-                                                        ).getTime() -
-                                                        new Date(
-                                                            a.created_date
-                                                        ).getTime()
-                                                    );
-                                                })
-                                                .map((log, i) => (
-                                                    <div
-                                                        key={i}
-                                                        className={styles.card}
-                                                    >
+                                            {userLog.length !== 0 ? (
+                                                userLog
+                                                    .sort((a, b) => {
+                                                        return (
+                                                            new Date(
+                                                                b.created_date
+                                                            ).getTime() -
+                                                            new Date(
+                                                                a.created_date
+                                                            ).getTime()
+                                                        );
+                                                    })
+                                                    .map((log, i) => (
                                                         <div
+                                                            key={i}
                                                             className={
-                                                                styles.cardInfo
+                                                                styles.card
                                                             }
                                                         >
                                                             <div
                                                                 className={
-                                                                    styles.card_icon
+                                                                    styles.cardInfo
                                                                 }
                                                             >
-                                                                <KarmaWhite />
-                                                            </div>
-                                                            <div
-                                                                className={
-                                                                    styles.cardName
-                                                                }
-                                                            >
-                                                                <p>
-                                                                    <span
-                                                                        style={{
-                                                                            color: "#456FF6"
-                                                                        }}
-                                                                    >
-                                                                        {
-                                                                            log.karma
-                                                                        }
-                                                                    </span>{" "}
-                                                                    awarded for{" "}
-                                                                    {
-                                                                        log.task_name
+                                                                <div
+                                                                    className={
+                                                                        styles.card_icon
                                                                     }
-                                                                    .
-                                                                </p>
-                                                                <p>
-                                                                    {moment
-                                                                        .utc(
-                                                                            log.created_date
-                                                                        )
-                                                                        .local()
-                                                                        .startOf(
-                                                                            "seconds"
-                                                                        )
-                                                                        .fromNow()}
-                                                                </p>
+                                                                >
+                                                                    <KarmaWhite />
+                                                                </div>
+                                                                <div
+                                                                    className={
+                                                                        styles.cardName
+                                                                    }
+                                                                >
+                                                                    <p>
+                                                                        <span
+                                                                            style={{
+                                                                                color: "#456FF6"
+                                                                            }}
+                                                                        >
+                                                                            {
+                                                                                log.karma
+                                                                            }
+                                                                        </span>{" "}
+                                                                        awarded
+                                                                        for{" "}
+                                                                        {
+                                                                            log.task_name
+                                                                        }
+                                                                        .
+                                                                    </p>
+                                                                    <p>
+                                                                        {moment
+                                                                            .utc(
+                                                                                log.created_date
+                                                                            )
+                                                                            .local()
+                                                                            .startOf(
+                                                                                "seconds"
+                                                                            )
+                                                                            .fromNow()}
+                                                                    </p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                ))}
+                                                    ))
+                                            ) : (
+                                                <p className={styles.msg}>
+                                                    {/* <i className="fi fi-sr-shield-exclamation"></i> */}
+                                                    Hey there! We know you're
+                                                    new here, so grab some Karma
+                                                    and we'll keep score of it
+                                                    here!
+                                                </p>
+                                            )}
                                         </div>
                                     </div>
                                 </div>

@@ -10,6 +10,7 @@ import { dashboardRoutes } from "../../../../../services/urls";
 type userProfile = React.Dispatch<React.SetStateAction<any>>;
 type userLog = React.Dispatch<React.SetStateAction<any>>;
 type APILoadStatus = React.Dispatch<React.SetStateAction<any>>;
+type userLevelData = React.Dispatch<React.SetStateAction<any>>;
 
 export const getUserProfile = (
     setUserProfile: userProfile,
@@ -66,12 +67,15 @@ export const getPublicUserLog = (setUserLog: userLog, muid: string) => {
             console.log(error);
         });
 };
-export const putIsPublic = (isPublic: boolean,toast: (options?: UseToastOptions | undefined) => ToastId,) => {
+export const putIsPublic = (
+    isPublic: boolean,
+    toast: (options?: UseToastOptions | undefined) => ToastId
+) => {
     privateGateway
         .put(dashboardRoutes.putIsPublic, { isPublic })
         .then(response => {
             console.log(response.data.message.general[0]);
-            
+
             toast({
                 title: response.data.message.general[0],
                 description: "Profile status is updated",
@@ -79,7 +83,33 @@ export const putIsPublic = (isPublic: boolean,toast: (options?: UseToastOptions 
                 duration: 3000,
                 isClosable: true
             });
-                
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
+
+export const getUserLevels = (setUserLevelData: userLevelData) => {
+    privateGateway
+        .get(dashboardRoutes.getUserLevels)
+        .then(response => {
+            // console.log(response.data);
+            setUserLevelData(response.data.response);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
+
+export const getPublicUserLevels = (
+    setUserLevelData: userLevelData,
+    muid: string
+) => {
+    publicGateway
+        .get(dashboardRoutes.getPublicUserLevels.replace("${muid}", muid))
+        .then(response => {
+            // console.log(response.data);
+            setUserLevelData(response.data.response);
         })
         .catch(error => {
             console.log(error);

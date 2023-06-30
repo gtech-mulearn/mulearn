@@ -46,6 +46,7 @@ export const dashboardRoutes = {
     editUserProfile: "/api/v1/dashboard/profile/edit-user-profile/",
     getUserLog: "/api/v1/dashboard/profile/user-log/",
     getUserLevels:"/api/v1/dashboard/profile/get-user-levels/",
+    getPublicUserLevels:"/api/v1/dashboard/profile/get-user-levels/${muid}",
     putIsPublic: "/api/v1/dashboard/profile/share-user-profile/",
     getPublicUserLog: "/api/v1/dashboard/profile/user-log/${muid}/",
     getUserSuggestion: "/api/v1/dashboard/profile/user-suggestion/",

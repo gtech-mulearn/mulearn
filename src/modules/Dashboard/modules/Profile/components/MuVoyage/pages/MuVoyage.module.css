@@ -91,7 +91,7 @@
     justify-content: space-between;
 }
 
-.main_task .tasks .accordion .main_list .level div {
+.main_task .tasks .accordion .main_list .level .task_details {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -101,6 +101,14 @@
 .main_task .tasks .accordion .main_list .level div i {
     height: 15px;
     transition: all 0.5s;
+}
+
+.main_task .tasks .accordion .main_list .level div .tick {
+    color: #48bb78;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .main_task .tasks .accordion .main_list .level div span {
@@ -125,7 +133,7 @@
     overflow-y: scroll;
 }
 
-.main_task .tasks .accordion .main_list .expandBtn:checked+.level i {
+.main_task .tasks .accordion .main_list .expandBtn:checked+.level .icon_down_arrow {
     transform: rotate(180deg);
 }
 
@@ -139,9 +147,9 @@
     font-size: .8rem;
 }
 
-.main_task .tasks .accordion .main_list .content .list_list li input {
+/* .main_task .tasks .accordion .main_list .content .list_list li input {
     width: 1.2rem;
     height: 1.2rem;
     border: 1px solid rgb(128, 128, 128, .1);
     margin-bottom: .5rem;
-}
+} */
