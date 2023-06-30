@@ -17,7 +17,7 @@ const KarmaHistory = (props: Props) => {
     // console.log(props.userLog);
     const [userLog, setUserLog] = useState(props.userLog);
 
-    return (
+    return userLog.length !== 0 ? (
         <>
             <p className={styles.hide_chat_karma}>
                 Hide daily chat karma{" "}
@@ -71,6 +71,11 @@ const KarmaHistory = (props: Props) => {
                 })}
             </div>
         </>
+    ) : (
+        <p className={styles.msg}>
+            Hey there! We know you're new here, so grab some Karma and we'll
+            keep score of it here!
+        </p>
     );
 };
 

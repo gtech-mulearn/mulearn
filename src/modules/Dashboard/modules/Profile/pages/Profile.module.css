@@ -450,6 +450,17 @@
   gap: 1rem;
 }
 
+.rightDash .profileDash .notification .msg {
+  padding: 10px;
+  /* text-align: center; */
+  font-size: 15px;
+  color: #456ff6;
+  display: flex;
+  flex-direction: column;
+  font-style: italic;
+  align-items: center;
+}
+
 .rightDash .profileDash .notification .existing_roles {
   display: flex;
   gap: 20px;

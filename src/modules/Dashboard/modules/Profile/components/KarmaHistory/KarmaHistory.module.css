@@ -14,7 +14,16 @@
     max-height: 445px;
     scroll-snap-type: y mandatory;
 }
-
+ .msg {
+    padding: 10px;
+    /* text-align: center; */
+    font-size: 15px;
+    color: #456ff6 !important;
+    display: flex;
+    flex-direction: column;
+    font-style: italic;
+    align-items: center;
+  }
 .karma_history_container .karma_history {
     min-height: 250px;
     min-width: 200px;
