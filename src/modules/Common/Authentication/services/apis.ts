@@ -264,8 +264,11 @@ export const otpVerification = (
                     if (response.data.response.existInGuild) {
                         navigate("/profile");
                     } else {
-                        // navigate("/connect-discord");
-                        navigate(`/${redirectPath}`);
+                        if (redirectPath) {
+                            navigate(`/${redirectPath}`);
+                        } else {
+                            navigate("/connect-discord");
+                        }
                     }
                 })
                 .catch(error => {
