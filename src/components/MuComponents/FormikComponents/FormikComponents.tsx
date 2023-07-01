@@ -4,7 +4,7 @@ import React from "react";
 import Select, { Props as SelectProps, StylesConfig } from "react-select";
 import OptionTypeBase from "react-select";
 
-export const FormikTextInput = ({ label, ...props }:any) => {
+export const FormikTextInput = ({ label, ...props }: any) => {
     // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
     // which we can spread on <input>. We can use field meta to show an error
     // message if the field is invalid and it has been touched (i.e. visited)
@@ -20,7 +20,7 @@ export const FormikTextInput = ({ label, ...props }:any) => {
     );
 };
 
-export const FormikSelect = ({ label, ...props }:any) => {
+export const FormikSelect = ({ label, ...props }: any) => {
     const [field, meta] = useField(props);
     return (
         <div className={styles.inputBox}>
@@ -69,10 +69,10 @@ const customStyles: any = {
     control: (provided: any) => ({
         ...provided,
         backgroundColor: "white",
-		border: ".1px solid #CFD3D4",
-		borderRadius: "10px",
-		width: "100%",
-		padding: ".3rem .4rem",
+        border: ".1px solid #CFD3D4",
+        borderRadius: "10px",
+        width: "100%",
+        padding: ".3rem .4rem",
     })
 };
 
