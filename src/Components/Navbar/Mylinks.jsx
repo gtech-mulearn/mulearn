@@ -184,8 +184,15 @@ export const links = [
         link: "/campuschapters",
         sublinks: [
           {
-            name: "User Journey",
-            link: "/journey",
+            name: "Lead a Campus",
+            link: "https://airtable.com/shrmtngt3zopg8eVh",
+            submenu: false,
+            sublinks: [],
+            foreign: false,
+          },
+          {
+            name: "Find Your Campus",
+            link: "/campuschapters#findchapter",
             submenu: false,
             sublinks: [],
             foreign: false,
@@ -199,7 +206,7 @@ export const links = [
           },
           {
             name: "Success Stories",
-            link: "/successstories",
+            link: "/blogs",
             submenu: false,
             sublinks: [],
             foreign: false,
@@ -211,13 +218,6 @@ export const links = [
         name: "The Orientation",
         submenu: true,
         sublinks: [
-          {
-            name: "Lead a Campus",
-            link: "https://airtable.com/shrmtngt3zopg8eVh",
-            submenu: false,
-            sublinks: [],
-            foreign: false,
-          },
           {
             name: "Typing Mastery",
             link: mainlink + "/challenge/typing",
@@ -433,15 +433,15 @@ export const links = [
             foreign: false,
           },
           {
-            name: "Rust",
-            link: mainlink + "/bootcamps/rust",
+            name: "Unreal Engine",
+            link: mainlink + "/bootcamps/ig/unreal",
             submenu: false,
             sublinks: [],
             foreign: false,
           },
           {
-            name: "JavaScript",
-            link: mainlink + "/bootcamps/javascript",
+            name: "Web Development",
+            link: mainlink + "/bootcamps/ig/web",
             submenu: false,
             sublinks: [],
             foreign: false,
