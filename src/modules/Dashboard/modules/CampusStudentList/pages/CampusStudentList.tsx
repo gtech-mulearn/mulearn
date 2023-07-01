@@ -180,6 +180,7 @@ const CampusStudentList = (props: Props) => {
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
+                        
                     />
                     <Table
                         rows={studentData}
