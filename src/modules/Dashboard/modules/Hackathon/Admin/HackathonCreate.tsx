@@ -24,7 +24,9 @@ const HackathonCreate = () => {
     const [formData, setFormData] = useState("");
 
     useEffect(() => {
-        getFormFields(setFormData);
+        if (formData === '') {
+            getFormFields(setFormData);
+        }
     }, []);
 
     function handleNext() {
@@ -48,19 +50,17 @@ const HackathonCreate = () => {
             .required("Required")
             .min(2, "Too Short!")
             .max(50, "Too Long!"),
-        tagline: Yup.string()
-            .min(2, "Too Short!")
-            .max(100, "Too Long!"),
-            // .required("Required"),
+        tagline: Yup.string().min(2, "Too Short!").max(100, "Too Long!"),
+        // .required("Required"),
         orgId: Yup.string().min(2, "Too Short!"),
-			// .required("Required"),
+        // .required("Required"),
         place: Yup.string()
-			// .required("Required")
-			.min(2, "Too Short!"),
+            // .required("Required")
+            .min(2, "Too Short!"),
         districtId: Yup.string().min(2, "Too Short!"),
-			// .required("Required"),
+        // .required("Required"),
         isOpenToAll: Yup.boolean(),
-			// .required("Required"),
+        // .required("Required"),
         description: Yup.string().min(5, "Too Short!"),
         eventStart: Yup.date(),
         eventEnd: Yup.date(),
@@ -106,11 +106,11 @@ const HackathonCreate = () => {
             values.districtId,
             values.place,
             values.isOpenToAll,
-            values.applicationStart,
-            values.applicationEnds,
-            values.eventStart,
-            values.eventEnd,
-			selectedFields
+            `${values.applicationStart}T00:00:00Z`,
+            `${values.applicationEnds}T00:00:00Z`,
+            `${values.eventStart}T00:00:00Z`,
+            `${values.eventEnd}T00:00:00Z`,
+            selectedFields
         );
         resetForm();
     };
@@ -128,11 +128,11 @@ const HackathonCreate = () => {
                 <div className={styles.hackNav}>
                     <div className={styles.starImg}>
                         <img
-                            src="/src/modules/Dashboard/modules/Hackathon/Assects/Star 1.png"
+                            src="/src/modules/Dashboard/modules/Hackathon/Assets/Star 1.png"
                             alt=""
                         />
                         <img
-                            src="/src/modules/Dashboard/modules/Hackathon/Assects/Star 2.png"
+                            src="/src/modules/Dashboard/modules/Hackathon/Assets/Star 2.png"
                             alt=""
                         />
                     </div>
@@ -262,7 +262,7 @@ const HackathonCreate = () => {
                                             <div
                                                 role="group"
                                                 aria-labelledby="checkbox-group"
-												className={styles.checkboxOuter}
+                                                className={styles.checkboxOuter}
                                             >
                                                 {Object.entries(formData).map(
                                                     ([key, value]) => (

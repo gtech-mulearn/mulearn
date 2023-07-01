@@ -289,24 +289,26 @@
   position: relative;
   display: flex;
   /* flex-wrap: wrap; */
-  gap: 1rem;
+  gap: 15px;
   list-style: none;
+  height: 30px;
   justify-content: flex-start;
   margin-top: -1rem;
   padding: 0px 15px;
+  overflow: scroll;
 }
 
 .rightDash .profileDash .profile .profileList .underline {
   content: "";
   position: absolute;
-  bottom: -5px;
+  bottom: 0px;
   width: 2rem;
   height: 3.5px;
   background-color: #456FF6;
   transition: all .5s ease-in-out;
 }
 
-.rightDash .profileDash .profile .profileList li:first-child {
+.rightDash .profileDash .profile .profileList li:hover {
   font-weight: 600;
   color: #000;
 }
@@ -315,6 +317,8 @@
   color: #7A7A7A;
   font-weight: 600;
   cursor: pointer;
+  min-width: 110px;
+  transition: all .5s ease-in-out;
 }
 
 .rightDash .profileDash .profile .pointsList {
@@ -446,6 +450,17 @@
   gap: 1rem;
 }
 
+.rightDash .profileDash .notification .msg {
+  padding: 10px;
+  /* text-align: center; */
+  font-size: 15px;
+  color: #456ff6;
+  display: flex;
+  flex-direction: column;
+  font-style: italic;
+  align-items: center;
+}
+
 .rightDash .profileDash .notification .existing_roles {
   display: flex;
   gap: 20px;
@@ -462,7 +477,7 @@
   background: #FFFFFF;
   box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06);
   border-radius: 12px;
-  padding: 30px;
+  padding: 20px;
 }
 
 .rightDash .profileDash .notification .existing_roles .pie_chart {
@@ -493,7 +508,7 @@
   background: #FFFFFF;
   box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06);
   border-radius: 12px;
-  padding: 10px 0px;
+  padding: 10px;
   width: 100%;
 }
 
@@ -573,8 +588,8 @@
 }
 
 .rightDash .profileDash .notification .recent_activity_container .card .cardInfo .card_icon {
-  width: 3rem;
-  height: 3rem;
+  min-width: 3rem;
+  min-height: 3rem;
   padding: 0.5rem;
   background: linear-gradient(133.8deg, #2E85FE -8.97%, #AF2EE6 91.41%);
   border-radius: 50%;

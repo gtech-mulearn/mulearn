@@ -7,7 +7,9 @@ import {
     getUserProfile,
     getPublicUserProfile,
     getPublicUserLog,
-    putIsPublic
+    putIsPublic,
+    getUserLevels,
+    getPublicUserLevels
 } from "../services/api";
 import { PieChart } from "../components/Piechart/PieChart";
 import MulearnBrand from "../assets/svg/MulearnBrand";
@@ -15,13 +17,14 @@ import { GridLoader } from "react-spinners";
 import dpm from "../assets/images/dpm.jpg";
 import Rank from "../assets/svg/Rank";
 import Karma, { KarmaWhite } from "../assets/svg/Karma";
-import { Switch } from "@chakra-ui/react";
+
 import BasicDetails from "../components/BasicDetails";
 import { profile } from "console";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import { useParams } from "react-router-dom";
 import { bool } from "yup";
-import { useToast } from "@chakra-ui/react";
+import { useToast, Switch } from "@chakra-ui/react";
+import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
@@ -55,6 +58,9 @@ const Profile = () => {
             created_date: ""
         }
     ]);
+    const [userLevelData, setUserLevelData] = useState([
+        { name: "", tasks: [{ task_name: "", completed: false, hashtag: "" }] }
+    ]);
 
     const convertedData1 = userProfile.interest_groups.map(item => [
         item.name,
@@ -64,11 +70,7 @@ const Profile = () => {
         item.task_type,
         item.karma
     ]);
-    const data = [
-        ["Task", "Hours per Day"],
-        ...convertedData2,
-        ...convertedData1
-    ];
+    const data = [["Task", "0"], ...convertedData2, ...convertedData1];
 
     function getMonthDifference(startDate: Date, endDate: Date): number {
         const startYear = startDate.getFullYear();
@@ -80,18 +82,24 @@ const Profile = () => {
     const startDate = new Date(userProfile.joined.slice(0, 10));
     const endDate = new Date(moment().format("YYYY-MM-DD"));
     const monthDifference = getMonthDifference(startDate, endDate);
-    const firstFetch = useRef(true)
+    const firstFetch = useRef(true);
     useEffect(() => {
         if (firstFetch.current) {
             if (!id) {
-                getUserProfile(setUserProfile, setAPILoadStatus, setProfileStatus);
+                getUserProfile(
+                    setUserProfile,
+                    setAPILoadStatus,
+                    setProfileStatus
+                );
                 getUserLog(setUserLog);
+                getUserLevels(setUserLevelData);
             } else {
                 getPublicUserProfile(setUserProfile, setAPILoadStatus, id);
                 getPublicUserLog(setUserLog, id);
+                getPublicUserLevels(setUserLevelData, id);
             }
         }
-        firstFetch.current = false
+        firstFetch.current = false;
     }, []);
     return (
         <>
@@ -118,9 +126,9 @@ const Profile = () => {
                                     popUP
                                         ? { transform: "scale(1)" }
                                         : {
-                                            transform: "scale(0)"
-                                            // opacity: "0",
-                                        }
+                                              transform: "scale(0)"
+                                              // opacity: "0",
+                                          }
                                 }
                                 className={styles.share_pop_up_container}
                             >
@@ -256,8 +264,8 @@ const Profile = () => {
                                                         {userProfile.last_name}{" "}
                                                         {userProfile.college_code
                                                             ? "(" +
-                                                            userProfile.college_code +
-                                                            ")"
+                                                              userProfile.college_code +
+                                                              ")"
                                                             : null}
                                                     </h1>
                                                     <p
@@ -275,9 +283,9 @@ const Profile = () => {
                                                         LEVEL{"     "}
                                                         {userProfile.level
                                                             ? userProfile.level.slice(
-                                                                3,
-                                                                4
-                                                            )
+                                                                  3,
+                                                                  4
+                                                              )
                                                             : 0}
                                                     </p>
                                                 </div>
@@ -313,15 +321,21 @@ const Profile = () => {
                                             <p
                                                 style={
                                                     profileList ===
-                                                        "basic-detials"
+                                                    "basic-details"
                                                         ? { marginLeft: "0px" }
                                                         : profileList ===
-                                                            "karma-history"
-                                                            ? {
-                                                                marginLeft:
-                                                                    "115px"
-                                                            }
-                                                            : {}
+                                                          "karma-history"
+                                                        ? {
+                                                              marginLeft:
+                                                                  "125px"
+                                                          }
+                                                        : profileList ===
+                                                          "mu-voyage"
+                                                        ? {
+                                                              marginLeft:
+                                                                  "250px"
+                                                          }
+                                                        : {}
                                                 }
                                                 className={styles.underline}
                                             ></p>
@@ -330,6 +344,15 @@ const Profile = () => {
                                                     setProfileList(
                                                         "basic-details"
                                                     )
+                                                }
+                                                style={
+                                                    profileList ===
+                                                    "basic-details"
+                                                        ? {
+                                                              fontSize: "600",
+                                                              color: "#000"
+                                                          }
+                                                        : {}
                                                 }
                                             >
                                                 Basic Details
@@ -340,8 +363,32 @@ const Profile = () => {
                                                         "karma-history"
                                                     )
                                                 }
+                                                style={
+                                                    profileList ===
+                                                    "karma-history"
+                                                        ? {
+                                                              fontSize: "600",
+                                                              color: "#000"
+                                                          }
+                                                        : {}
+                                                }
                                             >
                                                 Karma History
+                                            </li>
+                                            <li
+                                                onClick={() =>
+                                                    setProfileList("mu-voyage")
+                                                }
+                                                style={
+                                                    profileList === "mu-voyage"
+                                                        ? {
+                                                              fontSize: "600",
+                                                              color: "#000"
+                                                          }
+                                                        : {}
+                                                }
+                                            >
+                                                Mu Voyage
                                             </li>
                                             {/* <li>Join Mulearn</li> */}
                                             {/* <li>See More</li> */}
@@ -361,11 +408,11 @@ const Profile = () => {
                                                             userProfile.karma
                                                         ) > 1000
                                                             ? (
-                                                                parseInt(
-                                                                    userProfile.karma
-                                                                ) / 1000
-                                                            ).toPrecision(4) +
-                                                            "K"
+                                                                  parseInt(
+                                                                      userProfile.karma
+                                                                  ) / 1000
+                                                              ).toPrecision(4) +
+                                                              "K"
                                                             : userProfile.karma}
                                                     </h1>
                                                 </div>
@@ -386,7 +433,8 @@ const Profile = () => {
                                                             userProfile.karma
                                                         ) /
                                                             monthDifference >
-                                                        1000 && monthDifference !== 0
+                                                            1000 &&
+                                                        monthDifference !== 0
                                                             ? (
                                                                   parseInt(
                                                                       userProfile.karma
@@ -427,6 +475,10 @@ const Profile = () => {
                                             userProfile={userProfile}
                                             userLog={userLog}
                                         />
+                                    ) : profileList === "mu-voyage" ? (
+                                        <MuVoyage
+                                            userLevelData={userLevelData}
+                                        />
                                     ) : null}
                                 </div>
 
@@ -441,7 +493,18 @@ const Profile = () => {
                                         <div className={styles.head}>
                                             <h2>Karma Distribution</h2>
                                             <div className={styles.pie_chart}>
-                                                <PieChart data={data} />
+                                                {!data.every(
+                                                    item => item[1].toString() === "0"
+                                                ) ? (
+                                                    <PieChart data={data} />
+                                                ) : (
+                                                    <p className={styles.msg}>
+                                                        Wanna track your Karma
+                                                        points? Send in those
+                                                        tasks and your stats
+                                                        won't disappoint!
+                                                    </p>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
@@ -464,70 +527,83 @@ const Profile = () => {
                                             </span>
                                         </div>
                                         <div className={styles.data_card}>
-                                            {userLog
-                                                .sort((a, b) => {
-                                                    return (
-                                                        new Date(
-                                                            b.created_date
-                                                        ).getTime() -
-                                                        new Date(
-                                                            a.created_date
-                                                        ).getTime()
-                                                    );
-                                                })
-                                                .map((log, i) => (
-                                                    <div
-                                                        key={i}
-                                                        className={styles.card}
-                                                    >
+                                            {userLog.length !== 0 ? (
+                                                userLog
+                                                    .sort((a, b) => {
+                                                        return (
+                                                            new Date(
+                                                                b.created_date
+                                                            ).getTime() -
+                                                            new Date(
+                                                                a.created_date
+                                                            ).getTime()
+                                                        );
+                                                    })
+                                                    .map((log, i) => (
                                                         <div
+                                                            key={i}
                                                             className={
-                                                                styles.cardInfo
+                                                                styles.card
                                                             }
                                                         >
                                                             <div
                                                                 className={
-                                                                    styles.card_icon
+                                                                    styles.cardInfo
                                                                 }
                                                             >
-                                                                <KarmaWhite />
-                                                            </div>
-                                                            <div
-                                                                className={
-                                                                    styles.cardName
-                                                                }
-                                                            >
-                                                                <p>
-                                                                    <span
-                                                                        style={{
-                                                                            color: "#456FF6"
-                                                                        }}
-                                                                    >
-                                                                        {
-                                                                            log.karma
-                                                                        }
-                                                                    </span>{" "}
-                                                                    awarded for{" "}
-                                                                    {
-                                                                        log.task_name
+                                                                <div
+                                                                    className={
+                                                                        styles.card_icon
                                                                     }
-                                                                    .
-                                                                </p>
-                                                                <p>
-                                                                    {moment
-                                                                        .utc(
-                                                                            log.created_date
-                                                                        )
-                                                                        .local()
-                                                                        .startOf(
-                                                                            "seconds"
-                                                                        )
-                                                                        .fromNow()}
-                                                                </p>
+                                                                >
+                                                                    <KarmaWhite />
+                                                                </div>
+                                                                <div
+                                                                    className={
+                                                                        styles.cardName
+                                                                    }
+                                                                >
+                                                                    <p>
+                                                                        <span
+                                                                            style={{
+                                                                                color: "#456FF6"
+                                                                            }}
+                                                                        >
+                                                                            {
+                                                                                log.karma
+                                                                            }
+                                                                        </span>{" "}
+                                                                        awarded
+                                                                        for{" "}
+                                                                        {
+                                                                            log.task_name
+                                                                        }
+                                                                        .
+                                                                    </p>
+                                                                    <p>
+                                                                        {moment
+                                                                            .utc(
+                                                                                log.created_date
+                                                                            )
+                                                                            .local()
+                                                                            .startOf(
+                                                                                "seconds"
+                                                                            )
+                                                                            .fromNow()}
+                                                                    </p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                ))}
+                                                    ))
+                                            ) : (
+                                                <p className={styles.msg}>
+                                                    {/* <i className="fi fi-sr-shield-exclamation"></i> */}
+                                                    Hey there! We know you're
+                                                    new here, so grab some Karma
+                                                    and we'll keep score of it
+                                                    here!
+                                                </p>
+                                            )}
                                         </div>
                                     </div>
                                 </div>

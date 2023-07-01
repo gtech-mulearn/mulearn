@@ -1,9 +1,13 @@
 import { Navigate, Outlet } from "react-router-dom";
 
 const PrivateRoutes: React.FC = () => {
-  let refreshToken = localStorage.getItem("refreshToken");
-
-  return refreshToken ? <Outlet /> : <Navigate to="/login" />;
+    let refreshToken = localStorage.getItem("refreshToken");
+    let redirection = window.location.pathname.slice(1);
+    return refreshToken ? (
+        <Outlet />
+    ) : (
+        <Navigate to={`/login?ruri=${redirection}`} />
+    );
 };
 
 export default PrivateRoutes;
