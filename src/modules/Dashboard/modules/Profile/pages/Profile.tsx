@@ -20,12 +20,13 @@ import Karma, { KarmaWhite } from "../assets/svg/Karma";
 
 import BasicDetails from "../components/BasicDetails";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useToast, Switch } from "@chakra-ui/react";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
+    const navigate = useNavigate();
     const toast = useToast();
     const [APILoadStatus, setAPILoadStatus] = useState(0);
     const [profileList, setProfileList] = useState("basic-details");
@@ -487,13 +488,17 @@ const Profile = () => {
                                 >
                                     <div className={styles.head}>
                                         <h2>Recent Activity</h2>
-                                        <span
-                                            onClick={() =>
-                                                setProfileList("karma-history")
-                                            }
+                                        <a
+                                            onClick={() => {
+                                                setProfileList("karma-history");
+                                                navigate(
+                                                    "#section1"
+                                                );
+                                            }}
+                                            href="#section1"
                                         >
                                             View More
-                                        </span>
+                                        </a>
                                     </div>
                                     <div className={styles.data_card}>
                                         {userLog.length !== 0 ? (
