@@ -293,17 +293,20 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             if(props.activeItem == "College"){
                 getStates(camelCase(selectedCountry), setStatesData);
             }
-            if (country.value !== props.selectedCountry && country !== "") {
+            if (country.value?.toLowerCase() !== props.selectedCountry?.toLowerCase() && country !== "") {
+                setZonesData([])
+                setDistrictsData([])
                 getStates(camelCase(selectedCountry), setStatesData);
             }
-            if (state.value !== props.selectedState && state !== "") {
+            if (state.value?.toLowerCase() !== props.selectedState?.toLowerCase() && state !== "") {
+                setDistrictsData([])
                 getZones(
                     camelCase(country.value),
                     camelCase(state.value),
                     setZonesData
                 );
             }
-            if (zone.value !== props.selectedZone && zone !== "") {
+            if (zone.value?.toLowerCase() !== props.selectedZone?.toLowerCase() && zone !== "") {
                 getDistricts(
                     camelCase(props.selectedCountry || country),
                     camelCase(props.selectedState || state),
