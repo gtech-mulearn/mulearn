@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate, NavigateFunction } from "react-router-dom";
 import {
     privateGateway,
-    publicGateway
+    publicGatewayAuth
 } from "../../../../services/apiGateways";
 import { authRoutes, dashboardRoutes } from "../../../../services/urls";
 
@@ -53,7 +53,7 @@ export const login = (
     setIsLoading: (loading: boolean) => void
 ) => {
     setIsLoading(true)
-    publicGateway
+    publicGatewayAuth
         .post(authRoutes.login, { emailOrMuid, password })
         .then(response => {
             if (response.data.hasError == false) {
@@ -188,7 +188,7 @@ export const requestEmailOrMuidOtp = (
     setOtpError: (otpError: boolean) => void,
 ) => {
     setOtpLoading(true)
-    publicGateway.post(authRoutes.requestEmailOrMuidOtp, { emailOrMuid })
+    publicGatewayAuth.post(authRoutes.requestEmailOrMuidOtp, { emailOrMuid })
         .then(response => {
             setOtpLoading(false)
             setStatus(response.data.statusCode);
@@ -225,7 +225,7 @@ export const otpVerification = (
     setOtpVerifyLoading: (otpverifyLoading: boolean) => void
 ) => {
     setOtpVerifyLoading(true);
-    publicGateway
+    publicGatewayAuth
         .post(authRoutes.otpVerification, { emailOrMuid, otp })
         .then(response => {
             console.log(response.data);

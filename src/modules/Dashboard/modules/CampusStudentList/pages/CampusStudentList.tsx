@@ -127,8 +127,8 @@ const CampusStudentList = (props: Props) => {
                                     Campus code : {campusData.campus_code}
                                 </p>
                                 <h1 className={styles.clg_name}>
-                                    {titleCase(
-                                        campusData.college_name.toLowerCase()
+                                    {campusData&&campusData.college_name&&titleCase(
+                                        campusData?.college_name?.toLowerCase()
                                     )}
                                 </h1>
                                 <p className={styles.campus_lead}>
@@ -162,7 +162,7 @@ const CampusStudentList = (props: Props) => {
                             <div className={styles.sec2}>
                                 <div className={styles.clg_rank_div}>
                                     <p className={styles.clg_rank}>
-                                        {campusData.rank.toString().length === 1
+                                        {campusData?.rank?.toString().length === 1
                                             ? "0" + campusData.rank
                                             : campusData.rank}
                                     </p>
