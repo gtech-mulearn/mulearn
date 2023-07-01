@@ -22,10 +22,12 @@ const Hackathon = () => {
     return (
         <>
             <Link to="/hackathon-management">
-                <div className="button-wrapper">
-                    <button className="button">Create</button>
-                </div>
+                <button className="button">Create</button>
             </Link>
+			
+            <div className="heading">
+                <h1>All Hackathons</h1>
+            </div>
             <div className="box">
                 {data &&
                     data.map(hack => (
@@ -79,7 +81,9 @@ const Hackathon = () => {
                                         <div className="date">
                                             <div className="text-wrapper-small">
                                                 {hack.event_start
-                                                    ? DateConverter(hack.event_start)
+                                                    ? DateConverter(
+                                                          hack.event_start
+                                                      )
                                                     : "No Date"}
                                             </div>
                                         </div>

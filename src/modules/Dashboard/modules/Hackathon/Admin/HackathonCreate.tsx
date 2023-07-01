@@ -8,7 +8,6 @@ import FormikReactSelect, {
 } from "../../../../../components/MuComponents/FormikComponents/FormikComponents";
 import { useEffect, useState } from "react";
 import { createHackathon, getFormFields } from "./HackathonApis";
-import { DateConverter } from "../../../../Dashboard/utils/common";
 
 const options = [
     { label: "Option 1", value: "111" },
