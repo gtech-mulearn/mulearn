@@ -17,6 +17,11 @@ const CampusChapters = () => {
   const [districts, setDistricts] = useState([]);
   const [selectedDistrict, setSelectedDistrict] = useState("all");
   const [campusData, setCampusData] = useState([]);
+  const districtZone={
+    'North':['Pathanamthitta','Trivandrum','Kollam'],
+    'Central':['Alappuzha','Ernakulam','Kottayam','Idukki'],
+    'South':['Palakkad','Thrissur','Kasaragod','Malappuram','Kozhikode','Kannur']
+  }
 
   useEffect(() => {
     axios
@@ -161,8 +166,14 @@ const CampusChapters = () => {
                   </option>
                   {
                     //iterate through the districts array and return the option element
-                    districts.map((district) => {
-                      return <option value={district}>{district}</option>;
+                    districts
+                    .filter((district) => {
+                      console.log(selectedZone)
+                      if (selectedZone === 'all') return true
+                      return (  districtZone[selectedZone].includes(district) )
+                    })
+                    .map((district) => {
+                        return <option value={district}>{district}</option>
                     })
                   }
                 </select>
@@ -286,7 +297,7 @@ const CampusChapters = () => {
                 />
                 <p className={styles.step_heading}>4). µLearn Chaptership</p>
                 <p className={styles.step_text}>
-                  Impliment chaptership to unlocks benefits from µLearn
+                  Implement chaptership to unlocks benefits from µLearn
                   Foundation .
                 </p>
               </div>
