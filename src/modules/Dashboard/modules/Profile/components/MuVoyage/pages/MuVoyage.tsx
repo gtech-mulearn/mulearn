@@ -33,7 +33,9 @@ const MuVoyage = (props: Props) => {
           }`
         : "100";
     useEffect(() => {
-        setUserLevelTrack(userLevelData[0]);
+        setUserLevelTrack(
+            userLevelData.filter(e => !e.tasks.every(e => e.completed))[0]
+        );
     });
     return (
         <>
@@ -73,13 +75,7 @@ const MuVoyage = (props: Props) => {
                         {userLevelData &&
                             userLevelData.map((levelData, i) => {
                                 return (
-                                    <li
-                                        onClick={() => {
-                                            setUserLevelTrack(levelData);
-                                        }}
-                                        className={styles.main_list}
-                                        key={i}
-                                    >
+                                    <li className={styles.main_list} key={i}>
                                         <input
                                             className={styles.expandBtn}
                                             type="checkbox"
@@ -161,6 +157,11 @@ const MuVoyage = (props: Props) => {
                                                                     {
                                                                         taskData.task_name
                                                                     }
+                                                                    <span>
+                                                                        {
+                                                                            taskData.hashtag
+                                                                        }
+                                                                    </span>
                                                                 </label>
                                                             </li>
                                                         );
