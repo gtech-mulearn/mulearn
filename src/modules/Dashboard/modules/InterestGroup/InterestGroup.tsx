@@ -43,8 +43,9 @@ function InterestGroup() {
 
     useEffect(() => {
         if (firstFetch.current) {
-            if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
-
+            if (!hasRole([roles.ADMIN, roles.FELLOW])) {
+				navigate("/404")
+			}
             getInterestGroups(setData, 1, perPage, setTotalPages, "", "");
         }
         firstFetch.current = false;

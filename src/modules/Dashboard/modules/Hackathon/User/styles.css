@@ -1,7 +1,6 @@
 .box {
 	background-color: transparent;
 	display: flex;
-	justify-content: center;
 	width: 100%;
 	gap: .5rem;
 	flex-wrap: wrap;
@@ -50,11 +49,9 @@
 	font-family: "Plus Jakarta Sans-Bold", Helvetica;
 	font-size: 22.6px;
 	font-weight: 700;
-	left: 0;
+	text-align: left;
 	letter-spacing: 0;
 	line-height: normal;
-	position: absolute;
-	top: 0;
 	white-space: nowrap;
 	width: 144px;
 }
@@ -195,3 +192,18 @@
 	color: var(--White);
 	border: 1px solid var(--blue);
 }
+
+.heading {
+	color: var(--blue);
+	display: flex;
+	align-items: center;
+	font-family: "Plus Jakarta Sans-Medium", Helvetica;
+	font-size: 2rem;
+	font-weight: 700;
+	letter-spacing: 0;
+	padding: 1rem;
+	line-height: normal;
+	width: 100%;
+	white-space: nowrap;
+}
+

@@ -1,9 +1,11 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "../../../../../services/apiGateways";
 import { dashboardRoutes } from "../../../../../services/urls";
+import { SetStateAction } from "react";
+import { HackList } from "./Hackathon";
 
 export const getHackathons = async (
-    setData: React.Dispatch<React.SetStateAction<string>>
+    setData: React.Dispatch<SetStateAction<HackList[]>>
 ) => {
     try {
         const response = await privateGateway.get(
