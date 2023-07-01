@@ -50,11 +50,9 @@
 	font-family: "Plus Jakarta Sans-Bold", Helvetica;
 	font-size: 22.6px;
 	font-weight: 700;
-	left: 0;
+	text-align: left;
 	letter-spacing: 0;
 	line-height: normal;
-	position: absolute;
-	top: 0;
 	white-space: nowrap;
 	width: 144px;
 }
