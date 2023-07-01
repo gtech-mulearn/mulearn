@@ -27,7 +27,7 @@ const CampusStudentList = (props: Props) => {
         { column: "fullname", Label: "Name", isSortable: false },
         // { column: "email", Label: "Email", isSortable: false },
         { column: "karma", Label: "Karma", isSortable: false },
-        { column: "level", Label: "Level", isSortable: true },
+        { column: "level", Label: "Level", isSortable: false },
         { column: "muid", Label: "MuId", isSortable: false },
         { column: "created_at", Label: "Join Date", isSortable: false },
     ];
