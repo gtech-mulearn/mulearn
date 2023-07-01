@@ -20,9 +20,9 @@
     width: 100%;
     margin: 0;
 }
-h1:first-child{
+/* h1:first-child{
     margin-top: 15px;
-}
+} */
 h1:nth-child(2){
     margin-bottom:30px;
 }
