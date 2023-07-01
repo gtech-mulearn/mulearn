@@ -27,9 +27,9 @@ const MuVoyage = (props: Props) => {
         e => e.completed
     )
         ? `${
-              (userLevelTrack.tasks.filter(e => e.completed).length /
+              ((userLevelTrack.tasks.filter(e => e.completed).length /
                   userLevelTrack.tasks.length) *
-              100
+              100).toFixed(0)
           }`
         : "100";
     useEffect(() => {
