@@ -168,7 +168,6 @@ const CampusChapters = () => {
                     //iterate through the districts array and return the option element
                     districts
                     .filter((district) => {
-                      console.log(selectedZone)
                       if (selectedZone === 'all') return true
                       return (  districtZone[selectedZone].includes(district) )
                     })
@@ -184,8 +183,12 @@ const CampusChapters = () => {
                 {campusData.map((campus) => {
                   // return the campuses that match the selected zone
                   if (
-                    campus.zone === selectedZone &&
-                    selectedDistrict === "all"
+                    (campus.zone === selectedZone &&
+                    selectedDistrict === "all") |
+                    (campus.zone === selectedZone &&
+                    campus.district === selectedDistrict) |
+                    (selectedZone === 'all' &&
+                    campus.district === selectedDistrict)
                   ) {
                     return (
                       <div className={styles.college}>
@@ -208,30 +211,30 @@ const CampusChapters = () => {
                     );
                   }
                   //return the campuses that match the selected zone and district
-                  else if (
-                    campus.zone === selectedZone &&
-                    campus.district === selectedDistrict
-                  ) {
-                    return (
-                      <div className={styles.college}>
-                        <div className={styles.college_name}>{campus.name}</div>
-                        <div className={styles.college_district}>
-                          {campus.district}
-                        </div>
-                        <div className={styles.college_zone}>
-                          Zone: {campus.zone}
-                        </div>
-                        <div className={styles.college_lead}>
-                          Campus Lead: {campus.lead}
-                        </div>
-                        {campus.email && (
-                          <div className={styles.college_email}>
-                            Email Address: {campus.email}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  }
+                  // else if (
+                  //   campus.zone === selectedZone &&
+                  //   campus.district === selectedDistrict
+                  // ) {
+                  //   return (
+                  //     <div className={styles.college}>
+                  //       <div className={styles.college_name}>{campus.name}</div>
+                  //       <div className={styles.college_district}>
+                  //         {campus.district}
+                  //       </div>
+                  //       <div className={styles.college_zone}>
+                  //         Zone: {campus.zone}
+                  //       </div>
+                  //       <div className={styles.college_lead}>
+                  //         Campus Lead: {campus.lead}
+                  //       </div>
+                  //       {campus.email && (
+                  //         <div className={styles.college_email}>
+                  //           Email Address: {campus.email}
+                  //         </div>
+                  //       )}
+                  //     </div>
+                  //   );
+                  // }
                   return null;
                 })}
               </div>
