@@ -26,10 +26,10 @@ const CampusStudentList = (props: Props) => {
     const columnOrder = [
         { column: "fullname", Label: "Name", isSortable: false },
         // { column: "email", Label: "Email", isSortable: false },
-        // { column: "phone", Label: "Phone", isSortable: false },
         { column: "karma", Label: "Karma", isSortable: false },
-        { column: "level", Label: "Level", isSortable: false },
-        { column: "muid", Label: "MuId", isSortable: false }
+        { column: "level", Label: "Level", isSortable: true },
+        { column: "muid", Label: "MuId", isSortable: false },
+        { column: "created_at", Label: "Join Date", isSortable: false },
     ];
 
     const [campusData, setCampusData] = useState({
