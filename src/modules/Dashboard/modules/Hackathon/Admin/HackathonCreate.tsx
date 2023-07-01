@@ -8,6 +8,7 @@ import FormikReactSelect, {
 } from "../../../../../components/MuComponents/FormikComponents/FormikComponents";
 import { useEffect, useState } from "react";
 import { createHackathon, getFormFields } from "./HackathonApis";
+import { DateConverter } from "../../../../Dashboard/utils/common";
 
 const options = [
     { label: "Option 1", value: "111" },
@@ -106,10 +107,10 @@ const HackathonCreate = () => {
             values.districtId,
             values.place,
             values.isOpenToAll,
-            values.applicationStart,
-            values.applicationEnds,
-            values.eventStart,
-            values.eventEnd,
+            `${values.applicationStart}T00:00:00Z`,
+            `${values.applicationEnds}T00:00:00Z`,
+            `${values.eventStart}T00:00:00Z`,
+            `${values.eventEnd}T00:00:00Z`,
             selectedFields
         );
         resetForm();
