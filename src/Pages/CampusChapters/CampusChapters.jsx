@@ -18,9 +18,9 @@ const CampusChapters = () => {
   const [selectedDistrict, setSelectedDistrict] = useState("all");
   const [campusData, setCampusData] = useState([]);
   const districtZone={
-    'North':['Pathanamthitta','Trivandrum','Kollam'],
+    'South':['Pathanamthitta','Trivandrum','Kollam'],
     'Central':['Alappuzha','Ernakulam','Kottayam','Idukki'],
-    'South':['Palakkad','Thrissur','Kasaragod','Malappuram','Kozhikode','Kannur']
+    'North':['Palakkad','Thrissur','Kasaragod','Malappuram','Kozhikode','Kannur']
   }
 
   useEffect(() => {
