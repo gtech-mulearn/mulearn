@@ -5,7 +5,7 @@ import { createStandaloneToast } from "@chakra-ui/react";
 const { toast } = createStandaloneToast();
 
 export const publicGateway = axios.create({
-    baseURL: import.meta.env.VITE_BACKEND_URL as string,
+    baseURL: import.meta.env.VITE_BACKEND_URL_AUTH as string,
     headers: {
         "Content-Type": "application/json"
     }
