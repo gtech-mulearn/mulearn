@@ -207,3 +207,48 @@
   row-gap: 1rem;
   column-gap: 1rem;
 }
+
+/* beyond_us_card */
+
+.beyond_us_card {
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  background-image: url("./assets/starbg.png");
+  border-radius: 5px;
+
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.text_logo {
+  width: 15rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.text {
+  margin-top: 1rem;
+  font-family: "Poppins", sans-serif;
+  line-height: 20px;
+  font-weight: 500;
+  max-width: 250px;
+}
+
+.text span {
+  color: #f6e127;
+}
+
+.applynowbtn{
+  margin-top: 1rem;
+  background-color: #f6e127;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  color: #1e3760;
+}

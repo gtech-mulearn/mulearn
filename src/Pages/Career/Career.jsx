@@ -6,6 +6,7 @@ import styles from "./Career.module.css";
 import CareersCard from "../../Components/CareersCard/CareersCard";
 import ClosedCareersCard from "../../Components/ClosedCareers/ClosedCareers";
 import axios from "axios";
+import logo from "./assets/text.png";
 
 const Career = () => {
   let companies = require("./data/companies.json");
@@ -89,6 +90,22 @@ const Career = () => {
               endless opportunities available on Career Labs
             </div>
             <div className={styles.cards_container}>
+              <div className={styles.beyond_us_card}>
+                <img className={styles.text_logo} src={logo} alt="" />
+                <p className={styles.text}>
+                  <span>In Collaboration With:</span> Kerala Knowledge Economy
+                  Mission.
+                </p>
+                <p className={styles.text}>
+                  <span>Location:</span> Online/Remote
+                </p>
+                <p className={styles.text}>
+                  <span>Prize Worth</span> 50K
+                </p>
+                <a href="https://harmless-editorial-5d7.notion.site/Beyond-Us-65c490bd2a1c4de1a3250eaf90c33412#03057d834cea436e99c7a6dc944f2b4b" target="_blank" rel="noopener noreferrer">
+                <button className={styles.applynowbtn}>Apply Now</button>
+                </a>
+              </div>
               {newHiring &&
                 newHiring.map((role) => (
                   <CareersCard
