@@ -143,7 +143,7 @@ const HacktoberFest = () => {
                   </div>
                   <div className={styles.svp_text}>
                     For the Next step in the challenge. You have to create a
-                    website for a buissness nearby by following the requirements
+                    website for a business nearby by following the requirements
                     which are specified below.
                   </div>
                 </div>
@@ -161,7 +161,7 @@ const HacktoberFest = () => {
                     Contribute
                   </div>
                   <div className={styles.svp_text}>
-                    Since you have created a website for a buissness nearby you
+                    Since you have created a website for a business nearby you
                     are ready to contribute to the project. For that all you
                     have to do is make Pull request to our repository.
                   </div>

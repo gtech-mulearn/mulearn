@@ -146,7 +146,7 @@ const YIP2023 = () => {
                           </a>
                           to go to the Pre-Registration page. Enter all your
                           details in the Pre-Registration Form and Complete the
-                          OTP Verification. By Now you would have recived an
+                          OTP Verification. By Now you would have received an
                           email with login credentials, you can now login with
                           that.
                         </p>
@@ -262,7 +262,7 @@ const YIP2023 = () => {
                           <b>person who formed the team</b> can submit the idea
                           by going to the
                           <b>&nbsp;Idea Submission Option</b> from his/her
-                          Navbar.Post your idea submission certiciate with the
+                          Navbar.Post your idea submission certificate with the
                           hashtag&nbsp;
                           <b>#yip5.0-idea</b> to gain <b>800 Karma Points</b>.
                           You could submit upto 2 ideas per person.
@@ -287,7 +287,7 @@ const YIP2023 = () => {
                       <div className="timeline__event__description">
                         <p>
                           After the submission of the idea, it requires the
-                          approval of the repective Institution and you may
+                          approval of the respective Institution and you may
                           contact the concerned authority for the approval of
                           your idea.
                         </p>
