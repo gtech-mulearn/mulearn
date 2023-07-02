@@ -110,13 +110,6 @@
     justify-content: center;
 }
 
-.main_task .tasks .accordion .main_list .level div span {
-    background-color: aquamarine;
-    height: 1.2rem;
-    width: 1.2rem;
-    border-radius: 5rem;
-}
-
 .main_task .tasks .accordion .main_list .expandBtn {
     display: none !important;
 }
@@ -136,7 +129,6 @@
     transform: rotate(180deg);
 }
 
-
 .main_task .tasks .accordion .main_list .content .list_list li {
     display: flex;
     align-items: center;
@@ -145,6 +137,12 @@
     padding-left: 1.5rem;
     font-size: .8rem;
 }
+
+
+@media (width <300px) {
+    .main_task{
+        padding: 2rem 1rem;
+    }
 
 .main_task .tasks .accordion .main_list .content .list_list li label {
     display: flex;
