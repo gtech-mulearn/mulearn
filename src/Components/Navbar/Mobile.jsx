@@ -80,7 +80,7 @@ export const MobileMenu = ({
 
       <div className="grid justify-items-center">
         <a
-          href="https://app.mulearn.org/user/register"
+          href="https://app.mulearn.org/register"
           target="_blank"
           rel="noopener noreferrer"
           className="py-3 px-28 "

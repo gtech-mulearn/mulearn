@@ -56,7 +56,7 @@ tbody
 td{
     text-align: center;
 }
-tbody tr:nth-child(-n+3){
+.container .table .tableContainer  tbody tr:nth-child(-n+3){
     background-color: rgb(255, 191, 0);
     border-radius: 10px;
     color: white;
@@ -64,7 +64,7 @@ tbody tr:nth-child(-n+3){
 .side{
     text-align: left;
 }
-tr:nth-child(-n+3) td{
+.container .table .tableContainer  tr:nth-child(-n+3) td{ 
     font-size: 16px;
     font-weight: 700;
     /* text-align: center; */
