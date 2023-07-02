@@ -4,12 +4,15 @@
     "position": "Associate Gamification",
     "image": "assets/team/mulearnhq/Bijo Mathew Jose.webp",
     "drive": "",
-    "linkedin": ""
+    "linkedin": "https://www.linkedin.com/in/bijomathewjose/",
+    "twitter": "https://twitter.com/bijomathewjose",
+    "github": "https://github.com/bijomathewjose"
   },
   {
     "name": "Adnan Kattekaden",
     "position": "Associate - Backend Developer",
     "image": "assets/team/communitycontributors/Adnan Kattekaden.webp",
-    "linkedin": "https://www.linkedin.com/in/adnankattekaden/"
+    "linkedin": "https://www.linkedin.com/in/adnankattekaden/",
+    "github": "https://github.com/adnankattekaden"
   }
 ]
