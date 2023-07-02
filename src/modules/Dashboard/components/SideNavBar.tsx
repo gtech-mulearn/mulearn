@@ -46,8 +46,8 @@ const SideNavBar = (props: Props) => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
 
     useEffect(() => {
-        if (localStorage.getItem("userInfo") && userInfo.existInGuild) {
-            setConnected(userInfo.existInGuild);
+        if (localStorage.getItem("userInfo") && userInfo.exist_in_guild) {
+            setConnected(userInfo.exist_in_guild);
         }
     });
     const myElementRef = useRef<HTMLDivElement>(null);
