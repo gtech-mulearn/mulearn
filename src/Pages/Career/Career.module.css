@@ -232,7 +232,7 @@
   font-family: "Poppins", sans-serif;
   line-height: 20px;
   font-weight: 500;
-  max-width: 250px;
+  max-width: 275px;
 }
 
 .text span {
@@ -241,6 +241,7 @@
 
 .applynowbtn{
   margin-top: 1rem;
+  width: 100%;
   background-color: #f6e127;
   border: none;
   border-radius: 5px;
