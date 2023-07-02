@@ -9,6 +9,7 @@ type Props = {};
 
 const ResetPassword = (props: Props) => {
     const [showOrHidePassword, setShowOrHidePassword] = useState("password");
+    const [showOrHideConfirmPassword, setShowOrHideConfirmPassword] = useState("password");
     const [muid, setMuID] = useState("");
     const [searchParams] = useSearchParams();
     const [token, setToken] = useState("");
@@ -115,7 +116,7 @@ const ResetPassword = (props: Props) => {
                         </div>
                         <div className={styles.password_div}>
                             <input
-                                type={showOrHidePassword}
+                                type={showOrHideConfirmPassword}
                                 placeholder="Re-enter your new password"
                                 required
                                 name="confirmPassword"
@@ -133,12 +134,12 @@ const ResetPassword = (props: Props) => {
                                 className={styles.password_icon}
                                 onClick={e => {
                                     e.preventDefault();
-                                    showOrHidePassword == "password"
-                                        ? setShowOrHidePassword("text")
-                                        : setShowOrHidePassword("password");
+                                    showOrHideConfirmPassword == "password"
+                                        ? setShowOrHideConfirmPassword("text")
+                                        : setShowOrHideConfirmPassword("password");
                                 }}
                             >
-                                {showOrHidePassword === "text" ? (
+                                {showOrHideConfirmPassword === "text" ? (
                                     <i className="fi fi-sr-eye"></i>
                                 ) : (
                                     <i className="fi fi-sr-eye-crossed"></i>

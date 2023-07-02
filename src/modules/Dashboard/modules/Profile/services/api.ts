@@ -49,11 +49,12 @@ export const getPublicUserProfile = (
         .get(dashboardRoutes.getPublicUserProfile.replace("${muid}", muid))
         .then(response => {
             setAPILoadStatus(response.data.statusCode);
-            // console.log(response.data.response);
+            // console.log(response.data.statusCode);
             setUserProfile(response.data.response);
         })
         .catch(error => {
             console.log(error);
+            setAPILoadStatus(error.response.data.statusCode);
         });
 };
 
