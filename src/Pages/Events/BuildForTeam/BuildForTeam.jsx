@@ -211,7 +211,7 @@ const Build4Team = () => {
             <p className={styles.tv_tagline}>
               <ul>
                 <li>
-                  • First level filteration will be there from which all the
+                  • First level filtration will be there from which all the
                   valid websites will be selected and they enter to phase two.
                 </li>
                 <li>
@@ -265,7 +265,7 @@ const Build4Team = () => {
               contact us via Discord.
             </p>
             <a
-              href="https://app.mulearn.org/user/register"
+              href="https://app.mulearn.org/register"
               target="_blank"
               rel="noopener noreferrer"
             >
