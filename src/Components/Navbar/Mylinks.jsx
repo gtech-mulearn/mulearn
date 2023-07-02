@@ -206,7 +206,7 @@ export const links = [
           },
           {
             name: "Success Stories",
-            link: "/successstories",
+            link: "/blogs",
             submenu: false,
             sublinks: [],
             foreign: false,
@@ -238,7 +238,7 @@ export const links = [
         head: 2,
         name: "The Enablement",
         submenu: true,
-        link: "/challenges",
+        link: mainlink + "/challenges",
         sublinks: [
           {
             name: "Self Introduction",
@@ -433,15 +433,15 @@ export const links = [
             foreign: false,
           },
           {
-            name: "Rust",
-            link: mainlink + "/bootcamps/rust",
+            name: "Unreal Engine",
+            link: mainlink + "/bootcamps/ig/unreal",
             submenu: false,
             sublinks: [],
             foreign: false,
           },
           {
-            name: "JavaScript",
-            link: mainlink + "/bootcamps/javascript",
+            name: "Web Development",
+            link: mainlink + "/bootcamps/ig/web",
             submenu: false,
             sublinks: [],
             foreign: false,
