@@ -34,7 +34,9 @@ const MuVoyage = (props: Props) => {
         : "100";
     useEffect(() => {
         setUserLevelTrack(
-            userLevelData.filter(e => !e.tasks.every(e => e.completed))[0]
+            userLevelData[
+                userLevelData.filter(e => e.tasks.length !== 0).length - 1
+            ]
         );
     });
     return (
@@ -72,8 +74,9 @@ const MuVoyage = (props: Props) => {
                     </div>
 
                     <ul className={styles.accordion}>
-                        {userLevelData &&
-                            userLevelData.map((levelData, i) => {
+                        {userLevelData
+                            .filter(e => e.tasks.length !== 0)
+                            .map((levelData, i) => {
                                 return (
                                     <li className={styles.main_list} key={i}>
                                         <input

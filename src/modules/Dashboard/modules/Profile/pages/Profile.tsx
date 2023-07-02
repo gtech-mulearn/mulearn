@@ -240,15 +240,50 @@ const Profile = () => {
                                     </div>
                                     <div className={styles.profileInfo}>
                                         <div className={styles.profilePic}>
-                                            <img
-                                                src={
-                                                    userProfile.profile_pic
-                                                        ? userProfile.profile_pic
-                                                        : dpm
+                                            <div
+                                                className={
+                                                    styles.profile_pic_gard
                                                 }
-                                                alt={userProfile.first_name}
-                                            />
+                                            >
+                                                <img
+                                                    src={
+                                                        userProfile.profile_pic
+                                                            ? userProfile.profile_pic
+                                                            : dpm
+                                                    }
+                                                    alt={userProfile.first_name}
+                                                    style={{
+                                                        borderColor:
+                                                            !profileStatus
+                                                                ? "#456FF6"
+                                                                : "#2dce89"
+                                                    }}
+                                                />
 
+                                                <span>
+                                                    <i
+                                                        className={`${
+                                                            !profileStatus
+                                                                ? "fi fi-sr-shield-exclamation"
+                                                                : "fi fi-sr-shield-check"
+                                                        }  ${
+                                                            !profileStatus
+                                                                ? styles.private
+                                                                : styles.public
+                                                        }`}
+                                                    ></i>
+
+                                                    <div
+                                                        className={
+                                                            styles.gard_tooltip
+                                                        }
+                                                    >
+                                                        {!profileStatus
+                                                            ? "Private profile"
+                                                            : "Public profile"}
+                                                    </div>
+                                                </span>
+                                            </div>
                                             <div className={styles.name}>
                                                 <h1>
                                                     {userProfile.first_name}{" "}
@@ -491,9 +526,7 @@ const Profile = () => {
                                         <a
                                             onClick={() => {
                                                 setProfileList("karma-history");
-                                                navigate(
-                                                    "#section1"
-                                                );
+                                                navigate("#section1");
                                             }}
                                             href="#section1"
                                         >
@@ -513,7 +546,7 @@ const Profile = () => {
                                                         ).getTime()
                                                     );
                                                 })
-                                                .slice(5, userLog.length)
+                                                .slice(0, 7)
                                                 .map((log, i) => (
                                                     <div
                                                         key={i}
