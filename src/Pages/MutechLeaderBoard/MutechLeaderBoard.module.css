@@ -20,10 +20,10 @@
     width: 100%;
     margin: 0;
 }
-.container h1:first-child{
+h1:first-child{
     margin-top: 15px;
 }
-.container h1:nth-child(2){
+h1:nth-child(2){
     margin-bottom:30px;
 }
 .h2{
@@ -33,18 +33,18 @@
     margin-top: 15px;
     margin-bottom:30px;
 }
-.container table,.tableContainer   {
+table,.tableContainer   {
     width: 100%;
     border-spacing: 10px;
     word-break: break;
     min-width: 500px;
     width: 600px;
 }
-.container th{
+th{
     text-align: center;
     font-weight: 600;
 }
-.container tr{
+ tr{
     border-bottom: 1px solid rgba(0, 0, 0, 0.20) ;
     
     
@@ -52,11 +52,11 @@
 .clear{
     padding:10px;
 }
-.container tbody
-.container td{
+tbody
+td{
     text-align: center;
 }
-.container tbody tr:nth-child(-n+3){
+.container .table .tableContainer  tbody tr:nth-child(-n+3){
     background-color: rgb(255, 191, 0);
     border-radius: 10px;
     color: white;
@@ -64,7 +64,7 @@
 .side{
     text-align: left;
 }
-container .tr:nth-child(-n+3) td{
+.container .table .tableContainer  tr:nth-child(-n+3) td{ 
     font-size: 16px;
     font-weight: 700;
     /* text-align: center; */
