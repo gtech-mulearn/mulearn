@@ -43,7 +43,7 @@
 }
 
 .karma_history_container .karma_history:hover {
-    transform: scale(1.01);
+    /* transform: scale(1.01); */
     box-shadow: 0px 0px 6px 0px rgba(1, 75, 178, 0.25);
 }
 
