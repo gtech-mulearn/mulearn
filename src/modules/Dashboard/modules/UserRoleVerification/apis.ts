@@ -25,7 +25,20 @@ export const getUserRoleVerification = async (
         );
         const manageusers: any = response?.data;
         console.log(dashboardRoutes.getUsersRoleVerificationData);
-        setData(manageusers.response.data);
+        // setData(manageusers.response.data);
+        const datasuser = manageusers.response.data;
+        console.log(datasuser);
+        for (let i = 0; i < datasuser.length; i++) {
+            if (datasuser[i].verified == false) {
+                console.log(datasuser[i].verified);
+                datasuser[i].verified = "Not Verified"
+            } 
+            else {
+                console.log(datasuser[i].verified);
+                datasuser[i].verified = "Verified";
+            }
+        }
+        setData(datasuser);
         console.log(manageusers.response.data);
         setTotalPages(manageusers.response.pagination.totalPages);
     } catch (err: unknown) {
@@ -38,7 +51,7 @@ export const getUserRoleVerification = async (
 
 export const editUserRoleVerification = async (
     verified: boolean,
-    id: string | undefined,
+    id: string | number | boolean
 ) => {
     try {
         const response = await privateGateway.patch(

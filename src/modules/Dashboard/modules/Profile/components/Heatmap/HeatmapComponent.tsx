@@ -4,18 +4,25 @@ import { Tooltip } from "@chakra-ui/react";
 import moment from "moment";
 
 type Props = {
-    data: { taskName: string; karmaPoint: string; createdDate: string }[];
+    data: { task_name: string; karma: string; created_date: string }[];
     year: any;
 };
 
 const HeatmapComponent = (props: Props) => {
     const currentYear = new Date().getFullYear();
     const [year, setYear] = useState(currentYear);
-    let content: JSX.Element[] = [];
-    let i = 1;
-    const dataYearFiltered = props.data.filter(item => {
-        return item.createdDate.slice(0, 4) === year.toString();
-    });
+    const startDate = moment(`${year}-01-01`);
+    const endDate = moment(`${year}-12-31`);
+    const totalDays = endDate.diff(startDate, "days") + 1;
+    const content: JSX.Element[] = [];
+
+    const dataYearFiltered = props.data
+        ? props.data.filter(
+              item =>
+                  item.created_date &&
+                  item.created_date.slice(0, 4) === year.toString()
+          )
+        : [];
 
     const dataDayFiltered: {
         date: string;
@@ -26,15 +33,15 @@ const HeatmapComponent = (props: Props) => {
             acc: { date: string; totalKarma: number; taskCount: number }[],
             item
         ) => {
-            const date = item.createdDate.slice(0, 10);
+            const date = item.created_date.slice(0, 10);
             const existingItem = acc.find(el => el.date === date);
             if (existingItem) {
-                existingItem.totalKarma += parseInt(item.karmaPoint);
+                existingItem.totalKarma += parseInt(item.karma);
                 existingItem.taskCount += 1;
             } else {
                 acc.push({
                     date,
-                    totalKarma: parseInt(item.karmaPoint),
+                    totalKarma: parseInt(item.karma),
                     taskCount: 1
                 });
             }
@@ -43,77 +50,70 @@ const HeatmapComponent = (props: Props) => {
         []
     );
 
-    const monthMapping: Record<string, number> = {
-        "01": 0,
-        "02": 31,
-        "03": 59,
-        "04": 90,
-        "05": 120,
-        "06": 151,
-        "07": 181,
-        "08": 212,
-        "09": 243,
-        "10": 273,
-        "11": 304,
-        "12": 334
-    };
-    do {
-        let dateNumber = i.toLocaleString("en-US", {
-            minimumIntegerDigits: 2,
-            useGrouping: false
-        });
-        let foundItem = false;
-        dataDayFiltered.forEach(item => {
-            const month = item.date.slice(5, 7);
-            const monthNumber = monthMapping[month] || 0;
-            if (
-                parseInt(item.date.slice(8, 10)) + monthNumber ===
-                parseInt(dateNumber)
-            ) {
-                foundItem = true;
+    const renderSquares = () => {
+        let currentDate = moment(startDate);
+        let currentWeekday = currentDate.isoWeekday(); // Get the ISO weekday (1-7, Monday-Sunday) of the start date
+        let emptySquaresCount = currentWeekday - 1;
+
+        // Render empty squares for the first week
+        for (let i = 0; i < emptySquaresCount; i++) {
+            content.push(<p key={`empty_${i}`}></p>);
+        }
+
+        for (let i = 0; i < totalDays; i++) {
+            const dateString = currentDate.format("YYYY-MM-DD");
+            const existingItem = dataDayFiltered.find(
+                item => item.date === dateString
+            );
+            const totalKarma = existingItem?.totalKarma ?? 0; // Use nullish coalescing operator to provide a default value
+            const backgroundColor =
+                totalKarma >= 500
+                    ? "#00814a"
+                    : totalKarma >= 100
+                    ? "#27b176"
+                    : totalKarma >= 50
+                    ? "#2dce89ba"
+                    : totalKarma >= 10
+                    ? "#2dce899e"
+                    : totalKarma > 0
+                    ? "#2dce897d"
+                    : "";
+            const tooltipContent = existingItem
+                ? `Total Task: ${
+                      existingItem.taskCount
+                  }, Total Karma: ${totalKarma}, ${moment(
+                      existingItem.date
+                  ).format("ll")}`
+                : "";
+            content.push(
+                <Tooltip
+                    key={i}
+                    hasArrow
+                    placement="top"
+                    fontSize="12px"
+                    label={tooltipContent}
+                    aria-label="A tooltip"
+                >
+                    <p style={{ backgroundColor }}></p>
+                </Tooltip>
+            );
+
+            currentWeekday++;
+            if (currentWeekday > 7) {
+                // Start a new week
+                currentWeekday = 1;
                 content.push(
-                    <Tooltip
-                        hasArrow
-                        placement="top"
-                        fontSize="12px"
-                        label={
-                            "Total Task: " +
-                            item.taskCount +
-                            " , " +
-                            "Total Karma: " +
-                            item.totalKarma +
-                            " , " +
-                            moment(item.date).format("ll")
-                        }
-                        aria-label="A tooltip"
-                    >
-                        <p
-                            style={{
-                                backgroundColor:
-                                    item.totalKarma >= 500
-                                        ? "#00814a"
-                                    :item.totalKarma >= 100
-                                        ? "#27b176"
-                                        : item.totalKarma >= 50
-                                        ? "#2dce89ba"
-                                        : item.totalKarma >= 10
-                                        ? "#2dce899e"
-                                        : "#2dce897d"
-                            }}
-                            key={i}
-                        ></p>
-                    </Tooltip>
-                );
-                i++;
+                    <div key={`week_${i}`} className={styles.weekBreak}></div>
+                ); // Add a break between weeks
             }
-        });
-        !foundItem && content.push(<p key={i}></p>);
-        !foundItem && i++;
-    } while (i <= 365);
+
+            currentDate.add(1, "day");
+        }
+    };
 
     const renderYearButtons = () => {
         const years = [];
-        for (let y = currentYear; y >= props.year; y--) {
+        for (let y = props.year; y <= currentYear; y++) {
             years.push(
                 <p
                     key={y}
@@ -132,6 +132,8 @@ const HeatmapComponent = (props: Props) => {
         }
         return years;
     };
+
+    renderSquares();
 
     return (
         <div className={styles.heatmap_container}>

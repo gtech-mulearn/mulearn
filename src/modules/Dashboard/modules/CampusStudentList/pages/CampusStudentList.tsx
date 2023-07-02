@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./CampusStudentList.module.css";
 import { getCampusDetails, getStudentDetails } from "../services/apis";
 import TableTop from "../../../../../components/MuComponents/TableTop/TableTop";
@@ -26,10 +26,10 @@ const CampusStudentList = (props: Props) => {
     const columnOrder = [
         { column: "fullname", Label: "Name", isSortable: false },
         // { column: "email", Label: "Email", isSortable: false },
-        // { column: "phone", Label: "Phone", isSortable: false },
         { column: "karma", Label: "Karma", isSortable: false },
         { column: "level", Label: "Level", isSortable: false },
-        { column: "muid", Label: "MuId", isSortable: false }
+        { column: "muid", Label: "MuId", isSortable: false },
+        { column: "created_at", Label: "Join Date", isSortable: false },
     ];
 
     const [campusData, setCampusData] = useState({
@@ -42,7 +42,7 @@ const CampusStudentList = (props: Props) => {
         activeMembers: "",
         rank: ""
     });
-
+    const firstFetch = useRef(true)
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
@@ -54,10 +54,12 @@ const CampusStudentList = (props: Props) => {
         getStudentDetails(setStudentData, prevPage, perPage);
     };
     useEffect(() => {
-        if (!hasRole([roles.CAMPUS_LEAD])) navigate("/404");
-
-        getStudentDetails(setStudentData, 1, perPage, setTotalPages);
-        getCampusDetails(setCampusData, setLoading);
+        if (firstFetch.current) {
+            if (!hasRole([roles.CAMPUS_LEAD])) navigate("/404");
+            getStudentDetails(setStudentData, 1, perPage, setTotalPages);
+            getCampusDetails(setCampusData, setLoading);
+        }
+        firstFetch.current = false
     }, []);
 
     const handleSearch = (search: string) => {
@@ -138,12 +140,12 @@ const CampusStudentList = (props: Props) => {
                                         <p>Karma points</p>
                                         <h1>
                                             {parseInt(campusData.totalKarma) >
-                                            1000
+                                                1000
                                                 ? (
-                                                      parseInt(
-                                                          campusData.totalKarma
-                                                      ) / 1000
-                                                  ).toPrecision(4) + "K"
+                                                    parseInt(
+                                                        campusData.totalKarma
+                                                    ) / 1000
+                                                ).toPrecision(4) + "K"
                                                 : campusData.totalKarma}
                                         </h1>
                                     </div>
@@ -178,6 +180,7 @@ const CampusStudentList = (props: Props) => {
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
+                        
                     />
                     <Table
                         rows={studentData}

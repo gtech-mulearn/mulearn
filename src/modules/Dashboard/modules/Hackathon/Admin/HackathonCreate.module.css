@@ -88,6 +88,7 @@
 .hackNav ul li {
     padding: 0 1rem;
     position: relative;
+    cursor: pointer;
 }
 
 .hackNav ul span {
@@ -96,7 +97,7 @@
     height: 1.8rem;
 }
 
-.hackNav ul li:first-child {
+.selectedTab {
     color: var(--blue);
 }
 
@@ -106,43 +107,15 @@
     background-color: #fff;
     border-radius: var(--borderRadius);
     box-shadow: var(--boxShadow);
+    padding-bottom: 1px;
 }
 
 .formGroup {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.InputSet {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-}
-
-.formLabel {
-    text-align: left;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #000;
-}
-
-.InputSet input {
-    padding: .7rem 1rem;
-    border-radius: var(--borderRadius);
-    width: 100%;
-    min-width: 22rem;
-    border: .1px solid #CFD3D4;
-}
-
-.InputSet textarea {
-    padding: .7rem 1rem;
-    border-radius: var(--borderRadius);
-    width: 100%;
-    min-width: 23rem;
-    min-height: 10rem;
-    border: .1px solid #CFD3D4;
+    margin-bottom: 5px;
 }
 
 .btns {
@@ -154,10 +127,14 @@
 .btns button:nth-child(2) {
     background-color: var(--blue);
     color: #fff;
-
 }
 
-@media (width<=768px) {
+.error {
+    color: red;
+    font-size: 12px;
+}
+
+@media (width < 1080px) {
 
     .dashLine {
         font-size: 2.5rem;
@@ -166,9 +143,93 @@
     .dashLine::before {
         bottom: .7rem;
     }
+}
 
-    .InputSet input,
-    .InputSet textarea {
-        min-width: 18rem;
+@media (width<=768px) {
+    .dashLine {
+        font-size: 2.2rem;
     }
+
+    .dashLine::before {
+        bottom: .5rem;
+    }
+
+    .formGroup .placeholder::placeholder {
+        font-size: .8rem;
+    }
+
+    .InputSet textarea {
+        min-width: 30vw;
+    }
+}
+
+@media (width < 300px) {
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .dashLine {
+        font-size: 1.5rem;
+    }
+
+    .dashLine::before {
+        bottom: .3rem;
+        height: 0.3rem;
+    }
+
+    .hackNav ul {
+        padding: .8rem;
+        margin: 2rem 0;
+        height: 3rem;
+        font-size: 1rem;
+    }
+
+    .starImg img {
+        width: 3rem;
+    }
+
+    .starImg img:first-child {
+        top: 1rem;
+        left: -1.3rem;
+    }
+
+    .starImg img:nth-child(2) {
+        top: -1.5rem;
+        right: 0rem;
+    }
+
+    .form {
+        padding: 1rem;
+    }
+
+    .formGroup .placeholder::placeholder {
+        font-size: .7rem;
+    }
+}
+
+.checkBoxContainer {
+    background-color: var(--Light);
+    color: var(--black);
+    padding: .5rem 1rem;
+    border-radius: var(--borderRadius);
+    cursor: pointer;
+    user-select: none;
+}
+
+.formCheckbox {
+    display: none;
+}
+
+.checked {
+    background-color: var(--blue);
+    color: var(--Light);
+    padding: .5rem 1rem;
+    border-radius: var(--borderRadius);
+}
+
+.checkboxOuter {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }

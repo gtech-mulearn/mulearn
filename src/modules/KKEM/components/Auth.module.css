@@ -1,0 +1,66 @@
+.container {
+    padding-top: 2rem;
+}
+.heading {
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 600;
+}
+.submit {
+    background: #456ff6;
+    color: #fff;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 1rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+}
+.submit:hover {
+    background: #456ff6bb;
+}
+.submit:disabled {
+    opacity: 0.5;
+}
+.error {
+    color: red;
+    font-size: 0.8rem;
+    margin: 0.5em 0;
+}
+.form {
+    display: flex;
+    height: 5rem;
+    width: fit-content;
+    position: relative;
+    width: 100%;
+    max-width: 35rem;
+    margin-top: 1rem;
+    isolation: isolate;
+}
+.form::before {
+    content: "";
+    width: 5rem;
+    height: 6rem;
+    background: url("../assets/Star.svg") no-repeat;
+    position: absolute;
+    left: -2.5rem;
+    z-index: -1;
+}
+.form > input[type="text"] {
+    background-color: #fff;
+    width: 100%;
+    margin-top: 0;
+    border: none;
+    border-radius: 1.5rem;
+    padding-left: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+    .form {
+        max-width: 100%;
+    }
+    .heading {
+        font-size: 1.5rem;
+    }
+}

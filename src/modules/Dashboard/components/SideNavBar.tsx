@@ -18,7 +18,7 @@ import {
     DropDownButtons,
     MuButton,
     MuButtonLight
-} from "../../../components/MuComponents/MuButtons/MuButton";
+} from "@Mulearn/MuButtons/MuButton";
 // import MuButtonLight from "../../../components/MuComponents/MuButtons/MuButtonLight";
 
 type Props = {
@@ -102,6 +102,7 @@ const SideNavBar = (props: Props) => {
                 ></p>
             </div>
             <div
+                id="side_nav"
                 className={styles.side_nav_bar_container}
                 style={
                     window.innerWidth <= 830

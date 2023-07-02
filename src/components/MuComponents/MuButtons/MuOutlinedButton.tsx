@@ -20,21 +20,23 @@ export const PrimaryButton: React.FC<Props> = ({
         <button
             onClick={handleClick}
             style={{
-                height:"max-content",
-                padding: '6px 16px',
-                border: '1px solid rgba(1, 75, 178, .5)',
-                borderRadius: '8px',
-                color: 'rgba(1, 75, 178, 1)',
+                height: "max-content",
+                padding: "6px 16px",
+                border: "1px solid var(--blue)",
+                borderRadius: "8px",
+                color: "var(--blue)",
                 backgroundColor: bgColor,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 margin: margin,
-                fontWeight: "600",
+                fontWeight: "600"
             }}
             {...rest}
         >
-            {prefixIcon && <div style={{ marginRight: '8px' }}>{prefixIcon}</div>}
+            {prefixIcon && (
+                <div style={{ marginRight: "8px" }}>{prefixIcon}</div>
+            )}
             <span>{text}</span>
         </button>
     );

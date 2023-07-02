@@ -64,6 +64,8 @@
 
 .login_page .login_container .login_form form {
   min-width: 380px;
+  display: flex;
+  flex-direction: column;
 }
 
 .login_page .login_container .login_form .password_div {
@@ -117,6 +119,9 @@
 .login_page .login_container .login_form button {
   background: #5570f1;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 8px 0px;
   min-width: 200px;
   border-radius: 10px;
@@ -161,4 +166,40 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+.otp_loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 5px;
+}
+
+.signin_button {
+  background: #5570f1;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 0px;
+  width: 100px;
+  min-width: 200px;
+  border-radius: 10px;
+  align-self: center;
+  cursor: pointer;
+}
+
+.reset_button{
+  background: #5570f1;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 0px;
+  width: 100%;
+  min-width: 200px;
+  border-radius: 10px;
+  align-self: center;
+  cursor: pointer;
 }

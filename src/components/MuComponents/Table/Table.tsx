@@ -1,7 +1,8 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import styles from "./Table.module.css";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import Modal from "../Modal/Modal";
 
 interface Data {
     [key: string]: string | number | boolean;
@@ -36,6 +37,9 @@ type TableProps = {
     id?: string[];
     onEditClick?: (column: string | number | boolean) => void;
     onDeleteClick?: (column: string | number | boolean) => void;
+    onVerifyClick?: (column: string | number | boolean) => void;
+	modalHeading?: string;
+	modalContent?: string;
 };
 
 {
@@ -44,6 +48,8 @@ use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <T
 }
 
 const Table: FC<TableProps> = (props: TableProps) => {
+    const [isOpen, setIsOpen] = useState(false);
+
     function convertToNormalDate(dateString: any): string | null {
         const numberRegex = /^[0-9]+$/;
         if (String(dateString) == "true") {
@@ -93,42 +99,70 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                     {startIndex + index + 1}
                                 </td>{" "}
                                 {props.columnOrder.map(column => (
-                                    <td className={styles.td} key={column.column}>
-                                        {convertToNormalDate(rowData[column.column])}
+                                    <td
+                                        className={styles.td}
+                                        key={column.column}
+                                    >
+                                        {convertToNormalDate(
+                                            rowData[column.column]
+                                        )}
                                     </td>
                                 ))}
                                 {props.id &&
                                     props.id.map(column => (
                                         <td className={styles.td} key={column}>
-											<div className={styles.icons}>
-												<button
-													onClick={() =>
-														props.onEditClick &&
-														props.onEditClick(
-															rowData[column]
-														)
-													}
-												>
-													<FaEdit/>
-												</button>
-												<button
-													onClick={() =>
-														props.onDeleteClick &&
-														props.onDeleteClick(
-															rowData[column]
-														)
-													}
-												>
-													<MdDelete/>
-												</button>
-											</div>
+                                            <div className={styles.icons}>
+                                                {props.onEditClick && (
+                                                    <button
+                                                        onClick={() =>
+                                                            props.onEditClick &&
+                                                            props.onEditClick(
+                                                                rowData[column]
+                                                            )
+                                                        }
+                                                    >
+                                                        <FaEdit />
+                                                    </button>
+                                                )}
+                                                {props.onVerifyClick && (
+                                                    <button
+                                                        className={styles.btns}
+                                                        onClick={() =>
+                                                            setIsOpen(true)
+                                                        }
+                                                    >
+                                                        Verify
+                                                    </button>
+                                                )}
+                                                {isOpen && (
+                                                    <Modal
+														setIsOpen={setIsOpen}
+														id={rowData[column]}
+														heading={props.modalHeading}
+														content={props.modalContent} 
+														click={props.onVerifyClick} 
+													/>
+                                                )}
+                                                {props.onDeleteClick && (
+                                                    <button
+                                                        onClick={() =>
+                                                            props.onDeleteClick &&
+                                                            props.onDeleteClick(
+                                                                rowData[column]
+                                                            )
+                                                        }
+                                                    >
+                                                        <MdDelete />
+                                                    </button>
+                                                )}
+                                            </div>
                                         </td>
                                     ))}
                             </tr>
                         ))}
                     </tbody>
                 </table>
-				</div>
+            </div>
             <div className={styles.page}>{props.children?.[1]}</div>
         </>
     );

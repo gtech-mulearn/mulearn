@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styles from "./Login.module.css";
 import { useToast } from "@chakra-ui/react";
@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { BeatLoader, ClipLoader } from "react-spinners";
 import Dropdown from "../../../../components/MuComponents/Dropdown/Dropdown";
 import i18n from "../../../../i18n";
-import { ClipLoader } from "react-spinners";
+import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 
 const Login = () => {
     const [showOrHidePassword, setShowOrHidePassword] = useState("password");
@@ -22,6 +22,10 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [otpForm, setOtpForm] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [otpVerifyLoading, setOtpVerifyLoading] = useState(false);
+    const [otpLoading, setOtpLoading] = useState(false);
+    const [otpError, setOtpError] = useState(false);
+    let ruri = window.location.href.split("=")[1];
     const [input, setInput] = useState("");
     const [language, setLanguage] = useState("en");
     const toast = useToast();
@@ -102,7 +106,9 @@ const Login = () => {
                                     <b>{t("login_otp_bold")}</b>
                                 </a>
                             </p>
-                            <button
+                            <MuButton
+                                text={"Sign In"}
+                                className={styles.signin_button}
                                 onClick={e => {
                                     e.preventDefault();
                                     if (muid != "" && password != "") {
@@ -111,26 +117,13 @@ const Login = () => {
                                             password,
                                             toast,
                                             navigate,
-                                            setIsLoading
+                                            setIsLoading,
+                                            ruri
                                         );
                                     }
                                 }}
-                                type="submit"
-                            >
-                                <div className={styles.signin_loading}>
-                                    {isLoading ? (
-                                        <>
-                                            Sign in
-                                            <ClipLoader
-                                                color="#fff"
-                                                size={20}
-                                            />
-                                        </>
-                                    ) : (
-                                        t("sign_in")
-                                    )}
-                                </div>
-                            </button>
+                                isLoading={isLoading}
+                            />
                             <span className={styles.register}>
                                 <a href="register">{t("sign_up")}</a>
                             </span>
@@ -142,8 +135,8 @@ const Login = () => {
                     <div className={styles.login_form}>
                         <h1>User Login</h1>
                         <p className={styles.p_welcome}>
-                            Hey welcome, Please enter your details to get sign
-                            in to your account
+                            Hey welcome, please enter your details to sign in to
+                            your account
                         </p>
                         <form>
                             <input
@@ -192,10 +185,10 @@ const Login = () => {
                                         setOtpForm(false);
                                     }}
                                 >
-                                    login with <b>Password</b>
+                                    Login with <b>password</b>
                                 </a>
                             </p>
-                            <button
+                            {/* <button
                                 onClick={e => {
                                     setHasError(false);
                                     e.preventDefault();
@@ -204,7 +197,8 @@ const Login = () => {
                                             emailOrMuid,
                                             toast,
                                             setHasError,
-                                            setStatus
+                                            setStatus,
+                                            setOtpLoading
                                         );
                                     }
                                     if (!hasError && password != "") {
@@ -212,7 +206,8 @@ const Login = () => {
                                             emailOrMuid,
                                             password,
                                             toast,
-                                            navigate
+                                            navigate,
+                                            setOtpLoading
                                         );
                                     }
                                 }}
@@ -222,14 +217,59 @@ const Login = () => {
                                 {hasError
                                     ? "Request OTP"
                                     : status === 0 && emailOrMuid != ""
-                                    ? "processing"
-                                    : emailOrMuid != ""
-                                    ? "Sign in"
-                                    : "Request OTP"}
-                            </button>
+                                        ? "Processing"
+                                        : emailOrMuid != ""
+                                            ?
+                                            <>
+                                                {!otpLoading ? <>Sign in</> : <div className={styles.otp_loader}> <PulseLoader size={10} color="#fff" /></div>}
+                                            </>
+                                            : "Request OTP"
+                                        }
+                            </button> */}
+                            <MuButton
+                                text={
+                                    hasError
+                                        ? "Request OTP"
+                                        : otpLoading
+                                        ? "Processing"
+                                        : otpError
+                                        ? "Request OTP"
+                                        : "Signin"
+                                }
+                                className={styles.signin_button}
+                                onClick={e => {
+                                    setHasError(false);
+                                    e.preventDefault();
+                                    if (emailOrMuid != "" && hasError) {
+                                        requestEmailOrMuidOtp(
+                                            emailOrMuid,
+                                            toast,
+                                            setHasError,
+                                            setStatus,
+                                            setOtpLoading,
+                                            setOtpError
+                                        );
+                                    }
+                                    if (!hasError && password != "") {
+                                        otpVerification(
+                                            emailOrMuid,
+                                            password,
+                                            toast,
+                                            navigate,
+                                            setOtpVerifyLoading,
+                                            ruri
+                                        );
+                                    }
+                                }}
+                                // disabled={status === 1 ? true : false}
+                                isLoading={
+                                    otpLoading ? otpLoading : otpVerifyLoading
+                                }
+                            />
                             <span className={styles.register}>
+                                {" "}
                                 <a href="register">
-                                    Don't Have an Account? Sign up
+                                    Don't have an account? Sign up
                                 </a>
                             </span>
                         </form>

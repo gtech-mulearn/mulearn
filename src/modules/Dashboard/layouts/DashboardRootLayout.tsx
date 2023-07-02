@@ -71,6 +71,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-layout-fluid"></i>
         },
         {
+            url: "tasks",
+            title: "Tasks",
+            hasView: true,
+            roles: [roles.ADMIN],
+            icon: <i className="fi fi-sr-layout-fluid"></i>
+        },
+        {
             url: "manage-users",
             title: "Manage Users",
             hasView: true,
@@ -138,7 +145,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
 
     return (
         <div className={styles.full_page}>
-            <SideNavBar sidebarButtons={buttons} />
+            <SideNavBar sidebarButtons={buttons}/>
             <div className={styles.right_side} id="right">
                 <TopNavBar />
                 <div className={styles.main_content}>
