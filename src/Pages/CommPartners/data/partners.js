@@ -12,7 +12,6 @@ import kuttycoders from "../assets/partners/kuttycoders.webp";
 import google_android from "../assets/partners/google_android.webp";
 import gdsc from "../assets/partners/gdsc.webp";
 import icfoss from "../assets/partners/icfoss.webp";
-import riglabs from "../assets/partners/riglabs.webp"
 
 const partners = [
   {
@@ -25,8 +24,8 @@ const partners = [
   {
     name: "Kerala Startup Mission",
     image: ksum,
-    link: "",
-    customlink: "/community-partners/iedc",
+    link: "https://startupmission.kerala.gov.in/",
+    // customlink: "/community-partners/iedc",
   },
 
   {
@@ -41,12 +40,6 @@ const partners = [
     image: foxlab,
     link: "",
     customlink: "/community-partners/foxlab",
-  },
-  {
-    name: "Riglabs",
-    image: riglabs,
-    link: "",
-    customlink: "https://www.riglabs.co/",
   },
   {
     name: "Institute of Electrical and Electronics Engineers",

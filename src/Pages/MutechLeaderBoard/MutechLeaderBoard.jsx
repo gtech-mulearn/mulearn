@@ -74,6 +74,8 @@ const MutechLeaderBoard = () => {
     function sortScore(PeopleScoreBoard) {
         const scoreSet = Object.values(PeopleScoreBoard)
         const scoreBoard = scoreSet.sort((a, b) => {
+            if (a.streak === b.streak)
+                return b.score - a.score
             return b.streak - a.streak
         })
         setScoreBoard(scoreBoard)
