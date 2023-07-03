@@ -25,6 +25,7 @@ const Login = () => {
     const [otpVerifyLoading, setOtpVerifyLoading] = useState(false);
     const [otpLoading, setOtpLoading] = useState(false);
     const [otpError, setOtpError] = useState(false);
+    let ruri = window.location.href.split("=")[1];
     const [input, setInput] = useState("");
     const [language, setLanguage] = useState("en");
     const toast = useToast();
@@ -117,7 +118,8 @@ const Login = () => {
                                             password,
                                             toast,
                                             navigate,
-                                            setIsLoading
+                                            setIsLoading,
+                                            ruri
                                         );
                                     }
                                 }}
@@ -230,11 +232,55 @@ const Login = () => {
                                 {hasError
                                     ? "Request OTP"
                                     : status === 0 && emailOrMuid != ""
-                                    ? "processing"
-                                    : emailOrMuid != ""
-                                    ? "Sign in"
-                                    : "Request OTP"}
-                            </button>
+                                        ? "Processing"
+                                        : emailOrMuid != ""
+                                            ?
+                                            <>
+                                                {!otpLoading ? <>Sign in</> : <div className={styles.otp_loader}> <PulseLoader size={10} color="#fff" /></div>}
+                                            </>
+                                            : "Request OTP"
+                                        }
+                            </button> */}
+                            <MuButton
+                                text={
+                                    hasError
+                                        ? "Request OTP"
+                                        : otpLoading
+                                        ? "Processing"
+                                        : otpError
+                                        ? "Request OTP"
+                                        : "Signin"
+                                }
+                                className={styles.signin_button}
+                                onClick={e => {
+                                    setHasError(false);
+                                    e.preventDefault();
+                                    if (emailOrMuid != "" && hasError) {
+                                        requestEmailOrMuidOtp(
+                                            emailOrMuid,
+                                            toast,
+                                            setHasError,
+                                            setStatus,
+                                            setOtpLoading,
+                                            setOtpError
+                                        );
+                                    }
+                                    if (!hasError && password != "") {
+                                        otpVerification(
+                                            emailOrMuid,
+                                            password,
+                                            toast,
+                                            navigate,
+                                            setOtpVerifyLoading,
+                                            ruri
+                                        );
+                                    }
+                                }}
+                                // disabled={status === 1 ? true : false}
+                                isLoading={
+                                    otpLoading ? otpLoading : otpVerifyLoading
+                                }
+                            />
                             <span className={styles.register}>
                                 {" "}
                                 <a href="register">

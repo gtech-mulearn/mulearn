@@ -3,7 +3,7 @@
 	font-weight: bold;
 }
 
-.external_container{
+.external_container {
 	display: flex;
 	align-items: center;
 	min-height: 65vh;
@@ -62,9 +62,11 @@
 	.btn_container {
 		width: 100% !important;
 	}
+
 	.container {
 		width: 85vw;
 	}
+
 	.inputContainer {
 		width: 100%;
 	}
@@ -185,16 +187,43 @@
 	margin-bottom: 0;
 	border-radius: var(--borderRadius);
 	width: 100%;
-	min-width: 72rem; /*need to change this to make it responsive */
+	min-width: 72vw;
+	/*need to change this to make it responsive */
 	min-height: 10rem;
 	border: .1px solid #CFD3D4;
 }
 
-@media (width<=768px) {
+
+@media (width<=1280px) {
+
+	.InputSet textarea {
+		min-width: 60vw;
+	}
+}
+
+@media (width<=1080px) {
 
 	.InputSet input,
 	.InputSet textarea,
 	.reactSelect {
-		min-width: 18rem;
+		min-width: 50vw;
+	}
+}
+
+@media (width<=820px) {
+
+	.InputSet input,
+	.InputSet textarea,
+	.reactSelect {
+		min-width: 80vw;
+	}
+}
+
+@media (width<=520px) {
+
+	.InputSet input,
+	.InputSet textarea,
+	.reactSelect {
+		min-width: 68vw;
 	}
 }

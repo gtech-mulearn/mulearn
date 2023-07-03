@@ -24,9 +24,9 @@ function InterestGroup() {
     const columnOrder = [
         { column: "name", Label: "Name", isSortable: true },
         { column: "user_ig_link_ig", Label: "Members", isSortable: false },
-        { column: "updated_by", Label: "Updated By", isSortable: true },
+        { column: "updated_by", Label: "Updated By", isSortable: false },
         { column: "created_by", Label: "Created By", isSortable: false },
-        { column: "created_at", Label: "Created On", isSortable: true }
+        { column: "created_at", Label: "Created On", isSortable: false }
     ];
 
     const handleNextClick = () => {
@@ -43,8 +43,9 @@ function InterestGroup() {
 
     useEffect(() => {
         if (firstFetch.current) {
-            if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
-
+            if (!hasRole([roles.ADMIN, roles.FELLOW])) {
+				navigate("/404")
+			}
             getInterestGroups(setData, 1, perPage, setTotalPages, "", "");
         }
         firstFetch.current = false;

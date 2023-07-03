@@ -501,7 +501,8 @@ form .form_buttons button[type="reset"] {
 }
 
 .tc_text {
-  max-width: 20rem;
+  margin-top: 0;
+  max-width: 25rem;
 }
 
 .validation_error_message p {
