@@ -433,13 +433,6 @@ export const links = [
             foreign: false,
           },
           {
-            name: "Unreal Engine",
-            link: mainlink + "/bootcamps/ig/unreal",
-            submenu: false,
-            sublinks: [],
-            foreign: false,
-          },
-          {
             name: "Web Development",
             link: mainlink + "/bootcamps/ig/web",
             submenu: false,
