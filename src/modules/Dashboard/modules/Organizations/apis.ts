@@ -114,7 +114,7 @@ export const getStates = async (
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
-            const errorMsg = error?.response?.data?.message?.general[0] || 'Something went wrong!';
+            const errorMsg = 'Something went wrong!';
             toast({
                 title: `Error`,
                 description: errorMsg,
@@ -145,7 +145,7 @@ export const getZones = async (
         const error = err as AxiosError;
         if (error?.response) {
             // console.log(error.response);
-            const errorMsg = error?.response?.data?.message?.general[0] || 'Something went wrong!';
+            const errorMsg = 'Something went wrong!';
             toast({
                 title: `Error`,
                 description: errorMsg,
@@ -176,7 +176,7 @@ export const getDistricts = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            const errorMsg = error?.response?.data?.message?.general[0] || 'Something went wrong!';
+            const errorMsg =  'Something went wrong!';
             toast({
                 title: `Error`,
                 description: errorMsg,
