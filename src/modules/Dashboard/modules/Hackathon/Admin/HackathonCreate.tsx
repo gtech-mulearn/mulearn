@@ -106,10 +106,10 @@ const HackathonCreate = () => {
             values.districtId,
             values.place,
             values.isOpenToAll,
-            values.applicationStart,
-            values.applicationEnds,
-            values.eventStart,
-            values.eventEnd,
+            `${values.applicationStart}T00:00:00Z`,
+            `${values.applicationEnds}T00:00:00Z`,
+            `${values.eventStart}T00:00:00Z`,
+            `${values.eventEnd}T00:00:00Z`,
             selectedFields
         );
         resetForm();
@@ -179,23 +179,27 @@ const HackathonCreate = () => {
                                                 label="Name"
                                                 name="title"
                                                 type="text"
+                                                className={styles.placeholder}
                                                 placeholder="what you are calling your hackathon"
                                             />
                                             <FormikTextInputWhite
                                                 label="Tagline"
                                                 name="tagline"
                                                 type="text"
+                                                className={styles.placeholder}
                                                 placeholder="eg: worlds realest hackathon"
                                             />
                                             <FormikTextInputWhite
                                                 label="Approx. Participants"
                                                 name="participantCount"
                                                 type="number"
+                                                className={styles.placeholder}
                                                 placeholder="eg: 250."
                                             />
                                             <FormikTextAreaWhite
                                                 label="About"
                                                 name="description"
+                                                className={styles.placeholder}
                                                 placeholder="explain something"
                                             />
                                         </TabPanel>
@@ -204,21 +208,25 @@ const HackathonCreate = () => {
                                             <FormikTextInputWhite
                                                 label="Start Date"
                                                 name="eventStart"
+                                                className={styles.placeholder}
                                                 type="date"
                                             />
                                             <FormikTextInputWhite
                                                 label="End Date"
                                                 name="eventEnd"
+                                                className={styles.placeholder}
                                                 type="date"
                                             />
                                             <FormikTextInputWhite
                                                 label="Registration Start Date"
                                                 name="applicationStart"
+                                                className={styles.placeholder}
                                                 type="date"
                                             />
                                             <FormikTextInputWhite
                                                 label="Registration End Date"
                                                 name="applicationEnds"
+                                                className={styles.placeholder}
                                                 type="date"
                                             />
                                         </TabPanel>
@@ -268,15 +276,13 @@ const HackathonCreate = () => {
                                                     ([key, value]) => (
                                                         <label
                                                             key={key}
-                                                            className={`${
-                                                                styles.checkBoxContainer
-                                                            } ${
-                                                                values.formFields.includes(
+                                                            className={`${styles.checkBoxContainer
+                                                                } ${values.formFields.includes(
                                                                     key as never
                                                                 )
                                                                     ? styles.checked
                                                                     : ""
-                                                            }`}
+                                                                }`}
                                                         >
                                                             <Field
                                                                 type="checkbox"

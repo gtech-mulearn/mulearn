@@ -1,0 +1,178 @@
+.main_task {
+    padding: 2rem 3rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06);}
+
+.main_task p,
+.main_task li {
+    color: black;
+    font-weight: 500;
+}
+
+.main_task .tasks .topSection {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.main_task .tasks .topSection .title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.main_task .tasks .topSection .title span {
+    background-image: url(../assets/images/levelup.png);
+    height: 4rem;
+    width: 4rem;
+    border-radius: .5rem;
+    background-position: center;
+    background-size: contain;
+}
+
+.main_task .tasks .topSection .title .title_desc p:first-child {
+    font-size: 1.5rem;
+}
+
+.main_task .tasks .topSection .title .title_desc p:nth-child(2) {
+    font-weight: 600;
+    padding-top: .5rem;
+    font-size: .9rem;
+}
+
+.main_task .tasks .topSection .progressbar {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    font-size: .8rem;
+}
+
+.main_task .tasks .topSection .progressbar .progress_title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main_task .tasks .topSection .progressbar .progress {
+    width: 100%;
+    height: .3rem;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    position: relative;
+}
+
+.main_task .tasks .topSection .date {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    font-size: .8rem;
+}
+
+.main_task .tasks .accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.main_task .tasks .accordion .main_list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+    border-radius: .5rem;
+    border: 2px solid rgb(128, 128, 128, .3);
+}
+
+.main_task .tasks .accordion .main_list .level {
+    padding: 1rem 1.5rem 0rem 1.5rem;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main_task .tasks .accordion .main_list .level .task_details {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: .9rem;
+}
+
+.main_task .tasks .accordion .main_list .level div i {
+    height: 15px;
+    transition: all 0.5s;
+}
+
+.main_task .tasks .accordion .main_list .level div .tick {
+    color: #48bb78;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main_task .tasks .accordion .main_list .expandBtn {
+    display: none !important;
+}
+
+.main_task .tasks .accordion .main_list .content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s, padding 0.5s;
+}
+
+.main_task .tasks .accordion .main_list .expandBtn:checked~.content {
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+.main_task .tasks .accordion .main_list .expandBtn:checked+.level .icon_down_arrow {
+    transform: rotate(180deg);
+}
+
+.main_task .tasks .accordion .main_list .content .list_list li {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .8rem;
+    padding-left: 1.5rem;
+    font-size: .8rem;
+}
+
+
+@media (width <300px) {
+    .main_task{
+        padding: 2rem 1rem;
+    }
+}
+
+.main_task .tasks .accordion .main_list .content .list_list li label {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.main_task .tasks .accordion .main_list .content .list_list li label span {
+    background: #DBEAFF;
+    color: #2E85FE;
+    padding: 0px 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    width: fit-content;
+}
+
+/* .main_task .tasks .accordion .main_list .content .list_list li input {
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 1px solid rgb(128, 128, 128, .1);
+    margin-bottom: .5rem;
+} */
+
+@media (max-width: 700px) {
+    .main_task {
+        padding: 2rem 1rem;
+    }
+
+    .main_task .tasks .accordion .main_list .content .list_list li label {
+        flex-direction: column;
+    }
+}

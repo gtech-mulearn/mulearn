@@ -442,7 +442,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                 }}
                 validationSchema={Yup.object({
                     Name: Yup.string()
-                        .max(30, "Must be 30 characters or less")
+                        .max(60, "Must be 60 characters or less")
                         .required("Required"),
                     Code: Yup.string()
                         .max(30, "Must be 30 characters or less")

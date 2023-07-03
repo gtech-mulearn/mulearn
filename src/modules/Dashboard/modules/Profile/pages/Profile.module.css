@@ -41,7 +41,8 @@
 
 .rightDash .share_pop_up_container {
   position: fixed;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px) contrast(100%);
+  -webkit-backdrop-filter: blur(5px) contrast(100%);
   top: 0;
   left: 0;
   height: 100%;
@@ -238,12 +239,76 @@
   margin-top: 1rem;
 }
 
-.rightDash .profileDash .profile .profileInfo .profilePic img {
+.rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+
+.rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard img {
   border-radius: 100%;
   border: 5px solid #fff;
   width: 10rem;
   margin-left: 2rem;
   margin-top: -25px;
+}
+
+.rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span {
+  position: absolute;
+  margin-right: 1rem;
+  margin-bottom: 14px;
+  color: white;
+  display: flex;
+  justify-content: center;
+
+}
+
+.rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span i {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span .private {
+  background-color: #456FF6;
+}
+.rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span .public {
+  background-color: #2dce89;
+}
+
+.rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span .gard_tooltip {
+  position: absolute;
+  font-size: 12px;
+  background: #808080ba;
+  backdrop-filter: blur(21px);
+  width: 88px;
+  padding: 0px 5px;
+  border-radius: 2px;
+  margin-top: 30px;
+  display: none;
+}
+
+.rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span .gard_tooltip::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%)rotate(180deg);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent;
+  border-top-color: #808080ba;
+  /* backdrop-filter: blur(21px); */
+}
+
+.rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span i:hover~.gard_tooltip {
+  display: unset;
 }
 
 .rightDash .profileDash .profile .profileInfo .profilePic .name {
@@ -289,24 +354,26 @@
   position: relative;
   display: flex;
   /* flex-wrap: wrap; */
-  gap: 1rem;
+  gap: 15px;
   list-style: none;
+  height: 30px;
   justify-content: flex-start;
   margin-top: -1rem;
   padding: 0px 15px;
+  overflow: scroll;
 }
 
 .rightDash .profileDash .profile .profileList .underline {
   content: "";
   position: absolute;
-  bottom: -5px;
+  bottom: 0px;
   width: 2rem;
   height: 3.5px;
   background-color: #456FF6;
   transition: all .5s ease-in-out;
 }
 
-.rightDash .profileDash .profile .profileList li:first-child {
+.rightDash .profileDash .profile .profileList li:hover {
   font-weight: 600;
   color: #000;
 }
@@ -315,6 +382,8 @@
   color: #7A7A7A;
   font-weight: 600;
   cursor: pointer;
+  min-width: 110px;
+  transition: all .5s ease-in-out;
 }
 
 .rightDash .profileDash .profile .pointsList {
@@ -446,6 +515,17 @@
   gap: 1rem;
 }
 
+.rightDash .profileDash .notification .msg {
+  padding: 10px 1rem;
+  /* text-align: center; */
+  font-size: 15px;
+  color: #456ff6;
+  display: flex;
+  flex-direction: column;
+  font-style: italic;
+  align-items: center;
+}
+
 .rightDash .profileDash .notification .existing_roles {
   display: flex;
   gap: 20px;
@@ -453,8 +533,9 @@
 }
 
 .rightDash .profileDash .notification .existing_roles p {
-  margin-left: 10px;
+  /* margin-left: 10px; */
   color: #456FF6;
+  padding: 10px 1rem;
 }
 
 .rightDash .profileDash .notification .existing_roles .head {
@@ -462,13 +543,17 @@
   background: #FFFFFF;
   box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06);
   border-radius: 12px;
-  padding: 30px;
+  padding: 10px;
+}
+
+.rightDash .profileDash .notification .existing_roles .head h2 {
+  padding: 0rem 1rem;
 }
 
 .rightDash .profileDash .notification .existing_roles .pie_chart {
   display: flex;
   align-items: center;
-  margin-left: -30px;
+  /* margin-left: -30px; */
 }
 
 .rightDash .profileDash .notification .existing_roles .pie_chart .data_details p {
@@ -493,7 +578,7 @@
   background: #FFFFFF;
   box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06);
   border-radius: 12px;
-  padding: 10px 0px;
+  padding: 10px;
   width: 100%;
 }
 
@@ -502,7 +587,7 @@
   flex-direction: column;
   gap: 1rem;
   max-height: 400px;
-  overflow: hidden;
+  overflow: scroll;
   padding: 10px 0px;
 
   scroll-snap-type: mandatory;
@@ -510,12 +595,18 @@
   scroll-snap-type: y mandatory;
 }
 
+.rightDash .profileDash .notification .recent_activity_container .data_card .view_more {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
 .rightDash .profileDash .notification .recent_activity_container .head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0rem 1rem;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .rightDash .profileDash .notification .recent_activity_container .head span {
@@ -573,8 +664,8 @@
 }
 
 .rightDash .profileDash .notification .recent_activity_container .card .cardInfo .card_icon {
-  width: 3rem;
-  height: 3rem;
+  min-width: 3rem;
+  min-height: 3rem;
   padding: 0.5rem;
   background: linear-gradient(133.8deg, #2E85FE -8.97%, #AF2EE6 91.41%);
   border-radius: 50%;
@@ -589,11 +680,20 @@
 
 .private_page_container {
   display: flex;
+  position: absolute;
   justify-content: center;
+  top: 40px;
   align-items: center;
   font-size: 50px;
   height: 100dvh;
   color: #014BB2;
+}
+
+.private_page_container p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px;
 }
 
 
@@ -677,7 +777,11 @@
     text-align: center;
   }
 
-  .rightDash .profileDash .profile .profileInfo .profilePic img {
+  .rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard img {
+    margin-left: 0rem;
+  }
+
+  .rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span {
     margin-left: 0rem;
   }
 
@@ -700,7 +804,7 @@
 }
 
 @media (max-width: 380px) {
-  .rightDash .profileDash .profile .profileInfo .profilePic img {
+  .rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard img {
     width: 120px;
   }
 

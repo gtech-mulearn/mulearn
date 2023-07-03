@@ -41,17 +41,17 @@ export const createHackathon = async (
                 title: title,
                 tagline: tagline,
                 description: description,
-                participantCount: participantCount,
+                participant_count: participantCount,
                 orgId: orgId,
                 districtId: districtId,
                 place: place,
-                isOpenToAll: isOpenToAll,
-                applicationStart: applicationStart,
-                applicationEnds: applicationEnds,
-                eventStart: eventStart,
-                eventEnd: eventEnd,
+                is_open_to_all: isOpenToAll,
+                application_start: applicationStart,
+                application_ends: applicationEnds,
+                event_start: eventStart,
+                event_end: eventEnd,
                 status: "Draft",
-                formFields: formFields
+                form_fields: formFields
             }
         );
         const message: any = response?.data;

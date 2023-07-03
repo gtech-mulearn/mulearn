@@ -135,8 +135,8 @@ const UrlShortener = () => {
     const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
         const urlEditedData = {
             title: values.title,
-            longUrl: values.longUrl,
-            shortUrl: values.shortUrl
+            long_url: values.longUrl,
+            short_url: values.shortUrl
         };
         console.log(urlEditedData);
         createShortenUrl(
