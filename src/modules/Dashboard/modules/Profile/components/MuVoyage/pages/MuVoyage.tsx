@@ -26,14 +26,18 @@ const MuVoyage = (props: Props) => {
     let userLevelTrackerPercentage = !userLevelTrack.tasks.every(
         e => e.completed
     )
-        ? `${
+        ? `${(
               (userLevelTrack.tasks.filter(e => e.completed).length /
                   userLevelTrack.tasks.length) *
               100
-          }`
+          ).toFixed(0)}`
         : "100";
     useEffect(() => {
-        setUserLevelTrack(userLevelData[0]);
+        setUserLevelTrack(
+            userLevelData[
+                userLevelData.filter(e => e.tasks.length !== 0).length - 1
+            ]
+        );
     });
     return (
         <>
@@ -70,16 +74,11 @@ const MuVoyage = (props: Props) => {
                     </div>
 
                     <ul className={styles.accordion}>
-                        {userLevelData &&
-                            userLevelData.map((levelData, i) => {
+                        {userLevelData
+                            .filter(e => e.tasks.length !== 0)
+                            .map((levelData, i) => {
                                 return (
-                                    <li
-                                        onClick={() => {
-                                            setUserLevelTrack(levelData);
-                                        }}
-                                        className={styles.main_list}
-                                        key={i}
-                                    >
+                                    <li className={styles.main_list} key={i}>
                                         <input
                                             className={styles.expandBtn}
                                             type="checkbox"
@@ -136,36 +135,42 @@ const MuVoyage = (props: Props) => {
                                         </label>
                                         <div className={styles.content}>
                                             <ul className={styles.list_list}>
-                                                {levelData.tasks.map(
-                                                    (taskData, j) => {
-                                                        return (
-                                                            <li key={j}>
-                                                                <input
-                                                                    type="checkbox"
-                                                                    name="accordion"
-                                                                    id={`task_${i}_${j}`}
-                                                                    className={
-                                                                        styles.checkbox
-                                                                    }
-                                                                    checked={
-                                                                        taskData.completed
-                                                                    }
-                                                                    readOnly
-                                                                />
-                                                                <label
-                                                                    htmlFor={`task_${i}_${j}`}
-                                                                    className={
-                                                                        styles.first1
-                                                                    }
-                                                                >
-                                                                    {
-                                                                        taskData.task_name
-                                                                    }
-                                                                </label>
-                                                            </li>
-                                                        );
-                                                    }
-                                                )}
+                                                {levelData.tasks &&
+                                                    levelData.tasks.map(
+                                                        (taskData, j) => {
+                                                            return (
+                                                                <li key={j}>
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        name="accordion"
+                                                                        id={`task_${i}_${j}`}
+                                                                        className={
+                                                                            styles.checkbox
+                                                                        }
+                                                                        checked={
+                                                                            taskData.completed
+                                                                        }
+                                                                        readOnly
+                                                                    />
+                                                                    <label
+                                                                        htmlFor={`task_${i}_${j}`}
+                                                                        className={
+                                                                            styles.first1
+                                                                        }
+                                                                    >
+                                                                        {
+                                                                            taskData.task_name
+                                                                        }
+                                                                        <span>
+                                                                            {
+                                                                                taskData.hashtag
+                                                                            }
+                                                                        </span>
+                                                                    </label>
+                                                                </li>
+                                                            );
+                                                        }
+                                                    )}
                                             </ul>
                                         </div>
                                     </li>

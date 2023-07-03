@@ -84,11 +84,14 @@ export const login = (
                             "userInfo",
                             JSON.stringify(response.data.response)
                         );
-                        if (response.data.response.existInGuild) {
+                        if (response.data.response.exist_in_guild) {
                             navigate("/profile");
                         } else {
-                            // navigate("/connect-discord");
-                            navigate(`/${redirectPath}`);
+                            if (redirectPath) {
+                                navigate(`/${redirectPath}`);
+                            } else {
+                                navigate("/connect-discord");
+                            }
                         }
                     })
                     .catch(error => {
@@ -261,7 +264,7 @@ export const otpVerification = (
                         "userInfo",
                         JSON.stringify(response.data.response)
                     );
-                    if (response.data.response.existInGuild) {
+                    if (response.data.response.exist_in_guild) {
                         navigate("/profile");
                     } else {
                         if (redirectPath) {

@@ -1,8 +1,7 @@
 .main_task {
     padding: 2rem 3rem;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
-}
+    border-radius: 10px;
+    box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06);}
 
 .main_task p,
 .main_task li {
@@ -111,13 +110,6 @@
     justify-content: center;
 }
 
-.main_task .tasks .accordion .main_list .level div span {
-    background-color: aquamarine;
-    height: 1.2rem;
-    width: 1.2rem;
-    border-radius: 5rem;
-}
-
 .main_task .tasks .accordion .main_list .expandBtn {
     display: none !important;
 }
@@ -137,7 +129,6 @@
     transform: rotate(180deg);
 }
 
-
 .main_task .tasks .accordion .main_list .content .list_list li {
     display: flex;
     align-items: center;
@@ -147,9 +138,41 @@
     font-size: .8rem;
 }
 
+
+@media (width <300px) {
+    .main_task{
+        padding: 2rem 1rem;
+    }
+}
+
+.main_task .tasks .accordion .main_list .content .list_list li label {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.main_task .tasks .accordion .main_list .content .list_list li label span {
+    background: #DBEAFF;
+    color: #2E85FE;
+    padding: 0px 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    width: fit-content;
+}
+
 /* .main_task .tasks .accordion .main_list .content .list_list li input {
     width: 1.2rem;
     height: 1.2rem;
     border: 1px solid rgb(128, 128, 128, .1);
     margin-bottom: .5rem;
 } */
+
+@media (max-width: 700px) {
+    .main_task {
+        padding: 2rem 1rem;
+    }
+
+    .main_task .tasks .accordion .main_list .content .list_list li label {
+        flex-direction: column;
+    }
+}

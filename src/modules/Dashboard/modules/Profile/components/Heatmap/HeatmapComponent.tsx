@@ -16,11 +16,13 @@ const HeatmapComponent = (props: Props) => {
     const totalDays = endDate.diff(startDate, "days") + 1;
     const content: JSX.Element[] = [];
 
-    const dataYearFiltered = props.data.filter(
-        item =>
-            item.created_date &&
-            item.created_date.slice(0, 4) === year.toString()
-    );
+    const dataYearFiltered = props.data
+        ? props.data.filter(
+              item =>
+                  item.created_date &&
+                  item.created_date.slice(0, 4) === year.toString()
+          )
+        : [];
 
     const dataDayFiltered: {
         date: string;

@@ -14,7 +14,7 @@ const NotFound = () => {
             }}
         >
             <h1 style={{ fontSize: "10rem" }}>404</h1>
-            <p>Page not found</p>
+            <p>404 error occurred! Back to base, learners!</p>
             <Link
                 to="/"
                 style={{
