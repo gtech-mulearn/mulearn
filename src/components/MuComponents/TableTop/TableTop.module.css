@@ -72,14 +72,32 @@
     margin: 0 5px;
 }
 
-@media (max-width: 380px) {
+@media (max-width: 415px) {
     .showLabel {
         display: none;
     }
-
+	.form_container{
+		display: inline;
+		align-items: center;
+		width: 200%;
+	}
     .showSelect {
         position: absolute;
         right: 0rem;
         top: -15.7px;
     }
+	.icon {
+	}
+}
+
+.form_container {
+	display: flex;
+	align-items: center;
+}
+
+.icon {
+	font-size: 2rem;
+	cursor: pointer;
+	position: relative;
+	left: -30px;
 }
