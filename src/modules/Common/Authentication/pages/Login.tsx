@@ -286,7 +286,7 @@ const Login = () => {
                                 <a href="register">
                                     Don't have an account? Sign up
                                 </a>
-                                </span> */}
+                                </span> 
                         </form>
                     </div>
                 ) : null}
