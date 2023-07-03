@@ -54,9 +54,9 @@
 }
 
 .rightDash .share_pop_up_container .share_pop_up {
-  margin: 40dvh auto auto;
+  margin: 30dvh auto auto;
   height: auto;
-  width: 530px;
+  width: 400px;
   background: white;
   border-radius: 10px;
   box-shadow: 1px 1px 20px 1px #8c8c8c47;
@@ -88,24 +88,52 @@
   justify-content: space-between;
 }
 
-.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .profile_state .options {
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .profile_state .option {
   display: flex;
   margin-top: 10px;
   gap: 20px;
 }
 
-.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .profile_state .options p {
-  background: #5570f1;
-  color: white;
-  padding: 6px 20px;
-  border-radius: 10px;
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_profile_container {
+  width: 100%;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_profile_container .qr_code {
+  width: 190px;
+  margin: auto;
+  padding: 20px;
+  border: 0.5px solid #8f8f8fcc;
+  border-radius: 20px;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_profile_container .options {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px 0px;
+  text-align: center;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_profile_container .options p {
+  width: 30%;
+  padding: 2px 10px;
+  border-radius: 20px;
+  border: 1px solid #80808087;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_profile_container .options p:hover {
+  background: #00000024;
+  color: black;
 }
 
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .link {
   width: 100%;
-  background: #5570f124;
-  padding: 20px;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 10px 20px;
   border-radius: 50px;
   margin-top: 30px;
   display: flex;
@@ -114,11 +142,20 @@
 }
 
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .link p {
-  width: 100%;
+  width: 90%;
+  /* font-size: 14px; */
+  word-wrap: break-word;
 }
 
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .link i {
   cursor: pointer;
+  padding: 10px;
+  margin-right: -10px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_options {
@@ -277,6 +314,7 @@
 .rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span .private {
   background-color: #456FF6;
 }
+
 .rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span .public {
   background-color: #2dce89;
 }
@@ -284,8 +322,9 @@
 .rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span .gard_tooltip {
   position: absolute;
   font-size: 12px;
-  background: #808080ba;
-  backdrop-filter: blur(21px);
+  background: #80808063;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   width: 88px;
   padding: 0px 5px;
   border-radius: 2px;
@@ -303,8 +342,7 @@
   border-width: 6px;
   border-style: solid;
   border-color: transparent;
-  border-top-color: #808080ba;
-  /* backdrop-filter: blur(21px); */
+  border-top-color: #80808063;
 }
 
 .rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span i:hover~.gard_tooltip {
@@ -483,7 +521,7 @@
 
 .rightDash .profileDash .profile .interestGrp .igs_container .igs:nth-child(5) {
   background-color: rgb(255, 0, 0, .3);
-  color: #2DCE89;
+  color: rgb(255, 0, 0, .9);
 }
 
 .rightDash .profileDash .profile .interestGrp .igs_container .igs:nth-child(5) p {
@@ -782,7 +820,7 @@
   }
 
   .rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span {
-    margin-left: 0rem;
+    margin-right: 1rem;
   }
 
   .rightDash .profileDash .profile .profileInfo .profilePic {
@@ -806,6 +844,10 @@
 @media (max-width: 380px) {
   .rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard img {
     width: 120px;
+  }
+
+  .rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span {
+    margin-right: 0rem;
   }
 
   .rightDash .profileDash .profile .profileInfo .profilePic .name {

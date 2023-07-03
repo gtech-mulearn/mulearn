@@ -23,6 +23,8 @@ import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import { useNavigate, useParams } from "react-router-dom";
 import { useToast, Switch } from "@chakra-ui/react";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
+import QRCode from "react-qr-code";
+import { Helmet } from "react-helmet";
 
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
@@ -31,6 +33,7 @@ const Profile = () => {
     const [APILoadStatus, setAPILoadStatus] = useState(0);
     const [profileList, setProfileList] = useState("basic-details");
     const [display, setDisplay] = useState("flex");
+    const [linkOrQR, setLinkOrQR] = useState(true);
     const [popUP, setPopUP] = useState(false);
     const [userProfile, setUserProfile] = useState({
         first_name: "",
@@ -119,6 +122,106 @@ const Profile = () => {
                     </div>
                 ) : (id && userProfile.is_public) || !id ? (
                     <>
+                        <Helmet>
+                            {/* <!-- Primary Meta Tags --> */}
+                            <title>
+                                {userProfile.first_name +
+                                    " " +
+                                    userProfile.last_name +
+                                    "|" +
+                                    userProfile.karma +
+                                    " Karma"}
+                            </title>
+                            <meta
+                                name="title"
+                                content={
+                                    userProfile.first_name +
+                                    " " +
+                                    userProfile.last_name +
+                                    "|" +
+                                    userProfile.karma +
+                                    " Karma"
+                                }
+                            />
+                            <meta
+                                name="description"
+                                content="you bio is here"
+                            />
+
+                            {/* <!-- Open Graph / Facebook --> */}
+                            <meta property="og:type" content="website" />
+                            <meta
+                                property="og:url"
+                                content={
+                                    (import.meta.env
+                                        .VITE_FRONTEND_URL as string) +
+                                    /profile/ +
+                                    userProfile.muid
+                                }
+                            />
+                            <meta
+                                property="og:title"
+                                content={
+                                    userProfile.first_name +
+                                    " " +
+                                    userProfile.last_name +
+                                    "|" +
+                                    userProfile.karma +
+                                    " Karma"
+                                }
+                            />
+                            <meta
+                                property="og:description"
+                                content="you bio is here"
+                            />
+                            <meta
+                                property="og:image"
+                                content={
+                                    userProfile.profile_pic
+                                        ? userProfile.profile_pic
+                                        : dpm
+                                }
+                            />
+
+                            {/* <!-- Twitter --> */}
+                            <meta
+                                property="twitter:card"
+                                content="summary_large_image"
+                            />
+                            <meta
+                                property="twitter:url"
+                                content={
+                                    (import.meta.env
+                                        .VITE_FRONTEND_URL as string) +
+                                    /profile/ +
+                                    userProfile.muid
+                                }
+                            />
+                            <meta
+                                property="twitter:title"
+                                content={
+                                    userProfile.first_name +
+                                    " " +
+                                    userProfile.last_name +
+                                    "|" +
+                                    userProfile.karma +
+                                    " Karma"
+                                }
+                            />
+                            <meta
+                                property="twitter:description"
+                                content="you bio is here"
+                            />
+                            <meta
+                                property="twitter:image"
+                                content={
+                                    userProfile.profile_pic
+                                        ? userProfile.profile_pic
+                                        : dpm
+                                }
+                            />
+                        </Helmet>
+
                         <div
                             style={
                                 popUP
@@ -144,7 +247,7 @@ const Profile = () => {
                                             Do you want make your profile Public
                                             ?
                                         </p>
-                                        <div className={styles.options}>
+                                        <div className={styles.option}>
                                             <Switch
                                                 size="lg"
                                                 isChecked={profileStatus}
@@ -161,42 +264,83 @@ const Profile = () => {
                                         </div>
                                     </div>
                                     <div
+                                        className={
+                                            styles.share_profile_container
+                                        }
                                         style={
                                             !profileStatus
                                                 ? { display: "none" }
                                                 : {}
                                         }
-                                        className={styles.link}
                                     >
-                                        <p>
-                                            {
-                                                import.meta.env
-                                                    .VITE_FRONTEND_URL as string
-                                            }
-                                            /profile/
-                                            {userProfile.muid}
-                                        </p>
-                                        <i
-                                            onClick={() => {
-                                                navigator.clipboard.writeText(
-                                                    `${
+                                        <div className={styles.options}>
+                                            <p
+                                                onClick={() =>
+                                                    setLinkOrQR(true)
+                                                }
+                                            >
+                                                Link
+                                            </p>
+                                            <p
+                                                onClick={() =>
+                                                    setLinkOrQR(false)
+                                                }
+                                            >
+                                                QR Code
+                                            </p>
+                                        </div>
+                                        {!linkOrQR && (
+                                            <div className={styles.qr_code}>
+                                                <QRCode
+                                                    size={256}
+                                                    style={{
+                                                        height: "150px",
+                                                        maxWidth: "100%",
+                                                        width: "100%"
+                                                    }}
+                                                    value={
+                                                        (import.meta.env
+                                                            .VITE_FRONTEND_URL as string) +
+                                                        /profile/ +
+                                                        userProfile.muid
+                                                    }
+                                                    viewBox={`0 0 256 256`}
+                                                />
+                                            </div>
+                                        )}
+                                        {linkOrQR && (
+                                            <div className={styles.link}>
+                                                <p>
+                                                    {
                                                         import.meta.env
                                                             .VITE_FRONTEND_URL as string
-                                                    }/profile/${
-                                                        userProfile.muid
-                                                    }`
-                                                );
-                                                toast({
-                                                    title: "Copied to clipboard",
-                                                    description:
-                                                        "Your profile link has been copied to clipboard",
-                                                    status: "success",
-                                                    duration: 3000,
-                                                    isClosable: true
-                                                });
-                                            }}
-                                            className="fi fi-rr-copy-alt"
-                                        ></i>
+                                                    }
+                                                    /profile/
+                                                    {userProfile.muid}
+                                                </p>
+                                                <i
+                                                    onClick={() => {
+                                                        navigator.clipboard.writeText(
+                                                            `${
+                                                                import.meta.env
+                                                                    .VITE_FRONTEND_URL as string
+                                                            }/profile/${
+                                                                userProfile.muid
+                                                            }`
+                                                        );
+                                                        toast({
+                                                            title: "Copied to clipboard",
+                                                            description:
+                                                                "Your profile link has been copied to clipboard",
+                                                            status: "success",
+                                                            duration: 3000,
+                                                            isClosable: true
+                                                        });
+                                                    }}
+                                                    className="fi fi-sr-link"
+                                                ></i>
+                                            </div>
+                                        )}
                                     </div>
                                     {/* <div className={styles.share_options}>
                                         <p>
@@ -252,37 +396,43 @@ const Profile = () => {
                                                             : dpm
                                                     }
                                                     alt={userProfile.first_name}
-                                                    style={{
-                                                        borderColor:
-                                                            !profileStatus
-                                                                ? "#456FF6"
-                                                                : "#2dce89"
-                                                    }}
+                                                    style={
+                                                        !id
+                                                            ? {
+                                                                  borderColor:
+                                                                      !profileStatus
+                                                                          ? "#456FF6"
+                                                                          : "#2dce89"
+                                                              }
+                                                            : {}
+                                                    }
                                                 />
 
-                                                <span>
-                                                    <i
-                                                        className={`${
-                                                            !profileStatus
-                                                                ? "fi fi-sr-shield-exclamation"
-                                                                : "fi fi-sr-shield-check"
-                                                        }  ${
-                                                            !profileStatus
-                                                                ? styles.private
-                                                                : styles.public
-                                                        }`}
-                                                    ></i>
+                                                {!id && (
+                                                    <span>
+                                                        <i
+                                                            className={`${
+                                                                !profileStatus
+                                                                    ? "fi fi-sr-shield-exclamation"
+                                                                    : "fi fi-sr-shield-check"
+                                                            }  ${
+                                                                !profileStatus
+                                                                    ? styles.private
+                                                                    : styles.public
+                                                            }`}
+                                                        ></i>
 
-                                                    <div
-                                                        className={
-                                                            styles.gard_tooltip
-                                                        }
-                                                    >
-                                                        {!profileStatus
-                                                            ? "Private profile"
-                                                            : "Public profile"}
-                                                    </div>
-                                                </span>
+                                                        <div
+                                                            className={
+                                                                styles.gard_tooltip
+                                                            }
+                                                        >
+                                                            {!profileStatus
+                                                                ? "Private profile"
+                                                                : "Public profile"}
+                                                        </div>
+                                                    </span>
+                                                )}
                                             </div>
                                             <div className={styles.name}>
                                                 <h1>
@@ -607,14 +757,16 @@ const Profile = () => {
                                                 we'll keep score of it here!
                                             </p>
                                         )}
-                                        <span
-                                            onClick={() =>
-                                                setProfileList("karma-history")
-                                            }
+                                        <a
+                                            onClick={() => {
+                                                setProfileList("karma-history");
+                                                navigate("#section1");
+                                            }}
+                                            href="#section1"
                                             className={styles.view_more}
                                         >
                                             View More
-                                        </span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
