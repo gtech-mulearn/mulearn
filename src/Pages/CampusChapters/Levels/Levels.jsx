@@ -162,7 +162,7 @@ const Levels = () => {
                 culture of learning and growth.
                 <br></br>
                 <br></br>
-                The forth level journey gets completed if the execom formation
+                The fourth level journey gets completed if the execom formation
                 is done.
               </p>
             </div>
