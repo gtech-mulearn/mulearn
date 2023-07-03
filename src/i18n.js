@@ -9,7 +9,7 @@ i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init({
     },
     fallbackLng: "en",
     debug: true,
-    ns: ["common","login"],
+    ns: ["common","login","sidebar"],
     interpolation :{
         escapeValue: false,
         formatSeparator: ",",

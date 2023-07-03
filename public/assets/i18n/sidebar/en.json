@@ -1,0 +1,16 @@
+{
+    "profile": "Profile",
+    "connectDiscord": "Connect Discord",
+    "campusDetails" : "Campus Details",
+    "hackathon":" Hackathon",
+    "interestGroups": "Interest Group",
+    "organisation":"Organisation",
+    "tasks":"Tasks",
+    "manageUsers":"Manage Users",
+    "manageRoles":"Manage Roles",
+    "userRoleVerification":"User Role Verification",
+    "urlShortener": "URL Shortener",
+    "zonalDashboard":"Zonal Dashboard",
+    "districtDashboard":"District Dashboard",
+    "logout":"Logout"
+}
