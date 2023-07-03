@@ -56,7 +56,7 @@
 .rightDash .share_pop_up_container .share_pop_up {
   margin: 30dvh auto auto;
   height: auto;
-  width: 530px;
+  width: 400px;
   background: white;
   border-radius: 10px;
   box-shadow: 1px 1px 20px 1px #8c8c8c47;
@@ -96,6 +96,14 @@
 
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_profile_container {
   width: 100%;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_profile_container .qr_code {
+  width: 190px;
+  margin: auto;
+  padding: 20px;
+  border: 0.5px solid #8f8f8fcc;
+  border-radius: 20px;
 }
 
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_profile_container .options {

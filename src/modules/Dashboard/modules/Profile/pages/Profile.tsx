@@ -24,6 +24,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useToast, Switch } from "@chakra-ui/react";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import QRCode from "react-qr-code";
+import { Helmet } from "react-helmet";
 
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
@@ -121,6 +122,106 @@ const Profile = () => {
                     </div>
                 ) : (id && userProfile.is_public) || !id ? (
                     <>
+                        <Helmet>
+                            {/* <!-- Primary Meta Tags --> */}
+                            <title>
+                                {userProfile.first_name +
+                                    " " +
+                                    userProfile.last_name +
+                                    "|" +
+                                    userProfile.karma +
+                                    " Karma"}
+                            </title>
+                            <meta
+                                name="title"
+                                content={
+                                    userProfile.first_name +
+                                    " " +
+                                    userProfile.last_name +
+                                    "|" +
+                                    userProfile.karma +
+                                    " Karma"
+                                }
+                            />
+                            <meta
+                                name="description"
+                                content="you bio is here"
+                            />
+
+                            {/* <!-- Open Graph / Facebook --> */}
+                            <meta property="og:type" content="website" />
+                            <meta
+                                property="og:url"
+                                content={
+                                    (import.meta.env
+                                        .VITE_FRONTEND_URL as string) +
+                                    /profile/ +
+                                    userProfile.muid
+                                }
+                            />
+                            <meta
+                                property="og:title"
+                                content={
+                                    userProfile.first_name +
+                                    " " +
+                                    userProfile.last_name +
+                                    "|" +
+                                    userProfile.karma +
+                                    " Karma"
+                                }
+                            />
+                            <meta
+                                property="og:description"
+                                content="you bio is here"
+                            />
+                            <meta
+                                property="og:image"
+                                content={
+                                    userProfile.profile_pic
+                                        ? userProfile.profile_pic
+                                        : dpm
+                                }
+                            />
+
+                            {/* <!-- Twitter --> */}
+                            <meta
+                                property="twitter:card"
+                                content="summary_large_image"
+                            />
+                            <meta
+                                property="twitter:url"
+                                content={
+                                    (import.meta.env
+                                        .VITE_FRONTEND_URL as string) +
+                                    /profile/ +
+                                    userProfile.muid
+                                }
+                            />
+                            <meta
+                                property="twitter:title"
+                                content={
+                                    userProfile.first_name +
+                                    " " +
+                                    userProfile.last_name +
+                                    "|" +
+                                    userProfile.karma +
+                                    " Karma"
+                                }
+                            />
+                            <meta
+                                property="twitter:description"
+                                content="you bio is here"
+                            />
+                            <meta
+                                property="twitter:image"
+                                content={
+                                    userProfile.profile_pic
+                                        ? userProfile.profile_pic
+                                        : dpm
+                                }
+                            />
+                        </Helmet>
+
                         <div
                             style={
                                 popUP
@@ -189,21 +290,23 @@ const Profile = () => {
                                             </p>
                                         </div>
                                         {!linkOrQR && (
-                                            <QRCode
-                                                size={256}
-                                                style={{
-                                                    height: "150px",
-                                                    maxWidth: "100%",
-                                                    width: "100%"
-                                                }}
-                                                value={
-                                                    (import.meta.env
-                                                        .VITE_FRONTEND_URL as string) +
-                                                    /profile/ +
-                                                    userProfile.muid
-                                                }
-                                                viewBox={`0 0 256 256`}
-                                            />
+                                            <div className={styles.qr_code}>
+                                                <QRCode
+                                                    size={256}
+                                                    style={{
+                                                        height: "150px",
+                                                        maxWidth: "100%",
+                                                        width: "100%"
+                                                    }}
+                                                    value={
+                                                        (import.meta.env
+                                                            .VITE_FRONTEND_URL as string) +
+                                                        /profile/ +
+                                                        userProfile.muid
+                                                    }
+                                                    viewBox={`0 0 256 256`}
+                                                />
+                                            </div>
                                         )}
                                         {linkOrQR && (
                                             <div className={styles.link}>
