@@ -1,0 +1,17 @@
+.Container{
+    background-color: #f78c40;
+}
+
+.anchor{
+    color: white;
+    font-family: 'Poppins';
+    margin: 0 5rem;
+}
+
+.anchor:hover{
+    text-shadow:
+    -.05px -.05px 0 white,
+    .05px -.05px 0 white,
+    -.05px .05px 0 white,
+    .05px .05px 0 white;
+}

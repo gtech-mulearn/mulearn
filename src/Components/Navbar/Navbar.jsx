@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { DesktopMenu, Resources } from "./Desktop";
 import { MobileTopBar, MobileMenu } from "./Mobile";
+import MarqueeContainer from "../MarqueeContainer/MarqueeContainer";
 
 
 const Navbar = () => {
@@ -16,6 +17,9 @@ const Navbar = () => {
   return (
     <>
       <nav className="bg-white " >
+      <MarqueeContainer
+          direction = "left"
+        />
         <div className="flex items-center font-medium justify-around">
           <div className={`mobile-nav-bar lg:w-auto w-full ${open ? "absolute top-1" : ""}`}>
             <Logo />
