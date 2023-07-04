@@ -153,7 +153,7 @@ const HackathonCreate = () => {
                             districtId: "",
                             isOpenToAll: "",
                             formFields: [],
-                            event_logo: null,
+                            event_logo: null
                         }}
                         validationSchema={hackathonSchema}
                         onSubmit={handleSubmit}
@@ -259,11 +259,9 @@ const HackathonCreate = () => {
                                                 name={"event_logo"}
                                                 label={"Event logo"}
                                             />
-                                            <FormikTextInputWhite
-                                                label="Banner"
-                                                name="banner"
-                                                placeholder="link for the event banner"
-                                                type="text"
+                                            <FormikImageComponent
+                                                name={"banner"}
+                                                label={"Banner"}
                                             />
                                             <FormikTextInputWhite
                                                 label="Website"

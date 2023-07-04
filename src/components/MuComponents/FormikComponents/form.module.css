@@ -151,6 +151,7 @@
 .InputSet {
 	display: flex;
 	flex-direction: column;
+	width: 22rem;
 	gap: .5rem;
 	text-align: left;
 }
@@ -195,7 +196,6 @@
 
 .image_input {
 	border-radius: var(--borderRadius);
-	width: 80%!important;
 	background-color: var(--White);
 	min-width: 22rem;
 	border: .1px solid #CFD3D4;
