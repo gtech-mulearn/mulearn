@@ -111,7 +111,8 @@ const HackathonCreate = () => {
             `${values.applicationEnds}T00:00:00Z`,
             `${values.eventStart}T00:00:00Z`,
             `${values.eventEnd}T00:00:00Z`,
-            selectedFields
+            selectedFields,
+			values.event_logo
         );
         resetForm();
     };
@@ -153,12 +154,12 @@ const HackathonCreate = () => {
                             districtId: "",
                             isOpenToAll: "",
                             formFields: [],
-                            event_logo: null
+                            event_logo: ""
                         }}
                         validationSchema={hackathonSchema}
                         onSubmit={handleSubmit}
                     >
-                        {({ values, handleChange }) => (
+                        {({ values, handleChange, setFieldValue }) => (
                             <Form id="hackathon">
                                 <Tabs
                                     selectedTabClassName={styles.selectedTab}
@@ -255,10 +256,9 @@ const HackathonCreate = () => {
                                                 options={options1}
                                                 label={"Type of the hackathon"}
                                             />
-                                            <FormikImageComponent
-                                                name={"event_logo"}
-                                                label={"Event logo"}
-                                            />
+											<input type="file" onChange={(event) => {
+												setFieldValue('event_logo', event.target.files[0])
+											}} />
                                             <FormikImageComponent
                                                 name={"banner"}
                                                 label={"Banner"}
