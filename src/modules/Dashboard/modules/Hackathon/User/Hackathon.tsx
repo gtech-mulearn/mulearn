@@ -11,6 +11,8 @@ export interface HackList {
     type: string;
     tagline: string;
     event_start: string | null;
+    application_start: string | null;
+    application_ends: string | null;
 }
 
 const Hackathon = () => {
@@ -24,7 +26,7 @@ const Hackathon = () => {
             <Link to="/hackathon-management">
                 <button className="button">Create</button>
             </Link>
-			
+
             <div className="heading">
                 <h1>All Hackathons</h1>
             </div>
@@ -54,14 +56,22 @@ const Hackathon = () => {
                                     </div>
                                 </div>
                                 <div className="group-2">
-                                    <div className="text-wrapper-3">Theme</div>
+                                    <div className="text-wrapper-3">Application Date</div>
                                     <div className="overlap-group">
                                         <div className="text-wrapper-4">
-                                            DESIGN
+                                            {hack.application_start
+                                                ? DateConverter(
+                                                      hack.application_start
+                                                  )
+                                                : "No Date"}
                                         </div>
                                         <div className="rectangle" />
                                         <div className="text-wrapper-4">
-                                            DESIGN
+                                            {hack.application_ends
+                                                ? DateConverter(
+                                                      hack.application_ends
+                                                  )
+                                                : "No Date"}
                                         </div>
                                         <div className="rectangle" />
                                         <div className="rectangle" />
