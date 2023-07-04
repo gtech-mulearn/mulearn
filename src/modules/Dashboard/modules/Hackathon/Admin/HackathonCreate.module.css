@@ -131,7 +131,6 @@
 
 .error {
     color: red;
-    font-size: 12px;
 }
 
 @media (width < 1080px) {

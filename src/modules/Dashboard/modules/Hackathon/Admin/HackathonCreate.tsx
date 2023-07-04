@@ -3,7 +3,6 @@ import * as Yup from "yup";
 import styles from "./HackathonCreate.module.css";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import FormikReactSelect, {
-	FormikImageComponent,
     FormikTextAreaWhite,
     FormikTextInputWhite
 } from "../../../../../components/MuComponents/FormikComponents/FormikComponents";
@@ -25,14 +24,14 @@ const HackathonCreate = () => {
     const [formData, setFormData] = useState("");
 
     useEffect(() => {
-        if (formData === '') {
+        if (formData === "") {
             getFormFields(setFormData);
         }
     }, []);
 
     function handleNext() {
-        if (tabIndex === 6) {
-            setTabIndex(6);
+        if (tabIndex === 3) {
+            setTabIndex(3);
         } else {
             setTabIndex(tabIndex + 1);
         }
@@ -51,17 +50,14 @@ const HackathonCreate = () => {
             .required("Required")
             .min(2, "Too Short!")
             .max(50, "Too Long!"),
-        tagline: Yup.string().min(2, "Too Short!").max(100, "Too Long!"),
-        // .required("Required"),
+        tagline: Yup.string()
+            .min(2, "Too Short!")
+            .max(100, "Too Long!")
+            .required("Required"),
         orgId: Yup.string().min(2, "Too Short!"),
-        // .required("Required"),
-        place: Yup.string()
-            // .required("Required")
-            .min(2, "Too Short!"),
+        place: Yup.string().min(2, "Too Short!"),
         districtId: Yup.string().min(2, "Too Short!"),
-        // .required("Required"),
         isOpenToAll: Yup.boolean(),
-        // .required("Required"),
         description: Yup.string().min(5, "Too Short!"),
         eventStart: Yup.date(),
         eventEnd: Yup.date(),
@@ -71,7 +67,63 @@ const HackathonCreate = () => {
             .positive("Number of users should be a positive value")
             .min(10, "Needs to be at least 2 digits.")
             .max(999999, "Should not exceed 6 digits")
-            .truncate()
+            .truncate(),
+        website: Yup.string().min(3, "Too Short!").max(200, "Too Long!"),
+        event_logo: Yup.mixed()
+            .test(
+                "fileSize",
+                "File size is too large, maximum size is 10MB",
+                (value: any) => {
+                    if (value) {
+                        const maxSize = 10 * 1024 * 1024; // 10MB
+                        return value.size <= maxSize;
+                    }
+                    return true; // No file selected, so it passes validation
+                }
+            )
+            .test(
+                "fileType",
+                "Invalid file format, only image formats are supported",
+                (value: any) => {
+                    if (value) {
+                        const supportedFormats = [
+                            "image/jpeg",
+                            "image/png",
+                            "image/gif"
+                        ];
+                        return supportedFormats.includes(value.type);
+                    }
+                    return true; // No file selected, so it passes validation
+                }
+            ),
+
+        banner: Yup.mixed()
+            .test(
+                "fileSize",
+                "File size is too large, maximum size is 20MB",
+                (value: any) => {
+                    if (value) {
+                        const maxSize = 20 * 1024 * 1024; // 20MB
+                        return value.size <= maxSize;
+                    }
+                    return true; // No file selected, so it passes validation
+                }
+            )
+            .test(
+                "fileType",
+                "Invalid file format, only image formats are supported",
+                (value: any) => {
+                    if (value) {
+                        const supportedFormats = [
+                            "image/jpeg",
+                            "image/png",
+                            "image/gif"
+                        ];
+                        return supportedFormats.includes(value.type);
+                    }
+                    return true; // No file selected, so it passes validation
+                }
+            )
     });
 
     const handleSubmit = (values: any, { resetForm }: any) => {
@@ -112,7 +164,7 @@ const HackathonCreate = () => {
             `${values.eventStart}T00:00:00Z`,
             `${values.eventEnd}T00:00:00Z`,
             selectedFields,
-			values.event_logo
+            values.event_logo
         );
         resetForm();
     };
@@ -161,7 +213,7 @@ const HackathonCreate = () => {
                         validationSchema={hackathonSchema}
                         onSubmit={handleSubmit}
                     >
-                        {({ values, handleChange, setFieldValue }) => (
+                        {({ values, handleChange, setFieldValue, errors }) => (
                             <Form id="hackathon">
                                 <Tabs
                                     selectedTabClassName={styles.selectedTab}
@@ -174,9 +226,9 @@ const HackathonCreate = () => {
                                         <Tab>Details</Tab>
                                         <span></span>
                                         <Tab>Application</Tab>
-                                        <Tab>Sponsors</Tab>
-                                        <Tab>Events</Tab>
-                                        <Tab>FAQs</Tab>
+                                        {/* <Tab>Sponsors</Tab> */}
+                                        {/* <Tab>Events</Tab> */}
+                                        {/* <Tab>FAQs</Tab> */}
                                     </TabList>
                                     <div className={styles.form}>
                                         <TabPanel className={styles.formGroup}>
@@ -281,6 +333,13 @@ const HackathonCreate = () => {
                                                         }
                                                     }}
                                                 />
+                                                {errors.event_logo && (
+                                                    <div
+                                                        className={styles.error}
+                                                    >
+                                                        {errors.event_logo}
+                                                    </div>
+                                                )}
                                             </div>
                                             <div className={styles.InputSet}>
                                                 <label
@@ -305,6 +364,13 @@ const HackathonCreate = () => {
                                                         }
                                                     }}
                                                 />
+                                                {errors.banner && (
+                                                    <div
+                                                        className={styles.error}
+                                                    >
+                                                        {errors.banner}
+                                                    </div>
+                                                )}
                                             </div>
                                             <FormikTextInputWhite
                                                 label="Website"
