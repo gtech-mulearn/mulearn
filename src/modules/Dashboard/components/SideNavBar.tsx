@@ -28,6 +28,7 @@ type Props = {
         hasView: boolean;
         roles?: string[];
         icon: any;
+        children?: Props["sidebarButtons"];
     }[];
 };
 
@@ -107,9 +108,9 @@ const SideNavBar = (props: Props) => {
                 style={
                     window.innerWidth <= 830
                         ? {
-                              opacity: `${display2 === "none" ? 0 : 1}`,
-                              zIndex: `${display2 === "none" ? 0 : 100}`
-                          }
+                            opacity: `${display2 === "none" ? 0 : 1}`,
+                            zIndex: `${display2 === "none" ? 0 : 100}`
+                        }
                         : {}
                     // display: `${display2}`
                 }
@@ -124,60 +125,71 @@ const SideNavBar = (props: Props) => {
                                 .filter(
                                     button =>
                                         button.hasView &&
-                                        (!button.roles ||
-                                            button.roles?.some(role =>
-                                                userInfo?.roles?.includes(role)
-                                            ))
+                                        (!button.roles || button.roles?.some(role => userInfo?.roles?.includes(role)))
                                 )
                                 .map((button, i) => (
-                                    <MuButton
-                                        key={i}
-                                        text={button.title}
-                                        icon={button.icon}
-                                        style={
-                                            window.location.pathname ===
-                                            `/${button.url}`
-                                                ? {
-                                                      background: "#456FF6",
-                                                      color: "#fff"
-                                                  }
-                                                : {}
-                                        }
-                                        onClick={() => {
-                                            navigate(button.url);
-                                            window.innerWidth <= 500
-                                                ? hideFunc()
-                                                : null;
-                                        }}
-                                    />
+                                    button.children ?
+                                        <DropDownButtons
+                                            text={button.title}
+                                            icon={button.icon}
+                                            onClick={() => setDropDownBtnDisplay(dropDownBtnDisplay === "0" ? "max-content" : "0")}
+                                            listOfDropBtn={
+                                                button.children
+                                                    .filter(
+                                                        button =>
+                                                            button.hasView &&
+                                                            (!button.roles ||
+                                                                button.roles?.some(role => userInfo?.roles?.includes(role)))
+                                                    )
+                                                    .map((button, i) => (
+                                                        <MuButton
+                                                            key={i}
+                                                            text={button.title}
+                                                            icon={button.icon}
+                                                            style={
+                                                                window.location.pathname ===
+                                                                    `/${button.url}`
+                                                                    ? {
+                                                                        background: "#456FF6",
+                                                                        color: "#fff"
+                                                                    }
+                                                                    : {}
+                                                            }
+                                                            onClick={() => {
+                                                                navigate(button.url);
+                                                                window.innerWidth <= 500
+                                                                    ? hideFunc()
+                                                                    : null;
+                                                            }}
+                                                        />
+                                                    ))
+                                            }
+                                            display={dropDownBtnDisplay}
+                                        /> :
+                                        <MuButton
+                                            key={i}
+                                            text={button.title}
+                                            icon={button.icon}
+                                            style={
+                                                window.location.pathname ===
+                                                    `/${button.url}`
+                                                    ? {
+                                                        background: "#456FF6",
+                                                        color: "#fff"
+                                                    }
+                                                    : {}
+                                            }
+                                            onClick={() => {
+                                                navigate(button.url);
+                                                window.innerWidth <= 500
+                                                    ? hideFunc()
+                                                    : null;
+                                            }}
+                                        />
+
+
                                 ))}
-                            {/* <DropDownButtons
-                                text="Management"
-                                icon={<i className="fi fi-sr-layout-fluid"></i>}
-                                // style={
-                                //     window.location.pathname ===
-                                //         "/interest-groups"
-                                //         ? {
-                                //             background: "#456FF6",
-                                //             color: "#fff"
-                                //         }
-                                //         : {}
-                                // }
-                                onClick={() => {
-                                    // navigate("/interest-groups");
-                                    setDropDownBtnDisplay(
-                                        dropDownBtnDisplay === "0"
-                                            ? "max-content"
-                                            : "0"
-                                    );
-                                }}
-                                listOfDropBtn={[
-                                    { text: "Admin" },
-                                    { text: "Company" },
-                                    { text: "User" }
-                                ]}
-                                display={dropDownBtnDisplay}
-                            /> */}
+
                         </div>
 
                         <MuButtonLight
@@ -186,10 +198,10 @@ const SideNavBar = (props: Props) => {
                             style={
                                 window.innerWidth <= 820
                                     ? {
-                                          border: "none",
-                                          borderRadius: "10px",
-                                          padding: "20px 20px"
-                                      }
+                                        border: "none",
+                                        borderRadius: "10px",
+                                        padding: "20px 20px"
+                                    }
                                     : {}
                             }
                             onClick={() => {
@@ -201,9 +213,7 @@ const SideNavBar = (props: Props) => {
                                     duration: 9000,
                                     isClosable: true
                                 });
-                                setTimeout(() => {
-                                    window.location.reload();
-                                }, 900);
+                                setTimeout(() => window.location.reload(), 900);
                             }}
                         />
                     </div>
