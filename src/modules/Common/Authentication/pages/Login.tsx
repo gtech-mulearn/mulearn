@@ -34,13 +34,15 @@ const Login = () => {
 
     useEffect(() => {
         i18n.changeLanguage(language);
-      }, [language]);
-    
-     const handleLanguageChange = (selectedLanguage: string | ((prevLanguage: string) => string)) => {
+    }, [language]);
+
+    const handleLanguageChange = (
+        selectedLanguage: string | ((prevLanguage: string) => string)
+    ) => {
         if (typeof selectedLanguage === "string") {
-          setLanguage(selectedLanguage);
+            setLanguage(selectedLanguage);
         }
-      };
+    };
 
     useEffect(() => {
         setHasError(true);
@@ -49,12 +51,11 @@ const Login = () => {
     }, [emailOrMuid]);
     return (
         <div className={styles.login_page}>
-          <Dropdown
-        contents={["en", "hi",
-    "mal"]}
-        input={language}
-        setInput={handleLanguageChange}
-      />
+            <Dropdown
+                contents={["en", "hi", "mal"]}
+                input={language}
+                setInput={handleLanguageChange}
+            />
             <div className={styles.login_container}>
                 {!otpForm ? (
                     <div className={styles.login_form}>
@@ -122,8 +123,22 @@ const Login = () => {
                                         );
                                     }
                                 }}
-                                isLoading={isLoading}
-                            />
+                                type="submit"
+                            >
+                                <div className={styles.signin_loading}>
+                                    {isLoading ? (
+                                        <>
+                                            Sign in
+                                            <ClipLoader
+                                                color="#fff"
+                                                size={20}
+                                            />
+                                        </>
+                                    ) : (
+                                        t("sign_in")
+                                    )}
+                                </div>
+                            </MuButton>
                             <span className={styles.register}>
                                 <a href="register">{t("sign_up")}</a>
                             </span>
@@ -271,7 +286,7 @@ const Login = () => {
                                 <a href="register">
                                     Don't have an account? Sign up
                                 </a>
-                            </span>
+                                </span> 
                         </form>
                     </div>
                 ) : null}

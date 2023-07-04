@@ -1,0 +1,16 @@
+{
+    "profile": "प्रोफ़ाइल",
+    "connectDiscord": "कलह कनेक्ट करें",
+    "campusDetails" : "कैम्पस विवरण",
+    "hackathon":"आयोजित हैकथॉन",
+    "interestGroups": "आपसी हित वाला समूह",
+    "organisation":"संगठन",
+    "tasks":"कार्य",
+    "manageUsers":"उपयोगकर्ताओं को प्रबंधित करें",
+    "manageRoles":"भूमिकाएँ प्रबंधित करें",
+    "userRoleVerification":"उपयोगकर्ता भूमिका सत्यापन",
+    "urlShortener": "यूआरएल शॉर्टनर",
+    "zonalDashboard":"आंचलिक डैशबोर्ड",
+    "districtDashboard":"जिला डैशबोर्ड",
+    "Logout":"Logout"
+}

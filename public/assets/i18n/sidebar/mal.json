@@ -1,0 +1,17 @@
+{
+    "profile": "പ്രൊഫൈൽ",
+    "connectDiscord": "ഡിസ്കോർഡ് ബന്ധിപ്പിക്കുക",
+    "campusDetails" : "കാമ്പസ് വിശദാംശങ്ങൾ",
+    "hackathon":"ഹാക്കത്തോൺ",
+    "interestGroups": "താൽപ്പര്യ ഗ്രൂപ്പ്",
+    "organisation":"സംഘടന",
+    "tasks":"ചുമതലകൾ",
+    "manageUsers":"ഉപയോക്താക്കളെ നിയന്ത്രിക്കുക",
+    "manageRoles":"റോളുകൾ കൈകാര്യം ചെയ്യുക",
+    "userRoleVerification":"ഉപയോക്തൃ റോൾ പരിശോധന",
+    "urlShortener": "URL ഷോർട്ടനർ",
+    "zonalDashboard":"സോണൽ ഡാഷ്ബോർഡ്",
+    "districtDashboard":"ജില്ലാ ഡാഷ്ബോർഡ്",
+    "logout":"Logout"
+
+}
