@@ -194,13 +194,6 @@
 	border: .1px solid #CFD3D4;
 }
 
-.image_input {
-	border-radius: var(--borderRadius);
-	background-color: var(--White);
-	min-width: 22rem;
-	border: .1px solid #CFD3D4;
-}
-
 @media (width<=1280px) {
 
 	.InputSet textarea {

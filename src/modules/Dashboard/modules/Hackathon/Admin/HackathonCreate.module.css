@@ -247,3 +247,63 @@ input[type=file]::file-selector-button {
 input[type=file]::file-selector-button:hover {
 	background: #0d45a5;
 }
+
+.image_input {
+	border-radius: var(--borderRadius);
+	background-color: var(--White);
+	min-width: 22rem;
+	border: .1px solid #CFD3D4;
+}
+
+.InputSet {
+	display: flex;
+	flex-direction: column;
+	width: 22rem;
+	gap: .5rem;
+	text-align: left;
+}
+
+.formLabel {
+	text-align: left;
+	font-size: 1.1rem;
+	font-weight: 600;
+	margin: 0;
+	color: #000;
+}
+
+.InputSet input {
+	padding: .7rem 1rem;
+	border-radius: var(--borderRadius);
+	width: 100%;
+	background-color: var(--White);
+	min-width: 22rem;
+	border: .1px solid #CFD3D4;
+}
+
+@media (width<=1280px) {
+
+	.InputSet textarea {
+		min-width: 60vw;
+	}
+}
+
+@media (width<=1080px) {
+
+	.InputSet input{
+		min-width: 50vw;
+	}
+}
+
+@media (width<=820px) {
+
+	.InputSet input{
+		min-width: 80vw;
+	}
+}
+
+@media (width<=520px) {
+
+	.InputSet input{
+		min-width: 68vw;
+	}
+}

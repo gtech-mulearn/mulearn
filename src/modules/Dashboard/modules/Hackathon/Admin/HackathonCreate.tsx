@@ -154,7 +154,9 @@ const HackathonCreate = () => {
                             districtId: "",
                             isOpenToAll: "",
                             formFields: [],
-                            event_logo: ""
+                            event_logo: "",
+                            banner: "",
+                            website: ""
                         }}
                         validationSchema={hackathonSchema}
                         onSubmit={handleSubmit}
@@ -256,13 +258,54 @@ const HackathonCreate = () => {
                                                 options={options1}
                                                 label={"Type of the hackathon"}
                                             />
-											<input type="file" onChange={(event) => {
-												setFieldValue('event_logo', event.target.files[0])
-											}} />
-                                            <FormikImageComponent
-                                                name={"banner"}
-                                                label={"Banner"}
-                                            />
+                                            <div className={styles.InputSet}>
+                                                <label
+                                                    className={styles.formLabel}
+                                                >
+                                                    Event Logo
+                                                </label>
+                                                <input
+                                                    type="file"
+                                                    className={
+                                                        styles.image_input
+                                                    }
+                                                    onChange={event => {
+                                                        if (
+                                                            event.target.files
+                                                        ) {
+                                                            setFieldValue(
+                                                                "event_logo",
+                                                                event.target
+                                                                    .files[0]
+                                                            );
+                                                        }
+                                                    }}
+                                                />
+                                            </div>
+                                            <div className={styles.InputSet}>
+                                                <label
+                                                    className={styles.formLabel}
+                                                >
+                                                    Banner
+                                                </label>
+                                                <input
+                                                    type="file"
+                                                    className={
+                                                        styles.image_input
+                                                    }
+                                                    onChange={event => {
+                                                        if (
+                                                            event.target.files
+                                                        ) {
+                                                            setFieldValue(
+                                                                "banner",
+                                                                event.target
+                                                                    .files[0]
+                                                            );
+                                                        }
+                                                    }}
+                                                />
+                                            </div>
                                             <FormikTextInputWhite
                                                 label="Website"
                                                 name="website"
