@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import styles from "./HackathonCreate.module.css";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import FormikReactSelect, {
+	FormikImageComponent,
     FormikTextAreaWhite,
     FormikTextInputWhite
 } from "../../../../../components/MuComponents/FormikComponents/FormikComponents";
@@ -151,7 +152,8 @@ const HackathonCreate = () => {
                             place: "",
                             districtId: "",
                             isOpenToAll: "",
-                            formFields: []
+                            formFields: [],
+                            event_logo: null,
                         }}
                         validationSchema={hackathonSchema}
                         onSubmit={handleSubmit}
@@ -253,6 +255,22 @@ const HackathonCreate = () => {
                                                 options={options1}
                                                 label={"Type of the hackathon"}
                                             />
+                                            <FormikImageComponent
+                                                name={"event_logo"}
+                                                label={"Event logo"}
+                                            />
+                                            <FormikTextInputWhite
+                                                label="Banner"
+                                                name="banner"
+                                                placeholder="link for the event banner"
+                                                type="text"
+                                            />
+                                            <FormikTextInputWhite
+                                                label="Website"
+                                                name="website"
+                                                placeholder="link for the event website"
+                                                type="text"
+                                            />
                                         </TabPanel>
 
                                         <TabPanel className={styles.formGroup}>
@@ -276,13 +294,15 @@ const HackathonCreate = () => {
                                                     ([key, value]) => (
                                                         <label
                                                             key={key}
-                                                            className={`${styles.checkBoxContainer
-                                                                } ${values.formFields.includes(
+                                                            className={`${
+                                                                styles.checkBoxContainer
+                                                            } ${
+                                                                values.formFields.includes(
                                                                     key as never
                                                                 )
                                                                     ? styles.checked
                                                                     : ""
-                                                                }`}
+                                                            }`}
                                                         >
                                                             <Field
                                                                 type="checkbox"
