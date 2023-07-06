@@ -126,7 +126,7 @@ export const fetchQRCode = async (muid: any, setBlob: any) => {
                     (import.meta.env.VITE_FRONTEND_URL as string) +
                     /profile/ +
                     (muid)
-                }&centerImageUrl=https://avatars.githubusercontent.com/u/98015594?s=200&v=4`,
+                }&centerImageUrl=https://github.com/Jovit-Mathew236/mulearn/blob/dev/src/modules/Dashboard/modules/Profile/assets/images/mulearnBrand.png?raw=true`,
                 {
                     responseType: "arraybuffer"
                 }
