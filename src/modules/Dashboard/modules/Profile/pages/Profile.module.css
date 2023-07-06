@@ -54,7 +54,7 @@
 }
 
 .rightDash .share_pop_up_container .share_pop_up {
-  margin: 30dvh auto auto;
+  margin: 15dvh auto auto;
   height: auto;
   width: 400px;
   background: white;
@@ -63,34 +63,41 @@
   position: relative;
 }
 
-.rightDash .share_pop_up_container .share_pop_up .close_btn {
-  position: absolute;
-  right: 10px;
-  top: 20px;
-  color: #999;
-  font-size: 20px;
-  cursor: pointer;
-}
-
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents {
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-top: 10px solid;
+  gap: 16px;
+  /* border-top: 10px solid; */
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents h1 {
+  font-size: 18px;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents hr {
+  width: 100%;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents button {
+  width: 100%;
+  padding: 16px;
+  background: #F3F3F4;
+  border-radius: 10px;
 }
 
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .profile_state {
-  margin-top: 30px;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 20px;
 }
 
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .profile_state .option {
   display: flex;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   gap: 20px;
 }
 
@@ -99,60 +106,39 @@
 }
 
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_profile_container .qr_code {
-  width: 190px;
+  width: 160px;
   margin: auto;
-  padding: 20px;
-  border: 0.5px solid #8f8f8fcc;
-  border-radius: 20px;
-}
-
-.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_profile_container .options {
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid #F3F3F4;
   display: flex;
-  justify-content: space-evenly;
-  margin: 20px 0px;
-  text-align: center;
-}
-
-.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_profile_container .options p {
-  width: 30%;
-  padding: 2px 10px;
-  border-radius: 20px;
-  border: 1px solid #80808087;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: all .3s ease-in-out;
-}
-
-.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_profile_container .options p:hover {
-  background: #00000024;
-  color: black;
 }
 
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .link {
   width: 100%;
   background: rgba(0, 0, 0, 0.06);
   padding: 10px 20px;
-  border-radius: 50px;
-  margin-top: 30px;
+  border-radius: 10px;
+  margin-top: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .link p {
-  width: 90%;
-  /* font-size: 14px; */
-  word-wrap: break-word;
+  overflow: scroll;
+  margin-right: 10px;
+  word-wrap: normal;
 }
 
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .link i {
   cursor: pointer;
   padding: 10px;
   margin-right: -10px;
-  background: white;
-  border-radius: 50%;
+  color: black;
+  /* background: white; */
+  /* border-radius: 50%; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -793,7 +779,7 @@
 
 @media (max-width: 500px) {
   .rightDash .share_pop_up_container .share_pop_up {
-    width: 330px;
+    width: 90vw;
   }
 
   .rightDash .profileDash .profile .banner .member_since {
