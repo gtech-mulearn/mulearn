@@ -6,7 +6,6 @@ import styles from "./Career.module.css";
 import CareersCard from "../../Components/CareersCard/CareersCard";
 import ClosedCareersCard from "../../Components/ClosedCareers/ClosedCareers";
 import axios from "axios";
-import logo from "./assets/text.png";
 
 const Career = () => {
   let companies = require("./data/companies.json");
