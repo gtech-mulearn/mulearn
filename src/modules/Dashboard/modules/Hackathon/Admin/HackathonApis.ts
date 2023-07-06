@@ -32,7 +32,8 @@ export const createHackathon = async (
 	applicationEnds: string,
 	eventStart: string,
 	eventEnd: string,
-	formFields: any
+	formFields: any,
+	logo: any
 ) => {
     try {
         const response = await privateGateway.post(
@@ -51,7 +52,14 @@ export const createHackathon = async (
                 event_start: eventStart,
                 event_end: eventEnd,
                 status: "Draft",
-                form_fields: formFields
+                form_fields: formFields,
+                event_logo: logo
+            },
+            {
+                maxBodyLength: Infinity,
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
             }
         );
         const message: any = response?.data;

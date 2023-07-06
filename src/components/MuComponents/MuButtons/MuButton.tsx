@@ -1,4 +1,4 @@
-import React, { ReactFragment } from "react";
+import React, { ReactFragment, ReactNode } from "react";
 import styles from "./MuButtons.module.css";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import { ClipLoader } from "react-spinners";
@@ -56,7 +56,7 @@ export const DropDownButtons = (props: {
     icon?: ReactJSXElement; // main button icon
     style?: React.CSSProperties; // main button style if wanted
     onClick?: React.MouseEventHandler; // onclick event if wanted
-    listOfDropBtn?: { [key: string]: any }[]; // list of text for sub buttons and the count of button will calculate by this
+    listOfDropBtn?: ReactNode[]; // list of text for sub buttons and the count of button will calculate by this
     display?: string; // this is for hide and display the sub buttons
 }) => {
     return (
@@ -73,18 +73,7 @@ export const DropDownButtons = (props: {
                 className={styles.drop_view}
                 style={{ maxHeight: props.display === "0" ? "0" : "300px" }}
             >
-                {props.listOfDropBtn?.map((btn, i) => {
-                    return (
-                        <div
-                            key={i}
-                            className={styles.btn}
-                        // style={btn.style}
-                        // onClick={btn.onClick}
-                        >
-                            <p>{btn.text}</p>
-                        </div>
-                    );
-                })}
+                {props.listOfDropBtn?.map((btn) => btn)}
             </div>
         </div>
     );

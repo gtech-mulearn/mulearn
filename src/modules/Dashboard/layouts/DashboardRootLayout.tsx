@@ -17,7 +17,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
 
     useEffect(() => {
         const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
-        const existInGuild = userInfo.existInGuild;
+        const existInGuild = userInfo.exist_in_guild;
         const isCampusAmbassador = userInfo.roles?.includes(roles.CAMPUS_LEAD);
         const isAdmin = userInfo.roles?.includes(roles.ADMIN);
         const isZonalCampusLead = userInfo.roles?.includes(roles.ZONAL_CAMPUS_LEAD);
@@ -41,7 +41,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
             hasView: !connected,
             icon: <i className="fi fi-sr-data-transfer"></i>
         },
-        
+
         {
             url: "campus-details",
             title: "Campus Details",
@@ -78,22 +78,31 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-layout-fluid"></i>
         },
         {
-            url: "manage-users",
-            title: "Manage Users",
+            url: "",
+            title: "User Management",
             hasView: true,
             roles: [roles.ADMIN],
-            icon: <i className="fi fi-sr-users"></i>
+            icon: <i className="fi fi-sr-users"></i>,
+            children: [
+                {
+                    url: "manage-users",
+                    title: "Manage Users",
+                    hasView: true,
+                    roles: [roles.ADMIN],
+                    icon: <i className="fi fi-sr-users"></i>
+                },
+                {
+                    url: "user-role-verification",
+                    title: "User Role Verification",
+                    hasView: true,
+                    roles: [roles.ADMIN],
+                    icon: <i className="fi fi-sr-users"></i>
+                },
+            ]
         },
         {
             url: "manage-roles",
             title: "Manage Roles",
-            hasView: true,
-            roles: [roles.ADMIN],
-            icon: <i className="fi fi-sr-users"></i>
-        },
-        {
-            url: "user-role-verification",
-            title: "User Role Verification",
             hasView: true,
             roles: [roles.ADMIN],
             icon: <i className="fi fi-sr-users"></i>
@@ -145,7 +154,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
 
     return (
         <div className={styles.full_page}>
-            <SideNavBar sidebarButtons={buttons}/>
+            <SideNavBar sidebarButtons={buttons} />
             <div className={styles.right_side} id="right">
                 <TopNavBar />
                 <div className={styles.main_content}>

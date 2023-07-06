@@ -29,9 +29,7 @@ export const getManageUsers = async (
         console.log(datasuser);
         for (let i = 0; i < datasuser.length; i++) {
             if (datasuser[i].college != null) {
-                console.log(datasuser[i].college);
             } else if (datasuser[i].company != null) {
-                console.log(datasuser[i].company);
                 datasuser[i].college = datasuser[i].company;
             } else {
                 console.log(null);
@@ -148,13 +146,14 @@ export const getManageUsersDetails = async (
         );
         const message: any = response?.data;
         console.log(message);
-        console.log(message.response.users);
-        console.log(message.response.users.graduation_year);
-        console.log(message.response.users.department);
-        console.log(message.response.users.company);
-        console.log(message.response.users.college);
-       
-        setData(message.response.users);
+        const datasuser = message.response;
+        console.log(message.response);
+        for (let i = 0; i < datasuser.length; i++) {
+            console.log(datasuser[i].first_name);
+
+        }
+
+        setData(datasuser[0]);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
