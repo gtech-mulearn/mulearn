@@ -112,7 +112,7 @@ function ManageRoles() {
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
                 CSV={dashboardRoutes.getRolesList}
-            // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
+                // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
             />
             {data && (
                 <Table
@@ -123,6 +123,8 @@ function ManageRoles() {
                     id={["id"]}
                     onEditClick={handleEdit}
                     onDeleteClick={handleDelete}
+                    modalDeleteHeading="Delete"
+                    modalDeleteContent="Are you sure you want to delete this role ?"
                 >
                     <THead
                         columnOrder={columnOrder}
