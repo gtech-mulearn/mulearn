@@ -24,6 +24,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useToast, Switch } from "@chakra-ui/react";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 
+import { useTranslation } from "react-i18next";
+import i18n from "src/i18n";
+
+
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
@@ -60,7 +64,7 @@ const Profile = () => {
     const [userLevelData, setUserLevelData] = useState([
         { name: "", tasks: [{ task_name: "", completed: false, hashtag: "" }] }
     ]);
-
+    
     const convertedData1 = userProfile.interest_groups.map(item => [
         item.name,
         item.karma
@@ -70,7 +74,8 @@ const Profile = () => {
         item.karma
     ]);
     const data = [["Task", "0"], ...convertedData2, ...convertedData1];
-
+    const { t } = useTranslation(["profile"]);
+    
     function getMonthDifference(startDate: Date, endDate: Date): number {
         const startYear = startDate.getFullYear();
         const startMonth = startDate.getMonth();
@@ -233,7 +238,7 @@ const Profile = () => {
                                                 <MulearnBrand />
                                             </div>
                                             <p>
-                                                Member since{" "}
+                                           { t('profile.0.memberSince') }{" "}
                                                 {userProfile.joined.slice(0, 4)}
                                             </p>
                                         </div>
@@ -271,7 +276,7 @@ const Profile = () => {
                                                         color: "#456FF6"
                                                     }}
                                                 >
-                                                    LEVEL{"     "}
+                                                    {t('profile.1.level')} {"     "}
                                                     {userProfile.level
                                                         ? userProfile.level.slice(
                                                               3,
@@ -338,7 +343,7 @@ const Profile = () => {
                                                     : {}
                                             }
                                         >
-                                            Basic Details
+                                           {t("profile.2.basicDetails")}
                                         </li>
                                         <li
                                             onClick={() =>
@@ -353,7 +358,7 @@ const Profile = () => {
                                                     : {}
                                             }
                                         >
-                                            Karma History
+                                          {t("profile.3.karmaHistory")}
                                         </li>
                                         <li
                                             onClick={() =>
@@ -368,7 +373,7 @@ const Profile = () => {
                                                     : {}
                                             }
                                         >
-                                            Mu Voyage
+                                            {t("profile.4.muVoyage")}
                                         </li>
                                         {/* <li>Join Mulearn</li> */}
                                         {/* <li>See More</li> */}
@@ -382,7 +387,7 @@ const Profile = () => {
                                         <div className={styles.points}>
                                             <Karma />
                                             <div>
-                                                <span>Karma</span>
+                                                <span> {t("profile.5.karma")}</span>
                                                 <h1>
                                                     {parseInt(
                                                         userProfile.karma
@@ -399,14 +404,14 @@ const Profile = () => {
                                         <div className={styles.points}>
                                             <Rank />
                                             <div>
-                                                <span>Rank</span>
+                                                <span>{t("profile.6.rank")}</span>
                                                 <h1>{userProfile.rank}</h1>
                                             </div>
                                         </div>
                                         <div className={styles.points}>
                                             <Karma />
                                             <div>
-                                                <span>Avg.Karma/Month</span>
+                                                <span>{t("profile.avgKarma")}</span>
                                                 <h1>
                                                     {parseInt(
                                                         userProfile.karma

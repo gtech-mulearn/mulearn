@@ -1,0 +1,13 @@
+{
+    "profile":[
+        {"memberSince":"Member since"},
+        {"level":"LEVEL"},
+        {"basicDetails":"Basic Details"},
+        {"karmaHistory":"Karma History"},
+        {"muVoyage":"Mu Voyage"},
+        {"karma": "Karma"},
+        {"rank":"Rank"},
+        {"avgKarma":"Avg.Karma/Month"}
+     ]
+     
+}
