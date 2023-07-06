@@ -54,28 +54,28 @@ const DashboardRootLayout = (props: { component?: any }) => {
             title: "Hackathon",
             hasView: true,
             roles: [roles.ADMIN],
-            icon: <i className="fi fi-sr-clipboard-user"></i>
+            icon: <i className="fi fi-sr-head-side-thinking"></i>
         },
         {
             url: "interest-groups",
             title: "Interest Groups",
             hasView: true,
             roles: [roles.ADMIN],
-            icon: <i className="fi fi-sr-layout-fluid"></i>
+            icon: <i className="fi fi-sr-books"></i>
         },
         {
             url: "organizations",
             title: "Organizations",
             hasView: true,
             roles: [roles.ADMIN],
-            icon: <i className="fi fi-sr-layout-fluid"></i>
+            icon: <i className="fi fi-sr-building"></i>
         },
         {
             url: "tasks",
             title: "Tasks",
             hasView: true,
             roles: [roles.ADMIN],
-            icon: <i className="fi fi-sr-layout-fluid"></i>
+            icon: <i className="fi fi-sr-note"></i>
         },
         {
             url: "",
@@ -89,14 +89,14 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     title: "Manage Users",
                     hasView: true,
                     roles: [roles.ADMIN],
-                    icon: <i className="fi fi-sr-users"></i>
+                    icon: <i className="fi fi-sr-users-alt"></i>
                 },
                 {
                     url: "user-role-verification",
                     title: "User Role Verification",
                     hasView: true,
                     roles: [roles.ADMIN],
-                    icon: <i className="fi fi-sr-users"></i>
+                    icon: <i className="fi fi-sr-memo-circle-check"></i>
                 },
             ]
         },
@@ -105,7 +105,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
             title: "Manage Roles",
             hasView: true,
             roles: [roles.ADMIN],
-            icon: <i className="fi fi-sr-users"></i>
+            icon: <i className="fi fi-sr-users-gear"></i>
         },
         {
             url: "url-shortener",
@@ -119,14 +119,14 @@ const DashboardRootLayout = (props: { component?: any }) => {
             title: "Zonal Dashboard",
             hasView: true,
             roles: [roles.ZONAL_CAMPUS_LEAD],
-            icon: <i className="fi fi-sr-globe"></i>
+            icon: <i className="fi fi-sr-marker"></i>
         },
         {
             url: "district-dashboard",
             title: "District Dashbaord",
             hasView: true,
             roles: [roles.DISTRICT_CAMPUS_LEAD],
-            icon: <i className="fi fi-sr-globe"></i>
+            icon: <i className="fi fi-sr-map-marker"></i>
         }
     ];
 
