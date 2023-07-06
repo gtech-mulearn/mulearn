@@ -28,7 +28,7 @@ function ManageRoles() {
         { column: "total_karma", Label: "Total Karma", isSortable: true },
         // { column: "mu_id", Label: "Mu ID", isSortable: false },
         { column: "email", Label: "Email", isSortable: true },
-        { column: "mobile", Label: "Nobile", isSortable: false },
+        { column: "mobile", Label: "Mobile", isSortable: false },
         { column: "dob", Label: "DOB", isSortable: false },
         { column: "gender", Label: "Gender", isSortable: false },
 
