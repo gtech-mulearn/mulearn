@@ -1,6 +1,8 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "../../../../../services/apiGateways";
 import { dashboardRoutes } from "../../../../../services/urls";
+import { HackList } from "../User/Hackathon";
+import { SetStateAction } from "react";
 
 export const getFormFields = async (
     setFormData: React.Dispatch<React.SetStateAction<string>>
@@ -11,6 +13,25 @@ export const getFormFields = async (
         );
         const defaultForm: any = response?.data;
         setFormData(defaultForm.response);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
+
+export const getHackDetails = async (
+    setEditData: React.Dispatch<SetStateAction<HackList | undefined>>,
+    id: string | undefined
+) => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getHackathons + id
+        );
+        const defaultForm: any = response?.data;
+        setEditData(defaultForm.response);
+		console.log(defaultForm.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
