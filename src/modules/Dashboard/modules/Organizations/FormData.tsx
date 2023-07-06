@@ -11,7 +11,7 @@ import {
 } from "./apis";
 import { useNavigate } from "react-router-dom";
 import Textfield from "../../../../components/MuComponents/TextField/Textfield";
-import { Formik, Form,useFormik } from "formik";
+import { Formik, Form, useFormik } from "formik";
 import * as Yup from "yup";
 import { createOrganization, updateOrganization } from "./apis";
 import { useToast } from "@chakra-ui/react";
@@ -20,7 +20,7 @@ import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton
 import { ClipLoader } from "react-spinners";
 
 import "./Organizations.scss";
-import { useRef } from 'react';
+import { useRef } from "react";
 
 interface Option {
     value: string;
@@ -39,16 +39,6 @@ interface CollegeFormProps {
     selectedDistrict?: string;
     selectedAffiliation?: string;
 }
-
-// export let myState = false; // Initial value
-
-// export const setMyState = (newValue:boolean) => {
-//   myState = newValue;
-// };
-
-
-
-
 
 const FormData = ({ ...props }: CollegeFormProps) => {
     const [inputName, setInputName] = useState("");
@@ -77,32 +67,31 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     const [isCountryDataLoaded, setIsCountryDataLoaded] = useState(false);
 
     const [isSuccess, setIsSuccess] = useState(false);
-    const [isLoading, setIsLoading] = useState(false)
-    const [isDisabled, setIsDisabled] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
+    const [isDisabled, setIsDisabled] = useState(false);
 
     const [selectionStatus, setSelectionStatus] = useState({
         isCountrySelected: true,
         isStateSelected: false,
         isZoneSelected: false,
         isDistrictSelected: false
-    })
+    });
 
     const navigate = useNavigate();
     const toast = useToast();
-
 
     const myRef = useRef(false);
 
     useEffect(() => {
         if (isSuccess) {
-            navigate('/organizations')
+            navigate("/organizations");
         }
         if (isLoading) {
-            setIsDisabled(true)
+            setIsDisabled(true);
         } else {
-            setIsDisabled(false)
+            setIsDisabled(false);
         }
-    })
+    });
 
     function camelCase(str: string) {
         return str?.replace(
@@ -118,13 +107,12 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
     const orgType = props.activeItem;
 
-
     const handleSubmit = (Name: string, Code: string) => {
         // e.preventDefault();
         // resetStates()
         interface SelectBodyProps {
-            Name: string,
-            Code: string,
+            Name: string;
+            Code: string;
             country: string;
             state: string;
             zone: string;
@@ -138,14 +126,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             isCreate: boolean,
             affiliation?: string
         ) => {
-            const {
-                country,
-                state,
-                zone,
-                district,
-                orgType,
-                toast
-            } = params;
+            const { country, state, zone, district, orgType, toast } = params;
 
             if (isCreate) {
                 if (orgType === "College") {
@@ -160,7 +141,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         toast,
                         affiliation,
                         setIsSuccess,
-                        setIsLoading,
+                        setIsLoading
                     );
                 } else {
                     createOrganization(
@@ -183,7 +164,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         Name,
                         Code,
                         oldCode,
-                        camelCase(country),     
+                        camelCase(country),
                         camelCase(state),
                         camelCase(zone),
                         camelCase(district),
@@ -194,16 +175,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         setIsLoading
                     );
                 } else {
-                    console.log(`
-                    Name: ${Name},
-                    Code: ${Code},
-                    oldCode: ${oldCode},
-                    country: ${country},
-                    state: ${state},
-                    zone: ${zone},
-                    district: ${district},
-                    orgType: ${orgType},
-                    `)
                     updateOrganization(
                         Name,
                         Code,
@@ -220,7 +191,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     );
                 }
             }
-            setIsLoading(false)
+            setIsLoading(false);
         };
 
         const SelectBody = (item: string) => {
@@ -243,7 +214,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
         };
 
         SelectBody(orgType);
-        // console.log("Success Status-->", myRef.current);
     };
 
     useEffect(() => {
@@ -256,10 +226,9 @@ const FormData = ({ ...props }: CollegeFormProps) => {
         }
 
         if (!props.isCreate) {
-
             setInputName(props.inputName || "");
             setInputCode(props.inputCode || "");
-            setOldCode(props.inputCode || "")
+            setOldCode(props.inputCode || "");
             setSelectedCountry(props.selectedCountry || "");
             setSelectedState(props.selectedState || "");
             setSelectedZone(props.selectedZone || "");
@@ -267,11 +236,15 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             setSelectedAffiliation(props.selectedAffiliation || "");
 
             if (props.selectedCountry) {
-                getStates(camelCase(props.selectedCountry), setStatesData,toast);
+                getStates(
+                    camelCase(props.selectedCountry),
+                    setStatesData,
+                    toast
+                );
             }
 
-            if(props.selectedAffiliation){
-                getAffiliation(camelCase(props.selectedAffiliation))
+            if (props.selectedAffiliation) {
+                getAffiliation(camelCase(props.selectedAffiliation));
             }
 
             if (props.selectedCountry && props.selectedState) {
@@ -286,7 +259,8 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             if (
                 props.selectedCountry &&
                 props.selectedState &&
-                props.selectedZone
+                props.selectedZone &&
+                props.selectedZone !== ""
             ) {
                 getDistricts(
                     camelCase(props.selectedCountry),
@@ -301,33 +275,40 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
     useEffect(() => {
         if (!props.isCreate) {
-            if(props.activeItem == "College" && country.value?.toLowerCase() !== selectedCountry?.toLowerCase() && country !== ""){
-                getStates(camelCase(selectedCountry), setStatesData,toast);
+            if (
+                props.activeItem == "College" &&
+                country.value?.toLowerCase() !==
+                    selectedCountry?.toLowerCase() &&
+                country !== ""
+            ) {
+                getStates(camelCase(selectedCountry), setStatesData, toast);
             }
-            if (country.value?.toLowerCase() !== selectedCountry?.toLowerCase() && country !== "") {
-                console.log("country changed with ",country.value?.toLowerCase() !== props.selectedCountry?.toLowerCase() && country !== "")
-                getStates(camelCase(selectedCountry), setStatesData,toast);
+            if (
+                country.value?.toLowerCase() !==
+                    selectedCountry?.toLowerCase() &&
+                country !== ""
+            ) {
+                getStates(camelCase(selectedCountry), setStatesData, toast);
             }
-            if (state.value?.toLowerCase() !== selectedState?.toLowerCase() && state !== "") {
-                console.log("state changed with ",state.value?.toLowerCase() !== props.selectedState?.toLowerCase() && state !== "")
+            if (
+                state.value?.toLowerCase() !== selectedState?.toLowerCase() &&
+                state !== ""
+            ) {
                 getZones(
                     camelCase(props.selectedCountry || country.value),
                     camelCase(state.value),
                     setZonesData,
                     toast
                 );
-                setZonesData([])
-                setDistrictsData([])
+                setZonesData([]);
+                setDistrictsData([]);
             }
-            console.log(country.value?.toLowerCase())
-            console.log(state.value?.toLowerCase())
-            console.log(zone.value?.toLowerCase())
-            console.log(district.value?.toLowerCase())
-            console.log(selectedZone !== "")
-            if (zone.value?.toLowerCase() !== selectedZone?.toLowerCase() 
-                && selectedZone !== ""
+
+            if (
+                zone.value?.toLowerCase() !== selectedZone?.toLowerCase() &&
+                selectedZone !== "" &&
+                zone !== ""
             ) {
-                console.log("zone changed with ",zone.value?.toLowerCase() !== props.selectedZone?.toLowerCase() && state !== "")
                 getDistricts(
                     camelCase(props.selectedCountry || country.value),
                     camelCase(props.selectedState || state.value),
@@ -336,31 +317,16 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     toast
                 );
             }
-            // console.log(`
-            //     state -> ${state.value}
-            //     zone -> ${zone.value}
-            //     district -> ${district.value}
-
-            //     selected state -> ${selectedState}
-            //     selected zone -> ${selectedZone}
-            //     selected district -> ${selectedDistrict}
-
-            //     states data -> ${statesData}
-            //     zone data -> ${zonesData}
-            //     states data -> ${districtsData}
-            // `)
         }
-    }, [country, state, zone, district])
+    }, [country, state, zone, district]);
 
     useEffect(() => {
-        console.log("country check and state data loaded")
         if (country !== "") {
-            getStates(camelCase(country.value), setStatesData,toast);
+            getStates(camelCase(country.value), setStatesData, toast);
         }
     }, [selectedCountry]);
 
     useEffect(() => {
-        console.log("state check and zone data loaded")
         if (state !== "") {
             getZones(
                 camelCase(country.value || props.selectedCountry),
@@ -372,8 +338,8 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     }, [selectedState]);
 
     useEffect(() => {
-        console.log("zone check and district data loaded")
-        if (zone !== "") {
+       
+        if (zone !== "" && zone.value !== undefined) {
             getDistricts(
                 camelCase(country.value || props.selectedCountry),
                 camelCase(state.value || props.selectedState),
@@ -400,14 +366,12 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
     const handleStateChange = (option: any) => {
         if (option) {
+            setZone([]);
+            setSelectedZone("");
+            setSelectedDistrict("");
             setState(option);
             setSelectedState(option.value as string);
-            setZone([])
-            setSelectedZone("")
-            setSelectedDistrict("")
-            console.log(zonesData.find(
-                zone => zone.value === selectedZone.toLowerCase()
-            ))
+      
         }
     };
 
@@ -415,7 +379,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
         if (option) {
             setZone(option);
             setSelectedZone(option.value as string);
-            setSelectedDistrict("")
+            setSelectedDistrict("");
         }
     };
 
@@ -437,7 +401,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     State: state.value || "",
                     Zone: zone.value || "",
                     District: district.value || ""
-                                        // acceptedTerms: false, // added for our checkbox
+                    // acceptedTerms: false, // added for our checkbox
                     // jobType: "" // added for our select
                 }}
                 validationSchema={Yup.object({
@@ -449,26 +413,10 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         .required("Required")
                 })}
                 onSubmit={values => {
-                    // if(country == "")
-                    console.log(`
-                        country: ${country.value}
-                        state: ${state.value}
-                        zone: ${zone.value}
-                        district: ${district.value}
-                    `)
                     handleSubmit(values.Name, values.Code);
                 }}
             >
                 <Form className="popup_dropdown_container">
-                    {/* <Textfield
-                    content={`${props.activeItem} Name`}
-                    inputType="text"
-                    setInput={setInputName}
-                    input={inputName}
-                    style={{
-                        width: "100%"
-                    }}
-                /> */}
                     <div className="inputfield_container">
                         <FormikTextInput
                             label={`${props.activeItem} Name`}
@@ -490,7 +438,9 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             <p>Affiliated University</p>
                             <Select
                                 value={affiliationData.find(
-                                    affiliation => affiliation.value === selectedAffiliation
+                                    affiliation =>
+                                        affiliation.value ===
+                                        selectedAffiliation
                                 )}
                                 name="Affiliation"
                                 onChange={handleAffiliationChange}
@@ -503,7 +453,9 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         <p>Country</p>
                         <Select
                             value={countryData.find(
-                                country => country.value === selectedCountry.toLowerCase()
+                                country =>
+                                    country.value ===
+                                    selectedCountry.toLowerCase()
                             )}
                             name="Country"
                             onChange={handleCountryChange}
@@ -515,21 +467,27 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         <p>State</p>
                         <Select
                             value={statesData.find(
-                                state => state.value === selectedState.toLowerCase()
+                                state =>
+                                    state.value === selectedState.toLowerCase()
                             )}
                             name="State"
                             onChange={handleStateChange}
                             options={statesData}
                             required
-                        // isDisabled={props.isCreate && selectedCountry ? false : true }
+                            // isDisabled={props.isCreate && selectedCountry ? false : true }
                         />
                     </div>
                     <div className="inputfield_container">
                         <p>Zone</p>
                         <Select
-                            value={zonesData.find(
-                                zone => zone.value === selectedZone.toLowerCase()
-                            )}
+                            value={
+                                selectedZone.length > 0 &&
+                                zonesData.find(
+                                    zone =>
+                                        zone.value ===
+                                        selectedZone.toLowerCase()
+                                )
+                            }
                             name="Zone"
                             onChange={handleZoneChange}
                             options={zonesData}
@@ -539,9 +497,14 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     <div className="inputfield_container">
                         <p>District</p>
                         <Select
-                            value={districtsData.find(
-                                district => district.value === selectedDistrict.toLowerCase()
-                            )}
+                            value={
+                                selectedDistrict.length > 0 &&
+                                districtsData.find(
+                                    district =>
+                                        district.value ===
+                                        selectedDistrict.toLowerCase()
+                                )
+                            }
                             name="District"
                             onChange={handleDistrictChange}
                             options={districtsData}
@@ -559,11 +522,19 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                                 navigate("/organizations");
                             }}
                         />
-                        <button type="submit" className="btn blue-btn" disabled={isDisabled}>
+                        <button
+                            type="submit"
+                            className="btn blue-btn"
+                            disabled={isDisabled}
+                        >
                             Submit
-                            {
-                                isLoading ? (<ClipLoader size={20} color="#fff" className="btn_loader" />) : null
-                            }
+                            {isLoading ? (
+                                <ClipLoader
+                                    size={20}
+                                    color="#fff"
+                                    className="btn_loader"
+                                />
+                            ) : null}
                         </button>
                     </div>
                 </Form>
@@ -576,4 +547,3 @@ export default FormData;
 function sleep(arg0: number) {
     throw new Error("Function not implemented.");
 }
-

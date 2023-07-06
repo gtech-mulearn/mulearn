@@ -34,11 +34,11 @@ const UrlShortener = () => {
         message: ""
     });
 
-    // const columnOrder = ["title","shortUrl", "longUrl"];
+    // const columnOrder = ["title","short_url", "long_url"];
     const columnOrder = [
         { column: "title", Label: "Title", isSortable: true },
-        { column: "shortUrl", Label: "Short URL", isSortable: false },
-        { column: "longUrl", Label: "Long URL", isSortable: false }
+        { column: "short_url", Label: "Short URL", isSortable: false },
+        { column: "long_url", Label: "Long URL", isSortable: false }
     ];
 
     const editableColumnNames = ["Title", "Short URL", "Long URL"];
@@ -71,12 +71,12 @@ const UrlShortener = () => {
 
         // navigate(`/interest-groups/edit/${id}`);
         formik.values.id = id.toString();
-        formik.values.longUrl = shortUrlData.filter(
+        formik.values.long_url = shortUrlData.filter(
             item => item.id === id
-        )[0].longUrl;
-        formik.values.shortUrl = shortUrlData.filter(
+        )[0].long_url;
+        formik.values.short_url = shortUrlData.filter(
             item => item.id === id
-        )[0].shortUrl;
+        )[0].short_url;
         formik.values.title = shortUrlData.filter(
             item => item.id === id
         )[0].title;
@@ -128,15 +128,15 @@ const UrlShortener = () => {
     const initialValues = {
         id: "",
         title: "",
-        longUrl: "",
-        shortUrl: ""
+        long_url: "",
+        short_url: ""
     };
 
     const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
         const urlEditedData = {
             title: values.title,
-            long_url: values.longUrl,
-            short_url: values.shortUrl
+            long_url: values.long_url,
+            short_url: values.short_url
         };
         console.log(urlEditedData);
         createShortenUrl(
@@ -152,7 +152,7 @@ const UrlShortener = () => {
 
     const onSubmitEdit = async (values: any, { setErrors, resetForm }: any) => {
         const urlData = {
-            shortUrlNew: values.shortUrl
+            shortUrlNew: values.short_url
         };
         console.log(urlData);
         editShortenUrl(
@@ -173,11 +173,11 @@ const UrlShortener = () => {
         if (values.title === "" || values.title === undefined) {
             errors.title = "Required";
         }
-        if (values.longUrl === "" || values.longUrl === undefined) {
-            errors.longUrl = "Required";
+        if (values.long_url === "" || values.long_url === undefined) {
+            errors.long_url = "Required";
         }
-        if (values.shortUrl === "" || values.shortUrl === undefined) {
-            errors.shortUrl = "Required";
+        if (values.short_url === "" || values.short_url === undefined) {
+            errors.short_url = "Required";
         }
         return errors;
     };
@@ -220,26 +220,26 @@ const UrlShortener = () => {
                         <input
                             className={styles.long_url}
                             type="url"
-                            name="longUrl"
+                            name="long_url"
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
-                            value={formik.values.longUrl}
+                            value={formik.values.long_url}
                             placeholder="Paste long url"
                             required
                         />
-                        {formik.touched.longUrl && formik.errors.longUrl ? (
+                        {formik.touched.long_url && formik.errors.long_url ? (
                             <p className={styles.error_message}>
-                                {formik.errors.longUrl}
+                                {formik.errors.long_url}
                             </p>
                         ) : null}
                         <div className={styles.short_url_input}>
                             <input
                                 className={styles.short_url}
                                 type="url"
-                                name="shortUrl"
+                                name="short_url"
                                 onBlur={formik.handleBlur}
                                 onChange={formik.handleChange}
-                                value={formik.values.shortUrl}
+                                value={formik.values.short_url}
                                 placeholder="Enter short url"
                                 required
                             />
@@ -253,8 +253,8 @@ const UrlShortener = () => {
                                         validate(formik.values);
                                         if (
                                             formik.values.title &&
-                                            formik.values.longUrl &&
-                                            formik.values.shortUrl
+                                            formik.values.long_url &&
+                                            formik.values.short_url
                                         ) {
                                             onSubmit(
                                                 formik.values,
@@ -282,8 +282,8 @@ const UrlShortener = () => {
                                         validate(formik.values);
                                         if (
                                             formik.values.title &&
-                                            formik.values.longUrl &&
-                                            formik.values.shortUrl
+                                            formik.values.long_url &&
+                                            formik.values.short_url
                                         ) {
                                             onSubmitEdit(
                                                 formik.values,
@@ -304,9 +304,9 @@ const UrlShortener = () => {
                                 ></input>
                             )}
                         </div>
-                        {formik.touched.shortUrl && formik.errors.shortUrl ? (
+                        {formik.touched.short_url && formik.errors.short_url ? (
                             <p className={styles.error_message}>
-                                {formik.errors.shortUrl}
+                                {formik.errors.short_url}
                             </p>
                         ) : null}
                     </form>

@@ -9,7 +9,8 @@ import {
     getPublicUserLog,
     putIsPublic,
     getUserLevels,
-    getPublicUserLevels
+    getPublicUserLevels,
+    fetchQRCode
 } from "../services/api";
 import { PieChart } from "../components/Piechart/PieChart";
 import MulearnBrand from "../assets/svg/MulearnBrand";
@@ -25,6 +26,10 @@ import { useToast, Switch } from "@chakra-ui/react";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import QRCode from "react-qr-code";
 import { Helmet } from "react-helmet";
+import { BsJustify } from "react-icons/bs";
+import axios from "axios";
+import { saveAs } from "file-saver";
+import mulearn_logo from "../assets/images/mulearnBrand.png";
 
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
@@ -32,8 +37,7 @@ const Profile = () => {
     const toast = useToast();
     const [APILoadStatus, setAPILoadStatus] = useState(0);
     const [profileList, setProfileList] = useState("basic-details");
-    const [display, setDisplay] = useState("flex");
-    const [linkOrQR, setLinkOrQR] = useState(true);
+    const [blob, setBlob] = useState<any>();
     const [popUP, setPopUP] = useState(false);
     const [userProfile, setUserProfile] = useState({
         first_name: "",
@@ -102,9 +106,107 @@ const Profile = () => {
             }
         }
         firstFetch.current = false;
+        fetchQRCode(userProfile.muid, setBlob);
     }, []);
+
+    const downloadQR = () => {
+        saveAs(blob, `${userProfile.muid}.png`);
+    };
     return (
         <>
+            <Helmet>
+                {/* <!-- Primary Meta Tags --> */}
+                <title>
+                    {userProfile.first_name +
+                        " " +
+                        userProfile.last_name +
+                        " | Mulearn"}
+                </title>
+                <meta
+                    name="title"
+                    content={
+                        userProfile.first_name +
+                        " " +
+                        userProfile.last_name +
+                        "|" +
+                        userProfile.karma +
+                        " Karma"
+                    }
+                />
+                <meta name="description" content="you bio is here" />
+
+                {/* <!-- Open Graph / Facebook --> */}
+                <meta property="og:type" content="website" />
+                <meta
+                    property="og:url"
+                    content={
+                        (import.meta.env.VITE_FRONTEND_URL as string) +
+                        /profile/ +
+                        userProfile.muid
+                    }
+                />
+                <meta
+                    property="og:title"
+                    content={
+                        userProfile.first_name +
+                        " " +
+                        userProfile.last_name +
+                        "|" +
+                        userProfile.karma +
+                        " Karma"
+                    }
+                />
+                <meta property="og:description" content="you bio is here" />
+                <meta
+                    property="og:image"
+                    content={
+                        userProfile.profile_pic ? userProfile.profile_pic : dpm
+                    }
+                />
+                <meta
+                    property="og:image:secure_url"
+                    content={
+                        userProfile.profile_pic ? userProfile.profile_pic : dpm
+                    }
+                />
+                <meta
+                    property="og:image:alt"
+                    content={`${userProfile.first_name}'s Profile Picture`}
+                />
+                <meta property="og:type" content="profile" />
+
+                {/* <!-- Twitter --> */}
+                <meta property="twitter:card" content="summary_large_image" />
+                <meta
+                    property="twitter:url"
+                    content={
+                        (import.meta.env.VITE_FRONTEND_URL as string) +
+                        /profile/ +
+                        userProfile.muid
+                    }
+                />
+                <meta
+                    property="twitter:title"
+                    content={
+                        userProfile.first_name +
+                        " " +
+                        userProfile.last_name +
+                        "|" +
+                        userProfile.karma +
+                        " Karma"
+                    }
+                />
+                <meta
+                    property="twitter:description"
+                    content="you bio is here"
+                />
+                <meta
+                    property="twitter:image"
+                    content={
+                        userProfile.profile_pic ? userProfile.profile_pic : dpm
+                    }
+                />
+            </Helmet>
             <div
                 style={
                     id
@@ -122,106 +224,6 @@ const Profile = () => {
                     </div>
                 ) : (id && userProfile.is_public) || !id ? (
                     <>
-                        <Helmet>
-                            {/* <!-- Primary Meta Tags --> */}
-                            <title>
-                                {userProfile.first_name +
-                                    " " +
-                                    userProfile.last_name +
-                                    "|" +
-                                    userProfile.karma +
-                                    " Karma"}
-                            </title>
-                            <meta
-                                name="title"
-                                content={
-                                    userProfile.first_name +
-                                    " " +
-                                    userProfile.last_name +
-                                    "|" +
-                                    userProfile.karma +
-                                    " Karma"
-                                }
-                            />
-                            <meta
-                                name="description"
-                                content="you bio is here"
-                            />
-
-                            {/* <!-- Open Graph / Facebook --> */}
-                            <meta property="og:type" content="website" />
-                            <meta
-                                property="og:url"
-                                content={
-                                    (import.meta.env
-                                        .VITE_FRONTEND_URL as string) +
-                                    /profile/ +
-                                    userProfile.muid
-                                }
-                            />
-                            <meta
-                                property="og:title"
-                                content={
-                                    userProfile.first_name +
-                                    " " +
-                                    userProfile.last_name +
-                                    "|" +
-                                    userProfile.karma +
-                                    " Karma"
-                                }
-                            />
-                            <meta
-                                property="og:description"
-                                content="you bio is here"
-                            />
-                            <meta
-                                property="og:image"
-                                content={
-                                    userProfile.profile_pic
-                                        ? userProfile.profile_pic
-                                        : dpm
-                                }
-                            />
-
-                            {/* <!-- Twitter --> */}
-                            <meta
-                                property="twitter:card"
-                                content="summary_large_image"
-                            />
-                            <meta
-                                property="twitter:url"
-                                content={
-                                    (import.meta.env
-                                        .VITE_FRONTEND_URL as string) +
-                                    /profile/ +
-                                    userProfile.muid
-                                }
-                            />
-                            <meta
-                                property="twitter:title"
-                                content={
-                                    userProfile.first_name +
-                                    " " +
-                                    userProfile.last_name +
-                                    "|" +
-                                    userProfile.karma +
-                                    " Karma"
-                                }
-                            />
-                            <meta
-                                property="twitter:description"
-                                content="you bio is here"
-                            />
-                            <meta
-                                property="twitter:image"
-                                content={
-                                    userProfile.profile_pic
-                                        ? userProfile.profile_pic
-                                        : dpm
-                                }
-                            />
-                        </Helmet>
-
                         <div
                             style={
                                 popUP
@@ -234,22 +236,13 @@ const Profile = () => {
                             className={styles.share_pop_up_container}
                         >
                             <div className={styles.share_pop_up}>
-                                <div
-                                    onClick={() => setPopUP(false)}
-                                    className={styles.close_btn}
-                                >
-                                    <i className="fi fi-sr-circle-xmark"></i>
-                                </div>
                                 <div className={styles.share_pop_up_contents}>
                                     <h1>Share your profile</h1>
                                     <div className={styles.profile_state}>
-                                        <p>
-                                            Do you want make your profile Public
-                                            ?
-                                        </p>
+                                        <p>Switch to public profile</p>
                                         <div className={styles.option}>
                                             <Switch
-                                                size="lg"
+                                                size="sm"
                                                 isChecked={profileStatus}
                                                 onChange={e => {
                                                     setProfileStatus(
@@ -263,38 +256,17 @@ const Profile = () => {
                                             />
                                         </div>
                                     </div>
-                                    <div
-                                        className={
-                                            styles.share_profile_container
-                                        }
-                                        style={
-                                            !profileStatus
-                                                ? { display: "none" }
-                                                : {}
-                                        }
-                                    >
-                                        <div className={styles.options}>
-                                            <p
-                                                onClick={() =>
-                                                    setLinkOrQR(true)
-                                                }
-                                            >
-                                                Link
-                                            </p>
-                                            <p
-                                                onClick={() =>
-                                                    setLinkOrQR(false)
-                                                }
-                                            >
-                                                QR Code
-                                            </p>
-                                        </div>
-                                        {!linkOrQR && (
+                                    {profileStatus && (
+                                        <div
+                                            className={
+                                                styles.share_profile_container
+                                            }
+                                        >
                                             <div className={styles.qr_code}>
-                                                <QRCode
+                                                {/* <QRCode
                                                     size={256}
                                                     style={{
-                                                        height: "150px",
+                                                        height: "173px",
                                                         maxWidth: "100%",
                                                         width: "100%"
                                                     }}
@@ -305,10 +277,10 @@ const Profile = () => {
                                                         userProfile.muid
                                                     }
                                                     viewBox={`0 0 256 256`}
-                                                />
+                                                    id="qr_code"
+                                                /> */}
+                                                <img src={blob} alt="" />
                                             </div>
-                                        )}
-                                        {linkOrQR && (
                                             <div className={styles.link}>
                                                 <p>
                                                     {
@@ -340,8 +312,28 @@ const Profile = () => {
                                                     className="fi fi-sr-link"
                                                 ></i>
                                             </div>
-                                        )}
-                                    </div>
+                                        </div>
+                                    )}
+                                    <hr />
+                                    {profileStatus && (
+                                        <MuButton
+                                            style={{
+                                                background: "#456FF6",
+                                                color: "#fff",
+                                                margin: "0px 0px -8px 0px",
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                padding: "16px"
+                                            }}
+                                            text={"Download QR code"}
+                                            onClick={() => {
+                                                downloadQR();
+                                            }}
+                                        />
+                                    )}
+                                    <button onClick={() => setPopUP(false)}>
+                                        {!profileStatus ? "Cancel" : "Close"}
+                                    </button>
                                     {/* <div className={styles.share_options}>
                                         <p>
                                             <i className="fi fi-brands-whatsapp"></i>
