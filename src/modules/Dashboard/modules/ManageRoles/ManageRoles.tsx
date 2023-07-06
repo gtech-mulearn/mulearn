@@ -3,7 +3,7 @@ import Pagination from "../../../../components/MuComponents/Pagination/Paginatio
 import Table from "../../../../components/MuComponents/Table/Table";
 import THead from "../../../../components/MuComponents/Table/THead";
 import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
-import { getManageRoles } from "./apis";
+import { deleteManageRoles, getManageRoles } from "./apis";
 import { Blank } from "../../../../components/MuComponents/Table/Blank";
 import { roles } from "../../../../services/types";
 import { hasRole } from "../../../../services/common_functions";
@@ -12,6 +12,8 @@ import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./Manageroles.module.css";
 import { dashboardRoutes } from "../../../../services/urls";
+import { useToast } from "@chakra-ui/react";
+
 
 function ManageRoles() {
     const [data, setData] = useState<any[]>([]);
@@ -63,10 +65,11 @@ function ManageRoles() {
         console.log(id);
         navigate(`/manage-roles/edit/${id}`);
     };
-
-    const handleDelete = (id: string | number | boolean) => {
+	const toast = useToast();
+    const handleDelete = (id: string | number | undefined) => {
         console.log(id);
-        navigate(`/manage-roles/delete/${id}`);
+        deleteManageRoles(id,toast)
+        // navigate(`/manage-roles/delete/${id}`);
     };
 
     const handlePerPageNumber = (selectedValue: number) => {

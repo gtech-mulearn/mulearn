@@ -110,7 +110,7 @@ export const getManageRolesDetails = async (
 };
 
 export const deleteManageRoles = async (
-    id: string | undefined,
+    id: string|number | undefined,
     toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
