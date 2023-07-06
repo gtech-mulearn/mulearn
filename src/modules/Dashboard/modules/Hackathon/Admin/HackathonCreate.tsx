@@ -24,14 +24,14 @@ const HackathonCreate = () => {
     const [formData, setFormData] = useState("");
 
     useEffect(() => {
-        if (formData === '') {
+        if (formData === "") {
             getFormFields(setFormData);
         }
     }, []);
 
     function handleNext() {
-        if (tabIndex === 6) {
-            setTabIndex(6);
+        if (tabIndex === 3) {
+            setTabIndex(3);
         } else {
             setTabIndex(tabIndex + 1);
         }
@@ -50,17 +50,14 @@ const HackathonCreate = () => {
             .required("Required")
             .min(2, "Too Short!")
             .max(50, "Too Long!"),
-        tagline: Yup.string().min(2, "Too Short!").max(100, "Too Long!"),
-        // .required("Required"),
+        tagline: Yup.string()
+            .min(2, "Too Short!")
+            .max(100, "Too Long!")
+            .required("Required"),
         orgId: Yup.string().min(2, "Too Short!"),
-        // .required("Required"),
-        place: Yup.string()
-            // .required("Required")
-            .min(2, "Too Short!"),
+        place: Yup.string().min(2, "Too Short!"),
         districtId: Yup.string().min(2, "Too Short!"),
-        // .required("Required"),
         isOpenToAll: Yup.boolean(),
-        // .required("Required"),
         description: Yup.string().min(5, "Too Short!"),
         eventStart: Yup.date(),
         eventEnd: Yup.date(),
@@ -70,7 +67,63 @@ const HackathonCreate = () => {
             .positive("Number of users should be a positive value")
             .min(10, "Needs to be at least 2 digits.")
             .max(999999, "Should not exceed 6 digits")
-            .truncate()
+            .truncate(),
+        website: Yup.string().min(3, "Too Short!").max(200, "Too Long!"),
+        event_logo: Yup.mixed()
+            .test(
+                "fileSize",
+                "File size is too large, maximum size is 10MB",
+                (value: any) => {
+                    if (value) {
+                        const maxSize = 10 * 1024 * 1024; // 10MB
+                        return value.size <= maxSize;
+                    }
+                    return true; // No file selected, so it passes validation
+                }
+            )
+            .test(
+                "fileType",
+                "Invalid file format, only image formats are supported",
+                (value: any) => {
+                    if (value) {
+                        const supportedFormats = [
+                            "image/jpeg",
+                            "image/png",
+                            "image/gif"
+                        ];
+                        return supportedFormats.includes(value.type);
+                    }
+                    return true; // No file selected, so it passes validation
+                }
+            ),
+
+        banner: Yup.mixed()
+            .test(
+                "fileSize",
+                "File size is too large, maximum size is 20MB",
+                (value: any) => {
+                    if (value) {
+                        const maxSize = 20 * 1024 * 1024; // 20MB
+                        return value.size <= maxSize;
+                    }
+                    return true; // No file selected, so it passes validation
+                }
+            )
+            .test(
+                "fileType",
+                "Invalid file format, only image formats are supported",
+                (value: any) => {
+                    if (value) {
+                        const supportedFormats = [
+                            "image/jpeg",
+                            "image/png",
+                            "image/gif"
+                        ];
+                        return supportedFormats.includes(value.type);
+                    }
+                    return true; // No file selected, so it passes validation
+                }
+            )
     });
 
     const handleSubmit = (values: any, { resetForm }: any) => {
@@ -110,7 +163,8 @@ const HackathonCreate = () => {
             `${values.applicationEnds}T00:00:00Z`,
             `${values.eventStart}T00:00:00Z`,
             `${values.eventEnd}T00:00:00Z`,
-            selectedFields
+            selectedFields,
+            values.event_logo
         );
         resetForm();
     };
@@ -151,12 +205,15 @@ const HackathonCreate = () => {
                             place: "",
                             districtId: "",
                             isOpenToAll: "",
-                            formFields: []
+                            formFields: [],
+                            event_logo: "",
+                            banner: "",
+                            website: ""
                         }}
                         validationSchema={hackathonSchema}
                         onSubmit={handleSubmit}
                     >
-                        {({ values, handleChange }) => (
+                        {({ values, handleChange, setFieldValue, errors }) => (
                             <Form id="hackathon">
                                 <Tabs
                                     selectedTabClassName={styles.selectedTab}
@@ -169,9 +226,9 @@ const HackathonCreate = () => {
                                         <Tab>Details</Tab>
                                         <span></span>
                                         <Tab>Application</Tab>
-                                        <Tab>Sponsors</Tab>
-                                        <Tab>Events</Tab>
-                                        <Tab>FAQs</Tab>
+                                        {/* <Tab>Sponsors</Tab> */}
+                                        {/* <Tab>Events</Tab> */}
+                                        {/* <Tab>FAQs</Tab> */}
                                     </TabList>
                                     <div className={styles.form}>
                                         <TabPanel className={styles.formGroup}>
@@ -253,6 +310,74 @@ const HackathonCreate = () => {
                                                 options={options1}
                                                 label={"Type of the hackathon"}
                                             />
+                                            <div className={styles.InputSet}>
+                                                <label
+                                                    className={styles.formLabel}
+                                                >
+                                                    Event Logo
+                                                </label>
+                                                <input
+                                                    type="file"
+                                                    className={
+                                                        styles.image_input
+                                                    }
+                                                    onChange={event => {
+                                                        if (
+                                                            event.target.files
+                                                        ) {
+                                                            setFieldValue(
+                                                                "event_logo",
+                                                                event.target
+                                                                    .files[0]
+                                                            );
+                                                        }
+                                                    }}
+                                                />
+                                                {errors.event_logo && (
+                                                    <div
+                                                        className={styles.error}
+                                                    >
+                                                        {errors.event_logo}
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <div className={styles.InputSet}>
+                                                <label
+                                                    className={styles.formLabel}
+                                                >
+                                                    Banner
+                                                </label>
+                                                <input
+                                                    type="file"
+                                                    className={
+                                                        styles.image_input
+                                                    }
+                                                    onChange={event => {
+                                                        if (
+                                                            event.target.files
+                                                        ) {
+                                                            setFieldValue(
+                                                                "banner",
+                                                                event.target
+                                                                    .files[0]
+                                                            );
+                                                        }
+                                                    }}
+                                                />
+                                                {errors.banner && (
+                                                    <div
+                                                        className={styles.error}
+                                                    >
+                                                        {errors.banner}
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <FormikTextInputWhite
+                                                label="Website"
+                                                name="website"
+                                                placeholder="link for the event website"
+                                                type="text"
+                                            />
                                         </TabPanel>
 
                                         <TabPanel className={styles.formGroup}>
@@ -276,13 +401,15 @@ const HackathonCreate = () => {
                                                     ([key, value]) => (
                                                         <label
                                                             key={key}
-                                                            className={`${styles.checkBoxContainer
-                                                                } ${values.formFields.includes(
+                                                            className={`${
+                                                                styles.checkBoxContainer
+                                                            } ${
+                                                                values.formFields.includes(
                                                                     key as never
                                                                 )
                                                                     ? styles.checked
                                                                     : ""
-                                                                }`}
+                                                            }`}
                                                         >
                                                             <Field
                                                                 type="checkbox"
