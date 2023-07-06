@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import styles from "./modal.module.css";
 import { RiCloseLine } from "react-icons/ri";
 

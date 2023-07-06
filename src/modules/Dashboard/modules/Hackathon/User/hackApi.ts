@@ -20,3 +20,21 @@ export const getHackathons = async (
         }
     }
 };
+
+export const getOwnHackathons = async (
+    setOwnData: React.Dispatch<SetStateAction<HackList[]>>
+) => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getOwnHackathons
+        );
+        const defaultForm: any = response?.data;
+        setOwnData(defaultForm.response);
+		console.log(defaultForm.response);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};

@@ -3,7 +3,7 @@ import Pagination from "../../../../components/MuComponents/Pagination/Paginatio
 import Table from "../../../../components/MuComponents/Table/Table";
 import THead from "../../../../components/MuComponents/Table/THead";
 import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
-import { getManageUsers } from "./apis";
+import { deleteManageUsers, getManageUsers } from "./apis";
 import { Blank } from "../../../../components/MuComponents/Table/Blank";
 import { roles } from "../../../../services/types";
 import { hasRole } from "../../../../services/common_functions";
@@ -12,6 +12,7 @@ import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./ManageUsers.module.css";
 import { dashboardRoutes } from "../../../../services/urls";
+import { useToast } from "@chakra-ui/react";
 
 function ManageRoles() {
     const [data, setData] = useState<any[]>([]);
@@ -71,9 +72,11 @@ function ManageRoles() {
         navigate(`/manage-users/edit/${id}`);
     };
 
+	const toast = useToast();
+
     const handleDelete = (id: string | number | boolean) => {
-        console.log(id);
-        navigate(`/manage-users/delete/${id}`);
+        deleteManageUsers(id, toast);
+        navigate("/manage-users");
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
@@ -130,8 +133,8 @@ function ManageRoles() {
                     id={["id"]}
                     onEditClick={handleEdit}
                     onDeleteClick={handleDelete}
-                    modalHeading="Delete"
-                    modalContent="Are you sure you want to delete this user ?"
+                    modalDeleteHeading="Delete"
+                    modalDeleteContent="Are you sure you want to delete this user ?"
                 >
                     <THead
                         columnOrder={columnOrder}

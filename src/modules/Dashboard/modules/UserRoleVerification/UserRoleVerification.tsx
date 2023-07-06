@@ -64,15 +64,15 @@ function UsersRoleVerification() {
         getUserRoleVerification(setData, 1, perPage, setTotalPages, search, "");
     };
 
-    const handleEdit = (id: string | number | boolean) => {
-        console.log(id);
-        navigate(`/user-role-verification/edit/${id}`);
-    };
+    // const handleEdit = (id: string | number | boolean) => {
+    //     console.log(id);
+    //     navigate(`/user-role-verification/edit/${id}`);
+    // };
 
-    const handleDelete = (id: string | number | boolean) => {
-        console.log(id);
-        navigate(`/user-role-verification/delete/${id}`);
-    };
+    // const handleDelete = (id: string | number | boolean) => {
+    //     console.log(id);
+    //     navigate(`/user-role-verification/delete/${id}`);
+    // };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
@@ -134,8 +134,8 @@ function UsersRoleVerification() {
                     columnOrder={columnOrder}
                     id={["id"]}
                     onVerifyClick={handleVerify}
-                    modalHeading="Verify"
-                    modalContent="Are you sure you want to verify this user ?"
+                    modalVerifyHeading="Verify"
+                    modalVerifyContent="Are you sure you want to verify this user ?"
                 >
                     <THead
                         columnOrder={columnOrder}
