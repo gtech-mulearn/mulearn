@@ -45,7 +45,11 @@ import TaskBulkImport from "./modules/Dashboard/modules/Tasks/TaskBulkImport";
 import ZonalDashboard from "./modules/Dashboard/modules/zonalDashboard/zonaldashboard";
 import DistrictDashboard from "./modules/Dashboard/modules/districtDashboard/districtdashboard";
 import Hackathon from "./modules/Dashboard/modules/Hackathon/User/Hackathon";
-import HackathonCreate from "./modules/Dashboard/modules/Hackathon/Admin/HackathonCreate";
+import HackathonCreate from "./modules/Dashboard/modules/Hackathon/Admin/pages/HackathonCreate";
+import KKEMLanding from "./modules/KKEM/modules/KKEMLanding";
+import KKEMAuth from "./modules/KKEM/modules/KKEMAuth";
+import RankCard from "./modules/Embeds/modules/RankCard/pages/RankCard";
+import HackathonEdit from "./modules/Dashboard/modules/Hackathon/Admin/pages/HackathonEdit";
 
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
@@ -60,6 +64,18 @@ const router = createBrowserRouter([
     {
         path: "404",
         element: <NotFound />
+    },
+    {
+        path: "kkem",
+        element: <KKEMLanding />
+    },
+    {
+        path: "kkem/authorization/:token",
+        element: <KKEMAuth />
+    },
+    {
+        path: "embed/rankcard",
+        element: <RankCard />
     },
     {
         path: "/",
@@ -174,10 +190,21 @@ const router = createBrowserRouter([
                     },
                     { path: "url-shortener", element: <UrlShortener /> },
                     { path: "hackathon", element: <Hackathon /> },
-                    { path: "hackathon-management", element: <HackathonCreate /> }
+                    {
+                        path: "hackathon/create",
+                        element: <HackathonCreate />
+                    },
+                    {
+                        path: "hackathon/edit/:id",
+                        element: <HackathonEdit />
+                    }
                 ]
             }
         ]
+    },
+    {
+        path: "profile/:id",
+        element: <Profile />
     }
 ]);
 

@@ -9,6 +9,7 @@
     outline: none;
     -ms-overflow-style: none;
     /* IE and Edge */
+    scroll-behavior: smooth;
     scrollbar-width: none;
 }
 

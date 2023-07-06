@@ -1,0 +1,82 @@
+html {
+    scroll-behavior: smooth;
+}
+.main {
+    max-width: 200rem;
+    margin: 0 auto;
+}
+
+.muidSection {
+    background-color: #2e85fe;
+    padding: 0 5rem;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+.muidSection::before {
+    display: block;
+    content: "";
+    width: 25rem;
+    height: 32rem;
+    background: url("../assets/µ_pl.svg") no-repeat;
+    background-size: 100% 100%;
+    opacity: 0.4;
+    margin-top: -5rem;
+    margin-left: 1rem;
+}
+.wave {
+    display: block;
+    content: "";
+    width: 130vw;
+    height: 10rem;
+    background: url("../assets/wave.png") repeat-x;
+    background-color: #fff;
+    background-size: 100% 100%;
+    transform: translateX(-30vw);
+}
+
+.muidSectionText {
+    color: #fff;
+    font-size: 1.5rem;
+    max-width: 40rem;
+    font-weight: 300;
+    margin-top: 2rem;
+}
+.muidSectionText::after {
+    position: absolute;
+    content: "";
+    width: 100vw;
+    height: 35rem;
+    background-color: #2e85fe;
+    top: 0;
+    right: 0;
+    z-index: -2;
+}
+.muidLink {
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-decoration-line: underline;
+    line-height: 5rem;
+}
+
+@media screen and (max-width: 1200px) {
+    .muidSection {
+        flex-direction: column;
+    }
+    .muidSection::before {
+        display: none;
+    }
+    .muidSectionText::after {
+        display: none;
+    }
+    .muidSectionText,
+    .muidLink {
+        font-size: 1.2rem;
+    }
+}
+@media screen and (max-width: 800px) {
+    .muidSection {
+        padding: 0 3rem;
+    }
+}

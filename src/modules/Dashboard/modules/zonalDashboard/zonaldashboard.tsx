@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Table from "../../../../components/MuComponents/Table/Table";
 import THead from "../../../../components/MuComponents/Table/THead";
@@ -29,7 +29,7 @@ function ZonalDashboard() {
     const [activeTab, setActiveTab] = useState("Student management");
     const [sort, setSort] = useState("");
     const [popupStatus, setPopupStatus] = useState(false);
-
+    const firstFetch = useRef(true)
     const [isCreate, setIsCreate] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
 
@@ -38,18 +38,22 @@ function ZonalDashboard() {
     const toast = useToast();
 
     useEffect(() => {
-        if (!hasRole([roles.ADMIN, roles.FELLOW, roles.ZONAL_CAMPUS_LEAD]))
-            navigate("/404");
+        if (firstFetch.current) {
 
-        getzonaldashboard(
-            activeTab,
-            setData,
-            1,
-            perPage,
-            setTotalPages,
-            "",
-            ""
-        );
+            if (!hasRole([roles.ADMIN, roles.FELLOW, roles.ZONAL_CAMPUS_LEAD]))
+                navigate("/404");
+
+            getzonaldashboard(
+                activeTab,
+                setData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                ""
+            );
+        }
+        firstFetch.current = false;
     }, []);
 
     const handleNextClick = () => {
@@ -162,8 +166,8 @@ function ZonalDashboard() {
                 // }
                 CSV={CSV(activeTab)}
 
-                // CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}
-                // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
+            // CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}
+            // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
             />
             {data && (
                 <Table

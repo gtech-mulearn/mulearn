@@ -50,9 +50,10 @@ export const login = (
     password: string,
     toast: (options?: UseToastOptions | undefined) => ToastId,
     navigate: NavigateFunction,
-    setIsLoading: (loading: boolean) => void
+    setIsLoading: (loading: boolean) => void,
+    redirectPath: string
 ) => {
-    setIsLoading(true)
+    setIsLoading(true);
     publicGateway
         .post(authRoutes.login, { emailOrMuid, password })
         .then(response => {
@@ -83,20 +84,24 @@ export const login = (
                             "userInfo",
                             JSON.stringify(response.data.response)
                         );
-                        if (response.data.response.existInGuild) {
+                        if (response.data.response.exist_in_guild) {
                             navigate("/profile");
                         } else {
-                            navigate("/connect-discord");
+                            if (redirectPath) {
+                                navigate(`/${redirectPath}`);
+                            } else {
+                                navigate("/connect-discord");
+                            }
                         }
                     })
                     .catch(error => {
                         console.log(error);
-                        setIsLoading(false)
+                        setIsLoading(false);
                     });
             }
         })
         .catch(error => {
-            setIsLoading(false)
+            setIsLoading(false);
             toast({
                 title: error.response.data.message.general[0],
                 status: "error",
@@ -149,7 +154,9 @@ export const resetPassword = (
     navigate: NavigateFunction
 ) => {
     privateGateway
-        .post(dashboardRoutes.resetPassword.replace("${token}", token), { password })
+        .post(dashboardRoutes.resetPassword.replace("${token}", token), {
+            password
+        })
         .then(response => {
             if (response.data.statusCode === 200) {
                 toast({
@@ -185,18 +192,19 @@ export const requestEmailOrMuidOtp = (
     setHasError: setHasError,
     setStatus: setStatus,
     setOtpLoading: (otpLoading: boolean) => void,
-    setOtpError: (otpError: boolean) => void,
+    setOtpError: (otpError: boolean) => void
 ) => {
-    setOtpLoading(true)
-    publicGateway.post(authRoutes.requestEmailOrMuidOtp, { emailOrMuid })
+    setOtpLoading(true);
+    publicGateway
+        .post(authRoutes.requestEmailOrMuidOtp, { emailOrMuid })
         .then(response => {
-            setOtpLoading(false)
+            setOtpLoading(false);
             setStatus(response.data.statusCode);
             if (response.data.hasError == false) {
-                setOtpError(false)
+                setOtpError(false);
                 setHasError(false);
                 toast({
-                    title: "OTP Sended",
+                    title: "OTP Sent",
                     description: "OTP has been sent to your email",
                     status: "success",
                     duration: 5000,
@@ -205,8 +213,8 @@ export const requestEmailOrMuidOtp = (
             }
         })
         .catch(error => {
-            setOtpLoading(false)
-            setOtpError(true)
+            setOtpLoading(false);
+            setOtpError(true);
             toast({
                 title: "Invalid Email or Muid",
                 description: "Kindly enter a valid email or Muid",
@@ -222,7 +230,8 @@ export const otpVerification = (
     otp: string,
     toast: (options?: UseToastOptions | undefined) => ToastId,
     navigate: NavigateFunction,
-    setOtpVerifyLoading: (otpverifyLoading: boolean) => void
+    setOtpVerifyLoading: (otpverifyLoading: boolean) => void,
+    redirectPath: string
 ) => {
     setOtpVerifyLoading(true);
     publicGateway
@@ -238,7 +247,7 @@ export const otpVerification = (
                 response.data.response.refreshToken
             );
             if (response.data.hasError == false) {
-                setOtpVerifyLoading(false)
+                setOtpVerifyLoading(false);
                 toast({
                     title: "OTP verified",
                     description: "You will be redirected to home page",
@@ -255,10 +264,14 @@ export const otpVerification = (
                         "userInfo",
                         JSON.stringify(response.data.response)
                     );
-                    if (response.data.response.existInGuild) {
+                    if (response.data.response.exist_in_guild) {
                         navigate("/profile");
                     } else {
-                        navigate("/connect-discord");
+                        if (redirectPath) {
+                            navigate(`/${redirectPath}`);
+                        } else {
+                            navigate("/connect-discord");
+                        }
                     }
                 })
                 .catch(error => {
@@ -266,7 +279,7 @@ export const otpVerification = (
                 });
         })
         .catch(error => {
-            setOtpVerifyLoading(false)
+            setOtpVerifyLoading(false);
             toast({
                 title: "Invalid OTP",
                 description: "Kindly enter a valid OTP",

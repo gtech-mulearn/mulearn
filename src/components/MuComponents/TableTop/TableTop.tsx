@@ -5,6 +5,7 @@ import styles from "./TableTop.module.css";
 import { MuButton } from "../MuButtons/MuButton";
 import { HiDownload } from "react-icons/hi";
 import { getCSV } from "./apis";
+import { useToast } from "@chakra-ui/react";
 
 type Props = {
     onSearchText?: (data: string) => void;
@@ -13,8 +14,9 @@ type Props = {
 };
 
 const TableTop = (props: Props) => {
-    const [csv, setCsv] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [hasError, setHasError] = useState(false);
+    const toast = useToast();
 
     const handleData = (search: string) => {
         props.onSearchText && props.onSearchText(search);
@@ -25,41 +27,18 @@ const TableTop = (props: Props) => {
         props.onPerPageNumber && props.onPerPageNumber(value);
     };
 
-    const handleClick = async() => {
+    const handleClick = async () => {
         try {
-            await getCSV(props.CSV, setCsv,setIsLoading);
+            await getCSV(props.CSV, setIsLoading, setHasError, toast);
             // Convert data to CSV format
             // await getCSV(props.CSV, setCsv);
-            const csvContent = convertToCSV(csv);
-            // Create a temporary HTML element to trigger the download
-            const element = document.createElement('a');
-            const file = new Blob([csvContent], { type: 'data:text/csv;charset=utf-8' });
-            element.href = URL.createObjectURL(file);
-            element.download = 'Table_data.csv';
-            document.body.appendChild(element);
-            element.click();
-            document.body.removeChild(element);
+            
         } catch (error) {
-            console.error('Error fetching data:', error);
+            console.error("Error fetching data:", error);
         }
     };
 
-    const convertToCSV = (data: any) => {
-        // Convert your data to CSV format here
-        // You can use libraries like 'csv-writer' or 'papaparse' for complex data structures
-        // For simplicity, let's assume you have a simple array of objects
 
-        const headers = Object.keys(data[0]);
-        const csvRows = [];
-        csvRows.push(headers.join(','));
-
-        for (const row of data) {
-            const values = headers.map((header) => row[header]);
-            csvRows.push(values.join(','));
-        }
-
-        return csvRows.join('');
-    };
     return (
         <div className={styles.container}>
             <div className={styles.body}>
@@ -72,15 +51,18 @@ const TableTop = (props: Props) => {
                         selectedOption={itemsPerPage}
                         onOptionChange={handleOptionChange}
                     />
-                    <MuButton
-                        text={'CSV'}
-                        onClick={(e) => {
-                            handleClick()
-                        }}
-                        isLoading={isLoading}
-                        icon={<HiDownload />}
-                        className={styles.csv}
-                    />
+                    {props.CSV && (
+                        <MuButton
+                            text={"CSV"}
+                            onClick={e => {
+                                handleClick();
+                            }}
+                            disabled={isLoading}
+                            isLoading={isLoading}
+                            icon={<HiDownload />}
+                            className={styles.csv}
+                        />
+                    )}
                 </div>
             </div>
         </div>

@@ -1,0 +1,308 @@
+:root {
+    --black: #293338;
+    --green: #6AE586;
+    --blue: #456FF6;
+    --grey: #7E7E7E;
+    --boxShadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.1);
+    --borderRadius: 10px;
+}
+
+.container {
+    width: 100%;
+    padding: 0 1.5rem;
+}
+
+.topText {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: .7rem 1rem;
+    border-radius: var(--borderRadius);
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--blue);
+    cursor: pointer;
+    margin: 1rem 0;
+}
+
+.dashLine {
+    position: relative;
+    text-align: left;
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--black);
+    z-index: 1;
+}
+
+.dashLine::before {
+    content: "Lets Get Started";
+    -webkit-text-fill-color: transparent;
+    display: block;
+    position: absolute;
+    bottom: .9rem;
+    border-radius: var(--borderRadius);
+    z-index: -1;
+    height: 0.5rem;
+    background-color: var(--green);
+}
+
+.hackNav {
+    position: relative;
+    color: var(--grey);
+    z-index: 1;
+}
+
+.starImg img:first-child {
+    position: absolute;
+    top: 1rem;
+    left: -1.8rem;
+    z-index: -1;
+}
+
+.starImg img:nth-child(2) {
+    position: absolute;
+    top: -2rem;
+    right: 1rem;
+    z-index: -1;
+}
+
+.hackNav ul {
+    box-shadow: var(--boxShadow);
+    border-radius: var(--borderRadius);
+    background-color: #fff;
+    display: flex;
+    padding: 1rem;
+    margin: 2.5rem 0;
+    height: 4rem;
+    font-size: 1.2rem;
+    list-style: none;
+    gap: 1rem;
+    overflow-x: scroll;
+}
+
+.hackNav ul li {
+    padding: 0 1rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.hackNav ul span {
+    background-color: var(--blue);
+    width: 3px;
+    height: 1.8rem;
+}
+
+.selectedTab {
+    color: var(--blue);
+}
+
+.form {
+    width: 100%;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: var(--borderRadius);
+    box-shadow: var(--boxShadow);
+    padding-bottom: 1px;
+}
+
+.formGroup {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.btns {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.btns button:nth-child(2) {
+    background-color: var(--blue);
+    color: #fff;
+}
+
+.error {
+    color: red;
+}
+
+@media (width < 1080px) {
+
+    .dashLine {
+        font-size: 2.5rem;
+    }
+
+    .dashLine::before {
+        bottom: .7rem;
+    }
+}
+
+@media (width<=768px) {
+    .dashLine {
+        font-size: 2.2rem;
+    }
+
+    .dashLine::before {
+        bottom: .5rem;
+    }
+
+    .formGroup .placeholder::placeholder {
+        font-size: .8rem;
+    }
+
+    .InputSet textarea {
+        min-width: 30vw;
+    }
+}
+
+@media (width < 300px) {
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .dashLine {
+        font-size: 1.5rem;
+    }
+
+    .dashLine::before {
+        bottom: .3rem;
+        height: 0.3rem;
+    }
+
+    .hackNav ul {
+        padding: .8rem;
+        margin: 2rem 0;
+        height: 3rem;
+        font-size: 1rem;
+    }
+
+    .starImg img {
+        width: 3rem;
+    }
+
+    .starImg img:first-child {
+        top: 1rem;
+        left: -1.3rem;
+    }
+
+    .starImg img:nth-child(2) {
+        top: -1.5rem;
+        right: 0rem;
+    }
+
+    .form {
+        padding: 1rem;
+    }
+
+    .formGroup .placeholder::placeholder {
+        font-size: .7rem;
+    }
+}
+
+.checkBoxContainer {
+    background-color: var(--Light);
+    color: var(--black);
+    padding: .5rem 1rem;
+    border-radius: var(--borderRadius);
+    cursor: pointer;
+    user-select: none;
+}
+
+.formCheckbox {
+    display: none;
+}
+
+.checked {
+    background-color: var(--blue);
+    color: var(--Light);
+    padding: .5rem 1rem;
+    border-radius: var(--borderRadius);
+}
+
+.checkboxOuter {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+input[type=file]::file-selector-button {
+	margin-right: 20px;
+	border: none;
+	background: var(--blue);
+	border-radius: var(--borderRadius);
+	color: #fff;
+	cursor: pointer;
+	transition: background .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+	background: #0d45a5;
+}
+
+.image_input {
+	border-radius: var(--borderRadius);
+	background-color: var(--White);
+	min-width: 22rem;
+	border: .1px solid #CFD3D4;
+}
+
+.InputSet {
+	display: flex;
+	flex-direction: column;
+	width: 22rem;
+	gap: .5rem;
+	text-align: left;
+}
+
+.formLabel {
+	text-align: left;
+	font-size: 1.1rem;
+	font-weight: 600;
+	margin: 0;
+	color: #000;
+}
+
+.InputSet input {
+	padding: .7rem 1rem;
+	border-radius: var(--borderRadius);
+	width: 100%;
+	background-color: var(--White);
+	min-width: 22rem;
+	border: .1px solid #CFD3D4;
+}
+
+@media (width<=1280px) {
+
+	.InputSet textarea {
+		min-width: 60vw;
+	}
+}
+
+@media (width<=1080px) {
+
+	.InputSet input{
+		min-width: 50vw;
+	}
+}
+
+@media (width<=820px) {
+
+	.InputSet input{
+		min-width: 80vw;
+	}
+}
+
+@media (width<=520px) {
+
+	.InputSet input{
+		min-width: 68vw;
+	}
+}

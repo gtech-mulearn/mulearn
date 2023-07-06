@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./CampusStudentList.module.css";
 import { getCampusDetails, getStudentDetails } from "../services/apis";
 import TableTop from "../../../../../components/MuComponents/TableTop/TableTop";
@@ -26,23 +26,23 @@ const CampusStudentList = (props: Props) => {
     const columnOrder = [
         { column: "fullname", Label: "Name", isSortable: false },
         // { column: "email", Label: "Email", isSortable: false },
-        // { column: "phone", Label: "Phone", isSortable: false },
         { column: "karma", Label: "Karma", isSortable: false },
         { column: "level", Label: "Level", isSortable: false },
-        { column: "muid", Label: "MuId", isSortable: false }
+        { column: "muid", Label: "MuId", isSortable: false },
+        { column: "created_at", Label: "Join Date", isSortable: false },
     ];
 
     const [campusData, setCampusData] = useState({
-        collegeName: "",
-        campusLead: "",
-        campusCode: "",
-        campusZone: "",
-        totalKarma: "",
-        totalMembers: "",
-        activeMembers: "",
+        college_name: "",
+        campus_lead: "",
+        campus_code: "",
+        campus_zone: "",
+        total_karma: "",
+        total_members: "",
+        active_members: "",
         rank: ""
     });
-
+    const firstFetch = useRef(true)
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
@@ -54,10 +54,12 @@ const CampusStudentList = (props: Props) => {
         getStudentDetails(setStudentData, prevPage, perPage);
     };
     useEffect(() => {
-        if (!hasRole([roles.CAMPUS_LEAD])) navigate("/404");
-
-        getStudentDetails(setStudentData, 1, perPage, setTotalPages);
-        getCampusDetails(setCampusData, setLoading);
+        if (firstFetch.current) {
+            if (!hasRole([roles.CAMPUS_LEAD])) navigate("/404");
+            getStudentDetails(setStudentData, 1, perPage, setTotalPages);
+            getCampusDetails(setCampusData, setLoading);
+        }
+        firstFetch.current = false
     }, []);
 
     const handleSearch = (search: string) => {
@@ -122,45 +124,45 @@ const CampusStudentList = (props: Props) => {
                         <div className={styles.content}>
                             <div className={styles.sec1}>
                                 <p className={styles.campus_code}>
-                                    Campus code : {campusData.campusCode}
+                                    Campus code : {campusData.campus_code}
                                 </p>
                                 <h1 className={styles.clg_name}>
-                                    {titleCase(
-                                        campusData.collegeName.toLowerCase()
+                                    {campusData&&campusData.college_name&&titleCase(
+                                        campusData?.college_name?.toLowerCase()
                                     )}
                                 </h1>
                                 <p className={styles.campus_lead}>
-                                    Campus Lead : {campusData.campusLead}
+                                    Campus Lead : {campusData.campus_lead}
                                 </p>
 
                                 <div className={styles.details_card}>
                                     <div className={styles.card}>
                                         <p>Karma points</p>
                                         <h1>
-                                            {parseInt(campusData.totalKarma) >
-                                            1000
+                                            {parseInt(campusData.total_karma) >
+                                                1000
                                                 ? (
-                                                      parseInt(
-                                                          campusData.totalKarma
-                                                      ) / 1000
-                                                  ).toPrecision(4) + "K"
-                                                : campusData.totalKarma}
+                                                    parseInt(
+                                                        campusData.total_karma
+                                                    ) / 1000
+                                                ).toPrecision(4) + "K"
+                                                : campusData.total_karma}
                                         </h1>
                                     </div>
                                     <div className={styles.card}>
                                         <p>Total Members</p>
-                                        <h1>{campusData.totalMembers}</h1>
+                                        <h1>{campusData.total_members}</h1>
                                     </div>
                                     <div className={styles.card}>
                                         <p>Active Members</p>
-                                        <h1>{campusData.activeMembers}</h1>
+                                        <h1>{campusData.active_members}</h1>
                                     </div>
                                 </div>
                             </div>
                             <div className={styles.sec2}>
                                 <div className={styles.clg_rank_div}>
                                     <p className={styles.clg_rank}>
-                                        {campusData.rank.toString().length === 1
+                                        {campusData?.rank?.toString().length === 1
                                             ? "0" + campusData.rank
                                             : campusData.rank}
                                     </p>
@@ -170,7 +172,7 @@ const CampusStudentList = (props: Props) => {
                                 </div>
                                 <div className={styles.level_div}>
                                     <h2>Campus Zone</h2>
-                                    <p>{campusData.campusZone}</p>
+                                    <p>{campusData.campus_zone}</p>
                                 </div>
                             </div>
                         </div>
@@ -178,6 +180,7 @@ const CampusStudentList = (props: Props) => {
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
+                        
                     />
                     <Table
                         rows={studentData}

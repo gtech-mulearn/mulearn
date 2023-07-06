@@ -1,10 +1,10 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Table from '../../../../components/MuComponents/Table/Table'
 import THead from '../../../../components/MuComponents/Table/THead'
 import TableTop from '../../../../components/MuComponents/TableTop/TableTop'
 import Pagination from '../../../../components/MuComponents/Pagination/Pagination'
-import { getOrganizations,deleteOrganization } from './apis'
+import { getOrganizations, deleteOrganization } from './apis'
 import { useToast } from '@chakra-ui/react'
 
 import { hasRole } from '../../../../services/common_functions'
@@ -16,72 +16,79 @@ import {
     // editableCompaniesColumnNames,
     // editableCommunityColumnNames
 } from "./THeaders"
-import TableTopTab from './TableTopTab' 
+import TableTopTab from './TableTopTab'
 import Textfield from '../../../../components/MuComponents/TextField/Textfield'
 import Dropdown from '../../../../components/MuComponents/Dropdown/Dropdown'
 
 import "./Organizations.scss"
 import PrimaryButton from '../../../../components/MuComponents/MuButtons/MuOutlinedButton'
 import { MuButton } from '../../../../components/MuComponents/MuButtons/MuButton'
-import { dashboardRoutes } from '../../../../services/urls'
+import { dashboardRoutes, organizationRoutes } from '../../../../services/urls'
 
 function Organizations() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(5);
-    const [columns,setColumns] = useState(columnsCollege)
-    const [activeTab,setActiveTab] = useState("Colleges")
+    const [columns, setColumns] = useState(columnsCollege)
+    const [activeTab, setActiveTab] = useState("Colleges")
     const [sort, setSort] = useState('');
-    const [popupStatus,setPopupStatus] = useState(false)
-    
-    const [isCreate,setIsCreate] = useState(false)
-    const [isEdit,setIsEdit] = useState(false)
+    const [popupStatus, setPopupStatus] = useState(false)
+    const [activeTabName,setActiveTabName] = useState("college")
 
+    const [isCreate, setIsCreate] = useState(false)
+    const [isEdit, setIsEdit] = useState(false)
+    const firstFetch = useRef(true)
     const navigate = useNavigate();
 
     const toast = useToast()
 
     useEffect(() => {
-        if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
+        if (firstFetch.current) {
+            if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
 
-        getOrganizations(activeTab,setData, 1, perPage, setTotalPages, "", "");
+            getOrganizations(activeTab, setData, 1, perPage, setTotalPages, "", "");
+        }
+        firstFetch.current = false;
     }, []);
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getOrganizations(activeTab,setData, nextPage, perPage);
+        getOrganizations(activeTab, setData, nextPage, perPage);
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getOrganizations(activeTab,setData, prevPage, perPage);
+        getOrganizations(activeTab, setData, prevPage, perPage);
     };
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getOrganizations(activeTab,setData, 1, perPage, setTotalPages, search, "");
+        getOrganizations(activeTab, setData, 1, perPage, setTotalPages, search, "");
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getOrganizations(activeTab,setData, 1, selectedValue, setTotalPages, "", "");
+        getOrganizations(activeTab, setData, 1, selectedValue, setTotalPages, "", "");
     };
 
-    const handleTabClick = (tab:string) => {
-        if(tab === "Colleges"){
+    const handleTabClick = (tab: string) => {
+        if (tab === "Colleges") {
+            setActiveTabName("college")
             setColumns(columnsCollege)
-            getOrganizations(tab,setData, 1, perPage, setTotalPages, "", "");
-        }else if (tab === "Companies") {
+            getOrganizations(tab, setData, 1, perPage, setTotalPages, "", "");
+        } else if (tab === "Companies") {
+            setActiveTabName("company")
             setColumns(columnsCompanies)
-            getOrganizations(tab,setData, 1, perPage, setTotalPages, "", "");
-        }else if(tab === "Communities") {
+            getOrganizations(tab, setData, 1, perPage, setTotalPages, "", "");
+        } else if (tab === "Communities") {
+            setActiveTabName("community")
             setColumns(columnsCommunities)
-            getOrganizations(tab,setData, 1, perPage, setTotalPages, "", "");
-        } else{
+            getOrganizations(tab, setData, 1, perPage, setTotalPages, "", "");
+        } else {
             alert("Error to load Table Headers")
         }
         setCurrentPage(1)
@@ -103,7 +110,7 @@ function Organizations() {
             );
         } else {
             setSort(column);
-            getOrganizations(activeTab,setData, 1, perPage, setTotalPages, "", column);
+            getOrganizations(activeTab, setData, 1, perPage, setTotalPages, "", column);
         }
 
         //console.log(`Icon clicked for column: ${column}`);
@@ -112,11 +119,13 @@ function Organizations() {
     const handleEdit = (id: string | number | boolean) => {
         //console.log(id);
         setIsEdit(true)
-		navigate("/organizations/edit",{state:
+        navigate("/organizations/edit", {
+            state:
             {
-                activeItem:activeTab,
-                rowId:id
-            }});
+                activeItem: activeTab,
+                rowId: id
+            }
+        });
     };
 
     const handleDelete = (id: string | number | boolean) => {
@@ -131,49 +140,49 @@ function Organizations() {
         // }
     }
 
-    const handleAddClickClose = ()=> {
+    const handleAddClickClose = () => {
         setPopupStatus(false)
     }
 
-  return (
-    <>
-            <TableTopTab 
-                active={activeTab} 
+    return (
+        <>
+            <TableTopTab
+                active={activeTab}
                 onTabClick={handleTabClick}
             />
             <TableTop
-				onSearchText={handleSearch}
-				onPerPageNumber={handlePerPageNumber} 
-                CSV={dashboardRoutes.getIgList}   
-				// CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}        
-				// CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"} 
-			/>
+                onSearchText={handleSearch}
+                onPerPageNumber={handlePerPageNumber}
+                CSV={`${organizationRoutes.getOrgCsv}/${activeTabName}`}
+            // CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}        
+            // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"} 
+            />
             {data && (
-                               <Table
-                               rows={data}
-                               page={currentPage}
-                               perPage={perPage}
-                               columnOrder={columns}
-                               id={['code']} 
-                               onEditClick={handleEdit}
-                               onDeleteClick={handleDelete}                
-                               >
-                               <THead
-                                   columnOrder={columns}
-                                   onIconClick={handleIconClick}
-                               />
-                               <Pagination
-                                   currentPage={currentPage}
-                                   totalPages={totalPages}
-                                   margin="10px 0"
-                                   handleNextClick={handleNextClick}
-                                   handlePreviousClick={handlePreviousClick}
-                               />
-                               {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                <Table
+                    rows={data}
+                    page={currentPage}
+                    perPage={perPage}
+                    columnOrder={columns}
+                    id={['code']}
+                    onEditClick={handleEdit}
+                    onDeleteClick={handleDelete}
+                >
+                    <THead
+                        columnOrder={columns}
+                        onIconClick={handleIconClick}
+                    />
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        margin="10px 0"
+                        handleNextClick={handleNextClick}
+                        handlePreviousClick={handlePreviousClick}
+                    />
+                    {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                 </Table>
             )}
         </>
-  )
+    )
 }
 
 export default Organizations

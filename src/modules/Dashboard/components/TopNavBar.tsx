@@ -19,12 +19,12 @@ const TopNavBar = () => {
             JSON.parse(localStorage.getItem("userInfo")!).firstName
         ) {
             setName(JSON.parse(localStorage.getItem("userInfo")!).firstName);
-            setProfilePic(JSON.parse(localStorage.getItem("userInfo")!).profilePic);
+            setProfilePic(JSON.parse(localStorage.getItem("userInfo")!).profile_pic);
         }
     });
     return (
         <>
-            <div className={styles.top_nav}>
+            <div id="top_nav" className={styles.top_nav}>
                 <div className={styles.nav}>
                     <div className={styles.nav_items}>
                         <div className={styles.greetings}>Hello, {name} 👋</div>

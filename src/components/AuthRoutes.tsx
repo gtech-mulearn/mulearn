@@ -13,7 +13,7 @@ const AuthRoutes: React.FC = () => {
         //console.log("userInfo", userInfo);
 
         if (userInfo !== null) {
-            setOnboardingStatus(JSON.parse(userInfo!).existInGuild);
+            setOnboardingStatus(JSON.parse(userInfo!).exist_in_guild);
         }
     }, [onboardingStatus]);
 

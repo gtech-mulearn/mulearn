@@ -57,42 +57,45 @@ export const createShortenUrl = (
             });
         })
         .catch(error => {
-            toast({
-                title: error.response.data.message.general[0],
-                description: "",
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+            if (error?.response?.data?.message?.general[0]) {
+                toast({
+                    title: error.response.data.message.general[0],
+                    description: "",
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true
+                });
+            }
+
             if (error.response.data.message.general.length > 0) {
                 setHasValidationError({
                     error: true,
                     message: error.response.data.message.general[0]
                 });
             }
-            // if (
-            //     error.response.data.message &&
-            //     Object.keys(error.response.data.message).length > 0
-            // ) {
-            //     Object.entries(error.response.data.message).forEach(
-            //         ([fieldName, errorMessage]) => {
-            //             if (Array.isArray(errorMessage)) {
-            //                 console.log(errorMessage);
+            if (
+                error.response.data.message &&
+                Object.keys(error.response.data.message).length > 0
+            ) {
+                Object.entries(error.response.data.message).forEach(
+                    ([fieldName, errorMessage]) => {
+                        if (Array.isArray(errorMessage)) {
+                            console.log(errorMessage);
 
-            //                 formik.setFieldError(
-            //                     fieldName,
-            //                     errorMessage?.join(", ") || ""
-            //                 );
-            //             }
-            //         }
-            //     );
-            // }
-            // setTimeout(() => {
-            //     setHasValidationError({
-            //         error: false,
-            //         message: ""
-            //     });
-            // }, 3000);
+                            formik.setFieldError(
+                                fieldName,
+                                errorMessage?.join(", ") || ""
+                            );
+                        }
+                    }
+                );
+            }
+            setTimeout(() => {
+                setHasValidationError({
+                    error: false,
+                    message: ""
+                });
+            }, 3000);
         });
 };
 

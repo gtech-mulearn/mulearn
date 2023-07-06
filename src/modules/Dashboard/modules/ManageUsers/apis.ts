@@ -84,6 +84,11 @@ export const editManageUsers = async (
     mobile: string,
     discord_id: string,
     mu_id: string,
+
+    college: string,
+    company: string,
+    department: string,
+    graduation_year: string,
     toast: any
 ) => {
     try {
@@ -95,7 +100,11 @@ export const editManageUsers = async (
                 email: email,
                 mobile: mobile,
                 discord_id: discord_id,
-                mu_id: mu_id
+                mu_id: mu_id,
+                college: college,
+                company: company,
+                department: department,
+                graduation_year: graduation_year
             }
         );
         //console.log(first_name, last_name, email);
@@ -123,6 +132,10 @@ interface IData {
     mobile: string;
     discord_id: string;
     mu_id: string;
+    college: string;
+    company: string;
+    department: string;
+    graduation_year: string;
 }
 
 export const getManageUsersDetails = async (
@@ -130,7 +143,7 @@ export const getManageUsersDetails = async (
     setData: Dispatch<SetStateAction<IData>>
 ) => {
     try {
-        const response = await privateGateway.patch(
+        const response = await privateGateway.get(
             dashboardRoutes.getUsersData + id + "/"
         );
         const message: any = response?.data;
@@ -146,7 +159,7 @@ export const getManageUsersDetails = async (
 };
 
 export const deleteManageUsers = async (
-    id: string | undefined,
+    id: string | number | boolean,
     toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {

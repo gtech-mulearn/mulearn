@@ -214,8 +214,8 @@ const Onboarding = (props: Props) => {
         //console.log(values.community);
 
         const userData = {
-            firstName: values.firstName, //required
-            lastName: values.lastName === "" ? null : values.lastName,
+            first_name: values.firstName, //required
+            last_name: values.lastName === "" ? null : values.lastName,
             email: values.email, //required
             mobile: values.phone, //required
             gender: values.gender === "" ? null : values.gender,
@@ -226,8 +226,8 @@ const Onboarding = (props: Props) => {
                     ? null
                     : values.community, //required except for individual
             dept: values.dept === "" ? null : values.dept, //required for student and enabler
-            yearOfGraduation: values.yog === "" ? null : values.yog, //required for student
-            areaOfInterests: values.areaOfInterest, //required,
+            year_of_graduation: values.yog === "" ? null : values.yog, //required for student
+            area_of_interests: values.areaOfInterest, //required,
             password: values.password //required
         };
 
