@@ -106,6 +106,7 @@ export const editManageUsers = async (
             }
         );
         console.log(first_name, last_name, email);
+        console.log("tested",first_name,college,company)
         const message: any = response?.data;
         console.log(message);
         toast({
@@ -147,11 +148,8 @@ export const getManageUsersDetails = async (
         const message: any = response?.data;
         console.log(message);
         const datasuser = message.response;
-        console.log(message.response);
-        for (let i = 0; i < datasuser.length; i++) {
-            console.log(datasuser[i].first_name);
-
-        }
+     
+    
 
         setData(datasuser[0]);
     } catch (err: unknown) {
@@ -163,7 +161,7 @@ export const getManageUsersDetails = async (
 };
 
 export const deleteManageUsers = async (
-    id: string | undefined,
+    id: string | number | boolean,
     toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {

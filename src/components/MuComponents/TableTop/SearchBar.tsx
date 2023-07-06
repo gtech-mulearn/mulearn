@@ -15,7 +15,7 @@ export const SearchBar = (props: Props) => {
 
     const handleSubmit = (e: { preventDefault: () => void }) => {
         e.preventDefault();
-        props.onSearch(search);
+        props.onSearch(search.trim());
     };
 
     return (

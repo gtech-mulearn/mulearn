@@ -1,126 +1,149 @@
 .darkBG {
-	width: 100vw;
-	height: 100vh;
-	z-index: 0;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	position: absolute;
-	backdrop-filter: blur(2px);
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    backdrop-filter: blur(2px);
 }
 
 .centered {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .modal {
-	width: 250px;
-	height: 170px;
-	background: white;
-	color: white;
-	z-index: 10;
-	border-radius: 16px;
-	box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.253);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 300px;
+    height: fit-content;
+    background: white;
+    color: white;
+    z-index: 10;
+    border-radius: 16px;
+    padding: 30px 15px 15px;
+
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.253);
 }
 
 .modalHeader {
-	height: 50px;
-	background: white;
-	overflow: hidden;
-	border-top-left-radius: 16px;
-	border-top-right-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: fit-content;
+    background: white;
+    overflow: hidden;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
 }
-
+.checkbtn {
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+    align-items: center;
+    border-radius: 28px;
+    border: 8px solid #e8fcef;
+    background: var(--success-100, #d1fadf);
+}
 .heading {
-	margin: 0;
-	padding: 10px;
-	color: var(--blue);
-	font-weight: 500;
-	font-size: 18px;
-	text-align: center;
+    margin: 0;
+    padding: 10px 0px 0px;
+    color: black;
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
 }
 
 .modalContent {
-	padding: 10px;
-	font-size: 14px;
-	color: var(--blue);
-	text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: black;
+    text-align: center;
 }
 
 .modalActions {
-	position: absolute;
-	bottom: 2px;
-	margin-bottom: 10px;
-	width: 100%;
+    margin-bottom: 10px;
+    width: 100%;
 }
 
 .actionsContainer {
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
+    display: flex;
+	flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .closeBtn {
-	cursor: pointer;
-	font-weight: 500;
-	padding: 4px 8px;
-	border-radius: 8px;
-	border: none;
-	font-size: 18px;
-	color: var(--blue);
-	background: white;
-	transition: all 0.25s ease;
-	box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.06);
-	position: absolute;
-	right: 0;
-	top: 0;
-	align-self: flex-end;
-	margin-top: -7px;
-	margin-right: -7px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 8px;
+    border: none;
+    font-size: 18px;
+    color: var(--blue);
+    background: white;
+    transition: all 0.25s ease;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.06);
+    position: absolute;
+    right: 0;
+    top: 0;
+    align-self: flex-end;
+    margin-top: -7px;
+    margin-right: -7px;
 }
 
 .closeBtn:hover {
-	box-shadow: 0 5px 20px 0 rgba(51, 55, 56, 0.04);
-	transform: translate(-4px, 4px);
+    box-shadow: 0 5px 20px 0 rgba(51, 55, 56, 0.04);
+    transform: translate(-4px, 4px);
 }
 
 .deleteBtn {
-	margin-top: 10px;
-	cursor: pointer;
-	font-weight: 500;
-	padding: 11px 28px;
-	border-radius: 12px;
-	font-size: 0.8rem;
-	border: none;
-	color: #fff;
-	background: var(--blue);
-	transition: all 0.25s ease;
+	width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 11px 28px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    border: none;
+    color: #fff;
+    background: var(--blue);
+    transition: all 0.25s ease;
 }
 
 .deleteBtn:hover {
-	box-shadow: 0 10px 20px -10px rgba(62, 165, 255, 0.6);
-	transform: translateY(-5px);
-	background: var(--blue);
+    box-shadow: 0 10px 20px -10px rgba(62, 165, 255, 0.6);
+    transform: translateY(-5px);
+    background: var(--blue);
 }
 
 .cancelBtn {
-	margin-top: 10px;
-	cursor: pointer;
-	font-weight: 500;
-	padding: 11px 28px;
-	border-radius: 12px;
-	font-size: 0.8rem;
-	border: none;
-	color: #2c3e50;
-	background: #fcfcfc;
-	transition: all 0.25s ease;
+	width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 11px 28px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    border: none;
+    color: var(--blue);
+    background: #fcfcfc;
+    transition: all 0.25s ease;
+	background-color: #E4E7EC;
+
 }
 
 .cancelBtn:hover {
-	box-shadow: none;
-	transform: none;
-	background: whitesmoke;
+    box-shadow: none;
+    transform: none;
+	 box-shadow: 0 5px 15px -10px rgba(208, 92, 92, 0.6);
+    transform: translateY(-3px);
+    /* background: whitesmoke; */
 }

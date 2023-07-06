@@ -38,8 +38,10 @@ type TableProps = {
     onEditClick?: (column: string | number | boolean) => void;
     onDeleteClick?: (column: string | number | boolean) => void;
     onVerifyClick?: (column: string | number | boolean) => void;
-	modalHeading?: string;
-	modalContent?: string;
+	modalVerifyHeading?: string;
+	modalVerifyContent?: string;
+	modalDeleteHeading?: string;
+	modalDeleteContent?: string;
 };
 
 {
@@ -138,22 +140,28 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                     <Modal
 														setIsOpen={setIsOpen}
 														id={rowData[column]}
-														heading={props.modalHeading}
-														content={props.modalContent} 
+														heading={props.modalVerifyHeading}
+														content={props.modalVerifyContent} 
 														click={props.onVerifyClick} 
 													/>
                                                 )}
                                                 {props.onDeleteClick && (
                                                     <button
                                                         onClick={() =>
-                                                            props.onDeleteClick &&
-                                                            props.onDeleteClick(
-                                                                rowData[column]
-                                                            )
+															setIsOpen(true)
                                                         }
                                                     >
                                                         <MdDelete />
                                                     </button>
+                                                )}
+												{isOpen && (
+                                                    <Modal
+														setIsOpen={setIsOpen}
+														id={rowData[column]}
+														heading={props.modalDeleteHeading}
+														content={props.modalDeleteContent} 
+														click={props.onDeleteClick} 
+													/>
                                                 )}
                                             </div>
                                         </td>
@@ -169,3 +177,5 @@ const Table: FC<TableProps> = (props: TableProps) => {
 };
 
 export default Table;
+
+
