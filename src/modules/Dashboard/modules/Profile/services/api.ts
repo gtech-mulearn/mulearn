@@ -1,5 +1,6 @@
 import React from "react";
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
+import axios from "axios";
 import { NavigateFunction } from "react-router-dom";
 import {
     privateGateway,
@@ -69,11 +70,11 @@ export const getPublicUserLog = (setUserLog: userLog, muid: string) => {
         });
 };
 export const putIsPublic = (
-    isPublic: boolean,
+    is_public: boolean,
     toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     privateGateway
-        .put(dashboardRoutes.putIsPublic, { isPublic })
+        .put(dashboardRoutes.putIsPublic, { is_public })
         .then(response => {
             console.log(response.data.message.general[0]);
 
@@ -115,4 +116,31 @@ export const getPublicUserLevels = (
         .catch(error => {
             console.log(error);
         });
+};
+
+export const fetchQRCode = async (muid: any, setBlob: any) => {
+    try {
+        const response = await axios
+            .get(
+                `https://quickchart.io/qr?text=${
+                    (import.meta.env.VITE_FRONTEND_URL as string) +
+                    /profile/ +
+                    (muid)
+                }&centerImageUrl=https://avatars.githubusercontent.com/u/98015594?s=200&v=4`,
+                {
+                    responseType: "arraybuffer"
+                }
+            )
+            .then(response => {
+                // console.log(response.data);
+                const blob = new Blob([response.data], {
+                    type: "image/png"
+                });
+                setBlob(URL.createObjectURL(blob));
+                // const imageUrl = URL.createObjectURL(blob);
+                console.log(blob);
+            });
+    } catch (error) {
+        console.error(error);
+    }
 };
