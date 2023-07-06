@@ -10,7 +10,7 @@ type Props = {};
 
 const HackathonCreateTabs = (props: Props) => {
     const handleSubmit = (values: any) => {
-        console.log(values);
+        //console.log(values);
     };
     return (
         <div className={styles.hackNav}>

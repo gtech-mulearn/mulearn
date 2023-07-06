@@ -58,7 +58,7 @@ function InterestGroup() {
     };
 
     const handleDelete = (id: string | number | boolean) => {
-        console.log(id);
+        //console.log(id);
         navigate(`/interest-groups/delete/${id}`);
     };
 
@@ -88,7 +88,7 @@ function InterestGroup() {
             getInterestGroups(setData, 1, perPage, setTotalPages, "", column);
         }
 
-        console.log(`Icon clicked for column: ${column}`);
+        //console.log(`Icon clicked for column: ${column}`);
     };
 
     return (

@@ -110,7 +110,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
         };
 
         SelectBody(orgType);
-        console.log("Success Status-->", isSuccess);
+        //console.log("Success Status-->", isSuccess);
         navigate("/district-dashboard");
     };
 

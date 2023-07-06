@@ -57,9 +57,9 @@ export const login = (
         .post(authRoutes.login, { emailOrMuid, password })
         .then(response => {
             if (response.data.hasError == false) {
-                console.log("=======> Login Res: ", response.data.response);
+                //console.log("=======> Login Res: ", response.data.response);
 
-                console.log(response.data.response.accessToken);
+                //console.log(response.data.response.accessToken);
                 localStorage.setItem(
                     "accessToken",
                     response.data.response.accessToken
@@ -78,7 +78,7 @@ export const login = (
                 privateGateway
                     .get(dashboardRoutes.getInfo)
                     .then(response => {
-                        console.log(response);
+                        //console.log(response);
                         localStorage.setItem(
                             "userInfo",
                             JSON.stringify(response.data.response)
@@ -115,7 +115,7 @@ export const getMuid = (
     privateGateway
         .post(dashboardRoutes.resetPasswordVerify.replace("${token}", token))
         .then(response => {
-            console.log(response.data);
+            //console.log(response.data);
             toast({
                 title: "User Verified",
                 description:
@@ -228,7 +228,7 @@ export const otpVerification = (
     publicGateway
         .post(authRoutes.otpVerification, { emailOrMuid, otp })
         .then(response => {
-            console.log(response.data);
+            //console.log(response.data);
             localStorage.setItem(
                 "accessToken",
                 response.data.response.accessToken
@@ -250,7 +250,7 @@ export const otpVerification = (
             privateGateway
                 .get(dashboardRoutes.getInfo)
                 .then(response => {
-                    console.log(response);
+                    //console.log(response);
                     localStorage.setItem(
                         "userInfo",
                         JSON.stringify(response.data.response)

@@ -26,15 +26,15 @@ export const getManageUsers = async (
         const manageusers: any = response?.data;
 
         const datasuser = manageusers.response.data;
-        console.log(datasuser);
+        //console.log(datasuser);
         for (let i = 0; i < datasuser.length; i++) {
             if (datasuser[i].college != null) {
-                console.log(datasuser[i].college);
+                //console.log(datasuser[i].college);
             } else if (datasuser[i].company != null) {
-                console.log(datasuser[i].company);
+                //console.log(datasuser[i].company);
                 datasuser[i].college = datasuser[i].company;
             } else {
-                console.log(null);
+                //console.log(null);
             }
         }
         setData(datasuser);
@@ -67,7 +67,7 @@ export const createManageUsers = async (
         );
 
         const message: any = response?.data;
-        console.log(message);
+        //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -98,9 +98,9 @@ export const editManageUsers = async (
                 mu_id: mu_id
             }
         );
-        console.log(first_name, last_name, email);
+        //console.log(first_name, last_name, email);
         const message: any = response?.data;
-        console.log(message);
+        //console.log(message);
         toast({
             title: "User created",
             status: "success",
@@ -134,8 +134,8 @@ export const getManageUsersDetails = async (
             dashboardRoutes.getUsersData + id + "/"
         );
         const message: any = response?.data;
-        console.log(message);
-        console.log(message.response.users);
+        //console.log(message);
+        //console.log(message.response.users);
         setData(message.response.users);
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -160,7 +160,7 @@ export const deleteManageUsers = async (
             isClosable: true
         });
         const message: any = response?.data;
-        console.log(message);
+        //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
