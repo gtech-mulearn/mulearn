@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./TableTop.module.css";
-import { HiArrowCircleRight } from "react-icons/hi";
+import { HiArrowCircleRight, HiOutlineX } from "react-icons/hi";
 
 type Props = {
     onSearch: (data: string) => void;
@@ -18,6 +18,10 @@ export const SearchBar = (props: Props) => {
         props.onSearch(search.trim());
     };
 
+    const clearInput = () => {
+        setSearch("");
+    };
+
     return (
         <>
             <form className={styles.form_container} onSubmit={handleSubmit}>
@@ -28,10 +32,18 @@ export const SearchBar = (props: Props) => {
                     onChange={onChangeSearch}
                     value={search}
                 />
-                <HiArrowCircleRight
-                    className={styles.icon}
-                    onClick={handleSubmit}
-                />
+                <div className={styles.icon}>
+                    {search && (
+                        <HiOutlineX
+                            className={styles.clearIcon}
+                            onClick={clearInput}
+                        />
+                    )}
+                    <HiArrowCircleRight
+                        className={styles.searchIcon}
+                        onClick={handleSubmit}
+                    />
+                </div>
             </form>
         </>
     );

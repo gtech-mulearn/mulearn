@@ -79,7 +79,7 @@
 	.form_container{
 		display: inline;
 		align-items: center;
-		width: 200%;
+		width: 45vw !important;
 	}
     .showSelect {
         position: absolute;
@@ -91,11 +91,23 @@
 .form_container {
 	display: flex;
 	align-items: center;
+	width: 35vw;
 }
 
 .icon {
-	font-size: 2rem;
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+}
+
+.clearIcon {
+	font-size: 1.5rem;
 	cursor: pointer;
-	position: relative;
-	left: -30px;
+	margin: 0;
+}
+
+.searchIcon {
+	font-size: 1.7rem;
+	margin: 0;
+	cursor: pointer;
 }
