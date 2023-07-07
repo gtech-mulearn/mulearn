@@ -47,7 +47,7 @@ export const createShortenUrl = (
     privateGateway
         .post(dashboardRoutes.createShortenUrl, urlData)
         .then(response => {
-            console.log(response.data.response);
+            //console.log(response.data.response);
             toast({
                 title: "Shorten Url Created",
                 description: "its added to your list",
@@ -112,7 +112,7 @@ export const editShortenUrl = (
             urlEditedData
         )
         .then(response => {
-            console.log(response.data.response);
+            //console.log(response.data.response);
             toast({
                 title: "Shorten Url Edited",
                 description: "its added to your list",
@@ -167,7 +167,7 @@ export const deleteShortenUrl = (
     privateGateway
         .delete(dashboardRoutes.deleteShortenUrl.replace("${urlId}", id))
         .then(response => {
-            console.log(response.data.response);
+            //console.log(response.data.response);
             toast({
                 title: "Shorten Url deleted",
                 description: "its added to your list",

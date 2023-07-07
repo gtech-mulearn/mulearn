@@ -7,7 +7,7 @@ type Props = {};
 
 const TaskBulkImport = (props: Props) => {
 	const handleClick = () => {
-		console.log("worked")
+		//console.log("worked")
 	}
     return (
         <>

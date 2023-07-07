@@ -60,12 +60,12 @@ function ManageRoles() {
     };
 
     const handleEdit = (id: string | number | boolean) => {
-        console.log(id);
+        //console.log(id);
         navigate(`/manage-roles/edit/${id}`);
     };
 
     const handleDelete = (id: string | number | boolean) => {
-        console.log(id);
+        //console.log(id);
         navigate(`/manage-roles/delete/${id}`);
     };
 
@@ -95,7 +95,7 @@ function ManageRoles() {
             getManageRoles(setData, 1, perPage, setTotalPages, "", column);
         }
 
-        console.log(`Icon clicked for column: ${column}`);
+        //console.log(`Icon clicked for column: ${column}`);
     };
 
     return (

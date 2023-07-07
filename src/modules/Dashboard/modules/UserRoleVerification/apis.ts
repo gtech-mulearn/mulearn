@@ -24,22 +24,22 @@ export const getUserRoleVerification = async (
             }
         );
         const manageusers: any = response?.data;
-        console.log(dashboardRoutes.getUsersRoleVerificationData);
+        //console.log(dashboardRoutes.getUsersRoleVerificationData);
         // setData(manageusers.response.data);
         const datasuser = manageusers.response.data;
-        console.log(datasuser);
+        //console.log(datasuser);
         for (let i = 0; i < datasuser.length; i++) {
             if (datasuser[i].verified == false) {
-                console.log(datasuser[i].verified);
+                //console.log(datasuser[i].verified);
                 datasuser[i].verified = "Not Verified"
             } 
             else {
-                console.log(datasuser[i].verified);
+                //console.log(datasuser[i].verified);
                 datasuser[i].verified = "Verified";
             }
         }
         setData(datasuser);
-        console.log(manageusers.response.data);
+        //console.log(manageusers.response.data);
         setTotalPages(manageusers.response.pagination.totalPages);
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -61,7 +61,7 @@ export const editUserRoleVerification = async (
             }
         );
         const message: any = response?.data;
-        console.log(message);
+        //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -81,8 +81,8 @@ export const getUserRoleVerificationDetails = async (
             dashboardRoutes.getUsersData + "get/" + id + "/"
         );
         const message: any = response?.data;
-        console.log(message);
-        console.log(message.response.data);
+        //console.log(message);
+        //console.log(message.response.data);
         setData(message.response.data);
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -107,7 +107,7 @@ export const deleteUserRoleVerification = async (
             isClosable: true
         });
         const message: any = response?.data;
-        console.log(message);
+        //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

@@ -10,7 +10,7 @@ const AuthRoutes: React.FC = () => {
     useEffect(() => {
         setRefreshToken(localStorage.getItem("refreshToken") || "");
         let userInfo = localStorage.getItem("userInfo");
-        console.log("userInfo", userInfo);
+        //console.log("userInfo", userInfo);
 
         if (userInfo !== null) {
             setOnboardingStatus(JSON.parse(userInfo!).exist_in_guild);

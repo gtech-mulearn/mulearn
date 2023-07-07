@@ -211,7 +211,7 @@ const Onboarding = (props: Props) => {
         if (values.organization != "") {
             values.community.push(values.organization);
         }
-        console.log(values.community);
+        //console.log(values.community);
 
         const userData = {
             first_name: values.firstName, //required

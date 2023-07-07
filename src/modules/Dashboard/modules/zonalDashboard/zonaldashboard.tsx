@@ -135,6 +135,7 @@ function ZonalDashboard() {
             );
         }
 
+        //
         console.log(`Icon clicked for column: ${column}`);
     };
 
