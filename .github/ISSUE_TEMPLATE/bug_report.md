@@ -20,3 +20,7 @@ assignees: ''
 | Severity | Priority |
 |---|---|
 | | |
+## Additional Information
+- Browser: 
+- Version: 
+- Operating System:
