@@ -113,11 +113,11 @@ function Organizations() {
             getOrganizations(activeTab, setData, 1, perPage, setTotalPages, "", column);
         }
 
-        console.log(`Icon clicked for column: ${column}`);
+        //console.log(`Icon clicked for column: ${column}`);
     };
 
     const handleEdit = (id: string | number | boolean) => {
-        console.log(id);
+        //console.log(id);
         setIsEdit(true)
         navigate("/organizations/edit", {
             state:
@@ -129,7 +129,7 @@ function Organizations() {
     };
 
     const handleDelete = (id: string | number | boolean) => {
-        console.log("code:", id)
+        //console.log("code:",id)
         navigate(`delete/${id}`)
         // const confirmed = confirm("Are you sure you want to delete?");
         // if(confirmed){

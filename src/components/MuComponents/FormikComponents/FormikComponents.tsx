@@ -1,8 +1,7 @@
 import { useField } from "formik";
 import styles from "./form.module.css";
 import React from "react";
-import Select, { Props as SelectProps, StylesConfig } from "react-select";
-import OptionTypeBase from "react-select";
+import Select, { Props as SelectProps } from "react-select";
 
 export const FormikTextInput = ({ label, ...props }: any) => {
     // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
@@ -129,3 +128,30 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
 
 
 export default FormikReactSelect;
+
+interface ImageFormProps {
+    name: string;
+    label: string;
+}
+
+export const FormikImageComponent: React.FC<ImageFormProps> = ({
+    label,
+    ...props
+}: any) => {
+    const [field, meta] = useField(props);
+    return (
+        <div className={styles.InputSet}>
+            <label className={styles.formLabel}>{label}</label>
+            <input
+                className={styles.image_input}
+                type="file"
+                accept="image/*"
+                {...field}
+                {...props}
+            />
+            {meta.touched && meta.error ? (
+                <div className="error">{meta.error}</div>
+            ) : null}
+        </div>
+    );
+};

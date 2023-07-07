@@ -54,22 +54,13 @@
 }
 
 .rightDash .share_pop_up_container .share_pop_up {
-  margin: 40dvh auto auto;
+  margin: 15dvh auto auto;
   height: auto;
-  width: 530px;
+  width: 400px;
   background: white;
   border-radius: 10px;
   box-shadow: 1px 1px 20px 1px #8c8c8c47;
   position: relative;
-}
-
-.rightDash .share_pop_up_container .share_pop_up .close_btn {
-  position: absolute;
-  right: 10px;
-  top: 20px;
-  color: #999;
-  font-size: 20px;
-  cursor: pointer;
 }
 
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents {
@@ -77,48 +68,80 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-top: 10px solid;
+  gap: 16px;
+  /* border-top: 10px solid; */
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents h1 {
+  font-size: 18px;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents hr {
+  width: 100%;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents button {
+  width: 100%;
+  padding: 16px;
+  background: #F3F3F4;
+  border-radius: 10px;
 }
 
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .profile_state {
-  margin-top: 30px;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-}
-
-.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .profile_state .options {
-  display: flex;
-  margin-top: 10px;
+  justify-content: center;
   gap: 20px;
 }
 
-.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .profile_state .options p {
-  background: #5570f1;
-  color: white;
-  padding: 6px 20px;
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .profile_state .option {
+  display: flex;
+  /* margin-top: 10px; */
+  gap: 20px;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_profile_container {
+  width: 100%;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_profile_container .qr_code {
+  width: 160px;
+  margin: auto;
+  padding: 8px;
   border-radius: 10px;
-  cursor: pointer;
+  border: 1px solid #F3F3F4;
+  display: flex;
+  justify-content: center;
 }
 
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .link {
   width: 100%;
-  background: #5570f124;
-  padding: 20px;
-  border-radius: 50px;
-  margin-top: 30px;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-top: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .link p {
-  width: 100%;
+  overflow: scroll;
+  margin-right: 10px;
+  word-wrap: normal;
 }
 
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .link i {
   cursor: pointer;
+  padding: 10px;
+  margin-right: -10px;
+  color: black;
+  /* background: white; */
+  /* border-radius: 50%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_options {
@@ -277,6 +300,7 @@
 .rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span .private {
   background-color: #456FF6;
 }
+
 .rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span .public {
   background-color: #2dce89;
 }
@@ -284,8 +308,9 @@
 .rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span .gard_tooltip {
   position: absolute;
   font-size: 12px;
-  background: #808080ba;
-  backdrop-filter: blur(21px);
+  background: #80808063;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   width: 88px;
   padding: 0px 5px;
   border-radius: 2px;
@@ -303,8 +328,7 @@
   border-width: 6px;
   border-style: solid;
   border-color: transparent;
-  border-top-color: #808080ba;
-  /* backdrop-filter: blur(21px); */
+  border-top-color: #80808063;
 }
 
 .rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span i:hover~.gard_tooltip {
@@ -483,7 +507,7 @@
 
 .rightDash .profileDash .profile .interestGrp .igs_container .igs:nth-child(5) {
   background-color: rgb(255, 0, 0, .3);
-  color: #2DCE89;
+  color: rgb(255, 0, 0, .9);
 }
 
 .rightDash .profileDash .profile .interestGrp .igs_container .igs:nth-child(5) p {
@@ -755,7 +779,7 @@
 
 @media (max-width: 500px) {
   .rightDash .share_pop_up_container .share_pop_up {
-    width: 330px;
+    width: 90vw;
   }
 
   .rightDash .profileDash .profile .banner .member_since {
@@ -782,7 +806,7 @@
   }
 
   .rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span {
-    margin-left: 0rem;
+    margin-right: 1rem;
   }
 
   .rightDash .profileDash .profile .profileInfo .profilePic {
@@ -806,6 +830,10 @@
 @media (max-width: 380px) {
   .rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard img {
     width: 120px;
+  }
+
+  .rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span {
+    margin-right: 0rem;
   }
 
   .rightDash .profileDash .profile .profileInfo .profilePic .name {

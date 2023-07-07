@@ -35,7 +35,7 @@ export const dashboardRoutes = {
     getStudentDetails: "/api/v1/dashboard/campus/student-details/",
     getStudentsList: "/api/v1/dashboard/campus/student-details/csv/",
     getCampusDetails: "/api/v1/dashboard/campus/campus-details/",
-    
+
     getShortenUrl: "/api/v1/url-shortener/list/",
     createShortenUrl: "/api/v1/url-shortener/create/",
     editShortenUrl: "/api/v1/url-shortener/edit/${urlId}/",
@@ -45,13 +45,13 @@ export const dashboardRoutes = {
     getPublicUserProfile: "/api/v1/dashboard/profile/user-profile/${muid}/",
     editUserProfile: "/api/v1/dashboard/profile/edit-user-profile/",
     getUserLog: "/api/v1/dashboard/profile/user-log/",
-    getUserLevels:"/api/v1/dashboard/profile/get-user-levels/",
-    getPublicUserLevels:"/api/v1/dashboard/profile/get-user-levels/${muid}",
+    getUserLevels: "/api/v1/dashboard/profile/get-user-levels/",
+    getPublicUserLevels: "/api/v1/dashboard/profile/get-user-levels/${muid}",
     putIsPublic: "/api/v1/dashboard/profile/share-user-profile/",
     getPublicUserLog: "/api/v1/dashboard/profile/user-log/${muid}/",
     getUserSuggestion: "/api/v1/dashboard/profile/user-suggestion/",
     getStudentLeaderBoard: "api/v1/leaderboard/students/",
-    
+
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
     zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv/",
     zonalCampusDetails: "/api/v1/dashboard/zonal/campus-details/",
@@ -64,7 +64,8 @@ export const dashboardRoutes = {
 
     getHackathonFormData: "/api/v1/hackathon/list-default-form-fields/",
     createHackathon: "/api/v1/hackathon/create-hackathon/",
-    getHackathons: "/api/v1/hackathon/list-hackathons/"
+    getHackathons: "/api/v1/hackathon/list-hackathons/",
+    getOwnHackathons: "/api/v1/hackathon/list-orgniser-hackathons/"
 };
 
 export const organizationRoutes = {

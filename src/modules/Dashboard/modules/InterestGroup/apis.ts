@@ -41,7 +41,7 @@ export const createInterestGroups = async (
         });
         
         const message: any = response?.data;
-        console.log(message);
+        //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -59,7 +59,7 @@ export const editInterestGroups = async (name: string, id: string | undefined) =
             }
         );
         const message: any = response?.data;
-        console.log(message);
+        //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -77,8 +77,8 @@ export const getIGDetails = async (
             dashboardRoutes.getIgData + "get/" + id + "/",
         );
         const message: any = response?.data;
-        console.log(message);
-		console.log(message.response.interestGroup.name);
+        //console.log(message);
+		//console.log(message.response.interestGroup.name);
 		setInput(message.response.interestGroup.name);
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -103,7 +103,7 @@ export const deleteInterestGroups = async (
             isClosable: true
         });
         const message: any = response?.data;
-        console.log(message);
+        //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

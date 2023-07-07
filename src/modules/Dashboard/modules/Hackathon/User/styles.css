@@ -99,6 +99,7 @@
 	height: 28.39px;
 	min-width: 102.66px;
 	position: relative;
+
 }
 
 .box .text-wrapper-3 {
@@ -115,13 +116,12 @@
 	border-radius: 5.16px;
 	height: 17px;
 	width: 48px;
-	position: absolute;
-	left: 28px;
-	top: 16px;
+	position: relative;
+	top: 15px;
 	gap: 0.11rem;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: start;
 }
 
 .box .text-wrapper-4 {
@@ -207,3 +207,6 @@
 	white-space: nowrap;
 }
 
+.all {
+	margin-top: 3rem;
+}

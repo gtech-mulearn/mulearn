@@ -96,7 +96,11 @@ export const getCountry = async (setCountryData: any) => {
     }
 }
 
-export const getStates = async (country: string, setStatesData: any) => {
+export const getStates = async (
+    country: string, 
+    setStatesData: any,
+    toast: (options?: UseToastOptions | undefined) => ToastId
+    ) => {
     try {
         await privateGateway.get(`${organizationRoutes.getLocation}/${country}/states`)
             .then(response => {
@@ -110,11 +114,24 @@ export const getStates = async (country: string, setStatesData: any) => {
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
+            const errorMsg = 'Something went wrong!';
+            toast({
+                title: `Error`,
+                description: errorMsg,
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
         }
     }
 }
 
-export const getZones = async (country: string, state: string, setZonesData: any) => {
+export const getZones = async (
+    country: string, 
+    state: string, 
+    setZonesData: any,
+    toast: (options?: UseToastOptions | undefined) => ToastId
+    ) => {
     try {
         await privateGateway.get(`${organizationRoutes.getLocation}/${country}/${state}/zone`)
             .then(response => {
@@ -127,12 +144,26 @@ export const getZones = async (country: string, state: string, setZonesData: any
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            // console.log(error.response);
+            const errorMsg = 'Something went wrong!';
+            toast({
+                title: `Error`,
+                description: errorMsg,
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
         }
     }
 }
 
-export const getDistricts = async (country: string, state: string, zone: string, setDistrictsData: any) => {
+export const getDistricts = async (
+    country: string, 
+    state: string, 
+    zone: string, 
+    setDistrictsData: any,
+    toast: (options?: UseToastOptions | undefined) => ToastId
+    ) => {
     try {
         await privateGateway.get(`${organizationRoutes.getLocation}/${country}/${state}/${zone}/district`)
             .then(response => {
@@ -145,7 +176,14 @@ export const getDistricts = async (country: string, state: string, zone: string,
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            const errorMsg =  'Something went wrong!';
+            toast({
+                title: `Error`,
+                description: errorMsg,
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
         }
     }
 }
@@ -200,7 +238,7 @@ export const createOrganization = async (
             isClosable: true
         });
         const message: any = response?.data;
-        console.log("created a new " + orgType)
+        //console.log("created a new " + orgType)
         setIsSuccess(true)
         setIsLoading(false);
     } catch (error: any) {
@@ -276,7 +314,7 @@ export const updateOrganization = async (
             `${organizationRoutes.putUpdateOrganization}/${oldCode}`,
             addDataProps()
         );
-        console.log("status is ", response.status);
+        //console.log("status is ", response.status);
 
         if (response.status === 200) {
             toast({
@@ -322,7 +360,7 @@ export const deleteOrganization = async (
     try {
         const response = await privateGateway.delete(`${organizationRoutes.deleteOrgnaization}${code}`);
         const message: any = response?.data;
-        console.log(message);
+        //console.log(message);
         toast({
             title: "Organizations Deleted",
             status: "success",

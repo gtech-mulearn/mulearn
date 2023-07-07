@@ -3,7 +3,7 @@ import Pagination from "../../../../components/MuComponents/Pagination/Paginatio
 import Table from "../../../../components/MuComponents/Table/Table";
 import THead from "../../../../components/MuComponents/Table/THead";
 import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
-import { getManageUsers } from "./apis";
+import { deleteManageUsers, getManageUsers } from "./apis";
 import { Blank } from "../../../../components/MuComponents/Table/Blank";
 import { roles } from "../../../../services/types";
 import { hasRole } from "../../../../services/common_functions";
@@ -12,6 +12,7 @@ import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./ManageUsers.module.css";
 import { dashboardRoutes } from "../../../../services/urls";
+import { useToast } from "@chakra-ui/react";
 
 function ManageRoles() {
     const [data, setData] = useState<any[]>([]);
@@ -20,7 +21,7 @@ function ManageRoles() {
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
-    const firstFetch = useRef(true)
+    const firstFetch = useRef(true);
 
     const columnOrder = [
         { column: "first_name", Label: "First Name", isSortable: true },
@@ -28,7 +29,7 @@ function ManageRoles() {
         { column: "total_karma", Label: "Total Karma", isSortable: true },
         // { column: "mu_id", Label: "Mu ID", isSortable: false },
         { column: "email", Label: "Email", isSortable: true },
-        { column: "mobile", Label: "Nobile", isSortable: false },
+        { column: "mobile", Label: "Mobile", isSortable: false },
         { column: "dob", Label: "DOB", isSortable: false },
         { column: "gender", Label: "Gender", isSortable: false },
 
@@ -67,13 +68,17 @@ function ManageRoles() {
     };
 
     const handleEdit = (id: string | number | boolean) => {
-        console.log(id);
+        //console.log(id);
         navigate(`/manage-users/edit/${id}`);
     };
 
-    const handleDelete = (id: string | number | boolean) => {
-        console.log(id);
-        navigate(`/manage-users/delete/${id}`);
+    const toast = useToast();
+
+
+    const handleDelete = (id: string | number | undefined) => {
+        deleteManageUsers(id, toast);
+        getManageUsers(setData, 1, perPage, setTotalPages, "", "");
+        navigate("/manage-users");
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
@@ -102,7 +107,7 @@ function ManageRoles() {
             getManageUsers(setData, 1, perPage, setTotalPages, "", column);
         }
 
-        console.log(`Icon clicked for column: ${column}`);
+        //console.log(`Icon clicked for column: ${column}`);
     };
 
     return (
@@ -119,7 +124,7 @@ function ManageRoles() {
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
                 CSV={dashboardRoutes.getUsersList}
-            // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
+                // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
             />
             {data && (
                 <Table
@@ -130,6 +135,8 @@ function ManageRoles() {
                     id={["id"]}
                     onEditClick={handleEdit}
                     onDeleteClick={handleDelete}
+                    modalDeleteHeading="Delete"
+                    modalDeleteContent="Are you sure you want to delete this user ?"
                 >
                     <THead
                         columnOrder={columnOrder}

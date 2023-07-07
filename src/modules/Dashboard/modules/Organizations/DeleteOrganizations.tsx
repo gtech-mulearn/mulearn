@@ -12,7 +12,7 @@ function DeleteOrganizations() {
     const navigate = useNavigate()
 
     function handleSubmit () {
-        console.log("Delete")
+        //console.log("Delete")
         deleteOrganization(id,toast)
         navigate('/organizations')
     }

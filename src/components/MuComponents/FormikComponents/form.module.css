@@ -151,6 +151,7 @@
 .InputSet {
 	display: flex;
 	flex-direction: column;
+	width: 22rem;
 	gap: .5rem;
 	text-align: left;
 }
@@ -192,7 +193,6 @@
 	min-height: 10rem;
 	border: .1px solid #CFD3D4;
 }
-
 
 @media (width<=1280px) {
 
