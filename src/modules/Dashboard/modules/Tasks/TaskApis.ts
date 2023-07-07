@@ -44,7 +44,7 @@ export const getTaskDetails = async (
             dashboardRoutes.getTasksData + "get/" + id + "/"
         );
         const message: any = response?.data;
-        console.log(message);
+        //console.log(message);
         setData(message.response.Task);
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -76,7 +76,7 @@ export const editTask = async (
             }
         );
         const message: any = response?.data;
-        console.log(message);
+        //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -116,7 +116,7 @@ export const createTask = async (
             }
         );
         const message: any = response?.data;
-        console.log(message);
+        //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -140,7 +140,7 @@ export const deleteTask = async (
             isClosable: true
         });
         const message: any = response?.data;
-        console.log(message);
+        //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

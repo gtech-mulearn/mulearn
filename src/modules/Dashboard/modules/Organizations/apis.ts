@@ -238,7 +238,7 @@ export const createOrganization = async (
             isClosable: true
         });
         const message: any = response?.data;
-        console.log("created a new " + orgType)
+        //console.log("created a new " + orgType)
         setIsSuccess(true)
         setIsLoading(false);
     } catch (error: any) {
@@ -314,7 +314,7 @@ export const updateOrganization = async (
             `${organizationRoutes.putUpdateOrganization}/${oldCode}`,
             addDataProps()
         );
-        console.log("status is ", response.status);
+        //console.log("status is ", response.status);
 
         if (response.status === 200) {
             toast({
@@ -360,7 +360,7 @@ export const deleteOrganization = async (
     try {
         const response = await privateGateway.delete(`${organizationRoutes.deleteOrgnaization}${code}`);
         const message: any = response?.data;
-        console.log(message);
+        //console.log(message);
         toast({
             title: "Organizations Deleted",
             status: "success",

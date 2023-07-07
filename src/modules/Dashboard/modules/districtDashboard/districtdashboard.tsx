@@ -147,9 +147,9 @@ function districtDashboard() {
                 "",
                 sort
             );
-        }
-
-        console.log(`Icon clicked for column: ${column}`);
+		}
+		
+        //console.log(`Icon clicked for column: ${column}`);
     };
 
     const CSV = (tabname: string) => {

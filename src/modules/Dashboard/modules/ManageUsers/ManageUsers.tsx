@@ -21,7 +21,7 @@ function ManageRoles() {
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
-    const firstFetch = useRef(true)
+    const firstFetch = useRef(true);
 
     const columnOrder = [
         { column: "first_name", Label: "First Name", isSortable: true },
@@ -68,14 +68,16 @@ function ManageRoles() {
     };
 
     const handleEdit = (id: string | number | boolean) => {
-        console.log(id);
+        //console.log(id);
         navigate(`/manage-users/edit/${id}`);
     };
 
-	const toast = useToast();
+    const toast = useToast();
 
-    const handleDelete = (id: string | number | boolean) => {
+
+    const handleDelete = (id: string | number | undefined) => {
         deleteManageUsers(id, toast);
+        getManageUsers(setData, 1, perPage, setTotalPages, "", "");
         navigate("/manage-users");
     };
 
@@ -105,7 +107,7 @@ function ManageRoles() {
             getManageUsers(setData, 1, perPage, setTotalPages, "", column);
         }
 
-        console.log(`Icon clicked for column: ${column}`);
+        //console.log(`Icon clicked for column: ${column}`);
     };
 
     return (
