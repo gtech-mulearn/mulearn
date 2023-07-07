@@ -30,7 +30,7 @@ function EditOrganization() {
 
     getInfo(rowId)
       .then((data) => {
-        console.log("this is data->",data)
+        //console.log("this is data->",data)
         setInputName(data.title)
         setInputCode(data.code)
         setSelectedCountry(data.country)

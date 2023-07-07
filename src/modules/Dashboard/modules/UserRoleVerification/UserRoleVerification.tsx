@@ -64,11 +64,19 @@ function UsersRoleVerification() {
         getUserRoleVerification(setData, 1, perPage, setTotalPages, search, "");
     };
 
+    const handleEdit = (id: string | number | boolean) => {
+        //console.log(id);
+        navigate(`/user-role-verification/edit/${id}`);
+    };
     // const handleEdit = (id: string | number | boolean) => {
     //     console.log(id);
     //     navigate(`/user-role-verification/edit/${id}`);
     // };
 
+    const handleDelete = (id: string | number | boolean) => {
+        //console.log(id);
+        navigate(`/user-role-verification/delete/${id}`);
+    };
     // const handleDelete = (id: string | number | boolean) => {
     //     console.log(id);
     //     navigate(`/user-role-verification/delete/${id}`);
@@ -110,11 +118,11 @@ function UsersRoleVerification() {
             );
         }
 
-        console.log(`Icon clicked for column: ${column}`);
+        //console.log(`Icon clicked for column: ${column}`);
     };
 
-    function handleVerify(id: string | number | boolean): void {
-        console.log(id);
+	function handleVerify(id: string | number | boolean): void {
+		//console.log(id);
         editUserRoleVerification(true, id);
         getUserRoleVerification(setData, 1, perPage, setTotalPages, "", "");
     }

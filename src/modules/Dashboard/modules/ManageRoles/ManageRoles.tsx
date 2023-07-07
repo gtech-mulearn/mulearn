@@ -62,14 +62,14 @@ function ManageRoles() {
     };
 
     const handleEdit = (id: string | number | boolean) => {
-        console.log(id);
+        //console.log(id);
         navigate(`/manage-roles/edit/${id}`);
     };
 	const toast = useToast();
     const handleDelete = (id: string | number | undefined) => {
-        console.log(id);
-        deleteManageRoles(id,toast)
-        // navigate(`/manage-roles/delete/${id}`);
+        // console.log(id);
+        deleteManageRoles(id,toast);
+        navigate(`/manage-roles/delete/${id}`);
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
@@ -98,7 +98,7 @@ function ManageRoles() {
             getManageRoles(setData, 1, perPage, setTotalPages, "", column);
         }
 
-        console.log(`Icon clicked for column: ${column}`);
+        //console.log(`Icon clicked for column: ${column}`);
     };
 
     return (
