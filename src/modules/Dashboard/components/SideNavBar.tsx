@@ -200,9 +200,12 @@ const SideNavBar = (props: Props) => {
                                     ? {
                                         border: "none",
                                         borderRadius: "10px",
-                                        padding: "20px 20px"
+                                        padding: "20px 20px",
+                                        background: "#eee",
                                     }
-                                    : {}
+                                    : {
+                                        background: "#eee",
+                                    }
                             }
                             onClick={() => {
                                 localStorage.clear();
