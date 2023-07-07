@@ -27,7 +27,7 @@ type Props = {
         title: string;
         hasView: boolean;
         roles?: string[];
-        icon: any;
+        icon?: any;
         children?: Props["sidebarButtons"];
     }[];
 };
@@ -145,7 +145,6 @@ const SideNavBar = (props: Props) => {
                                                         <MuButton
                                                             key={i}
                                                             text={button.title}
-                                                            icon={button.icon}
                                                             style={
                                                                 window.location.pathname ===
                                                                     `/${button.url}`

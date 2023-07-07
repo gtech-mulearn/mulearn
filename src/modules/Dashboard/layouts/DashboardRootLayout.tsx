@@ -81,22 +81,20 @@ const DashboardRootLayout = (props: { component?: any }) => {
             url: "",
             title: "User Management",
             hasView: true,
-            roles: [roles.ADMIN],
+            // roles: [roles.ADMIN],
             icon: <i className="fi fi-sr-users"></i>,
             children: [
                 {
                     url: "manage-users",
                     title: "Manage Users",
                     hasView: true,
-                    roles: [roles.ADMIN],
-                    icon: <i className="fi fi-sr-users"></i>
+                    // roles: [roles.ADMIN],
                 },
                 {
                     url: "user-role-verification",
                     title: "User Role Verification",
                     hasView: true,
-                    roles: [roles.ADMIN],
-                    icon: <i className="fi fi-sr-users"></i>
+                    // roles: [roles.ADMIN],
                 },
             ]
         },
@@ -104,7 +102,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
             url: "manage-roles",
             title: "Manage Roles",
             hasView: true,
-            roles: [roles.ADMIN],
+            // roles: [roles.ADMIN],
             icon: <i className="fi fi-sr-users"></i>
         },
         {
