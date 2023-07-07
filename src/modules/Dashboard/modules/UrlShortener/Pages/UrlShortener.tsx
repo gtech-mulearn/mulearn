@@ -67,7 +67,7 @@ const UrlShortener = () => {
         getShortenUrls(setShortUrlData, 1, perPage, setTotalPages, search, "");
     };
     const handleEdit = (id: string | number | boolean) => {
-        console.log(formik.values.id);
+        //console.log(formik.values.id);
 
         // navigate(`/interest-groups/edit/${id}`);
         formik.values.id = id.toString();
@@ -121,7 +121,7 @@ const UrlShortener = () => {
                 column
             );
         }
-        console.log(`Icon clicked for column: ${column}`);
+        //console.log(`Icon clicked for column: ${column}`);
     };
 
     // formik
@@ -138,7 +138,7 @@ const UrlShortener = () => {
             long_url: values.long_url,
             short_url: values.short_url
         };
-        console.log(urlEditedData);
+        //console.log(urlEditedData);
         createShortenUrl(
             toast,
             urlEditedData,
@@ -154,7 +154,7 @@ const UrlShortener = () => {
         const urlData = {
             shortUrlNew: values.short_url
         };
-        console.log(urlData);
+        //console.log(urlData);
         editShortenUrl(
             values.id,
             toast,
@@ -167,7 +167,7 @@ const UrlShortener = () => {
     };
 
     const validate = (values: any) => {
-        console.log(values);
+        //console.log(values);
 
         let errors: any = {};
         if (values.title === "" || values.title === undefined) {

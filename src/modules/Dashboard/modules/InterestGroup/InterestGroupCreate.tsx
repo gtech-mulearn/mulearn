@@ -51,7 +51,7 @@ export const InterestGroupCreate = (props: Props) => {
                         //     .required("Required")
                     })}
                     onSubmit={values => {
-                        console.log(values.igName);
+                        //console.log(values.igName);
                         createInterestGroups(values.igName);
                         toast({
                             title: "Interest Group created",
