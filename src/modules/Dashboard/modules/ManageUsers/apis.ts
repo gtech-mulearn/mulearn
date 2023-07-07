@@ -158,7 +158,7 @@ export const getManageUsersDetails = async (
     }
 };
 
-export const deleteManageUsers = async (
+export const deleteManageUsers:any = async (
     id: string | number | undefined,
     toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
@@ -173,7 +173,7 @@ export const deleteManageUsers = async (
             isClosable: true
         });
         const message: any = response?.data;
-        //console.log(message);
+        console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
