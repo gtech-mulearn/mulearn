@@ -6,7 +6,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     position: absolute;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(1px);
 }
 
 .centered {
@@ -29,7 +29,7 @@
     border-radius: 16px;
     padding: 30px 15px 15px;
 
-    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.253);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
 }
 
 .modalHeader {
