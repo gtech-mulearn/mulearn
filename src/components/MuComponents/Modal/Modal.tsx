@@ -17,6 +17,12 @@ const Modal: FC<ModalProps> = ({ setIsOpen, id, heading, content, click }) => {
             <div className={styles.centered}>
                 <div className={styles.modal}>
                     <div className={styles.modalHeader}>
+                        <button
+                            className={styles.closeBtn}
+                            onClick={() => setIsOpen(false)}
+                        >
+                            <RiCloseLine style={{ marginBottom: "-3px" }} />
+                        </button>
                         <div className={styles.checkbtn}>
                             <svg
                                 width="20"
@@ -36,12 +42,7 @@ const Modal: FC<ModalProps> = ({ setIsOpen, id, heading, content, click }) => {
                         </div>
                         <h5 className={styles.heading}>{heading}</h5>
                     </div>
-                    <button
-                        className={styles.closeBtn}
-                        onClick={() => setIsOpen(false)}
-                    >
-                        <RiCloseLine style={{ marginBottom: "-3px" }} />
-                    </button>
+
                     <div className={styles.modalContent}>{content}</div>
                     <div className={styles.modalActions}>
                         <div className={styles.actionsContainer}>

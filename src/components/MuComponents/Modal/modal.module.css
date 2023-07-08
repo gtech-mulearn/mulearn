@@ -95,13 +95,14 @@
     right: 0;
     top: 0;
     align-self: flex-end;
-    margin-top: -7px;
-    margin-right: -7px;
+    margin-top: 2px;
+    margin-right: 0px;
 }
 
 .closeBtn:hover {
     box-shadow: 0 5px 20px 0 rgba(51, 55, 56, 0.04);
-    transform: translate(-4px, 4px);
+    transform: translate(-1px, 1px);
+    color: red;
 }
 
 .deleteBtn {
