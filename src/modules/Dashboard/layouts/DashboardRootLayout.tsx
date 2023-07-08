@@ -89,14 +89,12 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     title: "Manage Users",
                     hasView: true,
                     roles: [roles.ADMIN],
-                    icon: <i className="fi fi-sr-users"></i>
                 },
                 {
                     url: "user-role-verification",
                     title: "User Role Verification",
                     hasView: true,
                     roles: [roles.ADMIN],
-                    icon: <i className="fi fi-sr-users"></i>
                 },
             ]
         },
