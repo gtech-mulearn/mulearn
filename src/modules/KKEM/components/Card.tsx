@@ -26,7 +26,7 @@ const Card = ({
                     </div>
                     <p className={styles.card_heading}>{name}</p>
                     <p className={styles.card_description}>{description}</p>
-                    {link !== "#" && (
+                    {/* {link !== "#" && (
                         <Link to={link}>
                             <span className={styles.explore_more}>
                                 Explore More{" "}
@@ -49,7 +49,7 @@ const Card = ({
                         <span className={styles.explore_more}>
                             Coming Soon!
                         </span>
-                    )}
+                    )} */}
                 </div>
             </Link>
         </>
