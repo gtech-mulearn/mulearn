@@ -66,7 +66,7 @@ export const DropDownButtons = (props: {
                 className={styles.dropdown_btn}
                 style={{
                     ...props.style,
-                    marginBottom: props.display === "0" ? "16px" : "4px",
+                    marginBottom: props.display === "0" ? "" : "4px",
                 }}
                 onClick={props.onClick}
             >
