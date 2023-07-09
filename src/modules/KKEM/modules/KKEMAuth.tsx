@@ -3,7 +3,7 @@ import { userAuthConfirm } from "../services/auth";
 import { useEffect, useState } from "react";
 import kkemlogo from "../assets/kkemlogo.png";
 import XSvg from "../assets/X.svg";
-import mulearnLogo from "../assets/µ.svg";
+import mulearnLogo from "../assets/mU.svg";
 import Astronaut from "../assets/astronaut.png";
 import navStyles from "../components/Navbar.module.css";
 import styles from "./KKEMAuth.module.css";
@@ -25,15 +25,6 @@ export default function KKEMAuth() {
     }, [token]);
     return (
         <main>
-            <nav className={navStyles.navbar}>
-                <div className={navStyles.container}>
-                    <div className={navStyles.logos}>
-                        <img src={mulearnLogo} alt="Mulearn Logo" />
-                        <img src={XSvg} alt="X" />
-                        <img src={kkemlogo} alt="KKEM Logo" />
-                    </div>
-                </div>
-            </nav>
             {success ? <Success /> : <Failure />}
             <Footer />
         </main>
