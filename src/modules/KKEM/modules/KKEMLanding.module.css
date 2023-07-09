@@ -7,9 +7,15 @@ html {
 }
 .title {
     width: 100%;
-    margin: -3rem 0;
-    aspect-ratio: 1512/281;
     height: auto;
     overflow: hidden;
     object-fit: cover;
+    display: block;
+}
+.mU {
+    position: absolute;
+    top: -30%;
+    left: 20px;
+    height: 150%;
+    opacity: 0.5;
 }
