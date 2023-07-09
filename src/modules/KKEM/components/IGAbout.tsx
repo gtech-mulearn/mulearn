@@ -1,7 +1,10 @@
-import styles from "./MulearnAbout.module.css";
+import styles from "./IGAbout.module.css";
 import Astronaut from "../assets/astronaut.png";
-import MuIDModal from "../components/MuIDModal";
-import KKEMAuth from "../components/Auth";
+import MuIDModal from "./MuIDModal";
+import KKEMAuth from "./Auth";
+import im7 from "../assets/im7.png";
+import im9 from "../assets/im9.png";
+import im10 from "../assets/im10.png";
 import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
 export default function MulearnAbout() {
@@ -41,6 +44,12 @@ export default function MulearnAbout() {
             <div className={styles.imgc}>
                 <img className={styles.image} src={Astronaut} alt="Astronaut" />
                 <p className={styles.dc2}>Curated by</p>
+                <div className={styles.curated}>
+                    <img src={im7} alt="im7" />
+                    <img src={im9} alt="im9" />
+                    <img src={im10} alt="im10" />
+                    <p>and more...</p>
+                </div>
             </div>
         </section>
     );

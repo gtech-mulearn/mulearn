@@ -33,7 +33,7 @@
     text-decoration: none;
 }
 .image {
-    width: 30rem;
+    width: 25rem;
     animation: upDown 2s ease-in-out infinite;
 }
 .muidSection {
@@ -54,7 +54,21 @@
     text-decoration-line: underline;
     line-height: 5rem;
 }
-
+.curated {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 1rem;
+}
+.curated > img {
+    padding: 0.5rem;
+    box-shadow: 2px 2px 16px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 50%;
+    object-fit: cover;
+    width: 3.5rem;
+    height: 3.5rem;
+}
 @media screen and (max-width: 1200px) {
     .muidSection {
         flex-direction: column;
@@ -88,7 +102,8 @@
         font-size: 1.5rem;
     }
     .image {
-        width: 30rem;
+        width: 20rem;
+        margin: 3rem 0;
     }
 }
 

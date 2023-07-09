@@ -1,0 +1,214 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.first_view {
+    margin: auto 1rem;
+    /* margin-top: 0; */
+}
+
+.get_started {
+    padding: 16px 32px;
+    gap: 4px;
+
+    width: 200px;
+
+    background: #000000;
+    color: white;
+    border-radius: 84.5px;
+    border: none;
+
+    font-size: 1.25rem;
+    text-align: center;
+
+    display: block;
+    margin: auto;
+    margin-top: 1rem;
+    transition: 0.3s;
+}
+.get_started:hover {
+    background: rgb(42, 42, 42);
+    transform: translateY(-5px);
+}
+
+.fv_heading {
+    font-family: "Poppins", sans-serif;
+    font-size: 3.25rem;
+    font-weight: 700;
+    line-height: 4rem;
+    letter-spacing: -0.03em;
+    text-align: center;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 2.5rem;
+    letter-spacing: -0.03em;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.fv_tagline {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.5rem;
+    letter-spacing: 0em;
+    text-align: center;
+    max-width: 85%;
+    margin: auto;
+}
+
+.cw_text {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.75rem;
+    line-height: 1.75rem;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.cw_text {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    line-height: 1.75rem;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.fvimage {
+    width: 18rem;
+    display: block;
+    margin: auto;
+}
+
+.ev_heading {
+    font-family: "Poppins", sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 4rem;
+    text-align: center;
+}
+
+.explore_view {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ev_tagline {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1rem;
+    color: #000000;
+    margin-top: 0.25rem;
+    text-align: center;
+}
+
+.search_button {
+    margin-top: 1rem;
+    border: 1px solid #000;
+    border-radius: 84.5px;
+    font-size: 1.15rem;
+    width: 200px;
+    height: 55px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* padding: 16px 32px; */
+    /* gap: 4px; */
+    /* border: none; */
+    /* text-align: center; */
+}
+
+@media only screen and (min-width: 1000px) {
+    .first_view {
+        margin: 0 3rem;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .fv_texts {
+        width: 50%;
+    }
+
+    .fv_heading {
+        font-size: 6rem;
+        line-height: 6rem;
+        text-align: left;
+    }
+
+    .fv_tagline {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+        line-height: 2rem;
+        text-align: left;
+        max-width: 100%;
+        margin: initial;
+    }
+
+    .get_started {
+        margin: 0;
+        margin-top: 1rem;
+    }
+
+    .first_view_container {
+        display: block;
+        margin: auto;
+    }
+
+    .fvimage {
+        width: 28rem;
+    }
+
+    .explore_view {
+        margin: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+    }
+
+    .ev_heading {
+        font-size: 3.25rem;
+    }
+
+    .ev_tagline {
+        font-size: 1.5rem;
+    }
+}
+
+/* Styles for Card Container */
+
+.cards_view {
+    margin: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (min-width: 786px) {
+    .cards_view_container {
+        margin: auto;
+    }
+    .cards_view {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+}
