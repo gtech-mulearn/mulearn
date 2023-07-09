@@ -44,8 +44,8 @@ export default function Landing() {
                     <div className={styles.wave}></div>
                 </>
             )}
-            <SkillExpress />
-            <MulearnAbout />
+            {/* <SkillExpress /> */}
+            {/* <MulearnAbout /> */}
             <Footer />
         </main>
     );
