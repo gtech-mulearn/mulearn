@@ -11,8 +11,10 @@ const ManageRolesDelete = (props: Props) => {
     const toast = useToast();
     const navigate = useNavigate();
     const handleSubmit = () => {
-        deleteManageRoles(id, toast);
-        navigate("/manage-roles");
+        if (id) {
+            deleteManageRoles(id, toast);
+            navigate("/manage-roles");
+        }
     };
     return (
         <div>
