@@ -148,3 +148,23 @@ export const deleteTask = async (
         }
     }
 };
+
+export const getUUID = async () => {
+    const uuids:{[index:string]:string} = {
+        level:dashboardRoutes.getTaskLevels,
+        ig:dashboardRoutes.getTaskIGs,
+        organization:dashboardRoutes.getTaskOrganizations,
+        channel:dashboardRoutes.getTaskChannels
+    }
+
+    const response:{[index:string]:Array<any>} = {}
+
+    for (let key in uuids){
+        response[key]=
+        (await privateGateway.get(uuids[key]))
+        .data
+        .response as Array<any> 
+    }
+
+    return response
+}
