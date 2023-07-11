@@ -10,6 +10,7 @@ import { titleCase } from "title-case";
 import { hasRole } from "../../../../../services/common_functions";
 import { roles } from "../../../../../services/types";
 import { useNavigate } from "react-router-dom";
+import Muloader from "../../../../../components/MuComponents/Muloader/Muloader";
 
 type Props = {};
 
@@ -116,7 +117,7 @@ const CampusStudentList = (props: Props) => {
         <>
             {loading ? (
                 <div className={styles.loader_container}>
-                    <GridLoader color="#014bb2" />
+                  <Muloader/>
                 </div>
             ) : (
                 <>

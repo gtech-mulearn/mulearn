@@ -41,7 +41,7 @@ export default function KKEMAuth({ dwmsId }: { dwmsId: string }) {
     );
     return (
         <div className={styles.container}>
-            <h2 className={styles.heading}>Embark on the Skill Express</h2>
+            {/* <h2 className={styles.heading}>Embark on the Skill Express</h2> */}
             <form onSubmit={handleSubmit} className={styles.form}>
                 <input
                     type="text"
