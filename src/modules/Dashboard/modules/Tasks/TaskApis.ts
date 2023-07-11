@@ -96,7 +96,8 @@ export const createTask = async (
     channel_id: string,
     type_id: string,
     level_id: string,
-    ig_id: string
+    ig_id: string,
+    org_id:string
 ) => {
     try {
         const response = await privateGateway.post(
@@ -109,10 +110,11 @@ export const createTask = async (
                 active: parseInt(active),
                 variable_karma: parseInt(variable_karma),
                 description: description,
-                channel: parseInt(channel_id),
-                type: parseInt(type_id),
-                level: parseInt(level_id),
-                ig: parseInt(ig_id)
+                channel: channel_id,
+                type: type_id,
+                level: level_id,
+                ig: ig_id,
+                org:org_id
             }
         );
         const message: any = response?.data;
@@ -154,16 +156,23 @@ export const getUUID = async () => {
         level:dashboardRoutes.getTaskLevels,
         ig:dashboardRoutes.getTaskIGs,
         organization:dashboardRoutes.getTaskOrganizations,
-        channel:dashboardRoutes.getTaskChannels
+        channel:dashboardRoutes.getTaskChannels,
+        type:dashboardRoutes.getTaskTypes,
     }
 
     const response:{[index:string]:Array<any>} = {}
 
     for (let key in uuids){
-        response[key]=
+        response[key]=(
         (await privateGateway.get(uuids[key]))
         .data
-        .response as Array<any> 
+        .response as Array<any>)
+        .sort((a,b)=>(
+            (a.name !== undefined && a.name<b.name) 
+            || 
+            (a.title !== undefined && a.title<b.title) )
+            ?-1:1
+        ) 
     }
 
     return response
