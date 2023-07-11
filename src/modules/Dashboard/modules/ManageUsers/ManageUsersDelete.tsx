@@ -7,13 +7,14 @@ import { useToast } from "@chakra-ui/react";
 type Props = {};
 
 const ManageUsersDelete = (props: Props) => {
-    
     const { id } = useParams();
     const toast = useToast();
     const navigate = useNavigate();
     const handleSubmit = () => {
-        deleteManageUsers(id, toast);
-        navigate("/manage-users");
+        if (id) {
+            deleteManageUsers(id, toast);
+            navigate("/manage-users");
+        }
     };
     return (
         <div>

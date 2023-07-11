@@ -40,10 +40,11 @@
     height: 100%;
     flex: 2;
     display: flex;
-    background-color: #f3f8ff;
+    background-color: #fff;
     padding: 60px 30px 20px;
     justify-content: center;
     transition: all 0.3s ease-in-out;
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.1);
 }
 
 .side_nav_bar_container .side_nav_bar {
