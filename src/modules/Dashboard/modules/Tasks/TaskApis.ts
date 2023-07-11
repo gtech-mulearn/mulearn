@@ -109,10 +109,10 @@ export const createTask = async (
                 active: parseInt(active),
                 variable_karma: parseInt(variable_karma),
                 description: description,
-                channel_id: parseInt(channel_id),
-                type_id: parseInt(type_id),
-                level_id: parseInt(level_id),
-                ig_id: parseInt(ig_id)
+                channel: parseInt(channel_id),
+                type: parseInt(type_id),
+                level: parseInt(level_id),
+                ig: parseInt(ig_id)
             }
         );
         const message: any = response?.data;
