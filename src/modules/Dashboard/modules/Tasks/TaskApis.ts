@@ -162,18 +162,35 @@ export const getUUID = async () => {
 
     const response:{[index:string]:Array<any>} = {}
 
+    /*Alternate method using promise.all
+    const alternate_res = (await Promise.all(
+        Object.values(uuids)
+        .map((url)=>(privateGateway.get(url)))
+    ))
+    .map((res)=>
+        (res.data.response as Array<any>)
+        .sort((a,b)=>(
+            (a.name !== undefined && a.name<b.name) 
+            || 
+            (a.title !== undefined && a.title<b.title) )
+            ?-1:1
+        )
+    )
+    */
+
+
     for (let key in uuids){
         response[key]=(
         (await privateGateway.get(uuids[key]))
         .data
         .response as Array<any>)
         .sort((a,b)=>(
+            //check for name/title key and then compare
             (a.name !== undefined && a.name<b.name) 
             || 
             (a.title !== undefined && a.title<b.title) )
             ?-1:1
         ) 
     }
-
     return response
 }

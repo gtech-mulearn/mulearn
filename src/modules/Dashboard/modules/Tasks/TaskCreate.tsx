@@ -7,6 +7,7 @@ import { FormikSelect, FormikTextInput } from "../../../../components/MuComponen
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { AxiosError } from "axios";
 
 type Props = {};
 
@@ -18,7 +19,11 @@ const TaskCreate = (props: Props) => {
 
     useEffect(()=>{
         (async ()=>{
-            setuuidData(await getUUID())
+            try{
+                setuuidData(await getUUID())
+            }catch(err){
+                console.log(err as AxiosError)
+            }
         })()
     },[])
 
@@ -144,6 +149,7 @@ const TaskCreate = (props: Props) => {
                         <FormikSelect
                             label="Channel ID"
                             name="channel_id"
+                            disabled = {!uuidData}
                         >
                             <option value="">Select an option</option>
                             {uuidData?.channel.map((val)=>{
@@ -157,6 +163,7 @@ const TaskCreate = (props: Props) => {
                         <FormikSelect
                             label="Type ID"
                             name="type_id"
+                            disabled = {!uuidData}
                         >
                             <option value="">Select an option</option>
                             {uuidData?.type.map((val)=>{
@@ -170,6 +177,7 @@ const TaskCreate = (props: Props) => {
                         <FormikSelect
                             label="Level ID"
                             name="level_id"
+                            disabled = {!uuidData}
                         >
                             <option value="">Select an option</option>
                             {uuidData?.level.map((val)=>{
@@ -183,6 +191,7 @@ const TaskCreate = (props: Props) => {
                         <FormikSelect
                             label="IG ID"
                             name="ig_id"
+                            disabled = {!uuidData}
                         >
                             <option value="">Select an option</option>
                             {uuidData?.ig.map((val)=>{
@@ -196,6 +205,7 @@ const TaskCreate = (props: Props) => {
                         <FormikSelect
                             label="Organization ID"
                             name="organization_id"
+                            disabled = {!uuidData}
                         >
                             <option value="">Select an option</option>
                             {uuidData?.organization
