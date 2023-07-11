@@ -22,7 +22,8 @@ export const MuButton = (props: {
             onClick={props.onClick}
             disabled={props.disabled}
         >
-            <div className={styles.btn_icon}>{props.icon}</div>
+
+            {props.icon && <div className={styles.btn_icon}>{props.icon}</div>}
             <span>{props.text}</span>
             {props.isLoading && <ClipLoader size={20} color="#ff" className={styles.btn_loader} />}
         </button>
@@ -63,7 +64,10 @@ export const DropDownButtons = (props: {
         <div className={styles.dropdown_btn_container}>
             <div
                 className={styles.dropdown_btn}
-                style={props.style}
+                style={{
+                    ...props.style,
+                    marginBottom: props.display === "0" ? "" : "4px",
+                }}
                 onClick={props.onClick}
             >
                 <div className={styles.btn_icon}>{props.icon}</div>

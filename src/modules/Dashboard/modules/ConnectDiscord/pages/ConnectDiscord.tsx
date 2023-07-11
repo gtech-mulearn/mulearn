@@ -7,6 +7,7 @@ import { useToast } from "@chakra-ui/react";
 import { MdContentCopy } from "react-icons/md";
 import { BsDiscord } from "react-icons/bs";
 import { GridLoader } from "react-spinners";
+import Muloader from "@Mulearn/Muloader/Muloader";
 
 const ConnectDiscord = () => {
     const [muid, setMuid] = useState("");
@@ -123,12 +124,7 @@ const ConnectDiscord = () => {
             ) : (
                 <div className={styles.spinner_container}>
                     <div className={styles.spinner}>
-                        <GridLoader
-                            style={{ display: "block" }}
-                            className={styles.loader}
-                            color="#456FF6"
-                        />
-                    </div>
+                        <Muloader/>                    </div>
                 </div>
             )}
         </>

@@ -30,6 +30,7 @@ import { BsJustify } from "react-icons/bs";
 import axios from "axios";
 import { saveAs } from "file-saver";
 import mulearn_logo from "../assets/images/mulearnBrand.png";
+import Muloader from "@Mulearn/Muloader/Muloader";
 
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
@@ -219,8 +220,7 @@ const Profile = () => {
             >
                 {APILoadStatus === 0 ? (
                     <div className={styles.loader_container}>
-                        <GridLoader color="#456FF6" />
-                        <p>Loading</p>
+                        <Muloader/>
                     </div>
                 ) : (id && userProfile.is_public) || !id ? (
                     <>
