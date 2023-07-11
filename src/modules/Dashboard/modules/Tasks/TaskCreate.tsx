@@ -147,7 +147,7 @@ const TaskCreate = (props: Props) => {
                             placeholder="..."
                         />
                         <FormikSelect
-                            label="Channel ID"
+                            label="Channel"
                             name="channel_id"
                             disabled = {!uuidData}
                         >
@@ -161,7 +161,7 @@ const TaskCreate = (props: Props) => {
                             })}
                         </FormikSelect>
                         <FormikSelect
-                            label="Type ID"
+                            label="Type"
                             name="type_id"
                             disabled = {!uuidData}
                         >
@@ -175,7 +175,7 @@ const TaskCreate = (props: Props) => {
                             })}
                         </FormikSelect>
                         <FormikSelect
-                            label="Level ID"
+                            label="Level"
                             name="level_id"
                             disabled = {!uuidData}
                         >
@@ -189,7 +189,7 @@ const TaskCreate = (props: Props) => {
                             })}
                         </FormikSelect>
                         <FormikSelect
-                            label="IG ID"
+                            label="IG"
                             name="ig_id"
                             disabled = {!uuidData}
                         >
@@ -203,7 +203,7 @@ const TaskCreate = (props: Props) => {
                             })}
                         </FormikSelect>
                         <FormikSelect
-                            label="Organization ID"
+                            label="Organization"
                             name="organization_id"
                             disabled = {!uuidData}
                         >
