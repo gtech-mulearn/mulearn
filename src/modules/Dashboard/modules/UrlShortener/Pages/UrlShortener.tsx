@@ -240,7 +240,7 @@ const UrlShortener = () => {
                                     name="shortUrl"
                                     onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
-                                    value={formik.values.shortUrl}
+                                    value={formik.values.short_url}
                                     placeholder="Enter short url"
                                     required
                                 />
