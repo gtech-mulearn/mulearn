@@ -1,6 +1,8 @@
 import { publicGateway } from "../../../services/apiGateways";
 import { KKEMRoutes } from "../../../services/urls";
 
+const tempToken = "1c332a95-8411-40c1-ab64-18b56bd91988";
+
 export const userAuth = async (
     mu_id: string,
     dwms_id: string,
@@ -10,7 +12,12 @@ export const userAuth = async (
         .post(
             KKEMRoutes.userAuth,
             { mu_id, dwms_id },
-            { signal: controller?.signal }
+            {
+                signal: controller?.signal,
+                headers: {
+                    token: tempToken
+                }
+            }
         )
         .then(response => {
             return response.data;
@@ -25,9 +32,15 @@ export const userAuthConfirm = async (
     controller?: AbortController
 ) => {
     return await publicGateway
-        .post(`${KKEMRoutes.userAuth}${token}/`, null, {
-            signal: controller?.signal
-        })
+        .post(
+            `${KKEMRoutes.userAuth}${token}/`,
+            {
+                token: tempToken
+            },
+            {
+                signal: controller?.signal
+            }
+        )
         .then(response => {
             return response.data;
         })

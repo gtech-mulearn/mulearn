@@ -77,8 +77,7 @@ function ManageRoles() {
 
     const handleDelete = (id: string | number | boolean) => {
         deleteManageUsers(id, toast);
-		getManageUsers(setData, 1, perPage, setTotalPages, "", "");
-
+        getManageUsers(setData, 1, perPage, setTotalPages, "", "");
         navigate("/manage-users");
     };
 
