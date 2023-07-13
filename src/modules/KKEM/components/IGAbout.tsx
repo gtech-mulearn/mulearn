@@ -25,19 +25,26 @@ export default function MulearnAbout() {
                     range of interest areas, from coding to design,
                     entrepreneurship to data science
                 </p>
-                <p className={styles.description}>Join Now: </p>
+
                 {dwms_id && (
                     <>
+                        <p className={styles.description}>Join Now: </p>
                         <section id="muId" className={styles.muidSection}>
                             <KKEMAuth dwmsId={dwms_id} />
-                            <button
-                                className={styles.muidLink}
-                                onClick={() => setModalOpen(true)}
+                            <a
+                                href="https://app.mulearn.org/register"
+                                target="blank"
+                                rel="noopener noreferrer"
                             >
-                                No Mu-Id? Get now
-                            </button>
+                                <button
+                                    className={styles.muidLink}
+                                    // onClick={() => setModalOpen(true)}
+                                >
+                                    No Mu-Id? Get now
+                                </button>
+                            </a>
                         </section>
-                        <MuIDModal open={modalOpen} setOpen={setModalOpen} />
+                        {/* <MuIDModal open={modalOpen} setOpen={setModalOpen} /> */}
                     </>
                 )}
             </div>
