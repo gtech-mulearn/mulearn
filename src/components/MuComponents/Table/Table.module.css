@@ -24,8 +24,6 @@
 
 .page {
 	width: 95%;
-	border: 1px solid var(--blue);
-	border-radius: 8px;
 	padding: 0 10px;
 }
 
