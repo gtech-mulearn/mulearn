@@ -1,7 +1,7 @@
 import styles from "./CreateCircle.module.css";
 import * as Yup from "yup";
 import { Form, Formik } from "formik";
-import {FormikTextInput} from '../../../../../components/MuComponents/FormikComponents/FormikComponents'
+import {FormikSelect, FormikTextInput} from '../../../../../components/MuComponents/FormikComponents/FormikComponents'
 type Props = {};
 
 const CreateCircle = (props: Props) => {
@@ -50,11 +50,12 @@ const CreateCircle = (props: Props) => {
                                             name="circle_name" 
                                             placeholder="Learning circle name"
                                         />
-                                        <FormikTextInput 
-                                            type="text"
+                                        <FormikSelect 
                                             name="interest_group" 
                                             placeholder="Interest group"
-                                        />
+                                        >
+                                            <option value="">Select an option</option>
+                                        </FormikSelect>
                                     </div>
                                     <button type="submit">Create</button>
                                 </Form>
