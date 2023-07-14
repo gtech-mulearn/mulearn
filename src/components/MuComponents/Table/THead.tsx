@@ -21,19 +21,24 @@ const THead: React.FC<TableHeadProps> = ({
     return (
         <thead>
             <tr>
-				<th>S/N</th>
+                <th className={styles.th}>S/N</th>
                 {columnOrder.map((column, index) => (
                     <th className={styles.th} key={column.column}>
                         <div className={styles.thContainer}>
                             <span>{column.Label}</span>
-                            {column.isSortable && <button className={styles.icon} onClick={() => onIconClick(column.column)}>
-                                <RxCaretSort/>
-                            </button>}
+                            {column.isSortable && (
+                                <button
+                                    className={styles.icon}
+                                    onClick={() => onIconClick(column.column)}
+                                >
+                                    <RxCaretSort />
+                                </button>
+                            )}
                         </div>
                     </th>
                 ))}
-				{verify && <th>Verify</th>}
-				{action && <th>Action</th>}
+                {verify && <th className={styles.th}>Verify</th>}
+                {action && <th className={styles.th}>Action</th>}
             </tr>
         </thead>
     );

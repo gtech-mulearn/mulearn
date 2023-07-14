@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
-import { privateGateway } from "../../../../../services/apiGateways";
-import { dashboardRoutes } from "../../../../../services/urls";
+import { privateGateway, publicGateway } from "../../../../../services/apiGateways";
+import { dashboardRoutes, onboardingRoutes, organizationRoutes } from "../../../../../services/urls";
 import { HackList } from "../User/Hackathon";
 import { SetStateAction } from "react";
 
@@ -91,4 +91,25 @@ export const createHackathon = async (
             console.log(error.response);
         }
     }
+};
+
+export const getDistrict = (
+    setDistrict: any,
+    state: any
+) => {
+    publicGateway
+        .post(onboardingRoutes.districtList, state)
+        .then(response => {
+            setDistrict(
+                response.data.response.districts
+                    .sort((a: any, b: any) => a.name.localeCompare(b.name))
+                    .map((sate: any) => ({
+                        value: sate.id,
+                        label: sate.name
+                    }))
+            );
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
 };
