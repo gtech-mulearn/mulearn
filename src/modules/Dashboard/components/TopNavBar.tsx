@@ -13,12 +13,13 @@ const TopNavBar = () => {
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [profilePic, setProfilePic] = useState("");
+
     useEffect(() => {
         if (
             localStorage.getItem("userInfo") &&
-            JSON.parse(localStorage.getItem("userInfo")!).firstName
+            JSON.parse(localStorage.getItem("userInfo")!).first_name
         ) {
-            setName(JSON.parse(localStorage.getItem("userInfo")!).firstName);
+            setName(JSON.parse(localStorage.getItem("userInfo")!).first_name);
             setProfilePic(JSON.parse(localStorage.getItem("userInfo")!).profile_pic);
         }
     });

@@ -57,6 +57,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-clipboard-user"></i>
         },
         {
+            url: "learning-circle",
+            title: "Learning Circle",
+            hasView: true,
+            roles: [roles.ADMIN],
+            icon: <i className="fi fi-sr-layout-fluid"></i>
+        },
+        {
             url: "interest-groups",
             title: "Interest Groups",
             hasView: true,
@@ -78,6 +85,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-layout-fluid"></i>
         },
         {
+            url: "tasks/bulk-import",
+            title: "Tasks Bulk Import",
+            hasView: true,
+            roles: [roles.ADMIN],
+            icon: <i className="fi fi-sr-layout-fluid"></i>
+        },
+        {
             url: "",
             title: "User Management",
             hasView: true,
@@ -88,16 +102,14 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     url: "manage-users",
                     title: "Manage Users",
                     hasView: true,
-                    roles: [roles.ADMIN],
-                    icon: <i className="fi fi-sr-users"></i>
+                    roles: [roles.ADMIN]
                 },
                 {
                     url: "user-role-verification",
                     title: "User Role Verification",
                     hasView: true,
-                    roles: [roles.ADMIN],
-                    icon: <i className="fi fi-sr-users"></i>
-                },
+                    roles: [roles.ADMIN]
+                }
             ]
         },
         {

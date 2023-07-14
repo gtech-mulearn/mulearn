@@ -7,7 +7,7 @@ import FormikReactSelect, {
     FormikTextInputWhite
 } from "../../../../../../components/MuComponents/FormikComponents/FormikComponents";
 import { useEffect, useState } from "react";
-import { createHackathon, getFormFields } from "../HackathonApis";
+import { createHackathon, getDistrict, getFormFields } from "../HackathonApis";
 
 const options = [
     { label: "Option 1", value: "111" },
@@ -22,10 +22,13 @@ const options1 = [
 const HackathonCreate = () => {
     const [tabIndex, setTabIndex] = useState(0);
     const [formData, setFormData] = useState("");
+    const [district, setDistrict] = useState("");
+    const [institutions, setInstitutions] = useState("");
 
     useEffect(() => {
         if (formData === "") {
             getFormFields(setFormData);
+			getDistrict(setDistrict, 'Kerala')
         }
     }, []);
 

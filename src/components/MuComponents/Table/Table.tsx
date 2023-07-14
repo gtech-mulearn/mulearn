@@ -36,7 +36,7 @@ type TableProps = {
     }[];
     id?: string[];
     onEditClick?: (column: string | number | boolean) => void;
-    onDeleteClick?: (column: string | number | undefined) => void;
+    onDeleteClick?: (column: string | number | boolean) => void;
     onVerifyClick?: (column: string | number | boolean) => void;
 	modalVerifyHeading?: string;
 	modalVerifyContent?: string;

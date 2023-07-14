@@ -17,6 +17,8 @@
     text-align: left;
     cursor: pointer;
     transition: 0.3s ease-in-out;
+    font-weight: 600;
+    letter-spacing: normal;
 }
 
 .btn_loader {
@@ -51,14 +53,19 @@
 /* dropdown button style */
 
 .dropdown_btn_container .drop_view {
-    width: 70%;
-    margin: auto;
+    width: 81%;
+    margin-left: auto;
 }
 
 .dropdown_btn_container .drop_view .btn {
     min-width: unset;
     font-size: 14px;
-    padding: 8px 18px;
+    padding: 6px 12px;
+    margin-bottom: 8px;
+}
+
+.dropdown_btn_container .drop_view .btn:last-child {
+    margin-bottom: 16px;
 }
 
 .dropdown_btn_container .drop_view {
