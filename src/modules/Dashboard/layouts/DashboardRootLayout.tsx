@@ -57,6 +57,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-clipboard-user"></i>
         },
         {
+            url: "learning-circle",
+            title: "Learning Circle",
+            hasView: true,
+            roles: [roles.ADMIN],
+            icon: <i className="fi fi-sr-layout-fluid"></i>
+        },
+        {
             url: "interest-groups",
             title: "Interest Groups",
             hasView: true,
