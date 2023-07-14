@@ -391,7 +391,7 @@ const Profile = () => {
                                                     style={
                                                         !id
                                                             ? {
-                                                                  borderColor:
+                                                                  outlineColor:
                                                                       !profileStatus
                                                                           ? "#456FF6"
                                                                           : "#2dce89"
