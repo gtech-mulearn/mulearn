@@ -1,52 +1,40 @@
 .body {
-    background-color: #ccdbf0;
     height: 6vh;
     display: flex;
+	padding: 40px 0;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
     border-radius: 8px;
+	font-family: 'Plus Jakarta Sans', sans-serif;
+	color: var(--Dark);
+	background-color: #fff;
 }
 
 .container {
-    padding: 10px 0;
+    /* padding: 10px 0; */
     width: 95%;
+	padding: 0;
+	margin: 0;
 }
 
 .searchBar {
-    border-radius: 8px;
-    padding: 3px;
-    color: #456FF6;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    border: 1px solid #456FF6;
-    background-image: url(src/assets/images/fi-br-search.png);
-    padding-left: 30px;
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-color: #fff;
-    background-position-x: 2%;
-    box-shadow: none;
+	border: 1px solid #a9a9a9;
+	background: transparent;
+	background-color: var(--White);
+	width: 100%;
+	height: 2rem;
+	border-radius: var(--borderRadius);
+	margin: 0 !important;
 }
 
 .searchBar::placeholder {
-    color: #456FF6 !important;
+    color: #a9a9a9 !important;
 }
 
 .csv {
-    border-radius: 8px;
     display: flex;
-    align-items: center;
-    background-color: #fff;
-    margin-right: 10px;
-    border: 1px solid #456FF6;
-    padding: 3px 10px;
-    box-shadow: none;
+	align-items: center;
     cursor: pointer;
-}
-
-.csv div {
-    margin-right: 5px;
 }
 
 .left {
@@ -55,9 +43,11 @@
 
 .right {
     width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: end;
+    display: inline-flex;
+	align-items: center;
+	justify-content: end;
+	margin: 0 !important;
+	padding: 0 !important;
 }
 
 .showContainer {
@@ -91,13 +81,7 @@
 .form_container {
 	display: flex;
 	align-items: center;
-	width: 30vw;
-}
-
-.icon {
-	align-items: center;
-	display: flex;
-	flex-direction: row;
+	border-radius: 8px;
 }
 
 .clearIcon {
@@ -108,8 +92,12 @@
 }
 
 .searchIcon {
-	font-size: 1.7rem;
 	margin: 0;
 	cursor: pointer;
+	background-color: var(--blue);
+	color: var(--White);
+	margin-left: 10px;
+	padding: 0.2rem 0.8rem;
+	border-radius: var(--borderRadius);
 	z-index: 0;
 }

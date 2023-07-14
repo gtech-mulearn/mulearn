@@ -52,16 +52,22 @@ const TableTop = (props: Props) => {
                         onOptionChange={handleOptionChange}
                     />
                     {props.CSV && (
-                        <MuButton
-                            text={"CSV"}
-                            onClick={e => {
-                                handleClick();
-                            }}
-                            disabled={isLoading}
-                            isLoading={isLoading}
-                            icon={<HiDownload />}
-                            className={styles.csv}
-                        />
+                        // <MuButton
+                        //     text={"CSV"}
+                        //     onClick={e => {
+                        //         handleClick();
+                        //     }}
+                        //     disabled={isLoading}
+                        //     isLoading={isLoading}
+                        //     icon={<HiDownload />}
+                        //     className={styles.csv}
+                        // />
+                        <button className={styles.searchIcon}>
+                            <div className={styles.csv}>
+							<HiDownload />
+                            CSV
+							</div>
+                        </button>
                     )}
                 </div>
             </div>
