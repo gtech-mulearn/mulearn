@@ -391,7 +391,7 @@
   content: "";
   position: absolute;
   bottom: 0px;
-  width: 2rem;
+  /* width: 2rem; */
   height: 3.5px;
   background-color: #456FF6;
   transition: all .5s ease-in-out;
