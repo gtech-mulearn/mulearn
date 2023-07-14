@@ -1,0 +1,289 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.content {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	padding: 3rem;
+}
+
+.CircleName {
+	background-color: #F3F8FE;
+	padding: 2.5rem;
+	border-radius: 1rem;
+	border: .5px solid #D2DCFF;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.CircleRank {
+	text-align: center;
+	display: flex;
+	gap: 1rem;
+	line-height: 2.6rem;
+}
+
+.CircleRank h1 {
+	font-size: 4rem;
+	font-weight: 600;
+	color: #456FF6;
+}
+
+.CircleRank i,
+.MeetingOn i {
+	border-radius: .5rem;
+	color: #fff;
+	padding: .5rem;
+	height: fit-content;
+	background-color: #456FF6;
+}
+
+/* bottom section with starting */
+
+.BoxContent {
+	display: flex;
+	gap: 1rem;
+}
+
+.LeftBox {
+	width: 100%;
+}
+
+.RightBox {
+	width: 40%;
+}
+
+.EventOn,
+.PendingApp {
+	padding: 2.5rem;
+	border-radius: 1rem;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	gap: .5rem;
+}
+
+.MeetingOn {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	gap: .8rem;
+}
+
+.MeetingBtn {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.BtnBtn {
+	padding: .5rem 2.5rem;
+	border-radius: .5rem;
+	border: none;
+	color: #fff;
+	background-color: #456FF6;
+}
+
+.BtnClr {
+	padding: .5rem 2.5rem;
+	border-radius: .5rem;
+	border: none;
+	color: #456FF6;
+	background-color: #CCE2FF;
+}
+
+.PendingApp {
+	margin-top: 1rem;
+	height: 290px;
+	overflow: hidden;
+	overflow-y: scroll;
+}
+
+.PendingApp::-webkit-scrollbar,
+.Members::-webkit-scrollbar {
+	display: none;
+}
+
+.PendingApp h2 {
+	font-weight: 400;
+}
+
+.PendingList {
+	margin-top: 1rem;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.PendingMembers {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.PendingMembers span {
+	display: flex;
+	gap: 2rem;
+	align-items: center;
+}
+
+.PendingMembers img,
+.MemberName img {
+	width: 3rem;
+	height: 3rem;
+	object-fit: contain;
+	border-radius: 100%;
+}
+
+.Streak {
+	position: relative;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	border-radius: 1rem;
+	padding: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.Streak img {
+	width: 8rem;
+	height: 8rem;
+}
+
+.Streak div {
+	position: absolute;
+	top: 5.5rem;
+	background-color: #fff;
+	text-align: center;
+	font-size: .7rem;
+	padding: .5rem;
+	border-radius: 100%;
+	line-height: 1.3rem;
+}
+
+.Members {
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	border-radius: 1rem;
+	padding: 2rem;
+	margin-top: 1rem;
+	height: 330px;
+	overflow: hidden;
+	overflow-y: scroll;
+}
+
+.MemberTitle {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+	font-size: 1.2rem;
+}
+
+.MemberList {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.MemberName {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.MemberName span {
+	display: flex;
+	gap: .5rem;
+	align-items: center;
+}
+
+.MemberName span img {
+	width: 1.3rem;
+	height: 1.3rem;
+}
+
+@media(width<800px) {
+	.leftDash {
+		width: 0%;
+	}
+
+	.rightDash {
+		width: 100%;
+		left: 0;
+	}
+
+	.dashTopbar {
+		font-size: 1rem;
+		padding: 1.5rem .5rem;
+	}
+
+	hr {
+		position: absolute;
+		width: 90%;
+		margin: 0 5%;
+		border: 1px solid #E0EDFF;
+	}
+
+	.content {
+		padding: 1rem;
+		font-size: .8rem;
+		height: fit-content;
+	}
+
+	.BoxContent {
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.RightBox {
+		width: 100%;
+	}
+
+	.CircleName {
+		padding: 1.5rem;
+	}
+
+	.CircleName p {
+		font-size: .75rem;
+	}
+
+	.CircleRank {
+		line-height: 2rem;
+	}
+
+	.CircleRank h1 {
+		font-size: 2.5rem;
+	}
+
+	.CircleRank h5 {
+		line-height: .8rem;
+	}
+
+	.EventOn,
+	.PendingApp {
+		padding: 1.5rem;
+	}
+
+	.BtnBtn {
+		padding: .5rem 1.5rem;
+	}
+
+	.buttons .BtnBtn {
+		padding: .5rem;
+		font-size: .65rem;
+	}
+
+	.MemberName {
+		gap: 2rem;
+	}
+}
