@@ -1,14 +1,13 @@
 .body {
     height: 6vh;
     display: flex;
+	padding: 40px 0;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
     border-radius: 8px;
 	font-family: 'Plus Jakarta Sans', sans-serif;
 	color: var(--Dark);
 	background-color: #fff;
-	margin: 1rem;
 }
 
 .container {
@@ -33,19 +32,9 @@
 }
 
 .csv {
-    border-radius: 8px;
     display: flex;
-    align-items: center;
-    background-color: #fff;
-    margin-right: 10px;
-    border: 1px solid #456FF6;
-    padding: 3px 10px;
-    box-shadow: none;
+	align-items: center;
     cursor: pointer;
-}
-
-.csv div {
-    margin-right: 5px;
 }
 
 .left {
@@ -54,9 +43,11 @@
 
 .right {
     width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: end;
+    display: inline-flex;
+	align-items: center;
+	justify-content: end;
+	margin: 0 !important;
+	padding: 0 !important;
 }
 
 .showContainer {
@@ -91,12 +82,6 @@
 	display: flex;
 	align-items: center;
 	border-radius: 8px;
-}
-
-.icon {
-	align-items: center;
-	display: flex;
-	flex-direction: row;
 }
 
 .clearIcon {
