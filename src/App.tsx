@@ -50,6 +50,7 @@ import KKEMLanding from "./modules/KKEM/modules/KKEMLanding";
 import KKEMAuth from "./modules/KKEM/modules/KKEMAuth";
 import RankCard from "./modules/Embeds/modules/RankCard/pages/RankCard";
 import HackathonEdit from "./modules/Dashboard/modules/Hackathon/Admin/pages/HackathonEdit";
+import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle";
 
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
@@ -191,13 +192,14 @@ const router = createBrowserRouter([
                     { path: "url-shortener", element: <UrlShortener /> },
                     { path: "hackathon", element: <Hackathon /> },
                     {
-                        path: "hackathon/create",
+						path: "hackathon/create",
                         element: <HackathonCreate />
                     },
                     {
-                        path: "hackathon/edit/:id",
+						path: "hackathon/edit/:id",
                         element: <HackathonEdit />
-                    }
+                    },
+					{ path: "learning-circle", element: <LearningCircle /> },
                 ]
             }
         ]
