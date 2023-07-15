@@ -144,7 +144,7 @@ const Profile = () => {
                 <meta name="description" content="you bio is here" />
 
                 {/* <!-- Open Graph / Facebook --> */}
-                <meta property="og:type" content="website" />
+                <meta property="og:type" content="Mulearn" />
                 <meta
                     property="og:url"
                     content={
@@ -167,6 +167,7 @@ const Profile = () => {
                 <meta property="og:description" content="you bio is here" />
                 <meta
                     property="og:image"
+                    itemProp="image"
                     content={
                         userProfile.profile_pic ? userProfile.profile_pic : dpm
                     }
