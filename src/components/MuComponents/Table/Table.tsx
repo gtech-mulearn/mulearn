@@ -92,8 +92,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                 month: "long",
                 day: "numeric"
             } as Intl.DateTimeFormatOptions;
-            const normalDate = dateObj.toLocaleDateString("en-US", options);
-            return normalDate;
+            return dateObj.toLocaleDateString("en-US", options);
         } catch (error) {
             return dateString;
         }
