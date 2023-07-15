@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { hasRole } from '../../../../services/common_functions';
 import { roles } from '../../../../services/types';
 import { getInfo } from './apis';
 import styles from "../../../../components/MuComponents/FormikComponents/form.module.css";
-import { Formik } from 'formik';
-import * as Yup from "yup";
-
 import FormData from './FormData';
 
 function EditOrganization() {
@@ -83,7 +80,7 @@ function EditOrganization() {
             activeItem="Community"
             inputName={inputName}
             inputCode={inputCode}
-            
+
             selectedCountry={selectedCountry}
             selectedState={selectedState}
             selectedZone={selectedZone}
@@ -97,20 +94,20 @@ function EditOrganization() {
 
   return (
     <div className="popup_container">
-          <div className={styles.container}>
-      <div className="popup_top_container">
-        <h1 className="popup_title">Edit {activeItem}</h1>
-        <i
-          className="fi fi-sr-cross"
-          onClick={() => {
-            navigate('/organizations');
-          }}
-        ></i>
-      </div>
-      <p>Kindly review the provided details and make sure that they are correct.
-        Once you have verified the information, please click the <span>Confirm</span>
-        button to proceed for further process.
-      </p>
+      <div className={styles.container}>
+        <div className="popup_top_container">
+          <h1 className="popup_title">Edit {activeItem}</h1>
+          <i
+            className="fi fi-sr-cross"
+            onClick={() => {
+              navigate('/organizations');
+            }}
+          ></i>
+        </div>
+        <p>Kindly review the provided details and make sure that they are correct.
+          Once you have verified the information, please click the <span>Confirm</span>
+          button to proceed for further process.
+        </p>
         <RenderFormData activeItem={activeItem} />
       </div>
     </div>

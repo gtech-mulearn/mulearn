@@ -1,7 +1,6 @@
 import React from "react";
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import axios from "axios";
-import { NavigateFunction } from "react-router-dom";
 import {
     privateGateway,
     publicGateway

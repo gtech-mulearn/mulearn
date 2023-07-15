@@ -1,6 +1,4 @@
 import React from "react";
-import { ToastId, UseToastOptions } from "@chakra-ui/react";
-import { NavigateFunction } from "react-router-dom";
 import { privateGateway } from "../../../../../services/apiGateways";
 import { dashboardRoutes } from "../../../../../services/urls";
 

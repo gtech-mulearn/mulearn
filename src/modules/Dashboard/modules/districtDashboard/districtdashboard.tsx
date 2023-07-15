@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Table from '../../../../components/MuComponents/Table/Table'
 import THead from '../../../../components/MuComponents/Table/THead'
@@ -6,17 +6,11 @@ import TableTop from '../../../../components/MuComponents/TableTop/TableTop'
 import Pagination from '../../../../components/MuComponents/Pagination/Pagination'
 import { getdistrictdashboard } from "./apis";
 import { useToast } from '@chakra-ui/react'
-
 import { hasRole } from '../../../../services/common_functions'
 import { roles } from '../../../../services/types'
 import { columnsStudent, columnsCampus } from "./THeaders";
 import TableTopTab from './TableTopTab'
-import Textfield from '../../../../components/MuComponents/TextField/Textfield'
-import Dropdown from '../../../../components/MuComponents/Dropdown/Dropdown'
-
 import "./Organizations.scss"
-import PrimaryButton from '../../../../components/MuComponents/MuButtons/MuOutlinedButton'
-import { MuButton } from '../../../../components/MuComponents/MuButtons/MuButton'
 import { dashboardRoutes } from '../../../../services/urls'
 
 function districtDashboard() {
@@ -28,9 +22,8 @@ function districtDashboard() {
     const [activeTab, setActiveTab] = useState("Student management");
     const [sort, setSort] = useState('');
     const [popupStatus, setPopupStatus] = useState(false)
-
-    const [isCreate, setIsCreate] = useState(false)
-    const [isEdit, setIsEdit] = useState(false)
+    // const [isCreate, setIsCreate] = useState(false)
+    // const [isEdit, setIsEdit] = useState(false)
     const firstFetch = useRef(true)
     const navigate = useNavigate();
 
@@ -147,8 +140,8 @@ function districtDashboard() {
                 "",
                 sort
             );
-		}
-		
+        }
+
         //console.log(`Icon clicked for column: ${column}`);
     };
 

@@ -1,6 +1,5 @@
 import styles from "./IGAbout.module.css";
 import Astronaut from "../assets/astronaut.png";
-import MuIDModal from "./MuIDModal";
 import KKEMAuth from "./Auth";
 import im7 from "../assets/im7.png";
 import im9 from "../assets/im9.png";

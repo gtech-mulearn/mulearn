@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios from "axios";
 import { authRoutes } from "./urls";
 import { createStandaloneToast } from "@chakra-ui/react";
 

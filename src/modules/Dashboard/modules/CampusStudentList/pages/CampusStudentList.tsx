@@ -1,11 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./CampusStudentList.module.css";
 import { getCampusDetails, getStudentDetails } from "../services/apis";
 import TableTop from "../../../../../components/MuComponents/TableTop/TableTop";
 import Table from "../../../../../components/MuComponents/Table/Table";
 import THead from "../../../../../components/MuComponents/Table/THead";
 import Pagination from "../../../../../components/MuComponents/Pagination/Pagination";
-import { GridLoader } from "react-spinners";
 import { titleCase } from "title-case";
 import { hasRole } from "../../../../../services/common_functions";
 import { roles } from "../../../../../services/types";
@@ -117,7 +116,7 @@ const CampusStudentList = (props: Props) => {
         <>
             {loading ? (
                 <div className={styles.loader_container}>
-                  <Muloader/>
+                    <Muloader />
                 </div>
             ) : (
                 <>
@@ -128,7 +127,7 @@ const CampusStudentList = (props: Props) => {
                                     Campus code : {campusData.campus_code}
                                 </p>
                                 <h1 className={styles.clg_name}>
-                                    {campusData&&campusData.college_name&&titleCase(
+                                    {campusData && campusData.college_name && titleCase(
                                         campusData?.college_name?.toLowerCase()
                                     )}
                                 </h1>
@@ -181,7 +180,7 @@ const CampusStudentList = (props: Props) => {
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
-                        
+
                     />
                     <Table
                         rows={studentData}

@@ -1,4 +1,3 @@
-import React from 'react'
 import './Organizations.scss';
 import Form from '../../../../components/MuComponents/Form/Form';
 import { useNavigate,useParams } from 'react-router-dom';

@@ -4,7 +4,6 @@ import Table from "../../../../components/MuComponents/Table/Table";
 import THead from "../../../../components/MuComponents/Table/THead";
 import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
 import { deleteManageRoles, getManageRoles } from "./apis";
-import { Blank } from "../../../../components/MuComponents/Table/Blank";
 import { roles } from "../../../../services/types";
 import { hasRole } from "../../../../services/common_functions";
 import { useNavigate } from "react-router-dom";

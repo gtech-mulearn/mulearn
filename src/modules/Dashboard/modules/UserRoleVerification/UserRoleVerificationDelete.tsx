@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
 import {
-    deleteUserRoleVerification,
-    getUserRoleVerificationDetails
+    deleteUserRoleVerification
 } from "./apis";
 import { useNavigate, useParams } from "react-router-dom";
 import Form from "../../../../components/MuComponents/Form/Form";

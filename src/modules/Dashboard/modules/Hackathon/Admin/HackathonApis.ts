@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
 import { privateGateway, publicGateway } from "../../../../../services/apiGateways";
-import { dashboardRoutes, onboardingRoutes, organizationRoutes } from "../../../../../services/urls";
+import { dashboardRoutes, onboardingRoutes } from "../../../../../services/urls";
 import { HackList } from "../User/Hackathon";
 import { SetStateAction } from "react";
 

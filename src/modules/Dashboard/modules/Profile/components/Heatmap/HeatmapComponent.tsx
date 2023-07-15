@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./Heatmap.module.css";
 import { Tooltip } from "@chakra-ui/react";
 import moment from "moment";
@@ -18,10 +18,10 @@ const HeatmapComponent = (props: Props) => {
 
     const dataYearFiltered = props.data
         ? props.data.filter(
-              item =>
-                  item.created_date &&
-                  item.created_date.slice(0, 4) === year.toString()
-          )
+            item =>
+                item.created_date &&
+                item.created_date.slice(0, 4) === year.toString()
+        )
         : [];
 
     const dataDayFiltered: {
@@ -70,20 +70,19 @@ const HeatmapComponent = (props: Props) => {
                 totalKarma >= 500
                     ? "#00814a"
                     : totalKarma >= 100
-                    ? "#27b176"
-                    : totalKarma >= 50
-                    ? "#2dce89ba"
-                    : totalKarma >= 10
-                    ? "#2dce899e"
-                    : totalKarma > 0
-                    ? "#2dce897d"
-                    : "";
+                        ? "#27b176"
+                        : totalKarma >= 50
+                            ? "#2dce89ba"
+                            : totalKarma >= 10
+                                ? "#2dce899e"
+                                : totalKarma > 0
+                                    ? "#2dce897d"
+                                    : "";
             const tooltipContent = existingItem
-                ? `Total Task: ${
-                      existingItem.taskCount
-                  }, Total Karma: ${totalKarma}, ${moment(
-                      existingItem.date
-                  ).format("ll")}`
+                ? `Total Task: ${existingItem.taskCount
+                }, Total Karma: ${totalKarma}, ${moment(
+                    existingItem.date
+                ).format("ll")}`
                 : "";
             content.push(
                 <Tooltip

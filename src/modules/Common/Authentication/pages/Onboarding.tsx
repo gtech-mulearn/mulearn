@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Onboarding.module.css";
-type Props = {};
-import ReactSelect, { SingleValue } from "react-select";
+import ReactSelect from "react-select";
 import Error from "../components/Error";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { useFormik } from "formik";
-
 import {
     getCountries,
     getColleges,
@@ -21,6 +19,7 @@ import {
 } from "../services/onboardingApis";
 import { useNavigate } from "react-router-dom";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+type Props = {};
 
 const animatedComponents = makeAnimated();
 

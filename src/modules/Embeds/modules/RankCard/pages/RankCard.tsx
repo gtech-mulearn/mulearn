@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './RankCard.module.css'
 
 export default function RankCard() {

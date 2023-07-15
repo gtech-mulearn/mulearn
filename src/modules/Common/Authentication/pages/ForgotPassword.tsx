@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { forgetPassword } from "../services/apis";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";

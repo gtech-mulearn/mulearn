@@ -1,12 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./ConnectDiscord.module.css";
 import cdimage from "../assets/images/connectdiscordpng1.png";
 import { getInfo } from "../services/apis";
-
 import { useToast } from "@chakra-ui/react";
 import { MdContentCopy } from "react-icons/md";
 import { BsDiscord } from "react-icons/bs";
-import { GridLoader } from "react-spinners";
 import Muloader from "@Mulearn/Muloader/Muloader";
 
 const ConnectDiscord = () => {
@@ -124,7 +122,7 @@ const ConnectDiscord = () => {
             ) : (
                 <div className={styles.spinner_container}>
                     <div className={styles.spinner}>
-                        <Muloader/>                    </div>
+                        <Muloader />                    </div>
                 </div>
             )}
         </>
