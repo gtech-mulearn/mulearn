@@ -272,7 +272,8 @@
 
 .rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard img {
   border-radius: 100%;
-  border: 5px solid #fff;
+  outline: 6px solid #fff;
+  outline-offset: -1px;
   width: 10rem;
   margin-left: 2rem;
   margin-top: -25px;
@@ -281,7 +282,7 @@
 .rightDash .profileDash .profile .profileInfo .profilePic .profile_pic_gard span {
   position: absolute;
   margin-right: 1rem;
-  margin-bottom: 14px;
+  margin-bottom: 7px;
   color: white;
   display: flex;
   justify-content: center;
@@ -391,7 +392,7 @@
   content: "";
   position: absolute;
   bottom: 0px;
-  width: 2rem;
+  /* width: 2rem; */
   height: 3.5px;
   background-color: #456FF6;
   transition: all .5s ease-in-out;
