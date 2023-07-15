@@ -67,7 +67,10 @@ const Profile = () => {
         }
     ]);
     const [userLevelData, setUserLevelData] = useState([
-        { name: "", tasks: [{ task_name: "", completed: false, hashtag: "" }] }
+        {
+            name: "",
+            tasks: [{ task_name: "", completed: false, hashtag: "", karma: 0 }]
+        }
     ]);
 
     const convertedData1 = userProfile.interest_groups.map(item => [
@@ -124,6 +127,9 @@ const Profile = () => {
                         userProfile.last_name +
                         " | Mulearn"}
                 </title>
+                <link rel="icon" type="image/svg+xml" href={
+                        userProfile.profile_pic ? userProfile.profile_pic : dpm
+                    } />
                 <meta
                     name="title"
                     content={
@@ -235,6 +241,12 @@ const Profile = () => {
                                       }
                             }
                             className={styles.share_pop_up_container}
+                            onKeyDown={e => {
+                                if (e.key === "Escape") {
+                                    setPopUP(false);
+                                }
+                            }}
+                            tabIndex={0}
                         >
                             <div className={styles.share_pop_up}>
                                 <div className={styles.share_pop_up_contents}>
@@ -306,18 +318,9 @@ const Profile = () => {
                                                         setTimeout(() => {
                                                             setCopy(false);
                                                         }, 3000);
-                                                        // toast({
-                                                        //     title: "Copied to clipboard",
-                                                        //     description:
-                                                        //         "Your profile link has been copied to clipboard",
-                                                        //     status: "success",
-                                                        //     duration: 3000,
-                                                        //     isClosable: true
-                                                        // });
                                                     }}
                                                     className="fi fi-sr-link"
                                                 >
-                                                    {/* {copy && ( */}
                                                     <div
                                                         className={styles.toast}
                                                     >
@@ -327,7 +330,6 @@ const Profile = () => {
                                                                 : "Copied!"}
                                                         </p>
                                                     </div>
-                                                    {/* )} */}
                                                 </i>
                                             </div>
                                         </div>
@@ -352,26 +354,6 @@ const Profile = () => {
                                     <button onClick={() => setPopUP(false)}>
                                         {!profileStatus ? "Cancel" : "Close"}
                                     </button>
-                                    {/* <div className={styles.share_options}>
-                                        <p>
-                                            <i className="fi fi-brands-whatsapp"></i>
-                                        </p>
-                                        <p>
-                                            <i className="fi fi-brands-facebook"></i>
-                                        </p>
-                                        <p>
-                                            <i className="fi fi-brands-twitter"></i>
-                                        </p>
-                                        <p>
-                                            <i className="fi fi-brands-youtube"></i>
-                                        </p>
-                                        <p>
-                                            <i className="fi fi-brands-linkedin"></i>
-                                        </p>
-                                        <p>
-                                            <i className="fi fi-brands-telegram"></i>
-                                        </p>
-                                    </div> */}
                                 </div>
                             </div>
                         </div>
@@ -480,9 +462,14 @@ const Profile = () => {
                                             <p
                                                 onClick={() => setPopUP(true)}
                                                 className={styles.share_btn}
+                                                onKeyDown={e => {
+                                                    if (e.key === "Escape") {
+                                                        setPopUP(false);
+                                                    }
+                                                }}
+                                                tabIndex={0}
                                             >
                                                 <i className="fi fi-br-share"></i>
-                                                {/* <i className="fi fi-sr-share-alt-square"></i> */}
                                             </p>
                                         ) : null}
                                         {/* <MuButton
@@ -505,16 +492,21 @@ const Profile = () => {
                                         <p
                                             style={
                                                 profileList === "basic-details"
-                                                    ? { marginLeft: "0px", width: "6.1rem" }
+                                                    ? {
+                                                          marginLeft: "0px",
+                                                          width: "6.1rem"
+                                                      }
                                                     : profileList ===
                                                       "karma-history"
                                                     ? {
-                                                          marginLeft: "125px", width: "6.7rem"
+                                                          marginLeft: "125px",
+                                                          width: "6.7rem"
                                                       }
                                                     : profileList ===
                                                       "mu-voyage"
                                                     ? {
-                                                          marginLeft: "250px", width: "5.3rem"
+                                                          marginLeft: "250px",
+                                                          width: "5.3rem"
                                                       }
                                                     : {}
                                             }
