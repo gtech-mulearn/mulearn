@@ -1666,9 +1666,9 @@ const Onboarding = (props: Props) => {
                                                 </span> */}
                                             </label>
                                             <input
-                                                id="referral_id"
+                                                id="referralId"
                                                 type="text"
-                                                name="referral_id"
+                                                name="referralId"
                                                 placeholder="Referral id , if any"
                                                 className={styles.input}
                                                 onBlur={formik.handleBlur}

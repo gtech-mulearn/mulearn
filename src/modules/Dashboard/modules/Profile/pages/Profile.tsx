@@ -391,7 +391,7 @@ const Profile = () => {
                                                     style={
                                                         !id
                                                             ? {
-                                                                  borderColor:
+                                                                  outlineColor:
                                                                       !profileStatus
                                                                           ? "#456FF6"
                                                                           : "#2dce89"
@@ -487,16 +487,16 @@ const Profile = () => {
                                         <p
                                             style={
                                                 profileList === "basic-details"
-                                                    ? { marginLeft: "0px" }
+                                                    ? { marginLeft: "0px", width: "6.1rem" }
                                                     : profileList ===
                                                       "karma-history"
                                                     ? {
-                                                          marginLeft: "125px"
+                                                          marginLeft: "125px", width: "6.7rem"
                                                       }
                                                     : profileList ===
                                                       "mu-voyage"
                                                     ? {
-                                                          marginLeft: "250px"
+                                                          marginLeft: "250px", width: "5.3rem"
                                                       }
                                                     : {}
                                             }
