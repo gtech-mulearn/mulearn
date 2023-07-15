@@ -181,32 +181,6 @@
   justify-content: center;
 }
 
-.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_options {
-  margin-top: 40px;
-  width: 100%;
-  overflow-x: scroll;
-  display: flex;
-  gap: 20px;
-}
-
-.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_options p {
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
-  font-size: 40px;
-  text-align: center;
-  margin: auto;
-  /* background: darkgrey; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .share_options p i {
-  height: 55px;
-  cursor: pointer;
-}
-
 .rightDash .loader_container {
   position: fixed;
   width: 100vw;
