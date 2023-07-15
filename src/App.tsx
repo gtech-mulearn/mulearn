@@ -37,7 +37,6 @@ import UserRoleVerificationEdit from "./modules/Dashboard/modules/UserRoleVerifi
 import InterestGroupEdit from "./modules/Dashboard/modules/InterestGroup/InterestGroupEdit";
 import EditOrgnaization from "./modules/Dashboard/modules/Organizations/EditOrganization";
 import UrlShortener from "./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener";
-import InterestGroupDelete from "./modules/Dashboard/modules/InterestGroup/InterestGroupDelete";
 import TaskEdit from "./modules/Dashboard/modules/Tasks/TaskEdit";
 import TaskCreate from "./modules/Dashboard/modules/Tasks/TaskCreate";
 import TaskDelete from "./modules/Dashboard/modules/Tasks/TaskDelete";
@@ -51,6 +50,7 @@ import KKEMAuth from "./modules/KKEM/modules/KKEMAuth";
 import RankCard from "./modules/Embeds/modules/RankCard/pages/RankCard";
 import HackathonEdit from "./modules/Dashboard/modules/Hackathon/Admin/pages/HackathonEdit";
 import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle";
+import CreateCircle from "./modules/Dashboard/modules/LearningCircle/pages/CreateCircle";
 
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
@@ -114,10 +114,6 @@ const router = createBrowserRouter([
                     {
                         path: "organizations/edit",
                         element: <EditOrgnaization />
-                    },
-                    {
-                        path: "interest-groups/delete/:id",
-                        element: <InterestGroupDelete />
                     },
                     {
                         path: "organizations/delete/:id",
@@ -192,14 +188,15 @@ const router = createBrowserRouter([
                     { path: "url-shortener", element: <UrlShortener /> },
                     { path: "hackathon", element: <Hackathon /> },
                     {
-						path: "hackathon/create",
+                        path: "hackathon/create",
                         element: <HackathonCreate />
                     },
                     {
-						path: "hackathon/edit/:id",
+                        path: "hackathon/edit/:id",
                         element: <HackathonEdit />
                     },
-					{ path: "learning-circle", element: <LearningCircle /> },
+                    { path: "learning-circle", element: <LearningCircle /> },
+                    { path: "create-circle", element: <CreateCircle /> },
                 ]
             }
         ]

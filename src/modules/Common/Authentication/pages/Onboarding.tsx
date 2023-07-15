@@ -204,7 +204,8 @@ const Onboarding = (props: Props) => {
         yog: "",
         mentorRole: "",
         areaOfInterest: [],
-        general: ""
+        general: "",
+        referralId: ""
     };
 
     const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
@@ -228,7 +229,8 @@ const Onboarding = (props: Props) => {
             dept: values.dept === "" ? null : values.dept, //required for student and enabler
             year_of_graduation: values.yog === "" ? null : values.yog, //required for student
             area_of_interests: values.areaOfInterest, //required,
-            password: values.password //required
+            password: values.password, //required
+            referral_id: values.referralId === "" ? null : values.referralId
         };
 
         registerUser(
@@ -1652,6 +1654,28 @@ const Onboarding = (props: Props) => {
                                                 </div>
                                             </>
                                         )}
+                                    </div>
+                                    <div className={styles.inputs}>
+                                        <div className={styles.input_container}>
+                                            <label htmlFor="">
+                                                Referral id
+                                                {/* <span
+                                                    className={styles.required}
+                                                >
+                                                    *
+                                                </span> */}
+                                            </label>
+                                            <input
+                                                id="referralId"
+                                                type="text"
+                                                name="referralId"
+                                                placeholder="Referral id , if any"
+                                                className={styles.input}
+                                                onBlur={formik.handleBlur}
+                                                onChange={formik.handleChange}
+                                                value={formik.values.referralId}
+                                            />
+                                        </div>
                                     </div>
 
                                     <div className={styles.inputs}>

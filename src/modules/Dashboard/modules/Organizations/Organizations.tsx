@@ -128,7 +128,7 @@ function Organizations() {
         });
     };
 
-    const handleDelete = (id: string | number | boolean) => {
+    const handleDelete = (id: string | undefined) => {
         //console.log("code:",id)
         navigate(`delete/${id}`)
         // const confirmed = confirm("Are you sure you want to delete?");

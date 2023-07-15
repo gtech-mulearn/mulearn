@@ -6,19 +6,19 @@ const LearningCircle = (props: Props) => {
     return (
         <>
             <div className={styles.content}>
-                <div className={styles.CircleName}>
-                    <div>
+                <div className={styles.CreatedCircle}>
+                    <div className={styles.CircleName}>
                         <h1>UX world</h1>
-                        <p>
+                        <b>
                             LBS Institute of Technology for Women <br /> Code:
                             LBT{" "}
-                        </p>
+                        </b>
                     </div>
                     <div className={styles.CircleRank}>
                         <div>
-                            <h3>Rank</h3>
+                            <b>Rank</b>
                             <h1>3</h1>
-                            <h5>4.68K Karma</h5>
+                            <b className={styles.points}>4.68K Karma</b>
                         </div>
                         <i className="fa-solid fa-right-from-bracket"></i>
                     </div>
@@ -29,25 +29,40 @@ const LearningCircle = (props: Props) => {
                         <div className={styles.EventOn}>
                             <div className={styles.MeetingOn}>
                                 <div>
-                                    <p>Next Meeting on</p>
+                                    <b>Next Meeting on</b>
                                     <div>
                                         <h1>22 June 2023</h1>
-                                        <p>Sunday</p>
+                                        <b>Sunday</b>
                                     </div>
                                 </div>
                                 <i className="fa-solid fa-pencil"></i>
                             </div>
                             <div className={styles.MeetingBtn}>
-                                <p>
+                                <b>
                                     venue: multiplication hall <br /> time:
                                     10:00 am
-                                </p>
+                                </b>
                                 <button className={styles.BtnBtn}>Done</button>
                             </div>
                         </div>
 
+                        {/* <div className={styles.EventOn}>
+                            <div className={styles.ScheduleOn}>
+                                <b>Schedule meeting</b>
+                                <p>Enter details to schedule your weekly meeting</p>
+                            </div>
+                            <div className={styles.InputSchedule}>
+                                <div>
+                                    <input type="time" placeholder="meeting time" />
+                                    <input type="date" placeholder="meeting day" />
+                                </div>
+                                <input type="text" placeholder="meeting venue" />
+                            </div>
+                            <button className={styles.BtnBtn}>Schedule</button>
+                        </div> */}
+
                         <div className={styles.PendingApp}>
-                            <h2>Pending approvals</h2>
+                            <b className={styles.PendingTitle}>Pending approvals</b>
                             <div className={styles.PendingList}>
                                 <div className={styles.PendingMembers}>
                                     <span>
@@ -55,7 +70,7 @@ const LearningCircle = (props: Props) => {
                                             src="https://www.himalmag.com/wp-content/uploads/2019/07/sample-profile-picture.png"
                                             alt=""
                                         />
-                                        <p>Sarah Philip</p>
+                                        <b>Sarah Philip</b>
                                     </span>
                                     <div className={styles.buttons}>
                                         <button className={styles.BtnBtn}>
@@ -72,7 +87,7 @@ const LearningCircle = (props: Props) => {
                                             src="https://www.himalmag.com/wp-content/uploads/2019/07/sample-profile-picture.png"
                                             alt=""
                                         />
-                                        <p>Sarah Philip</p>
+                                        <b>Sarah Philip</b>
                                     </span>
                                     <div className={styles.buttons}>
                                         <button className={styles.BtnBtn}>
@@ -94,8 +109,8 @@ const LearningCircle = (props: Props) => {
                                 alt=""
                             />
                             <div>
-                                <h1>87</h1>
-                                <p>STREAK</p>
+                                <b className={styles.StreakCount}>87</b>
+                                <b>STREAK</b>
                             </div>
                         </div>
 

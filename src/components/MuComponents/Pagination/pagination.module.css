@@ -1,0 +1,7 @@
+.pagePara {
+	color: var(--White);
+	background-color: var(--blue);
+	border-radius: var(--borderRadius);	
+	padding: 0.3rem .7rem;
+	margin: 0 10px;
+}
