@@ -1,10 +1,14 @@
 import Card from "./Card";
 import styles from "./IGSection.module.css";
 import assets from "../assets/IGS";
+import { useState } from "react";
+import MuIDModal from "./MuIDModal";
 
 const IGSection = () => {
+    const [modalOpen, setModalOpen] = useState(false);
     return (
         <>
+            <MuIDModal open={modalOpen} setOpen={setModalOpen} />
             <div className={styles.main_container}>
                 <div className={styles.first_view_container}>
                     <div className={styles.first_view}>
@@ -27,11 +31,13 @@ const IGSection = () => {
                                 learning about new things with a group of people
                                 with same interests!
                             </p>
-                            <a href="#cards">
-                                <span className={styles.get_started}>
-                                    Get Started{" "}
-                                </span>
-                            </a>
+
+                            <span
+                                onClick={() => setModalOpen(true)}
+                                className={styles.get_started}
+                            >
+                                Get Started{" "}
+                            </span>
                         </div>
                     </div>
                 </div>
