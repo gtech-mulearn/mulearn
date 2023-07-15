@@ -66,7 +66,7 @@ function ManageRoles() {
         navigate(`/manage-roles/edit/${id}`);
     };
 	const toast = useToast();
-    const handleDelete = (id: string | number | boolean) => {
+    const handleDelete = (id: string | undefined) => {
         // console.log(id);
         deleteManageRoles(id,toast);
         navigate(`/manage-roles/delete/${id}`);

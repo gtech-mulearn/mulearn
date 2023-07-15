@@ -159,7 +159,7 @@ export const getManageUsersDetails = async (
 };
 
 export const deleteManageUsers = async (
-    id: string | number | boolean,
+    id: string | undefined,
     toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {

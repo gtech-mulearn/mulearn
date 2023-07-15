@@ -85,7 +85,7 @@ export const Tasks = (props: Props) => {
         navigate(`/tasks/edit/${id}`);
     };
 
-    const handleDelete = (id: string | number | boolean) => {
+    const handleDelete = (id: string | undefined) => {
         navigate(`/tasks/delete/${id}`);
     };
 
