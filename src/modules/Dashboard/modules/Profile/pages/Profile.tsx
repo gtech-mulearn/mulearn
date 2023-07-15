@@ -127,9 +127,13 @@ const Profile = () => {
                         userProfile.last_name +
                         " | Mulearn"}
                 </title>
-                <link rel="icon" type="image/svg+xml" href={
+                <link
+                    rel="icon"
+                    type="image/svg+xml"
+                    href={
                         userProfile.profile_pic ? userProfile.profile_pic : dpm
-                    } />
+                    }
+                />
                 <meta
                     name="title"
                     content={
@@ -146,7 +150,11 @@ const Profile = () => {
                 {/* <!-- Open Graph / Facebook --> */}
                 <meta property="og:type" content="Mulearn" />
                 <meta
-                    property="og:url"
+                    property={`og:${
+                        (import.meta.env.VITE_FRONTEND_URL as string) +
+                        /profile/ +
+                        userProfile.muid
+                    }`}
                     content={
                         (import.meta.env.VITE_FRONTEND_URL as string) +
                         /profile/ +
@@ -187,7 +195,11 @@ const Profile = () => {
                 {/* <!-- Twitter --> */}
                 <meta property="twitter:card" content="summary_large_image" />
                 <meta
-                    property="twitter:url"
+                    property={`twitter:${
+                        (import.meta.env.VITE_FRONTEND_URL as string) +
+                        /profile/ +
+                        userProfile.muid
+                    }`}
                     content={
                         (import.meta.env.VITE_FRONTEND_URL as string) +
                         /profile/ +
@@ -226,7 +238,7 @@ const Profile = () => {
                 }
                 className={styles.rightDash}
             >
-                {APILoadStatus === 0 ? (
+                {APILoadStatus !== 200 ? (
                     <div className={styles.loader_container}>
                         <MuLoader />
                     </div>
