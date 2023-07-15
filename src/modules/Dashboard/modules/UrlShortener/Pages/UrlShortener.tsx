@@ -81,7 +81,7 @@ const UrlShortener = () => {
         )[0].title;
         setEditBtn(true);
     };
-    const handleDelete = (id: string | number | boolean) => {
+    const handleDelete = (id: any) => {
         deleteShortenUrl(id.toString(), toast);
         getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
     };

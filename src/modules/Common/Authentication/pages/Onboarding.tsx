@@ -205,7 +205,7 @@ const Onboarding = (props: Props) => {
         mentorRole: "",
         areaOfInterest: [],
         general: "",
-        referralId:""
+        referralId: ""
     };
 
     const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
@@ -230,7 +230,7 @@ const Onboarding = (props: Props) => {
             year_of_graduation: values.yog === "" ? null : values.yog, //required for student
             area_of_interests: values.areaOfInterest, //required,
             password: values.password, //required
-            referral_id:values.referralId
+            referral_id: values.referralId === "" ? null : values.referralId
         };
 
         registerUser(
