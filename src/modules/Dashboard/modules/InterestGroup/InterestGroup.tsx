@@ -3,7 +3,7 @@ import Pagination from "../../../../components/MuComponents/Pagination/Paginatio
 import Table from "../../../../components/MuComponents/Table/Table";
 import THead from "../../../../components/MuComponents/Table/THead";
 import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
-import { getInterestGroups } from "./apis";
+import { deleteInterestGroups, getInterestGroups } from "./apis";
 import { Blank } from "../../../../components/MuComponents/Table/Blank";
 import { roles } from "../../../../services/types";
 import { hasRole } from "../../../../services/common_functions";
@@ -12,6 +12,7 @@ import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./InterestGroup.module.css";
 import { dashboardRoutes } from "../../../../services/urls";
+import { useToast } from "@chakra-ui/react";
 
 function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
@@ -20,6 +21,7 @@ function InterestGroup() {
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
+	const toast = useToast();
     const firstFetch = useRef(true)
     const columnOrder = [
         { column: "name", Label: "Name", isSortable: true },
@@ -61,9 +63,13 @@ function InterestGroup() {
         navigate(`/interest-groups/edit/${id}`);
     };
 
-    const handleDelete = (id: string | number | boolean) => {
-        //console.log(id);
-        navigate(`/interest-groups/delete/${id}`);
+    const handleDelete = (id: string | undefined) => {
+        // console.log(id);
+        // navigate(`/interest-groups/delete/${id}`);
+		deleteInterestGroups(id, toast);
+		setTimeout(() => {
+			getInterestGroups(setData, 1, perPage, setTotalPages, "", "");
+		}, 1000);
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
@@ -119,6 +125,8 @@ function InterestGroup() {
                     id={["id"]}
                     onEditClick={handleEdit}
                     onDeleteClick={handleDelete}
+					modalDeleteHeading="Delete"
+					modalDeleteContent="Are you sure you want to delete "
                 >
                     <THead
                         columnOrder={columnOrder}
