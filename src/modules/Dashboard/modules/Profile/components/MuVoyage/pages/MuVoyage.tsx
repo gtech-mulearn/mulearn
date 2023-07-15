@@ -38,7 +38,7 @@ const MuVoyage = (props: Props) => {
                 userLevelData.filter(e => e.tasks.length !== 0).length - 1
             ]
         );
-        console.log(userLevelTrack);
+        // console.log(userLevelTrack);
         
     });
     // console.log(userLevelData);
