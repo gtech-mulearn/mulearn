@@ -51,6 +51,8 @@
   display: flex;
   /* transition: .5s ease; */
   transform: scale(0);
+  flex-direction: column;
+  align-items: center;
 }
 
 .rightDash .share_pop_up_container .share_pop_up {
@@ -132,6 +134,41 @@
   word-wrap: normal;
 }
 
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .link i .toast {
+  position: absolute;
+  right: 65px;
+  background: #000000ad;
+  color: white;
+  border-radius: 5px;
+  display: none;
+  align-items: center;
+  backdrop-filter: blur(4px);
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .link i .toast::before {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -12px;
+  transform: rotate(-90deg);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent;
+  border-top-color: #000000ad;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .link i .toast p {
+  color: #fff;
+  margin: 0px;
+  font-style: normal;
+  font-size: 12px;
+  padding: 5px 10px;
+}
+
+.rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .link i:hover .toast {
+  display: flex;
+}
+
 .rightDash .share_pop_up_container .share_pop_up .share_pop_up_contents .link i {
   cursor: pointer;
   padding: 10px;
@@ -175,14 +212,14 @@
   width: 100vw;
   height: 100dvh;
   top: 0;
-  left: 0;
+  /* left: 0; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 200;
   transition: all .5s ease-in;
-  transform: scaleX(-1);
+  /* transform: scaleX(-1); */
 }
 
 .rightDash .loader_container p {

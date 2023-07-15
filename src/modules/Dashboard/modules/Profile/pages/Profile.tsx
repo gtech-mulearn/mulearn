@@ -30,11 +30,12 @@ import { BsJustify } from "react-icons/bs";
 import axios from "axios";
 import { saveAs } from "file-saver";
 import mulearn_logo from "../assets/images/mulearnBrand.png";
-import Muloader from "@Mulearn/Muloader/Muloader";
+import MuLoader from "@Mulearn/MuLoader/MuLoader";
 
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
+    const [copy, setCopy] = useState(false);
     const toast = useToast();
     const [APILoadStatus, setAPILoadStatus] = useState(0);
     const [profileList, setProfileList] = useState("basic-details");
@@ -220,7 +221,7 @@ const Profile = () => {
             >
                 {APILoadStatus === 0 ? (
                     <div className={styles.loader_container}>
-                        <Muloader/>
+                        <MuLoader />
                     </div>
                 ) : (id && userProfile.is_public) || !id ? (
                     <>
@@ -290,6 +291,7 @@ const Profile = () => {
                                                     /profile/
                                                     {userProfile.muid}
                                                 </p>
+
                                                 <i
                                                     onClick={() => {
                                                         navigator.clipboard.writeText(
@@ -300,17 +302,33 @@ const Profile = () => {
                                                                 userProfile.muid
                                                             }`
                                                         );
-                                                        toast({
-                                                            title: "Copied to clipboard",
-                                                            description:
-                                                                "Your profile link has been copied to clipboard",
-                                                            status: "success",
-                                                            duration: 3000,
-                                                            isClosable: true
-                                                        });
+                                                        setCopy(true);
+                                                        setTimeout(() => {
+                                                            setCopy(false);
+                                                        }, 3000);
+                                                        // toast({
+                                                        //     title: "Copied to clipboard",
+                                                        //     description:
+                                                        //         "Your profile link has been copied to clipboard",
+                                                        //     status: "success",
+                                                        //     duration: 3000,
+                                                        //     isClosable: true
+                                                        // });
                                                     }}
                                                     className="fi fi-sr-link"
-                                                ></i>
+                                                >
+                                                    {/* {copy && ( */}
+                                                    <div
+                                                        className={styles.toast}
+                                                    >
+                                                        <p>
+                                                            {!copy
+                                                                ? "Copy"
+                                                                : "Copied!"}
+                                                        </p>
+                                                    </div>
+                                                    {/* )} */}
+                                                </i>
                                             </div>
                                         </div>
                                     )}

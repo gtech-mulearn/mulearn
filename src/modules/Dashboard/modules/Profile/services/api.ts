@@ -125,7 +125,7 @@ export const fetchQRCode = async (muid: any, setBlob: any) => {
                 `https://quickchart.io/qr?text=${
                     (import.meta.env.VITE_FRONTEND_URL as string) +
                     /profile/ +
-                    (muid)
+                    `${muid}`
                 }&centerImageUrl=https://github.com/Jovit-Mathew236/mulearn/blob/dev/src/modules/Dashboard/modules/Profile/assets/images/mulearnBrand.png?raw=true`,
                 {
                     responseType: "arraybuffer"
@@ -138,7 +138,7 @@ export const fetchQRCode = async (muid: any, setBlob: any) => {
                 });
                 setBlob(URL.createObjectURL(blob));
                 // const imageUrl = URL.createObjectURL(blob);
-                console.log(blob);
+                // console.log(blob);
             });
     } catch (error) {
         console.error(error);
