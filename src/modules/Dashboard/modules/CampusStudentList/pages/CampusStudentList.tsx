@@ -10,7 +10,8 @@ import { titleCase } from "title-case";
 import { hasRole } from "../../../../../services/common_functions";
 import { roles } from "../../../../../services/types";
 import { useNavigate } from "react-router-dom";
-import MuLoader from "../../../../../components/MuComponents/MuLoader/MuLoader";
+import MuLoader from "@Mulearn/MuLoader/MuLoader";
+
 
 type Props = {};
 
