@@ -27,7 +27,7 @@ const UrlShortener = () => {
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
     const toast = useToast();
-    const firstFetch = useRef(true)
+    const firstFetch = useRef(true);
 
     const [hasValidationError, setHasValidationError] = useState({
         error: false,
@@ -44,7 +44,6 @@ const UrlShortener = () => {
     const editableColumnNames = ["Title", "Short URL", "Long URL"];
     useEffect(() => {
         if (firstFetch.current) {
-
             if (!hasRole([roles.ADMIN])) navigate("/404");
             getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
         }
@@ -232,17 +231,20 @@ const UrlShortener = () => {
                                 {formik.errors.long_url}
                             </p>
                         ) : null}
-                        <div className={styles.short_url_input}>
-                            <input
-                                className={styles.short_url}
-                                type="url"
-                                name="short_url"
-                                onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
-                                value={formik.values.short_url}
-                                placeholder="Enter short url"
-                                required
-                            />
+                        <div className={styles.short_url_input_container}>
+                            <div className={styles.short_url_input}>
+                                <label htmlFor="">mulearn.org/</label>
+                                <input
+                                    className={styles.short_url}
+                                    type="url"
+                                    name="shortUrl"
+                                    onBlur={formik.handleBlur}
+                                    onChange={formik.handleChange}
+                                    value={formik.values.short_url}
+                                    placeholder="Enter short url"
+                                    required
+                                />
+                            </div>
                             {!editBtn ? (
                                 <input
                                     className={styles.submit}
