@@ -6,6 +6,10 @@ import { ClipLoader } from "react-spinners";
 // normal button
 // need text for button
 
+/**
+ * TODO: Make Single and Powerful Button Component(Multi-Purpose)
+ */
+
 export const MuButton = (props: {
     text: string; // text of button
     icon?: ReactJSXElement; // button icon
