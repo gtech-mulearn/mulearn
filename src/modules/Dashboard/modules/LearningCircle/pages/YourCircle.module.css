@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.leftDash {
+    position: fixed;
+    left: 0;
+    width: 20%;
+    height: 100%;
+    background-color: #F0F6FF;
+}
+
+.dashTopbar {
+    width: calc(100% - 2rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    margin: 0 1rem;
+    background-color: #fff;
+    font-size: 1.5rem;
+}
+
+.dashTopbar img {
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
+    border-radius: 100%;
+}
+
+.rightDash {
+    position: relative;
+    width: 80%;
+    height: fit-content;
+    left: 20%;
+}
+
+hr {
+    position: absolute;
+    width: calc(100% - 6rem);
+    margin: 0 3rem;
+    top: 6rem;
+    border: 1px solid #E0EDFF;
+}
+.content{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 8rem);
+    background: white;
+    margin-left: 3rem;
+    gap: 1rem;
+    border-radius: 1rem;
+    margin-top: 2.5rem;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+
+}
+.desc{
+    width: 55%;
+    text-align: center;
+
+}
+h3{
+    font-size: 2rem;
+    color: #456FF6;
+    font-weight: bold;
+    
+}
+.desc p{
+    margin-top: 1rem;
+    font-size: .9rem;
+    color: black;
+}
+.content img{
+    width: 40%;
+    height: 90%;
+    
+}
+.content .button {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}   
+.content .button button{
+    margin-top: 1rem;
+    width: 6rem;
+    height: 2rem;
+    border-radius: 8px;
+    border-width:2px;
+}
+.content .button .join{
+    background: #456FF6;
+    color: white;
+    border-color: #456FF6;
+}
+.content .button .create{
+    background:white;
+    color:#456FF6;
+    border-color: #456FF6;
+}
+.middle{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+@media(width<800px) {
+    .leftDash {
+        width: 0%;
+    }
+
+    .rightDash {
+        width: 100%;
+        left: 0;
+    }
+
+    .dashTopbar {
+        font-size: 1rem;
+        padding: 1.5rem .5rem;
+    }
+
+    hr {
+        position: absolute;
+        width: 90%;
+        margin: 0 5%;
+        border: 1px solid #E0EDFF;
+    }
+    .content{
+        flex-direction: column;
+    }
+    .desc h3{
+        font-size: 1rem;
+    }
+    .desc p{
+        font-size: .7rem;
+    }
+    .accordian{
+        margin-top: 1rem;
+    }
+    
+}
+/*list*/
+.accordian{
+    margin-top: 7rem;
+    margin-left: 3rem;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 8rem);
+    gap: 1rem;
+    margin-bottom: 3rem;
+   
+    
+}
+.accordian h2{
+    margin-bottom: 2rem;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: black;
+}
+.mainlist{
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+    border-radius: .5rem;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+}
+.level {
+    padding: 1rem 1.5rem 0rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+.level div{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: .9rem;
+
+}
+.btn{
+    width: 3rem;
+    height: 2rem;
+    background: #456FF6;
+    color: white;
+    border-radius: 7px;
+}
+
+.expandBtn {
+    display: none;
+}
+.mainlist .expandBtn:checked+.level{
+    height: 4rem;
+    border-radius: 8px;
+    background: #456FF6;
+    color: white;
+}
+
+.fa-solid{
+    font-weight: 900;
+}
+
+.fa-chevron-right:before {
+    content: "\f054";
+}
+
+/* No learning circles case */
+.middle{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.middle img{
+    margin-top: 2rem;
+    width: 50%;
+    margin-right: 4rem;
+}
