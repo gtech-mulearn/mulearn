@@ -6,8 +6,9 @@ import FormikReactSelect, {
     FormikTextAreaWhite,
     FormikTextInputWhite
 } from "../../../../../../components/MuComponents/FormikComponents/FormikComponents";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { createHackathon, getDistrict, getFormFields } from "../HackathonApis";
+import { FiUploadCloud } from "react-icons/fi";
 
 const options = [
     { label: "Option 1", value: "111" },
@@ -24,11 +25,13 @@ const HackathonCreate = () => {
     const [formData, setFormData] = useState("");
     const [district, setDistrict] = useState("");
     const [institutions, setInstitutions] = useState("");
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
 
     useEffect(() => {
         if (formData === "") {
             getFormFields(setFormData);
-			getDistrict(setDistrict, 'Kerala')
+            getDistrict(setDistrict, "Kerala");
         }
     }, []);
 
@@ -47,6 +50,8 @@ const HackathonCreate = () => {
             setTabIndex(tabIndex - 1);
         }
     }
+
+   
 
     const hackathonSchema = Yup.object().shape({
         title: Yup.string()
@@ -167,7 +172,8 @@ const HackathonCreate = () => {
             `${values.eventStart}T00:00:00Z`,
             `${values.eventEnd}T00:00:00Z`,
             selectedFields,
-            values.event_logo
+            values.event_logo,
+            values.banner,
         );
         resetForm();
     };
@@ -227,9 +233,9 @@ const HackathonCreate = () => {
                                         <Tab>Basics</Tab>
                                         <Tab>Dates</Tab>
                                         <Tab>Details</Tab>
-                                        <span></span>
+                                        <Tab>Advanced</Tab>
                                         <Tab>Application</Tab>
-                                        {/* <Tab>Sponsors</Tab> */}
+                                        <span></span>
                                         {/* <Tab>Events</Tab> */}
                                         {/* <Tab>FAQs</Tab> */}
                                     </TabList>
@@ -313,68 +319,6 @@ const HackathonCreate = () => {
                                                 options={options1}
                                                 label={"Type of the hackathon"}
                                             />
-                                            <div className={styles.InputSet}>
-                                                <label
-                                                    className={styles.formLabel}
-                                                >
-                                                    Event Logo
-                                                </label>
-                                                <input
-                                                    type="file"
-                                                    className={
-                                                        styles.image_input
-                                                    }
-                                                    onChange={event => {
-                                                        if (
-                                                            event.target.files
-                                                        ) {
-                                                            setFieldValue(
-                                                                "event_logo",
-                                                                event.target
-                                                                    .files[0]
-                                                            );
-                                                        }
-                                                    }}
-                                                />
-                                                {errors.event_logo && (
-                                                    <div
-                                                        className={styles.error}
-                                                    >
-                                                        {errors.event_logo}
-                                                    </div>
-                                                )}
-                                            </div>
-                                            <div className={styles.InputSet}>
-                                                <label
-                                                    className={styles.formLabel}
-                                                >
-                                                    Banner
-                                                </label>
-                                                <input
-                                                    type="file"
-                                                    className={
-                                                        styles.image_input
-                                                    }
-                                                    onChange={event => {
-                                                        if (
-                                                            event.target.files
-                                                        ) {
-                                                            setFieldValue(
-                                                                "banner",
-                                                                event.target
-                                                                    .files[0]
-                                                            );
-                                                        }
-                                                    }}
-                                                />
-                                                {errors.banner && (
-                                                    <div
-                                                        className={styles.error}
-                                                    >
-                                                        {errors.banner}
-                                                    </div>
-                                                )}
-                                            </div>
                                             <FormikTextInputWhite
                                                 label="Website"
                                                 name="website"
@@ -383,6 +327,140 @@ const HackathonCreate = () => {
                                             />
                                         </TabPanel>
 
+                                        <TabPanel className={styles.formGroup}>
+                                        <div className={styles.InputSet}>
+                                                <label
+                                                    className={styles.formLabel}
+                                                >
+                                                    Banner
+                                                </label>   
+                                            <div className={styles.upload_area}>
+                                                <label
+                                                    htmlFor="file-upload1-input1"
+                                                    className={
+                                                        styles.upload_button
+                                                    }
+                                                >
+                                                    <FiUploadCloud
+                                                        className={styles.icon}
+                                                    />
+                                                    <p className={styles.text}>
+                                                        Click to choose
+                                                    </p>
+                                                    <span className={styles.text1}>
+                                                            60x12 .png or .jpeg 5MB max
+                                                        </span>
+                                                </label>
+                                                <input
+                                                    id="file-upload1-input1"
+                                                    type="file"
+                                                    accept=".png,.jepg,.jpg"
+                                                    name="banner"
+                                                    onChange={(event: any) => {
+                                                        
+                                                        if (
+                                                            event.target
+                                                                .files
+                                                        ) {
+                                                            setFieldValue(
+                                                                "banner",
+                                                                event.target
+                                                                    .files[0]
+                                                            );
+                                                        }
+                                                        setSelectedFiles(event.target.files[0]);
+                                                    }}
+                                                    style={{
+                                                        opacity: 0,
+                                                        position: "absolute",
+                                                        top: 100,
+                                                        left: 0
+                                                    }}
+                                                />
+                                            </div>
+                                            {errors.banner && (
+                                                <div className={styles.error}>
+                                                    {errors.banner}
+                                                </div>
+                                            )}
+                                            {selectedFiles && (
+                                                <div
+                                                    className={styles.fileInfo}
+                                                >
+                                                    <span>
+                                                        {selectedFiles.name}
+                                                    </span>
+                                                </div>
+                                            )}
+                                            </div>
+
+                                       
+                                            <div className={styles.InputSet}>
+                                                <label
+                                                    className={styles.formLabel}
+                                                >
+                                                    Event Logo
+                                                </label>   
+                                            <div className={styles.upload_area}>
+                                                <label
+                                                    htmlFor="file-upload1-input"
+                                                    className={
+                                                        styles.upload_button
+                                                    }
+                                                >
+                                                    <FiUploadCloud
+                                                        className={styles.icon}
+                                                    />
+                                                    <p className={styles.text}>
+                                                        Click to choose
+                                                    </p>
+                                                    <span className={styles.text1}>
+                                                            300x124 .png or .jpeg 10MB max
+                                                        </span>
+                                                </label>
+                                                <input
+                                                    id="file-upload1-input"
+                                                    type="file"
+                                                    accept=".png,.jepg,.jpg"
+                                                    name="event_logo"
+                                                    onChange={(event: any) => {
+                                                        
+                                                        if (
+                                                            event.target
+                                                                .files
+                                                        ) {
+                                                            setFieldValue(
+                                                                "event_logo",
+                                                                event.target
+                                                                    .files[0]
+                                                            );
+                                                        }
+                                                        setSelectedFile(event.target.files[0]);
+                                                    }}
+                                                    style={{
+                                                        opacity: 0,
+                                                        position: "absolute",
+                                                        top: 100,
+                                                        left: 0
+                                                    }}
+                                                />
+                                            </div>
+                                            {errors.event_logo && (
+                                                <div className={styles.error}>
+                                                    {errors.event_logo}
+                                                </div>
+                                            )}
+                                            {selectedFile && (
+                                                <div
+                                                    className={styles.fileInfo}
+                                                >
+                                                    <span>
+                                                        {selectedFile.name}
+                                                    </span>
+                                                </div>
+                                            )}
+                                            </div>
+                                        </TabPanel>
                                         <TabPanel className={styles.formGroup}>
                                             <div
                                                 id="checkbox-group"
@@ -438,10 +516,6 @@ const HackathonCreate = () => {
                                                 )}
                                             </div>
                                         </TabPanel>
-
-                                        <TabPanel
-                                            className={styles.formGroup}
-                                        ></TabPanel>
 
                                         <TabPanel
                                             className={styles.formGroup}
