@@ -1,38 +1,51 @@
-import { useFormik } from "formik";
-import styles from "./HackathonCreate.module.css";
+import { useToast } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import { Form, Formik } from "formik";
+import styles from "@Mulearn/FormikComponents/FormComponents.module.css";
+import * as Yup from "yup";
+import { FormikTextInput } from "@Mulearn/FormikComponents/FormikComponents";
+import { PowerfullButton } from "@Mulearn/MuButtons/MuButton";
 
 type Props = {};
 
-const HackathonOrganizers = (props: Props) => {
-    const formik = useFormik({
-        initialValues: {
-            muId: ""
-        },
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
-        }
-    });
+export const HackathonOrganizers = (props: Props) => {
+    const toast = useToast();
+
     return (
-        <div>
-            <form className={styles.InputSet} onSubmit={formik.handleSubmit}>
-                <label htmlFor="muId" className={styles.formLabel}>
-                    Mu ID of the organizer
-                </label>
-                <input
-                    id="muId"
-                    name="muId"
-                    type="text"
-                    onChange={formik.handleChange}
-                    value={formik.values.muId}
-                />
-                <div className={styles.btns}>
-                    <button className={styles.btn} type="submit">
-                        Submit
-                    </button>
-                </div>
-            </form>
+        <div className={styles.external_container}>
+            <div className={styles.container}>
+                <h1 className={styles.text}>IG Create Page</h1>
+                <Formik
+                    initialValues={{
+                        muid: ""
+                    }}
+                    validationSchema={Yup.object({
+                        muid: Yup.string()
+                            .max(30, "Must be 30 characters or less")
+                            .required("Required")
+                    })}
+                    onSubmit={values => {
+                        console.log(values.muid);
+                        toast({
+                            title: "success",
+                            status: "success",
+                            duration: 3000,
+                            isClosable: true
+                        });
+                    }}
+                >
+                    <Form className={styles.inputContainer}>
+                        <FormikTextInput
+                            label="Mu ID"
+                            name="muid"
+                            type="text"
+                            placeholder="Enter Mu ID"
+                        />
+
+                        <PowerfullButton text={"Add Organizer"} margin="23px 0 0 0"></PowerfullButton>
+                    </Form>
+                </Formik>
+            </div>
         </div>
     );
 };
-
-export default HackathonOrganizers;

@@ -9,7 +9,7 @@ import FormikReactSelect, {
 import { ChangeEvent, useEffect, useState } from "react";
 import { createHackathon, getDistrict, getFormFields } from "../HackathonApis";
 import { FiUploadCloud } from "react-icons/fi";
-import HackathonOrganizers from "./HackathonOrganizers";
+import { HackathonOrganizers } from "./HackathonOrganizers";
 
 
 /**
@@ -526,7 +526,7 @@ const HackathonCreate = () => {
                                         <TabPanel
                                             className={styles.formGroup}
                                         >
-											<HackathonOrganizers/>
+											work in progress
 										</TabPanel>
 
                                         <TabPanel
