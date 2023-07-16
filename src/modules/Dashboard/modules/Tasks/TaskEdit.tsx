@@ -15,6 +15,7 @@ import { AxiosError } from "axios";
 
 type Props = {};
 
+
 const TaskEdit = (props: Props) => {
     const [data, setData] = useState<TaskEditInterface>({});
     const [uuidData,setuuidData] =  useState< {[index: string]: any[]} | null>(null);
@@ -59,7 +60,6 @@ const TaskEdit = (props: Props) => {
         ig_id: Yup.string(),
         organization_id: Yup.string(),
     });
-
     return (
         <div className={styles.external_container}>
             <div className={styles.container}>
@@ -70,14 +70,14 @@ const TaskEdit = (props: Props) => {
                         hashtag: data.hashtag || "",
                         title: data.title || "",
                         karma: data.karma || "",
-                        active: data.active || "",
-                        variable_karma: data.variable_karma || "",
+                        active: data.active?'1':'0' || "",
+                        variable_karma: data.variable_karma?'1':'0' || "",
                         usage_count: data.usage_count || "",
-                        channel_id: "",
-                        type_id: "",
-                        level_id: "",
-                        ig_id: "",
-                        organization_id:""
+                        channel_id: data.channel ||"",
+                        type_id: data.type ||"",
+                        level_id: data.level ||"",
+                        ig_id: data.ig || "",
+                        organization_id:data.org ||""
                     }}
                     validationSchema={taskEditSchema}
                     onSubmit={values => {
@@ -146,6 +146,7 @@ const TaskEdit = (props: Props) => {
                             label="Channel"
                             name="channel_id"
                             disabled = {!uuidData}
+                            defaultValue = {data.channel}
                         >
                             <option value="">Select an option</option>
                             {uuidData?.channel.map((val)=>{

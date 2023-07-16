@@ -44,7 +44,7 @@ export const getTaskDetails = async (
             dashboardRoutes.getTasksData + "get/" + id + "/"
         );
         const message: any = response?.data;
-        console.log(message);
+        //console.log(message);
         setData(message.response.Task);
     } catch (err: unknown) {
         const error = err as AxiosError;
