@@ -1,4 +1,3 @@
-import PrimaryButton from "../MuButtons/MuOutlinedButton";
 import styles from './pagination.module.css'
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 

@@ -10,7 +10,7 @@ import { FormikTextInput } from "../../../../components/MuComponents/FormikCompo
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 import { useNavigate, useParams } from "react-router-dom";
 // import { toast } from "react-toastify";
-import styles from "../../../../components/MuComponents/FormikComponents/form.module.css";
+import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
 import { NULL } from "sass";
 import "./UserRoleVerification.scss";
 

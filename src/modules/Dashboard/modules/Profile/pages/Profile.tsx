@@ -32,6 +32,7 @@ import { saveAs } from "file-saver";
 import mulearn_logo from "../assets/images/mulearnBrand.png";
 import MuLoader from "@Mulearn/MuLoader/MuLoader";
 
+
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();

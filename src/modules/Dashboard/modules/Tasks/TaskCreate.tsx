@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { createTask, getUUID } from "./TaskApis";
-import styles from "../../../../components/MuComponents/FormikComponents/form.module.css";
+import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { FormikSelect, FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";

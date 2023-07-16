@@ -10,6 +10,10 @@ interface ModalProps {
     click: any;
 }
 
+/*
+TODO: Conditional rendering of icon.
+*/
+
 const Modal: FC<ModalProps> = ({ setIsOpen, id, heading, content, click }) => {
     return (
         <>

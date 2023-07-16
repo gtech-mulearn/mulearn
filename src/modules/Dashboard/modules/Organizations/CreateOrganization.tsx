@@ -3,7 +3,7 @@ import './Organizations.scss';
 import { useLocation } from 'react-router-dom';
 import FormData from './FormData';
 import Form from "../../../../components/MuComponents/Form/Form";
-import styles from "../../../../components/MuComponents/FormikComponents/form.module.css";
+import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
 import { Formik } from 'formik';
 import * as Yup from "yup";
 
