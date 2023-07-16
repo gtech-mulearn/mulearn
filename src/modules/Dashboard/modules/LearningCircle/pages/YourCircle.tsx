@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './YourCircle.module.css'
-import image1 from '../../../assets/images/image7.png'
-import image2 from '../../../assets/images/image (10).png'
+import imageTop from '../../../assets/images/LC2.png'
+import imageBottom from '../../../assets/images/LC3.png'
 
 type circleListELement={
     name:string,
@@ -18,7 +18,7 @@ const YourCircle = () => {
     return (
     <>
     <div className={styles.content}>
-            <img src={image1} alt="image"/>
+            <img src={imageTop} alt="image"/>
             <div className={styles.desc}>
                 <h3>Learn,share,together</h3>
                 <p> A fantastic way to spend a small amount of time learning about new things<br/> with a group of people with same interests!</p>
@@ -61,7 +61,7 @@ const YourCircle = () => {
                 }</> 
                 :
                 <div className={styles.middle}>
-                    <img src={image2} alt="You haven't joined any circles yet"/>
+                    <img src={imageBottom} alt="You haven't joined any circles yet"/>
                 </div>
                 
                 }
