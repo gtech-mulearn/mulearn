@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styles from "./TableTop.module.css";
-import { HiArrowCircleRight, HiOutlineX } from "react-icons/hi";
-import { Button } from "@chakra-ui/button";
+import { HiOutlineX } from "react-icons/hi";
 
 type Props = {
     onSearch: (data: string) => void;

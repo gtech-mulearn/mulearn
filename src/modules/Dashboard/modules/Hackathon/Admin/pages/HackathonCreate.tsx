@@ -11,6 +11,11 @@ import { createHackathon, getDistrict, getFormFields } from "../HackathonApis";
 import { FiUploadCloud } from "react-icons/fi";
 import HackathonOrganizers from "./HackathonOrganizers";
 
+
+/**
+ * TODO: Move YUP Validations to another file.
+ * TODO: Make the form things json and iterate and display, store the jsons in a separate file.
+ */
 const options = [
     { label: "Option 1", value: "111" },
     { label: "Option 2", value: "222" },

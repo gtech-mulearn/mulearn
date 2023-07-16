@@ -1,8 +1,12 @@
 import { useField } from "formik";
-import styles from "./form.module.css";
+import styles from "./FormComponents.module.css";
 import React from "react";
 import Select, { Props as SelectProps } from "react-select";
 
+/*
+TODO: Verify the Unused Code/Components in this File
+TODO: Transition the old inputs to the new one("eg.FormikTextAreaWhite")
+*/
 export const FormikTextInput = ({ label, ...props }: any) => {
     // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
     // which we can spread on <input>. We can use field meta to show an error

@@ -10,6 +10,7 @@ import { useState } from "react";
 export default function MulearnAbout() {
     const [searchParams] = useSearchParams();
     const dwms_id = searchParams.get("dwms_id");
+    const mu_id = searchParams.get("mu_id");
     const [modalOpen, setModalOpen] = useState(false);
     return (
         <section id="about" className={styles.section}>
@@ -26,7 +27,7 @@ export default function MulearnAbout() {
                     entrepreneurship to data science
                 </p>
 
-                {dwms_id && (
+                {dwms_id && !(dwms_id && mu_id) &&(
                     <>
                         <p className={styles.description}>Join Now: </p>
                         <section id="muId" className={styles.muidSection}>
