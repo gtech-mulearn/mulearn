@@ -61,6 +61,11 @@ export const editTask = async (
     active: string,
     variable_karma: string,
     usage_count: string,
+    channel_id: string,
+    type_id: string,
+    level_id: string,
+    ig_id: string,
+    org_id:string,
     id: string | undefined
 ) => {
     try {
@@ -72,7 +77,12 @@ export const editTask = async (
                 karma: parseInt(karma),
                 usage_count: parseInt(usage_count),
                 active: parseInt(active),
-                variable_karma: parseInt(variable_karma)
+                variable_karma: parseInt(variable_karma),
+                channel: channel_id,
+                type: type_id,
+                level: level_id,
+                ig: ig_id,
+                org:org_id
             }
         );
         const message: any = response?.data;
@@ -161,24 +171,6 @@ export const getUUID = async () => {
     }
 
     const response:{[index:string]:Array<any>} = {}
-
-    /*Alternate method using promise.all
-    const alternate_res = (await Promise.all(
-        Object.values(uuids)
-        .map((url)=>(privateGateway.get(url)))
-    ))
-    .map((res)=>
-        (res.data.response as Array<any>)
-        .sort((a,b)=>(
-            (a.name !== undefined && a.name<b.name) 
-            || 
-            (a.title !== undefined && a.title<b.title) )
-            ?-1:1
-        )
-    )
-    */
-
-
     for (let key in uuids){
         response[key]=(
         (await privateGateway.get(uuids[key]))

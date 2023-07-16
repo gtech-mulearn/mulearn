@@ -71,7 +71,7 @@ export const dashboardRoutes = {
     createHackathon: "/api/v1/hackathon/create-hackathon/",
     getHackathons: "/api/v1/hackathon/list-hackathons/",
     getOwnHackathons: "/api/v1/hackathon/list-orgniser-hackathons/",
-};
+} as const;
 
 export const organizationRoutes = {
     getOrganizationsAll: "/api/v1/organisation/institutes/info/all_inst",
