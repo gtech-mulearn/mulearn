@@ -36,12 +36,12 @@ type TableProps = {
     }[];
     id?: string[];
     onEditClick?: (column: string | number | boolean) => void;
-    onDeleteClick?: (column: string | number | boolean) => void;
+    onDeleteClick?: (column: string | undefined) => void;
     onVerifyClick?: (column: string | number | boolean) => void;
-	modalVerifyHeading?: string;
-	modalVerifyContent?: string;
-	modalDeleteHeading?: string;
-	modalDeleteContent?: string;
+    modalVerifyHeading?: string;
+    modalVerifyContent?: string;
+    modalDeleteHeading?: string;
+    modalDeleteContent?: string;
 };
 
 {
@@ -50,7 +50,19 @@ use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <T
 }
 
 const Table: FC<TableProps> = (props: TableProps) => {
-    const [isOpen, setIsOpen] = useState(false);
+
+	const [isOpen, setIsOpen] = useState<boolean[]>(
+        props.rows.map(() => false)
+    );
+
+    // Function to toggle the modal for a specific row
+    const toggleModal = (index: number) => {
+        setIsOpen(prevState => {
+            const newState = [...prevState];
+            newState[index] = !newState[index];
+            return newState;
+        });
+    };
 
     function convertToNormalDate(dateString: any): string | null {
         const numberRegex = /^[0-9]+$/;
@@ -80,11 +92,12 @@ const Table: FC<TableProps> = (props: TableProps) => {
                 month: "long",
                 day: "numeric"
             } as Intl.DateTimeFormatOptions;
-            const normalDate = dateObj.toLocaleDateString("en-US", options);
-            return normalDate;
+            return dateObj.toLocaleDateString("en-US", options);
         } catch (error) {
             return dateString;
         }
+
+		
     }
 
     const startIndex = (props.page - 1) * props.perPage;
@@ -111,7 +124,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                     </td>
                                 ))}
                                 {props.id &&
-                                    props.id.map(column => (
+                                    props.id.map((column, columnIndex) => (
                                         <td className={styles.td} key={column}>
                                             <div className={styles.icons}>
                                                 {props.onEditClick && (
@@ -130,38 +143,54 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                     <button
                                                         className={styles.btns}
                                                         onClick={() =>
-                                                            setIsOpen(true)
+                                                            toggleModal(index)
                                                         }
                                                     >
                                                         Verify
                                                     </button>
                                                 )}
-                                                {isOpen && (
+                                                {isOpen[index] && (
                                                     <Modal
-														setIsOpen={setIsOpen}
-														id={rowData[column]}
-														heading={props.modalVerifyHeading}
-														content={props.modalVerifyContent} 
-														click={props.onVerifyClick} 
-													/>
+                                                        setIsOpen={() =>
+                                                            toggleModal(index)
+                                                        }
+                                                        id={rowData[column]}
+                                                        heading={
+                                                            props.modalVerifyHeading
+                                                        }
+                                                        content={
+                                                            props.modalVerifyContent
+                                                        }
+                                                        click={
+                                                            props.onVerifyClick
+                                                        }
+                                                    />
                                                 )}
                                                 {props.onDeleteClick && (
                                                     <button
                                                         onClick={() =>
-															setIsOpen(true)
+                                                            toggleModal(index)
                                                         }
                                                     >
                                                         <MdDelete />
                                                     </button>
                                                 )}
-												{isOpen && (
+                                                {isOpen[index] && (
                                                     <Modal
-														setIsOpen={setIsOpen}
-														id={rowData[column]}
-														heading={props.modalDeleteHeading}
-														content={props.modalDeleteContent} 
-														click={props.onDeleteClick} 
-													/>
+                                                        setIsOpen={() =>
+                                                            toggleModal(index)
+                                                        }
+                                                        id={rowData[column]}
+                                                        heading={
+                                                            props.modalDeleteHeading
+                                                        }
+                                                        content={
+                                                            props.modalDeleteContent
+                                                        }
+                                                        click={
+                                                            props.onDeleteClick
+                                                        }
+                                                    />
                                                 )}
                                             </div>
                                         </td>
