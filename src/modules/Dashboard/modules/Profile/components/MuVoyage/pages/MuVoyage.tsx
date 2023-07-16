@@ -13,6 +13,7 @@ type Props = {
             task_name: string;
             completed: boolean;
             hashtag: string;
+            karma: number;
         }[];
     }[];
 };
@@ -21,7 +22,7 @@ const MuVoyage = (props: Props) => {
     const [userLevelData, setUserLevelData] = useState(props.userLevelData);
     const [userLevelTrack, setUserLevelTrack] = useState({
         name: "",
-        tasks: [{ task_name: "", completed: false, hashtag: "" }]
+        tasks: [{ task_name: "", completed: false, hashtag: "", karma: 0 }]
     });
     let userLevelTrackerPercentage = !userLevelTrack.tasks.every(
         e => e.completed
@@ -38,7 +39,11 @@ const MuVoyage = (props: Props) => {
                 userLevelData.filter(e => e.tasks.length !== 0).length - 1
             ]
         );
+        // console.log(userLevelTrack);
+        
     });
+    // console.log(userLevelData);
+    
     return (
         <>
             <div className={styles.main_task}>
@@ -164,6 +169,11 @@ const MuVoyage = (props: Props) => {
                                                                         <span>
                                                                             {
                                                                                 taskData.hashtag
+                                                                            }
+                                                                        </span>
+                                                                        <span>
+                                                                            {
+                                                                                taskData.karma
                                                                             }
                                                                         </span>
                                                                     </label>
