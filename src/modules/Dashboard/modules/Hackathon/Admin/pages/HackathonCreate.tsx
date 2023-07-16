@@ -9,6 +9,7 @@ import FormikReactSelect, {
 import { ChangeEvent, useEffect, useState } from "react";
 import { createHackathon, getDistrict, getFormFields } from "../HackathonApis";
 import { FiUploadCloud } from "react-icons/fi";
+import HackathonOrganizers from "./HackathonOrganizers";
 
 const options = [
     { label: "Option 1", value: "111" },
@@ -36,8 +37,8 @@ const HackathonCreate = () => {
     }, []);
 
     function handleNext() {
-        if (tabIndex === 3) {
-            setTabIndex(3);
+        if (tabIndex === 5) {
+            setTabIndex(5);
         } else {
             setTabIndex(tabIndex + 1);
         }
@@ -236,7 +237,7 @@ const HackathonCreate = () => {
                                         <Tab>Advanced</Tab>
                                         <Tab>Application</Tab>
                                         <span></span>
-                                        {/* <Tab>Events</Tab> */}
+                                        <Tab>Organizers</Tab>
                                         {/* <Tab>FAQs</Tab> */}
                                     </TabList>
                                     <div className={styles.form}>
@@ -519,7 +520,9 @@ const HackathonCreate = () => {
 
                                         <TabPanel
                                             className={styles.formGroup}
-                                        ></TabPanel>
+                                        >
+											<HackathonOrganizers/>
+										</TabPanel>
 
                                         <TabPanel
                                             className={styles.formGroup}
