@@ -187,7 +187,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                         onClick={() =>
                                                             toggleModal(
                                                                 index,
-                                                                "verify"
+                                                                ModalType[1]
                                                             )
                                                         }
                                                     >
