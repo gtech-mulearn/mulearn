@@ -15,6 +15,11 @@ import MuLoader from "@Mulearn/MuLoader/MuLoader";
 
 type Props = {};
 
+//TODO: Change the styles to camelCase from snake_case'
+//TODO: Add alias for the component imports to make it more readable
+//TODO: Move Logic to another file.
+
+
 const CampusStudentList = (props: Props) => {
     const columns = [];
     const [studentData, setStudentData] = useState<any[]>([]);
