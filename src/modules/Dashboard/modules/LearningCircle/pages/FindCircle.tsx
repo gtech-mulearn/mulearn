@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import styles from './FindCircle.module.css'
-import image1 from '../../../assets/images/image (7).png'
+import imageTop from '../../../assets/images/LC1.png'
 
 type circleListELement={
     name:string,
@@ -46,7 +46,7 @@ const FindCircle = () => {
             </div>
                 
             </div>
-            <img src={image1} alt="image"/>
+            <img src={imageTop} alt="image"/>
         </div>
 
         {(learningCircles)?
