@@ -1,13 +1,7 @@
 import { AxiosError } from "axios";
-import axios from "axios";
 import { privateGateway } from "../../../../services/apiGateways";
-import { dashboardRoutes, organizationRoutes } from "../../../../services/urls";
+import {  organizationRoutes } from "../../../../services/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast"
-
-import { useNavigate } from "react-router-dom";
-import { ErrorMessage } from "formik";
-
-
 
 export const getOrganizations = async (
     activeTab: string,

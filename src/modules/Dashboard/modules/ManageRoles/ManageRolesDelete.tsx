@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { deleteManageRoles, getManageRolesDetails } from "./apis";
+import react from "react";
+import { deleteManageRoles } from "./apis";
 import { useNavigate, useParams } from "react-router-dom";
 import Form from "../../../../components/MuComponents/Form/Form";
 import { useToast } from "@chakra-ui/react";

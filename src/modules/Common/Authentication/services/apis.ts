@@ -1,6 +1,6 @@
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import React from "react";
-import { useNavigate, NavigateFunction } from "react-router-dom";
+import { NavigateFunction } from "react-router-dom";
 import {
     privateGateway,
     publicGateway

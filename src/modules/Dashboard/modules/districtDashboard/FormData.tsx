@@ -11,10 +11,7 @@ import {
 } from "./apis";
 import { useNavigate } from "react-router-dom";
 import Textfield from "../../../../components/MuComponents/TextField/Textfield";
-
-
 import { useToast } from "@chakra-ui/react";
-
 import "./Organizations.scss";
 
 interface Option {

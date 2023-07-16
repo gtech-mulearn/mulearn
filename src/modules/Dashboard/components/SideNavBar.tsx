@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./SideNavBar.module.css";
 import MulearnBrand from "../assets/MulearnBrand";
-
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import {

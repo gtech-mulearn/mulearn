@@ -6,7 +6,6 @@ import {
     editShortenUrl,
     deleteShortenUrl
 } from "../Services/apis";
-
 import { useNavigate } from "react-router-dom";
 import TableTop from "../../../../../components/MuComponents/TableTop/TableTop";
 import Table from "../../../../../components/MuComponents/Table/Table";

@@ -1,6 +1,5 @@
 import React from "react";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
-import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
 interface TableTopTabProps {
@@ -10,9 +9,6 @@ interface TableTopTabProps {
 
 const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
     const tabletopTab = ["Student management", "Campus management"];
-
-    const navigate = useNavigate();
-
     return (
         <div className="table_tab_container">
             <div className="table_tabs">

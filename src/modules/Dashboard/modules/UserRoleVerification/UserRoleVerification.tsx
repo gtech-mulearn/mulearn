@@ -4,14 +4,9 @@ import Table from "../../../../components/MuComponents/Table/Table";
 import THead from "../../../../components/MuComponents/Table/THead";
 import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
 import { editUserRoleVerification, getUserRoleVerification } from "./apis";
-import { Blank } from "../../../../components/MuComponents/Table/Blank";
 import { roles } from "../../../../services/types";
 import { hasRole } from "../../../../services/common_functions";
 import { useNavigate } from "react-router-dom";
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
-import { AiOutlinePlusCircle } from "react-icons/ai";
-import styles from "./UserRoleVerification.module.css";
-import { dashboardRoutes } from "../../../../services/urls";
 
 function UsersRoleVerification() {
     const [data, setData] = useState<any[]>([]);
@@ -21,8 +16,6 @@ function UsersRoleVerification() {
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
     const firstFetch = useRef(true)
-
-
 
     const columnOrder = [
         { column: "full_name", Label: "Full Name", isSortable: true },
@@ -34,8 +27,6 @@ function UsersRoleVerification() {
         // { column: "role_id", Label: "Role ID", isSortable: false },
         { column: "verified", Label: "Verified", isSortable: false }
     ];
-
-
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;

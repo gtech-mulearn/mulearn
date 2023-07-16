@@ -6,7 +6,7 @@ import FormikReactSelect, {
     FormikTextAreaWhite,
     FormikTextInputWhite
 } from "../../../../../../components/MuComponents/FormikComponents/FormikComponents";
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { createHackathon, getDistrict, getFormFields } from "../HackathonApis";
 import { FiUploadCloud } from "react-icons/fi";
 

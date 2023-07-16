@@ -3,15 +3,12 @@ import {
     editUserRoleVerification,
     getUserRoleVerificationDetails
 } from "./apis";
-import { useToast } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import { FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 import { useNavigate, useParams } from "react-router-dom";
 // import { toast } from "react-toastify";
 import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
-import { NULL } from "sass";
 import "./UserRoleVerification.scss";
 
 type Props = {};

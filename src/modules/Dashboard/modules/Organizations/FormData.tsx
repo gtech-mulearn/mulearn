@@ -10,7 +10,6 @@ import {
     getAffiliation
 } from "./apis";
 import { useNavigate } from "react-router-dom";
-import Textfield from "../../../../components/MuComponents/TextField/Textfield";
 import { Formik, Form, useFormik } from "formik";
 import * as Yup from "yup";
 import { createOrganization, updateOrganization } from "./apis";
@@ -18,7 +17,6 @@ import { useToast } from "@chakra-ui/react";
 import { FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 import { ClipLoader } from "react-spinners";
-
 import "./Organizations.scss";
 import { useRef } from "react";
 

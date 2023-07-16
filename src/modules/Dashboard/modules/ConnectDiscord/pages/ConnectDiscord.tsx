@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./ConnectDiscord.module.css";
 import cdimage from "../assets/images/connectdiscordpng1.png";
 import { getInfo } from "../services/apis";
-
 import { useToast } from "@chakra-ui/react";
 import { MdContentCopy } from "react-icons/md";
 import { BsDiscord } from "react-icons/bs";

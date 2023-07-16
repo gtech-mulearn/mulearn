@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 //To prevent a user from accessing the login page if they are already logged in.
 const AuthRoutes: React.FC = () => {
