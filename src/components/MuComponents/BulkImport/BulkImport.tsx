@@ -8,6 +8,11 @@ type Props = {
 	path: string,
 };
 
+/*
+TODO: Change Template File
+TODO: Change From Component to Page
+*/
+
 const BulkImport = (props: Props) => {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [isDragging, setIsDragging] = useState(false);
@@ -85,9 +90,6 @@ const BulkImport = (props: Props) => {
             const formData = new FormData();
             formData.append("task_list", renamedFile);
 			bulkImport(formData, props.path)
-            // Make the POST API call with the formData
-            // Example: axios.post('/api/upload', formData)
-            // Replace '/api/upload' with your actual API endpoint
         }
     };
 
@@ -134,7 +136,6 @@ const BulkImport = (props: Props) => {
                 {selectedFile && (
                     <div className={styles.fileInfo}>
                         <span>{selectedFile.name}</span>
-                        {/* <button className={styles.upload} onClick={handleUpload}>Upload</button> */}
 						<SingleButton text={"Upload"} onClick={handleUpload}/>
                     </div>
                 )}

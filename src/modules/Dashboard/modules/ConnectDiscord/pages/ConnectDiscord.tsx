@@ -6,7 +6,6 @@ import { getInfo } from "../services/apis";
 import { useToast } from "@chakra-ui/react";
 import { MdContentCopy } from "react-icons/md";
 import { BsDiscord } from "react-icons/bs";
-import { GridLoader } from "react-spinners";
 import MuLoader from "@Mulearn/MuLoader/MuLoader";
 
 const ConnectDiscord = () => {

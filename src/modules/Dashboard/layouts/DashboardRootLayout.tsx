@@ -9,6 +9,7 @@ import adminButtons from "../utils/userwiseButtonsData/adminButtons";
 // import userButtons from "../utils/userwiseButtonsData/userButtons";
 import { roles } from "../../../services/types";
 
+//TODO: Remove flaticons and use react-icons or vice-versa
 const DashboardRootLayout = (props: { component?: any }) => {
     const [connected, setConnected] = useState(false);
     const [campusLead, setCampusLead] = useState(false);
