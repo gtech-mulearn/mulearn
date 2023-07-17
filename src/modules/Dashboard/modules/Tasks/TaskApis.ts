@@ -4,6 +4,50 @@ import { dashboardRoutes } from "../../../../services/urls";
 import { SetStateAction } from "react";
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { TaskEditInterface } from "./TaskInterface";
+
+type uuidType = {
+    level:{id:string,name:string}[],
+    ig:{id:string,name:string}[],
+    organization:{id:string,title:string}[],
+    channel:{id:string,name:string}[],
+    type:{id:string,title:string}[],
+}
+
+//function that converts the uuid object into a map
+//with uuid as key and name/title as value
+const uuidMapper = (uuid:Partial<uuidType>)=>{
+    for (const key of Object.keys(uuid)){
+        const uuidMap:any = {}
+        uuid[(key as keyof uuidType)]?.forEach((elem)=>{
+            if(key === 'type' || key === 'organization')
+                uuidMap[elem.id] = (elem as any).title
+            else
+                uuidMap[elem.id] = (elem as any).name
+        })
+        uuid[(key as keyof uuidType)] = uuidMap
+    }
+
+    return uuid
+}
+
+//Converts all uuids to corresponding string in taskdata
+const uuidToString = (data:any,uuid:Partial<uuidType>)=>{
+    const Mapper = uuidMapper(uuid)
+    console.log(Mapper)
+    const newData = data.map((task:any) => {
+        task.level = Mapper.level![task.level]
+        task.ig = Mapper.ig![task.ig]
+        task.org = Mapper.organization![task.org]
+        task.type = Mapper.type![task.type]
+        task.channel = Mapper.channel![task.channel]
+        
+        return task
+        
+    })
+    console.log(newData)
+    return newData
+}
+
 export const getTasks = async (
     setData: any,
     page: number,
@@ -25,7 +69,10 @@ export const getTasks = async (
             }
         );
         const tasks: any = response?.data;
-        setData(tasks.response.data);
+        const uuids:Partial<uuidType> = await getUUID()
+        setData(
+            uuidToString(tasks.response.data,uuids)
+        );
         setTotalPages(tasks.response.pagination.totalPages);
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -170,9 +217,9 @@ export const getUUID = async () => {
         type:dashboardRoutes.getTaskTypes,
     }
 
-    const response:{[index:string]:Array<any>} = {}
+    const response:Partial<uuidType> = {}
     for (let key in uuids){
-        response[key]=(
+        response[(key as keyof uuidType)]=(
         (await privateGateway.get(uuids[key]))
         .data
         .response as Array<any>)
