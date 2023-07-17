@@ -14,11 +14,16 @@ export const MuButton = (props: {
     onClick?: React.MouseEventHandler; // onclick event if wanted
     isLoading?: boolean;// show loading spinner if neccessary.
     disabled?: boolean;//disable the button if needed
+    buttonUrl?: string; // for styling purposes
 }) => {
     return (
         <button
             className={props.className ? props.className : styles.btn}
-            style={props.style}
+            style={{
+                background: `/${props.buttonUrl}` === window.location.pathname ? "#456FF6" : "",
+                color: `/${props.buttonUrl}` === window.location.pathname ? "#fff" : "",
+                ...props.style,
+            }}
             onClick={props.onClick}
             disabled={props.disabled}
         >

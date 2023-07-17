@@ -145,20 +145,10 @@ const SideNavBar = (props: Props) => {
                                                         <MuButton
                                                             key={i}
                                                             text={button.title}
-                                                            style={
-                                                                window.location.pathname ===
-                                                                    `/${button.url}`
-                                                                    ? {
-                                                                        background: "#456FF6",
-                                                                        color: "#fff"
-                                                                    }
-                                                                    : {}
-                                                            }
+                                                            buttonUrl={button.url}
                                                             onClick={() => {
                                                                 navigate(button.url);
-                                                                window.innerWidth <= 500
-                                                                    ? hideFunc()
-                                                                    : null;
+                                                                window.innerWidth <= 500 ? hideFunc() : null;
                                                             }}
                                                         />
                                                     ))
@@ -169,15 +159,7 @@ const SideNavBar = (props: Props) => {
                                             key={i}
                                             text={button.title}
                                             icon={button.icon}
-                                            style={
-                                                window.location.pathname ===
-                                                    `/${button.url}`
-                                                    ? {
-                                                        background: "#456FF6",
-                                                        color: "#fff"
-                                                    }
-                                                    : {}
-                                            }
+                                            buttonUrl={button.url}
                                             onClick={() => {
                                                 navigate(button.url);
                                                 window.innerWidth <= 500
