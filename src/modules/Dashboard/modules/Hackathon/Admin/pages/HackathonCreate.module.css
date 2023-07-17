@@ -349,15 +349,33 @@ input[type=file]::file-selector-button:hover {
 }
 
 @media (width<=820px) {
-
-	.InputSet input{
-		min-width: 80vw;
+    
+    .InputSet input{
+        min-width: 80vw;
 	}
 }
 
 @media (width<=520px) {
-
-	.InputSet input{
-		min-width: 68vw;
+    
+    .InputSet input{
+        min-width: 68vw;
 	}
+}
+@media (max-width: 768px) {
+    .checker {
+      padding-right: 0; 
+    }
+  }
+
+.checker {
+    padding-right: 20rem;
+    display: flex;
+    flex-direction: column; 
+    
+}
+.checkerInput {
+    display: flex;
+    padding-top: 0.8rem;
+    align-items: start;
+    
 }

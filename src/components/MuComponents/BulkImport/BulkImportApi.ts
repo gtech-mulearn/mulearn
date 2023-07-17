@@ -1,6 +1,9 @@
-import FormData from "form-data";
 import axios from "axios";
-import { dashboardRoutes } from "../../../services/urls";
+
+/*
+TODO: Error Handling and Toasts
+TODO: Make it Functional
+*/
 
 export const bulkImport = (data: any, path: string) => {
     axios

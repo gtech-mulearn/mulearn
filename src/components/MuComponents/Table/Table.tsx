@@ -52,6 +52,10 @@ type TableProps = {
 use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/
 }
 
+/*
+TODO: Move the Common Functions to a separate file
+*/
+
 const Table: FC<TableProps> = (props: TableProps) => {
     const [isDeleteOpen, setIsDeleteOpen] = useState<boolean[]>(
         props.rows.map(() => false)

@@ -62,7 +62,7 @@ const Hackathon = () => {
                                             </div>
                                             <div className="group">
                                                 <Link
-                                                    to={`/hackathon/delete/${hack.id}`}
+                                                    to={`/hackathon/test/${hack.id}`}
                                                 >
                                                         <RiDeleteBin5Line />
                                                 </Link>

@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import styles from "./Dropdown.module.css";
 import { FaCaretDown } from "react-icons/fa";
 
+/*
+TODO: Replace with React-Select already implemented in this project (src/components/MuComponents/Select/Select.tsx)
+*/
+
 const Dropdown = (props: {
     contents: string[];
     style?: React.CSSProperties;

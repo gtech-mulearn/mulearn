@@ -11,6 +11,10 @@ import { createHackathon, getFormFields, getHackDetails } from "../HackathonApis
 import { useParams } from "react-router-dom";
 import { HackList } from "../../User/Hackathon";
 
+/**
+ * TODO: Move YUP Validations to another file.
+ * TODO: Make the form things json and iterate and display, store the json's in a separate file.
+ */
 const options = [
     { label: "Option 1", value: "111" },
     { label: "Option 2", value: "222" },

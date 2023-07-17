@@ -17,6 +17,8 @@ import { hasRole } from "../../../../../services/common_functions";
 import { useFormik } from "formik";
 import { useToast } from "@chakra-ui/react";
 
+//TODO: Complete work rework
+//TODO: Change the filenames
 const UrlShortener = () => {
     const columns = [];
     const [shortUrlData, setShortUrlData] = useState<any[]>([]);

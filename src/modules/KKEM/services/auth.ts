@@ -13,10 +13,7 @@ export const userAuth = async (
             KKEMRoutes.userAuth,
             { mu_id, dwms_id },
             {
-                signal: controller?.signal,
-                headers: {
-                    token: tempToken
-                }
+                signal: controller?.signal
             }
         )
         .then(response => {
@@ -32,15 +29,9 @@ export const userAuthConfirm = async (
     controller?: AbortController
 ) => {
     return await publicGateway
-        .post(
-            `${KKEMRoutes.userAuth}${token}/`,
-            {
-                token: tempToken
-            },
-            {
-                signal: controller?.signal
-            }
-        )
+        .post(`${KKEMRoutes.userAuth}${token}/`, null, {
+            signal: controller?.signal
+        })
         .then(response => {
             return response.data;
         })
