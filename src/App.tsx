@@ -51,6 +51,7 @@ import RankCard from "./modules/Embeds/modules/RankCard/pages/RankCard";
 import HackathonEdit from "./modules/Dashboard/modules/Hackathon/Admin/pages/HackathonEdit";
 import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle";
 import CreateCircle from "./modules/Dashboard/modules/LearningCircle/pages/CreateCircle";
+import YourCircle from "./modules/Dashboard/modules/LearningCircle/pages/YourCircle";
 import { HackathonOrganizers } from "./modules/Dashboard/modules/Hackathon/Admin/pages/HackathonOrganizers";
 
 const router = createBrowserRouter([
@@ -202,6 +203,8 @@ const router = createBrowserRouter([
                     },
                     { path: "learning-circle", element: <LearningCircle /> },
                     { path: "create-circle", element: <CreateCircle /> },
+                    { path: "your-circle", element: <YourCircle /> },
+                    { path: "find-circle", element: <FindCircle /> },
                 ]
             }
         ]
