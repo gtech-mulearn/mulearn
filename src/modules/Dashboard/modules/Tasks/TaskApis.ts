@@ -61,6 +61,11 @@ export const editTask = async (
     active: string,
     variable_karma: string,
     usage_count: string,
+    channel_id: string,
+    type_id: string,
+    level_id: string,
+    ig_id: string,
+    org_id:string,
     id: string | undefined
 ) => {
     try {
@@ -72,7 +77,12 @@ export const editTask = async (
                 karma: parseInt(karma),
                 usage_count: parseInt(usage_count),
                 active: parseInt(active),
-                variable_karma: parseInt(variable_karma)
+                variable_karma: parseInt(variable_karma),
+                channel: channel_id,
+                type: type_id,
+                level: level_id,
+                ig: ig_id,
+                org:org_id
             }
         );
         const message: any = response?.data;
@@ -96,7 +106,8 @@ export const createTask = async (
     channel_id: string,
     type_id: string,
     level_id: string,
-    ig_id: string
+    ig_id: string,
+    org_id:string
 ) => {
     try {
         const response = await privateGateway.post(
@@ -109,10 +120,11 @@ export const createTask = async (
                 active: parseInt(active),
                 variable_karma: parseInt(variable_karma),
                 description: description,
-                channel_id: parseInt(channel_id),
-                type_id: parseInt(type_id),
-                level_id: parseInt(level_id),
-                ig_id: parseInt(ig_id)
+                channel: channel_id,
+                type: type_id,
+                level: level_id,
+                ig: ig_id,
+                org:org_id
             }
         );
         const message: any = response?.data;
@@ -148,3 +160,29 @@ export const deleteTask = async (
         }
     }
 };
+
+export const getUUID = async () => {
+    const uuids:{[index:string]:string} = {
+        level:dashboardRoutes.getTaskLevels,
+        ig:dashboardRoutes.getTaskIGs,
+        organization:dashboardRoutes.getTaskOrganizations,
+        channel:dashboardRoutes.getTaskChannels,
+        type:dashboardRoutes.getTaskTypes,
+    }
+
+    const response:{[index:string]:Array<any>} = {}
+    for (let key in uuids){
+        response[key]=(
+        (await privateGateway.get(uuids[key]))
+        .data
+        .response as Array<any>)
+        .sort((a,b)=>(
+            //check for name/title key and then compare
+            (a.name !== undefined && a.name<b.name) 
+            || 
+            (a.title !== undefined && a.title<b.title) )
+            ?-1:1
+        ) 
+    }
+    return response
+}

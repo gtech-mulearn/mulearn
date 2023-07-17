@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { hasRole } from '../../../../services/common_functions';
 import { roles } from '../../../../services/types';
 import { getInfo } from './apis';
-import styles from "../../../../components/MuComponents/FormikComponents/form.module.css";
+import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
 import { Formik } from 'formik';
 import * as Yup from "yup";
 

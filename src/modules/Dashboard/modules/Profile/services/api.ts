@@ -118,19 +118,19 @@ export const getPublicUserLevels = (
         });
 };
 
-export const fetchQRCode = async (muid: any, setBlob: any) => {
+export const fetchQRCode = async (setBlob: any) => {
     try {
+        const storedUserInfo = localStorage.getItem("userInfo");
+        const muid = storedUserInfo
+            ? JSON.parse(storedUserInfo).muid
+            : undefined;
+        const url = `https://quickchart.io/qr?text=${
+            import.meta.env.VITE_FRONTEND_URL
+        }/profile/${muid}&centerImageUrl=https://github.com/Jovit-Mathew236/mulearn/blob/dev/src/modules/Dashboard/modules/Profile/assets/images/mulearnBrand.png?raw=true`;
         const response = await axios
-            .get(
-                `https://quickchart.io/qr?text=${
-                    (import.meta.env.VITE_FRONTEND_URL as string) +
-                    /profile/ +
-                    (muid)
-                }&centerImageUrl=https://github.com/Jovit-Mathew236/mulearn/blob/dev/src/modules/Dashboard/modules/Profile/assets/images/mulearnBrand.png?raw=true`,
-                {
-                    responseType: "arraybuffer"
-                }
-            )
+            .get(url, {
+                responseType: "arraybuffer"
+            })
             .then(response => {
                 // console.log(response.data);
                 const blob = new Blob([response.data], {
@@ -138,7 +138,7 @@ export const fetchQRCode = async (muid: any, setBlob: any) => {
                 });
                 setBlob(URL.createObjectURL(blob));
                 // const imageUrl = URL.createObjectURL(blob);
-                console.log(blob);
+                // console.log(blob);
             });
     } catch (error) {
         console.error(error);

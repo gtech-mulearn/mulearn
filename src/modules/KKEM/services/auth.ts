@@ -1,6 +1,8 @@
 import { publicGateway } from "../../../services/apiGateways";
 import { KKEMRoutes } from "../../../services/urls";
 
+const tempToken = "1c332a95-8411-40c1-ab64-18b56bd91988";
+
 export const userAuth = async (
     mu_id: string,
     dwms_id: string,
@@ -10,7 +12,9 @@ export const userAuth = async (
         .post(
             KKEMRoutes.userAuth,
             { mu_id, dwms_id },
-            { signal: controller?.signal }
+            {
+                signal: controller?.signal
+            }
         )
         .then(response => {
             return response.data;

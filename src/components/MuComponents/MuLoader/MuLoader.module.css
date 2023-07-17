@@ -1,0 +1,9 @@
+.mu_loader{
+    height: 200px;
+}
+
+.mu_loader_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

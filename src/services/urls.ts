@@ -35,6 +35,11 @@ export const dashboardRoutes = {
     getStudentDetails: "/api/v1/dashboard/campus/student-details/",
     getStudentsList: "/api/v1/dashboard/campus/student-details/csv/",
     getCampusDetails: "/api/v1/dashboard/campus/campus-details/",
+    getTaskLevels: "/api/v1/dashboard/task/level/",
+    getTaskIGs: "/api/v1/dashboard/task/ig/",
+    getTaskOrganizations: "/api/v1/dashboard/task/organization/",
+    getTaskChannels: "/api/v1/dashboard/task/channel/",
+    getTaskTypes:"/api/v1/dashboard/task/task-types/",
 
     getShortenUrl: "/api/v1/url-shortener/list/",
     createShortenUrl: "/api/v1/url-shortener/create/",
@@ -65,8 +70,8 @@ export const dashboardRoutes = {
     getHackathonFormData: "/api/v1/hackathon/list-default-form-fields/",
     createHackathon: "/api/v1/hackathon/create-hackathon/",
     getHackathons: "/api/v1/hackathon/list-hackathons/",
-    getOwnHackathons: "/api/v1/hackathon/list-orgniser-hackathons/"
-};
+    getOwnHackathons: "/api/v1/hackathon/list-orgniser-hackathons/",
+} as const;
 
 export const organizationRoutes = {
     getOrganizationsAll: "/api/v1/organisation/institutes/info/all_inst",

@@ -3,8 +3,11 @@ import { MuButton } from "../MuButtons/MuButton";
 import Textfield from "../TextField/Textfield";
 import styles from "./Form.module.css";
 import { Navigate, useNavigate } from "react-router-dom";
-import Dropdown from "../Dropdown/Dropdown";
+import Dropdown from "@Mulearn/Dropdown/Dropdown";
 
+/*
+TODO: Verify the Relevance of This File
+*/
 type Props = {
     title: string;
     handleSubmitClick: any;
@@ -21,12 +24,12 @@ type Props = {
         label: string;
         default?: string;
     }[];
-	cancelPath: string
+    cancelPath: string;
 };
 
 const Form = (props: Props) => {
-	const navigate = useNavigate();
-	
+    const navigate = useNavigate();
+
     return (
         <div className={styles.container}>
             <form
@@ -59,7 +62,9 @@ const Form = (props: Props) => {
                         <MuButton
                             text={"Decline"}
                             className={styles.btn_cancel}
-                            onClick={() => {navigate(props.cancelPath)}}
+                            onClick={() => {
+                                navigate(props.cancelPath);
+                            }}
                         />
                         <MuButton
                             text={"Confirm"}

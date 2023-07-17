@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./TableTop.module.css";
-import { HiArrowCircleRight, HiOutlineX } from "react-icons/hi";
+import { HiOutlineX } from "react-icons/hi";
 
 type Props = {
     onSearch: (data: string) => void;
@@ -32,17 +32,14 @@ export const SearchBar = (props: Props) => {
                     onChange={onChangeSearch}
                     value={search}
                 />
-                <div className={styles.icon}>
-                    {search && (
-                        <HiOutlineX
-                            className={styles.clearIcon}
-                            onClick={clearInput}
-                        />
-                    )}
-                    <HiArrowCircleRight
-                        className={styles.searchIcon}
-                        onClick={handleSubmit}
+                {search && (
+                    <HiOutlineX
+                        className={styles.clearIcon}
+                        onClick={clearInput}
                     />
+                )}
+                <div className={styles.searchIcon}>
+                    <button>Search</button>
                 </div>
             </form>
         </>

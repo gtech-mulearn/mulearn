@@ -6,7 +6,7 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
-import styles from "../../../../components/MuComponents/FormikComponents/form.module.css";
+import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
 
 type Props = {};
 

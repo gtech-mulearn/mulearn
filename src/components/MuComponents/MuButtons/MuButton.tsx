@@ -1,10 +1,14 @@
-import React, { ReactFragment, ReactNode } from "react";
+import React, { ReactFragment, ReactNode, useState } from "react";
 import styles from "./MuButtons.module.css";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import { ClipLoader } from "react-spinners";
 
 // normal button
 // need text for button
+
+/**
+ * TODO: Make Single and Powerful Button Component(Multi-Purpose)
+ */
 
 export const MuButton = (props: {
     text: string; // text of button
@@ -27,10 +31,15 @@ export const MuButton = (props: {
             onClick={props.onClick}
             disabled={props.disabled}
         >
-
             {props.icon && <div className={styles.btn_icon}>{props.icon}</div>}
             <span>{props.text}</span>
-            {props.isLoading && <ClipLoader size={20} color="#ff" className={styles.btn_loader} />}
+            {props.isLoading && (
+                <ClipLoader
+                    size={20}
+                    color="#ff"
+                    className={styles.btn_loader}
+                />
+            )}
         </button>
     );
 };
@@ -71,7 +80,7 @@ export const DropDownButtons = (props: {
                 className={styles.dropdown_btn}
                 style={{
                     ...props.style,
-                    marginBottom: props.display === "0" ? "" : "4px",
+                    marginBottom: props.display === "0" ? "" : "4px"
                 }}
                 onClick={props.onClick}
             >
@@ -82,7 +91,7 @@ export const DropDownButtons = (props: {
                 className={styles.drop_view}
                 style={{ maxHeight: props.display === "0" ? "0" : "300px" }}
             >
-                {props.listOfDropBtn?.map((btn) => btn)}
+                {props.listOfDropBtn?.map(btn => btn)}
             </div>
         </div>
     );
@@ -107,4 +116,52 @@ export const SingleButton = (props: {
             </a>
         </div>
     );
-}
+};
+
+type Props = {
+    text: string;
+    type?: any;
+    onHoverBackground?: string;
+    onHoverColor?: string;
+    backgroundColor?: string;
+    color?: string;
+    onButtonClick?: any;
+    margin?: string;
+};
+
+export const PowerfullButton = (props: Props) => {
+    const [isHovered, setIsHovered] = useState(false);
+
+    const handleMouseEnter = () => {
+        setIsHovered(true);
+    };
+
+    const handleMouseLeave = () => {
+        setIsHovered(false);
+    };
+
+    const style = {
+        backgroundColor: props.backgroundColor || "#456FF6",
+        color: props.color || "#f5f7f9",
+        padding: "0.6rem 0.9rem",
+        borderRadius: "10px",
+        margin: props.margin || "0",
+        ...(isHovered && {
+            backgroundColor: props.onHoverBackground || "#00204c",
+            color: props.onHoverColor || "#f5f7f9"
+        })
+    };
+    return (
+        <div className={styles.powerfullButton}>
+            <button
+                style={style}
+                type={props.type || "button"}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                onClick={props.onButtonClick}
+            >
+                {props.text}
+            </button>
+        </div>
+    );
+};

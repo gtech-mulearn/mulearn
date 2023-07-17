@@ -2,13 +2,15 @@ import { useCallback, useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import styles from "./Auth.module.css";
 import { userAuth } from "../services/auth";
-import { HiOutlineArrowRight } from "react-icons/hi";
+import { HiOutlineArrowRight, HiCheck } from "react-icons/hi";
+import { AiOutlineLoading } from "react-icons/ai";
 /**
  * Page for KKEM auth when dwms_id is present in the URL
  */
 export default function KKEMAuth({ dwmsId }: { dwmsId: string }) {
     const [muid, setMuid] = useState("");
     const [error, setError] = useState<string | null>(null);
+    const [success, setSuccess] = useState(false);
     const [disabled, setDisabled] = useState(false);
     const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         setMuid(e.target.value);
@@ -16,6 +18,7 @@ export default function KKEMAuth({ dwmsId }: { dwmsId: string }) {
     const handleSubmit = useCallback(
         (e: FormEvent<HTMLFormElement>) => {
             e.preventDefault();
+            setSuccess(false);
             setDisabled(true);
             setError(null);
             const controller = new AbortController();
@@ -27,9 +30,11 @@ export default function KKEMAuth({ dwmsId }: { dwmsId: string }) {
             userAuth(muid, dwmsId, controller).then(res => {
                 if (res.statusCode === 400) {
                     setError(res.message?.general?.toString());
+                    setSuccess(false);
                 }
                 if (res.statusCode === 200) {
                     setError(null);
+                    setSuccess(true);
                 }
                 setDisabled(false);
             });
@@ -41,7 +46,7 @@ export default function KKEMAuth({ dwmsId }: { dwmsId: string }) {
     );
     return (
         <div className={styles.container}>
-            <h2 className={styles.heading}>Embark on the Skill Express</h2>
+            {/* <h2 className={styles.heading}>Embark on the Skill Express</h2> */}
             <form onSubmit={handleSubmit} className={styles.form}>
                 <input
                     type="text"
@@ -54,13 +59,26 @@ export default function KKEMAuth({ dwmsId }: { dwmsId: string }) {
 
                 <button
                     type="submit"
-                    className={styles.submit}
+                    className={`${styles.submit} ${
+                        success ? styles.successBtn : ""
+                    }`}
                     disabled={disabled}
                 >
-                    <HiOutlineArrowRight />
+                    {disabled ? (
+                        <AiOutlineLoading className={styles.spin} />
+                    ) : success ? (
+                        <HiCheck />
+                    ) : (
+                        <HiOutlineArrowRight />
+                    )}
                 </button>
             </form>
             {error && <p className={styles.error}>{error}</p>}
+            {success && (
+                <p className={styles.success}>
+                    Success! please check your email for further instructions.
+                </p>
+            )}
         </div>
     );
 }

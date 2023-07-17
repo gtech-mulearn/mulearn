@@ -37,7 +37,6 @@ import UserRoleVerificationEdit from "./modules/Dashboard/modules/UserRoleVerifi
 import InterestGroupEdit from "./modules/Dashboard/modules/InterestGroup/InterestGroupEdit";
 import EditOrgnaization from "./modules/Dashboard/modules/Organizations/EditOrganization";
 import UrlShortener from "./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener";
-import InterestGroupDelete from "./modules/Dashboard/modules/InterestGroup/InterestGroupDelete";
 import TaskEdit from "./modules/Dashboard/modules/Tasks/TaskEdit";
 import TaskCreate from "./modules/Dashboard/modules/Tasks/TaskCreate";
 import TaskDelete from "./modules/Dashboard/modules/Tasks/TaskDelete";
@@ -50,6 +49,11 @@ import KKEMLanding from "./modules/KKEM/modules/KKEMLanding";
 import KKEMAuth from "./modules/KKEM/modules/KKEMAuth";
 import RankCard from "./modules/Embeds/modules/RankCard/pages/RankCard";
 import HackathonEdit from "./modules/Dashboard/modules/Hackathon/Admin/pages/HackathonEdit";
+import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle";
+import CreateCircle from "./modules/Dashboard/modules/LearningCircle/pages/CreateCircle";
+import YourCircle from "./modules/Dashboard/modules/LearningCircle/pages/YourCircle";
+import { HackathonOrganizers } from "./modules/Dashboard/modules/Hackathon/Admin/pages/HackathonOrganizers";
+import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/FindCircle";
 
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
@@ -113,10 +117,6 @@ const router = createBrowserRouter([
                     {
                         path: "organizations/edit",
                         element: <EditOrgnaization />
-                    },
-                    {
-                        path: "interest-groups/delete/:id",
-                        element: <InterestGroupDelete />
                     },
                     {
                         path: "organizations/delete/:id",
@@ -197,7 +197,15 @@ const router = createBrowserRouter([
                     {
                         path: "hackathon/edit/:id",
                         element: <HackathonEdit />
-                    }
+                    },
+                    {
+                        path: "hackathon/test/:id",
+                        element: <HackathonOrganizers />
+                    },
+                    { path: "learning-circle", element: <LearningCircle /> },
+                    { path: "create-circle", element: <CreateCircle /> },
+                    { path: "your-circle", element: <YourCircle /> },
+                    { path: "find-circle", element: <FindCircle /> },
                 ]
             }
         ]

@@ -6,12 +6,12 @@ import { getInfo } from "../services/apis";
 import { useToast } from "@chakra-ui/react";
 import { MdContentCopy } from "react-icons/md";
 import { BsDiscord } from "react-icons/bs";
-import { GridLoader } from "react-spinners";
+import MuLoader from "@Mulearn/MuLoader/MuLoader";
 
 const ConnectDiscord = () => {
     const [muid, setMuid] = useState("");
     const toast = useToast();
-    const firstFetch = useRef(true)
+    const firstFetch = useRef(true);
     useEffect(() => {
         if (firstFetch.current) {
             if (
@@ -23,7 +23,7 @@ const ConnectDiscord = () => {
                 getInfo(setMuid);
             }
         }
-        firstFetch.current = false
+        firstFetch.current = false;
     }, []);
 
     return (
@@ -58,7 +58,9 @@ const ConnectDiscord = () => {
                                     {muid}
                                 </p>
                                 <a
-                                    href={import.meta.env.VITE_DISCORD_INVITE_URL}
+                                    href={
+                                        import.meta.env.VITE_DISCORD_INVITE_URL
+                                    }
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -123,11 +125,7 @@ const ConnectDiscord = () => {
             ) : (
                 <div className={styles.spinner_container}>
                     <div className={styles.spinner}>
-                        <GridLoader
-                            style={{ display: "block" }}
-                            className={styles.loader}
-                            color="#456FF6"
-                        />
+                        <MuLoader />{" "}
                     </div>
                 </div>
             )}

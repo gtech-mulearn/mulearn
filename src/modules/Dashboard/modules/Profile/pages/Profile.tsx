@@ -30,10 +30,13 @@ import { BsJustify } from "react-icons/bs";
 import axios from "axios";
 import { saveAs } from "file-saver";
 import mulearn_logo from "../assets/images/mulearnBrand.png";
+import MuLoader from "@Mulearn/MuLoader/MuLoader";
 
+//TODO: Verify the relevance of profile page image
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
+    const [copy, setCopy] = useState(false);
     const toast = useToast();
     const [APILoadStatus, setAPILoadStatus] = useState(0);
     const [profileList, setProfileList] = useState("basic-details");
@@ -65,7 +68,10 @@ const Profile = () => {
         }
     ]);
     const [userLevelData, setUserLevelData] = useState([
-        { name: "", tasks: [{ task_name: "", completed: false, hashtag: "" }] }
+        {
+            name: "",
+            tasks: [{ task_name: "", completed: false, hashtag: "", karma: 0 }]
+        }
     ]);
 
     const convertedData1 = userProfile.interest_groups.map(item => [
@@ -106,7 +112,7 @@ const Profile = () => {
             }
         }
         firstFetch.current = false;
-        fetchQRCode(userProfile.muid, setBlob);
+        fetchQRCode(setBlob);
     }, []);
 
     const downloadQR = () => {
@@ -122,6 +128,13 @@ const Profile = () => {
                         userProfile.last_name +
                         " | Mulearn"}
                 </title>
+                <link
+                    rel="icon"
+                    type="image/svg+xml"
+                    href={
+                        userProfile.profile_pic ? userProfile.profile_pic : dpm
+                    }
+                />
                 <meta
                     name="title"
                     content={
@@ -136,9 +149,13 @@ const Profile = () => {
                 <meta name="description" content="you bio is here" />
 
                 {/* <!-- Open Graph / Facebook --> */}
-                <meta property="og:type" content="website" />
+                <meta property="og:type" content="Mulearn" />
                 <meta
-                    property="og:url"
+                    property={`og:${
+                        (import.meta.env.VITE_FRONTEND_URL as string) +
+                        /profile/ +
+                        userProfile.muid
+                    }`}
                     content={
                         (import.meta.env.VITE_FRONTEND_URL as string) +
                         /profile/ +
@@ -159,6 +176,7 @@ const Profile = () => {
                 <meta property="og:description" content="you bio is here" />
                 <meta
                     property="og:image"
+                    itemProp="image"
                     content={
                         userProfile.profile_pic ? userProfile.profile_pic : dpm
                     }
@@ -178,7 +196,11 @@ const Profile = () => {
                 {/* <!-- Twitter --> */}
                 <meta property="twitter:card" content="summary_large_image" />
                 <meta
-                    property="twitter:url"
+                    property={`twitter:${
+                        (import.meta.env.VITE_FRONTEND_URL as string) +
+                        /profile/ +
+                        userProfile.muid
+                    }`}
                     content={
                         (import.meta.env.VITE_FRONTEND_URL as string) +
                         /profile/ +
@@ -217,10 +239,9 @@ const Profile = () => {
                 }
                 className={styles.rightDash}
             >
-                {APILoadStatus === 0 ? (
+                {APILoadStatus !== 200 ? (
                     <div className={styles.loader_container}>
-                        <GridLoader color="#456FF6" />
-                        <p>Loading</p>
+                        <MuLoader />
                     </div>
                 ) : (id && userProfile.is_public) || !id ? (
                     <>
@@ -234,6 +255,12 @@ const Profile = () => {
                                       }
                             }
                             className={styles.share_pop_up_container}
+                            onKeyDown={e => {
+                                if (e.key === "Escape") {
+                                    setPopUP(false);
+                                }
+                            }}
+                            tabIndex={0}
                         >
                             <div className={styles.share_pop_up}>
                                 <div className={styles.share_pop_up_contents}>
@@ -290,6 +317,7 @@ const Profile = () => {
                                                     /profile/
                                                     {userProfile.muid}
                                                 </p>
+
                                                 <i
                                                     onClick={() => {
                                                         navigator.clipboard.writeText(
@@ -300,17 +328,23 @@ const Profile = () => {
                                                                 userProfile.muid
                                                             }`
                                                         );
-                                                        toast({
-                                                            title: "Copied to clipboard",
-                                                            description:
-                                                                "Your profile link has been copied to clipboard",
-                                                            status: "success",
-                                                            duration: 3000,
-                                                            isClosable: true
-                                                        });
+                                                        setCopy(true);
+                                                        setTimeout(() => {
+                                                            setCopy(false);
+                                                        }, 3000);
                                                     }}
                                                     className="fi fi-sr-link"
-                                                ></i>
+                                                >
+                                                    <div
+                                                        className={styles.toast}
+                                                    >
+                                                        <p>
+                                                            {!copy
+                                                                ? "Copy"
+                                                                : "Copied!"}
+                                                        </p>
+                                                    </div>
+                                                </i>
                                             </div>
                                         </div>
                                     )}
@@ -334,26 +368,6 @@ const Profile = () => {
                                     <button onClick={() => setPopUP(false)}>
                                         {!profileStatus ? "Cancel" : "Close"}
                                     </button>
-                                    {/* <div className={styles.share_options}>
-                                        <p>
-                                            <i className="fi fi-brands-whatsapp"></i>
-                                        </p>
-                                        <p>
-                                            <i className="fi fi-brands-facebook"></i>
-                                        </p>
-                                        <p>
-                                            <i className="fi fi-brands-twitter"></i>
-                                        </p>
-                                        <p>
-                                            <i className="fi fi-brands-youtube"></i>
-                                        </p>
-                                        <p>
-                                            <i className="fi fi-brands-linkedin"></i>
-                                        </p>
-                                        <p>
-                                            <i className="fi fi-brands-telegram"></i>
-                                        </p>
-                                    </div> */}
                                 </div>
                             </div>
                         </div>
@@ -391,7 +405,7 @@ const Profile = () => {
                                                     style={
                                                         !id
                                                             ? {
-                                                                  borderColor:
+                                                                  outlineColor:
                                                                       !profileStatus
                                                                           ? "#456FF6"
                                                                           : "#2dce89"
@@ -462,9 +476,14 @@ const Profile = () => {
                                             <p
                                                 onClick={() => setPopUP(true)}
                                                 className={styles.share_btn}
+                                                onKeyDown={e => {
+                                                    if (e.key === "Escape") {
+                                                        setPopUP(false);
+                                                    }
+                                                }}
+                                                tabIndex={0}
                                             >
                                                 <i className="fi fi-br-share"></i>
-                                                {/* <i className="fi fi-sr-share-alt-square"></i> */}
                                             </p>
                                         ) : null}
                                         {/* <MuButton
@@ -487,16 +506,21 @@ const Profile = () => {
                                         <p
                                             style={
                                                 profileList === "basic-details"
-                                                    ? { marginLeft: "0px" }
+                                                    ? {
+                                                          marginLeft: "0px",
+                                                          width: "6.1rem"
+                                                      }
                                                     : profileList ===
                                                       "karma-history"
                                                     ? {
-                                                          marginLeft: "125px"
+                                                          marginLeft: "125px",
+                                                          width: "6.7rem"
                                                       }
                                                     : profileList ===
                                                       "mu-voyage"
                                                     ? {
-                                                          marginLeft: "250px"
+                                                          marginLeft: "250px",
+                                                          width: "5.3rem"
                                                       }
                                                     : {}
                                             }

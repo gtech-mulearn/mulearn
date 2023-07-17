@@ -13,6 +13,11 @@ type Props = {
     CSV?: string;
 };
 
+/*
+TODO: Issue exist with button, working ann loader ella.
+TODO: Need to change the button to MuButton.
+*/
+
 const TableTop = (props: Props) => {
     const [isLoading, setIsLoading] = useState(false);
     const [hasError, setHasError] = useState(false);
@@ -32,12 +37,10 @@ const TableTop = (props: Props) => {
             await getCSV(props.CSV, setIsLoading, setHasError, toast);
             // Convert data to CSV format
             // await getCSV(props.CSV, setCsv);
-            
         } catch (error) {
             console.error("Error fetching data:", error);
         }
     };
-
 
     return (
         <div className={styles.container}>
@@ -52,16 +55,27 @@ const TableTop = (props: Props) => {
                         onOptionChange={handleOptionChange}
                     />
                     {props.CSV && (
-                        <MuButton
-                            text={"CSV"}
-                            onClick={e => {
+                        // <MuButton
+                        //     text={"CSV"}
+                        //     onClick={e => {
+                        //         handleClick();
+                        //     }}
+                        //     disabled={isLoading}
+                        //     isLoading={isLoading}
+                        //     icon={<HiDownload />}
+                        //     className={styles.csv}
+                        // />
+                        <button
+                            className={styles.searchIcon}
+                            onClick={() => {
                                 handleClick();
                             }}
-                            disabled={isLoading}
-                            isLoading={isLoading}
-                            icon={<HiDownload />}
-                            className={styles.csv}
-                        />
+                        >
+                            <div className={styles.csv}>
+                                <HiDownload />
+                                CSV
+                            </div>
+                        </button>
                     )}
                 </div>
             </div>

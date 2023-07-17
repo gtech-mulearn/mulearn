@@ -1,4 +1,5 @@
-import PrimaryButton from "../MuButtons/MuOutlinedButton";
+import styles from './pagination.module.css'
+import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 
 type Props = {
     handlePreviousClick?: () => void;
@@ -13,13 +14,13 @@ const Pagination = (props: Props) => {
         <div
             style={{
                 display: "flex",
-                justifyContent: "space-between",
+                justifyContent: "center",
                 alignItems: "center",
                 width: "100%",
                 margin: props.margin ? props.margin : "0"
             }}
         >
-            <PrimaryButton
+            {/* <PrimaryButton
                 text="Previous"
                 handleClick={
                     props.currentPage > 1 ? props.handlePreviousClick : () => {}
@@ -27,16 +28,30 @@ const Pagination = (props: Props) => {
                 bgColor={
                     props.currentPage > 1 ? "rgba(1, 75, 178, .1)" : "white"
                 }
-            />
-            <p
+            /> */}
+            <SlArrowLeft
+                onClick={
+                    props.currentPage > 1 ? props.handlePreviousClick : () => {}
+                }
                 style={{
-                    color: "var(--blue)"
+                    color: "var(--Dark)"
                 }}
-            >
-                Page <strong>{props.currentPage}</strong> of{" "}
+            />
+            <p className={styles.pagePara}>
+                <strong>{props.currentPage}</strong> of{" "}
                 <strong>{props.totalPages}</strong>
             </p>
-            <PrimaryButton
+            <SlArrowRight
+                onClick={
+                    props.currentPage < props.totalPages
+                        ? props.handleNextClick
+                        : () => {}
+                }
+                style={{
+                    color: "var(--Dark)"
+                }}
+            />
+            {/* <PrimaryButton
                 text="Next"
                 handleClick={
                     props.currentPage < props.totalPages
@@ -48,7 +63,7 @@ const Pagination = (props: Props) => {
                         ? "rgba(1, 75, 178, .1)"
                         : "white"
                 }
-            />
+            /> */}
         </div>
     );
 };

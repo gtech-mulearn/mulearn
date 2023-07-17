@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
-import { privateGateway } from "../../../../../services/apiGateways";
-import { dashboardRoutes } from "../../../../../services/urls";
+import { privateGateway, publicGateway } from "../../../../../services/apiGateways";
+import { dashboardRoutes, onboardingRoutes, organizationRoutes } from "../../../../../services/urls";
 import { HackList } from "../User/Hackathon";
 import { SetStateAction } from "react";
 
@@ -54,7 +54,8 @@ export const createHackathon = async (
 	eventStart: string,
 	eventEnd: string,
 	formFields: any,
-	logo: any
+	logo: any,
+    banner?:any
 ) => {
     try {
         const response = await privateGateway.post(
@@ -74,7 +75,8 @@ export const createHackathon = async (
                 event_end: eventEnd,
                 status: "Draft",
                 form_fields: formFields,
-                event_logo: logo
+                event_logo: logo,
+                banner: banner,
             },
             {
                 maxBodyLength: Infinity,
@@ -91,4 +93,25 @@ export const createHackathon = async (
             console.log(error.response);
         }
     }
+};
+
+export const getDistrict = (
+    setDistrict: any,
+    state: any
+) => {
+    publicGateway
+        .post(onboardingRoutes.districtList, state)
+        .then(response => {
+            setDistrict(
+                response.data.response.districts
+                    .sort((a: any, b: any) => a.name.localeCompare(b.name))
+                    .map((sate: any) => ({
+                        value: sate.id,
+                        label: sate.name
+                    }))
+            );
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
 };

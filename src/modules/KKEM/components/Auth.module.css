@@ -1,5 +1,6 @@
 .container {
-    padding-top: 2rem;
+    width: 100%;
+    max-width: 40rem;
 }
 .heading {
     font-size: 2rem;
@@ -23,37 +24,51 @@
 .submit:disabled {
     opacity: 0.5;
 }
+.spin {
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 .error {
     color: red;
     font-size: 0.8rem;
     margin: 0.5em 0;
 }
+.success {
+    color: green;
+    font-size: 0.8rem;
+    margin: 0.5em 0;
+}
+.successBtn {
+    background: green;
+}
+.successBtn:hover {
+    background: rgb(0, 75, 0);
+}
 .form {
     display: flex;
     height: 5rem;
-    width: fit-content;
     position: relative;
     width: 100%;
-    max-width: 35rem;
     margin-top: 1rem;
     isolation: isolate;
+    border-radius: 1.6rem;
+    background: #fff;
+    box-shadow: 0px 0px 41px 0px rgba(0, 0, 0, 0.1);
 }
-.form::before {
-    content: "";
-    width: 5rem;
-    height: 6rem;
-    background: url("../assets/Star.svg") no-repeat;
-    position: absolute;
-    left: -2.5rem;
-    z-index: -1;
-}
+
 .form > input[type="text"] {
     background-color: #fff;
     width: 100%;
     margin-top: 0;
     border: none;
     border-radius: 1.5rem;
-    padding-left: 2rem;
 }
 
 @media screen and (max-width: 600px) {

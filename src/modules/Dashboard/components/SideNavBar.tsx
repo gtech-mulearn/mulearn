@@ -2,16 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./SideNavBar.module.css";
 import MulearnBrand from "../assets/MulearnBrand";
 
-// import {
-//   MdHome,
-//   MdSupervisorAccount,
-//   MdSpaceDashboard,
-//   MdClass,
-//   MdBackupTable,
-//   MdArticle,
-//   MdWorkHistory,
-// } from "react-icons/md";
-
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -19,8 +9,8 @@ import {
     MuButton,
     MuButtonLight
 } from "@Mulearn/MuButtons/MuButton";
-// import MuButtonLight from "../../../components/MuComponents/MuButtons/MuButtonLight";
 
+//TODO: Change the style's casing to match the rest of the project
 type Props = {
     sidebarButtons: {
         url: string;
@@ -36,7 +26,6 @@ const SideNavBar = (props: Props) => {
     const toast = useToast();
     const navigate = useNavigate();
     const [marginTop, setMarginTop] = useState("0px");
-    // const [transform, setTransform] = useState("0deg");
     const [transform2, setTransform2] = useState("0deg");
     const [transform3, setTransform3] = useState("0deg");
     const [display, setDisplay] = useState("block");
