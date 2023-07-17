@@ -1,3 +1,204 @@
+/*
+! Learning Circle common css
+*/
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+
+
+/*
+* ******************************************************************************************
+
+! Learning Circle Landing Page
+*/
+.learningCircleLandingPageContent {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: calc(100% - 8rem);
+	background: white;
+	margin-left: 3rem;
+	gap: 1rem;
+	border-radius: 1rem;
+	margin-top: 2.5rem;
+	box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.learningCircleLandingPageContent img {
+	width: 40%;
+	height: 90%;
+}
+
+.learningCircleLandingPageDesc {
+	width: 55%;
+	text-align: center;
+}
+
+.learningCircleLandingPageDesc h3 {
+	font-size: 2rem;
+	color: #456FF6;
+	font-weight: bold;
+
+}
+
+.learningCircleLandingPageDesc p {
+	margin-top: 1rem;
+	font-size: .9rem;
+	color: black;
+}
+
+
+.learningCircleLandingPageContent .learningCircleLandingPageButton {
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	margin-bottom: 1rem;
+}
+
+.learningCircleLandingPageContent .learningCircleLandingPageButton button {
+	margin-top: 1rem;
+	width: 6rem;
+	height: 2rem;
+	border-radius: 8px;
+	border-width: 2px;
+}
+
+.learningCircleLandingPageContent .learningCircleLandingPageButton .learningCircleLandingPageJoin {
+	background: #456FF6;
+	color: white;
+	border-color: #456FF6;
+}
+
+.learningCircleLandingPageContent .learningCircleLandingPageButton .learningCircleLandingPageCreate {
+	background: white;
+	color: #456FF6;
+	border-color: #456FF6;
+}
+
+.learningCircleLandingPageMiddle {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+@media(width<800px) {
+	.learningCircleLandingPageContent {
+		flex-direction: column;
+	}
+
+	.learningCircleLandingPageDesc h3 {
+		font-size: 1rem;
+	}
+
+	.learningCircleLandingPageDesc p {
+		font-size: .7rem;
+	}
+
+	.learningCircleLandingPageAccordion {
+		margin-top: 1rem;
+	}
+
+}
+
+/*list*/
+.learningCircleLandingPageAccordion {
+	margin-top: 7rem;
+	margin-left: 3rem;
+	display: flex;
+	flex-direction: column;
+	width: calc(100% - 8rem);
+	gap: 1rem;
+	margin-bottom: 3rem;
+
+
+}
+
+.learningCircleLandingPageAccordion h2 {
+	margin-bottom: 2rem;
+	font-weight: bold;
+	font-size: 1.5em;
+	color: black;
+}
+
+.learningCircleLandingPageAccordion {
+	height: 4rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	list-style: none;
+	border-radius: .5rem;
+	box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.learningCircleLandingPageLevel {
+	padding: 1rem 1.5rem 0rem 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	text-align: center;
+}
+
+.learningCircleLandingPageLevel div {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	font-size: .9rem;
+
+}
+
+.learningCircleLandingPageBtn {
+	width: 3rem;
+	height: 2rem;
+	background: #456FF6;
+	color: white;
+	border-radius: 7px;
+}
+
+.learningCircleLandingPageExpandBtn {
+	display: none;
+}
+
+.learningCircleLandingPageMainList .learningCircleLandingPageExpandBtn:checked+.learningCircleLandingPageLevel {
+	height: 4rem;
+	border-radius: 8px;
+	background: #456FF6;
+	color: white;
+}
+
+.fa-solid {
+	font-weight: 900;
+}
+
+.fa-chevron-right:before {
+	content: "\f054";
+}
+
+/* No learning circles case */
+.learningCircleLandingPageMiddle {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.learningCircleLandingPageMiddle img {
+	margin-top: 2rem;
+	width: 50%;
+	margin-right: 4rem;
+}
+
+
+/*
+* ************************************************************************************************
+
+! Learning Circle Main Page
+*/
 .content {
 	width: 100%;
 	display: flex;
@@ -299,34 +500,34 @@
 
 /* css for the Meeting schedule*/
 
-.ScheduleOn{
-    text-align: center;
+.ScheduleOn {
+	text-align: center;
 }
 
-.ScheduleOn b{
-    font-size: 1.5rem;
+.ScheduleOn b {
+	font-size: 1.5rem;
 }
 
-.ScheduleOn p{
-    color: #456FF6;
+.ScheduleOn p {
+	color: #456FF6;
 }
 
-.InputSchedule{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.InputSchedule {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 }
 
-.InputSchedule div{
-    display: flex;
-    gap: 1rem;
+.InputSchedule div {
+	display: flex;
+	gap: 1rem;
 }
 
-.InputSchedule input{
-    width: 100%;
-    padding: .5rem 1rem;
-    border-radius: .5rem;
-    background-color: #F3F3F3;
-    outline: none;
+.InputSchedule input {
+	width: 100%;
+	padding: .5rem 1rem;
+	border-radius: .5rem;
+	background-color: #F3F3F3;
+	outline: none;
 }
