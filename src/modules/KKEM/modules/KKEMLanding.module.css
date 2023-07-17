@@ -1,7 +1,7 @@
 html {
     scroll-behavior: smooth;
 }
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     display: block;
     width: 1rem;
 }
@@ -14,7 +14,7 @@ html {
 }
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
-}
+} */
 .main {
     max-width: 200rem;
     margin: 0 auto;
