@@ -53,6 +53,7 @@ import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/Lea
 import CreateCircle from "./modules/Dashboard/modules/LearningCircle/pages/CreateCircle";
 import YourCircle from "./modules/Dashboard/modules/LearningCircle/pages/YourCircle";
 import { HackathonOrganizers } from "./modules/Dashboard/modules/Hackathon/Admin/pages/HackathonOrganizers";
+import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/FindCircle";
 
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'

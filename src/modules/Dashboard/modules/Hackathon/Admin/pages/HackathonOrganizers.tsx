@@ -42,7 +42,7 @@ export const HackathonOrganizers = (props: Props) => {
                             placeholder="Enter Mu ID"
                         />
 
-                        <PowerfullButton text={"Add Organizer"} margin="23px 0 0 0"></PowerfullButton>
+                        <PowerfullButton text={"Add Organizer"} type={"submit"} margin="23px 0 0 0"></PowerfullButton>
                     </Form>
                 </Formik>
             </div>
