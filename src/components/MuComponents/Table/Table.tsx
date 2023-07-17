@@ -3,7 +3,10 @@ import styles from "./Table.module.css";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import Modal from "../Modal/Modal";
-
+enum ModalType {
+    Verify,
+    Delete
+}
 interface Data {
     [key: string]: string | number | boolean;
 }
@@ -54,18 +57,27 @@ TODO: Move the Common Functions to a separate file
 */
 
 const Table: FC<TableProps> = (props: TableProps) => {
-
-	const [isOpen, setIsOpen] = useState<boolean[]>(
+    const [isDeleteOpen, setIsDeleteOpen] = useState<boolean[]>(
+        props.rows.map(() => false)
+    );
+    const [isVerifyOpen, setIsVerifyOpen] = useState<boolean[]>(
         props.rows.map(() => false)
     );
 
     // Function to toggle the modal for a specific row
-    const toggleModal = (index: number) => {
-        setIsOpen(prevState => {
-            const newState = [...prevState];
-            newState[index] = !newState[index];
-            return newState;
-        });
+    const toggleModal = (index: number, type: string) => {
+        if (type == ModalType[0]) {
+            setIsVerifyOpen(prevState => {
+                const newState = [...prevState];
+                newState[index] = !newState[index];
+                return newState;
+            });
+        } else
+            setIsDeleteOpen(prevState => {
+                const newState = [...prevState];
+                newState[index] = !newState[index];
+                return newState;
+            });
     };
 
     function convertToNormalDate(dateString: any): string | null {
@@ -100,7 +112,6 @@ const Table: FC<TableProps> = (props: TableProps) => {
         } catch (error) {
             return dateString;
         }
-		
     }
 
     const startIndex = (props.page - 1) * props.perPage;
@@ -146,16 +157,22 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                     <button
                                                         className={styles.btns}
                                                         onClick={() =>
-                                                            toggleModal(index)
+                                                            toggleModal(
+                                                                index,
+                                                                ModalType[0]
+                                                            )
                                                         }
                                                     >
                                                         Verify
                                                     </button>
                                                 )}
-                                                {isOpen[index] && (
+                                                {isVerifyOpen[index] && (
                                                     <Modal
                                                         setIsOpen={() =>
-                                                            toggleModal(index)
+                                                            toggleModal(
+                                                                index,
+                                                                ModalType[0]
+                                                            )
                                                         }
                                                         id={rowData[column]}
                                                         heading={
@@ -172,16 +189,22 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                 {props.onDeleteClick && (
                                                     <button
                                                         onClick={() =>
-                                                            toggleModal(index)
+                                                            toggleModal(
+                                                                index,
+                                                                ModalType[1]
+                                                            )
                                                         }
                                                     >
                                                         <MdDelete />
                                                     </button>
                                                 )}
-                                                {isOpen[index] && (
+                                                {isDeleteOpen[index] && (
                                                     <Modal
                                                         setIsOpen={() =>
-                                                            toggleModal(index)
+                                                            toggleModal(
+                                                                index,
+                                                                ModalType[1]
+                                                            )
                                                         }
                                                         id={rowData[column]}
                                                         heading={
@@ -209,5 +232,3 @@ const Table: FC<TableProps> = (props: TableProps) => {
 };
 
 export default Table;
-
-
