@@ -10,7 +10,6 @@ export const getInfo = (setMuid: muid) => {
   privateGateway
     .get(dashboardRoutes.getInfo)
     .then((response) => {
-      // console.log(response);
       localStorage.setItem("userInfo", JSON.stringify(response.data.response));
       setMuid(response.data.response.muid);
     })

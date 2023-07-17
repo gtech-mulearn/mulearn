@@ -32,6 +32,7 @@ import { saveAs } from "file-saver";
 import mulearn_logo from "../assets/images/mulearnBrand.png";
 import MuLoader from "@Mulearn/MuLoader/MuLoader";
 
+//TODO: Verify the relevance of profile page image
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
@@ -111,7 +112,7 @@ const Profile = () => {
             }
         }
         firstFetch.current = false;
-        fetchQRCode(userProfile.muid, setBlob);
+        fetchQRCode(setBlob);
     }, []);
 
     const downloadQR = () => {

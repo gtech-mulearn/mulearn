@@ -52,6 +52,7 @@ import HackathonEdit from "./modules/Dashboard/modules/Hackathon/Admin/pages/Hac
 import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle";
 import CreateCircle from "./modules/Dashboard/modules/LearningCircle/pages/CreateCircle";
 import YourCircle from "./modules/Dashboard/modules/LearningCircle/pages/YourCircle";
+import { HackathonOrganizers } from "./modules/Dashboard/modules/Hackathon/Admin/pages/HackathonOrganizers";
 import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/FindCircle";
 
 const router = createBrowserRouter([
@@ -196,6 +197,10 @@ const router = createBrowserRouter([
                     {
                         path: "hackathon/edit/:id",
                         element: <HackathonEdit />
+                    },
+                    {
+                        path: "hackathon/test/:id",
+                        element: <HackathonOrganizers />
                     },
                     { path: "learning-circle", element: <LearningCircle /> },
                     { path: "create-circle", element: <CreateCircle /> },

@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { editTask, getTaskDetails, getUUID } from "./TaskApis";
 import * as Yup from "yup";
 import { useToast } from "@chakra-ui/react";
-import styles from "../../../../components/MuComponents/FormikComponents/form.module.css";
+import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
 import { Form, Formik } from "formik";
 import {
     FormikSelect,

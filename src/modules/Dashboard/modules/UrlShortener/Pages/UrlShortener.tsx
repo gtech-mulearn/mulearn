@@ -17,6 +17,8 @@ import { hasRole } from "../../../../../services/common_functions";
 import { useFormik } from "formik";
 import { useToast } from "@chakra-ui/react";
 
+//TODO: Complete work rework
+//TODO: Change the filenames
 const UrlShortener = () => {
     const columns = [];
     const [shortUrlData, setShortUrlData] = useState<any[]>([]);
@@ -233,11 +235,11 @@ const UrlShortener = () => {
                         ) : null}
                         <div className={styles.short_url_input_container}>
                             <div className={styles.short_url_input}>
-                                <label htmlFor="">mulearn.org/</label>
+                                <label htmlFor="">mulearn.org/r/</label>
                                 <input
                                     className={styles.short_url}
                                     type="url"
-                                    name="shortUrl"
+                                    name="short_url"
                                     onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
                                     value={formik.values.short_url}
