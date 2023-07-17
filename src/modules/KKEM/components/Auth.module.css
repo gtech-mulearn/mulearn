@@ -24,10 +24,32 @@
 .submit:disabled {
     opacity: 0.5;
 }
+.spin {
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 .error {
     color: red;
     font-size: 0.8rem;
     margin: 0.5em 0;
+}
+.success {
+    color: green;
+    font-size: 0.8rem;
+    margin: 0.5em 0;
+}
+.successBtn {
+    background: green;
+}
+.successBtn:hover {
+    background: rgb(0, 75, 0);
 }
 .form {
     display: flex;
