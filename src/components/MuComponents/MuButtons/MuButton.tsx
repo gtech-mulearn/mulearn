@@ -80,11 +80,14 @@ export const DropDownButtons = (props: {
                 className={styles.dropdown_btn}
                 style={{
                     ...props.style,
-                    marginBottom: props.display === "0" ? "" : "4px"
+                    marginBottom: props.display === "0" ? "" : "4px",
+                    padding: props.icon ? "" : "6px 12px"
                 }}
                 onClick={props.onClick}
             >
-                <div className={styles.btn_icon}>{props.icon}</div>
+                {props.icon && (
+                    <div className={styles.btn_icon}>{props.icon}</div>
+                )}
                 <p>{props.text}</p>
                 {/* arrow icon */}
                 <div
