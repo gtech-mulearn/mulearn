@@ -52,6 +52,18 @@
     border: 8px solid #e8fcef;
     background: var(--success-100, #d1fadf);
 }
+.checkbtndelete{
+     display: flex;
+    gap: 8px;
+    padding: 10px;
+    align-items: center;
+    border-radius: 28px;
+    border: 8px solid #f1cdcd;
+    background: var(--success-100, #f6afaf);
+}
+.checkbtndelete>svg{
+    border-radius: 50%;
+}
 .heading {
     margin: 0;
     padding: 10px 0px 0px;
