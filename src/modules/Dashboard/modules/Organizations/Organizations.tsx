@@ -146,16 +146,13 @@ function Organizations() {
 
     return (
         <>
-            <TableTopTab
-                active={activeTab}
-                onTabClick={handleTabClick}
-            />
+            <TableTopTab active={activeTab} onTabClick={handleTabClick} />
             <TableTop
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
                 CSV={`${organizationRoutes.getOrgCsv}/${activeTabName}`}
-            // CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}        
-            // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"} 
+                // CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}
+                // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
             />
             {data && (
                 <Table
@@ -163,8 +160,9 @@ function Organizations() {
                     page={currentPage}
                     perPage={perPage}
                     columnOrder={columns}
-                    id={['code']}
+                    id={["code"]}
                     onEditClick={handleEdit}
+                    modalTypeContent="error"
                     onDeleteClick={handleDelete}
                 >
                     <THead
@@ -182,7 +180,7 @@ function Organizations() {
                 </Table>
             )}
         </>
-    )
+    );
 }
 
 export default Organizations
