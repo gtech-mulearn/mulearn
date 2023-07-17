@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import styles from './FindCircle.module.css'
-import imageTop from '../../../assets/images/LC1.png'
+import imageTop from '../assets/images/LC1.png'
 
 type circleListELement={
     name:string,
