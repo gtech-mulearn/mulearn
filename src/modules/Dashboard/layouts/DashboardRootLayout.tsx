@@ -128,6 +128,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-globe"></i>
         },
         {
+            url: "manage-locations",
+            title: "Manage Locations",
+            hasView: true,
+            roles: [roles.ADMIN],
+            icon: <i className="fi fi-rr-map-marker"></i>
+        },
+        {
             url: "zonal-dashboard",
             title: "Zonal Dashboard",
             hasView: true,

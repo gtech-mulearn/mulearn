@@ -1,0 +1,44 @@
+.popup_container {
+    width: 60%;
+    height: max-content;
+    padding: 20px;
+    // border: 1px solid #cbcbcb;
+    border: none;
+    border-radius: 8px;
+    z-index: 0;
+    background-color: #fff;
+    margin: auto;
+    .popup_title{
+        font-size: 20px;
+        font-weight: 800;
+        text-align: start;
+    }
+    p {
+        width: 90%;
+        text-align: left;
+        font-size: 14px;
+        span {
+            font-weight: bold;
+            &::after {
+                content: " ";
+            }
+        }
+    }
+}
+.ml_toggle_container{
+    display: flex;
+    gap: 1rem;
+    .table_tab_btn {
+            padding: 6px 24px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .active {
+            background-color: #456ff6;
+            color: white;
+        }
+        .inactive {
+            border: 1px solid #456ff6;
+            color: #456ff6;
+        }
+}
