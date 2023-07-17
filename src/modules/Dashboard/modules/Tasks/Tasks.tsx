@@ -26,14 +26,11 @@ export const Tasks = (props: Props) => {
 	const columnOrder = [
         { column: "title", Label: "Title", isSortable: true },
         { column: "hashtag", Label: "Hashtag", isSortable: false },
+        { column: "org", Label: "Organization", isSortable: false },
         { column: "active", Label: "Active", isSortable: false },
         { column: "karma", Label: "Karma", isSortable: true },
         { column: "usage_count", Label: "Usage Count", isSortable: false },
-        {
-            column: "variable_karma",
-            Label: "Variable Karma",
-            isSortable: false
-        },
+        { column: "variable_karma",Label: "Variable Karma",isSortable: false},
         { column: "updated_by", Label: "Updated By", isSortable: true },
         { column: "updated_at", Label: "Updated On", isSortable: true },
         { column: "created_by", Label: "Created By", isSortable: false },
@@ -55,7 +52,7 @@ export const Tasks = (props: Props) => {
     useEffect(() => {
         if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
         getTasks(setData, 1, perPage, setTotalPages, "", "");
-		//console.log(data)
+		console.log(data)
     }, []);
 
     const handleSearch = (search: string) => {
