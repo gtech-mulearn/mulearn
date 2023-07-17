@@ -113,3 +113,9 @@
         margin-bottom: 0px;
     }
 }
+
+.powerfullButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
