@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.content{
+
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    width: calc(100% - 8rem);
+    height: 40%;
+    background: #D2DCFF;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    gap: 1rem;
+    border-radius: 1rem;
+    margin-top: 2.5rem;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+
+}
+.desc{
+    width: 55%;
+    text-align:left;
+    padding-left: 2rem;
+
+}
+.desc h3{
+    font-size: 2rem;
+    color: #456FF6;
+    
+}
+.desc p{
+    margin-top: 1rem;
+    font-size: .9rem;
+}
+.content img{
+    padding: 2rem;
+    width: 40%;
+    height: 90%;
+    
+}
+.ig_search select{
+    width:10rem;
+    height: 2rem;
+    background:#F3F3F4;
+    color: #333333;
+    border-radius: 8px;
+    border: 2px solid #ffff;
+    
+    
+}
+.ig_search{
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.desc button,.join button{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 8px;
+    background:#F3F3F4;
+    color: #333333;
+    border-radius: 8px;
+    border: 2px solid #ffff;
+    font-weight: 900;
+}
+
+.join button {
+    font-weight: revert;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 3rem;
+    width: 100%;
+}
+.one{
+    width:30%;
+    padding: 1.5rem 2rem;
+    background: white;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    
+    /* Undo resets */
+    color: black;
+    text-align: initial;
+}
+.one h2{
+    all:revert;
+    margin: 0;
+}
+
+.container .one .join{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: end;
+}
+.container .one .join button{
+    width: 5rem;
+    background: #456FF6;
+    color: white;
+}
+
+
+
+
+@media(width<800px) {
+    .leftDash {
+        width: 0%;
+    }
+
+    .rightDash {
+        width: 100%;
+        left: 0;
+    }
+
+    .dashTopbar {
+        font-size: 1rem;
+        padding: 1.5rem .5rem;
+    }
+
+    hr {
+        position: absolute;
+        width: 90%;
+        margin: 0 5%;
+        border: 1px solid #E0EDFF;
+    }
+    .content{
+        flex-direction:column-reverse;
+    }
+    .content img{
+        margin-top: 1rem;
+        padding:0;
+        gap: 0;
+    }
+    .desc{
+        padding: 0;
+        text-align: center;
+    }
+    .ig_search{
+        justify-content: center;
+    }
+    .one{
+        width:calc(100% - 2rem);
+        padding: 1.5rem 2rem;
+        
+    }
+
+   
+}
+
+.error_container h1{
+    all:revert;
+    padding: 125px 0px;
+}

@@ -125,6 +125,7 @@ function ManageRoles() {
                     onEditClick={handleEdit}
                     onDeleteClick={handleDelete}
                     modalDeleteHeading="Delete"
+                    modalTypeContent="error"
                     modalDeleteContent="Are you sure you want to delete this role ?"
                 >
                     <THead

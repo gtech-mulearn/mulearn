@@ -30,6 +30,7 @@ const SideNavBar = (props: Props) => {
     const [display, setDisplay] = useState("block");
     const [display2, setDisplay2] = useState("none");
     const [dropDownBtnDisplay, setDropDownBtnDisplay] = useState("0");
+    const [level2dropDownDisplay, setLevel2dropDownDisplay] = useState(""); // Title of the level 2 dropdown
     const [connected, setConnected] = useState(false);
 
     const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
@@ -115,67 +116,72 @@ const SideNavBar = (props: Props) => {
                                         button.hasView &&
                                         (!button.roles || button.roles?.some(role => userInfo?.roles?.includes(role)))
                                 )
-                                .map((button, i) => (
-                                    button.children ?
-                                        <DropDownButtons
-                                            text={button.title}
-                                            icon={button.icon}
-                                            onClick={() => setDropDownBtnDisplay(dropDownBtnDisplay === "0" ? "max-content" : "0")}
-                                            listOfDropBtn={
-                                                button.children
-                                                    .filter(
-                                                        button =>
-                                                            button.hasView &&
-                                                            (!button.roles ||
-                                                                button.roles?.some(role => userInfo?.roles?.includes(role)))
-                                                    )
-                                                    .map((button, i) => (
-                                                        <MuButton
-                                                            key={i}
-                                                            text={button.title}
-                                                            style={
-                                                                window.location.pathname ===
-                                                                    `/${button.url}`
-                                                                    ? {
-                                                                        background: "#456FF6",
-                                                                        color: "#fff"
-                                                                    }
-                                                                    : {}
-                                                            }
-                                                            onClick={() => {
-                                                                navigate(button.url);
-                                                                window.innerWidth <= 500
-                                                                    ? hideFunc()
-                                                                    : null;
-                                                            }}
-                                                        />
-                                                    ))
-                                            }
-                                            display={dropDownBtnDisplay}
-                                        /> :
-                                        <MuButton
-                                            key={i}
-                                            text={button.title}
-                                            icon={button.icon}
-                                            style={
-                                                window.location.pathname ===
-                                                    `/${button.url}`
-                                                    ? {
-                                                        background: "#456FF6",
-                                                        color: "#fff"
-                                                    }
-                                                    : {}
-                                            }
-                                            onClick={() => {
-                                                navigate(button.url);
-                                                window.innerWidth <= 500
-                                                    ? hideFunc()
-                                                    : null;
-                                            }}
-                                        />
+                                .map((button, i) => button.children
+                                    ? <DropDownButtons
+                                        text={button.title}
+                                        icon={button.icon}
+                                        onClick={() => setDropDownBtnDisplay(dropDownBtnDisplay === "0" ? "max-content" : "0")}
+                                        listOfDropBtn={
+                                            button.children
+                                                .filter(
+                                                    button =>
+                                                        button.hasView &&
+                                                        (!button.roles ||
+                                                            button.roles?.some(role => userInfo?.roles?.includes(role)))
+                                                )
+                                                .map((button, i) => button.children
+                                                    ? <DropDownButtons
+                                                        text={button.title}
+                                                        icon={button.icon}
+                                                        onClick={() => setLevel2dropDownDisplay(level2dropDownDisplay === button.title ? "" : button.title)}
+                                                        display={level2dropDownDisplay === button.title ? "max-content" : "0"}
+                                                        listOfDropBtn={
+                                                            button.children
+                                                                .filter(
+                                                                    button =>
+                                                                        button.hasView &&
+                                                                        (!button.roles ||
+                                                                            button.roles?.some(role => userInfo?.roles?.includes(role)))
+                                                                )
+                                                                .map((button, i) => <MuButton
+                                                                    key={i}
+                                                                    text={button.title}
+                                                                    buttonUrl={button.url}
+                                                                    onClick={() => {
+                                                                        navigate(button.url);
+                                                                        window.innerWidth <= 500 ? hideFunc() : null;
+                                                                    }}
+                                                                />)
+                                                        }
+                                                    />
+                                                    : <MuButton
+                                                        key={i}
+                                                        text={button.title}
+                                                        buttonUrl={button.url}
+                                                        onClick={() => {
+                                                            navigate(button.url);
+                                                            window.innerWidth <= 500 ? hideFunc() : null;
+                                                        }}
+                                                    />
+                                                )
+                                        }
+                                        display={dropDownBtnDisplay}
+                                    /> :
+                                    <MuButton
+                                        key={i}
+                                        text={button.title}
+                                        icon={button.icon}
+                                        buttonUrl={button.url}
+                                        onClick={() => {
+                                            navigate(button.url);
+                                            window.innerWidth <= 500
+                                                ? hideFunc()
+                                                : null;
+                                        }}
+                                    />
 
 
-                                ))}
+                                )}
 
                         </div>
 
