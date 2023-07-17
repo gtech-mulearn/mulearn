@@ -1,7 +1,8 @@
 .container{
     display: flex;
     width: 100%;
-    justify-content: center;        
+    justify-content: center;      
+    flex-wrap: wrap;  
 }
 
 .table{
@@ -46,15 +47,19 @@ th{
 }
  tr{
     border-bottom: 1px solid rgba(0, 0, 0, 0.20) ;
-    
-    
 }
 .clear{
     padding:10px;
 }
-tbody
-td{
+tbody td{
     text-align: center;
+    width: fit-content;
+}
+table tr .td,.th .name{
+    padding-left: 20px;
+}
+.container .table .tableContainer  tbody td:nth-child(2),th:nth-child(2){
+    text-align: left;
 }
 .container .table .tableContainer  tbody tr:nth-child(-n+3){
     background-color: rgb(255, 191, 0);

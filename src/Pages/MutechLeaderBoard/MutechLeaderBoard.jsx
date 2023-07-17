@@ -2,8 +2,10 @@ import React, { useState, useEffect, useRef } from 'react'
 import axios from "axios";
 import Style from './MutechLeaderBoard.module.css'
 import Navbar from '../../Components/Navbar/Navbar'
+import CountWorks from './Utils/CountWorks';
+import OpenElkAPICall from './Utils/OpenElkAPICall';
+import AddMember from './Utils/AddMember';
 const MutechLeaderBoard = () => {
-    const API = "https://opensheet.elk.sh/"
     const [data, setData] = useState([])
     const fetchOnce = useRef(false)
     const spreadsheetId = 'https://docs.google.com/spreadsheets/d/1gAX7dGO5KFAOiPQfoo8vb22RbwtmjZ4Y1tslcULkrXE/edit#gid=564307130'
@@ -12,18 +14,10 @@ const MutechLeaderBoard = () => {
     const month = now.getMonth()
     const today = now.getDate()
     const [scoreBoard, setScoreBoard] = useState({})
+    const [overAllScore, setOverallScore] = useState({})
     useEffect(() => {
-        if (spreadsheetId.length >= 83 && !fetchOnce.current) {
-            try {
-                axios.get(`${API + spreadsheetId.split("/")[5]}/${sheet}`)
-                    .then(res => res.data)
-                    .then(result => {
-                        setData(result)
-                    })
-            }
-            catch (err) {
-                console.error(err)
-            }
+        if (!fetchOnce.current) {
+            OpenElkAPICall(spreadsheetId, sheet, setData)
         }
     }, [])
     useEffect(() => {
@@ -31,23 +25,16 @@ const MutechLeaderBoard = () => {
             const PeopleScoreBoard = {}
             const people = []
             for (let work of data) {
-                // eslint-disable-next-line array-callback-return
-                Object.keys(work).slice(1,).map((key, index) => {
-                    if (!people.includes(key)) {
-                        if (key !== "undefined") {
-                            people.push(key)
-                            PeopleScoreBoard[key] = { name: key, score: 0, streak: 0, longestStreak: 0, overallStreak: 0 }
-                        }
-                    }
-                })
+                AddMember(work, people, PeopleScoreBoard, overAllScore)
                 const da = new Date(work.Date)
                 if (da.getMonth() === month && da.getDate() < today) {
                     for (let person of people) {
                         if (work[person] !== null && work[person] !== undefined) {
                             if (work[person].toLowerCase().includes('done')) {
                                 let x = work[person].split('\n'), score = 10
+                                let count = CountWorks(x)
                                 PeopleScoreBoard[person].streak += 1
-                                PeopleScoreBoard[person].score += x.length * score + (PeopleScoreBoard[person].streak <= 5 ? (PeopleScoreBoard[person].streak - 1) * score : 50)
+                                PeopleScoreBoard[person].score += count * score + (PeopleScoreBoard[person].streak <= 5 ? (PeopleScoreBoard[person].streak - 1) * score : 50)
                             }
                             else {
                                 PeopleScoreBoard[person].streak = 0
@@ -66,7 +53,8 @@ const MutechLeaderBoard = () => {
                     }
                 }
             }
-            sortScore(PeopleScoreBoard)
+            setScoreBoard(sortScore(PeopleScoreBoard))
+            setOverallScore(sortScore(overAllScore))
         }
         fetchOnce.current = true
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -78,9 +66,9 @@ const MutechLeaderBoard = () => {
                 return b.score - a.score
             return b.streak - a.streak
         })
-        setScoreBoard(scoreBoard)
+        return scoreBoard
     }
-    function setLongestStreak(PeopleScoreBoard, person) {
+    function setLongestStreak(PeopleScoreBoard, person, overAllScore) {
         if (PeopleScoreBoard[person].overallStreak > PeopleScoreBoard[person].longestStreak)
             PeopleScoreBoard[person].longestStreak = PeopleScoreBoard[person].overallStreak
     }
@@ -97,23 +85,23 @@ const MutechLeaderBoard = () => {
                     <table className={Style.tableContainer} >
                         <thead>
                             <tr>
-                                <th >Rank</th>
-                                <th >Name</th>
-                                <th >Monthly Score</th>
-                                <th>Monthly Streak</th>
-                                <th>Overall Streak</th>
+                                <th className={Style.th}>Rank</th>
+                                <th className={Style.th}><div className={Style.name}>Name</div></th>
+                                <th className={Style.th}>Monthly Streak</th>
+                                <th className={Style.th}>Monthly Score</th>
+                                <th className={Style.th}>Overall Streak</th>
                             </tr>
                         </thead>
                         <tbody>
                             {Object.values(scoreBoard).map((score, index) => {
                                 return (
                                     <tr key={index}>
-                                        <td >{index + 1}</td>
-                                        <td >{score.name}</td>
-                                        <td >{score.score}</td>
-                                        <td>{score.streak}</td>
-                                        <td><div className={Style.clear}>{score.longestStreak}</div></td>
-                                    </tr>
+                                        <td className={Style.td}>{index + 1}</td>
+                                        <td className={Style.td}><div className={Style.name}>{score.name}</div></td>
+                                        <td className={Style.td}>{score.streak}</td>
+                                        <td className={Style.td}>{score.score}</td>
+                                        <td className={Style.td}><div className={Style.clear}>{score.longestStreak}</div></td>
+                                        m                                    </tr>
                                 )
                             })}
                         </tbody>
