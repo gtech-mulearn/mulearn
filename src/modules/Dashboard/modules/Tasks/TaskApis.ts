@@ -33,7 +33,6 @@ const uuidMapper = (uuid:Partial<uuidType>)=>{
 //Converts all uuids to corresponding string in taskdata
 const uuidToString = (data:any,uuid:Partial<uuidType>)=>{
     const Mapper = uuidMapper(uuid)
-    console.log(Mapper)
     const newData = data.map((task:any) => {
         task.level = Mapper.level![task.level]
         task.ig = Mapper.ig![task.ig]
@@ -44,7 +43,6 @@ const uuidToString = (data:any,uuid:Partial<uuidType>)=>{
         return task
         
     })
-    console.log(newData)
     return newData
 }
 
