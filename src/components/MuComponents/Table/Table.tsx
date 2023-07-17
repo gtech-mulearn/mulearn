@@ -45,6 +45,7 @@ type TableProps = {
     modalVerifyContent?: string;
     modalDeleteHeading?: string;
     modalDeleteContent?: string;
+    modalTypeContent?:string;
 };
 
 {
@@ -215,6 +216,9 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                         }
                                                         click={
                                                             props.onDeleteClick
+                                                        }
+                                                        type={
+                                                            props.modalTypeContent
                                                         }
                                                     />
                                                 )}

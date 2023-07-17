@@ -116,6 +116,7 @@ export const Tasks = (props: Props) => {
                     columnOrder={columnOrder}
                     id={["id"]}
                     onEditClick={handleEdit}
+                    modalTypeContent="error"
                     onDeleteClick={handleDelete}
                 >
                     <THead

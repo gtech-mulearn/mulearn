@@ -8,13 +8,14 @@ interface ModalProps {
     heading: string | undefined;
     content: string | undefined;
     click: any;
+    type?:string;
 }
 
 /*
 TODO: Conditional rendering of icon.
 */
 
-const Modal: FC<ModalProps> = ({ setIsOpen, id, heading, content, click }) => {
+const Modal: FC<ModalProps> = ({ setIsOpen, id, heading, content, click,type }) => {
     return (
         <>
             <div className={styles.darkBG} onClick={() => setIsOpen(false)} />
@@ -28,7 +29,7 @@ const Modal: FC<ModalProps> = ({ setIsOpen, id, heading, content, click }) => {
                             <RiCloseLine style={{ marginBottom: "-3px" }} />
                         </button>
 
-                        {heading == "Delete" ? (
+                        {type == "error" ? (
                             <div className={styles.checkbtndelete}>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
