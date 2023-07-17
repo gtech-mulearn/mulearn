@@ -52,7 +52,7 @@ export const Tasks = (props: Props) => {
     useEffect(() => {
         if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
         getTasks(setData, 1, perPage, setTotalPages, "", "");
-		console.log(data)
+		//console.log(data)
     }, []);
 
     const handleSearch = (search: string) => {
