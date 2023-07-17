@@ -1,6 +1,7 @@
 import styles from "./LearningCircle.module.css";
 import imageTop from "../assets/images/LC2.png";
 import imageBottom from "../assets/images/LC3.png";
+import { PowerfulButton } from "@Mulearn/MuButtons/MuButton";
 
 type circleListELement = {
     name: string;
@@ -25,16 +26,14 @@ export const LearningCircleLandingPage = () => {
                         <br /> with a group of people with same interests!
                     </p>
                     <div className={styles.learningCircleLandingPageButton}>
-                        <button
-                            className={styles.learningCircleLandingPageJoin}
-                        >
-                            Join
-                        </button>
-                        <button
-                            className={styles.learningCircleLandingPageCreate}
-                        >
-                            Create
-                        </button>
+                        <PowerfulButton text={"Join"} padding="0.3rem 1.6rem" />
+                        <PowerfulButton
+                            text={"Create"}
+                            backgroundColor="white"
+                            color="#456FF6"
+                            padding="0.3rem 0.7rem"
+                            onHoverBackground="#456FF6"
+                        />
                     </div>
                 </div>
             </div>
@@ -108,11 +107,7 @@ export const LearningCircleLandingPage = () => {
                             ))}
                         </>
                     ) : (
-                        <div
-                            className={
-                                styles.learningCircleLandingPageMiddle
-                            }
-                        >
+                        <div className={styles.learningCircleLandingPageMiddle}>
                             <img
                                 src={imageBottom}
                                 alt="You haven't joined any circles yet"

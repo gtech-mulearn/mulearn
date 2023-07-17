@@ -61,24 +61,8 @@
 	margin-bottom: 1rem;
 }
 
-.learningCircleLandingPageContent .learningCircleLandingPageButton button {
-	margin-top: 1rem;
-	width: 6rem;
-	height: 2rem;
-	border-radius: 8px;
-	border-width: 2px;
-}
-
-.learningCircleLandingPageContent .learningCircleLandingPageButton .learningCircleLandingPageJoin {
-	background: #456FF6;
-	color: white;
-	border-color: #456FF6;
-}
-
-.learningCircleLandingPageContent .learningCircleLandingPageButton .learningCircleLandingPageCreate {
-	background: white;
-	color: #456FF6;
-	border-color: #456FF6;
+.learningCircleLandingPageContent .learningCircleLandingPageButton {
+	padding: 15px;
 }
 
 .learningCircleLandingPageMiddle {
