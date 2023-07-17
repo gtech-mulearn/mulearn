@@ -74,6 +74,11 @@
     transition: max-height 0.2s ease-out;
 }
 
+.arrow_icon {
+    margin-left: auto;
+    transition: 0.5s ease-in-out;
+}
+
 .createBtn {
     background: var(--Primary);
     color: var(--White);
@@ -115,7 +120,7 @@
 }
 
 .powerfullButton {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

@@ -86,6 +86,32 @@ export const DropDownButtons = (props: {
             >
                 <div className={styles.btn_icon}>{props.icon}</div>
                 <p>{props.text}</p>
+                {/* arrow icon */}
+                <div
+                    className={styles.arrow_icon}
+                    style={{
+                        transform:
+                            props.display === "0"
+                                ? "rotate(0deg)"
+                                : "rotate(180deg)"
+                    }}
+                >
+                    <svg
+                        width="12"
+                        height="8"
+                        viewBox="0 0 12 8"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M1 1L6 6L11 1"
+                            stroke="#a9c8f3"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        />
+                    </svg>
+                </div>
             </div>
             <div
                 className={styles.drop_view}
