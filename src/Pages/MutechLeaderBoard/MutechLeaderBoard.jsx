@@ -100,8 +100,9 @@ const MutechLeaderBoard = () => {
                                         <td className={Style.td}><div className={Style.name}>{score.name}</div></td>
                                         <td className={Style.td}>{score.streak}</td>
                                         <td className={Style.td}>{score.score}</td>
-                                        <td className={Style.td}><div className={Style.clear}>{score.longestStreak}</div></td>
-                                        m                                    </tr>
+                                        <td className={Style.td}>
+                                            <div className={Style.clear}>{score.longestStreak}</div></td>
+                                    </tr>
                                 )
                             })}
                         </tbody>
