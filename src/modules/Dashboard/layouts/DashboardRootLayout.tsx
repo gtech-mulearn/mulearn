@@ -54,69 +54,69 @@ const DashboardRootLayout = (props: { component?: any }) => {
             url: "hackathon",
             title: "Hackathon",
             hasView: true,
-            // roles: [roles.ADMIN],
+            roles: [roles.ADMIN],
             icon: <i className="fi fi-sr-head-side-thinking"></i>
         },
         {
             url: "learning-circle",
             title: "Learning Circle",
             hasView: true,
-            // roles: [roles.ADMIN],
+            roles: [roles.ADMIN],
             icon: <i className="fi fi-sr-layout-fluid"></i>
         },
         {
             url: "",
             title: "Management",
             hasView: true,
-            // roles: [roles.ADMIN],
+            roles: [roles.ADMIN],
             icon: <i className="fi fi-sr-layout-fluid"></i>,
             children: [
                 {
                     url: "interest-groups",
                     title: "Interest Groups",
                     hasView: true,
-                    // roles: [roles.ADMIN],
+                    roles: [roles.ADMIN],
                     // icon: <i className="fi fi-sr-books"></i>
                 },
                 {
                     url: "organizations",
                     title: "Organizations",
                     hasView: true,
-                    // roles: [roles.ADMIN],
+                    roles: [roles.ADMIN],
                     // icon: <i className="fi fi-sr-building"></i>
                 },
                 {
                     url: "tasks",
                     title: "Tasks",
                     hasView: true,
-                    // roles: [roles.ADMIN],
+                    roles: [roles.ADMIN],
                     // icon: <i className="fi fi-sr-note"></i>
                 },
                 {
                     url: "tasks/bulk-import",
                     title: "Tasks Bulk Import",
                     hasView: true,
-                    // roles: [roles.ADMIN],
+                    roles: [roles.ADMIN],
                     // icon: <i className="fi fi-sr-layout-fluid"></i>
                 },
                 {
                     url: "",
                     title: "User Management",
                     hasView: true,
-                    // roles: [roles.ADMIN],
+                    roles: [roles.ADMIN],
                     // icon: <i className="fi fi-sr-users"></i>,
                     children: [
                         {
                             url: "manage-users",
                             title: "Manage Users",
                             hasView: true,
-                            // roles: [roles.ADMIN],
+                            roles: [roles.ADMIN],
                         },
                         {
                             url: "user-role-verification",
                             title: "User Role Verification",
                             hasView: true,
-                            // roles: [roles.ADMIN]
+                            roles: [roles.ADMIN]
                         }
                     ]
                 },
@@ -124,14 +124,14 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     url: "manage-roles",
                     title: "Manage Roles",
                     hasView: true,
-                    // roles: [roles.ADMIN],
+                    roles: [roles.ADMIN],
                     // icon: <i className="fi fi-sr-users-gear"></i>
                 },
                 {
                     url: "url-shortener",
                     title: "URL Shortener",
                     hasView: true,
-                    // roles: [roles.ADMIN],
+                    roles: [roles.ADMIN],
                     // icon: <i className="fi fi-sr-globe"></i>
                 },
             ],
