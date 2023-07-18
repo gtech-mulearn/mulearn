@@ -4,10 +4,11 @@
     box-sizing: border-box;
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
-.content{
+
+.content {
 
     display: flex;
-    justify-content:space-around;
+    justify-content: space-around;
     align-items: center;
     width: calc(100% - 8rem);
     height: 40%;
@@ -20,48 +21,56 @@
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
 
 }
-.desc{
+
+.desc {
     width: 55%;
-    text-align:left;
+    text-align: left;
     padding-left: 2rem;
 
 }
-.desc h3{
+
+.desc h3 {
     font-size: 2rem;
     color: #456FF6;
-    
+
 }
-.desc p{
+
+.desc p {
     margin-top: 1rem;
     font-size: .9rem;
 }
-.content img{
+
+.content img {
     padding: 2rem;
     width: 40%;
     height: 90%;
-    
+
 }
-.ig_search select{
-    width:10rem;
+
+.ig_search select {
+    width: 10rem;
     height: 2rem;
-    background:#F3F3F4;
+    background: #F3F3F4;
     color: #333333;
     border-radius: 8px;
     border: 2px solid #ffff;
-    
-    
+
+
 }
-.ig_search{
+
+.ig_search {
     margin-top: 2rem;
     display: flex;
     gap: 1rem;
     margin-bottom: 1rem;
 }
-.desc button,.join button{
+
+.desc button,
+.join button {
     width: 2rem;
     height: 2rem;
     border-radius: 8px;
-    background:#F3F3F4;
+    background: #F3F3F4;
     color: #333333;
     border-radius: 8px;
     border: 2px solid #ffff;
@@ -71,7 +80,8 @@
 .join button {
     font-weight: revert;
 }
-.container{
+
+.container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -79,28 +89,31 @@
     padding: 3rem;
     width: 100%;
 }
-.one{
-    width:30%;
+
+.one {
+    width: 30%;
     padding: 1.5rem 2rem;
     background: white;
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    
+
     /* Undo resets */
     color: black;
     text-align: initial;
 }
-.one h2{
-    all:revert;
+
+.one h2 {
+    all: revert;
     margin: 0;
 }
 
-.container .one .join{
+.container .one .join {
     margin-top: 1rem;
     display: flex;
     justify-content: end;
 }
-.container .one .join button{
+
+.container .one .join button {
     width: 5rem;
     background: #456FF6;
     color: white;
@@ -124,37 +137,43 @@
         padding: 1.5rem .5rem;
     }
 
+    /* please add parent class before html tags */
+    /* 
     hr {
         position: absolute;
         width: 90%;
         margin: 0 5%;
         border: 1px solid #E0EDFF;
+    } */
+    .content {
+        flex-direction: column-reverse;
     }
-    .content{
-        flex-direction:column-reverse;
-    }
-    .content img{
+
+    .content img {
         margin-top: 1rem;
-        padding:0;
+        padding: 0;
         gap: 0;
     }
-    .desc{
+
+    .desc {
         padding: 0;
         text-align: center;
     }
-    .ig_search{
+
+    .ig_search {
         justify-content: center;
     }
-    .one{
-        width:calc(100% - 2rem);
+
+    .one {
+        width: calc(100% - 2rem);
         padding: 1.5rem 2rem;
-        
+
     }
 
-   
+
 }
 
-.error_container h1{
-    all:revert;
+.error_container h1 {
+    all: revert;
     padding: 125px 0px;
 }
