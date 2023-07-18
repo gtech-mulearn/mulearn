@@ -52,6 +52,8 @@ import HackathonEdit from "./modules/Dashboard/modules/Hackathon/Admin/pages/Hac
 import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle";
 import CreateCircle from "./modules/Dashboard/modules/LearningCircle/pages/CreateCircle";
 import ManageLocation from "./modules/Dashboard/modules/ManageLocation/ManageLocation";
+import AddLocation from "./modules/Dashboard/modules/ManageLocation/AddLocation";
+import EditLocation from "./modules/Dashboard/modules/ManageLocation/EditLocation";
 
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
@@ -200,6 +202,14 @@ const router = createBrowserRouter([
                     { path: "create-circle", element: <CreateCircle /> },
                     {
                         path: "manage-locations", element: <ManageLocation/>
+                    },
+                    {
+                        path: "manage-locations/add/:item",
+                        element: <AddLocation/>
+                    },
+                    {
+                        path: "manage-locations/edit/:item",
+                        element: <EditLocation/>
                     }
                 ]
             }

@@ -1,6 +1,6 @@
 
 export const columnsCountry = [
-    { column: "country", Label: "Country", isSortable: true },
+    { column: "label", Label: "Country", isSortable: true },
 ];
 
 export const columnsState = [

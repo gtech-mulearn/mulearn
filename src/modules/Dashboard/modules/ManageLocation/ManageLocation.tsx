@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState,useEffect } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 import Table from '../../../../components/MuComponents/Table/Table'
 import THead from '../../../../components/MuComponents/Table/THead'
 import TableTop from '../../../../components/MuComponents/TableTop/TableTop'
@@ -7,12 +7,14 @@ import Pagination from '../../../../components/MuComponents/Pagination/Paginatio
 import { MuButton } from '@Mulearn/MuButtons/MuButton';
 import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
 import './ManageLocation.scss'
+import { AiOutlinePlusCircle } from "react-icons/ai";
 import { 
   columnsCountry,
   columnsState,
   columnsZone,
   columnsDistrict 
 } from './ManageLocationHeaders';
+import { getCountryData } from './apis';
 
 const ManageLocation = () => {
   const [data, setData] = useState<any[]>([]);
@@ -25,6 +27,22 @@ const ManageLocation = () => {
     
 
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    if(activeTab === "Country"){
+      getCountryData(setData,setTotalPages)
+    }else if( activeTab === "State"){
+      alert("state")
+    }else if(activeTab === "Zone"){
+      alert("zone")
+    }else if(activeTab === "District"){
+      alert("District")
+    }
+    return(
+      setData([]),
+      setTotalPages(1)
+    )
+  },[activeTab])
 
 
   const handleNextClick = () => {
@@ -55,7 +73,7 @@ const handleIconClick = (column: string) => {
 };
 
   function handleEdit(column: string | number | boolean): void {
-    throw new Error('Function not implemented.');
+    navigate('edit/country')
   }
 
   function handleDelete(column: string | undefined): void {
@@ -109,24 +127,40 @@ const handleIconClick = (column: string) => {
 
 const TableTopToggle = ({active,onTabClick}:any) => {
   const tabItems = ["Country","State","Zone","District"]
+
+  const navigate = useNavigate()
+
+  function handleAddLocation() {
+    navigate('add/country')
+  }
   return(
-    <div className="ml_toggle_container">
-                {
-                    tabItems?.map((item: string): any => (
-                        <MuButton
-                            key={item}
-                            text={item}
-                            className = { 
-                                active === item 
-                                ? "table_tab_btn active" 
-                                :  "table_tab_btn inactive"
-                            }
-                            onClick={()=>{
-                                onTabClick(item)
-                            }}
-                        />
-                    ))
-                }
+    <div className="ml_top_container">
+      <div className="ml_toggle_container">
+                  {
+                      tabItems?.map((item: string): any => (
+                          <MuButton
+                              key={item}
+                              text={item}
+                              className = { 
+                                  active === item 
+                                  ? "table_tab_btn active" 
+                                  :  "table_tab_btn inactive"
+                              }
+                              onClick={()=>{
+                                  onTabClick(item)
+                              }}
+                          />
+                      ))
+                  }
+      </div>
+      <div className="createBtnContainer">
+                  <MuButton
+                      className="createBtn"
+                      text="Add Country"
+                      icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
+                      onClick={handleAddLocation}
+                  />
+      </div>
     </div>
   )
 }

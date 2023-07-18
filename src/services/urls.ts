@@ -85,8 +85,8 @@ export const organizationRoutes = {
     getOrgCsv: "/api/v1/organisation/institutes/csv"
 };
 
-export const ManageLocations = {
-    //apis
+export const ManageLocationsRoutes = {
+    getCountryData: "/api/v1/location/country",
 }
 
 export const KKEMRoutes = {

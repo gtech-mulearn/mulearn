@@ -157,6 +157,9 @@ function Organizations() {
             // CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}        
             // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"} 
             />
+            {
+                console.log(data)
+            }
             {data && (
                 <Table
                     rows={data}
