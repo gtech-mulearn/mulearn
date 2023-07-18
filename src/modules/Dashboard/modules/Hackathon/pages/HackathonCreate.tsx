@@ -5,7 +5,7 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import FormikReactSelect, {
     FormikTextAreaWhite,
     FormikTextInputWhite
-} from "../../../../../components/MuComponents/FormikComponents/FormikComponents";
+} from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { useEffect, useState } from "react";
 import {
     createHackathon,

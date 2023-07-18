@@ -1,10 +1,10 @@
+import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
+import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
-import { useNavigate, useParams } from "react-router-dom";
 import { Form, Formik } from "formik";
-import styles from "@Mulearn/FormikComponents/FormComponents.module.css";
+import { useParams } from "react-router-dom";
 import * as Yup from "yup";
-import { FormikTextInput } from "@Mulearn/FormikComponents/FormikComponents";
-import { PowerfulButton } from "@Mulearn/MuButtons/MuButton";
 import { addOrganizer } from "../services/HackathonApis";
 
 type Props = {};

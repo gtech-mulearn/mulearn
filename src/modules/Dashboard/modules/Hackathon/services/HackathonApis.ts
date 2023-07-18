@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
-import { privateGateway, publicGateway } from "../../../../../services/apiGateways";
-import { dashboardRoutes, onboardingRoutes } from "../../../../../services/urls";
+import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
+import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import { HackList } from "../User/Hackathon";
 import { SetStateAction } from "react";
 import { ToastId, UseToastOptions, useToast } from "@chakra-ui/react";
@@ -67,7 +67,7 @@ export const createHackathon = async (
                 tagline: tagline,
                 description: description,
                 participant_count: participantCount,
-                org_id: orgId,
+                organisation: orgId,
                 districtId: districtId,
                 place: place,
                 is_open_to_all: isOpenToAll,
