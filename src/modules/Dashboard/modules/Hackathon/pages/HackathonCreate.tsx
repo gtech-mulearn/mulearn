@@ -277,18 +277,6 @@ const HackathonCreate = () => {
 
                                         <TabPanel className={styles.formGroup}>
                                             <FormikTextInputWhite
-                                                label="Start Date"
-                                                name="eventStart"
-                                                className={styles.placeholder}
-                                                type="date"
-                                            />
-                                            <FormikTextInputWhite
-                                                label="End Date"
-                                                name="eventEnd"
-                                                className={styles.placeholder}
-                                                type="date"
-                                            />
-                                            <FormikTextInputWhite
                                                 label="Registration Start Date"
                                                 name="applicationStart"
                                                 className={styles.placeholder}
@@ -297,6 +285,18 @@ const HackathonCreate = () => {
                                             <FormikTextInputWhite
                                                 label="Registration End Date"
                                                 name="applicationEnds"
+                                                className={styles.placeholder}
+                                                type="date"
+                                            />
+                                            <FormikTextInputWhite
+                                                label="Hackathon Start Date"
+                                                name="eventStart"
+                                                className={styles.placeholder}
+                                                type="date"
+                                            />
+                                            <FormikTextInputWhite
+                                                label="Hackathon End Date"
+                                                name="eventEnd"
                                                 className={styles.placeholder}
                                                 type="date"
                                             />
