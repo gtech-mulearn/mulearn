@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { getHackathons, getOwnHackathons } from "./hackApi";
 import { DateConverter } from "../../../utils/common";
 import Modal from "@Mulearn/Modal/Modal";
-import { deleteHackathon } from "../services/HackathonApis";
+import { deleteHackathon, publishHackathon } from "../services/HackathonApis";
 import { useToast } from "@chakra-ui/react";
 
 export interface HackList {
@@ -91,6 +91,35 @@ const Hackathon = () => {
                                                         content={`Are you sure you want to delete ${hack.title} ?`}
                                                         click={() => {
                                                             deleteHackathon(
+                                                                hack.id,
+                                                                toast
+                                                            );
+                                                            setTimeout(() => {
+                                                                getOwnHackathons(setOwnData);
+                                                            }, 1000);
+                                                            setTimeout(() => {
+                                                                navigate("/hackathon");
+                                                            }, 1000);
+                                                        }}
+                                                    />
+                                                )}
+                                            </div>
+                                            <div className="group">
+                                                <RiDeleteBin5Line
+                                                    onClick={() => {
+                                                        toggleModal(index);
+                                                    }}
+                                                />
+                                                {isOpen[index] && (
+                                                    <Modal
+                                                        setIsOpen={() =>
+                                                            toggleModal(index)
+                                                        }
+                                                        id={hack.id}
+                                                        heading={"Publish"}
+                                                        content={`Make sure all details are filled before Publishing ${hack.title}`}
+                                                        click={() => {
+                                                            publishHackathon(
                                                                 hack.id,
                                                                 toast
                                                             );

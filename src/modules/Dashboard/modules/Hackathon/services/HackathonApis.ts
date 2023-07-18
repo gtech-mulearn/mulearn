@@ -141,3 +141,30 @@ export const deleteHackathon = async (
         }
     }
 };
+
+export const publishHackathon = async (
+    id: string,
+    toast: (options?: UseToastOptions | undefined) => ToastId
+) => {
+    try {
+        const response = await privateGateway.put(
+            dashboardRoutes.publishHackathon + id + "/", {
+				status: "Published"
+			}
+        );
+        const message: any = response?.data;
+        console.log(message);
+        toast({
+            title: "Publish Successful",
+            description: "Hackathon has been Published",
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
