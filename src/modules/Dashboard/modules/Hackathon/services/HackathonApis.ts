@@ -3,7 +3,7 @@ import { privateGateway, publicGateway } from "../../../../../services/apiGatewa
 import { dashboardRoutes, onboardingRoutes } from "../../../../../services/urls";
 import { HackList } from "../User/Hackathon";
 import { SetStateAction } from "react";
-import { useToast } from "@chakra-ui/react";
+import { ToastId, UseToastOptions, useToast } from "@chakra-ui/react";
 
 export const getFormFields = async (
     setFormData: React.Dispatch<React.SetStateAction<string>>
@@ -66,7 +66,7 @@ export const createHackathon = async (
                 tagline: tagline,
                 description: description,
                 participant_count: participantCount,
-                orgId: orgId,
+                org_id: orgId,
                 districtId: districtId,
                 place: place,
                 is_open_to_all: isOpenToAll,
@@ -77,7 +77,7 @@ export const createHackathon = async (
                 status: "Draft",
                 form_fields: formFields,
                 event_logo: logo,
-                banner: banner,
+                banner: banner
             },
             {
                 maxBodyLength: Infinity,
@@ -119,6 +119,7 @@ export const getDistrict = (
 
 export const deleteHackathon = async (
     id: string,
+    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
         const response = await privateGateway.delete(
@@ -126,6 +127,13 @@ export const deleteHackathon = async (
         );
         const message: any = response?.data;
         console.log(message);
+        toast({
+            title: "Delete Successful",
+            description: "Hackathon has been deleted",
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

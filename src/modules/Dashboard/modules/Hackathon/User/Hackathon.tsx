@@ -7,6 +7,7 @@ import { getHackathons, getOwnHackathons } from "./hackApi";
 import { DateConverter } from "../../../utils/common";
 import Modal from "@Mulearn/Modal/Modal";
 import { deleteHackathon } from "../services/HackathonApis";
+import { useToast } from "@chakra-ui/react";
 
 export interface HackList {
     id: string;
@@ -26,7 +27,8 @@ const Hackathon = () => {
     const [data, setData] = useState<HackList[]>([]);
     const [ownData, setOwnData] = useState<HackList[]>([]);
     const [isOpen, setIsOpen] = useState<boolean[]>(ownData.map(() => false));
-	const navigate = useNavigate();
+    const navigate = useNavigate();
+    const toast = useToast();
 
     useEffect(() => {
         getHackathons(setData);
@@ -88,13 +90,16 @@ const Hackathon = () => {
                                                         heading={"Delete"}
                                                         content={`Are you sure you want to delete ${hack.title} ?`}
                                                         click={() => {
-                                                            deleteHackathon(hack.id);
-															getOwnHackathons(
-                                                                setOwnData
+                                                            deleteHackathon(
+                                                                hack.id,
+                                                                toast
                                                             );
-															setTimeout(() => {
-																navigate('/hackathon')
-															}, 2000);
+                                                            setTimeout(() => {
+                                                                getOwnHackathons(setOwnData);
+                                                            }, 1000);
+                                                            setTimeout(() => {
+                                                                navigate("/hackathon");
+                                                            }, 1000);
                                                         }}
                                                     />
                                                 )}
