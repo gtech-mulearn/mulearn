@@ -1,8 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./MuIDModal.module.css";
 import { RiCloseLine } from "react-icons/ri";
 import { AiOutlineLoading } from "react-icons/ai";
 import { HiCheck, HiOutlineArrowRight } from "react-icons/hi";
+import { login, otpVerification, requestEmailOrMuidOtp } from "../../Common/Authentication/services/apis";
+import { useToast } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 interface ModalProps extends React.HTMLAttributes<HTMLDialogElement> {
     open: boolean;
@@ -49,6 +52,17 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
     const [success, setSuccess] = useState(false);
     const [disabled, setDisabled] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [otpForm, setOtpForm] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [status, setStatus] = useState(0);
+    const [hasError, setHasError] = useState(true);
+    const [otpLoading, setOtpLoading] = useState(false);
+    const [otpError, setOtpError] = useState(false);
+    const [otpVerifyLoading, setOtpVerifyLoading] = useState(false);
+    const toast = useToast();
+    const navigate = useNavigate();
+    let ruri = window.location.href.split("=")[1];
+
     const handleIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setMuid(e.target.value);
     };
@@ -111,42 +125,164 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
                     <div className={styles.modalBody}>
                         <p>If yes, please enter your Credentials:</p>
                     </div>
-                    <form className={styles.form} onSubmit={handleSubmit}>
-                        <input
-                            type="text"
-                            name="muid"
-                            id="muid"
-                            placeholder="Enter µ-Id"
-                            value={muid}
-                            onChange={handleIdChange}
-                        />
-                        <div className={styles.pass}>
-                            <input
-                                type="password"
-                                name="password"
-                                id="password"
-                                placeholder="Enter Password"
-                                value={password}
-                                onChange={handlePassChange}
-                            />
+                    {!otpForm ?
+                        <form className={styles.form} onSubmit={handleSubmit}>
+                            <>
+                                <input
+                                    type="text"
+                                    name="muid"
+                                    id="muid"
+                                    placeholder="Enter µ-Id"
+                                    value={muid}
+                                    onChange={handleIdChange}
+                                />
+                                <div className={styles.pass}>
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        id="password"
+                                        placeholder="Enter Password"
+                                        value={password}
+                                        onChange={handlePassChange}
+                                    />
 
-                            <button
-                                type="submit"
-                                className={`${styles.submit} ${
-                                    success ? styles.successBtn : ""
-                                }`}
-                                disabled={disabled}
-                            >
-                                {disabled ? (
-                                    <AiOutlineLoading className={styles.spin} />
-                                ) : success ? (
-                                    <HiCheck />
-                                ) : (
-                                    <HiOutlineArrowRight />
-                                )}
-                            </button>
-                        </div>
-                    </form>
+                                    <button
+                                        type="submit"
+                                        className={`${styles.submit} ${success ? styles.successBtn : ""
+                                            }`}
+                                        disabled={isLoading}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            if (!muid || muid.length <= 0 || muid.trim().length <= 0) {
+                                                setError("Please enter a valid muid");
+                                            } else if (!password || password.length <= 0 || password.trim().length <= 0) {
+                                                setError("Please enter a valid password");
+                                            } else {
+                                                setError("")
+                                                login(
+                                                    muid,
+                                                    password,
+                                                    toast,
+                                                    navigate,
+                                                    setIsLoading,
+                                                    ruri
+                                                )
+                                            }
+                                        }}
+                                    >
+                                        {isLoading ? (
+                                            <AiOutlineLoading className={styles.spin} />
+                                        ) : success ? (
+                                            <HiCheck />
+                                        ) : (
+                                            <HiOutlineArrowRight />
+                                        )}
+                                    </button>
+                                </div>
+                                <div className={styles.loginHelp}>
+                                    <p className={styles.loginHelpers}>Forgot <span className={styles.loginHelperBold}>password?</span></p>
+                                    <p className={styles.loginHelpers}
+                                        onClick={() => {
+                                            setOtpForm(true);
+                                        }}
+                                    >Login with <span className={styles.loginHelperBold}>OTP</span></p>
+                                </div>
+                            </>
+                        </form>
+                        :
+                        <form className={styles.form}>
+                            <>
+                                <div className={styles.pass}>
+                                    <input
+                                        type="text"
+                                        name="muid"
+                                        id="muid"
+                                        placeholder="Enter µ-Id"
+                                        value={muid}
+                                        onChange={handleIdChange}
+                                    />
+
+                                    {status != 200 &&
+                                        <button
+                                            type="submit"
+                                            className={`${styles.submit} ${success ? styles.successBtn : ""
+                                                }`}
+                                            disabled={otpLoading}
+                                            onClick={(e) => {
+                                                e.preventDefault()
+                                                if (muid != "" && hasError) {
+                                                    requestEmailOrMuidOtp(
+                                                        muid,
+                                                        toast,
+                                                        setHasError,
+                                                        setStatus,
+                                                        setOtpLoading,
+                                                        setOtpError
+                                                    );
+                                                }
+                                            }}
+                                        >
+                                            {otpLoading ? (
+                                                <AiOutlineLoading className={styles.spin} />
+                                            ) : success ? (
+                                                <HiCheck />
+                                            ) : (
+                                                <HiOutlineArrowRight />
+                                            )}
+                                        </button>
+                                    }
+                                </div>
+                                {status === 200 &&
+                                    <div className={styles.pass}>
+                                        <input
+                                            type="number"
+                                            name="otp"
+                                            id="otp"
+                                            placeholder="Enter OTP"
+                                            value={password}
+                                            onChange={handlePassChange}
+                                        />
+
+                                        <button
+                                            type="submit"
+                                            className={`${styles.submit} ${success ? styles.successBtn : ""
+                                                }`}
+                                            disabled={otpVerifyLoading}
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                if (password != "" && !hasError) {
+                                                    otpVerification(
+                                                        muid,
+                                                        password,
+                                                        toast,
+                                                        navigate,
+                                                        setOtpVerifyLoading,
+                                                        ruri
+                                                    );
+                                                }
+                                            }}
+                                        >
+                                            {otpVerifyLoading ? (
+                                                <AiOutlineLoading className={styles.spin} />
+                                            ) : success ? (
+                                                <HiCheck />
+                                            ) : (
+                                                <HiOutlineArrowRight />
+                                            )}
+                                        </button>
+                                    </div>
+                                }
+                                <div className={styles.loginHelp}>
+                                    <p className={styles.loginHelpers}>Forgot <span className={styles.loginHelperBold}>password?</span></p>
+                                    <p className={styles.loginHelpers}
+                                        onClick={() => {
+                                            setOtpForm(false);
+                                        }}
+                                    >Login with <span className={styles.loginHelperBold}>Password</span></p>
+                                </div>
+                            </>
+                        </form>
+                    }
                     {error && <p className={styles.error}>{error}</p>}
                     {success && (
                         <p className={styles.success}>
