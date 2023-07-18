@@ -14,6 +14,9 @@ export interface HackList {
     title: string;
     type: string;
     tagline: string;
+    event_logo: any;
+    banner: any;
+    website: string;
     place: string;
     event_start: string | null;
     event_end: string | null;

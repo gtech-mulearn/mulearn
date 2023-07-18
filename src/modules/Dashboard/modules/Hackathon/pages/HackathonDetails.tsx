@@ -25,7 +25,7 @@ export const HackathonDetails = (props: Props) => {
         <div className="content">
             <div className="profileDash">
                 <div className="banner">
-                    <img src={banner} alt="" />
+                    <img src={`https://dev.mulearn.org/api/v1/${data?.banner}`} alt="" />
                 </div>
                 <div className="event__card">
                     <div className="apply__Card">
@@ -49,7 +49,7 @@ export const HackathonDetails = (props: Props) => {
                         <button className="apply__Now">Apply Now</button>
                     </div>
                     <div className="social__links">
-                        <a href="#">
+                        <a href={data?.website}>
                          <CiGlobe/>
                         </a>
                         {/* <a href="#">
@@ -67,7 +67,9 @@ export const HackathonDetails = (props: Props) => {
 
             <div className="desc">
                 <div className="description">
-                    <span className="hackprofile"></span>
+                    <img className="hackprofile" src={`https://dev.mulearn.org/api/v1/${data?.event_logo}`}>
+
+                    </img>
                     <div>
                         <h1>{data?.title}</h1>
                         <div>
@@ -76,7 +78,9 @@ export const HackathonDetails = (props: Props) => {
                             <span> {data?.participant_count}+ participants</span>
                         </div>
                     </div>
-                    <span className="love"></span>
+                    <span className="love">
+
+                    </span>
                 </div>
 
                 <p>
