@@ -5,10 +5,11 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { getHackathons, getOwnHackathons } from "./hackApi";
 import { DateConverter } from "../../../utils/common";
-import Modal from "@/MuLearnComponents/Modal/Modal";
-import { deleteHackathon } from "../services/HackathonApis";
+import { deleteHackathon, publishHackathon } from "../services/HackathonApis";
 import { useToast } from "@chakra-ui/react";
 import { BsPersonAdd } from "react-icons/bs";
+import React from "react";
+import Modal from "@/MuLearnComponents/Modal/Modal";
 
 export interface HackList {
     id: string;
