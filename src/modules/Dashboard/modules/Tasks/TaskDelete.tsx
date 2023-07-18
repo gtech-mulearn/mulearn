@@ -2,7 +2,7 @@ import { useToast } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { deleteTask, getTaskDetails } from "./TaskApis";
-import Form from "../../../../components/MuComponents/Form/Form";
+import Form from "@/MuLearnComponents/Form/Form";
 import { TaskEditInterface } from "./TaskInterface";
 
 type Props = {};

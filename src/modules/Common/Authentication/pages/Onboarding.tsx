@@ -20,7 +20,7 @@ import {
     getDistrict
 } from "../services/onboardingApis";
 import { useNavigate } from "react-router-dom";
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 const animatedComponents = makeAnimated();
 

@@ -3,13 +3,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { editTask, getTaskDetails, getUUID } from "./TaskApis";
 import * as Yup from "yup";
 import { useToast } from "@chakra-ui/react";
-import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
+import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { Form, Formik } from "formik";
 import {
     FormikSelect,
     FormikTextInput
-} from "../../../../components/MuComponents/FormikComponents/FormikComponents";
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+} from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { TaskEditInterface } from "./TaskInterface";
 import { AxiosError } from "axios";
 

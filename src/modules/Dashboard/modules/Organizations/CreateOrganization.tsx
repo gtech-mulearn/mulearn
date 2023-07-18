@@ -1,11 +1,7 @@
-import { useNavigate } from 'react-router-dom';
-import './Organizations.scss';
-import { useLocation } from 'react-router-dom';
+import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
+import { useLocation, useNavigate } from 'react-router-dom';
 import FormData from './FormData';
-import Form from "../../../../components/MuComponents/Form/Form";
-import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
-import { Formik } from 'formik';
-import * as Yup from "yup";
+import './Organizations.scss';
 
 function CreateOrganization() {
   const navigate = useNavigate();
