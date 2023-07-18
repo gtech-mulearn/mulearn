@@ -11,7 +11,7 @@ export const userAuth = async (
     return await publicGateway
         .post(
             KKEMRoutes.userAuth,
-            { mu_id, dwms_id },
+            { mu_id, dwms_id,integration:"KKEM" },
             {
                 signal: controller?.signal
             }

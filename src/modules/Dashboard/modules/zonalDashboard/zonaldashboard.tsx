@@ -7,13 +7,19 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getzonaldashboard } from "./apis";
 
-import { hasRole } from "@/MuLearnServices/common_functions";
-import { roles } from "@/MuLearnServices/types";
-import { columnsCampus, columnsStudent } from "./THeaders";
-import TableTopTab from "./TableTopTab";
 
-import { dashboardRoutes } from "@/MuLearnServices/urls";
-import "./Organizations.scss";
+import { hasRole } from "../../../../services/common_functions";
+import { roles } from "../../../../services/types";
+import { columnsStudent, columnsCampus } from "./THeaders";
+import TableTopTab from "./TableTopTab"
+import Textfield from "../../../../components/MuComponents/TextField/Textfield";
+import Dropdown from "../../../../components/MuComponents/Dropdown/Dropdown";
+
+import "./ZonalDashboard.scss";
+import PrimaryButton from "../../../../components/MuComponents/MuButtons/MuOutlinedButton";
+import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import { dashboardRoutes } from "../../../../services/urls";
+import { Blank } from "../../../../components/MuComponents/Table/Blank";
 
 function ZonalDashboard() {
     const [data, setData] = useState<any[]>([]);
