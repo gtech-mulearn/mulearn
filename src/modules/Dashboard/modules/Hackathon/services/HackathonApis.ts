@@ -56,7 +56,8 @@ export const createHackathon = async (
 	eventEnd: string,
 	formFields: any,
 	logo: any,
-    banner?:any
+    banner:any,
+    type:string,
 ) => {
     try {
         const response = await privateGateway.post(
@@ -78,6 +79,7 @@ export const createHackathon = async (
                 form_fields: formFields,
                 event_logo: logo,
                 banner: banner,
+                type: type,
             },
             {
                 maxBodyLength: Infinity,
@@ -123,6 +125,27 @@ export const deleteHackathon = async (
     try {
         const response = await privateGateway.delete(
             dashboardRoutes.deleteHackathon + id + "/"
+        );
+        const message: any = response?.data;
+        console.log(message);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
+
+export const addOrganizer = async (
+    id: string | undefined,
+    muid: string,
+) => {
+    try {
+        const response = await privateGateway.post(
+            dashboardRoutes.addOrganizer + id + "/",
+            {
+                mu_id: muid,
+            }
         );
         const message: any = response?.data;
         console.log(message);
