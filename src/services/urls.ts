@@ -27,6 +27,7 @@ export const dashboardRoutes = {
     getIgData: "/api/v1/dashboard/ig/",
     getIgList: "/api/v1/dashboard/ig/csv",
     getUsersData: "/api/v1/dashboard/user/",
+    getUsersEditData: "/api/v1/dashboard/user/edit/",
     getUsersList: "/api/v1/dashboard/user/csv/",
     getUsersRoleVerificationData: "/api/v1/dashboard/user/verification/",
     getTasksData: "/api/v1/dashboard/task/",
