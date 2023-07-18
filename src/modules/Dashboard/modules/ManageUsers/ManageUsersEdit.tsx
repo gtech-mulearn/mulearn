@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { editManageUsers, getManageUsersDetails } from "./apis";
 import { useNavigate, useParams } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
-import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
+import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import { FormikSelect, FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import { FormikSelect, FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 type Props = {};
 

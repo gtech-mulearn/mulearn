@@ -1,7 +1,7 @@
 import styles from "./CreateCircle.module.css";
 import * as Yup from "yup";
 import { Form, Formik } from "formik";
-import {FormikSelect, FormikTextInput} from '../../../../../components/MuComponents/FormikComponents/FormikComponents'
+import {FormikSelect, FormikTextInput} from '@/MuLearnComponents/FormikComponents/FormikComponents'
 type Props = {};
 
 const CreateCircle = (props: Props) => {

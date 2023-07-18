@@ -5,7 +5,7 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { getHackathons, getOwnHackathons } from "./hackApi";
 import { DateConverter } from "../../../utils/common";
-import Modal from "@Mulearn/Modal/Modal";
+import Modal from "@/MuLearnComponents/Modal/Modal";
 import { deleteHackathon } from "../services/HackathonApis";
 import { useToast } from "@chakra-ui/react";
 import { BsPersonAdd } from "react-icons/bs";

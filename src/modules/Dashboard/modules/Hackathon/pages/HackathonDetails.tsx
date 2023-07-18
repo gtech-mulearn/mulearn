@@ -1,10 +1,9 @@
-import "./styles.css"
-import banner from "../Assets/sampleBanner.png"
+import { useEffect, useState } from "react";
+import { CiGlobe } from "react-icons/ci";
 import { useParams } from "react-router-dom";
 import { HackList } from "../User/Hackathon";
-import { useEffect, useState } from "react";
 import { getHackDetails } from "../services/HackathonApis";
-import { CiGlobe } from "react-icons/ci";
+import "./styles.css";
 
 type Props = {};
 

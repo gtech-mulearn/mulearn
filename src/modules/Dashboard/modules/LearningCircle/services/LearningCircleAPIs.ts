@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
-import { privateGateway } from "../../../../../services/apiGateways"
-import { dashboardRoutes } from "../../../../../services/urls";
+import { privateGateway } from "@/MuLearnServices/apiGateways"
+import { dashboardRoutes } from "@/MuLearnServices/urls";
 
 export const getUserLearningCircles = async (
     setUserCircleList: React.Dispatch<React.SetStateAction<string>>

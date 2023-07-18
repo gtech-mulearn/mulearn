@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
-import { privateGateway } from "../../../../services/apiGateways";
-import { dashboardRoutes } from "../../../../services/urls";
+import { privateGateway } from "@/MuLearnServices/apiGateways";
+import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 import { Dispatch, SetStateAction } from "react";
 export const getManageUsers = async (
