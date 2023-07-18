@@ -18,7 +18,7 @@ import "./DistricDashboard.scss"
 import PrimaryButton from '../../../../components/MuComponents/MuButtons/MuOutlinedButton'
 import { MuButton } from '../../../../components/MuComponents/MuButtons/MuButton'
 
-function districtDashboard() {
+function DistrictDashboard() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
@@ -196,4 +196,4 @@ function districtDashboard() {
     );
 }
 
-export default districtDashboard
+export default DistrictDashboard
