@@ -167,44 +167,6 @@ const Login = () => {
                                     Login with <b>password</b>
                                 </a>
                             </p>
-                            {/* <button
-                                onClick={e => {
-                                    setHasError(false);
-                                    e.preventDefault();
-                                    if (emailOrMuid != "" && hasError) {
-                                        requestEmailOrMuidOtp(
-                                            emailOrMuid,
-                                            toast,
-                                            setHasError,
-                                            setStatus,
-                                            setOtpLoading
-                                        );
-                                    }
-                                    if (!hasError && password != "") {
-                                        otpVerification(
-                                            emailOrMuid,
-                                            password,
-                                            toast,
-                                            navigate,
-                                            setOtpLoading
-                                        );
-                                    }
-                                }}
-                                type="submit"
-                            // disabled={status === 1 ? true : false}
-                            >
-                                {hasError
-                                    ? "Request OTP"
-                                    : status === 0 && emailOrMuid != ""
-                                        ? "Processing"
-                                        : emailOrMuid != ""
-                                            ?
-                                            <>
-                                                {!otpLoading ? <>Sign in</> : <div className={styles.otp_loader}> <PulseLoader size={10} color="#fff" /></div>}
-                                            </>
-                                            : "Request OTP"
-                                        }
-                            </button> */}
                             <MuButton
                                 text={
                                     hasError

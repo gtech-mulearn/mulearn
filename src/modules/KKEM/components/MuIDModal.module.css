@@ -108,6 +108,11 @@
     border-radius: 1.2rem;
     width: 60%;
 }
+@media screen and (max-width: 600px) {
+    .form input {
+       width: 100%;
+    }
+}
 .form input:focus {
     outline: 2px solid #3a3a3a;
 }
@@ -122,12 +127,17 @@
     background: #456ff6;
     color: #fff;
     position: absolute;
-    right: 1rem;
-    top: 50%;
+    right: 18rem;
+    top: 58%;
     transform: translateY(-50%);
-    padding: 1rem;
+    padding: 0.3rem;
     border-radius: 50%;
     font-size: 1.5rem;
+}
+@media screen and (max-width: 600px) {
+    .submit {
+        right: 1rem;
+    }
 }
 .submit:hover {
     background: #456ff6bb;
@@ -166,5 +176,30 @@
     .flowContainer {
         flex-direction: column;
         align-items: end;
+       margin-top: -4.5rem;
     }
+}
+
+.loginHelp{
+    display: flex;
+    align-items: center;
+    width: 60%;
+    font-size: 18px;
+    color: #fff;
+    justify-content: space-between;
+}
+@media screen and (max-width: 600px) {
+    .loginHelp {
+        width: 100%;
+        font-size: 13px;
+        margin-bottom: 7px;
+    }
+}
+
+.loginHelpers{
+    cursor: pointer;
+}
+
+.loginHelperBold{
+    font-weight: 600;
 }

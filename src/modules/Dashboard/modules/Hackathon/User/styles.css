@@ -33,7 +33,7 @@
 .box .div {
 	align-items: flex-start;
 	display: flex;
-	gap: 89.69px;
+	gap: 52.5px;
 	position: relative;
 	width: fit-content;
 }
@@ -78,7 +78,7 @@
 .box .frame-2 {
 	align-items: flex-start;
 	display: flex;
-	gap: 12.26px;
+	gap: 10px;
 	position: relative;
 	width: 62px;
 }
