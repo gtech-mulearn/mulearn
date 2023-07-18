@@ -16,13 +16,18 @@ export const MuButton = (props: {
     style?: React.CSSProperties; // button style if wanted
     className?: string; // button class name if wanted
     onClick?: React.MouseEventHandler; // onclick event if wanted
-    isLoading?: boolean; // show loading spinner if neccessary.
-    disabled?: boolean; //disable the button if needed
+    isLoading?: boolean;// show loading spinner if neccessary.
+    disabled?: boolean;//disable the button if needed
+    buttonUrl?: string; // for styling purposes
 }) => {
     return (
         <button
             className={props.className ? props.className : styles.btn}
-            style={props.style}
+            style={{
+                background: `/${props.buttonUrl}` === window.location.pathname ? "#456FF6" : "",
+                color: `/${props.buttonUrl}` === window.location.pathname ? "#fff" : "",
+                ...props.style,
+            }}
             onClick={props.onClick}
             disabled={props.disabled}
         >
@@ -75,12 +80,41 @@ export const DropDownButtons = (props: {
                 className={styles.dropdown_btn}
                 style={{
                     ...props.style,
-                    marginBottom: props.display === "0" ? "" : "4px"
+                    marginBottom: props.display === "0" ? "" : "4px",
+                    padding: props.icon ? "" : "6px 12px"
                 }}
                 onClick={props.onClick}
             >
-                <div className={styles.btn_icon}>{props.icon}</div>
+                {props.icon && (
+                    <div className={styles.btn_icon}>{props.icon}</div>
+                )}
                 <p>{props.text}</p>
+                {/* arrow icon */}
+                <div
+                    className={styles.arrow_icon}
+                    style={{
+                        transform:
+                            props.display === "0"
+                                ? "rotate(0deg)"
+                                : "rotate(180deg)"
+                    }}
+                >
+                    <svg
+                        width="12"
+                        height="8"
+                        viewBox="0 0 12 8"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M1 1L6 6L11 1"
+                            stroke="#a9c8f3"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        />
+                    </svg>
+                </div>
             </div>
             <div
                 className={styles.drop_view}
@@ -115,7 +149,7 @@ export const SingleButton = (props: {
 
 type Props = {
     text: string;
-	type?: any;
+    type?: any;
     onHoverBackground?: string;
     onHoverColor?: string;
     backgroundColor?: string;
@@ -153,10 +187,10 @@ export const PowerfulButton = (props: Props) => {
         <div className={styles.powerfullButton}>
             <button
                 style={style}
-				type={props.type || "button"}
+                type={props.type || "button"}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-				onClick={props.onButtonClick}
+                onClick={props.onButtonClick}
             >
                 {props.text}
             </button>
