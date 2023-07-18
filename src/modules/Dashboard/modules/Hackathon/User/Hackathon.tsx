@@ -5,6 +5,8 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { getHackathons, getOwnHackathons } from "./hackApi";
 import { DateConverter } from "../../../utils/common";
+import Modal from "@Mulearn/Modal/Modal";
+import { deleteHackathon } from "../services/HackathonApis";
 
 export interface HackList {
     id: string;
@@ -23,10 +25,21 @@ export interface HackList {
 const Hackathon = () => {
     const [data, setData] = useState<HackList[]>([]);
     const [ownData, setOwnData] = useState<HackList[]>([]);
+    const [isOpen, setIsOpen] = useState<boolean[]>(ownData.map(() => false));
+	const navigate = useNavigate();
+
     useEffect(() => {
         getHackathons(setData);
         getOwnHackathons(setOwnData);
     }, []);
+
+    const toggleModal = (index: number) => {
+        setIsOpen(prevState => {
+            const newState = [...prevState];
+            newState[index] = !newState[index];
+            return newState;
+        });
+    };
 
     return (
         <>
@@ -39,7 +52,7 @@ const Hackathon = () => {
             </div>
             <div className="box">
                 {ownData &&
-                    ownData.map(hack => (
+                    ownData.map((hack, index) => (
                         <div key={hack.id} className="card-component">
                             <div className="frame">
                                 <div className="div">
@@ -61,11 +74,30 @@ const Hackathon = () => {
                                                 </Link>
                                             </div>
                                             <div className="group">
-                                                <Link
-                                                    to={`/hackathon/test/${hack.id}`}
-                                                >
-                                                        <RiDeleteBin5Line />
-                                                </Link>
+                                                <RiDeleteBin5Line
+                                                    onClick={() => {
+                                                        toggleModal(index);
+                                                    }}
+                                                />
+                                                {isOpen[index] && (
+                                                    <Modal
+                                                        setIsOpen={() =>
+                                                            toggleModal(index)
+                                                        }
+                                                        id={hack.id}
+                                                        heading={"Delete"}
+                                                        content={`Are you sure you want to delete ${hack.title} ?`}
+                                                        click={() => {
+                                                            deleteHackathon(hack.id);
+															getOwnHackathons(
+                                                                setOwnData
+                                                            );
+															setTimeout(() => {
+																navigate('/hackathon')
+															}, 2000);
+                                                        }}
+                                                    />
+                                                )}
                                             </div>
                                         </div>
                                     </div>

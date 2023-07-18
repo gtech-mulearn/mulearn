@@ -39,7 +39,7 @@ export const dashboardRoutes = {
     getTaskIGs: "/api/v1/dashboard/task/ig/",
     getTaskOrganizations: "/api/v1/dashboard/task/organization/",
     getTaskChannels: "/api/v1/dashboard/task/channel/",
-    getTaskTypes:"/api/v1/dashboard/task/task-types/",
+    getTaskTypes: "/api/v1/dashboard/task/task-types/",
 
     getShortenUrl: "/api/v1/url-shortener/list/",
     createShortenUrl: "/api/v1/url-shortener/create/",
@@ -71,6 +71,9 @@ export const dashboardRoutes = {
     createHackathon: "/api/v1/hackathon/create-hackathon/",
     getHackathons: "/api/v1/hackathon/list-hackathons/",
     getOwnHackathons: "/api/v1/hackathon/list-orgniser-hackathons/",
+    deleteHackathon: "/api/v1/hackathon/delete-hackathon/",
+
+    getUserLearningCircles: "/api/v1/dashboard/lc/"
 } as const;
 
 export const organizationRoutes = {

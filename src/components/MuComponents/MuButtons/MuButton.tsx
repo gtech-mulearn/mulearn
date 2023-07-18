@@ -155,10 +155,12 @@ type Props = {
     backgroundColor?: string;
     color?: string;
     onButtonClick?: any;
-    margin?: string;
+	margin?: string;
+	padding?: string;
+	borderColor?: string;
 };
 
-export const PowerfullButton = (props: Props) => {
+export const PowerfulButton = (props: Props) => {
     const [isHovered, setIsHovered] = useState(false);
 
     const handleMouseEnter = () => {
@@ -172,8 +174,9 @@ export const PowerfullButton = (props: Props) => {
     const style = {
         backgroundColor: props.backgroundColor || "#456FF6",
         color: props.color || "#f5f7f9",
-        padding: "0.6rem 0.9rem",
+        padding: props.padding || "0.6rem 0.9rem",
         borderRadius: "10px",
+		border: `2px solid ${props.borderColor || "#456FF6"}`,
         margin: props.margin || "0",
         ...(isHovered && {
             backgroundColor: props.onHoverBackground || "#00204c",
