@@ -7,6 +7,7 @@ import { getHackathons, getOwnHackathons } from "./hackApi";
 import { DateConverter } from "../../../utils/common";
 import Modal from "@Mulearn/Modal/Modal";
 import { deleteHackathon } from "../services/HackathonApis";
+import { BsPersonAdd } from "react-icons/bs";
 
 export interface HackList {
     id: string;
@@ -71,6 +72,13 @@ const Hackathon = () => {
                                                     to={`/hackathon/edit/${hack.id}`}
                                                 >
                                                     <LuEdit />
+                                                </Link>
+                                            </div>
+                                            <div className="group">
+                                                <Link
+                                                    to={`/hackathon/organizers/${hack.id}`}
+                                                >
+                                                    <BsPersonAdd />
                                                 </Link>
                                             </div>
                                             <div className="group">

@@ -135,3 +135,24 @@ export const deleteHackathon = async (
         }
     }
 };
+
+export const addOrganizer = async (
+    id: string | undefined,
+    muid: string,
+) => {
+    try {
+        const response = await privateGateway.post(
+            dashboardRoutes.addOrganizer + id + "/",
+            {
+                mu_id: muid,
+            }
+        );
+        const message: any = response?.data;
+        console.log(message);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
