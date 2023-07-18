@@ -14,6 +14,7 @@ export interface HackList {
     title: string;
     type: string;
     tagline: string;
+    place: string;
     event_start: string | null;
     event_end: string | null;
     application_start: string | null;
@@ -156,9 +157,13 @@ const Hackathon = () => {
                                         </div>
                                     </div>
                                     <div className="button-wrapper">
-                                        <button className="button">
-                                            Apply Now
-                                        </button>
+                                        <Link 
+                                            to={`/hackathon/details/${hack.id}`}
+                                        >
+                                            <button className="button">
+                                                Apply Now
+                                            </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -240,9 +245,13 @@ const Hackathon = () => {
                                         </div>
                                     </div>
                                     <div className="button-wrapper">
+                                    <Link
+                                        to={`/hackathon/details/${hack.id}`}
+                                    >  
                                         <button className="button">
                                             Apply Now
                                         </button>
+                                    </Link>   
                                     </div>
                                 </div>
                             </div>
