@@ -67,7 +67,7 @@ export const createHackathon = async (
                 tagline: tagline,
                 description: description,
                 participant_count: participantCount,
-                org_id: orgId,
+                organisation: orgId,
                 districtId: districtId,
                 place: place,
                 is_open_to_all: isOpenToAll,
