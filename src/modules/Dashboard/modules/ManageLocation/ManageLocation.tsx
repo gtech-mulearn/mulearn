@@ -72,8 +72,9 @@ const handleIconClick = (column: string) => {
   }
 };
 
-  function handleEdit(column: string | number | boolean): void {
-    navigate('edit/country')
+  function handleEdit(id: string | number | boolean): void {
+    console.log(id)
+    navigate('edit/country',{state:{country:id}})
   }
 
   function handleDelete(column: string | undefined): void {
@@ -103,7 +104,7 @@ const handleIconClick = (column: string) => {
             page={currentPage}
             perPage={perPage}
             columnOrder={columns}
-            id={['code']}
+            id={['label']}
             onEditClick={handleEdit}
             onDeleteClick={handleDelete}
         >

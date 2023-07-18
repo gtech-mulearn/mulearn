@@ -5,17 +5,29 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
-import { postCountryData } from "./apis";
-import { useToast } from "@chakra-ui/react";
+import { putCountryData } from "./apis";
+import { useStatStyles, useToast } from "@chakra-ui/react";
+import { useLocation } from "react-router-dom";
+import { useEffect,useState } from "react";
 
 const EditLocation = () => {
+
+    const[selectedCountry,setSelectedCountry] = useState("")
+
+
     const navigate = useNavigate();
+    const location = useLocation();
     const toast = useToast();
+
+    useEffect(()=>{
+        setSelectedCountry(location.state.country)
+    },[])
+
     return (
         <div className="popup_container">
             <div className={styles.container}>
                 <div className="popup_top_container">
-                    <h1 className="popup_title">Add Country</h1>
+                    <h1 className="popup_title">Edit Country</h1>
                     <i
                         className="fi fi-sr-cross"
                         onClick={() => {
@@ -28,8 +40,9 @@ const EditLocation = () => {
                     button to proceed for further process.
                 </p>
                 <Formik
+                    enableReinitialize={true}
                     initialValues={{
-                        countryName: ""
+                        countryName: selectedCountry
                     }}
                     validationSchema={Yup.object({
                         countryName: Yup.string()
@@ -38,14 +51,25 @@ const EditLocation = () => {
                     })}
                     onSubmit={values => {
                         console.log(values.countryName);
-                        postCountryData(values.countryName);
-                        toast({
-                            title: "Interest Group created",
-                            status: "success",
-                            duration: 3000,
-                            isClosable: true
-                        });
-                        navigate('/manage-locations');
+                        if(selectedCountry === values.countryName){
+                            toast({
+                                title: "No Changes Made",
+                                status: "warning",
+                                duration: 3000,
+                                isClosable: true
+                            });
+                            navigate('/manage-locations');
+                        }else{
+
+                            putCountryData(selectedCountry,values.countryName);
+                            toast({
+                                title: "Interest Group Updated",
+                                status: "success",
+                                duration: 3000,
+                                isClosable: true
+                            });
+                            navigate('/manage-locations');
+                        }
                     }}
                 >
                     <Form>
@@ -53,7 +77,7 @@ const EditLocation = () => {
                             label="Country Name"
                             name="countryName"
                             type="text"
-                            placeholder="Enter Country "
+                            placeholder="Enter Country"
                         />
 
                         {/* <MySelect label="Job Type" name="jobType">

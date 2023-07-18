@@ -43,3 +43,27 @@ export const postCountryData = async (
         }
     }
 }
+
+
+export const putCountryData = async (
+    oldName:string,
+    newName:string
+) => {
+    try {
+        await privateGateway.put(ManageLocationsRoutes.getCountryData,
+            {
+                oldName: oldName,
+                newName: newName
+            }
+        )
+        .then(({data})=>data.response)
+        .then(({data})=>{
+            console.log(data)
+        })
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+}
