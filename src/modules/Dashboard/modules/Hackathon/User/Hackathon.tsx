@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { getHackathons, getOwnHackathons } from "./hackApi";
 import { DateConverter } from "../../../utils/common";
 import Modal from "@Mulearn/Modal/Modal";
+import { deleteHackathon } from "../services/HackathonApis";
 
 export interface HackList {
     id: string;
@@ -25,6 +26,7 @@ const Hackathon = () => {
     const [data, setData] = useState<HackList[]>([]);
     const [ownData, setOwnData] = useState<HackList[]>([]);
     const [isOpen, setIsOpen] = useState<boolean[]>(ownData.map(() => false));
+	const navigate = useNavigate();
 
     useEffect(() => {
         getHackathons(setData);
@@ -86,9 +88,13 @@ const Hackathon = () => {
                                                         heading={"Delete"}
                                                         content={`Are you sure you want to delete ${hack.title} ?`}
                                                         click={() => {
-                                                            console.log(
-                                                                hack.id
+                                                            deleteHackathon(hack.id);
+															getOwnHackathons(
+                                                                setOwnData
                                                             );
+															setTimeout(() => {
+																navigate('/hackathon')
+															}, 2000);
                                                         }}
                                                     />
                                                 )}

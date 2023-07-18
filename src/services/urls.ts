@@ -71,8 +71,9 @@ export const dashboardRoutes = {
     createHackathon: "/api/v1/hackathon/create-hackathon/",
     getHackathons: "/api/v1/hackathon/list-hackathons/",
     getOwnHackathons: "/api/v1/hackathon/list-orgniser-hackathons/",
+    deleteHackathon: "/api/v1/hackathon/delete-hackathon/",
 
-    getUserLearningCircles: "/api/v1/dashboard/lc/",
+    getUserLearningCircles: "/api/v1/dashboard/lc/"
 } as const;
 
 export const organizationRoutes = {

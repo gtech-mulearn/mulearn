@@ -11,7 +11,7 @@ import {
     createHackathon,
     getDistrict,
     getFormFields
-} from "../Admin/HackathonApis";
+} from "../services/HackathonApis";
 import { FiUploadCloud } from "react-icons/fi";
 
 /**
