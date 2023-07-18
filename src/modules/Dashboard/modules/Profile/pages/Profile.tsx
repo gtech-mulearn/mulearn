@@ -69,6 +69,7 @@ const Profile = () => {
     ]);
     const [userLevelData, setUserLevelData] = useState([
         {
+            karma: 0,
             name: "",
             tasks: [{ task_name: "", completed: false, hashtag: "", karma: 0 }]
         }
