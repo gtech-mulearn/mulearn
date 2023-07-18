@@ -5,12 +5,20 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { getHackathons, getOwnHackathons } from "./hackApi";
 import { DateConverter } from "../../../utils/common";
+import Modal from "@/MuLearnComponents/Modal/Modal";
+import { deleteHackathon } from "../services/HackathonApis";
+import { useToast } from "@chakra-ui/react";
+import { BsPersonAdd } from "react-icons/bs";
 
 export interface HackList {
     id: string;
     title: string;
     type: string;
     tagline: string;
+    event_logo: any;
+    banner: any;
+    website: string;
+    place: string;
     event_start: string | null;
     event_end: string | null;
     application_start: string | null;
@@ -23,10 +31,22 @@ export interface HackList {
 const Hackathon = () => {
     const [data, setData] = useState<HackList[]>([]);
     const [ownData, setOwnData] = useState<HackList[]>([]);
+    const [isOpen, setIsOpen] = useState<boolean[]>(ownData.map(() => false));
+    const navigate = useNavigate();
+    const toast = useToast();
+
     useEffect(() => {
         getHackathons(setData);
         getOwnHackathons(setOwnData);
     }, []);
+
+    const toggleModal = (index: number) => {
+        setIsOpen(prevState => {
+            const newState = [...prevState];
+            newState[index] = !newState[index];
+            return newState;
+        });
+    };
 
     return (
         <>
@@ -39,7 +59,7 @@ const Hackathon = () => {
             </div>
             <div className="box">
                 {ownData &&
-                    ownData.map(hack => (
+                    ownData.map((hack, index) => (
                         <div key={hack.id} className="card-component">
                             <div className="frame">
                                 <div className="div">
@@ -62,10 +82,39 @@ const Hackathon = () => {
                                             </div>
                                             <div className="group">
                                                 <Link
-                                                    to={`/hackathon/test/${hack.id}`}
+                                                    to={`/hackathon/organizers/${hack.id}`}
                                                 >
-                                                        <RiDeleteBin5Line />
+                                                    <BsPersonAdd />
                                                 </Link>
+                                            </div>
+                                            <div className="group">
+                                                <RiDeleteBin5Line
+                                                    onClick={() => {
+                                                        toggleModal(index);
+                                                    }}
+                                                />
+                                                {isOpen[index] && (
+                                                    <Modal
+                                                        setIsOpen={() =>
+                                                            toggleModal(index)
+                                                        }
+                                                        id={hack.id}
+                                                        heading={"Delete"}
+                                                        content={`Are you sure you want to delete ${hack.title} ?`}
+                                                        click={() => {
+                                                            deleteHackathon(
+                                                                hack.id,
+                                                                toast
+                                                            );
+                                                            setTimeout(() => {
+                                                                getOwnHackathons(setOwnData);
+                                                            }, 1000);
+                                                            setTimeout(() => {
+                                                                navigate("/hackathon");
+                                                            }, 1000);
+                                                        }}
+                                                    />
+                                                )}
                                             </div>
                                         </div>
                                     </div>
@@ -116,9 +165,13 @@ const Hackathon = () => {
                                         </div>
                                     </div>
                                     <div className="button-wrapper">
-                                        <button className="button">
-                                            Apply Now
-                                        </button>
+                                        <Link 
+                                            to={`/hackathon/details/${hack.id}`}
+                                        >
+                                            <button className="button">
+                                                Apply Now
+                                            </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -200,9 +253,13 @@ const Hackathon = () => {
                                         </div>
                                     </div>
                                     <div className="button-wrapper">
+                                    <Link
+                                        to={`/hackathon/details/${hack.id}`}
+                                    >  
                                         <button className="button">
                                             Apply Now
                                         </button>
+                                    </Link>   
                                     </div>
                                 </div>
                             </div>

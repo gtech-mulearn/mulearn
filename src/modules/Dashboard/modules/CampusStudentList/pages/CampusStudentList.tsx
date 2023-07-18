@@ -1,22 +1,20 @@
-import React, { useEffect, useRef, useState } from "react";
-import styles from "./CampusStudentList.module.css";
-import { getCampusDetails, getStudentDetails } from "../services/apis";
-import TableTop from "../../../../../components/MuComponents/TableTop/TableTop";
-import Table from "../../../../../components/MuComponents/Table/Table";
-import THead from "../../../../../components/MuComponents/Table/THead";
-import Pagination from "../../../../../components/MuComponents/Pagination/Pagination";
-import { GridLoader } from "react-spinners";
-import { titleCase } from "title-case";
-import { hasRole } from "../../../../../services/common_functions";
-import { roles } from "../../../../../services/types";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import Pagination from "@/MuLearnComponents/Pagination/Pagination";
+import THead from "@/MuLearnComponents/Table/THead";
+import Table from "@/MuLearnComponents/Table/Table";
+import TableTop from "@/MuLearnComponents/TableTop/TableTop";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import MuLoader from "@Mulearn/MuLoader/MuLoader";
+import { titleCase } from "title-case";
+import { hasRole } from "@/MuLearnServices/common_functions";
+import { roles } from '@/MuLearnServices/types';
+import { getCampusDetails, getStudentDetails } from "../services/apis";
+import styles from "./CampusStudentList.module.css";
 
 
 type Props = {};
 
 //TODO: Change the styles to camelCase from snake_case'
-//TODO: Add alias for the component imports to make it more readable
 //TODO: Move Logic to another file.
 
 

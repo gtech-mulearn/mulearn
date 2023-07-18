@@ -6,7 +6,7 @@ import { getInfo } from "../services/apis";
 import { useToast } from "@chakra-ui/react";
 import { MdContentCopy } from "react-icons/md";
 import { BsDiscord } from "react-icons/bs";
-import MuLoader from "@Mulearn/MuLoader/MuLoader";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 const ConnectDiscord = () => {
     const [muid, setMuid] = useState("");

@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Table from '../../../../components/MuComponents/Table/Table'
-import THead from '../../../../components/MuComponents/Table/THead'
-import TableTop from '../../../../components/MuComponents/TableTop/TableTop'
-import Pagination from '../../../../components/MuComponents/Pagination/Pagination'
+import Table from '@/MuLearnComponents/Table/Table'
+import THead from '@/MuLearnComponents/Table/THead'
+import TableTop from '@/MuLearnComponents/TableTop/TableTop'
+import Pagination from '@/MuLearnComponents/Pagination/Pagination'
 import { getOrganizations, deleteOrganization } from './apis'
 import { useToast } from '@chakra-ui/react'
 
-import { hasRole } from '../../../../services/common_functions'
-import { roles } from '../../../../services/types'
+import { hasRole } from '@/MuLearnServices/common_functions'
+import { roles } from '@/MuLearnServices/types'
 import {
     columnsCollege,
     columnsCommunities,
@@ -17,13 +17,9 @@ import {
     // editableCommunityColumnNames
 } from "./THeaders"
 import TableTopTab from './TableTopTab'
-import Textfield from '../../../../components/MuComponents/TextField/Textfield'
-import Dropdown from '../../../../components/MuComponents/Dropdown/Dropdown'
 
 import "./Organizations.scss"
-import PrimaryButton from '../../../../components/MuComponents/MuButtons/MuOutlinedButton'
-import { MuButton } from '../../../../components/MuComponents/MuButtons/MuButton'
-import { dashboardRoutes, organizationRoutes } from '../../../../services/urls'
+import { dashboardRoutes, organizationRoutes } from '@/MuLearnServices/urls'
 
 function Organizations() {
     const [data, setData] = useState<any[]>([]);
@@ -154,6 +150,9 @@ function Organizations() {
                 // CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}
                 // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
             />
+            {
+                console.log(data)
+            }
             {data && (
                 <Table
                     rows={data}

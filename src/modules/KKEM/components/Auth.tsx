@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import React, { useCallback, useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import styles from "./Auth.module.css";
 import { userAuth } from "../services/auth";
@@ -31,6 +31,7 @@ export default function KKEMAuth({ dwmsId }: { dwmsId: string }) {
                 if (res.statusCode === 400) {
                     setError(res.message?.general?.toString());
                     setSuccess(false);
+                    console.log(res.message)
                 }
                 if (res.statusCode === 200) {
                     setError(null);
@@ -59,9 +60,8 @@ export default function KKEMAuth({ dwmsId }: { dwmsId: string }) {
 
                 <button
                     type="submit"
-                    className={`${styles.submit} ${
-                        success ? styles.successBtn : ""
-                    }`}
+                    className={`${styles.submit} ${success ? styles.successBtn : ""
+                        }`}
                     disabled={disabled}
                 >
                     {disabled ? (

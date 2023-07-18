@@ -1,25 +1,24 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
-import Table from '../../../../components/MuComponents/Table/Table'
-import THead from '../../../../components/MuComponents/Table/THead'
-import TableTop from '../../../../components/MuComponents/TableTop/TableTop'
-import Pagination from '../../../../components/MuComponents/Pagination/Pagination'
-import { getdistrictdashboard } from "./apis";
+import Pagination from '@/MuLearnComponents/Pagination/Pagination'
+import THead from '@/MuLearnComponents/Table/THead'
+import Table from '@/MuLearnComponents/Table/Table'
+import TableTop from '@/MuLearnComponents/TableTop/TableTop'
 import { useToast } from '@chakra-ui/react'
+import { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { getdistrictdashboard } from "./apis"
 
-import { hasRole } from '../../../../services/common_functions'
-import { roles } from '../../../../services/types'
-import { columnsStudent, columnsCampus } from "./THeaders";
+import { hasRole } from '@/MuLearnServices/common_functions'
+import { roles } from '@/MuLearnServices/types'
+import { columnsCampus, columnsStudent } from "./THeaders"
 import TableTopTab from './TableTopTab'
-import Textfield from '../../../../components/MuComponents/TextField/Textfield'
-import Dropdown from '../../../../components/MuComponents/Dropdown/Dropdown'
 
+import { dashboardRoutes } from '@/MuLearnServices/urls'
 import "./Organizations.scss"
+import "./DistricDashboard.scss"
 import PrimaryButton from '../../../../components/MuComponents/MuButtons/MuOutlinedButton'
 import { MuButton } from '../../../../components/MuComponents/MuButtons/MuButton'
-import { dashboardRoutes } from '../../../../services/urls'
 
-function districtDashboard() {
+function DistrictDashboard() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
@@ -197,4 +196,4 @@ function districtDashboard() {
     );
 }
 
-export default districtDashboard
+export default DistrictDashboard

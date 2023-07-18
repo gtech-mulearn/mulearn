@@ -1,5 +1,5 @@
-import { publicGateway } from "../../../services/apiGateways";
-import { KKEMRoutes } from "../../../services/urls";
+import { publicGateway } from "@/MuLearnServices/apiGateways";
+import { KKEMRoutes } from "@/MuLearnServices/urls";
 
 const tempToken = "1c332a95-8411-40c1-ab64-18b56bd91988";
 
@@ -11,7 +11,7 @@ export const userAuth = async (
     return await publicGateway
         .post(
             KKEMRoutes.userAuth,
-            { mu_id, dwms_id },
+            { mu_id, dwms_id,integration:"KKEM" },
             {
                 signal: controller?.signal
             }

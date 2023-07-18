@@ -1,17 +1,12 @@
+import Pagination from "@/MuLearnComponents/Pagination/Pagination";
+import THead from "@/MuLearnComponents/Table/THead";
+import Table from "@/MuLearnComponents/Table/Table";
+import TableTop from "@/MuLearnComponents/TableTop/TableTop";
+import { hasRole } from "@/MuLearnServices/common_functions";
+import { roles } from "@/MuLearnServices/types";
 import { useEffect, useRef, useState } from "react";
-import Pagination from "../../../../components/MuComponents/Pagination/Pagination";
-import Table from "../../../../components/MuComponents/Table/Table";
-import THead from "../../../../components/MuComponents/Table/THead";
-import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
-import { editUserRoleVerification, getUserRoleVerification } from "./apis";
-import { Blank } from "../../../../components/MuComponents/Table/Blank";
-import { roles } from "../../../../services/types";
-import { hasRole } from "../../../../services/common_functions";
 import { useNavigate } from "react-router-dom";
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
-import { AiOutlinePlusCircle } from "react-icons/ai";
-import styles from "./UserRoleVerification.module.css";
-import { dashboardRoutes } from "../../../../services/urls";
+import { editUserRoleVerification, getUserRoleVerification } from "./apis";
 
 function UsersRoleVerification() {
     const [data, setData] = useState<any[]>([]);

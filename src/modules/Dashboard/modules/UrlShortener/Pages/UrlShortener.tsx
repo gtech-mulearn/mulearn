@@ -8,12 +8,12 @@ import {
 } from "../Services/apis";
 
 import { useNavigate } from "react-router-dom";
-import TableTop from "../../../../../components/MuComponents/TableTop/TableTop";
-import Table from "../../../../../components/MuComponents/Table/Table";
-import THead from "../../../../../components/MuComponents/Table/THead";
-import Pagination from "../../../../../components/MuComponents/Pagination/Pagination";
-import { roles } from "../../../../../services/types";
-import { hasRole } from "../../../../../services/common_functions";
+import TableTop from "@/MuLearnComponents/TableTop/TableTop";
+import Table from "@/MuLearnComponents/Table/Table";
+import THead from "@/MuLearnComponents/Table/THead";
+import Pagination from "@/MuLearnComponents/Pagination/Pagination";
+import { roles } from "@/MuLearnServices/types";
+import { hasRole } from "@/MuLearnServices/common_functions";
 import { useFormik } from "formik";
 import { useToast } from "@chakra-ui/react";
 

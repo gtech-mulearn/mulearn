@@ -1,0 +1,85 @@
+.popup_container {
+    width: 40%;
+    min-width: 40%;
+    height: max-content;
+    padding: 20px;
+    // border: 1px solid #cbcbcb;
+    border: none;
+    border-radius: 8px;
+    z-index: 0;
+    background-color: #fff;
+    margin: auto;
+    .popup_title{
+        font-size: 20px;
+        font-weight: 800;
+        text-align: start;
+    }
+    p {
+        width: 90%;
+        text-align: left;
+        font-size: 14px;
+        span {
+            font-weight: bold;
+            &::after {
+                content: " ";
+            }
+        }
+    }
+}
+.ml_top_container{
+    width: 100%;
+    display: flex;
+    padding: 0 2rem;
+    justify-content: space-between;
+}
+.ml_toggle_container{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    .table_tab_btn {
+            height: max-content;
+            padding: 6px 24px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .active {
+            background-color: #456ff6;
+            color: white;
+        }
+        .inactive {
+            border: 1px solid #456ff6;
+            color: #456ff6;
+        }
+}
+.createBtnContainer {
+	width: max-content;
+	display: flex;
+	align-items: center;
+}
+.createBtn {
+	background: var(--Primary);
+    color: var(--White);
+    min-width: 100px;
+    padding: 10px 20px;
+    display: flex;
+    gap: 0.5rem;
+    border-radius: 10px;
+	border: 1px solid var(--Primary);
+    flex-direction: row;
+    align-items: center;
+	justify-content: center;
+    font-size: 15px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+.ml_popup_btn_container{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+// @media only screen and (max-width: 400px) {
+//     .popup_container {
+//         max-width: 10%;
+//     }
+// }
