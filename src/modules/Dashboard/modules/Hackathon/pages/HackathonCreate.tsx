@@ -5,7 +5,7 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import FormikReactSelect, {
     FormikTextAreaWhite,
     FormikTextInputWhite
-} from "../../../../../components/MuComponents/FormikComponents/FormikComponents";
+} from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { useEffect, useState } from "react";
 import {
     createHackathon,
@@ -19,9 +19,8 @@ import { FiUploadCloud } from "react-icons/fi";
  * TODO: Make the form things json and iterate and display, store the jsons in a separate file.
  */
 const options = [
-    { label: "Option 1", value: "111" },
-    { label: "Option 2", value: "222" },
-    { label: "Option 3", value: "333" }
+    { label: "Offline", value: "offline" },
+    { label: "Online", value: "online" },
 ];
 const options1 = [{ label: "Everyone", value: true }];
 
@@ -68,6 +67,7 @@ const HackathonCreate = () => {
         orgId: Yup.string().min(2, "Too Short!"),
         place: Yup.string().min(2, "Too Short!"),
         districtId: Yup.string().min(2, "Too Short!"),
+        type: Yup.string().min(2, "Too Short!"),
         isOpenToAll: Yup.boolean(),
         description: Yup.string().min(5, "Too Short!"),
         eventStart: Yup.date(),
@@ -176,7 +176,8 @@ const HackathonCreate = () => {
             `${values.eventEnd}T00:00:00Z`,
             selectedFields,
             values.event_logo,
-            values.banner
+            values.banner,
+            values.type
         );
         resetForm();
     };
@@ -220,7 +221,8 @@ const HackathonCreate = () => {
                             formFields: [],
                             event_logo: "",
                             banner: "",
-                            website: ""
+                            website: "",
+                            type: ""
                         }}
                         validationSchema={hackathonSchema}
                         onSubmit={handleSubmit}
@@ -275,18 +277,6 @@ const HackathonCreate = () => {
 
                                         <TabPanel className={styles.formGroup}>
                                             <FormikTextInputWhite
-                                                label="Start Date"
-                                                name="eventStart"
-                                                className={styles.placeholder}
-                                                type="date"
-                                            />
-                                            <FormikTextInputWhite
-                                                label="End Date"
-                                                name="eventEnd"
-                                                className={styles.placeholder}
-                                                type="date"
-                                            />
-                                            <FormikTextInputWhite
                                                 label="Registration Start Date"
                                                 name="applicationStart"
                                                 className={styles.placeholder}
@@ -295,6 +285,18 @@ const HackathonCreate = () => {
                                             <FormikTextInputWhite
                                                 label="Registration End Date"
                                                 name="applicationEnds"
+                                                className={styles.placeholder}
+                                                type="date"
+                                            />
+                                            <FormikTextInputWhite
+                                                label="Hackathon Start Date"
+                                                name="eventStart"
+                                                className={styles.placeholder}
+                                                type="date"
+                                            />
+                                            <FormikTextInputWhite
+                                                label="Hackathon End Date"
+                                                name="eventEnd"
                                                 className={styles.placeholder}
                                                 type="date"
                                             />
@@ -322,6 +324,11 @@ const HackathonCreate = () => {
                                                 name="website"
                                                 placeholder="link for the event website"
                                                 type="text"
+                                            />
+                                            <FormikReactSelect
+                                                name="type"
+                                                options={options}
+                                                label={"Hackathon Type"}
                                             />
                                         </TabPanel>
 

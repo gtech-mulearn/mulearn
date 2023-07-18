@@ -1,17 +1,16 @@
 import { useEffect, useRef, useState } from "react";
-import Pagination from "../../../../components/MuComponents/Pagination/Pagination";
-import Table from "../../../../components/MuComponents/Table/Table";
-import THead from "../../../../components/MuComponents/Table/THead";
-import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
+import Pagination from "@/MuLearnComponents/Pagination/Pagination";
+import Table from "@/MuLearnComponents/Table/Table";
+import THead from "@/MuLearnComponents/Table/THead";
+import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { deleteInterestGroups, getInterestGroups } from "./apis";
-import { Blank } from "../../../../components/MuComponents/Table/Blank";
-import { roles } from "../../../../services/types";
-import { hasRole } from "../../../../services/common_functions";
+import { roles } from "@/MuLearnServices/types";
+import { hasRole } from "@/MuLearnServices/common_functions";
 import { useNavigate } from "react-router-dom";
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./InterestGroup.module.css";
-import { dashboardRoutes } from "../../../../services/urls";
+import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
 
 function InterestGroup() {

@@ -1,20 +1,23 @@
+import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
+import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
-import styles from "@Mulearn/FormikComponents/FormComponents.module.css";
+import { useParams } from "react-router-dom";
 import * as Yup from "yup";
-import { FormikTextInput } from "@Mulearn/FormikComponents/FormikComponents";
-import { PowerfulButton } from "@Mulearn/MuButtons/MuButton";
+import { addOrganizer } from "../services/HackathonApis";
 
 type Props = {};
 
 export const HackathonOrganizers = (props: Props) => {
     const toast = useToast();
+    const { id } = useParams();
+
 
     return (
         <div className={styles.external_container}>
             <div className={styles.container}>
-                <h1 className={styles.text}>IG Create Page</h1>
+                <h1 className={styles.text}>ORGANIZERS</h1>
                 <Formik
                     initialValues={{
                         muid: ""
@@ -26,12 +29,17 @@ export const HackathonOrganizers = (props: Props) => {
                     })}
                     onSubmit={values => {
                         console.log(values.muid);
+                        addOrganizer(
+                            id,
+                            values.muid
+                            )
                         toast({
                             title: "success",
                             status: "success",
                             duration: 3000,
                             isClosable: true
                         });
+                        
                     }}
                 >
                     <Form className={styles.inputContainer}>
@@ -42,7 +50,7 @@ export const HackathonOrganizers = (props: Props) => {
                             placeholder="Enter Mu ID"
                         />
 
-                        <PowerfulButton text={"Add Organizer"} type={"submit"} margin="23px 0 0 0"></PowerfulButton>
+                        <PowerfulButton text={"Add Organizer"} type={"submit"}   margin="23px 0 0 0"></PowerfulButton>
                     </Form>
                 </Formik>
             </div>

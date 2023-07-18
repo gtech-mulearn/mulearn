@@ -1,20 +1,21 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import Table from "../../../../components/MuComponents/Table/Table";
-import THead from "../../../../components/MuComponents/Table/THead";
-import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
-import Pagination from "../../../../components/MuComponents/Pagination/Pagination";
-import { getzonaldashboard } from "./apis";
+import Pagination from "@/MuLearnComponents/Pagination/Pagination";
+import THead from "@/MuLearnComponents/Table/THead";
+import Table from "@/MuLearnComponents/Table/Table";
+import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { useToast } from "@chakra-ui/react";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { getzonaldashboard } from "./apis";
+
 
 import { hasRole } from "../../../../services/common_functions";
 import { roles } from "../../../../services/types";
 import { columnsStudent, columnsCampus } from "./THeaders";
-import TableTopTab from "./TableTopTab";
+import TableTopTab from "./TableTopTab"
 import Textfield from "../../../../components/MuComponents/TextField/Textfield";
 import Dropdown from "../../../../components/MuComponents/Dropdown/Dropdown";
 
-import "./Organizations.scss";
+import "./ZonalDashboard.scss";
 import PrimaryButton from "../../../../components/MuComponents/MuButtons/MuOutlinedButton";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 import { dashboardRoutes } from "../../../../services/urls";

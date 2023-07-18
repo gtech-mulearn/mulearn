@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Select from "react-select";
-import { hasRole } from "../../../../services/common_functions";
-import { roles } from "../../../../services/types";
+import { hasRole } from "@/MuLearnServices/common_functions";
+import { roles } from "@/MuLearnServices/types";
 import {
     getCountry,
     getStates,
@@ -10,7 +10,7 @@ import {
     getAffiliation
 } from "./apis";
 import { useNavigate } from "react-router-dom";
-import Textfield from "../../../../components/MuComponents/TextField/Textfield";
+import Textfield from "@/MuLearnComponents/TextField/Textfield";
 
 
 import { useToast } from "@chakra-ui/react";

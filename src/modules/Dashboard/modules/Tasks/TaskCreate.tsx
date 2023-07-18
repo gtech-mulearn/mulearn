@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { createTask, getUUID } from "./TaskApis";
-import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
+import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import { FormikSelect, FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import { FormikSelect, FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { AxiosError } from "axios";

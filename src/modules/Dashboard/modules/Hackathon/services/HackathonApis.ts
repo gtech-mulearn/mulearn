@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
-import { privateGateway, publicGateway } from "../../../../../services/apiGateways";
-import { dashboardRoutes, onboardingRoutes } from "../../../../../services/urls";
+import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
+import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import { HackList } from "../User/Hackathon";
 import { SetStateAction } from "react";
 import { ToastId, UseToastOptions, useToast } from "@chakra-ui/react";
@@ -56,7 +56,8 @@ export const createHackathon = async (
 	eventEnd: string,
 	formFields: any,
 	logo: any,
-    banner?:any
+    banner:any,
+    type:string,
 ) => {
     try {
         const response = await privateGateway.post(
@@ -66,7 +67,7 @@ export const createHackathon = async (
                 tagline: tagline,
                 description: description,
                 participant_count: participantCount,
-                org_id: orgId,
+                organisation: orgId,
                 districtId: districtId,
                 place: place,
                 is_open_to_all: isOpenToAll,
@@ -77,7 +78,8 @@ export const createHackathon = async (
                 status: "Draft",
                 form_fields: formFields,
                 event_logo: logo,
-                banner: banner
+                banner: banner,
+                type: type,
             },
             {
                 maxBodyLength: Infinity,
@@ -134,6 +136,27 @@ export const deleteHackathon = async (
             duration: 3000,
             isClosable: true
         });
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
+
+export const addOrganizer = async (
+    id: string | undefined,
+    muid: string,
+) => {
+    try {
+        const response = await privateGateway.post(
+            dashboardRoutes.addOrganizer + id + "/",
+            {
+                mu_id: muid,
+            }
+        );
+        const message: any = response?.data;
+        console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

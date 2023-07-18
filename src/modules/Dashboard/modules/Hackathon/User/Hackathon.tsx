@@ -5,15 +5,20 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { getHackathons, getOwnHackathons } from "./hackApi";
 import { DateConverter } from "../../../utils/common";
-import Modal from "@Mulearn/Modal/Modal";
-import { deleteHackathon, publishHackathon } from "../services/HackathonApis";
+import Modal from "@/MuLearnComponents/Modal/Modal";
+import { deleteHackathon } from "../services/HackathonApis";
 import { useToast } from "@chakra-ui/react";
+import { BsPersonAdd } from "react-icons/bs";
 
 export interface HackList {
     id: string;
     title: string;
     type: string;
     tagline: string;
+    event_logo: any;
+    banner: any;
+    website: string;
+    place: string;
     event_start: string | null;
     event_end: string | null;
     application_start: string | null;
@@ -73,6 +78,13 @@ const Hackathon = () => {
                                                     to={`/hackathon/edit/${hack.id}`}
                                                 >
                                                     <LuEdit />
+                                                </Link>
+                                            </div>
+                                            <div className="group">
+                                                <Link
+                                                    to={`/hackathon/organizers/${hack.id}`}
+                                                >
+                                                    <BsPersonAdd />
                                                 </Link>
                                             </div>
                                             <div className="group">
@@ -182,9 +194,13 @@ const Hackathon = () => {
                                         </div>
                                     </div>
                                     <div className="button-wrapper">
-                                        <button className="button">
-                                            Apply Now
-                                        </button>
+                                        <Link 
+                                            to={`/hackathon/details/${hack.id}`}
+                                        >
+                                            <button className="button">
+                                                Apply Now
+                                            </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -266,9 +282,13 @@ const Hackathon = () => {
                                         </div>
                                     </div>
                                     <div className="button-wrapper">
+                                    <Link
+                                        to={`/hackathon/details/${hack.id}`}
+                                    >  
                                         <button className="button">
                                             Apply Now
                                         </button>
+                                    </Link>   
                                     </div>
                                 </div>
                             </div>
