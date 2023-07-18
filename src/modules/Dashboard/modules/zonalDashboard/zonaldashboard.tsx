@@ -10,11 +10,11 @@ import { useToast } from "@chakra-ui/react";
 import { hasRole } from "../../../../services/common_functions";
 import { roles } from "../../../../services/types";
 import { columnsStudent, columnsCampus } from "./THeaders";
-import TableTopTab from "./TableTopTab";
+import TableTopTab from "./TableTopTab"
 import Textfield from "../../../../components/MuComponents/TextField/Textfield";
 import Dropdown from "../../../../components/MuComponents/Dropdown/Dropdown";
 
-import "./Organizations.scss";
+import "./ZonalDashboard.scss";
 import PrimaryButton from "../../../../components/MuComponents/MuButtons/MuOutlinedButton";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 import { dashboardRoutes } from "../../../../services/urls";

@@ -4,6 +4,48 @@ import { dashboardRoutes } from "../../../../services/urls";
 import { SetStateAction } from "react";
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { TaskEditInterface } from "./TaskInterface";
+
+type uuidType = {
+    level:{id:string,name:string}[],
+    ig:{id:string,name:string}[],
+    organization:{id:string,title:string}[],
+    channel:{id:string,name:string}[],
+    type:{id:string,title:string}[],
+}
+
+//function that converts the uuid object into a map
+//with uuid as key and name/title as value
+const uuidMapper = (uuid:Partial<uuidType>)=>{
+    for (const key of Object.keys(uuid)){
+        const uuidMap:any = {}
+        uuid[(key as keyof uuidType)]?.forEach((elem)=>{
+            if(key === 'type' || key === 'organization')
+                uuidMap[elem.id] = (elem as any).title
+            else
+                uuidMap[elem.id] = (elem as any).name
+        })
+        uuid[(key as keyof uuidType)] = uuidMap
+    }
+
+    return uuid
+}
+
+//Converts all uuids to corresponding string in taskdata
+const uuidToString = (data:any,uuid:Partial<uuidType>)=>{
+    const Mapper = uuidMapper(uuid)
+    const newData = data.map((task:any) => {
+        task.level = Mapper.level![task.level]
+        task.ig = Mapper.ig![task.ig]
+        task.org = Mapper.organization![task.org]
+        task.type = Mapper.type![task.type]
+        task.channel = Mapper.channel![task.channel]
+        
+        return task
+        
+    })
+    return newData
+}
+
 export const getTasks = async (
     setData: any,
     page: number,
@@ -25,7 +67,10 @@ export const getTasks = async (
             }
         );
         const tasks: any = response?.data;
-        setData(tasks.response.data);
+        const uuids:Partial<uuidType> = await getUUID()
+        setData(
+            uuidToString(tasks.response.data,uuids)
+        );
         setTotalPages(tasks.response.pagination.totalPages);
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -61,6 +106,11 @@ export const editTask = async (
     active: string,
     variable_karma: string,
     usage_count: string,
+    channel_id: string,
+    type_id: string,
+    level_id: string,
+    ig_id: string,
+    org_id:string,
     id: string | undefined
 ) => {
     try {
@@ -72,7 +122,12 @@ export const editTask = async (
                 karma: parseInt(karma),
                 usage_count: parseInt(usage_count),
                 active: parseInt(active),
-                variable_karma: parseInt(variable_karma)
+                variable_karma: parseInt(variable_karma),
+                channel: channel_id,
+                type: type_id,
+                level: level_id,
+                ig: ig_id,
+                org:org_id
             }
         );
         const message: any = response?.data;
@@ -160,27 +215,9 @@ export const getUUID = async () => {
         type:dashboardRoutes.getTaskTypes,
     }
 
-    const response:{[index:string]:Array<any>} = {}
-
-    /*Alternate method using promise.all
-    const alternate_res = (await Promise.all(
-        Object.values(uuids)
-        .map((url)=>(privateGateway.get(url)))
-    ))
-    .map((res)=>
-        (res.data.response as Array<any>)
-        .sort((a,b)=>(
-            (a.name !== undefined && a.name<b.name) 
-            || 
-            (a.title !== undefined && a.title<b.title) )
-            ?-1:1
-        )
-    )
-    */
-
-
+    const response:Partial<uuidType> = {}
     for (let key in uuids){
-        response[key]=(
+        response[(key as keyof uuidType)]=(
         (await privateGateway.get(uuids[key]))
         .data
         .response as Array<any>)

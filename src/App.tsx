@@ -41,19 +41,22 @@ import TaskEdit from "./modules/Dashboard/modules/Tasks/TaskEdit";
 import TaskCreate from "./modules/Dashboard/modules/Tasks/TaskCreate";
 import TaskDelete from "./modules/Dashboard/modules/Tasks/TaskDelete";
 import TaskBulkImport from "./modules/Dashboard/modules/Tasks/TaskBulkImport";
-import ZonalDashboard from "./modules/Dashboard/modules/zonalDashboard/zonaldashboard";
-import DistrictDashboard from "./modules/Dashboard/modules/districtDashboard/districtdashboard";
+import ZonalDashboard from "./modules/Dashboard/modules/ZonalDashboard/ZonalDashboard";
+import DistrictDashboard from "./modules/Dashboard/modules/DistrictDashboard/DistrictDashboard";
 import Hackathon from "./modules/Dashboard/modules/Hackathon/User/Hackathon";
-import HackathonCreate from "./modules/Dashboard/modules/Hackathon/Admin/pages/HackathonCreate";
+import HackathonCreate from "./modules/Dashboard/modules/Hackathon/pages/HackathonCreate";
 import KKEMLanding from "./modules/KKEM/modules/KKEMLanding";
 import KKEMAuth from "./modules/KKEM/modules/KKEMAuth";
 import RankCard from "./modules/Embeds/modules/RankCard/pages/RankCard";
-import HackathonEdit from "./modules/Dashboard/modules/Hackathon/Admin/pages/HackathonEdit";
 import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle";
 import CreateCircle from "./modules/Dashboard/modules/LearningCircle/pages/CreateCircle";
 import ManageLocation from "./modules/Dashboard/modules/ManageLocation/ManageLocation";
 import AddLocation from "./modules/Dashboard/modules/ManageLocation/AddLocation";
 import EditLocation from "./modules/Dashboard/modules/ManageLocation/EditLocation";
+import { HackathonOrganizers } from "./modules/Dashboard/modules/Hackathon/pages/HackathonOrganizers";
+import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/FindCircle";
+import { LearningCircleLandingPage } from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleLandingPage";
+import HackathonDetails from "./modules/Dashboard/modules/Hackathon/pages/HackathonDetails";
 
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
@@ -195,8 +198,8 @@ const router = createBrowserRouter([
                         element: <HackathonCreate />
                     },
                     {
-                        path: "hackathon/edit/:id",
-                        element: <HackathonEdit />
+                        path: "hackathon/details/:id",
+                        element: <HackathonDetails />
                     },
                     { path: "learning-circle", element: <LearningCircle /> },
                     { path: "create-circle", element: <CreateCircle /> },
@@ -210,6 +213,26 @@ const router = createBrowserRouter([
                     {
                         path: "manage-locations/edit/:item",
                         element: <EditLocation/>
+                    },
+                    {
+                        path: "hackathon/organizers/:id",
+                        element: <HackathonOrganizers />
+                    },
+                    {
+                        path: "learning-circle",
+                        element: <LearningCircleLandingPage />
+                    },
+                    {
+                        path: "learning-circle/details",
+                        element: <LearningCircle />
+                    },
+                    {
+                        path: "learning-circle/find-circle",
+                        element: <FindCircle />
+                    },
+                    {
+                        path: "learning-circle/create-circle",
+                        element: <CreateCircle />
                     }
                 ]
             }

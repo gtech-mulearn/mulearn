@@ -144,12 +144,12 @@ export const getManageUsersDetails = async (
 ) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getUsersData + id + "/"
+            dashboardRoutes.getUsersEditData + id + "/"
         );
         const message: any = response?.data;
-        //console.log(message);
-        //console.log(message.response.users);
-        setData(message.response.users);
+        console.log(message.response);
+        // console.log(message.response.users);
+        setData(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
