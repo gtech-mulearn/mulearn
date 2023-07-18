@@ -1,35 +1,36 @@
 .darkBG {
-    width: 100vw;
-    height: 100vh;
-    z-index: 0;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    backdrop-filter: blur(1px);
+	width: 100vw;
+	height: 100vh;
+	z-index: 9998;
+	top: 0;
+	left: 0;
+	position: fixed;
+	backdrop-filter: blur(1px);
 }
 
 .centered {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 9999;
 }
 
 .modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 300px;
-    height: fit-content;
-    background: white;
-    color: white;
-    z-index: 10;
-    border-radius: 16px;
-    padding: 30px 15px 15px;
-
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 300px;
+	height: fit-content;
+	background: white;
+	color: white;
+	border-radius: 16px;
+	padding: 30px 15px 15px;
+	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+	position: relative;
+	z-index: 10000;
+	/* Increase the z-index value */
 }
 
 .modalHeader {

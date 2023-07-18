@@ -2,6 +2,9 @@ import styles from "./LearningCircle.module.css";
 import imageTop from "../assets/images/LC2.png";
 import imageBottom from "../assets/images/LC3.png";
 import { PowerfulButton } from "@Mulearn/MuButtons/MuButton";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getUserLearningCircles } from "../services/LearningCircleAPIs";
 
 type circleListELement = {
     name: string;
@@ -9,9 +12,23 @@ type circleListELement = {
 };
 
 export const LearningCircleLandingPage = () => {
+    const navigate = useNavigate();
+    const [userCircleList, setUserCircleList] = useState("");
     const learningCircles: [circleListELement] | null = [
         { name: "UX World", type: "UI/UX" }
     ];
+
+    useEffect(() => {
+		getUserLearningCircles(setUserCircleList)
+	}, []);
+
+    const handleJoin = () => {
+        navigate("/learning-circle/find-circle");
+    };
+
+    const handleCreate = () => {
+        navigate("/learning-circle/create-circle");
+    };
 
     return (
         <>
@@ -26,13 +43,18 @@ export const LearningCircleLandingPage = () => {
                         <br /> with a group of people with same interests!
                     </p>
                     <div className={styles.learningCircleLandingPageButton}>
-                        <PowerfulButton text={"Join"} padding="0.3rem 1.6rem" />
+                        <PowerfulButton
+                            text={"Join"}
+                            padding="0.3rem 1.6rem"
+                            onButtonClick={handleJoin}
+                        />
                         <PowerfulButton
                             text={"Create"}
                             backgroundColor="white"
                             color="#456FF6"
                             padding="0.3rem 0.7rem"
                             onHoverBackground="#456FF6"
+                            onButtonClick={handleCreate}
                         />
                     </div>
                 </div>
