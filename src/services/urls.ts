@@ -90,6 +90,10 @@ export const organizationRoutes = {
     getOrgCsv: "/api/v1/organisation/institutes/csv"
 };
 
+export const ManageLocationsRoutes = {
+    getCountryData: "/api/v1/location/country",
+}
+
 export const KKEMRoutes = {
     userAuth: "/api/v1/integrations/kkem/authorization/"
 };

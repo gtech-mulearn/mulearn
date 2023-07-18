@@ -50,6 +50,9 @@ import KKEMAuth from "./modules/KKEM/modules/KKEMAuth";
 import RankCard from "./modules/Embeds/modules/RankCard/pages/RankCard";
 import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle";
 import CreateCircle from "./modules/Dashboard/modules/LearningCircle/pages/CreateCircle";
+import ManageLocation from "./modules/Dashboard/modules/ManageLocation/ManageLocation";
+import AddLocation from "./modules/Dashboard/modules/ManageLocation/AddLocation";
+import EditLocation from "./modules/Dashboard/modules/ManageLocation/EditLocation";
 import { HackathonOrganizers } from "./modules/Dashboard/modules/Hackathon/pages/HackathonOrganizers";
 import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/FindCircle";
 import { LearningCircleLandingPage } from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleLandingPage";
@@ -197,6 +200,19 @@ const router = createBrowserRouter([
                     {
                         path: "hackathon/details/:id",
                         element: <HackathonDetails />
+                    },
+                    { path: "learning-circle", element: <LearningCircle /> },
+                    { path: "create-circle", element: <CreateCircle /> },
+                    {
+                        path: "manage-locations", element: <ManageLocation/>
+                    },
+                    {
+                        path: "manage-locations/add/:item",
+                        element: <AddLocation/>
+                    },
+                    {
+                        path: "manage-locations/edit/:item",
+                        element: <EditLocation/>
                     },
                     {
                         path: "hackathon/organizers/:id",
