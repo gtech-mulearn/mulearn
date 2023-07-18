@@ -56,7 +56,8 @@ export const createHackathon = async (
 	eventEnd: string,
 	formFields: any,
 	logo: any,
-    banner?:any
+    banner:any,
+    type:string,
 ) => {
     try {
         const response = await privateGateway.post(
@@ -78,6 +79,7 @@ export const createHackathon = async (
                 form_fields: formFields,
                 event_logo: logo,
                 banner: banner,
+                type: type,
             },
             {
                 maxBodyLength: Infinity,
