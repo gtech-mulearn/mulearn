@@ -4,7 +4,7 @@ import { Form, Formik } from "formik";
 import {FormikSelect, FormikTextInput} from '@/MuLearnComponents/FormikComponents/FormikComponents'
 type Props = {};
 
-const CreateCircle = (props: Props) => {
+const LearningCircleCreate = (props: Props) => {
     
     const createLearningCircleSchema = Yup.object().shape({
         circle_name: Yup.string()
@@ -19,12 +19,12 @@ const CreateCircle = (props: Props) => {
 
     return (
         <>
-            <div className={styles.CreateCircleContent}>
+            <div className={styles.LearningCircleCreateContent}>
 
-                <div className={styles.CreateCircleMain}>
+                <div className={styles.LearningCircleCreateMain}>
                     <img src="https://i.ibb.co/RhT8b3z/image-24.png" alt="" />
 
-                    <div className={styles.CreateCircleHeading}>
+                    <div className={styles.LearningCircleCreateHeading}>
                         <div>
                             <b>Create a Learning circle</b>
                             <p>Connect, Collaborate, and Learn Together!</p>
@@ -44,7 +44,7 @@ const CreateCircle = (props: Props) => {
                                 }}
                             >
                                 <Form>
-                                    <div className={styles.CreateCircleForm}>
+                                    <div className={styles.LearningCircleCreateForm}>
                                         <FormikTextInput 
                                             type="text"
                                             name="circle_name" 
@@ -74,4 +74,4 @@ const CreateCircle = (props: Props) => {
     );
 }
 
-export default CreateCircle;
+export default LearningCircleCreate;

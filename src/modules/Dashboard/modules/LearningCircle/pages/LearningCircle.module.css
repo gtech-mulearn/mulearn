@@ -522,13 +522,13 @@
 ! Learning Circle Main Page
 */
 
-.CreateCircleContent {
+.LearningCircleCreateContent {
     width: fit-content;
     padding: 3rem;
     margin: auto;
 }
 
-.CreateCircleMain {
+.LearningCircleCreateMain {
     margin-top: 2rem;
     padding: 3rem 0.5rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -539,7 +539,7 @@
     flex-wrap: wrap;
 }
 
-.CreateCircleHeading {
+.LearningCircleCreateHeading {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -549,17 +549,17 @@
     margin: 2rem;
 }
 
-.CreateCircleHeading b {
+.LearningCircleCreateHeading b {
     font-size: 2.2rem;
     color: #000;
 }
 
-.CreateCircleForm {
+.LearningCircleCreateForm {
     display: flex;
     gap: 1rem;
 }
 
-.CreateCircleForm input {
+.LearningCircleCreateForm input {
     width: 100%;
     padding: .5rem 1rem;
     text-align: center;
@@ -570,7 +570,7 @@
     outline: none;
 }
 
-.CreateCircleMain button {
+.LearningCircleCreateMain button {
     padding: .5rem 2rem;
     background-color: #456FF6;
     color: #fff;
@@ -581,21 +581,21 @@
 }
 
 @media(width<800px) {
-    .CreateCirclecontent {
+    .LearningCircleCreateContent {
         padding: 1rem;
     }
 
-    .CreateCircleMain {
+    .LearningCircleCreateMain {
         flex-direction: column;
         padding: 1rem;
         margin-top: 5rem;
     }
 
-    .CreateCircleHeading {
+    .LearningCircleCreateHeading {
         margin: .5rem;
     }
 
-    .CreateCircleHeading b {
+    .LearningCircleCreateHeading b {
         font-size: 1.5rem;
     }
 
