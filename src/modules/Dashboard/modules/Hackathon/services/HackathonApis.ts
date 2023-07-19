@@ -167,19 +167,21 @@ export const addOrganizer = async (
 
 export const publishHackathon = async (
     id: string,
+	status: string,
     toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
+	let a = status === "Draft" ? "Published" : "Draft";
     try {
         const response = await privateGateway.put(
             dashboardRoutes.publishHackathon + id + "/", {
-				status: "Published"
+				status: a
 			}
         );
         const message: any = response?.data;
         console.log(message);
         toast({
-            title: "Publish Successful",
-            description: "Hackathon has been Published",
+            title: "Change Successful",
+            description: "Hackathon status has been changed.",
             status: "success",
             duration: 3000,
             isClosable: true

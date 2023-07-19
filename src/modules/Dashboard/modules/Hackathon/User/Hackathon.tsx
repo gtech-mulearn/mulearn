@@ -9,7 +9,7 @@ import { deleteHackathon, publishHackathon } from "../services/HackathonApis";
 import { useToast } from "@chakra-ui/react";
 import { BsPersonAdd } from "react-icons/bs";
 import Modal from "@/MuLearnComponents/Modal/Modal";
-import { MdPublishedWithChanges } from "react-icons/md";
+import { MdOutlineUnpublished, MdPublishedWithChanges } from "react-icons/md";
 
 enum ModalType {
     Publish,
@@ -136,7 +136,7 @@ const Hackathon = () => {
                                                                         getOwnHackathons(
                                                                             setOwnData
                                                                         );
-																		getHackathons(
+                                                                        getHackathons(
                                                                             setData
                                                                         );
                                                                     },
@@ -155,14 +155,25 @@ const Hackathon = () => {
                                                     )}
                                                 </div>
                                                 <div className="group">
-                                                    <MdPublishedWithChanges
-                                                        onClick={() => {
-                                                            toggleModal(
-                                                                index,
-                                                                ModalType[0]
-                                                            );
-                                                        }}
-                                                    />
+                                                    {hack.status === "Draft" ? (
+                                                        <MdPublishedWithChanges
+                                                            onClick={() => {
+                                                                toggleModal(
+                                                                    index,
+                                                                    ModalType[0]
+                                                                );
+                                                            }}
+                                                        />
+                                                    ) : (
+                                                        <MdOutlineUnpublished
+                                                            onClick={() => {
+                                                                toggleModal(
+                                                                    index,
+                                                                    ModalType[0]
+                                                                );
+                                                            }}
+                                                        />
+                                                    )}
                                                     {isPublishOpen[index] && (
                                                         <Modal
                                                             setIsOpen={() =>
@@ -172,11 +183,22 @@ const Hackathon = () => {
                                                                 )
                                                             }
                                                             id={hack.id}
-                                                            heading={"Publish"}
-                                                            content={`Make sure all details are filled before Publishing ${hack.title}`}
+                                                            heading={
+                                                                hack.status ===
+                                                                "Draft"
+                                                                    ? "Publish"
+                                                                    : "Draft"
+                                                            }
+                                                            content={
+                                                                hack.status ===
+                                                                "Draft"
+                                                                    ? `Make sure all details are filled before Publishing ${hack.title}`
+                                                                    : `Are you sure you want to set ${hack.title} to Draft`
+                                                            }
                                                             click={() => {
                                                                 publishHackathon(
                                                                     hack.id,
+																	hack.status,
                                                                     toast
                                                                 );
                                                                 setTimeout(
@@ -184,7 +206,7 @@ const Hackathon = () => {
                                                                         getOwnHackathons(
                                                                             setOwnData
                                                                         );
-																		getHackathons(
+                                                                        getHackathons(
                                                                             setData
                                                                         );
                                                                     },
@@ -214,16 +236,16 @@ const Hackathon = () => {
                                         <div className="text-wrapper-4">
                                             {hack.application_start
                                                 ? DateConverter(
-                                                    hack.application_start
-                                                )
+                                                      hack.application_start
+                                                  )
                                                 : "No Date"}
                                         </div>
                                         <div className="rectangle" />
                                         <div className="text-wrapper-4">
                                             {hack.application_ends
                                                 ? DateConverter(
-                                                    hack.application_ends
-                                                )
+                                                      hack.application_ends
+                                                  )
                                                 : "No Date"}
                                         </div>
                                         <div className="rectangle" />
@@ -245,8 +267,8 @@ const Hackathon = () => {
                                             <div className="text-wrapper-small">
                                                 {hack.event_start
                                                     ? DateConverter(
-                                                        hack.event_start
-                                                    )
+                                                          hack.event_start
+                                                      )
                                                     : "No Date"}
                                             </div>
                                         </div>

@@ -62,8 +62,8 @@ const HackathonCreate = () => {
             .max(50, "Too Long!"),
         tagline: Yup.string()
             .min(2, "Too Short!")
-            .max(100, "Too Long!")
-            .required("Required"),
+            .max(100, "Too Long!"),
+            // .required("Required"),
         orgId: Yup.string().min(2, "Too Short!"),
         place: Yup.string().min(2, "Too Short!"),
         districtId: Yup.string().min(2, "Too Short!"),
@@ -160,6 +160,11 @@ const HackathonCreate = () => {
             }
         });
 
+		let a = values.applicationStart ? `${values.applicationStart}T00:00:00Z` : '';
+		let b = values.applicationStart ? `${values.applicationStart}T00:00:00Z` : '';
+		let c = values.applicationStart ? `${values.applicationStart}T00:00:00Z` : '';
+		let d = values.applicationStart ? `${values.applicationStart}T00:00:00Z` : '';
+
         console.log(selectedFields);
         createHackathon(
             values.title,
@@ -170,10 +175,10 @@ const HackathonCreate = () => {
             values.districtId,
             values.place,
             values.isOpenToAll,
-            `${values.applicationStart}T00:00:00Z`,
-            `${values.applicationEnds}T00:00:00Z`,
-            `${values.eventStart}T00:00:00Z`,
-            `${values.eventEnd}T00:00:00Z`,
+            a,
+            b,
+            c,
+            d,
             selectedFields,
             values.event_logo,
             values.banner,
