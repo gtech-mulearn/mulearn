@@ -52,13 +52,7 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
     const [success, setSuccess] = useState(false);
     const [disabled, setDisabled] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const [otpForm, setOtpForm] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [status, setStatus] = useState(0);
-    const [hasError, setHasError] = useState(true);
-    const [otpLoading, setOtpLoading] = useState(false);
-    const [otpError, setOtpError] = useState(false);
-    const [otpVerifyLoading, setOtpVerifyLoading] = useState(false);
     const toast = useToast();
     const navigate = useNavigate();
     let ruri = window.location.href.split("=")[1];
@@ -125,7 +119,6 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
                     <div className={styles.modalBody}>
                         <p>If yes, please enter your Credentials:</p>
                     </div>
-                    {!otpForm ?
                         <form className={styles.form} onSubmit={handleSubmit}>
                             <>
                                 <input
@@ -181,108 +174,10 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
                                 </div>
                                 <div className={styles.loginHelp}>
                                     <p className={styles.loginHelpers}>Forgot <span className={styles.loginHelperBold}>password?</span></p>
-                                    <p className={styles.loginHelpers}
-                                        onClick={() => {
-                                            setOtpForm(true);
-                                        }}
-                                    >Login with <span className={styles.loginHelperBold}>OTP</span></p>
+                    
                                 </div>
                             </>
                         </form>
-                        :
-                        <form className={styles.form}>
-                            <>
-                                <div className={styles.pass}>
-                                    <input
-                                        type="text"
-                                        name="muid"
-                                        id="muid"
-                                        placeholder="Enter µ-Id"
-                                        value={muid}
-                                        onChange={handleIdChange}
-                                    />
-
-                                    {status != 200 &&
-                                        <button
-                                            type="submit"
-                                            className={`${styles.submit} ${success ? styles.successBtn : ""
-                                                }`}
-                                            disabled={otpLoading}
-                                            onClick={(e) => {
-                                                e.preventDefault()
-                                                if (muid != "" && hasError) {
-                                                    requestEmailOrMuidOtp(
-                                                        muid,
-                                                        toast,
-                                                        setHasError,
-                                                        setStatus,
-                                                        setOtpLoading,
-                                                        setOtpError
-                                                    );
-                                                }
-                                            }}
-                                        >
-                                            {otpLoading ? (
-                                                <AiOutlineLoading className={styles.spin} />
-                                            ) : success ? (
-                                                <HiCheck />
-                                            ) : (
-                                                <HiOutlineArrowRight />
-                                            )}
-                                        </button>
-                                    }
-                                </div>
-                                {status === 200 &&
-                                    <div className={styles.pass}>
-                                        <input
-                                            type="number"
-                                            name="otp"
-                                            id="otp"
-                                            placeholder="Enter OTP"
-                                            value={password}
-                                            onChange={handlePassChange}
-                                        />
-
-                                        <button
-                                            type="submit"
-                                            className={`${styles.submit} ${success ? styles.successBtn : ""
-                                                }`}
-                                            disabled={otpVerifyLoading}
-                                            onClick={(e) => {
-                                                e.preventDefault();
-                                                if (password != "" && !hasError) {
-                                                    otpVerification(
-                                                        muid,
-                                                        password,
-                                                        toast,
-                                                        navigate,
-                                                        setOtpVerifyLoading,
-                                                        ruri
-                                                    );
-                                                }
-                                            }}
-                                        >
-                                            {otpVerifyLoading ? (
-                                                <AiOutlineLoading className={styles.spin} />
-                                            ) : success ? (
-                                                <HiCheck />
-                                            ) : (
-                                                <HiOutlineArrowRight />
-                                            )}
-                                        </button>
-                                    </div>
-                                }
-                                <div className={styles.loginHelp}>
-                                    <p className={styles.loginHelpers}>Forgot <span className={styles.loginHelperBold}>password?</span></p>
-                                    <p className={styles.loginHelpers}
-                                        onClick={() => {
-                                            setOtpForm(false);
-                                        }}
-                                    >Login with <span className={styles.loginHelperBold}>Password</span></p>
-                                </div>
-                            </>
-                        </form>
-                    }
                     {error && <p className={styles.error}>{error}</p>}
                     {success && (
                         <p className={styles.success}>

@@ -1,7 +1,8 @@
 .main_task {
     padding: 2rem 3rem;
     border-radius: 10px;
-    box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06);}
+    box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06);
+}
 
 .main_task p,
 .main_task li {
@@ -46,6 +47,18 @@
     flex-direction: column;
     gap: .5rem;
     font-size: .8rem;
+}
+
+.main_task .tasks .topSection .progressbar .goal {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.main_task .tasks .topSection .progressbar .goal i {
+    height: 15px;
 }
 
 .main_task .tasks .topSection .progressbar .progress_title {
@@ -140,7 +153,7 @@
 
 
 @media (width <300px) {
-    .main_task{
+    .main_task {
         padding: 2rem 1rem;
     }
 }
@@ -149,6 +162,8 @@
     display: flex;
     flex-direction: row;
     gap: 10px;
+    position: relative;
+    width: 100%;
 }
 
 .main_task .tasks .accordion .main_list .content .list_list li label span {
@@ -160,12 +175,14 @@
     width: fit-content;
 }
 
-/* .main_task .tasks .accordion .main_list .content .list_list li input {
-    width: 1.2rem;
-    height: 1.2rem;
-    border: 1px solid rgb(128, 128, 128, .1);
-    margin-bottom: .5rem;
-} */
+.main_task .tasks .accordion .main_list .content .list_list li label p {
+    position: absolute;
+    right: 10px;
+    color: #888888;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+}
 
 @media (max-width: 700px) {
     .main_task {
