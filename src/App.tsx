@@ -201,7 +201,6 @@ const router = createBrowserRouter([
                         path: "hackathon/details/:id",
                         element: <HackathonDetails />
                     },
-                    { path: "learning-circle", element: <LearningCircle /> },
                     { path: "create-circle", element: <CreateCircle /> },
                     {
                         path: "manage-locations", element: <ManageLocation/>

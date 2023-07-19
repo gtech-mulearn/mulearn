@@ -136,6 +136,9 @@ const Hackathon = () => {
                                                                         getOwnHackathons(
                                                                             setOwnData
                                                                         );
+																		getHackathons(
+                                                                            setData
+                                                                        );
                                                                     },
                                                                     1000
                                                                 );
@@ -181,6 +184,9 @@ const Hackathon = () => {
                                                                         getOwnHackathons(
                                                                             setOwnData
                                                                         );
+																		getHackathons(
+                                                                            setData
+                                                                        );
                                                                     },
                                                                     1000
                                                                 );
@@ -208,16 +214,16 @@ const Hackathon = () => {
                                         <div className="text-wrapper-4">
                                             {hack.application_start
                                                 ? DateConverter(
-                                                      hack.application_start
-                                                  )
+                                                    hack.application_start
+                                                )
                                                 : "No Date"}
                                         </div>
                                         <div className="rectangle" />
                                         <div className="text-wrapper-4">
                                             {hack.application_ends
                                                 ? DateConverter(
-                                                      hack.application_ends
-                                                  )
+                                                    hack.application_ends
+                                                )
                                                 : "No Date"}
                                         </div>
                                         <div className="rectangle" />
