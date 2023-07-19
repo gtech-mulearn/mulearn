@@ -14,7 +14,7 @@ import TableTopTab from './TableTopTab'
 import Textfield from '../../../../components/MuComponents/TextField/Textfield'
 import Dropdown from '../../../../components/MuComponents/Dropdown/Dropdown'
 
-import "./Organizations.scss"
+import "./DistricDashboard.scss"
 import PrimaryButton from '../../../../components/MuComponents/MuButtons/MuOutlinedButton'
 import { MuButton } from '../../../../components/MuComponents/MuButtons/MuButton'
 import { dashboardRoutes } from '../../../../services/urls'

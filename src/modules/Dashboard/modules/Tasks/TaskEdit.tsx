@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { editTask, getTaskDetails } from "./TaskApis";
+import { editTask, getTaskDetails, getUUID } from "./TaskApis";
 import * as Yup from "yup";
 import { useToast } from "@chakra-ui/react";
 import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
@@ -11,16 +11,26 @@ import {
 } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 import { TaskEditInterface } from "./TaskInterface";
+import { AxiosError } from "axios";
 
 type Props = {};
 
+
 const TaskEdit = (props: Props) => {
     const [data, setData] = useState<TaskEditInterface>({});
+    const [uuidData,setuuidData] =  useState< {[index: string]: any[]} | null>(null);
     const { id } = useParams();
     const navigate = useNavigate();
     const toast = useToast();
 
     useEffect(() => {
+        (async ()=>{
+            try{
+                setuuidData(await getUUID())
+            }catch(err){
+                console.log(err as AxiosError)
+            }
+        })()
         getTaskDetails(id, setData);
     }, []);
 
@@ -43,9 +53,13 @@ const TaskEdit = (props: Props) => {
             .truncate()
             .required("Mention the number of uses"),
         active: Yup.boolean().required("Select an option"),
-        variable_karma: Yup.boolean().required("Select an option")
+        variable_karma: Yup.boolean().required("Select an option"),
+        channel_id: Yup.string(),
+        type_id: Yup.string(),
+        level_id: Yup.string(),
+        ig_id: Yup.string(),
+        organization_id: Yup.string(),
     });
-
     return (
         <div className={styles.external_container}>
             <div className={styles.container}>
@@ -56,9 +70,14 @@ const TaskEdit = (props: Props) => {
                         hashtag: data.hashtag || "",
                         title: data.title || "",
                         karma: data.karma || "",
-                        active: data.active || "",
-                        variable_karma: data.variable_karma || "",
-                        usage_count: data.usage_count || ""
+                        active: data.active?'1':'0' || "",
+                        variable_karma: data.variable_karma?'1':'0' || "",
+                        usage_count: data.usage_count || "",
+                        channel_id: data.channel ||"",
+                        type_id: data.type ||"",
+                        level_id: data.level ||"",
+                        ig_id: data.ig || "",
+                        organization_id:data.org ||""
                     }}
                     validationSchema={taskEditSchema}
                     onSubmit={values => {
@@ -69,6 +88,11 @@ const TaskEdit = (props: Props) => {
                             values.active,
                             values.variable_karma,
                             values.usage_count,
+                            values.channel_id,
+                            values.type_id,
+                            values.level_id,
+                            values.ig_id,
+                            values.organization_id,
                             id
                         );
                         toast({
@@ -118,6 +142,78 @@ const TaskEdit = (props: Props) => {
                             type="number"
                             placeholder="No. of times to be used"
                         />
+                        <FormikSelect
+                            label="Channel"
+                            name="channel_id"
+                            disabled = {!uuidData}
+                            defaultValue = {data.channel}
+                        >
+                            <option value="">Select an option</option>
+                            {uuidData?.channel.map((val)=>{
+                                return (
+                                    <option value={val.id}>
+                                        {val.name}
+                                    </option>
+                                )
+                            })}
+                        </FormikSelect>
+                        <FormikSelect
+                            label="Type"
+                            name="type_id"
+                            disabled = {!uuidData}
+                        >
+                            <option value="">Select an option</option>
+                            {uuidData?.type.map((val)=>{
+                                return (
+                                    <option value={val.id}>
+                                        {val.title}
+                                    </option>
+                                )
+                            })}
+                        </FormikSelect>
+                        <FormikSelect
+                            label="Level"
+                            name="level_id"
+                            disabled = {!uuidData}
+                        >
+                            <option value="">Select an option</option>
+                            {uuidData?.level.map((val)=>{
+                                return (
+                                    <option value={val.id}>
+                                        {val.name}
+                                    </option>
+                                )
+                            })}
+                        </FormikSelect>
+                        <FormikSelect
+                            label="IG"
+                            name="ig_id"
+                            disabled = {!uuidData}
+                        >
+                            <option value="">Select an option</option>
+                            {uuidData?.ig.map((val)=>{
+                                return (
+                                    <option value={val.id}>
+                                        {val.name}
+                                    </option>
+                                )
+                            })}
+                        </FormikSelect>
+                        <FormikSelect
+                            label="Organization"
+                            name="organization_id"
+                            disabled = {!uuidData}
+                        >
+                            <option value="">Select an option</option>
+                            {uuidData?.organization
+                            .map((val)=>{
+                                return (
+                                    <option value={val.id}>
+                                        {val.title}
+                                    </option>
+                                )
+                            })}
+                        </FormikSelect>
                         <div className={styles.btn_container}>
                             <MuButton
                                 text={"Decline"}

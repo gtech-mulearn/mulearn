@@ -112,7 +112,7 @@ const Profile = () => {
             }
         }
         firstFetch.current = false;
-        fetchQRCode(userProfile.muid, setBlob);
+        fetchQRCode(setBlob);
     }, []);
 
     const downloadQR = () => {
