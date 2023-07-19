@@ -13,7 +13,7 @@ import { columnsCampus, columnsStudent } from "./THeaders"
 import TableTopTab from './TableTopTab'
 
 import { dashboardRoutes } from '@/MuLearnServices/urls'
-import "./Organizations.scss"
+//import "./Organizations.scss"
 import "./DistricDashboard.scss"
 import PrimaryButton from '../../../../components/MuComponents/MuButtons/MuOutlinedButton'
 import { MuButton } from '../../../../components/MuComponents/MuButtons/MuButton'
