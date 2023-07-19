@@ -178,7 +178,7 @@ const MuVoyage = (props: Props) => {
                                                                         </span>
                                                                         <p>
                                                                             {taskData.karma +
-                                                                                " K"}
+                                                                                " ϰ"}
                                                                         </p>
                                                                     </label>
                                                                 </li>
