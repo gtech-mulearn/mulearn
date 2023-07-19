@@ -52,7 +52,7 @@ import ManageLocation from "./modules/Dashboard/modules/ManageLocation/ManageLoc
 import AddLocation from "./modules/Dashboard/modules/ManageLocation/AddLocation";
 import EditLocation from "./modules/Dashboard/modules/ManageLocation/EditLocation";
 import { HackathonOrganizers } from "./modules/Dashboard/modules/Hackathon/pages/HackathonOrganizers";
-import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/FindCircle";
+import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind";
 import { LearningCircleLandingPage } from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleLandingPage";
 import HackathonDetails from "./modules/Dashboard/modules/Hackathon/pages/HackathonDetails";
 import ZonalDashboard from "./modules/Dashboard/modules/ZonalDashboard/ZonalDashboard";

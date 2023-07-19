@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import styles from './FindCircle.module.css'
+import styles from './LearningCircleFind.module.css'
 import imageTop from '../assets/images/LC1.png'
 
 type circleListELement={
@@ -31,11 +31,11 @@ const FindCircle = () => {
 
     return (
         <>
-            <div className={styles.content}>
-                <div className={styles.desc}>
+            <div className={styles.learningCircleFindContent}>
+                <div className={styles.learningCircleFindDesc}>
                     <h3>Find your learning circle</h3>
                     <p>Browse and join learning circle around you</p>
-                    <div className={styles.ig_search}>
+                    <div className={styles.learningCircleFindIgSearch}>
                         <select name="ig" ref={searchBarRef}>
                             {igs.map(ig => (
                                 <>
@@ -50,14 +50,14 @@ const FindCircle = () => {
             </div>
 
             {learningCircles ? (
-                <div className={styles.container}>
+                <div className={styles.learningCircleFindContainer}>
                     {learningCircles.map(circle => (
                         <>
-                            <div className={styles.one}>
+                            <div className={styles.learningCircleFindOne}>
                                 <h2>{circle.name}</h2>
                                 <p>Team Lead: {circle.lead}</p>
                                 <p>{circle.member_count} Members</p>
-                                <div className={styles.join}>
+                                <div className={styles.learningCircleFindJoin}>
                                     <button>Join</button>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@ const FindCircle = () => {
                     ))}
                 </div>
             ) : (
-                <div className={styles.error_container}>
+                <div className={styles.learningCircleFindErrorContainer}>
                     <h1>Found no learning circles </h1>
                 </div>
             )}

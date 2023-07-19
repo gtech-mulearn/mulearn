@@ -4,7 +4,7 @@
     box-sizing: border-box;
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
-.content{
+.learningCircleFindContent{
 
     display: flex;
     justify-content:space-around;
@@ -20,28 +20,28 @@
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
 
 }
-.desc{
+.learningCircleFindDesc{
     width: 55%;
     text-align:left;
     padding-left: 2rem;
 
 }
-.desc h3{
+.learningCircleFindDesc h3{
     font-size: 2rem;
     color: #456FF6;
     
 }
-.desc p{
+.learningCircleFindDesc p{
     margin-top: 1rem;
     font-size: .9rem;
 }
-.content img{
+.learningCircleFindContent img{
     padding: 2rem;
     width: 40%;
     height: 90%;
     
 }
-.ig_search select{
+.learningCircleFindIgSearch select{
     width:10rem;
     height: 2rem;
     background:#F3F3F4;
@@ -51,13 +51,13 @@
     
     
 }
-.ig_search{
+.learningCircleFindIgSearch{
     margin-top: 2rem;
     display: flex;
     gap: 1rem;
     margin-bottom: 1rem;
 }
-.desc button,.join button{
+.learningCircleFindDesc button,.learningCircleFindJoin button{
     width: 2rem;
     height: 2rem;
     border-radius: 8px;
@@ -68,10 +68,10 @@
     font-weight: 900;
 }
 
-.join button {
+.learningCircleFindJoin button {
     font-weight: revert;
 }
-.container{
+.learningCircleFindContainer{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -79,7 +79,7 @@
     padding: 3rem;
     width: 100%;
 }
-.one{
+.learningCircleFindOne{
     width:30%;
     padding: 1.5rem 2rem;
     background: white;
@@ -90,17 +90,17 @@
     color: black;
     text-align: initial;
 }
-.one h2{
+.learningCircleFindOne h2{
     all:revert;
     margin: 0;
 }
 
-.container .one .join{
+.learningCircleFindContainer .learningCircleFindOne .learningCircleFindJoin{
     margin-top: 1rem;
     display: flex;
     justify-content: end;
 }
-.container .one .join button{
+.learningCircleFindContainer .learningCircleFindOne .learningCircleFindJoin button{
     width: 5rem;
     background: #456FF6;
     color: white;
@@ -130,22 +130,22 @@
         margin: 0 5%;
         border: 1px solid #E0EDFF;
     }
-    .content{
+    .learningCircleFindContent{
         flex-direction:column-reverse;
     }
-    .content img{
+    .learningCircleFindContent img{
         margin-top: 1rem;
         padding:0;
         gap: 0;
     }
-    .desc{
+    .learningCircleFindDesc{
         padding: 0;
         text-align: center;
     }
-    .ig_search{
+    .learningCircleFindIgSearch{
         justify-content: center;
     }
-    .one{
+    .learningCircleFindOne{
         width:calc(100% - 2rem);
         padding: 1.5rem 2rem;
         
@@ -154,7 +154,7 @@
    
 }
 
-.error_container h1{
+.learningCircleFindErrorContainer h1{
     all:revert;
     padding: 125px 0px;
 }
