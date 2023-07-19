@@ -1,4 +1,4 @@
-import styles from "./CreateCircle.module.css";
+import styles from "./LearningCircle.module.css";
 import * as Yup from "yup";
 import { Form, Formik } from "formik";
 import {FormikSelect, FormikTextInput} from '@/MuLearnComponents/FormikComponents/FormikComponents'
@@ -19,12 +19,12 @@ const CreateCircle = (props: Props) => {
 
     return (
         <>
-            <div className={styles.content}>
+            <div className={styles.CreateCircleContent}>
 
-                <div className={styles.CreateLearn}>
+                <div className={styles.CreateCircleMain}>
                     <img src="https://i.ibb.co/RhT8b3z/image-24.png" alt="" />
 
-                    <div className={styles.create}>
+                    <div className={styles.CreateCircleHeading}>
                         <div>
                             <b>Create a Learning circle</b>
                             <p>Connect, Collaborate, and Learn Together!</p>
@@ -44,7 +44,7 @@ const CreateCircle = (props: Props) => {
                                 }}
                             >
                                 <Form>
-                                    <div className={styles.entercirclename}>
+                                    <div className={styles.CreateCircleForm}>
                                         <FormikTextInput 
                                             type="text"
                                             name="circle_name" 
