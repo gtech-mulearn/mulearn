@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import axios from "axios";
-import { privateGateway } from "../../../../services/apiGateways";
-import { dashboardRoutes, organizationRoutes } from "../../../../services/urls";
+import { privateGateway } from "@/MuLearnServices/apiGateways";
+import { dashboardRoutes, organizationRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 
 export const getzonaldashboard = async (

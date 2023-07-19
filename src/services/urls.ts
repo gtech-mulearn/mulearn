@@ -27,6 +27,7 @@ export const dashboardRoutes = {
     getIgData: "/api/v1/dashboard/ig/",
     getIgList: "/api/v1/dashboard/ig/csv",
     getUsersData: "/api/v1/dashboard/user/",
+    getUsersEditData: "/api/v1/dashboard/user/edit/",
     getUsersList: "/api/v1/dashboard/user/csv/",
     getUsersRoleVerificationData: "/api/v1/dashboard/user/verification/",
     getTasksData: "/api/v1/dashboard/task/",
@@ -39,7 +40,7 @@ export const dashboardRoutes = {
     getTaskIGs: "/api/v1/dashboard/task/ig/",
     getTaskOrganizations: "/api/v1/dashboard/task/organization/",
     getTaskChannels: "/api/v1/dashboard/task/channel/",
-    getTaskTypes:"/api/v1/dashboard/task/task-types/",
+    getTaskTypes: "/api/v1/dashboard/task/task-types/",
 
     getShortenUrl: "/api/v1/url-shortener/list/",
     createShortenUrl: "/api/v1/url-shortener/create/",
@@ -71,6 +72,10 @@ export const dashboardRoutes = {
     createHackathon: "/api/v1/hackathon/create-hackathon/",
     getHackathons: "/api/v1/hackathon/list-hackathons/",
     getOwnHackathons: "/api/v1/hackathon/list-orgniser-hackathons/",
+    deleteHackathon: "/api/v1/hackathon/delete-hackathon/",
+    addOrganizer: "/api/v1/hackathon/add-organiser/",
+
+    getUserLearningCircles: "/api/v1/dashboard/lc/"
 } as const;
 
 export const organizationRoutes = {
@@ -84,6 +89,10 @@ export const organizationRoutes = {
     postGetInfo: "/api/v1/organisation/institutes/info/",
     getOrgCsv: "/api/v1/organisation/institutes/csv"
 };
+
+export const ManageLocationsRoutes = {
+    getCountryData: "/api/v1/location/country",
+}
 
 export const KKEMRoutes = {
     userAuth: "/api/v1/integrations/kkem/authorization/"

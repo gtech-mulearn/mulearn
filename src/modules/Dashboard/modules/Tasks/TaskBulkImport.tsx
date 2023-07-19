@@ -1,6 +1,6 @@
-import BulkImport from "../../../../components/MuComponents/BulkImport/BulkImport";
-import { SingleButton } from "../../../../components/MuComponents/MuButtons/MuButton";
-import { dashboardRoutes } from "../../../../services/urls";
+import BulkImport from "@/MuLearnComponents/BulkImport/BulkImport";
+import { SingleButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { BiDownload } from "react-icons/bi";
 
 type Props = {};

@@ -3,7 +3,7 @@ import { MuButton } from "../MuButtons/MuButton";
 import Textfield from "../TextField/Textfield";
 import styles from "./Form.module.css";
 import { Navigate, useNavigate } from "react-router-dom";
-import Dropdown from "@Mulearn/Dropdown/Dropdown";
+import Dropdown from "@/MuLearnComponents/Dropdown/Dropdown";
 
 /*
 TODO: Verify the Relevance of This File

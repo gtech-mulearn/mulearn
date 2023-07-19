@@ -1,36 +1,31 @@
-import { useEffect, useRef, useState } from "react";
-import { MuButton } from "../../../../../components/MuComponents/MuButtons/MuButton";
-import styles from "./Profile.module.css";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import moment from "moment";
+import { useEffect, useRef, useState } from "react";
+import dpm from "../assets/images/dpm.jpg";
+import Karma, { KarmaWhite } from "../assets/svg/Karma";
+import MulearnBrand from "../assets/svg/MulearnBrand";
+import Rank from "../assets/svg/Rank";
+import { PieChart } from "../components/Piechart/PieChart";
 import {
+    fetchQRCode,
+    getPublicUserLevels,
+    getPublicUserLog,
+    getPublicUserProfile,
+    getUserLevels,
     getUserLog,
     getUserProfile,
-    getPublicUserProfile,
-    getPublicUserLog,
-    putIsPublic,
-    getUserLevels,
-    getPublicUserLevels,
-    fetchQRCode
+    putIsPublic
 } from "../services/api";
-import { PieChart } from "../components/Piechart/PieChart";
-import MulearnBrand from "../assets/svg/MulearnBrand";
-import { GridLoader } from "react-spinners";
-import dpm from "../assets/images/dpm.jpg";
-import Rank from "../assets/svg/Rank";
-import Karma, { KarmaWhite } from "../assets/svg/Karma";
+import styles from "./Profile.module.css";
 
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { Switch, useToast } from "@chakra-ui/react";
+import { saveAs } from "file-saver";
+import { Helmet } from "react-helmet";
+import { useNavigate, useParams } from "react-router-dom";
 import BasicDetails from "../components/BasicDetails";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
-import { useNavigate, useParams } from "react-router-dom";
-import { useToast, Switch } from "@chakra-ui/react";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
-import QRCode from "react-qr-code";
-import { Helmet } from "react-helmet";
-import { BsJustify } from "react-icons/bs";
-import axios from "axios";
-import { saveAs } from "file-saver";
-import mulearn_logo from "../assets/images/mulearnBrand.png";
-import MuLoader from "@Mulearn/MuLoader/MuLoader";
 
 //TODO: Verify the relevance of profile page image
 const Profile = () => {

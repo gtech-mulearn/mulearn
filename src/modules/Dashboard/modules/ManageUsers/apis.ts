@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
-import { privateGateway } from "../../../../services/apiGateways";
-import { dashboardRoutes } from "../../../../services/urls";
+import { privateGateway } from "@/MuLearnServices/apiGateways";
+import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 import { Dispatch, SetStateAction } from "react";
 export const getManageUsers = async (
@@ -144,12 +144,12 @@ export const getManageUsersDetails = async (
 ) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getUsersData + id + "/"
+            dashboardRoutes.getUsersEditData + id + "/"
         );
         const message: any = response?.data;
-        //console.log(message);
-        //console.log(message.response.users);
-        setData(message.response.users);
+        console.log(message.response);
+        // console.log(message.response.users);
+        setData(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
