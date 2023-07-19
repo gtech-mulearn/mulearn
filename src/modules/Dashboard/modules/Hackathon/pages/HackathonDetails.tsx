@@ -22,32 +22,27 @@ export const HackathonDetails = (props: Props) => {
     return (
         <div className="hackDetails">
             <div className="hackDetailDash">
-                {/* <img className="banner" src={`https://dev.mulearn.org/${data?.banner}`} alt="" />
-                     */}
-                <img className="banner" src="https://i.ibb.co/HHd9Pyd/459-2.png" alt="" />
-
+                <img className="banner" src={`https://dev.mulearn.org/${data?.banner}`} alt="" />
+                    
                 <div className="desc">
                     <div className="description">
                         <img className="hackProfile" src={`https://dev.mulearn.org/${data?.event_logo}`} />
                         <div className="descTitle">
                             <div>
-                                {/* <h1>{data?.title}</h1> */}
-                                <h1>Beach Hack 5</h1>
+                                <h1>{data?.title}</h1>
                                 <div className="tagLine">
                                     <b>{data?.tagline}</b>
-                                    <b>203 interested</b>
                                     &nbsp;
                                     <b> {data?.participant_count}+ participants</b>
                                 </div>
                             </div>
                             <span className="love">
-                                <CiGlobe />
+                                
                             </span>
                         </div>
                     </div>
                     <p>
                         {data?.description}
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro veniam totam itaque maiores cumque qui asperiores possimus dolorem eius enim molestiae officiis, quo, modi optio commodi nemo labore quas cupiditate.
                     </p>
                 </div>
             </div>
