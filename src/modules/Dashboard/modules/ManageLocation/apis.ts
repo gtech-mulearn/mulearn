@@ -73,9 +73,9 @@ export const deleteCountryData = async (
 ) => {
     try {
         await privateGateway.delete(ManageLocationsRoutes.getCountryData,
-            {
-                name: countryName
-            }
+            // {
+            //     name: countryName
+            // }
         )
         .then(({data})=>data.response)
         .then(({data})=>{
