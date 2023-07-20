@@ -121,7 +121,7 @@ export const getAllDistricts = (
 };
 
 export const getAllInstitutions = (
-    setInstitutions: React.Dispatch<React.SetStateAction<Option[]>>
+    setInstitutions: React.Dispatch<React.SetStateAction<Option[][]>>
 ) => {
     privateGateway
         .get(dashboardRoutes.getAllOrganisations)
@@ -129,10 +129,9 @@ export const getAllInstitutions = (
             console.log(response.data.response);
             setInstitutions(
                 response.data.response
-                    .sort((a: any, b: any) => a.name.localeCompare(b.name))
                     .map((sate: any) => ({
                         value: sate.id,
-                        label: sate.name
+                        label: sate.title
                     }))
             );
         })
@@ -211,6 +210,13 @@ export const publishHackathon = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
+			toast({
+                title: "Failed to make changes",
+                description: "Make sure all fields are filled.",
+                status: "error",
+                duration: 5000,
+                isClosable: true
+            });
             console.log(error.response);
         }
     }

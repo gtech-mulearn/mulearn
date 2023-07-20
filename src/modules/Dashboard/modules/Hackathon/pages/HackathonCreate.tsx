@@ -31,6 +31,7 @@ const HackathonCreate = () => {
     const [formData, setFormData] = useState("");
     const [district, setDistrict] = useState<Option[]>([]);
     const [institutions, setInstitutions] = useState<Option[]>([]);
+	const [institutionsChunks, setInstitutionsChunks] = useState<Option[][]>([]);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
 
@@ -38,9 +39,18 @@ const HackathonCreate = () => {
         if (formData === "") {
             getFormFields(setFormData);
             getAllDistricts(setDistrict);
-            getAllInstitutions(setInstitutions);
+            getAllInstitutions(setInstitutionsChunks);
         }
     }, []);
+
+	useEffect(() => {
+        // Flatten the chunks into a single array when the chunks change
+        const flattenedInstitutions = institutionsChunks.reduce(
+            (accumulator, currentChunk) => accumulator.concat(currentChunk),
+            []
+        );
+        setInstitutions(flattenedInstitutions);
+    }, [institutionsChunks]);
 
     function handleNext() {
         if (tabIndex === 5) {
@@ -48,6 +58,7 @@ const HackathonCreate = () => {
         } else {
             setTabIndex(tabIndex + 1);
         }
+		console.log(institutions)
     }
 
     function handleBack() {
@@ -249,7 +260,7 @@ const HackathonCreate = () => {
                                         <Tab>Advanced</Tab>
                                         <Tab>Application</Tab>
                                         <span></span>
-                                        <Tab>Organizers</Tab>
+                                        {/* <Tab>Organizers</Tab> */}
                                         {/* <Tab>FAQs</Tab> */}
                                     </TabList>
                                     <div className={styles.form}>
@@ -315,11 +326,15 @@ const HackathonCreate = () => {
                                                 name="orgId"
                                                 options={institutions}
                                                 label={"Organization"}
+                                                isClearable
+                                                isSearchable
                                             />
                                             <FormikReactSelect
                                                 name="districtId"
                                                 options={district}
                                                 label={"District"}
+                                                isClearable
+                                                isSearchable
                                             />
                                             <FormikTextInputWhite
                                                 label="Place"
@@ -596,9 +611,9 @@ const HackathonCreate = () => {
                                             </div>
                                         </TabPanel>
 
-                                        <TabPanel className={styles.formGroup}>
-                                            work in progress
-                                        </TabPanel>
+                                        <TabPanel
+                                            className={styles.formGroup}
+                                        ></TabPanel>
 
                                         <TabPanel
                                             className={styles.formGroup}
