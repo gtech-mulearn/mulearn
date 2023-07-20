@@ -4,12 +4,14 @@ import styles from "./HackathonCreate.module.css";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import FormikReactSelect, {
     FormikTextAreaWhite,
-    FormikTextInputWhite
+    FormikTextInputWhite,
+	Option
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { useEffect, useState } from "react";
 import {
     createHackathon,
-    getDistrict,
+    getAllDistricts,
+    getAllInstitutions,
     getFormFields
 } from "../services/HackathonApis";
 import { FiUploadCloud } from "react-icons/fi";
@@ -27,15 +29,16 @@ const options1 = [{ label: "Everyone", value: true }];
 const HackathonCreate = () => {
     const [tabIndex, setTabIndex] = useState(0);
     const [formData, setFormData] = useState("");
-    const [district, setDistrict] = useState("");
-    const [institutions, setInstitutions] = useState("");
+    const [district, setDistrict] = useState<Option[]>([]);
+    const [institutions, setInstitutions] = useState<Option[]>([]);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
 
     useEffect(() => {
         if (formData === "") {
             getFormFields(setFormData);
-            getDistrict(setDistrict, "Kerala");
+            getAllDistricts(setDistrict);
+            getAllInstitutions(setInstitutions);
         }
     }, []);
 
@@ -310,12 +313,12 @@ const HackathonCreate = () => {
                                         <TabPanel className={styles.formGroup}>
                                             <FormikReactSelect
                                                 name="orgId"
-                                                options={options}
+                                                options={institutions}
                                                 label={"Organization"}
                                             />
                                             <FormikReactSelect
                                                 name="districtId"
-                                                options={options}
+                                                options={district}
                                                 label={"District"}
                                             />
                                             <FormikTextInputWhite

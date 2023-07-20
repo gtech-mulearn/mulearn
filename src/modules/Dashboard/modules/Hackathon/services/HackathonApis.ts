@@ -4,6 +4,7 @@ import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import { HackList } from "../User/Hackathon";
 import { SetStateAction } from "react";
 import { ToastId, UseToastOptions, useToast } from "@chakra-ui/react";
+import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 
 export const getFormFields = async (
     setFormData: React.Dispatch<React.SetStateAction<string>>
@@ -28,7 +29,7 @@ export const getHackDetails = async (
 ) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getHackathons + id
+            dashboardRoutes.getHackathonInfo + id
         );
         const defaultForm: any = response?.data;
         setEditData(defaultForm.response);
@@ -98,15 +99,36 @@ export const createHackathon = async (
     }
 };
 
-export const getDistrict = (
-    setDistrict: any,
-    state: any
+export const getAllDistricts = (
+    setDistrict: React.Dispatch<React.SetStateAction<Option[]>>
 ) => {
-    publicGateway
-        .post(onboardingRoutes.districtList, state)
+    privateGateway
+        .get(dashboardRoutes.getAllDistricts)
         .then(response => {
+            console.log(response.data.response);
             setDistrict(
-                response.data.response.districts
+                response.data.response
+                    .sort((a: any, b: any) => a.name.localeCompare(b.name))
+                    .map((sate: any) => ({
+                        value: sate.id,
+                        label: sate.name
+                    }))
+            );
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
+};
+
+export const getAllInstitutions = (
+    setInstitutions: React.Dispatch<React.SetStateAction<Option[]>>
+) => {
+    privateGateway
+        .get(dashboardRoutes.getAllOrganisations)
+        .then(response => {
+            console.log(response.data.response);
+            setInstitutions(
+                response.data.response
                     .sort((a: any, b: any) => a.name.localeCompare(b.name))
                     .map((sate: any) => ({
                         value: sate.id,
