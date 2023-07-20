@@ -49,18 +49,6 @@
     font-size: .8rem;
 }
 
-.main_task .tasks .topSection .progressbar .goal {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 5px;
-}
-
-.main_task .tasks .topSection .progressbar .goal i {
-    height: 15px;
-}
-
 .main_task .tasks .topSection .progressbar .progress_title {
     display: flex;
     justify-content: space-between;
@@ -103,6 +91,15 @@
     justify-content: space-between;
 }
 
+.main_task .tasks .accordion .main_list .level p .level_karma_detail {
+    margin-left: 5px;
+}
+
+.main_task .tasks .accordion .main_list .level p span {
+    font-size: 10px;
+    color: #888888;
+}
+
 .main_task .tasks .accordion .main_list .level .task_details {
     display: flex;
     align-items: center;
@@ -131,6 +128,28 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s, padding 0.5s;
+}
+
+.main_task .tasks .accordion .main_list .content .goal_container {
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 1.5rem;
+
+}
+
+.main_task .tasks .accordion .main_list .content .goal_container p {
+    color: #888888 !important;
+}
+
+.main_task .tasks .accordion .main_list .content .goal_container .goal {
+    display: flex;
+    gap: 5px;
+}
+
+.main_task .tasks .accordion .main_list .content.goal i {
+    height: 10px;
 }
 
 .main_task .tasks .accordion .main_list .expandBtn:checked~.content {
