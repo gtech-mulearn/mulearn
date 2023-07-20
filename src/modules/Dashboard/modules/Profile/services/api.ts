@@ -5,8 +5,8 @@ import { NavigateFunction } from "react-router-dom";
 import {
     privateGateway,
     publicGateway
-} from "../../../../../services/apiGateways";
-import { dashboardRoutes } from "../../../../../services/urls";
+} from "@/MuLearnServices/apiGateways";
+import { dashboardRoutes } from "@/MuLearnServices/urls";
 
 type userProfile = React.Dispatch<React.SetStateAction<any>>;
 type userLog = React.Dispatch<React.SetStateAction<any>>;

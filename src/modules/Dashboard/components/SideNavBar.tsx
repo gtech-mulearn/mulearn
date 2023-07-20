@@ -8,7 +8,7 @@ import {
     DropDownButtons,
     MuButton,
     MuButtonLight
-} from "@Mulearn/MuButtons/MuButton";
+} from "@/MuLearnComponents/MuButtons/MuButton";
 
 //TODO: Change the style's casing to match the rest of the project
 type Props = {

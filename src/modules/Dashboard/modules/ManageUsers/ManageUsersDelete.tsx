@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
-import { deleteManageUsers, getManageUsersDetails } from "./apis";
-import { useNavigate, useParams } from "react-router-dom";
-import Form from "../../../../components/MuComponents/Form/Form";
+import Form from "@/MuLearnComponents/Form/Form";
 import { useToast } from "@chakra-ui/react";
+import { useNavigate, useParams } from "react-router-dom";
+import { deleteManageUsers } from "./apis";
 
 type Props = {};
 

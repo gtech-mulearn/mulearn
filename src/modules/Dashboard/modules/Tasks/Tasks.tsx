@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
-import Table from "../../../../components/MuComponents/Table/Table";
-import THead from "../../../../components/MuComponents/Table/THead";
-import Pagination from "../../../../components/MuComponents/Pagination/Pagination";
-import { hasRole } from "../../../../services/common_functions";
-import { roles } from "../../../../services/types";
+import TableTop from "@/MuLearnComponents/TableTop/TableTop";
+import Table from "@/MuLearnComponents/Table/Table";
+import THead from "@/MuLearnComponents/Table/THead";
+import Pagination from "@/MuLearnComponents/Pagination/Pagination";
+import { hasRole } from "@/MuLearnServices/common_functions";
+import { roles } from "@/MuLearnServices/types";
 import { useNavigate } from "react-router-dom";
 import { getTasks } from "./TaskApis";
-import { dashboardRoutes } from "../../../../services/urls";
+import { dashboardRoutes } from "@/MuLearnServices/urls";
 import styles from "../InterestGroup/InterestGroup.module.css";
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
 type Props = {};

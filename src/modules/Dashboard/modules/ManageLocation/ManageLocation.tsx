@@ -4,7 +4,6 @@ import Table from '../../../../components/MuComponents/Table/Table'
 import THead from '../../../../components/MuComponents/Table/THead'
 import TableTop from '../../../../components/MuComponents/TableTop/TableTop'
 import Pagination from '../../../../components/MuComponents/Pagination/Pagination'
-import { MuButton } from '@Mulearn/MuButtons/MuButton';
 import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
 import './ManageLocation.scss'
 import { AiOutlinePlusCircle } from "react-icons/ai";
@@ -21,6 +20,7 @@ import {
 import LocationPopup from './LocationPopup';
 import { hasRole } from "../../../../services/common_functions";
 import { roles } from "../../../../services/types";
+import { MuButton } from '@/MuLearnComponents/MuButtons/MuButton';
 
 const ManageLocation = () => {
   const [data, setData] = useState<any[]>([]);
