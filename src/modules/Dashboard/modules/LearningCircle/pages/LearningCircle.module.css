@@ -3,8 +3,7 @@
 */
 .learningCircleLandingPage,
 .LearningCircleDetailsContent,
-.FindCircleContent
-{
+.FindCircleContent {
 	padding: 1rem 3rem;
 	display: flex;
 	flex-direction: column;
@@ -162,7 +161,7 @@
 	}
 }
 
-@media (width<320px){
+@media (width<320px) {
 	.learningCircleLandingPageDesc h1 {
 		font-size: 1.2rem;
 	}
@@ -592,297 +591,277 @@
 ! Learning Circle Find-Circle Page
 */
 .FindCircleContentTop {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: #F3F8FE;
-    gap: 1rem;
-    border-radius: var(--borderRadius);
-    box-shadow: var(--boxShadow);
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background: #F3F8FE;
+	gap: 1rem;
+	border-radius: var(--borderRadius);
+	box-shadow: var(--boxShadow);
 }
 
 .FindCircleContentTop .desc {
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 }
 
 .FindCircleContentTop .desc h3 {
-    font-size: 2.5rem;
-    color: #456FF6;
-    font-weight: 600;
+	font-size: 2.5rem;
+	color: #456FF6;
+	font-weight: 600;
 }
 
 .FindCircleContent img {
-    width: 40%;
-    padding: 1rem;
+	width: 40%;
+	padding: 1rem;
 }
 
 .FindCircleContentTop .desc .ig_search {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    width: 70%;
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	width: 70%;
 }
 
 .FindCircleContentTop .desc .ig_search select {
-    background: #F3F3F4;
-    color: #333333;
-    border-radius: 8px;
-    padding: .8rem 1rem;
-    width: 100%;
+	background: #F3F3F4;
+	color: #333333;
+	border-radius: 8px;
+	padding: .8rem 1rem;
+	width: 100%;
 }
 
 .FindCircleContentTop .desc .ig_search button {
-    background: var(--blue);
-    color: #fff;
-    border-radius: 8px;
-    padding: .8rem 1rem;
+	background: var(--blue);
+	color: #fff;
+	border-radius: 8px;
+	padding: .8rem 1rem;
 }
 
 .FindCircleContent .container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem;
+	width: 100%;
 }
 
 .FindCircleContent .container .one {
-    width: 30%;
-    padding: 1.5rem 2rem;
-    background: white;
-    box-shadow: var(--boxShadow);
-    border-radius: var(--borderRadius);
-    color: black;
-    text-align: initial;
+	width: 30%;
+	padding: 1.5rem 2rem;
+	background: white;
+	box-shadow: var(--boxShadow);
+	border-radius: var(--borderRadius);
+	color: black;
+	text-align: initial;
 }
 
 .FindCircleContent .container .one h2 {
-    all: revert;
-    margin: 0;
+	all: revert;
+	margin: 0;
 }
 
 .FindCircleContent .container .one .join {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: end;
+	margin-top: 1rem;
+	display: flex;
+	justify-content: end;
 }
 
 .FindCircleContent .container .one .join button {
-    width: 5rem;
-    background: #456FF6;
-    color: white;
-    border-radius: 8px;
-    padding: .5rem 1rem;
+	width: 5rem;
+	background: #456FF6;
+	color: white;
+	border-radius: 8px;
+	padding: .5rem 1rem;
 }
 
 @media(width<800px) {
-    .FindCircleContent {
-        padding: .5rem;
-    }
+	.FindCircleContent {
+		padding: .5rem;
+	}
 
-    .FindCircleContentTop {
-        flex-direction: column;
-        padding: 1rem;
-        gap: 1rem;
-    }
+	.FindCircleContentTop {
+		flex-direction: column;
+		padding: 1rem;
+		gap: 1rem;
+	}
 
-    .FindCircleContentTop .desc h3 {
-        font-size: 1.5rem;
-    }
+	.FindCircleContentTop .desc h3 {
+		font-size: 1.5rem;
+	}
 
-    .FindCircleContentTop .desc b {
-        font-size: .8rem;
-    }
+	.FindCircleContentTop .desc b {
+		font-size: .8rem;
+	}
 
-    .FindCircleContent img {
-        width: 100%;
-    }
+	.FindCircleContent img {
+		width: 100%;
+	}
 
-    .FindCircleContentTop .desc .ig_search {
-        width: 100%;
-    }
+	.FindCircleContentTop .desc .ig_search {
+		width: 100%;
+	}
 
-    .FindCircleContent .container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        width: 100%;
-    }
+	.FindCircleContent .container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+		width: 100%;
+	}
 
-    .FindCircleContent .container .one {
-        width: 100%;
-        padding: 1rem;
-    }
+	.FindCircleContent .container .one {
+		width: 100%;
+		padding: 1rem;
+	}
 
-    .FindCircleContent .container .one .join {
-        margin-top: .5rem;
-    }
+	.FindCircleContent .container .one .join {
+		margin-top: .5rem;
+	}
 }
 
 .error_container h1 {
-    all: revert;
-    padding: 125px 0px;
+	all: revert;
+	padding: 125px 0px;
 }
-
 
 /*
 * ************************************************************************************************
 
 ! Learning Circle Find Page
 */
-.learningCircleFindContent{
 
-    display: flex;
-    justify-content:space-around;
-    align-items: center;
-    width: calc(100% - 8rem);
-    height: 40%;
-    background: #D2DCFF;
-    margin-left: 3rem;
-    margin-right: 3rem;
-    gap: 1rem;
-    border-radius: 1rem;
-    margin-top: 2.5rem;
-    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
-
-}
-.learningCircleFindDesc{
-    width: 55%;
-    text-align:left;
-    padding-left: 2rem;
-
-}
-.learningCircleFindDesc h3{
-    font-size: 2rem;
-    color: #456FF6;
-    
-}
-.learningCircleFindDesc p{
-    margin-top: 1rem;
-    font-size: .9rem;
-}
-.learningCircleFindContent img{
-    padding: 2rem;
-    width: 40%;
-    height: 90%;
-    
-}
-.learningCircleFindIgSearch select{
-    width:10rem;
-    height: 2rem;
-    background:#F3F3F4;
-    color: #333333;
-    border-radius: 8px;
-    border: 2px solid #ffff;
-    
-    
-}
-.learningCircleFindIgSearch{
-    margin-top: 2rem;
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-.learningCircleFindDesc button,.learningCircleFindJoin button{
-    width: 2rem;
-    height: 2rem;
-    border-radius: 8px;
-    background:#F3F3F4;
-    color: #333333;
-    border-radius: 8px;
-    border: 2px solid #ffff;
-    font-weight: 900;
+.FindCircleContentTop {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background: #F3F8FE;
+	gap: 1rem;
+	border-radius: var(--borderRadius);
+	box-shadow: var(--boxShadow);
 }
 
-.learningCircleFindJoin button {
-    font-weight: revert;
-}
-.learningCircleFindContainer{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 2rem;
-    padding: 3rem;
-    width: 100%;
-}
-.learningCircleFindOne{
-    width:30%;
-    padding: 1.5rem 2rem;
-    background: white;
-    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    
-    /* Undo resets */
-    color: black;
-    text-align: initial;
-}
-.learningCircleFindOne h2{
-    all:revert;
-    margin: 0;
+.FindCircleContentTop .desc {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 }
 
-.learningCircleFindContainer .learningCircleFindOne .learningCircleFindJoin{
-    margin-top: 1rem;
-    display: flex;
-    justify-content: end;
-}
-.learningCircleFindContainer .learningCircleFindOne .learningCircleFindJoin button{
-    width: 5rem;
-    background: #456FF6;
-    color: white;
+.FindCircleContentTop .desc h3 {
+	font-size: 2.5rem;
+	color: #456FF6;
+	font-weight: 600;
 }
 
+.FindCircleContent img {
+	width: 40%;
+	padding: 1rem;
+}
 
+.FindCircleContentTop .desc .ig_search {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	width: 70%;
+}
 
+.FindCircleContentTop .desc .ig_search select {
+	background: #F3F3F4;
+	color: #333333;
+	border-radius: 8px;
+	padding: .8rem 1rem;
+	width: 100%;
+}
+
+.FindCircleContentTop .desc .ig_search button {
+	background: var(--blue);
+	color: #fff;
+	border-radius: 8px;
+	padding: .8rem 1rem;
+}
+
+.FindCircleContent .container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem;
+	width: 100%;
+}
+
+.FindCircleContent .container .one {
+	width: 30%;
+	padding: 1.5rem 2rem;
+	background: white;
+	box-shadow: var(--boxShadow);
+	border-radius: var(--borderRadius);
+	color: black;
+	text-align: initial;
+}
+
+.FindCircleContent .container .one h2 {
+	all: revert;
+	margin: 0;
+}
+
+.FindCircleContent .container .one .join {
+	margin-top: 1rem;
+	display: flex;
+	justify-content: end;
+}
+
+.FindCircleContent .container .one .join button {
+	width: 5rem;
+	background: #456FF6;
+	color: white;
+	border-radius: 8px;
+	padding: .5rem 1rem;
+}
 
 @media(width<800px) {
-    .leftDash {
-        width: 0%;
-    }
+	.FindCircleContent {
+		padding: .5rem;
+	}
 
-    .rightDash {
-        width: 100%;
-        left: 0;
-    }
+	.FindCircleContentTop {
+		flex-direction: column;
+		padding: 1rem;
+		gap: 1rem;
+	}
 
-    .dashTopbar {
-        font-size: 1rem;
-        padding: 1.5rem .5rem;
-    }
+	.FindCircleContentTop .desc h3 {
+		font-size: 1.5rem;
+	}
 
-    hr {
-        position: absolute;
-        width: 90%;
-        margin: 0 5%;
-        border: 1px solid #E0EDFF;
-    }
-    .learningCircleFindContent{
-        flex-direction:column-reverse;
-    }
-    .learningCircleFindContent img{
-        margin-top: 1rem;
-        padding:0;
-        gap: 0;
-    }
-    .learningCircleFindDesc{
-        padding: 0;
-        text-align: center;
-    }
-    .learningCircleFindIgSearch{
-        justify-content: center;
-    }
-    .learningCircleFindOne{
-        width:calc(100% - 2rem);
-        padding: 1.5rem 2rem;
-        
-    }
+	.FindCircleContentTop .desc b {
+		font-size: .8rem;
+	}
 
-   
+	.FindCircleContent img {
+		width: 100%;
+	}
+
+	.FindCircleContentTop .desc .ig_search {
+		width: 100%;
+	}
+
+	.FindCircleContent .container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+		width: 100%;
+	}
+
+	.FindCircleContent .container .one {
+		width: 100%;
+		padding: 1rem;
+	}
+
+	.FindCircleContent .container .one .join {
+		margin-top: .5rem;
+	}
 }
 
-.learningCircleFindErrorContainer h1{
-    all:revert;
-    padding: 125px 0px;
+.error_container h1 {
+	all: revert;
+	padding: 125px 0px;
 }
