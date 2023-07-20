@@ -25,7 +25,7 @@ const TopNavBar = () => {
             <div id="top_nav" className={styles.top_nav}>
                 <div className={styles.nav}>
                     <div className={styles.nav_items}>
-                        <div className={styles.greetings}>Hello, {name} 👋</div>
+                        <b className={styles.greetings}>Hello, {name} 👋</b>
 
                         <div className={styles.mulearn_brand2}>
                         </div>
@@ -41,7 +41,7 @@ const TopNavBar = () => {
                             </div>
                         </div>
                     </div>
-                    <hr />
+                    {/* <hr /> */}
                 </div>
             </div>
         </>
