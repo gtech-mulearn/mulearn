@@ -47,7 +47,7 @@ import KKEMLanding from "./modules/KKEM/modules/KKEMLanding";
 import KKEMAuth from "./modules/KKEM/modules/KKEMAuth";
 import RankCard from "./modules/Embeds/modules/RankCard/pages/RankCard";
 import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle";
-import CreateCircle from "./modules/Dashboard/modules/LearningCircle/pages/CreateCircle";
+import CreateCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate";
 import ManageLocation from "./modules/Dashboard/modules/ManageLocation/ManageLocation";
 import AddLocation from "./modules/Dashboard/modules/ManageLocation/AddLocation";
 import EditLocation from "./modules/Dashboard/modules/ManageLocation/EditLocation";
@@ -186,13 +186,22 @@ const router = createBrowserRouter([
                         path: "tasks/bulk-import",
                         element: <TaskBulkImport />
                     },
-                    { path: "url-shortener", element: <UrlShortener /> },
+                    {
+                        path: "url-shortener",
+                        element: <UrlShortener />
+                    },
                     {
                         path: "tasks/delete/:id",
                         element: <TaskDelete />
                     },
-                    { path: "url-shortener", element: <UrlShortener /> },
-                    { path: "hackathon", element: <Hackathon /> },
+                    {
+                        path: "url-shortener",
+                        element: <UrlShortener />
+                    },
+                    {
+                        path: "hackathon",
+                        element: <Hackathon />
+                    },
                     {
                         path: "hackathon/create",
                         element: <HackathonCreate />
@@ -201,18 +210,17 @@ const router = createBrowserRouter([
                         path: "hackathon/details/:id",
                         element: <HackathonDetails />
                     },
-                    { path: "learning-circle", element: <LearningCircle /> },
-                    { path: "create-circle", element: <CreateCircle /> },
                     {
-                        path: "manage-locations", element: <ManageLocation/>
+                        path: "manage-locations",
+                        element: <ManageLocation />
                     },
                     {
                         path: "manage-locations/add/:item",
-                        element: <AddLocation/>
+                        element: <AddLocation />
                     },
                     {
                         path: "manage-locations/edit/:item",
-                        element: <EditLocation/>
+                        element: <EditLocation />
                     },
                     {
                         path: "hackathon/organizers/:id",

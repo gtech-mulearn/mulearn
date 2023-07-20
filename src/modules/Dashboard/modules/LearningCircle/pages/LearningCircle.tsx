@@ -5,7 +5,7 @@ type Props = {};
 const LearningCircle = (props: Props) => {
     return (
         <>
-            <div className={styles.content}>
+            <div className={styles.LearningCircleDetailsContent}>
                 <div className={styles.CreatedCircle}>
                     <div className={styles.CircleName}>
                         <h1>UX world</h1>
