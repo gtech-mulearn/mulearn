@@ -17,41 +17,62 @@ export const HackathonDetails = (props: Props) => {
             id,
         )
 
-        }, [])
-
+    }, [])
 
     return (
-        <div className="content">
-            <div className="profileDash">
-                <div className="banner">
-                    <img src={`https://dev.mulearn.org/${data?.banner}`} alt="" />
-                </div>
-                <div className="event__card">
-                    <div className="apply__Card">
-                        <div className="date">
-                            <span></span>
-                            <div className="event__Date">
-                                <div>
-                                    <p>EVENT DATES</p>
-                                    <h3>{data?.event_start}</h3>
-                                </div>
-                                <div>
-                                    <p>HAPPENING AT</p>
-                                    <h3>{data?.place}</h3>
+        <div className="hackDetails">
+            <div className="hackDetailDash">
+                <img className="banner" src={`https://dev.mulearn.org/${data?.banner}`} alt="" />
+                    
+                <div className="desc">
+                    <div className="description">
+                        <img className="hackProfile" src={`https://dev.mulearn.org/${data?.event_logo}`} />
+                        <div className="descTitle">
+                            <div>
+                                <h1>{data?.title}</h1>
+                                <div className="tagLine">
+                                    <b>{data?.tagline}</b>
+                                    &nbsp;
+                                    <b> {data?.participant_count}+ participants</b>
                                 </div>
                             </div>
+                            <span className="love">
+                                
+                            </span>
                         </div>
-                        <div className="close">
-                            <p>APPLICATION CLOSING DATE</p>
-                            <h4>{data?.application_ends}</h4>
-                        </div>
-                        <button className="apply__Now">Apply Now</button>
                     </div>
-                    <div className="social__links">
-                        <a href={data?.website}>
-                         <CiGlobe/>
-                        </a>
-                        {/* <a href="#">
+                    <p>
+                        {data?.description}
+                    </p>
+                </div>
+            </div>
+
+            <div className="eventCard">
+                <div className="applyCard">
+                    <div className="date">
+                        <span></span>
+                        <div className="eventDate">
+                            <div>
+                                <b className="title">EVENT DATES</b>
+                                {/* <h3>{data?.event_start}</h3> */}
+                            </div>
+                            <div>
+                                <b className="title">HAPPENING AT</b>
+                                {/* <h3>{data?.place}</h3> */}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="close">
+                        <b>APPLICATION CLOSING DATE</b>
+                        <h4>{data?.application_ends}</h4>
+                    </div>
+                    <button className="applyNow"><b>Apply Now</b></button>
+                </div>
+                <div className="socialLinks">
+                    <a href={data?.website}>
+                        <CiGlobe />
+                    </a>
+                    {/* <a href="#">
                             <i className="fab fa-linkedin-in"></i>
                         </a>
                         <a href="#">
@@ -60,31 +81,7 @@ export const HackathonDetails = (props: Props) => {
                         <a href="#">
                             <i className="fab fa-instagram"></i>
                         </a> */}
-                    </div>
                 </div>
-            </div>
-
-            <div className="desc">
-                <div className="description">
-                    <img className="hackprofile" src={`https://dev.mulearn.org/${data?.event_logo}`}>
-
-                    </img>
-                    <div>
-                        <h1>{data?.title}</h1>
-                        <div>
-                            <span>{data?.tagline}</span>
-                            &nbsp;
-                            <span> {data?.participant_count}+ participants</span>
-                        </div>
-                    </div>
-                    <span className="love">
-
-                    </span>
-                </div>
-
-                <p>
-                    {data?.description}
-                </p>
             </div>
         </div>
     );
