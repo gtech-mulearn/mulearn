@@ -100,5 +100,6 @@ export const ManageLocationsRoutes = {
 }
 
 export const KKEMRoutes = {
-    userAuth: "/api/v1/integrations/kkem/authorization/"
+    userAuth: "/api/v1/integrations/kkem/authorization/",
+    userLogin:"/api/v1/integrations/kkem/login/"
 };
