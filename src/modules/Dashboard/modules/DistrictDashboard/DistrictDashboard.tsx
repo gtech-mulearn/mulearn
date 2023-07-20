@@ -14,8 +14,6 @@ import { columnsCampus, columnsStudent } from "./THeaders"
 import { dashboardRoutes } from '@/MuLearnServices/urls'
 import "./Organizations.css"
 import "./DistricDashboard.scss"
-import PrimaryButton from '../../../../components/MuComponents/MuButtons/MuOutlinedButton'
-import { MuButton } from '../../../../components/MuComponents/MuButtons/MuButton'
 import TableTopTab from './TableTopTab'
 
 function DistrictDashboard() {

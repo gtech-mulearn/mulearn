@@ -55,8 +55,8 @@ import { HackathonOrganizers } from "./modules/Dashboard/modules/Hackathon/pages
 import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind";
 import { LearningCircleLandingPage } from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleLandingPage";
 import HackathonDetails from "./modules/Dashboard/modules/Hackathon/pages/HackathonDetails";
-import ZonalDashboard from "./modules/Dashboard/modules/ZonalDashboard/ZonalDashboard";
 import DistrictDashboard from "./modules/Dashboard/modules/DistrictDashboard/DistrictDashboard";
+import ZonalDashboard from "./modules/Dashboard/modules/zonalDashboard/ZonalDashboard";
 
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
