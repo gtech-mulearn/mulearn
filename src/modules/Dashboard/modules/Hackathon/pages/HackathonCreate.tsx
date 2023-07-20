@@ -196,7 +196,8 @@ const HackathonCreate = () => {
             selectedFields,
             values.event_logo,
             values.banner,
-            values.type
+            values.type,
+			values.website
         );
         resetForm();
     };
