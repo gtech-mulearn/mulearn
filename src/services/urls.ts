@@ -71,10 +71,14 @@ export const dashboardRoutes = {
     getHackathonFormData: "/api/v1/hackathon/list-default-form-fields/",
     createHackathon: "/api/v1/hackathon/create-hackathon/",
     getHackathons: "/api/v1/hackathon/list-hackathons/",
+    getHackathonInfo: "/api/v1/hackathon/info/",
     getOwnHackathons: "/api/v1/hackathon/list-orgniser-hackathons/",
     deleteHackathon: "/api/v1/hackathon/delete-hackathon/",
     publishHackathon: "/api/v1/hackathon/publish-hackathon/",
     addOrganizer: "/api/v1/hackathon/add-organiser/",
+
+    getAllOrganisations: "/api/v1/hackathon/list-organisations/",
+    getAllDistricts: "/api/v1/hackathon/list-districts/",
 
     getUserLearningCircles: "/api/v1/dashboard/lc/"
 } as const;

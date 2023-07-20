@@ -4,12 +4,14 @@ import styles from "./HackathonCreate.module.css";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import FormikReactSelect, {
     FormikTextAreaWhite,
-    FormikTextInputWhite
+    FormikTextInputWhite,
+	Option
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { useEffect, useState } from "react";
 import {
     createHackathon,
-    getDistrict,
+    getAllDistricts,
+    getAllInstitutions,
     getFormFields
 } from "../services/HackathonApis";
 import { FiUploadCloud } from "react-icons/fi";
@@ -27,17 +29,28 @@ const options1 = [{ label: "Everyone", value: true }];
 const HackathonCreate = () => {
     const [tabIndex, setTabIndex] = useState(0);
     const [formData, setFormData] = useState("");
-    const [district, setDistrict] = useState("");
-    const [institutions, setInstitutions] = useState("");
+    const [district, setDistrict] = useState<Option[]>([]);
+    const [institutions, setInstitutions] = useState<Option[]>([]);
+	const [institutionsChunks, setInstitutionsChunks] = useState<Option[][]>([]);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
 
     useEffect(() => {
         if (formData === "") {
             getFormFields(setFormData);
-            getDistrict(setDistrict, "Kerala");
+            getAllDistricts(setDistrict);
+            getAllInstitutions(setInstitutionsChunks);
         }
     }, []);
+
+	useEffect(() => {
+        // Flatten the chunks into a single array when the chunks change
+        const flattenedInstitutions = institutionsChunks.reduce(
+            (accumulator, currentChunk) => accumulator.concat(currentChunk),
+            []
+        );
+        setInstitutions(flattenedInstitutions);
+    }, [institutionsChunks]);
 
     function handleNext() {
         if (tabIndex === 5) {
@@ -45,6 +58,7 @@ const HackathonCreate = () => {
         } else {
             setTabIndex(tabIndex + 1);
         }
+		console.log(institutions)
     }
 
     function handleBack() {
@@ -62,8 +76,8 @@ const HackathonCreate = () => {
             .max(50, "Too Long!"),
         tagline: Yup.string()
             .min(2, "Too Short!")
-            .max(100, "Too Long!")
-            .required("Required"),
+            .max(100, "Too Long!"),
+            // .required("Required"),
         orgId: Yup.string().min(2, "Too Short!"),
         place: Yup.string().min(2, "Too Short!"),
         districtId: Yup.string().min(2, "Too Short!"),
@@ -160,6 +174,11 @@ const HackathonCreate = () => {
             }
         });
 
+		let a = values.applicationStart ? `${values.applicationStart}T00:00:00Z` : '';
+		let b = values.applicationStart ? `${values.applicationStart}T00:00:00Z` : '';
+		let c = values.applicationStart ? `${values.applicationStart}T00:00:00Z` : '';
+		let d = values.applicationStart ? `${values.applicationStart}T00:00:00Z` : '';
+
         console.log(selectedFields);
         createHackathon(
             values.title,
@@ -170,14 +189,15 @@ const HackathonCreate = () => {
             values.districtId,
             values.place,
             values.isOpenToAll,
-            `${values.applicationStart}T00:00:00Z`,
-            `${values.applicationEnds}T00:00:00Z`,
-            `${values.eventStart}T00:00:00Z`,
-            `${values.eventEnd}T00:00:00Z`,
+            a,
+            b,
+            c,
+            d,
             selectedFields,
             values.event_logo,
             values.banner,
-            values.type
+            values.type,
+			values.website
         );
         resetForm();
     };
@@ -241,7 +261,7 @@ const HackathonCreate = () => {
                                         <Tab>Advanced</Tab>
                                         <Tab>Application</Tab>
                                         <span></span>
-                                        <Tab>Organizers</Tab>
+                                        {/* <Tab>Organizers</Tab> */}
                                         {/* <Tab>FAQs</Tab> */}
                                     </TabList>
                                     <div className={styles.form}>
@@ -305,13 +325,17 @@ const HackathonCreate = () => {
                                         <TabPanel className={styles.formGroup}>
                                             <FormikReactSelect
                                                 name="orgId"
-                                                options={options}
+                                                options={institutions}
                                                 label={"Organization"}
+                                                isClearable
+                                                isSearchable
                                             />
                                             <FormikReactSelect
                                                 name="districtId"
-                                                options={options}
+                                                options={district}
                                                 label={"District"}
+                                                isClearable
+                                                isSearchable
                                             />
                                             <FormikTextInputWhite
                                                 label="Place"
@@ -588,9 +612,9 @@ const HackathonCreate = () => {
                                             </div>
                                         </TabPanel>
 
-                                        <TabPanel className={styles.formGroup}>
-                                            work in progress
-                                        </TabPanel>
+                                        <TabPanel
+                                            className={styles.formGroup}
+                                        ></TabPanel>
 
                                         <TabPanel
                                             className={styles.formGroup}

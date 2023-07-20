@@ -63,7 +63,7 @@ export const FormikTextAreaWhite = ({ label, ...props }: any) => {
 };
 
 
-interface Option {
+export interface Option {
     label: string;
     value: string | boolean | number;
 }

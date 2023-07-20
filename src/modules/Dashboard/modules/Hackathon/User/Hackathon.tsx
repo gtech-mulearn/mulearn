@@ -8,8 +8,13 @@ import { DateConverter } from "../../../utils/common";
 import { deleteHackathon, publishHackathon } from "../services/HackathonApis";
 import { useToast } from "@chakra-ui/react";
 import { BsPersonAdd } from "react-icons/bs";
-import React from "react";
 import Modal from "@/MuLearnComponents/Modal/Modal";
+import { MdOutlineUnpublished, MdPublishedWithChanges } from "react-icons/md";
+
+enum ModalType {
+    Publish,
+    Delete
+}
 
 export interface HackList {
     id: string;
@@ -20,6 +25,7 @@ export interface HackList {
     banner: any;
     website: string;
     place: string;
+	status: string;
     event_start: string | null;
     event_end: string | null;
     application_start: string | null;
@@ -32,7 +38,8 @@ export interface HackList {
 const Hackathon = () => {
     const [data, setData] = useState<HackList[]>([]);
     const [ownData, setOwnData] = useState<HackList[]>([]);
-    const [isOpen, setIsOpen] = useState<boolean[]>(ownData.map(() => false));
+    const [isPublishOpen, setIsPublishOpen] = useState<boolean[]>(ownData.map(() => false));
+    const [isDeleteOpen, setIsDeleteOpen] = useState<boolean[]>(ownData.map(() => false));
     const navigate = useNavigate();
     const toast = useToast();
 
@@ -41,12 +48,20 @@ const Hackathon = () => {
         getOwnHackathons(setOwnData);
     }, []);
 
-    const toggleModal = (index: number) => {
-        setIsOpen(prevState => {
-            const newState = [...prevState];
-            newState[index] = !newState[index];
-            return newState;
-        });
+    const toggleModal = (index: number, type: string) => {
+        if (type == ModalType[0]) {
+			setIsPublishOpen(prevState => {
+				const newState = [...prevState];
+				newState[index] = !newState[index];
+				return newState;
+			});
+        } else {
+			setIsDeleteOpen(prevState => {
+				const newState = [...prevState];
+				newState[index] = !newState[index];
+				return newState;
+			});
+        }
     };
 
     return (
@@ -74,77 +89,141 @@ const Hackathon = () => {
                                     </div>
                                     <div className="shared">
                                         <div className="frame-2">
-                                            <div className="group">
-                                                <Link
-                                                    to={`/hackathon/edit/${hack.id}`}
-                                                >
-                                                    <LuEdit />
-                                                </Link>
+                                            <div>
+                                                <div className="group">
+                                                    <Link
+                                                        to={`/hackathon/edit/${hack.id}`}
+                                                    >
+                                                        <LuEdit />
+                                                    </Link>
+                                                </div>
+                                                <div className="group">
+                                                    <Link
+                                                        to={`/hackathon/organizers/${hack.id}`}
+                                                    >
+                                                        <BsPersonAdd />
+                                                    </Link>
+                                                </div>
                                             </div>
-                                            <div className="group">
-                                                <Link
-                                                    to={`/hackathon/organizers/${hack.id}`}
-                                                >
-                                                    <BsPersonAdd />
-                                                </Link>
-                                            </div>
-                                            <div className="group">
-                                                <RiDeleteBin5Line
-                                                    onClick={() => {
-                                                        toggleModal(index);
-                                                    }}
-                                                />
-                                                {isOpen[index] && (
-                                                    <Modal
-                                                        setIsOpen={() =>
-                                                            toggleModal(index)
-                                                        }
-                                                        id={hack.id}
-                                                        heading={"Delete"}
-                                                        content={`Are you sure you want to delete ${hack.title} ?`}
-                                                        click={() => {
-                                                            deleteHackathon(
-                                                                hack.id,
-                                                                toast
+                                            <div>
+                                                <div className="group">
+                                                    <RiDeleteBin5Line
+                                                        onClick={() => {
+                                                            toggleModal(
+                                                                index,
+                                                                ModalType[1]
                                                             );
-                                                            setTimeout(() => {
-                                                                getOwnHackathons(setOwnData);
-                                                            }, 1000);
-                                                            setTimeout(() => {
-                                                                navigate("/hackathon");
-                                                            }, 1000);
                                                         }}
                                                     />
-                                                )}
-                                            </div>
-                                            <div className="group">
-                                                <RiDeleteBin5Line
-                                                    onClick={() => {
-                                                        toggleModal(index);
-                                                    }}
-                                                />
-                                                {isOpen[index] && (
-                                                    <Modal
-                                                        setIsOpen={() =>
-                                                            toggleModal(index)
-                                                        }
-                                                        id={hack.id}
-                                                        heading={"Publish"}
-                                                        content={`Make sure all details are filled before Publishing ${hack.title}`}
-                                                        click={() => {
-                                                            publishHackathon(
-                                                                hack.id,
-                                                                toast
-                                                            );
-                                                            setTimeout(() => {
-                                                                getOwnHackathons(setOwnData);
-                                                            }, 1000);
-                                                            setTimeout(() => {
-                                                                navigate("/hackathon");
-                                                            }, 1000);
-                                                        }}
-                                                    />
-                                                )}
+                                                    {isDeleteOpen[index] && (
+                                                        <Modal
+                                                            setIsOpen={() =>
+                                                                toggleModal(
+                                                                    index,
+                                                                    ModalType[1]
+                                                                )
+                                                            }
+                                                            id={hack.id}
+                                                            heading={"Delete"}
+                                                            content={`Are you sure you want to delete ${hack.title} ?`}
+                                                            click={() => {
+                                                                deleteHackathon(
+                                                                    hack.id,
+                                                                    toast
+                                                                );
+                                                                setTimeout(
+                                                                    () => {
+                                                                        getOwnHackathons(
+                                                                            setOwnData
+                                                                        );
+                                                                        getHackathons(
+                                                                            setData
+                                                                        );
+                                                                    },
+                                                                    1000
+                                                                );
+                                                                setTimeout(
+                                                                    () => {
+                                                                        navigate(
+                                                                            "/hackathon"
+                                                                        );
+                                                                    },
+                                                                    1000
+                                                                );
+                                                            }}
+                                                        />
+                                                    )}
+                                                </div>
+                                                <div className="group">
+                                                    {hack.status === "Draft" ? (
+                                                        <MdPublishedWithChanges
+                                                            onClick={() => {
+                                                                toggleModal(
+                                                                    index,
+                                                                    ModalType[0]
+                                                                );
+                                                            }}
+                                                        />
+                                                    ) : (
+                                                        <MdOutlineUnpublished
+                                                            onClick={() => {
+                                                                toggleModal(
+                                                                    index,
+                                                                    ModalType[0]
+                                                                );
+                                                            }}
+                                                        />
+                                                    )}
+                                                    {isPublishOpen[index] && (
+                                                        <Modal
+                                                            setIsOpen={() =>
+                                                                toggleModal(
+                                                                    index,
+                                                                    ModalType[0]
+                                                                )
+                                                            }
+                                                            id={hack.id}
+                                                            heading={
+                                                                hack.status ===
+                                                                "Draft"
+                                                                    ? "Publish"
+                                                                    : "Draft"
+                                                            }
+                                                            content={
+                                                                hack.status ===
+                                                                "Draft"
+                                                                    ? `Make sure all details are filled before Publishing ${hack.title}`
+                                                                    : `Are you sure you want to set ${hack.title} to Draft`
+                                                            }
+                                                            click={() => {
+                                                                publishHackathon(
+                                                                    hack.id,
+																	hack.status,
+                                                                    toast
+                                                                );
+                                                                setTimeout(
+                                                                    () => {
+                                                                        getOwnHackathons(
+                                                                            setOwnData
+                                                                        );
+                                                                        getHackathons(
+                                                                            setData
+                                                                        );
+                                                                    },
+                                                                    1000
+                                                                );
+                                                                setTimeout(
+                                                                    () => {
+                                                                        navigate(
+                                                                            "/hackathon"
+                                                                        );
+                                                                    },
+                                                                    1000
+                                                                );
+                                                            }}
+                                                        />
+                                                    )}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -195,11 +274,11 @@ const Hackathon = () => {
                                         </div>
                                     </div>
                                     <div className="button-wrapper">
-                                        <Link 
+                                        <Link
                                             to={`/hackathon/details/${hack.id}`}
                                         >
                                             <button className="button">
-                                                Apply Now
+                                                {hack.status}
                                             </button>
                                         </Link>
                                     </div>
@@ -283,13 +362,13 @@ const Hackathon = () => {
                                         </div>
                                     </div>
                                     <div className="button-wrapper">
-                                    <Link
-                                        to={`/hackathon/details/${hack.id}`}
-                                    >  
-                                        <button className="button">
-                                            Apply Now
-                                        </button>
-                                    </Link>   
+                                        <Link
+                                            to={`/hackathon/details/${hack.id}`}
+                                        >
+                                            <button className="button">
+                                                Apply Now
+                                            </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
