@@ -50,14 +50,14 @@ privateGateway.interceptors.response.use(
     },
     async function (error) {
         // TODO: if error occurs and status isn't 1000 nothing will happen
-        const accessToken = localStorage.getItem("accessToken");
+
         if (error.response?.data?.statusCode === 1000) {
             // publicGatewayAuth
             try {
                 const response = await publicGateway.post(
                     authRoutes.getAccessToken,
                     {
-                        refreshToken: accessToken
+                        refreshToken: localStorage.getItem("refreshToken")
                     }
                 );
                 localStorage.setItem(
@@ -67,7 +67,9 @@ privateGateway.interceptors.response.use(
 
                 // Retry the original request
                 const config = error.config;
-                config.headers["Authorization"] = `Bearer ${accessToken}`;
+                config.headers[
+                    "Authorization"
+                ] = `Bearer ${localStorage.getItem("accessToken")}`;
                 return await new Promise((resolve, reject) => {
                     privateGateway
                         .request(config)
