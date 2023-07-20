@@ -78,6 +78,41 @@
     padding: 0 10px;
 }
 
+.ml_popup_container{
+    background-color: rgba(4, 4, 4, 0.368);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    .ml_popup_box{
+        min-width: 20rem;
+        width: 30%;
+        height: max-content;
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        transform:translateX(30%) ;
+        .ml_popup_title{
+            font-size: 20px;
+            font-weight: 800;
+            text-align: start;
+        }
+        .ml_popup_btn_container{
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+    }
+}
+.show{
+    display:flex !important;
+}
+
 // @media only screen and (max-width: 400px) {
 //     .popup_container {
 //         max-width: 10%;
