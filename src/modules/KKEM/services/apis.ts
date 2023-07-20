@@ -1,7 +1,6 @@
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import React from "react";
 import {  NavigateFunction } from "react-router-dom";
-
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { KKEMRoutes, dashboardRoutes } from "@/MuLearnServices/urls";
 
@@ -13,14 +12,12 @@ export const KKEMLogin = (
     setIsLoading: (loading: boolean) => void,
     redirectPath: string
 ) => {
+    console.log({emailOrMuid, password,integration:"KKEM"})
     setIsLoading(true);
     publicGateway
-        .post(KKEMRoutes.userLogin, { emailOrMuid, password })
+        .post(KKEMRoutes.userLogin, { mu_id:emailOrMuid, password,integration:"KKEM"})
         .then(response => {
             if (response.data.hasError == false) {
-                //console.log("=======> Login Res: ", response.data.response);
-
-                //console.log(response.data.response.accessToken);
                 localStorage.setItem(
                     "accessToken",
                     response.data.response.accessToken

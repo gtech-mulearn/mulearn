@@ -4,7 +4,6 @@ import styles from "../../../../components/MuComponents/FormikComponents/FormCom
 import { useNavigate } from 'react-router-dom';
 import {
     getCountryData,
-    deleteCountryData
   } from './apis';
 import { MuButton } from '@/MuLearnComponents/MuButtons/MuButton';
 
