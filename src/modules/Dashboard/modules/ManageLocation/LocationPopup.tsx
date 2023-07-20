@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Select from "react-select";
-import { MuButton } from '@Mulearn/MuButtons/MuButton';
 import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
 import { useNavigate } from 'react-router-dom';
 import {
     getCountryData,
     deleteCountryData
   } from './apis';
+import { MuButton } from '@/MuLearnComponents/MuButtons/MuButton';
 
 const data = [
     {
