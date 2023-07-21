@@ -3,6 +3,22 @@
     overflow: auto;
     width: 95%;
     margin-bottom: 10px;
+    scrollbar-color: #c7c7c7 #eeeeee;
+    scrollbar-width: thin;
+}
+
+.table::-webkit-scrollbar {
+    display: block;
+    height: 5px;
+}
+
+.table::-webkit-scrollbar-track {
+    background: #eeeeee;
+}
+
+.table::-webkit-scrollbar-thumb {
+    background: #c7c7c7;
+    border-radius: 10px;
 }
 
 .tableActual {
@@ -23,41 +39,41 @@
 }
 
 .page {
-	width: 95%;
-	padding: 0 10px;
+    width: 95%;
+    padding: 0 10px;
 }
 
 .thContainer {
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .icon {
-	border: 1px solid var(--Dark);
-	border-radius: 10px;
-	margin-left: 5px;
+    border: 1px solid var(--Dark);
+    border-radius: 10px;
+    margin-left: 5px;
 }
 
 .icons {
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .btns {
-	background-color: var(--blue);
-	color: #fff;
-	border-radius: var(--borderRadius);
-	padding: 4px 6px;
+    background-color: var(--blue);
+    color: #fff;
+    border-radius: var(--borderRadius);
+    padding: 4px 6px;
 }
 
 /* Define alternating row colors */
 .tableActual tbody tr:nth-child(even) {
-	background-color: transparent;
-	/* Set the background color for even rows */
+    background-color: transparent;
+    /* Set the background color for even rows */
 }
 
 .tableActual tbody tr:nth-child(odd) {
-	background-color: var(--tableRowColor);
-	/* Set the background color for odd rows */
+    background-color: var(--tableRowColor);
+    /* Set the background color for odd rows */
 }
