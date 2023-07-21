@@ -1,10 +1,19 @@
+import { useEffect, useState } from "react";
 import styles from "./LearningCircle.module.css";
 import * as Yup from "yup";
 import { Form, Formik } from "formik";
-import {FormikSelect, FormikTextInput} from '@/MuLearnComponents/FormikComponents/FormikComponents'
+import FormikReactSelect,{FormikSelect, FormikTextInput} from '@/MuLearnComponents/FormikComponents/FormikComponents'
+import { getInterestGroups,createCircle } from "../services/LearningCircleAPIs";
 type Props = {};
 
+type interestGroupType = {
+    value:string,
+    label:string,
+}
+
 const LearningCircleCreate = (props: Props) => {
+    
+    const [interestGroups,setInterestGroups] = useState<interestGroupType[]>()
     
     const createLearningCircleSchema = Yup.object().shape({
         circle_name: Yup.string()
@@ -13,9 +22,16 @@ const LearningCircleCreate = (props: Props) => {
             .max(30, "Too Long!"),
         interest_group: Yup.string()
             .required("Required")
-            .min(2, "Too Short!")
-            .max(50, "Too Long!"),
     })
+
+    
+
+    useEffect(()=>{
+        (async()=>{
+            const data = await getInterestGroups()
+            setInterestGroups(data)
+        })()
+    },[])
 
     return (
         <>
@@ -39,7 +55,11 @@ const LearningCircleCreate = (props: Props) => {
                                 }}
                                 validationSchema={createLearningCircleSchema}
                                 onSubmit={(values,{resetForm}) =>{
-                                    console.log(values.circle_name,values.interest_group)
+                                    createCircle(
+                                        values.circle_name,
+                                        "error adikalle",
+                                        values.interest_group
+                                    )
                                     resetForm()
                                 }}
                             >
@@ -50,22 +70,17 @@ const LearningCircleCreate = (props: Props) => {
                                             name="circle_name" 
                                             placeholder="Learning circle name"
                                         />
-                                        <FormikSelect 
+                                        <FormikReactSelect
+                                            isDisabled = {!interestGroups} 
                                             name="interest_group" 
                                             placeholder="Interest group"
-                                        >
-                                            <option value="">Select an option</option>
-                                        </FormikSelect>
+                                            label=""
+                                            options={interestGroups!}
+                                        />
                                     </div>
                                     <button type="submit">Create</button>
                                 </Form>
                             </Formik>
-                            
-                            {/* <input type="text" placeholder="Learning circle name" />
-                            <input type="text" placeholder="Interest group" /> */}
-                        
-
-                        
                     </div>
                 </div>
 
