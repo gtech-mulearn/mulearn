@@ -1,33 +1,34 @@
 import { Link } from "react-router-dom";
+import styles from "./NotFound.module.css";
+import astronaut from "./assests/images/astronaut_blue.png";
 
 // TODO: Redesign
 
 const NotFound = () => {
-    return (
-        <div
-            style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                height: "100dvh"
-            }}
-        >
-            <h1 style={{ fontSize: "10rem" }}>404</h1>
-            <p>404 error occurred! Back to base, learners!</p>
-            <Link
-                to="/"
-                style={{
-                    marginTop: "1rem",
-                    backgroundColor: "#456FF6",
-                    color: "white",
-                    padding: "0.5rem 1rem",
-                    borderRadius: "0.5rem"
-                }}
-            >
-                Go back to home
-            </Link>
-        </div>
+    return (    
+        <div className={styles.container}>
+        <div className={styles.main_body}>
+
+             <div className={styles.content}>
+                <h1>404</h1>
+                <div>
+                    <p>Nothing here!</p>
+                    <p>Back to base, learners!</p>
+                </div>
+                <Link to="/">
+                <button>Go back to home</button>
+                </Link>
+             </div>
+
+             
+             <div className={styles.image}>
+                <img src={astronaut} alt=""/>
+                <div className={styles.shadow}></div>
+             </div>
+
+        </div>   
+
+    </div>        
     );
 };
 
