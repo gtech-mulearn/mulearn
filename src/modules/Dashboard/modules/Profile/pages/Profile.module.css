@@ -828,10 +828,14 @@
   }
 
   .rightDash .profileDash .profile .pointsList {
-    gap: 1rem 5rem;
-    width: 90vw;
+    gap: 1rem 2rem;
+    width: 100%;
     flex-direction: row;
     justify-content: center;
+  }
+
+  .rightDash .profileDash .profile .pointsList .points {
+    flex-direction: column;
   }
 
   .rightDash .profileDash .profile .interestGrp .igs_container {

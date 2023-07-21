@@ -47,7 +47,7 @@ import KKEMLanding from "./modules/KKEM/modules/KKEMLanding";
 import KKEMAuth from "./modules/KKEM/modules/KKEMAuth";
 import RankCard from "./modules/Embeds/modules/RankCard/pages/RankCard";
 import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle";
-import CreateCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate";
+import LearningCircleCreate from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate";
 import ManageLocation from "./modules/Dashboard/modules/ManageLocation/ManageLocation";
 import AddLocation from "./modules/Dashboard/modules/ManageLocation/AddLocation";
 import EditLocation from "./modules/Dashboard/modules/ManageLocation/EditLocation";
@@ -240,7 +240,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "learning-circle/create-circle",
-                        element: <CreateCircle />
+                        element: <LearningCircleCreate />
                     }
                 ]
             }

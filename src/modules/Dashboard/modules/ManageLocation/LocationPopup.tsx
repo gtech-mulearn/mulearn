@@ -3,37 +3,40 @@ import Select from "react-select";
 import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
 import { useNavigate } from 'react-router-dom';
 import {
-    getCountryData,
-  } from './apis';
+    getCountryData
+} from './apis/CountryAPI';
 import { MuButton } from '@/MuLearnComponents/MuButtons/MuButton';
 
-const data = [
-    {
-        label: "hi",
-        value: "hi"
-    },
-    {
-        label: "hi",
-        value: "hi"
-    },
-    {
-        label: "hi",
-        value: "hi"
-    }
-]
+import { getStateData } from './apis/StateAPI';
+import { getZoneData } from './apis/ZoneAPI';
+import { getDistrictData } from './apis/DistrictAPI';
 
 interface LocationPopupProps {
     isShowPopup: boolean;
     handlePopup:any;
     popupFields:any;
     activeItem:string;
+    handleData:any;
+    handleCountry:any;
+    handleState:any,
+    handleZone:any,
 }
+
 
 interface SelectedDataProps {
-    [key: string]: string;
+    [key: string]: any;
 }
 
-const LocationPopup = ({isShowPopup,handlePopup,popupFields,activeItem}:LocationPopupProps) => {
+const LocationPopup = ({
+    isShowPopup,
+    handlePopup,
+    popupFields,
+    activeItem,
+    handleData,
+    handleCountry,
+    handleState,
+    handleZone,
+}:LocationPopupProps) => {
 
     const [countryData,setCountryData] = useState([])
     const [stateData,setStateData] = useState([])
@@ -57,7 +60,10 @@ const LocationPopup = ({isShowPopup,handlePopup,popupFields,activeItem}:Location
             getCountryData(setCountryData)
         }
         if(selectedData.Country !== ""){
-            getCountryData(setStateData)
+            getStateData(selectedData.Country?.value,setStateData)
+        }
+        if(selectedData.Country !== "" && selectedData.State !== ""){
+            getZoneData(selectedData.Country?.value,selectedData.State?.value,setZoneData)
         }
     },[selectedData])
 
@@ -87,15 +93,28 @@ const LocationPopup = ({isShowPopup,handlePopup,popupFields,activeItem}:Location
     }
 
     function submitPopupSelection(){
-        if(activeItem === "States"){
-            setSelectedCountry(selectedData.Country)
+        if(activeItem === "State"){
+            console.log(selectedData.Country)
+            getStateData(selectedData.Country?.value,handleData)
+            handleCountry(selectedData.Country?.value)
         }else if(activeItem === "Zone"){
             setSelectedCountry(selectedData.Country)
-            setSelectedState(selectedData.State)
+            getZoneData(selectedData.Country?.value,selectedData.State?.value,handleData)
+            handleCountry(selectedData.Country?.value)
+            handleState(selectedData.State?.value)
+            // setSelectedState(selectedData.State)
         }else if(activeItem === "District"){
-            setSelectedCountry(selectedData.Country)
-            setSelectedState(selectedData.State)
-            setSelectedZone(selectedData.Zone)
+            // setSelectedCountry(selectedData.Country)
+            // setSelectedState(selectedData.State)
+            getDistrictData(
+                selectedData.Country?.value,
+                selectedData.State?.value,
+                selectedData.Zone?.value,
+                handleData
+            )
+            handleCountry(selectedData.Country?.value)
+            handleState(selectedData.State?.value)
+            handleZone(selectedData.Zone?.value)
         }
         console.log(selectedData.Country)
         handlePopup(false)

@@ -25,6 +25,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import BasicDetails from "../components/BasicDetails";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
+import AvgKarma from "../assets/svg/AvgKarma";
 
 //TODO: Verify the relevance of profile page image
 const Profile = () => {
@@ -569,14 +570,7 @@ const Profile = () => {
                                             </div>
                                         </div>
                                         <div className={styles.points}>
-                                            <Rank />
-                                            <div>
-                                                <span>Rank</span>
-                                                <h1>{userProfile.rank}</h1>
-                                            </div>
-                                        </div>
-                                        <div className={styles.points}>
-                                            <Karma />
+                                            <AvgKarma />
                                             <div>
                                                 <span>Avg.Karma/Month</span>
                                                 <h1>
@@ -609,6 +603,13 @@ const Profile = () => {
                                                               monthDifference
                                                           ).toPrecision(3)}
                                                 </h1>
+                                            </div>
+                                        </div>
+                                        <div className={styles.points}>
+                                            <Rank />
+                                            <div>
+                                                <span>Rank</span>
+                                                <h1>{userProfile.rank}</h1>
                                             </div>
                                         </div>
                                     </div>

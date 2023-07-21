@@ -1,21 +1,53 @@
 
 import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
-import { postCountryData } from "./apis";
+import { postCountryData } from "./apis/CountryAPI";
+import { postStateData } from "./apis/StateAPI";
+import { postZoneData } from "./apis/ZoneAPI";
+import { postDistrictData } from "./apis/DistrictAPI";
 import { useToast } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 
 const AddLocation = () => {
+
+    const [activeItem,setActiveItem] = useState("")
+
     const navigate = useNavigate();
+    const location = useLocation();
     const toast = useToast();
+
+    useEffect(()=>{
+        setActiveItem(location.state.activeItem)
+    },[])
+
+    function handleSubmitAdd(values:any){
+        if(activeItem === "Country"){
+            postCountryData(values.ItemName);
+        }else if(activeItem === "State"){
+            postStateData(location.state.country,values.ItemName);
+        }else if (activeItem === "Zone"){
+            postZoneData(location.state.country,location.state.state,values.ItemName);
+        }else if (activeItem === "District"){
+            postDistrictData(location.state.country,location.state.state,location.state.zone,values.ItemName);
+        }
+        toast({
+            title: "Interest Group created",
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
+        navigate('/manage-locations',{state:{activeItem:activeItem}});
+    }
+
     return (
         <div className="popup_container">
             <div className={styles.container}>
                 <div className="popup_top_container">
-                    <h1 className="popup_title">Add Country</h1>
+                    <h1 className="popup_title">Add {activeItem}</h1>
                     <i
                         className="fi fi-sr-cross"
                         onClick={() => {
@@ -29,31 +61,24 @@ const AddLocation = () => {
                 </p>
                 <Formik
                     initialValues={{
-                        countryName: ""
+                        ItemName: ""
                     }}
                     validationSchema={Yup.object({
-                        countryName: Yup.string()
+                        ItemName: Yup.string()
                             .max(30, "Must be 30 characters or less")
                             .required("Required")
                     })}
                     onSubmit={values => {
-                        console.log(values.countryName);
-                        postCountryData(values.countryName);
-                        toast({
-                            title: "Interest Group created",
-                            status: "success",
-                            duration: 3000,
-                            isClosable: true
-                        });
-                        navigate('/manage-locations');
+                        console.log(values.ItemName);
+                        handleSubmitAdd(values)
                     }}
                 >
                     <Form>
                         <FormikTextInput
-                            label="Country Name"
-                            name="countryName"
+                            label={`${activeItem} Name`}
+                            name="ItemName"
                             type="text"
-                            placeholder="Enter Country "
+                            placeholder={`Enter ${activeItem}`}
                         />
 
                         {/* <MySelect label="Job Type" name="jobType">
@@ -72,7 +97,7 @@ const AddLocation = () => {
                                 text={"Decline"}
                                 className={styles.btn_cancel}
                                 onClick={() => {
-                                    navigate('/manage-locations');
+                                    navigate('/manage-locations',{state:{activeItem:activeItem}});
                                 }}
                             />
                             <button type="submit" className={styles.btn_submit}>
