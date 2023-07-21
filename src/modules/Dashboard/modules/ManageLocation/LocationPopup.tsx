@@ -24,7 +24,7 @@ interface LocationPopupProps {
 
 
 interface SelectedDataProps {
-    [key: string]: string;
+    [key: string]: any;
 }
 
 const LocationPopup = ({
