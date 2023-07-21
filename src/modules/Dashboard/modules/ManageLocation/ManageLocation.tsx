@@ -22,6 +22,7 @@ import LocationPopup from './LocationPopup';
 import { hasRole } from "../../../../services/common_functions";
 import { roles } from "../../../../services/types";
 import { MuButton } from '@/MuLearnComponents/MuButtons/MuButton';
+import { useToast } from '@chakra-ui/react';
 
 type LocationItem = { value: string; label: string } | string;
 
@@ -42,9 +43,11 @@ const ManageLocation = () => {
   const [selectedCountry, setSelectedCountry] = useState("")
   const [selectedState, setSelectedState] = useState("")
   const [selectedZone, setSelectedZone] = useState("")
+  const [isDeclined,setIsDeclined] = useState(false)
 
   const navigate = useNavigate();
   const location = useLocation();
+  const toast = useToast();
 
   useEffect(() => {
     if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
@@ -57,9 +60,16 @@ const ManageLocation = () => {
     }
   }, [])
 
+  useEffect(()=>{
+    if(isDeclined){
+      setActiveTab("Country")
+      setIsDeclined(false)
+    }
+  },[popupStatus])
+
   useEffect(() => {
-    if (activeTab === "Country") {
-      getCountryData(setData, setTotalPages)
+    if (activeTab === "Country"){
+      getCountryData(setData,toast,setTotalPages)
       setPopupFields({
         countryShow: true,
         stateShow: false,
@@ -164,6 +174,7 @@ const ManageLocation = () => {
         country={selectedCountry}
         state={selectedState}
         zone={selectedZone}
+        handleData={setData}
       />
       <TableTop
         onSearchText={handleSearch}
@@ -172,9 +183,6 @@ const ManageLocation = () => {
       // CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}        
       // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"} 
       />
-      {
-        console.log("this is table data", data)
-      }
       {data && (
         <Table
           rows={data}
@@ -208,18 +216,19 @@ const ManageLocation = () => {
         handleCountry={(country: LocationItem) => setSelectedCountry}
         handleState={(state: LocationItem) => setSelectedState}
         handleZone={(zone: LocationItem) => setSelectedZone}
+        handleDeclined={setIsDeclined}
       />
     </>
   )
 }
 
-const TableTopToggle = ({ active, onTabClick, country, state, zone }: any) => {
+const TableTopToggle = ({ active, onTabClick, country, state, zone, handleData }: any) => {
   const tabItems = ["Country", "State", "Zone", "District"]
 
   const navigate = useNavigate()
 
   function handleAddLocation() {
-    navigate('add/country', {
+    navigate(`add/${active.toLowerCase()}`, {
       state: {
         activeItem: active,
         country: country,
@@ -228,6 +237,14 @@ const TableTopToggle = ({ active, onTabClick, country, state, zone }: any) => {
       }
     })
   }
+
+  function handleTabClick(item:string){
+      onTabClick(item)
+      if(item !== active){
+        handleData([])
+      }
+  }
+
   return (
     <div className="ml_top_container">
       <div className="ml_toggle_container">
@@ -242,7 +259,7 @@ const TableTopToggle = ({ active, onTabClick, country, state, zone }: any) => {
                   : "table_tab_btn inactive"
               }
               onClick={() => {
-                onTabClick(item)
+                handleTabClick(item)
               }}
             />
           ))

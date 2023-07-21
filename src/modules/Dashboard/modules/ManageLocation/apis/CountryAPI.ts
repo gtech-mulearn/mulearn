@@ -7,7 +7,8 @@ import { Dispatch, SetStateAction } from "react";
 //* WORKING✅
 export const getCountryData = async (
     setData: any,
-    setTotalPages?: any,
+    toast: (options?: UseToastOptions | undefined) => ToastId,
+    setTotalPages?: any
 ) => {
     try {
         await privateGateway.get(ManageLocationsRoutes.getCountryData)
