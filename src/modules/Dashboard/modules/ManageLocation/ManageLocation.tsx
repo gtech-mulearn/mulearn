@@ -23,6 +23,8 @@ import { hasRole } from "../../../../services/common_functions";
 import { roles } from "../../../../services/types";
 import { MuButton } from '@/MuLearnComponents/MuButtons/MuButton';
 
+type LocationItem = { value: string; label: string } | string;
+
 const ManageLocation = () => {
   const [data, setData] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -203,9 +205,9 @@ const ManageLocation = () => {
         popupFields={popupFields}
         activeItem={activeTab}
         handleData={setData}
-        handleCountry={setSelectedCountry}
-        handleState={setSelectedState}
-        handleZone={setSelectedZone}
+        handleCountry={(country: LocationItem) => setSelectedCountry}
+        handleState={(state: LocationItem) => setSelectedState}
+        handleZone={(zone: LocationItem) => setSelectedZone}
       />
     </>
   )
