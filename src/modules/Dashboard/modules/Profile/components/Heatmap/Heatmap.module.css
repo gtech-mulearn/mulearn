@@ -73,7 +73,7 @@
 
     .heatmap_container .weeks {
         font-size: 12px;
-        margin-top: -3px;
+        height: 90px;
     }
 
     .heatmap_container .heatmap {
