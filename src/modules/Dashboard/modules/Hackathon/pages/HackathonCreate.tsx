@@ -16,9 +16,10 @@ import {
 	getHackDetails
 } from "../services/HackathonApis";
 import { FiUploadCloud } from "react-icons/fi";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { HackList } from "../User/Hackathon";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { useToast } from "@chakra-ui/react";
 
 /**
  * TODO: Move YUP Validations to another file.
@@ -40,6 +41,8 @@ const HackathonCreate = () => {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
     const { id } = useParams();
+	const toast = useToast()
+	const navigate = useNavigate()
 
     useEffect(() => {
 		if (id !== undefined){
@@ -212,9 +215,13 @@ const HackathonCreate = () => {
             values.event_logo,
             values.banner,
             values.type,
-			values.website
+			values.website,
+			toast
         );
         resetForm();
+		setTimeout(() => {
+			navigate("/hackathon")
+		}, 4000);
     };
 
     return (
