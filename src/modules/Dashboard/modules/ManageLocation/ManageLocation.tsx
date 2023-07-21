@@ -142,7 +142,6 @@ const ManageLocation = () => {
 
   function handleDelete(id: any): void {
     setData([])
-    console.log("delete-data ->", id)
     if (activeTab === "Country") {
       deleteCountryData(id)
     }
