@@ -6,7 +6,8 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@Mulearn': `${path.resolve(__dirname, "./src/components/MuComponents")}`,
+      '@/MuLearnComponents': `${path.resolve(__dirname, "./src/components/MuComponents")}`,
+      '@/MuLearnServices': `${path.resolve(__dirname, "./src/services")}`,
     },
   },
 });

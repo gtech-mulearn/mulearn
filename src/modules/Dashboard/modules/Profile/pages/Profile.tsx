@@ -1,36 +1,31 @@
-import { useEffect, useRef, useState } from "react";
-import { MuButton } from "../../../../../components/MuComponents/MuButtons/MuButton";
-import styles from "./Profile.module.css";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import moment from "moment";
+import { useEffect, useRef, useState } from "react";
+import dpm from "../assets/images/dpm.jpg";
+import Karma, { KarmaWhite } from "../assets/svg/Karma";
+import MulearnBrand from "../assets/svg/MulearnBrand";
+import Rank from "../assets/svg/Rank";
+import { PieChart } from "../components/Piechart/PieChart";
 import {
+    fetchQRCode,
+    getPublicUserLevels,
+    getPublicUserLog,
+    getPublicUserProfile,
+    getUserLevels,
     getUserLog,
     getUserProfile,
-    getPublicUserProfile,
-    getPublicUserLog,
-    putIsPublic,
-    getUserLevels,
-    getPublicUserLevels,
-    fetchQRCode
+    putIsPublic
 } from "../services/api";
-import { PieChart } from "../components/Piechart/PieChart";
-import MulearnBrand from "../assets/svg/MulearnBrand";
-import { GridLoader } from "react-spinners";
-import dpm from "../assets/images/dpm.jpg";
-import Rank from "../assets/svg/Rank";
-import Karma, { KarmaWhite } from "../assets/svg/Karma";
+import styles from "./Profile.module.css";
 
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { Switch, useToast } from "@chakra-ui/react";
+import { saveAs } from "file-saver";
+import { Helmet } from "react-helmet";
+import { useNavigate, useParams } from "react-router-dom";
 import BasicDetails from "../components/BasicDetails";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
-import { useNavigate, useParams } from "react-router-dom";
-import { useToast, Switch } from "@chakra-ui/react";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
-import QRCode from "react-qr-code";
-import { Helmet } from "react-helmet";
-import { BsJustify } from "react-icons/bs";
-import axios from "axios";
-import { saveAs } from "file-saver";
-import mulearn_logo from "../assets/images/mulearnBrand.png";
-import MuLoader from "@Mulearn/MuLoader/MuLoader";
 
 //TODO: Verify the relevance of profile page image
 const Profile = () => {
@@ -69,6 +64,7 @@ const Profile = () => {
     ]);
     const [userLevelData, setUserLevelData] = useState([
         {
+            karma: 0,
             name: "",
             tasks: [{ task_name: "", completed: false, hashtag: "", karma: 0 }]
         }
@@ -123,57 +119,17 @@ const Profile = () => {
             <Helmet>
                 {/* <!-- Primary Meta Tags --> */}
                 <title>
-                    {userProfile.first_name +
-                        " " +
-                        userProfile.last_name +
-                        " | Mulearn"}
+                    {`${userProfile.first_name} ${userProfile.last_name} (${userProfile.karma})`}
                 </title>
-                <link
-                    rel="icon"
-                    type="image/svg+xml"
-                    href={
-                        userProfile.profile_pic ? userProfile.profile_pic : dpm
-                    }
-                />
                 <meta
                     name="title"
-                    content={
-                        userProfile.first_name +
-                        " " +
-                        userProfile.last_name +
-                        "|" +
-                        userProfile.karma +
-                        " Karma"
-                    }
+                    content={`${userProfile.first_name} ${userProfile.last_name}`}
                 />
+                <meta name="viewport" content="width=device-width" />
+                <meta name="route-pattern" content="/profile/:id" />
                 <meta name="description" content="you bio is here" />
 
                 {/* <!-- Open Graph / Facebook --> */}
-                <meta property="og:type" content="Mulearn" />
-                <meta
-                    property={`og:${
-                        (import.meta.env.VITE_FRONTEND_URL as string) +
-                        /profile/ +
-                        userProfile.muid
-                    }`}
-                    content={
-                        (import.meta.env.VITE_FRONTEND_URL as string) +
-                        /profile/ +
-                        userProfile.muid
-                    }
-                />
-                <meta
-                    property="og:title"
-                    content={
-                        userProfile.first_name +
-                        " " +
-                        userProfile.last_name +
-                        "|" +
-                        userProfile.karma +
-                        " Karma"
-                    }
-                />
-                <meta property="og:description" content="you bio is here" />
                 <meta
                     property="og:image"
                     itemProp="image"
@@ -182,25 +138,51 @@ const Profile = () => {
                     }
                 />
                 <meta
+                    property="og:image:alt"
+                    content={`${userProfile.first_name}'s Profile Picture`}
+                />
+                <meta property="og:site_name" content="Mulearn" />
+                <meta property="og:type" content="profile" />
+                <meta
+                    property="og:title"
+                    content={
+                        userProfile.first_name +
+                        " " +
+                        userProfile.last_name +
+                        "(" +
+                        userProfile.karma +
+                        ")"
+                    }
+                />
+                <meta
+                    name="hostname"
+                    content={import.meta.env.VITE_FRONTEND_URL as string}
+                />
+                <meta
+                    property="og:url"
+                    content={
+                        (import.meta.env.VITE_FRONTEND_URL as string) +
+                        /profile/ +
+                        userProfile.muid
+                    }
+                />
+                <meta property="og:description" content="you bio is here" />
+
+                <meta
                     property="og:image:secure_url"
                     content={
                         userProfile.profile_pic ? userProfile.profile_pic : dpm
                     }
                 />
-                <meta
-                    property="og:image:alt"
-                    content={`${userProfile.first_name}'s Profile Picture`}
-                />
                 <meta property="og:type" content="profile" />
+                <meta property="og:image:type" content="image/jpeg" />
+                <meta property="og:image:width" content="300" />
+                <meta property="og:image:height" content="300" />
 
                 {/* <!-- Twitter --> */}
-                <meta property="twitter:card" content="summary_large_image" />
+                <meta name="twitter:card" content="summary_large_image" />
                 <meta
-                    property={`twitter:${
-                        (import.meta.env.VITE_FRONTEND_URL as string) +
-                        /profile/ +
-                        userProfile.muid
-                    }`}
+                    property="twitter:site"
                     content={
                         (import.meta.env.VITE_FRONTEND_URL as string) +
                         /profile/ +
@@ -208,22 +190,12 @@ const Profile = () => {
                     }
                 />
                 <meta
-                    property="twitter:title"
-                    content={
-                        userProfile.first_name +
-                        " " +
-                        userProfile.last_name +
-                        "|" +
-                        userProfile.karma +
-                        " Karma"
-                    }
+                    name="twitter:title"
+                    content={`${userProfile.first_name} ${userProfile.last_name} (${userProfile.karma})`}
                 />
+                <meta name="twitter:description" content="you bio is here" />
                 <meta
-                    property="twitter:description"
-                    content="you bio is here"
-                />
-                <meta
-                    property="twitter:image"
+                    name="twitter:image:src"
                     content={
                         userProfile.profile_pic ? userProfile.profile_pic : dpm
                     }
@@ -654,7 +626,12 @@ const Profile = () => {
                                         userLog={userLog}
                                     />
                                 ) : profileList === "mu-voyage" ? (
-                                    <MuVoyage userLevelData={userLevelData} />
+                                    <MuVoyage
+                                        userLevelData={userLevelData}
+                                        userLevel={parseInt(
+                                            userProfile.level.slice(3, 4)
+                                        )}
+                                    />
                                 ) : null}
                             </div>
 

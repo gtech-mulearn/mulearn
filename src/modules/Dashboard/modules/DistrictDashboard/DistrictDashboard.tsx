@@ -1,49 +1,45 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import Table from "../../../../components/MuComponents/Table/Table";
-import THead from "../../../../components/MuComponents/Table/THead";
-import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
-import Pagination from "../../../../components/MuComponents/Pagination/Pagination";
-import { getzonaldashboard } from "./apis";
-import { useToast } from "@chakra-ui/react";
+import Pagination from '@/MuLearnComponents/Pagination/Pagination'
+import THead from '@/MuLearnComponents/Table/THead'
+import Table from '@/MuLearnComponents/Table/Table'
+import TableTop from '@/MuLearnComponents/TableTop/TableTop'
+import { useToast } from '@chakra-ui/react'
+import { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { getdistrictdashboard } from "./apis"
 
-import { hasRole } from "../../../../services/common_functions";
-import { roles } from "../../../../services/types";
-import { columnsStudent, columnsCampus } from "./THeaders";
-import TableTopTab from "./TableTopTab"
-import Textfield from "../../../../components/MuComponents/TextField/Textfield";
-import Dropdown from "../../../../components/MuComponents/Dropdown/Dropdown";
+import { hasRole } from '@/MuLearnServices/common_functions'
+import { roles } from '@/MuLearnServices/types'
+import { columnsCampus, columnsStudent } from "./THeaders"
 
-import "./ZonalDashboard.scss";
-import PrimaryButton from "../../../../components/MuComponents/MuButtons/MuOutlinedButton";
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
-import { dashboardRoutes } from "../../../../services/urls";
-import { Blank } from "../../../../components/MuComponents/Table/Blank";
+import { dashboardRoutes } from '@/MuLearnServices/urls'
+import "./Organizations.css"
+import "./DistricDashboard.scss"
+import PrimaryButton from '../../../../components/MuComponents/MuButtons/MuOutlinedButton'
+import { MuButton } from '../../../../components/MuComponents/MuButtons/MuButton'
+import TableTopTab from './TableTopTab'
 
-function ZonalDashboard() {
+function DistrictDashboard() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(5);
     const [columns, setColumns] = useState(columnsStudent);
     const [activeTab, setActiveTab] = useState("Student management");
-    const [sort, setSort] = useState("");
-    const [popupStatus, setPopupStatus] = useState(false);
-    const firstFetch = useRef(true)
-    const [isCreate, setIsCreate] = useState(false);
-    const [isEdit, setIsEdit] = useState(false);
+    const [sort, setSort] = useState('');
+    const [popupStatus, setPopupStatus] = useState(false)
 
+    const [isCreate, setIsCreate] = useState(false)
+    const [isEdit, setIsEdit] = useState(false)
+    const firstFetch = useRef(true)
     const navigate = useNavigate();
 
-    const toast = useToast();
+    const toast = useToast()
 
     useEffect(() => {
         if (firstFetch.current) {
+            if (!hasRole([roles.ADMIN, roles.FELLOW, roles.DISTRICT_CAMPUS_LEAD])) navigate("/404");
 
-            if (!hasRole([roles.ADMIN, roles.FELLOW, roles.ZONAL_CAMPUS_LEAD]))
-                navigate("/404");
-
-            getzonaldashboard(
+            getdistrictdashboard(
                 activeTab,
                 setData,
                 1,
@@ -59,18 +55,18 @@ function ZonalDashboard() {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getzonaldashboard(activeTab, setData, nextPage, perPage);
+        getdistrictdashboard(activeTab, setData, nextPage, perPage);
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getzonaldashboard(activeTab, setData, prevPage, perPage);
+        getdistrictdashboard(activeTab, setData, prevPage, perPage);
     };
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getzonaldashboard(
+        getdistrictdashboard(
             activeTab,
             setData,
             1,
@@ -84,7 +80,7 @@ function ZonalDashboard() {
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getzonaldashboard(
+        getdistrictdashboard(
             activeTab,
             setData,
             1,
@@ -98,33 +94,38 @@ function ZonalDashboard() {
     const handleTabClick = (tab: string) => {
         if (tab === "Student management") {
             setColumns(columnsStudent);
-            getzonaldashboard(tab, setData, 1, perPage, setTotalPages, "", "");
+            getdistrictdashboard(
+                tab,
+                setData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                ""
+            );
         } else if (tab === "Campus management") {
             setColumns(columnsCampus);
-            getzonaldashboard(tab, setData, 1, perPage, setTotalPages, "", "");
+            getdistrictdashboard(
+                tab,
+                setData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                ""
+            );
         } else {
             alert("Error to load Table Headers");
         }
-        setCurrentPage(1);
-        setActiveTab(tab);
-        setPopupStatus(false);
-    };
+        setCurrentPage(1)
+        setActiveTab(tab)
+        setPopupStatus(false)
+    }
 
     const handleIconClick = (column: string) => {
         if (sort === column) {
             setSort(`-${column}`);
-            getzonaldashboard(
-                activeTab,
-                setData,
-                1,
-                perPage,
-                setTotalPages,
-                "",
-                sort
-            );
-        } else {
-            setSort(column);
-            getzonaldashboard(
+            getdistrictdashboard(
                 activeTab,
                 setData,
                 1,
@@ -134,9 +135,20 @@ function ZonalDashboard() {
                 sort
             );
         }
-
-        //
-        console.log(`Icon clicked for column: ${column}`);
+        else {
+            setSort(column);
+            getdistrictdashboard(
+                activeTab,
+                setData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                sort
+            );
+		}
+		
+        //console.log(`Icon clicked for column: ${column}`);
     };
 
     const CSV = (tabname: string) => {
@@ -144,12 +156,10 @@ function ZonalDashboard() {
             activeTab === "Student management" &&
             tabname === "Student management"
         ) {
-            return dashboardRoutes.zonalStudentData;
-        } if (
-            activeTab === "Campus management" &&
-            tabname === "Campus management"
-        ) {
-            return dashboardRoutes.zonalCampusData;
+            return dashboardRoutes.districtStudentData;
+        }
+        if (activeTab === "Campus management" && tabname === "Campus management") {
+            return dashboardRoutes.districtCampusData;
         }
     };
 
@@ -159,13 +169,7 @@ function ZonalDashboard() {
             <TableTop
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
-                // CSV={
-                //     activeTab === "Student management"
-                //         ? dashboardRoutes.zonalStudentData
-                //         : dashboardRoutes.zonalCampusData
-                // }
                 CSV={CSV(activeTab)}
-
             // CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}
             // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
             />
@@ -177,10 +181,7 @@ function ZonalDashboard() {
                     columnOrder={columns}
                     id={["code"]}
                 >
-                    <THead
-                        columnOrder={columns}
-                        onIconClick={handleIconClick}
-                    />
+                    <THead columnOrder={columns} onIconClick={handleIconClick} />
                     <Pagination
                         currentPage={currentPage}
                         totalPages={totalPages}
@@ -195,4 +196,4 @@ function ZonalDashboard() {
     );
 }
 
-export default ZonalDashboard;
+export default DistrictDashboard
