@@ -544,10 +544,10 @@ const Profile = () => {
                                         </li>
                                         {/* <li>Join Mulearn</li> */}
                                         {/* <li>See More</li> */}
-                                        <div>
+                                        {/* <div>
                                             <i className=".fa-solid fa-chevron-left"></i>
                                             <i className="fi fi-ts-angle-right"></i>
-                                        </div>
+                                        </div> */}
                                     </div>
 
                                     <div className={styles.pointsList}>
