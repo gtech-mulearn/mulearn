@@ -73,7 +73,6 @@ export const putCountryData = async (
 //!Error: "You do not have the required role to access this page.
 export const deleteCountryData = async (countryName: string) => {
     try {
-<<<<<<< HEAD:src/modules/Dashboard/modules/ManageLocation/apis/CountryAPI.ts
         const requestConfig: any = {
             data: {
                 name: countryName,
@@ -85,7 +84,6 @@ export const deleteCountryData = async (countryName: string) => {
             .then(({ data }) => {
                 console.log(data);
             });
-=======
         await privateGateway.delete(ManageLocationsRoutes.getCountryData,
             // {
             //     name: countryName
@@ -95,7 +93,6 @@ export const deleteCountryData = async (countryName: string) => {
         .then(({data})=>{
             console.log(data)
         })
->>>>>>> 528cb6913cfaff7b93847f3d16c436b1b6a3f70e:src/modules/Dashboard/modules/ManageLocation/apis.ts
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
