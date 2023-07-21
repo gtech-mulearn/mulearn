@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import { Navigate, useNavigate, useLocation } from 'react-router-dom';
+=======
+import { useNavigate } from 'react-router-dom';
+>>>>>>> 528cb6913cfaff7b93847f3d16c436b1b6a3f70e
 import Table from '../../../../components/MuComponents/Table/Table'
 import THead from '../../../../components/MuComponents/Table/THead'
 import TableTop from '../../../../components/MuComponents/TableTop/TableTop'
 import Pagination from '../../../../components/MuComponents/Pagination/Pagination'
-import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
 import './ManageLocation.scss'
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import {

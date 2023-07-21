@@ -5,11 +5,16 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+<<<<<<< HEAD
 import { putCountryData } from "./apis/CountryAPI";
 import { putStateData } from "./apis/StateAPI";
 import { putZoneData } from "./apis/ZoneAPI";
 import { putDistrictData } from "./apis/DistrictAPI";
 import { useStatStyles, useToast } from "@chakra-ui/react";
+=======
+import { putCountryData } from "./apis";
+import { useToast } from "@chakra-ui/react";
+>>>>>>> 528cb6913cfaff7b93847f3d16c436b1b6a3f70e
 import { useLocation } from "react-router-dom";
 import { useEffect,useState } from "react";
 

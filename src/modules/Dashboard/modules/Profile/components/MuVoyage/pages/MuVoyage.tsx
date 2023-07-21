@@ -71,10 +71,6 @@ const MuVoyage = (props: Props) => {
                                 colorScheme="green"
                                 borderRadius="10px"
                             />
-                            <p className={styles.goal}>
-                                <i className="fi fi-sr-bullseye-arrow"></i>{" "}
-                                Goal: {userLevelTrack.karma} Karma
-                            </p>
                         </div>
 
                         <div className={styles.date}>
@@ -99,7 +95,34 @@ const MuVoyage = (props: Props) => {
                                             htmlFor={`accordion_${i}`}
                                             className={styles.level}
                                         >
-                                            <p>{levelData.name}</p>
+                                            <p>
+                                                {levelData.name}
+                                                {"  "}
+                                                <span
+                                                    className={
+                                                        styles.level_karma_detail
+                                                    }
+                                                >
+                                                    [
+                                                    {levelData.tasks
+                                                        .filter(
+                                                            e => e.completed
+                                                        )
+                                                        .reduce(
+                                                            (a, b) =>
+                                                                a + b.karma,
+                                                            0
+                                                        )}
+                                                    /
+                                                    <span
+                                                        style={{
+                                                            color: "#2E85FE"
+                                                        }}
+                                                    >
+                                                        {levelData.karma}]
+                                                    </span>
+                                                </span>
+                                            </p>
                                             <div
                                                 className={styles.task_details}
                                             >
@@ -144,6 +167,36 @@ const MuVoyage = (props: Props) => {
                                             </div>
                                         </label>
                                         <div className={styles.content}>
+                                            <div
+                                                className={
+                                                    styles.goal_container
+                                                }
+                                            >
+                                                <p>
+                                                    Mine Left:{" "}
+                                                    {Math.max(
+                                                        levelData.karma -
+                                                            levelData.tasks
+                                                                .filter(
+                                                                    e =>
+                                                                        e.completed
+                                                                )
+                                                                .reduce(
+                                                                    (a, b) =>
+                                                                        a +
+                                                                        b.karma,
+                                                                    0
+                                                                ),
+                                                        0
+                                                    )}{" "}
+                                                    Karma
+                                                </p>
+                                                <p className={styles.goal}>
+                                                    <i className="fi fi-sr-bullseye-arrow"></i>{" "}
+                                                    Goal: {levelData.karma}{" "}
+                                                    Karma
+                                                </p>
+                                            </div>
                                             <ul className={styles.list_list}>
                                                 {levelData.tasks &&
                                                     levelData.tasks.map(

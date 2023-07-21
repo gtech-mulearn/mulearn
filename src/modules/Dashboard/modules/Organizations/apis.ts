@@ -3,9 +3,6 @@ import { organizationRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 import { AxiosError } from "axios";
 
-
-
-
 export const getOrganizations = async (
     activeTab: string,
     setData: any,

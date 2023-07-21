@@ -93,13 +93,6 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     // icon: <i className="fi fi-sr-note"></i>
                 },
                 {
-                    url: "tasks/bulk-import",
-                    title: "Tasks Bulk Import",
-                    hasView: true,
-                    roles: [roles.ADMIN],
-                    // icon: <i className="fi fi-sr-layout-fluid"></i>
-                },
-                {
                     url: "",
                     title: "User Management",
                     hasView: true,
