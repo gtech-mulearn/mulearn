@@ -1,9 +1,10 @@
-import { AxiosError } from "axios";
-import { privateGateway } from "../../../../services/apiGateways";
-import { ManageLocationsRoutes } from "../../../../services/urls";
+import { AxiosError, AxiosRequestConfig } from "axios";
+import { privateGateway } from "../../../../../services/apiGateways";
+import { ManageLocationsRoutes } from "../../../../../services/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 import { Dispatch, SetStateAction } from "react";
 
+//* WORKING✅
 export const getCountryData = async (
     setData: any,
     setTotalPages?: any,
@@ -23,6 +24,7 @@ export const getCountryData = async (
     }
 };
 
+//*WORKING✅
 export const postCountryData = async (
     countryName:string
 ) => {
@@ -44,7 +46,7 @@ export const postCountryData = async (
     }
 }
 
-
+//*WORKING✅
 export const putCountryData = async (
     oldName:string,
     newName:string
@@ -68,14 +70,24 @@ export const putCountryData = async (
     }
 }
 
-export const deleteCountryData = async (
-    countryName:string
-) => {
+//!Error: "You do not have the required role to access this page.
+export const deleteCountryData = async (countryName: string) => {
     try {
-        await privateGateway.delete(ManageLocationsRoutes.getCountryData,
-            {
-                name: countryName
+        const requestConfig: any = {
+            data: {
+                name: countryName,
             }
+        };
+
+        await privateGateway.delete(ManageLocationsRoutes.getCountryData, requestConfig)
+            .then(({ data }) => data.response)
+            .then(({ data }) => {
+                console.log(data);
+            });
+        await privateGateway.delete(ManageLocationsRoutes.getCountryData,
+            // {
+            //     name: countryName
+            // }
         )
         .then(({data})=>data.response)
         .then(({data})=>{
@@ -87,4 +99,4 @@ export const deleteCountryData = async (
             console.log(error.response);
         }
     }
-}
+};

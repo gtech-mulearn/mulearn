@@ -17,7 +17,6 @@ import {
     putIsPublic
 } from "../services/api";
 import styles from "./Profile.module.css";
-
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { Switch, useToast } from "@chakra-ui/react";
 import { saveAs } from "file-saver";
@@ -26,6 +25,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import BasicDetails from "../components/BasicDetails";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
+import AvgKarma from "../assets/svg/AvgKarma";
 
 //TODO: Verify the relevance of profile page image
 const Profile = () => {
@@ -545,10 +545,10 @@ const Profile = () => {
                                         </li>
                                         {/* <li>Join Mulearn</li> */}
                                         {/* <li>See More</li> */}
-                                        <div>
+                                        {/* <div>
                                             <i className=".fa-solid fa-chevron-left"></i>
                                             <i className="fi fi-ts-angle-right"></i>
-                                        </div>
+                                        </div> */}
                                     </div>
 
                                     <div className={styles.pointsList}>
@@ -570,14 +570,7 @@ const Profile = () => {
                                             </div>
                                         </div>
                                         <div className={styles.points}>
-                                            <Rank />
-                                            <div>
-                                                <span>Rank</span>
-                                                <h1>{userProfile.rank}</h1>
-                                            </div>
-                                        </div>
-                                        <div className={styles.points}>
-                                            <Karma />
+                                            <AvgKarma />
                                             <div>
                                                 <span>Avg.Karma/Month</span>
                                                 <h1>
@@ -610,6 +603,13 @@ const Profile = () => {
                                                               monthDifference
                                                           ).toPrecision(3)}
                                                 </h1>
+                                            </div>
+                                        </div>
+                                        <div className={styles.points}>
+                                            <Rank />
+                                            <div>
+                                                <span>Rank</span>
+                                                <h1>{userProfile.rank}</h1>
                                             </div>
                                         </div>
                                     </div>
