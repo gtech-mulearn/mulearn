@@ -111,18 +111,17 @@
     height: 100%;
     overflow-y: scroll;
     transition: 0.5s ease;
-    z-index: 150;
+    z-index: 99;
     /* background-color: #F2F5FF; */
 }
 
 .right_side .top_nav .nav {
-    padding: 20px 40px;
+    padding: 20px 40px 0px;
     /* padding-bottom: 0px; */
     background: #fff;
     position: fixed;
     width: 100vw;
     z-index: 50;
-    box-shadow: 5px 2px 5px 1px rgba(0, 0, 0, 0.1);
 }
 
 .right_side .top_nav .nav .nav_items {
@@ -145,11 +144,17 @@
 }
 
 .right_side .top_nav .nav .nav_items .menu {
-    width: 160px;
+    /* width: 160px; */
+    gap: 20px;
+    font-size: 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+}
+
+.right_side .top_nav .nav .nav_items .menu i {
+    height: 20px;
 }
 
 .right_side .top_nav .nav .nav_items .menu .profile img {
@@ -175,7 +180,7 @@
 /* responsive */
 @media screen and (min-width: 1324px) {
     .right_side .top_nav .nav {
-        width: 89vw;
+        width: calc(100% - 240px);
     }
 }
 
