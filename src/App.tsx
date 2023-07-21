@@ -208,6 +208,10 @@ const router = createBrowserRouter([
                         element: <HackathonCreate />
                     },
                     {
+                        path: "hackathon/edit/:id",
+                        element: <HackathonCreate />
+                    },
+                    {
                         path: "hackathon/details/:id",
                         element: <HackathonDetails />
                     },

@@ -22,10 +22,12 @@ export interface HackList {
     type: string;
     tagline: string;
     event_logo: any;
+    district: string;
+    is_open_to_all: boolean;
     banner: any;
     website: string;
     place: string;
-	status: string;
+    status: string;
     event_start: string | null;
     event_end: string | null;
     application_start: string | null;
