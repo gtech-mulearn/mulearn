@@ -6,14 +6,21 @@
     margin-left: 25px;
     display: flex;
     gap: 2.1rem;
-    justify-content: flex-start;
+    justify-content: space-between;
+    width: 92%;
 }
 
 .heatmap_container .weeks {
+    display: flex;
+    height: 71px;
+    margin-top: 14px;
     position: absolute;
     font-size: 9.5px;
     background-color: #fff;
     margin-left: -1px;
+    flex-direction: column;
+    justify-content: space-between;
+
 }
 
 .heatmap_container .heatmap {
