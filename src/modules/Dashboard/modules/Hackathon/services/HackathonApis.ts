@@ -185,19 +185,34 @@ export const deleteHackathon = async (
 export const addOrganizer = async (
     id: string | undefined,
     muid: string,
+    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
         const response = await privateGateway.post(
             dashboardRoutes.addOrganizer + id + "/",
             {
-                mu_id: muid,
+                mu_id: muid
             }
         );
         const message: any = response?.data;
         console.log(message);
+		toast({
+            title: "Success",
+            description: "Organizer added successfully",
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
+			toast({
+                title: "Error",
+                description: "Failed to add new organizer.",
+                status: "error",
+                duration: 3000,
+                isClosable: true
+            });
             console.log(error.response);
         }
     }
