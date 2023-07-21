@@ -67,3 +67,24 @@ export const putCountryData = async (
         }
     }
 }
+
+export const deleteCountryData = async (
+    countryName:string
+) => {
+    try {
+        await privateGateway.delete(ManageLocationsRoutes.getCountryData,
+            {
+                name: countryName
+            }
+        )
+        .then(({data})=>data.response)
+        .then(({data})=>{
+            console.log(data)
+        })
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+}

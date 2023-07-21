@@ -33,7 +33,7 @@
 .box .div {
 	align-items: flex-start;
 	display: flex;
-	gap: 52.5px;
+	gap: 85.5px;
 	position: relative;
 	width: fit-content;
 }
@@ -78,7 +78,7 @@
 .box .frame-2 {
 	align-items: flex-start;
 	display: flex;
-	gap: 10px;
+	gap: 12px;
 	position: relative;
 	width: 62px;
 }
@@ -87,6 +87,7 @@
 	background-color: #e5ebff;
 	border-radius: 12.26px;
 	height: 24.52px;
+	margin-bottom: 10px;
 	min-width: 24.52px;
 	position: relative;
 	display: flex;

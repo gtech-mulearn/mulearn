@@ -8,6 +8,7 @@ import {
 
 type Props = {
     userLevelData: {
+        karma: number;
         name: string;
         tasks: {
             task_name: string;
@@ -16,14 +17,14 @@ type Props = {
             karma: number;
         }[];
     }[];
+    userLevel: number;
 };
 
 const MuVoyage = (props: Props) => {
     const [userLevelData, setUserLevelData] = useState(props.userLevelData);
-    const [userLevelTrack, setUserLevelTrack] = useState({
-        name: "",
-        tasks: [{ task_name: "", completed: false, hashtag: "", karma: 0 }]
-    });
+    const [userLevelTrack, setUserLevelTrack] = useState(
+        userLevelData[props.userLevel - 1]
+    );
     let userLevelTrackerPercentage = !userLevelTrack.tasks.every(
         e => e.completed
     )
@@ -33,17 +34,7 @@ const MuVoyage = (props: Props) => {
               100
           ).toFixed(0)}`
         : "100";
-    useEffect(() => {
-        setUserLevelTrack(
-            userLevelData[
-                userLevelData.filter(e => e.tasks.length !== 0).length - 1
-            ]
-        );
-        // console.log(userLevelTrack);
-        
-    });
-    // console.log(userLevelData);
-    
+    // console.log(userLevelTrack);
     return (
         <>
             <div className={styles.main_task}>
@@ -62,14 +53,28 @@ const MuVoyage = (props: Props) => {
                                 <p>
                                     {userLevelTrackerPercentage + "%"} complete
                                 </p>
-                                {/* <p>2 days left</p> */}
+                                <p>
+                                    {userLevelTrack.tasks
+                                        .filter(e => e.completed)
+                                        .reduce((a, b) => a + b.karma, 0)}
+                                    /
+                                    {userLevelTrack.tasks.reduce(
+                                        (a, b) => a + b.karma,
+                                        0
+                                    )}{" "}
+                                    Karma
+                                </p>
                             </div>
-                            {/* <div className={styles.progress}></div> */}
                             <Progress
                                 value={parseInt(userLevelTrackerPercentage)}
                                 size="xs"
                                 colorScheme="green"
+                                borderRadius="10px"
                             />
+                            <p className={styles.goal}>
+                                <i className="fi fi-sr-bullseye-arrow"></i>{" "}
+                                Goal: {userLevelTrack.karma} Karma
+                            </p>
                         </div>
 
                         <div className={styles.date}>
@@ -171,11 +176,10 @@ const MuVoyage = (props: Props) => {
                                                                                 taskData.hashtag
                                                                             }
                                                                         </span>
-                                                                        <span>
-                                                                            {
-                                                                                taskData.karma
-                                                                            }
-                                                                        </span>
+                                                                        <p>
+                                                                            {taskData.karma +
+                                                                                " ϰ"}
+                                                                        </p>
                                                                     </label>
                                                                 </li>
                                                             );

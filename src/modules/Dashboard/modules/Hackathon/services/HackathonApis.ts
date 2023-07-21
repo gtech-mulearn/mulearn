@@ -4,6 +4,7 @@ import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import { HackList } from "../User/Hackathon";
 import { SetStateAction } from "react";
 import { ToastId, UseToastOptions, useToast } from "@chakra-ui/react";
+import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 
 export const getFormFields = async (
     setFormData: React.Dispatch<React.SetStateAction<string>>
@@ -28,7 +29,7 @@ export const getHackDetails = async (
 ) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getHackathons + id
+            dashboardRoutes.getHackathonInfo + id
         );
         const defaultForm: any = response?.data;
         setEditData(defaultForm.response);
@@ -58,6 +59,7 @@ export const createHackathon = async (
 	logo: any,
     banner:any,
     type:string,
+	website: string,
 ) => {
     try {
         const response = await privateGateway.post(
@@ -80,6 +82,7 @@ export const createHackathon = async (
                 event_logo: logo,
                 banner: banner,
                 type: type,
+				website: website,
             },
             {
                 maxBodyLength: Infinity,
@@ -98,19 +101,39 @@ export const createHackathon = async (
     }
 };
 
-export const getDistrict = (
-    setDistrict: any,
-    state: any
+export const getAllDistricts = (
+    setDistrict: React.Dispatch<React.SetStateAction<Option[]>>
 ) => {
-    publicGateway
-        .post(onboardingRoutes.districtList, state)
+    privateGateway
+        .get(dashboardRoutes.getAllDistricts)
         .then(response => {
+            console.log(response.data.response);
             setDistrict(
-                response.data.response.districts
+                response.data.response
                     .sort((a: any, b: any) => a.name.localeCompare(b.name))
                     .map((sate: any) => ({
                         value: sate.id,
                         label: sate.name
+                    }))
+            );
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
+};
+
+export const getAllInstitutions = (
+    setInstitutions: React.Dispatch<React.SetStateAction<Option[][]>>
+) => {
+    privateGateway
+        .get(dashboardRoutes.getAllOrganisations)
+        .then(response => {
+            console.log(response.data.response);
+            setInstitutions(
+                response.data.response
+                    .map((sate: any) => ({
+                        value: sate.id,
+                        label: sate.title
                     }))
             );
         })
@@ -160,6 +183,42 @@ export const addOrganizer = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
+
+export const publishHackathon = async (
+    id: string,
+	status: string,
+    toast: (options?: UseToastOptions | undefined) => ToastId
+) => {
+	let a = status === "Draft" ? "Published" : "Draft";
+    try {
+        const response = await privateGateway.put(
+            dashboardRoutes.publishHackathon + id + "/", {
+				status: a
+			}
+        );
+        const message: any = response?.data;
+        console.log(message);
+        toast({
+            title: "Change Successful",
+            description: "Hackathon status has been changed.",
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+			toast({
+                title: "Failed to make changes",
+                description: "Make sure all fields are filled.",
+                status: "error",
+                duration: 5000,
+                isClosable: true
+            });
             console.log(error.response);
         }
     }

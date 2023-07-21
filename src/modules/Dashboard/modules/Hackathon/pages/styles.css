@@ -1,56 +1,57 @@
-
-.profileDash {
-	position: relative;
-	top: 2rem;
-	margin-left: 3rem;
+.hackDetails {
+	padding: 1rem 3rem;
 	display: flex;
 	gap: 2rem;
-	width: calc(100% - 6rem);
 }
 
-.content {
-	width: 100%;
+.hackDetailDash {
 	display: flex;
 	flex-direction: column;
-	gap: 4rem;
+	gap: 2rem;
+	width: 70%;
 }
 
 .banner {
-	width: 150rem;
+	height: 24rem;
+	width: 100%;
+	object-fit: cover;
 	border-radius: 1rem;
 }
 
-.banner img {
-	width: 100%;
-	height: 100%;
-	object-fit: contain;
-	border-radius: 1rem;
-}
-
-.event__card {
-	width: 100%;
-	min-width: 20rem;
+.eventCard {
+	width: 30%;
+	min-width: 15rem;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
-	gap: 1rem;
+	gap: 2rem;
 }
 
-.apply__Card {
+.applyCard {
+	text-align: left;
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
 	padding: 1.5rem;
 	border-radius: 1rem;
-	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 0px 10px .5px rgba(0, 0, 0, 0.1);
 }
 
-.apply__Card .date {
+.applyCard .date {
 	display: flex;
 	align-items: center;
 }
 
-.apply__Card span {
+.eventDate .title {
+	font-size: .8rem;
+	color: #B7BEC2;
+}
+
+.eventDate h3 {
+	font-weight: 700;
+	color: #000;
+}
+
+.applyCard span {
 	display: block;
 	width: 2px;
 	height: 100%;
@@ -58,13 +59,20 @@
 	background-color: #456FF6;
 }
 
-.apply__Card .close {
+.applyCard .close {
 	background-color: #F0F4FF;
 	padding: .5rem;
 	border-radius: .3rem;
+	font-weight: 700;
+	color: #000;
 }
 
-.apply__Now {
+.applyCard .close b {
+	color: #456FF6;
+	font-size: .7rem;
+}
+
+.applyNow {
 	border-radius: .3rem;
 	padding: .8rem;
 	background-color: #456FF6;
@@ -72,39 +80,62 @@
 	border: none;
 }
 
-.event__card .social__links {
+.eventCard .socialLinks {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 2.5rem;
 	padding: 1rem;
-	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 0px 10px .5px rgba(0, 0, 0, 0.1);
 	border-radius: 1rem;
 	font-size: 1.5rem;
 }
 
-.desc {
-	width: 46rem;
-	margin-left: 3rem;
-	background: white;
-	border-radius: 10px;
-	box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
-	padding: 1.5rem 2rem;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	gap: 1rem;
-	margin-bottom: 2rem;
+.eventCard .socialLinks a {
+	padding: .5rem;
+	background-color: #E6ECFF;
+	color: #456FF6;
+	border-radius: 100%;
 }
 
-.description {
+.desc {
+	width: 100%;
+	border-radius: 1rem;
+	box-shadow: 0px 0px 10px .5px rgba(0, 0, 0, 0.1);
+	padding: 1.5rem 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	text-align: left;
+	color: #000;
+}
+
+.desc .description {
 	display: flex;
 	align-items: center;
 	gap: 1rem;
 }
 
-.hackprofile {
-	display: block;
+.desc .description .descTitle {
+	display: flex;
+	align-items: center;
+}
+
+.desc .description h1 {
+	font-size: 1.5rem;
+	font-weight: 800;
+}
+
+.desc .description b {
+	color: #5B5B5B;
+	font-size: .8rem;
+}
+
+.desc p {
+	font-weight: 500;
+}
+
+.desc .hackProfile {
 	border-radius: 100%;
 	height: 4rem;
 	width: 4rem;
@@ -112,74 +143,47 @@
 	background-color: #000;
 }
 
-.love {
-	width: 2.5rem;
-	height: 2.5rem;
+.desc .love {
+	padding: .6rem;
+	margin-left: 1rem;
 	border-radius: 50%;
-	display: block;
-	background-color: pink;
+	color: #FF6060;
+	background-color: #FFDFDF;
+	font-size: 1.5rem;
 }
 
-@media(width<800px) {
-	.leftDash {
-		width: 0%;
+@media(width<=820px) {
+	.hackDetails {
+		flex-direction: column;
+		padding: .5rem;
 	}
 
-	.rightDash {
-		width: 100%;
-		left: 0;
-	}
-
-	.dashTopbar {
-		font-size: 1rem;
-		padding: 1.5rem .5rem;
-	}
-
-	hr {
-		position: absolute;
-		width: 90%;
-		margin: 0 5%;
-		border: 1px solid #E0EDFF;
-	}
-
-	.content {
-		padding: 1rem;
-	}
-
-	.profileDash {
-		position: relative;
-		margin-left: 0rem;
-		display: flex;
-		flex-wrap: wrap;
-		gap: 2rem;
+	.hackDetailDash,
+	.eventCard {
 		width: 100%;
 	}
 
 	.desc {
-		width: 100%;
-		padding: 1.5rem 1rem;
-		margin-left: 0rem;
+		padding: 1rem;
 	}
+}
 
-	.description {
+@media(width<=320px) {
+	.desc .description {
+		flex-direction: column;
 		gap: .5rem;
 	}
 
-	.description div h1 {
-		font-size: 1.5rem;
+	.desc .description .descTitle .tagLine b{
+		font-size: .65rem;
 	}
 
-	.description div div span {
-		font-size: .7rem;
+	.desc .love {
+		padding: .5rem;
+		font-size: 1rem;
 	}
 
-	.hackprofile {
-		height: 3.5rem;
-		width: 3.5rem;
-	}
-
-	.love {
-		width: 2rem;
-		height: 2rem;
+	.desc p {
+		font-size: .8rem;
 	}
 }

@@ -62,8 +62,9 @@
 
 .side_nav_bar_container .side_nav_bar .mulearn_brand {
     width: 100%;
-    min-height: 100px;
-    max-height: 200px;
+    min-height: 80px;
+    max-height: 100px;
+    margin-top: -1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -101,11 +102,7 @@
     color: #fff;
 }
 
-.side_nav_bar_container
-    .side_nav_bar
-    .side_nav_bar_items
-    .side_nav_bar_item
-    .side_nav_bar_item_icon {
+.side_nav_bar_container .side_nav_bar .side_nav_bar_items .side_nav_bar_item .side_nav_bar_item_icon {
     margin-right: 20px;
 }
 
@@ -114,16 +111,18 @@
     height: 100%;
     overflow-y: scroll;
     transition: 0.5s ease;
-    z-index: 50;
+    z-index: 150;
+    /* background-color: #F2F5FF; */
 }
 
 .right_side .top_nav .nav {
-    padding: 40px 40px;
-    padding-bottom: 0px;
+    padding: 20px 40px;
+    /* padding-bottom: 0px; */
     background: #fff;
     position: fixed;
     width: 100vw;
     z-index: 50;
+    box-shadow: 5px 2px 5px 1px rgba(0, 0, 0, 0.1);
 }
 
 .right_side .top_nav .nav .nav_items {
@@ -131,14 +130,14 @@
     /* height: 100%; */
     display: flex;
     flex-direction: row;
+    align-items: center;
     background-color: #fff;
     justify-content: space-between;
-    align-items: center;
 }
 
 .right_side .top_nav .nav .nav_items .greetings {
-    font-weight: 700;
     font-size: 22px;
+    color: #000;
 }
 
 .mulearn_brand2 svg {
@@ -157,7 +156,7 @@
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    margin-top: -20px;
+    /* margin-top: -20px; */
     cursor: pointer;
 }
 
@@ -176,7 +175,7 @@
 /* responsive */
 @media screen and (min-width: 1324px) {
     .right_side .top_nav .nav {
-        width: 86vw;
+        width: 89vw;
     }
 }
 
@@ -185,10 +184,7 @@
         max-width: 35%;
     }
 
-    .side_nav_bar_container
-        .side_nav_bar
-        .side_nav_bar_items
-        .side_nav_bar_item {
+    .side_nav_bar_container .side_nav_bar .side_nav_bar_items .side_nav_bar_item {
         margin-bottom: 10px;
     }
 
@@ -202,6 +198,7 @@
 }
 
 @media screen and (max-width: 830px) {
+
     .right_side .top_nav .nav .nav_items .greetings,
     .right_side .top_nav .nav .nav_items .menu svg {
         display: none;
@@ -223,6 +220,18 @@
         z-index: 0;
     }
 
+    .right_side {
+        z-index: 0;
+    }
+
+    .right_side .top_nav .nav {
+        box-shadow: none;
+    }
+
+    .side_nav_bar_container .side_nav_bar .mulearn_brand {
+        margin-top: 0rem;
+    }
+
     .right_side .top_nav .nav .nav_items {
         justify-content: center;
     }
@@ -231,7 +240,7 @@
         width: auto;
     }
 
-    .side_nav_bar_container .side_nav_bar .side_nav_bar_items > * {
+    .side_nav_bar_container .side_nav_bar .side_nav_bar_items>* {
         border: 1px solid #456ff6;
         border-radius: 0px;
         border-width: 1px 0px 1px 0px;

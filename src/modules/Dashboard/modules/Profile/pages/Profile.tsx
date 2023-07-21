@@ -64,6 +64,7 @@ const Profile = () => {
     ]);
     const [userLevelData, setUserLevelData] = useState([
         {
+            karma: 0,
             name: "",
             tasks: [{ task_name: "", completed: false, hashtag: "", karma: 0 }]
         }
@@ -118,57 +119,17 @@ const Profile = () => {
             <Helmet>
                 {/* <!-- Primary Meta Tags --> */}
                 <title>
-                    {userProfile.first_name +
-                        " " +
-                        userProfile.last_name +
-                        " | Mulearn"}
+                    {`${userProfile.first_name} ${userProfile.last_name} (${userProfile.karma})`}
                 </title>
-                <link
-                    rel="icon"
-                    type="image/svg+xml"
-                    href={
-                        userProfile.profile_pic ? userProfile.profile_pic : dpm
-                    }
-                />
                 <meta
                     name="title"
-                    content={
-                        userProfile.first_name +
-                        " " +
-                        userProfile.last_name +
-                        "|" +
-                        userProfile.karma +
-                        " Karma"
-                    }
+                    content={`${userProfile.first_name} ${userProfile.last_name}`}
                 />
+                <meta name="viewport" content="width=device-width" />
+                <meta name="route-pattern" content="/profile/:id" />
                 <meta name="description" content="you bio is here" />
 
                 {/* <!-- Open Graph / Facebook --> */}
-                <meta property="og:type" content="Mulearn" />
-                <meta
-                    property={`og:${
-                        (import.meta.env.VITE_FRONTEND_URL as string) +
-                        /profile/ +
-                        userProfile.muid
-                    }`}
-                    content={
-                        (import.meta.env.VITE_FRONTEND_URL as string) +
-                        /profile/ +
-                        userProfile.muid
-                    }
-                />
-                <meta
-                    property="og:title"
-                    content={
-                        userProfile.first_name +
-                        " " +
-                        userProfile.last_name +
-                        "|" +
-                        userProfile.karma +
-                        " Karma"
-                    }
-                />
-                <meta property="og:description" content="you bio is here" />
                 <meta
                     property="og:image"
                     itemProp="image"
@@ -177,25 +138,51 @@ const Profile = () => {
                     }
                 />
                 <meta
+                    property="og:image:alt"
+                    content={`${userProfile.first_name}'s Profile Picture`}
+                />
+                <meta property="og:site_name" content="Mulearn" />
+                <meta property="og:type" content="profile" />
+                <meta
+                    property="og:title"
+                    content={
+                        userProfile.first_name +
+                        " " +
+                        userProfile.last_name +
+                        "(" +
+                        userProfile.karma +
+                        ")"
+                    }
+                />
+                <meta
+                    name="hostname"
+                    content={import.meta.env.VITE_FRONTEND_URL as string}
+                />
+                <meta
+                    property="og:url"
+                    content={
+                        (import.meta.env.VITE_FRONTEND_URL as string) +
+                        /profile/ +
+                        userProfile.muid
+                    }
+                />
+                <meta property="og:description" content="you bio is here" />
+
+                <meta
                     property="og:image:secure_url"
                     content={
                         userProfile.profile_pic ? userProfile.profile_pic : dpm
                     }
                 />
-                <meta
-                    property="og:image:alt"
-                    content={`${userProfile.first_name}'s Profile Picture`}
-                />
                 <meta property="og:type" content="profile" />
+                <meta property="og:image:type" content="image/jpeg" />
+                <meta property="og:image:width" content="300" />
+                <meta property="og:image:height" content="300" />
 
                 {/* <!-- Twitter --> */}
-                <meta property="twitter:card" content="summary_large_image" />
+                <meta name="twitter:card" content="summary_large_image" />
                 <meta
-                    property={`twitter:${
-                        (import.meta.env.VITE_FRONTEND_URL as string) +
-                        /profile/ +
-                        userProfile.muid
-                    }`}
+                    property="twitter:site"
                     content={
                         (import.meta.env.VITE_FRONTEND_URL as string) +
                         /profile/ +
@@ -203,22 +190,12 @@ const Profile = () => {
                     }
                 />
                 <meta
-                    property="twitter:title"
-                    content={
-                        userProfile.first_name +
-                        " " +
-                        userProfile.last_name +
-                        "|" +
-                        userProfile.karma +
-                        " Karma"
-                    }
+                    name="twitter:title"
+                    content={`${userProfile.first_name} ${userProfile.last_name} (${userProfile.karma})`}
                 />
+                <meta name="twitter:description" content="you bio is here" />
                 <meta
-                    property="twitter:description"
-                    content="you bio is here"
-                />
-                <meta
-                    property="twitter:image"
+                    name="twitter:image:src"
                     content={
                         userProfile.profile_pic ? userProfile.profile_pic : dpm
                     }
@@ -649,7 +626,12 @@ const Profile = () => {
                                         userLog={userLog}
                                     />
                                 ) : profileList === "mu-voyage" ? (
-                                    <MuVoyage userLevelData={userLevelData} />
+                                    <MuVoyage
+                                        userLevelData={userLevelData}
+                                        userLevel={parseInt(
+                                            userProfile.level.slice(3, 4)
+                                        )}
+                                    />
                                 ) : null}
                             </div>
 

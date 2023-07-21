@@ -1,199 +1,193 @@
 /*
 ! Learning Circle common css
 */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
-
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'Plus Jakarta Sans', sans-serif;
+.learningCircleLandingPage,
+.LearningCircleDetailsContent,
+.FindCircleContent {
+	padding: 1rem 3rem;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
 }
-
-
 
 /*
 * ******************************************************************************************
 
 ! Learning Circle Landing Page
 */
-.learningCircleLandingPageContent {
+
+.learningCircleLandingPage .headContent {
 	display: flex;
-	justify-content: center;
 	align-items: center;
-	width: calc(100% - 8rem);
-	background: white;
-	margin-left: 3rem;
+	justify-content: center;
 	gap: 1rem;
-	border-radius: 1rem;
-	margin-top: 2.5rem;
-	box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+	border-radius: var(--borderRadius);
+	box-shadow: var(--boxShadow);
 }
 
-.learningCircleLandingPageContent img {
-	width: 40%;
-	height: 90%;
+.learningCircleLandingPage img,
+.learningCircleLandingPageMiddle img {
+	width: 35%;
 }
 
 .learningCircleLandingPageDesc {
-	width: 55%;
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: .5rem;
+	color: #000;
 }
 
-.learningCircleLandingPageDesc h3 {
-	font-size: 2rem;
-	color: #456FF6;
+.learningCircleLandingPageDesc h1 {
+	font-size: 2.5rem;
+	color: var(--blue);
 	font-weight: bold;
-
 }
 
-.learningCircleLandingPageDesc p {
-	margin-top: 1rem;
-	font-size: .9rem;
-	color: black;
-}
-
-
-.learningCircleLandingPageContent .learningCircleLandingPageButton {
+.learningCircleLandingPage .learningCircleLandingPageButton {
 	display: flex;
 	justify-content: center;
 	gap: 2rem;
-	margin-bottom: 1rem;
-}
-
-.learningCircleLandingPageContent .learningCircleLandingPageButton {
-	padding: 15px;
-}
-
-.learningCircleLandingPageMiddle {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-}
-
-@media(width<800px) {
-	.learningCircleLandingPageContent {
-		flex-direction: column;
-	}
-
-	.learningCircleLandingPageDesc h3 {
-		font-size: 1rem;
-	}
-
-	.learningCircleLandingPageDesc p {
-		font-size: .7rem;
-	}
-
-	.learningCircleLandingPageAccordion {
-		margin-top: 1rem;
-	}
-
+	margin-top: .5rem;
 }
 
 /*list*/
-.learningCircleLandingPageAccordion {
-	margin-top: 7rem;
-	margin-left: 3rem;
+.learningCircleLandingPageMiddle {
 	display: flex;
 	flex-direction: column;
-	width: calc(100% - 8rem);
-	gap: 1rem;
-	margin-bottom: 3rem;
-
-
+	gap: 2rem;
+	padding: 1rem 0rem;
 }
 
-.learningCircleLandingPageAccordion h2 {
-	margin-bottom: 2rem;
-	font-weight: bold;
+.learningCircleLandingPageMiddle b {
+	width: 100%;
+	text-align: left;
 	font-size: 1.5em;
 	color: black;
 }
 
 .learningCircleLandingPageAccordion {
-	height: 4rem;
+	height: fit-content;
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
+	width: 100%;
 	list-style: none;
 	border-radius: .5rem;
-	box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
 }
 
 .learningCircleLandingPageLevel {
-	padding: 1rem 1.5rem 0rem 1.5rem;
+	padding: 1rem 2rem;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	text-align: center;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
 }
 
 .learningCircleLandingPageLevel div {
 	display: flex;
 	align-items: center;
 	gap: 1rem;
-	font-size: .9rem;
-
+	font-size: 1.2rem;
+	font-weight: 500;
 }
 
 .learningCircleLandingPageBtn {
 	width: 3rem;
 	height: 2rem;
-	background: #456FF6;
+	background: var(--blue);
 	color: white;
 	border-radius: 7px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .learningCircleLandingPageExpandBtn {
 	display: none;
 }
 
-.learningCircleLandingPageMainList .learningCircleLandingPageExpandBtn:checked+.learningCircleLandingPageLevel {
-	height: 4rem;
-	border-radius: 8px;
-	background: #456FF6;
+.learningCircleLandingPageExpandBtn:checked+.learningCircleLandingPageLevel {
+	background: var(--blue);
 	color: white;
 }
 
-.fa-solid {
-	font-weight: 900;
-}
-
-.fa-chevron-right:before {
-	content: "\f054";
+.learningCircleLandingPageExpandBtn:checked+.learningCircleLandingPageLevel .learningCircleLandingPageBtn {
+	background: #fff;
+	color: var(--blue);
 }
 
 /* No learning circles case */
 .learningCircleLandingPageMiddle {
-	width: 100%;
 	display: flex;
-	justify-content: center;
 	align-items: center;
 }
 
-.learningCircleLandingPageMiddle img {
-	margin-top: 2rem;
-	width: 50%;
-	margin-right: 4rem;
+@media(width<800px) {
+	.learningCircleLandingPage {
+		padding: .5rem;
+	}
+
+	.learningCircleLandingPage .headContent {
+		flex-direction: column;
+		gap: 1rem;
+		padding: 1rem 0rem;
+	}
+
+	.learningCircleLandingPage img,
+	.learningCircleLandingPageMiddle img {
+		width: 100%;
+	}
+
+	.learningCircleLandingPageDesc h1 {
+		font-size: 1.5rem;
+	}
+
+	.learningCircleLandingPageDesc b {
+		font-size: .8rem;
+	}
+
+	.learningCircleLandingPageLevel div {
+		font-size: .8rem;
+	}
+
+	.learningCircleLandingPageLevel {
+		padding: 1rem;
+	}
+
+	.learningCircleLandingPageBtn {
+		width: 2rem;
+	}
 }
 
+@media (width<320px) {
+	.learningCircleLandingPageDesc h1 {
+		font-size: 1.2rem;
+	}
+
+	.learningCircleLandingPageDesc b {
+		font-size: .6rem;
+	}
+
+	.learningCircleLandingPage .learningCircleLandingPageButton {
+		gap: .5rem;
+		margin-top: 0rem;
+	}
+}
 
 /*
 * ************************************************************************************************
 
-! Learning Circle Main Page
+! Learning Circle Details Page
 */
-.content {
+.LearningCircleDetailsContent {
 	width: 100%;
-	display: flex;
-	flex-direction: column;
-	gap: 2rem;
-	padding: 2rem 3rem;
 	color: #000;
 	font-weight: 600;
 }
 
-.content b {
+.LearningCircleDetailsContent b {
 	font-weight: 600;
 }
 
@@ -227,7 +221,7 @@
 .MeetingOn h1 {
 	font-size: 3rem;
 	font-weight: 600;
-	color: #456FF6;
+	color: var(--blue);
 }
 
 .CircleRank i,
@@ -237,7 +231,7 @@
 	padding: .5rem;
 	width: fit-content;
 	height: fit-content;
-	background-color: #456FF6;
+	background-color: var(--blue);
 }
 
 /* bottom section with starting */
@@ -259,7 +253,7 @@
 .PendingApp {
 	padding: 2.5rem;
 	border-radius: 1rem;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	box-shadow: var(--boxShadow);
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -285,14 +279,14 @@
 	border-radius: .5rem;
 	border: none;
 	color: #fff;
-	background-color: #456FF6;
+	background-color: var(--blue);
 }
 
 .BtnClr {
 	padding: .5rem 2.5rem;
 	border-radius: .5rem;
 	border: none;
-	color: #456FF6;
+	color: var(--blue);
 	background-color: #CCE2FF;
 }
 
@@ -347,7 +341,7 @@
 
 .Streak {
 	position: relative;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	box-shadow: var(--boxShadow);
 	border-radius: 1rem;
 	padding: 2rem;
 	display: flex;
@@ -356,7 +350,7 @@
 }
 
 .StreakCount {
-	color: #456FF6;
+	color: var(--blue);
 	font-size: 1.8rem;
 	font-weight: bold;
 }
@@ -380,7 +374,7 @@
 }
 
 .Members {
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	box-shadow: var(--boxShadow);
 	border-radius: 1rem;
 	padding: 2rem;
 	margin-top: 1rem;
@@ -421,7 +415,7 @@
 }
 
 @media(width<800px) {
-	.content {
+	.LearningCircleDetailsContent {
 		padding: .5rem;
 		font-size: .8rem;
 		height: fit-content;
@@ -481,7 +475,6 @@
 	}
 }
 
-
 /* css for the Meeting schedule*/
 
 .ScheduleOn {
@@ -493,7 +486,7 @@
 }
 
 .ScheduleOn p {
-	color: #456FF6;
+	color: var(--blue);
 }
 
 .InputSchedule {
@@ -519,84 +512,356 @@
 /*
 * ************************************************************************************************
 
-! Learning Circle Main Page
+! Learning Circle Create Page
 */
 
 .LearningCircleCreateContent {
-    width: fit-content;
-    padding: 3rem;
-    margin: auto;
+	padding-top: 2rem;
 }
 
 .LearningCircleCreateMain {
-    margin-top: 2rem;
-    padding: 3rem 0.5rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+	margin-top: 2rem;
+	padding: 3rem 0.5rem;
+	box-shadow: var(--boxShadow);
+	border-radius: 1rem;
+	display: flex;
+	align-items: center;
 }
 
 .LearningCircleCreateHeading {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 2rem;
-    margin: 2rem;
+	display: flex;
+	flex-direction: column;
+	margin: 2rem;
 }
 
 .LearningCircleCreateHeading b {
-    font-size: 2.2rem;
-    color: #000;
+	font-size: 2.2rem;
+	color: #000;
 }
 
 .LearningCircleCreateForm {
-    display: flex;
-    gap: 1rem;
+	display: flex;
 }
 
 .LearningCircleCreateForm input {
-    width: 100%;
-    padding: .5rem 1rem;
-    text-align: center;
-    background-color: #F3F3F4;
-    color: #665C7A;
-    border: none;
-    border-radius: .5rem;
-    outline: none;
+	text-align: center;
+	background-color: #F3F3F4;
+	color: #665C7A;
 }
 
 .LearningCircleCreateMain button {
-    padding: .5rem 2rem;
-    background-color: #456FF6;
-    color: #fff;
-    border: none;
-    border-radius: .5rem;
-    outline: none;
-    cursor: pointer;
+	padding: .5rem 2rem;
+	background-color: var(--blue);
+	color: #fff;
+	border-radius: .5rem;
+}
+
+@media(width<820px) {
+	.LearningCircleCreateContent {
+		padding-top: 5rem;
+	}
+
+	.LearningCircleCreateMain {
+		flex-direction: column;
+		padding: .5rem;
+	}
+
+	.LearningCircleCreateHeading {
+		margin: .5rem;
+	}
+
+	.LearningCircleCreateHeading b {
+		font-size: 1.5rem;
+	}
+
+	.LearningCircleCreateForm input::placeholder {
+		font-size: .75rem;
+	}
+}
+
+@media(width<380px) {
+	.LearningCircleCreateContent {
+		padding-top: 0rem;
+	}
+}
+
+/*
+* ************************************************************************************************
+
+! Learning Circle Find-Circle Page
+*/
+.FindCircleContentTop {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background: #F3F8FE;
+	gap: 1rem;
+	border-radius: var(--borderRadius);
+	box-shadow: var(--boxShadow);
+}
+
+.FindCircleContentTop .desc {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.FindCircleContentTop .desc h3 {
+	font-size: 2.5rem;
+	color: #456FF6;
+	font-weight: 600;
+}
+
+.FindCircleContent img {
+	width: 40%;
+	padding: 1rem;
+}
+
+.FindCircleContentTop .desc .ig_search {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	width: 70%;
+}
+
+.FindCircleContentTop .desc .ig_search select {
+	background: #F3F3F4;
+	color: #333333;
+	border-radius: 8px;
+	padding: .8rem 1rem;
+	width: 100%;
+}
+
+.FindCircleContentTop .desc .ig_search button {
+	background: var(--blue);
+	color: #fff;
+	border-radius: 8px;
+	padding: .8rem 1rem;
+}
+
+.FindCircleContent .container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem;
+	width: 100%;
+}
+
+.FindCircleContent .container .one {
+	width: 30%;
+	padding: 1.5rem 2rem;
+	background: white;
+	box-shadow: var(--boxShadow);
+	border-radius: var(--borderRadius);
+	color: black;
+	text-align: initial;
+}
+
+.FindCircleContent .container .one h2 {
+	all: revert;
+	margin: 0;
+}
+
+.FindCircleContent .container .one .join {
+	margin-top: 1rem;
+	display: flex;
+	justify-content: end;
+}
+
+.FindCircleContent .container .one .join button {
+	width: 5rem;
+	background: #456FF6;
+	color: white;
+	border-radius: 8px;
+	padding: .5rem 1rem;
 }
 
 @media(width<800px) {
-    .LearningCircleCreateContent {
-        padding: 1rem;
-    }
+	.FindCircleContent {
+		padding: .5rem;
+	}
 
-    .LearningCircleCreateMain {
-        flex-direction: column;
-        padding: 1rem;
-        margin-top: 5rem;
-    }
+	.FindCircleContentTop {
+		flex-direction: column;
+		padding: 1rem;
+		gap: 1rem;
+	}
 
-    .LearningCircleCreateHeading {
-        margin: .5rem;
-    }
+	.FindCircleContentTop .desc h3 {
+		font-size: 1.5rem;
+	}
 
-    .LearningCircleCreateHeading b {
-        font-size: 1.5rem;
-    }
+	.FindCircleContentTop .desc b {
+		font-size: .8rem;
+	}
 
+	.FindCircleContent img {
+		width: 100%;
+	}
+
+	.FindCircleContentTop .desc .ig_search {
+		width: 100%;
+	}
+
+	.FindCircleContent .container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+		width: 100%;
+	}
+
+	.FindCircleContent .container .one {
+		width: 100%;
+		padding: 1rem;
+	}
+
+	.FindCircleContent .container .one .join {
+		margin-top: .5rem;
+	}
+}
+
+.error_container h1 {
+	all: revert;
+	padding: 125px 0px;
+}
+
+/*
+* ************************************************************************************************
+
+! Learning Circle Find Page
+*/
+
+.FindCircleContentTop {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background: #F3F8FE;
+	gap: 1rem;
+	border-radius: var(--borderRadius);
+	box-shadow: var(--boxShadow);
+}
+
+.FindCircleContentTop .desc {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.FindCircleContentTop .desc h3 {
+	font-size: 2.5rem;
+	color: #456FF6;
+	font-weight: 600;
+}
+
+.FindCircleContent img {
+	width: 40%;
+	padding: 1rem;
+}
+
+.FindCircleContentTop .desc .ig_search {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	width: 70%;
+}
+
+.FindCircleContentTop .desc .ig_search select {
+	background: #F3F3F4;
+	color: #333333;
+	border-radius: 8px;
+	padding: .8rem 1rem;
+	width: 100%;
+}
+
+.FindCircleContentTop .desc .ig_search button {
+	background: var(--blue);
+	color: #fff;
+	border-radius: 8px;
+	padding: .8rem 1rem;
+}
+
+.FindCircleContent .container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem;
+	width: 100%;
+}
+
+.FindCircleContent .container .one {
+	width: 30%;
+	padding: 1.5rem 2rem;
+	background: white;
+	box-shadow: var(--boxShadow);
+	border-radius: var(--borderRadius);
+	color: black;
+	text-align: initial;
+}
+
+.FindCircleContent .container .one h2 {
+	all: revert;
+	margin: 0;
+}
+
+.FindCircleContent .container .one .join {
+	margin-top: 1rem;
+	display: flex;
+	justify-content: end;
+}
+
+.FindCircleContent .container .one .join button {
+	width: 5rem;
+	background: #456FF6;
+	color: white;
+	border-radius: 8px;
+	padding: .5rem 1rem;
+}
+
+@media(width<800px) {
+	.FindCircleContent {
+		padding: .5rem;
+	}
+
+	.FindCircleContentTop {
+		flex-direction: column;
+		padding: 1rem;
+		gap: 1rem;
+	}
+
+	.FindCircleContentTop .desc h3 {
+		font-size: 1.5rem;
+	}
+
+	.FindCircleContentTop .desc b {
+		font-size: .8rem;
+	}
+
+	.FindCircleContent img {
+		width: 100%;
+	}
+
+	.FindCircleContentTop .desc .ig_search {
+		width: 100%;
+	}
+
+	.FindCircleContent .container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+		width: 100%;
+	}
+
+	.FindCircleContent .container .one {
+		width: 100%;
+		padding: 1rem;
+	}
+
+	.FindCircleContent .container .one .join {
+		margin-top: .5rem;
+	}
+}
+
+.error_container h1 {
+	all: revert;
+	padding: 125px 0px;
 }

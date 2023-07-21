@@ -71,12 +71,19 @@ export const dashboardRoutes = {
     getHackathonFormData: "/api/v1/hackathon/list-default-form-fields/",
     createHackathon: "/api/v1/hackathon/create-hackathon/",
     getHackathons: "/api/v1/hackathon/list-hackathons/",
+    getHackathonInfo: "/api/v1/hackathon/info/",
     getOwnHackathons: "/api/v1/hackathon/list-orgniser-hackathons/",
     deleteHackathon: "/api/v1/hackathon/delete-hackathon/",
+    publishHackathon: "/api/v1/hackathon/publish-hackathon/",
     addOrganizer: "/api/v1/hackathon/add-organiser/",
 
     getUserLearningCircles: "/api/v1/dashboard/lc/",
-    createLearningCircle : "/api/v1/dashboard/lc/create/"
+    createLearningCircle : "/api/v1/dashboard/lc/create/",
+
+    getAllOrganisations: "/api/v1/hackathon/list-organisations/",
+    getAllDistricts: "/api/v1/hackathon/list-districts/",
+
+    
 } as const;
 
 export const organizationRoutes = {
@@ -96,5 +103,6 @@ export const ManageLocationsRoutes = {
 }
 
 export const KKEMRoutes = {
-    userAuth: "/api/v1/integrations/kkem/authorization/"
+    userAuth: "/api/v1/integrations/kkem/authorization/",
+    userLogin:"/api/v1/integrations/kkem/login/"
 };

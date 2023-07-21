@@ -10,13 +10,11 @@ import { getdistrictdashboard } from "./apis"
 import { hasRole } from '@/MuLearnServices/common_functions'
 import { roles } from '@/MuLearnServices/types'
 import { columnsCampus, columnsStudent } from "./THeaders"
-import TableTopTab from './TableTopTab'
 
 import { dashboardRoutes } from '@/MuLearnServices/urls'
-//import "./Organizations.scss"
+import "./Organizations.css"
 import "./DistricDashboard.scss"
-import PrimaryButton from '../../../../components/MuComponents/MuButtons/MuOutlinedButton'
-import { MuButton } from '../../../../components/MuComponents/MuButtons/MuButton'
+import TableTopTab from './TableTopTab'
 
 function DistrictDashboard() {
     const [data, setData] = useState<any[]>([]);

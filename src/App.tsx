@@ -52,11 +52,11 @@ import ManageLocation from "./modules/Dashboard/modules/ManageLocation/ManageLoc
 import AddLocation from "./modules/Dashboard/modules/ManageLocation/AddLocation";
 import EditLocation from "./modules/Dashboard/modules/ManageLocation/EditLocation";
 import { HackathonOrganizers } from "./modules/Dashboard/modules/Hackathon/pages/HackathonOrganizers";
-import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/FindCircle";
+import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind";
 import { LearningCircleLandingPage } from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleLandingPage";
 import HackathonDetails from "./modules/Dashboard/modules/Hackathon/pages/HackathonDetails";
-import ZonalDashboard from "./modules/Dashboard/modules/ZonalDashboard/ZonalDashboard";
 import DistrictDashboard from "./modules/Dashboard/modules/DistrictDashboard/DistrictDashboard";
+import ZonalDashboard from "./modules/Dashboard/modules/zonalDashboard/ZonalDashboard";
 import LearningCircleCreate from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate";
 
 const router = createBrowserRouter([
@@ -187,13 +187,22 @@ const router = createBrowserRouter([
                         path: "tasks/bulk-import",
                         element: <TaskBulkImport />
                     },
-                    { path: "url-shortener", element: <UrlShortener /> },
+                    {
+                        path: "url-shortener",
+                        element: <UrlShortener />
+                    },
                     {
                         path: "tasks/delete/:id",
                         element: <TaskDelete />
                     },
-                    { path: "url-shortener", element: <UrlShortener /> },
-                    { path: "hackathon", element: <Hackathon /> },
+                    {
+                        path: "url-shortener",
+                        element: <UrlShortener />
+                    },
+                    {
+                        path: "hackathon",
+                        element: <Hackathon />
+                    },
                     {
                         path: "hackathon/create",
                         element: <HackathonCreate />
@@ -202,18 +211,17 @@ const router = createBrowserRouter([
                         path: "hackathon/details/:id",
                         element: <HackathonDetails />
                     },
-                    { path: "learning-circle/detail", element: <LearningCircle /> },
-                    { path: "create-circle", element: <CreateCircle /> },
                     {
-                        path: "manage-locations", element: <ManageLocation/>
+                        path: "manage-locations",
+                        element: <ManageLocation />
                     },
                     {
                         path: "manage-locations/add/:item",
-                        element: <AddLocation/>
+                        element: <AddLocation />
                     },
                     {
                         path: "manage-locations/edit/:item",
-                        element: <EditLocation/>
+                        element: <EditLocation />
                     },
                     {
                         path: "hackathon/organizers/:id",
