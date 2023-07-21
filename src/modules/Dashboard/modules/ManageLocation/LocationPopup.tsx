@@ -3,14 +3,9 @@ import Select from "react-select";
 import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
 import { useNavigate } from 'react-router-dom';
 import {
-<<<<<<< HEAD
     getCountryData
 } from './apis/CountryAPI';
-=======
-    getCountryData,
-  } from './apis';
 import { MuButton } from '@/MuLearnComponents/MuButtons/MuButton';
->>>>>>> 528cb6913cfaff7b93847f3d16c436b1b6a3f70e
 
 import { getStateData } from './apis/StateAPI';
 import { getZoneData } from './apis/ZoneAPI';

@@ -1,9 +1,5 @@
 import { useState, useEffect } from 'react';
-<<<<<<< HEAD
 import { Navigate, useNavigate, useLocation } from 'react-router-dom';
-=======
-import { useNavigate } from 'react-router-dom';
->>>>>>> 528cb6913cfaff7b93847f3d16c436b1b6a3f70e
 import Table from '../../../../components/MuComponents/Table/Table'
 import THead from '../../../../components/MuComponents/Table/THead'
 import TableTop from '../../../../components/MuComponents/TableTop/TableTop'
