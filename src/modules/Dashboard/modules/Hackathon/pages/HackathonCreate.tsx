@@ -68,8 +68,8 @@ const HackathonCreate = () => {
     }, [institutionsChunks]);
 
     function handleNext() {
-        if (tabIndex === 5) {
-            setTabIndex(5);
+        if (tabIndex === 4) {
+            setTabIndex(4);
         } else {
             setTabIndex(tabIndex + 1);
         }
