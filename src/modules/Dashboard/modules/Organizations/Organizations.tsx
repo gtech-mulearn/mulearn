@@ -4,22 +4,18 @@ import Table from '@/MuLearnComponents/Table/Table'
 import THead from '@/MuLearnComponents/Table/THead'
 import TableTop from '@/MuLearnComponents/TableTop/TableTop'
 import Pagination from '@/MuLearnComponents/Pagination/Pagination'
-import { getOrganizations, deleteOrganization } from './apis'
+import { getOrganizations } from './apis'
 import { useToast } from '@chakra-ui/react'
-
 import { hasRole } from '@/MuLearnServices/common_functions'
 import { roles } from '@/MuLearnServices/types'
 import {
     columnsCollege,
     columnsCommunities,
     columnsCompanies,
-    // editableCompaniesColumnNames,
-    // editableCommunityColumnNames
 } from "./THeaders"
 import TableTopTab from './TableTopTab'
-
 import "./Organizations.scss"
-import { dashboardRoutes, organizationRoutes } from '@/MuLearnServices/urls'
+import { organizationRoutes } from '@/MuLearnServices/urls'
 
 function Organizations() {
     const [data, setData] = useState<any[]>([]);
