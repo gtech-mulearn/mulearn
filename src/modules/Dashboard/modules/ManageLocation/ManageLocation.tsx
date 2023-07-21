@@ -13,7 +13,7 @@ import {
   columnsDistrict
 } from './ManageLocationHeaders';
 
-import { getCountryData,deleteCountryData} from './apis/CountryAPI';
+import { getCountryData, deleteCountryData } from './apis/CountryAPI';
 import { getStateData, deleteStateData } from './apis/StateAPI';
 import { getZoneData, deleteZoneData } from './apis/ZoneAPI';
 import { getDistrictData, deleteDistrictData } from './apis/DistrictAPI';
@@ -43,7 +43,7 @@ const ManageLocation = () => {
   const [selectedCountry, setSelectedCountry] = useState("")
   const [selectedState, setSelectedState] = useState("")
   const [selectedZone, setSelectedZone] = useState("")
-  const [isDeclined,setIsDeclined] = useState(false)
+  const [isDeclined, setIsDeclined] = useState(false)
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -60,16 +60,16 @@ const ManageLocation = () => {
     }
   }, [])
 
-  useEffect(()=>{
-    if(isDeclined){
+  useEffect(() => {
+    if (isDeclined) {
       setActiveTab("Country")
       setIsDeclined(false)
     }
-  },[popupStatus])
+  }, [popupStatus])
 
-  useEffect(() => {
-    if (activeTab === "Country"){
-      getCountryData(setData,toast,setTotalPages)
+  function loadTableData() {
+    if (activeTab === "Country") {
+      getCountryData(setData, toast, setTotalPages)
       setPopupFields({
         countryShow: true,
         stateShow: false,
@@ -89,6 +89,10 @@ const ManageLocation = () => {
       setPopupFields(prev => ({ ...prev, stateShow: true, zoneShow: true }))
       setColumns(columnsDistrict)
     }
+  }
+
+  useEffect(() => {
+    loadTableData()
     // return(
     //   setData([]),
     //   setTotalPages(1)
@@ -138,7 +142,7 @@ const ManageLocation = () => {
 
   function handleDelete(id: any): void {
     setData([])
-    console.log("delete-data ->",id)
+    console.log("delete-data ->", id)
     if (activeTab === "Country") {
       deleteCountryData(id)
     }
@@ -147,13 +151,14 @@ const ManageLocation = () => {
       alert("state edited")
     }
     else if (activeTab === "Zone") {
-      deleteZoneData(selectedCountry,selectedState, id)
+      deleteZoneData(selectedCountry, selectedState, id)
       alert("zone edited")
     }
     else if (activeTab === "District") {
-      deleteDistrictData(selectedCountry,selectedState,selectedZone, id)
+      deleteDistrictData(selectedCountry, selectedState, selectedZone, id)
       alert("district edited")
     }
+    loadTableData
   }
 
   function handleTabClick(tab: string) {
@@ -213,9 +218,9 @@ const ManageLocation = () => {
         popupFields={popupFields}
         activeItem={activeTab}
         handleData={setData}
-        handleCountry={(country: LocationItem) => setSelectedCountry}
-        handleState={(state: LocationItem) => setSelectedState}
-        handleZone={(zone: LocationItem) => setSelectedZone}
+        handleCountry={(country: LocationItem) => setSelectedCountry(country as string)}
+        handleState={(state: LocationItem) => setSelectedState(state as string)}
+        handleZone={(zone: LocationItem) => setSelectedZone(zone as string)}
         handleDeclined={setIsDeclined}
       />
     </>
@@ -238,11 +243,11 @@ const TableTopToggle = ({ active, onTabClick, country, state, zone, handleData }
     })
   }
 
-  function handleTabClick(item:string){
-      onTabClick(item)
-      if(item !== active){
-        handleData([])
-      }
+  function handleTabClick(item: string) {
+    onTabClick(item)
+    if (item !== active) {
+      handleData([])
+    }
   }
 
   return (

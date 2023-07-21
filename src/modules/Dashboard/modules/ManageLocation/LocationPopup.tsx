@@ -119,6 +119,7 @@ const LocationPopup = ({
           if (selectedData.Country && selectedData.Country.value) {
             getStateData(selectedData.Country.value, handleData,toast);
             handleCountry(selectedData.Country.value);
+            alert(`this is-> ${selectedData.Country.value}`)
           }
         } else if (activeItem === "Zone") {
           if (
