@@ -25,7 +25,8 @@ export const getZoneData = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            alert(error?.response?.data?.message.general[0]);
+            // alert(error?.response?.data?.message.general[0]);
+            console.log(error.response)
         }
     }
 };
