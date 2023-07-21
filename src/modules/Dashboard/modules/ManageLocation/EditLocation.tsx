@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import { FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
 import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
 import { putCountryData } from "./apis";
-import { useStatStyles, useToast } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
 import { useEffect,useState } from "react";
 
