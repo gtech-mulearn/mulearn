@@ -2,8 +2,10 @@ import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways"
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 
+import { circleListELement } from "../pages/LearningCircleLandingPage";
+
 export const getUserLearningCircles = async (
-    setUserCircleList: React.Dispatch<React.SetStateAction<string>>
+    setUserCircleList:React.Dispatch<React.SetStateAction<circleListELement[] | undefined>>
 ) => {
     try {
         const response = await privateGateway.get(
