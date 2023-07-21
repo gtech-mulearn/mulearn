@@ -174,16 +174,21 @@ const MuVoyage = (props: Props) => {
                                             >
                                                 <p>
                                                     Mine Left:{" "}
-                                                    {levelData.karma -
-                                                        levelData.tasks
-                                                            .filter(
-                                                                e => e.completed
-                                                            )
-                                                            .reduce(
-                                                                (a, b) =>
-                                                                    a + b.karma,
-                                                                0
-                                                            )}{" "}
+                                                    {Math.max(
+                                                        levelData.karma -
+                                                            levelData.tasks
+                                                                .filter(
+                                                                    e =>
+                                                                        e.completed
+                                                                )
+                                                                .reduce(
+                                                                    (a, b) =>
+                                                                        a +
+                                                                        b.karma,
+                                                                    0
+                                                                ),
+                                                        0
+                                                    )}{" "}
                                                     Karma
                                                 </p>
                                                 <p className={styles.goal}>
