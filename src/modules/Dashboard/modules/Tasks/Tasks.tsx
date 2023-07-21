@@ -92,11 +92,22 @@ export const Tasks = (props: Props) => {
 
     return (
         <>
-            <div className={styles.createBtnContainer}>
+            <div className={styles.createBtnContainer} style={{
+                gap: "15px"
+            }}>
+                <MuButton
+                    className={styles.createBtn}
+                    text={"Bulk Import"}
+                    icon={<AiOutlinePlusCircle />}
+                    onClick={() => navigate("/tasks/bulk-import")}
+                    style={{
+                        width: "auto"
+                    }}
+                />
                 <MuButton
                     className={styles.createBtn}
                     text={"Create"}
-                    icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
+                    icon={<AiOutlinePlusCircle/>}
                     onClick={handleCreate}
                 />
             </div>

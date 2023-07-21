@@ -3,9 +3,9 @@ import styles from "./MuIDModal.module.css";
 import { RiCloseLine } from "react-icons/ri";
 import { AiOutlineLoading } from "react-icons/ai";
 import { HiCheck, HiOutlineArrowRight } from "react-icons/hi";
-import { login, otpVerification, requestEmailOrMuidOtp } from "../../Common/Authentication/services/apis";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { KKEMLogin } from "../services/apis";
 
 interface ModalProps extends React.HTMLAttributes<HTMLDialogElement> {
     open: boolean;
@@ -152,7 +152,7 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
                                                 setError("Please enter a valid password");
                                             } else {
                                                 setError("")
-                                                login(
+                                                KKEMLogin(
                                                     muid,
                                                     password,
                                                     toast,

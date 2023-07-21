@@ -10,7 +10,7 @@
     -ms-overflow-style: none;
     /* IE and Edge */
     scroll-behavior: smooth;
-    /* scrollbar-width: none; */
+    scrollbar-width: none;
 }
 
 .css-13cymwt-control,
@@ -24,9 +24,9 @@
     margin-top: 10px;
 }
 
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
     display: none;
-} */
+}
 
 :root {
     --Primary: #456FF6;

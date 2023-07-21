@@ -17,7 +17,6 @@ import {
     putIsPublic
 } from "../services/api";
 import styles from "./Profile.module.css";
-
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { Switch, useToast } from "@chakra-ui/react";
 import { saveAs } from "file-saver";
@@ -545,10 +544,10 @@ const Profile = () => {
                                         </li>
                                         {/* <li>Join Mulearn</li> */}
                                         {/* <li>See More</li> */}
-                                        <div>
+                                        {/* <div>
                                             <i className=".fa-solid fa-chevron-left"></i>
                                             <i className="fi fi-ts-angle-right"></i>
-                                        </div>
+                                        </div> */}
                                     </div>
 
                                     <div className={styles.pointsList}>

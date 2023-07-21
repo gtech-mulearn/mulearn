@@ -53,7 +53,7 @@ const HeatmapComponent = (props: Props) => {
     const renderSquares = () => {
         let currentDate = moment(startDate);
         let currentWeekday = currentDate.isoWeekday(); // Get the ISO weekday (1-7, Monday-Sunday) of the start date
-        let emptySquaresCount = currentWeekday - 1;
+        let emptySquaresCount = currentWeekday - 7;
 
         // Render empty squares for the first week
         for (let i = 0; i < emptySquaresCount; i++) {
@@ -152,13 +152,13 @@ const HeatmapComponent = (props: Props) => {
                 <p>Dec</p>
             </div>
             <div className={styles.weeks}>
+                {/* <p>Sun</p> */}
                 <p>Mon</p>
-                <p>Tue</p>
+                {/* <p>Tue</p> */}
                 <p>Wed</p>
-                <p>Thu</p>
+                {/* <p>Thu</p> */}
                 <p>Fri</p>
-                <p>Sat</p>
-                <p>Sun</p>
+                {/* <p>Sat</p> */}
             </div>
             <div className={styles.heatmap}>{content}</div>
             <div className={styles.year_btns}>{renderYearButtons()}</div>
