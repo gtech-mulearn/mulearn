@@ -6,11 +6,9 @@ import { useToast } from '@chakra-ui/react'
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getdistrictdashboard } from "./apis"
-
 import { hasRole } from '@/MuLearnServices/common_functions'
 import { roles } from '@/MuLearnServices/types'
 import { columnsCampus, columnsStudent } from "./THeaders"
-
 import { dashboardRoutes } from '@/MuLearnServices/urls'
 import "./Organizations.css"
 import "./DistricDashboard.scss"

@@ -1,8 +1,6 @@
 import { publicGateway } from "@/MuLearnServices/apiGateways";
 import { KKEMRoutes } from "@/MuLearnServices/urls";
 
-const tempToken = "1c332a95-8411-40c1-ab64-18b56bd91988";
-
 export const userAuth = async (
     mu_id: string,
     dwms_id: string,
