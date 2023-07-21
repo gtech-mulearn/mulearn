@@ -1,11 +1,11 @@
 import React, { useState, ChangeEvent, DragEvent } from "react";
 import styles from "./BulkImport.module.css";
-import { FiPlus } from "react-icons/fi";
+import { FiUploadCloud } from "react-icons/fi";
 import { bulkImport } from "./BulkImportApi";
 import { SingleButton } from "../MuButtons/MuButton";
 
 type Props = {
-	path: string,
+    path: string;
 };
 
 /*
@@ -89,11 +89,11 @@ const BulkImport = (props: Props) => {
             const renamedFile = renameFile(selectedFile, "task_list.xlsx");
             const formData = new FormData();
             formData.append("task_list", renamedFile);
-			bulkImport(formData, props.path)
+            bulkImport(formData, props.path);
         }
     };
 
-	const renameFile = (file: File, newName: string): File => {
+    const renameFile = (file: File, newName: string): File => {
         const renamed = new File([file], newName, { type: file.type });
         return renamed;
     };
@@ -112,7 +112,11 @@ const BulkImport = (props: Props) => {
                         htmlFor="file-upload-input"
                         className={styles.upload_button}
                     >
-                        <FiPlus className={styles.icon} />
+                        <FiUploadCloud className={styles.icon} />
+                        <p className={styles.text}>
+                            Drag and drop Excel files here or click to select
+                            files
+                        </p>
                     </label>
                     <input
                         id="file-upload-input"
@@ -126,9 +130,6 @@ const BulkImport = (props: Props) => {
                             left: 0
                         }}
                     />
-                    <p className={styles.text}>
-                        Drag and drop Excel files here or click to select files
-                    </p>
                 </div>
                 {errorMessage && (
                     <p className="error-message">{errorMessage}</p>
@@ -136,7 +137,7 @@ const BulkImport = (props: Props) => {
                 {selectedFile && (
                     <div className={styles.fileInfo}>
                         <span>{selectedFile.name}</span>
-						<SingleButton text={"Upload"} onClick={handleUpload}/>
+                        <SingleButton text={"Upload"} onClick={handleUpload} />
                     </div>
                 )}
             </div>
