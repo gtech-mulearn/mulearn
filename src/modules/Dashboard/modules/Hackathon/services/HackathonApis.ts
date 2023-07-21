@@ -223,3 +223,35 @@ export const publishHackathon = async (
         }
     }
 };
+
+export const getApplicationForm = async (
+    id: string | undefined,
+    toast: (options?: UseToastOptions | undefined) => ToastId
+) => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getApplicationForm + id + "/"
+        );
+        const message: any = response?.data;
+        console.log(message);
+        toast({
+            title: "Change Successful",
+            description: "Hackathon status has been changed.",
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            toast({
+                title: "Failed to make changes",
+                description: "Make sure all fields are filled.",
+                status: "error",
+                duration: 5000,
+                isClosable: true
+            });
+            console.log(error.response);
+        }
+    }
+};

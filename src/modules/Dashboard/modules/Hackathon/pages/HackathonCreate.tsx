@@ -24,7 +24,6 @@ const options = [
     { label: "Offline", value: "offline" },
     { label: "Online", value: "online" },
 ];
-const options1 = [{ label: "Everyone", value: true }];
 
 const HackathonCreate = () => {
     const [tabIndex, setTabIndex] = useState(0);

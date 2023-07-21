@@ -57,6 +57,7 @@ import { LearningCircleLandingPage } from "./modules/Dashboard/modules/LearningC
 import HackathonDetails from "./modules/Dashboard/modules/Hackathon/pages/HackathonDetails";
 import DistrictDashboard from "./modules/Dashboard/modules/DistrictDashboard/DistrictDashboard";
 import ZonalDashboard from "./modules/Dashboard/modules/ZonalDashboard/ZonalDashboard";
+import HackathonRegistration from "./modules/Dashboard/modules/Hackathon/pages/HackathonRegistration";
 
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
@@ -209,6 +210,10 @@ const router = createBrowserRouter([
                     {
                         path: "hackathon/details/:id",
                         element: <HackathonDetails />
+                    },
+                    {
+                        path: "hackathon/apply/:id",
+                        element: <HackathonRegistration />
                     },
                     {
                         path: "manage-locations",
