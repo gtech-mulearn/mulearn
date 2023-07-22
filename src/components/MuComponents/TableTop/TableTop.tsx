@@ -55,27 +55,33 @@ const TableTop = (props: Props) => {
                         onOptionChange={handleOptionChange}
                     />
                     {props.CSV && (
-                        // <MuButton
-                        //     text={"CSV"}
-                        //     onClick={e => {
-                        //         handleClick();
-                        //     }}
-                        //     disabled={isLoading}
-                        //     isLoading={isLoading}
-                        //     icon={<HiDownload />}
-                        //     className={styles.csv}
-                        // />
-                        <button
-                            className={styles.searchIcon}
-                            onClick={() => {
+                        <MuButton
+                            text={"CSV"}
+                            onClick={e => {
                                 handleClick();
                             }}
-                        >
-                            <div className={styles.csv}>
-                                <HiDownload />
-                                CSV
-                            </div>
-                        </button>
+                            disabled={isLoading}
+                            isLoading={isLoading}
+                            icon={<HiDownload />}
+                            style={{
+                                background: "#456FF6",
+                                padding: "0.35rem 1rem",
+                                borderRadius: "10px",
+                                color: "#fff"
+                            }}
+                            className={styles.csv}
+                        />
+                        // <button
+                        //     className={styles.searchIcon}
+                        //     onClick={() => {
+                        //         handleClick();
+                        //     }}
+                        // >
+                        //     <div className={styles.csv}>
+                        //         <HiDownload />
+                        //         CSV
+                        //     </div>
+                        // </button>
                     )}
                 </div>
             </div>
