@@ -28,7 +28,7 @@ const ConnectDiscord = () => {
     return (
         <>
             {muid && muid.length > 0 ? (
-                <>
+                <div className={styles.connectDiscord}>
                     <div className={styles.connect_discord_container}>
                         <div className={styles.content}>
                             <h1>Join Discord using your µid</h1>
@@ -70,7 +70,6 @@ const ConnectDiscord = () => {
                                 </a>
                             </div>
                         </div>
-
                         <img className={styles.fb_image} src={cdimage} alt="" />
                     </div>
 
@@ -120,7 +119,7 @@ const ConnectDiscord = () => {
                             </div>
                         </div>
                     </div>
-                </>
+                </div>
             ) : (
                 <div className={styles.spinner_container}>
                     <div className={styles.spinner}>
