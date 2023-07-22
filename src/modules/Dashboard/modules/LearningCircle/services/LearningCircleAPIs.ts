@@ -4,9 +4,12 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { SetStateAction } from "react";
 import { LcType } from "../pages/LearningCircleFind";
 import { getUUID } from "../../Tasks/TaskApis";
+import { randomInt } from "crypto";
 import { createStandaloneToast, UseToastOptions } from "@chakra-ui/react";
 
+
 const { toast } = createStandaloneToast();
+
 
 export const getCampusLearningCircles = async (
     setCircleList: React.Dispatch<SetStateAction<LcType[]>>
@@ -35,12 +38,16 @@ export const createCircle = async(
         const response = await privateGateway.post(
             dashboardRoutes.createLearningCircle,
             {
-                name:circleName,
-                ig:ig,
-                //note : circle_code required data unknown
-                // circle_code: getUUID()
+                name: circleName,
+                ig: ig,
+                /*
+                ! circle_code required data ith udayippu aanu back-end fix cheyanam contact aashish
+				*/
+                circle_code: `${
+                    Math.floor(Math.random() * (999999999 - 1 + 1)) + 1
+                }`
             }
-        )
+        );
 
         console.log(response)
         toast({
@@ -50,6 +57,7 @@ export const createCircle = async(
             duration: 2000,
             isClosable: true
         });
+        
     }catch(err){
         const error = err as AxiosError;
         if (error?.response) {
