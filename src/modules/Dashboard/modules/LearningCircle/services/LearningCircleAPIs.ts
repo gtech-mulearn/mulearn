@@ -1,19 +1,20 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways"
 import { dashboardRoutes } from "@/MuLearnServices/urls";
+import { SetStateAction } from "react";
+import { LcType } from "../pages/LearningCircleFind";
+import { getUUID } from "../../Tasks/TaskApis";
 
-import { circleListELement } from "../pages/LearningCircleLandingPage";
-
-export const getUserLearningCircles = async (
-    setUserCircleList:React.Dispatch<React.SetStateAction<circleListELement[] | undefined>>
+export const getCampusLearningCircles = async (
+    setCircleList: React.Dispatch<SetStateAction<LcType[]>>
 ) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getUserLearningCircles
+            dashboardRoutes.getCampusLearningCircles
         );
         const message: any = response?.data;
-        console.log(message);
-        setUserCircleList(message.response.interestGroup.name);
+        console.log(message.response);
+        setCircleList(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -34,7 +35,7 @@ export const createCircle = async(
                 name:circleName,
                 ig:ig,
                 //note : circle_code required data unknown
-                circle_code:circleCode
+                // circle_code: getUUID()
             }
         )
 
