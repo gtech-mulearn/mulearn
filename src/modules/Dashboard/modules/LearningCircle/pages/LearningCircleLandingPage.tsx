@@ -81,7 +81,11 @@ export const LearningCircleLandingPage = () => {
                                                     <p className={styles.learningCircleLandingPagePara}>
                                                         {circle.ig}
                                                     </p>
-                                                    <button className={styles.learningCircleLandingPageBtn}>
+                                                    <button className={styles.learningCircleLandingPageBtn} onClick={() => {
+														navigate(
+                                                            `/learning-circle/details/${circle.id}`
+                                                        );
+													}}>
                                                         <BsChevronRight className={[].join(" ")}/>
                                                     </button>
                                                 </div>
