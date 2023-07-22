@@ -3,20 +3,56 @@ import { privateGateway } from "@/MuLearnServices/apiGateways"
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { SetStateAction } from "react";
 import { LcType } from "../pages/LearningCircleFind";
-import { getUUID } from "../../Tasks/TaskApis";
-import { randomInt } from "crypto";
-import { createStandaloneToast, UseToastOptions } from "@chakra-ui/react";
+import { createStandaloneToast } from "@chakra-ui/react";
+import { LcDetail } from "../pages/LearningCircle";
 
 
 const { toast } = createStandaloneToast();
 
+
+export const getUserLearningCircles = async (
+    setCircleList: React.Dispatch<SetStateAction<LcType[] | undefined>>
+) => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getCampusLearningCircles
+        );
+        const message: any = response?.data;
+        console.log(message.response);
+        setCircleList(message.response);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
+
+export const getLcDetails = async (
+    setCircleList: React.Dispatch<SetStateAction<LcDetail | undefined>>,
+    id: string | undefined
+) => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getCampusLearningCircles + id + "/"
+        );
+        const message: any = response?.data;
+        console.log(message.response);
+        setCircleList(message.response);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
 
 export const getCampusLearningCircles = async (
     setCircleList: React.Dispatch<SetStateAction<LcType[]>>
 ) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getCampusLearningCircles
+            dashboardRoutes.createLearningCircle
         );
         const message: any = response?.data;
         console.log(message.response);
