@@ -341,16 +341,10 @@ const LocationPath = ({
   state?: string;
   zone?: string;
 }) => {
-
-  function locationTextGenerate(){
-    if (zone) {
-      return `${country?.toUpperCase()} / ${state?.toUpperCase()} / ${zone?.toUpperCase()}`
-    } else if (state) {
-      return `${country?.toUpperCase()} / ${state?.toUpperCase()}`
-    } else {
-      return `${country?.toUpperCase()}`
-    }
+  function locationTextGenerate() {
+    return `${country?.toUpperCase()}${state ? ` / ${state?.toUpperCase()}` : ''}${zone ? ` / ${zone?.toUpperCase()}` : ''}`;
   }
+
   return (
     <div className="path_container">
       <p>{locationTextGenerate()}</p>
@@ -358,6 +352,7 @@ const LocationPath = ({
     </div>
   );
 };
+
 
 
 export default ManageLocation
