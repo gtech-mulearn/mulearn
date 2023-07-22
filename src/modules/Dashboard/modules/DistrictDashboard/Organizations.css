@@ -13,12 +13,12 @@
   cursor: pointer;
 }
 .table_tab_container .table_tabs .active {
-  background-color: #456ff6;
-  color: white;
+  background-color: white;
+  color: #5570F1;
 }
 .table_tab_container .table_tabs .inactive {
-  border: 1px solid #456ff6;
-  color: #456ff6;
+  border: 1px solid white;
+  color: #3D4043;
 }
 .table_tab_container .org_create_btn {
   background-color: white;
@@ -36,8 +36,11 @@
   height: -moz-max-content;
   height: max-content;
   padding: 20px;
+  border: none;
   border-radius: 8px;
   z-index: 0;
+  background-color: #fff;
+  margin: auto;
 }
 .popup_container .popup_title {
   font-size: 20px;
@@ -56,13 +59,6 @@
   content: " ";
 }
 
-.inputfield_container {
-  width: 100%;
-  text-align: start;
-  margin-top: 8px;
-  box-sizing: border-box;
-}
-
 .popup_dropdown_container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -70,9 +66,11 @@
   margin: 10px 0;
   z-index: 100;
 }
-
-.error {
-  color: red;
+.popup_dropdown_container .inputfield_container {
+  width: 100%;
+  text-align: start;
+  margin-top: 8px;
+  box-sizing: border-box;
 }
 
 .grid-container {
@@ -126,6 +124,9 @@
 .btn p {
   text-align: center;
 }
+.btn .btn_loader {
+  margin-left: 8px;
+}
 
 .blue-btn {
   background: #456ff6;
@@ -138,29 +139,27 @@
   color: #456ff6;
 }
 
+.delete_container {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes s3 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+@keyframes s3 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
 @media only screen and (max-width: 768px) {
   .popup_container {
     width: 100%;
-  }
-  .table_tab_container {
-    font-size: 14px;
-    flex-direction: column-reverse;
-    gap: 10px;
-  }
-  .table_tab_container .table_tabs {
-    gap: 10px;
-    justify-content: center;
-  }
-  .table_tab_container .table_tabs .table_tab_btn {
-    width: 33.33%;
-    padding: 6px 0;
-    border-radius: 6px;
-    cursor: touch;
-  }
-  .table_tab_container .org_create_btn {
-    padding: 3px 12px;
-    border-radius: 6px;
-    justify-content: center;
   }
 }
 @media only screen and (max-width: 400px) {

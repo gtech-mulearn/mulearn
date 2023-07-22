@@ -146,9 +146,7 @@ function Organizations() {
                 // CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}
                 // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
             />
-            {
-                console.log(data)
-            }
+            {console.log(data)}
             {data && (
                 <Table
                     rows={data}
@@ -163,6 +161,7 @@ function Organizations() {
                     <THead
                         columnOrder={columns}
                         onIconClick={handleIconClick}
+                        action={true}
                     />
                     <Pagination
                         currentPage={currentPage}
