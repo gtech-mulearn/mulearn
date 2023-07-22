@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
-import { HackList } from "../User/Hackathon";
+import { HackList } from "./HackathonInterface";
 import { SetStateAction } from "react";
 import { ToastId, UseToastOptions, useToast } from "@chakra-ui/react";
 import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
