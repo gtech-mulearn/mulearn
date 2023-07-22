@@ -179,10 +179,6 @@
     .formGroup .placeholder::placeholder {
         font-size: .8rem;
     }
-
-    .InputSet textarea {
-        /* min-width: 30vw; */
-    }
 }
 
 @media (width < 300px) {

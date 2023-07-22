@@ -196,32 +196,3 @@
 	border: .1px solid #CFD3D4;
 }
 
-@media (width<=1280px) {
-	.InputSet textarea {
-		/* min-width: 60vw; */
-	}
-}
-
-@media (width<=1080px) {
-	.InputSet input,
-	.InputSet textarea,
-	.reactSelect {
-		/* min-width: 50vw; */
-	}
-}
-
-@media (width<=820px) {
-	.InputSet input,
-	.InputSet textarea,
-	.reactSelect {
-		/* min-width: 80vw; */
-	}
-}
-
-@media (width<=520px) {
-	.InputSet input,
-	.InputSet textarea,
-	.reactSelect {
-		/* min-width: 68vw; */
-	}
-}
