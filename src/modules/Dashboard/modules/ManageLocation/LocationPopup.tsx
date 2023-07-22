@@ -67,8 +67,7 @@ const LocationPopup = ({
     const toast = useToast();
 
     useEffect(()=>{
-        console.log("useffect running")
-        if(activeItem === "Country"){
+        if(selectedData.Country === null){
             getCountryData(setCountryData,toast)
         }
         if(selectedData.Country !== null){
@@ -100,7 +99,7 @@ const LocationPopup = ({
         }
       
         return (
-          <>
+          <div className='selectionBox_container'>
             <p>Select {title}</p>
             <Select
               value={selectedData[title as keyof SelectedDataProps]}
@@ -109,7 +108,7 @@ const LocationPopup = ({
               options={data}
               required
             />
-          </>
+          </div>
         );
     };
       
