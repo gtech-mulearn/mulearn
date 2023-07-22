@@ -80,7 +80,6 @@ export const dashboardRoutes = {
 
     getCampusLearningCircles: "/api/v1/dashboard/lc/",
     createLearningCircle: "/api/v1/dashboard/lc/create/",
-    joinLearningCircle: "/api/v1/dashboard/lc/join/",
 
     getAllOrganisations: "/api/v1/hackathon/list-organisations/",
     getAllDistricts: "/api/v1/hackathon/list-districts/"
