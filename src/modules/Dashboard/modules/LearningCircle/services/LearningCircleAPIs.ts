@@ -5,6 +5,11 @@ import { SetStateAction } from "react";
 import { LcType } from "../pages/LearningCircleFind";
 import { getUUID } from "../../Tasks/TaskApis";
 import { randomInt } from "crypto";
+import { createStandaloneToast, UseToastOptions } from "@chakra-ui/react";
+
+
+const { toast } = createStandaloneToast();
+
 
 export const getCampusLearningCircles = async (
     setCircleList: React.Dispatch<SetStateAction<LcType[]>>
@@ -45,11 +50,26 @@ export const createCircle = async(
         );
 
         console.log(response)
+        toast({
+            title: "Learning Circle Created",
+            description: "",
+            status: "success",
+            duration: 2000,
+            isClosable: true
+        });
+        
     }catch(err){
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
         }
+        toast({
+            title: "Learning Circle not creating..",
+            description: "",
+            status: "error",
+            duration: 2000,
+            isClosable: true
+        });
     }
 
 }
