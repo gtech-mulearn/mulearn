@@ -10,6 +10,7 @@ import { MuButton } from '@/MuLearnComponents/MuButtons/MuButton';
 import { getStateData } from './apis/StateAPI';
 import { getZoneData } from './apis/ZoneAPI';
 import { getDistrictData } from './apis/DistrictAPI';
+import { useToast } from '@chakra-ui/react';
 
 
 interface SelectedDataProps {
@@ -33,6 +34,7 @@ interface LocationPopupProps {
   handleCountry: (country: LocationItem) => void;
   handleState: (state: LocationItem) => void;
   handleZone: (zone: LocationItem) => void;
+  handleDeclined: any;
 }
 
 const LocationPopup = ({
@@ -44,6 +46,7 @@ const LocationPopup = ({
     handleCountry,
     handleState,
     handleZone,
+    handleDeclined
 }:LocationPopupProps) => {
 
     const [countryData,setCountryData] = useState([])
@@ -61,14 +64,14 @@ const LocationPopup = ({
     })
 
     const navigate = useNavigate()
+    const toast = useToast();
 
     useEffect(()=>{
-        console.log("useeffect running")
-        if(activeItem === "Country"){
-            getCountryData(setCountryData)
+        if(selectedData.Country === null){
+            getCountryData(setCountryData,toast)
         }
         if(selectedData.Country !== null){
-            getStateData(selectedData.Country?.value,setStateData)
+            getStateData(selectedData.Country?.value,setStateData,toast)
         }
         if(selectedData.Country !== null && selectedData.State !== null){
             getZoneData(selectedData.Country?.value,selectedData.State?.value,setZoneData)
@@ -87,14 +90,16 @@ const LocationPopup = ({
     
     const SelectionBox = ({ title, data }: SelectionBoxProps) => {
         function handleOptionChange(option: any) {
-          setSelectedData((prev) => ({
-            ...prev,
-            [title]: option,
-          }));
+            setSelectedData((prev) => ({
+                ...prev,
+                [title]: option,
+                ...(title === "Country" && { State: null , Zone:null }),
+                ...(title === "State" && { Zone:null }),
+              }));
         }
       
         return (
-          <>
+          <div className='selectionBox_container'>
             <p>Select {title}</p>
             <Select
               value={selectedData[title as keyof SelectedDataProps]}
@@ -103,7 +108,7 @@ const LocationPopup = ({
               options={data}
               required
             />
-          </>
+          </div>
         );
     };
       
@@ -111,7 +116,7 @@ const LocationPopup = ({
     function submitPopupSelection() {
         if (activeItem === "State") {
           if (selectedData.Country && selectedData.Country.value) {
-            getStateData(selectedData.Country.value, handleData);
+            getStateData(selectedData.Country.value, handleData,toast);
             handleCountry(selectedData.Country.value);
           }
         } else if (activeItem === "Zone") {
@@ -149,7 +154,6 @@ const LocationPopup = ({
             handleZone(selectedData.Zone.value);
           }
         }
-      
         handlePopup(false);
       }
       
@@ -185,7 +189,8 @@ const LocationPopup = ({
                             text={"Decline"}
                             className={styles.btn_cancel}
                             onClick={() => {
-                                handlePopup(false)
+                                handlePopup(false),
+                                handleDeclined(true)
                             }}
                         />
                         <button 

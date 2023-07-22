@@ -148,7 +148,23 @@ export const getManageUsersDetails = async (
         );
         const message: any = response?.data;
         console.log(message.response);
+
+        let role = message.response.role;
         // console.log(message.response.users);
+        const newOrganizations = message.response.organizations;
+        console.log(newOrganizations);
+        for (let i = 0; i < newOrganizations.length; i++) {
+            console.log(newOrganizations[i].org_type);
+            if (newOrganizations[i].org_type == "Community") {
+                console.log("community");
+                
+            }
+            if (role == null) {
+                console.log("Company");
+            } else {
+                console.log("college");
+            }
+        }
         setData(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
