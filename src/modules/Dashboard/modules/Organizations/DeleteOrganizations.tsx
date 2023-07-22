@@ -1,5 +1,5 @@
 import React from 'react'
-import './Organizations.scss';
+// import './Organizations.scss';
 import Form from '@/MuLearnComponents/Form/Form';
 import { useNavigate,useParams } from 'react-router-dom';
 import { deleteOrganization } from './apis';

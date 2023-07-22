@@ -39,7 +39,6 @@ import EditOrgnaization from "./modules/Dashboard/modules/Organizations/EditOrga
 import UrlShortener from "./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener";
 import TaskEdit from "./modules/Dashboard/modules/Tasks/TaskEdit";
 import TaskCreate from "./modules/Dashboard/modules/Tasks/TaskCreate";
-import TaskDelete from "./modules/Dashboard/modules/Tasks/TaskDelete";
 import TaskBulkImport from "./modules/Dashboard/modules/Tasks/TaskBulkImport";
 import Hackathon from "./modules/Dashboard/modules/Hackathon/User/Hackathon";
 import HackathonCreate from "./modules/Dashboard/modules/Hackathon/pages/HackathonCreate";
@@ -190,10 +189,6 @@ const router = createBrowserRouter([
                     {
                         path: "url-shortener",
                         element: <UrlShortener />
-                    },
-                    {
-                        path: "tasks/delete/:id",
-                        element: <TaskDelete />
                     },
                     {
                         path: "url-shortener",

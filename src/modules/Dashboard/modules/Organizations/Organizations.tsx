@@ -11,11 +11,11 @@ import { roles } from "@/MuLearnServices/types";
 import {
     columnsCollege,
     columnsCommunities,
-    columnsCompanies
-} from "./THeaders";
-import TableTopTab from "./TableTopTab";
-import "./Organizations.scss";
-import { organizationRoutes } from "@/MuLearnServices/urls";
+    columnsCompanies,
+} from "./THeaders"
+import TableTopTab from './TableTopTab'
+// import "./Organizations.scss"
+import { organizationRoutes } from '@/MuLearnServices/urls'
 
 function Organizations() {
     const [data, setData] = useState<any[]>([]);
