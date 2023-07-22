@@ -1,7 +1,7 @@
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { useLocation, useNavigate } from 'react-router-dom';
 import FormData from './FormData';
-import './Organizations.scss';
+// import './Organizations.scss';
 
 function CreateOrganization() {
   const navigate = useNavigate();

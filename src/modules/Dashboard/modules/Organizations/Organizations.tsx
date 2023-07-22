@@ -14,7 +14,7 @@ import {
     columnsCompanies,
 } from "./THeaders"
 import TableTopTab from './TableTopTab'
-import "./Organizations.scss"
+// import "./Organizations.scss"
 import { organizationRoutes } from '@/MuLearnServices/urls'
 
 function Organizations() {

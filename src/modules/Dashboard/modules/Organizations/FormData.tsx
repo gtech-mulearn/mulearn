@@ -20,7 +20,7 @@ import {
 } from "./apis";
 
 import { useRef } from "react";
-import "./Organizations.scss";
+// import "./Organizations.scss";
 
 interface Option {
     value: string;

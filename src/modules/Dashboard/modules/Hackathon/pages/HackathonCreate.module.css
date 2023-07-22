@@ -123,7 +123,7 @@
     gap: 1rem;
 }
 
- .formUpload{
+.formUpload {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -131,7 +131,7 @@
     margin-bottom: 10px;
 }
 
-.formUpload .InputSet{
+.formUpload .InputSet {
     width: 100%;
 }
 
