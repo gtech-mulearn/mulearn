@@ -46,18 +46,23 @@
 .thContainer {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .icon {
-    border: 1px solid var(--Dark);
+  /*  border: 1px solid var(--Dark);*/
     border-radius: 10px;
     margin-left: 5px;
+    font-size: 22px;
 }
 
 .icons {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    color: rgba(87, 96, 117, 0.7);
+    font-size: 22px;
+    gap: 8px;
 }
 
 .btns {

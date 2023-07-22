@@ -2,6 +2,8 @@ import React, { FC, useState } from "react";
 import styles from "./Table.module.css";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { AiOutlineDelete } from "react-icons/ai";
+import { HiOutlinePencil } from "react-icons/hi";
 import Modal from "../Modal/Modal";
 enum ModalType {
     Verify,
@@ -45,7 +47,7 @@ type TableProps = {
     modalVerifyContent?: string;
     modalDeleteHeading?: string;
     modalDeleteContent?: string;
-    modalTypeContent?:string;
+    modalTypeContent?: string;
 };
 
 {
@@ -151,7 +153,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                             )
                                                         }
                                                     >
-                                                        <FaEdit />
+                                                        <HiOutlinePencil />
                                                     </button>
                                                 )}
                                                 {props.onVerifyClick && (
@@ -196,7 +198,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                             )
                                                         }
                                                     >
-                                                        <MdDelete />
+                                                        <AiOutlineDelete />
                                                     </button>
                                                 )}
                                                 {isDeleteOpen[index] && (

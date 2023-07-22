@@ -13,12 +13,12 @@
   cursor: pointer;
 }
 .table_tab_container .table_tabs .active {
-  background-color: #456ff6;
-  color: white;
+  background-color: white;
+  color: #5570F1;
 }
 .table_tab_container .table_tabs .inactive {
-  border: 1px solid #456ff6;
-  color: #456ff6;
+  border: 1px solid white;
+  color: #3D4043;
 }
 .table_tab_container .org_create_btn {
   background-color: white;
