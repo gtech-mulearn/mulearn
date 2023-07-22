@@ -25,12 +25,12 @@ const MuVoyage = (props: Props) => {
     const [userLevelTrack, setUserLevelTrack] = useState(
         userLevelData[props.userLevel - 1]
     );
-    let userLevelTrackerPercentage = !userLevelTrack.tasks.every(
+    let userLevelTrackerPercentage = !userLevelTrack?.tasks.every(
         e => e.completed
     )
         ? `${(
-              (userLevelTrack.tasks.filter(e => e.completed).length /
-                  userLevelTrack.tasks.length) *
+              (userLevelTrack?.tasks.filter(e => e.completed).length /
+                  userLevelTrack?.tasks.length) *
               100
           ).toFixed(0)}`
         : "100";
@@ -43,7 +43,7 @@ const MuVoyage = (props: Props) => {
                         <div className={styles.title}>
                             <span></span>
                             <div className={styles.title_desc}>
-                                <p>{userLevelTrack.name}</p>
+                                <p>{userLevelTrack?.name}</p>
                                 {/* <p>Level2 - Task 1</p> */}
                             </div>
                         </div>
@@ -54,11 +54,11 @@ const MuVoyage = (props: Props) => {
                                     {userLevelTrackerPercentage + "%"} complete
                                 </p>
                                 <p>
-                                    {userLevelTrack.tasks
+                                    {userLevelTrack?.tasks
                                         .filter(e => e.completed)
                                         .reduce((a, b) => a + b.karma, 0)}
                                     /
-                                    {userLevelTrack.tasks.reduce(
+                                    {userLevelTrack?.tasks.reduce(
                                         (a, b) => a + b.karma,
                                         0
                                     )}{" "}
@@ -81,7 +81,7 @@ const MuVoyage = (props: Props) => {
 
                     <ul className={styles.accordion}>
                         {userLevelData
-                            .filter(e => e.tasks.length !== 0)
+                            .filter(e => e?.tasks.length !== 0)
                             .map((levelData, i) => {
                                 return (
                                     <li className={styles.main_list} key={i}>
@@ -96,7 +96,7 @@ const MuVoyage = (props: Props) => {
                                             className={styles.level}
                                         >
                                             <p>
-                                                {levelData.name}
+                                                {levelData?.name}
                                                 {"  "}
                                                 <span
                                                     className={
@@ -104,7 +104,7 @@ const MuVoyage = (props: Props) => {
                                                     }
                                                 >
                                                     [
-                                                    {levelData.tasks
+                                                    {levelData?.tasks
                                                         .filter(
                                                             e => e.completed
                                                         )
@@ -128,15 +128,15 @@ const MuVoyage = (props: Props) => {
                                             >
                                                 <CircularProgress
                                                     value={
-                                                        !levelData.tasks.every(
+                                                        !levelData?.tasks.every(
                                                             e => e.completed
                                                         )
-                                                            ? (levelData.tasks.filter(
+                                                            ? (levelData?.tasks.filter(
                                                                   e =>
                                                                       e.completed
                                                               ).length /
                                                                   levelData
-                                                                      .tasks
+                                                                      ?.tasks
                                                                       .length) *
                                                               100
                                                             : 100
@@ -147,7 +147,7 @@ const MuVoyage = (props: Props) => {
                                                     capIsRound={true}
                                                     // trackColor="red.100"
                                                 >
-                                                    {levelData.tasks.every(
+                                                    {levelData?.tasks.every(
                                                         e => e.completed
                                                     ) ? (
                                                         <CircularProgressLabel>
@@ -158,7 +158,7 @@ const MuVoyage = (props: Props) => {
                                                     ) : null}
                                                 </CircularProgress>
                                                 <p>
-                                                    {levelData.tasks.length}{" "}
+                                                    {levelData?.tasks.length}{" "}
                                                     Tasks
                                                 </p>
                                                 <i
@@ -176,7 +176,7 @@ const MuVoyage = (props: Props) => {
                                                     Mine Left:{" "}
                                                     {Math.max(
                                                         levelData.karma -
-                                                            levelData.tasks
+                                                            levelData?.tasks
                                                                 .filter(
                                                                     e =>
                                                                         e.completed
@@ -198,8 +198,8 @@ const MuVoyage = (props: Props) => {
                                                 </p>
                                             </div>
                                             <ul className={styles.list_list}>
-                                                {levelData.tasks &&
-                                                    levelData.tasks.map(
+                                                {levelData?.tasks &&
+                                                    levelData?.tasks.map(
                                                         (taskData, j) => {
                                                             return (
                                                                 <li key={j}>

@@ -87,7 +87,7 @@ const Profile = () => {
         const endMonth = endDate.getMonth();
         return (endYear - startYear) * 12 + (endMonth - startMonth);
     }
-    const startDate = new Date(userProfile.joined.slice(0, 10));
+    const startDate = new Date(userProfile?.joined?.slice(0, 10));
     const endDate = new Date(moment().format("YYYY-MM-DD"));
     const monthDifference = getMonthDifference(startDate, endDate);
     const firstFetch = useRef(true);
@@ -356,7 +356,7 @@ const Profile = () => {
                                             </div>
                                             <p>
                                                 Member since{" "}
-                                                {userProfile.joined.slice(0, 4)}
+                                                {userProfile?.joined?.slice(0, 4)}
                                             </p>
                                         </div>
                                     </div>
@@ -436,7 +436,7 @@ const Profile = () => {
                                                 >
                                                     LEVEL{"     "}
                                                     {userProfile.level
-                                                        ? userProfile.level.slice(
+                                                        ? userProfile?.level?.slice(
                                                               3,
                                                               4
                                                           )
@@ -629,7 +629,7 @@ const Profile = () => {
                                     <MuVoyage
                                         userLevelData={userLevelData}
                                         userLevel={parseInt(
-                                            userProfile.level.slice(3, 4)
+                                            userProfile?.level?.slice(3, 4)
                                         )}
                                     />
                                 ) : null}
