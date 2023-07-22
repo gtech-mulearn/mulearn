@@ -47,7 +47,7 @@ import KKEMLanding from "./modules/KKEM/modules/KKEMLanding";
 import KKEMAuth from "./modules/KKEM/modules/KKEMAuth";
 import RankCard from "./modules/Embeds/modules/RankCard/pages/RankCard";
 import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle";
-import CreateCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate";
+import LearningCircleCreate from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate";
 import ManageLocation from "./modules/Dashboard/modules/ManageLocation/ManageLocation";
 import AddLocation from "./modules/Dashboard/modules/ManageLocation/AddLocation";
 import EditLocation from "./modules/Dashboard/modules/ManageLocation/EditLocation";
@@ -57,6 +57,7 @@ import { LearningCircleLandingPage } from "./modules/Dashboard/modules/LearningC
 import HackathonDetails from "./modules/Dashboard/modules/Hackathon/pages/HackathonDetails";
 import DistrictDashboard from "./modules/Dashboard/modules/DistrictDashboard/DistrictDashboard";
 import ZonalDashboard from "./modules/Dashboard/modules/ZonalDashboard/ZonalDashboard";
+import HackathonRegistration from "./modules/Dashboard/modules/Hackathon/pages/HackathonRegistration";
 
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
@@ -207,8 +208,16 @@ const router = createBrowserRouter([
                         element: <HackathonCreate />
                     },
                     {
+                        path: "hackathon/edit/:id",
+                        element: <HackathonCreate />
+                    },
+                    {
                         path: "hackathon/details/:id",
                         element: <HackathonDetails />
+                    },
+                    {
+                        path: "hackathon/apply/:id",
+                        element: <HackathonRegistration />
                     },
                     {
                         path: "manage-locations",
@@ -231,7 +240,7 @@ const router = createBrowserRouter([
                         element: <LearningCircleLandingPage />
                     },
                     {
-                        path: "learning-circle/details",
+                        path: "learning-circle/details/:id",
                         element: <LearningCircle />
                     },
                     {
@@ -240,7 +249,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "learning-circle/create-circle",
-                        element: <CreateCircle />
+                        element: <LearningCircleCreate />
                     }
                 ]
             }

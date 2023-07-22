@@ -1,0 +1,123 @@
+.popup_container {
+  width: 40%;
+  min-width: 40%;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 20px;
+  border: none;
+  border-radius: 8px;
+  z-index: 0;
+  background-color: #fff;
+  margin: auto;
+}
+.popup_container .popup_title {
+  font-size: 20px;
+  font-weight: 800;
+  text-align: start;
+}
+.popup_container p {
+  width: 90%;
+  text-align: left;
+  font-size: 14px;
+}
+.popup_container p span {
+  font-weight: bold;
+}
+.popup_container p span::after {
+  content: " ";
+}
+
+.ml_top_container {
+  width: 100%;
+  display: flex;
+  padding: 0 2rem;
+  justify-content: space-between;
+}
+
+.ml_toggle_container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.ml_toggle_container .table_tab_btn {
+  height: -moz-max-content;
+  height: max-content;
+  padding: 6px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.ml_toggle_container .active {
+  background-color: #456ff6;
+  color: white;
+}
+.ml_toggle_container .inactive {
+  border: 1px solid #456ff6;
+  color: #456ff6;
+}
+
+.createBtnContainer {
+  width: -moz-max-content;
+  width: max-content;
+  display: flex;
+  align-items: center;
+}
+
+.createBtn {
+  background: var(--Primary);
+  color: var(--White);
+  min-width: 100px;
+  padding: 10px 20px;
+  display: flex;
+  gap: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--Primary);
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.ml_popup_btn_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.ml_popup_container {
+  background-color: rgba(4, 4, 4, 0.368);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+.ml_popup_container .ml_popup_box {
+  min-width: 20rem;
+  width: 30%;
+  height: -moz-max-content;
+  height: max-content;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  transform: translateX(30%);
+}
+.ml_popup_container .ml_popup_box .ml_popup_title {
+  font-size: 20px;
+  font-weight: 800;
+  text-align: start;
+}
+.ml_popup_container .ml_popup_box .ml_popup_btn_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.show {
+  display: flex !important;
+}/*# sourceMappingURL=ManageLocation.css.map */

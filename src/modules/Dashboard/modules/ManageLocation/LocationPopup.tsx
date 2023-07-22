@@ -3,37 +3,51 @@ import Select from "react-select";
 import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
 import { useNavigate } from 'react-router-dom';
 import {
-    getCountryData,
-  } from './apis';
+    getCountryData
+} from './apis/CountryAPI';
 import { MuButton } from '@/MuLearnComponents/MuButtons/MuButton';
 
-const data = [
-    {
-        label: "hi",
-        value: "hi"
-    },
-    {
-        label: "hi",
-        value: "hi"
-    },
-    {
-        label: "hi",
-        value: "hi"
-    }
-]
+import { getStateData } from './apis/StateAPI';
+import { getZoneData } from './apis/ZoneAPI';
+import { getDistrictData } from './apis/DistrictAPI';
+import { useToast } from '@chakra-ui/react';
 
-interface LocationPopupProps {
-    isShowPopup: boolean;
-    handlePopup:any;
-    popupFields:any;
-    activeItem:string;
-}
 
 interface SelectedDataProps {
-    [key: string]: string;
+    Country: { value: string; label: string } | null;
+    State: { value: string; label: string } | null;
+    Zone: { value: string; label: string } | null;
 }
 
-const LocationPopup = ({isShowPopup,handlePopup,popupFields,activeItem}:LocationPopupProps) => {
+type LocationItem = { value: string; label: string } | string;
+
+interface LocationPopupProps {
+  isShowPopup: boolean;
+  handlePopup: (show: boolean) => void;
+  popupFields: {
+    countryShow: boolean;
+    stateShow: boolean;
+    zoneShow: boolean;
+  };
+  activeItem: string;
+  handleData: (data: any) => void;
+  handleCountry: (country: LocationItem) => void;
+  handleState: (state: LocationItem) => void;
+  handleZone: (zone: LocationItem) => void;
+  handleDeclined: any;
+}
+
+const LocationPopup = ({
+    isShowPopup,
+    handlePopup,
+    popupFields,
+    activeItem,
+    handleData,
+    handleCountry,
+    handleState,
+    handleZone,
+    handleDeclined
+}:LocationPopupProps) => {
 
     const [countryData,setCountryData] = useState([])
     const [stateData,setStateData] = useState([])
@@ -44,62 +58,105 @@ const LocationPopup = ({isShowPopup,handlePopup,popupFields,activeItem}:Location
     const [selectedZone,setSelectedZone] = useState("")
 
     const [selectedData,setSelectedData] = useState<SelectedDataProps>({
-        Country: "",
-        State: "",
-        Zone: ""
+        Country: null,
+        State: null,
+        Zone: null
     })
 
     const navigate = useNavigate()
+    const toast = useToast();
 
     useEffect(()=>{
-        console.log("useeffect running")
-        if(activeItem === "Country"){
-            getCountryData(setCountryData)
+        if(selectedData.Country === null){
+            getCountryData(setCountryData,toast)
         }
-        if(selectedData.Country !== ""){
-            getCountryData(setStateData)
+        if(selectedData.Country !== null){
+            getStateData(selectedData.Country?.value,setStateData,toast)
+        }
+        if(selectedData.Country !== null && selectedData.State !== null){
+            getZoneData(selectedData.Country?.value,selectedData.State?.value,setZoneData)
         }
     },[selectedData])
 
+    interface Option {
+        value: string;
+        label: string;
+      }
+      
     interface SelectionBoxProps {
-        title:string;
-        data:any;
+        title: string;
+        data: Option[];
     }
     
-    const SelectionBox = ({title,data}:SelectionBoxProps)=> {
-        
-        function handleOptionChange(option:any){
-            setSelectedData(prev=>({...prev,[title]:option}))
+    const SelectionBox = ({ title, data }: SelectionBoxProps) => {
+        function handleOptionChange(option: any) {
+            setSelectedData((prev) => ({
+                ...prev,
+                [title]: option,
+                ...(title === "Country" && { State: null , Zone:null }),
+                ...(title === "State" && { Zone:null }),
+              }));
         }
-    
-        return(
-            <>
-                <p>Select {title}</p>
-                <Select
-                    value={selectedData[title]}
-                    name={title}
-                    onChange={handleOptionChange}
-                    options={data}
-                    required
-                />
-            </>
-        )
-    }
+      
+        return (
+          <div className='selectionBox_container'>
+            <p>Select {title}</p>
+            <Select
+              value={selectedData[title as keyof SelectedDataProps]}
+              name={title}
+              onChange={handleOptionChange}
+              options={data}
+              required
+            />
+          </div>
+        );
+    };
+      
 
-    function submitPopupSelection(){
-        if(activeItem === "States"){
-            setSelectedCountry(selectedData.Country)
-        }else if(activeItem === "Zone"){
-            setSelectedCountry(selectedData.Country)
-            setSelectedState(selectedData.State)
-        }else if(activeItem === "District"){
-            setSelectedCountry(selectedData.Country)
-            setSelectedState(selectedData.State)
-            setSelectedZone(selectedData.Zone)
+    function submitPopupSelection() {
+        if (activeItem === "State") {
+          if (selectedData.Country && selectedData.Country.value) {
+            getStateData(selectedData.Country.value, handleData,toast);
+            handleCountry(selectedData.Country.value);
+          }
+        } else if (activeItem === "Zone") {
+          if (
+            selectedData.Country &&
+            selectedData.Country.value &&
+            selectedData.State &&
+            selectedData.State.value
+          ) {
+            getZoneData(
+              selectedData.Country.value,
+              selectedData.State.value,
+              handleData
+            );
+            handleCountry(selectedData.Country.value);
+            handleState(selectedData.State.value);
+          }
+        } else if (activeItem === "District") {
+          if (
+            selectedData.Country &&
+            selectedData.Country.value &&
+            selectedData.State &&
+            selectedData.State.value &&
+            selectedData.Zone &&
+            selectedData.Zone.value
+          ) {
+            getDistrictData(
+              selectedData.Country.value,
+              selectedData.State.value,
+              selectedData.Zone.value,
+              handleData
+            );
+            handleCountry(selectedData.Country.value);
+            handleState(selectedData.State.value);
+            handleZone(selectedData.Zone.value);
+          }
         }
-        console.log(selectedData.Country)
-        handlePopup(false)
-    }
+        handlePopup(false);
+      }
+      
 
     return (
         <div className={`ml_popup_container ${isShowPopup ? "show" : ""}`}>
@@ -132,7 +189,8 @@ const LocationPopup = ({isShowPopup,handlePopup,popupFields,activeItem}:Location
                             text={"Decline"}
                             className={styles.btn_cancel}
                             onClick={() => {
-                                handlePopup(false)
+                                handlePopup(false),
+                                handleDeclined(true)
                             }}
                         />
                         <button 

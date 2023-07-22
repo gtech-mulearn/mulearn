@@ -1,45 +1,53 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
-import Table from '@/MuLearnComponents/Table/Table'
-import THead from '@/MuLearnComponents/Table/THead'
-import TableTop from '@/MuLearnComponents/TableTop/TableTop'
-import Pagination from '@/MuLearnComponents/Pagination/Pagination'
-import { getOrganizations } from './apis'
-import { useToast } from '@chakra-ui/react'
-import { hasRole } from '@/MuLearnServices/common_functions'
-import { roles } from '@/MuLearnServices/types'
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import Table from "@/MuLearnComponents/Table/Table";
+import THead from "@/MuLearnComponents/Table/THead";
+import TableTop from "@/MuLearnComponents/TableTop/TableTop";
+import Pagination from "@/MuLearnComponents/Pagination/Pagination";
+import { deleteOrganization, getOrganizations } from "./apis";
+import { useToast } from "@chakra-ui/react";
+import { hasRole } from "@/MuLearnServices/common_functions";
+import { roles } from "@/MuLearnServices/types";
 import {
     columnsCollege,
     columnsCommunities,
-    columnsCompanies,
-} from "./THeaders"
-import TableTopTab from './TableTopTab'
-import "./Organizations.scss"
-import { organizationRoutes } from '@/MuLearnServices/urls'
+    columnsCompanies
+} from "./THeaders";
+import TableTopTab from "./TableTopTab";
+import "./Organizations.scss";
+import { organizationRoutes } from "@/MuLearnServices/urls";
 
 function Organizations() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(5);
-    const [columns, setColumns] = useState(columnsCollege)
-    const [activeTab, setActiveTab] = useState("Colleges")
-    const [sort, setSort] = useState('');
-    const [popupStatus, setPopupStatus] = useState(false)
-    const [activeTabName,setActiveTabName] = useState("college")
+    const [columns, setColumns] = useState(columnsCollege);
+    const [activeTab, setActiveTab] = useState("Colleges");
+    const [sort, setSort] = useState("");
+    const [popupStatus, setPopupStatus] = useState(false);
+    const [activeTabName, setActiveTabName] = useState("college");
 
-    const [isCreate, setIsCreate] = useState(false)
-    const [isEdit, setIsEdit] = useState(false)
-    const firstFetch = useRef(true)
+    const [isCreate, setIsCreate] = useState(false);
+    const [isEdit, setIsEdit] = useState(false);
+    const firstFetch = useRef(true);
     const navigate = useNavigate();
 
-    const toast = useToast()
+    const toast = useToast();
 
     useEffect(() => {
         if (firstFetch.current) {
             if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
 
-            getOrganizations(activeTab, setData, 1, perPage, setTotalPages, "", "");
+            getOrganizations(
+                activeTab,
+                setData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                ""
+            );
         }
         firstFetch.current = false;
     }, []);
@@ -58,35 +66,51 @@ function Organizations() {
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getOrganizations(activeTab, setData, 1, perPage, setTotalPages, search, "");
+        getOrganizations(
+            activeTab,
+            setData,
+            1,
+            perPage,
+            setTotalPages,
+            search,
+            ""
+        );
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getOrganizations(activeTab, setData, 1, selectedValue, setTotalPages, "", "");
+        getOrganizations(
+            activeTab,
+            setData,
+            1,
+            selectedValue,
+            setTotalPages,
+            "",
+            ""
+        );
     };
 
     const handleTabClick = (tab: string) => {
         if (tab === "Colleges") {
-            setActiveTabName("college")
-            setColumns(columnsCollege)
+            setActiveTabName("college");
+            setColumns(columnsCollege);
             getOrganizations(tab, setData, 1, perPage, setTotalPages, "", "");
         } else if (tab === "Companies") {
-            setActiveTabName("company")
-            setColumns(columnsCompanies)
+            setActiveTabName("company");
+            setColumns(columnsCompanies);
             getOrganizations(tab, setData, 1, perPage, setTotalPages, "", "");
         } else if (tab === "Communities") {
-            setActiveTabName("community")
-            setColumns(columnsCommunities)
+            setActiveTabName("community");
+            setColumns(columnsCommunities);
             getOrganizations(tab, setData, 1, perPage, setTotalPages, "", "");
         } else {
-            alert("Error to load Table Headers")
+            alert("Error to load Table Headers");
         }
-        setCurrentPage(1)
-        setActiveTab(tab)
-        setPopupStatus(false)
-    }
+        setCurrentPage(1);
+        setActiveTab(tab);
+        setPopupStatus(false);
+    };
 
     const handleIconClick = (column: string) => {
         if (sort === column) {
@@ -102,7 +126,15 @@ function Organizations() {
             );
         } else {
             setSort(column);
-            getOrganizations(activeTab, setData, 1, perPage, setTotalPages, "", column);
+            getOrganizations(
+                activeTab,
+                setData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                column
+            );
         }
 
         //console.log(`Icon clicked for column: ${column}`);
@@ -110,10 +142,9 @@ function Organizations() {
 
     const handleEdit = (id: string | number | boolean) => {
         //console.log(id);
-        setIsEdit(true)
+        setIsEdit(true);
         navigate("/organizations/edit", {
-            state:
-            {
+            state: {
                 activeItem: activeTab,
                 rowId: id
             }
@@ -122,7 +153,7 @@ function Organizations() {
 
     const handleDelete = (id: string | undefined) => {
         //console.log("code:",id)
-        navigate(`delete/${id}`)
+        // navigate(`delete/${id}`)
         // const confirmed = confirm("Are you sure you want to delete?");
         // if(confirmed){
         //     deleteOrganization(id,toast)
@@ -130,11 +161,11 @@ function Organizations() {
         // }else{
         //     console.log("cancelled")
         // }
-    }
-
-    const handleAddClickClose = () => {
-        setPopupStatus(false)
-    }
+        deleteOrganization(id, toast);
+        setTimeout(() => {
+            handleTabClick(activeTab);
+        }, 1000);
+    };
 
     return (
         <>
@@ -146,9 +177,7 @@ function Organizations() {
                 // CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}
                 // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
             />
-            {
-                console.log(data)
-            }
+            {console.log(data)}
             {data && (
                 <Table
                     rows={data}
@@ -158,11 +187,13 @@ function Organizations() {
                     id={["code"]}
                     onEditClick={handleEdit}
                     modalTypeContent="error"
+                    modalDeleteContent={`Are you sure you want to delete this organization?`}
                     onDeleteClick={handleDelete}
                 >
                     <THead
                         columnOrder={columns}
                         onIconClick={handleIconClick}
+                        action={true}
                     />
                     <Pagination
                         currentPage={currentPage}
@@ -178,4 +209,4 @@ function Organizations() {
     );
 }
 
-export default Organizations
+export default Organizations;

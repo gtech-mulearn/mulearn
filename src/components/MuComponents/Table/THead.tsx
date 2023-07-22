@@ -1,5 +1,6 @@
 import styles from "./Table.module.css";
 import { RxCaretSort } from "react-icons/rx";
+import { BiSortAlt2 } from "react-icons/bi";
 
 interface TableHeadProps {
     columnOrder: {
@@ -8,15 +9,15 @@ interface TableHeadProps {
         isSortable: boolean;
     }[];
     onIconClick: (column: string) => void;
-	action?: true | false;
-	verify?: true | false;
+    action?: true | false;
+    verify?: true | false;
 }
 
 const THead: React.FC<TableHeadProps> = ({
     columnOrder,
     onIconClick,
-	action = false,
-	verify = false,
+    action = false,
+    verify = false
 }) => {
     return (
         <thead>
@@ -31,7 +32,7 @@ const THead: React.FC<TableHeadProps> = ({
                                     className={styles.icon}
                                     onClick={() => onIconClick(column.column)}
                                 >
-                                    <RxCaretSort />
+                                    <BiSortAlt2 />
                                 </button>
                             )}
                         </div>

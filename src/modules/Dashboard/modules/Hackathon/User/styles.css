@@ -1,3 +1,9 @@
+.toolTipStyle {
+	background-color: var(--blue);
+	color: var(--White);
+	border-radius: var(--borderRadius);
+}
+
 .box {
 	background-color: transparent;
 	display: flex;
