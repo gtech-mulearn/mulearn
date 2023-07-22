@@ -3,10 +3,12 @@ import styles from "./BulkImport.module.css";
 import { FiUploadCloud } from "react-icons/fi";
 import { bulkImport } from "./BulkImportApi";
 import { SingleButton } from "../MuButtons/MuButton";
+import { useToast } from "@chakra-ui/react";
 
 interface Props extends React.HTMLAttributes<HTMLInputElement> {
     path: string;
     onUpload?: (response: any) => void;
+    onError?: (error: any) => void;
 }
 
 /*
@@ -18,7 +20,7 @@ const BulkImport = ({ path, onUpload, ...rest }: Props) => {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [isDragging, setIsDragging] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
-
+    const toast = useToast();
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files.length > 0) {
             const file = event.target.files[0];
@@ -91,7 +93,22 @@ const BulkImport = ({ path, onUpload, ...rest }: Props) => {
             const formData = new FormData();
             formData.append("task_list", renamedFile);
             bulkImport(formData, path).then(response => {
-                onUpload && onUpload(response);
+                if (response.status && response.status !== 200) {
+                    if (response.status === 400 || 403) {
+                        toast({
+                            title: "Error",
+                            description:
+                                response.response.data?.message?.general[0],
+                            status: "error",
+                            duration: 5000,
+                            isClosable: true
+                        });
+                        return;
+                    }
+                }
+                if (onUpload) {
+                    onUpload(response);
+                }
             });
         }
     };

@@ -4,8 +4,18 @@ import { SingleButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useState, useMemo, MouseEventHandler } from "react";
 import { BiDownload } from "react-icons/bi";
+import { useToast } from "@chakra-ui/react";
 
 type Props = {};
+
+const CountCard = ({ title, count }: { title: string; count: number }) => {
+    return (
+        <div>
+            <h3>{title}</h3>
+            <h1>{count}</h1>
+        </div>
+    );
+};
 
 const TaskBulkImport = (props: Props) => {
     const [uploadResponse, setUploadResponse] = useState<any>(null);
@@ -35,29 +45,54 @@ const TaskBulkImport = (props: Props) => {
                 icon={<BiDownload />}
                 link="https://drive.google.com/uc?export=download&id=1b2DUyj6zxDzY8q5pDTbL3NlZEL1J1dcq"
             />
-            {!uploadResponse ? (
-                <BulkImport
-                    path={dashboardRoutes.getTasksData + "import/"}
-                    onUpload={res => {
-                        setUploadResponse(res);
-                        console.log(res.response.Failed);
-                    }}
-                />
-            ) : (
-                <div>
-                    <SingleButton
-                        text="Download Success data"
-                        onClick={memoizedSuccessDownload}
-                    />
-                    <SingleButton
-                        text="Download Failure data"
-                        onClick={memoizedFailureDownload}
-                    />
-                    <SingleButton
-                        text="Upload Again"
-                        onClick={() => setUploadResponse(null)}
-                    />
-                </div>
+
+            <BulkImport
+                path={dashboardRoutes.getTasksData + "import/"}
+                onUpload={res => {
+                    setUploadResponse(res);
+                    console.log(res.response.Failed);
+                }}
+            />
+            {uploadResponse && (
+                <>
+                    <div
+                        style={{
+                            display: "flex",
+                            width: "100%",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            gap: "10rem"
+                        }}
+                    >
+                        <CountCard
+                            title="Success"
+                            count={uploadResponse.response.Success.length}
+                        />
+                        <CountCard
+                            title="Failed"
+                            count={uploadResponse.response.Failed.length}
+                        />
+                    </div>
+                    <div
+                        style={{
+                            display: "flex",
+                            width: "100%",
+                            justifyContent: "center",
+                            gap: "1rem"
+                        }}
+                    >
+                        <SingleButton
+                            text="Download Success data"
+                            onClick={memoizedSuccessDownload}
+                            style={{ width: "initial" }}
+                        />
+                        <SingleButton
+                            text="Download Failed data"
+                            onClick={memoizedFailureDownload}
+                            style={{ width: "initial" }}
+                        />
+                    </div>
+                </>
             )}
         </>
     );
