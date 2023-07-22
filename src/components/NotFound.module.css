@@ -7,7 +7,7 @@
     font-family: 'Plus Jakarta Sans','sans-serif';
 }
 
-.container{
+.container_404{
     width: 100%;
     height: 100vh;
     display: flex;
@@ -17,7 +17,7 @@
     background:linear-gradient(#d2e5ff,#fff); 
 }
 
-.main_body{
+.main_body_404{
     display: flex;
     align-items:center;
     gap: 10rem;
@@ -27,19 +27,19 @@
     padding-bottom: 80px;
 }
 
-.main_body h1{
+.main_body_404 h1{
     font-size: 10rem;
     font-weight: bolder;
 }
 
-.content{
+.content_404{
     display: flex;
     justify-content: center;
     flex-direction: column ;
     align-items: center;
 }
 
-.content div{
+.content_404 div{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -48,7 +48,7 @@
     gap: 5px;
 }
 
-.content button{
+.content_404 button{
     width:12rem;
     height: 3.5rem;
     border-radius:3.2rem;
@@ -59,19 +59,19 @@
     cursor: pointer;
 }
 
-.image{
+.image_404{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding-top: 50px;
 }
-.image img{
+.image_404 img{
     width: 25rem;
     height:23rem; 
     animation: floater 1.8s infinite alternate
-}
-.shadow{
+} 
+.shadow_404{
     width: 130px;
     height: 30px;
     background-color: rgba(33, 29, 22, 0.16);
@@ -105,7 +105,7 @@
 
 
 @media screen and  (max-width: 950px) {
-    .main_body
+    .main_body_404
     {
         flex-direction: column;
         gap: 5rem;
@@ -113,29 +113,29 @@
         padding:0;
     }
 
-    .main_body h1{
+    .main_body_404 h1{
         font-size: 5rem;
     }
 
-    .content{
+    .content_404{
         padding-top:0;
     }
 
-    .content button{
+    .content_404 button{
         width: 9rem;
         height: 2.5rem;
         font-size: 0.8rem; 
     }
-    .image{
+    .image_404{
         padding: 55px;
         padding-left:6rem;;
     }
 
-    img{
+    .image_404 img{
         width: 15rem;
         height:15rem;    
     }
-    .shadow{
+    .shadow_404{
         width: 100px;
         margin:25px auto ;
         margin-right: 85px;
@@ -143,7 +143,7 @@
 }
 
 @media screen and (max-height:750px) {
-    .main_body{
+    .main_body_404{
        gap: 2rem;
        margin-top: 100px;
     }

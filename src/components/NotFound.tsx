@@ -6,10 +6,10 @@ import astronaut from "./assests/images/astronaut_blue.png";
 
 const NotFound = () => {
     return (    
-        <div className={styles.container}>
-        <div className={styles.main_body}>
+        <div className={styles.container_404}>
+        <div className={styles.main_body_404}>
 
-             <div className={styles.content}>
+             <div className={styles.content_404}>
                 <h1>404</h1>
                 <div>
                     <p>Nothing here!</p>
@@ -21,11 +21,10 @@ const NotFound = () => {
              </div>
 
              
-             <div className={styles.image}>  
+             <div className={styles.image_404}>  
                 <img src={astronaut} alt=""/>
-                <div className={styles.shadow}></div>
+                <div className={styles.shadow_404}></div>
              </div>
-
         </div>   
 
     </div>        

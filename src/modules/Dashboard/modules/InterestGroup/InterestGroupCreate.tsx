@@ -1,7 +1,7 @@
 import { createInterestGroups } from "./apis";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { Form, Formik} from "formik";
+import { Form, Formik } from "formik";
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css"
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import * as Yup from "yup";
@@ -10,9 +10,9 @@ import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComp
 type Props = {};
 
 export const InterestGroupCreate = (props: Props) => {
-	
-	const toast = useToast();
-	const navigate = useNavigate();
+
+    const toast = useToast();
+    const navigate = useNavigate();
 
     return (
         <div className={styles.external_container}>
@@ -69,7 +69,6 @@ export const InterestGroupCreate = (props: Props) => {
                             type="text"
                             placeholder="Enter a name"
                         />
-
                         {/* <MySelect label="Job Type" name="jobType">
                             <option value="">Select a job type</option>
                             <option value="designer">Designer</option>
@@ -81,20 +80,20 @@ export const InterestGroupCreate = (props: Props) => {
                         <MyCheckbox name="acceptedTerms">
                             I accept the terms and conditions
                         </MyCheckbox> */}
-                        <div className={styles.btn_container}>
-                            <MuButton
-                                text={"Decline"}
-                                className={styles.btn_cancel}
-                                onClick={() => {
-                                    navigate("/interest-groups");
-                                }}
-                            />
-                            <button type="submit" className={styles.btn_submit}>
-                                Confirm
-                            </button>
-                        </div>
                     </Form>
                 </Formik>
+                <div className={styles.btn_container}>
+                    <MuButton
+                        text={"Decline"}
+                        className={styles.btn_cancel}
+                        onClick={() => {
+                            navigate("/interest-groups");
+                        }}
+                    />
+                    <button type="submit" className={styles.btn_submit}>
+                        Confirm
+                    </button>
+                </div>
             </div>
         </div>
     );

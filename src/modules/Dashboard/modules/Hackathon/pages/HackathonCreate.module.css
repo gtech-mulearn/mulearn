@@ -112,10 +112,33 @@
 
 .formGroup {
     display: flex;
-    justify-content: start;
+    flex-direction: column;
     flex-wrap: wrap;
     gap: 1.5rem;
     margin-bottom: 5px;
+}
+
+.formGroup div {
+    display: flex;
+    gap: 1rem;
+}
+
+ .formUpload{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 10px;
+}
+
+.formUpload .InputSet{
+    width: 100%;
+}
+
+@media(width<=1200px) {
+    .formGroup div {
+        flex-wrap: wrap;
+    }
 }
 
 .btns {
@@ -155,10 +178,6 @@
 
     .formGroup .placeholder::placeholder {
         font-size: .8rem;
-    }
-
-    .InputSet textarea {
-        min-width: 30vw;
     }
 }
 
@@ -234,41 +253,41 @@
 }
 
 input[type=file]::file-selector-button {
-	margin-right: 20px;
-	border: none;
-	background: var(--blue);
-	border-radius: var(--borderRadius);
-	color: #fff;
-	cursor: pointer;
-	transition: background .2s ease-in-out;
+    margin-right: 20px;
+    border: none;
+    background: var(--blue);
+    border-radius: var(--borderRadius);
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
 }
 
 input[type=file]::file-selector-button:hover {
-	background: #0d45a5;
+    background: #0d45a5;
 }
 
 .image_input {
-	border-radius: var(--borderRadius);
-	background-color: var(--White);
-	min-width: 22rem;
-	border: .1px solid #CFD3D4;
+    border-radius: var(--borderRadius);
+    background-color: var(--White);
+    min-width: 22rem;
+    border: .1px solid #CFD3D4;
 }
 
-.upload_area{
-    width:100%;
+.upload_area {
+    width: 100%;
     height: 100%;
     overflow: hidden;
 }
 
 .fileInfo {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .fileInfo span {
-	font-weight: bold;
+    font-weight: bold;
     color: var(--blue);
 }
 
@@ -282,100 +301,57 @@ input[type=file]::file-selector-button:hover {
     background-color: var(--InputDefaultBackground);
     border: 3.08px dashed rgb(11, 132, 224);
     cursor: pointer;
-  }
-  
-  .upload_button:hover {
+}
+
+.upload_button:hover {
     background-color: rgba(12, 87, 173, 0.176);
-  }
-  
-  .icon {
+}
+
+.icon {
     font-size: 1.5rem;
     margin-top: 0.5rem;
     color: var(--blue);
-  }
-  
-  .text {
+}
+
+.text {
     text-align: center;
     color: #0d45a5;
     text-decoration: solid;
-  }
-  
-  .text1 {
+}
+
+.text1 {
     text-align: center;
     color: #0d45a5;
     font-size: 0.8rem;
     opacity: 0.7;
-    padding: 6px;;
-  }
-  
-
-.InputSet {
-	display: flex;
-	flex-direction: column;
-	width: 22rem;
-	gap: .5rem;
-	text-align: left;
+    padding: 6px;
+    ;
 }
 
 .formLabel {
-	text-align: left;
-	font-size: 1.1rem;
-	font-weight: 600;
-	margin: 0;
-	color: #000;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    color: #000;
 }
 
-.InputSet input {
-	padding: .7rem 1rem;
-	border-radius: var(--borderRadius);
-	width: 100%;
-	background-color: var(--White);
-	min-width: 22rem;
-	border: .1px solid #CFD3D4;
-}
-
-@media (width<=1280px) {
-
-	.InputSet textarea {
-		min-width: 60vw;
-	}
-}
-
-@media (width<=1080px) {
-
-	.InputSet input{
-		min-width: 50vw;
-	}
-}
-
-@media (width<=820px) {
-    
-    .InputSet input{
-        min-width: 80vw;
-	}
-}
-
-@media (width<=520px) {
-    
-    .InputSet input{
-        min-width: 68vw;
-	}
-}
 @media (max-width: 768px) {
     .checker {
-      padding-right: 0; 
+        padding-right: 0;
     }
-  }
+}
 
 .checker {
     padding-right: 20rem;
     display: flex;
-    flex-direction: column; 
-    
+    flex-direction: column;
+
 }
+
 .checkerInput {
     display: flex;
     padding-top: 0.8rem;
     align-items: start;
-    
+
 }
