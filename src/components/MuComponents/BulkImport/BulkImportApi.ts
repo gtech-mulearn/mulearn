@@ -18,7 +18,7 @@ export const bulkImport = async (data: any, path: string) => {
         })
         .catch(error => {
             console.error(error);
-            return error;
+            return error.response;
             // toast.error(error.response.data.message.general[0]);
         });
     return val;

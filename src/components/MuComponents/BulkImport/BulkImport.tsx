@@ -16,7 +16,7 @@ TODO: Change Template File
 TODO: Change From Component to Page
 */
 
-const BulkImport = ({ path, onUpload, ...rest }: Props) => {
+const BulkImport = ({ path, onUpload, onError, ...rest }: Props) => {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [isDragging, setIsDragging] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
@@ -94,11 +94,14 @@ const BulkImport = ({ path, onUpload, ...rest }: Props) => {
             formData.append("task_list", renamedFile);
             bulkImport(formData, path).then(response => {
                 if (response.status && response.status !== 200) {
-                    if (response.status === 400 || 403) {
+                    console.log(response);
+                    if (onError) {
+                        onError(response);
+                    }
+                    if (response.status === 400 || response.status === 403) {
                         toast({
                             title: "Error",
-                            description:
-                                response.response.data?.message?.general[0],
+                            description: response.data?.message?.general[0],
                             status: "error",
                             duration: 5000,
                             isClosable: true

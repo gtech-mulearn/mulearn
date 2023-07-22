@@ -50,7 +50,10 @@ const TaskBulkImport = (props: Props) => {
                 path={dashboardRoutes.getTasksData + "import/"}
                 onUpload={res => {
                     setUploadResponse(res);
-                    console.log(res.response.Failed);
+                }}
+                onError={err => {
+                    console.log(err);
+                    setUploadResponse(null);
                 }}
             />
             {uploadResponse && (
