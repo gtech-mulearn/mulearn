@@ -4,7 +4,6 @@ import MulearnBrand from "../assets/MulearnBrand";
 import { useNavigate } from "react-router-dom";
 import dpm from "../assets/images/dpm.jpg";
 
-
 //TODO: Change the styles to camelCase from snake_case
 const TopNavBar = () => {
     const navigate = useNavigate();
@@ -17,7 +16,9 @@ const TopNavBar = () => {
             JSON.parse(localStorage.getItem("userInfo")!).first_name
         ) {
             setName(JSON.parse(localStorage.getItem("userInfo")!).first_name);
-            setProfilePic(JSON.parse(localStorage.getItem("userInfo")!).profile_pic);
+            setProfilePic(
+                JSON.parse(localStorage.getItem("userInfo")!).profile_pic
+            );
         }
     });
     return (
@@ -27,9 +28,10 @@ const TopNavBar = () => {
                     <div className={styles.nav_items}>
                         <b className={styles.greetings}>Hello, {name} 👋</b>
 
-                        <div className={styles.mulearn_brand2}>
-                        </div>
+                        <div className={styles.mulearn_brand2}></div>
                         <div className={styles.menu}>
+                            {/* <i className="fi fi-sr-settings"></i> */}
+                            {/* <i className="fi fi-sr-bell"></i> */}
                             <div className={styles.profile}>
                                 <img
                                     onClick={() => {
@@ -41,7 +43,7 @@ const TopNavBar = () => {
                             </div>
                         </div>
                     </div>
-                    {/* <hr /> */}
+                    <hr />
                 </div>
             </div>
         </>

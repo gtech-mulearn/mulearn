@@ -25,6 +25,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import BasicDetails from "../components/BasicDetails";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
+import AvgKarma from "../assets/svg/AvgKarma";
 
 //TODO: Verify the relevance of profile page image
 const Profile = () => {
@@ -86,7 +87,7 @@ const Profile = () => {
         const endMonth = endDate.getMonth();
         return (endYear - startYear) * 12 + (endMonth - startMonth);
     }
-    const startDate = new Date(userProfile.joined.slice(0, 10));
+    const startDate = new Date(userProfile?.joined?.slice(0, 10));
     const endDate = new Date(moment().format("YYYY-MM-DD"));
     const monthDifference = getMonthDifference(startDate, endDate);
     const firstFetch = useRef(true);
@@ -355,7 +356,7 @@ const Profile = () => {
                                             </div>
                                             <p>
                                                 Member since{" "}
-                                                {userProfile.joined.slice(0, 4)}
+                                                {userProfile?.joined?.slice(0, 4)}
                                             </p>
                                         </div>
                                     </div>
@@ -435,7 +436,7 @@ const Profile = () => {
                                                 >
                                                     LEVEL{"     "}
                                                     {userProfile.level
-                                                        ? userProfile.level.slice(
+                                                        ? userProfile?.level?.slice(
                                                               3,
                                                               4
                                                           )
@@ -569,14 +570,7 @@ const Profile = () => {
                                             </div>
                                         </div>
                                         <div className={styles.points}>
-                                            <Rank />
-                                            <div>
-                                                <span>Rank</span>
-                                                <h1>{userProfile.rank}</h1>
-                                            </div>
-                                        </div>
-                                        <div className={styles.points}>
-                                            <Karma />
+                                            <AvgKarma />
                                             <div>
                                                 <span>Avg.Karma/Month</span>
                                                 <h1>
@@ -611,6 +605,13 @@ const Profile = () => {
                                                 </h1>
                                             </div>
                                         </div>
+                                        <div className={styles.points}>
+                                            <Rank />
+                                            <div>
+                                                <span>Rank</span>
+                                                <h1>{userProfile.rank}</h1>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -628,7 +629,7 @@ const Profile = () => {
                                     <MuVoyage
                                         userLevelData={userLevelData}
                                         userLevel={parseInt(
-                                            userProfile.level.slice(3, 4)
+                                            userProfile?.level?.slice(3, 4)
                                         )}
                                     />
                                 ) : null}

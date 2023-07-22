@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate, useLocation } from 'react-router-dom';
 import Table from '../../../../components/MuComponents/Table/Table'
 import THead from '../../../../components/MuComponents/Table/THead'
 import TableTop from '../../../../components/MuComponents/TableTop/TableTop'
@@ -12,14 +12,19 @@ import {
   columnsZone,
   columnsDistrict
 } from './ManageLocationHeaders';
-import {
-  getCountryData,
-  deleteCountryData
-} from './apis';
+
+import { getCountryData, deleteCountryData } from './apis/CountryAPI';
+import { getStateData, deleteStateData } from './apis/StateAPI';
+import { getZoneData, deleteZoneData } from './apis/ZoneAPI';
+import { getDistrictData, deleteDistrictData } from './apis/DistrictAPI';
+
 import LocationPopup from './LocationPopup';
 import { hasRole } from "../../../../services/common_functions";
 import { roles } from "../../../../services/types";
 import { MuButton } from '@/MuLearnComponents/MuButtons/MuButton';
+import { useToast } from '@chakra-ui/react';
+
+type LocationItem = { value: string; label: string } | string;
 
 const ManageLocation = () => {
   const [data, setData] = useState<any[]>([]);
@@ -30,45 +35,82 @@ const ManageLocation = () => {
   const [sort, setSort] = useState('');
   const [activeTab, setActiveTab] = useState("Country")
   const [popupStatus, setPopupStatus] = useState(false)
-  const [popupFields,setPopupFields] = useState({
+  const [popupFields, setPopupFields] = useState({
     countryShow: true,
     stateShow: false,
     zoneShow: false,
   })
-
+  const [selectedCountry, setSelectedCountry] = useState("")
+  const [selectedState, setSelectedState] = useState("")
+  const [selectedZone, setSelectedZone] = useState("")
+  const [isDeclined, setIsDeclined] = useState(false)
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const toast = useToast();
 
   useEffect(() => {
     if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
   })
 
   useEffect(() => {
-    if (activeTab === "Country") {
-      getCountryData(setData, setTotalPages)
-      setPopupFields({
-        countryShow: true,
-        stateShow: false,
-        zoneShow: false
-      });
+    if (location.state) {
+      setActiveTab(location.state.activeItem)
+      setPopupStatus(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (isDeclined) {
+      setActiveTab("Country")
       setColumns(columnsCountry)
+      setIsDeclined(false)
+    }
+  }, [popupStatus])
+
+  function loadTableData() {
+    if (activeTab === "Country") {
+        setPopupStatus(false)
+        getCountryData(setData, toast, setTotalPages)
+        setPopupFields({
+          countryShow: true,
+          stateShow: false,
+          zoneShow: false
+        });
+        setColumns(columnsCountry)
     } else if (activeTab === "State") {
       setPopupStatus(true)
-      setPopupFields(prev=>({...prev,stateShow: false,zoneShow:false}))
+      setPopupFields(prev => ({ ...prev, stateShow: false, zoneShow: false }))
       setColumns(columnsState)
     } else if (activeTab === "Zone") {
       setPopupStatus(true)
-      setPopupFields(prev=>({...prev,stateShow: true,zoneShow:false}))
+      setPopupFields(prev => ({ ...prev, stateShow: true, zoneShow: false }))
       setColumns(columnsZone)
     } else if (activeTab === "District") {
       setPopupStatus(true)
-      setPopupFields(prev=>({...prev,stateShow: true,zoneShow:true}))
+      setPopupFields(prev => ({ ...prev, stateShow: true, zoneShow: true }))
       setColumns(columnsDistrict)
     }
-    // return(
-    //   setData([]),
-    //   setTotalPages(1)
-    // )
+  }
+
+  function getLocationData(){
+    if (activeTab === "Country") {
+      getCountryData(setData, toast, setTotalPages)
+    } else if (activeTab === "State") {
+      getStateData(selectedCountry, setData, toast, setTotalPages)
+    } else if (activeTab === "Zone") {
+      getZoneData(selectedCountry, selectedState, setData,setTotalPages)
+    } else if (activeTab === "District") {
+      getDistrictData(selectedCountry, selectedState, selectedZone, setData, setTotalPages)
+    }
+  }
+
+  useEffect(() => {
+    loadTableData()
+    return(
+      setData([]),
+      setTotalPages(1)
+    )
   }, [activeTab])
 
 
@@ -101,12 +143,32 @@ const ManageLocation = () => {
 
   function handleEdit(id: string | number | boolean): void {
     console.log(id)
-    navigate('edit/country', { state: { country: id } })
+    navigate('edit/country', {
+      state: {
+        activeItem: activeTab,
+        country: selectedCountry,
+        state: selectedState,
+        zone: selectedZone,
+        value: id
+      }
+    })
   }
 
-  function handleDelete(id: string): void {
+  function handleDelete(id: any): void {
     setData([])
-    deleteCountryData(id)
+    if (activeTab === "Country") {
+      deleteCountryData(id)
+    }
+    else if (activeTab === "State") {
+      deleteStateData(selectedCountry, id)
+    }
+    else if (activeTab === "Zone") {
+      deleteZoneData(selectedCountry, selectedState, id)
+    }
+    else if (activeTab === "District") {
+      deleteDistrictData(selectedCountry, selectedState, selectedZone, id)
+    }
+    getLocationData()
   }
 
   function handleTabClick(tab: string) {
@@ -115,16 +177,26 @@ const ManageLocation = () => {
 
   return (
     <>
-    {
-      activeTab !== "Country" &&       
-      <div
-        onClick={()=>setPopupStatus(true)}
-      >Change Location</div>
-    }
       <TableTopToggle
         active={activeTab}
         onTabClick={handleTabClick}
+        country={selectedCountry}
+        state={selectedState}
+        zone={selectedZone}
+        handleData={setData}
+        handleCountry={(country: LocationItem) => setSelectedCountry(country as string)}
+        handleState={(state: LocationItem) => setSelectedState(state as string)}
+        handleZone={(zone: LocationItem) => setSelectedZone(zone as string)}
       />
+      {
+        activeTab !== "Country" &&
+          <LocationPath
+            handlePopup={setPopupStatus}
+            country={selectedCountry}
+            state={selectedState}
+            zone={selectedZone}
+          />
+      }
       <TableTop
         onSearchText={handleSearch}
         onPerPageNumber={handlePerPageNumber}
@@ -140,7 +212,10 @@ const ManageLocation = () => {
           columnOrder={columns}
           id={['label']}
           onEditClick={handleEdit}
-          onDeleteClick={() => handleDelete}
+          onDeleteClick={handleDelete}
+          modalDeleteHeading="Delete"
+          modalTypeContent="error"
+          modalDeleteContent="Are you sure you want to delete "
         >
           <THead
             columnOrder={columns}
@@ -156,24 +231,73 @@ const ManageLocation = () => {
           {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
         </Table>
       )}
-      <LocationPopup 
-        isShowPopup={popupStatus} 
-        handlePopup={setPopupStatus} 
+      <LocationPopup
+        isShowPopup={popupStatus}
+        handlePopup={setPopupStatus}
         popupFields={popupFields}
         activeItem={activeTab}
+        handleData={setData}
+        handleCountry={(country: LocationItem) => setSelectedCountry(country as string)}
+        handleState={(state: LocationItem) => setSelectedState(state as string)}
+        handleZone={(zone: LocationItem) => setSelectedZone(zone as string)}
+        handleDeclined={setIsDeclined}
       />
     </>
   )
 }
 
-const TableTopToggle = ({ active, onTabClick }: any) => {
+const TableTopToggle = ({ 
+  active, 
+  onTabClick, 
+  country, 
+  state, 
+  zone, 
+  handleData,
+  handleCountry,
+  handleState,
+  handleZone
+ }: any) => {
   const tabItems = ["Country", "State", "Zone", "District"]
 
   const navigate = useNavigate()
 
   function handleAddLocation() {
-    navigate('add/country')
+    navigate(`add/${active.toLowerCase()}`, {
+      state: {
+        activeItem: active,
+        country: country,
+        state: state,
+        zone: zone
+      }
+    })
   }
+
+  function handleTabClick(item: string) {
+    onTabClick(item)
+    if (item !== active) {
+      handleData([])
+      if(item === "Country"){
+        handleCountry("")
+        handleState("")
+        handleZone("")
+      }
+      else if(item === "State"){
+        handleState("")
+        handleZone("")
+      }
+      else if(item === "Zone"){
+        handleZone("")
+      }
+      else if(item === "District"){
+        console.log("no changes")
+      }else{
+        handleCountry("")
+        handleState("")
+        handleZone("")
+      }
+    }
+  }
+
   return (
     <div className="ml_top_container">
       <div className="ml_toggle_container">
@@ -188,7 +312,7 @@ const TableTopToggle = ({ active, onTabClick }: any) => {
                   : "table_tab_btn inactive"
               }
               onClick={() => {
-                onTabClick(item)
+                handleTabClick(item)
               }}
             />
           ))
@@ -197,7 +321,7 @@ const TableTopToggle = ({ active, onTabClick }: any) => {
       <div className="createBtnContainer">
         <MuButton
           className="createBtn"
-          text="Add Country"
+          text={`Add ${active}`}
           icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
           onClick={handleAddLocation}
         />
@@ -205,5 +329,30 @@ const TableTopToggle = ({ active, onTabClick }: any) => {
     </div>
   )
 }
+
+const LocationPath = ({
+  handlePopup,
+  country,
+  state,
+  zone
+}: {
+  handlePopup: (status: boolean) => void;
+  country?: string;
+  state?: string;
+  zone?: string;
+}) => {
+  function locationTextGenerate() {
+    return `${country?.toUpperCase()}${state ? ` / ${state?.toUpperCase()}` : ''}${zone ? ` / ${zone?.toUpperCase()}` : ''}`;
+  }
+
+  return (
+    <div className="path_container">
+      <p>{locationTextGenerate()}</p>
+      <h3 onClick={() => handlePopup(true)}>change</h3>
+    </div>
+  );
+};
+
+
 
 export default ManageLocation
