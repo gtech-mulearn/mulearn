@@ -5,6 +5,10 @@ import { BsSearch } from 'react-icons/bs'
 import { getCampusLearningCircles } from '../services/LearningCircleAPIs'
 import { PowerfulButton } from '@/MuLearnComponents/MuButtons/MuButton'
 import { useNavigate } from 'react-router-dom'
+import { createStandaloneToast, UseToastOptions } from "@chakra-ui/react";
+
+const { toast } = createStandaloneToast();
+
 
 export interface LcType {
     circle_code: string;
@@ -61,9 +65,21 @@ const FindCircle = () => {
                                     <p>{circle.member_count} Members</p>
                                     <div className={styles.join}>
                                         <button onClick={() => {
-											navigate(
-                                                `/learning-circle/details/${circle.id}`
-                                            );
+                                            toast({
+                                                title: "Wait for approval",
+                                                description: "",
+                                                status: "warning",
+                                                duration: 2000,
+                                                isClosable: true
+                                            });
+                                            
+                                            setTimeout(() => {
+                                                
+                                                navigate(
+                                                    `/learning-circle`
+                                                );
+                                            },1500);
+
 										}}>Join</button>
                                     </div>
 									{/* <PowerfulButton text='Join' onButtonClick={() => {
