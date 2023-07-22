@@ -8,6 +8,7 @@ import { Dispatch, SetStateAction } from "react";
 export const getStateData = async (
     country: string,
     setData: any,
+    toast: (options?: UseToastOptions | undefined) => ToastId,
     setTotalPages?: any,
 ) => {
     try {
@@ -20,7 +21,7 @@ export const getStateData = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            alert(error.response);
         }
     }
 };

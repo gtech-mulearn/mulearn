@@ -26,7 +26,7 @@ const AddLocation = () => {
 
     function handleSubmitAdd(values:any){
         if(activeItem === "Country"){
-            postCountryData(values.ItemName);
+            postCountryData(values.ItemName,toast);
         }else if(activeItem === "State"){
             postStateData(location.state.country,values.ItemName);
         }else if (activeItem === "Zone"){
@@ -79,6 +79,7 @@ const AddLocation = () => {
                             name="ItemName"
                             type="text"
                             placeholder={`Enter ${activeItem}`}
+                            onKeyPress={(e:any) => { e.which === 13 && e.preventDefault()}}
                         />
 
                         {/* <MySelect label="Job Type" name="jobType">
@@ -97,7 +98,7 @@ const AddLocation = () => {
                                 text={"Decline"}
                                 className={styles.btn_cancel}
                                 onClick={() => {
-                                    navigate('/manage-locations',{state:{activeItem:activeItem}});
+                                    navigate('/manage-locations',{state:{activeItem:activeItem,isDeclined:true}});
                                 }}
                             />
                             <button type="submit" className={styles.btn_submit}>
