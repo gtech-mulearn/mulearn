@@ -26,13 +26,15 @@ export const FormikTextInput = ({ label, ...props }: any) => {
 export const FormikSelect = ({ label, ...props }: any) => {
     const [field, meta] = useField(props);
     return (
-        <div className={styles.inputBox}>
-            <span>{label}</span>
-            <select {...field} {...props} />
+        <>
+            <div className={styles.inputBox}>
+                <span>{label}</span>
+                <select {...field} {...props} />
+            </div>{" "}
             {meta.touched && meta.error ? (
                 <div className="error">{meta.error}</div>
             ) : null}
-        </div>
+        </>
     );
 };
 
@@ -62,7 +64,6 @@ export const FormikTextAreaWhite = ({ label, ...props }: any) => {
     );
 };
 
-
 export interface Option {
     label: string;
     value: string | boolean | number;
@@ -75,7 +76,7 @@ const customStyles: any = {
         border: ".1px solid #CFD3D4",
         borderRadius: "10px",
         width: "100%",
-        padding: ".3rem .4rem",
+        padding: ".3rem .4rem"
     })
 };
 
@@ -129,7 +130,6 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
         </div>
     );
 };
-
 
 export default FormikReactSelect;
 
