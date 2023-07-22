@@ -69,7 +69,6 @@ const Profile = () => {
             tasks: [{ task_name: "", completed: false, hashtag: "", karma: 0 }]
         }
     ]);
-
     const convertedData1 = userProfile.interest_groups.map(item => [
         item.name,
         item.karma
@@ -118,9 +117,7 @@ const Profile = () => {
         <>
             <Helmet>
                 {/* <!-- Primary Meta Tags --> */}
-                <title>
-                    {`${userProfile.first_name} ${userProfile.last_name} (${userProfile.karma})`}
-                </title>
+                <title>Profile | Mulearn</title>
                 <meta
                     name="title"
                     content={`${userProfile.first_name} ${userProfile.last_name}`}
@@ -440,7 +437,7 @@ const Profile = () => {
                                                               3,
                                                               4
                                                           )
-                                                        : 0}
+                                                        : 1}
                                                 </p>
                                             </div>
                                         </div>
@@ -564,7 +561,7 @@ const Profile = () => {
                                                               parseInt(
                                                                   userProfile.karma
                                                               ) / 1000
-                                                          ).toPrecision(4) + "K"
+                                                          ).toPrecision(3) + "K"
                                                         : userProfile.karma}
                                                 </h1>
                                             </div>
@@ -625,14 +622,23 @@ const Profile = () => {
                                         userProfile={userProfile}
                                         userLog={userLog}
                                     />
-                                ) : profileList === "mu-voyage" ? (
-                                    <MuVoyage
-                                        userLevelData={userLevelData}
-                                        userLevel={parseInt(
-                                            userProfile.level.slice(3, 4)
-                                        )}
-                                    />
-                                ) : null}
+                                ) : (
+                                    profileList === "mu-voyage" && (
+                                        <MuVoyage
+                                            userLevelData={userLevelData}
+                                            userLevel={
+                                                userProfile.level !== null
+                                                    ? parseInt(
+                                                          userProfile.level.slice(
+                                                              3,
+                                                              4
+                                                          )
+                                                      )
+                                                    : 1
+                                            }
+                                        />
+                                    )
+                                )}
                             </div>
 
                             <div className={styles.notification}>
