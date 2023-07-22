@@ -5,22 +5,12 @@ import { BsSearch } from 'react-icons/bs'
 import { getCampusLearningCircles } from '../services/LearningCircleAPIs'
 import { PowerfulButton } from '@/MuLearnComponents/MuButtons/MuButton'
 import { useNavigate } from 'react-router-dom'
+import { LcType } from '../services/LearningCircleInterface'
 import { createStandaloneToast, UseToastOptions } from "@chakra-ui/react";
 
 const { toast } = createStandaloneToast();
 
 
-export interface LcType {
-    circle_code: string;
-    created_by: string;
-    id: string;
-    ig: string;
-    meet_place: string;
-    meet_time: string;
-    member_count: number;
-    name: string;
-    org: string;
-}
 
 const FindCircle = () => {
     const [lc, setLc] = useState<LcType[]>([]);

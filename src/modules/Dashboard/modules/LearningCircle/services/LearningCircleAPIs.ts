@@ -2,7 +2,7 @@ import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways"
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { SetStateAction } from "react";
-import { LcType } from "../pages/LearningCircleFind";
+import { LcType } from "./LearningCircleInterface";
 import { getUUID } from "../../Tasks/TaskApis";
 import { randomInt } from "crypto";
 import { createStandaloneToast, UseToastOptions } from "@chakra-ui/react";
