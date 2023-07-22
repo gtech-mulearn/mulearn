@@ -154,7 +154,7 @@ const Footer = () => {
       </div>
       <div className={styles.bottomcopyright}>
         <div className={styles.line2}></div>
-        <p>GTech µLearn | Copyright © 2023 All rights reserved.</p>
+        <p>µLearn Foundation | Copyright © 2023 All rights reserved.</p>
       </div>
     </div>
   );
