@@ -4,6 +4,7 @@ import ShowPerPage from "./ShowPerPage";
 import styles from "./TableTop.module.css";
 import { MuButton } from "../MuButtons/MuButton";
 import { HiDownload } from "react-icons/hi";
+import {AiOutlineArrowDown} from 'react-icons/ai'
 import { getCSV } from "./apis";
 import { useToast } from "@chakra-ui/react";
 
@@ -72,7 +73,7 @@ const TableTop = (props: Props) => {
                             }}
                         >
                             <div className={styles.csv}>
-                                <HiDownload />
+                                <AiOutlineArrowDown />
                                 CSV
                             </div>
                         </button>

@@ -12,8 +12,8 @@
 
 .container {
     /* padding: 10px 0; */
-    width: 95%;
-	padding: 0;
+    width: 100%;
+	padding: 0px 10px;
 	margin: 0;
 }
 
@@ -35,6 +35,10 @@
     display: flex;
 	align-items: center;
     cursor: pointer;
+	gap: 3px;
+	font-size: 13px;
+	font-weight: 700;
+	padding: 3px 0px;
 }
 
 .left {

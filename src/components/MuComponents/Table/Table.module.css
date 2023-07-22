@@ -1,7 +1,7 @@
 .table {
     border-radius: 10px;
     overflow: auto;
-    width: 95%;
+    width: 100%;
     margin-bottom: 10px;
     scrollbar-color: #c7c7c7 #eeeeee;
     scrollbar-width: thin;

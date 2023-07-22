@@ -21,7 +21,9 @@ const DashboardRootLayout = (props: { component?: any }) => {
         const existInGuild = userInfo.exist_in_guild;
         const isCampusAmbassador = userInfo.roles?.includes(roles.CAMPUS_LEAD);
         const isAdmin = userInfo.roles?.includes(roles.ADMIN);
-        const isZonalCampusLead = userInfo.roles?.includes(roles.ZONAL_CAMPUS_LEAD);
+        const isZonalCampusLead = userInfo.roles?.includes(
+            roles.ZONAL_CAMPUS_LEAD
+        );
 
         setConnected(existInGuild);
         setCampusLead(isCampusAmbassador);
@@ -75,21 +77,21 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     url: "interest-groups",
                     title: "Interest Groups",
                     hasView: true,
-                    roles: [roles.ADMIN],
+                    roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-books"></i>
                 },
                 {
                     url: "organizations",
                     title: "Organizations",
                     hasView: true,
-                    roles: [roles.ADMIN],
+                    roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-building"></i>
                 },
                 {
                     url: "tasks",
                     title: "Tasks",
                     hasView: true,
-                    roles: [roles.ADMIN],
+                    roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-note"></i>
                 },
                 {
@@ -103,7 +105,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                             url: "manage-users",
                             title: "Manage Users",
                             hasView: true,
-                            roles: [roles.ADMIN],
+                            roles: [roles.ADMIN]
                         },
                         {
                             url: "user-role-verification",
@@ -117,17 +119,17 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     url: "manage-roles",
                     title: "Manage Roles",
                     hasView: true,
-                    roles: [roles.ADMIN],
+                    roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-users-gear"></i>
                 },
                 {
                     url: "url-shortener",
                     title: "URL Shortener",
                     hasView: true,
-                    roles: [roles.ADMIN],
+                    roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-globe"></i>
-                },
-            ],
+                }
+            ]
         },
 
         {
@@ -180,8 +182,10 @@ const DashboardRootLayout = (props: { component?: any }) => {
             <SideNavBar sidebarButtons={buttons} />
             <div className={styles.right_side} id="right">
                 <TopNavBar />
-                <div className={styles.main_content}>
-                    <Outlet />
+                <div className={styles.main_content_wrapper}>
+                    <div className={styles.main_content}>
+                        <Outlet />
+                    </div>
                 </div>
             </div>
         </div>

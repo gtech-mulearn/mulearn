@@ -11,12 +11,12 @@
             cursor: pointer;
         }
         .active {
-            background-color: #456ff6;
-            color: white;
+            background-color: #fff;
+            color: #5570F1;
         }
         .inactive {
-            border: 1px solid #456ff6;
-            color: #456ff6;
+            border: 1px solid #fff;
+            color: #3D4043;
         }
     }
     .org_create_btn {
@@ -40,7 +40,7 @@
     z-index: 0;
     background-color: #fff;
     margin: auto;
-    .popup_title{
+    .popup_title {
         font-size: 20px;
         font-weight: 800;
         text-align: start;
@@ -116,7 +116,7 @@
     p {
         text-align: center;
     }
-    .btn_loader{
+    .btn_loader {
         margin-left: 8px;
     }
 }
@@ -130,21 +130,25 @@
     color: #456ff6;
 }
 
-.delete_container{
+.delete_container {
     width: 100%;
     height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-  
-  @keyframes s3 {
-    100% {transform: rotate(1turn)}
-  }
-  
-  @keyframes s3 {
-    100% {transform: rotate(1turn)}
-  }
+
+@keyframes s3 {
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes s3 {
+    100% {
+        transform: rotate(1turn);
+    }
+}
 
 @media only screen and (max-width: 768px) {
     .popup_container {

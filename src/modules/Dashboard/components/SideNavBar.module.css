@@ -164,17 +164,22 @@
     /* margin-top: -20px; */
     cursor: pointer;
 }
+.main_content_wrapper{
+   background: #f3f3f4;
+    padding: 0.5rem;
 
+}
 .main_content {
-    padding: 1rem;
+    padding: 0rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     /* height: calc(100% - 160px); */
     justify-content: flex-start;
     text-align: center;
     margin-top: 16vh;
     overflow-x: hidden;
+   background: #ffffff;
 }
 
 /* responsive */
