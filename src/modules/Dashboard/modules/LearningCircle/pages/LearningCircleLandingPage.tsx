@@ -4,7 +4,6 @@ import imageBottom from "../assets/images/LC3.png";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getUserLearningCircles } from "../services/LearningCircleAPIs";
 import { BsChevronRight } from "react-icons/bs";
 
 export type circleListELement = {
@@ -17,7 +16,7 @@ export const LearningCircleLandingPage = () => {
     const [userCircleList, setUserCircleList] = useState<circleListELement[]>();
 
     useEffect(() => {
-        getUserLearningCircles(setUserCircleList)
+        // getUserLearningCircles(setUserCircleList)
     }, []);
 
     const handleJoin = () => {
