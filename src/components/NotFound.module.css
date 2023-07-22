@@ -66,11 +66,11 @@
     flex-direction: column;
     padding-top: 50px;
 }
-img{
+/* img{
     width: 25rem;
     height:23rem; 
     animation: floater 1.8s infinite alternate
-}
+} */
 .shadow{
     width: 130px;
     height: 30px;
