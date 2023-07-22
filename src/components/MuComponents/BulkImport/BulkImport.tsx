@@ -4,16 +4,17 @@ import { FiUploadCloud } from "react-icons/fi";
 import { bulkImport } from "./BulkImportApi";
 import { SingleButton } from "../MuButtons/MuButton";
 
-type Props = {
+interface Props extends React.HTMLAttributes<HTMLInputElement> {
     path: string;
-};
+    onUpload?: (response: any) => void;
+}
 
 /*
 TODO: Change Template File
 TODO: Change From Component to Page
 */
 
-const BulkImport = (props: Props) => {
+const BulkImport = ({ path, onUpload, ...rest }: Props) => {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [isDragging, setIsDragging] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
@@ -89,7 +90,9 @@ const BulkImport = (props: Props) => {
             const renamedFile = renameFile(selectedFile, "task_list.xlsx");
             const formData = new FormData();
             formData.append("task_list", renamedFile);
-            bulkImport(formData, props.path);
+            bulkImport(formData, path).then(response => {
+                onUpload && onUpload(response);
+            });
         }
     };
 
@@ -129,6 +132,7 @@ const BulkImport = (props: Props) => {
                             top: 0,
                             left: 0
                         }}
+                        {...rest}
                     />
                 </div>
                 {errorMessage && (
