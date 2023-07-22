@@ -13,7 +13,7 @@ import {
     getAllDistricts,
     getAllInstitutions,
     getFormFields,
-	getHackDetails
+    getHackDetails
 } from "../services/HackathonApis";
 import { FiUploadCloud } from "react-icons/fi";
 import { useNavigate, useParams } from "react-router-dom";
@@ -41,19 +41,19 @@ const HackathonCreate = () => {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
     const { id } = useParams();
-	const toast = useToast()
-	const navigate = useNavigate()
+    const toast = useToast()
+    const navigate = useNavigate()
 
     useEffect(() => {
-		if (id !== undefined){
-			getHackDetails(setData, id);
-			setTimeout(() => {
-				setTemp(true)
-			}, 3000);
-		}
-		else {
-			setTemp(true)
-		}
+        if (id !== undefined) {
+            getHackDetails(setData, id);
+            setTimeout(() => {
+                setTemp(true)
+            }, 3000);
+        }
+        else {
+            setTemp(true)
+        }
         if (formData === "") {
             getFormFields(setFormData);
             getAllDistricts(setDistrict);
@@ -215,13 +215,13 @@ const HackathonCreate = () => {
             values.event_logo,
             values.banner,
             values.type,
-			values.website,
-			toast
+            values.website,
+            toast
         );
         resetForm();
-		setTimeout(() => {
-			navigate("/hackathon")
-		}, 4000);
+        setTimeout(() => {
+            navigate("/hackathon")
+        }, 4000);
     };
 
     return (
@@ -308,33 +308,35 @@ const HackathonCreate = () => {
                                                 <TabPanel
                                                     className={styles.formGroup}
                                                 >
-                                                    <FormikTextInputWhite
-                                                        label="Name"
-                                                        name="title"
-                                                        type="text"
-                                                        className={
-                                                            styles.placeholder
-                                                        }
-                                                        placeholder="what you are calling your hackathon"
-                                                    />
-                                                    <FormikTextInputWhite
-                                                        label="Tagline"
-                                                        name="tagline"
-                                                        type="text"
-                                                        className={
-                                                            styles.placeholder
-                                                        }
-                                                        placeholder="eg: worlds realest hackathon"
-                                                    />
-                                                    <FormikTextInputWhite
-                                                        label="Approx. Participants"
-                                                        name="participantCount"
-                                                        type="number"
-                                                        className={
-                                                            styles.placeholder
-                                                        }
-                                                        placeholder="eg: 250."
-                                                    />
+                                                    <div>
+                                                        <FormikTextInputWhite
+                                                            label="Name"
+                                                            name="title"
+                                                            type="text"
+                                                            className={
+                                                                styles.placeholder
+                                                            }
+                                                            placeholder="what you are calling your hackathon"
+                                                        />
+                                                        <FormikTextInputWhite
+                                                            label="Tagline"
+                                                            name="tagline"
+                                                            type="text"
+                                                            className={
+                                                                styles.placeholder
+                                                            }
+                                                            placeholder="eg: worlds realest hackathon"
+                                                        />
+                                                        <FormikTextInputWhite
+                                                            label="Approx. Participants"
+                                                            name="participantCount"
+                                                            type="number"
+                                                            className={
+                                                                styles.placeholder
+                                                            }
+                                                            placeholder="eg: 250."
+                                                        />
+                                                    </div>
                                                     <FormikTextAreaWhite
                                                         label="About"
                                                         name="description"
@@ -348,38 +350,40 @@ const HackathonCreate = () => {
                                                 <TabPanel
                                                     className={styles.formGroup}
                                                 >
-                                                    <FormikTextInputWhite
-                                                        label="Registration Start Date"
-                                                        name="applicationStart"
-                                                        className={
-                                                            styles.placeholder
-                                                        }
-                                                        type="date"
-                                                    />
-                                                    <FormikTextInputWhite
-                                                        label="Registration End Date"
-                                                        name="applicationEnds"
-                                                        className={
-                                                            styles.placeholder
-                                                        }
-                                                        type="date"
-                                                    />
-                                                    <FormikTextInputWhite
-                                                        label="Hackathon Start Date"
-                                                        name="eventStart"
-                                                        className={
-                                                            styles.placeholder
-                                                        }
-                                                        type="date"
-                                                    />
-                                                    <FormikTextInputWhite
-                                                        label="Hackathon End Date"
-                                                        name="eventEnd"
-                                                        className={
-                                                            styles.placeholder
-                                                        }
-                                                        type="date"
-                                                    />
+                                                    <div>
+                                                        <FormikTextInputWhite
+                                                            label="Registration Start Date"
+                                                            name="applicationStart"
+                                                            className={
+                                                                styles.placeholder
+                                                            }
+                                                            type="date"
+                                                        />
+                                                        <FormikTextInputWhite
+                                                            label="Registration End Date"
+                                                            name="applicationEnds"
+                                                            className={
+                                                                styles.placeholder
+                                                            }
+                                                            type="date"
+                                                        />
+                                                        <FormikTextInputWhite
+                                                            label="Hackathon Start Date"
+                                                            name="eventStart"
+                                                            className={
+                                                                styles.placeholder
+                                                            }
+                                                            type="date"
+                                                        />
+                                                        <FormikTextInputWhite
+                                                            label="Hackathon End Date"
+                                                            name="eventEnd"
+                                                            className={
+                                                                styles.placeholder
+                                                            }
+                                                            type="date"
+                                                        />
+                                                    </div>
                                                 </TabPanel>
 
                                                 <TabPanel
@@ -418,18 +422,11 @@ const HackathonCreate = () => {
                                                     />
                                                 </TabPanel>
 
-                                                <TabPanel
-                                                    className={styles.formGroup}
-                                                >
-                                                    <div
-                                                        className={
-                                                            styles.InputSet
-                                                        }
-                                                    >
+                                                <TabPanel>
+                                                <div className={styles.formUpload}>
+                                                    <div className={styles.InputSet}>
                                                         <label
-                                                            className={
-                                                                styles.formLabel
-                                                            }
+                                                            className={styles.formLabel}
                                                         >
                                                             Banner
                                                         </label>
@@ -454,17 +451,15 @@ const HackathonCreate = () => {
                                                                         styles.text
                                                                     }
                                                                 >
-                                                                    Click to
-                                                                    choose
+                                                                    Click to choose
                                                                 </p>
                                                                 <span
                                                                     className={
                                                                         styles.text1
                                                                     }
                                                                 >
-                                                                    60x12 .png
-                                                                    or .jpeg 5MB
-                                                                    max
+                                                                    60x12 .png or .jpeg
+                                                                    5MB max
                                                                 </span>
                                                             </label>
                                                             <input
@@ -476,20 +471,17 @@ const HackathonCreate = () => {
                                                                     event: any
                                                                 ) => {
                                                                     if (
-                                                                        event
-                                                                            .target
+                                                                        event.target
                                                                             .files
                                                                     ) {
                                                                         setFieldValue(
                                                                             "banner",
-                                                                            event
-                                                                                .target
+                                                                            event.target
                                                                                 .files[0]
                                                                         );
                                                                     }
                                                                     setSelectedFiles(
-                                                                        event
-                                                                            .target
+                                                                        event.target
                                                                             .files[0]
                                                                     );
                                                                 }}
@@ -504,9 +496,7 @@ const HackathonCreate = () => {
                                                         </div>
                                                         {errors.banner && (
                                                             <div
-                                                                className={
-                                                                    styles.error
-                                                                }
+                                                                className={styles.error}
                                                             >
                                                                 {errors.banner}
                                                             </div>
@@ -518,23 +508,15 @@ const HackathonCreate = () => {
                                                                 }
                                                             >
                                                                 <span>
-                                                                    {
-                                                                        selectedFiles.name
-                                                                    }
+                                                                    {selectedFiles.name}
                                                                 </span>
                                                             </div>
                                                         )}
                                                     </div>
 
-                                                    <div
-                                                        className={
-                                                            styles.InputSet
-                                                        }
-                                                    >
+                                                    <div className={styles.InputSet}>
                                                         <label
-                                                            className={
-                                                                styles.formLabel
-                                                            }
+                                                            className={styles.formLabel}
                                                         >
                                                             Event Logo
                                                         </label>
@@ -559,17 +541,15 @@ const HackathonCreate = () => {
                                                                         styles.text
                                                                     }
                                                                 >
-                                                                    Click to
-                                                                    choose
+                                                                    Click to choose
                                                                 </p>
                                                                 <span
                                                                     className={
                                                                         styles.text1
                                                                     }
                                                                 >
-                                                                    300x124 .png
-                                                                    or .jpeg
-                                                                    10MB max
+                                                                    300x124 .png or
+                                                                    .jpeg 10MB max
                                                                 </span>
                                                             </label>
                                                             <input
@@ -581,20 +561,17 @@ const HackathonCreate = () => {
                                                                     event: any
                                                                 ) => {
                                                                     if (
-                                                                        event
-                                                                            .target
+                                                                        event.target
                                                                             .files
                                                                     ) {
                                                                         setFieldValue(
                                                                             "event_logo",
-                                                                            event
-                                                                                .target
+                                                                            event.target
                                                                                 .files[0]
                                                                         );
                                                                     }
                                                                     setSelectedFile(
-                                                                        event
-                                                                            .target
+                                                                        event.target
                                                                             .files[0]
                                                                     );
                                                                 }}
@@ -609,13 +586,9 @@ const HackathonCreate = () => {
                                                         </div>
                                                         {errors.event_logo && (
                                                             <div
-                                                                className={
-                                                                    styles.error
-                                                                }
+                                                                className={styles.error}
                                                             >
-                                                                {
-                                                                    errors.event_logo
-                                                                }
+                                                                {errors.event_logo}
                                                             </div>
                                                         )}
                                                         {selectedFile && (
@@ -625,146 +598,131 @@ const HackathonCreate = () => {
                                                                 }
                                                             >
                                                                 <span>
-                                                                    {
-                                                                        selectedFile.name
-                                                                    }
+                                                                    {selectedFile.name}
                                                                 </span>
                                                             </div>
                                                         )}
                                                     </div>
-
-                                                    <div
-                                                        className={
-                                                            styles.checker
-                                                        }
+                                                </div>
+                                                <div className={styles.checker}>
+                                                    <label
+                                                        className={styles.formLabel}
                                                     >
-                                                        <label
-                                                            className={
-                                                                styles.formLabel
-                                                            }
-                                                        >
-                                                            Hackathon Open to
-                                                            all ?
-                                                        </label>
-                                                        <div
-                                                            className={
-                                                                styles.checkerInput
-                                                            }
-                                                        >
-                                                            <input
-                                                                type="checkbox"
-                                                                name="isOpenToAll"
-                                                            />
-                                                        </div>
+                                                        Hackathon Open to all ?
+                                                    </label>
+                                                    <div className={styles.checkerInput}>
+                                                        <input
+                                                            type="checkbox"
+                                                            name="isOpenToAll"
+                                                        />
                                                     </div>
-                                                </TabPanel>
+                                                </div>
+                                            </TabPanel>
 
-                                                <TabPanel
-                                                    className={styles.formGroup}
+                                            <TabPanel
+                                                className={styles.formGroup}
+                                            >
+                                                <div
+                                                    id="checkbox"
+                                                    className={
+                                                        styles.InputSet
+                                                    }
                                                 >
-                                                    <div
-                                                        id="checkbox"
+                                                    <label
                                                         className={
-                                                            styles.InputSet
+                                                            styles.formLabel
                                                         }
                                                     >
-                                                        <label
-                                                            className={
-                                                                styles.formLabel
-                                                            }
-                                                        >
-                                                            Select fields for
-                                                            application form
-                                                        </label>
-                                                    </div>
-                                                    <div
-                                                        role="group"
-                                                        aria-labelledby="checkbox-group"
-                                                        className={
-                                                            styles.checkboxOuter
-                                                        }
-                                                    >
-                                                        {Object.entries(
-                                                            formData
-                                                        ).map(
-                                                            ([key, value]) => (
-                                                                <label
-                                                                    key={key}
-                                                                    className={`${
-                                                                        styles.checkBoxContainer
-                                                                    } ${
-                                                                        values.formFields.includes(
-                                                                            key as never
-                                                                        )
-                                                                            ? styles.checked
-                                                                            : ""
+                                                        Select fields for
+                                                        application form
+                                                    </label>
+                                                </div>
+                                                <div
+                                                    role="group"
+                                                    aria-labelledby="checkbox-group"
+                                                    className={
+                                                        styles.checkboxOuter
+                                                    }
+                                                >
+                                                    {Object.entries(
+                                                        formData
+                                                    ).map(
+                                                        ([key, value]) => (
+                                                            <label
+                                                                key={key}
+                                                                className={`${styles.checkBoxContainer
+                                                                    } ${values.formFields.includes(
+                                                                        key as never
+                                                                    )
+                                                                        ? styles.checked
+                                                                        : ""
                                                                     }`}
-                                                                >
-                                                                    <Field
-                                                                        type="checkbox"
-                                                                        name="formFields"
-                                                                        className={
-                                                                            styles.formCheckbox
-                                                                        }
-                                                                        style={{
-                                                                            display:
-                                                                                "none"
-                                                                        }}
-                                                                        value={
-                                                                            key
-                                                                        }
-                                                                        checked={values.formFields.includes(
-                                                                            key as never
-                                                                        )}
-                                                                        onChange={
-                                                                            handleChange
-                                                                        }
-                                                                    />
-                                                                    {key}
-                                                                </label>
-                                                            )
-                                                        )}
-                                                    </div>
-                                                </TabPanel>
+                                                            >
+                                                                <Field
+                                                                    type="checkbox"
+                                                                    name="formFields"
+                                                                    className={
+                                                                        styles.formCheckbox
+                                                                    }
+                                                                    style={{
+                                                                        display:
+                                                                            "none"
+                                                                    }}
+                                                                    value={
+                                                                        key
+                                                                    }
+                                                                    checked={values.formFields.includes(
+                                                                        key as never
+                                                                    )}
+                                                                    onChange={
+                                                                        handleChange
+                                                                    }
+                                                                />
+                                                                {key}
+                                                            </label>
+                                                        )
+                                                    )}
+                                                </div>
+                                            </TabPanel>
 
-                                                <TabPanel
-                                                    className={styles.formGroup}
-                                                ></TabPanel>
+                                            <TabPanel
+                                                className={styles.formGroup}
+                                            ></TabPanel>
 
-                                                <TabPanel
-                                                    className={styles.formGroup}
-                                                ></TabPanel>
-                                            </div>
-                                            <div className={styles.btns}>
-                                                <button
-                                                    onClick={handleBack}
-                                                    className={styles.btn}
-                                                    type="button"
-                                                >
-                                                    Go back
-                                                </button>
-                                                <button
-                                                    onClick={handleNext}
-                                                    className={styles.btn}
-                                                    type="button"
-                                                >
-                                                    Next
-                                                </button>
-                                            </div>
-                                        </Tabs>
+                                            <TabPanel
+                                                className={styles.formGroup}
+                                            ></TabPanel>
+                                        </div>
+                                        <div className={styles.btns}>
+                                            <button
+                                                onClick={handleBack}
+                                                className={styles.btn}
+                                                type="button"
+                                            >
+                                                Go back
+                                            </button>
+                                            <button
+                                                onClick={handleNext}
+                                                className={styles.btn}
+                                                type="button"
+                                            >
+                                                Next
+                                            </button>
+                                        </div>
+                                    </Tabs>
                                     </Form>
                                 )}
-                            </Formik>
-                        </div>
+                        </Formik>
                     </div>
                 </div>
+                </div >
             ) : (
-                <div className={styles.spinner_container}>
-                    <div className={styles.spinner}>
-                        <MuLoader />{" "}
-                    </div>
-                </div>
-            )}
+    <div className={styles.spinner_container}>
+        <div className={styles.spinner}>
+            <MuLoader />{" "}
+        </div>
+    </div>
+)}
         </>
     );
 };

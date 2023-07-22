@@ -6,31 +6,36 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import { hasRole } from "@/MuLearnServices/common_functions";
 import { roles } from "@/MuLearnServices/types";
 import { useNavigate } from "react-router-dom";
-import { getTasks } from "./TaskApis";
+import { deleteTask, getTasks } from "./TaskApis";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import styles from "../InterestGroup/InterestGroup.module.css";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import { useToast } from "@chakra-ui/react";
 
 type Props = {};
 
 export const Tasks = (props: Props) => {
-
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
+    const toast = useToast();
 
-	const columnOrder = [
+    const columnOrder = [
         { column: "title", Label: "Title", isSortable: true },
         { column: "hashtag", Label: "Hashtag", isSortable: false },
         { column: "org", Label: "Organization", isSortable: false },
         { column: "active", Label: "Active", isSortable: false },
         { column: "karma", Label: "Karma", isSortable: true },
         { column: "usage_count", Label: "Usage Count", isSortable: false },
-        { column: "variable_karma",Label: "Variable Karma",isSortable: false},
+        {
+            column: "variable_karma",
+            Label: "Variable Karma",
+            isSortable: false
+        },
         { column: "updated_by", Label: "Updated By", isSortable: true },
         { column: "updated_at", Label: "Updated On", isSortable: true },
         { column: "created_by", Label: "Created By", isSortable: false },
@@ -52,7 +57,7 @@ export const Tasks = (props: Props) => {
     useEffect(() => {
         if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
         getTasks(setData, 1, perPage, setTotalPages, "", "");
-		//console.log(data)
+        //console.log(data)
     }, []);
 
     const handleSearch = (search: string) => {
@@ -78,23 +83,26 @@ export const Tasks = (props: Props) => {
         //console.log(`Icon clicked for column: ${column}`);
     };
 
-	const handleEdit = (id: string | number | boolean) => {
+    const handleEdit = (id: string | number | boolean) => {
         navigate(`/tasks/edit/${id}`);
     };
 
     const handleDelete = (id: string | undefined) => {
-        navigate(`/tasks/delete/${id}`);
+        deleteTask(id, toast);
     };
 
-	const handleCreate = () => {
+    const handleCreate = () => {
         navigate("/tasks/create");
     };
 
     return (
         <>
-            <div className={styles.createBtnContainer} style={{
-                gap: "15px"
-            }}>
+            <div
+                className={styles.createBtnContainer}
+                style={{
+                    gap: "15px"
+                }}
+            >
                 <MuButton
                     className={styles.createBtn}
                     text={"Bulk Import"}
@@ -107,7 +115,7 @@ export const Tasks = (props: Props) => {
                 <MuButton
                     className={styles.createBtn}
                     text={"Create"}
-                    icon={<AiOutlinePlusCircle/>}
+                    icon={<AiOutlinePlusCircle />}
                     onClick={handleCreate}
                 />
             </div>
@@ -126,6 +134,7 @@ export const Tasks = (props: Props) => {
                     onEditClick={handleEdit}
                     modalTypeContent="error"
                     onDeleteClick={handleDelete}
+                    modalDeleteContent="Are you sure you want to delete ?"
                 >
                     <THead
                         columnOrder={columnOrder}
