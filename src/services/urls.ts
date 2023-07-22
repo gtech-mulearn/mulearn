@@ -76,14 +76,13 @@ export const dashboardRoutes = {
     deleteHackathon: "/api/v1/hackathon/delete-hackathon/",
     publishHackathon: "/api/v1/hackathon/publish-hackathon/",
     addOrganizer: "/api/v1/hackathon/add-organiser/",
+    getApplicationForm: "/api/v1/hackathon/list-applicants/",
 
     getUserLearningCircles: "/api/v1/dashboard/lc/",
-    createLearningCircle : "/api/v1/dashboard/lc/create/",
+    createLearningCircle: "/api/v1/dashboard/lc/create/",
 
     getAllOrganisations: "/api/v1/hackathon/list-organisations/",
-    getAllDistricts: "/api/v1/hackathon/list-districts/",
-
-    
+    getAllDistricts: "/api/v1/hackathon/list-districts/"
 } as const;
 
 export const organizationRoutes = {

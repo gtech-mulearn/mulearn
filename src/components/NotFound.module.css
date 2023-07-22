@@ -1,0 +1,150 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    font-family: 'Plus Jakarta Sans','sans-serif';
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    overflow: hidden; 
+    background:linear-gradient(#d2e5ff,#fff); 
+}
+
+.main_body{
+    display: flex;
+    align-items:center;
+    gap: 10rem;
+    color: #014BB2;
+    font-size: 1.2rem;
+    font-weight:300;
+    padding-bottom: 80px;
+}
+
+.main_body h1{
+    font-size: 10rem;
+    font-weight: bolder;
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    flex-direction: column ;
+    align-items: center;
+}
+
+.content div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 15px;
+    gap: 5px;
+}
+
+.content button{
+    width:12rem;
+    height: 3.5rem;
+    border-radius:3.2rem;
+    background-color: #014BB2;
+    color: #FFF;
+    font-weight: 300;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 50px;
+}
+/* img{
+    width: 25rem;
+    height:23rem; 
+    animation: floater 1.8s infinite alternate
+} */
+.shadow{
+    width: 130px;
+    height: 30px;
+    background-color: rgba(33, 29, 22, 0.16);
+    margin:20px auto;
+    margin-right: 160px;
+    border-radius: 50%;
+    filter: blur(7px);
+    animation: shadow 1.8s infinite alternate;
+}
+
+
+@keyframes floater{   
+    0%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(15px);
+    }
+}
+
+@keyframes shadow{
+    0% {
+        transform:scale(1.83, 1.83);
+        
+    }
+    
+    100% {
+        transform:scale(1, 1);
+    }
+}
+
+
+@media screen and  (max-width: 950px) {
+    .main_body
+    {
+        flex-direction: column;
+        gap: 5rem;
+        font-size: 1rem;
+        padding:0;
+    }
+
+    .main_body h1{
+        font-size: 5rem;
+    }
+
+    .content{
+        padding-top:0;
+    }
+
+    .content button{
+        width: 9rem;
+        height: 2.5rem;
+        font-size: 0.8rem; 
+    }
+    .image{
+        padding: 55px;
+        padding-left:6rem;;
+    }
+
+    img{
+        width: 15rem;
+        height:15rem;    
+    }
+    .shadow{
+        width: 100px;
+        margin:25px auto ;
+        margin-right: 85px;
+    }
+}
+
+@media screen and (max-height:750px) {
+    .main_body{
+       gap: 2rem;
+       margin-top: 100px;
+    }
+}
