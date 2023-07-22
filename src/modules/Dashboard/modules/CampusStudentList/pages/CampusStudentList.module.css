@@ -182,5 +182,4 @@
     align-items: center;
     z-index: 200;
     transition: all 0.5s ease-in;
-    transform: scaleX(-1);
 }
