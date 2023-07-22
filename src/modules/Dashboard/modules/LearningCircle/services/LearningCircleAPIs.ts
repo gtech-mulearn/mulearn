@@ -3,6 +3,7 @@ import { privateGateway } from "@/MuLearnServices/apiGateways"
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { SetStateAction } from "react";
 import { LcType } from "../pages/LearningCircleFind";
+import { getUUID } from "../../Tasks/TaskApis";
 
 export const getCampusLearningCircles = async (
     setCircleList: React.Dispatch<SetStateAction<LcType[]>>
@@ -34,7 +35,7 @@ export const createCircle = async(
                 name:circleName,
                 ig:ig,
                 //note : circle_code required data unknown
-                // circle_code:circleCode
+                // circle_code: getUUID()
             }
         )
 
