@@ -118,7 +118,7 @@ export const DropDownButtons = (props: {
             </div>
             <div
                 className={styles.drop_view}
-                style={{ maxHeight: props.display === "0" ? "0" : "300px" }}
+                style={{ maxHeight: props.display === "0" ? "0" : "fit-content" }}
             >
                 {props.listOfDropBtn?.map(btn => btn)}
             </div>
