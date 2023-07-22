@@ -30,16 +30,14 @@ export const MobileTopBar = ({
         onClick={() => notificationOpenClose()}
       >
         <div
-          className={`text-3xl ${
-            notificationOpen ? " text-orange-500" : "text-black"
-          }`}
+          className={`text-3xl ${notificationOpen ? " text-orange-500" : "text-black"
+            }`}
         >
           <ion-icon name="notifications-circle-outline"></ion-icon>
         </div>
         <div
-          className={` absolute w-[300px] bg-white text-orange-500 border-orange-600/20 border rounded-md text-[13px]  left-8 mt-3  ${
-            notificationOpen ? "block" : "hidden"
-          }`}
+          className={` absolute w-[300px] bg-white text-orange-500 border-orange-600/20 border rounded-md text-[13px]  left-8 mt-3  ${notificationOpen ? "block" : "hidden"
+            }`}
         >
           <Notification />
         </div>
@@ -143,8 +141,9 @@ export const MobileNavHeader = ({ visible, test1 }) => {
   return (
     <>
       {!visible &&
-        links.map((link) => (
+        links.map((link, index) => (
           <div
+            key={index}
             className={`px-7 py-5 text-left flex justify-between items-center }`}
             onClick={() => {
               test1(link);
