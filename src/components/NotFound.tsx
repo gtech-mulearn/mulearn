@@ -15,13 +15,13 @@ const NotFound = () => {
                     <p>Nothing here!</p>
                     <p>Back to base, learners!</p>
                 </div>
-                <Link to="/">
+                 <Link to="/">     {/*    Link to Home    */}
                 <button>Go back to home</button>
                 </Link>
              </div>
 
              
-             <div className={styles.image}>
+             <div className={styles.image}>  
                 <img src={astronaut} alt=""/>
                 <div className={styles.shadow}></div>
              </div>

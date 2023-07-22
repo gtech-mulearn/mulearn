@@ -10,19 +10,21 @@
 .container{
     width: 100%;
     height: 100vh;
+    display: flex;
+    justify-content:center;
+    align-items: center;
     overflow: hidden; 
     background:linear-gradient(#d2e5ff,#fff); 
 }
 
 .main_body{
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 110px;
+    align-items:center;
+    gap: 10rem;
     color: #014BB2;
     font-size: 1.2rem;
-    font-weight:600;
-    margin-left: 8rem;
+    font-weight:300;
+    padding-bottom: 80px;
 }
 
 .main_body h1{
@@ -47,36 +49,41 @@
 }
 
 .content button{
-    width:18rem;
+    width:12rem;
     height: 3.5rem;
     border-radius:3.2rem;
     background-color: #014BB2;
     color: #FFF;
-    font-weight: 600;
-    font-size: 1.2rem;
+    font-weight: 300;
+    font-size: 1rem;
     cursor: pointer;
 }
 
 .image{
-    padding-right:100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 50px;
 }
 img{
     width: 25rem;
-    height:25rem; 
+    height:23rem; 
     animation: floater 1.8s infinite alternate
 }
 .shadow{
     width: 130px;
     height: 30px;
     background-color: rgba(33, 29, 22, 0.16);
-    margin:35px auto;
+    margin:20px auto;
     margin-right: 160px;
     border-radius: 50%;
     filter: blur(7px);
     animation: shadow 1.8s infinite alternate;
 }
 
-@keyframes floater{
+
+@keyframes floater{   
     0%{
         transform: translateY(0);
     }
@@ -101,18 +108,23 @@ img{
     .main_body
     {
         flex-direction: column;
-        justify-content: space-between;
+        gap: 5rem;
         font-size: 1rem;
-        margin-left: 0;
+        padding:0;
     }
 
     .main_body h1{
         font-size: 5rem;
     }
 
+    .content{
+        padding-top:0;
+    }
+
     .content button{
-        width: 15rem;
-        height: 3rem; 
+        width: 9rem;
+        height: 2.5rem;
+        font-size: 0.8rem; 
     }
     .image{
         padding: 55px;
@@ -132,6 +144,7 @@ img{
 
 @media screen and (max-height:750px) {
     .main_body{
-        margin-top: 100px;
+       gap: 2rem;
+       margin-top: 100px;
     }
 }
