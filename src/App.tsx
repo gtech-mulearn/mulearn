@@ -240,7 +240,7 @@ const router = createBrowserRouter([
                         element: <LearningCircleLandingPage />
                     },
                     {
-                        path: "learning-circle/details",
+                        path: "learning-circle/details/:id",
                         element: <LearningCircle />
                     },
                     {
