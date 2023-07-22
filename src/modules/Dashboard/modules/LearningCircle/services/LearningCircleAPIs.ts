@@ -6,12 +6,30 @@ import { LcType } from "../pages/LearningCircleFind";
 import { getUUID } from "../../Tasks/TaskApis";
 import { randomInt } from "crypto";
 
+export const getUserLearningCircles = async (
+    setCircleList: React.Dispatch<SetStateAction<LcType[] | undefined>>
+) => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getCampusLearningCircles
+        );
+        const message: any = response?.data;
+        console.log(message.response);
+        setCircleList(message.response);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
+
 export const getCampusLearningCircles = async (
     setCircleList: React.Dispatch<SetStateAction<LcType[]>>
 ) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getCampusLearningCircles
+            dashboardRoutes.createLearningCircle
         );
         const message: any = response?.data;
         console.log(message.response);

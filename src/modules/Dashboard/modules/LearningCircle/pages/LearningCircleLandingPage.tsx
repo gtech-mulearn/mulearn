@@ -5,18 +5,15 @@ import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { BsChevronRight } from "react-icons/bs";
-
-export type circleListELement = {
-    name: string;
-    type: string;
-};
+import { getUserLearningCircles } from "../services/LearningCircleAPIs";
+import { LcType } from "./LearningCircleFind";
 
 export const LearningCircleLandingPage = () => {
     const navigate = useNavigate();
-    const [userCircleList, setUserCircleList] = useState<circleListELement[]>();
+    const [userCircleList, setUserCircleList] = useState<LcType[]>();
 
     useEffect(() => {
-        // getUserLearningCircles(setUserCircleList)
+        getUserLearningCircles(setUserCircleList)
     }, []);
 
     const handleJoin = () => {
@@ -82,7 +79,7 @@ export const LearningCircleLandingPage = () => {
                                                 </div>
                                                 <div>
                                                     <p className={styles.learningCircleLandingPagePara}>
-                                                        {circle.type}
+                                                        {circle.ig}
                                                     </p>
                                                     <button className={styles.learningCircleLandingPageBtn}>
                                                         <BsChevronRight className={[].join(" ")}/>
