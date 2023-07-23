@@ -152,15 +152,6 @@ function Organizations() {
     };
 
     const handleDelete = (id: string | undefined) => {
-        //console.log("code:",id)
-        // navigate(`delete/${id}`)
-        // const confirmed = confirm("Are you sure you want to delete?");
-        // if(confirmed){
-        //     deleteOrganization(id,toast)
-        //     getOrganizations(activeTab,setData, 1, perPage, setTotalPages, "", "");
-        // }else{
-        //     console.log("cancelled")
-        // }
         deleteOrganization(id, toast);
         setTimeout(() => {
             handleTabClick(activeTab);
@@ -174,10 +165,7 @@ function Organizations() {
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
                 CSV={`${organizationRoutes.getOrgCsv}/${activeTabName}`}
-                // CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}
-                // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
             />
-            {console.log(data)}
             {data && (
                 <Table
                     rows={data}
