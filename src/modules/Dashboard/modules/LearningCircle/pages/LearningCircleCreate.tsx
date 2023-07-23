@@ -1,11 +1,22 @@
+import { useEffect, useState } from "react";
 import styles from "./LearningCircle.module.css";
 import * as Yup from "yup";
 import { Form, Formik } from "formik";
-import { FormikSelect, FormikTextInput } from '@/MuLearnComponents/FormikComponents/FormikComponents'
+import FormikReactSelect,{FormikSelect, FormikTextInput} from '@/MuLearnComponents/FormikComponents/FormikComponents'
+import { getInterestGroups,createCircle } from "../services/LearningCircleAPIs";
+
 type Props = {};
 
-const LearningCircleCreate = (props: Props) => {
+type interestGroupType = {
+    value:string,
+    label:string,
+}
 
+const LearningCircleCreate = (props: Props) => {
+    
+    const [interestGroups,setInterestGroups] = useState<interestGroupType[]>()
+   
+    
     const createLearningCircleSchema = Yup.object().shape({
         circle_name: Yup.string()
             .required("Required")
@@ -13,50 +24,65 @@ const LearningCircleCreate = (props: Props) => {
             .max(30, "Too Long!"),
         interest_group: Yup.string()
             .required("Required")
-            .min(2, "Too Short!")
-            .max(50, "Too Long!"),
     })
+
+    
+
+    useEffect(()=>{
+        (async()=>{
+            const data = await getInterestGroups()
+            setInterestGroups(data)
+        })()
+    },[])
 
     return (
         <>
             <div className={styles.LearningCircleCreateContent}>
+
                 <div className={styles.LearningCircleCreateMain}>
-                    <img src="https://i.ibb.co/XF5yz8Y/image-24.png" alt="" />
+                    <img src="https://i.ibb.co/RhT8b3z/image-24.png" alt="" />
+
                     <div className={styles.LearningCircleCreateHeading}>
                         <div>
                             <b>Create a Learning circle</b>
                             <p>Connect, Collaborate, and Learn Together!</p>
                         </div>
 
-                        <Formik
-                            enableReinitialize={true}
-                            initialValues={{
-                                circle_name: "",
-                                interest_group: ""
-                            }}
-                            validationSchema={createLearningCircleSchema}
-                            onSubmit={(values, { resetForm }) => {
-                                console.log(values.circle_name, values.interest_group)
-                                resetForm()
-                            }}
-                        >
-                            <Form>
-                                <div className={styles.LearningCircleCreateForm}>
-                                    <FormikTextInput
-                                        type="text"
-                                        name="circle_name"
-                                        placeholder="Learning circle name"
-                                    />
-                                    <FormikSelect
-                                        name="interest_group"
-                                        placeholder="Interest group"
-                                    >
-                                        <option className={styles.option} value="">Interest group</option>
-                                    </FormikSelect>
-                                </div>
-                                <button type="submit">Create</button>
-                            </Form>
-                        </Formik>
+                        
+                            <Formik
+                                enableReinitialize={true}
+                                initialValues={{
+                                    circle_name:"",
+                                    interest_group:""
+                                }}
+                                validationSchema={createLearningCircleSchema}
+                                onSubmit={(values,{resetForm}) =>{
+                                    createCircle(
+                                        values.circle_name,
+                                        "error adikalle",
+                                        values.interest_group
+                                    )
+                                    resetForm()
+                                }}
+                            >
+                                <Form>
+                                    <div className={styles.LearningCircleCreateForm}>
+                                        <FormikTextInput 
+                                            type="text"
+                                            name="circle_name" 
+                                            placeholder="Learning circle name"
+                                        />
+                                        <FormikReactSelect
+                                            isDisabled = {!interestGroups} 
+                                            name="interest_group" 
+                                            placeholder="Interest group"
+                                            label=""
+                                            options={interestGroups!}
+                                        />
+                                    </div>
+                                    <button type="submit" >Create</button>
+                                </Form>
+                            </Formik>
                     </div>
                 </div>
 

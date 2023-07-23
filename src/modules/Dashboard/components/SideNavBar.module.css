@@ -55,7 +55,6 @@
     display: flex;
     flex-direction: column;
     color: #456ff6;
-    /* font-size: larger; */
     font-size: 20px;
     font-weight: 600;
 }
@@ -87,7 +86,6 @@
     height: 50px;
     display: flex;
     border-radius: 20px;
-    flex-direction: row;
     align-items: center;
     margin-bottom: 20px;
     cursor: pointer;
@@ -111,7 +109,7 @@
     height: 100%;
     overflow-y: scroll;
     transition: 0.5s ease;
-    z-index: 150;
+    z-index: 99;
     /* background-color: #F2F5FF; */
 }
 
@@ -122,14 +120,14 @@
     position: fixed;
     width: 100vw;
     z-index: 50;
-    box-shadow: 5px 2px 5px 1px rgba(0, 0, 0, 0.1);
+    padding: 40px 40px 0px;
+    background: rgb(255, 255, 255);
 }
 
 .right_side .top_nav .nav .nav_items {
     width: 100%;
     /* height: 100%; */
     display: flex;
-    flex-direction: row;
     align-items: center;
     background-color: #fff;
     justify-content: space-between;
@@ -137,7 +135,8 @@
 
 .right_side .top_nav .nav .nav_items .greetings {
     font-size: 22px;
-    color: #000;
+    font-weight: 600;
+    color: #456FF6;
 }
 
 .mulearn_brand2 svg {
@@ -145,11 +144,16 @@
 }
 
 .right_side .top_nav .nav .nav_items .menu {
-    width: 160px;
+    /* width: 160px; */
+    gap: 20px;
+    font-size: 20px;
     display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+}
+
+.right_side .top_nav .nav .nav_items .menu i {
+    height: 20px;
 }
 
 .right_side .top_nav .nav .nav_items .menu .profile img {
@@ -165,7 +169,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* height: calc(100% - 160px); */
+    /* height: calc(100% - 450px); */
     justify-content: flex-start;
     text-align: center;
     margin-top: 16vh;
@@ -175,7 +179,7 @@
 /* responsive */
 @media screen and (min-width: 1324px) {
     .right_side .top_nav .nav {
-        width: 89vw;
+        width: calc(100% - 240px);
     }
 }
 

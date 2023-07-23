@@ -48,7 +48,7 @@
 
 @media (min-width: 768px) {
 	.inputContainer {
-		flex-direction: row;
+		/* flex-direction: row; */
 		flex-wrap: wrap;
 		width: 30rem;
 	}
@@ -83,7 +83,7 @@
 	align-items: center;
 	padding: 0 10px;
 	margin-top: 10px;
-	width: 50%;
+	/* width: 50%; */
 }
 
 .btn_cancel,
@@ -112,6 +112,7 @@
 }
 
 .inputBox {
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -147,16 +148,17 @@
 	color: var(--Dark);
 }
 
-
 .InputSet {
 	display: flex;
 	flex-direction: column;
-	width: 22rem;
+	/* width: 25rem; */
+	height: fit-content;
 	gap: .5rem;
 	text-align: left;
 }
 
 .formLabel {
+	/* line-height: 0rem; */
 	text-align: left;
 	font-size: 1.1rem;
 	font-weight: 600;
@@ -167,9 +169,10 @@
 .InputSet input {
 	padding: .7rem 1rem;
 	border-radius: var(--borderRadius);
-	width: 100%;
+	/* width: 100%; */
 	background-color: var(--White);
-	min-width: 22rem;
+	/* min-width: 22rem; */
+	/* max-width: 100%; */
 	border: .1px solid #CFD3D4;
 }
 
@@ -180,7 +183,7 @@
 	font-weight: 500;
 	color: var(--grey);
 	background-color: var(--White) !important;
-	min-width: 22rem;
+	/* min-width: 22rem; */
 }
 
 .InputSet textarea {
@@ -188,42 +191,22 @@
 	margin-bottom: 0;
 	border-radius: var(--borderRadius);
 	width: 100%;
-	min-width: 72vw;
+	/* min-width: 72vw; */
 	/*need to change this to make it responsive */
 	min-height: 10rem;
 	border: .1px solid #CFD3D4;
 }
 
-@media (width<=1280px) {
-
-	.InputSet textarea {
-		min-width: 60vw;
-	}
-}
-
-@media (width<=1080px) {
-
-	.InputSet input,
-	.InputSet textarea,
-	.reactSelect {
-		min-width: 50vw;
-	}
-}
-
-@media (width<=820px) {
-
-	.InputSet input,
-	.InputSet textarea,
-	.reactSelect {
-		min-width: 80vw;
-	}
-}
-
-@media (width<=520px) {
-
-	.InputSet input,
-	.InputSet textarea,
-	.reactSelect {
-		min-width: 68vw;
-	}
+.loader_container {
+	position: fixed;
+	width: 100vw;
+	height: 100dvh;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 200;
+	transition: all 0.5s ease-in;
 }

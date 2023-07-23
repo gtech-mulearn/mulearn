@@ -1,23 +1,26 @@
 import React, { useState, ChangeEvent, DragEvent } from "react";
 import styles from "./BulkImport.module.css";
-import { FiPlus } from "react-icons/fi";
+import { FiUploadCloud } from "react-icons/fi";
 import { bulkImport } from "./BulkImportApi";
 import { SingleButton } from "../MuButtons/MuButton";
+import { useToast } from "@chakra-ui/react";
 
-type Props = {
-	path: string,
-};
+interface Props extends React.HTMLAttributes<HTMLInputElement> {
+    path: string;
+    onUpload?: (response: any) => void;
+    onError?: (error: any) => void;
+}
 
 /*
 TODO: Change Template File
 TODO: Change From Component to Page
 */
 
-const BulkImport = (props: Props) => {
+const BulkImport = ({ path, onUpload, onError, ...rest }: Props) => {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [isDragging, setIsDragging] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
-
+    const toast = useToast();
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files.length > 0) {
             const file = event.target.files[0];
@@ -89,11 +92,31 @@ const BulkImport = (props: Props) => {
             const renamedFile = renameFile(selectedFile, "task_list.xlsx");
             const formData = new FormData();
             formData.append("task_list", renamedFile);
-			bulkImport(formData, props.path)
+            bulkImport(formData, path).then(response => {
+                if (response.status && response.status !== 200) {
+                    console.log(response);
+                    if (onError) {
+                        onError(response);
+                    }
+                    if (response.status === 400 || response.status === 403) {
+                        toast({
+                            title: "Error",
+                            description: response.data?.message?.general[0],
+                            status: "error",
+                            duration: 5000,
+                            isClosable: true
+                        });
+                        return;
+                    }
+                }
+                if (onUpload) {
+                    onUpload(response);
+                }
+            });
         }
     };
 
-	const renameFile = (file: File, newName: string): File => {
+    const renameFile = (file: File, newName: string): File => {
         const renamed = new File([file], newName, { type: file.type });
         return renamed;
     };
@@ -112,7 +135,11 @@ const BulkImport = (props: Props) => {
                         htmlFor="file-upload-input"
                         className={styles.upload_button}
                     >
-                        <FiPlus className={styles.icon} />
+                        <FiUploadCloud className={styles.icon} />
+                        <p className={styles.text}>
+                            Drag and drop Excel files here or click to select
+                            files
+                        </p>
                     </label>
                     <input
                         id="file-upload-input"
@@ -125,10 +152,8 @@ const BulkImport = (props: Props) => {
                             top: 0,
                             left: 0
                         }}
+                        {...rest}
                     />
-                    <p className={styles.text}>
-                        Drag and drop Excel files here or click to select files
-                    </p>
                 </div>
                 {errorMessage && (
                     <p className="error-message">{errorMessage}</p>
@@ -136,7 +161,7 @@ const BulkImport = (props: Props) => {
                 {selectedFile && (
                     <div className={styles.fileInfo}>
                         <span>{selectedFile.name}</span>
-						<SingleButton text={"Upload"} onClick={handleUpload}/>
+                        <SingleButton text={"Upload"} onClick={handleUpload} />
                     </div>
                 )}
             </div>
