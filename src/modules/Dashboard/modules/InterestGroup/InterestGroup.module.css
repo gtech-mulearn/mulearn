@@ -239,3 +239,17 @@
 	transform: translateY(-5px);
 	background: var(--blue);
 }
+
+.loader_container {
+    position: fixed;
+    width: 100vw;
+    height: 100dvh;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    transition: all 0.5s ease-in;
+}
