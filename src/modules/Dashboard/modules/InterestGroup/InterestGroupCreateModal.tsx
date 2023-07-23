@@ -83,22 +83,22 @@ const InterestGroupCreateModal: React.FC<ModalProps> = ({ isOpen, onClose }) => 
             }}
           >
             <Form className={styles.modalContainerItemRow}>
+              <span className={styles.IGCreateDesc}>Enter the name of the Interest Group in the input below that you wish to create.</span>
               <FormikTextInput
-                label="IG Name"
                 name="igName"
                 type="text"
                 placeholder="Enter a name"
               />
               <div className={styles.modalContainerBtnRow}>
+                <button type="submit" className={styles.btnSubmit}>
+                  Confirm
+                </button>
                 <button className={styles.btnCancel}
                   onClick={() => {
                     onClose(false);
                   }}
                 >
                   Decline
-                </button>
-                <button type="submit" className={styles.btnSubmit}>
-                  Confirm
                 </button>
               </div>
             </Form>
