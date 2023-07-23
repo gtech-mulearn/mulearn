@@ -1,14 +1,42 @@
 import BulkImport from "@/MuLearnComponents/BulkImport/BulkImport";
+import { convertToXLSX } from "./TaskApis";
 import { SingleButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
+import { useState, useMemo, MouseEventHandler } from "react";
 import { BiDownload } from "react-icons/bi";
+import { useToast } from "@chakra-ui/react";
 
 type Props = {};
 
+const CountCard = ({ title, count }: { title: string; count: number }) => {
+    return (
+        <div>
+            <h3>{title}</h3>
+            <h1>{count}</h1>
+        </div>
+    );
+};
+
 const TaskBulkImport = (props: Props) => {
-	const handleClick = () => {
-		//console.log("worked")
-	}
+    const [uploadResponse, setUploadResponse] = useState<any>(null);
+    const handleClick = () => {
+        //console.log("worked")
+    };
+    const successDownload = () => {
+        convertToXLSX(uploadResponse.response.Success, "Success.xlsx");
+    };
+    const failureDownload = () => {
+        convertToXLSX(uploadResponse.response.Failed, "Failed.xlsx");
+    };
+    const memoizedSuccessDownload = useMemo(
+        () => successDownload,
+        [uploadResponse]
+    );
+    const memoizedFailureDownload = useMemo(
+        () => failureDownload,
+        [uploadResponse]
+    );
+
     return (
         <>
             <SingleButton
@@ -17,7 +45,58 @@ const TaskBulkImport = (props: Props) => {
                 icon={<BiDownload />}
                 link="https://drive.google.com/uc?export=download&id=1b2DUyj6zxDzY8q5pDTbL3NlZEL1J1dcq"
             />
-            <BulkImport path={dashboardRoutes.getTasksData + "import/"} />
+
+            <BulkImport
+                path={dashboardRoutes.getTasksData + "import/"}
+                onUpload={res => {
+                    setUploadResponse(res);
+                }}
+                onError={err => {
+                    console.log(err);
+                    setUploadResponse(null);
+                }}
+            />
+            {uploadResponse && (
+                <>
+                    <div
+                        style={{
+                            display: "flex",
+                            width: "100%",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            gap: "10rem"
+                        }}
+                    >
+                        <CountCard
+                            title="Success"
+                            count={uploadResponse.response.Success.length}
+                        />
+                        <CountCard
+                            title="Failed"
+                            count={uploadResponse.response.Failed.length}
+                        />
+                    </div>
+                    <div
+                        style={{
+                            display: "flex",
+                            width: "100%",
+                            justifyContent: "center",
+                            gap: "1rem"
+                        }}
+                    >
+                        <SingleButton
+                            text="Download Success data"
+                            onClick={memoizedSuccessDownload}
+                            style={{ width: "initial" }}
+                        />
+                        <SingleButton
+                            text="Download Failed data"
+                            onClick={memoizedFailureDownload}
+                            style={{ width: "initial" }}
+                        />
+                    </div>
+                </>
+            )}
         </>
     );
 };
