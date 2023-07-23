@@ -15,7 +15,7 @@ export const KKEMLogin = (
     console.log({emailOrMuid, password,integration:"DWMS"})
     setIsLoading(true);
     publicGateway
-        .post(KKEMRoutes.userLogin, { dwms_id:null,emailOrMuid, password,integration:"DWMS"})
+        .post(KKEMRoutes.userLogin, { emailOrMuid, password})
         .then(response => {
             if (response.data.hasError == false) {
                 localStorage.setItem(

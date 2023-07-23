@@ -2,11 +2,11 @@ import React, { useEffect, useRef, useState } from 'react'
 import styles from './LearningCircle.module.css'
 import imageTop from '../assets/images/LC1.png'
 import { BsSearch } from 'react-icons/bs'
-import { getCampusLearningCircles } from '../services/LearningCircleAPIs'
 import { PowerfulButton } from '@/MuLearnComponents/MuButtons/MuButton'
 import { useNavigate } from 'react-router-dom'
 import { LcType } from '../services/LearningCircleInterface'
 import { createStandaloneToast, UseToastOptions } from "@chakra-ui/react";
+import { getCampusLearningCircles } from '../services/LearningCircleAPIs'
 
 const { toast } = createStandaloneToast();
 

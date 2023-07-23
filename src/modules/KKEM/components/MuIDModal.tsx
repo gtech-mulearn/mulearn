@@ -4,7 +4,7 @@ import { RiCloseLine } from "react-icons/ri";
 import { AiOutlineLoading } from "react-icons/ai";
 import { HiCheck, HiOutlineArrowRight } from "react-icons/hi";
 import { useToast } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { KKEMLogin } from "../services/apis";
 
 interface ModalProps extends React.HTMLAttributes<HTMLDialogElement> {
@@ -56,6 +56,15 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
     const toast = useToast();
     const navigate = useNavigate();
     let ruri = window.location.href.split("=")[1];
+    const [searchParams] = useSearchParams();
+    const mu_id = searchParams.get("mu_id");
+
+    useEffect(() => {
+        if (mu_id) {
+            setMuid(mu_id);
+            setDisabled(true)
+        }
+    }, [searchParams])
 
     const handleIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setMuid(e.target.value);
@@ -119,65 +128,66 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
                     <div className={styles.modalBody}>
                         <p>If yes, please enter your Credentials:</p>
                     </div>
-                        <form className={styles.form} onSubmit={handleSubmit}>
-                            <>
+                    <form className={styles.form} onSubmit={handleSubmit}>
+                        <>
+                            <input
+                                disabled={disabled}
+                                type="text"
+                                name="muid"
+                                id="muid"
+                                placeholder="Enter µ-Id"
+                                value={muid}
+                                onChange={handleIdChange}
+                            />
+                            <div className={styles.pass}>
                                 <input
-                                    type="text"
-                                    name="muid"
-                                    id="muid"
-                                    placeholder="Enter µ-Id"
-                                    value={muid}
-                                    onChange={handleIdChange}
+                                    type="password"
+                                    name="password"
+                                    id="password"
+                                    placeholder="Enter Password"
+                                    value={password}
+                                    onChange={handlePassChange}
                                 />
-                                <div className={styles.pass}>
-                                    <input
-                                        type="password"
-                                        name="password"
-                                        id="password"
-                                        placeholder="Enter Password"
-                                        value={password}
-                                        onChange={handlePassChange}
-                                    />
 
-                                    <button
-                                        type="submit"
-                                        className={`${styles.submit} ${success ? styles.successBtn : ""
-                                            }`}
-                                        disabled={isLoading}
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            if (!muid || muid.length <= 0 || muid.trim().length <= 0) {
-                                                setError("Please enter a valid muid");
-                                            } else if (!password || password.length <= 0 || password.trim().length <= 0) {
-                                                setError("Please enter a valid password");
-                                            } else {
-                                                setError("")
-                                                KKEMLogin(
-                                                    muid,
-                                                    password,
-                                                    toast,
-                                                    navigate,
-                                                    setIsLoading,
-                                                    ruri
-                                                )
-                                            }
-                                        }}
-                                    >
-                                        {isLoading ? (
-                                            <AiOutlineLoading className={styles.spin} />
-                                        ) : success ? (
-                                            <HiCheck />
-                                        ) : (
-                                            <HiOutlineArrowRight />
-                                        )}
-                                    </button>
-                                </div>
-                                <div className={styles.loginHelp}>
-                                    <p className={styles.loginHelpers}>Forgot <span className={styles.loginHelperBold}>password?</span></p>
-                    
-                                </div>
-                            </>
-                        </form>
+                                <button
+                                    type="submit"
+                                    className={`${styles.submit} ${success ? styles.successBtn : ""
+                                        }`}
+                                    disabled={isLoading}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        if (!muid || muid.length <= 0 || muid.trim().length <= 0) {
+                                            setError("Please enter a valid muid");
+                                        } else if (!password || password.length <= 0 || password.trim().length <= 0) {
+                                            setError("Please enter a valid password");
+                                        } else {
+                                            setError("")
+                                            KKEMLogin(
+                                                muid,
+                                                password,
+                                                toast,
+                                                navigate,
+                                                setIsLoading,
+                                                ruri
+                                            )
+                                        }
+                                    }}
+                                >
+                                    {isLoading ? (
+                                        <AiOutlineLoading className={styles.spin} />
+                                    ) : success ? (
+                                        <HiCheck />
+                                    ) : (
+                                        <HiOutlineArrowRight />
+                                    )}
+                                </button>
+                            </div>
+                            <div className={styles.loginHelp}>
+                                <p className={styles.loginHelpers}>Forgot <span className={styles.loginHelperBold}>password?</span></p>
+
+                            </div>
+                        </>
+                    </form>
                     {error && <p className={styles.error}>{error}</p>}
                     {success && (
                         <p className={styles.success}>

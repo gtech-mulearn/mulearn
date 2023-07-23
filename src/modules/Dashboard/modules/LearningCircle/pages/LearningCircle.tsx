@@ -1,24 +1,56 @@
-import styles from './LearningCircle.module.css'
+import { useEffect, useState } from "react";
+import styles from "./LearningCircle.module.css";
+import { getLcDetails } from "../services/LearningCircleAPIs";
+import { useParams } from "react-router-dom";
+import pic from "../../Profile/assets/images/dpm.jpg";
+
+export interface LcMembers {
+    id: string;
+    username: string;
+    profile_pic: string;
+    karma: number;
+}
+
+export interface LcDetail {
+    circle_code: string;
+    college: string;
+    members: LcMembers[];
+    name: string;
+    pending_members: LcMembers[];
+    rank: number;
+    total_karma: number;
+    meet_place: string;
+    meet_time: string;
+}
 
 type Props = {};
 
 const LearningCircle = (props: Props) => {
+    const [lc, setLc] = useState<LcDetail>();
+    const { id } = useParams();
+
+    useEffect(() => {
+        getLcDetails(setLc, id);
+    }, []);
+
     return (
         <>
             <div className={styles.LearningCircleDetailsContent}>
                 <div className={styles.CreatedCircle}>
                     <div className={styles.CircleName}>
-                        <h1>UX world</h1>
+                        <h1>{lc?.name}</h1>
                         <b>
-                            LBS Institute of Technology for Women <br /> Code:
-                            LBT{" "}
+                            {lc?.college} <br /> Code:
+                            {lc?.circle_code}
                         </b>
                     </div>
                     <div className={styles.CircleRank}>
                         <div>
                             <b>Rank</b>
-                            <h1>3</h1>
-                            <b className={styles.points}>4.68K Karma</b>
+                            <h1>{lc?.rank}</h1>
+                            <b className={styles.points}>
+                                {lc?.total_karma} Karma
+                            </b>
                         </div>
                         <i className="fa-solid fa-right-from-bracket"></i>
                     </div>
@@ -26,84 +58,123 @@ const LearningCircle = (props: Props) => {
 
                 <div className={styles.BoxContent}>
                     <div className={styles.LeftBox}>
-                        <div className={styles.EventOn}>
-                            <div className={styles.MeetingOn}>
-                                <div>
-                                    <b>Next Meeting on</b>
+                        {lc?.meet_place && lc.meet_place.length > 0 ? (
+                            <div className={styles.EventOn}>
+                                <div className={styles.MeetingOn}>
                                     <div>
-                                        <h1>22 June 2023</h1>
-                                        <b>Sunday</b>
+                                        <b>Next Meeting on</b>
+                                        <div>
+                                            <h1>{lc.meet_time}</h1>
+                                            <b>Sunday</b>
+                                        </div>
                                     </div>
+                                    <i className="fa-solid fa-pencil"></i>
                                 </div>
-                                <i className="fa-solid fa-pencil"></i>
+                                <div className={styles.MeetingBtn}>
+                                    <b>
+                                        venue: {lc.meet_place} <br /> time:
+                                        10:00 am
+                                    </b>
+                                    <button className={styles.BtnBtn}>
+                                        Done
+                                    </button>
+                                </div>
                             </div>
-                            <div className={styles.MeetingBtn}>
-                                <b>
-                                    venue: multiplication hall <br /> time:
-                                    10:00 am
+                        ) : (
+
+							// TODO: Formik implement
+
+                            <div className={styles.EventOn}>
+                                <div className={styles.ScheduleOn}>
+                                    <b>Schedule meeting</b>
+                                    <p>
+                                        Enter details to schedule your weekly
+                                        meeting
+                                    </p>
+                                </div>
+                                <div className={styles.InputSchedule}>
+                                    <div>
+                                        <input
+                                            type="time"
+                                            placeholder="meeting time"
+                                        />
+                                        <input
+                                            type="date"
+                                            placeholder="meeting day"
+                                        />
+                                    </div>
+                                    <input
+                                        type="text"
+                                        placeholder="meeting venue"
+                                    />
+                                </div>
+                                <button className={styles.BtnBtn}>
+                                    Schedule
+                                </button>
+                            </div>
+                        )}
+
+                        {lc?.pending_members &&
+                        lc.pending_members.length > 0 ? (
+                            <div className={styles.PendingApp}>
+                                <b className={styles.PendingTitle}>
+                                    Pending approvals
                                 </b>
-                                <button className={styles.BtnBtn}>Done</button>
-                            </div>
-                        </div>
 
-                        {/* <div className={styles.EventOn}>
-                            <div className={styles.ScheduleOn}>
-                                <b>Schedule meeting</b>
-                                <p>Enter details to schedule your weekly meeting</p>
-                            </div>
-                            <div className={styles.InputSchedule}>
-                                <div>
-                                    <input type="time" placeholder="meeting time" />
-                                    <input type="date" placeholder="meeting day" />
-                                </div>
-                                <input type="text" placeholder="meeting venue" />
-                            </div>
-                            <button className={styles.BtnBtn}>Schedule</button>
-                        </div> */}
-
-                        <div className={styles.PendingApp}>
-                            <b className={styles.PendingTitle}>Pending approvals</b>
-                            <div className={styles.PendingList}>
-                                <div className={styles.PendingMembers}>
-                                    <span>
-                                        <img
-                                            src="https://www.himalmag.com/wp-content/uploads/2019/07/sample-profile-picture.png"
-                                            alt=""
-                                        />
-                                        <b>Sarah Philip</b>
-                                    </span>
-                                    <div className={styles.buttons}>
-                                        <button className={styles.BtnBtn}>
-                                            Approve
-                                        </button>
-                                        <button className={styles.BtnClr}>
-                                            Reject
-                                        </button>
-                                    </div>
-                                </div>
-                                <div className={styles.PendingMembers}>
-                                    <span>
-                                        <img
-                                            src="https://www.himalmag.com/wp-content/uploads/2019/07/sample-profile-picture.png"
-                                            alt=""
-                                        />
-                                        <b>Sarah Philip</b>
-                                    </span>
-                                    <div className={styles.buttons}>
-                                        <button className={styles.BtnBtn}>
-                                            Approve
-                                        </button>
-                                        <button className={styles.BtnClr}>
-                                            Reject
-                                        </button>
-                                    </div>
+                                <div className={styles.PendingList}>
+                                    {lc?.pending_members &&
+                                        lc.pending_members.map(
+                                            (member, index) => (
+                                                <div
+                                                    className={
+                                                        styles.PendingMembers
+                                                    }
+                                                >
+                                                    <span>
+                                                        <img
+                                                            src={
+                                                                member.profile_pic
+                                                                    ? `https://dev.mulearn.org/${member?.profile_pic}`
+                                                                    : pic
+                                                            }
+                                                            alt="Profile picture"
+                                                        />
+                                                        <b>{member.username}</b>
+                                                    </span>
+                                                    <div
+                                                        className={
+                                                            styles.buttons
+                                                        }
+                                                    >
+                                                        <button
+                                                            className={
+                                                                styles.BtnBtn
+                                                            }
+                                                        >
+                                                            Approve
+                                                        </button>
+                                                        <button
+                                                            className={
+                                                                styles.BtnClr
+                                                            }
+                                                        >
+                                                            Reject
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            )
+                                        )}
                                 </div>
                             </div>
-                        </div>
+                        ) : (
+                            <></>
+                        )}
                     </div>
 
                     <div className={styles.RightBox}>
-                        <div className={styles.Streak}>
+                        {/* TODO: Will implement in next iteration */}
+
+                        {/* <div className={styles.Streak}>
                             <img
                                 src="https://i.ibb.co/BNMSdTH/flame.png"
                                 alt=""
@@ -112,7 +183,7 @@ const LearningCircle = (props: Props) => {
                                 <b className={styles.StreakCount}>87</b>
                                 <b>STREAK</b>
                             </div>
-                        </div>
+                        </div> */}
 
                         <div className={styles.Members}>
                             <span className={styles.MemberTitle}>
@@ -120,71 +191,29 @@ const LearningCircle = (props: Props) => {
                                 <i className="fa-solid fa-ellipsis-vertical"></i>
                             </span>
                             <div className={styles.MemberList}>
-                                <div className={styles.MemberName}>
-                                    <img
-                                        src="https://www.himalmag.com/wp-content/uploads/2019/07/sample-profile-picture.png"
-                                        alt=""
-                                    />
-                                    <div>
-                                        <p>Sarah philip</p>
-                                        <span>
+                                {lc?.members &&
+                                    lc.members.map((member, index) => (
+                                        <div className={styles.MemberName}>
                                             <img
-                                                src="https://i.ibb.co/Dbhv9rS/karma.png"
-                                                alt=""
+                                                src={
+                                                    member.profile_pic
+                                                        ? `https://dev.mulearn.org/${member?.profile_pic}`
+                                                        : pic
+                                                }
+                                                alt="Profile Picture"
                                             />
-                                            2k
-                                        </span>
-                                    </div>
-                                </div>
-                                <div className={styles.MemberName}>
-                                    <img
-                                        src="https://www.himalmag.com/wp-content/uploads/2019/07/sample-profile-picture.png"
-                                        alt=""
-                                    />
-                                    <div>
-                                        <p>Sarah philip</p>
-                                        <span>
-                                            <img
-                                                src="https://i.ibb.co/Dbhv9rS/karma.png"
-                                                alt=""
-                                            />
-                                            2k
-                                        </span>
-                                    </div>
-                                </div>
-                                <div className={styles.MemberName}>
-                                    <img
-                                        src="https://www.himalmag.com/wp-content/uploads/2019/07/sample-profile-picture.png"
-                                        alt=""
-                                    />
-                                    <div>
-                                        <p>Sarah philip</p>
-                                        <span>
-                                            <img
-                                                src="https://i.ibb.co/Dbhv9rS/karma.png"
-                                                alt=""
-                                            />
-                                            2k
-                                        </span>
-                                    </div>
-                                </div>
-                                <div className={styles.MemberName}>
-                                    <img
-                                        src="https://www.himalmag.com/wp-content/uploads/2019/07/sample-profile-picture.png"
-                                        alt=""
-                                    />
-                                    <div>
-                                        <p>Sarah philip</p>
-                                        <span>
-                                            <img
-                                                src="https://i.ibb.co/Dbhv9rS/karma.png"
-                                                alt=""
-                                            />
-                                            2k
-                                        </span>
-                                    </div>
-                                </div>
-                                
+                                            <div>
+                                                <p>{member.username}</p>
+                                                <span>
+                                                    <img
+                                                        src="https://i.ibb.co/Dbhv9rS/karma.png"
+                                                        alt="karma"
+                                                    />
+                                                    {member.karma}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    ))}
                             </div>
                         </div>
                     </div>
