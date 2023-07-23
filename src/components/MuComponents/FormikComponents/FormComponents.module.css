@@ -150,14 +150,14 @@
 .InputSet {
 	display: flex;
 	flex-direction: column;
-	/* width: 22rem; */
-	width: 100%;
+	/* width: 25rem; */
+	height: fit-content;
 	gap: .5rem;
 	text-align: left;
 }
 
 .formLabel {
-	line-height: 0rem;
+	/* line-height: 0rem; */
 	text-align: left;
 	font-size: 1.1rem;
 	font-weight: 600;
@@ -195,4 +195,3 @@
 	min-height: 10rem;
 	border: .1px solid #CFD3D4;
 }
-
