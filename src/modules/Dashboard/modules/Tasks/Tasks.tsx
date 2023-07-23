@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
@@ -23,6 +23,7 @@ export const Tasks = (props: Props) => {
     const [perPage, setPerPage] = useState(5);
     const [loading, setLoading] = useState(true);
     const [sort, setSort] = useState("");
+    const firstFetch = useRef(true);
     const navigate = useNavigate();
     const toast = useToast();
 
@@ -57,8 +58,11 @@ export const Tasks = (props: Props) => {
     };
 
     useEffect(() => {
-        if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
-        getTasks(setData, 1, perPage, setTotalPages, "", "");
+        if (firstFetch.current) {
+            if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
+            getTasks(setData, 1, perPage, setTotalPages, "", "");
+        }
+        firstFetch.current = false;
         if (data.length > 0) setLoading(false);
     }, [data]);
 
