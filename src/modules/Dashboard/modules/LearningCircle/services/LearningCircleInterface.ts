@@ -9,3 +9,22 @@ export interface LcType {
     name: string;
     org: string;
 }
+
+export interface LcMembers {
+    id: string;
+    username: string;
+    profile_pic: string;
+    karma: number;
+}
+
+export interface LcDetail {
+    circle_code: string;
+    college: string;
+    members: LcMembers[];
+    name: string;
+    pending_members: LcMembers[];
+    rank: number;
+    total_karma: number;
+    meet_place: string;
+    meet_time: string;
+}

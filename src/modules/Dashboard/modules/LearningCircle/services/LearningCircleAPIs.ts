@@ -4,7 +4,7 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { SetStateAction } from "react";
 import { LcType } from "./LearningCircleInterface";
 import { createStandaloneToast } from "@chakra-ui/react";
-import { LcDetail } from "../pages/LearningCircle";
+import { LcDetail } from "./LearningCircleInterface";
 
 
 
