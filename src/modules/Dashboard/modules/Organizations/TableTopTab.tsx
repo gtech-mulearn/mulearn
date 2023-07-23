@@ -1,55 +1,58 @@
-import React from "react"
+import React from "react";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { color } from "framer-motion";
 
 interface TableTopTabProps {
     active: string;
     onTabClick: (tab: string) => void;
 }
 
-const TableTopTab = ({ active, onTabClick}: TableTopTabProps) => {
-    
-    const tabletopTab = ["Colleges", "Companies", "Communities"]
+const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
+    const tabletopTab = ["Colleges", "Companies", "Communities"];
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleCreate = () => {
-        navigate("/organizations/create",{state:
-            {
-                activeItem:active,
+        navigate("/organizations/create", {
+            state: {
+                activeItem: active,
                 isCreate: true
-            }});
+            }
+        });
     };
 
     return (
-        <div className='table_tab_container'>
+        <div className="table_tab_container">
             <div className="table_tabs">
-                {
-                    tabletopTab?.map((item: string): any => (
-                        <MuButton
-                            key={item}
-                            text={item}
-                            className = { 
-                                active === item 
-                                ? "table_tab_btn active" 
-                                :  "table_tab_btn inactive"
-                            }
-                            onClick={()=>{
-                                onTabClick(item)
-                            }}
-                        />
-                    ))
-                }
+                {tabletopTab?.map((item: string): any => (
+                    <MuButton
+                        key={item}
+                        text={item}
+                        className={
+                            active === item
+                                ? "table_tab_btn active"
+                                : "table_tab_btn inactive"
+                        }
+                        onClick={() => {
+                            onTabClick(item);
+                        }}
+                    />
+                ))}
             </div>
             <MuButton
-                    className="org_create_btn"
-                    text={"Create"}
-                    onClick={handleCreate}
-                    icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
-                />
+                className="org_create_btn"
+                text={"Create"}
+                style={{
+                    backgroundColor: "#456FF6",
+                    color: "#fff"
+                }}
+                onClick={handleCreate}
+                icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
+            />
         </div>
-    )
-}
+    );
+};
 
 export default TableTopTab;

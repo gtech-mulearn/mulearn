@@ -41,6 +41,7 @@
   z-index: 0;
   background-color: #fff;
   margin: auto;
+  margin-top: 0;
 }
 .popup_container .popup_title {
   font-size: 20px;
