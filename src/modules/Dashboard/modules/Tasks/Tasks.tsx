@@ -67,23 +67,26 @@ export const Tasks = (props: Props) => {
     }, [data]);
 
     const handleSearch = (search: string) => {
+        setLoading(true);
         setCurrentPage(1);
-        getTasks(setData, 1, perPage, setTotalPages, search, "");
+        getTasks(setData, 1, perPage, setTotalPages, search, "", setLoading);
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
+        setLoading(true);
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getTasks(setData, 1, selectedValue, setTotalPages, "", "");
+        getTasks(setData, 1, selectedValue, setTotalPages, "", "", setLoading);
     };
 
     const handleIconClick = (column: string) => {
+        setLoading(true);
         if (sort === column) {
             setSort(`-${column}`);
-            getTasks(setData, 1, perPage, setTotalPages, "", `-${column}`);
+            getTasks(setData, 1, perPage, setTotalPages, "", `-${column}`, setLoading);
         } else {
             setSort(column);
-            getTasks(setData, 1, perPage, setTotalPages, "", column);
+            getTasks(setData, 1, perPage, setTotalPages, "", column, setLoading);
         }
 
         //console.log(`Icon clicked for column: ${column}`);
