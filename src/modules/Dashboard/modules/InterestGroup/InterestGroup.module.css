@@ -1,7 +1,7 @@
 .form {
-    border: 2px solid var(--Blue800);
+	border: 2px solid var(--Blue800);
 	border-radius: 20px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.155);
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.155);
 	height: 13rem;
 	padding: 2rem 0;
 	display: flex;
@@ -59,46 +59,46 @@
 
 .btn {
 	background: var(--Primary);
-    color: var(--White);
+	color: var(--White);
 	width: 50%;
-    min-width: 200px;
-    padding: 10px 20px;
-    display: flex;
-    border-radius: 10px;
-    flex-direction: row;
-    align-items: center;
+	min-width: 200px;
+	padding: 10px 20px;
+	display: flex;
+	border-radius: 10px;
+	flex-direction: row;
+	align-items: center;
 	justify-content: center;
-    margin-top: 1.5rem;
-    font-size: 15px;
-    cursor: pointer;
-    transition: .3s ease-in-out;
+	margin-top: 1.5rem;
+	font-size: 15px;
+	cursor: pointer;
+	transition: .3s ease-in-out;
 }
 
 .btn:hover {
-    background: var(--PrimaryLight);
-    color: var(--Dark);
+	background: var(--PrimaryLight);
+	color: var(--Dark);
 }
 
 .createBtn {
 	background: var(--Primary);
-    color: var(--White);
+	color: var(--White);
 	width: 10%;
-    min-width: 100px;
-    padding: 10px 20px;
-    display: flex;
-    border-radius: 10px;
+	min-width: 100px;
+	padding: 10px 20px;
+	display: flex;
+	border-radius: 10px;
 	border: 1px solid var(--Primary);
-    flex-direction: row;
-    align-items: center;
+	flex-direction: row;
+	align-items: center;
 	justify-content: center;
-    margin-top: 1.5rem;
-    font-size: 15px;
-    cursor: pointer;
-    transition: .3s ease-in-out;
+	margin-top: 1.5rem;
+	font-size: 15px;
+	cursor: pointer;
+	transition: .3s ease-in-out;
 }
 
 .createBtn:hover {
-    background: var(--Blue800);
+	background: var(--Blue800);
 }
 
 .createBtnContainer {
@@ -111,3 +111,101 @@
 .createBtn p {
 	margin-left: 10px;
 }
+
+.modalOverlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	width: 100vw;
+	height: 100vh;
+	z-index: 9998;
+	backdrop-filter: blur(1px);
+}
+
+.modal {
+	width: 100%;
+	max-width: 400px;
+	position: absolute;
+	top: 50%;
+	padding: 3%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fff;
+	border-radius: 10px;
+}
+
+.modalContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	justify-content: center;
+}
+
+.modalContainerRow {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: end;
+}
+
+.IGCreate{
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.closeBtn {
+	font-size: 25px;
+	transition: all ease-in-out 0.01s;
+}
+
+.closeBtn:hover{
+	transform: scale(1.11);
+}
+
+.btnContainer {
+	display: flex;
+	
+	align-items: center;
+	justify-content: space-between;
+}
+
+.modalContainerItemRow {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+}
+
+.modalContainerBtnRow {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
+	gap: 10px;
+	justify-content: space-between;
+}
+
+.btnCancel{
+	width: 100%;
+	padding: 5px;
+	background-color:#fff;
+	color:  #456FF6;
+	border-radius: 10px;
+}
+
+.btnSubmit{
+	width: 100%;
+	padding: 7px;
+	background-color: #456FF6;
+	color: #fff;
+	border-radius: 10px;
+}
+

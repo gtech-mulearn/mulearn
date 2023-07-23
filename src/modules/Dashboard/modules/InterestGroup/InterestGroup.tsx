@@ -12,12 +12,14 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./InterestGroup.module.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
+import InterestGroupCreateModal from "./InterestGroupCreateModal";
 
 function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(5);
+    const [openModal,setOpenModal] = useState(false);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
 	const toast = useToast();
@@ -78,7 +80,7 @@ function InterestGroup() {
     };
 
     const handleCreate = () => {
-        navigate("/interest-groups/create");
+        setOpenModal(true);
     };
 
     const handleIconClick = (column: string) => {
@@ -102,6 +104,7 @@ function InterestGroup() {
 
     return (
         <>
+        <InterestGroupCreateModal isOpen={openModal} onClose={setOpenModal}/>
             <div className={styles.createBtnContainer}>
                 <MuButton
                     className={styles.createBtn}
