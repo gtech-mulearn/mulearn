@@ -2,9 +2,10 @@ import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways"
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { SetStateAction } from "react";
-import { LcType } from "../pages/LearningCircleFind";
+import { LcType } from "./LearningCircleInterface";
 import { createStandaloneToast } from "@chakra-ui/react";
-import { LcDetail } from "../pages/LearningCircle";
+import { LcDetail } from "./LearningCircleInterface";
+
 
 
 const { toast } = createStandaloneToast();
@@ -70,6 +71,7 @@ export const createCircle = async(
     circleCode:string,
     ig:string
 )=>{
+    
     try{
         const response = await privateGateway.post(
             dashboardRoutes.createLearningCircle,
@@ -93,6 +95,7 @@ export const createCircle = async(
             duration: 2000,
             isClosable: true
         });
+       
         
     }catch(err){
         const error = err as AxiosError;

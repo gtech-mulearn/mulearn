@@ -12,32 +12,14 @@ import { BsPersonAdd } from "react-icons/bs";
 import Modal from "@/MuLearnComponents/Modal/Modal";
 import { MdOutlineUnpublished, MdPublishedWithChanges } from "react-icons/md";
 import { Tooltip } from "react-tooltip";
+import { HackList } from "../services/HackathonInterface";
 
 enum ModalType {
     Publish,
     Delete
 }
 
-export interface HackList {
-    id: string;
-    title: string;
-    type: string;
-    tagline: string;
-    event_logo: any;
-    district: string;
-    is_open_to_all: boolean;
-    banner: any;
-    website: string;
-    place: string;
-    status: string;
-    event_start: string | null;
-    event_end: string | null;
-    application_start: string | null;
-    application_ends: string | null;
-    description: string;
-    participant_count: number;
-    organisation: string;
-}
+
 
 const Hackathon = () => {
     const [data, setData] = useState<HackList[]>([]);

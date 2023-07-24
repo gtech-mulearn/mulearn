@@ -17,9 +17,9 @@ import {
 } from "../services/HackathonApis";
 import { FiUploadCloud } from "react-icons/fi";
 import { useNavigate, useParams } from "react-router-dom";
-import { HackList } from "../User/Hackathon";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { useToast } from "@chakra-ui/react";
+import { HackList } from "../services/HackathonInterface";
 
 /**
  * TODO: Move YUP Validations to another file.
