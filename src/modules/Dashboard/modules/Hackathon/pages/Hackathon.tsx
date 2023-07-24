@@ -1,45 +1,32 @@
 import { Link, useNavigate } from "react-router-dom";
+import "react-tooltip/dist/react-tooltip.css";
 import "./styles.css";
 import { LuCopy, LuShare2, LuEdit } from "react-icons/lu";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useEffect, useState } from "react";
-import { getHackathons, getOwnHackathons } from "./hackApi";
 import { DateConverter } from "../../../utils/common";
-import { deleteHackathon, publishHackathon } from "../services/HackathonApis";
+import { deleteHackathon, getHackathons, getOwnHackathons, publishHackathon } from "../services/HackathonApis";
 import { useToast } from "@chakra-ui/react";
 import { BsPersonAdd } from "react-icons/bs";
 import Modal from "@/MuLearnComponents/Modal/Modal";
 import { MdOutlineUnpublished, MdPublishedWithChanges } from "react-icons/md";
+import { Tooltip } from "react-tooltip";
+import { HackList } from "../services/HackathonInterfaces";
 
 enum ModalType {
     Publish,
     Delete
 }
 
-export interface HackList {
-    id: string;
-    title: string;
-    type: string;
-    tagline: string;
-    event_logo: any;
-    banner: any;
-    website: string;
-    place: string;
-	status: string;
-    event_start: string | null;
-    event_end: string | null;
-    application_start: string | null;
-    application_ends: string | null;
-    description: string;
-    participant_count: number;
-    organisation: string;
-}
-
 const Hackathon = () => {
     const [data, setData] = useState<HackList[]>([]);
     const [ownData, setOwnData] = useState<HackList[]>([]);
-    const [isPublishOpen, setIsPublishOpen] = useState<boolean[]>(ownData.map(() => false));
-    const [isDeleteOpen, setIsDeleteOpen] = useState<boolean[]>(ownData.map(() => false));
+    const [isPublishOpen, setIsPublishOpen] = useState<boolean[]>(
+        ownData.map(() => false)
+    );
+    const [isDeleteOpen, setIsDeleteOpen] = useState<boolean[]>(
+        ownData.map(() => false)
+    );
     const navigate = useNavigate();
     const toast = useToast();
 
@@ -50,17 +37,17 @@ const Hackathon = () => {
 
     const toggleModal = (index: number, type: string) => {
         if (type == ModalType[0]) {
-			setIsPublishOpen(prevState => {
-				const newState = [...prevState];
-				newState[index] = !newState[index];
-				return newState;
-			});
+            setIsPublishOpen(prevState => {
+                const newState = [...prevState];
+                newState[index] = !newState[index];
+                return newState;
+            });
         } else {
-			setIsDeleteOpen(prevState => {
-				const newState = [...prevState];
-				newState[index] = !newState[index];
-				return newState;
-			});
+            setIsDeleteOpen(prevState => {
+                const newState = [...prevState];
+                newState[index] = !newState[index];
+                return newState;
+            });
         }
     };
 
@@ -94,20 +81,38 @@ const Hackathon = () => {
                                                     <Link
                                                         to={`/hackathon/edit/${hack.id}`}
                                                     >
-                                                        <LuEdit />
+                                                        <LuEdit
+                                                            data-tooltip-id="Icon"
+                                                            data-tooltip-content="Edit"
+                                                        />
+                                                        <Tooltip
+                                                            id="Icon"
+                                                            style={{
+                                                                backgroundColor:
+                                                                    "var(--blue)",
+                                                                color: "var(--White)",
+                                                                borderRadius:
+                                                                    "10px"
+                                                            }}
+                                                        />
                                                     </Link>
                                                 </div>
                                                 <div className="group">
                                                     <Link
                                                         to={`/hackathon/organizers/${hack.id}`}
                                                     >
-                                                        <BsPersonAdd />
+                                                        <BsPersonAdd
+                                                            data-tooltip-id="Icon"
+                                                            data-tooltip-content="Add Organizer"
+                                                        />
                                                     </Link>
                                                 </div>
                                             </div>
                                             <div>
                                                 <div className="group">
                                                     <RiDeleteBin5Line
+                                                        data-tooltip-id="Icon"
+                                                        data-tooltip-content="Delete"
                                                         onClick={() => {
                                                             toggleModal(
                                                                 index,
@@ -157,6 +162,8 @@ const Hackathon = () => {
                                                 <div className="group">
                                                     {hack.status === "Draft" ? (
                                                         <MdPublishedWithChanges
+                                                            data-tooltip-id="Icon"
+                                                            data-tooltip-content="Publish"
                                                             onClick={() => {
                                                                 toggleModal(
                                                                     index,
@@ -198,7 +205,7 @@ const Hackathon = () => {
                                                             click={() => {
                                                                 publishHackathon(
                                                                     hack.id,
-																	hack.status,
+                                                                    hack.status,
                                                                     toast
                                                                 );
                                                                 setTimeout(

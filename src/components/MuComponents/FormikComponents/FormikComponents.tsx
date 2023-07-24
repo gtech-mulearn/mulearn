@@ -56,7 +56,7 @@ export const FormikTextAreaWhite = ({ label, ...props }: any) => {
             <label className={styles.formLabel}>{label}</label>
             <textarea className="text-input" {...field} {...props} />
             {meta.touched && meta.error ? (
-                <div className="error">{meta.error}</div>
+                <div className="error" >{meta.error}</div>
             ) : null}
         </div>
     );

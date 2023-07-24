@@ -12,16 +12,20 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./InterestGroup.module.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
+import InterestGroupCreateModal from "./InterestGroupCreateModal";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(5);
+    const [openModal, setOpenModal] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
-	const toast = useToast();
-    const firstFetch = useRef(true)
+    const toast = useToast();
+    const firstFetch = useRef(true);
     const columnOrder = [
         { column: "name", Label: "Name", isSortable: true },
         { column: "user_ig_link_ig", Label: "Members", isSortable: false },
@@ -45,12 +49,16 @@ function InterestGroup() {
     useEffect(() => {
         if (firstFetch.current) {
             if (!hasRole([roles.ADMIN, roles.FELLOW])) {
-				navigate("/404")
-			}
+                navigate("/404");
+            }
             getInterestGroups(setData, 1, perPage, setTotalPages, "", "");
         }
         firstFetch.current = false;
-    }, []);
+
+        if (data.length > 0) {
+            setLoading(false);
+        }
+    }, [data]);
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
@@ -65,10 +73,10 @@ function InterestGroup() {
     const handleDelete = (id: string | undefined) => {
         // console.log(id);
         // navigate(`/interest-groups/delete/${id}`);
-		deleteInterestGroups(id, toast);
-		setTimeout(() => {
-			getInterestGroups(setData, 1, perPage, setTotalPages, "", "");
-		}, 1000);
+        deleteInterestGroups(id, toast);
+        setTimeout(() => {
+            getInterestGroups(setData, 1, perPage, setTotalPages, "", "");
+        }, 1000);
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
@@ -78,7 +86,7 @@ function InterestGroup() {
     };
 
     const handleCreate = () => {
-        navigate("/interest-groups/create");
+        setOpenModal(true);
     };
 
     const handleIconClick = (column: string) => {
@@ -102,46 +110,58 @@ function InterestGroup() {
 
     return (
         <>
-            <div className={styles.createBtnContainer}>
-                <MuButton
-                    className={styles.createBtn}
-                    text={"Create"}
-                    icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
-                    onClick={handleCreate}
-                />
-            </div>
-            <TableTop
-                onSearchText={handleSearch}
-                onPerPageNumber={handlePerPageNumber}
-                CSV={dashboardRoutes.getIgList}
-            />
-            {data && (
-                <Table
-                    rows={data}
-                    page={currentPage}
-                    perPage={perPage}
-                    columnOrder={columnOrder}
-                    id={["id"]}
-                    onEditClick={handleEdit}
-                    onDeleteClick={handleDelete}
-					modalDeleteHeading="Delete"
-                    modalTypeContent="error"
-					modalDeleteContent="Are you sure you want to delete "
-                >
-                    <THead
-                        columnOrder={columnOrder}
-                        onIconClick={handleIconClick}
-                        action={true}
+            {loading ? (
+                <div className={styles.loader_container}>
+                    <MuLoader />
+                </div>
+            ) : (
+                <>
+                    <InterestGroupCreateModal
+                        isOpen={openModal}
+                        onClose={setOpenModal}
                     />
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        margin="10px 0"
-                        handleNextClick={handleNextClick}
-                        handlePreviousClick={handlePreviousClick}
+                    <div className={styles.createBtnContainer}>
+                        <MuButton
+                            className={styles.createBtn}
+                            text={"Create"}
+                            icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
+                            onClick={handleCreate}
+                        />
+                    </div>
+                    <TableTop
+                        onSearchText={handleSearch}
+                        onPerPageNumber={handlePerPageNumber}
+                        CSV={dashboardRoutes.getIgList}
                     />
-                    {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-                </Table>
+                    {data && (
+                        <Table
+                            rows={data}
+                            page={currentPage}
+                            perPage={perPage}
+                            columnOrder={columnOrder}
+                            id={["id"]}
+                            onEditClick={handleEdit}
+                            onDeleteClick={handleDelete}
+                            modalDeleteHeading="Delete"
+                            modalTypeContent="error"
+                            modalDeleteContent="Are you sure you want to delete "
+                        >
+                            <THead
+                                columnOrder={columnOrder}
+                                onIconClick={handleIconClick}
+                                action={true}
+                            />
+                            <Pagination
+                                currentPage={currentPage}
+                                totalPages={totalPages}
+                                margin="10px 0"
+                                handleNextClick={handleNextClick}
+                                handlePreviousClick={handlePreviousClick}
+                            />
+                            {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                        </Table>
+                    )}
+                </>
             )}
         </>
     );

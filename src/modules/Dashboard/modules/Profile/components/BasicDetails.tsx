@@ -36,7 +36,7 @@ const BasicDetails = (props: Props) => {
             <div className={styles.heatmap}>
                 <HeatmapComponent
                     data={props.userLog}
-                    year={props.userProfile.joined.slice(0, 4)}
+                    year={props.userProfile.joined?.slice(0, 4)}
                 />
             </div>
         </>

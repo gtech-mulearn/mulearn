@@ -1,9 +1,10 @@
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { useLocation, useNavigate } from 'react-router-dom';
 import FormData from './FormData';
-import './Organizations.scss';
+import orgStyles from './Organizations.module.css';
 
 function CreateOrganization() {
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -38,10 +39,10 @@ function CreateOrganization() {
   };
 
   return (
-    <div className="popup_container">
+    <div className={orgStyles.popupContainer}>
     <div className={styles.container}>
-      <div className="popup_top_container">
-        <h1 className="popup_title">Add {activeItem}</h1>
+      <div className={orgStyles.popupTopContainer}>
+        <h1 className={orgStyles.popupTitle}>Add {activeItem}</h1>
         <i
           className="fi fi-sr-cross"
           onClick={() => {

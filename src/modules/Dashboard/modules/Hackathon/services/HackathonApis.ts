@@ -1,10 +1,45 @@
 import { AxiosError } from "axios";
-import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
-import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
-import { HackList } from "../User/Hackathon";
+import { privateGateway } from "@/MuLearnServices/apiGateways";
+import { dashboardRoutes } from "@/MuLearnServices/urls";
+import { HackList } from "./HackathonInterfaces";
 import { SetStateAction } from "react";
-import { ToastId, UseToastOptions, useToast } from "@chakra-ui/react";
+import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+
+export const getHackathons = async (
+    setData: React.Dispatch<SetStateAction<HackList[]>>
+) => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getHackathons
+        );
+        const defaultForm: any = response?.data;
+        setData(defaultForm.response);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
+
+export const getOwnHackathons = async (
+    setOwnData: React.Dispatch<SetStateAction<HackList[]>>
+) => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getOwnHackathons
+        );
+        const defaultForm: any = response?.data;
+        setOwnData(defaultForm.response);
+        console.log(defaultForm.response);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
 
 export const getFormFields = async (
     setFormData: React.Dispatch<React.SetStateAction<string>>
@@ -48,18 +83,19 @@ export const createHackathon = async (
     description: string,
     participantCount: number,
     orgId: string,
-	districtId: string,
-	place: string,
-	isOpenToAll: boolean,
-	applicationStart: string,
-	applicationEnds: string,
-	eventStart: string,
-	eventEnd: string,
-	formFields: any,
-	logo: any,
-    banner:any,
-    type:string,
-	website: string,
+    districtId: string,
+    place: string,
+    isOpenToAll: boolean,
+    applicationStart: string,
+    applicationEnds: string,
+    eventStart: string,
+    eventEnd: string,
+    formFields: any,
+    logo: any,
+    banner: any,
+    type: string,
+    website: string,
+    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
         const response = await privateGateway.post(
@@ -82,7 +118,7 @@ export const createHackathon = async (
                 event_logo: logo,
                 banner: banner,
                 type: type,
-				website: website,
+                website: website
             },
             {
                 maxBodyLength: Infinity,
@@ -93,9 +129,23 @@ export const createHackathon = async (
         );
         const message: any = response?.data;
         console.log(message);
+		toast({
+            title: "Success",
+            description: "Hackathon created.",
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
+			toast({
+                title: "Error",
+                description: "Failed to create new Hackathon.",
+                status: "error",
+                duration: 3000,
+                isClosable: true
+            });
             console.log(error.response);
         }
     }
@@ -170,19 +220,34 @@ export const deleteHackathon = async (
 export const addOrganizer = async (
     id: string | undefined,
     muid: string,
+    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
         const response = await privateGateway.post(
             dashboardRoutes.addOrganizer + id + "/",
             {
-                mu_id: muid,
+                mu_id: muid
             }
         );
         const message: any = response?.data;
         console.log(message);
+		toast({
+            title: "Success",
+            description: "Organizer added successfully",
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
+			toast({
+                title: "Error",
+                description: "Failed to add new organizer.",
+                status: "error",
+                duration: 3000,
+                isClosable: true
+            });
             console.log(error.response);
         }
     }
@@ -219,6 +284,24 @@ export const publishHackathon = async (
                 duration: 5000,
                 isClosable: true
             });
+            console.log(error.response);
+        }
+    }
+};
+
+export const getApplicationForm = async (
+    id: string | undefined,
+    toast: (options?: UseToastOptions | undefined) => ToastId
+) => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getApplicationForm + id + "/"
+        );
+        const message: any = response?.data;
+        console.log(message);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
             console.log(error.response);
         }
     }

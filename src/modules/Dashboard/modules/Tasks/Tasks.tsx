@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
@@ -6,31 +6,39 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import { hasRole } from "@/MuLearnServices/common_functions";
 import { roles } from "@/MuLearnServices/types";
 import { useNavigate } from "react-router-dom";
-import { getTasks } from "./TaskApis";
+import { deleteTask, getTasks } from "./TaskApis";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import styles from "../InterestGroup/InterestGroup.module.css";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import { useToast } from "@chakra-ui/react";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 type Props = {};
 
 export const Tasks = (props: Props) => {
-
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(5);
+    const [loading, setLoading] = useState(true);
     const [sort, setSort] = useState("");
+    const firstFetch = useRef(true);
     const navigate = useNavigate();
+    const toast = useToast();
 
-	const columnOrder = [
+    const columnOrder = [
         { column: "title", Label: "Title", isSortable: true },
         { column: "hashtag", Label: "Hashtag", isSortable: false },
         { column: "org", Label: "Organization", isSortable: false },
         { column: "active", Label: "Active", isSortable: false },
         { column: "karma", Label: "Karma", isSortable: true },
         { column: "usage_count", Label: "Usage Count", isSortable: false },
-        { column: "variable_karma",Label: "Variable Karma",isSortable: false},
+        {
+            column: "variable_karma",
+            Label: "Variable Karma",
+            isSortable: false
+        },
         { column: "updated_by", Label: "Updated By", isSortable: true },
         { column: "updated_at", Label: "Updated On", isSortable: true },
         { column: "created_by", Label: "Created By", isSortable: false },
@@ -50,96 +58,114 @@ export const Tasks = (props: Props) => {
     };
 
     useEffect(() => {
-        if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
-        getTasks(setData, 1, perPage, setTotalPages, "", "");
-		//console.log(data)
-    }, []);
+        if (firstFetch.current) {
+            if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
+            getTasks(setData, 1, perPage, setTotalPages, "", "");
+        }
+        firstFetch.current = false;
+        if (data.length > 0) setLoading(false);
+    }, [data]);
 
     const handleSearch = (search: string) => {
+        setLoading(true);
         setCurrentPage(1);
-        getTasks(setData, 1, perPage, setTotalPages, search, "");
+        getTasks(setData, 1, perPage, setTotalPages, search, "", setLoading);
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
+        setLoading(true);
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getTasks(setData, 1, selectedValue, setTotalPages, "", "");
+        getTasks(setData, 1, selectedValue, setTotalPages, "", "", setLoading);
     };
 
     const handleIconClick = (column: string) => {
+        setLoading(true);
         if (sort === column) {
             setSort(`-${column}`);
-            getTasks(setData, 1, perPage, setTotalPages, "", `-${column}`);
+            getTasks(setData, 1, perPage, setTotalPages, "", `-${column}`, setLoading);
         } else {
             setSort(column);
-            getTasks(setData, 1, perPage, setTotalPages, "", column);
+            getTasks(setData, 1, perPage, setTotalPages, "", column, setLoading);
         }
 
         //console.log(`Icon clicked for column: ${column}`);
     };
 
-	const handleEdit = (id: string | number | boolean) => {
+    const handleEdit = (id: string | number | boolean) => {
         navigate(`/tasks/edit/${id}`);
     };
 
     const handleDelete = (id: string | undefined) => {
-        navigate(`/tasks/delete/${id}`);
+        deleteTask(id, toast);
     };
 
-	const handleCreate = () => {
+    const handleCreate = () => {
         navigate("/tasks/create");
     };
 
     return (
         <>
-            <div className={styles.createBtnContainer} style={{
-                gap: "15px"
-            }}>
-                <MuButton
-                    className={styles.createBtn}
-                    text={"Bulk Import"}
-                    icon={<AiOutlinePlusCircle />}
-                    onClick={() => navigate("/tasks/bulk-import")}
-                    style={{
-                        width: "auto"
-                    }}
-                />
-                <MuButton
-                    className={styles.createBtn}
-                    text={"Create"}
-                    icon={<AiOutlinePlusCircle/>}
-                    onClick={handleCreate}
-                />
-            </div>
-            <TableTop
-                onSearchText={handleSearch}
-                onPerPageNumber={handlePerPageNumber}
-                CSV={dashboardRoutes.getTasksData + "csv/"}
-            />
-            {data && (
-                <Table
-                    rows={data}
-                    page={currentPage}
-                    perPage={perPage}
-                    columnOrder={columnOrder}
-                    id={["id"]}
-                    onEditClick={handleEdit}
-                    modalTypeContent="error"
-                    onDeleteClick={handleDelete}
-                >
-                    <THead
-                        columnOrder={columnOrder}
-                        onIconClick={handleIconClick}
+            {loading ? (
+                <div className={styles.loader_container}>
+                    <MuLoader />
+                </div>
+            ) : (
+                <>
+                    <div
+                        className={styles.createBtnContainer}
+                        style={{
+                            gap: "15px"
+                        }}
+                    >
+                        <MuButton
+                            className={styles.createBtn}
+                            text={"Bulk Import"}
+                            icon={<AiOutlinePlusCircle />}
+                            onClick={() => navigate("/tasks/bulk-import")}
+                            style={{
+                                width: "auto"
+                            }}
+                        />
+                        <MuButton
+                            className={styles.createBtn}
+                            text={"Create"}
+                            icon={<AiOutlinePlusCircle />}
+                            onClick={handleCreate}
+                        />
+                    </div>
+                    <TableTop
+                        onSearchText={handleSearch}
+                        onPerPageNumber={handlePerPageNumber}
+                        CSV={dashboardRoutes.getTasksData + "csv/"}
                     />
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        margin="10px 0"
-                        handleNextClick={handleNextClick}
-                        handlePreviousClick={handlePreviousClick}
-                    />
-                    {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-                </Table>
+                    {data && (
+                        <Table
+                            rows={data}
+                            page={currentPage}
+                            perPage={perPage}
+                            columnOrder={columnOrder}
+                            id={["id"]}
+                            onEditClick={handleEdit}
+                            modalTypeContent="error"
+                            onDeleteClick={handleDelete}
+                            modalDeleteContent="Are you sure you want to delete ?"
+                        >
+                            <THead
+                                columnOrder={columnOrder}
+                                onIconClick={handleIconClick}
+                            />
+                            <Pagination
+                                currentPage={currentPage}
+                                totalPages={totalPages}
+                                margin="10px 0"
+                                handleNextClick={handleNextClick}
+                                handlePreviousClick={handlePreviousClick}
+                            />
+                            {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                        </Table>
+                    )}
+                </>
             )}
         </>
     );

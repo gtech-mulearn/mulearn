@@ -9,7 +9,7 @@ import { putCountryData } from "./apis/CountryAPI";
 import { putStateData } from "./apis/StateAPI";
 import { putZoneData } from "./apis/ZoneAPI";
 import { putDistrictData } from "./apis/DistrictAPI";
-import { useStatStyles, useToast } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
 import { useEffect,useState } from "react";
 
@@ -42,22 +42,18 @@ const EditLocation = () => {
                 duration: 3000,
                 isClosable: true
             });
-            navigate('/manage-locations');
         }else{
             if(activeItem === "Country"){
                 putCountryData(selectedItem,values.ItemName);
             }
             else if(activeItem === "State"){
                 putStateData(selectedCountry,selectedItem,values.ItemName)
-                alert("state edited")
             }
             else if(activeItem === "Zone"){
                 putZoneData(selectedCountry,selectedState,selectedItem,values.ItemName)
-                alert("zone edited")
             }
             else if(activeItem === "District"){
                 putDistrictData(selectedCountry,selectedState,selectedZone,selectedItem,values.ItemName)
-                alert("district edited")
             }
             toast({
                 title: "Interest Group Updated",
@@ -65,8 +61,8 @@ const EditLocation = () => {
                 duration: 3000,
                 isClosable: true
             });
-            navigate('/manage-locations');
         }
+        navigate('/manage-locations',{state:{activeItem:activeItem}});
     }
 
     return (
@@ -77,7 +73,7 @@ const EditLocation = () => {
                     <i
                         className="fi fi-sr-cross"
                         onClick={() => {
-                            navigate('/manage-locations');
+                            navigate('/manage-locations',{state:{activeItem:activeItem}});
                         }}
                     ></i>
                 </div>
@@ -106,25 +102,14 @@ const EditLocation = () => {
                             name="ItemName"
                             type="text"
                             placeholder={`Enter ${activeItem}`}
+                            onKeyPress={(e:any) => { e.which === 13 && e.preventDefault()}}
                         />
-
-                        {/* <MySelect label="Job Type" name="jobType">
-                            <option value="">Select a job type</option>
-                            <option value="designer">Designer</option>
-                            <option value="development">Developer</option>
-                            <option value="product">Product Manager</option>
-                            <option value="other">Other</option>
-                        </MySelect>
-
-                        <MyCheckbox name="acceptedTerms">
-                            I accept the terms and conditions
-                        </MyCheckbox> */}
                         <div className="ml_popup_btn_container">
                             <MuButton
                                 text={"Decline"}
                                 className={styles.btn_cancel}
                                 onClick={() => {
-                                    navigate('/manage-locations');
+                                    navigate('/manage-locations',{state:{activeItem:activeItem,isDeclined:true}});
                                 }}
                             />
                             <button type="submit" className={styles.btn_submit}>

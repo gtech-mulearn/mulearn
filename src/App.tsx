@@ -20,7 +20,6 @@ import {
     CampusStudentList,
     Organizations
 } from "./modules/Dashboard/modules";
-import { InterestGroupCreate } from "./modules/Dashboard/modules/InterestGroup/InterestGroupCreate";
 import { Tasks } from "./modules/Dashboard/modules/Tasks/Tasks";
 import CreateOrganization from "./modules/Dashboard/modules/Organizations/CreateOrganization";
 import DeleteOrganizations from "./modules/Dashboard/modules/Organizations/DeleteOrganizations";
@@ -39,9 +38,8 @@ import EditOrgnaization from "./modules/Dashboard/modules/Organizations/EditOrga
 import UrlShortener from "./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener";
 import TaskEdit from "./modules/Dashboard/modules/Tasks/TaskEdit";
 import TaskCreate from "./modules/Dashboard/modules/Tasks/TaskCreate";
-import TaskDelete from "./modules/Dashboard/modules/Tasks/TaskDelete";
 import TaskBulkImport from "./modules/Dashboard/modules/Tasks/TaskBulkImport";
-import Hackathon from "./modules/Dashboard/modules/Hackathon/User/Hackathon";
+import Hackathon from "./modules/Dashboard/modules/Hackathon/pages/Hackathon";
 import HackathonCreate from "./modules/Dashboard/modules/Hackathon/pages/HackathonCreate";
 import KKEMLanding from "./modules/KKEM/modules/KKEMLanding";
 import KKEMAuth from "./modules/KKEM/modules/KKEMAuth";
@@ -57,6 +55,7 @@ import { LearningCircleLandingPage } from "./modules/Dashboard/modules/LearningC
 import HackathonDetails from "./modules/Dashboard/modules/Hackathon/pages/HackathonDetails";
 import DistrictDashboard from "./modules/Dashboard/modules/DistrictDashboard/DistrictDashboard";
 import ZonalDashboard from "./modules/Dashboard/modules/ZonalDashboard/ZonalDashboard";
+import HackathonRegistration from "./modules/Dashboard/modules/Hackathon/pages/HackathonRegistration";
 
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
@@ -105,10 +104,6 @@ const router = createBrowserRouter([
                     { path: "profile", element: <Profile /> },
                     { path: "connect-discord", element: <ConnectDiscord /> },
                     { path: "interest-groups", element: <InterestGroup /> },
-                    {
-                        path: "interest-groups/create",
-                        element: <InterestGroupCreate />
-                    },
                     {
                         path: "organizations/create",
                         element: <CreateOrganization />
@@ -191,10 +186,6 @@ const router = createBrowserRouter([
                         element: <UrlShortener />
                     },
                     {
-                        path: "tasks/delete/:id",
-                        element: <TaskDelete />
-                    },
-                    {
                         path: "url-shortener",
                         element: <UrlShortener />
                     },
@@ -207,8 +198,16 @@ const router = createBrowserRouter([
                         element: <HackathonCreate />
                     },
                     {
+                        path: "hackathon/edit/:id",
+                        element: <HackathonCreate />
+                    },
+                    {
                         path: "hackathon/details/:id",
                         element: <HackathonDetails />
+                    },
+                    {
+                        path: "hackathon/apply/:id",
+                        element: <HackathonRegistration />
                     },
                     {
                         path: "manage-locations",
@@ -231,7 +230,7 @@ const router = createBrowserRouter([
                         element: <LearningCircleLandingPage />
                     },
                     {
-                        path: "learning-circle/details",
+                        path: "learning-circle/details/:id",
                         element: <LearningCircle />
                     },
                     {

@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import { CiGlobe } from "react-icons/ci";
-import { useParams } from "react-router-dom";
-import { HackList } from "../User/Hackathon";
+import { useNavigate, useParams } from "react-router-dom";
 import { getHackDetails } from "../services/HackathonApis";
 import "./styles.css";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { HackList } from "../services/HackathonInterfaces";
 
 type Props = {};
 
 export const HackathonDetails = (props: Props) => {
     const { id } = useParams();
     const [data, setData] = useState<HackList>();
+	const navigate = useNavigate()
 
     useEffect(() => {
         getHackDetails(
@@ -54,11 +56,11 @@ export const HackathonDetails = (props: Props) => {
                         <div className="eventDate">
                             <div>
                                 <b className="title">EVENT DATES</b>
-                                {/* <h3>{data?.event_start}</h3> */}
+                                <h3>{data?.event_start}</h3>
                             </div>
                             <div>
                                 <b className="title">HAPPENING AT</b>
-                                {/* <h3>{data?.place}</h3> */}
+                                <h3>{data?.place}</h3>
                             </div>
                         </div>
                     </div>
@@ -66,7 +68,9 @@ export const HackathonDetails = (props: Props) => {
                         <b>APPLICATION CLOSING DATE</b>
                         <h4>{data?.application_ends}</h4>
                     </div>
-                    <button className="applyNow"><b>Apply Now</b></button>
+                    <button className="applyNow" onClick={() => {
+						navigate(`/hackathon/apply/${data?.id}`)
+					}}><b>Apply Now</b></button>
                 </div>
                 <div className="socialLinks">
                     <a href={data?.website}>

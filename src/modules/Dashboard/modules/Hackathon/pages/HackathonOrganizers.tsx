@@ -31,15 +31,9 @@ export const HackathonOrganizers = (props: Props) => {
                         console.log(values.muid);
                         addOrganizer(
                             id,
-                            values.muid
+                            values.muid,
+							toast
                             )
-                        toast({
-                            title: "success",
-                            status: "success",
-                            duration: 3000,
-                            isClosable: true
-                        });
-                        
                     }}
                 >
                     <Form className={styles.inputContainer}>

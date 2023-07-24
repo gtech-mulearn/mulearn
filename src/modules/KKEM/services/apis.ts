@@ -12,10 +12,10 @@ export const KKEMLogin = (
     setIsLoading: (loading: boolean) => void,
     redirectPath: string
 ) => {
-    console.log({emailOrMuid, password,integration:"KKEM"})
+    console.log({emailOrMuid, password,integration:"DWMS"})
     setIsLoading(true);
     publicGateway
-        .post(KKEMRoutes.userLogin, { mu_id:emailOrMuid, password,integration:"KKEM"})
+        .post(KKEMRoutes.userLogin, { emailOrMuid, password})
         .then(response => {
             if (response.data.hasError == false) {
                 localStorage.setItem(
@@ -42,12 +42,12 @@ export const KKEMLogin = (
                             JSON.stringify(response.data.response)
                         );
                         if (response.data.response.exist_in_guild) {
-                            navigate("/profile");
+                            navigate("/learning-circle");
                         } else {
                             if (redirectPath) {
                                 navigate(`/${redirectPath}`);
                             } else {
-                                navigate("/connect-discord");
+                                navigate("/learning-circle");
                             }
                         }
                     })

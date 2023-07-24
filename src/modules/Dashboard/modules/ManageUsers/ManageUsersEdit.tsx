@@ -156,12 +156,7 @@ const ManageUsersEdit = (props: Props) => {
                             type="text"
                             placeholder="Enter a mobile number"
                         />
-                        <FormikTextInput
-                            label="User College Name"
-                            name="college"
-                            type="text"
-                            placeholder="Enter a mobile number"
-                        />
+                       
                         <FormikSelect label="User College Name" name="college">
                             <option value="">Select an option</option>
                             <option value="VIDYA ACADEMY OF SCIENCE AND TECHNOLOGY">
@@ -178,8 +173,7 @@ const ManageUsersEdit = (props: Props) => {
                                 Mar Baselios College of Engineering and
                                 Technology
                             </option>
-                            <option value=""></option>
-                            <option value=""></option>
+                        
                         </FormikSelect>
                         <FormikTextInput
                             label="User Company Name"
