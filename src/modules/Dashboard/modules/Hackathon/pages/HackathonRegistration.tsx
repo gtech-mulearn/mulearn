@@ -7,7 +7,7 @@ import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComp
 import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useNavigate, useParams } from "react-router-dom";
 import { getApplicationForm, getHackDetails } from "../services/HackathonApis";
-import { HackList } from "../services/HackathonInterface";
+import { HackList } from "../services/HackathonInterfaces";
 
 
 type Props = {};

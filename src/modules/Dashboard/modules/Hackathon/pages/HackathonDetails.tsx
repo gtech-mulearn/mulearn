@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getHackDetails } from "../services/HackathonApis";
 import "./styles.css";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { HackList } from "../services/HackathonInterface";
+import { HackList } from "../services/HackathonInterfaces";
 
 type Props = {};
 
