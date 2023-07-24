@@ -342,7 +342,7 @@ const LocationPath = ({
   zone?: string;
 }) => {
   function locationTextGenerate() {
-    return `${country?.toUpperCase()}${state ? ` / ${state?.toUpperCase()}` : ''}${zone ? ` / ${zone?.toUpperCase()}` : ''}`;
+    return `${country?.toUpperCase()}${state ? ` /  ${state?.toUpperCase()}` : ''}${zone ? ` / ${zone?.toUpperCase()}` : ''}`;
   }
 
   return (

@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { TaskEditInterface } from "./TaskInterface";
 import { utils, writeFile } from "xlsx";
@@ -51,7 +51,8 @@ export const getTasks = async (
     selectedValue: number,
     setTotalPages?: any,
     search?: string,
-    sortID?: string
+    sortID?: string,
+    setLoading?: Dispatch<SetStateAction<boolean>>
 ) => {
     try {
         const response = await privateGateway.get(
@@ -74,6 +75,8 @@ export const getTasks = async (
         if (error?.response) {
             console.log(error.response);
         }
+    } finally {
+        setLoading && setLoading(false);
     }
 };
 

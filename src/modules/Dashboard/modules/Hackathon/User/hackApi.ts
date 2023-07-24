@@ -2,7 +2,7 @@ import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { SetStateAction } from "react";
-import { HackList } from "./Hackathon";
+import { HackList } from "../services/HackathonInterface";
 
 export const getHackathons = async (
     setData: React.Dispatch<SetStateAction<HackList[]>>

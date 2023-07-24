@@ -20,7 +20,6 @@ import {
     CampusStudentList,
     Organizations
 } from "./modules/Dashboard/modules";
-import { InterestGroupCreate } from "./modules/Dashboard/modules/InterestGroup/InterestGroupCreate";
 import { Tasks } from "./modules/Dashboard/modules/Tasks/Tasks";
 import CreateOrganization from "./modules/Dashboard/modules/Organizations/CreateOrganization";
 import DeleteOrganizations from "./modules/Dashboard/modules/Organizations/DeleteOrganizations";
@@ -105,10 +104,6 @@ const router = createBrowserRouter([
                     { path: "profile", element: <Profile /> },
                     { path: "connect-discord", element: <ConnectDiscord /> },
                     { path: "interest-groups", element: <InterestGroup /> },
-                    {
-                        path: "interest-groups/create",
-                        element: <InterestGroupCreate />
-                    },
                     {
                         path: "organizations/create",
                         element: <CreateOrganization />

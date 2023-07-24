@@ -20,7 +20,7 @@ import {
 } from "./apis";
 
 import { useRef } from "react";
-// import "./Organizations.scss";
+import orgStyles from "./Organizations.module.css";
 
 interface Option {
     value: string;
@@ -407,7 +407,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                 }}
                 validationSchema={Yup.object({
                     Name: Yup.string()
-                        .max(60, "Must be 60 characters or less")
+                        .max(120, "Must be 120 characters or less")
                         .required("Required"),
                     Code: Yup.string()
                         .max(30, "Must be 30 characters or less")
@@ -419,8 +419,8 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     handleSubmit(values.Name,values.Code);
                 }}
             >
-                <Form className="popup_dropdown_container">
-                    <div className="inputfield_container">
+                <Form className={orgStyles.popupDropdownContainer}>
+                    <div className={orgStyles.inputFieldContainer}>
                         <FormikTextInput
                             label={`${props.activeItem} Name`}
                             name="Name"
@@ -428,7 +428,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             placeholder="Enter a name"
                         />
                     </div>
-                    <div className="inputfield_container">
+                    <div className={orgStyles.inputFieldContainer}>
                         <FormikTextInput
                             label="Code"
                             name="Code"
@@ -437,7 +437,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         />
                     </div>
                     {props.activeItem === "College" ? (
-                        <div className="inputfield_container">
+                        <div className={orgStyles.inputFieldContainer}>
                             <p>Affiliated University</p>
                             <Select
                                 value={affiliationData.find(
@@ -452,7 +452,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             />
                         </div>
                     ) : null}
-                    <div className="inputfield_container">
+                    <div className={orgStyles.inputFieldContainer}>
                         <p>Country</p>
                         <Select
                             value={countryData.find(
@@ -466,7 +466,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             required
                         />
                     </div>
-                    <div className="inputfield_container">
+                    <div className={orgStyles.inputFieldContainer}>
                         <p>State</p>
                         <Select
                             value={statesData.find(
@@ -480,7 +480,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             // isDisabled={props.isCreate && selectedCountry ? false : true }
                         />
                     </div>
-                    <div className="inputfield_container">
+                    <div className={orgStyles.inputFieldContainer}>
                         <p>Zone</p>
                         <Select
                             value={
@@ -497,7 +497,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             required
                         />
                     </div>
-                    <div className="inputfield_container">
+                    <div className={orgStyles.inputFieldContainer}>
                         <p>District</p>
                         <Select
                             value={
@@ -514,7 +514,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             required
                         />
                     </div>
-                    <div className="inputfield_container grid-container">
+                    <div className={`${orgStyles.inputFieldContainer} grid-container`}>
                         {/* <div className="btn light-btn" onClick={resetStates}>
                             Decline
                         </div> */}
@@ -535,7 +535,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                                 <ClipLoader
                                     size={20}
                                     color="#fff"
-                                    className="btn_loader"
+                                    className={orgStyles.btnLoader}
                                 />
                             ) : null}
                         </button>
@@ -546,7 +546,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     );
 };
 
-export default FormData;
 function sleep(arg0: number) {
     throw new Error("Function not implemented.");
 }
+export default FormData;

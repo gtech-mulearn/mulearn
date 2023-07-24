@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { Form, Formik } from "formik";
 import FormikReactSelect,{FormikSelect, FormikTextInput} from '@/MuLearnComponents/FormikComponents/FormikComponents'
 import { getInterestGroups,createCircle } from "../services/LearningCircleAPIs";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
@@ -15,7 +16,7 @@ type interestGroupType = {
 const LearningCircleCreate = (props: Props) => {
     
     const [interestGroups,setInterestGroups] = useState<interestGroupType[]>()
-   
+    const navigate = useNavigate()
     
     const createLearningCircleSchema = Yup.object().shape({
         circle_name: Yup.string()
@@ -63,6 +64,12 @@ const LearningCircleCreate = (props: Props) => {
                                         values.interest_group
                                     )
                                     resetForm()
+                                    setTimeout(() => {
+                                                
+                                        navigate(
+                                            `/learning-circle`
+                                        );
+                                    },3500);
                                 }}
                             >
                                 <Form>
