@@ -127,8 +127,6 @@ export const createHackathon = async (
                 }
             }
         );
-        const message: any = response?.data;
-        console.log(message);
 		toast({
             title: "Success",
             description: "Hackathon created.",
@@ -140,6 +138,79 @@ export const createHackathon = async (
         const error = err as AxiosError;
         if (error?.response) {
 			toast({
+                title: "Error",
+                description: "Failed to create new Hackathon.",
+                status: "error",
+                duration: 3000,
+                isClosable: true
+            });
+            console.log(error.response);
+        }
+    }
+};
+
+export const editHackathon = async (
+    title: string,
+    tagline: string,
+    description: string,
+    participantCount: number,
+    orgId: string,
+    districtId: string,
+    place: string,
+    isOpenToAll: boolean,
+    applicationStart: string,
+    applicationEnds: string,
+    eventStart: string,
+    eventEnd: string,
+    formFields: any,
+    logo: any,
+    banner: any,
+    type: string,
+    website: string,
+    toast: (options?: UseToastOptions | undefined) => ToastId,
+    id: string | undefined
+) => {
+    try {
+        const response = await privateGateway.put(
+            dashboardRoutes.editHackathon + id + '/',
+            {
+                title: title,
+                tagline: tagline,
+                description: description,
+                participant_count: participantCount,
+                organisation: orgId,
+                districtId: districtId,
+                place: place,
+                is_open_to_all: isOpenToAll,
+                application_start: applicationStart,
+                application_ends: applicationEnds,
+                event_start: eventStart,
+                event_end: eventEnd,
+                status: "Draft",
+                form_fields: formFields,
+                event_logo: logo,
+                banner: banner,
+                type: type,
+                website: website
+            },
+            {
+                maxBodyLength: Infinity,
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
+            }
+        );
+        toast({
+            title: "Success",
+            description: "Hackathon created.",
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            toast({
                 title: "Error",
                 description: "Failed to create new Hackathon.",
                 status: "error",

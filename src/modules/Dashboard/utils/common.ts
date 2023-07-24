@@ -6,3 +6,9 @@ export const DateConverter = (date:string) => {
 
     return `${day}-${month}-${year}`;
 };
+
+
+// Convert UTC Date to YYYY-MM-DD for date input
+export const convertDateToYYYYMMDD = (dateString: any) => {
+    return dateString.split("T")[0];
+};

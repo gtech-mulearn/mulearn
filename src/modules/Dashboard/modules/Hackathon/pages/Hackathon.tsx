@@ -58,7 +58,7 @@ const Hackathon = () => {
             </Link>
 
             <div className="heading">
-                <h1>Own Hackathons</h1>
+                <h1>Hackathons</h1>
             </div>
             <div className="box">
                 {ownData &&

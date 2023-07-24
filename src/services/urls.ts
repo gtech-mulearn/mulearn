@@ -70,6 +70,7 @@ export const dashboardRoutes = {
 
     getHackathonFormData: "/api/v1/hackathon/list-default-form-fields/",
     createHackathon: "/api/v1/hackathon/create-hackathon/",
+    editHackathon: "/api/v1/hackathon/edit-hackathon/",
     getHackathons: "/api/v1/hackathon/list-hackathons/",
     getHackathonInfo: "/api/v1/hackathon/info/",
     getOwnHackathons: "/api/v1/hackathon/list-orgniser-hackathons/",

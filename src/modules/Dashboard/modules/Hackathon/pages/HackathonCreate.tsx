@@ -10,6 +10,7 @@ import FormikReactSelect, {
 import { useEffect, useState } from "react";
 import {
     createHackathon,
+    editHackathon,
     getAllDistricts,
     getAllInstitutions,
     getFormFields,
@@ -20,6 +21,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { useToast } from "@chakra-ui/react";
 import { HackList } from "../services/HackathonInterfaces";
+import { convertDateToYYYYMMDD } from "../../../utils/common";
 
 /**
  * TODO: Move YUP Validations to another file.
@@ -34,6 +36,7 @@ const HackathonCreate = () => {
     const [tabIndex, setTabIndex] = useState(0);
     const [formData, setFormData] = useState("");
     const [temp, setTemp] = useState(false);
+    const [edit, setEdit] = useState(false);
     const [data, setData] = useState<HackList>();
     const [district, setDistrict] = useState<Option[]>([]);
     const [institutions, setInstitutions] = useState<Option[]>([]);
@@ -50,6 +53,7 @@ const HackathonCreate = () => {
             setTimeout(() => {
                 setTemp(true)
             }, 3000);
+			setEdit(true);
         }
         else {
             setTemp(true)
@@ -171,7 +175,6 @@ const HackathonCreate = () => {
 
     const handleSubmit = (values: any, { resetForm }: any) => {
         console.log(values);
-        console.log(formData);
         const fields: { [key: string]: string } = {
             bio: "system",
             college: "system",
@@ -192,35 +195,70 @@ const HackathonCreate = () => {
             }
         });
 
-        let a = values.applicationStart ? `${values.applicationStart}T00:00:00Z` : '';
-        let b = values.applicationStart ? `${values.applicationStart}T00:00:00Z` : '';
-        let c = values.applicationStart ? `${values.applicationStart}T00:00:00Z` : '';
-        let d = values.applicationStart ? `${values.applicationStart}T00:00:00Z` : '';
+        let a = values.applicationStart
+            ? `${values.applicationStart}T00:00:00Z`
+            : "";
+        let b = values.applicationStart
+            ? `${values.applicationStart}T00:00:00Z`
+            : "";
+        let c = values.applicationStart
+            ? `${values.applicationStart}T00:00:00Z`
+            : "";
+        let d = values.applicationStart
+            ? `${values.applicationStart}T00:00:00Z`
+            : "";
 
         console.log(selectedFields);
-        createHackathon(
-            values.title,
-            values.tagline,
-            values.description,
-            values.participantCount,
-            values.orgId,
-            values.districtId,
-            values.place,
-            values.isOpenToAll,
-            a,
-            b,
-            c,
-            d,
-            selectedFields,
-            values.event_logo,
-            values.banner,
-            values.type,
-            values.website,
-            toast
-        );
+
+        // Convert selectedFields object to a JSON string and then parse it to get the desired format
+        const formattedFormFields = JSON.stringify(selectedFields);
+        console.log(formattedFormFields);
+
+        {edit
+            ? editHackathon(
+				values.title,
+				values.tagline,
+				values.description,
+				values.participantCount,
+				values.orgId,
+				values.districtId,
+				values.place,
+				values.isOpenToAll,
+				a,
+				b,
+				c,
+				d,
+				formattedFormFields,
+				values.event_logo,
+				values.banner,
+				values.type,
+				values.website,
+				toast,
+				id
+			)
+            : createHackathon(
+				values.title,
+				values.tagline,
+				values.description,
+				values.participantCount,
+				values.orgId,
+				values.districtId,
+				values.place,
+				values.isOpenToAll,
+				a,
+				b,
+				c,
+				d,
+				formattedFormFields,
+				values.event_logo,
+				values.banner,
+				values.type,
+				values.website,
+				toast,
+            );}
         resetForm();
         setTimeout(() => {
-            navigate("/hackathon")
+            navigate("/hackathon");
         }, 4000);
     };
 
@@ -259,12 +297,12 @@ const HackathonCreate = () => {
                                     description: data?.description || "",
                                     participantCount:
                                         data?.participant_count || "",
-                                    eventStart: data?.event_start || "",
-                                    eventEnd: data?.event_end || "",
+                                    eventStart: convertDateToYYYYMMDD(data?.event_start) || "",
+                                    eventEnd: convertDateToYYYYMMDD(data?.event_end) || "",
                                     applicationStart:
-                                        data?.application_start || "",
+                                        convertDateToYYYYMMDD(data?.application_start) || "",
                                     applicationEnds:
-                                        data?.application_ends || "",
+                                        convertDateToYYYYMMDD(data?.application_ends) || "",
                                     orgId: data?.organisation || "",
                                     place: data?.place || "",
                                     districtId: data?.district || "",
