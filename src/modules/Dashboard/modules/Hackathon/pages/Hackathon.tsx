@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import "react-tooltip/dist/react-tooltip.css";
-import "./styles.css";
 import { LuCopy, LuShare2, LuEdit } from "react-icons/lu";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useEffect, useState } from "react";
@@ -12,7 +11,7 @@ import Modal from "@/MuLearnComponents/Modal/Modal";
 import { MdOutlineUnpublished, MdPublishedWithChanges } from "react-icons/md";
 import { Tooltip } from "react-tooltip";
 import { HackList } from "../services/HackathonInterfaces";
-import styles from ".HackathonCreate.module.css";
+import styles from "./HackathonCreate.module.css";
 
 enum ModalType {
     Publish,
