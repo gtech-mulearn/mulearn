@@ -4,28 +4,29 @@ import "./styles.css";
 import { LuCopy, LuShare2, LuEdit } from "react-icons/lu";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useEffect, useState } from "react";
-import { getHackathons, getOwnHackathons } from "./hackApi";
 import { DateConverter } from "../../../utils/common";
-import { deleteHackathon, publishHackathon } from "../services/HackathonApis";
+import { deleteHackathon, getHackathons, getOwnHackathons, publishHackathon } from "../services/HackathonApis";
 import { useToast } from "@chakra-ui/react";
 import { BsPersonAdd } from "react-icons/bs";
 import Modal from "@/MuLearnComponents/Modal/Modal";
 import { MdOutlineUnpublished, MdPublishedWithChanges } from "react-icons/md";
 import { Tooltip } from "react-tooltip";
-import { HackList } from "../services/HackathonInterface";
+import { HackList } from "../services/HackathonInterfaces";
 
 enum ModalType {
     Publish,
     Delete
 }
 
-
-
 const Hackathon = () => {
     const [data, setData] = useState<HackList[]>([]);
     const [ownData, setOwnData] = useState<HackList[]>([]);
-    const [isPublishOpen, setIsPublishOpen] = useState<boolean[]>(ownData.map(() => false));
-    const [isDeleteOpen, setIsDeleteOpen] = useState<boolean[]>(ownData.map(() => false));
+    const [isPublishOpen, setIsPublishOpen] = useState<boolean[]>(
+        ownData.map(() => false)
+    );
+    const [isDeleteOpen, setIsDeleteOpen] = useState<boolean[]>(
+        ownData.map(() => false)
+    );
     const navigate = useNavigate();
     const toast = useToast();
 
@@ -36,17 +37,17 @@ const Hackathon = () => {
 
     const toggleModal = (index: number, type: string) => {
         if (type == ModalType[0]) {
-			setIsPublishOpen(prevState => {
-				const newState = [...prevState];
-				newState[index] = !newState[index];
-				return newState;
-			});
+            setIsPublishOpen(prevState => {
+                const newState = [...prevState];
+                newState[index] = !newState[index];
+                return newState;
+            });
         } else {
-			setIsDeleteOpen(prevState => {
-				const newState = [...prevState];
-				newState[index] = !newState[index];
-				return newState;
-			});
+            setIsDeleteOpen(prevState => {
+                const newState = [...prevState];
+                newState[index] = !newState[index];
+                return newState;
+            });
         }
     };
 
