@@ -1,19 +1,15 @@
 import React from "react";
 
 import styles from "./Notifications.module.css";
-import ReactTimeAgo from "react-time-ago";
 
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
-import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en";
+import { getMonthsAgo } from "../../Utils/dateTime";
+
 
 const Notifications = () => {
   let notifications = require("./data/notifications.json");
-  console.log(new Date());
 
-  TimeAgo.setDefaultLocale(en.locale);
-  TimeAgo.addLocale(en);
 
   return (
     <>
@@ -35,11 +31,11 @@ const Notifications = () => {
               <p className={styles.timeline}>This Week</p>
               {notifications &&
                 notifications.new.map((notification) => (
-                  <div className={styles.notification}>
+                  <div className={styles.notification} key={notification.date + notification.title}>
                     <p className={styles.notification_header}>
                       {notification.title}{" "}
                       <span>
-                        <ReactTimeAgo date={notification.date} locale="en-US" />
+                        {getMonthsAgo(notification.date)}
                       </span>
                     </p>
                     <p className={styles.notification_text}>
@@ -59,12 +55,12 @@ const Notifications = () => {
             <div className={styles.notifications_view}>
               <p className={styles.timeline}>Past Notifications</p>
               {notifications &&
-                notifications.old.map((notification) => (
-                  <div className={styles.notification}>
+                notifications.old.map((notification, index) => (
+                  <div className={styles.notification} key={notification.date + notification.title}>
                     <p className={styles.notification_header}>
                       {notification.title}{" "}
                       <span>
-                        <ReactTimeAgo date={notification.date} locale="en-US" />
+                        {getMonthsAgo(notification.date)}
                       </span>
                     </p>
                     <p className={styles.notification_text}>
