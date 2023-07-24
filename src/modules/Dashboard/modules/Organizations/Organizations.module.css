@@ -1,26 +1,26 @@
-.table_tab_container {
+.tableTabContainer {
     display: flex;
     justify-content: space-between;
     width: 95%;
 }
-.table_tab_container .table_tabs {
+.tableTabContainer .tableTabs {
     display: flex;
     gap: 15px;
 }
-.table_tab_container .table_tabs .table_tab_btn {
+.tableTabContainer .tableTabs .tableTabBtn {
     padding: 6px 24px;
     border-radius: 10px;
     cursor: pointer;
 }
-.table_tab_container .table_tabs .active {
+.tableTabContainer .tableTabs .active {
     background-color: white;
     color: #5570f1;
 }
-.table_tab_container .table_tabs .inactive {
+.tableTabContainer .tableTabs .inactive {
     border: 1px solid white;
     color: #3d4043;
 }
-.table_tab_container .org_create_btn {
+.tableTabContainer .orgCreateBtn {
     background-color: white;
     border: 1px solid #456ff6;
     display: flex;
@@ -31,7 +31,7 @@
     cursor: pointer;
 }
 
-.popup_container {
+.popupContainer {
     width: 60%;
     height: -moz-max-content;
     height: max-content;
@@ -42,38 +42,38 @@
     background-color: #fff;
     margin: auto;
 }
-.popup_container .popup_title {
+.popupContainer .popupTitle {
     font-size: 20px;
     font-weight: 800;
     text-align: start;
 }
-.popup_container p {
+.popupContainer p {
     width: 90%;
     text-align: left;
     font-size: 14px;
 }
-.popup_container p span {
+.popupContainer p span {
     font-weight: bold;
 }
-.popup_container p span::after {
+.popupContainer p span::after {
     content: " ";
 }
 
-.popup_dropdown_container {
+.popupDropdownContainer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 15px;
     margin: 10px 0;
     z-index: 100;
 }
-.popup_dropdown_container .inputfield_container {
+.popupDropdownContainer .inputFieldContainer {
     width: 100%;
     text-align: start;
     margin-top: 8px;
     box-sizing: border-box;
 }
 
-.grid-container {
+.gridContainer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 15px;
@@ -85,12 +85,12 @@
     transition: max-height 0.3s linear;
 }
 
-.popup_top_container {
+.popupTopContainer {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.popup_top_container i {
+.popupTopContainer i {
     width: 35px;
     height: 35px;
     display: flex;
@@ -98,11 +98,11 @@
     align-items: center;
     border-radius: 50%;
 }
-.popup_top_container i:hover {
+.popupTopContainer i:hover {
     background-color: rgba(69, 111, 246, 0.1137254902);
 }
 
-.submit_container {
+.submitContainer {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -124,7 +124,7 @@
 .btn p {
     text-align: center;
 }
-.btn .btn_loader {
+.btn .btnLoader {
     margin-left: 8px;
 }
 
@@ -139,7 +139,7 @@
     color: #456ff6;
 }
 
-.delete_container {
+.deleteContainer {
     width: 100%;
     height: 60vh;
     display: flex;
@@ -158,12 +158,12 @@
     }
 }
 @media only screen and (max-width: 768px) {
-    .popup_container {
+    .popupContainer {
         width: 100%;
     }
 }
 @media only screen and (max-width: 400px) {
-    .popup_dropdown_container {
+    .popupDropdownContainer {
         grid-template-columns: repeat(1, 1fr);
     }
 } /*# sourceMappingURL=Organizations.css.map */

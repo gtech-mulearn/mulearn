@@ -42,7 +42,6 @@ const EditLocation = () => {
                 duration: 3000,
                 isClosable: true
             });
-            navigate('/manage-locations');
         }else{
             if(activeItem === "Country"){
                 putCountryData(selectedItem,values.ItemName);
@@ -62,8 +61,8 @@ const EditLocation = () => {
                 duration: 3000,
                 isClosable: true
             });
-            navigate('/manage-locations');
         }
+        navigate('/manage-locations',{state:{activeItem:activeItem}});
     }
 
     return (
@@ -74,7 +73,7 @@ const EditLocation = () => {
                     <i
                         className="fi fi-sr-cross"
                         onClick={() => {
-                            navigate('/manage-locations');
+                            navigate('/manage-locations',{state:{activeItem:activeItem}});
                         }}
                     ></i>
                 </div>
