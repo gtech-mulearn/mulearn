@@ -1,5 +1,4 @@
-import React from 'react'
-// import './Organizations.scss';
+import orgStyles from './Organizations.module.css';
 import Form from '@/MuLearnComponents/Form/Form';
 import { useNavigate,useParams } from 'react-router-dom';
 import { deleteOrganization } from './apis';
@@ -17,7 +16,7 @@ function DeleteOrganizations() {
         navigate('/organizations')
     }
   return (
-    <div className="delete_container">
+    <div className={orgStyles.deleteContainer}>
         <Form
                 title={`Are you sure you want to delete ${id}?`}
                 handleSubmitClick={handleSubmit}
