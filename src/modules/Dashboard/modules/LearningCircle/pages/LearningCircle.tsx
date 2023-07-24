@@ -5,8 +5,6 @@ import { useParams } from "react-router-dom";
 import pic from "../../Profile/assets/images/dpm.jpg";
 import { LcDetail } from "../services/LearningCircleInterface";
 
-
-
 type Props = {};
 
 const LearningCircle = (props: Props) => {
@@ -65,8 +63,7 @@ const LearningCircle = (props: Props) => {
                                 </div>
                             </div>
                         ) : (
-
-							// TODO: Formik implement
+                            // TODO: Formik implement
 
                             <div className={styles.EventOn}>
                                 <div className={styles.ScheduleOn}>
@@ -77,24 +74,8 @@ const LearningCircle = (props: Props) => {
                                     </p>
                                 </div>
                                 <div className={styles.InputSchedule}>
-                                    <div>
-                                        <input
-                                            type="time"
-                                            placeholder="meeting time"
-                                        />
-                                        <input
-                                            type="date"
-                                            placeholder="meeting day"
-                                        />
-                                    </div>
-                                    <input
-                                        type="text"
-                                        placeholder="meeting venue"
-                                    />
+                                    <button type="submit">Submit</button>
                                 </div>
-                                <button className={styles.BtnBtn}>
-                                    Schedule
-                                </button>
                             </div>
                         )}
 
