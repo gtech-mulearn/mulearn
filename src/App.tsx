@@ -27,9 +27,9 @@ import ManageUsersCreate from "./modules/Dashboard/modules/ManageUsers/ManageUse
 import ManageUsersDelete from "./modules/Dashboard/modules/ManageUsers/ManageUsersDelete";
 import ManageUsersEdit from "./modules/Dashboard/modules/ManageUsers/ManageUsersEdit";
 import ManageRoles from "./modules/Dashboard/modules/ManageRoles/ManageRoles";
-import ManageRolesEdit from "./modules/Dashboard/modules/ManageRoles/ManageRolesEdit";
-import ManageRolesDelete from "./modules/Dashboard/modules/ManageRoles/ManageRolesDelete";
-import ManageRolesCreate from "./modules/Dashboard/modules/ManageRoles/ManageRolesCreate";
+// import ManageRolesEdit from "./modules/Dashboard/modules/ManageRoles/ManageRolesEdit";
+// import ManageRolesDelete from "./modules/Dashboard/modules/ManageRoles/ManageRolesDelete";
+// import ManageRolesCreate from "./modules/Dashboard/modules/ManageRoles/ManageRolesCreate";
 import UserRoleVerification from "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerification";
 import UserRoleVerificationDelete from "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationDelete";
 import UserRoleVerificationEdit from "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationEdit";
@@ -135,18 +135,18 @@ const router = createBrowserRouter([
                         element: <ManageUsersEdit />
                     },
                     { path: "manage-roles", element: <ManageRoles /> },
-                    {
-                        path: "manage-roles/edit/:id",
-                        element: <ManageRolesEdit />
-                    },
-                    {
-                        path: "manage-roles/delete/:id",
-                        element: <ManageRolesDelete />
-                    },
-                    {
-                        path: "manage-roles/create",
-                        element: <ManageRolesCreate />
-                    },
+                    // {
+                    //     path: "manage-roles/edit/:id",
+                    //     element: <ManageRolesEdit />
+                    // },
+                    // {
+                    //     path: "manage-roles/delete/:id",
+                    //     element: <ManageRolesDelete />
+                    // },
+                    // {
+                    //     path: "manage-roles/create",
+                    //     element: <ManageRolesCreate />
+                    // },
                     {
                         path: "user-role-verification",
                         element: <UserRoleVerification />
