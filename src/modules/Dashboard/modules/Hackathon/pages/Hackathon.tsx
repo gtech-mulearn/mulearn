@@ -85,16 +85,6 @@ const Hackathon = () => {
                                                             data-tooltip-id="Icon"
                                                             data-tooltip-content="Edit"
                                                         />
-                                                        <Tooltip
-                                                            id="Icon"
-                                                            style={{
-                                                                backgroundColor:
-                                                                    "var(--blue)",
-                                                                color: "var(--White)",
-                                                                borderRadius:
-                                                                    "10px"
-                                                            }}
-                                                        />
                                                     </Link>
                                                 </div>
                                                 <div className="group">
@@ -231,6 +221,15 @@ const Hackathon = () => {
                                                         />
                                                     )}
                                                 </div>
+                                                <Tooltip
+                                                    id="Icon"
+                                                    style={{
+                                                        backgroundColor:
+                                                            "var(--blue)",
+                                                        color: "var(--White)",
+                                                        borderRadius: "10px"
+                                                    }}
+                                                />
                                             </div>
                                         </div>
                                     </div>
