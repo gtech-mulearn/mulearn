@@ -39,7 +39,7 @@ import UrlShortener from "./modules/Dashboard/modules/UrlShortener/Pages/UrlShor
 import TaskEdit from "./modules/Dashboard/modules/Tasks/TaskEdit";
 import TaskCreate from "./modules/Dashboard/modules/Tasks/TaskCreate";
 import TaskBulkImport from "./modules/Dashboard/modules/Tasks/TaskBulkImport";
-import Hackathon from "./modules/Dashboard/modules/Hackathon/User/Hackathon";
+import Hackathon from "./modules/Dashboard/modules/Hackathon/pages/Hackathon";
 import HackathonCreate from "./modules/Dashboard/modules/Hackathon/pages/HackathonCreate";
 import KKEMLanding from "./modules/KKEM/modules/KKEMLanding";
 import KKEMAuth from "./modules/KKEM/modules/KKEMAuth";

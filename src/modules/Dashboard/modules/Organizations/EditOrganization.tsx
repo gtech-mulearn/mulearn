@@ -4,6 +4,7 @@ import { roles } from "@/MuLearnServices/types";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getInfo } from "./apis";
+import orgStyles from './Organizations.module.css'
 
 import FormData from "./FormData";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
@@ -28,7 +29,6 @@ function EditOrganization() {
 
         getInfo(rowId)
             .then(data => {
-                //console.log("this is data->",data)
                 setInputName(data.title);
                 setInputCode(data.code);
                 setSelectedCountry(data.country);
@@ -98,10 +98,10 @@ function EditOrganization() {
                     <MuLoader />
                 </div>
             ) : (
-                <div className="popup_container">
+                <div className={orgStyles.popupContainer}>
                     <div className={styles.container}>
-                        <div className="popup_top_container">
-                            <h1 className="popup_title">Edit {activeItem}</h1>
+                        <div className={orgStyles.popupTopContainer}>
+                            <h1 className={orgStyles.popupTitle}>Edit {activeItem}</h1>
                             <i
                                 className="fi fi-sr-cross"
                                 onClick={() => {
