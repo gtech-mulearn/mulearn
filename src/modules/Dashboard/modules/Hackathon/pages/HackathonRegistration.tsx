@@ -1,5 +1,4 @@
 import { useToast } from "@chakra-ui/react";
-import * as Yup from "yup";
 import { useEffect, useState } from "react";
 import { Form, Formik } from "formik";
 import styles from "../../../utils/formStyle.module.css";
@@ -18,6 +17,7 @@ import {
     HackathonApplication
 } from "../services/HackathonInterfaces";
 import { capitalizeFirstLetter } from "../../../utils/common";
+import { HackApplicationSchema } from "../services/HackathonYup";
 
 type Props = {};
 
@@ -33,13 +33,6 @@ const HackathonRegistration = (props: Props) => {
         getApplicationForm(setApplication, id);
         console.log(application);
     }, []);
-
-    const taskEditSchema = Yup.object().shape({
-        name: Yup.string()
-            .required("Required")
-            .min(2, "Too Short!")
-            .max(30, "Too Long!")
-    });
 
     const handleSubmit = (values: any) => {
         console.log(values);
@@ -64,7 +57,7 @@ const HackathonRegistration = (props: Props) => {
                         github: "",
                         linkedin: ""
                     }}
-                    validationSchema={taskEditSchema}
+                    validationSchema={HackApplicationSchema}
                     onSubmit={handleSubmit}
                 >
                     <Form className={styles.formContainer}>
