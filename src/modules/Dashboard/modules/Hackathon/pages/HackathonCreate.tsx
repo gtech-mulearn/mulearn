@@ -255,7 +255,7 @@ const HackathonCreate = () => {
 				values.type,
 				values.website,
 				toast,
-            );}
+            )}
         resetForm();
         setTimeout(() => {
             navigate("/hackathon");
@@ -297,12 +297,12 @@ const HackathonCreate = () => {
                                     description: data?.description || "",
                                     participantCount:
                                         data?.participant_count || "",
-                                    eventStart: convertDateToYYYYMMDD(data?.event_start) || "",
-                                    eventEnd: convertDateToYYYYMMDD(data?.event_end) || "",
+                                    eventStart: convertDateToYYYYMMDD(String(data?.event_start)) || "",
+                                    eventEnd: convertDateToYYYYMMDD(String(data?.event_end)) || "",
                                     applicationStart:
-                                        convertDateToYYYYMMDD(data?.application_start) || "",
+                                        convertDateToYYYYMMDD(String(data?.application_start)) || "",
                                     applicationEnds:
-                                        convertDateToYYYYMMDD(data?.application_ends) || "",
+                                        convertDateToYYYYMMDD(String(data?.application_ends)) || "",
                                     orgId: data?.organisation || "",
                                     place: data?.place || "",
                                     districtId: data?.district || "",

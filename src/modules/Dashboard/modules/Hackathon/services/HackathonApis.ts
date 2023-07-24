@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { HackList } from "./HackathonInterfaces";
+import { HackList, HackathonApplication } from "./HackathonInterfaces";
 import { SetStateAction } from "react";
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
@@ -202,7 +202,7 @@ export const editHackathon = async (
         );
         toast({
             title: "Success",
-            description: "Hackathon created.",
+            description: "Hackathon updated.",
             status: "success",
             duration: 3000,
             isClosable: true
@@ -212,7 +212,7 @@ export const editHackathon = async (
         if (error?.response) {
             toast({
                 title: "Error",
-                description: "Failed to create new Hackathon.",
+                description: "Failed to update Hackathon.",
                 status: "error",
                 duration: 3000,
                 isClosable: true
@@ -361,15 +361,16 @@ export const publishHackathon = async (
 };
 
 export const getApplicationForm = async (
+	setData: React.Dispatch<SetStateAction<HackathonApplication[]>>,
     id: string | undefined,
-    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getApplicationForm + id + "/"
         );
         const message: any = response?.data;
-        console.log(message);
+        console.log(message.response);
+		setData(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

@@ -9,6 +9,14 @@ export const DateConverter = (date:string) => {
 
 
 // Convert UTC Date to YYYY-MM-DD for date input
-export const convertDateToYYYYMMDD = (dateString: any) => {
+export const convertDateToYYYYMMDD = (dateString: string) => {
     return dateString.split("T")[0];
 };
+
+// Make First letter Upper Case
+export const capitalizeFirstLetter = (str: any) => {
+    if (typeof str !== "string" || str.length === 0) {
+        return str;
+    }
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}

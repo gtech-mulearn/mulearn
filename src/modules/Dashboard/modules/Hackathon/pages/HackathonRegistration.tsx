@@ -2,38 +2,48 @@ import { useToast } from "@chakra-ui/react";
 import * as Yup from "yup";
 import { useEffect, useState } from "react";
 import { Form, Formik } from "formik";
-import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
-import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import styles from "../../../utils/formStyle.module.css";
+import {
+    FormikTextInput,
+    FormikTextInputWhite
+} from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 import { useNavigate, useParams } from "react-router-dom";
 import { getApplicationForm, getHackDetails } from "../services/HackathonApis";
-import { HackList } from "../services/HackathonInterfaces";
-
+import {
+    HackList,
+    HackathonApplication
+} from "../services/HackathonInterfaces";
+import { capitalizeFirstLetter } from "../../../utils/common";
 
 type Props = {};
 
 const HackathonRegistration = (props: Props) => {
     const toast = useToast();
     const { id } = useParams();
-	const navigate = useNavigate();
+    const navigate = useNavigate();
     const [data, setData] = useState<HackList>();
+    const [application, setApplication] = useState<HackathonApplication[]>([]);
 
     useEffect(() => {
         getHackDetails(setData, id);
-		getApplicationForm(id, toast)
-    }, [1]);
+        getApplicationForm(setApplication, id);
+        console.log(application);
+    }, []);
 
     const taskEditSchema = Yup.object().shape({
         name: Yup.string()
             .required("Required")
             .min(2, "Too Short!")
-            .max(30, "Too Long!"),
-        
+            .max(30, "Too Long!")
     });
 
-	const handleSubmit = (values: any) => {
-		console.log(values)
-	}
+    const handleSubmit = (values: any) => {
+        console.log(values);
+    };
 
     return (
         <div className={styles.external_container}>
@@ -47,7 +57,7 @@ const HackathonRegistration = (props: Props) => {
                         name: "",
                         gender: "",
                         email: "",
-                        mobile: '',
+                        mobile: "",
                         bio: "",
                         college: "",
                         experience: "",
@@ -57,24 +67,34 @@ const HackathonRegistration = (props: Props) => {
                     validationSchema={taskEditSchema}
                     onSubmit={handleSubmit}
                 >
-                    <Form className={styles.inputContainer}>
-                        <FormikTextInput
-                            label="Hashtag"
-                            name="hashtag"
-                            type="text"
-                            placeholder="#example"
-                        />
-                        <div className={styles.btn_container}>
-                            <MuButton
-                                text={"Decline"}
-                                className={styles.btn_cancel}
-                                onClick={() => {
-                                    navigate("/tasks");
-                                }}
-                            />
-                            <button type="submit" className={styles.btn_submit}>
-                                Confirm
-                            </button>
+                    <Form className={styles.formContainer}>
+                        {application &&
+                            application.map((hack, index) => (
+                                <div className={styles.inputContainer}>
+                                    <FormikTextInputWhite
+                                        label={capitalizeFirstLetter(
+                                            hack.field_name
+                                        )}
+                                        name={hack.field_name}
+                                        type="text"
+                                        placeholder="..."
+                                    />
+                                </div>
+                            ))}
+                        <div className={styles.inputContainerBtn}>
+                                <MuButton
+                                    text={"Decline"}
+                                    className={styles.btn_cancel}
+                                    onClick={() => {
+                                        navigate(`/hackathon/details/${id}`);
+                                    }}
+                                />
+                                <button
+                                    type="submit"
+                                    className={styles.btn_submit}
+                                >
+                                    Confirm
+                                </button>
                         </div>
                     </Form>
                 </Formik>

@@ -18,3 +18,9 @@ export interface HackList {
     participant_count: number;
     organisation: string;
 }
+
+export interface HackathonApplication {
+    field_name: string;
+    field_type: string;
+    is_required: boolean;
+}
