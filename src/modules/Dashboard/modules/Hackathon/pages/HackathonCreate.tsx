@@ -19,7 +19,7 @@ import { FiUploadCloud } from "react-icons/fi";
 import { useNavigate, useParams } from "react-router-dom";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { useToast } from "@chakra-ui/react";
-import { HackList } from "../services/HackathonInterface";
+import { HackList } from "../services/HackathonInterfaces";
 
 /**
  * TODO: Move YUP Validations to another file.
