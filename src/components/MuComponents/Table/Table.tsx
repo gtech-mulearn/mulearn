@@ -1,8 +1,10 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import styles from "./Table.module.css";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import Modal from "../Modal/Modal";
+import MuLoader from "../MuLoader/MuLoader";
+
 enum ModalType {
     Verify,
     Delete
@@ -45,7 +47,7 @@ type TableProps = {
     modalVerifyContent?: string;
     modalDeleteHeading?: string;
     modalDeleteContent?: string;
-    modalTypeContent?:string;
+    modalTypeContent?: string;
 };
 
 {
@@ -58,6 +60,7 @@ TODO: Move the Common Functions to a separate file
 */
 
 const Table: FC<TableProps> = (props: TableProps) => {
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     const [isDeleteOpen, setIsDeleteOpen] = useState<boolean[]>(
         props.rows.map(() => false)
     );
@@ -117,118 +120,129 @@ const Table: FC<TableProps> = (props: TableProps) => {
 
     const startIndex = (props.page - 1) * props.perPage;
 
+    // To change MuLoading Component
+    useEffect(() => {
+        setTimeout(() => {
+
+            setIsLoading(false);
+        }, 2000)
+    }, [props.rows]);
+
     return (
         <>
+
             <div className={styles.table}>
-                <table className={styles.tableActual}>
-                    {props.children?.[0]}
-                    <tbody>
-                        {props.rows?.map((rowData, index) => (
-                            <tr key={index}>
-                                <td className={styles.td}>
-                                    {startIndex + index + 1}
-                                </td>{" "}
-                                {props.columnOrder.map(column => (
-                                    <td
-                                        className={styles.td}
-                                        key={column.column}
-                                    >
-                                        {convertToNormalDate(
-                                            rowData[column.column]
-                                        )}
-                                    </td>
-                                ))}
-                                {props.id &&
-                                    props.id.map((column, columnIndex) => (
-                                        <td className={styles.td} key={column}>
-                                            <div className={styles.icons}>
-                                                {props.onEditClick && (
-                                                    <button
-                                                        onClick={() =>
-                                                            props.onEditClick &&
-                                                            props.onEditClick(
-                                                                rowData[column]
-                                                            )
-                                                        }
-                                                    >
-                                                        <FaEdit />
-                                                    </button>
-                                                )}
-                                                {props.onVerifyClick && (
-                                                    <button
-                                                        className={styles.btns}
-                                                        onClick={() =>
-                                                            toggleModal(
-                                                                index,
-                                                                ModalType[0]
-                                                            )
-                                                        }
-                                                    >
-                                                        Verify
-                                                    </button>
-                                                )}
-                                                {isVerifyOpen[index] && (
-                                                    <Modal
-                                                        setIsOpen={() =>
-                                                            toggleModal(
-                                                                index,
-                                                                ModalType[0]
-                                                            )
-                                                        }
-                                                        id={rowData[column]}
-                                                        heading={
-                                                            props.modalVerifyHeading
-                                                        }
-                                                        content={
-                                                            props.modalVerifyContent
-                                                        }
-                                                        click={
-                                                            props.onVerifyClick
-                                                        }
-                                                    />
-                                                )}
-                                                {props.onDeleteClick && (
-                                                    <button
-                                                        onClick={() =>
-                                                            toggleModal(
-                                                                index,
-                                                                ModalType[1]
-                                                            )
-                                                        }
-                                                    >
-                                                        <MdDelete />
-                                                    </button>
-                                                )}
-                                                {isDeleteOpen[index] && (
-                                                    <Modal
-                                                        setIsOpen={() =>
-                                                            toggleModal(
-                                                                index,
-                                                                ModalType[1]
-                                                            )
-                                                        }
-                                                        id={rowData[column]}
-                                                        heading={
-                                                            props.modalDeleteHeading
-                                                        }
-                                                        content={
-                                                            props.modalDeleteContent
-                                                        }
-                                                        click={
-                                                            props.onDeleteClick
-                                                        }
-                                                        type={
-                                                            props.modalTypeContent
-                                                        }
-                                                    />
-                                                )}
-                                            </div>
+                {isLoading ? <MuLoader /> :
+                    <table className={styles.tableActual}>
+                        {props.children?.[0]}
+                        <tbody>
+                            {props.rows?.map((rowData, index) => (
+                                <tr key={index}>
+                                    <td className={styles.td}>
+                                        {startIndex + index + 1}
+                                    </td>{" "}
+                                    {props.columnOrder.map(column => (
+                                        <td
+                                            className={styles.td}
+                                            key={column.column}
+                                        >
+                                            {convertToNormalDate(
+                                                rowData[column.column]
+                                            )}
                                         </td>
                                     ))}
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                                    {props.id &&
+                                        props.id.map((column, columnIndex) => (
+                                            <td className={styles.td} key={column}>
+                                                <div className={styles.icons}>
+                                                    {props.onEditClick && (
+                                                        <button
+                                                            onClick={() =>
+                                                                props.onEditClick &&
+                                                                props.onEditClick(
+                                                                    rowData[column]
+                                                                )
+                                                            }
+                                                        >
+                                                            <FaEdit />
+                                                        </button>
+                                                    )}
+                                                    {props.onVerifyClick && (
+                                                        <button
+                                                            className={styles.btns}
+                                                            onClick={() =>
+                                                                toggleModal(
+                                                                    index,
+                                                                    ModalType[0]
+                                                                )
+                                                            }
+                                                        >
+                                                            Verify
+                                                        </button>
+                                                    )}
+                                                    {isVerifyOpen[index] && (
+                                                        <Modal
+                                                            setIsOpen={() =>
+                                                                toggleModal(
+                                                                    index,
+                                                                    ModalType[0]
+                                                                )
+                                                            }
+                                                            id={rowData[column]}
+                                                            heading={
+                                                                props.modalVerifyHeading
+                                                            }
+                                                            content={
+                                                                props.modalVerifyContent
+                                                            }
+                                                            click={
+                                                                props.onVerifyClick
+                                                            }
+                                                        />
+                                                    )}
+                                                    {props.onDeleteClick && (
+                                                        <button
+                                                            onClick={() =>
+                                                                toggleModal(
+                                                                    index,
+                                                                    ModalType[1]
+                                                                )
+                                                            }
+                                                        >
+                                                            <MdDelete />
+                                                        </button>
+                                                    )}
+                                                    {isDeleteOpen[index] && (
+                                                        <Modal
+                                                            setIsOpen={() =>
+                                                                toggleModal(
+                                                                    index,
+                                                                    ModalType[1]
+                                                                )
+                                                            }
+                                                            id={rowData[column]}
+                                                            heading={
+                                                                props.modalDeleteHeading
+                                                            }
+                                                            content={
+                                                                props.modalDeleteContent
+                                                            }
+                                                            click={
+                                                                props.onDeleteClick
+                                                            }
+                                                            type={
+                                                                props.modalTypeContent
+                                                            }
+                                                        />
+                                                    )}
+                                                </div>
+                                            </td>
+                                        ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                }
             </div>
             <div className={styles.page}>{props.children?.[1]}</div>
         </>
