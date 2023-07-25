@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import "react-tooltip/dist/react-tooltip.css";
-import "./styles.css";
 import styles from "./Hackathon.module.css";
 import { LuCopy, LuShare2, LuEdit } from "react-icons/lu";
 import { RiDeleteBin5Line } from "react-icons/ri";
