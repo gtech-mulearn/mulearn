@@ -18,10 +18,9 @@ import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(5);
     const [openModal, setOpenModal] = useState(false);
-    const [loading, setLoading] = useState(true);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
     const toast = useToast();
@@ -54,11 +53,7 @@ function InterestGroup() {
             getInterestGroups(setData, 1, perPage, setTotalPages, "", "");
         }
         firstFetch.current = false;
-
-        if (data.length > 0) {
-            setLoading(false);
-        }
-    }, [data]);
+    }, []);
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
@@ -110,57 +105,52 @@ function InterestGroup() {
 
     return (
         <>
-            {loading ? (
-                <div className={styles.loader_container}>
-                    <MuLoader />
-                </div>
-            ) : (
+            <InterestGroupCreateModal
+                isOpen={openModal}
+                onClose={setOpenModal}
+            />
+            <div className={styles.createBtnContainer}>
+                <MuButton
+                    className={styles.createBtn}
+                    text={"Create"}
+                    icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
+                    onClick={handleCreate}
+                />
+            </div>
+
+            {data && (
                 <>
-                    <InterestGroupCreateModal
-                        isOpen={openModal}
-                        onClose={setOpenModal}
-                    />
-                    <div className={styles.createBtnContainer}>
-                        <MuButton
-                            className={styles.createBtn}
-                            text={"Create"}
-                            icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
-                            onClick={handleCreate}
-                        />
-                    </div>
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
                         CSV={dashboardRoutes.getIgList}
                     />
-                    {data && (
-                        <Table
-                            rows={data}
-                            page={currentPage}
-                            perPage={perPage}
+                    <Table
+                        rows={data}
+                        page={currentPage}
+                        perPage={perPage}
+                        columnOrder={columnOrder}
+                        id={["id"]}
+                        onEditClick={handleEdit}
+                        onDeleteClick={handleDelete}
+                        modalDeleteHeading="Delete"
+                        modalTypeContent="error"
+                        modalDeleteContent="Are you sure you want to delete "
+                    >
+                        <THead
                             columnOrder={columnOrder}
-                            id={["id"]}
-                            onEditClick={handleEdit}
-                            onDeleteClick={handleDelete}
-                            modalDeleteHeading="Delete"
-                            modalTypeContent="error"
-                            modalDeleteContent="Are you sure you want to delete "
-                        >
-                            <THead
-                                columnOrder={columnOrder}
-                                onIconClick={handleIconClick}
-                                action={true}
-                            />
-                            <Pagination
-                                currentPage={currentPage}
-                                totalPages={totalPages}
-                                margin="10px 0"
-                                handleNextClick={handleNextClick}
-                                handlePreviousClick={handlePreviousClick}
-                            />
-                            {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-                        </Table>
-                    )}
+                            onIconClick={handleIconClick}
+                            action={true}
+                        />
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            margin="10px 0"
+                            handleNextClick={handleNextClick}
+                            handlePreviousClick={handlePreviousClick}
+                        />
+                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                    </Table>
                 </>
             )}
         </>

@@ -24,7 +24,7 @@ const UrlShortener = () => {
     const [editBtn, setEditBtn] = useState(false);
     const [perPage, setPerPage] = useState(5);
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
     const toast = useToast();
@@ -315,34 +315,37 @@ const UrlShortener = () => {
                     </form>
                 </div>
             </div>
-            <TableTop
-                onSearchText={handleSearch}
-                onPerPageNumber={handlePerPageNumber}
-            />
+
             {shortUrlData && (
-                <Table
-                    rows={shortUrlData}
-                    page={currentPage}
-                    perPage={perPage}
-                    columnOrder={columnOrder}
-                    id={["id"]}
-                    onEditClick={handleEdit}
-                    onDeleteClick={handleDelete}
-                >
-                    <THead
+                <>
+                    <TableTop
+                        onSearchText={handleSearch}
+                        onPerPageNumber={handlePerPageNumber}
+                    />
+                    <Table
+                        rows={shortUrlData}
+                        page={currentPage}
+                        perPage={perPage}
                         columnOrder={columnOrder}
-                        // editableColumnNames={editableColumnNames}
-                        onIconClick={handleIconClick}
-                    />
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        margin="10px 0"
-                        handleNextClick={handleNextClick}
-                        handlePreviousClick={handlePreviousClick}
-                    />
-                    {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-                </Table>
+                        id={["id"]}
+                        onEditClick={handleEdit}
+                        onDeleteClick={handleDelete}
+                    >
+                        <THead
+                            columnOrder={columnOrder}
+                            // editableColumnNames={editableColumnNames}
+                            onIconClick={handleIconClick}
+                        />
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            margin="10px 0"
+                            handleNextClick={handleNextClick}
+                            handlePreviousClick={handlePreviousClick}
+                        />
+                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                    </Table>
+                </>
             )}
         </>
     );
