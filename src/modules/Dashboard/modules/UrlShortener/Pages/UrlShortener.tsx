@@ -15,16 +15,6 @@ import { useToast } from "@chakra-ui/react";
 import { MuButtonLight } from "@/MuLearnComponents/MuButtons/MuButton";
 
 const UrlShortener = () => {
-    const columns = [];
-    const [shortUrlData, setShortUrlData] = useState<any[]>([]);
-    const [editBtn, setEditBtn] = useState(false);
-    const [perPage, setPerPage] = useState(5);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(0);
-    const [sort, setSort] = useState("");
-    const navigate = useNavigate();
-    const toast = useToast();
-    const firstFetch = useRef(true);
 
     const [hasValidationError, setHasValidationError] = useState({
         error: false,
