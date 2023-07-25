@@ -16,7 +16,7 @@ export interface HackList {
     application_ends: string | null;
     description: string;
     participant_count: number;
-    organisation: string;
+    org: string;
     editable: boolean;
 }
 

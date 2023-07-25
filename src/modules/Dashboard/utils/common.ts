@@ -11,8 +11,10 @@ export const DateConverter = (date:string) => {
 
 
 // Convert UTC Date to YYYY-MM-DD for date input
-export const convertDateToYYYYMMDD = (dateString: string) => {
-    return dateString.split("T")[0];
+export const convertDateToYYYYMMDD = (dateString: any) => {
+    if (dateString !== undefined || null) {
+        return String(dateString).split("T")[0];
+    }
 };
 
 // Make First letter Upper Case
@@ -23,7 +25,10 @@ export const capitalizeFirstLetter = (str: any) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-// Get id of the value for react select prefetching data
+/* 
+!TODO: Not used, found another way so delete if it wont be used
+* Get id of the value for react select prefetching data
+*/
 export const getLocationIdByName = (
     locations: Option[],
     label: string

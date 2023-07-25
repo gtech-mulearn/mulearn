@@ -23,24 +23,6 @@ export const getHackathons = async (
     }
 };
 
-export const getOwnHackathons = async (
-    setOwnData: React.Dispatch<SetStateAction<HackList[]>>
-) => {
-    try {
-        const response = await privateGateway.get(
-            dashboardRoutes.getOwnHackathons
-        );
-        const defaultForm: any = response?.data;
-        setOwnData(defaultForm.response);
-        console.log(defaultForm.response);
-    } catch (err: unknown) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
-    }
-};
-
 export const getFormFields = async (
     setFormData: React.Dispatch<React.SetStateAction<string>>
 ) => {
@@ -105,8 +87,8 @@ export const createHackathon = async (
                 tagline: tagline,
                 description: description,
                 participant_count: participantCount,
-                organisation: orgId,
-                districtId: districtId,
+                org_id: orgId,
+                district_id: districtId,
                 place: place,
                 is_open_to_all: isOpenToAll,
                 application_start: applicationStart,
@@ -178,8 +160,8 @@ export const editHackathon = async (
                 tagline: tagline,
                 description: description,
                 participant_count: participantCount,
-                organisation: orgId,
-                districtId: districtId,
+                org_id: orgId,
+                district_id: districtId,
                 place: place,
                 is_open_to_all: isOpenToAll,
                 application_start: applicationStart,
@@ -371,6 +353,34 @@ export const getApplicationForm = async (
         const message: any = response?.data;
         console.log(message.response);
 		setData(message.response);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
+
+export const submitHackApplication = async (
+	name: string,
+	gender: string,
+	email: string,
+	mobile: number,
+	bio: string,
+	college: string,
+	experience: string,
+	github: string,
+	linkedin: string,
+    id: string | undefined,
+) => {
+    try {
+        const response = await privateGateway.post(
+            dashboardRoutes.getApplicationForm + id + "/", {
+				name: name,
+			}
+        );
+        const message: any = response?.data;
+        console.log(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
