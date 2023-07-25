@@ -4,46 +4,29 @@ import "./styles.css";
 import { LuCopy, LuShare2, LuEdit } from "react-icons/lu";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useEffect, useState } from "react";
-import { getHackathons, getOwnHackathons } from "./hackApi";
 import { DateConverter } from "../../../utils/common";
-import { deleteHackathon, publishHackathon } from "../services/HackathonApis";
+import { deleteHackathon, getHackathons, getOwnHackathons, publishHackathon } from "../services/HackathonApis";
 import { useToast } from "@chakra-ui/react";
 import { BsPersonAdd } from "react-icons/bs";
 import Modal from "@/MuLearnComponents/Modal/Modal";
 import { MdOutlineUnpublished, MdPublishedWithChanges } from "react-icons/md";
 import { Tooltip } from "react-tooltip";
+import { HackList } from "../services/HackathonInterfaces";
 
 enum ModalType {
     Publish,
     Delete
 }
 
-export interface HackList {
-    id: string;
-    title: string;
-    type: string;
-    tagline: string;
-    event_logo: any;
-    district: string;
-    is_open_to_all: boolean;
-    banner: any;
-    website: string;
-    place: string;
-    status: string;
-    event_start: string | null;
-    event_end: string | null;
-    application_start: string | null;
-    application_ends: string | null;
-    description: string;
-    participant_count: number;
-    organisation: string;
-}
-
 const Hackathon = () => {
     const [data, setData] = useState<HackList[]>([]);
     const [ownData, setOwnData] = useState<HackList[]>([]);
-    const [isPublishOpen, setIsPublishOpen] = useState<boolean[]>(ownData.map(() => false));
-    const [isDeleteOpen, setIsDeleteOpen] = useState<boolean[]>(ownData.map(() => false));
+    const [isPublishOpen, setIsPublishOpen] = useState<boolean[]>(
+        ownData.map(() => false)
+    );
+    const [isDeleteOpen, setIsDeleteOpen] = useState<boolean[]>(
+        ownData.map(() => false)
+    );
     const navigate = useNavigate();
     const toast = useToast();
 
@@ -54,17 +37,17 @@ const Hackathon = () => {
 
     const toggleModal = (index: number, type: string) => {
         if (type == ModalType[0]) {
-			setIsPublishOpen(prevState => {
-				const newState = [...prevState];
-				newState[index] = !newState[index];
-				return newState;
-			});
+            setIsPublishOpen(prevState => {
+                const newState = [...prevState];
+                newState[index] = !newState[index];
+                return newState;
+            });
         } else {
-			setIsDeleteOpen(prevState => {
-				const newState = [...prevState];
-				newState[index] = !newState[index];
-				return newState;
-			});
+            setIsDeleteOpen(prevState => {
+                const newState = [...prevState];
+                newState[index] = !newState[index];
+                return newState;
+            });
         }
     };
 

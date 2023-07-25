@@ -112,6 +112,7 @@
 }
 
 .inputBox {
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -150,14 +151,14 @@
 .InputSet {
 	display: flex;
 	flex-direction: column;
-	/* width: 22rem; */
-	width: 100%;
+	/* width: 25rem; */
+	height: fit-content;
 	gap: .5rem;
 	text-align: left;
 }
 
 .formLabel {
-	line-height: 0rem;
+	/* line-height: 0rem; */
 	text-align: left;
 	font-size: 1.1rem;
 	font-weight: 600;
@@ -196,3 +197,16 @@
 	border: .1px solid #CFD3D4;
 }
 
+.loader_container {
+	position: fixed;
+	width: 100vw;
+	height: 100dvh;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 200;
+	transition: all 0.5s ease-in;
+}

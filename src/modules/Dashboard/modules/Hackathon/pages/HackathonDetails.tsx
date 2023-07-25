@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { CiGlobe } from "react-icons/ci";
 import { useNavigate, useParams } from "react-router-dom";
-import { HackList } from "../User/Hackathon";
 import { getHackDetails } from "../services/HackathonApis";
 import "./styles.css";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { HackList } from "../services/HackathonInterfaces";
 
 type Props = {};
 

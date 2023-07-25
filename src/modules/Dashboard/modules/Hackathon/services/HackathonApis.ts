@@ -1,10 +1,45 @@
 import { AxiosError } from "axios";
-import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
-import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
-import { HackList } from "../User/Hackathon";
+import { privateGateway } from "@/MuLearnServices/apiGateways";
+import { dashboardRoutes } from "@/MuLearnServices/urls";
+import { HackList } from "./HackathonInterfaces";
 import { SetStateAction } from "react";
-import { ToastId, UseToastOptions, useToast } from "@chakra-ui/react";
+import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+
+export const getHackathons = async (
+    setData: React.Dispatch<SetStateAction<HackList[]>>
+) => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getHackathons
+        );
+        const defaultForm: any = response?.data;
+        setData(defaultForm.response);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
+
+export const getOwnHackathons = async (
+    setOwnData: React.Dispatch<SetStateAction<HackList[]>>
+) => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getOwnHackathons
+        );
+        const defaultForm: any = response?.data;
+        setOwnData(defaultForm.response);
+        console.log(defaultForm.response);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
 
 export const getFormFields = async (
     setFormData: React.Dispatch<React.SetStateAction<string>>
@@ -264,23 +299,9 @@ export const getApplicationForm = async (
         );
         const message: any = response?.data;
         console.log(message);
-        toast({
-            title: "Change Successful",
-            description: "Hackathon status has been changed.",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            toast({
-                title: "Failed to make changes",
-                description: "Make sure all fields are filled.",
-                status: "error",
-                duration: 5000,
-                isClosable: true
-            });
             console.log(error.response);
         }
     }

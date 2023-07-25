@@ -142,7 +142,7 @@ export const SingleButton = (props: {
     link?: string;
 }) => {
     return (
-        <div className={styles.createBtnContainer}>
+        <div className={styles.createBtnContainer} style={props.style}>
             <a href={props.link} target="_blank">
                 <MuButton
                     className={styles.createBtn}

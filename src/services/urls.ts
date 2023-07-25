@@ -76,7 +76,8 @@ export const dashboardRoutes = {
     deleteHackathon: "/api/v1/hackathon/delete-hackathon/",
     publishHackathon: "/api/v1/hackathon/publish-hackathon/",
     addOrganizer: "/api/v1/hackathon/add-organiser/",
-    getApplicationForm: "/api/v1/hackathon/list-applicants/",
+    getApplicationForm: "/api/v1/hackathon/list-form/",
+    getApplicants: "/api/v1/hackathon/list-applicants/",
 
     getCampusLearningCircles: "/api/v1/dashboard/lc/",
     createLearningCircle: "/api/v1/dashboard/lc/create/",

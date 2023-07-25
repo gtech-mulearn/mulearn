@@ -20,7 +20,6 @@ import {
     CampusStudentList,
     Organizations
 } from "./modules/Dashboard/modules";
-import { InterestGroupCreate } from "./modules/Dashboard/modules/InterestGroup/InterestGroupCreate";
 import { Tasks } from "./modules/Dashboard/modules/Tasks/Tasks";
 import CreateOrganization from "./modules/Dashboard/modules/Organizations/CreateOrganization";
 import DeleteOrganizations from "./modules/Dashboard/modules/Organizations/DeleteOrganizations";
@@ -39,9 +38,8 @@ import EditOrgnaization from "./modules/Dashboard/modules/Organizations/EditOrga
 import UrlShortener from "./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener";
 import TaskEdit from "./modules/Dashboard/modules/Tasks/TaskEdit";
 import TaskCreate from "./modules/Dashboard/modules/Tasks/TaskCreate";
-import TaskDelete from "./modules/Dashboard/modules/Tasks/TaskDelete";
 import TaskBulkImport from "./modules/Dashboard/modules/Tasks/TaskBulkImport";
-import Hackathon from "./modules/Dashboard/modules/Hackathon/User/Hackathon";
+import Hackathon from "./modules/Dashboard/modules/Hackathon/pages/Hackathon";
 import HackathonCreate from "./modules/Dashboard/modules/Hackathon/pages/HackathonCreate";
 import KKEMLanding from "./modules/KKEM/modules/KKEMLanding";
 import KKEMAuth from "./modules/KKEM/modules/KKEMAuth";
@@ -106,10 +104,6 @@ const router = createBrowserRouter([
                     { path: "profile", element: <Profile /> },
                     { path: "connect-discord", element: <ConnectDiscord /> },
                     { path: "interest-groups", element: <InterestGroup /> },
-                    {
-                        path: "interest-groups/create",
-                        element: <InterestGroupCreate />
-                    },
                     {
                         path: "organizations/create",
                         element: <CreateOrganization />
@@ -190,10 +184,6 @@ const router = createBrowserRouter([
                     {
                         path: "url-shortener",
                         element: <UrlShortener />
-                    },
-                    {
-                        path: "tasks/delete/:id",
-                        element: <TaskDelete />
                     },
                     {
                         path: "url-shortener",
