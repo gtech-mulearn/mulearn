@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./UrlShortener.module.css";
 import {
     getShortenUrls,
@@ -6,89 +6,110 @@ import {
     editShortenUrl,
     deleteShortenUrl
 } from "../Services/apis";
-import { useNavigate } from "react-router-dom";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
-import { roles } from "@/MuLearnServices/types";
-import { hasRole } from "@/MuLearnServices/common_functions";
 import { useFormik } from "formik";
 import { useToast } from "@chakra-ui/react";
+import { MuButtonLight } from "@/MuLearnComponents/MuButtons/MuButton";
 
-//TODO: Complete work rework
-//TODO: Change the filenames
 const UrlShortener = () => {
-    const columns = [];
-    const [shortUrlData, setShortUrlData] = useState<any[]>([]);
-    const [editBtn, setEditBtn] = useState(false);
-    const [perPage, setPerPage] = useState(5);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
-    const [sort, setSort] = useState("");
-    const navigate = useNavigate();
-    const toast = useToast();
-    const firstFetch = useRef(true);
-
     const [hasValidationError, setHasValidationError] = useState({
         error: false,
         message: ""
     });
 
-    // const columnOrder = ["title","short_url", "long_url"];
     const columnOrder = [
         { column: "title", Label: "Title", isSortable: true },
         { column: "short_url", Label: "Short URL", isSortable: false },
         { column: "long_url", Label: "Long URL", isSortable: false }
     ];
 
-    const editableColumnNames = ["Title", "Short URL", "Long URL"];
-    useEffect(() => {
-        if (firstFetch.current) {
-            if (!hasRole([roles.ADMIN])) navigate("/404");
-            getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
+    const toast = useToast();
+    const [editBtn, setEditBtn] = useState(false);
+    const [shortUrlData, setShortUrlData] = useState([
+        {
+            id: "",
+            long_url: "",
+            short_url: "",
+            title: ""
         }
-        firstFetch.current = false;
-    }, []);
+    ]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const [perPage, setPerPage] = useState(5);
+    const [columns, setColumns] = useState(columnOrder);
+    const [sort, setSort] = useState("");
+
+    const formik = useFormik({
+        initialValues: {
+            id: "",
+            title: "",
+            longUrl: "",
+            short_url: ""
+        },
+        onSubmit: values => {
+            const urlCreateData = {
+                id: values.id,
+                title: values.title,
+                long_url: values.longUrl,
+                short_url: "mulearn.org/r/" + values.short_url
+            };
+            if (!editBtn) {
+                createShortenUrl(
+                    toast,
+                    urlCreateData,
+                    formik,
+                    setHasValidationError
+                );
+                setShortUrlData([...shortUrlData, urlCreateData]);
+                setTimeout(() => {
+                    getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
+                }, 500);
+                setEditBtn(false);
+            } else {
+                editShortenUrl(values.id, toast, urlCreateData);
+                setShortUrlData([
+                    ...shortUrlData.filter(item => item.id !== values.id),
+                    urlCreateData
+                ]);
+            }
+        },
+        validate: (values: any) => {
+            let errors: any = {};
+            if (!values.title) {
+                errors.title = "Required";
+            }
+            if (!values.longUrl) {
+                errors.longUrl = "Required";
+            }
+            if (!values.short_url) {
+                errors.short_url = "Required";
+            }
+            return errors;
+        }
+    });
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getShortenUrls(setShortUrlData, nextPage, perPage);
+        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
     };
+
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getShortenUrls(setShortUrlData, prevPage, perPage);
+        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
     };
-
     const handleSearch = (search: string) => {
         setCurrentPage(1);
         getShortenUrls(setShortUrlData, 1, perPage, setTotalPages, search, "");
     };
-    const handleEdit = (id: string | number | boolean) => {
-        //console.log(formik.values.id);
 
-        // navigate(`/dashboard/interest-groups/edit/${id}`);
-        formik.values.id = id.toString();
-        formik.values.long_url = shortUrlData.filter(
-            item => item.id === id
-        )[0].long_url;
-        formik.values.short_url = shortUrlData.filter(
-            item => item.id === id
-        )[0].short_url;
-        formik.values.title = shortUrlData.filter(
-            item => item.id === id
-        )[0].title;
-        setEditBtn(true);
-    };
-    const handleDelete = (id: any) => {
-        deleteShortenUrl(id.toString(), toast);
-        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
-    };
     const handlePerPageNumber = (selectedValue: number) => {
-        setPerPage(selectedValue);
         setCurrentPage(1);
+        setPerPage(selectedValue);
         getShortenUrls(
             setShortUrlData,
             1,
@@ -121,96 +142,48 @@ const UrlShortener = () => {
                 column
             );
         }
-        //console.log(`Icon clicked for column: ${column}`);
     };
 
-    // formik
-    const initialValues = {
-        id: "",
-        title: "",
-        long_url: "",
-        short_url: ""
-    };
-
-    const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
-        const urlEditedData = {
-            title: values.title,
-            long_url: values.long_url,
-            short_url: values.short_url
-        };
-        //console.log(urlEditedData);
-        createShortenUrl(
-            toast,
-            urlEditedData,
-            formik,
-            setHasValidationError
-            // userData,
-            // navigate
+    const handleEdit = (id: string | number | boolean) => {
+        formik.setFieldValue("id", id);
+        formik.setFieldValue(
+            "title",
+            shortUrlData.filter(item => item.id === id)[0].title
         );
-        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
-    };
-
-    const onSubmitEdit = async (values: any, { setErrors, resetForm }: any) => {
-        const urlData = {
-            shortUrlNew: values.short_url
-        };
-        //console.log(urlData);
-        editShortenUrl(
-            values.id,
-            toast,
-            urlData,
-            formik,
-            setHasValidationError
+        formik.setFieldValue(
+            "longUrl",
+            shortUrlData.filter(item => item.id === id)[0].long_url
         );
+        formik.setFieldValue(
+            "short_url",
+            shortUrlData.filter(item => item.id === id)[0].short_url.slice(14)
+        );
+        setEditBtn(true);
+    };
+
+    const handleDelete = (id: any) => {
+        deleteShortenUrl(id.toString(), toast);
+        setShortUrlData(shortUrlData.filter(item => item.id !== id));
+    };
+
+    useEffect(() => {
         getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
-        !hasValidationError.error ? setEditBtn(false) : null;
-    };
-
-    const validate = (values: any) => {
-        //console.log(values);
-
-        let errors: any = {};
-        if (values.title === "" || values.title === undefined) {
-            errors.title = "Required";
-        }
-        if (values.long_url === "" || values.long_url === undefined) {
-            errors.long_url = "Required";
-        }
-        if (values.short_url === "" || values.short_url === undefined) {
-            errors.short_url = "Required";
-        }
-        return errors;
-    };
-    const formik = useFormik({
-        initialValues,
-        onSubmit,
-        validate
-    });
-    // useEffect(() => {
-    //     setEditBtn(false);
-    // }, [formik.handleChange]);
-    // console.log(hasValidationError.error);
+    }, []);
 
     return (
         <>
             <div className={styles.url_shortener_container}>
-                {hasValidationError.error ? (
-                    <div className={styles.validation_error_message}>
-                        <p>{hasValidationError.message}</p>
-                    </div>
-                ) : (
-                    ""
-                )}
                 <div className={styles.create_new_url}>
                     <form onSubmit={formik.handleSubmit}>
                         <input
                             className={styles.title}
                             type="text"
                             name="title"
-                            onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
                             value={formik.values.title}
+                            onBlur={formik.handleBlur}
                             placeholder="Title"
+                            required
                         />
                         {formik.touched.title && formik.errors.title ? (
                             <p className={styles.error_message}>
@@ -220,119 +193,95 @@ const UrlShortener = () => {
                         <input
                             className={styles.long_url}
                             type="url"
-                            name="long_url"
-                            onBlur={formik.handleBlur}
+                            name="longUrl"
                             onChange={formik.handleChange}
-                            value={formik.values.long_url}
+                            value={formik.values.longUrl}
+                            onBlur={formik.handleBlur}
                             placeholder="Paste long url"
                             required
                         />
-                        {formik.touched.long_url && formik.errors.long_url ? (
+                        {formik.touched.longUrl && formik.errors.longUrl ? (
                             <p className={styles.error_message}>
-                                {formik.errors.long_url}
+                                {formik.errors.longUrl}
                             </p>
                         ) : null}
                         <div className={styles.short_url_input_container}>
-                            <div className={styles.short_url_input}>
-                                <label htmlFor="">mulearn.org/r/</label>
-                                <input
-                                    className={styles.short_url}
-                                    type="url"
-                                    name="short_url"
-                                    onBlur={formik.handleBlur}
-                                    onChange={formik.handleChange}
-                                    value={formik.values.short_url}
-                                    placeholder="Enter short url"
-                                    required
-                                />
+                            <div
+                                className={styles.short_url_input_container_div}
+                            >
+                                <div className={styles.short_url_input}>
+                                    <label htmlFor="">mulearn.org/r/</label>
+                                    <input
+                                        className={styles.short_url}
+                                        type="text"
+                                        name="short_url"
+                                        onChange={formik.handleChange}
+                                        value={formik.values.short_url}
+                                        onBlur={formik.handleBlur}
+                                        placeholder="Enter short url"
+                                        required
+                                    />
+                                </div>
+                                {formik.touched.short_url &&
+                                formik.errors.short_url ? (
+                                    <p className={styles.error_message}>
+                                        {formik.errors.short_url}
+                                    </p>
+                                ) : null}
                             </div>
-                            {!editBtn ? (
-                                <input
-                                    className={styles.submit}
-                                    type="submit"
-                                    value="Create"
-                                    onClick={e => {
-                                        e.preventDefault();
-                                        validate(formik.values);
-                                        if (
-                                            formik.values.title &&
-                                            formik.values.long_url &&
-                                            formik.values.short_url
-                                        ) {
-                                            onSubmit(
-                                                formik.values,
-                                                formik.resetForm
-                                            );
-                                            getShortenUrls(
-                                                setShortUrlData,
-                                                1,
-                                                perPage,
-                                                setTotalPages
-                                            );
-                                        } else {
-                                            validate(formik.values);
-                                            console.log("error");
-                                        }
+                            <div className={styles.form_btns}>
+                                <MuButtonLight
+                                    text="Cancel"
+                                    style={{
+                                        width: "fit-content",
+                                        minWidth: "auto",
+                                        margin: "20px 0px 0px"
                                     }}
-                                ></input>
-                            ) : (
-                                <input
-                                    className={styles.submit}
-                                    type="submit"
-                                    value="Edit"
-                                    onClick={e => {
-                                        e.preventDefault();
-                                        validate(formik.values);
-                                        if (
-                                            formik.values.title &&
-                                            formik.values.long_url &&
-                                            formik.values.short_url
-                                        ) {
-                                            onSubmitEdit(
-                                                formik.values,
-                                                formik.resetForm
-                                            );
-                                            getShortenUrls(
-                                                setShortUrlData,
-                                                1,
-                                                perPage,
-                                                setTotalPages
-                                            );
-                                            // formik.handleReset(formik.values);
-                                        } else {
-                                            validate(formik.values);
-                                            console.log("error");
-                                        }
+                                    onClick={() => {
+                                        formik.handleReset(formik.values);
+                                        setEditBtn(false);
                                     }}
-                                ></input>
-                            )}
+                                />
+
+                                {!editBtn ? (
+                                    <input
+                                        className={styles.submit}
+                                        type="submit"
+                                        value="Create"
+                                    />
+                                ) : (
+                                    <input
+                                        className={styles.submit}
+                                        type="submit"
+                                        value="Edit"
+                                    ></input>
+                                )}
+                            </div>
                         </div>
-                        {formik.touched.short_url && formik.errors.short_url ? (
-                            <p className={styles.error_message}>
-                                {formik.errors.short_url}
-                            </p>
-                        ) : null}
                     </form>
                 </div>
             </div>
             <TableTop
                 onSearchText={handleSearch}
                 onPerPageNumber={handlePerPageNumber}
+                // CSV={`${dashboardRoutes.getShortUrlData}/csv`}
             />
             {shortUrlData && (
                 <Table
-                    rows={shortUrlData}
+                    rows={shortUrlData.filter((item, index) => item.id !== "")}
                     page={currentPage}
                     perPage={perPage}
-                    columnOrder={columnOrder}
+                    columnOrder={columns}
                     id={["id"]}
                     onEditClick={handleEdit}
+                    modalTypeContent="error"
+                    modalDeleteContent={`Are you sure you want to delete this organization?`}
                     onDeleteClick={handleDelete}
                 >
                     <THead
-                        columnOrder={columnOrder}
-                        // editableColumnNames={editableColumnNames}
+                        columnOrder={columns}
                         onIconClick={handleIconClick}
+                        // action={true}
                     />
                     <Pagination
                         currentPage={currentPage}
@@ -341,7 +290,6 @@ const UrlShortener = () => {
                         handleNextClick={handleNextClick}
                         handlePreviousClick={handlePreviousClick}
                     />
-                    {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                 </Table>
             )}
         </>

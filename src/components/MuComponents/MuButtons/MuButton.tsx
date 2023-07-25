@@ -65,7 +65,7 @@ export const MuButtonLight = (props: {
             style={props.style}
             onClick={props.onClick}
         >
-            <div className={styles.btn_icon}>{props.icon}</div>
+            {props.icon && <div className={styles.btn_icon}>{props.icon}</div>}
             <p>{props.text}</p>
         </div>
     );
