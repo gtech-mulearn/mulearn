@@ -89,7 +89,7 @@ export const HackathonDetails = (props: Props) => {
                         </h4>
                     </div>
                     <button className={styles.hackathonApplyNow} onClick={() => {
-                        navigate(`/hackathon/apply/${data?.id}`)
+                        navigate(`/dashboard/hackathon/apply/${data?.id}`)
                     }}><b>Apply Now</b></button>
                 </div>
                 {data?.website && (

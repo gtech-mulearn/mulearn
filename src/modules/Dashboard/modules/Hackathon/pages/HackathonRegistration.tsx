@@ -82,7 +82,7 @@ const HackathonRegistration = (props: Props) => {
                                     text={"Decline"}
                                     className={styles.btn_cancel}
                                     onClick={() => {
-                                        navigate(`/hackathon/details/${id}`);
+                                        navigate(`/dashboard/hackathon/details/${id}`);
                                     }}
                                 />
                                 <button

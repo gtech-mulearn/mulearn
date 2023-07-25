@@ -126,7 +126,7 @@ export const fetchQRCode = async (setBlob: any) => {
             : undefined;
         const url = `https://quickchart.io/qr?text=${
             import.meta.env.VITE_FRONTEND_URL
-        }/profile/${muid}&centerImageUrl=https://github.com/Jovit-Mathew236/mulearn/blob/dev/src/modules/Dashboard/modules/Profile/assets/images/mulearnBrand.png?raw=true`;
+        }/dashboard/profile/${muid}&centerImageUrl=https://github.com/Jovit-Mathew236/mulearn/blob/dev/src/modules/Dashboard/modules/Profile/assets/images/mulearnBrand.png?raw=true`;
         const response = await axios
             .get(url, {
                 responseType: "arraybuffer"

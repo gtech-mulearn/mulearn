@@ -69,7 +69,7 @@ const UrlShortener = () => {
     const handleEdit = (id: string | number | boolean) => {
         //console.log(formik.values.id);
 
-        // navigate(`/interest-groups/edit/${id}`);
+        // navigate(`/dashboard/interest-groups/edit/${id}`);
         formik.values.id = id.toString();
         formik.values.long_url = shortUrlData.filter(
             item => item.id === id

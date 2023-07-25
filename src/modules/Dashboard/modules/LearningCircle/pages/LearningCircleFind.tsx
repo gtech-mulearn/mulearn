@@ -66,14 +66,14 @@ const FindCircle = () => {
                                             setTimeout(() => {
                                                 
                                                 navigate(
-                                                    `/learning-circle`
+                                                    `/dashboard/learning-circle`
                                                 );
                                             },1500);
 
 										}}>Join</button>
                                     </div>
 									{/* <PowerfulButton text='Join' onButtonClick={() => {
-										navigate(`/learning-circle/details/${circle.id}`);
+										navigate(`/dashboard/learning-circle/details/${circle.id}`);
 									}}/> */}
                                 </div>
                             </>

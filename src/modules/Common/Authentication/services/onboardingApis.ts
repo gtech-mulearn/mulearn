@@ -235,7 +235,7 @@ export const registerUser = (
                 "refreshToken",
                 response.data.response.refreshToken
             );
-            navigate("/connect-discord");
+            navigate("/dashboard/connect-discord");
             setShowSubmitLoader(false)
         })
         .catch(function (error) {

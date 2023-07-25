@@ -41,9 +41,8 @@ import TaskCreate from "./modules/Dashboard/modules/Tasks/TaskCreate";
 import TaskBulkImport from "./modules/Dashboard/modules/Tasks/TaskBulkImport";
 import Hackathon from "./modules/Dashboard/modules/Hackathon/pages/Hackathon";
 import HackathonCreate from "./modules/Dashboard/modules/Hackathon/pages/HackathonCreate";
-import KKEMLanding from "./modules/KKEM/modules/KKEMLanding";
-import KKEMAuth from "./modules/KKEM/modules/KKEMAuth";
-import RankCard from "./modules/Embeds/modules/RankCard/pages/RankCard";
+import KKEMLanding from "./modules/Public/KKEM/modules/KKEMLanding";
+import KKEMAuth from "./modules/Public/KKEM/modules/KKEMAuth";
 import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle";
 import LearningCircleCreate from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate";
 import ManageLocation from "./modules/Dashboard/modules/ManageLocation/ManageLocation";
@@ -56,6 +55,7 @@ import HackathonDetails from "./modules/Dashboard/modules/Hackathon/pages/Hackat
 import DistrictDashboard from "./modules/Dashboard/modules/DistrictDashboard/DistrictDashboard";
 import ZonalDashboard from "./modules/Dashboard/modules/ZonalDashboard/ZonalDashboard";
 import HackathonRegistration from "./modules/Dashboard/modules/Hackathon/pages/HackathonRegistration";
+import LandingPage from "./modules/Public/LearningCircles/modules/LandingPage/LandingPage";
 
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
@@ -80,10 +80,6 @@ const router = createBrowserRouter([
         element: <KKEMAuth />
     },
     {
-        path: "embed/rankcard",
-        element: <RankCard />
-    },
-    {
         path: "/",
         element: <AuthRoutes />,
         children: [
@@ -98,7 +94,7 @@ const router = createBrowserRouter([
         element: <PrivateRoutes />,
         children: [
             {
-                path: "/",
+                path: "/dashboard",
                 element: <DashboardRootLayout />,
                 children: [
                     { path: "profile", element: <Profile /> },
@@ -135,18 +131,6 @@ const router = createBrowserRouter([
                         element: <ManageUsersEdit />
                     },
                     { path: "manage-roles", element: <ManageRoles /> },
-                    // {
-                    //     path: "manage-roles/edit/:id",
-                    //     element: <ManageRolesEdit />
-                    // },
-                    // {
-                    //     path: "manage-roles/delete/:id",
-                    //     element: <ManageRolesDelete />
-                    // },
-                    // {
-                    //     path: "manage-roles/create",
-                    //     element: <ManageRolesCreate />
-                    // },
                     {
                         path: "user-role-verification",
                         element: <UserRoleVerification />
@@ -180,10 +164,6 @@ const router = createBrowserRouter([
                     {
                         path: "tasks/bulk-import",
                         element: <TaskBulkImport />
-                    },
-                    {
-                        path: "url-shortener",
-                        element: <UrlShortener />
                     },
                     {
                         path: "url-shortener",
@@ -246,9 +226,13 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: "profile/:id",
+        path: "/dashboard/profile/:id",
         element: <Profile />
-    }
+    },
+    {
+        path: "/learning-circle",
+        element: <LandingPage />
+    },
 ]);
 
 function App() {

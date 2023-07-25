@@ -61,7 +61,7 @@ const Hackathon = () => {
     return (
         <>
             <div className={styles.hackathonBtn}>
-                <Link to="/hackathon/create">
+                <Link to="/dashboard/hackathon/create">
                     <PowerfulButton text="Create" />
                 </Link>
             </div>
@@ -91,7 +91,7 @@ const Hackathon = () => {
                                                         className={styles.group}
                                                     >
                                                         <Link
-                                                            to={`/hackathon/edit/${hack.id}`}
+                                                            to={`/dashboard/hackathon/edit/${hack.id}`}
                                                         >
                                                             <LuEdit
                                                                 data-tooltip-id="Icon"
@@ -103,7 +103,7 @@ const Hackathon = () => {
                                                         className={styles.group}
                                                     >
                                                         <Link
-                                                            to={`/hackathon/organizers/${hack.id}`}
+                                                            to={`/dashboard/hackathon/organizers/${hack.id}`}
                                                         >
                                                             <BsPersonAdd
                                                                 data-tooltip-id="Icon"
@@ -160,7 +160,7 @@ const Hackathon = () => {
                                                                     setTimeout(
                                                                         () => {
                                                                             navigate(
-                                                                                "/hackathon"
+                                                                                "/dashboard/hackathon"
                                                                             );
                                                                         },
                                                                         1000
@@ -239,7 +239,7 @@ const Hackathon = () => {
                                                                     setTimeout(
                                                                         () => {
                                                                             navigate(
-                                                                                "/hackathon"
+                                                                                "/dashboard/hackathon"
                                                                             );
                                                                         },
                                                                         2000
@@ -325,7 +325,7 @@ const Hackathon = () => {
                                     </div>
                                     <div className={styles.buttonWrapper}>
                                         <Link
-                                            to={`/hackathon/details/${hack.id}`}
+                                            to={`/dashboard/hackathon/details/${hack.id}`}
                                         >
                                             <button
                                                 className={styles.hackathonBtn}

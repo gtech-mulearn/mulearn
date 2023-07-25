@@ -79,7 +79,7 @@ const InterestGroupCreateModal: React.FC<ModalProps> = ({ isOpen, onClose }) => 
                 duration: 3000,
                 isClosable: true
               });
-              navigate("/interest-groups");
+              navigate("/dashboard/interest-groups");
             }}
           >
             <Form className={styles.modalContainerItemRow}>

@@ -93,7 +93,7 @@ export const Tasks = (props: Props) => {
     };
 
     const handleEdit = (id: string | number | boolean) => {
-        navigate(`/tasks/edit/${id}`);
+        navigate(`/dashboard/tasks/edit/${id}`);
     };
 
     const handleDelete = (id: string | undefined) => {
@@ -101,7 +101,7 @@ export const Tasks = (props: Props) => {
     };
 
     const handleCreate = () => {
-        navigate("/tasks/create");
+        navigate("/dashboard/tasks/create");
     };
 
     return (
@@ -122,7 +122,7 @@ export const Tasks = (props: Props) => {
                             className={styles.createBtn}
                             text={"Bulk Import"}
                             icon={<AiOutlinePlusCircle />}
-                            onClick={() => navigate("/tasks/bulk-import")}
+                            onClick={() => navigate("/dashboard/tasks/bulk-import")}
                             style={{
                                 width: "auto"
                             }}

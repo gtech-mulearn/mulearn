@@ -46,7 +46,7 @@ function CreateOrganization() {
         <i
           className="fi fi-sr-cross"
           onClick={() => {
-            navigate('/organizations');
+            navigate('/dashboard/organizations');
           }}
         ></i>
       </div>
