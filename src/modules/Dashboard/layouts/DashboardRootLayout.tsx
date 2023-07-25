@@ -31,34 +31,34 @@ const DashboardRootLayout = (props: { component?: any }) => {
 
     const buttons = [
         {
-            url: "dashboard/profile",
+            url: "/dashboard/profile",
             title: "Profile",
             hasView: true,
             icon: <i className="fi fi-sr-clipboard-user"></i>
         },
         {
-            url: "dashboard/connect-discord",
+            url: "/dashboard/connect-discord",
             title: "Connect Discord",
             hasView: !connected,
             icon: <i className="fi fi-sr-data-transfer"></i>
         },
 
         {
-            url: "dashboard/campus-details",
+            url: "/dashboard/campus-details",
             title: "Campus Details",
             hasView: true,
             roles: [roles.CAMPUS_LEAD],
             icon: <i className="fi fi-sr-book-arrow-right"></i>
         },
         {
-            url: "dashboard/hackathon",
+            url: "/dashboard/hackathon",
             title: "Hackathon",
             hasView: true,
             roles: [roles.ADMIN],
             icon: <i className="fi fi-sr-head-side-thinking"></i>
         },
         {
-            url: "dashboard/learning-circle",
+            url: "/dashboard/learning-circle",
             title: "Learning Circle",
             hasView: true,
             roles: [roles.ADMIN],
@@ -72,21 +72,21 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-layout-fluid"></i>,
             children: [
                 {
-                    url: "dashboard/interest-groups",
+                    url: "/dashboard/interest-groups",
                     title: "Interest Groups",
                     hasView: true,
                     roles: [roles.ADMIN],
                     // icon: <i className="fi fi-sr-books"></i>
                 },
                 {
-                    url: "dashboard/organizations",
+                    url: "/dashboard/organizations",
                     title: "Organizations",
                     hasView: true,
                     roles: [roles.ADMIN],
                     // icon: <i className="fi fi-sr-building"></i>
                 },
                 {
-                    url: "dashboard/tasks",
+                    url: "/dashboard/tasks",
                     title: "Tasks",
                     hasView: true,
                     roles: [roles.ADMIN],
@@ -100,13 +100,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     // icon: <i className="fi fi-sr-users"></i>,
                     children: [
                         {
-                            url: "dashboard/manage-users",
+                            url: "/dashboard/manage-users",
                             title: "Manage Users",
                             hasView: true,
                             roles: [roles.ADMIN],
                         },
                         {
-                            url: "dashboard/user-role-verification",
+                            url: "/dashboard/user-role-verification",
                             title: "User Role Verification",
                             hasView: true,
                             roles: [roles.ADMIN]
@@ -114,14 +114,14 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     ]
                 },
                 {
-                    url: "dashboard/manage-roles",
+                    url: "/dashboard/manage-roles",
                     title: "Manage Roles",
                     hasView: true,
                     roles: [roles.ADMIN],
                     // icon: <i className="fi fi-sr-users-gear"></i>
                 },
                 {
-                    url: "dashboard/url-shortener",
+                    url: "/dashboard/url-shortener",
                     title: "URL Shortener",
                     hasView: true,
                     roles: [roles.ADMIN],
@@ -131,21 +131,21 @@ const DashboardRootLayout = (props: { component?: any }) => {
         },
 
         {
-            url: "dashboard/manage-locations",
+            url: "/dashboard/manage-locations",
             title: "Manage Locations",
             hasView: true,
             roles: [roles.ADMIN],
             icon: <i className="fi fi-rr-map-marker"></i>
         },
         {
-            url: "dashboard/zonal-dashboard",
+            url: "/dashboard/zonal-dashboard",
             title: "Zonal Dashboard",
             hasView: true,
             roles: [roles.ZONAL_CAMPUS_LEAD],
             icon: <i className="fi fi-sr-marker"></i>
         },
         {
-            url: "dashboard/district-dashboard",
+            url: "/dashboard/district-dashboard",
             title: "District Dashbaord",
             hasView: true,
             roles: [roles.DISTRICT_CAMPUS_LEAD],
