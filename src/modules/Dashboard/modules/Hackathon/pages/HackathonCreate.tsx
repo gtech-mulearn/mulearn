@@ -421,10 +421,9 @@ const HackathonCreate = () => {
                                                 <TabPanel>
                                                     <div className={styles.formGroupLogo}>
                                                         <div className={styles.InputSet}>
-                                                            <label
-                                                                className={styles.formLabel}
-                                                            >
+                                                            <label className={styles.formLabel}>
                                                                 Banner
+                                                                <button>View prev upload</button>
                                                             </label>
                                                             <div
                                                                 className={
@@ -489,6 +488,17 @@ const HackathonCreate = () => {
                                                                         left: 0
                                                                     }}
                                                                 />
+                                                                {selectedFiles && (
+                                                                <div
+                                                                    className={
+                                                                        styles.fileInfo
+                                                                    }
+                                                                >
+                                                                    <b>
+                                                                        {selectedFiles.name}
+                                                                    </b>
+                                                                </div>
+                                                            )}
                                                             </div>
                                                             {errors.banner && (
                                                                 <div
@@ -497,36 +507,17 @@ const HackathonCreate = () => {
                                                                     {errors.banner}
                                                                 </div>
                                                             )}
-                                                            {selectedFiles && (
-                                                                <div
-                                                                    className={
-                                                                        styles.fileInfo
-                                                                    }
-                                                                >
-                                                                    <span>
-                                                                        {selectedFiles.name}
-                                                                    </span>
-                                                                </div>
-                                                            )}
                                                         </div>
 
                                                         <div className={styles.InputSet}>
-                                                            <label
-                                                                className={styles.formLabel}
-                                                            >
+                                                            <label className={styles.formLabel}>
                                                                 Event Logo
+                                                                <button>View prev upload</button>
                                                             </label>
-                                                            <div
-                                                                className={
-                                                                    styles.upload_area
-                                                                }
-                                                            >
+                                                            <div className={styles.upload_area}>
                                                                 <label
                                                                     htmlFor="file-upload1-input"
-                                                                    className={
-                                                                        styles.upload_button
-                                                                    }
-                                                                >
+                                                                    className={styles.upload_button}>
                                                                     <FiUploadCloud
                                                                         className={
                                                                             styles.icon
@@ -579,23 +570,23 @@ const HackathonCreate = () => {
                                                                         left: 0
                                                                     }}
                                                                 />
+                                                                {selectedFile && (
+                                                                <div
+                                                                    className={
+                                                                        styles.fileInfo
+                                                                    }
+                                                                >
+                                                                    <b>
+                                                                        {selectedFile.name}
+                                                                    </b>
+                                                                </div>
+                                                            )}
                                                             </div>
                                                             {errors.event_logo && (
                                                                 <div
                                                                     className={styles.error}
                                                                 >
                                                                     {errors.event_logo}
-                                                                </div>
-                                                            )}
-                                                            {selectedFile && (
-                                                                <div
-                                                                    className={
-                                                                        styles.fileInfo
-                                                                    }
-                                                                >
-                                                                    <span>
-                                                                        {selectedFile.name}
-                                                                    </span>
                                                                 </div>
                                                             )}
                                                         </div>
