@@ -1,3 +1,5 @@
+import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+
 export const DateConverter = (date:string) => {
     const parsedDate = new Date(date);
     const day = parsedDate.getDate().toString().padStart(2, "0");
@@ -20,3 +22,14 @@ export const capitalizeFirstLetter = (str: any) => {
     }
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+// Get id of the value for react select prefetching data
+export const getLocationIdByName = (
+    locations: Option[],
+    label: string
+) => {
+    const location = locations.find(
+        loc => loc.label.toLowerCase() === label.toLowerCase()
+    );
+    return location ? location.value : null;
+};

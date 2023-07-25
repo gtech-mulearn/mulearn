@@ -21,7 +21,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { useToast } from "@chakra-ui/react";
 import { HackList } from "../services/HackathonInterfaces";
-import { convertDateToYYYYMMDD } from "../../../utils/common";
+import { convertDateToYYYYMMDD, getLocationIdByName } from "../../../utils/common";
 
 /**
  * TODO: Move YUP Validations to another file.
@@ -80,7 +80,8 @@ const HackathonCreate = () => {
         } else {
             setTabIndex(tabIndex + 1);
         }
-        console.log(institutions)
+        // console.log(getLocationIdByName(district, String(data?.district)));
+        console.log(String(data?.district));
     }
 
     function handleBack() {
@@ -301,7 +302,7 @@ const HackathonCreate = () => {
                                         convertDateToYYYYMMDD(String(data?.application_ends)) || "",
                                     orgId: data?.organisation || "",
                                     place: data?.place || "",
-                                    districtId: data?.district || "",
+                                    districtId: getLocationIdByName(district, String(data?.district)) || "",
                                     isOpenToAll: data?.is_open_to_all || false,
                                     formFields: [],
                                     event_logo: "",
