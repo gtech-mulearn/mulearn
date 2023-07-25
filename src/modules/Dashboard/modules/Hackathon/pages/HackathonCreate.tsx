@@ -259,7 +259,7 @@ const HackathonCreate = () => {
         }
         resetForm();
         setTimeout(() => {
-            navigate("/hackathon");
+            navigate("/dashboard/hackathon");
         }, 2000);
     };
 

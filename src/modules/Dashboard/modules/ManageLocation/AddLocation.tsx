@@ -40,7 +40,7 @@ const AddLocation = () => {
             duration: 3000,
             isClosable: true
         });
-        navigate('/manage-locations',{state:{activeItem:activeItem}});
+        navigate('/dashboard/manage-locations',{state:{activeItem:activeItem}});
     }
 
     return (
@@ -51,7 +51,7 @@ const AddLocation = () => {
                     <i
                         className="fi fi-sr-cross"
                         onClick={() => {
-                            navigate('/manage-locations');
+                            navigate('/dashboard/manage-locations');
                         }}
                     ></i>
                 </div>
@@ -98,7 +98,7 @@ const AddLocation = () => {
                                 text={"Decline"}
                                 className={styles.btn_cancel}
                                 onClick={() => {
-                                    navigate('/manage-locations',{state:{activeItem:activeItem,isDeclined:true}});
+                                    navigate('/dashboard/manage-locations',{state:{activeItem:activeItem,isDeclined:true}});
                                 }}
                             />
                             <button type="submit" className={styles.btn_submit}>

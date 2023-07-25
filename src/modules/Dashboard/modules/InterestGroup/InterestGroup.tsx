@@ -67,12 +67,12 @@ function InterestGroup() {
 
     const handleEdit = (id: string | number | boolean) => {
         console.log(id);
-        navigate(`/interest-groups/edit/${id}`);
+        navigate(`/dashboard/interest-groups/edit/${id}`);
     };
 
     const handleDelete = (id: string | undefined) => {
         // console.log(id);
-        // navigate(`/interest-groups/delete/${id}`);
+        // navigate(`/dashboard/interest-group/delete/${id}`);
         deleteInterestGroups(id, toast);
         setTimeout(() => {
             getInterestGroups(setData, 1, perPage, setTotalPages, "", "");

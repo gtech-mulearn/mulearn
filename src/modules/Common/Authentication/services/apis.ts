@@ -90,7 +90,7 @@ export const login = (
                             if (redirectPath) {
                                 navigate(`/${redirectPath}`);
                             } else {
-                                navigate("/connect-discord");
+                                navigate("/dashboard/connect-discord");
                             }
                         }
                     })
@@ -270,7 +270,7 @@ export const otpVerification = (
                         if (redirectPath) {
                             navigate(`/${redirectPath}`);
                         } else {
-                            navigate("/connect-discord");
+                            navigate("/dashboard/connect-discord");
                         }
                     }
                 })
