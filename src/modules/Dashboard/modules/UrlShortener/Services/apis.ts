@@ -31,7 +31,7 @@ export const getShortenUrls = (
         })
         .then(response => {
             setShortUrlData(response.data.response.data);
-            // setTotalPages(response.data.response.pagination.totalPages);
+            setTotalPages(response.data.response.pagination.totalPages);
         })
         .catch(error => {
             console.log(error);
@@ -102,9 +102,7 @@ export const createShortenUrl = (
 export const editShortenUrl = (
     id: string,
     toast: (options?: UseToastOptions | undefined) => ToastId,
-    urlEditedData: any,
-    formik: any,
-    setHasValidationError: hasValidationError
+    urlEditedData: any
 ) => {
     privateGateway
         .put(
@@ -130,33 +128,6 @@ export const editShortenUrl = (
                 duration: 3000,
                 isClosable: true
             });
-            if (error.response.data.message.general.length > 0) {
-                setHasValidationError({
-                    error: true,
-                    message: error.response.data.message.general[0]
-                });
-            }
-            // if (
-            //     error.response.data.message.general &&
-            //     Object.keys(error.response.data.message.general).length > 0
-            // ) {
-            //     Object.entries(error.response.data.message.general).forEach(
-            //         ([fieldName, errorMessage]) => {
-            //             if (Array.isArray(errorMessage)) {
-            //                 formik.setFieldError(
-            //                     fieldName,
-            //                     errorMessage?.join(", ") || ""
-            //                 );
-            //             }
-            //         }
-            //     );
-            // }
-            // setTimeout(() => {
-            //     setHasValidationError({
-            //         error: false,
-            //         message: ""
-            //     });
-            // }, 3000);
         });
 };
 
