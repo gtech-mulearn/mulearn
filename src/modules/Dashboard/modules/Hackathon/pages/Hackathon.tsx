@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import "react-tooltip/dist/react-tooltip.css";
-import styles from "./Hackathon.module.css";
+// import "./styles.css";
 import { LuCopy, LuShare2, LuEdit } from "react-icons/lu";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useEffect, useState } from "react";
@@ -17,7 +17,9 @@ import Modal from "@/MuLearnComponents/Modal/Modal";
 import { MdOutlineUnpublished, MdPublishedWithChanges } from "react-icons/md";
 import { Tooltip } from "react-tooltip";
 import { HackList } from "../services/HackathonInterfaces";
+import styles from "./HackathonCreate.module.css";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+
 enum ModalType {
     Publish,
     Delete
@@ -85,7 +87,9 @@ const Hackathon = () => {
                                         {hack.editable ? (
                                             <div className={styles.frame2}>
                                                 <div>
-                                                    <div className={styles.group}>
+                                                    <div
+                                                        className={styles.group}
+                                                    >
                                                         <Link
                                                             to={`/hackathon/edit/${hack.id}`}
                                                         >
@@ -95,7 +99,9 @@ const Hackathon = () => {
                                                             />
                                                         </Link>
                                                     </div>
-                                                    <div className={styles.group}>
+                                                    <div
+                                                        className={styles.group}
+                                                    >
                                                         <Link
                                                             to={`/hackathon/organizers/${hack.id}`}
                                                         >
@@ -107,7 +113,9 @@ const Hackathon = () => {
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <div className={styles.group}>
+                                                    <div
+                                                        className={styles.group}
+                                                    >
                                                         <RiDeleteBin5Line
                                                             data-tooltip-id="Icon"
                                                             data-tooltip-content="Delete"
@@ -161,7 +169,9 @@ const Hackathon = () => {
                                                             />
                                                         )}
                                                     </div>
-                                                    <div className={styles.group}>
+                                                    <div
+                                                        className={styles.group}
+                                                    >
                                                         {hack.status ===
                                                         "Draft" ? (
                                                             <MdPublishedWithChanges
@@ -268,16 +278,16 @@ const Hackathon = () => {
                                         <div className={styles.textWrapper4}>
                                             {hack.application_start
                                                 ? DateConverter(
-                                                    hack.application_start
-                                                )
+                                                      hack.application_start
+                                                  )
                                                 : "No Date"}
                                         </div>
                                         <div className={styles.rectangle} />
                                         <div className={styles.textWrapper4}>
                                             {hack.application_ends
                                                 ? DateConverter(
-                                                    hack.application_ends
-                                                )
+                                                      hack.application_ends
+                                                  )
                                                 : "No Date"}
                                         </div>
                                         <div className={styles.rectangle} />
@@ -287,7 +297,11 @@ const Hackathon = () => {
                                 <div className={styles.frame3}>
                                     <div className={styles.frame4}>
                                         <div className={styles.mode}>
-                                            <div className={styles.textWrapperSmall}>
+                                            <div
+                                                className={
+                                                    styles.textWrapperSmall
+                                                }
+                                            >
                                                 {/* coverting first letter to UpperCase */}
                                                 {hack.type
                                                     .charAt(0)
@@ -296,11 +310,15 @@ const Hackathon = () => {
                                             </div>
                                         </div>
                                         <div className={styles.date}>
-                                            <div className={styles.textWrapperSmall}>
+                                            <div
+                                                className={
+                                                    styles.textWrapperSmall
+                                                }
+                                            >
                                                 {hack.event_start
                                                     ? DateConverter(
-                                                        hack.event_start
-                                                    )
+                                                          hack.event_start
+                                                      )
                                                     : "No Date"}
                                             </div>
                                         </div>
@@ -309,7 +327,9 @@ const Hackathon = () => {
                                         <Link
                                             to={`/hackathon/details/${hack.id}`}
                                         >
-                                            <button className={styles.hackathonBtn}>
+                                            <button
+                                                className={styles.hackathonBtn}
+                                            >
                                                 Apply Now
                                             </button>
                                         </Link>
