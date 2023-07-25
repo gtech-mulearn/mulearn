@@ -282,16 +282,28 @@ input[type=file]::file-selector-button:hover {
     overflow: hidden;
 }
 
-.fileInfo {
+.formGroupLogo .formLabel{
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
-.fileInfo span {
-    font-weight: bold;
+.formGroupLogo .formLabel button{
+    background-color: var(--blue);
+    color: var(--White);
+    padding: .5rem ;
+    border-radius: 8px;
+    font-size: .7rem;
+}
+
+.fileInfo{
+    padding-top: .5rem;
     color: var(--blue);
+}
+
+@media(width < 570px){
+    .fileInfo{
+        font-size: .7rem;
+    }    
 }
 
 .upload_button {
