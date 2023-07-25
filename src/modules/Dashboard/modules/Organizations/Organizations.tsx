@@ -143,7 +143,7 @@ function Organizations() {
     const handleEdit = (id: string | number | boolean) => {
         //console.log(id);
         setIsEdit(true);
-        navigate("/organizations/edit", {
+        navigate("/dashboard/organizations/edit", {
             state: {
                 activeItem: activeTab,
                 rowId: id

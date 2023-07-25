@@ -13,14 +13,14 @@ function DeleteOrganizations() {
     function handleSubmit () {
         //console.log("Delete")
         deleteOrganization(id,toast)
-        navigate('/organizations')
+        navigate('/dashboard/organizations')
     }
   return (
     <div className={orgStyles.deleteContainer}>
         <Form
                 title={`Are you sure you want to delete ${id}?`}
                 handleSubmitClick={handleSubmit}
-                cancelPath={"/organizations"}
+                cancelPath={"/dashboard/organizations"}
             />
     </div>
   )

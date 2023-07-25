@@ -19,6 +19,7 @@ export const MuButton = (props: {
     isLoading?: boolean; // show loading spinner if neccessary.
     disabled?: boolean; //disable the button if needed
     buttonUrl?: string; // for styling purposes
+    submit?:boolean //specify if button of type submit
 }) => {
     return (
         <button
@@ -36,6 +37,7 @@ export const MuButton = (props: {
             }}
             onClick={props.onClick}
             disabled={props.disabled}
+            type = {props.submit?'submit':undefined}
         >
             {props.icon && <div className={styles.btn_icon}>{props.icon}</div>}
             <span>{props.text}</span>

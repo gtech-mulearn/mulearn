@@ -12,6 +12,9 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./Manageroles.module.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
+import Modal from "./components/Modal";
+import ManageRolesEditModal from "./components/ManageRolesEditModal";
+import ManageRolesCreateModal from "./components/ManageRolesCreateModal";
 
 
 function ManageRoles() {
@@ -22,6 +25,9 @@ function ManageRoles() {
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
     const firstFetch = useRef(true)
+    //Modal
+    const [currRoleID,setCurrRoleID] = useState('')
+    const [currModal,setCurrModal] = useState<null|'create'|'edit'>(null)
 
     const columnOrder = [
         // { column: "id", Label: "ID", isSortable: true },
@@ -55,20 +61,25 @@ function ManageRoles() {
         firstFetch.current = false;
     }, []);
 
+    useEffect(()=>{//refetch data when value is edited or created
+        if (currModal===null){//refresh table when modal closes
+            getManageRoles(setData, 1, perPage, setTotalPages, "", "");
+        }
+    },[currModal])
+
     const handleSearch = (search: string) => {
         setCurrentPage(1);
         getManageRoles(setData, 1, perPage, setTotalPages, search, "");
     };
 
     const handleEdit = (id: string | number | boolean) => {
-        //console.log(id);
-        navigate(`/manage-roles/edit/${id}`);
+        setCurrRoleID(id as string)
+        setCurrModal('edit')
     };
 	const toast = useToast();
     const handleDelete = (id: string | undefined) => {
-        // console.log(id);
         deleteManageRoles(id,toast);
-        navigate(`/manage-roles/delete/${id}`);
+        //navigate(`/dashboard/manage-roles/delete/${id}`);
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
@@ -78,7 +89,8 @@ function ManageRoles() {
     };
 
     const handleCreate = () => {
-        navigate("/manage-roles/create");
+        setCurrModal('create')
+
     };
 
     const handleIconClick = (column: string) => {
@@ -99,9 +111,41 @@ function ManageRoles() {
 
         //console.log(`Icon clicked for column: ${column}`);
     };
-
     return (
         <>
+            {currModal?
+                (()=>{
+                    if(currModal==='create') 
+                    return(
+                        <Modal 
+                            onClose={setCurrModal}
+                            icon="tick"
+                            header="Create Role"
+                            paragraph="Enter the values for the new role"
+                        >
+                            <ManageRolesCreateModal 
+                                id={currRoleID}
+                                onClose = {setCurrModal}
+                            />
+                        </Modal>)
+                    if(currModal==='edit')
+                        return(
+                        <Modal 
+                            onClose={setCurrModal}
+                            icon="tick"
+                            header="Edit Role"
+                            paragraph="Enter the new values for this role"
+                        >
+                            <ManageRolesEditModal 
+                                id={currRoleID}
+                                onClose = {setCurrModal}
+                            />
+                        </Modal>)
+                })()
+                :''
+            }
+            
+            
             <div className={styles.createBtnContainer}>
                 <MuButton
                     className={styles.createBtn}

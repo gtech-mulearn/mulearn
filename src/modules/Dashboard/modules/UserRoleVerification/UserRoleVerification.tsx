@@ -61,20 +61,20 @@ function UsersRoleVerification() {
 
     const handleEdit = (id: string | number | boolean) => {
         //console.log(id);
-        navigate(`/user-role-verification/edit/${id}`);
+        navigate(`/dashboard/user-role-verification/edit/${id}`);
     };
     // const handleEdit = (id: string | number | boolean) => {
     //     console.log(id);
-    //     navigate(`/user-role-verification/edit/${id}`);
+    //     navigate(`/dashboard/user-role-verification/edit/${id}`);
     // };
 
     const handleDelete = (id: string | number | boolean) => {
         //console.log(id);
-        navigate(`/user-role-verification/delete/${id}`);
+        navigate(`/dashboard//user-role-verification/delete/${id}`);
     };
     // const handleDelete = (id: string | number | boolean) => {
     //     console.log(id);
-    //     navigate(`/user-role-verification/delete/${id}`);
+    //     navigate(`/dashboard/user-role-verification/delete/${id}`);
     // };
 
     const handlePerPageNumber = (selectedValue: number) => {

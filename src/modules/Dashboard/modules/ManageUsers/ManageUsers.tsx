@@ -65,7 +65,7 @@ function ManageRoles() {
 
     const handleEdit = (id: string | number | boolean) => {
         //console.log(id);
-        navigate(`/manage-users/edit/${id}`);
+        navigate(`/dashboard/manage-users/edit/${id}`);
     };
 
     const toast = useToast();
