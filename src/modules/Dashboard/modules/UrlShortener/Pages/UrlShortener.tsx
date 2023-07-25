@@ -15,6 +15,17 @@ import { useToast } from "@chakra-ui/react";
 import { MuButtonLight } from "@/MuLearnComponents/MuButtons/MuButton";
 
 const UrlShortener = () => {
+    const columns = [];
+    const [shortUrlData, setShortUrlData] = useState<any[]>([]);
+    const [editBtn, setEditBtn] = useState(false);
+    const [perPage, setPerPage] = useState(5);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
+    const [sort, setSort] = useState("");
+    const navigate = useNavigate();
+    const toast = useToast();
+    const firstFetch = useRef(true);
+
     const [hasValidationError, setHasValidationError] = useState({
         error: false,
         message: ""
@@ -261,36 +272,37 @@ const UrlShortener = () => {
                     </form>
                 </div>
             </div>
-            <TableTop
-                onSearchText={handleSearch}
-                onPerPageNumber={handlePerPageNumber}
-                // CSV={`${dashboardRoutes.getShortUrlData}/csv`}
-            />
+
             {shortUrlData && (
-                <Table
-                    rows={shortUrlData.filter((item, index) => item.id !== "")}
-                    page={currentPage}
-                    perPage={perPage}
-                    columnOrder={columns}
-                    id={["id"]}
-                    onEditClick={handleEdit}
-                    modalTypeContent="error"
-                    modalDeleteContent={`Are you sure you want to delete this organization?`}
-                    onDeleteClick={handleDelete}
-                >
-                    <THead
-                        columnOrder={columns}
-                        onIconClick={handleIconClick}
-                        // action={true}
+                <>
+                    <TableTop
+                        onSearchText={handleSearch}
+                        onPerPageNumber={handlePerPageNumber}
                     />
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        margin="10px 0"
-                        handleNextClick={handleNextClick}
-                        handlePreviousClick={handlePreviousClick}
-                    />
-                </Table>
+                    <Table
+                        rows={shortUrlData}
+                        page={currentPage}
+                        perPage={perPage}
+                        columnOrder={columnOrder}
+                        id={["id"]}
+                        onEditClick={handleEdit}
+                        onDeleteClick={handleDelete}
+                    >
+                        <THead
+                            columnOrder={columnOrder}
+                            // editableColumnNames={editableColumnNames}
+                            onIconClick={handleIconClick}
+                        />
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            margin="10px 0"
+                            handleNextClick={handleNextClick}
+                            handlePreviousClick={handlePreviousClick}
+                        />
+                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                    </Table>
+                </>
             )}
         </>
     );

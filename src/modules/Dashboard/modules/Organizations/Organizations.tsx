@@ -11,16 +11,16 @@ import { roles } from "@/MuLearnServices/types";
 import {
     columnsCollege,
     columnsCommunities,
-    columnsCompanies,
-} from "./THeaders"
-import TableTopTab from './TableTopTab'
+    columnsCompanies
+} from "./THeaders";
+import TableTopTab from "./TableTopTab";
 // import "./Organizations.scss"
-import { organizationRoutes } from '@/MuLearnServices/urls'
+import { organizationRoutes } from "@/MuLearnServices/urls";
 
 function Organizations() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(5);
     const [columns, setColumns] = useState(columnsCollege);
     const [activeTab, setActiveTab] = useState("Colleges");
@@ -161,37 +161,40 @@ function Organizations() {
     return (
         <>
             <TableTopTab active={activeTab} onTabClick={handleTabClick} />
-            <TableTop
-                onSearchText={handleSearch}
-                onPerPageNumber={handlePerPageNumber}
-                CSV={`${organizationRoutes.getOrgCsv}/${activeTabName}`}
-            />
+
             {data && (
-                <Table
-                    rows={data}
-                    page={currentPage}
-                    perPage={perPage}
-                    columnOrder={columns}
-                    id={["code"]}
-                    onEditClick={handleEdit}
-                    modalTypeContent="error"
-                    modalDeleteContent={`Are you sure you want to delete this organization?`}
-                    onDeleteClick={handleDelete}
-                >
-                    <THead
+                <>
+                    <TableTop
+                        onSearchText={handleSearch}
+                        onPerPageNumber={handlePerPageNumber}
+                        CSV={`${organizationRoutes.getOrgCsv}/${activeTabName}`}
+                    />
+                    <Table
+                        rows={data}
+                        page={currentPage}
+                        perPage={perPage}
                         columnOrder={columns}
-                        onIconClick={handleIconClick}
-                        action={true}
-                    />
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        margin="10px 0"
-                        handleNextClick={handleNextClick}
-                        handlePreviousClick={handlePreviousClick}
-                    />
-                    {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-                </Table>
+                        id={["code"]}
+                        onEditClick={handleEdit}
+                        modalTypeContent="error"
+                        modalDeleteContent={`Are you sure you want to delete this organization?`}
+                        onDeleteClick={handleDelete}
+                    >
+                        <THead
+                            columnOrder={columns}
+                            onIconClick={handleIconClick}
+                            action={true}
+                        />
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            margin="10px 0"
+                            handleNextClick={handleNextClick}
+                            handlePreviousClick={handlePreviousClick}
+                        />
+                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                    </Table>
+                </>
             )}
         </>
     );
