@@ -17,6 +17,7 @@
         gap: 20px;
         justify-content: space-between;
         width: 25%;
+        height: 65px;
     }
 
     .create_new_url {
@@ -44,14 +45,17 @@
                 justify-content: space-between;
                 gap: 10px;
 
-                .short_url_input {
+                .short_url_input_container_div {
                     width: 40%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
 
-                    .short_url {
-                        width: 73%;
+                    .short_url_input {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        .short_url {
+                            width: 73%;
+                        }
                     }
                 }
 
@@ -87,7 +91,7 @@
         .create_new_url form .short_url_input_container {
             flex-direction: column;
 
-            .short_url_input {
+            .short_url_input_container_div {
                 width: 100%;
             }
         }

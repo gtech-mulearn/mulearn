@@ -15,10 +15,10 @@ import { useToast } from "@chakra-ui/react";
 import { MuButtonLight } from "@/MuLearnComponents/MuButtons/MuButton";
 
 const UrlShortener = () => {
-    // const [hasValidationError, setHasValidationError] = useState({
-    //     error: false,
-    //     message: ""
-    // });
+    const [hasValidationError, setHasValidationError] = useState({
+        error: false,
+        message: ""
+    });
 
     const columnOrder = [
         { column: "title", Label: "Title", isSortable: true },
@@ -47,44 +47,33 @@ const UrlShortener = () => {
             id: "",
             title: "",
             longUrl: "",
-            shortUrl: ""
+            short_url: ""
         },
         onSubmit: values => {
             const urlCreateData = {
                 id: values.id,
                 title: values.title,
                 long_url: values.longUrl,
-                short_url: "mulearn.org/r/" + values.shortUrl
+                short_url: "mulearn.org/r/" + values.short_url
             };
             if (!editBtn) {
-                createShortenUrl(toast, urlCreateData);
+                createShortenUrl(
+                    toast,
+                    urlCreateData,
+                    formik,
+                    setHasValidationError
+                );
                 setShortUrlData([...shortUrlData, urlCreateData]);
                 setTimeout(() => {
                     getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
                 }, 500);
                 setEditBtn(false);
             } else {
-                if (
-                    shortUrlData.some(
-                        item =>
-                            item.short_url ===
-                            "mulearn.org/r/" + values.shortUrl
-                    ) &&
-                    shortUrlData.some(item => item.title === values.title)
-                ) {
-                    toast({
-                        title: "Short URL already exists.",
-                        status: "error",
-                        duration: 3000,
-                        isClosable: true
-                    });
-                } else {
-                    editShortenUrl(values.id, toast, urlCreateData);
-                    setShortUrlData([
-                        ...shortUrlData.filter(item => item.id !== values.id),
-                        urlCreateData
-                    ]);
-                }
+                editShortenUrl(values.id, toast, urlCreateData);
+                setShortUrlData([
+                    ...shortUrlData.filter(item => item.id !== values.id),
+                    urlCreateData
+                ]);
             }
         },
         validate: (values: any) => {
@@ -95,8 +84,8 @@ const UrlShortener = () => {
             if (!values.longUrl) {
                 errors.longUrl = "Required";
             }
-            if (!values.shortUrl) {
-                errors.shortUrl = "Required";
+            if (!values.short_url) {
+                errors.short_url = "Required";
             }
             return errors;
         }
@@ -166,7 +155,7 @@ const UrlShortener = () => {
             shortUrlData.filter(item => item.id === id)[0].long_url
         );
         formik.setFieldValue(
-            "shortUrl",
+            "short_url",
             shortUrlData.filter(item => item.id === id)[0].short_url.slice(14)
         );
         setEditBtn(true);
@@ -217,24 +206,26 @@ const UrlShortener = () => {
                             </p>
                         ) : null}
                         <div className={styles.short_url_input_container}>
-                            <div className={styles.short_url_input_container_div}>
+                            <div
+                                className={styles.short_url_input_container_div}
+                            >
                                 <div className={styles.short_url_input}>
                                     <label htmlFor="">mulearn.org/r/</label>
                                     <input
                                         className={styles.short_url}
                                         type="text"
-                                        name="shortUrl"
+                                        name="short_url"
                                         onChange={formik.handleChange}
-                                        value={formik.values.shortUrl}
+                                        value={formik.values.short_url}
                                         onBlur={formik.handleBlur}
                                         placeholder="Enter short url"
                                         required
                                     />
                                 </div>
-                                {formik.touched.shortUrl &&
-                                formik.errors.shortUrl ? (
+                                {formik.touched.short_url &&
+                                formik.errors.short_url ? (
                                     <p className={styles.error_message}>
-                                        {formik.errors.shortUrl}
+                                        {formik.errors.short_url}
                                     </p>
                                 ) : null}
                             </div>
@@ -248,6 +239,7 @@ const UrlShortener = () => {
                                     }}
                                     onClick={() => {
                                         formik.handleReset(formik.values);
+                                        setEditBtn(false);
                                     }}
                                 />
 
