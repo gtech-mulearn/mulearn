@@ -4,7 +4,6 @@ export interface HackList {
     type: string;
     tagline: string;
     event_logo: any;
-    district: string;
     is_open_to_all: boolean;
     banner: any;
     website: string;
@@ -16,7 +15,10 @@ export interface HackList {
     application_ends: string | null;
     description: string;
     participant_count: number;
-    org: string;
+    district: string;
+    organisation: string;
+    district_id: string;
+    org_id: string;
     editable: boolean;
 }
 

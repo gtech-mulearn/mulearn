@@ -77,6 +77,7 @@ export const dashboardRoutes = {
     deleteHackathon: "/api/v1/hackathon/delete-hackathon/",
     publishHackathon: "/api/v1/hackathon/publish-hackathon/",
     addOrganizer: "/api/v1/hackathon/add-organiser/",
+    submitApplication: "/api/v1/hackathon/submit-hackathon/",
     getApplicationForm: "/api/v1/hackathon/list-form/",
     getApplicants: "/api/v1/hackathon/list-applicants/",
 

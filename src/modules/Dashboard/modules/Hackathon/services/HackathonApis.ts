@@ -375,12 +375,43 @@ export const submitHackApplication = async (
 ) => {
     try {
         const response = await privateGateway.post(
-            dashboardRoutes.getApplicationForm + id + "/", {
-				name: name,
-			}
+            dashboardRoutes.submitApplication,
+            {
+                hackathon_id: id,
+                data: {
+                    name: name,
+                    gender: gender,
+                    email: email,
+                    mobile: mobile,
+                    bio: bio,
+                    college: college,
+                    experience: experience,
+                    github: github,
+                    linkedin: linkedin
+                }
+            }
         );
         const message: any = response?.data;
         console.log(message.response);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
+
+export const getOrganizers = async (
+    setData: React.Dispatch<SetStateAction<string>>,
+    id: string | undefined
+) => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getApplicationForm + id + "/"
+        );
+        const message: any = response?.data;
+        console.log(message.response);
+        setData(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

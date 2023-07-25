@@ -311,9 +311,9 @@ const HackathonCreate = () => {
                                         convertDateToYYYYMMDD(
                                             data?.application_ends
                                         ) || "",
-                                    orgId: data?.org || "",
+                                    orgId: data?.org_id || "",
                                     place: data?.place || "",
-                                    districtId: data?.district || "",
+                                    districtId: data?.district_id || "",
                                     isOpenToAll: data?.is_open_to_all || false,
                                     formFields: [],
                                     event_logo: "",
