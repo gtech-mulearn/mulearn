@@ -1,4 +1,5 @@
 import "./App.css";
+import { lazy } from "react";
 import {
     RouterProvider,
     createBrowserRouter,
@@ -12,10 +13,13 @@ import ResetPassword from "./modules/Common/Authentication/pages/ResetPassword";
 import PrivateRoutes from "./components/PrivateRoutes";
 import DashboardRootLayout from "./modules/Dashboard/layouts/DashboardRootLayout";
 import NotFound from "./components/NotFound";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+const Profile = lazy(() => import("./modules/Dashboard/modules/Profile/pages/Profile"))
+
 import {
     ManageUsers,
     InterestGroup,
-    Profile,
+
     ConnectDiscord,
     CampusStudentList,
     Organizations
