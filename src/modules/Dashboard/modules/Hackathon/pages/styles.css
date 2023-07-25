@@ -1,417 +1,189 @@
 .hackDetails {
-	padding: 1rem 3rem;
-	display: flex;
-	gap: 2rem;
+    padding: 1rem 3rem;
+    display: flex;
+    gap: 2rem;
 }
 
 .hackDetailDash {
-	display: flex;
-	flex-direction: column;
-	gap: 2rem;
-	width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 70%;
 }
 
 .banner {
-	height: 24rem;
-	width: 100%;
-	object-fit: cover;
-	border-radius: 1rem;
+    height: 24rem;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
 }
 
 .eventCard {
-	width: 30%;
-	min-width: 15rem;
-	display: flex;
-	flex-direction: column;
-	gap: 2rem;
+    width: 30%;
+    min-width: 15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .applyCard {
-	text-align: left;
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-	padding: 1.5rem;
-	border-radius: 1rem;
-	box-shadow: 0px 0px 10px .5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 10px 0.5px rgba(0, 0, 0, 0.1);
 }
 
 .applyCard .date {
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .eventDate .title {
-	font-size: .8rem;
-	color: #B7BEC2;
+    font-size: 0.8rem;
+    color: #b7bec2;
 }
 
 .eventDate h3 {
-	font-weight: 700;
-	color: #000;
+    font-weight: 700;
+    color: #000;
 }
 
 .applyCard span {
-	display: block;
-	width: 2px;
-	height: 100%;
-	margin-right: .5rem;
-	background-color: #456FF6;
+    display: block;
+    width: 2px;
+    height: 100%;
+    margin-right: 0.5rem;
+    background-color: #456ff6;
 }
 
 .applyCard .close {
-	background-color: #F0F4FF;
-	padding: .5rem;
-	border-radius: .3rem;
-	font-weight: 700;
-	color: #000;
+    background-color: #f0f4ff;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    font-weight: 700;
+    color: #000;
 }
 
 .applyCard .close b {
-	color: #456FF6;
-	font-size: .7rem;
+    color: #456ff6;
+    font-size: 0.7rem;
 }
 
 .applyNow {
-	border-radius: .3rem;
-	padding: .8rem;
-	background-color: #456FF6;
-	color: white;
-	border: none;
+    border-radius: 0.3rem;
+    padding: 0.8rem;
+    background-color: #456ff6;
+    color: white;
+    border: none;
 }
 
 .eventCard .socialLinks {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 2.5rem;
-	padding: 1rem;
-	box-shadow: 0px 0px 10px .5px rgba(0, 0, 0, 0.1);
-	border-radius: 1rem;
-	font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 1rem;
+    box-shadow: 0px 0px 10px 0.5px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    font-size: 1.5rem;
 }
 
 .eventCard .socialLinks a {
-	padding: .5rem;
-	background-color: #E6ECFF;
-	color: #456FF6;
-	border-radius: 100%;
-}
-
-.socialLinks a {
-	cursor: pointer;
+    padding: 0.5rem;
+    background-color: #e6ecff;
+    color: #456ff6;
+    border-radius: 100%;
 }
 
 .desc {
-	width: 100%;
-	border-radius: 1rem;
-	box-shadow: 0px 0px 10px .5px rgba(0, 0, 0, 0.1);
-	padding: 1.5rem 2rem;
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-	text-align: left;
-	color: #000;
+    width: 100%;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 10px 0.5px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+    color: #000;
 }
 
 .desc .description {
-	display: flex;
-	align-items: center;
-	gap: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .desc .description .descTitle {
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .desc .description h1 {
-	font-size: 1.5rem;
-	font-weight: 800;
+    font-size: 1.5rem;
+    font-weight: 800;
 }
 
 .desc .description b {
-	color: #5B5B5B;
-	font-size: .8rem;
+    color: #5b5b5b;
+    font-size: 0.8rem;
 }
 
 .desc p {
-	font-weight: 500;
+    font-weight: 500;
 }
 
 .desc .hackProfile {
-	border-radius: 100%;
-	height: 4rem;
-	width: 4rem;
-	object-fit: cover;
-	background-color: #000;
+    border-radius: 100%;
+    height: 4rem;
+    width: 4rem;
+    object-fit: cover;
+    background-color: #000;
 }
 
 .desc .love {
-	padding: .6rem;
-	margin-left: 1rem;
-	border-radius: 50%;
-	color: #FF6060;
-	background-color: #FFDFDF;
-	font-size: 1.5rem;
+    padding: 0.6rem;
+    margin-left: 1rem;
+    border-radius: 50%;
+    color: #ff6060;
+    background-color: #ffdfdf;
+    font-size: 1.5rem;
 }
 
-@media(width<=820px) {
-	.hackDetails {
-		flex-direction: column;
-		padding: .5rem;
-	}
+@media (width<=820px) {
+    .hackDetails {
+        flex-direction: column;
+        padding: 0.5rem;
+    }
 
-	.hackDetailDash,
-	.eventCard {
-		width: 100%;
-	}
+    .hackDetailDash,
+    .eventCard {
+        width: 100%;
+    }
 
-	.desc {
-		padding: 1rem;
-	}
+    .desc {
+        padding: 1rem;
+    }
 }
 
-@media(width<=320px) {
-	.desc .description {
-		flex-direction: column;
-		gap: .5rem;
-	}
+@media (width<=320px) {
+    .desc .description {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 
-	.desc .description .descTitle .tagLine b{
-		font-size: .65rem;
-	}
+    .desc .description .descTitle .tagLine b {
+        font-size: 0.65rem;
+    }
 
-	.desc .love {
-		padding: .5rem;
-		font-size: 1rem;
-	}
+    .desc .love {
+        padding: 0.5rem;
+        font-size: 1rem;
+    }
 
-	.desc p {
-		font-size: .8rem;
-	}
-}
-
-/*
-! TODO: Need to move to main module.css
-*/
-
-.toolTipStyle {
-	background-color: var(--blue);
-	color: var(--White);
-	border-radius: var(--borderRadius);
-}
-
-.box {
-	background-color: transparent;
-	display: flex;
-	width: 100%;
-	gap: .5rem;
-	flex-wrap: wrap;
-}
-
-.box .card-component {
-	align-items: flex-start;
-	background-color: #ffffff;
-	border: 0.97px solid;
-	border-color: #dbdbdb;
-	border-radius: 16.13px;
-	display: flex;
-	flex-direction: column;
-	padding: 25.81px;
-}
-
-.box .card-component:hover {
-	box-shadow: 4px 4px 21px #0000001f;
-}
-
-.box .frame {
-	align-items: flex-start;
-	display: flex;
-	flex-direction: column;
-	gap: 19.36px;
-	position: relative;
-	width: fit-content;
-}
-
-.box .div {
-	align-items: flex-start;
-	display: flex;
-	gap: 85.5px;
-	position: relative;
-	width: fit-content;
-}
-
-.box .title {
-	height: 35.81px;
-	min-width: 147.9px;
-	position: relative;
-}
-
-.box .text-wrapper {
-	color: var(--blue);
-	font-family: "Plus Jakarta Sans-Bold", Helvetica;
-	font-size: 22.6px;
-	font-weight: 700;
-	text-align: left;
-	letter-spacing: 0;
-	line-height: normal;
-	white-space: nowrap;
-	width: 144px;
-}
-
-.box .text-wrapper-2 {
-	color: var(--black);
-	font-family: "Plus Jakarta Sans-Light", Helvetica;
-	font-size: 12.9px;
-	font-weight: 300;
-	left: 0;
-	letter-spacing: 0;
-	line-height: normal;
-	position: absolute;
-	top: 26px;
-	white-space: nowrap;
-}
-
-.box .shared {
-	height: 24.52px;
-	min-width: 61.95px;
-	position: relative;
-}
-
-.box .frame-2 {
-	align-items: flex-start;
-	display: flex;
-	gap: 12px;
-	position: relative;
-	width: 62px;
-}
-
-.box .group {
-	background-color: #e5ebff;
-	border-radius: 12.26px;
-	height: 24.52px;
-	margin-bottom: 10px;
-	min-width: 24.52px;
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-}
-
-.box .group-2 {
-	height: 28.39px;
-	min-width: 102.66px;
-	position: relative;
-
-}
-
-.box .text-wrapper-3 {
-	color: #000000cc;
-	font-family: "Plus Jakarta Sans-Light", Helvetica;
-	font-size: 9.7px;
-	font-weight: 300;
-	letter-spacing: 0;
-	line-height: normal;
-	position: absolute;
-}
-
-.box .overlap-group {
-	border-radius: 5.16px;
-	height: 17px;
-	width: 48px;
-	position: relative;
-	top: 15px;
-	gap: 0.11rem;
-	display: flex;
-	align-items: center;
-	justify-content: start;
-}
-
-.box .text-wrapper-4 {
-	color: var(--grey);
-	font-family: "Plus Jakarta Sans-Regular", Helvetica;
-	font-size: 8px;
-	font-weight: 400;
-	letter-spacing: 0;
-	line-height: normal;
-	padding: 0.3rem .5rem;
-	border: 1px solid var(--grey);
-	border-radius: 0.32263rem;
-	white-space: nowrap;
-}
-
-.box .frame-3 {
-	align-items: center;
-	display: flex;
-	justify-content: space-between;
-	gap: 12.91px;
-	position: relative;
-	width: 295.54px;
-}
-
-.box .frame-4 {
-	align-items: flex-start;
-	display: flex;
-	gap: 12.09px;
-	height: 25.69px;
-	position: relative;
-	width: 150.35px;
-}
-
-.box .text-wrapper-small {
-	color: var(--black);
-	font-family: "Plus Jakarta Sans-Medium", Helvetica;
-	font-size: 12px;
-	font-weight: 500;
-	letter-spacing: 0;
-	line-height: normal;
-}
-
-.box .date,
-.mode {
-	height: 25.94px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	min-width: 71.17px;
-	position: relative;
-	border: 1px solid var(--blue);
-	border-radius: 0.5rem;
-}
-
-.button-wrapper {
-	border: 0px none;
-	height: 36.14px;
-	overflow-x: hidden;
-	width: 132.28px;
-	display: flex;
-	justify-content: end;
-}
-
-.button {
-	border-radius: var(--borderRadius);
-	padding: 0.3rem 1rem;
-	background-color: var(--blue);
-	color: var(--White);
-	border: 1px solid var(--blue);
-}
-
-.heading {
-	color: var(--blue);
-	display: flex;
-	align-items: center;
-	font-family: "Plus Jakarta Sans-Medium", Helvetica;
-	font-size: 2rem;
-	font-weight: 700;
-	letter-spacing: 0;
-	padding: 1rem;
-	line-height: normal;
-	width: 100%;
-	white-space: nowrap;
-}
-
-.all {
-	margin-top: 3rem;
+    .desc p {
+        font-size: 0.8rem;
+    }
 }

@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import "react-tooltip/dist/react-tooltip.css";
-import "./styles.css";
-import styles from "./Hackathon.module.css";
+// import "./styles.css";
 import { LuCopy, LuShare2, LuEdit } from "react-icons/lu";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useEffect, useState } from "react";
@@ -17,6 +16,7 @@ import Modal from "@/MuLearnComponents/Modal/Modal";
 import { MdOutlineUnpublished, MdPublishedWithChanges } from "react-icons/md";
 import { Tooltip } from "react-tooltip";
 import { HackList } from "../services/HackathonInterfaces";
+import styles from "./HackathonCreate.module.css";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 enum ModalType {
@@ -63,28 +63,31 @@ const Hackathon = () => {
                     <PowerfulButton text="Create" />
                 </Link>
             </div>
-            <div className="heading">
-                <h1>Hackathons</h1>
+
+            <div className={styles.hackathonHeading}>
+                <h1>Own Hackathons</h1>
             </div>
-            <div className="box">
+            <div className={styles.hackathonBox}>
                 {data &&
                     data.map((hack, index) => (
-                        <div key={hack.id} className="card-component">
-                            <div className="frame">
-                                <div className="div">
-                                    <div className="title">
-                                        <div className="text-wrapper">
+                        <div key={hack.id} className={styles.cardComponent}>
+                            <div className={styles.frame}>
+                                <div className={styles.div}>
+                                    <div className={styles.title}>
+                                        <div className={styles.testWrapper}>
                                             {hack.title}
                                         </div>
-                                        <div className="text-wrapper-2">
+                                        <div className={styles.textWrapper2}>
                                             {hack.tagline}
                                         </div>
                                     </div>
-                                    <div className="shared">
+                                    <div className={styles.shared}>
                                         {hack.editable ? (
-                                            <div className="frame-2">
+                                            <div className={styles.frame2}>
                                                 <div>
-                                                    <div className="group">
+                                                    <div
+                                                        className={styles.group}
+                                                    >
                                                         <Link
                                                             to={`/hackathon/edit/${hack.id}`}
                                                         >
@@ -94,7 +97,9 @@ const Hackathon = () => {
                                                             />
                                                         </Link>
                                                     </div>
-                                                    <div className="group">
+                                                    <div
+                                                        className={styles.group}
+                                                    >
                                                         <Link
                                                             to={`/hackathon/organizers/${hack.id}`}
                                                         >
@@ -106,7 +111,9 @@ const Hackathon = () => {
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <div className="group">
+                                                    <div
+                                                        className={styles.group}
+                                                    >
                                                         <RiDeleteBin5Line
                                                             data-tooltip-id="Icon"
                                                             data-tooltip-content="Delete"
@@ -157,7 +164,9 @@ const Hackathon = () => {
                                                             />
                                                         )}
                                                     </div>
-                                                    <div className="group">
+                                                    <div
+                                                        className={styles.group}
+                                                    >
                                                         {hack.status ===
                                                         "Draft" ? (
                                                             <MdPublishedWithChanges
@@ -253,34 +262,38 @@ const Hackathon = () => {
                                         }}
                                     />
                                 </div>
-                                <div className="group-2">
-                                    <div className="text-wrapper-3">
+                                <div className={styles.group2}>
+                                    <div className={styles.textWrapper3}>
                                         Application Date
                                     </div>
-                                    <div className="overlap-group">
-                                        <div className="text-wrapper-4">
+                                    <div className={styles.overlapGroup}>
+                                        <div className={styles.textWrapper4}>
                                             {hack.application_start
                                                 ? DateConverter(
                                                       hack.application_start
                                                   )
                                                 : "No Date"}
                                         </div>
-                                        <div className="rectangle" />
-                                        <div className="text-wrapper-4">
+                                        <div className={styles.rectangle} />
+                                        <div className={styles.textWrapper4}>
                                             {hack.application_ends
                                                 ? DateConverter(
                                                       hack.application_ends
                                                   )
                                                 : "No Date"}
                                         </div>
-                                        <div className="rectangle" />
-                                        <div className="rectangle" />
+                                        <div className={styles.rectangle} />
+                                        <div className={styles.rectangle} />
                                     </div>
                                 </div>
-                                <div className="frame-3">
-                                    <div className="frame-4">
-                                        <div className="mode">
-                                            <div className="text-wrapper-small">
+                                <div className={styles.frame3}>
+                                    <div className={styles.frame4}>
+                                        <div className={styles.mode}>
+                                            <div
+                                                className={
+                                                    styles.textWrapperSmall
+                                                }
+                                            >
                                                 {/* coverting first letter to UpperCase */}
                                                 {hack.type
                                                     .charAt(0)
@@ -288,8 +301,12 @@ const Hackathon = () => {
                                                     hack.type.slice(1)}
                                             </div>
                                         </div>
-                                        <div className="date">
-                                            <div className="text-wrapper-small">
+                                        <div className={styles.date}>
+                                            <div
+                                                className={
+                                                    styles.textWrapperSmall
+                                                }
+                                            >
                                                 {hack.event_start
                                                     ? DateConverter(
                                                           hack.event_start
@@ -298,14 +315,14 @@ const Hackathon = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="button-wrapper">
+                                    <div className={styles.buttonWrapper}>
                                         <Link
                                             to={`/hackathon/details/${hack.id}`}
                                         >
-                                            <button className="button">
-                                                {hack.status === "Published"
-                                                    ? "Apply Now"
-                                                    : "Draft"}
+                                            <button
+                                                className={styles.hackathonBtn}
+                                            >
+                                                Apply Now
                                             </button>
                                         </Link>
                                     </div>
