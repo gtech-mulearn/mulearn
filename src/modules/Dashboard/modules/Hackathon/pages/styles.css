@@ -98,6 +98,10 @@
 	border-radius: 100%;
 }
 
+.socialLinks a {
+	cursor: pointer;
+}
+
 .desc {
 	width: 100%;
 	border-radius: 1rem;

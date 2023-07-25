@@ -198,15 +198,11 @@ const HackathonCreate = () => {
         let a = values.applicationStart
             ? `${values.applicationStart}T00:00:00Z`
             : "";
-        let b = values.applicationStart
-            ? `${values.applicationStart}T00:00:00Z`
+        let b = values.applicationEnds
+            ? `${values.applicationEnds}T00:00:00Z`
             : "";
-        let c = values.applicationStart
-            ? `${values.applicationStart}T00:00:00Z`
-            : "";
-        let d = values.applicationStart
-            ? `${values.applicationStart}T00:00:00Z`
-            : "";
+        let c = values.eventStart ? `${values.eventStart}T00:00:00Z` : "";
+        let d = values.eventEnd ? `${values.eventEnd}T00:00:00Z` : "";
 
         console.log(selectedFields);
 
@@ -259,7 +255,7 @@ const HackathonCreate = () => {
         resetForm();
         setTimeout(() => {
             navigate("/hackathon");
-        }, 4000);
+        }, 2000);
     };
 
     return (
