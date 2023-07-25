@@ -17,6 +17,7 @@ export interface HackList {
     description: string;
     participant_count: number;
     organisation: string;
+    editable: boolean;
 }
 
 export interface HackathonApplication {

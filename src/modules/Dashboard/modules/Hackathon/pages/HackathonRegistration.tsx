@@ -34,7 +34,7 @@ const HackathonRegistration = (props: Props) => {
         console.log(application);
     }, []);
 
-    const handleSubmit = (values: any) => {
+    const handleSubmit = (values: { name: string; gender: string; email: string; mobile: string; bio: string; college: string; experience: string; github: string; linkedin: string; }) => {
         console.log(values);
     };
 
@@ -58,23 +58,26 @@ const HackathonRegistration = (props: Props) => {
                         linkedin: ""
                     }}
                     validationSchema={HackApplicationSchema}
-                    onSubmit={handleSubmit}
+                    onSubmit={(values, { setSubmitting }) => {
+                        handleSubmit(values)
+                    }}
                 >
-                    <Form className={styles.formContainer}>
-                        {application &&
-                            application.map((hack, index) => (
-                                <div className={styles.inputContainer}>
-                                    <FormikTextInputWhite
-                                        label={capitalizeFirstLetter(
-                                            hack.field_name
-                                        )}
-                                        name={hack.field_name}
-                                        type="text"
-                                        placeholder="..."
-                                    />
-                                </div>
-                            ))}
-                        <div className={styles.inputContainerBtn}>
+                    {formik => (
+                        <Form className={styles.formContainer}>
+                            {application &&
+                                application.map((hack, index) => (
+                                    <div className={styles.inputContainer}>
+                                        <FormikTextInputWhite
+                                            label={capitalizeFirstLetter(
+                                                hack.field_name
+                                            )}
+                                            name={hack.field_name}
+                                            type="text"
+                                            placeholder="enter text here..."
+                                        />
+                                    </div>
+                                ))}
+                            <div className={styles.inputContainerBtn}>
                                 <MuButton
                                     text={"Decline"}
                                     className={styles.btn_cancel}
@@ -88,8 +91,9 @@ const HackathonRegistration = (props: Props) => {
                                 >
                                     Confirm
                                 </button>
-                        </div>
-                    </Form>
+                            </div>
+                        </Form>
+                    )}
                 </Formik>
             </div>
         </div>
