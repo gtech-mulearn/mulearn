@@ -304,6 +304,12 @@ input[type=file]::file-selector-button:hover {
     .fileInfo{
         font-size: .7rem;
     }    
+
+    .formGroupLogo .formLabel button{
+        padding: .5rem ;
+        border-radius: 6px;
+        font-size: .5rem;
+    }
 }
 
 .upload_button {
