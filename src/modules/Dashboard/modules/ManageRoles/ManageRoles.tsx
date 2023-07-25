@@ -79,7 +79,7 @@ function ManageRoles() {
     const toast = useToast();
     const handleDelete = (id: string | undefined) => {
         deleteManageRoles(id, toast);
-        //navigate(`/dashboard/manage-roles/delete/${id}`);
+        getManageRoles(setData, 1, perPage, setTotalPages, "", "");
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
