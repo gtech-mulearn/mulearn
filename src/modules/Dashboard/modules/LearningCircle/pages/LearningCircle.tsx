@@ -40,13 +40,12 @@ const LearningCircle = (props: Props) => {
 
                 <div className={styles.BoxContent}>
                     <div className={styles.LeftBox}>
-                        {lc?.meet_place && lc.meet_place.length > 0 ? (
                             <div className={styles.EventOn}>
                                 <div className={styles.MeetingOn}>
                                     <div>
                                         <b>Next Meeting on</b>
                                         <div>
-                                            <h1>{lc.meet_time}</h1>
+                                            <h1>{lc?.meet_time}</h1>
                                             <b>Sunday</b>
                                         </div>
                                     </div>
@@ -54,7 +53,7 @@ const LearningCircle = (props: Props) => {
                                 </div>
                                 <div className={styles.MeetingBtn}>
                                     <b>
-                                        venue: {lc.meet_place} <br /> time:
+                                        venue: {lc?.meet_place} <br /> time:
                                         10:00 am
                                     </b>
                                     <button className={styles.BtnBtn}>
@@ -62,22 +61,6 @@ const LearningCircle = (props: Props) => {
                                     </button>
                                 </div>
                             </div>
-                        ) : (
-                            // TODO: Formik implement
-
-                            <div className={styles.EventOn}>
-                                <div className={styles.ScheduleOn}>
-                                    <b>Schedule meeting</b>
-                                    <p>
-                                        Enter details to schedule your weekly
-                                        meeting
-                                    </p>
-                                </div>
-                                <div className={styles.InputSchedule}>
-                                    <button type="submit">Submit</button>
-                                </div>
-                            </div>
-                        )}
 
                         {lc?.pending_members &&
                         lc.pending_members.length > 0 ? (

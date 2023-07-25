@@ -4,7 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getHackDetails } from "../services/HackathonApis";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { HackList } from "../services/HackathonInterfaces";
-import styles from "./HackathonCreate.module.css";
+import { DateConverter, convertDateToYYYYMMDD } from "../../../utils/common";
+import { style } from "d3";
 
 type Props = {};
 
@@ -34,7 +35,10 @@ export const HackathonDetails = (props: Props) => {
                                 <div className={styles.tagLine}>
                                     <b>{data?.tagline}</b>
                                     &nbsp;
-                                    <b> {data?.participant_count}+ participants</b>
+                                    <b>
+                                        {" "}
+                                        {data?.participant_count}+ participants
+                                    </b>
                                 </div>
                             </div>
                             <span className={styles.love}>
@@ -42,9 +46,7 @@ export const HackathonDetails = (props: Props) => {
                             </span>
                         </div>
                     </div>
-                    <p>
-                        {data?.description}
-                    </p>
+                    <p>{data?.description}</p>
                 </div>
             </div>
 
@@ -55,7 +57,19 @@ export const HackathonDetails = (props: Props) => {
                         <div className={styles.hackathonEventDate}>
                             <div>
                                 <b className={styles.title}>EVENT DATES</b>
-                                <h3>{data?.event_start}</h3>
+                                <h3>
+                                    {DateConverter(
+                                        convertDateToYYYYMMDD(
+                                            String(data?.event_start)
+                                        )
+                                    )}{" "}
+                                    <b style={{ color: "var(--blue)" }}>to</b>{" "}
+                                    {DateConverter(
+                                        convertDateToYYYYMMDD(
+                                            String(data?.event_end)
+                                        )
+                                    )}
+                                </h3>
                             </div>
                             <div>
                                 <b className={styles.title}>HAPPENING AT</b>
@@ -65,26 +79,34 @@ export const HackathonDetails = (props: Props) => {
                     </div>
                     <div className={styles.close}>
                         <b>APPLICATION CLOSING DATE</b>
-                        <h4>{data?.application_ends}</h4>
+                        <h4>
+                            {DateConverter(
+                                convertDateToYYYYMMDD(
+                                    String(data?.application_ends)
+                                )
+                            )}
+                        </h4>
                     </div>
                     <button className={styles.hackathonApplyNow} onClick={() => {
                         navigate(`/hackathon/apply/${data?.id}`)
                     }}><b>Apply Now</b></button>
                 </div>
-                <div className={styles.socialLinks}>
-                    <a href={data?.website}>
-                        <CiGlobe />
-                    </a>
-                    {/* <a href="#">
+                {data?.website && (
+                    <div className={styles.socialLinks}>
+                        <a href={data?.website}>
+                            <CiGlobe />
+                        </a>
+                        {/* <a href="#">
                             <i className="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#">
+							</a>
+							<a href="#">
                             <i className="fab fa-instagram"></i>
-                        </a>
-                        <a href="#">
+							</a>
+							<a href="#">
                             <i className="fab fa-instagram"></i>
                         </a> */}
-                </div>
+                    </div>
+                )}
             </div>
         </div>
     );
