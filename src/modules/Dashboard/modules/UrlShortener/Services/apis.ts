@@ -33,7 +33,7 @@ export const getShortenUrls = (
             const updatedShortUrlData = response.data.response.data.map(
                 (item: any) => ({
                     ...item,
-                    short_url: `${import.meta.env.VITE_BACKEND_URL_AUTH}/r/${
+                    short_url: `${import.meta.env.VITE_BACKEND_URL}/r/${
                         item.short_url
                     }`
                 })
