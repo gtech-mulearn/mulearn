@@ -1,3 +1,5 @@
+import { type } from "os";
+
 export const roles = {
     ADMIN: "Admins",
     DISCORD_MODERATOR: "Discord Moderator",
@@ -14,7 +16,9 @@ export const roles = {
     SUSPEND: "Suspended",
     STUDENT: "Student",
     ENABLER: "Enabler",
-	IG_FACILITATOR: "IG Facilitator",
-	TECH_TEAM: "Tech Team",
-	ASSOCIATE: "Associate",
-};
+    IG_FACILITATOR: "IG Facilitator",
+    TECH_TEAM: "Tech Team",
+    ASSOCIATE: "Associate"
+} as const;
+
+export type Role = (typeof roles)[keyof typeof roles];
