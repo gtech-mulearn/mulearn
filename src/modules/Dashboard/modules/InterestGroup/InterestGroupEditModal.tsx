@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import styles from "./InterestGroup.module.css"
 import { RiCloseLine } from 'react-icons/ri';
-import { createInterestGroups } from "./apis";
+import { editInterestGroups } from "./apis";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
@@ -12,13 +12,14 @@ import { modalStatesType } from './InterestGroup';
 interface ModalProps {
   isOpen:modalStatesType ;
   onClose: Dispatch<SetStateAction<modalStatesType>>;
+  id:string
 }
 
-const InterestGroupCreateModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
-  if (isOpen!=='create') return null;
+const InterestGroupEditModal: React.FC<ModalProps> = ({ isOpen, onClose,id }) => {
+  if (isOpen!=='edit') return null;
   const toast = useToast();
-  const navigate = useNavigate();
-  
+  const [hasError, setHasError] = useState(false);
+
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modal}>
@@ -32,7 +33,7 @@ const InterestGroupCreateModal: React.FC<ModalProps> = ({ isOpen, onClose }) => 
             </button>
           </div>
           <div className={styles.modalContainerItemRow}>
-            <span className={styles.IGCreate}>IG Create Page</span>
+            <span className={styles.IGCreate}>Edit Interest Group</span>
           </div>
           <Formik
             initialValues={{
@@ -68,25 +69,28 @@ const InterestGroupCreateModal: React.FC<ModalProps> = ({ isOpen, onClose }) => 
             })}
             onSubmit={values => {
               //console.log(values.igName);
-              // createInterestGroups(
-              //   values.igName,
-              //   onClose
-              // );
-              toast({
-                title: "Interest Group created",
-                status: "success",
-                duration: 3000,
-                isClosable: true
-              });
-              navigate("/dashboard/interest-groups");
+              (async ()=>{
+                await editInterestGroups(
+                  values.igName,
+                  id
+                );
+                toast({
+                  title: "Interest Group created",
+                  status: "success",
+                  duration: 3000,
+                  isClosable: true
+                });
+                onClose(null)
+              })()
+              
             }}
           >
             <Form className={styles.modalContainerItemRow}>
-              <span className={styles.IGCreateDesc}>Enter the name of the Interest Group in the input below that you wish to create.</span>
+              <span className={styles.IGCreateDesc}>Enter the new Interest Group name.</span>
               <FormikTextInput
                 name="igName"
                 type="text"
-                placeholder="Enter a name"
+                placeholder="Enter the new name"
               />
               <div className={styles.modalContainerBtnRow}>
                 <button type="submit" className={styles.btnSubmit}>
@@ -108,4 +112,4 @@ const InterestGroupCreateModal: React.FC<ModalProps> = ({ isOpen, onClose }) => 
   );
 };
 
-export default InterestGroupCreateModal;
+export default InterestGroupEditModal;

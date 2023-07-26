@@ -5,6 +5,7 @@ import { HackList, HackathonApplication } from "./HackathonInterfaces";
 import { SetStateAction } from "react";
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import { Data } from "@/MuLearnComponents/Table/Table";
 
 export const getHackathons = async (
     setData: React.Dispatch<SetStateAction<HackList[]>>
@@ -391,8 +392,6 @@ export const submitHackApplication = async (
                 }
             }
         );
-        const message: any = response?.data;
-        console.log(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -402,15 +401,14 @@ export const submitHackApplication = async (
 };
 
 export const getOrganizers = async (
-    setData: React.Dispatch<SetStateAction<string>>,
+    setData: React.Dispatch<SetStateAction<Data[]>>,
     id: string | undefined
 ) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getApplicationForm + id + "/"
+            dashboardRoutes.getOrganizers + id + "/"
         );
         const message: any = response?.data;
-        console.log(message.response);
         setData(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;

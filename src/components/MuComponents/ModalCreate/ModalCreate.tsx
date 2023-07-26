@@ -10,6 +10,7 @@ import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComp
 // ModalProps type definition
 interface ModalProps {
     isOpen: boolean;//for opening modal.
+    onClose: Dispatch<SetStateAction<boolean>>;//will change the open state of modal to close.
     heading: string | undefined;//Title of the modal *Required
     content?: string | undefined;//Content of the modal *not required
     placeholder: string | undefined;//Placeholder for input box , for better user experience.
@@ -20,7 +21,6 @@ interface ModalProps {
     btnSecondaryText: string | undefined;//Message to be displayed on the secondary button *Required
     navigateRoute: string;//Location to where the user is to be direcetd.
     onRender: (name: string, onClose: Dispatch<SetStateAction<boolean>>) => void;//function which is to be called.
-    onClose: Dispatch<SetStateAction<boolean>>;//will change the open state of modal to close.
 }
 
 const ModalCreateComponent: React.FC<ModalProps> = ({ isOpen, onClose, content, heading, placeholder, inputType, name, onRender, toastMsg, navigateRoute, btnPrimaryText, btnSecondaryText }) => {

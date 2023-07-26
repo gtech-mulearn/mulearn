@@ -4,6 +4,8 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 import { Dispatch, SetStateAction } from "react";
 
+import { modalStatesType } from "./InterestGroup";
+
 export const getInterestGroups = async (
     setData: any,
     page: number,

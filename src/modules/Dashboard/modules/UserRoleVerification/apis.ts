@@ -11,6 +11,7 @@ export const getUserRoleVerification = async (
     search?: string,
     sortID?: string
 ) => {
+    console.log('')
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getUsersRoleVerificationData,
@@ -47,12 +48,14 @@ export const getUserRoleVerification = async (
             console.log(error.response);
         }
     }
+    console.log('table fetched')
 };
 
 export const editUserRoleVerification = async (
     verified: boolean,
     id: string | number | boolean
 ) => {
+    
     try {
         const response = await privateGateway.patch(
             dashboardRoutes.getUsersRoleVerificationData + id + "/",
@@ -68,6 +71,7 @@ export const editUserRoleVerification = async (
             console.log(error.response);
         }
     }
+    console.log('edit done!')
 };
 interface IData {
     verified: boolean;
