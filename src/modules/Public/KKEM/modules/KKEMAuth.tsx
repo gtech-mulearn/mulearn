@@ -8,24 +8,38 @@ import Astronaut from "../assets/astronaut.png";
 import navStyles from "../components/Navbar.module.css";
 import styles from "./KKEMAuth.module.css";
 import Footer from "../components/Footer";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 export default function KKEMAuth() {
     const { token } = useParams<{ token: string }>();
-    const [success, setSuccess] = useState(false);
+    const [status, setStatus] = useState("pending");
     useEffect(() => {
         if (!token) {
             return;
         }
         const controller = new AbortController();
         userAuthConfirm(token, controller).then(res => {
-            setSuccess(true);
-        });
+            setStatus("success");
+        }).catch((err) => {
+            console.log(err.hasError)
+            if (err?.hasError) {
+                setStatus("failure");
+            }
+        })
         return () => {
             controller.abort();
         };
     }, [token]);
     return (
         <main>
-            {success ? <Success /> : <Failure />}
+            {status === "pending" ?
+                <div className={styles.muLoader}>
+                    <MuLoader />
+                </div> :
+                <>
+                    {status === "success" && <Success />}
+                    {status === "failure" && <Failure />}
+                </>
+            }
             <Footer />
         </main>
     );
