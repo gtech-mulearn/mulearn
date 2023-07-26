@@ -131,7 +131,6 @@ const Table: FC<TableProps> = (props: TableProps) => {
         }, 2000)
     }, [props.rows]);
 
-    console.log(props.rows)
     return (
         <>
 
