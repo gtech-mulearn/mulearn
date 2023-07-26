@@ -73,7 +73,7 @@ export const dashboardRoutes = {
     editHackathon: "/api/v1/hackathon/edit-hackathon/",
     getHackathons: "/api/v1/hackathon/list-hackathons/",
     getHackathonInfo: "/api/v1/hackathon/info/",
-    getOwnHackathons: "/api/v1/hackathon/list-orgniser-hackathons/",
+    getOrganizers: "/api/v1/hackathon/list-organiser-hackathons/",
     deleteHackathon: "/api/v1/hackathon/delete-hackathon/",
     publishHackathon: "/api/v1/hackathon/publish-hackathon/",
     addOrganizer: "/api/v1/hackathon/add-organiser/",

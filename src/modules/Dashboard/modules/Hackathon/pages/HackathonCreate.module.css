@@ -282,31 +282,31 @@ input[type=file]::file-selector-button:hover {
     overflow: hidden;
 }
 
-.formGroupLogo .formLabel{
+.formGroupLogo .formLabel {
     display: flex;
     justify-content: space-between;
 }
 
-.formGroupLogo .formLabel button{
+.formGroupLogo .formLabel button {
     background-color: var(--blue);
     color: var(--White);
-    padding: .5rem ;
+    padding: .5rem;
     border-radius: 8px;
     font-size: .7rem;
 }
 
-.fileInfo{
+.fileInfo {
     padding-top: .5rem;
     color: var(--blue);
 }
 
-@media(width < 570px){
-    .fileInfo{
+@media(width < 570px) {
+    .fileInfo {
         font-size: .7rem;
-    }    
+    }
 
-    .formGroupLogo .formLabel button{
-        padding: .5rem ;
+    .formGroupLogo .formLabel button {
+        padding: .5rem;
         border-radius: 6px;
         font-size: .5rem;
     }
@@ -564,25 +564,27 @@ input[type=file]::file-selector-button:hover {
     border-radius: var(--borderRadius);
 }
 
+.HCHackathon {
+    padding: 0rem 3rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .hackathonBox {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1rem;
 }
 
-@media(width<=1270px) {
-    .hackathonBox {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
 .hackathonBox .cardComponent {
-    background-color: #ffffff;
     border: 1px solid #dbdbdb;
     border-radius: 10px;
     display: flex;
-    flex-direction: column;
-    padding: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: .8rem;
     text-align: left;
 }
 
@@ -593,127 +595,79 @@ input[type=file]::file-selector-button:hover {
 .hackathonBox .frame {
     display: flex;
     flex-direction: column;
-    gap: 1.3rem;
-    position: relative;
-    width: fit-content;
+    gap: 1rem;
+    background-color: #ffffff;
+    width: 20rem;
+    height: fit-content;
 }
 
 .hackathonBox .div {
-    align-items: flex-start;
+    width: 100%;
     display: flex;
-    gap: 85.5px;
     position: relative;
-    width: fit-content;
 }
 
 .hackathonBox .title {
-    height: 35.81px;
-    min-width: 147.9px;
-    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .hackathonBox .textWrapper {
-    color: var(--blue);
-    font-size: 22.6px;
-    font-weight: 700;
-    text-align: left;
-    letter-spacing: 0;
-    line-height: normal;
-    white-space: nowrap;
-    width: 144px;
+    font-size: 1.3rem;
 }
 
 .hackathonBox .textWrapper2 {
     color: var(--black);
-    font-size: 12.9px;
-    font-weight: 300;
-    left: 0;
-    line-height: normal;
-    position: absolute;
-    top: 26px;
-    white-space: nowrap;
-}
-
-.hackathonBox .shared {
-    height: 24.52px;
-    min-width: 61.95px;
-    position: relative;
+    font-size: .8rem;
 }
 
 .hackathonBox .frame2 {
-    align-items: flex-start;
     display: flex;
-    gap: 12px;
-    position: relative;
-    width: 62px;
+    gap: 1rem;
 }
 
 .hackathonBox .group {
     background-color: #e5ebff;
-    border-radius: 12.26px;
-    height: 24.52px;
-    margin-bottom: 10px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 5px;
+    padding: .3rem;
     cursor: pointer;
 }
 
 .hackathonBox .group2 {
-    height: 28.39px;
-    min-width: 102.66px;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
 }
 
 .hackathonBox .textWrapper3 {
     color: #000000cc;
-    font-size: 9.7px;
-    font-weight: 300;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
+    font-size: .8rem;
 }
 
 .hackathonBox .overlapGroup {
-    border-radius: 5.16px;
-    height: 17px;
-    width: 48px;
-    position: relative;
-    top: 15px;
-    gap: 0.11rem;
+    border-radius: .5rem;
+    gap: .5rem;
     display: flex;
-    align-items: center;
-    justify-content: start;
 }
 
 .hackathonBox .textWrapper4 {
     color: var(--grey);
-    font-size: 8px;
-    font-weight: 400;
-    letter-spacing: 0;
-    line-height: normal;
+    font-size: .65rem;
     padding: 0.3rem .5rem;
     border: 1px solid var(--grey);
-    border-radius: 0.32263rem;
-    white-space: nowrap;
+    border-radius: 0.3rem;
 }
 
 .hackathonBox .frame3 {
-    align-items: center;
     display: flex;
     justify-content: space-between;
-    gap: 12.91px;
-    position: relative;
 }
 
 .hackathonBox .frame4 {
-    align-items: flex-start;
     display: flex;
-    gap: 12.09px;
-    height: 25.69px;
-    position: relative;
-    width: 150.35px;
+    gap: .5rem;
 }
 
 .hackathonBox .textWrapperSmall {
@@ -724,11 +678,7 @@ input[type=file]::file-selector-button:hover {
 
 .hackathonBox .date,
 .mode {
-    height: 25.94px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
     padding: .3rem;
     border: 1px solid var(--blue);
     border-radius: 0.5rem;
@@ -752,6 +702,6 @@ input[type=file]::file-selector-button:hover {
     display: flex;
     align-items: center;
     font-size: 2rem;
-    padding: 1rem;
-    width: 100%;
+    font-weight: 700;
+    margin-bottom: 1rem;
 }

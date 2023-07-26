@@ -27,3 +27,11 @@ export interface HackathonApplication {
     field_type: string;
     is_required: boolean;
 }
+
+export interface HackathonOrganizerData {
+    email: string;
+    full_name: string;
+    id: string;
+    muid: string;
+    profile_pic: string;
+}
