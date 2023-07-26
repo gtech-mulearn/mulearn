@@ -1,0 +1,138 @@
+.modalOverlay {
+	width: 100vw;
+	height: 100vh;
+	z-index: 9998;
+	top: 0;
+	left: 0;
+	position: fixed;
+	backdrop-filter: blur(1px);
+}
+
+.modal {
+	width: 100%;
+	max-width: 300px;
+	position: absolute;
+	top: 50%;
+	padding: 2rem;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fff;
+	border-radius: 10px;
+}
+
+.modalContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	justify-content: center;
+}
+
+.modalContainerRow {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: end;
+}
+
+.IGCreate {
+	color: black;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.IGCreateDesc {
+	font-size: 14px;
+	color: rgb(0, 0, 0);
+	text-align: center;
+}
+
+.closeBtn {
+	font-size: 22px;
+	transition: all ease-in-out 0.01s;
+}
+
+.closeBtn:hover {
+	transform: scale(1.11);
+}
+
+.btnContainer {
+	display: flex;
+
+	align-items: center;
+	justify-content: space-between;
+}
+
+.modalContainerItemRow {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	color: #fcfcfc;
+}
+
+.modalContainerBtnRow {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
+	gap: 10px;
+	justify-content: space-between;
+}
+
+.btnCancel {
+	width: 100%;
+	cursor: pointer;
+	font-weight: 500;
+	padding: 11px 28px;
+	border-radius: 12px;
+	font-size: 0.8rem;
+	border: none;
+	color: var(--blue);
+	background: #fcfcfc;
+	transition: all 0.25s ease;
+	background-color: #E4E7EC;
+}
+
+.btnCancel:hover {
+	box-shadow: none;
+	transform: none;
+	box-shadow: 0 5px 15px -10px rgba(208, 92, 92, 0.6);
+	transform: translateY(-3px);
+	/* background: whitesmoke; */
+}
+
+
+.btnSubmit {
+	width: 100%;
+	cursor: pointer;
+	font-weight: 500;
+	padding: 11px 28px;
+	border-radius: 12px;
+	font-size: 0.8rem;
+	border: none;
+	color: #fff;
+	background: var(--blue);
+	transition: all 0.25s ease;
+}
+
+.btnSubmit:hover {
+	box-shadow: 0 10px 20px -10px rgba(62, 165, 255, 0.6);
+	transform: translateY(-5px);
+	background: var(--blue);
+}
+
+.loader_container {
+    position: fixed;
+    width: 100vw;
+    height: 100dvh;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    transition: all 0.5s ease-in;
+}

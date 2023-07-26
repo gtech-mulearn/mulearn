@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { deleteInterestGroups, getInterestGroups } from "./apis";
+import { createInterestGroups, deleteInterestGroups, getInterestGroups } from "./apis";
 import { roles } from "@/MuLearnServices/types";
 import { hasRole } from "@/MuLearnServices/common_functions";
 import { useNavigate } from "react-router-dom";
@@ -14,10 +14,11 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
 import InterestGroupCreateModal from "./InterestGroupCreateModal";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-import InterestGroupEditModal from "./InterestGroupEditModal";
 
-export type modalStatesType = 'edit'|'create'|null 
-    
+import InterestGroupEditModal from "./InterestGroupEditModal";
+import ModalCreateComponent from "@/MuLearnComponents/ModalCreate/ModalCreate";
+
+export type modalStatesType = 'edit' | 'create' | null
 
 
 function InterestGroup() {
@@ -38,7 +39,8 @@ function InterestGroup() {
     ];
 
     const [openModal, setOpenModal] = useState<modalStatesType>(null);
-    const [currID,setCurrID] = useState<string>('')
+    const [openMuModal, setOpenMuModal] = useState(false);
+    const [currID, setCurrID] = useState<string>('')
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -62,18 +64,18 @@ function InterestGroup() {
         firstFetch.current = false;
     }, []);
 
-    useEffect(()=>{
-        if(openModal===null){
+    useEffect(() => {
+        if (openModal === null) {
             getInterestGroups(setData, 1, perPage, setTotalPages, "", "");
         }
-    },[openModal])
+    }, [openModal])
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
         getInterestGroups(setData, 1, perPage, setTotalPages, search, "");
     };
 
-    const handleEdit = async (id: string|number|boolean) => {
+    const handleEdit = async (id: string | number | boolean) => {
         console.log(id);
         setCurrID(id as string)
         setOpenModal('edit')
@@ -96,7 +98,7 @@ function InterestGroup() {
     };
 
     const handleCreate = () => {
-        setOpenModal('create');
+        setOpenMuModal(true);
     };
 
     const handleIconClick = (column: string) => {
@@ -118,11 +120,29 @@ function InterestGroup() {
         //console.log(`Icon clicked for column: ${column}`);
     };
 
+    //interestGroupCreate api call
+    const handleDataRender = (name: string,
+        onClose: Dispatch<SetStateAction<boolean>>) => {
+        createInterestGroups(
+            name,
+            onClose)
+    };
+
     return (
         <>
-            <InterestGroupCreateModal
-                isOpen={openModal}
-                onClose={setOpenModal}
+            <ModalCreateComponent
+                isOpen={openMuModal}
+                onClose={setOpenMuModal}
+                heading={"IG Create Page"}
+                content={"Enter the name of the Interest Group in the input below that you wish to create."}
+                placeholder={"Enter a name"}
+                inputType={"text"}
+                name={"igName"}
+                toastMsg={"Interest Group created"}
+                navigateRoute={"/dashboard/interest-groups"}
+                btnPrimaryText={"Confirm"}
+                btnSecondaryText={"Decline"}
+                onRender={handleDataRender}
             />
             <InterestGroupEditModal
                 isOpen={openModal}

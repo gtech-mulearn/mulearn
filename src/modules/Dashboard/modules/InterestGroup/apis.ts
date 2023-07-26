@@ -37,14 +37,14 @@ export const getInterestGroups = async (
 
 export const createInterestGroups = async (
     name: string,
-    onClose: Dispatch<SetStateAction<modalStatesType>>
+    onClose: Dispatch<SetStateAction<boolean>>
 ) => {
     try {
         const response = await privateGateway.post(dashboardRoutes.getIgData, {
             name: name
         });
         if (response.data?.statusCode === 200) {
-            onClose(null);
+            onClose(false);
         }
         const message: any = response?.data;
         //console.log(message);

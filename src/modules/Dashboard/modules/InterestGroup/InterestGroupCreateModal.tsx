@@ -18,8 +18,7 @@ const InterestGroupCreateModal: React.FC<ModalProps> = ({ isOpen, onClose }) => 
   if (isOpen!=='create') return null;
   const toast = useToast();
   const navigate = useNavigate();
-  const [hasError, setHasError] = useState(false);
-
+  
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modal}>
@@ -69,10 +68,10 @@ const InterestGroupCreateModal: React.FC<ModalProps> = ({ isOpen, onClose }) => 
             })}
             onSubmit={values => {
               //console.log(values.igName);
-              createInterestGroups(
-                values.igName,
-                onClose
-              );
+              // createInterestGroups(
+              //   values.igName,
+              //   onClose
+              // );
               toast({
                 title: "Interest Group created",
                 status: "success",
