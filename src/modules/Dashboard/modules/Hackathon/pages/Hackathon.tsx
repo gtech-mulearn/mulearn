@@ -80,164 +80,169 @@ const Hackathon = () => {
                                     </div>
                                     <div className={styles.shared}>
                                         {hack.editable ? (
-                                            <div className={styles.frame2}>
-                                                <div>
-                                                    <div className={styles.group}>
-                                                        <Link
-                                                            to={`/dashboard/hackathon/edit/${hack.id}`}
-                                                        >
-                                                            <LuEdit
-                                                                data-tooltip-id="Icon"
-                                                                data-tooltip-content="Edit"
-                                                            />
-                                                        </Link>
-                                                    </div>
-                                                    <div className={styles.group} >
-                                                        <Link
-                                                            to={`/dashboard/hackathon/organizers/${hack.id}`}
-                                                        >
-                                                            <BsPersonAdd
-                                                                data-tooltip-id="Icon"
-                                                                data-tooltip-content="Add Organizer"
-                                                            />
-                                                        </Link>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div className={styles.group}>
-                                                        <RiDeleteBin5Line
-                                                            data-tooltip-id="Icon"
-                                                            data-tooltip-content="Delete"
-                                                            onClick={() => {
-                                                                toggleModal(
-                                                                    index,
-                                                                    ModalType[1]
-                                                                );
-                                                            }}
-                                                        />
-                                                        {isDeleteOpen[
-                                                            index
-                                                        ] && (
-                                                                <Modal
-                                                                    setIsOpen={() =>
-                                                                        toggleModal(
-                                                                            index,
-                                                                            ModalType[1]
-                                                                        )
-                                                                    }
-                                                                    id={hack.id}
-                                                                    heading={
-                                                                        "Delete"
-                                                                    }
-                                                                    content={`Are you sure you want to delete ${hack.title} ?`}
-                                                                    click={() => {
-                                                                        deleteHackathon(
-                                                                            hack.id,
-                                                                            toast
-                                                                        );
-                                                                        setTimeout(
-                                                                            () => {
-                                                                                getHackathons(
-                                                                                    setOwnData
-                                                                                );
-                                                                                getHackathons(
-                                                                                    setData
-                                                                                );
-                                                                            },
-                                                                            1000
-                                                                        );
-                                                                        setTimeout(
-                                                                            () => {
-                                                                                navigate(
-                                                                                    "/dashboard/hackathon"
-                                                                                );
-                                                                            },
-                                                                            1000
-                                                                        );
-                                                                    }}
+                                            <div className={styles.shared2}>
+                                                <div className={styles.frame2}>
+                                                    <div>
+                                                        <div className={styles.group}>
+                                                            <Link
+                                                                to={`/dashboard/hackathon/edit/${hack.id}`}
+                                                            >
+                                                                <LuEdit
+                                                                    data-tooltip-id="Icon"
+                                                                    data-tooltip-content="Edit"
                                                                 />
-                                                            )}
+                                                            </Link>
+                                                        </div>
+                                                        <div className={styles.group} >
+                                                            <Link
+                                                                to={`/dashboard/hackathon/organizers/${hack.id}`}
+                                                            >
+                                                                <BsPersonAdd
+                                                                    data-tooltip-id="Icon"
+                                                                    data-tooltip-content="Add Organizer"
+                                                                />
+                                                            </Link>
+                                                        </div>
                                                     </div>
-                                                    <div
-                                                        className={styles.group}
-                                                    >
-                                                        {hack.status ===
-                                                            "Draft" ? (
-                                                            <MdPublishedWithChanges
+                                                    <div>
+                                                        <div className={styles.group}>
+                                                            <RiDeleteBin5Line
                                                                 data-tooltip-id="Icon"
-                                                                data-tooltip-content="Publish"
+                                                                data-tooltip-content="Delete"
                                                                 onClick={() => {
                                                                     toggleModal(
                                                                         index,
-                                                                        ModalType[0]
+                                                                        ModalType[1]
                                                                     );
                                                                 }}
                                                             />
-                                                        ) : (
-                                                            <MdOutlineUnpublished
-                                                                data-tooltip-id="Icon"
-                                                                data-tooltip-content="Change to Draft"
-                                                                onClick={() => {
-                                                                    toggleModal(
-                                                                        index,
-                                                                        ModalType[0]
-                                                                    );
-                                                                }}
-                                                            />
-                                                        )}
-                                                        {isPublishOpen[
-                                                            index
-                                                        ] && (
-                                                                <Modal
-                                                                    setIsOpen={() =>
+                                                            {isDeleteOpen[
+                                                                index
+                                                            ] && (
+                                                                    <Modal
+                                                                        setIsOpen={() =>
+                                                                            toggleModal(
+                                                                                index,
+                                                                                ModalType[1]
+                                                                            )
+                                                                        }
+                                                                        id={hack.id}
+                                                                        heading={
+                                                                            "Delete"
+                                                                        }
+                                                                        content={`Are you sure you want to delete ${hack.title} ?`}
+                                                                        click={() => {
+                                                                            deleteHackathon(
+                                                                                hack.id,
+                                                                                toast
+                                                                            );
+                                                                            setTimeout(
+                                                                                () => {
+                                                                                    getHackathons(
+                                                                                        setOwnData
+                                                                                    );
+                                                                                    getHackathons(
+                                                                                        setData
+                                                                                    );
+                                                                                },
+                                                                                1000
+                                                                            );
+                                                                            setTimeout(
+                                                                                () => {
+                                                                                    navigate(
+                                                                                        "/dashboard/hackathon"
+                                                                                    );
+                                                                                },
+                                                                                1000
+                                                                            );
+                                                                        }}
+                                                                    />
+                                                                )}
+                                                        </div>
+                                                        <div
+                                                            className={styles.group}
+                                                        >
+                                                            {hack.status ===
+                                                                "Draft" ? (
+                                                                <MdPublishedWithChanges
+                                                                    data-tooltip-id="Icon"
+                                                                    data-tooltip-content="Publish"
+                                                                    onClick={() => {
                                                                         toggleModal(
                                                                             index,
                                                                             ModalType[0]
-                                                                        )
-                                                                    }
-                                                                    id={hack.id}
-                                                                    heading={
-                                                                        hack.status ===
-                                                                            "Draft"
-                                                                            ? "Publish"
-                                                                            : "Draft"
-                                                                    }
-                                                                    content={
-                                                                        hack.status ===
-                                                                            "Draft"
-                                                                            ? `Make sure all details are filled before Publishing ${hack.title}`
-                                                                            : `Are you sure you want to set ${hack.title} to Draft`
-                                                                    }
-                                                                    click={() => {
-                                                                        publishHackathon(
-                                                                            hack.id,
-                                                                            hack.status,
-                                                                            toast
                                                                         );
-                                                                        setTimeout(
-                                                                            () => {
-                                                                                getHackathons(
-                                                                                    setOwnData
-                                                                                );
-                                                                                getHackathons(
-                                                                                    setData
-                                                                                );
-                                                                            },
-                                                                            1000
-                                                                        );
-                                                                        setTimeout(
-                                                                            () => {
-                                                                                navigate(
-                                                                                    "/dashboard/hackathon"
-                                                                                );
-                                                                            },
-                                                                            2000
+                                                                    }}
+                                                                />
+                                                            ) : (
+                                                                <MdOutlineUnpublished
+                                                                    data-tooltip-id="Icon"
+                                                                    data-tooltip-content="Change to Draft"
+                                                                    onClick={() => {
+                                                                        toggleModal(
+                                                                            index,
+                                                                            ModalType[0]
                                                                         );
                                                                     }}
                                                                 />
                                                             )}
+                                                            {isPublishOpen[
+                                                                index
+                                                            ] && (
+                                                                    <Modal
+                                                                        setIsOpen={() =>
+                                                                            toggleModal(
+                                                                                index,
+                                                                                ModalType[0]
+                                                                            )
+                                                                        }
+                                                                        id={hack.id}
+                                                                        heading={
+                                                                            hack.status ===
+                                                                                "Draft"
+                                                                                ? "Publish"
+                                                                                : "Draft"
+                                                                        }
+                                                                        content={
+                                                                            hack.status ===
+                                                                                "Draft"
+                                                                                ? `Make sure all details are filled before Publishing ${hack.title}`
+                                                                                : `Are you sure you want to set ${hack.title} to Draft`
+                                                                        }
+                                                                        click={() => {
+                                                                            publishHackathon(
+                                                                                hack.id,
+                                                                                hack.status,
+                                                                                toast
+                                                                            );
+                                                                            setTimeout(
+                                                                                () => {
+                                                                                    getHackathons(
+                                                                                        setOwnData
+                                                                                    );
+                                                                                    getHackathons(
+                                                                                        setData
+                                                                                    );
+                                                                                },
+                                                                                1000
+                                                                            );
+                                                                            setTimeout(
+                                                                                () => {
+                                                                                    navigate(
+                                                                                        "/dashboard/hackathon"
+                                                                                    );
+                                                                                },
+                                                                                2000
+                                                                            );
+                                                                        }}
+                                                                    />
+                                                                )}
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <button>
+                                                    fun ()
+                                                </button>
                                             </div>
                                         ) : (
                                             <div className={styles.frame2}>
