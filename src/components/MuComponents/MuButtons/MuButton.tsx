@@ -26,11 +26,11 @@ export const MuButton = (props: {
             className={props.className ? props.className : styles.btn}
             style={{
                 background:
-                    `/${props.buttonUrl}` === window.location.pathname
+                    `${props.buttonUrl}` === window.location.pathname
                         ? "#456FF6"
                         : "",
                 color:
-                    `/${props.buttonUrl}` === window.location.pathname
+                    `${props.buttonUrl}` === window.location.pathname
                         ? "#fff"
                         : "",
                 ...props.style

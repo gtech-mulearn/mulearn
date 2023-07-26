@@ -15,12 +15,6 @@ import { useToast } from "@chakra-ui/react";
 import { MuButtonLight } from "@/MuLearnComponents/MuButtons/MuButton";
 
 const UrlShortener = () => {
-
-    const [hasValidationError, setHasValidationError] = useState({
-        error: false,
-        message: ""
-    });
-
     const columnOrder = [
         { column: "title", Label: "Title", isSortable: true },
         { column: "short_url", Label: "Short URL", isSortable: false },
@@ -29,6 +23,10 @@ const UrlShortener = () => {
 
     const toast = useToast();
     const [editBtn, setEditBtn] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const [perPage, setPerPage] = useState(5);
+    const [sort, setSort] = useState("");
     const [shortUrlData, setShortUrlData] = useState([
         {
             id: "",
@@ -37,11 +35,10 @@ const UrlShortener = () => {
             title: ""
         }
     ]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
-    const [perPage, setPerPage] = useState(5);
-    const [columns, setColumns] = useState(columnOrder);
-    const [sort, setSort] = useState("");
+    const [hasValidationError, setHasValidationError] = useState({
+        error: false,
+        message: ""
+    });
 
     const formik = useFormik({
         initialValues: {
@@ -67,6 +64,7 @@ const UrlShortener = () => {
                 setShortUrlData([...shortUrlData, urlCreateData]);
                 setTimeout(() => {
                     getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
+                    // formik.handleReset(formik.values);
                 }, 500);
                 setEditBtn(false);
             } else {
@@ -75,6 +73,7 @@ const UrlShortener = () => {
                     ...shortUrlData.filter(item => item.id !== values.id),
                     urlCreateData
                 ]);
+                formik.handleReset(formik.values);
             }
         },
         validate: (values: any) => {
@@ -103,6 +102,7 @@ const UrlShortener = () => {
         setCurrentPage(prevPage);
         getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
     };
+
     const handleSearch = (search: string) => {
         setCurrentPage(1);
         getShortenUrls(setShortUrlData, 1, perPage, setTotalPages, search, "");
