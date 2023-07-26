@@ -11,7 +11,7 @@ export const DateConverter = (date:string) => {
 
 
 // Convert UTC Date to YYYY-MM-DD for date input
-export const convertDateToYYYYMMDD = (dateString: any) => {
+export const convertDateToYYYYMMDD = (dateString: any): any => {
     if (dateString !== undefined || null) {
         return String(dateString).split("T")[0];
     }
