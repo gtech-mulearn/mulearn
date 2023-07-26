@@ -57,12 +57,11 @@ const Hackathon = () => {
 
     return (
         <div className={styles.HCHackathon}>
-            <Link to="/dashboard/hackathon/create">
-                <PowerfulButton text="Create" />
-            </Link>
-
             <div className={styles.hackathonHeading}>
-                <h1>Own Hackathons</h1>
+                <h1>Explore Hackathons</h1>
+                <Link to="/dashboard/hackathon/create" className={styles.HCbutton}>
+                    <PowerfulButton text="Create" />
+                </Link>
             </div>
 
             <div className={styles.hackathonBox}>
@@ -262,7 +261,7 @@ const Hackathon = () => {
                                 </div>
                                 <div className={styles.group2}>
                                     <div className={styles.textWrapper3}>
-                                        Application Date
+                                        Theme
                                     </div>
                                     <div className={styles.overlapGroup}>
                                         <div className={styles.textWrapper4}>
@@ -272,7 +271,6 @@ const Hackathon = () => {
                                                 )
                                                 : "No Date"}
                                         </div>
-                                        {/* <div className={styles.rectangle} /> */}
                                         <div className={styles.textWrapper4}>
                                             {hack.application_ends
                                                 ? DateConverter(
@@ -280,8 +278,6 @@ const Hackathon = () => {
                                                 )
                                                 : "No Date"}
                                         </div>
-                                        {/* <div className={styles.rectangle} /> */}
-                                        {/* <div className={styles.rectangle} /> */}
                                     </div>
                                 </div>
                                 <div className={styles.frame3}>
@@ -309,9 +305,7 @@ const Hackathon = () => {
                                         <Link
                                             to={`/dashboard/hackathon/details/${hack.id}`}
                                         >
-                                            <button
-                                                className={styles.hackathonBtn}
-                                            >
+                                            <button className={styles.hackathonBtn}>
                                                 Apply Now
                                             </button>
                                         </Link>

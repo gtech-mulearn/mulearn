@@ -565,7 +565,7 @@ input[type=file]::file-selector-button:hover {
 }
 
 .HCHackathon {
-    padding: 0rem 3rem;
+    padding: 0rem 2rem;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -574,18 +574,18 @@ input[type=file]::file-selector-button:hover {
 .hackathonBox {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
+    gap: 1.2rem;
 }
 
 .hackathonBox .cardComponent {
     border: 1px solid #dbdbdb;
-    border-radius: 10px;
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: .8rem;
+    padding: 1.5rem;
     text-align: left;
+    position: relative;
 }
 
 .hackathonBox .cardComponent:hover {
@@ -597,7 +597,7 @@ input[type=file]::file-selector-button:hover {
     flex-direction: column;
     gap: 1rem;
     background-color: #ffffff;
-    width: 20rem;
+    width: 18rem;
     height: fit-content;
 }
 
@@ -611,6 +611,14 @@ input[type=file]::file-selector-button:hover {
     width: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.hackathonBox .shared {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: .5rem;
+    font-size: .8rem;
 }
 
 .hackathonBox .textWrapper {
@@ -638,48 +646,52 @@ input[type=file]::file-selector-button:hover {
 .hackathonBox .group2 {
     display: flex;
     flex-direction: column;
-    gap: .5rem;
+    gap: .2rem;
 }
 
 .hackathonBox .textWrapper3 {
     color: #000000cc;
-    font-size: .8rem;
+    font-size: .65rem;
 }
 
 .hackathonBox .overlapGroup {
-    border-radius: .5rem;
-    gap: .5rem;
+    gap: .4rem;
     display: flex;
 }
 
 .hackathonBox .textWrapper4 {
     color: var(--grey);
-    font-size: .65rem;
-    padding: 0.3rem .5rem;
-    border: 1px solid var(--grey);
-    border-radius: 0.3rem;
+    font-size: .45rem;
+    padding: 0.2rem .5rem;
+    border: 1px solid #cfcfcf;
+    border-radius: 0.4rem;
 }
 
 .hackathonBox .frame3 {
     display: flex;
+    gap: 1rem;
     justify-content: space-between;
 }
 
 .hackathonBox .frame4 {
     display: flex;
+    align-items: center;
     gap: .5rem;
 }
 
 .hackathonBox .textWrapperSmall {
     color: var(--black);
-    font-size: .7rem;
+    font-size: .6rem;
+    padding: 0rem .5rem;
     font-weight: 600;
 }
 
 .hackathonBox .date,
 .mode {
     display: flex;
+    align-items: center;
     padding: .3rem;
+    height: 1.5rem;
     border: 1px solid var(--blue);
     border-radius: 0.5rem;
 }
@@ -689,19 +701,68 @@ input[type=file]::file-selector-button:hover {
 }
 
 .hackathonBtn {
-    border-radius: .25rem;
+    border-radius: .6rem;
     padding: 0.3rem 1rem;
     background-color: var(--blue);
     color: var(--White);
     border: 1px solid var(--blue);
     font-size: .8rem;
+    font-weight: 600;
 }
 
 .hackathonHeading {
     color: var(--black);
     display: flex;
     align-items: center;
-    font-size: 2rem;
+    justify-content: space-between;
     font-weight: 700;
     margin-bottom: 1rem;
+}
+
+.hackathonHeading h1 {
+    font-size: 2.5rem;
+    position: relative;
+}
+
+.hackathonHeading h1:before {
+    content: " ";
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    position: absolute;
+    -webkit-text-fill-color: transparent;
+    background-color: var(--green);
+    height: 0.5rem;
+    bottom: 10px;
+    z-index: -1;
+}
+
+.hackathonHeading .HCbutton {
+    font-size: .85rem;
+    padding: .5rem;
+}
+
+@media (width<=820px) {
+    .HCHackathon {
+        padding: 0rem;
+    }
+
+    .hackathonHeading .HCbutton {
+        font-size: .85rem;
+    }
+}
+
+@media(width<600px) {
+    .hackathonHeading h1 {
+        font-size: 1.5rem;
+    }
+
+    .hackathonHeading h1:before {
+        height: 0.3rem;
+        bottom: 6px;
+    }
+
+    .hackathonHeading .HCbutton {
+        font-size: .6rem;
+    }
 }
