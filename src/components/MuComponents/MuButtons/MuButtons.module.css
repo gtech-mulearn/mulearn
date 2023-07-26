@@ -20,6 +20,9 @@
     font-weight: 600;
     letter-spacing: normal;
 }
+.btn_light{
+    color: #456ff6;
+}
 
 .btn_loader {
     margin-left: 18px;

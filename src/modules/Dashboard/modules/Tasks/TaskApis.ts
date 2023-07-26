@@ -51,8 +51,7 @@ export const getTasks = async (
     selectedValue: number,
     setTotalPages?: any,
     search?: string,
-    sortID?: string,
-    setLoading?: Dispatch<SetStateAction<boolean>>
+    sortID?: string
 ) => {
     try {
         const response = await privateGateway.get(
@@ -75,8 +74,6 @@ export const getTasks = async (
         if (error?.response) {
             console.log(error.response);
         }
-    } finally {
-        setLoading && setLoading(false);
     }
 };
 

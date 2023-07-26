@@ -13,12 +13,13 @@ type hasValidationError = Dispatch<
 >;
 
 export const getShortenUrls = (
+    toast: (options?: UseToastOptions | undefined) => ToastId,
     setShortUrlData: shortUrlData,
     page: number,
     selectedValue: number,
     setTotalPages?: any,
     search?: string,
-    sortID?: string
+    sortID?: string,
 ) => {
     privateGateway
         .get(dashboardRoutes.getShortenUrl, {
@@ -30,11 +31,28 @@ export const getShortenUrls = (
             }
         })
         .then(response => {
-            setShortUrlData(response.data.response.data);
-            // setTotalPages(response.data.response.pagination.totalPages);
+            const updatedShortUrlData = response.data.response.data.map(
+                (item: any) => ({
+                    ...item,
+                    short_url: `${import.meta.env.VITE_BACKEND_URL_AUTH}/r/${
+                        item.short_url
+                    }`
+                })
+            );
+            setShortUrlData(updatedShortUrlData);
+            setTotalPages(response.data.response.pagination.totalPages);
         })
         .catch(error => {
             console.log(error);
+            if (error?.response?.data?.message?.general[0]) {
+                toast({
+                    title: error.response.data.message.general[0],
+                    description: "",
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true
+                });
+            }
         });
 };
 
@@ -102,9 +120,7 @@ export const createShortenUrl = (
 export const editShortenUrl = (
     id: string,
     toast: (options?: UseToastOptions | undefined) => ToastId,
-    urlEditedData: any,
-    formik: any,
-    setHasValidationError: hasValidationError
+    urlEditedData: any
 ) => {
     privateGateway
         .put(
@@ -130,33 +146,6 @@ export const editShortenUrl = (
                 duration: 3000,
                 isClosable: true
             });
-            if (error.response.data.message.general.length > 0) {
-                setHasValidationError({
-                    error: true,
-                    message: error.response.data.message.general[0]
-                });
-            }
-            // if (
-            //     error.response.data.message.general &&
-            //     Object.keys(error.response.data.message.general).length > 0
-            // ) {
-            //     Object.entries(error.response.data.message.general).forEach(
-            //         ([fieldName, errorMessage]) => {
-            //             if (Array.isArray(errorMessage)) {
-            //                 formik.setFieldError(
-            //                     fieldName,
-            //                     errorMessage?.join(", ") || ""
-            //                 );
-            //             }
-            //         }
-            //     );
-            // }
-            // setTimeout(() => {
-            //     setHasValidationError({
-            //         error: false,
-            //         message: ""
-            //     });
-            // }, 3000);
         });
 };
 

@@ -3,8 +3,9 @@ import { convertToXLSX } from "./TaskApis";
 import { SingleButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useState, useMemo, MouseEventHandler } from "react";
-import { BiDownload } from "react-icons/bi";
+import { BiDownload, BiArrowBack } from "react-icons/bi";
 import { useToast } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
@@ -19,6 +20,7 @@ const CountCard = ({ title, count }: { title: string; count: number }) => {
 
 const TaskBulkImport = (props: Props) => {
     const [uploadResponse, setUploadResponse] = useState<any>(null);
+    const navigate = useNavigate();
     const handleClick = () => {
         //console.log("worked")
     };
@@ -39,12 +41,34 @@ const TaskBulkImport = (props: Props) => {
 
     return (
         <>
-            <SingleButton
-                text={"Download Template"}
-                onClick={handleClick}
-                icon={<BiDownload />}
-                link="https://drive.google.com/uc?export=download&id=1b2DUyj6zxDzY8q5pDTbL3NlZEL1J1dcq"
-            />
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "100%",
+                    alignItems: "center"
+                }}
+            >
+                <SingleButton
+                    text={"Go Back"}
+                    icon={<BiArrowBack />}
+                    style={{
+                        display: "flex",
+                        justifyContent: "start",
+                        width: "100%",
+                        alignItems: "center"
+                    }}
+                    onClick={() => {
+                        navigate("/dashboard/tasks");
+                    }}
+                />
+                <SingleButton
+                    text={"Download Template"}
+                    onClick={handleClick}
+                    icon={<BiDownload />}
+                    link="https://drive.google.com/uc?export=download&id=1b2DUyj6zxDzY8q5pDTbL3NlZEL1J1dcq"
+                />
+            </div>
 
             <BulkImport
                 path={dashboardRoutes.getTasksData + "import/"}
