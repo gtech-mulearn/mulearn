@@ -67,13 +67,14 @@ export const getCampusLearningCircles = async (
 };
 
 export const createCircle = async(
+    setId: React.Dispatch<SetStateAction<string>>,
     circleName:string,
     circleCode:string,
     ig:string
-)=>{
-    
-    try{
-        const response = await privateGateway.post(
+    )=>{
+        
+        try{
+            const response = await privateGateway.post(
             dashboardRoutes.createLearningCircle,
             {
                 name: circleName,
@@ -86,8 +87,10 @@ export const createCircle = async(
                 }`
             }
         );
-
+        const message: any = response?.data;
+        console.log(message.response);
         console.log(response)
+        setId(message.response);
         toast({
             title: "Learning Circle Created",
             description: "",
