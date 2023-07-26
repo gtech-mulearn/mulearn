@@ -11,7 +11,7 @@ enum ModalType {
     Verify,
     Delete
 }
-interface Data {
+export interface Data {
     [key: string]: string | number | boolean;
 }
 

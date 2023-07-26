@@ -3,35 +3,33 @@ import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComp
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as Yup from "yup";
 import { addOrganizer, getOrganizers } from "../services/HackathonApis";
 import { useEffect, useState } from "react";
-import { HackList } from "../services/HackathonInterfaces";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import Table from "@/MuLearnComponents/Table/Table";
+import Table, { Data } from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import { Blank } from "@/MuLearnComponents/Table/Blank";
 
 type Props = {};
 
 export const HackathonOrganizers = (props: Props) => {
-    const [data, setData] = useState("data");
+    const [data, setData] = useState<Data[]>([]);
     const toast = useToast();
     const { id } = useParams();
+    const navigate = useNavigate();
+
     const columnOrder = [
-        { column: "name", Label: "Name", isSortable: true },
-        { column: "user_ig_link_ig", Label: "Members", isSortable: false },
-        { column: "updated_by", Label: "Updated By", isSortable: false },
-        { column: "created_by", Label: "Created By", isSortable: false },
-        { column: "created_at", Label: "Created On", isSortable: false }
+        { column: "full_name", Label: "Name", isSortable: false },
+        { column: "email", Label: "Email", isSortable: false },
+        { column: "muid", Label: "Mu ID", isSortable: false },
     ];
 
-	useEffect(() => {
-		getOrganizers(setData, id)
-	}, [])
-	
+    useEffect(() => {
+        getOrganizers(setData, id);
+    }, []);
 
     const handleNothing = () => {
         console.log("clicked nothing");
@@ -53,6 +51,10 @@ export const HackathonOrganizers = (props: Props) => {
                     onSubmit={values => {
                         console.log(values.muid);
                         addOrganizer(id, values.muid, toast);
+                        getOrganizers(setData, id);
+                        setTimeout(() => {
+                            navigate(`/dashboard/hackathon/organizers/${id}`);
+                        }, 1000);
                     }}
                 >
                     <Form className={styles.inputContainer}>
@@ -79,7 +81,7 @@ export const HackathonOrganizers = (props: Props) => {
                     /> */}
                 {data && (
                     <Table
-                        rows={columnOrder}
+                        rows={data}
                         page={1}
                         perPage={50}
                         columnOrder={columnOrder}
