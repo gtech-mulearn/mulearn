@@ -41,7 +41,7 @@ const InterestGroupEdit = (props: Props) => {
                             duration: 3000,
                             isClosable: true
                         });
-                        navigate("/interest-groups");
+                        navigate("/dashboard/interest-groups");
                     }}
                 >
                     <Form className={styles.inputContainer}>
@@ -56,7 +56,7 @@ const InterestGroupEdit = (props: Props) => {
                                 text={"Decline"}
                                 className={styles.btn_cancel}
                                 onClick={() => {
-                                    navigate("/interest-groups");
+                                    navigate("/dashboard/interest-groups");
                                 }}
                             />
                             <button type="submit" className={styles.btn_submit}>

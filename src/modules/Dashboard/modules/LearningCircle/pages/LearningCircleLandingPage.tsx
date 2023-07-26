@@ -18,11 +18,11 @@ export const LearningCircleLandingPage = () => {
     }, []);
 
     const handleJoin = () => {
-        navigate("/learning-circle/find-circle");
+        navigate("/dashboard/learning-circle/find-circle");
     };
 
     const handleCreate = () => {
-        navigate("/learning-circle/create-circle");
+        navigate("/dashboard/learning-circle/create-circle");
     };
 
     return (
@@ -84,7 +84,7 @@ export const LearningCircleLandingPage = () => {
                                                     </p>
                                                     <button className={styles.learningCircleLandingPageBtn} onClick={() => {
 														navigate(
-                                                            `/learning-circle/details/${circle.id}`
+                                                            `/dashboard/learning-circle/details/${circle.id}`
                                                         );
 													}}>
                                                         <BsChevronRight className={[].join(" ")}/>

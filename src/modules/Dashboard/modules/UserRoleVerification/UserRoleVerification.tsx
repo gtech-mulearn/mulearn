@@ -11,13 +11,11 @@ import { editUserRoleVerification, getUserRoleVerification } from "./apis";
 function UsersRoleVerification() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
-    const firstFetch = useRef(true)
-
-
+    const firstFetch = useRef(true);
 
     const columnOrder = [
         { column: "full_name", Label: "Full Name", isSortable: true },
@@ -29,8 +27,6 @@ function UsersRoleVerification() {
         // { column: "role_id", Label: "Role ID", isSortable: false },
         { column: "verified", Label: "Verified", isSortable: false }
     ];
-
-
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -46,7 +42,6 @@ function UsersRoleVerification() {
 
     useEffect(() => {
         if (firstFetch.current) {
-
             if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
 
             getUserRoleVerification(setData, 1, perPage, setTotalPages, "", "");
@@ -61,20 +56,20 @@ function UsersRoleVerification() {
 
     const handleEdit = (id: string | number | boolean) => {
         //console.log(id);
-        navigate(`/user-role-verification/edit/${id}`);
+        navigate(`/dashboard/user-role-verification/edit/${id}`);
     };
     // const handleEdit = (id: string | number | boolean) => {
     //     console.log(id);
-    //     navigate(`/user-role-verification/edit/${id}`);
+    //     navigate(`/dashboard/user-role-verification/edit/${id}`);
     // };
 
     const handleDelete = (id: string | number | boolean) => {
         //console.log(id);
-        navigate(`/user-role-verification/delete/${id}`);
+        navigate(`/dashboard//user-role-verification/delete/${id}`);
     };
     // const handleDelete = (id: string | number | boolean) => {
     //     console.log(id);
-    //     navigate(`/user-role-verification/delete/${id}`);
+    //     navigate(`/dashboard/user-role-verification/delete/${id}`);
     // };
 
     const handlePerPageNumber = (selectedValue: number) => {
@@ -124,35 +119,36 @@ function UsersRoleVerification() {
 
     return (
         <>
-            <TableTop
-                onSearchText={handleSearch}
-                onPerPageNumber={handlePerPageNumber}
-            // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
-            />
             {data && (
-                <Table
-                    rows={data}
-                    page={currentPage}
-                    perPage={perPage}
-                    columnOrder={columnOrder}
-                    id={["id"]}
-                    onVerifyClick={handleVerify}
-                    modalVerifyHeading="Verify"
-                    modalVerifyContent="Are you sure you want to verify this user ?"
-                >
-                    <THead
+                <>
+                    <TableTop
+                        onSearchText={handleSearch}
+                        onPerPageNumber={handlePerPageNumber}
+                    />
+                    <Table
+                        rows={data}
+                        page={currentPage}
+                        perPage={perPage}
                         columnOrder={columnOrder}
-                        onIconClick={handleIconClick}
-                        verify={true}
-                    />
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        margin="10px 0"
-                        handleNextClick={handleNextClick}
-                        handlePreviousClick={handlePreviousClick}
-                    />
-                </Table>
+                        id={["id"]}
+                        onVerifyClick={handleVerify}
+                        modalVerifyHeading="Verify"
+                        modalVerifyContent="Are you sure you want to verify this user ?"
+                    >
+                        <THead
+                            columnOrder={columnOrder}
+                            onIconClick={handleIconClick}
+                            verify={true}
+                        />
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            margin="10px 0"
+                            handleNextClick={handleNextClick}
+                            handlePreviousClick={handlePreviousClick}
+                        />
+                    </Table>
+                </>
             )}
         </>
     );

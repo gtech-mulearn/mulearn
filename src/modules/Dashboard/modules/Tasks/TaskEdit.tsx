@@ -120,7 +120,7 @@ const TaskEdit = (props: Props) => {
                                     duration: 3000,
                                     isClosable: true
                                 });
-                                navigate("/tasks");
+                                navigate("/dashboard/tasks");
                             }}
                         >
                             <Form className={styles.inputContainer}>
@@ -237,7 +237,7 @@ const TaskEdit = (props: Props) => {
                                         text={"Decline"}
                                         className={styles.btn_cancel}
                                         onClick={() => {
-                                            navigate("/tasks");
+                                            navigate("/dashboard/tasks");
                                         }}
                                     />
                                     <button

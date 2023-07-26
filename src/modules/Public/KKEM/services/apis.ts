@@ -42,12 +42,12 @@ export const KKEMLogin = (
                             JSON.stringify(response.data.response)
                         );
                         if (response.data.response.exist_in_guild) {
-                            navigate("/learning-circle");
+                            navigate("/dashboard/learning-circle");
                         } else {
                             if (redirectPath) {
                                 navigate(`/${redirectPath}`);
                             } else {
-                                navigate("/learning-circle");
+                                navigate("/dashboard/learning-circle");
                             }
                         }
                     })

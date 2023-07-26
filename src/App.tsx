@@ -1,4 +1,5 @@
 import "./App.css";
+import { lazy } from "react";
 import {
     RouterProvider,
     createBrowserRouter,
@@ -12,50 +13,45 @@ import ResetPassword from "./modules/Common/Authentication/pages/ResetPassword";
 import PrivateRoutes from "./components/PrivateRoutes";
 import DashboardRootLayout from "./modules/Dashboard/layouts/DashboardRootLayout";
 import NotFound from "./components/NotFound";
-import {
-    ManageUsers,
-    InterestGroup,
-    Profile,
-    ConnectDiscord,
-    CampusStudentList,
-    Organizations
-} from "./modules/Dashboard/modules";
-import { Tasks } from "./modules/Dashboard/modules/Tasks/Tasks";
-import CreateOrganization from "./modules/Dashboard/modules/Organizations/CreateOrganization";
-import DeleteOrganizations from "./modules/Dashboard/modules/Organizations/DeleteOrganizations";
-import ManageUsersCreate from "./modules/Dashboard/modules/ManageUsers/ManageUsersCreate";
-import ManageUsersDelete from "./modules/Dashboard/modules/ManageUsers/ManageUsersDelete";
-import ManageUsersEdit from "./modules/Dashboard/modules/ManageUsers/ManageUsersEdit";
-import ManageRoles from "./modules/Dashboard/modules/ManageRoles/ManageRoles";
-// import ManageRolesEdit from "./modules/Dashboard/modules/ManageRoles/ManageRolesEdit";
-// import ManageRolesDelete from "./modules/Dashboard/modules/ManageRoles/ManageRolesDelete";
-// import ManageRolesCreate from "./modules/Dashboard/modules/ManageRoles/ManageRolesCreate";
-import UserRoleVerification from "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerification";
-import UserRoleVerificationDelete from "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationDelete";
-import UserRoleVerificationEdit from "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationEdit";
-import InterestGroupEdit from "./modules/Dashboard/modules/InterestGroup/InterestGroupEdit";
-import EditOrgnaization from "./modules/Dashboard/modules/Organizations/EditOrganization";
-import UrlShortener from "./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener";
-import TaskEdit from "./modules/Dashboard/modules/Tasks/TaskEdit";
-import TaskCreate from "./modules/Dashboard/modules/Tasks/TaskCreate";
-import TaskBulkImport from "./modules/Dashboard/modules/Tasks/TaskBulkImport";
-import Hackathon from "./modules/Dashboard/modules/Hackathon/pages/Hackathon";
-import HackathonCreate from "./modules/Dashboard/modules/Hackathon/pages/HackathonCreate";
-import KKEMLanding from "./modules/KKEM/modules/KKEMLanding";
-import KKEMAuth from "./modules/KKEM/modules/KKEMAuth";
-import RankCard from "./modules/Embeds/modules/RankCard/pages/RankCard";
-import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle";
-import LearningCircleCreate from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate";
-import ManageLocation from "./modules/Dashboard/modules/ManageLocation/ManageLocation";
-import AddLocation from "./modules/Dashboard/modules/ManageLocation/AddLocation";
-import EditLocation from "./modules/Dashboard/modules/ManageLocation/EditLocation";
-import { HackathonOrganizers } from "./modules/Dashboard/modules/Hackathon/pages/HackathonOrganizers";
-import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind";
-import { LearningCircleLandingPage } from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleLandingPage";
-import HackathonDetails from "./modules/Dashboard/modules/Hackathon/pages/HackathonDetails";
-import DistrictDashboard from "./modules/Dashboard/modules/DistrictDashboard/DistrictDashboard";
-import ZonalDashboard from "./modules/Dashboard/modules/ZonalDashboard/ZonalDashboard";
-import HackathonRegistration from "./modules/Dashboard/modules/Hackathon/pages/HackathonRegistration";
+const Profile = lazy(() => import("./modules/Dashboard/modules/Profile/pages/Profile"))
+const Tasks = lazy(() => import("./modules/Dashboard/modules/Tasks/Tasks").then(module => ({ default: module.Tasks })));
+const CreateOrganization = lazy(() => import("./modules/Dashboard/modules/Organizations/CreateOrganization"));
+const DeleteOrganizations = lazy(() => import("./modules/Dashboard/modules/Organizations/DeleteOrganizations"));
+const ManageUsersCreate = lazy(() => import("./modules/Dashboard/modules/ManageUsers/ManageUsersCreate"));
+const ManageUsersDelete = lazy(() => import("./modules/Dashboard/modules/ManageUsers/ManageUsersDelete"));
+const ManageUsersEdit = lazy(() => import("./modules/Dashboard/modules/ManageUsers/ManageUsersEdit"));
+const ManageRoles = lazy(() => import("./modules/Dashboard/modules/ManageRoles/ManageRoles"));
+const UserRoleVerification = lazy(() => import("./modules/Dashboard/modules/UserRoleVerification/UserRoleVerification"));
+const UserRoleVerificationDelete = lazy(() => import("./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationDelete"));
+const UserRoleVerificationEdit = lazy(() => import("./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationEdit"));
+const InterestGroupEdit = lazy(() => import("./modules/Dashboard/modules/InterestGroup/InterestGroupEdit"));
+const EditOrgnaization = lazy(() => import("./modules/Dashboard/modules/Organizations/EditOrganization"));
+const UrlShortener = lazy(() => import("./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener"));
+const TaskEdit = lazy(() => import("./modules/Dashboard/modules/Tasks/TaskEdit"));
+const TaskCreate = lazy(() => import("./modules/Dashboard/modules/Tasks/TaskCreate"));
+const TaskBulkImport = lazy(() => import("./modules/Dashboard/modules/Tasks/TaskBulkImport"));
+const Hackathon = lazy(() => import("./modules/Dashboard/modules/Hackathon/pages/Hackathon"));
+const HackathonCreate = lazy(() => import("./modules/Dashboard/modules/Hackathon/pages/HackathonCreate"));
+const KKEMLanding = lazy(() => import("./modules/Public/KKEM/modules/KKEMLanding"));
+const KKEMAuth = lazy(() => import("./modules/Public/KKEM/modules/KKEMAuth"));
+const LearningCircle = lazy(() => import("./modules/Dashboard/modules/LearningCircle/pages/LearningCircle"));
+const LearningCircleCreate = lazy(() => import("./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate"));
+const ManageLocation = lazy(() => import("./modules/Dashboard/modules/ManageLocation/ManageLocation"));
+const AddLocation = lazy(() => import("./modules/Dashboard/modules/ManageLocation/AddLocation"));
+const EditLocation = lazy(() => import("./modules/Dashboard/modules/ManageLocation/EditLocation"));
+const HackathonOrganizers = lazy(() => import("./modules/Dashboard/modules/Hackathon/pages/HackathonOrganizers").then(module => ({ default: module.HackathonOrganizers })));
+const FindCircle = lazy(() => import("./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind"))
+const LearningCircleLandingPage = lazy(() => import("./modules/Dashboard/modules/LearningCircle/pages/LearningCircleLandingPage").then(module => ({ default: module.LearningCircleLandingPage })));
+const Organizations = lazy(() => import("./modules/Dashboard/modules/Organizations/Organizations"));
+const ManageUsers = lazy(() => import("./modules/Dashboard/modules/ManageUsers/ManageUsers"));
+const InterestGroup = lazy(() => import("./modules/Dashboard/modules/InterestGroup/InterestGroup"));
+const CampusStudentList = lazy(() => import("./modules/Dashboard/modules/CampusStudentList/pages/CampusStudentList"));
+const HackathonDetails = lazy(() => import("./modules/Dashboard/modules/Hackathon/pages/HackathonDetails"));
+const DistrictDashboard = lazy(() => import("./modules/Dashboard/modules/DistrictDashboard/DistrictDashboard"));
+const ZonalDashboard = lazy(() => import("./modules/Dashboard/modules/ZonalDashboard/ZonalDashboard"));
+const HackathonRegistration = lazy(() => import("./modules/Dashboard/modules/Hackathon/pages/HackathonRegistration"));
+const LandingPage = lazy(() => import("./modules/Public/LearningCircles/modules/LandingPage/LandingPage"));
+const ConnectDiscord = lazy(() => import("./modules/Dashboard/modules/ConnectDiscord/pages/ConnectDiscord"));
 
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
@@ -80,10 +76,6 @@ const router = createBrowserRouter([
         element: <KKEMAuth />
     },
     {
-        path: "embed/rankcard",
-        element: <RankCard />
-    },
-    {
         path: "/",
         element: <AuthRoutes />,
         children: [
@@ -98,7 +90,7 @@ const router = createBrowserRouter([
         element: <PrivateRoutes />,
         children: [
             {
-                path: "/",
+                path: "/dashboard",
                 element: <DashboardRootLayout />,
                 children: [
                     { path: "profile", element: <Profile /> },
@@ -135,18 +127,6 @@ const router = createBrowserRouter([
                         element: <ManageUsersEdit />
                     },
                     { path: "manage-roles", element: <ManageRoles /> },
-                    // {
-                    //     path: "manage-roles/edit/:id",
-                    //     element: <ManageRolesEdit />
-                    // },
-                    // {
-                    //     path: "manage-roles/delete/:id",
-                    //     element: <ManageRolesDelete />
-                    // },
-                    // {
-                    //     path: "manage-roles/create",
-                    //     element: <ManageRolesCreate />
-                    // },
                     {
                         path: "user-role-verification",
                         element: <UserRoleVerification />
@@ -180,10 +160,6 @@ const router = createBrowserRouter([
                     {
                         path: "tasks/bulk-import",
                         element: <TaskBulkImport />
-                    },
-                    {
-                        path: "url-shortener",
-                        element: <UrlShortener />
                     },
                     {
                         path: "url-shortener",
@@ -246,9 +222,13 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: "profile/:id",
+        path: "/dashboard/profile/:id",
         element: <Profile />
-    }
+    },
+    {
+        path: "/learning-circle",
+        element: <LandingPage />
+    },
 ]);
 
 function App() {

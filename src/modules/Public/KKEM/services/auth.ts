@@ -9,7 +9,7 @@ export const userAuth = async (
     return await publicGateway
         .post(
             KKEMRoutes.userAuth,
-            { mu_id, dwms_id,integration:"DWMS" },
+            { emailOrMuid:mu_id, dwms_id,integration:"DWMS" },
             {
                 signal: controller?.signal
             }
@@ -27,7 +27,7 @@ export const userAuthConfirm = async (
     controller?: AbortController
 ) => {
     return await publicGateway
-        .post(`${KKEMRoutes.userAuth}${token}/`, null, {
+        .patch(`${KKEMRoutes.userAuth}${token}/`, null, {
             signal: controller?.signal
         })
         .then(response => {

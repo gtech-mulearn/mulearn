@@ -123,7 +123,7 @@ const Profile = () => {
                     content={`${userProfile.first_name} ${userProfile.last_name}`}
                 />
                 <meta name="viewport" content="width=device-width" />
-                <meta name="route-pattern" content="/profile/:id" />
+                <meta name="route-pattern" content="/dashboard/profile/:id" />
                 <meta name="description" content="you bio is here" />
 
                 {/* <!-- Open Graph / Facebook --> */}
@@ -159,7 +159,7 @@ const Profile = () => {
                     property="og:url"
                     content={
                         (import.meta.env.VITE_FRONTEND_URL as string) +
-                        /profile/ +
+                        "/dashboard/profile/" +
                         userProfile.muid
                     }
                 />
@@ -182,7 +182,7 @@ const Profile = () => {
                     property="twitter:site"
                     content={
                         (import.meta.env.VITE_FRONTEND_URL as string) +
-                        /profile/ +
+                        "/dashboard/profile/" +
                         userProfile.muid
                     }
                 />
@@ -293,7 +293,7 @@ const Profile = () => {
                                                             import.meta.env
                                                                 .VITE_FRONTEND_URL as string
                                                         }
-                                                        /profile/
+                                                        /dashboard/profile/
                                                         {userProfile.muid}
                                                     </p>
 
@@ -304,7 +304,7 @@ const Profile = () => {
                                                                     import.meta
                                                                         .env
                                                                         .VITE_FRONTEND_URL as string
-                                                                }/profile/${
+                                                                }/dashboard/profile/${
                                                                     userProfile.muid
                                                                 }`
                                                             );

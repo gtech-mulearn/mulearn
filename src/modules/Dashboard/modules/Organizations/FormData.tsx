@@ -84,7 +84,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
     useEffect(() => {
         if (isSuccess) {
-            navigate("/organizations");
+            navigate("/dashboard/organizations");
         }
         if (isLoading) {
             setIsDisabled(true);
@@ -522,7 +522,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             text={"Decline"}
                             className="btn light-btn"
                             onClick={() => {
-                                navigate("/organizations");
+                                navigate("/dashboard/organizations");
                             }}
                         />
                         <button

@@ -1,0 +1,65 @@
+.LClandingPage {
+    position: relative;
+}
+
+.LClandingPageNav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem 5rem;
+}
+
+.LClandingPageNav .navLinks,
+.LClandingPageNav .navLinks div {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.LClandingPageNav .navLinks div {
+    font-weight: 600;
+    color: #00204C;
+}
+
+.LClandingPageNav .navLinks button {
+    background: var(--blue);
+    border-radius: var(--borderRadius);
+    padding: .5rem 1rem;
+    font-size: .8rem;
+    color: #fff;
+}
+
+.LClandingPageHeader {
+    background-image: url(https://i.ibb.co/cCvB4r6/Learning-BG.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.LClandingPageHeader div {
+    width: fit-content;
+}
+
+.LClandingPageHeader span {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 3.5rem;
+    color: #000;
+}
+
+.LClandingPageHeader span img {
+    position: relative;
+    top: .75rem;
+    height: 3rem;
+}

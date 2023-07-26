@@ -22,7 +22,7 @@ const THead: React.FC<TableHeadProps> = ({
     return (
         <thead>
             <tr>
-                <th className={styles.th}>S/N</th>
+                <th className={styles.th}>Sl.no</th>
                 {columnOrder.map((column, index) => (
                     <th className={styles.th} key={column.column}>
                         <div className={styles.thContainer}>

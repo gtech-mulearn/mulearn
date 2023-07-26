@@ -67,7 +67,7 @@ const LearningCircleCreate = (props: Props) => {
                                     setTimeout(() => {
                                                 
                                         navigate(
-                                            `/learning-circle`
+                                            `/dashboard/learning-circle`
                                         );
                                     },3500);
                                 }}

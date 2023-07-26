@@ -9,20 +9,20 @@ import { getzonaldashboard } from "./apis";
 import { hasRole } from "../../../../services/common_functions";
 import { roles } from "../../../../services/types";
 import { columnsStudent, columnsCampus } from "./THeaders";
-import TableTopTab from "./TableTopTab"
+import TableTopTab from "./TableTopTab";
 import "./ZonalDashboard.scss";
 import { dashboardRoutes } from "../../../../services/urls";
 
 function ZonalDashboard() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(5);
     const [columns, setColumns] = useState(columnsStudent);
     const [activeTab, setActiveTab] = useState("Student management");
     const [sort, setSort] = useState("");
     const [popupStatus, setPopupStatus] = useState(false);
-    const firstFetch = useRef(true)
+    const firstFetch = useRef(true);
     const [isCreate, setIsCreate] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
 
@@ -32,7 +32,6 @@ function ZonalDashboard() {
 
     useEffect(() => {
         if (firstFetch.current) {
-
             if (!hasRole([roles.ADMIN, roles.FELLOW, roles.ZONAL_CAMPUS_LEAD]))
                 navigate("/404");
 
@@ -138,7 +137,8 @@ function ZonalDashboard() {
             tabname === "Student management"
         ) {
             return dashboardRoutes.zonalStudentData;
-        } if (
+        }
+        if (
             activeTab === "Campus management" &&
             tabname === "Campus management"
         ) {
@@ -149,40 +149,35 @@ function ZonalDashboard() {
     return (
         <>
             <TableTopTab active={activeTab} onTabClick={handleTabClick} />
-            <TableTop
-                onSearchText={handleSearch}
-                onPerPageNumber={handlePerPageNumber}
-                // CSV={
-                //     activeTab === "Student management"
-                //         ? dashboardRoutes.zonalStudentData
-                //         : dashboardRoutes.zonalCampusData
-                // }
-                CSV={CSV(activeTab)}
 
-            // CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}
-            // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
-            />
             {data && (
-                <Table
-                    rows={data}
-                    page={currentPage}
-                    perPage={perPage}
-                    columnOrder={columns}
-                    id={["code"]}
-                >
-                    <THead
+                <>
+                    <TableTop
+                        onSearchText={handleSearch}
+                        onPerPageNumber={handlePerPageNumber}
+                        CSV={CSV(activeTab)}
+                    />
+                    <Table
+                        rows={data}
+                        page={currentPage}
+                        perPage={perPage}
                         columnOrder={columns}
-                        onIconClick={handleIconClick}
-                    />
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        margin="10px 0"
-                        handleNextClick={handleNextClick}
-                        handlePreviousClick={handlePreviousClick}
-                    />
-                    {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-                </Table>
+                        id={["code"]}
+                    >
+                        <THead
+                            columnOrder={columns}
+                            onIconClick={handleIconClick}
+                        />
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            margin="10px 0"
+                            handleNextClick={handleNextClick}
+                            handlePreviousClick={handlePreviousClick}
+                        />
+                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                    </Table>
+                </>
             )}
         </>
     );

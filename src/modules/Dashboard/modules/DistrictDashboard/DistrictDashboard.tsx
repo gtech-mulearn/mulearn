@@ -1,39 +1,46 @@
-import Pagination from '@/MuLearnComponents/Pagination/Pagination'
-import THead from '@/MuLearnComponents/Table/THead'
-import Table from '@/MuLearnComponents/Table/Table'
-import TableTop from '@/MuLearnComponents/TableTop/TableTop'
-import { useToast } from '@chakra-ui/react'
-import { useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { getdistrictdashboard } from "./apis"
-import { hasRole } from '@/MuLearnServices/common_functions'
-import { roles } from '@/MuLearnServices/types'
-import { columnsCampus, columnsStudent } from "./THeaders"
-import { dashboardRoutes } from '@/MuLearnServices/urls'
-import "./Organizations.css"
-import "./DistricDashboard.scss"
-import TableTopTab from './TableTopTab'
+import Pagination from "@/MuLearnComponents/Pagination/Pagination";
+import THead from "@/MuLearnComponents/Table/THead";
+import Table from "@/MuLearnComponents/Table/Table";
+import TableTop from "@/MuLearnComponents/TableTop/TableTop";
+import { useToast } from "@chakra-ui/react";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { getdistrictdashboard } from "./apis";
+import { hasRole } from "@/MuLearnServices/common_functions";
+import { roles } from "@/MuLearnServices/types";
+import { columnsCampus, columnsStudent } from "./THeaders";
+import { dashboardRoutes } from "@/MuLearnServices/urls";
+import "./Organizations.css";
+import "./DistricDashboard.scss";
+import TableTopTab from "./TableTopTab";
 
 function DistrictDashboard() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(5);
     const [columns, setColumns] = useState(columnsStudent);
     const [activeTab, setActiveTab] = useState("Student management");
-    const [sort, setSort] = useState('');
-    const [popupStatus, setPopupStatus] = useState(false)
+    const [sort, setSort] = useState("");
+    const [popupStatus, setPopupStatus] = useState(false);
 
-    const [isCreate, setIsCreate] = useState(false)
-    const [isEdit, setIsEdit] = useState(false)
-    const firstFetch = useRef(true)
+    const [isCreate, setIsCreate] = useState(false);
+    const [isEdit, setIsEdit] = useState(false);
+    const firstFetch = useRef(true);
     const navigate = useNavigate();
 
-    const toast = useToast()
+    const toast = useToast();
 
     useEffect(() => {
         if (firstFetch.current) {
-            if (!hasRole([roles.ADMIN, roles.FELLOW, roles.DISTRICT_CAMPUS_LEAD])) navigate("/404");
+            if (
+                !hasRole([
+                    roles.ADMIN,
+                    roles.FELLOW,
+                    roles.DISTRICT_CAMPUS_LEAD
+                ])
+            )
+                navigate("/404");
 
             getdistrictdashboard(
                 activeTab,
@@ -113,10 +120,10 @@ function DistrictDashboard() {
         } else {
             alert("Error to load Table Headers");
         }
-        setCurrentPage(1)
-        setActiveTab(tab)
-        setPopupStatus(false)
-    }
+        setCurrentPage(1);
+        setActiveTab(tab);
+        setPopupStatus(false);
+    };
 
     const handleIconClick = (column: string) => {
         if (sort === column) {
@@ -130,8 +137,7 @@ function DistrictDashboard() {
                 "",
                 sort
             );
-        }
-        else {
+        } else {
             setSort(column);
             getdistrictdashboard(
                 activeTab,
@@ -142,8 +148,8 @@ function DistrictDashboard() {
                 "",
                 sort
             );
-		}
-		
+        }
+
         //console.log(`Icon clicked for column: ${column}`);
     };
 
@@ -154,7 +160,10 @@ function DistrictDashboard() {
         ) {
             return dashboardRoutes.districtStudentData;
         }
-        if (activeTab === "Campus management" && tabname === "Campus management") {
+        if (
+            activeTab === "Campus management" &&
+            tabname === "Campus management"
+        ) {
             return dashboardRoutes.districtCampusData;
         }
     };
@@ -162,34 +171,38 @@ function DistrictDashboard() {
     return (
         <>
             <TableTopTab active={activeTab} onTabClick={handleTabClick} />
-            <TableTop
-                onSearchText={handleSearch}
-                onPerPageNumber={handlePerPageNumber}
-                CSV={CSV(activeTab)}
-            // CSV={"https://dev.muelarn.org/api/v1/dashboard/ig/csv"}
-            // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
-            />
+
             {data && (
-                <Table
-                    rows={data}
-                    page={currentPage}
-                    perPage={perPage}
-                    columnOrder={columns}
-                    id={["code"]}
-                >
-                    <THead columnOrder={columns} onIconClick={handleIconClick} />
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        margin="10px 0"
-                        handleNextClick={handleNextClick}
-                        handlePreviousClick={handlePreviousClick}
+                <>
+                    <TableTop
+                        onSearchText={handleSearch}
+                        onPerPageNumber={handlePerPageNumber}
+                        CSV={CSV(activeTab)}
                     />
-                    {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-                </Table>
+                    <Table
+                        rows={data}
+                        page={currentPage}
+                        perPage={perPage}
+                        columnOrder={columns}
+                        id={["code"]}
+                    >
+                        <THead
+                            columnOrder={columns}
+                            onIconClick={handleIconClick}
+                        />
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            margin="10px 0"
+                            handleNextClick={handleNextClick}
+                            handlePreviousClick={handlePreviousClick}
+                        />
+                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                    </Table>
+                </>
             )}
         </>
     );
 }
 
-export default DistrictDashboard
+export default DistrictDashboard;
