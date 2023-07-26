@@ -607,7 +607,8 @@ input[type=file]::file-selector-button:hover {
     position: relative;
 }
 
-.hackathonBox .title {
+.hackathonBox .title,
+.hackathonBox .shared2 {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -621,6 +622,15 @@ input[type=file]::file-selector-button:hover {
     font-size: .8rem;
 }
 
+.hackathonBox .shared2 button{
+    margin-top: .5rem;
+    padding: .1rem;
+    font-size: .7rem;
+    background-color: var(--blue);
+    color: var(--White);
+    border-radius: 5.5px;
+}
+
 .hackathonBox .textWrapper {
     font-size: 1.3rem;
 }
@@ -630,15 +640,19 @@ input[type=file]::file-selector-button:hover {
     font-size: .8rem;
 }
 
-.hackathonBox .frame2 {
+.hackathonBox .frame2 ,
+.hackathonBox .frame2 div{
     display: flex;
-    gap: 1rem;
+    gap: .6rem;
+}
+
+.hackathonBox .frame2 div{
+    flex-direction: column;
 }
 
 .hackathonBox .group {
     background-color: #e5ebff;
     border-radius: 50%;
-    margin-bottom: 5px;
     padding: .3rem;
     cursor: pointer;
 }
