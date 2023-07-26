@@ -52,7 +52,7 @@ const UrlShortener = () => {
                 id: values.id,
                 title: values.title,
                 long_url: values.longUrl,
-                short_url: "mulearn.org/r/" + values.short_url
+                short_url: values.short_url
             };
             if (!editBtn) {
                 createShortenUrl(
@@ -61,18 +61,40 @@ const UrlShortener = () => {
                     formik,
                     setHasValidationError
                 );
-                setShortUrlData([...shortUrlData, urlCreateData]);
+                setShortUrlData(prevShortUrlData => [
+                    ...prevShortUrlData.filter(item => item.id !== values.id),
+                    {
+                        ...urlCreateData,
+                        short_url:
+                            import.meta.env.VITE_BACKEND_URL_AUTH +
+                            "/r/" +
+                            urlCreateData.short_url
+                    }
+                ]);
                 setTimeout(() => {
-                    getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
+                    getShortenUrls(
+                        toast,
+                        setShortUrlData,
+                        1,
+                        perPage,
+                        setTotalPages
+                    );
                     // formik.handleReset(formik.values);
                 }, 500);
                 setEditBtn(false);
             } else {
                 editShortenUrl(values.id, toast, urlCreateData);
-                setShortUrlData([
-                    ...shortUrlData.filter(item => item.id !== values.id),
-                    urlCreateData
+                setShortUrlData(prevShortUrlData => [
+                    ...prevShortUrlData.filter(item => item.id !== values.id),
+                    {
+                        ...urlCreateData,
+                        short_url:
+                            import.meta.env.VITE_BACKEND_URL_AUTH +
+                            "/r/" +
+                            urlCreateData.short_url
+                    }
                 ]);
+
                 formik.handleReset(formik.values);
             }
         },
@@ -94,24 +116,33 @@ const UrlShortener = () => {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
+        getShortenUrls(toast, setShortUrlData, 1, perPage, setTotalPages);
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
+        getShortenUrls(toast, setShortUrlData, 1, perPage, setTotalPages);
     };
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages, search, "");
+        getShortenUrls(
+            toast,
+            setShortUrlData,
+            1,
+            perPage,
+            setTotalPages,
+            search,
+            ""
+        );
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
         getShortenUrls(
+            toast,
             setShortUrlData,
             1,
             selectedValue,
@@ -125,6 +156,7 @@ const UrlShortener = () => {
         if (sort === column) {
             setSort(`-${column}`);
             getShortenUrls(
+                toast,
                 setShortUrlData,
                 1,
                 perPage,
@@ -135,6 +167,7 @@ const UrlShortener = () => {
         } else {
             setSort(column);
             getShortenUrls(
+                toast,
                 setShortUrlData,
                 1,
                 perPage,
@@ -157,7 +190,12 @@ const UrlShortener = () => {
         );
         formik.setFieldValue(
             "short_url",
-            shortUrlData.filter(item => item.id === id)[0].short_url.slice(14)
+            shortUrlData
+                .filter(item => item.id === id)[0]
+                .short_url.replace(
+                    import.meta.env.VITE_BACKEND_URL_AUTH + "/r/",
+                    ""
+                )
         );
         setEditBtn(true);
     };
@@ -166,9 +204,21 @@ const UrlShortener = () => {
         deleteShortenUrl(id.toString(), toast);
         setShortUrlData(shortUrlData.filter(item => item.id !== id));
     };
+    const handleCopy = (id: any) => {
+        navigator.clipboard.writeText(
+            shortUrlData.filter(item => item.id === id)[0].short_url
+        );
+        console.log(shortUrlData.filter(item => item.id === id)[0].short_url);
+        toast({
+            title: "Copied",
+            status: "success",
+            duration: 2000,
+            isClosable: true
+        });
+    };
 
     useEffect(() => {
-        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
+        getShortenUrls(toast, setShortUrlData, 1, perPage, setTotalPages);
     }, []);
 
     return (
@@ -263,7 +313,7 @@ const UrlShortener = () => {
                 </div>
             </div>
 
-            {shortUrlData && (
+            {shortUrlData[0].id !== "" && (
                 <>
                     <TableTop
                         onSearchText={handleSearch}
@@ -277,6 +327,7 @@ const UrlShortener = () => {
                         id={["id"]}
                         onEditClick={handleEdit}
                         onDeleteClick={handleDelete}
+                        onCopyClick={handleCopy}
                     >
                         <THead
                             columnOrder={columnOrder}
