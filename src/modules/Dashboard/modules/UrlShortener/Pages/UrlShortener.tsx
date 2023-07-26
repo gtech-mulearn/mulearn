@@ -296,7 +296,7 @@ const UrlShortener = () => {
                 </div>
             </div>
 
-            {shortUrlData && (
+            {shortUrlData[0].id !== "" && (
                 <>
                     <TableTop
                         onSearchText={handleSearch}
