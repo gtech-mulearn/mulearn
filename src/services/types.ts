@@ -1,5 +1,3 @@
-import { type } from "os";
-
 export const roles = {
     ADMIN: "Admins",
     DISCORD_MODERATOR: "Discord Moderator",
