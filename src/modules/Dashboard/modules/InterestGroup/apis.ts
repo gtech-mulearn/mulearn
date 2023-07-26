@@ -4,6 +4,8 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 import { Dispatch, SetStateAction } from "react";
 
+import { modalStatesType } from "./InterestGroup";
+
 export const getInterestGroups = async (
     setData: any,
     page: number,
@@ -35,14 +37,14 @@ export const getInterestGroups = async (
 
 export const createInterestGroups = async (
     name: string,
-    onClose: Dispatch<SetStateAction<boolean>>
+    onClose: Dispatch<SetStateAction<modalStatesType>>
 ) => {
     try {
         const response = await privateGateway.post(dashboardRoutes.getIgData, {
             name: name
         });
         if (response.data?.statusCode === 200) {
-            onClose(false);
+            onClose(null);
         }
         const message: any = response?.data;
         //console.log(message);
