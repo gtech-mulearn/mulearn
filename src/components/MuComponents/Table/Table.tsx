@@ -45,6 +45,7 @@ type TableProps = {
     onEditClick?: (column: string | number | boolean) => void;
     onDeleteClick?: (column: string | undefined) => void;
     onVerifyClick?: (column: string | number | boolean) => void;
+    onCopyClick?: (column: string | number | boolean) => void;
     modalVerifyHeading?: string;
     modalVerifyContent?: string;
     modalDeleteHeading?: string;
@@ -157,6 +158,18 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                     props.id.map((column, columnIndex) => (
                                         <td className={styles.td} key={column}>
                                             <div className={styles.icons}>
+                                                {props.onCopyClick && (
+                                                    <button
+                                                        onClick={() =>
+                                                            props.onCopyClick &&
+                                                            props.onCopyClick(
+                                                                rowData[column]
+                                                            )
+                                                        }
+                                                    >
+                                                        <i className="fi fi-rr-duplicate"></i>
+                                                    </button>
+                                                )}
                                                 {props.onEditClick && (
                                                     <button
                                                         onClick={() =>

@@ -166,6 +166,18 @@ const UrlShortener = () => {
         deleteShortenUrl(id.toString(), toast);
         setShortUrlData(shortUrlData.filter(item => item.id !== id));
     };
+    const handleCopy = (id: any) => {
+        navigator.clipboard.writeText(
+            shortUrlData.filter(item => item.id === id)[0].short_url
+        );
+        console.log( shortUrlData.filter(item => item.id === id)[0].short_url);
+        toast({
+            title: "Copied",
+            status: "success",
+            duration: 2000,
+            isClosable: true
+        });
+    };
 
     useEffect(() => {
         getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
@@ -277,6 +289,7 @@ const UrlShortener = () => {
                         id={["id"]}
                         onEditClick={handleEdit}
                         onDeleteClick={handleDelete}
+                        onCopyClick={handleCopy}
                     >
                         <THead
                             columnOrder={columnOrder}
