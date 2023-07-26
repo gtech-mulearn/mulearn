@@ -13,7 +13,6 @@ import ResetPassword from "./modules/Common/Authentication/pages/ResetPassword";
 import PrivateRoutes from "./components/PrivateRoutes";
 import DashboardRootLayout from "./modules/Dashboard/layouts/DashboardRootLayout";
 import NotFound from "./components/NotFound";
-// import Organizations from "./modules/Dashboard/modules/Organizations/Organizations";
 const Profile = lazy(() => import("./modules/Dashboard/modules/Profile/pages/Profile"))
 const Tasks = lazy(() => import("./modules/Dashboard/modules/Tasks/Tasks").then(module => ({ default: module.Tasks })));
 const CreateOrganization = lazy(() => import("./modules/Dashboard/modules/Organizations/CreateOrganization"));
@@ -22,9 +21,6 @@ const ManageUsersCreate = lazy(() => import("./modules/Dashboard/modules/ManageU
 const ManageUsersDelete = lazy(() => import("./modules/Dashboard/modules/ManageUsers/ManageUsersDelete"));
 const ManageUsersEdit = lazy(() => import("./modules/Dashboard/modules/ManageUsers/ManageUsersEdit"));
 const ManageRoles = lazy(() => import("./modules/Dashboard/modules/ManageRoles/ManageRoles"));
-// const ManageRolesEdit=lazy(()=> import ("./modules/Dashboard/modules/ManageRoles/ManageRolesEdit"));
-// const ManageRolesDelete=lazy(()=> import ("./modules/Dashboard/modules/ManageRoles/ManageRolesDelete"));
-// const ManageRolesCreate=lazy(()=> import ("./modules/Dashboard/modules/ManageRoles/ManageRolesCreate"));
 const UserRoleVerification = lazy(() => import("./modules/Dashboard/modules/UserRoleVerification/UserRoleVerification"));
 const UserRoleVerificationDelete = lazy(() => import("./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationDelete"));
 const UserRoleVerificationEdit = lazy(() => import("./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationEdit"));
@@ -56,50 +52,6 @@ const ZonalDashboard = lazy(() => import("./modules/Dashboard/modules/ZonalDashb
 const HackathonRegistration = lazy(() => import("./modules/Dashboard/modules/Hackathon/pages/HackathonRegistration"));
 const LandingPage = lazy(() => import("./modules/Public/LearningCircles/modules/LandingPage/LandingPage"));
 const ConnectDiscord = lazy(() => import("./modules/Dashboard/modules/ConnectDiscord/pages/ConnectDiscord"));
-// import {
-//     ManageUsers,
-//     InterestGroup,
-
-//     ConnectDiscord,
-//     CampusStudentList,
-//     Organizations
-// } from "./modules/Dashboard/modules";
-// import { Tasks } from "./modules/Dashboard/modules/Tasks/Tasks";
-// import CreateOrganization from "./modules/Dashboard/modules/Organizations/CreateOrganization";
-// import DeleteOrganizations from "./modules/Dashboard/modules/Organizations/DeleteOrganizations";
-// import ManageUsersCreate from "./modules/Dashboard/modules/ManageUsers/ManageUsersCreate";
-// import ManageUsersDelete from "./modules/Dashboard/modules/ManageUsers/ManageUsersDelete";
-// import ManageUsersEdit from "./modules/Dashboard/modules/ManageUsers/ManageUsersEdit";
-// import ManageRoles from "./modules/Dashboard/modules/ManageRoles/ManageRoles";
-// // import ManageRolesEdit from "./modules/Dashboard/modules/ManageRoles/ManageRolesEdit";
-// // import ManageRolesDelete from "./modules/Dashboard/modules/ManageRoles/ManageRolesDelete";
-// // import ManageRolesCreate from "./modules/Dashboard/modules/ManageRoles/ManageRolesCreate";
-// import UserRoleVerification from "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerification";
-// import UserRoleVerificationDelete from "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationDelete";
-// import UserRoleVerificationEdit from "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationEdit";
-// import InterestGroupEdit from "./modules/Dashboard/modules/InterestGroup/InterestGroupEdit";
-// import EditOrgnaization from "./modules/Dashboard/modules/Organizations/EditOrganization";
-// import UrlShortener from "./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener";
-// import TaskEdit from "./modules/Dashboard/modules/Tasks/TaskEdit";
-// import TaskCreate from "./modules/Dashboard/modules/Tasks/TaskCreate";
-// import TaskBulkImport from "./modules/Dashboard/modules/Tasks/TaskBulkImport";
-// import Hackathon from "./modules/Dashboard/modules/Hackathon/pages/Hackathon";
-// import HackathonCreate from "./modules/Dashboard/modules/Hackathon/pages/HackathonCreate";
-// import KKEMLanding from "./modules/Public/KKEM/modules/KKEMLanding";
-// import KKEMAuth from "./modules/Public/KKEM/modules/KKEMAuth";
-// import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle";
-// import LearningCircleCreate from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate";
-// import ManageLocation from "./modules/Dashboard/modules/ManageLocation/ManageLocation";
-// import AddLocation from "./modules/Dashboard/modules/ManageLocation/AddLocation";
-// import EditLocation from "./modules/Dashboard/modules/ManageLocation/EditLocation";
-// import { HackathonOrganizers } from "./modules/Dashboard/modules/Hackathon/pages/HackathonOrganizers";
-// import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind";
-// import { LearningCircleLandingPage } from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleLandingPage";
-// import HackathonDetails from "./modules/Dashboard/modules/Hackathon/pages/HackathonDetails";
-// import DistrictDashboard from "./modules/Dashboard/modules/DistrictDashboard/DistrictDashboard";
-// import ZonalDashboard from "./modules/Dashboard/modules/ZonalDashboard/ZonalDashboard";
-// import HackathonRegistration from "./modules/Dashboard/modules/Hackathon/pages/HackathonRegistration";
-// import LandingPage from "./modules/Public/LearningCircles/modules/LandingPage/LandingPage";
 
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
