@@ -85,7 +85,7 @@ export const login = (
                             JSON.stringify(response.data.response)
                         );
                         if (response.data.response.exist_in_guild) {
-                            navigate("/profile");
+                            navigate("/dashboard/profile");
                         } else {
                             if (redirectPath) {
                                 navigate(`/${redirectPath}`);
@@ -265,7 +265,7 @@ export const otpVerification = (
                         JSON.stringify(response.data.response)
                     );
                     if (response.data.response.exist_in_guild) {
-                        navigate("/profile");
+                        navigate("/dashboard/profile");
                     } else {
                         if (redirectPath) {
                             navigate(`/${redirectPath}`);
