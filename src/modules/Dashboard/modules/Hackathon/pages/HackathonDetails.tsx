@@ -61,13 +61,13 @@ export const HackathonDetails = (props: Props) => {
                                 <h3>
                                     {DateConverter(
                                         convertDateToYYYYMMDD(
-                                            String(data?.event_start)
+                                            data?.event_start
                                         )
                                     )}{" "}
                                     <b style={{ color: "var(--blue)" }}>to</b>{" "}
                                     {DateConverter(
                                         convertDateToYYYYMMDD(
-                                            String(data?.event_end)
+                                            data?.event_end
                                         )
                                     )}
                                 </h3>
@@ -83,7 +83,7 @@ export const HackathonDetails = (props: Props) => {
                         <h4>
                             {DateConverter(
                                 convertDateToYYYYMMDD(
-                                    String(data?.application_ends)
+                                    data?.application_ends
                                 )
                             )}
                         </h4>

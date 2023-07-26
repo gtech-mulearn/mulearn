@@ -7,6 +7,8 @@
 	display: flex;
 	align-items: center;
 	min-height: 65vh;
+	flex-direction: column;
+	gap: 2rem;
 }
 
 .container {
