@@ -131,6 +131,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
         }, 2000)
     }, [props.rows]);
 
+    console.log(props.rows)
     return (
         <>
 
@@ -260,7 +261,20 @@ const Table: FC<TableProps> = (props: TableProps) => {
                     </table>
                 }
             </div>
-            <div className={styles.page}>{props.children?.[1]}</div>
+            
+            {(()=>{
+                if(isLoading) return ""
+                if(props.rows.length)
+                    return(
+                        <div className={styles.page}>{props.children?.[1]}</div>
+                    )
+                else
+                    return (
+                    <h1 style={{
+                        color:'red'
+                    }}>No data to display</h1>
+                    )
+            })()} 
         </>
     );
 };
