@@ -88,22 +88,22 @@ export const dashboardRoutes = {
 } as const;
 
 export const organizationRoutes = {
-    getOrganizationsAll: "/api/v1/organisation/institutes/info/all_inst",
-    getCompany: "/api/v1/organisation/institutes/show/Company",
-    getAffiliation: "/api/v1/organisation/institutes/org/affiliation",
-    getLocation: "/api/v1/location",
-    postAddOrganization: "/api/v1/organisation/institutes/add",
-    putUpdateOrganization: "/api/v1/organisation/institutes",
+    getOrganizationsAll: "/api/v1/organisation/institutes/info/all_inst/",
+    getCompany: "/api/v1/organisation/institutes/show/Company/",
+    getAffiliation: "/api/v1/organisation/institutes/org/affiliation/",
+    getLocation: "/api/v1/location/",
+    postAddOrganization: "/api/v1/organisation/institutes/add/",
+    putUpdateOrganization: "/api/v1/organisation/institutes/",
     deleteOrgnaization: "/api/v1/organisation/institutes/",
     postGetInfo: "/api/v1/organisation/institutes/info/",
-    getOrgCsv: "/api/v1/organisation/institutes/csv"
+    getOrgCsv: "/api/v1/organisation/institutes/csv/"
 };
 
 export const ManageLocationsRoutes = {
-    getCountryData: "/api/v1/location/country",
-    getStateData:"api/v1/location/${country}/states",
-    getZoneData:"api/v1/location/${country}/${state}/zone",
-    getDistrictData:"api/v1/location/${country}/${state}/${zone}/district",
+    getCountryData: "/api/v1/location/country/",
+    getStateData:"api/v1/location/${country}/states/",
+    getZoneData:"api/v1/location/${country}/${state}/zone/",
+    getDistrictData:"api/v1/location/${country}/${state}/${zone}/district/",
 }
 
 export const KKEMRoutes = {
