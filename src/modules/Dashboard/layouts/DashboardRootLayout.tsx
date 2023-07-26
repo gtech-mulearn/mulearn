@@ -3,12 +3,12 @@ import styles from "../components/SideNavBar.module.css";
 import { Outlet } from "react-router-dom";
 import SideNavBar from "../components/SideNavBar";
 import TopNavBar from "../components/TopNavBar";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import adminButtons from "../utils/userwiseButtonsData/adminButtons";
 // import companyButtons from "../utils/userwiseButtonsData/companyButtons";
 // import userButtons from "../utils/userwiseButtonsData/userButtons";
 import { roles } from "../../../services/types";
-
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 //TODO: Remove flaticons and use react-icons or vice-versa
 const DashboardRootLayout = (props: { component?: any }) => {
     const [connected, setConnected] = useState(false);
@@ -181,10 +181,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
             <div className={styles.right_side} id="right">
                 <TopNavBar />
                 <div className={styles.main_content}>
-                    <Outlet />
+                    <Suspense fallback={<MuLoader />}>
+
+                        <Outlet />
+                    </Suspense>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
