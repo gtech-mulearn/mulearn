@@ -18,8 +18,7 @@ const InterestGroupCreateModal: React.FC<ModalProps> = ({ isOpen, onClose }) => 
   if (!isOpen) return null;
   const toast = useToast();
   const navigate = useNavigate();
-  const [hasError, setHasError] = useState(false);
-
+  
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modal}>

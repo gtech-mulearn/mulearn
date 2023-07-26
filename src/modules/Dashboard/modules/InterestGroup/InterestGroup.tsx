@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { deleteInterestGroups, getInterestGroups } from "./apis";
+import { createInterestGroups, deleteInterestGroups, getInterestGroups } from "./apis";
 import { roles } from "@/MuLearnServices/types";
 import { hasRole } from "@/MuLearnServices/common_functions";
 import { useNavigate } from "react-router-dom";
@@ -12,9 +12,7 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./InterestGroup.module.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
-import InterestGroupCreateModal from "./InterestGroupCreateModal";
-import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-
+import ModalCreateComponent from "@/MuLearnComponents/ModalCreate/ModalCreate";
 function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -103,11 +101,29 @@ function InterestGroup() {
         //console.log(`Icon clicked for column: ${column}`);
     };
 
+    //interestGroupCreate api call
+    const handleDataRender = (name: string,
+        onClose: Dispatch<SetStateAction<boolean>>) => {
+        createInterestGroups(
+            name,
+            onClose)
+    };
+
     return (
         <>
-            <InterestGroupCreateModal
+            <ModalCreateComponent
                 isOpen={openModal}
                 onClose={setOpenModal}
+                heading={"IG Create Page"}
+                content={"Enter the name of the Interest Group in the input below that you wish to create."}
+                placeholder={"Enter a name"}
+                inputType={"text"}
+                name={"igName"}
+                toastMsg={"Interest Group created"}
+                navigateRoute={"/dashboard/interest-groups"}
+                btnPrimaryText={"Confirm"}
+                btnSecondaryText={"Decline"}
+                onRender={handleDataRender}
             />
             <div className={styles.createBtnContainer}>
                 <MuButton
