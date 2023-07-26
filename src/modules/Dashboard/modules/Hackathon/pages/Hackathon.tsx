@@ -7,7 +7,6 @@ import { DateConverter } from "../../../utils/common";
 import {
     deleteHackathon,
     getHackathons,
-    getOwnHackathons,
     publishHackathon
 } from "../services/HackathonApis";
 import { useToast } from "@chakra-ui/react";
@@ -38,7 +37,6 @@ const Hackathon = () => {
 
     useEffect(() => {
         getHackathons(setData);
-        getOwnHackathons(setOwnData);
     }, []);
 
     const toggleModal = (index: number, type: string) => {
@@ -140,7 +138,7 @@ const Hackathon = () => {
                                                                         );
                                                                         setTimeout(
                                                                             () => {
-                                                                                getOwnHackathons(
+                                                                                getHackathons(
                                                                                     setOwnData
                                                                                 );
                                                                                 getHackathons(
@@ -219,7 +217,7 @@ const Hackathon = () => {
                                                                         );
                                                                         setTimeout(
                                                                             () => {
-                                                                                getOwnHackathons(
+                                                                                getHackathons(
                                                                                     setOwnData
                                                                                 );
                                                                                 getHackathons(

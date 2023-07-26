@@ -21,7 +21,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { useToast } from "@chakra-ui/react";
 import { HackList } from "../services/HackathonInterfaces";
-import { convertDateToYYYYMMDD, getLocationIdByName } from "../../../utils/common";
+import {
+    convertDateToYYYYMMDD,
+    getLocationIdByName
+} from "../../../utils/common";
 
 /**
  * TODO: Move YUP Validations to another file.
@@ -29,7 +32,7 @@ import { convertDateToYYYYMMDD, getLocationIdByName } from "../../../utils/commo
  */
 const options = [
     { label: "Offline", value: "offline" },
-    { label: "Online", value: "online" },
+    { label: "Online", value: "online" }
 ];
 
 const HackathonCreate = () => {
@@ -40,23 +43,24 @@ const HackathonCreate = () => {
     const [data, setData] = useState<HackList>();
     const [district, setDistrict] = useState<Option[]>([]);
     const [institutions, setInstitutions] = useState<Option[]>([]);
-    const [institutionsChunks, setInstitutionsChunks] = useState<Option[][]>([]);
+    const [institutionsChunks, setInstitutionsChunks] = useState<Option[][]>(
+        []
+    );
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
     const { id } = useParams();
-    const toast = useToast()
-    const navigate = useNavigate()
+    const toast = useToast();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (id !== undefined) {
             getHackDetails(setData, id);
             setTimeout(() => {
-                setTemp(true)
+                setTemp(true);
             }, 3000);
-			setEdit(true);
-        }
-        else {
-            setTemp(true)
+            setEdit(true);
+        } else {
+            setTemp(true);
         }
         if (formData === "") {
             getFormFields(setFormData);
@@ -97,9 +101,7 @@ const HackathonCreate = () => {
             .required("Required")
             .min(2, "Too Short!")
             .max(50, "Too Long!"),
-        tagline: Yup.string()
-            .min(2, "Too Short!")
-            .max(100, "Too Long!"),
+        tagline: Yup.string().min(2, "Too Short!").max(100, "Too Long!"),
         // .required("Required"),
         orgId: Yup.string().min(2, "Too Short!"),
         place: Yup.string().min(2, "Too Short!"),
@@ -211,48 +213,50 @@ const HackathonCreate = () => {
         const formattedFormFields = JSON.stringify(selectedFields);
         console.log(formattedFormFields);
 
-        {edit
-            ? editHackathon(
-				values.title,
-				values.tagline,
-				values.description,
-				values.participantCount,
-				values.orgId,
-				values.districtId,
-				values.place,
-				values.isOpenToAll,
-				a,
-				b,
-				c,
-				d,
-				formattedFormFields,
-				values.event_logo,
-				values.banner,
-				values.type,
-				values.website,
-				toast,
-				id
-			)
-            : createHackathon(
-				values.title,
-				values.tagline,
-				values.description,
-				values.participantCount,
-				values.orgId,
-				values.districtId,
-				values.place,
-				values.isOpenToAll,
-				a,
-				b,
-				c,
-				d,
-				formattedFormFields,
-				values.event_logo,
-				values.banner,
-				values.type,
-				values.website,
-				toast,
-            )}
+        {
+            edit
+                ? editHackathon(
+                      values.title,
+                      values.tagline,
+                      values.description,
+                      values.participantCount,
+                      values.orgId,
+                      values.districtId,
+                      values.place,
+                      values.isOpenToAll,
+                      a,
+                      b,
+                      c,
+                      d,
+                      formattedFormFields,
+                      values.event_logo,
+                      values.banner,
+                      values.type,
+                      values.website,
+                      toast,
+                      id
+                  )
+                : createHackathon(
+                      values.title,
+                      values.tagline,
+                      values.description,
+                      values.participantCount,
+                      values.orgId,
+                      values.districtId,
+                      values.place,
+                      values.isOpenToAll,
+                      a,
+                      b,
+                      c,
+                      d,
+                      formattedFormFields,
+                      values.event_logo,
+                      values.banner,
+                      values.type,
+                      values.website,
+                      toast
+                  );
+        }
         resetForm();
         setTimeout(() => {
             navigate("/dashboard/hackathon");
@@ -294,15 +298,29 @@ const HackathonCreate = () => {
                                     description: data?.description || "",
                                     participantCount:
                                         data?.participant_count || "",
-                                    eventStart: convertDateToYYYYMMDD(String(data?.event_start)) || "",
-                                    eventEnd: convertDateToYYYYMMDD(String(data?.event_end)) || "",
+                                    eventStart:
+                                        convertDateToYYYYMMDD(
+                                            String(data?.event_start)
+                                        ) || "",
+                                    eventEnd:
+                                        convertDateToYYYYMMDD(
+                                            String(data?.event_end)
+                                        ) || "",
                                     applicationStart:
-                                        convertDateToYYYYMMDD(String(data?.application_start)) || "",
+                                        convertDateToYYYYMMDD(
+                                            String(data?.application_start)
+                                        ) || "",
                                     applicationEnds:
-                                        convertDateToYYYYMMDD(String(data?.application_ends)) || "",
+                                        convertDateToYYYYMMDD(
+                                            String(data?.application_ends)
+                                        ) || "",
                                     orgId: data?.organisation || "",
                                     place: data?.place || "",
-                                    districtId: getLocationIdByName(district, String(data?.district)) || "",
+                                    districtId:
+                                        getLocationIdByName(
+                                            district,
+                                            String(data?.district)
+                                        ) || "",
                                     isOpenToAll: data?.is_open_to_all || false,
                                     formFields: [],
                                     event_logo: "",
@@ -340,8 +358,16 @@ const HackathonCreate = () => {
                                                 {/* <Tab>FAQs</Tab> */}
                                             </TabList>
                                             <div className={styles.form}>
-                                                <TabPanel className={styles.formGroupStart}>
-                                                    <div className={styles.formGroupInitial}>
+                                                <TabPanel
+                                                    className={
+                                                        styles.formGroupStart
+                                                    }
+                                                >
+                                                    <div
+                                                        className={
+                                                            styles.formGroupInitial
+                                                        }
+                                                    >
                                                         <FormikTextInputWhite
                                                             label="Name"
                                                             name="title"
@@ -454,11 +480,26 @@ const HackathonCreate = () => {
                                                 </TabPanel>
 
                                                 <TabPanel>
-                                                    <div className={styles.formGroupLogo}>
-                                                        <div className={styles.InputSet}>
-                                                            <label className={styles.formLabel}>
+                                                    <div
+                                                        className={
+                                                            styles.formGroupLogo
+                                                        }
+                                                    >
+                                                        <div
+                                                            className={
+                                                                styles.InputSet
+                                                            }
+                                                        >
+                                                            <label
+                                                                className={
+                                                                    styles.formLabel
+                                                                }
+                                                            >
                                                                 Banner
-                                                                <button>View prev upload</button>
+                                                                <button>
+                                                                    View prev
+                                                                    upload
+                                                                </button>
                                                             </label>
                                                             <div
                                                                 className={
@@ -481,14 +522,17 @@ const HackathonCreate = () => {
                                                                             styles.text
                                                                         }
                                                                     >
-                                                                        Click to choose
+                                                                        Click to
+                                                                        choose
                                                                     </p>
                                                                     <span
                                                                         className={
                                                                             styles.text1
                                                                         }
                                                                     >
-                                                                        60x12 .png or .jpeg
+                                                                        60x12
+                                                                        .png or
+                                                                        .jpeg
                                                                         5MB max
                                                                     </span>
                                                                 </label>
@@ -501,17 +545,20 @@ const HackathonCreate = () => {
                                                                         event: any
                                                                     ) => {
                                                                         if (
-                                                                            event.target
+                                                                            event
+                                                                                .target
                                                                                 .files
                                                                         ) {
                                                                             setFieldValue(
                                                                                 "banner",
-                                                                                event.target
+                                                                                event
+                                                                                    .target
                                                                                     .files[0]
                                                                             );
                                                                         }
                                                                         setSelectedFiles(
-                                                                            event.target
+                                                                            event
+                                                                                .target
                                                                                 .files[0]
                                                                         );
                                                                     }}
@@ -524,35 +571,59 @@ const HackathonCreate = () => {
                                                                     }}
                                                                 />
                                                                 {selectedFiles && (
-                                                                <div
-                                                                    className={
-                                                                        styles.fileInfo
-                                                                    }
-                                                                >
-                                                                    <b>
-                                                                        {selectedFiles.name}
-                                                                    </b>
-                                                                </div>
-                                                            )}
+                                                                    <div
+                                                                        className={
+                                                                            styles.fileInfo
+                                                                        }
+                                                                    >
+                                                                        <b>
+                                                                            {
+                                                                                selectedFiles.name
+                                                                            }
+                                                                        </b>
+                                                                    </div>
+                                                                )}
                                                             </div>
                                                             {errors.banner && (
                                                                 <div
-                                                                    className={styles.error}
+                                                                    className={
+                                                                        styles.error
+                                                                    }
                                                                 >
-                                                                    {errors.banner}
+                                                                    {
+                                                                        errors.banner
+                                                                    }
                                                                 </div>
                                                             )}
                                                         </div>
 
-                                                        <div className={styles.InputSet}>
-                                                            <label className={styles.formLabel}>
+                                                        <div
+                                                            className={
+                                                                styles.InputSet
+                                                            }
+                                                        >
+                                                            <label
+                                                                className={
+                                                                    styles.formLabel
+                                                                }
+                                                            >
                                                                 Event Logo
-                                                                <button>View prev upload</button>
+                                                                <button>
+                                                                    View prev
+                                                                    upload
+                                                                </button>
                                                             </label>
-                                                            <div className={styles.upload_area}>
+                                                            <div
+                                                                className={
+                                                                    styles.upload_area
+                                                                }
+                                                            >
                                                                 <label
                                                                     htmlFor="file-upload1-input"
-                                                                    className={styles.upload_button}>
+                                                                    className={
+                                                                        styles.upload_button
+                                                                    }
+                                                                >
                                                                     <FiUploadCloud
                                                                         className={
                                                                             styles.icon
@@ -563,15 +634,18 @@ const HackathonCreate = () => {
                                                                             styles.text
                                                                         }
                                                                     >
-                                                                        Click to choose
+                                                                        Click to
+                                                                        choose
                                                                     </p>
                                                                     <span
                                                                         className={
                                                                             styles.text1
                                                                         }
                                                                     >
-                                                                        300x124 .png or
-                                                                        .jpeg 10MB max
+                                                                        300x124
+                                                                        .png or
+                                                                        .jpeg
+                                                                        10MB max
                                                                     </span>
                                                                 </label>
                                                                 <input
@@ -583,17 +657,20 @@ const HackathonCreate = () => {
                                                                         event: any
                                                                     ) => {
                                                                         if (
-                                                                            event.target
+                                                                            event
+                                                                                .target
                                                                                 .files
                                                                         ) {
                                                                             setFieldValue(
                                                                                 "event_logo",
-                                                                                event.target
+                                                                                event
+                                                                                    .target
                                                                                     .files[0]
                                                                             );
                                                                         }
                                                                         setSelectedFile(
-                                                                            event.target
+                                                                            event
+                                                                                .target
                                                                                 .files[0]
                                                                         );
                                                                     }}
@@ -606,31 +683,50 @@ const HackathonCreate = () => {
                                                                     }}
                                                                 />
                                                                 {selectedFile && (
-                                                                <div
-                                                                    className={
-                                                                        styles.fileInfo
-                                                                    }
-                                                                >
-                                                                    <b>
-                                                                        {selectedFile.name}
-                                                                    </b>
-                                                                </div>
-                                                            )}
+                                                                    <div
+                                                                        className={
+                                                                            styles.fileInfo
+                                                                        }
+                                                                    >
+                                                                        <b>
+                                                                            {
+                                                                                selectedFile.name
+                                                                            }
+                                                                        </b>
+                                                                    </div>
+                                                                )}
                                                             </div>
                                                             {errors.event_logo && (
                                                                 <div
-                                                                    className={styles.error}
+                                                                    className={
+                                                                        styles.error
+                                                                    }
                                                                 >
-                                                                    {errors.event_logo}
+                                                                    {
+                                                                        errors.event_logo
+                                                                    }
                                                                 </div>
                                                             )}
                                                         </div>
                                                     </div>
-                                                    <div className={styles.checker}>
-                                                        <label className={styles.formLabel}>
-                                                            Hackathon Open to all ?
+                                                    <div
+                                                        className={
+                                                            styles.checker
+                                                        }
+                                                    >
+                                                        <label
+                                                            className={
+                                                                styles.formLabel
+                                                            }
+                                                        >
+                                                            Hackathon Open to
+                                                            all ?
                                                         </label>
-                                                        <div className={styles.checkerInput}>
+                                                        <div
+                                                            className={
+                                                                styles.checkerInput
+                                                            }
+                                                        >
                                                             <input
                                                                 type="checkbox"
                                                                 name="isOpenToAll"
@@ -640,7 +736,9 @@ const HackathonCreate = () => {
                                                 </TabPanel>
 
                                                 <TabPanel
-                                                    className={styles.formGroupField}
+                                                    className={
+                                                        styles.formGroupField
+                                                    }
                                                 >
                                                     <div
                                                         id="checkbox"
@@ -670,13 +768,15 @@ const HackathonCreate = () => {
                                                             ([key, value]) => (
                                                                 <label
                                                                     key={key}
-                                                                    className={`${styles.checkBoxContainer
-                                                                        } ${values.formFields.includes(
+                                                                    className={`${
+                                                                        styles.checkBoxContainer
+                                                                    } ${
+                                                                        values.formFields.includes(
                                                                             key as never
                                                                         )
                                                                             ? styles.checked
                                                                             : ""
-                                                                        }`}
+                                                                    }`}
                                                                 >
                                                                     <Field
                                                                         type="checkbox"
@@ -735,7 +835,7 @@ const HackathonCreate = () => {
                             </Formik>
                         </div>
                     </div>
-                </div >
+                </div>
             ) : (
                 <div className={styles.spinner_container}>
                     <div className={styles.spinner}>
