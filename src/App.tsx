@@ -24,7 +24,6 @@ const ManageRoles = lazy(() => import("./modules/Dashboard/modules/ManageRoles/M
 const UserRoleVerification = lazy(() => import("./modules/Dashboard/modules/UserRoleVerification/UserRoleVerification"));
 const UserRoleVerificationDelete = lazy(() => import("./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationDelete"));
 const UserRoleVerificationEdit = lazy(() => import("./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationEdit"));
-const InterestGroupEdit = lazy(() => import("./modules/Dashboard/modules/InterestGroup/InterestGroupEdit"));
 const EditOrgnaization = lazy(() => import("./modules/Dashboard/modules/Organizations/EditOrganization"));
 const UrlShortener = lazy(() => import("./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener"));
 const TaskEdit = lazy(() => import("./modules/Dashboard/modules/Tasks/TaskEdit"));
@@ -99,10 +98,6 @@ const router = createBrowserRouter([
                     {
                         path: "organizations/create",
                         element: <CreateOrganization />
-                    },
-                    {
-                        path: "interest-groups/edit/:id",
-                        element: <InterestGroupEdit />
                     },
                     {
                         path: "organizations/edit",
