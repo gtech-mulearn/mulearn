@@ -13,13 +13,12 @@ type hasValidationError = Dispatch<
 >;
 
 export const getShortenUrls = (
-    toast: (options?: UseToastOptions | undefined) => ToastId,
     setShortUrlData: shortUrlData,
     page: number,
     selectedValue: number,
     setTotalPages?: any,
     search?: string,
-    sortID?: string,
+    sortID?: string
 ) => {
     privateGateway
         .get(dashboardRoutes.getShortenUrl, {
@@ -44,15 +43,6 @@ export const getShortenUrls = (
         })
         .catch(error => {
             console.log(error);
-            if (error?.response?.data?.message?.general[0]) {
-                toast({
-                    title: error.response.data.message.general[0],
-                    description: "",
-                    status: "error",
-                    duration: 3000,
-                    isClosable: true
-                });
-            }
         });
 };
 
