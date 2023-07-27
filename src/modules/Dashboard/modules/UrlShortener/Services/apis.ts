@@ -148,9 +148,9 @@ export const deleteShortenUrl = (
         .then(response => {
             //console.log(response.data.response);
             toast({
-                title: "Shorten Url deleted",
-                description: "its added to your list",
-                status: "success",
+                title: "Shorten Url Deleted",
+                description: "it's deleted from your list",
+                status: "error",
                 duration: 3000,
                 isClosable: true
             });
