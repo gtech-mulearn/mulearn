@@ -66,6 +66,8 @@ export const getCampusLearningCircles = async (
     }
 };
 
+
+
 export const createCircle = async(
     setId: React.Dispatch<SetStateAction<string>>,
     circleName:string,
@@ -107,6 +109,50 @@ export const createCircle = async(
         }
         toast({
             title: "Learning Circle not creating..",
+            description: "",
+            status: "error",
+            duration: 2000,
+            isClosable: true
+        });
+    }
+
+}
+
+export const setLCMeetTime = async(
+        meetTime: string,
+        meetPlace: string,
+        day: string,
+        id: string|undefined
+    )=>{
+        
+        try{
+            const response = await privateGateway.patch(
+            dashboardRoutes.setLCMeetTime + id + '/',
+            {
+                meet_time: meetTime,
+                meet_place: meetPlace,
+                day: day
+            }
+        );
+        const message: any = response?.data;
+        console.log(message.response);
+        console.log(response)
+        toast({
+            title: "Successful",
+            description: "",
+            status: "success",
+            duration: 2000,
+            isClosable: true
+        });
+       
+        
+    }catch(err){
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+        toast({
+            title: "Try Again..",
             description: "",
             status: "error",
             duration: 2000,

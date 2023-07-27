@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import styles from "./LearningCircle.module.css";
-import { getLcDetails } from "../services/LearningCircleAPIs";
+import { getLcDetails, setLCMeetTime } from "../services/LearningCircleAPIs";
 import { useParams } from "react-router-dom";
 import pic from "../../Profile/assets/images/dpm.jpg";
 import { LcDetail } from "../services/LearningCircleInterface";
+import { Form, Formik } from "formik";
+import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 
 type Props = {};
 
@@ -41,12 +43,11 @@ const LearningCircle = (props: Props) => {
                 <div className={styles.BoxContent}>
                     <div className={styles.LeftBox}>
                             <div className={styles.EventOn}>
-                                <div className={styles.MeetingOn}>
+                                {lc?.meet_place || lc?.meet_time ? (<><div className={styles.MeetingOn}>
                                     <div>
                                         <b>Next Meeting on</b>
                                         <div>
-                                            <h1>{lc?.meet_time}</h1>
-                                            <b>Sunday</b>
+                                            {/* <b>{lc?.day}</b> */}
                                         </div>
                                     </div>
                                     <i className="fa-solid fa-pencil"></i>
@@ -54,12 +55,61 @@ const LearningCircle = (props: Props) => {
                                 <div className={styles.MeetingBtn}>
                                     <b>
                                         venue: {lc?.meet_place} <br /> time:
-                                        10:00 am
+                                        <h1>{lc?.meet_time}</h1>
                                     </b>
                                     <button className={styles.BtnBtn}>
                                         Done
                                     </button>
-                                </div>
+                                </div></>):(
+                                    <div>
+                                         <Formik
+                                enableReinitialize={true}
+                                initialValues={{
+                                    meet_time: "",
+                                    meet_place: "",
+                                    day: ""
+                                }}
+                                onSubmit={(values,{resetForm}) =>{
+                                    setLCMeetTime(
+                                        values.meet_time,
+                                        values.meet_place,
+                                        values.day,
+                                        id
+                                    )
+                                    console.log(values)
+                                    resetForm()
+                                }}
+                            >
+                                 {({
+                                    values,
+                                    handleChange,
+                                    setFieldValue,
+                                    errors
+                                }) => (
+                                <Form>
+                                    <div className={styles.LearningCircleCreateForm}>
+                                        <FormikTextInput 
+                                            type="text"
+                                            name="meet_time" 
+                                            placeholder="Meeting Time"
+                                        />
+                                        <FormikTextInput 
+                                            type="text"
+                                            name="meet_place" 
+                                            placeholder="Meeting Place"
+                                        />
+                                        <FormikTextInput 
+                                            type="text"
+                                            name="day" 
+                                            placeholder="Meeting Day"
+                                        />
+                                    </div>
+                                    <button type="submit" >Create</button>
+                                </Form>
+                                )}
+                            </Formik>
+                                    </div>
+                                )}
                             </div>
 
                         {lc?.pending_members &&
