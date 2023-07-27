@@ -111,9 +111,9 @@ function UsersRoleVerification() {
         //console.log(`Icon clicked for column: ${column}`);
     };
 
-    function handleVerify(id: string | number | boolean): void {
-        //console.log(id);
-        editUserRoleVerification(true, id);
+	async function handleVerify(id: string | number | boolean) {
+		//console.log(id);
+        await editUserRoleVerification(true, id);
         getUserRoleVerification(setData, 1, perPage, setTotalPages, "", "");
     }
 

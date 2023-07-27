@@ -72,13 +72,7 @@ const UrlShortener = () => {
                     }
                 ]);
                 setTimeout(() => {
-                    getShortenUrls(
-                        toast,
-                        setShortUrlData,
-                        1,
-                        perPage,
-                        setTotalPages
-                    );
+                    getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
                     // formik.handleReset(formik.values);
                 }, 500);
                 setEditBtn(false);
@@ -116,33 +110,24 @@ const UrlShortener = () => {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getShortenUrls(toast, setShortUrlData, 1, perPage, setTotalPages);
+        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getShortenUrls(toast, setShortUrlData, 1, perPage, setTotalPages);
+        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
     };
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getShortenUrls(
-            toast,
-            setShortUrlData,
-            1,
-            perPage,
-            setTotalPages,
-            search,
-            ""
-        );
+        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages, search, "");
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
         getShortenUrls(
-            toast,
             setShortUrlData,
             1,
             selectedValue,
@@ -156,7 +141,6 @@ const UrlShortener = () => {
         if (sort === column) {
             setSort(`-${column}`);
             getShortenUrls(
-                toast,
                 setShortUrlData,
                 1,
                 perPage,
@@ -167,7 +151,6 @@ const UrlShortener = () => {
         } else {
             setSort(column);
             getShortenUrls(
-                toast,
                 setShortUrlData,
                 1,
                 perPage,
@@ -218,7 +201,7 @@ const UrlShortener = () => {
     };
 
     useEffect(() => {
-        getShortenUrls(toast, setShortUrlData, 1, perPage, setTotalPages);
+        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
     }, []);
 
     return (
