@@ -1,6 +1,4 @@
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
-import { hasRole } from "@/MuLearnServices/common_functions";
-import { roles } from "@/MuLearnServices/types";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getInfo } from "./apis";
@@ -25,7 +23,6 @@ function EditOrganization() {
     const [selectedAffiliation, setSelectedAffiliation] = useState("");
 
     useEffect(() => {
-        if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
 
         getInfo(rowId)
             .then(data => {
