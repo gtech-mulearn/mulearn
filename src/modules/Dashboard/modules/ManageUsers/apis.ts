@@ -84,12 +84,12 @@ export const editManageUsers = async (
     mobile: string,
     discord_id: string,
     mu_id: string,
-
-    college: string,
-    company: string,
-    department: string,
-    graduation_year: string,
-    toast: any
+    toast: any,
+    role: string,
+    college?: string,
+    company?: string,
+    department?: string | any,
+    graduation_year?: string
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -132,10 +132,11 @@ interface IData {
     mobile: string;
     discord_id: string;
     mu_id: string;
-    college: string;
-    company: string;
-    department: string;
-    graduation_year: string;
+    college?: string;
+    company?: string;
+    department?: string;
+    graduation_year?: string;
+    role: string;
 }
 
 export const getManageUsersDetails = async (
@@ -157,7 +158,6 @@ export const getManageUsersDetails = async (
             console.log(newOrganizations[i].org_type);
             if (newOrganizations[i].org_type == "Community") {
                 console.log("community");
-                
             }
             if (role == null) {
                 console.log("Company");
