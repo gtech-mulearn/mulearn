@@ -65,11 +65,11 @@ const TaskEdit = (props: Props) => {
             .required("Mention the number of uses"),
         active: Yup.boolean().required("Select an option"),
         variable_karma: Yup.boolean().required("Select an option"),
-        channel_id: Yup.string(),
-        type_id: Yup.string(),
-        level_id: Yup.string(),
-        ig_id: Yup.string(),
-        organization_id: Yup.string()
+        channel_id: Yup.string().required("Select a channel"),
+        type_id: Yup.string().required("Select a type"),
+        level_id: Yup.string().required("Select a Level"),
+        ig_id: Yup.string().required("Select an Interest Group"),
+        organization_id: Yup.string().required("Select an Organization")
     });
     return (
         <>
@@ -112,14 +112,10 @@ const TaskEdit = (props: Props) => {
                                     values.level_id,
                                     values.ig_id,
                                     values.organization_id,
-                                    id
+                                    id,
+                                    toast
                                 );
-                                toast({
-                                    title: "Task Edited Successfully!",
-                                    status: "success",
-                                    duration: 3000,
-                                    isClosable: true
-                                });
+                                
                                 navigate("/dashboard/tasks");
                             }}
                         >

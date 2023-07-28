@@ -3,7 +3,10 @@ import { createTask, getUUID } from "./TaskApis";
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import { FormikSelect, FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import {
+    FormikSelect,
+    FormikTextInput
+} from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
@@ -11,25 +14,24 @@ import { AxiosError } from "axios";
 
 type Props = {};
 
-
 const TaskCreate = (props: Props) => {
     const navigate = useNavigate();
     const toast = useToast();
-    const [uuidData,setuuidData] =  useState< {[index: string]: any[]} | null>(null);
+    const [uuidData, setuuidData] = useState<{ [index: string]: any[] } | null>(
+        null
+    );
 
-    useEffect(()=>{
-        (async ()=>{
-            try{
-                setuuidData(await getUUID())
-            }catch(err){
-                console.log(err as AxiosError)
+    useEffect(() => {
+        (async () => {
+            try {
+                setuuidData(await getUUID());
+            } catch (err) {
+                console.log(err as AxiosError);
             }
-        })()
-    },[])
+        })();
+    }, []);
 
-
-
-	const taskEditSchema = Yup.object().shape({
+    const taskEditSchema = Yup.object().shape({
         hashtag: Yup.string()
             .required("Required")
             .min(2, "Too Short!")
@@ -49,12 +51,12 @@ const TaskCreate = (props: Props) => {
             .required("Mention the number of uses"),
         active: Yup.boolean().required("Select an option"),
         variable_karma: Yup.boolean().required("Select an option"),
-        description: Yup.string().min(4, "Too Short!").max(100, "Too Long!"),
-        channel_id: Yup.string(),
-        type_id: Yup.string(),
-        level_id: Yup.string(),
-        ig_id: Yup.string(),
-        organization_id: Yup.string(),
+        description: Yup.string().min(4, "Too Short!").max(100, "Too Long!").required("A description is required"),
+        channel_id: Yup.string().required("Select a Channel"),
+        type_id: Yup.string().required("Select a Type"),
+        level_id: Yup.string().required("Select a Level"),
+        ig_id: Yup.string().required("Select an Interest Group"),
+        organization_id: Yup.string().required("Select an Organization")
     });
 
     return (
@@ -75,7 +77,7 @@ const TaskCreate = (props: Props) => {
                         type_id: "",
                         level_id: "",
                         ig_id: "",
-                        organization_id:""
+                        organization_id: ""
                     }}
                     validationSchema={taskEditSchema}
                     onSubmit={values => {
@@ -149,72 +151,61 @@ const TaskCreate = (props: Props) => {
                         <FormikSelect
                             label="Channel"
                             name="channel_id"
-                            disabled = {!uuidData}
+                            disabled={!uuidData}
                         >
                             <option value="">Select an option</option>
-                            {uuidData?.channel.map((val)=>{
+                            {uuidData?.channel.map(val => {
                                 return (
-                                    <option value={val.id}>
-                                        {val.name}
-                                    </option>
-                                )
+                                    <option value={val.id}>{val.name}</option>
+                                );
                             })}
                         </FormikSelect>
                         <FormikSelect
                             label="Type"
                             name="type_id"
-                            disabled = {!uuidData}
+                            disabled={!uuidData}
                         >
                             <option value="">Select an option</option>
-                            {uuidData?.type.map((val)=>{
+                            {uuidData?.type.map(val => {
                                 return (
-                                    <option value={val.id}>
-                                        {val.title}
-                                    </option>
-                                )
+                                    <option value={val.id}>{val.title}</option>
+                                );
                             })}
                         </FormikSelect>
                         <FormikSelect
                             label="Level"
                             name="level_id"
-                            disabled = {!uuidData}
+                            disabled={!uuidData}
                         >
                             <option value="">Select an option</option>
-                            {uuidData?.level.map((val)=>{
+                            {uuidData?.level.map(val => {
                                 return (
-                                    <option value={val.id}>
-                                        {val.name}
-                                    </option>
-                                )
+                                    <option value={val.id}>{val.name}</option>
+                                );
                             })}
                         </FormikSelect>
                         <FormikSelect
                             label="IG"
                             name="ig_id"
-                            disabled = {!uuidData}
+                            disabled={!uuidData}
                         >
                             <option value="">Select an option</option>
-                            {uuidData?.ig.map((val)=>{
+                            {uuidData?.ig.map(val => {
                                 return (
-                                    <option value={val.id}>
-                                        {val.name}
-                                    </option>
-                                )
+                                    <option value={val.id}>{val.name}</option>
+                                );
                             })}
                         </FormikSelect>
                         <FormikSelect
                             label="Organization"
                             name="organization_id"
-                            disabled = {!uuidData}
+                            disabled={!uuidData}
                         >
                             <option value="">Select an option</option>
-                            {uuidData?.organization
-                            .map((val)=>{
+                            {uuidData?.organization.map(val => {
                                 return (
-                                    <option value={val.id}>
-                                        {val.title}
-                                    </option>
-                                )
+                                    <option value={val.id}>{val.title}</option>
+                                );
                             })}
                         </FormikSelect>
                         <div className={styles.btn_container}>
