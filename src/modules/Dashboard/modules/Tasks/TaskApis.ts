@@ -108,7 +108,8 @@ export const editTask = async (
     level_id: string,
     ig_id: string,
     org_id: string,
-    id: string | undefined
+    id: string | undefined,
+    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
         const response = await privateGateway.put(
@@ -128,11 +129,24 @@ export const editTask = async (
             }
         );
         const message: any = response?.data;
+        toast({
+            title: "Task Updated",
+            description: "Task has been updated successfully",
+            status: "success",
+            duration: 5000,
+            isClosable: true
+        });
         //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
+            toast({
+                title: "Task Update Failed",
+                status: "error",
+                duration: 5000,
+                isClosable: true
+            });
         }
     }
 };
