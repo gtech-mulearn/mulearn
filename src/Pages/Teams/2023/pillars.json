@@ -1,328 +1,832 @@
 [
-  {
-    "name": "Jomon Chacko",
-    "team": "Video Editors Team",
-    "image": "assets/team/pillars/Jomon Chacko.webp",
-    "drive": "https://drive.google.com/file/d/186kFTbPCpO9IHlLDuFtmoDbCZL6EU-AG/view?usp=share_link",
-    "linkedin": "",
-    "github": "https://github.com/jomon477",
-    "twitter": "https://twitter.com/jotweetzs"
-
-  },
-  {
-    "name": "Enric S Neelamkavil",
-    "team": "UI UX Team",
-    "image": "assets/team/pillars/Enric S Neelamkavil.webp",
-    "drive": "https://drive.google.com/file/d/1U_yALhVf0JTlk6CfEVdduZmnIOHKcBHA/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/enricsneelamkavil/",
-    "github": "https://github.com/enric-s-neelamkavil",
-    "twitter": "https://twitter.com/enricneels"
-  },
-  {
-    "name": "Muhammed Faris TC",
-    "team": "UI UX Team",
-    "image": "assets/team/pillars/Muhammed Faris TC.webp",
-    "drive": "https://drive.google.com/file/d/1s7Qnj6Xi1RTjEo20pDRb4aYG_YJQkTNL/view?usp=share_link",
-    "linkedin": "",
-    "github": "",
-    "twitter": ""
-
-  },
-  {
-    "name": "Abhiram Krishna",
-    "team": "Social Media Team",
-    "image": "assets/team/pillars/Abhiram Krishna.webp",
-    "drive": "https://drive.google.com/file/d/17Ml3IpPJGvlwhokMlWMvFDVl2qAh7E7v/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/abhiramkrishna/",
-    "github": "",
-    "twitter": "https://twitter.com/_abhiramkrishna"
-  },
-  {
-    "name": "Anagha B Santhosh",
-    "team": "Social Media Team",
-    "image": "assets/team/pillars/Anagha B Santhosh.webp",
-    "drive": "https://drive.google.com/file/d/13ZGAhLKc7xOa0zobr0Ncz-up2S5f2I0Z/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/anagha-b-santhosh-87387b21b/",
-    "github": "",
-    "twitter": ""
-  },
-  {
-    "name": "Ashna T",
-    "team": "Social Media Team",
-    "image": "assets/team/pillars/Ashna T.webp",
-    "drive": "https://drive.google.com/file/d/1wUir1IQJciiarMWPVuXcuQfW0yh-Xc95/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/ashnat/",
-    "github": "",
-    "twitter": ""
-  },
-  {
-    "name": "Muhammed Zafar MM",
-    "team": "Backend Team",
-    "image": "assets/team/pillars/Muhammed Zafar MM.webp",
-    "drive": "https://drive.google.com/file/d/1hUm53xw7EwwlBGUYxQyRRnoc17fibji8/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/muhammed-zafar-b4462a22a/",
-    "github": "",
-    "twitter": ""
-  },
-  {
-    "name": "Jovit Mathew",
-    "team": "Frontend Team",
-    "image": "assets/team/pillars/Jovit Mathew.webp",
-    "drive": "https://drive.google.com/file/d/17mvnxv9KMRpRCuy-D7PBJ2W67KGiSmMx/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/jovit-mathew-844590205/",
-    "github": "",
-    "twitter": ""
-  },
-  {
-    "name": "Aaron K",
-    "team": "Frontend Team",
-    "image": "assets/team/pillars/Aaron K.webp",
-    "drive": "https://drive.google.com/file/d/1OhsvkPyUH5vq4gLPt9xpXk2AJ6lJBtSO/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/aaron-k-9779b6211/",
-    "github": "https://github.com/03aar",
-    "twitter": "https://twitter.com/AARON68706768"
-  },
-  {
-    "name": "Ansan Johny",
-    "team": "Frontend Team",
-    "image": "assets/team/pillars/Ansan Johny.webp",
-    "drive": "https://drive.google.com/file/d/1ohY4gR_w64xKPM3Sc-3NBch7V-XHyZgP/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/ansan-johny-6092aa190/",
-    "github": "https://github.com/Ansanjohny",
-    "twitter": ""
-  },
-  {
-    "name": "Basith P",
-    "team": "Frontend Team",
-    "image": "assets/team/pillars/Basith P.webp",
-    "drive": "https://drive.google.com/file/d/1UpHDw7gg50USjodhmsJq2ySfbBGqIuz1/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/basithp9/",
-    "github": "https://github.com/Basith-P",
-    "twitter": ""
-  },
-  {
-    "name": "Kevin Paul Babu",
-    "team": "Frontend Team",
-    "image": "assets/team/pillars/Kevin Paul Babu.webp",
-    "drive": "https://drive.google.com/file/d/107ZzTKkZ8GKENT-hQvJ8BzhdcVdpqofh/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/kevin-paul-babu-737b28187/",
-    "github": "",
-    "twitter": ""
-  },
-  {
-    "name": "Sivaprasad C",
-    "team": "Frontend Team",
-    "image": "assets/team/pillars/Sivaprasad C.webp",
-    "drive": "https://drive.google.com/file/d/1zbvBwUnrPV5gicaIyAnmaO3TBfrJr6ru/view?usp=share_link",
-    "linkedin": "",
-     "github": "",
-    "twitter": ""
-  },
-  {
-    "name": "Sooraj P",
-    "team": "Frontend Team",
-    "image": "assets/team/pillars/Sooraj P.webp",
-    "drive": "https://drive.google.com/file/d/1n7L-tmBrUMoQyo5lnfAxSA4Nr2wPAUKd/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/soorajksd/",
-    "github": "www.github.com/the3plet",
-    "twitter": ""
-  },
-  {
-    "name": "Arjun M S",
-    "team": "Backend Team",
-    "image": "assets/team/pillars/Arjun MS.webp",
-    "drive": "https://drive.google.com/file/d/19DJJ099SU3W8bb4cxHJriTSg0yuDiUxn/view?usp=share_link",
-    "linkedin": "",
-    "github": "",
-    "twitter": ""
-  },
-  {
-    "name": "Ben George Netto",
-    "team": "Discord Team",
-    "image": "assets/team/pillars/Ben George Netto.webp",
-    "drive": "https://drive.google.com/file/d/1gIC-w9LHR47VcwMxaJic4pbIhKLi1DOR/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/bengeorgenetto/",
-    "github": "https://github.com/BenGeorgeNetto",
-    "twitter": "https://twitter.com/BenGeorgeNetto"
-  },
-  {
-    "name": "Edwin liby",
-    "team": "Discord Team",
-    "image": "assets/team/pillars/Edwin liby.webp",
-    "drive": "https://drive.google.com/file/d/1tUnFxzrTXT_vDhUGhvcfGk3sGMO88BmH/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/edwin-liby-12b7a5220/",
-    "github": "https://github.com/Edwinliby",
-    "twitter": ""
-  },
-  {
-    "name": "Kevin Joseph Hendry",
-    "team": "Discord Team",
-    "image": "assets/team/pillars/Kevin Joseph Hendry.webp",
-    "drive": "https://drive.google.com/file/d/1eugyztHNe64ro7gUP5ktJ6iIhrA5PfDB/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/kevin-joseph-hendry-504732227/",
-    "github": "",
-    "twitter": ""
-  },
-  {
-    "name": "Kochouseph John",
-    "team": "Discord Team",
-    "image": "assets/team/pillars/Kochouseph John.webp",
-    "drive": "https://drive.google.com/file/d/1tcwwVKwfVCYOkOObyEzAXyw4ymT5r-IU/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/kochouseph-john-b86149212/",
-    "github": "https://github.com/Kochouseph26John",
-    "twitter": ""
-  },
-  {
-    "name": "Sreenandan K M",
-    "team": "Discord Team",
-    "image": "assets/team/pillars/Sreenandan K M.webp",
-    "drive": "https://drive.google.com/file/d/1uuIC4DAFuLMHbQqtav9wgQwFC9GoKbTN/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/sreenandan-k-m-82562b251/",
-    "github": "",
-    "twitter": ""
-  },
-  {
-    "name": "Ajay Johny",
-    "team": "Designers Team",
-    "image": "assets/team/pillars/Ajay Johny.webp",
-    "drive": "https://drive.google.com/file/d/19LSkvLQ3Gs1NdfQ0FRtmYYr--gDnzhfD/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/ajay-johny-73503a201/",
-    "github": "https://github.com/AjayJohny-2002/",
-    "twitter": ""
-  },
-  {
-    "name": "Akshay S Rajan",
-    "team": "Designers Team",
-    "image": "assets/team/pillars/Akshay S Rajan.webp",
-    "drive": "https://drive.google.com/file/d/1jMZAyOzN0ddGCAPg_AmsJMCx2_3ch1UK/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/akshaysrajan/",
-    "github": "github.com/akshaysrajan",
-    "twitter": "https://twitter.com/akshaysrajan"
-  },
-  {
-    "name": "Edwin Alex Shaji",
-    "team": "Designers Team",
-    "image": "assets/team/pillars/Edwin Alex Shaji.webp",
-    "drive": "https://drive.google.com/file/d/1r-bxqsfvwgEUKVmVr96QhxCnGB-ZQiCs/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/edwinalexshaji/",
-    "github": "https://github.com/edwineas",
-    "twitter": ""
-  },
-  {
-    "name": "Faeza Nasrin M B",
-    "team": "Designers Team",
-    "image": "assets/team/pillars/Faeza Nasrin M B.webp",
-    "drive": "https://drive.google.com/file/d/1w6RnBoDppnIJvauw5Q9wN1fxSgBLbIM2/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/faeza-nasrin-4b38ab22a/",
-    "github": "https://github.com/faezanasrin",
-    "twitter": "https://twitter.com/FaezaNasrin?t=gBV8K0pRoi1h_nKrhV4qAQ&s=08"
-  },
-  {
-    "name": "Ferwin Lopez",
-    "team": "Designers Team",
-    "image": "assets/team/pillars/Ferwin Lopez.webp",
-    "drive": "https://drive.google.com/file/d/1ihTBV_OG9mlCeYMIk7kADyz7zyFK6TSP/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/ferwin-lopez/",
-    "github": "https://github.com/Fer-Win",
-    "twitter": ""
-  },
-  {
-    "name": "Muhammed Farseen T P",
-    "team": "Designers Team",
-    "image": "assets/team/pillars/Muhammed Farseen T P.webp",
-    "drive": "https://drive.google.com/file/d/11BNjIMlnVP8S2KwzI8caCObZACeEPfUk/view?usp=share_link",
-    "linkedin": "",
-    "github": "",
-    "twitter": ""
-  },
-  {
-    "name": "John Philip George",
-    "team": "Content Team",
-    "image": "assets/team/pillars/John Philip George.webp",
-    "drive": "https://drive.google.com/file/d/1wJNlBALwXFJfFy7EfxDpJS2tKCV8Ufjf/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/johnphilipg-66401723a/",
-    "github": "https://github.com/johnforgit",
-    "twitter": ""
-  },
-  {
-    "name": "Malavika Sreehari",
-    "team": "Content Team",
-    "image": "assets/team/pillars/Malavika Sreehari.webp",
-    "drive": "https://drive.google.com/file/d/16_0xqDDyeT_0-sSN0cqU7rFRjtRL-dDp/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/malavikasreehari/",
-    "github": "https://github.com/MalavikaSreehari",
-    "twitter": "https://twitter.com/MalavikaSree4"
-  },
-  {
-    "name": "Parvathy S Nath",
-    "team": "Content Team",
-    "image": "assets/team/pillars/Parvathy S Nath.webp",
-    "drive": "https://drive.google.com/file/d/1EfSdRw4HWRC4ykaN7yaESXy74gCcpbuI/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/parvathy-s-nath/",
-    "github": "https://github.com/Parvathy-S-Nath",
-    "twitter": "https://github.com/Parvathy-S-Nath"
-  },
-  {
-    "name": "Sanjay Biju",
-    "team": "Content Team",
-    "image": "assets/team/pillars/Sanjay Biju.webp",
-    "drive": "https://drive.google.com/file/d/16WstqoABEpKRUnAUPsCwBXt16JjFK6dv/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/sanjay-biju-786656227/",
-     "github": "",
-    "twitter": ""
-  },
-  {
-    "name": "Aashish Vinu",
-    "team": "Backend Team",
-    "image": "assets/team/pillars/Aashish Vinu.webp",
-    "drive": "https://drive.google.com/file/d/1Ak1Ii4tkjziFaRCwAtVN0kDpWZhvACXJ/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/d34d-5h07/",
-     "github": "https://github.com/d34d-5h07",
-    "twitter": "https://twitter.com/d34d__5h07/"
-  },
-  {
-    "name": "Ajnas N B",
-    "team": "Backend Team",
-    "image": "assets/team/pillars/Ajnas N B.webp",
-    "drive": "https://drive.google.com/file/d/1Qq7qXaOUFiIOnerUkRn3YN4cHFNcCVbf/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/ajnasnb/",
-    "github": "https://github.com/AjnasNB",
-    "twitter": ""
-  },
-  {
-    "name": "Anirudh MK",
-    "team": "Backend Team",
-    "image": "assets/team/pillars/Anirudh MK.webp",
-    "drive": "https://drive.google.com/file/d/1Hy7cXxaPMWXprRzlsnwEVb5f_2zBckQz/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/anirudh-mk-064207245/",
-    "github": "",
-    "twitter": ""
-  },
-  {
-    "name": "Arnold Denzil",
-    "team": "Backend Team",
-    "image": "assets/team/pillars/Arnold Denzil.webp",
-    "drive": "https://drive.google.com/file/d/1EFkYFpXiKAH1qDJkfxJBaCrXpgjvu2eq/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/arnold-denzil-b91013191/",
-    "github": "https://github.com/arnolddenzil",
-    "twitter": "https://twitter.com/A6nlDnZ"
-  },
-  {
-    "name": "Nithin Daniel",
-    "team": "Backend Team",
-    "image": "assets/team/pillars/Nithin Daniel.webp",
-    "drive": "https://drive.google.com/file/d/16HkuynvMYbZ9sVv1U59wsH3zpg5iE0qm/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/nithindaniel/",
-    "github": "https://github.com/nithindaniel1",
-    "twitter": ""
-  },
-  {
-    "name": "Sanu Muhammed C",
-    "team": "Backend Team",
-    "image": "assets/team/pillars/Sanu Muhammed C.webp",
-    "drive": "https://drive.google.com/file/d/1MR6yGSg1h205HXhbyChGBMqAkffkdOZA/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/sanumuhammedc/",
-    "github": "https://github.com/sanumuhammedc",
-    "twitter": ""
-  }
+    {
+        "name": "John Philip George",
+        "image": "assets/team/pillars/John Philip George.webp",
+        "muid": "",
+        "linkedin": "",
+        "twitter": "",
+        "github": "",
+        "team": "",
+        "lead": "Content"
+    },
+    {
+        "name": "Edwin Liby",
+        "image": "assets/team/pillars/Edwin liby.webp",
+        "muid": "",
+        "linkedin": "",
+        "twitter": "",
+        "github": "",
+        "team": "",
+        "lead": "Pro-CSS"
+    },
+    {
+        "name": "Kochouseph John",
+        "image": "assets/team/pillars/Kochouseph John.webp",
+        "muid": "",
+        "linkedin": "",
+        "twitter": "",
+        "github": "",
+        "team": "",
+        "lead": "Public Relations"
+    },
+    {
+        "name": "Ashna T",
+        "image": "assets/team/pillars/Ashna T.webp",
+        "muid": "",
+        "linkedin": "",
+        "twitter": "",
+        "github": "",
+        "team": "",
+        "lead": "Social Media"
+    },
+    {
+        "name": "Enric S Neelamkavil",
+        "image": "assets/team/pillars/Enric S Neelamkavil.webp",
+        "muid": "",
+        "linkedin": "",
+        "twitter": "",
+        "github": "",
+        "team": "",
+        "lead": "UI Team"
+    },
+    {
+        "name": "Aamina S",
+        "image": "",
+        "muid": "aaminas@mulearn",
+        "linkedin": "https://www.linkedin.com/in/aamina-s-97798320a/",
+        "twitter": "https://twitter.com/amooeebaa",
+        "github": "https://github.com/aaminas402",
+        "team": "UX Designer",
+        "lead": ""
+    },
+    {
+        "name": "Abdul Haseeb",
+        "image": "",
+        "muid": "abdulhaseeb-2@mulearn",
+        "linkedin": "https://www.linkedin.com/in/abdul-haseeb-b9a25b216/",
+        "twitter": "https://twitter.com/AbdulHa783",
+        "github": "",
+        "team": "UX Designer",
+        "lead": ""
+    },
+    {
+        "name": "Abel Mathew Simon",
+        "image": "",
+        "muid": "abelmathewsimon@mulearn",
+        "linkedin": "",
+        "twitter": "",
+        "github": "https://github.com/abelmathew07",
+        "team": "Public Relations",
+        "lead": ""
+    },
+    {
+        "name": "Abhinav Menon",
+        "image": "",
+        "muid": "abhinavmenon@mulearn",
+        "linkedin": "linkedin.com/in/abhinavmenon",
+        "twitter": "",
+        "github": "",
+        "team": "Graphic Designer",
+        "lead": ""
+    },
+    {
+        "name": "ABHISHEK S",
+        "image": "",
+        "muid": "abhisheksanthosh@mulearn",
+        "linkedin": "https://www.linkedin.com/in/abhishek-santhosh-3a9a84246",
+        "twitter": "",
+        "github": "",
+        "team": "Frontend Web Developer",
+        "lead": ""
+    },
+    {
+        "name": "Adarsh Mohan K S",
+        "image": "",
+        "muid": "adarshmohanks@mulearn",
+        "linkedin": "https://www.linkedin.com/in/adarshmohanks",
+        "twitter": "https://twitter.com/flowwwing",
+        "github": "https://github.com/adarshmohanks",
+        "team": "UI Designer",
+        "lead": ""
+    },
+    {
+        "name": "Adithya A R",
+        "image": "",
+        "muid": "adithyaar@mulearn",
+        "linkedin": "https://www.linkedin.com/in/adithya-rajesh-a07092247",
+        "twitter": "https://twitter.com/AdithyaRajesh01",
+        "github": "",
+        "team": "Campus Activation",
+        "lead": ""
+    },
+    {
+        "name": "Adwaith Krishna S J",
+        "image": "",
+        "muid": "adwaithkrishnasj@mulearn",
+        "linkedin": "https://www.linkedin.com/in/adwaith-krishna-sj",
+        "twitter": "",
+        "github": "https://github.com/AdwaithKriss",
+        "team": "Operations Manager",
+        "lead": ""
+    },
+    {
+        "name": "Afla Nazrin",
+        "image": "",
+        "muid": "aflanazrin@mulearn",
+        "linkedin": "https://www.linkedin.com/in/afla-nazrin-6b3a2522a",
+        "twitter": "https://twitter.com/AflaNazrin",
+        "github": "",
+        "team": "Campus Activation",
+        "lead": ""
+    },
+    {
+        "name": "Ahamed Jishfaan M S",
+        "image": "",
+        "muid": "ahamedjishfaanms@mulearn",
+        "linkedin": "https://www.linkedin.com/in/ahamed-jishfaanms-4b362a230",
+        "twitter": "https://twitter.com/jishfaan",
+        "github": "",
+        "team": "Operations Manager",
+        "lead": ""
+    },
+    {
+        "name": "Ajay Johny",
+        "image": "assets/team/pillars/Ajay Johny.webp",
+        "muid": "ajayjohny@mulearn",
+        "linkedin": "https://www.linkedin.com/in/ajay-johny-73503a201/",
+        "twitter": "https://twitter.com/AjayJohny01",
+        "github": "https://github.com/AjayJohny-2002/",
+        "team": "Partner Engagement",
+        "lead": ""
+    },
+    {
+        "name": "Akash R Chandran",
+        "image": "",
+        "muid": "akashrchandran@mulearn",
+        "linkedin": "https://www.linkedin.com/in/akashrchandran/",
+        "twitter": "https://twitter.com/akas__h",
+        "github": "https://github.com/akashrchandran",
+        "team": "Backend Web Developer",
+        "lead": ""
+    },
+    {
+        "name": "Akshay k a",
+        "image": "",
+        "muid": "akshayka@mulern",
+        "linkedin": "https://www.linkedin.com/in/akshay-k-a-573bb2218",
+        "twitter": "https://twitter.com/Akshayk59942801",
+        "github": "",
+        "team": "UI Designer",
+        "lead": ""
+    },
+    {
+        "name": "ALAN B JOHN",
+        "image": "",
+        "muid": "alanbjohn@mulearn",
+        "linkedin": "https://www.linkedin.com/in/alan-b-john-782655261",
+        "twitter": "https://twitter.com/alanbjohn1",
+        "github": "https://github.com/aln6",
+        "team": "Video Editor",
+        "lead": ""
+    },
+    {
+        "name": "Alan K Anil",
+        "image": "",
+        "muid": "alankanil@mulearn",
+        "linkedin": "https://www.linkedin.com/in/alan-k-anil060602",
+        "twitter": "https://twitter.com/ALANkANIL261448",
+        "github": "https://github.com/Alan0602",
+        "team": "Frontend Web Developer",
+        "lead": ""
+    },
+    {
+        "name": "Amal C P",
+        "image": "",
+        "muid": "amalcp@mulearn",
+        "linkedin": "https://www.linkedin.com/in/amal-c-p",
+        "twitter": "https://twitter.com/amalcpaulson",
+        "github": "https://github.com/Amal070146",
+        "team": "Frontend Web Developer",
+        "lead": ""
+    },
+    {
+        "name": "Amith Jayapraban",
+        "image": "",
+        "muid": "amithjayapraban@mulearn",
+        "linkedin": "https://www.linkedin.com/in/amithjayapraban/",
+        "twitter": "https://twitter.com/amithjayapraban",
+        "github": "https://github.com/amithjayapraban",
+        "team": "Frontend Web Developer",
+        "lead": ""
+    },
+    {
+        "name": "ANJITHA S",
+        "image": "",
+        "muid": "anjithas-1@mulearn",
+        "linkedin": "https://www.linkedin.com/in/anjitha-s-bb237a202/",
+        "twitter": "https://twitter.com/Anjithas17S",
+        "github": "https://github.com/anjitha-code",
+        "team": "Graphic Designer",
+        "lead": ""
+    },
+    {
+        "name": "Anshu kumar",
+        "image": "",
+        "muid": "",
+        "linkedin": "www.linkedin.com/in/ anshu-kumar-a40327256",
+        "twitter": "www.twitter.com/Anshu5488",
+        "github": "",
+        "team": "Interest Group manager",
+        "lead": ""
+    },
+    {
+        "name": "ARDRA S R",
+        "image": "",
+        "muid": "ardrasr-1@mulearn",
+        "linkedin": "https://www.linkedin.com/in/ardra-s-r-4a3571228",
+        "twitter": "https://twitter.com/s_r_ardra?t=YEcRWD-Ii9hfmtjsyYc1ag&s=09",
+        "github": "https://github.com/Ardrasr",
+        "team": "HR manager",
+        "lead": ""
+    },
+    {
+        "name": "ARJUN A ACHARRY",
+        "image": "",
+        "muid": "arjunaacharry@mulearn",
+        "linkedin": "https://www.linkedin.com/in/arjun-a-acharry/",
+        "twitter": "https://twitter.com/a_acharry13885",
+        "github": "https://github.com/arjunaacharry",
+        "team": "Graphic Designer",
+        "lead": ""
+    },
+    {
+        "name": "Arjun S",
+        "image": "",
+        "muid": "arjuns-4@mulearn",
+        "linkedin": "https://www.linkedin.com/in/arjun-s-dev/",
+        "twitter": "https://twitter.com/Its_Arjun_India",
+        "github": "https://github.com/arjunindia",
+        "team": "Frontend Web developer",
+        "lead": ""
+    },
+    {
+        "name": "Arun Ghosh A",
+        "image": "",
+        "muid": "arunghosha@mulearn",
+        "linkedin": "https://www.linkedin.com/in/arun-ghosh-a-3b7bb2250/",
+        "twitter": "https://twitter.com/kryp_tonian_",
+        "github": "https://github.com/arunghosha",
+        "team": "Meme Creator",
+        "lead": ""
+    },
+    {
+        "name": "Arya S R",
+        "image": "",
+        "muid": "aryasr@mulearn",
+        "linkedin": "https://www.linkedin.com/in/arya-s-r-b5318a201",
+        "twitter": "",
+        "github": "https://github.com/aryasr666",
+        "team": "Social Media manager",
+        "lead": ""
+    },
+    {
+        "name": "Aslaha Mohamed Akbar",
+        "image": "",
+        "muid": "aslahaakbar@mulearn",
+        "linkedin": "https://www.linkedin.com/in/aslaha-mohamed-b2a25523a",
+        "twitter": "https://twitter.com/aslahamohamed",
+        "github": "https://github.com/Aslahamohd12",
+        "team": "Content Writer",
+        "lead": ""
+    },
+    {
+        "name": "Danis T Das",
+        "image": "",
+        "muid": "danisdas@mulearn",
+        "linkedin": "linkedin.com/in/danistdas",
+        "twitter": "twitter.com/danis_das",
+        "github": "github.com/DanisDas",
+        "team": "Graphic Designer",
+        "lead": ""
+    },
+    {
+        "name": "Devaprabha Rajesh",
+        "image": "",
+        "muid": "devaprabharajesh@mulearn",
+        "linkedin": "www.linkedin.com/in/ devaprabha-rajesh",
+        "twitter": "https://twitter.com/dp1100_",
+        "github": "https://github.com/devaprabhaR",
+        "team": "Content Writer",
+        "lead": ""
+    },
+    {
+        "name": "Edwin Alex Shaji",
+        "image": "",
+        "muid": "edwinalexshaji@mulearn",
+        "linkedin": "https://www.linkedin.com/in/edwinalexshaji/",
+        "twitter": "https://twitter.com/edwinalexshaji",
+        "github": "https://github.com/edwineas",
+        "team": "Campus Activation",
+        "lead": ""
+    },
+    {
+        "name": "Erin Davies",
+        "image": "",
+        "muid": "erindavies@mulearn",
+        "linkedin": "https://www.linkedin.com/in/erin-davies-p/",
+        "twitter": "",
+        "github": "",
+        "team": "Content Writer",
+        "lead": ""
+    },
+    {
+        "name": "Fathima NS",
+        "image": "",
+        "muid": "fathimans@mulearn",
+        "linkedin": "https://www.linkedin.com/in/fathima-ns-8a10a8254",
+        "twitter": "https://twitter.com/fathima_ns",
+        "github": "https://github.com/FATHIMA-NS",
+        "team": "Content Writer",
+        "lead": ""
+    },
+    {
+        "name": "Gouri.k",
+        "image": "",
+        "muid": "gouri.k@mulearn",
+        "linkedin": "https://www.linkedin.com/in/gouri-k-220480212",
+        "twitter": "",
+        "github": "github.com/G-k02",
+        "team": "Partner Engagement",
+        "lead": ""
+    },
+    {
+        "name": "Gourinandana S",
+        "image": "",
+        "muid": "gourinandanas@mulearn",
+        "linkedin": "https://www.linkedin.com/in/gourinandana-s-722808213/",
+        "twitter": "",
+        "github": "",
+        "team": "Operations Manager",
+        "lead": ""
+    },
+    {
+        "name": "Jaidon Gill Shajan",
+        "image": "",
+        "muid": "",
+        "linkedin": "https://www.linkedin.com/in/jaidon-gill-shajan",
+        "twitter": "https://twitter.com/_judu_13",
+        "github": "https://github.com/JUDU-13",
+        "team": "Operations Manager",
+        "lead": ""
+    },
+    {
+        "name": "Jenin Joseph",
+        "image": "",
+        "muid": "jeninjoseph@mulearn",
+        "linkedin": "https://www.linkedin.com/in/jenin-joseph/",
+        "twitter": "https://twitter.com/__Jenin__",
+        "github": "https://github.com/Jenin82",
+        "team": "Full Stack Web developer",
+        "lead": ""
+    },
+    {
+        "name": "Jerom Jo Manthara",
+        "image": "",
+        "muid": "jeromjomanthara@mulearn",
+        "linkedin": "https://www.linkedin.com/in/jerom-manthara-b5b2b622b",
+        "twitter": "https://twitter.com/je_rom_jo",
+        "github": "https://github.com/lordgrim18",
+        "team": "Backend Web developer",
+        "lead": ""
+    },
+    {
+        "name": "Jins K. Varghese",
+        "image": "",
+        "muid": "jinsvarghese@mulearn",
+        "linkedin": "https://www.linkedin.com/in/jins-varghese-28a18a252",
+        "twitter": "https://twitter.com/jinskvarghese",
+        "github": "",
+        "team": "Video Editor",
+        "lead": ""
+    },
+    {
+        "name": "Jithu Francis",
+        "image": "",
+        "muid": "",
+        "linkedin": "https://www.linkedin.com/in/jithu-francis-958aa81a0/",
+        "twitter": "",
+        "github": "https://github.com/jithu-francis017",
+        "team": "Backend Web developer",
+        "lead": ""
+    },
+    {
+        "name": "Joel Ipe Samuel",
+        "image": "",
+        "muid": "joelipesamuel@mulearn",
+        "linkedin": "https://www.linkedin.com/in/joel-ipe-samuel-b35422244",
+        "twitter": "https://twitter.com/Cinotcetsa",
+        "github": "",
+        "team": "Content Writer",
+        "lead": ""
+    },
+    {
+        "name": "Joel T Vadakekalam",
+        "image": "",
+        "muid": "joel-2@mulearn",
+        "linkedin": "https://www.linkedin.com/in/joeltv11111/",
+        "twitter": "",
+        "github": "https://github.com/notS0LD13R",
+        "team": "Frontend Web developer",
+        "lead": ""
+    },
+    {
+        "name": "Karthikeyan M",
+        "image": "",
+        "muid": "karthikeyanm@mulearn",
+        "linkedin": "https://www.linkedin.com/in/karthi-keyan-043925213",
+        "twitter": "https://twitter.com/the__kratos",
+        "github": "https://github.com/karthi-keyan18",
+        "team": "Video Editor",
+        "lead": ""
+    },
+    {
+        "name": "Leya Thomas",
+        "image": "",
+        "muid": "leyathomas@mulearn",
+        "linkedin": "https://www.linkedin.com/in/leya-thomas-a86179229",
+        "twitter": "",
+        "github": "https://github.com/LeyaThomas",
+        "team": "Meme Creator",
+        "lead": ""
+    },
+    {
+        "name": "Manu Madhav S",
+        "image": "",
+        "muid": "manumadhavs@mulearn",
+        "linkedin": "https://www.linkedin.com/in/manu-madhav-302a59243/",
+        "twitter": "",
+        "github": "https://github.com/manumadhav123",
+        "team": "Public Relation",
+        "lead": ""
+    },
+    {
+        "name": "Mohammed Farhan TM",
+        "image": "",
+        "muid": "mohammedfarhant.m@mulearn",
+        "linkedin": "https://www.linkedin.com/in/mo-farhan-tm",
+        "twitter": "https://twitter.com/pplcallmefarhan?t=9oly37Yk6nbjtIiE-7HSYg&s=09",
+        "github": "https://github.com/Mo-Faraan",
+        "team": "UI Designer",
+        "lead": ""
+    },
+    {
+        "name": "Muhammed R",
+        "image": "",
+        "muid": "muhammedr@mulearn",
+        "linkedin": "https://www.linkedin.com/in/muhammed-r/",
+        "twitter": "https://twitter.com/muhammedr7025",
+        "github": "https://github.com/muhammedr7025",
+        "team": "Social Media manager",
+        "lead": ""
+    },
+    {
+        "name": "Nakhate Harika",
+        "image": "",
+        "muid": "nakhateharika@mulearn",
+        "linkedin": "https://www.linkedin.com/in/nakhate-harika/",
+        "twitter": "https://twitter.com/nharika09",
+        "github": "https://github.com/harika-haru",
+        "team": "Software QA tester",
+        "lead": ""
+    },
+    {
+        "name": "Nandana Manohar",
+        "image": "",
+        "muid": "nandanamanohar@mulearn",
+        "linkedin": "linkedin.com/in/nandana-manohar-b53b4423a",
+        "twitter": "https://twitter.com/NandanaManohar",
+        "github": "",
+        "team": "Meme Creator",
+        "lead": ""
+    },
+    {
+        "name": "Nandhana A R",
+        "image": "",
+        "muid": "nandhanaar-1@mulearn",
+        "linkedin": "https://www.linkedin.com/in/nandhana-a-r-31632b220",
+        "twitter": "https://twitter.com/Proffess24/",
+        "github": "",
+        "team": "HR manager",
+        "lead": ""
+    },
+    {
+        "name": "Neha Gomez",
+        "image": "",
+        "muid": "nehagomez@mulearn",
+        "linkedin": "https://www.linkedin.com/in/neha-gomez-594103231",
+        "twitter": "https://twitter.com/nehagmz",
+        "github": "",
+        "team": "Social Media manager",
+        "lead": ""
+    },
+    {
+        "name": "Pavithra A S",
+        "image": "",
+        "muid": "pavithraas@mulearn",
+        "linkedin": "https://www.linkedin.com/in/pavithra-as-2a64ba22a",
+        "twitter": "",
+        "github": "",
+        "team": "Campus Activation",
+        "lead": ""
+    },
+    {
+        "name": "Prathyush N M",
+        "image": "",
+        "muid": "prathyushnm@mulearn",
+        "linkedin": "https://www.linkedin.com/in/prathyushnm/",
+        "twitter": "https://twitter.com/prathyushnm/with_replies",
+        "github": "https://github.com/probablynotnmp",
+        "team": "Social Media manager",
+        "lead": ""
+    },
+    {
+        "name": "Rajat Sandeep",
+        "image": "",
+        "muid": "rajatsandeepsen@mulearn",
+        "linkedin": "https://linkedin.com/in/rajatsandeepsen/",
+        "twitter": "https://twitter.com/rajatsandeepsen/",
+        "github": "https://github.com/rajatsandeepsen/",
+        "team": "Frontend Web developer",
+        "lead": ""
+    },
+    {
+        "name": "Reo George",
+        "image": "",
+        "muid": "reogeorge@mulearn",
+        "linkedin": "https://www.linkedin.com/in/reo-george/",
+        "twitter": "https://twitter.com/re03george",
+        "github": "",
+        "team": "Graphic Designer",
+        "lead": ""
+    },
+    {
+        "name": "Rohan Mano",
+        "image": "",
+        "muid": "rohanmano@mulearn",
+        "linkedin": "https://www.linkedin.com/in/rohan-mano/",
+        "twitter": "https://twitter.com/rohan_mano",
+        "github": "https://github.com/CyB3RTYp3",
+        "team": "Web Designer",
+        "lead": ""
+    },
+    {
+        "name": "Rohit C",
+        "image": "",
+        "muid": "rohitc@mulearn",
+        "linkedin": "https://www.linkedin.com/in/rohit-c-6aa329255",
+        "twitter": "https://twitter.com/R021T",
+        "github": "https://github.com/R021T",
+        "team": "Content Writer",
+        "lead": ""
+    },
+    {
+        "name": "S Balasankar",
+        "image": "",
+        "muid": "balasankars@mulearn",
+        "linkedin": "linkedin.com/in/balasankar-s-900737229",
+        "twitter": "https://twitter.com/S_Balasankar055",
+        "github": "https://github.com/Bala55-github",
+        "team": "Graphic Designer",
+        "lead": ""
+    },
+    {
+        "name": "S Suryan",
+        "image": "",
+        "muid": "suryans@mulearn",
+        "linkedin": "https://www.linkedin.com/in/suryansanal",
+        "twitter": "https://twitter.com/me_suryan",
+        "github": "https://github.com/suryan-s",
+        "team": "Backend Web developer",
+        "lead": ""
+    },
+    {
+        "name": "Sachin Raj M",
+        "image": "",
+        "muid": "sachinrajm@mulearn",
+        "linkedin": "https://www.linkedin.com/in/sachinrajm/",
+        "twitter": "https://twitter.com/SachinRaj2018",
+        "github": "https://github.com/sachin-raj-m",
+        "team": "Operations Manager",
+        "lead": ""
+    },
+    {
+        "name": "Shakeel Nooh M",
+        "image": "",
+        "muid": "shakeelnoohm@mulearn",
+        "linkedin": "https://www.linkedin.com/in/shakeelnoohm/",
+        "twitter": "https://twitter.com/shakeelnoohm",
+        "github": "https://github.com/shakeelnoohm",
+        "team": "Career Initiatives",
+        "lead": ""
+    },
+    {
+        "name": "Shibin Rasheed",
+        "image": "",
+        "muid": "shibinrasheed@mulearn",
+        "linkedin": "https://www.linkedin.com/in/shibinrasheed/",
+        "twitter": "https://twitter.com/Shibin_Rasheed_",
+        "github": "https://github.com/ShibinRasheed",
+        "team": "Operations Manager",
+        "lead": ""
+    },
+    {
+        "name": "Sivani L R",
+        "image": "",
+        "muid": "sivanilr@mulearn",
+        "linkedin": "https://www.linkedin.com/in/sivani-l-r",
+        "twitter": "https://twitter.com/sivani_03",
+        "github": "https://github.com/sivani-l-r",
+        "team": "Public Relation",
+        "lead": ""
+    },
+    {
+        "name": "SNEHA C SHAJI",
+        "image": "",
+        "muid": "snehacshaji@mulearn",
+        "linkedin": "https://www.linkedin.com/in/sneha-c-shaji-71523b211/?original_referer=",
+        "twitter": "https://twitter.com/sneha_c_shaji",
+        "github": "https://github.com/sneha2180",
+        "team": "Operations Manager",
+        "lead": ""
+    },
+    {
+        "name": "Sreelakshmi g",
+        "image": "",
+        "muid": "sreelakhmig@mulearn",
+        "linkedin": "http://www.linkedin.com/in/g-sreelakshmi-3b8250211",
+        "twitter": "",
+        "github": "",
+        "team": "Operations Manager",
+        "lead": ""
+    },
+    {
+        "name": "SUJISHNA V P",
+        "image": "",
+        "muid": "sujishnavp@mulearn",
+        "linkedin": "https://www.linkedin.com/in/sujishna-v-p-79874a230",
+        "twitter": "https://twitter.com/Sujishnavp",
+        "github": "https://github.com/sujishna",
+        "team": "Web Designing",
+        "lead": ""
+    },
+    {
+        "name": "Surya Sudheer",
+        "image": "",
+        "muid": "suryasudheer@mulearn",
+        "linkedin": "linkedin.com/in/surya-sudheer",
+        "twitter": "twitter.com/SuryaSudheer02",
+        "github": "github.com/SuryaSudh",
+        "team": "UI Designers",
+        "lead": ""
+    },
+    {
+        "name": "Basith P",
+        "image": "",
+        "muid": "",
+        "linkedin": "https://www.linkedin.com/in/basithp9/",
+        "twitter": "",
+        "github": "https://github.com/Basith-P",
+        "team": "Frontend Team",
+        "lead": ""
+    },
+    {
+        "name": "Sivaprasad C",
+        "image": "assets/team/pillars/Sivaprasad C.webp",
+        "muid": "",
+        "linkedin": "",
+        "twitter": "",
+        "github": "",
+        "team": "",
+        "lead": ""
+    },
+    {
+        "name": "Ansan Johny",
+        "image": "assets/team/pillars/Ansan Johny.webp",
+        "muid": "",
+        "linkedin": "",
+        "twitter": "",
+        "github": "",
+        "team": "",
+        "lead": ""
+    },
+    {
+        "name": "Jovit Mathew",
+        "image": "assets/team/pillars/Jovit Mathew.webp",
+        "muid": "",
+        "linkedin": "",
+        "twitter": "",
+        "github": "",
+        "team": "",
+        "lead": ""
+    },
+    {
+        "name": "Muhammed Zafar MM",
+        "image": "assets/team/pillars/Muhammed Zafar MM.webp",
+        "muid": "",
+        "linkedin": "",
+        "twitter": "",
+        "github": "",
+        "team": "",
+        "lead": ""
+    },
+    {
+        "name": "Arnold Denzil",
+        "image": "assets/team/pillars/Arnold Denzil.webp",
+        "muid": "",
+        "linkedin": "",
+        "twitter": "",
+        "github": "",
+        "team": "",
+        "lead": ""
+    },
+    {
+        "name": "Aashish Vinu",
+        "image": "assets/team/pillars/Aashish Vinu.webp",
+        "muid": "",
+        "linkedin": "",
+        "twitter": "",
+        "github": "",
+        "team": "",
+        "lead": ""
+    },
+    {
+        "name": "Ferwin Lopez",
+        "image": "assets/team/pillars/Ferwin Lopez.webp",
+        "muid": "",
+        "linkedin": "",
+        "twitter": "",
+        "github": "",
+        "team": "",
+        "lead": ""
+    },
+    {
+        "name": "Sreenandan K M",
+        "image": "assets/team/pillars/Sreenandan K M.webp",
+        "muid": "",
+        "linkedin": "",
+        "twitter": "",
+        "github": "",
+        "team": "",
+        "lead": ""
+    },
+    {
+        "name": "Sooraj P",
+        "image": "assets/team/pillars/Sooraj P.webp",
+        "muid": "",
+        "linkedin": "",
+        "twitter": "",
+        "github": "",
+        "team": "",
+        "lead": ""
+    },
+    {
+        "name": "Abhiram Krishna",
+        "image": "assets/team/pillars/Abhiram Krishna.webp",
+        "muid": "",
+        "linkedin": "",
+        "twitter": "",
+        "github": "",
+        "team": "",
+        "lead": ""
+    },
+    {
+        "name": "Faeza Nasrin M B",
+        "image": "assets/team/pillars/Faeza Nasrin M B.webp",
+        "muid": "",
+        "linkedin": "",
+        "twitter": "",
+        "github": "",
+        "team": "",
+        "lead": ""
+    },
+    {
+        "name": "Anirudh MK",
+        "image": "assets/team/pillars/Anirudh MK.webp",
+        "muid": "",
+        "linkedin": "",
+        "twitter": "",
+        "github": "",
+        "team": "",
+        "lead": ""
+    },
+    {
+        "name": "Sanu",
+        "image": "assets/team/pillars/Sanu Muhammed C.webp",
+        "muid": "",
+        "linkedin": "",
+        "twitter": "",
+        "github": "",
+        "team": "",
+        "lead": ""
+    }
 ]

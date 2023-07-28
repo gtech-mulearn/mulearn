@@ -17,6 +17,7 @@ const Teams = () => {
   let district = require("./teamdata/district.json")
   let ca = require("./teamdata/ca.json")
   let pillars = require("./2023/pillars.json")
+  let pillarsQ1 = require("./2023/pillarsQ1.json")
   let mulearnhq = require("./2023/mulearnhq.json")
   let communityteam = require("./2023/communityteam.json")
   let associates = require("./2023/associates.json")
@@ -65,7 +66,8 @@ const Teams = () => {
             <option value="execom">Execom</option>
             <option value="mulearnhq">µLearn HQ</option>
             <option value="associates">Associates</option>
-            <option value="mulearnpillar">µLearn Pillars</option>
+            <option value="mulearnpillar3">µLearn Pillars Q3</option>
+            <option value="mulearnpillar1">µLearn Pillars Q1</option>
             <option value="communityteam">Community Team</option>
           </optgroup>
           <optgroup label="2022">
@@ -144,9 +146,9 @@ const Teams = () => {
         </section>
       )}
 
-      {(teamName === "all" || teamName === "mulearnpillar") && (
+      {(teamName === "all" || teamName === "mulearnpillar3") && (
         <section id={styles.execom} className={styles.team_group}>
-          <p className={styles.team_title}>µLearn Pillars</p>
+          <p className={styles.team_title}>µLearn Pillars Q3</p>
           <p className={styles.team_desc}>
             The Pillars of µLearn are the ones who support the µLearn Community.
             They are a group of students who assist the peers with their work
@@ -163,13 +165,40 @@ const Teams = () => {
                   linkedIn={member.linkedin ? member.linkedin : ""}
                   github={member.github ? member.github : ""}
                   twitter={member.twitter ? member.twitter : ""}
+                  muid={member.muid ? member.muid : ""}
+                  leadDesignation={member.lead ? member.lead : ""}
                 />
               )
             })}
           </div>
         </section>
       )}
-
+      {(teamName === "all" || teamName === "mulearnpillar1") && (
+        <section id={styles.execom} className={styles.team_group}>
+          <p className={styles.team_title}>µLearn Pillars Q1</p>
+          <p className={styles.team_desc}>
+            The Pillars of µLearn are the ones who support the µLearn Community.
+            They are a group of students who assist the peers with their work
+            and help the community thrive.
+          </p>
+          <div className={styles.members_list}>
+            {pillarsQ1.map((member) => {
+              return (
+                <TeamCard
+                  name={member.name}
+                  designation={member.team}
+                  image={member.image}
+                  linkedIn={member.linkedin ? member.linkedin : ""}
+                  github={member.github ? member.github : ""}
+                  twitter={member.twitter ? member.twitter : ""}
+                  muid={member.muid ? member.muid : ""}
+                  leadDesignation={member.lead}
+                />
+              )
+            })}
+          </div>
+        </section>
+      )}
       {(teamName === "all" || teamName === "communityteam") && (
         <section id={styles.execom} className={styles.team_group}>
           <p className={styles.team_title}>Community Contributors</p>

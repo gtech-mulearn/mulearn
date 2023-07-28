@@ -86,3 +86,7 @@ img {
   justify-content: flex-end;
   column-gap: 5px;
 }
+.team-card__muid{
+  font-size: 10px;
+  font-weight: 600;
+}
