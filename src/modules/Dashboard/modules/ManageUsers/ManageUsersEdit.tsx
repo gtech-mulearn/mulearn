@@ -5,8 +5,12 @@ import { useToast } from "@chakra-ui/react";
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import { FormikSelect, FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import {
+    FormikSelect,
+    FormikTextInput
+} from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { roles } from "@/MuLearnServices/types";
 
 type Props = {};
 
@@ -19,10 +23,12 @@ const ManageUsersEdit = (props: Props) => {
         mobile: string;
         discord_id: string;
         mu_id: string;
-        college: string;
-        company: string;
-        department: string;
-        graduation_year: string;
+        college?: string;
+
+        department?: string | any;
+        graduation_year?: string;
+        role: string;
+        company?: string;
     }
 
     // const [data, setData] = useState<IData>({
@@ -37,18 +43,19 @@ const ManageUsersEdit = (props: Props) => {
     //     department: "",
     //     graduation_year: ""
     // });
-     const [data, setData] = useState<IData>({
-         first_name: "",
-         last_name: "",
-         email: "",
-         mobile: "",
-         discord_id: "",
-         mu_id: "",
-         college: "",
-         company: "",
-         department: "",
-         graduation_year: ""
-     });
+    const [data, setData] = useState<IData>({
+        first_name: "",
+        last_name: "",
+        email: "",
+        mobile: "",
+        discord_id: "",
+        mu_id: "",
+        college: "",
+        company: "",
+        department: "",
+        graduation_year: "",
+        role: ""
+    });
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -74,7 +81,8 @@ const ManageUsersEdit = (props: Props) => {
                         college: data.college,
                         company: data.company,
                         department: data.department,
-                        graduation_year: data.graduation_year
+                        graduation_year: data.graduation_year,
+                        role: data.role
                     }}
                     validationSchema={Yup.object({
                         // igName: Yup.string()
@@ -102,8 +110,9 @@ const ManageUsersEdit = (props: Props) => {
                             .min(3, "Invalid mobile number")
                             .required("Required"),
                         graduation_year: Yup.string()
-                            .length(4, "Invalid mobile number")
+                            .length(4, "Invalid graduation_year")
                             .required("Required")
+
                         // discord_id: Yup.string()
                         //     .min(17, "Must be 17 characters or more")
                         //     .required("Required"),
@@ -112,22 +121,38 @@ const ManageUsersEdit = (props: Props) => {
                         //     .required("Required")
                     })}
                     onSubmit={values => {
-                        editManageUsers(
-                            id,
-                            values.first_name,
-                            values.last_name,
-                            values.email,
-                            values.mobile,
-                            values.discord_id,
-                            values.mu_id,
+                        // editManageUsers(
+                        //     id,
+                        //     values.first_name,
+                        //     values.last_name,
+                        //     values.email,
+                        //     values.mobile,
+                        //     values.discord_id,
+                        //     values.mu_id,
+                        //     values.college,
+                        //     values.company,
+                        //     values.department,
+                        //     values.graduation_year,
+                        //     values.role,
+                        //     toast
+                        // );
+                        if (values.role === "Student") {
+                            editManageUsers(
+                                id,
+                                values.first_name,
+                                values.last_name,
+                                values.email,
+                                values.mobile,
+                                values.discord_id,
+                                values.mu_id,
+                                values.college,
 
-                            values.college,
-                            values.company,
-                            values.department,
-                            values.graduation_year,
-                            toast
-                        );
-
+                                values.department, // why error occur for deparmenet only
+                                values.graduation_year,
+                                values.role,
+                                toast
+                            );
+                        }
                         navigate("/manage-users");
                     }}
                 >
@@ -156,7 +181,7 @@ const ManageUsersEdit = (props: Props) => {
                             type="text"
                             placeholder="Enter a mobile number"
                         />
-                       
+
                         <FormikSelect label="User College Name" name="college">
                             <option value="">Select an option</option>
                             <option value="VIDYA ACADEMY OF SCIENCE AND TECHNOLOGY">
@@ -173,7 +198,6 @@ const ManageUsersEdit = (props: Props) => {
                                 Mar Baselios College of Engineering and
                                 Technology
                             </option>
-                        
                         </FormikSelect>
                         <FormikTextInput
                             label="User Company Name"
