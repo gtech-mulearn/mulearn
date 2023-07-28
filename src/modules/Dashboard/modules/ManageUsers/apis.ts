@@ -3,6 +3,7 @@ import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 import { Dispatch, SetStateAction } from "react";
+import { OrgData, UserData } from "./ManageUsersInterface";
 export const getManageUsers = async (
     setData: any,
     page: number,
@@ -78,18 +79,20 @@ export const createManageUsers = async (
 
 export const editManageUsers = async (
     id: string | undefined,
-    first_name: string,
-    last_name: string,
-    email: string,
-    mobile: string,
-    discord_id: string,
-    mu_id: string,
-    toast: any,
-    role: string,
-    college?: string,
-    company?: string,
-    department?: string | any,
-    graduation_year?: string
+    first_name: string | undefined,
+    last_name: string | undefined,
+    email: string | undefined,
+    mobile: string | undefined,
+    discord_id: string | undefined,
+    mu_id: string | undefined,
+    role: string | undefined,
+    orgaanizations?: OrgData[],
+    // toast: any,
+
+    college?: string | undefined,
+    company?: string | undefined,
+    department?: string | undefined,
+    graduation_year?: string | undefined
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -110,12 +113,12 @@ export const editManageUsers = async (
         //console.log(first_name, last_name, email);
         const message: any = response?.data;
         //console.log(message);
-        toast({
-            title: "User created",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
+        // toast({
+        //     title: "User created",
+        //     status: "success",
+        //     duration: 3000,
+        //     isClosable: true
+        // });
     } catch (err: unknown) {
         const error = err as AxiosError;
 
@@ -125,23 +128,9 @@ export const editManageUsers = async (
     }
 };
 
-interface IData {
-    first_name: string;
-    last_name: string;
-    email: string;
-    mobile: string;
-    discord_id: string;
-    mu_id: string;
-    college?: string;
-    company?: string;
-    department?: string;
-    graduation_year?: string;
-    role: string;
-}
-
 export const getManageUsersDetails = async (
     id: string | undefined,
-    setData: Dispatch<SetStateAction<IData>>
+    setData: React.Dispatch<SetStateAction<UserData|undefined>>
 ) => {
     try {
         const response = await privateGateway.get(
