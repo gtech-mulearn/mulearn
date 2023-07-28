@@ -203,7 +203,7 @@ export const getDistricts = async (
 export const getInfo = async (code: string) => {
     try {
         const response = await privateGateway.post(
-            `${organizationRoutes.postGetInfo}${code}`
+            `${organizationRoutes.postGetInfo}${code}/`
         );
         return response.data.response.institution;
     } catch (err: unknown) {

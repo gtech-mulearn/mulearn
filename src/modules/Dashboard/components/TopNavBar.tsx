@@ -35,7 +35,7 @@ const TopNavBar = () => {
                             <div className={styles.profile}>
                                 <img
                                     onClick={() => {
-                                        navigate("/profile");
+                                        navigate("/dashboard/profile");
                                     }}
                                     src={profilePic ? profilePic : dpm}
                                     alt=""
