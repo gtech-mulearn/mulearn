@@ -13,7 +13,6 @@ import styles from "./InterestGroup.module.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
 import InterestGroupEditModal from "./InterestGroupEditModal";
-import ModalCreateComponent from "@/MuLearnComponents/ModalCreate/ModalCreate";
 
 export type modalStatesType = 'edit' | 'create' | null
 
@@ -73,15 +72,12 @@ function InterestGroup() {
     };
 
     const handleEdit = async (id: string | number | boolean) => {
-        await getIGDetails(id as string, setInput);//to get default igvalue.
+        await getIGDetails(id as string, setInput);
         setCurrID(id as string)
         setOpenModal('edit')
-        //navigate(`/dashboard/interest-groups/edit/${id}`);
     };
 
     const handleDelete = (id: string | undefined) => {
-        // console.log(id);
-        // navigate(`/dashboard/interest-group/delete/${id}`);
         deleteInterestGroups(id, toast);
         setTimeout(() => {
             getInterestGroups(setData, 1, perPage, setTotalPages, "", "");
@@ -92,10 +88,6 @@ function InterestGroup() {
         setCurrentPage(1);
         setPerPage(selectedValue);
         getInterestGroups(setData, 1, selectedValue, setTotalPages, "", "");
-    };
-
-    const handleCreate = () => {
-        setOpenMuModal(true);
     };
 
     const handleIconClick = (column: string) => {
@@ -113,33 +105,19 @@ function InterestGroup() {
             setSort(column);
             getInterestGroups(setData, 1, perPage, setTotalPages, "", column);
         }
-
-        //console.log(`Icon clicked for column: ${column}`);
     };
 
     //interestGroupCreate api call
-    const handleDataRender = (name: string,
+    const handleDataRender = (name: string, code: string, icon: string,
         onClose: Dispatch<SetStateAction<boolean>>) => {
         createInterestGroups(
             name,
+			code,
+			icon,
             onClose)
     };
     return (
         <>
-            <ModalCreateComponent
-                isOpen={openMuModal}
-                onClose={setOpenMuModal}
-                heading={"IG Create Page"}
-                content={"Enter the name of the Interest Group in the input below that you wish to create."}
-                placeholder={"Enter a name"}
-                inputType={"text"}
-                name={"igName"}
-                toastMsg={"Interest Group created"}
-                navigateRoute={"/dashboard/interest-groups"}
-                btnPrimaryText={"Confirm"}
-                btnSecondaryText={"Decline"}
-                onRender={handleDataRender}
-            />
             <InterestGroupEditModal
                 isOpen={openModal}
                 onClose={setOpenModal}
@@ -151,7 +129,9 @@ function InterestGroup() {
                     className={styles.createBtn}
                     text={"Create"}
                     icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
-                    onClick={handleCreate}
+                    onClick={() => {
+						navigate("/dashboard/interest-groups/create");
+					}}
                 />
             </div>
 
