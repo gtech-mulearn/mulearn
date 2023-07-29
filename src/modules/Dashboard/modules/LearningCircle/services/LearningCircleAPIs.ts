@@ -113,6 +113,37 @@ export const createCircle = async(
 
 }
 
+export const joinCircle = async (
+    circleCode: string,
+) => {
+    try {
+        const response = await privateGateway.post(
+            dashboardRoutes.joinLearningCircle + circleCode + '/',
+        );
+
+        console.log(response);
+        toast({
+            title: "Learning Circle Created",
+            description: "",
+            status: "success",
+            duration: 2000,
+            isClosable: true
+        });
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+        toast({
+            title: "Learning Circle not creating..",
+            description: "",
+            status: "error",
+            duration: 2000,
+            isClosable: true
+        });
+    }
+};
+
 export const getInterestGroups = async (
 )=>{
     try{
