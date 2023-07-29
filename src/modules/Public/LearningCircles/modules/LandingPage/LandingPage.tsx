@@ -62,7 +62,7 @@ const LandingPage = () => {
 
       <div className={styles.LClandingPageExplore}>
         <div className={styles.exploreTitle}>
-          <b>Explore</b> <span>Learning Circles</span>
+          <b>Explore</b> <span>Learning Circles</span> 
         </div>
 
         <div className={styles.selectOptions}>
