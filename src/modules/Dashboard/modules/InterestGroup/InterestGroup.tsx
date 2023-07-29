@@ -3,7 +3,7 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { createInterestGroups, deleteInterestGroups, getInterestGroups } from "./apis";
+import { createInterestGroups, deleteInterestGroups, getIGDetails, getInterestGroups } from "./apis";
 import { roles } from "@/MuLearnServices/types";
 import { hasRole } from "@/MuLearnServices/common_functions";
 import { useNavigate } from "react-router-dom";
@@ -12,14 +12,10 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./InterestGroup.module.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
-import InterestGroupCreateModal from "./InterestGroupCreateModal";
-import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-
 import InterestGroupEditModal from "./InterestGroupEditModal";
 import ModalCreateComponent from "@/MuLearnComponents/ModalCreate/ModalCreate";
 
 export type modalStatesType = 'edit' | 'create' | null
-
 
 function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
@@ -41,6 +37,7 @@ function InterestGroup() {
     const [openModal, setOpenModal] = useState<modalStatesType>(null);
     const [openMuModal, setOpenMuModal] = useState(false);
     const [currID, setCurrID] = useState<string>('')
+    const [input, setInput] = useState<string>("");
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -76,7 +73,7 @@ function InterestGroup() {
     };
 
     const handleEdit = async (id: string | number | boolean) => {
-        console.log(id);
+        await getIGDetails(id as string, setInput);//to get default igvalue.
         setCurrID(id as string)
         setOpenModal('edit')
         //navigate(`/dashboard/interest-groups/edit/${id}`);
@@ -127,7 +124,6 @@ function InterestGroup() {
             name,
             onClose)
     };
-
     return (
         <>
             <ModalCreateComponent
@@ -148,6 +144,7 @@ function InterestGroup() {
                 isOpen={openModal}
                 onClose={setOpenModal}
                 id={currID}
+                defaultValue={input}
             />
             <div className={styles.createBtnContainer}>
                 <MuButton

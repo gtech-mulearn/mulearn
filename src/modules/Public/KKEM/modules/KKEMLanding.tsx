@@ -1,5 +1,4 @@
 import Navbar from "../components/Navbar";
-import SkillExpress from "../components/SkillExpress";
 import titleFrame from "../assets/titleFrame.svg";
 import mU from "../assets/mU_pl.svg";
 import styles from "./KKEMLanding.module.css";
