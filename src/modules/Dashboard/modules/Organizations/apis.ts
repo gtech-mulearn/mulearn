@@ -305,7 +305,7 @@ export const updateOrganization = async (
     try {
         setIsLoading(true);
         const response = await privateGateway.put(
-            `${organizationRoutes.putUpdateOrganization}/${oldCode}`,
+            `${organizationRoutes.putUpdateOrganization}/${oldCode}/`,
             addDataProps()
         );
         //console.log("status is ", response.status);
@@ -374,7 +374,7 @@ export const getInfo = async (
     code: string
 ) => {
     try {
-        const response = await privateGateway.post(`${organizationRoutes.postGetInfo}${code}`);
+        const response = await privateGateway.post(`${organizationRoutes.postGetInfo}${code}/`);
         return response.data.response.institution
     } catch (err: unknown) {
         const error = err as AxiosError;

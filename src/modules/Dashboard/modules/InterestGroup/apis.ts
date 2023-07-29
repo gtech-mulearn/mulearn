@@ -83,8 +83,6 @@ export const getIGDetails = async (
             dashboardRoutes.getIgData + "get/" + id + "/",
         );
         const message: any = response?.data;
-        //console.log(message);
-        //console.log(message.response.interestGroup.name);
         setInput(message.response.interestGroup.name);
     } catch (err: unknown) {
         const error = err as AxiosError;

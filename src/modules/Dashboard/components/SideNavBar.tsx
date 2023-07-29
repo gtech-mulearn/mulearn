@@ -9,6 +9,8 @@ import {
     MuButton,
     MuButtonLight
 } from "@/MuLearnComponents/MuButtons/MuButton";
+import { UserInfo, fetchLocalStorage } from "@/MuLearnServices/common_functions";
+import { Role } from "@/MuLearnServices/types";
 
 //TODO: Change the style's casing to match the rest of the project
 type Props = {
@@ -16,7 +18,7 @@ type Props = {
         url: string;
         title: string;
         hasView: boolean;
-        roles?: string[];
+        roles?: Role[];
         icon?: any;
         children?: Props["sidebarButtons"];
     }[];
@@ -34,13 +36,13 @@ const SideNavBar = (props: Props) => {
     const [level2dropDownDisplay, setLevel2dropDownDisplay] = useState(""); // Title of the level 2 dropdown
     const [connected, setConnected] = useState(false);
 
-    const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
-
+    const userInfo = fetchLocalStorage<UserInfo>("userInfo")
+    
     useEffect(() => {
-        if (localStorage.getItem("userInfo") && userInfo.exist_in_guild) {
+        if (userInfo && userInfo.exist_in_guild) {
             setConnected(userInfo.exist_in_guild);
         }
-    });
+    }, []);
     const myElementRef = useRef<HTMLDivElement>(null);
     const elements = document.getElementById("right");
     const element = elements as HTMLElement;
@@ -119,6 +121,7 @@ const SideNavBar = (props: Props) => {
                                 )
                                 .map((button, i) => button.children
                                     ? <DropDownButtons
+                                        key={i}
                                         text={button.title}
                                         icon={button.icon}
                                         onClick={() => setDropDownBtnDisplay(dropDownBtnDisplay === "0" ? "max-content" : "0")}
@@ -132,6 +135,7 @@ const SideNavBar = (props: Props) => {
                                                 )
                                                 .map((button, i) => button.children
                                                     ? <DropDownButtons
+                                                        key={i}
                                                         text={button.title}
                                                         icon={button.icon}
                                                         onClick={() => setLevel2dropDownDisplay(level2dropDownDisplay === button.title ? "" : button.title)}

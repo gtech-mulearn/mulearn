@@ -84,6 +84,7 @@ export const dashboardRoutes = {
     getCampusLearningCircles: "/api/v1/dashboard/lc/",
     createLearningCircle: "/api/v1/dashboard/lc/create/",
     joinLearningCircle: "/api/v1/dashboard/lc/join/",
+    setLCMeetTime: "/api/v1/dashboard/lc/meet/",
 
     getAllOrganisations: "/api/v1/hackathon/list-organisations/",
     getAllDistricts: "/api/v1/hackathon/list-districts/"
@@ -92,9 +93,9 @@ export const dashboardRoutes = {
 export const organizationRoutes = {
     getOrganizationsAll: "/api/v1/organisation/institutes/info/all_inst",
     getCompany: "/api/v1/organisation/institutes/show/Company",
-    getAffiliation: "/api/v1/organisation/institutes/org/affiliation",
+    getAffiliation: "/api/v1/organisation/institutes/org/affiliation/",
     getLocation: "/api/v1/location",
-    postAddOrganization: "/api/v1/organisation/institutes/add",
+    postAddOrganization: "/api/v1/organisation/institutes/add/",
     putUpdateOrganization: "/api/v1/organisation/institutes",
     deleteOrgnaization: "/api/v1/organisation/institutes/",
     postGetInfo: "/api/v1/organisation/institutes/info/",

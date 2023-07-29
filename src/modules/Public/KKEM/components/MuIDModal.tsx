@@ -59,6 +59,7 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
     const [searchParams] = useSearchParams();
     const mu_id = searchParams.get("mu_id");
 
+    console.log(ruri)
     useEffect(() => {
         if (mu_id) {
             setMuid(mu_id);
