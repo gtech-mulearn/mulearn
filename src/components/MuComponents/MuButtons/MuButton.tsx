@@ -20,6 +20,7 @@ export const MuButton = (props: {
     isLoading?: boolean; // show loading spinner if neccessary.
     disabled?: boolean; //disable the button if needed
     buttonUrl?: string; // for styling purposes
+    submit?: boolean; // for styling purposes
 }) => {
     return (
         <button
