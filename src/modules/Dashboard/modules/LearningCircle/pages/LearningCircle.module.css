@@ -280,7 +280,7 @@
     align-items: center;
 }
 
-.BtnBtn {
+.BtnBtn{
     padding: 0.5rem 2.5rem;
     border-radius: 0.5rem;
     border: none;
@@ -596,6 +596,15 @@
     border-radius: 0.5rem;
     background-color: #f3f3f3;
     outline: none;
+}
+
+.LcNotedEvent p{
+	width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: #f3f3f3;
+    outline: none;
+	color:#ccc;
 }
 
 

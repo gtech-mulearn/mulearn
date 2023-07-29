@@ -43,32 +43,35 @@ const LearningCircle = (props: Props) => {
 
                 <div className={styles.BoxContent}>
                     <div className={styles.LeftBox}>
-                        {/* <div className={styles.EventOn}>
-                            <div className={styles.MeetingOn}>
-                                <div>
-                                    <b>Next Meeting on</b>
-                                    <div>
-                                        <h1>22 June 2023</h1>
-                                        <b>Sunday</b>
-                                    </div>
-                                </div>
-                                <i className="fa-solid fa-pencil"></i>
-                            </div>
-                            <div className={styles.MeetingBtn}>
-                                <b>
-                                    venue: multiplication hall <br /> time:
-                                    10:00 am
-                                </b>
-                                <button className={styles.BtnBtn}>Done</button>
-                            </div>
-                        </div> */}
-
+                        
                         <div className={styles.EventOn}>
-                            <div className={styles.ScheduleOn}>
-                                <b>Schedule meeting</b>
-                                <p>Enter details to schedule your weekly meeting</p>
-                            </div>
-                            <div className={styles.InputSchedule}>
+                            {lc?.meet_place || lc?.meet_time ? (
+                                <>
+                                    <div className={styles.MeetingOn}>
+                                        <div>
+                                            <b>Next Meeting on</b>
+                                            <div>{/* <b>{lc?.day}</b> */}</div>
+                                        </div>
+                                        <i className="fa-solid fa-pencil"></i>
+                                    </div>
+                                    <div className={styles.MeetingBtn}>
+                                        <b>
+                                            venue: {lc?.meet_place} <br /> time:
+                                            <h1>{lc?.meet_time}</h1>
+                                        </b>
+                                        <button className={styles.BtnBtn}>
+                                            Done
+                                        </button>
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                              <div className={styles.InputSchedule}>
+                                <div className={styles.ScheduleOn}>
+                                   <b>Schedule meeting</b>
+                                   <p>Enter details to schedule your weekly meeting</p>
+                               </div>
+                               <div className={styles.InputSchedule}>
                                 <div>
                                     <input type="time" placeholder="meeting time" />
                                     <input type="text" placeholder="meeting venue" />
@@ -95,7 +98,7 @@ const LearningCircle = (props: Props) => {
                                         <input type="checkbox" id='F'/><label htmlFor='F'>F</label>
                                     </div>
                                     <div>
-                                        <input type="checkbox" id='Sa'/><label htmlFor='Sa'>Sa</label>
+                                        <input type="checkbox" id='Sa'/><label htmlFor='Sa'>S</label>
                                     </div>
                                   </p>
                                     
@@ -107,87 +110,24 @@ const LearningCircle = (props: Props) => {
                         </div>
 
 
-                           <div className={styles.EventOn}>
+                        </>
+                            )}
+                        </div>
+                          
+                        <div className={styles.EventOn}>
                                 <div className={styles.LcNotedEvent}>
                                     <input type="text" placeholder='input' />
                                     <button className={styles.BtnBtn}>Submit</button>
                                 </div>
-                            </div>
-
-                        <div className={styles.PendingApp}>
-                            <b className={styles.PendingTitle}>Pending approvals</b>
-                            <div className={styles.PendingList}>
-                                <div className={styles.PendingMembers}>
-                                    <span>
-                                        <img
-                                            src="https://www.himalmag.com/wp-content/uploads/2019/07/sample-profile-picture.png"
-                                            alt=""
-                                        />
-                                        <b>Sarah Philip</b>
-                                    </span>
-                                    <div className={styles.buttons}>
-                                        <button className={styles.BtnBtn}>
-                                            Done
-                                        </button>
-                                    </div>
-                                </>
-                            ) : (
-                                <div>
-                                    <Formik
-                                        enableReinitialize={true}
-                                        initialValues={{
-                                            meet_time: "",
-                                            meet_place: "",
-                                            day: ""
-                                        }}
-                                        onSubmit={(values, { resetForm }) => {
-                                            setLCMeetTime(
-                                                values.meet_time,
-                                                values.meet_place,
-                                                values.day,
-                                                id
-                                            );
-                                            console.log(values);
-                                            resetForm();
-                                        }}
-                                    >
-                                        {({
-                                            values,
-                                            handleChange,
-                                            setFieldValue,
-                                            errors
-                                        }) => (
-                                            <Form>
-                                                <div
-                                                    className={
-                                                        styles.LearningCircleCreateForm
-                                                    }
-                                                >
-                                                    <FormikTextInput
-                                                        type="text"
-                                                        name="meet_time"
-                                                        placeholder="Meeting Time"
-                                                    />
-                                                    <FormikTextInput
-                                                        type="text"
-                                                        name="meet_place"
-                                                        placeholder="Meeting Place"
-                                                    />
-                                                    <FormikTextInput
-                                                        type="text"
-                                                        name="day"
-                                                        placeholder="Meeting Day"
-                                                    />
-                                                </div>
-                                                <button type="submit">
-                                                    Create
-                                                </button>
-                                            </Form>
-                                        )}
-                                    </Formik>
+                        </div> 
+                         
+                        <div className={styles.EventOn}>
+                                <div className={styles.LcNotedEvent}>
+                                    <p>hello</p>
+                                    <button className={styles.BtnBtn}>edit</button>
                                 </div>
-                            )}
-                        </div>
+                        </div> 
+
 
                         {lc?.pending_members &&
                         lc.pending_members.length > 0 ? (
