@@ -26,7 +26,7 @@ const LearningCircle = (props: Props) => {
 
                 <div className={styles.BoxContent}>
                     <div className={styles.LeftBox}>
-                        <div className={styles.EventOn}>
+                        {/* <div className={styles.EventOn}>
                             <div className={styles.MeetingOn}>
                                 <div>
                                     <b>Next Meeting on</b>
@@ -44,9 +44,9 @@ const LearningCircle = (props: Props) => {
                                 </b>
                                 <button className={styles.BtnBtn}>Done</button>
                             </div>
-                        </div>
+                        </div> */}
 
-                        {/* <div className={styles.EventOn}>
+                        <div className={styles.EventOn}>
                             <div className={styles.ScheduleOn}>
                                 <b>Schedule meeting</b>
                                 <p>Enter details to schedule your weekly meeting</p>
@@ -54,12 +54,48 @@ const LearningCircle = (props: Props) => {
                             <div className={styles.InputSchedule}>
                                 <div>
                                     <input type="time" placeholder="meeting time" />
-                                    <input type="date" placeholder="meeting day" />
+                                    <input type="text" placeholder="meeting venue" />
                                 </div>
-                                <input type="text" placeholder="meeting venue" />
+                                <div className={styles.weeks}>
+                                    <p>meeting days</p>
+                                  <p className={styles.Lcweek}>
+                                    <div>
+                                        <input type="checkbox" id='S'/><label htmlFor='S'>S</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='M'/><label htmlFor='M'>M</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='T'/><label htmlFor='T'>T</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='W'/><label htmlFor='W'>W</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='Th'/><label htmlFor='Th'>T</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='F'/><label htmlFor='F'>F</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='Sa'/><label htmlFor='Sa'>Sa</label>
+                                    </div>
+                                  </p>
+                                    
+                                </div>
+                                {/* <input type="text" placeholder="meeting venue" /> */}
                             </div>
+                            
                             <button className={styles.BtnBtn}>Schedule</button>
-                        </div> */}
+                        </div>
+
+
+                           <div className={styles.EventOn}>
+                                <div className={styles.LcNotedEvent}>
+                                    <input type="text" placeholder='input' />
+                                    <button className={styles.BtnBtn}>Submit</button>
+                                </div>
+                            </div>
 
                         <div className={styles.PendingApp}>
                             <b className={styles.PendingTitle}>Pending approvals</b>
