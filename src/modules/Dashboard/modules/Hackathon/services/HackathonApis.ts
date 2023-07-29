@@ -417,3 +417,21 @@ export const getOrganizers = async (
         }
     }
 };
+
+export const getParticipants = async (
+    setData: React.Dispatch<SetStateAction<Data[]>>,
+    id: string | undefined
+) => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getApplicants + id + "/"
+        );
+        const message: any = response?.data;
+        setData(message.response);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
