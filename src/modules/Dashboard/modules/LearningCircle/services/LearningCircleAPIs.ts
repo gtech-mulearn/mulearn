@@ -206,6 +206,44 @@ export const getInterestGroups = async (
             console.log(error.response);
         } 
     }
-
-    
 }
+
+export const approveLcUser = async (
+    circleId: string | undefined,
+    memberId: string,
+	flag: boolean
+) => {
+    try {
+        const response = await privateGateway.patch(
+            dashboardRoutes.getCampusLearningCircles +
+                circleId +
+                "/" +
+                memberId +
+                "/",
+            {
+                is_accepted: flag
+            }
+        );
+
+        console.log(response);
+        toast({
+            title: "Member Approved",
+            description: "",
+            status: "success",
+            duration: 2000,
+            isClosable: true
+        });
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+        toast({
+            title: "Something went wrong",
+            description: "",
+            status: "error",
+            duration: 2000,
+            isClosable: true
+        });
+    }
+};
