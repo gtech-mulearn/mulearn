@@ -1,0 +1,94 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 5rem 3rem;
+}
+
+.content>h1,
+.failure {
+    color: #293338;
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 111.5%;
+}
+
+.content>h1::after,
+.failure::after {
+    content: "";
+    display: block;
+    width: calc(2rem * 12);
+    height: 0.6rem;
+    background: #67de82;
+    margin-top: -0.8rem;
+    border-radius: 0.5rem;
+    max-width: 100%;
+}
+
+.failure::after {
+    background: #ff4d4d !important;
+}
+
+.content>p {
+    color: #293338;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 150%;
+    margin-top: 2rem;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    width: 40rem;
+    animation: updown 1s ease-in-out infinite alternate;
+}
+
+.section {
+    display: flex;
+    height: 70vh;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+@keyframes updown {
+    0% {
+        transform: translateY(-1rem);
+    }
+
+    100% {
+        transform: translateY(1rem);
+    }
+}
+
+@media (max-width: 1000px) {
+    .content {
+        padding: 2rem 1rem;
+    }
+
+    .content>h1 {
+        font-size: 3rem;
+    }
+
+    .content>p {
+        font-size: 1.4rem;
+    }
+
+    .image {
+        margin-top: 1rem;
+    }
+
+    .section {
+        flex-direction: column;
+    }
+}
+
+.muLoader {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

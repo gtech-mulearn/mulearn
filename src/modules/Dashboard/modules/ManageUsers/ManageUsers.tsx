@@ -13,7 +13,7 @@ import { deleteManageUsers, getManageUsers } from "./apis";
 function ManageRoles() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
@@ -65,11 +65,10 @@ function ManageRoles() {
 
     const handleEdit = (id: string | number | boolean) => {
         //console.log(id);
-        navigate(`/manage-users/edit/${id}`);
+        navigate(`/dashboard/manage-users/edit/${id}`);
     };
 
     const toast = useToast();
-
 
     const handleDelete = (id: string | undefined) => {
         deleteManageUsers(id, toast);
@@ -116,39 +115,42 @@ function ManageRoles() {
                     onClick={handleCreate}
                 />
             </div> */}
-            <TableTop
-                onSearchText={handleSearch}
-                onPerPageNumber={handlePerPageNumber}
-                CSV={dashboardRoutes.getUsersList}
-                // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
-            />
+
             {data && (
-                <Table
-                    rows={data}
-                    page={currentPage}
-                    perPage={perPage}
-                    columnOrder={columnOrder}
-                    id={["id"]}
-                    onEditClick={handleEdit}
-                    onDeleteClick={handleDelete}
-                    modalDeleteHeading="Delete"
-                    modalTypeContent="error"
-                    modalDeleteContent="Are you sure you want to delete this user ?"
-                >
-                    <THead
+                <>
+                    <TableTop
+                        onSearchText={handleSearch}
+                        onPerPageNumber={handlePerPageNumber}
+                        CSV={dashboardRoutes.getUsersList}
+                        // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
+                    />
+                    <Table
+                        rows={data}
+                        page={currentPage}
+                        perPage={perPage}
                         columnOrder={columnOrder}
-                        onIconClick={handleIconClick}
-                        action={true}
-                    />
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        margin="10px 0"
-                        handleNextClick={handleNextClick}
-                        handlePreviousClick={handlePreviousClick}
-                    />
-                    {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-                </Table>
+                        id={["id"]}
+                        onEditClick={handleEdit}
+                        onDeleteClick={handleDelete}
+                        modalDeleteHeading="Delete"
+                        modalTypeContent="error"
+                        modalDeleteContent="Are you sure you want to delete this user ?"
+                    >
+                        <THead
+                            columnOrder={columnOrder}
+                            onIconClick={handleIconClick}
+                            action={true}
+                        />
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            margin="10px 0"
+                            handleNextClick={handleNextClick}
+                            handlePreviousClick={handlePreviousClick}
+                        />
+                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                    </Table>
+                </>
             )}
         </>
     );

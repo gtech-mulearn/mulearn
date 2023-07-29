@@ -4,6 +4,9 @@ import * as Yup from "yup";
 import { Form, Formik } from "formik";
 import FormikReactSelect,{FormikSelect, FormikTextInput} from '@/MuLearnComponents/FormikComponents/FormikComponents'
 import { getInterestGroups,createCircle } from "../services/LearningCircleAPIs";
+import { useNavigate, useParams } from "react-router-dom";
+import { LcDetail } from "../services/LearningCircleInterface";
+
 type Props = {};
 
 type interestGroupType = {
@@ -14,6 +17,10 @@ type interestGroupType = {
 const LearningCircleCreate = (props: Props) => {
     
     const [interestGroups,setInterestGroups] = useState<interestGroupType[]>()
+    const [id,setId] = useState('');
+    const navigate = useNavigate()
+
+    
     
     const createLearningCircleSchema = Yup.object().shape({
         circle_name: Yup.string()
@@ -56,11 +63,18 @@ const LearningCircleCreate = (props: Props) => {
                                 validationSchema={createLearningCircleSchema}
                                 onSubmit={(values,{resetForm}) =>{
                                     createCircle(
+                                        setId,
                                         values.circle_name,
                                         "error adikalle",
-                                        values.interest_group
+                                        values.interest_group,
                                     )
                                     resetForm()
+                                    setTimeout(() => {
+                                                
+                                        navigate(
+                                            `/dashboard/learning-circle/`
+                                        );
+                                    },3500);
                                 }}
                             >
                                 <Form>
@@ -78,7 +92,7 @@ const LearningCircleCreate = (props: Props) => {
                                             options={interestGroups!}
                                         />
                                     </div>
-                                    <button type="submit">Create</button>
+                                    <button type="submit" >Create</button>
                                 </Form>
                             </Formik>
                     </div>

@@ -10,62 +10,96 @@
     border-radius: 20px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.07);
     margin-bottom: 20px;
-        color: black;
+    color: black;
+
+    .form_btns {
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+        width: 25%;
+        height: 65px;
+    }
+
+    .create_new_url {
+        width: 100%;
+
+        & form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            & input {
+                background: #ffffff;
+                border: 1px solid #CFD2D4;
+                border-radius: 10px;
+                padding: 10px;
+                margin-top: 20px;
+
+                &:focus {
+                    border: 1px solid rgba(1, 75, 178, 0.9);
+                }
+            }
+
+            .short_url_input_container {
+                display: flex;
+                justify-content: space-between;
+                gap: 10px;
+
+                .short_url_input_container_div {
+                    width: 40%;
+
+                    .short_url_input {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        .short_url {
+                            width: 73%;
+                        }
+                    }
+                }
+
+                .form_btns .submit {
+                    background: #5570F1;
+                    border-radius: 12px;
+                    color: #fff;
+                    cursor: pointer;
+                    font-size: 15px;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    .error_message {
+        color: red;
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin-top: 5px;
+        text-align: left;
+    }
 }
 
-.create_new_url {
-    width: 100%;
+@media screen and (max-width: 830px) {
+    .url_shortener_container {
+        padding: 20px 20px;
+
+        .form_btns {
+            width: 100%;
+        }
+
+        .create_new_url form .short_url_input_container {
+            flex-direction: column;
+
+            .short_url_input_container_div {
+                width: 100%;
+            }
+        }
+    }
 }
 
-.url_shortener_container .create_new_url form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.url_shortener_container .create_new_url form input {
-    background: #ffffff;
-    border: 1px solid #CFD2D4;
-    border-radius: 10px;
-    padding: 10px;
-    margin-top: 20px;
-}
-
-.url_shortener_container .create_new_url form input:focus {
-    border: 1px solid rgba(1, 75, 178, 0.9);
-}
-
-.url_shortener_container .create_new_url form .short_url_input_container {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.url_shortener_container .create_new_url form .short_url_input_container .short_url_input {
-    width: 40%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.url_shortener_container .create_new_url form .short_url_input_container .short_url_input .short_url {
-    width: 73%;
-}
-
-.url_shortener_container .create_new_url form .short_url_input_container .submit {
-    width: 15%;
-    background: #5570F1;
-    border-radius: 12px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 500;
-}
-
-.error_message {
-    color: red;
-    font-size: 0.8rem;
-    font-weight: 500;
-    margin-top: 5px;
-    text-align: left;
+@media screen and (max-width: 500px) {
+    .url_shortener_container .create_new_url form .short_url_input_container .short_url_input .short_url {
+        margin-left: 10px;
+    }
 }

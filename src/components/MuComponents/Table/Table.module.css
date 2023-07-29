@@ -50,7 +50,7 @@
 }
 
 .icon {
-  /*  border: 1px solid var(--Dark);*/
+    /*  border: 1px solid var(--Dark);*/
     border-radius: 10px;
     margin-left: 5px;
     font-size: 22px;
@@ -70,6 +70,7 @@
     color: #fff;
     border-radius: var(--borderRadius);
     padding: 4px 6px;
+    font-size: 1rem;
 }
 
 /* Define alternating row colors */

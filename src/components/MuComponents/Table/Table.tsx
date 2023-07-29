@@ -1,15 +1,17 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import styles from "./Table.module.css";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { AiOutlineDelete } from "react-icons/ai";
 import { HiOutlinePencil } from "react-icons/hi";
 import Modal from "../Modal/Modal";
+import MuLoader from "../MuLoader/MuLoader";
+
 enum ModalType {
     Verify,
     Delete
 }
-interface Data {
+export interface Data {
     [key: string]: string | number | boolean;
 }
 
@@ -43,6 +45,7 @@ type TableProps = {
     onEditClick?: (column: string | number | boolean) => void;
     onDeleteClick?: (column: string | undefined) => void;
     onVerifyClick?: (column: string | number | boolean) => void;
+    onCopyClick?: (column: string | number | boolean) => void;
     modalVerifyHeading?: string;
     modalVerifyContent?: string;
     modalDeleteHeading?: string;
@@ -60,6 +63,7 @@ TODO: Move the Common Functions to a separate file
 */
 
 const Table: FC<TableProps> = (props: TableProps) => {
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     const [isDeleteOpen, setIsDeleteOpen] = useState<boolean[]>(
         props.rows.map(() => false)
     );
@@ -119,9 +123,19 @@ const Table: FC<TableProps> = (props: TableProps) => {
 
     const startIndex = (props.page - 1) * props.perPage;
 
+    // To change MuLoading Component
+    useEffect(() => {
+        setTimeout(() => {
+
+            setIsLoading(false);
+        }, 2000)
+    }, [props.rows]);
+
     return (
         <>
+
             <div className={styles.table}>
+                {isLoading ? <MuLoader/> : 
                 <table className={styles.tableActual}>
                     {props.children?.[0]}
                     <tbody>
@@ -144,6 +158,18 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                     props.id.map((column, columnIndex) => (
                                         <td className={styles.td} key={column}>
                                             <div className={styles.icons}>
+                                                {props.onCopyClick && (
+                                                    <button
+                                                        onClick={() =>
+                                                            props.onCopyClick &&
+                                                            props.onCopyClick(
+                                                                rowData[column]
+                                                            )
+                                                        }
+                                                    >
+                                                        <i className="fi fi-rr-duplicate"></i>
+                                                    </button>
+                                                )}
                                                 {props.onEditClick && (
                                                     <button
                                                         onClick={() =>
@@ -227,12 +253,27 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                             </div>
                                         </td>
                                     ))}
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                                    
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                }
             </div>
-            <div className={styles.page}>{props.children?.[1]}</div>
+            
+            {(()=>{
+                if(isLoading) return ""
+                if(props.rows.length)
+                    return(
+                        <div className={styles.page}>{props.children?.[1]}</div>
+                    )
+                else
+                    return (
+                    <h1 style={{
+                        color:'red'
+                    }}>No data to display</h1>
+                    )
+            })()} 
         </>
     );
 };

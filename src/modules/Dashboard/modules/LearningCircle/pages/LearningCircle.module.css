@@ -251,6 +251,7 @@
 
 .RightBox {
     width: 40%;
+	margin-top:-1rem;
 }
 
 .EventOn,
@@ -455,6 +456,10 @@
     .RightBox {
         width: 100%;
     }
+	.RightBox {
+		width: 100%;
+		margin-top: 0rem;
+	}
 
     .CreatedCircle {
         padding: 1.5rem;
@@ -920,6 +925,9 @@
     .FindCircleContentTop .desc b {
         font-size: 0.8rem;
     }
+	.FindCircleContentTop .desc b {
+		font-size: .8rem;
+	}
 
     .FindCircleContent img {
         width: 100%;

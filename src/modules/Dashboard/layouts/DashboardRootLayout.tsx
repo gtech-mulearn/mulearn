@@ -3,12 +3,13 @@ import styles from "../components/SideNavBar.module.css";
 import { Outlet } from "react-router-dom";
 import SideNavBar from "../components/SideNavBar";
 import TopNavBar from "../components/TopNavBar";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import adminButtons from "../utils/userwiseButtonsData/adminButtons";
 // import companyButtons from "../utils/userwiseButtonsData/companyButtons";
 // import userButtons from "../utils/userwiseButtonsData/userButtons";
-import { roles } from "../../../services/types";
-
+import { roles } from "@/MuLearnServices/types";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { UserInfo, fetchLocalStorage } from "@/MuLearnServices/common_functions";
 //TODO: Remove flaticons and use react-icons or vice-versa
 const DashboardRootLayout = (props: { component?: any }) => {
     const [connected, setConnected] = useState(false);
@@ -17,52 +18,55 @@ const DashboardRootLayout = (props: { component?: any }) => {
     const [userType, setUserType] = useState("");
 
     useEffect(() => {
-        const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
-        const existInGuild = userInfo.exist_in_guild;
-        const isCampusAmbassador = userInfo.roles?.includes(roles.CAMPUS_LEAD);
-        const isAdmin = userInfo.roles?.includes(roles.ADMIN);
-        const isZonalCampusLead = userInfo.roles?.includes(roles.ZONAL_CAMPUS_LEAD);
+        const userInfo = fetchLocalStorage<UserInfo>('userInfo')
+        if (userInfo){
 
-        setConnected(existInGuild);
-        setCampusLead(isCampusAmbassador);
-        setZonalCampusLead(isZonalCampusLead);
-        setUserType(isAdmin ? "admin" : "user");
+            const existInGuild = userInfo.exist_in_guild;
+            const isCampusAmbassador = userInfo.roles?.includes(roles.CAMPUS_LEAD);
+            const isAdmin = userInfo.roles?.includes(roles.ADMIN);
+            const isZonalCampusLead = userInfo.roles?.includes(roles.ZONAL_CAMPUS_LEAD);
+            
+            setConnected(existInGuild);
+            setCampusLead(isCampusAmbassador);
+            setZonalCampusLead(isZonalCampusLead);
+            setUserType(isAdmin ? "admin" : "user");
+        }
     }, []);
 
     const buttons = [
         {
-            url: "profile",
+            url: "/dashboard/profile",
             title: "Profile",
             hasView: true,
             icon: <i className="fi fi-sr-clipboard-user"></i>
         },
         {
-            url: "connect-discord",
+            url: "/dashboard/connect-discord",
             title: "Connect Discord",
             hasView: !connected,
             icon: <i className="fi fi-sr-data-transfer"></i>
         },
 
         {
-            url: "campus-details",
+            url: "/dashboard/campus-details",
             title: "Campus Details",
             hasView: true,
             roles: [roles.CAMPUS_LEAD],
             icon: <i className="fi fi-sr-book-arrow-right"></i>
         },
         {
-            url: "hackathon",
+            url: "/dashboard/hackathon",
             title: "Hackathon",
             hasView: true,
             roles: [roles.ADMIN],
             icon: <i className="fi fi-sr-head-side-thinking"></i>
         },
         {
-            url: "learning-circle",
+            url: "/dashboard/learning-circle",
             title: "Learning Circle",
             hasView: true,
             roles: [roles.ADMIN],
-            icon: <i className="fi fi-sr-layout-fluid"></i>
+            icon: <i className="fi fi-sr-books"></i>
         },
         {
             url: "",
@@ -72,21 +76,21 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-layout-fluid"></i>,
             children: [
                 {
-                    url: "interest-groups",
+                    url: "/dashboard/interest-groups",
                     title: "Interest Groups",
                     hasView: true,
                     roles: [roles.ADMIN],
                     // icon: <i className="fi fi-sr-books"></i>
                 },
                 {
-                    url: "organizations",
+                    url: "/dashboard/organizations",
                     title: "Organizations",
                     hasView: true,
                     roles: [roles.ADMIN],
                     // icon: <i className="fi fi-sr-building"></i>
                 },
                 {
-                    url: "tasks",
+                    url: "/dashboard/tasks",
                     title: "Tasks",
                     hasView: true,
                     roles: [roles.ADMIN],
@@ -100,13 +104,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     // icon: <i className="fi fi-sr-users"></i>,
                     children: [
                         {
-                            url: "manage-users",
+                            url: "/dashboard/manage-users",
                             title: "Manage Users",
                             hasView: true,
                             roles: [roles.ADMIN],
                         },
                         {
-                            url: "user-role-verification",
+                            url: "/dashboard/user-role-verification",
                             title: "User Role Verification",
                             hasView: true,
                             roles: [roles.ADMIN]
@@ -114,14 +118,14 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     ]
                 },
                 {
-                    url: "manage-roles",
+                    url: "/dashboard/manage-roles",
                     title: "Manage Roles",
                     hasView: true,
                     roles: [roles.ADMIN],
                     // icon: <i className="fi fi-sr-users-gear"></i>
                 },
                 {
-                    url: "url-shortener",
+                    url: "/dashboard/url-shortener",
                     title: "URL Shortener",
                     hasView: true,
                     roles: [roles.ADMIN],
@@ -131,21 +135,21 @@ const DashboardRootLayout = (props: { component?: any }) => {
         },
 
         {
-            url: "manage-locations",
+            url: "/dashboard/manage-locations",
             title: "Manage Locations",
             hasView: true,
             roles: [roles.ADMIN],
             icon: <i className="fi fi-rr-map-marker"></i>
         },
         {
-            url: "zonal-dashboard",
+            url: "/dashboard/zonal-dashboard",
             title: "Zonal Dashboard",
             hasView: true,
             roles: [roles.ZONAL_CAMPUS_LEAD],
             icon: <i className="fi fi-sr-marker"></i>
         },
         {
-            url: "district-dashboard",
+            url: "/dashboard/district-dashboard",
             title: "District Dashbaord",
             hasView: true,
             roles: [roles.DISTRICT_CAMPUS_LEAD],
@@ -181,10 +185,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
             <div className={styles.right_side} id="right">
                 <TopNavBar />
                 <div className={styles.main_content}>
-                    <Outlet />
+                    <Suspense fallback={<MuLoader />}>
+
+                        <Outlet />
+                    </Suspense>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

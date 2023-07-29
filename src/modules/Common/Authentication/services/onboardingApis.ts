@@ -53,6 +53,18 @@ type emailVerificationResultBtn = Dispatch<SetStateAction<string>>;
 type opacity0 = Dispatch<SetStateAction<number>>;
 type display0 = Dispatch<SetStateAction<string>>;
 
+export interface DWMSDetails {
+    job_seeker_fname: string;
+    job_seeker_lname: string;
+    email_id: string;
+    mobile_no: number;
+    gender: string;
+    dob: string;
+    key_skills: string;
+    dwms_id: string;
+    job_seeker_id: string;
+}
+
 type errorHandler = (status: number, dataStatus: number) => void;
 
 // request for country list
@@ -125,36 +137,35 @@ export const getDistrict = (
 
 // request for colleges list
 export const getColleges = (
-  setCollegeAPI: getAPI,
-  setCollegeOptions: collegeOptions,
-  setDepartmentAPI: collegeOptions,
-  errorHandler: errorHandler,
-  district: any
+    setCollegeAPI: getAPI,
+    setCollegeOptions: collegeOptions,
+    setDepartmentAPI: collegeOptions,
+    errorHandler: errorHandler,
+    district: any
 ) => {
-  publicGateway
-    .post(onboardingRoutes.collegeList, district)
-    .then(response => {
-      const colleges = response.data.response.colleges;      
-      setCollegeAPI(colleges);
-      setCollegeOptions(
-        colleges
-          .sort((a: any, b: any) => a.title.localeCompare(b.title))
-          .map((college: any) => ({
-            value: college.id,
-            label: college.title
-          }))
-      );
-      setDepartmentAPI(
-        response.data.response.departments
-          .map((dept: any) => ({
-            value: dept.id,
-            label: dept.title
-          }))
-      );
-    })
-    .catch(error => {
-      // errorHandler(error.response.status, error.response.data.status);
-    });
+    publicGateway
+        .post(onboardingRoutes.collegeList, district)
+        .then(response => {
+            const colleges = response.data.response.colleges;
+            setCollegeAPI(colleges);
+            setCollegeOptions(
+                colleges
+                    .sort((a: any, b: any) => a.title.localeCompare(b.title))
+                    .map((college: any) => ({
+                        value: college.id,
+                        label: college.title
+                    }))
+            );
+            setDepartmentAPI(
+                response.data.response.departments.map((dept: any) => ({
+                    value: dept.id,
+                    label: dept.title
+                }))
+            );
+        })
+        .catch(error => {
+            // errorHandler(error.response.status, error.response.data.status);
+        });
 };
 
 // request for company list
@@ -197,7 +208,7 @@ export const getInterests = (errorHandler: errorHandler, setAoiAPI: AoiAPI) => {
 };
 
 // request for community list
-export const getCommunties = (
+export const getCommunities = (
     errorHandler: errorHandler,
     setCommunityAPI: getAPI
 ) => {
@@ -221,7 +232,7 @@ export const registerUser = (
     navigate: NavigateFunction,
     setShowSubmitLoader: (showSubmitLoader: boolean) => void
 ) => {
-    setShowSubmitLoader(true)
+    setShowSubmitLoader(true);
     publicGateway
         .post(onboardingRoutes.register, userData)
         .then(function (response) {
@@ -235,11 +246,11 @@ export const registerUser = (
                 "refreshToken",
                 response.data.response.refreshToken
             );
-            navigate("/connect-discord");
-            setShowSubmitLoader(false)
+            navigate("/dashboard/connect-discord");
+            setShowSubmitLoader(false);
         })
         .catch(function (error) {
-            setShowSubmitLoader(false)
+            setShowSubmitLoader(false);
             if (
                 error.response.data.message &&
                 Object.keys(error.response.data.message).length > 0
@@ -294,5 +305,44 @@ export const emailVerification = (
         .catch(function (error) {
             setShowLoader(false);
             console.error(error);
+        });
+};
+
+export const getDWMSDetails = (
+    errorHandler: errorHandler,
+    setDWMSDetails: (data: DWMSDetails) => void
+) => {
+    publicGateway
+        .get("https://dummyjson.com/products/1")
+        .then(response => {
+            // console.log(response.data);
+
+            const {
+                job_seeker_fname,
+                job_seeker_lname,
+                email_id,
+                mobile_no,
+                gender,
+                dob,
+                key_skills,
+                dwms_id,
+                job_seeker_id
+            } = response.data;
+            const dwmsDetails: DWMSDetails = {
+                job_seeker_fname,
+                job_seeker_lname,
+                email_id,
+                mobile_no,
+                gender,
+                dob,
+                key_skills,
+                dwms_id,
+                job_seeker_id
+                // Initialize other fields here
+            };
+            setDWMSDetails(dwmsDetails);
+        })
+        .catch(error => {
+            errorHandler(error.response.status, error.response.data.status);
         });
 };

@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { deleteInterestGroups, getInterestGroups } from "./apis";
+import { createInterestGroups, deleteInterestGroups, getIGDetails, getInterestGroups } from "./apis";
 import { roles } from "@/MuLearnServices/types";
 import { hasRole } from "@/MuLearnServices/common_functions";
 import { useNavigate } from "react-router-dom";
@@ -12,16 +12,20 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./InterestGroup.module.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
+import InterestGroupEditModal from "./InterestGroupEditModal";
+import ModalCreateComponent from "@/MuLearnComponents/ModalCreate/ModalCreate";
+
+export type modalStatesType = 'edit' | 'create' | null
 
 function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
-	const toast = useToast();
-    const firstFetch = useRef(true)
+    const toast = useToast();
+    const firstFetch = useRef(true);
     const columnOrder = [
         { column: "name", Label: "Name", isSortable: true },
         { column: "user_ig_link_ig", Label: "Members", isSortable: false },
@@ -29,6 +33,11 @@ function InterestGroup() {
         { column: "created_by", Label: "Created By", isSortable: false },
         { column: "created_at", Label: "Created On", isSortable: false }
     ];
+
+    const [openModal, setOpenModal] = useState<modalStatesType>(null);
+    const [openMuModal, setOpenMuModal] = useState(false);
+    const [currID, setCurrID] = useState<string>('')
+    const [input, setInput] = useState<string>("");
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -45,30 +54,38 @@ function InterestGroup() {
     useEffect(() => {
         if (firstFetch.current) {
             if (!hasRole([roles.ADMIN, roles.FELLOW])) {
-				navigate("/404")
-			}
+                navigate("/404");
+            }
             getInterestGroups(setData, 1, perPage, setTotalPages, "", "");
         }
         firstFetch.current = false;
     }, []);
+
+    useEffect(() => {
+        if (openModal === null) {
+            getInterestGroups(setData, 1, perPage, setTotalPages, "", "");
+        }
+    }, [openModal])
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
         getInterestGroups(setData, 1, perPage, setTotalPages, search, "");
     };
 
-    const handleEdit = (id: string | number | boolean) => {
-        console.log(id);
-        navigate(`/interest-groups/edit/${id}`);
+    const handleEdit = async (id: string | number | boolean) => {
+        await getIGDetails(id as string, setInput);//to get default igvalue.
+        setCurrID(id as string)
+        setOpenModal('edit')
+        //navigate(`/dashboard/interest-groups/edit/${id}`);
     };
 
     const handleDelete = (id: string | undefined) => {
         // console.log(id);
-        // navigate(`/interest-groups/delete/${id}`);
-		deleteInterestGroups(id, toast);
-		setTimeout(() => {
-			getInterestGroups(setData, 1, perPage, setTotalPages, "", "");
-		}, 1000);
+        // navigate(`/dashboard/interest-group/delete/${id}`);
+        deleteInterestGroups(id, toast);
+        setTimeout(() => {
+            getInterestGroups(setData, 1, perPage, setTotalPages, "", "");
+        }, 1000);
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
@@ -78,7 +95,7 @@ function InterestGroup() {
     };
 
     const handleCreate = () => {
-        navigate("/interest-groups/create");
+        setOpenMuModal(true);
     };
 
     const handleIconClick = (column: string) => {
@@ -100,8 +117,35 @@ function InterestGroup() {
         //console.log(`Icon clicked for column: ${column}`);
     };
 
+    //interestGroupCreate api call
+    const handleDataRender = (name: string,
+        onClose: Dispatch<SetStateAction<boolean>>) => {
+        createInterestGroups(
+            name,
+            onClose)
+    };
     return (
         <>
+            <ModalCreateComponent
+                isOpen={openMuModal}
+                onClose={setOpenMuModal}
+                heading={"IG Create Page"}
+                content={"Enter the name of the Interest Group in the input below that you wish to create."}
+                placeholder={"Enter a name"}
+                inputType={"text"}
+                name={"igName"}
+                toastMsg={"Interest Group created"}
+                navigateRoute={"/dashboard/interest-groups"}
+                btnPrimaryText={"Confirm"}
+                btnSecondaryText={"Decline"}
+                onRender={handleDataRender}
+            />
+            <InterestGroupEditModal
+                isOpen={openModal}
+                onClose={setOpenModal}
+                id={currID}
+                defaultValue={input}
+            />
             <div className={styles.createBtnContainer}>
                 <MuButton
                     className={styles.createBtn}
@@ -110,38 +154,41 @@ function InterestGroup() {
                     onClick={handleCreate}
                 />
             </div>
-            <TableTop
-                onSearchText={handleSearch}
-                onPerPageNumber={handlePerPageNumber}
-                CSV={dashboardRoutes.getIgList}
-            />
+
             {data && (
-                <Table
-                    rows={data}
-                    page={currentPage}
-                    perPage={perPage}
-                    columnOrder={columnOrder}
-                    id={["id"]}
-                    onEditClick={handleEdit}
-                    onDeleteClick={handleDelete}
-					modalDeleteHeading="Delete"
-                    modalTypeContent="error"
-					modalDeleteContent="Are you sure you want to delete "
-                >
-                    <THead
+                <>
+                    <TableTop
+                        onSearchText={handleSearch}
+                        onPerPageNumber={handlePerPageNumber}
+                        CSV={dashboardRoutes.getIgList}
+                    />
+                    <Table
+                        rows={data}
+                        page={currentPage}
+                        perPage={perPage}
                         columnOrder={columnOrder}
-                        onIconClick={handleIconClick}
-                        action={true}
-                    />
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        margin="10px 0"
-                        handleNextClick={handleNextClick}
-                        handlePreviousClick={handlePreviousClick}
-                    />
-                    {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-                </Table>
+                        id={["id"]}
+                        onEditClick={handleEdit}
+                        onDeleteClick={handleDelete}
+                        modalDeleteHeading="Delete"
+                        modalTypeContent="error"
+                        modalDeleteContent="Are you sure you want to delete "
+                    >
+                        <THead
+                            columnOrder={columnOrder}
+                            onIconClick={handleIconClick}
+                            action={true}
+                        />
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            margin="10px 0"
+                            handleNextClick={handleNextClick}
+                            handlePreviousClick={handlePreviousClick}
+                        />
+                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                    </Table>
+                </>
             )}
         </>
     );

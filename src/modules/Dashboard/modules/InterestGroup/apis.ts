@@ -2,6 +2,9 @@ import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
+import { Dispatch, SetStateAction } from "react";
+
+import { modalStatesType } from "./InterestGroup";
 
 export const getInterestGroups = async (
     setData: any,
@@ -34,12 +37,15 @@ export const getInterestGroups = async (
 
 export const createInterestGroups = async (
     name: string,
+    onClose: Dispatch<SetStateAction<boolean>>
 ) => {
     try {
         const response = await privateGateway.post(dashboardRoutes.getIgData, {
             name: name
         });
-        
+        if (response.data?.statusCode === 200) {
+            onClose(false);
+        }
         const message: any = response?.data;
         //console.log(message);
     } catch (err: unknown) {
@@ -77,9 +83,7 @@ export const getIGDetails = async (
             dashboardRoutes.getIgData + "get/" + id + "/",
         );
         const message: any = response?.data;
-        //console.log(message);
-		//console.log(message.response.interestGroup.name);
-		setInput(message.response.interestGroup.name);
+        setInput(message.response.interestGroup.name);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -96,7 +100,7 @@ export const deleteInterestGroups = async (
         const response = await privateGateway.delete(
             dashboardRoutes.getIgData + id + "/"
         );
-		toast({
+        toast({
             title: "Interest Group deleted",
             status: "success",
             duration: 3000,

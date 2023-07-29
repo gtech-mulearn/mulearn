@@ -12,24 +12,33 @@ import { ClipLoader } from "react-spinners";
 
 export const MuButton = (props: {
     text: string; // text of button
+    type?: "button" | "submit" | "reset"; // type of button
     icon?: ReactJSXElement; // button icon
     style?: React.CSSProperties; // button style if wanted
     className?: string; // button class name if wanted
     onClick?: React.MouseEventHandler; // onclick event if wanted
-    isLoading?: boolean;// show loading spinner if neccessary.
-    disabled?: boolean;//disable the button if needed
+    isLoading?: boolean; // show loading spinner if neccessary.
+    disabled?: boolean; //disable the button if needed
     buttonUrl?: string; // for styling purposes
+    submit?: boolean; // for styling purposes
 }) => {
     return (
         <button
             className={props.className ? props.className : styles.btn}
             style={{
-                background: `/${props.buttonUrl}` === window.location.pathname ? "#456FF6" : "",
-                color: `/${props.buttonUrl}` === window.location.pathname ? "#fff" : "",
-                ...props.style,
+                background:
+                    `${props.buttonUrl}` === window.location.pathname
+                        ? "#456FF6"
+                        : "",
+                color:
+                    `${props.buttonUrl}` === window.location.pathname
+                        ? "#fff"
+                        : "",
+                ...props.style
             }}
             onClick={props.onClick}
             disabled={props.disabled}
+            type={props.type}
         >
             {props.icon && <div className={styles.btn_icon}>{props.icon}</div>}
             <span>{props.text}</span>
@@ -57,7 +66,7 @@ export const MuButtonLight = (props: {
             style={props.style}
             onClick={props.onClick}
         >
-            <div className={styles.btn_icon}>{props.icon}</div>
+            {props.icon && <div className={styles.btn_icon}>{props.icon}</div>}
             <p>{props.text}</p>
         </div>
     );
@@ -118,7 +127,9 @@ export const DropDownButtons = (props: {
             </div>
             <div
                 className={styles.drop_view}
-                style={{ maxHeight: props.display === "0" ? "0" : "300px" }}
+                style={{
+                    maxHeight: props.display === "0" ? "0" : "fit-content"
+                }}
             >
                 {props.listOfDropBtn?.map(btn => btn)}
             </div>
@@ -134,7 +145,7 @@ export const SingleButton = (props: {
     link?: string;
 }) => {
     return (
-        <div className={styles.createBtnContainer}>
+        <div className={styles.createBtnContainer} style={props.style}>
             <a href={props.link} target="_blank">
                 <MuButton
                     className={styles.createBtn}
@@ -155,9 +166,9 @@ type Props = {
     backgroundColor?: string;
     color?: string;
     onButtonClick?: any;
-	margin?: string;
-	padding?: string;
-	borderColor?: string;
+    margin?: string;
+    padding?: string;
+    borderColor?: string;
 };
 
 export const PowerfulButton = (props: Props) => {
@@ -176,7 +187,7 @@ export const PowerfulButton = (props: Props) => {
         color: props.color || "#f5f7f9",
         padding: props.padding || "0.6rem 0.9rem",
         borderRadius: "10px",
-		border: `2px solid ${props.borderColor || "#456FF6"}`,
+        border: `2px solid ${props.borderColor || "#456FF6"}`,
         margin: props.margin || "0",
         ...(isHovered && {
             backgroundColor: props.onHoverBackground || "#00204c",

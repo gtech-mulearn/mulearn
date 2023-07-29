@@ -4,28 +4,25 @@ import imageBottom from "../assets/images/LC3.png";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getUserLearningCircles } from "../services/LearningCircleAPIs";
 import { BsChevronRight } from "react-icons/bs";
+import { getUserLearningCircles } from "../services/LearningCircleAPIs";
+import { LcType } from "../services/LearningCircleInterface";
 
-export type circleListELement = {
-    name: string;
-    type: string;
-};
 
 export const LearningCircleLandingPage = () => {
     const navigate = useNavigate();
-    const [userCircleList, setUserCircleList] = useState<circleListELement[]>();
+    const [userCircleList, setUserCircleList] = useState<LcType[]>();
 
     useEffect(() => {
         getUserLearningCircles(setUserCircleList)
     }, []);
 
     const handleJoin = () => {
-        navigate("/learning-circle/find-circle");
+        navigate("/dashboard/learning-circle/find-circle");
     };
 
     const handleCreate = () => {
-        navigate("/learning-circle/create-circle");
+        navigate("/dashboard/learning-circle/create-circle");
     };
 
     return (
@@ -83,9 +80,13 @@ export const LearningCircleLandingPage = () => {
                                                 </div>
                                                 <div>
                                                     <p className={styles.learningCircleLandingPagePara}>
-                                                        {circle.type}
+                                                        {circle.ig}
                                                     </p>
-                                                    <button className={styles.learningCircleLandingPageBtn}>
+                                                    <button className={styles.learningCircleLandingPageBtn} onClick={() => {
+														navigate(
+                                                            `/dashboard/learning-circle/details/${circle.id}`
+                                                        );
+													}}>
                                                         <BsChevronRight className={[].join(" ")}/>
                                                     </button>
                                                 </div>

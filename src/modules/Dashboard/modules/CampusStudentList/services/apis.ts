@@ -13,8 +13,7 @@ export const getStudentDetails = (
     selectedValue: number,
     setTotalPages?: any,
     search?: string,
-    sortID?: string,
-    setLoading?: React.Dispatch<React.SetStateAction<boolean>>
+    sortID?: string
 ) => {
     privateGateway
         .get(dashboardRoutes.getStudentDetails, {
@@ -35,15 +34,13 @@ export const getStudentDetails = (
         });
 };
 export const getCampusDetails = (
-    setCampusData: campusData,
-    setLoading: React.Dispatch<React.SetStateAction<boolean>>
+    setCampusData: campusData
 ) => {
     privateGateway
         .get(dashboardRoutes.getCampusDetails)
         .then(response => {
             // console.log(response.data.response);
             setCampusData(response.data.response);
-            setLoading(false);
         })
         .catch(error => {
             console.log(error);

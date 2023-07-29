@@ -1,34 +1,26 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './LearningCircle.module.css'
 import imageTop from '../assets/images/LC1.png'
 import { BsSearch } from 'react-icons/bs'
+import { PowerfulButton } from '@/MuLearnComponents/MuButtons/MuButton'
+import { useNavigate } from 'react-router-dom'
+import { LcType } from '../services/LearningCircleInterface'
+import { createStandaloneToast, UseToastOptions } from "@chakra-ui/react";
+import { getCampusLearningCircles, joinCircle } from '../services/LearningCircleAPIs'
+import { join } from 'path'
 
-type circleListELement = {
-    name: string,
-    lead: string,
-    member_count: number
+const { toast } = createStandaloneToast();
 
-}
 
-type igListElement = {
-    value: string,
-    name: string
-}
 
 const FindCircle = () => {
+    const [lc, setLc] = useState<LcType[]>([]);
+	const navigate = useNavigate()
 
-    const learningCircles: circleListELement[] | null = [
-        { name: "UX World", lead: 'me', member_count: 69 },
-        { name: "vera UX World", lead: 'njan', member_count: 420 }
-    ]
-    const igs: igListElement[] | null = [
-        { name: 'college', value: '123' },
-        { name: 'vera college', value: '124' },
-    ]
-    const searchBarRef = useRef<HTMLSelectElement | null>(null)
-    const handleSearch = () => {
-        console.log(searchBarRef.current!.value)
-    }
+	useEffect(() => {
+		getCampusLearningCircles(setLc)
+	}, []);
+	
 
     return (
         <>
@@ -37,7 +29,7 @@ const FindCircle = () => {
                     <div className={styles.desc}>
                         <h3>Find your learning circle</h3>
                         <b style={{ color: "#000" }}>Browse and join learning circle around you</b>
-                        <div className={styles.ig_search}>
+                        {/* <div className={styles.ig_search}>
                             <select name="ig" ref={searchBarRef}>
                                 {igs.map(ig => (
                                     <>
@@ -48,22 +40,43 @@ const FindCircle = () => {
                             <button onClick={handleSearch}>
                                 <BsSearch />
                             </button>
-                        </div>
+                        </div> */}
                     </div>
                     <img src={imageTop} alt="image" />
                 </div>
 
-                {learningCircles ? (
+                {lc ? (
                     <div className={styles.container}>
-                        {learningCircles.map(circle => (
+                        {lc.map(circle => (
                             <>
                                 <div className={styles.one}>
                                     <h2>{circle.name}</h2>
-                                    <p>Team Lead: {circle.lead}</p>
+                                    <p>Team Lead: {circle.created_by}</p>
+                                    <p>{circle.ig}</p>
                                     <p>{circle.member_count} Members</p>
                                     <div className={styles.join}>
-                                        <button>Join</button>
+                                        <button onClick={() => {
+											joinCircle(circle.id)
+                                            toast({
+                                                title: "Wait for approval",
+                                                description: "",
+                                                status: "warning",
+                                                duration: 2000,
+                                                isClosable: true
+                                            });
+                                            
+                                            setTimeout(() => {
+                                                
+                                                navigate(
+                                                    `/dashboard/learning-circle`
+                                                );
+                                            },1500);
+
+										}}>Join</button>
                                     </div>
+									{/* <PowerfulButton text='Join' onButtonClick={() => {
+										navigate(`/dashboard/learning-circle/details/${circle.id}`);
+									}}/> */}
                                 </div>
                             </>
                         ))}
