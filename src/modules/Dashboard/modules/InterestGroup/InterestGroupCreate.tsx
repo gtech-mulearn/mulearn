@@ -3,27 +3,48 @@ import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComp
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import * as Yup from "yup";
-import { useEffect } from "react";
-import { createInterestGroups } from "./apis";
+import { useEffect, useState } from "react";
+import { createInterestGroups, editInterestGroups, getIGDetails } from "./apis";
 
 type Props = {};
+
+interface IgDetails{
+    name:string,
+    code:string,
+    icon:string,
+}
 
 const InterestGroupCreate = (props: Props) => {
     const toast = useToast();
     const navigate = useNavigate();
+    const { id } = useParams();
+    const [input, setInput] = useState<IgDetails>({
+        name:'',
+        code:'',
+        icon:'',
+    });
+    const [hasError,setHasError] = useState(false)
 
+    useEffect(() =>{
+        if (id){
+     getIGDetails(id,setInput);
+    }
+    },[id]);
+
+console.log('id',input)
     return (
         <div className={styles.external_container}>
             <div className={styles.container}>
-                <h1 className={styles.text}>CREATE IG GROUP</h1>
+                <h1 className={styles.text}>{!id ? "CREATE IG GROUP" : "EDIT IG GROUP"}</h1>
                 <Formik
                     initialValues={{
-                        igName: "",
-						igCode: "",
-						igIcon: "",
+                        igName: input.name,
+						igCode: input.code,
+						igIcon: input.icon,
                     }}
+                    enableReinitialize
                     validationSchema={Yup.object({
                         igName: Yup.string()
                             .max(30, "Must be 30 characters or less")
@@ -37,10 +58,24 @@ const InterestGroupCreate = (props: Props) => {
                     })}
                     onSubmit={values => {
                         console.log(values);
-						createInterestGroups(values.igName, values.igCode, values.igIcon)
-                        setTimeout(() => {
-                            navigate(`/dashboard/interest-groups`);
-                        }, 1000);
+                        if(!id){
+                            
+                            createInterestGroups(values.igName, values.igCode, values.igIcon)
+                            setTimeout(() => {
+                                navigate(`/dashboard/interest-groups`);
+                            }, 1000);
+                        }else{
+                            editInterestGroups(
+                                values.igName,
+                                id,
+                                values.igCode,
+                                values.igIcon,
+                                setHasError
+                              );
+                             setTimeout(() => {
+                                navigate(`/dashboard/interest-groups`);
+                             },200);
+                        }
                     }}
                 >
                     <Form className={styles.inputContainer}>

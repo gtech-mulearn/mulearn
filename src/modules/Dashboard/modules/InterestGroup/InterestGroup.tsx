@@ -14,6 +14,12 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
 import InterestGroupEditModal from "./InterestGroupEditModal";
 
+interface IgDetails {
+    igName : string,
+    igCode : string,
+    igIcon : string,
+}
+
 export type modalStatesType = 'edit' | 'create' | null
 
 function InterestGroup() {
@@ -33,11 +39,11 @@ function InterestGroup() {
         { column: "created_at", Label: "Created On", isSortable: false }
     ];
 
+
     const [openModal, setOpenModal] = useState<modalStatesType>(null);
     const [openMuModal, setOpenMuModal] = useState(false);
     const [currID, setCurrID] = useState<string>('')
-    const [input, setInput] = useState<string>("");
-
+    
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
@@ -71,10 +77,9 @@ function InterestGroup() {
         getInterestGroups(setData, 1, perPage, setTotalPages, search, "");
     };
 
-    const handleEdit = async (id: string | number | boolean) => {
-        await getIGDetails(id as string, setInput);
-        setCurrID(id as string)
-        setOpenModal('edit')
+  
+     const handleEdit = async (id: string | number | boolean) => {
+        navigate("/dashboard/interest-groups/edit/"+id);
     };
 
     const handleDelete = (id: string | undefined) => {
@@ -109,12 +114,12 @@ function InterestGroup() {
 
     return (
         <>
-            <InterestGroupEditModal
+            {/* <InterestGroupEditModal
                 isOpen={openModal}
                 onClose={setOpenModal}
                 id={currID}
                 defaultValue={input}
-            />
+            /> */}
             <div className={styles.createBtnContainer}>
                 <MuButton
                     className={styles.createBtn}
