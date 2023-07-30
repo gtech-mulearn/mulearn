@@ -50,3 +50,7 @@
     gap: 5px;
     color: var(--dimText);
 }
+
+.showSelect {
+    cursor: pointer;
+}

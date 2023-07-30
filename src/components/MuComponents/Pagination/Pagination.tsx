@@ -40,7 +40,7 @@ const Pagination = (props: Props) => {
                                     ? props.handlePreviousClick
                                     : () => { }
                             }
-                            style={{ color: "var(--Dark)" }}
+                            style={{ color: "var(--Dark)", cursor: "pointer" }}
                         />
                         <p className={styles.pagePara}>
                             <strong>{props.currentPage}</strong> / {props.totalPages}
@@ -51,9 +51,10 @@ const Pagination = (props: Props) => {
                                     ? props.handleNextClick
                                     : () => { }
                             }
-                            style={{ color: "var(--Dark)" }}
+                            style={{ color: "var(--Dark)", cursor: "pointer" }}
                         />
-                    </div>            <ShowPerPage
+                    </div>
+                    <ShowPerPage
                         options={[5, 10, 20, 50, 100]}
                         selectedOption={itemsPerPage}
                         onOptionChange={handleOptionChange}
