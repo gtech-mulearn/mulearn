@@ -6,7 +6,6 @@ import pic from "../../Profile/assets/images/dpm.jpg";
 import { LcDetail } from "../services/LearningCircleInterface";
 import { Form, Formik } from "formik";
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { BiEditAlt } from "react-icons/bi";
 
 type Props = {};
 
@@ -72,6 +71,7 @@ const LearningCircle = (props: Props) => {
                                 </>
                             ) : (
                                 <>
+                                     
                                     <div className={styles.ScheduleOn}>
                                         <b>Schedule meeting</b>
                                         <p>
@@ -92,7 +92,7 @@ const LearningCircle = (props: Props) => {
                                         </div>
                                         <div className={styles.weeks}>
                                             <p>meeting days</p>
-                                            <p className={styles.Lcweek}>
+                                            <div className={styles.Lcweek}>
                                                 <div>
                                                     <input
                                                         type="checkbox"
@@ -146,7 +146,7 @@ const LearningCircle = (props: Props) => {
                                                         S
                                                     </label>
                                                 </div>
-                                            </p>
+                                            </div>
                                         </div>
                                         {/* <input type="text" placeholder="meeting venue" /> */}
                                     </div>
@@ -161,19 +161,19 @@ const LearningCircle = (props: Props) => {
                         <div className={styles.EventOn}>
                             {lc?.note ? (
                                 <div className={styles.LcNotedEvent}>
-                                    <div className={styles.LcNotedLabel}>
-                                        <b>Notes</b>
-                                        <BiEditAlt style={{cursor:"pointer"}}/>   
-                                    </div>
                                     <p>{lc.note}</p>
+                                    <button className={styles.BtnBtn}>
+                                        edit
+                                    </button>
                                 </div>
                             ) : (
                                 <div className={styles.LcNotedEvent}>
-                                    <textarea
+                                    <input
                                         onChange={e => {
                                             setNote(e.target.value);
                                         }}
-                                        placeholder="Notes"
+                                        type="text"
+                                        placeholder="input"
                                     />
                                     <button
                                         className={styles.BtnBtn}
