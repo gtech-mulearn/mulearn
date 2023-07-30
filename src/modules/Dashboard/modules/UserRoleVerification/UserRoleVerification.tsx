@@ -20,11 +20,11 @@ function UsersRoleVerification() {
 
     const [loading, setLoading] = useState(false);
     type TData = {
-        full_name : string,
-        mu_id : string,
-        discord_id : string,
-        role_title : string,
-        verified : boolean,
+        full_name: string,
+        mu_id: string,
+        discord_id: string,
+        role_title: string,
+        verified: boolean,
     }
     const columnOrder = [
         { column: "full_name", Label: "Full Name", isSortable: true },
@@ -123,7 +123,7 @@ function UsersRoleVerification() {
     async function handleVerify(id: string | number | boolean) {
         setLoading(true);
         await editUserRoleVerification(true, id);
-        
+
         getUserRoleVerification(setData, 1, perPage, setTotalPages, "", "");
         setLoading(false);
     }
@@ -156,7 +156,8 @@ function UsersRoleVerification() {
                             totalPages={totalPages}
                             margin="10px 0"
                             handleNextClick={handleNextClick}
-                            handlePreviousClick={handlePreviousClick}
+                            handlePreviousClick={handlePreviousClick} onSearchText={handleSearch}
+                            onPerPageNumber={handlePerPageNumber}
                         />
                     </Table>
                 </>
