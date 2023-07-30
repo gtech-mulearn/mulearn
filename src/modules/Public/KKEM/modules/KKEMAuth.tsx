@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { userAuthConfirm } from "../services/auth";
 import { useEffect, useState } from "react";
-import Astronaut from "../assets/astronaut.png";
+import Astronaut from "../assets/astronaut.webp";
 import styles from "./KKEMAuth.module.css";
 import Footer from "../components/Footer";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";

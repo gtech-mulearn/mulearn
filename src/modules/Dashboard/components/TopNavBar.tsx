@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./SideNavBar.module.css";
 import MulearnBrand from "../assets/MulearnBrand";
 import { useNavigate } from "react-router-dom";
-import dpm from "../assets/images/dpm.jpg";
+import dpm from "../assets/images/dpm.webp";
 import { UserInfo, fetchLocalStorage } from "@/MuLearnServices/common_functions";
 
 

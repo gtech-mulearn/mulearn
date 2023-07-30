@@ -1,7 +1,7 @@
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import moment from "moment";
 import { useEffect, useRef, useState } from "react";
-import dpm from "../assets/images/dpm.jpg";
+import dpm from "../assets/images/dpm.webp";
 import Karma, { KarmaWhite } from "../assets/svg/Karma";
 import MulearnBrand from "../assets/svg/MulearnBrand";
 import Rank from "../assets/svg/Rank";

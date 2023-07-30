@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import styles from "./LearningCircle.module.css";
+import pic from "../../Profile/assets/images/dpm.webp";
 import { approveLcUser, getLcDetails, setLCMeetTime, updateLcNote } from "../services/LearningCircleAPIs";
 import { useNavigate, useParams } from "react-router-dom";
-import pic from "../../Profile/assets/images/dpm.jpg";
 import { LcDetail } from "../services/LearningCircleInterface";
 import {BiEditAlt} from "react-icons/bi"
 

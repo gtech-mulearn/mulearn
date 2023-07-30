@@ -41,35 +41,6 @@ const ManageUsersEdit = (props: Props) => {
         orgaanization_college?: string[];
         orgaanization_company?: string[];
     }
-
-    // const [data, setData] = useState<IData>({
-    //     first_name: "",
-    //     last_name: "",
-    //     email: "",
-    //     mobile: "",
-    //     discord_id: "",
-    //     mu_id: "",
-    //     college: "",
-    //     company: "",
-    //     department: "",
-    //     graduation_year: ""
-    // });
-    // const [data, setData] = useState<IData>({
-    //     first_name: "",
-    //     last_name: "",
-    //     email: "",
-    //     mobile: "",
-    //     discord_id: "",
-    //     mu_id: "",
-    //     college: "",
-    //     company: "",
-    //     department: "",
-    //     graduation_year: "",
-    //     role: "",
-    //     organizations_company: "",
-    //     organizations_college: "",
-    //     organizations_community: ""
-    // });
     const [data, setData] = useState<UserData>();
     const { id } = useParams();
     const navigate = useNavigate();
@@ -88,7 +59,6 @@ const ManageUsersEdit = (props: Props) => {
         setInstitutions(flattenedInstitutions);
         setName(getLocationIdByName(institutions, data?.college));
     }, [institutionsChunks]);
-
     return (
         <div className={styles.external_container}>
             <div className={styles.container}>
@@ -138,31 +108,8 @@ const ManageUsersEdit = (props: Props) => {
                         graduation_year: Yup.string()
                             .length(4, "Invalid graduation_year")
                             .required("Required")
-
-                        // discord_id: Yup.string()
-                        //     .min(17, "Must be 17 characters or more")
-                        //     .required("Required"),
-                        // mu_id: Yup.string()
-                        //     .email("Invalid mu_id")
-                        //     .required("Required")
                     })}
                     onSubmit={values => {
-                        // editManageUsers(
-                        //     id,
-                        //     values.first_name,
-                        //     values.last_name,
-                        //     values.email,
-                        //     values.mobile,
-                        //     values.discord_id,
-                        //     values.mu_id,
-                        //     values.college,
-                        //     values.company,
-                        //     values.department,
-                        //     values.graduation_year,
-                        //     values.role,
-                        //     toast
-                        // );
-
                         editManageUsers(
                             id,
                             values.first_name,

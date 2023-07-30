@@ -1,6 +1,6 @@
 import styles from "./LearningCircle.module.css";
-import imageTop from "../assets/images/LC2.png";
-import imageBottom from "../assets/images/LC3.png";
+import imageTop from "../assets/images/LC2.webp";
+import imageBottom from "../assets/images/LC3.webp";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
