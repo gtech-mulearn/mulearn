@@ -8,6 +8,7 @@ type Props = {
     handleNextClick?: () => void;
     currentPage: number;
     totalPages: number;
+    totalItems: number;
     margin?: string;
     onSearchText?: (data: string) => void;
     onPerPageNumber?: (data: number) => void;
@@ -25,14 +26,21 @@ const Pagination = (props: Props) => {
         <>
             {props.totalPages > 0 && (
                 <div className={styles.tableFooter}>
-                    <div
-                        style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            width: "100%",
-                            margin: props.margin ? props.margin : "0"
-                        }}
+                    <div className={styles.pageNumbers}>
+                        <strong>
+                            {props.totalPages === 1
+                                ? props.totalItems
+                                : props.currentPage === props.totalPages
+                                    ? props.totalItems - itemsPerPage + 1
+                                    : props.currentPage * itemsPerPage - itemsPerPage + 1}{" "}
+                            -{" "}
+                            {props.currentPage === props.totalPages
+                                ? props.totalItems
+                                : props.currentPage * itemsPerPage}{" "}
+                        </strong> of {props.totalItems}
+                    </div>
+                    <div className={styles.pagination}
+                        style={{ margin: props.margin ? props.margin : "0" }}
                     >
                         <SlArrowLeft
                             onClick={
@@ -40,13 +48,10 @@ const Pagination = (props: Props) => {
                                     ? props.handlePreviousClick
                                     : () => { }
                             }
-                            style={{
-                                color: "var(--Dark)"
-                            }}
+                            style={{ color: "var(--Dark)" }}
                         />
                         <p className={styles.pagePara}>
-                            <strong>{props.currentPage}</strong> of{" "}
-                            <strong>{props.totalPages}</strong>
+                            <strong>{props.currentPage}</strong> / {props.totalPages}
                         </p>
                         <SlArrowRight
                             onClick={
@@ -54,9 +59,7 @@ const Pagination = (props: Props) => {
                                     ? props.handleNextClick
                                     : () => { }
                             }
-                            style={{
-                                color: "var(--Dark)"
-                            }}
+                            style={{ color: "var(--Dark)" }}
                         />
                     </div>            <ShowPerPage
                         options={[5, 10, 20, 50, 100]}

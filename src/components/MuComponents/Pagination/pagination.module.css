@@ -4,12 +4,22 @@
     border-radius: var(--borderRadius);
     padding: 0.3rem 0.7rem;
     margin: 0 10px;
+    color: var(--black);
+    background-color: var(--Light);
 }
 
 .tableFooter {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: fit-content;
+    gap: 5px;
 }
 
 .showContainer {
@@ -24,14 +34,19 @@
     font-weight: medium;
 }
 
-.showContainer label {
-    max-lines: 1;
-}
-
 .showContainer select {
     border: none;
     border-radius: 8px;
     padding: 0.5rem 1rem;
     outline: none;
     height: 100%;
+    color: var(--black);
+}
+
+.pageNumbers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: var(--dimText);
 }
