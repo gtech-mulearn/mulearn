@@ -4,14 +4,15 @@ import { approveLcUser, getLcDetails, setLCMeetTime, updateLcNote } from "../ser
 import { useNavigate, useParams } from "react-router-dom";
 import pic from "../../Profile/assets/images/dpm.jpg";
 import { LcDetail } from "../services/LearningCircleInterface";
-import { Form, Formik } from "formik";
-import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 
 type Props = {};
 
 const LearningCircle = (props: Props) => {
     const [lc, setLc] = useState<LcDetail>();
     const [note, setNote] = useState('');
+    const [meetTime, setMeetTime] = useState('');
+    const [meetVenue, setMeetVenue] = useState('');
+    const [meetDays, setMeetDays] = useState(['']);
     const { id } = useParams();
 	const navigate = useNavigate()
     
@@ -71,7 +72,6 @@ const LearningCircle = (props: Props) => {
                                 </>
                             ) : (
                                 <>
-                                     
                                     <div className={styles.ScheduleOn}>
                                         <b>Schedule meeting</b>
                                         <p>
@@ -83,16 +83,22 @@ const LearningCircle = (props: Props) => {
                                         <div>
                                             <input
                                                 type="time"
+                                                onChange={e => {
+                                                    setMeetTime(e.target.value);
+                                                }}
                                                 placeholder="meeting time"
                                             />
                                             <input
                                                 type="text"
+                                                onChange={e => {
+                                                    setMeetVenue(e.target.value);
+                                                }}
                                                 placeholder="meeting venue"
                                             />
                                         </div>
                                         <div className={styles.weeks}>
                                             <p>meeting days</p>
-                                            <div className={styles.Lcweek}>
+                                            <p className={styles.Lcweek}>
                                                 <div>
                                                     <input
                                                         type="checkbox"
@@ -146,7 +152,7 @@ const LearningCircle = (props: Props) => {
                                                         S
                                                     </label>
                                                 </div>
-                                            </div>
+                                            </p>
                                         </div>
                                         {/* <input type="text" placeholder="meeting venue" /> */}
                                     </div>
