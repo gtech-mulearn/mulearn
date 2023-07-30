@@ -50,6 +50,13 @@ export const createInterestGroups = async (
         }
         const message: any = response?.data;
         //console.log(message);
+        toast({
+            title: " Edited Successfully..",
+            description: "",
+            status: "success",
+            duration: 2000,
+            isClosable: true
+        });
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -73,16 +80,16 @@ export const editInterestGroups = async (
                 code: code,
                 icon: icon
             }
-        );
+            );
+            toast({
+                title: " Edited Successfully..",
+                description: "",
+                status: "success",
+                duration: 2000,
+                isClosable: true
+            });
         const message: any = response?.data;
-        toast({
-            title: " Edited Successfully..",
-            description: "",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
-        //console.log(message);
+        console.log(message);
         setHasError(message?.hasError)
     } catch (err: unknown) {
         const error = err as AxiosError;
