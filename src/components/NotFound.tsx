@@ -1,33 +1,49 @@
 import { Link } from "react-router-dom";
 import styles from "./NotFound.module.css";
-import astronaut from "./assests/images/astronaut_blue.png";
 
 // TODO: Redesign
 
 const NotFound = () => {
-    return (    
+    return (
         <div className={styles.container_404}>
-        <div className={styles.main_body_404}>
 
-             <div className={styles.content_404}>
-                <h1>404</h1>
-                <div>
-                    <p>Nothing here!</p>
-                    <p>Back to base, learners!</p>
+            <div className={styles.NotBg}></div>
+
+            <div className={styles.Notbox}>
+                <div className={styles.Notfirst}>
+                    <div className={styles.uh}>uh,</div>
+                    <div className={styles.oh}>Oh!</div>
+                    <span>
+                        <div className={styles.you}>you</div>
+                        <div className={styles.ve}>'ve</div>
+                    </span>
                 </div>
-                 <Link to="/">     {/*    Link to Home    */}
-                <button>Go back to home</button>
-                </Link>
-             </div>
+                <div className={styles.Notsecond}>
+                    <div className={styles.l}>l</div>
+                    <img className={styles.o} src="https://i.ibb.co/swdyYhG/rock.png" alt="stone" />
+                    <div className={styles.s}>s</div>
+                    <div className={styles.t}>t</div>
+                </div>
+                <div className={styles.Notthird}>
+                    <div className={styles.in}>in</div>
+                    <div className={styles.space}>space </div>
+                </div>
+            </div>
 
-             
-             <div className={styles.image_404}>  
-                <img src={astronaut} alt=""/>
-                <div className={styles.shadow_404}></div>
-             </div>
-        </div>   
 
-    </div>        
+            <img className={styles.NotFoundUfo}
+                src="https://i.ibb.co/CQDjhGP/ufo.png" alt="" />
+
+            <img className={styles.NotFound404}
+                src="https://i.ibb.co/s5SJqZx/404.png" alt="" />
+
+            <img className={styles.NotFoundRocks}
+                src="https://i.ibb.co/XYVxdMF/small-rocks.png" alt="" />
+
+            <img className={styles.NotFoundMars}
+                src="https://i.ibb.co/SnRRLwv/nobg-404-1.png" alt="" />
+
+        </div>
     );
 };
 
