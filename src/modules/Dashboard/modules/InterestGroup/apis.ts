@@ -38,9 +38,11 @@ export const getInterestGroups = async (
 export const createInterestGroups = async (
     name: string,
     code: string,
-    icon: string
-) => {
-    try {
+    icon: string,
+    
+    
+    ) => {
+        try {
         const response = await privateGateway.post(dashboardRoutes.getIgData, {
             name: name,
             code: code,
@@ -51,7 +53,7 @@ export const createInterestGroups = async (
         const message: any = response?.data;
         //console.log(message);
         toast({
-            title: " Edited Successfully..",
+            title: " created  Successfully..",
             description: "",
             status: "success",
             duration: 2000,
@@ -81,13 +83,7 @@ export const editInterestGroups = async (
                 icon: icon
             }
             );
-            toast({
-                title: " Edited Successfully..",
-                description: "",
-                status: "success",
-                duration: 2000,
-                isClosable: true
-            });
+            
         const message: any = response?.data;
         console.log(message);
         setHasError(message?.hasError)

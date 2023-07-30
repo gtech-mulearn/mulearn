@@ -72,6 +72,13 @@ console.log('id',input)
                                 values.igIcon,
                                 setHasError
                               );
+                              toast({
+                                title: " Edited Successfully..",
+                                description: "",
+                                status: "success",
+                                duration: 2000,
+                                isClosable: true
+                            });
                              setTimeout(() => {
                                 navigate(`/dashboard/interest-groups`);
                              },200);
