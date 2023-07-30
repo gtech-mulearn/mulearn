@@ -1,4 +1,4 @@
-import styles from "./Pagination.module.css";
+import styles from "./pagination.module.css";
 
 interface ShowPerPageProps {
     options: number[];
