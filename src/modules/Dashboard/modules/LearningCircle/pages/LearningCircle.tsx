@@ -1,17 +1,25 @@
 import { useEffect, useState } from "react";
 import styles from "./LearningCircle.module.css";
-import { getLcDetails, setLCMeetTime } from "../services/LearningCircleAPIs";
-import { useParams } from "react-router-dom";
 import pic from "../../Profile/assets/images/dpm.webp";
+import { approveLcUser, getLcDetails, setLCMeetTime, updateLcNote } from "../services/LearningCircleAPIs";
+import { useNavigate, useParams } from "react-router-dom";
 import { LcDetail } from "../services/LearningCircleInterface";
-import { Form, Formik } from "formik";
-import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 
 type Props = {};
 
 const LearningCircle = (props: Props) => {
     const [lc, setLc] = useState<LcDetail>();
+    const [note, setNote] = useState('');
+    const [meetTime, setMeetTime] = useState('');
+    const [meetVenue, setMeetVenue] = useState('');
+    const [meetDays, setMeetDays] = useState(['']);
     const { id } = useParams();
+	const navigate = useNavigate()
+    
+
+    const handlePut = () => {
+        updateLcNote(id,note)
+    }
 
     useEffect(() => {
         getLcDetails(setLc, id);
@@ -42,75 +50,146 @@ const LearningCircle = (props: Props) => {
 
                 <div className={styles.BoxContent}>
                     <div className={styles.LeftBox}>
-                            <div className={styles.EventOn}>
-                                {lc?.meet_place || lc?.meet_time ? (<><div className={styles.MeetingOn}>
-                                    <div>
-                                        <b>Next Meeting on</b>
+                        <div className={styles.EventOn}>
+                            {lc?.meet_place || lc?.meet_time ? (
+                                <>
+                                    <div className={styles.MeetingOn}>
                                         <div>
-                                            {/* <b>{lc?.day}</b> */}
+                                            <b>Next Meeting on</b>
+                                            <div>{/* <b>{lc?.day}</b> */}</div>
                                         </div>
+                                        <i className="fa-solid fa-pencil"></i>
                                     </div>
-                                    <i className="fa-solid fa-pencil"></i>
-                                </div>
-                                <div className={styles.MeetingBtn}>
-                                    <b>
-                                        venue: {lc?.meet_place} <br /> time:
-                                        <h1>{lc?.meet_time}</h1>
-                                    </b>
+                                    <div className={styles.MeetingBtn}>
+                                        <b>
+                                            venue: {lc?.meet_place} <br /> time:
+                                            <h1>{lc?.meet_time}</h1>
+                                        </b>
+                                        <button className={styles.BtnBtn}>
+                                            Done
+                                        </button>
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    <div className={styles.ScheduleOn}>
+                                        <b>Schedule meeting</b>
+                                        <p>
+                                            Enter details to schedule your
+                                            weekly meeting
+                                        </p>
+                                    </div>
+                                    <div className={styles.InputSchedule}>
+                                        <div>
+                                            <input
+                                                type="time"
+                                                onChange={e => {
+                                                    setMeetTime(e.target.value);
+                                                }}
+                                                placeholder="meeting time"
+                                            />
+                                            <input
+                                                type="text"
+                                                onChange={e => {
+                                                    setMeetVenue(e.target.value);
+                                                }}
+                                                placeholder="meeting venue"
+                                            />
+                                        </div>
+                                        <div className={styles.weeks}>
+                                            <p>meeting days</p>
+                                            <p className={styles.Lcweek}>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="S"
+                                                    />
+                                                    <label htmlFor="S">S</label>
+                                                </div>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="M"
+                                                    />
+                                                    <label htmlFor="M">M</label>
+                                                </div>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="T"
+                                                    />
+                                                    <label htmlFor="T">T</label>
+                                                </div>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="W"
+                                                    />
+                                                    <label htmlFor="W">W</label>
+                                                </div>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="Th"
+                                                    />
+                                                    <label htmlFor="Th">
+                                                        T
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="F"
+                                                    />
+                                                    <label htmlFor="F">F</label>
+                                                </div>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="Sa"
+                                                    />
+                                                    <label htmlFor="Sa">
+                                                        S
+                                                    </label>
+                                                </div>
+                                            </p>
+                                        </div>
+                                        {/* <input type="text" placeholder="meeting venue" /> */}
+                                    </div>
+
                                     <button className={styles.BtnBtn}>
-                                        Done
+                                        Schedule
                                     </button>
-                                </div></>):(
-                                    <div>
-                                         <Formik
-                                enableReinitialize={true}
-                                initialValues={{
-                                    meet_time: "",
-                                    meet_place: "",
-                                    day: ""
-                                }}
-                                onSubmit={(values,{resetForm}) =>{
-                                    setLCMeetTime(
-                                        values.meet_time,
-                                        values.meet_place,
-                                        values.day,
-                                        id
-                                    )
-                                    console.log(values)
-                                    resetForm()
-                                }}
-                            >
-                                 {({
-                                    values,
-                                    handleChange,
-                                    setFieldValue,
-                                    errors
-                                }) => (
-                                <Form>
-                                    <div className={styles.LearningCircleCreateForm}>
-                                        <FormikTextInput 
-                                            type="text"
-                                            name="meet_time" 
-                                            placeholder="Meeting Time"
-                                        />
-                                        <FormikTextInput 
-                                            type="text"
-                                            name="meet_place" 
-                                            placeholder="Meeting Place"
-                                        />
-                                        <FormikTextInput 
-                                            type="text"
-                                            name="day" 
-                                            placeholder="Meeting Day"
-                                        />
-                                    </div>
-                                    <button type="submit" >Create</button>
-                                </Form>
-                                )}
-                            </Formik>
-                                    </div>
-                                )}
-                            </div>
+                                </>
+                            )}
+                        </div>
+
+                        <div className={styles.EventOn}>
+                            {lc?.note ? (
+                                <div className={styles.LcNotedEvent}>
+                                    <p>{lc.note}</p>
+                                    <button className={styles.BtnBtn}>
+                                        edit
+                                    </button>
+                                </div>
+                            ) : (
+                                <div className={styles.LcNotedEvent}>
+                                    <input
+                                        onChange={e => {
+                                            setNote(e.target.value);
+                                        }}
+                                        type="text"
+                                        placeholder="input"
+                                    />
+                                    <button
+                                        className={styles.BtnBtn}
+                                        onClick={handlePut}
+                                    >
+                                        Submit
+                                    </button>
+                                </div>
+                            )}
+                        </div>
 
                         {lc?.pending_members &&
                         lc.pending_members.length > 0 ? (
@@ -148,6 +227,21 @@ const LearningCircle = (props: Props) => {
                                                             className={
                                                                 styles.BtnBtn
                                                             }
+                                                            onClick={() => {
+                                                                approveLcUser(
+                                                                    id,
+                                                                    member.id,
+                                                                    true
+                                                                );
+                                                                setTimeout(
+                                                                    () => {
+                                                                        navigate(
+                                                                            `/dashboard/learning-circle/details/${id}`
+                                                                        );
+                                                                    },
+                                                                    2000
+                                                                );
+                                                            }}
                                                         >
                                                             Approve
                                                         </button>
@@ -155,6 +249,21 @@ const LearningCircle = (props: Props) => {
                                                             className={
                                                                 styles.BtnClr
                                                             }
+                                                            onClick={() => {
+                                                                approveLcUser(
+                                                                    id,
+                                                                    member.id,
+                                                                    false
+                                                                );
+                                                                setTimeout(
+                                                                    () => {
+                                                                        navigate(
+                                                                            `/dashboard/learning-circle/details/${id}`
+                                                                        );
+                                                                    },
+                                                                    2000
+                                                                );
+                                                            }}
                                                         >
                                                             Reject
                                                         </button>

@@ -47,6 +47,26 @@ export const getLcDetails = async (
         }
     }
 };
+export const updateLcNote = async (
+    id: string | undefined,
+    note: string
+) => {
+    try {
+        const response = await privateGateway.put(
+            dashboardRoutes.getCampusLearningCircles + id + "/",
+            {
+                note: note
+            }
+        );
+        const message: any = response?.data;
+        console.log(message.response);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
 
 export const getCampusLearningCircles = async (
     setCircleList: React.Dispatch<SetStateAction<LcType[]>>
@@ -162,6 +182,37 @@ export const setLCMeetTime = async(
 
 }
 
+export const joinCircle = async (
+    circleCode: string,
+) => {
+    try {
+        const response = await privateGateway.post(
+            dashboardRoutes.joinLearningCircle + circleCode + '/',
+        );
+
+        console.log(response);
+        toast({
+            title: "Learning Circle Created",
+            description: "",
+            status: "success",
+            duration: 2000,
+            isClosable: true
+        });
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+        toast({
+            title: "Learning Circle not creating..",
+            description: "",
+            status: "error",
+            duration: 2000,
+            isClosable: true
+        });
+    }
+};
+
 export const getInterestGroups = async (
 )=>{
     try{
@@ -175,6 +226,44 @@ export const getInterestGroups = async (
             console.log(error.response);
         } 
     }
-
-    
 }
+
+export const approveLcUser = async (
+    circleId: string | undefined,
+    memberId: string,
+	flag: boolean
+) => {
+    try {
+        const response = await privateGateway.patch(
+            dashboardRoutes.getCampusLearningCircles +
+                circleId +
+                "/" +
+                memberId +
+                "/",
+            {
+                is_accepted: flag
+            }
+        );
+
+        console.log(response);
+        toast({
+            title: "Member Approved",
+            description: "",
+            status: "success",
+            duration: 2000,
+            isClosable: true
+        });
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+        toast({
+            title: "Something went wrong",
+            description: "",
+            status: "error",
+            duration: 2000,
+            isClosable: true
+        });
+    }
+};

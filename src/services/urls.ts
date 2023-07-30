@@ -20,9 +20,9 @@ export const authRoutes = {
 
 export const dashboardRoutes = {
     forgetPassword: "/api/v1/dashboard/user/forgot-password/",
-    resetPassword: "/api/v1/dashboard/user/reset-password/${token}/",
+    resetPassword: "/api/v1/dashboard/user/reset-password/${token}",
     resetPasswordVerify:
-        "/api/v1/dashboard/user/reset-password/verify-token/${token}/",
+        "/api/v1/dashboard/user/reset-password/verify-token/${token}",
     getInfo: "/api/v1/dashboard/user/info/",
     getIgData: "/api/v1/dashboard/ig/",
     getIgList: "/api/v1/dashboard/ig/csv",
@@ -83,6 +83,7 @@ export const dashboardRoutes = {
 
     getCampusLearningCircles: "/api/v1/dashboard/lc/",
     createLearningCircle: "/api/v1/dashboard/lc/create/",
+    joinLearningCircle: "/api/v1/dashboard/lc/join/",
     setLCMeetTime: "/api/v1/dashboard/lc/meet/",
 
     getAllOrganisations: "/api/v1/hackathon/list-organisations/",

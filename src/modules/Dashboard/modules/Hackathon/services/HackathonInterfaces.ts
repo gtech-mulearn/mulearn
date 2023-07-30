@@ -35,3 +35,15 @@ export interface HackathonOrganizerData {
     muid: string;
     profile_pic: string;
 }
+
+export interface hackApiData {
+    name: string;
+    gender: string;
+    email: string;
+    mobile: number;
+    bio: string;
+    college: string;
+    experience: string;
+    github: string;
+    linkedin: string;
+}

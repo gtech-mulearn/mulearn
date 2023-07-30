@@ -66,7 +66,7 @@ privateGateway.interceptors.response.use(
                 );
 
                 // Retry the original request
-                const config = error.config;
+                const {config} = error;
                 config.headers[
                     "Authorization"
                 ] = `Bearer ${localStorage.getItem("accessToken")}`;

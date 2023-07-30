@@ -27,4 +27,5 @@ export interface LcDetail {
     total_karma: number;
     meet_place: string;
     meet_time: string;
+    note: string;
 }
