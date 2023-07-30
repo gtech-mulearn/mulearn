@@ -273,6 +273,18 @@
     gap: 0.8rem;
 }
 
+.MeetingDate{
+display: flex;
+width: 100%;
+flex-direction: column;
+padding-left: 10px;
+}
+
+.MeetingDate h1 {
+  color:var(--blue);
+  font-size: 2rem;
+}
+
 .MeetingBtn {
     width: 100%;
     display: flex;
@@ -577,7 +589,6 @@
 }
 .Lcweek input[type="checkbox"]:checked{
     background-color: #456FF6;
-	border: 3px solid blue;
 	border: none;
 }
 
@@ -592,26 +603,37 @@
 .LcNotedEvent{
  width: 100%;
  display: flex;
- flex-direction:row;
- justify-content: space-between;
+ flex-direction:column;
+ justify-content: center;
+ align-items: center;
  gap: 1rem;
 }
 
-.LcNotedEvent input{
-	width: 100%;
+.LcNotedEdit{
+    width: 100%;
+    padding:0 10px ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.LcNotedEvent textarea{
+    width: 100%;
+    min-height: 10rem;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    background-color: #f3f3f3;
+    background-color: #f3f8fe;
     outline: none;
 }
 
 .LcNotedEvent p{
 	width: 100%;
+    min-height: 10rem;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    background-color: #f3f3f3;
+    background-color: #f3f8fe;
     outline: none;
-	color:#ccc;
+	color:var(--Dark);
 }
 
 
