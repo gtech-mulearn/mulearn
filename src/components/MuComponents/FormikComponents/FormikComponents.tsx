@@ -102,7 +102,9 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
     };
 
     const getSelectedOption = () => {
-        if (!field.value) return null;
+        if (!field.value) {
+			return null;
+        }
         return options.find(option => option.value === field.value) || null;
     };
 

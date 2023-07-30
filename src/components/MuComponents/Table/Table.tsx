@@ -53,12 +53,9 @@ type TableProps = {
     modalTypeContent?: string;
 };
 
-{
-    /* IMPORTANT NOTE
-use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/
-}
-
-/*
+/* 
+* IMPORTANT NOTE
+! use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs at least 2 children
 TODO: Move the Common Functions to a separate file
 */
 
@@ -74,17 +71,18 @@ const Table: FC<TableProps> = (props: TableProps) => {
     // Function to toggle the modal for a specific row
     const toggleModal = (index: number, type: string) => {
         if (type == ModalType[0]) {
-            setIsVerifyOpen(prevState => {
-                const newState = [...prevState];
-                newState[index] = !newState[index];
-                return newState;
-            });
-        } else
-            setIsDeleteOpen(prevState => {
-                const newState = [...prevState];
-                newState[index] = !newState[index];
-                return newState;
-            });
+			setIsVerifyOpen(prevState => {
+				const newState = [...prevState];
+				newState[index] = !newState[index];
+				return newState;
+			});
+        } else {
+			setIsDeleteOpen(prevState => {
+				const newState = [...prevState];
+				newState[index] = !newState[index];
+				return newState;
+			});
+        }
     };
 
     function convertToNormalDate(dateString: any): string | null {
@@ -262,7 +260,9 @@ const Table: FC<TableProps> = (props: TableProps) => {
             </div>
             
             {(()=>{
-                if(isLoading) return ""
+                if (isLoading) {
+					return ""
+                }
                 if(props.rows.length)
                     return(
                         <div className={styles.page}>{props.children?.[1]}</div>

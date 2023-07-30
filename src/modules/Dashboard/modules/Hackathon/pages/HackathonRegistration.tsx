@@ -14,7 +14,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getApplicationForm, getHackDetails, submitHackApplication } from "../services/HackathonApis";
 import {
     HackList,
-    HackathonApplication
+    HackathonApplication,
+	hackApiData
 } from "../services/HackathonInterfaces";
 import { capitalizeFirstLetter } from "../../../utils/common";
 import { HackApplicationSchema } from "../services/HackathonYup";
@@ -35,15 +36,7 @@ const HackathonRegistration = (props: Props) => {
 
     const handleSubmit = (values: any) => {
         submitHackApplication(
-			values.name,
-			values.gender,
-			values.email,
-			values.mobile,
-			values.bio,
-			values.college,
-			values.experience,
-			values.github,
-			values.linkedin,
+			values,
 			id
 		)
     };
