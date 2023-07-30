@@ -47,6 +47,26 @@ export const getLcDetails = async (
         }
     }
 };
+export const updateLcNote = async (
+    id: string | undefined,
+    note: string
+) => {
+    try {
+        const response = await privateGateway.put(
+            dashboardRoutes.getCampusLearningCircles + id + "/",
+            {
+                note: note
+            }
+        );
+        const message: any = response?.data;
+        console.log(message.response);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
 
 export const getCampusLearningCircles = async (
     setCircleList: React.Dispatch<SetStateAction<LcType[]>>
