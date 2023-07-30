@@ -6,6 +6,8 @@ import pic from "../../Profile/assets/images/dpm.jpg";
 import { LcDetail } from "../services/LearningCircleInterface";
 import { Form, Formik } from "formik";
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import {BiEditAlt} from "react-icons/bi";
+
 
 type Props = {};
 
@@ -66,11 +68,12 @@ const LearningCircle = (props: Props) => {
                                 </>
                             ) : (
                                 <>
-                              <div className={styles.InputSchedule}>
+
                                 <div className={styles.ScheduleOn}>
                                    <b>Schedule meeting</b>
                                    <p>Enter details to schedule your weekly meeting</p>
                                </div>
+
                                <div className={styles.InputSchedule}>
                                 <div>
                                     <input type="time" placeholder="meeting time" />
@@ -78,8 +81,8 @@ const LearningCircle = (props: Props) => {
                                 </div>
                                 <div className={styles.weeks}>
                                     <p>meeting days</p>
-                                  <p className={styles.Lcweek}>
-                                    <div>
+                                  <div className={styles.Lcweek}>
+                                    <div className={styles.LcweekDays}>
                                         <input type="checkbox" id='S'/><label htmlFor='S'>S</label>
                                     </div>
                                     <div>
@@ -100,14 +103,13 @@ const LearningCircle = (props: Props) => {
                                     <div>
                                         <input type="checkbox" id='Sa'/><label htmlFor='Sa'>S</label>
                                     </div>
-                                  </p>
+                                  </div>
                                     
                                 </div>
-                                {/* <input type="text" placeholder="meeting venue" /> */}
+                                
                             </div>
                             
                             <button className={styles.BtnBtn}>Schedule</button>
-                        </div>
 
 
                         </>
@@ -116,15 +118,18 @@ const LearningCircle = (props: Props) => {
                           
                         <div className={styles.EventOn}>
                                 <div className={styles.LcNotedEvent}>
-                                    <input type="text" placeholder='input' />
+                                    <textarea placeholder='Notes' />
                                     <button className={styles.BtnBtn}>Submit</button>
                                 </div>
                         </div> 
                          
                         <div className={styles.EventOn}>
                                 <div className={styles.LcNotedEvent}>
-                                    <p>hello</p>
-                                    <button className={styles.BtnBtn}>edit</button>
+                                    <div className={styles.LcNotedLabel}>
+                                        <b>Notes</b>
+                                        <BiEditAlt style={{cursor:"pointer"}}/>   
+                                    </div>
+                                    <p>Notes</p>
                                 </div>
                         </div> 
 
