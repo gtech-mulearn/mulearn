@@ -15,6 +15,7 @@ const LearningCircle = (props: Props) => {
     const [meetTime, setMeetTime] = useState('');
     const [meetVenue, setMeetVenue] = useState('');
     const [flag, setFlag] = useState(false);
+    const [isEdit, setIsEdit] = useState(false);
     const [meetDays, setMeetDays] = useState<string[]>([]);
     const { id } = useParams();
 	const navigate = useNavigate()
@@ -23,6 +24,9 @@ const LearningCircle = (props: Props) => {
         getLcDetails(setLc, id);
 		if(lc?.note !== '') {
 			setFlag(true)
+		}
+		if(lc?.meet_place || lc?.meet_time !== '') {
+			setIsEdit(true)
 		}
     }, []);
 
@@ -42,6 +46,12 @@ const LearningCircle = (props: Props) => {
 		console.log(meetVenue)
 		console.log(meetTime)
 		setLCMeetTime(meetTime, meetVenue, meetDays, id)
+        getLcDetails(setLc, id);
+        setTimeout(() => {
+            if(lc?.meet_place || lc?.meet_time !== '') {
+                setIsEdit(true)
+            }
+        }, 2000);
 	}
 
     return (
@@ -70,14 +80,17 @@ const LearningCircle = (props: Props) => {
                 <div className={styles.BoxContent}>
                     <div className={styles.LeftBox}>
                         <div className={styles.EventOn}>
-                            {lc?.meet_place || lc?.meet_time ? (
+                            { isEdit ? (
                                 <>
                                     <div className={styles.MeetingOn}>
                                         <div>
                                             <h2>Next Meeting on</h2>
                                             <div>{/* <b>{lc?.day}</b> */}</div>
                                         </div>
-                                        <BiEditAlt/>
+                                        <BiEditAlt onClick={()=>{
+                                               
+                                                setIsEdit(false);
+                                        }}/>
                                     </div>
                                     <div className={styles.MeetingDate}>
                                         <h1>22 JUNE 2023</h1>
