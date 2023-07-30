@@ -8,7 +8,6 @@ type Props = {
     handleNextClick?: () => void;
     currentPage: number;
     totalPages: number;
-    totalItems: number;
     margin?: string;
     onSearchText?: (data: string) => void;
     onPerPageNumber?: (data: number) => void;
@@ -28,17 +27,9 @@ const Pagination = (props: Props) => {
                 <div className={styles.tableFooter}>
                     <div className={styles.pageNumbers}>
                         <strong>
-                            {props.totalPages === 1
-                                ? props.totalItems
-                                : props.currentPage === props.totalPages
-                                    ? props.totalItems - itemsPerPage + 1
-                                    : props.currentPage * itemsPerPage - itemsPerPage + 1}{" "}
-                            -{" "}
-                            {props.currentPage === props.totalPages
-                                ? props.totalItems
-                                : props.currentPage * itemsPerPage}{" "}
+                            {props.currentPage * itemsPerPage - itemsPerPage + 1} -{" "}
+                            {props.currentPage * itemsPerPage}{" "}
                         </strong>
-                        {/* of {props.totalItems} */}
                     </div>
                     <div className={styles.pagination}
                         style={{ margin: props.margin ? props.margin : "0" }}

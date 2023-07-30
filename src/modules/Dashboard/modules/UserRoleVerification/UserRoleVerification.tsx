@@ -147,7 +147,6 @@ function UsersRoleVerification() {
                             handleNextClick={handleNextClick}
                             handlePreviousClick={handlePreviousClick} onSearchText={handleSearch}
                             onPerPageNumber={handlePerPageNumber}
-                            totalItems={data.length}
                         />
                     </Table>
                 </>

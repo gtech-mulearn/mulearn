@@ -193,7 +193,6 @@ function Organizations() {
                             handlePreviousClick={handlePreviousClick}
                             onSearchText={handleSearch}
                             onPerPageNumber={handlePerPageNumber}
-                            totalItems={data.length}
                         />
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>
