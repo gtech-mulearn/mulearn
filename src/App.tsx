@@ -51,6 +51,8 @@ const ZonalDashboard = lazy(() => import("./modules/Dashboard/modules/ZonalDashb
 const HackathonRegistration = lazy(() => import("./modules/Dashboard/modules/Hackathon/pages/HackathonRegistration"));
 const LandingPage = lazy(() => import("./modules/Public/LearningCircles/modules/LandingPage/LandingPage"));
 const ConnectDiscord = lazy(() => import("./modules/Dashboard/modules/ConnectDiscord/pages/ConnectDiscord"));
+const HackathonParticipants = lazy(() => import("./modules/Dashboard/modules/Hackathon/pages/HackathonParticipants"));
+
 
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
@@ -179,6 +181,10 @@ const router = createBrowserRouter([
                     {
                         path: "hackathon/apply/:id",
                         element: <HackathonRegistration />
+                    },
+                    {
+                        path: "hackathon/applicants/:id",
+                        element: <HackathonParticipants />
                     },
                     {
                         path: "manage-locations",
