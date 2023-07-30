@@ -151,7 +151,9 @@ export const Tasks = (props: Props) => {
                             totalPages={totalPages}
                             margin="10px 0"
                             handleNextClick={handleNextClick}
-                            handlePreviousClick={handlePreviousClick}
+                            handlePreviousClick={handlePreviousClick} onSearchText={handleSearch}
+                            onPerPageNumber={handlePerPageNumber}
+                            totalItems={data.length}
                         />
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>

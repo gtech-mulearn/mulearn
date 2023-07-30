@@ -111,8 +111,8 @@ function UsersRoleVerification() {
         //console.log(`Icon clicked for column: ${column}`);
     };
 
-	async function handleVerify(id: string | number | boolean) {
-		//console.log(id);
+    async function handleVerify(id: string | number | boolean) {
+        //console.log(id);
         await editUserRoleVerification(true, id);
         getUserRoleVerification(setData, 1, perPage, setTotalPages, "", "");
     }
@@ -145,7 +145,9 @@ function UsersRoleVerification() {
                             totalPages={totalPages}
                             margin="10px 0"
                             handleNextClick={handleNextClick}
-                            handlePreviousClick={handlePreviousClick}
+                            handlePreviousClick={handlePreviousClick} onSearchText={handleSearch}
+                            onPerPageNumber={handlePerPageNumber}
+                            totalItems={data.length}
                         />
                     </Table>
                 </>
