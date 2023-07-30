@@ -44,6 +44,7 @@ const LearningCircleLandingPage = lazy(() => import("./modules/Dashboard/modules
 const Organizations = lazy(() => import("./modules/Dashboard/modules/Organizations/Organizations"));
 const ManageUsers = lazy(() => import("./modules/Dashboard/modules/ManageUsers/ManageUsers"));
 const InterestGroup = lazy(() => import("./modules/Dashboard/modules/InterestGroup/InterestGroup"));
+const InterestGroupCreate = lazy(() => import("./modules/Dashboard/modules/InterestGroup/InterestGroupCreate"));
 const CampusStudentList = lazy(() => import("./modules/Dashboard/modules/CampusStudentList/pages/CampusStudentList"));
 const HackathonDetails = lazy(() => import("./modules/Dashboard/modules/Hackathon/pages/HackathonDetails"));
 const DistrictDashboard = lazy(() => import("./modules/Dashboard/modules/DistrictDashboard/DistrictDashboard"));
@@ -97,6 +98,10 @@ const router = createBrowserRouter([
                     { path: "profile", element: <Profile /> },
                     { path: "connect-discord", element: <ConnectDiscord /> },
                     { path: "interest-groups", element: <InterestGroup /> },
+                    {
+                        path: "interest-groups/create",
+                        element: <InterestGroupCreate />
+                    },
                     {
                         path: "organizations/create",
                         element: <CreateOrganization />
@@ -229,7 +234,7 @@ const router = createBrowserRouter([
     {
         path: "/learning-circle",
         element: <LandingPage />
-    },
+    }
 ]);
 
 function App() {
