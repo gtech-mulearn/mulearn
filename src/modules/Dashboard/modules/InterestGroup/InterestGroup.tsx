@@ -179,13 +179,17 @@ function InterestGroup() {
                             onIconClick={handleIconClick}
                             action={true}
                         />
-                        <Pagination
-                            currentPage={currentPage}
-                            totalPages={totalPages}
-                            margin="10px 0"
-                            handleNextClick={handleNextClick}
-                            handlePreviousClick={handlePreviousClick}
-                        />
+                        <div className={styles.tableFooter}>
+                            <Pagination
+                                currentPage={currentPage}
+                                totalPages={totalPages}
+                                margin="10px 0"
+                                handleNextClick={handleNextClick}
+                                handlePreviousClick={handlePreviousClick}
+                                onSearchText={handleSearch}
+                                onPerPageNumber={handlePerPageNumber}
+                            />
+                        </div>
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>
                 </>

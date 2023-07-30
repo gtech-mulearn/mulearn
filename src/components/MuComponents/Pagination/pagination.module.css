@@ -1,7 +1,37 @@
 .pagePara {
-	color: var(--White);
-	background-color: var(--blue);
-	border-radius: var(--borderRadius);	
-	padding: 0.3rem .7rem;
-	margin: 0 10px;
+    color: var(--White);
+    background-color: var(--blue);
+    border-radius: var(--borderRadius);
+    padding: 0.3rem 0.7rem;
+    margin: 0 10px;
+}
+
+.tableFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.showContainer {
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    gap: 10px;
+    min-width: fit-content;
+    height: 100%;
+    align-items: center;
+    color: var(--dimText);
+    font-weight: medium;
+}
+
+.showContainer label {
+    max-lines: 1;
+}
+
+.showContainer select {
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    outline: none;
+    height: 100%;
 }
