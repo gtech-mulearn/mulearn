@@ -107,15 +107,6 @@ function InterestGroup() {
         }
     };
 
-    //interestGroupCreate api call
-    const handleDataRender = (name: string, code: string, icon: string,
-        onClose: Dispatch<SetStateAction<boolean>>) => {
-        createInterestGroups(
-            name,
-			code,
-			icon,
-            onClose)
-    };
     return (
         <>
             <InterestGroupEditModal
