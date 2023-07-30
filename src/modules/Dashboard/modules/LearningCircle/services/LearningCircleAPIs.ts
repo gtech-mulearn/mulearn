@@ -138,25 +138,24 @@ export const createCircle = async(
 
 }
 
-export const setLCMeetTime = async(
-        meetTime: string,
-        meetPlace: string,
-        day: string,
-        id: string|undefined
-    )=>{
-        
-        try{
-            const response = await privateGateway.patch(
-            dashboardRoutes.setLCMeetTime + id + '/',
+export const setLCMeetTime = async (
+    meetTime: string,
+    meetPlace: string,
+    day: string[],
+    id: string | undefined
+) => {
+    try {
+        const response = await privateGateway.patch(
+            dashboardRoutes.setLCMeetTime + id + "/",
             {
-                meet_time: meetTime,
+                meet_time: `${meetTime}:00`,
                 meet_place: meetPlace,
-                day: day
+                day: `${day}`
             }
         );
         const message: any = response?.data;
         console.log(message.response);
-        console.log(response)
+        console.log(response);
         toast({
             title: "Successful",
             description: "",
@@ -164,9 +163,7 @@ export const setLCMeetTime = async(
             duration: 2000,
             isClosable: true
         });
-       
-        
-    }catch(err){
+    } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
@@ -179,8 +176,7 @@ export const setLCMeetTime = async(
             isClosable: true
         });
     }
-
-}
+};
 
 export const joinCircle = async (
     circleCode: string,

@@ -113,3 +113,7 @@ export const KKEMRoutes = {
     userAuth: "/api/v1/integrations/kkem/authorization/",
     userLogin:"/api/v1/integrations/kkem/login/"
 };
+
+export const PublicRoutes = {
+    getRandomLc: "/api/v1/dashboard/lc/list/",
+};

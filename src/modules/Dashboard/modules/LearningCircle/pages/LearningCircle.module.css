@@ -565,8 +565,8 @@ padding-left: 10px;
 	position: absolute;
 	font-size: 0.8rem;
 	font-weight: 400;
-	width: 30px;
-	height: 30px;
+	width: 40px;
+	height: 40px;
 	color:#CCC;
 	display: flex;
 	align-items: center;
@@ -576,8 +576,8 @@ padding-left: 10px;
 }
 
 .Lcweek input[type="checkbox"] {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 100%;
     background-color:#F3F3F3;
 	outline: none;
