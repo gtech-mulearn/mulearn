@@ -103,6 +103,10 @@ const router = createBrowserRouter([
                         element: <InterestGroupCreate />
                     },
                     {
+                        path: "interest-groups/edit/:id",
+                        element: <InterestGroupCreate />
+                    },
+                    {
                         path: "organizations/create",
                         element: <CreateOrganization />
                     },
