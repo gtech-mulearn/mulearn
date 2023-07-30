@@ -74,7 +74,7 @@ const LandingPage = () => {
                 </div>
 
                 <div className={styles.selectOptions}>
-                    <select name="" id="">
+                    <select name="" id="" >
                         <option value="">Kerala</option>
                     </select>
                     <select name="" id="">
