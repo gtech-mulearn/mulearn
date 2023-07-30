@@ -20,7 +20,7 @@ export const authRoutes = {
 
 export const dashboardRoutes = {
     forgetPassword: "/api/v1/dashboard/user/forgot-password/",
-    resetPassword: "/api/v1/dashboard/user/reset-password/${token}/",
+    resetPassword: "/api/v1/dashboard/user/reset-password/${token}",
     resetPasswordVerify:
         "/api/v1/dashboard/user/reset-password/verify-token/${token}/",
     getInfo: "/api/v1/dashboard/user/info/",
