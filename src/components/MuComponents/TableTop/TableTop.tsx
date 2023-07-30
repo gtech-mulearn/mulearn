@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { SearchBar } from "./SearchBar";
-import ShowPerPage from "./ShowPerPage";
+import ShowPerPage from "../Pagination/ShowPerPage";
 import styles from "./TableTop.module.css";
 import { MuButton } from "../MuButtons/MuButton";
 import { HiDownload } from "react-icons/hi";
@@ -26,11 +26,6 @@ const TableTop = (props: Props) => {
     const handleData = (search: string) => {
         props.onSearchText && props.onSearchText(search);
     };
-    const [itemsPerPage, setItemsPerPage] = useState(5);
-    const handleOptionChange = (value: number) => {
-        setItemsPerPage(value);
-        props.onPerPageNumber && props.onPerPageNumber(value);
-    };
 
     const handleClick = async () => {
         try {
@@ -49,11 +44,6 @@ const TableTop = (props: Props) => {
                     <SearchBar onSearch={handleData} />
                 </div>
                 <div className={styles.right}>
-                    <ShowPerPage
-                        options={[5, 10, 20, 50, 100]}
-                        selectedOption={itemsPerPage}
-                        onOptionChange={handleOptionChange}
-                    />
                     {props.CSV && (
                         <MuButton
                             text={"CSV"}
