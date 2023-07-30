@@ -363,41 +363,36 @@ export const getApplicationForm = async (
 };
 
 export const submitHackApplication = async (
-	name: string,
-	gender: string,
-	email: string,
-	mobile: number,
-	bio: string,
-	college: string,
-	experience: string,
-	github: string,
-	linkedin: string,
-    id: string | undefined,
+	data: {
+		name: string,
+		gender: string,
+		email: string,
+		mobile: number,
+		bio: string,
+		college: string,
+		experience: string,
+		github: string,
+		linkedin: string
+	},
+	id: string | undefined,
 ) => {
-    try {
-        const response = await privateGateway.post(
-            dashboardRoutes.submitApplication,
-            {
-                hackathon_id: id,
-                data: {
-                    name: name,
-                    gender: gender,
-                    email: email,
-                    mobile: mobile,
-                    bio: bio,
-                    college: college,
-                    experience: experience,
-                    github: github,
-                    linkedin: linkedin
-                }
-            }
-        );
-    } catch (err: unknown) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
-    }
+	try {
+		if (!id) {
+			throw new Error('id parameter is undefined');
+		}
+		return await privateGateway.post(
+			dashboardRoutes.submitApplication,
+			{
+				hackathon_id: id,
+				data: data
+			}
+		);
+	} catch (err: unknown) {
+		const error = err as AxiosError;
+		if (error?.response) {
+			throw error;
+		}
+	}
 };
 
 export const getOrganizers = async (
@@ -434,4 +429,4 @@ export const getParticipants = async (
             console.log(error.response);
         }
     }
-};
+};       
