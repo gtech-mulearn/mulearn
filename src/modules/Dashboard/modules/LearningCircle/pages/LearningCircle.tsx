@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./LearningCircle.module.css";
-import { approveLcUser, getLcDetails, setLCMeetTime } from "../services/LearningCircleAPIs";
+import { approveLcUser, getLcDetails, setLCMeetTime, updateLcNote } from "../services/LearningCircleAPIs";
 import { useNavigate, useParams } from "react-router-dom";
 import pic from "../../Profile/assets/images/dpm.jpg";
 import { LcDetail } from "../services/LearningCircleInterface";
@@ -11,8 +11,14 @@ type Props = {};
 
 const LearningCircle = (props: Props) => {
     const [lc, setLc] = useState<LcDetail>();
+    const [note, setNote] = useState('');
     const { id } = useParams();
 	const navigate = useNavigate()
+    
+
+    const handlePut = () => {
+        updateLcNote(id,note)
+    }
 
     useEffect(() => {
         getLcDetails(setLc, id);
@@ -43,7 +49,6 @@ const LearningCircle = (props: Props) => {
 
                 <div className={styles.BoxContent}>
                     <div className={styles.LeftBox}>
-                        
                         <div className={styles.EventOn}>
                             {lc?.meet_place || lc?.meet_time ? (
                                 <>
@@ -66,68 +71,118 @@ const LearningCircle = (props: Props) => {
                                 </>
                             ) : (
                                 <>
-                              <div className={styles.InputSchedule}>
-                                <div className={styles.ScheduleOn}>
-                                   <b>Schedule meeting</b>
-                                   <p>Enter details to schedule your weekly meeting</p>
-                               </div>
-                               <div className={styles.InputSchedule}>
-                                <div>
-                                    <input type="time" placeholder="meeting time" />
-                                    <input type="text" placeholder="meeting venue" />
-                                </div>
-                                <div className={styles.weeks}>
-                                    <p>meeting days</p>
-                                  <p className={styles.Lcweek}>
-                                    <div>
-                                        <input type="checkbox" id='S'/><label htmlFor='S'>S</label>
+                                    <div className={styles.ScheduleOn}>
+                                        <b>Schedule meeting</b>
+                                        <p>
+                                            Enter details to schedule your
+                                            weekly meeting
+                                        </p>
                                     </div>
-                                    <div>
-                                        <input type="checkbox" id='M'/><label htmlFor='M'>M</label>
+                                    <div className={styles.InputSchedule}>
+                                        <div>
+                                            <input
+                                                type="time"
+                                                placeholder="meeting time"
+                                            />
+                                            <input
+                                                type="text"
+                                                placeholder="meeting venue"
+                                            />
+                                        </div>
+                                        <div className={styles.weeks}>
+                                            <p>meeting days</p>
+                                            <p className={styles.Lcweek}>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="S"
+                                                    />
+                                                    <label htmlFor="S">S</label>
+                                                </div>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="M"
+                                                    />
+                                                    <label htmlFor="M">M</label>
+                                                </div>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="T"
+                                                    />
+                                                    <label htmlFor="T">T</label>
+                                                </div>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="W"
+                                                    />
+                                                    <label htmlFor="W">W</label>
+                                                </div>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="Th"
+                                                    />
+                                                    <label htmlFor="Th">
+                                                        T
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="F"
+                                                    />
+                                                    <label htmlFor="F">F</label>
+                                                </div>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="Sa"
+                                                    />
+                                                    <label htmlFor="Sa">
+                                                        S
+                                                    </label>
+                                                </div>
+                                            </p>
+                                        </div>
+                                        {/* <input type="text" placeholder="meeting venue" /> */}
                                     </div>
-                                    <div>
-                                        <input type="checkbox" id='T'/><label htmlFor='T'>T</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='W'/><label htmlFor='W'>W</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='Th'/><label htmlFor='Th'>T</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='F'/><label htmlFor='F'>F</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='Sa'/><label htmlFor='Sa'>S</label>
-                                    </div>
-                                  </p>
-                                    
-                                </div>
-                                {/* <input type="text" placeholder="meeting venue" /> */}
-                            </div>
-                            
-                            <button className={styles.BtnBtn}>Schedule</button>
-                        </div>
 
-
-                        </>
+                                    <button className={styles.BtnBtn}>
+                                        Schedule
+                                    </button>
+                                </>
                             )}
                         </div>
-                          
-                        <div className={styles.EventOn}>
-                                <div className={styles.LcNotedEvent}>
-                                    <input type="text" placeholder='input' />
-                                    <button className={styles.BtnBtn}>Submit</button>
-                                </div>
-                        </div> 
-                         
-                        <div className={styles.EventOn}>
-                                <div className={styles.LcNotedEvent}>
-                                    <p>hello</p>
-                                    <button className={styles.BtnBtn}>edit</button>
-                                </div>
-                        </div> 
 
+                        <div className={styles.EventOn}>
+                            {lc?.note ? (
+                                <div className={styles.LcNotedEvent}>
+                                    <p>{lc.note}</p>
+                                    <button className={styles.BtnBtn}>
+                                        edit
+                                    </button>
+                                </div>
+                            ) : (
+                                <div className={styles.LcNotedEvent}>
+                                    <input
+                                        onChange={e => {
+                                            setNote(e.target.value);
+                                        }}
+                                        type="text"
+                                        placeholder="input"
+                                    />
+                                    <button
+                                        className={styles.BtnBtn}
+                                        onClick={handlePut}
+                                    >
+                                        Submit
+                                    </button>
+                                </div>
+                            )}
+                        </div>
 
                         {lc?.pending_members &&
                         lc.pending_members.length > 0 ? (
