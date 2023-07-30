@@ -4,6 +4,8 @@ import { approveLcUser, getLcDetails, setLCMeetTime, updateLcNote } from "../ser
 import { useNavigate, useParams } from "react-router-dom";
 import pic from "../../Profile/assets/images/dpm.jpg";
 import { LcDetail } from "../services/LearningCircleInterface";
+import {BiEditAlt} from "react-icons/bi"
+
 
 type Props = {};
 
@@ -55,19 +57,26 @@ const LearningCircle = (props: Props) => {
                                 <>
                                     <div className={styles.MeetingOn}>
                                         <div>
-                                            <b>Next Meeting on</b>
+                                            <h2>Next Meeting on</h2>
                                             <div>{/* <b>{lc?.day}</b> */}</div>
                                         </div>
-                                        <i className="fa-solid fa-pencil"></i>
+                                        <BiEditAlt/>
+                                    </div>
+                                    <div className={styles.MeetingDate}>
+                                        <h1>22 JUNE 2023</h1>
+                                        <p> Sunday</p>       
                                     </div>
                                     <div className={styles.MeetingBtn}>
+                                        <div>
                                         <b>
-                                            venue: {lc?.meet_place} <br /> time:
-                                            <h1>{lc?.meet_time}</h1>
+                                            venue: {lc?.meet_place} <br /> 
                                         </b>
-                                        <button className={styles.BtnBtn}>
+                                        <b>time: {lc?.meet_time}</b>
+                                        </div>
+                                        
+                                        {/* <button className={styles.BtnBtn}>
                                             Done
-                                        </button>
+                                        </button> */}
                                     </div>
                                 </>
                             ) : (
@@ -167,19 +176,22 @@ const LearningCircle = (props: Props) => {
                         <div className={styles.EventOn}>
                             {lc?.note ? (
                                 <div className={styles.LcNotedEvent}>
+                                    <div className={styles.LcNotedEdit}>
+                                        <b>Notes</b>
+                                        <BiEditAlt style={{cursor:"pointer"}}/>  
+                                    </div>
                                     <p>{lc.note}</p>
                                     <button className={styles.BtnBtn}>
                                         edit
-                                    </button>
+                                    </button> 
                                 </div>
                             ) : (
                                 <div className={styles.LcNotedEvent}>
-                                    <input
+                                    <textarea
                                         onChange={e => {
                                             setNote(e.target.value);
                                         }}
-                                        type="text"
-                                        placeholder="input"
+                                        placeholder="Notes"
                                     />
                                     <button
                                         className={styles.BtnBtn}
@@ -187,8 +199,10 @@ const LearningCircle = (props: Props) => {
                                     >
                                         Submit
                                     </button>
+                                      
                                 </div>
                             )}
+                           
                         </div>
 
                         {lc?.pending_members &&
