@@ -282,11 +282,11 @@ const HackathonCreate = () => {
                         <div className={styles.hackNav}>
                             <div className={styles.starImg}>
                                 <img
-                                    src="/src/modules/Dashboard/modules/Hackathon/Assets/Star 1.png"
+                                    src="/src/modules/Dashboard/modules/Hackathon/Assets/Star 1.webp"
                                     alt=""
                                 />
                                 <img
-                                    src="/src/modules/Dashboard/modules/Hackathon/Assets/Star 2.png"
+                                    src="/src/modules/Dashboard/modules/Hackathon/Assets/Star 2.webp"
                                     alt=""
                                 />
                             </div>
