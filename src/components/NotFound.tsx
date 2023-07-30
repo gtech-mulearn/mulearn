@@ -20,7 +20,7 @@ const NotFound = () => {
                 </div>
                 <div className={styles.Notsecond}>
                     <div className={styles.l}>l</div>
-                    <img className={styles.o} src="https://i.ibb.co/swdyYhG/rock.png" alt="stone" />
+                    <img className={styles.o} src="/src/components/assests/rock.webp" alt="stone" />
                     <div className={styles.s}>s</div>
                     <div className={styles.t}>t</div>
                 </div>
@@ -35,13 +35,13 @@ const NotFound = () => {
                 src="https://i.ibb.co/CQDjhGP/ufo.png" alt="" />
 
             <img className={styles.NotFound404}
-                src="https://i.ibb.co/s5SJqZx/404.png" alt="" />
+                src="/src/components/assests/404.webp" alt="" />
 
             <img className={styles.NotFoundRocks}
-                src="https://i.ibb.co/XYVxdMF/small-rocks.png" alt="" />
+                src="/src/components/assests/small_rocks.webp" alt="" />
 
             <img className={styles.NotFoundMars}
-                src="https://i.ibb.co/SnRRLwv/nobg-404-1.png" alt="" />
+                src="/src/components/assests/nobg 404 1.webp" alt="" />
 
         </div>
     );

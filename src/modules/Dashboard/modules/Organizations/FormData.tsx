@@ -520,6 +520,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         </div> */}
                         <MuButton
                             text={"Decline"}
+                            type="button"
                             className="btn light-btn"
                             onClick={() => {
                                 navigate("/dashboard/organizations");

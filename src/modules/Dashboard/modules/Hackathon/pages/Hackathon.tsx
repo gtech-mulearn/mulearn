@@ -302,15 +302,15 @@ const Hackathon = () => {
                                         <div className={styles.textWrapper4}>
                                             {hack.application_start
                                                 ? DateConverter(
-                                                      hack.application_start
-                                                  )
+                                                    hack.application_start
+                                                )
                                                 : "No Date"}
                                         </div>
                                         <div className={styles.textWrapper4}>
                                             {hack.application_ends
                                                 ? DateConverter(
-                                                      hack.application_ends
-                                                  )
+                                                    hack.application_ends
+                                                )
                                                 : "No Date"}
                                         </div>
                                     </div>
@@ -338,8 +338,8 @@ const Hackathon = () => {
                                             >
                                                 {hack.event_start
                                                     ? DateConverter(
-                                                          hack.event_start
-                                                      )
+                                                        hack.event_start
+                                                    )
                                                     : "No Date"}
                                             </div>
                                         </div>
