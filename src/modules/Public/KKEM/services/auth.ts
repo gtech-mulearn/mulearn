@@ -9,7 +9,7 @@ export const userAuth = async (
     return await publicGateway
         .post(
             KKEMRoutes.userAuth,
-            { emailOrMuid:mu_id, dwms_id,integration:"DWMS" },
+            { emailOrMuid:mu_id, jsid:dwms_id,integration:"DWMS" },
             {
                 signal: controller?.signal
             }

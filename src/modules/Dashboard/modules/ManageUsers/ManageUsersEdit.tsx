@@ -5,17 +5,26 @@ import { useToast } from "@chakra-ui/react";
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import {
+import FormikReactSelect, {
     FormikSelect,
-    FormikTextInput
+    FormikTextInput,
+    Option
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { roles } from "@/MuLearnServices/types";
+import { UserData } from "./ManageUsersInterface";
+import { getAllInstitutions } from "../Hackathon/services/HackathonApis";
+import { getLocationIdByName } from "../../utils/common";
 
 type Props = {};
 
 const ManageUsersEdit = (props: Props) => {
-    const [name, setName] = useState("");
+    const [name, setName] = useState<any>();
+    const [institutions, setInstitutions] = useState<Option[]>([]);
+
+    const [institutionsChunks, setInstitutionsChunks] = useState<Option[][]>(
+        []
+    );
     interface IData {
         first_name: string;
         last_name: string;
@@ -24,11 +33,13 @@ const ManageUsersEdit = (props: Props) => {
         discord_id: string;
         mu_id: string;
         college?: string;
-
-        department?: string | any;
-        graduation_year?: string;
         role: string;
         company?: string;
+        department?: string | any;
+        graduation_year?: string | any;
+        orgaanization_community?: string[];
+        orgaanization_college?: string[];
+        orgaanization_company?: string[];
     }
 
     // const [data, setData] = useState<IData>({
@@ -43,26 +54,40 @@ const ManageUsersEdit = (props: Props) => {
     //     department: "",
     //     graduation_year: ""
     // });
-    const [data, setData] = useState<IData>({
-        first_name: "",
-        last_name: "",
-        email: "",
-        mobile: "",
-        discord_id: "",
-        mu_id: "",
-        college: "",
-        company: "",
-        department: "",
-        graduation_year: "",
-        role: ""
-    });
-
+    // const [data, setData] = useState<IData>({
+    //     first_name: "",
+    //     last_name: "",
+    //     email: "",
+    //     mobile: "",
+    //     discord_id: "",
+    //     mu_id: "",
+    //     college: "",
+    //     company: "",
+    //     department: "",
+    //     graduation_year: "",
+    //     role: "",
+    //     organizations_company: "",
+    //     organizations_college: "",
+    //     organizations_community: ""
+    // });
+    const [data, setData] = useState<UserData>();
     const { id } = useParams();
     const navigate = useNavigate();
     const toast = useToast();
     useEffect(() => {
         getManageUsersDetails(id, setData);
+        getAllInstitutions(setInstitutionsChunks);
     }, []);
+
+    useEffect(() => {
+        // Flatten the chunks into a single array when the chunks change
+        const flattenedInstitutions = institutionsChunks.reduce(
+            (accumulator, currentChunk) => accumulator.concat(currentChunk),
+            []
+        );
+        setInstitutions(flattenedInstitutions);
+        setName(getLocationIdByName(institutions, data?.college));
+    }, [institutionsChunks]);
 
     return (
         <div className={styles.external_container}>
@@ -72,17 +97,18 @@ const ManageUsersEdit = (props: Props) => {
                     enableReinitialize={true}
                     initialValues={{
                         // igName: name
-                        first_name: data.first_name,
-                        last_name: data.last_name,
-                        email: data.email,
-                        mobile: data.mobile,
-                        discord_id: data.discord_id,
-                        mu_id: data.mu_id,
-                        college: data.college,
-                        company: data.company,
-                        department: data.department,
-                        graduation_year: data.graduation_year,
-                        role: data.role
+                        first_name: data?.first_name,
+                        last_name: data?.last_name,
+                        email: data?.email,
+                        mobile: data?.mobile,
+                        discord_id: data?.discord_id,
+                        mu_id: data?.mu_id,
+                        college: data?.college,
+                        company: data?.company,
+                        department: data?.department,
+                        graduation_year: data?.graduation_year,
+                        role: data?.role,
+                        orgId: name
                     }}
                     validationSchema={Yup.object({
                         // igName: Yup.string()
@@ -136,27 +162,29 @@ const ManageUsersEdit = (props: Props) => {
                         //     values.role,
                         //     toast
                         // );
-                        if (values.role === "Student") {
-                            editManageUsers(
-                                id,
-                                values.first_name,
-                                values.last_name,
-                                values.email,
-                                values.mobile,
-                                values.discord_id,
-                                values.mu_id,
-                                values.college,
 
-                                values.department, // why error occur for deparmenet only
-                                values.graduation_year,
-                                values.role,
-                                toast
-                            );
-                        }
+                        editManageUsers(
+                            id,
+                            values.first_name,
+                            values.last_name,
+                            values.email,
+                            values.mobile,
+                            values.discord_id,
+                            values.mu_id,
+                            values.college,
+
+                            values.department, // why error occur for deparmenet only
+                            values.graduation_year,
+                            values.role,
+                            data?.organizations
+                            // toast
+                        );
+
                         navigate("/manage-users");
                     }}
                 >
                     <Form className={styles.inputContainer}>
+                        {/* {data?.role ? : }  */}
                         <FormikTextInput
                             label="User First Name"
                             name="first_name"
@@ -181,24 +209,13 @@ const ManageUsersEdit = (props: Props) => {
                             type="text"
                             placeholder="Enter a mobile number"
                         />
-
-                        <FormikSelect label="User College Name" name="college">
-                            <option value="">Select an option</option>
-                            <option value="VIDYA ACADEMY OF SCIENCE AND TECHNOLOGY">
-                                VIDYA ACADEMY OF SCIENCE AND TECHNOLOGY
-                            </option>
-                            <option value="ST JOSEPHS COLLEGE OF ENGINEERING AND TECHNOLOGY PALAI">
-                                ST JOSEPHS COLLEGE OF ENGINEERING AND TECHNOLOGY
-                                PALAI
-                            </option>
-                            <option value="A M T T I VILABHAGAM">
-                                A M T T I VILABHAGAM
-                            </option>
-                            <option value="Mar Baselios College of Engineering and Technology">
-                                Mar Baselios College of Engineering and
-                                Technology
-                            </option>
-                        </FormikSelect>
+                        <FormikReactSelect
+                            name="orgId"
+                            options={institutions}
+                            label={"Organization"}
+                            isClearable
+                            isSearchable
+                        />
                         <FormikTextInput
                             label="User Company Name"
                             name="company"
