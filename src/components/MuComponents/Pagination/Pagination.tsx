@@ -37,7 +37,8 @@ const Pagination = (props: Props) => {
                             {props.currentPage === props.totalPages
                                 ? props.totalItems
                                 : props.currentPage * itemsPerPage}{" "}
-                        </strong> of {props.totalItems}
+                        </strong>
+                        {/* of {props.totalItems} */}
                     </div>
                     <div className={styles.pagination}
                         style={{ margin: props.margin ? props.margin : "0" }}
