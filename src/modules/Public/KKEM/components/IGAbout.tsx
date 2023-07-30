@@ -1,9 +1,9 @@
 import styles from "./IGAbout.module.css";
-import Astronaut from "../assets/astronaut.png";
+import Astronaut from "../assets/astronaut.webp";
 import KKEMAuth from "./Auth";
-import im7 from "../assets/im7.png";
-import im9 from "../assets/im9.png";
-import im10 from "../assets/im10.png";
+import im7 from "../assets/im7.webp";
+import im9 from "../assets/im9.webp";
+import im10 from "../assets/im10.webp";
 import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
 export default function MulearnAbout() {

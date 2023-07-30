@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./LearningCircle.module.css";
 import { getLcDetails, setLCMeetTime } from "../services/LearningCircleAPIs";
 import { useParams } from "react-router-dom";
-import pic from "../../Profile/assets/images/dpm.jpg";
+import pic from "../../Profile/assets/images/dpm.webp";
 import { LcDetail } from "../services/LearningCircleInterface";
 import { Form, Formik } from "formik";
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";

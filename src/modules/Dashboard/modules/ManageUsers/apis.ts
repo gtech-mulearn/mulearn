@@ -142,16 +142,16 @@ export const getManageUsersDetails = async (
         let role = message.response.role;
         // console.log(message.response.users);
         const newOrganizations = message.response.organizations;
-        console.log(newOrganizations);
+        // console.log(newOrganizations);
         for (let i = 0; i < newOrganizations.length; i++) {
-            console.log(newOrganizations[i].org_type);
+            // console.log(newOrganizations[i].org_type);
             if (newOrganizations[i].org_type == "Community") {
-                console.log("community");
+                // console.log("community");
             }
             if (role == null) {
-                console.log("Company");
+                // console.log("Company");
             } else {
-                console.log("college");
+                // console.log("college");
             }
         }
         setData(message.response);

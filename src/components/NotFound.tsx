@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./NotFound.module.css";
-import astronaut from "./assests/images/astronaut_blue.png";
+import astronaut from "./assests/images/astronaut_blue.webp";
 
 // TODO: Redesign
 
