@@ -551,12 +551,16 @@
 
 .Lcweek div label{
 	position: absolute;
-	top: 50%;
-	left: 40%;
-	transform: translate(-50%, -50%);
 	font-size: 0.8rem;
 	font-weight: 400;
+	width: 30px;
+	height: 30px;
 	color:#CCC;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	cursor: pointer;
 }
 
 .Lcweek input[type="checkbox"] {
@@ -567,6 +571,9 @@
 	outline: none;
 	border: none;
 	transition: .3s;
+	--webkit-appearance: none;
+	appearance: none;
+	
 }
 .Lcweek input[type="checkbox"]:checked{
     background-color: #456FF6;
