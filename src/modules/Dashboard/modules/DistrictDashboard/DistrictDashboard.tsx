@@ -6,8 +6,6 @@ import { useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getdistrictdashboard } from "./apis";
-import { hasRole } from "@/MuLearnServices/common_functions";
-import { roles } from "@/MuLearnServices/types";
 import { columnsCampus, columnsStudent } from "./THeaders";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import "./Organizations.css";
@@ -33,14 +31,6 @@ function DistrictDashboard() {
 
     useEffect(() => {
         if (firstFetch.current) {
-            if (
-                !hasRole([
-                    roles.ADMIN,
-                    roles.FELLOW,
-                    roles.DISTRICT_CAMPUS_LEAD
-                ])
-            )
-                navigate("/404");
 
             getdistrictdashboard(
                 activeTab,

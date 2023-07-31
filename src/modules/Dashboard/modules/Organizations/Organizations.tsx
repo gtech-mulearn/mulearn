@@ -6,8 +6,6 @@ import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import { deleteOrganization, getOrganizations } from "./apis";
 import { useToast } from "@chakra-ui/react";
-import { hasRole } from "@/MuLearnServices/common_functions";
-import { roles } from "@/MuLearnServices/types";
 import {
     columnsCollege,
     columnsCommunities,
@@ -37,7 +35,6 @@ function Organizations() {
 
     useEffect(() => {
         if (firstFetch.current) {
-            if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
 
             getOrganizations(
                 activeTab,

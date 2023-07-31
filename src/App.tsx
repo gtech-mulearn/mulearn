@@ -55,6 +55,13 @@ const ConnectDiscord = lazy(() => import("./modules/Dashboard/modules/ConnectDis
 const HackathonParticipants = lazy(() => import("./modules/Dashboard/modules/Hackathon/pages/HackathonParticipants"));
 
 
+
+import { roles } from "./services/types";
+import SecureAuthRoutes from "./services/authCheck";
+
+
+function App() {
+const RoleChecker = SecureAuthRoutes()
 const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
     {
@@ -97,7 +104,7 @@ const router = createBrowserRouter([
                 children: [
                     { path: "profile", element: <Profile /> },
                     { path: "connect-discord", element: <ConnectDiscord /> },
-                    { path: "interest-groups", element: <InterestGroup /> },
+                    { path: "interest-groups", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<InterestGroup/>} /> },
                     {
                         path: "interest-groups/create",
                         element: <InterestGroupCreate />
@@ -112,14 +119,14 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "organizations/edit",
-                        element: <EditOrgnaization />
+                        element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<EditOrgnaization/>} />
                     },
                     {
                         path: "organizations/delete/:id",
                         element: <DeleteOrganizations />
                     },
-                    { path: "campus-details", element: <CampusStudentList /> },
-                    { path: "manage-users", element: <ManageUsers /> },
+                    { path: "campus-details", element: <RoleChecker roles={[roles.CAMPUS_LEAD]} Children={<CampusStudentList />} />},
+                    { path: "manage-users", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<ManageUsers />} /> },
                     {
                         path: "manage-users/create",
                         element: <ManageUsersCreate />
@@ -132,10 +139,10 @@ const router = createBrowserRouter([
                         path: "manage-users/edit/:id",
                         element: <ManageUsersEdit />
                     },
-                    { path: "manage-roles", element: <ManageRoles /> },
+                    { path: "manage-roles", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<ManageRoles/>} /> },
                     {
                         path: "user-role-verification",
-                        element: <UserRoleVerification />
+                        element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<UserRoleVerification/>} />
                     },
                     {
                         path: "user-role-verification/delete/:id",
@@ -147,14 +154,14 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "zonal-dashboard",
-                        element: <ZonalDashboard />
+                        element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW, roles.ZONAL_CAMPUS_LEAD]} Children={<ZonalDashboard/>} />
                     },
                     {
                         path: "district-dashboard",
-                        element: <DistrictDashboard />
+                        element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW, roles.DISTRICT_CAMPUS_LEAD]} Children={<DistrictDashboard/>} />
                     },
-                    { path: "organizations", element: <Organizations /> },
-                    { path: "tasks", element: <Tasks /> },
+                    { path: "organizations", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<Organizations/>} /> },
+                    { path: "tasks", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<Tasks/>} /> },
                     {
                         path: "tasks/create",
                         element: <TaskCreate />
@@ -169,7 +176,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "url-shortener",
-                        element: <UrlShortener />
+                        element: <UrlShortener/>
                     },
                     {
                         path: "hackathon",
@@ -241,7 +248,6 @@ const router = createBrowserRouter([
     }
 ]);
 
-function App() {
     return <RouterProvider router={router} />;
 }
 
