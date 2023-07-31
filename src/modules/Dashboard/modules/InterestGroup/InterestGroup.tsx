@@ -3,21 +3,24 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { createInterestGroups, deleteInterestGroups, getInterestGroups } from "./apis";
+import { createInterestGroups, deleteInterestGroups, getIGDetails, getInterestGroups } from "./apis";
+import { roles } from "@/MuLearnServices/types";
+import { hasRole } from "@/MuLearnServices/common_functions";
 import { useNavigate } from "react-router-dom";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./InterestGroup.module.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
-import InterestGroupCreateModal from "./InterestGroupCreateModal";
-import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-
 import InterestGroupEditModal from "./InterestGroupEditModal";
-import ModalCreateComponent from "@/MuLearnComponents/ModalCreate/ModalCreate";
+
+interface IgDetails {
+    igName : string,
+    igCode : string,
+    igIcon : string,
+}
 
 export type modalStatesType = 'edit' | 'create' | null
-
 
 function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
@@ -36,10 +39,11 @@ function InterestGroup() {
         { column: "created_at", Label: "Created On", isSortable: false }
     ];
 
+
     const [openModal, setOpenModal] = useState<modalStatesType>(null);
     const [openMuModal, setOpenMuModal] = useState(false);
     const [currID, setCurrID] = useState<string>('')
-
+    
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
@@ -70,16 +74,12 @@ function InterestGroup() {
         getInterestGroups(setData, 1, perPage, setTotalPages, search, "");
     };
 
-    const handleEdit = async (id: string | number | boolean) => {
-        console.log(id);
-        setCurrID(id as string)
-        setOpenModal('edit')
-        //navigate(`/dashboard/interest-groups/edit/${id}`);
+  
+     const handleEdit = async (id: string | number | boolean) => {
+        navigate("/dashboard/interest-groups/edit/"+id);
     };
 
     const handleDelete = (id: string | undefined) => {
-        // console.log(id);
-        // navigate(`/dashboard/interest-group/delete/${id}`);
         deleteInterestGroups(id, toast);
         setTimeout(() => {
             getInterestGroups(setData, 1, perPage, setTotalPages, "", "");
@@ -90,10 +90,6 @@ function InterestGroup() {
         setCurrentPage(1);
         setPerPage(selectedValue);
         getInterestGroups(setData, 1, selectedValue, setTotalPages, "", "");
-    };
-
-    const handleCreate = () => {
-        setOpenMuModal(true);
     };
 
     const handleIconClick = (column: string) => {
@@ -111,45 +107,24 @@ function InterestGroup() {
             setSort(column);
             getInterestGroups(setData, 1, perPage, setTotalPages, "", column);
         }
-
-        //console.log(`Icon clicked for column: ${column}`);
-    };
-
-    //interestGroupCreate api call
-    const handleDataRender = (name: string,
-        onClose: Dispatch<SetStateAction<boolean>>) => {
-        createInterestGroups(
-            name,
-            onClose)
     };
 
     return (
         <>
-            <ModalCreateComponent
-                isOpen={openMuModal}
-                onClose={setOpenMuModal}
-                heading={"IG Create Page"}
-                content={"Enter the name of the Interest Group in the input below that you wish to create."}
-                placeholder={"Enter a name"}
-                inputType={"text"}
-                name={"igName"}
-                toastMsg={"Interest Group created"}
-                navigateRoute={"/dashboard/interest-groups"}
-                btnPrimaryText={"Confirm"}
-                btnSecondaryText={"Decline"}
-                onRender={handleDataRender}
-            />
-            <InterestGroupEditModal
+            {/* <InterestGroupEditModal
                 isOpen={openModal}
                 onClose={setOpenModal}
                 id={currID}
-            />
+                defaultValue={input}
+            /> */}
             <div className={styles.createBtnContainer}>
                 <MuButton
                     className={styles.createBtn}
                     text={"Create"}
                     icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
-                    onClick={handleCreate}
+                    onClick={() => {
+						navigate("/dashboard/interest-groups/create");
+					}}
                 />
             </div>
 
@@ -177,13 +152,17 @@ function InterestGroup() {
                             onIconClick={handleIconClick}
                             action={true}
                         />
-                        <Pagination
-                            currentPage={currentPage}
-                            totalPages={totalPages}
-                            margin="10px 0"
-                            handleNextClick={handleNextClick}
-                            handlePreviousClick={handlePreviousClick}
-                        />
+                        <div className={styles.tableFooter}>
+                            <Pagination
+                                currentPage={currentPage}
+                                totalPages={totalPages}
+                                margin="10px 0"
+                                handleNextClick={handleNextClick}
+                                handlePreviousClick={handlePreviousClick}
+                                onSearchText={handleSearch}
+                                onPerPageNumber={handlePerPageNumber}
+                            />
+                        </div>
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>
                 </>

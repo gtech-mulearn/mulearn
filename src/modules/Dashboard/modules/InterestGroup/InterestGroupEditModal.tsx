@@ -1,7 +1,7 @@
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import styles from "./InterestGroup.module.css"
 import { RiCloseLine } from 'react-icons/ri';
-import { editInterestGroups } from "./apis";
+import { editInterestGroups, getIGDetails } from "./apis";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
@@ -10,15 +10,15 @@ import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComp
 import { modalStatesType } from './InterestGroup';
 // ModalProps type definition
 interface ModalProps {
-  isOpen:modalStatesType ;
+  isOpen: modalStatesType;
   onClose: Dispatch<SetStateAction<modalStatesType>>;
-  id:string
+  id: string,
+  defaultValue:string//default igName value {preloaded}
 }
 
-const InterestGroupEditModal: React.FC<ModalProps> = ({ isOpen, onClose,id }) => {
-  if (isOpen!=='edit') return null;
+const InterestGroupEditModal: React.FC<ModalProps> = ({ isOpen, onClose, id,defaultValue }) => {
+  if (isOpen !== 'edit') return null;
   const toast = useToast();
-  const [hasError, setHasError] = useState(false);
 
   return (
     <div className={styles.modalOverlay}>
@@ -36,11 +36,8 @@ const InterestGroupEditModal: React.FC<ModalProps> = ({ isOpen, onClose,id }) =>
             <span className={styles.IGCreate}>Edit Interest Group</span>
           </div>
           <Formik
-            initialValues={{
-              igName: ""
-              // acceptedTerms: false, // added for our checkbox
-              // jobType: "" // added for our select
-            }}
+            initialValues={{igName:defaultValue}}
+            enableReinitialize
             validationSchema={Yup.object({
               igName: Yup.string()
                 .max(30, "Must be 30 characters or less")
@@ -69,20 +66,20 @@ const InterestGroupEditModal: React.FC<ModalProps> = ({ isOpen, onClose,id }) =>
             })}
             onSubmit={values => {
               //console.log(values.igName);
-              (async ()=>{
-                await editInterestGroups(
-                  values.igName,
-                  id
-                );
-                toast({
-                  title: "Interest Group created",
-                  status: "success",
-                  duration: 3000,
-                  isClosable: true
-                });
-                onClose(null)
-              })()
-              
+              // (async () => {
+              //   await editInterestGroups(
+              //     values.igName,
+              //     id
+              //   );
+              //   toast({
+              //     title: "Interest Group created",
+              //     status: "success",
+              //     duration: 3000,
+              //     isClosable: true
+              //   });
+              //   onClose(null)
+              // })()
+
             }}
           >
             <Form className={styles.modalContainerItemRow}>

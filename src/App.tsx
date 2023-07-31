@@ -44,13 +44,16 @@ const LearningCircleLandingPage = lazy(() => import("./modules/Dashboard/modules
 const Organizations = lazy(() => import("./modules/Dashboard/modules/Organizations/Organizations"));
 const ManageUsers = lazy(() => import("./modules/Dashboard/modules/ManageUsers/ManageUsers"));
 const InterestGroup = lazy(() => import("./modules/Dashboard/modules/InterestGroup/InterestGroup"));
+const InterestGroupCreate = lazy(() => import("./modules/Dashboard/modules/InterestGroup/InterestGroupCreate"));
 const CampusStudentList = lazy(() => import("./modules/Dashboard/modules/CampusStudentList/pages/CampusStudentList"));
 const HackathonDetails = lazy(() => import("./modules/Dashboard/modules/Hackathon/pages/HackathonDetails"));
 const DistrictDashboard = lazy(() => import("./modules/Dashboard/modules/DistrictDashboard/DistrictDashboard"));
 const ZonalDashboard = lazy(() => import("./modules/Dashboard/modules/ZonalDashboard/ZonalDashboard"));
 const HackathonRegistration = lazy(() => import("./modules/Dashboard/modules/Hackathon/pages/HackathonRegistration"));
-const LandingPage = lazy(() => import("./modules/Public/LearningCircles/modules/LandingPage/LandingPage"));
+const LandingPage = lazy(() => import("./modules/Public/LearningCircles/pages/LandingPage"));
 const ConnectDiscord = lazy(() => import("./modules/Dashboard/modules/ConnectDiscord/pages/ConnectDiscord"));
+const HackathonParticipants = lazy(() => import("./modules/Dashboard/modules/Hackathon/pages/HackathonParticipants"));
+
 
 
 import { roles } from "./services/types";
@@ -102,6 +105,14 @@ const router = createBrowserRouter([
                     { path: "profile", element: <Profile /> },
                     { path: "connect-discord", element: <ConnectDiscord /> },
                     { path: "interest-groups", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<InterestGroup/>} /> },
+                    {
+                        path: "interest-groups/create",
+                        element: <InterestGroupCreate />
+                    },
+                    {
+                        path: "interest-groups/edit/:id",
+                        element: <InterestGroupCreate />
+                    },
                     {
                         path: "organizations/create",
                         element: <CreateOrganization />
@@ -188,6 +199,10 @@ const router = createBrowserRouter([
                         element: <HackathonRegistration />
                     },
                     {
+                        path: "hackathon/applicants/:id",
+                        element: <HackathonParticipants />
+                    },
+                    {
                         path: "manage-locations",
                         element: <ManageLocation />
                     },
@@ -230,7 +245,7 @@ const router = createBrowserRouter([
     {
         path: "/learning-circle",
         element: <LandingPage />
-    },
+    }
 ]);
 
     return <RouterProvider router={router} />;

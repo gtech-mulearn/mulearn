@@ -1,5 +1,5 @@
-import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import React from "react";
+import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import {  NavigateFunction } from "react-router-dom";
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { KKEMRoutes, dashboardRoutes } from "@/MuLearnServices/urls";
@@ -45,7 +45,8 @@ export const KKEMLogin = (
                             navigate("/dashboard/learning-circle");
                         } else {
                             if (redirectPath) {
-                                navigate(`/${redirectPath}`);
+                                // navigate(`/${redirectPath}`);
+                                navigate("/dashboard/learning-circle");
                             } else {
                                 navigate("/dashboard/learning-circle");
                             }

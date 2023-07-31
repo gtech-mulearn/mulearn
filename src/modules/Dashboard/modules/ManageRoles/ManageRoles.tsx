@@ -111,35 +111,35 @@ function ManageRoles() {
         <>
             {currModal
                 ? (() => {
-                      if (currModal === "create")
-                          return (
-                              <Modal
-                                  onClose={setCurrModal}
-                                  icon="tick"
-                                  header="Create Role"
-                                  paragraph="Enter the values for the new role"
-                              >
-                                  <ManageRolesCreateModal
-                                      id={currRoleID}
-                                      onClose={setCurrModal}
-                                  />
-                              </Modal>
-                          );
-                      if (currModal === "edit")
-                          return (
-                              <Modal
-                                  onClose={setCurrModal}
-                                  icon="tick"
-                                  header="Edit Role"
-                                  paragraph="Enter the new values for this role"
-                              >
-                                  <ManageRolesEditModal
-                                      id={currRoleID}
-                                      onClose={setCurrModal}
-                                  />
-                              </Modal>
-                          );
-                  })()
+                    if (currModal === "create")
+                        return (
+                            <Modal
+                                onClose={setCurrModal}
+                                icon="tick"
+                                header="Create Role"
+                                paragraph="Enter the values for the new role"
+                            >
+                                <ManageRolesCreateModal
+                                    id={currRoleID}
+                                    onClose={setCurrModal}
+                                />
+                            </Modal>
+                        );
+                    if (currModal === "edit")
+                        return (
+                            <Modal
+                                onClose={setCurrModal}
+                                icon="tick"
+                                header="Edit Role"
+                                paragraph="Enter the new values for this role"
+                            >
+                                <ManageRolesEditModal
+                                    id={currRoleID}
+                                    onClose={setCurrModal}
+                                />
+                            </Modal>
+                        );
+                })()
                 : ""}
 
             <div className={styles.createBtnContainer}>
@@ -181,6 +181,7 @@ function ManageRoles() {
                             margin="10px 0"
                             handleNextClick={handleNextClick}
                             handlePreviousClick={handlePreviousClick}
+                            onPerPageNumber={handlePerPageNumber}
                         />
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>

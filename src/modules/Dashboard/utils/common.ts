@@ -1,6 +1,6 @@
 import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 
-export const DateConverter = (date:string) => {
+export const DateConverter = (date: string) => {
     const parsedDate = new Date(date);
     const day = parsedDate.getDate().toString().padStart(2, "0");
     const month = (parsedDate.getMonth() + 1).toString().padStart(2, "0");
@@ -8,7 +8,6 @@ export const DateConverter = (date:string) => {
 
     return `${day}-${month}-${year}`;
 };
-
 
 // Convert UTC Date to YYYY-MM-DD for date input
 export const convertDateToYYYYMMDD = (dateString: any): any => {
@@ -23,7 +22,7 @@ export const capitalizeFirstLetter = (str: any) => {
         return str;
     }
     return str.charAt(0).toUpperCase() + str.slice(1);
-}
+};
 
 /* 
 !TODO: Not used, found another way so delete if it wont be used
@@ -31,10 +30,14 @@ export const capitalizeFirstLetter = (str: any) => {
 */
 export const getLocationIdByName = (
     locations: Option[],
-    label: string
+    label: string | undefined
 ) => {
-    const location = locations.find(
-        loc => loc.label.toLowerCase() === label.toLowerCase()
-    );
-    return location ? location.value : null;
+    if (typeof label !== "undefined") {
+        const location = locations.find(
+            loc => loc.label.toLowerCase() === label.toLowerCase()
+        );
+        console.log(location?.value)
+        return location ? location.value : null;
+    }
+    return label
 };

@@ -1,21 +1,58 @@
 import { useEffect, useState } from "react";
 import styles from "./LearningCircle.module.css";
-import { getLcDetails, setLCMeetTime } from "../services/LearningCircleAPIs";
-import { useParams } from "react-router-dom";
-import pic from "../../Profile/assets/images/dpm.jpg";
+import pic from "../../Profile/assets/images/dpm.webp";
+import { approveLcUser, getLcDetails, setLCMeetTime, updateLcNote } from "../services/LearningCircleAPIs";
+import { useNavigate, useParams } from "react-router-dom";
 import { LcDetail } from "../services/LearningCircleInterface";
-import { Form, Formik } from "formik";
-import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import {BiEditAlt} from "react-icons/bi"
+
 
 type Props = {};
 
 const LearningCircle = (props: Props) => {
     const [lc, setLc] = useState<LcDetail>();
+    const [note, setNote] = useState('');
+    const [meetTime, setMeetTime] = useState('');
+    const [meetVenue, setMeetVenue] = useState('');
+    const [flag, setFlag] = useState(false);
+    const [isEdit, setIsEdit] = useState(false);
+    const [meetDays, setMeetDays] = useState<string[]>([]);
     const { id } = useParams();
+	const navigate = useNavigate()
 
     useEffect(() => {
         getLcDetails(setLc, id);
+		if(lc?.note !== '') {
+			setFlag(true)
+		}
+		if(lc?.meet_place || lc?.meet_time !== '') {
+			setIsEdit(true)
+		}
     }, []);
+
+	const handleCheckboxChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        const { id } = event.target;
+        setMeetDays(prevSelected =>
+            prevSelected.includes(id)
+                ? prevSelected.filter(day => day !== id)
+                : [...prevSelected, id]
+        );
+    };
+
+	function handleSchedule(event: any): void {
+		console.log(meetDays)
+		console.log(meetVenue)
+		console.log(meetTime)
+		setLCMeetTime(meetTime, meetVenue, meetDays, id)
+        getLcDetails(setLc, id);
+        setTimeout(() => {
+            if(lc?.meet_place || lc?.meet_time !== '') {
+                setIsEdit(true)
+            }
+        }, 2000);
+	}
 
     return (
         <>
@@ -42,75 +79,228 @@ const LearningCircle = (props: Props) => {
 
                 <div className={styles.BoxContent}>
                     <div className={styles.LeftBox}>
-                            <div className={styles.EventOn}>
-                                {lc?.meet_place || lc?.meet_time ? (<><div className={styles.MeetingOn}>
-                                    <div>
-                                        <b>Next Meeting on</b>
+                        <div className={styles.EventOn}>
+                            { isEdit ? (
+                                <>
+                                    <div className={styles.MeetingOn}>
                                         <div>
-                                            {/* <b>{lc?.day}</b> */}
+                                            <h2>Next Meeting on</h2>
+                                            <div>{/* <b>{lc?.day}</b> */}</div>
                                         </div>
+                                        <BiEditAlt onClick={()=>{
+                                               
+                                                setIsEdit(false);
+                                        }}/>
                                     </div>
-                                    <i className="fa-solid fa-pencil"></i>
-                                </div>
-                                <div className={styles.MeetingBtn}>
-                                    <b>
-                                        venue: {lc?.meet_place} <br /> time:
-                                        <h1>{lc?.meet_time}</h1>
-                                    </b>
-                                    <button className={styles.BtnBtn}>
-                                        Done
+                                    <div className={styles.MeetingDate}>
+                                        <h1>22 JUNE 2023</h1>
+                                        <p> Sunday</p>       
+                                    </div>
+                                    <div className={styles.MeetingBtn}>
+                                        <div>
+                                        <b>
+                                            venue: {lc?.meet_place} <br /> 
+                                        </b>
+                                        <b>time: {lc?.meet_time}</b>
+                                        </div>
+                                        
+                                        {/* <button className={styles.BtnBtn}>
+                                            Done
+                                        </button> */}
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    <div className={styles.ScheduleOn}>
+                                        <b>Schedule meeting</b>
+                                        <p>
+                                            Enter details to schedule your
+                                            weekly meeting
+                                        </p>
+                                    </div>
+                                    <div className={styles.InputSchedule}>
+                                        <div>
+                                            <input
+                                                type="time"
+                                                onChange={e => {
+                                                    setMeetTime((e.target.value));
+                                                }}
+                                                placeholder="meeting time"
+                                            />
+                                            <input
+                                                type="text"
+                                                onChange={e => {
+                                                    setMeetVenue(
+                                                        e.target.value
+                                                    );
+                                                }}
+                                                placeholder="meeting venue"
+                                            />
+                                        </div>
+                                        <div className={styles.weeks}>
+                                            <p>meeting days</p>
+                                            <div className={styles.Lcweek}>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="sun"
+                                                        checked={meetDays.includes(
+                                                            "sun"
+                                                        )}
+                                                        onChange={
+                                                            handleCheckboxChange
+                                                        }
+                                                    />
+                                                    <label htmlFor="sun">
+                                                        Sun
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="mon"
+                                                        checked={meetDays.includes(
+                                                            "mon"
+                                                        )}
+                                                        onChange={
+                                                            handleCheckboxChange
+                                                        }
+                                                    />
+                                                    <label htmlFor="mon">
+                                                        Mon
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="tue"
+                                                        checked={meetDays.includes(
+                                                            "tue"
+                                                        )}
+                                                        onChange={
+                                                            handleCheckboxChange
+                                                        }
+                                                    />
+                                                    <label htmlFor="tue">
+                                                        Tue
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="wed"
+                                                        checked={meetDays.includes(
+                                                            "wed"
+                                                        )}
+                                                        onChange={
+                                                            handleCheckboxChange
+                                                        }
+                                                    />
+                                                    <label htmlFor="wed">
+                                                        Wed
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="thu"
+                                                        checked={meetDays.includes(
+                                                            "thu"
+                                                        )}
+                                                        onChange={
+                                                            handleCheckboxChange
+                                                        }
+                                                    />
+                                                    <label htmlFor="thu">
+                                                        Thu
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="fri"
+                                                        checked={meetDays.includes(
+                                                            "fri"
+                                                        )}
+                                                        onChange={
+                                                            handleCheckboxChange
+                                                        }
+                                                    />
+                                                    <label htmlFor="fri">
+                                                        Fri
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <input
+                                                        type="checkbox"
+                                                        id="sat"
+                                                        checked={meetDays.includes(
+                                                            "sat"
+                                                        )}
+                                                        onChange={
+                                                            handleCheckboxChange
+                                                        }
+                                                    />
+                                                    <label htmlFor="sat">
+                                                        Sat
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/* <input type="text" placeholder="meeting venue" /> */}
+                                    </div>
+
+                                    <button className={styles.BtnBtn} onClick={handleSchedule}>
+                                        Schedule
                                     </button>
-                                </div></>):(
-                                    <div>
-                                         <Formik
-                                enableReinitialize={true}
-                                initialValues={{
-                                    meet_time: "",
-                                    meet_place: "",
-                                    day: ""
-                                }}
-                                onSubmit={(values,{resetForm}) =>{
-                                    setLCMeetTime(
-                                        values.meet_time,
-                                        values.meet_place,
-                                        values.day,
-                                        id
-                                    )
-                                    console.log(values)
-                                    resetForm()
-                                }}
-                            >
-                                 {({
-                                    values,
-                                    handleChange,
-                                    setFieldValue,
-                                    errors
-                                }) => (
-                                <Form>
-                                    <div className={styles.LearningCircleCreateForm}>
-                                        <FormikTextInput 
-                                            type="text"
-                                            name="meet_time" 
-                                            placeholder="Meeting Time"
-                                        />
-                                        <FormikTextInput 
-                                            type="text"
-                                            name="meet_place" 
-                                            placeholder="Meeting Place"
-                                        />
-                                        <FormikTextInput 
-                                            type="text"
-                                            name="day" 
-                                            placeholder="Meeting Day"
-                                        />
+                                </>
+                            )}
+                        </div>
+
+                        <div className={styles.EventOn}>
+                            {flag ? (
+                                <div className={styles.LcNotedEvent}>
+                                    <div className={styles.LcNotedEdit}>
+                                        <b>Notes</b>
+                                        <BiEditAlt style={{cursor:"pointer"}}  onClick={() => {
+										console.log(lc?.note) 
+										setFlag(false)
+										setTimeout(() => {
+                                            navigate(
+                                                `/dashboard/learning-circle/details/${id}`
+												);
+											}, 1000);}} />
                                     </div>
-                                    <button type="submit" >Create</button>
-                                </Form>
-                                )}
-                            </Formik>
-                                    </div>
-                                )}
-                            </div>
+                                    <p>{lc?.note}</p>
+                                    
+                                </div>
+                            ) : (
+                                <div className={styles.LcNotedEvent}>
+                                    <textarea
+                                        onChange={e => {
+                                            setNote(e.target.value);
+                                        }}
+                                        placeholder="Notes"
+                                    />
+                                    <button
+                                        className={styles.BtnBtn}
+                                        onClick={() => {
+											updateLcNote(id, note);
+											setTimeout(() => {
+												setFlag(true)
+												navigate(
+                                                    `/dashboard/learning-circle/details/${id}`
+                                                );
+											}, 2000);
+										}}
+                                    >
+                                        Submit
+                                    </button>
+                                      
+                                </div>
+                            )}
+                           
+                        </div>
 
                         {lc?.pending_members &&
                         lc.pending_members.length > 0 ? (
@@ -148,6 +338,21 @@ const LearningCircle = (props: Props) => {
                                                             className={
                                                                 styles.BtnBtn
                                                             }
+                                                            onClick={() => {
+                                                                approveLcUser(
+                                                                    id,
+                                                                    member.id,
+                                                                    true
+                                                                );
+                                                                setTimeout(
+                                                                    () => {
+                                                                        navigate(
+                                                                            `/dashboard/learning-circle/details/${id}`
+                                                                        );
+                                                                    },
+                                                                    2000
+                                                                );
+                                                            }}
                                                         >
                                                             Approve
                                                         </button>
@@ -155,6 +360,21 @@ const LearningCircle = (props: Props) => {
                                                             className={
                                                                 styles.BtnClr
                                                             }
+                                                            onClick={() => {
+                                                                approveLcUser(
+                                                                    id,
+                                                                    member.id,
+                                                                    false
+                                                                );
+                                                                setTimeout(
+                                                                    () => {
+                                                                        navigate(
+                                                                            `/dashboard/learning-circle/details/${id}`
+                                                                        );
+                                                                    },
+                                                                    2000
+                                                                );
+                                                            }}
                                                         >
                                                             Reject
                                                         </button>

@@ -47,6 +47,26 @@ export const getLcDetails = async (
         }
     }
 };
+export const updateLcNote = async (
+    id: string | undefined,
+    note: string
+) => {
+    try {
+        const response = await privateGateway.put(
+            dashboardRoutes.getCampusLearningCircles + id + "/",
+            {
+                note: note
+            }
+        );
+        const message: any = response?.data;
+        console.log(message.response);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
 
 export const getCampusLearningCircles = async (
     setCircleList: React.Dispatch<SetStateAction<LcType[]>>
@@ -118,25 +138,24 @@ export const createCircle = async(
 
 }
 
-export const setLCMeetTime = async(
-        meetTime: string,
-        meetPlace: string,
-        day: string,
-        id: string|undefined
-    )=>{
-        
-        try{
-            const response = await privateGateway.patch(
-            dashboardRoutes.setLCMeetTime + id + '/',
+export const setLCMeetTime = async (
+    meetTime: string,
+    meetPlace: string,
+    day: string[],
+    id: string | undefined
+) => {
+    try {
+        const response = await privateGateway.patch(
+            dashboardRoutes.setLCMeetTime + id + "/",
             {
-                meet_time: meetTime,
+                meet_time: `${meetTime}:00`,
                 meet_place: meetPlace,
-                day: day
+                day: `${day}`
             }
         );
         const message: any = response?.data;
         console.log(message.response);
-        console.log(response)
+        console.log(response);
         toast({
             title: "Successful",
             description: "",
@@ -144,9 +163,7 @@ export const setLCMeetTime = async(
             duration: 2000,
             isClosable: true
         });
-       
-        
-    }catch(err){
+    } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
@@ -159,8 +176,38 @@ export const setLCMeetTime = async(
             isClosable: true
         });
     }
+};
 
-}
+export const joinCircle = async (
+    circleCode: string,
+) => {
+    try {
+        const response = await privateGateway.post(
+            dashboardRoutes.joinLearningCircle + circleCode + '/',
+        );
+
+        console.log(response);
+        toast({
+            title: "Learning Circle Created",
+            description: "",
+            status: "success",
+            duration: 2000,
+            isClosable: true
+        });
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+        toast({
+            title: "Learning Circle not creating..",
+            description: "",
+            status: "error",
+            duration: 2000,
+            isClosable: true
+        });
+    }
+};
 
 export const getInterestGroups = async (
 )=>{
@@ -175,6 +222,44 @@ export const getInterestGroups = async (
             console.log(error.response);
         } 
     }
-
-    
 }
+
+export const approveLcUser = async (
+    circleId: string | undefined,
+    memberId: string,
+	flag: boolean
+) => {
+    try {
+        const response = await privateGateway.patch(
+            dashboardRoutes.getCampusLearningCircles +
+                circleId +
+                "/" +
+                memberId +
+                "/",
+            {
+                is_accepted: flag
+            }
+        );
+
+        console.log(response);
+        toast({
+            title: "Member Approved",
+            description: "",
+            status: "success",
+            duration: 2000,
+            isClosable: true
+        });
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+        toast({
+            title: "Something went wrong",
+            description: "",
+            status: "error",
+            duration: 2000,
+            isClosable: true
+        });
+    }
+};
