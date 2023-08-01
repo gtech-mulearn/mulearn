@@ -15,9 +15,9 @@ import { useToast } from "@chakra-ui/react";
 import InterestGroupEditModal from "./InterestGroupEditModal";
 
 interface IgDetails {
-    igName : string,
-    igCode : string,
-    igIcon : string,
+    igName: string,
+    igCode: string,
+    igIcon: string,
 }
 
 export type modalStatesType = 'edit' | 'create' | null
@@ -43,17 +43,31 @@ function InterestGroup() {
     const [openModal, setOpenModal] = useState<modalStatesType>(null);
     const [openMuModal, setOpenMuModal] = useState(false);
     const [currID, setCurrID] = useState<string>('')
-    
+
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getInterestGroups(setData, nextPage, perPage);
+        getInterestGroups(
+            setData,
+            nextPage,
+            perPage,
+            setTotalPages,
+            "",
+            sort
+        );
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getInterestGroups(setData, prevPage, perPage);
+        getInterestGroups(
+            setData,
+            prevPage,
+            perPage,
+            setTotalPages,
+            "",
+            sort
+        );
     };
 
     useEffect(() => {
@@ -74,9 +88,9 @@ function InterestGroup() {
         getInterestGroups(setData, 1, perPage, setTotalPages, search, "");
     };
 
-  
-     const handleEdit = async (id: string | number | boolean) => {
-        navigate("/dashboard/interest-groups/edit/"+id);
+
+    const handleEdit = async (id: string | number | boolean) => {
+        navigate("/dashboard/interest-groups/edit/" + id);
     };
 
     const handleDelete = (id: string | undefined) => {
@@ -123,8 +137,8 @@ function InterestGroup() {
                     text={"Create"}
                     icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
                     onClick={() => {
-						navigate("/dashboard/interest-groups/create");
-					}}
+                        navigate("/dashboard/interest-groups/create");
+                    }}
                 />
             </div>
 
