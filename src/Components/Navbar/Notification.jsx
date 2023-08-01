@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
-import ReactTimeAgo from "react-time-ago";
-import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en";
+
 import { Link } from "react-router-dom";
+import { getMonthsAgo } from '../../Utils/dateTime';
 
 const Notification = () => {
-    TimeAgo.setDefaultLocale(en.locale);
-    TimeAgo.addLocale(en);
-    // ./data/notifications.json
+
     const [seenAll] = useState(false);
     let notifications = require("../../Pages/Notifications/data/notifications.json");
     return (
@@ -19,6 +16,7 @@ const Notification = () => {
                         <div
                             className={`px-5 py-2 capitalize ${seenAll ? "text-orange-500/70" : ""
                                 } border-b`}
+                            key={notification.date}
                         >
                             <a href={notification.url}>
                                 <div className="py-2 text-md  decoration text-black font-bold">
@@ -28,7 +26,7 @@ const Notification = () => {
                                     {notification.description}
                                 </p>
                                 <div className="text-right text-xs">
-                                    <ReactTimeAgo date={notification.date} locale="en-US" />
+                                    {getMonthsAgo(notification.date)}
                                 </div>
                             </a>
                         </div>

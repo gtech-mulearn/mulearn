@@ -1,7 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useCallback, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import NavLinks from "./NavLinks";
 import Notification from "./Notification";
+import SheetAPI from "../../Utils/SheetAPI";
 
 export const DesktopMenu = ({ open }) => {
   return (
@@ -25,9 +26,8 @@ export const Resources = ({ notificationOpen }) => {
           <ion-icon name="notifications-circle-outline"></ion-icon>
         </div>
         <div
-          className={`notifications group-hover:lg:block hover:lg:block z-10 ${
-            notificationOpen ? "block" : "hidden"
-          }`}
+          className={`notifications group-hover:lg:block hover:lg:block z-10 ${notificationOpen ? "block" : "hidden"
+            }`}
         >
           <Notification />
         </div>
@@ -57,7 +57,7 @@ export const Resources = ({ notificationOpen }) => {
   );
 };
 
-export const MenuName = ({ name, link }) => {
+export const MenuName = ({ name }) => {
   return (
     <div className="dashOnHover">
       <h1 className="change-text">{name}</h1>
@@ -67,6 +67,7 @@ export const MenuName = ({ name, link }) => {
 };
 
 export const SubMenu = ({ submenu, sublinks }) => {
+
   return (
     <>
       {submenu && (
@@ -74,8 +75,8 @@ export const SubMenu = ({ submenu, sublinks }) => {
           <div className="absolute mt-5 bg-white left-0  right-0 hidden group-hover:lg:block hover:lg:block w-full setIndex">
             <div className=" p-10 flex gap-x-10 addition justify-around border-t border-b">
               <div className="grid grid-cols-3 gap-10 px-10">
-                {sublinks.map((mysublinks) => (
-                  <div className="border-l pl-5 backdrop-blur-md">
+                {sublinks.map((mysublinks, index) => (
+                  <div className="border-l pl-5 backdrop-blur-md" key={index}>
                     <SubHeader link={mysublinks.link} name={mysublinks.name} />
                     <SubLinks sublinks={mysublinks.sublinks} />
                   </div>
@@ -91,34 +92,38 @@ export const SubMenu = ({ submenu, sublinks }) => {
 export const SubHeader = ({ link, name }) => {
   return (
     <h1 className="text-lg font-medium drop-shadow-sm opacity-100">
-      <a href={link} className="hover:text-orange-500">
+      <div className="hover:text-orange-500 " >
         {link ? (
-          <a
-            href={link}
+          <Link to={link.includes("https") ? '' : link}
+            onClick={() => {
+              if (link.includes('https')) {
+                window.open(link, '_blank');
+              }
+            }}
             style={{ color: "#000" }}
             onMouseEnter={(e) => (e.target.style.color = "#FB923C")}
             onMouseLeave={(e) => (e.target.style.color = "#000")}
           >
             {name}
-          </a>
+          </Link>
         ) : (
           <span style={{ color: "#000" }}>{name}</span>
         )}
-      </a>
+      </div>
     </h1>
   );
 };
 export const SubLinks = ({ sublinks }) => {
   return (
     <>
-      {sublinks.map((slink) => (
-        <div className="text-sm text-gray-600 my-2.5">
+      {sublinks.map((slink, index) => (
+        <div className="text-sm text-gray-600 my-2.5" key={index}>
           {slink.foreign ? (
             <a
               href={slink.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-orange-500"
+              className="hover:text-orange-500 "
             >
               {slink.name}
             </a>

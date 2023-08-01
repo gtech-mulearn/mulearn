@@ -30,8 +30,8 @@ const SearchBar = ({ changeVisibility, isVisible }) => {
                 if (e.target.value === "") changeVisibility(false)
             }} />
             <div className={`${isVisible ? "flex" : "hidden"} z-50 flex-col w-[80%] overflow-y-auto items-center max-h-96 rounded-2xl`}>
-                {results.map(value => (
-                    <a href={value.link} className="normal-case p-2 border-b-2 bg-gray-200 border-black/10 w-full" >{value.name}</a>
+                {results.map((value, index) => (
+                    <a href={value.link} className="normal-case p-2 border-b-2 bg-gray-200 border-black/10 w-full" key={index}>{value.name}</a>
                 ))}
             </div>
         </div >
