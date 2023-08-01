@@ -52,13 +52,29 @@ function Organizations() {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getOrganizations(activeTab, setData, nextPage, perPage);
+        getOrganizations(
+            activeTab,
+            setData,
+            nextPage,
+            perPage,
+            setTotalPages,
+            "",
+            sort
+        );
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getOrganizations(activeTab, setData, prevPage, perPage);
+        getOrganizations(
+            activeTab,
+            setData,
+            prevPage,
+            perPage,
+            setTotalPages,
+            "",
+            sort
+        );
     };
 
     const handleSearch = (search: string) => {
@@ -111,6 +127,7 @@ function Organizations() {
 
     const handleIconClick = (column: string) => {
         if (sort === column) {
+            console.log('desc', column)
             setSort(`-${column}`);
             getOrganizations(
                 activeTab,
@@ -123,6 +140,7 @@ function Organizations() {
             );
         } else {
             setSort(column);
+            console.log('asc', column)
             getOrganizations(
                 activeTab,
                 setData,
