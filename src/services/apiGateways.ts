@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { authRoutes } from "./urls";
-import { createStandaloneToast, UseToastOptions } from "@chakra-ui/react";
+import { createStandaloneToast } from "@chakra-ui/react";
 
 const { toast } = createStandaloneToast();
 

@@ -1,11 +1,9 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { createInterestGroups, deleteInterestGroups, getIGDetails, getInterestGroups } from "./apis";
-import { roles } from "@/MuLearnServices/types";
-import { hasRole } from "@/MuLearnServices/common_functions";
 import { useNavigate } from "react-router-dom";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";

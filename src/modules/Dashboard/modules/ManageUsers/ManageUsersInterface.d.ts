@@ -1,4 +1,4 @@
-export interface UserData {
+interface UserData {
     first_name: string;
     last_name: string;
     email: string;
@@ -13,7 +13,7 @@ export interface UserData {
     organizations?: string | undefined;
 }
 
-export interface OrgData {
+interface OrgData {
     title: string;
     org_type: string;
     department: string;

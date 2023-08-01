@@ -2,13 +2,11 @@ import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
-import { Dispatch, SetStateAction } from "react";
-import { OrgData, UserData } from "./ManageUsersInterface";
 export const getManageUsers = async (
-    setData: any,
+    setData: UseStateFunc<any>,
     page: number,
     selectedValue: number,
-    setTotalPages?: any,
+    setTotalPages?: UseStateFunc<any>,
     search?: string,
     sortID?: string
 ) => {
@@ -39,7 +37,7 @@ export const getManageUsers = async (
             }
         }
         setData(datasuser);
-        setTotalPages(manageusers.response.pagination.totalPages);
+        if (setTotalPages) setTotalPages(manageusers.response.pagination.totalPages);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -78,21 +76,21 @@ export const createManageUsers = async (
 };
 
 export const editManageUsers = async (
-    id: string | undefined,
-    first_name: string | undefined,
-    last_name: string | undefined,
-    email: string | undefined,
-    mobile: string | undefined,
-    discord_id: string | undefined,
-    mu_id: string | undefined,
-    role: string | undefined,
+    id?: string,
+    first_name?: string,
+    last_name?: string,
+    email?: string,
+    mobile?: string,
+    discord_id?: string,
+    mu_id?: string,
+    role?: string,
     orgaanizations?: OrgData[],
     // toast: any,
 
-    college?: string | undefined,
-    company?: string | undefined,
-    department?: string | undefined,
-    graduation_year?: string | undefined
+    college?: string,
+    company?: string,
+    department?: string,
+    graduation_year?: string
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -130,7 +128,7 @@ export const editManageUsers = async (
 
 export const getManageUsersDetails = async (
     id: string | undefined,
-    setData: React.Dispatch<SetStateAction<UserData|undefined>>
+    setData: UseStateFunc<UserData|undefined>
 ) => {
     try {
         const response = await privateGateway.get(

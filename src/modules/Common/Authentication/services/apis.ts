@@ -1,16 +1,16 @@
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
-import React from "react";
 import { useNavigate, NavigateFunction } from "react-router-dom";
 import {
     privateGateway,
     publicGateway
-} from "../../../../services/apiGateways";
-import { authRoutes, dashboardRoutes } from "../../../../services/urls";
+} from "@/MuLearnServices/apiGateways";
+import { authRoutes, dashboardRoutes } from "@/MuLearnServices/urls";
 import { refreshRoles } from "@/MuLearnServices/authCheck";
 
-type setMuID = React.Dispatch<React.SetStateAction<string>>;
-type setStatus = React.Dispatch<React.SetStateAction<number>>;
-type setHasError = React.Dispatch<React.SetStateAction<boolean>>;
+
+type setMuID = UseStateFunc<string>
+type setStatus = UseStateFunc<number>
+type setHasError = UseStateFunc<boolean>
 
 export const forgetPassword = (
     emailOrMuid: string,

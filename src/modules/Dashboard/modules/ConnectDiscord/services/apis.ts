@@ -1,8 +1,7 @@
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import React from "react";
 
-type muid = React.Dispatch<React.SetStateAction<string>>;
+type muid = UseStateFunc<string>
 
 export const getInfo = (setMuid: muid) => {
   privateGateway

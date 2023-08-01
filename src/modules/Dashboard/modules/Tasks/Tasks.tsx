@@ -23,7 +23,7 @@ export const Tasks = (props: Props) => {
     const navigate = useNavigate();
     const toast = useToast();
 
-    const columnOrder = [
+    const columnOrder:ColOrder[] = [
         { column: "title", Label: "Title", isSortable: true },
         { column: "hashtag", Label: "Hashtag", isSortable: false },
         { column: "org", Label: "Organization", isSortable: false },

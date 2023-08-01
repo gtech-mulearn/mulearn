@@ -4,7 +4,6 @@ import { SingleButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useState, useMemo, MouseEventHandler } from "react";
 import { BiDownload, BiArrowBack } from "react-icons/bi";
-import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 type Props = {};

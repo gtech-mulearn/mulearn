@@ -1,16 +1,13 @@
-import React, { Dispatch, SetStateAction } from "react";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 
-type shortUrlData = React.Dispatch<React.SetStateAction<any>>;
-type campusData = React.Dispatch<React.SetStateAction<any>>;
-type hasValidationError = Dispatch<
-    SetStateAction<{
-        error: boolean;
-        message: string;
-    }>
->;
+type shortUrlData = UseStateFunc<any>
+type campusData = UseStateFunc<any>
+type hasValidationError = UseStateFunc<{
+    error: boolean;
+    message: string;
+}>
 
 export const getShortenUrls = (
     setShortUrlData: shortUrlData,
@@ -47,7 +44,7 @@ export const getShortenUrls = (
 };
 
 export const createShortenUrl = (
-    toast: (options?: UseToastOptions | undefined) => ToastId,
+    toast: ToastAsPara,
     urlData: any,
     formik: any,
     setHasValidationError: hasValidationError
@@ -109,7 +106,7 @@ export const createShortenUrl = (
 
 export const editShortenUrl = (
     id: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
+    toast: ToastAsPara,
     urlEditedData: any
 ) => {
     privateGateway
@@ -141,7 +138,7 @@ export const editShortenUrl = (
 
 export const deleteShortenUrl = (
     id: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId
+    toast: ToastAsPara
 ) => {
     privateGateway
         .delete(dashboardRoutes.deleteShortenUrl.replace("${urlId}", id))

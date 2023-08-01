@@ -11,8 +11,6 @@ import FormikReactSelect, {
     Option
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { roles } from "@/MuLearnServices/types";
-import { UserData } from "./ManageUsersInterface";
 import { getAllInstitutions } from "../Hackathon/services/HackathonApis";
 import { getLocationIdByName } from "../../utils/common";
 

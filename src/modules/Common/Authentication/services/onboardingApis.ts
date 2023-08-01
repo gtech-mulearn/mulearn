@@ -1,57 +1,46 @@
-import { publicGateway } from "../../../../services/apiGateways";
-import { onboardingRoutes } from "../../../../services/urls";
-import { Dispatch, SetStateAction } from "react";
+import { publicGateway } from "@/MuLearnServices/apiGateways";
+import { onboardingRoutes } from "@/MuLearnServices/urls";
 import { NavigateFunction } from "react-router-dom";
 
 // Define the type of MyValues
-type hasError = Dispatch<
-    SetStateAction<{
+type hasError = UseStateFunc<{
         error: boolean;
         statusCode: number;
         message: string;
     }>
->;
 
-type getAPI = Dispatch<
-    SetStateAction<
+type getAPI = UseStateFunc<
         {
             id: string;
             title: string;
         }[]
     >
->;
 
-type AoiAPI = Dispatch<
-    SetStateAction<
+type AoiAPI = UseStateFunc<
         {
             id: string;
             name: string;
         }[]
     >
->;
 
-type collegeOptions = Dispatch<
-    SetStateAction<
+type collegeOptions = UseStateFunc<
         {
             value: string;
             label: string;
         }[]
     >
->;
 
-type hasValidationError = Dispatch<
-    SetStateAction<{
+type hasValidationError = UseStateFunc<{
         error: boolean;
         message: string;
     }>
->;
 
-type FormSuccess = Dispatch<SetStateAction<boolean>>;
-type RoleVerified = Dispatch<SetStateAction<boolean>>;
-type firstQuesion = Dispatch<SetStateAction<boolean>>;
-type emailVerificationResultBtn = Dispatch<SetStateAction<string>>;
-type opacity0 = Dispatch<SetStateAction<number>>;
-type display0 = Dispatch<SetStateAction<string>>;
+type FormSuccess = UseStateFunc<boolean>
+type RoleVerified = UseStateFunc<boolean>
+type firstQuesion = UseStateFunc<boolean>
+type emailVerificationResultBtn = UseStateFunc<string>
+type opacity0 = UseStateFunc<number>
+type display0 = UseStateFunc<string>
 
 export interface DWMSDetails {
     job_seeker_fname: string;

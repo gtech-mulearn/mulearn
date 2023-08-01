@@ -1,5 +1,3 @@
-import React from "react";
-import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import {  NavigateFunction } from "react-router-dom";
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { KKEMRoutes, dashboardRoutes } from "@/MuLearnServices/urls";
@@ -7,7 +5,7 @@ import { KKEMRoutes, dashboardRoutes } from "@/MuLearnServices/urls";
 export const KKEMLogin = (
     emailOrMuid: string,
     password: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
+    toast: ToastAsPara,
     navigate: NavigateFunction,
     setIsLoading: (loading: boolean) => void,
     redirectPath: string

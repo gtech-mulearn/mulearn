@@ -1,11 +1,10 @@
-import React from "react";
-import { privateGateway } from "../../../../../services/apiGateways";
-import { dashboardRoutes } from "../../../../../services/urls";
+import { privateGateway } from "@/MuLearnServices/apiGateways";
+import { dashboardRoutes } from "@/MuLearnServices/urls";
 
 //TODO: Change to alias the services folder
 
-type studentData = React.Dispatch<React.SetStateAction<any>>;
-type campusData = React.Dispatch<React.SetStateAction<any>>;
+type studentData = UseStateFunc<any>
+type campusData = UseStateFunc<any>
 
 export const getStudentDetails = (
     setStudentData: studentData,

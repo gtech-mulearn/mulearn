@@ -1,4 +1,3 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import styles from "./InterestGroup.module.css"
 import { RiCloseLine } from 'react-icons/ri';
 import { editInterestGroups, getIGDetails } from "./apis";
@@ -10,13 +9,13 @@ import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComp
 import { modalStatesType } from './InterestGroup';
 // ModalProps type definition
 interface ModalProps {
-  isOpen: modalStatesType;
-  onClose: Dispatch<SetStateAction<modalStatesType>>;
-  id: string,
+  isOpen: modalStatesType
+  onClose: UseStateFunc<modalStatesType>
+  id: string
   defaultValue:string//default igName value {preloaded}
 }
 
-const InterestGroupEditModal: React.FC<ModalProps> = ({ isOpen, onClose, id,defaultValue }) => {
+const InterestGroupEditModal: FC<ModalProps> = ({ isOpen, onClose, id,defaultValue }) => {
   if (isOpen !== 'edit') return null;
   const toast = useToast();
 

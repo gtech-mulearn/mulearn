@@ -1,14 +1,13 @@
 import { AxiosError, AxiosRequestConfig } from "axios";
-import { privateGateway } from "../../../../../services/apiGateways";
-import { ManageLocationsRoutes } from "../../../../../services/urls";
+import { privateGateway } from "@/MuLearnServices/apiGateways";
+import { ManageLocationsRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
-import { Dispatch, SetStateAction } from "react";
 
 //* WORKING✅
 export const getCountryData = async (
-    setData: any,
+    setData: UseStateFunc<any>,
     toast?: (options?: UseToastOptions | undefined) => ToastId,
-    setTotalPages?: any
+    setTotalPages?: UseStateFunc<any>
 ) => {
     try {
         await privateGateway.get(ManageLocationsRoutes.getCountryData)

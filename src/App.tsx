@@ -56,13 +56,13 @@ const HackathonParticipants = lazy(() => import("./modules/Dashboard/modules/Hac
 
 
 
-import { roles } from "./services/types";
-import SecureAuthRoutes from "./services/authCheck";
+import { roles } from "@/MuLearnServices/types";
+import SecureAuthRoutes from "@/MuLearnServices/authCheck";
 
 
 function App() {
-const RoleChecker = SecureAuthRoutes()
-const router = createBrowserRouter([
+    const RoleChecker = SecureAuthRoutes()
+    const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
     {
         path: "/",
@@ -104,7 +104,7 @@ const router = createBrowserRouter([
                 children: [
                     { path: "profile", element: <Profile /> },
                     { path: "connect-discord", element: <ConnectDiscord /> },
-                    { path: "interest-groups", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<InterestGroup/>} /> },
+                    { path: "interest-groups", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} children={<InterestGroup/>} /> },
                     {
                         path: "interest-groups/create",
                         element: <InterestGroupCreate />
@@ -119,14 +119,14 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "organizations/edit",
-                        element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<EditOrgnaization/>} />
+                        element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} children={<EditOrgnaization/>} />
                     },
                     {
                         path: "organizations/delete/:id",
                         element: <DeleteOrganizations />
                     },
-                    { path: "campus-details", element: <RoleChecker roles={[roles.CAMPUS_LEAD]} Children={<CampusStudentList />} />},
-                    { path: "manage-users", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<ManageUsers />} /> },
+                    { path: "campus-details", element: <RoleChecker roles={[roles.CAMPUS_LEAD]} children={<CampusStudentList />} />},
+                    { path: "manage-users", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} children={<ManageUsers />} /> },
                     {
                         path: "manage-users/create",
                         element: <ManageUsersCreate />
@@ -139,10 +139,10 @@ const router = createBrowserRouter([
                         path: "manage-users/edit/:id",
                         element: <ManageUsersEdit />
                     },
-                    { path: "manage-roles", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<ManageRoles/>} /> },
+                    { path: "manage-roles", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} children={<ManageRoles/>} /> },
                     {
                         path: "user-role-verification",
-                        element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<UserRoleVerification/>} />
+                        element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} children={<UserRoleVerification/>} />
                     },
                     {
                         path: "user-role-verification/delete/:id",
@@ -154,14 +154,14 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "zonal-dashboard",
-                        element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW, roles.ZONAL_CAMPUS_LEAD]} Children={<ZonalDashboard/>} />
+                        element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW, roles.ZONAL_CAMPUS_LEAD]} children={<ZonalDashboard/>} />
                     },
                     {
                         path: "district-dashboard",
-                        element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW, roles.DISTRICT_CAMPUS_LEAD]} Children={<DistrictDashboard/>} />
+                        element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW, roles.DISTRICT_CAMPUS_LEAD]} children={<DistrictDashboard/>} />
                     },
-                    { path: "organizations", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<Organizations/>} /> },
-                    { path: "tasks", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<Tasks/>} /> },
+                    { path: "organizations", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} children={<Organizations/>} /> },
+                    { path: "tasks", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} children={<Tasks/>} /> },
                     {
                         path: "tasks/create",
                         element: <TaskCreate />
@@ -204,7 +204,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "manage-locations",
-                        element: <ManageLocation />
+                        element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} children={<ManageLocation />}/>
                     },
                     {
                         path: "manage-locations/add/:item",

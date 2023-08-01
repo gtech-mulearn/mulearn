@@ -9,8 +9,7 @@ import {
     MuButton,
     MuButtonLight
 } from "@/MuLearnComponents/MuButtons/MuButton";
-import { UserInfo, fetchLocalStorage } from "@/MuLearnServices/common_functions";
-import { Role } from "@/MuLearnServices/types";
+import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
 
 //TODO: Change the style's casing to match the rest of the project
 type Props = {

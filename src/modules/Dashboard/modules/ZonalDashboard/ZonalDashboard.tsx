@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { getzonaldashboard } from "./apis";
 import { columnsStudent, columnsCampus } from "./THeaders";
 import TableTopTab from "./TableTopTab";
-import "./ZonalDashboard.scss";
+import "./ZonalDashboard.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 
 function ZonalDashboard() {
