@@ -3,25 +3,14 @@ import { onboardingRoutes } from "@/MuLearnServices/urls";
 import { NavigateFunction } from "react-router-dom";
 
 // Define the type of MyValues
-type hasError = UseStateFunc<{
-        error: boolean;
-        statusCode: number;
-        message: string;
-    }>
+type NN = {name: string, id: string}
+type TT = {title:string, id: string}
 
-type getAPI = UseStateFunc<
-        {
-            id: string;
-            title: string;
-        }[]
-    >
+type InitialValues = { firstName: string, lastName: string, email: string, password: string, confirmPassword: string, phone: undefined, gender: string, dob: string, role: string, country: string, state: string, district: string, organization: string, community: string[], dept: string, yog: string, mentorRole: string, areaOfInterest: never[], general: string, referralId: string }
+type FormikType = ReturnType<typeof import('formik').useFormik<InitialValues>>
 
-type AoiAPI = UseStateFunc<
-        {
-            id: string;
-            name: string;
-        }[]
-    >
+type getAPI = UseStateFunc<TT[]>
+type AoiAPI = UseStateFunc<NN[]>
 
 type collegeOptions = UseStateFunc<
         {
@@ -63,17 +52,17 @@ export const getCountries = (
 ) => {
     publicGateway
         .get(onboardingRoutes.countryList)
-        .then(response => {
+        .then((response: APIResponse<{countries : NN[]}>) => {
             setCountry(
                 response.data.response.countries
-                    .sort((a: any, b: any) => a.name.localeCompare(b.name))
-                    .map((country: any) => ({
+                    .sort((a, b) => a.name.localeCompare(b.name))
+                    .map((country) => ({
                         value: country.id,
                         label: country.name
                     }))
             );
         })
-        .catch(error => {
+        .catch((error: APIError) => {
             errorHandler(error.response.status, error.response.data.status);
         });
 };
@@ -86,17 +75,17 @@ export const getState = (
 ) => {
     publicGateway
         .post(onboardingRoutes.stateList, country)
-        .then(response => {
+        .then((response: APIResponse<{states: NN[]}>) => {
             setState(
                 response.data.response.states
-                    .sort((a: any, b: any) => a.name.localeCompare(b.name))
-                    .map((sate: any) => ({
-                        value: sate.id,
-                        label: sate.name
+                    .sort((a, b) => a.name.localeCompare(b.name))
+                    .map((state) => ({
+                        value: state.id,
+                        label: state.name
                     }))
             );
         })
-        .catch(error => {
+        .catch((error: APIError) => {
             errorHandler(error.response.status, error.response.data.status);
         });
 };
@@ -109,17 +98,17 @@ export const getDistrict = (
 ) => {
     publicGateway
         .post(onboardingRoutes.districtList, state)
-        .then(response => {
+        .then((response: APIResponse<{districts: NN[]}>) => {
             setState(
                 response.data.response.districts
-                    .sort((a: any, b: any) => a.name.localeCompare(b.name))
-                    .map((sate: any) => ({
-                        value: sate.id,
-                        label: sate.name
+                    .sort((a, b) => a.name.localeCompare(b.name))
+                    .map((dist) => ({
+                        value: dist.id,
+                        label: dist.name
                     }))
             );
         })
-        .catch(error => {
+        .catch((error: APIError) => {
             errorHandler(error.response.status, error.response.data.status);
         });
 };
@@ -134,25 +123,25 @@ export const getColleges = (
 ) => {
     publicGateway
         .post(onboardingRoutes.collegeList, district)
-        .then(response => {
+        .then((response: APIResponse<{colleges: TT[], departments: TT[]}>) => {
             const colleges = response.data.response.colleges;
             setCollegeAPI(colleges);
             setCollegeOptions(
                 colleges
-                    .sort((a: any, b: any) => a.title.localeCompare(b.title))
-                    .map((college: any) => ({
+                    .sort((a, b) => a.title.localeCompare(b.title))
+                    .map((college) => ({
                         value: college.id,
                         label: college.title
                     }))
             );
             setDepartmentAPI(
-                response.data.response.departments.map((dept: any) => ({
+                response.data.response.departments.map((dept) => ({
                     value: dept.id,
                     label: dept.title
                 }))
             );
         })
-        .catch(error => {
+        .catch((error: APIError) => {
             // errorHandler(error.response.status, error.response.data.status);
         });
 };
@@ -164,10 +153,10 @@ export const getCompanies = (
 ) => {
     publicGateway
         .get(onboardingRoutes.companyList)
-        .then(response => {
+        .then((response : APIResponse<{ companies: TT[]}>) => {
             setCompanyAPI(response.data.response.companies);
         })
-        .catch(error => {
+        .catch((error: APIError) => {
             errorHandler(error.response.status, error.response.data.status);
         });
 };
@@ -176,10 +165,10 @@ export const getCompanies = (
 export const getRoles = (errorHandler: errorHandler, setRoleAPI: getAPI) => {
     publicGateway
         .get(onboardingRoutes.roleList)
-        .then(response => {
+        .then((response: APIResponse<{ roles: TT[]}>) => {
             setRoleAPI(response.data.response.roles);
         })
-        .catch(error => {
+        .catch((error: APIError) => {
             errorHandler(error.response.status, error.response.data.status);
         });
 };
@@ -188,10 +177,10 @@ export const getRoles = (errorHandler: errorHandler, setRoleAPI: getAPI) => {
 export const getInterests = (errorHandler: errorHandler, setAoiAPI: AoiAPI) => {
     publicGateway
         .get(onboardingRoutes.areaOfInterestList)
-        .then(response => {
+        .then((response: APIResponse<{ aois: NN[]}>) => {
             setAoiAPI(response.data.response.aois);
         })
-        .catch(error => {
+        .catch((error:APIError) => {
             errorHandler(error.response.status, error.response.data.status);
         });
 };
@@ -206,7 +195,7 @@ export const getCommunities = (
         .then(response => {
             setCommunityAPI(response.data.response.communities);
         })
-        .catch(error => {
+        .catch((error: APIError) => {
             errorHandler(error.response.status, error.response.data.status);
         });
 };
@@ -215,18 +204,18 @@ export const getCommunities = (
 export const registerUser = (
     setFormSuccess: FormSuccess,
     setRoleVerified: RoleVerified,
-    formik: any,
+    formik: FormikType,
     setHasValidationError: hasValidationError,
     userData: unknown,
     navigate: NavigateFunction,
-    setShowSubmitLoader: (showSubmitLoader: boolean) => void
+    setShowSubmitLoader: UseStateFunc<boolean>
 ) => {
     setShowSubmitLoader(true);
     publicGateway
         .post(onboardingRoutes.register, userData)
-        .then(function (response) {
+        .then((response: APIResponse<AllTokens>) => {
             setFormSuccess(true);
-            setRoleVerified(response.data.roleVerified);
+            setRoleVerified(response.data.roleVerified as boolean);
             localStorage.setItem(
                 "accessToken",
                 response.data.response.accessToken
@@ -238,7 +227,8 @@ export const registerUser = (
             navigate("/dashboard/connect-discord");
             setShowSubmitLoader(false);
         })
-        .catch(function (error) {
+        
+        .catch((error: APIError<{ key : any[] }>) => {
             setShowSubmitLoader(false);
             if (
                 error.response.data.message &&
@@ -267,16 +257,16 @@ export const registerUser = (
 export const emailVerification = (
     email: string,
     setFirstQuesion: firstQuesion,
-    formik: any,
+    formik: FormikType,
     setEmailVerificationResultBtn: emailVerificationResultBtn,
     setOpacity0: opacity0,
     setDisplay0: display0,
-    setShowLoader: (showLoader: boolean) => void
+    setShowLoader: UseStateFunc<boolean>
 ) => {
     setShowLoader(true);
     publicGateway
         .post(onboardingRoutes.emailVerification, { email: email })
-        .then(function (response) {
+        .then((response: APIResponse<{value: boolean}, string>) => {
             setFirstQuesion(!response.data.response.value);
 
             if (response.data.response.value) {
@@ -291,7 +281,7 @@ export const emailVerification = (
                 }, 1000);
             }
         })
-        .catch(function (error) {
+        .catch((error: APIError) => {
             setShowLoader(false);
             console.error(error);
         });
@@ -331,7 +321,7 @@ export const getDWMSDetails = (
             };
             setDWMSDetails(dwmsDetails);
         })
-        .catch(error => {
+        .catch((error: APIError) => {
             errorHandler(error.response.status, error.response.data.status);
         });
 };

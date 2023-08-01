@@ -25,7 +25,30 @@ type ColOrder = { column: string, Label: string, isSortable: boolean }
 
 type ToastAsPara = (options?: import('@chakra-ui/react').UseToastOptions) => import('@chakra-ui/react').ToastId;
 
-// declare module "foo-module" {
-//     function foo(): void; 
-//     export = foo;
-//   }
+// just pass json structure type as parameters
+type APIResponse< R = {}, M = {}[] > = {
+    data : {
+        hasError : boolean,
+        statusCode : number,
+        response : R,
+        message : {
+            general: M
+        }
+        roleVerified?: boolean // used in registerUser() from onboardingApis.ts
+    }
+}
+
+type APIError<M = {}> = {
+    response : {
+        status: number,
+        data : {
+            status : number,
+            message : M
+        }
+    }
+}
+
+type AllTokens = {
+    accessToken: string
+    refreshToken: string
+}

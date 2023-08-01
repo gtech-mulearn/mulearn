@@ -1,22 +1,15 @@
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { useNavigate, NavigateFunction } from "react-router-dom";
-import {
-    privateGateway,
-    publicGateway
-} from "@/MuLearnServices/apiGateways";
+import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { authRoutes, dashboardRoutes } from "@/MuLearnServices/urls";
 import { refreshRoles } from "@/MuLearnServices/authCheck";
 
 
-type setMuID = UseStateFunc<string>
-type setStatus = UseStateFunc<number>
-type setHasError = UseStateFunc<boolean>
-
 export const forgetPassword = (
     emailOrMuid: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
+    toast: ToastAsPara,
     navigate: NavigateFunction,
-    setShowLoader: (showLoader: boolean) => void
+    setShowLoader: UseStateFunc<boolean>
 ) => {
     setShowLoader(true);
     privateGateway
@@ -46,18 +39,23 @@ export const forgetPassword = (
         });
 };
 
+type authRoutesLoginRes = APIResponse <{ accessToken:string, refreshToken:string, expiry:string }>
+
+type authGetUserInfo = APIResponse <UserInfo>
+
+
 export const login = (
     emailOrMuid: string,
     password: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
+    toast: ToastAsPara,
     navigate: NavigateFunction,
-    setIsLoading: (loading: boolean) => void,
+    setIsLoading: UseStateFunc<boolean>,
     redirectPath: string
 ) => {
     setIsLoading(true);
     publicGateway
         .post(authRoutes.login, { emailOrMuid, password })
-        .then(response => {
+        .then((response : authRoutesLoginRes) => {
             if (response.data.hasError == false) {
                 //console.log("=======> Login Res: ", response.data.response);
 
@@ -79,7 +77,7 @@ export const login = (
                 });
                 privateGateway
                     .get(dashboardRoutes.getInfo)
-                    .then(response => {
+                    .then((response:authGetUserInfo) => {
                         //console.log(response);
                         localStorage.setItem(
                             "userInfo",
@@ -115,13 +113,13 @@ export const login = (
 
 export const getMuid = (
     token: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
+    toast: ToastAsPara,
     navigate: NavigateFunction,
-    setMuID: setMuID
+    setMuID: UseStateFunc<string>
 ) => {
     privateGateway
         .post(dashboardRoutes.resetPasswordVerify.replace("${token}", token))
-        .then(response => {
+        .then((response: APIResponse<{muid:string}>) => {
             //console.log(response.data);
             toast({
                 title: "User Verified",
@@ -152,14 +150,12 @@ export const getMuid = (
 export const resetPassword = (
     token: string,
     password: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
+    toast: ToastAsPara,
     navigate: NavigateFunction
 ) => {
     privateGateway
-        .post(dashboardRoutes.resetPassword.replace("${token}", token), {
-            password
-        })
-        .then(response => {
+        .post(dashboardRoutes.resetPassword.replace("${token}", token), { password })
+        .then((response: APIResponse<{},{}>) => {
             if (response.data.statusCode === 200) {
                 toast({
                     title: "Password Reset Successful",
@@ -189,17 +185,17 @@ export const resetPassword = (
 };
 
 export const requestEmailOrMuidOtp = (
-    emailOrMuid: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
-    setHasError: setHasError,
-    setStatus: setStatus,
-    setOtpLoading: (otpLoading: boolean) => void,
-    setOtpError: (otpError: boolean) => void
+    emailOrMuid  : string,
+    toast        : ToastAsPara,
+    setHasError  : UseStateFunc<boolean>,
+    setStatus    : UseStateFunc<number>,
+    setOtpLoading: UseStateFunc<boolean>,
+    setOtpError  : UseStateFunc<boolean>
 ) => {
     setOtpLoading(true);
     publicGateway
         .post(authRoutes.requestEmailOrMuidOtp, { emailOrMuid })
-        .then(response => {
+        .then((response: APIResponse) => {
             setOtpLoading(false);
             setStatus(response.data.statusCode);
             if (response.data.hasError == false) {
@@ -230,15 +226,15 @@ export const requestEmailOrMuidOtp = (
 export const otpVerification = (
     emailOrMuid: string,
     otp: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
+    toast: ToastAsPara,
     navigate: NavigateFunction,
-    setOtpVerifyLoading: (otpverifyLoading: boolean) => void,
+    setOtpVerifyLoading: UseStateFunc<boolean>,
     redirectPath: string
 ) => {
     setOtpVerifyLoading(true);
     publicGateway
         .post(authRoutes.otpVerification, { emailOrMuid, otp })
-        .then(response => {
+        .then((response:authRoutesLoginRes) => {
             //console.log(response.data);
             localStorage.setItem(
                 "accessToken",
@@ -260,7 +256,7 @@ export const otpVerification = (
             }
             privateGateway
                 .get(dashboardRoutes.getInfo)
-                .then(response => {
+                .then((response:authGetUserInfo) => {
                     //console.log(response);
                     localStorage.setItem(
                         "userInfo",
