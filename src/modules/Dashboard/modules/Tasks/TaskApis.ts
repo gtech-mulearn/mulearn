@@ -4,7 +4,6 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { Dispatch, SetStateAction } from "react";
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { TaskEditInterface } from "./TaskInterface";
-import { utils, writeFile } from "xlsx";
 
 type uuidType = {
     level: { id: string; name: string }[];
@@ -108,7 +107,8 @@ export const editTask = async (
     level_id: string,
     ig_id: string,
     org_id: string,
-    id: string | undefined
+    id: string | undefined,
+    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
         const response = await privateGateway.put(
@@ -128,11 +128,24 @@ export const editTask = async (
             }
         );
         const message: any = response?.data;
+        toast({
+            title: "Task Updated",
+            description: "Task has been updated successfully",
+            status: "success",
+            duration: 5000,
+            isClosable: true
+        });
         //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
+            toast({
+                title: "Task Update Failed",
+                status: "error",
+                duration: 5000,
+                isClosable: true
+            });
         }
     }
 };
@@ -228,10 +241,16 @@ export const getUUID = async () => {
 };
 
 // function to take a js object and convert it to a XLSX file using the SheetJS library
+// bundle size increased from 106kb to 160kb, but dynamically imported
 
 export const convertToXLSX = (data: any, fileName: string) => {
-    const ws = utils.json_to_sheet(data);
-    const wb = utils.book_new();
-    utils.book_append_sheet(wb, ws, "Result 1");
-    writeFile(wb, fileName);
+    import("xlsx").then(({utils, writeFile}) => {
+        
+        const ws = utils.json_to_sheet(data);
+        const wb = utils.book_new();
+        utils.book_append_sheet(wb, ws, "Result 1");
+        writeFile(wb, fileName);
+        
+    })
+    .catch((err) => console.error(err));
 };

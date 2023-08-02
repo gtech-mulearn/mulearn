@@ -2,14 +2,13 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import THead from "@/MuLearnComponents/Table/THead";
 import Table from "@/MuLearnComponents/Table/Table";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { hasRole } from "@/MuLearnServices/common_functions";
-import { roles } from "@/MuLearnServices/types";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { editUserRoleVerification, getUserRoleVerification } from "./apis";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 function UsersRoleVerification() {
-    const [data, setData] = useState<any[]>([]);
+    const [data, setData] = useState<TData[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(5);
@@ -17,6 +16,14 @@ function UsersRoleVerification() {
     const navigate = useNavigate();
     const firstFetch = useRef(true);
 
+    const [loading, setLoading] = useState(false);
+    type TData = {
+        full_name: string,
+        mu_id: string,
+        discord_id: string,
+        role_title: string,
+        verified: boolean,
+    }
     const columnOrder = [
         { column: "full_name", Label: "Full Name", isSortable: true },
         { column: "mu_id", Label: "Mu ID", isSortable: false },
@@ -31,18 +38,31 @@ function UsersRoleVerification() {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getUserRoleVerification(setData, nextPage, perPage);
+        getUserRoleVerification(
+            setData,
+            nextPage,
+            perPage,
+            setTotalPages,
+            "",
+            sort
+        );
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getUserRoleVerification(setData, prevPage, perPage);
+        getUserRoleVerification(
+            setData,
+            prevPage,
+            perPage,
+            setTotalPages,
+            "",
+            sort
+        );
     };
 
     useEffect(() => {
         if (firstFetch.current) {
-            if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
 
             getUserRoleVerification(setData, 1, perPage, setTotalPages, "", "");
         }
@@ -111,15 +131,17 @@ function UsersRoleVerification() {
         //console.log(`Icon clicked for column: ${column}`);
     };
 
-    function handleVerify(id: string | number | boolean): void {
-        //console.log(id);
-        editUserRoleVerification(true, id);
+    async function handleVerify(id: string | number | boolean) {
+        setLoading(true);
+        await editUserRoleVerification(true, id);
+
         getUserRoleVerification(setData, 1, perPage, setTotalPages, "", "");
+        setLoading(false);
     }
 
     return (
         <>
-            {data && (
+            {!loading && data ? (
                 <>
                     <TableTop
                         onSearchText={handleSearch}
@@ -145,9 +167,18 @@ function UsersRoleVerification() {
                             totalPages={totalPages}
                             margin="10px 0"
                             handleNextClick={handleNextClick}
-                            handlePreviousClick={handlePreviousClick}
+                            handlePreviousClick={handlePreviousClick} onSearchText={handleSearch}
+                            onPerPageNumber={handlePerPageNumber}
                         />
                     </Table>
+                </>
+            ) : (
+                <>
+                    <TableTop
+                        onSearchText={handleSearch}
+                        onPerPageNumber={handlePerPageNumber}
+                    />
+                    <MuLoader />
                 </>
             )}
         </>

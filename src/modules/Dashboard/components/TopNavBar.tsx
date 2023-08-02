@@ -2,25 +2,23 @@ import React, { useEffect, useState } from "react";
 import styles from "./SideNavBar.module.css";
 import MulearnBrand from "../assets/MulearnBrand";
 import { useNavigate } from "react-router-dom";
-import dpm from "../assets/images/dpm.jpg";
+import dpm from "../assets/images/dpm.webp";
+import { UserInfo, fetchLocalStorage } from "@/MuLearnServices/common_functions";
 
-//TODO: Change the styles to camelCase from snake_case
+
 const TopNavBar = () => {
     const navigate = useNavigate();
     const [name, setName] = useState("");
-    const [profilePic, setProfilePic] = useState("");
+    const [profilePic, setProfilePic] = useState<string | null>(null);
 
     useEffect(() => {
-        if (
-            localStorage.getItem("userInfo") &&
-            JSON.parse(localStorage.getItem("userInfo")!).first_name
-        ) {
-            setName(JSON.parse(localStorage.getItem("userInfo")!).first_name);
-            setProfilePic(
-                JSON.parse(localStorage.getItem("userInfo")!).profile_pic
-            );
+        const userInfo = fetchLocalStorage<UserInfo>('userInfo')
+
+        if (userInfo) {
+            setName(userInfo?.first_name);
+            setProfilePic(userInfo?.profile_pic || null)
         }
-    });
+    }, []);
     return (
         <>
             <div id="top_nav" className={styles.top_nav}>
@@ -35,7 +33,7 @@ const TopNavBar = () => {
                             <div className={styles.profile}>
                                 <img
                                     onClick={() => {
-                                        navigate("/profile");
+                                        navigate("/dashboard/profile");
                                     }}
                                     src={profilePic ? profilePic : dpm}
                                     alt=""

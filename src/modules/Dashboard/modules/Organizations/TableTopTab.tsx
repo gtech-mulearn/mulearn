@@ -3,7 +3,8 @@ import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { color } from "framer-motion";
-
+import '../DistrictDashboard/Organizations.css'
+import '../DistrictDashboard/DistricDashboard.scss'
 interface TableTopTabProps {
     active: string;
     onTabClick: (tab: string) => void;

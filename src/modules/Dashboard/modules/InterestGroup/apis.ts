@@ -4,6 +4,8 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 import { Dispatch, SetStateAction } from "react";
 
+import { modalStatesType } from "./InterestGroup";
+
 export const getInterestGroups = async (
     setData: any,
     page: number,
@@ -35,17 +37,28 @@ export const getInterestGroups = async (
 
 export const createInterestGroups = async (
     name: string,
-    onClose: Dispatch<SetStateAction<boolean>>
-) => {
-    try {
+    code: string,
+    icon: string,
+    
+    
+    ) => {
+        try {
         const response = await privateGateway.post(dashboardRoutes.getIgData, {
-            name: name
+            name: name,
+            code: code,
+            icon: icon
         });
         if (response.data?.statusCode === 200) {
-            onClose(false);
         }
         const message: any = response?.data;
         //console.log(message);
+        toast({
+            title: " created  Successfully..",
+            description: "",
+            status: "success",
+            duration: 2000,
+            isClosable: true
+        });
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -54,36 +67,51 @@ export const createInterestGroups = async (
     }
 };
 
-export const editInterestGroups = async (name: string, id: string | undefined) => {
+export const editInterestGroups = async (
+    name: string|undefined,
+    id: string | undefined,
+    code: string | undefined,
+    icon: string | undefined,
+    setHasError: (hasError: boolean) => void,
+) => {
     try {
         const response = await privateGateway.put(
             dashboardRoutes.getIgData + id + "/",
             {
-                name: name
+                name: name,
+                code: code,
+                icon: icon
             }
-        );
+            );
+            
         const message: any = response?.data;
-        //console.log(message);
+        console.log(message);
+        setHasError(message?.hasError)
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
         }
+        toast({
+            title: error.message,
+            description: "",
+            status: "error",
+            duration: 2000,
+            isClosable: true
+        });
     }
 };
 
 export const getIGDetails = async (
     id: string | undefined,
-    setInput: React.Dispatch<React.SetStateAction<string>>
+    setInput: Dispatch<React.SetStateAction<string | any>>
 ) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getIgData + "get/" + id + "/",
+            dashboardRoutes.getIgData + "get/" + id + "/"
         );
         const message: any = response?.data;
-        //console.log(message);
-        //console.log(message.response.interestGroup.name);
-        setInput(message.response.interestGroup.name);
+        setInput(message.response.interestGroup);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -115,3 +143,7 @@ export const deleteInterestGroups = async (
         }
     }
 };
+function toast(arg0: { title: string; description: string; status: string; duration: number; isClosable: boolean; }) {
+    throw new Error("Function not implemented.");
+}
+

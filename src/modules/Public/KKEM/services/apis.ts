@@ -1,6 +1,6 @@
-import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import React from "react";
-import {  NavigateFunction } from "react-router-dom";
+import { ToastId, UseToastOptions } from "@chakra-ui/react";
+import { NavigateFunction } from "react-router-dom";
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { KKEMRoutes, dashboardRoutes } from "@/MuLearnServices/urls";
 
@@ -12,10 +12,9 @@ export const KKEMLogin = (
     setIsLoading: (loading: boolean) => void,
     redirectPath: string
 ) => {
-    console.log({emailOrMuid, password,integration:"DWMS"})
     setIsLoading(true);
     publicGateway
-        .post(KKEMRoutes.userLogin, { emailOrMuid, password})
+        .post(KKEMRoutes.userLogin, { emailOrMuid, password })
         .then(response => {
             if (response.data.hasError == false) {
                 localStorage.setItem(
@@ -31,7 +30,8 @@ export const KKEMLogin = (
                     description: "You have been logged in successfully",
                     status: "success",
                     duration: 3000,
-                    isClosable: true
+                    isClosable: true,
+                    position: "top-right"
                 });
                 privateGateway
                     .get(dashboardRoutes.getInfo)
@@ -45,7 +45,8 @@ export const KKEMLogin = (
                             navigate("/dashboard/learning-circle");
                         } else {
                             if (redirectPath) {
-                                navigate(`/${redirectPath}`);
+                                // navigate(`/${redirectPath}`);
+                                navigate("/dashboard/learning-circle");
                             } else {
                                 navigate("/dashboard/learning-circle");
                             }
@@ -63,7 +64,8 @@ export const KKEMLogin = (
                 title: error.response.data.message.general[0],
                 status: "error",
                 duration: 3000,
-                isClosable: true
+                isClosable: true,
+                position: "top-right"
             });
         });
 };

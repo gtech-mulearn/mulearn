@@ -20,9 +20,9 @@ export const authRoutes = {
 
 export const dashboardRoutes = {
     forgetPassword: "/api/v1/dashboard/user/forgot-password/",
-    resetPassword: "/api/v1/dashboard/user/reset-password/${token}/",
+    resetPassword: "/api/v1/dashboard/user/reset-password/${token}",
     resetPasswordVerify:
-        "/api/v1/dashboard/user/reset-password/verify-token/${token}/",
+        "/api/v1/dashboard/user/reset-password/verify-token/${token}",
     getInfo: "/api/v1/dashboard/user/info/",
     getIgData: "/api/v1/dashboard/ig/",
     getIgList: "/api/v1/dashboard/ig/csv",
@@ -73,30 +73,33 @@ export const dashboardRoutes = {
     editHackathon: "/api/v1/hackathon/edit-hackathon/",
     getHackathons: "/api/v1/hackathon/list-hackathons/",
     getHackathonInfo: "/api/v1/hackathon/info/",
-    getOwnHackathons: "/api/v1/hackathon/list-orgniser-hackathons/",
+    getOrganizers: "/api/v1/hackathon/list-organiser-hackathons/",
     deleteHackathon: "/api/v1/hackathon/delete-hackathon/",
     publishHackathon: "/api/v1/hackathon/publish-hackathon/",
     addOrganizer: "/api/v1/hackathon/add-organiser/",
+    submitApplication: "/api/v1/hackathon/submit-hackathon/",
     getApplicationForm: "/api/v1/hackathon/list-form/",
     getApplicants: "/api/v1/hackathon/list-applicants/",
 
     getCampusLearningCircles: "/api/v1/dashboard/lc/",
     createLearningCircle: "/api/v1/dashboard/lc/create/",
+    joinLearningCircle: "/api/v1/dashboard/lc/join/",
+    setLCMeetTime: "/api/v1/dashboard/lc/meet/",
 
     getAllOrganisations: "/api/v1/hackathon/list-organisations/",
     getAllDistricts: "/api/v1/hackathon/list-districts/"
 } as const;
 
 export const organizationRoutes = {
-    getOrganizationsAll: "/api/v1/organisation/institutes/info/all_inst/",
-    getCompany: "/api/v1/organisation/institutes/show/Company/",
+    getOrganizationsAll: "/api/v1/organisation/institutes/info/all_inst",
+    getCompany: "/api/v1/organisation/institutes/show/Company",
     getAffiliation: "/api/v1/organisation/institutes/org/affiliation/",
-    getLocation: "/api/v1/location/",
+    getLocation: "/api/v1/location",
     postAddOrganization: "/api/v1/organisation/institutes/add/",
-    putUpdateOrganization: "/api/v1/organisation/institutes/",
+    putUpdateOrganization: "/api/v1/organisation/institutes",
     deleteOrgnaization: "/api/v1/organisation/institutes/",
     postGetInfo: "/api/v1/organisation/institutes/info/",
-    getOrgCsv: "/api/v1/organisation/institutes/csv/"
+    getOrgCsv: "/api/v1/organisation/institutes/csv"
 };
 
 export const ManageLocationsRoutes = {
@@ -110,4 +113,8 @@ export const KKEMRoutes = {
     userAuth: "/api/v1/integrations/kkem/authorization/",
     userLogin: "/api/v1/integrations/kkem/login/",
     getDWMSDetails: "/api/v1/integrations/kkem/user/${jsid}/"
+};
+
+export const PublicRoutes = {
+    getRandomLc: "/api/v1/dashboard/lc/list/",
 };

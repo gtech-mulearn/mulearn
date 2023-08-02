@@ -11,10 +11,11 @@ import {
     PowerfulButton
 } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useNavigate, useParams } from "react-router-dom";
-import { getApplicationForm, getHackDetails } from "../services/HackathonApis";
+import { getApplicationForm, getHackDetails, submitHackApplication } from "../services/HackathonApis";
 import {
     HackList,
-    HackathonApplication
+    HackathonApplication,
+	hackApiData
 } from "../services/HackathonInterfaces";
 import { capitalizeFirstLetter } from "../../../utils/common";
 import { HackApplicationSchema } from "../services/HackathonYup";
@@ -31,11 +32,13 @@ const HackathonRegistration = (props: Props) => {
     useEffect(() => {
         getHackDetails(setData, id);
         getApplicationForm(setApplication, id);
-        console.log(application);
     }, []);
 
-    const handleSubmit = (values: { name: string; gender: string; email: string; mobile: string; bio: string; college: string; experience: string; github: string; linkedin: string; }) => {
-        console.log(values);
+    const handleSubmit = (values: any) => {
+        submitHackApplication(
+			values,
+			id
+		)
     };
 
     return (
@@ -45,7 +48,6 @@ const HackathonRegistration = (props: Props) => {
                     Application Form for {data?.title}
                 </h1>
                 <Formik
-                    enableReinitialize={true}
                     initialValues={{
                         name: "",
                         gender: "",
@@ -57,7 +59,10 @@ const HackathonRegistration = (props: Props) => {
                         github: "",
                         linkedin: ""
                     }}
-                    validationSchema={HackApplicationSchema}
+					/*
+					! TODO: Validation has issues with submitting so disabled for now.
+					*/
+                    // validationSchema={HackApplicationSchema}
                     onSubmit={(values, { setSubmitting }) => {
                         handleSubmit(values)
                     }}

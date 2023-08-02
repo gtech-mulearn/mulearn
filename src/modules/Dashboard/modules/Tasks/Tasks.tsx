@@ -1,18 +1,15 @@
-import { useEffect, useRef, useState } from "react";
-import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import Table from "@/MuLearnComponents/Table/Table";
-import THead from "@/MuLearnComponents/Table/THead";
-import Pagination from "@/MuLearnComponents/Pagination/Pagination";
-import { hasRole } from "@/MuLearnServices/common_functions";
-import { roles } from "@/MuLearnServices/types";
-import { useNavigate } from "react-router-dom";
-import { deleteTask, getTasks } from "./TaskApis";
-import { dashboardRoutes } from "@/MuLearnServices/urls";
-import styles from "../InterestGroup/InterestGroup.module.css";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { AiOutlinePlusCircle } from "react-icons/ai";
+import Pagination from "@/MuLearnComponents/Pagination/Pagination";
+import THead from "@/MuLearnComponents/Table/THead";
+import Table from "@/MuLearnComponents/Table/Table";
+import TableTop from "@/MuLearnComponents/TableTop/TableTop";
+import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
-import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { useEffect, useRef, useState } from "react";
+import { AiOutlinePlusCircle } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import styles from "../InterestGroup/InterestGroup.module.css";
+import { deleteTask, getTasks } from "./TaskApis";
 
 type Props = {};
 
@@ -47,18 +44,31 @@ export const Tasks = (props: Props) => {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getTasks(setData, nextPage, perPage);
+        getTasks(
+            setData,
+            nextPage,
+            perPage,
+            setTotalPages,
+            "",
+            sort
+        );
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getTasks(setData, prevPage, perPage);
+        getTasks(
+            setData,
+            prevPage,
+            perPage,
+            setTotalPages,
+            "",
+            sort
+        );
     };
 
     useEffect(() => {
         if (firstFetch.current) {
-            if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
             getTasks(setData, 1, perPage, setTotalPages, "", "");
         }
         firstFetch.current = false;
@@ -151,7 +161,8 @@ export const Tasks = (props: Props) => {
                             totalPages={totalPages}
                             margin="10px 0"
                             handleNextClick={handleNextClick}
-                            handlePreviousClick={handlePreviousClick}
+                            handlePreviousClick={handlePreviousClick} onSearchText={handleSearch}
+                            onPerPageNumber={handlePerPageNumber}
                         />
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>

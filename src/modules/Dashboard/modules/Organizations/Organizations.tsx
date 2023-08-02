@@ -6,8 +6,6 @@ import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import { deleteOrganization, getOrganizations } from "./apis";
 import { useToast } from "@chakra-ui/react";
-import { hasRole } from "@/MuLearnServices/common_functions";
-import { roles } from "@/MuLearnServices/types";
 import {
     columnsCollege,
     columnsCommunities,
@@ -37,7 +35,6 @@ function Organizations() {
 
     useEffect(() => {
         if (firstFetch.current) {
-            if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
 
             getOrganizations(
                 activeTab,
@@ -55,13 +52,29 @@ function Organizations() {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getOrganizations(activeTab, setData, nextPage, perPage);
+        getOrganizations(
+            activeTab,
+            setData,
+            nextPage,
+            perPage,
+            setTotalPages,
+            "",
+            sort
+        );
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getOrganizations(activeTab, setData, prevPage, perPage);
+        getOrganizations(
+            activeTab,
+            setData,
+            prevPage,
+            perPage,
+            setTotalPages,
+            "",
+            sort
+        );
     };
 
     const handleSearch = (search: string) => {
@@ -114,6 +127,7 @@ function Organizations() {
 
     const handleIconClick = (column: string) => {
         if (sort === column) {
+            console.log('desc', column)
             setSort(`-${column}`);
             getOrganizations(
                 activeTab,
@@ -126,6 +140,7 @@ function Organizations() {
             );
         } else {
             setSort(column);
+            console.log('asc', column)
             getOrganizations(
                 activeTab,
                 setData,
@@ -167,7 +182,7 @@ function Organizations() {
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
-                        CSV={`${organizationRoutes.getOrgCsv}/${activeTabName}`}
+                        CSV={`${organizationRoutes.getOrgCsv}/${activeTabName}/`}
                     />
                     <Table
                         rows={data}
@@ -191,6 +206,8 @@ function Organizations() {
                             margin="10px 0"
                             handleNextClick={handleNextClick}
                             handlePreviousClick={handlePreviousClick}
+                            onSearchText={handleSearch}
+                            onPerPageNumber={handlePerPageNumber}
                         />
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>
