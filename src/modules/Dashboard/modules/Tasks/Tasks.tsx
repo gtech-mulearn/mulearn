@@ -17,6 +17,7 @@ export const Tasks = (props: Props) => {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+    const [isLoading, setIsLoading] = useState(false);
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
     const firstFetch = useRef(true);
@@ -48,6 +49,7 @@ export const Tasks = (props: Props) => {
             setData,
             nextPage,
             perPage,
+            setIsLoading,
             setTotalPages,
             "",
             sort
@@ -61,6 +63,7 @@ export const Tasks = (props: Props) => {
             setData,
             prevPage,
             perPage,
+            setIsLoading,
             setTotalPages,
             "",
             sort
@@ -69,29 +72,29 @@ export const Tasks = (props: Props) => {
 
     useEffect(() => {
         if (firstFetch.current) {
-            getTasks(setData, 1, perPage, setTotalPages, "", "");
+            getTasks(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
         }
         firstFetch.current = false;
     }, [data]);
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getTasks(setData, 1, perPage, setTotalPages, search, "");
+        getTasks(setData, 1, perPage, setIsLoading, setTotalPages, search, "");
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getTasks(setData, 1, selectedValue, setTotalPages, "", "");
+        getTasks(setData, 1, selectedValue, setIsLoading, setTotalPages, "", "");
     };
 
     const handleIconClick = (column: string) => {
         if (sort === column) {
             setSort(`-${column}`);
-            getTasks(setData, 1, perPage, setTotalPages, "", `-${column}`);
+            getTasks(setData, 1, perPage, setIsLoading, setTotalPages, "", `-${column}`);
         } else {
             setSort(column);
-            getTasks(setData, 1, perPage, setTotalPages, "", column);
+            getTasks(setData, 1, perPage, setIsLoading, setTotalPages, "", column);
         }
 
         //console.log(`Icon clicked for column: ${column}`);
@@ -143,6 +146,7 @@ export const Tasks = (props: Props) => {
                     />
                     <Table
                         rows={data}
+                        isloading={isLoading}
                         page={currentPage}
                         perPage={perPage}
                         columnOrder={columnOrder}
@@ -156,14 +160,17 @@ export const Tasks = (props: Props) => {
                             columnOrder={columnOrder}
                             onIconClick={handleIconClick}
                         />
-                        <Pagination
-                            currentPage={currentPage}
-                            totalPages={totalPages}
-                            margin="10px 0"
-                            handleNextClick={handleNextClick}
-                            handlePreviousClick={handlePreviousClick} onSearchText={handleSearch}
-                            onPerPageNumber={handlePerPageNumber}
-                        />
+                        <div>
+                            {!isLoading &&
+                                <Pagination
+                                    currentPage={currentPage}
+                                    totalPages={totalPages}
+                                    margin="10px 0"
+                                    handleNextClick={handleNextClick}
+                                    handlePreviousClick={handlePreviousClick} onSearchText={handleSearch}
+                                    onPerPageNumber={handlePerPageNumber}
+                                />}
+                        </div>
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>
                 </>

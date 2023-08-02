@@ -8,10 +8,12 @@ export const getManageRoles = async (
     setData: any,
     page: number,
     selectedValue: number,
+    setIsLoading: (isLoading: boolean) => void,
     setTotalPages?: any,
     search?: string,
     sortID?: string
 ) => {
+    setIsLoading(true);
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getRolesData,
@@ -28,7 +30,9 @@ export const getManageRoles = async (
 
         setData(interestGroups.response.data);
         setTotalPages(interestGroups.response.pagination.totalPages);
+        setIsLoading(false);
     } catch (err: unknown) {
+        setIsLoading(false);
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
