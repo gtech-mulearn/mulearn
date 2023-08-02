@@ -139,7 +139,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
             title: "Manage Locations",
             hasView: true,
             roles: [roles.ADMIN],
-            icon: <i className="fi fi-rr-map-marker"></i>
+            icon: <i className="fi fi-ss-map-marker"></i>
         },
         {
             url: "/dashboard/zonal-dashboard",

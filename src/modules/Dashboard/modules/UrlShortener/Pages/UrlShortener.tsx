@@ -269,7 +269,9 @@ const UrlShortener = () => {
                                     style={{
                                         width: "fit-content",
                                         minWidth: "auto",
-                                        margin: "20px 0px 0px"
+                                        margin: "20px 0px 0px",
+                                        color: "#5570F1",
+                                        backgroundColor: "#F3F3F4",
                                     }}
                                     onClick={() => {
                                         formik.handleReset(formik.values);

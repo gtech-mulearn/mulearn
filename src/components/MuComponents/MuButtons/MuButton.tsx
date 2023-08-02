@@ -117,7 +117,7 @@ export const DropDownButtons = (props: {
                     >
                         <path
                             d="M1 1L6 6L11 1"
-                            stroke="#a9c8f3"
+                            stroke="#9297aa"
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"

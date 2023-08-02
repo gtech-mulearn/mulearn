@@ -5,9 +5,6 @@ import MulearnBrand from "../assets/MulearnBrand";
 import { background, useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
-import { MdOutlineLogout } from "react-icons/md";
-import { TbSettingsStar } from "react-icons/tb";
-
 import {
     DropDownButtons,
     MuButton,
@@ -18,6 +15,8 @@ import {
     fetchLocalStorage
 } from "@/MuLearnServices/common_functions";
 import { Role } from "@/MuLearnServices/types";
+import MuLogOut from "../assets/svg/MuLogOut";
+import MuSettings from "../assets/svg/MuSettings";
 
 //TODO: Change the style's casing to match the rest of the project
 type Props = {
@@ -254,19 +253,20 @@ const SideNavBar = (props: Props) => {
                         <div className={styles.bottomButtons}>
                             <MuButton
                                 text="Settings"
-                                icon={<TbSettingsStar />}
+                                icon={<MuSettings />}
                                 onClick={() => navigate("/settings")}
                                 style={{
                                     color: "#9297AA",
-                                    backgroundColor: "#fff"
+                                    backgroundColor: "#fff",
+                                    // marginBottom: "0px"
                                 }}
                             />
                             <MuButtonLight
                                 text="Logout"
-                                icon={<MdOutlineLogout />}
+                                icon={<MuLogOut/>}
                                 style={{
                                     backgroundColor: "#fff",
-                                    color: "#FF7676"
+                                    color: "#FF7676",
                                 }}
                                 onClick={() => {
                                     localStorage.clear();
