@@ -230,38 +230,6 @@ const LandingPage = () => {
                             onChange={handleIgChange}
                             styles={customStyles}
                         />
-                        {/* <FormikReactSelectCustom
-                            name={"country"}
-                            placeholder="Select Country"
-                            options={CountryOptions}
-                            isDisabled={true}
-                            onchangeFunction={handleCountryChange}
-                        />
-                        <FormikReactSelectCustom
-                            name={"state"}
-                            placeholder="Select State"
-                            isDisabled={true}
-                            options={stateOptions}
-                            onchangeFunction={handleStateChange}
-                        />
-                        <FormikReactSelectCustom
-                            name={"district"}
-                            placeholder="Select District"
-                            options={districtOptions}
-                            onchangeFunction={handleDistrictChange}
-                        />
-                        <FormikReactSelectCustom
-                            name={"campus"}
-                            placeholder="Select Campus"
-                            options={campusOptions}
-                            onchangeFunction={handleCampusChange}
-                        />
-                        <FormikReactSelectCustom
-                            name={"ig"}
-                            placeholder="Select Interest Groups"
-                            options={igOptions}
-                            onchangeFunction={handleIgChange}
-                        /> */}
                     </div>
                 </form>
                 <div className={styles.container}>
