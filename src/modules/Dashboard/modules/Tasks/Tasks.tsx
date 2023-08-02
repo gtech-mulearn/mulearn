@@ -1,4 +1,4 @@
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import THead from "@/MuLearnComponents/Table/THead";
 import Table from "@/MuLearnComponents/Table/Table";
@@ -117,21 +117,20 @@ export const Tasks = (props: Props) => {
                     gap: "15px"
                 }}
             >
-                <MuButton
-                    className={styles.createBtn}
-                    text={"Bulk Import"}
-                    icon={<AiOutlinePlusCircle />}
-                    onClick={() => navigate("/dashboard/tasks/bulk-import")}
-                    style={{
-                        width: "auto"
-                    }}
-                />
-                <MuButton
-                    className={styles.createBtn}
-                    text={"Create"}
-                    icon={<AiOutlinePlusCircle />}
-                    onClick={handleCreate}
-                />
+                
+                <PowerfulButton 
+                text={"Bulk Import"}
+                icon={<AiOutlinePlusCircle />}
+                onButtonClick={() => navigate("/dashboard/tasks/bulk-import")}
+                padding="0.3rem 0.7rem"
+                margin="0"/>
+                
+                <PowerfulButton 
+                text={"Create"}
+                icon={<AiOutlinePlusCircle />}
+                onButtonClick={handleCreate}
+                padding="0.3rem 0.7rem"
+                margin="0"/>
             </div>
 
             {data && (
