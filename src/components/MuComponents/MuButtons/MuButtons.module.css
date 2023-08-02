@@ -7,7 +7,7 @@
 .dropdown_btn {
     width: 100%;
     min-width: 180px;
-    padding: 10px 20px;
+    padding: 6px 20px;
     display: flex;
     border-radius: 7px;
     flex-direction: row;
@@ -51,6 +51,10 @@
 .btn_light .btn_icon,
 .dropdown_btn .btn_icon {
     margin-right: 20px;
+    padding: 0;
+    margin-bottom: 0;
+    width: 20px;
+    font-size: 20px;
 }
 
 /* dropdown button style */
