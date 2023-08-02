@@ -1,6 +1,6 @@
 import React from "react";
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
-import {  NavigateFunction } from "react-router-dom";
+import { NavigateFunction } from "react-router-dom";
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { KKEMRoutes, dashboardRoutes } from "@/MuLearnServices/urls";
 
@@ -10,12 +10,13 @@ export const KKEMLogin = (
     toast: (options?: UseToastOptions | undefined) => ToastId,
     navigate: NavigateFunction,
     setIsLoading: (loading: boolean) => void,
-    redirectPath: string
+    redirectPath: string,
+    jsid?:string | null,
+    integration?:string | null
 ) => {
-    console.log({emailOrMuid, password,integration:"DWMS"})
     setIsLoading(true);
     publicGateway
-        .post(KKEMRoutes.userLogin, { emailOrMuid, password})
+        .post(KKEMRoutes.userLogin, { emailOrMuid, password,jsid,integration:integration })
         .then(response => {
             if (response.data.hasError == false) {
                 localStorage.setItem(
@@ -31,7 +32,8 @@ export const KKEMLogin = (
                     description: "You have been logged in successfully",
                     status: "success",
                     duration: 3000,
-                    isClosable: true
+                    isClosable: true,
+                    position: "top-right"
                 });
                 privateGateway
                     .get(dashboardRoutes.getInfo)
@@ -64,7 +66,8 @@ export const KKEMLogin = (
                 title: error.response.data.message.general[0],
                 status: "error",
                 duration: 3000,
-                isClosable: true
+                isClosable: true,
+                position: "top-right"
             });
         });
 };

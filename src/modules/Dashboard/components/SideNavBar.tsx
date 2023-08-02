@@ -2,8 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./SideNavBar.module.css";
 import MulearnBrand from "../assets/MulearnBrand";
 
-import { useToast } from "@chakra-ui/react";
+import { background, useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+
+import { MdOutlineLogout } from "react-icons/md";
+import { TbSettingsStar } from "react-icons/tb";
+
 import {
     DropDownButtons,
     MuButton,
@@ -37,7 +41,7 @@ const SideNavBar = (props: Props) => {
     const [connected, setConnected] = useState(false);
 
     const userInfo = fetchLocalStorage<UserInfo>("userInfo")
-    
+
     useEffect(() => {
         if (userInfo && userInfo.exist_in_guild) {
             setConnected(userInfo.exist_in_guild);
@@ -189,34 +193,47 @@ const SideNavBar = (props: Props) => {
                                 )}
 
                         </div>
-
-                        <MuButtonLight
-                            text="Logout"
-                            icon={<i className="fi fi-sr-key"></i>}
-                            style={
-                                window.innerWidth <= 820
-                                    ? {
-                                        border: "none",
-                                        borderRadius: "10px",
-                                        padding: "20px 20px",
-                                        background: "#eee",
-                                    }
-                                    : {
-                                        background: "#eee",
-                                    }
-                            }
-                            onClick={() => {
-                                localStorage.clear();
-                                toast({
-                                    title: "Logged out",
-                                    description: "Redirecting to login page.",
-                                    status: "error",
-                                    duration: 9000,
-                                    isClosable: true
-                                });
-                                setTimeout(() => window.location.reload(), 900);
-                            }}
-                        />
+                        <div className={styles.bottomButtons}>
+                            <MuButton
+                                text="Settings"
+                                icon={<TbSettingsStar />}
+                                onClick={() => navigate("/settings")}
+                                style={{
+                                    color: '#9297AA',
+                                    backgroundColor: "#fff",
+                                }}
+                            />
+                            <MuButtonLight
+                                text="Logout"
+                                icon={<MdOutlineLogout />}
+                                style={
+                                    window.innerWidth <= 820
+                                        ? {
+                                            border: "none",
+                                            borderRadius: "10px",
+                                            padding: "20px 20px",
+                                            backgroundColor: "#fff",
+                                            color: '#FF7676',
+                                        }
+                                        : {
+                                            backgroundColor: "#fff",
+                                            color: '#FF7676',
+                                        }
+                                }
+                                onClick={() => {
+                                    localStorage.clear();
+                                    toast({
+                                        title: "Logged out",
+                                        description: "Redirecting to login page.",
+                                        status: "error",
+                                        duration: 9000,
+                                        isClosable: true
+                                    });
+                                    setTimeout(() => window.location.reload(), 900);
+                                }}
+                            />
+                            <p className={styles.copyrightText}>All Rights Reserved © µLearn {new Date().getFullYear()}</p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -8,7 +8,7 @@ import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
 export default function MulearnAbout() {
     const [searchParams] = useSearchParams();
-    const dwms_id = searchParams.get("dwms_id");
+    const jsid = searchParams.get("jsid");
     const mu_id = searchParams.get("mu_id");
     const [modalOpen, setModalOpen] = useState(false);
     return (
@@ -26,11 +26,11 @@ export default function MulearnAbout() {
                     entrepreneurship to data science
                 </p>
 
-                {dwms_id && !(dwms_id && mu_id) &&(
+                {jsid && !(jsid && mu_id) &&(
                     <>
                         <p className={styles.description}>Join Now: </p>
                         <section id="muId" className={styles.muidSection}>
-                            <KKEMAuth dwmsId={dwms_id} />
+                            <KKEMAuth jsid={jsid} />
                             <a
                                 href="https://app.mulearn.org/register"
                                 target="blank"

@@ -38,13 +38,25 @@ function ManageRoles() {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getManageUsers(setData, nextPage, perPage);
+        getManageUsers(
+            setData,
+            nextPage,
+            perPage,
+            "",
+            sort
+        );
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getManageUsers(setData, prevPage, perPage);
+        getManageUsers(
+            setData,
+            prevPage,
+            perPage,
+            "",
+            sort
+        );
     };
 
     useEffect(() => {
