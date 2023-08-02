@@ -17,7 +17,7 @@
     text-align: left;
     cursor: pointer;
     transition: 0.3s ease-in-out;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: normal;
     color: var(--lightGray);
 }
