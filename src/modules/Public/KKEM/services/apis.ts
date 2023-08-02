@@ -10,11 +10,13 @@ export const KKEMLogin = (
     toast: (options?: UseToastOptions | undefined) => ToastId,
     navigate: NavigateFunction,
     setIsLoading: (loading: boolean) => void,
-    redirectPath: string
+    redirectPath: string,
+    jsid?:string | null,
+    integration?:string | null
 ) => {
     setIsLoading(true);
     publicGateway
-        .post(KKEMRoutes.userLogin, { emailOrMuid, password })
+        .post(KKEMRoutes.userLogin, { emailOrMuid, password,jsid,integration:integration })
         .then(response => {
             if (response.data.hasError == false) {
                 localStorage.setItem(
