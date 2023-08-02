@@ -231,6 +231,7 @@ const SideNavBar = (props: Props) => {
                                     setTimeout(() => window.location.reload(), 900);
                                 }}
                             />
+                            <p className={styles.copyrightText}>All Rights Reserved © µLearn {new Date().getFullYear()}</p>
                         </div>
                     </div>
                 </div>

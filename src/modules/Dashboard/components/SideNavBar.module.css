@@ -45,7 +45,7 @@
     padding: 60px 20px 20px;
     justify-content: center;
     transition: all 0.3s ease-in-out;
-    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 0px 20px rgba(0, 0, 0, 0.1); */
 }
 
 .side_nav_bar_container .side_nav_bar {
@@ -184,9 +184,12 @@
     margin-top: 20px;
 }
 
-/* .settings_btn {
-    color: #000;
-} */
+.copyrightText {
+    font-size: 8px;
+    text-align: center;
+    color: var(--dimText);
+    font-weight: normal;
+}
 
 /* responsive */
 @media screen and (min-width: 1324px) {
