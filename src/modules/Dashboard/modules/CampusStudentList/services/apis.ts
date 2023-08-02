@@ -1,16 +1,15 @@
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 
-//TODO: Change to alias the services folder
-
-type studentData = UseStateFunc<any>
-type campusData = UseStateFunc<any>
+type CampusDataSet = 'college_name'| 'campus_lead'| 'campus_code'| 'campus_zone'| 'total_karma'| 'total_members'| 'active_members' | 'rank'
+type studentData = UseStateFunc<any[]>
+type campusData = UseStateFunc<{ [T in CampusDataSet]: string }>
 
 export const getStudentDetails = (
     setStudentData: studentData,
     page: number,
     selectedValue: number,
-    setTotalPages?: any,
+    setTotalPages?: UseStateFunc<number>,
     search?: string,
     sortID?: string
 ) => {
@@ -23,10 +22,10 @@ export const getStudentDetails = (
                 sortBy: sortID
             }
         })
-        .then(response => {
+        .then((response: APIResponse<{data:any, pagination:{ totalPages:number }}>) => {
             // console.log(response.data.response);
             setStudentData(response.data.response.data);
-            setTotalPages(response.data.response.pagination.totalPages);
+            if (setTotalPages) setTotalPages(response.data.response.pagination.totalPages);
         })
         .catch(error => {
             console.log(error);
@@ -37,7 +36,7 @@ export const getCampusDetails = (
 ) => {
     privateGateway
         .get(dashboardRoutes.getCampusDetails)
-        .then(response => {
+        .then((response: APIResponse<{ [T in CampusDataSet]: string }>) => {
             // console.log(response.data.response);
             setCampusData(response.data.response);
         })
