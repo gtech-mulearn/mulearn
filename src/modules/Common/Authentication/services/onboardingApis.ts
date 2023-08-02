@@ -61,7 +61,7 @@ export interface DWMSDetails {
     gender: string;
     dob: string;
     key_skills: string;
-    dwms_id: string;
+    jsid: string;
     job_seeker_id: string;
 }
 
@@ -331,7 +331,7 @@ export const getDWMSDetails = (
                 gender,
                 dob,
                 key_skills,
-                dwms_id,
+                jsid,
                 job_seeker_id
             } = response.data.response.registration;
             const dwmsDetails: DWMSDetails = {
@@ -342,7 +342,7 @@ export const getDWMSDetails = (
                 gender,
                 dob,
                 key_skills,
-                dwms_id,
+                jsid,
                 job_seeker_id
                 // Initialize other fields here
             };
