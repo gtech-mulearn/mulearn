@@ -9,7 +9,7 @@
     min-width: 180px;
     padding: 10px 20px;
     display: flex;
-    border-radius: 10px;
+    border-radius: 7px;
     flex-direction: row;
     align-items: center;
     margin-bottom: 16px;
@@ -19,8 +19,9 @@
     transition: 0.3s ease-in-out;
     font-weight: 600;
     letter-spacing: normal;
+    color: var(--lightGray);
 }
-.btn_light{
+.btn_light {
     color: #456ff6;
 }
 
@@ -39,8 +40,7 @@
 
 .btn:hover,
 .dropdown_btn:hover {
-    background: #456ff6;
-    color: #fff;
+    background: var(--dimBlue);
 }
 
 .btn_light:hover {
@@ -88,7 +88,7 @@
     min-width: 100px;
     padding: 10px 20px;
     display: flex;
-    border-radius: 10px;
+    border-radius: 7px;
     border: 1px solid var(--Primary);
     flex-direction: row;
     align-items: center;
