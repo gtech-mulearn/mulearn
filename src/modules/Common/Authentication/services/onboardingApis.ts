@@ -1,5 +1,5 @@
 import { publicGateway } from "../../../../services/apiGateways";
-import { onboardingRoutes } from "../../../../services/urls";
+import { KKEMRoutes, onboardingRoutes } from "../../../../services/urls";
 import { Dispatch, SetStateAction } from "react";
 import { NavigateFunction } from "react-router-dom";
 
@@ -310,10 +310,16 @@ export const emailVerification = (
 
 export const getDWMSDetails = (
     errorHandler: errorHandler,
+    jsId: string | null,
     setDWMSDetails: (data: DWMSDetails) => void
 ) => {
     publicGateway
-        .get("https://dummyjson.com/products/1")
+        .get(
+            KKEMRoutes.getDWMSDetails.replace(
+                "${jsid}",
+                jsId === null ? "" : jsId
+            )
+        )
         .then(response => {
             // console.log(response.data);
 
@@ -327,7 +333,7 @@ export const getDWMSDetails = (
                 key_skills,
                 dwms_id,
                 job_seeker_id
-            } = response.data;
+            } = response.data.response.registration;
             const dwmsDetails: DWMSDetails = {
                 job_seeker_fname,
                 job_seeker_lname,
