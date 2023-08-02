@@ -21,9 +21,9 @@
     letter-spacing: normal;
     color: var(--lightGray);
 }
-.btn_light {
+/* .btn_light {
     color: #456ff6;
-}
+} */
 
 .btn_loader {
     margin-left: 18px;

@@ -193,7 +193,7 @@ const SideNavBar = (props: Props) => {
                                 )}
 
                         </div>
-                        <div>
+                        <div className={styles.bottomButtons}>
                             <MuButton
                                 text="Settings"
                                 icon={<TbSettingsStar />}
@@ -213,6 +213,7 @@ const SideNavBar = (props: Props) => {
                                             borderRadius: "10px",
                                             padding: "20px 20px",
                                             backgroundColor: "#fff",
+                                            color: '#FF7676',
                                         }
                                         : {
                                             backgroundColor: "#fff",

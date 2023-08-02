@@ -266,12 +266,9 @@
         width: auto;
     }
 
-    .side_nav_bar_container .side_nav_bar .side_nav_bar_items > * {
-        border: 1px solid #456ff6;
-        border-radius: 0px;
-        border-width: 1px 0px 1px 0px;
-        margin-bottom: 0px;
-        padding: 20px 10px;
+    .bottomButtons {
+        border-top: 1px solid #456ff6;
+        padding-top: 20px;
     }
 
     .mulearn_brand2 svg {
