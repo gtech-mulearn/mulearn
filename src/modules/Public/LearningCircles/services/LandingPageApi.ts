@@ -7,6 +7,30 @@ interface Option {
     value: string;
     label: string;
 }
+export const fetchLC = async (
+    setData: React.Dispatch<any>,
+    ig: string,
+    campus: string,
+    district: string
+) => {
+    try {
+        const response = await privateGateway.post(
+            dashboardRoutes.getCampusLearningCircles + "list" + "/",
+            {
+                ig_id: ig,
+                org_id: campus,
+                district_id: district
+            }
+        );
+        setData(response.data.response);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+    }
+};
+
 export const fetchCountryOptions = async (
     setCountry: React.Dispatch<SetStateAction<Option[]>>
 ) => {
@@ -112,6 +136,22 @@ export const fetchCampusOptions = async (
         const error = err as AxiosError;
         if (error?.response) {
             throw error;
+        }
+    }
+};
+
+export const getInterestGroups = async () => {
+    try {
+        const response = (await privateGateway.get(dashboardRoutes.getTaskIGs))
+            ?.data?.response;
+        return response?.map((obj: any) => ({
+            value: obj.id,
+            label: obj.name
+        }));
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
         }
     }
 };

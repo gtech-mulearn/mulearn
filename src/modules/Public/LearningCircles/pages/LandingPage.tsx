@@ -2,20 +2,15 @@ import { useEffect, useState } from "react";
 import styles from "./LandingPage.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import {
-    getCountries,
-    getDistrict,
-    getState
-} from "../../../Common/Authentication/services/onboardingApis";
-import { Formik, useFormik } from "formik";
-import { FormikReactSelectCustom } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import {
     fetchCampusOptions,
     fetchCountryOptions,
     fetchDistrictOptions,
-    fetchStateOptions
+    fetchLC,
+    fetchStateOptions,
+    getInterestGroups
 } from "../services/LandingPageApi";
-import { ActionMeta, InputActionMeta } from "react-select";
 import Select from "react-select";
+import { LcRandom } from "../services/LandingPageInterfaces";
 
 interface Option {
     value: string;
@@ -23,6 +18,7 @@ interface Option {
 }
 const LandingPage = () => {
     const navigate = useNavigate();
+    const [data, setData] = useState<any>([]);
     const [CountryOptions, setCountryOptions] = useState<Option[]>([]);
     const [country, setCountry] = useState(
         "f1840070-ec45-4b09-b582-763482137474"
@@ -33,7 +29,7 @@ const LandingPage = () => {
     const [district, setDistrict] = useState("");
     const [campusOptions, setCampusOptions] = useState<Option[]>([]);
     const [campus, setCampus] = useState("");
-    const [igOptions, setIgOptions] = useState<Option[]>([]);
+    const [igOptions, setIgOptions] = useState<Option[] | undefined>([]);
     const [ig, setIg] = useState("");
 
     useEffect(() => {
@@ -45,41 +41,52 @@ const LandingPage = () => {
 
     const handleCountryChange = async (selectedCountry: Option | null) => {
         if (selectedCountry) {
+            setCountry(selectedCountry.value);
             fetchStateOptions(selectedCountry.value, setStateOptions);
             // Reset other options
             setDistrictOptions([]);
             setCampusOptions([]);
-            setIgOptions([]);
+            setIgOptions(undefined);
+			setData([]);
         }
     };
 
     const handleStateChange = (state: Option | null) => {
         if (state) {
-            console.log(state);
+            setState(state.value);
             fetchDistrictOptions(state.value, setDistrictOptions);
             // Reset other options
             setCampusOptions([]);
-            setIgOptions([]);
+            setIgOptions(undefined);
+			setData([]);
         }
     };
 
     const handleDistrictChange = async (selectedDistrict: Option | null) => {
         if (selectedDistrict) {
-            console.log(selectedDistrict);
+            setDistrict(selectedDistrict.value);
             fetchCampusOptions(selectedDistrict.value, setCampusOptions);
             // Reset other options
-            setIgOptions([]);
+            setIgOptions(undefined);
+			setData([]);
         }
     };
 
     const handleCampusChange = async (selectedCampus: Option | null) => {
-        // if (selectedCampus) {
-        //     fetchIgOptions(selectedCampus.value, setIgOptions);
-        // }
+        if (selectedCampus) {
+            setCampus(selectedCampus.value);
+            setIgOptions(await getInterestGroups());
+        }
     };
 
     const handleIgChange = async (selectedIg: Option | null) => {
-        // Reset other options
+        if (selectedIg) {
+            setIg(selectedIg.value);
+            fetchLC(setData, ig, campus, district);
+            setTimeout(() => {
+                console.log(data);
+            }, 2000);
+        }
     };
 
     const customStyles: any = {
@@ -96,16 +103,12 @@ const LandingPage = () => {
         }),
         placeholder: (provided: any) => ({
             ...provided,
-            color: "#000" // Specify your desired color here
+            color: "#000"
         }),
         indicatorSeparator: (provided: any) => ({
             ...provided,
-            display: "none" // Hide the indicator separator
+            display: "none"
         })
-    };
-
-    const handleChange = (selectedOption: any) => {
-        console.log(selectedOption.value);
     };
 
     return (
@@ -146,7 +149,9 @@ const LandingPage = () => {
                     time learning about new things with a group of people with
                     same interests!
                 </p>
-                <button>Create/Join Learning Circles</button>
+                <button onClick={() => navigate("/dashboard/learning-circle")}>
+                    Create/Join Learning Circles
+                </button>
             </div>
 
             <div className={styles.LClandingPageEarth}>
@@ -233,72 +238,23 @@ const LandingPage = () => {
                     </div>
                 </form>
                 <div className={styles.container}>
-                    <div className={styles.exploreCards}>
-                        <img
-                            src="https://i.ibb.co/zJkPfqB/Iot-Vector.png"
-                            alt="png"
-                        />
-                        <h1>Internet of Things</h1>
-                        <span>
-                            <b>Creative Design</b> &nbsp;{" "}
-                            <b>Members count: 08</b>
-                        </span>
-                    </div>
-                    <div className={styles.exploreCards}>
-                        <img
-                            src="https://i.ibb.co/zJkPfqB/Iot-Vector.png"
-                            alt="png"
-                        />
-                        <h1>Internet of Things</h1>
-                        <span>
-                            <b>Creative Design</b> &nbsp;{" "}
-                            <b>Members count: 08</b>
-                        </span>
-                    </div>
-                    <div className={styles.exploreCards}>
-                        <img
-                            src="https://i.ibb.co/zJkPfqB/Iot-Vector.png"
-                            alt="png"
-                        />
-                        <h1>Internet of Things</h1>
-                        <span>
-                            <b>Creative Design</b> &nbsp;{" "}
-                            <b>Members count: 08</b>
-                        </span>
-                    </div>
-                    <div className={styles.exploreCards}>
-                        <img
-                            src="https://i.ibb.co/zJkPfqB/Iot-Vector.png"
-                            alt="png"
-                        />
-                        <h1>Internet of Things</h1>
-                        <span>
-                            <b>Creative Design</b> &nbsp;{" "}
-                            <b>Members count: 08</b>
-                        </span>
-                    </div>
-                    <div className={styles.exploreCards}>
-                        <img
-                            src="https://i.ibb.co/zJkPfqB/Iot-Vector.png"
-                            alt="png"
-                        />
-                        <h1>Internet of Things</h1>
-                        <span>
-                            <b>Creative Design</b> &nbsp;{" "}
-                            <b>Members count: 08</b>
-                        </span>
-                    </div>
-                    <div className={styles.exploreCards}>
-                        <img
-                            src="https://i.ibb.co/zJkPfqB/Iot-Vector.png"
-                            alt="png"
-                        />
-                        <h1>Internet of Things</h1>
-                        <span>
-                            <b>Creative Design</b> &nbsp;{" "}
-                            <b>Members count: 08</b>
-                        </span>
-                    </div>
+                    {data.length > 0 ? (
+                        data.map((lc: LcRandom) => (
+                            <div className={styles.exploreCards}>
+                                <img
+                                    src="https://i.ibb.co/zJkPfqB/Iot-Vector.png"
+                                    alt="png"
+                                />
+                                <h1>{lc.name}</h1>
+                                <span>
+                                    <b>{lc.ig_name}</b> &nbsp;{" "}
+                                    <b>Members count: {lc.member_count}</b>
+                                </span>
+                            </div>
+                        ))
+                    ) : (
+                        <div className={styles.container}></div>
+                    )}
                 </div>
             </div>
         </div>
