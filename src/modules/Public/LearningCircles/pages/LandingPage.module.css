@@ -301,3 +301,7 @@
         gap: 1.5rem;
     }
 }
+
+.LClandingPageForm select {
+	width: auto;
+}
