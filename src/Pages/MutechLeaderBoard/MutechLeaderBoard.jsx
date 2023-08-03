@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import Style from './MutechLeaderBoard.module.css'
 import Navbar from '../../Components/Navbar/Navbar'
 import OpenElkAPICall from './Utils/OpenElkAPICall';
