@@ -29,6 +29,7 @@ type FooterProps = {
 
 type TableProps = {
     rows: Data[];
+    isloading?: boolean
     children?: [
         React.ReactElement<HeaderProps>?,
         React.ReactElement<FooterProps>?,
@@ -60,7 +61,6 @@ TODO: Move the Common Functions to a separate file
 */
 
 const Table: FC<TableProps> = (props: TableProps) => {
-    const [isLoading, setIsLoading] = useState<boolean>(true);
     const [isDeleteOpen, setIsDeleteOpen] = useState<boolean[]>(
         props.rows.map(() => false)
     );
@@ -71,17 +71,17 @@ const Table: FC<TableProps> = (props: TableProps) => {
     // Function to toggle the modal for a specific row
     const toggleModal = (index: number, type: string) => {
         if (type == ModalType[0]) {
-			setIsVerifyOpen(prevState => {
-				const newState = [...prevState];
-				newState[index] = !newState[index];
-				return newState;
-			});
+            setIsVerifyOpen(prevState => {
+                const newState = [...prevState];
+                newState[index] = !newState[index];
+                return newState;
+            });
         } else {
-			setIsDeleteOpen(prevState => {
-				const newState = [...prevState];
-				newState[index] = !newState[index];
-				return newState;
-			});
+            setIsDeleteOpen(prevState => {
+                const newState = [...prevState];
+                newState[index] = !newState[index];
+                return newState;
+            });
         }
     };
 
@@ -122,158 +122,160 @@ const Table: FC<TableProps> = (props: TableProps) => {
     const startIndex = (props.page - 1) * props.perPage;
 
     // To change MuLoading Component
-    useEffect(() => {
-        setTimeout(() => {
 
-            setIsLoading(false);
-        }, 2000)
-    }, [props.rows]);
+    console.log(props.columnOrder.length)
 
     return (
         <>
 
             <div className={styles.table}>
-                {isLoading ? <MuLoader/> : 
                 <table className={styles.tableActual}>
                     {props.children?.[0]}
-                    <tbody>
-                        {props.rows?.map((rowData, index) => (
-                            <tr key={index}>
-                                <td className={styles.td}>
-                                    {startIndex + index + 1}
-                                </td>{" "}
-                                {props.columnOrder.map(column => (
-                                    <td
-                                        className={styles.td}
-                                        key={column.column}
-                                    >
-                                        {convertToNormalDate(
-                                            rowData[column.column]
-                                        )}
-                                    </td>
-                                ))}
-                                {props.id &&
-                                    props.id.map((column, columnIndex) => (
-                                        <td className={styles.td} key={column}>
-                                            <div className={styles.icons}>
-                                                {props.onCopyClick && (
-                                                    <button
-                                                        onClick={() =>
-                                                            props.onCopyClick &&
-                                                            props.onCopyClick(
-                                                                rowData[column]
-                                                            )
-                                                        }
-                                                    >
-                                                        <i className="fi fi-rr-duplicate"></i>
-                                                    </button>
-                                                )}
-                                                {props.onEditClick && (
-                                                    <button
-                                                        onClick={() =>
-                                                            props.onEditClick &&
-                                                            props.onEditClick(
-                                                                rowData[column]
-                                                            )
-                                                        }
-                                                    >
-                                                        <HiOutlinePencil />
-                                                    </button>
-                                                )}
-                                                {props.onVerifyClick && (
-                                                    <button
-                                                        className={styles.btns}
-                                                        onClick={() =>
-                                                            toggleModal(
-                                                                index,
-                                                                ModalType[0]
-                                                            )
-                                                        }
-                                                    >
-                                                        Verify
-                                                    </button>
-                                                )}
-                                                {isVerifyOpen[index] && (
-                                                    <Modal
-                                                        setIsOpen={() =>
-                                                            toggleModal(
-                                                                index,
-                                                                ModalType[0]
-                                                            )
-                                                        }
-                                                        id={rowData[column]}
-                                                        heading={
-                                                            props.modalVerifyHeading
-                                                        }
-                                                        content={
-                                                            props.modalVerifyContent
-                                                        }
-                                                        click={
-                                                            props.onVerifyClick
-                                                        }
-                                                    />
-                                                )}
-                                                {props.onDeleteClick && (
-                                                    <button
-                                                        onClick={() =>
-                                                            toggleModal(
-                                                                index,
-                                                                ModalType[1]
-                                                            )
-                                                        }
-                                                    >
-                                                        <AiOutlineDelete />
-                                                    </button>
-                                                )}
-                                                {isDeleteOpen[index] && (
-                                                    <Modal
-                                                        setIsOpen={() =>
-                                                            toggleModal(
-                                                                index,
-                                                                ModalType[1]
-                                                            )
-                                                        }
-                                                        id={rowData[column]}
-                                                        heading={
-                                                            props.modalDeleteHeading
-                                                        }
-                                                        content={
-                                                            props.modalDeleteContent
-                                                        }
-                                                        click={
-                                                            props.onDeleteClick
-                                                        }
-                                                        type={
-                                                            props.modalTypeContent
-                                                        }
-                                                    />
-                                                )}
-                                            </div>
+                    {props.isloading ?
+                        <tr>
+                            <td colSpan={props.columnOrder.length+2} style={{ width: '100%'}}>
+                                <MuLoader />
+                            </td>
+                        </tr>
+                        :
+                        <tbody>
+                            {props.rows?.map((rowData, index) => (
+                                <tr key={index}>
+                                    <td className={styles.td}>
+                                        {startIndex + index + 1}
+                                    </td>{" "}
+                                    {props.columnOrder.map(column => (
+                                        <td
+                                            className={styles.td}
+                                            key={column.column}
+                                        >
+                                            {convertToNormalDate(
+                                                rowData[column.column]
+                                            )}
                                         </td>
                                     ))}
-                                    
+                                    {props.id &&
+                                        props.id.map((column, columnIndex) => (
+                                            <td className={styles.td} key={column}>
+                                                <div className={styles.icons}>
+                                                    {props.onCopyClick && (
+                                                        <button
+                                                            onClick={() =>
+                                                                props.onCopyClick &&
+                                                                props.onCopyClick(
+                                                                    rowData[column]
+                                                                )
+                                                            }
+                                                        >
+                                                            <i className="fi fi-rr-duplicate"></i>
+                                                        </button>
+                                                    )}
+                                                    {props.onEditClick && (
+                                                        <button
+                                                            onClick={() =>
+                                                                props.onEditClick &&
+                                                                props.onEditClick(
+                                                                    rowData[column]
+                                                                )
+                                                            }
+                                                        >
+                                                            <HiOutlinePencil />
+                                                        </button>
+                                                    )}
+                                                    {props.onVerifyClick && (
+                                                        <button
+                                                            className={styles.btns}
+                                                            onClick={() =>
+                                                                toggleModal(
+                                                                    index,
+                                                                    ModalType[0]
+                                                                )
+                                                            }
+                                                        >
+                                                            Verify
+                                                        </button>
+                                                    )}
+                                                    {isVerifyOpen[index] && (
+                                                        <Modal
+                                                            setIsOpen={() =>
+                                                                toggleModal(
+                                                                    index,
+                                                                    ModalType[0]
+                                                                )
+                                                            }
+                                                            id={rowData[column]}
+                                                            heading={
+                                                                props.modalVerifyHeading
+                                                            }
+                                                            content={
+                                                                props.modalVerifyContent
+                                                            }
+                                                            click={
+                                                                props.onVerifyClick
+                                                            }
+                                                        />
+                                                    )}
+                                                    {props.onDeleteClick && (
+                                                        <button
+                                                            onClick={() =>
+                                                                toggleModal(
+                                                                    index,
+                                                                    ModalType[1]
+                                                                )
+                                                            }
+                                                        >
+                                                            <AiOutlineDelete />
+                                                        </button>
+                                                    )}
+                                                    {isDeleteOpen[index] && (
+                                                        <Modal
+                                                            setIsOpen={() =>
+                                                                toggleModal(
+                                                                    index,
+                                                                    ModalType[1]
+                                                                )
+                                                            }
+                                                            id={rowData[column]}
+                                                            heading={
+                                                                props.modalDeleteHeading
+                                                            }
+                                                            content={
+                                                                props.modalDeleteContent
+                                                            }
+                                                            click={
+                                                                props.onDeleteClick
+                                                            }
+                                                            type={
+                                                                props.modalTypeContent
+                                                            }
+                                                        />
+                                                    )}
+                                                </div>
+                                            </td>
+                                        ))}
+
                                 </tr>
                             ))}
                         </tbody>
-                    </table>
-                }
+                    }
+                </table>
             </div>
-            
-            {(()=>{
-                if (isLoading) {
+
+            {(() => {
+                 if (props.isloading) {
 					return ""
                 }
-                if(props.rows.length)
-                    return(
+                if (props.rows.length)
+                    return (
                         <div className={styles.page}>{props.children?.[1]}</div>
                     )
                 else
                     return (
-                    <h1 style={{
-                        color:'red'
-                    }}>No data to display</h1>
+                        <h1 style={{
+                            color: 'red'
+                        }}>No data to display</h1>
                     )
-            })()} 
+            })()}
         </>
     );
 };
