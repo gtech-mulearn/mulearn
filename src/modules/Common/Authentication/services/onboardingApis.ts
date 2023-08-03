@@ -1,13 +1,14 @@
 import { publicGateway } from "@/MuLearnServices/apiGateways";
 import { KKEMRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import { NavigateFunction } from "react-router-dom";
+import { useFormik } from 'formik'
 
 // Define the type of MyValues
 type NN = {name: string, id: string}
 type TT = {title:string, id: string}
 
 type InitialValues = { firstName: string, lastName: string, email: string, password: string, confirmPassword: string, phone: undefined, gender: string, dob: string, role: string, country: string, state: string, district: string, organization: string, community: string[], dept: string, yog: string, mentorRole: string, areaOfInterest: never[], general: string, referralId: string }
-type FormikType = ReturnType<typeof import('formik').useFormik<InitialValues>>
+type FormikType = ReturnType<typeof useFormik<InitialValues>>
 
 type getAPI = UseStateFunc<TT[]>
 type AoiAPI = UseStateFunc<NN[]>

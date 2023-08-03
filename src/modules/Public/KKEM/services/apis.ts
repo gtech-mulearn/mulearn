@@ -9,7 +9,7 @@ export const KKEMLogin = (
     navigate: NavigateFunction,
     setIsLoading: UseStateFunc<boolean>,
     redirectPath: string,
-    jsid?:string,
+    jsid?:string | null,
     integration?:string
 ) => {
     setIsLoading(true);
