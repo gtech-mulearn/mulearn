@@ -161,7 +161,7 @@ const Teams = () => {
                 <TeamCard
                   name={member.name}
                   designation={member.team}
-                  image={member.image}
+                  image={member.image ? member.image : `assets/team/pillarsq3/${member.name}.webp`}
                   linkedIn={member.linkedin ? member.linkedin : ""}
                   github={member.github ? member.github : ""}
                   twitter={member.twitter ? member.twitter : ""}

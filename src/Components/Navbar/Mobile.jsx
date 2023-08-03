@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from "react";
 import NavLinks from "./NavLinks";
 import { Link } from "react-router-dom";
 import Notification from "./Notification";
-import { links, getLinks } from "./Mylinks";
+import { getLinks } from "./Mylinks";
 import SearchBar from "./SearchBar";
 import { useState } from "react";
 import SheetAPI from "../../Utils/SheetAPI";

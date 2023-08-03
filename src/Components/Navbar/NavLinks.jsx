@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { getLinks, links } from "./Mylinks";
+import { getLinks } from "./Mylinks";
 import { MobileView } from "./Mobile";
 import { MenuName, SubMenu } from "./Desktop";
 import "./Navbar.css"; /* Added CSS*/
