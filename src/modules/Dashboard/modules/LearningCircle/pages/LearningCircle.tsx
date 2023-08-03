@@ -69,9 +69,9 @@ const LearningCircle = (props: Props) => {
                                     <div className={styles.MeetingBtn}>
                                         <div>
                                         <b>
-                                            venue: {lc?.meet_place} <br /> 
+                                            venue:   {lc?.meet_place} <br /> 
                                         </b>
-                                        <b>time: {lc?.meet_time}</b>
+                                        <b>time:     {lc?.meet_time}</b>
                                         </div>
                                         
                                         {/* <button className={styles.BtnBtn}>
@@ -107,7 +107,7 @@ const LearningCircle = (props: Props) => {
                                         </div>
                                         <div className={styles.weeks}>
                                             <p>meeting days</p>
-                                            <p className={styles.Lcweek}>
+                                            <div className={styles.Lcweek}>
                                                 <div>
                                                     <input
                                                         type="checkbox"
@@ -161,7 +161,7 @@ const LearningCircle = (props: Props) => {
                                                         S
                                                     </label>
                                                 </div>
-                                            </p>
+                                            </div>
                                         </div>
                                         {/* <input type="text" placeholder="meeting venue" /> */}
                                     </div>
