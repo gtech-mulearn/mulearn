@@ -20,6 +20,7 @@ function ManageRoles() {
     const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const firstFetch = useRef(true);
     //Modal
@@ -43,6 +44,7 @@ function ManageRoles() {
             setData,
             nextPage,
             perPage,
+            setIsLoading,
             "",
             sort
         );
@@ -55,6 +57,7 @@ function ManageRoles() {
             setData,
             prevPage,
             perPage,
+            setIsLoading,
             "",
             sort
         );
@@ -63,7 +66,7 @@ function ManageRoles() {
     useEffect(() => {
         if (firstFetch.current) {
 
-            getManageRoles(setData, 1, perPage, setTotalPages, "", "");
+            getManageRoles(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
         }
         firstFetch.current = false;
     }, []);
@@ -72,13 +75,13 @@ function ManageRoles() {
         //refetch data when value is edited or created
         if (currModal === null) {
             //refresh table when modal closes
-            getManageRoles(setData, 1, perPage, setTotalPages, "", "");
+            getManageRoles(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
         }
     }, [currModal]);
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getManageRoles(setData, 1, perPage, setTotalPages, search, "");
+        getManageRoles(setData, 1, perPage, setIsLoading, setTotalPages, search, "");
     };
 
     const handleEdit = (id: string | number | boolean) => {
@@ -88,13 +91,13 @@ function ManageRoles() {
     const toast = useToast();
     const handleDelete = (id: string | undefined) => {
         deleteManageRoles(id, toast);
-        getManageRoles(setData, 1, perPage, setTotalPages, "", "");
+        getManageRoles(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getManageRoles(setData, 1, selectedValue, setTotalPages, "", "");
+        getManageRoles(setData, 1, selectedValue, setIsLoading, setTotalPages, "", "");
     };
 
     const handleCreate = () => {
@@ -108,13 +111,14 @@ function ManageRoles() {
                 setData,
                 1,
                 perPage,
+                setIsLoading,
                 setTotalPages,
                 "",
                 `-${column}`
             );
         } else {
             setSort(column);
-            getManageRoles(setData, 1, perPage, setTotalPages, "", column);
+            getManageRoles(setData, 1, perPage, setIsLoading, setTotalPages, "", column);
         }
 
         //console.log(`Icon clicked for column: ${column}`);
@@ -171,6 +175,7 @@ function ManageRoles() {
                         CSV={dashboardRoutes.getRolesList}
                     />
                     <Table
+                        isloading={isLoading}
                         rows={data}
                         page={currentPage}
                         perPage={perPage}
@@ -187,14 +192,18 @@ function ManageRoles() {
                             onIconClick={handleIconClick}
                             action={true}
                         />
-                        <Pagination
-                            currentPage={currentPage}
-                            totalPages={totalPages}
-                            margin="10px 0"
-                            handleNextClick={handleNextClick}
-                            handlePreviousClick={handlePreviousClick}
-                            onPerPageNumber={handlePerPageNumber}
-                        />
+                        <div>
+                            {!isLoading &&
+                                <Pagination
+                                    currentPage={currentPage}
+                                    totalPages={totalPages}
+                                    margin="10px 0"
+                                    handleNextClick={handleNextClick}
+                                    handlePreviousClick={handlePreviousClick}
+                                    onPerPageNumber={handlePerPageNumber}
+                                />
+                            }
+                        </div>
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>
                 </>

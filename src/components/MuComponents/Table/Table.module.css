@@ -83,3 +83,12 @@
     background-color: var(--tableRowColor);
     /* Set the background color for odd rows */
 }
+
+
+.muloaderContainer{
+    display: fle; /* Set the display to block to make it occupy full width */
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    width: 100%; 
+}
