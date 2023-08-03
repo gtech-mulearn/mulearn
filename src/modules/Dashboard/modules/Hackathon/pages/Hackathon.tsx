@@ -30,6 +30,8 @@ const Hackathon = () => {
     const [isPublishOpen, setIsPublishOpen] = useState<boolean[]>(
         ownData.map(() => false)
     );
+
+    
     const [isDeleteOpen, setIsDeleteOpen] = useState<boolean[]>(
         ownData.map(() => false)
     );
@@ -186,10 +188,42 @@ const Hackathon = () => {
                                                                     data-tooltip-id="Icon"
                                                                     data-tooltip-content="Publish"
                                                                     onClick={() => {
-                                                                        toggleModal(
-                                                                            index,
-                                                                            ModalType[0]
-                                                                        );
+                                                                        if (
+                                                                            hack.id &&
+                                                                            hack.title &&
+                                                                            hack.type &&
+                                                                            hack.tagline &&
+                                                                            hack.event_logo &&
+                                                                            hack.banner &&
+                                                                            hack.website &&
+                                                                            hack.place &&
+                                                                            hack.event_start &&
+                                                                            hack.event_end &&
+                                                                            hack.application_start &&
+                                                                            hack.application_ends &&
+                                                                            hack.description &&
+                                                                            hack.participant_count !== null &&
+                                                                            hack.district &&
+                                                                            hack.organisation &&
+                                                                            hack.district_id &&
+                                                                            hack.org_id !== null &&
+                                                                            hack.editable !== null
+                                                                        )
+                                                                        {
+                                                                            toggleModal(index, ModalType[0]);
+                                                                        } else {
+                                                                            // Show an error message or take appropriate action
+                                                                            console.log("Please fill in all the details before publishing.");
+                                                                            toast({
+                                                                                title: "Error",
+                                                                                description:
+                                                                                  "Please fill in all the details before publishing.",
+                                                                                status: "error",
+                                                                                duration: 3000,
+                                                                                isClosable: true,
+                                                                                position: "top",
+                                                                              });
+                                                                        }
                                                                     }}
                                                                 />
                                                             ) : (
