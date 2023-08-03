@@ -83,17 +83,19 @@ interface FormikSelectProps extends SelectProps<Option> {
     name: string;
     label: string;
     options: Option[];
+    addOnChange?:Function;
 }
 
 const FormikReactSelect: React.FC<FormikSelectProps> = ({
     name,
     label,
     options,
+    addOnChange=(()=>{}),
     ...rest
 }) => {
     const [field, meta, helpers] = useField(name);
-
     const handleChange = (selectedOption: any) => {
+        addOnChange(selectedOption)
         if(rest.isMulti)
             helpers.setValue(
                 selectedOption
