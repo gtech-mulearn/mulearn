@@ -4,7 +4,6 @@ import { dashboardRoutes,organizationRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 import { Dispatch, SetStateAction } from "react";
 import { OrgData, UserData } from "./ManageUsersInterface";
-import { orgSelectType } from "./ManageUsersEdit";
 export const getManageUsers = async (
     setData: any,
     page: number,
@@ -88,8 +87,6 @@ export const editManageUsers = async (
     last_name?: string ,
     email?: string ,
     mobile?: string ,
-    discord_id?: string ,
-    mu_id?: string ,
     role?: string ,
     orgaanizations?: string[],
     // toast: any,
@@ -107,8 +104,6 @@ export const editManageUsers = async (
                 last_name: last_name,
                 email: email,
                 mobile: mobile,
-                discord_id: discord_id,
-                mu_id: mu_id,
                 college: college,
                 company: company,
                 department: department,
@@ -142,23 +137,7 @@ export const getManageUsersDetails = async (
             dashboardRoutes.getUsersEditData + id + "/"
         );
         const message: any = response?.data;
-        console.log(message.response);
 
-        // let role = message.response.role;
-        // // console.log(message.response.users);
-        // const newOrganizations = message.response.organizations;
-        // // console.log(newOrganizations);
-        // for (let i = 0; i < newOrganizations.length; i++) {
-        //     // console.log(newOrganizations[i].org_type);
-        //     if (newOrganizations[i].org_type == "Community") {
-        //         // console.log("community");
-        //     }
-        //     if (role == null) {
-        //         // console.log("Company");
-        //     } else {
-        //         // console.log("college");
-        //     }
-        // }
         setData(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -167,7 +146,7 @@ export const getManageUsersDetails = async (
         }
     }
 };
-
+/*
 export const getAllOrganisations = async (
     toast: (options?: UseToastOptions | undefined) => ToastId
 )=>{
@@ -210,7 +189,7 @@ export const getAllOrganisations = async (
         })
     }
 }
-
+*/
 export const deleteManageUsers = async (
     id: string | undefined,
     toast: (options?: UseToastOptions | undefined) => ToastId
