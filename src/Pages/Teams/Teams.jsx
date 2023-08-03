@@ -1,30 +1,30 @@
-import { useState } from "react"
+import { useState } from "react";
 
-import Footer from "../../Components/Footer/Footer"
-import Navbar from "../../Components/Navbar/Navbar"
-import styles from "./Teams.module.css"
-import TeamCard from "../../Components/TeamCard/TeamCard"
+import Footer from "../../Components/Footer/Footer";
+import Navbar from "../../Components/Navbar/Navbar";
+import styles from "./Teams.module.css";
+import TeamCard from "../../Components/TeamCard/TeamCard";
 
-import yipteam from "./data/yip-team"
-import techTeam from "./data/tech-contributors.js"
+import yipteam from "./data/yip-team";
+import techTeam from "./data/tech-contributors.js";
 
 const Teams = () => {
-  const [teamName, setTeamfilter] = useState("all")
+  const [teamName, setTeamfilter] = useState("all");
 
-  let execom = require("./teamdata/execom.json")
-  let core = require("./teamdata/core.json")
-  let zonal = require("./teamdata/zonal.json")
-  let district = require("./teamdata/district.json")
-  let ca = require("./teamdata/ca.json")
-  let pillars = require("./2023/pillars.json")
-  let pillarsQ1 = require("./2023/pillarsQ1.json")
-  let mulearnhq = require("./2023/mulearnhq.json")
-  let communityteam = require("./2023/communityteam.json")
-  let associates = require("./2023/associates.json")
+  let execom = require("./teamdata/execom.json");
+  let core = require("./teamdata/core.json");
+  let zonal = require("./teamdata/zonal.json");
+  let district = require("./teamdata/district.json");
+  let ca = require("./teamdata/ca.json");
+  let pillars = require("./2023/pillars.json");
+  let pillarsQ1 = require("./2023/pillarsQ1.json");
+  let mulearnhq = require("./2023/mulearnhq.json");
+  let communityteam = require("./2023/communityteam.json");
+  let associates = require("./2023/associates.json");
 
   const handleFilterChange = (e) => {
-    setTeamfilter(e.target.value)
-  }
+    setTeamfilter(e.target.value);
+  };
   return (
     <>
       <Navbar />
@@ -94,7 +94,7 @@ const Teams = () => {
                   image={member.image}
                   linkedIn={member.linkedin ? member.linkedin : ""}
                 />
-              )
+              );
             })}
           </div>
         </section>
@@ -119,7 +119,7 @@ const Teams = () => {
                   twitter={member.twitter ? member.twitter : ""}
                   github={member.github ? member.github : ""}
                 />
-              )
+              );
             })}
           </div>
         </section>
@@ -140,7 +140,7 @@ const Teams = () => {
                   twitter={member.twitter ? member.twitter : ""}
                   github={member.github ? member.github : ""}
                 />
-              )
+              );
             })}
           </div>
         </section>
@@ -156,19 +156,22 @@ const Teams = () => {
           </p>
           <div className={styles.members_list}>
             {pillars.map((member) => {
-              console.log(member)
               return (
                 <TeamCard
                   name={member.name}
                   designation={member.team}
-                  image={member.image ? member.image : `assets/team/pillarsq3/${member.name}.webp`}
+                  image={
+                    member.image
+                      ? member.image
+                      : `assets/team/pillarsq3/${member.name}.webp`
+                  }
                   linkedIn={member.linkedin ? member.linkedin : ""}
                   github={member.github ? member.github : ""}
                   twitter={member.twitter ? member.twitter : ""}
                   muid={member.muid ? member.muid : ""}
                   leadDesignation={member.lead ? member.lead : ""}
                 />
-              )
+              );
             })}
           </div>
         </section>
@@ -194,7 +197,7 @@ const Teams = () => {
                   muid={member.muid ? member.muid : ""}
                   leadDesignation={member.lead}
                 />
-              )
+              );
             })}
           </div>
         </section>
@@ -211,7 +214,7 @@ const Teams = () => {
                   image={member.image}
                   linkedIn={member.linkedin ? member.linkedin : ""}
                 />
-              )
+              );
             })}
           </div>
         </section>
@@ -233,7 +236,7 @@ const Teams = () => {
                   image={`/assets/team/yip-team/${member.name}.webp`}
                   linkedIn={member.linkedin ? member.linkedin : ""}
                 />
-              )
+              );
             })}
           </div>
         </section>
@@ -256,7 +259,7 @@ const Teams = () => {
                   designation={member.designation}
                   image={member.image}
                 />
-              )
+              );
             })}
           </div>
           <p className={styles.sub_team_title}>Zonal Heads</p>
@@ -268,7 +271,7 @@ const Teams = () => {
                   designation={member.designation}
                   image={member.image}
                 />
-              )
+              );
             })}
           </div>
           <p className={styles.sub_team_title}>District Heads</p>
@@ -280,7 +283,7 @@ const Teams = () => {
                   designation={member.designation}
                   image={member.image}
                 />
-              )
+              );
             })}
           </div>
           <p className={styles.sub_team_title}>Campus Ambassadors</p>
@@ -292,7 +295,7 @@ const Teams = () => {
                   designation={member.designation}
                   image={member.image}
                 />
-              )
+              );
             })}
           </div>
         </section>
@@ -314,7 +317,7 @@ const Teams = () => {
                   designation={member.team ? member.team : ""}
                   linkedIn={member.linkedin ? member.linkedin : ""}
                 />
-              )
+              );
             })}
           </div>
         </section>
@@ -322,7 +325,7 @@ const Teams = () => {
 
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Teams
+export default Teams;
