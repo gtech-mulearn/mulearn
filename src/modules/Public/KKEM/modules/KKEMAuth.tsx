@@ -1,13 +1,17 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { userAuthConfirm } from "../services/auth";
 import { useEffect, useState } from "react";
 import Astronaut from "../assets/astronaut.webp";
 import styles from "./KKEMAuth.module.css";
 import Footer from "../components/Footer";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { useToast } from "@chakra-ui/react";
+
 export default function KKEMAuth() {
     const { token } = useParams<{ token: string }>();
     const [status, setStatus] = useState("pending");
+    const navigate = useNavigate();
+    const toast = useToast();
     useEffect(() => {
         if (!token) {
             return;
@@ -15,10 +19,25 @@ export default function KKEMAuth() {
         const controller = new AbortController();
         userAuthConfirm(token, controller).then(res => {
             setStatus("success");
+            toast({
+                title: "Integration successful.You will be redirected to learning circle page shortly",
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
+            setTimeout(() => {
+                navigate("/dashboard/learning-circle");
+            }, 300);
         }).catch((err) => {
             console.log(err.hasError)
             if (err?.hasError) {
                 setStatus("failure");
+                toast({
+                    title: "Invalid token.",
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true,
+                });
             }
         })
         return () => {

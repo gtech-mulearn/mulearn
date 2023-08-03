@@ -41,7 +41,6 @@ const TopNavBar = () => {
                             </div>
                         </div>
                     </div>
-                    <hr />
                 </div>
             </div>
         </>
