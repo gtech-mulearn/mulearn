@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { editManageUsers, getManageUsersDetails } from "./apis";
+import { useEffect, useState,useRef } from "react";
+import { editManageUsers, getManageUsersDetails,getAllOrganisations } from "./apis";
 import { useNavigate, useParams } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
@@ -13,52 +13,33 @@ import FormikReactSelect, {
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { roles } from "@/MuLearnServices/types";
 import { UserData } from "./ManageUsersInterface";
-import { getAllInstitutions } from "../Hackathon/services/HackathonApis";
 import { getLocationIdByName } from "../../utils/common";
 
 type Props = {};
+export type orgSelectType = {
+    Community:Option[],
+    College:Option[],
+    Company:Option[],
+}
 
 const ManageUsersEdit = (props: Props) => {
     const [name, setName] = useState<any>();
-    const [institutions, setInstitutions] = useState<Option[]>([]);
-
-    const [institutionsChunks, setInstitutionsChunks] = useState<Option[][]>(
-        []
-    );
-    interface IData {
-        first_name: string;
-        last_name: string;
-        email: string;
-        mobile: string;
-        discord_id: string;
-        mu_id: string;
-        college?: string;
-        role: string;
-        company?: string;
-        department?: string | any;
-        graduation_year?: string | any;
-        orgaanization_community?: string[];
-        orgaanization_college?: string[];
-        orgaanization_company?: string[];
-    }
+    const [organizations, setOrganizations] = useState<orgSelectType>({
+        Community:[],
+        College:[],
+        Company:[],
+    });
     const [data, setData] = useState<UserData>();
     const { id } = useParams();
     const navigate = useNavigate();
     const toast = useToast();
     useEffect(() => {
-        getManageUsersDetails(id, setData);
-        getAllInstitutions(setInstitutionsChunks);
+            getManageUsersDetails(id, setData);
+            (async ()=>{
+                
+                setOrganizations((await getAllOrganisations(toast))!)
+        })()
     }, []);
-
-    useEffect(() => {
-        // Flatten the chunks into a single array when the chunks change
-        const flattenedInstitutions = institutionsChunks.reduce(
-            (accumulator, currentChunk) => accumulator.concat(currentChunk),
-            []
-        );
-        setInstitutions(flattenedInstitutions);
-        setName(getLocationIdByName(institutions, data?.college));
-    }, [institutionsChunks]);
     return (
         <div className={styles.external_container}>
             <div className={styles.container}>
@@ -71,14 +52,17 @@ const ManageUsersEdit = (props: Props) => {
                         last_name: data?.last_name,
                         email: data?.email,
                         mobile: data?.mobile,
-                        discord_id: data?.discord_id,
-                        mu_id: data?.mu_id,
-                        college: data?.college,
-                        company: data?.company,
+                        // discord_id: data?.discord_id,
+                        // mu_id: data?.mu_id,
+                        college: data?.organization?.College?
+                        data?.organization?.College[0]:'',
+                        community: data?.organization?.Community?
+                        data?.organization?.Community[0]:'',
+                        company: data?.organization?.Company?
+                        data?.organization?.Company[0]:'',
                         department: data?.department,
                         graduation_year: data?.graduation_year,
                         role: data?.role,
-                        orgId: name
                     }}
                     validationSchema={Yup.object({
                         // igName: Yup.string()
@@ -97,10 +81,10 @@ const ManageUsersEdit = (props: Props) => {
                             .length(10, "Invalid mobile number")
                             .required("Required"),
                         college: Yup.string()
-                            .min(5, "Invalid mobile number")
+                            .required("Required"),
+                        community: Yup.string()
                             .required("Required"),
                         company: Yup.string()
-                            .min(3, "Invalid mobile number")
                             .required("Required"),
                         department: Yup.string()
                             .min(3, "Invalid mobile number")
@@ -110,22 +94,23 @@ const ManageUsersEdit = (props: Props) => {
                             .required("Required")
                     })}
                     onSubmit={values => {
-                        editManageUsers(
-                            id,
-                            values.first_name,
-                            values.last_name,
-                            values.email,
-                            values.mobile,
-                            values.discord_id,
-                            values.mu_id,
-                            values.college,
+                        //     editManageUsers(
+                        //     id,
+                        //     values.first_name,
+                        //     values.last_name,
+                        //     values.email,
+                        //     values.mobile,
+                        //     values.discord_id,
+                        //     values.mu_id,
+                        //     values.college,
 
-                            values.department, // why error occur for deparmenet only
-                            values.graduation_year,
-                            values.role,
-                            data?.organizations
-                            // toast
-                        );
+                        //     values.department, // why error occur for deparmenet only
+                        //     values.graduation_year,
+                        //     values.role,
+                        //     data?.organizations
+                        //     // toast
+                        // );
+                        console.log(values)
 
                         navigate("/manage-users");
                     }}
@@ -157,17 +142,25 @@ const ManageUsersEdit = (props: Props) => {
                             placeholder="Enter a mobile number"
                         />
                         <FormikReactSelect
-                            name="orgId"
-                            options={institutions}
-                            label={"Organization"}
+                            name="college"
+                            options={organizations?.College!}
+                            label="College"
                             isClearable
                             isSearchable
                         />
-                        <FormikTextInput
-                            label="User Company Name"
+                        <FormikReactSelect
+                            name="community"
+                            options={organizations?.Community!}
+                            label="Community"
+                            isClearable
+                            isSearchable
+                        />
+                        <FormikReactSelect
                             name="company"
-                            type="text"
-                            placeholder="Enter a mobile number"
+                            options={organizations?.Company!}
+                            label="Company"
+                            isClearable
+                            isSearchable
                         />
                         <FormikTextInput
                             label="User Department"
