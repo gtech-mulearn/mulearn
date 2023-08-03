@@ -17,7 +17,7 @@ import {
     getHackDetails
 } from "../services/HackathonApis";
 import { FiUploadCloud } from "react-icons/fi";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { useToast } from "@chakra-ui/react";
 import { HackList } from "../services/HackathonInterfaces";
@@ -25,6 +25,7 @@ import {
     convertDateToYYYYMMDD,
     getLocationIdByName
 } from "../../../utils/common";
+import HackathonImagePreview from "../components/HackathonImagePreview";
 
 /**
  * TODO: Move YUP Validations to another file.
@@ -48,9 +49,13 @@ const HackathonCreate = () => {
     );
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
+    const [isCreatePage, setIsCreatePage] = useState(false);
+    const [openImagePreview, setOpenImagePreview] = useState(false);
+    const [prevImgUrl, setPreviewImgUrl] = useState('');
     const { id } = useParams();
     const toast = useToast();
     const navigate = useNavigate();
+    const location = useLocation()
 
     useEffect(() => {
         if (id !== undefined) {
@@ -216,51 +221,61 @@ const HackathonCreate = () => {
         {
             edit
                 ? editHackathon(
-                      values.title,
-                      values.tagline,
-                      values.description,
-                      values.participantCount,
-                      values.orgId,
-                      values.districtId,
-                      values.place,
-                      values.isOpenToAll,
-                      a,
-                      b,
-                      c,
-                      d,
-                      formattedFormFields,
-                      values.event_logo,
-                      values.banner,
-                      values.type,
-                      values.website,
-                      toast,
-                      id
-                  )
+                    values.title,
+                    values.tagline,
+                    values.description,
+                    values.participantCount,
+                    values.orgId,
+                    values.districtId,
+                    values.place,
+                    values.isOpenToAll,
+                    a,
+                    b,
+                    c,
+                    d,
+                    formattedFormFields,
+                    values.event_logo,
+                    values.banner,
+                    values.type,
+                    values.website,
+                    toast,
+                    id
+                )
                 : createHackathon(
-                      values.title,
-                      values.tagline,
-                      values.description,
-                      values.participantCount,
-                      values.orgId,
-                      values.districtId,
-                      values.place,
-                      values.isOpenToAll,
-                      a,
-                      b,
-                      c,
-                      d,
-                      formattedFormFields,
-                      values.event_logo,
-                      values.banner,
-                      values.type,
-                      values.website,
-                      toast
-                  );
+                    values.title,
+                    values.tagline,
+                    values.description,
+                    values.participantCount,
+                    values.orgId,
+                    values.districtId,
+                    values.place,
+                    values.isOpenToAll,
+                    a,
+                    b,
+                    c,
+                    d,
+                    formattedFormFields,
+                    values.event_logo,
+                    values.banner,
+                    values.type,
+                    values.website,
+                    toast
+                );
         }
         resetForm();
         setTimeout(() => {
             navigate("/dashboard/hackathon");
         }, 2000);
+    };
+
+    useEffect(() => {
+        if (location.pathname === "/dashboard/hackathon/create") {
+            setIsCreatePage(true);
+        }
+    }, [location])
+
+    const handleCloseModal = () => {
+        setOpenImagePreview(false);
     };
 
     return (
@@ -496,10 +511,19 @@ const HackathonCreate = () => {
                                                                 }
                                                             >
                                                                 Banner
-                                                                <button>
-                                                                    View prev
-                                                                    upload
-                                                                </button>
+                                                                {
+                                                                    !isCreatePage && data?.banner !== "" ?
+                                                                        <button type="button" onClick={() => {
+                                                                            setPreviewImgUrl(data?.banner)
+                                                                            setOpenImagePreview(true);
+                                                                        }}>
+                                                                            View prev
+                                                                            upload
+                                                                        </button>
+                                                                        :
+                                                                        <></>
+                                                                }
+                                                                <HackathonImagePreview isOpen={openImagePreview} onClose={handleCloseModal} prevImgUrl={prevImgUrl} />
                                                             </label>
                                                             <div
                                                                 className={
@@ -608,10 +632,17 @@ const HackathonCreate = () => {
                                                                 }
                                                             >
                                                                 Event Logo
-                                                                <button>
-                                                                    View prev
-                                                                    upload
-                                                                </button>
+                                                                {!isCreatePage && data?.event_logo !== "" ?
+                                                                    <button className={styles.previewBtn} type="button" onClick={() => {
+                                                                        setPreviewImgUrl(data?.event_logo)
+                                                                        setOpenImagePreview(true);
+                                                                    }}>
+                                                                        View prev
+                                                                        upload
+                                                                    </button>
+                                                                    :
+                                                                    <></>
+                                                                }
                                                             </label>
                                                             <div
                                                                 className={
@@ -768,15 +799,13 @@ const HackathonCreate = () => {
                                                             ([key, value]) => (
                                                                 <label
                                                                     key={key}
-                                                                    className={`${
-                                                                        styles.checkBoxContainer
-                                                                    } ${
-                                                                        values.formFields.includes(
+                                                                    className={`${styles.checkBoxContainer
+                                                                        } ${values.formFields.includes(
                                                                             key as never
                                                                         )
                                                                             ? styles.checked
                                                                             : ""
-                                                                    }`}
+                                                                        }`}
                                                                 >
                                                                     <Field
                                                                         type="checkbox"
