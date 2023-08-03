@@ -2,7 +2,6 @@ import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
-import { Dispatch, SetStateAction } from "react";
 
 import { modalStatesType } from "./InterestGroup";
 
@@ -10,10 +9,12 @@ export const getInterestGroups = async (
     setData: UseStateFunc<any>,
     page: number,
     selectedValue: number,
+    setIsLoading: UseStateFunc<boolean>,
     setTotalPages?: UseStateFunc<any>,
     search?: string,
-    sortID?: string
+    sortID?: string,
 ) => {
+    setIsLoading(true)
     try {
         const response = await privateGateway.get(dashboardRoutes.getIgData, {
             params: {
@@ -27,6 +28,7 @@ export const getInterestGroups = async (
 
         setData(interestGroups.response.data);
         if (setTotalPages) setTotalPages(interestGroups.response.pagination.totalPages);
+        setIsLoading(false);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

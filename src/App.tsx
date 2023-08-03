@@ -56,8 +56,9 @@ const HackathonParticipants = lazy(() => import("./modules/Dashboard/modules/Hac
 
 
 
-import { roles } from "@/MuLearnServices/types";
-import SecureAuthRoutes from "@/MuLearnServices/authCheck";
+import { roles } from "./services/types";
+import SecureAuthRoutes from "./services/authCheck";
+import Settings from "./modules/Dashboard/modules/Settings/Settings";
 
 
 function App() {
@@ -204,7 +205,7 @@ function App() {
                     },
                     {
                         path: "manage-locations",
-                        element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} children={<ManageLocation />}/>
+                        element: <ManageLocation />
                     },
                     {
                         path: "manage-locations/add/:item",
@@ -235,7 +236,11 @@ function App() {
                         element: <LearningCircleCreate />
                     }
                 ]
-            }
+            },
+            {
+                path: "/settings",
+                element: <Settings />,
+            },
         ]
     },
     {

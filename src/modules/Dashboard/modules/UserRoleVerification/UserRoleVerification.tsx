@@ -38,13 +38,27 @@ function UsersRoleVerification() {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getUserRoleVerification(setData, nextPage, perPage);
+        getUserRoleVerification(
+            setData,
+            nextPage,
+            perPage,
+            setTotalPages,
+            "",
+            sort
+        );
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getUserRoleVerification(setData, prevPage, perPage);
+        getUserRoleVerification(
+            setData,
+            prevPage,
+            perPage,
+            setTotalPages,
+            "",
+            sort
+        );
     };
 
     useEffect(() => {

@@ -103,16 +103,17 @@ export const organizationRoutes = {
 } as const;
 
 export const ManageLocationsRoutes = {
-    getCountryData: "/api/v1/location/country",
-    getStateData:"api/v1/location/${country}/states",
-    getZoneData:"api/v1/location/${country}/${state}/zone",
-    getDistrictData:"api/v1/location/${country}/${state}/${zone}/district",
-}
+    getCountryData: "/api/v1/location/country/",
+    getStateData: "api/v1/location/${country}/states/",
+    getZoneData: "api/v1/location/${country}/${state}/zone/",
+    getDistrictData: "api/v1/location/${country}/${state}/${zone}/district/"
+};
 
 export const KKEMRoutes = {
     userAuth: "/api/v1/integrations/kkem/authorization/",
-    userLogin:"/api/v1/integrations/kkem/login/"
-} as const;
+    userLogin: "/api/v1/integrations/kkem/login/",
+    getDWMSDetails: "/api/v1/integrations/kkem/user/${jsid}/"
+}as const;
 
 export const PublicRoutes = {
     getRandomLc: "/api/v1/dashboard/lc/list/",

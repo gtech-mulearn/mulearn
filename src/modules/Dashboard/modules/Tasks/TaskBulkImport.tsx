@@ -46,6 +46,7 @@ const TaskBulkImport = (props: Props) => {
                     justifyContent: "space-between",
                     width: "100%",
                     alignItems: "center"
+                
                 }}
             >
                 <SingleButton
@@ -55,7 +56,7 @@ const TaskBulkImport = (props: Props) => {
                         display: "flex",
                         justifyContent: "start",
                         width: "100%",
-                        alignItems: "center"
+                        alignItems: "center",
                     }}
                     onClick={() => {
                         navigate("/dashboard/tasks");

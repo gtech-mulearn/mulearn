@@ -10,10 +10,12 @@ export const getOrganizations = async (
     setData: UseStateFunc<any>,
     page: number,
     selectedValue: number,
+    setIsLoading: UseStateFunc<boolean>,
     setTotalPages?: UseStateFunc<any>,
     search?: string,
     sortID?: string
 ) => {
+    setIsLoading(true)
     try {
 
         type CCC = Lowercase<typeof ccc[number]>
@@ -39,9 +41,11 @@ export const getOrganizations = async (
             }
         })
             .then(response => {
+                setIsLoading(false)
                 return response.data as resData
             })
             .then(data => {
+                setIsLoading(false)
                 
                 if (ccc.some(c => c === activeTab)){
                     setData(data.response.data[activeTab.toLowerCase() as CCC ])
@@ -52,6 +56,7 @@ export const getOrganizations = async (
 
             })
     } catch (err: unknown) {
+        setIsLoading(false)
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
@@ -104,10 +109,10 @@ export const getCountry = async (setCountryData: any) => {
 }
 
 export const getStates = async (
-    country: string, 
+    country: string,
     setStatesData: any,
     toast: (options?: UseToastOptions | undefined) => ToastId
-    ) => {
+) => {
     try {
         await privateGateway.get(`${organizationRoutes.getLocation}/${country}/states`)
             .then(response => {
@@ -134,11 +139,11 @@ export const getStates = async (
 }
 
 export const getZones = async (
-    country: string, 
-    state: string, 
+    country: string,
+    state: string,
     setZonesData: any,
     toast: (options?: UseToastOptions | undefined) => ToastId
-    ) => {
+) => {
     try {
         await privateGateway.get(`${organizationRoutes.getLocation}/${country}/${state}/zone`)
             .then(response => {
@@ -165,12 +170,12 @@ export const getZones = async (
 }
 
 export const getDistricts = async (
-    country: string, 
-    state: string, 
-    zone: string, 
+    country: string,
+    state: string,
+    zone: string,
     setDistrictsData: any,
     toast: (options?: UseToastOptions | undefined) => ToastId
-    ) => {
+) => {
     try {
         await privateGateway.get(`${organizationRoutes.getLocation}/${country}/${state}/${zone}/district`)
             .then(response => {
@@ -183,7 +188,7 @@ export const getDistricts = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            const errorMsg =  'Something went wrong!';
+            const errorMsg = 'Something went wrong!';
             toast({
                 title: `Error`,
                 description: errorMsg,
@@ -294,7 +299,7 @@ export const updateOrganization = async (
         if (orgType === "College") {
             return {
                 "title": title,
-                "code":code,
+                "code": code,
                 "state": state,
                 "zone": zone,
                 "district": district,

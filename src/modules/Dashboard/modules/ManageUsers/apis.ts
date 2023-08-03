@@ -6,10 +6,12 @@ export const getManageUsers = async (
     setData: UseStateFunc<any>,
     page: number,
     selectedValue: number,
+    setIsLoading: UseStateFunc<boolean>,
     setTotalPages?: UseStateFunc<any>,
     search?: string,
     sortID?: string
 ) => {
+    setIsLoading(true);
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getUsersData,
@@ -38,7 +40,9 @@ export const getManageUsers = async (
         }
         setData(datasuser);
         if (setTotalPages) setTotalPages(manageusers.response.pagination.totalPages);
+        setIsLoading(false);
     } catch (err: unknown) {
+        setIsLoading(false);
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
@@ -128,7 +132,7 @@ export const editManageUsers = async (
 
 export const getManageUsersDetails = async (
     id: string | undefined,
-    setData: UseStateFunc<UserData|undefined>
+    setData: UseStateFunc<UserData | undefined>
 ) => {
     try {
         const response = await privateGateway.get(
