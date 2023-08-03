@@ -35,6 +35,7 @@
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
+    padding: 1rem 0;
     color: #000;
 }
 
@@ -108,14 +109,12 @@
     display: none;
 }
 
-.learningCircleLandingPageExpandBtn:checked + .learningCircleLandingPageLevel {
+.learningCircleLandingPageExpandBtn:checked+.learningCircleLandingPageLevel {
     background: var(--blue);
     color: white;
 }
 
-.learningCircleLandingPageExpandBtn:checked
-    + .learningCircleLandingPageLevel
-    .learningCircleLandingPageBtn {
+.learningCircleLandingPageExpandBtn:checked+.learningCircleLandingPageLevel .learningCircleLandingPageBtn {
     background: #fff;
     color: var(--blue);
 }
@@ -126,7 +125,21 @@
     align-items: center;
 }
 
-@media (width<800px) {
+@media (width<1060px){
+    .learningCircleLandingPageDesc h1 {
+        font-size: 1.5rem;
+    }
+
+    .learningCircleLandingPageDesc b {
+        font-size: 0.8rem;
+    }
+
+    .learningCircleLandingPageLevel div {
+        font-size: 0.8rem;
+    }
+}
+
+@media (width<=820px) {
     .learningCircleLandingPage {
         padding: 0.5rem;
     }
@@ -142,18 +155,6 @@
         width: 100%;
     }
 
-    .learningCircleLandingPageDesc h1 {
-        font-size: 1.5rem;
-    }
-
-    .learningCircleLandingPageDesc b {
-        font-size: 0.8rem;
-    }
-
-    .learningCircleLandingPageLevel div {
-        font-size: 0.8rem;
-    }
-
     .learningCircleLandingPageLevel {
         padding: 1rem;
     }
@@ -161,8 +162,6 @@
     .learningCircleLandingPageBtn {
         width: 2rem;
     }
-
-
 }
 
 @media (width<320px) {
@@ -251,7 +250,7 @@
 
 .RightBox {
     width: 40%;
-	margin-top:-1rem;
+    margin-top: -1rem;
 }
 
 .EventOn,
@@ -263,7 +262,7 @@
     align-items: center;
     flex-direction: column;
     gap: 0.5rem;
-	margin:10px;
+    margin: 10px;
 }
 
 .MeetingOn {
@@ -280,7 +279,7 @@
     align-items: center;
 }
 
-.BtnBtn{
+.BtnBtn {
     padding: 0.5rem 2.5rem;
     border-radius: 0.5rem;
     border: none;
@@ -456,10 +455,11 @@
     .RightBox {
         width: 100%;
     }
-	.RightBox {
-		width: 100%;
-		margin-top: 0rem;
-	}
+
+    .RightBox {
+        width: 100%;
+        margin-top: 0rem;
+    }
 
     .CreatedCircle {
         padding: 1.5rem;
@@ -488,9 +488,9 @@
 /* css for the Meeting schedule*/
 
 @media (width<800px) {
-	.Lcweek{
-		gap:0.25;
-	}
+    .Lcweek {
+        gap: 0.25;
+    }
 }
 
 .ScheduleOn {
@@ -525,93 +525,94 @@
     outline: none;
 }
 
-.weeks{
- padding-top: 10px;
- display: flex;
- justify-content: space-between;
+.weeks {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.InputSchedule .weeks p{
-   font-size: medium;
-   font-weight: 400;
+.InputSchedule .weeks p {
+    font-size: medium;
+    font-weight: 400;
 }
 
-.Lcweek{
-	  display: flex;
-      gap: 1.5rem;
-      align-items: center;
-	  justify-content: space-around;
-	  flex-wrap: wrap;
-      flex: 1;
-	}
-
-.Lcweek div{
-	position: relative;
+.Lcweek {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex: 1;
 }
 
-.Lcweek div label{
-	position: absolute;
-	font-size: 0.8rem;
-	font-weight: 400;
-	width: 30px;
-	height: 30px;
-	color:#CCC;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 50%;
-	cursor: pointer;
+.Lcweek div {
+    position: relative;
+}
+
+.Lcweek div label {
+    position: absolute;
+    font-size: 0.8rem;
+    font-weight: 400;
+    width: 30px;
+    height: 30px;
+    color: #CCC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .Lcweek input[type="checkbox"] {
     width: 30px;
     height: 30px;
     border-radius: 100%;
-    background-color:#F3F3F3;
-	outline: none;
-	border: none;
-	transition: .3s;
-	--webkit-appearance: none;
-	appearance: none;
-	
+    background-color: #F3F3F3;
+    outline: none;
+    border: none;
+    transition: .3s;
+    --webkit-appearance: none;
+    appearance: none;
+
 }
-.Lcweek input[type="checkbox"]:checked{
+
+.Lcweek input[type="checkbox"]:checked {
     background-color: #456FF6;
-	border: 3px solid blue;
-	border: none;
+    border: 3px solid blue;
+    border: none;
 }
 
-.Lcweek input[type="checkbox"]:after{
-	display: none;
+.Lcweek input[type="checkbox"]:after {
+    display: none;
 }
 
-.Lcweek input[type="checkbox"]:checked + label{
-	color: #fff;
+.Lcweek input[type="checkbox"]:checked+label {
+    color: #fff;
 }
 
-.LcNotedEvent{
- width: 100%;
- display: flex;
- flex-direction:row;
- justify-content: space-between;
- gap: 1rem;
+.LcNotedEvent {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
-.LcNotedEvent input{
-	width: 100%;
+.LcNotedEvent input {
+    width: 100%;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     background-color: #f3f3f3;
     outline: none;
 }
 
-.LcNotedEvent p{
-	width: 100%;
+.LcNotedEvent p {
+    width: 100%;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     background-color: #f3f3f3;
     outline: none;
-	color:#ccc;
+    color: #ccc;
 }
 
 
@@ -941,9 +942,10 @@
     .FindCircleContentTop .desc b {
         font-size: 0.8rem;
     }
-	.FindCircleContentTop .desc b {
-		font-size: .8rem;
-	}
+
+    .FindCircleContentTop .desc b {
+        font-size: .8rem;
+    }
 
     .FindCircleContent img {
         width: 100%;
