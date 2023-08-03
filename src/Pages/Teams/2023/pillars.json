@@ -1,5 +1,35 @@
 [
   {
+    "name": "John Philip George",
+    "image": "assets/team/pillars/John Philip George.webp",
+    "muid": "johnphilipgeorge@mulearn",
+    "linkedin": "https://www.linkedin.com/in/johnphilipg-66401723a",
+    "twitter": "https://twitter.com/ScyEth10?t=-iwF4gIGsolpLxG0hmvoGA&s=09",
+    "github": "https://github.com/johnforgit",
+    "team": "Comtent Writer",
+    "lead": "Content"
+  },
+  {
+    "name": "Amal C P",
+    "image": "",
+    "muid": "amalcp@mulearn",
+    "linkedin": "https://www.linkedin.com/in/amal-c-p",
+    "twitter": "https://twitter.com/amalcpaulson",
+    "github": "https://github.com/Amal070146",
+    "team": "Frontend Web Developer",
+    "lead": "Frontend"
+  },
+  {
+    "name": "Jenin Joseph",
+    "image": "",
+    "muid": "jeninjoseph@mulearn",
+    "linkedin": "https://www.linkedin.com/in/jenin-joseph/",
+    "twitter": "https://twitter.com/__Jenin__",
+    "github": "https://github.com/Jenin82",
+    "team": "Full Stack Web developer",
+    "lead": "Frontend"
+  },
+  {
     "name": "Muhammed Zafar MM",
     "image": "assets/team/pillars/Muhammed Zafar MM.webp",
     "muid": "",
@@ -7,8 +37,59 @@
     "twitter": "",
     "github": "",
     "team": "Backend Web Developer",
-    "lead": ""
+    "lead": "Backend"
   },
+  {
+    "name": "Aashish Vinu",
+    "image": "assets/team/pillarsq3/Aashish Vinu.webp",
+    "muid": "aashishvinu@mulearn",
+    "linkedin": "",
+    "twitter": "",
+    "github": "https://github.com/d34d-5h07",
+    "team": "Backend Web Developer",
+    "lead": "Backend"
+  },
+  {
+    "name": "Edwin Liby",
+    "image": "assets/team/pillars/Edwin liby.webp",
+    "muid": "edwinliby@mulearn",
+    "linkedin": "https://www.linkedin.com/in/edwin-liby",
+    "twitter": "https://twitter.com/EdwinLiby",
+    "github": "https://github.com/Edwinliby",
+    "team": "Frontend Web developer",
+    "lead": "Pro-CSS"
+  },
+  {
+    "name": "Kochouseph John",
+    "image": "assets/team/pillars/Kochouseph John.webp",
+    "muid": "kochousephjohn26@gmail.com",
+    "linkedin": "",
+    "twitter": "",
+    "github": "",
+    "team": "",
+    "lead": "Public Relations"
+  },
+  {
+    "name": "Ashna T",
+    "image": "assets/team/pillars/Ashna T.webp",
+    "muid": "",
+    "linkedin": "",
+    "twitter": "",
+    "github": "",
+    "team": "",
+    "lead": "Social Media"
+  },
+  {
+    "name": "Enric S Neelamkavil",
+    "image": "assets/team/pillars/Enric S Neelamkavil.webp",
+    "muid": "enricsneelamkavil@mulearn",
+    "linkedin": "https://www.linkedin.com/in/enricsneelamkavil/",
+    "twitter": "https://twitter.com/enricneels",
+    "github": "https://github.com/enricsneelamkavil",
+    "team": "UI Team, Design Team",
+    "lead": "UI Team"
+  },
+
   {
     "name": "Arnold Denzil",
     "image": "assets/team/pillars/Arnold Denzil.webp",
@@ -19,16 +100,7 @@
     "team": "Backend Web Developer",
     "lead": ""
   },
-  {
-    "name": "Aashish Vinu",
-    "image": "assets/team/pillarsq3/Aashish Vinu.webp",
-    "muid": "aashishvinu@mulearn",
-    "linkedin": "",
-    "twitter": "",
-    "github": "https://github.com/d34d-5h07",
-    "team": "Backend Web Developer",
-    "lead": ""
-  },
+
   {
     "name": "Anirudh MK",
     "image": "assets/team/pillars/Anirudh MK.webp",
@@ -259,16 +331,7 @@
     "team": "Frontend Web Developer",
     "lead": ""
   },
-  {
-    "name": "Amal C P",
-    "image": "",
-    "muid": "amalcp@mulearn",
-    "linkedin": "https://www.linkedin.com/in/amal-c-p",
-    "twitter": "https://twitter.com/amalcpaulson",
-    "github": "https://github.com/Amal070146",
-    "team": "Frontend Web Developer",
-    "lead": ""
-  },
+
   {
     "name": "Amith Jayapraban",
     "image": "",
@@ -307,16 +370,6 @@
     "twitter": "https://twitter.com/rajatsandeepsen/",
     "github": "https://github.com/rajatsandeepsen/",
     "team": "Frontend Web developer",
-    "lead": ""
-  },
-  {
-    "name": "Jenin Joseph",
-    "image": "",
-    "muid": "jeninjoseph@mulearn",
-    "linkedin": "https://www.linkedin.com/in/jenin-joseph/",
-    "twitter": "https://twitter.com/__Jenin__",
-    "github": "https://github.com/Jenin82",
-    "team": "Full Stack Web developer",
     "lead": ""
   },
   {
@@ -386,7 +439,7 @@
     "linkedin": "https://www.linkedin.com/in/ardra-s-r-4a3571228",
     "twitter": "https://twitter.com/s_r_ardra?t=YEcRWD-Ii9hfmtjsyYc1ag&s=09",
     "github": "https://github.com/Ardrasr",
-    "team": "HR manager",
+    "team": "HR Manager",
     "lead": ""
   },
   {
@@ -396,7 +449,7 @@
     "linkedin": "https://www.linkedin.com/in/nandhana-a-r-31632b220",
     "twitter": "https://twitter.com/Proffess24/",
     "github": "",
-    "team": "HR manager",
+    "team": "Operations Manager",
     "lead": ""
   },
   {
@@ -581,7 +634,7 @@
   },
   {
     "name": "Sreenandan K M",
-    "image": "assets/team/pillars/Sreenandan K M.webp",
+    "image": "assets/team/pillarsq3/Sreenandan K M.webp",
     "muid": "sreenandankm@mulearn",
     "linkedin": "https://www.linkedin.com/in/sreenandankm",
     "twitter": "https://twitter.com/k_sreenandan",
@@ -606,7 +659,7 @@
     "linkedin": "https://www.linkedin.com/in/arya-s-r-b5318a201",
     "twitter": "https://twitter.com/Arya_srAsr?t=aWs2wkXK6iDVaXu38LZq1w&s=09",
     "github": "https://github.com/aryasr666",
-    "team": "Social Media manager",
+    "team": "Social Media Manager",
     "lead": ""
   },
   {
@@ -626,7 +679,7 @@
     "linkedin": "https://www.linkedin.com/in/neha-gomez-594103231",
     "twitter": "https://twitter.com/nehagmz",
     "github": "",
-    "team": "Social Media manager",
+    "team": "Social Media Manager",
     "lead": ""
   },
   {
@@ -636,7 +689,7 @@
     "linkedin": "https://www.linkedin.com/in/prathyushnm/",
     "twitter": "https://twitter.com/prathyushnm/with_replies",
     "github": "https://github.com/probablynotnmp",
-    "team": "Social Media manager",
+    "team": "Social Media Manager",
     "lead": ""
   },
   {
@@ -703,10 +756,10 @@
     "name": "Faeza Nasrin M B",
     "image": "assets/team/pillars/Faeza Nasrin M B.webp",
     "muid": "",
-    "linkedin": "",
-    "twitter": "",
+    "linkedin": "https://www.linkedin.com/in/faeza-nasrin-4b38ab22a",
+    "twitter": "https://twitter.com/FaezaNasrin",
     "github": "",
-    "team": "UI Team",
+    "team": "Graphic Designer",
     "lead": ""
   },
   {
@@ -779,56 +832,7 @@
     "team": "Web Designer",
     "lead": ""
   },
-  {
-    "name": "John Philip George",
-    "image": "assets/team/pillars/John Philip George.webp",
-    "muid": "johnphilipgeorge@mulearn",
-    "linkedin": "https://www.linkedin.com/in/johnphilipg-66401723a",
-    "twitter": "https://twitter.com/ScyEth10?t=-iwF4gIGsolpLxG0hmvoGA&s=09",
-    "github": "https://github.com/johnforgit",
-    "team": "Comtent Writer",
-    "lead": "Content"
-  },
-  {
-    "name": "Edwin Liby",
-    "image": "assets/team/pillars/Edwin liby.webp",
-    "muid": "edwinliby@mulearn",
-    "linkedin": "https://www.linkedin.com/in/edwin-liby",
-    "twitter": "https://twitter.com/EdwinLiby",
-    "github": "https://github.com/Edwinliby",
-    "team": "Frontend Web developer",
-    "lead": "Pro-CSS"
-  },
-  {
-    "name": "Kochouseph John",
-    "image": "assets/team/pillars/Kochouseph John.webp",
-    "muid": "kochousephjohn26@gmail.com",
-    "linkedin": "",
-    "twitter": "",
-    "github": "",
-    "team": "",
-    "lead": "Public Relations"
-  },
-  {
-    "name": "Ashna T",
-    "image": "assets/team/pillars/Ashna T.webp",
-    "muid": "",
-    "linkedin": "",
-    "twitter": "",
-    "github": "",
-    "team": "",
-    "lead": "Social Media"
-  },
-  {
-    "name": "Enric S Neelamkavil",
-    "image": "assets/team/pillars/Enric S Neelamkavil.webp",
-    "muid": "enricsneelamkavil@mulearn",
-    "linkedin": "https://www.linkedin.com/in/enricsneelamkavil/",
-    "twitter": "https://twitter.com/enricneels",
-    "github": "https://github.com/enricsneelamkavil",
-    "team": "UI Team, Design Team",
-    "lead": "UI Team"
-  },
+
   {
     "name": "Jomon Chacko",
     "image": "",

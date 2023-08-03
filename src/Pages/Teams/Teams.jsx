@@ -176,7 +176,7 @@ const Teams = () => {
           </div>
         </section>
       )}
-      {(teamName === "all" || teamName === "mulearnpillar1") && (
+      {(teamName === "mulearnpillar1") && (
         <section id={styles.execom} className={styles.team_group}>
           <p className={styles.team_title}>µLearn Pillars Q1</p>
           <p className={styles.team_desc}>

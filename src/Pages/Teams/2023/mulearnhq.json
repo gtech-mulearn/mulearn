@@ -44,11 +44,12 @@
   },
   {
     "name": "Deepraj R",
-    "position": "Program Management and Outreach Lead",
+    "position": "Program Management",
     "image": "assets/team/mulearnhq/Deepraj R.webp",
     "drive": "https://drive.google.com/file/d/1wvdGSxTa7sz06NrTF1XNq5WFhkxYMbXI/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/deeprajr/",
-    "twitter": "https://twitter.com/Deepraj_R_"
+    "twitter": "https://twitter.com/Deepraj_R_",
+    "github": "https://github.com/deeprajr"
   },
   {
     "name": "Rahul Nath R",
@@ -60,7 +61,7 @@
   },
   {
     "name": "Salman Faariz",
-    "position": "Strategic Initiatives",
+    "position": "Strategic Initiatives, Operations and Outreach",
     "image": "assets/team/mulearnhq/Salman Faariz.webp",
     "drive": "",
     "linkedin": "https://www.linkedin.com/in/salmanfaariz/",
@@ -74,5 +75,12 @@
     "linkedin": "https://www.linkedin.com/in/-aswinasok/",
     "twitter": "https://twitter.com/_aswin_asok_",
     "github": "https://github.com/AswinAsok"
+  },
+  {
+    "name": "Nadeem Ahmed",
+    "position": "Program Manager",
+    "image": "assets/team/mulearnhq/Nadeem Ahmed.webp",
+    "linkedin": "https://www.linkedin.com/in/ndmahmed/"
+  
   }
 ]
