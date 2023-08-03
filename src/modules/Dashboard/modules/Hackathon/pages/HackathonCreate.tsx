@@ -512,7 +512,7 @@ const HackathonCreate = () => {
                                                             >
                                                                 Banner
                                                                 {
-                                                                    !isCreatePage && data?.banner !== "" ?
+                                                                    !isCreatePage && data?.banner !== null ?
                                                                         <button type="button" onClick={() => {
                                                                             setPreviewImgUrl(data?.banner)
                                                                             setOpenImagePreview(true);
@@ -632,7 +632,7 @@ const HackathonCreate = () => {
                                                                 }
                                                             >
                                                                 Event Logo
-                                                                {!isCreatePage && data?.event_logo !== "" ?
+                                                                {!isCreatePage && data?.event_logo !== null ?
                                                                     <button className={styles.previewBtn} type="button" onClick={() => {
                                                                         setPreviewImgUrl(data?.event_logo)
                                                                         setOpenImagePreview(true);
