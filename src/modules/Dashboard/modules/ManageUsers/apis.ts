@@ -8,10 +8,12 @@ export const getManageUsers = async (
     setData: any,
     page: number,
     selectedValue: number,
+    setIsLoading: (isLoading: boolean) => void,
     setTotalPages?: any,
     search?: string,
     sortID?: string
 ) => {
+    setIsLoading(true);
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getUsersData,
@@ -40,7 +42,9 @@ export const getManageUsers = async (
         }
         setData(datasuser);
         setTotalPages(manageusers.response.pagination.totalPages);
+        setIsLoading(false);
     } catch (err: unknown) {
+        setIsLoading(false);
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
@@ -130,7 +134,7 @@ export const editManageUsers = async (
 
 export const getManageUsersDetails = async (
     id: string | undefined,
-    setData: React.Dispatch<SetStateAction<UserData|undefined>>
+    setData: React.Dispatch<SetStateAction<UserData | undefined>>
 ) => {
     try {
         const response = await privateGateway.get(
@@ -142,16 +146,16 @@ export const getManageUsersDetails = async (
         let role = message.response.role;
         // console.log(message.response.users);
         const newOrganizations = message.response.organizations;
-        console.log(newOrganizations);
+        // console.log(newOrganizations);
         for (let i = 0; i < newOrganizations.length; i++) {
-            console.log(newOrganizations[i].org_type);
+            // console.log(newOrganizations[i].org_type);
             if (newOrganizations[i].org_type == "Community") {
-                console.log("community");
+                // console.log("community");
             }
             if (role == null) {
-                console.log("Company");
+                // console.log("Company");
             } else {
-                console.log("college");
+                // console.log("college");
             }
         }
         setData(message.response);

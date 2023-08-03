@@ -272,6 +272,18 @@
     gap: 0.8rem;
 }
 
+.MeetingDate{
+display: flex;
+width: 100%;
+flex-direction: column;
+padding-left: 10px;
+}
+
+.MeetingDate h1 {
+  color:var(--blue);
+  font-size: 2rem;
+}
+
 .MeetingBtn {
     width: 100%;
     display: flex;
@@ -549,23 +561,23 @@
     position: relative;
 }
 
-.Lcweek div label {
-    position: absolute;
-    font-size: 0.8rem;
-    font-weight: 400;
-    width: 30px;
-    height: 30px;
-    color: #CCC;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    cursor: pointer;
+.Lcweek div label{
+	position: absolute;
+	font-size: 0.8rem;
+	font-weight: 400;
+	width: 40px;
+	height: 40px;
+	color:#CCC;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	cursor: pointer;
 }
 
 .Lcweek input[type="checkbox"] {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 100%;
     background-color: #F3F3F3;
     outline: none;
@@ -578,8 +590,7 @@
 
 .Lcweek input[type="checkbox"]:checked {
     background-color: #456FF6;
-    border: 3px solid blue;
-    border: none;
+	border: none;
 }
 
 .Lcweek input[type="checkbox"]:after {
@@ -590,29 +601,40 @@
     color: #fff;
 }
 
-.LcNotedEvent {
+.LcNotedEvent{
+ width: 100%;
+ display: flex;
+ flex-direction:column;
+ justify-content: center;
+ align-items: center;
+ gap: 1rem;
+}
+
+.LcNotedEdit{
     width: 100%;
+    padding:0 10px ;
     display: flex;
-    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
-    gap: 1rem;
 }
 
-.LcNotedEvent input {
+.LcNotedEvent textarea{
     width: 100%;
+    min-height: 10rem;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    background-color: #f3f3f3;
+    background-color: #f3f8fe;
     outline: none;
 }
 
-.LcNotedEvent p {
-    width: 100%;
+.LcNotedEvent p{
+	width: 100%;
+    min-height: 10rem;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    background-color: #f3f3f3;
+    background-color: #f3f8fe;
     outline: none;
-    color: #ccc;
+	color:var(--Dark);
 }
 
 

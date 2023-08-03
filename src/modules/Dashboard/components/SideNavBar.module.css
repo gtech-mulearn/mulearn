@@ -45,7 +45,7 @@
     padding: 60px 20px 20px;
     justify-content: center;
     transition: all 0.3s ease-in-out;
-    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 0px 20px rgba(0, 0, 0, 0.1); */
 }
 
 .side_nav_bar_container .side_nav_bar {
@@ -100,7 +100,11 @@
     color: #fff;
 }
 
-.side_nav_bar_container .side_nav_bar .side_nav_bar_items .side_nav_bar_item .side_nav_bar_item_icon {
+.side_nav_bar_container
+    .side_nav_bar
+    .side_nav_bar_items
+    .side_nav_bar_item
+    .side_nav_bar_item_icon {
     margin-right: 20px;
 }
 
@@ -134,7 +138,7 @@
 .right_side .top_nav .nav .nav_items .greetings {
     font-size: 22px;
     font-weight: 600;
-    color: #456FF6;
+    color: #456ff6;
 }
 
 .mulearn_brand2 svg {
@@ -180,6 +184,13 @@
     margin-top: 20px;
 }
 
+.copyrightText {
+    font-size: 8px;
+    text-align: center;
+    color: var(--dimText);
+    font-weight: normal;
+}
+
 /* responsive */
 @media screen and (min-width: 1324px) {
     .right_side .top_nav .nav {
@@ -192,7 +203,10 @@
         max-width: 35%;
     }
 
-    .side_nav_bar_container .side_nav_bar .side_nav_bar_items .side_nav_bar_item {
+    .side_nav_bar_container
+        .side_nav_bar
+        .side_nav_bar_items
+        .side_nav_bar_item {
         margin-bottom: 10px;
     }
 
@@ -202,7 +216,6 @@
 }
 
 @media screen and (max-width: 830px) {
-
     .right_side .top_nav .nav {
         width: 100%;
         padding: 10px 40px 0px;
@@ -253,12 +266,9 @@
         width: auto;
     }
 
-    .side_nav_bar_container .side_nav_bar .side_nav_bar_items>* {
-        border: 1px solid #456ff6;
-        border-radius: 0px;
-        border-width: 1px 0px 1px 0px;
-        margin-bottom: 0px;
-        padding: 20px 10px;
+    .bottomButtons {
+        border-top: 1px solid #456ff6;
+        padding-top: 20px;
     }
 
     .mulearn_brand2 svg {

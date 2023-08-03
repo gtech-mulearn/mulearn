@@ -6,6 +6,7 @@ import {
     publicGateway
 } from "../../../../services/apiGateways";
 import { authRoutes, dashboardRoutes } from "../../../../services/urls";
+import { refreshRoles } from "@/MuLearnServices/authCheck";
 
 type setMuID = React.Dispatch<React.SetStateAction<string>>;
 type setStatus = React.Dispatch<React.SetStateAction<number>>;
@@ -84,6 +85,7 @@ export const login = (
                             "userInfo",
                             JSON.stringify(response.data.response)
                         );
+                        refreshRoles()
                         if (response.data.response.exist_in_guild) {
                             navigate("/dashboard/profile");
                         } else {
@@ -264,6 +266,7 @@ export const otpVerification = (
                         "userInfo",
                         JSON.stringify(response.data.response)
                     );
+                    refreshRoles()
                     if (response.data.response.exist_in_guild) {
                         navigate("/dashboard/profile");
                     } else {

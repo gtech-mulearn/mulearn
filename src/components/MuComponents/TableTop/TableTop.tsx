@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { SearchBar } from "./SearchBar";
-import ShowPerPage from "./ShowPerPage";
+import ShowPerPage from "../Pagination/ShowPerPage";
 import styles from "./TableTop.module.css";
-import { MuButton } from "../MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "../MuButtons/MuButton";
 import { HiDownload } from "react-icons/hi";
 import { getCSV } from "./apis";
 import { useToast } from "@chakra-ui/react";
@@ -26,11 +26,6 @@ const TableTop = (props: Props) => {
     const handleData = (search: string) => {
         props.onSearchText && props.onSearchText(search);
     };
-    const [itemsPerPage, setItemsPerPage] = useState(5);
-    const handleOptionChange = (value: number) => {
-        setItemsPerPage(value);
-        props.onPerPageNumber && props.onPerPageNumber(value);
-    };
 
     const handleClick = async () => {
         try {
@@ -49,27 +44,33 @@ const TableTop = (props: Props) => {
                     <SearchBar onSearch={handleData} />
                 </div>
                 <div className={styles.right}>
-                    <ShowPerPage
-                        options={[5, 10, 20, 50, 100]}
-                        selectedOption={itemsPerPage}
-                        onOptionChange={handleOptionChange}
-                    />
                     {props.CSV && (
-                        <MuButton
+                        // <MuButton
+                        //     text={"CSV"}
+                        //     onClick={e => {
+                        //         handleClick();
+                        //     }}
+                        //     disabled={isLoading}
+                        //     isLoading={isLoading}
+                        //     icon={<HiDownload />}
+                        //     style={{
+                        //         background: "#456FF6",
+                        //         padding: "0.35rem 1rem",
+                        //         borderRadius: "10px",
+                        //         color: "#fff"
+                        //     }}
+                        //     className={styles.csv}
+                        // />
+                        <PowerfulButton
                             text={"CSV"}
-                            onClick={e => {
+                            icon={<HiDownload />}
+                            onButtonClick={() => {
                                 handleClick();
                             }}
+                            padding="0.3rem 0.7rem"
+                            margin="0"
                             disabled={isLoading}
                             isLoading={isLoading}
-                            icon={<HiDownload />}
-                            style={{
-                                background: "#456FF6",
-                                padding: "0.35rem 1rem",
-                                borderRadius: "10px",
-                                color: "#fff"
-                            }}
-                            className={styles.csv}
                         />
                         // <button
                         //     className={styles.searchIcon}

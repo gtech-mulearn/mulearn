@@ -28,11 +28,11 @@ export const MuButton = (props: {
             style={{
                 background:
                     `${props.buttonUrl}` === window.location.pathname
-                        ? "#456FF6"
+                        ? "#DEE6FF"
                         : "",
                 color:
                     `${props.buttonUrl}` === window.location.pathname
-                        ? "#fff"
+                        ? "#5570F1"
                         : "",
                 ...props.style
             }}
@@ -169,6 +169,9 @@ type Props = {
     margin?: string;
     padding?: string;
     borderColor?: string;
+    icon?: ReactJSXElement;
+    isLoading?: boolean; // show loading spinner if neccessary.
+    disabled?: boolean;
 };
 
 export const PowerfulButton = (props: Props) => {
@@ -189,6 +192,9 @@ export const PowerfulButton = (props: Props) => {
         borderRadius: "10px",
         border: `2px solid ${props.borderColor || "#456FF6"}`,
         margin: props.margin || "0",
+        display: "flex",
+        alignItems: "center",
+        gap: "10px",
         ...(isHovered && {
             backgroundColor: props.onHoverBackground || "#00204c",
             color: props.onHoverColor || "#f5f7f9"
@@ -202,8 +208,18 @@ export const PowerfulButton = (props: Props) => {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 onClick={props.onButtonClick}
+                disabled={props.disabled}
             >
+                {props.icon}
+                {" "}
                 {props.text}
+                {props.isLoading && (
+                <ClipLoader
+                    size={20}
+                    color="#ff"
+                    className={styles.btn_loader}
+                />
+            )}
             </button>
         </div>
     );

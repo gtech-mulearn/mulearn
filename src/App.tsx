@@ -50,194 +50,209 @@ const HackathonDetails = lazy(() => import("./modules/Dashboard/modules/Hackatho
 const DistrictDashboard = lazy(() => import("./modules/Dashboard/modules/DistrictDashboard/DistrictDashboard"));
 const ZonalDashboard = lazy(() => import("./modules/Dashboard/modules/ZonalDashboard/ZonalDashboard"));
 const HackathonRegistration = lazy(() => import("./modules/Dashboard/modules/Hackathon/pages/HackathonRegistration"));
-const LandingPage = lazy(() => import("./modules/Public/LearningCircles/modules/LandingPage/LandingPage"));
+const LandingPage = lazy(() => import("./modules/Public/LearningCircles/pages/LandingPage"));
 const ConnectDiscord = lazy(() => import("./modules/Dashboard/modules/ConnectDiscord/pages/ConnectDiscord"));
 const HackathonParticipants = lazy(() => import("./modules/Dashboard/modules/Hackathon/pages/HackathonParticipants"));
 
 
-const router = createBrowserRouter([
-    // Add redirect from '/' to '/login'
-    {
-        path: "/",
-        element: <Navigate to="/login" replace />
-    },
-    {
-        path: "*",
-        element: <NotFound />
-    },
-    {
-        path: "404",
-        element: <NotFound />
-    },
-    {
-        path: "kkem",
-        element: <KKEMLanding />
-    },
-    {
-        path: "kkem/authorization/:token",
-        element: <KKEMAuth />
-    },
-    {
-        path: "/",
-        element: <AuthRoutes />,
-        children: [
-            { path: "register", element: <Onboarding /> },
-            { path: "login", element: <Login /> },
-            { path: "forgot-password", element: <ForgotPassword /> },
-            { path: "reset-password", element: <ResetPassword /> }
-        ]
-    },
-    {
-        path: "/",
-        element: <PrivateRoutes />,
-        children: [
-            {
-                path: "/dashboard",
-                element: <DashboardRootLayout />,
-                children: [
-                    { path: "profile", element: <Profile /> },
-                    { path: "connect-discord", element: <ConnectDiscord /> },
-                    { path: "interest-groups", element: <InterestGroup /> },
-                    {
-                        path: "interest-groups/create",
-                        element: <InterestGroupCreate />
-                    },
-                    {
-                        path: "organizations/create",
-                        element: <CreateOrganization />
-                    },
-                    {
-                        path: "organizations/edit",
-                        element: <EditOrgnaization />
-                    },
-                    {
-                        path: "organizations/delete/:id",
-                        element: <DeleteOrganizations />
-                    },
-                    { path: "campus-details", element: <CampusStudentList /> },
-                    { path: "manage-users", element: <ManageUsers /> },
-                    {
-                        path: "manage-users/create",
-                        element: <ManageUsersCreate />
-                    },
-                    {
-                        path: "manage-users/delete/:id",
-                        element: <ManageUsersDelete />
-                    },
-                    {
-                        path: "manage-users/edit/:id",
-                        element: <ManageUsersEdit />
-                    },
-                    { path: "manage-roles", element: <ManageRoles /> },
-                    {
-                        path: "user-role-verification",
-                        element: <UserRoleVerification />
-                    },
-                    {
-                        path: "user-role-verification/delete/:id",
-                        element: <UserRoleVerificationDelete />
-                    },
-                    {
-                        path: "user-role-verification/edit/:id",
-                        element: <UserRoleVerificationEdit />
-                    },
-                    {
-                        path: "zonal-dashboard",
-                        element: <ZonalDashboard />
-                    },
-                    {
-                        path: "district-dashboard",
-                        element: <DistrictDashboard />
-                    },
-                    { path: "organizations", element: <Organizations /> },
-                    { path: "tasks", element: <Tasks /> },
-                    {
-                        path: "tasks/create",
-                        element: <TaskCreate />
-                    },
-                    {
-                        path: "tasks/edit/:id",
-                        element: <TaskEdit />
-                    },
-                    {
-                        path: "tasks/bulk-import",
-                        element: <TaskBulkImport />
-                    },
-                    {
-                        path: "url-shortener",
-                        element: <UrlShortener />
-                    },
-                    {
-                        path: "hackathon",
-                        element: <Hackathon />
-                    },
-                    {
-                        path: "hackathon/create",
-                        element: <HackathonCreate />
-                    },
-                    {
-                        path: "hackathon/edit/:id",
-                        element: <HackathonCreate />
-                    },
-                    {
-                        path: "hackathon/details/:id",
-                        element: <HackathonDetails />
-                    },
-                    {
-                        path: "hackathon/apply/:id",
-                        element: <HackathonRegistration />
-                    },
-                    {
-                        path: "hackathon/applicants/:id",
-                        element: <HackathonParticipants />
-                    },
-                    {
-                        path: "manage-locations",
-                        element: <ManageLocation />
-                    },
-                    {
-                        path: "manage-locations/add/:item",
-                        element: <AddLocation />
-                    },
-                    {
-                        path: "manage-locations/edit/:item",
-                        element: <EditLocation />
-                    },
-                    {
-                        path: "hackathon/organizers/:id",
-                        element: <HackathonOrganizers />
-                    },
-                    {
-                        path: "learning-circle",
-                        element: <LearningCircleLandingPage />
-                    },
-                    {
-                        path: "learning-circle/details/:id",
-                        element: <LearningCircle />
-                    },
-                    {
-                        path: "learning-circle/find-circle",
-                        element: <FindCircle />
-                    },
-                    {
-                        path: "learning-circle/create-circle",
-                        element: <LearningCircleCreate />
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        path: "/dashboard/profile/:id",
-        element: <Profile />
-    },
-    {
-        path: "/learning-circle",
-        element: <LandingPage />
-    }
-]);
+
+import { roles } from "./services/types";
+import SecureAuthRoutes from "./services/authCheck";
+import Settings from "./modules/Dashboard/modules/Settings/Settings";
+
 
 function App() {
+    const RoleChecker = SecureAuthRoutes()
+    const router = createBrowserRouter([
+        // Add redirect from '/' to '/login'
+        {
+            path: "/",
+            element: <Navigate to="/login" replace />
+        },
+        {
+            path: "*",
+            element: <NotFound />
+        },
+        {
+            path: "404",
+            element: <NotFound />
+        },
+        {
+            path: "kkem",
+            element: <KKEMLanding />
+        },
+        {
+            path: "kkem/authorization/:token",
+            element: <KKEMAuth />
+        },
+        {
+            path: "/",
+            element: <AuthRoutes />,
+            children: [
+                { path: "register", element: <Onboarding /> },
+                { path: "login", element: <Login /> },
+                { path: "forgot-password", element: <ForgotPassword /> },
+                { path: "reset-password", element: <ResetPassword /> }
+            ]
+        },
+        {
+            path: "/",
+            element: <PrivateRoutes />,
+            children: [
+                {
+                    path: "/dashboard",
+                    element: <DashboardRootLayout />,
+                    children: [
+                        { path: "profile", element: <Profile /> },
+                        { path: "connect-discord", element: <ConnectDiscord /> },
+                        { path: "interest-groups", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<InterestGroup />} /> },
+                        {
+                            path: "interest-groups/create",
+                            element: <InterestGroupCreate />
+                        },
+                        {
+                            path: "interest-groups/edit/:id",
+                            element: <InterestGroupCreate />
+                        },
+                        {
+                            path: "organizations/create",
+                            element: <CreateOrganization />
+                        },
+                        {
+                            path: "organizations/edit",
+                            element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<EditOrgnaization />} />
+                        },
+                        {
+                            path: "organizations/delete/:id",
+                            element: <DeleteOrganizations />
+                        },
+                        { path: "campus-details", element: <RoleChecker roles={[roles.CAMPUS_LEAD]} Children={<CampusStudentList />} /> },
+                        { path: "manage-users", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<ManageUsers />} /> },
+                        {
+                            path: "manage-users/create",
+                            element: <ManageUsersCreate />
+                        },
+                        {
+                            path: "manage-users/delete/:id",
+                            element: <ManageUsersDelete />
+                        },
+                        {
+                            path: "manage-users/edit/:id",
+                            element: <ManageUsersEdit />
+                        },
+                        { path: "manage-roles", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<ManageRoles />} /> },
+                        {
+                            path: "user-role-verification",
+                            element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<UserRoleVerification />} />
+                        },
+                        {
+                            path: "user-role-verification/delete/:id",
+                            element: <UserRoleVerificationDelete />
+                        },
+                        {
+                            path: "user-role-verification/edit/:id",
+                            element: <UserRoleVerificationEdit />
+                        },
+                        {
+                            path: "zonal-dashboard",
+                            element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW, roles.ZONAL_CAMPUS_LEAD]} Children={<ZonalDashboard />} />
+                        },
+                        {
+                            path: "district-dashboard",
+                            element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW, roles.DISTRICT_CAMPUS_LEAD]} Children={<DistrictDashboard />} />
+                        },
+                        { path: "organizations", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<Organizations />} /> },
+                        { path: "tasks", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<Tasks />} /> },
+                        {
+                            path: "tasks/create",
+                            element: <TaskCreate />
+                        },
+                        {
+                            path: "tasks/edit/:id",
+                            element: <TaskEdit />
+                        },
+                        {
+                            path: "tasks/bulk-import",
+                            element: <TaskBulkImport />
+                        },
+                        {
+                            path: "url-shortener",
+                            element: <UrlShortener />
+                        },
+                        {
+                            path: "hackathon",
+                            element: <Hackathon />
+                        },
+                        {
+                            path: "hackathon/create",
+                            element: <HackathonCreate />
+                        },
+                        {
+                            path: "hackathon/edit/:id",
+                            element: <HackathonCreate />
+                        },
+                        {
+                            path: "hackathon/details/:id",
+                            element: <HackathonDetails />
+                        },
+                        {
+                            path: "hackathon/apply/:id",
+                            element: <HackathonRegistration />
+                        },
+                        {
+                            path: "hackathon/applicants/:id",
+                            element: <HackathonParticipants />
+                        },
+                        {
+                            path: "manage-locations",
+                            element: <ManageLocation />
+                        },
+                        {
+                            path: "manage-locations/add/:item",
+                            element: <AddLocation />
+                        },
+                        {
+                            path: "manage-locations/edit/:item",
+                            element: <EditLocation />
+                        },
+                        {
+                            path: "hackathon/organizers/:id",
+                            element: <HackathonOrganizers />
+                        },
+                        {
+                            path: "learning-circle",
+                            element: <LearningCircleLandingPage />
+                        },
+                        {
+                            path: "learning-circle/details/:id",
+                            element: <LearningCircle />
+                        },
+                        {
+                            path: "learning-circle/find-circle",
+                            element: <FindCircle />
+                        },
+                        {
+                            path: "learning-circle/create-circle",
+                            element: <LearningCircleCreate />
+                        }
+                    ]
+                },
+                {
+                    path: "/settings",
+                    element: <Settings />,
+                },
+            ]
+        },
+        {
+            path: "/dashboard/profile/:id",
+            element: <Profile />
+        },
+        {
+            path: "/learning-circle",
+            element: <LandingPage />
+        }
+    ]);
+
     return <RouterProvider router={router} />;
 }
 

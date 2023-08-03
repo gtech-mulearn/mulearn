@@ -110,7 +110,7 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  background-image: url(../assets/images/lines.png);
+  background-image: url(../assets/images/lines.webp);
 }
 
 .onboarding_flow_container .content .onboarding_flow div {
@@ -170,25 +170,25 @@
 .onboarding_flow_container .content .onboarding_flow .box {
   left: 0;
   top: 30px;
-  background-image: url(../assets/images/onboardingflow1.png);
+  background-image: url(../assets/images/onboardingflow1.webp);
 }
 
 .onboarding_flow_container .content .onboarding_flow .box2 {
   right: 50px;
   top: 35%;
-  background-image: url(../assets/images/onboardingflow2.png);
+  background-image: url(../assets/images/onboardingflow2.webp);
 }
 
 .onboarding_flow_container .content .onboarding_flow .box3 {
   left: 0px;
   top: 65%;
-  background-image: url(../assets/images/onboardingflow3.png);
+  background-image: url(../assets/images/onboardingflow3.webp);
 }
 
 .onboarding_flow_container .content .onboarding_flow .box4 {
   right: 50px;
   top: 101%;
-  background-image: url(../assets/images/onboardingflow4.png);
+  background-image: url(../assets/images/onboardingflow4.webp);
 }
 
 @media (width< 1230px) {

@@ -66,19 +66,19 @@ const InterestGroupEditModal: React.FC<ModalProps> = ({ isOpen, onClose, id,defa
             })}
             onSubmit={values => {
               //console.log(values.igName);
-              (async () => {
-                await editInterestGroups(
-                  values.igName,
-                  id
-                );
-                toast({
-                  title: "Interest Group created",
-                  status: "success",
-                  duration: 3000,
-                  isClosable: true
-                });
-                onClose(null)
-              })()
+              // (async () => {
+              //   await editInterestGroups(
+              //     values.igName,
+              //     id
+              //   );
+              //   toast({
+              //     title: "Interest Group created",
+              //     status: "success",
+              //     duration: 3000,
+              //     isClosable: true
+              //   });
+              //   onClose(null)
+              // })()
 
             }}
           >

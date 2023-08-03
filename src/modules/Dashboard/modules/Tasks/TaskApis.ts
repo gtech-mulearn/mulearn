@@ -4,7 +4,6 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { Dispatch, SetStateAction } from "react";
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { TaskEditInterface } from "./TaskInterface";
-import { utils, writeFile } from "xlsx";
 
 type uuidType = {
     level: { id: string; name: string }[];
@@ -49,10 +48,12 @@ export const getTasks = async (
     setData: any,
     page: number,
     selectedValue: number,
+    setIsLoading: (isLoading: boolean) => void,
     setTotalPages?: any,
     search?: string,
     sortID?: string
 ) => {
+    setIsLoading(true);
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getTasksData,
@@ -69,7 +70,9 @@ export const getTasks = async (
         const uuids: Partial<uuidType> = await getUUID();
         setData(uuidToString(tasks.response.data, uuids));
         setTotalPages(tasks.response.pagination.totalPages);
+        setIsLoading(false);
     } catch (err: unknown) {
+        setIsLoading(false);
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
@@ -233,7 +236,7 @@ export const getUUID = async () => {
         ).sort((a, b) =>
             //check for name/title key and then compare
             (a.name !== undefined && a.name < b.name) ||
-            (a.title !== undefined && a.title < b.title)
+                (a.title !== undefined && a.title < b.title)
                 ? -1
                 : 1
         );
@@ -242,10 +245,16 @@ export const getUUID = async () => {
 };
 
 // function to take a js object and convert it to a XLSX file using the SheetJS library
+// bundle size increased from 106kb to 160kb, but dynamically imported
 
 export const convertToXLSX = (data: any, fileName: string) => {
-    const ws = utils.json_to_sheet(data);
-    const wb = utils.book_new();
-    utils.book_append_sheet(wb, ws, "Result 1");
-    writeFile(wb, fileName);
+    import("xlsx").then(({ utils, writeFile }) => {
+
+        const ws = utils.json_to_sheet(data);
+        const wb = utils.book_new();
+        utils.book_append_sheet(wb, ws, "Result 1");
+        writeFile(wb, fileName);
+
+    })
+        .catch((err) => console.error(err));
 };

@@ -1,18 +1,15 @@
-import { useEffect, useRef, useState } from "react";
-import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import Table from "@/MuLearnComponents/Table/Table";
-import THead from "@/MuLearnComponents/Table/THead";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
-import { hasRole } from "@/MuLearnServices/common_functions";
-import { roles } from "@/MuLearnServices/types";
-import { useNavigate } from "react-router-dom";
-import { deleteTask, getTasks } from "./TaskApis";
+import THead from "@/MuLearnComponents/Table/THead";
+import Table from "@/MuLearnComponents/Table/Table";
+import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import styles from "../InterestGroup/InterestGroup.module.css";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useToast } from "@chakra-ui/react";
-import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { useEffect, useRef, useState } from "react";
+import { AiOutlinePlusCircle } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import styles from "../InterestGroup/InterestGroup.module.css";
+import { deleteTask, getTasks } from "./TaskApis";
 
 type Props = {};
 
@@ -20,6 +17,7 @@ export const Tasks = (props: Props) => {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+    const [isLoading, setIsLoading] = useState(false);
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
     const firstFetch = useRef(true);
@@ -47,41 +45,56 @@ export const Tasks = (props: Props) => {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getTasks(setData, nextPage, perPage);
+        getTasks(
+            setData,
+            nextPage,
+            perPage,
+            setIsLoading,
+            setTotalPages,
+            "",
+            sort
+        );
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getTasks(setData, prevPage, perPage);
+        getTasks(
+            setData,
+            prevPage,
+            perPage,
+            setIsLoading,
+            setTotalPages,
+            "",
+            sort
+        );
     };
 
     useEffect(() => {
         if (firstFetch.current) {
-            if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
-            getTasks(setData, 1, perPage, setTotalPages, "", "");
+            getTasks(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
         }
         firstFetch.current = false;
     }, [data]);
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getTasks(setData, 1, perPage, setTotalPages, search, "");
+        getTasks(setData, 1, perPage, setIsLoading, setTotalPages, search, "");
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getTasks(setData, 1, selectedValue, setTotalPages, "", "");
+        getTasks(setData, 1, selectedValue, setIsLoading, setTotalPages, "", "");
     };
 
     const handleIconClick = (column: string) => {
         if (sort === column) {
             setSort(`-${column}`);
-            getTasks(setData, 1, perPage, setTotalPages, "", `-${column}`);
+            getTasks(setData, 1, perPage, setIsLoading, setTotalPages, "", `-${column}`);
         } else {
             setSort(column);
-            getTasks(setData, 1, perPage, setTotalPages, "", column);
+            getTasks(setData, 1, perPage, setIsLoading, setTotalPages, "", column);
         }
 
         //console.log(`Icon clicked for column: ${column}`);
@@ -107,21 +120,20 @@ export const Tasks = (props: Props) => {
                     gap: "15px"
                 }}
             >
-                <MuButton
-                    className={styles.createBtn}
-                    text={"Bulk Import"}
-                    icon={<AiOutlinePlusCircle />}
-                    onClick={() => navigate("/dashboard/tasks/bulk-import")}
-                    style={{
-                        width: "auto"
-                    }}
-                />
-                <MuButton
-                    className={styles.createBtn}
-                    text={"Create"}
-                    icon={<AiOutlinePlusCircle />}
-                    onClick={handleCreate}
-                />
+                
+                <PowerfulButton 
+                text={"Bulk Import"}
+                icon={<AiOutlinePlusCircle />}
+                onButtonClick={() => navigate("/dashboard/tasks/bulk-import")}
+                padding="0.3rem 0.7rem"
+                margin="0"/>
+                
+                <PowerfulButton 
+                text={"Create"}
+                icon={<AiOutlinePlusCircle />}
+                onButtonClick={handleCreate}
+                padding="0.3rem 0.7rem"
+                margin="0"/>
             </div>
 
             {data && (
@@ -133,6 +145,7 @@ export const Tasks = (props: Props) => {
                     />
                     <Table
                         rows={data}
+                        isloading={isLoading}
                         page={currentPage}
                         perPage={perPage}
                         columnOrder={columnOrder}
@@ -146,13 +159,17 @@ export const Tasks = (props: Props) => {
                             columnOrder={columnOrder}
                             onIconClick={handleIconClick}
                         />
-                        <Pagination
-                            currentPage={currentPage}
-                            totalPages={totalPages}
-                            margin="10px 0"
-                            handleNextClick={handleNextClick}
-                            handlePreviousClick={handlePreviousClick}
-                        />
+                        <div>
+                            {!isLoading &&
+                                <Pagination
+                                    currentPage={currentPage}
+                                    totalPages={totalPages}
+                                    margin="10px 0"
+                                    handleNextClick={handleNextClick}
+                                    handlePreviousClick={handlePreviousClick} onSearchText={handleSearch}
+                                    onPerPageNumber={handlePerPageNumber}
+                                />}
+                        </div>
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>
                 </>

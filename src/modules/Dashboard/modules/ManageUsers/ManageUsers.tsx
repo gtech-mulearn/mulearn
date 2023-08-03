@@ -2,8 +2,6 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import THead from "@/MuLearnComponents/Table/THead";
 import Table from "@/MuLearnComponents/Table/Table";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { hasRole } from "@/MuLearnServices/common_functions";
-import { roles } from "@/MuLearnServices/types";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
@@ -16,6 +14,7 @@ function ManageRoles() {
     const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const firstFetch = useRef(true);
 
@@ -40,27 +39,40 @@ function ManageRoles() {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getManageUsers(setData, nextPage, perPage);
+        getManageUsers(
+            setData,
+            nextPage,
+            perPage,
+            setIsLoading,
+            "",
+            sort
+        );
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getManageUsers(setData, prevPage, perPage);
+        getManageUsers(
+            setData,
+            prevPage,
+            perPage,
+            setIsLoading,
+            "",
+            sort
+        );
     };
 
     useEffect(() => {
         if (firstFetch.current) {
-            if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
 
-            getManageUsers(setData, 1, perPage, setTotalPages, "", "");
+            getManageUsers(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
         }
         firstFetch.current = false;
     }, []);
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getManageUsers(setData, 1, perPage, setTotalPages, search, "");
+        getManageUsers(setData, 1, perPage, setIsLoading, setTotalPages, search, "");
     };
 
     const handleEdit = (id: string | number | boolean) => {
@@ -72,14 +84,14 @@ function ManageRoles() {
 
     const handleDelete = (id: string | undefined) => {
         deleteManageUsers(id, toast);
-        getManageUsers(setData, 1, perPage, setTotalPages, "", "");
+        getManageUsers(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
         navigate("/manage-users");
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getManageUsers(setData, 1, selectedValue, setTotalPages, "", "");
+        getManageUsers(setData, 1, selectedValue, setIsLoading, setTotalPages, "", "");
     };
 
     // const handleCreate = () => {
@@ -93,13 +105,14 @@ function ManageRoles() {
                 setData,
                 1,
                 perPage,
+                setIsLoading,
                 setTotalPages,
                 "",
                 `-${column}`
             );
         } else {
             setSort(column);
-            getManageUsers(setData, 1, perPage, setTotalPages, "", column);
+            getManageUsers(setData, 1, perPage, setIsLoading, setTotalPages, "", column);
         }
 
         //console.log(`Icon clicked for column: ${column}`);
@@ -122,10 +135,11 @@ function ManageRoles() {
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
                         CSV={dashboardRoutes.getUsersList}
-                        // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
+                    // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
                     />
                     <Table
                         rows={data}
+                        isloading={isLoading}
                         page={currentPage}
                         perPage={perPage}
                         columnOrder={columnOrder}
@@ -141,13 +155,18 @@ function ManageRoles() {
                             onIconClick={handleIconClick}
                             action={true}
                         />
-                        <Pagination
-                            currentPage={currentPage}
-                            totalPages={totalPages}
-                            margin="10px 0"
-                            handleNextClick={handleNextClick}
-                            handlePreviousClick={handlePreviousClick}
-                        />
+                        <div>
+                            {!isLoading &&
+                                <Pagination
+                                    currentPage={currentPage}
+                                    totalPages={totalPages}
+                                    margin="10px 0"
+                                    handleNextClick={handleNextClick}
+                                    handlePreviousClick={handlePreviousClick} onSearchText={handleSearch}
+                                    onPerPageNumber={handlePerPageNumber}
+                                />
+                            }
+                        </div>
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>
                 </>
