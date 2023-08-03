@@ -143,7 +143,7 @@ const ManageUsersEdit = (props: Props) => {
                             type="text"
                             placeholder="Enter a mobile number"
                         />
-                        {data?.role.includes('Student') && <FormikReactSelect
+                        {data?.role.includes(roles.STUDENT) && <FormikReactSelect
                             name="college"
                             options={organizations?.College!}
                             label="College"
@@ -160,7 +160,7 @@ const ManageUsersEdit = (props: Props) => {
                             isMulti
                             isDisabled={!organizations}
                         />
-                        {!data?.role.includes('Student') && <FormikReactSelect
+                        {!data?.role.includes(roles.STUDENT) && <FormikReactSelect
                             name="company"
                             options={organizations?.Company!}
                             label="Company"
@@ -168,13 +168,13 @@ const ManageUsersEdit = (props: Props) => {
                             isSearchable
                             isDisabled={!organizations}
                         />}
-                        {data?.role.includes('Student') &&<FormikTextInput
+                        {data?.role.includes(roles.STUDENT) &&<FormikTextInput
                             label="User Department"
                             name="department"
                             type="text"
                             placeholder="Enter a mobile number"
                         />}
-                        {data?.role.includes('Student') &&<FormikTextInput
+                        {data?.role.includes(roles.STUDENT) &&<FormikTextInput
                             label="User Graduation Year"
                             name="graduation_year"
                             type="text"
