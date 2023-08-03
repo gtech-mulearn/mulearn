@@ -3,10 +3,12 @@ const now = new Date()
 export default function test(List1, List2) {
     const overall = {}, monthly = {}
     const { Members, List } = processData(List2, List1)
+    // eslint-disable-next-line array-callback-return
     List.map((work) => {
         const date = new Date(work.Date)
         const notToday = !(date.getDate() === new Date().getDate() && date.getMonth() === new Date().getMonth() && date.getFullYear() === new Date().getFullYear())
         if (date < now && notToday) {
+            // eslint-disable-next-line array-callback-return
             Members.map((member) => {
                 initializeUser(overall, monthly, member)
                 let works = work[member]

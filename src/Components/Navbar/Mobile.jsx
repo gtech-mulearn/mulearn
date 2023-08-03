@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect } from "react";
+import React from "react";
 import NavLinks from "./NavLinks";
 import { Link } from "react-router-dom";
 import Notification from "./Notification";
-import { getLinks } from "./Mylinks";
+import { links } from "./Mylinks";
 import SearchBar from "./SearchBar";
 import { useState } from "react";
-import SheetAPI from "../../Utils/SheetAPI";
+// import SheetAPI from "../../Utils/SheetAPI";
 export const MobileTopBar = ({
   setNotificationOpen,
   notificationOpen,
@@ -139,33 +139,34 @@ export const MobileView = ({
   );
 };
 export const MobileNavHeader = ({ visible, test1 }) => {
-  const [variable, setVariable] = useState([])
-  const [ig, setIg] = useState([])
+  // const [variable, setVariable] = useState([])
+  // const [ig, setIg] = useState([])
 
-  const Sheet = useCallback(() => {
-    SheetAPI('https://docs.google.com/spreadsheets/d/1C7MyDDpRCIq3bnXi-bdWQrUdYMJ0_2cBkpoJ7POQA6A/edit#gid=0', 'landing_pages', setVariable)
-  }, [])
-  useEffect(() => {
-    if (variable.length <= 0)
-      Sheet()
-    else {
-      // eslint-disable-next-line array-callback-return
-      variable.map(link => {
-        if (link.parent === 'null')
-          setIg((items) => ([...items, {
-            name: link?.heading,
-            link: `${link?.code}`,
-            foreign: true
-          }]))
-        else return {}
-      })
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [variable.length])
+  // const Sheet = useCallback(() => {
+  //   SheetAPI('https://docs.google.com/spreadsheets/d/1C7MyDDpRCIq3bnXi-bdWQrUdYMJ0_2cBkpoJ7POQA6A/edit#gid=0', 'landing_pages', setVariable)
+
+  // }, [])
+  // useEffect(() => {
+  //   if (variable.length <= 0)
+  //     Sheet()
+  //   else {
+  //     // eslint-disable-next-line array-callback-return
+  //     variable.map(link => {
+  //       if (link.parent === 'null')
+  //         setIg((items) => ([...items, {
+  //           name: link?.heading,
+  //           link: `${link?.code}`,
+  //           foreign: true
+  //         }]))
+  //       else return {}
+  //     })
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [variable.length])
   return (
     <>
       {!visible &&
-        getLinks(ig).map((link, index) => (
+        links.map((link, index) => (
           <div
             key={index}
             className={`px-7 py-5 text-left flex justify-between items-center }`}
