@@ -179,7 +179,7 @@ export const getAllOrganisations = async (
                 route,
                 {params:
                     {
-                        perPage:2000//HardCode 2000
+                        perPage:route===organizationRoutes.getCollege?2000:100//HardCode 2000
                     }
                 }
             ))
@@ -187,7 +187,7 @@ export const getAllOrganisations = async (
         const responseData = response.map(route=>
             route.data.response.data.map((obj:any)=>{
                 //replacing id,title key with value,label
-                return {value:obj.id,label:obj.title,...obj}
+                return {value:obj.id,label:obj.title}
             })
             ) 
         data.College=responseData[0]

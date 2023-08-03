@@ -16,6 +16,7 @@ import { UserData } from "./ManageUsersInterface";
 import { getLocationIdByName } from "../../utils/common";
 
 type Props = {};
+
 export type orgSelectType = {
     Community:Option[],
     College:Option[],
@@ -23,7 +24,6 @@ export type orgSelectType = {
 }
 
 const ManageUsersEdit = (props: Props) => {
-    const [name, setName] = useState<any>();
     const [organizations, setOrganizations] = useState<orgSelectType>({
         Community:[],
         College:[],
@@ -40,29 +40,31 @@ const ManageUsersEdit = (props: Props) => {
                 setOrganizations((await getAllOrganisations(toast))!)
         })()
     }, []);
+    
     return (
         <div className={styles.external_container}>
             <div className={styles.container}>
                 <h1 className={styles.text}>User Edit Page</h1>
                 <Formik
                     enableReinitialize={true}
+                    
                     initialValues={{
                         // igName: name
-                        first_name: data?.first_name,
-                        last_name: data?.last_name,
-                        email: data?.email,
-                        mobile: data?.mobile,
+                        first_name: data?.first_name || '' ,
+                        last_name: data?.last_name || '',
+                        email: data?.email || '', 
+                        mobile: data?.mobile || '',
                         // discord_id: data?.discord_id,
                         // mu_id: data?.mu_id,
                         college: data?.organization?.College?
                         data?.organization?.College[0]:'',
                         community: data?.organization?.Community?
-                        data?.organization?.Community[0]:'',
+                        data?.organization?.Community
+                        :[],
                         company: data?.organization?.Company?
                         data?.organization?.Company[0]:'',
-                        department: data?.department,
-                        graduation_year: data?.graduation_year,
-                        role: data?.role,
+                        department: data?.department || '',
+                        graduation_year: data?.graduation_year || '',
                     }}
                     validationSchema={Yup.object({
                         // igName: Yup.string()
@@ -82,7 +84,7 @@ const ManageUsersEdit = (props: Props) => {
                             .required("Required"),
                         college: Yup.string()
                             .required("Required"),
-                        community: Yup.string()
+                        community: Yup.array()
                             .required("Required"),
                         company: Yup.string()
                             .required("Required"),
@@ -115,7 +117,7 @@ const ManageUsersEdit = (props: Props) => {
                         navigate("/manage-users");
                     }}
                 >
-                    <Form className={styles.inputContainer}>
+                    <Form className={styles.inputContainer} >
                         {/* {data?.role ? : }  */}
                         <FormikTextInput
                             label="User First Name"
@@ -141,39 +143,43 @@ const ManageUsersEdit = (props: Props) => {
                             type="text"
                             placeholder="Enter a mobile number"
                         />
-                        <FormikReactSelect
+                        {data?.role.includes('Student') && <FormikReactSelect
                             name="college"
                             options={organizations?.College!}
                             label="College"
                             isClearable
                             isSearchable
-                        />
+                            isDisabled={!organizations}
+                        />}
                         <FormikReactSelect
                             name="community"
                             options={organizations?.Community!}
                             label="Community"
                             isClearable
                             isSearchable
+                            isMulti
+                            isDisabled={!organizations}
                         />
-                        <FormikReactSelect
+                        {!data?.role.includes('Student') && <FormikReactSelect
                             name="company"
                             options={organizations?.Company!}
                             label="Company"
                             isClearable
                             isSearchable
-                        />
-                        <FormikTextInput
+                            isDisabled={!organizations}
+                        />}
+                        {data?.role.includes('Student') &&<FormikTextInput
                             label="User Department"
                             name="department"
                             type="text"
                             placeholder="Enter a mobile number"
-                        />
-                        <FormikTextInput
+                        />}
+                        {data?.role.includes('Student') &&<FormikTextInput
                             label="User Graduation Year"
                             name="graduation_year"
                             type="text"
                             placeholder="Enter a mobile number"
-                        />
+                        />}
                         {/* <FormikTextInput
                             label="User Discord ID"
                             name="discord_id"
