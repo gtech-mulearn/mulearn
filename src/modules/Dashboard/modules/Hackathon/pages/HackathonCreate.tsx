@@ -727,10 +727,7 @@ const HackathonCreate = () => {
                                                                 styles.checkerInput
                                                             }
                                                         >
-                                                            <input
-                                                                type="checkbox"
-                                                                name="isOpenToAll"
-                                                            />
+                                                             <Field type="checkbox" name="isOpenToAll" />
                                                         </div>
                                                     </div>
                                                 </TabPanel>
