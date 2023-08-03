@@ -1,9 +1,10 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
-import { dashboardRoutes } from "@/MuLearnServices/urls";
+import { dashboardRoutes,organizationRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 import { Dispatch, SetStateAction } from "react";
 import { OrgData, UserData } from "./ManageUsersInterface";
+import { orgSelectType } from "./ManageUsersEdit";
 export const getManageUsers = async (
     setData: any,
     page: number,
@@ -78,15 +79,15 @@ export const createManageUsers = async (
 };
 
 export const editManageUsers = async (
-    id: string | undefined,
-    first_name: string | undefined,
-    last_name: string | undefined,
-    email: string | undefined,
-    mobile: string | undefined,
-    discord_id: string | undefined,
-    mu_id: string | undefined,
-    role: string | undefined,
-    orgaanizations?: OrgData[],
+    id?: string,
+    first_name?: string,
+    last_name?: string ,
+    email?: string ,
+    mobile?: string ,
+    discord_id?: string ,
+    mu_id?: string ,
+    role?: string ,
+    orgaanizations?: string[],
     // toast: any,
 
     college?: string | undefined,
@@ -139,21 +140,21 @@ export const getManageUsersDetails = async (
         const message: any = response?.data;
         console.log(message.response);
 
-        let role = message.response.role;
-        // console.log(message.response.users);
-        const newOrganizations = message.response.organizations;
-        // console.log(newOrganizations);
-        for (let i = 0; i < newOrganizations.length; i++) {
-            // console.log(newOrganizations[i].org_type);
-            if (newOrganizations[i].org_type == "Community") {
-                // console.log("community");
-            }
-            if (role == null) {
-                // console.log("Company");
-            } else {
-                // console.log("college");
-            }
-        }
+        // let role = message.response.role;
+        // // console.log(message.response.users);
+        // const newOrganizations = message.response.organizations;
+        // // console.log(newOrganizations);
+        // for (let i = 0; i < newOrganizations.length; i++) {
+        //     // console.log(newOrganizations[i].org_type);
+        //     if (newOrganizations[i].org_type == "Community") {
+        //         // console.log("community");
+        //     }
+        //     if (role == null) {
+        //         // console.log("Company");
+        //     } else {
+        //         // console.log("college");
+        //     }
+        // }
         setData(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -162,6 +163,49 @@ export const getManageUsersDetails = async (
         }
     }
 };
+
+export const getAllOrganisations = async (
+    toast: (options?: UseToastOptions | undefined) => ToastId
+)=>{
+    try{
+        const data:orgSelectType = {College:[],Community:[],Company:[]}
+        const routes = [
+            organizationRoutes.getCollege,
+            organizationRoutes.getCommunity,
+            organizationRoutes.getCompany
+        ]
+        const response = await Promise.all(
+            routes.map(route=>privateGateway.get(
+                route,
+                {params:
+                    {
+                        perPage:2000//HardCode 2000
+                    }
+                }
+            ))
+        )
+        const responseData = response.map(route=>
+            route.data.response.data.map((obj:any)=>{
+                //replacing id,title key with value,label
+                return {value:obj.id,label:obj.title,...obj}
+            })
+            ) 
+        data.College=responseData[0]
+        data.Community=responseData[1]
+        data.Company=responseData[2]
+        
+        return data
+
+    }catch(err){
+        console.log(err)
+        toast({
+            title: "Error in org fetch",
+            status: "error",
+            duration: 3000,
+            isClosable: true
+        })
+    }
+}
 
 export const deleteManageUsers = async (
     id: string | undefined,
