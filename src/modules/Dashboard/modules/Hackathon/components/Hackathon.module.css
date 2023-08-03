@@ -1,0 +1,31 @@
+/* App.css */
+.modalOverlay {
+  width: 100vw;
+  height: 100vh;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  position: fixed;
+  backdrop-filter: blur(1px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  max-height: 20%;
+  max-width: 40%;
+}
+
+@media (max-width: 768px) {
+ .modal{
+  max-height: 100%;
+  max-width: 100%;
+ }
+}
