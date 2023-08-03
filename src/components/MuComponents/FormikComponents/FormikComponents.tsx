@@ -94,7 +94,13 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
     const [field, meta, helpers] = useField(name);
 
     const handleChange = (selectedOption: any) => {
-        helpers.setValue(selectedOption ? selectedOption.value : null);
+        if(rest.isMulti)
+            helpers.setValue(
+                selectedOption
+                .map((obj:any)=>obj.value)
+            )
+        else
+            helpers.setValue(selectedOption ? selectedOption.value : null);
     };
 
     const handleBlur = () => {
@@ -105,9 +111,13 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
         if (!field.value) {
 			return null;
         }
+        if(rest.isMulti){
+            return options.filter(option => 
+                field.value.includes(option.value)
+            ) || null   
+        }
         return options.find(option => option.value === field.value) || null;
     };
-
     return (
         <div className={styles.InputSet}>
             <label className={styles.formLabel} htmlFor={name}>
