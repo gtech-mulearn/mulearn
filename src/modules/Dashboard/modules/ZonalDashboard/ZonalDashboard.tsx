@@ -30,7 +30,6 @@ function ZonalDashboard() {
 
     useEffect(() => {
         if (firstFetch.current) {
-                navigate("/404");
 
             getzonaldashboard(
                 activeTab,

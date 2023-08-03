@@ -28,7 +28,7 @@ const UserRoleVerificationEdit = (props: Props) => {
         verified: isChecked
     });
     useEffect(() => {
-        getUserRoleVerificationDetails(id, setData);
+        if (id) getUserRoleVerificationDetails(id, setData);
     }, []);
 
     const inputFields = [

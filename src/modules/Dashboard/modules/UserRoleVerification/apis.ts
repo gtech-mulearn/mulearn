@@ -76,7 +76,7 @@ interface IData {
     verified: boolean;
 }
 export const getUserRoleVerificationDetails = async (
-    id: string | undefined,
+    id: string,
     setData: UseStateFunc<IData>
 ) => {
     try {
@@ -96,7 +96,7 @@ export const getUserRoleVerificationDetails = async (
 };
 
 export const deleteUserRoleVerification = async (
-    id: string | undefined,
+    id: string,
     toast: ToastAsPara
 ) => {
     try {

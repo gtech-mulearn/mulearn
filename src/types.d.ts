@@ -52,3 +52,9 @@ type AllTokens = {
     accessToken: string
     refreshToken: string
 }
+
+// help me to fill this type (usefull in future)
+type General = 
+      "Invalid muid or email"
+    | "Signature verification failed"
+    | "Token Expired or Invalid"

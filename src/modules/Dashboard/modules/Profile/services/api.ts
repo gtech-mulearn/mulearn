@@ -71,11 +71,11 @@ export const getPublicUserLog = (setUserLog: userLog, muid: string) => {
 };
 export const putIsPublic = (
     is_public: boolean,
-    toast: (options?: UseToastOptions | undefined) => ToastId
+    toast: ToastAsPara
 ) => {
     privateGateway
         .put(dashboardRoutes.putIsPublic, { is_public })
-        .then(response => {
+        .then((response:APIResponse<{}, string[]>) => {
             console.log(response.data.message.general[0]);
 
             toast({
