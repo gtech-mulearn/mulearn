@@ -174,19 +174,27 @@ const CampusStudentList = (props: Props) => {
             </div>
             <div className={styles.graphs}>
                 <div className={styles.container}>
-                    <h2>Weekly Karma Insights</h2>
-                    <PieChart data={pieData}/>
-                </div>
-                <div className={styles.container}>
                     <h2>Student Statistics</h2>
                     <BarChart 
                         data={barData}
                         addOptions = {{
                             legend:{position:'none'},
-                            hAxis: { textPosition: "none", gridlines: { count: 0 } }
+                            colors:['#91ABFF']
                         }}
                     />
                 </div>
+                <div className={styles.container}>
+                    <h2>Weekly Karma Insights</h2>
+                    <PieChart 
+                        data={pieData}
+                        addOptions={{
+                            // is3D:true,
+                            pieSliceText: 'value',
+                            colors:["#3B57B2","#456FF6","#A9BEFF","#6C8FFF","#A9BEFF"]
+                        }}
+                    />
+                </div>
+                
             </div>
             {studentData && (
                 <>

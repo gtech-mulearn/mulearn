@@ -1,25 +1,13 @@
 import { Chart } from "react-google-charts";
 
 export const options = {
-    // title:'Weekly Karma Insights',
-    // titleTextStyle:{
-    //     fontSize:20,
-    //     alignment: "center",
-    // },
-    slices: {
-        1: { color: "#456FF6" },
-        0: { color: "#7DAAE9" },
-        2: { color: "#2E85FE" },
-        3: { color: "#A0C8FF" },
-        4: { color: "#E0EDFF" }
-    },
-    // fontSize: window.innerWidth > 1800 ? 15 : 10,
+    
     is3D: false,
-    // pieHole: 0.4,
     legend: {
         alignment: "center",
         textStyle: {
-            fontSize:15
+            fontSize:16,
+            bold:1
         }
     },
     backgroundColor: "transparent",
@@ -46,7 +34,7 @@ export function PieChart({ data,addOptions }: any) {
             data={data}
             options={{...options,...addOptions}}
             width={'100%'}
-            height={'85%'}
+            height={'90%'}
         />
     );
 }
@@ -57,6 +45,6 @@ export function BarChart({data,addOptions}:any){
         data={data}
         options={{...options,...addOptions}}
         width={'100%'}
-        height={'85%'}
+        height={'90%'}
     />
 }
