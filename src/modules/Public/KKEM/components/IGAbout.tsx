@@ -4,13 +4,13 @@ import KKEMAuth from "./Auth";
 import im7 from "../assets/im7.webp";
 import im9 from "../assets/im9.webp";
 import im10 from "../assets/im10.webp";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useState } from "react";
 export default function MulearnAbout() {
     const [searchParams] = useSearchParams();
     const jsid = searchParams.get("jsid");
     const mu_id = searchParams.get("mu_id");
-    const [modalOpen, setModalOpen] = useState(false);
+    const navigate = useNavigate();
     return (
         <section id="about" className={styles.section}>
             <div className={styles.text}>
@@ -26,23 +26,20 @@ export default function MulearnAbout() {
                     entrepreneurship to data science
                 </p>
 
-                {jsid && !(jsid && mu_id) &&(
+                {jsid && !(jsid && mu_id) && (
                     <>
                         <p className={styles.description}>Join Now: </p>
                         <section id="muId" className={styles.muidSection}>
                             <KKEMAuth jsid={jsid} />
-                            <a
-                                href="https://app.mulearn.org/register"
-                                target="blank"
-                                rel="noopener noreferrer"
+                            <button
+                                onClick={() => {
+                                    navigate(`/register?jsid=${jsid}`);
+                                }}
+                                className={styles.muidLink}
+                            // onClick={() => setModalOpen(true)}
                             >
-                                <button
-                                    className={styles.muidLink}
-                                    // onClick={() => setModalOpen(true)}
-                                >
-                                    No Mu-Id? Get now
-                                </button>
-                            </a>
+                                No Mu-Id? Get now
+                            </button>
                         </section>
                         {/* <MuIDModal open={modalOpen} setOpen={setModalOpen} /> */}
                     </>
