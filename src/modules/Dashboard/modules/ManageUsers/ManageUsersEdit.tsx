@@ -122,19 +122,21 @@ const ManageUsersEdit = (props: Props) => {
                         district:Yup.string().optional(),
                     })}
                     onSubmit={values => {
-                        //     editManageUsers(
-                        //     id,
-                        //     values.first_name,
-                        //     values.last_name,
-                        //     values.email,
-                        //     values.mobile,
-                        //     values.college,
-                        //     values.department, // why error occur for deparmenet only
-                        //     values.graduation_year,
-                        //     values.role,
-                        //     data?.organizations
-                        //     // toast
-                        // );
+                            editManageUsers(
+                            id,
+                            values.first_name,
+                            values.last_name,
+                            values.email,
+                            values.mobile,
+                            [
+                                values.college,
+                                values.company,
+                                ...values.community,
+                                
+                            ].filter(item=>item!=='null'),
+                            values.department, 
+                            values.graduation_year,
+                        );
                         console.log(values)
 
                         // navigate("/manage-users");
