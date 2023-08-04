@@ -1,18 +1,14 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways"
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { SetStateAction } from "react";
-import { LcType } from "./LearningCircleInterface";
 import { createStandaloneToast } from "@chakra-ui/react";
-import { LcDetail } from "./LearningCircleInterface";
-
 
 
 const { toast } = createStandaloneToast();
 
 
 export const getUserLearningCircles = async (
-    setCircleList: React.Dispatch<SetStateAction<LcType[] | undefined>>
+    setCircleList: UseStateFunc<LcType[] | undefined>
 ) => {
     try {
         const response = await privateGateway.get(
@@ -30,7 +26,7 @@ export const getUserLearningCircles = async (
 };
 
 export const getLcDetails = async (
-    setCircleList: React.Dispatch<SetStateAction<LcDetail | undefined>>,
+    setCircleList: UseStateFunc<LcDetail | undefined>,
     id: string | undefined
 ) => {
     try {
@@ -69,7 +65,7 @@ export const updateLcNote = async (
 };
 
 export const getCampusLearningCircles = async (
-    setCircleList: React.Dispatch<SetStateAction<LcType[]>>
+    setCircleList: UseStateFunc<LcType[]>
 ) => {
     try {
         const response = await privateGateway.get(
@@ -89,7 +85,7 @@ export const getCampusLearningCircles = async (
 
 
 export const createCircle = async(
-    setId: React.Dispatch<SetStateAction<string>>,
+    setId: UseStateFunc<string>,
     circleName:string,
     circleCode:string,
     ig:string

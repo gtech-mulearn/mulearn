@@ -15,7 +15,7 @@ import Textfield from "@/MuLearnComponents/TextField/Textfield";
 
 import { useToast } from "@chakra-ui/react";
 
-import "./Organizations.scss";
+import "./Organizations.css";
 
 interface Option {
     value: string;
@@ -90,7 +90,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             zone: string;
             district: string;
             orgType: string;
-            toast: any;
+            toast: ToastAsPara;
         }
 
        

@@ -10,7 +10,6 @@ import {
     getInterestGroups
 } from "../services/LandingPageApi";
 import Select from "react-select";
-import { LcRandom } from "../services/LandingPageInterfaces";
 
 interface Option {
     value: string;

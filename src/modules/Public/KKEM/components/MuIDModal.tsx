@@ -9,7 +9,7 @@ import { KKEMLogin } from "../services/apis";
 
 interface ModalProps extends React.HTMLAttributes<HTMLDialogElement> {
     open: boolean;
-    setOpen?: (open: boolean) => void;
+    setOpen?: UseStateFunc<boolean>;
 }
 export default function Modal({ open, setOpen, ...props }: ModalProps) {
     const modalRef = useRef<HTMLDialogElement>(null);

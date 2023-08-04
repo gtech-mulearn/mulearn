@@ -9,14 +9,14 @@ export const onboardingRoutes = {
     communityList: "/api/v1/register/community/list/",
     register: "/api/v1/register/",
     emailVerification: "/api/v1/register/email-verification/"
-};
+} as const;
 
 export const authRoutes = {
     login: "/api/v1/auth/user-authentication/",
     getAccessToken: "/api/v1/auth/get-access-token/",
     otpVerification: "/api/v1/auth/otp-verification/",
     requestEmailOrMuidOtp: "/api/v1/auth/request-otp/"
-};
+} as const;
 
 export const dashboardRoutes = {
     forgetPassword: "/api/v1/dashboard/user/forgot-password/",
@@ -115,8 +115,8 @@ export const KKEMRoutes = {
     userAuth: "/api/v1/integrations/kkem/authorization/",
     userLogin: "/api/v1/integrations/kkem/login/",
     getDWMSDetails: "/api/v1/integrations/kkem/user/${jsid}/"
-};
+}as const;
 
 export const PublicRoutes = {
     getRandomLc: "/api/v1/dashboard/lc/list/",
-};
+} as const;

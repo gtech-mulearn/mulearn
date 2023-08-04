@@ -8,7 +8,7 @@ import {
     getUserRoleVerificationDetails
 } from "./apis";
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
-import "./UserRoleVerification.scss";
+import "./UserRoleVerification.css";
 
 type Props = {};
 
@@ -28,7 +28,7 @@ const UserRoleVerificationEdit = (props: Props) => {
         verified: isChecked
     });
     useEffect(() => {
-        getUserRoleVerificationDetails(id, setData);
+        if (id) getUserRoleVerificationDetails(id, setData);
     }, []);
 
     const inputFields = [

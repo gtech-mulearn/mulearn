@@ -24,7 +24,7 @@ function UsersRoleVerification() {
         role_title: string,
         verified: boolean,
     }
-    const columnOrder = [
+    const columnOrder:ColOrder[] = [
         { column: "full_name", Label: "Full Name", isSortable: true },
         { column: "mu_id", Label: "Mu ID", isSortable: false },
         { column: "discord_id", Label: "Discord ID", isSortable: false },

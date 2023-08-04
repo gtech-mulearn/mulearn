@@ -5,12 +5,8 @@ import { useToast } from "@chakra-ui/react";
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import FormikReactSelect, {
-    FormikTextInput,
-} from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import FormikReactSelect, { FormikTextInput, } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { roles } from "@/MuLearnServices/types";
-import { UserData } from "./ManageUsersInterface";
 import { 
     getCommunities,
     getCompanies,
@@ -180,7 +176,7 @@ const ManageUsersEdit = (props: Props) => {
                             isSearchable
                             isMulti
                         />
-                        <FormikReactSelect
+                        {!data?.role.includes(roles.STUDENT)?<FormikReactSelect
                             name="company"
                             options={company.map((obj)=>{
                                 return {value:obj.id,label:obj.title}
@@ -189,7 +185,8 @@ const ManageUsersEdit = (props: Props) => {
                             isClearable
                             isSearchable
                             
-                        />
+                        />:
+                        <>
                         <FormikReactSelect
                             name="country"
                             options={country}
@@ -271,6 +268,8 @@ const ManageUsersEdit = (props: Props) => {
                             type="text"
                             placeholder="Enter a mobile number"
                         />
+                        </>
+                        }
                         <div className={styles.btn_container}>
                             <MuButton
                                 text={"Decline"}
