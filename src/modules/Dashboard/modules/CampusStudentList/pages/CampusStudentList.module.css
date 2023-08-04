@@ -188,7 +188,7 @@
     width: 100%;
     padding: 1% 3%;
     display: flex;
-    gap: 1%;
+    gap: 15px;
     flex-wrap: wrap;
 }
 
