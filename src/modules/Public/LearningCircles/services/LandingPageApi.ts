@@ -1,14 +1,13 @@
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import { AxiosError } from "axios";
-import { SetStateAction, useState } from "react";
 
 interface Option {
     value: string;
     label: string;
 }
 export const fetchLC = async (
-    setData: React.Dispatch<any>,
+    setData: UseStateFunc<any>,
     ig: string,
     campus: string,
     district: string
@@ -32,7 +31,7 @@ export const fetchLC = async (
 };
 
 export const fetchCountryOptions = async (
-    setCountry: React.Dispatch<SetStateAction<Option[]>>
+    setCountry: UseStateFunc<Option[]>
 ) => {
     try {
         const response = await privateGateway.get(onboardingRoutes.countryList);
@@ -54,17 +53,17 @@ export const fetchCountryOptions = async (
 
 export const fetchStateOptions = async (
     country: string,
-    setState: React.Dispatch<SetStateAction<Option[]>>
+    setState: UseStateFunc<Option[]>
 ) => {
     try {
         const response = await privateGateway.post(onboardingRoutes.stateList, {
             country: country
-        });
-        const message: any = response?.data;
+        })  as APIResponse<{ states: { id: string; name: string }[] }>;
+        const message = response?.data;
         setState(
             response.data.response.states
-                .sort((a: any, b: any) => a.name.localeCompare(b.name))
-                .map((sate: any) => ({
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .map((sate) => ({
                     value: sate.id,
                     label: sate.name
                 }))
@@ -79,7 +78,7 @@ export const fetchStateOptions = async (
 
 export const fetchDistrictOptions = async (
     state: string,
-    setDistrict: React.Dispatch<SetStateAction<Option[]>>
+    setDistrict: UseStateFunc<Option[]>
 ) => {
     try {
         const response = await privateGateway.post(
@@ -87,11 +86,11 @@ export const fetchDistrictOptions = async (
             {
                 state: state
             }
-        );
+        ) as APIResponse<{ districts: { id: string; name: string }[] }>;
         setDistrict(
             response.data.response.districts
-                .sort((a: any, b: any) => a.name.localeCompare(b.name))
-                .map((sate: any) => ({
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .map((sate) => ({
                     value: sate.id,
                     label: sate.name
                 }))
@@ -104,17 +103,11 @@ export const fetchDistrictOptions = async (
     }
 };
 
-type getAPI = (
-    value: SetStateAction<
-        {
-            id: string;
-            title: string;
-        }[]
-    >
-) => void;
+type getAPI = UseStateFunc<{id: string; title: string}[]>
+
 export const fetchCampusOptions = async (
     district: string,
-    setCampus: React.Dispatch<SetStateAction<Option[]>>
+    setCampus: UseStateFunc<Option[]>
 ) => {
     try {
         const response = await privateGateway.post(
@@ -122,12 +115,12 @@ export const fetchCampusOptions = async (
             {
                 district: district
             }
-        );
+        ) as APIResponse<{ colleges:{ id: string; title: string }[] }>;
         const colleges = response.data.response.colleges;
         setCampus(
             colleges
-                .sort((a: any, b: any) => a.title.localeCompare(b.title))
-                .map((college: any) => ({
+                .sort((a, b) => a.title.localeCompare(b.title))
+                .map((college) => ({
                     value: college.id,
                     label: college.title
                 }))
@@ -143,8 +136,8 @@ export const fetchCampusOptions = async (
 export const getInterestGroups = async () => {
     try {
         const response = (await privateGateway.get(dashboardRoutes.getTaskIGs))
-            ?.data?.response;
-        return response?.map((obj: any) => ({
+            ?.data?.response as {id:string,name:string}[];
+        return response?.map((obj) => ({
             value: obj.id,
             label: obj.name
         }));

@@ -5,12 +5,8 @@ import { useToast } from "@chakra-ui/react";
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import FormikReactSelect, {
-    FormikTextInput,
-} from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import FormikReactSelect, { FormikTextInput, } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { roles } from "@/MuLearnServices/types";
-import { UserData } from "./ManageUsersInterface";
 import { 
     getCommunities,
     getCompanies,

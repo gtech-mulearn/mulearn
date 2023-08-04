@@ -4,10 +4,10 @@ import { AxiosError } from "axios";
 
 export const getdistrictdashboard = async (
     activeTab: string,
-    setData: any,
+    setData: UseStateFunc<any[]>,
     page: number,
     selectedValue: number,
-    setTotalPages?: any,
+    setTotalPages?: UseStateFunc<number>,
     search?: string,
     sortID?: string
 ) => {
@@ -48,13 +48,13 @@ export const getdistrictdashboard = async (
                         sortBy: sortID
                     }
                 })
-                .then(response => {
+                .then((response:APIResponse<{ data:any,pagination:{totalPages:number} }>) => {
                     return response.data;
                 })
                 .then(data => {
                     setData(data.response.data);
                     //console.log(data.response.data);
-                    setTotalPages(data.response.pagination.totalPages);
+                    if (setTotalPages) setTotalPages(data.response.pagination.totalPages);
                 });
         } else if (activeTab === "Campus management") {
             await privateGateway
@@ -66,12 +66,12 @@ export const getdistrictdashboard = async (
                         sortBy: sortID
                     }
                 })
-                .then(response => {
+                .then((response: APIResponse<{ data:any,pagination:{totalPages:number} }>) => {
                     return response.data;
                 })
                 .then(data => {
                     setData(data.response.data);
-                    setTotalPages(data.response.pagination.totalPages);
+                    if (setTotalPages) setTotalPages(data.response.pagination.totalPages);
                 });
         } else {
             alert("error to Load Data");
@@ -93,16 +93,15 @@ interface CountryProps {
     created_by: string;
 }
 
-export const getAffiliation = async (setAffiliationData: any) => {
+export const getAffiliation = async (setAffiliationData: UseStateFunc<CountryProps[]>) => {
     try {
         await privateGateway
             .get(organizationRoutes.getAffiliation)
-            .then(response => {
+            .then((response: APIResponse<{ data:{affiliation:CountryProps[]} }>) => {
                 return response.data;
             })
             .then(data => {
-                const affiliation: CountryProps[] =
-                    data.response.data.affiliation;
+                const affiliation = data.response.data.affiliation;
                 setAffiliationData(affiliation);
             });
     } catch (err: unknown) {
@@ -112,15 +111,15 @@ export const getAffiliation = async (setAffiliationData: any) => {
         }
     }
 };
-export const getCountry = async (setCountryData: any) => {
+export const getCountry = async (setCountryData: UseStateFunc<CountryProps[]>) => {
     try {
         await privateGateway
             .get(organizationRoutes.getLocation + "/country")
-            .then(response => {
+            .then((response: APIResponse<{ data:{countries:CountryProps[]} }>) => {
                 return response.data;
             })
             .then(data => {
-                const countries: CountryProps[] = data.response.data.countries;
+                const countries = data.response.data.countries;
                 setCountryData(countries);
             });
     } catch (err: unknown) {
@@ -131,15 +130,15 @@ export const getCountry = async (setCountryData: any) => {
     }
 };
 
-export const getStates = async (country: string, setStatesData: any) => {
+export const getStates = async (country: string, setStatesData: UseStateFunc<CountryProps[]>) => {
     try {
         await privateGateway
             .get(`${organizationRoutes.getLocation}/${country}/states`)
-            .then(response => {
+            .then((response: APIResponse<{ data:{states:CountryProps[]} }>) => {
                 return response.data;
             })
             .then(data => {
-                const states: CountryProps[] = data.response.data.states;
+                const states = data.response.data.states;
                 setStatesData(states);
             });
     } catch (err: unknown) {
@@ -153,16 +152,16 @@ export const getStates = async (country: string, setStatesData: any) => {
 export const getZones = async (
     country: string,
     state: string,
-    setZonesData: any
+    setZonesData: UseStateFunc<CountryProps[]>
 ) => {
     try {
         await privateGateway
             .get(`${organizationRoutes.getLocation}/${country}/${state}/zone`)
-            .then(response => {
+            .then((response: APIResponse<{ data:{states:CountryProps[]} }>) => {
                 return response.data;
             })
             .then(data => {
-                const states: CountryProps[] = data.response.data.states;
+                const states = data.response.data.states;
                 setZonesData(states);
             });
     } catch (err: unknown) {
@@ -177,18 +176,18 @@ export const getDistricts = async (
     country: string,
     state: string,
     zone: string,
-    setDistrictsData: any
+    setDistrictsData: UseStateFunc<CountryProps[]>
 ) => {
     try {
         await privateGateway
             .get(
                 `${organizationRoutes.getLocation}/${country}/${state}/${zone}/district`
             )
-            .then(response => {
+            .then((response: APIResponse<{ data:{states:CountryProps[]} }>) => {
                 return response.data;
             })
             .then(data => {
-                const districts: CountryProps[] = data.response.data.states;
+                const districts = data.response.data.states;
                 setDistrictsData(districts);
             });
     } catch (err: unknown) {

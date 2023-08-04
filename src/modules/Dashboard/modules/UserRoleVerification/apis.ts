@@ -1,17 +1,16 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { ToastId, UseToastOptions } from "@chakra-ui/toast";
-import { Dispatch, SetStateAction } from "react";
+
 export const getUserRoleVerification = async (
-    setData: any,
+    setData: UseStateFunc<any>,
     page: number,
     selectedValue: number,
-    setTotalPages?: any,
+    setTotalPages?: UseStateFunc<number>,
     search?: string,
     sortID?: string
 ) => {
-    console.log('')
+
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getUsersRoleVerificationData,
@@ -41,7 +40,7 @@ export const getUserRoleVerification = async (
         }
         setData(datasuser);
         //console.log(manageusers.response.data);
-        setTotalPages(manageusers.response.pagination.totalPages);
+        if (setTotalPages) setTotalPages(manageusers.response.pagination.totalPages);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -77,8 +76,8 @@ interface IData {
     verified: boolean;
 }
 export const getUserRoleVerificationDetails = async (
-    id: string | undefined,
-    setData: Dispatch<SetStateAction<IData>>
+    id: string,
+    setData: UseStateFunc<IData>
 ) => {
     try {
         const response = await privateGateway.get(
@@ -97,8 +96,8 @@ export const getUserRoleVerificationDetails = async (
 };
 
 export const deleteUserRoleVerification = async (
-    id: string | undefined,
-    toast: (options?: UseToastOptions | undefined) => ToastId
+    id: string,
+    toast: ToastAsPara
 ) => {
     try {
         const response = await privateGateway.delete(

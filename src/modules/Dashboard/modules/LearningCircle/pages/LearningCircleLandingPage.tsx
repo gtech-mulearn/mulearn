@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { BsChevronRight } from "react-icons/bs";
 import { getUserLearningCircles } from "../services/LearningCircleAPIs";
-import { LcType } from "../services/LearningCircleInterface";
 
 
 export const LearningCircleLandingPage = () => {
