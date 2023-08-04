@@ -14,7 +14,10 @@ import {
     getCountries,
     getState,
     getDistrict,
-    getColleges
+    getColleges,
+
+    getRoles,
+    getInterests
  } from "../../../Common/Authentication/services/onboardingApis";
 import { roles } from "@/MuLearnServices/types";
 
@@ -37,6 +40,9 @@ const ManageUsersEdit = (props: Props) => {
 
     //DropDownStates
     const [community,setCommuntiy] = useState([{id:'',title:''}])
+    const [interestGroup,setinterestGroup] = useState([{id:'',name:''}])
+    const [role,setRole] = useState([{id:'',title:''}])
+
     const [company,setCompany] = useState([{id:'',title:''}])
 
     const [country,setCountry] = useState([{value:'',label:''}])
@@ -44,7 +50,9 @@ const ManageUsersEdit = (props: Props) => {
     const [district,setDistrict] = useState([{value:'',label:''}])
     const [college,setCollege] = useState([{value:'',label:''}])
     const [department,setDepartment] = useState([{value:'',label:''}])
-    const [temp,setTemp] = useState([{id:'',title:''}])
+    const [collegTemp,setCollegTemp] = useState([{id:'',title:''}])
+    
+
     
 
 
@@ -59,6 +67,8 @@ const ManageUsersEdit = (props: Props) => {
         getCommunities(errorHandler,setCommuntiy)
         getCompanies(errorHandler,setCompany)
         getCountries(errorHandler,setCountry)
+        getInterests(errorHandler,setinterestGroup)
+        getRoles(errorHandler,setRole)
          
     }, []);
     return (
@@ -88,6 +98,8 @@ const ManageUsersEdit = (props: Props) => {
                         country:"",
                         state:"",
                         district:"",
+                        interest:data?.interest_groups,
+                        role:data?.role
                     }}
                     validationSchema={Yup.object({
                         // igName: Yup.string()
@@ -120,6 +132,10 @@ const ManageUsersEdit = (props: Props) => {
                         country:Yup.string().optional(),
                         state:Yup.string().optional(),
                         district:Yup.string().optional(),
+                        interest: Yup.string()
+                            .required("Required"),
+                        role: Yup.string()
+                            .required("Required"),
                     })}
                     onSubmit={values => {
                             editManageUsers(
@@ -175,6 +191,26 @@ const ManageUsersEdit = (props: Props) => {
                                return {value:obj.id,label:obj.title}
                             })}
                             label="Community"
+                            isClearable
+                            isSearchable
+                            isMulti
+                        />
+                        <FormikReactSelect
+                            name="role"
+                            options={role.map((obj)=>{
+                               return {value:obj.id,label:obj.title}
+                            })}
+                            label="Roles"
+                            isClearable
+                            isSearchable
+                            isMulti
+                        />
+                        <FormikReactSelect
+                            name="interest"
+                            options={interestGroup.map((obj)=>{
+                               return {value:obj.id,label:obj.name}
+                            })}
+                            label="Interest Groups"
                             isClearable
                             isSearchable
                             isMulti
@@ -239,7 +275,7 @@ const ManageUsersEdit = (props: Props) => {
                             isSearchable
                             addOnChange={(option:any)=>{
                                 getColleges(
-                                    setTemp,
+                                    setCollegTemp,
                                     setCollege,
                                     setDepartment,
                                     errorHandler,

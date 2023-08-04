@@ -17,6 +17,8 @@ interface UserData {
         Company?:string[];
         
     };
+    interest_groups:string[];
+    role:string[];
 }
 
 interface OrgData {
