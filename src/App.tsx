@@ -126,7 +126,7 @@ function App() {
                             path: "organizations/delete/:id",
                             element: <DeleteOrganizations />
                         },
-                        { path: "campus-details", element: <RoleChecker roles={[roles.CAMPUS_LEAD]} Children={<CampusStudentList />} /> },
+                        { path: "campus-details", element: <RoleChecker roles={[roles.ADMIN,roles.CAMPUS_LEAD]} Children={<CampusStudentList />} /> },
                         { path: "manage-users", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} Children={<ManageUsers />} /> },
                         {
                             path: "manage-users/create",
