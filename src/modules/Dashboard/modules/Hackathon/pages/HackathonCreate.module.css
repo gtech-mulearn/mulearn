@@ -294,6 +294,7 @@ input[type=file]::file-selector-button:hover {
     border-radius: 8px;
     font-size: .7rem;
     cursor: pointer;
+    z-index: 99;
 }
 
 .fileInfo {
