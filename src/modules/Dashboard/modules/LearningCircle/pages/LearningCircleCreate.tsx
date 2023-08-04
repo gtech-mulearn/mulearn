@@ -5,7 +5,6 @@ import { Form, Formik } from "formik";
 import FormikReactSelect,{FormikSelect, FormikTextInput} from '@/MuLearnComponents/FormikComponents/FormikComponents'
 import { getInterestGroups,createCircle } from "../services/LearningCircleAPIs";
 import { useNavigate, useParams } from "react-router-dom";
-import { LcDetail } from "../services/LearningCircleInterface";
 
 type Props = {};
 

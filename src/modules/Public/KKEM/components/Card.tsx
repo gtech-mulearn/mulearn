@@ -1,16 +1,18 @@
 import styles from "./Card.module.css";
 import { Link } from "react-router-dom";
 
-const Card = ({
-    name,
-    image,
-    link,
-    description
-}: {
+type Props = {
     name: string;
     image: string;
     link: string;
     description: string;
+}
+
+const Card:FC<Props> = ({
+    name,
+    image,
+    link,
+    description
 }) => {
     return (
         <>

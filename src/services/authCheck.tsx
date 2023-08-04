@@ -1,10 +1,9 @@
 import { FC } from "react";
 import { Navigate } from "react-router-dom";
-import { UserInfo, fetchLocalStorage, hasRole } from './common_functions'
-import { Role } from "./types";
+import { fetchLocalStorage } from './common_functions'
 
 interface AuthRoutesProps {
-    Children: JSX.Element
+    children: JSX.Element
     roles: Role[]
 }
 
@@ -12,20 +11,19 @@ let localRoles = [] as Role[]
 
 export const refreshRoles = () => {
      localRoles = fetchLocalStorage<UserInfo>('userInfo')?.roles || []
-     console.log("refreshRoles", localRoles)
+
     }
 
 function SecureAuthRoutes(){
     refreshRoles()
 
     const hasRoleNoFetch = (roles: Role[]) => {
-        let x = roles.some(role => localRoles.includes(role))
-        console.log(x)
-        return x
+        let result = roles.some(role => localRoles.includes(role))
+        return result
 
     }
-    const func: FC<AuthRoutesProps> = ({Children, roles}) : JSX.Element => {
-        if (hasRoleNoFetch(roles)) return Children
+    const func: FC<AuthRoutesProps> = ({children, roles}) : JSX.Element => {
+        if (hasRoleNoFetch(roles)) return children
 
         return <Navigate to="/404" replace />
     }

@@ -3,18 +3,35 @@ import { organizationRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 import { AxiosError } from "axios";
 
+const ccc = ['Colleges', "Companies", "Communities"] as const
+
 export const getOrganizations = async (
-    activeTab: string,
-    setData: any,
+    activeTab: typeof ccc[number],
+    setData: UseStateFunc<any>,
     page: number,
     selectedValue: number,
-    setIsLoading: (isLoading: boolean) => void,
-    setTotalPages?: any,
+    setIsLoading: UseStateFunc<boolean>,
+    setTotalPages?: UseStateFunc<any>,
     search?: string,
     sortID?: string
 ) => {
     setIsLoading(true)
     try {
+
+        type CCC = Lowercase<typeof ccc[number]>
+        type resData = {
+            response : {
+                data: {
+                    [T in `${ CCC }` ]: any
+                }
+                pagination: {
+                    [T in `${ CCC }` ] : {
+                        totalPages : string
+                    }
+                }
+            }
+        }
+
         await privateGateway.get(organizationRoutes.getOrganizationsAll, {
             params: {
                 perPage: selectedValue,
@@ -25,22 +42,18 @@ export const getOrganizations = async (
         })
             .then(response => {
                 setIsLoading(false)
-                return response.data
+                return response.data as resData
             })
             .then(data => {
                 setIsLoading(false)
-                if (activeTab === "Colleges") {
-                    setData(data.response.data.colleges);
-                    setTotalPages(data.response.pagination.colleges.totalPages);
-                } else if (activeTab === "Companies") {
-                    setData(data.response.data.companies);
-                    setTotalPages(data.response.pagination.companies.totalPages);
-                } else if (activeTab === "Communities") {
-                    setData(data.response.data.communities);
-                    setTotalPages(data.response.pagination.communities.totalPages);
-                } else {
-                    alert("error to Load Data")
+                
+                if (ccc.some(c => c === activeTab)){
+                    setData(data.response.data[activeTab.toLowerCase() as CCC ])
+
+                    if (setTotalPages) setTotalPages(data.response.pagination[activeTab.toLowerCase() as CCC].totalPages)
                 }
+                else { alert("error to Load Data") }
+
             })
     } catch (err: unknown) {
         setIsLoading(false)

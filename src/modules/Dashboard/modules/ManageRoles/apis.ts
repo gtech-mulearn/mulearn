@@ -2,14 +2,13 @@ import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
-import { Dispatch, SetStateAction } from "react";
 
 export const getManageRoles = async (
-    setData: any,
+    setData: UseStateFunc<any>,
     page: number,
     selectedValue: number,
-    setIsLoading: (isLoading: boolean) => void,
-    setTotalPages?: any,
+    setIsLoading: UseStateFunc<boolean>,
+    setTotalPages?: UseStateFunc<any>,
     search?: string,
     sortID?: string
 ) => {
@@ -29,7 +28,7 @@ export const getManageRoles = async (
         const interestGroups: any = response?.data;
 
         setData(interestGroups.response.data);
-        setTotalPages(interestGroups.response.pagination.totalPages);
+        if (setTotalPages) setTotalPages(interestGroups.response.pagination.totalPages);
         setIsLoading(false);
     } catch (err: unknown) {
         setIsLoading(false);
@@ -95,7 +94,7 @@ interface IData {
 }
 export const getManageRolesDetails = async (
     id: string | undefined,
-    setData: Dispatch<SetStateAction<IData>>
+    setData: UseStateFunc<IData>
 ) => {
     try {
         const response = await privateGateway.patch(

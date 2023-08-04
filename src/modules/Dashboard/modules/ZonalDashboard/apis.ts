@@ -2,7 +2,6 @@ import { AxiosError } from "axios";
 import axios from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes, organizationRoutes } from "@/MuLearnServices/urls";
-import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 
 export const getzonaldashboard = async (
     activeTab: string,
@@ -50,7 +49,7 @@ export const getzonaldashboard = async (
                         sortBy: sortID
                     }
                 })
-                .then(response => {
+                .then((response: APIResponse<{data:any[], pagination:{totalPages:number} }>) => {
                     return response.data;
                 })
                 .then(data => {
@@ -67,7 +66,7 @@ export const getzonaldashboard = async (
                         sortBy: sortID
                     }
                 })
-                .then(response => {
+                .then((response: APIResponse<{data:any[], pagination:{totalPages:number} }>) => {
                     return response.data;
                 })
                 .then(data => {
@@ -98,12 +97,11 @@ export const getAffiliation = async (setAffiliationData: any) => {
     try {
         await privateGateway
             .get(organizationRoutes.getAffiliation)
-            .then(response => {
+            .then((response: APIResponse<{ data:{affiliation: CountryProps[]} }>) => {
                 return response.data;
             })
             .then(data => {
-                const affiliation: CountryProps[] =
-                    data.response.data.affiliation;
+                const affiliation = data.response.data.affiliation;
                 setAffiliationData(affiliation);
             });
     } catch (err: unknown) {
@@ -117,11 +115,11 @@ export const getCountry = async (setCountryData: any) => {
     try {
         await privateGateway
             .get(organizationRoutes.getLocation + "/country")
-            .then(response => {
+            .then((response: APIResponse<{ data:{countries: CountryProps[]} }>) => {
                 return response.data;
             })
             .then(data => {
-                const countries: CountryProps[] = data.response.data.countries;
+                const countries = data.response.data.countries;
                 setCountryData(countries);
             });
     } catch (err: unknown) {
@@ -136,11 +134,11 @@ export const getStates = async (country: string, setStatesData: any) => {
     try {
         await privateGateway
             .get(`${organizationRoutes.getLocation}/${country}/states`)
-            .then(response => {
+            .then((response : APIResponse<{ data:{states: CountryProps[]} }>) => {
                 return response.data;
             })
             .then(data => {
-                const states: CountryProps[] = data.response.data.states;
+                const states = data.response.data.states;
                 setStatesData(states);
             });
     } catch (err: unknown) {
@@ -159,11 +157,11 @@ export const getZones = async (
     try {
         await privateGateway
             .get(`${organizationRoutes.getLocation}/${country}/${state}/zone`)
-            .then(response => {
+            .then((response: APIResponse<{ data:{states: CountryProps[]} }>) => {
                 return response.data;
             })
             .then(data => {
-                const states: CountryProps[] = data.response.data.states;
+                const states = data.response.data.states;
                 setZonesData(states);
             });
     } catch (err: unknown) {
@@ -185,11 +183,11 @@ export const getDistricts = async (
             .get(
                 `${organizationRoutes.getLocation}/${country}/${state}/${zone}/district`
             )
-            .then(response => {
+            .then((response : APIResponse<{ data:{states: CountryProps[]} }>) => {
                 return response.data;
             })
             .then(data => {
-                const districts: CountryProps[] = data.response.data.states;
+                const districts = data.response.data.states;
                 setDistrictsData(districts);
             });
     } catch (err: unknown) {

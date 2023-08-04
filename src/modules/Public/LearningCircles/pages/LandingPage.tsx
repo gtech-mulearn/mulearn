@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./LandingPage.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -10,7 +10,6 @@ import {
     getInterestGroups
 } from "../services/LandingPageApi";
 import Select from "react-select";
-import { LcRandom } from "../services/LandingPageInterfaces";
 
 interface Option {
     value: string;
@@ -31,6 +30,12 @@ const LandingPage = () => {
     const [campus, setCampus] = useState("");
     const [igOptions, setIgOptions] = useState<Option[] | undefined>([]);
     const [ig, setIg] = useState("");
+
+	const [selectedDistrict, setSelectedDistrict] = useState<Option | null>(
+        null
+    );
+    const [selectedCampus, setSelectedCampus] = useState<Option | null>(null);
+    const [selectedIg, setSelectedIg] = useState<Option | null>(null);
 
     useEffect(() => {
         fetchCountryOptions(setCountryOptions);
@@ -65,23 +70,30 @@ const LandingPage = () => {
     const handleDistrictChange = async (selectedDistrict: Option | null) => {
         if (selectedDistrict) {
             setDistrict(selectedDistrict.value);
+			setSelectedDistrict(selectedDistrict);
             fetchCampusOptions(selectedDistrict.value, setCampusOptions);
             // Reset other options
             setIgOptions(undefined);
 			setData([]);
+			setSelectedCampus(null);
+            setSelectedIg(null);
         }
     };
 
     const handleCampusChange = async (selectedCampus: Option | null) => {
         if (selectedCampus) {
+			setSelectedCampus(selectedCampus);
             setCampus(selectedCampus.value);
             setIgOptions(await getInterestGroups());
+            setSelectedIg(null);
+			setData([]);
         }
     };
 
     const handleIgChange = async (selectedIg: Option | null) => {
         if (selectedIg) {
             setIg(selectedIg.value);
+			setSelectedIg(selectedIg);
             fetchLC(setData, ig, campus, district);
             setTimeout(() => {
                 console.log(data);
@@ -217,6 +229,7 @@ const LandingPage = () => {
                         <Select
                             isSearchable
                             placeholder="Select District"
+                            value={selectedDistrict}
                             options={districtOptions}
                             onChange={handleDistrictChange}
                             styles={customStyles}
@@ -224,12 +237,14 @@ const LandingPage = () => {
                         <Select
                             isSearchable
                             placeholder="Select Campus"
+                            value={selectedCampus}
                             options={campusOptions}
                             onChange={handleCampusChange}
                             styles={customStyles}
                         />
                         <Select
                             isSearchable
+                            value={selectedIg}
                             placeholder="Select IG"
                             options={igOptions}
                             onChange={handleIgChange}
