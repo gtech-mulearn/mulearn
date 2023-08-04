@@ -16,6 +16,7 @@ import {
     getDistrict,
     getColleges
  } from "../../../Common/Authentication/services/onboardingApis";
+import { roles } from "@/MuLearnServices/types";
 
 
 type Props = {};
