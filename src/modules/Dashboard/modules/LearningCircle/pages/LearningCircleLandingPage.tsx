@@ -28,7 +28,7 @@ export const LearningCircleLandingPage = () => {
         <>
             <div className={styles.learningCircleLandingPage}>
                 <div className={styles.headContent}>
-                    <img src={imageTop} alt="image" />
+                    <img src={imageTop} alt="image" loading="eager" />
                     <div className={styles.learningCircleLandingPageDesc}>
                         <h1>Learn, share, together</h1>
                         <b style={{ fontWeight: "600" , width:"80%"}}>
@@ -99,6 +99,7 @@ export const LearningCircleLandingPage = () => {
                                 <img
                                     src={imageBottom}
                                     alt="You haven't joined any circles yet"
+                                    loading="eager"
                                 />
                             </div>
                         )}
