@@ -11,14 +11,12 @@ interface UserData {
     // company?: string;
     department?: string;
     graduation_year?: string;
-    organization?: {
-        College?:string[];
-        Community?:string[];
-        Company?:string[];
-        
-    };
+    organization?:string[];
     interest_groups:string[];
     role:string[];
+    country:string;
+    state:string;
+    district:string;
 }
 
 interface OrgData {

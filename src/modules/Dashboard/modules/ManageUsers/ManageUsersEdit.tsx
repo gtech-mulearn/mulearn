@@ -53,8 +53,14 @@ const ManageUsersEdit = (props: Props) => {
     const [collegTemp,setCollegTemp] = useState([{id:'',title:''}])
     
 
-    
-
+    const arrayIntersection = (userList:string[],mainList:string[])=>{
+        return userList.filter(item=>mainList.includes(item))
+    }
+    const roleStr = (roleName:string)=>{
+        if(!role || !roleName)
+            return ""
+        return role.filter(item=>item.title==roleName)[0].id
+    }
 
     const [data, setData] = useState<UserData>();
     const { id } = useParams();
@@ -67,10 +73,29 @@ const ManageUsersEdit = (props: Props) => {
         getCommunities(errorHandler,setCommuntiy)
         getCompanies(errorHandler,setCompany)
         getCountries(errorHandler,setCountry)
+        
         getInterests(errorHandler,setinterestGroup)
         getRoles(errorHandler,setRole)
          
     }, []);
+
+    useEffect(()=>{
+        if(data?.country){
+            getState(errorHandler,setState,{country:data.country})
+            if(data.state){
+                getDistrict(errorHandler,setDistrict,{state:data.state})
+                if(data.district){
+                    getColleges(
+                        setCollegTemp,
+                        setCollege,
+                        setDepartment,
+                        errorHandler,
+                        {district:data.district}
+                    )
+                }
+            }
+        }
+    },[data])
     return (
         <div className={styles.external_container}>
             <div className={styles.container}>
@@ -84,20 +109,32 @@ const ManageUsersEdit = (props: Props) => {
                         last_name: data?.last_name || '',
                         email: data?.email || '', 
                         mobile: data?.mobile || '',
-                        // discord_id: data?.discord_id,
-                        // mu_id: data?.mu_id,
-                        college: data?.organization?.College?
-                        data?.organization?.College[0]:"null",
-                        community: data?.organization?.Community?
-                        data?.organization?.Community
-                        :[],
-                        company: data?.organization?.Company?
-                        data?.organization?.Company[0]:"null",
+                        college:
+                            data?.organization?
+                            arrayIntersection(
+                                data.organization,
+                                college.map(item=>item.value)
+                            )[0] || "null"
+                            :"null",
+                        community: 
+                            data?.organization?
+                            arrayIntersection(
+                                data.organization,
+                                community.map(item=>item.id)
+                            )
+                            :[],
+                        company: 
+                            data?.organization?
+                            arrayIntersection(
+                                data.organization,
+                                company.map(item=>item.id)
+                            )[0] || "null"
+                            :"null",
                         department: data?.department || "null",
                         graduation_year: data?.graduation_year || "null",
-                        country:"",
-                        state:"",
-                        district:"",
+                        country:data?.country || "",
+                        state:data?.state || "",
+                        district:data?.district || "",
                         interest:data?.interest_groups,
                         role:data?.role
                     }}
@@ -132,9 +169,9 @@ const ManageUsersEdit = (props: Props) => {
                         country:Yup.string().optional(),
                         state:Yup.string().optional(),
                         district:Yup.string().optional(),
-                        interest: Yup.string()
+                        interest: Yup.array()
                             .required("Required"),
-                        role: Yup.string()
+                        role: Yup.array()
                             .required("Required"),
                     })}
                     onSubmit={values => {
@@ -215,7 +252,9 @@ const ManageUsersEdit = (props: Props) => {
                             isSearchable
                             isMulti
                         />
-                        {!data?.role.includes(roles.STUDENT)?<FormikReactSelect
+                        {!data?.role.includes(
+                            roleStr(roles.STUDENT)
+                        )?<FormikReactSelect
                             name="company"
                             options={company.map((obj)=>{
                                 return {value:obj.id,label:obj.title}
