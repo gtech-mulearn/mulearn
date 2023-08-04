@@ -180,7 +180,7 @@ const ManageUsersEdit = (props: Props) => {
                             isSearchable
                             isMulti
                         />
-                        <FormikReactSelect
+                        {!data?.role.includes(roles.STUDENT)?<FormikReactSelect
                             name="company"
                             options={company.map((obj)=>{
                                 return {value:obj.id,label:obj.title}
@@ -189,7 +189,8 @@ const ManageUsersEdit = (props: Props) => {
                             isClearable
                             isSearchable
                             
-                        />
+                        />:
+                        <>
                         <FormikReactSelect
                             name="country"
                             options={country}
@@ -271,6 +272,8 @@ const ManageUsersEdit = (props: Props) => {
                             type="text"
                             placeholder="Enter a mobile number"
                         />
+                        </>
+                        }
                         <div className={styles.btn_container}>
                             <MuButton
                                 text={"Decline"}
