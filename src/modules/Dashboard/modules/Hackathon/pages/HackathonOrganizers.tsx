@@ -53,8 +53,9 @@ export const HackathonOrganizers = (props: Props) => {
                         addOrganizer(id, values.muid, toast);
                         getOrganizers(setData, id);
                         setTimeout(() => {
+                            getOrganizers(setData, id);
                             navigate(`/dashboard/hackathon/organizers/${id}`);
-                        }, 1000);
+                        }, 2000);
                     }}
                 >
                     <Form className={styles.inputContainer}>
