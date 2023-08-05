@@ -17,15 +17,17 @@ interface LcMembers {
     karma: number;
 }
 
-interface LcDetail {
-    circle_code: string;
-    college: string;
-    members: LcMembers[];
-    name: string;
-    pending_members: LcMembers[];
-    rank: number;
-    total_karma: number;
-    meet_place: string;
-    meet_time: string;
-    note: string;
+type LcDetail = {
+    circle_code: string,
+    college: string,
+    members: LcMembers[],
+    is_lead: boolean,
+    name: string,
+    pending_members: LcMembers[],
+    rank: number,
+    total_karma: number,
+    meet_place: string,
+    meet_time: string,
+    day: number[] | null,
+    note?: string,
 }
