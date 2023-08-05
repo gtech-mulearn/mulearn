@@ -1,18 +1,6 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { Dispatch, SetStateAction } from "react";
-import { ToastId, UseToastOptions } from "@chakra-ui/react";
-import { TaskEditInterface } from "./TaskInterface";
-import { utils, writeFile } from "xlsx";
-
-type uuidType = {
-    level: { id: string; name: string }[];
-    ig: { id: string; name: string }[];
-    organization: { id: string; title: string }[];
-    channel: { id: string; name: string }[];
-    type: { id: string; title: string }[];
-};
 
 //function that converts the uuid object into a map
 //with uuid as key and name/title as value
@@ -49,10 +37,12 @@ export const getTasks = async (
     setData: any,
     page: number,
     selectedValue: number,
-    setTotalPages?: any,
+    setIsLoading: UseStateFunc<boolean>,
+    setTotalPages?: UseStateFunc<any>,
     search?: string,
     sortID?: string
 ) => {
+    setIsLoading(true);
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getTasksData,
@@ -68,8 +58,10 @@ export const getTasks = async (
         const tasks: any = response?.data;
         const uuids: Partial<uuidType> = await getUUID();
         setData(uuidToString(tasks.response.data, uuids));
-        setTotalPages(tasks.response.pagination.totalPages);
+        if (setTotalPages) setTotalPages(tasks.response.pagination.totalPages);
+        setIsLoading(false);
     } catch (err: unknown) {
+        setIsLoading(false);
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
@@ -79,7 +71,7 @@ export const getTasks = async (
 
 export const getTaskDetails = async (
     id: string | undefined,
-    setData: React.Dispatch<SetStateAction<TaskEditInterface>>
+    setData: UseStateFunc<TaskEditInterface>
 ) => {
     try {
         const response = await privateGateway.get(
@@ -109,7 +101,7 @@ export const editTask = async (
     ig_id: string,
     org_id: string,
     id: string | undefined,
-    toast: (options?: UseToastOptions | undefined) => ToastId
+    toast: ToastAsPara
 ) => {
     try {
         const response = await privateGateway.put(
@@ -195,7 +187,7 @@ export const createTask = async (
 
 export const deleteTask = async (
     id: string | undefined,
-    toast: (options?: UseToastOptions | undefined) => ToastId
+    toast: ToastAsPara
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -233,7 +225,7 @@ export const getUUID = async () => {
         ).sort((a, b) =>
             //check for name/title key and then compare
             (a.name !== undefined && a.name < b.name) ||
-            (a.title !== undefined && a.title < b.title)
+                (a.title !== undefined && a.title < b.title)
                 ? -1
                 : 1
         );
@@ -242,10 +234,16 @@ export const getUUID = async () => {
 };
 
 // function to take a js object and convert it to a XLSX file using the SheetJS library
+// bundle size increased from 106kb to 160kb, but dynamically imported
 
 export const convertToXLSX = (data: any, fileName: string) => {
-    const ws = utils.json_to_sheet(data);
-    const wb = utils.book_new();
-    utils.book_append_sheet(wb, ws, "Result 1");
-    writeFile(wb, fileName);
+    import("xlsx").then(({ utils, writeFile }) => {
+
+        const ws = utils.json_to_sheet(data);
+        const wb = utils.book_new();
+        utils.book_append_sheet(wb, ws, "Result 1");
+        writeFile(wb, fileName);
+
+    })
+        .catch((err) => console.error(err));
 };

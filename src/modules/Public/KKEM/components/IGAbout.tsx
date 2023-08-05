@@ -1,16 +1,16 @@
 import styles from "./IGAbout.module.css";
-import Astronaut from "../assets/astronaut.png";
+import Astronaut from "../assets/astronaut.webp";
 import KKEMAuth from "./Auth";
-import im7 from "../assets/im7.png";
-import im9 from "../assets/im9.png";
-import im10 from "../assets/im10.png";
-import { useSearchParams } from "react-router-dom";
+import im7 from "../assets/im7.webp";
+import im9 from "../assets/im9.webp";
+import im10 from "../assets/im10.webp";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useState } from "react";
 export default function MulearnAbout() {
     const [searchParams] = useSearchParams();
-    const dwms_id = searchParams.get("dwms_id");
+    const jsid = searchParams.get("jsid");
     const mu_id = searchParams.get("mu_id");
-    const [modalOpen, setModalOpen] = useState(false);
+    const navigate = useNavigate();
     return (
         <section id="about" className={styles.section}>
             <div className={styles.text}>
@@ -26,23 +26,20 @@ export default function MulearnAbout() {
                     entrepreneurship to data science
                 </p>
 
-                {dwms_id && !(dwms_id && mu_id) &&(
+                {jsid && !(jsid && mu_id) && (
                     <>
                         <p className={styles.description}>Join Now: </p>
                         <section id="muId" className={styles.muidSection}>
-                            <KKEMAuth dwmsId={dwms_id} />
-                            <a
-                                href="https://app.mulearn.org/register"
-                                target="blank"
-                                rel="noopener noreferrer"
+                            <KKEMAuth jsid={jsid} />
+                            <button
+                                onClick={() => {
+                                    navigate(`/register?jsid=${jsid}`);
+                                }}
+                                className={styles.muidLink}
+                            // onClick={() => setModalOpen(true)}
                             >
-                                <button
-                                    className={styles.muidLink}
-                                    // onClick={() => setModalOpen(true)}
-                                >
-                                    No Mu-Id? Get now
-                                </button>
-                            </a>
+                                No Mu-Id? Get now
+                            </button>
                         </section>
                         {/* <MuIDModal open={modalOpen} setOpen={setModalOpen} /> */}
                     </>

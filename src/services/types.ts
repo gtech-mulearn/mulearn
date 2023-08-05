@@ -18,5 +18,3 @@ export const roles = {
     TECH_TEAM: "Tech Team",
     ASSOCIATE: "Associate"
 } as const;
-
-export type Role = (typeof roles)[keyof typeof roles];

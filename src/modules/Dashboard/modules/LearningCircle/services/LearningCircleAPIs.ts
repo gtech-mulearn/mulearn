@@ -1,18 +1,14 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways"
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { SetStateAction } from "react";
-import { LcType } from "./LearningCircleInterface";
 import { createStandaloneToast } from "@chakra-ui/react";
-import { LcDetail } from "./LearningCircleInterface";
-
 
 
 const { toast } = createStandaloneToast();
 
 
 export const getUserLearningCircles = async (
-    setCircleList: React.Dispatch<SetStateAction<LcType[] | undefined>>
+    setCircleList: UseStateFunc<LcType[] | undefined>
 ) => {
     try {
         const response = await privateGateway.get(
@@ -30,7 +26,7 @@ export const getUserLearningCircles = async (
 };
 
 export const getLcDetails = async (
-    setCircleList: React.Dispatch<SetStateAction<LcDetail | undefined>>,
+    setCircleList: UseStateFunc<LcDetail | undefined>,
     id: string | undefined
 ) => {
     try {
@@ -69,7 +65,7 @@ export const updateLcNote = async (
 };
 
 export const getCampusLearningCircles = async (
-    setCircleList: React.Dispatch<SetStateAction<LcType[]>>
+    setCircleList: UseStateFunc<LcType[]>
 ) => {
     try {
         const response = await privateGateway.get(
@@ -89,7 +85,7 @@ export const getCampusLearningCircles = async (
 
 
 export const createCircle = async(
-    setId: React.Dispatch<SetStateAction<string>>,
+    setId: UseStateFunc<string>,
     circleName:string,
     circleCode:string,
     ig:string
@@ -138,25 +134,24 @@ export const createCircle = async(
 
 }
 
-export const setLCMeetTime = async(
-        meetTime: string,
-        meetPlace: string,
-        day: string,
-        id: string|undefined
-    )=>{
-        
-        try{
-            const response = await privateGateway.patch(
-            dashboardRoutes.setLCMeetTime + id + '/',
+export const setLCMeetTime = async (
+    meetTime: string,
+    meetPlace: string,
+    day: string[],
+    id: string | undefined
+) => {
+    try {
+        const response = await privateGateway.patch(
+            dashboardRoutes.setLCMeetTime + id + "/",
             {
-                meet_time: meetTime,
+                meet_time: `${meetTime}:00`,
                 meet_place: meetPlace,
-                day: day
+                day: `${day}`
             }
         );
         const message: any = response?.data;
         console.log(message.response);
-        console.log(response)
+        console.log(response);
         toast({
             title: "Successful",
             description: "",
@@ -164,9 +159,7 @@ export const setLCMeetTime = async(
             duration: 2000,
             isClosable: true
         });
-       
-        
-    }catch(err){
+    } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
@@ -179,8 +172,7 @@ export const setLCMeetTime = async(
             isClosable: true
         });
     }
-
-}
+};
 
 export const joinCircle = async (
     circleCode: string,

@@ -6,8 +6,6 @@ import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { titleCase } from "title-case";
-import { hasRole } from "@/MuLearnServices/common_functions";
-import { roles } from "@/MuLearnServices/types";
 import { getCampusDetails, getStudentDetails } from "../services/apis";
 import styles from "./CampusStudentList.module.css";
 
@@ -57,7 +55,6 @@ const CampusStudentList = (props: Props) => {
     };
     useEffect(() => {
         if (firstFetch.current) {
-            if (!hasRole([roles.CAMPUS_LEAD])) navigate("/404");
             getStudentDetails(setStudentData, 1, perPage, setTotalPages);
             getCampusDetails(setCampusData);
         }

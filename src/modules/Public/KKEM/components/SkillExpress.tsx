@@ -2,7 +2,7 @@ import styles from "./SkillExpress.module.css";
 import feat1 from "../assets/feat1.svg";
 import feat2 from "../assets/feat2.svg";
 import feat3 from "../assets/feat3.svg";
-import Train from "../assets/Train.png";
+import Train from "../assets/Train.webp";
 export default function SkillExpress() {
     return (
         <section id="skillExpress" className={styles.skillExpressSection}>
@@ -50,15 +50,17 @@ function Features() {
     );
 }
 
-function Feature({
-    title,
-    description,
-    icon
-}: {
+type Props = {
     title: string;
     description: string;
     icon: JSX.Element;
-}) {
+}
+
+const Feature:FC<Props> = ({
+    title,
+    description,
+    icon
+}) => {
     return (
         <div className={styles.feature}>
             <div className={styles.featureGroup}>

@@ -1,10 +1,10 @@
 
-import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
+import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import { FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { putCountryData } from "./apis/CountryAPI";
 import { putStateData } from "./apis/StateAPI";
 import { putZoneData } from "./apis/ZoneAPI";

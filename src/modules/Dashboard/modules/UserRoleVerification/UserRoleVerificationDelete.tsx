@@ -15,7 +15,7 @@ const UserRoleVerificationDelete = (props: Props) => {
    
     const navigate = useNavigate();
     const handleSubmit = () => {
-        deleteUserRoleVerification(id, toast);
+        if (id) deleteUserRoleVerification(id, toast);
         navigate("/user-role-verification");
     };
     return (

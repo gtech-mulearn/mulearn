@@ -31,7 +31,8 @@ interface BackendErrors {
 
 const Onboarding = (props: Props) => {
     const urlParams = new URLSearchParams(window.location.search);
-    const Id = urlParams.get("dwmsId");
+    const jsId = urlParams.get("jsid");
+    console.log(jsId)
     const queryParameters = new URLSearchParams(window.location.search);
     const navigate = useNavigate();
     // for hide and question container
@@ -171,32 +172,31 @@ const Onboarding = (props: Props) => {
         getCompanies(errorHandler, setCompanyAPI);
         getInterests(errorHandler, setAoiAPI);
         getRoles(errorHandler, setRoleAPI);
-        getDWMSDetails(errorHandler, data => {
-            // console.log(data);
-            
-            formik.setValues({
-                firstName: data.job_seeker_fname,
-                lastName: data.job_seeker_lname,
-                email: data.email_id,
-                password: "",
-                confirmPassword: "",
-                phone: void 0,
-                gender: "",
-                dob: "",
-                role: "",
-                country: "",
-                state: "",
-                district: "",
-                organization,
-                community,
-                dept: "",
-                yog: "",
-                mentorRole: "",
-                areaOfInterest: [],
-                general: "",
-                referralId: ""
+        jsId &&
+            getDWMSDetails(errorHandler, jsId, (data: any) => {
+                formik.setValues({
+                    firstName: data.job_seeker_fname,
+                    lastName: data.job_seeker_lname,
+                    email: data.email_id,
+                    password: "",
+                    confirmPassword: "",
+                    phone: data.mobile_no,
+                    gender: data.gender.toLowerCase(),
+                    dob: data.dob,
+                    role: "",
+                    country: "",
+                    state: "",
+                    district: "",
+                    organization,
+                    community,
+                    dept: "",
+                    yog: "",
+                    mentorRole: "",
+                    areaOfInterest: [],
+                    general: "",
+                    referralId: ""
+                });
             });
-        });
     }, []);
 
     const [backendError, setBackendError] = useState<BackendErrors>({});
@@ -336,6 +336,23 @@ const Onboarding = (props: Props) => {
     useEffect(() => {
         setEmailVerificationResultBtn("Next");
     }, [formik.values.email]);
+
+    useEffect(() => {
+        if (jsId) {
+            const foundRole = roleAPI.find(
+                (role: any) => role.title === "Student"
+            );
+            if (foundRole) {
+                setRole([
+                    {
+                        id: foundRole.id,
+                        title: foundRole.title
+                    }
+                ]);
+            }
+        }
+    }, [roleAPI]);
+
     return (
         <>
             <div className={styles.onboarding_page}>
@@ -349,7 +366,7 @@ const Onboarding = (props: Props) => {
                             ""
                         )}
                         <div className={styles.form_container}>
-                            {!Id && (
+                            {!jsId && (
                                 <div
                                     style={{
                                         display: display0,
@@ -357,6 +374,7 @@ const Onboarding = (props: Props) => {
                                     }}
                                     className={styles.question_container}
                                 >
+                                    {" "}
                                     <div className={styles.question_box}>
                                         <div className={styles.question}>
                                             <h3
@@ -633,6 +651,9 @@ const Onboarding = (props: Props) => {
                                     </div>
                                 </div>
                             ) : null}
+
+                            {/* Form */}
+
                             <h1>User Information</h1>
                             <p>
                                 Please enter all the required information in the

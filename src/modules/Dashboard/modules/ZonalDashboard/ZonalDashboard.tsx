@@ -6,12 +6,10 @@ import { useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getzonaldashboard } from "./apis";
-import { hasRole } from "../../../../services/common_functions";
-import { roles } from "../../../../services/types";
 import { columnsStudent, columnsCampus } from "./THeaders";
 import TableTopTab from "./TableTopTab";
-import "./ZonalDashboard.scss";
-import { dashboardRoutes } from "../../../../services/urls";
+import "./ZonalDashboard.css";
+import { dashboardRoutes } from "@/MuLearnServices/urls";
 
 function ZonalDashboard() {
     const [data, setData] = useState<any[]>([]);
@@ -32,8 +30,6 @@ function ZonalDashboard() {
 
     useEffect(() => {
         if (firstFetch.current) {
-            if (!hasRole([roles.ADMIN, roles.FELLOW, roles.ZONAL_CAMPUS_LEAD]))
-                navigate("/404");
 
             getzonaldashboard(
                 activeTab,

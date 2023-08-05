@@ -1,14 +1,12 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { HackList, HackathonApplication } from "./HackathonInterfaces";
-import { SetStateAction } from "react";
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { Data } from "@/MuLearnComponents/Table/Table";
 
 export const getHackathons = async (
-    setData: React.Dispatch<SetStateAction<HackList[]>>
+    setData: UseStateFunc<HackList[]>
 ) => {
     try {
         const response = await privateGateway.get(
@@ -25,7 +23,7 @@ export const getHackathons = async (
 };
 
 export const getFormFields = async (
-    setFormData: React.Dispatch<React.SetStateAction<string>>
+    setFormData: UseStateFunc<string>
 ) => {
     try {
         const response = await privateGateway.get(
@@ -42,7 +40,7 @@ export const getFormFields = async (
 };
 
 export const getHackDetails = async (
-    setEditData: React.Dispatch<SetStateAction<HackList | undefined>>,
+    setEditData: UseStateFunc<HackList | undefined>,
     id: string | undefined
 ) => {
     try {
@@ -206,7 +204,7 @@ export const editHackathon = async (
 };
 
 export const getAllDistricts = (
-    setDistrict: React.Dispatch<React.SetStateAction<Option[]>>
+    setDistrict: UseStateFunc<Option[]>
 ) => {
     privateGateway
         .get(dashboardRoutes.getAllDistricts)
@@ -227,7 +225,7 @@ export const getAllDistricts = (
 };
 
 export const getAllInstitutions = (
-    setInstitutions: React.Dispatch<React.SetStateAction<Option[][]>>
+    setInstitutions: UseStateFunc<Option[][]>
 ) => {
     privateGateway
         .get(dashboardRoutes.getAllOrganisations)
@@ -344,7 +342,7 @@ export const publishHackathon = async (
 };
 
 export const getApplicationForm = async (
-	setData: React.Dispatch<SetStateAction<HackathonApplication[]>>,
+	setData: UseStateFunc<HackathonApplication[]>,
     id: string | undefined,
 ) => {
     try {
@@ -396,7 +394,7 @@ export const submitHackApplication = async (
 };
 
 export const getOrganizers = async (
-    setData: React.Dispatch<SetStateAction<Data[]>>,
+    setData: UseStateFunc<Data[]>,
     id: string | undefined
 ) => {
     try {
@@ -414,7 +412,7 @@ export const getOrganizers = async (
 };
 
 export const getParticipants = async (
-    setData: React.Dispatch<SetStateAction<Data[]>>,
+    setData: UseStateFunc<Data[]>,
     id: string | undefined
 ) => {
     try {

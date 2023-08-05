@@ -50,12 +50,20 @@ const HackathonDetails = lazy(() => import("./modules/Dashboard/modules/Hackatho
 const DistrictDashboard = lazy(() => import("./modules/Dashboard/modules/DistrictDashboard/DistrictDashboard"));
 const ZonalDashboard = lazy(() => import("./modules/Dashboard/modules/ZonalDashboard/ZonalDashboard"));
 const HackathonRegistration = lazy(() => import("./modules/Dashboard/modules/Hackathon/pages/HackathonRegistration"));
-const LandingPage = lazy(() => import("./modules/Public/LearningCircles/modules/LandingPage/LandingPage"));
+const LandingPage = lazy(() => import("./modules/Public/LearningCircles/pages/LandingPage"));
 const ConnectDiscord = lazy(() => import("./modules/Dashboard/modules/ConnectDiscord/pages/ConnectDiscord"));
 const HackathonParticipants = lazy(() => import("./modules/Dashboard/modules/Hackathon/pages/HackathonParticipants"));
 
 
-const router = createBrowserRouter([
+
+import { roles } from "./services/types";
+import SecureAuthRoutes from "./services/authCheck";
+import Settings from "./modules/Dashboard/modules/Settings/Settings";
+
+
+function App() {
+    const RoleChecker = SecureAuthRoutes()
+    const router = createBrowserRouter([
     // Add redirect from '/' to '/login'
     {
         path: "/",
@@ -97,9 +105,13 @@ const router = createBrowserRouter([
                 children: [
                     { path: "profile", element: <Profile /> },
                     { path: "connect-discord", element: <ConnectDiscord /> },
-                    { path: "interest-groups", element: <InterestGroup /> },
+                    { path: "interest-groups", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} children={<InterestGroup/>} /> },
                     {
                         path: "interest-groups/create",
+                        element: <InterestGroupCreate />
+                    },
+                    {
+                        path: "interest-groups/edit/:id",
                         element: <InterestGroupCreate />
                     },
                     {
@@ -108,14 +120,14 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "organizations/edit",
-                        element: <EditOrgnaization />
+                        element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} children={<EditOrgnaization/>} />
                     },
                     {
                         path: "organizations/delete/:id",
                         element: <DeleteOrganizations />
                     },
-                    { path: "campus-details", element: <CampusStudentList /> },
-                    { path: "manage-users", element: <ManageUsers /> },
+                    { path: "campus-details", element: <RoleChecker roles={[roles.CAMPUS_LEAD]} children={<CampusStudentList />} />},
+                    { path: "manage-users", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} children={<ManageUsers />} /> },
                     {
                         path: "manage-users/create",
                         element: <ManageUsersCreate />
@@ -128,10 +140,10 @@ const router = createBrowserRouter([
                         path: "manage-users/edit/:id",
                         element: <ManageUsersEdit />
                     },
-                    { path: "manage-roles", element: <ManageRoles /> },
+                    { path: "manage-roles", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} children={<ManageRoles/>} /> },
                     {
                         path: "user-role-verification",
-                        element: <UserRoleVerification />
+                        element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} children={<UserRoleVerification/>} />
                     },
                     {
                         path: "user-role-verification/delete/:id",
@@ -143,14 +155,14 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "zonal-dashboard",
-                        element: <ZonalDashboard />
+                        element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW, roles.ZONAL_CAMPUS_LEAD]} children={<ZonalDashboard/>} />
                     },
                     {
                         path: "district-dashboard",
-                        element: <DistrictDashboard />
+                        element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW, roles.DISTRICT_CAMPUS_LEAD]} children={<DistrictDashboard/>} />
                     },
-                    { path: "organizations", element: <Organizations /> },
-                    { path: "tasks", element: <Tasks /> },
+                    { path: "organizations", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} children={<Organizations/>} /> },
+                    { path: "tasks", element: <RoleChecker roles={[roles.ADMIN, roles.FELLOW]} children={<Tasks/>} /> },
                     {
                         path: "tasks/create",
                         element: <TaskCreate />
@@ -165,7 +177,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "url-shortener",
-                        element: <UrlShortener />
+                        element: <UrlShortener/>
                     },
                     {
                         path: "hackathon",
@@ -224,7 +236,11 @@ const router = createBrowserRouter([
                         element: <LearningCircleCreate />
                     }
                 ]
-            }
+            },
+            {
+                path: "/settings",
+                element: <Settings />,
+            },
         ]
     },
     {
@@ -237,7 +253,6 @@ const router = createBrowserRouter([
     }
 ]);
 
-function App() {
     return <RouterProvider router={router} />;
 }
 

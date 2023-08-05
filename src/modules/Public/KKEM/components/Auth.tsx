@@ -7,7 +7,7 @@ import { AiOutlineLoading } from "react-icons/ai";
 /**
  * Page for KKEM auth when dwms_id is present in the URL
  */
-export default function KKEMAuth({ dwmsId }: { dwmsId: string }) {
+export default function KKEMAuth({ jsid }: { jsid: string }) {
     const [muid, setMuid] = useState("");
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState(false);
@@ -27,7 +27,7 @@ export default function KKEMAuth({ dwmsId }: { dwmsId: string }) {
                 setDisabled(false);
                 return;
             }
-            userAuth(muid, dwmsId, controller).then(res => {
+            userAuth(muid, jsid, controller).then(res => {
                 if (res.statusCode === 400) {
                     setError(res.message?.general?.toString());
                     setSuccess(false);
