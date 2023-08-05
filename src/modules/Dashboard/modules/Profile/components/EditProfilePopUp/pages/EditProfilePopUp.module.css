@@ -47,6 +47,14 @@
                 background: #F3F3F4;
                 border-radius: 10px;
             }
+
+            .error_message {
+                color: red;
+                font-size: 0.8rem;
+                font-weight: 500;
+                margin-top: 5px;
+                text-align: left;
+            }
         }
     }
 }

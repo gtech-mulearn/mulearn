@@ -8,7 +8,6 @@ import {
 } from "../services/api";
 import { useFormik } from "formik";
 import Select from "react-select";
-// import makeAnimated from "react-select/animated";
 
 type Props = {
     editPopUp: boolean;
@@ -16,7 +15,6 @@ type Props = {
 };
 
 const EditProfilePopUp = (props: Props) => {
-    // const animatedComponents = makeAnimated();
     const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }]);
     const [loadStatus, setLoadStatus] = useState(false);
 
@@ -47,6 +45,15 @@ const EditProfilePopUp = (props: Props) => {
             }
             if (!values.mobile) {
                 errors.mobile = "Required";
+            }
+            if (values.community.length === 0) {
+                errors.community = "Required";
+            }
+            if (!values.gender) {
+                errors.gender = "Required";
+            }
+            if (!values.dob) {
+                errors.dob = "Required";
             }
 
             return errors;
@@ -104,7 +111,14 @@ const EditProfilePopUp = (props: Props) => {
                                 onBlur={formik.handleBlur}
                                 placeholder="First Name"
                             />
+                            {formik.touched.first_name &&
+                                formik.errors.first_name && (
+                                    <div className={styles.error_message}>
+                                        {formik.errors.first_name}
+                                    </div>
+                                )}
                         </div>
+
                         <div className={styles.input_field}>
                             <label htmlFor="">Last Name</label>
                             <input
@@ -115,6 +129,12 @@ const EditProfilePopUp = (props: Props) => {
                                 onBlur={formik.handleBlur}
                                 placeholder="Last Name"
                             />
+                            {formik.touched.last_name &&
+                                formik.errors.last_name && (
+                                    <div className={styles.error_message}>
+                                        {formik.errors.last_name}
+                                    </div>
+                                )}
                         </div>
                         <div className={styles.input_field}>
                             <label htmlFor="">Email</label>
@@ -126,6 +146,11 @@ const EditProfilePopUp = (props: Props) => {
                                 onBlur={formik.handleBlur}
                                 placeholder="Email"
                             />
+                            {formik.touched.email && formik.errors.email && (
+                                <div className={styles.error_message}>
+                                    {formik.errors.email}
+                                </div>
+                            )}
                         </div>
                         <div className={styles.input_field}>
                             <label htmlFor="">Mobile</label>
@@ -137,6 +162,11 @@ const EditProfilePopUp = (props: Props) => {
                                 onBlur={formik.handleBlur}
                                 placeholder="Mobile"
                             />
+                            {formik.touched.mobile && formik.errors.mobile && (
+                                <div className={styles.error_message}>
+                                    {formik.errors.mobile}
+                                </div>
+                            )}
                         </div>
                         <div className={styles.input_field}>
                             <label htmlFor="">Community</label>
@@ -158,7 +188,6 @@ const EditProfilePopUp = (props: Props) => {
                                     }}
                                     closeMenuOnSelect={false}
                                     isMulti
-                                    // components={animatedComponents}
                                     defaultValue={filteredCommunityOptions}
                                     options={communityAPI.map(company => {
                                         return {
@@ -168,6 +197,12 @@ const EditProfilePopUp = (props: Props) => {
                                     })}
                                 />
                             )}
+                            {formik.touched.community &&
+                                formik.errors.community && (
+                                    <div className={styles.error_message}>
+                                        {formik.errors.community}
+                                    </div>
+                                )}
                         </div>
                         <div className={styles.input_field}>
                             <label htmlFor="">Gender</label>
@@ -179,6 +214,11 @@ const EditProfilePopUp = (props: Props) => {
                                 onBlur={formik.handleBlur}
                                 placeholder="Gender"
                             />
+                            {formik.touched.gender && formik.errors.gender && (
+                                <div className={styles.error_message}>
+                                    {formik.errors.gender}
+                                </div>
+                            )}
                         </div>
                         <div className={styles.input_field}>
                             <label htmlFor="">DOB</label>
@@ -190,6 +230,11 @@ const EditProfilePopUp = (props: Props) => {
                                 onBlur={formik.handleBlur}
                                 placeholder="DOB"
                             />
+                            {formik.touched.dob && formik.errors.dob && (
+                                <div className={styles.error_message}>
+                                    {formik.errors.dob}
+                                </div>
+                            )}
                         </div>
 
                         <MuButton
