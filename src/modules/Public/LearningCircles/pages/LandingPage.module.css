@@ -116,6 +116,7 @@
     margin: 3rem 4rem;
     border-radius: 2.5rem;
     border: 4px solid #E8F2FF;
+    overflow: hidden;
 }
 
 .LClandingPageEarth .totalCount div {
@@ -330,12 +331,6 @@
     .LClandingPageEarth .totalCount div .count {
         font-size: 2rem;
     }
-
-    .LClandingPageEarth img {
-       width:100%;
-       float: right;
-    }
-
     .LClandingPageEarth .totalCount div .count p {
         font-size: .5rem;
     }
