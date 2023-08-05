@@ -31,7 +31,6 @@ export const KKEMLogin = (
                     status: "success",
                     duration: 3000,
                     isClosable: true,
-                    position: "top-right"
                 });
                 privateGateway
                     .get(dashboardRoutes.getInfo)
@@ -65,7 +64,6 @@ export const KKEMLogin = (
                 status: "error",
                 duration: 3000,
                 isClosable: true,
-                position: "top-right"
             });
         });
 };
