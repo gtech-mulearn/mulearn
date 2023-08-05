@@ -189,130 +189,42 @@ const Hackathon = () => {
                                                                     data-tooltip-id="Icon"
                                                                     data-tooltip-content="Publish"
                                                                     onClick={() => {
-                                                                       if (
-                                                                           hack.title
-                                                                       ) {
-                                                                           if (
-                                                                               hack.tagline
-                                                                           ) {
-                                                                               if (
-                                                                                   hack.participant_count
-                                                                               ) {
-                                                                                   if (
-                                                                                       hack.description
-                                                                                   ) {
-                                                                                       if (
-                                                                                           hack.application_start
-                                                                                       ) {
-                                                                                           if (
-                                                                                               hack.application_ends
-                                                                                           ) {
-                                                                                               if (
-                                                                                                   hack.event_start
-                                                                                               ) {
-                                                                                                   if (
-                                                                                                       hack.event_end
-                                                                                                   ) {
-                                                                                                    if (
-                                                                                                        hack.organisation
-                                                                                                    ) {
-                                                                                                        if (
-                                                                                                            hack.district
-                                                                                                        ) {
-                                                                                                            if (
-                                                                                                                hack.place
-                                                                                                            ) {
-                                                                                                                if (
-                                                                                                                    hack.website
-                                                                                                                ) {
-                                                                                                                    if (
-                                                                                                                        hack.type
-                                                                                                                    ) {
-                                                                                                                        if (
-                                                                                                                            hack.banner
-                                                                                                                        ) {
-                                                                                                                            if (
-                                                                                                                                hack.event_logo
-                                                                                                                            ) {
-                                                                                                                                if (
-                                                                                                                                    hack.is_open_to_all
-                                                                                                                                ) {
-                                                                                                                                    toggleModal(
-                                                                                                                                        index,
-                                                                                                                                        ModalType[0]
-                                                                                                                                    );
-                                                                                                                                }
-                                                                                                                            }
-                                                                                                                        } else {
-                                                                                                                            toast(
-                                                                                                                                {
-                                                                                                                                    title: "Error",
-                                                                                                                                    description:
-                                                                                                                                        "Please fill out the Advanced Details before publishing.",
-                                                                                                                                    status: "error",
-                                                                                                                                    duration: 3000,
-                                                                                                                                    isClosable:
-                                                                                                                                        true,
-                                                                                                                                    position:
-                                                                                                                                        "top"
-                                                                                                                                }
-                                                                                                                            );
-                                                                                                                        }
-                                                                                                                    }
-                                                                                                                }
-                                                                                                            }
-                                                                                                        }
-                                                                                                    } else {
-                                                                                                        toast(
-                                                                                                            {
-                                                                                                                title: "Error",
-                                                                                                                description:
-                                                                                                                    "Please fill out the Location Details before publishing.",
-                                                                                                                status: "error",
-                                                                                                                duration: 3000,
-                                                                                                                isClosable:
-                                                                                                                    true,
-                                                                                                                position:
-                                                                                                                    "top"
-                                                                                                            }
-                                                                                                        );
-                                                                                                    }
-                                                                                                   }
-                                                                                               }
-                                                                                           }
-                                                                                       } else {
-                                                                                           toast(
-                                                                                               {
-                                                                                                   title: "Error",
-                                                                                                   description:
-                                                                                                       "Please fill out the Event Dates before publishing.",
-                                                                                                   status: "error",
-                                                                                                   duration: 3000,
-                                                                                                   isClosable:
-                                                                                                       true,
-                                                                                                   position:
-                                                                                                       "top"
-                                                                                               }
-                                                                                           );
-                                                                                       }
-                                                                                   }
-                                                                               } 
-                                                                           } 
-                                                                       } else {
-                                                                           toast(
-                                                                               {
-                                                                                   title: "Error",
-                                                                                   description:
-                                                                                       "Please fill out Basic Details before publishing.",
-                                                                                   status: "error",
-                                                                                   duration: 3000,
-                                                                                   isClosable:
-                                                                                       true,
-                                                                                   position:
-                                                                                       "top"
-                                                                               }
-                                                                           );
-                                                                       }
+                                                                        if (
+                                                                            hack.id &&
+                                                                            hack.title &&
+                                                                            hack.type &&
+                                                                            hack.tagline &&
+                                                                            hack.event_logo &&
+                                                                            hack.banner &&
+                                                                            hack.website &&
+                                                                            hack.place &&
+                                                                            hack.event_start &&
+                                                                            hack.event_end &&
+                                                                            hack.application_start &&
+                                                                            hack.application_ends &&
+                                                                            hack.description &&
+                                                                            hack.participant_count !== null &&
+                                                                            hack.district &&
+                                                                            hack.organisation &&
+                                                                            hack.district_id &&
+                                                                            hack.org_id !== null &&
+                                                                            hack.editable !== null
+                                                                        )
+                                                                        {
+                                                                            toggleModal(index, ModalType[0]);
+                                                                        } else {
+                                                                            // Show an error message or take appropriate action
+                                                                            console.log("Please fill in all the details before publishing.");
+                                                                            toast({
+                                                                                title: "Error",
+                                                                                description:
+                                                                                  "Please fill in all the details before publishing.",
+                                                                                status: "error",
+                                                                                duration: 3000,
+                                                                                isClosable: true,
+                                                                                position: "top",
+                                                                              });
+                                                                        }
                                                                     }}
                                                                 />
                                                             ) : (

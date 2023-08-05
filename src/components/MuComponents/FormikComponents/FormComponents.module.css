@@ -75,7 +75,7 @@
 }
 
 .error {
-	color: var(--Error);
+	color: var(--Error) !important;
 }
 
 .btn_container {

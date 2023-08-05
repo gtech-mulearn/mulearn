@@ -17,7 +17,7 @@ export const FormikTextInput = ({ label, ...props }: any) => {
             <span>{label}</span>
             <input className="text-input" {...field} {...props} />
             {meta.touched && meta.error ? (
-                <div className="error">{meta.error}</div>
+                <div className={styles.error}>{meta.error}</div>
             ) : null}
         </div>
     );
@@ -30,7 +30,7 @@ export const FormikSelect = ({ label, ...props }: any) => {
             <span>{label}</span>
             <select {...field} {...props} />
             {meta.touched && meta.error ? (
-                <div className="error">{meta.error}</div>
+                <div className={styles.error}>{meta.error}</div>
             ) : null}
         </div>
     );
@@ -43,7 +43,7 @@ export const FormikTextInputWhite = ({ label, ...props }: any) => {
             <label className={styles.formLabel}>{label}</label>
             <input className="text-input" {...field} {...props} />
             {meta.touched && meta.error ? (
-                <div className="error">{meta.error}</div>
+                <div className={styles.error}>{meta.error}</div>
             ) : null}
         </div>
     );
@@ -56,7 +56,7 @@ export const FormikTextAreaWhite = ({ label, ...props }: any) => {
             <label className={styles.formLabel}>{label}</label>
             <textarea className="text-input" {...field} {...props} />
             {meta.touched && meta.error ? (
-                <div className="error" >{meta.error}</div>
+                <div className={styles.error} >{meta.error}</div>
             ) : null}
         </div>
     );
@@ -126,7 +126,7 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
                 styles={customStyles}
             />
             {meta.touched && meta.error && (
-                <div className="error">{meta.error}</div>
+                <div className={styles.error}>{meta.error}</div>
             )}
         </div>
     );
@@ -156,7 +156,7 @@ export const FormikImageComponent: React.FC<ImageFormProps> = ({
                 {...props}
             />
             {meta.touched && meta.error ? (
-                <div className="error">{meta.error}</div>
+                <div className={styles.error}>{meta.error}</div>
             ) : null}
         </div>
     );

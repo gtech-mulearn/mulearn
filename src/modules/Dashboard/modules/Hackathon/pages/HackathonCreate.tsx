@@ -109,10 +109,10 @@ const HackathonCreate = () => {
         type: Yup.string().min(2, "Too Short!"),
         isOpenToAll: Yup.boolean(),
         description: Yup.string().min(5, "Too Short!"),
-        eventStart: Yup.date(),
-        eventEnd: Yup.date(),
-        applicationStart: Yup.date(),
-        applicationEnds: Yup.date(),
+        // eventStart: Yup.date(),
+        // eventEnd: Yup.date(),
+        // applicationStart: Yup.date(),
+        // applicationEnds: Yup.date(),
         participantCount: Yup.number()
             .positive("Number of users should be a positive value")
             .min(10, "Needs to be at least 2 digits.")
@@ -216,46 +216,46 @@ const HackathonCreate = () => {
         {
             edit
                 ? editHackathon(
-                      values.title,
-                      values.tagline,
-                      values.description,
-                      values.participantCount,
-                      values.orgId,
-                      values.districtId,
-                      values.place,
-                      values.isOpenToAll,
-                      a,
-                      b,
-                      c,
-                      d,
-                      formattedFormFields,
-                      values.event_logo,
-                      values.banner,
-                      values.type,
-                      values.website,
-                      toast,
-                      id
-                  )
+                    values.title,
+                    values.tagline,
+                    values.description,
+                    values.participantCount,
+                    values.orgId,
+                    values.districtId,
+                    values.place,
+                    values.isOpenToAll,
+                    a,
+                    b,
+                    c,
+                    d,
+                    formattedFormFields,
+                    values.event_logo,
+                    values.banner,
+                    values.type,
+                    values.website,
+                    toast,
+                    id
+                )
                 : createHackathon(
-                      values.title,
-                      values.tagline,
-                      values.description,
-                      values.participantCount,
-                      values.orgId,
-                      values.districtId,
-                      values.place,
-                      values.isOpenToAll,
-                      a,
-                      b,
-                      c,
-                      d,
-                      formattedFormFields,
-                      values.event_logo,
-                      values.banner,
-                      values.type,
-                      values.website,
-                      toast
-                  );
+                    values.title,
+                    values.tagline,
+                    values.description,
+                    values.participantCount,
+                    values.orgId,
+                    values.districtId,
+                    values.place,
+                    values.isOpenToAll,
+                    a,
+                    b,
+                    c,
+                    d,
+                    formattedFormFields,
+                    values.event_logo,
+                    values.banner,
+                    values.type,
+                    values.website,
+                    toast
+                );
         }
         resetForm();
         setTimeout(() => {
