@@ -1,18 +1,16 @@
-import React from "react";
-import { ToastId, UseToastOptions } from "@chakra-ui/react";
-import { NavigateFunction } from "react-router-dom";
+import {  NavigateFunction } from "react-router-dom";
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { KKEMRoutes, dashboardRoutes } from "@/MuLearnServices/urls";
 
 export const KKEMLogin = (
     emailOrMuid: string,
     password: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
+    toast: ToastAsPara,
     navigate: NavigateFunction,
-    setIsLoading: (loading: boolean) => void,
+    setIsLoading: UseStateFunc<boolean>,
     redirectPath: string,
     jsid?:string | null,
-    integration?:string | null
+    integration?:string
 ) => {
     setIsLoading(true);
     publicGateway
@@ -33,7 +31,6 @@ export const KKEMLogin = (
                     status: "success",
                     duration: 3000,
                     isClosable: true,
-                    position: "top-right"
                 });
                 privateGateway
                     .get(dashboardRoutes.getInfo)
@@ -67,7 +64,6 @@ export const KKEMLogin = (
                 status: "error",
                 duration: 3000,
                 isClosable: true,
-                position: "top-right"
             });
         });
 };

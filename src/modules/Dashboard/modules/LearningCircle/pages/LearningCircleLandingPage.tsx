@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { BsChevronRight } from "react-icons/bs";
 import { getUserLearningCircles } from "../services/LearningCircleAPIs";
-import { LcType } from "../services/LearningCircleInterface";
 
 
 export const LearningCircleLandingPage = () => {
@@ -29,7 +28,7 @@ export const LearningCircleLandingPage = () => {
         <>
             <div className={styles.learningCircleLandingPage}>
                 <div className={styles.headContent}>
-                    <img src={imageTop} alt="image" />
+                    <img src={imageTop} alt="image" loading="eager" />
                     <div className={styles.learningCircleLandingPageDesc}>
                         <h1>Learn, share, together</h1>
                         <b style={{ fontWeight: "600" , width:"80%"}}>
@@ -73,7 +72,7 @@ export const LearningCircleLandingPage = () => {
                                                 className={styles.learningCircleLandingPageLevel}>
                                                 <div>
                                                     <p className={styles.learningCircleLandingPagePara}>
-                                                        {`${pos}.`}</p>
+                                                        {`${pos + 1}.`}</p>
                                                     <p className={styles.learningCircleLandingPagePara}>
                                                         {circle.name}
                                                     </p>
@@ -100,6 +99,7 @@ export const LearningCircleLandingPage = () => {
                                 <img
                                     src={imageBottom}
                                     alt="You haven't joined any circles yet"
+                                    loading="eager"
                                 />
                             </div>
                         )}

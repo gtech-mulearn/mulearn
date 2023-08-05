@@ -4,7 +4,6 @@ import { SingleButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useState, useMemo, MouseEventHandler } from "react";
 import { BiDownload, BiArrowBack } from "react-icons/bi";
-import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 type Props = {};
@@ -47,6 +46,7 @@ const TaskBulkImport = (props: Props) => {
                     justifyContent: "space-between",
                     width: "100%",
                     alignItems: "center"
+                
                 }}
             >
                 <SingleButton
@@ -56,7 +56,7 @@ const TaskBulkImport = (props: Props) => {
                         display: "flex",
                         justifyContent: "start",
                         width: "100%",
-                        alignItems: "center"
+                        alignItems: "center",
                     }}
                     onClick={() => {
                         navigate("/dashboard/tasks");

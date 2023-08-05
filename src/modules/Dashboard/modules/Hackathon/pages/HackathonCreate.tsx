@@ -17,14 +17,14 @@ import {
     getHackDetails
 } from "../services/HackathonApis";
 import { FiUploadCloud } from "react-icons/fi";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { useToast } from "@chakra-ui/react";
-import { HackList } from "../services/HackathonInterfaces";
 import {
     convertDateToYYYYMMDD,
     getLocationIdByName
 } from "../../../utils/common";
+import HackathonImagePreview from "../components/HackathonImagePreview";
 
 /**
  * TODO: Move YUP Validations to another file.
@@ -48,9 +48,13 @@ const HackathonCreate = () => {
     );
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
+    const [isCreatePage, setIsCreatePage] = useState(false);
+    const [openImagePreview, setOpenImagePreview] = useState(false);
+    const [prevImgUrl, setPreviewImgUrl] = useState('');
     const { id } = useParams();
     const toast = useToast();
     const navigate = useNavigate();
+    const location = useLocation()
 
     useEffect(() => {
         if (id !== undefined) {
@@ -109,10 +113,10 @@ const HackathonCreate = () => {
         type: Yup.string().min(2, "Too Short!"),
         isOpenToAll: Yup.boolean(),
         description: Yup.string().min(5, "Too Short!"),
-        eventStart: Yup.date(),
-        eventEnd: Yup.date(),
-        applicationStart: Yup.date(),
-        applicationEnds: Yup.date(),
+            // eventStart: Yup.date(),
+            // eventEnd: Yup.date(),
+            // applicationStart: Yup.date(),
+            // applicationEnds: Yup.date(),
         participantCount: Yup.number()
             .positive("Number of users should be a positive value")
             .min(10, "Needs to be at least 2 digits.")
@@ -198,14 +202,16 @@ const HackathonCreate = () => {
             }
         });
 
-        let a = values.applicationStart
+        let a = values.applicationStart !== "undefined" && values.applicationStart !== "" && values.applicationStart !== "null" && values.applicationStart !== null
             ? `${values.applicationStart}T00:00:00Z`
             : "";
-        let b = values.applicationEnds
+        let b = values.applicationEnds !== "undefined" && values.applicationEnds !== "" && values.applicationEnds !== "null" && values.applicationEnds !== null
             ? `${values.applicationEnds}T00:00:00Z`
             : "";
-        let c = values.eventStart ? `${values.eventStart}T00:00:00Z` : "";
-        let d = values.eventEnd ? `${values.eventEnd}T00:00:00Z` : "";
+        let c = values.eventStart !== "undefined" && values.eventStart !== "" && values.eventStart !== "null" && values.eventStart !== null
+            ? `${values.eventStart}T00:00:00Z` : "";
+        let d = values.eventEnd !== "undefined" && values.eventEnd !== "" && values.eventEnd !== "null" && values.eventEnd !== null
+            ? `${values.eventEnd}T00:00:00Z` : "";
 
         console.log(selectedFields);
 
@@ -216,51 +222,61 @@ const HackathonCreate = () => {
         {
             edit
                 ? editHackathon(
-                      values.title,
-                      values.tagline,
-                      values.description,
-                      values.participantCount,
-                      values.orgId,
-                      values.districtId,
-                      values.place,
-                      values.isOpenToAll,
-                      a,
-                      b,
-                      c,
-                      d,
-                      formattedFormFields,
-                      values.event_logo,
-                      values.banner,
-                      values.type,
-                      values.website,
-                      toast,
-                      id
-                  )
+                    values.title,
+                    values.tagline,
+                    values.description,
+                    values.participantCount,
+                    values.orgId,
+                    values.districtId,
+                    values.place,
+                    values.isOpenToAll,
+                    a,
+                    b,
+                    c,
+                    d,
+                    formattedFormFields,
+                    values.event_logo,
+                    values.banner,
+                    values.type,
+                    values.website,
+                    toast,
+                    id
+                )
                 : createHackathon(
-                      values.title,
-                      values.tagline,
-                      values.description,
-                      values.participantCount,
-                      values.orgId,
-                      values.districtId,
-                      values.place,
-                      values.isOpenToAll,
-                      a,
-                      b,
-                      c,
-                      d,
-                      formattedFormFields,
-                      values.event_logo,
-                      values.banner,
-                      values.type,
-                      values.website,
-                      toast
-                  );
+                    values.title,
+                    values.tagline,
+                    values.description,
+                    values.participantCount,
+                    values.orgId,
+                    values.districtId,
+                    values.place,
+                    values.isOpenToAll,
+                    a,
+                    b,
+                    c,
+                    d,
+                    formattedFormFields,
+                    values.event_logo,
+                    values.banner,
+                    values.type,
+                    values.website,
+                    toast
+                );
         }
         resetForm();
         setTimeout(() => {
             navigate("/dashboard/hackathon");
         }, 2000);
+    };
+
+    useEffect(() => {
+        if (location.pathname === "/dashboard/hackathon/create") {
+            setIsCreatePage(true);
+        }
+    }, [location])
+
+    const handleCloseModal = () => {
+        setOpenImagePreview(false);
     };
 
     return (
@@ -301,19 +317,19 @@ const HackathonCreate = () => {
                                     eventStart:
                                         convertDateToYYYYMMDD(
                                             String(data?.event_start)
-                                        ) || "",
+                                        ) || null,
                                     eventEnd:
                                         convertDateToYYYYMMDD(
                                             String(data?.event_end)
-                                        ) || "",
+                                        ) || null,
                                     applicationStart:
                                         convertDateToYYYYMMDD(
                                             String(data?.application_start)
-                                        ) || "",
+                                        ) || null,
                                     applicationEnds:
                                         convertDateToYYYYMMDD(
                                             String(data?.application_ends)
-                                        ) || "",
+                                        ) || null,
                                     orgId: data?.organisation || "",
                                     place: data?.place || "",
                                     districtId:
@@ -496,10 +512,19 @@ const HackathonCreate = () => {
                                                                 }
                                                             >
                                                                 Banner
-                                                                <button>
-                                                                    View prev
-                                                                    upload
-                                                                </button>
+                                                                {
+                                                                    !isCreatePage && data?.banner !== null ?
+                                                                        <button type="button" onClick={() => {
+                                                                            setPreviewImgUrl(data?.banner)
+                                                                            setOpenImagePreview(true);
+                                                                        }}>
+                                                                            View prev
+                                                                            upload
+                                                                        </button>
+                                                                        :
+                                                                        <></>
+                                                                }
+                                                                <HackathonImagePreview isOpen={openImagePreview} onClose={handleCloseModal} prevImgUrl={prevImgUrl} />
                                                             </label>
                                                             <div
                                                                 className={
@@ -608,10 +633,17 @@ const HackathonCreate = () => {
                                                                 }
                                                             >
                                                                 Event Logo
-                                                                <button>
-                                                                    View prev
-                                                                    upload
-                                                                </button>
+                                                                {!isCreatePage && data?.event_logo !== null ?
+                                                                    <button className={styles.previewBtn} type="button" onClick={() => {
+                                                                        setPreviewImgUrl(data?.event_logo)
+                                                                        setOpenImagePreview(true);
+                                                                    }}>
+                                                                        View prev
+                                                                        upload
+                                                                    </button>
+                                                                    :
+                                                                    <></>
+                                                                }
                                                             </label>
                                                             <div
                                                                 className={
@@ -727,10 +759,7 @@ const HackathonCreate = () => {
                                                                 styles.checkerInput
                                                             }
                                                         >
-                                                            <input
-                                                                type="checkbox"
-                                                                name="isOpenToAll"
-                                                            />
+                                                             <Field type="checkbox" name="isOpenToAll" />
                                                         </div>
                                                     </div>
                                                 </TabPanel>
@@ -768,15 +797,13 @@ const HackathonCreate = () => {
                                                             ([key, value]) => (
                                                                 <label
                                                                     key={key}
-                                                                    className={`${
-                                                                        styles.checkBoxContainer
-                                                                    } ${
-                                                                        values.formFields.includes(
+                                                                    className={`${styles.checkBoxContainer
+                                                                        } ${values.formFields.includes(
                                                                             key as never
                                                                         )
                                                                             ? styles.checked
                                                                             : ""
-                                                                    }`}
+                                                                        }`}
                                                                 >
                                                                     <Field
                                                                         type="checkbox"

@@ -19,15 +19,24 @@ export default function KKEMAuth() {
         const controller = new AbortController();
         userAuthConfirm(token, controller).then(res => {
             setStatus("success");
+            console.log(res.response)
+            localStorage.setItem(
+                "accessToken",
+                res?.response?.accessToken
+            );
+            localStorage.setItem(
+                "refreshToken",
+                res?.response?.refreshToken
+            );
             toast({
                 title: "Integration successful.You will be redirected to learning circle page shortly",
-                status: "error",
+                status: "success",
                 duration: 3000,
                 isClosable: true,
             });
             setTimeout(() => {
                 navigate("/dashboard/learning-circle");
-            }, 300);
+            }, 2000);
         }).catch((err) => {
             console.log(err.hasError)
             if (err?.hasError) {

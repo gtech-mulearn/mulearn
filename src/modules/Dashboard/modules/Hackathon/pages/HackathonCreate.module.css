@@ -158,7 +158,7 @@
 }
 
 .error {
-    color: red;
+    color: red !important;
 }
 
 @media (width < 1080px) {
@@ -293,6 +293,8 @@ input[type=file]::file-selector-button:hover {
     padding: .5rem;
     border-radius: 8px;
     font-size: .7rem;
+    cursor: pointer;
+    z-index: 99;
 }
 
 .fileInfo {
@@ -309,6 +311,7 @@ input[type=file]::file-selector-button:hover {
         padding: .5rem;
         border-radius: 6px;
         font-size: .5rem;
+        cursor: pointer;
     }
 }
 
@@ -413,7 +416,7 @@ input[type=file]::file-selector-button:hover {
 
 .hackathonEventDate .title {
     font-size: .8rem;
-    color: #B7BEC2;
+    color: #c2bab7;
 }
 
 .hackathonEventDate h3 {
@@ -674,10 +677,10 @@ input[type=file]::file-selector-button:hover {
 }
 
 .hackathonBox .textWrapper4 {
-    color: var(--grey);
+    color: #888888;
     font-size: .45rem;
     padding: 0.2rem .5rem;
-    border: 1px solid #cfcfcf;
+    border: 1px solid #888888;
     border-radius: 0.4rem;
 }
 
@@ -779,4 +782,9 @@ input[type=file]::file-selector-button:hover {
     .hackathonHeading .HCbutton {
         font-size: .6rem;
     }
+}
+
+.previewBtn{
+    display: flex;
+    cursor: pointer;
 }

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Select from "react-select";
-import styles from "../../../../components/MuComponents/FormikComponents/FormComponents.module.css";
+import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { useNavigate } from 'react-router-dom';
-import {
-    getCountryData
-} from './apis/CountryAPI';
+import { getCountryData } from './apis/CountryAPI';
 import { MuButton } from '@/MuLearnComponents/MuButtons/MuButton';
 
 import { getStateData } from './apis/StateAPI';
@@ -23,21 +21,21 @@ type LocationItem = { value: string; label: string } | string;
 
 interface LocationPopupProps {
   isShowPopup: boolean;
-  handlePopup: (show: boolean) => void;
+  handlePopup: UseStateFunc<boolean>
   popupFields: {
-    countryShow: boolean;
-    stateShow: boolean;
-    zoneShow: boolean;
+    countryShow: boolean
+    stateShow: boolean
+    zoneShow: boolean
   };
-  activeItem: string;
-  handleData: (data: any) => void;
-  handleCountry: (country: LocationItem) => void;
-  handleState: (state: LocationItem) => void;
-  handleZone: (zone: LocationItem) => void;
-  handleDeclined: any;
+  activeItem: string
+  handleData: UseStateFunc<any>
+  handleCountry: UseStateFunc<string>
+  handleState: UseStateFunc<string>
+  handleZone: UseStateFunc<string>
+  handleDeclined: UseStateFunc<boolean>
 }
 
-const LocationPopup = ({
+const LocationPopup:FC<LocationPopupProps> = ({
     isShowPopup,
     handlePopup,
     popupFields,
@@ -47,7 +45,7 @@ const LocationPopup = ({
     handleState,
     handleZone,
     handleDeclined
-}:LocationPopupProps) => {
+}) => {
 
     const [countryData,setCountryData] = useState([])
     const [stateData,setStateData] = useState([])

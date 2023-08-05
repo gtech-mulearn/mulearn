@@ -9,7 +9,7 @@ import adminButtons from "../utils/userwiseButtonsData/adminButtons";
 // import userButtons from "../utils/userwiseButtonsData/userButtons";
 import { roles } from "@/MuLearnServices/types";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-import { UserInfo, fetchLocalStorage } from "@/MuLearnServices/common_functions";
+import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
 //TODO: Remove flaticons and use react-icons or vice-versa
 const DashboardRootLayout = (props: { component?: any }) => {
     const [connected, setConnected] = useState(false);

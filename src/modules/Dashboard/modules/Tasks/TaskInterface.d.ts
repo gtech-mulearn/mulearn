@@ -1,4 +1,4 @@
-export interface TaskEditInterface {
+interface TaskEditInterface {
     hashtag?: string;
     title?: string;
     karma?: string;
@@ -17,3 +17,10 @@ export interface TaskEditInterface {
     created_at?:Date
 }
 
+type uuidType = {
+    level: { id: string; name: string }[];
+    ig: { id: string; name: string }[];
+    organization: { id: string; title: string }[];
+    channel: { id: string; name: string }[];
+    type: { id: string; title: string }[];
+};

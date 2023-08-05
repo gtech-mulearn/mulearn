@@ -1,8 +1,128 @@
-import React from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./LandingPage.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {
+    fetchCampusOptions,
+    fetchCountryOptions,
+    fetchDistrictOptions,
+    fetchLC,
+    fetchStateOptions,
+    getInterestGroups
+} from "../services/LandingPageApi";
+import Select from "react-select";
 
+interface Option {
+    value: string;
+    label: string;
+}
 const LandingPage = () => {
+    const navigate = useNavigate();
+    const [data, setData] = useState<any>([]);
+    const [CountryOptions, setCountryOptions] = useState<Option[]>([]);
+    const [country, setCountry] = useState(
+        "f1840070-ec45-4b09-b582-763482137474"
+    );
+    const [stateOptions, setStateOptions] = useState<Option[]>([]);
+    const [state, setState] = useState("44c63af8-8747-43d1-8402-ba79215d4bed");
+    const [districtOptions, setDistrictOptions] = useState<Option[]>([]);
+    const [district, setDistrict] = useState("");
+    const [campusOptions, setCampusOptions] = useState<Option[]>([]);
+    const [campus, setCampus] = useState("");
+    const [igOptions, setIgOptions] = useState<Option[] | undefined>([]);
+    const [ig, setIg] = useState("");
+
+	const [selectedDistrict, setSelectedDistrict] = useState<Option | null>(
+        null
+    );
+    const [selectedCampus, setSelectedCampus] = useState<Option | null>(null);
+    const [selectedIg, setSelectedIg] = useState<Option | null>(null);
+
+    useEffect(() => {
+        fetchCountryOptions(setCountryOptions);
+        fetchStateOptions(country, setStateOptions);
+        fetchDistrictOptions(state, setDistrictOptions);
+        console.log(districtOptions);
+    }, []);
+
+    const handleCountryChange = async (selectedCountry: Option | null) => {
+        if (selectedCountry) {
+            setCountry(selectedCountry.value);
+            fetchStateOptions(selectedCountry.value, setStateOptions);
+            // Reset other options
+            setDistrictOptions([]);
+            setCampusOptions([]);
+            setIgOptions(undefined);
+			setData([]);
+        }
+    };
+
+    const handleStateChange = (state: Option | null) => {
+        if (state) {
+            setState(state.value);
+            fetchDistrictOptions(state.value, setDistrictOptions);
+            // Reset other options
+            setCampusOptions([]);
+            setIgOptions(undefined);
+			setData([]);
+        }
+    };
+
+    const handleDistrictChange = async (selectedDistrict: Option | null) => {
+        if (selectedDistrict) {
+            setDistrict(selectedDistrict.value);
+			setSelectedDistrict(selectedDistrict);
+            fetchCampusOptions(selectedDistrict.value, setCampusOptions);
+            // Reset other options
+            setIgOptions(undefined);
+			setData([]);
+			setSelectedCampus(null);
+            setSelectedIg(null);
+        }
+    };
+
+    const handleCampusChange = async (selectedCampus: Option | null) => {
+        if (selectedCampus) {
+			setSelectedCampus(selectedCampus);
+            setCampus(selectedCampus.value);
+            setIgOptions(await getInterestGroups());
+            setSelectedIg(null);
+			setData([]);
+        }
+    };
+
+    const handleIgChange = async (selectedIg: Option | null) => {
+        if (selectedIg) {
+            setIg(selectedIg.value);
+			setSelectedIg(selectedIg);
+            fetchLC(setData, ig, campus, district);
+            setTimeout(() => {
+                console.log(data);
+            }, 2000);
+        }
+    };
+
+    const customStyles: any = {
+        control: (provided: any) => ({
+            ...provided,
+            backgroundColor: "#F3F3F4",
+            border: "none",
+            borderRadius: "10px",
+            fontSize: "12px",
+            fontWeight: "bold",
+            color: "#000",
+            width: "100%",
+            padding: ".3rem .4rem"
+        }),
+        placeholder: (provided: any) => ({
+            ...provided,
+            color: "#000"
+        }),
+        indicatorSeparator: (provided: any) => ({
+            ...provided,
+            display: "none"
+        })
+    };
+
     return (
         <div className={styles.LClandingPage}>
             <nav className={styles.LClandingPageNav}>
@@ -15,7 +135,13 @@ const LandingPage = () => {
                         <Link to="#">Interest Group</Link>
                         <Link to="#">Careers</Link>
                     </div>
-                    <button>Join Us</button>
+                    <button
+                        onClick={() => {
+                            navigate("/dashboard/connect-discord");
+                        }}
+                    >
+                        Join Us
+                    </button>
                 </div>
             </nav>
 
@@ -35,7 +161,9 @@ const LandingPage = () => {
                     time learning about new things with a group of people with
                     same interests!
                 </p>
-                <button>Create/Join Learning Circles</button>
+                <button onClick={() => navigate("/dashboard/learning-circle")}>
+                    Create/Join Learning Circles
+                </button>
             </div>
 
             <div className={styles.LClandingPageEarth}>
@@ -72,89 +200,76 @@ const LandingPage = () => {
                 <div className={styles.exploreTitle}>
                     <b>Explore</b> <span>Learning Circles</span>
                 </div>
-
-                <div className={styles.selectOptions}>
-                    <select name="" id="" >
-                        <option value="">Kerala</option>
-                    </select>
-                    <select name="" id="">
-                        <option value="">Select District</option>
-                    </select>
-                    <select name="" id="">
-                        <option value="">Select Campus</option>
-                    </select>
-                    <select name="" id="">
-                        <option value="">Select Interest Groups</option>
-                    </select>
-                </div>
-
+                <form className={styles.LClandingPageForm}>
+                    <div className={styles.selectOptions}>
+                        <Select
+                            isSearchable
+                            defaultValue={{
+                                value: "f1840070-ec45-4b09-b582-763482137474",
+                                label: "India"
+                            }}
+                            placeholder="Select Country"
+                            options={CountryOptions}
+                            isDisabled={true}
+                            onChange={handleCountryChange}
+                            styles={customStyles}
+                        />
+                        <Select
+                            isSearchable
+                            defaultValue={{
+                                value: "44c63af8-8747-43d1-8402-ba79215d4bed",
+                                label: "Kerala"
+                            }}
+                            placeholder="Select State"
+                            options={stateOptions}
+                            isDisabled={true}
+                            onChange={handleStateChange}
+                            styles={customStyles}
+                        />
+                        <Select
+                            isSearchable
+                            placeholder="Select District"
+                            value={selectedDistrict}
+                            options={districtOptions}
+                            onChange={handleDistrictChange}
+                            styles={customStyles}
+                        />
+                        <Select
+                            isSearchable
+                            placeholder="Select Campus"
+                            value={selectedCampus}
+                            options={campusOptions}
+                            onChange={handleCampusChange}
+                            styles={customStyles}
+                        />
+                        <Select
+                            isSearchable
+                            value={selectedIg}
+                            placeholder="Select IG"
+                            options={igOptions}
+                            onChange={handleIgChange}
+                            styles={customStyles}
+                        />
+                    </div>
+                </form>
                 <div className={styles.container}>
-                    <div className={styles.exploreCards}>
-                        <img
-                            src="https://i.ibb.co/zJkPfqB/Iot-Vector.png"
-                            alt="png"
-                        />
-                        <h1>Internet of Things</h1>
-                        <span>
-                            <b>Creative Design</b> &nbsp;{" "}
-                            <b>Members count: 08</b>
-                        </span>
-                    </div>
-                    <div className={styles.exploreCards}>
-                        <img
-                            src="https://i.ibb.co/zJkPfqB/Iot-Vector.png"
-                            alt="png"
-                        />
-                        <h1>Internet of Things</h1>
-                        <span>
-                            <b>Creative Design</b> &nbsp;{" "}
-                            <b>Members count: 08</b>
-                        </span>
-                    </div>
-                    <div className={styles.exploreCards}>
-                        <img
-                            src="https://i.ibb.co/zJkPfqB/Iot-Vector.png"
-                            alt="png"
-                        />
-                        <h1>Internet of Things</h1>
-                        <span>
-                            <b>Creative Design</b> &nbsp;{" "}
-                            <b>Members count: 08</b>
-                        </span>
-                    </div>
-                    <div className={styles.exploreCards}>
-                        <img
-                            src="https://i.ibb.co/zJkPfqB/Iot-Vector.png"
-                            alt="png"
-                        />
-                        <h1>Internet of Things</h1>
-                        <span>
-                            <b>Creative Design</b> &nbsp;{" "}
-                            <b>Members count: 08</b>
-                        </span>
-                    </div>
-                    <div className={styles.exploreCards}>
-                        <img
-                            src="https://i.ibb.co/zJkPfqB/Iot-Vector.png"
-                            alt="png"
-                        />
-                        <h1>Internet of Things</h1>
-                        <span>
-                            <b>Creative Design</b> &nbsp;{" "}
-                            <b>Members count: 08</b>
-                        </span>
-                    </div>
-                    <div className={styles.exploreCards}>
-                        <img
-                            src="https://i.ibb.co/zJkPfqB/Iot-Vector.png"
-                            alt="png"
-                        />
-                        <h1>Internet of Things</h1>
-                        <span>
-                            <b>Creative Design</b> &nbsp;{" "}
-                            <b>Members count: 08</b>
-                        </span>
-                    </div>
+                    {data.length > 0 ? (
+                        data.map((lc: LcRandom) => (
+                            <div className={styles.exploreCards}>
+                                <img
+                                    src="https://i.ibb.co/zJkPfqB/Iot-Vector.png"
+                                    alt="png"
+                                />
+                                <h1>{lc.name}</h1>
+                                <span>
+                                    <b>{lc.ig_name}</b> &nbsp;{" "}
+                                    <b>Members count: {lc.member_count}</b>
+                                </span>
+                            </div>
+                        ))
+                    ) : (
+                        <div className={styles.container}></div>
+                    )}       
                 </div>
             </div>
         </div>

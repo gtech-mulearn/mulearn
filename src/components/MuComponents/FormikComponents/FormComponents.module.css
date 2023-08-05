@@ -75,7 +75,7 @@
 }
 
 .error {
-	color: var(--Error);
+	color: var(--Error) !important;
 }
 
 .btn_container {
@@ -212,3 +212,4 @@
 	z-index: 200;
 	transition: all 0.5s ease-in;
 }
+

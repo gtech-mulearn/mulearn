@@ -3,7 +3,6 @@ import styles from "./LearningCircle.module.css";
 import pic from "../../Profile/assets/images/dpm.webp";
 import { approveLcUser, getLcDetails, setLCMeetTime, updateLcNote } from "../services/LearningCircleAPIs";
 import { useNavigate, useParams } from "react-router-dom";
-import { LcDetail } from "../services/LearningCircleInterface";
 import {BiEditAlt} from "react-icons/bi"
 
 
@@ -80,30 +79,31 @@ const LearningCircle = (props: Props) => {
                 <div className={styles.BoxContent}>
                     <div className={styles.LeftBox}>
                         <div className={styles.EventOn}>
-                            { isEdit ? (
+                            {isEdit ? (
                                 <>
                                     <div className={styles.MeetingOn}>
                                         <div>
                                             <h2>Next Meeting on</h2>
                                             <div>{/* <b>{lc?.day}</b> */}</div>
                                         </div>
-                                        <BiEditAlt onClick={()=>{
-                                               
+                                        <BiEditAlt
+                                            onClick={() => {
                                                 setIsEdit(false);
-                                        }}/>
+                                            }}
+                                        />
                                     </div>
                                     <div className={styles.MeetingDate}>
                                         <h1>22 JUNE 2023</h1>
-                                        <p> Sunday</p>       
+                                        <p> Sunday</p>
                                     </div>
                                     <div className={styles.MeetingBtn}>
                                         <div>
-                                        <b>
-                                            venue: {lc?.meet_place} <br /> 
-                                        </b>
-                                        <b>time: {lc?.meet_time}</b>
+                                            <b>
+                                                venue: {lc?.meet_place} <br />
+                                            </b>
+                                            <b>time: {lc?.meet_time}</b>
                                         </div>
-                                        
+
                                         {/* <button className={styles.BtnBtn}>
                                             Done
                                         </button> */}
@@ -123,7 +123,7 @@ const LearningCircle = (props: Props) => {
                                             <input
                                                 type="time"
                                                 onChange={e => {
-                                                    setMeetTime((e.target.value));
+                                                    setMeetTime(e.target.value);
                                                 }}
                                                 placeholder="meeting time"
                                             />
@@ -250,7 +250,10 @@ const LearningCircle = (props: Props) => {
                                         {/* <input type="text" placeholder="meeting venue" /> */}
                                     </div>
 
-                                    <button className={styles.BtnBtn} onClick={handleSchedule}>
+                                    <button
+                                        className={styles.BtnBtn}
+                                        onClick={handleSchedule}
+                                    >
                                         Schedule
                                     </button>
                                 </>
@@ -262,17 +265,20 @@ const LearningCircle = (props: Props) => {
                                 <div className={styles.LcNotedEvent}>
                                     <div className={styles.LcNotedEdit}>
                                         <b>Notes</b>
-                                        <BiEditAlt style={{cursor:"pointer"}}  onClick={() => {
-										console.log(lc?.note) 
-										setFlag(false)
-										setTimeout(() => {
-                                            navigate(
-                                                `/dashboard/learning-circle/details/${id}`
-												);
-											}, 1000);}} />
+                                        <BiEditAlt
+                                            style={{ cursor: "pointer" }}
+                                            onClick={() => {
+                                                console.log(lc?.note);
+                                                setFlag(false);
+                                                setTimeout(() => {
+                                                    navigate(
+                                                        `/dashboard/learning-circle/details/${id}`
+                                                    );
+                                                }, 1000);
+                                            }}
+                                        />
                                     </div>
                                     <p>{lc?.note}</p>
-                                    
                                 </div>
                             ) : (
                                 <div className={styles.LcNotedEvent}>
@@ -285,21 +291,19 @@ const LearningCircle = (props: Props) => {
                                     <button
                                         className={styles.BtnBtn}
                                         onClick={() => {
-											updateLcNote(id, note);
-											setTimeout(() => {
-												setFlag(true)
-												navigate(
+                                            updateLcNote(id, note);
+                                            setTimeout(() => {
+                                                setFlag(true);
+                                                navigate(
                                                     `/dashboard/learning-circle/details/${id}`
                                                 );
-											}, 2000);
-										}}
+                                            }, 2000);
+                                        }}
                                     >
                                         Submit
                                     </button>
-                                      
                                 </div>
                             )}
-                           
                         </div>
 
                         {lc?.pending_members &&

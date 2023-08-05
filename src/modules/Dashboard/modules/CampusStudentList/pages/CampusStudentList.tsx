@@ -7,7 +7,10 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { titleCase } from "title-case";
 import { getCampusDetails, getStudentDetails } from "../services/apis";
+import { PieChart, BarChart} from "../Components/Graphs";
 import styles from "./CampusStudentList.module.css";
+import CLIcon from '../assets/images/CampusLeadIcon.svg';
+
 
 type Props = {};
 
@@ -23,6 +26,8 @@ const CampusStudentList = (props: Props) => {
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
 
+    const pieData = [['Level','UsersPerLevel'],['Level 1',10],['Level 2',20]]
+    const barData = [['','Karma'],['MON',15],['TUE',5],['WED',25],['THU',5],['FRI',55],['SAT',25],['SUN',5]]
     const columnOrder = [
         { column: "fullname", Label: "Name", isSortable: false },
         // { column: "email", Label: "Email", isSortable: false },
@@ -116,23 +121,19 @@ const CampusStudentList = (props: Props) => {
             <div className={styles.campus_student_list_container}>
                 <div className={styles.content}>
                     <div className={styles.sec1}>
-                        <p className={styles.campus_code}>
-                            Campus code : {campusData.campus_code}
-                        </p>
                         <h1 className={styles.clg_name}>
                             {campusData &&
                                 campusData.college_name &&
                                 titleCase(
                                     campusData?.college_name?.toLowerCase()
-                                )}
+                                )
+                            }
+                            ({campusData.campus_code})
                         </h1>
-                        <p className={styles.campus_lead}>
-                            Campus Lead : {campusData.campus_lead}
-                        </p>
 
                         <div className={styles.details_card}>
                             <div className={styles.card}>
-                                <p>Karma points</p>
+                                
                                 <h1>
                                     {parseInt(campusData.total_karma) > 1000
                                         ? (
@@ -141,32 +142,64 @@ const CampusStudentList = (props: Props) => {
                                           ).toPrecision(4) + "K"
                                         : campusData.total_karma}
                                 </h1>
+                                <p>Karma</p>
                             </div>
                             <div className={styles.card}>
-                                <p>Total Members</p>
+                                
                                 <h1>{campusData.total_members}</h1>
+                                <p>Total Members</p>
                             </div>
                             <div className={styles.card}>
-                                <p>Active Members</p>
+                                
                                 <h1>{campusData.active_members}</h1>
+                                <p>Active Members<span>(30 Days)</span></p>
+                                
+                            </div>
+                            <div className={styles.campus_lead_card}>
+                                <img src={CLIcon} alt="" />
+                                <h2>{campusData.campus_lead}</h2>
+                                <p>Campus Lead</p>
                             </div>
                         </div>
                     </div>
                     <div className={styles.sec2}>
-                        <div className={styles.clg_rank_div}>
-                            <p className={styles.clg_rank}>
-                                {campusData?.rank?.toString().length === 1
-                                    ? "0" + campusData.rank
-                                    : campusData.rank}
-                            </p>
-                            <p className={styles.clg_rank_overlay}>RANK</p>
-                        </div>
-                        <div className={styles.level_div}>
-                            <h2>Campus Zone</h2>
-                            <p>{campusData.campus_zone}</p>
-                        </div>
+                        
+                        <p className={styles.clg_rank}>
+                            {campusData?.rank?.toString().length === 1
+                                ? "0" + campusData.rank
+                                : campusData.rank}
+                        </p>
+                        <p className={styles.clg_rank_overlay}>RANK</p>
+                        
+                        
+                        <p className={styles.clg_zone}>{campusData.campus_zone} Zone</p>
+                        
                     </div>
                 </div>
+            </div>
+            <div className={styles.graphs}>
+                <div className={styles.container}>
+                    <h2>Weekly Karma Insights</h2>
+                    <BarChart 
+                        data={barData}
+                        addOptions = {{
+                            legend:{position:'none'},
+                            colors:['#91ABFF']
+                        }}
+                    />
+                </div>
+                <div className={styles.container}>
+                    <h2>Student Statistics</h2>
+                    <PieChart 
+                        data={pieData}
+                        addOptions={{
+                            // is3D:true,
+                            pieSliceText: 'value',
+                            colors:["#3B57B2","#456FF6","#A9BEFF","#6C8FFF","#A9BEFF"]
+                        }}
+                    />
+                </div>
+                
             </div>
             {studentData && (
                 <>

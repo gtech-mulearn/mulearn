@@ -1,4 +1,3 @@
-import React from "react";
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import axios from "axios";
 import { NavigateFunction } from "react-router-dom";
@@ -7,11 +6,12 @@ import {
     publicGateway
 } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
+import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
 
-type userProfile = React.Dispatch<React.SetStateAction<any>>;
-type userLog = React.Dispatch<React.SetStateAction<any>>;
-type APILoadStatus = React.Dispatch<React.SetStateAction<any>>;
-type userLevelData = React.Dispatch<React.SetStateAction<any>>;
+type userProfile = UseStateFunc<any>
+type userLog = UseStateFunc<any>
+type APILoadStatus = UseStateFunc<any>
+type userLevelData = UseStateFunc<any>
 
 export const getUserProfile = (
     setUserProfile: userProfile,
@@ -71,11 +71,11 @@ export const getPublicUserLog = (setUserLog: userLog, muid: string) => {
 };
 export const putIsPublic = (
     is_public: boolean,
-    toast: (options?: UseToastOptions | undefined) => ToastId
+    toast: ToastAsPara
 ) => {
     privateGateway
         .put(dashboardRoutes.putIsPublic, { is_public })
-        .then(response => {
+        .then((response:APIResponse<{}, string[]>) => {
             console.log(response.data.message.general[0]);
 
             toast({
@@ -120,10 +120,8 @@ export const getPublicUserLevels = (
 
 export const fetchQRCode = async (setBlob: any) => {
     try {
-        const storedUserInfo = localStorage.getItem("userInfo");
-        const muid = storedUserInfo
-            ? JSON.parse(storedUserInfo).muid
-            : undefined;
+        const muid = fetchLocalStorage<UserInfo>('userInfo')?.muid
+
         const url = `https://quickchart.io/qr?text=${
             import.meta.env.VITE_FRONTEND_URL
         }/dashboard/profile/${muid}&centerImageUrl=https://avatars.githubusercontent.com/u/98015594?s=88&v=4`;

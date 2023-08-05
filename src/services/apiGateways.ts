@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { authRoutes } from "./urls";
-import { createStandaloneToast, UseToastOptions } from "@chakra-ui/react";
+import { createStandaloneToast } from "@chakra-ui/react";
+import { fetchLocalStorage } from "./common_functions";
 
 const { toast } = createStandaloneToast();
 
@@ -57,7 +58,7 @@ privateGateway.interceptors.response.use(
                 const response = await publicGateway.post(
                     authRoutes.getAccessToken,
                     {
-                        refreshToken: localStorage.getItem("refreshToken")
+                        refreshToken: fetchLocalStorage<AllTokens["refreshToken"]>("refreshToken")
                     }
                 );
                 localStorage.setItem(
@@ -69,7 +70,7 @@ privateGateway.interceptors.response.use(
                 const {config} = error;
                 config.headers[
                     "Authorization"
-                ] = `Bearer ${localStorage.getItem("accessToken")}`;
+                ] = `Bearer ${fetchLocalStorage<AllTokens["accessToken"]>("accessToken")}`;
                 return await new Promise((resolve, reject) => {
                     privateGateway
                         .request(config)

@@ -9,14 +9,14 @@ export const onboardingRoutes = {
     communityList: "/api/v1/register/community/list/",
     register: "/api/v1/register/",
     emailVerification: "/api/v1/register/email-verification/"
-};
+} as const;
 
 export const authRoutes = {
     login: "/api/v1/auth/user-authentication/",
     getAccessToken: "/api/v1/auth/get-access-token/",
     otpVerification: "/api/v1/auth/otp-verification/",
     requestEmailOrMuidOtp: "/api/v1/auth/request-otp/"
-};
+} as const;
 
 export const dashboardRoutes = {
     forgetPassword: "/api/v1/dashboard/user/forgot-password/",
@@ -85,6 +85,7 @@ export const dashboardRoutes = {
     createLearningCircle: "/api/v1/dashboard/lc/create/",
     joinLearningCircle: "/api/v1/dashboard/lc/join/",
     setLCMeetTime: "/api/v1/dashboard/lc/meet/",
+	getCampusIg: "api/v1/dashboard/ig/list/",
 
     getAllOrganisations: "/api/v1/hackathon/list-organisations/",
     getAllDistricts: "/api/v1/hackathon/list-districts/"
@@ -92,7 +93,9 @@ export const dashboardRoutes = {
 
 export const organizationRoutes = {
     getOrganizationsAll: "/api/v1/organisation/institutes/info/all_inst",
-    getCompany: "/api/v1/organisation/institutes/show/Company",
+    getCompany: "/api/v1/organisation/institutes/show/Company/",
+    getCollege:"/api/v1/organisation/institutes/show/College/",
+    getCommunity:"/api/v1/organisation/institutes/show/Community/",
     getAffiliation: "/api/v1/organisation/institutes/org/affiliation/",
     getLocation: "/api/v1/location",
     postAddOrganization: "/api/v1/organisation/institutes/add/",
@@ -100,7 +103,7 @@ export const organizationRoutes = {
     deleteOrgnaization: "/api/v1/organisation/institutes/",
     postGetInfo: "/api/v1/organisation/institutes/info/",
     getOrgCsv: "/api/v1/organisation/institutes/csv"
-};
+} as const;
 
 export const ManageLocationsRoutes = {
     getCountryData: "/api/v1/location/country/",
@@ -113,8 +116,8 @@ export const KKEMRoutes = {
     userAuth: "/api/v1/integrations/kkem/authorization/",
     userLogin: "/api/v1/integrations/kkem/login/",
     getDWMSDetails: "/api/v1/integrations/kkem/user/${jsid}/"
-};
+}as const;
 
 export const PublicRoutes = {
     getRandomLc: "/api/v1/dashboard/lc/list/",
-};
+} as const;

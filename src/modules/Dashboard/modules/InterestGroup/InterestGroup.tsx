@@ -1,11 +1,9 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { createInterestGroups, deleteInterestGroups, getIGDetails, getInterestGroups } from "./apis";
-import { roles } from "@/MuLearnServices/types";
-import { hasRole } from "@/MuLearnServices/common_functions";
 import { useNavigate } from "react-router-dom";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
@@ -13,6 +11,7 @@ import styles from "./InterestGroup.module.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
 import InterestGroupEditModal from "./InterestGroupEditModal";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 interface IgDetails {
     igName: string,
@@ -26,6 +25,7 @@ function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+    const [isLoading, setIsLoading] = useState(false);
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
@@ -51,9 +51,10 @@ function InterestGroup() {
             setData,
             nextPage,
             perPage,
+            setIsLoading,
             setTotalPages,
             "",
-            sort
+            sort,
         );
     };
 
@@ -64,28 +65,29 @@ function InterestGroup() {
             setData,
             prevPage,
             perPage,
+            setIsLoading,
             setTotalPages,
             "",
-            sort
+            sort,
         );
     };
 
     useEffect(() => {
         if (firstFetch.current) {
-            getInterestGroups(setData, 1, perPage, setTotalPages, "", "");
+            getInterestGroups(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
         }
         firstFetch.current = false;
     }, []);
 
     useEffect(() => {
         if (openModal === null) {
-            getInterestGroups(setData, 1, perPage, setTotalPages, "", "");
+            getInterestGroups(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
         }
     }, [openModal])
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getInterestGroups(setData, 1, perPage, setTotalPages, search, "");
+        getInterestGroups(setData, 1, perPage, setIsLoading, setTotalPages, search, "");
     };
 
 
@@ -96,14 +98,14 @@ function InterestGroup() {
     const handleDelete = (id: string | undefined) => {
         deleteInterestGroups(id, toast);
         setTimeout(() => {
-            getInterestGroups(setData, 1, perPage, setTotalPages, "", "");
+            getInterestGroups(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
         }, 1000);
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getInterestGroups(setData, 1, selectedValue, setTotalPages, "", "");
+        getInterestGroups(setData, 1, selectedValue, setIsLoading, setTotalPages, "", "");
     };
 
     const handleIconClick = (column: string) => {
@@ -113,24 +115,21 @@ function InterestGroup() {
                 setData,
                 1,
                 perPage,
+                setIsLoading,
                 setTotalPages,
                 "",
                 `-${column}`
             );
         } else {
             setSort(column);
-            getInterestGroups(setData, 1, perPage, setTotalPages, "", column);
+            getInterestGroups(setData, 1, perPage, setIsLoading, setTotalPages, "", column);
         }
     };
 
+    console.log(isLoading)
+
     return (
         <>
-            {/* <InterestGroupEditModal
-                isOpen={openModal}
-                onClose={setOpenModal}
-                id={currID}
-                defaultValue={input}
-            /> */}
             <div className={styles.createBtnContainer}>
                 <MuButton
                     className={styles.createBtn}
@@ -151,6 +150,7 @@ function InterestGroup() {
                     />
                     <Table
                         rows={data}
+                        isloading={isLoading}
                         page={currentPage}
                         perPage={perPage}
                         columnOrder={columnOrder}
@@ -167,7 +167,7 @@ function InterestGroup() {
                             action={true}
                         />
                         <div className={styles.tableFooter}>
-                            <Pagination
+                            {!isLoading && <Pagination
                                 currentPage={currentPage}
                                 totalPages={totalPages}
                                 margin="10px 0"
@@ -175,7 +175,7 @@ function InterestGroup() {
                                 handlePreviousClick={handlePreviousClick}
                                 onSearchText={handleSearch}
                                 onPerPageNumber={handlePerPageNumber}
-                            />
+                            />}
                         </div>
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>
