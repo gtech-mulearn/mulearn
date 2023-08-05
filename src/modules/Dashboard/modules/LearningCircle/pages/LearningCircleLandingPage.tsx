@@ -72,7 +72,7 @@ export const LearningCircleLandingPage = () => {
                                                 className={styles.learningCircleLandingPageLevel}>
                                                 <div>
                                                     <p className={styles.learningCircleLandingPagePara}>
-                                                        {`${pos}.`}</p>
+                                                        {`${pos + 1}.`}</p>
                                                     <p className={styles.learningCircleLandingPagePara}>
                                                         {circle.name}
                                                     </p>
