@@ -113,10 +113,10 @@ const HackathonCreate = () => {
         type: Yup.string().min(2, "Too Short!"),
         isOpenToAll: Yup.boolean(),
         description: Yup.string().min(5, "Too Short!"),
-        // eventStart: Yup.date(),
-        // eventEnd: Yup.date(),
-        // applicationStart: Yup.date(),
-        // applicationEnds: Yup.date(),
+            // eventStart: Yup.date(),
+            // eventEnd: Yup.date(),
+            // applicationStart: Yup.date(),
+            // applicationEnds: Yup.date(),
         participantCount: Yup.number()
             .positive("Number of users should be a positive value")
             .min(10, "Needs to be at least 2 digits.")
@@ -202,14 +202,16 @@ const HackathonCreate = () => {
             }
         });
 
-        let a = values.applicationStart
+        let a = values.applicationStart !== "undefined" && values.applicationStart !== "" && values.applicationStart !== "null" && values.applicationStart !== null
             ? `${values.applicationStart}T00:00:00Z`
             : "";
-        let b = values.applicationEnds
+        let b = values.applicationEnds !== "undefined" && values.applicationEnds !== "" && values.applicationEnds !== "null" && values.applicationEnds !== null
             ? `${values.applicationEnds}T00:00:00Z`
             : "";
-        let c = values.eventStart ? `${values.eventStart}T00:00:00Z` : "";
-        let d = values.eventEnd ? `${values.eventEnd}T00:00:00Z` : "";
+        let c = values.eventStart !== "undefined" && values.eventStart !== "" && values.eventStart !== "null" && values.eventStart !== null
+            ? `${values.eventStart}T00:00:00Z` : "";
+        let d = values.eventEnd !== "undefined" && values.eventEnd !== "" && values.eventEnd !== "null" && values.eventEnd !== null
+            ? `${values.eventEnd}T00:00:00Z` : "";
 
         console.log(selectedFields);
 
@@ -315,19 +317,19 @@ const HackathonCreate = () => {
                                     eventStart:
                                         convertDateToYYYYMMDD(
                                             String(data?.event_start)
-                                        ) || "",
+                                        ) || null,
                                     eventEnd:
                                         convertDateToYYYYMMDD(
                                             String(data?.event_end)
-                                        ) || "",
+                                        ) || null,
                                     applicationStart:
                                         convertDateToYYYYMMDD(
                                             String(data?.application_start)
-                                        ) || "",
+                                        ) || null,
                                     applicationEnds:
                                         convertDateToYYYYMMDD(
                                             String(data?.application_ends)
-                                        ) || "",
+                                        ) || null,
                                     orgId: data?.organisation || "",
                                     place: data?.place || "",
                                     districtId:
