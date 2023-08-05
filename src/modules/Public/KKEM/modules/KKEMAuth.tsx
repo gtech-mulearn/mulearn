@@ -21,7 +21,7 @@ export default function KKEMAuth() {
             setStatus("success");
             toast({
                 title: "Integration successful.You will be redirected to learning circle page shortly",
-                status: "error",
+                status: "success",
                 duration: 3000,
                 isClosable: true,
             });

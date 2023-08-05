@@ -54,7 +54,7 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
     const [disabled, setDisabled] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [integration,setIntegration] = useState('');
+    const [integration, setIntegration] = useState('');
     const toast = useToast();
     const navigate = useNavigate();
     let ruri = window.location.href.split("=")[1];
@@ -197,8 +197,9 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
                                 </button>
                             </div>
                             <div className={styles.loginHelp}>
-                                <p className={styles.loginHelpers}>Forgot <span className={styles.loginHelperBold}>password?</span></p>
-
+                                <p className={styles.loginHelpers} onClick={()=>{
+                                    navigate('/forgot-password')
+                                }}>Forgot <span className={styles.loginHelperBold}>password?</span></p>
                             </div>
                         </>
                     </form>
@@ -212,7 +213,9 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
                 </div>
                 <div className={styles.flowContainer}>
                     <div className={styles.modalFooter}>
-                        <button className={styles.modalButton}>
+                        <button type="button" className={styles.modalButton} onClick={() => {
+                            navigate('/register')
+                        }}>
                             Get Mu-Id
                         </button>
                     </div>
