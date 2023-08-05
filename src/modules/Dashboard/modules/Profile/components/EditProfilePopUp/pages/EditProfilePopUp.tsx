@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./EditProfilePopUp.module.css";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { getCommunities, getEditUserProfile } from "../services/api";
+import {
+    getCommunities,
+    getEditUserProfile,
+    patchEditUserProfile
+} from "../services/api";
 import { useFormik } from "formik";
 import Select from "react-select";
 // import makeAnimated from "react-select/animated";
@@ -15,54 +19,56 @@ const EditProfilePopUp = (props: Props) => {
     // const animatedComponents = makeAnimated();
     const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }]);
     const [loadStatus, setLoadStatus] = useState(false);
+
     const formik = useFormik({
         initialValues: {
-            firstName: "",
-            lastName: "",
+            first_name: "",
+            last_name: "",
             email: "",
-            phone: void 0,
+            mobile: "",
             gender: "",
             dob: "",
             community: []
         },
         onSubmit: values => {
             console.log(values);
-            // saveUser(values);
+            patchEditUserProfile(values);
         },
         validate: (values: any) => {
             let errors: any = {};
-            if (!values.firstName) {
-                errors.firstName = "Required";
+            if (!values.first_name) {
+                errors.first_name = "Required";
             }
-            if (!values.lastName) {
-                errors.lastName = "Required";
+            if (!values.last_name) {
+                errors.last_name = "Required";
             }
             if (!values.email) {
                 errors.email = "Required";
             }
-            if (!values.phone) {
-                errors.phone = "Required";
+            if (!values.mobile) {
+                errors.mobile = "Required";
             }
 
             return errors;
         }
     });
+
     useEffect(() => {
         getCommunities(setCommunityAPI, setLoadStatus);
         getEditUserProfile((data: any) => {
             // console.log(data);
-
             formik.setValues({
-                firstName: data.firstName,
-                lastName: data.lastName,
+                first_name: data.first_name,
+                last_name: data.last_name,
                 email: data.email,
-                phone: data.phone,
+                mobile: data.mobile,
                 gender: data.gender,
                 dob: data.dob,
                 community: data.community
             });
         });
     }, []);
+
     const communityIds: string[] = formik.values.community;
     const filteredCommunityOptions = communityAPI
         .filter(value => communityIds.includes(value.id))
@@ -70,6 +76,7 @@ const EditProfilePopUp = (props: Props) => {
             value: value.id,
             label: value.title
         }));
+
     return (
         <div
             className={styles.edit_profile_container}
@@ -91,9 +98,9 @@ const EditProfilePopUp = (props: Props) => {
                             <label htmlFor="">First Name</label>
                             <input
                                 type="text"
-                                name="firstName"
+                                name="first_name"
                                 onChange={formik.handleChange}
-                                value={formik.values.firstName}
+                                value={formik.values.first_name}
                                 onBlur={formik.handleBlur}
                                 placeholder="First Name"
                             />
@@ -102,9 +109,9 @@ const EditProfilePopUp = (props: Props) => {
                             <label htmlFor="">Last Name</label>
                             <input
                                 type="text"
-                                name="lastName"
+                                name="last_name"
                                 onChange={formik.handleChange}
-                                value={formik.values.lastName}
+                                value={formik.values.last_name}
                                 onBlur={formik.handleBlur}
                                 placeholder="Last Name"
                             />
@@ -124,9 +131,9 @@ const EditProfilePopUp = (props: Props) => {
                             <label htmlFor="">Mobile</label>
                             <input
                                 type="text"
-                                name="phone"
+                                name="mobile"
                                 onChange={formik.handleChange}
-                                value={formik.values.phone}
+                                value={formik.values.mobile}
                                 onBlur={formik.handleBlur}
                                 placeholder="Mobile"
                             />
@@ -184,31 +191,32 @@ const EditProfilePopUp = (props: Props) => {
                                 placeholder="DOB"
                             />
                         </div>
+
+                        <MuButton
+                            type="submit"
+                            style={{
+                                background: "#456FF6",
+                                color: "#fff",
+                                margin: "0px 0px -8px 0px",
+                                display: "flex",
+                                justifyContent: "center",
+                                padding: "16px"
+                            }}
+                            text={"Update Profile"}
+                            onClick={() => {
+                                // function()
+                            }}
+                        />
+                        <button
+                            type="button"
+                            className={styles.edit_profile_close}
+                            onClick={() => {
+                                props.setEditPopUP(false);
+                            }}
+                        >
+                            Close
+                        </button>
                     </form>
-
-                    <MuButton
-                        style={{
-                            background: "#456FF6",
-                            color: "#fff",
-                            margin: "0px 0px -8px 0px",
-                            display: "flex",
-                            justifyContent: "center",
-                            padding: "16px"
-                        }}
-                        text={"Update Profile"}
-                        onClick={() => {
-                            // function()
-                        }}
-                    />
-                    <button
-                        className={styles.edit_profile_close}
-                        onClick={() => {
-                            props.setEditPopUP(false);
-                        }}
-                    >
-                        Close
-                    </button>
-
                     <div className={styles.edit_profile_body}></div>
                 </div>
             </div>

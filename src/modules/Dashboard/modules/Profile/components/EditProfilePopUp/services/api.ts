@@ -4,13 +4,13 @@ import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 
 type profileDetails = {
-    firstName: string;
-    lastName: string;
+    first_name: string;
+    last_name: string;
     email: string;
-    phone: string;
+    mobile: string;
     gender: string;
     dob: string;
-    community: [];
+    community: any;
 };
 type getAPI = React.Dispatch<
     React.SetStateAction<
@@ -39,15 +39,26 @@ export const getEditUserProfile = (
                 community
             } = response.data.response;
             const profileDetails: profileDetails = {
-                firstName: first_name,
-                lastName: last_name,
+                first_name: first_name,
+                last_name: last_name,
                 email,
-                phone: mobile,
+                mobile: mobile,
                 gender,
                 dob,
                 community
             };
             setProfileDetails(profileDetails);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
+
+export const patchEditUserProfile = (editedProfileDetails: profileDetails) => {
+    privateGateway
+        .patch(dashboardRoutes.getEditUserProfile, editedProfileDetails)
+        .then(response => {
+            console.log(response.data.response);
         })
         .catch(error => {
             console.log(error);
