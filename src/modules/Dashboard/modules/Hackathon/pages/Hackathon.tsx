@@ -57,6 +57,7 @@ const Hackathon = () => {
         }
     };
 
+  
     return (
         <div className={styles.HCHackathon}>
             <div className={styles.hackathonHeading}>
