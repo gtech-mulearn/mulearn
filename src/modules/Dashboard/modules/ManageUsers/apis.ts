@@ -85,27 +85,25 @@ export const editManageUsers = async (
     last_name?: string ,
     email?: string ,
     mobile?: string ,
-    role?: string ,
-    orgaanizations?: OrgData[],
-    // toast: any,
-
-    college?: string,
-    company?: string,
+    organizations?: string[],
     department?: string,
-    graduation_year?: string
+    graduation_year?: string,
+    role?:string[],
+    interest_groups?:string[]
 ) => {
     try {
         const response = await privateGateway.patch(
-            dashboardRoutes.getUsersData + id + "/",
+            dashboardRoutes.getUsersEditData + id + "/",
             {
                 first_name: first_name,
                 last_name: last_name,
                 email: email,
                 mobile: mobile,
-                college: college,
-                company: company,
+                organizations:organizations,
                 department: department,
-                graduation_year: graduation_year
+                graduation_year: graduation_year,
+                role:role,
+                interest_groups:interest_groups
             }
         );
         //console.log(first_name, last_name, email);

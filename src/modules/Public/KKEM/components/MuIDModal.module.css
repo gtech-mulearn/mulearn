@@ -15,6 +15,8 @@
 .modal {
     width: 100%;
     max-width: 800px;
+    max-height: 480px;
+    height: 78%;
     /* position: absolute; */
     top: 50%;
     left: 50%;
@@ -22,6 +24,14 @@
     background-color: #fff;
     border-radius: 10px;
 }
+
+@media screen and (max-width: 600px) {
+    .modal {
+        height:81%;
+           width: 95%;
+    }
+}
+
 .modalHeader {
     color: #fff;
     font-size: 2rem;
@@ -39,7 +49,16 @@
     background-position: 50% 550%;
     padding: 3rem;
     padding-bottom: 8rem;
+    height: 71%;
 }
+
+@media screen and (max-width: 600px) {
+    .modalContent {
+        height:87%;
+        padding: 2rem;
+    }
+}
+
 .modalClose {
     position: absolute;
     top: 1rem;
@@ -81,6 +100,16 @@
     color: #fff;
     white-space: nowrap;
 }
+
+
+@media screen and (min-width: 768px) {
+    .modalButton {
+        margin-top: -10px;
+        margin-right: -10px;
+    }
+}
+
+
 .modalButton:hover {
     background: #2e85feee;
 }

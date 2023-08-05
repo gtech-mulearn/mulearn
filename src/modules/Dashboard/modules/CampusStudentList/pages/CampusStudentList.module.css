@@ -6,9 +6,12 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
-    background: #f3f8ff;
+    background: white;
     border: 1px solid #dde2e5;
     border-radius: 20px;
+
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2); 
+    /* box shadow is temporary change when bg is changed from white to new design */
 }
 
 .campus_student_list_container .content {
@@ -32,9 +35,9 @@
     font-weight: 600;
 }
 
-.campus_student_list_container .content .sec1 .clg_name {
+/* .campus_student_list_container .content .sec1 .clg_name {
     max-width: 65%;
-}
+} */
 
 .campus_student_list_container .content .sec1 h1 {
     font-size: xx-large;
@@ -47,66 +50,95 @@
 }
 
 .campus_student_list_container .content .sec1 .details_card {
-    margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    gap: 50px;
+    align-items: end;
 }
 
 .campus_student_list_container .content .sec1 .details_card .card {
-    width: 200px;
-    background: rgba(1, 75, 178, 0.15);
+    width: 230px;
     border-radius: 10px;
     padding: 3px 30px;
     text-align: center;
     font-weight: 900;
 }
 
-.campus_student_list_container .content .sec1 .details_card .card:nth-child(1) {
+/* .campus_student_list_container .content .sec1 .details_card .card:nth-child(1) {
     color: white;
     background: #456FF6;
+} */
+.campus_student_list_container .card p{
+    font-weight: 500;
+}
+
+.campus_student_list_container .card h1{
+    font-size: 40px !important; 
+    color: black;
+}
+.campus_student_list_container .card span{
+    font-size: 10px; 
+    color: grey;
+}
+
+.campus_student_list_container .campus_lead_card{
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+    align-items: center;
+    color: black;
+}
+
+.campus_student_list_container .campus_lead_card h2{
+    font-size: 20px;
+}
+
+.campus_student_list_container .campus_lead_card img{
+    width: 40px;
 }
 
 .campus_student_list_container .content .sec2 {
-    text-align: right;
-}
-
-.campus_student_list_container .content .sec2 .clg_rank_div {
-    position: relative;
-    display: flex;
-    align-items: center;
+    background-color:#EEF2FF ;
+    border-radius: 12px;
     justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    width: 200px;
 }
 
-.campus_student_list_container .content .sec2 .clg_rank_div .clg_rank {
-    font-size: 140px;
-    line-height: 180px;
-    color: rgba(1, 75, 178, 0.2);
+
+.campus_student_list_container .content .sec2  .clg_rank {
+    font-size: 100px;
+    color: var(--Primary);
     font-weight: 600;
+    line-height: 70px;
 }
 
-.campus_student_list_container .content .sec2 .clg_rank_div .clg_rank_overlay {
-    position: absolute;
+.campus_student_list_container .content .sec2  .clg_rank_overlay {
     width: 170px;
-    color: white;
-    background-color: #456FF6;
+    color: black;
+    font-weight: 600;
+    font-size: 40px;
     /* text-align: center; */
-    letter-spacing: 30px;
 }
 
-.campus_student_list_container .content .sec2 .level_div h2 {
+.campus_student_list_container .sec2 .clg_zone{
+    color: grey;
+    line-height: 10px;
+}
+
+.campus_student_list_container .content .sec2  h2 {
     font-size: xx-large;
     font-weight: 600;
 }
 
-.campus_student_list_container .content .sec2 .level_div p {
-    font-weight: 400;
-}
+
 
 /* responsive page */
 
-@media (max-width: 1420px) {
+/* @media (max-width: 1420px) {
     .campus_student_list_container .content .sec1 .clg_name {
         max-width: 75%;
     }
@@ -116,7 +148,7 @@
     .campus_student_list_container .content .sec1 .clg_name {
         max-width: 85%;
     }
-}
+} */
 
 @media (max-width: 1350px) {
     .campus_student_list_container .content .sec1 .details_card {
@@ -139,9 +171,9 @@
         font-weight: 800;
     }
 
-    .campus_student_list_container .content .sec1 .details_card .card h1 {
+    /* .campus_student_list_container .content .sec1 .details_card .card h1 {
         font-size: 25px;
-    }
+    } */
 }
 
 @media (max-width: 1035px) {
@@ -186,7 +218,7 @@
 
 .graphs {
     width: 100%;
-    padding: 1% 3%;
+    padding: 15px;
 
     display: flex;
     gap: 15px;
@@ -196,8 +228,8 @@
 
 .graphs .container{
     background-color: var(--White);
-    width: min(580px,80vw);
-    height: 300px;
+    width: min(580px,85vw);
+    height: 350px;
     padding: 20px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2); 
     /* box shadow is temporary change when bg is changed from white to new design */
