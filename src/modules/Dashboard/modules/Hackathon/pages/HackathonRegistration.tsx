@@ -12,11 +12,6 @@ import {
 } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useNavigate, useParams } from "react-router-dom";
 import { getApplicationForm, getHackDetails, submitHackApplication } from "../services/HackathonApis";
-import {
-    HackList,
-    HackathonApplication,
-	hackApiData
-} from "../services/HackathonInterfaces";
 import { capitalizeFirstLetter } from "../../../utils/common";
 import { HackApplicationSchema } from "../services/HackathonYup";
 
@@ -37,7 +32,9 @@ const HackathonRegistration = (props: Props) => {
     const handleSubmit = (values: any) => {
         submitHackApplication(
 			values,
-			id
+			id,
+            navigate,
+            toast,
 		)
     };
 

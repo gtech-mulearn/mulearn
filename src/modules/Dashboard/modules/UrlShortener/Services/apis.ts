@@ -1,22 +1,18 @@
-import React, { Dispatch, SetStateAction } from "react";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { ToastId, UseToastOptions } from "@chakra-ui/react";
 
-type shortUrlData = React.Dispatch<React.SetStateAction<any>>;
-type campusData = React.Dispatch<React.SetStateAction<any>>;
-type hasValidationError = Dispatch<
-    SetStateAction<{
-        error: boolean;
-        message: string;
-    }>
->;
+type shortUrlData = UseStateFunc<any>
+type campusData = UseStateFunc<any>
+type hasValidationError = UseStateFunc<{
+    error: boolean;
+    message: string;
+}>
 
 export const getShortenUrls = (
     setShortUrlData: shortUrlData,
     page: number,
     selectedValue: number,
-    setTotalPages?: any,
+    setTotalPages?: UseStateFunc<number>,
     search?: string,
     sortID?: string
 ) => {
@@ -29,7 +25,7 @@ export const getShortenUrls = (
                 sortBy: sortID
             }
         })
-        .then(response => {
+        .then((response: APIResponse<{data:any[], pagination:{totalPages:number} }>) => {
             const updatedShortUrlData = response.data.response.data.map(
                 (item: any) => ({
                     ...item,
@@ -39,7 +35,7 @@ export const getShortenUrls = (
                 })
             );
             setShortUrlData(updatedShortUrlData);
-            setTotalPages(response.data.response.pagination.totalPages);
+            if (setTotalPages) setTotalPages(response.data.response.pagination.totalPages);
         })
         .catch(error => {
             console.log(error);
@@ -47,7 +43,7 @@ export const getShortenUrls = (
 };
 
 export const createShortenUrl = (
-    toast: (options?: UseToastOptions | undefined) => ToastId,
+    toast: ToastAsPara,
     urlData: any,
     formik: any,
     setHasValidationError: hasValidationError
@@ -64,7 +60,7 @@ export const createShortenUrl = (
                 isClosable: true
             });
         })
-        .catch(error => {
+        .catch((error: APIError<{ general:string[]}>) => {
             if (error?.response?.data?.message?.general[0]) {
                 toast({
                     title: error.response.data.message.general[0],
@@ -109,7 +105,7 @@ export const createShortenUrl = (
 
 export const editShortenUrl = (
     id: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
+    toast: ToastAsPara,
     urlEditedData: any
 ) => {
     privateGateway
@@ -141,7 +137,7 @@ export const editShortenUrl = (
 
 export const deleteShortenUrl = (
     id: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId
+    toast: ToastAsPara
 ) => {
     privateGateway
         .delete(dashboardRoutes.deleteShortenUrl.replace("${urlId}", id))

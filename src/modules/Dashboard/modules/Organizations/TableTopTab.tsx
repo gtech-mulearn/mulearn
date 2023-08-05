@@ -27,7 +27,7 @@ const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
     return (
         <div className="table_tab_container">
             <div className="table_tabs">
-                {tabletopTab?.map((item: string): any => (
+                {tabletopTab.map((item: string): any => (
                     <MuButton
                         key={item}
                         text={item}

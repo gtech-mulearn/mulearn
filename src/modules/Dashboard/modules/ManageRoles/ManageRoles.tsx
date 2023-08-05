@@ -45,7 +45,7 @@ function ManageRoles() {
             nextPage,
             perPage,
             setIsLoading,
-            "",
+            () => {},
             sort
         );
     };
@@ -58,7 +58,7 @@ function ManageRoles() {
             prevPage,
             perPage,
             setIsLoading,
-            "",
+            () => {},
             sort
         );
     };

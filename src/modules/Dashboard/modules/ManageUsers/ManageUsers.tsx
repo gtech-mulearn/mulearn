@@ -7,6 +7,7 @@ import { useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { deleteManageUsers, getManageUsers } from "./apis";
+import { boolean } from "yup";
 
 function ManageRoles() {
     const [data, setData] = useState<any[]>([]);
@@ -18,7 +19,9 @@ function ManageRoles() {
     const navigate = useNavigate();
     const firstFetch = useRef(true);
 
-    const columnOrder = [
+    type ColOrderType = { isSortable : boolean, column : string, Label : string, }
+    
+    const columnOrder : ColOrderType[] = [
         { column: "first_name", Label: "First Name", isSortable: true },
         { column: "last_name", Label: "Last Name", isSortable: false },
         { column: "total_karma", Label: "Total Karma", isSortable: true },
@@ -44,7 +47,7 @@ function ManageRoles() {
             nextPage,
             perPage,
             setIsLoading,
-            "",
+            () => {},
             sort
         );
     };
@@ -57,7 +60,7 @@ function ManageRoles() {
             prevPage,
             perPage,
             setIsLoading,
-            "",
+            () => {},
             sort
         );
     };

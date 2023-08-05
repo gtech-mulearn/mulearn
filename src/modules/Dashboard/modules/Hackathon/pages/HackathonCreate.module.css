@@ -293,6 +293,8 @@ input[type=file]::file-selector-button:hover {
     padding: .5rem;
     border-radius: 8px;
     font-size: .7rem;
+    cursor: pointer;
+    z-index: 99;
 }
 
 .fileInfo {
@@ -309,6 +311,7 @@ input[type=file]::file-selector-button:hover {
         padding: .5rem;
         border-radius: 6px;
         font-size: .5rem;
+        cursor: pointer;
     }
 }
 
@@ -779,4 +782,9 @@ input[type=file]::file-selector-button:hover {
     .hackathonHeading .HCbutton {
         font-size: .6rem;
     }
+}
+
+.previewBtn{
+    display: flex;
+    cursor: pointer;
 }

@@ -7,7 +7,9 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { titleCase } from "title-case";
 import { getCampusDetails, getStudentDetails } from "../services/apis";
+import { PieChart, BarChart} from "../Components/Graphs";
 import styles from "./CampusStudentList.module.css";
+
 
 type Props = {};
 
@@ -23,6 +25,8 @@ const CampusStudentList = (props: Props) => {
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
 
+    const pieData = [['Level','UsersPerLevel'],['Level 1',10],['Level 2',20]]
+    const barData = [['','Karma'],['MON',15],['TUE',5],['WED',25],['THU',5],['FRI',55],['SAT',25],['SUN',5]]
     const columnOrder = [
         { column: "fullname", Label: "Name", isSortable: false },
         // { column: "email", Label: "Email", isSortable: false },
@@ -167,6 +171,30 @@ const CampusStudentList = (props: Props) => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className={styles.graphs}>
+                <div className={styles.container}>
+                    <h2>Student Statistics</h2>
+                    <BarChart 
+                        data={barData}
+                        addOptions = {{
+                            legend:{position:'none'},
+                            colors:['#91ABFF']
+                        }}
+                    />
+                </div>
+                <div className={styles.container}>
+                    <h2>Weekly Karma Insights</h2>
+                    <PieChart 
+                        data={pieData}
+                        addOptions={{
+                            // is3D:true,
+                            pieSliceText: 'value',
+                            colors:["#3B57B2","#456FF6","#A9BEFF","#6C8FFF","#A9BEFF"]
+                        }}
+                    />
+                </div>
+                
             </div>
             {studentData && (
                 <>

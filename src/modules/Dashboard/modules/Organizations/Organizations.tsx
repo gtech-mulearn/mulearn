@@ -16,12 +16,15 @@ import TableTopTab from "./TableTopTab";
 import { organizationRoutes } from "@/MuLearnServices/urls";
 
 function Organizations() {
+    const ccc = ['Colleges', "Companies", "Communities"] as const
+    type CCC = typeof ccc[number]
+
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(5);
     const [columns, setColumns] = useState(columnsCollege);
-    const [activeTab, setActiveTab] = useState("Colleges");
+    const [activeTab, setActiveTab] = useState<CCC>("Colleges");
     const [sort, setSort] = useState("");
     const [popupStatus, setPopupStatus] = useState(false);
     const [activeTabName, setActiveTabName] = useState("college");
@@ -109,20 +112,21 @@ function Organizations() {
         );
     };
 
-    const handleTabClick = (tab: string) => {
-        if (tab === "Colleges") {
-            setActiveTabName("college");
-            setColumns(columnsCollege);
+    const handleTabClick = (tab: CCC) => {
+
+        if (ccc.some(c => c === tab)){
+
+            switch (tab) {
+                case 'Colleges' : setActiveTabName('college')
+                                  setColumns(columnsCollege); break;
+                case 'Companies' : setActiveTabName('company')
+                                   setColumns(columnsCompanies); break;
+                case 'Communities' : setActiveTabName('community')
+                                     setColumns(columnsCommunities); break;
+            }
             getOrganizations(tab, setData, 1, perPage, setIsLoading, setTotalPages, "", "");
-        } else if (tab === "Companies") {
-            setActiveTabName("company");
-            setColumns(columnsCompanies);
-            getOrganizations(tab, setData, 1, perPage, setIsLoading, setTotalPages, "", "");
-        } else if (tab === "Communities") {
-            setActiveTabName("community");
-            setColumns(columnsCommunities);
-            getOrganizations(tab, setData, 1, perPage, setIsLoading, setTotalPages, "", "");
-        } else {
+        }
+        else {
             alert("Error to load Table Headers");
         }
         setCurrentPage(1);
@@ -182,7 +186,7 @@ function Organizations() {
 
     return (
         <>
-            <TableTopTab active={activeTab} onTabClick={handleTabClick} />
+            <TableTopTab active={activeTab} onTabClick={handleTabClick as (tab:string) => void} />
 
             {data && (
                 <>
