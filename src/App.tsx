@@ -58,8 +58,9 @@ const HackathonParticipants = lazy(() => import("./modules/Dashboard/modules/Hac
 
 import { roles } from "./services/types";
 import SecureAuthRoutes from "./services/authCheck";
-import Settings from "./modules/Dashboard/modules/Settings/Settings";
 
+import Settings from "./modules/Dashboard/modules/Settings/Settings";
+const ConnectedDevices = lazy(()=>import('./modules/Dashboard/modules/Settings/pages/ConnectedDevices'))
 
 function App() {
     const RoleChecker = SecureAuthRoutes()
@@ -241,6 +242,10 @@ function App() {
                 path: "/settings",
                 element: <Settings />,
             },
+            {
+                path: "/settings/connected-devices",
+                element: <ConnectedDevices />
+            }
         ]
     },
     {
