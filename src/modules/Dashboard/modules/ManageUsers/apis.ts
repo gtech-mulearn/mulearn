@@ -87,7 +87,9 @@ export const editManageUsers = async (
     mobile?: string ,
     organizations?: string[],
     department?: string,
-    graduation_year?: string
+    graduation_year?: string,
+    role?:string[],
+    interest_groups?:string[]
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -99,7 +101,9 @@ export const editManageUsers = async (
                 mobile: mobile,
                 organizations:organizations,
                 department: department,
-                graduation_year: graduation_year
+                graduation_year: graduation_year,
+                role:role,
+                interest_groups:interest_groups
             }
         );
         //console.log(first_name, last_name, email);

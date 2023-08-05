@@ -189,6 +189,8 @@ const ManageUsersEdit = (props: Props) => {
                             ].filter(item=>item!=='null'),
                             values.department, 
                             values.graduation_year,
+                            values.role,
+                            values.interest
                         );
                         console.log(values)
 
