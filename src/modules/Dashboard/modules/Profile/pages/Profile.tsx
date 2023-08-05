@@ -26,6 +26,7 @@ import BasicDetails from "../components/BasicDetails";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import AvgKarma from "../assets/svg/AvgKarma";
+import EditProfilePopUp from "../components/EditProfilePopUp/pages/EditProfilePopUp";
 
 //TODO: Verify the relevance of profile page image
 const Profile = () => {
@@ -37,6 +38,7 @@ const Profile = () => {
     const [profileList, setProfileList] = useState("basic-details");
     const [blob, setBlob] = useState<any>();
     const [popUP, setPopUP] = useState(false);
+    const [editPopUp, setEditPopUp] = useState(false);
     const [userProfile, setUserProfile] = useState({
         first_name: "",
         last_name: "",
@@ -222,6 +224,7 @@ const Profile = () => {
                 ) : (
                     ((id && userProfile.is_public) || !id) && (
                         <>
+                            <EditProfilePopUp editPopUp={editPopUp} setEditPopUP={setEditPopUp}/>
                             <div
                                 style={
                                     popUP
@@ -269,22 +272,6 @@ const Profile = () => {
                                                 }
                                             >
                                                 <div className={styles.qr_code}>
-                                                    {/* <QRCode
-                                                    size={256}
-                                                    style={{
-                                                        height: "173px",
-                                                        maxWidth: "100%",
-                                                        width: "100%"
-                                                    }}
-                                                    value={
-                                                        (import.meta.env
-                                                            .VITE_FRONTEND_URL as string) +
-                                                        /profile/ +
-                                                        userProfile.muid
-                                                    }
-                                                    viewBox={`0 0 256 256`}
-                                                    id="qr_code"
-                                                /> */}
                                                     <img src={blob} alt="" />
                                                 </div>
                                                 <div className={styles.link}>
@@ -479,6 +466,26 @@ const Profile = () => {
                                                     tabIndex={0}
                                                 >
                                                     <i className="fi fi-br-share"></i>
+                                                </p>
+                                            ) : null}
+                                            {!id ? (
+                                                <p
+                                                    onClick={() =>
+                                                        setEditPopUp(true)
+                                                    }
+                                                    className={
+                                                        styles.edit_profile_btn
+                                                    }
+                                                    onKeyDown={e => {
+                                                        if (
+                                                            e.key === "Escape"
+                                                        ) {
+                                                            setPopUP(false);
+                                                        }
+                                                    }}
+                                                    tabIndex={0}
+                                                >
+                                                    <i className="fi fi-rr-pencil"></i>
                                                 </p>
                                             ) : null}
                                             {/* <MuButton

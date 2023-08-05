@@ -61,14 +61,14 @@ export const MuButtonLight = (props: {
     onClick?: React.MouseEventHandler; // onclick event if wanted
 }) => {
     return (
-        <div
+        <button
             className={props.className ? props.className : styles.btn_light}
             style={props.style}
             onClick={props.onClick}
         >
             {props.icon && <div className={styles.btn_icon}>{props.icon}</div>}
             <p>{props.text}</p>
-        </div>
+        </button>
     );
 };
 

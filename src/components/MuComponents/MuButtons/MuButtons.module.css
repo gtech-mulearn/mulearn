@@ -119,11 +119,11 @@
 }
 
 @media screen and (max-width: 830px) {
-    .btn,
+    /* .btn,
     .btn_light,
     .dropdown_btn {
         margin-bottom: 0px;
-    }
+    } */
 }
 
 .powerfullButton {

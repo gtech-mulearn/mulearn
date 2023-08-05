@@ -258,15 +258,14 @@
 
     .side_nav_bar_container .side_nav_bar .side_nav_bar_items .bottomButtons {
         width: unset;
+        margin: 0px auto;
+    }
+    .side_nav_bar_container .side_nav_bar .side_nav_bar_items .bottomButtons button{
+        justify-content: center;
     }
 
     .right_side .top_nav .nav .nav_items .menu {
         width: auto;
-    }
-
-    .bottomButtons {
-        border-top: 1px solid #456ff6;
-        padding-top: 20px;
     }
 
     .mulearn_brand2 svg {
