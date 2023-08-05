@@ -83,18 +83,26 @@ interface FormikSelectProps extends SelectProps<Option> {
     name: string;
     label: string;
     options: Option[];
+    addOnChange?:Function;
 }
 
 const FormikReactSelect: React.FC<FormikSelectProps> = ({
     name,
     label,
     options,
+    addOnChange=(()=>{}),
     ...rest
 }) => {
     const [field, meta, helpers] = useField(name);
-
     const handleChange = (selectedOption: any) => {
-        helpers.setValue(selectedOption ? selectedOption.value : null);
+        addOnChange(selectedOption)
+        if(rest.isMulti)
+            helpers.setValue(
+                selectedOption
+                .map((obj:any)=>obj.value)
+            )
+        else
+            helpers.setValue(selectedOption ? selectedOption.value : null);
     };
 
     const handleBlur = () => {
@@ -105,9 +113,13 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
         if (!field.value) {
 			return null;
         }
+        if(rest.isMulti){
+            return options.filter(option => 
+                field.value.includes(option.value)
+            ) || null   
+        }
         return options.find(option => option.value === field.value) || null;
     };
-
     return (
         <div className={styles.InputSet}>
             <label className={styles.formLabel} htmlFor={name}>
@@ -159,5 +171,76 @@ export const FormikImageComponent: React.FC<ImageFormProps> = ({
                 <div className={styles.error}>{meta.error}</div>
             ) : null}
         </div>
+    );
+};
+
+
+interface FormikSelectWithoutLabelProps extends SelectProps<Option> {
+    name: string;
+    options: Option[];
+	onchangeFunction: any;
+}
+
+export const FormikReactSelectCustom: React.FC<
+    FormikSelectWithoutLabelProps
+> = ({ name, options, onchangeFunction, ...rest }) => {
+    const [field, meta, helpers] = useField(name);
+
+    const handleChange = (selectedOption: any) => {
+        helpers.setValue(selectedOption ? selectedOption.value : null);
+		console.log(selectedOption.value);
+		onchangeFunction(selectedOption.value);
+    };
+
+    const handleBlur = () => {
+        helpers.setTouched(true);
+    };
+
+    const getSelectedOption = () => {
+        if (!field.value) {
+            return null;
+        }
+        return options.find(option => option.value === field.value) || null;
+    };
+
+    const customStyles: any = {
+        control: (provided: any) => ({
+            ...provided,
+            backgroundColor: "#F3F3F4",
+            border: "none",
+            borderRadius: "10px",
+            fontSize: "12px",
+            fontWeight: "bold",
+            color: "#000",
+            width: "100%",
+            padding: ".3rem .4rem"
+        }),
+        placeholder: (provided: any) => ({
+            ...provided,
+            color: "#000" // Specify your desired color here
+        }),
+        indicatorSeparator: (provided: any) => ({
+            ...provided,
+            display: "none" // Hide the indicator separator
+        })
+    };
+
+    return (
+        <>
+            <Select
+                {...rest}
+                name={name}
+                id={name}
+                value={getSelectedOption()}
+                isSearchable
+                options={options}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                styles={customStyles}
+            />
+            {meta.touched && meta.error && (
+                <div className="error">{meta.error}</div>
+            )}
+        </>
     );
 };

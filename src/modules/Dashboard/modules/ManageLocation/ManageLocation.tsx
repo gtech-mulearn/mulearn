@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { Navigate, useNavigate, useLocation } from "react-router-dom";
-import Table from "../../../../components/MuComponents/Table/Table";
-import THead from "../../../../components/MuComponents/Table/THead";
-import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
-import Pagination from "../../../../components/MuComponents/Pagination/Pagination";
-import "./ManageLocation.scss";
+import Table from "@/MuLearnComponents/Table/Table";
+import THead from "@/MuLearnComponents/Table/THead";
+import TableTop from "@/MuLearnComponents/TableTop/TableTop";
+import Pagination from "@/MuLearnComponents/Pagination/Pagination";
+import "./ManageLocation.css";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import {
     columnsCountry,
@@ -19,8 +19,6 @@ import { getZoneData, deleteZoneData } from "./apis/ZoneAPI";
 import { getDistrictData, deleteDistrictData } from "./apis/DistrictAPI";
 
 import LocationPopup from "./LocationPopup";
-import { hasRole } from "../../../../services/common_functions";
-import { roles } from "../../../../services/types";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
 
@@ -48,10 +46,6 @@ const ManageLocation = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const toast = useToast();
-
-    useEffect(() => {
-        if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
-    });
 
     useEffect(() => {
         if (location.state) {
@@ -200,15 +194,9 @@ const ManageLocation = () => {
                 state={selectedState}
                 zone={selectedZone}
                 handleData={setData}
-                handleCountry={(country: LocationItem) =>
-                    setSelectedCountry(country as string)
-                }
-                handleState={(state: LocationItem) =>
-                    setSelectedState(state as string)
-                }
-                handleZone={(zone: LocationItem) =>
-                    setSelectedZone(zone as string)
-                }
+                handleCountry={(country) => setSelectedCountry(country) }
+                handleState={(state) => setSelectedState(state) }
+                handleZone={(zone) => setSelectedZone(zone) }
             />
             {activeTab !== "Country" && (
                 <LocationPath
@@ -258,32 +246,36 @@ const ManageLocation = () => {
                 popupFields={popupFields}
                 activeItem={activeTab}
                 handleData={setData}
-                handleCountry={(country: LocationItem) =>
-                    setSelectedCountry(country as string)
-                }
-                handleState={(state: LocationItem) =>
-                    setSelectedState(state as string)
-                }
-                handleZone={(zone: LocationItem) =>
-                    setSelectedZone(zone as string)
-                }
+                handleCountry={(country) => setSelectedCountry(country) }
+                handleState={(state) => setSelectedState(state) }
+                handleZone={(zone) => setSelectedZone(zone) }
                 handleDeclined={setIsDeclined}
             />
         </>
     );
 };
-
-const TableTopToggle = ({
-    active,
-    onTabClick,
-    country,
-    state,
-    zone,
-    handleData,
-    handleCountry,
-    handleState,
-    handleZone
-}: any) => {
+type TableTopToggleType = {
+    active : string,
+    onTabClick : UseStateFunc<any>,
+    country : string,
+    state : string,
+    zone : string,
+    handleData : UseStateFunc<any>,
+    handleCountry : UseStateFunc<string>,
+    handleState : UseStateFunc<string>,
+    handleZone : UseStateFunc<string>
+}
+const TableTopToggle:FC<TableTopToggleType> = ({
+        active,
+        onTabClick,
+        country,
+        state,
+        zone,
+        handleData,
+        handleCountry,
+        handleState,
+        handleZone
+}) => {
     const tabItems = ["Country", "State", "Zone", "District"];
 
     const navigate = useNavigate();

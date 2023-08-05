@@ -15,7 +15,7 @@ import { useToast } from "@chakra-ui/react";
 import { MuButtonLight } from "@/MuLearnComponents/MuButtons/MuButton";
 
 const UrlShortener = () => {
-    const columnOrder = [
+    const columnOrder:ColOrder[] = [
         { column: "title", Label: "Title", isSortable: true },
         { column: "short_url", Label: "Short URL", isSortable: false },
         { column: "long_url", Label: "Long URL", isSortable: false }

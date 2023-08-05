@@ -3,7 +3,6 @@ import { CiGlobe } from "react-icons/ci";
 import { useNavigate, useParams } from "react-router-dom";
 import { getHackDetails } from "../services/HackathonApis";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { HackList } from "../services/HackathonInterfaces";
 import styles from "./HackathonCreate.module.css"
 import { DateConverter, convertDateToYYYYMMDD } from "../../../utils/common";
 import { style } from "d3";
