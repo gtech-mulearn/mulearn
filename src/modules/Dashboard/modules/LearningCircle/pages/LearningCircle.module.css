@@ -50,6 +50,7 @@
     justify-content: center;
     gap: 2rem;
     margin-top: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 /*list*/
@@ -430,8 +431,16 @@ padding-left: 10px;
     width: 1.3rem;
     height: 1.3rem;
 }
-
-@media (width<800px) {
+@media (width<1030px) {
+  .MemberName{
+    font-size: small;
+  }
+  .MemberName span img {
+    width: 1rem;
+    height: 1rem;
+}
+}
+@media (width<820px) {
     .LearningCircleDetailsContent {
         padding: 0.5rem;
         font-size: 0.8rem;
@@ -492,18 +501,31 @@ padding-left: 10px;
         font-size: 0.65rem;
     }
 
-    .MemberName {
-        gap: 2rem;
+    .MemberName span img {
+        width: 1.5rem;
+        height: 1.5rem;
     }
+
+    .MemberName {
+        font-size: large;
+        gap: 5rem;
+    }
+
+}
+
+@media (width<380px){
+    .MemberName span img {
+        width: 1rem;
+        height: 1rem;
+    }
+}
+@media (width<800px) {
+	.Lcweek{
+		gap:0.25;
+	}
 }
 
 /* css for the Meeting schedule*/
-
-@media (width<800px) {
-    .Lcweek {
-        gap: 0.25;
-    }
-}
 
 .ScheduleOn {
     text-align: center;
@@ -522,6 +544,7 @@ padding-left: 10px;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    padding-bottom: 1rem;
 }
 
 .InputSchedule div {
@@ -637,6 +660,11 @@ padding-left: 10px;
 	color:var(--Dark);
 }
 
+@media (width<820px) {
+	.Lcweek{
+       gap:10px;
+	}
+}
 
 /*
 * ************************************************************************************************
@@ -645,7 +673,7 @@ padding-left: 10px;
 */
 
 .LearningCircleCreateContent {
-    padding-top: 2rem;
+    padding-top:2rem;
 }
 
 .LearningCircleCreateMain {
@@ -669,7 +697,7 @@ padding-left: 10px;
 }
 
 .LearningCircleCreateForm {
-    display: flex;
+    display: flex; 
 }
 
 .LearningCircleCreateForm input {
@@ -683,11 +711,12 @@ padding-left: 10px;
     background-color: var(--blue);
     color: #fff;
     border-radius: 0.5rem;
+    margin-top: 1rem;
 }
 
 @media (width<820px) {
     .LearningCircleCreateContent {
-        padding-top: 5rem;
+        padding-top: 3rem;
     }
 
     .LearningCircleCreateMain {
@@ -698,19 +727,26 @@ padding-left: 10px;
     .LearningCircleCreateHeading {
         margin: 0.5rem;
     }
-
+    
+    .LearningCircleCreateForm {
+        display: flex;
+        flex-direction: column;  
+    }
     .LearningCircleCreateHeading b {
         font-size: 1.5rem;
     }
 
     .LearningCircleCreateForm input::placeholder {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
+    }
+    .LearningCircleCreateMain button{
+        margin-top: 1rem;
     }
 }
 
 @media (width<380px) {
     .LearningCircleCreateContent {
-        padding-top: 0rem;
+        padding-top:0;
     }
 }
 
@@ -805,7 +841,7 @@ padding-left: 10px;
     padding: 0.5rem 1rem;
 }
 
-@media (width<800px) {
+@media (width<1030px) {
     .FindCircleContent {
         padding: 0.5rem;
     }
@@ -817,7 +853,7 @@ padding-left: 10px;
     }
 
     .FindCircleContentTop .desc h3 {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
     }
 
     .FindCircleContentTop .desc b {
@@ -946,7 +982,7 @@ padding-left: 10px;
     padding: 0.5rem 1rem;
 }
 
-@media (width<800px) {
+@media (width<1030px) {
     .FindCircleContent {
         padding: 0.5rem;
     }

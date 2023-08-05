@@ -32,7 +32,9 @@ const HackathonRegistration = (props: Props) => {
     const handleSubmit = (values: any) => {
         submitHackApplication(
 			values,
-			id
+			id,
+            navigate,
+            toast,
 		)
     };
 

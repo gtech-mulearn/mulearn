@@ -269,7 +269,7 @@ const LandingPage = () => {
                         ))
                     ) : (
                         <div className={styles.container}></div>
-                    )}
+                    )}       
                 </div>
             </div>
         </div>
