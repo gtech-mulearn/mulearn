@@ -10,11 +10,7 @@ import {
     MuButton,
     MuButtonLight
 } from "@/MuLearnComponents/MuButtons/MuButton";
-import {
-    UserInfo,
-    fetchLocalStorage
-} from "@/MuLearnServices/common_functions";
-import { Role } from "@/MuLearnServices/types";
+import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
 import MuLogOut from "../assets/svg/MuLogOut";
 import MuSettings from "../assets/svg/MuSettings";
 
