@@ -65,7 +65,7 @@
 .hackNav ul {
     box-shadow: var(--boxShadow);
     border-radius: var(--borderRadius);
-    background-color: #fff;
+    background-color: var(--White);
     display: flex;
     padding: 1rem;
     margin: 2.5rem 0;
@@ -95,7 +95,7 @@
 .form {
     width: 100%;
     padding: 1.5rem;
-    background-color: #fff;
+    background-color:  var(--White);
     border-radius: var(--borderRadius);
     box-shadow: var(--boxShadow);
     padding-bottom: 1px;
@@ -154,7 +154,7 @@
 
 .btns button:nth-child(2) {
     background-color: var(--blue);
-    color: #fff;
+    color:  var(--White);
 }
 
 .error {
@@ -260,7 +260,7 @@ input[type=file]::file-selector-button {
     border: none;
     background: var(--blue);
     border-radius: var(--borderRadius);
-    color: #fff;
+    color:  var(--White);
     cursor: pointer;
     transition: background .2s ease-in-out;
 }
@@ -372,6 +372,7 @@ input[type=file]::file-selector-button:hover {
 */
 
 .hackathonDetails {
+    
     padding: 1rem 3rem;
     display: flex;
     gap: 2rem;
@@ -400,6 +401,7 @@ input[type=file]::file-selector-button:hover {
 }
 
 .hackathonApplyCard {
+    background-color: var(--White);
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -434,6 +436,7 @@ input[type=file]::file-selector-button:hover {
 
 .hackathonApplyCard .close {
     background-color: #F0F4FF;
+    
     padding: .5rem;
     border-radius: .3rem;
     font-weight: 700;
@@ -454,6 +457,8 @@ input[type=file]::file-selector-button:hover {
 }
 
 .hackathonEventCard .socialLinks {
+    background-color: var(--White);
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -475,6 +480,7 @@ input[type=file]::file-selector-button:hover {
     width: 100%;
     border-radius: 1rem;
     box-shadow: 0px 0px 10px .5px rgba(0, 0, 0, 0.1);
+    background-color: var(--White);
     padding: 1.5rem 2rem;
     display: flex;
     flex-direction: column;
@@ -582,6 +588,7 @@ input[type=file]::file-selector-button:hover {
 
 .hackathonBox .cardComponent {
     border: 1px solid #dbdbdb;
+    background-color:  var(--White);
     border-radius: 20px;
     display: flex;
     align-items: center;

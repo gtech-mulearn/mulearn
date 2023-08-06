@@ -177,6 +177,7 @@
     justify-content: flex-start;
     text-align: center;
     margin-top: 16vh;
+    gap:10px
     /* overflow-x: hidden; */
 }
 
