@@ -127,6 +127,10 @@ const Profile = () => {
                 <meta name="viewport" content="width=device-width" />
                 <meta name="route-pattern" content="/dashboard/profile/:id" />
                 <meta name="description" content="you bio is here" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+                />
 
                 {/* <!-- Open Graph / Facebook --> */}
                 <meta
@@ -224,7 +228,10 @@ const Profile = () => {
                 ) : (
                     ((id && userProfile.is_public) || !id) && (
                         <>
-                            <EditProfilePopUp editPopUp={editPopUp} setEditPopUP={setEditPopUp}/>
+                            <EditProfilePopUp
+                                editPopUp={editPopUp}
+                                setEditPopUP={setEditPopUp}
+                            />
                             <div
                                 style={
                                     popUP
