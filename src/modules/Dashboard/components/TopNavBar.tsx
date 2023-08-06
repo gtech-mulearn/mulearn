@@ -4,7 +4,6 @@ import MulearnBrand from "../assets/MulearnBrand";
 import { useNavigate } from "react-router-dom";
 import dpm from "../assets/images/dpm.webp";
 import {
-    UserInfo,
     fetchLocalStorage
 } from "@/MuLearnServices/common_functions";
 
