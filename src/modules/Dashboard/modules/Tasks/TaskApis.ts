@@ -219,13 +219,9 @@ export const getUUID = async () => {
     };
 
     const response: Partial<uuidType> = {};
-    const allResponse = await Promise.all(
-        Object.values(uuids)
-        .map(url=>privateGateway.get(url))
-    )
     for (let key in uuids) {
         response[key as keyof uuidType] = (
-            (allResponse.shift()!).data.response as Array<any>
+            (await privateGateway.get(uuids[key])).data.response as Array<any>
         ).sort((a, b) =>
             //check for name/title key and then compare
             (a.name !== undefined && a.name < b.name) ||
@@ -233,16 +229,6 @@ export const getUUID = async () => {
                 ? -1
                 : 1
         );
-        //sequential method where each fetch occurs after previous fetch
-        // response[key as keyof uuidType] = (
-        //     (await privateGateway.get(uuids[key])).data.response as Array<any>
-        // ).sort((a, b) =>
-        //     //check for name/title key and then compare
-        //     (a.name !== undefined && a.name < b.name) ||
-        //         (a.title !== undefined && a.title < b.title)
-        //         ? -1
-        //         : 1
-        // );
     }
     return response;
 };
