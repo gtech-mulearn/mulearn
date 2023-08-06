@@ -4,7 +4,7 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { createStandaloneToast } from "@chakra-ui/react";
 
 
-const { toast } = createStandaloneToast();
+export const { toast } = createStandaloneToast();
 
 
 export const getUserLearningCircles = async (
@@ -32,10 +32,13 @@ export const getLcDetails = async (
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getCampusLearningCircles + id + "/"
-        );
-        const message: any = response?.data;
-        console.log(message.response);
-        setCircleList(message.response);
+        )  as APIResponse<LcDetail & {day:string}>;
+
+        const message = response.data.response
+        
+        const dayArray = message.day.split(",").map((x: string) => parseInt(x))
+        console.log(message, dayArray);
+        setCircleList({...message, day: dayArray });
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -137,14 +140,14 @@ export const createCircle = async(
 export const setLCMeetTime = async (
     meetTime: string,
     meetPlace: string,
-    day: string[],
+    day: number[],
     id: string | undefined
 ) => {
     try {
         const response = await privateGateway.patch(
             dashboardRoutes.setLCMeetTime + id + "/",
             {
-                meet_time: `${meetTime}:00`,
+                meet_time: `${meetTime}`,
                 meet_place: meetPlace,
                 day: `${day}`
             }
