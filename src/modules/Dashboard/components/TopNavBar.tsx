@@ -3,8 +3,9 @@ import styles from "./SideNavBar.module.css";
 import MulearnBrand from "../assets/MulearnBrand";
 import { useNavigate } from "react-router-dom";
 import dpm from "../assets/images/dpm.webp";
-import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
-
+import {
+    fetchLocalStorage
+} from "@/MuLearnServices/common_functions";
 
 const TopNavBar = () => {
     const navigate = useNavigate();
@@ -12,11 +13,11 @@ const TopNavBar = () => {
     const [profilePic, setProfilePic] = useState<string | null>(null);
 
     useEffect(() => {
-        const userInfo = fetchLocalStorage<UserInfo>('userInfo')
+        const userInfo = fetchLocalStorage<UserInfo>("userInfo");
 
         if (userInfo) {
             setName(userInfo?.first_name);
-            setProfilePic(userInfo?.profile_pic || null)
+            setProfilePic(userInfo?.profile_pic || null);
         }
     }, []);
     return (
@@ -41,6 +42,7 @@ const TopNavBar = () => {
                             </div>
                         </div>
                     </div>
+                    <hr />
                 </div>
             </div>
         </>

@@ -1,16 +1,18 @@
-import { useEffect, useState,useRef } from "react";
-import { editManageUsers,getManageUsersDetails } from "./apis";
+import { useEffect, useState, useRef } from "react";
+import { editManageUsers, getManageUsersDetails } from "./apis";
 import { useNavigate, useParams } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import FormikReactSelect, { FormikTextInput, } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import FormikReactSelect, {
+    FormikTextInput
+} from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { 
+import { roles } from "@/MuLearnServices/types";
+import {
     getCommunities,
     getCompanies,
-
     getCountries,
     getState,
     getDistrict,
@@ -19,24 +21,22 @@ import {
     getRoles,
     getInterests
  } from "../../../Common/Authentication/services/onboardingApis";
-import { roles } from "@/MuLearnServices/types";
 
 
 type Props = {};
 
 const errorHandler = (status: number, dataStatus: number) => {
-    const toast = useToast()
+    const toast = useToast();
     toast({
         title: `Status${status} DataStatus${dataStatus}`,
         status: "error",
         duration: 3000,
         isClosable: true
-    })
+    });
 };
 
 const ManageUsersEdit = (props: Props) => {
-    
-    const formikRef = useRef<any>()
+    const formikRef = useRef<any>();
 
     //DropDownStates
     const [community,setCommuntiy] = useState([{id:'',title:''}])
@@ -154,12 +154,9 @@ const ManageUsersEdit = (props: Props) => {
                         mobile: Yup.string()
                             .length(10, "Invalid mobile number")
                             .required("Required"),
-                        college: Yup.string()
-                            .required("Required"),
-                        community: Yup.array()
-                            .required("Required"),
-                        company: Yup.string()
-                            .required("Required"),
+                        college: Yup.string().required("Required"),
+                        community: Yup.array().required("Required"),
+                        company: Yup.string().required("Required"),
                         department: Yup.string()
                             .min(3, "Invalid mobile number")
                             .required("Required"),
@@ -197,7 +194,7 @@ const ManageUsersEdit = (props: Props) => {
                         // navigate("/manage-users");
                     }}
                 >
-                    <Form className={styles.inputContainer} >
+                    <Form className={styles.inputContainer}>
                         {/* {data?.role ? : }  */}
                         <FormikTextInput
                             label="User First Name"
@@ -223,11 +220,11 @@ const ManageUsersEdit = (props: Props) => {
                             type="text"
                             placeholder="Enter a mobile number"
                         />
-                        
+
                         <FormikReactSelect
                             name="community"
-                            options={community.map((obj)=>{
-                               return {value:obj.id,label:obj.title}
+                            options={community.map(obj => {
+                                return { value: obj.id, label: obj.title };
                             })}
                             label="Community"
                             isClearable
@@ -358,7 +355,11 @@ const ManageUsersEdit = (props: Props) => {
                                     navigate("/manage-users");
                                 }}
                             />
-                            <button type="submit" className={styles.btn_submit} onClick={()=>console.log(formikRef)}>
+                            <button
+                                type="submit"
+                                className={styles.btn_submit}
+                                onClick={() => console.log(formikRef)}
+                            >
                                 Confirm
                             </button>
                         </div>

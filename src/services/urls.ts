@@ -49,7 +49,7 @@ export const dashboardRoutes = {
 
     getUserProfile: "/api/v1/dashboard/profile/user-profile/",
     getPublicUserProfile: "/api/v1/dashboard/profile/user-profile/${muid}/",
-    editUserProfile: "/api/v1/dashboard/profile/edit-user-profile/",
+    getEditUserProfile: "/api/v1/dashboard/user/profile/",
     getUserLog: "/api/v1/dashboard/profile/user-log/",
     getUserLevels: "/api/v1/dashboard/profile/get-user-levels/",
     getPublicUserLevels: "/api/v1/dashboard/profile/get-user-levels/${muid}",
@@ -85,6 +85,7 @@ export const dashboardRoutes = {
     createLearningCircle: "/api/v1/dashboard/lc/create/",
     joinLearningCircle: "/api/v1/dashboard/lc/join/",
     setLCMeetTime: "/api/v1/dashboard/lc/meet/",
+	getCampusIg: "api/v1/dashboard/ig/list/",
 
     getAllOrganisations: "/api/v1/hackathon/list-organisations/",
     getAllDistricts: "/api/v1/hackathon/list-districts/"
