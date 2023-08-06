@@ -1,9 +1,11 @@
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { useNavigate, NavigateFunction } from "react-router-dom";
-import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
+import {
+    privateGateway,
+    publicGatewayAuth
+} from "@/MuLearnServices/apiGateways";
 import { authRoutes, dashboardRoutes } from "@/MuLearnServices/urls";
 import { refreshRoles } from "@/MuLearnServices/authCheck";
-
 
 export const forgetPassword = (
     emailOrMuid: string,
@@ -39,10 +41,13 @@ export const forgetPassword = (
         });
 };
 
-type authRoutesLoginRes = APIResponse <{ accessToken:string, refreshToken:string, expiry:string }>
+type authRoutesLoginRes = APIResponse<{
+    accessToken: string;
+    refreshToken: string;
+    expiry: string;
+}>;
 
-type authGetUserInfo = APIResponse <UserInfo>
-
+type authGetUserInfo = APIResponse<UserInfo>;
 
 export const login = (
     emailOrMuid: string,
@@ -53,9 +58,9 @@ export const login = (
     redirectPath: string
 ) => {
     setIsLoading(true);
-    publicGateway
+    publicGatewayAuth
         .post(authRoutes.login, { emailOrMuid, password })
-        .then((response : authRoutesLoginRes) => {
+        .then((response: authRoutesLoginRes) => {
             if (response.data.hasError == false) {
                 //console.log("=======> Login Res: ", response.data.response);
 
@@ -77,13 +82,13 @@ export const login = (
                 });
                 privateGateway
                     .get(dashboardRoutes.getInfo)
-                    .then((response:authGetUserInfo) => {
+                    .then((response: authGetUserInfo) => {
                         //console.log(response);
                         localStorage.setItem(
                             "userInfo",
                             JSON.stringify(response.data.response)
                         );
-                        refreshRoles()
+                        refreshRoles();
                         if (response.data.response.exist_in_guild) {
                             navigate("/dashboard/profile");
                         } else {
@@ -119,7 +124,7 @@ export const getMuid = (
 ) => {
     privateGateway
         .post(dashboardRoutes.resetPasswordVerify.replace("${token}", token))
-        .then((response: APIResponse<{muid:string}>) => {
+        .then((response: APIResponse<{ muid: string }>) => {
             //console.log(response.data);
             toast({
                 title: "User Verified",
@@ -154,8 +159,10 @@ export const resetPassword = (
     navigate: NavigateFunction
 ) => {
     privateGateway
-        .post(dashboardRoutes.resetPassword.replace("${token}", token), { password })
-        .then((response: APIResponse<{},{}>) => {
+        .post(dashboardRoutes.resetPassword.replace("${token}", token), {
+            password
+        })
+        .then((response: APIResponse<{}, {}>) => {
             if (response.data.statusCode === 200) {
                 toast({
                     title: "Password Reset Successful",
@@ -185,15 +192,15 @@ export const resetPassword = (
 };
 
 export const requestEmailOrMuidOtp = (
-    emailOrMuid  : string,
-    toast        : ToastAsPara,
-    setHasError  : UseStateFunc<boolean>,
-    setStatus    : UseStateFunc<number>,
+    emailOrMuid: string,
+    toast: ToastAsPara,
+    setHasError: UseStateFunc<boolean>,
+    setStatus: UseStateFunc<number>,
     setOtpLoading: UseStateFunc<boolean>,
-    setOtpError  : UseStateFunc<boolean>
+    setOtpError: UseStateFunc<boolean>
 ) => {
     setOtpLoading(true);
-    publicGateway
+    publicGatewayAuth
         .post(authRoutes.requestEmailOrMuidOtp, { emailOrMuid })
         .then((response: APIResponse) => {
             setOtpLoading(false);
@@ -232,9 +239,9 @@ export const otpVerification = (
     redirectPath: string
 ) => {
     setOtpVerifyLoading(true);
-    publicGateway
+    publicGatewayAuth
         .post(authRoutes.otpVerification, { emailOrMuid, otp })
-        .then((response:authRoutesLoginRes) => {
+        .then((response: authRoutesLoginRes) => {
             //console.log(response.data);
             localStorage.setItem(
                 "accessToken",
@@ -256,13 +263,13 @@ export const otpVerification = (
             }
             privateGateway
                 .get(dashboardRoutes.getInfo)
-                .then((response:authGetUserInfo) => {
+                .then((response: authGetUserInfo) => {
                     //console.log(response);
                     localStorage.setItem(
                         "userInfo",
                         JSON.stringify(response.data.response)
                     );
-                    refreshRoles()
+                    refreshRoles();
                     if (response.data.response.exist_in_guild) {
                         navigate("/dashboard/profile");
                     } else {

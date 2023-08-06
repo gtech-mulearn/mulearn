@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./EditProfilePopUp.module.css";
+import { useToast } from "@chakra-ui/react";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import {
     getCommunities,
@@ -12,9 +13,11 @@ import Select from "react-select";
 type Props = {
     editPopUp: boolean;
     setEditPopUP: (value: boolean) => void;
+    triggerUpdateProfile: () => void;
 };
 
 const EditProfilePopUp = (props: Props) => {
+    const toast = useToast();
     const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }]);
     const [loadStatus, setLoadStatus] = useState(false);
 
@@ -28,9 +31,9 @@ const EditProfilePopUp = (props: Props) => {
             dob: "",
             community: []
         },
-        onSubmit: values => {
-            console.log(values);
-            patchEditUserProfile(values);
+        onSubmit: values => {2
+            patchEditUserProfile(toast, values);
+            props.triggerUpdateProfile();
         },
         validate: (values: any) => {
             let errors: any = {};
@@ -41,7 +44,9 @@ const EditProfilePopUp = (props: Props) => {
                 errors.last_name = "Required";
             }
             if (!values.email) {
-                errors.email = "Required";
+                errors.email = "Email is required";
+            } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+                errors.email = "Invalid email address";
             }
             if (!values.mobile) {
                 errors.mobile = "Required";
@@ -63,7 +68,6 @@ const EditProfilePopUp = (props: Props) => {
     useEffect(() => {
         getCommunities(setCommunityAPI, setLoadStatus);
         getEditUserProfile((data: any) => {
-            // console.log(data);
             formik.setValues({
                 first_name: data.first_name,
                 last_name: data.last_name,
@@ -262,7 +266,6 @@ const EditProfilePopUp = (props: Props) => {
                             Close
                         </button>
                     </form>
-                    <div className={styles.edit_profile_body}></div>
                 </div>
             </div>
         </div>
