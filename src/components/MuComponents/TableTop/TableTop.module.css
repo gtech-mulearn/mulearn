@@ -6,7 +6,8 @@
     border-radius: 8px;
     font-family: "Plus Jakarta Sans", sans-serif;
     color: var(--Dark);
-    background-color: #fff;
+    background-color:  var(--White);
+    padding: 5px;
     /* flex-wrap: wrap; */
 }
 

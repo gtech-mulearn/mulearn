@@ -20,6 +20,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color:var(--White);
     gap: 1rem;
     border-radius: var(--borderRadius);
     box-shadow: var(--boxShadow);
@@ -79,6 +80,7 @@
 }
 
 .learningCircleLandingPageLevel {
+    background-color:  var(--White);
     padding: 1rem 2rem;
     display: flex;
     align-items: center;
@@ -116,7 +118,7 @@
 }
 
 .learningCircleLandingPageExpandBtn:checked+.learningCircleLandingPageLevel .learningCircleLandingPageBtn {
-    background: #fff;
+    background:  var(--White);
     color: var(--blue);
 }
 
@@ -196,7 +198,7 @@
 }
 
 .CreatedCircle {
-    background-color: #f3f8fe;
+    background-color:  var(--White);
     padding: 2.5rem;
     border-radius: 1rem;
     border: 0.5px solid #d2dcff;
@@ -231,7 +233,7 @@
 .CircleRank i,
 .MeetingOn i {
     border-radius: 0.5rem;
-    color: #fff;
+    color:  var(--White);
     padding: 0.5rem;
     width: fit-content;
     height: fit-content;
@@ -256,6 +258,7 @@
 
 .EventOn,
 .PendingApp {
+    background-color:  var(--White);
     padding: 2.5rem;
     border-radius: 1rem;
     box-shadow: var(--boxShadow);
@@ -296,7 +299,7 @@ padding-left: 10px;
     padding: 0.5rem 2.5rem;
     border-radius: 0.5rem;
     border: none;
-    color: #fff;
+    color:  var(--White);
     background-color: var(--blue);
 }
 
@@ -383,7 +386,7 @@ padding-left: 10px;
     display: flex;
     flex-direction: column;
     top: 5.5rem;
-    background-color: #fff;
+    background-color:  var(--White);
     text-align: center;
     font-size: 0.55rem;
     padding: 0.8rem;
@@ -392,6 +395,7 @@ padding-left: 10px;
 }
 
 .Members {
+    background-color:  var(--White);
     box-shadow: var(--boxShadow);
     border-radius: 1rem;
     padding: 2rem;
@@ -621,7 +625,7 @@ padding-left: 10px;
 }
 
 .Lcweek input[type="checkbox"]:checked+label {
-    color: #fff;
+    color:  var(--White);
 }
 
 .LcNotedEvent{
@@ -677,6 +681,7 @@ padding-left: 10px;
 }
 
 .LearningCircleCreateMain {
+    background-color:var(--White);
     margin-top: 2rem;
     padding: 3rem 0.5rem;
     box-shadow: var(--boxShadow);
@@ -709,7 +714,7 @@ padding-left: 10px;
 .LearningCircleCreateMain button {
     padding: 0.5rem 2rem;
     background-color: var(--blue);
-    color: #fff;
+    color:  var(--White);
     border-radius: 0.5rem;
     margin-top: 1rem;
 }
@@ -759,7 +764,7 @@ padding-left: 10px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: #f3f8fe;
+    background-color:  var(--White);
     gap: 1rem;
     border-radius: var(--borderRadius);
     box-shadow: var(--boxShadow);
@@ -800,7 +805,7 @@ padding-left: 10px;
 
 .FindCircleContentTop .desc .ig_search button {
     background: var(--blue);
-    color: #fff;
+    color:  var(--White);
     border-radius: 8px;
     padding: 0.8rem 1rem;
 }
@@ -900,7 +905,7 @@ padding-left: 10px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: #f3f8fe;
+    background-color:  var(--White);
     gap: 1rem;
     border-radius: var(--borderRadius);
     box-shadow: var(--boxShadow);
@@ -941,7 +946,7 @@ padding-left: 10px;
 
 .FindCircleContentTop .desc .ig_search button {
     background: var(--blue);
-    color: #fff;
+    color:  var(--White);
     border-radius: 8px;
     padding: 0.8rem 1rem;
 }
