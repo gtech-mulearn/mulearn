@@ -13,6 +13,7 @@ import Select from "react-select";
 type Props = {
     editPopUp: boolean;
     setEditPopUP: (value: boolean) => void;
+    triggerUpdateProfile: () => void;
 };
 
 const EditProfilePopUp = (props: Props) => {
@@ -32,6 +33,7 @@ const EditProfilePopUp = (props: Props) => {
         },
         onSubmit: values => {2
             patchEditUserProfile(toast, values);
+            props.triggerUpdateProfile();
         },
         validate: (values: any) => {
             let errors: any = {};

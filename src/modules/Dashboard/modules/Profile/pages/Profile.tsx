@@ -92,6 +92,13 @@ const Profile = () => {
     const endDate = new Date(moment().format("YYYY-MM-DD"));
     const monthDifference = getMonthDifference(startDate, endDate);
     const firstFetch = useRef(true);
+
+    const triggerUpdateProfile = () => {
+        setTimeout(() => {
+            getUserProfile(setUserProfile, setAPILoadStatus, setProfileStatus);
+        }, 1000);
+    };
+
     useEffect(() => {
         if (firstFetch.current) {
             if (!id) {
@@ -231,6 +238,7 @@ const Profile = () => {
                             <EditProfilePopUp
                                 editPopUp={editPopUp}
                                 setEditPopUP={setEditPopUp}
+                                triggerUpdateProfile={triggerUpdateProfile}
                             />
                             <div
                                 style={
