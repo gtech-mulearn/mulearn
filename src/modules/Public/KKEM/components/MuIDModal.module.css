@@ -15,6 +15,7 @@
 .modal {
     width: 100%;
     max-width: 800px;
+    max-height: 480px;
     height: 78%;
     /* position: absolute; */
     top: 50%;
