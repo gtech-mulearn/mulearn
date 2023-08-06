@@ -32,7 +32,7 @@ const EditProfilePopUp = (props: Props) => {
             community: []
         },
         onSubmit: values => {2
-            patchEditUserProfile(toast, values);
+            // patchEditUserProfile(toast, values);
             props.triggerUpdateProfile();
         },
         validate: (values: any) => {
