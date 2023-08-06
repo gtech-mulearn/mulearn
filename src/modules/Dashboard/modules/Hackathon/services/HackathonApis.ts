@@ -403,7 +403,9 @@ export const submitHackApplication = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         console.log(error?.response?.status === 400)
-        if (error?.response?.status === 400) { }
+        if (error?.response?.status === 400) { 
+            navigate('/dashboard/hackathon')
+        }
         if (error?.response) {
             toast({
                 title: "Something went wrong",

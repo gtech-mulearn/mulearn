@@ -3,7 +3,7 @@ import styles from "./LearningCircle.module.css";
 import pic from "../../Profile/assets/images/dpm.webp";
 import { approveLcUser, getLcDetails, setLCMeetTime, toast, updateLcNote } from "../services/LearningCircleAPIs";
 import { useNavigate, useParams } from "react-router-dom";
-import {BiEditAlt} from "react-icons/bi"
+import { BiEditAlt } from "react-icons/bi"
 import { AllWeeks, getNextDate, monthNames } from "../services/utils";
 
 
@@ -22,24 +22,25 @@ const LearningCircle = (props: Props) => {
     const [week, setWeek] = useState<string>("");
 
     const { id } = useParams();
-	const navigate = useNavigate()
+    const navigate = useNavigate()
 
     useEffect(() => {
         getLcDetails(setLc, id);
-		if(lc?.note !== '') {
-			setFlag(true)
-		}
-		if(lc?.meet_place || lc?.meet_time !== '') {
-			setIsEdit(true)
-		}
+        if (lc?.note !== '') {
+            setFlag(true)
+        }
+        if (lc?.meet_place || lc?.meet_time !== '') {
+            setIsEdit(true)
+        }
     }, []);
 
     useEffect(() => {
         setMeetTime(lc?.meet_time || '')
         setMeetVenue(lc?.meet_place || '')
         setMeetDays(lc?.day || [])
+        setNote(lc?.note || '');
 
-        if (lc?.day){
+        if (lc?.day) {
             const eventDate = getNextDate(lc?.day, lc.meet_time)
             const date = eventDate.getDate() // 
             const month = eventDate.getMonth()
@@ -56,9 +57,9 @@ const LearningCircle = (props: Props) => {
         }
     }, [lc]);
 
-    
 
-	const handleCheckboxChange = (
+
+    const handleCheckboxChange = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
         const id = parseInt(event.target.id)
@@ -69,8 +70,8 @@ const LearningCircle = (props: Props) => {
         );
     };
 
-	function handleSchedule(event: any) {
-		if (meetDays.length === 0 || meetTime === '' || meetVenue === '') {
+    const handleSchedule = async (event: any) => {
+        if (meetDays.length === 0 || meetTime === '' || meetVenue === '') {
             toast({
                 title: "Please fill all the fields",
                 description: "",
@@ -81,17 +82,19 @@ const LearningCircle = (props: Props) => {
             return
         }
 
-        console.log(getNextDate(meetDays, meetTime)) // get next date of meeting
+        console.log('Meet days & time', getNextDate(meetDays, meetTime)) // get next date of meeting
 
-		setLCMeetTime(meetTime, meetVenue, meetDays, id)
-        getLcDetails(setLc, id);
+        setLCMeetTime(meetTime, meetVenue, meetDays, id)
         setTimeout(() => {
-            if(lc?.meet_place || lc?.meet_time !== '') {
+            getLcDetails(setLc, id);
+        }, 300);
+        setTimeout(() => {
+            if (lc?.meet_place || lc?.meet_time !== '') {
                 setIsEdit(true)
             }
         }, 2000);
-	}
-
+    }
+    console.log(meetDays[0])
     return (
         <>
             <div className={styles.LearningCircleDetailsContent}>
@@ -121,35 +124,35 @@ const LearningCircle = (props: Props) => {
                             {isEdit ? (
                                 <>
                                     {nextMeet !== null ? <>
-                                            <div className={styles.MeetingOn}>
-                                                <div> <h2>Next Meeting on</h2> </div>
-                                                <BiEditAlt onClick={() => setIsEdit(false) }/>
+                                        <div className={styles.MeetingOn}>
+                                            <div> <h2>Next Meeting on</h2> </div>
+                                            <BiEditAlt onClick={() => setIsEdit(false)} />
+                                        </div>
+                                        <div className={styles.MeetingDate}>
+                                            <h1>{nextMeet}</h1>
+                                            {week !== null && <p>{week}</p>}
+                                        </div>
+                                        <div className={styles.MeetingBtn}>
+                                            <div>
+                                                <b>venue: {lc?.meet_place} <br /></b>
+                                                <b>time: {lc?.meet_time}</b>
                                             </div>
-                                            <div className={styles.MeetingDate}>
-                                                <h1>{nextMeet}</h1>
-                                                {week !== null && <p>{week}</p>}
-                                            </div>
-                                            <div className={styles.MeetingBtn}>
-                                                <div>
-                                                    <b>venue: {lc?.meet_place} <br /></b>
-                                                    <b>time: {lc?.meet_time}</b>
-                                                </div>
 
-                                                {/* <button className={styles.BtnBtn}>
+                                            {/* <button className={styles.BtnBtn}>
                                                     Done
                                                 </button> */}
-                                            </div>
-                                        </>
-                                    :
+                                        </div>
+                                    </>
+                                        :
                                         <>
                                             <div className={styles.MeetingDate}>
                                                 <h1>No meeting scheduled</h1>
                                             </div>
-                                            <button className={styles.BtnBtn} onClick={()=>setIsEdit(false)}>
+                                            <button className={styles.BtnBtn} onClick={() => setIsEdit(false)}>
                                                 schedule now
                                             </button>
                                         </>
-                                    
+
                                     }
 
 
@@ -337,6 +340,7 @@ const LearningCircle = (props: Props) => {
                             ) : (
                                 <div className={styles.LcNotedEvent}>
                                     <textarea
+                                        value={note}
                                         onChange={e => {
                                             setNote(e.target.value);
                                         }}
@@ -347,6 +351,7 @@ const LearningCircle = (props: Props) => {
                                         onClick={() => {
                                             updateLcNote(id, note);
                                             setTimeout(() => {
+                                                getLcDetails(setLc, id);
                                                 setFlag(true);
                                                 navigate(
                                                     `/dashboard/learning-circle/details/${id}`
@@ -361,7 +366,7 @@ const LearningCircle = (props: Props) => {
                         </div>
 
                         {lc?.pending_members &&
-                        lc.pending_members.length > 0 ? (
+                            lc.pending_members.length > 0 ? (
                             <div className={styles.PendingApp}>
                                 <b className={styles.PendingTitle}>
                                     Pending approvals

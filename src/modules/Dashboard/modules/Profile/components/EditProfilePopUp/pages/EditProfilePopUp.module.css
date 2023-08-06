@@ -6,7 +6,7 @@
     left: 0;
     height: 100%;
     width: 100%;
-    z-index: 50;
+    z-index: 49;
     display: flex;
     transition: .3s ease;
     transform: scale(0);
@@ -54,6 +54,25 @@
                 font-weight: 500;
                 margin-top: 5px;
                 text-align: left;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 768px) {
+    .edit_profile_container {
+        .edit_profile {
+            margin: 65px auto auto;
+            height: 100dvh;
+            overflow-y: scroll;
+
+            .edit_profile_contents {
+                & form {
+                    .input_field {
+                        width: 100%;
+                    }
+                }
             }
         }
     }
