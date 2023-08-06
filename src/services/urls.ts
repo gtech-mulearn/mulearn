@@ -49,7 +49,7 @@ export const dashboardRoutes = {
 
     getUserProfile: "/api/v1/dashboard/profile/user-profile/",
     getPublicUserProfile: "/api/v1/dashboard/profile/user-profile/${muid}/",
-    editUserProfile: "/api/v1/dashboard/profile/edit-user-profile/",
+    getEditUserProfile: "/api/v1/dashboard/user/profile/",
     getUserLog: "/api/v1/dashboard/profile/user-log/",
     getUserLevels: "/api/v1/dashboard/profile/get-user-levels/",
     getPublicUserLevels: "/api/v1/dashboard/profile/get-user-levels/${muid}",

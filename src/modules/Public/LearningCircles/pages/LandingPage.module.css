@@ -116,6 +116,7 @@
     margin: 3rem 4rem;
     border-radius: 2.5rem;
     border: 4px solid #E8F2FF;
+    overflow: hidden;
 }
 
 .LClandingPageEarth .totalCount div {
@@ -225,6 +226,16 @@
     color: #B1B1B1;
 }
 
+.LClandingPageExplore .container .LClandingPagenone{
+    display: flex;
+    justify-content: center;
+    align-items: space-evenly;
+    grid-column: 2/3;
+    margin-bottom: 3rem;
+}
+
+
+
 @media(width<=1230px){
     .LClandingPageEarth .totalCount div {
         gap: 1.5rem;
@@ -252,6 +263,7 @@
     }
     .LClandingPageEarth img {
         height: 17rem;
+        text-align: right;  
     }
 
     .LClandingPageExplore .exploreCards{
@@ -301,10 +313,6 @@
     .LClandingPageHero button {
         padding: .5rem 1rem;
     }
-
-
-
-
     .LClandingPageEarth {
         margin: 3rem 2rem;
         flex-direction: row;
@@ -323,7 +331,6 @@
     .LClandingPageEarth .totalCount div .count {
         font-size: 2rem;
     }
-
     .LClandingPageEarth .totalCount div .count p {
         font-size: .5rem;
     }
@@ -395,7 +402,9 @@
     }
     
     .LClandingPageEarth img {
-        padding-left: 12px;
+       width: 100%;
+       float: right;
+       margin-top: 1rem;
     }
 
 
@@ -407,12 +416,6 @@
         padding: 3rem 3rem;
     }
 
-}
-
-@media (width=540px){
-    .LClandingPageEarth img {
-        padding-left: 10rem;
-    }
 }
 
 @media (width<=350px) {

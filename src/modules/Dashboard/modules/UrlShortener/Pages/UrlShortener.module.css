@@ -6,11 +6,12 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
-    border: 1px solid #E4E7FF;
-    border-radius: 20px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.07);
+    /* border: 1px solid #E4E7FF; */
+    border-radius: 12px;
+    /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.07); */
     margin-bottom: 20px;
     color: black;
+    background-color: #fff;
 
     .form_btns {
         display: flex;
@@ -60,12 +61,12 @@
                 }
 
                 .form_btns .submit {
-                    background: #5570F1;
-                    border-radius: 12px;
-                    color: #fff;
+                    color: rgb(255, 255, 255);
                     cursor: pointer;
                     font-size: 15px;
                     font-weight: 500;
+                    background: rgb(85, 112, 241);
+                    border-radius: 7px;
                 }
             }
         }
