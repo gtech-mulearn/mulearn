@@ -9,6 +9,9 @@
 }
 
 .tableFooter {
+    background-color:  var(--White);
+    padding: 5px 15px;
+    border-radius: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;

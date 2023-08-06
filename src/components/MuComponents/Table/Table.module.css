@@ -5,6 +5,8 @@
     margin-bottom: 10px;
     scrollbar-color: #c7c7c7 #eeeeee;
     scrollbar-width: thin;
+    background-color:  var(--White);
+    padding:5px;
 }
 
 .table::-webkit-scrollbar {
@@ -40,7 +42,7 @@
 
 .page {
     width: 95%;
-    padding: 0 10px;
+    padding: 0px;
 }
 
 .thContainer {
@@ -67,7 +69,7 @@
 
 .btns {
     background-color: var(--blue);
-    color: #fff;
+    color:  var(--White);
     border-radius: var(--borderRadius);
     padding: 4px 6px;
     font-size: 1rem;
