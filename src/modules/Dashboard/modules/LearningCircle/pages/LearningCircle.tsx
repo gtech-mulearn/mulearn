@@ -377,6 +377,7 @@ const LearningCircle = (props: Props) => {
                                         lc.pending_members.map(
                                             (member, index) => (
                                                 <div
+                                                    key={index}
                                                     className={
                                                         styles.PendingMembers
                                                     }
@@ -474,7 +475,7 @@ const LearningCircle = (props: Props) => {
                             <div className={styles.MemberList}>
                                 {lc?.members &&
                                     lc.members.map((member, index) => (
-                                        <div className={styles.MemberName}>
+                                        <div key={index} className={styles.MemberName}>
                                             <img
                                                 src={
                                                     member.profile_pic
