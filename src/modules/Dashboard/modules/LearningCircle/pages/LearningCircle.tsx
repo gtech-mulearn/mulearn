@@ -521,36 +521,32 @@ const LearningCircle = (props: Props) => {
                             </div>
                         </div> */}
 
-                            <div className={styles.Members}>
-                                <span className={styles.MemberTitle}>
-                                    Members
-                                    <i className="fa-solid fa-ellipsis-vertical"></i>
-                                </span>
-                                <div className={styles.MemberList}>
-                                    {lc?.members &&
-                                        lc.members.map((member, index) => (
-                                            <div
-                                                key={index}
-                                                className={styles.MemberName}
-                                            >
-                                                <img
-                                                    src={
-                                                        member.profile_pic
-                                                            ? `https://dev.mulearn.org/${member?.profile_pic}`
-                                                            : pic
-                                                    }
-                                                    alt="Profile Picture"
-                                                />
-                                                <div>
-                                                    <p>{member.username}</p>
-                                                    <span>
-                                                        <img
-                                                            src="https://i.ibb.co/Dbhv9rS/karma.png"
-                                                            alt="karma"
-                                                        />
-                                                        {member.karma}
-                                                    </span>
-                                                </div>
+                        <div className={styles.Members}>
+                            <span className={styles.MemberTitle}>
+                                Members
+                                <i className="fa-solid fa-ellipsis-vertical"></i>
+                            </span>
+                            <div className={styles.MemberList}>
+                                {lc?.members &&
+                                    lc.members.map((member, index) => (
+                                        <div key={index} className={styles.MemberName}>
+                                            <img
+                                                src={
+                                                    member.profile_pic
+                                                        ? member?.profile_pic
+                                                        : pic
+                                                }
+                                                alt="Profile Picture"
+                                            />
+                                            <div>
+                                                <p>{member.username}</p>
+                                                <span>
+                                                    <img
+                                                        src="https://i.ibb.co/Dbhv9rS/karma.png"
+                                                        alt="karma"
+                                                    />
+                                                    {member.karma}
+                                                </span>
                                             </div>
                                         ))}
                                 </div>

@@ -436,12 +436,15 @@ function App() {
                         },
                         {
                             path: "settings",
-                            element: <Settings />
+                            element: <Settings />,
+                            children:[
+                                {
+                                    path: "connected-devices",
+                                    element: <ConnectedDevices />
+                                }
+                            ]
                         },
-                        {
-                            path: "settings/connected-devices",
-                            element: <ConnectedDevices />
-                        }
+                        
                     ]
                 }
             ]
