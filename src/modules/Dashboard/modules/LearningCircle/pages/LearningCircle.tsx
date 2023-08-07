@@ -422,89 +422,86 @@ const LearningCircle = (props: Props) => {
                                         Pending approvals
                                     </b>
 
-                                    <div className={styles.PendingList}>
-                                        {lc?.pending_members &&
-                                            lc.pending_members.map(
-                                                (member, index) => (
+                                <div className={styles.PendingList}>
+                                    {lc?.pending_members &&
+                                        lc.pending_members.map(
+                                            (member, index) => (
+                                                <div
+                                                    key={index}
+                                                    className={
+                                                        styles.PendingMembers
+                                                    }
+                                                >
+                                                    <span>
+                                                        <img
+                                                            src={
+                                                                member.profile_pic
+                                                                    ? `https://dev.mulearn.org/${member?.profile_pic}`
+                                                                    : pic
+                                                            }
+                                                            alt="Profile picture"
+                                                        />
+                                                        <b>{member.username}</b>
+                                                    </span>
                                                     <div
                                                         className={
-                                                            styles.PendingMembers
+                                                            styles.buttons
                                                         }
                                                     >
-                                                        <span>
-                                                            <img
-                                                                src={
-                                                                    member.profile_pic
-                                                                        ? `https://dev.mulearn.org/${member?.profile_pic}`
-                                                                        : pic
-                                                                }
-                                                                alt="Profile picture"
-                                                            />
-                                                            <b>
-                                                                {
-                                                                    member.username
-                                                                }
-                                                            </b>
-                                                        </span>
-                                                        <div
+                                                        <button
                                                             className={
-                                                                styles.buttons
+                                                                styles.BtnBtn
                                                             }
+                                                            onClick={() => {
+                                                                approveLcUser(
+                                                                    id,
+                                                                    member.id,
+                                                                    true
+                                                                );
+                                                                setTimeout(
+                                                                    () => {
+                                                                        navigate(
+                                                                            `/dashboard/learning-circle/details/${id}`
+                                                                        );
+                                                                    },
+                                                                    2000
+                                                                );
+                                                            }}
                                                         >
-                                                            <button
-                                                                className={
-                                                                    styles.BtnBtn
-                                                                }
-                                                                onClick={() => {
-                                                                    approveLcUser(
-                                                                        id,
-                                                                        member.id,
-                                                                        true
-                                                                    );
-                                                                    setTimeout(
-                                                                        () => {
-                                                                            navigate(
-                                                                                `/dashboard/learning-circle/details/${id}`
-                                                                            );
-                                                                        },
-                                                                        2000
-                                                                    );
-                                                                }}
-                                                            >
-                                                                Approve
-                                                            </button>
-                                                            <button
-                                                                className={
-                                                                    styles.BtnClr
-                                                                }
-                                                                onClick={() => {
-                                                                    approveLcUser(
-                                                                        id,
-                                                                        member.id,
-                                                                        false
-                                                                    );
-                                                                    setTimeout(
-                                                                        () => {
-                                                                            navigate(
-                                                                                `/dashboard/learning-circle/details/${id}`
-                                                                            );
-                                                                        },
-                                                                        2000
-                                                                    );
-                                                                }}
-                                                            >
-                                                                Reject
-                                                            </button>
-                                                        </div>
+                                                            Approve
+                                                        </button>
+                                                        <button
+                                                            className={
+                                                                styles.BtnClr
+                                                            }
+                                                            onClick={() => {
+                                                                approveLcUser(
+                                                                    id,
+                                                                    member.id,
+                                                                    false
+                                                                );
+                                                                setTimeout(
+                                                                    () => {
+                                                                        navigate(
+                                                                            `/dashboard/learning-circle/details/${id}`
+                                                                        );
+                                                                    },
+                                                                    2000
+                                                                );
+                                                            }}
+                                                        >
+                                                            Reject
+                                                        </button>
                                                     </div>
-                                                )
-                                            )}
-                                    </div>
+                                                </div>
+                                            )
+                                        )}
                                 </div>
-                            ) : (
-                                <></>
-                            )}
-                        </div>
+                            </div>
+                        ) : (
+                            <></>
+                        )}
+                    </div>
 
                         <div className={styles.RightBox}>
                             {/* TODO: Will implement in next iteration */}
@@ -520,47 +517,40 @@ const LearningCircle = (props: Props) => {
                             </div>
                         </div> */}
 
-                            <div className={styles.Members}>
-                                <span className={styles.MemberTitle}>
-                                    Members
-                                    <i className="fa-solid fa-ellipsis-vertical"></i>
-                                </span>
-                                <div className={styles.MemberList}>
-                                    {lc?.members &&
-                                        lc.members.map((member, index) => (
-                                            <div className={styles.MemberName}>
-                                                <img
-                                                    src={
-                                                        member.profile_pic
-                                                            ? `https://dev.mulearn.org/${member?.profile_pic}`
-                                                            : pic
-                                                    }
-                                                    alt="Profile Picture"
-                                                />
-                                                <div>
-                                                    <p>{member.username}</p>
-                                                    <span>
-                                                        <img
-                                                            src="https://i.ibb.co/Dbhv9rS/karma.png"
-                                                            alt="karma"
-                                                        />
-                                                        {member.karma}
-                                                    </span>
-                                                </div>
+                        <div className={styles.Members}>
+                            <span className={styles.MemberTitle}>
+                                Members
+                                <i className="fa-solid fa-ellipsis-vertical"></i>
+                            </span>
+                            <div className={styles.MemberList}>
+                                {lc?.members &&
+                                    lc.members.map((member, index) => (
+                                        <div key={index} className={styles.MemberName}>
+                                            <img
+                                                src={
+                                                    member.profile_pic
+                                                        ? `https://dev.mulearn.org/${member?.profile_pic}`
+                                                        : pic
+                                                }
+                                                alt="Profile Picture"
+                                            />
+                                            <div>
+                                                <p>{member.username}</p>
+                                                <span>
+                                                    <img
+                                                        src="https://i.ibb.co/Dbhv9rS/karma.png"
+                                                        alt="karma"
+                                                    />
+                                                    {member.karma}
+                                                </span>
                                             </div>
-                                        ))}
-                                </div>
+                                        </div>
+                                    ))}
                             </div>
                         </div>
                     </div>
                 </div>
-            ) : (
-                <div className={styles.spinner_container}>
-                    <div className={styles.spinner}>
-                        <MuLoader />{" "}
-                    </div>
-                </div>
-            )}
+            </div>
         </>
     );
 };
