@@ -18,6 +18,8 @@ export const getNextDate = (dayArray:number[], time:string) => {
 
     const array = dayArray.sort()
     const now = new Date()
+    now.setMinutes(now.getMinutes() - 30) // gives 30 mins cooldown after event starts
+
     const eventTimeArray = time.split(":").map((x) => parseInt(x))
 
     if(eventTimeArray.length < 2) throw new Error("Time is wrong fromated")
@@ -28,7 +30,9 @@ export const getNextDate = (dayArray:number[], time:string) => {
 
         if (diff > 0) return addDaysToDate(diff, eventTimeArray);
         else if (diff === 0) {
-    
+            
+            // same day so...
+            // check for time differences
             const nowTimeArray = [now.getHours(), now.getMinutes()]
 
             if (eventTimeArray[0] > nowTimeArray[0]) return addDaysToDate(0, eventTimeArray);

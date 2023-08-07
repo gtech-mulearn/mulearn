@@ -32,7 +32,7 @@ const LandingPage = () => {
     const [igOptions, setIgOptions] = useState<Option[] | undefined>([]);
     const [ig, setIg] = useState("");
 
-	const [selectedDistrict, setSelectedDistrict] = useState<Option | null>(
+    const [selectedDistrict, setSelectedDistrict] = useState<Option | null>(
         null
     );
     const [selectedCampus, setSelectedCampus] = useState<Option | null>(null);
@@ -53,7 +53,7 @@ const LandingPage = () => {
             setDistrictOptions([]);
             setCampusOptions([]);
             setIgOptions(undefined);
-			setData([]);
+            setData([]);
         }
     };
 
@@ -64,37 +64,37 @@ const LandingPage = () => {
             // Reset other options
             setCampusOptions([]);
             setIgOptions(undefined);
-			setData([]);
+            setData([]);
         }
     };
 
     const handleDistrictChange = async (selectedDistrict: Option | null) => {
         if (selectedDistrict) {
             setDistrict(selectedDistrict.value);
-			setSelectedDistrict(selectedDistrict);
+            setSelectedDistrict(selectedDistrict);
             fetchCampusOptions(selectedDistrict.value, setCampusOptions);
             // Reset other options
             setIgOptions(undefined);
-			setData([]);
-			setSelectedCampus(null);
+            setData([]);
+            setSelectedCampus(null);
             setSelectedIg(null);
         }
     };
 
     const handleCampusChange = async (selectedCampus: Option | null) => {
         if (selectedCampus) {
-			setSelectedCampus(selectedCampus);
+            setSelectedCampus(selectedCampus);
             setCampus(selectedCampus.value);
             setIgOptions(await getInterestGroups());
             setSelectedIg(null);
-			setData([]);
+            setData([]);
         }
     };
 
     const handleIgChange = async (selectedIg: Option | null) => {
         if (selectedIg) {
             setIg(selectedIg.value);
-			setSelectedIg(selectedIg);
+            setSelectedIg(selectedIg);
             fetchLC(setData, ig, campus, district);
             setTimeout(() => {
                 console.log(data);
@@ -123,6 +123,54 @@ const LandingPage = () => {
             display: "none"
         })
     };
+
+    const [counters, setCounters] = useState<number[]>([0, 0, 0, 0, 0]); // Initialize counters
+    const durationInSeconds = 3; // Duration in seconds
+
+    const targetRef = useRef<HTMLDivElement>(null); // Create a ref
+
+    useEffect(() => {
+        const finalValues: number[] = [1, 16, 20, 500, 2500]; // Replace with your actual final values
+
+        const observer = new IntersectionObserver(
+            entries => {
+                if (entries[0].isIntersecting) {
+                    const interval = setInterval(() => {
+                        setCounters(prevCounters =>
+                            prevCounters.map((counter, index) =>
+                                counter < finalValues[index]
+                                    ? counter +
+                                      Math.ceil(
+                                          finalValues[index] /
+                                              (durationInSeconds * 20)
+                                      ) // Increment smoothly
+                                    : finalValues[index]
+                            )
+                        );
+                    }, 50); // Adjust the interval as needed
+
+                    return () => {
+                        clearInterval(interval);
+                    };
+                }
+            },
+            {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.5 // Adjust the threshold as needed
+            }
+        );
+
+        if (targetRef.current) {
+            observer.observe(targetRef.current);
+        }
+
+        return () => {
+            if (targetRef.current) {
+                observer.unobserve(targetRef.current);
+            }
+        };
+    }, []);
 
     return (
         <div className={styles.LClandingPage}>
@@ -169,29 +217,29 @@ const LandingPage = () => {
 
             <div className={styles.LClandingPageEarth}>
                 <div className={styles.totalCount}>
-                    <div>
-                        <div className={styles.count}>
-                            <b>01</b>
-                            <p>States</p>
-                        </div>
-                        <div className={styles.count}>
-                            <b>16</b>
-                            <p>Districts</p>
-                        </div>
-                        <div className={styles.count}>
-                            <b>20+</b>
-                            <p>Interest Groups</p>
-                        </div>
-                    </div>
-                    <div>
-                        <div className={styles.count}>
-                            <b>500+</b>
-                            <p>Campuses</p>
-                        </div>
-                        <div className={styles.count}>
-                            <b>2500+</b>
-                            <p>Learning Circles</p>
-                        </div>
+                    <div ref={targetRef}>
+                        {counters.map((counter, index) => (
+                            <div className={styles.count} key={index}>
+                                <b>
+                                    {index > 1
+                                        ? counter >= 20
+                                            ? `${counter}+`
+                                            : counter
+                                        : counter.toLocaleString()}
+                                </b>
+                                <p>
+                                    {index === 0
+                                        ? "State"
+                                        : index === 1
+                                        ? "Districts"
+                                        : index === 2
+                                        ? "Interest Groups"
+                                        : index === 3
+                                        ? "Campuses"
+                                        : "Learning Circles"}
+                                </p>
+                            </div>
+                        ))}
                     </div>
                 </div>
                 <img src="https://i.ibb.co/BwGShc8/planet.png" alt="globe" />

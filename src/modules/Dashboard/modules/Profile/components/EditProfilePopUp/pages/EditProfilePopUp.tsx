@@ -32,7 +32,7 @@ const EditProfilePopUp = (props: Props) => {
             community: []
         },
         onSubmit: values => {2
-            // patchEditUserProfile(toast, values);
+            patchEditUserProfile(toast, values);
             props.triggerUpdateProfile();
         },
         validate: (values: any) => {
@@ -82,7 +82,7 @@ const EditProfilePopUp = (props: Props) => {
 
     const communityIds: string[] = formik.values.community;
     const filteredCommunityOptions = communityAPI
-        .filter(value => communityIds.includes(value.id))
+        .filter(value => communityIds?.includes(value.id))
         .map(value => ({
             value: value.id,
             label: value.title
