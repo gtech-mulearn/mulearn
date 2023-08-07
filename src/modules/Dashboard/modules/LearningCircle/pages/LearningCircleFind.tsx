@@ -56,13 +56,7 @@ const FindCircle = () => {
                                     <div className={styles.join}>
                                         <button onClick={() => {
 											joinCircle(circle.id)
-                                            toast({
-                                                title: "Wait for approval",
-                                                description: "",
-                                                status: "warning",
-                                                duration: 2000,
-                                                isClosable: true
-                                            });
+                                            
                                             
                                             setTimeout(() => {
                                                 
