@@ -469,6 +469,10 @@ const LearningCircle = (props: Props) => {
                                                                     );
                                                                     setTimeout(
                                                                         () => {
+																			getLcDetails(
+                                                                                setLc,
+                                                                                id
+                                                                            );
                                                                             navigate(
                                                                                 `/dashboard/learning-circle/details/${id}`
                                                                             );
@@ -493,6 +497,10 @@ const LearningCircle = (props: Props) => {
 																	getLcDetails(setLc, id)
                                                                     setTimeout(
                                                                         () => {
+																			getLcDetails(
+                                                                                setLc,
+                                                                                id
+                                                                            );
                                                                             navigate(
                                                                                 `/dashboard/learning-circle/details/${id}`
                                                                             );
