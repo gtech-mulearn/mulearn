@@ -1,17 +1,14 @@
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import axios from "axios";
 import { NavigateFunction } from "react-router-dom";
-import {
-    privateGateway,
-    publicGateway
-} from "@/MuLearnServices/apiGateways";
+import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
 
-type userProfile = UseStateFunc<any>
-type userLog = UseStateFunc<any>
-type APILoadStatus = UseStateFunc<any>
-type userLevelData = UseStateFunc<any>
+type userProfile = UseStateFunc<any>;
+type userLog = UseStateFunc<any>;
+type APILoadStatus = UseStateFunc<any>;
+type userLevelData = UseStateFunc<any>;
 
 export const getUserProfile = (
     setUserProfile: userProfile,
@@ -22,7 +19,6 @@ export const getUserProfile = (
         .get(dashboardRoutes.getUserProfile)
         .then(response => {
             setAPILoadStatus(response.data.statusCode);
-            // console.log(response.data.response.is_public);
             setUserProfile(response.data.response);
             setProfileStatus(response.data.response.is_public);
         })
@@ -69,13 +65,10 @@ export const getPublicUserLog = (setUserLog: userLog, muid: string) => {
             console.log(error);
         });
 };
-export const putIsPublic = (
-    is_public: boolean,
-    toast: ToastAsPara
-) => {
+export const putIsPublic = (is_public: boolean, toast: ToastAsPara) => {
     privateGateway
         .put(dashboardRoutes.putIsPublic, { is_public })
-        .then((response:APIResponse<{}, string[]>) => {
+        .then((response: APIResponse<{}, string[]>) => {
             console.log(response.data.message.general[0]);
 
             toast({
@@ -120,7 +113,7 @@ export const getPublicUserLevels = (
 
 export const fetchQRCode = async (setBlob: any) => {
     try {
-        const muid = fetchLocalStorage<UserInfo>('userInfo')?.muid
+        const muid = fetchLocalStorage<UserInfo>("userInfo")?.muid;
 
         const url = `https://quickchart.io/qr?text=${
             import.meta.env.VITE_FRONTEND_URL

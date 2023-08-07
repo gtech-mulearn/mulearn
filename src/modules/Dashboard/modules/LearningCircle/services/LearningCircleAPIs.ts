@@ -57,7 +57,7 @@ export const updateLcNote = async (
                 note: note
             }
         );
-        const message: any = response?.data;
+        const message: any = response;
         console.log(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;

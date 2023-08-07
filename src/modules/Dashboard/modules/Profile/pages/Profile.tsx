@@ -92,6 +92,13 @@ const Profile = () => {
     const endDate = new Date(moment().format("YYYY-MM-DD"));
     const monthDifference = getMonthDifference(startDate, endDate);
     const firstFetch = useRef(true);
+
+    const triggerUpdateProfile = () => {
+        setTimeout(() => {
+            getUserProfile(setUserProfile, setAPILoadStatus, setProfileStatus);
+        }, 1000);
+    };
+
     useEffect(() => {
         if (firstFetch.current) {
             if (!id) {
@@ -127,6 +134,10 @@ const Profile = () => {
                 <meta name="viewport" content="width=device-width" />
                 <meta name="route-pattern" content="/dashboard/profile/:id" />
                 <meta name="description" content="you bio is here" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+                />
 
                 {/* <!-- Open Graph / Facebook --> */}
                 <meta
@@ -224,7 +235,11 @@ const Profile = () => {
                 ) : (
                     ((id && userProfile.is_public) || !id) && (
                         <>
-                            <EditProfilePopUp editPopUp={editPopUp} setEditPopUP={setEditPopUp}/>
+                            <EditProfilePopUp
+                                editPopUp={editPopUp}
+                                setEditPopUP={setEditPopUp}
+                                triggerUpdateProfile={triggerUpdateProfile}
+                            />
                             <div
                                 style={
                                     popUP
