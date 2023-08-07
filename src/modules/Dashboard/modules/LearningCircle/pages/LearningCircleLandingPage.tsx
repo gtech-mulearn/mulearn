@@ -60,7 +60,7 @@ export const LearningCircleLandingPage = () => {
                             <>
                             <b>Your learning circles</b>
                                 {userCircleList.map((circle, pos) => (
-                                    <>
+                                    <div key={pos}>
                                         <li className={styles.learningCircleLandingPageMainList}>
                                             <input
                                                 className={styles.learningCircleLandingPageExpandBtn}
@@ -91,7 +91,7 @@ export const LearningCircleLandingPage = () => {
                                                 </div>
                                             </label>
                                         </li>
-                                    </>
+                                    </div>
                                 ))}
                             </>
                         ) : (

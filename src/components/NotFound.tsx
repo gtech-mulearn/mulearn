@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import styles from "./NotFound.module.css";
 import astronaut from "./assests/images/astronaut_blue.webp";
+import stone from "./assests/rock.webp"
+import FourNotFour from "./assests/FourNotFour.webp"
+import NoBgFourNotFour from "./assests/NoBgFourNotFour.webp"
+import SmallRocks from "./assests/SmallRocks.webp"
 
 // TODO: Redesign
 
@@ -21,7 +25,7 @@ const NotFound = () => {
                 </div>
                 <div className={styles.Notsecond}>
                     <div className={styles.l}>l</div>
-                    <img className={styles.o} src="/src/components/assests/rock.webp" alt="stone" />
+                    <img className={styles.o} src={stone} alt="stone" />
                     <div className={styles.s}>s</div>
                     <div className={styles.t}>t</div>
                 </div>
@@ -36,13 +40,13 @@ const NotFound = () => {
                 src="https://i.ibb.co/CQDjhGP/ufo.png" alt="" />
 
             <img className={styles.NotFound404}
-                src="/src/components/assests/404.webp" alt="" />
+                src={FourNotFour} alt="" />
 
             <img className={styles.NotFoundRocks}
-                src="/src/components/assests/small_rocks.webp" alt="" />
+                src={SmallRocks} alt="" />
 
             <img className={styles.NotFoundMars}
-                src="/src/components/assests/nobg 404 1.webp" alt="" />
+                src={NoBgFourNotFour} alt="" />
 
         </div>
     );

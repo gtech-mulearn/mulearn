@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./LandingPage.module.css";
+import imageBottom from "../Assets/LC3.webp";
 import { Link, useNavigate } from "react-router-dom";
 import {
     fetchCampusOptions,
@@ -316,8 +317,14 @@ const LandingPage = () => {
                             </div>
                         ))
                     ) : (
-                        <div className={styles.container}></div>
-                    )}
+                            <div className={styles.LClandingPagenone}>
+                                <img
+                                    src={imageBottom}
+                                    alt="You haven't joined any circles yet"
+                                    loading="eager"
+                                />
+                            </div>
+                    )}       
                 </div>
             </div>
         </div>

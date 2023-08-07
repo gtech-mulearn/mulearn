@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import styles from "./LearningCircle.module.css";
 import pic from "../../Profile/assets/images/dpm.webp";
-import { approveLcUser, getLcDetails, setLCMeetTime, updateLcNote } from "../services/LearningCircleAPIs";
+import { approveLcUser, getLcDetails, setLCMeetTime, toast, updateLcNote } from "../services/LearningCircleAPIs";
 import { useNavigate, useParams } from "react-router-dom";
-import {BiEditAlt} from "react-icons/bi"
+import { BiEditAlt } from "react-icons/bi"
+import { AllWeeks, getNextDate, monthNames } from "../services/utils";
 
 
 type Props = {};
@@ -15,24 +16,53 @@ const LearningCircle = (props: Props) => {
     const [meetVenue, setMeetVenue] = useState('');
     const [flag, setFlag] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
-    const [meetDays, setMeetDays] = useState<string[]>([]);
+    const [meetDays, setMeetDays] = useState<number[]>([]);
+
+    const [nextMeet, setNextMeet] = useState<string | null>(null);
+    const [week, setWeek] = useState<string>("");
+
     const { id } = useParams();
-	const navigate = useNavigate()
+    const navigate = useNavigate()
 
     useEffect(() => {
         getLcDetails(setLc, id);
-		if(lc?.note !== '') {
-			setFlag(true)
-		}
-		if(lc?.meet_place || lc?.meet_time !== '') {
-			setIsEdit(true)
-		}
+        if (lc?.note !== '') {
+            setFlag(true)
+        }
+        if (lc?.meet_place || lc?.meet_time !== '') {
+            setIsEdit(true)
+        }
     }, []);
 
-	const handleCheckboxChange = (
+    useEffect(() => {
+        setMeetTime(lc?.meet_time || '')
+        setMeetVenue(lc?.meet_place || '')
+        setMeetDays(lc?.day || [])
+        setNote(lc?.note || '');
+
+        if (lc?.day) {
+            const eventDate = getNextDate(lc?.day, lc.meet_time)
+            const date = eventDate.getDate() // 
+            const month = eventDate.getMonth()
+            const year = eventDate.getFullYear()
+            const day = eventDate.getDay()
+            console.log(date, month, year, day)
+
+            setNextMeet(`${date} ${monthNames[month]} ${year}`)
+            setWeek(AllWeeks[day])
+        }
+        else {
+            setNextMeet(null)
+            setWeek("")
+        }
+    }, [lc]);
+
+
+
+    const handleCheckboxChange = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
-        const { id } = event.target;
+        const id = parseInt(event.target.id)
         setMeetDays(prevSelected =>
             prevSelected.includes(id)
                 ? prevSelected.filter(day => day !== id)
@@ -40,19 +70,31 @@ const LearningCircle = (props: Props) => {
         );
     };
 
-	function handleSchedule(event: any): void {
-		console.log(meetDays)
-		console.log(meetVenue)
-		console.log(meetTime)
-		setLCMeetTime(meetTime, meetVenue, meetDays, id)
-        getLcDetails(setLc, id);
+    const handleSchedule = async (event: any) => {
+        if (meetDays.length === 0 || meetTime === '' || meetVenue === '') {
+            toast({
+                title: "Please fill all the fields",
+                description: "",
+                status: "warning",
+                duration: 2000,
+                isClosable: true
+            });
+            return
+        }
+
+        console.log('Meet days & time', getNextDate(meetDays, meetTime)) // get next date of meeting
+
+        setLCMeetTime(meetTime, meetVenue, meetDays, id)
         setTimeout(() => {
-            if(lc?.meet_place || lc?.meet_time !== '') {
+            getLcDetails(setLc, id);
+        }, 300);
+        setTimeout(() => {
+            if (lc?.meet_place || lc?.meet_time !== '') {
                 setIsEdit(true)
             }
         }, 2000);
-	}
-
+    }
+    console.log(meetDays[0])
     return (
         <>
             <div className={styles.LearningCircleDetailsContent}>
@@ -81,33 +123,39 @@ const LearningCircle = (props: Props) => {
                         <div className={styles.EventOn}>
                             {isEdit ? (
                                 <>
-                                    <div className={styles.MeetingOn}>
-                                        <div>
-                                            <h2>Next Meeting on</h2>
-                                            <div>{/* <b>{lc?.day}</b> */}</div>
+                                    {nextMeet !== null ? <>
+                                        <div className={styles.MeetingOn}>
+                                            <div> <h2>Next Meeting on</h2> </div>
+                                            <BiEditAlt onClick={() => setIsEdit(false)} />
                                         </div>
-                                        <BiEditAlt
-                                            onClick={() => {
-                                                setIsEdit(false);
-                                            }}
-                                        />
-                                    </div>
-                                    <div className={styles.MeetingDate}>
-                                        <h1>22 JUNE 2023</h1>
-                                        <p> Sunday</p>
-                                    </div>
-                                    <div className={styles.MeetingBtn}>
-                                        <div>
-                                            <b>
-                                                venue: {lc?.meet_place} <br />
-                                            </b>
-                                            <b>time: {lc?.meet_time}</b>
+                                        <div className={styles.MeetingDate}>
+                                            <h1>{nextMeet}</h1>
+                                            {week !== null && <p>{week}</p>}
                                         </div>
+                                        <div className={styles.MeetingBtn}>
+                                            <div>
+                                                <b>venue: {lc?.meet_place} <br /></b>
+                                                <b>time: {lc?.meet_time}</b>
+                                            </div>
 
-                                        {/* <button className={styles.BtnBtn}>
-                                            Done
-                                        </button> */}
-                                    </div>
+                                            {/* <button className={styles.BtnBtn}>
+                                                    Done
+                                                </button> */}
+                                        </div>
+                                    </>
+                                        :
+                                        <>
+                                            <div className={styles.MeetingDate}>
+                                                <h1>No meeting scheduled</h1>
+                                            </div>
+                                            <button className={styles.BtnBtn} onClick={() => setIsEdit(false)}>
+                                                schedule now
+                                            </button>
+                                        </>
+
+                                    }
+
+
                                 </>
                             ) : (
                                 <>
@@ -120,14 +168,16 @@ const LearningCircle = (props: Props) => {
                                     </div>
                                     <div className={styles.InputSchedule}>
                                         <div>
-                                            <input
+                                            <input required
                                                 type="time"
+                                                value={meetTime}
                                                 onChange={e => {
                                                     setMeetTime(e.target.value);
                                                 }}
                                                 placeholder="meeting time"
                                             />
-                                            <input
+                                            <input required
+                                                value={meetVenue}
                                                 type="text"
                                                 onChange={e => {
                                                     setMeetVenue(
@@ -141,107 +191,114 @@ const LearningCircle = (props: Props) => {
                                             <p>meeting days</p>
                                             <div className={styles.Lcweek}>
                                                 <div>
-                                                    <input
+                                                    <input required
+                                                        name="day"
                                                         type="checkbox"
-                                                        id="sun"
+                                                        id="0"
                                                         checked={meetDays.includes(
-                                                            "sun"
+                                                            0
                                                         )}
                                                         onChange={
                                                             handleCheckboxChange
                                                         }
                                                     />
-                                                    <label htmlFor="sun">
+                                                    <label htmlFor="0">
                                                         Sun
                                                     </label>
                                                 </div>
                                                 <div>
                                                     <input
                                                         type="checkbox"
-                                                        id="mon"
+                                                        name="day"
+                                                        id="1"
                                                         checked={meetDays.includes(
-                                                            "mon"
+                                                            1
                                                         )}
                                                         onChange={
                                                             handleCheckboxChange
                                                         }
                                                     />
-                                                    <label htmlFor="mon">
+                                                    <label htmlFor="1">
                                                         Mon
                                                     </label>
                                                 </div>
                                                 <div>
                                                     <input
                                                         type="checkbox"
-                                                        id="tue"
+                                                        name="day"
+                                                        id="2"
                                                         checked={meetDays.includes(
-                                                            "tue"
+                                                            2
                                                         )}
                                                         onChange={
                                                             handleCheckboxChange
                                                         }
                                                     />
-                                                    <label htmlFor="tue">
+                                                    <label htmlFor="2">
                                                         Tue
                                                     </label>
                                                 </div>
                                                 <div>
                                                     <input
                                                         type="checkbox"
-                                                        id="wed"
+                                                        name="day"
+                                                        id="3"
                                                         checked={meetDays.includes(
-                                                            "wed"
+                                                            3
                                                         )}
                                                         onChange={
                                                             handleCheckboxChange
                                                         }
                                                     />
-                                                    <label htmlFor="wed">
+                                                    <label htmlFor="3">
                                                         Wed
                                                     </label>
                                                 </div>
                                                 <div>
                                                     <input
                                                         type="checkbox"
-                                                        id="thu"
+                                                        name="day"
+                                                        id="4"
                                                         checked={meetDays.includes(
-                                                            "thu"
+                                                            4
                                                         )}
                                                         onChange={
                                                             handleCheckboxChange
                                                         }
                                                     />
-                                                    <label htmlFor="thu">
+                                                    <label htmlFor="4">
                                                         Thu
                                                     </label>
                                                 </div>
                                                 <div>
                                                     <input
                                                         type="checkbox"
-                                                        id="fri"
+                                                        name="day"
+                                                        id="5"
                                                         checked={meetDays.includes(
-                                                            "fri"
+                                                            5
                                                         )}
                                                         onChange={
                                                             handleCheckboxChange
                                                         }
                                                     />
-                                                    <label htmlFor="fri">
+                                                    <label htmlFor="5">
                                                         Fri
                                                     </label>
                                                 </div>
                                                 <div>
                                                     <input
                                                         type="checkbox"
-                                                        id="sat"
+                                                        name="day"
+                                                        id="6" // sat
                                                         checked={meetDays.includes(
-                                                            "sat"
+                                                            6
                                                         )}
                                                         onChange={
                                                             handleCheckboxChange
                                                         }
                                                     />
-                                                    <label htmlFor="sat">
+                                                    <label htmlFor="6">
                                                         Sat
                                                     </label>
                                                 </div>
@@ -283,6 +340,7 @@ const LearningCircle = (props: Props) => {
                             ) : (
                                 <div className={styles.LcNotedEvent}>
                                     <textarea
+                                        value={note}
                                         onChange={e => {
                                             setNote(e.target.value);
                                         }}
@@ -293,6 +351,7 @@ const LearningCircle = (props: Props) => {
                                         onClick={() => {
                                             updateLcNote(id, note);
                                             setTimeout(() => {
+                                                getLcDetails(setLc, id);
                                                 setFlag(true);
                                                 navigate(
                                                     `/dashboard/learning-circle/details/${id}`
@@ -307,7 +366,7 @@ const LearningCircle = (props: Props) => {
                         </div>
 
                         {lc?.pending_members &&
-                        lc.pending_members.length > 0 ? (
+                            lc.pending_members.length > 0 ? (
                             <div className={styles.PendingApp}>
                                 <b className={styles.PendingTitle}>
                                     Pending approvals

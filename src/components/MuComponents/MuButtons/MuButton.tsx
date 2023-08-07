@@ -61,14 +61,14 @@ export const MuButtonLight = (props: {
     onClick?: React.MouseEventHandler; // onclick event if wanted
 }) => {
     return (
-        <div
+        <button
             className={props.className ? props.className : styles.btn_light}
             style={props.style}
             onClick={props.onClick}
         >
             {props.icon && <div className={styles.btn_icon}>{props.icon}</div>}
             <p>{props.text}</p>
-        </div>
+        </button>
     );
 };
 
@@ -117,7 +117,7 @@ export const DropDownButtons = (props: {
                     >
                         <path
                             d="M1 1L6 6L11 1"
-                            stroke="#a9c8f3"
+                            stroke="#9297aa"
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"

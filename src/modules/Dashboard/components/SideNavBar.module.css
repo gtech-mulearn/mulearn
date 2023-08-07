@@ -73,12 +73,16 @@
     width: 100%;
     height: 100%;
     display: flex;
-    gap: 20px;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     position: relative;
+    gap: 20px;
     overflow: scroll;
+}
+
+.side_nav_bar_container .side_nav_bar .side_nav_bar_items .bottomButtons {
+    width: 100%;
 }
 
 .side_nav_bar_container .side_nav_bar .side_nav_bar_items .side_nav_bar_item {
@@ -100,11 +104,7 @@
     color: #fff;
 }
 
-.side_nav_bar_container
-    .side_nav_bar
-    .side_nav_bar_items
-    .side_nav_bar_item
-    .side_nav_bar_item_icon {
+.side_nav_bar_container .side_nav_bar .side_nav_bar_items .side_nav_bar_item .side_nav_bar_item_icon {
     margin-right: 20px;
 }
 
@@ -114,7 +114,7 @@
     overflow-y: scroll;
     transition: 0.5s ease;
     z-index: 99;
-    /* background-color: #F2F5FF; */
+    background-color: #EEF2FF;
 }
 
 .right_side .top_nav .nav {
@@ -177,6 +177,7 @@
     justify-content: flex-start;
     text-align: center;
     margin-top: 16vh;
+    gap:10px
     /* overflow-x: hidden; */
 }
 
@@ -185,10 +186,11 @@
 }
 
 .copyrightText {
-    font-size: 8px;
+    font-size: 9px;
     text-align: center;
     color: var(--dimText);
-    font-weight: normal;
+    font-weight: 100;
+    margin-top: 10px;
 }
 
 /* responsive */
@@ -203,10 +205,7 @@
         max-width: 35%;
     }
 
-    .side_nav_bar_container
-        .side_nav_bar
-        .side_nav_bar_items
-        .side_nav_bar_item {
+    .side_nav_bar_container .side_nav_bar .side_nav_bar_items .side_nav_bar_item {
         margin-bottom: 10px;
     }
 
@@ -258,17 +257,16 @@
         margin-top: 0rem;
     }
 
-    /* .right_side .top_nav .nav .nav_items {
+    .side_nav_bar_container .side_nav_bar .side_nav_bar_items .bottomButtons {
+        width: unset;
+        margin: 0px auto;
+    }
+    .side_nav_bar_container .side_nav_bar .side_nav_bar_items .bottomButtons button{
         justify-content: center;
-    } */
+    }
 
     .right_side .top_nav .nav .nav_items .menu {
         width: auto;
-    }
-
-    .bottomButtons {
-        border-top: 1px solid #456ff6;
-        padding-top: 20px;
     }
 
     .mulearn_brand2 svg {
