@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    
+    width: 100%;    
 }
 .connectedDevices p{
     color: #777879;
@@ -11,7 +11,7 @@
 .connectedDevices .middle{
     display: flex;
     flex-direction: column;
-    background-color: #F0F6FF;
+    /* background-color: #F0F6FF; */
     height: 100vh;
     gap: 2rem;
     padding: 2rem;

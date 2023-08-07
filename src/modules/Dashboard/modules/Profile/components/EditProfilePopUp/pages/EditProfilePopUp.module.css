@@ -14,7 +14,7 @@
     align-items: center;
 
     .edit_profile {
-        margin: 10dvh auto auto;
+        margin: 5dvh auto auto;
         height: auto;
         max-width: 640px;
         background: white;
@@ -54,6 +54,27 @@
                 font-weight: 500;
                 margin-top: 5px;
                 text-align: left;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 768px) {
+    .edit_profile_container {
+        z-index: 49;
+
+        .edit_profile {
+            margin: 65px auto auto;
+            height: 100dvh;
+            overflow-y: scroll;
+
+            .edit_profile_contents {
+                & form {
+                    .input_field {
+                        width: 100%;
+                    }
+                }
             }
         }
     }

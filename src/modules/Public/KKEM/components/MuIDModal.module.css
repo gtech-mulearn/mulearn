@@ -27,7 +27,8 @@
 
 @media screen and (max-width: 600px) {
     .modal {
-        height:81%;
+        height:90%;
+        max-height: 550px;
            width: 95%;
     }
 }
@@ -54,7 +55,7 @@
 
 @media screen and (max-width: 600px) {
     .modalContent {
-        height:87%;
+        height:92%;
         padding: 2rem;
     }
 }
@@ -221,7 +222,7 @@
     .loginHelp {
         width: 100%;
         font-size: 13px;
-        margin-bottom: 7px;
+        /* margin-bottom: -17px; */
     }
 }
 

@@ -254,7 +254,7 @@ const SideNavBar = (props: Props) => {
                             <MuButton
                                 text="Settings"
                                 icon={<MuSettings />}
-                                onClick={() => navigate("/settings")}
+                                onClick={() => navigate("/dashboard/settings")}
                                 style={{
                                     color: "#9297AA",
                                     backgroundColor: "#fff",
