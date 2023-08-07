@@ -479,7 +479,7 @@ const LearningCircle = (props: Props) => {
                                             <img
                                                 src={
                                                     member.profile_pic
-                                                        ? `https://dev.mulearn.org/${member?.profile_pic}`
+                                                        ? member?.profile_pic
                                                         : pic
                                                 }
                                                 alt="Profile Picture"
