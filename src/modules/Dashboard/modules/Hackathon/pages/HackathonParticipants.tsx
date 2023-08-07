@@ -15,7 +15,7 @@ const HackathonParticipants = (props: Props) => {
     const navigate = useNavigate();
 
     const columnOrder = [
-        { column: "full_name", Label: "Name", isSortable: false },
+        { column: "name", Label: "Name", isSortable: false },
         { column: "email", Label: "Email", isSortable: false },
         { column: "muid", Label: "Mu ID", isSortable: false }
     ];
@@ -29,7 +29,23 @@ const HackathonParticipants = (props: Props) => {
     };
     return (
         <div>
-			test
+            <>
+                {data && (
+                    <Table
+                        rows={data}
+                        page={1}
+                        perPage={50}
+                        columnOrder={columnOrder}
+                        id={["id"]}
+                    >
+                        <THead
+                            columnOrder={columnOrder}
+                            onIconClick={handleNothing}
+                        />
+                        <Blank />
+                    </Table>
+                )}
+            </>
         </div>
     );
 };
