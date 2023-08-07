@@ -1,21 +1,26 @@
 import { useEffect, useState } from "react";
 import styles from "./LearningCircle.module.css";
 import pic from "../../Profile/assets/images/dpm.webp";
-import { approveLcUser, getLcDetails, setLCMeetTime, toast, updateLcNote } from "../services/LearningCircleAPIs";
+import {
+    approveLcUser,
+    getLcDetails,
+    setLCMeetTime,
+    toast,
+    updateLcNote
+} from "../services/LearningCircleAPIs";
 import { useNavigate, useParams } from "react-router-dom";
-import { BiEditAlt } from "react-icons/bi"
+import { BiEditAlt } from "react-icons/bi";
 import { AllWeeks, getNextDate, monthNames } from "../services/utils";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-
 
 type Props = {};
 
 const LearningCircle = (props: Props) => {
     const [lc, setLc] = useState<LcDetail>();
-    const [note, setNote] = useState('');
+    const [note, setNote] = useState("");
     const [temp, setTemp] = useState(false);
-    const [meetTime, setMeetTime] = useState('');
-    const [meetVenue, setMeetVenue] = useState('');
+    const [meetTime, setMeetTime] = useState("");
+    const [meetVenue, setMeetVenue] = useState("");
     const [flag, setFlag] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
     const [meetDays, setMeetDays] = useState<number[]>([]);
@@ -24,52 +29,49 @@ const LearningCircle = (props: Props) => {
     const [week, setWeek] = useState<string>("");
 
     const { id } = useParams();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     useEffect(() => {
         getLcDetails(setLc, id);
-		console.log(lc)
-		setTimeout(() => {
-			console.log(lc)
-			setTemp(true);
-			if (lc?.note !== '') {
-				setFlag(true)
-			}
-			if (lc?.meet_place || lc?.meet_time !== '') {
-				setIsEdit(true)
-			}
+        console.log(lc);
+        setTimeout(() => {
+            console.log(lc);
+            setTemp(true);
+            if (lc?.note !== "") {
+                setFlag(true);
+            }
+            if (lc?.meet_place || lc?.meet_time !== "") {
+                setIsEdit(true);
+            }
         }, 2000);
     }, []);
 
     useEffect(() => {
-        setMeetTime(lc?.meet_time || '')
-        setMeetVenue(lc?.meet_place || '')
-        setMeetDays(lc?.day || [])
-        setNote(lc?.note || '');
+        setMeetTime(lc?.meet_time || "");
+        setMeetVenue(lc?.meet_place || "");
+        setMeetDays(lc?.day || []);
+        setNote(lc?.note || "");
 
         if (lc?.day) {
-            const eventDate = getNextDate(lc?.day, lc.meet_time)
-            const date = eventDate.getDate() // 
-            const month = eventDate.getMonth()
-            const year = eventDate.getFullYear()
-            const day = eventDate.getDay()
-            console.log(date, month, year, day)
+            const eventDate = getNextDate(lc?.day, lc.meet_time);
+            const date = eventDate.getDate(); //
+            const month = eventDate.getMonth();
+            const year = eventDate.getFullYear();
+            const day = eventDate.getDay();
+            console.log(date, month, year, day);
 
-            setNextMeet(`${date} ${monthNames[month]} ${year}`)
-            setWeek(AllWeeks[day])
-        }
-        else {
-            setNextMeet(null)
-            setWeek("")
+            setNextMeet(`${date} ${monthNames[month]} ${year}`);
+            setWeek(AllWeeks[day]);
+        } else {
+            setNextMeet(null);
+            setWeek("");
         }
     }, [lc]);
-
-
 
     const handleCheckboxChange = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
-        const id = parseInt(event.target.id)
+        const id = parseInt(event.target.id);
         setMeetDays(prevSelected =>
             prevSelected.includes(id)
                 ? prevSelected.filter(day => day !== id)
@@ -78,7 +80,7 @@ const LearningCircle = (props: Props) => {
     };
 
     const handleSchedule = async (event: any) => {
-        if (meetDays.length === 0 || meetTime === '' || meetVenue === '') {
+        if (meetDays.length === 0 || meetTime === "" || meetVenue === "") {
             toast({
                 title: "Please fill all the fields",
                 description: "",
@@ -86,22 +88,22 @@ const LearningCircle = (props: Props) => {
                 duration: 2000,
                 isClosable: true
             });
-            return
+            return;
         }
 
-        console.log('Meet days & time', getNextDate(meetDays, meetTime)) // get next date of meeting
+        console.log("Meet days & time", getNextDate(meetDays, meetTime)); // get next date of meeting
 
-        setLCMeetTime(meetTime, meetVenue, meetDays, id)
+        setLCMeetTime(meetTime, meetVenue, meetDays, id);
         setTimeout(() => {
             getLcDetails(setLc, id);
         }, 2000);
         setTimeout(() => {
-            if (lc?.meet_place || lc?.meet_time !== '') {
-                setIsEdit(true)
+            if (lc?.meet_place || lc?.meet_time !== "") {
+                setIsEdit(true);
             }
         }, 2000);
-    }
-    console.log(meetDays[0])
+    };
+    console.log(meetDays[0]);
     return (
         <>
             {temp ? (
@@ -521,32 +523,36 @@ const LearningCircle = (props: Props) => {
                             </div>
                         </div> */}
 
-                        <div className={styles.Members}>
-                            <span className={styles.MemberTitle}>
-                                Members
-                                <i className="fa-solid fa-ellipsis-vertical"></i>
-                            </span>
-                            <div className={styles.MemberList}>
-                                {lc?.members &&
-                                    lc.members.map((member, index) => (
-                                        <div key={index} className={styles.MemberName}>
-                                            <img
-                                                src={
-                                                    member.profile_pic
-                                                        ? member?.profile_pic
-                                                        : pic
-                                                }
-                                                alt="Profile Picture"
-                                            />
-                                            <div>
-                                                <p>{member.username}</p>
-                                                <span>
-                                                    <img
-                                                        src="https://i.ibb.co/Dbhv9rS/karma.png"
-                                                        alt="karma"
-                                                    />
-                                                    {member.karma}
-                                                </span>
+                            <div className={styles.Members}>
+                                <span className={styles.MemberTitle}>
+                                    Members
+                                    <i className="fa-solid fa-ellipsis-vertical"></i>
+                                </span>
+                                <div className={styles.MemberList}>
+                                    {lc?.members &&
+                                        lc.members.map((member, index) => (
+                                            <div
+                                                key={index}
+                                                className={styles.MemberName}
+                                            >
+                                                <img
+                                                    src={
+                                                        member.profile_pic
+                                                            ? member?.profile_pic
+                                                            : pic
+                                                    }
+                                                    alt="Profile Picture"
+                                                />
+                                                <div>
+                                                    <p>{member.username}</p>
+                                                    <span>
+                                                        <img
+                                                            src="https://i.ibb.co/Dbhv9rS/karma.png"
+                                                            alt="karma"
+                                                        />
+                                                        {member.karma}
+                                                    </span>
+                                                </div>
                                             </div>
                                         ))}
                                 </div>
