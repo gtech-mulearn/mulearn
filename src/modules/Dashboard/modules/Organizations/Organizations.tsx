@@ -37,13 +37,6 @@ function Organizations() {
     const toast = useToast();
 
     useEffect(() => {
-        const storedActiveTab = localStorage.getItem("activeTab");
-
-        if (storedActiveTab) {
-            setActiveTab(storedActiveTab as CCC);
-            handleTabClick(storedActiveTab as CCC);
-        }
-
         if (firstFetch.current) {
             getOrganizations(
                 activeTab,
@@ -57,6 +50,13 @@ function Organizations() {
             );
         }
         firstFetch.current = false;
+
+        const storedActiveTab = localStorage.getItem("activeTab");
+
+        if (storedActiveTab) {
+            setActiveTab(storedActiveTab as CCC);
+            handleTabClick(storedActiveTab as CCC);
+        }
     }, []);
 
     const handleNextClick = () => {
