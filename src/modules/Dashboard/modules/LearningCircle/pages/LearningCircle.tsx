@@ -87,7 +87,7 @@ const LearningCircle = (props: Props) => {
         setLCMeetTime(meetTime, meetVenue, meetDays, id)
         setTimeout(() => {
             getLcDetails(setLc, id);
-        }, 300);
+        }, 2000);
         setTimeout(() => {
             if (lc?.meet_place || lc?.meet_time !== '') {
                 setIsEdit(true)
@@ -331,7 +331,7 @@ const LearningCircle = (props: Props) => {
                                                     navigate(
                                                         `/dashboard/learning-circle/details/${id}`
                                                     );
-                                                }, 1000);
+                                                }, 2000);
                                             }}
                                         />
                                     </div>
