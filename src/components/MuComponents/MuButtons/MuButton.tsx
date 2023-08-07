@@ -38,7 +38,10 @@ export const MuButton = (props: {
             }}
             onClick={props.onClick}
             disabled={props.disabled}
-            type={props.type}
+            type={props.type?props.type:'button'}
+            //When there are more than two button with type submit
+            //pressing enter wont submit the form
+            //buttons default to submit if left undefined
         >
             {props.icon && <div className={styles.btn_icon}>{props.icon}</div>}
             <span>{props.text}</span>
