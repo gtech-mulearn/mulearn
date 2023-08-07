@@ -1,0 +1,12 @@
+.reset :not(svg|*){
+    all:revert;
+    margin:0;
+}
+
+.reset{
+    width: 100%;
+}
+
+.reset svg{
+    color:black;
+}
