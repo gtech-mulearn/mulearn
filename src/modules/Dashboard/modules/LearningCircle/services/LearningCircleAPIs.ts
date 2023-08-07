@@ -1,11 +1,9 @@
 import { AxiosError } from "axios";
-import { privateGateway } from "@/MuLearnServices/apiGateways"
+import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { createStandaloneToast } from "@chakra-ui/react";
 
-
 export const { toast } = createStandaloneToast();
-
 
 export const getUserLearningCircles = async (
     setCircleList: UseStateFunc<LcType[] | undefined>
@@ -30,15 +28,21 @@ export const getLcDetails = async (
     id: string | undefined
 ) => {
     try {
-        const response = await privateGateway.get(
+        console.log("Sheyday");
+        const response = (await privateGateway.get(
             dashboardRoutes.getCampusLearningCircles + id + "/"
-        )  as APIResponse<LcDetail & {day:string}>;
+        )) as APIResponse<LcDetail & { day: string }>;
 
-        const message = response.data.response
-        
-        const dayArray = message.day.split(",").map((x: string) => parseInt(x))
-        console.log(message, dayArray);
-        setCircleList({...message, day: dayArray });
+        const message = response.data.response;
+
+        if (message.day) {
+            const dayArray = message.day
+                .split(",")
+                .map((x: string) => parseInt(x));
+            setCircleList({ ...message, day: dayArray });
+        } else {
+            setCircleList(message);
+        }
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -46,10 +50,7 @@ export const getLcDetails = async (
         }
     }
 };
-export const updateLcNote = async (
-    id: string | undefined,
-    note: string
-) => {
+export const updateLcNote = async (id: string | undefined, note: string) => {
     try {
         const response = await privateGateway.put(
             dashboardRoutes.getCampusLearningCircles + id + "/",
@@ -85,17 +86,14 @@ export const getCampusLearningCircles = async (
     }
 };
 
-
-
-export const createCircle = async(
+export const createCircle = async (
     setId: UseStateFunc<string>,
-    circleName:string,
-    circleCode:string,
-    ig:string
-    )=>{
-        
-        try{
-            const response = await privateGateway.post(
+    circleName: string,
+    circleCode: string,
+    ig: string
+) => {
+    try {
+        const response = await privateGateway.post(
             dashboardRoutes.createLearningCircle,
             {
                 name: circleName,
@@ -110,7 +108,7 @@ export const createCircle = async(
         );
         const message: any = response?.data;
         console.log(message.response);
-        console.log(response)
+        console.log(response);
         setId(message.response);
         toast({
             title: "Learning Circle Created",
@@ -119,9 +117,7 @@ export const createCircle = async(
             duration: 2000,
             isClosable: true
         });
-       
-        
-    }catch(err){
+    } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
@@ -134,8 +130,7 @@ export const createCircle = async(
             isClosable: true
         });
     }
-
-}
+};
 
 export const setLCMeetTime = async (
     meetTime: string,
@@ -177,19 +172,17 @@ export const setLCMeetTime = async (
     }
 };
 
-export const joinCircle = async (
-    circleCode: string,
-) => {
+export const joinCircle = async (circleCode: string) => {
     try {
         const response = await privateGateway.post(
-            dashboardRoutes.joinLearningCircle + circleCode + '/',
+            dashboardRoutes.joinLearningCircle + circleCode + "/"
         );
 
         console.log(response);
         toast({
-            title: "Learning Circle Created",
+            title: "Wait for approval",
             description: "",
-            status: "success",
+            status: "warning",
             duration: 2000,
             isClosable: true
         });
@@ -199,7 +192,7 @@ export const joinCircle = async (
             console.log(error.response);
         }
         toast({
-            title: "Learning Circle not creating..",
+            title: "You cannot join the same Learning Circle again",
             description: "",
             status: "error",
             duration: 2000,
@@ -208,25 +201,27 @@ export const joinCircle = async (
     }
 };
 
-export const getInterestGroups = async (
-)=>{
-    try{
-        const response = (await privateGateway.get(
-            dashboardRoutes.getTaskIGs
-        ))?.data?.response
-        return response?.map((obj:any)=>({value:obj.id,label:obj.name}))
-    }catch(err){
+export const getInterestGroups = async () => {
+    try {
+        const response = (await privateGateway.get(dashboardRoutes.getTaskIGs))
+            ?.data?.response;
+        return response?.map((obj: any) => ({
+            value: obj.id,
+            label: obj.name
+        }));
+    } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
-        } 
+        }
     }
-}
+};
 
 export const approveLcUser = async (
     circleId: string | undefined,
     memberId: string,
-	flag: boolean
+    flag: number,
+	status: string
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -242,7 +237,7 @@ export const approveLcUser = async (
 
         console.log(response);
         toast({
-            title: "Member Approved",
+            title: status,
             description: "",
             status: "success",
             duration: 2000,

@@ -81,7 +81,7 @@ const EditProfilePopUp = (props: Props) => {
 
     const communityIds: string[] = formik.values.communities || []; // Provide a default empty array
     const filteredCommunityOptions = communityAPI
-        .filter(value => communityIds.includes(value.id))
+        .filter(value => communityIds?.includes(value.id))
         .map(value => ({
             value: value.id,
             label: value.title
