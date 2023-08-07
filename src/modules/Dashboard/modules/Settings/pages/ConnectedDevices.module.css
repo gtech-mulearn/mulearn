@@ -3,7 +3,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    width: 100%;    
+    width: 100%;
+    background-color: transparent;    
 }
 .connectedDevices p{
     color: #777879;
