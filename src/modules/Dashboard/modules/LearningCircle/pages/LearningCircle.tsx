@@ -460,7 +460,12 @@ const LearningCircle = (props: Props) => {
                                                                     approveLcUser(
                                                                         id,
                                                                         member.id,
-                                                                        true
+                                                                        1,
+                                                                        "Approved Successfully"
+                                                                    );
+																	getLcDetails(
+                                                                        setLc,
+                                                                        id
                                                                     );
                                                                     setTimeout(
                                                                         () => {
@@ -482,8 +487,10 @@ const LearningCircle = (props: Props) => {
                                                                     approveLcUser(
                                                                         id,
                                                                         member.id,
-                                                                        false
+                                                                        0,
+																		'Rejected Successfully'
                                                                     );
+																	getLcDetails(setLc, id)
                                                                     setTimeout(
                                                                         () => {
                                                                             navigate(
