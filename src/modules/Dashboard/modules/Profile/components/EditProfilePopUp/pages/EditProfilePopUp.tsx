@@ -29,11 +29,15 @@ const EditProfilePopUp = (props: Props) => {
             mobile: "",
             gender: "",
             dob: "",
-            community: []
+            communities: []
         },
-        onSubmit: values => {2
+        onSubmit: values => {
+            2;
             patchEditUserProfile(toast, values);
             props.triggerUpdateProfile();
+            setTimeout(() => {
+                props.setEditPopUP(false);
+            }, 500);
         },
         validate: (values: any) => {
             let errors: any = {};
@@ -51,14 +55,8 @@ const EditProfilePopUp = (props: Props) => {
             if (!values.mobile) {
                 errors.mobile = "Required";
             }
-            if (values.community.length === 0) {
-                errors.community = "Required";
-            }
-            if (!values.gender) {
-                errors.gender = "Required";
-            }
-            if (!values.dob) {
-                errors.dob = "Required";
+            if (values.communities.length === 0) {
+                errors.communities = "Required";
             }
 
             return errors;
@@ -75,12 +73,13 @@ const EditProfilePopUp = (props: Props) => {
                 mobile: data.mobile,
                 gender: data.gender,
                 dob: data.dob,
-                community: data.community
+                communities: data.communities
             });
         });
     }, []);
+    console.log(formik.values.communities);
 
-    const communityIds: string[] = formik.values.community;
+    const communityIds: string[] = formik.values.communities || []; // Provide a default empty array
     const filteredCommunityOptions = communityAPI
         .filter(value => communityIds.includes(value.id))
         .map(value => ({
@@ -176,10 +175,10 @@ const EditProfilePopUp = (props: Props) => {
                             <label htmlFor="">Community</label>
                             {loadStatus && (
                                 <Select
-                                    name="community.id"
+                                    name="communities.id"
                                     onChange={OnChangeValue => {
                                         formik.setFieldValue(
-                                            "community",
+                                            "communities",
                                             OnChangeValue.map(
                                                 (
                                                     value: any = {
@@ -201,23 +200,65 @@ const EditProfilePopUp = (props: Props) => {
                                     })}
                                 />
                             )}
-                            {formik.touched.community &&
-                                formik.errors.community && (
+                            {formik.touched.communities &&
+                                formik.errors.communities && (
                                     <div className={styles.error_message}>
-                                        {formik.errors.community}
+                                        {formik.errors.communities}
                                     </div>
                                 )}
                         </div>
                         <div className={styles.input_field}>
                             <label htmlFor="">Gender</label>
-                            <input
-                                type="text"
+                            <select
                                 name="gender"
+                                onBlur={formik.handleBlur}
                                 onChange={formik.handleChange}
                                 value={formik.values.gender}
+                            >
+                                <option value="">Select gender</option>
+                                <option value="male">
+                                    <span className={styles.gender}>♂</span>{" "}
+                                    Male
+                                </option>
+                                <option value="female">
+                                    <span className={styles.gender}>♀</span>{" "}
+                                    Female
+                                </option>
+                                <option value="other">Other</option>
+                                <option value="not to say">
+                                    Prefer not to say
+                                </option>
+                            </select>
+                            {/* <Select
+                                name="gender"
                                 onBlur={formik.handleBlur}
-                                placeholder="Gender"
-                            />
+                                onChange={selectedOption => {
+                                    formik.setFieldValue(
+                                        "gender",
+                                        selectedOption?.value
+                                    );
+                                }}
+                                value={{
+                                    value: formik.values.gender,
+                                    label: formik.values.gender
+                                }}
+                                options={[
+                                    { value: "", label: "Select gender" },
+                                    {
+                                        value: "male",
+                                        label: "♂ Male"
+                                    },
+                                    {
+                                        value: "female",
+                                        label: "♀ Female"
+                                    },
+                                    { value: "other", label: "Other" },
+                                    {
+                                        value: "not to say",
+                                        label: "Prefer not to say"
+                                    }
+                                ]}
+                            /> */}
                             {formik.touched.gender && formik.errors.gender && (
                                 <div className={styles.error_message}>
                                     {formik.errors.gender}

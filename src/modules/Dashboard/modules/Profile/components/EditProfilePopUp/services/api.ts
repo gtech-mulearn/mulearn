@@ -10,7 +10,7 @@ type profileDetails = {
     mobile: string;
     gender: string;
     dob: string;
-    community: any;
+    communities: any;
 };
 type getAPI = React.Dispatch<
     React.SetStateAction<
@@ -36,7 +36,7 @@ export const getEditUserProfile = (
                 mobile,
                 gender,
                 dob,
-                community
+                communities
             } = response.data.response;
             const profileDetails: profileDetails = {
                 first_name: first_name,
@@ -45,7 +45,7 @@ export const getEditUserProfile = (
                 mobile: mobile,
                 gender,
                 dob,
-                community
+                communities
             };
             setProfileDetails(profileDetails);
         })
