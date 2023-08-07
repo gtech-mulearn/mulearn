@@ -102,7 +102,7 @@ export const editManageUsers = async (
                 organizations:organizations,
                 department: department,
                 graduation_year: graduation_year,
-                role:role,
+                roles:role,
                 interest_groups:interest_groups
             }
         );

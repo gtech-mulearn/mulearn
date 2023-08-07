@@ -49,7 +49,7 @@ const ConnectedDevices = () => {
             <div className={styles.middle}>
                 <div className={styles.content}>
                     {/* <i class="fa fa-arrow-left"></i> */}
-                    <FaArrowLeft onClick={handleReturn}/>
+                    {/* <FaArrowLeft onClick={handleReturn}/> */}
                     <br/>
                     <p>You’re signed in on these devices or have been in the last 28 days. There might be multiple activity sessions from the same device.</p>
 
