@@ -16,8 +16,8 @@ import TableTopTab from "./TableTopTab";
 import { organizationRoutes } from "@/MuLearnServices/urls";
 
 function Organizations() {
-    const ccc = ['Colleges', "Companies", "Communities"] as const
-    type CCC = typeof ccc[number]
+    const ccc = ["Colleges", "Companies", "Communities"] as const;
+    type CCC = (typeof ccc)[number];
 
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -37,8 +37,14 @@ function Organizations() {
     const toast = useToast();
 
     useEffect(() => {
-        if (firstFetch.current) {
+        const storedActiveTab = localStorage.getItem("activeTab");
 
+        if (storedActiveTab) {
+            setActiveTab(storedActiveTab as CCC);
+            handleTabClick(storedActiveTab as CCC);
+        }
+
+        if (firstFetch.current) {
             getOrganizations(
                 activeTab,
                 setData,
@@ -113,20 +119,34 @@ function Organizations() {
     };
 
     const handleTabClick = (tab: CCC) => {
-
-        if (ccc.some(c => c === tab)){
-
+        if (ccc.some(c => c === tab)) {
             switch (tab) {
-                case 'Colleges' : setActiveTabName('college')
-                                  setColumns(columnsCollege); break;
-                case 'Companies' : setActiveTabName('company')
-                                   setColumns(columnsCompanies); break;
-                case 'Communities' : setActiveTabName('community')
-                                     setColumns(columnsCommunities); break;
+                case "Colleges":
+                    setActiveTabName("college");
+                    setColumns(columnsCollege);
+                    break;
+                case "Companies":
+                    setActiveTabName("company");
+                    setColumns(columnsCompanies);
+                    break;
+                case "Communities":
+                    setActiveTabName("community");
+                    setColumns(columnsCommunities);
+                    break;
             }
-            getOrganizations(tab, setData, 1, perPage, setIsLoading, setTotalPages, "", "");
-        }
-        else {
+            localStorage.setItem("activeTab", tab);
+
+            getOrganizations(
+                tab,
+                setData,
+                1,
+                perPage,
+                setIsLoading,
+                setTotalPages,
+                "",
+                ""
+            );
+        } else {
             alert("Error to load Table Headers");
         }
         setCurrentPage(1);
@@ -136,7 +156,7 @@ function Organizations() {
 
     const handleIconClick = (column: string) => {
         if (sort === column) {
-            console.log('desc', column)
+            console.log("desc", column);
             setSort(`-${column}`);
             getOrganizations(
                 activeTab,
@@ -150,7 +170,7 @@ function Organizations() {
             );
         } else {
             setSort(column);
-            console.log('asc', column)
+            console.log("asc", column);
             getOrganizations(
                 activeTab,
                 setData,
@@ -186,7 +206,10 @@ function Organizations() {
 
     return (
         <>
-            <TableTopTab active={activeTab} onTabClick={handleTabClick as (tab:string) => void} />
+            <TableTopTab
+                active={activeTab}
+                onTabClick={handleTabClick as (tab: string) => void}
+            />
 
             {data && (
                 <>
@@ -213,7 +236,7 @@ function Organizations() {
                             action={true}
                         />
                         <div>
-                            {!isLoading &&
+                            {!isLoading && (
                                 <Pagination
                                     currentPage={currentPage}
                                     totalPages={totalPages}
@@ -223,7 +246,7 @@ function Organizations() {
                                     onSearchText={handleSearch}
                                     onPerPageNumber={handlePerPageNumber}
                                 />
-                            }
+                            )}
                         </div>
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>
