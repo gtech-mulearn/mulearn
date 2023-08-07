@@ -180,9 +180,9 @@ export const joinCircle = async (circleCode: string) => {
 
         console.log(response);
         toast({
-            title: "Learning Circle Created",
+            title: "Wait for approval",
             description: "",
-            status: "success",
+            status: "warning",
             duration: 2000,
             isClosable: true
         });
@@ -192,7 +192,7 @@ export const joinCircle = async (circleCode: string) => {
             console.log(error.response);
         }
         toast({
-            title: "Learning Circle not creating..",
+            title: "You cannot join the same Learning Circle again",
             description: "",
             status: "error",
             duration: 2000,
@@ -220,7 +220,8 @@ export const getInterestGroups = async () => {
 export const approveLcUser = async (
     circleId: string | undefined,
     memberId: string,
-    flag: boolean
+    flag: number,
+	status: string
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -236,7 +237,7 @@ export const approveLcUser = async (
 
         console.log(response);
         toast({
-            title: "Member Approved",
+            title: status,
             description: "",
             status: "success",
             duration: 2000,
