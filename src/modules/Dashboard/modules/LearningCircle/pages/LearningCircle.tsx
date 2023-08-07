@@ -377,7 +377,6 @@ const LearningCircle = (props: Props) => {
                                             <BiEditAlt
                                                 style={{ cursor: "pointer" }}
                                                 onClick={() => {
-                                                    console.log(lc?.note);
                                                     setFlag(false);
                                                     setTimeout(() => {
                                                         navigate(
