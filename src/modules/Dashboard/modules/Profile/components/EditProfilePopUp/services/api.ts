@@ -54,11 +54,21 @@ export const getEditUserProfile = (
         });
 };
 
-export const patchEditUserProfile = (editedProfileDetails: profileDetails) => {
+export const patchEditUserProfile = (
+    toast: ToastAsPara,
+    editedProfileDetails: profileDetails
+) => {    
     privateGateway
         .patch(dashboardRoutes.getEditUserProfile, editedProfileDetails)
         .then(response => {
-            console.log(response.data.response);
+            // console.log(response.data.response);
+            toast({
+                title: "Profile Updated",
+                description: "Your profile has been updated",
+                status: "success",
+                duration: 3000,
+                isClosable: true
+            });
         })
         .catch(error => {
             console.log(error);
