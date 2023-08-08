@@ -29,7 +29,7 @@ const KarmaHistory = (props: Props) => {
                                 setUserLog(
                                     props.userLog.filter(
                                         (log: any) =>
-                                            log.task_name !== "daily-chat-karma"
+                                            log.task_name !== "Chat Karma"
                                     )
                                 );
                             } else {
@@ -40,9 +40,9 @@ const KarmaHistory = (props: Props) => {
                 </span>
             </p>
             <div className={styles.karma_history_container} id="section1">
-                {userLog.map((log: any) => {
+                {userLog.map((log: any,i) => {
                     return (
-                        <div className={styles.karma_history}>
+                        <div className={styles.karma_history} key={i}>
                             <p className={styles.karma_history_box_bg}>
                                 <KarmaSymbol />
                             </p>

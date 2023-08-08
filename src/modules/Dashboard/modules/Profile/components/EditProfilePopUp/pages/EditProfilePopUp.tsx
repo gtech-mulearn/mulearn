@@ -37,7 +37,7 @@ const EditProfilePopUp = (props: Props) => {
             props.triggerUpdateProfile();
             setTimeout(() => {
                 props.setEditPopUP(false);
-            }, 500);
+            }, 1000);
         },
         validate: (values: any) => {
             let errors: any = {};
