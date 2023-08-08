@@ -55,7 +55,7 @@ privateGateway.interceptors.response.use(
         if (error.response?.data?.statusCode === 1000) {
             // publicGatewayAuth
             try {
-                const response = await publicGatewayAuth.post(
+                const response = await publicGateway.post(
                     authRoutes.getAccessToken,
                     {
                         refreshToken: fetchLocalStorage<AllTokens["refreshToken"]>("refreshToken")
