@@ -72,6 +72,13 @@ export const createInterestGroups = async (
                 isClosable: true
             });
         }
+        toast({
+            title: " Create Failed",
+            description: "",
+            status: "error",
+            duration: 3000,
+            isClosable: true
+        });
     }
 };
 
@@ -156,5 +163,11 @@ export const deleteInterestGroups = async (
         if (error?.response) {
             console.log(error.response);
         }
+        toast({
+            title: "Delete Failed",
+            status: "error",
+            duration: 3000,
+            isClosable: true
+        });
     }
 };

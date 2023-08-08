@@ -17,6 +17,7 @@ export const MuButton = (props: {
     style?: React.CSSProperties; // button style if wanted
     className?: string; // button class name if wanted
     onClick?: React.MouseEventHandler; // onclick event if wanted
+    onSubmit?:any;
     isLoading?: boolean; // show loading spinner if neccessary.
     disabled?: boolean; //disable the button if needed
     buttonUrl?: string; // for styling purposes
@@ -37,6 +38,7 @@ export const MuButton = (props: {
                 ...props.style
             }}
             onClick={props.onClick}
+            onSubmit={props.onSubmit}
             disabled={props.disabled}
             type={props.type?props.type:'button'}
             //When there are more than two button with type submit
