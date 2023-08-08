@@ -12,6 +12,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BiEditAlt } from "react-icons/bi";
 import { AllWeeks, getNextDate, monthNames } from "../services/utils";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { IoArrowBackCircleOutline } from "react-icons/io5";
+import { Tooltip } from "react-tooltip";
 
 type Props = {};
 
@@ -124,7 +126,29 @@ const LearningCircle = (props: Props) => {
                                     {lc?.total_karma} Karma
                                 </b>
                             </div>
-                            <i className="fa-solid fa-right-from-bracket"></i>
+                            <IoArrowBackCircleOutline
+                                data-tooltip-id="Icon"
+                                data-tooltip-content="Go back"
+                                style={{
+                                    color: "var(--White)",
+                                    backgroundColor: "var(--blue)",
+                                    borderRadius: "50%",
+                                    fontSize: "30px",
+                                    cursor: "pointer"
+                                }}
+                                onClick={() => {
+                                    navigate("/dashboard/learning-circle");
+                                }}
+                            />
+                            <Tooltip
+                                id="Icon"
+                                style={{
+                                    backgroundColor: "var(--blue)",
+                                    color: "var(--White)",
+                                    borderRadius: "10px",
+									padding: '0 10px'
+                                }}
+                            />
                         </div>
                     </div>
 
@@ -145,6 +169,9 @@ const LearningCircle = (props: Props) => {
                                                         </h2>{" "}
                                                     </div>
                                                     <BiEditAlt
+                                                        style={{
+                                                            cursor: "pointer"
+                                                        }}
                                                         onClick={() =>
                                                             setIsEdit(false)
                                                         }
