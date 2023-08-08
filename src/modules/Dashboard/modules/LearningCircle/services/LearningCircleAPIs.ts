@@ -203,9 +203,9 @@ export const joinCircle = async (circleCode: string) => {
 
 export const getInterestGroups = async () => {
     try {
-        const response = (await privateGateway.get(dashboardRoutes.getTaskIGs))
-            ?.data?.response;
-        return response?.map((obj: any) => ({
+        const response = (await privateGateway.get(dashboardRoutes.getCampusIg))
+            ?.data?.response.interestGroup as { id: string; name: string }[];
+        return response?.map(obj => ({
             value: obj.id,
             label: obj.name
         }));
