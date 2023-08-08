@@ -191,6 +191,7 @@
     width: 100%;
     color: #000;
     font-weight: 600;
+    gap: 1rem;
 }
 
 .LearningCircleDetailsContent b {
@@ -253,7 +254,7 @@
 
 .RightBox {
     width: 40%;
-    margin-top: -1rem;
+    margin-top:-0.5rem;
 }
 
 .EventOn,
@@ -266,7 +267,7 @@
     align-items: center;
     flex-direction: column;
     gap: 0.5rem;
-    margin: 10px;
+    margin: 10px 0;
 }
 
 .MeetingOn {
