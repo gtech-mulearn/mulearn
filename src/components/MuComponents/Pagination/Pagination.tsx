@@ -1,6 +1,6 @@
 import styles from "./pagination.module.css";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
-import { useState } from 'react';
+import { useState, Dispatch, SetStateAction } from 'react';
 import ShowPerPage from "./ShowPerPage";
 
 type Props = {
@@ -11,6 +11,8 @@ type Props = {
     margin?: string;
     onSearchText?: (data: string) => void;
     onPerPageNumber?: (data: number) => void;
+    perPage: number;
+    setPerPage: Dispatch<SetStateAction<number>>
 };
 
 const Pagination = (props: Props) => {
@@ -18,6 +20,7 @@ const Pagination = (props: Props) => {
 
     const handleOptionChange = (value: number) => {
         setItemsPerPage(value);
+        props.setPerPage(value)
         props.onPerPageNumber && props.onPerPageNumber(value);
     };
 
@@ -56,7 +59,7 @@ const Pagination = (props: Props) => {
                     </div>
                     <ShowPerPage
                         options={[5, 10, 20, 50, 100]}
-                        selectedOption={itemsPerPage}
+                        selectedOption={props.perPage}
                         onOptionChange={handleOptionChange}
                     />
                 </div>

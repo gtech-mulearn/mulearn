@@ -133,7 +133,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                     {props.children?.[0]}
                     {props.isloading ?
                         <tr>
-                            <td colSpan={props.columnOrder.length+2} style={{ width: '100%'}}>
+                            <td colSpan={props.columnOrder.length + 2} style={{ width: '100%' }}>
                                 <MuLoader />
                             </td>
                         </tr>
@@ -262,8 +262,8 @@ const Table: FC<TableProps> = (props: TableProps) => {
             </div>
 
             {(() => {
-                 if (props.isloading) {
-					return ""
+                if (props.isloading) {
+                    return ""
                 }
                 if (props.rows.length)
                     return (
