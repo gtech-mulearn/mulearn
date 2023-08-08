@@ -377,7 +377,6 @@ const LearningCircle = (props: Props) => {
                                             <BiEditAlt
                                                 style={{ cursor: "pointer" }}
                                                 onClick={() => {
-                                                    console.log(lc?.note);
                                                     setFlag(false);
                                                     setTimeout(() => {
                                                         navigate(
@@ -438,7 +437,7 @@ const LearningCircle = (props: Props) => {
                                                             <img
                                                                 src={
                                                                     member.profile_pic
-                                                                        ? `https://dev.mulearn.org/${member?.profile_pic}`
+                                                                        ? member?.profile_pic
                                                                         : pic
                                                                 }
                                                                 alt="Profile picture"
@@ -465,13 +464,13 @@ const LearningCircle = (props: Props) => {
                                                                         1,
                                                                         "Approved Successfully"
                                                                     );
-																	getLcDetails(
-                                                                        setLc,
-                                                                        id
-                                                                    );
+                                                                    // getLcDetails(
+                                                                    //     setLc,
+                                                                    //     id
+                                                                    // );
                                                                     setTimeout(
                                                                         () => {
-																			getLcDetails(
+                                                                            getLcDetails(
                                                                                 setLc,
                                                                                 id
                                                                             );
@@ -494,12 +493,12 @@ const LearningCircle = (props: Props) => {
                                                                         id,
                                                                         member.id,
                                                                         0,
-																		'Rejected Successfully'
+                                                                        "Rejected Successfully"
                                                                     );
-																	getLcDetails(setLc, id)
+                                                                    // getLcDetails(setLc, id)
                                                                     setTimeout(
                                                                         () => {
-																			getLcDetails(
+                                                                            getLcDetails(
                                                                                 setLc,
                                                                                 id
                                                                             );

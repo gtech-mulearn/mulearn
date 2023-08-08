@@ -192,7 +192,7 @@ export const joinCircle = async (circleCode: string) => {
             console.log(error.response);
         }
         toast({
-            title: "You cannot join the same Learning Circle again",
+            title: "Cannot send another request at the moment",
             description: "",
             status: "error",
             duration: 2000,
