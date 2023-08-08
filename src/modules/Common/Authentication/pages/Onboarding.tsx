@@ -499,6 +499,7 @@ const Onboarding = (props: Props) => {
                                             <h3>What is your role ?</h3>
                                             <div className={styles.answers}>
                                                 <button
+                                                    type="button"
                                                     onClick={() => {
                                                         roleAPI.map(
                                                             (role: any) => {
@@ -524,6 +525,7 @@ const Onboarding = (props: Props) => {
                                                     I'm currently studying
                                                 </button>
                                                 <button
+                                                    type="button"
                                                     onClick={() => {
                                                         setOpacity(0);
                                                         setSecondQuestion(true);
@@ -536,6 +538,7 @@ const Onboarding = (props: Props) => {
                                                     professional
                                                 </button>
                                                 <button
+                                                type="button"
                                                     onClick={() => {
                                                         roleAPI.map(
                                                             (role: any) => {
@@ -562,6 +565,7 @@ const Onboarding = (props: Props) => {
                                                     I'm teaching in a institute
                                                 </button>
                                                 <button
+                                                    type="button"
                                                     onClick={() => {
                                                         setOpacity(0);
                                                         setSecondQuestion(true);
@@ -573,6 +577,7 @@ const Onboarding = (props: Props) => {
                                                     I'm a freelancer
                                                 </button>
                                                 <button
+                                                type="button"
                                                     onClick={() => {
                                                         setOpacity(0);
                                                         setTimeout(() => {
@@ -605,6 +610,7 @@ const Onboarding = (props: Props) => {
                                             </h3>
                                             <div className={styles.answers}>
                                                 <button
+                                                    type="button"
                                                     onClick={() => {
                                                         setRole([
                                                             {
@@ -621,6 +627,7 @@ const Onboarding = (props: Props) => {
                                                     No
                                                 </button>
                                                 <button
+                                                type="button"
                                                     onClick={() => {
                                                         roleAPI.map(
                                                             (role: any) => {
@@ -814,6 +821,7 @@ const Onboarding = (props: Props) => {
                                                 value={formik.values.password}
                                             />
                                             <button
+                                            type="button"
                                                 className={styles.password_icon}
                                                 onClick={e => {
                                                     e.preventDefault();
@@ -867,6 +875,7 @@ const Onboarding = (props: Props) => {
                                                 }
                                             />
                                             <button
+                                            type="button"
                                                 className={styles.password_icon}
                                                 onClick={e => {
                                                     e.preventDefault();

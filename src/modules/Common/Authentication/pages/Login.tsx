@@ -84,6 +84,7 @@ const Login = () => {
                                 </a>
                             </p>
                             <MuButton
+                                type="submit"
                                 text={"Sign In"}
                                 className={styles.signin_button}
                                 onClick={e => {
