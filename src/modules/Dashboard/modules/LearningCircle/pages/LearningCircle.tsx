@@ -10,7 +10,7 @@ import {
 } from "../services/LearningCircleAPIs";
 import { useNavigate, useParams } from "react-router-dom";
 import { BiEditAlt } from "react-icons/bi";
-import { AllWeeks, getNextDate, monthNames } from "../services/utils";
+import { AllWeeks, convert24to12, getNextDate, monthNames } from "../services/utils";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { Tooltip } from "react-tooltip";
@@ -200,7 +200,7 @@ const LearningCircle = (props: Props) => {
                                                         </b>
                                                         <b>
                                                             Time:{" "}
-                                                            {lc?.meet_time}
+                                                            {convert24to12(String(lc?.meet_time))}
                                                         </b>
                                                     </div>
 
