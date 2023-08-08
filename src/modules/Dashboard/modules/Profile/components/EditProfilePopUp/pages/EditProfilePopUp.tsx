@@ -55,9 +55,6 @@ const EditProfilePopUp = (props: Props) => {
             if (!values.mobile) {
                 errors.mobile = "Required";
             }
-            if (values.communities.length === 0) {
-                errors.communities = "Required";
-            }
 
             return errors;
         }
@@ -200,12 +197,6 @@ const EditProfilePopUp = (props: Props) => {
                                     })}
                                 />
                             )}
-                            {formik.touched.communities &&
-                                formik.errors.communities && (
-                                    <div className={styles.error_message}>
-                                        {formik.errors.communities}
-                                    </div>
-                                )}
                         </div>
                         <div className={styles.input_field}>
                             <label htmlFor="">Gender</label>
@@ -229,41 +220,6 @@ const EditProfilePopUp = (props: Props) => {
                                     Prefer not to say
                                 </option>
                             </select>
-                            {/* <Select
-                                name="gender"
-                                onBlur={formik.handleBlur}
-                                onChange={selectedOption => {
-                                    formik.setFieldValue(
-                                        "gender",
-                                        selectedOption?.value
-                                    );
-                                }}
-                                value={{
-                                    value: formik.values.gender,
-                                    label: formik.values.gender
-                                }}
-                                options={[
-                                    { value: "", label: "Select gender" },
-                                    {
-                                        value: "male",
-                                        label: "♂ Male"
-                                    },
-                                    {
-                                        value: "female",
-                                        label: "♀ Female"
-                                    },
-                                    { value: "other", label: "Other" },
-                                    {
-                                        value: "not to say",
-                                        label: "Prefer not to say"
-                                    }
-                                ]}
-                            /> */}
-                            {formik.touched.gender && formik.errors.gender && (
-                                <div className={styles.error_message}>
-                                    {formik.errors.gender}
-                                </div>
-                            )}
                         </div>
                         <div className={styles.input_field}>
                             <label htmlFor="">DOB</label>
@@ -275,11 +231,6 @@ const EditProfilePopUp = (props: Props) => {
                                 onBlur={formik.handleBlur}
                                 placeholder="DOB"
                             />
-                            {formik.touched.dob && formik.errors.dob && (
-                                <div className={styles.error_message}>
-                                    {formik.errors.dob}
-                                </div>
-                            )}
                         </div>
 
                         <MuButton
@@ -293,9 +244,6 @@ const EditProfilePopUp = (props: Props) => {
                                 padding: "16px"
                             }}
                             text={"Update Profile"}
-                            onClick={() => {
-                                // function()
-                            }}
                         />
                         <button
                             type="button"
