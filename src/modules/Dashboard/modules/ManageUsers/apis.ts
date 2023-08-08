@@ -1,16 +1,24 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
-import { dashboardRoutes,organizationRoutes } from "@/MuLearnServices/urls";
+import { dashboardRoutes, organizationRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
-export const getManageUsers = async (
-    setData: UseStateFunc<any>,
-    page: number,
-    selectedValue: number,
-    setIsLoading: UseStateFunc<boolean>,
-    setTotalPages?: UseStateFunc<any>,
-    search?: string,
-    sortID?: string
-) => {
+export const getManageUsers = async ({
+    setData,
+    page,
+    selectedValue,
+    setIsLoading,
+    setTotalPages,
+    search,
+    sortID
+}: {
+    setData: UseStateFunc<any>;
+    page: number;
+    selectedValue: number;
+    setIsLoading: UseStateFunc<boolean>;
+    setTotalPages?: UseStateFunc<any>;
+    search?: string;
+    sortID?: string;
+}) => {
     setIsLoading(true);
     try {
         const response = await privateGateway.get(
@@ -39,7 +47,8 @@ export const getManageUsers = async (
             }
         }
         setData(datasuser);
-        if (setTotalPages) setTotalPages(manageusers.response.pagination.totalPages);
+        if (setTotalPages)
+            setTotalPages(manageusers.response.pagination.totalPages);
         setIsLoading(false);
     } catch (err: unknown) {
         setIsLoading(false);
@@ -82,14 +91,14 @@ export const createManageUsers = async (
 export const editManageUsers = async (
     id?: string,
     first_name?: string,
-    last_name?: string ,
-    email?: string ,
-    mobile?: string ,
+    last_name?: string,
+    email?: string,
+    mobile?: string,
     organizations?: string[],
     department?: string,
     graduation_year?: string,
-    role?:string[],
-    interest_groups?:string[]
+    role?: string[],
+    interest_groups?: string[]
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -99,11 +108,11 @@ export const editManageUsers = async (
                 last_name: last_name,
                 email: email,
                 mobile: mobile,
-                organizations:organizations,
+                organizations: organizations,
                 department: department,
                 graduation_year: graduation_year,
-                roles:role,
-                interest_groups:interest_groups
+                roles: role,
+                interest_groups: interest_groups
             }
         );
         //console.log(first_name, last_name, email);
