@@ -380,27 +380,81 @@ function App() {
                         },
                         {
                             path: "hackathon",
-                            element: <Hackathon />
+                            element: (
+                                <RoleChecker
+                                    roles={[
+                                        roles.STUDENT,
+                                        roles.ADMIN,
+                                        roles.FELLOW
+                                    ]}
+                                    children={<Hackathon />}
+                                />
+                            )
                         },
                         {
                             path: "hackathon/create",
-                            element: <HackathonCreate />
+                            element: (
+                                <RoleChecker
+                                    roles={[
+                                        roles.STUDENT,
+                                        roles.ADMIN,
+                                        roles.FELLOW
+                                    ]}
+                                    children={<HackathonCreate />}
+                                />
+                            )
                         },
                         {
                             path: "hackathon/edit/:id",
-                            element: <HackathonCreate />
+                           element: (
+                                <RoleChecker
+                                    roles={[
+                                        roles.STUDENT,
+                                        roles.ADMIN,
+                                        roles.FELLOW
+                                    ]}
+                                    children={<HackathonCreate />}
+                                />
+                            )
                         },
                         {
                             path: "hackathon/details/:id",
-                            element: <HackathonDetails />
+                            element: (
+                                <RoleChecker
+                                    roles={[
+                                        roles.STUDENT,
+                                        roles.ADMIN,
+                                        roles.FELLOW
+                                    ]}
+                                    children={<HackathonDetails />}
+                                />
+                            )
                         },
                         {
                             path: "hackathon/apply/:id",
-                            element: <HackathonRegistration />
+                            element: (
+                                <RoleChecker
+                                    roles={[
+                                        roles.STUDENT,
+                                        roles.ADMIN,
+                                        roles.FELLOW
+                                    ]}
+                                    children={<HackathonRegistration />}
+                                />
+                            )
                         },
                         {
                             path: "hackathon/applicants/:id",
-                            element: <HackathonParticipants />
+                           element: (
+                                <RoleChecker
+                                    roles={[
+                                        roles.STUDENT,
+                                        roles.ADMIN,
+                                        roles.FELLOW
+                                    ]}
+                                    children={<HackathonParticipants />}
+                                />
+                            )
                         },
                         {
                             path: "manage-locations",
@@ -416,7 +470,16 @@ function App() {
                         },
                         {
                             path: "hackathon/organizers/:id",
-                            element: <HackathonOrganizers />
+                            element: (
+                                <RoleChecker
+                                    roles={[
+                                        roles.STUDENT,
+                                        roles.ADMIN,
+                                        roles.FELLOW
+                                    ]}
+                                    children={<HackathonOrganizers />}
+                                />
+                            )
                         },
                         {
                             path: "learning-circle",
