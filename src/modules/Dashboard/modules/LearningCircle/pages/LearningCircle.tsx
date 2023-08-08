@@ -194,12 +194,12 @@ const LearningCircle = (props: Props) => {
                                                 >
                                                     <div>
                                                         <b>
-                                                            venue:{" "}
+                                                            Venue:{" "}
                                                             {lc?.meet_place}{" "}
                                                             <br />
                                                         </b>
                                                         <b>
-                                                            time:{" "}
+                                                            Time:{" "}
                                                             {lc?.meet_time}
                                                         </b>
                                                     </div>
@@ -226,7 +226,7 @@ const LearningCircle = (props: Props) => {
                                                         setIsEdit(false)
                                                     }
                                                 >
-                                                    schedule now
+                                                    Schedule now
                                                 </button>
                                             </>
                                         )}
