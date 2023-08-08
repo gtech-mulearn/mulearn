@@ -108,6 +108,7 @@ const ManageRolesCreateModal = (props: Props) => {
                         className={`${mustyles.btn} ${styles.Confirm}`}
                         text={"Confirm"}
                         submit={true}
+                        type="submit"
                     />
                 </div>
             </Form>
