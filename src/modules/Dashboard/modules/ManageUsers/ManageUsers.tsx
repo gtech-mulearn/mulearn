@@ -19,9 +19,9 @@ function ManageRoles() {
     const navigate = useNavigate();
     const firstFetch = useRef(true);
 
-    type ColOrderType = { isSortable : boolean, column : string, Label : string, }
-    
-    const columnOrder : ColOrderType[] = [
+    type ColOrderType = { isSortable: boolean, column: string, Label: string, }
+
+    const columnOrder: ColOrderType[] = [
         { column: "first_name", Label: "First Name", isSortable: true },
         { column: "last_name", Label: "Last Name", isSortable: false },
         { column: "total_karma", Label: "Total Karma", isSortable: true },
@@ -47,7 +47,7 @@ function ManageRoles() {
             nextPage,
             perPage,
             setIsLoading,
-            () => {},
+            () => { },
             sort
         );
     };
@@ -60,7 +60,7 @@ function ManageRoles() {
             prevPage,
             perPage,
             setIsLoading,
-            () => {},
+            () => { },
             sort
         );
     };
@@ -167,6 +167,8 @@ function ManageRoles() {
                                     handleNextClick={handleNextClick}
                                     handlePreviousClick={handlePreviousClick} onSearchText={handleSearch}
                                     onPerPageNumber={handlePerPageNumber}
+                                    perPage={perPage}
+                                    setPerPage={setPerPage}
                                 />
                             }
                         </div>

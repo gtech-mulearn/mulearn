@@ -14,13 +14,14 @@
     align-items: center;
 
     .edit_profile {
-        margin: 5dvh auto auto;
+        margin: 10dvh auto auto;
         height: auto;
         max-width: 640px;
         background: white;
         border-radius: 10px;
         box-shadow: 1px 1px 20px 1px #8c8c8c47;
         position: relative;
+        overflow-y: scroll;
 
         .edit_profile_contents {
             padding: 20px;
@@ -38,6 +39,10 @@
 
                 .input_field {
                     width: 48%;
+                }
+
+                & input:focus {
+                    outline: 1px solid #2684ff;
                 }
             }
 
@@ -67,7 +72,6 @@
         .edit_profile {
             margin: 65px auto auto;
             height: 100dvh;
-            overflow-y: scroll;
 
             .edit_profile_contents {
                 & form {

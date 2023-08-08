@@ -24,7 +24,7 @@ export const Tasks = (props: Props) => {
     const navigate = useNavigate();
     const toast = useToast();
 
-    const columnOrder:ColOrder[] = [
+    const columnOrder: ColOrder[] = [
         { column: "title", Label: "Title", isSortable: true },
         { column: "hashtag", Label: "Hashtag", isSortable: false },
         { column: "org", Label: "Organization", isSortable: false },
@@ -120,20 +120,20 @@ export const Tasks = (props: Props) => {
                     gap: "15px"
                 }}
             >
-                
-                <PowerfulButton 
-                text={"Bulk Import"}
-                icon={<AiOutlinePlusCircle />}
-                onButtonClick={() => navigate("/dashboard/tasks/bulk-import")}
-                padding="0.3rem 0.7rem"
-                margin="0"/>
-                
-                <PowerfulButton 
-                text={"Create"}
-                icon={<AiOutlinePlusCircle />}
-                onButtonClick={handleCreate}
-                padding="0.3rem 0.7rem"
-                margin="0"/>
+
+                <PowerfulButton
+                    text={"Bulk Import"}
+                    icon={<AiOutlinePlusCircle />}
+                    onButtonClick={() => navigate("/dashboard/tasks/bulk-import")}
+                    padding="0.3rem 0.7rem"
+                    margin="0" />
+
+                <PowerfulButton
+                    text={"Create"}
+                    icon={<AiOutlinePlusCircle />}
+                    onButtonClick={handleCreate}
+                    padding="0.3rem 0.7rem"
+                    margin="0" />
             </div>
 
             {data && (
@@ -168,6 +168,8 @@ export const Tasks = (props: Props) => {
                                     handleNextClick={handleNextClick}
                                     handlePreviousClick={handlePreviousClick} onSearchText={handleSearch}
                                     onPerPageNumber={handlePerPageNumber}
+                                    perPage={perPage}
+                                    setPerPage={setPerPage}
                                 />}
                         </div>
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
