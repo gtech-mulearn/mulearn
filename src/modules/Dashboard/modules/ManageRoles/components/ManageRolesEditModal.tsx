@@ -7,6 +7,7 @@ import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComp
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import styles from "./Modal.module.css"
 import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css"
+import { type } from "os";
 
 type Props = {
     id:string
@@ -49,6 +50,7 @@ const ManageRolesEditModal = (props: Props) => {
                     .required("Required")
             })}
             onSubmit={values => {
+                console.log('submit');
                 (async()=>{
                     await editManageRoles(
                         id,
@@ -77,6 +79,7 @@ const ManageRolesEditModal = (props: Props) => {
 
                 <div className={styles.ButtonContainer}>
                     <MuButton
+                        type="button"
                         className={`${mustyles.btn} ${styles.Decline}`}
                         text={"Decline"}
                         onClick={() => {
@@ -85,8 +88,8 @@ const ManageRolesEditModal = (props: Props) => {
                     />
                     <MuButton
                         className={`${mustyles.btn} ${styles.Confirm}`}
-                        text={"Confirm"}
-                        submit={true}
+                        text="Confirm"
+                        type="submit"
                     />
                 </div>
             </Form>
