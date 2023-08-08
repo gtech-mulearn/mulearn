@@ -15,7 +15,7 @@ import { useToast } from "@chakra-ui/react";
 import { MuButtonLight } from "@/MuLearnComponents/MuButtons/MuButton";
 
 const UrlShortener = () => {
-    const columnOrder:ColOrder[] = [
+    const columnOrder: ColOrder[] = [
         { column: "title", Label: "Title", isSortable: true },
         { column: "short_url", Label: "Short URL", isSortable: false },
         { column: "long_url", Label: "Long URL", isSortable: false }
@@ -257,7 +257,7 @@ const UrlShortener = () => {
                                     />
                                 </div>
                                 {formik.touched.short_url &&
-                                formik.errors.short_url ? (
+                                    formik.errors.short_url ? (
                                     <p className={styles.error_message}>
                                         {formik.errors.short_url}
                                     </p>
@@ -325,6 +325,8 @@ const UrlShortener = () => {
                             margin="10px 0"
                             handleNextClick={handleNextClick}
                             handlePreviousClick={handlePreviousClick}
+                            perPage={perPage}
+                            setPerPage={setPerPage}
                         />
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>

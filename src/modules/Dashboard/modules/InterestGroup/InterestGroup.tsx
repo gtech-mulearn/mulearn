@@ -175,6 +175,8 @@ function InterestGroup() {
                                 handlePreviousClick={handlePreviousClick}
                                 onSearchText={handleSearch}
                                 onPerPageNumber={handlePerPageNumber}
+                                perPage={perPage}
+                                setPerPage={setPerPage}
                             />}
                         </div>
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}

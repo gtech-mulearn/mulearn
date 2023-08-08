@@ -45,7 +45,7 @@ function ManageRoles() {
             nextPage,
             perPage,
             setIsLoading,
-            () => {},
+            () => { },
             sort
         );
     };
@@ -58,7 +58,7 @@ function ManageRoles() {
             prevPage,
             perPage,
             setIsLoading,
-            () => {},
+            () => { },
             sort
         );
     };
@@ -201,6 +201,8 @@ function ManageRoles() {
                                     handleNextClick={handleNextClick}
                                     handlePreviousClick={handlePreviousClick}
                                     onPerPageNumber={handlePerPageNumber}
+                                    perPage={perPage}
+                                    setPerPage={setPerPage}
                                 />
                             }
                         </div>

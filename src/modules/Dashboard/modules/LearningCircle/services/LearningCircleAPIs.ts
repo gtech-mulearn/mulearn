@@ -192,7 +192,7 @@ export const joinCircle = async (circleCode: string) => {
             console.log(error.response);
         }
         toast({
-            title: "You cannot join the same Learning Circle again",
+            title: "Cannot send another request at the moment",
             description: "",
             status: "error",
             duration: 2000,
@@ -203,9 +203,9 @@ export const joinCircle = async (circleCode: string) => {
 
 export const getInterestGroups = async () => {
     try {
-        const response = (await privateGateway.get(dashboardRoutes.getTaskIGs))
-            ?.data?.response;
-        return response?.map((obj: any) => ({
+        const response = (await privateGateway.get(dashboardRoutes.getCampusIg))
+            ?.data?.response.interestGroup as { id: string; name: string }[];
+        return response?.map(obj => ({
             value: obj.id,
             label: obj.name
         }));

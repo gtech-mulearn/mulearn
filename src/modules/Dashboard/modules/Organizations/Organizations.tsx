@@ -245,6 +245,8 @@ function Organizations() {
                                     handlePreviousClick={handlePreviousClick}
                                     onSearchText={handleSearch}
                                     onPerPageNumber={handlePerPageNumber}
+                                    perPage={perPage}
+                                    setPerPage={setPerPage}
                                 />
                             )}
                         </div>

@@ -420,31 +420,66 @@ function App() {
                         },
                         {
                             path: "learning-circle",
-                            element: <LearningCircleLandingPage />
+                            element: (
+                                <RoleChecker
+                                    roles={[
+                                        roles.STUDENT,
+                                        roles.ADMIN,
+                                        roles.FELLOW
+                                    ]}
+                                    children={<LearningCircleLandingPage />}
+                                />
+                            )
                         },
                         {
                             path: "learning-circle/details/:id",
-                            element: <LearningCircle />
+                            element: (
+                                <RoleChecker
+                                    roles={[
+                                        roles.STUDENT,
+                                        roles.ADMIN,
+                                        roles.FELLOW
+                                    ]}
+                                    children={<LearningCircle />}
+                                />
+                            )
                         },
                         {
                             path: "learning-circle/find-circle",
-                            element: <FindCircle />
+                            element: (
+                                <RoleChecker
+                                    roles={[
+                                        roles.STUDENT,
+                                        roles.ADMIN,
+                                        roles.FELLOW
+                                    ]}
+                                    children={<FindCircle />}
+                                />
+                            )
                         },
                         {
                             path: "learning-circle/create-circle",
-                            element: <LearningCircleCreate />
+                            element: (
+                                <RoleChecker
+                                    roles={[
+                                        roles.STUDENT,
+                                        roles.ADMIN,
+                                        roles.FELLOW
+                                    ]}
+                                    children={<LearningCircleCreate />}
+                                />
+                            )
                         },
                         {
                             path: "settings",
                             element: <Settings />,
-                            children:[
+                            children: [
                                 {
                                     path: "connected-devices",
                                     element: <ConnectedDevices />
                                 }
                             ]
-                        },
-                        
+                        }
                     ]
                 }
             ]

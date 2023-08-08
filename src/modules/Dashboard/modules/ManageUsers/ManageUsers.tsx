@@ -18,10 +18,11 @@ function ManageRoles() {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const firstFetch = useRef(true);
+    const toast = useToast();
 
-    type ColOrderType = { isSortable : boolean, column : string, Label : string, }
-    
-    const columnOrder : ColOrderType[] = [
+    type ColOrderType = { isSortable: boolean; column: string; Label: string };
+
+    const columnOrder: ColOrderType[] = [
         { column: "first_name", Label: "First Name", isSortable: true },
         { column: "last_name", Label: "Last Name", isSortable: false },
         { column: "total_karma", Label: "Total Karma", isSortable: true },
@@ -39,62 +40,91 @@ function ManageRoles() {
         { column: "created_at", Label: "Created On", isSortable: true }
     ];
 
+    useEffect(() => {
+        if (firstFetch.current) {
+            getManageUsers({
+                setData: setData,
+                page: 1,
+                selectedValue: perPage,
+                setIsLoading: setIsLoading,
+                setTotalPages: setTotalPages,
+                search: "",
+                sortID: ""
+            });
+        }
+        firstFetch.current = false;
+    }, []);
+
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getManageUsers(
-            setData,
-            nextPage,
-            perPage,
-            setIsLoading,
-            () => {},
-            sort
-        );
+        getManageUsers({
+            setData: setData,
+            page: nextPage,
+            selectedValue: perPage,
+            setIsLoading: setIsLoading,
+            setTotalPages: () => {},
+            search: "",
+            sortID: sort
+        });
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getManageUsers(
-            setData,
-            prevPage,
-            perPage,
-            setIsLoading,
-            () => {},
-            sort
-        );
+        getManageUsers({
+            setData: setData,
+            page: prevPage,
+            selectedValue: perPage,
+            setIsLoading: setIsLoading,
+            setTotalPages: () => {},
+            search: "",
+            sortID: sort
+        });
     };
-
-    useEffect(() => {
-        if (firstFetch.current) {
-
-            getManageUsers(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
-        }
-        firstFetch.current = false;
-    }, []);
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getManageUsers(setData, 1, perPage, setIsLoading, setTotalPages, search, "");
+        getManageUsers({
+            setData: setData,
+            page: 1,
+            selectedValue: perPage,
+            setIsLoading: setIsLoading,
+            setTotalPages: setTotalPages,
+            search: search,
+            sortID: ""
+        });
     };
 
-    const handleEdit = (id: string | number | boolean) => {
-        //console.log(id);
+    const handleEdit = (id: string | number | boolean) =>
         navigate(`/dashboard/manage-users/edit/${id}`);
-    };
-
-    const toast = useToast();
 
     const handleDelete = (id: string | undefined) => {
         deleteManageUsers(id, toast);
-        getManageUsers(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
+        getManageUsers({
+            setData: setData,
+            page: 1,
+            selectedValue: perPage,
+            setIsLoading: setIsLoading,
+            setTotalPages: setTotalPages,
+            search: "",
+            sortID: ""
+        });
         navigate("/manage-users");
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getManageUsers(setData, 1, selectedValue, setIsLoading, setTotalPages, "", "");
+        getManageUsers({
+            setData: setData,
+            page: 1,
+            selectedValue: selectedValue,
+            setIsLoading: setIsLoading,
+            setTotalPages: setTotalPages,
+            search: "",
+            sortID: ""
+        });
     };
 
     // const handleCreate = () => {
@@ -104,18 +134,26 @@ function ManageRoles() {
     const handleIconClick = (column: string) => {
         if (sort === column) {
             setSort(`-${column}`);
-            getManageUsers(
-                setData,
-                1,
-                perPage,
-                setIsLoading,
-                setTotalPages,
-                "",
-                `-${column}`
-            );
+            getManageUsers({
+                setData: setData,
+                page: 1,
+                selectedValue: perPage,
+                setIsLoading: setIsLoading,
+                setTotalPages: setTotalPages,
+                search: "",
+                sortID: `-${column}`
+            });
         } else {
             setSort(column);
-            getManageUsers(setData, 1, perPage, setIsLoading, setTotalPages, "", column);
+            getManageUsers({
+                setData: setData,
+                page: 1,
+                selectedValue: perPage,
+                setIsLoading: setIsLoading,
+                setTotalPages: setTotalPages,
+                search: "",
+                sortID: column
+            });
         }
 
         //console.log(`Icon clicked for column: ${column}`);
@@ -138,7 +176,7 @@ function ManageRoles() {
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
                         CSV={dashboardRoutes.getUsersList}
-                    // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
+                        // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
                     />
                     <Table
                         rows={data}
@@ -159,16 +197,19 @@ function ManageRoles() {
                             action={true}
                         />
                         <div>
-                            {!isLoading &&
+                            {!isLoading && (
                                 <Pagination
                                     currentPage={currentPage}
                                     totalPages={totalPages}
                                     margin="10px 0"
                                     handleNextClick={handleNextClick}
-                                    handlePreviousClick={handlePreviousClick} onSearchText={handleSearch}
+                                    handlePreviousClick={handlePreviousClick}
+                                    onSearchText={handleSearch}
                                     onPerPageNumber={handlePerPageNumber}
+                                    perPage={perPage}
+                                    setPerPage={setPerPage}
                                 />
-                            }
+                            )}
                         </div>
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>

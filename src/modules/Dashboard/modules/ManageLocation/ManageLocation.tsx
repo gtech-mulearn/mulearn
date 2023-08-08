@@ -194,9 +194,9 @@ const ManageLocation = () => {
                 state={selectedState}
                 zone={selectedZone}
                 handleData={setData}
-                handleCountry={(country) => setSelectedCountry(country) }
-                handleState={(state) => setSelectedState(state) }
-                handleZone={(zone) => setSelectedZone(zone) }
+                handleCountry={(country) => setSelectedCountry(country)}
+                handleState={(state) => setSelectedState(state)}
+                handleZone={(zone) => setSelectedZone(zone)}
             />
             {activeTab !== "Country" && (
                 <LocationPath
@@ -235,6 +235,8 @@ const ManageLocation = () => {
                             margin="10px 0"
                             handleNextClick={handleNextClick}
                             handlePreviousClick={handlePreviousClick}
+                            perPage={perPage}
+                            setPerPage={setPerPage}
                         />
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>
@@ -246,35 +248,35 @@ const ManageLocation = () => {
                 popupFields={popupFields}
                 activeItem={activeTab}
                 handleData={setData}
-                handleCountry={(country) => setSelectedCountry(country) }
-                handleState={(state) => setSelectedState(state) }
-                handleZone={(zone) => setSelectedZone(zone) }
+                handleCountry={(country) => setSelectedCountry(country)}
+                handleState={(state) => setSelectedState(state)}
+                handleZone={(zone) => setSelectedZone(zone)}
                 handleDeclined={setIsDeclined}
             />
         </>
     );
 };
 type TableTopToggleType = {
-    active : string,
-    onTabClick : UseStateFunc<any>,
-    country : string,
-    state : string,
-    zone : string,
-    handleData : UseStateFunc<any>,
-    handleCountry : UseStateFunc<string>,
-    handleState : UseStateFunc<string>,
-    handleZone : UseStateFunc<string>
+    active: string,
+    onTabClick: UseStateFunc<any>,
+    country: string,
+    state: string,
+    zone: string,
+    handleData: UseStateFunc<any>,
+    handleCountry: UseStateFunc<string>,
+    handleState: UseStateFunc<string>,
+    handleZone: UseStateFunc<string>
 }
-const TableTopToggle:FC<TableTopToggleType> = ({
-        active,
-        onTabClick,
-        country,
-        state,
-        zone,
-        handleData,
-        handleCountry,
-        handleState,
-        handleZone
+const TableTopToggle: FC<TableTopToggleType> = ({
+    active,
+    onTabClick,
+    country,
+    state,
+    zone,
+    handleData,
+    handleCountry,
+    handleState,
+    handleZone
 }) => {
     const tabItems = ["Country", "State", "Zone", "District"];
 
@@ -356,9 +358,8 @@ const LocationPath = ({
     zone?: string;
 }) => {
     function locationTextGenerate() {
-        return `${country?.toUpperCase()}${
-            state ? ` /  ${state?.toUpperCase()}` : ""
-        }${zone ? ` / ${zone?.toUpperCase()}` : ""}`;
+        return `${country?.toUpperCase()}${state ? ` /  ${state?.toUpperCase()}` : ""
+            }${zone ? ` / ${zone?.toUpperCase()}` : ""}`;
     }
 
     return (
