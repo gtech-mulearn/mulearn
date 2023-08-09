@@ -2,6 +2,8 @@ import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { createStandaloneToast } from "@chakra-ui/react";
+import { SetStateAction } from "react";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 export const { toast } = createStandaloneToast();
 
@@ -28,7 +30,6 @@ export const getLcDetails = async (
     id: string | undefined
 ) => {
     try {
-        console.log("Sheyday");
         const response = (await privateGateway.get(
             dashboardRoutes.getCampusLearningCircles + id + "/"
         )) as APIResponse<LcDetail & { day: string }>;
@@ -87,29 +88,22 @@ export const getCampusLearningCircles = async (
 };
 
 export const createCircle = async (
-    setId: UseStateFunc<string>,
+    setId: React.Dispatch<SetStateAction<string>>,
     circleName: string,
-    circleCode: string,
-    ig: string
+    ig: string,
+    navigate: NavigateFunction
 ) => {
     try {
         const response = await privateGateway.post(
             dashboardRoutes.createLearningCircle,
             {
                 name: circleName,
-                ig: ig,
-                /*
-                ! circle_code required data ith udayippu aanu back-end fix cheyanam contact aashish
-				*/
-                circle_code: `${
-                    Math.floor(Math.random() * (999999999 - 1 + 1)) + 1
-                }`
+                ig: ig
             }
         );
         const message: any = response?.data;
-        console.log(message.response);
-        console.log(response);
-        setId(message.response);
+        console.log(message.response.circle_id);
+        setId(message.response.circle_id);
         toast({
             title: "Learning Circle Created",
             description: "",
@@ -117,6 +111,9 @@ export const createCircle = async (
             duration: 2000,
             isClosable: true
         });
+		setTimeout(() => {
+			navigate(`/dashboard/learning-circle/details/${message.response.circle_id}`);
+        }, 2000);
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -129,6 +126,11 @@ export const createCircle = async (
             duration: 2000,
             isClosable: true
         });
+		setTimeout(() => {
+            navigate(
+                `/dashboard/learning-circle/`
+            );
+        }, 2000);
     }
 };
 

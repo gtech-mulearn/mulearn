@@ -80,7 +80,7 @@ const ManageUsersCreate = (props: Props) => {
                             duration: 3000,
                             isClosable: true
                         });
-                        navigate("/manage-users");
+                        navigate("/dashboard/manage-users");
                     }}
                 >
                     <Form className={styles.inputContainer}>
@@ -137,7 +137,7 @@ const ManageUsersCreate = (props: Props) => {
                                 text={"Decline"}
                                 className={styles.btn_cancel}
                                 onClick={() => {
-                                    navigate("/manage-users");
+                                    navigate("/dashboard/manage-users");
                                 }}
                             />
                             <button type="submit" className={styles.btn_submit}>

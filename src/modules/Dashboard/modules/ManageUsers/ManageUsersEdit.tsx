@@ -17,11 +17,9 @@ import {
     getState,
     getDistrict,
     getColleges,
-
     getRoles,
     getInterests
- } from "../../../Common/Authentication/services/onboardingApis";
-
+} from "../../../Common/Authentication/services/onboardingApis";
 
 type Props = {};
 
@@ -39,11 +37,11 @@ const ManageUsersEdit = (props: Props) => {
     const formikRef = useRef<any>();
 
     //DropDownStates
-    const [community,setCommuntiy] = useState([{id:'',title:''}])
-    const [interestGroup,setinterestGroup] = useState([{id:'',name:''}])
-    const [role,setRole] = useState([{id:'',title:''}])
+    const [community, setCommuntiy] = useState([{ id: "", title: "" }]);
+    const [interestGroup, setinterestGroup] = useState([{ id: "", name: "" }]);
+    const [role, setRole] = useState([{ id: "", title: "" }]);
 
-    const [company,setCompany] = useState([{id:'',title:''}])
+    const [company, setCompany] = useState([{ id: "", title: "" }]);
 
     const [country,setCountry] = useState([{value:'',label:''}])
     const [state,setState] = useState([{value:'',label:''}])
@@ -166,16 +164,14 @@ const ManageUsersEdit = (props: Props) => {
                         graduation_year: Yup.string()
                             .length(4, "Invalid graduation_year")
                             .required("Required"),
-                        country:Yup.string().optional(),
-                        state:Yup.string().optional(),
-                        district:Yup.string().optional(),
-                        interest: Yup.array()
-                            .required("Required"),
-                        role: Yup.array()
-                            .required("Required"),
+                        country: Yup.string().optional(),
+                        state: Yup.string().optional(),
+                        district: Yup.string().optional(),
+                        interest: Yup.array().required("Required"),
+                        role: Yup.array().required("Required")
                     })}
                     onSubmit={values => {
-                            editManageUsers(
+                        editManageUsers(
                             id,
                             values.first_name,
                             values.last_name,
@@ -184,10 +180,9 @@ const ManageUsersEdit = (props: Props) => {
                             [
                                 values.college,
                                 values.company,
-                                ...values.community,
-                                
-                            ].filter(item=>item!=='null'),
-                            values.department, 
+                                ...values.community
+                            ].filter(item => item !== "null"),
+                            values.department,
                             values.graduation_year,
                             values.role,
                             values.interest
@@ -226,7 +221,7 @@ const ManageUsersEdit = (props: Props) => {
                         <FormikReactSelect
                             name="community"
                             options={community.map(obj => {
-                                return { value: obj.id, label: obj.title };
+                                return { value: obj?.id, label: obj.title };
                             })}
                             label="Community"
                             isClearable
@@ -235,8 +230,8 @@ const ManageUsersEdit = (props: Props) => {
                         />
                         <FormikReactSelect
                             name="role"
-                            options={role.map((obj)=>{
-                               return {value:obj.id,label:obj.title}
+                            options={role.map(obj => {
+                                return { value: obj?.id, label: obj.title };
                             })}
                             label="Roles"
                             isClearable
@@ -245,8 +240,8 @@ const ManageUsersEdit = (props: Props) => {
                         />
                         <FormikReactSelect
                             name="interest"
-                            options={interestGroup.map((obj)=>{
-                               return {value:obj.id,label:obj.name}
+                            options={interestGroup.map(obj => {
+                                return { value: obj?.id, label: obj.name };
                             })}
                             label="Interest Groups"
                             isClearable
@@ -354,6 +349,7 @@ const ManageUsersEdit = (props: Props) => {
                                 text={"Decline"}
                                 className={styles.btn_cancel}
                                 onClick={() => {
+                                    navigate("/dashboard/manage-users");
                                     navigate("/dashboard/manage-users");
                                 }}
                             />

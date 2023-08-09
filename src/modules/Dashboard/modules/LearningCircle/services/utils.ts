@@ -49,3 +49,23 @@ export const getNextDate = (dayArray:number[], time:string) => {
 
 export const AllWeeks = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] as const
 export const monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ] as const
+
+export const convert24to12 = (time24: string): string => {
+    const [hourStr, minuteStr] = time24.split(":");
+    const hour = parseInt(hourStr, 10);
+    const minute = parseInt(minuteStr, 10);
+
+    if (hour < 0 || hour > 23 || minute < 0 || minute > 59) {
+        throw new Error(
+            "Invalid input: hour should be between 0 and 23, and minute between 0 and 59."
+        );
+    }
+
+    const period = hour >= 12 ? "PM" : "AM";
+    const twelveHour = hour % 12 === 0 ? 12 : hour % 12;
+
+    const formattedTime = `${twelveHour}:${minute
+        .toString()
+        .padStart(2, "0")} ${period}`;
+    return formattedTime;
+}
