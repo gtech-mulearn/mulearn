@@ -47,20 +47,20 @@ console.log('id',input)
                     enableReinitialize
                     validationSchema={Yup.object({
                         igName: Yup.string()
-                            .max(30, "Must be 30 characters or less")
+                            .max(50, "Must be 50 characters or less")
                             .required("Required"),
                         igCode: Yup.string()
-                            .max(30, "Must be 30 characters or less")
+                            .max(10, "Must be 10 characters or less")
                             .required("Required"),
                         igIcon: Yup.string()
-                            .max(30, "Must be 30 characters or less")
+                            .max(10, "Must be 10 characters or less")
                             .required("Required")
                     })}
                     onSubmit={values => {
                         console.log(values);
                         if(!id){
                             
-                            createInterestGroups(values.igName, values.igCode, values.igIcon)
+                            createInterestGroups(values.igName, values.igCode, values.igIcon, toast)
                             setTimeout(() => {
                                 navigate(`/dashboard/interest-groups`);
                             }, 1000);
@@ -70,15 +70,10 @@ console.log('id',input)
                                 id,
                                 values.igCode,
                                 values.igIcon,
-                                setHasError
+                                setHasError,
+                                toast
                               );
-                              toast({
-                                title: " Edited Successfully..",
-                                description: "",
-                                status: "success",
-                                duration: 2000,
-                                isClosable: true
-                            });
+                              
                              setTimeout(() => {
                                 navigate(`/dashboard/interest-groups`);
                              },200);

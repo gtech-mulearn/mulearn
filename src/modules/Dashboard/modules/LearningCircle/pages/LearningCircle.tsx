@@ -10,8 +10,10 @@ import {
 } from "../services/LearningCircleAPIs";
 import { useNavigate, useParams } from "react-router-dom";
 import { BiEditAlt } from "react-icons/bi";
-import { AllWeeks, getNextDate, monthNames } from "../services/utils";
+import { AllWeeks, convert24to12, getNextDate, monthNames } from "../services/utils";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { IoArrowBackCircleOutline } from "react-icons/io5";
+import { Tooltip } from "react-tooltip";
 
 type Props = {};
 
@@ -124,7 +126,29 @@ const LearningCircle = (props: Props) => {
                                     {lc?.total_karma} Karma
                                 </b>
                             </div>
-                            <i className="fa-solid fa-right-from-bracket"></i>
+                            <IoArrowBackCircleOutline
+                                data-tooltip-id="Icon"
+                                data-tooltip-content="Go back"
+                                style={{
+                                    color: "var(--White)",
+                                    backgroundColor: "var(--blue)",
+                                    borderRadius: "50%",
+                                    fontSize: "30px",
+                                    cursor: "pointer"
+                                }}
+                                onClick={() => {
+                                    navigate("/dashboard/learning-circle");
+                                }}
+                            />
+                            <Tooltip
+                                id="Icon"
+                                style={{
+                                    backgroundColor: "var(--blue)",
+                                    color: "var(--White)",
+                                    borderRadius: "10px",
+									padding: '0 10px'
+                                }}
+                            />
                         </div>
                     </div>
 
@@ -145,6 +169,9 @@ const LearningCircle = (props: Props) => {
                                                         </h2>{" "}
                                                     </div>
                                                     <BiEditAlt
+                                                        style={{
+                                                            cursor: "pointer"
+                                                        }}
                                                         onClick={() =>
                                                             setIsEdit(false)
                                                         }
@@ -167,13 +194,13 @@ const LearningCircle = (props: Props) => {
                                                 >
                                                     <div>
                                                         <b>
-                                                            venue:{" "}
+                                                            Venue:{" "}
                                                             {lc?.meet_place}{" "}
                                                             <br />
                                                         </b>
                                                         <b>
-                                                            time:{" "}
-                                                            {lc?.meet_time}
+                                                            Time:{" "}
+                                                            {convert24to12(String(lc?.meet_time))}
                                                         </b>
                                                     </div>
 
@@ -199,7 +226,7 @@ const LearningCircle = (props: Props) => {
                                                         setIsEdit(false)
                                                     }
                                                 >
-                                                    schedule now
+                                                    Schedule now
                                                 </button>
                                             </>
                                         )}
@@ -377,7 +404,6 @@ const LearningCircle = (props: Props) => {
                                             <BiEditAlt
                                                 style={{ cursor: "pointer" }}
                                                 onClick={() => {
-                                                    console.log(lc?.note);
                                                     setFlag(false);
                                                     setTimeout(() => {
                                                         navigate(
@@ -438,7 +464,7 @@ const LearningCircle = (props: Props) => {
                                                             <img
                                                                 src={
                                                                     member.profile_pic
-                                                                        ? `https://dev.mulearn.org/${member?.profile_pic}`
+                                                                        ? member?.profile_pic
                                                                         : pic
                                                                 }
                                                                 alt="Profile picture"
@@ -465,13 +491,13 @@ const LearningCircle = (props: Props) => {
                                                                         1,
                                                                         "Approved Successfully"
                                                                     );
-																	getLcDetails(
-                                                                        setLc,
-                                                                        id
-                                                                    );
+                                                                    // getLcDetails(
+                                                                    //     setLc,
+                                                                    //     id
+                                                                    // );
                                                                     setTimeout(
                                                                         () => {
-																			getLcDetails(
+                                                                            getLcDetails(
                                                                                 setLc,
                                                                                 id
                                                                             );
@@ -494,12 +520,12 @@ const LearningCircle = (props: Props) => {
                                                                         id,
                                                                         member.id,
                                                                         0,
-																		'Rejected Successfully'
+                                                                        "Rejected Successfully"
                                                                     );
-																	getLcDetails(setLc, id)
+                                                                    // getLcDetails(setLc, id)
                                                                     setTimeout(
                                                                         () => {
-																			getLcDetails(
+                                                                            getLcDetails(
                                                                                 setLc,
                                                                                 id
                                                                             );

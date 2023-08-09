@@ -16,7 +16,6 @@ import { MdOutlineUnpublished, MdPublishedWithChanges } from "react-icons/md";
 import { Tooltip } from "react-tooltip";
 import styles from "./HackathonCreate.module.css";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { LuLayoutList } from "react-icons/lu";
 
 enum ModalType {
     Publish,

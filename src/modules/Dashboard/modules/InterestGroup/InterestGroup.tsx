@@ -10,8 +10,6 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./InterestGroup.module.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
-import InterestGroupEditModal from "./InterestGroupEditModal";
-import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 interface IgDetails {
     igName: string,
@@ -175,6 +173,8 @@ function InterestGroup() {
                                 handlePreviousClick={handlePreviousClick}
                                 onSearchText={handleSearch}
                                 onPerPageNumber={handlePerPageNumber}
+                                perPage={perPage}
+                                setPerPage={setPerPage}
                             />}
                         </div>
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}

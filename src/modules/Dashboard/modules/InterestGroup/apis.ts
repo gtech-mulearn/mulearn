@@ -12,9 +12,9 @@ export const getInterestGroups = async (
     setIsLoading: UseStateFunc<boolean>,
     setTotalPages?: UseStateFunc<any>,
     search?: string,
-    sortID?: string,
+    sortID?: string
 ) => {
-    setIsLoading(true)
+    setIsLoading(true);
     try {
         const response = await privateGateway.get(dashboardRoutes.getIgData, {
             params: {
@@ -27,7 +27,8 @@ export const getInterestGroups = async (
         const interestGroups: any = response?.data;
 
         setData(interestGroups.response.data);
-        if (setTotalPages) setTotalPages(interestGroups.response.pagination.totalPages);
+        if (setTotalPages)
+            setTotalPages(interestGroups.response.pagination.totalPages);
         setIsLoading(false);
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -41,10 +42,9 @@ export const createInterestGroups = async (
     name: string,
     code: string,
     icon: string,
-    
-    
-    ) => {
-        try {
+    toast: (options?: UseToastOptions | undefined) => ToastId
+) => {
+    try {
         const response = await privateGateway.post(dashboardRoutes.getIgData, {
             name: name,
             code: code,
@@ -55,7 +55,7 @@ export const createInterestGroups = async (
         const message: any = response?.data;
         //console.log(message);
         toast({
-            title: " created  Successfully..",
+            title: "Created  Successfully..",
             description: "",
             status: "success",
             duration: 2000,
@@ -64,17 +64,31 @@ export const createInterestGroups = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            toast({
+                title: "Some Error Occured..",
+                description: "",
+                status: "error",
+                duration: 2000,
+                isClosable: true
+            });
         }
+        toast({
+            title: " Create Failed",
+            description: "",
+            status: "error",
+            duration: 3000,
+            isClosable: true
+        });
     }
 };
 
 export const editInterestGroups = async (
-    name: string|undefined,
+    name: string | undefined,
     id: string | undefined,
     code: string | undefined,
     icon: string | undefined,
     setHasError: (hasError: boolean) => void,
+    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
         const response = await privateGateway.put(
@@ -84,18 +98,24 @@ export const editInterestGroups = async (
                 code: code,
                 icon: icon
             }
-            );
-            
+        );
+
         const message: any = response?.data;
         console.log(message);
-        setHasError(message?.hasError)
+        setHasError(message?.hasError);
+        toast({
+            title: " Edited Successfully..",
+            description: "",
+            status: "success",
+            duration: 2000,
+            isClosable: true
+        });
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
+        console.log(error);
+
         toast({
-            title: error.message,
+            title: "Some Error Occured..",
             description: "",
             status: "error",
             duration: 2000,
@@ -143,9 +163,11 @@ export const deleteInterestGroups = async (
         if (error?.response) {
             console.log(error.response);
         }
+        toast({
+            title: "Delete Failed",
+            status: "error",
+            duration: 3000,
+            isClosable: true
+        });
     }
 };
-function toast(arg0: { title: string; description: string; status: string; duration: number; isClosable: boolean; }) {
-    throw new Error("Function not implemented.");
-}
-

@@ -12,7 +12,7 @@ const ManageUsersDelete = (props: Props) => {
     const handleSubmit = () => {
         if (id) {
             deleteManageUsers(id, toast);
-            navigate("/manage-users");
+            navigate("/dashboard/manage-users");
         }
     };
     return (
@@ -20,7 +20,7 @@ const ManageUsersDelete = (props: Props) => {
             <Form
                 title={`Are you sure you want to delete ?`}
                 handleSubmitClick={handleSubmit}
-                cancelPath={"/manage-users"}
+                cancelPath={"/dashboard/manage-users"}
             />
         </div>
     );
