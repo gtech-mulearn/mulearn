@@ -7,13 +7,12 @@ interface UserData {
     // discord_id: string;
     // mu_id: string;
     // college?: string;
-    role: string[];
+    roles: string[];
     // company?: string;
     department?: string;
     graduation_year?: string;
-    organization?:string[];
+    organizations?:string[];
     interest_groups:string[];
-    role:string[];
     country:string;
     state:string;
     district:string;
