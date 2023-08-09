@@ -102,7 +102,7 @@ export const editManageUsers = async (
 ) => {
     try {
         const response = await privateGateway.patch(
-            dashboardRoutes.getUsersEditData + id + "/",
+            dashboardRoutes.getUsersData + id + "/",
             {
                 first_name: first_name,
                 last_name: last_name,
@@ -139,7 +139,7 @@ export const getManageUsersDetails = async (
 ) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getUsersEditData + id + "/"
+            dashboardRoutes.getUsersData + id + "/"
         );
         const message: any = response?.data;
 
