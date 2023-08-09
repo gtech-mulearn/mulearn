@@ -18,12 +18,12 @@ const KarmaHistory = (props: Props) => {
     const [userLog, setUserLog] = useState(props.userLog);
 
     return userLog.length !== 0 ? (
-        <>
+        <div className={styles.karma_history_page}>
             <p className={styles.hide_chat_karma}>
                 Hide daily chat karma{" "}
                 <span>
                     <Switch
-                        size="lg"
+                        size="md"
                         onChange={e => {
                             if (e.target.checked) {
                                 setUserLog(
@@ -70,7 +70,7 @@ const KarmaHistory = (props: Props) => {
                     );
                 })}
             </div>
-        </>
+        </div>
     ) : (
         <p className={styles.msg}>
             Hey there! We know you're new here, so grab some Karma and we'll
