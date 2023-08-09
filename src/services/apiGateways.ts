@@ -13,12 +13,12 @@ export const publicGateway = axios.create({
 });
 
 // <--- Comment below code before PR, this is for backend testing
-export const publicGatewayAuth = axios.create({
-    baseURL: import.meta.env.VITE_BACKEND_URL_AUTH as string,
-    headers: {
-        "Content-Type": "application/json"
-    }
-});
+// export const publicGatewayAuth = axios.create({
+//     baseURL: import.meta.env.VITE_BACKEND_URL_AUTH as string,
+//     headers: {
+//         "Content-Type": "application/json"
+//     }
+// });
 // --->
 
 export const privateGateway = axios.create({
