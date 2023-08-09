@@ -18,18 +18,18 @@ const KarmaHistory = (props: Props) => {
     const [userLog, setUserLog] = useState(props.userLog);
 
     return userLog.length !== 0 ? (
-        <>
+        <div className={styles.karma_history_page}>
             <p className={styles.hide_chat_karma}>
                 Hide daily chat karma{" "}
                 <span>
                     <Switch
-                        size="lg"
+                        size="md"
                         onChange={e => {
                             if (e.target.checked) {
                                 setUserLog(
                                     props.userLog.filter(
                                         (log: any) =>
-                                            log.task_name !== "daily-chat-karma"
+                                            log.task_name !== "Chat Karma"
                                     )
                                 );
                             } else {
@@ -40,9 +40,9 @@ const KarmaHistory = (props: Props) => {
                 </span>
             </p>
             <div className={styles.karma_history_container} id="section1">
-                {userLog.map((log: any) => {
+                {userLog.map((log: any,i) => {
                     return (
-                        <div className={styles.karma_history}>
+                        <div className={styles.karma_history} key={i}>
                             <p className={styles.karma_history_box_bg}>
                                 <KarmaSymbol />
                             </p>
@@ -70,7 +70,7 @@ const KarmaHistory = (props: Props) => {
                     );
                 })}
             </div>
-        </>
+        </div>
     ) : (
         <p className={styles.msg}>
             Hey there! We know you're new here, so grab some Karma and we'll
