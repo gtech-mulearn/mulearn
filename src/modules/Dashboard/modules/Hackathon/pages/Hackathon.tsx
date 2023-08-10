@@ -16,6 +16,7 @@ import { MdOutlineUnpublished, MdPublishedWithChanges } from "react-icons/md";
 import { Tooltip } from "react-tooltip";
 import styles from "./HackathonCreate.module.css";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 enum ModalType {
     Publish,
@@ -58,6 +59,8 @@ const Hackathon = () => {
 
   
     return (
+        <>
+        {data && ownData ? (
         <div className={styles.HCHackathon}>
             <div className={styles.hackathonHeading}>
                 <h1>Explore Hackathons</h1>
@@ -395,7 +398,14 @@ const Hackathon = () => {
                         </div>
                     ))}
             </div>
+        </div>):(
+            <div className={styles.spinnerContainer}>
+            <div className={styles.spinner}>
+                <MuLoader />
+            </div>
         </div>
+        )}
+        </>
     );
 };
 

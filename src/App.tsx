@@ -376,7 +376,16 @@ function App() {
                         },
                         {
                             path: "url-shortener",
-                            element: <UrlShortener />
+                            element: (
+                                <RoleChecker
+                                    roles={[
+                                        roles.ADMIN,
+                                        roles.FELLOW,
+                                        roles.ASSOCIATE
+                                    ]}
+                                    children={<UrlShortener />}
+                                />
+                            )
                         },
                         {
                             path: "hackathon",

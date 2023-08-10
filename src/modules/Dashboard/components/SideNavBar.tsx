@@ -284,7 +284,7 @@ const SideNavBar = (props: Props) => {
                         </div>
                     </div>
                     <p className={styles.copyrightText}>
-                        All Rights Reserved © µLearn {new Date().getFullYear()}
+                        All Rights Reserved © µLearn Foundation {new Date().getFullYear()}
                     </p>
                 </div>
             </div>
