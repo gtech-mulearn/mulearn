@@ -34,6 +34,7 @@ const ForgotPassword = (props: Props) => {
                         <br />
                         <br />
                         <MuButton
+                            type="submit"
                             text={"Reset password"}
                             className={styles.reset_button}
                             onClick={e => {
