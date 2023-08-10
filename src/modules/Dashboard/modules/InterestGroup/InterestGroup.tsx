@@ -10,8 +10,6 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./InterestGroup.module.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
-import InterestGroupEditModal from "./InterestGroupEditModal";
-import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 interface IgDetails {
     igName: string,

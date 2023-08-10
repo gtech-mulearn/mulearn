@@ -16,7 +16,7 @@ type interestGroupType = {
 const LearningCircleCreate = (props: Props) => {
     
     const [interestGroups,setInterestGroups] = useState<interestGroupType[]>()
-    const [id,setId] = useState('');
+    const [id, setId] = useState('');
     const navigate = useNavigate()
 
     
@@ -64,16 +64,10 @@ const LearningCircleCreate = (props: Props) => {
                                     createCircle(
                                         setId,
                                         values.circle_name,
-                                        "error adikalle",
                                         values.interest_group,
+										navigate,
                                     )
                                     resetForm()
-                                    setTimeout(() => {
-                                                
-                                        navigate(
-                                            `/dashboard/learning-circle/`
-                                        );
-                                    },3500);
                                 }}
                             >
                                 <Form>

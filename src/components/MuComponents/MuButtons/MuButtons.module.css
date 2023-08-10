@@ -21,6 +21,7 @@
     letter-spacing: normal;
     color: var(--lightGray);
 }
+
 /* .btn_light {
     color: #456ff6;
 } */
@@ -41,6 +42,7 @@
 .btn:hover,
 .dropdown_btn:hover {
     background: var(--dimBlue);
+    color: #5570F1
 }
 
 .btn_light:hover {
