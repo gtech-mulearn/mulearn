@@ -35,10 +35,6 @@ const UrlShortener = () => {
             title: ""
         }
     ]);
-    const [hasValidationError, setHasValidationError] = useState({
-        error: false,
-        message: ""
-    });
 
     const formik = useFormik({
         initialValues: {
@@ -55,41 +51,54 @@ const UrlShortener = () => {
                 short_url: values.short_url
             };
             if (!editBtn) {
-                createShortenUrl(
-                    toast,
-                    urlCreateData,
-                    formik,
-                    setHasValidationError
-                );
-                setShortUrlData(prevShortUrlData => [
-                    ...prevShortUrlData.filter(item => item.id !== values.id),
-                    {
-                        ...urlCreateData,
-                        short_url:
-                            import.meta.env.VITE_BACKEND_URL_AUTH +
-                            "/r/" +
-                            urlCreateData.short_url
+                createShortenUrl(toast, urlCreateData, formik).then(result => {
+                    if (result) {
+                        setShortUrlData(prevShortUrlData => [
+                            ...prevShortUrlData.filter(
+                                item => item.id !== values.id
+                            ),
+                            {
+                                ...urlCreateData,
+                                short_url:
+                                    import.meta.env.VITE_BACKEND_URL_AUTH +
+                                    "/r/" +
+                                    urlCreateData.short_url
+                            }
+                        ]);
+                        setTimeout(() => {
+                            getShortenUrls(
+                                setShortUrlData,
+                                1,
+                                perPage,
+                                setTotalPages
+                            );
+                            // formik.handleReset(formik.values);
+                        }, 500);
+                        setEditBtn(false);
                     }
-                ]);
-                setTimeout(() => {
-                    getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
-                    // formik.handleReset(formik.values);
-                }, 500);
-                setEditBtn(false);
+                });
             } else {
-                editShortenUrl(values.id, toast, urlCreateData);
-                setShortUrlData(prevShortUrlData => [
-                    ...prevShortUrlData.filter(item => item.id !== values.id),
-                    {
-                        ...urlCreateData,
-                        short_url:
-                            import.meta.env.VITE_BACKEND_URL_AUTH +
-                            "/r/" +
-                            urlCreateData.short_url
-                    }
-                ]);
+                editShortenUrl(values.id, toast, urlCreateData, formik).then(
+                    result => {
+                        if (result) {
+                            setShortUrlData(prevShortUrlData => [
+                                ...prevShortUrlData.filter(
+                                    item => item.id !== values.id
+                                ),
+                                {
+                                    ...urlCreateData,
+                                    short_url:
+                                        import.meta.env.VITE_BACKEND_URL_AUTH +
+                                        "/r/" +
+                                        urlCreateData.short_url
+                                }
+                            ]);
 
-                formik.handleReset(formik.values);
+                            formik.handleReset(formik.values);
+                            setEditBtn(false);
+                        }
+                    }
+                );
             }
         },
         validate: (values: any) => {
@@ -257,7 +266,7 @@ const UrlShortener = () => {
                                     />
                                 </div>
                                 {formik.touched.short_url &&
-                                    formik.errors.short_url ? (
+                                formik.errors.short_url ? (
                                     <p className={styles.error_message}>
                                         {formik.errors.short_url}
                                     </p>
@@ -271,7 +280,7 @@ const UrlShortener = () => {
                                         minWidth: "auto",
                                         margin: "20px 0px 0px",
                                         color: "#5570F1",
-                                        backgroundColor: "#F3F3F4",
+                                        backgroundColor: "#F3F3F4"
                                     }}
                                     onClick={() => {
                                         formik.handleReset(formik.values);
