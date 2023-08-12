@@ -53,7 +53,7 @@ export const getShortenUrls = (
 export const createShortenUrl = (
     toast: ToastAsPara,
     urlData: any,
-    formik: any,
+    formik: any
     // setHasValidationError: hasValidationError
 ): Promise<boolean> => {
     return new Promise((resolve, reject) => {
@@ -87,8 +87,6 @@ export const createShortenUrl = (
                     Object.entries(error.response.data.message).forEach(
                         ([fieldName, errorMessage]) => {
                             if (Array.isArray(errorMessage)) {
-                                console.log(errorMessage);
-
                                 formik.setFieldError(
                                     fieldName,
                                     errorMessage?.join(", ") || ""

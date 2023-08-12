@@ -32,7 +32,7 @@ interface BackendErrors {
 const Onboarding = (props: Props) => {
     const urlParams = new URLSearchParams(window.location.search);
     const jsId = urlParams.get("jsid");
-    console.log(jsId)
+    // console.log(jsId)
     const queryParameters = new URLSearchParams(window.location.search);
     const navigate = useNavigate();
     // for hide and question container
@@ -194,7 +194,7 @@ const Onboarding = (props: Props) => {
                     mentorRole: "",
                     areaOfInterest: [],
                     general: "",
-                    referralId: ""
+                    referral_id: ""
                 });
             });
     }, []);
@@ -234,7 +234,7 @@ const Onboarding = (props: Props) => {
         mentorRole: "",
         areaOfInterest: [],
         general: "",
-        referralId: ""
+        referral_id: ""
     };
 
     const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
@@ -259,7 +259,7 @@ const Onboarding = (props: Props) => {
             year_of_graduation: values.yog === "" ? null : values.yog, //required for student
             area_of_interests: values.areaOfInterest, //required,
             password: values.password, //required
-            referral_id: values.referralId === "" ? null : values.referralId
+            referral_id: values.referral_id === "" ? null : values.referral_id
         };
 
         registerUser(
@@ -536,7 +536,7 @@ const Onboarding = (props: Props) => {
                                                     professional
                                                 </button>
                                                 <button
-                                                type="button"
+                                                    type="button"
                                                     onClick={() => {
                                                         roleAPI.map(
                                                             (role: any) => {
@@ -575,7 +575,7 @@ const Onboarding = (props: Props) => {
                                                     I'm a freelancer
                                                 </button>
                                                 <button
-                                                type="button"
+                                                    type="button"
                                                     onClick={() => {
                                                         setOpacity(0);
                                                         setTimeout(() => {
@@ -625,7 +625,7 @@ const Onboarding = (props: Props) => {
                                                     No
                                                 </button>
                                                 <button
-                                                type="button"
+                                                    type="button"
                                                     onClick={() => {
                                                         roleAPI.map(
                                                             (role: any) => {
@@ -819,7 +819,7 @@ const Onboarding = (props: Props) => {
                                                 value={formik.values.password}
                                             />
                                             <button
-                                            type="button"
+                                                type="button"
                                                 className={styles.password_icon}
                                                 onClick={e => {
                                                     e.preventDefault();
@@ -873,7 +873,7 @@ const Onboarding = (props: Props) => {
                                                 }
                                             />
                                             <button
-                                            type="button"
+                                                type="button"
                                                 className={styles.password_icon}
                                                 onClick={e => {
                                                     e.preventDefault();
@@ -1749,13 +1749,25 @@ const Onboarding = (props: Props) => {
                                             <input
                                                 id="referralId"
                                                 type="text"
-                                                name="referralId"
+                                                name="referral_id"
                                                 placeholder="Referral id , if any"
                                                 className={styles.input}
                                                 onBlur={formik.handleBlur}
                                                 onChange={formik.handleChange}
-                                                value={formik.values.referralId}
+                                                value={
+                                                    formik.values.referral_id
+                                                }
                                             />
+                                            {formik.touched.referral_id &&
+                                            formik.errors.referral_id ? (
+                                                <div
+                                                    className={
+                                                        styles.error_message
+                                                    }
+                                                >
+                                                    {formik.errors.referral_id}
+                                                </div>
+                                            ) : null}
                                         </div>
                                     </div>
 
