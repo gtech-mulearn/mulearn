@@ -283,7 +283,7 @@ const Onboarding = (props: Props) => {
         } else if (!/\S+@\S+\.\S+/.test(values.email)) {
             errors.email = "Invalid email address";
         }
-        if (values.password.string().length>8) 
+        if (values.password.toString().length>8) 
             errors.password = "Password length should be greater than 8";
         
         if (!values.confirmPassword) {
@@ -350,7 +350,7 @@ const Onboarding = (props: Props) => {
             }
         }
     }, [roleAPI]);
-
+    console.log("adsn")
     return (
         <>
             <div className={styles.onboarding_page}>
@@ -436,6 +436,10 @@ const Onboarding = (props: Props) => {
                                                                 emailVerificationResultBtn ==
                                                                 "Next"
                                                             ) {
+                                                                if(!/\S+@\S+\.\S+/
+                                                                .test(formik.values.email)){
+                                                                    formik.errors.email="Invalid email address"
+                                                                }
                                                                 if (
                                                                     !formik
                                                                         .errors
@@ -443,7 +447,8 @@ const Onboarding = (props: Props) => {
                                                                     formik
                                                                         .values
                                                                         .email !=
-                                                                        ""
+                                                                        "" 
+                                                                        
                                                                 ) {
                                                                     emailVerification(
                                                                         formik
