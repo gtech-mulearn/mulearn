@@ -74,8 +74,7 @@ const EditProfilePopUp = (props: Props) => {
             });
         });
     }, []);
-    console.log(formik.values.communities);
-
+    
     const communityIds: string[] = formik.values.communities || []; // Provide a default empty array
     const filteredCommunityOptions = communityAPI
         .filter(value => communityIds?.includes(value.id))
