@@ -542,16 +542,16 @@ function App() {
                                 />
                             )
                         },
-                        {
-                            path: "settings",
-                            element: <Settings />,
-                            children: [
-                                {
-                                    path: "connected-devices",
-                                    element: <ConnectedDevices />
-                                }
-                            ]
-                        }
+                        // {
+                        //     path: "settings",
+                        //     element: <Settings />,
+                        //     children: [
+                        //         {
+                        //             path: "connected-devices",
+                        //             element: <ConnectedDevices />
+                        //         }
+                        //     ]
+                        // }
                     ]
                 }
             ]
