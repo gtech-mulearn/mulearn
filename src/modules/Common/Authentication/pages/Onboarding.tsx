@@ -423,6 +423,7 @@ const Onboarding = (props: Props) => {
                                                         </div>
                                                     ) : null}
                                                     <MuButton
+                                                        type="submit"
                                                         className={
                                                             styles.verify_button
                                                         }
