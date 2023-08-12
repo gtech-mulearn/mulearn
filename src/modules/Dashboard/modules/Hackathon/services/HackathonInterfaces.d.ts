@@ -47,3 +47,23 @@ interface hackApiData {
     github: string;
     linkedin: string;
 }
+
+export interface OriginalDataItem {
+    data: {
+        name: string;
+        gender: string;
+        email: string;
+        mobile: string;
+        bio: string;
+        college: string;
+        experience: string;
+        github: string;
+        linkedin: string;
+    };
+}
+
+interface ColumnDefinition {
+    column: keyof TransformedDataItem;
+    Label: string;
+    isSortable: boolean;
+}

@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "react-tooltip/dist/react-tooltip.css";
 import { LuCopy, LuShare2, LuEdit } from "react-icons/lu";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { FiPlusCircle } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import { DateConverter } from "../../../utils/common";
 import {
@@ -17,6 +18,7 @@ import { Tooltip } from "react-tooltip";
 import styles from "./HackathonCreate.module.css";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { HackList } from "../services/HackathonInterfaces";
 
 enum ModalType {
     Publish,
@@ -57,7 +59,6 @@ const Hackathon = () => {
         }
     };
 
-  
     return (
         <>
         {data && ownData ? (
@@ -68,7 +69,7 @@ const Hackathon = () => {
                     to="/dashboard/hackathon/create"
                     className={styles.HCbutton}
                 >
-                    <PowerfulButton text="Create" />
+                    <PowerfulButton text="Create" icon={<FiPlusCircle/>} />
                 </Link>
             </div>
 
