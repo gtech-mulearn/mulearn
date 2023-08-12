@@ -6,6 +6,7 @@ export const hasRole = (roles: Role[]) => {
     return result
 };
 
+//This function should only be used if value is a json.
 export const fetchLocalStorage = <T>(key: string) => {
     if (typeof window === "undefined") return null
 
