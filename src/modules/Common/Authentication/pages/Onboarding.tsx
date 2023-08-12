@@ -283,7 +283,7 @@ const Onboarding = (props: Props) => {
         } else if (!/\S+@\S+\.\S+/.test(values.email)) {
             errors.email = "Invalid email address";
         }
-        if (values.password.toString().length>8) 
+        if (values.password.length>8) 
             errors.password = "Password length should be greater than 8";
         
         if (!values.confirmPassword) {

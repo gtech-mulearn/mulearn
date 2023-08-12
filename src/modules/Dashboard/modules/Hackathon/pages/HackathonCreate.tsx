@@ -25,6 +25,7 @@ import {
     getLocationIdByName
 } from "../../../utils/common";
 import HackathonImagePreview from "../components/HackathonImagePreview";
+import { HackList } from "../services/HackathonInterfaces";
 
 /**
  * TODO: Move YUP Validations to another file.

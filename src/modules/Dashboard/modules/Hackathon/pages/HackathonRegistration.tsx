@@ -14,6 +14,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getApplicationForm, getHackDetails, submitHackApplication } from "../services/HackathonApis";
 import { capitalizeFirstLetter } from "../../../utils/common";
 import { HackApplicationSchema } from "../services/HackathonYup";
+import { HackList, HackathonApplication } from "../services/HackathonInterfaces";
 
 type Props = {};
 
