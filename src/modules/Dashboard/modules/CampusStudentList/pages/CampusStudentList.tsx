@@ -152,7 +152,7 @@ const CampusStudentList = (props: Props) => {
                             <div className={styles.card}>
 
                                 <h1>{campusData.active_members}</h1>
-                                <p>Active Members<span>(30 Days)</span></p>
+                                {/* <p>Active Members<span>(30 Days)</span></p> */}
 
                             </div>
                             <div className={styles.campus_lead_card}>
@@ -177,7 +177,7 @@ const CampusStudentList = (props: Props) => {
                     </div>
                 </div>
             </div>
-            <div className={styles.graphs}>
+            {/* <div className={styles.graphs}>
                 <div className={styles.container}>
                     <h2>Weekly Karma Insights</h2>
                     <BarChart
@@ -200,7 +200,7 @@ const CampusStudentList = (props: Props) => {
                     />
                 </div>
 
-            </div>
+            </div> */}
             {studentData && (
                 <>
                     <TableTop
