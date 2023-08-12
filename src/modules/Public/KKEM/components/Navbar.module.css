@@ -1,0 +1,29 @@
+.navbar {
+    background-color: #ffffff;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 1rem 2rem;
+    gap: 3rem;
+    border-radius: 1.2rem;
+    width: 100%;
+    max-width: 800px;
+    perspective: 1000px;
+}
+
+.container > a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    line-height: 1rem;
+}
+.container > a:hover {
+    color: #2e85fe;
+}

@@ -1,0 +1,35 @@
+html {
+    scroll-behavior: smooth;
+}
+/* ::-webkit-scrollbar {
+    display: block;
+    width: 1rem;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+} */
+.main {
+    max-width: 200rem;
+    margin: 0 auto;
+}
+.title {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    object-fit: cover;
+    display: block;
+}
+.mU {
+    position: absolute;
+    top: -30%;
+    left: 20px;
+    height: 150%;
+    opacity: 0.5;
+}

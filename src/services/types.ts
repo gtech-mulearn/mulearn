@@ -14,7 +14,7 @@ export const roles = {
     SUSPEND: "Suspended",
     STUDENT: "Student",
     ENABLER: "Enabler",
-	IG_FACILITATOR: "IG Facilitator",
-	TECH_TEAM: "Tech Team",
-	ASSOCIATE: "Associate",
-};
+    IG_FACILITATOR: "IG Facilitator",
+    TECH_TEAM: "Tech Team",
+    ASSOCIATE: "Associate"
+} as const;

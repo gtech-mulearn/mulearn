@@ -1,26 +1,34 @@
 import { useEffect, useRef, useState } from "react";
-import Pagination from "../../../../components/MuComponents/Pagination/Pagination";
-import Table from "../../../../components/MuComponents/Table/Table";
-import THead from "../../../../components/MuComponents/Table/THead";
-import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
-import { getInterestGroups } from "./apis";
-import { Blank } from "../../../../components/MuComponents/Table/Blank";
-import { roles } from "../../../../services/types";
-import { hasRole } from "../../../../services/common_functions";
+import Pagination from "@/MuLearnComponents/Pagination/Pagination";
+import Table from "@/MuLearnComponents/Table/Table";
+import THead from "@/MuLearnComponents/Table/THead";
+import TableTop from "@/MuLearnComponents/TableTop/TableTop";
+import { createInterestGroups, deleteInterestGroups, getIGDetails, getInterestGroups } from "./apis";
 import { useNavigate } from "react-router-dom";
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./InterestGroup.module.css";
-import { dashboardRoutes } from "../../../../services/urls";
+import { dashboardRoutes } from "@/MuLearnServices/urls";
+import { useToast } from "@chakra-ui/react";
+
+interface IgDetails {
+    igName: string,
+    igCode: string,
+    igIcon: string,
+}
+
+export type modalStatesType = 'edit' | 'create' | null
 
 function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
+    const [isLoading, setIsLoading] = useState(false);
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
-    const firstFetch = useRef(true)
+    const toast = useToast();
+    const firstFetch = useRef(true);
     const columnOrder = [
         { column: "name", Label: "Name", isSortable: true },
         { column: "user_ig_link_ig", Label: "Members", isSortable: false },
@@ -29,51 +37,73 @@ function InterestGroup() {
         { column: "created_at", Label: "Created On", isSortable: false }
     ];
 
+
+    const [openModal, setOpenModal] = useState<modalStatesType>(null);
+    const [openMuModal, setOpenMuModal] = useState(false);
+    const [currID, setCurrID] = useState<string>('')
+
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getInterestGroups(setData, nextPage, perPage);
+        getInterestGroups(
+            setData,
+            nextPage,
+            perPage,
+            setIsLoading,
+            setTotalPages,
+            "",
+            sort,
+        );
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getInterestGroups(setData, prevPage, perPage);
+        getInterestGroups(
+            setData,
+            prevPage,
+            perPage,
+            setIsLoading,
+            setTotalPages,
+            "",
+            sort,
+        );
     };
 
     useEffect(() => {
         if (firstFetch.current) {
-            if (!hasRole([roles.ADMIN, roles.FELLOW])) {
-				navigate("/404")
-			}
-            getInterestGroups(setData, 1, perPage, setTotalPages, "", "");
+            getInterestGroups(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
         }
         firstFetch.current = false;
     }, []);
 
+    useEffect(() => {
+        if (openModal === null) {
+            getInterestGroups(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
+        }
+    }, [openModal])
+
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getInterestGroups(setData, 1, perPage, setTotalPages, search, "");
+        getInterestGroups(setData, 1, perPage, setIsLoading, setTotalPages, search, "");
     };
 
-    const handleEdit = (id: string | number | boolean) => {
-        console.log(id);
-        navigate(`/interest-groups/edit/${id}`);
+
+    const handleEdit = async (id: string | number | boolean) => {
+        navigate("/dashboard/interest-groups/edit/" + id);
     };
 
-    const handleDelete = (id: string | number | boolean) => {
-        console.log(id);
-        navigate(`/interest-groups/delete/${id}`);
+    const handleDelete = (id: string | undefined) => {
+        deleteInterestGroups(id, toast);
+        setTimeout(() => {
+            getInterestGroups(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
+        }, 1000);
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getInterestGroups(setData, 1, selectedValue, setTotalPages, "", "");
-    };
-
-    const handleCreate = () => {
-        navigate("/interest-groups/create");
+        getInterestGroups(setData, 1, selectedValue, setIsLoading, setTotalPages, "", "");
     };
 
     const handleIconClick = (column: string) => {
@@ -83,17 +113,18 @@ function InterestGroup() {
                 setData,
                 1,
                 perPage,
+                setIsLoading,
                 setTotalPages,
                 "",
                 `-${column}`
             );
         } else {
             setSort(column);
-            getInterestGroups(setData, 1, perPage, setTotalPages, "", column);
+            getInterestGroups(setData, 1, perPage, setIsLoading, setTotalPages, "", column);
         }
-
-        console.log(`Icon clicked for column: ${column}`);
     };
+
+    console.log(isLoading)
 
     return (
         <>
@@ -102,38 +133,53 @@ function InterestGroup() {
                     className={styles.createBtn}
                     text={"Create"}
                     icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
-                    onClick={handleCreate}
+                    onClick={() => {
+                        navigate("/dashboard/interest-groups/create");
+                    }}
                 />
             </div>
-            <TableTop
-                onSearchText={handleSearch}
-                onPerPageNumber={handlePerPageNumber}
-                CSV={dashboardRoutes.getIgList}
-            />
+
             {data && (
-                <Table
-                    rows={data}
-                    page={currentPage}
-                    perPage={perPage}
-                    columnOrder={columnOrder}
-                    id={["id"]}
-                    onEditClick={handleEdit}
-                    onDeleteClick={handleDelete}
-                >
-                    <THead
+                <>
+                    <TableTop
+                        onSearchText={handleSearch}
+                        onPerPageNumber={handlePerPageNumber}
+                        CSV={dashboardRoutes.getIgList}
+                    />
+                    <Table
+                        rows={data}
+                        isloading={isLoading}
+                        page={currentPage}
+                        perPage={perPage}
                         columnOrder={columnOrder}
-                        onIconClick={handleIconClick}
-                        action={true}
-                    />
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        margin="10px 0"
-                        handleNextClick={handleNextClick}
-                        handlePreviousClick={handlePreviousClick}
-                    />
-                    {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-                </Table>
+                        id={["id"]}
+                        onEditClick={handleEdit}
+                        onDeleteClick={handleDelete}
+                        modalDeleteHeading="Delete"
+                        modalTypeContent="error"
+                        modalDeleteContent="Are you sure you want to delete "
+                    >
+                        <THead
+                            columnOrder={columnOrder}
+                            onIconClick={handleIconClick}
+                            action={true}
+                        />
+                        <div className={styles.tableFooter}>
+                            {!isLoading && <Pagination
+                                currentPage={currentPage}
+                                totalPages={totalPages}
+                                margin="10px 0"
+                                handleNextClick={handleNextClick}
+                                handlePreviousClick={handlePreviousClick}
+                                onSearchText={handleSearch}
+                                onPerPageNumber={handlePerPageNumber}
+                                perPage={perPage}
+                                setPerPage={setPerPage}
+                            />}
+                        </div>
+                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                    </Table>
+                </>
             )}
         </>
     );

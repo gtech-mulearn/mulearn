@@ -1,26 +1,31 @@
 import { useEffect, useRef, useState } from "react";
-import Pagination from "../../../../components/MuComponents/Pagination/Pagination";
-import Table from "../../../../components/MuComponents/Table/Table";
-import THead from "../../../../components/MuComponents/Table/THead";
-import TableTop from "../../../../components/MuComponents/TableTop/TableTop";
-import { getManageRoles } from "./apis";
-import { Blank } from "../../../../components/MuComponents/Table/Blank";
-import { roles } from "../../../../services/types";
-import { hasRole } from "../../../../services/common_functions";
+import Pagination from "@/MuLearnComponents/Pagination/Pagination";
+import Table from "@/MuLearnComponents/Table/Table";
+import THead from "@/MuLearnComponents/Table/THead";
+import TableTop from "@/MuLearnComponents/TableTop/TableTop";
+import { deleteManageRoles, getManageRoles } from "./apis";
 import { useNavigate } from "react-router-dom";
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./Manageroles.module.css";
-import { dashboardRoutes } from "../../../../services/urls";
+import { dashboardRoutes } from "@/MuLearnServices/urls";
+import { useToast } from "@chakra-ui/react";
+import Modal from "./components/Modal";
+import ManageRolesEditModal from "./components/ManageRolesEditModal";
+import ManageRolesCreateModal from "./components/ManageRolesCreateModal";
 
 function ManageRoles() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
-    const firstFetch = useRef(true)
+    const firstFetch = useRef(true);
+    //Modal
+    const [currRoleID, setCurrRoleID] = useState("");
+    const [currModal, setCurrModal] = useState<null | "create" | "edit">(null);
 
     const columnOrder = [
         // { column: "id", Label: "ID", isSortable: true },
@@ -35,48 +40,72 @@ function ManageRoles() {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getManageRoles(setData, nextPage, perPage);
+        getManageRoles(
+            setData,
+            nextPage,
+            perPage,
+            setIsLoading,
+            () => { },
+            sort
+        );
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getManageRoles(setData, prevPage, perPage);
+        getManageRoles(
+            setData,
+            prevPage,
+            perPage,
+            setIsLoading,
+            () => { },
+            sort
+        );
     };
 
     useEffect(() => {
         if (firstFetch.current) {
 
-            if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
-
-            getManageRoles(setData, 1, perPage, setTotalPages, "", "");
+            getManageRoles(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
         }
         firstFetch.current = false;
     }, []);
 
+    useEffect(() => {
+        //refetch data when value is edited or created
+        if (currModal === null) {
+            //refresh table when modal closes
+            //delay fetch so that updated table is fetched
+            setTimeout(()=>
+                getManageRoles(setData, 1, perPage, setIsLoading, setTotalPages, "", "")
+            ,1000)
+        }
+        
+    }, [currModal]);
+
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getManageRoles(setData, 1, perPage, setTotalPages, search, "");
+        getManageRoles(setData, 1, perPage, setIsLoading, setTotalPages, search, "");
     };
 
     const handleEdit = (id: string | number | boolean) => {
-        console.log(id);
-        navigate(`/manage-roles/edit/${id}`);
+        setCurrRoleID(id as string);
+        setCurrModal("edit");
     };
-
-    const handleDelete = (id: string | number | boolean) => {
-        console.log(id);
-        navigate(`/manage-roles/delete/${id}`);
+    const toast = useToast();
+    const handleDelete = (id: string | undefined) => {
+        deleteManageRoles(id, toast);
+        getManageRoles(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getManageRoles(setData, 1, selectedValue, setTotalPages, "", "");
+        getManageRoles(setData, 1, selectedValue, setIsLoading, setTotalPages, "", "");
     };
 
     const handleCreate = () => {
-        navigate("/manage-roles/create");
+        setCurrModal("create");
     };
 
     const handleIconClick = (column: string) => {
@@ -86,20 +115,53 @@ function ManageRoles() {
                 setData,
                 1,
                 perPage,
+                setIsLoading,
                 setTotalPages,
                 "",
                 `-${column}`
             );
         } else {
             setSort(column);
-            getManageRoles(setData, 1, perPage, setTotalPages, "", column);
+            getManageRoles(setData, 1, perPage, setIsLoading, setTotalPages, "", column);
         }
 
-        console.log(`Icon clicked for column: ${column}`);
+        //console.log(`Icon clicked for column: ${column}`);
     };
-
     return (
         <>
+            {currModal
+                ? (() => {
+                    if (currModal === "create")
+                        return (
+                            <Modal
+                                onClose={setCurrModal}
+                                icon="tick"
+                                header="Create Role"
+                                paragraph="Enter the values for the new role"
+                            >
+                                <ManageRolesCreateModal
+                                    id={currRoleID}
+                                    onClose={setCurrModal}
+                                />
+                            </Modal>
+                        );
+                    if (currModal === "edit")
+                        return (
+                            <Modal
+                                onClose={setCurrModal}
+                                icon="tick"
+                                header="Edit Role"
+                                paragraph="Enter the new values for this role"
+                            >
+                                <ManageRolesEditModal
+                                    id={currRoleID}
+                                    onClose={setCurrModal}
+                                />
+                            </Modal>
+                        );
+                })()
+                : ""}
+
             <div className={styles.createBtnContainer}>
                 <MuButton
                     className={styles.createBtn}
@@ -108,35 +170,49 @@ function ManageRoles() {
                     onClick={handleCreate}
                 />
             </div>
-            <TableTop
-                onSearchText={handleSearch}
-                onPerPageNumber={handlePerPageNumber}
-                CSV={dashboardRoutes.getRolesList}
-            // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
-            />
+
             {data && (
-                <Table
-                    rows={data}
-                    page={currentPage}
-                    perPage={perPage}
-                    columnOrder={columnOrder}
-                    id={["id"]}
-                    onEditClick={handleEdit}
-                    onDeleteClick={handleDelete}
-                >
-                    <THead
+                <>
+                    <TableTop
+                        onSearchText={handleSearch}
+                        onPerPageNumber={handlePerPageNumber}
+                        CSV={dashboardRoutes.getRolesList}
+                    />
+                    <Table
+                        isloading={isLoading}
+                        rows={data}
+                        page={currentPage}
+                        perPage={perPage}
                         columnOrder={columnOrder}
-                        onIconClick={handleIconClick}
-                    />
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        margin="10px 0"
-                        handleNextClick={handleNextClick}
-                        handlePreviousClick={handlePreviousClick}
-                    />
-                    {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-                </Table>
+                        id={["id"]}
+                        onEditClick={handleEdit}
+                        onDeleteClick={handleDelete}
+                        modalDeleteHeading="Delete"
+                        modalTypeContent="error"
+                        modalDeleteContent="Are you sure you want to delete this role ?"
+                    >
+                        <THead
+                            columnOrder={columnOrder}
+                            onIconClick={handleIconClick}
+                            action={true}
+                        />
+                        <div>
+                            {!isLoading &&
+                                <Pagination
+                                    currentPage={currentPage}
+                                    totalPages={totalPages}
+                                    margin="10px 0"
+                                    handleNextClick={handleNextClick}
+                                    handlePreviousClick={handlePreviousClick}
+                                    onPerPageNumber={handlePerPageNumber}
+                                    perPage={perPage}
+                                    setPerPage={setPerPage}
+                                />
+                            }
+                        </div>
+                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                    </Table>
+                </>
             )}
         </>
     );

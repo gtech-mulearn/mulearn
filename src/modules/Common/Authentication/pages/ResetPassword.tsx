@@ -13,7 +13,7 @@ const ResetPassword = (props: Props) => {
     const [muid, setMuID] = useState("");
     const [searchParams] = useSearchParams();
     const [token, setToken] = useState("");
-
+    localStorage.clear();
     const navigate = useNavigate();
     const toast = useToast();
 
@@ -93,7 +93,7 @@ const ResetPassword = (props: Props) => {
                                 value={formik.values.password}
                             />
                             {formik.touched.password &&
-                            formik.errors.password ? (
+                                formik.errors.password ? (
                                 <div className={styles.error_message}>
                                     {formik.errors.password}
                                 </div>
@@ -125,7 +125,7 @@ const ResetPassword = (props: Props) => {
                                 value={formik.values.confirmPassword}
                             />
                             {formik.touched.confirmPassword &&
-                            formik.errors.confirmPassword ? (
+                                formik.errors.confirmPassword ? (
                                 <div className={styles.error_message}>
                                     {formik.errors.confirmPassword}
                                 </div>

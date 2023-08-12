@@ -1,26 +1,26 @@
-import { useState, useEffect } from "react";
+import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { hasRole } from "@/MuLearnServices/common_functions";
+import { roles } from "@/MuLearnServices/types";
+import { useToast } from "@chakra-ui/react";
+import { Form, Formik } from "formik";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Select from "react-select";
-import { hasRole } from "../../../../services/common_functions";
-import { roles } from "../../../../services/types";
+import { ClipLoader } from "react-spinners";
+import * as Yup from "yup";
 import {
+    createOrganization,
+    getAffiliation,
     getCountry,
+    getDistricts,
     getStates,
     getZones,
-    getDistricts,
-    getAffiliation
+    updateOrganization
 } from "./apis";
-import { useNavigate } from "react-router-dom";
-import Textfield from "../../../../components/MuComponents/TextField/Textfield";
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
-import { createOrganization, updateOrganization } from "./apis";
-import { useToast } from "@chakra-ui/react";
-import { FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
-import { ClipLoader } from "react-spinners";
 
-import "./Organizations.scss";
-import { useRef } from 'react';
+import { useRef } from "react";
+import orgStyles from "./Organizations.module.css";
 
 interface Option {
     value: string;
@@ -39,16 +39,6 @@ interface CollegeFormProps {
     selectedDistrict?: string;
     selectedAffiliation?: string;
 }
-
-// export let myState = false; // Initial value
-
-// export const setMyState = (newValue:boolean) => {
-//   myState = newValue;
-// };
-
-
-
-
 
 const FormData = ({ ...props }: CollegeFormProps) => {
     const [inputName, setInputName] = useState("");
@@ -77,33 +67,31 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     const [isCountryDataLoaded, setIsCountryDataLoaded] = useState(false);
 
     const [isSuccess, setIsSuccess] = useState(false);
-    const [isLoading, setIsLoading] = useState(false)
-    const [isDisabled, setIsDisabled] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
+    const [isDisabled, setIsDisabled] = useState(false);
 
     const [selectionStatus, setSelectionStatus] = useState({
         isCountrySelected: true,
         isStateSelected: false,
         isZoneSelected: false,
         isDistrictSelected: false
-    })
-
+    });
 
     const navigate = useNavigate();
     const toast = useToast();
-
 
     const myRef = useRef(false);
 
     useEffect(() => {
         if (isSuccess) {
-            navigate('/organizations')
+            navigate("/dashboard/organizations");
         }
         if (isLoading) {
-            setIsDisabled(true)
+            setIsDisabled(true);
         } else {
-            setIsDisabled(false)
+            setIsDisabled(false);
         }
-    })
+    });
 
     function camelCase(str: string) {
         return str?.replace(
@@ -119,13 +107,12 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
     const orgType = props.activeItem;
 
-
     const handleSubmit = (Name: string, Code: string) => {
         // e.preventDefault();
         // resetStates()
         interface SelectBodyProps {
-            Name: string,
-            Code: string,
+            Name: string;
+            Code: string;
             country: string;
             state: string;
             zone: string;
@@ -139,14 +126,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             isCreate: boolean,
             affiliation?: string
         ) => {
-            const {
-                country,
-                state,
-                zone,
-                district,
-                orgType,
-                toast
-            } = params;
+            const { country, state, zone, district, orgType, toast } = params;
 
             if (isCreate) {
                 if (orgType === "College") {
@@ -161,7 +141,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         toast,
                         affiliation,
                         setIsSuccess,
-                        setIsLoading,
+                        setIsLoading
                     );
                 } else {
                     createOrganization(
@@ -184,7 +164,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         Name,
                         Code,
                         oldCode,
-                        camelCase(country),     
+                        camelCase(country),
                         camelCase(state),
                         camelCase(zone),
                         camelCase(district),
@@ -211,7 +191,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     );
                 }
             }
-            setIsLoading(false)
+            setIsLoading(false);
         };
 
         const SelectBody = (item: string) => {
@@ -221,7 +201,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                 country: country.value || props.selectedCountry,
                 state: state.value || props.selectedState,
                 zone: zone.value || props.selectedZone,
-                district: district.value,
+                district: district.value || props.selectedDistrict,
                 orgType,
                 toast
             };
@@ -234,7 +214,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
         };
 
         SelectBody(orgType);
-        // console.log("Success Status-->", myRef.current);
+        //console.log("Success Status-->", myRef.current);
     };
 
     useEffect(() => {
@@ -247,10 +227,9 @@ const FormData = ({ ...props }: CollegeFormProps) => {
         }
 
         if (!props.isCreate) {
-
             setInputName(props.inputName || "");
             setInputCode(props.inputCode || "");
-            setOldCode(props.inputCode || "")
+            setOldCode(props.inputCode || "");
             setSelectedCountry(props.selectedCountry || "");
             setSelectedState(props.selectedState || "");
             setSelectedZone(props.selectedZone || "");
@@ -258,31 +237,38 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             setSelectedAffiliation(props.selectedAffiliation || "");
 
             if (props.selectedCountry) {
-                getStates(camelCase(props.selectedCountry), setStatesData);
+                getStates(
+                    camelCase(props.selectedCountry),
+                    setStatesData,
+                    toast
+                );
             }
 
-            if(props.selectedAffiliation){
-                getAffiliation(camelCase(props.selectedAffiliation))
+            if (props.selectedAffiliation) {
+                getAffiliation(camelCase(props.selectedAffiliation));
             }
 
             if (props.selectedCountry && props.selectedState) {
                 getZones(
                     camelCase(props.selectedCountry),
                     camelCase(props.selectedState),
-                    setZonesData
+                    setZonesData,
+                    toast
                 );
             }
 
             if (
                 props.selectedCountry &&
                 props.selectedState &&
-                props.selectedZone
+                props.selectedZone &&
+                props.selectedZone !== ""
             ) {
                 getDistricts(
                     camelCase(props.selectedCountry),
                     camelCase(props.selectedState),
                     camelCase(props.selectedZone),
-                    setDistrictsData
+                    setDistrictsData,
+                    toast
                 );
             }
         }
@@ -290,36 +276,54 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
     useEffect(() => {
         if (!props.isCreate) {
-            if(props.activeItem == "College"){
-                getStates(camelCase(selectedCountry), setStatesData);
+            if (
+                props.activeItem == "College" &&
+                country.value?.toLowerCase() !==
+                    selectedCountry?.toLowerCase() &&
+                country !== ""
+            ) {
+                getStates(camelCase(selectedCountry), setStatesData, toast);
             }
-            if (country.value?.toLowerCase() !== props.selectedCountry?.toLowerCase() && country !== "") {
-                setZonesData([])
-                setDistrictsData([])
-                getStates(camelCase(selectedCountry), setStatesData);
+            if (
+                country.value?.toLowerCase() !==
+                    selectedCountry?.toLowerCase() &&
+                country !== ""
+            ) {
+                getStates(camelCase(selectedCountry), setStatesData, toast);
             }
-            if (state.value?.toLowerCase() !== props.selectedState?.toLowerCase() && state !== "") {
-                setDistrictsData([])
+            if (
+                state.value?.toLowerCase() !== selectedState?.toLowerCase() &&
+                state !== ""
+            ) {
                 getZones(
-                    camelCase(country.value),
+                    camelCase(props.selectedCountry || country.value),
                     camelCase(state.value),
-                    setZonesData
+                    setZonesData,
+                    toast
                 );
+                setZonesData([]);
+                setDistrictsData([]);
             }
-            if (zone.value?.toLowerCase() !== props.selectedZone?.toLowerCase() && zone !== "") {
+
+            if (
+                zone.value?.toLowerCase() !== selectedZone?.toLowerCase() &&
+                selectedZone !== "" &&
+                zone !== ""
+            ) {
                 getDistricts(
-                    camelCase(props.selectedCountry || country),
-                    camelCase(props.selectedState || state),
+                    camelCase(props.selectedCountry || country.value),
+                    camelCase(props.selectedState || state.value),
                     camelCase(zone.value),
-                    setDistrictsData
+                    setDistrictsData,
+                    toast
                 );
             }
         }
-    }, [country, state, zone])
+    }, [country, state, zone, district]);
 
     useEffect(() => {
         if (country !== "") {
-            getStates(camelCase(country.value), setStatesData);
+            getStates(camelCase(country.value), setStatesData, toast);
         }
     }, [selectedCountry]);
 
@@ -328,18 +332,21 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             getZones(
                 camelCase(country.value || props.selectedCountry),
                 camelCase(state.value),
-                setZonesData
+                setZonesData,
+                toast
             );
         }
     }, [selectedState]);
 
     useEffect(() => {
-        if (zone !== "") {
+       
+        if (zone !== "" && zone.value !== undefined) {
             getDistricts(
                 camelCase(country.value || props.selectedCountry),
-                camelCase(state.value || props.selectedCountry),
+                camelCase(state.value || props.selectedState),
                 camelCase(zone.value),
-                setDistrictsData
+                setDistrictsData,
+                toast
             );
         }
     }, [selectedZone]);
@@ -360,8 +367,12 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
     const handleStateChange = (option: any) => {
         if (option) {
+            setZone([]);
+            setSelectedZone("");
+            setSelectedDistrict("");
             setState(option);
             setSelectedState(option.value as string);
+      
         }
     };
 
@@ -369,6 +380,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
         if (option) {
             setZone(option);
             setSelectedZone(option.value as string);
+            setSelectedDistrict("");
         }
     };
 
@@ -386,12 +398,16 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     Name: props.inputName || "",
                     Code: props.inputCode || "",
                     Country: country.value || "",
-                    Affiliation: affiliation.value || ""                    // acceptedTerms: false, // added for our checkbox
+                    Affiliation: affiliation.value || "",
+                    State: state.value || "",
+                    Zone: zone.value || "",
+                    District: district.value || ""
+                    // acceptedTerms: false, // added for our checkbox
                     // jobType: "" // added for our select
                 }}
                 validationSchema={Yup.object({
                     Name: Yup.string()
-                        .max(30, "Must be 30 characters or less")
+                        .max(120, "Must be 120 characters or less")
                         .required("Required"),
                     Code: Yup.string()
                         .max(30, "Must be 30 characters or less")
@@ -399,20 +415,12 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                 })}
                 onSubmit={values => {
                     setIsLoading(true)
-                    handleSubmit(values.Name, values.Code);
+                    //console.log(values.Name);
+                    handleSubmit(values.Name,values.Code);
                 }}
             >
-                <Form className="popup_dropdown_container">
-                    {/* <Textfield
-                    content={`${props.activeItem} Name`}
-                    inputType="text"
-                    setInput={setInputName}
-                    input={inputName}
-                    style={{
-                        width: "100%"
-                    }}
-                /> */}
-                    <div className="inputfield_container">
+                <Form className={orgStyles.popupDropdownContainer}>
+                    <div className={orgStyles.inputFieldContainer}>
                         <FormikTextInput
                             label={`${props.activeItem} Name`}
                             name="Name"
@@ -420,7 +428,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             placeholder="Enter a name"
                         />
                     </div>
-                    <div className="inputfield_container">
+                    <div className={orgStyles.inputFieldContainer}>
                         <FormikTextInput
                             label="Code"
                             name="Code"
@@ -429,11 +437,13 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         />
                     </div>
                     {props.activeItem === "College" ? (
-                        <div className="inputfield_container">
+                        <div className={orgStyles.inputFieldContainer}>
                             <p>Affiliated University</p>
                             <Select
                                 value={affiliationData.find(
-                                    affiliation => affiliation.value === selectedAffiliation
+                                    affiliation =>
+                                        affiliation.value ===
+                                        selectedAffiliation
                                 )}
                                 name="Affiliation"
                                 onChange={handleAffiliationChange}
@@ -442,11 +452,13 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             />
                         </div>
                     ) : null}
-                    <div className="inputfield_container">
+                    <div className={orgStyles.inputFieldContainer}>
                         <p>Country</p>
                         <Select
                             value={countryData.find(
-                                country => country.value === selectedCountry.toLowerCase()
+                                country =>
+                                    country.value ===
+                                    selectedCountry.toLowerCase()
                             )}
                             name="Country"
                             onChange={handleCountryChange}
@@ -454,56 +466,79 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             required
                         />
                     </div>
-                    <div className="inputfield_container">
+                    <div className={orgStyles.inputFieldContainer}>
                         <p>State</p>
                         <Select
                             value={statesData.find(
-                                state => state.value === selectedState.toLowerCase()
+                                state =>
+                                    state.value === selectedState.toLowerCase()
                             )}
+                            name="State"
                             onChange={handleStateChange}
                             options={statesData}
                             required
-                        // isDisabled={props.isCreate && selectedCountry ? false : true }
+                            // isDisabled={props.isCreate && selectedCountry ? false : true }
                         />
                     </div>
-                    <div className="inputfield_container">
+                    <div className={orgStyles.inputFieldContainer}>
                         <p>Zone</p>
                         <Select
-                            value={zonesData.find(
-                                zone => zone.value === selectedZone.toLowerCase()
-                            )}
+                            value={
+                                selectedZone.length > 0 &&
+                                zonesData.find(
+                                    zone =>
+                                        zone.value ===
+                                        selectedZone.toLowerCase()
+                                )
+                            }
+                            name="Zone"
                             onChange={handleZoneChange}
                             options={zonesData}
                             required
                         />
                     </div>
-                    <div className="inputfield_container">
+                    <div className={orgStyles.inputFieldContainer}>
                         <p>District</p>
                         <Select
-                            value={districtsData.find(
-                                district => district.value === selectedDistrict.toLowerCase()
-                            )}
+                            value={
+                                selectedDistrict.length > 0 &&
+                                districtsData.find(
+                                    district =>
+                                        district.value ===
+                                        selectedDistrict.toLowerCase()
+                                )
+                            }
+                            name="District"
                             onChange={handleDistrictChange}
                             options={districtsData}
                             required
                         />
                     </div>
-                    <div className="inputfield_container grid-container">
+                    <div className={`${orgStyles.inputFieldContainer} grid-container`}>
                         {/* <div className="btn light-btn" onClick={resetStates}>
                             Decline
                         </div> */}
                         <MuButton
                             text={"Decline"}
+                            type="button"
                             className="btn light-btn"
                             onClick={() => {
-                                navigate("/organizations");
+                                navigate("/dashboard/organizations");
                             }}
                         />
-                        <button type="submit" className="btn blue-btn" disabled={isDisabled}>
+                        <button
+                            type="submit"
+                            className="btn blue-btn"
+                            disabled={isDisabled}
+                        >
                             Submit
-                            {
-                                isLoading ? (<ClipLoader size={20} color="#fff" className="btn_loader" />) : null
-                            }
+                            {isLoading ? (
+                                <ClipLoader
+                                    size={20}
+                                    color="#fff"
+                                    className={orgStyles.btnLoader}
+                                />
+                            ) : null}
                         </button>
                     </div>
                 </Form>
@@ -512,8 +547,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     );
 };
 
-export default FormData;
 function sleep(arg0: number) {
     throw new Error("Function not implemented.");
 }
-
+export default FormData;

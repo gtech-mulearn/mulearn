@@ -1,0 +1,140 @@
+.connectedDevices {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    width: 100%;
+    background-color: transparent;    
+}
+.connectedDevices p{
+    color: #777879;
+}
+.connectedDevices .middle{
+    display: flex;
+    flex-direction: column;
+    /* background-color: #F0F6FF; */
+    height: 100vh;
+    gap: 2rem;
+    padding: 2rem;
+}
+.connectedDevices .content{
+    display: flex;
+    flex-direction: column;
+    align-items:start;
+}
+.connectedDevices .container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+.connectedDevices .device{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    background-color: #fff;
+    padding: 2rem;
+    gap: 2rem;
+    border-radius: 5px;
+    
+}
+.connectedDevices .device span{
+    display: flex;
+    flex-direction: row;
+}
+.connectedDevices .device .phone{
+    display: flex;
+    flex-direction:row;
+    gap: 1.5rem;
+    width: 60%;
+}
+
+.connectedDevices .phone span{
+    display: flex;
+    flex-direction: column;
+}
+.connectedDevices .phone span p{
+    font-size: .7rem;
+}
+
+.connectedDevices .button{
+    display: flex;
+    justify-content:end;
+    width: 40%;
+}
+.connectedDevices .button button{
+    width: 5rem;
+    height: 2rem;
+    border-radius: 5px;
+    background-color: #456FF6;
+    color: #fff;
+    border:none;
+}
+.connectedDevices .lastseen{
+    width: 70%;
+}
+.connectedDevices .lastseen  p{
+    font-size: .8rem;
+    color: black;
+}
+.connectedDevices .google{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    width: 40%;
+    font-size: .7rem;
+    gap: .4rem;
+}
+.connectedDevices .google p{
+    font-size: .7rem;
+}
+.connectedDevices .button span{
+    width: .5rem;
+    height: .5rem;
+    background-color: green;
+    border-radius: 8px;
+    margin-top: .3rem;
+}
+.connectedDevices .button p{
+    font-size: .8rem;
+    margin-left: .2rem;
+    color: black;
+}
+
+
+
+
+
+@media(width<1000px) {
+   
+    .connectedDevices .container{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .connectedDevices .device{
+        width: 100%;
+    }
+    
+}
+@media(width<480px) {
+   
+    .connectedDevices .middle{
+        width: 100%;
+        padding: 1rem;
+    }
+    .connectedDevices .device{
+        padding: 1.5rem;
+    }
+}
+@media(width<300px) {
+    .connectedDevices .device .phone{
+        flex-direction: column;
+    }
+    
+    .connectedDevices .device .end{
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

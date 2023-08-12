@@ -1,21 +1,17 @@
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
-import React from "react";
 import { useNavigate, NavigateFunction } from "react-router-dom";
 import {
     privateGateway,
     publicGateway
-} from "../../../../services/apiGateways";
-import { authRoutes, dashboardRoutes } from "../../../../services/urls";
-
-type setMuID = React.Dispatch<React.SetStateAction<string>>;
-type setStatus = React.Dispatch<React.SetStateAction<number>>;
-type setHasError = React.Dispatch<React.SetStateAction<boolean>>;
+} from "@/MuLearnServices/apiGateways";
+import { authRoutes, dashboardRoutes } from "@/MuLearnServices/urls";
+import { refreshRoles } from "@/MuLearnServices/authCheck";
 
 export const forgetPassword = (
     emailOrMuid: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
+    toast: ToastAsPara,
     navigate: NavigateFunction,
-    setShowLoader: (showLoader: boolean) => void
+    setShowLoader: UseStateFunc<boolean>
 ) => {
     setShowLoader(true);
     privateGateway
@@ -45,22 +41,30 @@ export const forgetPassword = (
         });
 };
 
+type authRoutesLoginRes = APIResponse<{
+    accessToken: string;
+    refreshToken: string;
+    expiry: string;
+}>;
+
+type authGetUserInfo = APIResponse<UserInfo>;
+
 export const login = (
     emailOrMuid: string,
     password: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
+    toast: ToastAsPara,
     navigate: NavigateFunction,
-    setIsLoading: (loading: boolean) => void,
+    setIsLoading: UseStateFunc<boolean>,
     redirectPath: string
 ) => {
     setIsLoading(true);
     publicGateway
         .post(authRoutes.login, { emailOrMuid, password })
-        .then(response => {
+        .then((response: authRoutesLoginRes) => {
             if (response.data.hasError == false) {
-                console.log("=======> Login Res: ", response.data.response);
+                //console.log("=======> Login Res: ", response.data.response);
 
-                console.log(response.data.response.accessToken);
+                //console.log(response.data.response.accessToken);
                 localStorage.setItem(
                     "accessToken",
                     response.data.response.accessToken
@@ -78,19 +82,20 @@ export const login = (
                 });
                 privateGateway
                     .get(dashboardRoutes.getInfo)
-                    .then(response => {
-                        console.log(response);
+                    .then((response: authGetUserInfo) => {
+                        //console.log(response);
                         localStorage.setItem(
                             "userInfo",
                             JSON.stringify(response.data.response)
                         );
-                        if (response.data.response.existInGuild) {
-                            navigate("/profile");
+                        refreshRoles();
+                        if (response.data.response.exist_in_guild) {
+                            navigate("/dashboard/profile");
                         } else {
                             if (redirectPath) {
                                 navigate(`/${redirectPath}`);
                             } else {
-                                navigate("/connect-discord");
+                                navigate("/dashboard/connect-discord");
                             }
                         }
                     })
@@ -113,14 +118,14 @@ export const login = (
 
 export const getMuid = (
     token: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
+    toast: ToastAsPara,
     navigate: NavigateFunction,
-    setMuID: setMuID
+    setMuID: UseStateFunc<string>
 ) => {
     privateGateway
         .post(dashboardRoutes.resetPasswordVerify.replace("${token}", token))
-        .then(response => {
-            console.log(response.data);
+        .then((response: APIResponse<{ muid: string }>) => {
+            //console.log(response.data);
             toast({
                 title: "User Verified",
                 description:
@@ -150,14 +155,14 @@ export const getMuid = (
 export const resetPassword = (
     token: string,
     password: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
+    toast: ToastAsPara,
     navigate: NavigateFunction
 ) => {
     privateGateway
         .post(dashboardRoutes.resetPassword.replace("${token}", token), {
             password
         })
-        .then(response => {
+        .then((response: APIResponse<{}, {}>) => {
             if (response.data.statusCode === 200) {
                 toast({
                     title: "Password Reset Successful",
@@ -188,16 +193,16 @@ export const resetPassword = (
 
 export const requestEmailOrMuidOtp = (
     emailOrMuid: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
-    setHasError: setHasError,
-    setStatus: setStatus,
-    setOtpLoading: (otpLoading: boolean) => void,
-    setOtpError: (otpError: boolean) => void
+    toast: ToastAsPara,
+    setHasError: UseStateFunc<boolean>,
+    setStatus: UseStateFunc<number>,
+    setOtpLoading: UseStateFunc<boolean>,
+    setOtpError: UseStateFunc<boolean>
 ) => {
     setOtpLoading(true);
     publicGateway
         .post(authRoutes.requestEmailOrMuidOtp, { emailOrMuid })
-        .then(response => {
+        .then((response: APIResponse) => {
             setOtpLoading(false);
             setStatus(response.data.statusCode);
             if (response.data.hasError == false) {
@@ -228,16 +233,16 @@ export const requestEmailOrMuidOtp = (
 export const otpVerification = (
     emailOrMuid: string,
     otp: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
+    toast: ToastAsPara,
     navigate: NavigateFunction,
-    setOtpVerifyLoading: (otpverifyLoading: boolean) => void,
+    setOtpVerifyLoading: UseStateFunc<boolean>,
     redirectPath: string
 ) => {
     setOtpVerifyLoading(true);
     publicGateway
         .post(authRoutes.otpVerification, { emailOrMuid, otp })
-        .then(response => {
-            console.log(response.data);
+        .then((response: authRoutesLoginRes) => {
+            //console.log(response.data);
             localStorage.setItem(
                 "accessToken",
                 response.data.response.accessToken
@@ -258,19 +263,20 @@ export const otpVerification = (
             }
             privateGateway
                 .get(dashboardRoutes.getInfo)
-                .then(response => {
-                    console.log(response);
+                .then((response: authGetUserInfo) => {
+                    //console.log(response);
                     localStorage.setItem(
                         "userInfo",
                         JSON.stringify(response.data.response)
                     );
-                    if (response.data.response.existInGuild) {
-                        navigate("/profile");
+                    refreshRoles();
+                    if (response.data.response.exist_in_guild) {
+                        navigate("/dashboard/profile");
                     } else {
                         if (redirectPath) {
                             navigate(`/${redirectPath}`);
                         } else {
-                            navigate("/connect-discord");
+                            navigate("/dashboard/connect-discord");
                         }
                     }
                 })

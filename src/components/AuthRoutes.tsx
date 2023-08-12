@@ -10,15 +10,15 @@ const AuthRoutes: React.FC = () => {
     useEffect(() => {
         setRefreshToken(localStorage.getItem("refreshToken") || "");
         let userInfo = localStorage.getItem("userInfo");
-        console.log("userInfo", userInfo);
+        //console.log("userInfo", userInfo);
 
         if (userInfo !== null) {
-            setOnboardingStatus(JSON.parse(userInfo!).existInGuild);
+            setOnboardingStatus(JSON.parse(userInfo!).exist_in_guild);
         }
     }, [onboardingStatus]);
 
     return refreshToken && refreshToken.length > 0
-        ? <Navigate to={onboardingStatus ? "/profile" : "/connect-discord"} />
+        ? <Navigate to={onboardingStatus ? "/dashboard/profile" : "/dashboard/connect-discord"} />
         : <Outlet />;
 };
 

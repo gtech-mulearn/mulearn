@@ -2,32 +2,28 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./SideNavBar.module.css";
 import MulearnBrand from "../assets/MulearnBrand";
 
-// import {
-//   MdHome,
-//   MdSupervisorAccount,
-//   MdSpaceDashboard,
-//   MdClass,
-//   MdBackupTable,
-//   MdArticle,
-//   MdWorkHistory,
-// } from "react-icons/md";
-
-import { useToast } from "@chakra-ui/react";
+import { background, useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+
 import {
     DropDownButtons,
     MuButton,
     MuButtonLight
-} from "@Mulearn/MuButtons/MuButton";
-// import MuButtonLight from "../../../components/MuComponents/MuButtons/MuButtonLight";
+} from "@/MuLearnComponents/MuButtons/MuButton";
+import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
+import MuLogOut from "../assets/svg/MuLogOut";
+import MuSettings from "../assets/svg/MuSettings";
 
+
+//TODO: Change the style's casing to match the rest of the project
 type Props = {
     sidebarButtons: {
         url: string;
         title: string;
         hasView: boolean;
-        roles?: string[];
-        icon: any;
+        roles?: Role[];
+        icon?: any;
+        children?: Props["sidebarButtons"];
     }[];
 };
 
@@ -35,21 +31,21 @@ const SideNavBar = (props: Props) => {
     const toast = useToast();
     const navigate = useNavigate();
     const [marginTop, setMarginTop] = useState("0px");
-    // const [transform, setTransform] = useState("0deg");
     const [transform2, setTransform2] = useState("0deg");
     const [transform3, setTransform3] = useState("0deg");
     const [display, setDisplay] = useState("block");
     const [display2, setDisplay2] = useState("none");
     const [dropDownBtnDisplay, setDropDownBtnDisplay] = useState("0");
+    const [level2dropDownDisplay, setLevel2dropDownDisplay] = useState(""); // Title of the level 2 dropdown
     const [connected, setConnected] = useState(false);
 
-    const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
+    const userInfo = fetchLocalStorage<UserInfo>("userInfo");
 
     useEffect(() => {
-        if (localStorage.getItem("userInfo") && userInfo.existInGuild) {
-            setConnected(userInfo.existInGuild);
+        if (userInfo && userInfo.exist_in_guild) {
+            setConnected(userInfo.exist_in_guild);
         }
-    });
+    }, []);
     const myElementRef = useRef<HTMLDivElement>(null);
     const elements = document.getElementById("right");
     const element = elements as HTMLElement;
@@ -129,84 +125,167 @@ const SideNavBar = (props: Props) => {
                                                 userInfo?.roles?.includes(role)
                                             ))
                                 )
-                                .map((button, i) => (
-                                    <MuButton
-                                        key={i}
-                                        text={button.title}
-                                        icon={button.icon}
-                                        style={
-                                            window.location.pathname ===
-                                            `/${button.url}`
-                                                ? {
-                                                      background: "#456FF6",
-                                                      color: "#fff"
-                                                  }
-                                                : {}
-                                        }
-                                        onClick={() => {
-                                            navigate(button.url);
-                                            window.innerWidth <= 500
-                                                ? hideFunc()
-                                                : null;
-                                        }}
-                                    />
-                                ))}
-                            {/* <DropDownButtons
-                                text="Management"
-                                icon={<i className="fi fi-sr-layout-fluid"></i>}
-                                // style={
-                                //     window.location.pathname ===
-                                //         "/interest-groups"
-                                //         ? {
-                                //             background: "#456FF6",
-                                //             color: "#fff"
-                                //         }
-                                //         : {}
-                                // }
+                                .map((button, i) =>
+                                    button.children ? (
+                                        <DropDownButtons
+                                            key={i}
+                                            text={button.title}
+                                            icon={button.icon}
+                                            onClick={() =>
+                                                setDropDownBtnDisplay(
+                                                    dropDownBtnDisplay === "0"
+                                                        ? "max-content"
+                                                        : "0"
+                                                )
+                                            }
+                                            listOfDropBtn={button.children
+                                                .filter(
+                                                    button =>
+                                                        button.hasView &&
+                                                        (!button.roles ||
+                                                            button.roles?.some(
+                                                                role =>
+                                                                    userInfo?.roles?.includes(
+                                                                        role
+                                                                    )
+                                                            ))
+                                                )
+                                                .map((button, i) =>
+                                                    button.children ? (
+                                                        <DropDownButtons
+                                                            key={i}
+                                                            text={button.title}
+                                                            icon={button.icon}
+                                                            onClick={() =>
+                                                                setLevel2dropDownDisplay(
+                                                                    level2dropDownDisplay ===
+                                                                        button.title
+                                                                        ? ""
+                                                                        : button.title
+                                                                )
+                                                            }
+                                                            display={
+                                                                level2dropDownDisplay ===
+                                                                button.title
+                                                                    ? "max-content"
+                                                                    : "0"
+                                                            }
+                                                            listOfDropBtn={button.children
+                                                                .filter(
+                                                                    button =>
+                                                                        button.hasView &&
+                                                                        (!button.roles ||
+                                                                            button.roles?.some(
+                                                                                role =>
+                                                                                    userInfo?.roles?.includes(
+                                                                                        role
+                                                                                    )
+                                                                            ))
+                                                                )
+                                                                .map(
+                                                                    (
+                                                                        button,
+                                                                        i
+                                                                    ) => (
+                                                                        <MuButton
+                                                                            key={
+                                                                                i
+                                                                            }
+                                                                            text={
+                                                                                button.title
+                                                                            }
+                                                                            buttonUrl={
+                                                                                button.url
+                                                                            }
+                                                                            onClick={() => {
+                                                                                navigate(
+                                                                                    button.url
+                                                                                );
+                                                                                window.innerWidth <=
+                                                                                500
+                                                                                    ? hideFunc()
+                                                                                    : null;
+                                                                            }}
+                                                                        />
+                                                                    )
+                                                                )}
+                                                        />
+                                                    ) : (
+                                                        <MuButton
+                                                            key={i}
+                                                            text={button.title}
+                                                            buttonUrl={
+                                                                button.url
+                                                            }
+                                                            onClick={() => {
+                                                                navigate(
+                                                                    button.url
+                                                                );
+                                                                window.innerWidth <=
+                                                                500
+                                                                    ? hideFunc()
+                                                                    : null;
+                                                            }}
+                                                        />
+                                                    )
+                                                )}
+                                            display={dropDownBtnDisplay}
+                                        />
+                                    ) : (
+                                        <MuButton
+                                            key={i}
+                                            text={button.title}
+                                            icon={button.icon}
+                                            buttonUrl={button.url}
+                                            onClick={() => {
+                                                navigate(button.url);
+                                                window.innerWidth <= 500
+                                                    ? hideFunc()
+                                                    : null;
+                                            }}
+                                        />
+                                    )
+                                )}
+                        </div>
+                        <div className={styles.bottomButtons}>
+                            <MuButton
+                                text="Settings"
+                                icon={<MuSettings />}
+                                onClick={() => navigate("/dashboard/settings")}
+                                style={{
+                                    color: "#9297AA",
+                                    backgroundColor: "#fff",
+                                    // marginBottom: "0px"
+                                }}
+                            />
+                            <MuButtonLight
+                                text="Logout"
+                                icon={<MuLogOut/>}
+                                style={{
+                                    backgroundColor: "#fff",
+                                    color: "#FF7676",
+                                }}
                                 onClick={() => {
-                                    // navigate("/interest-groups");
-                                    setDropDownBtnDisplay(
-                                        dropDownBtnDisplay === "0"
-                                            ? "max-content"
-                                            : "0"
+                                    localStorage.clear();
+                                    toast({
+                                        title: "Logged out",
+                                        description:
+                                            "Redirecting to login page.",
+                                        status: "error",
+                                        duration: 9000,
+                                        isClosable: true
+                                    });
+                                    setTimeout(
+                                        () => window.location.reload(),
+                                        900
                                     );
                                 }}
-                                listOfDropBtn={[
-                                    { text: "Admin" },
-                                    { text: "Company" },
-                                    { text: "User" }
-                                ]}
-                                display={dropDownBtnDisplay}
-                            /> */}
+                            />
                         </div>
-
-                        <MuButtonLight
-                            text="Logout"
-                            icon={<i className="fi fi-sr-key"></i>}
-                            style={
-                                window.innerWidth <= 820
-                                    ? {
-                                          border: "none",
-                                          borderRadius: "10px",
-                                          padding: "20px 20px"
-                                      }
-                                    : {}
-                            }
-                            onClick={() => {
-                                localStorage.clear();
-                                toast({
-                                    title: "Logged out",
-                                    description: "Redirecting to login page.",
-                                    status: "error",
-                                    duration: 9000,
-                                    isClosable: true
-                                });
-                                setTimeout(() => {
-                                    window.location.reload();
-                                }, 900);
-                            }}
-                        />
                     </div>
+                    <p className={styles.copyrightText}>
+                        All Rights Reserved © µLearn Foundation {new Date().getFullYear()}
+                    </p>
                 </div>
             </div>
         </>

@@ -7,7 +7,7 @@ import {
     otpVerification
 } from "../services/apis";
 import { useNavigate } from "react-router-dom";
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 const Login = () => {
     const [showOrHidePassword, setShowOrHidePassword] = useState("password");
@@ -84,6 +84,7 @@ const Login = () => {
                                 </a>
                             </p>
                             <MuButton
+                                type="submit"
                                 text={"Sign In"}
                                 className={styles.signin_button}
                                 onClick={e => {
@@ -167,44 +168,6 @@ const Login = () => {
                                     Login with <b>password</b>
                                 </a>
                             </p>
-                            {/* <button
-                                onClick={e => {
-                                    setHasError(false);
-                                    e.preventDefault();
-                                    if (emailOrMuid != "" && hasError) {
-                                        requestEmailOrMuidOtp(
-                                            emailOrMuid,
-                                            toast,
-                                            setHasError,
-                                            setStatus,
-                                            setOtpLoading
-                                        );
-                                    }
-                                    if (!hasError && password != "") {
-                                        otpVerification(
-                                            emailOrMuid,
-                                            password,
-                                            toast,
-                                            navigate,
-                                            setOtpLoading
-                                        );
-                                    }
-                                }}
-                                type="submit"
-                            // disabled={status === 1 ? true : false}
-                            >
-                                {hasError
-                                    ? "Request OTP"
-                                    : status === 0 && emailOrMuid != ""
-                                        ? "Processing"
-                                        : emailOrMuid != ""
-                                            ?
-                                            <>
-                                                {!otpLoading ? <>Sign in</> : <div className={styles.otp_loader}> <PulseLoader size={10} color="#fff" /></div>}
-                                            </>
-                                            : "Request OTP"
-                                        }
-                            </button> */}
                             <MuButton
                                 text={
                                     hasError

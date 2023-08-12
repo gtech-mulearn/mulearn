@@ -18,7 +18,8 @@
 
     "baseUrl": ".",
     "paths": {
-      "@Mulearn/*": ["src/components/MuComponents/*"],
+      "@/MuLearnComponents/*": ["src/components/MuComponents/*"],
+      "@/MuLearnServices/*": ["src/services/*"],
 }
   },
   "include": ["src"],

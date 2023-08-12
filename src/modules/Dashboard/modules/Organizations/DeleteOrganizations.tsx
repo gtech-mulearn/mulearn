@@ -1,6 +1,5 @@
-import React from 'react'
-import './Organizations.scss';
-import Form from '../../../../components/MuComponents/Form/Form';
+import orgStyles from './Organizations.module.css';
+import Form from '@/MuLearnComponents/Form/Form';
 import { useNavigate,useParams } from 'react-router-dom';
 import { deleteOrganization } from './apis';
 import { useToast } from '@chakra-ui/react'
@@ -12,16 +11,16 @@ function DeleteOrganizations() {
     const navigate = useNavigate()
 
     function handleSubmit () {
-        console.log("Delete")
+        //console.log("Delete")
         deleteOrganization(id,toast)
-        navigate('/organizations')
+        navigate('/dashboard/organizations')
     }
   return (
-    <div className="delete_container">
+    <div className={orgStyles.deleteContainer}>
         <Form
                 title={`Are you sure you want to delete ${id}?`}
                 handleSubmitClick={handleSubmit}
-                cancelPath={"/organizations"}
+                cancelPath={"/dashboard/organizations"}
             />
     </div>
   )

@@ -1,16 +1,25 @@
 import { AxiosError } from "axios";
-import { privateGateway } from "../../../../services/apiGateways";
-import { dashboardRoutes } from "../../../../services/urls";
+import { privateGateway } from "@/MuLearnServices/apiGateways";
+import { dashboardRoutes, organizationRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
-import { Dispatch, SetStateAction } from "react";
-export const getManageUsers = async (
-    setData: any,
-    page: number,
-    selectedValue: number,
-    setTotalPages?: any,
-    search?: string,
-    sortID?: string
-) => {
+export const getManageUsers = async ({
+    setData,
+    page,
+    selectedValue,
+    setIsLoading,
+    setTotalPages,
+    search,
+    sortID
+}: {
+    setData: UseStateFunc<any>;
+    page: number;
+    selectedValue: number;
+    setIsLoading: UseStateFunc<boolean>;
+    setTotalPages?: UseStateFunc<any>;
+    search?: string;
+    sortID?: string;
+}) => {
+    setIsLoading(true);
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getUsersData,
@@ -26,20 +35,23 @@ export const getManageUsers = async (
         const manageusers: any = response?.data;
 
         const datasuser = manageusers.response.data;
-        console.log(datasuser);
+        //console.log(datasuser);
         for (let i = 0; i < datasuser.length; i++) {
             if (datasuser[i].college != null) {
-                console.log(datasuser[i].college);
+                //console.log(datasuser[i].college);
             } else if (datasuser[i].company != null) {
-                console.log(datasuser[i].company);
+                //console.log(datasuser[i].company);
                 datasuser[i].college = datasuser[i].company;
             } else {
-                console.log(null);
+                //console.log(null);
             }
         }
         setData(datasuser);
-        setTotalPages(manageusers.response.pagination.totalPages);
+        if (setTotalPages)
+            setTotalPages(manageusers.response.pagination.totalPages);
+        setIsLoading(false);
     } catch (err: unknown) {
+        setIsLoading(false);
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
@@ -67,7 +79,7 @@ export const createManageUsers = async (
         );
 
         const message: any = response?.data;
-        console.log(message);
+        //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -77,19 +89,16 @@ export const createManageUsers = async (
 };
 
 export const editManageUsers = async (
-    id: string | undefined,
-    first_name: string,
-    last_name: string,
-    email: string,
-    mobile: string,
-    discord_id: string,
-    mu_id: string,
-
-    college: string,
-    company: string,
-    department: string,
-    graduation_year: string,
-    toast: any
+    id?: string,
+    first_name?: string,
+    last_name?: string,
+    email?: string,
+    mobile?: string,
+    organizations?: string[],
+    department?: string,
+    graduation_year?: string,
+    role?: string[],
+    interest_groups?: string[]
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -99,23 +108,22 @@ export const editManageUsers = async (
                 last_name: last_name,
                 email: email,
                 mobile: mobile,
-                discord_id: discord_id,
-                mu_id: mu_id,
-                college: college,
-                company: company,
+                organizations: organizations,
                 department: department,
-                graduation_year: graduation_year
+                graduation_year: graduation_year,
+                roles: role,
+                interest_groups: interest_groups
             }
         );
-        console.log(first_name, last_name, email);
+        //console.log(first_name, last_name, email);
         const message: any = response?.data;
-        console.log(message);
-        toast({
-            title: "User created",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
+        //console.log(message);
+        // toast({
+        //     title: "User created",
+        //     status: "success",
+        //     duration: 3000,
+        //     isClosable: true
+        // });
     } catch (err: unknown) {
         const error = err as AxiosError;
 
@@ -125,36 +133,17 @@ export const editManageUsers = async (
     }
 };
 
-interface IData {
-    first_name: string;
-    last_name: string;
-    email: string;
-    mobile: string;
-    discord_id: string;
-    mu_id: string;
-    college: string;
-    company: string;
-    department: string;
-    graduation_year: string;
-}
-
 export const getManageUsersDetails = async (
     id: string | undefined,
-    setData: Dispatch<SetStateAction<IData>>
+    setData: UseStateFunc<UserData | undefined>
 ) => {
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getUsersData + id + "/"
         );
         const message: any = response?.data;
-        console.log(message);
-        console.log(message.response.users);
-        console.log(message.response.users.graduation_year);
-        console.log(message.response.users.department);
-        console.log(message.response.users.company);
-        console.log(message.response.users.college);
-       
-        setData(message.response.users);
+
+        setData(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -162,7 +151,50 @@ export const getManageUsersDetails = async (
         }
     }
 };
+/*
+export const getAllOrganisations = async (
+    toast: (options?: UseToastOptions | undefined) => ToastId
+)=>{
+    try{
+        const data:orgSelectType = {College:[],Community:[],Company:[]}
+        const routes = [
+            organizationRoutes.getCollege,
+            organizationRoutes.getCommunity,
+            organizationRoutes.getCompany
+        ]
+        const response = await Promise.all(
+            routes.map(route=>privateGateway.get(
+                route,
+                {params:
+                    {
+                        perPage:route===organizationRoutes.getCollege?2000:100//HardCode 2000
+                    }
+                }
+            ))
+        )
+        const responseData = response.map(route=>
+            route.data.response.data.map((obj:any)=>{
+                //replacing id,title key with value,label
+                return {value:obj.id,label:obj.title}
+            })
+            ) 
+        data.College=responseData[0]
+        data.Community=responseData[1]
+        data.Company=responseData[2]
+        
+        return data
 
+    }catch(err){
+        console.log(err)
+        toast({
+            title: "Error in org fetch",
+            status: "error",
+            duration: 3000,
+            isClosable: true
+        })
+    }
+}
+*/
 export const deleteManageUsers = async (
     id: string | undefined,
     toast: (options?: UseToastOptions | undefined) => ToastId

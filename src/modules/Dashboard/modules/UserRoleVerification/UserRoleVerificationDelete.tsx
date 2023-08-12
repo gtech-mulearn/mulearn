@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import React from "react";
 import {
     deleteUserRoleVerification,
-    getUserRoleVerificationDetails
 } from "./apis";
 import { useNavigate, useParams } from "react-router-dom";
-import Form from "../../../../components/MuComponents/Form/Form";
+import Form from "@/MuLearnComponents/Form/Form";
 import { useToast } from "@chakra-ui/react";
 
 type Props = {};
@@ -16,7 +15,7 @@ const UserRoleVerificationDelete = (props: Props) => {
    
     const navigate = useNavigate();
     const handleSubmit = () => {
-        deleteUserRoleVerification(id, toast);
+        if (id) deleteUserRoleVerification(id, toast);
         navigate("/user-role-verification");
     };
     return (

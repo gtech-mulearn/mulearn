@@ -1,0 +1,235 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.modal {
+    width: 100%;
+    max-width: 800px;
+    max-height: 480px;
+    height: 78%;
+    /* position: absolute; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .modal {
+        height:90%;
+        max-height: 550px;
+           width: 95%;
+    }
+}
+
+.modalHeader {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 600;
+}
+.modalBody {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+.modalContent {
+    background-image: url("../assets/muidbg.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 550%;
+    padding: 3rem;
+    padding-bottom: 8rem;
+    height: 71%;
+}
+
+@media screen and (max-width: 600px) {
+    .modalContent {
+        height:92%;
+        padding: 2rem;
+    }
+}
+
+.modalClose {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: #fff;
+    cursor: pointer;
+    background-color: #f97171;
+    font-size: large;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    line-height: 0;
+    letter-spacing: 0rem;
+    border: 1px solid #fff;
+}
+.modalClose:hover {
+    background-color: #f97171cc;
+}
+.modalClose:active {
+    background-color: #f97171aa;
+}
+.modalClose:focus {
+    outline: 2px solid #3a3a3a;
+}
+.htgFlow {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 600px;
+}
+
+.modalButton {
+    border-radius: 1.5rem;
+    background: #2e85fe;
+    padding: 0.7rem 2.3rem;
+    color: #fff;
+    white-space: nowrap;
+}
+
+
+@media screen and (min-width: 768px) {
+    .modalButton {
+        margin-top: -10px;
+        margin-right: -10px;
+    }
+}
+
+
+.modalButton:hover {
+    background: #2e85feee;
+}
+.modalButton:active {
+    background: #2e85fecc;
+}
+.modalButton:focus {
+    outline: 2px solid #3a3a3a;
+}
+.flowContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 3rem;
+    gap: 2rem;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.form input {
+    background: rgba(239, 241, 249, 1);
+    padding: 1rem 1.5rem;
+    border-radius: 1.2rem;
+    width: 60%;
+}
+@media screen and (max-width: 600px) {
+    .form input {
+       width: 100%;
+    }
+}
+.form input:focus {
+    outline: 2px solid #3a3a3a;
+}
+.form input:nth-child(1)::before {
+    display: block;
+    content: "Name";
+}
+.pass {
+    position: relative;
+}
+.submit {
+    background: #456ff6;
+    color: #fff;
+    position: absolute;
+    right: 18rem;
+    top: 58%;
+    transform: translateY(-50%);
+    padding: 0.3rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+}
+@media screen and (max-width: 600px) {
+    .submit {
+        right: 1rem;
+    }
+}
+.submit:hover {
+    background: #456ff6bb;
+}
+.submit:disabled {
+    opacity: 0.5;
+}
+.spin {
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.error {
+    color: red;
+    font-size: 0.8rem;
+    margin: 0.5em 0;
+}
+.success {
+    color: green;
+    font-size: 0.8rem;
+    margin: 0.5em 0;
+}
+.successBtn {
+    background: green;
+}
+.successBtn:hover {
+    background: rgb(0, 75, 0);
+}
+@media screen and (max-width: 600px) {
+    .flowContainer {
+        flex-direction: column;
+        align-items: end;
+       margin-top: -4.5rem;
+    }
+}
+
+.loginHelp{
+    display: flex;
+    align-items: center;
+    width: 60%;
+    font-size: 18px;
+    color: #fff;
+    justify-content: space-between;
+}
+@media screen and (max-width: 600px) {
+    .loginHelp {
+        width: 100%;
+        font-size: 13px;
+        /* margin-bottom: -17px; */
+    }
+}
+
+.loginHelpers{
+    cursor: pointer;
+}
+
+.loginHelperBold{
+    font-weight: 600;
+}

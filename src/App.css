@@ -29,7 +29,7 @@
 }
 
 :root {
-    --Primary: #456FF6;
+    --Primary: #456ff6;
     --PrimaryLight: #ccdbf0;
     --Secondary: #9719cd;
     --SecondaryGrey: #404040;
@@ -42,11 +42,17 @@
     --InputDefaultBackground: #eff1f9;
     --Error: red;
     --btn-secondary-bg: #9fb5ef;
-	
-	--black: #293338;
-	--green: #6AE586;
-	--blue: #456FF6;
-	--grey: #7E7E7E;
-	--boxShadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.1);
-	--borderRadius: 10px;
+
+    --black: #293338;
+    --green: #6ae586;
+    --blue: #456ff6;
+    --grey: #7e7e7e;
+    --tableRowColor: #f6f7fe;
+    --boxShadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.1);
+    --borderRadius: 10px;
+
+    --dimText: #666771;
+    --lightGray: #9297aa;
+    --dimBlue: #dee6ff;
+    --danger: #ff7676;
 }

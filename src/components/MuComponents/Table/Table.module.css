@@ -1,9 +1,26 @@
 .table {
     border-radius: 10px;
     overflow: auto;
-    border: 1px solid var(--blue);
     width: 95%;
     margin-bottom: 10px;
+    scrollbar-color: #c7c7c7 #eeeeee;
+    scrollbar-width: thin;
+    background-color:  var(--White);
+    padding:5px;
+}
+
+.table::-webkit-scrollbar {
+    display: block;
+    height: 5px;
+}
+
+.table::-webkit-scrollbar-track {
+    background: #eeeeee;
+}
+
+.table::-webkit-scrollbar-thumb {
+    background: #c7c7c7;
+    border-radius: 10px;
 }
 
 .tableActual {
@@ -14,44 +31,66 @@
     padding: 12px 16px;
     text-align: left;
     font-weight: 600;
-    color: var(--blue);
+    color: var(--Dark);
 }
 
 .td {
     padding: 12px 16px;
     text-align: left;
-    border-top: 1px solid var(--blue);
-    color: var(--blue);
+    color: var(--Dark);
 }
 
 .page {
-	width: 95%;
-	border: 1px solid var(--blue);
-	border-radius: 8px;
-	padding: 0 10px;
+    width: 95%;
+    padding: 0px;
 }
 
 .thContainer {
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .icon {
-	border: 1px solid var(--blue);
-	border-radius: 10px;
-	margin-left: 5px;
+    /*  border: 1px solid var(--Dark);*/
+    border-radius: 10px;
+    margin-left: 5px;
+    font-size: 22px;
 }
 
 .icons {
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: rgba(87, 96, 117, 0.7);
+    font-size: 22px;
+    gap: 8px;
 }
 
 .btns {
-	background-color: var(--blue);
-	color: #fff;
-	border-radius: var(--borderRadius);
-	padding: 4px 6px;
+    background-color: var(--blue);
+    color:  var(--White);
+    border-radius: var(--borderRadius);
+    padding: 4px 6px;
+    font-size: 1rem;
 }
 
+/* Define alternating row colors */
+.tableActual tbody tr:nth-child(even) {
+    background-color: transparent;
+    /* Set the background color for even rows */
+}
+
+.tableActual tbody tr:nth-child(odd) {
+    background-color: var(--tableRowColor);
+    /* Set the background color for odd rows */
+}
+
+
+.muloaderContainer{
+    display: fle; /* Set the display to block to make it occupy full width */
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    width: 100%; 
+}

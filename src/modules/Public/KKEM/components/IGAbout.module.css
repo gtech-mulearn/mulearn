@@ -1,0 +1,130 @@
+.section {
+    padding: 3rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    color: #293338;
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 111.5%;
+    margin-bottom: 3rem;
+}
+
+.description {
+    margin-top: 2rem;
+    color: #293338;
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 127.5%;
+    max-width: 60vmax;
+}
+.dc2 {
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 127.5%;
+    max-width: 60vmax;
+}
+.description > a {
+    color: #2e85fe;
+    line-height: 127.5%;
+    text-decoration: none;
+}
+.image {
+    width: 25rem;
+    animation: upDown 2s ease-in-out infinite;
+}
+.muidSection {
+    display: flex;
+    justify-content: space-between;
+}
+.imgc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.muidLink {
+    color: #2e85fe;
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-decoration-line: underline;
+}
+.curated {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 1rem;
+}
+.curated > img {
+    padding: 0.5rem;
+    box-shadow: 2px 2px 16px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 50%;
+    object-fit: cover;
+    width: 3.5rem;
+    height: 3.5rem;
+}
+@media screen and (max-width: 1200px) {
+    .muidSection {
+        flex-direction: column;
+    }
+    .muidLink {
+        font-size: 1.2rem;
+    }
+}
+
+@keyframes upDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-1rem);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .title {
+        font-size: 3rem;
+    }
+    .title::after {
+        width: calc(2rem * 10);
+        margin-top: -0.5rem;
+    }
+    .description {
+        font-size: 1.5rem;
+    }
+    .image {
+        width: 20rem;
+        margin: 3rem 0;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .section {
+        flex-direction: column;
+    }
+    .title {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+    .description {
+        font-size: 1.5rem;
+        max-width: 100%;
+        margin-top: 2rem;
+    }
+    .image {
+        width: 30rem;
+    }
+}
+@media screen and (max-width: 800px) {
+    .section {
+        padding: 2rem;
+    }
+}

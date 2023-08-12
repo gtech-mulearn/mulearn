@@ -1,17 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./ConnectDiscord.module.css";
-import cdimage from "../assets/images/connectdiscordpng1.png";
+import cdimage from "../assets/images/connectdiscordpng1.webp";
 import { getInfo } from "../services/apis";
-
 import { useToast } from "@chakra-ui/react";
 import { MdContentCopy } from "react-icons/md";
 import { BsDiscord } from "react-icons/bs";
-import { GridLoader } from "react-spinners";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 const ConnectDiscord = () => {
     const [muid, setMuid] = useState("");
     const toast = useToast();
-    const firstFetch = useRef(true)
+    const firstFetch = useRef(true);
     useEffect(() => {
         if (firstFetch.current) {
             if (
@@ -23,13 +22,13 @@ const ConnectDiscord = () => {
                 getInfo(setMuid);
             }
         }
-        firstFetch.current = false
+        firstFetch.current = false;
     }, []);
 
     return (
         <>
             {muid && muid.length > 0 ? (
-                <>
+                <div className={styles.connectDiscord}>
                     <div className={styles.connect_discord_container}>
                         <div className={styles.content}>
                             <h1>Join Discord using your µid</h1>
@@ -58,7 +57,9 @@ const ConnectDiscord = () => {
                                     {muid}
                                 </p>
                                 <a
-                                    href={import.meta.env.VITE_DISCORD_INVITE_URL}
+                                    href={
+                                        import.meta.env.VITE_DISCORD_INVITE_URL
+                                    }
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -69,7 +70,6 @@ const ConnectDiscord = () => {
                                 </a>
                             </div>
                         </div>
-
                         <img className={styles.fb_image} src={cdimage} alt="" />
                     </div>
 
@@ -119,15 +119,11 @@ const ConnectDiscord = () => {
                             </div>
                         </div>
                     </div>
-                </>
+                </div>
             ) : (
                 <div className={styles.spinner_container}>
                     <div className={styles.spinner}>
-                        <GridLoader
-                            style={{ display: "block" }}
-                            className={styles.loader}
-                            color="#456FF6"
-                        />
+                        <MuLoader />{" "}
                     </div>
                 </div>
             )}

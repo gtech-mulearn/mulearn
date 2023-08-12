@@ -3,7 +3,7 @@ import { forgetPassword } from "../services/apis";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import styles from "./Login.module.css"
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 type Props = {};
 
@@ -34,6 +34,7 @@ const ForgotPassword = (props: Props) => {
                         <br />
                         <br />
                         <MuButton
+                            type="submit"
                             text={"Reset password"}
                             className={styles.reset_button}
                             onClick={e => {

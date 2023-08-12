@@ -1,19 +1,27 @@
 .heatmap_container {
     width: 100%;
+    max-width: 95%;
 }
 
 .heatmap_container .months {
     margin-left: 25px;
     display: flex;
     gap: 2.1rem;
-    justify-content: flex-start;
+    justify-content: space-between;
+    width: 92%;
 }
 
 .heatmap_container .weeks {
+    display: flex;
+    height: 101px;
+    padding: 15px 5px;
+    /* margin-top: 14px; */
     position: absolute;
     font-size: 9.5px;
     background-color: #fff;
-    margin-left: -1px;
+    margin-left: -13px;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .heatmap_container .heatmap {
@@ -66,7 +74,7 @@
 
     .heatmap_container .weeks {
         font-size: 12px;
-        margin-top: -3px;
+        height: 120px;
     }
 
     .heatmap_container .heatmap {
@@ -84,10 +92,6 @@
 @media (max-width: 800px) {
     .heatmap_container {
         height: 180px;
-    }
-
-    .heatmap_container .weeks {
-        margin-left: -5px;
     }
 
     .heatmap_container .year_btns {

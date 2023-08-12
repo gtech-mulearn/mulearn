@@ -1,9 +1,12 @@
 import { useField } from "formik";
-import styles from "./form.module.css";
+import styles from "./FormComponents.module.css";
 import React from "react";
-import Select, { Props as SelectProps, StylesConfig } from "react-select";
-import OptionTypeBase from "react-select";
+import Select, { Props as SelectProps } from "react-select";
 
+/*
+TODO: Verify the Unused Code/Components in this File
+TODO: Transition the old inputs to the new one("eg.FormikTextAreaWhite")
+*/
 export const FormikTextInput = ({ label, ...props }: any) => {
     // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
     // which we can spread on <input>. We can use field meta to show an error
@@ -14,7 +17,7 @@ export const FormikTextInput = ({ label, ...props }: any) => {
             <span>{label}</span>
             <input className="text-input" {...field} {...props} />
             {meta.touched && meta.error ? (
-                <div className="error">{meta.error}</div>
+                <div className={styles.error}>{meta.error}</div>
             ) : null}
         </div>
     );
@@ -27,7 +30,7 @@ export const FormikSelect = ({ label, ...props }: any) => {
             <span>{label}</span>
             <select {...field} {...props} />
             {meta.touched && meta.error ? (
-                <div className="error">{meta.error}</div>
+                <div className={styles.error}>{meta.error}</div>
             ) : null}
         </div>
     );
@@ -40,7 +43,7 @@ export const FormikTextInputWhite = ({ label, ...props }: any) => {
             <label className={styles.formLabel}>{label}</label>
             <input className="text-input" {...field} {...props} />
             {meta.touched && meta.error ? (
-                <div className="error">{meta.error}</div>
+                <div className={styles.error}>{meta.error}</div>
             ) : null}
         </div>
     );
@@ -53,14 +56,14 @@ export const FormikTextAreaWhite = ({ label, ...props }: any) => {
             <label className={styles.formLabel}>{label}</label>
             <textarea className="text-input" {...field} {...props} />
             {meta.touched && meta.error ? (
-                <div className="error">{meta.error}</div>
+                <div className={styles.error} >{meta.error}</div>
             ) : null}
         </div>
     );
 };
 
 
-interface Option {
+export interface Option {
     label: string;
     value: string | boolean | number;
 }
@@ -80,18 +83,26 @@ interface FormikSelectProps extends SelectProps<Option> {
     name: string;
     label: string;
     options: Option[];
+    addOnChange?:Function;
 }
 
 const FormikReactSelect: React.FC<FormikSelectProps> = ({
     name,
     label,
     options,
+    addOnChange=(()=>{}),
     ...rest
 }) => {
     const [field, meta, helpers] = useField(name);
-
     const handleChange = (selectedOption: any) => {
-        helpers.setValue(selectedOption ? selectedOption.value : null);
+        addOnChange(selectedOption)
+        if(rest.isMulti)
+            helpers.setValue(
+                selectedOption
+                .map((obj:any)=>obj.value)
+            )
+        else
+            helpers.setValue(selectedOption ? selectedOption.value : null);
     };
 
     const handleBlur = () => {
@@ -99,10 +110,16 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
     };
 
     const getSelectedOption = () => {
-        if (!field.value) return null;
+        if (!field.value) {
+			return null;
+        }
+        if(rest.isMulti){
+            return options.filter(option => 
+                field.value.includes(option.value)
+            ) || null   
+        }
         return options.find(option => option.value === field.value) || null;
     };
-
     return (
         <div className={styles.InputSet}>
             <label className={styles.formLabel} htmlFor={name}>
@@ -121,7 +138,7 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
                 styles={customStyles}
             />
             {meta.touched && meta.error && (
-                <div className="error">{meta.error}</div>
+                <div className={styles.error}>{meta.error}</div>
             )}
         </div>
     );
@@ -129,3 +146,101 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
 
 
 export default FormikReactSelect;
+
+interface ImageFormProps {
+    name: string;
+    label: string;
+}
+
+export const FormikImageComponent: React.FC<ImageFormProps> = ({
+    label,
+    ...props
+}: any) => {
+    const [field, meta] = useField(props);
+    return (
+        <div className={styles.InputSet}>
+            <label className={styles.formLabel}>{label}</label>
+            <input
+                className={styles.image_input}
+                type="file"
+                accept="image/*"
+                {...field}
+                {...props}
+            />
+            {meta.touched && meta.error ? (
+                <div className={styles.error}>{meta.error}</div>
+            ) : null}
+        </div>
+    );
+};
+
+
+interface FormikSelectWithoutLabelProps extends SelectProps<Option> {
+    name: string;
+    options: Option[];
+	onchangeFunction: any;
+}
+
+export const FormikReactSelectCustom: React.FC<
+    FormikSelectWithoutLabelProps
+> = ({ name, options, onchangeFunction, ...rest }) => {
+    const [field, meta, helpers] = useField(name);
+
+    const handleChange = (selectedOption: any) => {
+        helpers.setValue(selectedOption ? selectedOption.value : null);
+		console.log(selectedOption.value);
+		onchangeFunction(selectedOption.value);
+    };
+
+    const handleBlur = () => {
+        helpers.setTouched(true);
+    };
+
+    const getSelectedOption = () => {
+        if (!field.value) {
+            return null;
+        }
+        return options.find(option => option.value === field.value) || null;
+    };
+
+    const customStyles: any = {
+        control: (provided: any) => ({
+            ...provided,
+            backgroundColor: "#F3F3F4",
+            border: "none",
+            borderRadius: "10px",
+            fontSize: "12px",
+            fontWeight: "bold",
+            color: "#000",
+            width: "100%",
+            padding: ".3rem .4rem"
+        }),
+        placeholder: (provided: any) => ({
+            ...provided,
+            color: "#000" // Specify your desired color here
+        }),
+        indicatorSeparator: (provided: any) => ({
+            ...provided,
+            display: "none" // Hide the indicator separator
+        })
+    };
+
+    return (
+        <>
+            <Select
+                {...rest}
+                name={name}
+                id={name}
+                value={getSelectedOption()}
+                isSearchable
+                options={options}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                styles={customStyles}
+            />
+            {meta.touched && meta.error && (
+                <div className="error">{meta.error}</div>
+            )}
+        </>
+    );
+};

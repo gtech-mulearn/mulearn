@@ -1,19 +1,37 @@
 import { useNavigate } from "react-router-dom";
-import { createTask } from "./TaskApis";
-import styles from "../../../../components/MuComponents/FormikComponents/form.module.css";
+import { createTask, getUUID } from "./TaskApis";
+import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import { FormikSelect, FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
+import {
+    FormikSelect,
+    FormikTextInput
+} from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { AxiosError } from "axios";
 
 type Props = {};
 
 const TaskCreate = (props: Props) => {
     const navigate = useNavigate();
     const toast = useToast();
+    const [uuidData, setuuidData] = useState<{ [index: string]: any[] } | null>(
+        null
+    );
 
-	const taskEditSchema = Yup.object().shape({
+    useEffect(() => {
+        (async () => {
+            try {
+                setuuidData(await getUUID());
+            } catch (err) {
+                console.log(err as AxiosError);
+            }
+        })();
+    }, []);
+
+    const taskEditSchema = Yup.object().shape({
         hashtag: Yup.string()
             .required("Required")
             .min(2, "Too Short!")
@@ -33,11 +51,12 @@ const TaskCreate = (props: Props) => {
             .required("Mention the number of uses"),
         active: Yup.boolean().required("Select an option"),
         variable_karma: Yup.boolean().required("Select an option"),
-        description: Yup.string().min(4, "Too Short!").max(100, "Too Long!"),
-        channel_id: Yup.number(),
-        type_id: Yup.number(),
-        level_id: Yup.number(),
-        ig_id: Yup.number()
+        description: Yup.string().min(4, "Too Short!").max(100, "Too Long!").required("A description is required"),
+        channel_id: Yup.string().required("Select a Channel"),
+        type_id: Yup.string().required("Select a Type"),
+        level_id: Yup.string().required("Select a Level"),
+        ig_id: Yup.string().required("Select an Interest Group"),
+        organization_id: Yup.string().required("Select an Organization")
     });
 
     return (
@@ -57,7 +76,8 @@ const TaskCreate = (props: Props) => {
                         channel_id: "",
                         type_id: "",
                         level_id: "",
-                        ig_id: ""
+                        ig_id: "",
+                        organization_id: ""
                     }}
                     validationSchema={taskEditSchema}
                     onSubmit={values => {
@@ -72,7 +92,8 @@ const TaskCreate = (props: Props) => {
                             values.channel_id,
                             values.type_id,
                             values.level_id,
-                            values.ig_id
+                            values.ig_id,
+                            values.organization_id
                         );
                         toast({
                             title: "Interest Group created",
@@ -80,7 +101,7 @@ const TaskCreate = (props: Props) => {
                             duration: 3000,
                             isClosable: true
                         });
-                        navigate("/tasks");
+                        navigate("/dashboard/tasks");
                     }}
                 >
                     <Form className={styles.inputContainer}>
@@ -127,36 +148,72 @@ const TaskCreate = (props: Props) => {
                             type="text"
                             placeholder="..."
                         />
-                        <FormikTextInput
-                            label="Channel ID"
+                        <FormikSelect
+                            label="Channel"
                             name="channel_id"
-                            type="text"
-                            placeholder="..."
-                        />
-                        <FormikTextInput
-                            label="Type ID"
+                            disabled={!uuidData}
+                        >
+                            <option value="">Select an option</option>
+                            {uuidData?.channel.map(val => {
+                                return (
+                                    <option value={val.id}>{val.name}</option>
+                                );
+                            })}
+                        </FormikSelect>
+                        <FormikSelect
+                            label="Type"
                             name="type_id"
-                            type="text"
-                            placeholder="..."
-                        />
-                        <FormikTextInput
-                            label="Level ID"
+                            disabled={!uuidData}
+                        >
+                            <option value="">Select an option</option>
+                            {uuidData?.type.map(val => {
+                                return (
+                                    <option value={val.id}>{val.title}</option>
+                                );
+                            })}
+                        </FormikSelect>
+                        <FormikSelect
+                            label="Level"
                             name="level_id"
-                            type="text"
-                            placeholder="..."
-                        />
-                        <FormikTextInput
-                            label="IG ID"
+                            disabled={!uuidData}
+                        >
+                            <option value="">Select an option</option>
+                            {uuidData?.level.map(val => {
+                                return (
+                                    <option value={val.id}>{val.name}</option>
+                                );
+                            })}
+                        </FormikSelect>
+                        <FormikSelect
+                            label="IG"
                             name="ig_id"
-                            type="text"
-                            placeholder="..."
-                        />
+                            disabled={!uuidData}
+                        >
+                            <option value="">Select an option</option>
+                            {uuidData?.ig.map(val => {
+                                return (
+                                    <option value={val.id}>{val.name}</option>
+                                );
+                            })}
+                        </FormikSelect>
+                        <FormikSelect
+                            label="Organization"
+                            name="organization_id"
+                            disabled={!uuidData}
+                        >
+                            <option value="">Select an option</option>
+                            {uuidData?.organization.map(val => {
+                                return (
+                                    <option value={val.id}>{val.title}</option>
+                                );
+                            })}
+                        </FormikSelect>
                         <div className={styles.btn_container}>
                             <MuButton
                                 text={"Decline"}
                                 className={styles.btn_cancel}
                                 onClick={() => {
-                                    navigate("/tasks");
+                                    navigate("/dashboard/tasks");
                                 }}
                             />
                             <button type="submit" className={styles.btn_submit}>

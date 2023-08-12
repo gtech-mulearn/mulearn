@@ -1,0 +1,809 @@
+.container {
+    width: 100%;
+    padding: 0 1.5rem;
+}
+
+.topText {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: .7rem 1rem;
+    border-radius: var(--borderRadius);
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--blue);
+    cursor: pointer;
+    margin: 1rem 0;
+}
+
+.dashLine {
+    position: relative;
+    text-align: left;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #000;
+    z-index: 1;
+}
+
+.dashLine::before {
+    content: "Lets Get Started";
+    -webkit-text-fill-color: transparent;
+    display: block;
+    position: absolute;
+    bottom: .9rem;
+    border-radius: var(--borderRadius);
+    z-index: -1;
+    height: 0.5rem;
+    background-color: var(--green);
+}
+
+.hackNav {
+    position: relative;
+    color: var(--grey);
+    z-index: 1;
+}
+
+.starImg img:first-child {
+    position: absolute;
+    top: 1rem;
+    left: -1.8rem;
+    z-index: -1;
+}
+
+.starImg img:nth-child(2) {
+    position: absolute;
+    top: -2rem;
+    right: 1rem;
+    z-index: -1;
+}
+
+.hackNav ul {
+    box-shadow: var(--boxShadow);
+    border-radius: var(--borderRadius);
+    background-color: var(--White);
+    display: flex;
+    padding: 1rem;
+    margin: 2.5rem 0;
+    height: 4rem;
+    font-size: 1.2rem;
+    list-style: none;
+    gap: 1rem;
+    overflow-x: scroll;
+}
+
+.hackNav ul li {
+    padding: 0 1rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.hackNav ul span {
+    background-color: var(--blue);
+    width: 3px;
+    height: 1.8rem;
+}
+
+.selectedTab {
+    color: var(--blue);
+}
+
+.form {
+    width: 100%;
+    padding: 1.5rem;
+    background-color:  var(--White);
+    border-radius: var(--borderRadius);
+    box-shadow: var(--boxShadow);
+    padding-bottom: 1px;
+}
+
+.formGroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.formGroupStart {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.formGroupInitial {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    width: 100%;
+}
+
+.formGroupLogo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.formGroupField {
+    text-align: left;
+}
+
+@media(width<=900px) {
+
+    .formGroupInitial,
+    .formGroup {
+        grid-template-columns: 1fr;
+    }
+
+    .formGroupLogo {
+        grid-template-columns: 1fr;
+    }
+}
+
+.btns {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.btns button:nth-child(2) {
+    background-color: var(--blue);
+    color:  var(--White);
+}
+
+.error {
+    color: red !important;
+}
+
+@media (width < 1080px) {
+    .dashLine {
+        font-size: 2.5rem;
+    }
+
+    .dashLine::before {
+        bottom: .7rem;
+    }
+}
+
+@media (width<=768px) {
+    .dashLine {
+        font-size: 2.2rem;
+    }
+
+    .dashLine::before {
+        bottom: .5rem;
+    }
+
+    .formGroup .placeholder::placeholder {
+        font-size: .8rem;
+    }
+}
+
+@media (width < 300px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .dashLine {
+        font-size: 1.5rem;
+    }
+
+    .dashLine::before {
+        bottom: .3rem;
+        height: 0.3rem;
+    }
+
+    .hackNav ul {
+        padding: .8rem;
+        margin: 2rem 0;
+        height: 3rem;
+        font-size: 1rem;
+    }
+
+    .starImg img {
+        width: 3rem;
+    }
+
+    .starImg img:first-child {
+        top: 1rem;
+        left: -1.3rem;
+    }
+
+    .starImg img:nth-child(2) {
+        top: -1.5rem;
+        right: 0rem;
+    }
+
+    .form {
+        padding: 1rem;
+    }
+
+    .formGroup .placeholder::placeholder {
+        font-size: .7rem;
+    }
+}
+
+.checkBoxContainer {
+    background-color: var(--Light);
+    color: #000;
+    padding: .5rem 1rem;
+    border-radius: var(--borderRadius);
+    cursor: pointer;
+    user-select: none;
+}
+
+.formCheckbox {
+    display: none;
+}
+
+.checked {
+    background-color: var(--blue);
+    color: var(--Light);
+    padding: .5rem 1rem;
+    border-radius: var(--borderRadius);
+}
+
+.checkboxOuter {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+input[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: var(--blue);
+    border-radius: var(--borderRadius);
+    color:  var(--White);
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+    background: #0d45a5;
+}
+
+.image_input {
+    border-radius: var(--borderRadius);
+    background-color: var(--White);
+    min-width: 22rem;
+    border: .1px solid #CFD3D4;
+}
+
+.upload_area {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.formGroupLogo .formLabel {
+    display: flex;
+    justify-content: space-between;
+}
+
+.formGroupLogo .formLabel button {
+    background-color: var(--blue);
+    color: var(--White);
+    padding: .5rem;
+    border-radius: 8px;
+    font-size: .7rem;
+    cursor: pointer;
+    z-index: 99;
+}
+
+.fileInfo {
+    padding-top: .5rem;
+    color: var(--blue);
+}
+
+@media(width < 570px) {
+    .fileInfo {
+        font-size: .7rem;
+    }
+
+    .formGroupLogo .formLabel button {
+        padding: .5rem;
+        border-radius: 6px;
+        font-size: .5rem;
+        cursor: pointer;
+    }
+}
+
+.upload_button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    height: 10rem;
+    background-color: var(--InputDefaultBackground);
+    border: 3.08px dashed rgb(11, 132, 224);
+    cursor: pointer;
+}
+
+.upload_button:hover {
+    background-color: rgba(12, 87, 173, 0.176);
+}
+
+.icon {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    color: var(--blue);
+}
+
+.text {
+    text-align: center;
+    color: #0d45a5;
+    text-decoration: solid;
+}
+
+.text1 {
+    text-align: center;
+    color: #0d45a5;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    padding: 6px;
+}
+
+.formLabel {
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    color: #000;
+}
+
+.checker {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/*
+* ******************************************************************************************
+
+! Hackathon Details page
+*/
+
+.hackathonDetails {
+    
+    padding: 1rem 3rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.hackathonDetailDash {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 70%;
+}
+
+.hackathonBanner {
+    height: 24rem;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.hackathonEventCard {
+    width: 30%;
+    min-width: 15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.hackathonApplyCard {
+    background-color: var(--White);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 10px .5px rgba(0, 0, 0, 0.1);
+}
+
+.hackathonApplyCard .date {
+    display: flex;
+    align-items: center;
+}
+
+.hackathonEventDate .title {
+    font-size: .8rem;
+    color: #c2bab7;
+}
+
+.hackathonEventDate h3 {
+    font-weight: 700;
+    color: #000;
+}
+
+.hackathonApplyCard span {
+    display: block;
+    width: 2px;
+    height: 100%;
+    margin-right: .5rem;
+    background-color: #456FF6;
+}
+
+.hackathonApplyCard .close {
+    background-color: #F0F4FF;
+    
+    padding: .5rem;
+    border-radius: .3rem;
+    font-weight: 700;
+    color: #000;
+}
+
+.hackathonApplyCard .close b {
+    color: #456FF6;
+    font-size: .7rem;
+}
+
+.hackathonApplyNow {
+    border-radius: .3rem;
+    padding: .8rem;
+    background-color: #456FF6;
+    color: white;
+    border: none;
+}
+
+.hackathonEventCard .socialLinks {
+    background-color: var(--White);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 1rem;
+    box-shadow: 0px 0px 10px .5px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    font-size: 1.5rem;
+}
+
+.hackathonEventCard .socialLinks a {
+    padding: .5rem;
+    background-color: #E6ECFF;
+    color: #456FF6;
+    border-radius: 100%;
+}
+
+.hackathonDesc {
+    width: 100%;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 10px .5px rgba(0, 0, 0, 0.1);
+    background-color: var(--White);
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+    color: #000;
+}
+
+.hackathonDesc .description {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.hackathonDesc .description .descTitle {
+    display: flex;
+    align-items: center;
+}
+
+.hackathonDesc .description h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.hackathonDesc .description b {
+    color: #5B5B5B;
+    font-size: .8rem;
+}
+
+.hackathonDesc p {
+    font-weight: 500;
+}
+
+.hackathonDesc .hackProfile {
+    border-radius: 100%;
+    height: 4rem;
+    width: 4rem;
+    object-fit: cover;
+    background-color: #000;
+}
+
+.hackathonDesc .love {
+    padding: .6rem;
+    margin-left: 1rem;
+    border-radius: 50%;
+    color: #FF6060;
+    background-color: #FFDFDF;
+    font-size: 1.5rem;
+}
+
+@media(width<=820px) {
+    .hackathonDetails {
+        flex-direction: column;
+        padding: .5rem;
+    }
+
+    .hackathonDetailDash,
+    .hackathonEventCard {
+        width: 100%;
+    }
+
+    .hackathonDesc {
+        padding: 1rem;
+    }
+}
+
+@media(width<=320px) {
+    .hackathonDesc .description {
+        flex-direction: column;
+        gap: .5rem;
+    }
+
+    .hackathonDesc .description .descTitle .tagLine b {
+        font-size: .65rem;
+    }
+
+    .hackathonDesc .love {
+        padding: .5rem;
+        font-size: 1rem;
+    }
+
+    .hackathonDesc p {
+        font-size: .8rem;
+    }
+}
+
+.toolTipStyle {
+    background-color: var(--blue);
+    color: var(--White);
+    border-radius: var(--borderRadius);
+}
+
+.HCHackathon {
+    padding: 0rem 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.hackathonBox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+}
+
+.hackathonBox .cardComponent {
+    border: 1px solid #dbdbdb;
+    background-color:  var(--White);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    text-align: left;
+    position: relative;
+}
+
+.hackathonBox .cardComponent:hover {
+    box-shadow: 0px 0px 10px .5px rgba(0, 0, 0, 0.1);
+}
+
+.hackathonBox .frame {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #ffffff;
+    width: 18rem;
+    height: fit-content;
+}
+
+.hackathonBox .div {
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.hackathonBox .title,
+.hackathonBox .shared2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.hackathonBox .shared {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: .5rem;
+    font-size: .8rem;
+}
+
+.hackathonBox .shared2 button{
+    margin-top: .5rem;
+    padding: .1rem;
+    font-size: .7rem;
+    background-color: var(--blue);
+    color: var(--White);
+    border-radius: 5.5px;
+}
+
+.hackathonBox .textWrapper {
+    font-size: 1.3rem;
+}
+
+.hackathonBox .textWrapper2 {
+    color: var(--black);
+    font-size: .8rem;
+}
+
+.hackathonBox .frame2 ,
+.hackathonBox .frame2 div{
+    display: flex;
+    gap: .6rem;
+}
+
+.hackathonBox .frame2 div{
+    flex-direction: column;
+}
+
+.hackathonBox .group {
+    background-color: #e5ebff;
+    border-radius: 50%;
+    padding: .3rem;
+    cursor: pointer;
+}
+
+.hackathonBox .group2 {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+.hackathonBox .textWrapper3 {
+    color: #000000cc;
+    font-size: .65rem;
+}
+
+.hackathonBox .overlapGroup {
+    gap: .4rem;
+    display: flex;
+}
+
+.hackathonBox .textWrapper4 {
+    color: #888888;
+    font-size: .45rem;
+    padding: 0.2rem .5rem;
+    border: 1px solid #888888;
+    border-radius: 0.4rem;
+}
+
+.hackathonBox .frame3 {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.hackathonBox .frame4 {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.hackathonBox .textWrapperSmall {
+    color: var(--black);
+    font-size: .6rem;
+    padding: 0rem .5rem;
+    font-weight: 600;
+}
+
+.hackathonBox .date,
+.mode {
+    display: flex;
+    align-items: center;
+    padding: .3rem;
+    height: 1.5rem;
+    border: 1px solid var(--blue);
+    border-radius: 0.5rem;
+}
+
+.buttonWrapper {
+    border: 0px none;
+}
+
+.hackathonBtn {
+    border-radius: .6rem;
+    padding: 0.3rem 1rem;
+    background-color: var(--blue);
+    color: var(--White);
+    border: 1px solid var(--blue);
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+.hackathonHeading {
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hackathonHeading h1 {
+    font-size: 2.5rem;
+    position: relative;
+}
+
+.hackathonHeading h1:before {
+    content: " ";
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    position: absolute;
+    -webkit-text-fill-color: transparent;
+    background-color: var(--green);
+    height: 0.5rem;
+    bottom: 10px;
+    z-index: -1;
+}
+
+.hackathonHeading .HCbutton {
+    font-size: .85rem;
+    padding: .5rem;
+}
+
+@media (width<=820px) {
+    .HCHackathon {
+        padding: 0rem;
+    }
+
+    .hackathonHeading .HCbutton {
+        font-size: .85rem;
+    }
+}
+
+@media(width<600px) {
+    .hackathonHeading h1 {
+        font-size: 1.5rem;
+    }
+
+    .hackathonHeading h1:before {
+        height: 0.3rem;
+        bottom: 6px;
+    }
+
+    .hackathonHeading .HCbutton {
+        font-size: .6rem;
+    }
+}
+
+.previewBtn{
+    display: flex;
+    cursor: pointer;
+}
+
+.spinnerContainer {
+    min-height: 100dvh;
+    min-width: 100vw;
+  }
+  
+  .spinnerContainer .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }

@@ -1,26 +1,26 @@
-import { useEffect, useState } from "react";
-import { deleteManageUsers, getManageUsersDetails } from "./apis";
-import { useNavigate, useParams } from "react-router-dom";
-import Form from "../../../../components/MuComponents/Form/Form";
+import Form from "@/MuLearnComponents/Form/Form";
 import { useToast } from "@chakra-ui/react";
+import { useNavigate, useParams } from "react-router-dom";
+import { deleteManageUsers } from "./apis";
 
 type Props = {};
 
 const ManageUsersDelete = (props: Props) => {
-    
     const { id } = useParams();
     const toast = useToast();
     const navigate = useNavigate();
     const handleSubmit = () => {
-        deleteManageUsers(id, toast);
-        navigate("/manage-users");
+        if (id) {
+            deleteManageUsers(id, toast);
+            navigate("/dashboard/manage-users");
+        }
     };
     return (
         <div>
             <Form
                 title={`Are you sure you want to delete ?`}
                 handleSubmitClick={handleSubmit}
-                cancelPath={"/manage-users"}
+                cancelPath={"/dashboard/manage-users"}
             />
         </div>
     );

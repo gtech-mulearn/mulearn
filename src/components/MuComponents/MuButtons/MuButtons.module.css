@@ -6,10 +6,10 @@
 .btn_light,
 .dropdown_btn {
     width: 100%;
-    min-width: 230px;
-    padding: 10px 20px;
+    min-width: 180px;
+    padding: 6px 20px;
     display: flex;
-    border-radius: 10px;
+    border-radius: 7px;
     flex-direction: row;
     align-items: center;
     margin-bottom: 16px;
@@ -17,7 +17,14 @@
     text-align: left;
     cursor: pointer;
     transition: 0.3s ease-in-out;
+    font-weight: 500;
+    letter-spacing: normal;
+    color: var(--lightGray);
 }
+
+/* .btn_light {
+    color: #456ff6;
+} */
 
 .btn_loader {
     margin-left: 18px;
@@ -34,8 +41,8 @@
 
 .btn:hover,
 .dropdown_btn:hover {
-    background: #456ff6;
-    color: #fff;
+    background: var(--dimBlue);
+    color: #5570F1
 }
 
 .btn_light:hover {
@@ -46,19 +53,28 @@
 .btn_light .btn_icon,
 .dropdown_btn .btn_icon {
     margin-right: 20px;
+    padding: 0;
+    margin-bottom: 0;
+    width: 20px;
+    font-size: 20px;
 }
 
 /* dropdown button style */
 
 .dropdown_btn_container .drop_view {
-    width: 70%;
-    margin: auto;
+    width: 90%;
+    margin-left: auto;
 }
 
 .dropdown_btn_container .drop_view .btn {
     min-width: unset;
     font-size: 14px;
-    padding: 8px 18px;
+    padding: 6px 12px;
+    margin-bottom: 8px;
+}
+
+.dropdown_btn_container .drop_view .btn:last-child {
+    margin-bottom: 16px;
 }
 
 .dropdown_btn_container .drop_view {
@@ -67,13 +83,18 @@
     transition: max-height 0.2s ease-out;
 }
 
+.arrow_icon {
+    margin-left: auto;
+    transition: 0.3s ease-in-out;
+}
+
 .createBtn {
     background: var(--Primary);
     color: var(--White);
     min-width: 100px;
     padding: 10px 20px;
     display: flex;
-    border-radius: 10px;
+    border-radius: 7px;
     border: 1px solid var(--Primary);
     flex-direction: row;
     align-items: center;
@@ -100,9 +121,15 @@
 }
 
 @media screen and (max-width: 830px) {
-    .btn,
+    /* .btn,
     .btn_light,
     .dropdown_btn {
         margin-bottom: 0px;
-    }
+    } */
+}
+
+.powerfullButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

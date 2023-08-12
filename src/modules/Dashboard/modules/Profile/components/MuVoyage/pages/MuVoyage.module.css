@@ -1,7 +1,9 @@
 .main_task {
     padding: 2rem 3rem;
     border-radius: 10px;
-    box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06);}
+    background-color: #fff;
+    box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06);
+}
 
 .main_task p,
 .main_task li {
@@ -23,7 +25,7 @@
 }
 
 .main_task .tasks .topSection .title span {
-    background-image: url(../assets/images/levelup.png);
+    background-image: url(../assets/images/levelup.webp);
     height: 4rem;
     width: 4rem;
     border-radius: .5rem;
@@ -90,6 +92,15 @@
     justify-content: space-between;
 }
 
+.main_task .tasks .accordion .main_list .level p .level_karma_detail {
+    margin-left: 5px;
+}
+
+.main_task .tasks .accordion .main_list .level p span {
+    font-size: 10px;
+    color: #888888;
+}
+
 .main_task .tasks .accordion .main_list .level .task_details {
     display: flex;
     align-items: center;
@@ -120,6 +131,28 @@
     transition: max-height 0.5s, padding 0.5s;
 }
 
+.main_task .tasks .accordion .main_list .content .goal_container {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 1.5rem;
+
+}
+
+.main_task .tasks .accordion .main_list .content .goal_container p {
+    color: #888888 !important;
+}
+
+.main_task .tasks .accordion .main_list .content .goal_container .goal {
+    display: flex;
+    gap: 5px;
+}
+
+.main_task .tasks .accordion .main_list .content.goal i {
+    height: 10px;
+}
+
 .main_task .tasks .accordion .main_list .expandBtn:checked~.content {
     max-height: 400px;
     overflow-y: scroll;
@@ -140,7 +173,7 @@
 
 
 @media (width <300px) {
-    .main_task{
+    .main_task {
         padding: 2rem 1rem;
     }
 }
@@ -149,6 +182,8 @@
     display: flex;
     flex-direction: row;
     gap: 10px;
+    position: relative;
+    width: 100%;
 }
 
 .main_task .tasks .accordion .main_list .content .list_list li label span {
@@ -160,12 +195,14 @@
     width: fit-content;
 }
 
-/* .main_task .tasks .accordion .main_list .content .list_list li input {
-    width: 1.2rem;
-    height: 1.2rem;
-    border: 1px solid rgb(128, 128, 128, .1);
-    margin-bottom: .5rem;
-} */
+.main_task .tasks .accordion .main_list .content .list_list li label p {
+    position: absolute;
+    right: 10px;
+    color: #888888;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+}
 
 @media (max-width: 700px) {
     .main_task {

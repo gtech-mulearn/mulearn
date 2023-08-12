@@ -1,24 +1,37 @@
+import { privateGateway } from "@/MuLearnServices/apiGateways";
+import { organizationRoutes } from "@/MuLearnServices/urls";
+import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 import { AxiosError } from "axios";
-import axios from "axios";
-import { privateGateway } from "../../../../services/apiGateways";
-import { dashboardRoutes, organizationRoutes } from "../../../../services/urls";
-import { ToastId, UseToastOptions } from "@chakra-ui/toast"
 
-import { useNavigate } from "react-router-dom";
-import { ErrorMessage } from "formik";
-
-
+const ccc = ['Colleges', "Companies", "Communities"] as const
 
 export const getOrganizations = async (
-    activeTab: string,
-    setData: any,
+    activeTab: typeof ccc[number],
+    setData: UseStateFunc<any>,
     page: number,
     selectedValue: number,
-    setTotalPages?: any,
+    setIsLoading: UseStateFunc<boolean>,
+    setTotalPages?: UseStateFunc<any>,
     search?: string,
     sortID?: string
 ) => {
+    setIsLoading(true)
     try {
+
+        type CCC = Lowercase<typeof ccc[number]>
+        type resData = {
+            response : {
+                data: {
+                    [T in `${ CCC }` ]: any
+                }
+                pagination: {
+                    [T in `${ CCC }` ] : {
+                        totalPages : string
+                    }
+                }
+            }
+        }
+
         await privateGateway.get(organizationRoutes.getOrganizationsAll, {
             params: {
                 perPage: selectedValue,
@@ -28,23 +41,22 @@ export const getOrganizations = async (
             }
         })
             .then(response => {
-                return response.data
+                setIsLoading(false)
+                return response.data as resData
             })
             .then(data => {
-                if (activeTab === "Colleges") {
-                    setData(data.response.data.colleges);
-                    setTotalPages(data.response.pagination.colleges.totalPages);
-                } else if (activeTab === "Companies") {
-                    setData(data.response.data.companies);
-                    setTotalPages(data.response.pagination.companies.totalPages);
-                } else if (activeTab === "Communities") {
-                    setData(data.response.data.communities);
-                    setTotalPages(data.response.pagination.communities.totalPages);
-                } else {
-                    alert("error to Load Data")
+                setIsLoading(false)
+                
+                if (ccc.some(c => c === activeTab)){
+                    setData(data.response.data[activeTab.toLowerCase() as CCC ])
+
+                    if (setTotalPages) setTotalPages(data.response.pagination[activeTab.toLowerCase() as CCC].totalPages)
                 }
+                else { alert("error to Load Data") }
+
             })
     } catch (err: unknown) {
+        setIsLoading(false)
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
@@ -96,7 +108,11 @@ export const getCountry = async (setCountryData: any) => {
     }
 }
 
-export const getStates = async (country: string, setStatesData: any) => {
+export const getStates = async (
+    country: string,
+    setStatesData: any,
+    toast: (options?: UseToastOptions | undefined) => ToastId
+) => {
     try {
         await privateGateway.get(`${organizationRoutes.getLocation}/${country}/states`)
             .then(response => {
@@ -110,11 +126,24 @@ export const getStates = async (country: string, setStatesData: any) => {
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
+            const errorMsg = 'Something went wrong!';
+            toast({
+                title: `Error`,
+                description: errorMsg,
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
         }
     }
 }
 
-export const getZones = async (country: string, state: string, setZonesData: any) => {
+export const getZones = async (
+    country: string,
+    state: string,
+    setZonesData: any,
+    toast: (options?: UseToastOptions | undefined) => ToastId
+) => {
     try {
         await privateGateway.get(`${organizationRoutes.getLocation}/${country}/${state}/zone`)
             .then(response => {
@@ -127,12 +156,26 @@ export const getZones = async (country: string, state: string, setZonesData: any
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            // console.log(error.response);
+            const errorMsg = 'Something went wrong!';
+            toast({
+                title: `Error`,
+                description: errorMsg,
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
         }
     }
 }
 
-export const getDistricts = async (country: string, state: string, zone: string, setDistrictsData: any) => {
+export const getDistricts = async (
+    country: string,
+    state: string,
+    zone: string,
+    setDistrictsData: any,
+    toast: (options?: UseToastOptions | undefined) => ToastId
+) => {
     try {
         await privateGateway.get(`${organizationRoutes.getLocation}/${country}/${state}/${zone}/district`)
             .then(response => {
@@ -145,7 +188,14 @@ export const getDistricts = async (country: string, state: string, zone: string,
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            const errorMsg = 'Something went wrong!';
+            toast({
+                title: `Error`,
+                description: errorMsg,
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
         }
     }
 }
@@ -200,7 +250,7 @@ export const createOrganization = async (
             isClosable: true
         });
         const message: any = response?.data;
-        console.log("created a new " + orgType)
+        //console.log("created a new " + orgType)
         setIsSuccess(true)
         setIsLoading(false);
     } catch (error: any) {
@@ -249,7 +299,7 @@ export const updateOrganization = async (
         if (orgType === "College") {
             return {
                 "title": title,
-                "code":code,
+                "code": code,
                 "state": state,
                 "zone": zone,
                 "district": district,
@@ -273,10 +323,10 @@ export const updateOrganization = async (
     try {
         setIsLoading(true);
         const response = await privateGateway.put(
-            `${organizationRoutes.putUpdateOrganization}/${oldCode}`,
+            `${organizationRoutes.putUpdateOrganization}/${oldCode}/`,
             addDataProps()
         );
-        console.log("status is ", response.status);
+        //console.log("status is ", response.status);
 
         if (response.status === 200) {
             toast({
@@ -322,7 +372,7 @@ export const deleteOrganization = async (
     try {
         const response = await privateGateway.delete(`${organizationRoutes.deleteOrgnaization}${code}`);
         const message: any = response?.data;
-        console.log(message);
+        //console.log(message);
         toast({
             title: "Organizations Deleted",
             status: "success",
@@ -342,7 +392,7 @@ export const getInfo = async (
     code: string
 ) => {
     try {
-        const response = await privateGateway.post(`${organizationRoutes.postGetInfo}${code}`);
+        const response = await privateGateway.post(`${organizationRoutes.postGetInfo}${code}/`);
         return response.data.response.institution
     } catch (err: unknown) {
         const error = err as AxiosError;

@@ -1,0 +1,399 @@
+.container_404 {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.NotBg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -4;
+    background-image: url(/src/components/assests/dust_bg.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: .4;
+}
+
+.NotFoundMars {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+    position: absolute;
+    bottom: 0rem;
+    z-index: -3;
+}
+
+.NotFoundRocks {
+    position: absolute;
+    width: 100%;
+    z-index: -2;
+    animation: rocks 10s ease-in-out infinite;
+}
+
+@keyframes rocks {
+    0% {
+        transform: translateY(0%);
+    }
+
+    50% {
+        transform: translateY(-1.5%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.NotFound404 {
+    position: absolute;
+    width: 30rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.NotFoundUfo {
+    position: absolute;
+    width: 50rem;
+    top: 53%;
+    left: 58%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    animation: ufoFloat 10s ease-in-out infinite;
+}
+
+@keyframes ufoFloat {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+
+    50% {
+        transform: translate(-50%, -55%);
+    }
+
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+.Notbox {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 5rem;
+    left: 6rem;
+}
+
+.Notfirst,
+.Notsecond,
+.Notthird {
+    color: #A1A1A1;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: .3rem;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.Notsecond {
+    font-size: 7rem;
+    font-weight: 700;
+    margin-top: -2rem;
+}
+
+.Notthird {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-top: -2.5rem;
+}
+
+.Notsecond img {
+    position: relative;
+    top: .5rem;
+    height: 5rem;
+}
+
+.Notfirst span {
+    display: flex;
+    flex-direction: row;
+    rotate: -12deg;
+    position: relative;
+    top: .4rem;
+    animation: span 2s ease-in-out infinite;
+}
+
+@keyframes span {
+    0% {
+        transform: translateY(0%)
+    }
+
+    50% {
+        transform: translateY(5%)
+    }
+
+    100% {
+        transform: translateY(0%)
+    }
+}
+
+.uh {
+    position: relative;
+    rotate: 6deg;
+    animation: uh 2s ease-in-out infinite;
+}
+
+@keyframes uh {
+    0% {
+        transform: translateY(0%);
+    }
+
+    50% {
+        transform: translateY(5%)
+    }
+
+    100% {
+        transform: translateY(0%)
+    }
+}
+
+.oh {
+    rotate: 7deg;
+    position: relative;
+    top: .4rem;
+    animation: uh 2s ease-in-out 1s infinite;
+}
+
+@keyframes oh {
+    0% {
+        transform: translateY(0%);
+    }
+
+    50% {
+        transform: translateY(5%)
+    }
+
+    100% {
+        transform: translateY(0%)
+    }
+}
+
+.ve {
+    position: relative;
+    rotate: 12deg;
+}
+
+.in {
+    position: relative;
+    rotate: 3deg;
+    animation: in 2s ease-in-out infinite;
+}
+
+@keyframes in {
+    0% {
+        transform: translateY(0%);
+    }
+
+    50% {
+        transform: translateY(5%)
+    }
+
+    100% {
+        transform: translateY(0%)
+    }
+}
+
+.space {
+    position: relative;
+    rotate: -2deg;
+    animation: space 2s ease-in-out .2s infinite;
+}
+
+@keyframes space {
+    0% {
+        transform: translateY(0%);
+    }
+
+    50% {
+        transform: translateY(5%)
+    }
+
+    100% {
+        transform: translateY(0%)
+    }
+}
+
+.Notsecond .l {
+    animation: l 2s ease-in-out infinite;
+}
+
+@keyframes l {
+    0% {
+        transform: translateY(0%);
+    }
+
+    50% {
+        transform: translateY(5%)
+    }
+
+    100% {
+        transform: translateY(0%)
+    }
+}
+
+.Notsecond .o {
+    animation: o 2s ease-in-out 1s infinite;
+}
+
+@keyframes o {
+    0% {
+        transform: translateY(0%);
+    }
+
+    50% {
+        transform: translateY(5%)
+    }
+
+    100% {
+        transform: translateY(0%)
+    }
+}
+
+.Notsecond .s {
+    animation: s 2s ease-in-out .7s infinite;
+}
+
+@keyframes s {
+    0% {
+        transform: translateY(0%);
+    }
+
+    50% {
+        transform: translateY(5%)
+    }
+
+    100% {
+        transform: translateY(0%)
+    }
+}
+
+.Notsecond .t {
+    animation: t 2.5s ease-in-out 1.6s infinite;
+}
+
+@keyframes t {
+    0% {
+        transform: translateY(0%);
+    }
+
+    50% {
+        transform: translateY(5%)
+    }
+
+    100% {
+        transform: translateY(0%)
+    }
+}
+
+@media(width<820px) {
+    .Notbox {
+        top: 5rem;
+        left: 9rem;
+    }
+
+    .Notfirst,
+    .Notsecond,
+    .Notthird {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .Notsecond {
+        font-size: 4rem;
+        margin-top: -1.5rem;
+    }
+
+    .Notthird {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-top: -1.5rem;
+    }
+
+    .Notsecond img {
+        height: 3rem;
+    }
+
+    .NotFound404 {
+        width: 20rem;
+    }
+
+    .NotFoundUfo {
+        scale: 1.5;
+        top: 69%;
+        left: 120%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media(width<400px) {
+    .Notbox {
+        top: 3rem;
+        left: 8rem;
+    }
+
+    .Notfirst,
+    .Notsecond,
+    .Notthird {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .Notsecond {
+        font-size: 4rem;
+        margin-top: -1.5rem;
+    }
+
+    .Notthird {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-top: -1.5rem;
+    }
+
+    .Notsecond img {
+        height: 3rem;
+    }
+
+    .NotFound404 {
+        width: 20rem;
+    }
+
+    .NotFoundUfo {
+        scale: 1.5;
+        top: 69%;
+        left: 120%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media(width<300px) {
+    .Notbox {
+        top: 3rem;
+        left: 5rem;
+    }
+
+    .NotFound404 {
+        width: 13rem;
+    }
+
+    .NotFoundUfo {
+        scale: 1.5;
+        top: 60%;
+        left: 120%;
+        transform: translate(-50%, -50%);
+    }
+}

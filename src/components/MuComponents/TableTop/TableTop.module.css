@@ -1,85 +1,104 @@
 .body {
-    background-color: #ccdbf0;
-    height: 6vh;
     display: flex;
+    padding: 16px 0;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
     border-radius: 8px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    color: var(--Dark);
+    background-color:  var(--White);
+    padding: 5px;
+    /* flex-wrap: wrap; */
 }
 
 .container {
-    padding: 10px 0;
+    /* padding: 10px 0; */
     width: 95%;
+    padding: 0;
+    margin: 0;
 }
 
 .searchBar {
-    border-radius: 8px;
-    padding: 3px;
-    color: #456FF6;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    border: 1px solid #456FF6;
-    background-image: url(src/assets/images/fi-br-search.png);
-    padding-left: 30px;
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-color: #fff;
-    background-position-x: 2%;
-    box-shadow: none;
+    border: 1px solid #a9a9a9;
+    background: transparent;
+    background-color: var(--White);
+    width: 100%;
+    height: 2rem;
+    border-radius: var(--borderRadius);
+    margin: 0 !important;
 }
 
 .searchBar::placeholder {
-    color: #456FF6 !important;
+    color: #a9a9a9 !important;
 }
 
 .csv {
-    border-radius: 8px;
     display: flex;
     align-items: center;
-    background-color: #fff;
-    margin-right: 10px;
-    border: 1px solid #456FF6;
-    padding: 3px 10px;
-    box-shadow: none;
     cursor: pointer;
 }
 
-.csv div {
-    margin-right: 5px;
-}
-
-.left {
+/* .left {
     width: 30%;
-}
+} */
 
 .right {
-    width: 70%;
-    display: flex;
+    /* width: 70%; */
+    display: inline-flex;
     align-items: center;
     justify-content: end;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-.showContainer {
+/* .showContainer {
     border-radius: 8px;
     position: relative;
-}
+} */
 
 .showSelect {
     border-radius: 8px;
     padding: 0.25rem 0;
-    border: 1px solid #456FF6;
+    border: 1px solid #456ff6;
     margin: 0 5px;
 }
 
-@media (max-width: 380px) {
+@media (max-width: 415px) {
     .showLabel {
         display: none;
     }
-
+    .form_container {
+        display: inline;
+        align-items: center;
+        width: 45vw !important;
+    }
     .showSelect {
         position: absolute;
         right: 0rem;
         top: -15.7px;
     }
+}
+
+.form_container {
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.clearIcon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin: 0;
+    z-index: 0;
+}
+
+.searchIcon {
+    margin: 0;
+    cursor: pointer;
+    background-color: var(--blue);
+    color: var(--White);
+    margin-left: 10px;
+    padding: 0.2rem 0.8rem;
+    border-radius: var(--borderRadius);
+    z-index: 0;
 }

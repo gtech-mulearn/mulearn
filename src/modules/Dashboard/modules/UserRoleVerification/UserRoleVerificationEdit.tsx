@@ -1,18 +1,14 @@
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { Form, Formik } from "formik";
 import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import * as Yup from "yup";
 import {
     editUserRoleVerification,
     getUserRoleVerificationDetails
 } from "./apis";
-import { useToast } from "@chakra-ui/react";
-import { Form, Formik } from "formik";
-import * as Yup from "yup";
-import { FormikTextInput } from "../../../../components/MuComponents/FormikComponents/FormikComponents";
-import { MuButton } from "../../../../components/MuComponents/MuButtons/MuButton";
-import { useNavigate, useParams } from "react-router-dom";
-// import { toast } from "react-toastify";
-import styles from "../../../../components/MuComponents/FormikComponents/form.module.css";
-import { NULL } from "sass";
-import "./UserRoleVerification.scss";
+import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
+import "./UserRoleVerification.css";
 
 type Props = {};
 
@@ -32,7 +28,7 @@ const UserRoleVerificationEdit = (props: Props) => {
         verified: isChecked
     });
     useEffect(() => {
-        getUserRoleVerificationDetails(id, setData);
+        if (id) getUserRoleVerificationDetails(id, setData);
     }, []);
 
     const inputFields = [
