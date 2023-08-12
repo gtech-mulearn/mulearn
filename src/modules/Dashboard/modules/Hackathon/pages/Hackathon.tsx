@@ -18,6 +18,7 @@ import { Tooltip } from "react-tooltip";
 import styles from "./HackathonCreate.module.css";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { HackList } from "../services/HackathonInterfaces";
 
 enum ModalType {
     Publish,

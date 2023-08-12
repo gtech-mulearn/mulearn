@@ -5,23 +5,19 @@ import { useToast } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getParticipants } from "../services/HackathonApis";
+import styles from "./HackathonCreate.module.css";
 
 type Props = {};
 
 const HackathonParticipants = (props: Props) => {
 	const [data, setData] = useState<Data[]>([]);
+	const [columnOrder, setColumnOrder] = useState<any[]>([]);
     const toast = useToast();
     const { id } = useParams();
     const navigate = useNavigate();
 
-    const columnOrder = [
-        { column: "name", Label: "Name", isSortable: false },
-        { column: "email", Label: "Email", isSortable: false },
-        { column: "muid", Label: "Mu ID", isSortable: false }
-    ];
-
     useEffect(() => {
-        getParticipants(setData, id);
+        getParticipants(setData, setColumnOrder, id);
     }, []);
 
     const handleNothing = () => {
@@ -29,6 +25,9 @@ const HackathonParticipants = (props: Props) => {
     };
     return (
         <div>
+            <div className={styles.hackathonHeading}>
+                <h1>List of applicants</h1>
+            </div>
             <>
                 {data && (
                     <Table
