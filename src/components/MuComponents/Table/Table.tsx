@@ -123,8 +123,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
 
     // To change MuLoading Component
 
-    console.log(props.columnOrder.length)
-
+    //props.rows?.map((rowData, index)=>{console.log(rowData['title'])})
     return (
         <>
 
@@ -247,6 +246,9 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                             }
                                                             type={
                                                                 props.modalTypeContent
+                                                            }
+                                                            value={
+                                                                rowData['title']
                                                             }
                                                         />
                                                     )}
