@@ -13,12 +13,13 @@ import { useToast } from "@chakra-ui/react";
 import Modal from "./components/Modal";
 import ManageRolesEditModal from "./components/ManageRolesEditModal";
 import ManageRolesCreateModal from "./components/ManageRolesCreateModal";
+import { getRoles } from "../../../../modules/Common/Authentication/services/onboardingApis";
 
 function ManageRoles() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const [perPage, setPerPage] = useState(5);
+    const [perPage, setPerPage] = useState(100);
     const [sort, setSort] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
@@ -26,6 +27,7 @@ function ManageRoles() {
     //Modal
     const [currRoleID, setCurrRoleID] = useState("");
     const [currModal, setCurrModal] = useState<null | "create" | "edit">(null);
+    const [roles,setRoles] = useState<any>()
 
     const columnOrder = [
         // { column: "id", Label: "ID", isSortable: true },
@@ -65,15 +67,16 @@ function ManageRoles() {
 
     useEffect(() => {
         if (firstFetch.current) {
-
             getManageRoles(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
+            getRoles((val)=>console.log(val),setRoles)
         }
+
         firstFetch.current = false;
     }, []);
-
     useEffect(() => {
+        
         //refetch data when value is edited or created
-        if (currModal === null) {
+        if (currModal === null && !firstFetch) {
             //refresh table when modal closes
             //delay fetch so that updated table is fetched
             setTimeout(()=>
@@ -127,6 +130,7 @@ function ManageRoles() {
 
         //console.log(`Icon clicked for column: ${column}`);
     };
+    
     return (
         <>
             {currModal
@@ -142,6 +146,7 @@ function ManageRoles() {
                                 <ManageRolesCreateModal
                                     id={currRoleID}
                                     onClose={setCurrModal}
+                                    values={roles.map((obj:any)=>obj.title)}
                                 />
                             </Modal>
                         );
@@ -156,6 +161,7 @@ function ManageRoles() {
                                 <ManageRolesEditModal
                                     id={currRoleID}
                                     onClose={setCurrModal}
+                                    values={roles.map((obj:any)=>obj.title)}
                                 />
                             </Modal>
                         );
