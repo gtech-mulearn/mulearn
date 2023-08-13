@@ -10,7 +10,12 @@ import {
 } from "../services/LearningCircleAPIs";
 import { useNavigate, useParams } from "react-router-dom";
 import { BiEditAlt } from "react-icons/bi";
-import { AllWeeks, convert24to12, getNextDate, monthNames } from "../services/utils";
+import {
+    AllWeeks,
+    convert24to12,
+    getNextDate,
+    monthNames
+} from "../services/utils";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { Tooltip } from "react-tooltip";
@@ -146,7 +151,7 @@ const LearningCircle = (props: Props) => {
                                     backgroundColor: "var(--blue)",
                                     color: "var(--White)",
                                     borderRadius: "10px",
-									padding: '0 10px'
+                                    padding: "0 10px"
                                 }}
                             />
                         </div>
@@ -198,10 +203,16 @@ const LearningCircle = (props: Props) => {
                                                             {lc?.meet_place}{" "}
                                                             <br />
                                                         </b>
-                                                        <b>
-                                                            Time:{" "}
-                                                            {convert24to12(String(lc?.meet_time))}
-                                                        </b>
+                                                        {lc?.meet_time && (
+                                                            <b>
+                                                                Time:{" "}
+                                                                {convert24to12(
+                                                                    String(
+                                                                        lc?.meet_time
+                                                                    )
+                                                                )}
+                                                            </b>
+                                                        )}
                                                     </div>
 
                                                     {/* <button className={styles.BtnBtn}>
