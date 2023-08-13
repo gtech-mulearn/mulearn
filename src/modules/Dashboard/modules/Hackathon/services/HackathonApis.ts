@@ -5,6 +5,9 @@ import { ToastId, UseToastOptions, useToast } from "@chakra-ui/react";
 import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { Data } from "@/MuLearnComponents/Table/Table";
 import { NavigateFunction } from "react-router-dom";
+import { ColumnDefinition, HackList, HackathonApplication } from "./HackathonInterfaces";
+import { transformData } from "./HackathonUtils";
+import { SetStateAction } from "react";
 
 export const getHackathons = async (
     setData: UseStateFunc<HackList[]>
@@ -440,6 +443,7 @@ export const getOrganizers = async (
 
 export const getParticipants = async (
     setData: UseStateFunc<Data[]>,
+    setColumnHead: React.Dispatch<SetStateAction<ColumnDefinition[]>>,
     id: string | undefined
 ) => {
     try {
@@ -447,7 +451,12 @@ export const getParticipants = async (
             dashboardRoutes.getApplicants + id + "/"
         );
         const message: any = response?.data;
-        setData(message.response);
+        const { transformedData, columnOrder } = transformData(
+            message.response
+        );
+        setData(transformedData);
+        setColumnHead(columnOrder);
+        console.log(columnOrder);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

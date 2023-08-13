@@ -55,7 +55,7 @@ const UrlShortener = () => {
                     if (result) {
                         setShortUrlData(prevShortUrlData => [
                             ...prevShortUrlData.filter(
-                                item => item.id !== values.id
+                                item => item?.id !== values?.id
                             ),
                             {
                                 ...urlCreateData,
@@ -83,7 +83,7 @@ const UrlShortener = () => {
                         if (result) {
                             setShortUrlData(prevShortUrlData => [
                                 ...prevShortUrlData.filter(
-                                    item => item.id !== values.id
+                                    item => item?.id !== values?.id
                                 ),
                                 {
                                     ...urlCreateData,
@@ -174,16 +174,16 @@ const UrlShortener = () => {
         formik.setFieldValue("id", id);
         formik.setFieldValue(
             "title",
-            shortUrlData.filter(item => item.id === id)[0].title
+            shortUrlData.filter(item => item?.id === id)[0].title
         );
         formik.setFieldValue(
             "longUrl",
-            shortUrlData.filter(item => item.id === id)[0].long_url
+            shortUrlData.filter(item => item?.id === id)[0].long_url
         );
         formik.setFieldValue(
             "short_url",
             shortUrlData
-                .filter(item => item.id === id)[0]
+                .filter(item => item?.id === id)[0]
                 .short_url.replace(
                     import.meta.env.VITE_BACKEND_URL_AUTH + "/r/",
                     ""
@@ -194,13 +194,13 @@ const UrlShortener = () => {
 
     const handleDelete = (id: any) => {
         deleteShortenUrl(id.toString(), toast);
-        setShortUrlData(shortUrlData.filter(item => item.id !== id));
+        setShortUrlData(shortUrlData.filter(item => item?.id !== id));
     };
     const handleCopy = (id: any) => {
         navigator.clipboard.writeText(
-            shortUrlData.filter(item => item.id === id)[0].short_url
+            shortUrlData.filter(item => item?.id === id)[0].short_url
         );
-        console.log(shortUrlData.filter(item => item.id === id)[0].short_url);
+        console.log(shortUrlData.filter(item => item?.id === id)[0].short_url);
         toast({
             title: "Copied",
             status: "success",
@@ -307,7 +307,7 @@ const UrlShortener = () => {
                 </div>
             </div>
 
-            {shortUrlData[0].id !== "" && (
+            {shortUrlData[0]?.id !== "" && (
                 <>
                     <TableTop
                         onSearchText={handleSearch}

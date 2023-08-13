@@ -7,6 +7,7 @@ import styles from "./HackathonCreate.module.css"
 import { DateConverter, convertDateToYYYYMMDD } from "../../../utils/common";
 import { style } from "d3";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { HackList } from "../services/HackathonInterfaces";
 
 type Props = {};
 
