@@ -74,6 +74,10 @@ const Onboarding = (props: Props) => {
     });
 
     const [roleVerified, setRoleVerified] = useState(false);
+    //temporary measure for hiding company
+    //when not working,not studying
+    //is selected
+    const  [working,setWorking] = useState(false)
     //ref to community selector for resetting - temporary fix
     const community_select_ref = useRef<any>()
     //State Array for Storing the Organization(Company, Community, College)
@@ -350,7 +354,6 @@ const Onboarding = (props: Props) => {
             }
         }
     }, [roleAPI]);
-    
     return (
         <>
             <div className={styles.onboarding_page}>
@@ -536,6 +539,10 @@ const Onboarding = (props: Props) => {
                                                         setTimeout(() => {
                                                             setDisplay("none");
                                                         }, 1000);
+                                                        //temporary measure for hiding company
+                                                        //when not working,not studying
+                                                        //is selected
+                                                        setWorking(true)
                                                     }}
                                                 >
                                                     I'm currently a working
@@ -576,6 +583,7 @@ const Onboarding = (props: Props) => {
                                                         setTimeout(() => {
                                                             setDisplay("none");
                                                         }, 1000);
+                                                        setWorking(true)
                                                     }}
                                                 >
                                                     I'm a freelancer
@@ -1690,7 +1698,7 @@ const Onboarding = (props: Props) => {
                                                     </div>
                                                 </div>
                                             </>
-                                        ) : (
+                                        ) : (!working?"":
                                             <>
                                                 <div
                                                     className={
@@ -1942,12 +1950,14 @@ const Onboarding = (props: Props) => {
                                                     formik.errors
                                                         .areaOfInterest ||
                                                     (role[0]["title"] ==
-                                                    "Student"
+                                                    "Student" ||role[0]["title"] ==
+                                                    "Enabler"
                                                         ? formik.errors
                                                               .organization ||
-                                                          formik.errors.dept ||
-                                                          formik.errors.yog
+                                                          formik.errors.dept 
                                                         : null) ||
+                                                    (role[0]["title"] == "Student"
+                                                    ?formik.errors.yog:null)||
                                                     // (role[0]["title"] == "Mentor"
                                                     //   ? formik.errors.mentorRole
                                                     //   : null) ||
@@ -1960,7 +1970,7 @@ const Onboarding = (props: Props) => {
                                                         ? true
                                                         : null)
                                                 ) {
-                                                    // console.log("error");
+                                                    //console.log(formik.errors);
                                                 } else {
                                                     // console.log(formik.values);
                                                     // console.log("no error");
