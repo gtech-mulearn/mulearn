@@ -60,7 +60,7 @@ const UrlShortener = () => {
                             {
                                 ...urlCreateData,
                                 short_url:
-                                    import.meta.env.VITE_BACKEND_URL_AUTH +
+                                    import.meta.env.VITE_BACKEND_URL +
                                     "/r/" +
                                     urlCreateData.short_url
                             }
@@ -88,7 +88,7 @@ const UrlShortener = () => {
                                 {
                                     ...urlCreateData,
                                     short_url:
-                                        import.meta.env.VITE_BACKEND_URL_AUTH +
+                                        import.meta.env.VITE_BACKEND_URL +
                                         "/r/" +
                                         urlCreateData.short_url
                                 }
@@ -185,7 +185,7 @@ const UrlShortener = () => {
             shortUrlData
                 .filter(item => item?.id === id)[0]
                 .short_url.replace(
-                    import.meta.env.VITE_BACKEND_URL_AUTH + "/r/",
+                    import.meta.env.VITE_BACKEND_URL + "/r/",
                     ""
                 )
         );
@@ -266,7 +266,7 @@ const UrlShortener = () => {
                                     />
                                 </div>
                                 {formik.touched.short_url &&
-                                formik.errors.short_url ? (
+                                    formik.errors.short_url ? (
                                     <p className={styles.error_message}>
                                         {formik.errors.short_url}
                                     </p>
