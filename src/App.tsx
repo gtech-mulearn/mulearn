@@ -523,7 +523,7 @@ function App() {
             ]
         },
         {
-            path: "/dashboard/profile/:id",
+            path: "/profile/:id",
             element: <Profile />
         },
         {
