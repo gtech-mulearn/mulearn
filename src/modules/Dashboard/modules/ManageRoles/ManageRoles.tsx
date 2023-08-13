@@ -29,9 +29,9 @@ function ManageRoles() {
 
     const columnOrder = [
         // { column: "id", Label: "ID", isSortable: true },
-        { column: "title", Label: "Title", isSortable: false },
+        { column: "title", Label: "Title", isSortable: true },
         { column: "description", Label: "Description", isSortable: false },
-        { column: "users_with_role", Label: "Members", isSortable: false },
+        { column: "users_with_role", Label: "Members", isSortable: true },
         { column: "updated_by", Label: "Updated By", isSortable: true },
         { column: "created_by", Label: "Created By", isSortable: false },
         { column: "created_at", Label: "Created On", isSortable: true }
