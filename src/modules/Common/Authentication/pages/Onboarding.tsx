@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Onboarding.module.css";
 type Props = {};
 import ReactSelect, { SingleValue } from "react-select";
@@ -74,7 +74,8 @@ const Onboarding = (props: Props) => {
     });
 
     const [roleVerified, setRoleVerified] = useState(false);
-
+    //ref to community selector for resetting - temporary fix
+    const community_select_ref = useRef<any>()
     //State Array for Storing the Organization(Company, Community, College)
     const [organization, setOrganization] = useState("");
     const [community, setCommunity] = useState<string[]>([]);
@@ -198,7 +199,6 @@ const Onboarding = (props: Props) => {
                 });
             });
     }, []);
-
     const [backendError, setBackendError] = useState<BackendErrors>({});
 
     const handleBackendErrors = (errors: BackendErrors) => {
@@ -283,7 +283,7 @@ const Onboarding = (props: Props) => {
         } else if (!/\S+@\S+\.\S+/.test(values.email)) {
             errors.email = "Invalid email address";
         }
-        if (values.password.length>8) 
+        if (values.password.length<8) 
             errors.password = "Password length should be greater than 8";
         
         if (!values.confirmPassword) {
@@ -350,7 +350,7 @@ const Onboarding = (props: Props) => {
             }
         }
     }, [roleAPI]);
-    console.log("adsn")
+    
     return (
         <>
             <div className={styles.onboarding_page}>
@@ -1014,7 +1014,7 @@ const Onboarding = (props: Props) => {
                                                 </label>
                                                 <Select
                                                     name="community.id"
-                                                    // value={}
+                                                    ref={community_select_ref}
                                                     onChange={OnChangeValue => {
                                                         formik.setFieldValue(
                                                             "community",
@@ -1026,12 +1026,13 @@ const Onboarding = (props: Props) => {
                                                                     }
                                                                 ) => value.value
                                                             )
-                                                        );
+                                                        );                                                
                                                     }}
                                                     closeMenuOnSelect={false}
                                                     components={
                                                         animatedComponents
                                                     }
+                                                    isClearable
                                                     isMulti
                                                     options={communityAPI.map(
                                                         company => {
@@ -1914,6 +1915,7 @@ const Onboarding = (props: Props) => {
                                         <button
                                             type="reset"
                                             onClick={() => {
+                                                community_select_ref.current.clearValue()
                                                 formik.handleReset(
                                                     formik.values
                                                 );
