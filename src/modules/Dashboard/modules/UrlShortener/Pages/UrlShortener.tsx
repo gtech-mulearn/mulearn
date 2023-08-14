@@ -13,7 +13,12 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import { useFormik } from "formik";
 import { useToast } from "@chakra-ui/react";
 import { MuButtonLight } from "@/MuLearnComponents/MuButtons/MuButton";
-
+type urlData = {
+    id: string | number | boolean;
+    long_url: string;
+    short_url: string;
+    title: string;
+};
 const UrlShortener = () => {
     const columnOrder: ColOrder[] = [
         { column: "title", Label: "Title", isSortable: true },
@@ -27,14 +32,7 @@ const UrlShortener = () => {
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
-    const [shortUrlData, setShortUrlData] = useState([
-        {
-            id: "",
-            long_url: "",
-            short_url: "",
-            title: ""
-        }
-    ]);
+    const [shortUrlData, setShortUrlData] = useState<urlData[]>([]);
 
     const formik = useFormik({
         initialValues: {
@@ -60,7 +58,7 @@ const UrlShortener = () => {
                             {
                                 ...urlCreateData,
                                 short_url:
-                                    import.meta.env.VITE_BACKEND_URL_AUTH +
+                                    import.meta.env.VITE_BACKEND_URL +
                                     "/r/" +
                                     urlCreateData.short_url
                             }
@@ -88,7 +86,7 @@ const UrlShortener = () => {
                                 {
                                     ...urlCreateData,
                                     short_url:
-                                        import.meta.env.VITE_BACKEND_URL_AUTH +
+                                        import.meta.env.VITE_BACKEND_URL +
                                         "/r/" +
                                         urlCreateData.short_url
                                 }
@@ -185,7 +183,7 @@ const UrlShortener = () => {
             shortUrlData
                 .filter(item => item?.id === id)[0]
                 .short_url.replace(
-                    import.meta.env.VITE_BACKEND_URL_AUTH + "/r/",
+                    import.meta.env.VITE_FRONTEND_URL + "/r/",
                     ""
                 )
         );
@@ -266,7 +264,7 @@ const UrlShortener = () => {
                                     />
                                 </div>
                                 {formik.touched.short_url &&
-                                formik.errors.short_url ? (
+                                    formik.errors.short_url ? (
                                     <p className={styles.error_message}>
                                         {formik.errors.short_url}
                                     </p>
@@ -274,6 +272,7 @@ const UrlShortener = () => {
                             </div>
                             <div className={styles.form_btns}>
                                 <MuButtonLight
+                                type="reset"
                                     text="Cancel"
                                     style={{
                                         width: "fit-content",
@@ -307,40 +306,38 @@ const UrlShortener = () => {
                 </div>
             </div>
 
-            {shortUrlData[0]?.id !== "" && (
-                <>
-                    <TableTop
-                        onSearchText={handleSearch}
-                        onPerPageNumber={handlePerPageNumber}
-                    />
-                    <Table
-                        rows={shortUrlData}
-                        page={currentPage}
-                        perPage={perPage}
+            <>
+                <TableTop
+                    onSearchText={handleSearch}
+                    onPerPageNumber={handlePerPageNumber}
+                />
+                <Table
+                    rows={shortUrlData}
+                    page={currentPage}
+                    perPage={perPage}
+                    columnOrder={columnOrder}
+                    id={["id"]}
+                    onEditClick={handleEdit}
+                    onDeleteClick={handleDelete}
+                    onCopyClick={handleCopy}
+                >
+                    <THead
                         columnOrder={columnOrder}
-                        id={["id"]}
-                        onEditClick={handleEdit}
-                        onDeleteClick={handleDelete}
-                        onCopyClick={handleCopy}
-                    >
-                        <THead
-                            columnOrder={columnOrder}
-                            // editableColumnNames={editableColumnNames}
-                            onIconClick={handleIconClick}
-                        />
-                        <Pagination
-                            currentPage={currentPage}
-                            totalPages={totalPages}
-                            margin="10px 0"
-                            handleNextClick={handleNextClick}
-                            handlePreviousClick={handlePreviousClick}
-                            perPage={perPage}
-                            setPerPage={setPerPage}
-                        />
-                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-                    </Table>
-                </>
-            )}
+                        // editableColumnNames={editableColumnNames}
+                        onIconClick={handleIconClick}
+                    />
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        margin="10px 0"
+                        handleNextClick={handleNextClick}
+                        handlePreviousClick={handlePreviousClick}
+                        perPage={perPage}
+                        setPerPage={setPerPage}
+                    />
+                    {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                </Table>
+            </>
         </>
     );
 };

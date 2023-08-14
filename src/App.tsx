@@ -13,9 +13,8 @@ import ResetPassword from "./modules/Common/Authentication/pages/ResetPassword";
 import PrivateRoutes from "./components/PrivateRoutes";
 import DashboardRootLayout from "./modules/Dashboard/layouts/DashboardRootLayout";
 import NotFound from "./components/NotFound";
-const Profile = lazy(
-    () => import("./modules/Dashboard/modules/Profile/pages/Profile")
-);
+import Profile from "./modules/Dashboard/modules/Profile/pages/Profile"
+
 const Tasks = lazy(() =>
     import("./modules/Dashboard/modules/Tasks/Tasks").then(module => ({
         default: module.Tasks
@@ -133,12 +132,7 @@ const InterestGroupCreate = lazy(
     () =>
         import("./modules/Dashboard/modules/InterestGroup/InterestGroupCreate")
 );
-const CampusStudentList = lazy(
-    () =>
-        import(
-            "./modules/Dashboard/modules/CampusStudentList/pages/CampusStudentList"
-        )
-);
+
 const HackathonDetails = lazy(
     () => import("./modules/Dashboard/modules/Hackathon/pages/HackathonDetails")
 );
@@ -160,12 +154,7 @@ const HackathonRegistration = lazy(
 const LandingPage = lazy(
     () => import("./modules/Public/LearningCircles/pages/LandingPage")
 );
-const ConnectDiscord = lazy(
-    () =>
-        import(
-            "./modules/Dashboard/modules/ConnectDiscord/pages/ConnectDiscord"
-        )
-);
+
 const HackathonParticipants = lazy(
     () =>
         import(
@@ -177,6 +166,7 @@ import { roles } from "./services/types";
 import SecureAuthRoutes from "./services/authCheck";
 
 import Settings from "./modules/Dashboard/modules/Settings/Settings";
+import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
 );
@@ -391,11 +381,7 @@ function App() {
                             path: "hackathon",
                             element: (
                                 <RoleChecker
-                                    roles={[
-                                        roles.STUDENT,
-                                        roles.ADMIN,
-                                        roles.FELLOW
-                                    ]}
+                                    roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<Hackathon />}
                                 />
                             )
@@ -404,24 +390,16 @@ function App() {
                             path: "hackathon/create",
                             element: (
                                 <RoleChecker
-                                    roles={[
-                                        roles.STUDENT,
-                                        roles.ADMIN,
-                                        roles.FELLOW
-                                    ]}
+                                    roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<HackathonCreate />}
                                 />
                             )
                         },
                         {
                             path: "hackathon/edit/:id",
-                           element: (
+                            element: (
                                 <RoleChecker
-                                    roles={[
-                                        roles.STUDENT,
-                                        roles.ADMIN,
-                                        roles.FELLOW
-                                    ]}
+                                    roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<HackathonCreate />}
                                 />
                             )
@@ -430,11 +408,7 @@ function App() {
                             path: "hackathon/details/:id",
                             element: (
                                 <RoleChecker
-                                    roles={[
-                                        roles.STUDENT,
-                                        roles.ADMIN,
-                                        roles.FELLOW
-                                    ]}
+                                    roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<HackathonDetails />}
                                 />
                             )
@@ -443,24 +417,16 @@ function App() {
                             path: "hackathon/apply/:id",
                             element: (
                                 <RoleChecker
-                                    roles={[
-                                        roles.STUDENT,
-                                        roles.ADMIN,
-                                        roles.FELLOW
-                                    ]}
+                                    roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<HackathonRegistration />}
                                 />
                             )
                         },
                         {
                             path: "hackathon/applicants/:id",
-                           element: (
+                            element: (
                                 <RoleChecker
-                                    roles={[
-                                        roles.STUDENT,
-                                        roles.ADMIN,
-                                        roles.FELLOW
-                                    ]}
+                                    roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<HackathonParticipants />}
                                 />
                             )
@@ -541,7 +507,7 @@ function App() {
                                     children={<LearningCircleCreate />}
                                 />
                             )
-                        },
+                        }
                         // {
                         //     path: "settings",
                         //     element: <Settings />,
@@ -557,7 +523,7 @@ function App() {
             ]
         },
         {
-            path: "/dashboard/profile/:id",
+            path: "/profile/:id",
             element: <Profile />
         },
         {

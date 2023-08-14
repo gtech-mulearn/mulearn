@@ -1,4 +1,4 @@
-import { createManageRoles } from "../apis";
+import { createManageRoles, isRoleUnique } from "../apis";
 import { useToast } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import styles from "./Modal.module.css"
@@ -10,6 +10,7 @@ import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComp
 type Props = {
     id:string
     onClose:any
+    values:string[]
 };
 
 const ManageRolesCreateModal = (props: Props) => {
@@ -27,7 +28,12 @@ const ManageRolesCreateModal = (props: Props) => {
             validationSchema={Yup.object({
                 title: Yup.string()
                     .max(30, "Must be 30 characters or less")
-                    .required("Required"),
+                    .required("Required")
+                    .test('unique role name','role name already exists',
+                    async (value)=>{
+                            return !isRoleUnique(value,props.values)
+                        
+                    }),
                 description: Yup.string()
                     .max(30, "Must be 30 characters or less")
                     .required("Required")

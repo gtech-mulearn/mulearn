@@ -152,7 +152,7 @@ const CampusStudentList = (props: Props) => {
                             <div className={styles.card}>
 
                                 <h1>{campusData.active_members}</h1>
-                                {/* <p>Active Members<span>(30 Days)</span></p> */}
+                                <p>Active Members</p>
 
                             </div>
                             <div className={styles.campus_lead_card}>
