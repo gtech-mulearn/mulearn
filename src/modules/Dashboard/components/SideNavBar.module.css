@@ -115,6 +115,7 @@
     transition: 0.5s ease;
     z-index: 99;
     background-color: #EEF2FF;
+    position: relative;
 }
 
 .right_side .top_nav .nav {
@@ -168,7 +169,7 @@
 }
 
 .main_content {
-    position: relative;
+    /* position: relative; */
     padding: 1rem;
     display: flex;
     flex-direction: column;
