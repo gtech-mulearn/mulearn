@@ -6,6 +6,7 @@ interface ModalProps {
     setIsOpen: (isOpen: boolean) => void;
     id: string | number | boolean;
     heading: string | undefined;
+    value?:string | number | boolean;
     content: string | undefined;
     click: any;
     type?:string;
@@ -15,7 +16,8 @@ interface ModalProps {
 TODO: Conditional rendering of icon.
 */
 
-const Modal: FC<ModalProps> = ({ setIsOpen, id, heading, content, click,type }) => {
+const Modal: FC<ModalProps> = ({ setIsOpen, id, heading, content, click,type,value }) => {
+    console.log(id,"-", heading,"-", content,"-",type,"-",value)
     return (
         <>
             <div className={styles.darkBG} onClick={() => setIsOpen(false)} />
@@ -69,7 +71,7 @@ const Modal: FC<ModalProps> = ({ setIsOpen, id, heading, content, click,type }) 
 
                         <h5 className={styles.heading}>{heading}</h5>
                     </div>
-
+                    {value?<h5 className={styles.heading} style={{color:"red"}}>{value}</h5>:""}
                     <div className={styles.modalContent}>{content}</div>
                     <div className={styles.modalActions}>
                         <div className={styles.actionsContainer}>
