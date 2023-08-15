@@ -122,6 +122,8 @@ const EditProfilePopUp = (props: Props) => {
                                     <div className={styles.error_message}>
                                         {item.error}
                                     </div>
+
+
                                 )}
                             </div>
                         ))}
