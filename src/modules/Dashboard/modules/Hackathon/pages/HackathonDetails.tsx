@@ -6,6 +6,8 @@ import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import styles from "./HackathonCreate.module.css"
 import { DateConverter, convertDateToYYYYMMDD } from "../../../utils/common";
 import { style } from "d3";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { HackList } from "../services/HackathonInterfaces";
 
 type Props = {};
 
@@ -22,6 +24,8 @@ export const HackathonDetails = (props: Props) => {
     }, [])
 
     return (
+        <>
+        { data ?(
         <div className={styles.hackathonDetails}>
             <div className={styles.hackathonDetailDash}>
                 <img className={styles.hackathonBanner} src={`https://dev.mulearn.org/${data?.banner}`} alt="" />
@@ -108,7 +112,14 @@ export const HackathonDetails = (props: Props) => {
                     </div>
                 )}
             </div>
+        </div>):(
+            <div className={styles.spinnerContainer}>
+            <div className={styles.spinner}>
+                <MuLoader />{" "}
+            </div>
         </div>
+        )}
+        </>
     );
 };
 

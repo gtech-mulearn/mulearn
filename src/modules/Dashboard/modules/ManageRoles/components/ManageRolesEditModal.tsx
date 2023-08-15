@@ -1,5 +1,5 @@
 import React,{ useEffect, useState } from "react";
-import { editManageRoles, getManageRolesDetails } from "../apis";
+import { editManageRoles, getManageRolesDetails,isRoleUnique } from "../apis";
 import { useToast } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
@@ -12,6 +12,7 @@ import { type } from "os";
 type Props = {
     id:string
     onClose:any
+    values:string[]
 };
 
 const ManageRolesEditModal = (props: Props) => {
@@ -19,7 +20,6 @@ const ManageRolesEditModal = (props: Props) => {
         title: string;
         description: string;
     }
-
     const [data, setData] = useState<IData>({
         title: "",
         description: ""
@@ -29,7 +29,6 @@ const ManageRolesEditModal = (props: Props) => {
     useEffect(() => {
         getManageRolesDetails(id, setData);
     }, []);
-
     return (
         <Formik 
             enableReinitialize={true}
@@ -44,7 +43,12 @@ const ManageRolesEditModal = (props: Props) => {
                 //     .required("Required"),
                 title: Yup.string()
                     .max(30, "Must be 30 characters or less")
-                    .required("Required"),
+                    .required("Required")
+                    .test('unique role name','role name already exists',
+                    async (value)=>{
+                            return !isRoleUnique(value,props.values)
+                        
+                    }),
                 description: Yup.string()
                     .max(30, "Must be 30 characters or less")
                     .required("Required")

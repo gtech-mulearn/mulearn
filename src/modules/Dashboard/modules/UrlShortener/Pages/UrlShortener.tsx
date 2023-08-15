@@ -13,7 +13,12 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import { useFormik } from "formik";
 import { useToast } from "@chakra-ui/react";
 import { MuButtonLight } from "@/MuLearnComponents/MuButtons/MuButton";
-
+type urlData = {
+    id: string | number | boolean;
+    long_url: string;
+    short_url: string;
+    title: string;
+};
 const UrlShortener = () => {
     const columnOrder: ColOrder[] = [
         { column: "title", Label: "Title", isSortable: true },
@@ -27,18 +32,7 @@ const UrlShortener = () => {
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
-    const [shortUrlData, setShortUrlData] = useState([
-        {
-            id: "",
-            long_url: "",
-            short_url: "",
-            title: ""
-        }
-    ]);
-    const [hasValidationError, setHasValidationError] = useState({
-        error: false,
-        message: ""
-    });
+    const [shortUrlData, setShortUrlData] = useState<urlData[]>([]);
 
     const formik = useFormik({
         initialValues: {
@@ -55,41 +49,54 @@ const UrlShortener = () => {
                 short_url: values.short_url
             };
             if (!editBtn) {
-                createShortenUrl(
-                    toast,
-                    urlCreateData,
-                    formik,
-                    setHasValidationError
-                );
-                setShortUrlData(prevShortUrlData => [
-                    ...prevShortUrlData.filter(item => item.id !== values.id),
-                    {
-                        ...urlCreateData,
-                        short_url:
-                            import.meta.env.VITE_BACKEND_URL_AUTH +
-                            "/r/" +
-                            urlCreateData.short_url
+                createShortenUrl(toast, urlCreateData, formik).then(result => {
+                    if (result) {
+                        setShortUrlData(prevShortUrlData => [
+                            ...prevShortUrlData.filter(
+                                item => item?.id !== values?.id
+                            ),
+                            {
+                                ...urlCreateData,
+                                short_url:
+                                    import.meta.env.VITE_BACKEND_URL +
+                                    "/r/" +
+                                    urlCreateData.short_url
+                            }
+                        ]);
+                        setTimeout(() => {
+                            getShortenUrls(
+                                setShortUrlData,
+                                1,
+                                perPage,
+                                setTotalPages
+                            );
+                            // formik.handleReset(formik.values);
+                        }, 500);
+                        setEditBtn(false);
                     }
-                ]);
-                setTimeout(() => {
-                    getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
-                    // formik.handleReset(formik.values);
-                }, 500);
-                setEditBtn(false);
+                });
             } else {
-                editShortenUrl(values.id, toast, urlCreateData);
-                setShortUrlData(prevShortUrlData => [
-                    ...prevShortUrlData.filter(item => item.id !== values.id),
-                    {
-                        ...urlCreateData,
-                        short_url:
-                            import.meta.env.VITE_BACKEND_URL_AUTH +
-                            "/r/" +
-                            urlCreateData.short_url
-                    }
-                ]);
+                editShortenUrl(values.id, toast, urlCreateData, formik).then(
+                    result => {
+                        if (result) {
+                            setShortUrlData(prevShortUrlData => [
+                                ...prevShortUrlData.filter(
+                                    item => item?.id !== values?.id
+                                ),
+                                {
+                                    ...urlCreateData,
+                                    short_url:
+                                        import.meta.env.VITE_BACKEND_URL +
+                                        "/r/" +
+                                        urlCreateData.short_url
+                                }
+                            ]);
 
-                formik.handleReset(formik.values);
+                            formik.handleReset(formik.values);
+                            setEditBtn(false);
+                        }
+                    }
+                );
             }
         },
         validate: (values: any) => {
@@ -165,18 +172,18 @@ const UrlShortener = () => {
         formik.setFieldValue("id", id);
         formik.setFieldValue(
             "title",
-            shortUrlData.filter(item => item.id === id)[0].title
+            shortUrlData.filter(item => item?.id === id)[0].title
         );
         formik.setFieldValue(
             "longUrl",
-            shortUrlData.filter(item => item.id === id)[0].long_url
+            shortUrlData.filter(item => item?.id === id)[0].long_url
         );
         formik.setFieldValue(
             "short_url",
             shortUrlData
-                .filter(item => item.id === id)[0]
+                .filter(item => item?.id === id)[0]
                 .short_url.replace(
-                    import.meta.env.VITE_BACKEND_URL_AUTH + "/r/",
+                    import.meta.env.VITE_FRONTEND_URL + "/r/",
                     ""
                 )
         );
@@ -185,13 +192,13 @@ const UrlShortener = () => {
 
     const handleDelete = (id: any) => {
         deleteShortenUrl(id.toString(), toast);
-        setShortUrlData(shortUrlData.filter(item => item.id !== id));
+        setShortUrlData(shortUrlData.filter(item => item?.id !== id));
     };
     const handleCopy = (id: any) => {
         navigator.clipboard.writeText(
-            shortUrlData.filter(item => item.id === id)[0].short_url
+            shortUrlData.filter(item => item?.id === id)[0].short_url
         );
-        console.log(shortUrlData.filter(item => item.id === id)[0].short_url);
+        console.log(shortUrlData.filter(item => item?.id === id)[0].short_url);
         toast({
             title: "Copied",
             status: "success",
@@ -265,13 +272,14 @@ const UrlShortener = () => {
                             </div>
                             <div className={styles.form_btns}>
                                 <MuButtonLight
+                                type="reset"
                                     text="Cancel"
                                     style={{
                                         width: "fit-content",
                                         minWidth: "auto",
                                         margin: "20px 0px 0px",
                                         color: "#5570F1",
-                                        backgroundColor: "#F3F3F4",
+                                        backgroundColor: "#F3F3F4"
                                     }}
                                     onClick={() => {
                                         formik.handleReset(formik.values);
@@ -298,40 +306,38 @@ const UrlShortener = () => {
                 </div>
             </div>
 
-            {shortUrlData[0].id !== "" && (
-                <>
-                    <TableTop
-                        onSearchText={handleSearch}
-                        onPerPageNumber={handlePerPageNumber}
-                    />
-                    <Table
-                        rows={shortUrlData}
-                        page={currentPage}
-                        perPage={perPage}
+            <>
+                <TableTop
+                    onSearchText={handleSearch}
+                    onPerPageNumber={handlePerPageNumber}
+                />
+                <Table
+                    rows={shortUrlData}
+                    page={currentPage}
+                    perPage={perPage}
+                    columnOrder={columnOrder}
+                    id={["id"]}
+                    onEditClick={handleEdit}
+                    onDeleteClick={handleDelete}
+                    onCopyClick={handleCopy}
+                >
+                    <THead
                         columnOrder={columnOrder}
-                        id={["id"]}
-                        onEditClick={handleEdit}
-                        onDeleteClick={handleDelete}
-                        onCopyClick={handleCopy}
-                    >
-                        <THead
-                            columnOrder={columnOrder}
-                            // editableColumnNames={editableColumnNames}
-                            onIconClick={handleIconClick}
-                        />
-                        <Pagination
-                            currentPage={currentPage}
-                            totalPages={totalPages}
-                            margin="10px 0"
-                            handleNextClick={handleNextClick}
-                            handlePreviousClick={handlePreviousClick}
-                            perPage={perPage}
-                            setPerPage={setPerPage}
-                        />
-                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-                    </Table>
-                </>
-            )}
+                        // editableColumnNames={editableColumnNames}
+                        onIconClick={handleIconClick}
+                    />
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        margin="10px 0"
+                        handleNextClick={handleNextClick}
+                        handlePreviousClick={handlePreviousClick}
+                        perPage={perPage}
+                        setPerPage={setPerPage}
+                    />
+                    {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                </Table>
+            </>
         </>
     );
 };

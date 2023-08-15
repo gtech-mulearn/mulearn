@@ -1,36 +1,57 @@
 import { publicGateway } from "@/MuLearnServices/apiGateways";
 import { KKEMRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import { NavigateFunction } from "react-router-dom";
-import { useFormik } from 'formik'
+import { useFormik } from "formik";
 
 // Define the type of MyValues
-type NN = {name: string, id: string}
-type TT = {title:string, id: string}
+type NN = { name: string; id: string };
+type TT = { title: string; id: string };
 
-type InitialValues = { firstName: string, lastName: string, email: string, password: string, confirmPassword: string, phone: undefined, gender: string, dob: string, role: string, country: string, state: string, district: string, organization: string, community: string[], dept: string, yog: string, mentorRole: string, areaOfInterest: never[], general: string, referralId: string }
-type FormikType = ReturnType<typeof useFormik<InitialValues>>
+type InitialValues = {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+    phone: undefined;
+    gender: string;
+    dob: string;
+    role: string;
+    country: string;
+    state: string;
+    district: string;
+    organization: string;
+    community: string[];
+    dept: string;
+    yog: string;
+    mentorRole: string;
+    areaOfInterest: never[];
+    general: string;
+    referral_id: string;
+};
+type FormikType = ReturnType<typeof useFormik<InitialValues>>;
 
-type getAPI = UseStateFunc<TT[]>
-type AoiAPI = UseStateFunc<NN[]>
+type getAPI = UseStateFunc<TT[]>;
+type AoiAPI = UseStateFunc<NN[]>;
 
 type collegeOptions = UseStateFunc<
-        {
-            value: string;
-            label: string;
-        }[]
-    >
+    {
+        value: string;
+        label: string;
+    }[]
+>;
 
 type hasValidationError = UseStateFunc<{
-        error: boolean;
-        message: string;
-    }>
+    error: boolean;
+    message: string;
+}>;
 
-type FormSuccess = UseStateFunc<boolean>
-type RoleVerified = UseStateFunc<boolean>
-type firstQuesion = UseStateFunc<boolean>
-type emailVerificationResultBtn = UseStateFunc<string>
-type opacity0 = UseStateFunc<number>
-type display0 = UseStateFunc<string>
+type FormSuccess = UseStateFunc<boolean>;
+type RoleVerified = UseStateFunc<boolean>;
+type firstQuesion = UseStateFunc<boolean>;
+type emailVerificationResultBtn = UseStateFunc<string>;
+type opacity0 = UseStateFunc<number>;
+type display0 = UseStateFunc<string>;
 
 export interface DWMSDetails {
     job_seeker_fname: string;
@@ -53,11 +74,11 @@ export const getCountries = (
 ) => {
     publicGateway
         .get(onboardingRoutes.countryList)
-        .then((response: APIResponse<{countries : NN[]}>) => {
+        .then((response: APIResponse<{ countries: NN[] }>) => {
             setCountry(
                 response.data.response.countries
                     .sort((a, b) => a.name.localeCompare(b.name))
-                    .map((country) => ({
+                    .map(country => ({
                         value: country.id,
                         label: country.name
                     }))
@@ -76,11 +97,11 @@ export const getState = (
 ) => {
     publicGateway
         .post(onboardingRoutes.stateList, country)
-        .then((response: APIResponse<{states: NN[]}>) => {
+        .then((response: APIResponse<{ states: NN[] }>) => {
             setState(
                 response.data.response.states
                     .sort((a, b) => a.name.localeCompare(b.name))
-                    .map((state) => ({
+                    .map(state => ({
                         value: state.id,
                         label: state.name
                     }))
@@ -99,11 +120,11 @@ export const getDistrict = (
 ) => {
     publicGateway
         .post(onboardingRoutes.districtList, state)
-        .then((response: APIResponse<{districts: NN[]}>) => {
+        .then((response: APIResponse<{ districts: NN[] }>) => {
             setState(
                 response.data.response.districts
                     .sort((a, b) => a.name.localeCompare(b.name))
-                    .map((dist) => ({
+                    .map(dist => ({
                         value: dist.id,
                         label: dist.name
                     }))
@@ -124,24 +145,26 @@ export const getColleges = (
 ) => {
     publicGateway
         .post(onboardingRoutes.collegeList, district)
-        .then((response: APIResponse<{colleges: TT[], departments: TT[]}>) => {
-            const colleges = response.data.response.colleges;
-            setCollegeAPI(colleges);
-            setCollegeOptions(
-                colleges
-                    .sort((a, b) => a.title.localeCompare(b.title))
-                    .map((college) => ({
-                        value: college.id,
-                        label: college.title
+        .then(
+            (response: APIResponse<{ colleges: TT[]; departments: TT[] }>) => {
+                const colleges = response.data.response.colleges;
+                setCollegeAPI(colleges);
+                setCollegeOptions(
+                    colleges
+                        .sort((a, b) => a.title.localeCompare(b.title))
+                        .map(college => ({
+                            value: college.id,
+                            label: college.title
+                        }))
+                );
+                setDepartmentAPI(
+                    response.data.response.departments.map(dept => ({
+                        value: dept.id,
+                        label: dept.title
                     }))
-            );
-            setDepartmentAPI(
-                response.data.response.departments.map((dept) => ({
-                    value: dept.id,
-                    label: dept.title
-                }))
-            );
-        })
+                );
+            }
+        )
         .catch((error: APIError) => {
             // errorHandler(error.response.status, error.response.data.status);
         });
@@ -154,7 +177,7 @@ export const getCompanies = (
 ) => {
     publicGateway
         .get(onboardingRoutes.companyList)
-        .then((response : APIResponse<{ companies: TT[]}>) => {
+        .then((response: APIResponse<{ companies: TT[] }>) => {
             setCompanyAPI(response.data.response.companies);
         })
         .catch((error: APIError) => {
@@ -166,7 +189,7 @@ export const getCompanies = (
 export const getRoles = (errorHandler: errorHandler, setRoleAPI: getAPI) => {
     publicGateway
         .get(onboardingRoutes.roleList)
-        .then((response: APIResponse<{ roles: TT[]}>) => {
+        .then((response: APIResponse<{ roles: TT[] }>) => {
             setRoleAPI(response.data.response.roles);
         })
         .catch((error: APIError) => {
@@ -178,10 +201,10 @@ export const getRoles = (errorHandler: errorHandler, setRoleAPI: getAPI) => {
 export const getInterests = (errorHandler: errorHandler, setAoiAPI: AoiAPI) => {
     publicGateway
         .get(onboardingRoutes.areaOfInterestList)
-        .then((response: APIResponse<{ aois: NN[]}>) => {
+        .then((response: APIResponse<{ aois: NN[] }>) => {
             setAoiAPI(response.data.response.aois);
         })
-        .catch((error:APIError) => {
+        .catch((error: APIError) => {
             errorHandler(error.response.status, error.response.data.status);
         });
 };
@@ -228,8 +251,8 @@ export const registerUser = (
             navigate("/dashboard/connect-discord");
             setShowSubmitLoader(false);
         })
-        
-        .catch((error: APIError<{ key : any[] }>) => {
+
+        .catch((error: APIError<{ key: any[] }>) => {
             setShowSubmitLoader(false);
             if (
                 error.response.data.message &&
@@ -238,6 +261,8 @@ export const registerUser = (
                 Object.entries(error.response.data.message).forEach(
                     ([fieldName, errorMessage]) => {
                         if (Array.isArray(errorMessage)) {
+                            console.log(fieldName,errorMessage);
+
                             formik.setFieldError(
                                 fieldName,
                                 errorMessage?.join(", ") || ""
@@ -267,7 +292,7 @@ export const emailVerification = (
     setShowLoader(true);
     publicGateway
         .post(onboardingRoutes.emailVerification, { email: email })
-        .then((response: APIResponse<{value: boolean}, string>) => {
+        .then((response: APIResponse<{ value: boolean }, string>) => {
             setFirstQuesion(!response.data.response.value);
 
             if (response.data.response.value) {

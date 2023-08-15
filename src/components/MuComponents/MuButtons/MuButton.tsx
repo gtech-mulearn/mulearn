@@ -60,6 +60,7 @@ export const MuButton = (props: {
 
 export const MuButtonLight = (props: {
     text: string; // text of button
+    type?: "button" | "submit" | "reset"; // type of button
     icon?: ReactJSXElement; // button icon
     style?: React.CSSProperties; // button style if wanted
     className?: string; // button class name if wanted
@@ -70,6 +71,7 @@ export const MuButtonLight = (props: {
             className={props.className ? props.className : styles.btn_light}
             style={props.style}
             onClick={props.onClick}
+            type={props.type?props.type:'button'}
         >
             {props.icon && <div className={styles.btn_icon}>{props.icon}</div>}
             <p>{props.text}</p>

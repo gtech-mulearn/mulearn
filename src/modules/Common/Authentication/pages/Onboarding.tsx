@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Onboarding.module.css";
 type Props = {};
 import ReactSelect, { SingleValue } from "react-select";
@@ -32,7 +32,7 @@ interface BackendErrors {
 const Onboarding = (props: Props) => {
     const urlParams = new URLSearchParams(window.location.search);
     const jsId = urlParams.get("jsid");
-    console.log(jsId)
+    // console.log(jsId)
     const queryParameters = new URLSearchParams(window.location.search);
     const navigate = useNavigate();
     // for hide and question container
@@ -74,7 +74,12 @@ const Onboarding = (props: Props) => {
     });
 
     const [roleVerified, setRoleVerified] = useState(false);
-
+    //temporary measure for hiding company
+    //when not working,not studying
+    //is selected
+    const  [working,setWorking] = useState(false)
+    //ref to community selector for resetting - temporary fix
+    const community_select_ref = useRef<any>()
     //State Array for Storing the Organization(Company, Community, College)
     const [organization, setOrganization] = useState("");
     const [community, setCommunity] = useState<string[]>([]);
@@ -134,25 +139,13 @@ const Onboarding = (props: Props) => {
             boxShadow: "none"
         })
     };
-
-    const yog_year = [
-        { value: 2015, label: 2015 },
-        { value: 2016, label: 2016 },
-        { value: 2017, label: 2017 },
-        { value: 2018, label: 2018 },
-        { value: 2019, label: 2019 },
-        { value: 2020, label: 2020 },
-        { value: 2021, label: 2021 },
-        { value: 2022, label: 2022 },
-        { value: 2023, label: 2023 },
-        { value: 2024, label: 2024 },
-        { value: 2025, label: 2025 },
-        { value: 2026, label: 2026 },
-        { value: 2027, label: 2027 },
-        { value: 2028, label: 2028 },
-        { value: 2029, label: 2029 },
-        { value: 2030, label: 2030 }
-    ];
+    const currentYear = new Date().getFullYear();
+    const yearsCount = 15;
+    const yog_year = Array.from({ length: yearsCount }, (_, index) => {
+        const year = currentYear - index;
+        return { value: year, label: year };
+    });
+    
 
     const errorHandler = (status: number, dataStatus: number) => {
         if (status === 404 || status === 500) {
@@ -194,11 +187,10 @@ const Onboarding = (props: Props) => {
                     mentorRole: "",
                     areaOfInterest: [],
                     general: "",
-                    referralId: ""
+                    referral_id: ""
                 });
             });
     }, []);
-
     const [backendError, setBackendError] = useState<BackendErrors>({});
 
     const handleBackendErrors = (errors: BackendErrors) => {
@@ -234,7 +226,7 @@ const Onboarding = (props: Props) => {
         mentorRole: "",
         areaOfInterest: [],
         general: "",
-        referralId: ""
+        referral_id: ""
     };
 
     const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
@@ -259,7 +251,7 @@ const Onboarding = (props: Props) => {
             year_of_graduation: values.yog === "" ? null : values.yog, //required for student
             area_of_interests: values.areaOfInterest, //required,
             password: values.password, //required
-            referral_id: values.referralId === "" ? null : values.referralId
+            referral_id: values.referral_id === "" ? null : values.referral_id
         };
 
         registerUser(
@@ -283,11 +275,9 @@ const Onboarding = (props: Props) => {
         } else if (!/\S+@\S+\.\S+/.test(values.email)) {
             errors.email = "Invalid email address";
         }
-        if (!values.password) {
-            errors.password = "Password is required";
-        } else if (values.password == "") {
-            errors.password = "Password should not be empty";
-        }
+        if (values.password.length<8) 
+            errors.password = "Password length should be greater than 8";
+        
         if (!values.confirmPassword) {
             errors.confirmPassword = "Please confirm your password";
         } else if (
@@ -352,7 +342,6 @@ const Onboarding = (props: Props) => {
             }
         }
     }, [roleAPI]);
-
     return (
         <>
             <div className={styles.onboarding_page}>
@@ -425,6 +414,7 @@ const Onboarding = (props: Props) => {
                                                         </div>
                                                     ) : null}
                                                     <MuButton
+                                                        type="submit"
                                                         className={
                                                             styles.verify_button
                                                         }
@@ -437,6 +427,10 @@ const Onboarding = (props: Props) => {
                                                                 emailVerificationResultBtn ==
                                                                 "Next"
                                                             ) {
+                                                                if(!/\S+@\S+\.\S+/
+                                                                .test(formik.values.email)){
+                                                                    formik.errors.email="Invalid email address"
+                                                                }
                                                                 if (
                                                                     !formik
                                                                         .errors
@@ -444,7 +438,8 @@ const Onboarding = (props: Props) => {
                                                                     formik
                                                                         .values
                                                                         .email !=
-                                                                        ""
+                                                                        "" 
+                                                                        
                                                                 ) {
                                                                     emailVerification(
                                                                         formik
@@ -532,13 +527,17 @@ const Onboarding = (props: Props) => {
                                                         setTimeout(() => {
                                                             setDisplay("none");
                                                         }, 1000);
+                                                        //temporary measure for hiding company
+                                                        //when not working,not studying
+                                                        //is selected
+                                                        setWorking(true)
                                                     }}
                                                 >
                                                     I'm currently a working
                                                     professional
                                                 </button>
                                                 <button
-                                                type="button"
+                                                    type="button"
                                                     onClick={() => {
                                                         roleAPI.map(
                                                             (role: any) => {
@@ -572,12 +571,13 @@ const Onboarding = (props: Props) => {
                                                         setTimeout(() => {
                                                             setDisplay("none");
                                                         }, 1000);
+                                                        setWorking(true)
                                                     }}
                                                 >
                                                     I'm a freelancer
                                                 </button>
                                                 <button
-                                                type="button"
+                                                    type="button"
                                                     onClick={() => {
                                                         setOpacity(0);
                                                         setTimeout(() => {
@@ -627,7 +627,7 @@ const Onboarding = (props: Props) => {
                                                     No
                                                 </button>
                                                 <button
-                                                type="button"
+                                                    type="button"
                                                     onClick={() => {
                                                         roleAPI.map(
                                                             (role: any) => {
@@ -821,7 +821,7 @@ const Onboarding = (props: Props) => {
                                                 value={formik.values.password}
                                             />
                                             <button
-                                            type="button"
+                                                type="button"
                                                 className={styles.password_icon}
                                                 onClick={e => {
                                                     e.preventDefault();
@@ -875,7 +875,7 @@ const Onboarding = (props: Props) => {
                                                 }
                                             />
                                             <button
-                                            type="button"
+                                                type="button"
                                                 className={styles.password_icon}
                                                 onClick={e => {
                                                     e.preventDefault();
@@ -1010,7 +1010,7 @@ const Onboarding = (props: Props) => {
                                                 </label>
                                                 <Select
                                                     name="community.id"
-                                                    // value={}
+                                                    ref={community_select_ref}
                                                     onChange={OnChangeValue => {
                                                         formik.setFieldValue(
                                                             "community",
@@ -1022,12 +1022,13 @@ const Onboarding = (props: Props) => {
                                                                     }
                                                                 ) => value.value
                                                             )
-                                                        );
+                                                        );                                                
                                                     }}
                                                     closeMenuOnSelect={false}
                                                     components={
                                                         animatedComponents
                                                     }
+                                                    isClearable
                                                     isMulti
                                                     options={communityAPI.map(
                                                         company => {
@@ -1685,7 +1686,7 @@ const Onboarding = (props: Props) => {
                                                     </div>
                                                 </div>
                                             </>
-                                        ) : (
+                                        ) : (!working?"":
                                             <>
                                                 <div
                                                     className={
@@ -1751,13 +1752,25 @@ const Onboarding = (props: Props) => {
                                             <input
                                                 id="referralId"
                                                 type="text"
-                                                name="referralId"
+                                                name="referral_id"
                                                 placeholder="Referral id , if any"
                                                 className={styles.input}
                                                 onBlur={formik.handleBlur}
                                                 onChange={formik.handleChange}
-                                                value={formik.values.referralId}
+                                                value={
+                                                    formik.values.referral_id
+                                                }
                                             />
+                                            {formik.touched.referral_id &&
+                                            formik.errors.referral_id ? (
+                                                <div
+                                                    className={
+                                                        styles.error_message
+                                                    }
+                                                >
+                                                    {formik.errors.referral_id}
+                                                </div>
+                                            ) : null}
                                         </div>
                                     </div>
 
@@ -1898,6 +1911,7 @@ const Onboarding = (props: Props) => {
                                         <button
                                             type="reset"
                                             onClick={() => {
+                                                community_select_ref.current.clearValue()
                                                 formik.handleReset(
                                                     formik.values
                                                 );
@@ -1924,12 +1938,14 @@ const Onboarding = (props: Props) => {
                                                     formik.errors
                                                         .areaOfInterest ||
                                                     (role[0]["title"] ==
-                                                    "Student"
+                                                    "Student" ||role[0]["title"] ==
+                                                    "Enabler"
                                                         ? formik.errors
                                                               .organization ||
-                                                          formik.errors.dept ||
-                                                          formik.errors.yog
+                                                          formik.errors.dept 
                                                         : null) ||
+                                                    (role[0]["title"] == "Student"
+                                                    ?formik.errors.yog:null)||
                                                     // (role[0]["title"] == "Mentor"
                                                     //   ? formik.errors.mentorRole
                                                     //   : null) ||
@@ -1942,7 +1958,7 @@ const Onboarding = (props: Props) => {
                                                         ? true
                                                         : null)
                                                 ) {
-                                                    // console.log("error");
+                                                    //console.log(formik.errors);
                                                 } else {
                                                     // console.log(formik.values);
                                                     // console.log("no error");

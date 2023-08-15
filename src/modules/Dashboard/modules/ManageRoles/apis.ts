@@ -4,15 +4,15 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 
 export const getManageRoles = async (
-    setData: UseStateFunc<any>,
-    page: number,
-    selectedValue: number,
-    setIsLoading: UseStateFunc<boolean>,
+    setData?: UseStateFunc<any>,
+    page?: number,
+    selectedValue?: number,
+    setIsLoading?: UseStateFunc<boolean>,
     setTotalPages?: UseStateFunc<any>,
     search?: string,
     sortID?: string
 ) => {
-    setIsLoading(true);
+    if(setIsLoading)setIsLoading(true);
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getRolesData,
@@ -26,12 +26,16 @@ export const getManageRoles = async (
             }
         );
         const interestGroups: any = response?.data;
-
-        setData(interestGroups.response.data);
-        if (setTotalPages) setTotalPages(interestGroups.response.pagination.totalPages);
-        setIsLoading(false);
+        if(setData && setIsLoading){
+            setData(interestGroups.response.data);
+            if (setTotalPages) setTotalPages(interestGroups.response.pagination.totalPages);
+            setIsLoading(false);
+        }else{
+            return(interestGroups.response.data) 
+        }
+        
     } catch (err: unknown) {
-        setIsLoading(false);
+        if(setIsLoading)setIsLoading(false);
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
@@ -94,7 +98,7 @@ interface IData {
 }
 export const getManageRolesDetails = async (
     id: string | undefined,
-    setData: UseStateFunc<IData>
+    setData?: UseStateFunc<IData>
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -103,7 +107,10 @@ export const getManageRolesDetails = async (
         const message: any = response?.data;
         //console.log(message);
         //console.log(message.response.data);
-        setData(message.response.data);
+        if(setData)
+            setData(message.response.data);
+        else
+            return(message.response.data)
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -135,3 +142,9 @@ export const deleteManageRoles = async (
         }
     }
 };
+
+//return true if rolename not used before and is available
+export const isRoleUnique =  (roleName:string,roles:string[]):boolean =>{
+    return (roles.includes(roleName))
+
+}

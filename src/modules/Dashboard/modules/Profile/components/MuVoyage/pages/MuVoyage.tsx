@@ -48,30 +48,33 @@ const MuVoyage = (props: Props) => {
                             </div>
                         </div>
 
-                        <div className={styles.progressbar}>
-                            <div className={styles.progress_title}>
-                                <p>
-                                    {userLevelTrackerPercentage + "%"} complete
-                                </p>
-                                <p>
-                                    {userLevelTrack?.tasks
-                                        .filter(e => e.completed)
-                                        .reduce((a, b) => a + b.karma, 0)}
-                                    /
-                                    {userLevelTrack?.tasks.reduce(
-                                        (a, b) => a + b.karma,
-                                        0
-                                    )}{" "}
-                                    Karma
-                                </p>
+                        {userLevelTrack.name !== "lvl4" && (
+                            <div className={styles.progressbar}>
+                                <div className={styles.progress_title}>
+                                    <p>
+                                        {userLevelTrackerPercentage + "%"}{" "}
+                                        complete
+                                    </p>
+                                    <p>
+                                        {userLevelTrack?.tasks
+                                            .filter(e => e.completed)
+                                            .reduce((a, b) => a + b.karma, 0)}
+                                        /
+                                        {userLevelTrack?.tasks.reduce(
+                                            (a, b) => a + b.karma,
+                                            0
+                                        )}{" "}
+                                        Karma
+                                    </p>
+                                </div>
+                                <Progress
+                                    value={parseInt(userLevelTrackerPercentage)}
+                                    size="xs"
+                                    colorScheme="green"
+                                    borderRadius="10px"
+                                />
                             </div>
-                            <Progress
-                                value={parseInt(userLevelTrackerPercentage)}
-                                size="xs"
-                                colorScheme="green"
-                                borderRadius="10px"
-                            />
-                        </div>
+                        )}
 
                         <div className={styles.date}>
                             {/* <p>Start: Nov 12</p> */}
@@ -119,7 +122,11 @@ const MuVoyage = (props: Props) => {
                                                             color: "#2E85FE"
                                                         }}
                                                     >
-                                                        {levelData.karma}]
+                                                        {levelData.tasks.reduce(
+                                                            (a, b) =>
+                                                                a + b.karma,
+                                                            0
+                                                        )}
                                                     </span>
                                                 </span>
                                             </p>

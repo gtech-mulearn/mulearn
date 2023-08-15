@@ -61,7 +61,6 @@ const EditProfilePopUp = (props: Props) => {
     });
 
     useEffect(() => {
-        getCommunities(setCommunityAPI, setLoadStatus);
         getEditUserProfile((data: any) => {
             formik.setValues({
                 first_name: data.first_name,
@@ -73,8 +72,10 @@ const EditProfilePopUp = (props: Props) => {
                 communities: data.communities
             });
         });
-    }, []);
-    console.log(formik.values.communities);
+        return () => {
+            getCommunities(setCommunityAPI, setLoadStatus);
+        };
+    }, [props.editPopUp]);
 
     const communityIds: string[] = formik.values.communities || []; // Provide a default empty array
     const filteredCommunityOptions = communityAPI

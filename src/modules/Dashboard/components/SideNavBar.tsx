@@ -248,7 +248,7 @@ const SideNavBar = (props: Props) => {
                                 )}
                         </div>
                         <div className={styles.bottomButtons}>
-                            <MuButton
+                            {/* <MuButton
                                 text="Settings"
                                 icon={<MuSettings />}
                                 onClick={() => navigate("/dashboard/settings")}
@@ -257,7 +257,7 @@ const SideNavBar = (props: Props) => {
                                     backgroundColor: "#fff",
                                     // marginBottom: "0px"
                                 }}
-                            />
+                            /> */}
                             <MuButtonLight
                                 text="Logout"
                                 icon={<MuLogOut/>}
@@ -284,7 +284,7 @@ const SideNavBar = (props: Props) => {
                         </div>
                     </div>
                     <p className={styles.copyrightText}>
-                        All Rights Reserved © µLearn {new Date().getFullYear()}
+                        All Rights Reserved © µLearn Foundation {new Date().getFullYear()}
                     </p>
                 </div>
             </div>

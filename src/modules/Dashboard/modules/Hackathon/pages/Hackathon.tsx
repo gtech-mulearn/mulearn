@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "react-tooltip/dist/react-tooltip.css";
 import { LuCopy, LuShare2, LuEdit } from "react-icons/lu";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { FiPlusCircle } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import { DateConverter } from "../../../utils/common";
 import {
@@ -16,6 +17,8 @@ import { MdOutlineUnpublished, MdPublishedWithChanges } from "react-icons/md";
 import { Tooltip } from "react-tooltip";
 import styles from "./HackathonCreate.module.css";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { HackList } from "../services/HackathonInterfaces";
 
 enum ModalType {
     Publish,
@@ -56,8 +59,9 @@ const Hackathon = () => {
         }
     };
 
-  
     return (
+        <>
+        {data && ownData ? (
         <div className={styles.HCHackathon}>
             <div className={styles.hackathonHeading}>
                 <h1>Explore Hackathons</h1>
@@ -65,7 +69,7 @@ const Hackathon = () => {
                     to="/dashboard/hackathon/create"
                     className={styles.HCbutton}
                 >
-                    <PowerfulButton text="Create" />
+                    <PowerfulButton text="Create" icon={<FiPlusCircle/>} />
                 </Link>
             </div>
 
@@ -309,11 +313,28 @@ const Hackathon = () => {
                                             </div>
                                         ) : (
                                             <div className={styles.frame2}>
-                                                <div className={styles.group}>
+                                                <div className={styles.group} onClick={()=> {
+                                                    const shareData = {
+                                                        title: hack.title,
+                                                        url: `${import.meta.env.VITE_FRONTEND_URL}/dashboard/hackathon/details/${hack.id}`
+                                                    }
+
+                                                    try{
+
+                                                        window.navigator.clipboard.writeText(shareData.url);
+                                                        toast({
+                                                            title: "Success",
+                                                            description: "Link copied to clipboard",
+                                                            status: "success",
+                                                            duration: 3000,
+                                                            isClosable: true,
+                                                        })
+                                                        window.navigator.share(shareData);
+                                                    }catch(err){
+                                                        console.log(err)
+                                                    }
+                                                }}>
                                                     <LuCopy />
-                                                </div>
-                                                <div className={styles.group}>
-                                                    <LuShare2 />
                                                 </div>
                                             </div>
                                         )}
@@ -395,7 +416,14 @@ const Hackathon = () => {
                         </div>
                     ))}
             </div>
+        </div>):(
+            <div className={styles.spinnerContainer}>
+            <div className={styles.spinner}>
+                <MuLoader />
+            </div>
         </div>
+        )}
+        </>
     );
 };
 
