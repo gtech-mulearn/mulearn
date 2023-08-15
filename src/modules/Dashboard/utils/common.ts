@@ -41,3 +41,20 @@ export const getLocationIdByName = (
     }
     return label
 };
+
+type ReactOption = {
+    [K in 'id' | 'title']: string;
+}
+
+/**
+ * Generates React options from an array of ReactOption objects.
+ *
+ * @param {ReactOption[]} data - The array of ReactOption objects.
+ * @return {Option[]} The array of Option objects.
+ */
+export const toReactSelectOptions = (data: ReactOption[]): Option[] => {
+    return data.map((item: any) => ({
+        value: item.id,
+        label: item.title
+    }))
+}
