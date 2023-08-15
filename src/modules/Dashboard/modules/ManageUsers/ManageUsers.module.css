@@ -20,7 +20,13 @@
     }
 } */
 .TextInputContainer{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+}
+
+.TextDropdownContainer{
+    padding: 8px;
 }
 
 .container {
@@ -56,6 +62,15 @@
         width: 90%;
     }
 } */
+
+@media (max-width: 768px) {
+    .TextInputContainer{
+        grid-template-columns: 1fr;
+    } 
+    .container{
+        width: 100%;
+    }
+}
 
 .text {
     padding: 0;

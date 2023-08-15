@@ -44,22 +44,22 @@ const ManageUsersEdit = (props: Props) => {
 
     const [company, setCompany] = useState([{ id: "", title: "" }]);
 
-    const [country,setCountry] = useState([{value:'',label:''}])
-    const [state,setState] = useState([{value:'',label:''}])
-    const [district,setDistrict] = useState([{value:'',label:''}])
-    const [college,setCollege] = useState([{value:'',label:''}])
-    const [department,setDepartment] = useState([{value:'',label:''}])
-    const [collegTemp,setCollegTemp] = useState([{id:'',title:''}])
-    
+    const [country, setCountry] = useState([{ value: '', label: '' }])
+    const [state, setState] = useState([{ value: '', label: '' }])
+    const [district, setDistrict] = useState([{ value: '', label: '' }])
+    const [college, setCollege] = useState([{ value: '', label: '' }])
+    const [department, setDepartment] = useState([{ value: '', label: '' }])
+    const [collegTemp, setCollegTemp] = useState([{ id: '', title: '' }])
 
-    const arrayIntersection = (userList:string[],mainList:string[])=>{
-        return userList.filter(item=>mainList.includes(item))
+
+    const arrayIntersection = (userList: string[], mainList: string[]) => {
+        return userList.filter(item => mainList.includes(item))
     }
-    const roleStr = (roleName:string)=>{
+    const roleStr = (roleName: string) => {
         //bad condition but it works
-        if(role.length===1 || !roleName)
+        if (role.length === 1 || !roleName)
             return ""
-        return role.filter(item=>item.title==roleName)[0].id
+        return role.filter(item => item.title == roleName)[0].id
     }
 
     const [data, setData] = useState<UserData>();
@@ -69,35 +69,35 @@ const ManageUsersEdit = (props: Props) => {
     useEffect(() => {
 
         //DropDown Fetch
-        getCommunities(errorHandler,setCommuntiy)
-        getCompanies(errorHandler,setCompany)
-        getCountries(errorHandler,setCountry)
-        
-        getInterests(errorHandler,setinterestGroup)
-        getRoles(errorHandler,setRole)
-        
+        getCommunities(errorHandler, setCommuntiy)
+        getCompanies(errorHandler, setCompany)
+        getCountries(errorHandler, setCountry)
+
+        getInterests(errorHandler, setinterestGroup)
+        getRoles(errorHandler, setRole)
+
         //user data
         getManageUsersDetails(id, setData);
-         
+
     }, []);
 
-    useEffect(()=>{
+    useEffect(() => {
         //useEffect to recall lower demographic levels if previous level exist
-        console.log(!!data?.country,!!data?.state ,!!data?.district)
-        if(data?.country && state[0].value=="")
-            getState(errorHandler,setState,{country:data.country})
-        if(data?.state && district[0].value=="")
-            getDistrict(errorHandler,setDistrict,{state:data.state})
-        if(data?.district)
+        console.log(!!data?.country, !!data?.state, !!data?.district)
+        if (data?.country && state[0].value == "")
+            getState(errorHandler, setState, { country: data.country })
+        if (data?.state && district[0].value == "")
+            getDistrict(errorHandler, setDistrict, { state: data.state })
+        if (data?.district)
             getColleges(
                 setCollegTemp,
                 setCollege,
                 setDepartment,
                 errorHandler,
-                {district:data.district}
-                )
-                
-    },[data])
+                { district: data.district }
+            )
+
+    }, [data])
 
 
 
@@ -110,38 +110,38 @@ const ManageUsersEdit = (props: Props) => {
                     innerRef={formikRef}
                     initialValues={{
                         // igName: name
-                        first_name: data?.first_name || '' ,
+                        first_name: data?.first_name || '',
                         last_name: data?.last_name || '',
-                        email: data?.email || '', 
+                        email: data?.email || '',
                         mobile: data?.mobile || '',
                         college:
-                            data?.organizations?
-                            arrayIntersection(
-                                data.organizations,
-                                college.map(item=>item.value)
-                            )[0] || "null"
-                            :"null",
-                        community: 
-                            data?.organizations?
-                            arrayIntersection(
-                                data.organizations,
-                                community.map(item=>item.id)
-                            )
-                            :[],
-                        company: 
-                            data?.organizations?
-                            arrayIntersection(
-                                data.organizations,
-                                company.map(item=>item.id)
-                            )[0] || "null"
-                            :"null",
+                            data?.organizations ?
+                                arrayIntersection(
+                                    data.organizations,
+                                    college.map(item => item.value)
+                                )[0] || "null"
+                                : "null",
+                        community:
+                            data?.organizations ?
+                                arrayIntersection(
+                                    data.organizations,
+                                    community.map(item => item.id)
+                                )
+                                : [],
+                        company:
+                            data?.organizations ?
+                                arrayIntersection(
+                                    data.organizations,
+                                    company.map(item => item.id)
+                                )[0] || "null"
+                                : "null",
                         department: data?.department || "null",
                         graduation_year: data?.graduation_year || "null",
-                        country:data?.country || "",
-                        state:data?.state || "",
-                        district:data?.district || "",
-                        interest:data?.interest_groups,
-                        role:data?.roles
+                        country: data?.country || "",
+                        state: data?.state || "",
+                        district: data?.district || "",
+                        interest: data?.interest_groups,
+                        role: data?.roles
                     }}
                     validationSchema={Yup.object({
                         // igName: Yup.string()
@@ -199,167 +199,168 @@ const ManageUsersEdit = (props: Props) => {
                         <div className={usrStyles.container}>
                             {/* {data?.role ? : }  */}
                             <div className={usrStyles.TextInputContainer}>
-    `                            <FormikTextInput
-                                    label="User First Name"
+                                <FormikTextInput
+                                    label="First Name"
                                     name="first_name"
                                     type="text"
                                     placeholder="Enter a name"
                                 />
                                 <FormikTextInput
-                                    label="User Last Name"
+                                    label="Last Name"
                                     name="last_name"
                                     type="text"
                                     placeholder="Enter a name"
                                 />
+                                <FormikTextInput
+                                    label="Email"
+                                    name="email"
+                                    type="text"
+                                    placeholder="Enter a email"
+                                />
+                                <FormikTextInput
+                                    label="Mobile Number"
+                                    name="mobile"
+                                    type="text"
+                                    placeholder="Enter a mobile number"
+                                />
                             </div>
-                            <div className={usrStyles.TextInputContainer}>
-                            <FormikTextInput
-                                label="User Email"
-                                name="email"
-                                type="text"
-                                placeholder="Enter a email"
-                            />
-                            <FormikTextInput
-                                label="User Mobile Number"
-                                name="mobile"
-                                type="text"
-                                placeholder="Enter a mobile number"
-                            />
+                            <div className={usrStyles.TextDropdownContainer}>
+                               <FormikReactSelect
+                                    name="community"
+                                    options={community.map(obj => {
+                                        return { value: obj?.id, label: obj.title };
+                                    })}
+                                    label="Community"
+                                    isClearable
+                                    isSearchable
+                                    isMulti
+                                />
+                                <FormikReactSelect
+                                    name="role"
+                                    options={role.map(obj => {
+                                        return { value: obj?.id, label: obj.title };
+                                    })}
+                                    label="Roles"
+                                    isClearable
+                                    isSearchable
+                                    isMulti
+                                />
+                                <FormikReactSelect
+                                    name="interest"
+                                    options={interestGroup.map(obj => {
+                                        return { value: obj?.id, label: obj.name };
+                                    })}
+                                    label="Interest Groups"
+                                    isClearable
+                                    isSearchable
+                                    isMulti
+                                />
                             </div>
-
-                            <FormikReactSelect
-                                name="community"
-                                options={community.map(obj => {
-                                    return { value: obj?.id, label: obj.title };
-                                })}
-                                label="Community"
-                                isClearable
-                                isSearchable
-                                isMulti
-                            />
-                            <FormikReactSelect
-                                name="role"
-                                options={role.map(obj => {
-                                    return { value: obj?.id, label: obj.title };
-                                })}
-                                label="Roles"
-                                isClearable
-                                isSearchable
-                                isMulti
-                            />
-                            <FormikReactSelect
-                                name="interest"
-                                options={interestGroup.map(obj => {
-                                    return { value: obj?.id, label: obj.name };
-                                })}
-                                label="Interest Groups"
-                                isClearable
-                                isSearchable
-                                isMulti
-                            />
                         </div>
                         <div className={usrStyles.container}>
+                            <div className={usrStyles.TextDropdownContainer}>
                             {data?.roles.includes(
                                 roleStr(roles.ASSOCIATE)
-                            )?<FormikReactSelect
+                            ) ? <FormikReactSelect
                                 name="company"
-                                options={company.map((obj)=>{
-                                    return {value:obj.id,label:obj.title}
+                                options={company.map((obj) => {
+                                    return { value: obj.id, label: obj.title }
                                 })}
                                 label="Company"
                                 isClearable
                                 isSearchable
-                                
-                            />:
-                            <>
-                            <FormikReactSelect
-                                name="country"
-                                options={country}
-                                label="Country"
-                                isClearable
-                                isSearchable
-                                addOnChange={(option:any)=>{
-                                    formikRef.current.setFieldValue('state','')
-                                    if(option)
-                                        getState(
-                                            errorHandler,
-                                            setState,
-                                        {country:option.value}
-                                        )
-                                    else{
-                                        setState([])
-                                        setDistrict([])
-                                        }
-                                }}
-                            />
-                            <FormikReactSelect
-                                name="state"
-                                options={state}
-                                label="State"
-                                isClearable
-                                isSearchable
-                                addOnChange={(option:any)=>{
-                                    formikRef.current.setFieldValue('district','')
-                                    if(option)
-                                        getDistrict(
-                                            errorHandler,
-                                            setDistrict,
-                                            {state:option.value}
-                                        )
-                                    else{
-                                        setDistrict([])
+
+                            /> :
+                                <>
+                                    <FormikReactSelect
+                                        name="country"
+                                        options={country}
+                                        label="Country"
+                                        isClearable
+                                        isSearchable
+                                        addOnChange={(option: any) => {
+                                            formikRef.current.setFieldValue('state', '')
+                                            if (option)
+                                                getState(
+                                                    errorHandler,
+                                                    setState,
+                                                    { country: option.value }
+                                                )
+                                            else {
+                                                setState([])
+                                                setDistrict([])
+                                            }
+                                        }}
+                                    />
+                                    <FormikReactSelect
+                                        name="state"
+                                        options={state}
+                                        label="State"
+                                        isClearable
+                                        isSearchable
+                                        addOnChange={(option: any) => {
+                                            formikRef.current.setFieldValue('district', '')
+                                            if (option)
+                                                getDistrict(
+                                                    errorHandler,
+                                                    setDistrict,
+                                                    { state: option.value }
+                                                )
+                                            else {
+                                                setDistrict([])
+                                            }
+
+                                        }}
+                                        isDisabled={!state.length}
+                                    />
+                                    <FormikReactSelect
+                                        name="district"
+                                        options={district}
+                                        label="District"
+                                        isClearable
+                                        isSearchable
+                                        addOnChange={(option: any) => {
+                                            getColleges(
+                                                setCollegTemp,
+                                                setCollege,
+                                                setDepartment,
+                                                errorHandler,
+                                                { district: option.value }
+                                            )
+                                        }}
+                                        isDisabled={!district.length}
+                                    />
+
+                                    <FormikReactSelect
+                                        name="college"
+                                        options={college}
+                                        label="College"
+                                        isClearable
+                                        isSearchable
+                                        isDisabled={!college.length}
+                                    />
+                                    <FormikReactSelect
+                                        label="User Department"
+                                        name="department"
+                                        options={department}
+                                        isClearable
+                                        isSearchable
+                                        isDisabled={!department.length}
+                                    />
+                                    {
+                                        !data?.roles.includes(
+                                            roleStr(roles.ENABLER)
+                                        ) &&
+                                        <FormikTextInput
+                                            label="User Graduation Year"
+                                            name="graduation_year"
+                                            type="text"
+                                            placeholder="Enter Graduation Year"
+                                        />
                                     }
-                                        
-                                }}
-                                isDisabled={!state.length}
-                            />
-                            <FormikReactSelect
-                                name="district"
-                                options={district}
-                                label="District"
-                                isClearable
-                                isSearchable
-                                addOnChange={(option:any)=>{
-                                    getColleges(
-                                        setCollegTemp,
-                                        setCollege,
-                                        setDepartment,
-                                        errorHandler,
-                                        {district:option.value}
-                                    )
-                                }}
-                                isDisabled={!district.length}
-                            />
-                            
-                            <FormikReactSelect
-                                name="college"
-                                options={college}
-                                label="College"
-                                isClearable
-                                isSearchable
-                                isDisabled={!college.length}
-                            />
-                            <FormikReactSelect
-                                label="User Department"
-                                name="department"
-                                options={department}
-                                isClearable
-                                isSearchable
-                                isDisabled={!department.length}
-                            />
-                            {
-                                !data?.roles.includes(
-                                    roleStr(roles.ENABLER)
-                                )&&
-                                <FormikTextInput
-                                    label="User Graduation Year"
-                                    name="graduation_year"
-                                    type="text"
-                                    placeholder="Enter Graduation Year"
-                                />
+                                </>
                             }
-                            </>
-                            }
+                            </div>
                         </div>
                         <div className={styles.btn_container}>
                             <MuButton
