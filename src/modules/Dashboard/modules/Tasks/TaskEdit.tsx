@@ -115,7 +115,9 @@ const TaskEdit = (props: Props) => {
                                     toast
                                 );
                                 
-                                navigate("/dashboard/tasks");
+                                setTimeout(() => {  
+                                    navigate("/dashboard/tasks");
+                                },4000);
                             }}
                         >
                             <Form className={styles.inputContainer}>
