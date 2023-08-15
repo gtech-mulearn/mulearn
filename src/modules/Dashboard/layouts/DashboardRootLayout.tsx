@@ -65,14 +65,14 @@ const DashboardRootLayout = (props: { component?: any }) => {
             url: "/dashboard/learning-circle",
             title: "Learning Circle",
             hasView: true,
-            roles: [roles.ADMIN, roles.STUDENT],
+            roles: [roles.STUDENT],
             icon: <i className="fi fi-sr-books"></i>
         },
         {
             url: "",
             title: "Management",
             hasView: true,
-            roles: [roles.ADMIN],
+            roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE],
             icon: <i className="fi fi-sr-layout-fluid"></i>,
             children: [
                 {
@@ -128,7 +128,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     url: "/dashboard/url-shortener",
                     title: "URL Shortener",
                     hasView: true,
-                    roles: [roles.ADMIN],
+                    roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE],
                     // icon: <i className="fi fi-sr-globe"></i>
                 },
             ],

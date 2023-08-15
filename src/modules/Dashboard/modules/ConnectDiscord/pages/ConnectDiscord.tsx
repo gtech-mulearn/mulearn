@@ -42,6 +42,7 @@ const ConnectDiscord = () => {
                                 <p
                                     onClick={() => {
                                         navigator.clipboard.writeText(muid);
+                                        toast.closeAll();
                                         toast({
                                             title: "Copied to clipboard",
                                             description:
