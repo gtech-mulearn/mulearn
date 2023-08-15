@@ -437,108 +437,6 @@
           font-weight: 600;
         }
       }
-
-      .interestGrp {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        background: #FFFFFF;
-        /* box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06); */
-        border-radius: 10px;
-        padding: 10px 15px;
-
-        .igs_container {
-          display: flex;
-          flex-wrap: wrap;
-          margin: 10px 0px;
-          list-style: none;
-          gap: 20px;
-          justify-content: flex-start;
-          max-width: 50vw;
-          /* overflow: scroll; */
-
-          .igs {
-            padding: 0px 10px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            min-height: 50px;
-
-            &:nth-child(1) {
-              background-color: rgb(255, 187, 89, .3);
-              color: #D18E2C;
-            }
-
-            &:nth-child(1) p {
-              background-color: rgb(255, 187, 89, .9);
-              color: #FFF4E4;
-            }
-
-            &:nth-child(2) {
-              background-color: rgb(255, 134, 152, .3);
-              color: #FC7F92;
-            }
-
-            &:nth-child(2) p {
-              background-color: rgb(255, 134, 152, .9);
-              color: #FFF4E4;
-            }
-
-            &:nth-child(3) {
-              background-color: rgb(34, 179, 210, .3);
-              color: #22B3D2;
-            }
-
-            &:nth-child(3) p {
-              background-color: rgb(34, 179, 210, .9);
-              color: #FFF4E4;
-            }
-
-            &:nth-child(4) {
-              background-color: rgb(45, 206, 137, .3);
-              color: #2DCE89;
-            }
-
-            &:nth-child(4) p {
-              background-color: rgb(45, 206, 137, .9);
-              color: #FFF4E4;
-
-            }
-
-            &:nth-child(5) {
-              background-color: rgb(255, 0, 0, .3);
-              color: rgb(255, 0, 0, .9);
-            }
-
-            &:nth-child(5) p {
-              background-color: rgb(255, 0, 0, .9);
-              color: #FFF4E4;
-
-            }
-
-            & p {
-              padding: 5px;
-              width: 50px;
-              border-radius: 8px;
-              margin-left: 10px;
-              text-align: center;
-            }
-          }
-        }
-      }
-
-      .heatmap {
-        margin-top: 30px;
-        display: flex;
-        justify-content: center;
-        /* max-width: 770px; */
-        /* width: 90vw; */
-        overflow: scroll;
-        background: #FFFFFF;
-        /* box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06); */
-        border-radius: 10px;
-        padding: 10px 5px;
-      }
     }
   }
 
@@ -570,6 +468,12 @@
         /* margin-left: 10px; */
         color: #456FF6;
         padding: 10px 1rem;
+        display: flex;
+        gap: 12px;
+
+        & i{
+          font-size: 1.9rem;
+        }
       }
 
       .head {
@@ -581,6 +485,11 @@
 
         & h2 {
           padding: 0rem 1rem;
+        }
+
+        & p svg:hover path:nth-child(1){
+          fill: #456FF6;
+          cursor: pointer;
         }
       }
 
@@ -773,10 +682,6 @@
       margin-left: 0rem;
       justify-content: center;
       /* width: 80%; */
-
-      .profile .interestGrp .igs_container {
-        max-width: 90vw;
-      }
     }
   }
 }
@@ -839,10 +744,6 @@
         .points {
           flex-direction: column;
         }
-      }
-
-      .interestGrp .igs_container {
-        max-width: 90vw;
       }
     }
   }
