@@ -88,7 +88,9 @@ export const dashboardRoutes = {
 	getCampusIg: "api/v1/dashboard/ig/list/",
 
     getAllOrganisations: "/api/v1/hackathon/list-organisations/",
-    getAllDistricts: "/api/v1/hackathon/list-districts/"
+    getAllDistricts: "/api/v1/hackathon/list-districts/",
+
+    createInviteEmail:"/api/v1/dashboard/referral/send-referral/"
 } as const;
 
 export const organizationRoutes = {
