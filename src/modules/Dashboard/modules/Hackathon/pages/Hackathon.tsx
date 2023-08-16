@@ -313,11 +313,28 @@ const Hackathon = () => {
                                             </div>
                                         ) : (
                                             <div className={styles.frame2}>
-                                                <div className={styles.group}>
+                                                <div className={styles.group} onClick={()=> {
+                                                    const shareData = {
+                                                        title: hack.title,
+                                                        url: `${import.meta.env.VITE_FRONTEND_URL}/dashboard/hackathon/details/${hack.id}`
+                                                    }
+
+                                                    try{
+
+                                                        window.navigator.clipboard.writeText(shareData.url);
+                                                        toast({
+                                                            title: "Success",
+                                                            description: "Link copied to clipboard",
+                                                            status: "success",
+                                                            duration: 3000,
+                                                            isClosable: true,
+                                                        })
+                                                        window.navigator.share(shareData);
+                                                    }catch(err){
+                                                        console.log(err)
+                                                    }
+                                                }}>
                                                     <LuCopy />
-                                                </div>
-                                                <div className={styles.group}>
-                                                    <LuShare2 />
                                                 </div>
                                             </div>
                                         )}

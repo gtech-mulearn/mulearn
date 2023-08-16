@@ -13,7 +13,12 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import { useFormik } from "formik";
 import { useToast } from "@chakra-ui/react";
 import { MuButtonLight } from "@/MuLearnComponents/MuButtons/MuButton";
-
+type urlData = {
+    id: string | number | boolean;
+    long_url: string;
+    short_url: string;
+    title: string;
+};
 const UrlShortener = () => {
     const columnOrder: ColOrder[] = [
         { column: "title", Label: "Title", isSortable: true },
@@ -27,14 +32,7 @@ const UrlShortener = () => {
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
-    const [shortUrlData, setShortUrlData] = useState([
-        {
-            id: "",
-            long_url: "",
-            short_url: "",
-            title: ""
-        }
-    ]);
+    const [shortUrlData, setShortUrlData] = useState<urlData[]>([]);
 
     const formik = useFormik({
         initialValues: {
@@ -185,7 +183,7 @@ const UrlShortener = () => {
             shortUrlData
                 .filter(item => item?.id === id)[0]
                 .short_url.replace(
-                    import.meta.env.VITE_BACKEND_URL + "/r/",
+                    import.meta.env.VITE_FRONTEND_URL + "/r/",
                     ""
                 )
         );
@@ -274,6 +272,7 @@ const UrlShortener = () => {
                             </div>
                             <div className={styles.form_btns}>
                                 <MuButtonLight
+                                type="reset"
                                     text="Cancel"
                                     style={{
                                         width: "fit-content",

@@ -295,7 +295,7 @@ const Profile = () => {
                                                             import.meta.env
                                                                 .VITE_FRONTEND_URL as string
                                                         }
-                                                        /dashboard/profile/
+                                                        /profile/
                                                         {userProfile.muid}
                                                     </p>
 
@@ -306,7 +306,7 @@ const Profile = () => {
                                                                     import.meta
                                                                         .env
                                                                         .VITE_FRONTEND_URL as string
-                                                                }/dashboard/profile/${
+                                                                }/profile/${
                                                                     userProfile.muid
                                                                 }`
                                                             );

@@ -167,6 +167,7 @@ import SecureAuthRoutes from "./services/authCheck";
 
 import Settings from "./modules/Dashboard/modules/Settings/Settings";
 import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
+import Refer from "./modules/Dashboard/modules/Refer/Refer";
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
 );
@@ -217,6 +218,10 @@ function App() {
                         {
                             path: "connect-discord",
                             element: <ConnectDiscord />
+                        },
+                        {
+                            path: "refer",
+                            element: <Refer/>
                         },
                         {
                             path: "interest-groups",
@@ -523,7 +528,7 @@ function App() {
             ]
         },
         {
-            path: "/dashboard/profile/:id",
+            path: "/profile/:id",
             element: <Profile />
         },
         {

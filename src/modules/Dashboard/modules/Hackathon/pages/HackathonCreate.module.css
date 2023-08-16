@@ -331,6 +331,14 @@ input[type=file]::file-selector-button:hover {
     background-color: rgba(12, 87, 173, 0.176);
 }
 
+.editBanner {
+    position: relative;
+    height: fit-content;
+    width: 100%;
+    padding: 0.5rem;
+    
+}
+
 .icon {
     font-size: 1.5rem;
     margin-top: 0.5rem;
