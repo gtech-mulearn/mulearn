@@ -101,7 +101,9 @@ const TaskCreate = (props: Props) => {
                             duration: 3000,
                             isClosable: true
                         });
-                        navigate("/dashboard/tasks");
+                        setTimeout(() => {  
+                            navigate("/dashboard/tasks");
+                        },3000);
                     }}
                 >
                     <Form className={styles.inputContainer}>

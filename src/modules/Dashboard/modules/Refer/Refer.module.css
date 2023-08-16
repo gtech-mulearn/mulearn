@@ -1,0 +1,121 @@
+.learningCircleLandingPage .headContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:var(--White);
+    gap: 1rem;
+    border-radius: var(--borderRadius);
+    box-shadow: var(--boxShadow);
+}
+.learningCircleLandingPage img,
+.learningCircleLandingPageMiddle img {
+    width: 35%;
+}
+.learningCircleLandingPageDesc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 0;
+    color: #000;
+}
+
+.learningCircleLandingPageDesc h1 {
+    font-size: 2.5rem;
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.learningCircleLandingPage .learningCircleLandingPageButton {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+.createBtn {
+	background: #456FF6;
+	color: #fff;
+	width: 10%;
+	min-width: 100px;
+	padding: 5px 15px;
+	display: flex;
+	border-radius: 10px;
+	border: 1px solid #456FF6;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	font-size: 15px;
+	cursor: pointer;
+	transition: .3s ease-in-out;
+   
+}
+
+.createBtn:hover {
+    background: #fff;
+	color: #456FF6;
+}
+.createBtn .icon{
+    
+}
+
+.learningCircleLandingPage,
+.LearningCircleDetailsContent,
+.FindCircleContent {
+    padding: 1rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+@media (width<1060px){
+    .learningCircleLandingPageDesc h1 {
+        font-size: 1.5rem;
+    }
+
+    .learningCircleLandingPageDesc b {
+        font-size: 0.8rem;
+    }
+
+    .learningCircleLandingPageLevel div {
+        font-size: 0.8rem;
+    }
+}
+
+@media (width<320px) {
+    .learningCircleLandingPageDesc h1 {
+        font-size: 1.2rem;
+    }
+
+    .learningCircleLandingPageDesc b {
+        font-size: 0.6rem;
+    }
+
+    .learningCircleLandingPage .learningCircleLandingPageButton {
+        gap: 0.5rem;
+        margin-top: 0rem;
+    }
+}
+@media (width<=820px) {
+    .learningCircleLandingPage {
+        padding: 0.5rem;
+    }
+
+    .learningCircleLandingPage .headContent {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 0rem;
+    }
+
+    .learningCircleLandingPage img,
+    .learningCircleLandingPageMiddle img {
+        width: 100%;
+    }
+
+    .learningCircleLandingPageLevel {
+        padding: 1rem;
+    }
+
+    .learningCircleLandingPageBtn {
+        width: 2rem;
+    }
+}
