@@ -176,7 +176,6 @@ function ManageRoles() {
 
         //console.log(`Icon clicked for column: ${column}`);
     };
-    
     return (
         <>
             {currModal
@@ -219,7 +218,10 @@ function ManageRoles() {
                                 header="Edit User Roles"
                                 paragraph="Change users in current role"
                             >   
-                                <ManageUsers/>
+                                <ManageUsers
+                                    onClose={setCurrModal}
+                                    roles={roles}
+                                />
                             </Modal>
                         );
                 })()

@@ -13,18 +13,18 @@ const Modal = (props:props) => {
   
   //wheel event is passive event listener
   //thus cant directly put preventDefault
-  const modalRef = useRef<HTMLDivElement>(null)
-  useEffect(()=>{
-    modalRef.current!.addEventListener("wheel", (event) => {
-      event.preventDefault()
-    },{passive:false});
-  },[])
+  // const modalRef = useRef<HTMLDivElement>(null)
+  // useEffect(()=>{
+  //   modalRef.current!.addEventListener("wheel", (event) => {
+  //     event.preventDefault()
+  //   },{passive:false});
+  // },[])
     
   
   return (
     <div className={styles.Modal} 
       onClick={()=>{props.onClose(null)}}
-      ref={modalRef}
+      // ref={modalRef}
       >
       <div className={styles.Container} onClick={(e)=>e.stopPropagation()}>
         {props.icon}
