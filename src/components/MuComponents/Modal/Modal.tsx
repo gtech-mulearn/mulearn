@@ -12,10 +12,6 @@ interface ModalProps {
     type?:string;
 }
 
-/*
-TODO: Conditional rendering of icon.
-*/
-
 const Modal: FC<ModalProps> = ({ setIsOpen, id, heading, content, click,type,value }) => {
     console.log(id,"-", heading,"-", content,"-",type,"-",value)
     return (
