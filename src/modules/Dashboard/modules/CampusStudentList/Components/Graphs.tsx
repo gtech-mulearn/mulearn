@@ -1,3 +1,4 @@
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { Chart } from "react-google-charts";
 
 export const options = {
@@ -28,6 +29,8 @@ export const options = {
 };
 
 export function PieChart({ data,addOptions }: any) {
+    if(!data)
+    return(<MuLoader/>)
     return (
         <Chart
             chartType="PieChart"
@@ -40,6 +43,8 @@ export function PieChart({ data,addOptions }: any) {
 }
 
 export function BarChart({data,addOptions}:any){
+    if(!data)
+    return(<MuLoader/>)
     return <Chart
         chartType="Bar"
         data={data}
