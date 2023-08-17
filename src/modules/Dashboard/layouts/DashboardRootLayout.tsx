@@ -19,17 +19,9 @@ const DashboardRootLayout = (props: { component?: any }) => {
 
     useEffect(() => {
         const userInfo = fetchLocalStorage<UserInfo>('userInfo')
-        if (userInfo){
-
+        if (userInfo) {
             const existInGuild = userInfo.exist_in_guild;
-            const isCampusAmbassador = userInfo.roles?.includes(roles.CAMPUS_LEAD);
-            const isAdmin = userInfo.roles?.includes(roles.ADMIN);
-            const isZonalCampusLead = userInfo.roles?.includes(roles.ZONAL_CAMPUS_LEAD);
-            
             setConnected(existInGuild);
-            setCampusLead(isCampusAmbassador);
-            setZonalCampusLead(isZonalCampusLead);
-            setUserType(isAdmin ? "admin" : "user");
         }
     }, []);
 
@@ -163,28 +155,6 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-map-marker"></i>
         }
     ];
-
-    // //Swtich Case not recommended
-    // switch (userType) {
-    //     case "admin":
-    //         buttons.push(...adminButtons);
-    //         break;
-    // }
-
-    // if (!connected) {
-    //     buttons.splice(1, 0, {
-    //         url: "connect-discord",
-    //         title: "Connect Discord",
-    //         icon: <i className="fi fi-sr-data-transfer"></i>
-    //     });
-    // }
-    // if (campusLead) {
-    //     buttons.splice(2, 0, {
-    //         url: "campus-details",
-    //         title: "Campus Details",
-    //         icon: <i className="fi fi-sr-book-arrow-right"></i>
-    //     });
-    // }
 
     return (
         <div className={styles.full_page}>

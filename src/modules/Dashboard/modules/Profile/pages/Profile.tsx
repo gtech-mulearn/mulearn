@@ -22,11 +22,15 @@ import { Switch, useToast } from "@chakra-ui/react";
 import { saveAs } from "file-saver";
 import { Helmet } from "react-helmet";
 import { useNavigate, useParams } from "react-router-dom";
-import BasicDetails from "../components/BasicDetails";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import AvgKarma from "../assets/svg/AvgKarma";
 import EditProfilePopUp from "../components/EditProfilePopUp/pages/EditProfilePopUp";
+import Instagram from "../assets/svg/Twitter";
+import Behance from "../assets/svg/Behance";
+import LinkedIn from "../assets/svg/LinkedIn";
+import Twitter from "../assets/svg/Twitter";
+import BasicDetails from "../components/BasicDetails/BasicDetails";
 
 //TODO: Verify the relevance of profile page image
 const Profile = () => {
@@ -503,20 +507,6 @@ const Profile = () => {
                                                     <i className="fi fi-rr-pencil"></i>
                                                 </p>
                                             ) : null}
-                                            {/* <MuButton
-                                                text={"Edit Profile"}
-                                                icon={
-                                                    <i className="fi fi-sr-pencil"></i>
-                                                }
-                                                style={{
-                                                    width: "unset",
-                                                    minWidth: "80px",
-                                                    marginTop: "50px",
-                                                    height: "40px",
-                                                    background: "#456FF6",
-                                                    color: "#fff"
-                                                }}
-                                            /> */}
                                         </div>
 
                                         <div className={styles.profileList}>
@@ -704,6 +694,15 @@ const Profile = () => {
                                 <div className={styles.notification}>
                                     <div className={styles.existing_roles}>
                                         <div className={styles.head}>
+                                            <h2>Connect with me</h2>
+                                            <p>
+                                                <LinkedIn />
+                                                <Twitter />
+                                                <Instagram />
+                                                <Behance />
+                                            </p>
+                                        </div>
+                                        <div className={styles.head}>
                                             <h2>Existing Roles</h2>
                                             <p>
                                                 {userProfile.roles.join(", ")}
@@ -730,7 +729,7 @@ const Profile = () => {
                                         </div>
                                     </div>
 
-                                    <div
+                                    {/* <div
                                         className={
                                             styles.recent_activity_container
                                         }
@@ -840,7 +839,7 @@ const Profile = () => {
                                                 View More
                                             </a>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </>

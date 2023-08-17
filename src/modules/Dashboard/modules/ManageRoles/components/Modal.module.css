@@ -1,4 +1,5 @@
 .Modal {
+    margin-top: 50px;
     width: 100%;
     height: 100vh;
     
@@ -64,6 +65,7 @@
 .Modal .ButtonContainer{
     display: flex;
     justify-content: space-evenly;
+    padding-top: 10px;
 }
 
 .Modal .ButtonContainer button{
@@ -94,3 +96,31 @@
     transform: translateY(-5px);
 }
 
+
+.userList{
+	display: flex;
+	flex-direction: column;
+    gap: 10px;
+    margin: 10px 0px;
+
+    height: 25vh;
+    overflow: auto;
+}
+
+.userList li{
+    padding: .5rem 1rem ;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.userList li:nth-of-type(odd){
+    background-color: var(--tableRowColor);
+}
+
+.note{
+    color:gray;
+    font-size: smaller;
+    display: block;
+    height: 0;
+}

@@ -139,7 +139,7 @@ const Onboarding = (props: Props) => {
             boxShadow: "none"
         })
     };
-    const currentYear = new Date().getFullYear();
+    const currentYear = new Date().getFullYear()+7
     const yearsCount = 15;
     const yog_year = Array.from({ length: yearsCount }, (_, index) => {
         const year = currentYear - index;

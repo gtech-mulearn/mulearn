@@ -1,9 +1,16 @@
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 
+import { ToastId, UseToastOptions } from "@chakra-ui/toast";
+
 type CampusDataSet = 'college_name'| 'campus_lead'| 'campus_code'| 'campus_zone'| 'total_karma'| 'total_members'| 'active_members' | 'rank'
 type studentData = UseStateFunc<any[]>
 type campusData = UseStateFunc<{ [T in CampusDataSet]: string }>
+
+type studentLevelType = {
+    level:number,
+    students:number
+} 
 
 export const getStudentDetails = (
     setStudentData: studentData,
@@ -44,3 +51,24 @@ export const getCampusDetails = (
             console.log(error);
         });
 };
+
+export const getWeeklyKarma = async () => {
+    
+    const days = [['MON'], ['TUE'], ['WED'], ['THU'], ['FRI'], ['SAT'], ['SUN']]
+    const response = await privateGateway
+                    .get(dashboardRoutes.getCampusWeeklyKarma)
+    let data = Object.values(response.data.response).slice(1) as string[]
+    return(
+        days.map((day,index)=>[day[0],data[index]])
+    )
+}
+
+export const getStudentLevel = async () => {
+    console.log('getStudentLevel')
+    const response = await privateGateway
+                    .get(dashboardRoutes.getStudentLevels)
+    const data = response.data.response
+                .map((data:studentLevelType)=>
+                [`level ${data.level}`,data.students])
+    return(data)
+}

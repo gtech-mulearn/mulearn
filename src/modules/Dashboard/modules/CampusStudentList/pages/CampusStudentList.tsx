@@ -6,10 +6,11 @@ import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { titleCase } from "title-case";
-import { getCampusDetails, getStudentDetails } from "../services/apis";
+import { getCampusDetails, getStudentDetails, getStudentLevel, getWeeklyKarma } from "../services/apis";
 import { PieChart, BarChart } from "../Components/Graphs";
 import styles from "./CampusStudentList.module.css";
 import CLIcon from '../assets/images/CampusLeadIcon.svg';
+import { useToast } from "@chakra-ui/react";
 
 
 type Props = {};
@@ -18,6 +19,9 @@ type Props = {};
 //TODO: Move Logic to another file.
 
 const CampusStudentList = (props: Props) => {
+    
+    const toast = useToast()
+    
     const columns = [];
     const [studentData, setStudentData] = useState<any[]>([]);
     const [perPage, setPerPage] = useState(5);
@@ -26,8 +30,10 @@ const CampusStudentList = (props: Props) => {
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
 
-    const pieData = [['Level', 'UsersPerLevel'], ['Level 1', 10], ['Level 2', 20]]
-    const barData = [['', 'Karma'], ['MON', 15], ['TUE', 5], ['WED', 25], ['THU', 5], ['FRI', 55], ['SAT', 25], ['SUN', 5]]
+    //graph data
+    const [pieData,setPieData] = useState<string[][]|null>(null)
+    const [barData,setBarData] = useState<string[][]|null>(null)
+    
     const columnOrder = [
         { column: "fullname", Label: "Name", isSortable: false },
         // { column: "email", Label: "Email", isSortable: false },
@@ -62,6 +68,22 @@ const CampusStudentList = (props: Props) => {
         if (firstFetch.current) {
             getStudentDetails(setStudentData, 1, perPage, setTotalPages);
             getCampusDetails(setCampusData);
+            (async()=>{
+                try{getStudentLevel
+                    setBarData([['', 'Karma']].concat(await getWeeklyKarma()))
+                    setPieData([['Level', 'UsersPerLevel']].concat(await getStudentLevel()))
+                }catch(err){
+                    toast({
+                        title: "Data fetch failed",
+                        status: "error",
+                        duration: 3000,
+                        isClosable: true
+                    })
+                }
+                
+                
+            })()
+
         }
         firstFetch.current = false;
     }, []);
@@ -118,7 +140,8 @@ const CampusStudentList = (props: Props) => {
 
     return (
         <>
-            <div className={styles.campus_student_list_container}>
+            {!campusData.campus_code?<MuLoader/> 
+            :<div className={styles.campus_student_list_container}>
                 <div className={styles.content}>
                     <div className={styles.sec1}>
                         <h1 className={styles.clg_name}>
@@ -176,8 +199,8 @@ const CampusStudentList = (props: Props) => {
 
                     </div>
                 </div>
-            </div>
-            {/* <div className={styles.graphs}>
+            </div>}
+            <div className={styles.graphs}>
                 <div className={styles.container}>
                     <h2>Weekly Karma Insights</h2>
                     <BarChart
@@ -200,7 +223,7 @@ const CampusStudentList = (props: Props) => {
                     />
                 </div>
 
-            </div> */}
+            </div>
             {studentData && (
                 <>
                     <TableTop
