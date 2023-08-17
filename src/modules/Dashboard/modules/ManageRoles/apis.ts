@@ -3,6 +3,8 @@ import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 
+import {roleUsers} from "./components/ManageUsers"
+
 export const getManageRoles = async (
     setData?: UseStateFunc<any>,
     page?: number,
@@ -148,3 +150,68 @@ export const isRoleUnique =  (roleName:string,roles:string[]):boolean =>{
     return (roles.includes(roleName))
 
 }
+
+export const deleteUser = async (userId:string,roleId:string)=>{
+    console.log(userId,roleId)
+}
+
+export const addUsers = async (userId:string[],roleId:string)=>{
+    console.log(userId,roleId)
+}
+
+export const getUser = async (byRole="")=>{
+    //byRole to get users of certain role o.w all users
+    //temp values right now change when api routes are available
+    if(!!byRole){
+        return [
+            {
+                value:'1',
+                label:'hello world yeah',
+                role:"068e3829-c9cf-4c50-8d79-e6947a15fc29"
+            },
+            {
+                value:'2',
+                label:'2',
+                role:"068e3829-c9cf-4c50-8d79-e6947a15fc29"
+            }
+        ]
+    }
+        
+    
+    await new Promise((res,rej)=>{
+        try {
+            setTimeout(res,1000)
+        } catch (error) {
+            rej(error)
+        }
+        
+    })
+    return( [
+        {
+            value:'1',
+            label:'hello world yeah',
+            role:"068e3829-c9cf-4c50-8d79-e6947a15fc29"
+        },
+        {
+            value:'2',
+            label:'2',
+            role:"068e3829-c9cf-4c50-8d79-e6947a15fc29"
+        },
+        {
+            value:'3',
+            label:'3',
+            role:"1f105cde-4592-4e74-8e86-6c90beeb1e3a"
+        },
+        {
+            value:'4',
+            label:'4',
+            role:"1f105cde-4592-4e74-8e86-6c90beeb1e3a"
+        },
+        {
+            value:'5',
+            label:'5',
+            role:"5851b609-bef2-44a2-b11c-f2663fb0a041"
+        },
+    ])
+}
+
