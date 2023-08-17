@@ -7,6 +7,7 @@ import {
     fetchCountryOptions,
     fetchDistrictOptions,
     fetchLC,
+    fetchLCFull,
     fetchStateOptions,
     getInterestGroups
 } from "../services/LandingPageApi";
@@ -88,7 +89,7 @@ const LandingPage = () => {
             setIgOptions(await getInterestGroups());
             setSelectedIg(null);
 			setTimeout(() => {
-                fetchLC(setData, null, campus, district);
+                fetchLCFull(setData, selectedCampus.value, district);
             }, 1000);
             setData([]);
         }

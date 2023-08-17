@@ -30,6 +30,28 @@ export const fetchLC = async (
     }
 };
 
+export const fetchLCFull = async (
+    setData: UseStateFunc<any>,
+    campus: string,
+    district: string
+) => {
+    try {
+        const response = await privateGateway.post(
+            dashboardRoutes.getCampusLearningCircles + "list" + "/",
+            {
+                org_id: campus,
+                district_id: district
+            }
+        );
+        setData(response.data.response);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+    }
+};
+
 export const fetchCountryOptions = async (
     setCountry: UseStateFunc<Option[]>
 ) => {
