@@ -93,8 +93,16 @@ export const dashboardRoutes = {
     createInviteEmail:"/api/v1/dashboard/referral/send-referral/",
 
     //graphs
+    //campus
     getCampusWeeklyKarma : '/api/v1/dashboard/campus/weekly-karma/',
     getStudentLevels:'api/v1/dashboard/campus/student-level/',
+    //district
+    getDistrictStudentLevels : 'api/v1/dashboard/district/college-level/' ,
+    getDistrictTopCampus : 'api/v1/dashboard/district/top-campus/',
+    //zonal
+    getZonalTopDistrict : 'api/v1/dashboard/zonal/top-districts/',
+    getZonalStudentLevels : 'api/v1/dashboard/zonal/student-level/'
+
 
 } as const;
 

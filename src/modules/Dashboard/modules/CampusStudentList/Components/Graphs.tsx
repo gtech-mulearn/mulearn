@@ -53,3 +53,15 @@ export function BarChart({data,addOptions}:any){
         height={'90%'}
     />
 }
+
+export function ColumnChart({data,addOptions}:any){
+    if(!data)
+    return(<MuLoader/>)
+    return <Chart
+        chartType="Bar"
+        data={data}
+        options={{...options,...addOptions}}
+        width={'100%'}
+        height={'90%'}
+    />
+}

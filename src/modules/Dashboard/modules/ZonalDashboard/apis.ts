@@ -211,3 +211,36 @@ export const getInfo = async (code: string) => {
         }
     }
 };
+
+export const getStudentLevels = async ()=>{
+    const response = await privateGateway
+                    .get(dashboardRoutes.getZonalStudentLevels)
+    const data = response.data.response
+    const dupliChecker:string[] = []
+    return data
+            .map((college:any)=>{
+                if (!dupliChecker.includes(college.college)){
+                    dupliChecker.push(college.college)
+                    return [
+                        college.college,
+                        college.level[2].students_count,
+                        college.level[3].students_count,
+                        college.level[0].students_count,
+                        college.level[1].students_count
+                    ]
+                }
+            })
+            .filter((item:any)=>!!item)
+            .slice(0,5)
+}
+
+export const  getTopDistrict = async()=>{
+    const response = await privateGateway
+                    .get(dashboardRoutes.getZonalTopDistrict)
+    const data = response.data.response
+    return data
+            .map((campus:any)=>{
+                return [campus.district,4-campus.rank]
+            })
+
+}
