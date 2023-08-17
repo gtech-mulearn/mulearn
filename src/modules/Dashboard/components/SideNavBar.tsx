@@ -15,7 +15,6 @@ import MuLogOut from "../assets/svg/MuLogOut";
 import MuSettings from "../assets/svg/MuSettings";
 
 
-//TODO: Change the style's casing to match the rest of the project
 type Props = {
     sidebarButtons: {
         url: string;

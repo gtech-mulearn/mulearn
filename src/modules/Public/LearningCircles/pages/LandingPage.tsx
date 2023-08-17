@@ -178,11 +178,10 @@ const LandingPage = () => {
                 <img src="https://i.ibb.co/vY786NX/image.png" alt="muLearn" />
                 <div className={styles.navLinks}>
                     <div>
-                        <Link to="#">About</Link>
-                        <Link to="#">Programs</Link>
-                        <Link to="#">Events</Link>
-                        <Link to="#">Interest Group</Link>
-                        <Link to="#">Careers</Link>
+                        <Link to="https://mulearn.org/">About</Link>
+                        <Link to="https://mulearn.org/events/">Programs</Link>
+                        <Link to="https://learn.mulearn.org/">Interest Group</Link>
+                        <Link to="https://mulearn.org/careers">Careers</Link>
                     </div>
                     <button
                         onClick={() => {
