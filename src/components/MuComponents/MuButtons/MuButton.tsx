@@ -175,6 +175,7 @@ type Props = {
     onButtonClick?: any;
     margin?: string;
     padding?: string;
+    "font-size"?: string,
     borderColor?: string;
     icon?: ReactJSXElement;
     isLoading?: boolean; // show loading spinner if neccessary.
@@ -202,6 +203,7 @@ export const PowerfulButton = (props: Props) => {
         display: "flex",
         alignItems: "center",
         gap: "10px",
+        "font-size" : props["font-size"] || "17px",
         ...(isHovered && {
             backgroundColor: props.onHoverBackground || "#00204c",
             color: props.onHoverColor || "#f5f7f9"
