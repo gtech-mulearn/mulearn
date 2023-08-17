@@ -20,12 +20,8 @@ function DistrictDashboard() {
     const [columns, setColumns] = useState(columnsStudent);
     const [activeTab, setActiveTab] = useState("Student management");
     const [sort, setSort] = useState("");
-    const [popupStatus, setPopupStatus] = useState(false);
 
-    const [isCreate, setIsCreate] = useState(false);
-    const [isEdit, setIsEdit] = useState(false);
     const firstFetch = useRef(true);
-    const navigate = useNavigate();
 
     const toast = useToast();
 
@@ -112,7 +108,6 @@ function DistrictDashboard() {
         }
         setCurrentPage(1);
         setActiveTab(tab);
-        setPopupStatus(false);
     };
 
     const handleIconClick = (column: string) => {

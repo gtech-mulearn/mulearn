@@ -13,11 +13,6 @@ type Props = {
     CSV?: string;
 };
 
-/*
-TODO: Issue exist with button, working ann loader ella.
-TODO: Need to change the button to MuButton.
-*/
-
 const TableTop = (props: Props) => {
     const [isLoading, setIsLoading] = useState(false);
     const [hasError, setHasError] = useState(false);
