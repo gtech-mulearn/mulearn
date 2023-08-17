@@ -87,6 +87,9 @@ const LandingPage = () => {
             setCampus(selectedCampus.value);
             setIgOptions(await getInterestGroups());
             setSelectedIg(null);
+			setTimeout(() => {
+                fetchLC(setData, null, campus, district);
+            }, 1000);
             setData([]);
         }
     };

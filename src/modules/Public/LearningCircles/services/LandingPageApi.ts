@@ -8,7 +8,7 @@ interface Option {
 }
 export const fetchLC = async (
     setData: UseStateFunc<any>,
-    ig: string,
+    ig: string | null,
     campus: string,
     district: string
 ) => {
