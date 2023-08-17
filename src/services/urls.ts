@@ -90,7 +90,12 @@ export const dashboardRoutes = {
     getAllOrganisations: "/api/v1/hackathon/list-organisations/",
     getAllDistricts: "/api/v1/hackathon/list-districts/",
 
-    createInviteEmail:"/api/v1/dashboard/referral/send-referral/"
+    createInviteEmail:"/api/v1/dashboard/referral/send-referral/",
+
+    //graphs
+    getCampusWeeklyKarma : '/api/v1/dashboard/campus/weekly-karma/',
+    getStudentLevels:'api/v1/dashboard/campus/student-level/',
+
 } as const;
 
 export const organizationRoutes = {
