@@ -12,6 +12,7 @@ export const LearningCircleLandingPage = () => {
     const navigate = useNavigate();
     const [userCircleList, setUserCircleList] = useState<LcType[]>();
 
+
     useEffect(() => {
         getUserLearningCircles(setUserCircleList)
     }, []);
@@ -31,9 +32,9 @@ export const LearningCircleLandingPage = () => {
                     <img src={imageTop} alt="image" loading="eager" />
                     <div className={styles.learningCircleLandingPageDesc}>
                         <h1>Learn, share, together</h1>
-                        <b style={{ fontWeight: "600" , width:"80%"}}>
+                        <b style={{ fontWeight: "600", width: "80%" }}>
                             A fantastic way to spend a small amount of time learning
-                            about new things 
+                            about new things
                             with a group of people with same interests!
                         </b>
                         <div className={styles.learningCircleLandingPageButton}>
@@ -56,9 +57,9 @@ export const LearningCircleLandingPage = () => {
 
                 <div className={styles.learningCircleLandingPageMiddle}>
                     <ul className={styles.learningCircleLandingPageAccordion}>
-                        {userCircleList ? (
+                        {userCircleList && userCircleList.length > 0 ? (
                             <>
-                            <b>Your learning circles</b>
+                                <b>Your learning circles</b>
                                 {userCircleList.map((circle, pos) => (
                                     <div key={pos}>
                                         <li className={styles.learningCircleLandingPageMainList}>
@@ -82,11 +83,11 @@ export const LearningCircleLandingPage = () => {
                                                         {circle.ig}
                                                     </p>
                                                     <button className={styles.learningCircleLandingPageBtn} onClick={() => {
-														navigate(
+                                                        navigate(
                                                             `/dashboard/learning-circle/details/${circle.id}`
                                                         );
-													}}>
-                                                        <BsChevronRight className={[].join(" ")}/>
+                                                    }}>
+                                                        <BsChevronRight className={[].join(" ")} />
                                                     </button>
                                                 </div>
                                             </label>
