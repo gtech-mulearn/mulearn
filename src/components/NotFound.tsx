@@ -6,8 +6,6 @@ import FourNotFour from "./assests/FourNotFour.webp"
 import NoBgFourNotFour from "./assests/NoBgFourNotFour.webp"
 import SmallRocks from "./assests/SmallRocks.webp"
 
-// TODO: Redesign
-
 const NotFound = () => {
     return (
         <div className={styles.container_404}>
