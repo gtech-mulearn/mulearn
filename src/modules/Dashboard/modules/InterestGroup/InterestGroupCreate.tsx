@@ -7,6 +7,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import * as Yup from "yup";
 import { useEffect, useState } from "react";
 import { createInterestGroups, editInterestGroups, getIGDetails } from "./apis";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 type Props = {};
 
@@ -34,6 +35,11 @@ const InterestGroupCreate = (props: Props) => {
     },[id]);
 
 console.log('id',input)
+    if(!input.code)
+    return (
+        <MuLoader/>
+    )
+    
     return (
         <div className={styles.external_container}>
             <div className={styles.container}>
