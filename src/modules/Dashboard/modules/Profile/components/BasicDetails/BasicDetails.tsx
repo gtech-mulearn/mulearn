@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./BasicDetails.module.css";
-import HeatmapComponent from "./Heatmap/HeatmapComponent";
+import HeatmapComponent from "../Heatmap/HeatmapComponent";
 type Props = {
     userProfile: any;
     userLog: any;
