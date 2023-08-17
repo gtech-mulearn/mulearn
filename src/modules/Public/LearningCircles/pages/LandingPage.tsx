@@ -91,11 +91,11 @@ const LandingPage = () => {
         }
     };
 
-    const handleIgChange = async (selectedIg: Option | null) => {
+    const handleIgChange = (selectedIg: Option | null) => {
         if (selectedIg) {
             setIg(selectedIg.value);
             setSelectedIg(selectedIg);
-            fetchLC(setData, ig, campus, district);
+            fetchLC(setData, selectedIg.value, campus, district);
             setTimeout(() => {
                 console.log(data);
             }, 2000);
