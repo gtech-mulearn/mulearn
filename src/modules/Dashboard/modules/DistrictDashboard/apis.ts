@@ -12,32 +12,6 @@ export const getdistrictdashboard = async (
     sortID?: string
 ) => {
     try {
-        // await privateGateway
-        //     .get(organizationRoutes.getOrganizationsAll, {
-        //         params: {
-        //             perPage: selectedValue,
-        //             pageIndex: page,
-        //             search: search,
-        //             sortBy: sortID
-        //         }
-        //     })
-        //     .then(response => {
-        //         return response.data;
-        //     })
-        //     .then(data => {
-        //         if (activeTab === "Student management") {
-        //             setData(data.response.data.colleges);
-        //             setTotalPages(data.response.pagination.colleges.totalPages);
-        //         } else if (activeTab === "Campus management") {
-        //             setData(data.response.data.companies);
-        //             setTotalPages(
-        //                 data.response.pagination.companies.totalPages
-        //             );
-        //         } else {
-        //             alert("error to Load Data");
-        //         }
-        //     });
-
         if (activeTab === "Student management") {
             await privateGateway
                 .get(dashboardRoutes.districtStudentDetails, {

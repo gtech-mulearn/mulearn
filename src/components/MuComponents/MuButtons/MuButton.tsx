@@ -3,11 +3,9 @@ import styles from "./MuButtons.module.css";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import { ClipLoader } from "react-spinners";
 
-// normal button
-// need text for button
-
 /**
  * TODO: Make Single and Powerful Button Component(Multi-Purpose)
+ * TODO: Remove unused buttons
  */
 
 export const MuButton = (props: {

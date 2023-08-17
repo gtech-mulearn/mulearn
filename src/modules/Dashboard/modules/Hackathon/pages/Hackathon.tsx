@@ -31,7 +31,6 @@ const Hackathon = () => {
     const [isPublishOpen, setIsPublishOpen] = useState<boolean[]>(
         ownData.map(() => false)
     );
-
     
     const [isDeleteOpen, setIsDeleteOpen] = useState<boolean[]>(
         ownData.map(() => false)
