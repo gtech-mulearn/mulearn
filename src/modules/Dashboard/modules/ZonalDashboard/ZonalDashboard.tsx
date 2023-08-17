@@ -168,7 +168,7 @@ function ZonalDashboard() {
         <>
             <div className={graphStyles.graphs}>
                 <div className={graphStyles.container}>
-                    <h2>Top 3 Campus</h2>
+                    <h2>Top 3 Districts</h2>
                     <BarChart
                         data={barData}
                         addOptions={{
