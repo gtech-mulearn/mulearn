@@ -773,6 +773,7 @@ padding-left: 10px;
     gap: 1rem;
     border-radius: var(--borderRadius);
     box-shadow: var(--boxShadow);
+    padding: 1rem;
 }
 
 .FindCircleContentTop .desc {
