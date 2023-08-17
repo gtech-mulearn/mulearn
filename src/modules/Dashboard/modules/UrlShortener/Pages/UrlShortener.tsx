@@ -183,7 +183,7 @@ const UrlShortener = () => {
             shortUrlData
                 .filter(item => item?.id === id)[0]
                 .short_url.replace(
-                    import.meta.env.VITE_FRONTEND_URL + "/r/",
+                    import.meta.env.VITE_BACKEND_URL + "/r/",
                     ""
                 )
         );

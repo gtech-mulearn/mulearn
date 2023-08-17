@@ -22,15 +22,15 @@ import { Switch, useToast } from "@chakra-ui/react";
 import { saveAs } from "file-saver";
 import { Helmet } from "react-helmet";
 import { useNavigate, useParams } from "react-router-dom";
-import BasicDetails from "../components/BasicDetails";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import AvgKarma from "../assets/svg/AvgKarma";
 import EditProfilePopUp from "../components/EditProfilePopUp/pages/EditProfilePopUp";
-import Instagram from "../assets/svg/Instagram";
+import Instagram from "../assets/svg/Twitter";
 import Behance from "../assets/svg/Behance";
 import LinkedIn from "../assets/svg/LinkedIn";
 import Twitter from "../assets/svg/Twitter";
+import BasicDetails from "../components/BasicDetails/BasicDetails";
 
 //TODO: Verify the relevance of profile page image
 const Profile = () => {

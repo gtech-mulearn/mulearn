@@ -5,12 +5,14 @@ import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getdistrictdashboard } from "./apis";
+import { PieChart, BarChart, ColumnChart } from "../CampusStudentList/Components/Graphs";
+import { getdistrictdashboard, getStudentLevels, getTopCampus } from "./apis";
 import { columnsCampus, columnsStudent } from "./THeaders";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import "./Organizations.css";
 import "./DistricDashboard.scss";
 import TableTopTab from "./TableTopTab";
+import graphStyles from "../CampusStudentList/pages/CampusStudentList.module.css"
 
 function DistrictDashboard() {
     const [data, setData] = useState<any[]>([]);
@@ -25,9 +27,14 @@ function DistrictDashboard() {
 
     const toast = useToast();
 
+    //graph data
+    const [colData,setColData] = useState<string[][]|null>(null)
+    const [barData,setBarData] = useState<string[][]|null>(null)
+
     useEffect(() => {
         if (firstFetch.current) {
-
+            
+            
             getdistrictdashboard(
                 activeTab,
                 setData,
@@ -37,6 +44,24 @@ function DistrictDashboard() {
                 "",
                 ""
             );
+
+            (async()=>{
+                try{
+                    setBarData([['', '']].concat(await getTopCampus()))
+                    setColData([['Colleges',"Level 1","Level 2","Level 3","Level 4"]].concat(await getStudentLevels()))
+                    
+                }catch(err){
+                    toast({
+                        title: "Data fetch failed",
+                        status: "error",
+                        duration: 3000,
+                        isClosable: true
+                    })
+                }
+                
+                
+            })()
+
         }
         firstFetch.current = false;
     }, []);
@@ -152,11 +177,37 @@ function DistrictDashboard() {
             return dashboardRoutes.districtCampusData;
         }
     };
-
     return (
         <>
             <TableTopTab active={activeTab} onTabClick={handleTabClick} />
+            <div className={graphStyles.graphs}>
+                <div className={graphStyles.container}>
+                    <h2>Top 3 Campus</h2>
+                    <BarChart
+                        data={barData}
+                        addOptions={{
+                            legend: { position: 'none' },
+                            colors: ['#91ABFF']
+                        }}
+                    />
+                </div>
+                <div className={graphStyles.container}>
+                    <h2>Student Level Stats</h2>
+                    <ColumnChart
+                        data={colData}
+                        addOptions={{
+                            axes:{
+                                y:{
+                                    0:{label:"No of Students"}
+                                }
+                            },
+                            pieSliceText: 'value',
+                            colors: ["#3B57B2", "#456FF6", "#A9BEFF", "#6C8FFF", "#A9BEFF"]
+                        }}
+                    />
+                </div>
 
+            </div>
             {data && (
                 <>
                     <TableTop
