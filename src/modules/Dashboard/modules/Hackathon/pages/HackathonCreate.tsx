@@ -331,7 +331,7 @@ const HackathonCreate = () => {
                                         convertDateToYYYYMMDD(
                                             String(data?.application_ends)
                                         ) || null,
-                                    orgId: data?.organisation || "",
+                                    orgId: data?.org_id || "",
                                     place: data?.place || "",
                                     districtId:
                                         getLocationIdByName(
