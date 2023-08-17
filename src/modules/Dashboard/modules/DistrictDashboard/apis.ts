@@ -189,7 +189,6 @@ export const getInfo = async (code: string) => {
 export const getStudentLevels = async ()=>{
     const response = await privateGateway
                     .get(dashboardRoutes.getDistrictStudentLevels)
-    console.log(response.data.response)
     const data = response.data.response
     const dupliChecker:string[] = []
     return data
@@ -211,7 +210,6 @@ export const getStudentLevels = async ()=>{
 export const  getTopCampus = async()=>{
     const response = await privateGateway
                     .get(dashboardRoutes.getDistrictTopCampus)
-    console.log(response.data.response)
     const data = response.data.response
     return data
             .map((campus:any)=>{
