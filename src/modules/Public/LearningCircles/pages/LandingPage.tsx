@@ -112,7 +112,8 @@ const LandingPage = () => {
             fontWeight: "bold",
             color: "#000",
             width: "100%",
-            padding: ".3rem .4rem"
+            padding: ".3rem .4rem",
+			minWidth: "200px",
         }),
         placeholder: (provided: any) => ({
             ...provided,
