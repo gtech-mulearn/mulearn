@@ -1,7 +1,7 @@
 import { FC } from "react";
 import styles from "./modal.module.css";
 import { RiCloseLine } from "react-icons/ri";
-import { PowerfulButton } from "../MuButtons/MuButton";
+import { Button } from "../MuButtons/MuButton";
 
 interface ModalProps {
     setIsOpen: (isOpen: boolean) => void;
@@ -72,21 +72,12 @@ const Modal: FC<ModalProps> = ({ setIsOpen, id, heading, content, click,type,val
                     <div className={styles.modalContent}>{content}</div>
                     <div className={styles.modalActions}>
                         <div className={styles.actionsContainer}>
-                            <PowerfulButton
-                                text="Confirm"
-                                padding="10px 20px"
-                                onButtonClick={() => {
-                                    click(id);
-                                    setIsOpen(false);
-                                }}
-                            />
-                            <PowerfulButton
-                                backgroundColor="#f5f7f9"
-                                color="#456FF6"
-                                text="Cancel"
-                                padding="10px 20px"
-                                onButtonClick={() => setIsOpen(false)}
-                            />
+                            <Button onClick={() => () => { click(id); setIsOpen(false); }}>
+                                 Confirm
+                            </Button>
+                            <Button variant="secondary" onClick={() => setIsOpen(false)}>
+                                 Cancel
+                            </Button>
                         </div>
                     </div>
                 </div>

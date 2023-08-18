@@ -133,3 +133,52 @@
     align-items: center;
     justify-content: center;
 }
+
+
+* {
+    --primary-btn-color: 226, 91%, 62%;
+    --secondary-btn-color:210, 25%, 97%;
+    --rounded-btn: 10px;
+    --border-btn: 2px solid;
+    --primary-hover: 215, 100%, 15%;
+    --transition-speed: 100ms
+}
+
+.common-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border-radius: var(--rounded-btn);
+    font-weight: 500;
+    font-size: 17px;
+    padding: 10px 20px;
+    transition: all;
+    transition-delay: var(--transition-speed);
+
+    &:disabled {
+        pointer-events:none ;
+        opacity: 50%;
+    }
+}
+
+.primary-btn {
+    background-color: hsl(var(--primary-btn-color));
+    color: hsl(var(--secondary-btn-color));
+    border: var(--border-btn) hsl(var(--primary-btn-color));
+    &:hover {
+        background-color: hsl(var(--primary-hover));
+    }
+}
+.secondary-btn {
+    background-color: hsl(var(--secondary-btn-color));
+    color: hsl(var(--primary-btn-color));
+    border: var(--border-btn) hsl(var(--primary-btn-color));
+
+    &:hover {
+        background-color: hsl(var(--primary-hover));
+        color: hsl(var(--secondary-btn-color));
+    }
+}
+
+/* css people, help me to write the other 2 types of button css*/
