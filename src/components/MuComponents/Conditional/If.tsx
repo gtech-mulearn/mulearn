@@ -1,8 +1,11 @@
+import { type } from "os"
+import { Children } from "react"
+
 interface ChildElementProps {
-    children: JSX.Element|JSX.Element[]|string
+    children: any
 }
 interface IfElementProps extends ChildElementProps {
-    condition: boolean
+    condition: any
 }
 
 /**
@@ -12,16 +15,20 @@ interface IfElementProps extends ChildElementProps {
  * @param {JSX.Element[] | JSX.Element} children - The JSX elements to be rendered conditionally.
  * @return {JSX.Element} The rendered JSX element.
  */
-const If = ({condition, children}:IfElementProps) => {
-    if(typeof children === 'string') return <>{children}</>
-    if(Array.isArray(children)){
-        const True=children.find(child=>child.type.name==='True')
-        const False=children.find(child=>child.type.name==='False')
+const If = ({condition:conditionalParameter, children}:IfElementProps) => {
+    const condition=Boolean(conditionalParameter)
+    if(Array.isArray(children) ){
+        let True='',False=''
+        for (let child of children){
+            if (typeof child ==='string') return <>{children}</>
+            if(child?.type?.name==='True') True=child
+            if(child?.type?.name==='False') False=child
+        }
         return condition?<>{True}</>:<>{False}</>
     }
-    else if ((children as JSX.Element)?.type.name==='True' && condition) return <>{children}</>
-    else if((children as JSX.Element)?.type.name==='False' && !condition) return <>{children}</>
-    else if (condition && (children as JSX.Element)?.type.name!=='False') return <>{children}</>
+    else if ((children as JSX.Element)?.type?.name==='True' && condition) return <>{children}</>
+    else if((children as JSX.Element)?.type?.name==='False' && !condition) return <>{children}</>
+    else if (condition && (children as JSX.Element)?.type?.name!=='False') return <>{children}</>
     return <></>
 }
 
@@ -30,7 +37,8 @@ const If = ({condition, children}:IfElementProps) => {
  * 
  * @param children - The child elements to render.
  */
-const True = ({ children }: ChildElementProps) => (<>{children}</>);
+
+const True = ({ children }: ChildElementProps) =>(<>{children}</>)
 
 /**
  * Renders the children components.

@@ -1,7 +1,7 @@
 type Child=JSX.Element| null|string
 
 interface ChildElement {
-    children: Child|JSX.Element[]
+    children: any
 }
 
 interface CaseProps extends ChildElement {
@@ -16,14 +16,12 @@ interface CaseProps extends ChildElement {
 const Switch = ({children}:ChildElement) => {
     if(Array.isArray(children)){
         let matchChild:Child = null,defaultChild:Child = null
-        children.forEach((child:Child)=>{
-            if(!matchChild && (child as JSX.Element)?.type.name==='Case'){
-                const {condition} = (child as JSX.Element)?.props
-                if(Boolean(condition)) matchChild=child
-                else if (!defaultChild && (child as JSX.Element)?.type.name==='Default') defaultChild=child 
-            }
-        }) 
-        console.log(defaultChild,matchChild)
+        for(let child of children){
+            const {condition:conditionalParameter} = (child as JSX.Element)?.props
+            const condition=Boolean(conditionalParameter)
+            if (condition && (child as JSX.Element)?.type?.name==='Case') return <>{child}</>
+            if ((child as JSX.Element)?.type.name==='Default') defaultChild=child
+        }
         return matchChild || <>{defaultChild}</> ||<></>
     }
     return <></>
