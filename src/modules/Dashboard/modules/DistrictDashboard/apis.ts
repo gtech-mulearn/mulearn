@@ -210,6 +210,7 @@ export const getStudentLevels = async ()=>{
                 }
             })
             .filter((item:any)=>!!item)
+            //Get top 5 colleges,top as sum of students
             .sort((a:number[],b:number[])=>(sum(b)-sum(a)))
             .slice(0,5)
 }
