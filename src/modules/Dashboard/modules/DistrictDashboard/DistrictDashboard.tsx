@@ -177,6 +177,7 @@ function DistrictDashboard() {
             return dashboardRoutes.districtCampusData;
         }
     };
+    console.log(colData,barData)
     return (
         <>
             <TableTopTab active={activeTab} onTabClick={handleTabClick} />
