@@ -721,6 +721,28 @@ padding-left: 10px;
 }
 
 @media (width<1100px) {
+    .LearningCircleCreateHeading div b{
+        font-size: 1.5rem;
+    }
+    
+    .LearningCircleCreateHeading div p{
+        font-size: 0.75rem;
+    } 
+    .LearningCircleCreateForm {
+        display: flex;
+        flex-direction: column; 
+    } 
+}
+
+@media (width<820px) {
+    .LearningCircleCreateHeading div b{
+        font-size: 1.5rem;
+    }
+    
+    .LearningCircleCreateHeading div p{
+        font-size: 1rem;
+    }  
+
     .LearningCircleCreateContent {
         padding-top: 3rem;
     }
