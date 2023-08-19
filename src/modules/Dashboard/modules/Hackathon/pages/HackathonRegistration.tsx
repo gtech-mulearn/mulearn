@@ -6,7 +6,7 @@ import {
     FormikTextInputWhite
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import {
-    MuButton,
+    MuButton, PowerfulButton,
 } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useNavigate, useParams } from "react-router-dom";
 import { getApplicationForm, getHackDetails, submitHackApplication } from "../services/HackathonApis";
@@ -79,6 +79,11 @@ const HackathonRegistration = (props: Props) => {
                                     </div>
                                 ))}
                             <div className={styles.inputContainerBtn}>
+                                {/* <PowerfulButton text="Decline" onButtonClick={() => {
+                                        navigate(
+                                            `/dashboard/hackathon/details/${id}`
+                                        );
+                                    }} backgroundColor="#EFF1F9" color="#456FF6" borderColor="#EFF1F28"/> */}
                                 <MuButton
                                     text={"Decline"}
                                     className={styles.btn_cancel}
@@ -88,6 +93,7 @@ const HackathonRegistration = (props: Props) => {
                                         );
                                     }}
                                 />
+                                {/* <PowerfulButton text="Confirm" type={"submit"}/> */}
                                 <button
                                     type="submit"
                                     className={styles.btn_submit}
