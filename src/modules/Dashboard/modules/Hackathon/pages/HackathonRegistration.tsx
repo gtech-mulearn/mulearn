@@ -79,27 +79,14 @@ const HackathonRegistration = (props: Props) => {
                                     </div>
                                 ))}
                             <div className={styles.inputContainerBtn}>
-                                {/* <PowerfulButton text="Decline" onButtonClick={() => {
+                                <PowerfulButton text="Decline" onButtonClick={() => {
                                         navigate(
                                             `/dashboard/hackathon/details/${id}`
                                         );
-                                    }} backgroundColor="#EFF1F9" color="#456FF6" borderColor="#EFF1F28"/> */}
-                                <MuButton
-                                    text={"Decline"}
-                                    className={styles.btn_cancel}
-                                    onClick={() => {
-                                        navigate(
-                                            `/dashboard/hackathon/details/${id}`
-                                        );
-                                    }}
-                                />
-                                {/* <PowerfulButton text="Confirm" type={"submit"}/> */}
-                                <button
-                                    type="submit"
-                                    className={styles.btn_submit}
-                                >
-                                    Confirm
-                                </button>
+                                    }} backgroundColor="#EFF1F9" color="#456FF6" borderColor="#EFF1F28"/>
+                                
+                                <PowerfulButton text="Confirm" type={"submit"}/>
+                                
                             </div>
                         </Form>
                     )}
