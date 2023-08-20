@@ -10,7 +10,7 @@ import {
     updateLcNote
 } from "../services/LearningCircleAPIs";
 import { useNavigate, useParams } from "react-router-dom";
-import { BiEditAlt } from "react-icons/bi";
+import { BiEditAlt, BiLogOutCircle } from "react-icons/bi";
 import {
     AllWeeks,
     convert24to12,
@@ -21,6 +21,7 @@ import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { Tooltip } from "react-tooltip";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import Modal from "@/MuLearnComponents/Modal/Modal";
 
 type Props = {};
 
@@ -32,6 +33,7 @@ const LearningCircle = (props: Props) => {
     const [meetVenue, setMeetVenue] = useState("");
     const [flag, setFlag] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     const [meetDays, setMeetDays] = useState<number[]>([]);
 
     const [nextMeet, setNextMeet] = useState<string | null>(null);
@@ -112,9 +114,9 @@ const LearningCircle = (props: Props) => {
             }
         }, 2000);
     };
-	const handleLeave = () => {
-		leaveLc(id, 'test')
-	}
+    const handleLeave = () => {
+        leaveLc(id, "test", navigate);
+    };
     return (
         <>
             {temp ? (
@@ -137,27 +139,37 @@ const LearningCircle = (props: Props) => {
                             </div>
                             <IoArrowBackCircleOutline
                                 data-tooltip-id="Icon"
-                                data-tooltip-content="Go back"
+                                data-tooltip-content="Leave LC"
                                 style={{
                                     color: "var(--White)",
-                                    backgroundColor: "var(--blue)",
+                                    backgroundColor: "red",
                                     borderRadius: "50%",
                                     fontSize: "30px",
                                     cursor: "pointer"
                                 }}
                                 onClick={() => {
-                                    navigate("/dashboard/learning-circle");
+                                    setIsOpen(true);
                                 }}
                             />
                             <Tooltip
                                 id="Icon"
                                 style={{
-                                    backgroundColor: "var(--blue)",
+                                    backgroundColor: "red",
                                     color: "var(--White)",
                                     borderRadius: "10px",
                                     padding: "0 10px"
                                 }}
                             />
+                            {isOpen && (
+                                <Modal
+                                    setIsOpen={setIsOpen}
+                                    id={"Leave"}
+                                    heading={"Leave LC"}
+                                    content={`Are you sure you want to leave ${lc?.name} ?`}
+                                    click={handleLeave}
+                                    type="error"
+                                />
+                            )}
                         </div>
                     </div>
 
@@ -218,10 +230,6 @@ const LearningCircle = (props: Props) => {
                                                             </b>
                                                         )}
                                                     </div>
-
-                                                    {/* <button className={styles.BtnBtn}>
-                                                    Done
-                                                </button> */}
                                                 </div>
                                             </>
                                         ) : (
@@ -398,7 +406,6 @@ const LearningCircle = (props: Props) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            {/* <input type="text" placeholder="meeting venue" /> */}
                                         </div>
 
                                         <button
@@ -506,10 +513,6 @@ const LearningCircle = (props: Props) => {
                                                                         1,
                                                                         "Approved Successfully"
                                                                     );
-                                                                    // getLcDetails(
-                                                                    //     setLc,
-                                                                    //     id
-                                                                    // );
                                                                     setTimeout(
                                                                         () => {
                                                                             getLcDetails(
@@ -537,7 +540,6 @@ const LearningCircle = (props: Props) => {
                                                                         0,
                                                                         "Rejected Successfully"
                                                                     );
-                                                                    // getLcDetails(setLc, id)
                                                                     setTimeout(
                                                                         () => {
                                                                             getLcDetails(
@@ -612,16 +614,6 @@ const LearningCircle = (props: Props) => {
                                             </div>
                                         ))}
                                 </div>
-                            </div>
-                            <div className={styles.Leave}>
-                                <PowerfulButton
-                                    text={"Leave learning circle"}
-                                    backgroundColor="red"
-                                    onHoverBackground="darkRed"
-                                    padding="5px 10px"
-                                    borderColor="transparent"
-									onButtonClick={handleLeave}
-                                />
                             </div>
                         </div>
                     </div>
