@@ -406,6 +406,17 @@ padding-left: 10px;
     overflow-y: scroll;
 }
 
+.Leave {
+    background-color:  var(--White);
+    box-shadow: var(--boxShadow);
+    border-radius: 1rem;
+    padding: 1.3rem;
+    margin-top: 1rem;
+    height: 80px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
 .MemberTitle {
     display: flex;
     justify-content: space-between;

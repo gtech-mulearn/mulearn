@@ -4,6 +4,7 @@ import pic from "../../Profile/assets/images/dpm.webp";
 import {
     approveLcUser,
     getLcDetails,
+    leaveLc,
     setLCMeetTime,
     toast,
     updateLcNote
@@ -19,6 +20,7 @@ import {
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { Tooltip } from "react-tooltip";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 type Props = {};
 
@@ -110,7 +112,9 @@ const LearningCircle = (props: Props) => {
             }
         }, 2000);
     };
-    console.log(meetDays[0]);
+	const handleLeave = () => {
+		leaveLc(id, 'test')
+	}
     return (
         <>
             {temp ? (
@@ -608,6 +612,16 @@ const LearningCircle = (props: Props) => {
                                             </div>
                                         ))}
                                 </div>
+                            </div>
+                            <div className={styles.Leave}>
+                                <PowerfulButton
+                                    text={"Leave learning circle"}
+                                    backgroundColor="red"
+                                    onHoverBackground="darkRed"
+                                    padding="5px 10px"
+                                    borderColor="transparent"
+									onButtonClick={handleLeave}
+                                />
                             </div>
                         </div>
                     </div>
