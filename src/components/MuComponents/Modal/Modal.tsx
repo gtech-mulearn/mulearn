@@ -72,11 +72,11 @@ const Modal: FC<ModalProps> = ({ setIsOpen, id, heading, content, click,type,val
                     <div className={styles.modalContent}>{content}</div>
                     <div className={styles.modalActions}>
                         <div className={styles.actionsContainer}>
-                            <Button onClick={() => () => { click(id); setIsOpen(false); }}>
-                                 Confirm
-                            </Button>
-                            <Button variant="secondary" onClick={() => setIsOpen(false)}>
+                            <Button variant="outline" onClick={() => setIsOpen(false)}>
                                  Cancel
+                            </Button>
+                            <Button variant="primary" onClick={() => { click(id); setIsOpen(false); }}>
+                                 Confirm
                             </Button>
                         </div>
                     </div>

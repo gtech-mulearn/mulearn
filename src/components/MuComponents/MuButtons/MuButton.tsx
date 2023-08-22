@@ -232,15 +232,15 @@ export const PowerfulButton = (props: Props) => {
     );
 };
 
-type Variants = "primary" | "secondary" | "ghost" | "outline" // more variants here
+type Variants = "primary" | "secondary" | "ghost" | "outline" | "destructive" | "success" | "link"
 
-type ButtonProps = ({ children, className, variant, style, ...props }:
-    {children: ReactNode, className?:string, variant?:Variants, style?: React.CSSProperties} & React.HTMLAttributes<HTMLButtonElement>) => ReactJSXElement
+type ButtonProps = ({ children, className, variant, style, disabled,...props }:
+    {children: ReactNode, className?:string, variant?:Variants, style?: React.CSSProperties, disabled?:true} & React.HTMLAttributes<HTMLButtonElement>) => ReactJSXElement
 
-export const Button:ButtonProps = ({ children, className = "", variant = "primary", style, ...props }) => {
+export const Button:ButtonProps = ({ children, className = "", variant = "primary", style, disabled, ...props }) => {
     const variantName = variant ? styles[`${variant}-btn`] : ""
 
-    return <button className={styles["common-btn"] + "  " + variantName} {...props} style={style}>
+    return <button className={styles["common-btn"] + "  " + variantName} {...props} style={style} disabled={disabled}>
         {children}
     </button>
 }

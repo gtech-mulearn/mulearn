@@ -137,11 +137,21 @@
 
 * {
     --primary-btn-color: 226, 91%, 62%;
-    --secondary-btn-color:210, 25%, 97%;
+    --primary-hover: 215, 100%, 15%;
+
+    
+    --secondary-btn-color: 225, 100%, 94%;
+    --white: 0, 0%, 100%;
+
+    --destructive-btn-color: 0, 93%, 62%;
+    --destructive-hover: 0, 80%, 83%;
+
+    --success-btn-color: 149, 39%, 48%;
+
     --rounded-btn: 10px;
     --border-btn: 2px solid;
-    --primary-hover: 215, 100%, 15%;
-    --transition-speed: 100ms
+    --transition-speed: 0.3s;
+    --padding-btn: 10px 20px;
 }
 
 .common-btn {
@@ -150,22 +160,31 @@
     justify-content: center;
     gap: 5px;
     border-radius: var(--rounded-btn);
+    border: var(--border-btn) transparent;
     font-weight: 500;
     font-size: 17px;
-    padding: 10px 20px;
-    transition: all;
-    transition-delay: var(--transition-speed);
+    padding: var(--padding-btn);
+    transition: var(--transition-speed);
 
-    &:disabled {
-        pointer-events:none ;
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:focus-within {
+        outline: 1px solid hsl(var(--primary-btn-color));
+        outline-offset: 2px;
+    }
+
+    &:disabled, &[aria-disabled="true"] {
         opacity: 50%;
+        cursor: no-drop;
+        pointer-events: none;
     }
 }
 
 .primary-btn {
     background-color: hsl(var(--primary-btn-color));
-    color: hsl(var(--secondary-btn-color));
-    border: var(--border-btn) hsl(var(--primary-btn-color));
+    color: hsl(var(--white));
     &:hover {
         background-color: hsl(var(--primary-hover));
     }
@@ -173,12 +192,55 @@
 .secondary-btn {
     background-color: hsl(var(--secondary-btn-color));
     color: hsl(var(--primary-btn-color));
-    border: var(--border-btn) hsl(var(--primary-btn-color));
 
     &:hover {
         background-color: hsl(var(--primary-hover));
-        color: hsl(var(--secondary-btn-color));
+        color: hsl(var(--white));
     }
 }
 
+.destructive-btn {
+    background-color: hsl(var(--destructive-btn-color));
+    color: hsl(var(--white));
+    border-color: hsl(var(--destructive-btn-color));
+
+    &:hover {
+        opacity: 50%;
+    }
+}
+
+.outline-btn {
+    color: hsl(var(--primary-btn-color));
+    border-color: hsl(var(--primary-btn-color));
+    
+    &:hover {
+        background-color: hsl(var(--primary-btn-color));
+        color: hsl(var(--white));
+    }
+}
+
+.ghost-btn {
+    color: hsl(var(--primary-btn-color));
+    
+    &:hover {
+        background-color: hsl(var(--secondary-btn-color));
+    }
+}
+
+.success-btn {
+    background-color: hsl(var(--success-btn-color));
+    
+    &:hover {
+        opacity: 50%;
+    }
+}
+
+.link-btn {
+    color: hsl(var(--primary-btn-color));
+    
+    &:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+    }
+}
 /* css people, help me to write the other 2 types of button css*/
