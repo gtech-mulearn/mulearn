@@ -56,7 +56,8 @@ export const dashboardRoutes = {
     putIsPublic: "/api/v1/dashboard/profile/share-user-profile/",
     getPublicUserLog: "/api/v1/dashboard/profile/user-log/${muid}/",
     getUserSuggestion: "/api/v1/dashboard/profile/user-suggestion/",
-    getStudentLeaderBoard: "api/v1/leaderboard/students/",
+    getStudentLeaderBoard: "/api/v1/leaderboard/students/",
+    getIgDetails: "/api/v1/dashboard/profile/ig-edit/",
 
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
     zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv/",

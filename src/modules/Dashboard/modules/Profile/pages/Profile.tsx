@@ -22,7 +22,7 @@ import { Switch, useToast } from "@chakra-ui/react";
 import { saveAs } from "file-saver";
 import { Helmet } from "react-helmet";
 import { useNavigate, useParams } from "react-router-dom";
-import BasicDetails from "../components/BasicDetails";
+import BasicDetails from "../components/BasicDetails/BasicDetails";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import AvgKarma from "../assets/svg/AvgKarma";
@@ -42,6 +42,7 @@ const Profile = () => {
     const [profileList, setProfileList] = useState("basic-details");
     const [blob, setBlob] = useState<any>();
     const [popUP, setPopUP] = useState(false);
+    const [embedSize, setEmbedSize] = useState("100px");
     const [editPopUp, setEditPopUp] = useState(false);
     const [userProfile, setUserProfile] = useState({
         first_name: "",
@@ -338,20 +339,68 @@ const Profile = () => {
                                         )}
                                         <hr />
                                         {profileStatus && (
-                                            <MuButton
-                                                style={{
-                                                    background: "#456FF6",
-                                                    color: "#fff",
-                                                    margin: "0px 0px -8px 0px",
-                                                    display: "flex",
-                                                    justifyContent: "center",
-                                                    padding: "16px"
-                                                }}
-                                                text={"Download QR code"}
-                                                onClick={() => {
-                                                    downloadQR();
-                                                }}
-                                            />
+                                            <div
+                                                className={
+                                                    styles.share_profile_btns
+                                                }
+                                            >
+                                                <button
+                                                    className={
+                                                        styles.embed_copy_btn
+                                                    }
+                                                    onClick={() => {
+                                                        navigator.clipboard.writeText(
+                                                            `<img src="${
+                                                                import.meta.env
+                                                                    .VITE_FRONTEND_URL as string
+                                                            }/embed/rank/${
+                                                                userProfile.muid
+                                                            }" width="100%" height="${embedSize}"/>`
+                                                        );
+                                                        setCopy(true);
+                                                        setTimeout(() => {
+                                                            setCopy(false);
+                                                        }, 3000);
+                                                    }}
+                                                >
+                                                    <p> Embed </p>
+                                                    <select
+                                                        onChange={e => {
+                                                            setEmbedSize(
+                                                                e.target.value
+                                                            );
+                                                        }}
+                                                    >
+                                                        <option value="">
+                                                            Size
+                                                        </option>
+                                                        <option value="100px">
+                                                            100px
+                                                        </option>
+                                                        <option value="200px">
+                                                            200px
+                                                        </option>
+                                                    </select>
+                                                </button>
+
+                                                <MuButton
+                                                    style={{
+                                                        backgroundColor: "#fff",
+                                                        border: "1px solid #456FF6",
+                                                        color: "#000",
+                                                        margin: "0px 0px -8px 0px",
+                                                        display: "flex",
+                                                        justifyContent:
+                                                            "center",
+                                                        padding: "16px",
+                                                        minWidth: "40%"
+                                                    }}
+                                                    text={"Download QR"}
+                                                    onClick={() => {
+                                                        downloadQR();
+                                                    }}
+                                                />
+                                            </div>
                                         )}
                                         <button onClick={() => setPopUP(false)}>
                                             {!profileStatus
@@ -361,7 +410,6 @@ const Profile = () => {
                                     </div>
                                 </div>
                             </div>
-
                             <div className={styles.profileDash}>
                                 <div className={styles.profile}>
                                     <div className={styles.profile_div}>
@@ -729,7 +777,7 @@ const Profile = () => {
                                         </div>
                                     </div>
 
-                                    {/* <div
+                                    <div
                                         className={
                                             styles.recent_activity_container
                                         }
@@ -839,7 +887,7 @@ const Profile = () => {
                                                 View More
                                             </a>
                                         </div>
-                                    </div> */}
+                                    </div>
                                 </div>
                             </div>
                         </>

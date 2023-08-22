@@ -44,6 +44,11 @@
         max-width: 50vw;
         /* overflow: scroll; */
 
+        & hr{
+            width: 100%;
+            margin: 10px 0px;
+        }
+
         .igs {
             padding: 0px 10px;
             border-radius: 10px;
