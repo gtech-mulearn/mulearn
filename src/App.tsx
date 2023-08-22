@@ -168,6 +168,7 @@ import SecureAuthRoutes from "./services/authCheck";
 import Settings from "./modules/Dashboard/modules/Settings/Settings";
 import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
 import Refer from "./modules/Dashboard/modules/Refer/Refer";
+import Thread from "./modules/Public/ThreadsCard/modules/Thread";
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
 );
@@ -526,6 +527,10 @@ function App() {
                     ]
                 }
             ]
+        },
+        {
+            path: "thread",
+            element:<Thread />
         },
         {
             path: "/profile/:id",

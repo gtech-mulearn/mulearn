@@ -101,8 +101,10 @@ const CampusStudentList = (props: Props) => {
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
+        console.log("perPage,currentPage")
         setPerPage(selectedValue);
         setCurrentPage(1);
+        
         getStudentDetails(
             setStudentData,
             1,
@@ -137,7 +139,7 @@ const CampusStudentList = (props: Props) => {
         }
         console.log(`Icon clicked for column: ${column}`);
     };
-
+    console.log(perPage,currentPage)
     return (
         <>
             {!campusData.campus_code?<MuLoader/> 
@@ -246,6 +248,7 @@ const CampusStudentList = (props: Props) => {
                             margin="10px 0"
                             handleNextClick={handleNextClick}
                             handlePreviousClick={handlePreviousClick}
+                            onPerPageNumber={handlePerPageNumber}
                             perPage={perPage}
                             setPerPage={setPerPage}
                         />

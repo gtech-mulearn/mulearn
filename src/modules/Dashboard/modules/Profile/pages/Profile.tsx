@@ -26,11 +26,11 @@ import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import AvgKarma from "../assets/svg/AvgKarma";
 import EditProfilePopUp from "../components/EditProfilePopUp/pages/EditProfilePopUp";
-import Instagram from "../assets/svg/Twitter";
+import BasicDetails from "../components/BasicDetails/BasicDetails";
+import Instagram from "../assets/svg/Instagram";
 import Behance from "../assets/svg/Behance";
 import LinkedIn from "../assets/svg/LinkedIn";
 import Twitter from "../assets/svg/Twitter";
-import BasicDetails from "../components/BasicDetails/BasicDetails";
 import { False, If, True } from "@/MuLearnComponents/Conditional/If";
 import { Case,Default,Switch as SwitchComponent } from "@/MuLearnComponents/Conditional/Switch";
 
@@ -44,6 +44,7 @@ const Profile = () => {
     const [profileList, setProfileList] = useState("basic-details");
     const [blob, setBlob] = useState<any>();
     const [popUP, setPopUP] = useState(false);
+    const [embedSize, setEmbedSize] = useState("100px");
     const [editPopUp, setEditPopUp] = useState(false);
     const [userProfile, setUserProfile] = useState({
         first_name: "",
@@ -366,8 +367,6 @@ const Profile = () => {
                                     </div>
                                 </div>
                             </div>
-                            
-                            {/* TODO : Convert this to share Profile pop component */}
 
                             <div className={styles.profileDash}>
                                 <div className={styles.profile}>
@@ -676,7 +675,7 @@ const Profile = () => {
                                         </div>
                                     </div>
 
-                                    {/* <div
+                                    <div
                                         className={
                                             styles.recent_activity_container
                                         }
@@ -786,7 +785,7 @@ const Profile = () => {
                                                 View More
                                             </a>
                                         </div>
-                                    </div> */}
+                                    </div>
                                 </div>
                             </div>
                         </>
