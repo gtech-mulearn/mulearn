@@ -15,12 +15,19 @@ export const getUserLearningCircles = async (
             dashboardRoutes.getCampusLearningCircles
         );
         const message: any = response?.data;
-        console.log(message.response);
+        
         setCircleList(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            const errorMessage = error.response;
+            toast({
+                title: "Try again",
+                description:` ${errorMessage}` ,
+                status: "error",
+                duration: 2000,
+                isClosable: true
+            });
         }
     }
 };
@@ -47,7 +54,14 @@ export const getLcDetails = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            const errorMessage = error.response;
+            toast({
+                title: "Try again",
+                description:` ${errorMessage}` ,
+                status: "error",
+                duration: 2000,
+                isClosable: true
+            });
         }
     }
 };
@@ -60,11 +74,18 @@ export const updateLcNote = async (id: string | undefined, note: string) => {
             }
         );
         const message: any = response;
-        console.log(message.response);
+        
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            const errorMessage = error.response;
+            toast({
+                title: "Try again",
+                description:` ${errorMessage}` ,
+                status: "error",
+                duration: 2000,
+                isClosable: true
+            });
         }
     }
 };
@@ -77,12 +98,18 @@ export const getCampusLearningCircles = async (
             dashboardRoutes.createLearningCircle
         );
         const message: any = response?.data;
-        console.log(message.response);
         setCircleList(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            const errorMessage = error.response;
+            toast({
+                title: "Try again",
+                description:` ${errorMessage}` ,
+                status: "error",
+                duration: 2000,
+                isClosable: true
+            });
         }
     }
 };
@@ -102,7 +129,6 @@ export const createCircle = async (
             }
         );
         const message: any = response?.data;
-        console.log(message.response.circle_id);
         setId(message.response.circle_id);
         toast({
             title: "Learning Circle Created",
@@ -117,15 +143,15 @@ export const createCircle = async (
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            const errorMessage = error.response;
+            toast({
+                title: "Try again",
+                description:` ${errorMessage}` ,
+                status: "error",
+                duration: 2000,
+                isClosable: true
+            });
         }
-        toast({
-            title: "Learning Circle not creating..",
-            description: "",
-            status: "error",
-            duration: 2000,
-            isClosable: true
-        });
 		setTimeout(() => {
             navigate(
                 `/dashboard/learning-circle/`
@@ -150,8 +176,7 @@ export const setLCMeetTime = async (
             }
         );
         const message: any = response?.data;
-        console.log(message.response);
-        console.log(response);
+       
         toast({
             title: "Successful",
             description: "",
@@ -162,15 +187,15 @@ export const setLCMeetTime = async (
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            const errorMessage = error.response;
+            toast({
+                title: "Try again",
+                description:` ${errorMessage}` ,
+                status: "error",
+                duration: 2000,
+                isClosable: true
+            });
         }
-        toast({
-            title: "Try Again..",
-            description: "",
-            status: "error",
-            duration: 2000,
-            isClosable: true
-        });
     }
 };
 
@@ -180,7 +205,7 @@ export const joinCircle = async (circleCode: string) => {
             dashboardRoutes.joinLearningCircle + circleCode + "/"
         );
 
-        console.log(response);
+        
         toast({
             title: "Wait for approval",
             description: "",
@@ -191,15 +216,15 @@ export const joinCircle = async (circleCode: string) => {
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            const errorMessage = error.response;
+            toast({
+                title: "Cannot send another request at the moment",
+                description:` ${errorMessage}` ,
+                status: "error",
+                duration: 2000,
+                isClosable: true
+            });
         }
-        toast({
-            title: "Cannot send another request at the moment",
-            description: "",
-            status: "error",
-            duration: 2000,
-            isClosable: true
-        });
     }
 };
 
@@ -214,7 +239,14 @@ export const getInterestGroups = async () => {
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            const errorMessage = error.response;
+            toast({
+                title: "Error",
+                description: `Something went wrong. ${errorMessage}`,
+                status: "error",
+                duration: 3000,
+                isClosable: true
+            });
         }
     }
 };
@@ -237,7 +269,7 @@ export const approveLcUser = async (
             }
         );
 
-        console.log(response);
+      
         toast({
             title: status,
             description: "",
@@ -248,14 +280,14 @@ export const approveLcUser = async (
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            const errorMessage = error.response;
+            toast({
+                title: "Error",
+                description: `Something went wrong. ${errorMessage}`,
+                status: "error",
+                duration: 3000,
+                isClosable: true
+            });
         }
-        toast({
-            title: "Something went wrong",
-            description: "",
-            status: "error",
-            duration: 2000,
-            isClosable: true
-        });
     }
 };
