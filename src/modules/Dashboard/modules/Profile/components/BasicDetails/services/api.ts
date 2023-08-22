@@ -1,7 +1,7 @@
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import {
     privateGateway,
-    publicGatewayAuth
+    publicGateway
 } from "@/MuLearnServices/apiGateways";
 import {
     authRoutes,
@@ -24,25 +24,25 @@ export const getIgDetails = (toast: ToastAsPara, setIg: UseStateFunc<any>) => {
             });
         });
 };
-export const editIgDetails = (toast: ToastAsPara, ig: any) => {
-    privateGateway
-        .patch(dashboardRoutes.getIgDetails, { interest_group: ig })
-        .then(response => {
-            // toast({
-            //     title: response.data.message.general[0],
-            //     status: "success",
-            //     duration: 3000,
-            //     isClosable: true
-            // });
-        })
-        .catch(error => {
-            toast({
-                title: error.response?.data?.message?.general[0],
-                status: "error",
-                duration: 3000,
-                isClosable: true
+export const editIgDetails = (
+    toast: ToastAsPara,
+    ig: any
+): Promise<boolean> => {
+    return new Promise((resolve, reject) => {
+        privateGateway
+            .patch(dashboardRoutes.getIgDetails, { interest_group: ig })
+            .then(response => {
+                resolve(true);
+            })
+            .catch(error => {
+                toast({
+                    title: error.response?.data?.message?.general[0],
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true
+                });
             });
-        });
+    });
 };
 
 export const getAllIg = (setAllIg: UseStateFunc<any>) => {

@@ -111,26 +111,36 @@ const BasicDetails = (props: Props) => {
                             })
                             .map((data: any, i: number) => {
                                 return (
-                                    <div
-                                        key={i}
-                                        onClick={() => {
-                                            setIg((prevIg: any) => {
-                                                const updatedIg = [
-                                                    ...prevIg,
-                                                    data
-                                                ];
+                                    <div key={i} className={styles.igs}>
+                                        <i
+                                            onClick={() => {
+                                                {
+                                                    ig.length < 3 &&
+                                                        setIg(
+                                                            (
+                                                                prevState: any
+                                                            ) => [
+                                                                ...prevState,
+                                                                data
+                                                            ]
+                                                        );
+                                                }
                                                 editIgDetails(
                                                     toast,
-                                                    updatedIg.map(
-                                                        (ig: any) => ig.id
+                                                    [...ig, data].map(
+                                                        (ig: any) => {
+                                                            return ig.id;
+                                                        }
                                                     )
-                                                );
-                                                return updatedIg;
-                                            });
-                                        }}
-                                        className={styles.igs}
-                                    >
-                                        <i className="fi fi-sr-add"></i>
+                                                ).then(() => {
+                                                    // getIgDetails(
+                                                    //     toast,
+                                                    //     setIg
+                                                    // );
+                                                });
+                                            }}
+                                            className="fi fi-sr-add"
+                                        ></i>
                                         {data.name}
                                     </div>
                                 );
