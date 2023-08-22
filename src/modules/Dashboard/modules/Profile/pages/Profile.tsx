@@ -27,7 +27,7 @@ import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import AvgKarma from "../assets/svg/AvgKarma";
 import EditProfilePopUp from "../components/EditProfilePopUp/pages/EditProfilePopUp";
 import BasicDetails from "../components/BasicDetails/BasicDetails";
-import Instagram from "../assets/svg/Twitter";
+import Instagram from "../assets/svg/Instagram";
 import Behance from "../assets/svg/Behance";
 import LinkedIn from "../assets/svg/LinkedIn";
 import Twitter from "../assets/svg/Twitter";
