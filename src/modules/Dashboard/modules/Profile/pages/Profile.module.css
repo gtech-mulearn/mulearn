@@ -268,18 +268,23 @@
           margin-top: 1rem;
 
           .profile_pic_gard {
+            
             position: relative;
             display: flex;
             justify-content: flex-end;
             align-items: flex-end;
 
             & img {
+              aspect-ratio: 1/1;
               border-radius: 100%;
               outline: 6px solid #fff;
               outline-offset: -1px;
               width: 10rem;
               margin-left: 2rem;
               margin-top: -25px;
+              background-color: var(--Light);
+              text-align: center;
+              position: relative;
             }
 
             & span {
@@ -753,6 +758,7 @@
   .rightDash .profileDash .profile .profileInfo .profilePic {
     .profile_pic_gard {
       & img {
+        aspect-ratio: 1/1;
         width: 120px;
       }
 
