@@ -32,7 +32,7 @@ export const LearningCircleLandingPage = () => {
                     <img src={imageTop} alt="image" loading="eager" />
                     <div className={styles.learningCircleLandingPageDesc}>
                         <h1>Learn, share, together</h1>
-                        <b style={{ fontWeight: "600", width: "80%" }}>
+                        <b>
                             A fantastic way to spend a small amount of time learning
                             about new things
                             with a group of people with same interests!
