@@ -522,6 +522,10 @@
           padding: 0rem 1rem;
         }
 
+        & p svg path{
+          transition: all .3s ease-in-out;
+        }
+
         & p svg:hover path:nth-child(1) {
           fill: #456FF6;
           cursor: pointer;
