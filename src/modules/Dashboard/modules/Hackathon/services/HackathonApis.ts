@@ -195,14 +195,16 @@ export const editHackathon = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
+            const errorMessage = error.response;
             toast({
                 title: "Error",
-                description: "Failed to update Hackathon.",
+                description: `Failed to update Hackathon. ${errorMessage}`,
                 status: "error",
                 duration: 3000,
                 isClosable: true
             });
-            console.log(error.response);
+            
+            
         }
     }
 };
