@@ -87,7 +87,7 @@ const LearningCircleCreate = (props: Props) => {
                                         />
                                     </div>
                                     <PowerfulButton text={"Create"} type={"submit"}/>
-                                    {/* <button type="submit" >Create</button> */}
+                                   
                                 </Form>
                             </Formik>
                     </div>

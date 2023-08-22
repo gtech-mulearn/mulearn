@@ -54,22 +54,19 @@ const FindCircle = () => {
                                     <p>{circle.ig}</p>
                                     <p>{circle.member_count} Members</p>
                                     <div className={styles.join}>
-                                        <button onClick={() => {
-											joinCircle(circle.id)
+                                       
+									<PowerfulButton text='Join'  onButtonClick={() => {
+										joinCircle(circle.id)
                                             
                                             
-                                            setTimeout(() => {
-                                                
-                                                navigate(
-                                                    `/dashboard/learning-circle`
-                                                );
-                                            },1500);
-
-										}}>Join</button>
+                                        setTimeout(() => {
+                                            
+                                            navigate(
+                                                `/dashboard/learning-circle`
+                                            );
+                                        },1500);
+									}}/>
                                     </div>
-									{/* <PowerfulButton text='Join' onButtonClick={() => {
-										navigate(`/dashboard/learning-circle/details/${circle.id}`);
-									}}/> */}
                                 </div>
                             </>
                         ))}

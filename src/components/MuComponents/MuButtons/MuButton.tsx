@@ -173,6 +173,8 @@ type Props = {
     onButtonClick?: any;
     margin?: string;
     padding?: string;
+    display?: string;
+    alignItems?: string;
     "font-size"?: string,
     borderColor?: string;
     icon?: ReactJSXElement;
