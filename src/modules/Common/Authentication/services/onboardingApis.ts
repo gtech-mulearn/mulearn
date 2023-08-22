@@ -261,7 +261,7 @@ export const registerUser = (
                 Object.entries(error.response.data.message).forEach(
                     ([fieldName, errorMessage]) => {
                         if (Array.isArray(errorMessage)) {
-                            console.log(fieldName,errorMessage);
+                            console.log(fieldName, errorMessage);
 
                             formik.setFieldError(
                                 fieldName,
