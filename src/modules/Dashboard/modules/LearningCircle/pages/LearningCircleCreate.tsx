@@ -5,6 +5,7 @@ import { Form, Formik } from "formik";
 import FormikReactSelect,{FormikSelect, FormikTextInput} from '@/MuLearnComponents/FormikComponents/FormikComponents'
 import { getInterestGroups,createCircle } from "../services/LearningCircleAPIs";
 import { useNavigate, useParams } from "react-router-dom";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 type Props = {};
 
@@ -85,7 +86,8 @@ const LearningCircleCreate = (props: Props) => {
                                             options={interestGroups!}
                                         />
                                     </div>
-                                    <button type="submit" >Create</button>
+                                    <PowerfulButton text={"Create"} type={"submit"}/>
+                                    {/* <button type="submit" >Create</button> */}
                                 </Form>
                             </Formik>
                     </div>
