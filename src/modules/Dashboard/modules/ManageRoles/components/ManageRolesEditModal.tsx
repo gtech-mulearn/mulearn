@@ -8,6 +8,7 @@ import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import styles from "./Modal.module.css"
 import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css"
 import { type } from "os";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 type Props = {
     id:string
@@ -29,6 +30,10 @@ const ManageRolesEditModal = (props: Props) => {
     useEffect(() => {
         getManageRolesDetails(id, setData);
     }, []);
+    if(!data.title)
+    return(
+        <MuLoader/>
+        )
     return (
         <Formik 
             enableReinitialize={true}

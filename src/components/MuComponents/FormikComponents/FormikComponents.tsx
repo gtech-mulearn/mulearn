@@ -76,6 +76,7 @@ const customStyles: any = {
         borderRadius: "10px",
         width: "100%",
         padding: ".3rem .4rem",
+        minWidth: "200px",
     })
 };
 
@@ -131,6 +132,7 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
                 id={name}
                 value={getSelectedOption()}
                 isSearchable
+				isClearable
                 className={styles.reactSelect}
                 options={options}
                 onChange={handleChange}
