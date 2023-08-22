@@ -11,6 +11,7 @@ import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { AxiosError } from "axios";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 type Props = {};
 
@@ -58,6 +59,8 @@ const TaskCreate = (props: Props) => {
         ig_id: Yup.string().required("Select an Interest Group"),
         organization_id: Yup.string().required("Select an Organization")
     });
+    if(!uuidData)
+        return(<MuLoader/>)
 
     return (
         <div className={styles.external_container}>
@@ -153,7 +156,7 @@ const TaskCreate = (props: Props) => {
                         <FormikSelect
                             label="Channel"
                             name="channel_id"
-                            disabled={!uuidData}
+                            
                         >
                             <option value="">Select an option</option>
                             {uuidData?.channel.map(val => {
@@ -165,7 +168,7 @@ const TaskCreate = (props: Props) => {
                         <FormikSelect
                             label="Type"
                             name="type_id"
-                            disabled={!uuidData}
+
                         >
                             <option value="">Select an option</option>
                             {uuidData?.type.map(val => {
@@ -177,7 +180,7 @@ const TaskCreate = (props: Props) => {
                         <FormikSelect
                             label="Level"
                             name="level_id"
-                            disabled={!uuidData}
+                            
                         >
                             <option value="">Select an option</option>
                             {uuidData?.level.map(val => {
@@ -189,7 +192,7 @@ const TaskCreate = (props: Props) => {
                         <FormikSelect
                             label="IG"
                             name="ig_id"
-                            disabled={!uuidData}
+                            
                         >
                             <option value="">Select an option</option>
                             {uuidData?.ig.map(val => {
@@ -201,7 +204,7 @@ const TaskCreate = (props: Props) => {
                         <FormikSelect
                             label="Organization"
                             name="organization_id"
-                            disabled={!uuidData}
+                            
                         >
                             <option value="">Select an option</option>
                             {uuidData?.organization.map(val => {

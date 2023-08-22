@@ -291,3 +291,39 @@ export const approveLcUser = async (
         }
     }
 };
+
+export const leaveLc = async (
+    circleId: string | undefined,
+    memberId: string,
+	navigate: NavigateFunction,
+) => {
+    try {
+        const response = await privateGateway.delete(
+            dashboardRoutes.getCampusLearningCircles +
+                circleId +
+                "/",
+        );
+
+        console.log(response);
+        toast({
+            title: "Success",
+            description: "",
+            status: "success",
+            duration: 2000,
+            isClosable: true
+        });
+		navigate("/dashboard/learning-circle/");
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+        toast({
+            title: "Something went wrong",
+            description: "",
+            status: "error",
+            duration: 2000,
+            isClosable: true
+        });
+    }
+};
