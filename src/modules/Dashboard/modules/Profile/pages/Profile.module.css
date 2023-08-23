@@ -315,7 +315,6 @@
               outline: 6px solid #fff;
               outline-offset: -1px;
               width: 10rem;
-              margin-left: 2rem;
               margin-top: -25px;
               background-color: var(--Light);
               text-align: center;
@@ -715,6 +714,14 @@
   .rightDash .profileDash .profile .heatmap {
     max-width: unset;
     width: unset;
+  }
+}
+
+@media (min-width: 500px) {
+  .rightDash {
+    & img{
+      margin-left: 1rem;
+    }
   }
 }
 
