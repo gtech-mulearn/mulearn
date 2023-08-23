@@ -169,6 +169,7 @@ const Login = () => {
                                 </a>
                             </p>
                             <MuButton
+                                type="submit"
                                 text={
                                     hasError
                                         ? "Request OTP"
@@ -176,7 +177,7 @@ const Login = () => {
                                         ? "Processing"
                                         : otpError
                                         ? "Request OTP"
-                                        : "Signin"
+                                        : "Sign In"
                                 }
                                 className={styles.signin_button}
                                 onClick={e => {

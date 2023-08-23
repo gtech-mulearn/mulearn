@@ -10,19 +10,18 @@ interface AuthRoutesProps {
 let localRoles = [] as Role[]
 
 export const refreshRoles = () => {
-     localRoles = fetchLocalStorage<UserInfo>('userInfo')?.roles || []
+    localRoles = fetchLocalStorage<UserInfo>('userInfo')?.roles || []
+    return localRoles
+}
 
-    }
-
-function SecureAuthRoutes(){
-    refreshRoles()
-
+function SecureAuthRoutes() {
     const hasRoleNoFetch = (roles: Role[]) => {
+        localRoles = refreshRoles()
         let result = roles.some(role => localRoles.includes(role))
         return result
 
     }
-    const func: FC<AuthRoutesProps> = ({children, roles}) : JSX.Element => {
+    const func: FC<AuthRoutesProps> = ({ children, roles }): JSX.Element => {
         if (hasRoleNoFetch(roles)) return children
 
         return <Navigate to="/404" replace />

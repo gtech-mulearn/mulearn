@@ -12,32 +12,6 @@ export const getdistrictdashboard = async (
     sortID?: string
 ) => {
     try {
-        // await privateGateway
-        //     .get(organizationRoutes.getOrganizationsAll, {
-        //         params: {
-        //             perPage: selectedValue,
-        //             pageIndex: page,
-        //             search: search,
-        //             sortBy: sortID
-        //         }
-        //     })
-        //     .then(response => {
-        //         return response.data;
-        //     })
-        //     .then(data => {
-        //         if (activeTab === "Student management") {
-        //             setData(data.response.data.colleges);
-        //             setTotalPages(data.response.pagination.colleges.totalPages);
-        //         } else if (activeTab === "Campus management") {
-        //             setData(data.response.data.companies);
-        //             setTotalPages(
-        //                 data.response.pagination.companies.totalPages
-        //             );
-        //         } else {
-        //             alert("error to Load Data");
-        //         }
-        //     });
-
         if (activeTab === "Student management") {
             await privateGateway
                 .get(dashboardRoutes.districtStudentDetails, {
@@ -211,3 +185,42 @@ export const getInfo = async (code: string) => {
         }
     }
 };
+export const getStudentLevels = async ()=>{
+    
+    const sum = (arr:number[])=>{
+        return arr.slice(1).reduce((acc,curr)=>acc+curr)
+    }
+    
+    const response = await privateGateway
+                    .get(dashboardRoutes.getDistrictStudentLevels)
+    const data = response.data.response
+    const dupliChecker:string[] = []
+    
+    return data
+            .map((college:any)=>{
+                if (!dupliChecker.includes(college.college_code)){
+                    dupliChecker.push(college.college_code)
+                    return [
+                        college.college_code,
+                        college.level[2].students_count,
+                        college.level[3].students_count,
+                        college.level[0].students_count,
+                        college.level[1].students_count
+                    ]
+                }
+            })
+            .filter((item:any)=>!!item)
+            //Get top 5 colleges,top as sum of students
+            .sort((a:number[],b:number[])=>(sum(b)-sum(a)))
+            .slice(0,5)
+}
+
+export const  getTopCampus = async()=>{
+    const response = await privateGateway
+                    .get(dashboardRoutes.getDistrictTopCampus)
+    const data = response.data.response
+    return data
+            .map((campus:any)=>{
+                return [campus.campus_code,4-campus.rank]
+            })
+}

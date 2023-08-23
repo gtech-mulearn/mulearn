@@ -5,11 +5,13 @@ import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getzonaldashboard } from "./apis";
+import { getzonaldashboard,getTopDistrict,getStudentLevels } from "./apis";
 import { columnsStudent, columnsCampus } from "./THeaders";
 import TableTopTab from "./TableTopTab";
 import "./ZonalDashboard.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
+import { BarChart, ColumnChart } from "../CampusStudentList/Components/Graphs";
+import graphStyles from "../CampusStudentList/pages/CampusStudentList.module.css"
 
 function ZonalDashboard() {
     const [data, setData] = useState<any[]>([]);
@@ -24,12 +26,33 @@ function ZonalDashboard() {
     const [isCreate, setIsCreate] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
 
+    //graph data
+    const [colData,setColData] = useState<string[][]|null>(null)
+    const [barData,setBarData] = useState<string[][]|null>(null)
+
     const navigate = useNavigate();
 
     const toast = useToast();
 
     useEffect(() => {
         if (firstFetch.current) {
+
+            (async()=>{
+                try{
+                    setBarData([['', '']].concat(await getTopDistrict()))
+                    setColData([['Colleges',"Level 1","Level 2","Level 3","Level 4"]].concat(await getStudentLevels()))
+                    
+                }catch(err){
+                    toast({
+                        title: "Data fetch failed",
+                        status: "error",
+                        duration: 3000,
+                        isClosable: true
+                    })
+                }
+                
+                
+            })()
 
             getzonaldashboard(
                 activeTab,
@@ -43,7 +66,6 @@ function ZonalDashboard() {
         }
         firstFetch.current = false;
     }, []);
-
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
@@ -144,6 +166,34 @@ function ZonalDashboard() {
 
     return (
         <>
+            <div className={graphStyles.graphs}>
+                <div className={graphStyles.container}>
+                    <h2>Top 3 Districts</h2>
+                    <BarChart
+                        data={barData}
+                        addOptions={{
+                            legend: { position: 'none' },
+                            colors: ['#91ABFF']
+                        }}
+                    />
+                </div>
+                <div className={graphStyles.container}>
+                    <h2>Student Level Stats</h2>
+                    <ColumnChart
+                        data={colData}
+                        addOptions={{
+                            axes:{
+                                y:{
+                                    0:{label:"No of Students"}
+                                }
+                            },
+                            pieSliceText: 'value',
+                            colors: ["#3B57B2", "#456FF6", "#A9BEFF", "#6C8FFF", "#A9BEFF"]
+                        }}
+                    />
+                </div>
+
+            </div>
             <TableTopTab active={activeTab} onTabClick={handleTabClick} />
 
             {data && (

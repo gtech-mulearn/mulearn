@@ -1,6 +1,7 @@
 import { FC } from "react";
 import styles from "./modal.module.css";
 import { RiCloseLine } from "react-icons/ri";
+import { PowerfulButton } from "../MuButtons/MuButton";
 
 interface ModalProps {
     setIsOpen: (isOpen: boolean) => void;
@@ -11,10 +12,6 @@ interface ModalProps {
     click: any;
     type?:string;
 }
-
-/*
-TODO: Conditional rendering of icon.
-*/
 
 const Modal: FC<ModalProps> = ({ setIsOpen, id, heading, content, click,type,value }) => {
     console.log(id,"-", heading,"-", content,"-",type,"-",value)
@@ -75,21 +72,21 @@ const Modal: FC<ModalProps> = ({ setIsOpen, id, heading, content, click,type,val
                     <div className={styles.modalContent}>{content}</div>
                     <div className={styles.modalActions}>
                         <div className={styles.actionsContainer}>
-                            <button
-                                className={styles.deleteBtn}
-                                onClick={() => {
+                            <PowerfulButton
+                                text="Confirm"
+                                padding="10px 20px"
+                                onButtonClick={() => {
                                     click(id);
                                     setIsOpen(false);
                                 }}
-                            >
-                                Confirm
-                            </button>
-                            <button
-                                className={styles.cancelBtn}
-                                onClick={() => setIsOpen(false)}
-                            >
-                                Cancel
-                            </button>
+                            />
+                            <PowerfulButton
+                                backgroundColor="#f5f7f9"
+                                color="#456FF6"
+                                text="Cancel"
+                                padding="10px 20px"
+                                onButtonClick={() => setIsOpen(false)}
+                            />
                         </div>
                     </div>
                 </div>

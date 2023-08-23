@@ -331,7 +331,7 @@ const HackathonCreate = () => {
                                         convertDateToYYYYMMDD(
                                             String(data?.application_ends)
                                         ) || null,
-                                    orgId: data?.organisation || "",
+                                    orgId: data?.org_id || "",
                                     place: data?.place || "",
                                     districtId:
                                         getLocationIdByName(
@@ -513,19 +513,8 @@ const HackathonCreate = () => {
                                                                 }
                                                             >
                                                                 Banner
-                                                                {
-                                                                    !isCreatePage && data?.banner !== null ?
-                                                                        <button type="button" onClick={() => {
-                                                                            setPreviewImgUrl(data?.banner)
-                                                                            setOpenImagePreview(true);
-                                                                        }}>
-                                                                            View prev
-                                                                            upload
-                                                                        </button>
-                                                                        :
-                                                                        <></>
-                                                                }
-                                                                <HackathonImagePreview isOpen={openImagePreview} onClose={handleCloseModal} prevImgUrl={prevImgUrl} />
+                                                                
+
                                                             </label>
                                                             <div
                                                                 className={
@@ -562,6 +551,13 @@ const HackathonCreate = () => {
                                                                         5MB max
                                                                     </span>
                                                                 </label>
+                                                                {
+                                                                    data?.banner !== null && (
+                                                                        <div className={styles.editBanner}>
+                                                                            <img  src={`https://dev.mulearn.org/${data?.banner}`} alt="" />
+                                                                        </div>
+                                                                    )
+                                                                }
                                                                 <input
                                                                     id="file-upload1-input1"
                                                                     type="file"
@@ -634,39 +630,30 @@ const HackathonCreate = () => {
                                                                 }
                                                             >
                                                                 Event Logo
-                                                                {!isCreatePage && data?.event_logo !== null ?
-                                                                    <button className={styles.previewBtn} type="button" onClick={() => {
-                                                                        setPreviewImgUrl(data?.event_logo)
-                                                                        setOpenImagePreview(true);
-                                                                    }}>
-                                                                        View prev
-                                                                        upload
-                                                                    </button>
-                                                                    :
-                                                                    <></>
-                                                                }
+                                                                
                                                             </label>
                                                             <div
                                                                 className={
                                                                     styles.upload_area
                                                                 }
+                                                                
                                                             >
                                                                 <label
                                                                     htmlFor="file-upload1-input"
                                                                     className={
                                                                         styles.upload_button
                                                                     }
-                                                                >
+                                                                    >
                                                                     <FiUploadCloud
                                                                         className={
                                                                             styles.icon
                                                                         }
-                                                                    />
+                                                                        />
                                                                     <p
                                                                         className={
                                                                             styles.text
                                                                         }
-                                                                    >
+                                                                        >
                                                                         Click to
                                                                         choose
                                                                     </p>
@@ -674,13 +661,19 @@ const HackathonCreate = () => {
                                                                         className={
                                                                             styles.text1
                                                                         }
-                                                                    >
+                                                                        >
                                                                         300x124
                                                                         .png or
                                                                         .jpeg
                                                                         10MB max
                                                                     </span>
                                                                 </label>
+                                                                {data?.banner !== null && (
+                                                                        <div className={styles.editBanner} >
+                                                                            <img  src={`https://dev.mulearn.org/${data?.event_logo}`} alt="" />
+                                                                        </div>
+                                                                    )
+                                                                }
                                                                 <input
                                                                     id="file-upload1-input"
                                                                     type="file"

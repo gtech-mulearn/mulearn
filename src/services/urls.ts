@@ -20,9 +20,9 @@ export const authRoutes = {
 
 export const dashboardRoutes = {
     forgetPassword: "/api/v1/dashboard/user/forgot-password/",
-    resetPassword: "/api/v1/dashboard/user/reset-password/${token}",
+    resetPassword: "/api/v1/dashboard/user/reset-password/${token}/",
     resetPasswordVerify:
-        "/api/v1/dashboard/user/reset-password/verify-token/${token}",
+        "/api/v1/dashboard/user/reset-password/verify-token/${token}/",
     getInfo: "/api/v1/dashboard/user/info/",
     getIgData: "/api/v1/dashboard/ig/",
     getIgList: "/api/v1/dashboard/ig/csv",
@@ -56,7 +56,8 @@ export const dashboardRoutes = {
     putIsPublic: "/api/v1/dashboard/profile/share-user-profile/",
     getPublicUserLog: "/api/v1/dashboard/profile/user-log/${muid}/",
     getUserSuggestion: "/api/v1/dashboard/profile/user-suggestion/",
-    getStudentLeaderBoard: "api/v1/leaderboard/students/",
+    getStudentLeaderBoard: "/api/v1/leaderboard/students/",
+    getIgDetails: "/api/v1/dashboard/profile/ig-edit/",
 
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
     zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv/",
@@ -88,7 +89,22 @@ export const dashboardRoutes = {
 	getCampusIg: "api/v1/dashboard/ig/list/",
 
     getAllOrganisations: "/api/v1/hackathon/list-organisations/",
-    getAllDistricts: "/api/v1/hackathon/list-districts/"
+    getAllDistricts: "/api/v1/hackathon/list-districts/",
+
+    createInviteEmail:"/api/v1/dashboard/referral/send-referral/",
+
+    //graphs
+    //campus
+    getCampusWeeklyKarma : '/api/v1/dashboard/campus/weekly-karma/',
+    getStudentLevels:'api/v1/dashboard/campus/student-level/',
+    //district
+    getDistrictStudentLevels : 'api/v1/dashboard/district/college-level/' ,
+    getDistrictTopCampus : 'api/v1/dashboard/district/top-campus/',
+    //zonal
+    getZonalTopDistrict : 'api/v1/dashboard/zonal/top-districts/',
+    getZonalStudentLevels : 'api/v1/dashboard/zonal/student-level/'
+
+
 } as const;
 
 export const organizationRoutes = {

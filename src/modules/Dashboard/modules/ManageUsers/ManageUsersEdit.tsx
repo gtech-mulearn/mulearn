@@ -21,6 +21,7 @@ import {
     getRoles,
     getInterests
 } from "../../../Common/Authentication/services/onboardingApis";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 type Props = {};
 
@@ -94,13 +95,20 @@ const ManageUsersEdit = (props: Props) => {
                 setCollege,
                 setDepartment,
                 errorHandler,
-                { district: data.district }
-            )
-
-    }, [data])
-
-
-
+                {district:data.district}
+                )
+                
+    },[data])
+    if(
+        !community[0].id ||
+        !interestGroup[0].id ||
+        !role[0].id ||
+        !company[0].id ||
+        !country[0].value
+    )
+    return(
+        <MuLoader/>
+    )
     return (
         <div className={styles.external_container}>
             <div>

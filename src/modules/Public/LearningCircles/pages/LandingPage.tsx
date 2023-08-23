@@ -7,6 +7,7 @@ import {
     fetchCountryOptions,
     fetchDistrictOptions,
     fetchLC,
+    fetchLCFull,
     fetchStateOptions,
     getInterestGroups
 } from "../services/LandingPageApi";
@@ -87,15 +88,18 @@ const LandingPage = () => {
             setCampus(selectedCampus.value);
             setIgOptions(await getInterestGroups());
             setSelectedIg(null);
+			setTimeout(() => {
+                fetchLCFull(setData, selectedCampus.value, district);
+            }, 1000);
             setData([]);
         }
     };
 
-    const handleIgChange = async (selectedIg: Option | null) => {
+    const handleIgChange = (selectedIg: Option | null) => {
         if (selectedIg) {
             setIg(selectedIg.value);
             setSelectedIg(selectedIg);
-            fetchLC(setData, ig, campus, district);
+            fetchLC(setData, selectedIg.value, campus, district);
             setTimeout(() => {
                 console.log(data);
             }, 2000);
@@ -112,7 +116,8 @@ const LandingPage = () => {
             fontWeight: "bold",
             color: "#000",
             width: "100%",
-            padding: ".3rem .4rem"
+            padding: ".3rem .4rem",
+			minWidth: "200px",
         }),
         placeholder: (provided: any) => ({
             ...provided,
@@ -178,11 +183,10 @@ const LandingPage = () => {
                 <img src="https://i.ibb.co/vY786NX/image.png" alt="muLearn" />
                 <div className={styles.navLinks}>
                     <div>
-                        <Link to="#">About</Link>
-                        <Link to="#">Programs</Link>
-                        <Link to="#">Events</Link>
-                        <Link to="#">Interest Group</Link>
-                        <Link to="#">Careers</Link>
+                        <Link to="https://mulearn.org/">About</Link>
+                        <Link to="https://mulearn.org/events/">Programs</Link>
+                        <Link to="https://learn.mulearn.org/">Interest Group</Link>
+                        <Link to="https://mulearn.org/careers">Careers</Link>
                     </div>
                     <button
                         onClick={() => {

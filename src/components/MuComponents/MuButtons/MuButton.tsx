@@ -3,11 +3,9 @@ import styles from "./MuButtons.module.css";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import { ClipLoader } from "react-spinners";
 
-// normal button
-// need text for button
-
 /**
  * TODO: Make Single and Powerful Button Component(Multi-Purpose)
+ * TODO: Remove unused buttons
  */
 
 export const MuButton = (props: {
@@ -175,6 +173,7 @@ type Props = {
     onButtonClick?: any;
     margin?: string;
     padding?: string;
+    "font-size"?: string,
     borderColor?: string;
     icon?: ReactJSXElement;
     isLoading?: boolean; // show loading spinner if neccessary.
@@ -202,6 +201,7 @@ export const PowerfulButton = (props: Props) => {
         display: "flex",
         alignItems: "center",
         gap: "10px",
+        "font-size" : props["font-size"] || "17px",
         ...(isHovered && {
             backgroundColor: props.onHoverBackground || "#00204c",
             color: props.onHoverColor || "#f5f7f9"
