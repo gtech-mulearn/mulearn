@@ -35,12 +35,9 @@ export const getManageUsers = async ({
         const manageusers: any = response?.data;
 
         const datasuser = manageusers.response.data;
-        //console.log(datasuser);
         for (let i = 0; i < datasuser.length; i++) {
             if (datasuser[i].college != null) {
-                //console.log(datasuser[i].college);
             } else if (datasuser[i].company != null) {
-                //console.log(datasuser[i].company);
                 datasuser[i].college = datasuser[i].company;
             } else {
                 //console.log(null);
@@ -52,10 +49,6 @@ export const getManageUsers = async ({
         setIsLoading(false);
     } catch (err: unknown) {
         setIsLoading(false);
-        const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 };
 
@@ -82,9 +75,6 @@ export const createManageUsers = async (
         //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 };
 
@@ -126,10 +116,6 @@ export const editManageUsers = async (
         // });
     } catch (err: unknown) {
         const error = err as AxiosError;
-
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 };
 
@@ -210,7 +196,6 @@ export const deleteManageUsers = async (
             isClosable: true
         });
         const message: any = response?.data;
-        console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

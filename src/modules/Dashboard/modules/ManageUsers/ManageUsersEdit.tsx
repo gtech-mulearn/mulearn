@@ -84,7 +84,6 @@ const ManageUsersEdit = (props: Props) => {
 
     useEffect(() => {
         //useEffect to recall lower demographic levels if previous level exist
-        console.log(!!data?.country, !!data?.state, !!data?.district)
         if (data?.country && state[0].value == "")
             getState(errorHandler, setState, { country: data.country })
         if (data?.state && district[0].value == "")
