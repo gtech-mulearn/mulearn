@@ -528,10 +528,10 @@ function App() {
                 }
             ]
         },
-        {
-            path: "thread",
-            element:<Thread />
-        },
+        // {
+        //     path: "thread",
+        //     element:<Thread />
+        // },
         {
             path: "/profile/:id",
             element: <Profile />
