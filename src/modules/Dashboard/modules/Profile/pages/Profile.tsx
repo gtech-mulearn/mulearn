@@ -643,7 +643,7 @@ const Profile = () => {
 
                                 <div className={styles.notification}>
                                     <div className={styles.existing_roles}>
-                                        <div className={styles.head}>
+                                        {/* <div className={styles.head}>
                                             <h2>Connect with me</h2>
                                             <p>
                                                 <LinkedIn />
@@ -651,7 +651,7 @@ const Profile = () => {
                                                 <Instagram />
                                                 <Behance />
                                             </p>
-                                        </div>
+                                        </div> */}
                                         <div className={styles.head}>
                                             <h2>Existing Roles</h2>
                                             <p>
