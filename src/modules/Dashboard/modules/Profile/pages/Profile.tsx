@@ -31,8 +31,6 @@ import Instagram from "../assets/svg/Instagram";
 import Behance from "../assets/svg/Behance";
 import LinkedIn from "../assets/svg/LinkedIn";
 import Twitter from "../assets/svg/Twitter";
-import { False, If, True } from "@/MuLearnComponents/Conditional/If";
-import { Case,Default,Switch as SwitchComponent } from "@/MuLearnComponents/Conditional/Switch";
 
 //TODO: Verify the relevance of profile page image
 const Profile = () => {
@@ -246,16 +244,16 @@ const Profile = () => {
                             <EditProfilePopUp
                                 editPopUp={editPopUp}
                                 setEditPopUP={setEditPopUp}
-                                triggerUpdateProfile={triggerUpdateProfile}/>
+                                triggerUpdateProfile={triggerUpdateProfile} />
                             {/* TODO : Convert this to share Profile pop component */}
                             <div
                                 style={
                                     popUP
                                         ? { transform: "scale(1)" }
                                         : {
-                                              transform: "scale(0)"
-                                              // opacity: "0",
-                                          }
+                                            transform: "scale(0)"
+                                            // opacity: "0",
+                                        }
                                 }
                                 className={styles.share_pop_up_container}
                                 onKeyDown={e => {
@@ -309,12 +307,10 @@ const Profile = () => {
                                                     <i
                                                         onClick={() => {
                                                             navigator.clipboard.writeText(
-                                                                `${
-                                                                    import.meta
-                                                                        .env
-                                                                        .VITE_FRONTEND_URL as string
-                                                                }/profile/${
-                                                                    userProfile.muid
+                                                                `${import.meta
+                                                                    .env
+                                                                    .VITE_FRONTEND_URL as string
+                                                                }/profile/${userProfile.muid
                                                                 }`
                                                             );
                                                             setCopy(true);
@@ -331,10 +327,9 @@ const Profile = () => {
                                                             }
                                                         >
                                                             <p>
-                                                                <If condition={copy}>
-                                                                    <True>Copied!</True>
-                                                                    <False>Copy</False>
-                                                                </If>
+                                                                {!copy
+                                                                    ? "Copy"
+                                                                    : "Copied!"}
                                                             </p>
                                                         </div>
                                                         {/* Todo: Create as left Side Tooltip Component for above component*/}
@@ -343,7 +338,7 @@ const Profile = () => {
                                             </div>
                                         )}
                                         <hr />
-                                        <If condition={profileStatus}>
+                                        {profileStatus && (
                                             <MuButton
                                                 style={{
                                                     background: "#456FF6",
@@ -358,7 +353,7 @@ const Profile = () => {
                                                     downloadQR();
                                                 }}
                                             />
-                                        </If>
+                                        )}
                                         <button onClick={() => setPopUP(false)}>
                                             {!profileStatus
                                                 ? "Cancel"
@@ -408,26 +403,25 @@ const Profile = () => {
                                                         style={
                                                             !id
                                                                 ? {
-                                                                      outlineColor:
-                                                                          !profileStatus
-                                                                              ? "#456FF6"
-                                                                              : "#2dce89"
-                                                                  }
+                                                                    outlineColor:
+                                                                        !profileStatus
+                                                                            ? "#456FF6"
+                                                                            : "#2dce89"
+                                                                }
                                                                 : {}
                                                         }
                                                     />
-                                                    <If condition={!id}>
+                                                    {!id && (
                                                         <span>
                                                             <i
-                                                                className={`${
-                                                                    !profileStatus
-                                                                        ? "fi fi-sr-shield-exclamation"
-                                                                        : "fi fi-sr-shield-check"}  ${!profileStatus? styles.private: styles.public}`}></i>
+                                                                className={`${!profileStatus
+                                                                    ? "fi fi-sr-shield-exclamation"
+                                                                    : "fi fi-sr-shield-check"}  ${!profileStatus ? styles.private : styles.public}`}></i>
                                                             <div className={styles.gard_tooltip}>
-                                                                {!profileStatus? "Private profile": "Public profile"}
+                                                                {!profileStatus ? "Private profile" : "Public profile"}
                                                             </div>
                                                         </span>
-                                                    </If>
+                                                    )}
                                                 </div>
                                                 <div className={styles.name}>
                                                     <h1>
@@ -435,8 +429,8 @@ const Profile = () => {
                                                         {userProfile.last_name}{" "}
                                                         {userProfile.college_code
                                                             ? "(" +
-                                                              userProfile.college_code +
-                                                              ")"
+                                                            userProfile.college_code +
+                                                            ")"
                                                             : null}
                                                     </h1>
                                                     <p
@@ -454,15 +448,15 @@ const Profile = () => {
                                                         LEVEL{"     "}
                                                         {userProfile.level
                                                             ? userProfile?.level?.slice(
-                                                                  3,
-                                                                  4
-                                                              )
+                                                                3,
+                                                                4
+                                                            )
                                                             : 1}
                                                     </p>
                                                 </div>
                                             </div>
-                                            
-                                            <If condition={!id}>
+
+                                            {!id && (
                                                 <p
                                                     onClick={() =>
                                                         setPopUP(true)
@@ -479,8 +473,8 @@ const Profile = () => {
                                                 >
                                                     <i className="fi fi-br-share"></i>
                                                 </p>
-                                            </If>
-                                            <If condition={!id}>
+                                            )}
+                                            {!id && (
                                                 <p
                                                     onClick={() =>
                                                         setEditPopUp(true)
@@ -499,33 +493,33 @@ const Profile = () => {
                                                 >
                                                     <i className="fi fi-rr-pencil"></i>
                                                 </p>
-                                            </If>                                        
-                                    </div>
+                                            )}
+                                        </div>
 
                                         <div className={styles.profileList}>
                                             <p
                                                 style={
                                                     profileList ===
-                                                    "basic-details"
+                                                        "basic-details"
                                                         ? {
-                                                              marginLeft: "0px",
-                                                              width: "6.1rem"
-                                                          }
+                                                            marginLeft: "0px",
+                                                            width: "6.1rem"
+                                                        }
                                                         : profileList ===
-                                                          "karma-history"
-                                                        ? {
-                                                              marginLeft:
-                                                                  "125px",
-                                                              width: "6.7rem"
-                                                          }
-                                                        : profileList ===
-                                                          "mu-voyage"
-                                                        ? {
-                                                              marginLeft:
-                                                                  "250px",
-                                                              width: "5.3rem"
-                                                          }
-                                                        : {}
+                                                            "karma-history"
+                                                            ? {
+                                                                marginLeft:
+                                                                    "125px",
+                                                                width: "6.7rem"
+                                                            }
+                                                            : profileList ===
+                                                                "mu-voyage"
+                                                                ? {
+                                                                    marginLeft:
+                                                                        "250px",
+                                                                    width: "5.3rem"
+                                                                }
+                                                                : {}
                                                 }
                                                 className={styles.underline}
                                             ></p>
@@ -537,11 +531,11 @@ const Profile = () => {
                                                 }
                                                 style={
                                                     profileList ===
-                                                    "basic-details"
+                                                        "basic-details"
                                                         ? {
-                                                              fontSize: "600",
-                                                              color: "#000"
-                                                          }
+                                                            fontSize: "600",
+                                                            color: "#000"
+                                                        }
                                                         : {}
                                                 }
                                             >
@@ -555,11 +549,11 @@ const Profile = () => {
                                                 }
                                                 style={
                                                     profileList ===
-                                                    "karma-history"
+                                                        "karma-history"
                                                         ? {
-                                                              fontSize: "600",
-                                                              color: "#000"
-                                                          }
+                                                            fontSize: "600",
+                                                            color: "#000"
+                                                        }
                                                         : {}
                                                 }
                                             >
@@ -572,9 +566,9 @@ const Profile = () => {
                                                 style={
                                                     profileList === "mu-voyage"
                                                         ? {
-                                                              fontSize: "600",
-                                                              color: "#000"
-                                                          }
+                                                            fontSize: "600",
+                                                            color: "#000"
+                                                        }
                                                         : {}
                                                 }
                                             >
@@ -588,10 +582,16 @@ const Profile = () => {
                                                 <div>
                                                     <span>Karma</span>
                                                     <h1>
-                                                        <If condition={parseInt(userProfile.karma)> 1000}>
-                                                            <True>{(parseInt(userProfile.karma) / 1000).toPrecision(3)}K</True>
-                                                            <False>{userProfile.karma}</False>
-                                                        </If>
+                                                        {parseInt(
+                                                            userProfile.karma
+                                                        ) > 1000
+                                                            ? (
+                                                                parseInt(
+                                                                    userProfile.karma
+                                                                ) / 1000
+                                                            ).toPrecision(3) +
+                                                            "K"
+                                                            : userProfile.karma}
                                                     </h1>
                                                 </div>
                                             </div>
@@ -600,18 +600,36 @@ const Profile = () => {
                                                 <div>
                                                     <span>Avg.Karma/Month</span>
                                                     <h1>
-                                                        <SwitchComponent>
-                                                            <Case condition={parseInt(userProfile.karma) /monthDifference >1000 && monthDifference !== 0}>
-                                                                {(parseInt(userProfile.karma) /monthDifference /1000).toPrecision(4)}K
-                                                            </Case>
-                                                            <Case condition={isNaN(parseInt(userProfile.karma) /monthDifference)}>
-                                                                0
-                                                            </Case>
-                                                            <Case condition={monthDifference === 0}>0</Case>
-                                                            <Default>
-                                                            {(parseInt(userProfile.karma) /monthDifference).toPrecision(3)}
-                                                            </Default>
-                                                        </SwitchComponent>
+                                                        {parseInt(
+                                                            userProfile.karma
+                                                        ) /
+                                                            monthDifference >
+                                                            1000 &&
+                                                            monthDifference !== 0
+                                                            ? (
+                                                                parseInt(
+                                                                    userProfile.karma
+                                                                ) /
+                                                                monthDifference /
+                                                                1000
+                                                            ).toPrecision(4) +
+                                                            "K"
+                                                            : isNaN(
+                                                                parseInt(
+                                                                    userProfile.karma
+                                                                ) /
+                                                                monthDifference
+                                                            )
+                                                                ? "0"
+                                                                : monthDifference ===
+                                                                    0
+                                                                    ? "0"
+                                                                    : (
+                                                                        parseInt(
+                                                                            userProfile.karma
+                                                                        ) /
+                                                                        monthDifference
+                                                                    ).toPrecision(3)}
                                                     </h1>
                                                 </div>
                                             </div>
@@ -624,33 +642,38 @@ const Profile = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <SwitchComponent>
-                                        <Case condition={profileList==="basic-details"}>
-                                            <BasicDetails userProfile={userProfile} userLog={userLog}/>
-                                        </Case>
-                                        <Case condition={profileList==="karma-history"}>
-                                            <KarmaHistory userProfile={userProfile} userLog={userLog}/>
-                                        </Case>
-                                        <Case condition={profileList==="mu-voyage"}>
-                                            <MuVoyage 
-                                                userLevelData={userLevelData} 
-                                                userLevel={userProfile.level !== null ? parseInt(userProfile.level.slice(3, 4)) : 1}
-                                            />
-                                        </Case>
-                                    </SwitchComponent>
-                                    
+                                    {profileList === "basic-details" ? (
+                                        <BasicDetails
+                                            userProfile={userProfile}
+                                            userLog={userLog}
+                                        />
+                                    ) : profileList === "karma-history" ? (
+                                        <KarmaHistory
+                                            userProfile={userProfile}
+                                            userLog={userLog}
+                                        />
+                                    ) : (
+                                        profileList === "mu-voyage" && (
+                                            <MuVoyage
+                                                userLevelData={userLevelData}
+                                                userLevel={
+                                                    userProfile.level !== null
+                                                        ? parseInt(
+                                                            userProfile.level.slice(
+                                                                3,
+                                                                4
+                                                            )
+                                                        )
+                                                        : 1
+                                                } />
+                                        )
+                                    )}
+
                                 </div>
 
                                 <div className={styles.notification}>
                                     <div className={styles.existing_roles}>
-                                        {/* <div className={styles.head}>
-                                            <h2>Connect with me</h2>
-                                            <p>
-                                                <LinkedIn />
-                                                <Twitter />
-                                                <Behance />
-                                            </p>
-                                        </div> */}
+
                                         <div className={styles.head}>
                                             <h2>Existing Roles</h2>
                                             <p>
@@ -660,16 +683,20 @@ const Profile = () => {
                                         <div className={styles.head}>
                                             <h2>Karma Distribution</h2>
                                             <div className={styles.pie_chart}>
-                                                <If condition={!data.every(item =>item[1].toString() ==="0")}>
-                                                    <True><PieChart data={data} /></True>
-                                                    <False>
-                                                        <p className={styles.msg}>
-                                                            Wanna track your Karma points?
-                                                            Send in those tasks and your 
-                                                            stats won't disappoint!
-                                                        </p>
-                                                    </False>
-                                                </If>
+                                                {!data.every(
+                                                    item =>
+                                                        item[1].toString() ===
+                                                        "0"
+                                                ) ? (
+                                                    <PieChart data={data} />
+                                                ) : (
+                                                    <p className={styles.msg}>
+                                                        Wanna track your Karma
+                                                        points? Send in those
+                                                        tasks and your stats
+                                                        won't disappoint!
+                                                    </p>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
