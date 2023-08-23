@@ -3,6 +3,7 @@ import styles from "./BasicDetails.module.css";
 import HeatmapComponent from "../Heatmap/HeatmapComponent";
 import { useToast } from "@chakra-ui/react";
 import { editIgDetails, getAllIg, getIgDetails } from "./services/api";
+import { useParams } from "react-router-dom";
 type Props = {
     userProfile: any;
     userLog: any;
@@ -13,7 +14,7 @@ const BasicDetails = (props: Props) => {
     const [allIg, setAllIg] = useState<any>([]);
     const [ig, setIg] = useState<any>([]);
     // console.log( );
-
+    const { id } = useParams<{ id: string }>();
     useEffect(() => {
         getIgDetails(toast, setIg);
         getAllIg(setAllIg);
@@ -24,7 +25,7 @@ const BasicDetails = (props: Props) => {
             <div className={styles.interestGrp}>
                 <div className={styles.top_sec}>
                     <b>Interest Groups</b>
-                    {!editIg && (
+                    {!id && !editIg && (
                         <p
                             onClick={() => setEditIg(true)}
                             className={styles.edit_profile_btn}

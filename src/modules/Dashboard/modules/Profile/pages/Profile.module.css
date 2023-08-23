@@ -737,7 +737,7 @@
   }
 }
 
-@media (max-width: 500px) {
+@media screen and (max-width: 500px) {
   .rightDash {
     .share_pop_up_container .share_pop_up {
       width: 90vw;
