@@ -4,7 +4,10 @@ import { clearAllNotifications, clearNotification, getNotifications, Notificatio
 import { IoIosClose } from 'react-icons/io';
 import dpm from '../assets/images/dpm.webp';
 import { filterNotification, getTimeAgo, isRequest } from './utils';
-
+interface NotificationComponentProps {
+    notificationList: NotificationProps[];
+    setNotificationList: React.Dispatch<React.SetStateAction<NotificationProps[]>>;
+}
 
 
 const NotificationMessage = ({ profile, title, created_at, description, clear, id, url, update ,created_by}: NotificationMessageProps) => {
@@ -41,14 +44,8 @@ const NotificationMessage = ({ profile, title, created_at, description, clear, i
     );
 };
 
-const Notification = () => {
+const NotificationTab = ({notificationList,setNotificationList}: NotificationComponentProps) => {
     const [active, setActive] = useState(0);
-    const [notificationList, setNotificationList] = useState<NotificationProps[]>([]);
-
-    useEffect(() => {
-        getNotifications(setNotificationList);
-    }, []);
-
     const links = [
         { title: 'View All', count: notificationList.length },
         { title: 'Requests', count: notificationList.filter((item: NotificationProps) => isRequest(item.title)).length },
@@ -111,4 +108,4 @@ interface NotificationMessageProps extends NotificationProps {
     update: () => void;
 }
 
-export default Notification;
+export default NotificationTab;

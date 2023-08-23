@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from "react";
 import styles from "./SideNavBar.module.css";
-import { VscBellDot } from 'react-icons/vsc'
+import { VscBellDot,VscBell } from 'react-icons/vsc'
 import MulearnBrand from "../assets/MulearnBrand";
 import { useNavigate } from "react-router-dom";
 import dpm from "../assets/images/dpm.webp";
 import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
 import { Popover, PopoverTrigger, Button, PopoverContent, PopoverHeader, PopoverCloseButton, PopoverBody, PopoverArrow, PopoverFooter } from "@chakra-ui/react";
-import Notification from "./Notification";
-
+import { Notification as NotificationProps, getNotifications } from "./api";
+import NotificationTab from "./Notification";
 const TopNavBar = () => {
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [profilePic, setProfilePic] = useState<string | null>(null);
+    const [notificationList, setNotificationList] = useState<NotificationProps[]>([]);
 
+    useEffect(() => {
+        if(notificationList.length===0)
+            getNotifications(setNotificationList);
+    }, []);
     const notificationStyle = {
         backgroundColor: '#ffffff00',
         _hover: {
@@ -45,10 +50,10 @@ const TopNavBar = () => {
                             {/* <i className="fi fi-sr-settings"></i> */}
                             <Popover placement="bottom-end">
                                 <PopoverTrigger >
-                                    <Button {...notificationStyle}><VscBellDot /></Button>
+                                    <Button {...notificationStyle}>{notificationList.length===0?<VscBell />:<VscBellDot />}</Button>
                                 </PopoverTrigger>
                                 <PopoverContent >
-                                    <Notification />
+                                    <NotificationTab notificationList={notificationList} setNotificationList={setNotificationList} />
                                 </PopoverContent>
                             </Popover>
                             <div className={styles.profile}>
