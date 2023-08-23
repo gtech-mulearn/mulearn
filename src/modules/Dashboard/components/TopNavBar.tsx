@@ -1,15 +1,30 @@
 import React, { useEffect, useState } from "react";
 import styles from "./SideNavBar.module.css";
+import { VscBellDot } from 'react-icons/vsc'
 import MulearnBrand from "../assets/MulearnBrand";
 import { useNavigate } from "react-router-dom";
 import dpm from "../assets/images/dpm.webp";
 import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
+import { Popover, PopoverTrigger, Button, PopoverContent, PopoverHeader, PopoverCloseButton, PopoverBody, PopoverArrow, PopoverFooter } from "@chakra-ui/react";
+import Notification from "./Notification";
 
 const TopNavBar = () => {
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [profilePic, setProfilePic] = useState<string | null>(null);
 
+    const notificationStyle = {
+        backgroundColor: '#ffffff00',
+        _hover: {
+            backgroundColor: '#ffffff00'
+        },
+        _active: {
+            backgroundColor: '#eee'
+        },
+        aspectRatio: '1/1', borderRadius: '15px',
+        fontSize: '30px',
+        padding: '10px',
+    }
     useEffect(() => {
         const userInfo = fetchLocalStorage<UserInfo>("userInfo");
 
@@ -24,11 +39,18 @@ const TopNavBar = () => {
                 <div className={styles.nav}>
                     <div className={styles.nav_items}>
                         <b className={styles.greetings}>Hello, {name} 👋</b>
-
                         <div className={styles.mulearn_brand2}></div>
                         <div className={styles.menu}>
+
                             {/* <i className="fi fi-sr-settings"></i> */}
-                            {/* <i className="fi fi-sr-bell"></i> */}
+                            <Popover placement="bottom-end">
+                                <PopoverTrigger >
+                                    <Button {...notificationStyle}><VscBellDot /></Button>
+                                </PopoverTrigger>
+                                <PopoverContent >
+                                    <Notification />
+                                </PopoverContent>
+                            </Popover>
                             <div className={styles.profile}>
                                 <img
                                     onClick={() => {
@@ -46,5 +68,7 @@ const TopNavBar = () => {
         </>
     );
 };
+
+
 
 export default TopNavBar;
