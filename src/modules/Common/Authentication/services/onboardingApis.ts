@@ -2,6 +2,7 @@ import { publicGateway } from "@/MuLearnServices/apiGateways";
 import { KKEMRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import { NavigateFunction } from "react-router-dom";
 import { useFormik } from "formik";
+import { getInfo } from "../../../Dashboard/modules/ConnectDiscord/services/apis";
 
 // Define the type of MyValues
 type NN = { name: string; id: string };
@@ -248,8 +249,15 @@ export const registerUser = (
                 "refreshToken",
                 response.data.response.refreshToken
             );
-            navigate("/dashboard/connect-discord");
-            setShowSubmitLoader(false);
+            (async ()=>{
+
+            })
+            getInfo(()=>{
+                navigate("/dashboard/connect-discord");
+                setShowSubmitLoader(false);
+            })
+            
+        
         })
 
         .catch((error: APIError<{ key: any[] }>) => {

@@ -77,9 +77,9 @@ const Onboarding = (props: Props) => {
     //temporary measure for hiding company
     //when not working,not studying
     //is selected
-    const  [working,setWorking] = useState(false)
+    const [working, setWorking] = useState(false);
     //ref to community selector for resetting - temporary fix
-    const community_select_ref = useRef<any>()
+    const community_select_ref = useRef<any>();
     //State Array for Storing the Organization(Company, Community, College)
     const [organization, setOrganization] = useState("");
     const [community, setCommunity] = useState<string[]>([]);
@@ -139,13 +139,12 @@ const Onboarding = (props: Props) => {
             boxShadow: "none"
         })
     };
-    const currentYear = new Date().getFullYear()+7
+    const currentYear = new Date().getFullYear() + 7;
     const yearsCount = 15;
     const yog_year = Array.from({ length: yearsCount }, (_, index) => {
         const year = currentYear - index;
         return { value: year, label: year };
     });
-    
 
     const errorHandler = (status: number, dataStatus: number) => {
         if (status === 404 || status === 500) {
@@ -275,9 +274,9 @@ const Onboarding = (props: Props) => {
         } else if (!/\S+@\S+\.\S+/.test(values.email)) {
             errors.email = "Invalid email address";
         }
-        if (values.password.length<8) 
+        if (values.password.length < 8)
             errors.password = "Password length should be greater than 8";
-        
+
         if (!values.confirmPassword) {
             errors.confirmPassword = "Please confirm your password";
         } else if (
@@ -427,9 +426,15 @@ const Onboarding = (props: Props) => {
                                                                 emailVerificationResultBtn ==
                                                                 "Next"
                                                             ) {
-                                                                if(!/\S+@\S+\.\S+/
-                                                                .test(formik.values.email)){
-                                                                    formik.errors.email="Invalid email address"
+                                                                if (
+                                                                    !/\S+@\S+\.\S+/.test(
+                                                                        formik
+                                                                            .values
+                                                                            .email
+                                                                    )
+                                                                ) {
+                                                                    formik.errors.email =
+                                                                        "Invalid email address";
                                                                 }
                                                                 if (
                                                                     !formik
@@ -438,8 +443,7 @@ const Onboarding = (props: Props) => {
                                                                     formik
                                                                         .values
                                                                         .email !=
-                                                                        "" 
-                                                                        
+                                                                        ""
                                                                 ) {
                                                                     emailVerification(
                                                                         formik
@@ -530,7 +534,7 @@ const Onboarding = (props: Props) => {
                                                         //temporary measure for hiding company
                                                         //when not working,not studying
                                                         //is selected
-                                                        setWorking(true)
+                                                        setWorking(true);
                                                     }}
                                                 >
                                                     I'm currently a working
@@ -571,7 +575,7 @@ const Onboarding = (props: Props) => {
                                                         setTimeout(() => {
                                                             setDisplay("none");
                                                         }, 1000);
-                                                        setWorking(true)
+                                                        setWorking(true);
                                                     }}
                                                 >
                                                     I'm a freelancer
@@ -1022,7 +1026,7 @@ const Onboarding = (props: Props) => {
                                                                     }
                                                                 ) => value.value
                                                             )
-                                                        );                                                
+                                                        );
                                                     }}
                                                     closeMenuOnSelect={false}
                                                     components={
@@ -1686,7 +1690,9 @@ const Onboarding = (props: Props) => {
                                                     </div>
                                                 </div>
                                             </>
-                                        ) : (!working?"":
+                                        ) : !working ? (
+                                            ""
+                                        ) : (
                                             <>
                                                 <div
                                                     className={
@@ -1911,7 +1917,7 @@ const Onboarding = (props: Props) => {
                                         <button
                                             type="reset"
                                             onClick={() => {
-                                                community_select_ref.current.clearValue()
+                                                community_select_ref.current.clearValue();
                                                 formik.handleReset(
                                                     formik.values
                                                 );
@@ -1938,14 +1944,17 @@ const Onboarding = (props: Props) => {
                                                     formik.errors
                                                         .areaOfInterest ||
                                                     (role[0]["title"] ==
-                                                    "Student" ||role[0]["title"] ==
-                                                    "Enabler"
+                                                        "Student" ||
+                                                    role[0]["title"] ==
+                                                        "Enabler"
                                                         ? formik.errors
                                                               .organization ||
-                                                          formik.errors.dept 
+                                                          formik.errors.dept
                                                         : null) ||
-                                                    (role[0]["title"] == "Student"
-                                                    ?formik.errors.yog:null)||
+                                                    (role[0]["title"] ==
+                                                    "Student"
+                                                        ? formik.errors.yog
+                                                        : null) ||
                                                     // (role[0]["title"] == "Mentor"
                                                     //   ? formik.errors.mentorRole
                                                     //   : null) ||
