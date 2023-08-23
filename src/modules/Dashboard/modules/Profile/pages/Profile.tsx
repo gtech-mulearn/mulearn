@@ -648,7 +648,6 @@ const Profile = () => {
                                             <p>
                                                 <LinkedIn />
                                                 <Twitter />
-                                                <Instagram />
                                                 <Behance />
                                             </p>
                                         </div> */}
