@@ -1,22 +1,23 @@
-import { HackList } from "../services/HackathonInterfaces";
-
-import styles from "../pages/HackathonCreate.module.css";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { RiDeleteBin5Line } from "react-icons/ri";
-import Modal from "@/MuLearnComponents/Modal/Modal";
-import { MdOutlineUnpublished, MdPublishedWithChanges } from "react-icons/md";
 import { Tooltip } from "react-tooltip";
 import { useToast } from "@chakra-ui/react";
-import "react-tooltip/dist/react-tooltip.css";
+import Modal from "@/MuLearnComponents/Modal/Modal";
 import { LuCopy, LuEdit } from "react-icons/lu";
+import { RiDeleteBin5Line } from "react-icons/ri";
+import { MdOutlineUnpublished, MdPublishedWithChanges } from "react-icons/md";
+import { BsPersonAdd } from "react-icons/bs";
 
+import { HackList } from "../services/HackathonInterfaces";
+import { DateConverter } from "../../../utils/common";
 import {
     deleteHackathon,
     getHackathons,
     publishHackathon
 } from "../services/HackathonApis";
-import { BsPersonAdd } from "react-icons/bs";
-import { DateConverter } from "../../../utils/common";
+
+import styles from "../pages/HackathonCreate.module.css";
+import "react-tooltip/dist/react-tooltip.css";
 
 enum ModalType {
     Publish,
@@ -26,26 +27,28 @@ enum ModalType {
 type HackathonCardProps = {
     hackathon: HackList;
     setOwnData: React.Dispatch<React.SetStateAction<HackList[]>>;
-    isPublishOpen: boolean[];
-    isDeleteOpen: boolean[];
     index: number;
-    setIsPublishOpen: React.Dispatch<React.SetStateAction<boolean[]>>;
-    setIsDeleteOpen: React.Dispatch<React.SetStateAction<boolean[]>>;
     setData: React.Dispatch<React.SetStateAction<HackList[]>>;
+    ownData: HackList[];
 };
 
 const HackathonCard = ({
     hackathon,
     setOwnData,
-    isPublishOpen,
-    isDeleteOpen,
     index,
-    setIsPublishOpen,
-    setIsDeleteOpen,
-    setData
+    setData,
+    ownData
 }: HackathonCardProps) => {
     const navigate = useNavigate();
     const toast = useToast();
+
+    const [isPublishOpen, setIsPublishOpen] = useState<boolean[]>(
+        ownData.map(() => false)
+    );
+
+    const [isDeleteOpen, setIsDeleteOpen] = useState<boolean[]>(
+        ownData.map(() => false)
+    );
 
     const toggleModal = (index: number, type: string) => {
         if (type == ModalType[0]) {

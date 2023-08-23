@@ -1,25 +1,19 @@
-import { Link } from "react-router-dom";
-import "react-tooltip/dist/react-tooltip.css";
-import { FiPlusCircle } from "react-icons/fi";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { FiPlusCircle } from "react-icons/fi";
+import "react-tooltip/dist/react-tooltip.css";
+
 import { getHackathons } from "../services/HackathonApis";
+import { HackList } from "../services/HackathonInterfaces";
+import HackathonCard from "../components/HackathonCard";
 
 import styles from "./HackathonCreate.module.css";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-import { HackList } from "../services/HackathonInterfaces";
-import HackathonCard from "../components/HackathonCard";
 
 const Hackathon = () => {
     const [data, setData] = useState<HackList[]>([]);
     const [ownData, setOwnData] = useState<HackList[]>([]);
-    const [isPublishOpen, setIsPublishOpen] = useState<boolean[]>(
-        ownData.map(() => false)
-    );
-
-    const [isDeleteOpen, setIsDeleteOpen] = useState<boolean[]>(
-        ownData.map(() => false)
-    );
 
     useEffect(() => {
         getHackathons(setData);
@@ -47,13 +41,10 @@ const Hackathon = () => {
                             data.map((hack, i) => (
                                 <HackathonCard
                                     hackathon={hack}
-                                    isPublishOpen={isPublishOpen}
-                                    setIsPublishOpen={setIsPublishOpen}
-                                    isDeleteOpen={isDeleteOpen}
-                                    setIsDeleteOpen={setIsDeleteOpen}
                                     setData={setData}
                                     index={i}
                                     setOwnData={setOwnData}
+                                    ownData={ownData}
                                 />
                             ))}
                     </div>
