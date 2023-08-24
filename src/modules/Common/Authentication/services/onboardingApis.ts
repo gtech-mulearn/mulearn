@@ -249,9 +249,6 @@ export const registerUser = (
                 "refreshToken",
                 response.data.response.refreshToken
             );
-            (async ()=>{
-
-            })
             getInfo(()=>{
                 navigate("/dashboard/connect-discord");
                 setShowSubmitLoader(false);
