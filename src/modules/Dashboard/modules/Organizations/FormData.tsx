@@ -214,7 +214,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
         };
 
         SelectBody(orgType);
-        //console.log("Success Status-->", myRef.current);
     };
 
     useEffect(() => {
@@ -415,7 +414,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                 })}
                 onSubmit={values => {
                     setIsLoading(true)
-                    //console.log(values.Name);
                     handleSubmit(values.Name,values.Code);
                 }}
             >
