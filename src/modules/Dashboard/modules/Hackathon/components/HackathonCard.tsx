@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import { DateConverter } from "../../../utils/common";
 
@@ -7,6 +6,8 @@ import { HackList } from "../services/HackathonInterfaces";
 import "react-tooltip/dist/react-tooltip.css";
 import styles from "../pages/HackathonCreate.module.css";
 import HackathonCardIconButtons from "./HackathonCardIconButtons";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { useNavigate } from "react-router-dom";
 
 type HackathonCardProps = {
     hackathon: HackList;
@@ -25,11 +26,16 @@ const HackathonCard = ({
 }: HackathonCardProps) => {
     const isDraft = hackathon.status === "Draft";
 
+    const navigate = useNavigate();
+
     return (
         <div key={hackathon.id} className={styles.cardComponent}>
             <div className={styles.frame}>
                 <div className={styles.div}>
                     <div className={styles.title}>
+                        {/* {isDraft && (
+                            <span className={styles.draftText}>Draft</span>
+                        )} */}
                         <b className={styles.textWrapper}>{hackathon.title}</b>
                         <div className={styles.textWrapper2}>
                             {hackathon.tagline}
@@ -88,17 +94,20 @@ const HackathonCard = ({
                         </div>
                     </div>
 
-                    <Link
-                        to={
-                            isDraft
-                                ? `/dashboard/hackathon/edit/${hackathon.id}`
-                                : `/dashboard/hackathon/details/${hackathon.id}`
-                        }
-                    >
-                        <button className={styles.hackathonBtn}>
-                            {isDraft ? "Edit" : "Apply Now"}
-                        </button>
-                    </Link>
+                    <MuButton
+                        text={isDraft ? "Edit Draft" : "Apply Now"}
+                        onClick={() => {
+                            navigate(
+                                isDraft
+                                    ? `/dashboard/hackathon/edit/${hackathon.id}`
+                                    : `/dashboard/hackathon/details/${hackathon.id}`
+                            );
+                        }}
+                        className={styles.hackathonBtn}
+                        style={{
+                            backgroundColor: isDraft ? "#9297aa" : "#456ff6"
+                        }}
+                    />
                 </div>
             </div>
         </div>

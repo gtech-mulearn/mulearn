@@ -8,6 +8,11 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    vertical-align: middle;
+}
+
+.topBarButtons {
+    display: flex;
 }
 
 .btn {
@@ -723,6 +728,16 @@ input[type="file"]::file-selector-button:hover {
     border-radius: 0.5rem;
 }
 
+/* .draftText {
+    text-align: center;
+    background-color: var(--lightGray);
+    color: var(--White);
+    border-radius: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    width: fit-content;
+    font-size: 0.7rem;
+} */
+
 /* .buttonWrapper {
     border: 0px none;
 } */
@@ -730,11 +745,11 @@ input[type="file"]::file-selector-button:hover {
 .hackathonBtn {
     border-radius: 0.6rem;
     padding: 0.3rem 1rem;
-    background-color: var(--blue);
     color: var(--White);
-    border: 1px solid var(--blue);
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 600;
+    vertical-align: middle;
+    box-shadow: 0px 5px 15px 0.5px rgba(0, 0, 0, 0.1);
 }
 
 .hackathonHeading {
