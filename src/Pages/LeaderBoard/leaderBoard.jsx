@@ -78,7 +78,7 @@ const LeaderBoard = () => {
                       </p>
                       <p className={styles.card_college}>{college.institution}</p>
                       <p className={styles.total_karma}>
-                        Karma Points: {college.totalKarma}
+                        Karma Points: {college.total_karma}
                       </p>
                       {/* <p className={styles.card_membercount}>
                         Total Members: {college.member_count}
@@ -110,9 +110,9 @@ const LeaderBoard = () => {
                       <p className={styles.card_code}>
                         College Code: {student.institution}
                       </p>
-                      <p className={styles.card_college}>{student.fullName}</p>
+                      <p className={styles.card_college}>{student.full_name}</p>
                       <p className={styles.total_karma}>
-                        Karma Points: {student.totalKarma}
+                        Karma Points: {student.total_karma}
                       </p>
                     </div>
                   );

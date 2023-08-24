@@ -11,7 +11,7 @@ const MonthlyLeaderboard = () => {
 
   useEffect(() => {
     axios
-      .get('https://mulearn.org/api/v1/leaderboard/college-monthly/')
+      .get("https://mulearn.org/api/v1/leaderboard/college-monthly/")
       .then(function (response) {
         // console.log(response.data.response);
         setColleges(response.data.response);
@@ -21,7 +21,7 @@ const MonthlyLeaderboard = () => {
       });
 
     axios
-    .get('https://mulearn.org/api/v1/leaderboard/students-monthly/')
+      .get("https://mulearn.org/api/v1/leaderboard/students-monthly/")
       .then(function (response) {
         // console.log(response.data.response);
         setStudents(response.data.response);
@@ -56,12 +56,14 @@ const MonthlyLeaderboard = () => {
 
         <div className={styles.second_view_container}>
           <div className={styles.second_view}>
-            <div className={styles.sv_texts}>
-              {" "}
-              <p className={styles.sv_heading}>
-                <span>Monthly College</span> Leader Board
-              </p>
-            </div>
+            {colleges && (
+              <div className={styles.sv_texts}>
+                {" "}
+                <p className={styles.sv_heading}>
+                  <span>Monthly College</span> Leader Board
+                </p>
+              </div>
+            )}
 
             <div className={styles.sv_cards_container}>
               {colleges &&
@@ -74,11 +76,13 @@ const MonthlyLeaderboard = () => {
                       <p className={styles.card_code}>
                         College Code: {college.code}
                       </p>
-                      <p className={styles.card_college}>{college.institution}</p>
-                      <p className={styles.total_karma}>
-                        Monthly Karma Points: {college.totalKarma}
+                      <p className={styles.card_college}>
+                        {college.institution}
                       </p>
-                      <br/>
+                      <p className={styles.total_karma}>
+                        Monthly Karma Points: {college.total_karma}
+                      </p>
+                      <br />
                     </div>
                   );
                 })}
@@ -88,32 +92,34 @@ const MonthlyLeaderboard = () => {
 
         <div className={styles.second_view_container}>
           <div className={styles.second_view}>
-            <div className={styles.sv_texts}>
-              {" "}
-              <p className={styles.sv_heading}>
-                <span>Monthly Students</span> Leader Board
-              </p>
-            </div>
+            {students && (
+              <div className={styles.sv_texts}>
+                {" "}
+                <p className={styles.sv_heading}>
+                  <span>Monthly Students</span> Leader Board
+                </p>
+              </div>
+            )}
 
             <div className={styles.sv_cards_container}>
               {students &&
                 students.map((student, position) => {
                   return (
-                    <div className={styles.sv_card} >
+                    <div className={styles.sv_card}>
                       <p className={styles.card_position}>
                         {position + 1} <span>Position</span>
                       </p>
-                      <p className={styles.card_code}>
+                      {/* <p className={styles.card_code}>
                         College Code: {student.institution}
-                      </p>
-                      <p className={styles.card_college}>{student.fullName}</p>
+                      </p> */}
+                      <p className={styles.card_college}>{student.full_name}</p>
                       <p className={styles.total_karma}>
-                        Monthly Karma Points: {student.totalKarma}
+                        Monthly Karma Points: {student.total_karma}
                       </p>
                       <p className={styles.total_karma}>
                         {/* Overall Karma Points: {student.totalKarma} */}
                       </p>
-                      <br/>
+                      <br />
                     </div>
                   );
                 })}

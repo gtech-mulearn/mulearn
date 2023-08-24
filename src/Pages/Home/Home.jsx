@@ -35,13 +35,13 @@ const Home = () => {
               >
                 <button className={styles.primary}>Join Us</button>
               </a>
-              <a
+              {/* <a
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://mulearn.org/journey"
               >
                 <button className={styles.secondary}>Your Journey</button>
-              </a>
+              </a> */}
             </div>
           </div>
           <img
