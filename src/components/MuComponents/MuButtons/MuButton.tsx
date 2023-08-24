@@ -1,4 +1,4 @@
-import React, { ReactFragment, ReactNode, useState } from "react";
+import React, { ReactNode, useState } from "react";
 import styles from "./MuButtons.module.css";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import { ClipLoader } from "react-spinners";
@@ -231,3 +231,16 @@ export const PowerfulButton = (props: Props) => {
         </div>
     );
 };
+
+type Variants = "primary" | "secondary" | "ghost" | "outline" | "destructive" | "success" | "link"
+
+type ButtonProps = ({ children, className, variant, style, disabled,...props }:
+    {children: ReactNode, className?:string, variant?:Variants, style?: React.CSSProperties, disabled?:true} & React.HTMLAttributes<HTMLButtonElement>) => ReactJSXElement
+
+export const Button:ButtonProps = ({ children, className = "", variant = "primary", style, disabled, ...props }) => {
+    const variantName = variant ? styles[`${variant}-btn`] : ""
+
+    return <button className={styles["common-btn"] + "  " + variantName} {...props} style={style} disabled={disabled}>
+        {children}
+    </button>
+}

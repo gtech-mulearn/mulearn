@@ -205,7 +205,7 @@ const CampusStudentList = (props: Props) => {
                 </div>
             )}
             <div className={styles.graphs}>
-                <div className={styles.container}>
+                {/* <div className={styles.container}>
                     <h2>Weekly Karma Insights</h2>
                     <BarChart
                         data={barData}
@@ -214,7 +214,7 @@ const CampusStudentList = (props: Props) => {
                             colors: ["#91ABFF"]
                         }}
                     />
-                </div>
+                </div> */}
                 <div className={styles.container}>
                     <h2>Student Statistics</h2>
                     <PieChart
