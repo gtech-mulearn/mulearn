@@ -1,22 +1,23 @@
-import {
-    deleteHackathon,
-    getHackathons,
-    publishHackathon
-} from "../services/HackathonApis";
+import { useToast } from "@chakra-ui/react";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import { BsPersonAdd } from "react-icons/bs";
 import { LuCopy, LuEdit } from "react-icons/lu";
 import { MdOutlineUnpublished, MdPublishedWithChanges } from "react-icons/md";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
-import { HackList } from "../services/HackathonInterfaces";
-
 import Modal from "@/MuLearnComponents/Modal/Modal";
 
+import {
+    deleteHackathon,
+    getHackathons,
+    publishHackathon
+} from "../services/HackathonApis";
+
+import { HackList } from "../services/HackathonInterfaces";
+
 import styles from "../pages/HackathonCreate.module.css";
-import { Link, useNavigate } from "react-router-dom";
-import { useToast } from "@chakra-ui/react";
-import { useState } from "react";
 
 enum ModalType {
     Publish,
@@ -64,6 +65,35 @@ const HackathonCardIconButtons = ({
             });
         }
     };
+
+    function isDetailsComplete(): boolean {
+        if (
+            hackathon.id &&
+            hackathon.title &&
+            hackathon.type &&
+            hackathon.tagline &&
+            hackathon.event_logo &&
+            hackathon.banner &&
+            hackathon.website &&
+            hackathon.place &&
+            hackathon.event_start &&
+            hackathon.event_end &&
+            hackathon.application_start &&
+            hackathon.application_ends &&
+            hackathon.description &&
+            hackathon.participant_count !== null &&
+            hackathon.district &&
+            hackathon.organisation &&
+            hackathon.district_id &&
+            hackathon.org_id !== null &&
+            hackathon.editable !== null
+        ) {
+            return true;
+        }
+        return false;
+    }
+
+    const isDraft = hackathon.status === "Draft";
 
     return (
         <div className={styles.shared}>
@@ -127,56 +157,8 @@ const HackathonCardIconButtons = ({
                                     />
                                 )}
                             </div>
-                            <div className={styles.group}>
-                                {hackathon.status === "Draft" ? (
-                                    <MdPublishedWithChanges
-                                        data-tooltip-id="Icon"
-                                        data-tooltip-content="Publish"
-                                        onClick={() => {
-                                            if (
-                                                hackathon.id &&
-                                                hackathon.title &&
-                                                hackathon.type &&
-                                                hackathon.tagline &&
-                                                hackathon.event_logo &&
-                                                hackathon.banner &&
-                                                hackathon.website &&
-                                                hackathon.place &&
-                                                hackathon.event_start &&
-                                                hackathon.event_end &&
-                                                hackathon.application_start &&
-                                                hackathon.application_ends &&
-                                                hackathon.description &&
-                                                hackathon.participant_count !==
-                                                    null &&
-                                                hackathon.district &&
-                                                hackathon.organisation &&
-                                                hackathon.district_id &&
-                                                hackathon.org_id !== null &&
-                                                hackathon.editable !== null
-                                            ) {
-                                                toggleModal(
-                                                    index,
-                                                    ModalType[0]
-                                                );
-                                            } else {
-                                                // Show an error message or take appropriate action
-                                                console.log(
-                                                    "Please fill in all the details before publishing."
-                                                );
-                                                toast({
-                                                    title: "Error",
-                                                    description:
-                                                        "Please fill in all the details before publishing.",
-                                                    status: "error",
-                                                    duration: 3000,
-                                                    isClosable: true,
-                                                    position: "top"
-                                                });
-                                            }
-                                        }}
-                                    />
-                                ) : (
+                            {!isDraft && (
+                                <div className={styles.group}>
                                     <MdOutlineUnpublished
                                         data-tooltip-id="Icon"
                                         data-tooltip-content="Change to Draft"
@@ -184,20 +166,16 @@ const HackathonCardIconButtons = ({
                                             toggleModal(index, ModalType[0]);
                                         }}
                                     />
-                                )}
-                                {isPublishOpen[index] && (
+
+                                    {/* {isPublishOpen[index] && (
                                     <Modal
                                         setIsOpen={() =>
                                             toggleModal(index, ModalType[0])
                                         }
                                         id={hackathon.id}
-                                        heading={
-                                            hackathon.status === "Draft"
-                                                ? "Publish"
-                                                : "Draft"
-                                        }
+                                        heading={isDraft ? "Publish" : "Draft"}
                                         content={
-                                            hackathon.status === "Draft"
+                                            isDraft
                                                 ? `Make sure all details are filled before Publishing ${hackathon.title}`
                                                 : `Are you sure you want to set ${hackathon.title} to Draft`
                                         }
@@ -218,13 +196,12 @@ const HackathonCardIconButtons = ({
                                             }, 2000);
                                         }}
                                     />
-                                )}
-                            </div>
+                                )} */}
+                                </div>
+                            )}
                         </div>
                     </div>
-                    {hackathon.status === "Draft" ? (
-                        <div></div>
-                    ) : (
+                    {!isDraft && (
                         <button
                             data-tooltip-id="Icon"
                             data-tooltip-content="List Participants"
