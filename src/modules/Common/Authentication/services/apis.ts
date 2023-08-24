@@ -107,12 +107,21 @@ export const login = (
         })
         .catch(error => {
             setIsLoading(false);
-            toast({
-                title: error.response.data.message.general[0],
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+            if(error.response.data){
+                toast({
+                    title: error.response.data.message.general[0],
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true
+                });
+            }else{
+                toast({
+                    title: "Something went wrong",
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true
+                });
+            }
         });
 };
 

@@ -8,10 +8,15 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    vertical-align: middle;
+}
+
+.topBarButtons {
+    display: flex;
 }
 
 .btn {
-    padding: .7rem 1rem;
+    padding: 0.7rem 1rem;
     border-radius: var(--borderRadius);
     border: none;
     font-size: 1.1rem;
@@ -35,7 +40,7 @@
     -webkit-text-fill-color: transparent;
     display: block;
     position: absolute;
-    bottom: .9rem;
+    bottom: 0.9rem;
     border-radius: var(--borderRadius);
     z-index: -1;
     height: 0.5rem;
@@ -95,7 +100,7 @@
 .form {
     width: 100%;
     padding: 1.5rem;
-    background-color:  var(--White);
+    background-color: var(--White);
     border-radius: var(--borderRadius);
     box-shadow: var(--boxShadow);
     padding-bottom: 1px;
@@ -134,8 +139,7 @@
     text-align: left;
 }
 
-@media(width<=900px) {
-
+@media (width<=900px) {
     .formGroupInitial,
     .formGroup {
         grid-template-columns: 1fr;
@@ -154,7 +158,7 @@
 
 .btns button:nth-child(2) {
     background-color: var(--blue);
-    color:  var(--White);
+    color: var(--White);
 }
 
 .error {
@@ -167,7 +171,7 @@
     }
 
     .dashLine::before {
-        bottom: .7rem;
+        bottom: 0.7rem;
     }
 }
 
@@ -177,11 +181,11 @@
     }
 
     .dashLine::before {
-        bottom: .5rem;
+        bottom: 0.5rem;
     }
 
     .formGroup .placeholder::placeholder {
-        font-size: .8rem;
+        font-size: 0.8rem;
     }
 }
 
@@ -195,12 +199,12 @@
     }
 
     .dashLine::before {
-        bottom: .3rem;
+        bottom: 0.3rem;
         height: 0.3rem;
     }
 
     .hackNav ul {
-        padding: .8rem;
+        padding: 0.8rem;
         margin: 2rem 0;
         height: 3rem;
         font-size: 1rem;
@@ -225,14 +229,14 @@
     }
 
     .formGroup .placeholder::placeholder {
-        font-size: .7rem;
+        font-size: 0.7rem;
     }
 }
 
 .checkBoxContainer {
     background-color: var(--Light);
     color: #000;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     border-radius: var(--borderRadius);
     cursor: pointer;
     user-select: none;
@@ -245,7 +249,7 @@
 .checked {
     background-color: var(--blue);
     color: var(--Light);
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     border-radius: var(--borderRadius);
 }
 
@@ -255,17 +259,17 @@
     flex-wrap: wrap;
 }
 
-input[type=file]::file-selector-button {
+input[type="file"]::file-selector-button {
     margin-right: 20px;
     border: none;
     background: var(--blue);
     border-radius: var(--borderRadius);
-    color:  var(--White);
+    color: var(--White);
     cursor: pointer;
-    transition: background .2s ease-in-out;
+    transition: background 0.2s ease-in-out;
 }
 
-input[type=file]::file-selector-button:hover {
+input[type="file"]::file-selector-button:hover {
     background: #0d45a5;
 }
 
@@ -273,7 +277,7 @@ input[type=file]::file-selector-button:hover {
     border-radius: var(--borderRadius);
     background-color: var(--White);
     min-width: 22rem;
-    border: .1px solid #CFD3D4;
+    border: 0.1px solid #cfd3d4;
 }
 
 .upload_area {
@@ -290,27 +294,27 @@ input[type=file]::file-selector-button:hover {
 .formGroupLogo .formLabel button {
     background-color: var(--blue);
     color: var(--White);
-    padding: .5rem;
+    padding: 0.5rem;
     border-radius: 8px;
-    font-size: .7rem;
+    font-size: 0.7rem;
     cursor: pointer;
     z-index: 99;
 }
 
 .fileInfo {
-    padding-top: .5rem;
+    padding-top: 0.5rem;
     color: var(--blue);
 }
 
-@media(width < 570px) {
+@media (width < 570px) {
     .fileInfo {
-        font-size: .7rem;
+        font-size: 0.7rem;
     }
 
     .formGroupLogo .formLabel button {
-        padding: .5rem;
+        padding: 0.5rem;
         border-radius: 6px;
-        font-size: .5rem;
+        font-size: 0.5rem;
         cursor: pointer;
     }
 }
@@ -336,7 +340,6 @@ input[type=file]::file-selector-button:hover {
     height: fit-content;
     width: 100%;
     padding: 0.5rem;
-    
 }
 
 .icon {
@@ -380,7 +383,6 @@ input[type=file]::file-selector-button:hover {
 */
 
 .hackathonDetails {
-    
     padding: 1rem 3rem;
     display: flex;
     gap: 2rem;
@@ -416,7 +418,7 @@ input[type=file]::file-selector-button:hover {
     gap: 1rem;
     padding: 1.5rem;
     border-radius: 1rem;
-    box-shadow: 0px 0px 10px .5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px 0.5px rgba(0, 0, 0, 0.1);
 }
 
 .hackathonApplyCard .date {
@@ -425,7 +427,7 @@ input[type=file]::file-selector-button:hover {
 }
 
 .hackathonEventDate .title {
-    font-size: .8rem;
+    font-size: 0.8rem;
     color: #c2bab7;
 }
 
@@ -438,28 +440,28 @@ input[type=file]::file-selector-button:hover {
     display: block;
     width: 2px;
     height: 100%;
-    margin-right: .5rem;
-    background-color: #456FF6;
+    margin-right: 0.5rem;
+    background-color: #456ff6;
 }
 
 .hackathonApplyCard .close {
-    background-color: #F0F4FF;
-    
-    padding: .5rem;
-    border-radius: .3rem;
+    background-color: #f0f4ff;
+
+    padding: 0.5rem;
+    border-radius: 0.3rem;
     font-weight: 700;
     color: #000;
 }
 
 .hackathonApplyCard .close b {
-    color: #456FF6;
-    font-size: .7rem;
+    color: #456ff6;
+    font-size: 0.7rem;
 }
 
 .hackathonApplyNow {
-    border-radius: .3rem;
-    padding: .8rem;
-    background-color: #456FF6;
+    border-radius: 0.3rem;
+    padding: 0.8rem;
+    background-color: #456ff6;
     color: white;
     border: none;
 }
@@ -472,22 +474,22 @@ input[type=file]::file-selector-button:hover {
     align-items: center;
     gap: 2.5rem;
     padding: 1rem;
-    box-shadow: 0px 0px 10px .5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px 0.5px rgba(0, 0, 0, 0.1);
     border-radius: 1rem;
     font-size: 1.5rem;
 }
 
 .hackathonEventCard .socialLinks a {
-    padding: .5rem;
-    background-color: #E6ECFF;
-    color: #456FF6;
+    padding: 0.5rem;
+    background-color: #e6ecff;
+    color: #456ff6;
     border-radius: 100%;
 }
 
 .hackathonDesc {
     width: 100%;
     border-radius: 1rem;
-    box-shadow: 0px 0px 10px .5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px 0.5px rgba(0, 0, 0, 0.1);
     background-color: var(--White);
     padding: 1.5rem 2rem;
     display: flex;
@@ -514,8 +516,8 @@ input[type=file]::file-selector-button:hover {
 }
 
 .hackathonDesc .description b {
-    color: #5B5B5B;
-    font-size: .8rem;
+    color: #5b5b5b;
+    font-size: 0.8rem;
 }
 
 .hackathonDesc p {
@@ -531,18 +533,18 @@ input[type=file]::file-selector-button:hover {
 }
 
 .hackathonDesc .love {
-    padding: .6rem;
+    padding: 0.6rem;
     margin-left: 1rem;
     border-radius: 50%;
-    color: #FF6060;
-    background-color: #FFDFDF;
+    color: #ff6060;
+    background-color: #ffdfdf;
     font-size: 1.5rem;
 }
 
-@media(width<=820px) {
+@media (width<=820px) {
     .hackathonDetails {
         flex-direction: column;
-        padding: .5rem;
+        padding: 0.5rem;
     }
 
     .hackathonDetailDash,
@@ -555,23 +557,23 @@ input[type=file]::file-selector-button:hover {
     }
 }
 
-@media(width<=320px) {
+@media (width<=320px) {
     .hackathonDesc .description {
         flex-direction: column;
-        gap: .5rem;
+        gap: 0.5rem;
     }
 
     .hackathonDesc .description .descTitle .tagLine b {
-        font-size: .65rem;
+        font-size: 0.65rem;
     }
 
     .hackathonDesc .love {
-        padding: .5rem;
+        padding: 0.5rem;
         font-size: 1rem;
     }
 
     .hackathonDesc p {
-        font-size: .8rem;
+        font-size: 0.8rem;
     }
 }
 
@@ -589,25 +591,24 @@ input[type=file]::file-selector-button:hover {
 }
 
 .hackathonBox {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1.5rem;
 }
 
 .hackathonBox .cardComponent {
     border: 1px solid #dbdbdb;
-    background-color:  var(--White);
+    background-color: var(--White);
     border-radius: 20px;
     display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 1.5rem;
     text-align: left;
     position: relative;
+    transition: all 0.3s ease-out;
 }
 
 .hackathonBox .cardComponent:hover {
-    box-shadow: 0px 0px 10px .5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px 0.5px rgba(0, 0, 0, 0.1);
 }
 
 .hackathonBox .frame {
@@ -615,8 +616,7 @@ input[type=file]::file-selector-button:hover {
     flex-direction: column;
     gap: 1rem;
     background-color: #ffffff;
-    width: 18rem;
-    height: fit-content;
+    width: 100%;
 }
 
 .hackathonBox .div {
@@ -636,14 +636,14 @@ input[type=file]::file-selector-button:hover {
     position: absolute;
     top: 0;
     right: 0;
-    padding: .5rem;
-    font-size: .8rem;
+    padding: 0.5rem;
+    font-size: 0.8rem;
 }
 
-.hackathonBox .shared2 button{
-    margin-top: .5rem;
-    padding: .1rem;
-    font-size: .7rem;
+.hackathonBox .shared2 button {
+    margin-top: 0.5rem;
+    padding: 0.1rem;
+    font-size: 0.7rem;
     background-color: var(--blue);
     color: var(--White);
     border-radius: 5.5px;
@@ -655,51 +655,51 @@ input[type=file]::file-selector-button:hover {
 
 .hackathonBox .textWrapper2 {
     color: var(--black);
-    font-size: .8rem;
+    font-size: 0.8rem;
 }
 
-.hackathonBox .frame2 ,
-.hackathonBox .frame2 div{
+.hackathonBox .frame2,
+.hackathonBox .frame2 div {
     display: flex;
-    gap: .6rem;
+    gap: 0.6rem;
 }
 
-.hackathonBox .frame2 div{
+.hackathonBox .frame2 div {
     flex-direction: column;
 }
 
 .hackathonBox .group {
     background-color: #e5ebff;
     border-radius: 50%;
-    padding: .3rem;
+    padding: 0.3rem;
     cursor: pointer;
 }
 
 .hackathonBox .group2 {
     display: flex;
     flex-direction: column;
-    gap: .2rem;
+    gap: 0.2rem;
 }
 
 .hackathonBox .textWrapper3 {
     color: #000000cc;
-    font-size: .65rem;
+    font-size: 0.65rem;
 }
 
 .hackathonBox .overlapGroup {
-    gap: .4rem;
+    gap: 0.4rem;
     display: flex;
 }
 
 .hackathonBox .textWrapper4 {
     color: #888888;
-    font-size: .45rem;
-    padding: 0.2rem .5rem;
+    font-size: 0.45rem;
+    padding: 0.2rem 0.5rem;
     border: 1px solid #888888;
     border-radius: 0.4rem;
 }
 
-.hackathonBox .frame3 {
+.hackathonBox .bottomRow {
     display: flex;
     gap: 1rem;
     justify-content: space-between;
@@ -708,13 +708,13 @@ input[type=file]::file-selector-button:hover {
 .hackathonBox .frame4 {
     display: flex;
     align-items: center;
-    gap: .5rem;
+    gap: 0.5rem;
 }
 
 .hackathonBox .textWrapperSmall {
     color: var(--black);
-    font-size: .6rem;
-    padding: 0rem .5rem;
+    font-size: 0.6rem;
+    padding: 0rem 0.5rem;
     font-weight: 600;
 }
 
@@ -722,24 +722,34 @@ input[type=file]::file-selector-button:hover {
 .mode {
     display: flex;
     align-items: center;
-    padding: .3rem;
+    padding: 0.3rem;
     height: 1.5rem;
     border: 1px solid var(--blue);
     border-radius: 0.5rem;
 }
 
-.buttonWrapper {
+/* .draftText {
+    text-align: center;
+    background-color: var(--lightGray);
+    color: var(--White);
+    border-radius: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    width: fit-content;
+    font-size: 0.7rem;
+} */
+
+/* .buttonWrapper {
     border: 0px none;
-}
+} */
 
 .hackathonBtn {
-    border-radius: .6rem;
+    border-radius: 0.6rem;
     padding: 0.3rem 1rem;
-    background-color: var(--blue);
     color: var(--White);
-    border: 1px solid var(--blue);
-    font-size: .8rem;
+    font-size: 1rem;
     font-weight: 600;
+    vertical-align: middle;
+    box-shadow: 0px 5px 15px 0.5px rgba(0, 0, 0, 0.1);
 }
 
 .hackathonHeading {
@@ -770,8 +780,8 @@ input[type=file]::file-selector-button:hover {
 }
 
 .hackathonHeading .HCbutton {
-    font-size: .85rem;
-    padding: .5rem;
+    font-size: 0.85rem;
+    padding: 0.5rem;
 }
 
 @media (width<=820px) {
@@ -780,11 +790,11 @@ input[type=file]::file-selector-button:hover {
     }
 
     .hackathonHeading .HCbutton {
-        font-size: .85rem;
+        font-size: 0.85rem;
     }
 }
 
-@media(width<600px) {
+@media (width<600px) {
     .hackathonHeading h1 {
         font-size: 1.5rem;
     }
@@ -795,11 +805,11 @@ input[type=file]::file-selector-button:hover {
     }
 
     .hackathonHeading .HCbutton {
-        font-size: .6rem;
+        font-size: 0.6rem;
     }
 }
 
-.previewBtn{
+.previewBtn {
     display: flex;
     cursor: pointer;
 }
@@ -807,11 +817,11 @@ input[type=file]::file-selector-button:hover {
 .spinnerContainer {
     min-height: 100dvh;
     min-width: 100vw;
-  }
-  
-  .spinnerContainer .spinner {
+}
+
+.spinnerContainer .spinner {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
+}

@@ -1,4 +1,4 @@
-import React, { ReactFragment, ReactNode, useState } from "react";
+import React, { ReactNode, useState } from "react";
 import styles from "./MuButtons.module.css";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import { ClipLoader } from "react-spinners";
@@ -15,11 +15,12 @@ export const MuButton = (props: {
     style?: React.CSSProperties; // button style if wanted
     className?: string; // button class name if wanted
     onClick?: React.MouseEventHandler; // onclick event if wanted
-    onSubmit?:any;
+    onSubmit?: any;
     isLoading?: boolean; // show loading spinner if neccessary.
     disabled?: boolean; //disable the button if needed
     buttonUrl?: string; // for styling purposes
     submit?: boolean; // for styling purposes
+    isMinWidth?: boolean;
 }) => {
     return (
         <button
@@ -33,12 +34,13 @@ export const MuButton = (props: {
                     `${props.buttonUrl}` === window.location.pathname
                         ? "#5570F1"
                         : "",
+                width: props.isMinWidth ? "fit-content" : "",
                 ...props.style
             }}
             onClick={props.onClick}
             onSubmit={props.onSubmit}
             disabled={props.disabled}
-            type={props.type?props.type:'button'}
+            type={props.type ? props.type : "button"}
             //When there are more than two button with type submit
             //pressing enter wont submit the form
             //buttons default to submit if left undefined
@@ -69,7 +71,7 @@ export const MuButtonLight = (props: {
             className={props.className ? props.className : styles.btn_light}
             style={props.style}
             onClick={props.onClick}
-            type={props.type?props.type:'button'}
+            type={props.type ? props.type : "button"}
         >
             {props.icon && <div className={styles.btn_icon}>{props.icon}</div>}
             <p>{props.text}</p>
@@ -173,7 +175,7 @@ type Props = {
     onButtonClick?: any;
     margin?: string;
     padding?: string;
-    "font-size"?: string,
+    "font-size"?: string;
     borderColor?: string;
     icon?: ReactJSXElement;
     isLoading?: boolean; // show loading spinner if neccessary.
@@ -201,7 +203,7 @@ export const PowerfulButton = (props: Props) => {
         display: "flex",
         alignItems: "center",
         gap: "10px",
-        "font-size" : props["font-size"] || "17px",
+        "font-size": props["font-size"] || "17px",
         ...(isHovered && {
             backgroundColor: props.onHoverBackground || "#00204c",
             color: props.onHoverColor || "#f5f7f9"
@@ -217,17 +219,28 @@ export const PowerfulButton = (props: Props) => {
                 onClick={props.onButtonClick}
                 disabled={props.disabled}
             >
-                {props.icon}
-                {" "}
-                {props.text}
+                {props.icon} {props.text}
                 {props.isLoading && (
-                <ClipLoader
-                    size={20}
-                    color="#ff"
-                    className={styles.btn_loader}
-                />
-            )}
+                    <ClipLoader
+                        size={20}
+                        color="#ff"
+                        className={styles.btn_loader}
+                    />
+                )}
             </button>
         </div>
     );
 };
+
+type Variants = "primary" | "secondary" | "ghost" | "outline" | "destructive" | "success" | "link"
+
+type ButtonProps = ({ children, className, variant, style, disabled,...props }:
+    {children: ReactNode, className?:string, variant?:Variants, style?: React.CSSProperties, disabled?:true} & React.HTMLAttributes<HTMLButtonElement>) => ReactJSXElement
+
+export const Button:ButtonProps = ({ children, className = "", variant = "primary", style, disabled, ...props }) => {
+    const variantName = variant ? styles[`${variant}-btn`] : ""
+
+    return <button className={styles["common-btn"] + "  " + variantName} {...props} style={style} disabled={disabled}>
+        {children}
+    </button>
+}

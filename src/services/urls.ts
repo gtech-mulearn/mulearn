@@ -91,6 +91,7 @@ export const dashboardRoutes = {
     getAllOrganisations: "/api/v1/hackathon/list-organisations/",
     getAllDistricts: "/api/v1/hackathon/list-districts/",
 
+    referredUsersList : "/api/v1/dashboard/referral/",
     createInviteEmail:"/api/v1/dashboard/referral/send-referral/",
 
     //graphs

@@ -56,7 +56,6 @@ export const createManageRoles = async (title: string, description: string) => {
         );
 
         const message: any = response?.data;
-        //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -80,7 +79,6 @@ export const editManageRoles = async (
             }
         );
         const message: any = response?.data;
-        //console.log(message);
         toast({
             title: "Role edited",
             status: "success",
@@ -107,8 +105,6 @@ export const getManageRolesDetails = async (
             dashboardRoutes.getRolesData + id + "/"
         );
         const message: any = response?.data;
-        //console.log(message);
-        //console.log(message.response.data);
         if(setData)
             setData(message.response.data);
         else
@@ -136,7 +132,6 @@ export const deleteManageRoles = async (
             isClosable: true
         });
         const message: any = response?.data;
-        //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -151,13 +146,13 @@ export const isRoleUnique =  (roleName:string,roles:string[]):boolean =>{
 
 }
 
-export const deleteUser = async (userId:string,roleId:string)=>{
-    console.log(userId,roleId)
-}
+// export const deleteUser = async (userId:string,roleId:string)=>{
+//     console.log(userId,roleId)
+// }
 
-export const addUsers = async (userId:string[],roleId:string)=>{
-    console.log(userId,roleId)
-}
+// export const addUsers = async (userId:string[],roleId:string)=>{
+//     console.log(userId,roleId)
+// }
 
 export const getUser = async (byRole="")=>{
     //byRole to get users of certain role o.w all users

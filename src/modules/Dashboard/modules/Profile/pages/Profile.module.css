@@ -303,7 +303,7 @@
           margin-top: 1rem;
 
           .profile_pic_gard {
-            
+
             position: relative;
             display: flex;
             justify-content: flex-end;
@@ -315,7 +315,6 @@
               outline: 6px solid #fff;
               outline-offset: -1px;
               width: 10rem;
-              margin-left: 2rem;
               margin-top: -25px;
               background-color: var(--Light);
               text-align: center;
@@ -527,7 +526,7 @@
           padding: 0rem 1rem;
         }
 
-        & p svg path{
+        & p svg path {
           transition: all .3s ease-in-out;
         }
 
@@ -737,57 +736,58 @@
   }
 }
 
-@media (max-width: 500px) {
+@media screen and (max-width: 500px) {
   .rightDash {
     .share_pop_up_container .share_pop_up {
       width: 90vw;
     }
-  }
 
-  .profileDash .profile {
-    .banner .member_since {
-      right: 5px;
+    .profileDash .profile {
+      .banner .member_since {
+        right: 5px;
 
-      & div svg {
-        margin-left: 43px;
-        width: 50px;
-      }
-
-      & p {
-        font-size: 10px;
-        line-height: 0px;
-      }
-    }
-
-    .profileInfo .profilePic {
-      width: 100%;
-      justify-content: center;
-      flex-direction: column;
-
-      .name {
-        margin-top: 0px;
-        text-align: center;
-      }
-
-      .profile_pic_gard {
-        & img {
-          margin-left: 0rem;
+        & div svg {
+          margin-left: 43px;
+          width: 50px;
         }
 
-        & span {
-          margin-right: 1rem;
+        & p {
+          font-size: 10px;
+          line-height: 0px;
         }
       }
-    }
 
-    .pointsList {
-      gap: 2rem;
-      width: 100%;
-      flex-direction: row;
-      justify-content: space-between;
-
-      .points {
+      .profileInfo .profilePic {
+        width: 100%;
+        justify-content: center;
         flex-direction: column;
+
+        .name {
+          margin-top: 0px;
+          text-align: center;
+        }
+
+        .profile_pic_gard {
+          & img {
+            margin-left: 0rem;
+          }
+
+          & span {
+            margin-right: 1rem;
+          }
+        }
+      }
+
+
+      .pointsList {
+        gap: 2rem;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .points {
+          flex-direction: column;
+        }
       }
     }
   }
