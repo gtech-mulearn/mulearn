@@ -41,7 +41,8 @@ import YIP2023 from "./Pages/YIP2023/YIP2023";
 import BeWebDev from "./Pages/Events/BeWebDev/BeWebDev";
 import YipForm from "./Pages/YIP/YIPAfterForm/YipForm";
 import Journey from "./Pages/UserJourney/Journey";
-import MutechLeaderboard  from "./Pages/MutechLeaderBoard/MutechLeaderBoard";
+import MutechLeaderboard from "./Pages/MutechLeaderBoard/MutechLeaderBoard";
+import CodeStorm from "./Pages/Events/GTA/CodeStorm/CodeStorm";
 
 function App() {
   const [redirects, setRedirects] = useState([]);
@@ -81,7 +82,7 @@ function App() {
               <Redirection link="https://yip.kerala.gov.in/" />
             }
           /> */}
-                  <Route path='mutech/leaderboard' element={<MutechLeaderboard />} />
+          <Route path="mutech/leaderboard" element={<MutechLeaderboard />} />
 
           <Route path="/careers" element={<Career />} />
           <Route path="*" element={<NotFound isLoaded={isLoaded} />} />
@@ -108,6 +109,7 @@ function App() {
             <Route path="/wikisyllabus" element={<WikiSyllabus />} />
             <Route path="/yip" element={<YIP2023 />} />
             <Route path="/events/bewebdev" element={<BeWebDev />} />
+            <Route path="events/gta/codestorm" element={<CodeStorm />} />
             <Route path="/team">
               <Route path="" element={<Teams />} />
             </Route>
@@ -132,7 +134,7 @@ function App() {
               element={<CampusLogoGenerator />}
             />
             <Route path="/yipredirect" element={<YipForm />} />
-            <Route path="/journey" element={<Journey/>}/>
+            <Route path="/journey" element={<Journey />} />
           </Route>
         </Routes>
       </Router>
