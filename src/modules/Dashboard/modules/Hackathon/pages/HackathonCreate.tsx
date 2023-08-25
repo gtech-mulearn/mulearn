@@ -1,6 +1,6 @@
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import styles from "./HackathonCreate.module.css"
+import styles from "./HackathonCreate.module.css";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import FormikReactSelect, {
     FormikTextAreaWhite,
@@ -19,13 +19,14 @@ import {
 import { FiUploadCloud } from "react-icons/fi";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-import { useToast } from "@chakra-ui/react";
+import { background, useToast } from "@chakra-ui/react";
 import {
     convertDateToYYYYMMDD,
     getLocationIdByName
 } from "../../../utils/common";
 import HackathonImagePreview from "../components/HackathonImagePreview";
 import { HackList } from "../services/HackathonInterfaces";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 /**
  * TODO: Move YUP Validations to another file.
@@ -51,11 +52,11 @@ const HackathonCreate = () => {
     const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
     const [isCreatePage, setIsCreatePage] = useState(false);
     const [openImagePreview, setOpenImagePreview] = useState(false);
-    const [prevImgUrl, setPreviewImgUrl] = useState('');
+    const [prevImgUrl, setPreviewImgUrl] = useState("");
     const { id } = useParams();
     const toast = useToast();
     const navigate = useNavigate();
-    const location = useLocation()
+    const location = useLocation();
 
     useEffect(() => {
         if (id !== undefined) {
@@ -114,10 +115,10 @@ const HackathonCreate = () => {
         type: Yup.string().min(2, "Too Short!"),
         isOpenToAll: Yup.boolean(),
         description: Yup.string().min(5, "Too Short!"),
-            // eventStart: Yup.date(),
-            // eventEnd: Yup.date(),
-            // applicationStart: Yup.date(),
-            // applicationEnds: Yup.date(),
+        // eventStart: Yup.date(),
+        // eventEnd: Yup.date(),
+        // applicationStart: Yup.date(),
+        // applicationEnds: Yup.date(),
         participantCount: Yup.number()
             .positive("Number of users should be a positive value")
             .min(10, "Needs to be at least 2 digits.")
@@ -203,16 +204,34 @@ const HackathonCreate = () => {
             }
         });
 
-        let a = values.applicationStart !== "undefined" && values.applicationStart !== "" && values.applicationStart !== "null" && values.applicationStart !== null
-            ? `${values.applicationStart}T00:00:00Z`
-            : "";
-        let b = values.applicationEnds !== "undefined" && values.applicationEnds !== "" && values.applicationEnds !== "null" && values.applicationEnds !== null
-            ? `${values.applicationEnds}T00:00:00Z`
-            : "";
-        let c = values.eventStart !== "undefined" && values.eventStart !== "" && values.eventStart !== "null" && values.eventStart !== null
-            ? `${values.eventStart}T00:00:00Z` : "";
-        let d = values.eventEnd !== "undefined" && values.eventEnd !== "" && values.eventEnd !== "null" && values.eventEnd !== null
-            ? `${values.eventEnd}T00:00:00Z` : "";
+        let a =
+            values.applicationStart !== "undefined" &&
+            values.applicationStart !== "" &&
+            values.applicationStart !== "null" &&
+            values.applicationStart !== null
+                ? `${values.applicationStart}T00:00:00Z`
+                : "";
+        let b =
+            values.applicationEnds !== "undefined" &&
+            values.applicationEnds !== "" &&
+            values.applicationEnds !== "null" &&
+            values.applicationEnds !== null
+                ? `${values.applicationEnds}T00:00:00Z`
+                : "";
+        let c =
+            values.eventStart !== "undefined" &&
+            values.eventStart !== "" &&
+            values.eventStart !== "null" &&
+            values.eventStart !== null
+                ? `${values.eventStart}T00:00:00Z`
+                : "";
+        let d =
+            values.eventEnd !== "undefined" &&
+            values.eventEnd !== "" &&
+            values.eventEnd !== "null" &&
+            values.eventEnd !== null
+                ? `${values.eventEnd}T00:00:00Z`
+                : "";
 
         console.log(selectedFields);
 
@@ -223,46 +242,46 @@ const HackathonCreate = () => {
         {
             edit
                 ? editHackathon(
-                    values.title,
-                    values.tagline,
-                    values.description,
-                    values.participantCount,
-                    values.orgId,
-                    values.districtId,
-                    values.place,
-                    values.isOpenToAll,
-                    a,
-                    b,
-                    c,
-                    d,
-                    formattedFormFields,
-                    values.event_logo,
-                    values.banner,
-                    values.type,
-                    values.website,
-                    toast,
-                    id
-                )
+                      values.title,
+                      values.tagline,
+                      values.description,
+                      values.participantCount,
+                      values.orgId,
+                      values.districtId,
+                      values.place,
+                      values.isOpenToAll,
+                      a,
+                      b,
+                      c,
+                      d,
+                      formattedFormFields,
+                      values.event_logo,
+                      values.banner,
+                      values.type,
+                      values.website,
+                      toast,
+                      id
+                  )
                 : createHackathon(
-                    values.title,
-                    values.tagline,
-                    values.description,
-                    values.participantCount,
-                    values.orgId,
-                    values.districtId,
-                    values.place,
-                    values.isOpenToAll,
-                    a,
-                    b,
-                    c,
-                    d,
-                    formattedFormFields,
-                    values.event_logo,
-                    values.banner,
-                    values.type,
-                    values.website,
-                    toast
-                );
+                      values.title,
+                      values.tagline,
+                      values.description,
+                      values.participantCount,
+                      values.orgId,
+                      values.districtId,
+                      values.place,
+                      values.isOpenToAll,
+                      a,
+                      b,
+                      c,
+                      d,
+                      formattedFormFields,
+                      values.event_logo,
+                      values.banner,
+                      values.type,
+                      values.website,
+                      toast
+                  );
         }
         resetForm();
         setTimeout(() => {
@@ -274,7 +293,7 @@ const HackathonCreate = () => {
         if (location.pathname === "/dashboard/hackathon/create") {
             setIsCreatePage(true);
         }
-    }, [location])
+    }, [location]);
 
     const handleCloseModal = () => {
         setOpenImagePreview(false);
@@ -286,6 +305,7 @@ const HackathonCreate = () => {
                 <div className={styles.container}>
                     <div className={styles.topText}>
                         <h1 className={styles.dashLine}>Lets Get Started</h1>
+                        {/* <div className={styles.topBarButtons}> */}
                         <button
                             type="submit"
                             form="hackathon"
@@ -293,6 +313,17 @@ const HackathonCreate = () => {
                         >
                             Save & Finish later
                         </button>
+                        {/* <MuButton
+                                text="Publish Now"
+                                isMinWidth={true}
+                                style={{
+                                    margin: "1rem 0",
+                                    backgroundColor: "#456ff6",
+                                    color: "#fff",
+                                    width: "fit-content"
+                                }}
+                            /> */}
+                        {/* </div> */}
                     </div>
 
                     <div>
@@ -513,8 +544,6 @@ const HackathonCreate = () => {
                                                                 }
                                                             >
                                                                 Banner
-                                                                
-
                                                             </label>
                                                             <div
                                                                 className={
@@ -551,13 +580,19 @@ const HackathonCreate = () => {
                                                                         5MB max
                                                                     </span>
                                                                 </label>
-                                                                {
-                                                                    data?.banner !== null && (
-                                                                        <div className={styles.editBanner}>
-                                                                            <img  src={`https://dev.mulearn.org/${data?.banner}`} alt="" />
-                                                                        </div>
-                                                                    )
-                                                                }
+                                                                {data?.banner !==
+                                                                    null && (
+                                                                    <div
+                                                                        className={
+                                                                            styles.editBanner
+                                                                        }
+                                                                    >
+                                                                        <img
+                                                                            src={`https://dev.mulearn.org/${data?.banner}`}
+                                                                            alt=""
+                                                                        />
+                                                                    </div>
+                                                                )}
                                                                 <input
                                                                     id="file-upload1-input1"
                                                                     type="file"
@@ -630,30 +665,28 @@ const HackathonCreate = () => {
                                                                 }
                                                             >
                                                                 Event Logo
-                                                                
                                                             </label>
                                                             <div
                                                                 className={
                                                                     styles.upload_area
                                                                 }
-                                                                
                                                             >
                                                                 <label
                                                                     htmlFor="file-upload1-input"
                                                                     className={
                                                                         styles.upload_button
                                                                     }
-                                                                    >
+                                                                >
                                                                     <FiUploadCloud
                                                                         className={
                                                                             styles.icon
                                                                         }
-                                                                        />
+                                                                    />
                                                                     <p
                                                                         className={
                                                                             styles.text
                                                                         }
-                                                                        >
+                                                                    >
                                                                         Click to
                                                                         choose
                                                                     </p>
@@ -661,19 +694,26 @@ const HackathonCreate = () => {
                                                                         className={
                                                                             styles.text1
                                                                         }
-                                                                        >
+                                                                    >
                                                                         300x124
                                                                         .png or
                                                                         .jpeg
                                                                         10MB max
                                                                     </span>
                                                                 </label>
-                                                                {data?.banner !== null && (
-                                                                        <div className={styles.editBanner} >
-                                                                            <img  src={`https://dev.mulearn.org/${data?.event_logo}`} alt="" />
-                                                                        </div>
-                                                                    )
-                                                                }
+                                                                {data?.banner !==
+                                                                    null && (
+                                                                    <div
+                                                                        className={
+                                                                            styles.editBanner
+                                                                        }
+                                                                    >
+                                                                        <img
+                                                                            src={`https://dev.mulearn.org/${data?.event_logo}`}
+                                                                            alt=""
+                                                                        />
+                                                                    </div>
+                                                                )}
                                                                 <input
                                                                     id="file-upload1-input"
                                                                     type="file"
@@ -753,7 +793,10 @@ const HackathonCreate = () => {
                                                                 styles.checkerInput
                                                             }
                                                         >
-                                                             <Field type="checkbox" name="isOpenToAll" />
+                                                            <Field
+                                                                type="checkbox"
+                                                                name="isOpenToAll"
+                                                            />
                                                         </div>
                                                     </div>
                                                 </TabPanel>
@@ -791,13 +834,15 @@ const HackathonCreate = () => {
                                                             ([key, value]) => (
                                                                 <label
                                                                     key={key}
-                                                                    className={`${styles.checkBoxContainer
-                                                                        } ${values.formFields.includes(
+                                                                    className={`${
+                                                                        styles.checkBoxContainer
+                                                                    } ${
+                                                                        values.formFields.includes(
                                                                             key as never
                                                                         )
                                                                             ? styles.checked
                                                                             : ""
-                                                                        }`}
+                                                                    }`}
                                                                 >
                                                                     <Field
                                                                         type="checkbox"

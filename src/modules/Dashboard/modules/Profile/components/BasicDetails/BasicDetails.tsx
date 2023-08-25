@@ -12,14 +12,13 @@ const BasicDetails = (props: Props) => {
     const toast = useToast();
     const [editIg, setEditIg] = useState(false);
     const [allIg, setAllIg] = useState<any>([]);
+
     const [ig, setIg] = useState<any>(props.userProfile.interest_groups);
-    console.log( ig);
     const { id } = useParams<{ id: string }>();
     useEffect(() => {
         // getIgDetails(toast, setIg);
         getAllIg(setAllIg);
     }, []);
-    // console.log(allIg);
     return (
         <>
             <div className={styles.interestGrp}>

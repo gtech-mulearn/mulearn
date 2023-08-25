@@ -45,6 +45,10 @@
     color: var(--blue);
     font-weight: bold;
 }
+.learningCircleLandingPageDesc b{
+    font-weight: 600;
+     width: 80%;
+}
 
 .learningCircleLandingPage .learningCircleLandingPageButton {
     display: flex;
@@ -130,7 +134,7 @@
 
 @media (width<1060px){
     .learningCircleLandingPageDesc h1 {
-        font-size: 1.5rem;
+        font-size: 1.65rem;      
     }
 
     .learningCircleLandingPageDesc b {
@@ -146,7 +150,6 @@
     .learningCircleLandingPage {
         padding: 0.5rem;
     }
-
     .learningCircleLandingPage .headContent {
         flex-direction: column;
         gap: 1rem;
@@ -171,11 +174,6 @@
     .learningCircleLandingPageDesc h1 {
         font-size: 1.2rem;
     }
-
-    .learningCircleLandingPageDesc b {
-        font-size: 0.6rem;
-    }
-
     .learningCircleLandingPage .learningCircleLandingPageButton {
         gap: 0.5rem;
         margin-top: 0rem;
@@ -732,6 +730,29 @@ padding-left: 10px;
 }
 
 @media (width<1100px) {
+    .LearningCircleCreateHeading div b{
+        font-size: 1.5rem;
+    }
+    
+    .LearningCircleCreateHeading div p{
+        font-size: 0.75rem;
+    } 
+    .LearningCircleCreateForm {
+        display: flex;
+        flex-direction: column; 
+    } 
+}
+
+
+@media (width<820px) {
+    .LearningCircleCreateHeading div b{
+        font-size: 1.5rem;
+    }
+    
+    .LearningCircleCreateHeading div p{
+        font-size: 1rem;
+    }  
+
     .LearningCircleCreateContent {
         padding-top: 3rem;
     }

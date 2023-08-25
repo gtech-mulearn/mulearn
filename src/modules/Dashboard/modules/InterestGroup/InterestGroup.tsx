@@ -124,8 +124,6 @@ function InterestGroup() {
         }
     };
 
-    console.log(isLoading)
-
     return (
         <>
             <div className={styles.createBtnContainer}>

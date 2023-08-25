@@ -57,10 +57,6 @@ export const getOrganizations = async (
             })
     } catch (err: unknown) {
         setIsLoading(false)
-        const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 };
 
@@ -85,9 +81,6 @@ export const getAffiliation = async (setAffiliationData: any) => {
             })
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 }
 export const getCountry = async (setCountryData: any) => {
@@ -102,9 +95,6 @@ export const getCountry = async (setCountryData: any) => {
             })
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 }
 
@@ -125,7 +115,6 @@ export const getStates = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
             const errorMsg = 'Something went wrong!';
             toast({
                 title: `Error`,
@@ -156,7 +145,6 @@ export const getZones = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            // console.log(error.response);
             const errorMsg = 'Something went wrong!';
             toast({
                 title: `Error`,
@@ -250,7 +238,6 @@ export const createOrganization = async (
             isClosable: true
         });
         const message: any = response?.data;
-        //console.log("created a new " + orgType)
         setIsSuccess(true)
         setIsLoading(false);
     } catch (error: any) {
@@ -326,7 +313,6 @@ export const updateOrganization = async (
             `${organizationRoutes.putUpdateOrganization}/${oldCode}/`,
             addDataProps()
         );
-        //console.log("status is ", response.status);
 
         if (response.status === 200) {
             toast({
@@ -372,7 +358,6 @@ export const deleteOrganization = async (
     try {
         const response = await privateGateway.delete(`${organizationRoutes.deleteOrgnaization}${code}`);
         const message: any = response?.data;
-        //console.log(message);
         toast({
             title: "Organizations Deleted",
             status: "success",
@@ -382,9 +367,6 @@ export const deleteOrganization = async (
 
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 }
 
@@ -396,8 +378,5 @@ export const getInfo = async (
         return response.data.response.institution
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 }
