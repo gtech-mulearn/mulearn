@@ -57,7 +57,12 @@ export const getWeeklyKarma = async () => {//data for barchart
     const days = [['MON'], ['TUE'], ['WED'], ['THU'], ['FRI'], ['SAT'], ['SUN']]
     const response = await privateGateway
                     .get(dashboardRoutes.getCampusWeeklyKarma)
-    let data = Object.values(response.data.response).slice(1) as string[]
+    let data:string[]=[]
+    if(!response.data.response.karma)
+        data = Array(7).fill(0)
+    else
+        data = Object.values(response.data.response.karma) as string[]
+    console.log(data)
     return(
         days.map((day,index)=>[day[0],data[index]])
     )

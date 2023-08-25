@@ -21,7 +21,6 @@ const InterestGroupCreate = (props: Props) => {
     const toast = useToast();
     const navigate = useNavigate();
     const { id } = useParams();
-    console.log(id)
     const [input, setInput] = useState<IgDetails>({
         name:'',
         code:'',
@@ -35,7 +34,6 @@ const InterestGroupCreate = (props: Props) => {
     }
     },[id]);
 
-console.log('id',input)
     if(!input.code && !!id)
     return (
         <MuLoader/>
@@ -64,7 +62,6 @@ console.log('id',input)
                             .required("Required")
                     })}
                     onSubmit={values => {
-                        console.log(values);
                         if(!id){
                             
                             createInterestGroups(values.igName, values.igCode, values.igIcon, toast)
