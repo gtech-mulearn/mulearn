@@ -1,9 +1,6 @@
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { useNavigate, NavigateFunction } from "react-router-dom";
-import {
-    privateGateway,
-    publicGateway
-} from "@/MuLearnServices/apiGateways";
+import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { authRoutes, dashboardRoutes } from "@/MuLearnServices/urls";
 import { refreshRoles } from "@/MuLearnServices/authCheck";
 
@@ -33,7 +30,9 @@ export const forgetPassword = (
         .catch(error => {
             setShowLoader(false);
             toast({
-                title: error.response?.data?.message?.general[0],
+                title: error.response?.data?.message?.general[0]
+                    ? error.response?.data?.message?.general[0]
+                    : "Something went wrong",
                 status: "error",
                 duration: 3000,
                 isClosable: true
