@@ -229,8 +229,7 @@
         margin-top: 15px;
     }
 
-    .right_side .top_nav .nav .nav_items .greetings,
-    .right_side .top_nav .nav .nav_items .menu svg {
+    .right_side .top_nav .nav .nav_items .greetings{
         display: none;
     }
 
