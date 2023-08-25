@@ -17,7 +17,11 @@ export const authRoutes = {
     otpVerification: "/api/v1/auth/otp-verification/",
     requestEmailOrMuidOtp: "/api/v1/auth/request-otp/"
 } as const;
-
+export const NotificationRoutes = {
+    getNotification: "/api/v1/notification/list/",
+    deleteNotification: 'api/v1/notification/delete/id/',
+    deleteAllNotification: 'api/v1/notification/delete/all/',
+}
 export const dashboardRoutes = {
     forgetPassword: "/api/v1/dashboard/user/forgot-password/",
     resetPassword: "/api/v1/dashboard/user/reset-password/${token}/",
@@ -86,7 +90,7 @@ export const dashboardRoutes = {
     createLearningCircle: "/api/v1/dashboard/lc/create/",
     joinLearningCircle: "/api/v1/dashboard/lc/join/",
     setLCMeetTime: "/api/v1/dashboard/lc/meet/",
-	getCampusIg: "api/v1/dashboard/ig/list/",
+    getCampusIg: "api/v1/dashboard/ig/list/",
 
     getAllOrganisations: "/api/v1/hackathon/list-organisations/",
     getAllDistricts: "/api/v1/hackathon/list-districts/",
@@ -111,8 +115,8 @@ export const dashboardRoutes = {
 export const organizationRoutes = {
     getOrganizationsAll: "/api/v1/organisation/institutes/info/all_inst",
     getCompany: "/api/v1/organisation/institutes/show/Company/",
-    getCollege:"/api/v1/organisation/institutes/show/College/",
-    getCommunity:"/api/v1/organisation/institutes/show/Community/",
+    getCollege: "/api/v1/organisation/institutes/show/College/",
+    getCommunity: "/api/v1/organisation/institutes/show/Community/",
     getAffiliation: "/api/v1/organisation/institutes/org/affiliation/",
     getLocation: "/api/v1/location",
     postAddOrganization: "/api/v1/organisation/institutes/add/",
@@ -123,17 +127,18 @@ export const organizationRoutes = {
 } as const;
 
 export const ManageLocationsRoutes = {
-    getCountryData: "/api/v1/location/country/",
-    getStateData: "api/v1/location/${country}/states/",
-    getZoneData: "api/v1/location/${country}/${state}/zone/",
-    getDistrictData: "api/v1/location/${country}/${state}/${zone}/district/"
-};
+    getCountryData: "/api/v1/location/country",
+    getStateData: "api/v1/location/${country}/states",
+    getZoneData: "api/v1/location/${country}/${state}/zone",
+    getDistrictData: "api/v1/location/${country}/${state}/${zone}/district",
+}
 
 export const KKEMRoutes = {
     userAuth: "/api/v1/integrations/kkem/authorization/",
     userLogin: "/api/v1/integrations/kkem/login/",
-    getDWMSDetails: "/api/v1/integrations/kkem/user/${jsid}/"
-}as const;
+    // This was added because of a build issue, author:@Jovit-Mathew236 please do add the necessary changes 
+    getDWMSDetails:"",
+};
 
 export const PublicRoutes = {
     getRandomLc: "/api/v1/dashboard/lc/list/",
