@@ -2,11 +2,7 @@ import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import styles from "./HackathonCreate.module.css";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import FormikReactSelect, {
-    FormikTextAreaWhite,
-    FormikTextInputWhite,
-    Option
-} from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { useEffect, useState } from "react";
 import {
     createHackathon,
@@ -27,15 +23,14 @@ import {
 import HackathonImagePreview from "../components/HackathonImagePreview";
 import { HackList } from "../services/HackathonInterfaces";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { FormTabBasics } from "../components/FormTabBasics";
+import { FormTabDates } from "../components/FormTabDates";
+import { FormTabDetails } from "../components/FormTabDetails";
 
 /**
  * TODO: Move YUP Validations to another file.
  * TODO: Make the form things json and iterate and display, store the jsons in a separate file.
  */
-const options = [
-    { label: "Offline", value: "offline" },
-    { label: "Online", value: "online" }
-];
 
 const HackathonCreate = () => {
     const [tabIndex, setTabIndex] = useState(0);
@@ -411,119 +406,22 @@ const HackathonCreate = () => {
                                                         styles.formGroupStart
                                                     }
                                                 >
-                                                    <div
-                                                        className={
-                                                            styles.formGroupInitial
-                                                        }
-                                                    >
-                                                        <FormikTextInputWhite
-                                                            label="Name"
-                                                            name="title"
-                                                            type="text"
-                                                            className={
-                                                                styles.placeholder
-                                                            }
-                                                            placeholder="what you are calling your hackathon"
-                                                        />
-                                                        <FormikTextInputWhite
-                                                            label="Tagline"
-                                                            name="tagline"
-                                                            type="text"
-                                                            className={
-                                                                styles.placeholder
-                                                            }
-                                                            placeholder="eg: worlds realest hackathon"
-                                                        />
-                                                        <FormikTextInputWhite
-                                                            label="Approx. Participants"
-                                                            name="participantCount"
-                                                            type="number"
-                                                            className={
-                                                                styles.placeholder
-                                                            }
-                                                            placeholder="eg: 250."
-                                                        />
-                                                    </div>
-                                                    <FormikTextAreaWhite
-                                                        label="About"
-                                                        name="description"
-                                                        className={
-                                                            styles.hackTectArea
-                                                        }
-                                                        placeholder="explain something"
-                                                    />
+                                                    <FormTabBasics />
+                                                </TabPanel>
+                                                <TabPanel
+                                                    className={styles.formGroup}
+                                                >
+                                                    <FormTabDates />
                                                 </TabPanel>
 
                                                 <TabPanel
                                                     className={styles.formGroup}
                                                 >
-                                                    <FormikTextInputWhite
-                                                        label="Registration Start Date"
-                                                        name="applicationStart"
-                                                        className={
-                                                            styles.placeholder
+                                                    <FormTabDetails
+                                                        institutions={
+                                                            institutions
                                                         }
-                                                        type="date"
-                                                    />
-                                                    <FormikTextInputWhite
-                                                        label="Registration End Date"
-                                                        name="applicationEnds"
-                                                        className={
-                                                            styles.placeholder
-                                                        }
-                                                        type="date"
-                                                    />
-                                                    <FormikTextInputWhite
-                                                        label="Hackathon Start Date"
-                                                        name="eventStart"
-                                                        className={
-                                                            styles.placeholder
-                                                        }
-                                                        type="date"
-                                                    />
-                                                    <FormikTextInputWhite
-                                                        label="Hackathon End Date"
-                                                        name="eventEnd"
-                                                        className={
-                                                            styles.placeholder
-                                                        }
-                                                        type="date"
-                                                    />
-                                                </TabPanel>
-
-                                                <TabPanel
-                                                    className={styles.formGroup}
-                                                >
-                                                    <FormikReactSelect
-                                                        name="orgId"
-                                                        options={institutions}
-                                                        label={"Organization"}
-                                                        isClearable
-                                                        isSearchable
-                                                    />
-                                                    <FormikReactSelect
-                                                        name="districtId"
-                                                        options={district}
-                                                        label={"District"}
-                                                        isClearable
-                                                        isSearchable
-                                                    />
-                                                    <FormikTextInputWhite
-                                                        label="Place"
-                                                        name="place"
-                                                        placeholder="location of the hackathon"
-                                                        type="text"
-                                                    />
-                                                    <FormikTextInputWhite
-                                                        label="Website"
-                                                        name="website"
-                                                        placeholder="link for the event website"
-                                                        type="text"
-                                                    />
-                                                    <FormikReactSelect
-                                                        name="type"
-                                                        options={options}
-                                                        label={"Hackathon Type"}
+                                                        district={district}
                                                     />
                                                 </TabPanel>
 
