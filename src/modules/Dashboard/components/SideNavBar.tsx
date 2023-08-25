@@ -55,7 +55,7 @@ const SideNavBar = ({ sidebarButtons }: Props) => {
         // Right side content transition
         element.style.transition = ".3s ease-in-out";
         element.style.transform === "scale(1.1)"
-            ? (element.style.transform = "scale(1)")
+            ? (element.style.transform = "unset")
             : (element.style.transform = "scale(1.1)");
     };
 
