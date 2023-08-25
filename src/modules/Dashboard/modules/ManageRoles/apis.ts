@@ -146,13 +146,13 @@ export const isRoleUnique =  (roleName:string,roles:string[]):boolean =>{
 
 }
 
-// export const deleteUser = async (userId:string,roleId:string)=>{
-//     console.log(userId,roleId)
-// }
+export const deleteUser = async (userId:string,roleId:string)=>{
+    console.log(userId,roleId)
+}
 
-// export const addUsers = async (userId:string[],roleId:string)=>{
-//     console.log(userId,roleId)
-// }
+export const addUsers = async (userId:string[],roleId:string)=>{
+    console.log(userId,roleId)
+}
 
 export const getUser = async (byRole="")=>{
     //byRole to get users of certain role o.w all users
