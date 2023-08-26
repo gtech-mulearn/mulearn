@@ -207,7 +207,7 @@ const HackathonCreate = () => {
         return false;
     }
 
-    const handleSubmit = (values: any, { resetForm }: any) => {
+    const handleSubmit = async (values: any, { resetForm }: any) => {
         console.log(values);
 
         const fields: { [key: string]: string } = {
@@ -265,97 +265,103 @@ const HackathonCreate = () => {
         const formattedFormFields = JSON.stringify(selectedFields);
         console.log(formattedFormFields);
 
-        {
-            edit
-                ? editHackathon(
-                      values.title,
-                      values.tagline,
-                      values.description,
-                      values.participantCount,
-                      values.orgId,
-                      values.districtId,
-                      values.place,
-                      values.isOpenToAll,
-                      a,
-                      b,
-                      c,
-                      d,
-                      formattedFormFields,
-                      values.event_logo,
-                      values.banner,
-                      values.type,
-                      values.website,
-                      toast,
-                      id
-                  )
-                : createHackathon(
-                      values.title,
-                      values.tagline,
-                      values.description,
-                      values.participantCount,
-                      values.orgId,
-                      values.districtId,
-                      values.place,
-                      values.isOpenToAll,
-                      a,
-                      b,
-                      c,
-                      d,
-                      formattedFormFields,
-                      values.event_logo,
-                      values.banner,
-                      values.type,
-                      values.website,
-                      toast
-                  );
+        function pulish(hackathonId: string): boolean {
+            let returnVal = false;
+            if (isPublishing) {
+                setTimeout(() => {
+                    const hackathon: HackList = {
+                        id: hackathonId,
+                        title: values.title,
+                        type: values.type,
+                        tagline: values.tagline,
+                        event_logo: values.event_logo,
+                        banner: values.banner,
+                        website: values.website,
+                        place: values.place,
+                        event_start: c,
+                        event_end: d,
+                        application_start: a,
+                        application_ends: b,
+                        description: values.description,
+                        participant_count: values.participantCount,
+                        district: values.districtId,
+                        organisation: values.orgId,
+                        district_id: values.districtId,
+                        org_id: values.orgId,
+                        editable: true,
+                        is_open_to_all: values.isOpenToAll,
+                        status: "Draft"
+                    };
+
+                    if (isDetailsComplete(hackathon)) {
+                        publishHackathon(
+                            hackathon.id,
+                            hackathon.status,
+                            toast
+                        ).then(() => (returnVal = true));
+                    } else {
+                        toast({
+                            title: "Cannot publish",
+                            description: "Please fill all the details",
+                            status: "error",
+                            duration: 5000,
+                            isClosable: true,
+                            position: "top-right"
+                        });
+                        setIsPublishing(false);
+                    }
+                }, 2000);
+            }
+            return returnVal;
         }
 
-        if (isPublishing) {
-            setTimeout(() => {
-                const hackathon: HackList = {
-                    id: id!,
-                    title: values.title,
-                    type: values.type,
-                    tagline: values.tagline,
-                    event_logo: values.event_logo,
-                    banner: values.banner,
-                    website: values.website,
-                    place: values.place,
-                    event_start: c,
-                    event_end: d,
-                    application_start: a,
-                    application_ends: b,
-                    description: values.description,
-                    participant_count: values.participantCount,
-                    district: values.districtId,
-                    organisation: values.orgId,
-                    district_id: values.districtId,
-                    org_id: values.orgId,
-                    editable: true,
-                    is_open_to_all: values.isOpenToAll,
-                    status: "Draft"
-                };
+        edit
+            ? editHackathon(
+                  values.title,
+                  values.tagline,
+                  values.description,
+                  values.participantCount,
+                  values.orgId,
+                  values.districtId,
+                  values.place,
+                  values.isOpenToAll,
+                  a,
+                  b,
+                  c,
+                  d,
+                  formattedFormFields,
+                  values.event_logo,
+                  values.banner,
+                  values.type,
+                  values.website,
+                  toast,
+                  id
+              )
+                  .then(() => pulish(id!))
+                  .then(res => res && navigate("/dashboard/hackathon"))
+            : createHackathon(
+                  values.title,
+                  values.tagline,
+                  values.description,
+                  values.participantCount,
+                  values.orgId,
+                  values.districtId,
+                  values.place,
+                  values.isOpenToAll,
+                  a,
+                  b,
+                  c,
+                  d,
+                  formattedFormFields,
+                  values.event_logo,
+                  values.banner,
+                  values.type,
+                  values.website,
+                  toast
+              )
+                  .then(hackathonId => pulish(hackathonId))
+                  .then(res => res && navigate("/dashboard/hackathon"));
 
-                if (isDetailsComplete(hackathon)) {
-                    publishHackathon(hackathon.id, hackathon.status, toast);
-                } else {
-                    toast({
-                        title: "Error",
-                        description: "Please fill all the details",
-                        status: "error",
-                        duration: 5000,
-                        isClosable: true,
-                        position: "top-right"
-                    });
-                    setIsPublishing(false);
-                    return;
-                }
-            }, 2000);
-        }
-
-        setTimeout(() => {
-            navigate("/dashboard/hackathon");
-        }, 2000);
         // resetForm();
     };
 

@@ -81,7 +81,7 @@ export const createHackathon = async (
     type: string,
     website: string,
     toast: (options?: UseToastOptions | undefined) => ToastId
-) => {
+): Promise<string> => {
     try {
         const response = await privateGateway.post(
             dashboardRoutes.createHackathon,
@@ -119,6 +119,7 @@ export const createHackathon = async (
             duration: 3000,
             isClosable: true
         });
+        return response.data.response.hackathon_id;
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -131,6 +132,7 @@ export const createHackathon = async (
             });
             console.log(error.response);
         }
+        return "";
     }
 };
 
@@ -154,7 +156,7 @@ export const editHackathon = async (
     website: string,
     toast: (options?: UseToastOptions | undefined) => ToastId,
     id: string | undefined
-) => {
+): Promise<string> => {
     try {
         const response = await privateGateway.put(
             dashboardRoutes.editHackathon + id + "/",
@@ -192,6 +194,8 @@ export const editHackathon = async (
             duration: 3000,
             isClosable: true
         });
+
+        return id!;
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -204,6 +208,7 @@ export const editHackathon = async (
                 isClosable: true
             });
         }
+        return "";
     }
 };
 
