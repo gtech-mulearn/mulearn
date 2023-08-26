@@ -12,10 +12,11 @@ const BasicDetails = (props: Props) => {
     const toast = useToast();
     const [editIg, setEditIg] = useState(false);
     const [allIg, setAllIg] = useState<any>([]);
-    const [ig, setIg] = useState<any>([]);
+
+    const [ig, setIg] = useState<any>(props.userProfile.interest_groups);
     const { id } = useParams<{ id: string }>();
     useEffect(() => {
-        getIgDetails(toast, setIg);
+        // getIgDetails(toast, setIg);
         getAllIg(setAllIg);
     }, []);
     return (
@@ -84,7 +85,7 @@ const BasicDetails = (props: Props) => {
                                     )}
                                     {data.name}
                                     <p>
-                                        {data.karma === null
+                                        {data.karma !== null
                                             ? data.karma > 1000
                                                 ? (
                                                       data.karma / 1000
