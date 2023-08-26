@@ -53,47 +53,32 @@ export const getHackDetails = async (
 };
 
 export const createHackathon = async (
-    title: string,
-    tagline: string,
-    description: string,
-    participantCount: number,
-    orgId: string,
-    districtId: string,
-    place: string,
-    isOpenToAll: boolean,
-    applicationStart: string,
-    applicationEnds: string,
-    eventStart: string,
-    eventEnd: string,
+    hackathonData: HackList,
     formFields: any,
-    logo: any,
-    banner: any,
-    type: string,
-    website: string,
     toast: (options?: UseToastOptions | undefined) => ToastId
 ): Promise<string> => {
     try {
         const response = await privateGateway.post(
             dashboardRoutes.createHackathon,
             {
-                title: title,
-                tagline: tagline,
-                description: description,
-                participant_count: participantCount,
-                org_id: orgId,
-                district_id: districtId,
-                place: place,
-                is_open_to_all: isOpenToAll,
-                application_start: applicationStart,
-                application_ends: applicationEnds,
-                event_start: eventStart,
-                event_end: eventEnd,
+                title: hackathonData.title,
+                tagline: hackathonData.tagline,
+                description: hackathonData.description,
+                participant_count: hackathonData.participant_count,
+                org_id: hackathonData.org_id,
+                district_id: hackathonData.district_id,
+                place: hackathonData.place,
+                is_open_to_all: hackathonData.is_open_to_all,
+                application_start: hackathonData.application_start,
+                application_ends: hackathonData.application_ends,
+                event_start: hackathonData.event_start,
+                event_end: hackathonData.event_end,
                 status: "Draft",
-                form_fields: formFields,
-                event_logo: logo,
-                banner: banner,
-                type: type,
-                website: website
+                event_logo: hackathonData.event_logo,
+                banner: hackathonData.banner,
+                type: hackathonData.type,
+                website: hackathonData.website,
+                form_fields: formFields
             },
             {
                 maxBodyLength: Infinity,
@@ -126,48 +111,32 @@ export const createHackathon = async (
 };
 
 export const editHackathon = async (
-    title: string,
-    tagline: string,
-    description: string,
-    participantCount: number,
-    orgId: string,
-    districtId: string,
-    place: string,
-    isOpenToAll: boolean,
-    applicationStart: string,
-    applicationEnds: string,
-    eventStart: string,
-    eventEnd: string,
+    hackathonData: HackList,
     formFields: any,
-    logo: any,
-    banner: any,
-    type: string,
-    website: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
-    id: string | undefined
+    toast: (options?: UseToastOptions | undefined) => ToastId
 ): Promise<string> => {
     try {
-        const response = await privateGateway.put(
-            dashboardRoutes.editHackathon + id + "/",
+        await privateGateway.put(
+            dashboardRoutes.editHackathon + hackathonData.id + "/",
             {
-                title: title,
-                tagline: tagline,
-                description: description,
-                participant_count: participantCount,
-                org_id: orgId,
-                district_id: districtId,
-                place: place,
-                is_open_to_all: isOpenToAll,
-                application_start: applicationStart,
-                application_ends: applicationEnds,
-                event_start: eventStart,
-                event_end: eventEnd,
-                status: "Draft",
-                form_fields: formFields,
-                event_logo: logo,
-                banner: banner,
-                type: type,
-                website: website
+                title: hackathonData.title,
+                tagline: hackathonData.tagline,
+                description: hackathonData.description,
+                participant_count: hackathonData.participant_count,
+                org_id: hackathonData.org_id,
+                district_id: hackathonData.district_id,
+                place: hackathonData.place,
+                is_open_to_all: hackathonData.is_open_to_all,
+                application_start: hackathonData.application_start,
+                application_ends: hackathonData.application_ends,
+                event_start: hackathonData.event_start,
+                event_end: hackathonData.event_end,
+                status: hackathonData.status,
+                event_logo: hackathonData.event_logo,
+                banner: hackathonData.banner,
+                type: hackathonData.type,
+                website: hackathonData.website,
+                form_fields: formFields
             },
             {
                 maxBodyLength: Infinity,
@@ -184,7 +153,7 @@ export const editHackathon = async (
             isClosable: true
         });
 
-        return id!;
+        return hackathonData.id!;
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -214,8 +183,7 @@ export const getAllDistricts = (setDistrict: UseStateFunc<Option[]>) => {
                     }))
             );
         })
-        .catch(error => {
-        });
+        .catch(error => {});
 };
 
 export const getAllInstitutions = (
@@ -231,8 +199,7 @@ export const getAllInstitutions = (
                 }))
             );
         })
-        .catch(error => {
-        });
+        .catch(error => {});
 };
 
 export const deleteHackathon = async (
@@ -381,9 +348,8 @@ export const submitHackApplication = async (
         return response; // You might want to return the response from the API call
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response?.status === 400) { 
-            navigate('/dashboard/hackathon')
-
+        if (error?.response?.status === 400) {
+            navigate("/dashboard/hackathon");
         }
         if (error?.response) {
             toast({

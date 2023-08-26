@@ -156,9 +156,13 @@
     gap: 1rem;
 }
 
-.btns button:nth-child(2) {
+.btns button {
     background-color: var(--blue);
     color: var(--White);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 .error {
