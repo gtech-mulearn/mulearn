@@ -179,10 +179,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                 )
                                                             }
                                                         >
-                                                            <HiOutlinePencil 
-                                                                data-tooltip-id="Icon"
-                                                                data-tooltip-content="Edit"
-                                                            />
+                                                            <HiOutlinePencil />
                                                         </button>
                                                     )}
                                                     {props.onVerifyClick && (
