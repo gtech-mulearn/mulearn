@@ -44,9 +44,7 @@ const LearningCircle = (props: Props) => {
 
     useEffect(() => {
         getLcDetails(setLc, id);
-        console.log(lc);
         setTimeout(() => {
-            console.log(lc);
             setTemp(true);
             if (lc?.note !== "") {
                 setFlag(true);
@@ -69,7 +67,7 @@ const LearningCircle = (props: Props) => {
             const month = eventDate.getMonth();
             const year = eventDate.getFullYear();
             const day = eventDate.getDay();
-            console.log(date, month, year, day);
+            // console.log(date, month, year, day);
 
             setNextMeet(`${date} ${monthNames[month]} ${year}`);
             setWeek(AllWeeks[day]);
@@ -102,7 +100,7 @@ const LearningCircle = (props: Props) => {
             return;
         }
 
-        console.log("Meet days & time", getNextDate(meetDays, meetTime)); // get next date of meeting
+        // console.log("Meet days & time", getNextDate(meetDays, meetTime)); // get next date of meeting
 
         setLCMeetTime(meetTime, meetVenue, meetDays, id);
         setTimeout(() => {

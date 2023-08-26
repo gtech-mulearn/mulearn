@@ -90,8 +90,6 @@ const HackathonCreate = () => {
         } else {
             setTabIndex(tabIndex + 1);
         }
-        // console.log(getLocationIdByName(district, String(data?.district)));
-        console.log(String(data?.district));
     }
 
     function handleBack() {
@@ -183,7 +181,6 @@ const HackathonCreate = () => {
     });
 
     const handleSubmit = (values: any, { resetForm }: any) => {
-        console.log(values);
         const fields: { [key: string]: string } = {
             bio: "system",
             college: "system",
@@ -233,55 +230,52 @@ const HackathonCreate = () => {
                 ? `${values.eventEnd}T00:00:00Z`
                 : "";
 
-        console.log(selectedFields);
-
         // Convert selectedFields object to a JSON string and then parse it to get the desired format
         const formattedFormFields = JSON.stringify(selectedFields);
-        console.log(formattedFormFields);
 
         {
             edit
                 ? editHackathon(
-                      values.title,
-                      values.tagline,
-                      values.description,
-                      values.participantCount,
-                      values.orgId,
-                      values.districtId,
-                      values.place,
-                      values.isOpenToAll,
-                      a,
-                      b,
-                      c,
-                      d,
-                      formattedFormFields,
-                      values.event_logo,
-                      values.banner,
-                      values.type,
-                      values.website,
-                      toast,
-                      id
-                  )
+					values.title,
+					values.tagline,
+					values.description,
+					values.participantCount,
+					values.orgId,
+					values.districtId,
+					values.place,
+					values.isOpenToAll,
+					a,
+					b,
+					c,
+					d,
+					formattedFormFields,
+					values.event_logo,
+					values.banner,
+					values.type,
+					values.website,
+					toast,
+					id
+                )
                 : createHackathon(
-                      values.title,
-                      values.tagline,
-                      values.description,
-                      values.participantCount,
-                      values.orgId,
-                      values.districtId,
-                      values.place,
-                      values.isOpenToAll,
-                      a,
-                      b,
-                      c,
-                      d,
-                      formattedFormFields,
-                      values.event_logo,
-                      values.banner,
-                      values.type,
-                      values.website,
-                      toast
-                  );
+					values.title,
+					values.tagline,
+					values.description,
+					values.participantCount,
+					values.orgId,
+					values.districtId,
+					values.place,
+					values.isOpenToAll,
+					a,
+					b,
+					c,
+					d,
+					formattedFormFields,
+					values.event_logo,
+					values.banner,
+					values.type,
+					values.website,
+					toast
+				);
         }
         resetForm();
         setTimeout(() => {

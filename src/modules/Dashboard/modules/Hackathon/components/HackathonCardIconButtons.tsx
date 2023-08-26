@@ -180,10 +180,6 @@ const HackathonCardIconButtons = ({
                                                     ModalType[0]
                                                 );
                                             } else {
-                                                // Show an error message or take appropriate action
-                                                console.log(
-                                                    "Please fill in all the details before publishing."
-                                                );
                                                 toast({
                                                     title: "Error",
                                                     description:
@@ -271,7 +267,13 @@ const HackathonCardIconButtons = ({
                                 });
                                 window.navigator.share(shareData);
                             } catch (err) {
-                                console.log(err);
+                                toast({
+                                    title: "Error",
+                                    description: "Something went wrong",
+                                    status: "error",
+                                    duration: 3000,
+                                    isClosable: true
+                                });
                             }
                         }}
                     >
