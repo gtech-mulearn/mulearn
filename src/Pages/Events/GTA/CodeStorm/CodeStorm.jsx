@@ -28,7 +28,11 @@ const CodeStorm = () => {
                     Event Partners
                   </p>
                   <div className={styles.partner}>
-                    <img src="/assets/events/gtacodestorm/kkem.webp" alt="" className={styles.partner_image} />
+                    <img
+                      src="/assets/events/gtacodestorm/kkem.webp"
+                      alt=""
+                      className={styles.partner_image}
+                    />
                   </div>
                 </div>
               </div>
@@ -87,7 +91,7 @@ const CodeStorm = () => {
                           Team Laed: {item.lead}
                         </p>
                         <p className={styles.team_place}>
-                          {item.place} Position
+                          {item.domain} Domain: {item.place} Position
                         </p>
                         <p className={styles.team_members}>{item.team}</p>
                         <a
