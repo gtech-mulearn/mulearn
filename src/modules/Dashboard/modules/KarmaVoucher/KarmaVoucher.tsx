@@ -9,7 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import styles from "../InterestGroup/InterestGroup.module.css";
-import { deleteTask, getTasks } from "./KarmaVoucherApis";
+import { deleteTask, getKarmaVoucher } from "./KarmaVoucherApis";
 
 type Props = {};
 
@@ -45,7 +45,7 @@ export const KarmaVoucher = (props: Props) => {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getTasks(
+        getKarmaVoucher(
             setData,
             nextPage,
             perPage,
@@ -59,7 +59,7 @@ export const KarmaVoucher = (props: Props) => {
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getTasks(
+        getKarmaVoucher(
             setData,
             prevPage,
             perPage,
@@ -72,29 +72,29 @@ export const KarmaVoucher = (props: Props) => {
 
     useEffect(() => {
         if (firstFetch.current) {
-            getTasks(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
+            getKarmaVoucher(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
         }
         firstFetch.current = false;
     }, [data]);
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getTasks(setData, 1, perPage, setIsLoading, setTotalPages, search, "");
+        getKarmaVoucher(setData, 1, perPage, setIsLoading, setTotalPages, search, "");
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getTasks(setData, 1, selectedValue, setIsLoading, setTotalPages, "", "");
+        getKarmaVoucher(setData, 1, selectedValue, setIsLoading, setTotalPages, "", "");
     };
 
     const handleIconClick = (column: string) => {
         if (sort === column) {
             setSort(`-${column}`);
-            getTasks(setData, 1, perPage, setIsLoading, setTotalPages, "", `-${column}`);
+            getKarmaVoucher(setData, 1, perPage, setIsLoading, setTotalPages, "", `-${column}`);
         } else {
             setSort(column);
-            getTasks(setData, 1, perPage, setIsLoading, setTotalPages, "", column);
+            getKarmaVoucher(setData, 1, perPage, setIsLoading, setTotalPages, "", column);
         }
 
         //console.log(`Icon clicked for column: ${column}`);

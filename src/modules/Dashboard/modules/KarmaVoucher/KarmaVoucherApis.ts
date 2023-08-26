@@ -33,7 +33,7 @@ const uuidToString = (data: any, uuid: Partial<uuidType>) => {
     return newData;
 };
 
-export const getTasks = async (
+export const getKarmaVoucher = async (
     setData: any,
     page: number,
     selectedValue: number,
@@ -45,7 +45,7 @@ export const getTasks = async (
     setIsLoading(true);
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getTasksData,
+            dashboardRoutes.getKarmaVoucher,
             {
                 params: {
                     perPage: selectedValue,
