@@ -205,7 +205,7 @@ const HackathonCardIconButtons = ({
                             )}
                         </div>
                     </div>
-                    {isDraft && (
+                    {!isDraft && (
                         <PowerfulButton                        
                             children="List"
                             data-tooltip-content="List Participants"
