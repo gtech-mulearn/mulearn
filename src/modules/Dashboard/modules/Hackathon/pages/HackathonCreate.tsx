@@ -88,8 +88,6 @@ const HackathonCreate = () => {
         } else {
             setTabIndex(tabIndex + 1);
         }
-        // console.log(getLocationIdByName(district, String(data?.district)));
-        console.log(String(data?.district));
     }
 
     function handleBack() {
@@ -180,6 +178,7 @@ const HackathonCreate = () => {
             )
     });
 
+
     function isDetailsComplete(hackathon: HackList): boolean {
         if (
             hackathon.id &&
@@ -207,9 +206,7 @@ const HackathonCreate = () => {
         return false;
     }
 
-    const handleSubmit = async (values: any, { resetForm }: any) => {
-        console.log(values);
-
+    const handleSubmit = (values: any, { resetForm }: any) => {
         const fields: { [key: string]: string } = {
             bio: "system",
             college: "system",
@@ -259,12 +256,9 @@ const HackathonCreate = () => {
                 ? `${values.eventEnd}T00:00:00Z`
                 : "";
 
-        console.log(selectedFields);
-
         // Convert selectedFields object to a JSON string and then parse it to get the desired format
         const formattedFormFields = JSON.stringify(selectedFields);
-        console.log(formattedFormFields);
-
+      
         function pulish(hackathonId: string): boolean {
             let returnVal = false;
             if (isPublishing) {

@@ -22,9 +22,6 @@ export const getHackathons = async (setData: UseStateFunc<HackList[]>) => {
         setData(defaultForm.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 };
 
@@ -37,9 +34,6 @@ export const getFormFields = async (setFormData: UseStateFunc<string>) => {
         setFormData(defaultForm.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 };
 
@@ -53,12 +47,8 @@ export const getHackDetails = async (
         );
         const defaultForm: any = response?.data;
         setEditData(defaultForm.response);
-        console.log(defaultForm.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 };
 
@@ -130,7 +120,6 @@ export const createHackathon = async (
                 duration: 3000,
                 isClosable: true
             });
-            console.log(error.response);
         }
         return "";
     }
@@ -216,7 +205,6 @@ export const getAllDistricts = (setDistrict: UseStateFunc<Option[]>) => {
     privateGateway
         .get(dashboardRoutes.getAllDistricts)
         .then(response => {
-            console.log(response.data.response);
             setDistrict(
                 response.data.response
                     .sort((a: any, b: any) => a.name.localeCompare(b.name))
@@ -227,7 +215,6 @@ export const getAllDistricts = (setDistrict: UseStateFunc<Option[]>) => {
             );
         })
         .catch(error => {
-            console.log(error.response);
         });
 };
 
@@ -237,7 +224,6 @@ export const getAllInstitutions = (
     privateGateway
         .get(dashboardRoutes.getAllOrganisations)
         .then(response => {
-            console.log(response.data.response);
             setInstitutions(
                 response.data.response.map((sate: any) => ({
                     value: sate.id,
@@ -246,7 +232,6 @@ export const getAllInstitutions = (
             );
         })
         .catch(error => {
-            console.log(error.response);
         });
 };
 
@@ -259,7 +244,6 @@ export const deleteHackathon = async (
             dashboardRoutes.deleteHackathon + id + "/"
         );
         const message: any = response?.data;
-        console.log(message);
         toast({
             title: "Delete Successful",
             description: "Hackathon has been deleted",
@@ -269,9 +253,6 @@ export const deleteHackathon = async (
         });
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 };
 
@@ -288,7 +269,6 @@ export const addOrganizer = async (
             }
         );
         const message: any = response?.data;
-        console.log(message);
         toast({
             title: "Success",
             description: "Organizer added successfully",
@@ -306,7 +286,6 @@ export const addOrganizer = async (
                 duration: 3000,
                 isClosable: true
             });
-            console.log(error.response);
         }
     }
 };
@@ -342,7 +321,6 @@ export const publishHackathon = async (
                 duration: 5000,
                 isClosable: true
             });
-            console.log(error.response);
         }
     }
 };
@@ -356,13 +334,9 @@ export const getApplicationForm = async (
             dashboardRoutes.getApplicationForm + id + "/"
         );
         const message: any = response?.data;
-        console.log(message.response);
         setData(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 };
 
@@ -404,14 +378,12 @@ export const submitHackApplication = async (
             duration: 3000,
             isClosable: true
         });
-        console.log(response);
-
         return response; // You might want to return the response from the API call
     } catch (err: unknown) {
         const error = err as AxiosError;
-        console.log(error?.response?.status === 400);
-        if (error?.response?.status === 400) {
-            navigate("/dashboard/hackathon");
+        if (error?.response?.status === 400) { 
+            navigate('/dashboard/hackathon')
+
         }
         if (error?.response) {
             toast({
@@ -438,9 +410,6 @@ export const getOrganizers = async (
         setData(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 };
 
@@ -459,11 +428,10 @@ export const getParticipants = async (
         );
         setData(transformedData);
         setColumnHead(columnOrder);
-        console.log(columnOrder);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };

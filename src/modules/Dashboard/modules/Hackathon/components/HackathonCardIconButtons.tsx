@@ -168,6 +168,7 @@ const HackathonCardIconButtons = ({
                                                     index,
                                                     ModalType[0]
                                                 );
+
                                             }}
                                         />
                                     </div>
@@ -240,7 +241,13 @@ const HackathonCardIconButtons = ({
                                 });
                                 window.navigator.share(shareData);
                             } catch (err) {
-                                console.log(err);
+                                toast({
+                                    title: "Error",
+                                    description: "Something went wrong",
+                                    status: "error",
+                                    duration: 3000,
+                                    isClosable: true
+                                });
                             }
                         }}
                     >

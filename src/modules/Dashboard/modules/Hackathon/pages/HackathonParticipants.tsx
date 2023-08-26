@@ -20,9 +20,6 @@ const HackathonParticipants = (props: Props) => {
         getParticipants(setData, setColumnOrder, id);
     }, []);
 
-    const handleNothing = () => {
-        console.log("clicked nothing");
-    };
     return (
         <div>
             <div className={styles.hackathonHeading}>
@@ -39,7 +36,7 @@ const HackathonParticipants = (props: Props) => {
                     >
                         <THead
                             columnOrder={columnOrder}
-                            onIconClick={handleNothing}
+                            onIconClick={() => {}}
                         />
                         <Blank />
                     </Table>

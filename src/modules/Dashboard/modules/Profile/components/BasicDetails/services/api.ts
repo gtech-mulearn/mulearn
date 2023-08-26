@@ -24,6 +24,7 @@ export const getIgDetails = (toast: ToastAsPara, setIg: UseStateFunc<any>) => {
             });
         });
 };
+
 export const editIgDetails = (
     toast: ToastAsPara,
     ig: any
