@@ -268,49 +268,44 @@ const HackathonCreate = () => {
         function pulish(hackathonId: string): boolean {
             let returnVal = false;
             if (isPublishing) {
-                setTimeout(() => {
-                    const hackathon: HackList = {
-                        id: hackathonId,
-                        title: values.title,
-                        type: values.type,
-                        tagline: values.tagline,
-                        event_logo: values.event_logo,
-                        banner: values.banner,
-                        website: values.website,
-                        place: values.place,
-                        event_start: c,
-                        event_end: d,
-                        application_start: a,
-                        application_ends: b,
-                        description: values.description,
-                        participant_count: values.participantCount,
-                        district: values.districtId,
-                        organisation: values.orgId,
-                        district_id: values.districtId,
-                        org_id: values.orgId,
-                        editable: true,
-                        is_open_to_all: values.isOpenToAll,
-                        status: "Draft"
-                    };
+                const hackathon: HackList = {
+                    id: hackathonId,
+                    title: values.title,
+                    type: values.type,
+                    tagline: values.tagline,
+                    event_logo: values.event_logo,
+                    banner: values.banner,
+                    website: values.website,
+                    place: values.place,
+                    event_start: c,
+                    event_end: d,
+                    application_start: a,
+                    application_ends: b,
+                    description: values.description,
+                    participant_count: values.participantCount,
+                    district: values.districtId,
+                    organisation: values.orgId,
+                    district_id: values.districtId,
+                    org_id: values.orgId,
+                    editable: true,
+                    is_open_to_all: values.isOpenToAll,
+                    status: "Draft"
+                };
 
-                    if (isDetailsComplete(hackathon)) {
-                        publishHackathon(
-                            hackathon.id,
-                            hackathon.status,
-                            toast
-                        ).then(() => (returnVal = true));
-                    } else {
-                        toast({
-                            title: "Cannot publish",
-                            description: "Please fill all the details",
-                            status: "error",
-                            duration: 5000,
-                            isClosable: true,
-                            position: "top-right"
-                        });
-                        setIsPublishing(false);
-                    }
-                }, 2000);
+                if (isDetailsComplete(hackathon)) {
+                    publishHackathon(hackathon.id, hackathon.status, toast);
+                    returnVal = true;
+                } else {
+                    toast({
+                        title: "Cannot publish",
+                        description: "Please fill all the details",
+                        status: "error",
+                        duration: 5000,
+                        isClosable: true,
+                        position: "top-right"
+                    });
+                    setIsPublishing(false);
+                }
             }
             return returnVal;
         }
@@ -337,7 +332,7 @@ const HackathonCreate = () => {
                   toast,
                   id
               )
-                  .then(() => pulish(id!))
+                  .then(() => (isPublishing ? pulish(id!) : true))
                   .then(res => res && navigate("/dashboard/hackathon"))
             : createHackathon(
                   values.title,
@@ -359,8 +354,15 @@ const HackathonCreate = () => {
                   values.website,
                   toast
               )
-                  .then(hackathonId => pulish(hackathonId))
-                  .then(res => res && navigate("/dashboard/hackathon"));
+                  .then(id => (isPublishing ? pulish(id) : true))
+                  .then(
+                      res =>
+                          res &&
+                          setTimeout(
+                              () => navigate("/dashboard/hackathon"),
+                              1000
+                          )
+                  );
 
         // resetForm();
     };
@@ -389,20 +391,18 @@ const HackathonCreate = () => {
                             >
                                 Save & Finish later
                             </button>
-                            {edit && (
-                                <button
-                                    type="submit"
-                                    form="hackathon"
-                                    className={styles.btn}
-                                    onClick={() => setIsPublishing(true)}
-                                    style={{
-                                        backgroundColor: "#456ff6",
-                                        color: "#fff"
-                                    }}
-                                >
-                                    Publish Now
-                                </button>
-                            )}
+                            <button
+                                type="submit"
+                                form="hackathon"
+                                className={styles.btn}
+                                onClick={() => setIsPublishing(true)}
+                                style={{
+                                    backgroundColor: "#456ff6",
+                                    color: "#fff"
+                                }}
+                            >
+                                Publish Now
+                            </button>
                         </div>
                     </div>
 
