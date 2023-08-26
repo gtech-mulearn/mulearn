@@ -375,7 +375,7 @@ function App() {
                             element: <TaskBulkImport />
                         },
                         {
-                            path: "karmavoucher",
+                            path: "karma-voucher",
                             element: (
                                 <RoleChecker
                                     roles={[roles.ADMIN, roles.FELLOW]}
