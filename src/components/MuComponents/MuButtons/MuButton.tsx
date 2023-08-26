@@ -182,65 +182,17 @@ type Props = {
     disabled?: boolean;
 };
 
-export const PowerfulButton = (props: Props) => {
-    const [isHovered, setIsHovered] = useState(false);
 
-    const handleMouseEnter = () => {
-        setIsHovered(true);
-    };
+type Variants = "primary" | "secondary" | "ghost" | "outline" | "destructive" | "success" | "link" | "draft"
 
-    const handleMouseLeave = () => {
-        setIsHovered(false);
-    };
+type ButtonProps = ({ children, className, variant, style, ...props }:
+    {children: ReactNode, className?:string, variant?:Variants, style?: React.CSSProperties} & React.ButtonHTMLAttributes<HTMLButtonElement>) => ReactJSXElement
 
-    const style = {
-        backgroundColor: props.backgroundColor || "#456FF6",
-        color: props.color || "#f5f7f9",
-        padding: props.padding || "0.6rem 0.9rem",
-        borderRadius: "10px",
-        border: `2px solid ${props.borderColor || "#456FF6"}`,
-        margin: props.margin || "0",
-        display: "flex",
-        alignItems: "center",
-        gap: "10px",
-        "font-size": props["font-size"] || "17px",
-        ...(isHovered && {
-            backgroundColor: props.onHoverBackground || "#00204c",
-            color: props.onHoverColor || "#f5f7f9"
-        })
-    };
-    return (
-        <div className={styles.powerfullButton}>
-            <button
-                style={style}
-                type={props.type || "button"}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                onClick={props.onButtonClick}
-                disabled={props.disabled}
-            >
-                {props.icon} {props.text}
-                {props.isLoading && (
-                    <ClipLoader
-                        size={20}
-                        color="#ff"
-                        className={styles.btn_loader}
-                    />
-                )}
-            </button>
-        </div>
-    );
-};
-
-type Variants = "primary" | "secondary" | "ghost" | "outline" | "destructive" | "success" | "link"
-
-type ButtonProps = ({ children, className, variant, style, disabled,...props }:
-    {children: ReactNode, className?:string, variant?:Variants, style?: React.CSSProperties, disabled?:true} & React.HTMLAttributes<HTMLButtonElement>) => ReactJSXElement
-
-export const Button:ButtonProps = ({ children, className = "", variant = "primary", style, disabled, ...props }) => {
+export const PowerfulButton:ButtonProps = ({ children, className = "", variant = "primary", style, ...props }) => {
     const variantName = variant ? styles[`${variant}-btn`] : ""
 
-    return <button className={styles["common-btn"] + "  " + variantName} {...props} style={style} disabled={disabled}>
+    return <button className={styles["common-btn"] + "  " + variantName} 
+                             {...props} style={style}>
         {children}
     </button>
 }

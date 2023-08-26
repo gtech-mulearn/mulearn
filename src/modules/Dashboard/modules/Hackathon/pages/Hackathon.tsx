@@ -27,10 +27,9 @@ const Hackathon = () => {
                             to="/dashboard/hackathon/create"
                             className={styles.HCbutton}
                         >
-                            <PowerfulButton
-                                text="Create"
-                                icon={<FiPlusCircle />}
-                            />
+                            <PowerfulButton>
+                                <FiPlusCircle/> Create
+                            </PowerfulButton>
                         </Link>
                     </div>
 

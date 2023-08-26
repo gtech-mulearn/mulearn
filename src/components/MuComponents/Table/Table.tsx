@@ -131,11 +131,12 @@ const Table: FC<TableProps> = (props: TableProps) => {
                 <table className={styles.tableActual}>
                     {props.children?.[0]}
                     {props.isloading ?
-                        <tr>
+                        <tbody><tr>
                             <td colSpan={props.columnOrder.length + 2} style={{ width: '100%' }}>
                                 <MuLoader />
                             </td>
                         </tr>
+                        </tbody>
                         :
                         <tbody>
                             {props.rows?.map((rowData, index) => (
@@ -178,7 +179,10 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                 )
                                                             }
                                                         >
-                                                            <HiOutlinePencil />
+                                                            <HiOutlinePencil 
+                                                                data-tooltip-id="Icon"
+                                                                data-tooltip-content="Edit"
+                                                            />
                                                         </button>
                                                     )}
                                                     {props.onVerifyClick && (

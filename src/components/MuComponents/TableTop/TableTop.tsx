@@ -6,6 +6,7 @@ import { MuButton, PowerfulButton } from "../MuButtons/MuButton";
 import { HiDownload } from "react-icons/hi";
 import { getCSV } from "./apis";
 import { useToast } from "@chakra-ui/react";
+import { ClipLoader } from "react-spinners";
 
 type Props = {
     onSearchText?: (data: string) => void;
@@ -35,51 +36,13 @@ const TableTop = (props: Props) => {
     return (
         <div className={styles.container}>
             <div className={styles.body}>
-                <div className={styles.left}>
                     <SearchBar onSearch={handleData} />
-                </div>
-                <div className={styles.right}>
                     {props.CSV && (
-                        // <MuButton
-                        //     text={"CSV"}
-                        //     onClick={e => {
-                        //         handleClick();
-                        //     }}
-                        //     disabled={isLoading}
-                        //     isLoading={isLoading}
-                        //     icon={<HiDownload />}
-                        //     style={{
-                        //         background: "#456FF6",
-                        //         padding: "0.35rem 1rem",
-                        //         borderRadius: "10px",
-                        //         color: "#fff"
-                        //     }}
-                        //     className={styles.csv}
-                        // />
-                        <PowerfulButton
-                            text={"CSV"}
-                            icon={<HiDownload />}
-                            onButtonClick={() => {
-                                handleClick();
-                            }}
-                            padding="0.3rem 0.7rem"
-                            margin="0"
-                            disabled={isLoading}
-                            isLoading={isLoading}
-                        />
-                        // <button
-                        //     className={styles.searchIcon}
-                        //     onClick={() => {
-                        //         handleClick();
-                        //     }}
-                        // >
-                        //     <div className={styles.csv}>
-                        //         <HiDownload />
-                        //         CSV
-                        //     </div>
-                        // </button>
+                        <PowerfulButton onClick={() => handleClick()} disabled={isLoading} >
+                            {isLoading ? <ClipLoader size={20} color="#fff"  />  : <HiDownload />}
+                            CSV 
+                        </PowerfulButton>
                     )}
-                </div>
             </div>
         </div>
     );

@@ -18,6 +18,7 @@ import {
 import { HackList } from "../services/HackathonInterfaces";
 
 import styles from "../pages/HackathonCreate.module.css";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 enum ModalType {
     Publish,
@@ -41,6 +42,8 @@ const HackathonCardIconButtons = ({
 }: Props) => {
     const navigate = useNavigate();
     const toast = useToast();
+
+    const isShareable = window.navigator.canShare({ title: "", url: "" })
 
     const [isPublishOpen, setIsPublishOpen] = useState<boolean[]>(
         ownData.map(() => false)
@@ -202,18 +205,16 @@ const HackathonCardIconButtons = ({
                             )}
                         </div>
                     </div>
-                    {!isDraft && (
-                        <button
-                            data-tooltip-id="Icon"
+                    {isDraft && (
+                        <PowerfulButton                        
+                            children="List"
                             data-tooltip-content="List Participants"
                             onClick={() => {
                                 navigate(
                                     `/dashboard/hackathon/applicants/${hackathon.id}`
                                 );
                             }}
-                        >
-                            List
-                        </button>
+                        />
                     )}
                 </div>
             ) : (
@@ -228,7 +229,6 @@ const HackathonCardIconButtons = ({
                                 }/dashboard/hackathon/details/${hackathon.id}`
                             };
 
-                            try {
                                 window.navigator.clipboard.writeText(
                                     shareData.url
                                 );
@@ -239,19 +239,13 @@ const HackathonCardIconButtons = ({
                                     duration: 3000,
                                     isClosable: true
                                 });
-                                window.navigator.share(shareData);
-                            } catch (err) {
-                                toast({
-                                    title: "Error",
-                                    description: "Something went wrong",
-                                    status: "error",
-                                    duration: 3000,
-                                    isClosable: true
-                                });
-                            }
+                                if (isShareable) window.navigator.share(shareData);
                         }}
                     >
-                        <LuCopy />
+                        <LuCopy
+                            data-tooltip-id="Icon"
+                            data-tooltip-content={`Copy${ isShareable ? "/Share" : ""}`}
+                         />
                     </div>
                 </div>
             )}

@@ -6,7 +6,7 @@ import { HackList } from "../services/HackathonInterfaces";
 import "react-tooltip/dist/react-tooltip.css";
 import styles from "../pages/HackathonCreate.module.css";
 import HackathonCardIconButtons from "./HackathonCardIconButtons";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useNavigate } from "react-router-dom";
 
 type HackathonCardProps = {
@@ -94,18 +94,15 @@ const HackathonCard = ({
                         </div>
                     </div>
 
-                    <MuButton
-                        text={isDraft ? "Edit Draft" : "Apply Now"}
+                    <PowerfulButton
+                        children={isDraft ? "Edit Draft" : "Apply Now"}
+                        variant={isDraft ? "draft" : "primary"}
                         onClick={() => {
                             navigate(
                                 isDraft
                                     ? `/dashboard/hackathon/edit/${hackathon.id}`
                                     : `/dashboard/hackathon/details/${hackathon.id}`
                             );
-                        }}
-                        className={styles.hackathonBtn}
-                        style={{
-                            backgroundColor: isDraft ? "#9297aa" : "#456ff6"
                         }}
                     />
                 </div>

@@ -101,17 +101,6 @@
     font-weight: 500;
 }
 
-.learningCircleLandingPageBtn {
-    width: 3rem;
-    height: 2rem;
-    background: var(--blue);
-    color: white;
-    border-radius: 7px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .learningCircleLandingPageExpandBtn {
     display: none;
 }
