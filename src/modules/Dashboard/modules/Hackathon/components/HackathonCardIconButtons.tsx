@@ -158,58 +158,27 @@ const HackathonCardIconButtons = ({
                                 )}
                             </div>
                             {!isDraft && (
-                                <div className={styles.group}>
-                                    <MdOutlineUnpublished
-                                        data-tooltip-id="Icon"
-                                        data-tooltip-content="Change to Draft"
-                                        onClick={() => {
-                                            toggleModal(index, ModalType[0]);
-                                        }}
-                                    />
-                                </div>
-                            )}
-                            {isDraft && (
-                                <div className={styles.group}>
-                                    <MdOutlineUnpublished
-                                        data-tooltip-id="Icon"
-                                        data-tooltip-content="Publish"
-                                        onClick={() => {
-                                            if (isDetailsComplete()) {
+                                <>
+                                    <div className={styles.group}>
+                                        <MdOutlineUnpublished
+                                            data-tooltip-id="Icon"
+                                            data-tooltip-content="Change to Draft"
+                                            onClick={() => {
                                                 toggleModal(
                                                     index,
                                                     ModalType[0]
                                                 );
-                                            } else {
-                                                // Show an error message or take appropriate action
-                                                console.log(
-                                                    "Please fill in all the details before publishing."
-                                                );
-                                                toast({
-                                                    title: "Error",
-                                                    description:
-                                                        "Please fill in all the details before publishing.",
-                                                    status: "error",
-                                                    duration: 3000,
-                                                    isClosable: true,
-                                                    position: "top"
-                                                });
-                                            }
-                                        }}
-                                    />
+                                            }}
+                                        />
+                                    </div>
                                     {isPublishOpen[index] && (
                                         <Modal
                                             setIsOpen={() =>
                                                 toggleModal(index, ModalType[0])
                                             }
                                             id={hackathon.id}
-                                            heading={
-                                                isDraft ? "Publish" : "Draft"
-                                            }
-                                            content={
-                                                isDraft
-                                                    ? `Make sure all details are filled before Publishing ${hackathon.title}`
-                                                    : `Are you sure you want to set ${hackathon.title} to Draft`
-                                            }
+                                            heading="Draft"
+                                            content={`Are you sure you want to set ${hackathon.title} to Draft`}
                                             click={() => {
                                                 publishHackathon(
                                                     hackathon.id,
@@ -228,7 +197,7 @@ const HackathonCardIconButtons = ({
                                             }}
                                         />
                                     )}
-                                </div>
+                                </>
                             )}
                         </div>
                     </div>
