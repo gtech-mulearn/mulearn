@@ -178,7 +178,6 @@ const HackathonCreate = () => {
             )
     });
 
-
     function isDetailsComplete(hackathon: HackList): boolean {
         if (
             hackathon.id &&
@@ -227,28 +226,28 @@ const HackathonCreate = () => {
             }
         });
 
-        let a =
+        let applicationStartDate =
             values.applicationStart !== "undefined" &&
             values.applicationStart !== "" &&
             values.applicationStart !== "null" &&
             values.applicationStart !== null
                 ? `${values.applicationStart}T00:00:00Z`
                 : "";
-        let b =
+        let applicationEndsDate =
             values.applicationEnds !== "undefined" &&
             values.applicationEnds !== "" &&
             values.applicationEnds !== "null" &&
             values.applicationEnds !== null
                 ? `${values.applicationEnds}T00:00:00Z`
                 : "";
-        let c =
+        let eventStartDate =
             values.eventStart !== "undefined" &&
             values.eventStart !== "" &&
             values.eventStart !== "null" &&
             values.eventStart !== null
                 ? `${values.eventStart}T00:00:00Z`
                 : "";
-        let d =
+        let eventEndDate =
             values.eventEnd !== "undefined" &&
             values.eventEnd !== "" &&
             values.eventEnd !== "null" &&
@@ -258,7 +257,7 @@ const HackathonCreate = () => {
 
         // Convert selectedFields object to a JSON string and then parse it to get the desired format
         const formattedFormFields = JSON.stringify(selectedFields);
-      
+
         function pulish(hackathonId: string): boolean {
             let returnVal = false;
             if (isPublishing) {
@@ -271,10 +270,10 @@ const HackathonCreate = () => {
                     banner: values.banner,
                     website: values.website,
                     place: values.place,
-                    event_start: c,
-                    event_end: d,
-                    application_start: a,
-                    application_ends: b,
+                    event_start: eventStartDate,
+                    event_end: eventEndDate,
+                    application_start: applicationStartDate,
+                    application_ends: applicationEndsDate,
                     description: values.description,
                     participant_count: values.participantCount,
                     district: values.districtId,
@@ -314,10 +313,10 @@ const HackathonCreate = () => {
                   values.districtId,
                   values.place,
                   values.isOpenToAll,
-                  a,
-                  b,
-                  c,
-                  d,
+                  applicationStartDate,
+                  applicationEndsDate,
+                  eventStartDate,
+                  eventEndDate,
                   formattedFormFields,
                   values.event_logo,
                   values.banner,
@@ -337,10 +336,10 @@ const HackathonCreate = () => {
                   values.districtId,
                   values.place,
                   values.isOpenToAll,
-                  a,
-                  b,
-                  c,
-                  d,
+                  applicationStartDate,
+                  applicationEndsDate,
+                  eventStartDate,
+                  eventEndDate,
                   formattedFormFields,
                   values.event_logo,
                   values.banner,
