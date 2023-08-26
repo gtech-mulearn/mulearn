@@ -32,9 +32,6 @@ export const getInterestGroups = async (
         setIsLoading(false);
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 };
 
@@ -53,7 +50,6 @@ export const createInterestGroups = async (
         if (response.data?.statusCode === 200) {
         }
         const message: any = response?.data;
-        //console.log(message);
         toast({
             title: "Created  Successfully..",
             description: "",
@@ -101,7 +97,6 @@ export const editInterestGroups = async (
         );
 
         const message: any = response?.data;
-        console.log(message);
         setHasError(message?.hasError);
         toast({
             title: " Edited Successfully..",
@@ -112,8 +107,6 @@ export const editInterestGroups = async (
         });
     } catch (err: unknown) {
         const error = err as AxiosError;
-        console.log(error);
-
         toast({
             title: "Some Error Occured..",
             description: "",
@@ -137,7 +130,7 @@ export const getIGDetails = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -157,11 +150,10 @@ export const deleteInterestGroups = async (
             isClosable: true
         });
         const message: any = response?.data;
-        //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
         toast({
             title: "Delete Failed",

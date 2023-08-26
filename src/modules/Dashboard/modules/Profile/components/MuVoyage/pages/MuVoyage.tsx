@@ -128,6 +128,7 @@ const MuVoyage = (props: Props) => {
                                                             0
                                                         )}
                                                     </span>
+                                                    ]
                                                 </span>
                                             </p>
                                             <div

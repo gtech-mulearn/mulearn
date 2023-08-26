@@ -22,7 +22,6 @@
 	justify-content: center;
 	flex-direction: column;
 	min-width: 450px;
-    width: min-content;
 	height: fit-content;
 	background: white;
 	color: white;
@@ -95,10 +94,10 @@
 
 .actionsContainer {
     display: flex;
-	flex-direction: row-reverse;
-    justify-content: space-around;
+	flex-direction: row;
+    justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 20px;
 }
 
 .closeBtn {

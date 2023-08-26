@@ -31,10 +31,6 @@ export const HackathonOrganizers = (props: Props) => {
         getOrganizers(setData, id);
     }, []);
 
-    const handleNothing = () => {
-        console.log("clicked nothing");
-    };
-
     return (
         <div className={styles.external_container}>
             <div className={styles.container}>
@@ -49,7 +45,6 @@ export const HackathonOrganizers = (props: Props) => {
                             .required("Required")
                     })}
                     onSubmit={values => {
-                        console.log(values.muid);
                         addOrganizer(id, values.muid, toast);
                         getOrganizers(setData, id);
                         setTimeout(() => {
@@ -90,7 +85,7 @@ export const HackathonOrganizers = (props: Props) => {
                     >
                         <THead
                             columnOrder={columnOrder}
-                            onIconClick={handleNothing}
+                            onIconClick={() => {}}
                         />
                         <Blank />
                     </Table>

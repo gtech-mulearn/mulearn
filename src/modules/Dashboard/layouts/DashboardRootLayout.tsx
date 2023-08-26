@@ -150,7 +150,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
         {
             url: "/dashboard/refer",
             title: "Refer",
-            hasView: true,
+            hasView: false,
             roles: [roles.STUDENT],
             icon: <i className="fi fi-sr-map-marker"></i>
         }
@@ -159,7 +159,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
     return (
         <div className={styles.full_page}>
             <SideNavBar sidebarButtons={buttons} />
-            <div className={styles.right_side} id="right">
+            <div className={styles.right_side}>
                 <TopNavBar />
                 <div className={styles.main_content}>
                     <Suspense fallback={<MuLoader />}>

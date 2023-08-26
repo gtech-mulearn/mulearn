@@ -20,14 +20,10 @@ export const getDistrictData = async (
         )
         .then(({data})=>data.response)
         .then(({data})=>{
-            console.log(data)
             setData(data.districts)
         })
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 };
 
@@ -51,7 +47,6 @@ export const postDistrictData = async (
         )
         .then(({data})=>data.response)
         .then(({data})=>{
-            console.log(data)
         })
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -82,7 +77,6 @@ export const putDistrictData = async (
         )
         .then(({data})=>data.response)
         .then(({data})=>{
-            console.log(data)
         })
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -112,7 +106,6 @@ export const deleteDistrictData = async (
             .replace("${state}",state)
             .replace("${zone}",zone)
             , requestConfig)
-            .then(({ data }) => console.log(data.message.general[0]))
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

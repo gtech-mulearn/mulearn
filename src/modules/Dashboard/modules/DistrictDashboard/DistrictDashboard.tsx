@@ -160,7 +160,6 @@ function DistrictDashboard() {
             );
         }
 
-        //console.log(`Icon clicked for column: ${column}`);
     };
 
     const CSV = (tabname: string) => {

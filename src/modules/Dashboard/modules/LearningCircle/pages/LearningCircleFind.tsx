@@ -14,12 +14,12 @@ const { toast } = createStandaloneToast();
 
 const FindCircle = () => {
     const [lc, setLc] = useState<LcType[]>([]);
-	const navigate = useNavigate()
+    const navigate = useNavigate()
 
-	useEffect(() => {
-		getCampusLearningCircles(setLc)
-	}, []);
-	
+    useEffect(() => {
+        getCampusLearningCircles(setLc)
+    }, []);
+
 
     return (
         <>
@@ -49,24 +49,27 @@ const FindCircle = () => {
                         {lc.map(circle => (
                             <>
                                 <div className={styles.one}>
-                                    <h2>{circle.name}</h2>
-                                    <p>Team Lead: {circle.created_by}</p>
-                                    <p>{circle.ig}</p>
-                                    <p>{circle.member_count} Members</p>
+                                    <h2>{circle?.name}</h2>
+                                    <p>Team Lead: {circle?.created_by}</p>
+                                    <p>{circle?.ig}</p>
+                                    <p>{circle?.member_count} Members</p>
                                     <div className={styles.join}>
-                                       
-									<PowerfulButton text='Join'  onButtonClick={() => {
-										joinCircle(circle.id)
-                                            
-                                            
-                                        setTimeout(() => {
-                                            
-                                            navigate(
-                                                `/dashboard/learning-circle`
-                                            );
-                                        },1500);
-									}}/>
+                                        <button onClick={() => {
+                                            joinCircle(circle.id)
+
+
+                                            setTimeout(() => {
+
+                                                navigate(
+                                                    `/dashboard/learning-circle`
+                                                );
+                                            }, 1500);
+
+                                        }}>Join</button>
                                     </div>
+                                    {/* <PowerfulButton text='Join' onButtonClick={() => {
+										navigate(`/dashboard/learning-circle/details/${circle.id}`);
+									}}/> */}
                                 </div>
                             </>
                         ))}

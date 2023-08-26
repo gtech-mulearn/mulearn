@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect ,useRef} from "react";
 
 import styles from "./SideNavBar.module.css";
 
@@ -27,9 +27,9 @@ const SideNavBar = ({ sidebarButtons }: Props) => {
         window.innerWidth > 830 ? "flex" : "none"
     );
 
-    // const myElementRef = useRef<HTMLDivElement>(null);
-    // const elements = document.getElementById("right");
-    // const element = elements as HTMLElement;
+    const myElementRef = useRef<HTMLDivElement>(null);
+    const elements = document.getElementById("right");
+    const element = elements as HTMLElement;
 
     useEffect(() => {
         const handleResize = () =>
@@ -53,10 +53,10 @@ const SideNavBar = ({ sidebarButtons }: Props) => {
         }
 
         // Right side content transition
-        // element.style.transition = ".3s ease-in-out";
-        // element.style.transform === "scale(1.1)"
-        //     ? (element.style.transform = "scale(1)")
-        //     : (element.style.transform = "scale(1.1)");
+        element.style.transition = ".3s ease-in-out";
+        element.style.transform === "scale(1.1)"
+            ? (element.style.transform = "unset")
+            : (element.style.transform = "scale(1.1)");
     };
 
     return (
