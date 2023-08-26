@@ -82,16 +82,16 @@ const CodeStorm = () => {
                     data.map((item) => (
                       <div className={styles.tv_card}>
                         <p className={styles.team_name}>
-                          Team Name: {item.name}
+                          <span>Team Name:</span> {item.name}
                         </p>
                         <p className={styles.team_code}>
-                          Team Code: {item.code}
+                          <span>Team Code:</span> {item.code}
                         </p>
                         <p className={styles.team_lead}>
-                          Team Laed: {item.lead}
+                          <span>Team Lead:</span> {item.lead}
                         </p>
                         <p className={styles.team_place}>
-                          {item.domain} Domain: {item.place} Position
+                          <span>{item.domain}</span> Domain: {item.place} Position
                         </p>
                         <p className={styles.team_members}>{item.team}</p>
                         <a

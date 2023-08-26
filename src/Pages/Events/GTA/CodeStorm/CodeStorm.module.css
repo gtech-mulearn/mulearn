@@ -203,6 +203,13 @@
   margin: 0.25rem 0;
 }
 
+.team_name span,
+.team_code span,
+.team_lead span,
+.team_place span {
+  color: #f78c40;
+}
+
 .team_link {
   background-color: #f78c40;
   color: white;
