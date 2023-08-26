@@ -91,7 +91,7 @@ const CodeStorm = () => {
                           <span>Team Lead:</span> {item.lead}
                         </p>
                         <p className={styles.team_place}>
-                          <span>{item.domain}</span> Domain: {item.place} Position
+                          <span>{item.domain} Domain:</span>  {item.place} Position
                         </p>
                         <p className={styles.team_members}>{item.team}</p>
                         <a
