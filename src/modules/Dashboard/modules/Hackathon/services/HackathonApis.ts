@@ -5,13 +5,15 @@ import { ToastId, UseToastOptions, useToast } from "@chakra-ui/react";
 import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { Data } from "@/MuLearnComponents/Table/Table";
 import { NavigateFunction } from "react-router-dom";
-import { ColumnDefinition, HackList, HackathonApplication } from "./HackathonInterfaces";
+import {
+    ColumnDefinition,
+    HackList,
+    HackathonApplication
+} from "./HackathonInterfaces";
 import { transformData } from "./HackathonUtils";
 import { SetStateAction } from "react";
 
-export const getHackathons = async (
-    setData: UseStateFunc<HackList[]>
-) => {
+export const getHackathons = async (setData: UseStateFunc<HackList[]>) => {
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getHackathons
@@ -26,12 +28,10 @@ export const getHackathons = async (
     }
 };
 
-export const getFormFields = async (
-    setFormData: UseStateFunc<string>
-) => {
+export const getFormFields = async (setFormData: UseStateFunc<string>) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getHackathonFormData,
+            dashboardRoutes.getHackathonFormData
         );
         const defaultForm: any = response?.data;
         setFormData(defaultForm.response);
@@ -157,7 +157,7 @@ export const editHackathon = async (
 ) => {
     try {
         const response = await privateGateway.put(
-            dashboardRoutes.editHackathon + id + '/',
+            dashboardRoutes.editHackathon + id + "/",
             {
                 title: title,
                 tagline: tagline,
@@ -203,15 +203,11 @@ export const editHackathon = async (
                 duration: 3000,
                 isClosable: true
             });
-            
-            
         }
     }
 };
 
-export const getAllDistricts = (
-    setDistrict: UseStateFunc<Option[]>
-) => {
+export const getAllDistricts = (setDistrict: UseStateFunc<Option[]>) => {
     privateGateway
         .get(dashboardRoutes.getAllDistricts)
         .then(response => {
@@ -238,11 +234,10 @@ export const getAllInstitutions = (
         .then(response => {
             console.log(response.data.response);
             setInstitutions(
-                response.data.response
-                    .map((sate: any) => ({
-                        value: sate.id,
-                        label: sate.title
-                    }))
+                response.data.response.map((sate: any) => ({
+                    value: sate.id,
+                    label: sate.title
+                }))
             );
         })
         .catch(error => {
@@ -314,14 +309,15 @@ export const addOrganizer = async (
 export const publishHackathon = async (
     id: string,
     status: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
+    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     let a = status === "Draft" ? "Published" : "Draft";
     try {
         const response = await privateGateway.put(
-            dashboardRoutes.publishHackathon + id + "/", {
-            status: a
-        }
+            dashboardRoutes.publishHackathon + id + "/",
+            {
+                status: a
+            }
         );
         const message: any = response?.data;
         toast({
@@ -348,7 +344,7 @@ export const publishHackathon = async (
 
 export const getApplicationForm = async (
     setData: UseStateFunc<HackathonApplication[]>,
-    id: string | undefined,
+    id: string | undefined
 ) => {
     try {
         const response = await privateGateway.get(
@@ -367,15 +363,15 @@ export const getApplicationForm = async (
 
 export const submitHackApplication = async (
     data: {
-        name: string,
-        gender: string,
-        email: string,
-        mobile: number,
-        bio: string,
-        college: string,
-        experience: string,
-        github: string,
-        linkedin: string
+        name: string;
+        gender: string;
+        email: string;
+        mobile: number;
+        bio: string;
+        college: string;
+        experience: string;
+        github: string;
+        linkedin: string;
     },
     id: string | undefined,
     navigate: NavigateFunction,
@@ -383,7 +379,7 @@ export const submitHackApplication = async (
 ) => {
     try {
         if (!id) {
-            throw new Error('id parameter is undefined');
+            throw new Error("id parameter is undefined");
         }
         const response = await privateGateway.post(
             dashboardRoutes.submitApplication,
@@ -394,22 +390,23 @@ export const submitHackApplication = async (
         );
 
         // Display a success toast
-        navigate('/dashboard/hackathon')
+        navigate("/dashboard/hackathon");
         toast({
             title: "Submitted Successfully",
-            description: "Hackathon application has been successfully submitted.",
+            description:
+                "Hackathon application has been successfully submitted.",
             status: "success",
             duration: 3000,
             isClosable: true
         });
-        console.log(response)
+        console.log(response);
 
         return response; // You might want to return the response from the API call
     } catch (err: unknown) {
         const error = err as AxiosError;
-        console.log(error?.response?.status === 400)
-        if (error?.response?.status === 400) { 
-            navigate('/dashboard/hackathon')
+        console.log(error?.response?.status === 400);
+        if (error?.response?.status === 400) {
+            navigate("/dashboard/hackathon");
         }
         if (error?.response) {
             toast({
@@ -423,7 +420,6 @@ export const submitHackApplication = async (
         }
     }
 };
-
 
 export const getOrganizers = async (
     setData: UseStateFunc<Data[]>,
@@ -465,4 +461,4 @@ export const getParticipants = async (
             console.log(error.response);
         }
     }
-};       
+};
