@@ -136,9 +136,10 @@
 
 
 * {
-    --primary-btn-color: 226, 91%, 62%;
+    --primary-btn-color: 230, 85%, 64%;
     --primary-hover: 215, 100%, 15%;
 
+    --dratf-btn-color: 227, 12%, 62%;
     
     --secondary-btn-color: 225, 100%, 94%;
     --white: 0, 0%, 100%;
@@ -151,7 +152,7 @@
     --rounded-btn: 10px;
     --border-btn: 2px solid;
     --transition-speed: 0.3s;
-    --padding-btn: 10px 20px;
+    --padding-btn: 5px 20px;
 }
 
 .common-btn {
@@ -180,10 +181,24 @@
         cursor: no-drop;
         pointer-events: none;
     }
+
+    &>span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
 }
 
 .primary-btn {
     background-color: hsl(var(--primary-btn-color));
+    color: hsl(var(--white));
+    &:hover {
+        background-color: hsl(var(--primary-hover));
+    }
+}
+.draft-btn {
+    background-color: hsl(var(--dratf-btn-color));
     color: hsl(var(--white));
     &:hover {
         background-color: hsl(var(--primary-hover));
@@ -243,4 +258,3 @@
         text-decoration-thickness: 2px;
     }
 }
-/* css people, help me to write the other 2 types of button css*/

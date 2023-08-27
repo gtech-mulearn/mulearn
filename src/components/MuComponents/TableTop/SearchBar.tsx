@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./TableTop.module.css";
 import { HiOutlineX } from "react-icons/hi";
+import { PowerfulButton } from "../MuButtons/MuButton";
 
 type Props = {
     onSearch: (data: string) => void;
@@ -24,7 +25,7 @@ export const SearchBar = (props: Props) => {
 
     return (
         <>
-            <form className={styles.form_container} onSubmit={handleSubmit}>
+            <form className={styles.form_container} onSubmit={handleSubmit} style={{margin: 0}}>
                 <input
                     type="text"
                     placeholder="Search"
@@ -34,13 +35,12 @@ export const SearchBar = (props: Props) => {
                 />
                 {search && (
                     <HiOutlineX
+                        style={{margin:"auto"}}
                         className={styles.clearIcon}
                         onClick={clearInput}
                     />
                 )}
-                <div className={styles.searchIcon}>
-                    <button>Search</button>
-                </div>
+                <PowerfulButton type="submit" >Search</PowerfulButton>
             </form>
         </>
     );

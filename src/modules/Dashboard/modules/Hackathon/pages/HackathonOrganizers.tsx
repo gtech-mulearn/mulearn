@@ -62,10 +62,9 @@ export const HackathonOrganizers = (props: Props) => {
                         />
 
                         <PowerfulButton
-                            text={"Add Organizer"}
-                            type={"submit"}
-                            margin="23px 0 0 0"
-                        ></PowerfulButton>
+                            children="Add Organizer"
+                            type="submit" style={{margin:"23px 0 0 0"}}
+                        />
                     </Form>
                 </Formik>
             </div>
