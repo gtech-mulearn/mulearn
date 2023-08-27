@@ -169,10 +169,7 @@ import Settings from "./modules/Dashboard/modules/Settings/Settings";
 import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
 import Refer from "./modules/Dashboard/modules/Refer/Refer";
 import Thread from "./modules/Public/ThreadsCard/modules/Thread";
-import KarmaVoucherBulkImport from "./modules/Dashboard/modules/KarmaVoucher/KarmaVoucherBulkImport";
 import { KarmaVoucher } from "./modules/Dashboard/modules/KarmaVoucher/KarmaVoucher";
-import KarmaVoucherCreate from "./modules/Dashboard/modules/KarmaVoucher/KarmaVoucherCreate";
-import KarmaVoucherEdit from "./modules/Dashboard/modules/KarmaVoucher/KarmaVoucherEdit";
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
 );
@@ -382,18 +379,6 @@ function App() {
                                     children={<KarmaVoucher />}
                                 />
                             )
-                        },
-                        {
-                            path: "karma-voucher/create",
-                            element: <KarmaVoucherCreate />
-                        },
-                        {
-                            path: "karma-voucher/edit/:id",
-                            element: <KarmaVoucherEdit />
-                        },
-                        {
-                            path: "karma-voucher/bulk-import",
-                            element: <KarmaVoucherBulkImport />
                         },
                         {
                             path: "url-shortener",

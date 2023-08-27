@@ -100,15 +100,7 @@ export const KarmaVoucher = (props: Props) => {
         //console.log(`Icon clicked for column: ${column}`);
     };
 
-    const handleEdit = (id: string | number | boolean) => {
-        navigate(`/dashboard/karma-voucher/edit/${id}`);
-    };
-
-    
-
-    const handleCreate = () => {
-        navigate("/dashboard/karma-voucher/create");
-    };
+   
 
     return (
         <>
@@ -136,7 +128,6 @@ export const KarmaVoucher = (props: Props) => {
                         perPage={perPage}
                         columnOrder={columnOrder}
                         id={["id"]}
-                        onEditClick={handleEdit}
                         modalTypeContent="error"
                         modalDeleteContent="Are you sure you want to delete ?"
                     >

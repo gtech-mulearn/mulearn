@@ -47,6 +47,7 @@ export const dashboardRoutes = {
     getTaskTypes: "/api/v1/dashboard/task/task-types/",
 
     getKarmaVoucher: "/api/v1/dashboard/karma-voucher/",
+    getKarmaVoucherList: "api/v1/dashboard/karma-voucher/import/",
 
     getShortenUrl: "/api/v1/url-shortener/list/",
     createShortenUrl: "/api/v1/url-shortener/create/",
