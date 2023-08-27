@@ -32,24 +32,21 @@ export const LearningCircleLandingPage = () => {
                     <img src={imageTop} alt="image" loading="eager" />
                     <div className={styles.learningCircleLandingPageDesc}>
                         <h1>Learn, share, together</h1>
-                        <b style={{ fontWeight: "600", width: "80%" }}>
+                        <b>
                             A fantastic way to spend a small amount of time learning
                             about new things
                             with a group of people with same interests!
                         </b>
                         <div className={styles.learningCircleLandingPageButton}>
                             <PowerfulButton
-                                text={"Join"}
-                                padding="0.3rem 2rem"
-                                onButtonClick={handleJoin}
+                                children="Join"
+                                style={{paddingLeft:"2rem", paddingRight:"2rem"}}
+                                onClick={handleJoin}
                             />
                             <PowerfulButton
-                                text={"Create"}
-                                backgroundColor="white"
-                                color="#456FF6"
-                                padding="0.3rem 1.5rem"
-                                onHoverBackground="#456FF6"
-                                onButtonClick={handleCreate}
+                                children="Create"
+                                variant="outline"
+                                onClick={handleCreate}
                             />
                         </div>
                     </div>
@@ -82,13 +79,13 @@ export const LearningCircleLandingPage = () => {
                                                     <p className={styles.learningCircleLandingPagePara}>
                                                         {circle.ig}
                                                     </p>
-                                                    <button className={styles.learningCircleLandingPageBtn} onClick={() => {
+                                                    <PowerfulButton style={{height: "2rem"}} onClick={() => {
                                                         navigate(
                                                             `/dashboard/learning-circle/details/${circle.id}`
                                                         );
                                                     }}>
-                                                        <BsChevronRight className={[].join(" ")} />
-                                                    </button>
+                                                        <BsChevronRight />
+                                                    </PowerfulButton>
                                                 </div>
                                             </label>
                                         </li>

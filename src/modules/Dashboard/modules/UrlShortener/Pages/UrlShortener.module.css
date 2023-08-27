@@ -18,7 +18,7 @@
 
     .form_btns {
         display: flex;
-        gap: 20px;
+        gap: 10px;
         justify-content: space-between;
         width: 35%;
         height: 65px;
@@ -59,7 +59,7 @@
                 gap: 10px;
 
                 .short_url_input_container_div {
-                    width: 40%;
+                    width: 50%;
 
                     .short_url_input {
                         display: flex;
@@ -67,18 +67,9 @@
                         justify-content: space-between;
 
                         .short_url {
-                            width: 73%;
+                            width: 100%;
                         }
                     }
-                }
-
-                .form_btns .submit {
-                    color: rgb(255, 255, 255);
-                    cursor: pointer;
-                    font-size: 15px;
-                    font-weight: 500;
-                    background: rgb(85, 112, 241);
-                    border-radius: 7px;
                 }
             }
         }

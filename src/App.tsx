@@ -169,6 +169,7 @@ import Settings from "./modules/Dashboard/modules/Settings/Settings";
 import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
 import Refer from "./modules/Dashboard/modules/Refer/Refer";
 import Thread from "./modules/Public/ThreadsCard/modules/Thread";
+import { KarmaVoucher } from "./modules/Dashboard/modules/KarmaVoucher/KarmaVoucher";
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
 );
@@ -369,6 +370,15 @@ function App() {
                         {
                             path: "tasks/bulk-import",
                             element: <TaskBulkImport />
+                        },
+                        {
+                            path: "karma-voucher",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    children={<KarmaVoucher />}
+                                />
+                            )
                         },
                         {
                             path: "url-shortener",

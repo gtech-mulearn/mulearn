@@ -12,7 +12,7 @@ import THead from "@/MuLearnComponents/Table/THead";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import { useFormik } from "formik";
 import { useToast } from "@chakra-ui/react";
-import { MuButtonLight } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButtonLight, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 type urlData = {
     id: string | number | boolean;
     long_url: string;
@@ -223,11 +223,11 @@ const UrlShortener = () => {
                             placeholder="Title"
                             required
                         />
-                        {formik.touched.title && formik.errors.title ? (
+                        {formik.touched.title && formik.errors.title && (
                             <p className={styles.error_message}>
                                 {formik.errors.title}
                             </p>
-                        ) : null}
+                        )}
                         <input
                             className={styles.long_url}
                             type="url"
@@ -238,15 +238,14 @@ const UrlShortener = () => {
                             placeholder="Paste long url"
                             required
                         />
-                        {formik.touched.longUrl && formik.errors.longUrl ? (
+                        {formik.touched.longUrl && formik.errors.longUrl && (
                             <p className={styles.error_message}>
                                 {formik.errors.longUrl}
                             </p>
-                        ) : null}
+                        )}
                         <div className={styles.short_url_input_container}>
-                            <div
-                                className={styles.short_url_input_container_div}
-                            >
+                            <div className={styles.short_url_input_container_div} >
+
                                 <div className={styles.short_url_input}>
                                     <label htmlFor="">mulearn.org/r/</label>
                                     <input
@@ -260,43 +259,28 @@ const UrlShortener = () => {
                                         required
                                     />
                                 </div>
-                                {formik.touched.short_url &&
-                                formik.errors.short_url ? (
+                                {formik.touched.short_url && formik.errors.short_url && (
                                     <p className={styles.error_message}>
                                         {formik.errors.short_url}
                                     </p>
-                                ) : null}
+                                )}
                             </div>
                             <div className={styles.form_btns}>
-                                <MuButtonLight
+                                <PowerfulButton
                                     type="reset"
-                                    text="Cancel"
-                                    style={{
-                                        width: "fit-content",
-                                        minWidth: "auto",
-                                        margin: "20px 0px 0px",
-                                        color: "#5570F1",
-                                        backgroundColor: "#F3F3F4"
-                                    }}
+                                    children="Cancel"
+                                    variant="secondary"
+                                    style={{ width: "fit-content", minWidth: "auto", margin: "20px 0px 0px", }}
                                     onClick={() => {
                                         formik.handleReset(formik.values);
                                         setEditBtn(false);
                                     }}
                                 />
-
-                                {!editBtn ? (
-                                    <input
-                                        className={styles.submit}
-                                        type="submit"
-                                        value="Create"
-                                    />
-                                ) : (
-                                    <input
-                                        className={styles.submit}
-                                        type="submit"
-                                        value="Edit"
-                                    ></input>
-                                )}
+                                <PowerfulButton 
+                                    type="submit"
+                                    style={{ width: "100%", minWidth:"150px", margin: "20px 0px 0px" }}
+                                    children={editBtn ? "Edit" : "Create"}
+                                />
                             </div>
                         </div>
                     </form>

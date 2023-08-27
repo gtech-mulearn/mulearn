@@ -1,9 +1,6 @@
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { useNavigate, NavigateFunction } from "react-router-dom";
-import {
-    privateGateway,
-    publicGatewayAuth
-} from "@/MuLearnServices/apiGateways";
+import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { authRoutes, dashboardRoutes } from "@/MuLearnServices/urls";
 import { refreshRoles } from "@/MuLearnServices/authCheck";
 
@@ -33,7 +30,9 @@ export const forgetPassword = (
         .catch(error => {
             setShowLoader(false);
             toast({
-                title: error.response?.data?.message?.general[0],
+                title: error.response?.data?.message?.general[0]
+                    ? error.response?.data?.message?.general[0]
+                    : "Something went wrong",
                 status: "error",
                 duration: 3000,
                 isClosable: true
@@ -58,7 +57,7 @@ export const login = (
     redirectPath: string
 ) => {
     setIsLoading(true);
-    publicGatewayAuth
+    publicGateway
         .post(authRoutes.login, { emailOrMuid, password })
         .then((response: authRoutesLoginRes) => {
             if (response.data.hasError == false) {
@@ -107,12 +106,21 @@ export const login = (
         })
         .catch(error => {
             setIsLoading(false);
-            toast({
-                title: error.response.data.message.general[0],
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+            if(error.response.data){
+                toast({
+                    title: error.response.data.message.general[0],
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true
+                });
+            }else{
+                toast({
+                    title: "Something went wrong",
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true
+                });
+            }
         });
 };
 
@@ -200,7 +208,7 @@ export const requestEmailOrMuidOtp = (
     setOtpError: UseStateFunc<boolean>
 ) => {
     setOtpLoading(true);
-    publicGatewayAuth
+    publicGateway
         .post(authRoutes.requestEmailOrMuidOtp, { emailOrMuid })
         .then((response: APIResponse) => {
             setOtpLoading(false);
@@ -239,7 +247,7 @@ export const otpVerification = (
     redirectPath: string
 ) => {
     setOtpVerifyLoading(true);
-    publicGatewayAuth
+    publicGateway
         .post(authRoutes.otpVerification, { emailOrMuid, otp })
         .then((response: authRoutesLoginRes) => {
             //console.log(response.data);
