@@ -43,7 +43,11 @@ const HackathonCardIconButtons = ({
     const navigate = useNavigate();
     const toast = useToast();
 
-    const isShareable = window.navigator.canShare({ title: "", url: "" })
+    const shareData = {
+        title: hackathon.title,
+        url: `${import.meta.env.VITE_FRONTEND_URL}/dashboard/hackathon/details/${hackathon.id}`
+    };
+    const isShareable =  window.navigator.canShare && window.navigator.canShare(shareData)
 
     const [isPublishOpen, setIsPublishOpen] = useState<boolean[]>(
         ownData.map(() => false)
@@ -222,16 +226,7 @@ const HackathonCardIconButtons = ({
                     <div
                         className={styles.group}
                         onClick={() => {
-                            const shareData = {
-                                title: hackathon.title,
-                                url: `${
-                                    import.meta.env.VITE_FRONTEND_URL
-                                }/dashboard/hackathon/details/${hackathon.id}`
-                            };
-
-                                window.navigator.clipboard.writeText(
-                                    shareData.url
-                                );
+                                window.navigator.clipboard.writeText( shareData.url );
                                 toast({
                                     title: "Success",
                                     description: "Link copied to clipboard",
