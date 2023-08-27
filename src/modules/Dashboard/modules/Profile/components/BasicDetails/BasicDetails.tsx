@@ -13,7 +13,6 @@ const BasicDetails = (props: Props) => {
     const [editIg, setEditIg] = useState(false);
     const [allIg, setAllIg] = useState<any>([]);
     const [ig, setIg] = useState<any>(props.userProfile.interest_groups);
-    console.log( ig);
     const { id } = useParams<{ id: string }>();
     useEffect(() => {
         // getIgDetails(toast, setIg);
@@ -47,6 +46,8 @@ const BasicDetails = (props: Props) => {
                 <div className={styles.igs_container}>
                     {props.userProfile.interest_groups.length != 0 ? (
                         ig.map((data: any, i: number) => {
+                            console.log(data.karma);
+
                             return (
                                 <div
                                     style={
@@ -62,24 +63,36 @@ const BasicDetails = (props: Props) => {
                                     {editIg && (
                                         <i
                                             onClick={() => {
-                                                setIg(
-                                                    ig.filter(
-                                                        (ig: any) =>
-                                                            ig.name != data.name
-                                                    )
-                                                );
-                                                editIgDetails(
-                                                    toast,
-                                                    ig
-                                                        .filter(
+                                                if (ig.length > 1) {
+                                                    setIg(
+                                                        ig.filter(
                                                             (ig: any) =>
                                                                 ig.name !=
                                                                 data.name
                                                         )
-                                                        .map((ig: any) => {
-                                                            return ig.id;
-                                                        })
-                                                );
+                                                    );
+                                                    editIgDetails(
+                                                        toast,
+                                                        ig
+                                                            .filter(
+                                                                (ig: any) =>
+                                                                    ig.name !=
+                                                                    data.name
+                                                            )
+                                                            .map((ig: any) => {
+                                                                return ig.id;
+                                                            })
+                                                    );
+                                                } else {
+                                                    toast({
+                                                        title: "Error",
+                                                        description:
+                                                            "You must have atleast one interest group",
+                                                        status: "error",
+                                                        duration: 3000,
+                                                        isClosable: true
+                                                    });
+                                                }
                                             }}
                                             className="fi fi-sr-circle-xmark"
                                         ></i>
@@ -92,6 +105,8 @@ const BasicDetails = (props: Props) => {
                                                       data.karma / 1000
                                                   ).toPrecision(2) + "K"
                                                 : data.karma
+                                                ? data.karma
+                                                : "0"
                                             : "0"}
                                     </p>
                                 </div>

@@ -182,10 +182,7 @@ const UrlShortener = () => {
             "short_url",
             shortUrlData
                 .filter(item => item?.id === id)[0]
-                .short_url.replace(
-                    import.meta.env.VITE_BACKEND_URL + "/r/",
-                    ""
-                )
+                .short_url.replace(import.meta.env.VITE_BACKEND_URL + "/r/", "")
         );
         setEditBtn(true);
     };
@@ -213,7 +210,7 @@ const UrlShortener = () => {
 
     return (
         <>
-            <div className={styles.url_shortener_container}>
+            {editBtn &&<div className={styles.url_shortener_container}>
                 <div className={styles.create_new_url}>
                     <form onSubmit={formik.handleSubmit}>
                         <input
@@ -264,7 +261,7 @@ const UrlShortener = () => {
                                     />
                                 </div>
                                 {formik.touched.short_url &&
-                                    formik.errors.short_url ? (
+                                formik.errors.short_url ? (
                                     <p className={styles.error_message}>
                                         {formik.errors.short_url}
                                     </p>
@@ -272,7 +269,7 @@ const UrlShortener = () => {
                             </div>
                             <div className={styles.form_btns}>
                                 <MuButtonLight
-                                type="reset"
+                                    type="reset"
                                     text="Cancel"
                                     style={{
                                         width: "fit-content",
@@ -304,7 +301,7 @@ const UrlShortener = () => {
                         </div>
                     </form>
                 </div>
-            </div>
+            </div>}
 
             <>
                 <TableTop
