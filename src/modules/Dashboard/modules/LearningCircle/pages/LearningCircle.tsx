@@ -600,8 +600,7 @@ const LearningCircle = (props: Props) => {
                                                     alt="Profile Picture"
                                                 />
                                                 <div>
-                                                    {/* <p>{member.username}</p> */}
-                                                    <p>Muhammed R</p>
+                                                    <p>{member.username}</p>
                                                     <span>
                                                         <img
                                                             src="https://i.ibb.co/Dbhv9rS/karma.png"
