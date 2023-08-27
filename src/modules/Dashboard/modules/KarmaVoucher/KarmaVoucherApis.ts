@@ -74,7 +74,7 @@ export const getTaskDetails = async (
     setData: UseStateFunc<TaskEditInterface>
 ) => {
     try {
-        const response = await privateGateway.get(
+        const response = await privateGateway.post(
             dashboardRoutes.getKarmaVoucher + "get/" + id + "/"
         );
         const message: any = response?.data;
