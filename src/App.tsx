@@ -384,15 +384,15 @@ function App() {
                             )
                         },
                         {
-                            path: "karmavoucher/create",
+                            path: "karma-voucher/create",
                             element: <KarmaVoucherCreate />
                         },
                         {
-                            path: "karmavoucher/edit/:id",
+                            path: "karma-voucher/edit/:id",
                             element: <KarmaVoucherEdit />
                         },
                         {
-                            path: "karmavoucher/bulk-import",
+                            path: "karma-voucher/bulk-import",
                             element: <KarmaVoucherBulkImport />
                         },
                         {

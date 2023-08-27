@@ -9,7 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import styles from "../InterestGroup/InterestGroup.module.css";
-import { deleteTask, getKarmaVoucher } from "./KarmaVoucherApis";
+import { getKarmaVoucher } from "./KarmaVoucherApis";
 
 type Props = {};
 
@@ -101,15 +101,13 @@ export const KarmaVoucher = (props: Props) => {
     };
 
     const handleEdit = (id: string | number | boolean) => {
-        navigate(`/dashboard/tasks/edit/${id}`);
+        navigate(`/dashboard/karma-voucher/edit/${id}`);
     };
 
-    const handleDelete = (id: string | undefined) => {
-        deleteTask(id, toast);
-    };
+    
 
     const handleCreate = () => {
-        navigate("/dashboard/tasks/create");
+        navigate("/dashboard/karma-voucher/create");
     };
 
     return (
@@ -121,19 +119,7 @@ export const KarmaVoucher = (props: Props) => {
                 }}
             >
 
-                <PowerfulButton
-                    text={"Bulk Import"}
-                    icon={<AiOutlinePlusCircle />}
-                    onButtonClick={() => navigate("/dashboard/tasks/bulk-import")}
-                    padding="0.3rem 0.7rem"
-                    margin="0" />
-
-                <PowerfulButton
-                    text={"Create"}
-                    icon={<AiOutlinePlusCircle />}
-                    onButtonClick={handleCreate}
-                    padding="0.3rem 0.7rem"
-                    margin="0" />
+                
             </div>
 
             {data && (
@@ -141,7 +127,7 @@ export const KarmaVoucher = (props: Props) => {
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
-                        CSV={dashboardRoutes.getTasksData + "csv/"}
+                        CSV={dashboardRoutes.getKarmaVoucher + "csv/"}
                     />
                     <Table
                         rows={data}
@@ -152,7 +138,6 @@ export const KarmaVoucher = (props: Props) => {
                         id={["id"]}
                         onEditClick={handleEdit}
                         modalTypeContent="error"
-                        onDeleteClick={handleDelete}
                         modalDeleteContent="Are you sure you want to delete ?"
                     >
                         <THead
