@@ -1,5 +1,4 @@
-import { Field, Form, Formik } from "formik";
-import * as Yup from "yup";
+import { Form, Formik } from "formik";
 import styles from "./HackathonCreate.module.css";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
@@ -23,14 +22,16 @@ import {
 } from "../../../utils/common";
 import HackathonImagePreview from "../components/HackathonImagePreview";
 import { HackList } from "../services/HackathonInterfaces";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { FormTabBasics } from "../components/FormTabBasics";
 import { FormTabDates } from "../components/FormTabDates";
 import { FormTabDetails } from "../components/FormTabDetails";
 import { FormTabAdvanced } from "../components/FormTabAdvanced";
+import { FormTabApplication } from "../components/FormTabApplication";
+
+import { hackathonSchema } from "../utils";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 /**
- * TODO: Move YUP Validations to another file.
  * TODO: Make the form things json and iterate and display, store the jsons in a separate file.
  */
 
@@ -38,7 +39,7 @@ const HackathonCreate = () => {
     const [tabIndex, setTabIndex] = useState(0);
     const [formData, setFormData] = useState("");
     const [temp, setTemp] = useState(false);
-    const [edit, setEdit] = useState(false);
+    const [isEdit, setIsEdit] = useState(false);
     const [data, setData] = useState<HackList>();
     const [district, setDistrict] = useState<Option[]>([]);
     const [institutions, setInstitutions] = useState<Option[]>([]);
@@ -62,7 +63,7 @@ const HackathonCreate = () => {
             setTimeout(() => {
                 setTemp(true);
             }, 3000);
-            setEdit(true);
+            setIsEdit(true);
         } else {
             setTemp(true);
         }
@@ -83,126 +84,37 @@ const HackathonCreate = () => {
     }, [institutionsChunks]);
 
     function handleNext() {
-        if (tabIndex === 4) {
-            setTabIndex(4);
-        } else {
-            setTabIndex(tabIndex + 1);
-        }
+        setTabIndex(tabIndex === 4 ? 4 : tabIndex + 1);
     }
 
     function handleBack() {
-        if (tabIndex === 0) {
-            setTabIndex(0);
-        } else {
-            setTabIndex(tabIndex - 1);
-        }
+        setTabIndex(tabIndex === 0 ? 0 : tabIndex - 1);
     }
 
-    const hackathonSchema = Yup.object().shape({
-        title: Yup.string()
-            .required("Required")
-            .min(2, "Too Short!")
-            .max(50, "Too Long!"),
-        tagline: Yup.string().min(2, "Too Short!").max(100, "Too Long!"),
-        // .required("Required"),
-        orgId: Yup.string().min(2, "Too Short!"),
-        place: Yup.string().min(2, "Too Short!"),
-        districtId: Yup.string().min(2, "Too Short!"),
-        type: Yup.string().min(2, "Too Short!"),
-        isOpenToAll: Yup.boolean(),
-        description: Yup.string().min(5, "Too Short!"),
-        // eventStart: Yup.date(),
-        // eventEnd: Yup.date(),
-        // applicationStart: Yup.date(),
-        // applicationEnds: Yup.date(),
-        participantCount: Yup.number()
-            .positive("Number of users should be a positive value")
-            .min(10, "Needs to be at least 2 digits.")
-            .max(999999, "Should not exceed 6 digits")
-            .truncate(),
-        website: Yup.string().min(3, "Too Short!").max(200, "Too Long!"),
-        event_logo: Yup.mixed()
-            .test(
-                "fileSize",
-                "File size is too large, maximum size is 10MB",
-                (value: any) => {
-                    if (value) {
-                        const maxSize = 10 * 1024 * 1024; // 10MB
-                        return value.size <= maxSize;
-                    }
-                    return true; // No file selected, so it passes validation
-                }
-            )
-            .test(
-                "fileType",
-                "Invalid file format, only image formats are supported",
-                (value: any) => {
-                    if (value) {
-                        const supportedFormats = [
-                            "image/jpeg",
-                            "image/png",
-                            "image/gif"
-                        ];
-                        return supportedFormats.includes(value.type);
-                    }
-                    return true; // No file selected, so it passes validation
-                }
-            ),
-
-        banner: Yup.mixed()
-            .test(
-                "fileSize",
-                "File size is too large, maximum size is 20MB",
-                (value: any) => {
-                    if (value) {
-                        const maxSize = 20 * 1024 * 1024; // 20MB
-                        return value.size <= maxSize;
-                    }
-                    return true; // No file selected, so it passes validation
-                }
-            )
-            .test(
-                "fileType",
-                "Invalid file format, only image formats are supported",
-                (value: any) => {
-                    if (value) {
-                        const supportedFormats = [
-                            "image/jpeg",
-                            "image/png",
-                            "image/gif"
-                        ];
-                        return supportedFormats.includes(value.type);
-                    }
-                    return true; // No file selected, so it passes validation
-                }
-            )
-    });
-
     function isDetailsComplete(hackathon: HackList): boolean {
-        if (
-            hackathon.id &&
-            hackathon.title &&
-            hackathon.type &&
-            hackathon.tagline &&
-            hackathon.event_logo &&
-            hackathon.banner &&
-            hackathon.website &&
-            hackathon.place &&
-            hackathon.event_start &&
-            hackathon.event_end &&
-            hackathon.application_start &&
-            hackathon.application_ends &&
-            hackathon.description &&
-            hackathon.participant_count !== null &&
-            hackathon.district &&
-            hackathon.organisation &&
-            hackathon.district_id &&
-            hackathon.org_id !== null &&
-            hackathon.editable !== null
-        ) {
-            return true;
+        let returnVal = true;
+        let fieldsToFix: string[] = [];
+        Object.entries(hackathon).forEach(([key, value]) => {
+            if (value === null || value === "") {
+                returnVal = false;
+                fieldsToFix.push(
+                    key.charAt(0).toUpperCase() + key.slice(1).replace("_", " ")
+                );
+            }
+        });
+        if (!returnVal) {
+            const fieldsText = fieldsToFix.join(", ");
+
+            toast({
+                title: "Cannot publish",
+                description: `Please fill the following fields: ${fieldsText}`,
+                status: "error",
+                duration: 5000,
+                isClosable: true,
+                position: "top-right"
+            });
         }
-        return false;
+        return returnVal;
     }
 
     const handleSubmit = (values: any, { resetForm }: any) => {
@@ -226,128 +138,75 @@ const HackathonCreate = () => {
             }
         });
 
-        let applicationStartDate =
-            values.applicationStart !== "undefined" &&
-            values.applicationStart !== "" &&
-            values.applicationStart !== "null" &&
-            values.applicationStart !== null
-                ? `${values.applicationStart}T00:00:00Z`
-                : "";
-        let applicationEndsDate =
-            values.applicationEnds !== "undefined" &&
-            values.applicationEnds !== "" &&
-            values.applicationEnds !== "null" &&
-            values.applicationEnds !== null
-                ? `${values.applicationEnds}T00:00:00Z`
-                : "";
-        let eventStartDate =
-            values.eventStart !== "undefined" &&
-            values.eventStart !== "" &&
-            values.eventStart !== "null" &&
-            values.eventStart !== null
-                ? `${values.eventStart}T00:00:00Z`
-                : "";
-        let eventEndDate =
-            values.eventEnd !== "undefined" &&
-            values.eventEnd !== "" &&
-            values.eventEnd !== "null" &&
-            values.eventEnd !== null
-                ? `${values.eventEnd}T00:00:00Z`
-                : "";
+        const formatDate = (date: any): string => {
+            if (
+                date === "undefined" ||
+                date === null ||
+                date === undefined ||
+                date === "null" ||
+                date === ""
+            )
+                return "";
+            const formattedDate = new Date(date).toISOString().split("T")[0];
+            return formattedDate;
+        };
+
+        const applicationStartDate = formatDate(values.applicationStart);
+        const applicationEndsDate = formatDate(values.applicationEnds);
+        const eventStartDate = formatDate(values.eventStart);
+        const eventEndDate = formatDate(values.eventEnd);
 
         // Convert selectedFields object to a JSON string and then parse it to get the desired format
         const formattedFormFields = JSON.stringify(selectedFields);
 
-        function pulish(hackathonId: string): boolean {
+        function publish(hackathon: HackList): boolean {
             let returnVal = false;
             if (isPublishing) {
-                const hackathon: HackList = {
-                    id: hackathonId,
-                    title: values.title,
-                    type: values.type,
-                    tagline: values.tagline,
-                    event_logo: values.event_logo,
-                    banner: values.banner,
-                    website: values.website,
-                    place: values.place,
-                    event_start: eventStartDate,
-                    event_end: eventEndDate,
-                    application_start: applicationStartDate,
-                    application_ends: applicationEndsDate,
-                    description: values.description,
-                    participant_count: values.participantCount,
-                    district: values.districtId,
-                    organisation: values.orgId,
-                    district_id: values.districtId,
-                    org_id: values.orgId,
-                    editable: true,
-                    is_open_to_all: values.isOpenToAll,
-                    status: "Draft"
-                };
-
                 if (isDetailsComplete(hackathon)) {
                     publishHackathon(hackathon.id, hackathon.status, toast);
                     returnVal = true;
                 } else {
-                    toast({
-                        title: "Cannot publish",
-                        description: "Please fill all the details",
-                        status: "error",
-                        duration: 5000,
-                        isClosable: true,
-                        position: "top-right"
-                    });
                     setIsPublishing(false);
                 }
             }
             return returnVal;
         }
 
-        edit
-            ? editHackathon(
-                  values.title,
-                  values.tagline,
-                  values.description,
-                  values.participantCount,
-                  values.orgId,
-                  values.districtId,
-                  values.place,
-                  values.isOpenToAll,
-                  applicationStartDate,
-                  applicationEndsDate,
-                  eventStartDate,
-                  eventEndDate,
-                  formattedFormFields,
-                  values.event_logo,
-                  values.banner,
-                  values.type,
-                  values.website,
-                  toast,
-                  id
-              )
-                  .then(() => (isPublishing ? pulish(id!) : true))
+        const hackathon: HackList = {
+            id: id || "",
+            title: values.title,
+            type: values.type,
+            tagline: values.tagline,
+            event_logo: values.event_logo,
+            banner: values.banner,
+            website: values.website,
+            place: values.place,
+            event_start: eventStartDate,
+            event_end: eventEndDate,
+            application_start: applicationStartDate,
+            application_ends: applicationEndsDate,
+            description: values.description,
+            participant_count: values.participantCount,
+            district: values.districtId,
+            organisation: values.orgId,
+            district_id: values.districtId,
+            org_id: values.orgId,
+            editable: true,
+            is_open_to_all: values.isOpenToAll,
+            status: "Draft"
+        };
+
+        isEdit
+            ? editHackathon(hackathon, formattedFormFields, toast)
+                  .then(() => (isPublishing ? publish(hackathon) : true))
                   .then(res => res && navigate("/dashboard/hackathon"))
-            : createHackathon(
-                  values.title,
-                  values.tagline,
-                  values.description,
-                  values.participantCount,
-                  values.orgId,
-                  values.districtId,
-                  values.place,
-                  values.isOpenToAll,
-                  applicationStartDate,
-                  applicationEndsDate,
-                  eventStartDate,
-                  eventEndDate,
-                  formattedFormFields,
-                  values.event_logo,
-                  values.banner,
-                  values.type,
-                  values.website,
-                  toast
-              )
-                  .then(id => (isPublishing ? pulish(id) : true))
+            : createHackathon(hackathon, formattedFormFields, toast)
+                  .then(id => {
+                      setIsEdit(true);
+                      return isPublishing
+                          ? publish({ ...hackathon, id: id || "" })
+                          : true;
+                  })
                   .then(
                       res =>
                           res &&
@@ -356,8 +215,6 @@ const HackathonCreate = () => {
                               1000
                           )
                   );
-
-        // resetForm();
     };
 
     useEffect(() => {
@@ -368,6 +225,28 @@ const HackathonCreate = () => {
 
     const handleCloseModal = () => {
         setOpenImagePreview(false);
+    };
+
+    const intitialValues = {
+        title: data?.title || "",
+        tagline: data?.tagline || "",
+        description: data?.description || "",
+        participantCount: data?.participant_count || "",
+        eventStart: convertDateToYYYYMMDD(String(data?.event_start)) || null,
+        eventEnd: convertDateToYYYYMMDD(String(data?.event_end)) || null,
+        applicationStart:
+            convertDateToYYYYMMDD(String(data?.application_start)) || null,
+        applicationEnds:
+            convertDateToYYYYMMDD(String(data?.application_ends)) || null,
+        orgId: data?.org_id || "",
+        place: data?.place || "",
+        districtId: getLocationIdByName(district, String(data?.district)) || "",
+        isOpenToAll: data?.is_open_to_all || false,
+        formFields: [],
+        event_logo: "",
+        banner: "",
+        website: data?.website || "",
+        type: data?.type || ""
     };
 
     return (
@@ -413,42 +292,7 @@ const HackathonCreate = () => {
                             </div>
 
                             <Formik
-                                initialValues={{
-                                    title: data?.title || "",
-                                    tagline: data?.tagline || "",
-                                    description: data?.description || "",
-                                    participantCount:
-                                        data?.participant_count || "",
-                                    eventStart:
-                                        convertDateToYYYYMMDD(
-                                            String(data?.event_start)
-                                        ) || null,
-                                    eventEnd:
-                                        convertDateToYYYYMMDD(
-                                            String(data?.event_end)
-                                        ) || null,
-                                    applicationStart:
-                                        convertDateToYYYYMMDD(
-                                            String(data?.application_start)
-                                        ) || null,
-                                    applicationEnds:
-                                        convertDateToYYYYMMDD(
-                                            String(data?.application_ends)
-                                        ) || null,
-                                    orgId: data?.org_id || "",
-                                    place: data?.place || "",
-                                    districtId:
-                                        getLocationIdByName(
-                                            district,
-                                            String(data?.district)
-                                        ) || "",
-                                    isOpenToAll: data?.is_open_to_all || false,
-                                    formFields: [],
-                                    event_logo: "",
-                                    banner: "",
-                                    website: data?.website || "",
-                                    type: data?.type || ""
-                                }}
+                                initialValues={intitialValues}
                                 validationSchema={hackathonSchema}
                                 onSubmit={handleSubmit}
                             >
@@ -518,94 +362,36 @@ const HackathonCreate = () => {
                                                         styles.formGroupField
                                                     }
                                                 >
-                                                    <div
-                                                        id="checkbox"
-                                                        className={
-                                                            styles.InputSet
+                                                    <FormTabApplication
+                                                        values={values}
+                                                        handleChange={
+                                                            handleChange
                                                         }
-                                                    >
-                                                        <label
-                                                            className={
-                                                                styles.formLabel
-                                                            }
-                                                        >
-                                                            Select fields for
-                                                            application form
-                                                        </label>
-                                                    </div>
-                                                    <div
-                                                        role="group"
-                                                        aria-labelledby="checkbox-group"
-                                                        className={
-                                                            styles.checkboxOuter
-                                                        }
-                                                    >
-                                                        {Object.entries(
-                                                            formData
-                                                        ).map(
-                                                            ([key, value]) => (
-                                                                <label
-                                                                    key={key}
-                                                                    className={`${
-                                                                        styles.checkBoxContainer
-                                                                    } ${
-                                                                        values.formFields.includes(
-                                                                            key as never
-                                                                        )
-                                                                            ? styles.checked
-                                                                            : ""
-                                                                    }`}
-                                                                >
-                                                                    <Field
-                                                                        type="checkbox"
-                                                                        name="formFields"
-                                                                        className={
-                                                                            styles.formCheckbox
-                                                                        }
-                                                                        style={{
-                                                                            display:
-                                                                                "none"
-                                                                        }}
-                                                                        value={
-                                                                            key
-                                                                        }
-                                                                        checked={values.formFields.includes(
-                                                                            key as never
-                                                                        )}
-                                                                        onChange={
-                                                                            handleChange
-                                                                        }
-                                                                    />
-                                                                    {key}
-                                                                </label>
-                                                            )
-                                                        )}
-                                                    </div>
+                                                        formData={formData}
+                                                    />
                                                 </TabPanel>
-
-                                                <TabPanel
-                                                    className={styles.formGroup}
-                                                ></TabPanel>
-
-                                                <TabPanel
-                                                    className={styles.formGroup}
-                                                ></TabPanel>
                                             </div>
                                             <div className={styles.btns}>
-                                                <button
-                                                    onClick={handleBack}
-                                                    className={styles.btn}
-                                                    type="button"
-                                                >
-                                                    Go back
-                                                </button>
-                                                <button
-                                                    onClick={handleNext}
-                                                    className={styles.btn}
-                                                    type="button"
-                                                >
-                                                    Next
-                                                </button>
+                                                {tabIndex > 0 && (
+                                                    <button
+                                                        onClick={handleBack}
+                                                        className={styles.btn}
+                                                        type="button"
+                                                    >
+                                                        <FaArrowLeft />
+                                                        Go back
+                                                    </button>
+                                                )}
+                                                {tabIndex !== 4 && (
+                                                    <button
+                                                        onClick={handleNext}
+                                                        className={styles.btn}
+                                                        type="button"
+                                                    >
+                                                        Next
+                                                        <FaArrowRight />
+                                                    </button>
+                                                )}
                                             </div>
                                         </Tabs>
                                     </Form>
