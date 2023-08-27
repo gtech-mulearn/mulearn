@@ -20,7 +20,7 @@
     background-color: #456ff6;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
-    transition: all 0.3s ease-in-out;
+
 }
 
 .full_page {
@@ -34,18 +34,15 @@
 }
 
 .side_nav_bar_container {
-    /* position: fixed; */
     min-width: fit-content;
-    z-index: 100;
     max-width: 25%;
     height: 100%;
-    flex: 2;
     display: flex;
+    flex: 2;
     background-color: #fff;
     padding: 60px 20px 20px;
     justify-content: center;
-    transition: all 0.3s ease-in-out;
-    /* box-shadow: 0 0px 20px rgba(0, 0, 0, 0.1); */
+    z-index: 100;
 }
 
 .side_nav_bar_container .side_nav_bar {
@@ -104,7 +101,11 @@
     color: #fff;
 }
 
-.side_nav_bar_container .side_nav_bar .side_nav_bar_items .side_nav_bar_item .side_nav_bar_item_icon {
+.side_nav_bar_container
+    .side_nav_bar
+    .side_nav_bar_items
+    .side_nav_bar_item
+    .side_nav_bar_item_icon {
     margin-right: 20px;
 }
 
@@ -114,7 +115,7 @@
     overflow-y: scroll;
     transition: 0.5s ease;
     z-index: 99;
-    background-color: #EEF2FF;
+    background-color: #eef2ff;
     position: relative;
 }
 
@@ -178,7 +179,7 @@
     justify-content: flex-start;
     text-align: center;
     margin-top: 16vh;
-    gap:10px
+    gap: 10px;
     /* overflow-x: hidden; */
 }
 
@@ -206,7 +207,10 @@
         max-width: 35%;
     }
 
-    .side_nav_bar_container .side_nav_bar .side_nav_bar_items .side_nav_bar_item {
+    .side_nav_bar_container
+        .side_nav_bar
+        .side_nav_bar_items
+        .side_nav_bar_item {
         margin-bottom: 10px;
     }
 
@@ -225,14 +229,8 @@
         margin-top: 15px;
     }
 
-    .right_side .top_nav .nav .nav_items .greetings,
-    .right_side .top_nav .nav .nav_items .menu svg {
+    .right_side .top_nav .nav .nav_items .greetings{
         display: none;
-    }
-
-    .side_nav_bar_container {
-        /* display: none; */
-        opacity: 0;
     }
 
     .side_nav_bar_container .side_nav_bar {
@@ -243,7 +241,6 @@
         max-width: 100vw;
         width: 100vw;
         position: fixed;
-        z-index: 0;
     }
 
     .right_side {
@@ -262,7 +259,11 @@
         width: unset;
         margin: 0px auto;
     }
-    .side_nav_bar_container .side_nav_bar .side_nav_bar_items .bottomButtons button{
+    .side_nav_bar_container
+        .side_nav_bar
+        .side_nav_bar_items
+        .bottomButtons
+        button {
         justify-content: center;
     }
 

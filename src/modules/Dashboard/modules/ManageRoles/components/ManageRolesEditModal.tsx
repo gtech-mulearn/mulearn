@@ -59,7 +59,6 @@ const ManageRolesEditModal = (props: Props) => {
                     .required("Required")
             })}
             onSubmit={values => {
-                console.log('submit');
                 (async()=>{
                     await editManageRoles(
                         id,

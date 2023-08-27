@@ -45,6 +45,10 @@
     color: var(--blue);
     font-weight: bold;
 }
+.learningCircleLandingPageDesc b{
+    font-weight: 600;
+     width: 80%;
+}
 
 .learningCircleLandingPage .learningCircleLandingPageButton {
     display: flex;
@@ -130,11 +134,11 @@
 
 @media (width<1060px){
     .learningCircleLandingPageDesc h1 {
-        font-size: 1.5rem;
+        font-size: 1.65rem;      
     }
 
     .learningCircleLandingPageDesc b {
-        font-size: 0.8rem;
+        font-size: 0.6rem;
     }
 
     .learningCircleLandingPageLevel div {
@@ -146,7 +150,6 @@
     .learningCircleLandingPage {
         padding: 0.5rem;
     }
-
     .learningCircleLandingPage .headContent {
         flex-direction: column;
         gap: 1rem;
@@ -171,11 +174,6 @@
     .learningCircleLandingPageDesc h1 {
         font-size: 1.2rem;
     }
-
-    .learningCircleLandingPageDesc b {
-        font-size: 0.6rem;
-    }
-
     .learningCircleLandingPage .learningCircleLandingPageButton {
         gap: 0.5rem;
         margin-top: 0rem;
@@ -402,6 +400,17 @@ padding-left: 10px;
     padding: 2rem;
     margin-top: 1rem;
     height: 352px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.Leave {
+    background-color:  var(--White);
+    box-shadow: var(--boxShadow);
+    border-radius: 1rem;
+    padding: 1.3rem;
+    margin-top: 1rem;
+    height: 80px;
     overflow: hidden;
     overflow-y: scroll;
 }
@@ -720,7 +729,30 @@ padding-left: 10px;
     margin-top: 1rem;
 }
 
+@media (width<1100px) {
+    .LearningCircleCreateHeading div b{
+        font-size: 1.5rem;
+    }
+    
+    .LearningCircleCreateHeading div p{
+        font-size: 0.75rem;
+    } 
+    .LearningCircleCreateForm {
+        display: flex;
+        flex-direction: column; 
+    } 
+}
+
+
 @media (width<820px) {
+    .LearningCircleCreateHeading div b{
+        font-size: 1.5rem;
+    }
+    
+    .LearningCircleCreateHeading div p{
+        font-size: 1rem;
+    }  
+
     .LearningCircleCreateContent {
         padding-top: 3rem;
     }
@@ -734,9 +766,13 @@ padding-left: 10px;
         margin: 0.5rem;
     }
     
+    .LearningCircleCreateHeading p{
+        padding-top: 1rem;
+    }
+
     .LearningCircleCreateForm {
         display: flex;
-        flex-direction: column;  
+        flex-direction: column; 
     }
     .LearningCircleCreateHeading b {
         font-size: 1.5rem;
@@ -769,6 +805,7 @@ padding-left: 10px;
     gap: 1rem;
     border-radius: var(--borderRadius);
     box-shadow: var(--boxShadow);
+    padding: 1rem;
 }
 
 .FindCircleContentTop .desc {

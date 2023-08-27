@@ -159,7 +159,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
     return (
         <div className={styles.full_page}>
             <SideNavBar sidebarButtons={buttons} />
-            <div className={styles.right_side} id="right">
+            <div className={styles.right_side}>
                 <TopNavBar />
                 <div className={styles.main_content}>
                     <Suspense fallback={<MuLoader />}>

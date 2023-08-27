@@ -156,7 +156,6 @@ function Organizations() {
 
     const handleIconClick = (column: string) => {
         if (sort === column) {
-            console.log("desc", column);
             setSort(`-${column}`);
             getOrganizations(
                 activeTab,
@@ -170,7 +169,6 @@ function Organizations() {
             );
         } else {
             setSort(column);
-            console.log("asc", column);
             getOrganizations(
                 activeTab,
                 setData,
@@ -182,12 +180,9 @@ function Organizations() {
                 column
             );
         }
-
-        //console.log(`Icon clicked for column: ${column}`);
     };
 
     const handleEdit = (id: string | number | boolean) => {
-        //console.log(id);
         setIsEdit(true);
         navigate("/dashboard/organizations/edit", {
             state: {

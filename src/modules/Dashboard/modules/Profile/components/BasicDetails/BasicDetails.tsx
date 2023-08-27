@@ -1,18 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./BasicDetails.module.css";
 import HeatmapComponent from "../Heatmap/HeatmapComponent";
+import { useToast } from "@chakra-ui/react";
+import { editIgDetails, getAllIg, getIgDetails } from "./services/api";
+import { useParams } from "react-router-dom";
 type Props = {
     userProfile: any;
     userLog: any;
 };
 const BasicDetails = (props: Props) => {
+    const toast = useToast();
     const [editIg, setEditIg] = useState(false);
+    const [allIg, setAllIg] = useState<any>([]);
+    const [ig, setIg] = useState<any>([]);
+    const { id } = useParams<{ id: string }>();
+    useEffect(() => {
+        getIgDetails(toast, setIg);
+        getAllIg(setAllIg);
+    }, []);
     return (
         <>
             {/* <div className={styles.interestGrp}>
                 <div className={styles.top_sec}>
                     <b>Interest Groups</b>
-                    {!editIg && (
+                    {!id && !editIg && (
                         <p
                             onClick={() => setEditIg(true)}
                             className={styles.edit_profile_btn}
@@ -33,35 +44,57 @@ const BasicDetails = (props: Props) => {
                 </div>
                 <div className={styles.igs_container}>
                     {props.userProfile.interest_groups.length != 0 ? (
-                        props.userProfile.interest_groups.map(
-                            (data: any, i: number) => {
-                                return (
-                                    <div
-                                        style={
-                                            editIg
-                                                ? {
-                                                      transform: "scale(0.955)"
-                                                  }
-                                                : {}
-                                        }
-                                        className={styles.igs}
-                                        key={i}
-                                    >
-                                        {editIg && (
-                                            <i className="fi fi-sr-circle-xmark"></i>
-                                        )}
-                                        {data.name}
-                                        <p>
-                                            {data.karma > 1000
+                        ig.map((data: any, i: number) => {
+                            return (
+                                <div
+                                    style={
+                                        editIg
+                                            ? {
+                                                  transform: "scale(0.955)"
+                                              }
+                                            : {}
+                                    }
+                                    className={styles.igs}
+                                    key={i}
+                                >
+                                    {editIg && (
+                                        <i
+                                            onClick={() => {
+                                                setIg(
+                                                    ig.filter(
+                                                        (ig: any) =>
+                                                            ig.name != data.name
+                                                    )
+                                                );
+                                                editIgDetails(
+                                                    toast,
+                                                    ig
+                                                        .filter(
+                                                            (ig: any) =>
+                                                                ig.name !=
+                                                                data.name
+                                                        )
+                                                        .map((ig: any) => {
+                                                            return ig.id;
+                                                        })
+                                                );
+                                            }}
+                                            className="fi fi-sr-circle-xmark"
+                                        ></i>
+                                    )}
+                                    {data.name}
+                                    <p>
+                                        {data.karma === null
+                                            ? data.karma > 1000
                                                 ? (
                                                       data.karma / 1000
                                                   ).toPrecision(2) + "K"
-                                                : data.karma}
-                                        </p>
-                                    </div>
-                                );
-                            }
-                        )
+                                                : data.karma
+                                            : "0"}
+                                    </p>
+                                </div>
+                            );
+                        })
                     ) : (
                         <p>No Interest Groups to show</p>
                     )}

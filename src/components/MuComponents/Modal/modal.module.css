@@ -21,16 +21,22 @@
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	width: 300px;
+	min-width: 450px;
 	height: fit-content;
 	background: white;
 	color: white;
 	border-radius: 16px;
-	padding: 30px 15px 15px;
+	padding: 30px 15px;
 	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
 	position: relative;
 	z-index: 10000;
 	/* Increase the z-index value */
+}
+
+@media (max-width:720px) {
+    .modal {
+        min-width: 300px;
+    }
 }
 
 .modalHeader {
@@ -70,13 +76,13 @@
     padding: 10px 0px 0px;
     color: black;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 20px;
     text-align: center;
 }
 
 .modalContent {
     padding: 10px;
-    font-size: 14px;
+    font-size: 16px;
     color: black;
     text-align: center;
 }
@@ -88,9 +94,10 @@
 
 .actionsContainer {
     display: flex;
-	flex-direction: column;
-    justify-content: space-around;
+	flex-direction: row;
+    justify-content: center;
     align-items: center;
+    gap: 20px;
 }
 
 .closeBtn {
@@ -103,7 +110,7 @@
     color: var(--blue);
     /* background: white; */
     transition: all 0.25s ease;
-    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.06);
+    /* box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.06);w */
     position: absolute;
     right: 0;
     top: 0;

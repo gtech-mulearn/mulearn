@@ -18,7 +18,7 @@
             width: 30px;
             position: absolute;
             right: 10px;
-            top: 5px;
+            /* top: 5px; */
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -44,6 +44,11 @@
         max-width: 50vw;
         /* overflow: scroll; */
 
+        & hr {
+            width: 100%;
+            margin: 10px 0px;
+        }
+
         .igs {
             padding: 0px 10px;
             border-radius: 10px;
@@ -61,53 +66,53 @@
                 cursor: pointer;
             }
 
-            &:nth-child(1) {
+            &:nth-child(2n+1) {
                 background-color: rgb(255, 187, 89, .3);
                 color: #D18E2C;
             }
 
-            &:nth-child(1) p {
+            &:nth-child(2n+1) p {
                 background-color: rgb(255, 187, 89, .9);
                 color: #FFF4E4;
             }
 
-            &:nth-child(2) {
+            &:nth-child(2n+2) {
                 background-color: rgb(255, 134, 152, .3);
                 color: #FC7F92;
             }
 
-            &:nth-child(2) p {
+            &:nth-child(2n+2) p {
                 background-color: rgb(255, 134, 152, .9);
                 color: #FFF4E4;
             }
 
-            &:nth-child(3) {
+            &:nth-child(2n+3) {
                 background-color: rgb(34, 179, 210, .3);
                 color: #22B3D2;
             }
 
-            &:nth-child(3) p {
+            &:nth-child(2n+3) p {
                 background-color: rgb(34, 179, 210, .9);
                 color: #FFF4E4;
             }
 
-            &:nth-child(4) {
+            &:nth-child(2n+4) {
                 background-color: rgb(45, 206, 137, .3);
                 color: #2DCE89;
             }
 
-            &:nth-child(4) p {
+            &:nth-child(2n+4) p {
                 background-color: rgb(45, 206, 137, .9);
                 color: #FFF4E4;
 
             }
 
-            &:nth-child(5) {
+            &:nth-child(2n+5) {
                 background-color: rgb(255, 0, 0, .3);
                 color: rgb(255, 0, 0, .9);
             }
 
-            &:nth-child(5) p {
+            &:nth-child(2n+5) p {
                 background-color: rgb(255, 0, 0, .9);
                 color: #FFF4E4;
 

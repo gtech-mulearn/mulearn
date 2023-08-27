@@ -6,12 +6,16 @@ import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { titleCase } from "title-case";
-import { getCampusDetails, getStudentDetails, getStudentLevel, getWeeklyKarma } from "../services/apis";
+import {
+    getCampusDetails,
+    getStudentDetails,
+    getStudentLevel,
+    getWeeklyKarma
+} from "../services/apis";
 import { PieChart, BarChart } from "../Components/Graphs";
 import styles from "./CampusStudentList.module.css";
-import CLIcon from '../assets/images/CampusLeadIcon.svg';
+import CLIcon from "../assets/images/CampusLeadIcon.svg";
 import { useToast } from "@chakra-ui/react";
-
 
 type Props = {};
 
@@ -19,9 +23,8 @@ type Props = {};
 //TODO: Move Logic to another file.
 
 const CampusStudentList = (props: Props) => {
-    
-    const toast = useToast()
-    
+    const toast = useToast();
+
     const columns = [];
     const [studentData, setStudentData] = useState<any[]>([]);
     const [perPage, setPerPage] = useState(5);
@@ -31,9 +34,9 @@ const CampusStudentList = (props: Props) => {
     const navigate = useNavigate();
 
     //graph data
-    const [pieData,setPieData] = useState<string[][]|null>(null)
-    const [barData,setBarData] = useState<string[][]|null>(null)
-    
+    const [pieData, setPieData] = useState<string[][] | null>(null);
+    const [barData, setBarData] = useState<string[][] | null>(null);
+
     const columnOrder = [
         { column: "fullname", Label: "Name", isSortable: false },
         // { column: "email", Label: "Email", isSortable: false },
@@ -68,22 +71,24 @@ const CampusStudentList = (props: Props) => {
         if (firstFetch.current) {
             getStudentDetails(setStudentData, 1, perPage, setTotalPages);
             getCampusDetails(setCampusData);
-            (async()=>{
-                try{getStudentLevel
-                    setBarData([['', 'Karma']].concat(await getWeeklyKarma()))
-                    setPieData([['Level', 'UsersPerLevel']].concat(await getStudentLevel()))
-                }catch(err){
+            (async () => {
+                try {
+                    getStudentLevel;
+                    setBarData([["", "Karma"]].concat(await getWeeklyKarma()));
+                    setPieData(
+                        [["Level", "UsersPerLevel"]].concat(
+                            await getStudentLevel()
+                        )
+                    );
+                } catch (err) {
                     toast({
                         title: "Data fetch failed",
                         status: "error",
                         duration: 3000,
                         isClosable: true
-                    })
+                    });
                 }
-                
-                
-            })()
-
+            })();
         }
         firstFetch.current = false;
     }, []);
@@ -103,6 +108,7 @@ const CampusStudentList = (props: Props) => {
     const handlePerPageNumber = (selectedValue: number) => {
         setPerPage(selectedValue);
         setCurrentPage(1);
+
         getStudentDetails(
             setStudentData,
             1,
@@ -135,79 +141,77 @@ const CampusStudentList = (props: Props) => {
                 column
             );
         }
-        console.log(`Icon clicked for column: ${column}`);
+        //console.log(`Icon clicked for column: ${column}`);
     };
-
+    //console.log(perPage, currentPage);
     return (
         <>
-            {!campusData.campus_code?<MuLoader/> 
-            :<div className={styles.campus_student_list_container}>
-                <div className={styles.content}>
-                    <div className={styles.sec1}>
-                        <h1 className={styles.clg_name}>
-                            {campusData &&
-                                campusData.college_name &&
-                                titleCase(
-                                    campusData?.college_name?.toLowerCase()
-                                )
-                            }
-                            ({campusData.campus_code})
-                        </h1>
+            {!campusData.campus_code ? (
+                <MuLoader />
+            ) : (
+                <div className={styles.campus_student_list_container}>
+                    <div className={styles.content}>
+                        <div className={styles.sec1}>
+                            <h1 className={styles.clg_name}>
+                                {campusData &&
+                                    campusData.college_name &&
+                                    titleCase(
+                                        campusData?.college_name?.toLowerCase()
+                                    )}
+                                ({campusData.campus_code})
+                            </h1>
 
-                        <div className={styles.details_card}>
-                            <div className={styles.card}>
-
-                                <h1>
-                                    {parseInt(campusData.total_karma) > 1000
-                                        ? (
-                                            parseInt(campusData.total_karma) /
-                                            1000
-                                        ).toPrecision(4) + "K"
-                                        : campusData.total_karma}
-                                </h1>
-                                <p>Karma</p>
-                            </div>
-                            <div className={styles.card}>
-
-                                <h1>{campusData.total_members}</h1>
-                                <p>Total Members</p>
-                            </div>
-                            <div className={styles.card}>
-
-                                <h1>{campusData.active_members}</h1>
-                                <p>Active Members</p>
-
-                            </div>
-                            <div className={styles.campus_lead_card}>
-                                <img src={CLIcon} alt="" />
-                                <h2>{campusData.campus_lead}</h2>
-                                <p>Campus Lead</p>
+                            <div className={styles.details_card}>
+                                <div className={styles.card}>
+                                    <h1>
+                                        {parseInt(campusData.total_karma) > 1000
+                                            ? (
+                                                  parseInt(
+                                                      campusData.total_karma
+                                                  ) / 1000
+                                              ).toPrecision(4) + "K"
+                                            : campusData.total_karma}
+                                    </h1>
+                                    <p>Karma</p>
+                                </div>
+                                <div className={styles.card}>
+                                    <h1>{campusData.total_members}</h1>
+                                    <p>Total Members</p>
+                                </div>
+                                <div className={styles.card}>
+                                    <h1>{campusData.active_members}</h1>
+                                    <p>Active Members</p>
+                                </div>
+                                <div className={styles.campus_lead_card}>
+                                    <img src={CLIcon} alt="" />
+                                    <h2>{campusData.campus_lead}</h2>
+                                    <p>Campus Lead</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className={styles.sec2}>
+                        <div className={styles.sec2}>
+                            <p className={styles.clg_rank}>
+                                {campusData?.rank?.toString().length === 1
+                                    ? "0" + campusData.rank
+                                    : campusData.rank}
+                            </p>
+                            <p className={styles.clg_rank_overlay}>RANK</p>
 
-                        <p className={styles.clg_rank}>
-                            {campusData?.rank?.toString().length === 1
-                                ? "0" + campusData.rank
-                                : campusData.rank}
-                        </p>
-                        <p className={styles.clg_rank_overlay}>RANK</p>
-
-
-                        <p className={styles.clg_zone}>{campusData.campus_zone} Zone</p>
-
+                            <p className={styles.clg_zone}>
+                                {campusData.campus_zone} Zone
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>}
+            )}
             <div className={styles.graphs}>
                 <div className={styles.container}>
                     <h2>Weekly Karma Insights</h2>
                     <BarChart
                         data={barData}
                         addOptions={{
-                            legend: { position: 'none' },
-                            colors: ['#91ABFF']
+                            legend: { position: "none" },
+                            colors: ["#91ABFF"]
                         }}
                     />
                 </div>
@@ -217,12 +221,17 @@ const CampusStudentList = (props: Props) => {
                         data={pieData}
                         addOptions={{
                             // is3D:true,
-                            pieSliceText: 'value',
-                            colors: ["#3B57B2", "#456FF6", "#A9BEFF", "#6C8FFF", "#A9BEFF"]
+                            pieSliceText: "value",
+                            colors: [
+                                "#3B57B2",
+                                "#456FF6",
+                                "#A9BEFF",
+                                "#6C8FFF",
+                                "#A9BEFF"
+                            ]
                         }}
                     />
                 </div>
-
             </div>
             {studentData && (
                 <>
@@ -246,6 +255,7 @@ const CampusStudentList = (props: Props) => {
                             margin="10px 0"
                             handleNextClick={handleNextClick}
                             handlePreviousClick={handlePreviousClick}
+                            onPerPageNumber={handlePerPageNumber}
                             perPage={perPage}
                             setPerPage={setPerPage}
                         />

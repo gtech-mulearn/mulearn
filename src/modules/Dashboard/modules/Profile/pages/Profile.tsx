@@ -26,11 +26,11 @@ import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import AvgKarma from "../assets/svg/AvgKarma";
 import EditProfilePopUp from "../components/EditProfilePopUp/pages/EditProfilePopUp";
-import Instagram from "../assets/svg/Twitter";
+import BasicDetails from "../components/BasicDetails/BasicDetails";
+import Instagram from "../assets/svg/Instagram";
 import Behance from "../assets/svg/Behance";
 import LinkedIn from "../assets/svg/LinkedIn";
 import Twitter from "../assets/svg/Twitter";
-import BasicDetails from "../components/BasicDetails/BasicDetails";
 
 //TODO: Verify the relevance of profile page image
 const Profile = () => {
@@ -42,6 +42,7 @@ const Profile = () => {
     const [profileList, setProfileList] = useState("basic-details");
     const [blob, setBlob] = useState<any>();
     const [popUP, setPopUP] = useState(false);
+    const [embedSize, setEmbedSize] = useState("100px");
     const [editPopUp, setEditPopUp] = useState(false);
     const [userProfile, setUserProfile] = useState({
         first_name: "",
@@ -244,6 +245,7 @@ const Profile = () => {
                                 setEditPopUP={setEditPopUp}
                                 triggerUpdateProfile={triggerUpdateProfile}
                             />
+                            {/* TODO : Convert this to share Profile pop component */}
                             <div
                                 style={
                                     popUP
@@ -293,6 +295,7 @@ const Profile = () => {
                                                 <div className={styles.qr_code}>
                                                     <img src={blob} alt="" />
                                                 </div>
+                                                {/* Todo: Reusable copy link component */}
                                                 <div className={styles.link}>
                                                     <p>
                                                         {
@@ -321,6 +324,7 @@ const Profile = () => {
                                                         }}
                                                         className="fi fi-sr-link"
                                                     >
+                                                        {/* Todo: Create as left Side Tooltip Component for below component */}
                                                         <div
                                                             className={
                                                                 styles.toast
@@ -332,6 +336,7 @@ const Profile = () => {
                                                                     : "Copied!"}
                                                             </p>
                                                         </div>
+                                                        {/* Todo: Create as left Side Tooltip Component for above component*/}
                                                     </i>
                                                 </div>
                                             </div>
@@ -410,7 +415,6 @@ const Profile = () => {
                                                                 : {}
                                                         }
                                                     />
-
                                                     {!id && (
                                                         <span>
                                                             <i
@@ -424,7 +428,6 @@ const Profile = () => {
                                                                         : styles.public
                                                                 }`}
                                                             ></i>
-
                                                             <div
                                                                 className={
                                                                     styles.gard_tooltip
@@ -469,7 +472,8 @@ const Profile = () => {
                                                     </p>
                                                 </div>
                                             </div>
-                                            {!id ? (
+
+                                            {!id && (
                                                 <p
                                                     onClick={() =>
                                                         setPopUP(true)
@@ -486,8 +490,8 @@ const Profile = () => {
                                                 >
                                                     <i className="fi fi-br-share"></i>
                                                 </p>
-                                            ) : null}
-                                            {!id ? (
+                                            )}
+                                            {!id && (
                                                 <p
                                                     onClick={() =>
                                                         setEditPopUp(true)
@@ -506,7 +510,7 @@ const Profile = () => {
                                                 >
                                                     <i className="fi fi-rr-pencil"></i>
                                                 </p>
-                                            ) : null}
+                                            )}
                                         </div>
 
                                         <div className={styles.profileList}>
@@ -587,12 +591,6 @@ const Profile = () => {
                                             >
                                                 Mu Voyage
                                             </li>
-                                            {/* <li>Join Mulearn</li> */}
-                                            {/* <li>See More</li> */}
-                                            {/* <div>
-                                            <i className=".fa-solid fa-chevron-left"></i>
-                                            <i className="fi fi-ts-angle-right"></i>
-                                        </div> */}
                                         </div>
 
                                         <div className={styles.pointsList}>
@@ -661,7 +659,6 @@ const Profile = () => {
                                             </div>
                                         </div>
                                     </div>
-
                                     {profileList === "basic-details" ? (
                                         <BasicDetails
                                             userProfile={userProfile}
@@ -693,14 +690,6 @@ const Profile = () => {
 
                                 <div className={styles.notification}>
                                     <div className={styles.existing_roles}>
-                                        {/* <div className={styles.head}>
-                                            <h2>Connect with me</h2>
-                                            <p>
-                                                <LinkedIn />
-                                                <Twitter />
-                                                <Behance />
-                                            </p>
-                                        </div> */}
                                         <div className={styles.head}>
                                             <h2>Existing Roles</h2>
                                             <p>
@@ -728,7 +717,7 @@ const Profile = () => {
                                         </div>
                                     </div>
 
-                                    {/* <div
+                                    <div
                                         className={
                                             styles.recent_activity_container
                                         }
@@ -838,7 +827,7 @@ const Profile = () => {
                                                 View More
                                             </a>
                                         </div>
-                                    </div> */}
+                                    </div>
                                 </div>
                             </div>
                         </>

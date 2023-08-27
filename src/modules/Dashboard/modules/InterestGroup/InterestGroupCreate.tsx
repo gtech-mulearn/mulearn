@@ -34,8 +34,7 @@ const InterestGroupCreate = (props: Props) => {
     }
     },[id]);
 
-console.log('id',input)
-    if(!input.code)
+    if(!input.code && !!id)
     return (
         <MuLoader/>
     )
@@ -63,7 +62,6 @@ console.log('id',input)
                             .required("Required")
                     })}
                     onSubmit={values => {
-                        console.log(values);
                         if(!id){
                             
                             createInterestGroups(values.igName, values.igCode, values.igIcon, toast)

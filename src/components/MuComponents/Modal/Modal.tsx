@@ -1,6 +1,7 @@
 import { FC } from "react";
 import styles from "./modal.module.css";
 import { RiCloseLine } from "react-icons/ri";
+import { Button } from "../MuButtons/MuButton";
 
 interface ModalProps {
     setIsOpen: (isOpen: boolean) => void;
@@ -71,21 +72,12 @@ const Modal: FC<ModalProps> = ({ setIsOpen, id, heading, content, click,type,val
                     <div className={styles.modalContent}>{content}</div>
                     <div className={styles.modalActions}>
                         <div className={styles.actionsContainer}>
-                            <button
-                                className={styles.deleteBtn}
-                                onClick={() => {
-                                    click(id);
-                                    setIsOpen(false);
-                                }}
-                            >
-                                Confirm
-                            </button>
-                            <button
-                                className={styles.cancelBtn}
-                                onClick={() => setIsOpen(false)}
-                            >
-                                Cancel
-                            </button>
+                            <Button variant="outline" onClick={() => setIsOpen(false)}>
+                                 Cancel
+                            </Button>
+                            <Button variant="primary" onClick={() => { click(id); setIsOpen(false); }}>
+                                 Confirm
+                            </Button>
                         </div>
                     </div>
                 </div>
