@@ -9,7 +9,7 @@ const BasicDetails = (props: Props) => {
     const [editIg, setEditIg] = useState(false);
     return (
         <>
-            <div className={styles.interestGrp}>
+            {/* <div className={styles.interestGrp}>
                 <div className={styles.top_sec}>
                     <b>Interest Groups</b>
                     {!editIg && (
@@ -80,7 +80,7 @@ const BasicDetails = (props: Props) => {
                         </div>
                     )}
                 </div>
-            </div>
+            </div> */}
 
             <div className={styles.heatmap}>
                 <HeatmapComponent
