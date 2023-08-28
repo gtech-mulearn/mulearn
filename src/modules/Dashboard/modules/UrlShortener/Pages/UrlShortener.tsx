@@ -11,8 +11,12 @@ import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import { useFormik } from "formik";
-import { useToast } from "@chakra-ui/react";
-import { MuButtonLight, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { background, useToast } from "@chakra-ui/react";
+import {
+    MuButton,
+    MuButtonLight,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 type urlData = {
     id: string | number | boolean;
     long_url: string;
@@ -28,6 +32,7 @@ const UrlShortener = () => {
 
     const toast = useToast();
     const [editBtn, setEditBtn] = useState(false);
+    const [createBtn, setCreateBtn] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(5);
@@ -182,10 +187,7 @@ const UrlShortener = () => {
             "short_url",
             shortUrlData
                 .filter(item => item?.id === id)[0]
-                .short_url.replace(
-                    import.meta.env.VITE_BACKEND_URL + "/r/",
-                    ""
-                )
+                .short_url.replace(import.meta.env.VITE_BACKEND_URL + "/r/", "")
         );
         setEditBtn(true);
     };
@@ -213,82 +215,110 @@ const UrlShortener = () => {
 
     return (
         <>
-            <div className={styles.url_shortener_container}>
-                <div className={styles.create_new_url}>
-                    <form onSubmit={formik.handleSubmit}>
-                        <input
-                            className={styles.title}
-                            type="text"
-                            name="title"
-                            onChange={formik.handleChange}
-                            value={formik.values.title}
-                            onBlur={formik.handleBlur}
-                            placeholder="Title"
-                            required
-                        />
-                        {formik.touched.title && formik.errors.title && (
-                            <p className={styles.error_message}>
-                                {formik.errors.title}
-                            </p>
-                        )}
-                        <input
-                            className={styles.long_url}
-                            type="url"
-                            name="longUrl"
-                            onChange={formik.handleChange}
-                            value={formik.values.longUrl}
-                            onBlur={formik.handleBlur}
-                            placeholder="Paste long url"
-                            required
-                        />
-                        {formik.touched.longUrl && formik.errors.longUrl && (
-                            <p className={styles.error_message}>
-                                {formik.errors.longUrl}
-                            </p>
-                        )}
-                        <div className={styles.short_url_input_container}>
-                            <div className={styles.short_url_input_container_div} >
-
-                                <div className={styles.short_url_input}>
-                                    <label htmlFor="">mulearn.org/r/</label>
-                                    <input
-                                        className={styles.short_url}
-                                        type="text"
-                                        name="short_url"
-                                        onChange={formik.handleChange}
-                                        value={formik.values.short_url}
-                                        onBlur={formik.handleBlur}
-                                        placeholder="Enter short url"
-                                        required
-                                    />
-                                </div>
-                                {formik.touched.short_url && formik.errors.short_url && (
+            <MuButton
+                text="Create"
+                onClick={() => setCreateBtn(true)}
+                style={{
+                    width: "fit-content",
+                    minWidth: "auto",
+                    backgroundColor: "#556FF1",
+                    color: "#fff",
+                    margin: "auto",
+                    marginRight: "3%"
+                }}
+            />
+            {(editBtn || createBtn) && (
+                <div className={styles.url_shortener_container}>
+                    <div className={styles.create_new_url}>
+                        <form onSubmit={formik.handleSubmit}>
+                            <input
+                                className={styles.title}
+                                type="text"
+                                name="title"
+                                onChange={formik.handleChange}
+                                value={formik.values.title}
+                                onBlur={formik.handleBlur}
+                                placeholder="Title"
+                                required
+                            />
+                            {formik.touched.title && formik.errors.title && (
+                                <p className={styles.error_message}>
+                                    {formik.errors.title}
+                                </p>
+                            )}
+                            <input
+                                className={styles.long_url}
+                                type="url"
+                                name="longUrl"
+                                onChange={formik.handleChange}
+                                value={formik.values.longUrl}
+                                onBlur={formik.handleBlur}
+                                placeholder="Paste long url"
+                                required
+                            />
+                            {formik.touched.longUrl &&
+                                formik.errors.longUrl && (
                                     <p className={styles.error_message}>
-                                        {formik.errors.short_url}
+                                        {formik.errors.longUrl}
                                     </p>
                                 )}
+                            <div className={styles.short_url_input_container}>
+                                <div
+                                    className={
+                                        styles.short_url_input_container_div
+                                    }
+                                >
+                                    <div className={styles.short_url_input}>
+                                        <label htmlFor="">mulearn.org/r/</label>
+                                        <input
+                                            className={styles.short_url}
+                                            type="text"
+                                            name="short_url"
+                                            onChange={formik.handleChange}
+                                            value={formik.values.short_url}
+                                            onBlur={formik.handleBlur}
+                                            placeholder="Enter short url"
+                                            required
+                                        />
+                                    </div>
+                                    {formik.touched.short_url &&
+                                        formik.errors.short_url && (
+                                            <p className={styles.error_message}>
+                                                {formik.errors.short_url}
+                                            </p>
+                                        )}
+                                </div>
+                                <div className={styles.form_btns}>
+                                    <PowerfulButton
+                                        type="reset"
+                                        children="Cancel"
+                                        variant="secondary"
+                                        style={{
+                                            width: "fit-content",
+                                            minWidth: "auto",
+                                            margin: "20px 0px 0px"
+                                        }}
+                                        onClick={() => {
+                                            formik.handleReset(formik.values);
+                                            setEditBtn(false);
+                                            setCreateBtn(false);
+                                        }}
+                                    />
+                                    <PowerfulButton
+                                        type="submit"
+                                        style={{
+                                            width: "100%",
+                                            minWidth: "150px",
+                                            margin: "20px 0px 0px"
+                                        }}
+                                        children={editBtn ? "Edit" : "Create"}
+                                    />
+                                </div>
                             </div>
-                            <div className={styles.form_btns}>
-                                <PowerfulButton
-                                    type="reset"
-                                    children="Cancel"
-                                    variant="secondary"
-                                    style={{ width: "fit-content", minWidth: "auto", margin: "20px 0px 0px", }}
-                                    onClick={() => {
-                                        formik.handleReset(formik.values);
-                                        setEditBtn(false);
-                                    }}
-                                />
-                                <PowerfulButton 
-                                    type="submit"
-                                    style={{ width: "100%", minWidth:"150px", margin: "20px 0px 0px" }}
-                                    children={editBtn ? "Edit" : "Create"}
-                                />
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            )}
 
             <>
                 <TableTop
