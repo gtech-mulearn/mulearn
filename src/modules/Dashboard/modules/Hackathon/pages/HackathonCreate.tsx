@@ -53,35 +53,33 @@ const formatDate = (date: any): string => {
 const HackathonCreate = () => {
     const [tabIndex, setTabIndex] = useState(0);
     const [formData, setFormData] = useState("");
-    const [temp, setTemp] = useState(false);
-    const [isEdit, setIsEdit] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [data, setData] = useState<HackList>();
     const [district, setDistrict] = useState<Option[]>([]);
     const [institutions, setInstitutions] = useState<Option[]>([]);
-    const [institutionsChunks, setInstitutionsChunks] = useState<Option[][]>(
-        []
-    );
-
+    const [institutionsChunks, setInstitutionsChunks] = useState<Option[][]>( [] );
     const [isPublishing, setIsPublishing] = useState(false);
-
-    const [isCreatePage, setIsCreatePage] = useState(false);
     const [openImagePreview, setOpenImagePreview] = useState(false);
     const [prevImgUrl, setPreviewImgUrl] = useState("");
-    const { id } = useParams();
+
+    const [id, setID] = useState(useParams().id);
+
     const toast = useToast();
     const navigate = useNavigate();
-    const location = useLocation();
 
     useEffect(() => {
-        if (id !== undefined) {
-            getHackDetails(setData, id);
-            setTimeout(() => {
-                setTemp(true);
-            }, 3000);
-            setIsEdit(true);
-        } else {
-            setTemp(true);
-        }
+        if (id) {
+            getHackDetails(id)
+            .then(res => {
+                setData(res)
+                setLoading(true)
+            })
+            .catch(err => {
+                console.error(err)
+            })
+        } 
+        else setLoading(true);
+
         if (formData === "") {
             getFormFields(setFormData);
             getAllDistricts(setDistrict);
@@ -106,7 +104,7 @@ const HackathonCreate = () => {
         setTabIndex(tabIndex === 0 ? 0 : tabIndex - 1);
     }
 
-    function isDetailsComplete(hackathon: HackList): boolean {
+    function isDetailsComplete(hackathon: HackList): (true | string) {
         let returnVal = true;
         let fieldsToFix: string[] = [];
         Object.entries(hackathon).forEach(([key, value]) => {
@@ -117,19 +115,8 @@ const HackathonCreate = () => {
                 );
             }
         });
-        if (!returnVal) {
-            const fieldsText = fieldsToFix.join(", ");
-
-            toast({
-                title: "Cannot publish",
-                description: `Please fill the following fields: ${fieldsText}`,
-                status: "error",
-                duration: 5000,
-                isClosable: true,
-                position: "top-right"
-            });
-        }
-        return returnVal;
+        if (!returnVal) return fieldsToFix.join(", ")
+        return true;
     }
 
     const handleSubmit = (values: any, { resetForm }: any) => {
@@ -163,19 +150,6 @@ const HackathonCreate = () => {
         // Convert selectedFields object to a JSON string and then parse it to get the desired format
         const formattedFormFields = JSON.stringify(selectedFields);
 
-        function publish(hackathon: HackList): boolean {
-            let returnVal = false;
-            if (isPublishing) {
-                if (isDetailsComplete(hackathon)) {
-                    publishHackathon(hackathon.id, hackathon.status);
-                    returnVal = true;
-                } else {
-                    setIsPublishing(false);
-                }
-            }
-            return returnVal;
-        }
-
         const hackathon: HackList = {
             id: id || "",
             title: values.title,
@@ -200,30 +174,53 @@ const HackathonCreate = () => {
             status: "Draft"
         };
 
-        isEdit
-            ? editHackathon(hackathon, formattedFormFields)
-                  .then(() => (isPublishing ? publish(hackathon) : true))
-                  .then(res => res && navigate("/dashboard/hackathon"))
-            : createHackathon(hackathon, formattedFormFields)
-                  .then(id => {
-                      setIsEdit(true);
-                      return isPublishing ? publish({ ...hackathon, id: id || "" }) : true;
-                  })
-                  .then(
-                      res =>
-                          res &&
-                          setTimeout(
-                              () => navigate("/dashboard/hackathon"),
-                              1000
-                          )
-                  );
-    };
+        (async () => {
+        try {
+            if (id)    await editHackathon(hackathon, formattedFormFields)
+            else setID(await createHackathon(hackathon, formattedFormFields))
 
-    useEffect(() => {
-        if (location.pathname === "/dashboard/hackathon/create") {
-            setIsCreatePage(true);
+              console.info(id)
+            if (isPublishing && id){
+                setIsPublishing(false)
+
+                const isComplete = isDetailsComplete(hackathon);
+                if (isComplete === true){
+
+                    let responce = "";
+                    responce = await publishHackathon(id, hackathon.status)
+                    
+                    toast({
+                        title: "Change Successful",
+                        description: responce,
+                        status: "success",
+                        duration: 3000,
+                        isClosable: true
+                    })
+                    navigate("/dashboard/hackathon")
+                }
+                else toast({
+                    title: "Cannot publish",
+                    description: `Please fill the following fields: ${isComplete}`,
+                    status: "error",
+                    duration: 5000,
+                    isClosable: true,
+                    position: "top-right"
+                });
+            }
+            
         }
-    }, [location]);
+        catch (err) {
+            toast({
+                title: "Failed to make changes",
+                description: err as string,
+                status: "error",
+                duration: 5000,
+                isClosable: true
+            });
+        }
+        })();
+
+    };
 
     const handleCloseModal = () => {
         setOpenImagePreview(false);
@@ -253,7 +250,7 @@ const HackathonCreate = () => {
 
     return (
         <>
-            {temp ? (
+            {loading ? (
                 <div className={styles.container}>
                     <div className={styles.topText}>
                         <h1 className={styles.dashLine}>Lets Get Started</h1>
@@ -299,13 +296,9 @@ const HackathonCreate = () => {
                                 }) => (
                                     <Form id="hackathon">
                                         <Tabs
-                                            selectedTabClassName={
-                                                styles.selectedTab
-                                            }
+                                            selectedTabClassName={ styles.selectedTab }
                                             selectedIndex={tabIndex}
-                                            onSelect={index =>
-                                                setTabIndex(index)
-                                            }
+                                            onSelect={index => setTabIndex(index) }
                                         >
                                             <TabList>
                                                 <Tab>Basics</Tab>
@@ -379,7 +372,7 @@ const HackathonCreate = () => {
             ) : (
                 <div className={styles.spinner_container}>
                     <div className={styles.spinner}>
-                        <MuLoader />{" "}
+                        <MuLoader />
                     </div>
                 </div>
             )}

@@ -100,7 +100,7 @@ const HackathonCard = ({
                         onClick={() => {
                             navigate(
                                 isDraft
-                                    ? `/dashboard/hackathon/edit/${hackathon.id}`
+                                    ? `/dashboard/hackathon/create/${hackathon.id}`
                                     : `/dashboard/hackathon/details/${hackathon.id}`
                             );
                         }}

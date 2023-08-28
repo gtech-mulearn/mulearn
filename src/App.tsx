@@ -403,7 +403,7 @@ function App() {
                             )
                         },
                         {
-                            path: "hackathon/create",
+                            path: "hackathon/create/:id",
                             element: (
                                 <RoleChecker
                                     roles={[roles.ADMIN, roles.FELLOW]}
@@ -412,7 +412,7 @@ function App() {
                             )
                         },
                         {
-                            path: "hackathon/edit/:id",
+                            path: "hackathon/create",
                             element: (
                                 <RoleChecker
                                     roles={[roles.ADMIN, roles.FELLOW]}

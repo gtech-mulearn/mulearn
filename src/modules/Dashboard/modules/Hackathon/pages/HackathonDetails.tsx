@@ -17,10 +17,13 @@ export const HackathonDetails = (props: Props) => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        getHackDetails(
-            setData,
-            id,
-        )
+        getHackDetails(id || '')
+            .then(res => {
+                setData(res)
+            })
+            .catch(err => {
+                console.error(err)
+            })
     }, [])
 
     return (

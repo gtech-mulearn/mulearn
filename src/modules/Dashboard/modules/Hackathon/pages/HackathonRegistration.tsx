@@ -27,7 +27,13 @@ const HackathonRegistration = (props: Props) => {
     const [application, setApplication] = useState<HackathonApplication[]>([]);
 
     useEffect(() => {
-        getHackDetails(setData, id);
+        getHackDetails(id || '')
+        .then(res => {
+            setData(res)
+        })
+        .catch(err => {
+            console.error(err)
+        })
         getApplicationForm(setApplication, id);
     }, []);
 

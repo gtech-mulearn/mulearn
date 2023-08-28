@@ -110,7 +110,7 @@ const HackathonCardIconButtons = ({
                         <div>
                             <div className={styles.group}>
                                 <Link
-                                    to={`/dashboard/hackathon/edit/${hackathon.id}`}
+                                    to={`/dashboard/hackathon/create/${hackathon.id}`}
                                 >
                                     <LuEdit
                                         data-tooltip-id="Icon"
