@@ -49,6 +49,21 @@ const formatDate = (date: any): string => {
     return formattedDate;
 };
 
+function isDetailsComplete(hackathon: HackList): (true | string) {
+    let returnVal = true;
+    let fieldsToFix: string[] = [];
+    Object.entries(hackathon).forEach(([key, value]) => {
+        if (value === null || value === "") {
+            returnVal = false;
+            fieldsToFix.push(
+                key.charAt(0).toUpperCase() + key.slice(1).replace("_", " ")
+            );
+        }
+    });
+    if (!returnVal) return fieldsToFix.join(", ")
+    return true;
+}
+
 
 const HackathonCreate = () => {
     const [tabIndex, setTabIndex] = useState(0);
@@ -104,20 +119,6 @@ const HackathonCreate = () => {
         setTabIndex(tabIndex === 0 ? 0 : tabIndex - 1);
     }
 
-    function isDetailsComplete(hackathon: HackList): (true | string) {
-        let returnVal = true;
-        let fieldsToFix: string[] = [];
-        Object.entries(hackathon).forEach(([key, value]) => {
-            if (value === null || value === "") {
-                returnVal = false;
-                fieldsToFix.push(
-                    key.charAt(0).toUpperCase() + key.slice(1).replace("_", " ")
-                );
-            }
-        });
-        if (!returnVal) return fieldsToFix.join(", ")
-        return true;
-    }
 
     const handleSubmit = (values: any, { resetForm }: any) => {
 
