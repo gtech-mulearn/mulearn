@@ -236,7 +236,7 @@
 
 .ghost-btn {
     color: hsl(var(--primary-btn-color));
-    
+    outline-offset: 0px!important;
     &:hover {
         background-color: hsl(var(--secondary-btn-color));
     }

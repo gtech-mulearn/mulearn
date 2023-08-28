@@ -191,7 +191,7 @@ type ButtonProps = ({ children, className, variant, style, ...props }:
 export const PowerfulButton:ButtonProps = ({ children, className = "", variant = "primary", style, ...props }) => {
     const variantName = variant ? styles[`${variant}-btn`] : ""
 
-    return <button className={styles["common-btn"] + "  " + variantName} 
+    return <button className={styles["common-btn"] + "  " + variantName + " " + className} 
                              {...props} style={style}>
         {children}
     </button>

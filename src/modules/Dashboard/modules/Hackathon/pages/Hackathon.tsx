@@ -23,10 +23,7 @@ const Hackathon = () => {
                 <div className={styles.HCHackathon}>
                     <div className={styles.hackathonHeading}>
                         <h1>Explore Hackathons</h1>
-                        <Link
-                            to="/dashboard/hackathon/create"
-                            className={styles.HCbutton}
-                        >
+                        <Link to="/dashboard/hackathon/create" >
                             <PowerfulButton>
                                 <FiPlusCircle/> Create
                             </PowerfulButton>

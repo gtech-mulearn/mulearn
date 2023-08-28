@@ -12,18 +12,9 @@
 }
 
 .topBarButtons {
+    margin-top: 2.3rem;
     display: flex;
-}
-
-.btn {
-    padding: 0.7rem 1rem;
-    border-radius: var(--borderRadius);
-    border: none;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--blue);
-    cursor: pointer;
-    margin: 1rem 0;
+    gap: 10px;
 }
 
 .dashLine {
@@ -99,7 +90,7 @@
 
 .form {
     width: 100%;
-    padding: 1.5rem;
+    padding: 1.5rem!important;
     background-color: var(--White);
     border-radius: var(--borderRadius);
     box-shadow: var(--boxShadow);
@@ -151,6 +142,7 @@
 }
 
 .btns {
+    margin-top: 1rem;
     display: flex;
     justify-content: flex-end;
     gap: 1rem;

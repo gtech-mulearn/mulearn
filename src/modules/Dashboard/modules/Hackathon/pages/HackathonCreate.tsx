@@ -30,10 +30,25 @@ import { FormTabApplication } from "../components/FormTabApplication";
 
 import { hackathonSchema } from "../utils";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 /**
  * TODO: Make the form things json and iterate and display, store the jsons in a separate file.
  */
+
+const formatDate = (date: any): string => {
+    if (
+        date === "undefined" ||
+        date === null ||
+        date === undefined ||
+        date === "null" ||
+        date === ""
+    )
+        return "";
+    const formattedDate = new Date(date).toISOString().split("T")[0];
+    return formattedDate;
+};
+
 
 const HackathonCreate = () => {
     const [tabIndex, setTabIndex] = useState(0);
@@ -118,6 +133,7 @@ const HackathonCreate = () => {
     }
 
     const handleSubmit = (values: any, { resetForm }: any) => {
+
         const fields: { [key: string]: string } = {
             bio: "system",
             college: "system",
@@ -138,18 +154,6 @@ const HackathonCreate = () => {
             }
         });
 
-        const formatDate = (date: any): string => {
-            if (
-                date === "undefined" ||
-                date === null ||
-                date === undefined ||
-                date === "null" ||
-                date === ""
-            )
-                return "";
-            const formattedDate = new Date(date).toISOString().split("T")[0];
-            return formattedDate;
-        };
 
         const applicationStartDate = formatDate(values.applicationStart);
         const applicationEndsDate = formatDate(values.applicationEnds);
@@ -163,7 +167,7 @@ const HackathonCreate = () => {
             let returnVal = false;
             if (isPublishing) {
                 if (isDetailsComplete(hackathon)) {
-                    publishHackathon(hackathon.id, hackathon.status, toast);
+                    publishHackathon(hackathon.id, hackathon.status);
                     returnVal = true;
                 } else {
                     setIsPublishing(false);
@@ -197,15 +201,13 @@ const HackathonCreate = () => {
         };
 
         isEdit
-            ? editHackathon(hackathon, formattedFormFields, toast)
+            ? editHackathon(hackathon, formattedFormFields)
                   .then(() => (isPublishing ? publish(hackathon) : true))
                   .then(res => res && navigate("/dashboard/hackathon"))
-            : createHackathon(hackathon, formattedFormFields, toast)
+            : createHackathon(hackathon, formattedFormFields)
                   .then(id => {
                       setIsEdit(true);
-                      return isPublishing
-                          ? publish({ ...hackathon, id: id || "" })
-                          : true;
+                      return isPublishing ? publish({ ...hackathon, id: id || "" }) : true;
                   })
                   .then(
                       res =>
@@ -256,25 +258,18 @@ const HackathonCreate = () => {
                     <div className={styles.topText}>
                         <h1 className={styles.dashLine}>Lets Get Started</h1>
                         <div className={styles.topBarButtons}>
-                            <button
+                            <PowerfulButton
+                                variant="ghost"
                                 type="submit"
                                 form="hackathon"
-                                className={styles.btn}
-                            >
-                                Save & Finish later
-                            </button>
-                            <button
-                                type="submit"
-                                form="hackathon"
-                                className={styles.btn}
+                                children='Save & Finish later'
+                            />
+                            <PowerfulButton
                                 onClick={() => setIsPublishing(true)}
-                                style={{
-                                    backgroundColor: "#456ff6",
-                                    color: "#fff"
-                                }}
-                            >
-                                Publish Now
-                            </button>
+                                type="submit"
+                                form="hackathon"
+                                children="Publish Now"
+                            />
                         </div>
                     </div>
 
@@ -323,26 +318,17 @@ const HackathonCreate = () => {
                                                 {/* <Tab>FAQs</Tab> */}
                                             </TabList>
                                             <div className={styles.form}>
-                                                <TabPanel
-                                                    className={
-                                                        styles.formGroupStart
-                                                    }
-                                                >
+                                                <TabPanel className={ styles.formGroupStart } >
                                                     <FormTabBasics />
                                                 </TabPanel>
-                                                <TabPanel
-                                                    className={styles.formGroup}
-                                                >
+
+                                                <TabPanel className={styles.formGroup} >
                                                     <FormTabDates />
                                                 </TabPanel>
 
-                                                <TabPanel
-                                                    className={styles.formGroup}
-                                                >
+                                                <TabPanel className={styles.formGroup} >
                                                     <FormTabDetails
-                                                        institutions={
-                                                            institutions
-                                                        }
+                                                        institutions={ institutions }
                                                         district={district}
                                                     />
                                                 </TabPanel>
@@ -351,46 +337,36 @@ const HackathonCreate = () => {
                                                     <FormTabAdvanced
                                                         data={data}
                                                         errors={errors}
-                                                        setFieldValue={
-                                                            setFieldValue
-                                                        }
+                                                        setFieldValue={ setFieldValue }
                                                     />
                                                 </TabPanel>
 
-                                                <TabPanel
-                                                    className={
-                                                        styles.formGroupField
-                                                    }
-                                                >
+                                                <TabPanel className={ styles.formGroupField } >
                                                     <FormTabApplication
                                                         values={values}
-                                                        handleChange={
-                                                            handleChange
-                                                        }
+                                                        handleChange={ handleChange }
                                                         formData={formData}
                                                     />
                                                 </TabPanel>
                                             </div>
                                             <div className={styles.btns}>
                                                 {tabIndex > 0 && (
-                                                    <button
+                                                    <PowerfulButton
                                                         onClick={handleBack}
-                                                        className={styles.btn}
                                                         type="button"
                                                     >
                                                         <FaArrowLeft />
                                                         Go back
-                                                    </button>
+                                                    </PowerfulButton>
                                                 )}
                                                 {tabIndex !== 4 && (
-                                                    <button
+                                                    <PowerfulButton
                                                         onClick={handleNext}
-                                                        className={styles.btn}
                                                         type="button"
                                                     >
                                                         Next
                                                         <FaArrowRight />
-                                                    </button>
+                                                    </PowerfulButton>
                                                 )}
                                             </div>
                                         </Tabs>

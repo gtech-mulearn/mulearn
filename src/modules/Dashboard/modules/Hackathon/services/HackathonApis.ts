@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { ToastId, UseToastOptions, useToast } from "@chakra-ui/react";
+import { ToastId, UseToastOptions, createStandaloneToast, useToast } from "@chakra-ui/react";
 import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { Data } from "@/MuLearnComponents/Table/Table";
 import { NavigateFunction } from "react-router-dom";
@@ -12,6 +12,8 @@ import {
 } from "./HackathonInterfaces";
 import { transformData } from "./HackathonUtils";
 import { SetStateAction } from "react";
+
+const { toast } = createStandaloneToast();
 
 export const getHackathons = async (setData: UseStateFunc<HackList[]>) => {
     try {
@@ -55,7 +57,6 @@ export const getHackDetails = async (
 export const createHackathon = async (
     hackathonData: HackList,
     formFields: any,
-    toast: (options?: UseToastOptions | undefined) => ToastId
 ): Promise<string> => {
     try {
         const response = await privateGateway.post(
@@ -106,14 +107,13 @@ export const createHackathon = async (
                 isClosable: true
             });
         }
-        return "";
+        throw error;
     }
 };
 
 export const editHackathon = async (
     hackathonData: HackList,
     formFields: any,
-    toast: (options?: UseToastOptions | undefined) => ToastId
 ): Promise<string> => {
     try {
         await privateGateway.put(
@@ -204,7 +204,6 @@ export const getAllInstitutions = (
 
 export const deleteHackathon = async (
     id: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
         const response = await privateGateway.delete(
@@ -226,7 +225,6 @@ export const deleteHackathon = async (
 export const addOrganizer = async (
     id: string | undefined,
     muid: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
         const response = await privateGateway.post(
@@ -260,7 +258,6 @@ export const addOrganizer = async (
 export const publishHackathon = async (
     id: string,
     status: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     let a = status === "Draft" ? "Published" : "Draft";
     try {
@@ -321,7 +318,6 @@ export const submitHackApplication = async (
     },
     id: string | undefined,
     navigate: NavigateFunction,
-    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
         if (!id) {

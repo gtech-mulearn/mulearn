@@ -147,10 +147,7 @@ const HackathonCardIconButtons = ({
                                         heading={"Delete"}
                                         content={`Are you sure you want to delete ${hackathon.title} ?`}
                                         click={() => {
-                                            deleteHackathon(
-                                                hackathon.id,
-                                                toast
-                                            );
+                                            deleteHackathon( hackathon.id);
                                             setTimeout(() => {
                                                 getHackathons(setOwnData);
                                                 getHackathons(setData);
@@ -191,7 +188,6 @@ const HackathonCardIconButtons = ({
                                                 publishHackathon(
                                                     hackathon.id,
                                                     hackathon.status,
-                                                    toast
                                                 );
                                                 setTimeout(() => {
                                                     getHackathons(setOwnData);
