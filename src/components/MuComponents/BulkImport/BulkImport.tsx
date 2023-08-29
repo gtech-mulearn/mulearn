@@ -89,9 +89,13 @@ const BulkImport = ({ path, onUpload, onError, ...rest }: Props) => {
 
     const handleUpload = () => {
         if (selectedFile) {
-            const renamedFile = renameFile(selectedFile, "task_list.xlsx");
+            const renamedFile = renameFile(
+                selectedFile,
+                "karma_voucher_list.xlsx"
+            );
             const formData = new FormData();
-            formData.append("task_list", renamedFile);
+            formData.append("voucher_log", renamedFile);
+            console.log(Array.from(formData), renamedFile);
             bulkImport(formData, path).then(response => {
                 if (response.status && response.status !== 200) {
                     console.log(response);
