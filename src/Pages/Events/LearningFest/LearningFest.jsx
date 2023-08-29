@@ -33,8 +33,27 @@ const LearningFest = () => {
                         alt=""
                         className={styles.partner_image}
                       />
+                      <img
+                        src="/assets/events/learningfest/pygrammers.png"
+                        alt=""
+                        className={styles.partner_image}
+                      />
                     </div>
                   </div>
+
+                  <p className={styles.event_partners_heading}>
+                    Earn Upto 7000 Karma Points
+                  </p>
+
+                  <a
+                    href="http://mulearn.org/r/learningfest"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className={styles.register_button}>
+                      Register Now
+                    </button>
+                  </a>
                 </div>
               </div>
               <div className={styles.fv_images}>
@@ -94,39 +113,61 @@ const LearningFest = () => {
               />
             </div>
 
-            <div className={styles.stars_main_container}>
-              <div className={styles.stars_container}>
-                <div className={styles.star}>
-                  <img
-                    src="/assets/events/learningfest/star.png"
-                    alt=""
-                    className={styles.starimg}
-                  />
-                  <p className={styles.star_text}>
-                    Elevate Your Skills with Bootcamps.
-                  </p>
-                </div>
-                <div className={styles.star}>
-                  <img
-                    src="/assets/events/learningfest/star.png"
-                    alt=""
-                    className={styles.starimg}
-                  />
-                  <p className={styles.star_text}>
-                    Dive into your Passionate Field.
-                  </p>
-                </div>
-                <div className={styles.star}>
-                  <img
-                    src="/assets/events/learningfest/star.png"
-                    alt=""
-                    className={styles.starimg}
-                  />
-                  <p className={styles.star_text}>
-                    Learn and Lead with Learning Circles.
-                  </p>
-                </div>
+            <div className={styles.stars_container}>
+              <div className={styles.star}>
+                <img
+                  src="/assets/events/learningfest/star.png"
+                  alt=""
+                  className={styles.starimg}
+                />
+                <p className={styles.star_text}>
+                  Elevate Your Skills with Bootcamps.
+                </p>
               </div>
+              <div className={styles.star}>
+                <img
+                  src="/assets/events/learningfest/star.png"
+                  alt=""
+                  className={styles.starimg}
+                />
+                <p className={styles.star_text}>
+                  Dive into your Passionate Field.
+                </p>
+              </div>
+              <div className={styles.star}>
+                <img
+                  src="/assets/events/learningfest/star.png"
+                  alt=""
+                  className={styles.starimg}
+                />
+                <p className={styles.star_text}>
+                  Learn and Lead with Learning Circles.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.third_view_container}>
+            <div className={styles.third_view}>
+              <div className={styles.tv_texts}>
+                <p className={styles.tv_heading}>Registrations Started</p>
+                <p className={styles.tv_tagline}>
+                  The Seats are Limited, So register now and Get Ready to embark
+                  on a journey of learning, growth and transformation at Kerala
+                  Tech Fest!
+                </p>
+              </div>
+              <a
+                href="http://mulearn.org/r/learningfest"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/assets/events/learningfest/tvimg.png"
+                  alt=""
+                  className={styles.tvimage}
+                />
+              </a>
             </div>
           </div>
         </div>
