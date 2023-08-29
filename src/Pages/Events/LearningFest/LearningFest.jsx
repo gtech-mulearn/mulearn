@@ -48,6 +48,88 @@ const LearningFest = () => {
           </div>
           <div className={styles.pipes} />
         </div>
+        <div className={styles.second_view_container}>
+          <div className={styles.second_view}>
+            <p className={styles.tracks}>Learning Fest Tracks</p>
+            <p className={styles.sv_tagline}>
+              There are multiple tracks which you can travel in this learning
+              fest to witness and learn new things.
+            </p>
+
+            <div className={styles.tracks_container}>
+              <img
+                src="/assets/events/learningfest/tracks/android.png"
+                alt=""
+                className={styles.track}
+              />
+              <img
+                src="/assets/events/learningfest/tracks/arvr.png"
+                alt=""
+                className={styles.track}
+              />
+              <img
+                src="/assets/events/learningfest/tracks/cybersec.png"
+                alt=""
+                className={styles.track}
+              />
+              <img
+                src="/assets/events/learningfest/tracks/iot.png"
+                alt=""
+                className={styles.track}
+              />
+              <img
+                src="/assets/events/learningfest/tracks/nocode.png"
+                alt=""
+                className={styles.track}
+              />
+              <img
+                src="/assets/events/learningfest/tracks/uiux.png"
+                alt=""
+                className={styles.track}
+              />
+              <img
+                src="/assets/events/learningfest/tracks/web.png"
+                alt=""
+                className={styles.track}
+              />
+            </div>
+
+            <div className={styles.stars_main_container}>
+              <div className={styles.stars_container}>
+                <div className={styles.star}>
+                  <img
+                    src="/assets/events/learningfest/star.png"
+                    alt=""
+                    className={styles.starimg}
+                  />
+                  <p className={styles.star_text}>
+                    Elevate Your Skills with Bootcamps.
+                  </p>
+                </div>
+                <div className={styles.star}>
+                  <img
+                    src="/assets/events/learningfest/star.png"
+                    alt=""
+                    className={styles.starimg}
+                  />
+                  <p className={styles.star_text}>
+                    Dive into your Passionate Field.
+                  </p>
+                </div>
+                <div className={styles.star}>
+                  <img
+                    src="/assets/events/learningfest/star.png"
+                    alt=""
+                    className={styles.starimg}
+                  />
+                  <p className={styles.star_text}>
+                    Learn and Lead with Learning Circles.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <Footer />
     </>
