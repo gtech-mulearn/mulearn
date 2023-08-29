@@ -225,7 +225,7 @@ export const getUUID = async () => {
         ).sort((a, b) =>
             //check for name/title key and then compare
             (a.name !== undefined && a.name < b.name) ||
-                (a.title !== undefined && a.title < b.title)
+            (a.title !== undefined && a.title < b.title)
                 ? -1
                 : 1
         );
@@ -237,13 +237,12 @@ export const getUUID = async () => {
 // bundle size increased from 106kb to 160kb, but dynamically imported
 
 export const convertToXLSX = (data: any, fileName: string) => {
-    import("xlsx").then(({ utils, writeFile }) => {
-
-        const ws = utils.json_to_sheet(data);
-        const wb = utils.book_new();
-        utils.book_append_sheet(wb, ws, "Result 1");
-        writeFile(wb, fileName);
-
-    })
-        .catch((err) => console.error(err));
+    import("xlsx")
+        .then(({ utils, writeFile }) => {
+            const ws = utils.json_to_sheet(data);
+            const wb = utils.book_new();
+            utils.book_append_sheet(wb, ws, "Result 1");
+            writeFile(wb, fileName);
+        })
+        .catch(err => console.error(err));
 };
