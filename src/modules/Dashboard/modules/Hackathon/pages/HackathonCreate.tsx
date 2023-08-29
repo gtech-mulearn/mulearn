@@ -12,15 +12,13 @@ import {
     getHackDetails,
     publishHackathon
 } from "../services/HackathonApis";
-import { FiUploadCloud } from "react-icons/fi";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-import { background, useToast } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import {
     convertDateToYYYYMMDD,
     getLocationIdByName
 } from "../../../utils/common";
-import HackathonImagePreview from "../components/HackathonImagePreview";
 import { HackList } from "../services/HackathonInterfaces";
 import { FormTabBasics } from "../components/FormTabBasics";
 import { FormTabDates } from "../components/FormTabDates";
