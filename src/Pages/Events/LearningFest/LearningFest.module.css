@@ -1,0 +1,132 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.first_view_container {
+  padding: 2rem;
+}
+
+.fv_background_container {
+  background: linear-gradient(rgba(79, 196, 250, 1), rgba(161, 237, 251, 1));
+  width: 100%;
+}
+
+.first_view {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.fv_img {
+  width: 18rem;
+  display: block;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.fv_texts {
+  text-align: center;
+}
+
+.fv_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.fv_heading span {
+  font-weight: 600;
+  color: #fedf23;
+}
+
+.pipes {
+  margin-top: 4rem;
+  background-image: url("/public/assets/events/learningfest/pipes.png");
+  background-repeat: repeat-x;
+  background-size: contain;
+  background-position: center top;
+  width: 100%;
+  padding-top: 10%; /* Adjust this value as needed */
+}
+
+.fv_tagline {
+  margin-top: 0.5rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.event_partners_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  margin-right: 1rem;
+}
+
+.partners {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  margin: 1rem 0;
+}
+
+.partner_image {
+  height: 2rem;
+  margin-right: 0.5rem;
+  display: block;
+}
+
+.detailsbtn {
+  margin-top: 1rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  .first_view_container,
+  .second_view_container {
+    padding: 3rem 3rem 0;
+  }
+
+  .partners {
+    justify-content: left;
+    align-self: left;
+  }
+
+  .first_view,
+  .second_view {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+
+  .fv_img {
+    display: block;
+    margin: auto;
+    width: 35rem;
+  }
+
+  .fv_texts {
+    text-align: left;
+    width: 50%;
+  }
+
+  .fv_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 4.55rem;
+    line-height: 5rem;
+    font-weight: 600;
+  }
+
+  .fv_tagline {
+    margin-top: 1rem;
+    font-size: 1rem;
+    width: 80%;
+  }
+
+  .detailsbtn {
+    margin-right: 1rem;
+  }
+}
