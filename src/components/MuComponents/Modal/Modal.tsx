@@ -21,12 +21,13 @@ const Modal: FC<ModalProps> = ({ setIsOpen, id, heading, content, click,type,val
             <div className={styles.centered}>
                 <div className={styles.modal}>
                     <div className={styles.modalHeader}>
-                        <button
+                        <PowerfulButton
+                            variant="ghost"
                             className={styles.closeBtn}
                             onClick={() => setIsOpen(false)}
                         >
                             <RiCloseLine style={{ marginBottom: "-3px" }} />
-                        </button>
+                        </PowerfulButton>
 
                         {type == "error" ? (
                             <div className={styles.checkbtndelete}>

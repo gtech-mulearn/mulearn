@@ -632,17 +632,7 @@ input[type="file"]::file-selector-button:hover {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 0.5rem;
     font-size: 0.8rem;
-}
-
-.hackathonBox .shared2 button {
-    margin-top: 0.5rem;
-    padding: 0.1rem;
-    font-size: 0.7rem;
-    background-color: var(--blue);
-    color: var(--White);
-    border-radius: 5.5px;
 }
 
 .hackathonBox .textWrapper {
@@ -654,14 +644,21 @@ input[type="file"]::file-selector-button:hover {
     font-size: 0.8rem;
 }
 
-.hackathonBox .frame2,
-.hackathonBox .frame2 div {
-    display: flex;
-    gap: 0.6rem;
+.hackathonBox .frame2 {
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3);
+    grid-column-gap: 5px;
+    grid-row-gap: 5px; 
 }
 
-.hackathonBox .frame2 div {
-    flex-direction: column;
+.lister {
+    grid-area: 3 / 1 / 4 / 3;
+    margin-top: .8rem;
+    padding: 0px 15px!important;
+    border-radius: 4px;
+    font-size: smaller;
 }
 
 .hackathonBox .group {
@@ -671,11 +668,6 @@ input[type="file"]::file-selector-button:hover {
     cursor: pointer;
 }
 
-.hackathonBox .group2 {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-}
 
 .hackathonBox .textWrapper3 {
     color: #000000cc;
