@@ -13,7 +13,7 @@ const LearningFest = () => {
             <div className={styles.first_view}>
               <div className={styles.fv_texts}>
                 <p className={styles.fv_heading}>
-                  <span>Learning</span> Fest
+                  <span>Learning Fest </span>
                 </p>
 
                 <p className={styles.fv_tagline}>
