@@ -60,7 +60,7 @@ privateGateway.interceptors.response.use(
                 const response = await publicGateway.post(
                     authRoutes.getAccessToken,
                     {
-                        refreshToken: localStorage.getItem('refreshToken')//fetchLocalStorage<AllTokens["refreshToken"]>("refreshToken")
+                        refreshToken: localStorage.getItem("refreshToken") //fetchLocalStorage<AllTokens["refreshToken"]>("refreshToken")
                     }
                 );
                 localStorage.setItem(
@@ -69,7 +69,7 @@ privateGateway.interceptors.response.use(
                 );
                 //console.log('new access token',response.data.response.accessToken)
                 // Retry the original request
-                const {config} = error;
+                const { config } = error;
                 config.headers[
                     "Authorization"
                 ] = `Bearer ${localStorage.getItem("accessToken")}`;
@@ -84,7 +84,6 @@ privateGateway.interceptors.response.use(
                             reject(error_1);
                         });
                 });
-                
             } catch (error_2) {
                 //console.log('error_2',error_2);
                 toast.closeAll();
