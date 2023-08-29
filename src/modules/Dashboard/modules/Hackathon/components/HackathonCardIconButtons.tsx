@@ -31,6 +31,7 @@ type Props = {
     ownData: HackList[];
     setOwnData: React.Dispatch<React.SetStateAction<HackList[]>>;
     setData: React.Dispatch<React.SetStateAction<HackList[]>>;
+    style?: React.CSSProperties
 };
 
 const HackathonCardIconButtons = ({
@@ -38,7 +39,8 @@ const HackathonCardIconButtons = ({
     index,
     ownData,
     setOwnData,
-    setData
+    setData,
+    style
 }: Props) => {
     const navigate = useNavigate();
     const toast = useToast();
@@ -88,7 +90,7 @@ const HackathonCardIconButtons = ({
     const isDraft = hackathon.status === "Draft";
 
     return (
-        <div className={styles.shared}>
+        <div className={styles.shared} style={{color: "var(--blue)", ...style}}>
             <div className={styles.shared2}>
                 <div className={styles.frame2}>
             {hackathon.editable ? (<>
