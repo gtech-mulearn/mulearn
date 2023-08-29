@@ -111,20 +111,20 @@ function ZonalDashboard() {
         );
     };
 
-    const handleTabClick = (tab: string) => {
-        if (tab === "Student management") {
-            setColumns(columnsStudent);
-            getzonaldashboard(tab, setData, 1, perPage, setTotalPages, "", "");
-        } else if (tab === "Campus management") {
-            setColumns(columnsCampus);
-            getzonaldashboard(tab, setData, 1, perPage, setTotalPages, "", "");
-        } else {
-            alert("Error to load Table Headers");
-        }
-        setCurrentPage(1);
-        setActiveTab(tab);
-        setPopupStatus(false);
-    };
+    // const handleTabClick = (tab: string) => {
+    //     if (tab === "Student management") {
+    //         setColumns(columnsStudent);
+    //         getzonaldashboard(tab, setData, 1, perPage, setTotalPages, "", "");
+    //     } else if (tab === "Campus management") {
+    //         setColumns(columnsCampus);
+    //         getzonaldashboard(tab, setData, 1, perPage, setTotalPages, "", "");
+    //     } else {
+    //         alert("Error to load Table Headers");
+    //     }
+    //     setCurrentPage(1);
+    //     setActiveTab(tab);
+    //     setPopupStatus(false);
+    // };
 
     const handleIconClick = (column: string) => {
         if (sort === column) {
@@ -202,7 +202,7 @@ function ZonalDashboard() {
                     />
                 </div>
             </div>
-            <TableTopTab active={activeTab} onTabClick={handleTabClick} />
+            {/* <TableTopTab active={activeTab} onTabClick={handleTabClick} /> */}
 
             {data && (
                 <>
