@@ -58,13 +58,7 @@ const KarmaVoucherBulkImport = () => {
                     onError={err => {
                         console.log(err);
                         setUploadResponse(null);
-                        toast({
-                            title: "Error",
-                            description: "CSV upload failed",
-                            status: "error",
-                            duration: 5000,
-                            isClosable: true
-                        });
+                        navigate("/dashboard/karma-voucher");
                     }}
                 />
             </div>
