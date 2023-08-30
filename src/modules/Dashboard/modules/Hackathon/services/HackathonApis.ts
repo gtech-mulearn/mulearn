@@ -45,7 +45,11 @@ export function getHackDetails ( id: string ) :Promise<HackList> {
             resolve(response.data.response)
             // setEditData(data);
         } catch (err: unknown) {
-            reject(err as AxiosError)
+            if (axios.isAxiosError(err)) reject(err.message)
+            else {
+                const mess = err as APIError<string>
+                reject(mess?.response?.data?.message || "Something went wrong")
+            }
         }
     })
 };
@@ -85,7 +89,13 @@ export function createHackathon( hackathonData: HackList, formFields: any ): Pro
         
             resolve(response.data.response.hackathon_id)
         } 
-        catch (err: unknown) { reject( err as AxiosError) }
+        catch (err: unknown) { 
+            if (axios.isAxiosError(err)) reject(err.message)
+            else {
+                const mess = err as APIError<string>
+                reject(mess?.response?.data?.message || "Something went wrong")
+            }
+        }
     })
 };
 
@@ -127,8 +137,8 @@ export function editHackathon( hackathonData: HackList, formFields: any, ): Prom
         catch (err: unknown) { 
             if (axios.isAxiosError(err)) reject(err.message)
             else {
-                const mess = err as APIError<string>
-                reject(mess?.response?.data?.message || "Something went wrong")
+                const mess = err as APIError<string[]>
+                reject(mess?.response?.data?.message[0] || "Something went wrong")
             }
         }
     })
@@ -229,12 +239,15 @@ export function publishHackathon( id: string, status: string, ): Promise<string>
                 { status: a }
             );
             const data: any = response?.data;
-
             resolve("Hackathon has been published")
         }
         catch (err: unknown) {
             const error = err as AxiosError;
-            reject("Make sure all fields are filled")
+            if (axios.isAxiosError(err)) reject(err.message)
+            else {
+                const mess = err as APIError<string>
+                reject(mess?.response?.data?.message || "Make sure all fields are filled")
+            }
         }
     });
 }  

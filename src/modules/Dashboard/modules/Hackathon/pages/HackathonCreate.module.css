@@ -236,6 +236,7 @@
     border-radius: var(--borderRadius);
     cursor: pointer;
     user-select: none;
+    margin: 0!important;
 }
 
 .formCheckbox {
@@ -253,6 +254,7 @@
     display: flex;
     gap: 1.5rem;
     flex-wrap: wrap;
+    margin-top: 15px;
 }
 
 input[type="file"]::file-selector-button {
@@ -284,7 +286,7 @@ input[type="file"]::file-selector-button:hover {
 
 .formGroupLogo .formLabel {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
 .formGroupLogo .formLabel button {
@@ -475,11 +477,12 @@ input[type="file"]::file-selector-button:hover {
     font-size: 1.5rem;
 }
 
-.hackathonEventCard .socialLinks a {
-    padding: 0.5rem;
-    background-color: #e6ecff;
-    color: #456ff6;
-    border-radius: 100%;
+.hackathonEventCard .socialLinks {
+    button {
+        padding: 0.5rem;
+        border-radius: 100%;
+        font-size: 1.5rem;
+    }
 }
 
 .hackathonDesc {

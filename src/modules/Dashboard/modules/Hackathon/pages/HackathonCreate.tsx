@@ -178,7 +178,7 @@ const HackathonCreate = () => {
             if (id)    await editHackathon(hackathon, formattedFormFields)
             else setID(await createHackathon(hackathon, formattedFormFields))
 
-              console.info(id)
+            
             if (isPublishing && id){
                 setIsPublishing(false)
 
@@ -189,8 +189,8 @@ const HackathonCreate = () => {
                     responce = await publishHackathon(id, hackathon.status)
                     
                     toast({
-                        title: "Change Successful",
-                        description: responce,
+                        title: "Successful",
+                        description: responce || "Hackathon Published Successfully",
                         status: "success",
                         duration: 3000,
                         isClosable: true
@@ -205,6 +205,15 @@ const HackathonCreate = () => {
                     isClosable: true,
                     position: "top-right"
                 });
+            }
+            else {
+                toast({
+                    title: "Changes Saved",
+                    description: "Change has been saved Successfully",
+                    status: "success",
+                    duration: 3000,
+                    isClosable: true
+                })
             }
             
         }

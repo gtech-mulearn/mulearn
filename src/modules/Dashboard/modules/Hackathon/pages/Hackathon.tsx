@@ -34,6 +34,7 @@ const Hackathon = () => {
                         {data &&
                             data.map((hack, i) => (
                                 <HackathonCard
+                                    key={i}
                                     hackathon={hack}
                                     setData={setData}
                                     index={i}
