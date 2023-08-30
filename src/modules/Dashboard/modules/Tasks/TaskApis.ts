@@ -8,9 +8,11 @@ const uuidMapper = (uuid: Partial<uuidType>) => {
     for (const key of Object.keys(uuid)) {
         const uuidMap: any = {};
         uuid[key as keyof uuidType]?.forEach(elem => {
-            if (key === "type" || key === "organization")
+            if (key === "type" || key === "organization") {
                 uuidMap[elem.id] = (elem as any).title;
-            else uuidMap[elem.id] = (elem as any).name;
+            } else {
+                uuidMap[elem.id] = (elem as any).name;
+            }
         });
         uuid[key as keyof uuidType] = uuidMap;
     }
@@ -21,7 +23,7 @@ const uuidMapper = (uuid: Partial<uuidType>) => {
 //Converts all uuids to corresponding string in taskdata
 const uuidToString = (data: any, uuid: Partial<uuidType>) => {
     const Mapper = uuidMapper(uuid);
-    const newData = data.map((task: any) => {
+    return data.map((task: any) => {
         task.level = Mapper.level![task.level];
         task.ig = Mapper.ig![task.ig];
         task.org = Mapper.organization![task.org];
@@ -30,7 +32,6 @@ const uuidToString = (data: any, uuid: Partial<uuidType>) => {
 
         return task;
     });
-    return newData;
 };
 
 export const getTasks = async (
@@ -58,7 +59,9 @@ export const getTasks = async (
         const tasks: any = response?.data;
         const uuids: Partial<uuidType> = await getUUID();
         setData(uuidToString(tasks.response.data, uuids));
-        if (setTotalPages) setTotalPages(tasks.response.pagination.totalPages);
+        if (setTotalPages) {
+            setTotalPages(tasks.response.pagination.totalPages);
+        }
         setIsLoading(false);
     } catch (err: unknown) {
         setIsLoading(false);
