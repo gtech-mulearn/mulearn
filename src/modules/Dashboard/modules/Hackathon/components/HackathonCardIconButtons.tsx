@@ -19,6 +19,7 @@ import { HackList } from "../services/HackathonInterfaces";
 
 import styles from "../pages/HackathonCreate.module.css";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { FaThList } from "react-icons/fa";
 
 enum ModalType {
     Publish,
@@ -45,9 +46,12 @@ const HackathonCardIconButtons = ({
 
     const shareData = {
         title: hackathon.title,
-        url: `${import.meta.env.VITE_FRONTEND_URL}/dashboard/hackathon/details/${hackathon.id}`
+        url: `${
+            import.meta.env.VITE_FRONTEND_URL
+        }/dashboard/hackathon/details/${hackathon.id}`
     };
-    const isShareable =  window.navigator.canShare && window.navigator.canShare(shareData)
+    const isShareable =
+        window.navigator.canShare && window.navigator.canShare(shareData);
 
     const [isPublishOpen, setIsPublishOpen] = useState<boolean[]>(
         ownData.map(() => false)
@@ -108,7 +112,7 @@ const HackathonCardIconButtons = ({
                 <div className={styles.shared2}>
                     <div className={styles.frame2}>
                         <div>
-                            <div className={styles.group}>
+                            {/* <div className={styles.group}>
                                 <Link
                                     to={`/dashboard/hackathon/edit/${hackathon.id}`}
                                 >
@@ -117,7 +121,7 @@ const HackathonCardIconButtons = ({
                                         data-tooltip-content="Edit"
                                     />
                                 </Link>
-                            </div>
+                            </div> */}
                             <div className={styles.group}>
                                 <Link
                                     to={`/dashboard/hackathon/organizers/${hackathon.id}`}
@@ -128,8 +132,6 @@ const HackathonCardIconButtons = ({
                                     />
                                 </Link>
                             </div>
-                        </div>
-                        <div>
                             <div className={styles.group}>
                                 <RiDeleteBin5Line
                                     data-tooltip-id="Icon"
@@ -164,6 +166,21 @@ const HackathonCardIconButtons = ({
                                     />
                                 )}
                             </div>
+                        </div>
+                        <div>
+                            {!isDraft && (
+                                <div className={styles.group}>
+                                    <FaThList
+                                        data-tooltip-id="Icon"
+                                        data-tooltip-content="List Participants"
+                                        onClick={() => {
+                                            navigate(
+                                                `/dashboard/hackathon/applicants/${hackathon.id}`
+                                            );
+                                        }}
+                                    />
+                                </div>
+                            )}
                             {!isDraft && (
                                 <>
                                     <div className={styles.group}>
@@ -175,7 +192,6 @@ const HackathonCardIconButtons = ({
                                                     index,
                                                     ModalType[0]
                                                 );
-
                                             }}
                                         />
                                     </div>
@@ -209,38 +225,29 @@ const HackathonCardIconButtons = ({
                             )}
                         </div>
                     </div>
-                    {!isDraft && (
-                        <PowerfulButton                        
-                            children="List"
-                            data-tooltip-content="List Participants"
-                            onClick={() => {
-                                navigate(
-                                    `/dashboard/hackathon/applicants/${hackathon.id}`
-                                );
-                            }}
-                        />
-                    )}
                 </div>
             ) : (
                 <div className={styles.frame2}>
                     <div
                         className={styles.group}
                         onClick={() => {
-                                window.navigator.clipboard.writeText( shareData.url );
-                                toast({
-                                    title: "Success",
-                                    description: "Link copied to clipboard",
-                                    status: "success",
-                                    duration: 3000,
-                                    isClosable: true
-                                });
-                                if (isShareable) window.navigator.share(shareData);
+                            window.navigator.clipboard.writeText(shareData.url);
+                            toast({
+                                title: "Success",
+                                description: "Link copied to clipboard",
+                                status: "success",
+                                duration: 3000,
+                                isClosable: true
+                            });
+                            if (isShareable) window.navigator.share(shareData);
                         }}
                     >
                         <LuCopy
                             data-tooltip-id="Icon"
-                            data-tooltip-content={`Copy${ isShareable ? "/Share" : ""}`}
-                         />
+                            data-tooltip-content={`Copy${
+                                isShareable ? "/Share" : ""
+                            }`}
+                        />
                     </div>
                 </div>
             )}

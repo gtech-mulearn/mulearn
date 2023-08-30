@@ -644,14 +644,14 @@ input[type="file"]::file-selector-button:hover {
     font-size: 0.8rem;
 }
 
-.hackathonBox .shared2 button {
+/* .hackathonBox .shared2 button {
     margin-top: 0.5rem;
     padding: 0.1rem;
     font-size: 0.7rem;
     background-color: var(--blue);
     color: var(--White);
     border-radius: 5.5px;
-}
+} */
 
 .hackathonBox .textWrapper {
     font-size: 1.3rem;
