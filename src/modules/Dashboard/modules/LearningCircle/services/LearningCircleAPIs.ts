@@ -75,6 +75,8 @@ export const getCampusLearningCircles = async (
             dashboardRoutes.createLearningCircle
         );
         const message: any = response?.data;
+        console.log(message.response);
+
         setCircleList(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -207,7 +209,7 @@ export const getInterestGroups = async () => {
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
-			throw error;
+            throw error;
         }
     }
 };
@@ -216,7 +218,7 @@ export const approveLcUser = async (
     circleId: string | undefined,
     memberId: string,
     flag: number,
-	status: string
+    status: string
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -240,7 +242,7 @@ export const approveLcUser = async (
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
-			throw error;
+            throw error;
         }
         toast({
             title: "Something went wrong",
@@ -255,13 +257,11 @@ export const approveLcUser = async (
 export const leaveLc = async (
     circleId: string | undefined,
     memberId: string,
-	navigate: NavigateFunction,
+    navigate: NavigateFunction
 ) => {
     try {
         const response = await privateGateway.delete(
-            dashboardRoutes.getCampusLearningCircles +
-                circleId +
-                "/",
+            dashboardRoutes.getCampusLearningCircles + circleId + "/"
         );
 
         toast({
@@ -271,11 +271,11 @@ export const leaveLc = async (
             duration: 2000,
             isClosable: true
         });
-		navigate("/dashboard/learning-circle/");
+        navigate("/dashboard/learning-circle/");
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
-			throw error;
+            throw error;
         }
         toast({
             title: "Something went wrong",
