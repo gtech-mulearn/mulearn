@@ -8,6 +8,7 @@ export const getKarmaVoucher = async (
     selectedValue: number,
     setIsLoading: UseStateFunc<boolean>,
     setTotalPages?: UseStateFunc<any>,
+    errorHandler?: Function,
     search?: string,
     sortID?: string
 ) => {
@@ -25,7 +26,6 @@ export const getKarmaVoucher = async (
             }
         );
         const tasks: any = response?.data.response;
-        console.log(tasks);
         setData(tasks);
         if (setTotalPages) setTotalPages(tasks.response.pagination.totalPages);
         setIsLoading(false);
@@ -33,7 +33,8 @@ export const getKarmaVoucher = async (
         setIsLoading(false);
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            if (errorHandler) errorHandler();
+            else console.log(error.response);
         }
     }
 };

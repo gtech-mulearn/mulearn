@@ -39,6 +39,16 @@ export const KarmaVoucher = (props: Props) => {
         { column: "created_at", Label: "Created On", isSortable: true }
     ];
 
+    const handleError = () => {
+        toast({
+            title: "Oops",
+            description: "Table fetch failed!",
+            status: "error",
+            duration: 5000,
+            isClosable: true
+        });
+    };
+
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
@@ -48,6 +58,7 @@ export const KarmaVoucher = (props: Props) => {
             perPage,
             setIsLoading,
             setTotalPages,
+            handleError,
             "",
             sort
         );
@@ -62,6 +73,7 @@ export const KarmaVoucher = (props: Props) => {
             perPage,
             setIsLoading,
             setTotalPages,
+            handleError,
             "",
             sort
         );
@@ -75,6 +87,7 @@ export const KarmaVoucher = (props: Props) => {
                 perPage,
                 setIsLoading,
                 setTotalPages,
+                handleError,
                 "",
                 ""
             );
@@ -90,6 +103,7 @@ export const KarmaVoucher = (props: Props) => {
             perPage,
             setIsLoading,
             setTotalPages,
+            handleError,
             search,
             ""
         );
@@ -104,6 +118,7 @@ export const KarmaVoucher = (props: Props) => {
             selectedValue,
             setIsLoading,
             setTotalPages,
+            handleError,
             "",
             ""
         );
@@ -118,6 +133,7 @@ export const KarmaVoucher = (props: Props) => {
                 perPage,
                 setIsLoading,
                 setTotalPages,
+                handleError,
                 "",
                 `-${column}`
             );
@@ -129,6 +145,7 @@ export const KarmaVoucher = (props: Props) => {
                 perPage,
                 setIsLoading,
                 setTotalPages,
+                handleError,
                 "",
                 column
             );
@@ -136,7 +153,6 @@ export const KarmaVoucher = (props: Props) => {
 
         //console.log(`Icon clicked for column: ${column}`);
     };
-    console.log(data);
     return (
         <>
             <div
