@@ -743,6 +743,7 @@
     text-align: center;
     background-color: #f3f3f4;
     color: #665c7a;
+    margin-top: 20px;  
 }
 
 .LearningCircleCreateMain button {
@@ -765,9 +766,12 @@
         display: flex;
         flex-direction: column;
     }
+    .LearningCircleCreateForm input{
+        margin: 0;
+    }
 }
 
-@media (width<820px) {
+@media (width<860px) {
     .LearningCircleCreateHeading div b {
         font-size: 1.5rem;
     }
