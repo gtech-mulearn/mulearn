@@ -73,7 +73,6 @@ const CampusStudentList = (props: Props) => {
             getCampusDetails(setCampusData);
             (async () => {
                 try {
-                    getStudentLevel;
                     setBarData([["", "Karma"]].concat(await getWeeklyKarma()));
                     setPieData(
                         [["Level", "UsersPerLevel"]].concat(

@@ -95,10 +95,8 @@ const BulkImport = ({ path, onUpload, onError, ...rest }: Props) => {
             );
             const formData = new FormData();
             formData.append("voucher_log", renamedFile);
-            console.log(Array.from(formData), renamedFile);
             bulkImport(formData, path).then(response => {
                 if (response.status && response.status !== 200) {
-                    console.log(response);
                     if (onError) {
                         onError(response);
                     }

@@ -166,7 +166,6 @@ function ZonalDashboard() {
             return dashboardRoutes.zonalCampusData;
         }
     };
-
     return (
         <>
             <div className={graphStyles.graphs}>
