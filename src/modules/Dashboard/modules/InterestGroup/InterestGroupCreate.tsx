@@ -105,10 +105,10 @@ const InterestGroupCreate = (props: Props) => {
                         />
 
                         <PowerfulButton
-                            text={"Submit"}
-                            type={"submit"}
-                            margin="23px 0 0 0"
-                        ></PowerfulButton>
+                            children="Submit"
+                            type="submit"
+                            style={{margin:"23px 0 0 0"}}
+                        />
                     </Form>
                 </Formik>
             </div>

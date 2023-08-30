@@ -91,9 +91,10 @@ export const HackathonDetails = (props: Props) => {
                             )}
                         </h4>
                     </div>
-                    <PowerfulButton text={"Apply Now"} onButtonClick={() => {
-                        navigate(`/dashboard/hackathon/apply/${data?.id}`)
-                    }}/>
+                    <PowerfulButton 
+                        onClick={() => navigate(`/dashboard/hackathon/apply/${data?.id}`)}
+                        children="Apply Now"
+                    />
                     
                 </div>
                 {data?.website && (

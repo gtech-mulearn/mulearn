@@ -1,300 +1,328 @@
 .connectDiscord {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  width: 100%;
-  padding: 0 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    padding: 0 3rem;
 }
 
 .connect_discord_container {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-evenly;
-  background: #fff;
-  /* border: 1px solid #dde2e5; */
-  border-radius: 20px;
-  overflow: hidden;
-  font-weight: 500;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    background: #fff;
+    /* border: 1px solid #dde2e5; */
+    border-radius: 20px;
+    overflow: hidden;
+    font-weight: 500;
 }
 
 .connect_discord_container .content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: .5rem;
-  margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
 }
 
 .connect_discord_container h1 {
-  font-size: 35px;
-  font-weight: 700;
+    font-size: 35px;
+    font-weight: 700;
 }
 
 .connect_discord_container .content .muid_and_btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .content_tagline {
-  max-width: 30rem;
+    max-width: 30rem;
 }
 
 .connect_discord_container .muid_and_btn p {
-  font-size: 15px;
-  display: flex;
-  background: #ccdbf0;
-  padding: 10px 20px;
-  border-radius: 10px;
-  align-items: center;
-  margin: 10px;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
+    font-size: 15px;
+    display: flex;
+    background: #ccdbf0;
+    padding: 10px 20px;
+    border-radius: 10px;
+    align-items: center;
+    margin: 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
 }
 
 .connect_discord_container .muid_and_btn p:hover {
-  background: #a9c8f3;
+    background: #a9c8f3;
 }
 
 .connect_discord_container .muid_and_btn button {
-  background: #456FF6;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
-  display: flex;
-  margin: 10px;
-  align-items: center;
-  transition: 0.3s ease-in-out;
+    background: #456ff6;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: flex;
+    margin: 10px;
+    align-items: center;
+    transition: 0.3s ease-in-out;
 }
 
 .connect_discord_container .muid_and_btn button:hover {
-  background: #003277;
+    background: #003277;
 }
 
 @media (min-width: 35rem) {
-  .fb_image {
-    max-width: 30rem;
-  }
+    .fb_image {
+        max-width: 30rem;
+    }
 }
 
 /* onboarding flow */
 .onboarding_flow_container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .onboarding_flow_container .content {
-  width: 100%;
+    width: 100%;
 }
 
 .onboarding_flow_container .content h1 {
-  font-size: 30px;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
 }
 
 .onboarding_flow_container .content .onboarding_flow {
-  position: relative;
-  height: 90ch;
+    position: relative;
+    height: 90ch;
 }
 
 .onboarding_flow_container .content .onboarding_flow .lines {
-  position: absolute;
-  height: 740px;
-  width: 100%;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  background-image: url(../assets/images/lines.webp);
+    position: absolute;
+    height: 740px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-image: url(../assets/images/lines.webp);
 }
 
 .onboarding_flow_container .content .onboarding_flow div {
-  position: absolute;
-  height: 200px;
-  width: 35%;
-  background-color: #d9d9d9;
-  display: flex;
-  justify-content: center;
-  background-position: center;
-  background-size: cover;
-  border-radius: 10px;
-  transition: 0.3s ease-in-out;
-  align-items: center;
+    position: absolute;
+    height: 200px;
+    width: 35%;
+    background-color: #d9d9d9;
+    display: flex;
+    justify-content: center;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
+    align-items: center;
 }
 
 .onboarding_flow_container .content .onboarding_flow div p:nth-child(1) {
-  color: white;
-  font-weight: 500;
-  font-size: 0.9rem;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  width: 100%;
-  border-radius: 10px;
-  display: flex;
-  height: 100%;
-  margin: auto;
-  transition: 0.5s ease-in-out;
-  opacity: 0;
-  align-items: center;
-  padding: 10px;
-  cursor: default;
+    color: white;
+    font-weight: 500;
+    font-size: 0.9rem;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    height: 100%;
+    margin: auto;
+    transition: 0.5s ease-in-out;
+    opacity: 0;
+    align-items: center;
+    padding: 10px;
+    cursor: default;
 }
 
 .onboarding_flow_container .content .onboarding_flow div:hover {
-  transform: translateY(-5px);
+    transform: translateY(-5px);
 }
 
 .onboarding_flow_container .content .onboarding_flow div:hover p:nth-child(1) {
-  opacity: 1;
+    opacity: 1;
 }
 
 .onboarding_flow_container .content .onboarding_flow div p:nth-child(2) {
-  position: absolute;
-  bottom: -50px;
-  font-size: 25px;
-  font-weight: 600;
-  width: 450px;
-  color: #456FF6;
-  display: block;
+    position: absolute;
+    bottom: -50px;
+    font-size: 25px;
+    font-weight: 600;
+    width: 450px;
+    color: #456ff6;
+    display: block;
 }
 
 .onboarding_flow_container .content .onboarding_flow .box .p {
-  bottom: -80px;
+    bottom: -80px;
 }
 
 .onboarding_flow_container .content .onboarding_flow .box {
-  left: 0;
-  top: 30px;
-  background-image: url(../assets/images/onboardingflow1.webp);
+    left: 0;
+    top: 30px;
+    background-image: url(../assets/images/onboardingflow1.webp);
 }
 
 .onboarding_flow_container .content .onboarding_flow .box2 {
-  right: 50px;
-  top: 35%;
-  background-image: url(../assets/images/onboardingflow2.webp);
+    right: 50px;
+    top: 35%;
+    background-image: url(../assets/images/onboardingflow2.webp);
 }
 
 .onboarding_flow_container .content .onboarding_flow .box3 {
-  left: 0px;
-  top: 65%;
-  background-image: url(../assets/images/onboardingflow3.webp);
+    left: 0px;
+    top: 65%;
+
+    /* technique to get blured background */
+
+    background-image: url(../assets/images/onboardingflow3.webp);
+
+    position: relative;
+}
+
+.onboarding_flow_container .content .onboarding_flow .box3::before {
+    content: "";
+    position: absolute;
+
+    backdrop-filter: blur(1px);
+    background-position: center;
+    background-size: 95%;
+    background-repeat: no-repeat;
+    background-image: url(../assets/images/onboardingflow3.webp);
+    width: 100%;
+    height: 100%;
 }
 
 .onboarding_flow_container .content .onboarding_flow .box4 {
-  right: 50px;
-  top: 101%;
-  background-image: url(../assets/images/onboardingflow4.webp);
+    right: 50px;
+    top: 101%;
+    background-image: url(../assets/images/onboardingflow4.webp);
 }
 
 @media (width< 1230px) {
-  .onboarding_flow_container .content .onboarding_flow .lines {
-    height: 700px;
-  }
+    .onboarding_flow_container .content .onboarding_flow .lines {
+        height: 700px;
+    }
 
-  .onboarding_flow_container .content .onboarding_flow .lines div .p {
-    bottom: -50px;
-    font-size: 15px;
-    width: 200px;
-  }
+    .onboarding_flow_container .content .onboarding_flow .lines div .p {
+        bottom: -50px;
+        font-size: 15px;
+        width: 200px;
+    }
 
-  .onboarding_flow_container .content .onboarding_flow .box4 {
-    top: 90%;
-  }
+    .onboarding_flow_container .content .onboarding_flow .box4 {
+        top: 90%;
+    }
 }
 
-@media(width <=820px) {
-  .connectDiscord,
-  .connect_discord_container,
-  .onboarding_flow_container {
-    padding: 0 .5rem;
-  }
+@media (width <=820px) {
+    .connectDiscord,
+    .connect_discord_container,
+    .onboarding_flow_container {
+        padding: 0 0.5rem;
+    }
 
-  .connect_discord_container h1 {
-    font-size: 25px;
-  }
+    .connect_discord_container h1 {
+        font-size: 25px;
+    }
 
-  .connect_discord_container .muid_and_btn p {
-    font-size: 15px;
-  }
+    .connect_discord_container .muid_and_btn p {
+        font-size: 15px;
+    }
 
-  .onboarding_flow_container .content .onboarding_flow {
-    height: 40ch;
-  }
+    .onboarding_flow_container .content .onboarding_flow {
+        height: 40ch;
+    }
 
-  .onboarding_flow_container .content .onboarding_flow .lines {
-    height: 95vw;
-  }
+    .onboarding_flow_container .content .onboarding_flow .lines {
+        height: 95vw;
+    }
 
-  .onboarding_flow_container .content .onboarding_flow .lines div {
-    height: 20vw;
-    width: 30vw;
-  }
+    .onboarding_flow_container .content .onboarding_flow .lines div {
+        height: 20vw;
+        width: 30vw;
+    }
 
-  .onboarding_flow_container .content .onboarding_flow .lines div .p {
-    bottom: -20px;
-    font-size: 10px;
-    width: 160px;
-  }
+    .onboarding_flow_container .content .onboarding_flow .lines div .p {
+        bottom: -20px;
+        font-size: 10px;
+        width: 160px;
+    }
 
-  .onboarding_flow_container .content .onboarding_flow .lines .box .p {
-    bottom: -35px;
-  }
+    .onboarding_flow_container .content .onboarding_flow .lines .box .p {
+        bottom: -35px;
+    }
 
-  .onboarding_flow_container .content .onboarding_flow .box2 {
-    right: 0px;
-  }
+    .onboarding_flow_container .content .onboarding_flow .box2 {
+        right: 0px;
+    }
 
-  .onboarding_flow_container .content .onboarding_flow .box4 {
-    top: 93%;
-  }
+    .onboarding_flow_container .content .onboarding_flow .box4 {
+        top: 93%;
+    }
 
-  .onboarding_flow_container .content .onboarding_flow .lines div p:nth-child(1) {
-    font-size: .5rem;
-  }
+    .onboarding_flow_container
+        .content
+        .onboarding_flow
+        .lines
+        div
+        p:nth-child(1) {
+        font-size: 0.5rem;
+    }
 }
 
-@media(width < 320px) {
-  .connect_discord_container h1 {
-    font-size: 16px;
-  }
+@media (width < 320px) {
+    .connect_discord_container h1 {
+        font-size: 16px;
+    }
 
-  .onboarding_flow_container .content h1 {
-    font-size: 1.3rem;
-  }
+    .onboarding_flow_container .content h1 {
+        font-size: 1.3rem;
+    }
 
-  .connect_discord_container p {
-    font-size: 9px;
-  }
+    .connect_discord_container p {
+        font-size: 9px;
+    }
 
-  .connect_discord_container .content .muid_and_btn p,
-  .connect_discord_container .content .muid_and_btn button {
-    font-size: 10px;
-  }
+    .connect_discord_container .content .muid_and_btn p,
+    .connect_discord_container .content .muid_and_btn button {
+        font-size: 10px;
+    }
 
-  .onboarding_flow_container .content .onboarding_flow .lines div .p {
-    bottom: -25px;
-    font-size: 8px;
-    width: 100px;
-  }
+    .onboarding_flow_container .content .onboarding_flow .lines div .p {
+        bottom: -25px;
+        font-size: 8px;
+        width: 100px;
+    }
 
-  .onboarding_flow_container .content .onboarding_flow .lines div p:nth-child(1) {
-    font-size: .4rem;
-  }
+    .onboarding_flow_container
+        .content
+        .onboarding_flow
+        .lines
+        div
+        p:nth-child(1) {
+        font-size: 0.4rem;
+    }
 }
 
 .spinner_container {
-  min-height: 100dvh;
-  min-width: 100vw;
+    min-height: 100dvh;
+    min-width: 100vw;
 }
 
 .spinner_container .spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

@@ -1,4 +1,7 @@
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import THead from "@/MuLearnComponents/Table/THead";
 import Table from "@/MuLearnComponents/Table/Table";
@@ -9,11 +12,11 @@ import { useEffect, useRef, useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import styles from "../InterestGroup/InterestGroup.module.css";
-import { deleteTask, getTasks } from "./TaskApis";
+import { getKarmaVoucher } from "./service/api";
 
 type Props = {};
 
-export const Tasks = (props: Props) => {
+export const KarmaVoucher = (props: Props) => {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -45,7 +48,7 @@ export const Tasks = (props: Props) => {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getTasks(
+        getKarmaVoucher(
             setData,
             nextPage,
             perPage,
@@ -59,7 +62,7 @@ export const Tasks = (props: Props) => {
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getTasks(
+        getKarmaVoucher(
             setData,
             prevPage,
             perPage,
@@ -72,44 +75,72 @@ export const Tasks = (props: Props) => {
 
     useEffect(() => {
         if (firstFetch.current) {
-            getTasks(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
+            getKarmaVoucher(
+                setData,
+                1,
+                perPage,
+                setIsLoading,
+                setTotalPages,
+                "",
+                ""
+            );
         }
         firstFetch.current = false;
     }, [data]);
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getTasks(setData, 1, perPage, setIsLoading, setTotalPages, search, "");
+        getKarmaVoucher(
+            setData,
+            1,
+            perPage,
+            setIsLoading,
+            setTotalPages,
+            search,
+            ""
+        );
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getTasks(setData, 1, selectedValue, setIsLoading, setTotalPages, "", "");
+        getKarmaVoucher(
+            setData,
+            1,
+            selectedValue,
+            setIsLoading,
+            setTotalPages,
+            "",
+            ""
+        );
     };
 
     const handleIconClick = (column: string) => {
         if (sort === column) {
             setSort(`-${column}`);
-            getTasks(setData, 1, perPage, setIsLoading, setTotalPages, "", `-${column}`);
+            getKarmaVoucher(
+                setData,
+                1,
+                perPage,
+                setIsLoading,
+                setTotalPages,
+                "",
+                `-${column}`
+            );
         } else {
             setSort(column);
-            getTasks(setData, 1, perPage, setIsLoading, setTotalPages, "", column);
+            getKarmaVoucher(
+                setData,
+                1,
+                perPage,
+                setIsLoading,
+                setTotalPages,
+                "",
+                column
+            );
         }
 
         //console.log(`Icon clicked for column: ${column}`);
-    };
-
-    const handleEdit = (id: string | number | boolean) => {
-        navigate(`/dashboard/tasks/edit/${id}`);
-    };
-
-    const handleDelete = (id: string | undefined) => {
-        deleteTask(id, toast);
-    };
-
-    const handleCreate = () => {
-        navigate("/dashboard/tasks/create");
     };
 
     return (
@@ -120,19 +151,16 @@ export const Tasks = (props: Props) => {
                     gap: "15px"
                 }}
             >
-
+                {/* Not Ready yet 
                 <PowerfulButton
                     variant="secondary"
-                    onClick={() => navigate("/dashboard/tasks/bulk-import")}>
+                    onClick={() =>
+                        navigate("/dashboard/karma-voucher/bulk-import")
+                    }
+                >
                     <AiOutlinePlusCircle />
                     Bulk Import
-                </PowerfulButton>
-
-                <PowerfulButton
-                    onClick={handleCreate}>
-                    <AiOutlinePlusCircle />
-                    Create
-                </PowerfulButton>
+                </PowerfulButton> */}
             </div>
 
             {data && (
@@ -140,7 +168,7 @@ export const Tasks = (props: Props) => {
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
-                        CSV={dashboardRoutes.getTasksData + "csv/"}
+                        CSV={dashboardRoutes.getKarmaVoucher + "import/"}
                     />
                     <Table
                         rows={data}
@@ -149,9 +177,7 @@ export const Tasks = (props: Props) => {
                         perPage={perPage}
                         columnOrder={columnOrder}
                         id={["id"]}
-                        onEditClick={handleEdit}
                         modalTypeContent="error"
-                        onDeleteClick={handleDelete}
                         modalDeleteContent="Are you sure you want to delete ?"
                     >
                         <THead
@@ -159,17 +185,19 @@ export const Tasks = (props: Props) => {
                             onIconClick={handleIconClick}
                         />
                         <div>
-                            {!isLoading &&
+                            {!isLoading && (
                                 <Pagination
                                     currentPage={currentPage}
                                     totalPages={totalPages}
                                     margin="10px 0"
                                     handleNextClick={handleNextClick}
-                                    handlePreviousClick={handlePreviousClick} onSearchText={handleSearch}
+                                    handlePreviousClick={handlePreviousClick}
+                                    onSearchText={handleSearch}
                                     onPerPageNumber={handlePerPageNumber}
                                     perPage={perPage}
                                     setPerPage={setPerPage}
-                                />}
+                                />
+                            )}
                         </div>
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>

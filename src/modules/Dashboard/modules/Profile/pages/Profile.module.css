@@ -10,6 +10,7 @@
   text-align: left;
   padding-bottom: 40px;
   margin-top: -40px;
+  min-height: calc(100dvh + 100px);
   /* overflow-x: hidden; */
   /* left: 20%; */
   background-color: #EEF2FF;
