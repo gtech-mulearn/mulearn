@@ -2,34 +2,32 @@
     margin-top: 50px;
     width: 100%;
     height: 100vh;
-    
+
     display: grid;
     place-items: center;
 
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1;    
+    z-index: 1;
 
-    backdrop-filter: blur(.1rem);
+    backdrop-filter: blur(0.1rem);
     overscroll-behavior: contain;
 
     color: black;
-
 }
 .Modal .Container {
     width: min(80%, 500px);
     background-color: white;
 
     border-radius: 1rem;
-    box-shadow: 10px 10px 50px -5px rgba(0,0,0,0.27);
+    box-shadow: 10px 10px 50px -5px rgba(0, 0, 0, 0.27);
 
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2rem;
-  }
-
+}
 
 .Modal :is(.CrossIcon, .TickIcon) {
     width: 56px;
@@ -38,68 +36,66 @@
     padding: 10px;
     align-items: center;
     border-radius: 50%;
-  }
+}
 
-.Modal .TickIcon{
+.Modal .TickIcon {
     border: 8px solid #e8fcef;
     background: var(--success-100, #d1fadf);
 }
-.Modal .CrossIcon{
+.Modal .CrossIcon {
     border: 8px solid #f1cdcd;
     background: var(--success-100, #f6afaf);
 }
 
-.Modal :is(h2,p){
-    all:revert;
+.Modal :is(h2, p) {
+    all: revert;
     margin: 0px;
 }
 
-.Modal .Form{
+.Modal .Form {
     width: 100%;
 }
 
-.Modal input{
+.Modal input {
     margin: 0;
 }
 
-.Modal .ButtonContainer{
+.Modal .ButtonContainer {
     display: flex;
     justify-content: space-evenly;
     padding-top: 10px;
 }
 
-.Modal .ButtonContainer button{
-    width: auto;
+.Modal .ButtonContainer button {
     display: flex;
     justify-content: center;
 }
 
 .Modal .Decline {
-	background-color: var(--InputDefaultBackground);
-	color: var(--Primary);
+    background-color: var(--InputDefaultBackground);
+    color: var(--Primary);
 }
 
 .Modal .Decline:hover {
-	background-color: lightgray;
+    background-color: lightgray;
     box-shadow: 0 5px 15px -10px rgba(208, 92, 92, 0.6);
     transform: translateY(-3px);
 }
 
 .Modal .Confirm {
-	background-color: var(--Primary);
-	color: var(--White);
+    background-color: var(--Primary);
+    color: var(--White);
 }
 
 .Modal .Confirm:hover {
-	background-color: var(--Blue800);
+    background-color: var(--Blue800);
     box-shadow: 0 10px 20px -10px rgba(62, 165, 255, 0.6);
     transform: translateY(-5px);
 }
 
-
-.userList{
-	display: flex;
-	flex-direction: column;
+.userList {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
     margin: 10px 0px;
 
@@ -107,19 +103,18 @@
     overflow: auto;
 }
 
-.userList li{
-    padding: .5rem 1rem ;
+.userList li {
+    padding: 0.5rem 1rem;
     display: flex;
     justify-content: space-between;
-
 }
 
-.userList li:nth-of-type(odd){
+.userList li:nth-of-type(odd) {
     background-color: var(--tableRowColor);
 }
 
-.note{
-    color:gray;
+.note {
+    color: gray;
     font-size: smaller;
     display: block;
     height: 0;
