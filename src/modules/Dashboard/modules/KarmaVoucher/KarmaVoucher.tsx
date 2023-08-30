@@ -28,17 +28,11 @@ export const KarmaVoucher = (props: Props) => {
     const toast = useToast();
 
     const columnOrder: ColOrder[] = [
-        { column: "title", Label: "Title", isSortable: true },
-        { column: "hashtag", Label: "Hashtag", isSortable: false },
-        { column: "org", Label: "Organization", isSortable: false },
-        { column: "active", Label: "Active", isSortable: false },
+        { column: "task", Label: "Task", isSortable: true },
         { column: "karma", Label: "Karma", isSortable: true },
-        { column: "usage_count", Label: "Usage Count", isSortable: false },
-        {
-            column: "variable_karma",
-            Label: "Variable Karma",
-            isSortable: false
-        },
+        { column: "claimed", Label: "Claimed", isSortable: true },
+        { column: "month", Label: "Month", isSortable: true },
+        { column: "updated_by", Label: "Updated By", isSortable: true },
         { column: "updated_by", Label: "Updated By", isSortable: true },
         { column: "updated_at", Label: "Updated On", isSortable: true },
         { column: "created_by", Label: "Created By", isSortable: false },
@@ -142,7 +136,7 @@ export const KarmaVoucher = (props: Props) => {
 
         //console.log(`Icon clicked for column: ${column}`);
     };
-
+    console.log(data);
     return (
         <>
             <div
@@ -151,7 +145,6 @@ export const KarmaVoucher = (props: Props) => {
                     gap: "15px"
                 }}
             >
-                {/* Not Ready yet 
                 <PowerfulButton
                     variant="secondary"
                     onClick={() =>
@@ -160,7 +153,7 @@ export const KarmaVoucher = (props: Props) => {
                 >
                     <AiOutlinePlusCircle />
                     Bulk Import
-                </PowerfulButton> */}
+                </PowerfulButton>
             </div>
 
             {data && (
