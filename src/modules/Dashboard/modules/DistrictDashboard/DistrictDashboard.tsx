@@ -191,6 +191,7 @@ function DistrictDashboard() {
                     <h2>Top 3 Campus</h2>
                     <BarChart
                         data={barData}
+                        ylabel="Karma"
                         addOptions={{
                             legend: { position: "none" },
                             colors: ["#91ABFF"]

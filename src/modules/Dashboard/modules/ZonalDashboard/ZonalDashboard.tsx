@@ -173,6 +173,7 @@ function ZonalDashboard() {
                     <h2>Top 3 Districts</h2>
                     <BarChart
                         data={barData}
+                        ylabel="Karma"
                         addOptions={{
                             legend: { position: "none" },
                             colors: ["#91ABFF"]
