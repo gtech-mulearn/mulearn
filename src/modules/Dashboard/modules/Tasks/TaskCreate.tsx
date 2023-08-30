@@ -45,8 +45,7 @@ const TaskCreate = (props: Props) => {
             .positive("Karma should be a positive value")
             .min(10, "Needs to be at least 2 digits.")
             .max(9999, "Should not exceed 4 digits")
-            .truncate()
-            .required("Karma is required"),
+            .truncate(),
         usage_count: Yup.number()
             .truncate()
             .required("Mention the number of uses"),
@@ -56,7 +55,7 @@ const TaskCreate = (props: Props) => {
         channel_id: Yup.string().required("Select a Channel"),
         type_id: Yup.string().required("Select a Type"),
         level_id: Yup.string(),
-        ig_id: Yup.string().required("Select an Interest Group"),
+        ig_id: Yup.string(),
         organization_id: Yup.string()
     });
     if(!uuidData)
