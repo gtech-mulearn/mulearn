@@ -1,6 +1,6 @@
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import THead from "@/MuLearnComponents/Table/THead";
-import Table from "@/MuLearnComponents/Table/Table";
+import Table, { Data } from "@/MuLearnComponents/Table/Table";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
@@ -14,7 +14,7 @@ import { BarChart, ColumnChart } from "../CampusStudentList/Components/Graphs";
 import graphStyles from "../CampusStudentList/pages/CampusStudentList.module.css";
 
 function ZonalDashboard() {
-    const [data, setData] = useState<any[]>([]);
+    const [data, setData] = useState<Data[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(5);
@@ -111,20 +111,20 @@ function ZonalDashboard() {
         );
     };
 
-    const handleTabClick = (tab: string) => {
-        if (tab === "Student management") {
-            setColumns(columnsStudent);
-            getzonaldashboard(tab, setData, 1, perPage, setTotalPages, "", "");
-        } else if (tab === "Campus management") {
-            setColumns(columnsCampus);
-            getzonaldashboard(tab, setData, 1, perPage, setTotalPages, "", "");
-        } else {
-            alert("Error to load Table Headers");
-        }
-        setCurrentPage(1);
-        setActiveTab(tab);
-        setPopupStatus(false);
-    };
+    // const handleTabClick = (tab: string) => {
+    //     if (tab === "Student management") {
+    //         setColumns(columnsStudent);
+    //         getzonaldashboard(tab, setData, 1, perPage, setTotalPages, "", "");
+    //     } else if (tab === "Campus management") {
+    //         setColumns(columnsCampus);
+    //         getzonaldashboard(tab, setData, 1, perPage, setTotalPages, "", "");
+    //     } else {
+    //         alert("Error to load Table Headers");
+    //     }
+    //     setCurrentPage(1);
+    //     setActiveTab(tab);
+    //     setPopupStatus(false);
+    // };
 
     const handleIconClick = (column: string) => {
         if (sort === column) {
@@ -201,7 +201,7 @@ function ZonalDashboard() {
                     />
                 </div>
             </div>
-            <TableTopTab active={activeTab} onTabClick={handleTabClick} />
+            {/* <TableTopTab active={activeTab} onTabClick={handleTabClick} /> */}
 
             {data && (
                 <>
