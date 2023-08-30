@@ -178,21 +178,49 @@ type Props = {
     "font-size"?: string;
     borderColor?: string;
     icon?: ReactJSXElement;
-    isLoading?: boolean; // show loading spinner if neccessary.
+    isLoading?: boolean; // show loading spinner if necessary.
     disabled?: boolean;
 };
 
+type Variants =
+    | "primary"
+    | "secondary"
+    | "ghost"
+    | "outline"
+    | "destructive"
+    | "success"
+    | "link"
+    | "draft";
 
-type Variants = "primary" | "secondary" | "ghost" | "outline" | "destructive" | "success" | "link" | "draft"
+type ButtonProps = ({
+    children,
+    className,
+    variant,
+    style,
+    ...props
+}: {
+    children: ReactNode;
+    className?: string;
+    variant?: Variants;
+    style?: React.CSSProperties;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>) => ReactJSXElement;
 
-type ButtonProps = ({ children, className, variant, style, ...props }:
-    {children: ReactNode, className?:string, variant?:Variants, style?: React.CSSProperties} & React.ButtonHTMLAttributes<HTMLButtonElement>) => ReactJSXElement
+export const PowerfulButton: ButtonProps = ({
+    children,
+    className = "",
+    variant = "primary",
+    style,
+    ...props
+}) => {
+    const variantName = variant ? styles[`${variant}-btn`] : "";
 
-export const PowerfulButton:ButtonProps = ({ children, className = "", variant = "primary", style, ...props }) => {
-    const variantName = variant ? styles[`${variant}-btn`] : ""
-
-    return <button className={styles["common-btn"] + "  " + variantName} 
-                             {...props} style={style}>
-        {children}
-    </button>
-}
+    return (
+        <button
+            className={styles["common-btn"] + "  " + variantName}
+            {...props}
+            style={style}
+        >
+            {children}
+        </button>
+    );
+};

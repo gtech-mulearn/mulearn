@@ -80,7 +80,7 @@ const HackathonCard = ({
                     <div className={styles.frame4}>
                         <div className={styles.mode}>
                             <div className={styles.textWrapperSmall}>
-                                {/* coverting first letter to UpperCase */}
+                                {/* converting first letter to UpperCase */}
                                 {hackathon.type.charAt(0).toUpperCase() +
                                     hackathon.type.slice(1)}
                             </div>

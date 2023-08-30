@@ -155,13 +155,9 @@
     --rounded-btn: 12px;
     --border-btn: 2px solid;
     --transition-speed: 0.3s;
-    --padding-btn: 16px;
 }
 
 .common-btn {
-    width: 170px;
-    height: 44px;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -170,7 +166,7 @@
     border: var(--border-btn) transparent;
     font-weight: 500;
     font-size: 17px;
-    padding: var(--padding-btn);
+    padding: 6px 15px;
     transition: var(--transition-speed);
 
     &:hover {
