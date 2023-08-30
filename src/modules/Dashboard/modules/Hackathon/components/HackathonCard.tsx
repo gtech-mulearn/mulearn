@@ -97,9 +97,6 @@ const HackathonCard = ({
                     <PowerfulButton
                         children={isDraft ? "Edit Draft" : "Apply Now"}
                         variant={isDraft ? "draft" : "primary"}
-						style={{
-							// padding: "0",
-						}}
                         onClick={() => {
                             navigate(
                                 isDraft
