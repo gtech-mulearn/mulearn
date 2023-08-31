@@ -13,7 +13,7 @@ import { useToast } from "@chakra-ui/react";
 import Modal from "./components/Modal";
 import CollegeLevelsEdit from "./components/CollegeLevelsEdit";
 import CollegeLevelsCreate from "./components/CollegeLevelsCreate";
-import { getCollegeLevels } from "./apis";
+import { deleteCollegeLevels, getCollegeLevels } from "./apis";
 
 function CollegeLevels() {
     const [data, setData] = useState<any[]>([]);
@@ -22,22 +22,20 @@ function CollegeLevels() {
     const [perPage, setPerPage] = useState(100);
     const [sort, setSort] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const navigate = useNavigate();
     const firstFetch = useRef(true);
     //Modal
-    const [currRoleID, setCurrRoleID] = useState("");
-    const [currModal, setCurrModal] = useState<
-        null | "create" | "edit" | "users"
-    >(null);
-    const [roles, setRoles] = useState<any>();
+    const [currModal, setCurrModal] = useState<null | "create" | "edit">(null);
+    const [currOrdId, setCurrOrgId] = useState<string | null>(null);
+
+    const toast = useToast();
     const icons = {
         user: (
-            <div className={modalStyles.TickIcon}>
+            <div className={modalStyles.tickIcon}>
                 <AiOutlineUser width="20" height="20" />
             </div>
         ),
         tick: (
-            <div className={modalStyles.TickIcon}>
+            <div className={modalStyles.tickIcon}>
                 <svg
                     width="20"
                     height="20"
@@ -56,7 +54,7 @@ function CollegeLevels() {
             </div>
         ),
         cross: (
-            <div className={modalStyles.CrossIcon}>
+            <div className={modalStyles.crossIcon}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -75,13 +73,23 @@ function CollegeLevels() {
 
     const columnOrder = [
         // { column: "id", Label: "ID", isSortable: true },
-        { column: "title", Label: "Title", isSortable: true },
-        { column: "description", Label: "Description", isSortable: false },
-        { column: "users_with_role", Label: "Members", isSortable: true },
-        { column: "updated_by", Label: "Updated By", isSortable: true },
+        { column: "org", Label: "College", isSortable: false },
+        { column: "level", Label: "Level", isSortable: false },
+        { column: "updated_by", Label: "Updated By", isSortable: false },
+        { column: "updated_at", Label: "Updated By", isSortable: false },
         { column: "created_by", Label: "Created By", isSortable: false },
-        { column: "created_at", Label: "Created On", isSortable: true }
+        { column: "created_at", Label: "Created On", isSortable: false }
     ];
+
+    const errHandler = (err: any) => {
+        toast({
+            title: "Something went wrong",
+            description: err,
+            status: "error",
+            duration: 3000,
+            isClosable: true
+        });
+    };
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -95,29 +103,35 @@ function CollegeLevels() {
 
     useEffect(() => {
         if (firstFetch.current) {
-            getCollegeLevels();
+            getCollegeLevels(
+                {
+                    setData: setData,
+                    page: 1,
+                    selectedValue: perPage,
+                    setIsLoading: setIsLoading,
+                    setTotalPages: setTotalPages,
+                    search: "",
+                    sortID: ""
+                },
+                errHandler
+            );
         }
 
         firstFetch.current = false;
     }, []);
-    useEffect(() => {
-        //refetch data when value is edited or created
-        if (currModal === null && !firstFetch) {
-            //refresh table when modal closes
-            //delay fetch so that updated table is fetched
-        }
-    }, [currModal]);
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
     };
 
     const handleEdit = (id: string | number | boolean) => {
-        setCurrRoleID(id as string);
+        setCurrOrgId(id.toString());
         setCurrModal("edit");
     };
-    const toast = useToast();
-    const handleDelete = (id: string | undefined) => {};
+
+    const handleDelete = (id: string | undefined) => {
+        deleteCollegeLevels({ org_id: id });
+    };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
@@ -126,9 +140,6 @@ function CollegeLevels() {
 
     const handleCreate = () => {
         setCurrModal("create");
-    };
-    const handleUsers = () => {
-        setCurrModal("users");
     };
 
     const handleIconClick = (column: string) => {
@@ -150,26 +161,21 @@ function CollegeLevels() {
                                   header="Assign College Level"
                                   paragraph="Select and assign the level"
                               >
-                                  <CollegeLevelsCreate
-                                      id={currRoleID}
-                                      onClose={setCurrModal}
-                                  />
+                                  <CollegeLevelsCreate onClose={setCurrModal} />
                               </Modal>
                           );
                       if (currModal === "edit")
                           return (
                               <Modal
+                                  size="small"
                                   onClose={setCurrModal}
                                   icon={icons.cross}
-                                  header="Edit Role"
-                                  paragraph="Enter the new values for this role"
+                                  header="Edit College Level"
+                                  paragraph="Select the new level"
                               >
                                   <CollegeLevelsEdit
-                                      id={currRoleID}
                                       onClose={setCurrModal}
-                                      values={roles.map(
-                                          (obj: any) => obj.title
-                                      )}
+                                      org_id={currOrdId!}
                                   />
                               </Modal>
                           );
@@ -190,7 +196,7 @@ function CollegeLevels() {
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
-                        CSV={dashboardRoutes.getRolesList}
+                        // CSV={dashboardRoutes.getRolesList}
                     />
                     <Table
                         isloading={isLoading}
@@ -203,7 +209,7 @@ function CollegeLevels() {
                         onDeleteClick={handleDelete}
                         modalDeleteHeading="Delete"
                         modalTypeContent="error"
-                        modalDeleteContent="Are you sure you want to delete this role ?"
+                        modalDeleteContent="Are you sure you want to delete this college level ?"
                     >
                         <THead
                             columnOrder={columnOrder}
