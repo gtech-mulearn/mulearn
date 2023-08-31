@@ -4,39 +4,67 @@ import styles from "./Modal.module.css";
 import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import * as Yup from "yup";
-import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import FormikReactSelect from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import { createCollegeLevels } from "../apis";
+import { useEffect, useState } from "react";
+
+import {
+    getCountries,
+    getColleges,
+    getDistrict,
+    getState
+} from "../../../../Common/Authentication/services/onboardingApis";
 
 type Props = {
     id: string;
     onClose: any;
-    values: string[];
 };
 
 const CollegeLevelsCreate = (props: Props) => {
     const toast = useToast();
+    const [countrys, setCountrys] = useState([{ value: "", label: "" }]);
+    const [states, setStates] = useState([{ value: "", label: "" }]);
+    const [districts, setDistricts] = useState([{ value: "", label: "" }]);
+    const [colleges, setColleges] = useState([{ value: "", label: "" }]);
+
+    const errorHandler = (err: any) => {
+        toast({
+            title: "Error",
+            description: err,
+            status: "error",
+            duration: 5000,
+            isClosable: true
+        });
+    };
+
+    useEffect(() => {
+        getCountries(errorHandler, setCountrys);
+    }, []);
 
     return (
         <Formik
             initialValues={{
-                title: "",
-                description: ""
-                // acceptedTerms: false, // added for our checkbox
-                // jobType: "" // added for our select
+                org_id: "",
+                level: "",
+                country: "",
+                state: "",
+                district: ""
             }}
             validationSchema={Yup.object({
-                title: Yup.string()
-                    .max(30, "Must be 30 characters or less")
-                    .required("Required"),
-
-                description: Yup.string()
-                    .max(30, "Must be 30 characters or less")
-                    .required("Required")
+                country: Yup.string().required("Required"),
+                state: Yup.string().required("Required"),
+                district: Yup.string().required("Required"),
+                org_id: Yup.string().required("Required"),
+                level: Yup.number().required("Required")
             })}
             onSubmit={values => {
                 (async () => {
-                    console.log(values);
+                    createCollegeLevels({
+                        org_id: values.org_id,
+                        level: values.level
+                    });
                     toast({
-                        title: "Role created",
+                        title: "College level created",
                         status: "success",
                         duration: 3000,
                         isClosable: true
@@ -46,34 +74,77 @@ const CollegeLevelsCreate = (props: Props) => {
             }}
         >
             <Form className={styles.Form}>
-                {/* <FormikTextInput
-                    label="Role Name"
-                    name="Role Name"
-                    type="text"
-                    placeholder="Enter a name"
-                /> */}
-                <FormikTextInput
-                    name="title"
-                    type="text"
-                    placeholder="Enter a title"
-                />
-                <FormikTextInput
-                    name="description"
-                    type="text"
-                    placeholder="Enter a description"
-                />
+                <div className={styles.selectContainer}>
+                    <FormikReactSelect
+                        name="country"
+                        label="Country"
+                        options={countrys}
+                        isClearable
+                        isSearchable
+                        addOnChange={(option: any) => {
+                            if (option)
+                                getState(errorHandler, setStates, {
+                                    country: option.value
+                                });
+                            else {
+                                setStates([]);
+                                setDistricts([]);
+                            }
+                        }}
+                    />
+                    <FormikReactSelect
+                        name="state"
+                        label="State"
+                        options={states}
+                        isClearable
+                        isSearchable
+                        addOnChange={(option: any) => {
+                            if (option)
+                                getDistrict(errorHandler, setDistricts, {
+                                    state: option.value
+                                });
+                            else {
+                                setStates([]);
+                                setDistricts([]);
+                            }
+                        }}
+                    />
+                    <FormikReactSelect
+                        name="district"
+                        label="District"
+                        options={districts}
+                        isClearable
+                        isSearchable
+                        addOnChange={(option: any) => {
+                            if (option)
+                                getColleges(
+                                    () => {},
+                                    setColleges,
+                                    () => {},
+                                    errorHandler,
+                                    { district: option.value }
+                                );
+                        }}
+                    />
+                    <FormikReactSelect
+                        name="org_id"
+                        label="College"
+                        options={colleges}
+                        isClearable
+                        isSearchable
+                    />
+                    <FormikReactSelect
+                        name="level"
+                        label="Level"
+                        options={[1, 2, 3, 4].map(val => ({
+                            label: val.toString(),
+                            value: val
+                        }))}
+                        isClearable
+                        isSearchable
+                    />
+                </div>
 
-                {/* <MySelect label="Job Type" name="jobType">
-                    <option value="">Select a job type</option>
-                    <option value="designer">Designer</option>
-                    <option value="development">Developer</option>
-                    <option value="product">Product Manager</option>
-                    <option value="other">Other</option>
-                </MySelect>
-
-                <MyCheckbox name="acceptedTerms">
-                    I accept the terms and conditions
-                </MyCheckbox> */}
                 <div className={styles.ButtonContainer}>
                     <MuButton
                         className={`${mustyles.btn} ${styles.Decline}`}

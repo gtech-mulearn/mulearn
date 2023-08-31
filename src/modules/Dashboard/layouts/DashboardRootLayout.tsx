@@ -81,13 +81,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-building"></i>
                 },
-                {
-                    url: "/dashboard/college-levels",
-                    title: "College Levels",
-                    hasView: true,
-                    roles: [roles.ADMIN]
-                    // icon: <i className="fi fi-sr-building"></i>
-                },
+                // {
+                //     url: "/dashboard/college-levels",
+                //     title: "College Levels",
+                //     hasView: true,
+                //     roles: [roles.ADMIN]
+                //     // icon: <i className="fi fi-sr-building"></i>
+                // },
                 {
                     url: "/dashboard/tasks",
                     title: "Tasks",

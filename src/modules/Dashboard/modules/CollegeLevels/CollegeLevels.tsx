@@ -13,8 +13,9 @@ import { useToast } from "@chakra-ui/react";
 import Modal from "./components/Modal";
 import CollegeLevelsEdit from "./components/CollegeLevelsEdit";
 import CollegeLevelsCreate from "./components/CollegeLevelsCreate";
+import { getCollegeLevels } from "./apis";
 
-function ManageRoles() {
+function CollegeLevels() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -94,6 +95,7 @@ function ManageRoles() {
 
     useEffect(() => {
         if (firstFetch.current) {
+            getCollegeLevels();
         }
 
         firstFetch.current = false;
@@ -145,15 +147,12 @@ function ManageRoles() {
                               <Modal
                                   onClose={setCurrModal}
                                   icon={icons.tick}
-                                  header="Create Role"
-                                  paragraph="Enter the values for the new role"
+                                  header="Assign College Level"
+                                  paragraph="Select and assign the level"
                               >
                                   <CollegeLevelsCreate
                                       id={currRoleID}
                                       onClose={setCurrModal}
-                                      values={roles.map(
-                                          (obj: any) => obj.title
-                                      )}
                                   />
                               </Modal>
                           );
@@ -233,4 +232,4 @@ function ManageRoles() {
     );
 }
 
-export default ManageRoles;
+export default CollegeLevels;

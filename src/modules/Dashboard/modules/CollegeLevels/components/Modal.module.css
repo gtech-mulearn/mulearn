@@ -92,3 +92,8 @@
     box-shadow: 0 10px 20px -10px rgba(62, 165, 255, 0.6);
     transform: translateY(-5px);
 }
+
+.selectContainer {
+    height: 300px;
+    overflow-y: auto;
+}

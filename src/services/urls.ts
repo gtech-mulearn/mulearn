@@ -111,7 +111,9 @@ export const dashboardRoutes = {
     getDistrictTopCampus: "api/v1/dashboard/district/top-campus/",
     //zonal
     getZonalTopDistrict: "api/v1/dashboard/zonal/top-districts/",
-    getZonalStudentLevels: "api/v1/dashboard/zonal/student-level/"
+    getZonalStudentLevels: "api/v1/dashboard/zonal/student-level/",
+
+    collegeLevels: "api/v1/dashboard/college/"
 } as const;
 
 export const organizationRoutes = {
