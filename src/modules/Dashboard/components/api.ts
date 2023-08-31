@@ -35,6 +35,6 @@ export function clearNotification(id: string) {
 export const requestApproval = (id:string,url: string,created_by: string, is_accepted: boolean) => {
     const lcId=url.split('/')[7],userId=created_by
     const newUrl=`${dashboardRoutes.getCampusLearningCircles}${lcId}/${userId}/`
-    privateGateway.patch(newUrl, { is_accepted: is_accepted ? 1 : 0 })
+    privateGateway.patch(newUrl, { is_accepted: is_accepted ? '1' : '0' })
     clearNotification(id)
 };

@@ -49,13 +49,13 @@ const FindCircle = () => {
                         {lc.map(circle => (
                             <>
                                 <div className={styles.one}>
-                                    <h2>{circle.name}</h2>
-                                    <p>Team Lead: {circle.created_by}</p>
-                                    <p>{circle.ig}</p>
-                                    <p>{circle.member_count} Members</p>
+                                    <h2>{circle?.name}</h2>
+                                    <p>Team Lead: {circle?.created_by}</p>
+                                    <p>{circle?.ig}</p>
+                                    <p>{circle?.member_count} Members</p>
                                     <div className={styles.join}>
                                         <button onClick={() => {
-											joinCircle(circle.id)
+											joinCircle(circle?.id)
                                             
                                             
                                             setTimeout(() => {
