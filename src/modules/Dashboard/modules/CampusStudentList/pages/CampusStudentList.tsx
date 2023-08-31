@@ -208,6 +208,7 @@ const CampusStudentList = (props: Props) => {
                     <h2>Weekly Karma Insights</h2>
                     <BarChart
                         data={barData}
+                        ylabel="Karma"
                         addOptions={{
                             legend: { position: "none" },
                             colors: ["#91ABFF"]

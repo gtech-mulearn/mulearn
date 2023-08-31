@@ -49,11 +49,11 @@ function DistrictDashboard() {
 
             (async () => {
                 try {
-                    setBarData([["", ""]].concat(await getTopCampus()));
+                    setBarData(await getTopCampus());
                     setColData(
                         [
                             [
-                                "Colleges",
+                                "Levels",
                                 "Level 1",
                                 "Level 2",
                                 "Level 3",
@@ -77,13 +77,11 @@ function DistrictDashboard() {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getdistrictdashboard(activeTab, setData, nextPage, perPage);
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getdistrictdashboard(activeTab, setData, prevPage, perPage);
     };
 
     const handleSearch = (search: string) => {
@@ -102,15 +100,6 @@ function DistrictDashboard() {
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getdistrictdashboard(
-            activeTab,
-            setData,
-            1,
-            selectedValue,
-            setTotalPages,
-            "",
-            ""
-        );
     };
 
     const handleTabClick = (tab: string) => {
@@ -146,26 +135,8 @@ function DistrictDashboard() {
     const handleIconClick = (column: string) => {
         if (sort === column) {
             setSort(`-${column}`);
-            getdistrictdashboard(
-                activeTab,
-                setData,
-                1,
-                perPage,
-                setTotalPages,
-                "",
-                sort
-            );
         } else {
             setSort(column);
-            getdistrictdashboard(
-                activeTab,
-                setData,
-                1,
-                perPage,
-                setTotalPages,
-                "",
-                sort
-            );
         }
     };
 
@@ -183,6 +154,19 @@ function DistrictDashboard() {
             return dashboardRoutes.districtCampusData;
         }
     };
+
+    useEffect(() => {
+        getdistrictdashboard(
+            activeTab,
+            setData,
+            1,
+            perPage,
+            setTotalPages,
+            "",
+            sort
+        );
+    }, [sort, currentPage, perPage]);
+
     return (
         <>
             <TableTopTab active={activeTab} onTabClick={handleTabClick} />
@@ -191,6 +175,7 @@ function DistrictDashboard() {
                     <h2>Top 3 Campus</h2>
                     <BarChart
                         data={barData}
+                        ylabel="Karma"
                         addOptions={{
                             legend: { position: "none" },
                             colors: ["#91ABFF"]
@@ -244,7 +229,7 @@ function DistrictDashboard() {
                             handleNextClick={handleNextClick}
                             handlePreviousClick={handlePreviousClick}
                             perPage={perPage}
-                            setPerPage={setPerPage}
+                            setPerPage={handlePerPageNumber as any}
                         />
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>
