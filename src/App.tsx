@@ -171,6 +171,10 @@ const HackathonParticipants = lazy(
         )
 );
 
+const CollegeLevels = lazy(
+    () => import("./modules/Dashboard/modules/CollegeLevels/CollegeLevels")
+);
+
 import { roles } from "./services/types";
 import SecureAuthRoutes from "./services/authCheck";
 
@@ -361,6 +365,15 @@ function App() {
                                 <RoleChecker
                                     roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<Organizations />}
+                                />
+                            )
+                        },
+                        {
+                            path: "college-levels",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    children={<CollegeLevels />}
                                 />
                             )
                         },
