@@ -11,7 +11,6 @@ function DeleteOrganizations() {
     const navigate = useNavigate()
 
     function handleSubmit () {
-        //console.log("Delete")
         deleteOrganization(id,toast)
         navigate('/dashboard/organizations')
     }

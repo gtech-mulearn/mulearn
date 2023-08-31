@@ -1,4 +1,4 @@
-import React, { ReactFragment, ReactNode, useState } from "react";
+import React, { ReactNode, useState } from "react";
 import styles from "./MuButtons.module.css";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import { ClipLoader } from "react-spinners";
@@ -15,11 +15,12 @@ export const MuButton = (props: {
     style?: React.CSSProperties; // button style if wanted
     className?: string; // button class name if wanted
     onClick?: React.MouseEventHandler; // onclick event if wanted
-    onSubmit?:any;
+    onSubmit?: any;
     isLoading?: boolean; // show loading spinner if neccessary.
     disabled?: boolean; //disable the button if needed
     buttonUrl?: string; // for styling purposes
     submit?: boolean; // for styling purposes
+    isMinWidth?: boolean;
 }) => {
     return (
         <button
@@ -33,12 +34,13 @@ export const MuButton = (props: {
                     `${props.buttonUrl}` === window.location.pathname
                         ? "#5570F1"
                         : "",
+                width: props.isMinWidth ? "fit-content" : "",
                 ...props.style
             }}
             onClick={props.onClick}
             onSubmit={props.onSubmit}
             disabled={props.disabled}
-            type={props.type?props.type:'button'}
+            type={props.type ? props.type : "button"}
             //When there are more than two button with type submit
             //pressing enter wont submit the form
             //buttons default to submit if left undefined
@@ -69,7 +71,7 @@ export const MuButtonLight = (props: {
             className={props.className ? props.className : styles.btn_light}
             style={props.style}
             onClick={props.onClick}
-            type={props.type?props.type:'button'}
+            type={props.type ? props.type : "button"}
         >
             {props.icon && <div className={styles.btn_icon}>{props.icon}</div>}
             <p>{props.text}</p>
@@ -173,61 +175,52 @@ type Props = {
     onButtonClick?: any;
     margin?: string;
     padding?: string;
-    "font-size"?: string,
+    "font-size"?: string;
     borderColor?: string;
     icon?: ReactJSXElement;
-    isLoading?: boolean; // show loading spinner if neccessary.
+    isLoading?: boolean; // show loading spinner if necessary.
     disabled?: boolean;
 };
 
-export const PowerfulButton = (props: Props) => {
-    const [isHovered, setIsHovered] = useState(false);
+type Variants =
+    | "primary"
+    | "secondary"
+    | "ghost"
+    | "outline"
+    | "destructive"
+    | "success"
+    | "link"
+    | "draft";
 
-    const handleMouseEnter = () => {
-        setIsHovered(true);
-    };
+type ButtonProps = ({
+    children,
+    className,
+    variant,
+    style,
+    ...props
+}: {
+    children: ReactNode;
+    className?: string;
+    variant?: Variants;
+    style?: React.CSSProperties;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>) => ReactJSXElement;
 
-    const handleMouseLeave = () => {
-        setIsHovered(false);
-    };
+export const PowerfulButton: ButtonProps = ({
+    children,
+    className = "",
+    variant = "primary",
+    style,
+    ...props
+}) => {
+    const variantName = variant ? styles[`${variant}-btn`] : "";
 
-    const style = {
-        backgroundColor: props.backgroundColor || "#456FF6",
-        color: props.color || "#f5f7f9",
-        padding: props.padding || "0.6rem 0.9rem",
-        borderRadius: "10px",
-        border: `2px solid ${props.borderColor || "#456FF6"}`,
-        margin: props.margin || "0",
-        display: "flex",
-        alignItems: "center",
-        gap: "10px",
-        "font-size" : props["font-size"] || "17px",
-        ...(isHovered && {
-            backgroundColor: props.onHoverBackground || "#00204c",
-            color: props.onHoverColor || "#f5f7f9"
-        })
-    };
     return (
-        <div className={styles.powerfullButton}>
-            <button
-                style={style}
-                type={props.type || "button"}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                onClick={props.onButtonClick}
-                disabled={props.disabled}
-            >
-                {props.icon}
-                {" "}
-                {props.text}
-                {props.isLoading && (
-                <ClipLoader
-                    size={20}
-                    color="#ff"
-                    className={styles.btn_loader}
-                />
-            )}
-            </button>
-        </div>
+        <button
+            className={styles["common-btn"] + "  " + variantName}
+            {...props}
+            style={style}
+        >
+            {children}
+        </button>
     );
 };

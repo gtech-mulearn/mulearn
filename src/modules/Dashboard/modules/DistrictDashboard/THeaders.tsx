@@ -1,12 +1,19 @@
+// export const columnsStudent = [
+//     { column: "first_name", Label: "First Name", isSortable: true },
+//     { column: "last_name", Label: "Last Name", isSortable: false },
+//     { column: "email", Label: "Email", isSortable: true },
+//     { column: "mobile", Label: "Mobile No:", isSortable: false },
+//     { column: "mu_id", Label: "Mu_Id", isSortable: false },
+//     { column: "karma", Label: "Karma", isSortable: false },
+//     { column: "rank", Label: "Rank", isSortable: true }
+// ];
 
 export const columnsStudent = [
-    { column: "first_name", Label: "First Name", isSortable: true },
-    { column: "last_name", Label: "Last Name", isSortable: false },
-    { column: "email", Label: "Email", isSortable: true },
-    { column: "mobile", Label: "Mobile No:", isSortable: false },
-    { column: "mu_id", Label: "Mu_Id", isSortable: false },
+    { column: "fullname", Label: "Name", isSortable: true },
+    { column: "muid", Label: "Mu ID", isSortable: false },
     { column: "karma", Label: "Karma", isSortable: false },
-    { column: "rank", Label: "Rank", isSortable: true }
+    { column: "rank", Label: "Rank", isSortable: false },
+    { column: "level", Label: "Level", isSortable: false }
 ];
 
 export const columnsCampus = [
@@ -19,4 +26,3 @@ export const columnsCampus = [
     { column: "active_members", Label: "Active Members", isSortable: false },
     { column: "rank", Label: "Rank", isSortable: false }
 ];
-

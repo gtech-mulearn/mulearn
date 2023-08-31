@@ -48,14 +48,14 @@ const TopNavBar = () => {
                         <div className={styles.menu}>
 
                             {/* <i className="fi fi-sr-settings"></i> */}
-                            <Popover placement="bottom-end">
+                            {/* <Popover placement="bottom-end">
                                 <PopoverTrigger >
                                     <Button {...notificationStyle}>{notificationList.length===0?<VscBell />:<VscBellDot />}</Button>
                                 </PopoverTrigger>
                                 <PopoverContent >
                                     <NotificationTab notificationList={notificationList} setNotificationList={setNotificationList} />
                                 </PopoverContent>
-                            </Popover>
+                            </Popover> */}
                             <div className={styles.profile}>
                                 <img
                                     onClick={() => {

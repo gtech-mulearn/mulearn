@@ -19,9 +19,9 @@ export const authRoutes = {
 } as const;
 export const NotificationRoutes = {
     getNotification: "/api/v1/notification/list/",
-    deleteNotification: 'api/v1/notification/delete/id/',
-    deleteAllNotification: 'api/v1/notification/delete/all/',
-}
+    deleteNotification: "api/v1/notification/delete/id/",
+    deleteAllNotification: "api/v1/notification/delete/all/"
+};
 export const dashboardRoutes = {
     forgetPassword: "/api/v1/dashboard/user/forgot-password/",
     resetPassword: "/api/v1/dashboard/user/reset-password/${token}/",
@@ -46,6 +46,9 @@ export const dashboardRoutes = {
     getTaskChannels: "/api/v1/dashboard/task/channel/",
     getTaskTypes: "/api/v1/dashboard/task/task-types/",
 
+    getKarmaVoucher: "/api/v1/dashboard/karma-voucher/",
+    getKarmaVoucherList: "api/v1/dashboard/karma-voucher/import/",
+
     getShortenUrl: "/api/v1/url-shortener/list/",
     createShortenUrl: "/api/v1/url-shortener/create/",
     editShortenUrl: "/api/v1/url-shortener/edit/${urlId}/",
@@ -62,15 +65,16 @@ export const dashboardRoutes = {
     getUserSuggestion: "/api/v1/dashboard/profile/user-suggestion/",
     getStudentLeaderBoard: "/api/v1/leaderboard/students/",
     getIgDetails: "/api/v1/dashboard/profile/ig-edit/",
+    getSocials: "/api/v1/dashboard/profile/socials/",
 
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
     zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv/",
-    zonalCampusDetails: "/api/v1/dashboard/zonal/campus-details/",
+    zonalCampusDetails: "/api/v1/dashboard/zonal/college-details/",
     zonalCampusData: "/api/v1/dashboard/zonal/campus-details/csv/",
 
     districtStudentDetails: "/api/v1/dashboard/district/student-details/",
     districtStudentData: "/api/v1/dashboard/district/student-details/csv/",
-    districtCampusDetails: "/api/v1/dashboard/district/campus-details/",
+    districtCampusDetails: "/api/v1/dashboard/district/college-details/",
     districtCampusData: "/api/v1/dashboard/district/campus-details/csv/",
 
     getHackathonFormData: "/api/v1/hackathon/list-default-form-fields/",
@@ -95,20 +99,19 @@ export const dashboardRoutes = {
     getAllOrganisations: "/api/v1/hackathon/list-organisations/",
     getAllDistricts: "/api/v1/hackathon/list-districts/",
 
-    createInviteEmail:"/api/v1/dashboard/referral/send-referral/",
+    referredUsersList: "/api/v1/dashboard/referral/",
+    createInviteEmail: "/api/v1/dashboard/referral/send-referral/",
 
     //graphs
     //campus
-    getCampusWeeklyKarma : '/api/v1/dashboard/campus/weekly-karma/',
-    getStudentLevels:'api/v1/dashboard/campus/student-level/',
+    getCampusWeeklyKarma: "/api/v1/dashboard/campus/weekly-karma/",
+    getStudentLevels: "api/v1/dashboard/campus/student-level/",
     //district
-    getDistrictStudentLevels : 'api/v1/dashboard/district/college-level/' ,
-    getDistrictTopCampus : 'api/v1/dashboard/district/top-campus/',
+    getDistrictStudentLevels: "api/v1/dashboard/district/college-level/",
+    getDistrictTopCampus: "api/v1/dashboard/district/top-campus/",
     //zonal
-    getZonalTopDistrict : 'api/v1/dashboard/zonal/top-districts/',
-    getZonalStudentLevels : 'api/v1/dashboard/zonal/student-level/'
-
-
+    getZonalTopDistrict: "api/v1/dashboard/zonal/top-districts/",
+    getZonalStudentLevels: "api/v1/dashboard/zonal/student-level/"
 } as const;
 
 export const organizationRoutes = {
@@ -129,16 +132,16 @@ export const ManageLocationsRoutes = {
     getCountryData: "/api/v1/location/country",
     getStateData: "api/v1/location/${country}/states",
     getZoneData: "api/v1/location/${country}/${state}/zone",
-    getDistrictData: "api/v1/location/${country}/${state}/${zone}/district",
-}
+    getDistrictData: "api/v1/location/${country}/${state}/${zone}/district"
+};
 
 export const KKEMRoutes = {
     userAuth: "/api/v1/integrations/kkem/authorization/",
     userLogin: "/api/v1/integrations/kkem/login/",
-    // This was added because of a build issue, author:@Jovit-Mathew236 please do add the necessary changes 
-    getDWMSDetails:"",
+    // This was added because of a build issue, author:@Jovit-Mathew236 please do add the necessary changes
+    getDWMSDetails: ""
 };
 
 export const PublicRoutes = {
-    getRandomLc: "/api/v1/dashboard/lc/list/",
+    getRandomLc: "/api/v1/dashboard/lc/list/"
 } as const;

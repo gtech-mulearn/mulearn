@@ -65,6 +65,12 @@
 }
 
 
+@media (max-width: 1500px) {
+    .edit_profile_container {
+        left: unset;
+    }
+}
+
 @media (max-width: 768px) {
     .edit_profile_container {
         z-index: 49;

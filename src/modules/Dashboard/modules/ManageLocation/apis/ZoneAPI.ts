@@ -18,7 +18,6 @@ export const getZoneData = async (
         )
         .then(({data})=>data.response)
         .then(({data})=>{
-            console.log(data)
             setData(data.zones)
         })
     } catch (err: unknown) {
@@ -46,9 +45,6 @@ export const postZoneData = async (
             }
         )
         .then(({data})=>data.response)
-        .then(({data})=>{
-            console.log(data)
-        })
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -76,9 +72,6 @@ export const putZoneData = async (
             }
         )
         .then(({data})=>data.response)
-        .then(({data})=>{
-            console.log(data)
-        })
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -105,7 +98,6 @@ export const deleteZoneData = async (
             .replace("${country}",country)
             .replace("${state}",state)
             , requestConfig)
-            .then(({ data }) => console.log(data.message.general[0]))
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

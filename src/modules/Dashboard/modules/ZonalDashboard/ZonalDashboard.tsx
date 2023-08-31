@@ -1,20 +1,20 @@
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import THead from "@/MuLearnComponents/Table/THead";
-import Table from "@/MuLearnComponents/Table/Table";
+import Table, { Data } from "@/MuLearnComponents/Table/Table";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getzonaldashboard,getTopDistrict,getStudentLevels } from "./apis";
+import { getzonaldashboard, getTopDistrict, getStudentLevels } from "./apis";
 import { columnsStudent, columnsCampus } from "./THeaders";
 import TableTopTab from "./TableTopTab";
 import "./ZonalDashboard.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { BarChart, ColumnChart } from "../CampusStudentList/Components/Graphs";
-import graphStyles from "../CampusStudentList/pages/CampusStudentList.module.css"
+import graphStyles from "../CampusStudentList/pages/CampusStudentList.module.css";
 
 function ZonalDashboard() {
-    const [data, setData] = useState<any[]>([]);
+    const [data, setData] = useState<Data[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(5);
@@ -27,8 +27,8 @@ function ZonalDashboard() {
     const [isEdit, setIsEdit] = useState(false);
 
     //graph data
-    const [colData,setColData] = useState<string[][]|null>(null)
-    const [barData,setBarData] = useState<string[][]|null>(null)
+    const [colData, setColData] = useState<string[][] | null>(null);
+    const [barData, setBarData] = useState<string[][] | null>(null);
 
     const navigate = useNavigate();
 
@@ -36,23 +36,29 @@ function ZonalDashboard() {
 
     useEffect(() => {
         if (firstFetch.current) {
-
-            (async()=>{
-                try{
-                    setBarData([['', '']].concat(await getTopDistrict()))
-                    setColData([['Colleges',"Level 1","Level 2","Level 3","Level 4"]].concat(await getStudentLevels()))
-                    
-                }catch(err){
+            (async () => {
+                try {
+                    setBarData(await getTopDistrict());
+                    setColData(
+                        [
+                            [
+                                "Levels",
+                                "Level 1",
+                                "Level 2",
+                                "Level 3",
+                                "Level 4"
+                            ]
+                        ].concat(await getStudentLevels())
+                    );
+                } catch (err) {
                     toast({
                         title: "Data fetch failed",
                         status: "error",
                         duration: 3000,
                         isClosable: true
-                    })
+                    });
                 }
-                
-                
-            })()
+            })();
 
             getzonaldashboard(
                 activeTab,
@@ -69,13 +75,13 @@ function ZonalDashboard() {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getzonaldashboard(activeTab, setData, nextPage, perPage);
+        // getzonaldashboard(activeTab, setData, nextPage, perPage);
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getzonaldashboard(activeTab, setData, prevPage, perPage);
+        // getzonaldashboard(activeTab, setData, prevPage, perPage);
     };
 
     const handleSearch = (search: string) => {
@@ -94,15 +100,6 @@ function ZonalDashboard() {
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getzonaldashboard(
-            activeTab,
-            setData,
-            1,
-            selectedValue,
-            setTotalPages,
-            "",
-            ""
-        );
     };
 
     const handleTabClick = (tab: string) => {
@@ -121,33 +118,25 @@ function ZonalDashboard() {
     };
 
     const handleIconClick = (column: string) => {
+        console.log(sort);
         if (sort === column) {
             setSort(`-${column}`);
-            getzonaldashboard(
-                activeTab,
-                setData,
-                1,
-                perPage,
-                setTotalPages,
-                "",
-                sort
-            );
         } else {
             setSort(column);
-            getzonaldashboard(
-                activeTab,
-                setData,
-                1,
-                perPage,
-                setTotalPages,
-                "",
-                sort
-            );
         }
-
-        //
-        console.log(`Icon clicked for column: ${column}`);
     };
+
+    useEffect(() => {
+        getzonaldashboard(
+            activeTab,
+            setData,
+            1,
+            perPage,
+            setTotalPages,
+            "",
+            sort
+        );
+    }, [sort, currentPage, perPage]);
 
     const CSV = (tabname: string) => {
         if (
@@ -163,17 +152,18 @@ function ZonalDashboard() {
             return dashboardRoutes.zonalCampusData;
         }
     };
-
     return (
         <>
+            <TableTopTab active={activeTab} onTabClick={handleTabClick} />
             <div className={graphStyles.graphs}>
                 <div className={graphStyles.container}>
                     <h2>Top 3 Districts</h2>
                     <BarChart
                         data={barData}
+                        ylabel="Karma"
                         addOptions={{
-                            legend: { position: 'none' },
-                            colors: ['#91ABFF']
+                            legend: { position: "none" },
+                            colors: ["#91ABFF"]
                         }}
                     />
                 </div>
@@ -182,19 +172,23 @@ function ZonalDashboard() {
                     <ColumnChart
                         data={colData}
                         addOptions={{
-                            axes:{
-                                y:{
-                                    0:{label:"No of Students"}
+                            axes: {
+                                y: {
+                                    0: { label: "No of Students" }
                                 }
                             },
-                            pieSliceText: 'value',
-                            colors: ["#3B57B2", "#456FF6", "#A9BEFF", "#6C8FFF", "#A9BEFF"]
+                            pieSliceText: "value",
+                            colors: [
+                                "#3B57B2",
+                                "#456FF6",
+                                "#A9BEFF",
+                                "#6C8FFF",
+                                "#A9BEFF"
+                            ]
                         }}
                     />
                 </div>
-
             </div>
-            <TableTopTab active={activeTab} onTabClick={handleTabClick} />
 
             {data && (
                 <>
@@ -221,7 +215,7 @@ function ZonalDashboard() {
                             handleNextClick={handleNextClick}
                             handlePreviousClick={handlePreviousClick}
                             perPage={perPage}
-                            setPerPage={setPerPage}
+                            setPerPage={handlePerPageNumber as any}
                         />
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>

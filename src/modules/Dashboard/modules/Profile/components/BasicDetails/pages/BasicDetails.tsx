@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import styles from "./BasicDetails.module.css";
-import HeatmapComponent from "../Heatmap/HeatmapComponent";
+import HeatmapComponent from "../../Heatmap/HeatmapComponent";
 import { useToast } from "@chakra-ui/react";
-import { editIgDetails, getAllIg, getIgDetails } from "./services/api";
+import { editIgDetails, getAllIg, getIgDetails } from "../services/api";
 import { useParams } from "react-router-dom";
 type Props = {
     userProfile: any;
@@ -12,14 +12,18 @@ const BasicDetails = (props: Props) => {
     const toast = useToast();
     const [editIg, setEditIg] = useState(false);
     const [allIg, setAllIg] = useState<any>([]);
-    const [ig, setIg] = useState<any>([]);
-    // console.log( );
+
+    const [ig, setIg] = useState<any>(props.userProfile.interest_groups);
     const { id } = useParams<{ id: string }>();
     useEffect(() => {
-        getIgDetails(toast, setIg);
+        // getIgDetails(toast, setIg);
         getAllIg(setAllIg);
     }, []);
-    // console.log(allIg);
+    const ig_sorted = ig.sort((a: any, b: any) => {
+        return a.name > b.name ? 1 : -1;
+    });
+    // console.log(ig_sorted);
+
     return (
         <>
             <div className={styles.interestGrp}>
@@ -62,36 +66,50 @@ const BasicDetails = (props: Props) => {
                                     {editIg && (
                                         <i
                                             onClick={() => {
-                                                setIg(
-                                                    ig.filter(
-                                                        (ig: any) =>
-                                                            ig.name != data.name
-                                                    )
-                                                );
-                                                editIgDetails(
-                                                    toast,
-                                                    ig
-                                                        .filter(
+                                                if (ig.length > 1) {
+                                                    setIg(
+                                                        ig.filter(
                                                             (ig: any) =>
                                                                 ig.name !=
                                                                 data.name
                                                         )
-                                                        .map((ig: any) => {
-                                                            return ig.id;
-                                                        })
-                                                );
+                                                    );
+                                                    editIgDetails(
+                                                        toast,
+                                                        ig
+                                                            .filter(
+                                                                (ig: any) =>
+                                                                    ig.name !=
+                                                                    data.name
+                                                            )
+                                                            .map((ig: any) => {
+                                                                return ig.id;
+                                                            })
+                                                    );
+                                                } else {
+                                                    toast({
+                                                        title: "Error",
+                                                        description:
+                                                            "You must have atleast one interest group",
+                                                        status: "error",
+                                                        duration: 3000,
+                                                        isClosable: true
+                                                    });
+                                                }
                                             }}
                                             className="fi fi-sr-circle-xmark"
                                         ></i>
                                     )}
                                     {data.name}
                                     <p>
-                                        {data.karma === null
+                                        {data.karma !== null
                                             ? data.karma > 1000
                                                 ? (
                                                       data.karma / 1000
                                                   ).toPrecision(2) + "K"
                                                 : data.karma
+                                                ? data.karma
+                                                : "0"
                                             : "0"}
                                     </p>
                                 </div>

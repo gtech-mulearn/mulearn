@@ -5,13 +5,15 @@ import { ToastId, UseToastOptions, useToast } from "@chakra-ui/react";
 import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { Data } from "@/MuLearnComponents/Table/Table";
 import { NavigateFunction } from "react-router-dom";
-import { ColumnDefinition, HackList, HackathonApplication } from "./HackathonInterfaces";
+import {
+    ColumnDefinition,
+    HackList,
+    HackathonApplication
+} from "./HackathonInterfaces";
 import { transformData } from "./HackathonUtils";
 import { SetStateAction } from "react";
 
-export const getHackathons = async (
-    setData: UseStateFunc<HackList[]>
-) => {
+export const getHackathons = async (setData: UseStateFunc<HackList[]>) => {
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getHackathons
@@ -20,26 +22,18 @@ export const getHackathons = async (
         setData(defaultForm.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 };
 
-export const getFormFields = async (
-    setFormData: UseStateFunc<string>
-) => {
+export const getFormFields = async (setFormData: UseStateFunc<string>) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getHackathonFormData,
+            dashboardRoutes.getHackathonFormData
         );
         const defaultForm: any = response?.data;
         setFormData(defaultForm.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 };
 
@@ -53,57 +47,38 @@ export const getHackDetails = async (
         );
         const defaultForm: any = response?.data;
         setEditData(defaultForm.response);
-        console.log(defaultForm.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 };
 
 export const createHackathon = async (
-    title: string,
-    tagline: string,
-    description: string,
-    participantCount: number,
-    orgId: string,
-    districtId: string,
-    place: string,
-    isOpenToAll: boolean,
-    applicationStart: string,
-    applicationEnds: string,
-    eventStart: string,
-    eventEnd: string,
+    hackathonData: HackList,
     formFields: any,
-    logo: any,
-    banner: any,
-    type: string,
-    website: string,
     toast: (options?: UseToastOptions | undefined) => ToastId
-) => {
+): Promise<string> => {
     try {
         const response = await privateGateway.post(
             dashboardRoutes.createHackathon,
             {
-                title: title,
-                tagline: tagline,
-                description: description,
-                participant_count: participantCount,
-                org_id: orgId,
-                district_id: districtId,
-                place: place,
-                is_open_to_all: isOpenToAll,
-                application_start: applicationStart,
-                application_ends: applicationEnds,
-                event_start: eventStart,
-                event_end: eventEnd,
+                title: hackathonData.title,
+                tagline: hackathonData.tagline,
+                description: hackathonData.description,
+                participant_count: hackathonData.participant_count,
+                org_id: hackathonData.org_id,
+                district_id: hackathonData.district_id,
+                place: hackathonData.place,
+                is_open_to_all: hackathonData.is_open_to_all,
+                application_start: hackathonData.application_start,
+                application_ends: hackathonData.application_ends,
+                event_start: hackathonData.event_start,
+                event_end: hackathonData.event_end,
                 status: "Draft",
-                form_fields: formFields,
-                event_logo: logo,
-                banner: banner,
-                type: type,
-                website: website
+                event_logo: hackathonData.event_logo,
+                banner: hackathonData.banner,
+                type: hackathonData.type,
+                website: hackathonData.website,
+                form_fields: formFields
             },
             {
                 maxBodyLength: Infinity,
@@ -119,6 +94,7 @@ export const createHackathon = async (
             duration: 3000,
             isClosable: true
         });
+        return response.data.response.hackathon_id;
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -129,54 +105,38 @@ export const createHackathon = async (
                 duration: 3000,
                 isClosable: true
             });
-            console.log(error.response);
         }
+        return "";
     }
 };
 
 export const editHackathon = async (
-    title: string,
-    tagline: string,
-    description: string,
-    participantCount: number,
-    orgId: string,
-    districtId: string,
-    place: string,
-    isOpenToAll: boolean,
-    applicationStart: string,
-    applicationEnds: string,
-    eventStart: string,
-    eventEnd: string,
+    hackathonData: HackList,
     formFields: any,
-    logo: any,
-    banner: any,
-    type: string,
-    website: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
-    id: string | undefined
-) => {
+    toast: (options?: UseToastOptions | undefined) => ToastId
+): Promise<string> => {
     try {
-        const response = await privateGateway.put(
-            dashboardRoutes.editHackathon + id + '/',
+        await privateGateway.put(
+            dashboardRoutes.editHackathon + hackathonData.id + "/",
             {
-                title: title,
-                tagline: tagline,
-                description: description,
-                participant_count: participantCount,
-                org_id: orgId,
-                district_id: districtId,
-                place: place,
-                is_open_to_all: isOpenToAll,
-                application_start: applicationStart,
-                application_ends: applicationEnds,
-                event_start: eventStart,
-                event_end: eventEnd,
-                status: "Draft",
-                form_fields: formFields,
-                event_logo: logo,
-                banner: banner,
-                type: type,
-                website: website
+                title: hackathonData.title,
+                tagline: hackathonData.tagline,
+                description: hackathonData.description,
+                participant_count: hackathonData.participant_count,
+                org_id: hackathonData.org_id,
+                district_id: hackathonData.district_id,
+                place: hackathonData.place,
+                is_open_to_all: hackathonData.is_open_to_all,
+                application_start: hackathonData.application_start,
+                application_ends: hackathonData.application_ends,
+                event_start: hackathonData.event_start,
+                event_end: hackathonData.event_end,
+                status: hackathonData.status,
+                event_logo: hackathonData.event_logo,
+                banner: hackathonData.banner,
+                type: hackathonData.type,
+                website: hackathonData.website,
+                form_fields: formFields
             },
             {
                 maxBodyLength: Infinity,
@@ -192,6 +152,8 @@ export const editHackathon = async (
             duration: 3000,
             isClosable: true
         });
+
+        return hackathonData.id!;
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -203,19 +165,15 @@ export const editHackathon = async (
                 duration: 3000,
                 isClosable: true
             });
-            
-            
         }
+        return "";
     }
 };
 
-export const getAllDistricts = (
-    setDistrict: UseStateFunc<Option[]>
-) => {
+export const getAllDistricts = (setDistrict: UseStateFunc<Option[]>) => {
     privateGateway
         .get(dashboardRoutes.getAllDistricts)
         .then(response => {
-            console.log(response.data.response);
             setDistrict(
                 response.data.response
                     .sort((a: any, b: any) => a.name.localeCompare(b.name))
@@ -225,9 +183,7 @@ export const getAllDistricts = (
                     }))
             );
         })
-        .catch(error => {
-            console.log(error.response);
-        });
+        .catch(error => {});
 };
 
 export const getAllInstitutions = (
@@ -236,18 +192,14 @@ export const getAllInstitutions = (
     privateGateway
         .get(dashboardRoutes.getAllOrganisations)
         .then(response => {
-            console.log(response.data.response);
             setInstitutions(
-                response.data.response
-                    .map((sate: any) => ({
-                        value: sate.id,
-                        label: sate.title
-                    }))
+                response.data.response.map((sate: any) => ({
+                    value: sate.id,
+                    label: sate.title
+                }))
             );
         })
-        .catch(error => {
-            console.log(error.response);
-        });
+        .catch(error => {});
 };
 
 export const deleteHackathon = async (
@@ -259,7 +211,6 @@ export const deleteHackathon = async (
             dashboardRoutes.deleteHackathon + id + "/"
         );
         const message: any = response?.data;
-        console.log(message);
         toast({
             title: "Delete Successful",
             description: "Hackathon has been deleted",
@@ -269,9 +220,6 @@ export const deleteHackathon = async (
         });
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 };
 
@@ -288,7 +236,6 @@ export const addOrganizer = async (
             }
         );
         const message: any = response?.data;
-        console.log(message);
         toast({
             title: "Success",
             description: "Organizer added successfully",
@@ -306,7 +253,6 @@ export const addOrganizer = async (
                 duration: 3000,
                 isClosable: true
             });
-            console.log(error.response);
         }
     }
 };
@@ -314,14 +260,15 @@ export const addOrganizer = async (
 export const publishHackathon = async (
     id: string,
     status: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
+    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     let a = status === "Draft" ? "Published" : "Draft";
     try {
         const response = await privateGateway.put(
-            dashboardRoutes.publishHackathon + id + "/", {
-            status: a
-        }
+            dashboardRoutes.publishHackathon + id + "/",
+            {
+                status: a
+            }
         );
         const message: any = response?.data;
         toast({
@@ -341,41 +288,36 @@ export const publishHackathon = async (
                 duration: 5000,
                 isClosable: true
             });
-            console.log(error.response);
         }
     }
 };
 
 export const getApplicationForm = async (
     setData: UseStateFunc<HackathonApplication[]>,
-    id: string | undefined,
+    id: string | undefined
 ) => {
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getApplicationForm + id + "/"
         );
         const message: any = response?.data;
-        console.log(message.response);
         setData(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 };
 
 export const submitHackApplication = async (
     data: {
-        name: string,
-        gender: string,
-        email: string,
-        mobile: number,
-        bio: string,
-        college: string,
-        experience: string,
-        github: string,
-        linkedin: string
+        name: string;
+        gender: string;
+        email: string;
+        mobile: number;
+        bio: string;
+        college: string;
+        experience: string;
+        github: string;
+        linkedin: string;
     },
     id: string | undefined,
     navigate: NavigateFunction,
@@ -383,7 +325,7 @@ export const submitHackApplication = async (
 ) => {
     try {
         if (!id) {
-            throw new Error('id parameter is undefined');
+            throw new Error("id parameter is undefined");
         }
         const response = await privateGateway.post(
             dashboardRoutes.submitApplication,
@@ -394,22 +336,20 @@ export const submitHackApplication = async (
         );
 
         // Display a success toast
-        navigate('/dashboard/hackathon')
+        navigate("/dashboard/hackathon");
         toast({
             title: "Submitted Successfully",
-            description: "Hackathon application has been successfully submitted.",
+            description:
+                "Hackathon application has been successfully submitted.",
             status: "success",
             duration: 3000,
             isClosable: true
         });
-        console.log(response)
-
         return response; // You might want to return the response from the API call
     } catch (err: unknown) {
         const error = err as AxiosError;
-        console.log(error?.response?.status === 400)
-        if (error?.response?.status === 400) { 
-            navigate('/dashboard/hackathon')
+        if (error?.response?.status === 400) {
+            navigate("/dashboard/hackathon");
         }
         if (error?.response) {
             toast({
@@ -424,7 +364,6 @@ export const submitHackApplication = async (
     }
 };
 
-
 export const getOrganizers = async (
     setData: UseStateFunc<Data[]>,
     id: string | undefined
@@ -437,9 +376,6 @@ export const getOrganizers = async (
         setData(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
-        }
     }
 };
 
@@ -458,11 +394,10 @@ export const getParticipants = async (
         );
         setData(transformedData);
         setColumnHead(columnOrder);
-        console.log(columnOrder);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
-};       
+};

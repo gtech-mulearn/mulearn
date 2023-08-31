@@ -7,14 +7,22 @@ interface ModalProps {
     setIsOpen: (isOpen: boolean) => void;
     id: string | number | boolean;
     heading: string | undefined;
-    value?:string | number | boolean;
+    value?: string | number | boolean;
     content: string | undefined;
     click: any;
-    type?:string;
+    type?: string;
 }
 
-const Modal: FC<ModalProps> = ({ setIsOpen, id, heading, content, click,type,value }) => {
-    console.log(id,"-", heading,"-", content,"-",type,"-",value)
+const Modal: FC<ModalProps> = ({
+    setIsOpen,
+    id,
+    heading,
+    content,
+    click,
+    type,
+    value
+}) => {
+    console.log(id, "-", heading, "-", content, "-", type, "-", value);
     return (
         <>
             <div className={styles.darkBG} onClick={() => setIsOpen(false)} />
@@ -36,7 +44,6 @@ const Modal: FC<ModalProps> = ({ setIsOpen, id, heading, content, click,type,val
                                     height="20"
                                     viewBox="0 0 50 50"
                                     fill="none"
-                                   
                                 >
                                     <path
                                         d="M45.3125 0H4.6875C2.09961 0 0 2.39955 0 5.35714V44.6429C0 47.6004 2.09961 50 4.6875 50H45.3125C47.9004 50 50 47.6004 50 44.6429V5.35714C50 2.39955 47.9004 0 45.3125 0ZM37.1484 32.4219C37.6172 32.9576 37.6172 33.8281 37.1484 34.3638L33.1934 38.8839C32.7246 39.4196 31.9629 39.4196 31.4941 38.8839L25 31.3951L18.5059 38.8839C18.0371 39.4196 17.2754 39.4196 16.8066 38.8839L12.8516 34.3638C12.3828 33.8281 12.3828 32.9576 12.8516 32.4219L19.4043 25L12.8516 17.5781C12.3828 17.0424 12.3828 16.1719 12.8516 15.6362L16.8066 11.1161C17.2754 10.5804 18.0371 10.5804 18.5059 11.1161L25 18.6049L31.4941 11.1161C31.9629 10.5804 32.7246 10.5804 33.1934 11.1161L37.1484 15.6362C37.6172 16.1719 37.6172 17.0424 37.1484 17.5781L30.5957 25L37.1484 32.4219Z"
@@ -51,7 +58,6 @@ const Modal: FC<ModalProps> = ({ setIsOpen, id, heading, content, click,type,val
                                     height="20"
                                     viewBox="0 0 24 24"
                                     fill="none"
-                                   
                                     xmlns="http://www.w3.org/2000/svg"
                                 >
                                     <path
@@ -64,30 +70,49 @@ const Modal: FC<ModalProps> = ({ setIsOpen, id, heading, content, click,type,val
                                 </svg>
                             </div>
                         )}
-                     
 
                         <h5 className={styles.heading}>{heading}</h5>
                     </div>
-                    {value?<h5 className={styles.heading} style={{color:"red"}}>{value}</h5>:""}
+                    {value ? (
+                        <h5 className={styles.heading} style={{ color: "red" }}>
+                            {value}
+                        </h5>
+                    ) : (
+                        ""
+                    )}
                     <div className={styles.modalContent}>{content}</div>
-                    <div className={styles.modalActions}>
-                        <div className={styles.actionsContainer}>
-                            <PowerfulButton
-                                text="Confirm"
-                                padding="10px 20px"
-                                onButtonClick={() => {
-                                    click(id);
-                                    setIsOpen(false);
-                                }}
-                            />
-                            <PowerfulButton
-                                backgroundColor="#f5f7f9"
-                                color="#456FF6"
-                                text="Cancel"
-                                padding="10px 20px"
-                                onButtonClick={() => setIsOpen(false)}
-                            />
-                        </div>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            gap: "20px"
+                        }}
+                    >
+                        <PowerfulButton
+                            variant="draft"
+                            onClick={() => setIsOpen(false)}
+                            style={{
+                                padding: "10px 100px",
+                                width: "100px",
+                                color: "var(--blue)",
+                                backgroundColor: "#F3F3F4"
+                            }}
+                        >
+                            Cancel
+                        </PowerfulButton>
+                        <PowerfulButton
+                            variant="primary"
+                            title="help"
+                            style={{ padding: "10px 100px", width: "100px" }}
+                            onClick={() => {
+                                click(id);
+                                setIsOpen(false);
+                            }}
+                        >
+                            Done
+                        </PowerfulButton>
                     </div>
                 </div>
             </div>

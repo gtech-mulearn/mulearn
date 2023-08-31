@@ -45,8 +45,7 @@ const TaskCreate = (props: Props) => {
             .positive("Karma should be a positive value")
             .min(10, "Needs to be at least 2 digits.")
             .max(9999, "Should not exceed 4 digits")
-            .truncate()
-            .required("Karma is required"),
+            .truncate(),
         usage_count: Yup.number()
             .truncate()
             .required("Mention the number of uses"),
@@ -55,9 +54,9 @@ const TaskCreate = (props: Props) => {
         description: Yup.string().min(4, "Too Short!").max(100, "Too Long!").required("A description is required"),
         channel_id: Yup.string().required("Select a Channel"),
         type_id: Yup.string().required("Select a Type"),
-        level_id: Yup.string().required("Select a Level"),
-        ig_id: Yup.string().required("Select an Interest Group"),
-        organization_id: Yup.string().required("Select an Organization")
+        level_id: Yup.string(),
+        ig_id: Yup.string(),
+        organization_id: Yup.string()
     });
     if(!uuidData)
         return(<MuLoader/>)
@@ -96,14 +95,10 @@ const TaskCreate = (props: Props) => {
                             values.type_id,
                             values.level_id,
                             values.ig_id,
-                            values.organization_id
+                            values.organization_id,
+							toast
                         );
-                        toast({
-                            title: "Interest Group created",
-                            status: "success",
-                            duration: 3000,
-                            isClosable: true
-                        });
+                        
                         setTimeout(() => {  
                             navigate("/dashboard/tasks");
                         },3000);

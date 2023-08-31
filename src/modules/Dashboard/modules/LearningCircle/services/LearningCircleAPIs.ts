@@ -15,12 +15,11 @@ export const getUserLearningCircles = async (
             dashboardRoutes.getCampusLearningCircles
         );
         const message: any = response?.data;
-        console.log(message.response);
         setCircleList(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -47,7 +46,7 @@ export const getLcDetails = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -60,11 +59,10 @@ export const updateLcNote = async (id: string | undefined, note: string) => {
             }
         );
         const message: any = response;
-        console.log(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -78,11 +76,12 @@ export const getCampusLearningCircles = async (
         );
         const message: any = response?.data;
         console.log(message.response);
+
         setCircleList(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -102,7 +101,6 @@ export const createCircle = async (
             }
         );
         const message: any = response?.data;
-        console.log(message.response.circle_id);
         setId(message.response.circle_id);
         toast({
             title: "Learning Circle Created",
@@ -111,13 +109,15 @@ export const createCircle = async (
             duration: 2000,
             isClosable: true
         });
-		setTimeout(() => {
-			navigate(`/dashboard/learning-circle/details/${message.response.circle_id}`);
+        setTimeout(() => {
+            navigate(
+                `/dashboard/learning-circle/details/${message.response.circle_id}`
+            );
         }, 2000);
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
         toast({
             title: "Learning Circle not creating..",
@@ -126,10 +126,8 @@ export const createCircle = async (
             duration: 2000,
             isClosable: true
         });
-		setTimeout(() => {
-            navigate(
-                `/dashboard/learning-circle/`
-            );
+        setTimeout(() => {
+            navigate(`/dashboard/learning-circle/`);
         }, 2000);
     }
 };
@@ -150,8 +148,6 @@ export const setLCMeetTime = async (
             }
         );
         const message: any = response?.data;
-        console.log(message.response);
-        console.log(response);
         toast({
             title: "Successful",
             description: "",
@@ -162,7 +158,7 @@ export const setLCMeetTime = async (
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
         toast({
             title: "Try Again..",
@@ -180,7 +176,6 @@ export const joinCircle = async (circleCode: string) => {
             dashboardRoutes.joinLearningCircle + circleCode + "/"
         );
 
-        console.log(response);
         toast({
             title: "Wait for approval",
             description: "",
@@ -191,7 +186,7 @@ export const joinCircle = async (circleCode: string) => {
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
         toast({
             title: "Cannot send another request at the moment",
@@ -214,7 +209,7 @@ export const getInterestGroups = async () => {
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -223,7 +218,7 @@ export const approveLcUser = async (
     circleId: string | undefined,
     memberId: string,
     flag: number,
-	status: string
+    status: string
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -237,7 +232,6 @@ export const approveLcUser = async (
             }
         );
 
-        console.log(response);
         toast({
             title: status,
             description: "",
@@ -248,7 +242,7 @@ export const approveLcUser = async (
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
         toast({
             title: "Something went wrong",
@@ -263,16 +257,13 @@ export const approveLcUser = async (
 export const leaveLc = async (
     circleId: string | undefined,
     memberId: string,
-	navigate: NavigateFunction,
+    navigate: NavigateFunction
 ) => {
     try {
         const response = await privateGateway.delete(
-            dashboardRoutes.getCampusLearningCircles +
-                circleId +
-                "/",
+            dashboardRoutes.getCampusLearningCircles + circleId + "/"
         );
 
-        console.log(response);
         toast({
             title: "Success",
             description: "",
@@ -280,11 +271,11 @@ export const leaveLc = async (
             duration: 2000,
             isClosable: true
         });
-		navigate("/dashboard/learning-circle/");
+        navigate("/dashboard/learning-circle/");
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
         toast({
             title: "Something went wrong",

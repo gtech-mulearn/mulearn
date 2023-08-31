@@ -22,7 +22,6 @@
 	justify-content: center;
 	flex-direction: column;
 	min-width: 450px;
-    width: min-content;
 	height: fit-content;
 	background: white;
 	color: white;
@@ -61,7 +60,7 @@
     background: var(--success-100, #d1fadf);
 }
 .checkbtndelete{
-     display: flex;
+    display: flex;
     gap: 8px;
     padding: 10px;
     align-items: center;
@@ -86,19 +85,6 @@
     font-size: 16px;
     color: black;
     text-align: center;
-}
-
-.modalActions {
-    margin-bottom: 10px;
-    width: 100%;
-}
-
-.actionsContainer {
-    display: flex;
-	flex-direction: row-reverse;
-    justify-content: space-around;
-    align-items: center;
-    gap: 8px;
 }
 
 .closeBtn {

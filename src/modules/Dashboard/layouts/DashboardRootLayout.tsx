@@ -89,6 +89,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     // icon: <i className="fi fi-sr-note"></i>
                 },
                 {
+                    url: "/dashboard/karma-voucher",
+                    title: "Karma Voucher",
+                    hasView: true,
+                    roles: [roles.ADMIN],
+                    // icon: <i className="fi fi-sr-note"></i>
+                },
+                {
                     url: "",
                     title: "User Management",
                     hasView: true,
@@ -159,7 +166,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
     return (
         <div className={styles.full_page}>
             <SideNavBar sidebarButtons={buttons} />
-            <div className={styles.right_side} id="right">
+            <div className={styles.right_side}>
                 <TopNavBar />
                 <div className={styles.main_content}>
                     <Suspense fallback={<MuLoader />}>

@@ -116,6 +116,9 @@ const SideNavBarBody = ({
                                                     )
                                                     .map((button, i) => (
                                                         <MuButton
+                                                            style={{
+                                                                width: "100%"
+                                                            }}
                                                             key={i}
                                                             text={button.title}
                                                             buttonUrl={
@@ -135,6 +138,9 @@ const SideNavBarBody = ({
                                             />
                                         ) : (
                                             <MuButton
+                                                style={{
+                                                    width: "100%"
+                                                }}
                                                 key={i}
                                                 text={button.title}
                                                 buttonUrl={button.url}
@@ -149,6 +155,9 @@ const SideNavBarBody = ({
                             />
                         ) : (
                             <MuButton
+                                style={{
+                                    width: "100%"
+                                }}
                                 key={i}
                                 text={button.title}
                                 icon={button.icon}

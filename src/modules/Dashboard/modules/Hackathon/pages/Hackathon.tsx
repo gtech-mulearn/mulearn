@@ -1,15 +1,13 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { FiPlusCircle } from "react-icons/fi";
-import "react-tooltip/dist/react-tooltip.css";
-
-import { getHackathons } from "../services/HackathonApis";
-import { HackList } from "../services/HackathonInterfaces";
-import HackathonCard from "../components/HackathonCard";
-
-import styles from "./HackathonCreate.module.css";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { useEffect, useState } from "react";
+import { FiPlusCircle } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import "react-tooltip/dist/react-tooltip.css";
+import HackathonCard from "../components/HackathonCard";
+import { getHackathons } from "../services/HackathonApis";
+import { HackList } from "../services/HackathonInterfaces";
+import styles from "./HackathonCreate.module.css";
 
 const Hackathon = () => {
     const [data, setData] = useState<HackList[]>([]);
@@ -29,10 +27,9 @@ const Hackathon = () => {
                             to="/dashboard/hackathon/create"
                             className={styles.HCbutton}
                         >
-                            <PowerfulButton
-                                text="Create"
-                                icon={<FiPlusCircle />}
-                            />
+                            <PowerfulButton>
+                                <FiPlusCircle/> Create
+                            </PowerfulButton>
                         </Link>
                     </div>
 

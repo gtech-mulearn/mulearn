@@ -10,6 +10,7 @@
   text-align: left;
   padding-bottom: 40px;
   margin-top: -40px;
+  min-height: calc(100dvh + 100px);
   /* overflow-x: hidden; */
   /* left: 20%; */
   background-color: #EEF2FF;
@@ -315,6 +316,7 @@
               outline: 6px solid #fff;
               outline-offset: -1px;
               width: 10rem;
+              margin-left: 2rem;
               margin-top: -25px;
               background-color: var(--Light);
               text-align: center;
@@ -508,6 +510,7 @@
         color: #456FF6;
         padding: 10px 1rem;
         display: flex;
+        flex-wrap: wrap;
         gap: 12px;
 
         & i {
@@ -777,7 +780,6 @@
           }
         }
       }
-
 
       .pointsList {
         gap: 2rem;

@@ -155,8 +155,6 @@ function ManageRoles() {
                 sortID: column
             });
         }
-
-        //console.log(`Icon clicked for column: ${column}`);
     };
 
     return (

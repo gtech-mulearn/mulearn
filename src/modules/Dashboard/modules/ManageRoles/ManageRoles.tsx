@@ -174,7 +174,6 @@ function ManageRoles() {
             getManageRoles(setData, 1, perPage, setIsLoading, setTotalPages, "", column);
         }
 
-        //console.log(`Icon clicked for column: ${column}`);
     };
     return (
         <>

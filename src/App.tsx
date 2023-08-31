@@ -169,6 +169,8 @@ import Settings from "./modules/Dashboard/modules/Settings/Settings";
 import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
 import Refer from "./modules/Dashboard/modules/Refer/Refer";
 import Thread from "./modules/Public/ThreadsCard/modules/Thread";
+import Template from "./modules/Common/Authentication/pages/Onboarding/Template";
+
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
 );
@@ -206,6 +208,10 @@ function App() {
                 { path: "forgot-password", element: <ForgotPassword /> },
                 { path: "reset-password", element: <ResetPassword /> }
             ]
+        },
+        {
+            path:"/template",
+            element: <Template/>,
         },
         {
             path: "/",

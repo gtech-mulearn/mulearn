@@ -1,28 +1,41 @@
 .url_shortener_container {
-    width: 95%;
     padding: 20px 50px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: flex-start;
-    /* border: 1px solid #E4E7FF; */
     border-radius: 12px;
-    /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.07); */
     margin-bottom: 20px;
     color: black;
-    background-color: #fff;
+    position: fixed;
+    /* background-color: #fff; */
+    backdrop-filter: blur(15px) contrast(100%);
+    -webkit-backdrop-filter: blur(5px) contrast(100%);
+    z-index: 20;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
 
     .form_btns {
         display: flex;
-        gap: 20px;
+        gap: 10px;
         justify-content: space-between;
-        width: 25%;
+        /* width: 35%; */
         height: 65px;
     }
 
     .create_new_url {
         width: 100%;
+        padding: 20px;
+        margin: 10dvh auto auto;
+        height: auto;
+        max-width: 640px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 1px 1px 20px 1px #8c8c8c47;
+        position: relative;
+        overflow-y: scroll;
 
         & form {
             display: flex;
@@ -47,7 +60,7 @@
                 gap: 10px;
 
                 .short_url_input_container_div {
-                    width: 40%;
+                    width: 50%;
 
                     .short_url_input {
                         display: flex;
@@ -55,18 +68,9 @@
                         justify-content: space-between;
 
                         .short_url {
-                            width: 73%;
+                            width: 100%;
                         }
                     }
-                }
-
-                .form_btns .submit {
-                    color: rgb(255, 255, 255);
-                    cursor: pointer;
-                    font-size: 15px;
-                    font-weight: 500;
-                    background: rgb(85, 112, 241);
-                    border-radius: 7px;
                 }
             }
         }

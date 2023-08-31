@@ -122,18 +122,17 @@ export const Tasks = (props: Props) => {
             >
 
                 <PowerfulButton
-                    text={"Bulk Import"}
-                    icon={<AiOutlinePlusCircle />}
-                    onButtonClick={() => navigate("/dashboard/tasks/bulk-import")}
-                    padding="0.3rem 0.7rem"
-                    margin="0" />
+                    variant="secondary"
+                    onClick={() => navigate("/dashboard/tasks/bulk-import")}>
+                    <AiOutlinePlusCircle />
+                    Bulk Import
+                </PowerfulButton>
 
                 <PowerfulButton
-                    text={"Create"}
-                    icon={<AiOutlinePlusCircle />}
-                    onButtonClick={handleCreate}
-                    padding="0.3rem 0.7rem"
-                    margin="0" />
+                    onClick={handleCreate}>
+                    <AiOutlinePlusCircle />
+                    Create
+                </PowerfulButton>
             </div>
 
             {data && (
