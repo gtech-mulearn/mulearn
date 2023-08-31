@@ -19,10 +19,8 @@ export const columnsStudent = [
 export const columnsCampus = [
     { column: "title", Label: "Title", isSortable: true },
     { column: "code", Label: "Code", isSortable: true },
-    { column: "org_type", Label: "Org Type", isSortable: false },
+    { column: "level", Label: "Level", isSortable: false },
     // { column: "district_name", Label: "District", isSortable: false },
-    { column: "total_karma", Label: "Total Karma", isSortable: true },
-    { column: "total_members", Label: "Total Members", isSortable: false },
-    { column: "active_members", Label: "Active Members", isSortable: false },
-    { column: "rank", Label: "Rank", isSortable: false }
+    { column: "lead", Label: "Lead", isSortable: false },
+    { column: "lead_number", Label: "Lead No", isSortable: false }
 ];

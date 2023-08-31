@@ -241,7 +241,7 @@ export const getStudentLevels = async () => {
         dashboardRoutes.getDistrictStudentLevels
     );
     const data = response.data.response;
-    console.log(data);
+
     return [
         [
             " ",
