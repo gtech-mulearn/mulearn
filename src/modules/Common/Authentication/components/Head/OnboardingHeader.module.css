@@ -1,4 +1,4 @@
-.OnboardingHeader{
+.OnboardingHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -7,11 +7,21 @@
     gap: 1rem;
 }
 
-.OnboardingHeader img{
+.OnboardingHeader img {
     height: 2rem;
 }
 
-.OnboardingHeader h1{
-    font-size: 2.5rem;
+.OnboardingHeader h1 {
+    font-size: 3rem;
     font-weight: 600;
+}
+
+@media (width<=820px) {
+    .OnboardingHeader h1 {
+        font-size: 2rem;
+    }
+
+    .Onboardingheader p{
+        font-size: .8rem;
+    }
 }
