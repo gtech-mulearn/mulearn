@@ -38,11 +38,11 @@ function ZonalDashboard() {
         if (firstFetch.current) {
             (async () => {
                 try {
-                    setBarData([["", ""]].concat(await getTopDistrict()));
+                    setBarData(await getTopDistrict());
                     setColData(
                         [
                             [
-                                "Colleges",
+                                "Levels",
                                 "Level 1",
                                 "Level 2",
                                 "Level 3",

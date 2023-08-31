@@ -49,11 +49,11 @@ function DistrictDashboard() {
 
             (async () => {
                 try {
-                    setBarData([["", ""]].concat(await getTopCampus()));
+                    setBarData(await getTopCampus());
                     setColData(
                         [
                             [
-                                "Colleges",
+                                "Levels",
                                 "Level 1",
                                 "Level 2",
                                 "Level 3",

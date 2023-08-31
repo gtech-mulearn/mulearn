@@ -49,7 +49,7 @@ export function BarChart({ data, addOptions, ...props }: any) {
                 0: { label: props.ylabel }
             }
         };
-    console.log(propOptions);
+
     return (
         <Chart
             chartType="Bar"
