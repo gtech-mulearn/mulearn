@@ -4,9 +4,6 @@ import mu from '/src/modules/Common/Authentication/assets/µLearn.png'
 export default function Rolepage() {
     return (
       <div className={styles.rolepageConatiner}>
-         <img src={mu} alt=""/>
-         <h1>What describe you the most!</h1>
-          <p>Please select your role</p>
           <div className={styles.rolepageCards}>
 
             <div className={styles.rolepageCard}>

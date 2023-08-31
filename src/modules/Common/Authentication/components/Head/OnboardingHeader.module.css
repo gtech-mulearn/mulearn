@@ -5,6 +5,7 @@
     flex-direction: column;
     text-align: center;
     gap: 1rem;
+    font-family: inherit;
 }
 
 .OnboardingHeader img{
@@ -14,4 +15,14 @@
 .OnboardingHeader h1{
     font-size: 2.5rem;
     font-weight: 600;
+}
+
+@media(width<500px){
+     .OnboardingHeader{
+        margin-top: 3rem;
+        font-size: .75rem;
+    }
+    .OnboardingHeader h1{
+        font-size: 1.5rem;
+    }
 }
