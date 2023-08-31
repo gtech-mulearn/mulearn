@@ -145,10 +145,10 @@ const HackathonCreate = () => {
                 date === undefined ||
                 date === "null" ||
                 date === ""
-            )
+            ) {
                 return "";
-            const formattedDate = new Date(date).toISOString().split("T")[0];
-            return formattedDate;
+            }
+            return new Date(date).toISOString().split("T")[0];
         };
 
         const applicationStartDate = formatDate(values.applicationStart);
@@ -159,7 +159,7 @@ const HackathonCreate = () => {
         // Convert selectedFields object to a JSON string and then parse it to get the desired format
         const formattedFormFields = JSON.stringify(selectedFields);
 
-        function publish(hackathon: HackList): boolean {
+        const publish = (hackathon: HackList): boolean => {
             let returnVal = false;
             if (isPublishing) {
                 if (isDetailsComplete(hackathon)) {
@@ -170,7 +170,7 @@ const HackathonCreate = () => {
                 }
             }
             return returnVal;
-        }
+        };
 
         const hackathon: HackList = {
             id: id || "",
@@ -198,23 +198,23 @@ const HackathonCreate = () => {
 
         isEdit
             ? editHackathon(hackathon, formattedFormFields, toast)
-                  .then(() => (isPublishing ? publish(hackathon) : true))
-                  .then(res => res && navigate("/dashboard/hackathon"))
+				.then(() => (isPublishing ? publish(hackathon) : true))
+				.then(res => res && navigate("/dashboard/hackathon"))
             : createHackathon(hackathon, formattedFormFields, toast)
-                  .then(id => {
-                      setIsEdit(true);
-                      return isPublishing
-                          ? publish({ ...hackathon, id: id || "" })
-                          : true;
-                  })
-                  .then(
-                      res =>
-                          res &&
-                          setTimeout(
-                              () => navigate("/dashboard/hackathon"),
-                              1000
-                          )
-                  );
+				.then(id => {
+					setIsEdit(true);
+					return isPublishing
+						? publish({ ...hackathon, id: id || "" })
+						: true;
+				})
+				.then(
+					res =>
+						res &&
+						setTimeout(
+							() => navigate("/dashboard/hackathon"),
+							1000
+						)
+				);
     };
 
     useEffect(() => {
@@ -227,7 +227,7 @@ const HackathonCreate = () => {
         setOpenImagePreview(false);
     };
 
-    const intitialValues = {
+    const initialValues = {
         title: data?.title || "",
         tagline: data?.tagline || "",
         description: data?.description || "",
@@ -292,7 +292,7 @@ const HackathonCreate = () => {
                             </div>
 
                             <Formik
-                                initialValues={intitialValues}
+                                initialValues={initialValues}
                                 validationSchema={hackathonSchema}
                                 onSubmit={handleSubmit}
                             >
