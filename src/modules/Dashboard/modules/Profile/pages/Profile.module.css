@@ -510,6 +510,7 @@
         color: #456FF6;
         padding: 10px 1rem;
         display: flex;
+        flex-wrap: wrap;
         gap: 12px;
 
         & i {
