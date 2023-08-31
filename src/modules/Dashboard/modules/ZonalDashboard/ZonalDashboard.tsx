@@ -75,13 +75,13 @@ function ZonalDashboard() {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getzonaldashboard(activeTab, setData, nextPage, perPage);
+        // getzonaldashboard(activeTab, setData, nextPage, perPage);
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getzonaldashboard(activeTab, setData, prevPage, perPage);
+        // getzonaldashboard(activeTab, setData, prevPage, perPage);
     };
 
     const handleSearch = (search: string) => {
@@ -100,15 +100,6 @@ function ZonalDashboard() {
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getzonaldashboard(
-            activeTab,
-            setData,
-            1,
-            selectedValue,
-            setTotalPages,
-            "",
-            ""
-        );
     };
 
     const handleTabClick = (tab: string) => {
@@ -145,7 +136,7 @@ function ZonalDashboard() {
             "",
             sort
         );
-    }, [sort]);
+    }, [sort, currentPage, perPage]);
 
     const CSV = (tabname: string) => {
         if (
@@ -224,7 +215,7 @@ function ZonalDashboard() {
                             handleNextClick={handleNextClick}
                             handlePreviousClick={handlePreviousClick}
                             perPage={perPage}
-                            setPerPage={setPerPage}
+                            setPerPage={handlePerPageNumber as any}
                         />
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>
