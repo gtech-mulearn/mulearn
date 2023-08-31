@@ -16,7 +16,6 @@ import {
 } from "../../../../Common/Authentication/services/onboardingApis";
 
 type Props = {
-    id: string;
     onClose: any;
 };
 
@@ -36,6 +35,77 @@ const CollegeLevelsCreate = (props: Props) => {
             isClosable: true
         });
     };
+
+    const selectProps = [
+        {
+            name: "country",
+            label: "Country",
+            options: countrys,
+            isClearable: true,
+            isSearchable: true,
+            addOnChange: (option: any) => {
+                if (option)
+                    getState(errorHandler, setStates, {
+                        country: option.value
+                    });
+                else {
+                    setStates([]);
+                    setDistricts([]);
+                }
+            }
+        },
+        {
+            name: "state",
+            label: "State",
+            options: states,
+            isClearable: true,
+            isSearchable: true,
+            addOnChange: (option: any) => {
+                if (option)
+                    getDistrict(errorHandler, setDistricts, {
+                        state: option.value
+                    });
+                else {
+                    setStates([]);
+                    setDistricts([]);
+                }
+            }
+        },
+        {
+            name: "district",
+            label: "District",
+            options: districts,
+            isClearable: true,
+            isSearchable: true,
+            addOnChange: (option: any) => {
+                if (option)
+                    getColleges(
+                        () => {},
+                        setColleges,
+                        () => {},
+                        errorHandler,
+                        { district: option.value }
+                    );
+            }
+        },
+        {
+            name: "org_id",
+            label: "College",
+            options: colleges,
+            isClearable: true,
+            isSearchable: true
+        },
+        {
+            name: "level",
+            label: "Levels",
+            options: [1, 2, 3, 4].map(val => ({
+                label: val.toString(),
+                value: val
+            })),
+            isClearable: true,
+            isSearchable: true
+        }
+    ];
 
     useEffect(() => {
         getCountries(errorHandler, setCountrys);
@@ -59,102 +129,42 @@ const CollegeLevelsCreate = (props: Props) => {
             })}
             onSubmit={values => {
                 (async () => {
-                    createCollegeLevels({
-                        org_id: values.org_id,
-                        level: values.level
-                    });
-                    toast({
-                        title: "College level created",
-                        status: "success",
-                        duration: 3000,
-                        isClosable: true
-                    });
+                    try {
+                        await createCollegeLevels({
+                            org_id: values.org_id,
+                            level: values.level
+                        });
+                        toast({
+                            title: "College level created",
+                            status: "success",
+                            duration: 3000,
+                            isClosable: true
+                        });
+                    } catch (err) {
+                        errorHandler;
+                    }
+
                     props.onClose(null);
                 })();
             }}
         >
-            <Form className={styles.Form}>
+            <Form className={styles.form}>
                 <div className={styles.selectContainer}>
-                    <FormikReactSelect
-                        name="country"
-                        label="Country"
-                        options={countrys}
-                        isClearable
-                        isSearchable
-                        addOnChange={(option: any) => {
-                            if (option)
-                                getState(errorHandler, setStates, {
-                                    country: option.value
-                                });
-                            else {
-                                setStates([]);
-                                setDistricts([]);
-                            }
-                        }}
-                    />
-                    <FormikReactSelect
-                        name="state"
-                        label="State"
-                        options={states}
-                        isClearable
-                        isSearchable
-                        addOnChange={(option: any) => {
-                            if (option)
-                                getDistrict(errorHandler, setDistricts, {
-                                    state: option.value
-                                });
-                            else {
-                                setStates([]);
-                                setDistricts([]);
-                            }
-                        }}
-                    />
-                    <FormikReactSelect
-                        name="district"
-                        label="District"
-                        options={districts}
-                        isClearable
-                        isSearchable
-                        addOnChange={(option: any) => {
-                            if (option)
-                                getColleges(
-                                    () => {},
-                                    setColleges,
-                                    () => {},
-                                    errorHandler,
-                                    { district: option.value }
-                                );
-                        }}
-                    />
-                    <FormikReactSelect
-                        name="org_id"
-                        label="College"
-                        options={colleges}
-                        isClearable
-                        isSearchable
-                    />
-                    <FormikReactSelect
-                        name="level"
-                        label="Level"
-                        options={[1, 2, 3, 4].map(val => ({
-                            label: val.toString(),
-                            value: val
-                        }))}
-                        isClearable
-                        isSearchable
-                    />
+                    {selectProps.map((props, index) => (
+                        <FormikReactSelect {...props} key={`select${index}`} />
+                    ))}
                 </div>
 
-                <div className={styles.ButtonContainer}>
+                <div className={styles.buttonContainer}>
                     <MuButton
-                        className={`${mustyles.btn} ${styles.Decline}`}
+                        className={`${mustyles.btn} ${styles.decline}`}
                         text={"Decline"}
                         onClick={() => {
                             props.onClose(null);
                         }}
                     />
                     <MuButton
-                        className={`${mustyles.btn} ${styles.Confirm}`}
+                        className={`${mustyles.btn} ${styles.confirm}`}
                         text={"Confirm"}
                         submit={true}
                         type="submit"

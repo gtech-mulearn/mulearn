@@ -2,83 +2,62 @@ import React, { useEffect, useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import FormikReactSelect, {
+    FormikTextInput
+} from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import styles from "./Modal.module.css";
 import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css";
 import { type } from "os";
-import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { editCollegeLevels } from "../apis";
 
 type Props = {
-    id: string;
     onClose: any;
-    values: string[];
+    org_id: string;
 };
 
-const ManageRolesEdit = (props: Props) => {
-    interface IData {
-        title: string;
-        description: string;
-    }
-    const [data, setData] = useState<IData>({
-        title: "",
-        description: ""
-    });
-    const id = props.id;
-    const toast = useToast();
-    useEffect(() => {}, []);
-    if (!data.title) return <MuLoader />;
+const CollegeLevelsEdit = (props: Props) => {
+    console.log(props.org_id);
     return (
         <Formik
             enableReinitialize={true}
             initialValues={{
                 // igName: name
-                title: data.title,
-                description: data.description
+                level: ""
             }}
             validationSchema={Yup.object({
-                // igName: Yup.string()
-                //     .max(30, "Must be 30 characters or less")
-                //     .required("Required"),
-                title: Yup.string()
-                    .max(30, "Must be 30 characters or less")
-                    .required("Required"),
-                description: Yup.string()
-                    .max(30, "Must be 30 characters or less")
-                    .required("Required")
+                level: Yup.number().required("Required")
             })}
             onSubmit={values => {
                 (async () => {
-                    console.log(values);
+                    editCollegeLevels({ org_id: props.org_id, ...values });
                     props.onClose(null);
                 })();
             }}
         >
-            <Form className={styles.Form}>
-                <FormikTextInput
-                    label=""
-                    name="title"
-                    type="text"
-                    placeholder="Role title"
-                />
-                <FormikTextInput
-                    label=""
-                    name="description"
-                    type="text"
-                    placeholder="Role description"
+            <Form className={styles.form}>
+                <FormikReactSelect
+                    name="level"
+                    label="Levels"
+                    options={[1, 2, 3, 4].map(val => ({
+                        label: val.toString(),
+                        value: val
+                    }))}
+                    isClearable
+                    isSearchable
                 />
 
-                <div className={styles.ButtonContainer}>
+                <div className={styles.buttonContainer}>
                     <MuButton
                         type="button"
-                        className={`${mustyles.btn} ${styles.Decline}`}
+                        className={`${mustyles.btn} ${styles.decline}`}
                         text={"Decline"}
                         onClick={() => {
                             props.onClose(null);
                         }}
                     />
                     <MuButton
-                        className={`${mustyles.btn} ${styles.Confirm}`}
+                        className={`${mustyles.btn} ${styles.confirm}`}
                         text="Confirm"
                         type="submit"
                     />
@@ -88,4 +67,4 @@ const ManageRolesEdit = (props: Props) => {
     );
 };
 
-export default ManageRolesEdit;
+export default CollegeLevelsEdit;
