@@ -111,46 +111,41 @@ function ZonalDashboard() {
         );
     };
 
-    // const handleTabClick = (tab: string) => {
-    //     if (tab === "Student management") {
-    //         setColumns(columnsStudent);
-    //         getzonaldashboard(tab, setData, 1, perPage, setTotalPages, "", "");
-    //     } else if (tab === "Campus management") {
-    //         setColumns(columnsCampus);
-    //         getzonaldashboard(tab, setData, 1, perPage, setTotalPages, "", "");
-    //     } else {
-    //         alert("Error to load Table Headers");
-    //     }
-    //     setCurrentPage(1);
-    //     setActiveTab(tab);
-    //     setPopupStatus(false);
-    // };
+    const handleTabClick = (tab: string) => {
+        if (tab === "Student management") {
+            setColumns(columnsStudent);
+            getzonaldashboard(tab, setData, 1, perPage, setTotalPages, "", "");
+        } else if (tab === "Campus management") {
+            setColumns(columnsCampus);
+            getzonaldashboard(tab, setData, 1, perPage, setTotalPages, "", "");
+        } else {
+            alert("Error to load Table Headers");
+        }
+        setCurrentPage(1);
+        setActiveTab(tab);
+        setPopupStatus(false);
+    };
 
     const handleIconClick = (column: string) => {
+        console.log(sort);
         if (sort === column) {
             setSort(`-${column}`);
-            getzonaldashboard(
-                activeTab,
-                setData,
-                1,
-                perPage,
-                setTotalPages,
-                "",
-                sort
-            );
         } else {
             setSort(column);
-            getzonaldashboard(
-                activeTab,
-                setData,
-                1,
-                perPage,
-                setTotalPages,
-                "",
-                sort
-            );
         }
     };
+
+    useEffect(() => {
+        getzonaldashboard(
+            activeTab,
+            setData,
+            1,
+            perPage,
+            setTotalPages,
+            "",
+            sort
+        );
+    }, [sort]);
 
     const CSV = (tabname: string) => {
         if (
@@ -168,6 +163,7 @@ function ZonalDashboard() {
     };
     return (
         <>
+            <TableTopTab active={activeTab} onTabClick={handleTabClick} />
             <div className={graphStyles.graphs}>
                 <div className={graphStyles.container}>
                     <h2>Top 3 Districts</h2>
@@ -202,7 +198,6 @@ function ZonalDashboard() {
                     />
                 </div>
             </div>
-            {/* <TableTopTab active={activeTab} onTabClick={handleTabClick} /> */}
 
             {data && (
                 <>
