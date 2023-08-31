@@ -12,13 +12,13 @@ export const columnsStudent = [
     { column: "fullname", Label: "Name", isSortable: true },
     { column: "muid", Label: "Mu ID", isSortable: true },
     { column: "karma", Label: "Karma", isSortable: true },
-    { column: "rank", Label: "Rank", isSortable: true },
+    { column: "rank", Label: "Rank", isSortable: false },
     { column: "level", Label: "Level", isSortable: true }
 ];
 
 export const columnsCampus = [
     { column: "title", Label: "Title", isSortable: true },
-    { column: "code", Label: "Code", isSortable: false },
+    { column: "code", Label: "Code", isSortable: true },
     { column: "org_type", Label: "Org Type", isSortable: false },
     // { column: "district_name", Label: "District", isSortable: false },
     { column: "total_karma", Label: "Total Karma", isSortable: true },

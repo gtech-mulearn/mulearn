@@ -133,6 +133,9 @@ function DistrictDashboard() {
     };
 
     const handleIconClick = (column: string) => {
+        if (column === "total_karma") {
+            column = "karma"; //temp fix
+        }
         if (sort === column) {
             setSort(`-${column}`);
         } else {
