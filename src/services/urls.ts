@@ -65,15 +65,16 @@ export const dashboardRoutes = {
     getUserSuggestion: "/api/v1/dashboard/profile/user-suggestion/",
     getStudentLeaderBoard: "/api/v1/leaderboard/students/",
     getIgDetails: "/api/v1/dashboard/profile/ig-edit/",
+    getSocials: "/api/v1/dashboard/profile/socials/",
 
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
     zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv/",
-    zonalCampusDetails: "/api/v1/dashboard/zonal/campus-details/",
+    zonalCampusDetails: "/api/v1/dashboard/zonal/college-details/",
     zonalCampusData: "/api/v1/dashboard/zonal/campus-details/csv/",
 
     districtStudentDetails: "/api/v1/dashboard/district/student-details/",
     districtStudentData: "/api/v1/dashboard/district/student-details/csv/",
-    districtCampusDetails: "/api/v1/dashboard/district/campus-details/",
+    districtCampusDetails: "/api/v1/dashboard/district/college-details/",
     districtCampusData: "/api/v1/dashboard/district/campus-details/csv/",
 
     getHackathonFormData: "/api/v1/hackathon/list-default-form-fields/",

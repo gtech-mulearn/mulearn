@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import styles from "./BasicDetails.module.css";
-import HeatmapComponent from "../Heatmap/HeatmapComponent";
+import HeatmapComponent from "../../Heatmap/HeatmapComponent";
 import { useToast } from "@chakra-ui/react";
-import { editIgDetails, getAllIg, getIgDetails } from "./services/api";
+import { editIgDetails, getAllIg, getIgDetails } from "../services/api";
 import { useParams } from "react-router-dom";
 type Props = {
     userProfile: any;
@@ -19,9 +19,14 @@ const BasicDetails = (props: Props) => {
         // getIgDetails(toast, setIg);
         getAllIg(setAllIg);
     }, []);
+    const ig_sorted = ig.sort((a: any, b: any) => {
+        return a.name > b.name ? 1 : -1;
+    });
+    // console.log(ig_sorted);
+
     return (
         <>
-            {/* <div className={styles.interestGrp}>
+            <div className={styles.interestGrp}>
                 <div className={styles.top_sec}>
                     <b>Interest Groups</b>
                     {!id && !editIg && (
@@ -46,8 +51,6 @@ const BasicDetails = (props: Props) => {
                 <div className={styles.igs_container}>
                     {props.userProfile.interest_groups.length != 0 ? (
                         ig.map((data: any, i: number) => {
-                            console.log(data.karma);
-
                             return (
                                 <div
                                     style={
@@ -115,22 +118,55 @@ const BasicDetails = (props: Props) => {
                     ) : (
                         <p>No Interest Groups to show</p>
                     )}
-                    {editIg && (
-                        <div
-                            style={
-                                editIg
-                                    ? {
-                                          transform: "scale(0.955)"
-                                      }
-                                    : {}
-                            }
-                            className={styles.igs_add}
-                        >
-                            <i className="fi fi-sr-plus"></i>
-                        </div>
-                    )}
+                    {editIg && <hr />}
                 </div>
-            </div> */}
+                {editIg && (
+                    <div className={styles.igs_container}>
+                        {allIg
+                            .filter((data: any) => {
+                                return !ig.some(
+                                    (ig: any) => ig.name == data.name
+                                );
+                            })
+                            .map((data: any, i: number) => {
+                                return (
+                                    <div key={i} className={styles.igs}>
+                                        <i
+                                            onClick={() => {
+                                                {
+                                                    ig.length < 3 &&
+                                                        setIg(
+                                                            (
+                                                                prevState: any
+                                                            ) => [
+                                                                ...prevState,
+                                                                data
+                                                            ]
+                                                        );
+                                                }
+                                                editIgDetails(
+                                                    toast,
+                                                    [...ig, data].map(
+                                                        (ig: any) => {
+                                                            return ig.id;
+                                                        }
+                                                    )
+                                                ).then(() => {
+                                                    // getIgDetails(
+                                                    //     toast,
+                                                    //     setIg
+                                                    // );
+                                                });
+                                            }}
+                                            className="fi fi-sr-add"
+                                        ></i>
+                                        {data.name}
+                                    </div>
+                                );
+                            })}
+                    </div>
+                )}
+            </div>
 
             <div className={styles.heatmap}>
                 <HeatmapComponent

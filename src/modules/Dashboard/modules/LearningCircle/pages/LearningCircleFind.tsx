@@ -48,34 +48,41 @@ const FindCircle = () => {
 
                 {lc ? (
                     <div className={styles.container}>
-                        {lc.map(circle => (
-                            <>
-                                <div className={styles.one}>
-                                    <h2>{circle?.name}</h2>
-                                    <p>Team Lead: {circle?.created_by}</p>
-                                    <p>{circle?.ig}</p>
-                                    <p>{circle?.member_count} Members</p>
-                                    <div className={styles.join}>
-                                        <button
-                                            onClick={() => {
-                                                joinCircle(circle.id);
+                        {lc.map(
+                            circle =>
+                                circle && (
+                                    <>
+                                        <div className={styles.one}>
+                                            <h2>{circle?.name}</h2>
+                                            <p>
+                                                Team Lead: {circle?.created_by}
+                                            </p>
+                                            <p>{circle?.ig}</p>
+                                            <p>
+                                                {circle?.member_count} Members
+                                            </p>
+                                            <div className={styles.join}>
+                                                <button
+                                                    onClick={() => {
+                                                        joinCircle(circle.id);
 
-                                                setTimeout(() => {
-                                                    navigate(
-                                                        `/dashboard/learning-circle`
-                                                    );
-                                                }, 1500);
-                                            }}
-                                        >
-                                            Join
-                                        </button>
-                                    </div>
-                                    {/* <PowerfulButton text='Join' onButtonClick={() => {
+                                                        setTimeout(() => {
+                                                            navigate(
+                                                                `/dashboard/learning-circle`
+                                                            );
+                                                        }, 1500);
+                                                    }}
+                                                >
+                                                    Join
+                                                </button>
+                                            </div>
+                                            {/* <PowerfulButton text='Join' onButtonClick={() => {
 										navigate(`/dashboard/learning-circle/details/${circle.id}`);
 									}}/> */}
-                                </div>
-                            </>
-                        ))}
+                                        </div>
+                                    </>
+                                )
+                        )}
                     </div>
                 ) : (
                     <div className={styles.error_container}>

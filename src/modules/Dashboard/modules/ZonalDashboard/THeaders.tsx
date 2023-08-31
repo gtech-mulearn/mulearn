@@ -10,10 +10,10 @@
 
 export const columnsStudent = [
     { column: "fullname", Label: "Name", isSortable: true },
-    { column: "muid", Label: "Mu ID", isSortable: false },
-    { column: "karma", Label: "Karma", isSortable: false },
-    { column: "rank", Label: "Rank", isSortable: false },
-    { column: "level", Label: "Level", isSortable: false }
+    { column: "muid", Label: "Mu ID", isSortable: true },
+    { column: "karma", Label: "Karma", isSortable: true },
+    { column: "rank", Label: "Rank", isSortable: true },
+    { column: "level", Label: "Level", isSortable: true }
 ];
 
 export const columnsCampus = [

@@ -1,5 +1,4 @@
 import { FiUploadCloud } from "react-icons/fi";
-
 import styles from "../pages/HackathonCreate.module.css";
 import { useState } from "react";
 import { Field } from "formik";

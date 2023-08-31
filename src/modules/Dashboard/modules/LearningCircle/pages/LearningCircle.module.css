@@ -420,6 +420,7 @@
     align-items: center;
     margin-bottom: 1rem;
     font-size: 1.2rem;
+    padding-right: 5rem;
 }
 
 .MemberList {
@@ -432,26 +433,35 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+    word-wrap: break-word;
 }
 
 .MemberName span {
     display: flex;
     gap: 0.5rem;
     align-items: center;
+    padding: .2rem;
 }
-
 .MemberName span img {
     width: 1.3rem;
     height: 1.3rem;
 }
-@media (width<1030px) {
-    .MemberName {
-        font-size: small;
-    }
-    .MemberName span img {
-        width: 1rem;
-        height: 1rem;
-    }
+
+@media (width<1070px) {
+   .Members{
+    padding-left: 2rem;
+   }
+  .MemberName{
+    font-size: x-small;
+    font-weight: 700; 
+    gap: 0.5rem; 
+   }
+  .MemberName span img {
+    width: 1rem;
+    height: 1rem;
+    margin-left: .5rem;
+   }
+
 }
 @media (width<820px) {
     .LearningCircleDetailsContent {
@@ -518,19 +528,36 @@
         width: 1.5rem;
         height: 1.5rem;
     }
-
+    .Members{
+        padding-left: 5rem;
+    }
     .MemberName {
         font-size: large;
-        gap: 5rem;
+        gap: 8rem;
+    }
+}
+@media(width<450px){
+    .Members{
+        padding-left: 3rem;
+    }
+    .MemberName{
+        gap: 4rem;
+        font-size: small;
     }
 }
 
-@media (width<380px) {
+@media (width<380px){
+    .MemberName{
+        gap: 2rem;
+        font-size: small;
+    }
+  
     .MemberName span img {
         width: 1rem;
         height: 1rem;
     }
 }
+
 @media (width<800px) {
     .Lcweek {
         gap: 0.25;
@@ -716,6 +743,7 @@
     text-align: center;
     background-color: #f3f3f4;
     color: #665c7a;
+    margin-top: 20px;  
 }
 
 .LearningCircleCreateMain button {
@@ -738,9 +766,12 @@
         display: flex;
         flex-direction: column;
     }
+    .LearningCircleCreateForm input{
+        margin: 0;
+    }
 }
 
-@media (width<820px) {
+@media (width<860px) {
     .LearningCircleCreateHeading div b {
         font-size: 1.5rem;
     }

@@ -73,7 +73,6 @@ const CampusStudentList = (props: Props) => {
             getCampusDetails(setCampusData);
             (async () => {
                 try {
-                    getStudentLevel;
                     setBarData([["", "Karma"]].concat(await getWeeklyKarma()));
                     setPieData(
                         [["Level", "UsersPerLevel"]].concat(
@@ -209,6 +208,7 @@ const CampusStudentList = (props: Props) => {
                     <h2>Weekly Karma Insights</h2>
                     <BarChart
                         data={barData}
+                        ylabel="Karma"
                         addOptions={{
                             legend: { position: "none" },
                             colors: ["#91ABFF"]
