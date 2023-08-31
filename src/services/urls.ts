@@ -107,7 +107,7 @@ export const dashboardRoutes = {
     getCampusWeeklyKarma: "/api/v1/dashboard/campus/weekly-karma/",
     getStudentLevels: "api/v1/dashboard/campus/student-level/",
     //district
-    getDistrictStudentLevels: "api/v1/dashboard/district/college-level/",
+    getDistrictStudentLevels: "api/v1/dashboard/district/student-level/",
     getDistrictTopCampus: "api/v1/dashboard/district/top-campus/",
     //zonal
     getZonalTopDistrict: "api/v1/dashboard/zonal/top-districts/",

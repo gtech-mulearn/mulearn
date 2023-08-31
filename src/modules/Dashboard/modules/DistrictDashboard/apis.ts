@@ -241,18 +241,15 @@ export const getStudentLevels = async () => {
         dashboardRoutes.getDistrictStudentLevels
     );
     const data = response.data.response;
+    console.log(data);
     return [
-        data.reduce(
-            (acc: any[], curr: any) => {
-                //api returns levels in incorrect order
-                acc[1] += curr.level[2].students_count;
-                acc[2] += curr.level[3].students_count;
-                acc[3] += curr.level[0].students_count;
-                acc[4] += curr.level[1].students_count;
-                return acc;
-            },
-            [" ", 0, 0, 0, 0]
-        )
+        [
+            " ",
+            data[2].students_count,
+            data[3].students_count,
+            data[0].students_count,
+            data[1].students_count
+        ]
     ];
 };
 
