@@ -7,7 +7,6 @@ export default function Template() {
     return (
         <div className={styles.Template}>
             <OnboardingHeader/>
-            <Rolepage />
         </div>
     )
 }
