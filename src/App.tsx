@@ -13,7 +13,16 @@ import ResetPassword from "./modules/Common/Authentication/pages/ResetPassword";
 import PrivateRoutes from "./components/PrivateRoutes";
 import DashboardRootLayout from "./modules/Dashboard/layouts/DashboardRootLayout";
 import NotFound from "./components/NotFound";
-import Profile from "./modules/Dashboard/modules/Profile/pages/Profile"
+import Profile from "./modules/Dashboard/modules/Profile/pages/Profile";
+const KarmaVoucher = lazy(
+    () => import("./modules/Dashboard/modules/KarmaVoucher/KarmaVoucher")
+);
+const KarmaVoucherBulkImport = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/KarmaVoucher/components/KarmaVoucherBulkImport"
+        )
+);
 
 const Tasks = lazy(() =>
     import("./modules/Dashboard/modules/Tasks/Tasks").then(module => ({
@@ -210,8 +219,8 @@ function App() {
             ]
         },
         {
-            path:"/template",
-            element: <Template/>,
+            path: "/template",
+            element: <Template />
         },
         {
             path: "/",
@@ -228,7 +237,7 @@ function App() {
                         },
                         {
                             path: "refer",
-                            element: <Refer/>
+                            element: <Refer />
                         },
                         {
                             path: "interest-groups",
@@ -375,6 +384,19 @@ function App() {
                         {
                             path: "tasks/bulk-import",
                             element: <TaskBulkImport />
+                        },
+                        {
+                            path: "karma-voucher",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    children={<KarmaVoucher />}
+                                />
+                            )
+                        },
+                        {
+                            path: "karma-voucher/bulk-import",
+                            element: <KarmaVoucherBulkImport />
                         },
                         {
                             path: "url-shortener",
