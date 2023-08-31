@@ -4,6 +4,7 @@ import { clearAllNotifications, clearNotification, getNotifications, Notificatio
 import { IoIosClose } from 'react-icons/io';
 import dpm from '../assets/images/dpm.webp';
 import { filterNotification, getTimeAgo, isRequest } from './utils';
+import { index } from 'd3';
 interface NotificationComponentProps {
     notificationList: NotificationProps[];
     setNotificationList: React.Dispatch<React.SetStateAction<NotificationProps[]>>;
@@ -31,12 +32,14 @@ const NotificationMessage = ({ profile, title, created_at, description, clear, i
                 {isRequest(title) &&
                     <div className="btns">
                         <button onClick={() => { 
-                            requestApproval(id,url,created_by, false); 
-                            update() 
                             clear()
+                            requestApproval(id,url,created_by, false,update);  
                             }}>Decline</button>
                         &nbsp;
-                        <button className="accept" onClick={() => { requestApproval(id,url,created_by, true); update() }}>Accept</button>
+                        <button className="accept" onClick={() => {
+                            clear()
+                            requestApproval(id,url,created_by, true, update)
+                            }}>Accept</button>
                     </div>
                 }
             </div>
@@ -55,10 +58,12 @@ const NotificationTab = ({notificationList,setNotificationList}: NotificationCom
     const filteredNotification = filterNotification(active, notificationList);
 
     const clearElement = (cleared: number) => {
+        console.log('cleared', cleared);
         setNotificationList(list => list.filter((_, index) => index !== cleared));
     };
 
     const clearAll = () => {
+        console.log('clear all');
         setNotificationList([]);
         clearAllNotifications();
     };
@@ -89,7 +94,10 @@ const NotificationTab = ({notificationList,setNotificationList}: NotificationCom
                                     key={index}
                                     {...item}
                                     clear={() => clearElement(index)}
-                                    update={() => getNotifications(setNotificationList)}
+                                    update={() =>{
+                                        console.log('update');
+                                        getNotifications(setNotificationList)
+                                    }}
                                 />
                             </div>
                         ))}

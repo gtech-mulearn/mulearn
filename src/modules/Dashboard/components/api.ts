@@ -23,8 +23,8 @@ export function clearAllNotifications() {
             console.error(err)
         })
 }
-export function clearNotification(id: string) {
-    privateGateway.delete(`${NotificationRoutes.deleteNotification}${id}/`)
+export async function clearNotification(id: string) {
+    return await privateGateway.delete(`${NotificationRoutes.deleteNotification}${id}/`)
         .then(response => {
             console.log(response)
         })
@@ -32,9 +32,13 @@ export function clearNotification(id: string) {
             console.error(err)
         })
 }
-export const requestApproval = (id:string,url: string,created_by: string, is_accepted: boolean) => {
+export const requestApproval = (id:string,url: string,created_by: string, is_accepted: boolean,update: () => void) => {
+    console.log('requesting')
     const lcId=url.split('/')[7],userId=created_by
     const newUrl=`${dashboardRoutes.getCampusLearningCircles}${lcId}/${userId}/`
     privateGateway.patch(newUrl, { is_accepted: is_accepted ? '1' : '0' })
-    clearNotification(id)
+    .then((res) => {
+        clearNotification(id)
+        .then(() => update())
+    })
 };
