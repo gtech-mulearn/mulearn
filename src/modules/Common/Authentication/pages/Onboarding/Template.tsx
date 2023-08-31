@@ -9,12 +9,12 @@ import OnboardingHeader from '../../components/Head/OnboardingHeader'
 
 export default function Template() {
     return (
-        <div className={styles.Template}>
-            <img className={styles.TemplatePlanet} src={planet} alt="" />
-            <img className={styles.TemplateAstro} src={astro} alt="" />
-            <img className={styles.TemplateAstroo} src={astroo} alt="" />
-            <img className={styles.TemplateMufo} src={mufo} alt="" />
-            <img className={styles.TemplateMuship} src={muship} alt="" />
+        <div className={styles.template}>
+            <img className={styles.templatePlanet} src={planet} alt="" />
+            <img className={styles.templateAstro} src={astro} alt="" />
+            <img className={styles.templateAstroo} src={astroo} alt="" />
+            <img className={styles.templateMufo} src={mufo} alt="" />
+            <img className={styles.templateMuship} src={muship} alt="" />
             <OnboardingHeader />
         </div>
     )
