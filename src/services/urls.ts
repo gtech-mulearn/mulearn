@@ -107,11 +107,13 @@ export const dashboardRoutes = {
     getCampusWeeklyKarma: "/api/v1/dashboard/campus/weekly-karma/",
     getStudentLevels: "api/v1/dashboard/campus/student-level/",
     //district
-    getDistrictStudentLevels: "api/v1/dashboard/district/college-level/",
+    getDistrictStudentLevels: "api/v1/dashboard/district/student-level/",
     getDistrictTopCampus: "api/v1/dashboard/district/top-campus/",
     //zonal
     getZonalTopDistrict: "api/v1/dashboard/zonal/top-districts/",
-    getZonalStudentLevels: "api/v1/dashboard/zonal/student-level/"
+    getZonalStudentLevels: "api/v1/dashboard/zonal/student-level/",
+
+    collegeLevels: "api/v1/dashboard/college/"
 } as const;
 
 export const organizationRoutes = {
@@ -129,10 +131,10 @@ export const organizationRoutes = {
 } as const;
 
 export const ManageLocationsRoutes = {
-    getCountryData: "/api/v1/location/country",
-    getStateData: "api/v1/location/${country}/states",
-    getZoneData: "api/v1/location/${country}/${state}/zone",
-    getDistrictData: "api/v1/location/${country}/${state}/${zone}/district"
+    getCountryData: "/api/v1/dashboard/location/countries",
+    getStateData: "api/v1/dashboard/location/states/${country}",
+    getZoneData: "api/v1/dashboard/location/zones/${state}",
+    getDistrictData: "api/v1/dashboard/location/districts/${zone}"
 };
 
 export const KKEMRoutes = {

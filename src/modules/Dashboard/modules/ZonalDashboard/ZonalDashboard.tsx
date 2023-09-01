@@ -118,7 +118,9 @@ function ZonalDashboard() {
     };
 
     const handleIconClick = (column: string) => {
-        console.log(sort);
+        if (column === "total_karma") {
+            column = "karma"; //temp fix
+        }
         if (sort === column) {
             setSort(`-${column}`);
         } else {
