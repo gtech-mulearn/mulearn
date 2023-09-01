@@ -258,23 +258,20 @@ export const getStudentLevels = async () => {
         dashboardRoutes.getZonalStudentLevels
     );
     const data = response.data.response;
-    const dupliChecker: string[] = [];
-    return data
-        .map((college: any) => {
-            if (!dupliChecker.includes(college.college_code)) {
-                dupliChecker.push(college.college_code);
-                return [
-                    college.college_code,
-                    college.level[2].students_count,
-                    college.level[3].students_count,
-                    college.level[0].students_count,
-                    college.level[1].students_count
-                ];
-            }
-        })
-        .sort((a: number[], b: number[]) => sum(b) - sum(a))
-        .filter((item: any) => !!item)
-        .slice(0, 5);
+    //Combining all colleges student levels into one
+    return [
+        data.reduce(
+            (acc: any[], curr: any) => {
+                //api returns levels in incorrect order
+                acc[1] += curr.level[2].students_count;
+                acc[2] += curr.level[3].students_count;
+                acc[3] += curr.level[0].students_count;
+                acc[4] += curr.level[1].students_count;
+                return acc;
+            },
+            [" ", 0, 0, 0, 0]
+        )
+    ];
 };
 
 export const getTopDistrict = async () => {
@@ -282,7 +279,10 @@ export const getTopDistrict = async () => {
         dashboardRoutes.getZonalTopDistrict
     );
     const data = response.data.response;
-    return data.map((campus: any) => {
-        return [campus.district, 4 - campus.rank];
-    });
+    const returnData: any[] = [["Districts"], [" "]];
+    for (let item of data) {
+        returnData[0].push(item.district);
+        returnData[1].push(item.karma);
+    }
+    return returnData;
 };
