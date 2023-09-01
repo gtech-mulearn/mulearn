@@ -96,7 +96,6 @@ const Profile = () => {
             getUserProfile(setUserProfile, setAPILoadStatus, setProfileStatus);
         }, 1000);
     };
-
     useEffect(() => {
         if (firstFetch.current) {
             if (!id) {

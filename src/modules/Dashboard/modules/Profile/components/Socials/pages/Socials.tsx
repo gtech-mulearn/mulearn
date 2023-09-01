@@ -102,12 +102,12 @@ const Socials = (props: Props) => {
                         className={styles.edit_profile_btn}
                         tabIndex={0}
                     >
-                        <i className="fi fi-rr-circle-xmark"></i>
+                        <i className="fi fi-br-check"></i>
                     </p>
                 )}
             </div>
             <p className={styles.socials_icons}>
-                {Object.entries(formik.values).map(([name, username]) => {
+                {Object.entries(formik.values).map(([name, username], i) => {
                     if (editSocials ? true : username) {
                         const urlPattern = socialMediaUrlMappings[name];
                         const url = urlPattern + username;
@@ -116,6 +116,7 @@ const Socials = (props: Props) => {
                                 <div
                                     style={editSocials ? { width: "100%" } : {}}
                                     className={styles.icon_and_input}
+                                    key={i}
                                 >
                                     {" "}
                                     <a
