@@ -9,7 +9,7 @@
 }
 
 .tableFooter {
-    background-color:  var(--White);
+    background-color: var(--White);
     padding: 5px 15px;
     border-radius: 8px;
     display: flex;
@@ -56,4 +56,21 @@
 
 .showSelect {
     cursor: pointer;
+}
+
+/* ultra small case */
+@media (max-width: 450px) {
+    .tableFooter {
+        gap: 0px;
+        font-size: smaller;
+        * {
+            gap: 0px;
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
+    .showContainer select {
+        padding: 0.25rem;
+    }
 }

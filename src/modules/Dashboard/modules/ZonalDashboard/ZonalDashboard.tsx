@@ -38,11 +38,11 @@ function ZonalDashboard() {
         if (firstFetch.current) {
             (async () => {
                 try {
-                    setBarData([["", ""]].concat(await getTopDistrict()));
+                    setBarData(await getTopDistrict());
                     setColData(
                         [
                             [
-                                "Colleges",
+                                "Levels",
                                 "Level 1",
                                 "Level 2",
                                 "Level 3",
@@ -75,13 +75,13 @@ function ZonalDashboard() {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getzonaldashboard(activeTab, setData, nextPage, perPage);
+        // getzonaldashboard(activeTab, setData, nextPage, perPage);
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getzonaldashboard(activeTab, setData, prevPage, perPage);
+        // getzonaldashboard(activeTab, setData, prevPage, perPage);
     };
 
     const handleSearch = (search: string) => {
@@ -100,57 +100,45 @@ function ZonalDashboard() {
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
+    };
+
+    const handleTabClick = (tab: string) => {
+        if (tab === "Student management") {
+            setColumns(columnsStudent);
+            getzonaldashboard(tab, setData, 1, perPage, setTotalPages, "", "");
+        } else if (tab === "Campus management") {
+            setColumns(columnsCampus);
+            getzonaldashboard(tab, setData, 1, perPage, setTotalPages, "", "");
+        } else {
+            alert("Error to load Table Headers");
+        }
+        setCurrentPage(1);
+        setActiveTab(tab);
+        setPopupStatus(false);
+    };
+
+    const handleIconClick = (column: string) => {
+        if (column === "total_karma") {
+            column = "karma"; //temp fix
+        }
+        if (sort === column) {
+            setSort(`-${column}`);
+        } else {
+            setSort(column);
+        }
+    };
+
+    useEffect(() => {
         getzonaldashboard(
             activeTab,
             setData,
             1,
-            selectedValue,
+            perPage,
             setTotalPages,
             "",
-            ""
+            sort
         );
-    };
-
-    // const handleTabClick = (tab: string) => {
-    //     if (tab === "Student management") {
-    //         setColumns(columnsStudent);
-    //         getzonaldashboard(tab, setData, 1, perPage, setTotalPages, "", "");
-    //     } else if (tab === "Campus management") {
-    //         setColumns(columnsCampus);
-    //         getzonaldashboard(tab, setData, 1, perPage, setTotalPages, "", "");
-    //     } else {
-    //         alert("Error to load Table Headers");
-    //     }
-    //     setCurrentPage(1);
-    //     setActiveTab(tab);
-    //     setPopupStatus(false);
-    // };
-
-    const handleIconClick = (column: string) => {
-        if (sort === column) {
-            setSort(`-${column}`);
-            getzonaldashboard(
-                activeTab,
-                setData,
-                1,
-                perPage,
-                setTotalPages,
-                "",
-                sort
-            );
-        } else {
-            setSort(column);
-            getzonaldashboard(
-                activeTab,
-                setData,
-                1,
-                perPage,
-                setTotalPages,
-                "",
-                sort
-            );
-        }
-    };
+    }, [sort, currentPage, perPage]);
 
     const CSV = (tabname: string) => {
         if (
@@ -166,14 +154,15 @@ function ZonalDashboard() {
             return dashboardRoutes.zonalCampusData;
         }
     };
-
     return (
         <>
+            <TableTopTab active={activeTab} onTabClick={handleTabClick} />
             <div className={graphStyles.graphs}>
                 <div className={graphStyles.container}>
                     <h2>Top 3 Districts</h2>
                     <BarChart
                         data={barData}
+                        ylabel="Karma"
                         addOptions={{
                             legend: { position: "none" },
                             colors: ["#91ABFF"]
@@ -202,7 +191,6 @@ function ZonalDashboard() {
                     />
                 </div>
             </div>
-            {/* <TableTopTab active={activeTab} onTabClick={handleTabClick} /> */}
 
             {data && (
                 <>
@@ -229,7 +217,7 @@ function ZonalDashboard() {
                             handleNextClick={handleNextClick}
                             handlePreviousClick={handlePreviousClick}
                             perPage={perPage}
-                            setPerPage={setPerPage}
+                            setPerPage={handlePerPageNumber as any}
                         />
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>

@@ -1,0 +1,162 @@
+.template {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.templatePlanet {
+    position: absolute;
+    top: 0;
+    left: -3rem;
+    animation: revolve 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes revolve {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    35% {
+        transform: translate(10rem, -6rem) rotate(-30deg);
+    }
+
+    75% {
+        transform: translate(8rem, 0rem) rotate(10deg);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.templateAstro {
+    position: absolute;
+    top: 70%;
+    left: -10rem;
+    animation: astro 10s linear infinite;
+    z-index: -2;
+}
+
+@keyframes astro {
+    0% {
+        transform: translate(0%, 0%);
+    }
+
+    100% {
+        transform: translate(100rem, -35rem) rotate(-8deg);
+    }
+}
+
+.templateAstroo {
+    position: absolute;
+    bottom: 50;
+    right: -10rem;
+    z-index: -2;
+    animation: astroo 10s linear infinite;
+}
+
+@keyframes astroo {
+    0% {
+        transform: translate(0%, 0%);
+    }
+
+    100% {
+        transform: translate(-100rem, 20rem) rotate(10deg);
+    }
+}
+
+.templateMuship {
+    position: absolute;
+    bottom: -10rem;
+    right: 18rem;
+    animation: muship 10s linear infinite;
+}
+
+@keyframes muship {
+    0% {
+        transform: translate(0%, 0%);
+    }
+
+    100% {
+        transform: translate(50rem, -30rem) rotate(5deg);
+    }
+}
+
+.templateMufo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    rotate: -5deg;
+    animation: bounce 10s linear infinite;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(5rem, -2.5rem) rotate(-10deg);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@media(width<=820px) {
+
+    .templateAstro,
+    .templateAstroo,
+    .templateMuship,
+    .templateMufo,
+    .templatePlanet {
+        height: 12rem;
+    }
+
+    .templateAstro,
+    .templateAstroo,
+    .templateMuship {
+        animation-duration: 5s;
+    }
+
+    .templateAstroo {
+        animation-delay: 1s;
+    }
+
+
+    @keyframes revolve {
+        0% {
+            transform: translate(0, 0);
+        }
+
+        35% {
+            transform: translate(5rem, -4rem) rotate(-30deg);
+        }
+
+        75% {
+            transform: translate(3rem, 0rem) rotate(10deg);
+        }
+
+        100% {
+            transform: translate(0, 0);
+        }
+    }
+
+    @keyframes bounce {
+        0% {
+            transform: translate(2rem, 0);
+        }
+
+        50% {
+            transform: translate(2rem, -2.5rem) rotate(-10deg);
+        }
+
+        100% {
+            transform: translate(2rem, 0);
+        }
+    }
+}

@@ -22,13 +22,21 @@ export const getdistrictdashboard = async (
                         sortBy: sortID
                     }
                 })
-                .then((response:APIResponse<{ data:any,pagination:{totalPages:number} }>) => {
-                    return response.data;
-                })
+                .then(
+                    (
+                        response: APIResponse<{
+                            data: any;
+                            pagination: { totalPages: number };
+                        }>
+                    ) => {
+                        return response.data;
+                    }
+                )
                 .then(data => {
                     setData(data.response.data);
                     //console.log(data.response.data);
-                    if (setTotalPages) setTotalPages(data.response.pagination.totalPages);
+                    if (setTotalPages)
+                        setTotalPages(data.response.pagination.totalPages);
                 });
         } else if (activeTab === "Campus management") {
             await privateGateway
@@ -40,12 +48,20 @@ export const getdistrictdashboard = async (
                         sortBy: sortID
                     }
                 })
-                .then((response: APIResponse<{ data:any,pagination:{totalPages:number} }>) => {
-                    return response.data;
-                })
+                .then(
+                    (
+                        response: APIResponse<{
+                            data: any;
+                            pagination: { totalPages: number };
+                        }>
+                    ) => {
+                        return response.data;
+                    }
+                )
                 .then(data => {
                     setData(data.response.data);
-                    if (setTotalPages) setTotalPages(data.response.pagination.totalPages);
+                    if (setTotalPages)
+                        setTotalPages(data.response.pagination.totalPages);
                 });
         } else {
             alert("error to Load Data");
@@ -67,13 +83,21 @@ interface CountryProps {
     created_by: string;
 }
 
-export const getAffiliation = async (setAffiliationData: UseStateFunc<CountryProps[]>) => {
+export const getAffiliation = async (
+    setAffiliationData: UseStateFunc<CountryProps[]>
+) => {
     try {
         await privateGateway
             .get(organizationRoutes.getAffiliation)
-            .then((response: APIResponse<{ data:{affiliation:CountryProps[]} }>) => {
-                return response.data;
-            })
+            .then(
+                (
+                    response: APIResponse<{
+                        data: { affiliation: CountryProps[] };
+                    }>
+                ) => {
+                    return response.data;
+                }
+            )
             .then(data => {
                 const affiliation = data.response.data.affiliation;
                 setAffiliationData(affiliation);
@@ -85,13 +109,21 @@ export const getAffiliation = async (setAffiliationData: UseStateFunc<CountryPro
         }
     }
 };
-export const getCountry = async (setCountryData: UseStateFunc<CountryProps[]>) => {
+export const getCountry = async (
+    setCountryData: UseStateFunc<CountryProps[]>
+) => {
     try {
         await privateGateway
             .get(organizationRoutes.getLocation + "/country")
-            .then((response: APIResponse<{ data:{countries:CountryProps[]} }>) => {
-                return response.data;
-            })
+            .then(
+                (
+                    response: APIResponse<{
+                        data: { countries: CountryProps[] };
+                    }>
+                ) => {
+                    return response.data;
+                }
+            )
             .then(data => {
                 const countries = data.response.data.countries;
                 setCountryData(countries);
@@ -104,13 +136,20 @@ export const getCountry = async (setCountryData: UseStateFunc<CountryProps[]>) =
     }
 };
 
-export const getStates = async (country: string, setStatesData: UseStateFunc<CountryProps[]>) => {
+export const getStates = async (
+    country: string,
+    setStatesData: UseStateFunc<CountryProps[]>
+) => {
     try {
         await privateGateway
             .get(`${organizationRoutes.getLocation}/${country}/states`)
-            .then((response: APIResponse<{ data:{states:CountryProps[]} }>) => {
-                return response.data;
-            })
+            .then(
+                (
+                    response: APIResponse<{ data: { states: CountryProps[] } }>
+                ) => {
+                    return response.data;
+                }
+            )
             .then(data => {
                 const states = data.response.data.states;
                 setStatesData(states);
@@ -131,9 +170,13 @@ export const getZones = async (
     try {
         await privateGateway
             .get(`${organizationRoutes.getLocation}/${country}/${state}/zone`)
-            .then((response: APIResponse<{ data:{states:CountryProps[]} }>) => {
-                return response.data;
-            })
+            .then(
+                (
+                    response: APIResponse<{ data: { states: CountryProps[] } }>
+                ) => {
+                    return response.data;
+                }
+            )
             .then(data => {
                 const states = data.response.data.states;
                 setZonesData(states);
@@ -157,9 +200,13 @@ export const getDistricts = async (
             .get(
                 `${organizationRoutes.getLocation}/${country}/${state}/${zone}/district`
             )
-            .then((response: APIResponse<{ data:{states:CountryProps[]} }>) => {
-                return response.data;
-            })
+            .then(
+                (
+                    response: APIResponse<{ data: { states: CountryProps[] } }>
+                ) => {
+                    return response.data;
+                }
+            )
             .then(data => {
                 const districts = data.response.data.states;
                 setDistrictsData(districts);
@@ -185,42 +232,36 @@ export const getInfo = async (code: string) => {
         }
     }
 };
-export const getStudentLevels = async ()=>{
-    
-    const sum = (arr:number[])=>{
-        return arr.slice(1).reduce((acc,curr)=>acc+curr)
-    }
-    
-    const response = await privateGateway
-                    .get(dashboardRoutes.getDistrictStudentLevels)
-    const data = response.data.response
-    const dupliChecker:string[] = []
-    
-    return data
-            .map((college:any)=>{
-                if (!dupliChecker.includes(college.college_code)){
-                    dupliChecker.push(college.college_code)
-                    return [
-                        college.college_code,
-                        college.level[2].students_count,
-                        college.level[3].students_count,
-                        college.level[0].students_count,
-                        college.level[1].students_count
-                    ]
-                }
-            })
-            .filter((item:any)=>!!item)
-            //Get top 5 colleges,top as sum of students
-            .sort((a:number[],b:number[])=>(sum(b)-sum(a)))
-            .slice(0,5)
-}
+export const getStudentLevels = async () => {
+    const sum = (arr: number[]) => {
+        return arr.slice(1).reduce((acc, curr) => acc + curr);
+    };
 
-export const  getTopCampus = async()=>{
-    const response = await privateGateway
-                    .get(dashboardRoutes.getDistrictTopCampus)
-    const data = response.data.response
-    return data
-            .map((campus:any)=>{
-                return [campus.campus_code,4-campus.rank]
-            })
-}
+    const response = await privateGateway.get(
+        dashboardRoutes.getDistrictStudentLevels
+    );
+    const data = response.data.response;
+
+    return [
+        [
+            " ",
+            data[2].students_count,
+            data[3].students_count,
+            data[0].students_count,
+            data[1].students_count
+        ]
+    ];
+};
+
+export const getTopCampus = async () => {
+    const response = await privateGateway.get(
+        dashboardRoutes.getDistrictTopCampus
+    );
+    const data = response.data.response;
+    const returnData: any[] = [["Colleges"], [" "]];
+    for (let item of data) {
+        returnData[0].push(item.campus_code);
+        returnData[1].push(item.rank as -4);
+    }
+    return returnData;
+};

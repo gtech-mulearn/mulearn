@@ -16,7 +16,7 @@ import { getKarmaVoucher } from "./service/api";
 
 type Props = {};
 
-export const KarmaVoucher = (props: Props) => {
+const KarmaVoucher = (props: Props) => {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -28,22 +28,28 @@ export const KarmaVoucher = (props: Props) => {
     const toast = useToast();
 
     const columnOrder: ColOrder[] = [
-        { column: "title", Label: "Title", isSortable: true },
-        { column: "hashtag", Label: "Hashtag", isSortable: false },
-        { column: "org", Label: "Organization", isSortable: false },
-        { column: "active", Label: "Active", isSortable: false },
+        { column: "user", Label: "User", isSortable: true },
+        { column: "code", Label: "Code", isSortable: true },
         { column: "karma", Label: "Karma", isSortable: true },
-        { column: "usage_count", Label: "Usage Count", isSortable: false },
-        {
-            column: "variable_karma",
-            Label: "Variable Karma",
-            isSortable: false
-        },
+        { column: "claimed", Label: "Claimed", isSortable: true },
+        { column: "task", Label: "Task", isSortable: true },
+        { column: "week", Label: "Week", isSortable: true },
+        { column: "month", Label: "Month", isSortable: true },
         { column: "updated_by", Label: "Updated By", isSortable: true },
         { column: "updated_at", Label: "Updated On", isSortable: true },
         { column: "created_by", Label: "Created By", isSortable: false },
         { column: "created_at", Label: "Created On", isSortable: true }
     ];
+
+    const handleError = () => {
+        toast({
+            title: "Oops",
+            description: "Table fetch failed!",
+            status: "error",
+            duration: 5000,
+            isClosable: true
+        });
+    };
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -54,6 +60,7 @@ export const KarmaVoucher = (props: Props) => {
             perPage,
             setIsLoading,
             setTotalPages,
+            handleError,
             "",
             sort
         );
@@ -68,6 +75,7 @@ export const KarmaVoucher = (props: Props) => {
             perPage,
             setIsLoading,
             setTotalPages,
+            handleError,
             "",
             sort
         );
@@ -81,6 +89,7 @@ export const KarmaVoucher = (props: Props) => {
                 perPage,
                 setIsLoading,
                 setTotalPages,
+                handleError,
                 "",
                 ""
             );
@@ -96,6 +105,7 @@ export const KarmaVoucher = (props: Props) => {
             perPage,
             setIsLoading,
             setTotalPages,
+            handleError,
             search,
             ""
         );
@@ -110,6 +120,7 @@ export const KarmaVoucher = (props: Props) => {
             selectedValue,
             setIsLoading,
             setTotalPages,
+            handleError,
             "",
             ""
         );
@@ -124,6 +135,7 @@ export const KarmaVoucher = (props: Props) => {
                 perPage,
                 setIsLoading,
                 setTotalPages,
+                handleError,
                 "",
                 `-${column}`
             );
@@ -135,6 +147,7 @@ export const KarmaVoucher = (props: Props) => {
                 perPage,
                 setIsLoading,
                 setTotalPages,
+                handleError,
                 "",
                 column
             );
@@ -142,7 +155,6 @@ export const KarmaVoucher = (props: Props) => {
 
         //console.log(`Icon clicked for column: ${column}`);
     };
-
     return (
         <>
             <div
@@ -151,7 +163,6 @@ export const KarmaVoucher = (props: Props) => {
                     gap: "15px"
                 }}
             >
-                {/* Not Ready yet 
                 <PowerfulButton
                     variant="secondary"
                     onClick={() =>
@@ -160,7 +171,7 @@ export const KarmaVoucher = (props: Props) => {
                 >
                     <AiOutlinePlusCircle />
                     Bulk Import
-                </PowerfulButton> */}
+                </PowerfulButton>
             </div>
 
             {data && (
@@ -206,3 +217,5 @@ export const KarmaVoucher = (props: Props) => {
         </>
     );
 };
+
+export default KarmaVoucher;

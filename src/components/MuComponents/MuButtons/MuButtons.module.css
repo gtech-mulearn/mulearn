@@ -167,7 +167,7 @@
     border: var(--border-btn) transparent;
     font-weight: 500;
     font-size: 17px;
-    padding: var(--padding-btn);
+    padding: 6px 15px;
     transition: var(--transition-speed);
 
     &:hover {

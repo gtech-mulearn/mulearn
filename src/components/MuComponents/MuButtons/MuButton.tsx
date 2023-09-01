@@ -177,12 +177,20 @@ type Props = {
     "font-size"?: string;
     borderColor?: string;
     icon?: JSX.Element;
-    isLoading?: boolean; // show loading spinner if neccessary.
+    isLoading?: boolean; // show loading spinner if necessary.
     disabled?: boolean;
 };
 
+type Variants =
+    | "primary"
+    | "secondary"
+    | "ghost"
+    | "outline"
+    | "destructive"
+    | "success"
+    | "link"
+    | "draft";
 
-type Variants = "primary" | "secondary" | "ghost" | "outline" | "destructive" | "success" | "link" | "draft"
 
 type ButtonProps = ({ children, className, variant, style, ...props }:
     {children: ReactNode, className?:string, variant?:Variants, style?: React.CSSProperties} & React.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element

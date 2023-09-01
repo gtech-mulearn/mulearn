@@ -5,7 +5,6 @@ TODO: Make it Functional
 */
 
 export const bulkImport = async (data: any, path: string) => {
-    console.log(data, path);
     const val = await axios
         .post(`${import.meta.env.VITE_BACKEND_URL}${path}`, data, {
             headers: {
