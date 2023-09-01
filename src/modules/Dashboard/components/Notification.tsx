@@ -4,7 +4,8 @@ import { clearAllNotifications, clearNotification, getNotifications, Notificatio
 import { IoIosClose } from 'react-icons/io';
 import dpm from '../assets/images/dpm.webp';
 import { filterNotification, getTimeAgo, isRequest } from './utils';
-import { index } from 'd3';
+import { useToast } from '@chakra-ui/react'
+
 interface NotificationComponentProps {
     notificationList: NotificationProps[];
     setNotificationList: React.Dispatch<React.SetStateAction<NotificationProps[]>>;
@@ -12,7 +13,8 @@ interface NotificationComponentProps {
 
 
 const NotificationMessage = ({ profile, title, created_at, description, clear, id, url, update ,created_by}: NotificationMessageProps) => {
-
+    const toast=useToast();
+    const props={toast:toast};
     return (
         <div className="notiMessageTab">
             <img src={profile || dpm} alt="" />
@@ -20,7 +22,7 @@ const NotificationMessage = ({ profile, title, created_at, description, clear, i
                 <b>{title?title:" "}</b>  
                 <span className="blueDot" onClick={() => {
                     clear()
-                    clearNotification(id)
+                    clearNotification(id,props)
                     update()
                 }}>
                     <IoIosClose size={'18px'} />
@@ -34,12 +36,12 @@ const NotificationMessage = ({ profile, title, created_at, description, clear, i
                     <div className="btns">
                         <button onClick={() => { 
                             clear()
-                            requestApproval(id,url,created_by, false,update);  
+                            requestApproval(id,url,created_by, false,update,props);  
                             }}>Decline</button>
                         &nbsp;
                         <button className="accept" onClick={() => {
                             clear()
-                            requestApproval(id,url,created_by, true, update)
+                            requestApproval(id,url,created_by, true, update,props)
                             }}>Accept</button>
                     </div>
                 }
@@ -50,6 +52,8 @@ const NotificationMessage = ({ profile, title, created_at, description, clear, i
 
 const NotificationTab = ({notificationList,setNotificationList}: NotificationComponentProps) => {
     const [active, setActive] = useState(0);
+    const toast=useToast();
+    const props={toast:toast};
     const links = [
         { title: 'View All', count: notificationList.length },
         { title: 'Requests', count: notificationList.filter((item: NotificationProps) => isRequest(item.title)).length },
@@ -64,7 +68,7 @@ const NotificationTab = ({notificationList,setNotificationList}: NotificationCom
 
     const clearAll = () => {
         setNotificationList([]);
-        clearAllNotifications();
+        clearAllNotifications(props);
     };
 
     return (
@@ -94,7 +98,7 @@ const NotificationTab = ({notificationList,setNotificationList}: NotificationCom
                                     {...item}
                                     clear={() => clearElement(index)}
                                     update={() =>{
-                                        getNotifications(setNotificationList)
+                                        getNotifications(setNotificationList,props)
                                     }}
                                 />
                             </div>
