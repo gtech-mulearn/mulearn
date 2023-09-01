@@ -16,7 +16,7 @@ import { getKarmaVoucher } from "./service/api";
 
 type Props = {};
 
-export const KarmaVoucher = (props: Props) => {
+const KarmaVoucher = (props: Props) => {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -28,11 +28,13 @@ export const KarmaVoucher = (props: Props) => {
     const toast = useToast();
 
     const columnOrder: ColOrder[] = [
-        { column: "task", Label: "Task", isSortable: true },
+        { column: "user", Label: "User", isSortable: true },
+        { column: "code", Label: "Code", isSortable: true },
         { column: "karma", Label: "Karma", isSortable: true },
         { column: "claimed", Label: "Claimed", isSortable: true },
+        { column: "task", Label: "Task", isSortable: true },
+        { column: "week", Label: "Week", isSortable: true },
         { column: "month", Label: "Month", isSortable: true },
-        { column: "updated_by", Label: "Updated By", isSortable: true },
         { column: "updated_by", Label: "Updated By", isSortable: true },
         { column: "updated_at", Label: "Updated On", isSortable: true },
         { column: "created_by", Label: "Created By", isSortable: false },
@@ -215,3 +217,5 @@ export const KarmaVoucher = (props: Props) => {
         </>
     );
 };
+
+export default KarmaVoucher;
