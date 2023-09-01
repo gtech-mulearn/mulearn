@@ -54,7 +54,8 @@ export const postDistrictData = async (
 
 //*NOT WORKING ❌
 export const patchDistrictData = async (
-    districtID: string,
+    zone: string,
+    district: string,
     newName: string
 ) => {
     try {
@@ -62,10 +63,11 @@ export const patchDistrictData = async (
             .patch(
                 ManageLocationsRoutes.patchDistrictData.replace(
                     "${district}",
-                    districtID
+                    district
                 ),
                 {
-                    id: districtID,
+                    zone: zone,
+                    id: district,
                     name: newName
                 }
             )

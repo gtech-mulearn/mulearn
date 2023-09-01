@@ -56,7 +56,11 @@ const EditLocation = () => {
                     values.ItemName
                 );
             } else if (activeItem === "District") {
-                patchDistrictData(location.state.value, values.ItemName);
+                patchDistrictData(
+                    selectedZone,
+                    location.state.value,
+                    values.ItemName
+                );
             }
             toast({
                 title: "Interest Group Updated",
