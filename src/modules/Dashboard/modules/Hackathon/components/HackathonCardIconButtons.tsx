@@ -97,8 +97,8 @@ const HackathonCardIconButtons = ({
         <div className={styles.shared} style={{color: "var(--blue)", ...style}}>
             <div className={styles.shared2}>
                 <div className={styles.frame2}>
-            {hackathon.editable ? (<>
-                            <div className={styles.group}>
+                    {hackathon.editable ? (
+                            <>{/* <div className={styles.group}>
                                 <Link to={`/dashboard/hackathon/create/${hackathon.id}`} >
                                     <LuEdit
                                         data-tooltip-id="Icon"
@@ -136,8 +136,7 @@ const HackathonCardIconButtons = ({
                                     />
                                 )}
                             </div>
-                        </div>
-                        <div>
+                            <div>
                             {!isDraft && (
                                 <div className={styles.group}>
                                     <FaThList
@@ -188,43 +187,33 @@ const HackathonCardIconButtons = ({
                                             }}
                                         />
                                     )}
-                            </>)}
-
-                            
-                            {!isDraft && (
-                                <PowerfulButton                        
-                                    children="List"
-                                    className={styles.lister}
-                                    data-tooltip-content="List Participants"
-                                    onClick={() => {
-                                        navigate(
-                                            `/dashboard/hackathon/applicants/${hackathon.id}`
-                                        );
-                                    }}
-                                />
+                                </>
                             )}
-                    </>
-            ) : (
-                    <div className={styles.group}
-                    style={{ gridArea: "1 / 2 / 2 / 3" }}
-                        onClick={() => {
-                            window.navigator.clipboard.writeText(shareData.url);
-                            toast({
-                                title: "Success",
-                                description: "Link copied to clipboard",
-                                status: "success",
-                                duration: 3000,
-                                isClosable: true
-                            });
-                            if (isShareable) window.navigator.share(shareData);
-                            }}
-                    >
-                        <LuCopy data-tooltip-id="Icon"
-                            data-tooltip-content={`Copy${ isShareable ? "/Share" : ""}`}
-                         />
-                    </div>
-            )}
-            </div>
+                            </div>
+                            
+                        </>
+                                
+                    ) : (
+                            <div className={styles.group}
+                                style={{ gridArea: "1 / 2 / 2 / 3" }}
+                                onClick={() => {
+                                    window.navigator.clipboard.writeText(shareData.url);
+                                    toast({
+                                        title: "Success",
+                                        description: "Link copied to clipboard",
+                                        status: "success",
+                                        duration: 3000,
+                                        isClosable: true
+                                    });
+                                    if (isShareable) window.navigator.share(shareData);
+                                }}
+                            >
+                                <LuCopy data-tooltip-id="Icon"
+                                    data-tooltip-content={`Copy${ isShareable ? "/Share" : ""}`}
+                                />
+                            </div>
+                        )}
+                </div>
             </div>
         </div>
     );
