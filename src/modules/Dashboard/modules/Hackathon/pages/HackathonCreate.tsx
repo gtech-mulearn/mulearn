@@ -34,7 +34,7 @@ import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
  * TODO: Make the form things json and iterate and display, store the jsons in a separate file.
  */
 
-const formatDate = (date: any): string => {
+const formatDate = (date: any): [string,number] => {
     if (
         date === "undefined" ||
         date === null ||
@@ -42,9 +42,13 @@ const formatDate = (date: any): string => {
         date === "null" ||
         date === ""
     )
-        return "";
-    const formattedDate = new Date(date).toISOString().split("T")[0];
-    return formattedDate;
+        return ["", 0];
+
+    const x = new Date(date)
+    const formattedDate = x.toISOString().split("T")[0];
+    const unix = Math.floor(x.getTime()/1000.0) // for unix timestamp comparison
+
+    return [formattedDate, unix];
 };
 
 function isDetailsComplete(hackathon: HackList): (true | string) {
@@ -139,13 +143,42 @@ const HackathonCreate = () => {
                 selectedFields[field] = fields[field];
             }
         });
+        
+        const [applicationStartDate, RSD] = formatDate(values.applicationStart);
+        const [applicationEndsDate, RED] = formatDate(values.applicationEnds);
+        const [eventStartDate, HSD] = formatDate(values.eventStart);
+        const [eventEndDate, HED] = formatDate(values.eventEnd);
+        
+        if ( isPublishing ) {
+            let checker = false
+            const runToast = (title: string, description: string) => {
+                toast({
+                    title,
+                    description,
+                    status: "error",
+                    isClosable: true,
+                    position:"top-right"
+                });
+            }
 
-
-        const applicationStartDate = formatDate(values.applicationStart);
-        const applicationEndsDate = formatDate(values.applicationEnds);
-        const eventStartDate = formatDate(values.eventStart);
-        const eventEndDate = formatDate(values.eventEnd);
-
+            if (RSD > RED) {
+                runToast( 'Invalid Date', 'Registration Start date > Registration End date')
+                checker = true
+            }
+            if (RED > HSD) {
+                runToast( 'Invalid Date', 'Registration End > Hackathon Start date')
+                checker = true
+            }
+            if (HSD > HED) {
+                runToast( 'Invalid Date', 'Hackathon Start > Hackathon End date')
+                checker = true
+            }
+            if (checker) {
+                setIsPublishing(false)
+                return;
+            }
+        }
+        
         // Convert selectedFields object to a JSON string and then parse it to get the desired format
         const formattedFormFields = JSON.stringify(selectedFields);
 
