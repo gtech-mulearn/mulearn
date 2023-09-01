@@ -17,6 +17,7 @@ import {
 
 type Props = {
     onClose: any;
+    refetch?: Function;
 };
 
 const CollegeLevelsCreate = (props: Props) => {
@@ -134,6 +135,7 @@ const CollegeLevelsCreate = (props: Props) => {
                             org_id: values.org_id,
                             level: values.level
                         });
+                        if (props.refetch) props.refetch();
                         toast({
                             title: "College level created",
                             status: "success",

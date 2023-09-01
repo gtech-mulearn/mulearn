@@ -14,6 +14,7 @@ import { editCollegeLevels } from "../apis";
 type Props = {
     onClose: any;
     org_id: string;
+    refetch?: Function;
 };
 
 const CollegeLevelsEdit = (props: Props) => {
@@ -30,7 +31,11 @@ const CollegeLevelsEdit = (props: Props) => {
             })}
             onSubmit={values => {
                 (async () => {
-                    editCollegeLevels({ org_id: props.org_id, ...values });
+                    await editCollegeLevels({
+                        org_id: props.org_id,
+                        ...values
+                    });
+                    if (props.refetch) props.refetch();
                     props.onClose(null);
                 })();
             }}
