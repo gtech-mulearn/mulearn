@@ -7,7 +7,7 @@ import astro from '../../assets/astro.webp'
 import planet from '../../assets/planet.webp'
 import OnboardingHeader from '../../components/Head/OnboardingHeader'
 import Rolepage from './Rolepage'
-import AccountCreation from './accountCreation'
+import AccountCreation from './AccountCreation'
 
 export default function Template() {
     return (
@@ -18,6 +18,7 @@ export default function Template() {
             <img className={styles.templateMufo} src={mufo} alt="" />
             <img className={styles.templateMuship} src={muship} alt="" />
             <OnboardingHeader />
+            <AccountCreation/>
         </div>
     )
 }

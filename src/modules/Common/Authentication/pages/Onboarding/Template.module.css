@@ -4,7 +4,8 @@
     height: 100vh;
     display:grid;
     place-items: center;
-    margin-top: 2rem;
+    padding-top: 3rem;
+    overflow-x: scroll;
 }
 @media(width<500px){
     .Template{
