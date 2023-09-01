@@ -130,6 +130,7 @@ export const organizationRoutes = {
 
 export const ManageLocationsRoutes = {
     getCountryData: "/api/v1/dashboard/location/countries",
+    patchCountryData: "/api/v1/dashboard/location/countries/${country}/",
     getStateData: "api/v1/dashboard/location/states/${country}",
     getZoneData: "api/v1/dashboard/location/zones/${state}",
     getDistrictData: "api/v1/dashboard/location/districts/${zone}"

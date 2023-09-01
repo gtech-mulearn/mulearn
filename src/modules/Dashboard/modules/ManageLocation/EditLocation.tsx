@@ -1,59 +1,64 @@
-
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { putCountryData } from "./apis/CountryAPI";
+import { patchCountryData } from "./apis/CountryAPI";
 import { putStateData } from "./apis/StateAPI";
 import { putZoneData } from "./apis/ZoneAPI";
 import { putDistrictData } from "./apis/DistrictAPI";
 import { useToast } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 
 const EditLocation = () => {
-
-    const[selectedItem,setSelectedItem] = useState("")
-    const[activeItem,setActiveItem] = useState("")
-    const[selectedCountry,setSelectedCountry] = useState("")
-    const[selectedState,setSelectedState] = useState("")
-    const[selectedZone,setSelectedZone] = useState("")
-
+    const [selectedItem, setSelectedItem] = useState("");
+    const [activeItem, setActiveItem] = useState("");
+    const [selectedCountry, setSelectedCountry] = useState("");
+    const [selectedState, setSelectedState] = useState("");
+    const [selectedZone, setSelectedZone] = useState("");
 
     const navigate = useNavigate();
     const location = useLocation();
-    const toast = useToast();   
+    const toast = useToast();
 
-    useEffect(()=>{
-        setSelectedItem(location.state.value)
-        setActiveItem(location.state.activeItem)
-        setSelectedCountry(location.state.country)
-        setSelectedState(location.state.state)
-        setSelectedZone(location.state.zone)
-    },[])
+    useEffect(() => {
+        setSelectedItem(location.state.name);
+        setActiveItem(location.state.activeItem);
+        setSelectedCountry(location.state.country);
+        setSelectedState(location.state.state);
+        setSelectedZone(location.state.zone);
+    }, []);
 
-    function handleSubmitEdit(values:any){
-        if(selectedItem === values.ItemName){
+    function handleSubmitEdit(values: any) {
+        if (selectedItem === values.ItemName) {
             toast({
                 title: "No Changes Made",
                 status: "warning",
                 duration: 3000,
                 isClosable: true
             });
-        }else{
-            if(activeItem === "Country"){
-                putCountryData(selectedItem,values.ItemName);
-            }
-            else if(activeItem === "State"){
-                putStateData(selectedCountry,selectedItem,values.ItemName)
-            }
-            else if(activeItem === "Zone"){
-                putZoneData(selectedCountry,selectedState,selectedItem,values.ItemName)
-            }
-            else if(activeItem === "District"){
-                putDistrictData(selectedCountry,selectedState,selectedZone,selectedItem,values.ItemName)
+        } else {
+            if (activeItem === "Country") {
+                patchCountryData(location.state.value, values.ItemName);
+            } else if (activeItem === "State") {
+                putStateData(selectedCountry, selectedItem, values.ItemName);
+            } else if (activeItem === "Zone") {
+                putZoneData(
+                    selectedCountry,
+                    selectedState,
+                    selectedItem,
+                    values.ItemName
+                );
+            } else if (activeItem === "District") {
+                putDistrictData(
+                    selectedCountry,
+                    selectedState,
+                    selectedZone,
+                    selectedItem,
+                    values.ItemName
+                );
             }
             toast({
                 title: "Interest Group Updated",
@@ -62,7 +67,9 @@ const EditLocation = () => {
                 isClosable: true
             });
         }
-        navigate('/dashboard/manage-locations',{state:{activeItem:activeItem}});
+        navigate("/dashboard/manage-locations", {
+            state: { activeItem: activeItem }
+        });
     }
 
     return (
@@ -73,12 +80,16 @@ const EditLocation = () => {
                     <i
                         className="fi fi-sr-cross"
                         onClick={() => {
-                            navigate('/dashboard/manage-locations',{state:{activeItem:activeItem}});
+                            navigate("/dashboard/manage-locations", {
+                                state: { activeItem: activeItem }
+                            });
                         }}
                     ></i>
                 </div>
-                <p>Kindly review the provided details and make sure that they are correct.
-                    Once you have verified the information, please click the <span>Confirm</span>
+                <p>
+                    Kindly review the provided details and make sure that they
+                    are correct. Once you have verified the information, please
+                    click the <span>Confirm</span>
                     button to proceed for further process.
                 </p>
                 <Formik
@@ -102,14 +113,21 @@ const EditLocation = () => {
                             name="ItemName"
                             type="text"
                             placeholder={`Enter ${activeItem}`}
-                            onKeyPress={(e:any) => { e.which === 13 && e.preventDefault()}}
+                            onKeyPress={(e: any) => {
+                                e.which === 13 && e.preventDefault();
+                            }}
                         />
                         <div className="ml_popup_btn_container">
                             <MuButton
                                 text={"Decline"}
                                 className={styles.btn_cancel}
                                 onClick={() => {
-                                    navigate('/dashboard/manage-locations',{state:{activeItem:activeItem,isDeclined:true}});
+                                    navigate("/dashboard/manage-locations", {
+                                        state: {
+                                            activeItem: activeItem,
+                                            isDeclined: true
+                                        }
+                                    });
                                 }}
                             />
                             <button type="submit" className={styles.btn_submit}>
@@ -120,7 +138,7 @@ const EditLocation = () => {
                 </Formik>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default EditLocation
+export default EditLocation;

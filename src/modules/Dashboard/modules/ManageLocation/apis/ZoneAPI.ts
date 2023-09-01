@@ -3,7 +3,7 @@ import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { ManageLocationsRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 
-//*WORKING✅
+//*WORKING✅    
 export const getZoneData = async (
     country: string,
     state: string,

@@ -25,46 +25,53 @@ export const getCountryData = async (
     }
 };
 
-//*NOT WORKING ❌
-export const postCountryData = async (
-    countryName: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId
-) => {
-    try {
-        await privateGateway
-            .post(ManageLocationsRoutes.getCountryData, {
-                name: countryName
-            })
-            .then(({ data }) => data.response)
-            .then(({ data }) => {
-                console.log(data);
-            });
-    } catch (err: any) {
-        if (err?.response) {
-            const errorMsg = err.response.data.message.general[0];
-            toast({
-                title: `Error`,
-                description: errorMsg,
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
-        }
-    }
-};
+// //*NOT WORKING ❌
+// export const postCountryData = async (
+//     countryName: string,
+//     toast: (options?: UseToastOptions | undefined) => ToastId
+// ) => {
+//     try {
+//         await privateGateway
+//             .post(ManageLocationsRoutes.getCountryData, {
+//                 name: countryName
+//             })
+//             .then(({ data }) => data.response)
+//             .then(({ data }) => {
+//                 console.log(data);
+//             });
+//     } catch (err: any) {
+//         if (err?.response) {
+//             const errorMsg = err.response.data.message.general[0];
+//             toast({
+//                 title: `Error`,
+//                 description: errorMsg,
+//                 status: "error",
+//                 duration: 3000,
+//                 isClosable: true
+//             });
+//         }
+//     }
+// };
 
-//*NOT WORKING ❌
-export const putCountryData = async (
-    oldName: string,
+//*WORKING ✅
+export const patchCountryData = async (
+    countryID: string,
     newName: string,
     toast?: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
+        console.log(countryID);
         await privateGateway
-            .put(ManageLocationsRoutes.getCountryData, {
-                oldName: oldName,
-                newName: newName
-            })
+            .patch(
+                ManageLocationsRoutes.patchCountryData.replace(
+                    "${country}",
+                    countryID
+                ),
+                {
+                    id: countryID,
+                    name: newName
+                }
+            )
             .then(({ data }) => data.response)
             .then(({ data }) => {
                 console.log(data);
