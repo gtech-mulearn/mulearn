@@ -25,33 +25,33 @@ export const getCountryData = async (
     }
 };
 
-// //*NOT WORKING ❌
-// export const postCountryData = async (
-//     countryName: string,
-//     toast: (options?: UseToastOptions | undefined) => ToastId
-// ) => {
-//     try {
-//         await privateGateway
-//             .post(ManageLocationsRoutes.getCountryData, {
-//                 name: countryName
-//             })
-//             .then(({ data }) => data.response)
-//             .then(({ data }) => {
-//                 console.log(data);
-//             });
-//     } catch (err: any) {
-//         if (err?.response) {
-//             const errorMsg = err.response.data.message.general[0];
-//             toast({
-//                 title: `Error`,
-//                 description: errorMsg,
-//                 status: "error",
-//                 duration: 3000,
-//                 isClosable: true
-//             });
-//         }
-//     }
-// };
+//*WORKING ✅
+export const postCountryData = async (
+    countryName: string,
+    toast: (options?: UseToastOptions | undefined) => ToastId
+) => {
+    try {
+        await privateGateway
+            .post(ManageLocationsRoutes.getCountryData, {
+                name: countryName
+            })
+            .then(({ data }) => data.response)
+            .then(({ data }) => {
+                console.log(data);
+            });
+    } catch (err: any) {
+        if (err?.response) {
+            const errorMsg = err.response.data.message.general[0];
+            toast({
+                title: `Error`,
+                description: errorMsg,
+                status: "error",
+                duration: 3000,
+                isClosable: true
+            });
+        }
+    }
+};
 
 //*WORKING ✅
 export const patchCountryData = async (
@@ -84,28 +84,15 @@ export const patchCountryData = async (
     }
 };
 
-//!Error: "You do not have the required role to access this page.
-//*NOT WORKING ❌
+//*WORKING ✅
 export const deleteCountryData = async (
-    countryName: string,
+    id: string,
     toast?: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
-        const requestConfig: any = {
-            data: {
-                name: countryName
-            }
-        };
-
-        await privateGateway
-            .delete(ManageLocationsRoutes.getCountryData, requestConfig)
-            .then(({ data }) => data.response)
-            .then(({ data }) => {
-                console.log(data);
-            });
         await privateGateway
             .delete(
-                ManageLocationsRoutes.getCountryData
+                ManageLocationsRoutes.patchCountryData.replace("${country}", id)
                 // {
                 //     name: countryName
                 // }
@@ -113,6 +100,7 @@ export const deleteCountryData = async (
             .then(({ data }) => data.response)
             .then(({ data }) => {
                 console.log(data);
+                window.location.reload(); // TODO: Temporary fix, better solution needed (delete takes time, API fetch after delete doesnt give the omitted data)
             });
     } catch (err: unknown) {
         const error = err as AxiosError;
