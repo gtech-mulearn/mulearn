@@ -31,16 +31,14 @@ export const getStateData = async (
     }
 };
 
-//*NOT WORKING❌
+//*WORKING ✅
 export const postStateData = async (country: string, stateName: string) => {
     try {
         await privateGateway
             .post(
-                ManageLocationsRoutes.getStateData.replace(
-                    "${country}",
-                    country
-                ),
+                ManageLocationsRoutes.patchStateData.replace("${state}/", ""),
                 {
+                    country: country,
                     name: stateName
                 }
             )
@@ -87,27 +85,20 @@ export const patchStateData = async (
     }
 };
 
-//*NOT WORKING❌
-export const deleteStateData = async (country: string, stateName: string) => {
+//*WORKING ✅
+export const deleteStateData = async (country: string, stateID: string) => {
     try {
-        const requestConfig: any = {
-            data: {
-                name: stateName
-            }
-        };
-
         await privateGateway
             .delete(
-                ManageLocationsRoutes.getStateData.replace(
-                    "${country}",
-                    country
-                ),
-                requestConfig
+                ManageLocationsRoutes.patchStateData.replace(
+                    "${state}",
+                    stateID
+                )
             )
-            .then(({ data }) => console.log(data.message.general[0]));
-        // .then(({ data }) => {
-        //     console.log(data);
-        // });
+            .then(({ data }) => console.log(data.message.general[0]))
+            .then(() => {
+                window.location.reload(); // TODO: Temporary fix, better solution needed (delete takes time, API fetch after delete doesnt give the omitted data)
+            });
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
