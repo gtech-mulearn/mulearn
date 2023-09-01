@@ -76,7 +76,7 @@ const HackathonCard: FC<HackathonCardProps> = ({
                 onClick={() => {
                     navigate(
                         isDraft
-                            ? `/dashboard/hackathon/create/${hackathon.id}`
+                            ? `/dashboard/hackathon/edit/${hackathon.id}`
                             : `/dashboard/hackathon/details/${hackathon.id}`
                     );
                 }}

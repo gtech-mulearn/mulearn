@@ -99,7 +99,7 @@ const HackathonCardIconButtons = ({
                 <div className={styles.frame2}>
                     {hackathon.editable ? (
                             <>{/* <div className={styles.group}>
-                                <Link to={`/dashboard/hackathon/create/${hackathon.id}`} >
+                                <Link to={`/dashboard/hackathon/edit/${hackathon.id}`} >
                                     <LuEdit
                                         data-tooltip-id="Icon"
                                         data-tooltip-content="Edit"
