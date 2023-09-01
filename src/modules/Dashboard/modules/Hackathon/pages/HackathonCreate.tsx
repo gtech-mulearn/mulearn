@@ -214,6 +214,7 @@ const HackathonCreate = () => {
                     duration: 3000,
                     isClosable: true
                 })
+                navigate("/dashboard/hackathon")
             }
             
         }
