@@ -165,7 +165,7 @@ function DistrictDashboard() {
         getdistrictdashboard(
             activeTab,
             setData,
-            1,
+            currentPage,
             perPage,
             setTotalPages,
             "",
