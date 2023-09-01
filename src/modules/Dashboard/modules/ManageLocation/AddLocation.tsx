@@ -30,12 +30,7 @@ const AddLocation = () => {
         } else if (activeItem === "Zone") {
             postZoneData(location.state.state, values.ItemName);
         } else if (activeItem === "District") {
-            postDistrictData(
-                location.state.country,
-                location.state.state,
-                location.state.zone,
-                values.ItemName
-            );
+            postDistrictData(location.state.zone, values.ItemName);
         }
         toast({
             title: "Interest Group created",

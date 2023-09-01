@@ -95,10 +95,7 @@ export const deleteStateData = async (stateID: string) => {
                     stateID
                 )
             )
-            .then(({ data }) => console.log(data.message.general[0]))
-            .then(() => {
-                window.location.reload(); // TODO: Temporary fix, better solution needed (delete takes time, API fetch after delete doesnt give the omitted data)
-            });
+            .then(({ data }) => console.log(data.message.general[0]));
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

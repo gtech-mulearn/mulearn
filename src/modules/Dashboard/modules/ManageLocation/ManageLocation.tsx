@@ -172,12 +172,7 @@ const ManageLocation = () => {
         } else if (activeTab === "Zone") {
             deleteZoneData(id);
         } else if (activeTab === "District") {
-            deleteDistrictData(
-                selectedCountry,
-                selectedState,
-                selectedZone,
-                id
-            );
+            deleteDistrictData(id);
         }
         getLocationData();
     }
