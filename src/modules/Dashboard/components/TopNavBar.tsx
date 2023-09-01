@@ -8,15 +8,16 @@ import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
 import { Popover, PopoverTrigger, Button, PopoverContent, PopoverHeader, PopoverCloseButton, PopoverBody, PopoverArrow, PopoverFooter } from "@chakra-ui/react";
 import { Notification as NotificationProps, getNotifications } from "./api";
 import NotificationTab from "./Notification";
+import { useToast } from "@chakra-ui/react";
 const TopNavBar = () => {
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [profilePic, setProfilePic] = useState<string | null>(null);
     const [notificationList, setNotificationList] = useState<NotificationProps[]>([]);
-
+    const toast = useToast()
     useEffect(() => {
         if(notificationList.length===0)
-            getNotifications(setNotificationList);
+            getNotifications(setNotificationList,{toast});  
     }, []);
     const notificationStyle = {
         backgroundColor: '#ffffff00',
@@ -48,14 +49,14 @@ const TopNavBar = () => {
                         <div className={styles.menu}>
 
                             {/* <i className="fi fi-sr-settings"></i> */}
-                            {/* <Popover placement="bottom-end">
+                            <Popover placement="bottom-end">
                                 <PopoverTrigger >
                                     <Button {...notificationStyle}>{notificationList.length===0?<VscBell />:<VscBellDot />}</Button>
                                 </PopoverTrigger>
                                 <PopoverContent >
                                     <NotificationTab notificationList={notificationList} setNotificationList={setNotificationList} />
                                 </PopoverContent>
-                            </Popover> */}
+                            </Popover>
                             <div className={styles.profile}>
                                 <img
                                     onClick={() => {

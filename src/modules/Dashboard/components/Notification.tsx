@@ -35,7 +35,7 @@ const NotificationMessage = ({ profile, title, created_at, description, clear, i
                 {isRequest(title) &&
                     <div className="btns">
                         <button onClick={() => { 
-                            requestApproval(id,url,created_by, false); 
+                            requestApproval(id,url,created_by, false,update,props); 
                             update() 
                             clear()
                             requestApproval(id,url,created_by, false,update,props);  
@@ -71,7 +71,7 @@ const NotificationTab = ({notificationList,setNotificationList}: NotificationCom
     const clearAll = () => {
         setNotificationList([]);
         clearAllNotifications(props);
-    };
+    }
 
     return (
         <div className="yourNotification">
@@ -87,7 +87,7 @@ const NotificationTab = ({notificationList,setNotificationList}: NotificationCom
                             <span>{item.count}</span>
                         </li>
                     ))}
-                    <span className='glider' style={{ transform: `translateX(${active * 100}%)`, margin: `${active === 0 ? 0 : active === links.length - 1 ? 25 : 15}px` }}></span>
+                    <span className='glider' style={{ transform: `translateX(${active * 100}%)`, margin: `${active === 0 ? 0 : active === links.length - 1 ? 15 : 15}px` }}></span>
                 </ul>
             </div>
             <div className="notiMessageContainer">
