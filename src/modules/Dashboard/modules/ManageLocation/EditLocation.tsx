@@ -6,7 +6,7 @@ import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComp
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { patchCountryData } from "./apis/CountryAPI";
 import { patchStateData } from "./apis/StateAPI";
-import { putZoneData } from "./apis/ZoneAPI";
+import { patchZoneData } from "./apis/ZoneAPI";
 import { patchDistrictData } from "./apis/DistrictAPI";
 import { useToast } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
@@ -49,10 +49,10 @@ const EditLocation = () => {
                     values.ItemName
                 );
             } else if (activeItem === "Zone") {
-                putZoneData(
+                patchZoneData(
                     selectedCountry,
                     selectedState,
-                    selectedItem,
+                    location.state.value,
                     values.ItemName
                 );
             } else if (activeItem === "District") {

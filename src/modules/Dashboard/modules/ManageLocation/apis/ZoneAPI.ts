@@ -3,7 +3,7 @@ import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { ManageLocationsRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 
-//*WORKING✅    
+//*WORKING✅
 export const getZoneData = async (
     country: string,
     state: string,
@@ -51,23 +51,21 @@ export const postZoneData = async (
     }
 };
 
-//*NOT WORKING❌
-export const putZoneData = async (
+//*WORKING ✅
+export const patchZoneData = async (
     country: string,
     state: string,
-    oldName: string,
+    zoneID: string,
     newName: string
 ) => {
     try {
         await privateGateway
-            .put(
-                ManageLocationsRoutes.getZoneData
-                    .replace("${country}", country)
-                    .replace("${state}", state),
+            .patch(
+                ManageLocationsRoutes.patchZoneData.replace("${zone}", zoneID),
                 {
                     state: state,
-                    oldName: oldName,
-                    newName: newName
+                    id: zoneID,
+                    name: newName
                 }
             )
             .then(({ data }) => data.response);
