@@ -1,5 +1,7 @@
 import { Notification as NotificationProps } from "./api";
 export const getTimeAgo = (inputDate: string, currentDate: Date) => {
+    if(!inputDate || !currentDate) return '';
+
     // const currentDate = new Date();
     const startDate = new Date(inputDate);
     const timeDifference = currentDate.getTime() - startDate.getTime();
