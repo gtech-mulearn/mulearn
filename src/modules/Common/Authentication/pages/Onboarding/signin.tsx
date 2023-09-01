@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './signin.module.css'
+import google from '../../assets/google.png'
 
 export default function Signin() {
     return (
@@ -19,7 +20,10 @@ export default function Signin() {
             <div className={styles.submit}>
                 <button className={styles.submit_b}>Submit</button>
                 <p>OR</p>
-                <button className={styles.google}><i className="fab fa-google"></i>  Sign in with google</button>
+                <button className={styles.google}>
+                    <img className={styles.google_icon} src={google} alt=""/>
+                    <p>Sign in with google</p>
+                </button>
 
             </div>
             <div className={styles.no_account}>

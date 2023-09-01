@@ -77,7 +77,14 @@ body{
 
 }
 .google{
-    border: 2px #808192 solid;
+    border: 2px #d9d9db solid;
+    display: flex;
+    justify-content: center;
+    gap: .3rem;
+    font-weight: 600;
+    align-items: center;
+
+
 
 }
 
@@ -86,5 +93,8 @@ body{
     font-size: smaller;
     display: flex;
     justify-content: center;
+}
+.google_icon{
+    width: 1.5rem;
 }
 
