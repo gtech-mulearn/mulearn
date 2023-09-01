@@ -234,7 +234,7 @@ const HackathonCreate = () => {
         setOpenImagePreview(false);
     };
 
-    const intitialValues = {
+    const initialValues = {
         title: data?.title || "",
         tagline: data?.tagline || "",
         description: data?.description || "",
@@ -292,7 +292,7 @@ const HackathonCreate = () => {
                             </div>
 
                             <Formik
-                                initialValues={intitialValues}
+                                initialValues={initialValues}
                                 validationSchema={hackathonSchema}
                                 onSubmit={handleSubmit}
                             >

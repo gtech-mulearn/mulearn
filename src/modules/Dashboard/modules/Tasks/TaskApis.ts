@@ -155,7 +155,8 @@ export const createTask = async (
     type_id: string,
     level_id: string,
     ig_id: string,
-    org_id: string
+    org_id: string,
+    toast: ToastAsPara
 ) => {
     try {
         const response = await privateGateway.post(
@@ -175,8 +176,12 @@ export const createTask = async (
                 org: org_id
             }
         );
-        const message: any = response?.data;
-        //console.log(message);
+		toast({
+            title: "Task created",
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -194,7 +199,7 @@ export const deleteTask = async (
             dashboardRoutes.getTasksData + "delete/" + id + "/"
         );
         toast({
-            title: "Interest Group deleted",
+            title: "Task deleted",
             status: "success",
             duration: 3000,
             isClosable: true

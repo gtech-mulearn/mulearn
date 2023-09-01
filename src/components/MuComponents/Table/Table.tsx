@@ -127,7 +127,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
     return (
         <>
             {props.rows.map((rowData, index) => {
-                console.log(rowData["muid"]);
+                // console.log(rowData["muid"]);
             })}
             <div className={styles.table}>
                 <table className={styles.tableActual}>

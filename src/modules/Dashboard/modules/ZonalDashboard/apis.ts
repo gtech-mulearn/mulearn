@@ -251,26 +251,24 @@ export const getInfo = async (code: string) => {
 };
 
 export const getStudentLevels = async () => {
+    const sum = (arr: number[]) => {
+        return arr.slice(1).reduce((acc, curr) => acc + curr);
+    };
     const response = await privateGateway.get(
         dashboardRoutes.getZonalStudentLevels
     );
     const data = response.data.response;
-    const dupliChecker: string[] = [];
-    return data
-        .map((college: any) => {
-            if (!dupliChecker.includes(college.college)) {
-                dupliChecker.push(college.college);
-                return [
-                    college.college,
-                    college.level[2].students_count,
-                    college.level[3].students_count,
-                    college.level[0].students_count,
-                    college.level[1].students_count
-                ];
-            }
-        })
-        .filter((item: any) => !!item)
-        .slice(0, 5);
+    //Combining all colleges student levels into one
+    console.log(data);
+    return [
+        [
+            " ",
+            data[2].students_count,
+            data[3].students_count,
+            data[0].students_count,
+            data[1].students_count
+        ]
+    ];
 };
 
 export const getTopDistrict = async () => {
@@ -278,7 +276,10 @@ export const getTopDistrict = async () => {
         dashboardRoutes.getZonalTopDistrict
     );
     const data = response.data.response;
-    return data.map((campus: any) => {
-        return [campus.district, 4 - campus.rank];
-    });
+    const returnData: any[] = [["Districts"], [" "]];
+    for (let item of data) {
+        returnData[0].push(item.district);
+        returnData[1].push(item.karma);
+    }
+    return returnData;
 };

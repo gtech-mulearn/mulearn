@@ -47,7 +47,7 @@ const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
                 text={"Create"}
                 style={{
                     backgroundColor: "#456FF6",
-                    color: "#fff"
+                    color: "#fff"    
                 }}
                 onClick={handleCreate}
                 icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}

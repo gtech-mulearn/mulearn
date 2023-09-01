@@ -26,11 +26,12 @@ import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import AvgKarma from "../assets/svg/AvgKarma";
 import EditProfilePopUp from "../components/EditProfilePopUp/pages/EditProfilePopUp";
-import BasicDetails from "../components/BasicDetails/BasicDetails";
+import BasicDetails from "../components/BasicDetails/pages/BasicDetails";
 import Instagram from "../assets/svg/Instagram";
 import Behance from "../assets/svg/Behance";
 import LinkedIn from "../assets/svg/LinkedIn";
 import Twitter from "../assets/svg/Twitter";
+import Socials from "../components/Socials/pages/Socials";
 
 //TODO: Verify the relevance of profile page image
 const Profile = () => {
@@ -690,6 +691,9 @@ const Profile = () => {
 
                                 <div className={styles.notification}>
                                     <div className={styles.existing_roles}>
+                                        <div className={styles.head}>
+                                            <Socials />
+                                        </div>
                                         <div className={styles.head}>
                                             <h2>Existing Roles</h2>
                                             <p>

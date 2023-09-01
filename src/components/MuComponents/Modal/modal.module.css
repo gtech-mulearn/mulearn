@@ -60,7 +60,7 @@
     background: var(--success-100, #d1fadf);
 }
 .checkbtndelete{
-     display: flex;
+    display: flex;
     gap: 8px;
     padding: 10px;
     align-items: center;
@@ -94,9 +94,10 @@
 
 .actionsContainer {
     display: flex;
-    flex-direction: row;
+	flex-direction: row;
     justify-content: center;
-    gap: 10px;
+    align-items: center;
+    gap: 20px;
 }
 
 .closeBtn {
