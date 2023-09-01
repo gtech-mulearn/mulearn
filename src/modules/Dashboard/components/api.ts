@@ -31,7 +31,7 @@ export function clearAllNotifications(props: any) {
             status: "error",
             duration: 3000,
             isClosable: true
-        })
+        })})
 }
 export async function clearNotification(id: string,props: any) {
     return await privateGateway.delete(`${NotificationRoutes.deleteNotification}${id}/`)
