@@ -117,17 +117,17 @@ export const dashboardRoutes = {
 } as const;
 
 export const organizationRoutes = {
-    getOrganizationsAll: "/api/v1/organisation/institutes/info/all_inst",
-    getCompany: "/api/v1/organisation/institutes/show/Company/",
-    getCollege: "/api/v1/organisation/institutes/show/College/",
-    getCommunity: "/api/v1/organisation/institutes/show/Community/",
-    getAffiliation: "/api/v1/organisation/institutes/org/affiliation/",
+    getOrganizationsAll: "/api/v1/dashboard/organisation/institutes/info/all_inst",
+    getCompany: "/api/v1/dashboard/organisation/institutes/show/Company/",
+    getCollege: "/api/v1/dashboard/organisation/institutes/show/College/",
+    getCommunity: "/api/v1/dashboard/organisation/institutes/show/Community/",
+    getAffiliation: "/api/v1/dashboard/organisation/institutes/org/affiliation/",
     getLocation: "/api/v1/location",
-    postAddOrganization: "/api/v1/organisation/institutes/add/",
-    putUpdateOrganization: "/api/v1/organisation/institutes",
-    deleteOrgnaization: "/api/v1/organisation/institutes/",
-    postGetInfo: "/api/v1/organisation/institutes/info/",
-    getOrgCsv: "/api/v1/organisation/institutes/csv"
+    postAddOrganization: "/api/v1/dashboard/organisation/institutes/add/",
+    putUpdateOrganization: "/api/v1/dashboard/organisation/institutes",
+    deleteOrgnaization: "/api/v1/dashboard/organisation/institutes/",
+    postGetInfo: "/api/v1/dashboard/organisation/institutes/info/",
+    getOrgCsv: "/api/v1/dashboard/organisation/institutes/csv"
 } as const;
 
 export const ManageLocationsRoutes = {

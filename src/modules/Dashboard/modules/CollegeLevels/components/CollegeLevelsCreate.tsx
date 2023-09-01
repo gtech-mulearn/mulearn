@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import FormikReactSelect from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { createCollegeLevels } from "../apis";
 import { useEffect, useState } from "react";
-
+import { levelCount } from "../Utisl";
 import {
     getCountries,
     getColleges,
@@ -17,6 +17,7 @@ import {
 
 type Props = {
     onClose: any;
+    refetch?: Function;
 };
 
 const CollegeLevelsCreate = (props: Props) => {
@@ -98,9 +99,9 @@ const CollegeLevelsCreate = (props: Props) => {
         {
             name: "level",
             label: "Levels",
-            options: [1, 2, 3, 4].map(val => ({
-                label: val.toString(),
-                value: val
+            options: [...new Array(levelCount).keys()].map(val => ({
+                label: (val + 1).toString(),
+                value: val + 1
             })),
             isClearable: true,
             isSearchable: true
@@ -134,6 +135,7 @@ const CollegeLevelsCreate = (props: Props) => {
                             org_id: values.org_id,
                             level: values.level
                         });
+                        if (props.refetch) props.refetch();
                         toast({
                             title: "College level created",
                             status: "success",
