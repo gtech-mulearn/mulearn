@@ -18,7 +18,6 @@ export default function Template() {
             <img className={styles.templateMufo} src={mufo} alt="" />
             <img className={styles.templateMuship} src={muship} alt="" />
             <OnboardingHeader />
-            <AccountCreation/>
         </div>
     )
 }
