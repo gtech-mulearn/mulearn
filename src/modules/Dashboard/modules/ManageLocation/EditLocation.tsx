@@ -5,9 +5,9 @@ import * as Yup from "yup";
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { patchCountryData } from "./apis/CountryAPI";
-import { putStateData } from "./apis/StateAPI";
+import { patchStateData } from "./apis/StateAPI";
 import { putZoneData } from "./apis/ZoneAPI";
-import { putDistrictData } from "./apis/DistrictAPI";
+import { patchDistrictData } from "./apis/DistrictAPI";
 import { useToast } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -43,7 +43,11 @@ const EditLocation = () => {
             if (activeItem === "Country") {
                 patchCountryData(location.state.value, values.ItemName);
             } else if (activeItem === "State") {
-                putStateData(selectedCountry, selectedItem, values.ItemName);
+                patchStateData(
+                    selectedCountry,
+                    location.state.value,
+                    values.ItemName
+                );
             } else if (activeItem === "Zone") {
                 putZoneData(
                     selectedCountry,
@@ -52,13 +56,7 @@ const EditLocation = () => {
                     values.ItemName
                 );
             } else if (activeItem === "District") {
-                putDistrictData(
-                    selectedCountry,
-                    selectedState,
-                    selectedZone,
-                    selectedItem,
-                    values.ItemName
-                );
+                patchDistrictData(location.state.value, values.ItemName);
             }
             toast({
                 title: "Interest Group Updated",

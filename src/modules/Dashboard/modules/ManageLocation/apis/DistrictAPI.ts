@@ -53,24 +53,20 @@ export const postDistrictData = async (
 };
 
 //*NOT WORKING ❌
-export const putDistrictData = async (
-    country: string,
-    state: string,
-    zone: string,
-    oldName: string,
+export const patchDistrictData = async (
+    districtID: string,
     newName: string
 ) => {
     try {
         await privateGateway
-            .put(
-                ManageLocationsRoutes.getDistrictData
-                    .replace("${country}", country)
-                    .replace("${state}", state)
-                    .replace("${zone}", zone),
+            .patch(
+                ManageLocationsRoutes.patchDistrictData.replace(
+                    "${district}",
+                    districtID
+                ),
                 {
-                    zone: zone,
-                    oldName: oldName,
-                    newName: newName
+                    id: districtID,
+                    name: newName
                 }
             )
             .then(({ data }) => data.response)

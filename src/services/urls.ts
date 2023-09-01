@@ -132,9 +132,12 @@ export const ManageLocationsRoutes = {
     getCountryData: "/api/v1/dashboard/location/countries",
     patchCountryData: "/api/v1/dashboard/location/countries/${country}/",
     getStateData: "api/v1/dashboard/location/states/${country}",
+    patchStateData: "api/v1/dashboard/location/states/${state}/",
     getZoneData: "api/v1/dashboard/location/zones/${state}",
-    getDistrictData: "api/v1/dashboard/location/districts/${zone}"
-};
+    patchZoneData: "api/v1/dashboard/location/zones/${zone}/",
+    getDistrictData: "api/v1/dashboard/location/districts/${zone}",
+    patchDistrictData: "api/v1/dashboard/location/districts/${district}/"
+} as const;
 
 export const KKEMRoutes = {
     userAuth: "/api/v1/integrations/kkem/authorization/",

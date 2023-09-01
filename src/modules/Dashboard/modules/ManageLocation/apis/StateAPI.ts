@@ -56,22 +56,23 @@ export const postStateData = async (country: string, stateName: string) => {
     }
 };
 
-//*NOT WORKING❌
-export const putStateData = async (
+//*WORKING ✅
+export const patchStateData = async (
     country: string,
-    oldName: string,
+    stateID: string,
     newName: string
 ) => {
     try {
         await privateGateway
-            .put(
-                ManageLocationsRoutes.getStateData.replace(
-                    "${country}",
-                    country
+            .patch(
+                ManageLocationsRoutes.patchStateData.replace(
+                    "${state}",
+                    stateID
                 ),
                 {
-                    oldName: oldName,
-                    newName: newName
+                    country: country,
+                    id: stateID,
+                    name: newName
                 }
             )
             .then(({ data }) => data.response)
