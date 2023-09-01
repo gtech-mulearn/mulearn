@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import FormikReactSelect from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { createCollegeLevels } from "../apis";
 import { useEffect, useState } from "react";
-
+import { levelCount } from "../Utisl";
 import {
     getCountries,
     getColleges,
@@ -99,9 +99,9 @@ const CollegeLevelsCreate = (props: Props) => {
         {
             name: "level",
             label: "Levels",
-            options: [1, 2, 3, 4].map(val => ({
-                label: val.toString(),
-                value: val
+            options: [...new Array(levelCount).keys()].map(val => ({
+                label: (val + 1).toString(),
+                value: val + 1
             })),
             isClearable: true,
             isSearchable: true
