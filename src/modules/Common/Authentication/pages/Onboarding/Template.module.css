@@ -7,12 +7,6 @@
     padding-top: 3rem;
     overflow-x: scroll;
 }
-@media(width<500px){
-    .Template{
-        height: fit-content;
-        margin-top: 1rem;
-    }
-}
 
 .templatePlanet {
     position: absolute;
