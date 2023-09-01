@@ -155,13 +155,10 @@
     --rounded-btn: 12px;
     --border-btn: 2px solid;
     --transition-speed: 0.3s;
-    --padding-btn: 16px;
+    --padding-btn: 5px 20px;
 }
 
 .common-btn {
-    width: 170px;
-    height: 44px;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
