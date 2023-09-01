@@ -1,0 +1,15 @@
+.accountCreationInputs{
+   display: flex;
+   flex-direction: column;
+   gap: 2rem;
+   padding-left: 1rem   ;
+}
+
+.accountCreationInputs button{
+    width: 465px;
+    height: 49px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: #456FF6;
+    color: #fff;
+}
