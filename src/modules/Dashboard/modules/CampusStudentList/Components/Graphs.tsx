@@ -2,19 +2,18 @@ import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { Chart } from "react-google-charts";
 
 export const options = {
-    
     is3D: false,
     legend: {
         alignment: "center",
         textStyle: {
-            fontSize:16,
-            bold:1
+            fontSize: 16,
+            bold: 1
         }
     },
     backgroundColor: "transparent",
     tooltip: {
         textStyle: {
-            fontSize:15
+            fontSize: 15
         }
     },
     chartArea: {
@@ -25,43 +24,52 @@ export const options = {
         right: 0,
         bottom: 0
     },
-    pieSliceBorderColor : "transparent",
+    pieSliceBorderColor: "transparent"
 };
 
-export function PieChart({ data,addOptions }: any) {
-    if(!data)
-    return(<MuLoader/>)
+export function PieChart({ data, addOptions }: any) {
+    if (!data) return <MuLoader />;
     return (
         <Chart
             chartType="PieChart"
             data={data}
-            options={{...options,...addOptions}}
-            width={'100%'}
-            height={'90%'}
+            options={{ ...options, ...addOptions }}
+            width={"100%"}
+            height={"90%"}
         />
     );
 }
 
-export function BarChart({data,addOptions}:any){
-    if(!data)
-    return(<MuLoader/>)
-    return <Chart
-        chartType="Bar"
-        data={data}
-        options={{...options,...addOptions}}
-        width={'100%'}
-        height={'90%'}
-    />
+export function BarChart({ data, addOptions, ...props }: any) {
+    if (!data) return <MuLoader />;
+    const propOptions: Record<string, any> = {};
+    if (props.ylabel)
+        propOptions.axes = {
+            y: {
+                0: { label: props.ylabel }
+            }
+        };
+
+    return (
+        <Chart
+            chartType="Bar"
+            data={data}
+            options={{ ...options, ...addOptions, ...propOptions }}
+            width={"100%"}
+            height={"90%"}
+        />
+    );
 }
 
-export function ColumnChart({data,addOptions}:any){
-    if(!data)
-    return(<MuLoader/>)
-    return <Chart
-        chartType="Bar"
-        data={data}
-        options={{...options,...addOptions}}
-        width={'100%'}
-        height={'90%'}
-    />
+export function ColumnChart({ data, addOptions }: any) {
+    if (!data) return <MuLoader />;
+    return (
+        <Chart
+            chartType="Bar"
+            data={data}
+            options={{ ...options, ...addOptions }}
+            width={"100%"}
+            height={"90%"}
+        />
+    );
 }

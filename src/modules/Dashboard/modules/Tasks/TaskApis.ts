@@ -155,7 +155,8 @@ export const createTask = async (
     type_id: string,
     level_id: string,
     ig_id: string,
-    org_id: string
+    org_id: string,
+    toast: ToastAsPara
 ) => {
     try {
         const response = await privateGateway.post(
@@ -175,8 +176,12 @@ export const createTask = async (
                 org: org_id
             }
         );
-        const message: any = response?.data;
-        //console.log(message);
+		toast({
+            title: "Task created",
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -194,7 +199,7 @@ export const deleteTask = async (
             dashboardRoutes.getTasksData + "delete/" + id + "/"
         );
         toast({
-            title: "Interest Group deleted",
+            title: "Task deleted",
             status: "success",
             duration: 3000,
             isClosable: true
@@ -225,7 +230,7 @@ export const getUUID = async () => {
         ).sort((a, b) =>
             //check for name/title key and then compare
             (a.name !== undefined && a.name < b.name) ||
-                (a.title !== undefined && a.title < b.title)
+            (a.title !== undefined && a.title < b.title)
                 ? -1
                 : 1
         );
@@ -237,13 +242,12 @@ export const getUUID = async () => {
 // bundle size increased from 106kb to 160kb, but dynamically imported
 
 export const convertToXLSX = (data: any, fileName: string) => {
-    import("xlsx").then(({ utils, writeFile }) => {
-
-        const ws = utils.json_to_sheet(data);
-        const wb = utils.book_new();
-        utils.book_append_sheet(wb, ws, "Result 1");
-        writeFile(wb, fileName);
-
-    })
-        .catch((err) => console.error(err));
+    import("xlsx")
+        .then(({ utils, writeFile }) => {
+            const ws = utils.json_to_sheet(data);
+            const wb = utils.book_new();
+            utils.book_append_sheet(wb, ws, "Result 1");
+            writeFile(wb, fileName);
+        })
+        .catch(err => console.error(err));
 };

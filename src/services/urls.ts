@@ -19,9 +19,9 @@ export const authRoutes = {
 } as const;
 export const NotificationRoutes = {
     getNotification: "/api/v1/notification/list/",
-    deleteNotification: 'api/v1/notification/delete/id/',
-    deleteAllNotification: 'api/v1/notification/delete/all/',
-}
+    deleteNotification: "api/v1/notification/delete/id/",
+    deleteAllNotification: "api/v1/notification/delete/all/"
+};
 export const dashboardRoutes = {
     forgetPassword: "/api/v1/dashboard/user/forgot-password/",
     resetPassword: "/api/v1/dashboard/user/reset-password/${token}/",
@@ -69,12 +69,12 @@ export const dashboardRoutes = {
 
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
     zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv/",
-    zonalCampusDetails: "/api/v1/dashboard/zonal/campus-details/",
+    zonalCampusDetails: "/api/v1/dashboard/zonal/college-details/",
     zonalCampusData: "/api/v1/dashboard/zonal/campus-details/csv/",
 
     districtStudentDetails: "/api/v1/dashboard/district/student-details/",
     districtStudentData: "/api/v1/dashboard/district/student-details/csv/",
-    districtCampusDetails: "/api/v1/dashboard/district/campus-details/",
+    districtCampusDetails: "/api/v1/dashboard/district/college-details/",
     districtCampusData: "/api/v1/dashboard/district/campus-details/csv/",
 
     getHackathonFormData: "/api/v1/hackathon/list-default-form-fields/",
@@ -99,51 +99,51 @@ export const dashboardRoutes = {
     getAllOrganisations: "/api/v1/hackathon/list-organisations/",
     getAllDistricts: "/api/v1/hackathon/list-districts/",
 
-    referredUsersList : "/api/v1/dashboard/referral/",
-    createInviteEmail:"/api/v1/dashboard/referral/send-referral/",
+    referredUsersList: "/api/v1/dashboard/referral/",
+    createInviteEmail: "/api/v1/dashboard/referral/send-referral/",
 
     //graphs
     //campus
-    getCampusWeeklyKarma : '/api/v1/dashboard/campus/weekly-karma/',
-    getStudentLevels:'api/v1/dashboard/campus/student-level/',
+    getCampusWeeklyKarma: "/api/v1/dashboard/campus/weekly-karma/",
+    getStudentLevels: "api/v1/dashboard/campus/student-level/",
     //district
-    getDistrictStudentLevels : 'api/v1/dashboard/district/college-level/' ,
-    getDistrictTopCampus : 'api/v1/dashboard/district/top-campus/',
+    getDistrictStudentLevels: "api/v1/dashboard/district/student-level/",
+    getDistrictTopCampus: "api/v1/dashboard/district/top-campus/",
     //zonal
-    getZonalTopDistrict : 'api/v1/dashboard/zonal/top-districts/',
-    getZonalStudentLevels : 'api/v1/dashboard/zonal/student-level/'
+    getZonalTopDistrict: "api/v1/dashboard/zonal/top-districts/",
+    getZonalStudentLevels: "api/v1/dashboard/zonal/student-level/",
 
-
+    collegeLevels: "api/v1/dashboard/college/"
 } as const;
 
 export const organizationRoutes = {
-    getOrganizationsAll: "/api/v1/organisation/institutes/info/all_inst",
-    getCompany: "/api/v1/organisation/institutes/show/Company/",
-    getCollege: "/api/v1/organisation/institutes/show/College/",
-    getCommunity: "/api/v1/organisation/institutes/show/Community/",
-    getAffiliation: "/api/v1/organisation/institutes/org/affiliation/",
+    getOrganizationsAll: "/api/v1/dashboard/organisation/institutes/info/all_inst",
+    getCompany: "/api/v1/dashboard/organisation/institutes/show/Company/",
+    getCollege: "/api/v1/dashboard/organisation/institutes/show/College/",
+    getCommunity: "/api/v1/dashboard/organisation/institutes/show/Community/",
+    getAffiliation: "/api/v1/dashboard/organisation/institutes/org/affiliation/",
     getLocation: "/api/v1/location",
-    postAddOrganization: "/api/v1/organisation/institutes/add/",
-    putUpdateOrganization: "/api/v1/organisation/institutes",
-    deleteOrgnaization: "/api/v1/organisation/institutes/",
-    postGetInfo: "/api/v1/organisation/institutes/info/",
-    getOrgCsv: "/api/v1/organisation/institutes/csv"
+    postAddOrganization: "/api/v1/dashboard/organisation/institutes/add/",
+    putUpdateOrganization: "/api/v1/dashboard/organisation/institutes",
+    deleteOrgnaization: "/api/v1/dashboard/organisation/institutes/",
+    postGetInfo: "/api/v1/dashboard/organisation/institutes/info/",
+    getOrgCsv: "/api/v1/dashboard/organisation/institutes/csv"
 } as const;
 
 export const ManageLocationsRoutes = {
-    getCountryData: "/api/v1/location/country",
-    getStateData: "api/v1/location/${country}/states",
-    getZoneData: "api/v1/location/${country}/${state}/zone",
-    getDistrictData: "api/v1/location/${country}/${state}/${zone}/district",
-}
+    getCountryData: "/api/v1/dashboard/location/countries",
+    getStateData: "api/v1/dashboard/location/states/${country}",
+    getZoneData: "api/v1/dashboard/location/zones/${state}",
+    getDistrictData: "api/v1/dashboard/location/districts/${zone}"
+};
 
 export const KKEMRoutes = {
     userAuth: "/api/v1/integrations/kkem/authorization/",
     userLogin: "/api/v1/integrations/kkem/login/",
-    // This was added because of a build issue, author:@Jovit-Mathew236 please do add the necessary changes 
-    getDWMSDetails:"",
+    // This was added because of a build issue, author:@Jovit-Mathew236 please do add the necessary changes
+    getDWMSDetails: ""
 };
 
 export const PublicRoutes = {
-    getRandomLc: "/api/v1/dashboard/lc/list/",
+    getRandomLc: "/api/v1/dashboard/lc/list/"
 } as const;

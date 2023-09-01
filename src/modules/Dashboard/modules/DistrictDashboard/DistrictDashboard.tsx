@@ -5,14 +5,18 @@ import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { PieChart, BarChart, ColumnChart } from "../CampusStudentList/Components/Graphs";
+import {
+    PieChart,
+    BarChart,
+    ColumnChart
+} from "../CampusStudentList/Components/Graphs";
 import { getdistrictdashboard, getStudentLevels, getTopCampus } from "./apis";
 import { columnsCampus, columnsStudent } from "./THeaders";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import "./Organizations.css";
 import "./DistricDashboard.scss";
 import TableTopTab from "./TableTopTab";
-import graphStyles from "../CampusStudentList/pages/CampusStudentList.module.css"
+import graphStyles from "../CampusStudentList/pages/CampusStudentList.module.css";
 
 function DistrictDashboard() {
     const [data, setData] = useState<any[]>([]);
@@ -28,13 +32,11 @@ function DistrictDashboard() {
     const toast = useToast();
 
     //graph data
-    const [colData,setColData] = useState<string[][]|null>(null)
-    const [barData,setBarData] = useState<string[][]|null>(null)
+    const [colData, setColData] = useState<string[][] | null>(null);
+    const [barData, setBarData] = useState<string[][] | null>(null);
 
     useEffect(() => {
         if (firstFetch.current) {
-            
-            
             getdistrictdashboard(
                 activeTab,
                 setData,
@@ -45,23 +47,29 @@ function DistrictDashboard() {
                 ""
             );
 
-            (async()=>{
-                try{
-                    setBarData([['', '']].concat(await getTopCampus()))
-                    setColData([['Colleges',"Level 1","Level 2","Level 3","Level 4"]].concat(await getStudentLevels()))
-                    
-                }catch(err){
+            (async () => {
+                try {
+                    setBarData(await getTopCampus());
+                    setColData(
+                        [
+                            [
+                                "Levels",
+                                "Level 1",
+                                "Level 2",
+                                "Level 3",
+                                "Level 4"
+                            ]
+                        ].concat(await getStudentLevels())
+                    );
+                } catch (err) {
                     toast({
                         title: "Data fetch failed",
                         status: "error",
                         duration: 3000,
                         isClosable: true
-                    })
+                    });
                 }
-                
-                
-            })()
-
+            })();
         }
         firstFetch.current = false;
     }, []);
@@ -69,13 +77,11 @@ function DistrictDashboard() {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getdistrictdashboard(activeTab, setData, nextPage, perPage);
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getdistrictdashboard(activeTab, setData, prevPage, perPage);
     };
 
     const handleSearch = (search: string) => {
@@ -94,15 +100,6 @@ function DistrictDashboard() {
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getdistrictdashboard(
-            activeTab,
-            setData,
-            1,
-            selectedValue,
-            setTotalPages,
-            "",
-            ""
-        );
     };
 
     const handleTabClick = (tab: string) => {
@@ -136,30 +133,14 @@ function DistrictDashboard() {
     };
 
     const handleIconClick = (column: string) => {
+        if (column === "total_karma") {
+            column = "karma"; //temp fix
+        }
         if (sort === column) {
             setSort(`-${column}`);
-            getdistrictdashboard(
-                activeTab,
-                setData,
-                1,
-                perPage,
-                setTotalPages,
-                "",
-                sort
-            );
         } else {
             setSort(column);
-            getdistrictdashboard(
-                activeTab,
-                setData,
-                1,
-                perPage,
-                setTotalPages,
-                "",
-                sort
-            );
         }
-
     };
 
     const CSV = (tabname: string) => {
@@ -176,6 +157,19 @@ function DistrictDashboard() {
             return dashboardRoutes.districtCampusData;
         }
     };
+
+    useEffect(() => {
+        getdistrictdashboard(
+            activeTab,
+            setData,
+            1,
+            perPage,
+            setTotalPages,
+            "",
+            sort
+        );
+    }, [sort, currentPage, perPage]);
+
     return (
         <>
             <TableTopTab active={activeTab} onTabClick={handleTabClick} />
@@ -184,9 +178,10 @@ function DistrictDashboard() {
                     <h2>Top 3 Campus</h2>
                     <BarChart
                         data={barData}
+                        ylabel="Karma"
                         addOptions={{
-                            legend: { position: 'none' },
-                            colors: ['#91ABFF']
+                            legend: { position: "none" },
+                            colors: ["#91ABFF"]
                         }}
                     />
                 </div>
@@ -195,17 +190,22 @@ function DistrictDashboard() {
                     <ColumnChart
                         data={colData}
                         addOptions={{
-                            axes:{
-                                y:{
-                                    0:{label:"No of Students"}
+                            axes: {
+                                y: {
+                                    0: { label: "No of Students" }
                                 }
                             },
-                            pieSliceText: 'value',
-                            colors: ["#3B57B2", "#456FF6", "#A9BEFF", "#6C8FFF", "#A9BEFF"]
+                            pieSliceText: "value",
+                            colors: [
+                                "#3B57B2",
+                                "#456FF6",
+                                "#A9BEFF",
+                                "#6C8FFF",
+                                "#A9BEFF"
+                            ]
                         }}
                     />
                 </div>
-
             </div>
             {data && (
                 <>
@@ -232,7 +232,7 @@ function DistrictDashboard() {
                             handleNextClick={handleNextClick}
                             handlePreviousClick={handlePreviousClick}
                             perPage={perPage}
-                            setPerPage={setPerPage}
+                            setPerPage={handlePerPageNumber as any}
                         />
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>

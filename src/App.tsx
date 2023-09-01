@@ -13,7 +13,16 @@ import ResetPassword from "./modules/Common/Authentication/pages/ResetPassword";
 import PrivateRoutes from "./components/PrivateRoutes";
 import DashboardRootLayout from "./modules/Dashboard/layouts/DashboardRootLayout";
 import NotFound from "./components/NotFound";
-import Profile from "./modules/Dashboard/modules/Profile/pages/Profile"
+import Profile from "./modules/Dashboard/modules/Profile/pages/Profile";
+const KarmaVoucher = lazy(
+    () => import("./modules/Dashboard/modules/KarmaVoucher/KarmaVoucher")
+);
+const KarmaVoucherBulkImport = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/KarmaVoucher/components/KarmaVoucherBulkImport"
+        )
+);
 
 const Tasks = lazy(() =>
     import("./modules/Dashboard/modules/Tasks/Tasks").then(module => ({
@@ -162,6 +171,10 @@ const HackathonParticipants = lazy(
         )
 );
 
+const CollegeLevels = lazy(
+    () => import("./modules/Dashboard/modules/CollegeLevels/CollegeLevels")
+);
+
 import { roles } from "./services/types";
 import SecureAuthRoutes from "./services/authCheck";
 
@@ -169,7 +182,8 @@ import Settings from "./modules/Dashboard/modules/Settings/Settings";
 import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
 import Refer from "./modules/Dashboard/modules/Refer/Refer";
 import Thread from "./modules/Public/ThreadsCard/modules/Thread";
-import { KarmaVoucher } from "./modules/Dashboard/modules/KarmaVoucher/KarmaVoucher";
+import Template from "./modules/Common/Authentication/pages/Onboarding/Template";
+
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
 );
@@ -209,6 +223,10 @@ function App() {
             ]
         },
         {
+            path: "/template",
+            element: <Template />
+        },
+        {
             path: "/",
             element: <PrivateRoutes />,
             children: [
@@ -223,7 +241,7 @@ function App() {
                         },
                         {
                             path: "refer",
-                            element: <Refer/>
+                            element: <Refer />
                         },
                         {
                             path: "interest-groups",
@@ -351,6 +369,15 @@ function App() {
                             )
                         },
                         {
+                            path: "college-levels",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    children={<CollegeLevels />}
+                                />
+                            )
+                        },
+                        {
                             path: "tasks",
                             element: (
                                 <RoleChecker
@@ -379,6 +406,10 @@ function App() {
                                     children={<KarmaVoucher />}
                                 />
                             )
+                        },
+                        {
+                            path: "karma-voucher/bulk-import",
+                            element: <KarmaVoucherBulkImport />
                         },
                         {
                             path: "url-shortener",

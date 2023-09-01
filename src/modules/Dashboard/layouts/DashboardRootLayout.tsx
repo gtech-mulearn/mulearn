@@ -18,7 +18,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
     const [userType, setUserType] = useState("");
 
     useEffect(() => {
-        const userInfo = fetchLocalStorage<UserInfo>('userInfo')
+        const userInfo = fetchLocalStorage<UserInfo>("userInfo");
         if (userInfo) {
             const existInGuild = userInfo.exist_in_guild;
             setConnected(existInGuild);
@@ -71,28 +71,35 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     url: "/dashboard/interest-groups",
                     title: "Interest Groups",
                     hasView: true,
-                    roles: [roles.ADMIN],
+                    roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-books"></i>
                 },
                 {
                     url: "/dashboard/organizations",
                     title: "Organizations",
                     hasView: true,
-                    roles: [roles.ADMIN],
+                    roles: [roles.ADMIN]
+                    // icon: <i className="fi fi-sr-building"></i>
+                },
+                {
+                    url: "/dashboard/college-levels",
+                    title: "College Levels",
+                    hasView: true,
+                    roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-building"></i>
                 },
                 {
                     url: "/dashboard/tasks",
                     title: "Tasks",
                     hasView: true,
-                    roles: [roles.ADMIN],
+                    roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-note"></i>
                 },
                 {
                     url: "/dashboard/karma-voucher",
                     title: "Karma Voucher",
                     hasView: true,
-                    roles: [roles.ADMIN],
+                    roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-note"></i>
                 },
                 {
@@ -106,7 +113,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                             url: "/dashboard/manage-users",
                             title: "Manage Users",
                             hasView: true,
-                            roles: [roles.ADMIN],
+                            roles: [roles.ADMIN]
                         },
                         {
                             url: "/dashboard/user-role-verification",
@@ -120,17 +127,17 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     url: "/dashboard/manage-roles",
                     title: "Manage Roles",
                     hasView: true,
-                    roles: [roles.ADMIN],
+                    roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-users-gear"></i>
                 },
                 {
                     url: "/dashboard/url-shortener",
                     title: "URL Shortener",
                     hasView: true,
-                    roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE],
+                    roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE]
                     // icon: <i className="fi fi-sr-globe"></i>
-                },
-            ],
+                }
+            ]
         },
 
         {
@@ -170,12 +177,11 @@ const DashboardRootLayout = (props: { component?: any }) => {
                 <TopNavBar />
                 <div className={styles.main_content}>
                     <Suspense fallback={<MuLoader />}>
-
                         <Outlet />
                     </Suspense>
                 </div>
             </div>
-        </div >
+        </div>
     );
 };
 

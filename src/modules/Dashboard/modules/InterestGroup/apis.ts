@@ -58,10 +58,28 @@ export const createInterestGroups = async (
             isClosable: true
         });
     } catch (err: unknown) {
-        const error = err as AxiosError;
+        const error = err as APIError;
+        let errorMessage = "Some Error Occurred..";
+        if (error?.response?.data?.message) {
+            errorMessage =
+                (
+                    error?.response?.data?.message as {
+                        code?: string[];
+                        general?: string[];
+                    }
+                )?.code?.[0] ||
+                (
+                    error?.response?.data?.message as {
+                        code?: string[];
+                        general?: string[];
+                    }
+                )?.general?.[0] ||
+                errorMessage;
+        }
+
         if (error?.response) {
             toast({
-                title: "Some Error Occured..",
+                title: errorMessage,
                 description: "",
                 status: "error",
                 duration: 2000,
@@ -69,7 +87,7 @@ export const createInterestGroups = async (
             });
         }
         toast({
-            title: " Create Failed",
+            title: "Create Failed",
             description: "",
             status: "error",
             duration: 3000,

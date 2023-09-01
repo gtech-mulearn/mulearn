@@ -29,7 +29,7 @@ type FooterProps = {
 
 type TableProps = {
     rows: Data[];
-    isloading?: boolean
+    isloading?: boolean;
     children?: [
         React.ReactElement<HeaderProps>?,
         React.ReactElement<FooterProps>?,
@@ -126,18 +126,24 @@ const Table: FC<TableProps> = (props: TableProps) => {
     //props.rows?.map((rowData, index)=>{console.log(rowData['title'])})
     return (
         <>
-
+            {props.rows.map((rowData, index) => {
+                // console.log(rowData["muid"]);
+            })}
             <div className={styles.table}>
                 <table className={styles.tableActual}>
                     {props.children?.[0]}
-                    {props.isloading ?
-                        <tbody><tr>
-                            <td colSpan={props.columnOrder.length + 2} style={{ width: '100%' }}>
-                                <MuLoader />
-                            </td>
-                        </tr>
+                    {props.isloading ? (
+                        <tbody>
+                            <tr>
+                                <td
+                                    colSpan={props.columnOrder.length + 2}
+                                    style={{ width: "100%" }}
+                                >
+                                    <MuLoader />
+                                </td>
+                            </tr>
                         </tbody>
-                        :
+                    ) : (
                         <tbody>
                             {props.rows?.map((rowData, index) => (
                                 <tr key={index}>
@@ -156,14 +162,19 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                     ))}
                                     {props.id &&
                                         props.id.map((column, columnIndex) => (
-                                            <td className={styles.td} key={column}>
+                                            <td
+                                                className={styles.td}
+                                                key={column}
+                                            >
                                                 <div className={styles.icons}>
                                                     {props.onCopyClick && (
                                                         <button
                                                             onClick={() =>
                                                                 props.onCopyClick &&
                                                                 props.onCopyClick(
-                                                                    rowData[column]
+                                                                    rowData[
+                                                                        column
+                                                                    ]
                                                                 )
                                                             }
                                                         >
@@ -175,7 +186,9 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                             onClick={() =>
                                                                 props.onEditClick &&
                                                                 props.onEditClick(
-                                                                    rowData[column]
+                                                                    rowData[
+                                                                        column
+                                                                    ]
                                                                 )
                                                             }
                                                         >
@@ -184,7 +197,9 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                     )}
                                                     {props.onVerifyClick && (
                                                         <button
-                                                            className={styles.btns}
+                                                            className={
+                                                                styles.btns
+                                                            }
                                                             onClick={() =>
                                                                 toggleModal(
                                                                     index,
@@ -249,35 +264,38 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                 props.modalTypeContent
                                                             }
                                                             value={
-                                                                rowData['title']
+                                                                rowData["title"]
                                                             }
                                                         />
                                                     )}
                                                 </div>
                                             </td>
                                         ))}
-
                                 </tr>
                             ))}
                         </tbody>
-                    }
+                    )}
                 </table>
             </div>
 
             {(() => {
                 if (props.isloading) {
-                    return ""
+                    return "";
                 }
                 if (props.rows.length)
                     return (
                         <div className={styles.page}>{props.children?.[1]}</div>
-                    )
+                    );
                 else
                     return (
-                        <h1 style={{
-                            color: 'red'
-                        }}>No data to display</h1>
-                    )
+                        <h1
+                            style={{
+                                color: "red"
+                            }}
+                        >
+                            No data to display
+                        </h1>
+                    );
             })()}
         </>
     );
