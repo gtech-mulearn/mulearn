@@ -47,15 +47,15 @@ const TopNavBar = () => {
                         <div className={styles.mulearn_brand2}></div>
                         <div className={styles.menu}>
 
-                            {/* <i className="fi fi-sr-settings"></i> */}
-                            {/* <Popover placement="bottom-end">
+                            <i className="fi fi-sr-settings"></i>
+                            <Popover placement="bottom-end">
                                 <PopoverTrigger >
                                     <Button {...notificationStyle}>{notificationList.length===0?<VscBell />:<VscBellDot />}</Button>
                                 </PopoverTrigger>
                                 <PopoverContent >
                                     <NotificationTab notificationList={notificationList} setNotificationList={setNotificationList} />
                                 </PopoverContent>
-                            </Popover> */}
+                            </Popover>
                             <div className={styles.profile}>
                                 <img
                                     onClick={() => {
