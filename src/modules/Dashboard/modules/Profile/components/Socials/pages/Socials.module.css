@@ -6,17 +6,18 @@
         height: 30px;
         width: 30px;
         cursor: pointer;
-        padding: 0px !important;
-        border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: aliceblue;
-        color: #456FF6;
+        color: rgb(69, 111, 246);
         position: relative;
+        border-radius: 50%;
+        background: aliceblue;
+        padding: 0px !important;
 
         & i {
             font-size: 16px !important;
+            /* display: flex; */
             height: 20px;
         }
     }
