@@ -183,6 +183,11 @@ import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
 import Refer from "./modules/Dashboard/modules/Refer/Refer";
 import Thread from "./modules/Public/ThreadsCard/modules/Thread";
 import Template from "./modules/Common/Authentication/pages/Onboarding/Template";
+import Signin from "./modules/Common/Authentication/pages/Onboarding/signin";
+import Role_one from "./modules/Common/Authentication/pages/Onboarding/role1";
+import Role_four from "./modules/Common/Authentication/pages/Onboarding/role4";
+
+
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -226,6 +231,19 @@ function App() {
             path: "/template",
             element: <Template />
         },
+        {
+            path: "/signin",
+            element: <Signin/>
+        },
+        {
+            path: "/role1",
+            element: <Role_one/>
+        },
+        {
+            path: "/role4",
+            element: <Role_four/>
+        },
+
         {
             path: "/",
             element: <PrivateRoutes />,
