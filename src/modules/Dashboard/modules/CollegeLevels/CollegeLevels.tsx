@@ -75,11 +75,10 @@ function CollegeLevels() {
         // { column: "id", Label: "ID", isSortable: true },
         { column: "org", Label: "College", isSortable: false },
         { column: "level", Label: "Level", isSortable: false },
-        { column: "discord_link", Label: "Discord", isSortable: false },
         { column: "updated_by", Label: "Updated By", isSortable: false },
-        { column: "updated_at", Label: "Updated At", isSortable: false },
+        { column: "updated_at", Label: "Updated By", isSortable: false },
         { column: "created_by", Label: "Created By", isSortable: false },
-        { column: "created_at", Label: "Created At", isSortable: false }
+        { column: "created_at", Label: "Created On", isSortable: false }
     ];
 
     const errHandler = (err: any) => {
@@ -120,26 +119,6 @@ function CollegeLevels() {
 
         firstFetch.current = false;
     }, []);
-
-    const delayedRefetch = () => {
-        console.log("refetch");
-        setTimeout(
-            () =>
-                getCollegeLevels(
-                    {
-                        setData: setData,
-                        page: 1,
-                        selectedValue: perPage,
-                        setIsLoading: setIsLoading,
-                        setTotalPages: setTotalPages,
-                        search: "",
-                        sortID: ""
-                    },
-                    errHandler
-                ),
-            1000
-        );
-    };
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
@@ -182,10 +161,7 @@ function CollegeLevels() {
                                   header="Assign College Level"
                                   paragraph="Select and assign the level"
                               >
-                                  <CollegeLevelsCreate
-                                      onClose={setCurrModal}
-                                      refetch={delayedRefetch}
-                                  />
+                                  <CollegeLevelsCreate onClose={setCurrModal} />
                               </Modal>
                           );
                       if (currModal === "edit")
@@ -200,7 +176,6 @@ function CollegeLevels() {
                                   <CollegeLevelsEdit
                                       onClose={setCurrModal}
                                       org_id={currOrdId!}
-                                      refetch={delayedRefetch}
                                   />
                               </Modal>
                           );

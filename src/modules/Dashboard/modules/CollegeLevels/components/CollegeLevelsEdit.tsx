@@ -10,12 +10,10 @@ import styles from "./Modal.module.css";
 import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css";
 import { type } from "os";
 import { editCollegeLevels } from "../apis";
-import { levelCount } from "../Utisl";
 
 type Props = {
     onClose: any;
     org_id: string;
-    refetch?: Function;
 };
 
 const CollegeLevelsEdit = (props: Props) => {
@@ -32,11 +30,7 @@ const CollegeLevelsEdit = (props: Props) => {
             })}
             onSubmit={values => {
                 (async () => {
-                    await editCollegeLevels({
-                        org_id: props.org_id,
-                        ...values
-                    });
-                    if (props.refetch) props.refetch();
+                    editCollegeLevels({ org_id: props.org_id, ...values });
                     props.onClose(null);
                 })();
             }}
@@ -45,9 +39,9 @@ const CollegeLevelsEdit = (props: Props) => {
                 <FormikReactSelect
                     name="level"
                     label="Levels"
-                    options={[...new Array(levelCount).keys()].map(val => ({
-                        label: (val + 1).toString(),
-                        value: val + 1
+                    options={[1, 2, 3, 4].map(val => ({
+                        label: val.toString(),
+                        value: val
                     }))}
                     isClearable
                     isSearchable
