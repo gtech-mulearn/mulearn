@@ -6,6 +6,8 @@ import astroo from '../../assets/astroo.webp'
 import astro from '../../assets/astro.webp'
 import planet from '../../assets/planet.webp'
 import OnboardingHeader from '../../components/Head/OnboardingHeader'
+import Rolepage from './Rolepage'
+import AccountCreation from './AccountCreation'
 
 export default function Template() {
     return (
