@@ -131,10 +131,10 @@ export const organizationRoutes = {
 } as const;
 
 export const ManageLocationsRoutes = {
-    getCountryData: "/api/v1/location/country",
-    getStateData: "api/v1/location/${country}/states",
-    getZoneData: "api/v1/location/${country}/${state}/zone",
-    getDistrictData: "api/v1/location/${country}/${state}/${zone}/district"
+    getCountryData: "/api/v1/dashboard/location/countries",
+    getStateData: "api/v1/dashboard/location/states/${country}",
+    getZoneData: "api/v1/dashboard/location/zones/${state}",
+    getDistrictData: "api/v1/dashboard/location/districts/${zone}"
 };
 
 export const KKEMRoutes = {
