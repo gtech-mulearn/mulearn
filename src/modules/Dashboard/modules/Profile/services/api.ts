@@ -1,9 +1,7 @@
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
-import axios from "axios";
 import { NavigateFunction } from "react-router-dom";
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
 
 type userProfile = UseStateFunc<any>;
 type userLog = UseStateFunc<any>;
@@ -109,29 +107,4 @@ export const getPublicUserLevels = (
         .catch(error => {
             console.log(error);
         });
-};
-
-export const fetchQRCode = async (setBlob: any) => {
-    try {
-        const muid = fetchLocalStorage<UserInfo>("userInfo")?.muid;
-
-        const url = `https://quickchart.io/qr?text=${
-            import.meta.env.VITE_FRONTEND_URL
-        }/profile/${muid}&centerImageUrl=https://avatars.githubusercontent.com/u/98015594?s=88&v=4`;
-        const response = await axios
-            .get(url, {
-                responseType: "arraybuffer"
-            })
-            .then(response => {
-                // console.log(response.data);
-                const blob = new Blob([response.data], {
-                    type: "image/png"
-                });
-                setBlob(URL.createObjectURL(blob));
-                // const imageUrl = URL.createObjectURL(blob);
-                // console.log(blob);
-            });
-    } catch (error) {
-        console.error(error);
-    }
 };

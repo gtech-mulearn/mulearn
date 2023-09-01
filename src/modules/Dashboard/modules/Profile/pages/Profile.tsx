@@ -1,4 +1,3 @@
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import moment from "moment";
 import { useEffect, useRef, useState } from "react";
 import dpm from "../assets/images/dpm.webp";
@@ -7,7 +6,6 @@ import MulearnBrand from "../assets/svg/MulearnBrand";
 import Rank from "../assets/svg/Rank";
 import { PieChart } from "../components/Piechart/PieChart";
 import {
-    fetchQRCode,
     getPublicUserLevels,
     getPublicUserLog,
     getPublicUserProfile,
@@ -18,8 +16,7 @@ import {
 } from "../services/api";
 import styles from "./Profile.module.css";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-import { Switch, useToast } from "@chakra-ui/react";
-import { saveAs } from "file-saver";
+import { useToast } from "@chakra-ui/react";
 import { Helmet } from "react-helmet";
 import { useNavigate, useParams } from "react-router-dom";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
@@ -27,21 +24,16 @@ import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import AvgKarma from "../assets/svg/AvgKarma";
 import EditProfilePopUp from "../components/EditProfilePopUp/pages/EditProfilePopUp";
 import BasicDetails from "../components/BasicDetails/pages/BasicDetails";
-import Instagram from "../assets/svg/Instagram";
-import Behance from "../assets/svg/Behance";
-import LinkedIn from "../assets/svg/LinkedIn";
-import Twitter from "../assets/svg/Twitter";
 import Socials from "../components/Socials/pages/Socials";
+import ShareProfilePopUp from "../components/ShareProfilePopUp/pages/ShareProfilePopUp";
 
 //TODO: Verify the relevance of profile page image
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
-    const [copy, setCopy] = useState(false);
     const toast = useToast();
     const [APILoadStatus, setAPILoadStatus] = useState(0);
     const [profileList, setProfileList] = useState("basic-details");
-    const [blob, setBlob] = useState<any>();
     const [popUP, setPopUP] = useState(false);
     const [embedSize, setEmbedSize] = useState("100px");
     const [editPopUp, setEditPopUp] = useState(false);
@@ -122,12 +114,7 @@ const Profile = () => {
             }
         }
         firstFetch.current = false;
-        fetchQRCode(setBlob);
     }, []);
-
-    const downloadQR = () => {
-        saveAs(blob, `${userProfile.muid}.png`);
-    };
     return (
         <>
             <Helmet>
@@ -246,127 +233,16 @@ const Profile = () => {
                                 setEditPopUP={setEditPopUp}
                                 triggerUpdateProfile={triggerUpdateProfile}
                             />
-                            {/* TODO : Convert this to share Profile pop component */}
-                            <div
-                                style={
-                                    popUP
-                                        ? { transform: "scale(1)" }
-                                        : {
-                                              transform: "scale(0)"
-                                              // opacity: "0",
-                                          }
-                                }
-                                className={styles.share_pop_up_container}
-                                onKeyDown={e => {
-                                    if (e.key === "Escape") {
-                                        setPopUP(false);
-                                    }
-                                }}
-                                tabIndex={0}
-                            >
-                                <div className={styles.share_pop_up}>
-                                    <div
-                                        className={styles.share_pop_up_contents}
-                                    >
-                                        <h1>Share your profile</h1>
-                                        <div className={styles.profile_state}>
-                                            <p>Switch to public profile</p>
-                                            <div className={styles.option}>
-                                                <Switch
-                                                    size="sm"
-                                                    isChecked={profileStatus}
-                                                    onChange={e => {
-                                                        setProfileStatus(
-                                                            e.target.checked
-                                                        );
-                                                        putIsPublic(
-                                                            e.target.checked,
-                                                            toast
-                                                        );
-                                                    }}
-                                                />
-                                            </div>
-                                        </div>
-                                        {profileStatus && (
-                                            <div
-                                                className={
-                                                    styles.share_profile_container
-                                                }
-                                            >
-                                                <div className={styles.qr_code}>
-                                                    <img src={blob} alt="" />
-                                                </div>
-                                                {/* Todo: Reusable copy link component */}
-                                                <div className={styles.link}>
-                                                    <p>
-                                                        {
-                                                            import.meta.env
-                                                                .VITE_FRONTEND_URL as string
-                                                        }
-                                                        /profile/
-                                                        {userProfile.muid}
-                                                    </p>
 
-                                                    <i
-                                                        onClick={() => {
-                                                            navigator.clipboard.writeText(
-                                                                `${
-                                                                    import.meta
-                                                                        .env
-                                                                        .VITE_FRONTEND_URL as string
-                                                                }/profile/${
-                                                                    userProfile.muid
-                                                                }`
-                                                            );
-                                                            setCopy(true);
-                                                            setTimeout(() => {
-                                                                setCopy(false);
-                                                            }, 3000);
-                                                        }}
-                                                        className="fi fi-sr-link"
-                                                    >
-                                                        {/* Todo: Create as left Side Tooltip Component for below component */}
-                                                        <div
-                                                            className={
-                                                                styles.toast
-                                                            }
-                                                        >
-                                                            <p>
-                                                                {!copy
-                                                                    ? "Copy"
-                                                                    : "Copied!"}
-                                                            </p>
-                                                        </div>
-                                                        {/* Todo: Create as left Side Tooltip Component for above component*/}
-                                                    </i>
-                                                </div>
-                                            </div>
-                                        )}
-                                        <hr />
-                                        {profileStatus && (
-                                            <MuButton
-                                                style={{
-                                                    background: "#456FF6",
-                                                    color: "#fff",
-                                                    margin: "0px 0px -8px 0px",
-                                                    display: "flex",
-                                                    justifyContent: "center",
-                                                    padding: "16px"
-                                                }}
-                                                text={"Download QR code"}
-                                                onClick={() => {
-                                                    downloadQR();
-                                                }}
-                                            />
-                                        )}
-                                        <button onClick={() => setPopUP(false)}>
-                                            {!profileStatus
-                                                ? "Cancel"
-                                                : "Close"}
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                            <ShareProfilePopUp
+                                popUP={popUP}
+                                setPopUP={setPopUP}
+                                profileStatus={profileStatus}
+                                setProfileStatus={setProfileStatus}
+                                userProfile={userProfile}
+                                putIsPublic={putIsPublic}
+                                toast={toast}
+                            />
 
                             <div className={styles.profileDash}>
                                 <div className={styles.profile}>
