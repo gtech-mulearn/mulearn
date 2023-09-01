@@ -1,0 +1,118 @@
+.modal {
+    margin-top: 50px;
+    width: 100%;
+    height: 100vh;
+
+    display: grid;
+    place-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    backdrop-filter: blur(0.1rem);
+    overscroll-behavior: contain;
+
+    color: black;
+}
+.modal .container {
+    width: min(80%, 800px);
+    background-color: white;
+
+    border-radius: 1rem;
+    box-shadow: 10px 10px 50px -5px rgba(0, 0, 0, 0.27);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0rem;
+}
+
+.modal :is(.crossIcon, .tickIcon) {
+    width: 56px;
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.modal .tickIcon {
+    border: 8px solid #e8fcef;
+    background: var(--success-100, #d1fadf);
+}
+.modal .crossIcon {
+    border: 8px solid #f1cdcd;
+    background: var(--success-100, #f6afaf);
+}
+
+.modal :is(h2, p) {
+    all: revert;
+    margin: 0px;
+}
+
+.modal .form {
+    width: 100%;
+}
+
+.modal input {
+    margin: 0;
+}
+
+.modal .buttonContainer {
+    display: flex;
+    justify-content: space-evenly;
+
+    flex-wrap: wrap;
+
+    padding-top: 1rem;
+}
+
+.modal .buttonContainer button {
+    display: flex;
+    justify-content: center;
+}
+
+.modal .decline {
+    background-color: var(--InputDefaultBackground);
+    color: var(--Primary);
+}
+
+.modal .decline:hover {
+    background-color: lightgray;
+    box-shadow: 0 5px 15px -10px rgba(208, 92, 92, 0.6);
+    transform: translateY(-3px);
+}
+
+.modal .confirm {
+    background-color: var(--Primary);
+    color: var(--White);
+}
+
+.modal .confirm:hover {
+    background-color: var(--Blue800);
+    box-shadow: 0 10px 20px -10px rgba(62, 165, 255, 0.6);
+    transform: translateY(-5px);
+}
+
+.selectContainer {
+    display: flex;
+    gap: 0rem 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media (max-width: 900px) {
+    .selectContainer {
+        height: 300px;
+        overflow-y: auto;
+    }
+}
+
+.smallSize {
+    .container {
+        max-width: 500px;
+        padding: 2rem;
+    }
+}

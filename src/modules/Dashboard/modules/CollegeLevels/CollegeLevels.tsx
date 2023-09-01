@@ -3,43 +3,39 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { deleteManageRoles, getManageRoles } from "./apis";
 import { useNavigate } from "react-router-dom";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle, AiOutlineUser } from "react-icons/ai";
-import styles from "./Manageroles.module.css";
+import styles from "./CollegeLevels.module.css";
 import modalStyles from "./components/Modal.module.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
 import Modal from "./components/Modal";
-import ManageRolesEditModal from "./components/ManageRolesEditModal";
-import ManageRolesCreateModal from "./components/ManageRolesCreateModal";
-import { getRoles } from "../../../../modules/Common/Authentication/services/onboardingApis";
-import ManageUsers from "./components/ManageUsers";
+import CollegeLevelsEdit from "./components/CollegeLevelsEdit";
+import CollegeLevelsCreate from "./components/CollegeLevelsCreate";
+import { deleteCollegeLevels, getCollegeLevels } from "./apis";
 
-function ManageRoles() {
+function CollegeLevels() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(100);
     const [sort, setSort] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const navigate = useNavigate();
     const firstFetch = useRef(true);
     //Modal
-    const [currRoleID, setCurrRoleID] = useState("");
-    const [currModal, setCurrModal] = useState<
-        null | "create" | "edit" | "users"
-    >(null);
-    const [roles, setRoles] = useState<any>();
+    const [currModal, setCurrModal] = useState<null | "create" | "edit">(null);
+    const [currOrdId, setCurrOrgId] = useState<string | null>(null);
+
+    const toast = useToast();
     const icons = {
         user: (
-            <div className={modalStyles.TickIcon}>
+            <div className={modalStyles.tickIcon}>
                 <AiOutlineUser width="20" height="20" />
             </div>
         ),
         tick: (
-            <div className={modalStyles.TickIcon}>
+            <div className={modalStyles.tickIcon}>
                 <svg
                     width="20"
                     height="20"
@@ -58,7 +54,7 @@ function ManageRoles() {
             </div>
         ),
         cross: (
-            <div className={modalStyles.CrossIcon}>
+            <div className={modalStyles.crossIcon}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -77,132 +73,101 @@ function ManageRoles() {
 
     const columnOrder = [
         // { column: "id", Label: "ID", isSortable: true },
-        { column: "title", Label: "Title", isSortable: true },
-        { column: "description", Label: "Description", isSortable: false },
-        { column: "users_with_role", Label: "Members", isSortable: true },
-        { column: "updated_by", Label: "Updated By", isSortable: true },
+        { column: "org", Label: "College", isSortable: false },
+        { column: "level", Label: "Level", isSortable: false },
+        { column: "discord_link", Label: "Discord", isSortable: false },
+        { column: "updated_by", Label: "Updated By", isSortable: false },
+        { column: "updated_at", Label: "Updated At", isSortable: false },
         { column: "created_by", Label: "Created By", isSortable: false },
-        { column: "created_at", Label: "Created On", isSortable: true }
+        { column: "created_at", Label: "Created At", isSortable: false }
     ];
+
+    const errHandler = (err: any) => {
+        toast({
+            title: "Something went wrong",
+            description: err,
+            status: "error",
+            duration: 3000,
+            isClosable: true
+        });
+    };
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getManageRoles(
-            setData,
-            nextPage,
-            perPage,
-            setIsLoading,
-            () => {},
-            sort
-        );
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getManageRoles(
-            setData,
-            prevPage,
-            perPage,
-            setIsLoading,
-            () => {},
-            sort
-        );
     };
 
     useEffect(() => {
         if (firstFetch.current) {
-            getManageRoles(
-                setData,
-                1,
-                perPage,
-                setIsLoading,
-                setTotalPages,
-                "",
-                ""
+            getCollegeLevels(
+                {
+                    setData: setData,
+                    page: 1,
+                    selectedValue: perPage,
+                    setIsLoading: setIsLoading,
+                    setTotalPages: setTotalPages,
+                    search: "",
+                    sortID: ""
+                },
+                errHandler
             );
-            getRoles(val => console.log(val), setRoles);
         }
 
         firstFetch.current = false;
     }, []);
 
-    const handleSearch = (search: string) => {
-        setCurrentPage(1);
-        getManageRoles(
-            setData,
-            1,
-            perPage,
-            setIsLoading,
-            setTotalPages,
-            search,
-            ""
+    const delayedRefetch = () => {
+        console.log("refetch");
+        setTimeout(
+            () =>
+                getCollegeLevels(
+                    {
+                        setData: setData,
+                        page: 1,
+                        selectedValue: perPage,
+                        setIsLoading: setIsLoading,
+                        setTotalPages: setTotalPages,
+                        search: "",
+                        sortID: ""
+                    },
+                    errHandler
+                ),
+            1000
         );
     };
 
+    const handleSearch = (search: string) => {
+        setCurrentPage(1);
+    };
+
     const handleEdit = (id: string | number | boolean) => {
-        setCurrRoleID(id as string);
+        setCurrOrgId(id.toString());
         setCurrModal("edit");
     };
-    const toast = useToast();
+
     const handleDelete = (id: string | undefined) => {
-        deleteManageRoles(id, toast);
-        getManageRoles(
-            setData,
-            1,
-            perPage,
-            setIsLoading,
-            setTotalPages,
-            "",
-            ""
-        );
+        deleteCollegeLevels({ org_id: id });
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getManageRoles(
-            setData,
-            1,
-            selectedValue,
-            setIsLoading,
-            setTotalPages,
-            "",
-            ""
-        );
     };
 
     const handleCreate = () => {
         setCurrModal("create");
     };
-    const handleUsers = () => {
-        setCurrModal("users");
-    };
 
     const handleIconClick = (column: string) => {
         if (sort === column) {
             setSort(`-${column}`);
-            getManageRoles(
-                setData,
-                1,
-                perPage,
-                setIsLoading,
-                setTotalPages,
-                "",
-                `-${column}`
-            );
         } else {
             setSort(column);
-            getManageRoles(
-                setData,
-                1,
-                perPage,
-                setIsLoading,
-                setTotalPages,
-                "",
-                column
-            );
         }
     };
     return (
@@ -214,46 +179,28 @@ function ManageRoles() {
                               <Modal
                                   onClose={setCurrModal}
                                   icon={icons.tick}
-                                  header="Create Role"
-                                  paragraph="Enter the values for the new role"
+                                  header="Assign College Level"
+                                  paragraph="Select and assign the level"
                               >
-                                  <ManageRolesCreateModal
-                                      id={currRoleID}
+                                  <CollegeLevelsCreate
                                       onClose={setCurrModal}
-                                      values={roles.map(
-                                          (obj: any) => obj.title
-                                      )}
+                                      refetch={delayedRefetch}
                                   />
                               </Modal>
                           );
                       if (currModal === "edit")
                           return (
                               <Modal
+                                  size="small"
                                   onClose={setCurrModal}
                                   icon={icons.cross}
-                                  header="Edit Role"
-                                  paragraph="Enter the new values for this role"
+                                  header="Edit College Level"
+                                  paragraph="Select the new level"
                               >
-                                  <ManageRolesEditModal
-                                      id={currRoleID}
+                                  <CollegeLevelsEdit
                                       onClose={setCurrModal}
-                                      values={roles.map(
-                                          (obj: any) => obj.title
-                                      )}
-                                  />
-                              </Modal>
-                          );
-                      if (currModal === "users")
-                          return (
-                              <Modal
-                                  onClose={setCurrModal}
-                                  icon={icons.user}
-                                  header="Edit User Roles"
-                                  paragraph="Change users in current role"
-                              >
-                                  <ManageUsers
-                                      onClose={setCurrModal}
-                                      roles={roles}
+                                      org_id={currOrdId!}
+                                      refetch={delayedRefetch}
                                   />
                               </Modal>
                           );
@@ -261,12 +208,6 @@ function ManageRoles() {
                 : ""}
 
             <div className={styles.createBtnContainer}>
-                <MuButton
-                    className={styles.createBtn}
-                    text={"Users"}
-                    icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
-                    onClick={handleUsers}
-                />
                 <MuButton
                     className={styles.createBtn}
                     text={"Create"}
@@ -280,7 +221,7 @@ function ManageRoles() {
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
-                        CSV={dashboardRoutes.getRolesList}
+                        // CSV={dashboardRoutes.getRolesList}
                     />
                     <Table
                         isloading={isLoading}
@@ -293,7 +234,7 @@ function ManageRoles() {
                         onDeleteClick={handleDelete}
                         modalDeleteHeading="Delete"
                         modalTypeContent="error"
-                        modalDeleteContent="Are you sure you want to delete this role ?"
+                        modalDeleteContent="Are you sure you want to delete this college level ?"
                     >
                         <THead
                             columnOrder={columnOrder}
@@ -322,4 +263,4 @@ function ManageRoles() {
     );
 }
 
-export default ManageRoles;
+export default CollegeLevels;

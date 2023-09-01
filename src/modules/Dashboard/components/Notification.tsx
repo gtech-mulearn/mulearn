@@ -19,7 +19,7 @@ const NotificationMessage = ({ profile, title, created_at, description, clear, i
         <div className="notiMessageTab">
             <img src={profile || dpm} alt="" />
             <div className="notiMessageProfile">
-                <b>{title?title:" "}</b>  
+                <b>{title}</b>  
                 <span className="blueDot" onClick={() => {
                     clear()
                     clearNotification(id,props)
@@ -28,13 +28,15 @@ const NotificationMessage = ({ profile, title, created_at, description, clear, i
                     <IoIosClose size={'18px'} />
                 </span>
                 <div className="day">
-                    { new Date(created_at?created_at:'0000').toLocaleDateString('en-US', { day: 'numeric', weekday: 'long', hour12: true, hour: 'numeric', minute: 'numeric' })}
+                    {new Date(created_at).toLocaleDateString('en-US', { day: 'numeric', weekday: 'long', hour12: true, hour: 'numeric', minute: 'numeric' })}
                     <b>{getTimeAgo(created_at, new Date())}</b>
                 </div>
                 <p>{description}</p>
                 {isRequest(title) &&
                     <div className="btns">
                         <button onClick={() => { 
+                            requestApproval(id,url,created_by, false); 
+                            update() 
                             clear()
                             requestApproval(id,url,created_by, false,update,props);  
                             }}>Decline</button>
@@ -57,7 +59,7 @@ const NotificationTab = ({notificationList,setNotificationList}: NotificationCom
     const links = [
         { title: 'View All', count: notificationList.length },
         { title: 'Requests', count: notificationList.filter((item: NotificationProps) => isRequest(item.title)).length },
-        // { title: 'Followers', count: 0 },
+        { title: 'Followers', count: 0 },
     ];
 
     const filteredNotification = filterNotification(active, notificationList);
@@ -81,18 +83,18 @@ const NotificationTab = ({notificationList,setNotificationList}: NotificationCom
                 <ul>
                     {links.map((item, index) => (
                         <li key={index} className={active === index ? 'active' : 'inactive'} onClick={() => setActive(index)}>
-                            <p>{item?.title}</p>
-                            <span>{item?.count}</span>
+                            <p>{item.title}</p>
+                            <span>{item.count}</span>
                         </li>
                     ))}
-                    <span className='glider' style={{ transform: `translateX(${active * 100}%)`, margin: `${active === 0 ? 0 : active === links.length - 1 ? 15 : 15}px` }}></span>
+                    <span className='glider' style={{ transform: `translateX(${active * 100}%)`, margin: `${active === 0 ? 0 : active === links.length - 1 ? 25 : 15}px` }}></span>
                 </ul>
             </div>
             <div className="notiMessageContainer">
                 {filteredNotification.length > 0 ? (
                     <div className="notiMessage">
                         {filteredNotification.map((item, index) => (
-                            <div key={item?.id}>
+                            <div key={item.id}>
                                 <NotificationMessage
                                     key={index}
                                     {...item}
