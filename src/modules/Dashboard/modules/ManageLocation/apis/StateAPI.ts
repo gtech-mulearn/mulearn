@@ -86,7 +86,7 @@ export const patchStateData = async (
 };
 
 //*WORKING ✅
-export const deleteStateData = async (country: string, stateID: string) => {
+export const deleteStateData = async (stateID: string) => {
     try {
         await privateGateway
             .delete(

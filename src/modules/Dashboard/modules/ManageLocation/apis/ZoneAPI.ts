@@ -27,21 +27,13 @@ export const getZoneData = async (
 };
 
 //*NOT WORKING❌
-export const postZoneData = async (
-    country: string,
-    state: string,
-    stateName: string
-) => {
+export const postZoneData = async (state: string, stateName: string) => {
     try {
         await privateGateway
-            .post(
-                ManageLocationsRoutes.getZoneData
-                    .replace("${country}", country)
-                    .replace("${state}", state),
-                {
-                    name: stateName
-                }
-            )
+            .post(ManageLocationsRoutes.patchZoneData.replace("${zone}/", ""), {
+                state: state,
+                name: stateName
+            })
             .then(({ data }) => data.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -77,24 +69,11 @@ export const patchZoneData = async (
     }
 };
 
-//*NOT WORKING❌
-export const deleteZoneData = async (
-    country: string,
-    state: string,
-    zoneName: string
-) => {
+//*WORKING ✅
+export const deleteZoneData = async (zoneName: string) => {
     try {
-        const requestConfig: any = {
-            data: {
-                name: zoneName
-            }
-        };
-
         await privateGateway.delete(
-            ManageLocationsRoutes.getZoneData
-                .replace("${country}", country)
-                .replace("${state}", state),
-            requestConfig
+            ManageLocationsRoutes.patchZoneData.replace("${zone}", zoneName)
         );
     } catch (err: unknown) {
         const error = err as AxiosError;

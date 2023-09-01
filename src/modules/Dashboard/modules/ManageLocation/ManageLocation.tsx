@@ -168,9 +168,9 @@ const ManageLocation = () => {
         if (activeTab === "Country") {
             deleteCountryData(id);
         } else if (activeTab === "State") {
-            deleteStateData(selectedCountry, id);
+            deleteStateData(id);
         } else if (activeTab === "Zone") {
-            deleteZoneData(selectedCountry, selectedState, id);
+            deleteZoneData(id);
         } else if (activeTab === "District") {
             deleteDistrictData(
                 selectedCountry,
