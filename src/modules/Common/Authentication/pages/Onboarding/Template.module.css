@@ -2,16 +2,15 @@
     position: relative;
     width: 100%;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 1.5rem;
-    overflow-x: scroll;
+    display:grid;
+    place-items: center;
+    margin-top: 2rem;
 }
 @media(width<500px){
     .Template{
         height: fit-content;
+        margin-top: 1rem;
+        margin-top: 0;
     }
 }
 
