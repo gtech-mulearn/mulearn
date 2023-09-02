@@ -24,7 +24,7 @@ export default function AccountCreation() {
           </svg>
           {/* <IconContext.Provider value={{style:{fontSize:'26px'}}}>
           <HiEye/> 
-          </IconContext.Provider>           */}
+          </IconContext.Provider>   */}
         </button>
         </div>    
         <input type='password' placeholder='Confirm Password'required/>
