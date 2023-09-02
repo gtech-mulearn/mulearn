@@ -261,7 +261,7 @@ export const getTopCampus = async () => {
     const returnData: any[] = [["Colleges"], [" "]];
     for (let item of data) {
         returnData[0].push(item.campus_code);
-        returnData[1].push(item.rank as -4);
+        returnData[1].push(item.karma);
     }
     return returnData;
 };
