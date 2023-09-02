@@ -12,12 +12,7 @@ h5{
 .select label span{
     font-weight: lighter;
 }
-/*body{
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}*/
+
 .wrapper{
     padding: 2rem;
     width: 25rem;
