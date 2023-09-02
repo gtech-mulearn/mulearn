@@ -1,0 +1,154 @@
+@font-face {
+    font-family: "pixel";
+    src: url("../../font/pixelmix.ttf") format("truetype");
+}
+
+.kkemHero {
+    background: url("../../assets/bg.webp") no-repeat center center/cover;
+    background-color: #FFC501;
+    height: 100vh;
+    width: 100%;
+    padding: 4rem;
+    position: relative;
+}
+
+.kkemHeroIllustration {
+    position: absolute;
+    bottom: 0;
+    height: 30rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.kkemHeroLogo {
+    height: 2rem;
+}
+
+.kkemHeroContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.kkemHeroRight {
+    position: relative;
+}
+
+.kkemHeroLogoImg {
+    height: 15rem;
+}
+
+.kkemHeroGroup {
+    height: 18rem;
+    position: absolute;
+    top: -1.5rem;
+    left: -1.5rem;
+    animation: rotate 25s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.kkemHero h1 {
+    font-family: "pixel";
+    font-weight: bold;
+    font-size: 3rem;
+    color: #fff;
+    line-height: 4.2rem;
+    text-shadow: 5px 8px 1px #EE552B;
+}
+
+.kkemHero p {
+    margin-top: -1rem;
+    font-family: "pixel";
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 3px 1px #EE552B;
+}
+
+.kkemHero button {
+    font-family: "pixel";
+    font-weight: bold;
+    color: #EE552B;
+    padding: .8rem 3rem;
+    background-color: #fff;
+    border-radius: .5rem;
+    margin-top: 1rem;
+    box-shadow: 4px 4px 1px #EE552B;
+    transition: all .3s ease-in-out;
+}
+
+.kkemHero button:hover {
+    transform: translateX(4px) translateY(4px);
+    box-shadow: 0px 0px 1px #EE552B;
+}
+
+@media (width<968px) {
+    .kkemHeroIllustration {
+        height: 24rem;
+    }
+}
+
+@media(width<820px) {
+    .kkemHero {
+        padding: 2rem;
+    }
+
+    .kkemHeroContent {
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .kkemHeroIllustration {
+        bottom: 1rem;
+        height: 12rem;
+    }
+
+    .kkemHeroLogoImg {
+        height: 14rem;
+    }
+
+    .kkemHeroGroup {
+        height: 16rem;
+        top: -1rem;
+        left: -1rem;
+    }
+
+    .kkemHero h1 {
+        font-size: 2.4rem;
+        text-shadow: 3px 5px 1px #EE552B;
+        line-height: 3.3rem;
+        margin-top: .5rem;
+    }
+
+    .kkemHero p {
+        font-size: 1.1rem;
+    }
+
+    .kkemHero button {
+        font-size: 1rem;
+        padding: .5rem 2rem;
+    }
+}
+
+@media(width<400px) {
+
+    .kkemHeroContent {
+        gap: 2rem;
+    }
+
+    .kkemHeroLogoImg {
+        height: 9rem;
+    }
+
+    .kkemHeroGroup {
+        height: 11rem;
+    }
+}
