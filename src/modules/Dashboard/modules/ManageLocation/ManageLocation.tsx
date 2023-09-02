@@ -65,7 +65,15 @@ const ManageLocation = () => {
     function loadTableData() {
         if (activeTab === "Country") {
             setPopupStatus(false);
-            getCountryData(setData, toast, setTotalPages);
+            getCountryData(
+                setData,
+                toast,
+                perPage,
+                currentPage,
+                setTotalPages,
+                "",
+                sort
+            );
             setPopupFields({
                 countryShow: true,
                 stateShow: false,
@@ -101,7 +109,15 @@ const ManageLocation = () => {
 
     function getLocationData() {
         if (activeTab === "Country") {
-            getCountryData(setData, toast, setTotalPages);
+            getCountryData(
+                setData,
+                toast,
+                perPage,
+                currentPage,
+                setTotalPages,
+                "",
+                sort
+            );
         } else if (activeTab === "State") {
             getStateData(selectedCountry, setData, toast, setTotalPages);
         } else if (activeTab === "Zone") {
@@ -134,6 +150,23 @@ const ManageLocation = () => {
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
+        if (activeTab === "Country") {
+            getCountryData(
+                setData,
+                toast,
+                perPage,
+                1,
+                setTotalPages,
+                search,
+                sort
+            );
+        } else if (activeTab === "State") {
+            throw new Error("State search not implemented");
+        } else if (activeTab === "Zone") {
+            throw new Error("Zone search not implemented");
+        } else if (activeTab === "District") {
+            throw new Error("District search not implemented");
+        }
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
@@ -180,6 +213,10 @@ const ManageLocation = () => {
     function handleTabClick(tab: string) {
         setActiveTab(tab);
     }
+
+    useEffect(() => {
+        getLocationData();
+    }, [sort, currentPage, perPage]);
 
     return (
         <>
