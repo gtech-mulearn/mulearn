@@ -42,12 +42,17 @@
 .accountCreationInputs .accountCreationPassword button{
     position: relative;
     right: 40px;
-    /* top: 5px; */
+    top: 5px;
     width: 24px;
     height: 16px;
     color: #D9D9D9;
     background-color:#F3F3F4;  
 }
+.accountCreationInputs .accountCreationPassword button:active{
+color: #456FF6;
+}
+
+
 
 .accountCreationAlternative{
     display: flex;
