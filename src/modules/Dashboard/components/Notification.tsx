@@ -59,7 +59,7 @@ const NotificationTab = ({notificationList,setNotificationList}: NotificationCom
     const links = [
         { title: 'View All', count: notificationList.length },
         { title: 'Requests', count: notificationList.filter((item: NotificationProps) => isRequest(item.title)).length },
-        { title: 'Followers', count: 0 },
+        // { title: 'Followers', count: 0 },
     ];
 
     const filteredNotification = filterNotification(active, notificationList);
