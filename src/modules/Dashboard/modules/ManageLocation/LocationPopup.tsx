@@ -174,10 +174,13 @@ const LocationPopup: FC<LocationPopupProps> = ({
                 selectedData.Zone.value
             ) {
                 getDistrictData(
-                    selectedData.Country.value,
-                    selectedData.State.value,
                     selectedData.Zone.value,
-                    handleData
+                    handleData,
+                    5,
+                    1,
+                    setTotalPages,
+                    "",
+                    ""
                 );
                 handleCountry(selectedData.Country.value);
                 handleState(selectedData.State.value);

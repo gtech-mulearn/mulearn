@@ -142,11 +142,13 @@ const ManageLocation = () => {
             );
         } else if (activeTab === "District") {
             getDistrictData(
-                selectedCountry,
-                selectedState,
                 selectedZone,
                 setData,
-                setTotalPages
+                perPage,
+                currentPage,
+                setTotalPages,
+                search,
+                sort
             );
         }
     }
