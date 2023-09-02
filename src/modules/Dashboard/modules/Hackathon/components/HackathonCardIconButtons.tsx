@@ -32,6 +32,7 @@ type Props = {
     ownData: HackList[];
     setOwnData: React.Dispatch<React.SetStateAction<HackList[]>>;
     setData: React.Dispatch<React.SetStateAction<HackList[]>>;
+    style?: React.CSSProperties
 };
 
 const HackathonCardIconButtons = ({
@@ -39,7 +40,8 @@ const HackathonCardIconButtons = ({
     index,
     ownData,
     setOwnData,
-    setData
+    setData,
+    style
 }: Props) => {
     const navigate = useNavigate();
     const toast = useToast();
@@ -77,45 +79,27 @@ const HackathonCardIconButtons = ({
         }
     };
 
-    function isDetailsComplete(): boolean {
-        if (
-            hackathon.id &&
-            hackathon.title &&
-            hackathon.type &&
-            hackathon.tagline &&
-            hackathon.event_logo &&
-            hackathon.banner &&
-            hackathon.website &&
-            hackathon.place &&
-            hackathon.event_start &&
-            hackathon.event_end &&
-            hackathon.application_start &&
-            hackathon.application_ends &&
-            hackathon.description &&
-            hackathon.participant_count !== null &&
-            hackathon.district &&
-            hackathon.organisation &&
-            hackathon.district_id &&
-            hackathon.org_id !== null &&
-            hackathon.editable !== null
-        ) {
-            return true;
-        }
-        return false;
+    function isDetailsComplete(hackathon:HackList) {
+        const requiredFields:(keyof HackList)[] = [
+            'id', 'title', 'type', 'tagline', 'event_logo', 'banner', 'website',
+            'place', 'event_start', 'event_end', 'application_start',
+            'application_ends', 'description', 'participant_count', 'district',
+            'organisation', 'district_id', 'org_id', 'editable'
+        ];
+    
+        return requiredFields.every(field => hackathon[field] !== undefined && hackathon[field] !== null);
     }
+    
 
     const isDraft = hackathon.status === "Draft";
 
     return (
-        <div className={styles.shared}>
-            {hackathon.editable ? (
-                <div className={styles.shared2}>
-                    <div className={styles.frame2}>
-                        <div>
-                            {/* <div className={styles.group}>
-                                <Link
-                                    to={`/dashboard/hackathon/edit/${hackathon.id}`}
-                                >
+        <div className={styles.shared} style={{color: "var(--blue)", ...style}}>
+            <div className={styles.shared2}>
+                <div className={styles.frame2}>
+                    {hackathon.editable ? (
+                            <>{/* <div className={styles.group}>
+                                <Link to={`/dashboard/hackathon/edit/${hackathon.id}`} >
                                     <LuEdit
                                         data-tooltip-id="Icon"
                                         data-tooltip-content="Edit"
@@ -123,9 +107,7 @@ const HackathonCardIconButtons = ({
                                 </Link>
                             </div> */}
                             <div className={styles.group}>
-                                <Link
-                                    to={`/dashboard/hackathon/organizers/${hackathon.id}`}
-                                >
+                                <Link to={`/dashboard/hackathon/organizers/${hackathon.id}`} >
                                     <BsPersonAdd
                                         data-tooltip-id="Icon"
                                         data-tooltip-content="Add Organizer"
@@ -136,38 +118,25 @@ const HackathonCardIconButtons = ({
                                 <RiDeleteBin5Line
                                     data-tooltip-id="Icon"
                                     data-tooltip-content="Delete"
-                                    onClick={() => {
-                                        toggleModal(index, ModalType[1]);
-                                    }}
+                                    onClick={() => toggleModal(index, ModalType[1]) }
                                 />
                                 {isDeleteOpen[index] && (
-                                    <Modal
-                                        setIsOpen={() =>
-                                            toggleModal(index, ModalType[1])
-                                        }
-                                        id={hackathon.id}
+                                    <Modal id={hackathon.id}
+                                        setIsOpen={() => toggleModal(index, ModalType[1]) }
                                         heading={"Delete"}
-                                        content={`Are you sure you want to delete ${hackathon.title} ?`}
+                                        content={`Are you sure you want to delete "${hackathon.title}" ?`}
                                         click={() => {
-                                            deleteHackathon(
-                                                hackathon.id,
-                                                toast
-                                            );
+                                            deleteHackathon( hackathon.id);
                                             setTimeout(() => {
                                                 getHackathons(setOwnData);
                                                 getHackathons(setData);
                                             }, 1000);
-                                            setTimeout(() => {
-                                                navigate(
-                                                    "/dashboard/hackathon"
-                                                );
-                                            }, 1000);
+                                            setTimeout(() => navigate( "/dashboard/hackathon" ), 1000);
                                         }}
                                     />
                                 )}
                             </div>
-                        </div>
-                        <div>
+                            <div>
                             {!isDraft && (
                                 <div className={styles.group}>
                                     <FaThList
@@ -197,9 +166,7 @@ const HackathonCardIconButtons = ({
                                     </div>
                                     {isPublishOpen[index] && (
                                         <Modal
-                                            setIsOpen={() =>
-                                                toggleModal(index, ModalType[0])
-                                            }
+                                            setIsOpen={() => toggleModal(index, ModalType[0]) }
                                             id={hackathon.id}
                                             heading="Draft"
                                             content={`Are you sure you want to set ${hackathon.title} to Draft`}
@@ -207,7 +174,6 @@ const HackathonCardIconButtons = ({
                                                 publishHackathon(
                                                     hackathon.id,
                                                     hackathon.status,
-                                                    toast
                                                 );
                                                 setTimeout(() => {
                                                     getHackathons(setOwnData);
@@ -223,34 +189,32 @@ const HackathonCardIconButtons = ({
                                     )}
                                 </>
                             )}
-                        </div>
-                    </div>
+                            </div>
+                            
+                        </>
+                                
+                    ) : (
+                            <div className={styles.group}
+                                style={{ gridArea: "1 / 2 / 2 / 3" }}
+                                onClick={() => {
+                                    window.navigator.clipboard.writeText(shareData.url);
+                                    toast({
+                                        title: "Success",
+                                        description: "Link copied to clipboard",
+                                        status: "success",
+                                        duration: 3000,
+                                        isClosable: true
+                                    });
+                                    if (isShareable) window.navigator.share(shareData);
+                                }}
+                            >
+                                <LuCopy data-tooltip-id="Icon"
+                                    data-tooltip-content={`Copy${ isShareable ? "/Share" : ""}`}
+                                />
+                            </div>
+                        )}
                 </div>
-            ) : (
-                <div className={styles.frame2}>
-                    <div
-                        className={styles.group}
-                        onClick={() => {
-                            window.navigator.clipboard.writeText(shareData.url);
-                            toast({
-                                title: "Success",
-                                description: "Link copied to clipboard",
-                                status: "success",
-                                duration: 3000,
-                                isClosable: true
-                            });
-                            if (isShareable) window.navigator.share(shareData);
-                        }}
-                    >
-                        <LuCopy
-                            data-tooltip-id="Icon"
-                            data-tooltip-content={`Copy${
-                                isShareable ? "/Share" : ""
-                            }`}
-                        />
-                    </div>
-                </div>
-            )}
+            </div>
         </div>
     );
 };

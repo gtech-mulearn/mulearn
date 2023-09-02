@@ -157,7 +157,8 @@ const ManageLocation = () => {
                 country: selectedCountry,
                 state: selectedState,
                 zone: selectedZone,
-                value: id
+                value: id,
+                name: data.find(item => item.id === id)?.name
             }
         });
     }
@@ -167,16 +168,11 @@ const ManageLocation = () => {
         if (activeTab === "Country") {
             deleteCountryData(id);
         } else if (activeTab === "State") {
-            deleteStateData(selectedCountry, id);
+            deleteStateData(id);
         } else if (activeTab === "Zone") {
-            deleteZoneData(selectedCountry, selectedState, id);
+            deleteZoneData(id);
         } else if (activeTab === "District") {
-            deleteDistrictData(
-                selectedCountry,
-                selectedState,
-                selectedZone,
-                id
-            );
+            deleteDistrictData(id);
         }
         getLocationData();
     }
@@ -194,9 +190,9 @@ const ManageLocation = () => {
                 state={selectedState}
                 zone={selectedZone}
                 handleData={setData}
-                handleCountry={(country) => setSelectedCountry(country)}
-                handleState={(state) => setSelectedState(state)}
-                handleZone={(zone) => setSelectedZone(zone)}
+                handleCountry={country => setSelectedCountry(country)}
+                handleState={state => setSelectedState(state)}
+                handleZone={zone => setSelectedZone(zone)}
             />
             {activeTab !== "Country" && (
                 <LocationPath
@@ -218,7 +214,7 @@ const ManageLocation = () => {
                         page={currentPage}
                         perPage={perPage}
                         columnOrder={columns}
-                        id={["label"]}
+                        id={["id"]}
                         onEditClick={handleEdit}
                         onDeleteClick={handleDelete}
                         modalDeleteHeading="Delete"
@@ -248,25 +244,25 @@ const ManageLocation = () => {
                 popupFields={popupFields}
                 activeItem={activeTab}
                 handleData={setData}
-                handleCountry={(country) => setSelectedCountry(country)}
-                handleState={(state) => setSelectedState(state)}
-                handleZone={(zone) => setSelectedZone(zone)}
+                handleCountry={country => setSelectedCountry(country)}
+                handleState={state => setSelectedState(state)}
+                handleZone={zone => setSelectedZone(zone)}
                 handleDeclined={setIsDeclined}
             />
         </>
     );
 };
 type TableTopToggleType = {
-    active: string,
-    onTabClick: UseStateFunc<any>,
-    country: string,
-    state: string,
-    zone: string,
-    handleData: UseStateFunc<any>,
-    handleCountry: UseStateFunc<string>,
-    handleState: UseStateFunc<string>,
-    handleZone: UseStateFunc<string>
-}
+    active: string;
+    onTabClick: UseStateFunc<any>;
+    country: string;
+    state: string;
+    zone: string;
+    handleData: UseStateFunc<any>;
+    handleCountry: UseStateFunc<string>;
+    handleState: UseStateFunc<string>;
+    handleZone: UseStateFunc<string>;
+};
 const TableTopToggle: FC<TableTopToggleType> = ({
     active,
     onTabClick,
@@ -358,8 +354,9 @@ const LocationPath = ({
     zone?: string;
 }) => {
     function locationTextGenerate() {
-        return `${country?.toUpperCase()}${state ? ` /  ${state?.toUpperCase()}` : ""
-            }${zone ? ` / ${zone?.toUpperCase()}` : ""}`;
+        return `${country?.toUpperCase()}${
+            state ? ` /  ${state?.toUpperCase()}` : ""
+        }${zone ? ` / ${zone?.toUpperCase()}` : ""}`;
     }
 
     return (

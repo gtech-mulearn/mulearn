@@ -20,7 +20,6 @@
     background-color: #456ff6;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
-
 }
 
 .full_page {
@@ -179,7 +178,7 @@
     justify-content: flex-start;
     text-align: center;
     margin-top: 16vh;
-    gap: 10px;
+    gap: 1rem;
     /* overflow-x: hidden; */
 }
 
@@ -229,7 +228,7 @@
         margin-top: 15px;
     }
 
-    .right_side .top_nav .nav .nav_items .greetings{
+    .right_side .top_nav .nav .nav_items .greetings {
         display: none;
     }
 

@@ -31,16 +31,14 @@ export const getStateData = async (
     }
 };
 
-//*NOT WORKING❌
+//*WORKING ✅
 export const postStateData = async (country: string, stateName: string) => {
     try {
         await privateGateway
             .post(
-                ManageLocationsRoutes.getStateData.replace(
-                    "${country}",
-                    country
-                ),
+                ManageLocationsRoutes.patchStateData.replace("${state}/", ""),
                 {
+                    country: country,
                     name: stateName
                 }
             )
@@ -56,22 +54,23 @@ export const postStateData = async (country: string, stateName: string) => {
     }
 };
 
-//*NOT WORKING❌
-export const putStateData = async (
+//*WORKING ✅
+export const patchStateData = async (
     country: string,
-    oldName: string,
+    stateID: string,
     newName: string
 ) => {
     try {
         await privateGateway
-            .put(
-                ManageLocationsRoutes.getStateData.replace(
-                    "${country}",
-                    country
+            .patch(
+                ManageLocationsRoutes.patchStateData.replace(
+                    "${state}",
+                    stateID
                 ),
                 {
-                    oldName: oldName,
-                    newName: newName
+                    country: country,
+                    id: stateID,
+                    name: newName
                 }
             )
             .then(({ data }) => data.response)
@@ -86,27 +85,17 @@ export const putStateData = async (
     }
 };
 
-//*NOT WORKING❌
-export const deleteStateData = async (country: string, stateName: string) => {
+//*WORKING ✅
+export const deleteStateData = async (stateID: string) => {
     try {
-        const requestConfig: any = {
-            data: {
-                name: stateName
-            }
-        };
-
         await privateGateway
             .delete(
-                ManageLocationsRoutes.getStateData.replace(
-                    "${country}",
-                    country
-                ),
-                requestConfig
+                ManageLocationsRoutes.patchStateData.replace(
+                    "${state}",
+                    stateID
+                )
             )
             .then(({ data }) => console.log(data.message.general[0]));
-        // .then(({ data }) => {
-        //     console.log(data);
-        // });
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

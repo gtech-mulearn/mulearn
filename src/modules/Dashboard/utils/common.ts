@@ -36,7 +36,7 @@ export const getLocationIdByName = (
         const location = locations.find(
             loc => loc.label.toLowerCase() === label.toLowerCase()
         );
-        console.log(location?.value)
+        // console.log(location?.value)
         return location ? location.value : null;
     }
     return label

@@ -25,7 +25,7 @@ export const getCountryData = async (
     }
 };
 
-//*NOT WORKING ❌
+//*WORKING ✅
 export const postCountryData = async (
     countryName: string,
     toast: (options?: UseToastOptions | undefined) => ToastId
@@ -53,18 +53,25 @@ export const postCountryData = async (
     }
 };
 
-//*NOT WORKING ❌
-export const putCountryData = async (
-    oldName: string,
+//*WORKING ✅
+export const patchCountryData = async (
+    countryID: string,
     newName: string,
     toast?: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
+        console.log(countryID);
         await privateGateway
-            .put(ManageLocationsRoutes.getCountryData, {
-                oldName: oldName,
-                newName: newName
-            })
+            .patch(
+                ManageLocationsRoutes.patchCountryData.replace(
+                    "${country}",
+                    countryID
+                ),
+                {
+                    id: countryID,
+                    name: newName
+                }
+            )
             .then(({ data }) => data.response)
             .then(({ data }) => {
                 console.log(data);
@@ -77,28 +84,15 @@ export const putCountryData = async (
     }
 };
 
-//!Error: "You do not have the required role to access this page.
-//*NOT WORKING ❌
+//*WORKING ✅
 export const deleteCountryData = async (
-    countryName: string,
+    id: string,
     toast?: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
-        const requestConfig: any = {
-            data: {
-                name: countryName
-            }
-        };
-
-        await privateGateway
-            .delete(ManageLocationsRoutes.getCountryData, requestConfig)
-            .then(({ data }) => data.response)
-            .then(({ data }) => {
-                console.log(data);
-            });
         await privateGateway
             .delete(
-                ManageLocationsRoutes.getCountryData
+                ManageLocationsRoutes.patchCountryData.replace("${country}", id)
                 // {
                 //     name: countryName
                 // }
@@ -106,6 +100,7 @@ export const deleteCountryData = async (
             .then(({ data }) => data.response)
             .then(({ data }) => {
                 console.log(data);
+                window.location.reload(); // TODO: Temporary fix, better solution needed (delete takes time, API fetch after delete doesnt give the omitted data)
             });
     } catch (err: unknown) {
         const error = err as AxiosError;

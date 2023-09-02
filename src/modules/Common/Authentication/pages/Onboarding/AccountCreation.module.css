@@ -1,0 +1,123 @@
+.accountCreationContainer{
+    margin: 1rem;
+    z-index: 10;
+}
+.accountCreationInputs{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 1rem;
+   width: 100%;
+}
+
+.accountCreationInputs button{
+    width: 576px;
+    height: 49px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: #456FF6;
+    color: #fff;
+}
+
+.accountCreationInputs input,
+.accountCreationInputs div input{
+    width: 576px;
+    height: 50px;
+    background: #F3F3F4;
+    border-radius: 8px;
+    padding-left: 1rem;
+}
+
+.accountCreationInputs .accountCreationName input[type=text]{
+    width: 277px;  
+}
+.accountCreationInputs .accountCreationName input[type=text]:nth-child(1){
+    margin-right: 1rem;
+}
+
+
+
+.accountCreationAlternative{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.accountCreationAlternative button{
+    width: 245px;
+    height: 49px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid #D9D9D9;
+    margin: 1rem 0;
+}
+.accountCreationAlternative div{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+.accountCreationAlternative div hr{
+    width: 300px;
+    height: 0.3px;
+    background: #858585;
+}
+
+.accountCreationAlternative div:nth-child(2) p{
+    margin-bottom: 3rem;
+}
+
+.accountCreationAlternative div:last-child p a {
+    color:#456FF6;
+    margin-bottom: 2rem;
+}
+
+@media(width<640px){
+
+    .accountCreationInputs input,
+    .accountCreationInputs div input{
+        width: 400px;
+    }
+
+    .accountCreationInputs .accountCreationName input[type=text]{
+        width: 190px;
+    }
+    .accountCreationInputs button{
+        width: 400px;
+    }
+    .accountCreationAlternative div hr{
+        width: 200px;
+    }
+}
+
+@media(width<450px){
+    .accountCreationInputs{
+        gap: 0;
+    }
+    .accountCreationInputs input,
+    .accountCreationInputs div input{
+        width: 300px;
+        margin-top: 1rem ;
+    }
+    .accountCreationInputs .accountCreationName input[type=text]{
+        width: 300px;
+    }
+    .accountCreationInputs .accountCreationName input{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .accountCreationInputs .accountCreationName input[type=text]:nth-child(1){
+        margin-right:0;
+    }
+    .accountCreationInputs button{
+        width: 300px;
+        margin-top: 1rem;
+    }
+    .accountCreationAlternative div hr{
+        width: 150px;
+    }
+}

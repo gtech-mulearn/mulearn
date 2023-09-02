@@ -38,11 +38,12 @@ const CampusStudentList = (props: Props) => {
     const [barData, setBarData] = useState<string[][] | null>(null);
 
     const columnOrder = [
-        { column: "fullname", Label: "Name", isSortable: false },
+        { column: "fullname", Label: "Name", isSortable: true },
         // { column: "email", Label: "Email", isSortable: false },
-        { column: "karma", Label: "Karma", isSortable: false },
-        { column: "level", Label: "Level", isSortable: false },
-        { column: "muid", Label: "MuId", isSortable: false },
+        { column: "karma", Label: "Karma", isSortable: true },
+        { column: "level", Label: "Level", isSortable: true },
+        { column: "rank", Label: "Rank", isSortable: false },
+        { column: "muid", Label: "MuId", isSortable: true },
         { column: "created_at", Label: "Join Date", isSortable: false }
     ];
 
@@ -119,6 +120,9 @@ const CampusStudentList = (props: Props) => {
     };
 
     const handleIconClick = (column: string) => {
+        if (column === "fullname") {
+            column = "first_name"; //TODO: Change this when backend is ready
+        }
         if (sort === column) {
             setSort(`-${column}`);
             getStudentDetails(
