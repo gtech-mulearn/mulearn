@@ -131,7 +131,15 @@ const ManageLocation = () => {
                 sort
             );
         } else if (activeTab === "Zone") {
-            getZoneData(selectedCountry, selectedState, setData, setTotalPages);
+            getZoneData(
+                selectedState,
+                setData,
+                perPage,
+                currentPage,
+                setTotalPages,
+                search,
+                sort
+            );
         } else if (activeTab === "District") {
             getDistrictData(
                 selectedCountry,

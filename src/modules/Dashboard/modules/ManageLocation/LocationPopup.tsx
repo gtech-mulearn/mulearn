@@ -82,9 +82,13 @@ const LocationPopup: FC<LocationPopupProps> = ({
         }
         if (selectedData.Country !== null && selectedData.State !== null) {
             getZoneData(
-                selectedData.Country?.value,
                 selectedData.State?.value,
-                setZoneData
+                setZoneData,
+                5,
+                1,
+                setTotalPages,
+                "",
+                ""
             );
         }
     }, [selectedData]);
@@ -149,9 +153,13 @@ const LocationPopup: FC<LocationPopupProps> = ({
                 selectedData.State.value
             ) {
                 getZoneData(
-                    selectedData.Country.value,
                     selectedData.State.value,
-                    handleData
+                    handleData,
+                    5,
+                    1,
+                    setTotalPages,
+                    "",
+                    ""
                 );
                 handleCountry(selectedData.Country.value);
                 handleState(selectedData.State.value);
