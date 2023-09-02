@@ -155,6 +155,7 @@
     --rounded-btn: 12px;
     --border-btn: 2px solid;
     --transition-speed: 0.3s;
+    --padding-btn: 5px 20px;
 }
 
 .common-btn {
@@ -239,6 +240,7 @@
 
 .ghost-btn {
     color: hsl(var(--primary-btn-color));
+    outline-offset: 0px!important;
 
     &:hover {
         background-color: hsl(var(--secondary-btn-color));

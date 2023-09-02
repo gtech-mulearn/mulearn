@@ -56,3 +56,10 @@
     --dimBlue: #dee6ff;
     --danger: #ff7676;
 }
+
+.requiredLabel {
+    &::after{
+        content: "*";
+        color: red;
+    }
+}

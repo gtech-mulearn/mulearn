@@ -21,35 +21,35 @@ export const FormTabDetails = ({
     return (
         <>
             <FormikReactSelect
+                label={<span className="requiredLabel">Organization</span> as unknown as string}
                 name="orgId"
                 options={institutions}
-                label={"Organization"}
                 isClearable
                 isSearchable
             />
             <FormikReactSelect
+                label={<span className="requiredLabel">District</span> as unknown as string}
                 name="districtId"
                 options={district}
-                label={"District"}
                 isClearable
                 isSearchable
             />
             <FormikTextInputWhite
-                label="Place"
+                label={<span className="requiredLabel">Place</span> as unknown as string}
                 name="place"
                 placeholder="location of the hackathon"
                 type="text"
             />
             <FormikTextInputWhite
-                label="Website"
+                label={<span className="requiredLabel">Website</span>}
                 name="website"
                 placeholder="link for the event website"
                 type="text"
             />
             <FormikReactSelect
+                label={<span className="requiredLabel">Hackathon Type</span> as unknown as string}
                 name="type"
                 options={options}
-                label={"Hackathon Type"}
             />
         </>
     );

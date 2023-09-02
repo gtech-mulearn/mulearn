@@ -186,15 +186,14 @@ export const joinCircle = async (circleCode: string) => {
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
-            throw error;
+			toast({
+				title: `${error.response.data}`,
+				description: "",
+				status: "error",
+				duration: 2000,
+				isClosable: true
+			});
         }
-        toast({
-            title: "Cannot send another request at the moment",
-            description: "",
-            status: "error",
-            duration: 2000,
-            isClosable: true
-        });
     }
 };
 
