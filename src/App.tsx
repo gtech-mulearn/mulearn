@@ -184,8 +184,8 @@ import Refer from "./modules/Dashboard/modules/Refer/Refer";
 import Thread from "./modules/Public/ThreadsCard/modules/Thread";
 import Template from "./modules/Common/Authentication/pages/Onboarding/Template";
 import Signin from "./modules/Common/Authentication/pages/Onboarding/signin";
-import Role_one from "./modules/Common/Authentication/pages/Onboarding/role1";
-import Role_four from "./modules/Common/Authentication/pages/Onboarding/role4";
+import RoleOne from "./modules/Common/Authentication/pages/Onboarding/RoleOne";
+import RoleFour from "./modules/Common/Authentication/pages/Onboarding/RoleFour";
 
 
 
@@ -236,12 +236,12 @@ function App() {
             element: <Signin/>
         },
         {
-            path: "/role1",
-            element: <Role_one/>
+            path: "/RoleOne",
+            element: <RoleOne/>
         },
         {
-            path: "/role4",
-            element: <Role_four/>
+            path: "/RoleFour",
+            element: <RoleFour/>
         },
 
         {
