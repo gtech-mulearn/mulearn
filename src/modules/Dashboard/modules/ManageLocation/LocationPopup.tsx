@@ -32,6 +32,7 @@ interface LocationPopupProps {
     handleState: UseStateFunc<string>;
     handleZone: UseStateFunc<string>;
     handleDeclined: UseStateFunc<boolean>;
+    setTotalPages: UseStateFunc<number>;
 }
 
 const LocationPopup: FC<LocationPopupProps> = ({
@@ -43,7 +44,8 @@ const LocationPopup: FC<LocationPopupProps> = ({
     handleCountry,
     handleState,
     handleZone,
-    handleDeclined
+    handleDeclined,
+    setTotalPages
 }) => {
     const [countryData, setCountryData] = useState([]);
     const [stateData, setStateData] = useState([]);
@@ -67,7 +69,16 @@ const LocationPopup: FC<LocationPopupProps> = ({
             getCountryData(setCountryData, toast);
         }
         if (selectedData.Country !== null) {
-            getStateData(selectedData.Country?.value, setStateData, toast);
+            getStateData(
+                selectedData.Country?.value,
+                setStateData,
+                toast,
+                5,
+                1,
+                setTotalPages,
+                "",
+                ""
+            );
         }
         if (selectedData.Country !== null && selectedData.State !== null) {
             getZoneData(
@@ -118,7 +129,16 @@ const LocationPopup: FC<LocationPopupProps> = ({
     function submitPopupSelection() {
         if (activeItem === "State") {
             if (selectedData.Country && selectedData.Country.value) {
-                getStateData(selectedData.Country.value, handleData, toast);
+                getStateData(
+                    selectedData.Country?.value,
+                    handleData,
+                    toast,
+                    5,
+                    1,
+                    setTotalPages,
+                    "",
+                    ""
+                );
                 handleCountry(selectedData.Country.value);
             }
         } else if (activeItem === "Zone") {

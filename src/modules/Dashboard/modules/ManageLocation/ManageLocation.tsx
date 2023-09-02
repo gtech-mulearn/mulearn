@@ -31,6 +31,7 @@ const ManageLocation = () => {
     const [perPage, setPerPage] = useState(5);
     const [columns, setColumns] = useState(columnsCountry);
     const [sort, setSort] = useState("");
+    const [search, setSearch] = useState("");
     const [activeTab, setActiveTab] = useState("Country");
     const [popupStatus, setPopupStatus] = useState(false);
     const [popupFields, setPopupFields] = useState({
@@ -71,7 +72,7 @@ const ManageLocation = () => {
                 perPage,
                 currentPage,
                 setTotalPages,
-                "",
+                search,
                 sort
             );
             setPopupFields({
@@ -115,11 +116,20 @@ const ManageLocation = () => {
                 perPage,
                 currentPage,
                 setTotalPages,
-                "",
+                search,
                 sort
             );
         } else if (activeTab === "State") {
-            getStateData(selectedCountry, setData, toast, setTotalPages);
+            getStateData(
+                selectedCountry,
+                setData,
+                toast,
+                perPage,
+                currentPage,
+                setTotalPages,
+                search,
+                sort
+            );
         } else if (activeTab === "Zone") {
             getZoneData(selectedCountry, selectedState, setData, setTotalPages);
         } else if (activeTab === "District") {
@@ -135,6 +145,10 @@ const ManageLocation = () => {
 
     useEffect(() => {
         loadTableData();
+        setCurrentPage(1);
+        setPerPage(5);
+        setSearch("");
+        setSort("");
         return setData([]), setTotalPages(1);
     }, [activeTab]);
 
@@ -150,23 +164,7 @@ const ManageLocation = () => {
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        if (activeTab === "Country") {
-            getCountryData(
-                setData,
-                toast,
-                perPage,
-                1,
-                setTotalPages,
-                search,
-                sort
-            );
-        } else if (activeTab === "State") {
-            throw new Error("State search not implemented");
-        } else if (activeTab === "Zone") {
-            throw new Error("Zone search not implemented");
-        } else if (activeTab === "District") {
-            throw new Error("District search not implemented");
-        }
+        setSearch(search);
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
@@ -216,7 +214,7 @@ const ManageLocation = () => {
 
     useEffect(() => {
         getLocationData();
-    }, [sort, currentPage, perPage]);
+    }, [sort, currentPage, perPage, search]);
 
     return (
         <>
@@ -285,6 +283,7 @@ const ManageLocation = () => {
                 handleState={state => setSelectedState(state)}
                 handleZone={zone => setSelectedZone(zone)}
                 handleDeclined={setIsDeclined}
+                setTotalPages={setTotalPages}
             />
         </>
     );
