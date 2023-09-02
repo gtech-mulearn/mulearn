@@ -15,7 +15,7 @@ export const FormTabApplication = ({
     return (
         <>
             <div id="checkbox" className={styles.InputSet}>
-                <label className={styles.formLabel}>
+                <label className={styles.formLabel + " requiredLabel"}>
                     Select fields for application form
                 </label>
             </div>
@@ -36,7 +36,7 @@ export const FormTabApplication = ({
                         <Field
                             type="checkbox"
                             name="formFields"
-                            className={styles.formCheckbox}
+                            className={styles.checkBoxContainer}
                             style={{
                                 display: "none"
                             }}
