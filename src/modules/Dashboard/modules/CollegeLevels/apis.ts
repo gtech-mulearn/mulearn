@@ -55,18 +55,25 @@ export const createCollegeLevels = async (data: any, errHandler?: Function) => {
     }
 };
 
-export const editCollegeLevels = async (data: any, errHandler?: Function) => {
+export const editCollegeLevels = async (
+    id: string,
+    data: any,
+    errHandler?: Function
+) => {
     try {
-        await privateGateway.patch(dashboardRoutes.collegeLevels, data);
+        await privateGateway.patch(dashboardRoutes.collegeLevels + id, data);
     } catch (err) {
         if (errHandler) errHandler(err);
         else console.log(err);
     }
 };
 
-export const deleteCollegeLevels = async (data: any, errHandler?: Function) => {
+export const deleteCollegeLevels = async (
+    id: string,
+    errHandler?: Function
+) => {
     try {
-        await privateGateway.put(dashboardRoutes.collegeLevels, data);
+        await privateGateway.delete(dashboardRoutes.collegeLevels + id);
     } catch (err) {
         if (errHandler) errHandler(err);
         else console.log(err);
