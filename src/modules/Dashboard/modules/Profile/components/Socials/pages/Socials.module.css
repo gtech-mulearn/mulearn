@@ -43,7 +43,7 @@
     }
 
     .error_message {
-        color: red;
+        color: red !important;
         font-size: 0.8rem;
         text-align: left;
         padding: 0px !important;

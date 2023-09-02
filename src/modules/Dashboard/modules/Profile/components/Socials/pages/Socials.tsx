@@ -80,6 +80,7 @@ const Socials = (props: Props) => {
         getSocials(setSocials, formikRef);
         // console.log(formik.values);
     }, []);
+    console.log(Object.keys(formik.errors).length === 0);
 
     return (
         <>
@@ -97,7 +98,14 @@ const Socials = (props: Props) => {
                 {editSocials && (
                     <p
                         onClick={() => {
-                            setEditSocials(false), formik.handleSubmit();
+                            {
+                                Object.keys(formik.errors).length === 0 && (
+                                    <>
+                                        {setEditSocials(false)}
+                                        {formik.handleSubmit()}
+                                    </>
+                                );
+                            }
                         }}
                         className={styles.edit_profile_btn}
                         tabIndex={0}
