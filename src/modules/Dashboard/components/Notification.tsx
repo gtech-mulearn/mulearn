@@ -4,6 +4,8 @@ import { clearAllNotifications, clearNotification, getNotifications, Notificatio
 import { IoIosClose } from 'react-icons/io';
 import dpm from '../assets/images/dpm.webp';
 import { filterNotification, getTimeAgo, isRequest } from './utils';
+import { useToast } from '@chakra-ui/react'
+
 interface NotificationComponentProps {
     notificationList: NotificationProps[];
     setNotificationList: React.Dispatch<React.SetStateAction<NotificationProps[]>>;
@@ -11,14 +13,16 @@ interface NotificationComponentProps {
 
 
 const NotificationMessage = ({ profile, title, created_at, description, clear, id, url, update ,created_by}: NotificationMessageProps) => {
+    const toast=useToast();
+    const props={toast:toast};
     return (
         <div className="notiMessageTab">
             <img src={profile || dpm} alt="" />
             <div className="notiMessageProfile">
                 <b>{title}</b>  
                 <span className="blueDot" onClick={() => {
-                    clear();
-                    clearNotification(id);
+                    clear()
+                    clearNotification(id,props)
                     update()
                 }}>
                     <IoIosClose size={'18px'} />
@@ -31,12 +35,16 @@ const NotificationMessage = ({ profile, title, created_at, description, clear, i
                 {isRequest(title) &&
                     <div className="btns">
                         <button onClick={() => { 
-                            requestApproval(id,url,created_by, false); 
+                            requestApproval(id,url,created_by, false,update,props); 
                             update() 
                             clear()
+                            requestApproval(id,url,created_by, false,update,props);  
                             }}>Decline</button>
                         &nbsp;
-                        <button className="accept" onClick={() => { requestApproval(id,url,created_by, true); update() }}>Accept</button>
+                        <button className="accept" onClick={() => {
+                            clear()
+                            requestApproval(id,url,created_by, true, update,props)
+                            }}>Accept</button>
                     </div>
                 }
             </div>
@@ -46,6 +54,8 @@ const NotificationMessage = ({ profile, title, created_at, description, clear, i
 
 const NotificationTab = ({notificationList,setNotificationList}: NotificationComponentProps) => {
     const [active, setActive] = useState(0);
+    const toast=useToast();
+    const props={toast:toast};
     const links = [
         { title: 'View All', count: notificationList.length },
         { title: 'Requests', count: notificationList.filter((item: NotificationProps) => isRequest(item.title)).length },
@@ -60,8 +70,8 @@ const NotificationTab = ({notificationList,setNotificationList}: NotificationCom
 
     const clearAll = () => {
         setNotificationList([]);
-        clearAllNotifications();
-    };
+        clearAllNotifications(props);
+    }
 
     return (
         <div className="yourNotification">
@@ -77,7 +87,7 @@ const NotificationTab = ({notificationList,setNotificationList}: NotificationCom
                             <span>{item.count}</span>
                         </li>
                     ))}
-                    <span className='glider' style={{ transform: `translateX(${active * 100}%)`, margin: `${active === 0 ? 0 : active === links.length - 1 ? 25 : 15}px` }}></span>
+                    <span className='glider' style={{ transform: `translateX(${active * 100}%)`, margin: `${active === 0 ? 0 : active === links.length - 1 ? 15 : 15}px` }}></span>
                 </ul>
             </div>
             <div className="notiMessageContainer">
@@ -89,7 +99,9 @@ const NotificationTab = ({notificationList,setNotificationList}: NotificationCom
                                     key={index}
                                     {...item}
                                     clear={() => clearElement(index)}
-                                    update={() => getNotifications(setNotificationList)}
+                                    update={() =>{
+                                        getNotifications(setNotificationList,props)
+                                    }}
                                 />
                             </div>
                         ))}
