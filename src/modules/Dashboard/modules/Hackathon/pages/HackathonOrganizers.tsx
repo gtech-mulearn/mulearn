@@ -17,7 +17,6 @@ type Props = {};
 
 export const HackathonOrganizers = (props: Props) => {
     const [data, setData] = useState<Data[]>([]);
-    const toast = useToast();
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -45,7 +44,7 @@ export const HackathonOrganizers = (props: Props) => {
                             .required("Required")
                     })}
                     onSubmit={values => {
-                        addOrganizer(id, values.muid, toast);
+                        addOrganizer(id, values.muid);
                         getOrganizers(setData, id);
                         setTimeout(() => {
                             getOrganizers(setData, id);

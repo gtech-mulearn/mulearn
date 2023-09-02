@@ -25,9 +25,9 @@ export const getKarmaVoucher = async (
                 }
             }
         );
-        const tasks: any = response?.data.response;
-        setData(tasks);
-        if (setTotalPages) setTotalPages(tasks.response.pagination.totalPages);
+        const data: any = response?.data.response;
+        setData(data.data);
+        if (setTotalPages) setTotalPages(data.pagination.totalPages);
         setIsLoading(false);
     } catch (err: unknown) {
         setIsLoading(false);

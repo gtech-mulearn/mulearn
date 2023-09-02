@@ -6,6 +6,7 @@ import { useToast } from "@chakra-ui/react";
 import { MdContentCopy } from "react-icons/md";
 import { BsDiscord } from "react-icons/bs";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 const ConnectDiscord = () => {
     const [muid, setMuid] = useState("");
@@ -39,7 +40,8 @@ const ConnectDiscord = () => {
                                 server.
                             </p>
                             <div className={styles.muid_and_btn}>
-                                <p
+                                <PowerfulButton
+                                    variant="secondary"
                                     onClick={() => {
                                         navigator.clipboard.writeText(muid);
                                         toast.closeAll();
@@ -54,20 +56,16 @@ const ConnectDiscord = () => {
                                     }}
                                 >
                                     <MdContentCopy />
-                                    &nbsp; &nbsp;
                                     {muid}
-                                </p>
-                                <a
-                                    href={
-                                        import.meta.env.VITE_DISCORD_INVITE_URL
-                                    }
+                                </PowerfulButton>
+                                <a href={ import.meta.env.VITE_DISCORD_INVITE_URL }
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <button>
+                                    <PowerfulButton>
                                         <BsDiscord />
-                                        &nbsp; &nbsp; Connect Discord
-                                    </button>
+                                        Connect Discord
+                                    </PowerfulButton>
                                 </a>
                             </div>
                         </div>

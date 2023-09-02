@@ -126,7 +126,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
     //props.rows?.map((rowData, index)=>{console.log(rowData['title'])})
     return (
         <>
-            {props.rows.map((rowData, index) => {
+            {props?.rows?.map((rowData, index) => {
                 // console.log(rowData["muid"]);
             })}
             <div className={styles.table}>
@@ -173,7 +173,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                 props.onCopyClick &&
                                                                 props.onCopyClick(
                                                                     rowData[
-                                                                        column
+                                                                    column
                                                                     ]
                                                                 )
                                                             }
@@ -187,7 +187,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                 props.onEditClick &&
                                                                 props.onEditClick(
                                                                     rowData[
-                                                                        column
+                                                                    column
                                                                     ]
                                                                 )
                                                             }
