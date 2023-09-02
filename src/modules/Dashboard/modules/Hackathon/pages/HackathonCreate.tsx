@@ -160,16 +160,8 @@ const HackathonCreate = () => {
         const formattedFormFields = JSON.stringify(selectedFields);
 
         const publish = (hackathon: HackList): boolean => {
-            let returnVal = false;
-            if (isPublishing) {
-                if (isDetailsComplete(hackathon)) {
-                    publishHackathon(hackathon.id, hackathon.status, toast);
-                    returnVal = true;
-                } else {
-                    setIsPublishing(false);
-                }
-            }
-            return returnVal;
+            publishHackathon(hackathon.id, hackathon.status, toast);
+            return true;
         };
 
         const hackathon: HackList = {
@@ -193,28 +185,29 @@ const HackathonCreate = () => {
             org_id: values.orgId,
             editable: true,
             is_open_to_all: values.isOpenToAll,
-            status: "Draft"
+            status: "Draft",
+            form_fields: []
         };
 
         isEdit
             ? editHackathon(hackathon, formattedFormFields, toast)
-				.then(() => (isPublishing ? publish(hackathon) : true))
-				.then(res => res && navigate("/dashboard/hackathon"))
+                  .then(() => (isPublishing ? publish(hackathon) : true))
+                  .then(res => res && navigate("/dashboard/hackathon"))
             : createHackathon(hackathon, formattedFormFields, toast)
-				.then(id => {
-					setIsEdit(true);
-					return isPublishing
-						? publish({ ...hackathon, id: id || "" })
-						: true;
-				})
-				.then(
-					res =>
-						res &&
-						setTimeout(
-							() => navigate("/dashboard/hackathon"),
-							1000
-						)
-				);
+                  .then(id => {
+                      setIsEdit(true);
+                      return isPublishing
+                          ? publish({ ...hackathon, id: id || "" })
+                          : true;
+                  })
+                  .then(
+                      res =>
+                          res &&
+                          setTimeout(
+                              () => navigate("/dashboard/hackathon"),
+                              1000
+                          )
+                  );
     };
 
     useEffect(() => {
@@ -242,7 +235,7 @@ const HackathonCreate = () => {
         place: data?.place || "",
         districtId: getLocationIdByName(district, String(data?.district)) || "",
         isOpenToAll: data?.is_open_to_all || false,
-        formFields: [],
+        formFields: data?.form_fields || [],
         event_logo: "",
         banner: "",
         website: data?.website || "",
@@ -368,6 +361,9 @@ const HackathonCreate = () => {
                                                             handleChange
                                                         }
                                                         formData={formData}
+                                                        initialFormFields={
+                                                            data?.form_fields
+                                                        }
                                                     />
                                                 </TabPanel>
                                             </div>
