@@ -8,7 +8,13 @@ import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
-const CountCard = ({ title, count }: { title: string; count: number }) => {
+export const CountCard = ({
+    title,
+    count
+}: {
+    title: string;
+    count: number;
+}) => {
     return (
         <div>
             <h3>{title}</h3>
@@ -71,6 +77,7 @@ const TaskBulkImport = (props: Props) => {
 
             <BulkImport
                 path={dashboardRoutes.getTasksData + "import/"}
+                fileName="task_list"
                 onUpload={res => {
                     setUploadResponse(res);
                 }}
