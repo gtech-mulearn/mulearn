@@ -5,6 +5,7 @@ import {
     approveLcUser,
     getLcDetails,
     leaveLc,
+    removeMember,
     setLCMeetTime,
     toast,
     updateLcNote
@@ -22,6 +23,7 @@ import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { Tooltip } from "react-tooltip";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import Modal from "@/MuLearnComponents/Modal/Modal";
+import { RiDeleteBin5Line } from "react-icons/ri";
 
 type Props = {};
 
@@ -115,6 +117,13 @@ const LearningCircle = (props: Props) => {
     const handleLeave = () => {
         leaveLc(id, "test", navigate);
     };
+	function handleRemove(circle: string | undefined, id: string): void {
+		removeMember(circle, id, navigate);
+		setTimeout(() => {
+			navigate(`/dashboard/learning-circle/details/${id}`);
+		}, 4000);
+	}
+
     return (
         <>
             {temp ? (
@@ -609,6 +618,19 @@ const LearningCircle = (props: Props) => {
                                                         {member.karma}
                                                     </span>
                                                 </div>
+                                                {lc.is_lead && (
+                                                    <div
+                                                        className={
+                                                            styles.deleteIcon
+                                                        }
+                                                    >
+                                                        <RiDeleteBin5Line
+                                                            data-tooltip-id="Icon"
+                                                            data-tooltip-content="Remove member"
+															onClick={() => {handleRemove(id, member.id)}}
+                                                        />
+                                                    </div>
+                                                )}
                                             </div>
                                         ))}
                                 </div>

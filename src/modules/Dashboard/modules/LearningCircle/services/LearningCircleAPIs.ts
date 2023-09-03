@@ -285,3 +285,39 @@ export const leaveLc = async (
         });
     }
 };
+
+export const removeMember = async (
+    circleId: string | undefined,
+    memberId: string,
+    navigate: NavigateFunction
+) => {
+    try {
+        const response = await privateGateway.post(
+            dashboardRoutes.getCampusLearningCircles +
+                circleId +
+                "/" +
+                memberId +
+                "/"
+        );
+        toast({
+            title: "Success",
+            description: "",
+            status: "success",
+            duration: 2000,
+            isClosable: true
+        });
+        navigate(`/dashboard/learning-circle/details/${circleId}`);
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+        toast({
+            title: "Something went wrong",
+            description: "",
+            status: "error",
+            duration: 2000,
+            isClosable: true
+        });
+    }
+};
