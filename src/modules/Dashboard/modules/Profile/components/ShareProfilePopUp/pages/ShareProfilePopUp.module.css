@@ -8,7 +8,7 @@
     width: 100%;
     z-index: 50;
     display: flex;
-    transition: .1s ease;
+    transition: .3s ease;
     transform: scale(0);
     flex-direction: column;
     align-items: center;

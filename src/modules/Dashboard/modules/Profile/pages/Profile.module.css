@@ -514,6 +514,13 @@
 
 /* responvice CSS */
 
+@media (min-height: 1300px) and (max-width: 1500px) {
+  .rightDash .profileDash {
+    flex-direction: column;
+  }
+}
+
+
 @media (min-width: 1800px) {
   .rightDash .profileDash .profile .heatmap {
     max-width: unset;
