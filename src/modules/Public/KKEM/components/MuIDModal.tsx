@@ -6,6 +6,7 @@ import { HiCheck, HiOutlineArrowRight } from "react-icons/hi";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { KKEMLogin } from "../services/apis";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 interface ModalProps extends React.HTMLAttributes<HTMLDialogElement> {
     open: boolean;
@@ -128,14 +129,14 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
                             Are you part of µLearn?
                         </h2>
 
-                        <button
+                        <PowerfulButton
                             className={styles.modalClose}
                             onClick={() => {
                                 if (setOpen) setOpen(false);
                             }}
                         >
                             <RiCloseLine />
-                        </button>
+                        </PowerfulButton>
                     </div>
                     <div className={styles.modalBody}>
                         <p>If yes, please enter your Credentials:</p>
@@ -161,7 +162,7 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
                                     onChange={handlePassChange}
                                 />
 
-                                <button
+                                <PowerfulButton
                                     type="submit"
                                     className={`${styles.submit} ${success ? styles.successBtn : ""
                                         }`}
@@ -194,7 +195,7 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
                                     ) : (
                                         <HiOutlineArrowRight />
                                     )}
-                                </button>
+                                </PowerfulButton>
                             </div>
                             <div className={styles.loginHelp}>
                                 <p className={styles.loginHelpers} onClick={()=>{
@@ -213,11 +214,11 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
                 </div>
                 <div className={styles.flowContainer}>
                     <div className={styles.modalFooter}>
-                        <button type="button" className={styles.modalButton} onClick={() => {
+                        <PowerfulButton type="button" className={styles.modalButton} onClick={() => {
                             navigate('/register')
                         }}>
                             Get Mu-Id
-                        </button>
+                        </PowerfulButton>
                     </div>
                 </div>
             </dialog>
