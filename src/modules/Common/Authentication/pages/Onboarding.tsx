@@ -32,6 +32,7 @@ interface BackendErrors {
 const Onboarding = (props: Props) => {
     const urlParams = new URLSearchParams(window.location.search);
     const jsId = urlParams.get("jsid");
+    const referralId = urlParams.get("referral_id");
     // console.log(jsId)
     const queryParameters = new URLSearchParams(window.location.search);
     const navigate = useNavigate();
@@ -225,7 +226,7 @@ const Onboarding = (props: Props) => {
         mentorRole: "",
         areaOfInterest: [],
         general: "",
-        referral_id: ""
+        referral_id: referralId ? referralId : ""
     };
 
     const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
@@ -1762,6 +1763,9 @@ const Onboarding = (props: Props) => {
                                                 placeholder="Referral id , if any"
                                                 className={styles.input}
                                                 onBlur={formik.handleBlur}
+                                                disabled={
+                                                    referralId ? true : false
+                                                }
                                                 onChange={formik.handleChange}
                                                 value={
                                                     formik.values.referral_id

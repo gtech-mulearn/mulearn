@@ -1,0 +1,182 @@
+.share_pop_up_container {
+    position: fixed;
+    backdrop-filter: blur(5px) contrast(100%);
+    -webkit-backdrop-filter: blur(5px) contrast(100%);
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 50;
+    display: flex;
+    transition: .3s ease;
+    transform: scale(0);
+    flex-direction: column;
+    align-items: center;
+
+    .share_pop_up {
+        margin: 15dvh auto auto;
+        height: auto;
+        width: 400px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 1px 1px 20px 1px #8c8c8c47;
+        position: relative;
+
+        .share_pop_up_contents {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            /* border-top: 10px solid; */
+
+            & h1 {
+                font-size: 18px;
+            }
+
+            & hr {
+                width: 100%;
+            }
+
+            & button {
+                width: 100%;
+                padding: 16px;
+                background: #F3F3F4;
+                border-radius: 10px;
+            }
+
+            .profile_state {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+
+                .option {
+                    display: flex;
+                    /* margin-top: 10px; */
+                    gap: 20px;
+                }
+            }
+
+            .share_profile_btns {
+                display: flex;
+                gap: 10px;
+                width: 100%;
+
+                .embed_copy_btn {
+                    background: #456FF6;
+                    color: #fff;
+                    margin: 0px 0px -8px 0px;
+                    display: flex;
+                    justify-content: flex-start;
+                    padding: 16px;
+                    min-width: 40%;
+                    position: relative;
+
+                    & p {
+                        color: #fff;
+                        width: 60%;
+                        text-align: center;
+                    }
+
+                    & select {
+                        width: 40%;
+                        position: absolute;
+                        right: 3px;
+                        height: 50%;
+                        top: 15px;
+                        color: #fff;
+                        border-left: 1px solid #fff;
+                        border-radius: 0px 10px 10px 0px;
+                        background: #456ff6;
+                    }
+                }
+            }
+
+            .share_profile_container {
+                width: 100%;
+
+                .qr_code {
+                    width: 160px;
+                    margin: auto;
+                    padding: 8px;
+                    border-radius: 10px;
+                    border: 1px solid #F3F3F4;
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+
+            .link {
+                width: 100%;
+                background: rgba(0, 0, 0, 0.06);
+                padding: 10px 20px;
+                border-radius: 10px;
+                margin-top: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                & p {
+                    overflow: scroll;
+                    margin-right: 10px;
+                    word-wrap: normal;
+                }
+
+                & i {
+                    cursor: pointer;
+                    padding: 10px;
+                    margin-right: -10px;
+                    color: black;
+                    /* background: white; */
+                    /* border-radius: 50%; */
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .toast {
+                        position: absolute;
+                        right: 65px;
+                        background: #000000ad;
+                        color: white;
+                        border-radius: 5px;
+                        display: none;
+                        align-items: center;
+                        backdrop-filter: blur(4px);
+
+                        & p {
+                            color: #fff;
+                            margin: 0px;
+                            font-style: normal;
+                            font-size: 12px;
+                            padding: 5px 10px;
+                        }
+                    }
+
+                    .toast::before {
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        right: -12px;
+                        transform: rotate(-90deg);
+                        border-width: 6px;
+                        border-style: solid;
+                        border-color: transparent;
+                        border-top-color: #000000ad;
+                    }
+
+                    &:hover .toast {
+                        display: flex;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .share_pop_up_container .share_pop_up {
+        width: 90vw;
+    }
+}

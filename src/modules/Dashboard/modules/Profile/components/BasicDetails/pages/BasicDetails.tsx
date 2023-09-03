@@ -29,18 +29,28 @@ const BasicDetails = (props: Props) => {
             <div className={styles.interestGrp}>
                 <div className={styles.top_sec}>
                     <b>Interest Groups</b>
-                    {!id && !editIg && (
-                        <p
-                            onClick={() => setEditIg(true)}
-                            className={styles.edit_profile_btn}
-                            tabIndex={0}
-                        >
-                            <i className="fi fi-rr-pencil"></i>
-                        </p>
-                    )}
+                    {!id &&
+                        props.userProfile.level.slice(3, 4) > 4 &&
+                        !editIg && (
+                            <p
+                                onClick={() => setEditIg(true)}
+                                className={styles.edit_profile_btn}
+                                tabIndex={0}
+                            >
+                                <i className="fi fi-rr-pencil"></i>
+                            </p>
+                        )}
                     {editIg && (
                         <p
-                            onClick={() => setEditIg(false)}
+                            onClick={() => {
+                                setEditIg(false);
+                                editIgDetails(
+                                    toast,
+                                    ig_sorted.map((ig: any) => {
+                                        return ig.id;
+                                    })
+                                );
+                            }}
                             className={styles.edit_profile_btn}
                             tabIndex={0}
                         >
@@ -144,19 +154,19 @@ const BasicDetails = (props: Props) => {
                                                             ]
                                                         );
                                                 }
-                                                editIgDetails(
-                                                    toast,
-                                                    [...ig, data].map(
-                                                        (ig: any) => {
-                                                            return ig.id;
-                                                        }
-                                                    )
-                                                ).then(() => {
-                                                    // getIgDetails(
-                                                    //     toast,
-                                                    //     setIg
-                                                    // );
-                                                });
+                                                // editIgDetails(
+                                                //     toast,
+                                                //     [...ig, data].map(
+                                                //         (ig: any) => {
+                                                //             return ig.id;
+                                                //         }
+                                                //     )
+                                                // ).then(() => {
+                                                //     // getIgDetails(
+                                                //     //     toast,
+                                                //     //     setIg
+                                                //     // );
+                                                // });
                                             }}
                                             className="fi fi-sr-add"
                                         ></i>
