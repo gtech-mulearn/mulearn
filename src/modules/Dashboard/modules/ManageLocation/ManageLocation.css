@@ -1,6 +1,7 @@
 .popup_container {
-    width: 40%;
     min-width: 40%;
+    width: 100%;
+    max-width: 400px;
     height: max-content;
     padding: 20px;
     /* border: 1px solid #cbcbcb; */
@@ -161,5 +162,10 @@
     }
     .createBtn {
         width: 100%;
+    }
+    .popup_container {
+        min-width: 100%;
+        width: 100%;
+        max-width: 100%;
     }
 }
