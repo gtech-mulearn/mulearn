@@ -38,9 +38,9 @@ const Refer = () => {
     //     { name: 'David', muId: 13579, levels: 2, karma: 40 },
     // ];
     const columnOrder = [
-        { column: "name", Label: "Name", isSortable: false },
-        { column: "muId", Label: "Mu ID", isSortable: false },
-        { column: "levels", Label: "Levels", isSortable: false },
+        { column: "full_name", Label: "Name", isSortable: false },
+        { column: "muid", Label: "Mu ID", isSortable: false },
+        { column: "level", Label: "Levels", isSortable: false },
         { column: "karma", Label: "Karma", isSortable: false }
     ];
 

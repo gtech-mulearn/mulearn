@@ -1,39 +1,39 @@
 .darkBG {
-	width: 100vw;
-	height: 100vh;
-	z-index: 9998;
-	top: 0;
-	left: 0;
-	position: fixed;
-	backdrop-filter: blur(1px);
+    width: 100vw;
+    height: 100vh;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    position: fixed;
+    backdrop-filter: blur(1px);
 }
 
 .centered {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 9999;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
 }
 
 .modal {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	min-width: 450px;
-	height: fit-content;
-	background: white;
-	color: white;
-	border-radius: 16px;
-	padding: 30px 15px;
-	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-	position: relative;
-	z-index: 10000;
-	/* Increase the z-index value */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-width: 450px;
+    height: fit-content;
+    background: white;
+    color: white;
+    border-radius: 16px;
+    padding: 30px 15px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10000;
+    /* Increase the z-index value */
 }
 
-@media (max-width:720px) {
+@media (max-width: 720px) {
     .modal {
         min-width: 300px;
     }
@@ -59,7 +59,7 @@
     border: 8px solid #e8fcef;
     background: var(--success-100, #d1fadf);
 }
-.checkbtndelete{
+.checkbtndelete {
     display: flex;
     gap: 8px;
     padding: 10px;
@@ -68,7 +68,7 @@
     border: 8px solid #f1cdcd;
     background: var(--success-100, #f6afaf);
 }
-.checkbtndelete>svg{
+.checkbtndelete > svg {
     border-radius: 50%;
 }
 .heading {
@@ -85,6 +85,7 @@
     font-size: 16px;
     color: black;
     text-align: center;
+    max-width: 30rem;
 }
 
 .modalActions {
@@ -94,7 +95,7 @@
 
 .actionsContainer {
     display: flex;
-	flex-direction: row;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 20px;
@@ -104,6 +105,6 @@
     position: absolute;
     right: 0;
     top: 0;
-    padding: 6px!important;
+    padding: 6px !important;
     border-radius: 50%;
 }
