@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './accountCreation.module.css'
+import styles from './AccountCreation.module.css'
 import {FcGoogle} from 'react-icons/fc'
 import {HiEye} from 'react-icons/hi2'
 
