@@ -6,6 +6,7 @@ import im9 from "../assets/im9.webp";
 import im10 from "../assets/im10.webp";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useState } from "react";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 export default function MulearnAbout() {
     const [searchParams] = useSearchParams();
     const jsid = searchParams.get("jsid");
@@ -31,7 +32,7 @@ export default function MulearnAbout() {
                         <p className={styles.description}>Join Now: </p>
                         <section id="muId" className={styles.muidSection}>
                             <KKEMAuth jsid={jsid} />
-                            <button
+                            <PowerfulButton
                                 onClick={() => {
                                     navigate(`/register?jsid=${jsid}`);
                                 }}
@@ -39,7 +40,7 @@ export default function MulearnAbout() {
                             // onClick={() => setModalOpen(true)}
                             >
                                 No Mu-Id? Get now
-                            </button>
+                            </PowerfulButton>
                         </section>
                         {/* <MuIDModal open={modalOpen} setOpen={setModalOpen} /> */}
                     </>

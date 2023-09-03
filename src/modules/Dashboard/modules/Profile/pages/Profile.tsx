@@ -1,4 +1,4 @@
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import moment from "moment";
 import { useEffect, useRef, useState } from "react";
 import dpm from "../assets/images/dpm.webp";
@@ -357,11 +357,11 @@ const Profile = () => {
                                                 }}
                                             />
                                         )}
-                                        <button onClick={() => setPopUP(false)}>
+                                        <PowerfulButton onClick={() => setPopUP(false)}>
                                             {!profileStatus
                                                 ? "Cancel"
                                                 : "Close"}
-                                        </button>
+                                        </PowerfulButton>
                                     </div>
                                 </div>
                             </div>
