@@ -119,7 +119,7 @@ const LocationPopup: FC<LocationPopupProps> = ({
         if (activeItem === "State") {
             if (selectedData.Country && selectedData.Country.value) {
                 getStateData(selectedData.Country.value, handleData, toast);
-                handleCountry(selectedData.Country.value);
+                handleCountry(selectedData.Country.label);
             }
         } else if (activeItem === "Zone") {
             if (
@@ -133,8 +133,8 @@ const LocationPopup: FC<LocationPopupProps> = ({
                     selectedData.State.value,
                     handleData
                 );
-                handleCountry(selectedData.Country.value);
-                handleState(selectedData.State.value);
+                handleCountry(selectedData.Country.label);
+                handleState(selectedData.State.label);
             }
         } else if (activeItem === "District") {
             if (
@@ -151,9 +151,9 @@ const LocationPopup: FC<LocationPopupProps> = ({
                     selectedData.Zone.value,
                     handleData
                 );
-                handleCountry(selectedData.Country.value);
-                handleState(selectedData.State.value);
-                handleZone(selectedData.Zone.value);
+                handleCountry(selectedData.Country.label);
+                handleState(selectedData.State.label);
+                handleZone(selectedData.Zone.label);
             }
         }
         handlePopup(false);
