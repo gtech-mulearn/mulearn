@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './SignIn.module.css'
+import styles from './signin.module.css'
 import google from '../../assets/google.png'
 
 export default function Signin() {
