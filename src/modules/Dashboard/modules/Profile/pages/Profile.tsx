@@ -17,7 +17,6 @@ import {
 import styles from "./Profile.module.css";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { useToast } from "@chakra-ui/react";
-import { Helmet } from "react-helmet";
 import { useNavigate, useParams } from "react-router-dom";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
@@ -26,6 +25,7 @@ import EditProfilePopUp from "../components/EditProfilePopUp/pages/EditProfilePo
 import BasicDetails from "../components/BasicDetails/pages/BasicDetails";
 import Socials from "../components/Socials/pages/Socials";
 import ShareProfilePopUp from "../components/ShareProfilePopUp/pages/ShareProfilePopUp";
+import HelmetMetaTags from "../components/HelmetMetaTags/HelmetMetaTags";
 
 //TODO: Verify the relevance of profile page image
 const Profile = () => {
@@ -116,93 +116,7 @@ const Profile = () => {
     }, []);
     return (
         <>
-            <Helmet>
-                {/* <!-- Primary Meta Tags --> */}
-                <title>Profile | Mulearn</title>
-                <meta
-                    name="title"
-                    content={`${userProfile.first_name} ${userProfile.last_name}`}
-                />
-                <meta name="viewport" content="width=device-width" />
-                <meta name="route-pattern" content="/dashboard/profile/:id" />
-                <meta name="description" content="you bio is here" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-                />
-
-                {/* <!-- Open Graph / Facebook --> */}
-                <meta
-                    property="og:image"
-                    itemProp="image"
-                    content={
-                        userProfile.profile_pic ? userProfile.profile_pic : dpm
-                    }
-                />
-                <meta
-                    property="og:image:alt"
-                    content={`${userProfile.first_name}'s Profile Picture`}
-                />
-                <meta property="og:site_name" content="Mulearn" />
-                <meta property="og:type" content="profile" />
-                <meta
-                    property="og:title"
-                    content={
-                        userProfile.first_name +
-                        " " +
-                        userProfile.last_name +
-                        "(" +
-                        userProfile.karma +
-                        ")"
-                    }
-                />
-                <meta
-                    name="hostname"
-                    content={import.meta.env.VITE_FRONTEND_URL as string}
-                />
-                <meta
-                    property="og:url"
-                    content={
-                        (import.meta.env.VITE_FRONTEND_URL as string) +
-                        "/dashboard/profile/" +
-                        userProfile.muid
-                    }
-                />
-                <meta property="og:description" content="you bio is here" />
-
-                <meta
-                    property="og:image:secure_url"
-                    content={
-                        userProfile.profile_pic ? userProfile.profile_pic : dpm
-                    }
-                />
-                <meta property="og:type" content="profile" />
-                <meta property="og:image:type" content="image/jpeg" />
-                <meta property="og:image:width" content="300" />
-                <meta property="og:image:height" content="300" />
-
-                {/* <!-- Twitter --> */}
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta
-                    property="twitter:site"
-                    content={
-                        (import.meta.env.VITE_FRONTEND_URL as string) +
-                        "/dashboard/profile/" +
-                        userProfile.muid
-                    }
-                />
-                <meta
-                    name="twitter:title"
-                    content={`${userProfile.first_name} ${userProfile.last_name} (${userProfile.karma})`}
-                />
-                <meta name="twitter:description" content="you bio is here" />
-                <meta
-                    name="twitter:image:src"
-                    content={
-                        userProfile.profile_pic ? userProfile.profile_pic : dpm
-                    }
-                />
-            </Helmet>
+            <HelmetMetaTags userProfile={userProfile} dpm={dpm} />
             <div
                 style={
                     id
