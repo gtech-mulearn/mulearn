@@ -131,21 +131,20 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     // icon: <i className="fi fi-sr-users-gear"></i>
                 },
                 {
+                    url: "/dashboard/manage-locations",
+                    title: "Manage Locations",
+                    hasView: true,
+                    roles: [roles.ADMIN],
+                    icon: <i className="fi fi-ss-map-marker"></i>
+                },
+                {
                     url: "/dashboard/url-shortener",
                     title: "URL Shortener",
                     hasView: true,
                     roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE]
                     // icon: <i className="fi fi-sr-globe"></i>
-                }
+                },    
             ]
-        },
-
-        {
-            url: "/dashboard/manage-locations",
-            title: "Manage Locations",
-            hasView: true,
-            roles: [roles.ADMIN],
-            icon: <i className="fi fi-ss-map-marker"></i>
         },
         {
             url: "/dashboard/zonal-dashboard",
