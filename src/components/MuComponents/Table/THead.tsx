@@ -1,6 +1,7 @@
 import styles from "./Table.module.css";
 import { RxCaretSort } from "react-icons/rx";
 import { BiSortAlt2 } from "react-icons/bi";
+import { PowerfulButton } from "../MuButtons/MuButton";
 
 interface TableHeadProps {
     columnOrder: {
@@ -28,12 +29,12 @@ const THead: React.FC<TableHeadProps> = ({
                         <div className={styles.thContainer}>
                             <span>{column.Label}</span>
                             {column.isSortable && (
-                                <button
+                                <PowerfulButton
                                     className={styles.icon}
                                     onClick={() => onIconClick(column.column)}
                                 >
                                     <BiSortAlt2 />
-                                </button>
+                                </PowerfulButton>
                             )}
                         </div>
                     </th>
