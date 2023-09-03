@@ -1,0 +1,198 @@
+@font-face {
+    font-family: "ArcadeClassic";
+    src: url("../../font/ARCADECLASSIC.TTF") format("truetype");
+}
+@font-face {
+    font-family: "pixel";
+    src: url("../../font/pixelmix.ttf") format("truetype");
+}
+
+
+.cardsConatiner{
+    width: fit-content;
+    margin-bottom: 3rem;
+    border-radius: 25.562px;
+    background: url("../../assets/bg.webp") no-repeat center center/cover;
+    background-color: #1E41AE;   
+    box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.50);
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+}
+
+
+.card{
+    width: fit-content;
+    height: 553px;
+    display: flex;
+}
+.card img{
+    z-index: 10;
+    margin: 2rem 0;
+    animation: fade-in 1s ease;
+}
+
+@keyframes fade-in {
+    0%{
+        opacity: 0;
+        transform: translate(-50px);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0px);
+    }
+
+}
+
+.cardConatiner{
+    font-family: inherit;
+    position: relative;
+    right: 80px;
+    top: 50px;
+    width: 710px;
+    height: 461px;
+    padding: 55px 73px;
+    border-radius: 18.462px;
+    background: #FFF;
+    color: #000;
+}
+.cardContent{
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 2rem 0 0 2rem;
+    animation: fade-up 2s ease;
+}
+
+.cardContent h1{
+    font-family:'ArcadeClassic';
+    font-size: 49px;
+   text-transform: uppercase;
+}
+
+.cardContent h3{
+    font-family:'ArcadeClassic';
+    font-size: 22px;
+    margin: .5rem 0;
+    text-transform: uppercase;
+}
+
+@keyframes fade-up {
+    0%{
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100%{
+        opacity: 1;
+    }
+    
+}
+
+.cardblob{
+    display: flex;
+    width: 263px;
+    flex-wrap: wrap;
+    font-size: 14.769px;
+    gap: .5rem;
+    font-style: normal;
+    font-weight: 600;
+    margin: 1rem 0;
+}
+.cardblob div{
+    width: fit-content;
+    padding: 7.385px;
+    border-radius: 92.308px;
+    background: #F3F3F4;
+    animation: fade-down 2.5s ease; 
+}
+
+
+@keyframes fade-down {
+    0%{
+        opacity: 0;
+        transform: translate(-50px,50px);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0px);
+    }
+}
+
+.cardContent button{
+    display: flex;
+    height: 40.615px;
+    padding: 16.615px 44.308px;
+    border-radius: 7.385px;
+    justify-content: center;
+    align-items: center;
+    background-color: #2E85FE;
+    font-family: 'pixel';
+    font-size: 14px;
+    font-weight: 400;
+    color: #FFF;
+    text-align: center;
+    margin-bottom: 1rem;
+    animation: fade-down 3s ease;
+}
+
+@media(width<820px){
+ 
+ .cardsConatiner{
+    width: fit-content;
+    justify-content: space-around;
+    margin: 1rem;
+ }
+ .card img{
+    width:10rem;
+    height: 20rem;
+ }
+ .cardConatiner{
+    width: fit-content;
+    padding: 30px 20px;
+ }
+ .cardContent{
+    margin: 1rem 0 0 4rem;
+ }
+ .cardContent h1{
+    font-size: 35px;
+ }
+
+ 
+}
+
+@media(width<620px){
+.cardsConatiner{
+    width: 400px;
+}    
+.card{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 0;
+}
+.card img{
+    width:5rem;
+    height: 10rem;
+    margin-top: 3rem;
+    z-index: 2;
+ }
+ .cardConatiner{
+    padding: 20px 30px ;
+    right: 0;
+    top: -80px;
+    z-index: 10;
+ }
+
+ .cardContent{
+    margin: 0;
+ }
+ .cardContent h1{
+    font-size: 25px;
+ }
+
+ .cardContent h3{
+    font-size: 20px;
+ }
+
+}
