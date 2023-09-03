@@ -63,7 +63,7 @@ const EditLocation = () => {
                 );
             }
             toast({
-                title: "Interest Group Updated",
+                title: "Location Updated Successfully",
                 status: "success",
                 duration: 3000,
                 isClosable: true
