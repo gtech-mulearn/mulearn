@@ -81,7 +81,7 @@ const HackathonCreate = () => {
     );
     const [isPublishing, setIsPublishing] = useState(false);
     const [openImagePreview, setOpenImagePreview] = useState(false);
-    const [prevImgUrl, setPreviewImgUrl] = useState("");
+    const [isComplete, setIsComplete] = useState('');
 
     const [id, setID] = useState(useParams().id);
 
@@ -223,18 +223,35 @@ const HackathonCreate = () => {
             try {
                 if (id) {
                     await editHackathon(hackathon, formattedFormFields);
+					await getHackDetails(id)
+                        .then(res => {
+                            setData(res);
+                            setLoading(true);
+                        })
+                        .catch(err => {
+                            console.error(err);
+                        });
                 } else {
                     setID(
                         await createHackathon(hackathon, formattedFormFields)
                     );
+					await getHackDetails(String(id))
+                        .then(res => {
+                            setData(res);
+                            setLoading(true);
+                        })
+                        .catch(err => {
+                            console.error(err);
+                        });
                 }
 
                 if (isPublishing && id) {
                     setIsPublishing(false);
-
-                    const isComplete = isDetailsComplete(data);
-                    if (isComplete === true) {
-                        let responce = "";
+					setTimeout(() => {
+						setIsComplete(String(isDetailsComplete(data)))
+					}, 2000);
+                    if (isComplete === 'true') {
+						let responce = "";
                         responce = await publishHackathon(id, hackathon.status);
 
                         toast({
