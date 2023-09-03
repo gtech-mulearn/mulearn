@@ -1,0 +1,76 @@
+@font-face {
+    font-family: "pixel";
+    src: url("../../font/pixelmix.ttf") format("truetype");
+}
+
+.kkemJourney {
+    background-color: #027C43;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, .7);
+    padding: 1.2rem 2rem;
+    margin: 4rem 0;
+    width: fit-content;
+}
+
+.kkemJourney h1 {
+    font-family: "pixel";
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 2rem;
+}
+
+.kkemJourneyContent {
+    display: flex;
+    gap: 1rem;
+}
+
+.kkemJourneyCard {
+    padding: 1rem;
+    background-color: #2A2A2A;
+    color: white;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.kkemJourneyCard h1 {
+    font-size: 1rem;
+}
+
+.kkemJourneyCard span {
+    margin-top: -2rem;
+}
+
+@media(width<=768px) {
+
+    .kkemJourney {
+        padding: 1rem;
+        margin: 4rem 0;
+    }
+
+    .kkemJourney h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .kkemJourneyContent {
+        flex-direction: column;
+    }
+
+    .kkemJourneyCard img{
+        width: 18rem;
+    }
+
+    .kkemJourneyCard span {
+        margin-top: -1rem;
+    }
+}
+
+@media(width<400px){
+    .kkemJourneyCard img{
+        width: 100%;
+        height: 8rem;
+    }
+}
