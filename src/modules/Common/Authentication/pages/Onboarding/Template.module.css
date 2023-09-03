@@ -5,9 +5,8 @@
     display:grid;
     place-items: center;
     padding-top: 3rem;
-    overflow-x: scroll;
+    overflow-x: hidden;
 }
-
 .templatePlanet {
     position: absolute;
     top: 0;
@@ -110,7 +109,6 @@
 }
 
 @media(width<=820px) {
-
     .templateAstro,
     .templateAstroo,
     .templateMuship,

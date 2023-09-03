@@ -7,20 +7,39 @@ import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 export const getCountryData = async (
     setData: UseStateFunc<any>,
     toast?: (options?: UseToastOptions | undefined) => ToastId,
-    setTotalPages?: UseStateFunc<any>
+    perPage?: number,
+    page?: number,
+    setTotalPages?: UseStateFunc<number>,
+    search?: string,
+    sortID?: string
 ) => {
     try {
         await privateGateway
-            .get(ManageLocationsRoutes.getCountryData)
+            .get(ManageLocationsRoutes.getCountryData, {
+                params: {
+                    perPage: perPage,
+                    pageIndex: page,
+                    search: search,
+                    sortBy: sortID
+                }
+            })
             .then(({ data }) => data.response)
-            .then(({ data }) => {
+            .then(({ data, pagination }) => {
                 console.log(data);
                 setData(data);
+                if (setTotalPages) setTotalPages(pagination.totalPages);
             });
-    } catch (err: unknown) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
+    } catch (err: any) {
+        if (err?.response) {
+            const errorMsg = err.response?.data?.message?.general[0] ?? "";
+            if (!toast) return console.log(errorMsg);
+            toast({
+                title: `Error`,
+                description: errorMsg,
+                status: "error",
+                duration: 3000,
+                isClosable: true
+            });
         }
     }
 };

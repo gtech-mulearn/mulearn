@@ -31,6 +31,7 @@ const ManageLocation = () => {
     const [perPage, setPerPage] = useState(5);
     const [columns, setColumns] = useState(columnsCountry);
     const [sort, setSort] = useState("");
+    const [search, setSearch] = useState("");
     const [activeTab, setActiveTab] = useState("Country");
     const [popupStatus, setPopupStatus] = useState(false);
     const [popupFields, setPopupFields] = useState({
@@ -65,7 +66,15 @@ const ManageLocation = () => {
     function loadTableData() {
         if (activeTab === "Country") {
             setPopupStatus(false);
-            getCountryData(setData, toast, setTotalPages);
+            getCountryData(
+                setData,
+                toast,
+                perPage,
+                currentPage,
+                setTotalPages,
+                search,
+                sort
+            );
             setPopupFields({
                 countryShow: true,
                 stateShow: false,
@@ -101,24 +110,55 @@ const ManageLocation = () => {
 
     function getLocationData() {
         if (activeTab === "Country") {
-            getCountryData(setData, toast, setTotalPages);
+            getCountryData(
+                setData,
+                toast,
+                perPage,
+                currentPage,
+                setTotalPages,
+                search,
+                sort
+            );
         } else if (activeTab === "State") {
-            getStateData(selectedCountry, setData, toast, setTotalPages);
+            getStateData(
+                selectedCountry,
+                setData,
+                toast,
+                perPage,
+                currentPage,
+                setTotalPages,
+                search,
+                sort
+            );
         } else if (activeTab === "Zone") {
-            getZoneData(selectedCountry, selectedState, setData, setTotalPages);
+            getZoneData(
+                selectedState,
+                setData,
+                perPage,
+                currentPage,
+                setTotalPages,
+                search,
+                sort
+            );
         } else if (activeTab === "District") {
             getDistrictData(
-                selectedCountry,
-                selectedState,
                 selectedZone,
                 setData,
-                setTotalPages
+                perPage,
+                currentPage,
+                setTotalPages,
+                search,
+                sort
             );
         }
     }
 
     useEffect(() => {
         loadTableData();
+        setCurrentPage(1);
+        setPerPage(5);
+        setSearch("");
+        setSort("");
         return setData([]), setTotalPages(1);
     }, [activeTab]);
 
@@ -134,6 +174,7 @@ const ManageLocation = () => {
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
+        setSearch(search);
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
@@ -180,6 +221,10 @@ const ManageLocation = () => {
     function handleTabClick(tab: string) {
         setActiveTab(tab);
     }
+
+    useEffect(() => {
+        getLocationData();
+    }, [sort, currentPage, perPage, search]);
 
     return (
         <>
@@ -248,6 +293,7 @@ const ManageLocation = () => {
                 handleState={state => setSelectedState(state)}
                 handleZone={zone => setSelectedZone(zone)}
                 handleDeclined={setIsDeclined}
+                setTotalPages={setTotalPages}
             />
         </>
     );
