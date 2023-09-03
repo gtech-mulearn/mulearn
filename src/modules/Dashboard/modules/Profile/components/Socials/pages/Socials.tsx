@@ -80,7 +80,6 @@ const Socials = (props: Props) => {
         getSocials(setSocials, formikRef);
         // console.log(formik.values);
     }, []);
-    console.log(Object.keys(formik.errors).length === 0);
 
     return (
         <>
@@ -156,7 +155,10 @@ const Socials = (props: Props) => {
                                     formik.errors[
                                         name as keyof typeof formik.errors
                                     ] && (
-                                        <p className={styles.error_message}>
+                                        <p
+                                            className={styles.error_message}
+                                            key={i}
+                                        >
                                             {
                                                 formik.errors[
                                                     name as keyof typeof formik.errors
