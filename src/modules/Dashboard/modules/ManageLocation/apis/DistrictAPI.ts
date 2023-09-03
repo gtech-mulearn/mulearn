@@ -5,18 +5,31 @@ import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 
 //*WORKING✅
 export const getDistrictData = async (
-    country: string,
-    state: string,
     zone: string,
     setData: UseStateFunc<any>,
-    setTotalPages?: UseStateFunc<any>
+    perPage?: number,
+    page?: number,
+    setTotalPages?: UseStateFunc<any>,
+    search?: string,
+    sortID?: string
 ) => {
     try {
         await privateGateway
-            .get(ManageLocationsRoutes.getDistrictData.replace("${zone}", zone))
+            .get(
+                ManageLocationsRoutes.getDistrictData.replace("${zone}", zone),
+                {
+                    params: {
+                        perPage: perPage,
+                        pageIndex: page,
+                        search: search,
+                        sortBy: sortID
+                    }
+                }
+            )
             .then(({ data }) => data.response)
-            .then(({ data }) => {
+            .then(({ data, pagination }) => {
                 setData(data);
+                if (setTotalPages) setTotalPages(pagination.totalPages);
             });
     } catch (err: unknown) {
         const error = err as AxiosError;
