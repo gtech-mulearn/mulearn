@@ -36,6 +36,20 @@ export const HackathonDetails = (props: Props) => {
             })
     }, [])
 
+	const targetDateTime = String(data?.application_ends);
+    console.log(String(targetDateTime));
+    const [remainingTime, setRemainingTime] = useState<{
+        days: number;
+        hours: number;
+        minutes: number;
+        seconds: number;
+    }>({
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0
+    });
+	
     return (
         <>
             {data ? (

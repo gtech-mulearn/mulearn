@@ -64,9 +64,6 @@ const FindCircle = () => {
                                                     Join
                                                 </button>
                                             </div>
-                                            {/* <PowerfulButton text='Join' onButtonClick={() => {
-										navigate(`/dashboard/learning-circle/details/${circle.id}`);
-									}}/> */}
                                         </div>
                                     </>
                                 )

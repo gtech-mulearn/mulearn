@@ -34,38 +34,40 @@ import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
  * TODO: Make the form things json and iterate and display, store the jsons in a separate file.
  */
 
-const formatDate = (date: any): [string,number] => {
+const formatDate = (date: any): [string, number] => {
     if (
         date === "undefined" ||
         date === null ||
         date === undefined ||
         date === "null" ||
         date === ""
-    )
+    ) {
         return ["", 0];
+    }
 
-    const x = new Date(date)
+    const x = new Date(date);
     const formattedDate = x.toISOString().split("T")[0];
-    const unix = Math.floor(x.getTime()/1000.0) // for unix timestamp comparison
+    const unix = Math.floor(x.getTime() / 1000.0); // for unix timestamp comparison
 
     return [formattedDate, unix];
 };
 
-function isDetailsComplete(hackathon: HackList): (true | string) {
+function isDetailsComplete(hackathon: HackList | undefined): true | string {
     let returnVal = true;
     let fieldsToFix: string[] = [];
-    Object.entries(hackathon).forEach(([key, value]) => {
+    {hackathon && Object.entries(hackathon).forEach(([key, value]) => {
         if (value === null || value === "") {
             returnVal = false;
             fieldsToFix.push(
                 key.charAt(0).toUpperCase() + key.slice(1).replace("_", " ")
             );
         }
-    });
-    if (!returnVal) return fieldsToFix.join(", ")
+    });}
+    if (!returnVal) {
+        return fieldsToFix.join(", ");
+    }
     return true;
 }
-
 
 const HackathonCreate = () => {
     const [tabIndex, setTabIndex] = useState(0);
@@ -74,7 +76,9 @@ const HackathonCreate = () => {
     const [data, setData] = useState<HackList>();
     const [district, setDistrict] = useState<Option[]>([]);
     const [institutions, setInstitutions] = useState<Option[]>([]);
-    const [institutionsChunks, setInstitutionsChunks] = useState<Option[][]>( [] );
+    const [institutionsChunks, setInstitutionsChunks] = useState<Option[][]>(
+        []
+    );
     const [isPublishing, setIsPublishing] = useState(false);
     const [openImagePreview, setOpenImagePreview] = useState(false);
     const [prevImgUrl, setPreviewImgUrl] = useState("");
@@ -87,15 +91,16 @@ const HackathonCreate = () => {
     useEffect(() => {
         if (id) {
             getHackDetails(id)
-            .then(res => {
-                setData(res)
-                setLoading(true)
-            })
-            .catch(err => {
-                console.error(err)
-            })
-        } 
-        else setLoading(true);
+                .then(res => {
+                    setData(res);
+                    setLoading(true);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+        } else {
+            setLoading(true);
+        }
 
         if (formData === "") {
             getFormFields(setFormData);
@@ -121,9 +126,7 @@ const HackathonCreate = () => {
         setTabIndex(tabIndex === 0 ? 0 : tabIndex - 1);
     }
 
-
     const handleSubmit = (values: any, { resetForm }: any) => {
-
         const fields: { [key: string]: string } = {
             bio: "system",
             college: "system",
@@ -143,42 +146,51 @@ const HackathonCreate = () => {
                 selectedFields[field] = fields[field];
             }
         });
-        
+
         const [applicationStartDate, RSD] = formatDate(values.applicationStart);
         const [applicationEndsDate, RED] = formatDate(values.applicationEnds);
         const [eventStartDate, HSD] = formatDate(values.eventStart);
         const [eventEndDate, HED] = formatDate(values.eventEnd);
-        
-        if ( isPublishing ) {
-            let checker = false
+
+        if (isPublishing) {
+            let checker = false;
             const runToast = (title: string, description: string) => {
                 toast({
                     title,
                     description,
                     status: "error",
                     isClosable: true,
-                    position:"top-right"
+                    position: "top-right"
                 });
-            }
+            };
 
             if (RSD > RED) {
-                runToast( 'Invalid Date', 'Registration Start date > Registration End date')
-                checker = true
+                runToast(
+                    "Invalid Date",
+                    "Registration Start date > Registration End date"
+                );
+                checker = true;
             }
             if (RED > HSD) {
-                runToast( 'Invalid Date', 'Registration End > Hackathon Start date')
-                checker = true
+                runToast(
+                    "Invalid Date",
+                    "Registration End > Hackathon Start date"
+                );
+                checker = true;
             }
             if (HSD > HED) {
-                runToast( 'Invalid Date', 'Hackathon Start > Hackathon End date')
-                checker = true
+                runToast(
+                    "Invalid Date",
+                    "Hackathon Start > Hackathon End date"
+                );
+                checker = true;
             }
             if (checker) {
-                setIsPublishing(false)
+                setIsPublishing(false);
                 return;
             }
         }
-        
+
         // Convert selectedFields object to a JSON string and then parse it to get the desired format
         const formattedFormFields = JSON.stringify(selectedFields);
 
@@ -208,61 +220,62 @@ const HackathonCreate = () => {
         };
 
         (async () => {
-        try {
-            if (id)    await editHackathon(hackathon, formattedFormFields)
-            else setID(await createHackathon(hackathon, formattedFormFields))
+            try {
+                if (id) {
+                    await editHackathon(hackathon, formattedFormFields);
+                } else {
+                    setID(
+                        await createHackathon(hackathon, formattedFormFields)
+                    );
+                }
 
-            
-            if (isPublishing && id){
-                setIsPublishing(false)
+                if (isPublishing && id) {
+                    setIsPublishing(false);
 
-                const isComplete = isDetailsComplete(hackathon);
-                if (isComplete === true){
+                    const isComplete = isDetailsComplete(data);
+                    if (isComplete === true) {
+                        let responce = "";
+                        responce = await publishHackathon(id, hackathon.status);
 
-                    let responce = "";
-                    responce = await publishHackathon(id, hackathon.status)
-                    
+                        toast({
+                            title: "Successful",
+                            description:
+                                responce || "Hackathon Published Successfully",
+                            status: "success",
+                            duration: 3000,
+                            isClosable: true
+                        });
+                        navigate("/dashboard/hackathon");
+                    } else {
+                        toast({
+                            title: "Cannot publish",
+                            description: `Please fill the following fields: ${isComplete}`,
+                            status: "error",
+                            duration: 5000,
+                            isClosable: true,
+                            position: "top-right"
+                        });
+                    }
+                } else {
                     toast({
-                        title: "Successful",
-                        description: responce || "Hackathon Published Successfully",
+                        title: "Changes Saved",
+                        description: "Change has been saved Successfully",
                         status: "success",
                         duration: 3000,
                         isClosable: true
-                    })
-                    navigate("/dashboard/hackathon")
+                    });
+                    navigate("/dashboard/hackathon");
                 }
-                else toast({
-                    title: "Cannot publish",
-                    description: `Please fill the following fields: ${isComplete}`,
+            } catch (err) {
+                toast({
+                    title: "Failed to make changes",
+                    description: err as string,
                     status: "error",
                     duration: 5000,
-                    isClosable: true,
-                    position: "top-right"
+                    isClosable: true
                 });
             }
-            else {
-                toast({
-                    title: "Changes Saved",
-                    description: "Change has been saved Successfully",
-                    status: "success",
-                    duration: 3000,
-                    isClosable: true
-                })
-                navigate("/dashboard/hackathon")
-            }
-            
-        }
-        catch (err) {
-            toast({
-                title: "Failed to make changes",
-                description: err as string,
-                status: "error",
-                duration: 5000,
-                isClosable: true
-            });
-        }
         })();
-
     };
 
     const handleCloseModal = () => {
@@ -302,7 +315,7 @@ const HackathonCreate = () => {
                                 variant="ghost"
                                 type="submit"
                                 form="hackathon"
-                                children='Save & Finish later'
+                                children="Save & Finish later"
                             />
                             <PowerfulButton
                                 onClick={() => setIsPublishing(true)}
@@ -339,9 +352,13 @@ const HackathonCreate = () => {
                                 }) => (
                                     <Form id="hackathon">
                                         <Tabs
-                                            selectedTabClassName={ styles.selectedTab }
+                                            selectedTabClassName={
+                                                styles.selectedTab
+                                            }
                                             selectedIndex={tabIndex}
-                                            onSelect={index => setTabIndex(index) }
+                                            onSelect={index =>
+                                                setTabIndex(index)
+                                            }
                                         >
                                             <TabList>
                                                 <Tab>Basics</Tab>
@@ -354,17 +371,27 @@ const HackathonCreate = () => {
                                                 {/* <Tab>FAQs</Tab> */}
                                             </TabList>
                                             <div className={styles.form}>
-                                                <TabPanel className={ styles.formGroupStart } >
+                                                <TabPanel
+                                                    className={
+                                                        styles.formGroupStart
+                                                    }
+                                                >
                                                     <FormTabBasics />
                                                 </TabPanel>
 
-                                                <TabPanel className={styles.formGroup} >
+                                                <TabPanel
+                                                    className={styles.formGroup}
+                                                >
                                                     <FormTabDates />
                                                 </TabPanel>
 
-                                                <TabPanel className={styles.formGroup} >
+                                                <TabPanel
+                                                    className={styles.formGroup}
+                                                >
                                                     <FormTabDetails
-                                                        institutions={ institutions }
+                                                        institutions={
+                                                            institutions
+                                                        }
                                                         district={district}
                                                     />
                                                 </TabPanel>
@@ -373,14 +400,22 @@ const HackathonCreate = () => {
                                                     <FormTabAdvanced
                                                         data={data}
                                                         errors={errors}
-                                                        setFieldValue={ setFieldValue }
+                                                        setFieldValue={
+                                                            setFieldValue
+                                                        }
                                                     />
                                                 </TabPanel>
 
-                                                <TabPanel className={ styles.formGroupField } >
+                                                <TabPanel
+                                                    className={
+                                                        styles.formGroupField
+                                                    }
+                                                >
                                                     <FormTabApplication
                                                         values={values}
-                                                        handleChange={ handleChange }
+                                                        handleChange={
+                                                            handleChange
+                                                        }
                                                         formData={formData}
                                                         initialFormFields={
                                                             data?.form_fields
