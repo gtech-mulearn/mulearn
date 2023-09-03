@@ -290,7 +290,7 @@ function App() {
                             path: "manage-users",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[roles.ADMIN]}
                                     children={<ManageUsers />}
                                 />
                             )
@@ -311,7 +311,7 @@ function App() {
                             path: "manage-roles",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[roles.ADMIN]}
                                     children={<ManageRoles />}
                                 />
                             )
@@ -320,7 +320,7 @@ function App() {
                             path: "user-role-verification",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[roles.ADMIN]}
                                     children={<UserRoleVerification />}
                                 />
                             )
@@ -434,7 +434,7 @@ function App() {
                             )
                         },
                         {
-                            path: "hackathon/create",
+                            path: "hackathon/edit/:id",
                             element: (
                                 <RoleChecker
                                     roles={[roles.ADMIN, roles.FELLOW]}
@@ -443,7 +443,7 @@ function App() {
                             )
                         },
                         {
-                            path: "hackathon/edit/:id",
+                            path: "hackathon/create",
                             element: (
                                 <RoleChecker
                                     roles={[roles.ADMIN, roles.FELLOW]}

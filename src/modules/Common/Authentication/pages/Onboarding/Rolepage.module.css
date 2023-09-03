@@ -35,7 +35,8 @@
 
 }
 .rolePageCards .rolePageCard:hover{
-    border: 1.177px solid #456FF6
+    border: 1.177px solid #456FF6;
+    transition:1.5s ease;
 }
 .rolePageCard div{
     display: flex;

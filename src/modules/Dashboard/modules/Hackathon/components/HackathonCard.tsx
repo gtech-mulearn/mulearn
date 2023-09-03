@@ -1,114 +1,89 @@
 import { Tooltip } from "react-tooltip";
 import { DateConverter } from "../../../utils/common";
-
 import { HackList } from "../services/HackathonInterfaces";
-
 import "react-tooltip/dist/react-tooltip.css";
-import styles from "../pages/HackathonCreate.module.css";
 import HackathonCardIconButtons from "./HackathonCardIconButtons";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useNavigate } from "react-router-dom";
+import { CardFooter, CardHeader, Card, CardContent, CardDescription, CardTitle } from "@/MuLearnComponents/MuCard/Card";
+import { Badge } from "@/MuLearnComponents/Badge";
 
 type HackathonCardProps = {
     hackathon: HackList;
-    setOwnData: React.Dispatch<React.SetStateAction<HackList[]>>;
+    setOwnData: UseStateFunc<HackList[]>;
     index: number;
-    setData: React.Dispatch<React.SetStateAction<HackList[]>>;
+    setData: UseStateFunc<HackList[]>;
     ownData: HackList[];
 };
-
-const HackathonCard = ({
+ 
+const HackathonCard: FC<HackathonCardProps> = ({
     hackathon,
     setOwnData,
     index,
     setData,
     ownData
-}: HackathonCardProps) => {
+}) => {
     const isDraft = hackathon.status === "Draft";
 
     const navigate = useNavigate();
 
-    return (
-        <div key={hackathon.id} className={styles.cardComponent}>
-            <div className={styles.frame}>
-                <div className={styles.div}>
-                    <div className={styles.title}>
-                        {/* {isDraft && (
-                            <span className={styles.draftText}>Draft</span>
-                        )} */}
-                        <b className={styles.textWrapper}>{hackathon.title}</b>
-                        <div className={styles.textWrapper2}>
-                            {hackathon.tagline}
-                        </div>
-                    </div>
-                    <HackathonCardIconButtons
-                        hackathon={hackathon}
-                        index={index}
-                        ownData={ownData}
-                        setOwnData={setOwnData}
-                        setData={setData}
-                    />
-                    <Tooltip
-                        id="Icon"
-                        style={{
-                            backgroundColor: "var(--blue)",
-                            color: "var(--White)",
-                            borderRadius: "10px"
-                        }}
-                    />
+    return ( 
+        <Card>
+            <CardHeader >
+                <CardTitle style={{color: "var(--blue)"}}>
+                    {hackathon.title}
+                </CardTitle>
+                <CardDescription>{hackathon.tagline}</CardDescription>
+
+                <HackathonCardIconButtons
+                    style={{
+                        position: "absolute",
+                        right: "var(--padding-card)",
+                        top: "var(--padding-card)",
+                    }}
+                    hackathon={hackathon}
+                    index={index}
+                    ownData={ownData}
+                    setOwnData={setOwnData}
+                    setData={setData}
+                />
+                <Tooltip id="Icon" 
+                    style={{
+                        backgroundColor: "var(--blue)",
+                        color: "var(--White)",
+                        borderRadius: "10px",
+                        transition: "opacity 0.5s ease-in-out"
+                    }}
+                />
+            </CardHeader>
+
+            <CardContent>
+                <CardDescription style={{ fontSize:".5rem"}}> Application Dates: </CardDescription>
+                <Badge variant="small"> {hackathon.application_start ? DateConverter(hackathon.application_start) : "No Date"} </Badge>
+                &nbsp; &nbsp;
+                <Badge variant="small"> {hackathon.application_ends ? DateConverter(hackathon.application_ends) : "No Date"} </Badge>
+            </CardContent>
+
+            <CardFooter>
+                <div style={{display: "flex",gap:"8px", flexWrap: "wrap"}}>
+                    <Badge> {hackathon.type.charAt(0).toUpperCase() + hackathon.type.slice(1)} </Badge>
+                    <Badge> {hackathon.event_start ? DateConverter(hackathon.event_start) : "No Date"} </Badge>
                 </div>
 
-                <div className={styles.group2}>
-                    <div className={styles.textWrapper3}>
-                        Application Dates:
-                    </div>
-                    <div className={styles.overlapGroup}>
-                        <div className={styles.textWrapper4}>
-                            {hackathon.application_start
-                                ? DateConverter(hackathon.application_start)
-                                : "No Date"}
-                        </div>
-                        <div className={styles.textWrapper4}>
-                            {hackathon.application_ends
-                                ? DateConverter(hackathon.application_ends)
-                                : "No Date"}
-                        </div>
-                    </div>
-                </div>
-
-                <div className={styles.bottomRow}>
-                    <div className={styles.frame4}>
-                        <div className={styles.mode}>
-                            <div className={styles.textWrapperSmall}>
-                                {/* converting first letter to UpperCase */}
-                                {hackathon.type.charAt(0).toUpperCase() +
-                                    hackathon.type.slice(1)}
-                            </div>
-                        </div>
-                        <div className={styles.date}>
-                            <div className={styles.textWrapperSmall}>
-                                {hackathon.event_start
-                                    ? DateConverter(hackathon.event_start)
-                                    : "No Date"}
-                            </div>
-                        </div>
-                    </div>
-
-                    <PowerfulButton
-                        children={isDraft ? "Edit Draft" : "Apply Now"}
-                        variant={isDraft ? "draft" : "primary"}
-                        onClick={() => {
-                            navigate(
-                                isDraft
-                                    ? `/dashboard/hackathon/edit/${hackathon.id}`
-                                    : `/dashboard/hackathon/details/${hackathon.id}`
-                            );
-                        }}
-                    />
-                </div>
-            </div>
-        </div>
-    );
-};
-
+            <PowerfulButton
+                children={isDraft ? "Edit Draft" : "Apply Now"}
+                variant={isDraft ? "draft" : "primary"}
+                onClick={() => {
+                    navigate(
+                        isDraft
+                            ? `/dashboard/hackathon/edit/${hackathon.id}`
+                            : `/dashboard/hackathon/details/${hackathon.id}`
+                    );
+                }}
+            />
+            </CardFooter>
+        </Card>
+     );
+}
+ 
 export default HackathonCard;

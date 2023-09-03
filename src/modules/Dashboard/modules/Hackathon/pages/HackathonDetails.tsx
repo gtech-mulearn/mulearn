@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { CiGlobe } from "react-icons/ci";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getHackDetails } from "../services/HackathonApis";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import styles from "./HackathonCreate.module.css"
 import { DateConverter, convertDateToYYYYMMDD } from "../../../utils/common";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { HackList } from "../services/HackathonInterfaces";
+import { useToast } from "@chakra-ui/react";
+import { LuCopy } from "react-icons/lu";
 import Countdown from "../../../utils/Countdown";
 
 type Props = {};
@@ -14,25 +16,25 @@ type Props = {};
 export const HackathonDetails = (props: Props) => {
     const { id } = useParams();
     const [data, setData] = useState<HackList>();
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+    const toast = useToast()
+    
+
+    const shareData = {
+        title: data?.title || "not yet named",
+        url: `${import.meta.env.VITE_FRONTEND_URL}/dashboard/hackathon/details/${data?.id || ""}`
+    };
+    const isShareable =  window.navigator.canShare && window.navigator.canShare(shareData)
 
     useEffect(() => {
-        getHackDetails(setData, id);
-    }, []);
-    
-	const targetDateTime = String(data?.application_ends);
-	console.log(String(targetDateTime))
-    const [remainingTime, setRemainingTime] = useState<{
-        days: number;
-        hours: number;
-        minutes: number;
-        seconds: number;
-    }>({
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0
-    });
+        getHackDetails(id || '')
+            .then(res => {
+                setData(res)
+            })
+            .catch(err => {
+                console.error(err)
+            })
+    }, [])
 
     return (
         <>
@@ -130,9 +132,27 @@ export const HackathonDetails = (props: Props) => {
                         </div>
                         {data?.website && (
                             <div className={styles.socialLinks}>
-                                <a href={data?.website}>
-                                    <CiGlobe />
-                                </a>
+                                <Link to={data?.website} >
+                            <PowerfulButton variant="secondary" >
+                                        <CiGlobe />
+                                    </PowerfulButton>
+                        </Link>
+                        <PowerfulButton
+                            variant="secondary" 
+                            onClick={() => {
+                                window.navigator.clipboard.writeText( shareData.url );
+                                toast({
+                                    title: "Success",
+                                    description: "Link copied to clipboard",
+                                    status: "success",
+                                    duration: 3000,
+                                    isClosable: true
+                                });
+                                if (isShareable) window.navigator.share(shareData);
+                            }}
+                        >
+                            <LuCopy />
+                        </PowerfulButton>
                                 {/* <a href="#">
                             <i className="fab fa-linkedin-in"></i>
 							</a>
