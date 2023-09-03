@@ -27,7 +27,7 @@ export function clearAllNotifications(props: any) {
     .catch(err => {
         props.toast({
             title: "Error",
-            description: err.response.data.message,
+            description: err.response.data.response,
             status: "error",
             duration: 3000,
             isClosable: true
