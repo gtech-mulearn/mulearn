@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Hero.module.css'
-import coin from '../../assets/coin.webp'
+// import coin from '../../assets/coin.webp'
 import KKEMLogo from '../../assets/KKEMLogo.webp'
 import Illustration from '../../assets/illustration.webp'
 import Logo from '../../assets/Logo.webp'
