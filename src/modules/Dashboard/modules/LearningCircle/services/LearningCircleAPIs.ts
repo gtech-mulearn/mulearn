@@ -4,6 +4,7 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { createStandaloneToast } from "@chakra-ui/react";
 import { SetStateAction } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
+import { LcResponseType } from "./LearningCircleInterface";
 
 export const { toast } = createStandaloneToast();
 
@@ -115,17 +116,26 @@ export const createCircle = async (
             );
         }, 2000);
     } catch (err) {
-        const error = err as AxiosError;
+        const error: LcResponseType = err as AxiosError;
         if (error?.response) {
-            throw error;
+            toast({
+                title: `${error.response.data.message.non_field_errors}`,
+                description: "",
+                status: "error",
+                duration: 2000,
+                isClosable: true
+            });
+            console.log(error.response.data);
+        } else {
+            toast({
+                title: "Learning Circle not creating..",
+                description: "",
+                status: "error",
+                duration: 2000,
+                isClosable: true
+            });
         }
-        toast({
-            title: "Learning Circle not creating..",
-            description: "",
-            status: "error",
-            duration: 2000,
-            isClosable: true
-        });
+
         setTimeout(() => {
             navigate(`/dashboard/learning-circle/`);
         }, 2000);
@@ -186,13 +196,13 @@ export const joinCircle = async (circleCode: string) => {
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
-			toast({
-				title: `${error.response.data}`,
-				description: "",
-				status: "error",
-				duration: 2000,
-				isClosable: true
-			});
+            toast({
+                title: `${error.response.data}`,
+                description: "",
+                status: "error",
+                duration: 2000,
+                isClosable: true
+            });
         }
     }
 };
