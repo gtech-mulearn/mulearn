@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Dispatch, SetStateAction } from "react";
 
 interface CountdownProps {
-    targetDateTime: Date;
+    targetDateTime: string;
     remainingTime: {
         days: number;
         hours: number;
@@ -21,15 +21,26 @@ interface CountdownProps {
 const Countdown: React.FC<CountdownProps> = ({
     targetDateTime,
     remainingTime,
-	setRemainingTime
+    setRemainingTime
 }) => {
+    const [eventOver, setEventOver] = useState(false);
+
     useEffect(() => {
         const calculateRemainingTime = () => {
             const now = new Date().getTime();
-            const targetTime = targetDateTime.getTime();
+            const targetTime = new Date(targetDateTime).getTime();
             const timeDifference = targetTime - now;
 
-            if (timeDifference > 0) {
+            if (timeDifference <= 0) {
+                // Event is over
+                setEventOver(true);
+                setRemainingTime({
+                    days: 0,
+                    hours: 0,
+                    minutes: 0,
+                    seconds: 0
+                });
+            } else {
                 const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
                 const hours = Math.floor(
                     (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
@@ -60,19 +71,23 @@ const Countdown: React.FC<CountdownProps> = ({
     }, [targetDateTime]);
 
     return (
-        <div>
-            <div>
-                <span>{remainingTime.days}</span> days
-            </div>
-            <div>
-                <span>{remainingTime.hours}</span> hours
-            </div>
-            <div>
-                <span>{remainingTime.minutes}</span> minutes
-            </div>
-            <div>
-                <span>{remainingTime.seconds}</span> seconds
-            </div>
+        <div
+            style={{
+                display: "flex",
+                justifyContent: "start",
+                alignItems: "center"
+            }}
+        >
+            {eventOver ? (
+                <div>Event Over</div>
+            ) : (
+                <>
+                    <div>{remainingTime.days} D&nbsp;</div>
+                    <div>&nbsp;{remainingTime.hours} H&nbsp;</div>
+                    <div>&nbsp;{remainingTime.minutes} M&nbsp;</div>
+                    <div>&nbsp;{remainingTime.seconds} S&nbsp;</div>
+                </>
+            )}
         </div>
     );
 };
