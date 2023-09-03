@@ -259,7 +259,12 @@ function App() {
                         },
                         {
                             path: "refer",
-                            element: <Refer />
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.STUDENT, roles.ADMIN]}
+                                    children={<Refer />}
+                                />
+                            )
                         },
                         {
                             path: "interest-groups",
@@ -286,7 +291,7 @@ function App() {
                             path: "organizations/edit",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[roles.ADMIN]}
                                     children={<EditOrgnaization />}
                                 />
                             )
@@ -308,7 +313,7 @@ function App() {
                             path: "manage-users",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[roles.ADMIN]}
                                     children={<ManageUsers />}
                                 />
                             )
@@ -329,7 +334,7 @@ function App() {
                             path: "manage-roles",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[roles.ADMIN]}
                                     children={<ManageRoles />}
                                 />
                             )
@@ -338,7 +343,7 @@ function App() {
                             path: "user-role-verification",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[roles.ADMIN]}
                                     children={<UserRoleVerification />}
                                 />
                             )
@@ -381,7 +386,7 @@ function App() {
                             path: "organizations",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[roles.ADMIN]}
                                     children={<Organizations />}
                                 />
                             )
@@ -390,7 +395,7 @@ function App() {
                             path: "college-levels",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[roles.ADMIN]}
                                     children={<CollegeLevels />}
                                 />
                             )
@@ -399,7 +404,7 @@ function App() {
                             path: "tasks",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[roles.ADMIN]}
                                     children={<Tasks />}
                                 />
                             )
@@ -420,7 +425,7 @@ function App() {
                             path: "karma-voucher",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[roles.ADMIN]}
                                     children={<KarmaVoucher />}
                                 />
                             )
@@ -446,7 +451,7 @@ function App() {
                             path: "hackathon",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[roles.ADMIN]}
                                     children={<Hackathon />}
                                 />
                             )
@@ -455,7 +460,7 @@ function App() {
                             path: "hackathon/edit/:id",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[roles.ADMIN]}
                                     children={<HackathonCreate />}
                                 />
                             )
@@ -464,7 +469,7 @@ function App() {
                             path: "hackathon/create",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[roles.ADMIN]}
                                     children={<HackathonCreate />}
                                 />
                             )
@@ -473,7 +478,7 @@ function App() {
                             path: "hackathon/details/:id",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[roles.ADMIN]}
                                     children={<HackathonDetails />}
                                 />
                             )
@@ -482,7 +487,7 @@ function App() {
                             path: "hackathon/apply/:id",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[roles.ADMIN]}
                                     children={<HackathonRegistration />}
                                 />
                             )
@@ -491,14 +496,19 @@ function App() {
                             path: "hackathon/applicants/:id",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[roles.ADMIN]}
                                     children={<HackathonParticipants />}
                                 />
                             )
                         },
                         {
                             path: "manage-locations",
-                            element: <ManageLocation />
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<ManageLocation />}
+                                />
+                            )
                         },
                         {
                             path: "manage-locations/add/:item",
@@ -513,9 +523,7 @@ function App() {
                             element: (
                                 <RoleChecker
                                     roles={[
-                                        roles.STUDENT,
                                         roles.ADMIN,
-                                        roles.FELLOW
                                     ]}
                                     children={<HackathonOrganizers />}
                                 />

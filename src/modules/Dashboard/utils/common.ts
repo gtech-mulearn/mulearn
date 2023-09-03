@@ -6,7 +6,7 @@ export const DateConverter = (date: string) => {
     const month = (parsedDate.getMonth() + 1).toString().padStart(2, "0");
     const year = parsedDate.getFullYear().toString();
 
-    return `${day}-${month}-${year}`;
+    return `${day}/${month}/${year}`;
 };
 
 // Convert UTC Date to YYYY-MM-DD for date input

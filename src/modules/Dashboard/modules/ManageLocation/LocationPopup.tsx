@@ -33,6 +33,7 @@ interface LocationPopupProps {
     handleZone: UseStateFunc<string>;
     handleDeclined: UseStateFunc<boolean>;
     setTotalPages: UseStateFunc<number>;
+    setLoader: UseStateFunc<boolean>;
 }
 
 const LocationPopup: FC<LocationPopupProps> = ({
@@ -45,7 +46,8 @@ const LocationPopup: FC<LocationPopupProps> = ({
     handleState,
     handleZone,
     handleDeclined,
-    setTotalPages
+    setTotalPages,
+    setLoader
 }) => {
     const [countryData, setCountryData] = useState([]);
     const [stateData, setStateData] = useState([]);
@@ -66,7 +68,7 @@ const LocationPopup: FC<LocationPopupProps> = ({
 
     useEffect(() => {
         if (selectedData.Country === null) {
-            getCountryData(setCountryData, toast);
+            getCountryData(setCountryData, toast).then(() => setLoader(false));
         }
         if (selectedData.Country !== null) {
             getStateData(
@@ -78,7 +80,7 @@ const LocationPopup: FC<LocationPopupProps> = ({
                 setTotalPages,
                 "",
                 ""
-            );
+            ).then(() => setLoader(false));
         }
         if (selectedData.Country !== null && selectedData.State !== null) {
             getZoneData(
@@ -89,7 +91,7 @@ const LocationPopup: FC<LocationPopupProps> = ({
                 setTotalPages,
                 "",
                 ""
-            );
+            ).then(() => setLoader(false));
         }
     }, [selectedData]);
 
@@ -131,6 +133,7 @@ const LocationPopup: FC<LocationPopupProps> = ({
     };
 
     function submitPopupSelection() {
+        setLoader(true);
         if (activeItem === "State") {
             if (selectedData.Country && selectedData.Country.value) {
                 getStateData(
@@ -142,7 +145,7 @@ const LocationPopup: FC<LocationPopupProps> = ({
                     setTotalPages,
                     "",
                     ""
-                );
+                ).then(() => setLoader(false));
                 handleCountry(selectedData.Country.value);
             }
         } else if (activeItem === "Zone") {
@@ -160,7 +163,7 @@ const LocationPopup: FC<LocationPopupProps> = ({
                     setTotalPages,
                     "",
                     ""
-                );
+                ).then(() => setLoader(false));
                 handleCountry(selectedData.Country.label);
                 handleState(selectedData.State.label);
             }
@@ -181,7 +184,7 @@ const LocationPopup: FC<LocationPopupProps> = ({
                     setTotalPages,
                     "",
                     ""
-                );
+                ).then(() => setLoader(false));
                 handleCountry(selectedData.Country.label);
                 handleState(selectedData.State.label);
                 handleZone(selectedData.Zone.label);
