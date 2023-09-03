@@ -98,7 +98,8 @@ const HackathonCardIconButtons = ({
             <div className={styles.shared2}>
                 <div className={styles.frame2}>
                     {hackathon.editable ? (
-                            <>{/* <div className={styles.group}>
+                            <>
+							{/* <div className={styles.group}>
                                 <Link to={`/dashboard/hackathon/edit/${hackathon.id}`} >
                                     <LuEdit
                                         data-tooltip-id="Icon"
@@ -150,6 +151,8 @@ const HackathonCardIconButtons = ({
                                     />
                                 </div>
                             )}
+							</div>
+							<div>
                             {!isDraft && (
                                 <>
                                     <div className={styles.group}>

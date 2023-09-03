@@ -20,6 +20,7 @@ type HackList = {
     district_id: string;
     org_id: string;
     editable: boolean;
+	form_fields: string[];
 }
 
 interface HackathonApplication {

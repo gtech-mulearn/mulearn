@@ -5,12 +5,14 @@ type FormTabApplicationProps = {
     values: any;
     handleChange: any;
     formData: string;
+    initialFormFields: string[] | undefined;
 };
 
 export const FormTabApplication = ({
     values,
     handleChange,
-    formData
+    formData,
+    initialFormFields
 }: FormTabApplicationProps) => {
     return (
         <>
@@ -28,9 +30,10 @@ export const FormTabApplication = ({
                     <label
                         key={key}
                         className={`${styles.checkBoxContainer} ${
-                            values.formFields.includes(key as never)
+                            initialFormFields &&
+                            (initialFormFields.includes(key) // Check if it's in initialFormFields
                                 ? styles.checked
-                                : ""
+                                : "")
                         }`}
                     >
                         <Field
@@ -41,7 +44,7 @@ export const FormTabApplication = ({
                                 display: "none"
                             }}
                             value={key}
-                            checked={values.formFields.includes(key as never)}
+                            checked={values.formFields.includes(key)}
                             onChange={handleChange}
                         />
                         {key}
