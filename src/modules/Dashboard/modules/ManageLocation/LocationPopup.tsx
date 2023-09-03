@@ -32,6 +32,7 @@ interface LocationPopupProps {
     handleState: UseStateFunc<string>;
     handleZone: UseStateFunc<string>;
     handleDeclined: UseStateFunc<boolean>;
+    setTotalPages: UseStateFunc<number>;
 }
 
 const LocationPopup: FC<LocationPopupProps> = ({
@@ -43,7 +44,8 @@ const LocationPopup: FC<LocationPopupProps> = ({
     handleCountry,
     handleState,
     handleZone,
-    handleDeclined
+    handleDeclined,
+    setTotalPages
 }) => {
     const [countryData, setCountryData] = useState([]);
     const [stateData, setStateData] = useState([]);
@@ -67,13 +69,26 @@ const LocationPopup: FC<LocationPopupProps> = ({
             getCountryData(setCountryData, toast);
         }
         if (selectedData.Country !== null) {
-            getStateData(selectedData.Country?.value, setStateData, toast);
+            getStateData(
+                selectedData.Country?.value,
+                setStateData,
+                toast,
+                5,
+                1,
+                setTotalPages,
+                "",
+                ""
+            );
         }
         if (selectedData.Country !== null && selectedData.State !== null) {
             getZoneData(
-                selectedData.Country?.value,
                 selectedData.State?.value,
-                setZoneData
+                setZoneData,
+                5,
+                1,
+                setTotalPages,
+                "",
+                ""
             );
         }
     }, [selectedData]);
@@ -118,7 +133,16 @@ const LocationPopup: FC<LocationPopupProps> = ({
     function submitPopupSelection() {
         if (activeItem === "State") {
             if (selectedData.Country && selectedData.Country.value) {
-                getStateData(selectedData.Country.value, handleData, toast);
+                getStateData(
+                    selectedData.Country?.value,
+                    handleData,
+                    toast,
+                    5,
+                    1,
+                    setTotalPages,
+                    "",
+                    ""
+                );
                 handleCountry(selectedData.Country.value);
             }
         } else if (activeItem === "Zone") {
@@ -129,12 +153,16 @@ const LocationPopup: FC<LocationPopupProps> = ({
                 selectedData.State.value
             ) {
                 getZoneData(
-                    selectedData.Country.value,
                     selectedData.State.value,
-                    handleData
+                    handleData,
+                    5,
+                    1,
+                    setTotalPages,
+                    "",
+                    ""
                 );
-                handleCountry(selectedData.Country.value);
-                handleState(selectedData.State.value);
+                handleCountry(selectedData.Country.label);
+                handleState(selectedData.State.label);
             }
         } else if (activeItem === "District") {
             if (
@@ -146,14 +174,17 @@ const LocationPopup: FC<LocationPopupProps> = ({
                 selectedData.Zone.value
             ) {
                 getDistrictData(
-                    selectedData.Country.value,
-                    selectedData.State.value,
                     selectedData.Zone.value,
-                    handleData
+                    handleData,
+                    5,
+                    1,
+                    setTotalPages,
+                    "",
+                    ""
                 );
-                handleCountry(selectedData.Country.value);
-                handleState(selectedData.State.value);
-                handleZone(selectedData.Zone.value);
+                handleCountry(selectedData.Country.label);
+                handleState(selectedData.State.label);
+                handleZone(selectedData.Zone.label);
             }
         }
         handlePopup(false);
