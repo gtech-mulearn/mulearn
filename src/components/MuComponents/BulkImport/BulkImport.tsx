@@ -9,6 +9,7 @@ interface Props extends React.HTMLAttributes<HTMLInputElement> {
     path: string;
     onUpload?: (response: any) => void;
     onError?: (error: any) => void;
+    fileName: string;
 }
 
 /*
@@ -16,7 +17,7 @@ TODO: Change Template File
 TODO: Change From Component to Page
 */
 
-const BulkImport = ({ path, onUpload, onError, ...rest }: Props) => {
+const BulkImport = ({ path, fileName, onUpload, onError, ...rest }: Props) => {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [isDragging, setIsDragging] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
@@ -89,12 +90,9 @@ const BulkImport = ({ path, onUpload, onError, ...rest }: Props) => {
 
     const handleUpload = () => {
         if (selectedFile) {
-            const renamedFile = renameFile(
-                selectedFile,
-                "karma_voucher_list.xlsx"
-            );
+            const renamedFile = renameFile(selectedFile, "file.xlsx");
             const formData = new FormData();
-            formData.append("voucher_log", renamedFile);
+            formData.append(fileName, renamedFile);
             bulkImport(formData, path).then(response => {
                 if (response.status && response.status !== 200) {
                     if (onError) {
