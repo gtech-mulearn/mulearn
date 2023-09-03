@@ -127,7 +127,7 @@ export const createCircle = async (
             console.log(error.response.data);
         } else {
             toast({
-                title: "Learning Circle not creating..",
+                title: "Something went wrong, learning Circle was not created",
                 description: "",
                 status: "error",
                 duration: 2000,
@@ -271,7 +271,6 @@ export const leaveLc = async (
         const response = await privateGateway.delete(
             dashboardRoutes.getCampusLearningCircles + circleId + "/"
         );
-
         toast({
             title: "Success",
             description: "",
