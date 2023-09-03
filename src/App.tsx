@@ -241,7 +241,12 @@ function App() {
                         },
                         {
                             path: "refer",
-                            element: <Refer />
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.STUDENT, roles.ADMIN]}
+                                    children={<Refer />}
+                                />
+                            )
                         },
                         {
                             path: "interest-groups",
