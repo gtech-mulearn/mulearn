@@ -161,8 +161,8 @@ const LocationPopup: FC<LocationPopupProps> = ({
                     "",
                     ""
                 );
-                handleCountry(selectedData.Country.value);
-                handleState(selectedData.State.value);
+                handleCountry(selectedData.Country.label);
+                handleState(selectedData.State.label);
             }
         } else if (activeItem === "District") {
             if (
@@ -182,9 +182,9 @@ const LocationPopup: FC<LocationPopupProps> = ({
                     "",
                     ""
                 );
-                handleCountry(selectedData.Country.value);
-                handleState(selectedData.State.value);
-                handleZone(selectedData.Zone.value);
+                handleCountry(selectedData.Country.label);
+                handleState(selectedData.State.label);
+                handleZone(selectedData.Zone.label);
             }
         }
         handlePopup(false);

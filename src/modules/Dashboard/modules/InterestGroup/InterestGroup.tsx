@@ -3,7 +3,12 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { createInterestGroups, deleteInterestGroups, getIGDetails, getInterestGroups } from "./apis";
+import {
+    createInterestGroups,
+    deleteInterestGroups,
+    getIGDetails,
+    getInterestGroups
+} from "./apis";
 import { useNavigate } from "react-router-dom";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
@@ -12,12 +17,12 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
 
 interface IgDetails {
-    igName: string,
-    igCode: string,
-    igIcon: string,
+    igName: string;
+    igCode: string;
+    igIcon: string;
 }
 
-export type modalStatesType = 'edit' | 'create' | null
+export type modalStatesType = "edit" | "create" | null;
 
 function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
@@ -32,15 +37,15 @@ function InterestGroup() {
     const columnOrder = [
         { column: "name", Label: "Name", isSortable: true },
         { column: "user_ig_link_ig", Label: "Members", isSortable: false },
-        { column: "updated_by", Label: "Updated By", isSortable: false },
-        { column: "created_by", Label: "Created By", isSortable: false },
-        { column: "created_at", Label: "Created On", isSortable: false }
+        { column: "updated_at", Label: "Updated On", isSortable: true },
+        { column: "updated_by", Label: "Updated By", isSortable: true },
+        { column: "created_by", Label: "Created By", isSortable: true },
+        { column: "created_at", Label: "Created On", isSortable: true }
     ];
-
 
     const [openModal, setOpenModal] = useState<modalStatesType>(null);
     const [openMuModal, setOpenMuModal] = useState(false);
-    const [currID, setCurrID] = useState<string>('')
+    const [currID, setCurrID] = useState<string>("");
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -52,7 +57,7 @@ function InterestGroup() {
             setIsLoading,
             setTotalPages,
             "",
-            sort,
+            sort
         );
     };
 
@@ -66,28 +71,51 @@ function InterestGroup() {
             setIsLoading,
             setTotalPages,
             "",
-            sort,
+            sort
         );
     };
 
     useEffect(() => {
         if (firstFetch.current) {
-            getInterestGroups(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
+            getInterestGroups(
+                setData,
+                1,
+                perPage,
+                setIsLoading,
+                setTotalPages,
+                "",
+                ""
+            );
         }
         firstFetch.current = false;
     }, []);
 
     useEffect(() => {
         if (openModal === null) {
-            getInterestGroups(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
+            getInterestGroups(
+                setData,
+                1,
+                perPage,
+                setIsLoading,
+                setTotalPages,
+                "",
+                ""
+            );
         }
-    }, [openModal])
+    }, [openModal]);
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getInterestGroups(setData, 1, perPage, setIsLoading, setTotalPages, search, "");
+        getInterestGroups(
+            setData,
+            1,
+            perPage,
+            setIsLoading,
+            setTotalPages,
+            search,
+            ""
+        );
     };
-
 
     const handleEdit = async (id: string | number | boolean) => {
         navigate("/dashboard/interest-groups/edit/" + id);
@@ -96,14 +124,30 @@ function InterestGroup() {
     const handleDelete = (id: string | undefined) => {
         deleteInterestGroups(id, toast);
         setTimeout(() => {
-            getInterestGroups(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
+            getInterestGroups(
+                setData,
+                1,
+                perPage,
+                setIsLoading,
+                setTotalPages,
+                "",
+                ""
+            );
         }, 1000);
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getInterestGroups(setData, 1, selectedValue, setIsLoading, setTotalPages, "", "");
+        getInterestGroups(
+            setData,
+            1,
+            selectedValue,
+            setIsLoading,
+            setTotalPages,
+            "",
+            ""
+        );
     };
 
     const handleIconClick = (column: string) => {
@@ -120,7 +164,15 @@ function InterestGroup() {
             );
         } else {
             setSort(column);
-            getInterestGroups(setData, 1, perPage, setIsLoading, setTotalPages, "", column);
+            getInterestGroups(
+                setData,
+                1,
+                perPage,
+                setIsLoading,
+                setTotalPages,
+                "",
+                column
+            );
         }
     };
 
@@ -163,17 +215,19 @@ function InterestGroup() {
                             action={true}
                         />
                         <div className={styles.tableFooter}>
-                            {!isLoading && <Pagination
-                                currentPage={currentPage}
-                                totalPages={totalPages}
-                                margin="10px 0"
-                                handleNextClick={handleNextClick}
-                                handlePreviousClick={handlePreviousClick}
-                                onSearchText={handleSearch}
-                                onPerPageNumber={handlePerPageNumber}
-                                perPage={perPage}
-                                setPerPage={setPerPage}
-                            />}
+                            {!isLoading && (
+                                <Pagination
+                                    currentPage={currentPage}
+                                    totalPages={totalPages}
+                                    margin="10px 0"
+                                    handleNextClick={handleNextClick}
+                                    handlePreviousClick={handlePreviousClick}
+                                    onSearchText={handleSearch}
+                                    onPerPageNumber={handlePerPageNumber}
+                                    perPage={perPage}
+                                    setPerPage={setPerPage}
+                                />
+                            )}
                         </div>
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>
