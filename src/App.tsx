@@ -183,7 +183,7 @@ import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
 import Refer from "./modules/Dashboard/modules/Refer/Refer";
 import Thread from "./modules/Public/ThreadsCard/modules/Thread";
 import Template from "./modules/Common/Authentication/pages/Onboarding/Template";
-import Signin from "./modules/Common/Authentication/pages/Onboarding/signin";
+import SignIn from "./modules/Common/Authentication/pages/Onboarding/signin";
 import RoleOne from "./modules/Common/Authentication/pages/Onboarding/RoleOne";
 import RoleFour from "./modules/Common/Authentication/pages/Onboarding/RoleFour";
 
@@ -233,7 +233,7 @@ function App() {
         },
         {
             path: "/signin",
-            element: <Signin/>
+            element: <SignIn/>
         },
         {
             path: "/RoleOne",

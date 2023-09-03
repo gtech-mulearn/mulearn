@@ -6,20 +6,20 @@ export default function Role1() {
         <div>
             <div className={styles.wrapper}>
         <form action="">
-            <h5>Please enter your collage details</h5>
-            <div className={styles.input_box}>
+            <h5 className={styles.text}>Please enter your collage details</h5>
+            <div className={styles.inputBox}>
                 <input type="text" placeholder="Collage Name" required />
             </div>
             <div className={styles.content}>
-                <h5>Do you want to become a mentor?</h5>
+                <h5 className={styles.text}>Do you want to become a mentor?</h5>
                 <div className={styles.select}>
-                    <button className={styles.select_radio}>
+                    <button className={styles.selectRadio}>
                         <label>
                             <input type="radio" id="Yes" checked name="radio"/>
                             <span>Yes</span>
                         </label>
                     </button>
-                    <button className={styles.select_radio}>
+                    <button className={styles.selectRadio}>
                         <label>
                             <input type="radio" id="NO" name="radio"/>
                             <span>No</span>

@@ -1,31 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
 
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body{
-    font-family: 'Plus Jakarta Sans', sans-serif;
+
+.wrapper{
+    padding: 2rem;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-
 }
-.wrapper{
-    padding: 2rem;
-    width: 25rem;
+.wrapper form{
+    width: 20rem;
 }
-.input_box{
+.inputBox{
     width: 100%;
     height: 2.5rem;
     margin-top: 2rem;
     position: relative;
 
 }
-.input_box input{
+.inputBox input{
     width: 100%;
     height: 100%;
     background: #F3F3F4;
@@ -34,14 +28,7 @@ body{
     padding: 1rem;
     
 }
-/*.input_box i{
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #808192;
 
-}*/
 .forgot{
     font-size: small;
     display: flex;
@@ -70,7 +57,7 @@ body{
     height: 2.5rem;
     border-radius: 8px;
 }
-.submit_b{
+.submitB{
     background: #456FF6;
     color: white;
     border: none;
@@ -88,13 +75,13 @@ body{
 
 }
 
-.no_account{
+.noAccount{
     margin-top: 2rem;
     font-size: smaller;
     display: flex;
     justify-content: center;
 }
-.google_icon{
+.googleIcon{
     width: 1.5rem;
 }
 

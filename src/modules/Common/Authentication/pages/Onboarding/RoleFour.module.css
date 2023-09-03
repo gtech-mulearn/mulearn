@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
 
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.wrapper form{
+    width: 25rem;
 }
-h5{
+.text{
     font-weight: 700;
 }
 .select label span{
@@ -15,14 +13,16 @@ h5{
 
 .wrapper{
     padding: 2rem;
-    width: 25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.input_box{
+.inputBox{
     width: 100%;
     height: 2.5rem;
     margin-top: 1rem;
 }
-.input_box input{
+.inputBox input{
     width: 100%;
     height: 100%;
     background: #F3F3F4;
@@ -56,7 +56,7 @@ h5{
     margin-top: 2rem;
     gap: 1rem;
 }
-.select_radio{
+.selectRadio{
     width: 12rem;
     height: 2.8rem;
     background: transparent;
@@ -65,7 +65,7 @@ h5{
     border-radius: 10px;
     font-size: larger;
 }
-.select_radio label{
+.selectRadio label{
     margin-left: -5rem;
     
 }
