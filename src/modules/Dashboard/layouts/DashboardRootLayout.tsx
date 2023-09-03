@@ -151,14 +151,14 @@ const DashboardRootLayout = (props: { component?: any }) => {
             url: "/dashboard/zonal-dashboard",
             title: "Zonal Dashboard",
             hasView: true,
-            roles: [roles.ZONAL_CAMPUS_LEAD],
+            roles: [roles.ZONAL_CAMPUS_LEAD, roles.ENABLER],
             icon: <i className="fi fi-sr-marker"></i>
         },
         {
             url: "/dashboard/district-dashboard",
             title: "District Dashbaord",
             hasView: true,
-            roles: [roles.DISTRICT_CAMPUS_LEAD],
+            roles: [roles.DISTRICT_CAMPUS_LEAD, roles.ENABLER],
             icon: <i className="fi fi-sr-map-marker"></i>
         },
         {

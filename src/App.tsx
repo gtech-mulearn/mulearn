@@ -340,7 +340,8 @@ function App() {
                                     roles={[
                                         roles.ADMIN,
                                         roles.FELLOW,
-                                        roles.ZONAL_CAMPUS_LEAD
+                                        roles.ZONAL_CAMPUS_LEAD,
+                                        roles.ENABLER
                                     ]}
                                     children={<ZonalDashboard />}
                                 />
@@ -353,7 +354,8 @@ function App() {
                                     roles={[
                                         roles.ADMIN,
                                         roles.FELLOW,
-                                        roles.DISTRICT_CAMPUS_LEAD
+                                        roles.DISTRICT_CAMPUS_LEAD,
+                                        roles.ENABLER
                                     ]}
                                     children={<DistrictDashboard />}
                                 />
