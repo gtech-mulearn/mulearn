@@ -20,7 +20,6 @@ type Props = {};
 // ... (previous imports)
 
 const HackathonRegistration = (props: Props) => {
-    const toast = useToast();
     const { id } = useParams();
     const navigate = useNavigate();
     const [modal, setModal] = useState(true); // Set modal to false initially
@@ -28,12 +27,18 @@ const HackathonRegistration = (props: Props) => {
     const [application, setApplication] = useState<HackathonApplication[]>([]);
 
     useEffect(() => {
-        getHackDetails(setData, id);
+        getHackDetails(id || '')
+        .then(res => {
+            setData(res)
+        })
+        .catch(err => {
+            console.error(err)
+        })
         getApplicationForm(setApplication, id);
     }, []);
 
     const handleSubmit = (values: any) => {
-        submitHackApplication(values, id, navigate, toast);
+        submitHackApplication(values, id, navigate);
     };
 
     function getSystemFieldsNames() {

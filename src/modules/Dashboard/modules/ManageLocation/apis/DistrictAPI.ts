@@ -5,40 +5,48 @@ import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 
 //*WORKING✅
 export const getDistrictData = async (
-    country: string,
-    state: string,
     zone: string,
     setData: UseStateFunc<any>,
-    setTotalPages?: UseStateFunc<any>
+    perPage?: number,
+    page?: number,
+    setTotalPages?: UseStateFunc<any>,
+    search?: string,
+    sortID?: string
 ) => {
     try {
         await privateGateway
-            .get(ManageLocationsRoutes.getDistrictData.replace("${zone}", zone))
+            .get(
+                ManageLocationsRoutes.getDistrictData.replace("${zone}", zone),
+                {
+                    params: {
+                        perPage: perPage,
+                        pageIndex: page,
+                        search: search,
+                        sortBy: sortID
+                    }
+                }
+            )
             .then(({ data }) => data.response)
-            .then(({ data }) => {
+            .then(({ data, pagination }) => {
                 setData(data);
+                if (setTotalPages) setTotalPages(pagination.totalPages);
             });
     } catch (err: unknown) {
         const error = err as AxiosError;
     }
 };
 
-//!Error : "You do not have the required role to access this page."
-//*NOT WORKING ❌
-export const postDistrictData = async (
-    country: string,
-    state: string,
-    zone: string,
-    stateName: string
-) => {
+//*WORKING ✅
+export const postDistrictData = async (zone: string, stateName: string) => {
     try {
         await privateGateway
             .post(
-                ManageLocationsRoutes.getDistrictData
-                    .replace("${country}", country)
-                    .replace("${state}", state)
-                    .replace("${zone}", zone),
+                ManageLocationsRoutes.patchDistrictData.replace(
+                    "${district}/",
+                    ""
+                ),
                 {
+                    zone: zone,
                     name: stateName
                 }
             )
@@ -52,25 +60,23 @@ export const postDistrictData = async (
     }
 };
 
-//*NOT WORKING ❌
-export const putDistrictData = async (
-    country: string,
-    state: string,
+//*WORKING ✅
+export const patchDistrictData = async (
     zone: string,
-    oldName: string,
+    district: string,
     newName: string
 ) => {
     try {
         await privateGateway
-            .put(
-                ManageLocationsRoutes.getDistrictData
-                    .replace("${country}", country)
-                    .replace("${state}", state)
-                    .replace("${zone}", zone),
+            .patch(
+                ManageLocationsRoutes.patchDistrictData.replace(
+                    "${district}",
+                    district
+                ),
                 {
                     zone: zone,
-                    oldName: oldName,
-                    newName: newName
+                    id: district,
+                    name: newName
                 }
             )
             .then(({ data }) => data.response)
@@ -83,27 +89,20 @@ export const putDistrictData = async (
     }
 };
 
-//* NOT WORKING ❌
-export const deleteDistrictData = async (
-    country: string,
-    state: string,
-    zone: string,
-    districtName: string
-) => {
+//* WORKING ✅
+export const deleteDistrictData = async (districtID: string) => {
     try {
-        const requestConfig: any = {
-            data: {
-                name: districtName
-            }
-        };
-
-        await privateGateway.delete(
-            ManageLocationsRoutes.getDistrictData
-                .replace("${country}", country)
-                .replace("${state}", state)
-                .replace("${zone}", zone),
-            requestConfig
-        );
+        await privateGateway
+            .delete(
+                ManageLocationsRoutes.patchDistrictData.replace(
+                    "${district}",
+                    districtID
+                )
+            )
+            .then(({ data }) => data.response)
+            .then(({ data }) => {
+                window.location.reload(); // TODO: Temporary fix, better solution needed (delete takes time, API fetch after delete doesnt give the omitted data)
+            });
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

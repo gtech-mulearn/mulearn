@@ -1,6 +1,5 @@
 import React, { ReactNode, useState } from "react";
 import styles from "./MuButtons.module.css";
-import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import { ClipLoader } from "react-spinners";
 
 /**
@@ -11,7 +10,7 @@ import { ClipLoader } from "react-spinners";
 export const MuButton = (props: {
     text: string; // text of button
     type?: "button" | "submit" | "reset"; // type of button
-    icon?: ReactJSXElement; // button icon
+    icon?: JSX.Element; // button icon
     style?: React.CSSProperties; // button style if wanted
     className?: string; // button class name if wanted
     onClick?: React.MouseEventHandler; // onclick event if wanted
@@ -61,7 +60,7 @@ export const MuButton = (props: {
 export const MuButtonLight = (props: {
     text: string; // text of button
     type?: "button" | "submit" | "reset"; // type of button
-    icon?: ReactJSXElement; // button icon
+    icon?: JSX.Element; // button icon
     style?: React.CSSProperties; // button style if wanted
     className?: string; // button class name if wanted
     onClick?: React.MouseEventHandler; // onclick event if wanted
@@ -84,7 +83,7 @@ export const MuButtonLight = (props: {
 
 export const DropDownButtons = (props: {
     text: string; // text of main button
-    icon?: ReactJSXElement; // main button icon
+    icon?: JSX.Element; // main button icon
     style?: React.CSSProperties; // main button style if wanted
     onClick?: React.MouseEventHandler; // onclick event if wanted
     listOfDropBtn?: ReactNode[]; // list of text for sub buttons and the count of button will calculate by this
@@ -146,7 +145,7 @@ export const DropDownButtons = (props: {
 
 export const SingleButton = (props: {
     text: string; // text of main button
-    icon?: ReactJSXElement; // main button icon
+    icon?: JSX.Element; // main button icon
     style?: React.CSSProperties; // main button style if wanted
     onClick?: React.MouseEventHandler; // onclick event if wanted
     link?: string;
@@ -177,7 +176,7 @@ type Props = {
     padding?: string;
     "font-size"?: string;
     borderColor?: string;
-    icon?: ReactJSXElement;
+    icon?: JSX.Element;
     isLoading?: boolean; // show loading spinner if necessary.
     disabled?: boolean;
 };
@@ -192,35 +191,15 @@ type Variants =
     | "link"
     | "draft";
 
-type ButtonProps = ({
-    children,
-    className,
-    variant,
-    style,
-    ...props
-}: {
-    children: ReactNode;
-    className?: string;
-    variant?: Variants;
-    style?: React.CSSProperties;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>) => ReactJSXElement;
 
-export const PowerfulButton: ButtonProps = ({
-    children,
-    className = "",
-    variant = "primary",
-    style,
-    ...props
-}) => {
-    const variantName = variant ? styles[`${variant}-btn`] : "";
+type ButtonProps = ({ children, className, variant, style, ...props }:
+    {children: ReactNode, className?:string, variant?:Variants, style?: React.CSSProperties} & React.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element
 
-    return (
-        <button
-            className={styles["common-btn"] + "  " + variantName}
-            {...props}
-            style={style}
-        >
-            {children}
-        </button>
-    );
-};
+export const PowerfulButton:ButtonProps = ({ children, className = "", variant = "primary", style, ...props }) => {
+    const variantName = variant ? styles[`${variant}-btn`] : ""
+
+    return <button className={styles["common-btn"] + "  " + variantName + " " + className} 
+                             {...props} style={style}>
+        {children}
+    </button>
+}

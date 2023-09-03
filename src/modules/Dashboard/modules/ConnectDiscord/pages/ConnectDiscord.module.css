@@ -36,44 +36,16 @@
 .connect_discord_container .content .muid_and_btn {
     display: flex;
     justify-content: center;
+    gap: 20px;
     align-items: center;
     flex-wrap: wrap;
+    margin: 1rem;
 }
 
 .content_tagline {
     max-width: 30rem;
 }
 
-.connect_discord_container .muid_and_btn p {
-    font-size: 15px;
-    display: flex;
-    background: #ccdbf0;
-    padding: 10px 20px;
-    border-radius: 10px;
-    align-items: center;
-    margin: 10px;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-}
-
-.connect_discord_container .muid_and_btn p:hover {
-    background: #a9c8f3;
-}
-
-.connect_discord_container .muid_and_btn button {
-    background: #456ff6;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    display: flex;
-    margin: 10px;
-    align-items: center;
-    transition: 0.3s ease-in-out;
-}
-
-.connect_discord_container .muid_and_btn button:hover {
-    background: #003277;
-}
 
 @media (min-width: 35rem) {
     .fb_image {
@@ -236,9 +208,6 @@
         font-size: 25px;
     }
 
-    .connect_discord_container .muid_and_btn p {
-        font-size: 15px;
-    }
 
     .onboarding_flow_container .content .onboarding_flow {
         height: 40ch;
@@ -292,11 +261,6 @@
 
     .connect_discord_container p {
         font-size: 9px;
-    }
-
-    .connect_discord_container .content .muid_and_btn p,
-    .connect_discord_container .content .muid_and_btn button {
-        font-size: 10px;
     }
 
     .onboarding_flow_container .content .onboarding_flow .lines div .p {

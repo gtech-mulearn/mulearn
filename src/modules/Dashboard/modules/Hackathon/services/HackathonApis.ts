@@ -1,7 +1,7 @@
-import { AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { ToastId, UseToastOptions, useToast } from "@chakra-ui/react";
+import { createStandaloneToast } from "@chakra-ui/react";
 import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { Data } from "@/MuLearnComponents/Table/Table";
 import { NavigateFunction } from "react-router-dom";
@@ -11,7 +11,8 @@ import {
     HackathonApplication
 } from "./HackathonInterfaces";
 import { transformData } from "./HackathonUtils";
-import { SetStateAction } from "react";
+
+const { toast } = createStandaloneToast();
 
 export const getHackathons = async (setData: UseStateFunc<HackList[]>) => {
     try {
@@ -37,29 +38,27 @@ export const getFormFields = async (setFormData: UseStateFunc<string>) => {
     }
 };
 
-export const getHackDetails = async (
-    setEditData: UseStateFunc<HackList | undefined>,
-    id: string | undefined
-) => {
-    try {
-        const response = await privateGateway.get(
-            dashboardRoutes.getHackathonInfo + id
-        );
-        const defaultForm: any = response?.data;
-        setEditData(defaultForm.response);
-    } catch (err: unknown) {
-        const error = err as AxiosError;
-    }
+export function getHackDetails ( id: string ) :Promise<HackList> {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response = await privateGateway.get( dashboardRoutes.getHackathonInfo + id ) as APIResponse<HackList>
+            resolve(response.data.response)
+            // setEditData(data);
+        } catch (err: unknown) {
+            if (axios.isAxiosError(err)) reject(err.message)
+            else {
+                const mess = err as APIError<string>
+                reject(mess?.response?.data?.message || "Something went wrong")
+            }
+        }
+    })
 };
 
-export const createHackathon = async (
-    hackathonData: HackList,
-    formFields: any,
-    toast: (options?: UseToastOptions | undefined) => ToastId
-): Promise<string> => {
-    try {
-        const response = await privateGateway.post(
-            dashboardRoutes.createHackathon,
+export function createHackathon( hackathonData: HackList, formFields: any ): Promise<string>{
+    return new Promise(async (resolve, reject) => {
+
+        try {
+            const response = await privateGateway.post( dashboardRoutes.createHackathon,
             {
                 title: hackathonData.title,
                 tagline: hackathonData.tagline,
@@ -86,88 +85,63 @@ export const createHackathon = async (
                     "Content-Type": "multipart/form-data"
                 }
             }
-        );
-        toast({
-            title: "Success",
-            description: "Hackathon created.",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
-        return response.data.response.hackathon_id;
-    } catch (err: unknown) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            toast({
-                title: "Error",
-                description: "Failed to create new Hackathon.",
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+            ) as APIResponse<{hackathon_id:string}, {general: string[]}>
+        
+            resolve(response.data.response.hackathon_id)
+        } 
+        catch (err: unknown) { 
+            if (axios.isAxiosError(err)) reject(err.message)
+            else {
+                const mess = err as APIError<string>
+                reject(mess?.response?.data?.message || "Something went wrong")
+            }
         }
-        return "";
-    }
+    })
 };
 
-export const editHackathon = async (
-    hackathonData: HackList,
-    formFields: any,
-    toast: (options?: UseToastOptions | undefined) => ToastId
-): Promise<string> => {
-    try {
-        await privateGateway.put(
-            dashboardRoutes.editHackathon + hackathonData.id + "/",
-            {
-                title: hackathonData.title,
-                tagline: hackathonData.tagline,
-                description: hackathonData.description,
-                participant_count: hackathonData.participant_count,
-                org_id: hackathonData.org_id,
-                district_id: hackathonData.district_id,
-                place: hackathonData.place,
-                is_open_to_all: hackathonData.is_open_to_all,
-                application_start: hackathonData.application_start,
-                application_ends: hackathonData.application_ends,
-                event_start: hackathonData.event_start,
-                event_end: hackathonData.event_end,
-                status: hackathonData.status,
-                event_logo: hackathonData.event_logo,
-                banner: hackathonData.banner,
-                type: hackathonData.type,
-                website: hackathonData.website,
-                form_fields: formFields
-            },
-            {
-                maxBodyLength: Infinity,
-                headers: {
-                    "Content-Type": "multipart/form-data"
+export function editHackathon( hackathonData: HackList, formFields: any, ): Promise<string> {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await privateGateway.put(
+                dashboardRoutes.editHackathon + hackathonData.id + "/",
+                {
+                    title: hackathonData.title,
+                    tagline: hackathonData.tagline,
+                    description: hackathonData.description,
+                    participant_count: hackathonData.participant_count,
+                    org_id: hackathonData.org_id,
+                    district_id: hackathonData.district_id,
+                    place: hackathonData.place,
+                    is_open_to_all: hackathonData.is_open_to_all,
+                    application_start: hackathonData.application_start,
+                    application_ends: hackathonData.application_ends,
+                    event_start: hackathonData.event_start,
+                    event_end: hackathonData.event_end,
+                    status: hackathonData.status,
+                    event_logo: hackathonData.event_logo,
+                    banner: hackathonData.banner,
+                    type: hackathonData.type,
+                    website: hackathonData.website,
+                    form_fields: formFields
+                },
+                {
+                    maxBodyLength: Infinity,
+                    headers: {
+                        "Content-Type": "multipart/form-data"
+                    }
                 }
+            ) as APIResponse<{}, {general: string[]}>
+            
+            resolve( hackathonData.id!)
+        } 
+        catch (err: unknown) { 
+            if (axios.isAxiosError(err)) reject(err.message)
+            else {
+                const mess = err as APIError<string[]>
+                reject(mess?.response?.data?.message[0] || "Something went wrong")
             }
-        );
-        toast({
-            title: "Success",
-            description: "Hackathon updated.",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
-
-        return hackathonData.id!;
-    } catch (err: unknown) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            const errorMessage = error.response;
-            toast({
-                title: "Error",
-                description: `Failed to update Hackathon. ${errorMessage}`,
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
         }
-        return "";
-    }
+    })
 };
 
 export const getAllDistricts = (setDistrict: UseStateFunc<Option[]>) => {
@@ -204,7 +178,6 @@ export const getAllInstitutions = (
 
 export const deleteHackathon = async (
     id: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
         const response = await privateGateway.delete(
@@ -226,7 +199,6 @@ export const deleteHackathon = async (
 export const addOrganizer = async (
     id: string | undefined,
     muid: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
         const response = await privateGateway.post(
@@ -257,41 +229,28 @@ export const addOrganizer = async (
     }
 };
 
-export const publishHackathon = async (
-    id: string,
-    status: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId
-) => {
-    let a = status === "Draft" ? "Published" : "Draft";
-    try {
-        const response = await privateGateway.put(
-            dashboardRoutes.publishHackathon + id + "/",
-            {
-                status: a
-            }
-        );
-        const message: any = response?.data;
-        toast({
-            title: "Change Successful",
-            description: "Hackathon status has been changed.",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
-    } catch (err: unknown) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            toast({
-                title: "Failed to make changes",
-                description: "Make sure all fields are filled.",
-                status: "error",
-                duration: 5000,
-                isClosable: true
-            });
+export function publishHackathon( id: string, status: string, ): Promise<string>{
+    let a = (status === "Draft") ? "Published" : "Draft";
+    
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response = await privateGateway.put(
+                dashboardRoutes.publishHackathon + id + "/",
+                { status: a }
+            );
+            const data: any = response?.data;
+            resolve("Hackathon has been published")
         }
-    }
-};
-
+        catch (err: unknown) {
+            const error = err as AxiosError;
+            if (axios.isAxiosError(err)) reject(err.message)
+            else {
+                const mess = err as APIError<string>
+                reject(mess?.response?.data?.message || "Make sure all fields are filled")
+            }
+        }
+    });
+}  
 export const getApplicationForm = async (
     setData: UseStateFunc<HackathonApplication[]>,
     id: string | undefined
@@ -321,7 +280,6 @@ export const submitHackApplication = async (
     },
     id: string | undefined,
     navigate: NavigateFunction,
-    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
         if (!id) {
@@ -381,7 +339,7 @@ export const getOrganizers = async (
 
 export const getParticipants = async (
     setData: UseStateFunc<Data[]>,
-    setColumnHead: React.Dispatch<SetStateAction<ColumnDefinition[]>>,
+    setColumnHead: UseStateFunc<ColumnDefinition[]>,
     id: string | undefined
 ) => {
     try {

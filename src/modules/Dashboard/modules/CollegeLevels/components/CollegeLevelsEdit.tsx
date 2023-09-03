@@ -32,10 +32,7 @@ const CollegeLevelsEdit = (props: Props) => {
             })}
             onSubmit={values => {
                 (async () => {
-                    await editCollegeLevels({
-                        org_id: props.org_id,
-                        ...values
-                    });
+                    await editCollegeLevels(props.org_id, values);
                     if (props.refetch) props.refetch();
                     props.onClose(null);
                 })();

@@ -7,25 +7,44 @@ import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 export const getCountryData = async (
     setData: UseStateFunc<any>,
     toast?: (options?: UseToastOptions | undefined) => ToastId,
-    setTotalPages?: UseStateFunc<any>
+    perPage?: number,
+    page?: number,
+    setTotalPages?: UseStateFunc<number>,
+    search?: string,
+    sortID?: string
 ) => {
     try {
         await privateGateway
-            .get(ManageLocationsRoutes.getCountryData)
+            .get(ManageLocationsRoutes.getCountryData, {
+                params: {
+                    perPage: perPage,
+                    pageIndex: page,
+                    search: search,
+                    sortBy: sortID
+                }
+            })
             .then(({ data }) => data.response)
-            .then(({ data }) => {
+            .then(({ data, pagination }) => {
                 console.log(data);
                 setData(data);
+                if (setTotalPages) setTotalPages(pagination.totalPages);
             });
-    } catch (err: unknown) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            console.log(error.response);
+    } catch (err: any) {
+        if (err?.response) {
+            const errorMsg = err.response?.data?.message?.general[0] ?? "";
+            if (!toast) return console.log(errorMsg);
+            toast({
+                title: `Error`,
+                description: errorMsg,
+                status: "error",
+                duration: 3000,
+                isClosable: true
+            });
         }
     }
 };
 
-//*NOT WORKING ❌
+//*WORKING ✅
 export const postCountryData = async (
     countryName: string,
     toast: (options?: UseToastOptions | undefined) => ToastId
@@ -53,18 +72,25 @@ export const postCountryData = async (
     }
 };
 
-//*NOT WORKING ❌
-export const putCountryData = async (
-    oldName: string,
+//*WORKING ✅
+export const patchCountryData = async (
+    countryID: string,
     newName: string,
     toast?: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
+        console.log(countryID);
         await privateGateway
-            .put(ManageLocationsRoutes.getCountryData, {
-                oldName: oldName,
-                newName: newName
-            })
+            .patch(
+                ManageLocationsRoutes.patchCountryData.replace(
+                    "${country}",
+                    countryID
+                ),
+                {
+                    id: countryID,
+                    name: newName
+                }
+            )
             .then(({ data }) => data.response)
             .then(({ data }) => {
                 console.log(data);
@@ -77,28 +103,15 @@ export const putCountryData = async (
     }
 };
 
-//!Error: "You do not have the required role to access this page.
-//*NOT WORKING ❌
+//*WORKING ✅
 export const deleteCountryData = async (
-    countryName: string,
+    id: string,
     toast?: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
-        const requestConfig: any = {
-            data: {
-                name: countryName
-            }
-        };
-
-        await privateGateway
-            .delete(ManageLocationsRoutes.getCountryData, requestConfig)
-            .then(({ data }) => data.response)
-            .then(({ data }) => {
-                console.log(data);
-            });
         await privateGateway
             .delete(
-                ManageLocationsRoutes.getCountryData
+                ManageLocationsRoutes.patchCountryData.replace("${country}", id)
                 // {
                 //     name: countryName
                 // }
@@ -106,6 +119,7 @@ export const deleteCountryData = async (
             .then(({ data }) => data.response)
             .then(({ data }) => {
                 console.log(data);
+                window.location.reload(); // TODO: Temporary fix, better solution needed (delete takes time, API fetch after delete doesnt give the omitted data)
             });
     } catch (err: unknown) {
         const error = err as AxiosError;

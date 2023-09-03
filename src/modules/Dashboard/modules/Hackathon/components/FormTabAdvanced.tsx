@@ -21,7 +21,7 @@ export const FormTabAdvanced = ({
         <>
             <div className={styles.formGroupLogo}>
                 <div className={styles.InputSet}>
-                    <label className={styles.formLabel}>Banner</label>
+                    <label className={styles.formLabel + " requiredLabel"}>Banner</label>
                     <div className={styles.upload_area}>
                         <label
                             htmlFor="file-upload1-input1"
@@ -74,7 +74,7 @@ export const FormTabAdvanced = ({
                 </div>
 
                 <div className={styles.InputSet}>
-                    <label className={styles.formLabel}>Event Logo</label>
+                    <label className={styles.formLabel + " requiredLabel"}>Event Logo</label>
                     <div className={styles.upload_area}>
                         <label
                             htmlFor="file-upload1-input"

@@ -136,6 +136,9 @@ function DistrictDashboard() {
         if (column === "total_karma") {
             column = "karma"; //temp fix
         }
+        if (column === "fullname") {
+            column = "first_name"; //temp fix
+        }
         if (sort === column) {
             setSort(`-${column}`);
         } else {
@@ -162,7 +165,7 @@ function DistrictDashboard() {
         getdistrictdashboard(
             activeTab,
             setData,
-            1,
+            currentPage,
             perPage,
             setTotalPages,
             "",

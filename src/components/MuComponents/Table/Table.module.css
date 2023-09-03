@@ -5,8 +5,8 @@
     margin-bottom: 10px;
     scrollbar-color: #c7c7c7 #eeeeee;
     scrollbar-width: thin;
-    background-color:  var(--White);
-    padding:5px;
+    background-color: var(--White);
+    padding: 5px;
 }
 
 .table::-webkit-scrollbar {
@@ -48,7 +48,7 @@
 .thContainer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .icon {
@@ -69,7 +69,7 @@
 
 .btns {
     background-color: var(--blue);
-    color:  var(--White);
+    color: var(--White);
     border-radius: var(--borderRadius);
     padding: 4px 6px;
     font-size: 1rem;
@@ -86,11 +86,10 @@
     /* Set the background color for odd rows */
 }
 
-
-.muloaderContainer{
+.muloaderContainer {
     display: fle; /* Set the display to block to make it occupy full width */
     align-items: center;
     justify-content: center;
     align-self: center;
-    width: 100%; 
+    width: 100%;
 }
