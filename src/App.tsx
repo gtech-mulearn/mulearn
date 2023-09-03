@@ -160,9 +160,6 @@ const HackathonRegistration = lazy(
             "./modules/Dashboard/modules/Hackathon/pages/HackathonRegistration"
         )
 );
-const LandingPage = lazy(
-    () => import("./modules/Public/LearningCircles/pages/LandingPage")
-);
 
 const HackathonParticipants = lazy(
     () =>
@@ -186,6 +183,7 @@ import Template from "./modules/Common/Authentication/pages/Onboarding/Template"
 import SignIn from "./modules/Common/Authentication/pages/Onboarding/signin";
 import RoleOne from "./modules/Common/Authentication/pages/Onboarding/RoleOne";
 import RoleFour from "./modules/Common/Authentication/pages/Onboarding/RoleFour";
+import LandingPage from "./modules/Public/LearningCircles/pages/LandingPage";
 
 
 
@@ -233,15 +231,15 @@ function App() {
         },
         {
             path: "/signin",
-            element: <SignIn/>
+            element: <SignIn />
         },
         {
             path: "/RoleOne",
-            element: <RoleOne/>
+            element: <RoleOne />
         },
         {
             path: "/RoleFour",
-            element: <RoleFour/>
+            element: <RoleFour />
         },
 
         {
