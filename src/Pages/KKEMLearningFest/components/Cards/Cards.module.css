@@ -30,8 +30,10 @@
 .card img{
     z-index: 10;
     margin: 2rem 0;
-    animation: fade-in 1s ease;
+    animation: fade-in 1.2s ease;
 }
+
+
 
 @keyframes fade-in {
     0%{
@@ -93,7 +95,7 @@
     display: flex;
     width: 263px;
     flex-wrap: wrap;
-    font-size: 14.769px;
+    font-size: 14px;
     gap: .5rem;
     font-style: normal;
     font-weight: 600;
@@ -101,8 +103,8 @@
 }
 .cardblob div{
     width: fit-content;
-    padding: 7.385px;
-    border-radius: 92.308px;
+    padding: 7px;
+    border-radius: 92px;
     background: #F3F3F4;
     animation: fade-down 2.5s ease; 
 }
@@ -163,7 +165,9 @@
 
 @media(width<620px){
 .cardsConatiner{
-    width: 400px;
+    width: fit-content;
+    height: max-content;
+    padding-bottom: 1rem;
 }    
 .card{
     flex-direction: column;
@@ -172,15 +176,15 @@
     padding: 5rem 0;
 }
 .card img{
-    width:5rem;
-    height: 10rem;
+    width:10rem;
+    height: 20rem;
     margin-top: 3rem;
     z-index: 2;
  }
  .cardConatiner{
     padding: 20px 30px ;
     right: 0;
-    top: -80px;
+    top: -120px;
     z-index: 10;
  }
 
@@ -195,4 +199,37 @@
     font-size: 20px;
  }
 
+}
+
+@media(width<415px){
+    .cardsConatiner{
+        padding-bottom: 0;
+    }
+    .card{
+        padding: 3rem 0;
+    }
+    .card img{
+        width:8rem;
+        height: 15rem;
+        margin-top: 2rem;
+        z-index: 2;
+     }
+     .cardConatiner{
+        padding: 15px 10px ;
+        right: 0;
+        top: -120px;
+        z-index: 10;
+        font-size: 12px;
+     }
+     .cardContent h1{
+        font-size: 22px;
+     }
+    
+     .cardContent h3{
+        font-size: 18px;
+     }
+    .cardblob{
+        width: 150px;
+        font-size: 10px;
+    }  
 }

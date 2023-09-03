@@ -94,7 +94,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/blogs" element={<BlogLanding />} />
             <Route path="/blogs/:id" element={<BlogTemplate />} />
-            <Route path="/npm " element={<BuildForTeam />} />
+            <Route path="/buildforteam" element={<BuildForTeam />} />
             <Route path="/notifications" element={<Notifications />} />
             <Route path="/blog" element={<BlogTemplate />} />
             <Route path="/calendar" element={<Calendar />} />
