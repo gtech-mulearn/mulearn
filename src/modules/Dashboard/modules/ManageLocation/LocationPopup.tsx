@@ -188,7 +188,7 @@ const LocationPopup: FC<LocationPopupProps> = ({
                 handleCountry(selectedData.Country.label);
                 handleState(selectedData.State.label);
                 handleZone(selectedData.Zone.label);
-            }
+            } 
         }
         handlePopup(false);
     }
