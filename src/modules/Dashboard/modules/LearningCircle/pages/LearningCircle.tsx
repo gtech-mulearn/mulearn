@@ -117,12 +117,12 @@ const LearningCircle = (props: Props) => {
     const handleLeave = () => {
         leaveLc(id, "test", navigate);
     };
-	function handleRemove(circle: string | undefined, id: string): void {
-		removeMember(circle, id, navigate);
-		setTimeout(() => {
-			navigate(`/dashboard/learning-circle/details/${id}`);
-		}, 4000);
-	}
+    function handleRemove(circle: string | undefined, id: string): void {
+        removeMember(circle, id, navigate);
+        setTimeout(() => {
+            navigate(`/dashboard/learning-circle/details/${id}`);
+        }, 4000);
+    }
 
     return (
         <>
@@ -473,7 +473,7 @@ const LearningCircle = (props: Props) => {
                             </div>
 
                             {lc?.pending_members &&
-                            lc.pending_members.length > 0 ? (
+                                lc.pending_members.length > 0 ? (
                                 <div className={styles.PendingApp}>
                                     <b className={styles.PendingTitle}>
                                         Pending approvals
@@ -600,23 +600,25 @@ const LearningCircle = (props: Props) => {
                                                 key={index}
                                                 className={styles.MemberName}
                                             >
-                                                <img
-                                                    src={
-                                                        member.profile_pic
-                                                            ? member?.profile_pic
-                                                            : pic
-                                                    }
-                                                    alt="Profile Picture"
-                                                />
-                                                <div>
-                                                    <p>{member.username}</p>
-                                                    <span>
-                                                        <img
-                                                            src="https://i.ibb.co/Dbhv9rS/karma.png"
-                                                            alt="karma"
-                                                        />
-                                                        {member.karma}
-                                                    </span>
+                                                <div className={styles.memberNameDiv}>
+                                                    <img
+                                                        src={
+                                                            member.profile_pic
+                                                                ? member?.profile_pic
+                                                                : pic
+                                                        }
+                                                        alt="Profile Picture"
+                                                    />
+                                                    <div>
+                                                        <p>{member.username}</p>
+                                                        <span>
+                                                            <img
+                                                                src="https://i.ibb.co/Dbhv9rS/karma.png"
+                                                                alt="karma"
+                                                            />
+                                                            {member.karma}
+                                                        </span>
+                                                    </div>
                                                 </div>
                                                 {lc.is_lead && (
                                                     <div
@@ -627,7 +629,7 @@ const LearningCircle = (props: Props) => {
                                                         <RiDeleteBin5Line
                                                             data-tooltip-id="Icon"
                                                             data-tooltip-content="Remove member"
-															onClick={() => {handleRemove(id, member.id)}}
+                                                            onClick={() => { handleRemove(id, member.id) }}
                                                         />
                                                     </div>
                                                 )}
