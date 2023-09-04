@@ -93,7 +93,7 @@ export const getzonaldashboard = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -127,7 +127,7 @@ export const getAffiliation = async (setAffiliationData: any) => {
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -151,7 +151,7 @@ export const getCountry = async (setCountryData: any) => {
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -174,7 +174,7 @@ export const getStates = async (country: string, setStatesData: any) => {
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -201,7 +201,7 @@ export const getZones = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -231,7 +231,7 @@ export const getDistricts = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -245,7 +245,7 @@ export const getInfo = async (code: string) => {
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -270,7 +270,6 @@ export const getStudentLevels = async (errHandler: (err: string) => void) => {
             ]
         ];
     } catch (err: any) {
-        console.log(err);
         errHandler((err as AxiosError).message);
         return [];
     }
