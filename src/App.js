@@ -43,7 +43,6 @@ import YipForm from "./Pages/YIP/YIPAfterForm/YipForm";
 import Journey from "./Pages/UserJourney/Journey";
 import MutechLeaderboard from "./Pages/MutechLeaderBoard/MutechLeaderBoard";
 import CodeStorm from "./Pages/Events/GTA/CodeStorm/CodeStorm";
-import LearningFest from "./Pages/Events/LearningFest/LearningFest";
 import KKEMLearningFest from "./Pages/KKEMLearningFest/KKEMLearningFest";
 
 function App() {
@@ -112,8 +111,8 @@ function App() {
             <Route path="/yip" element={<YIP2023 />} />
             <Route path="/events/bewebdev" element={<BeWebDev />} />
             <Route path="events/gta/codestorm" element={<CodeStorm />} />
-            <Route path="events/learningfest" element={<LearningFest />} />
-            <Route path="learningfest" element={<KKEMLearningFest />} />
+            {/* <Route path="events/learningfest" element={<LearningFest />} /> */}
+            <Route path="events/learningfest" element={<KKEMLearningFest />} />
             <Route path="/team">
               <Route path="" element={<Teams />} />
             </Route>
