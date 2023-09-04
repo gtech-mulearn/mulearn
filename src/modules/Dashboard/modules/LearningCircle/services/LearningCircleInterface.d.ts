@@ -30,5 +30,6 @@ type LcDetail = {
     meet_place: string;
     meet_time: string;
     day: number[] | null;
+	is_member: boolean;
     note?: string;
 };
