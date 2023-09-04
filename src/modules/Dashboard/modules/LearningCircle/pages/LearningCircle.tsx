@@ -144,7 +144,7 @@ const LearningCircle = (props: Props) => {
                                     {lc?.total_karma} Karma
                                 </b>
                             </div>
-                            <IoArrowBackCircleOutline
+                            {/* <IoArrowBackCircleOutline
                                 data-tooltip-id="Icon"
                                 data-tooltip-content="Leave LC"
                                 style={{
@@ -157,7 +157,19 @@ const LearningCircle = (props: Props) => {
                                 onClick={() => {
                                     setIsOpen(true);
                                 }}
-                            />
+                            /> */}
+                            <div
+                                className={
+                                    styles.deleteIcon
+                                        }
+                            >
+                                <button 
+                                onClick={() => {
+                                    setIsOpen(true);
+                                }} >
+                                    Leave Circle</button>       
+                            </div>
+                            <div></div>
                             <Tooltip
                                 id="Icon"
                                 style={{
@@ -626,11 +638,12 @@ const LearningCircle = (props: Props) => {
                                                             styles.deleteIcon
                                                         }
                                                     >
-                                                        <RiDeleteBin5Line
+                                                        {/* <RiDeleteBin5Line
                                                             data-tooltip-id="Icon"
-                                                            data-tooltip-content="Remove member"
+                                                            data-tooltip-content="leave circle"
                                                             onClick={() => { handleRemove(id, member.id) }}
-                                                        />
+                                                        /> */}
+                                                        <button  onClick={() => { handleRemove(id, member.id) }}>Leave Circle</button>       
                                                     </div>
                                                 )}
                                             </div>
