@@ -34,30 +34,25 @@ function ZonalDashboard() {
 
     const toast = useToast();
 
+    const errHandler = (err: any) => {
+        toast({
+            title: "Data fetch failed",
+            description: err,
+            status: "error",
+            duration: 3000,
+            isClosable: true
+        });
+    };
+
     useEffect(() => {
         if (firstFetch.current) {
             (async () => {
-                try {
-                    setBarData(await getTopDistrict());
-                    setColData(
-                        [
-                            [
-                                "Levels",
-                                "Level 1",
-                                "Level 2",
-                                "Level 3",
-                                "Level 4"
-                            ]
-                        ].concat(await getStudentLevels())
-                    );
-                } catch (err) {
-                    toast({
-                        title: "Data fetch failed",
-                        status: "error",
-                        duration: 3000,
-                        isClosable: true
-                    });
-                }
+                setBarData(await getTopDistrict(errHandler));
+                setColData(
+                    [
+                        ["Levels", "Level 1", "Level 2", "Level 3", "Level 4"]
+                    ].concat(await getStudentLevels(errHandler))
+                );
             })();
 
             getzonaldashboard(
