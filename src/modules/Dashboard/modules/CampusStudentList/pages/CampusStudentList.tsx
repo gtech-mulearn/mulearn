@@ -44,7 +44,7 @@ const CampusStudentList = (props: Props) => {
         { column: "level", Label: "Level", isSortable: true },
         { column: "rank", Label: "Rank", isSortable: false },
         { column: "muid", Label: "MuId", isSortable: true },
-        { column: "created_at", Label: "Join Date", isSortable: false }
+        { column: "join_date", Label: "Join Date", isSortable: false }
     ];
 
     const [campusData, setCampusData] = useState({

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import styles from "./Socials.module.css";
+import { useParams } from "react-router-dom";
 import { useFormik } from "formik";
 import LinkedIn from "../../../assets/svg/LinkedIn";
 import Twitter from "../../../assets/svg/Twitter";
@@ -16,6 +17,7 @@ type Props = {};
 
 const Socials = (props: Props) => {
     const [socials, setSocials] = useState([]);
+    const { id } = useParams<{ id: string }>();
     const [editSocials, setEditSocials] = useState(false);
 
     const socialMediaUrlMappings: { [key: string]: string } = {
@@ -51,17 +53,17 @@ const Socials = (props: Props) => {
             medium: ""
         },
         onSubmit: values => {
-            const updateValue = Object.entries(values).reduce<{
-                [key: string]: string;
-            }>((acc, [key, value]) => {
-                if (value) {
-                    acc[key] = value;
-                }
-                return acc;
-            }, {});
+            // const updateValue = Object.entries(values).reduce<{
+            //     [key: string]: string;
+            // }>((acc, [key, value]) => {
+            //     if (value) {
+            //         acc[key] = value;
+            //     }
+            //     return acc;
+            // }, {});
 
             // console.log(updateValue);
-            updateSocials(updateValue, setSocials, formikRef);
+            updateSocials(values, setSocials, formikRef);
         },
         validate: (values: { [key: string]: string }) => {
             let errors: { [key: string]: string } = {};
@@ -85,7 +87,7 @@ const Socials = (props: Props) => {
         <>
             <div className={styles.edit_social_btn}>
                 <h2>Connect with me</h2>
-                {!editSocials && (
+                {!editSocials && !id && (
                     <p
                         onClick={() => setEditSocials(true)}
                         className={styles.edit_profile_btn}
@@ -94,7 +96,7 @@ const Socials = (props: Props) => {
                         <i className="fi fi-rr-pencil"></i>
                     </p>
                 )}
-                {editSocials && (
+                {editSocials && !id && (
                     <p
                         onClick={() => {
                             {
@@ -134,7 +136,7 @@ const Socials = (props: Props) => {
                                     >
                                         {socialMediaSvgComponents[name]}
                                     </a>
-                                    {editSocials && (
+                                    {editSocials && !id && (
                                         <input
                                             type="text"
                                             name={name}
@@ -169,7 +171,7 @@ const Socials = (props: Props) => {
                             </>
                         );
                     }
-                    return null; // if username is empty
+                    return ""; // if username is empty
                 })}
             </p>
         </>
