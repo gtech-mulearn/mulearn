@@ -12,15 +12,13 @@ import {
     getHackDetails,
     publishHackathon
 } from "../services/HackathonApis";
-import { FiUploadCloud } from "react-icons/fi";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-import { background, useToast } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import {
     convertDateToYYYYMMDD,
     getLocationIdByName
 } from "../../../utils/common";
-import HackathonImagePreview from "../components/HackathonImagePreview";
 import { HackList } from "../services/HackathonInterfaces";
 import { FormTabBasics } from "../components/FormTabBasics";
 import { FormTabDates } from "../components/FormTabDates";
@@ -30,43 +28,80 @@ import { FormTabApplication } from "../components/FormTabApplication";
 
 import { hackathonSchema } from "../utils";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 /**
  * TODO: Make the form things json and iterate and display, store the jsons in a separate file.
  */
 
+const formatDate = (date: any): [string, number] => {
+    if (
+        date === "undefined" ||
+        date === null ||
+        date === undefined ||
+        date === "null" ||
+        date === ""
+    ) {
+        return ["", 0];
+    }
+
+    const x = new Date(date);
+    const formattedDate = x.toISOString().split("T")[0];
+    const unix = Math.floor(x.getTime() / 1000.0); // for unix timestamp comparison
+
+    return [formattedDate, unix];
+};
+
+function isDetailsComplete(hackathon: HackList | undefined): true | string {
+    let returnVal = true;
+    let fieldsToFix: string[] = [];
+    {hackathon && Object.entries(hackathon).forEach(([key, value]) => {
+        if (value === null || value === "") {
+            returnVal = false;
+            fieldsToFix.push(
+                key.charAt(0).toUpperCase() + key.slice(1).replace("_", " ")
+            );
+        }
+    });}
+    if (!returnVal) {
+        return fieldsToFix.join(", ");
+    }
+    return true;
+}
+
 const HackathonCreate = () => {
     const [tabIndex, setTabIndex] = useState(0);
     const [formData, setFormData] = useState("");
-    const [temp, setTemp] = useState(false);
-    const [isEdit, setIsEdit] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [data, setData] = useState<HackList>();
     const [district, setDistrict] = useState<Option[]>([]);
     const [institutions, setInstitutions] = useState<Option[]>([]);
     const [institutionsChunks, setInstitutionsChunks] = useState<Option[][]>(
         []
     );
-
     const [isPublishing, setIsPublishing] = useState(false);
-
-    const [isCreatePage, setIsCreatePage] = useState(false);
     const [openImagePreview, setOpenImagePreview] = useState(false);
-    const [prevImgUrl, setPreviewImgUrl] = useState("");
-    const { id } = useParams();
+    const [isComplete, setIsComplete] = useState('');
+
+    const [id, setID] = useState(useParams().id);
+
     const toast = useToast();
     const navigate = useNavigate();
-    const location = useLocation();
 
     useEffect(() => {
-        if (id !== undefined) {
-            getHackDetails(setData, id);
-            setTimeout(() => {
-                setTemp(true);
-            }, 3000);
-            setIsEdit(true);
+        if (id) {
+            getHackDetails(id)
+                .then(res => {
+                    setData(res);
+                    setLoading(true);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
         } else {
-            setTemp(true);
+            setLoading(true);
         }
+
         if (formData === "") {
             getFormFields(setFormData);
             getAllDistricts(setDistrict);
@@ -91,32 +126,6 @@ const HackathonCreate = () => {
         setTabIndex(tabIndex === 0 ? 0 : tabIndex - 1);
     }
 
-    function isDetailsComplete(hackathon: HackList): boolean {
-        let returnVal = true;
-        let fieldsToFix: string[] = [];
-        Object.entries(hackathon).forEach(([key, value]) => {
-            if (value === null || value === "") {
-                returnVal = false;
-                fieldsToFix.push(
-                    key.charAt(0).toUpperCase() + key.slice(1).replace("_", " ")
-                );
-            }
-        });
-        if (!returnVal) {
-            const fieldsText = fieldsToFix.join(", ");
-
-            toast({
-                title: "Cannot publish",
-                description: `Please fill the following fields: ${fieldsText}`,
-                status: "error",
-                duration: 5000,
-                isClosable: true,
-                position: "top-right"
-            });
-        }
-        return returnVal;
-    }
-
     const handleSubmit = (values: any, { resetForm }: any) => {
         const fields: { [key: string]: string } = {
             bio: "system",
@@ -138,39 +147,52 @@ const HackathonCreate = () => {
             }
         });
 
-        const formatDate = (date: any): string => {
-            if (
-                date === "undefined" ||
-                date === null ||
-                date === undefined ||
-                date === "null" ||
-                date === ""
-            ) {
-                return "";
-            }
-            return new Date(date).toISOString().split("T")[0];
-        };
+        const [applicationStartDate, RSD] = formatDate(values.applicationStart);
+        const [applicationEndsDate, RED] = formatDate(values.applicationEnds);
+        const [eventStartDate, HSD] = formatDate(values.eventStart);
+        const [eventEndDate, HED] = formatDate(values.eventEnd);
 
-        const applicationStartDate = formatDate(values.applicationStart);
-        const applicationEndsDate = formatDate(values.applicationEnds);
-        const eventStartDate = formatDate(values.eventStart);
-        const eventEndDate = formatDate(values.eventEnd);
+        if (isPublishing) {
+            let checker = false;
+            const runToast = (title: string, description: string) => {
+                toast({
+                    title,
+                    description,
+                    status: "error",
+                    isClosable: true,
+                    position: "top-right"
+                });
+            };
+
+            if (RSD > RED) {
+                runToast(
+                    "Invalid Date",
+                    "Registration Start date > Registration End date"
+                );
+                checker = true;
+            }
+            if (RED > HSD) {
+                runToast(
+                    "Invalid Date",
+                    "Registration End > Hackathon Start date"
+                );
+                checker = true;
+            }
+            if (HSD > HED) {
+                runToast(
+                    "Invalid Date",
+                    "Hackathon Start > Hackathon End date"
+                );
+                checker = true;
+            }
+            if (checker) {
+                setIsPublishing(false);
+                return;
+            }
+        }
 
         // Convert selectedFields object to a JSON string and then parse it to get the desired format
         const formattedFormFields = JSON.stringify(selectedFields);
-
-        const publish = (hackathon: HackList): boolean => {
-            let returnVal = false;
-            if (isPublishing) {
-                if (isDetailsComplete(hackathon)) {
-                    publishHackathon(hackathon.id, hackathon.status, toast);
-                    returnVal = true;
-                } else {
-                    setIsPublishing(false);
-                }
-            }
-            return returnVal;
-        };
 
         const hackathon: HackList = {
             id: id || "",
@@ -193,35 +215,85 @@ const HackathonCreate = () => {
             org_id: values.orgId,
             editable: true,
             is_open_to_all: values.isOpenToAll,
-            status: "Draft"
+            status: "Draft",
+            form_fields: []
         };
 
-        isEdit
-            ? editHackathon(hackathon, formattedFormFields, toast)
-				.then(() => (isPublishing ? publish(hackathon) : true))
-				.then(res => res && navigate("/dashboard/hackathon"))
-            : createHackathon(hackathon, formattedFormFields, toast)
-				.then(id => {
-					setIsEdit(true);
-					return isPublishing
-						? publish({ ...hackathon, id: id || "" })
-						: true;
-				})
-				.then(
-					res =>
-						res &&
-						setTimeout(
-							() => navigate("/dashboard/hackathon"),
-							1000
-						)
-				);
-    };
+        (async () => {
+            try {
+                if (id) {
+                    await editHackathon(hackathon, formattedFormFields);
+					await getHackDetails(id)
+                        .then(res => {
+                            setData(res);
+                            setLoading(true);
+                        })
+                        .catch(err => {
+                            console.error(err);
+                        });
+                } else {
+                    setID(
+                        await createHackathon(hackathon, formattedFormFields)
+                    );
+					await getHackDetails(String(id))
+                        .then(res => {
+                            setData(res);
+                            setLoading(true);
+                        })
+                        .catch(err => {
+                            console.error(err);
+                        });
+                }
 
-    useEffect(() => {
-        if (location.pathname === "/dashboard/hackathon/create") {
-            setIsCreatePage(true);
-        }
-    }, [location]);
+                if (isPublishing && id) {
+                    setIsPublishing(false);
+					setTimeout(() => {
+						setIsComplete(String(isDetailsComplete(data)))
+					}, 2000);
+                    if (isComplete === 'true') {
+						let responce = "";
+                        responce = await publishHackathon(id, hackathon.status);
+
+                        toast({
+                            title: "Successful",
+                            description:
+                                responce || "Hackathon Published Successfully",
+                            status: "success",
+                            duration: 3000,
+                            isClosable: true
+                        });
+                        navigate("/dashboard/hackathon");
+                    } else {
+                        toast({
+                            title: "Cannot publish",
+                            description: `Please fill the following fields: ${isComplete}`,
+                            status: "error",
+                            duration: 5000,
+                            isClosable: true,
+                            position: "top-right"
+                        });
+                    }
+                } else {
+                    toast({
+                        title: "Changes Saved",
+                        description: "Change has been saved Successfully",
+                        status: "success",
+                        duration: 3000,
+                        isClosable: true
+                    });
+                    navigate("/dashboard/hackathon");
+                }
+            } catch (err) {
+                toast({
+                    title: "Failed to make changes",
+                    description: err as string,
+                    status: "error",
+                    duration: 5000,
+                    isClosable: true
+                });
+            }
+        })();
+    };
 
     const handleCloseModal = () => {
         setOpenImagePreview(false);
@@ -242,7 +314,7 @@ const HackathonCreate = () => {
         place: data?.place || "",
         districtId: getLocationIdByName(district, String(data?.district)) || "",
         isOpenToAll: data?.is_open_to_all || false,
-        formFields: [],
+        formFields: data?.form_fields || [],
         event_logo: "",
         banner: "",
         website: data?.website || "",
@@ -251,30 +323,23 @@ const HackathonCreate = () => {
 
     return (
         <>
-            {temp ? (
+            {loading ? (
                 <div className={styles.container}>
                     <div className={styles.topText}>
                         <h1 className={styles.dashLine}>Lets Get Started</h1>
                         <div className={styles.topBarButtons}>
-                            <button
+                            <PowerfulButton
+                                variant="ghost"
                                 type="submit"
                                 form="hackathon"
-                                className={styles.btn}
-                            >
-                                Save & Finish later
-                            </button>
-                            <button
-                                type="submit"
-                                form="hackathon"
-                                className={styles.btn}
+                                children="Save & Finish later"
+                            />
+                            <PowerfulButton
                                 onClick={() => setIsPublishing(true)}
-                                style={{
-                                    backgroundColor: "#456ff6",
-                                    color: "#fff"
-                                }}
-                            >
-                                Publish Now
-                            </button>
+                                type="submit"
+                                form="hackathon"
+                                children="Publish Now"
+                            />
                         </div>
                     </div>
 
@@ -330,6 +395,7 @@ const HackathonCreate = () => {
                                                 >
                                                     <FormTabBasics />
                                                 </TabPanel>
+
                                                 <TabPanel
                                                     className={styles.formGroup}
                                                 >
@@ -368,29 +434,30 @@ const HackathonCreate = () => {
                                                             handleChange
                                                         }
                                                         formData={formData}
+                                                        initialFormFields={
+                                                            data?.form_fields
+                                                        }
                                                     />
                                                 </TabPanel>
                                             </div>
                                             <div className={styles.btns}>
                                                 {tabIndex > 0 && (
-                                                    <button
+                                                    <PowerfulButton
                                                         onClick={handleBack}
-                                                        className={styles.btn}
                                                         type="button"
                                                     >
                                                         <FaArrowLeft />
                                                         Go back
-                                                    </button>
+                                                    </PowerfulButton>
                                                 )}
                                                 {tabIndex !== 4 && (
-                                                    <button
+                                                    <PowerfulButton
                                                         onClick={handleNext}
-                                                        className={styles.btn}
                                                         type="button"
                                                     >
                                                         Next
                                                         <FaArrowRight />
-                                                    </button>
+                                                    </PowerfulButton>
                                                 )}
                                             </div>
                                         </Tabs>
@@ -403,7 +470,7 @@ const HackathonCreate = () => {
             ) : (
                 <div className={styles.spinner_container}>
                     <div className={styles.spinner}>
-                        <MuLoader />{" "}
+                        <MuLoader />
                     </div>
                 </div>
             )}

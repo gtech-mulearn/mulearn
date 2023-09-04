@@ -30,18 +30,6 @@ const FindCircle = () => {
                         <b style={{ color: "#000" }}>
                             Browse and join learning circle around you
                         </b>
-                        {/* <div className={styles.ig_search}>
-                            <select name="ig" ref={searchBarRef}>
-                                {igs.map(ig => (
-                                    <>
-                                        <option value={ig.value}>{ig.name}</option>
-                                    </>
-                                ))}
-                            </select>
-                            <button onClick={handleSearch}>
-                                <BsSearch />
-                            </button>
-                        </div> */}
                     </div>
                     <img src={imageTop} alt="image" />
                 </div>
@@ -76,9 +64,6 @@ const FindCircle = () => {
                                                     Join
                                                 </button>
                                             </div>
-                                            {/* <PowerfulButton text='Join' onButtonClick={() => {
-										navigate(`/dashboard/learning-circle/details/${circle.id}`);
-									}}/> */}
                                         </div>
                                     </>
                                 )

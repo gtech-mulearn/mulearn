@@ -150,8 +150,9 @@ function CollegeLevels() {
         setCurrModal("edit");
     };
 
-    const handleDelete = (id: string | undefined) => {
-        deleteCollegeLevels({ org_id: id });
+    const handleDelete = async (id: string | undefined) => {
+        await deleteCollegeLevels(id!);
+        delayedRefetch();
     };
 
     const handlePerPageNumber = (selectedValue: number) => {

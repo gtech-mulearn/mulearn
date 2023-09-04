@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./SideNavBar.module.css";
-import { VscBellDot,VscBell } from 'react-icons/vsc'
+import { VscBellDot, VscBell } from 'react-icons/vsc'
+import { MdNotifications, MdNotificationAdd } from 'react-icons/md'
 import MulearnBrand from "../assets/MulearnBrand";
 import { useNavigate } from "react-router-dom";
 import dpm from "../assets/images/dpm.webp";
@@ -8,15 +9,16 @@ import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
 import { Popover, PopoverTrigger, Button, PopoverContent, PopoverHeader, PopoverCloseButton, PopoverBody, PopoverArrow, PopoverFooter } from "@chakra-ui/react";
 import { Notification as NotificationProps, getNotifications } from "./api";
 import NotificationTab from "./Notification";
+import { useToast } from "@chakra-ui/react";
 const TopNavBar = () => {
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [profilePic, setProfilePic] = useState<string | null>(null);
     const [notificationList, setNotificationList] = useState<NotificationProps[]>([]);
-
+    const toast = useToast()
     useEffect(() => {
-        if(notificationList.length===0)
-            getNotifications(setNotificationList);
+        if (notificationList.length === 0)
+            getNotifications(setNotificationList, { toast });
     }, []);
     const notificationStyle = {
         backgroundColor: '#ffffff00',
@@ -28,6 +30,7 @@ const TopNavBar = () => {
         },
         aspectRatio: '1/1', borderRadius: '15px',
         fontSize: '30px',
+        width: '50px',
         padding: '10px',
     }
     useEffect(() => {
@@ -48,14 +51,17 @@ const TopNavBar = () => {
                         <div className={styles.menu}>
 
                             {/* <i className="fi fi-sr-settings"></i> */}
-                            {/* <Popover placement="bottom-end">
+                            <Popover placement="bottom-end">
                                 <PopoverTrigger >
-                                    <Button {...notificationStyle}>{notificationList.length===0?<VscBell />:<VscBellDot />}</Button>
+                                    <Button {...notificationStyle}>{notificationList.length === 0 ? <MdNotifications size={50} /> : <MdNotificationAdd />}</Button>
                                 </PopoverTrigger>
-                                <PopoverContent >
+                                <PopoverContent style={{
+                                    background: "transparent",
+                                    border: "none",
+                                }} >
                                     <NotificationTab notificationList={notificationList} setNotificationList={setNotificationList} />
                                 </PopoverContent>
-                            </Popover> */}
+                            </Popover>
                             <div className={styles.profile}>
                                 <img
                                     onClick={() => {

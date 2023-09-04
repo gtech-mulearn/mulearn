@@ -5,17 +5,28 @@ import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 
 //*WORKING✅
 export const getZoneData = async (
-    country: string,
     state: string,
     setData: UseStateFunc<any>,
-    setTotalPages?: UseStateFunc<any>
+    perPage?: number,
+    page?: number,
+    setTotalPages?: UseStateFunc<any>,
+    search?: string,
+    sortID?: string
 ) => {
     try {
         await privateGateway
-            .get(ManageLocationsRoutes.getZoneData.replace("${state}", state))
+            .get(ManageLocationsRoutes.getZoneData.replace("${state}", state), {
+                params: {
+                    perPage: perPage,
+                    pageIndex: page,
+                    search: search,
+                    sortBy: sortID
+                }
+            })
             .then(({ data }) => data.response)
-            .then(({ data }) => {
+            .then(({ data, pagination }) => {
                 setData(data);
+                if (setTotalPages) setTotalPages(pagination.totalPages);
             });
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -26,22 +37,14 @@ export const getZoneData = async (
     }
 };
 
-//*NOT WORKING❌
-export const postZoneData = async (
-    country: string,
-    state: string,
-    stateName: string
-) => {
+//*WORKING ✅
+export const postZoneData = async (state: string, stateName: string) => {
     try {
         await privateGateway
-            .post(
-                ManageLocationsRoutes.getZoneData
-                    .replace("${country}", country)
-                    .replace("${state}", state),
-                {
-                    name: stateName
-                }
-            )
+            .post(ManageLocationsRoutes.patchZoneData.replace("${zone}/", ""), {
+                state: state,
+                name: stateName
+            })
             .then(({ data }) => data.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -51,23 +54,21 @@ export const postZoneData = async (
     }
 };
 
-//*NOT WORKING❌
-export const putZoneData = async (
+//*WORKING ✅
+export const patchZoneData = async (
     country: string,
     state: string,
-    oldName: string,
+    zoneID: string,
     newName: string
 ) => {
     try {
         await privateGateway
-            .put(
-                ManageLocationsRoutes.getZoneData
-                    .replace("${country}", country)
-                    .replace("${state}", state),
+            .patch(
+                ManageLocationsRoutes.patchZoneData.replace("${zone}", zoneID),
                 {
                     state: state,
-                    oldName: oldName,
-                    newName: newName
+                    id: zoneID,
+                    name: newName
                 }
             )
             .then(({ data }) => data.response);
@@ -79,24 +80,11 @@ export const putZoneData = async (
     }
 };
 
-//*NOT WORKING❌
-export const deleteZoneData = async (
-    country: string,
-    state: string,
-    zoneName: string
-) => {
+//*WORKING ✅
+export const deleteZoneData = async (zoneName: string) => {
     try {
-        const requestConfig: any = {
-            data: {
-                name: zoneName
-            }
-        };
-
         await privateGateway.delete(
-            ManageLocationsRoutes.getZoneData
-                .replace("${country}", country)
-                .replace("${state}", state),
-            requestConfig
+            ManageLocationsRoutes.patchZoneData.replace("${zone}", zoneName)
         );
     } catch (err: unknown) {
         const error = err as AxiosError;

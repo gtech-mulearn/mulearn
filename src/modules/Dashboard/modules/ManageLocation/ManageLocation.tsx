@@ -21,16 +21,19 @@ import { getDistrictData, deleteDistrictData } from "./apis/DistrictAPI";
 import LocationPopup from "./LocationPopup";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 type LocationItem = { value: string; label: string } | string;
 
 const ManageLocation = () => {
+    const [loading, setLoading] = useState(false);
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(5);
     const [columns, setColumns] = useState(columnsCountry);
     const [sort, setSort] = useState("");
+    const [search, setSearch] = useState("");
     const [activeTab, setActiveTab] = useState("Country");
     const [popupStatus, setPopupStatus] = useState(false);
     const [popupFields, setPopupFields] = useState({
@@ -63,9 +66,18 @@ const ManageLocation = () => {
     }, [popupStatus]);
 
     function loadTableData() {
+        setLoading(true);
         if (activeTab === "Country") {
             setPopupStatus(false);
-            getCountryData(setData, toast, setTotalPages);
+            getCountryData(
+                setData,
+                toast,
+                perPage,
+                currentPage,
+                setTotalPages,
+                search,
+                sort
+            ).finally(() => setLoading(false));
             setPopupFields({
                 countryShow: true,
                 stateShow: false,
@@ -101,24 +113,55 @@ const ManageLocation = () => {
 
     function getLocationData() {
         if (activeTab === "Country") {
-            getCountryData(setData, toast, setTotalPages);
+            getCountryData(
+                setData,
+                toast,
+                perPage,
+                currentPage,
+                setTotalPages,
+                search,
+                sort
+            );
         } else if (activeTab === "State") {
-            getStateData(selectedCountry, setData, toast, setTotalPages);
+            getStateData(
+                selectedCountry,
+                setData,
+                toast,
+                perPage,
+                currentPage,
+                setTotalPages,
+                search,
+                sort
+            );
         } else if (activeTab === "Zone") {
-            getZoneData(selectedCountry, selectedState, setData, setTotalPages);
+            getZoneData(
+                selectedState,
+                setData,
+                perPage,
+                currentPage,
+                setTotalPages,
+                search,
+                sort
+            );
         } else if (activeTab === "District") {
             getDistrictData(
-                selectedCountry,
-                selectedState,
                 selectedZone,
                 setData,
-                setTotalPages
+                perPage,
+                currentPage,
+                setTotalPages,
+                search,
+                sort
             );
         }
     }
 
     useEffect(() => {
         loadTableData();
+        setCurrentPage(1);
+        setPerPage(5);
+        setSearch("");
+        setSort("");
         return setData([]), setTotalPages(1);
     }, [activeTab]);
 
@@ -134,6 +177,7 @@ const ManageLocation = () => {
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
+        setSearch(search);
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
@@ -157,7 +201,8 @@ const ManageLocation = () => {
                 country: selectedCountry,
                 state: selectedState,
                 zone: selectedZone,
-                value: id
+                value: id,
+                name: data.find(item => item.id === id)?.name
             }
         });
     }
@@ -167,16 +212,11 @@ const ManageLocation = () => {
         if (activeTab === "Country") {
             deleteCountryData(id);
         } else if (activeTab === "State") {
-            deleteStateData(selectedCountry, id);
+            deleteStateData(id);
         } else if (activeTab === "Zone") {
-            deleteZoneData(selectedCountry, selectedState, id);
+            deleteZoneData(id);
         } else if (activeTab === "District") {
-            deleteDistrictData(
-                selectedCountry,
-                selectedState,
-                selectedZone,
-                id
-            );
+            deleteDistrictData(id);
         }
         getLocationData();
     }
@@ -184,6 +224,10 @@ const ManageLocation = () => {
     function handleTabClick(tab: string) {
         setActiveTab(tab);
     }
+
+    useEffect(() => {
+        getLocationData();
+    }, [sort, currentPage, perPage, search]);
 
     return (
         <>
@@ -194,9 +238,9 @@ const ManageLocation = () => {
                 state={selectedState}
                 zone={selectedZone}
                 handleData={setData}
-                handleCountry={(country) => setSelectedCountry(country)}
-                handleState={(state) => setSelectedState(state)}
-                handleZone={(zone) => setSelectedZone(zone)}
+                handleCountry={country => setSelectedCountry(country)}
+                handleState={state => setSelectedState(state)}
+                handleZone={zone => setSelectedZone(zone)}
             />
             {activeTab !== "Country" && (
                 <LocationPath
@@ -213,33 +257,37 @@ const ManageLocation = () => {
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
                     />
-                    <Table
-                        rows={data}
-                        page={currentPage}
-                        perPage={perPage}
-                        columnOrder={columns}
-                        id={["label"]}
-                        onEditClick={handleEdit}
-                        onDeleteClick={handleDelete}
-                        modalDeleteHeading="Delete"
-                        modalTypeContent="error"
-                        modalDeleteContent="Are you sure you want to delete "
-                    >
-                        <THead
-                            columnOrder={columns}
-                            onIconClick={handleIconClick}
-                        />
-                        <Pagination
-                            currentPage={currentPage}
-                            totalPages={totalPages}
-                            margin="10px 0"
-                            handleNextClick={handleNextClick}
-                            handlePreviousClick={handlePreviousClick}
+                    {loading ? (
+                        <MuLoader />
+                    ) : (
+                        <Table
+                            rows={data}
+                            page={currentPage}
                             perPage={perPage}
-                            setPerPage={setPerPage}
-                        />
-                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-                    </Table>
+                            columnOrder={columns}
+                            id={["id"]}
+                            onEditClick={handleEdit}
+                            onDeleteClick={handleDelete}
+                            modalDeleteHeading="Delete"
+                            modalTypeContent="error"
+                            modalDeleteContent="Are you sure you want to delete "
+                        >
+                            <THead
+                                columnOrder={columns}
+                                onIconClick={handleIconClick}
+                            />
+                            <Pagination
+                                currentPage={currentPage}
+                                totalPages={totalPages}
+                                margin="10px 0"
+                                handleNextClick={handleNextClick}
+                                handlePreviousClick={handlePreviousClick}
+                                perPage={perPage}
+                                setPerPage={setPerPage}
+                            />
+                            {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                        </Table>
+                    )}
                 </>
             )}
             <LocationPopup
@@ -248,25 +296,27 @@ const ManageLocation = () => {
                 popupFields={popupFields}
                 activeItem={activeTab}
                 handleData={setData}
-                handleCountry={(country) => setSelectedCountry(country)}
-                handleState={(state) => setSelectedState(state)}
-                handleZone={(zone) => setSelectedZone(zone)}
+                handleCountry={country => setSelectedCountry(country)}
+                handleState={state => setSelectedState(state)}
+                handleZone={zone => setSelectedZone(zone)}
                 handleDeclined={setIsDeclined}
+                setTotalPages={setTotalPages}
+                setLoader={setLoading}
             />
         </>
     );
 };
 type TableTopToggleType = {
-    active: string,
-    onTabClick: UseStateFunc<any>,
-    country: string,
-    state: string,
-    zone: string,
-    handleData: UseStateFunc<any>,
-    handleCountry: UseStateFunc<string>,
-    handleState: UseStateFunc<string>,
-    handleZone: UseStateFunc<string>
-}
+    active: string;
+    onTabClick: UseStateFunc<any>;
+    country: string;
+    state: string;
+    zone: string;
+    handleData: UseStateFunc<any>;
+    handleCountry: UseStateFunc<string>;
+    handleState: UseStateFunc<string>;
+    handleZone: UseStateFunc<string>;
+};
 const TableTopToggle: FC<TableTopToggleType> = ({
     active,
     onTabClick,
@@ -358,8 +408,9 @@ const LocationPath = ({
     zone?: string;
 }) => {
     function locationTextGenerate() {
-        return `${country?.toUpperCase()}${state ? ` /  ${state?.toUpperCase()}` : ""
-            }${zone ? ` / ${zone?.toUpperCase()}` : ""}`;
+        return `${country?.toUpperCase()}${
+            state ? ` /  ${state?.toUpperCase()}` : ""
+        }${zone ? ` / ${zone?.toUpperCase()}` : ""}`;
     }
 
     return (

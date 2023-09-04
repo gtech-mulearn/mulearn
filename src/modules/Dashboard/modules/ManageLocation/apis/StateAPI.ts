@@ -8,7 +8,11 @@ export const getStateData = async (
     country: string,
     setData: UseStateFunc<any>,
     toast: (options?: UseToastOptions | undefined) => ToastId,
-    setTotalPages?: UseStateFunc<any>
+    perPage?: number,
+    page?: number,
+    setTotalPages?: UseStateFunc<number>,
+    search?: string,
+    sortID?: string
 ) => {
     try {
         await privateGateway
@@ -16,31 +20,45 @@ export const getStateData = async (
                 ManageLocationsRoutes.getStateData.replace(
                     "${country}",
                     country
-                )
+                ),
+                {
+                    params: {
+                        perPage: perPage,
+                        pageIndex: page,
+                        search: search,
+                        sortBy: sortID
+                    }
+                }
             )
             .then(({ data }) => data.response)
-            .then(({ data }) => {
+            .then(({ data, pagination }) => {
                 console.log(data);
                 setData(data);
+                if (setTotalPages) setTotalPages(pagination.totalPages);
             });
-    } catch (err: unknown) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            alert(error.response);
+    } catch (err: any) {
+        if (err?.response) {
+            const errorMsg = err.response?.data?.message?.general[0] ?? "";
+            if (!toast) return console.log(errorMsg);
+            toast({
+                title: `Error`,
+                description: errorMsg,
+                status: "error",
+                duration: 3000,
+                isClosable: true
+            });
         }
     }
 };
 
-//*NOT WORKING❌
+//*WORKING ✅
 export const postStateData = async (country: string, stateName: string) => {
     try {
         await privateGateway
             .post(
-                ManageLocationsRoutes.getStateData.replace(
-                    "${country}",
-                    country
-                ),
+                ManageLocationsRoutes.patchStateData.replace("${state}/", ""),
                 {
+                    country: country,
                     name: stateName
                 }
             )
@@ -56,22 +74,23 @@ export const postStateData = async (country: string, stateName: string) => {
     }
 };
 
-//*NOT WORKING❌
-export const putStateData = async (
+//*WORKING ✅
+export const patchStateData = async (
     country: string,
-    oldName: string,
+    stateID: string,
     newName: string
 ) => {
     try {
         await privateGateway
-            .put(
-                ManageLocationsRoutes.getStateData.replace(
-                    "${country}",
-                    country
+            .patch(
+                ManageLocationsRoutes.patchStateData.replace(
+                    "${state}",
+                    stateID
                 ),
                 {
-                    oldName: oldName,
-                    newName: newName
+                    country: country,
+                    id: stateID,
+                    name: newName
                 }
             )
             .then(({ data }) => data.response)
@@ -86,27 +105,17 @@ export const putStateData = async (
     }
 };
 
-//*NOT WORKING❌
-export const deleteStateData = async (country: string, stateName: string) => {
+//*WORKING ✅
+export const deleteStateData = async (stateID: string) => {
     try {
-        const requestConfig: any = {
-            data: {
-                name: stateName
-            }
-        };
-
         await privateGateway
             .delete(
-                ManageLocationsRoutes.getStateData.replace(
-                    "${country}",
-                    country
-                ),
-                requestConfig
+                ManageLocationsRoutes.patchStateData.replace(
+                    "${state}",
+                    stateID
+                )
             )
             .then(({ data }) => console.log(data.message.general[0]));
-        // .then(({ data }) => {
-        //     console.log(data);
-        // });
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

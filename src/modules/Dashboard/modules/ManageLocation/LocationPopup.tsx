@@ -32,6 +32,8 @@ interface LocationPopupProps {
     handleState: UseStateFunc<string>;
     handleZone: UseStateFunc<string>;
     handleDeclined: UseStateFunc<boolean>;
+    setTotalPages: UseStateFunc<number>;
+    setLoader: UseStateFunc<boolean>;
 }
 
 const LocationPopup: FC<LocationPopupProps> = ({
@@ -43,7 +45,9 @@ const LocationPopup: FC<LocationPopupProps> = ({
     handleCountry,
     handleState,
     handleZone,
-    handleDeclined
+    handleDeclined,
+    setTotalPages,
+    setLoader
 }) => {
     const [countryData, setCountryData] = useState([]);
     const [stateData, setStateData] = useState([]);
@@ -64,17 +68,30 @@ const LocationPopup: FC<LocationPopupProps> = ({
 
     useEffect(() => {
         if (selectedData.Country === null) {
-            getCountryData(setCountryData, toast);
+            getCountryData(setCountryData, toast).then(() => setLoader(false));
         }
         if (selectedData.Country !== null) {
-            getStateData(selectedData.Country?.value, setStateData, toast);
+            getStateData(
+                selectedData.Country?.value,
+                setStateData,
+                toast,
+                5,
+                1,
+                setTotalPages,
+                "",
+                ""
+            ).then(() => setLoader(false));
         }
         if (selectedData.Country !== null && selectedData.State !== null) {
             getZoneData(
-                selectedData.Country?.value,
                 selectedData.State?.value,
-                setZoneData
-            );
+                setZoneData,
+                5,
+                1,
+                setTotalPages,
+                "",
+                ""
+            ).then(() => setLoader(false));
         }
     }, [selectedData]);
 
@@ -116,9 +133,19 @@ const LocationPopup: FC<LocationPopupProps> = ({
     };
 
     function submitPopupSelection() {
+        setLoader(true);
         if (activeItem === "State") {
             if (selectedData.Country && selectedData.Country.value) {
-                getStateData(selectedData.Country.value, handleData, toast);
+                getStateData(
+                    selectedData.Country?.value,
+                    handleData,
+                    toast,
+                    5,
+                    1,
+                    setTotalPages,
+                    "",
+                    ""
+                ).then(() => setLoader(false));
                 handleCountry(selectedData.Country.value);
             }
         } else if (activeItem === "Zone") {
@@ -129,12 +156,16 @@ const LocationPopup: FC<LocationPopupProps> = ({
                 selectedData.State.value
             ) {
                 getZoneData(
-                    selectedData.Country.value,
                     selectedData.State.value,
-                    handleData
-                );
-                handleCountry(selectedData.Country.value);
-                handleState(selectedData.State.value);
+                    handleData,
+                    5,
+                    1,
+                    setTotalPages,
+                    "",
+                    ""
+                ).then(() => setLoader(false));
+                handleCountry(selectedData.Country.label);
+                handleState(selectedData.State.label);
             }
         } else if (activeItem === "District") {
             if (
@@ -146,14 +177,17 @@ const LocationPopup: FC<LocationPopupProps> = ({
                 selectedData.Zone.value
             ) {
                 getDistrictData(
-                    selectedData.Country.value,
-                    selectedData.State.value,
                     selectedData.Zone.value,
-                    handleData
-                );
-                handleCountry(selectedData.Country.value);
-                handleState(selectedData.State.value);
-                handleZone(selectedData.Zone.value);
+                    handleData,
+                    5,
+                    1,
+                    setTotalPages,
+                    "",
+                    ""
+                ).then(() => setLoader(false));
+                handleCountry(selectedData.Country.label);
+                handleState(selectedData.State.label);
+                handleZone(selectedData.Zone.label);
             }
         }
         handlePopup(false);

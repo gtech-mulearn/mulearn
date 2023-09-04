@@ -1,4 +1,3 @@
-
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Form, Formik } from "formik";
@@ -13,26 +12,25 @@ import { useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 const AddLocation = () => {
-
-    const [activeItem,setActiveItem] = useState("")
+    const [activeItem, setActiveItem] = useState("");
 
     const navigate = useNavigate();
     const location = useLocation();
     const toast = useToast();
 
-    useEffect(()=>{
-        setActiveItem(location.state.activeItem)
-    },[])
+    useEffect(() => {
+        setActiveItem(location.state.activeItem);
+    }, []);
 
-    function handleSubmitAdd(values:any){
-        if(activeItem === "Country"){
-            postCountryData(values.ItemName,toast);
-        }else if(activeItem === "State"){
-            postStateData(location.state.country,values.ItemName);
-        }else if (activeItem === "Zone"){
-            postZoneData(location.state.country,location.state.state,values.ItemName);
-        }else if (activeItem === "District"){
-            postDistrictData(location.state.country,location.state.state,location.state.zone,values.ItemName);
+    function handleSubmitAdd(values: any) {
+        if (activeItem === "Country") {
+            postCountryData(values.ItemName, toast);
+        } else if (activeItem === "State") {
+            postStateData(location.state.country, values.ItemName);
+        } else if (activeItem === "Zone") {
+            postZoneData(location.state.state, values.ItemName);
+        } else if (activeItem === "District") {
+            postDistrictData(location.state.zone, values.ItemName);
         }
         toast({
             title: "Interest Group created",
@@ -40,7 +38,9 @@ const AddLocation = () => {
             duration: 3000,
             isClosable: true
         });
-        navigate('/dashboard/manage-locations',{state:{activeItem:activeItem}});
+        navigate("/dashboard/manage-locations", {
+            state: { activeItem: activeItem }
+        });
     }
 
     return (
@@ -51,12 +51,14 @@ const AddLocation = () => {
                     <i
                         className="fi fi-sr-cross"
                         onClick={() => {
-                            navigate('/dashboard/manage-locations');
+                            navigate("/dashboard/manage-locations");
                         }}
                     ></i>
                 </div>
-                <p>Kindly review the provided details and make sure that they are correct.
-                    Once you have verified the information, please click the <span>Confirm</span>
+                <p>
+                    Kindly review the provided details and make sure that they
+                    are correct. Once you have verified the information, please
+                    click the <span>Confirm</span>
                     button to proceed for further process.
                 </p>
                 <Formik
@@ -70,7 +72,7 @@ const AddLocation = () => {
                     })}
                     onSubmit={values => {
                         console.log(values.ItemName);
-                        handleSubmitAdd(values)
+                        handleSubmitAdd(values);
                     }}
                 >
                     <Form>
@@ -79,7 +81,9 @@ const AddLocation = () => {
                             name="ItemName"
                             type="text"
                             placeholder={`Enter ${activeItem}`}
-                            onKeyPress={(e:any) => { e.which === 13 && e.preventDefault()}}
+                            onKeyPress={(e: any) => {
+                                e.which === 13 && e.preventDefault();
+                            }}
                         />
 
                         {/* <MySelect label="Job Type" name="jobType">
@@ -98,7 +102,12 @@ const AddLocation = () => {
                                 text={"Decline"}
                                 className={styles.btn_cancel}
                                 onClick={() => {
-                                    navigate('/dashboard/manage-locations',{state:{activeItem:activeItem,isDeclined:true}});
+                                    navigate("/dashboard/manage-locations", {
+                                        state: {
+                                            activeItem: activeItem,
+                                            isDeclined: true
+                                        }
+                                    });
                                 }}
                             />
                             <button type="submit" className={styles.btn_submit}>
@@ -109,7 +118,7 @@ const AddLocation = () => {
                 </Formik>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default AddLocation
+export default AddLocation;

@@ -186,15 +186,14 @@ export const joinCircle = async (circleCode: string) => {
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
-            throw error;
+			toast({
+				title: `${error.response.data}`,
+				description: "",
+				status: "error",
+				duration: 2000,
+				isClosable: true
+			});
         }
-        toast({
-            title: "Cannot send another request at the moment",
-            description: "",
-            status: "error",
-            duration: 2000,
-            isClosable: true
-        });
     }
 };
 
@@ -272,6 +271,42 @@ export const leaveLc = async (
             isClosable: true
         });
         navigate("/dashboard/learning-circle/");
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+        toast({
+            title: "Something went wrong",
+            description: "",
+            status: "error",
+            duration: 2000,
+            isClosable: true
+        });
+    }
+};
+
+export const removeMember = async (
+    circleId: string | undefined,
+    memberId: string,
+    navigate: NavigateFunction
+) => {
+    try {
+        const response = await privateGateway.post(
+            dashboardRoutes.getCampusLearningCircles +
+                circleId +
+                "/" +
+                memberId +
+                "/"
+        );
+        toast({
+            title: "Success",
+            description: "",
+            status: "success",
+            duration: 2000,
+            isClosable: true
+        });
+        navigate(`/dashboard/learning-circle/details/${circleId}`);
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
