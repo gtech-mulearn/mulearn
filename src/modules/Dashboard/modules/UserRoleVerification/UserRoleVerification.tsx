@@ -18,19 +18,19 @@ function UsersRoleVerification() {
 
     const [loading, setLoading] = useState(false);
     type TData = {
-        full_name: string,
-        mu_id: string,
-        discord_id: string,
-        role_title: string,
-        verified: boolean,
-    }
+        full_name: string;
+        mu_id: string;
+        discord_id: string;
+        role_title: string;
+        verified: boolean;
+    };
     const columnOrder: ColOrder[] = [
         { column: "full_name", Label: "Full Name", isSortable: true },
         { column: "mu_id", Label: "Mu ID", isSortable: false },
         { column: "discord_id", Label: "Discord ID", isSortable: false },
         // { column: "id", Label: "ID", isSortable: false },
         // { column: "user_id", Label: "User ID", isSortable: false },
-        { column: "role_title", Label: "Role Title", isSortable: false },
+        { column: "role_title", Label: "Role Title", isSortable: true },
         // { column: "role_id", Label: "Role ID", isSortable: false },
         { column: "verified", Label: "Verified", isSortable: false }
     ];
@@ -63,7 +63,6 @@ function UsersRoleVerification() {
 
     useEffect(() => {
         if (firstFetch.current) {
-
             getUserRoleVerification(setData, 1, perPage, setTotalPages, "", "");
         }
         firstFetch.current = false;
@@ -106,6 +105,7 @@ function UsersRoleVerification() {
     };
 
     const handleIconClick = (column: string) => {
+        if (column == "full_name") column = "first_name";
         if (sort === column) {
             setSort(`-${column}`);
             getUserRoleVerification(
@@ -167,7 +167,8 @@ function UsersRoleVerification() {
                             totalPages={totalPages}
                             margin="10px 0"
                             handleNextClick={handleNextClick}
-                            handlePreviousClick={handlePreviousClick} onSearchText={handleSearch}
+                            handlePreviousClick={handlePreviousClick}
+                            onSearchText={handleSearch}
                             onPerPageNumber={handlePerPageNumber}
                             perPage={perPage}
                             setPerPage={setPerPage}
