@@ -15,6 +15,7 @@ interface LcMembers {
     username: string;
     profile_pic: string;
     karma: number;
+    is_lead: boolean;
 }
 
 type LcDetail = {
