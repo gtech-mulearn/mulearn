@@ -35,7 +35,6 @@ const Profile = () => {
     const [APILoadStatus, setAPILoadStatus] = useState(0);
     const [profileList, setProfileList] = useState("basic-details");
     const [popUP, setPopUP] = useState(false);
-    const [embedSize, setEmbedSize] = useState("100px");
     const [editPopUp, setEditPopUp] = useState(false);
     const [userProfile, setUserProfile] = useState({
         first_name: "",
