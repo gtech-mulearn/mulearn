@@ -44,7 +44,13 @@ export const getStudentDetails = (
                     pagination: { totalPages: number };
                 }>
             ) => {
-                // console.log(response.data.response);
+                //removing time from join date
+                for (let i = 0; i < response.data.response.data.length; i++) {
+                    response.data.response.data[i].join_date = new Date(
+                        response.data.response.data[i].join_date
+                    ).toLocaleDateString("en-GB");
+                }
+
                 setStudentData(response.data.response.data);
                 if (setTotalPages)
                     setTotalPages(response.data.response.pagination.totalPages);
@@ -84,13 +90,12 @@ export const getWeeklyKarma = async () => {
     let data: string[] = [];
     if (!response.data.response.karma) data = Array(7).fill(0);
     else data = Object.values(response.data.response.karma) as string[];
-    console.log(data);
+
     return days.map((day, index) => [day[0], data[index]]);
 };
 
 export const getStudentLevel = async () => {
     //level data for pie chart
-    console.log("getStudentLevel");
     const response = await privateGateway.get(dashboardRoutes.getStudentLevels);
     const data = response.data.response.map((data: studentLevelType) => [
         `level ${data.level}`,
