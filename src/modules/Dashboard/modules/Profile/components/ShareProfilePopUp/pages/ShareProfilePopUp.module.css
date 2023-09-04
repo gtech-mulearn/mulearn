@@ -78,14 +78,18 @@
                         color: #fff;
                         width: 60%;
                         text-align: center;
+                        font-size: 14px;
+                        margin: auto 0px;
                     }
 
                     & select {
-                        width: 40%;
+                        width: 36%;
                         position: absolute;
                         right: 3px;
-                        height: 50%;
-                        top: 15px;
+                        height: 60%;
+                        font-size: 14px;
+                        top: 11px;
+                        padding: 0px 4px;
                         color: #fff;
                         border-left: 1px solid #fff;
                         border-radius: 0px 10px 10px 0px;
