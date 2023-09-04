@@ -116,63 +116,85 @@ const Socials = (props: Props) => {
                 )}
             </div>
             <p className={styles.socials_icons}>
-                {Object.entries(formik.values).map(([name, username], i) => {
-                    if (editSocials ? true : username) {
-                        const urlPattern = socialMediaUrlMappings[name];
-                        const url = urlPattern + username;
-                        return (
-                            <>
-                                <div
-                                    style={editSocials ? { width: "100%" } : {}}
-                                    className={styles.icon_and_input}
-                                    key={i}
-                                >
-                                    {" "}
-                                    <a
-                                        key={name}
-                                        href={url}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                    >
-                                        {socialMediaSvgComponents[name]}
-                                    </a>
-                                    {editSocials && !id && (
-                                        <input
-                                            type="text"
-                                            name={name}
-                                            placeholder={name + " username"}
-                                            value={
-                                                formik.values[
-                                                    name as keyof typeof formik.values
-                                                ]
-                                            }
-                                            onChange={formik.handleChange}
-                                            onBlur={formik.handleBlur}
-                                        />
-                                    )}
-                                </div>
-                                {formik.values[
-                                    name as keyof typeof formik.values
-                                ] &&
-                                    formik.errors[
-                                        name as keyof typeof formik.errors
-                                    ] && (
-                                        <p
-                                            className={styles.error_message}
-                                            key={i}
-                                        >
-                                            {
-                                                formik.errors[
-                                                    name as keyof typeof formik.errors
-                                                ]
-                                            }
-                                        </p>
-                                    )}
-                            </>
-                        );
-                    }
-                    return ""; // if username is empty
-                })}
+                {Object.values(formik.values).filter(value => value !== "")
+                    .length != 0
+                    ? Object.entries(formik.values).map(
+                          ([name, username], i) => {
+                              if (editSocials ? true : username) {
+                                  const urlPattern =
+                                      socialMediaUrlMappings[name];
+                                  const url = urlPattern + username;
+                                  return (
+                                      <>
+                                          <div
+                                              style={
+                                                  editSocials
+                                                      ? { width: "100%" }
+                                                      : {}
+                                              }
+                                              className={styles.icon_and_input}
+                                              key={i}
+                                          >
+                                              {" "}
+                                              <a
+                                                  key={name}
+                                                  href={url}
+                                                  target="_blank"
+                                                  rel="noreferrer"
+                                              >
+                                                  {
+                                                      socialMediaSvgComponents[
+                                                          name
+                                                      ]
+                                                  }
+                                              </a>
+                                              {editSocials && !id && (
+                                                  <input
+                                                      type="text"
+                                                      name={name}
+                                                      placeholder={
+                                                          name + " username"
+                                                      }
+                                                      value={
+                                                          formik.values[
+                                                              name as keyof typeof formik.values
+                                                          ]
+                                                      }
+                                                      onChange={
+                                                          formik.handleChange
+                                                      }
+                                                      onBlur={formik.handleBlur}
+                                                  />
+                                              )}
+                                          </div>
+                                          {formik.values[
+                                              name as keyof typeof formik.values
+                                          ] &&
+                                              formik.errors[
+                                                  name as keyof typeof formik.errors
+                                              ] && (
+                                                  <p
+                                                      className={
+                                                          styles.error_message
+                                                      }
+                                                      key={i}
+                                                  >
+                                                      {
+                                                          formik.errors[
+                                                              name as keyof typeof formik.errors
+                                                          ]
+                                                      }
+                                                  </p>
+                                              )}
+                                      </>
+                                  );
+                              }
+                              return ""; // if username is empty
+                          }
+                      )
+                    : id
+                    ? " No socials added"
+                    : " To enhance your profile, Share your online presence with world!"}
             </p>
         </>
     );
