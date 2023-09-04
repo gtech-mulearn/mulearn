@@ -18,9 +18,9 @@ import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { getReferredUserList } from "./service/api";
 
 type Dataflow = {
-    name: string;
-    muId: number;
-    levels: number;
+    full_name: string;
+    mu_id: string;
+    level: number;
     karma: number;
 };
 
@@ -39,7 +39,7 @@ const Refer = () => {
     // ];
     const columnOrder = [
         { column: "full_name", Label: "Name", isSortable: false },
-        { column: "muid", Label: "Mu ID", isSortable: false },
+        { column: "mu_id", Label: "Mu ID", isSortable: false },
         { column: "level", Label: "Levels", isSortable: false },
         { column: "karma", Label: "Karma", isSortable: false }
     ];
@@ -49,6 +49,9 @@ const Refer = () => {
             setData(await getReferredUserList());
         })();
     }, []);
+    useEffect(() => {
+        console.log(data);
+    }, [data]);
 
     const handleIconClick = () => {
         // Handle icon click logic

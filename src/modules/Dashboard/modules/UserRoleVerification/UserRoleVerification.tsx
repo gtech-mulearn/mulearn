@@ -26,7 +26,7 @@ function UsersRoleVerification() {
     };
     const columnOrder: ColOrder[] = [
         { column: "full_name", Label: "Full Name", isSortable: true },
-        { column: "mu_id", Label: "Mu ID", isSortable: false },
+        { column: "mu_id", Label: "Mu ID", isSortable: true },
         { column: "discord_id", Label: "Discord ID", isSortable: false },
         // { column: "id", Label: "ID", isSortable: false },
         // { column: "user_id", Label: "User ID", isSortable: false },
@@ -105,7 +105,8 @@ function UsersRoleVerification() {
     };
 
     const handleIconClick = (column: string) => {
-        if (column == "full_name") column = "first_name";
+        if (column === "full_name") column = "first_name";
+        if (column === "mu_id") column = "muid";
         if (sort === column) {
             setSort(`-${column}`);
             getUserRoleVerification(

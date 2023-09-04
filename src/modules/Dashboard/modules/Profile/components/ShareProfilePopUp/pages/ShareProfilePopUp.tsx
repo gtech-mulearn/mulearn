@@ -110,12 +110,32 @@ const ShareProfilePopUp = (props: Props) => {
                         <hr />
                         {props.profileStatus && (
                             <div className={styles.share_profile_btns}>
-                                <button className={styles.embed_copy_btn}>
+                                <button
+                                    className={styles.embed_copy_btn}
+                                    onClick={() => {
+                                        navigator.clipboard.writeText(
+                                            `<img src="${
+                                                import.meta.env
+                                                    .VITE_FRONTEND_URL as string
+                                            }/embed/rank/${
+                                                props.userProfile.muid
+                                            }" width="${embedSize}" height="${embedSize}"></img>`
+                                        );
+                                        setCopy(true);
+                                        setTimeout(() => {
+                                            setCopy(false);
+                                        }, 3000);
+                                    }}
+                                >
                                     <p>Embed Link</p>
-                                    <select>
+                                    <select
+                                        onChange={e => {
+                                            setEmbedSize(e.target.value);
+                                        }}
+                                    >
                                         <option value="">Size</option>
-                                        <option value="medium">100</option>
-                                        <option value="large">200</option>
+                                        <option value="100">100</option>
+                                        <option value="200">200</option>
                                     </select>
                                 </button>
                                 <MuButton
