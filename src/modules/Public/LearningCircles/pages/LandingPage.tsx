@@ -9,6 +9,7 @@ import {
     fetchLC,
     fetchLCFull,
     fetchStateOptions,
+    getCount,
     getInterestGroups
 } from "../services/LandingPageApi";
 import Select from "react-select";
@@ -32,6 +33,7 @@ const LandingPage = () => {
     const [campus, setCampus] = useState("");
     const [igOptions, setIgOptions] = useState<Option[] | undefined>([]);
     const [ig, setIg] = useState("");
+	const [count, setCount] = useState<LcCount>();
 
     const [selectedDistrict, setSelectedDistrict] = useState<Option | null>(
         null
@@ -43,7 +45,7 @@ const LandingPage = () => {
         fetchCountryOptions(setCountryOptions);
         fetchStateOptions(country, setStateOptions);
         fetchDistrictOptions(state, setDistrictOptions);
-        console.log(districtOptions);
+        getCount(setCount);
     }, []);
 
     const handleCountryChange = async (selectedCountry: Option | null) => {
@@ -135,7 +137,7 @@ const LandingPage = () => {
     const targetRef = useRef<HTMLDivElement>(null); // Create a ref
 
     useEffect(() => {
-        const finalValues: number[] = [1, 16, 20, 500, 2500]; // Replace with your actual final values
+        const finalValues: number[] = [count?.state || 0, count?.district || 0, count?.interest_group || 0, count?.college || 0, count?.learning_circle || 0,]; // Replace with your actual final values
 
         const observer = new IntersectionObserver(
             entries => {

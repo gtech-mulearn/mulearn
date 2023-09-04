@@ -57,6 +57,19 @@ const LearningCircle = (props: Props) => {
         }, 2000);
     }, []);
 
+	useEffect(() => {
+		if (lc && !lc.is_member) {
+            toast({
+                title: "Unauthorized",
+                description: "",
+                status: "error",
+                duration: 2000,
+                isClosable: true
+            });
+            navigate("/dashboard/learning-circle/");
+        }
+	}, [lc])
+
     useEffect(() => {
         setMeetTime(lc?.meet_time || "");
         setMeetVenue(lc?.meet_place || "");
