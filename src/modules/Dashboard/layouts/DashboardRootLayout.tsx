@@ -43,7 +43,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
             url: "/dashboard/campus-details",
             title: "Campus Details",
             hasView: true,
-            roles: [roles.CAMPUS_LEAD],
+            roles: [roles.CAMPUS_LEAD, roles.ENABLER],
             icon: <i className="fi fi-sr-book-arrow-right"></i>
         },
         {
@@ -150,21 +150,21 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     hasView: true,
                     roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE]
                     // icon: <i className="fi fi-sr-globe"></i>
-                },
+                }
             ]
         },
         {
             url: "/dashboard/zonal-dashboard",
             title: "Zonal Dashboard",
             hasView: true,
-            roles: [roles.ZONAL_CAMPUS_LEAD, roles.ENABLER],
+            roles: [roles.ZONAL_CAMPUS_LEAD],
             icon: <i className="fi fi-sr-marker"></i>
         },
         {
             url: "/dashboard/district-dashboard",
             title: "District Dashbaord",
             hasView: true,
-            roles: [roles.DISTRICT_CAMPUS_LEAD, roles.ENABLER],
+            roles: [roles.DISTRICT_CAMPUS_LEAD],
             icon: <i className="fi fi-sr-map-marker"></i>
         },
         {

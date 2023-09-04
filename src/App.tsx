@@ -185,8 +185,6 @@ import RoleOne from "./modules/Common/Authentication/pages/Onboarding/RoleOne";
 import RoleFour from "./modules/Common/Authentication/pages/Onboarding/RoleFour";
 import LandingPage from "./modules/Public/LearningCircles/pages/LandingPage";
 
-
-
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
 );
@@ -302,7 +300,7 @@ function App() {
                             path: "campus-details",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.CAMPUS_LEAD]}
+                                    roles={[roles.CAMPUS_LEAD, roles.ENABLER]}
                                     children={<CampusStudentList />}
                                 />
                             )
@@ -361,8 +359,7 @@ function App() {
                                     roles={[
                                         roles.ADMIN,
                                         roles.FELLOW,
-                                        roles.ZONAL_CAMPUS_LEAD,
-                                        roles.ENABLER
+                                        roles.ZONAL_CAMPUS_LEAD
                                     ]}
                                     children={<ZonalDashboard />}
                                 />
@@ -375,8 +372,7 @@ function App() {
                                     roles={[
                                         roles.ADMIN,
                                         roles.FELLOW,
-                                        roles.DISTRICT_CAMPUS_LEAD,
-                                        roles.ENABLER
+                                        roles.DISTRICT_CAMPUS_LEAD
                                     ]}
                                     children={<DistrictDashboard />}
                                 />
@@ -522,9 +518,7 @@ function App() {
                             path: "hackathon/organizers/:id",
                             element: (
                                 <RoleChecker
-                                    roles={[
-                                        roles.ADMIN,
-                                    ]}
+                                    roles={[roles.ADMIN]}
                                     children={<HackathonOrganizers />}
                                 />
                             )
