@@ -57,18 +57,18 @@ const LearningCircle = (props: Props) => {
         }, 2000);
     }, []);
 
-	useEffect(() => {
-		if (lc && !lc.is_member) {
+    useEffect(() => {
+        if (lc && !lc.is_member) {
             toast({
-                title: "Unauthorized",
-                description: "",
+                title: "Access Denied",
+                description: "Make sure you are a member of that circle",
                 status: "error",
                 duration: 2000,
                 isClosable: true
             });
             navigate("/dashboard/learning-circle/");
         }
-	}, [lc])
+    }, [lc])
 
     useEffect(() => {
         setMeetTime(lc?.meet_time || "");
@@ -174,13 +174,13 @@ const LearningCircle = (props: Props) => {
                             <div
                                 className={
                                     styles.deleteIcon
-                                        }
+                                }
                             >
-                                <button 
-                                onClick={() => {
-                                    setIsOpen(true);
-                                }} >
-                                    Leave Circle</button>       
+                                <button
+                                    onClick={() => {
+                                        setIsOpen(true);
+                                    }} >
+                                    Leave Circle</button>
                             </div>
                             <div></div>
                             <Tooltip
@@ -656,7 +656,7 @@ const LearningCircle = (props: Props) => {
                                                             data-tooltip-content="leave circle"
                                                             onClick={() => { handleRemove(id, member.id) }}
                                                         /> */}
-                                                        <button  onClick={() => { handleRemove(id, member.id) }}>Leave Circle</button>       
+                                                        <button onClick={() => { handleRemove(id, member.id) }}>Remove</button>
                                                     </div>
                                                 )}
                                             </div>
