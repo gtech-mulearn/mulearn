@@ -1,14 +1,14 @@
 import React from 'react'
 import mario from '../../assets/mario.webp'
 import styles from './Cards.module.css'
+import princess from '../../assets/Princess.webp'
+import luigi from '../../assets/Luigi.webp'
 
-import { BsChevronCompactLeft,BsChevronCompactRight } from "react-icons/bs"
 
 export default function Cards() {
   return (
-    <div className={styles.cardsConatiner}>
-       <button><BsChevronCompactLeft size={40}/></button>
-        
+    <div className={styles.carosel}> 
+    <div className={styles.cardsConatiner}>        
         <div className={styles.card}>
           <img src={mario} alt="" />
            <div className={styles.cardConatiner}>
@@ -26,8 +26,41 @@ export default function Cards() {
               </div>       
             </div>
         </div>
+    </div>
 
-       <button><BsChevronCompactRight size={40}/></button>
+    <div className={styles.cardsConatiner}>        
+        <div className={styles.card}>
+          <img src={princess} alt="" />
+           <div className={styles.cardConatiner}>
+              <div className={styles.cardContent}>
+                 <h1>Compete and Experience </h1>
+                 <h3>Show the world what you are upto.</h3>
+                 <p>Compete with talent across the state to gain experience.: It's a journey that takes you through college-level competitions, district-level showdowns, and ultimately a state-level battle of wits.</p>
+                 <div className={styles.cardblob}>
+                    <div><p>Challenges</p></div>
+                    <div><p>Hackathons</p></div>
+                </div>
+              </div>       
+            </div>
+        </div>
+    </div>
+
+    <div className={styles.cardsConatiner}>   
+        <div className={styles.card}>
+          <img src={luigi} alt="" />
+          <div className={styles.cardConatiner}>
+              <div className={styles.cardContent}>
+                 <h1>Opportunities & Beyond</h1>
+                 <h3>Monetize your skills.</h3>
+                 <p>Get that Job. Become a Freelancer or start a business. At the end of this incredible journey, we bring you a job fair, connecting you with top-notch companies and opportunities.</p>
+                 <div className={styles.cardblob}>
+                    <div><p>Industry connect</p></div>
+                </div>
+              </div>       
+            </div>
+        </div>
+      </div>
+
     </div>
   )
 }
