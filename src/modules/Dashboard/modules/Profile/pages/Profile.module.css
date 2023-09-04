@@ -72,13 +72,13 @@
       width: 67%;
       display: flex;
       flex-direction: column;
+      gap: 20px;
 
       .profile_div {
         background: #FFFFFF;
         /* box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06); */
         border-radius: 20px;
         padding: 0px;
-        margin-bottom: 20px;
       }
 
       .banner {

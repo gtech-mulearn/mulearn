@@ -632,7 +632,7 @@ const LearningCircle = (props: Props) => {
                                                         </span>
                                                     </div>
                                                 </div>
-                                                {lc.is_lead && (
+                                                {lc.is_lead && !member.is_lead && (
                                                     <div
                                                         className={
                                                             styles.deleteIcon

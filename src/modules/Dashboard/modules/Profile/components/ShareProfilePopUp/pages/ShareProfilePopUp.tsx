@@ -18,6 +18,7 @@ type Props = {
 const ShareProfilePopUp = (props: Props) => {
     const [copy, setCopy] = useState(false);
     const [blob, setBlob] = useState<any>();
+    const [embedSize, setEmbedSize] = useState("100px");
     useEffect(() => {
         fetchQRCode(setBlob);
     }, []);
@@ -108,20 +109,30 @@ const ShareProfilePopUp = (props: Props) => {
                         )}
                         <hr />
                         {props.profileStatus && (
-                            <MuButton
-                                style={{
-                                    background: "#456FF6",
-                                    color: "#fff",
-                                    margin: "0px 0px -8px 0px",
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    padding: "16px"
-                                }}
-                                text={"Download QR code"}
-                                onClick={() => {
-                                    downloadQR();
-                                }}
-                            />
+                            <div className={styles.share_profile_btns}>
+                                <button className={styles.embed_copy_btn}>
+                                    <p>Embed Link</p>
+                                    <select>
+                                        <option value="">Size</option>
+                                        <option value="medium">100</option>
+                                        <option value="large">200</option>
+                                    </select>
+                                </button>
+                                <MuButton
+                                    style={{
+                                        border: "1px solid #456FF6",
+                                        color: "#000",
+                                        margin: "0px 0px -8px 0px",
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        padding: "26px"
+                                    }}
+                                    text={"Download QR"}
+                                    onClick={() => {
+                                        downloadQR();
+                                    }}
+                                />
+                            </div>
                         )}
                         <button onClick={() => props.setPopUP(false)}>
                             {!props.profileStatus ? "Cancel" : "Close"}
