@@ -1,6 +1,7 @@
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import { AxiosError } from "axios";
+import { Dispatch } from "react";
 
 interface Option {
     value: string;
@@ -78,14 +79,17 @@ export const fetchStateOptions = async (
     setState: UseStateFunc<Option[]>
 ) => {
     try {
-        const response = await privateGateway.post(onboardingRoutes.stateList, {
-            country: country
-        })  as APIResponse<{ states: { id: string; name: string }[] }>;
+        const response = (await privateGateway.post(
+            onboardingRoutes.stateList,
+            {
+                country: country
+            }
+        )) as APIResponse<{ states: { id: string; name: string }[] }>;
         const message = response?.data;
         setState(
             response.data.response.states
                 .sort((a, b) => a.name.localeCompare(b.name))
-                .map((sate) => ({
+                .map(sate => ({
                     value: sate.id,
                     label: sate.name
                 }))
@@ -103,16 +107,16 @@ export const fetchDistrictOptions = async (
     setDistrict: UseStateFunc<Option[]>
 ) => {
     try {
-        const response = await privateGateway.post(
+        const response = (await privateGateway.post(
             onboardingRoutes.districtList,
             {
                 state: state
             }
-        ) as APIResponse<{ districts: { id: string; name: string }[] }>;
+        )) as APIResponse<{ districts: { id: string; name: string }[] }>;
         setDistrict(
             response.data.response.districts
                 .sort((a, b) => a.name.localeCompare(b.name))
-                .map((sate) => ({
+                .map(sate => ({
                     value: sate.id,
                     label: sate.name
                 }))
@@ -125,24 +129,24 @@ export const fetchDistrictOptions = async (
     }
 };
 
-type getAPI = UseStateFunc<{id: string; title: string}[]>
+type getAPI = UseStateFunc<{ id: string; title: string }[]>;
 
 export const fetchCampusOptions = async (
     district: string,
     setCampus: UseStateFunc<Option[]>
 ) => {
     try {
-        const response = await privateGateway.post(
+        const response = (await privateGateway.post(
             onboardingRoutes.collegeList,
             {
                 district: district
             }
-        ) as APIResponse<{ colleges:{ id: string; title: string }[] }>;
+        )) as APIResponse<{ colleges: { id: string; title: string }[] }>;
         const colleges = response.data.response.colleges;
         setCampus(
             colleges
                 .sort((a, b) => a.title.localeCompare(b.title))
-                .map((college) => ({
+                .map(college => ({
                     value: college.id,
                     label: college.title
                 }))
@@ -159,7 +163,7 @@ export const getInterestGroups = async () => {
     try {
         const response = (await privateGateway.get(dashboardRoutes.getCampusIg))
             ?.data?.response.interestGroup as { id: string; name: string }[];
-        return response?.map((obj) => ({
+        return response?.map(obj => ({
             value: obj.id,
             label: obj.name
         }));
@@ -167,6 +171,20 @@ export const getInterestGroups = async () => {
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
+        }
+    }
+};
+
+export const getCount = async (setCount: Dispatch<any>) => {
+    try {
+        const response = await privateGateway.get(dashboardRoutes.getCount);
+        setCount(
+            response.data.response
+        );
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
         }
     }
 };

@@ -95,7 +95,7 @@ const Modal: FC<ModalProps> = ({
                             variant="draft"
                             onClick={() => setIsOpen(false)}
                             style={{
-                                padding: "10px 100px",
+                                padding: "0px 100px",
                                 width: "100px",
                                 color: "var(--blue)",
                                 backgroundColor: "#F3F3F4"
@@ -106,7 +106,7 @@ const Modal: FC<ModalProps> = ({
                         <PowerfulButton
                             variant="primary"
                             title="help"
-                            style={{ padding: "10px 100px", width: "100px" }}
+                            style={{ padding: "0px 100px", width: "100px" }}
                             onClick={() => {
                                 click(id);
                                 setIsOpen(false);

@@ -15,6 +15,7 @@ interface LcMembers {
     username: string;
     profile_pic: string;
     karma: number;
+    is_lead: boolean;
 }
 
 type LcDetail = {
@@ -29,5 +30,6 @@ type LcDetail = {
     meet_place: string;
     meet_time: string;
     day: number[] | null;
+	is_member: boolean;
     note?: string;
 };

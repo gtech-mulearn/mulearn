@@ -4,6 +4,7 @@
 .learningCircleLandingPage,
 .LearningCircleDetailsContent,
 .FindCircleContent {
+    width: 100%;
     padding: 1rem 3rem;
     display: flex;
     flex-direction: column;
@@ -168,14 +169,23 @@
         width: 2rem;
     }
 }
+@media (width<620px) {
+    .learningCircleLandingPageMiddle p{
+        font-size: .65rem;
+        margin-right: .5rem;
+    }
+}
 
-@media (width<320px) {
+@media (width<350px) {
     .learningCircleLandingPageDesc h1 {
         font-size: 1.2rem;
     }
     .learningCircleLandingPage .learningCircleLandingPageButton {
         gap: 0.5rem;
         margin-top: 0rem;
+    }
+    .learningCircleLandingPageMiddle p{
+        font-size: .5rem;
     }
 }
 
@@ -398,7 +408,7 @@
     border-radius: 1rem;
     padding: 2rem;
     margin-top: 1rem;
-    height: 352px;
+    min-height: 530px;
     overflow: hidden;
     overflow-y: scroll;
 }
@@ -431,7 +441,6 @@
 
 .MemberName {
     display: flex;
-    align-items: center;
     gap: 1rem;
     word-wrap: break-word;
     justify-content: space-between;
@@ -449,14 +458,20 @@
 
 .deleteIcon {
     cursor: pointer;
-    border-radius: 50%;
-    background-color: var(--PrimaryLight);
-    width: 1.2rem;
-    height: 1.2rem;
+    border-radius: .5rem;
+    background-color:red;
+    width:4.5rem;
+    height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--blue);
+    color: var(--White);
+    font-size:10px;
+    font-weight: bolder;
+}
+
+.MemberName .deleteIcon{
+    width: 4rem;
 }
 
 .MemberName span {
@@ -473,6 +488,7 @@
 @media (width<1070px) {
     .Members {
         padding-left: 2rem;
+        min-height: 580px;
     }
     .MemberName {
         font-size: x-small;
@@ -483,6 +499,11 @@
         width: 1rem;
         height: 1rem;
         margin-left: 0.5rem;
+    }
+}
+@media(width<870px){
+    .Members{
+        min-height: 630px;
     }
 }
 @media (width<820px) {
@@ -552,6 +573,7 @@
     }
     .Members {
         padding-left: 5rem;
+        min-height: max-content;
     }
     .MemberName {
         font-size: large;

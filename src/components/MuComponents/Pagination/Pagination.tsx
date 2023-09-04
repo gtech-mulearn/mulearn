@@ -22,9 +22,9 @@ const Pagination = (props: Props) => {
         // setItemsPerPage(value);
         props.setPerPage(value);
         props.onPerPageNumber && props.onPerPageNumber(value);
-        console.log(value);
+        // console.log(value);
     };
-    console.log(props.perPage);
+    // console.log(props.perPage);
     return (
         <>
             {props.totalPages > 0 && (

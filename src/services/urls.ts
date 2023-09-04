@@ -95,6 +95,7 @@ export const dashboardRoutes = {
     joinLearningCircle: "/api/v1/dashboard/lc/join/",
     setLCMeetTime: "/api/v1/dashboard/lc/meet/",
     getCampusIg: "api/v1/dashboard/ig/list/",
+    getCount: "api/v1/dashboard/lc/data/",
 
     getAllOrganisations: "/api/v1/hackathon/list-organisations/",
     getAllDistricts: "/api/v1/hackathon/list-districts/",
