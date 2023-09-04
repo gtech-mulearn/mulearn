@@ -13,7 +13,7 @@ const LearningFest = () => {
             <div className={styles.first_view}>
               <div className={styles.fv_texts}>
                 <p className={styles.fv_heading}>
-                  <span>Learning</span> Fest
+                  <span>Learning Fest </span>
                 </p>
 
                 <p className={styles.fv_tagline}>
@@ -76,7 +76,7 @@ const LearningFest = () => {
             </p>
 
             <div className={styles.tracks_container}>
-              <img
+              {/* <img
                 src="/assets/events/learningfest/tracks/android.png"
                 alt=""
                 className={styles.track}
@@ -105,7 +105,7 @@ const LearningFest = () => {
                 src="/assets/events/learningfest/tracks/uiux.png"
                 alt=""
                 className={styles.track}
-              />
+              /> */}
               <img
                 src="/assets/events/learningfest/tracks/web.png"
                 alt=""

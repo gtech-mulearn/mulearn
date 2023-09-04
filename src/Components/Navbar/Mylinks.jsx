@@ -306,10 +306,10 @@ export const links = [
         sublinks: [
           {
             name: "Form Learning Cirlces",
-            link: mainlink + "/create",
+            link: "https://app.mulearn.org/dashboard/learning-circle",
             submenu: false,
             sublinks: [],
-            foreign: false,
+            foreign: true,
           },
           {
             name: "Interest Groups",
@@ -505,17 +505,17 @@ export const links = [
         sublinks: [
           {
             name: "Create Circle",
-            link: mainlink + "/create",
+            link:  "https://app.mulearn.org/dashboard/learning-circle",
             submenu: false,
             sublinks: [],
-            foreign: false,
+            foreign: true,
           },
           {
             name: "Join Circles",
-            link: mainlink + "/join",
+            link: "https://app.mulearn.org/dashboard/learning-circle",
             submenu: false,
             sublinks: [],
-            foreign: false,
+            foreign: true,
           },
         ],
       },
