@@ -113,6 +113,7 @@ function App() {
             <Route path="/events/bewebdev" element={<BeWebDev />} />
             <Route path="events/gta/codestorm" element={<CodeStorm />} />
             <Route path="events/learningfest" element={<LearningFest />} />
+            <Route path="/keralatechfest" element={<LearningFest />} />
             <Route path="learningfest" element={<KKEMLearningFest />} />
             <Route path="/team">
               <Route path="" element={<Teams />} />
