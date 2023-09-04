@@ -128,6 +128,20 @@ function ManageRoles() {
         firstFetch.current = false;
     }, []);
 
+    useEffect(() => {
+        if (firstFetch.current) return;
+        if (currModal !== null) return;
+        getManageRoles(
+            setData,
+            1,
+            perPage,
+            setIsLoading,
+            setTotalPages,
+            "",
+            sort
+        );
+    }, [currModal]);
+
     const handleSearch = (search: string) => {
         setCurrentPage(1);
         getManageRoles(
