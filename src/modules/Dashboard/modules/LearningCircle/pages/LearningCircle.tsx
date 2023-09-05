@@ -176,11 +176,11 @@ const LearningCircle = (props: Props) => {
                                     styles.deleteIcon
                                 }
                             >
-                                <button
+                                <PowerfulButton
                                     onClick={() => {
                                         setIsOpen(true);
                                     }} >
-                                    Leave Circle</button>
+                                    Leave Circle</PowerfulButton>
                             </div>
                             <div></div>
                             <Tooltip
@@ -656,7 +656,7 @@ const LearningCircle = (props: Props) => {
                                                             data-tooltip-content="leave circle"
                                                             onClick={() => { handleRemove(id, member.id) }}
                                                         /> */}
-                                                        <button onClick={() => { handleRemove(id, member.id) }}>Remove</button>
+                                                        <PowerfulButton onClick={() => { handleRemove(id, member.id) }}>Remove</PowerfulButton>
                                                     </div>
                                                 )}
                                             </div>

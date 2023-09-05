@@ -413,14 +413,12 @@ const Onboarding = (props: Props) => {
                                                             }
                                                         </div>
                                                     ) : null}
-                                                    <MuButton
+                                                    <PowerfulButton
                                                         type="submit"
                                                         className={
                                                             styles.verify_button
                                                         }
-                                                        text={
-                                                            emailVerificationResultBtn
-                                                        }
+                                                        
                                                         onClick={e => {
                                                             e.preventDefault();
                                                             if (
@@ -474,7 +472,7 @@ const Onboarding = (props: Props) => {
                                                                 : {}
                                                         }
                                                         isLoading={showLoader}
-                                                    />
+                                                   >emailVerificationResultBtn</PowerfulButton> 
                                                 </form>
                                                 <a href="/login">
                                                     Do you have an account ?
@@ -1929,9 +1927,8 @@ const Onboarding = (props: Props) => {
                                         >
                                             Cancel
                                         </PowerfulButton>
-                                        <MuButton
+                                        <PowerfulButton
                                             className={styles.submit_button}
-                                            text={"Submit"}
                                             type="submit"
                                             onClick={e => {
                                                 // e.preventDefault();
@@ -1992,7 +1989,7 @@ const Onboarding = (props: Props) => {
                                                       }
                                             }
                                             disabled={!tcChecked}
-                                        />
+                                        >Submit</PowerfulButton>
                                     </div>
                                 </div>
                             </form>

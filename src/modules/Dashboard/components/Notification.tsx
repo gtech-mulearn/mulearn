@@ -36,17 +36,17 @@ const NotificationMessage = ({ profile, title, created_at, description, clear, i
                 <p>{description}</p>
                 {isRequest(title) &&
                     <div className="btns">
-                        <button onClick={() => {
+                        <PowerfulButton onClick={() => {
                             requestApproval(id, url, created_by, false, update, props);
                             update()
                             clear()
                             requestApproval(id, url, created_by, false, update, props);
-                        }}>Decline</button>
+                        }}>Decline</PowerfulButton>
                         &nbsp;
                         <PowerfulButton className="accept" onClick={() => {
                             clear()
                             requestApproval(id, url, created_by, true, update, props)
-                        }}>Accept</button>
+                        }}>Accept</PowerfulButton>
                     </div>
                 }
             </div>
