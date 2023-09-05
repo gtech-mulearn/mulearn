@@ -4,7 +4,7 @@ import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { useNavigate } from "react-router-dom";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle, AiOutlineUser } from "react-icons/ai";
 import styles from "./CollegeLevels.module.css";
 import modalStyles from "./components/Modal.module.css";
@@ -209,12 +209,11 @@ function CollegeLevels() {
                 : ""}
 
             <div className={styles.createBtnContainer}>
-                <MuButton
-                    className={styles.createBtn}
-                    text={"Create"}
-                    icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
+                <PowerfulButton
+                    className={styles.createBtn}                  
                     onClick={handleCreate}
-                />
+                >Create
+                <AiOutlinePlusCircle></AiOutlinePlusCircle></PowerfulButton>
             </div>
 
             {data && (

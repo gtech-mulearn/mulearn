@@ -1,8 +1,7 @@
 import {
     DropDownButtons,
     MuButton,
-    MuButtonLight,
-    PowerfulButton
+    MuButtonLight
 } from "@/MuLearnComponents/MuButtons/MuButton";
 import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
 import { useToast } from "@chakra-ui/react";
@@ -116,13 +115,13 @@ const SideNavBarBody = ({
                                                                 ))
                                                     )
                                                     .map((button, i) => (
-                                                        <PowerfulButton
+                                                        <MuButton
                                                             style={{
                                                                 width: "100%"
                                                             }}
                                                             key={i}
-                                                            
-                                                         buttonUrl={
+                                                            text={button.title}
+                                                            buttonUrl={
                                                                 button.url
                                                             }
                                                             onClick={() => {
@@ -134,21 +133,22 @@ const SideNavBarBody = ({
                                                                     ? toggleSideNavBar()
                                                                     : null;
                                                             }}
-                                                        >{button.title}</PowerfulButton>
+                                                        />
                                                     ))}
                                             />
                                         ) : (
-                                            <PowerfulButton
+                                            <MuButton
                                                 style={{
                                                     width: "100%"
                                                 }}
-                                                key={i}                                           
+                                                key={i}
+                                                text={button.title}
                                                 buttonUrl={button.url}
                                                 onClick={() => {
                                                     navigate(button.url);
                                                     toggleSideNavBar();
                                                 }}
-                                            >{button.title}</PowerfulButton>
+                                            />
                                         )
                                     )}
                                 display={dropDownBtnDisplay}
