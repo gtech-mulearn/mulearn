@@ -33,7 +33,7 @@ const AddLocation = () => {
             postDistrictData(location.state.zone, values.ItemName);
         }
         toast({
-            title: "Interest Group created",
+            title: "Location created",
             status: "success",
             duration: 3000,
             isClosable: true

@@ -115,17 +115,26 @@ export const createCircle = async (
             );
         }, 2000);
     } catch (err) {
-        const error = err as AxiosError;
+        const error: any = err as AxiosError;
         if (error?.response) {
-            throw error;
+            toast({
+                title: `${error.response.data.message.non_field_errors}`,
+                description: "",
+                status: "error",
+                duration: 2000,
+                isClosable: true
+            });
+            console.log(error.response.data);
+        } else {
+            toast({
+                title: "Something went wrong, learning Circle was not created",
+                description: "",
+                status: "error",
+                duration: 2000,
+                isClosable: true
+            });
         }
-        toast({
-            title: "Learning Circle not creating..",
-            description: "",
-            status: "error",
-            duration: 2000,
-            isClosable: true
-        });
+
         setTimeout(() => {
             navigate(`/dashboard/learning-circle/`);
         }, 2000);
@@ -186,13 +195,13 @@ export const joinCircle = async (circleCode: string) => {
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
-			toast({
-				title: `${error.response.data}`,
-				description: "",
-				status: "error",
-				duration: 2000,
-				isClosable: true
-			});
+            toast({
+                title: `${error.response.data}`,
+                description: "",
+                status: "error",
+                duration: 2000,
+                isClosable: true
+            });
         }
     }
 };
@@ -262,7 +271,6 @@ export const leaveLc = async (
         const response = await privateGateway.delete(
             dashboardRoutes.getCampusLearningCircles + circleId + "/"
         );
-
         toast({
             title: "Success",
             description: "",
@@ -271,6 +279,42 @@ export const leaveLc = async (
             isClosable: true
         });
         navigate("/dashboard/learning-circle/");
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+        toast({
+            title: "Something went wrong",
+            description: "",
+            status: "error",
+            duration: 2000,
+            isClosable: true
+        });
+    }
+};
+
+export const removeMember = async (
+    circleId: string | undefined,
+    memberId: string,
+    navigate: NavigateFunction
+) => {
+    try {
+        const response = await privateGateway.post(
+            dashboardRoutes.getCampusLearningCircles +
+                circleId +
+                "/" +
+                memberId +
+                "/"
+        );
+        toast({
+            title: "Success",
+            description: "",
+            status: "success",
+            duration: 2000,
+            isClosable: true
+        });
+        navigate(`/dashboard/learning-circle/details/${circleId}`);
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {

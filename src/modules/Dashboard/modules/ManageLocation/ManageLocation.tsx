@@ -21,10 +21,12 @@ import { getDistrictData, deleteDistrictData } from "./apis/DistrictAPI";
 import LocationPopup from "./LocationPopup";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 type LocationItem = { value: string; label: string } | string;
 
 const ManageLocation = () => {
+    const [loading, setLoading] = useState(false);
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -64,6 +66,7 @@ const ManageLocation = () => {
     }, [popupStatus]);
 
     function loadTableData() {
+        setLoading(true);
         if (activeTab === "Country") {
             setPopupStatus(false);
             getCountryData(
@@ -74,7 +77,7 @@ const ManageLocation = () => {
                 setTotalPages,
                 search,
                 sort
-            );
+            ).finally(() => setLoading(false));
             setPopupFields({
                 countryShow: true,
                 stateShow: false,
@@ -254,33 +257,37 @@ const ManageLocation = () => {
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
                     />
-                    <Table
-                        rows={data}
-                        page={currentPage}
-                        perPage={perPage}
-                        columnOrder={columns}
-                        id={["id"]}
-                        onEditClick={handleEdit}
-                        onDeleteClick={handleDelete}
-                        modalDeleteHeading="Delete"
-                        modalTypeContent="error"
-                        modalDeleteContent="Are you sure you want to delete "
-                    >
-                        <THead
-                            columnOrder={columns}
-                            onIconClick={handleIconClick}
-                        />
-                        <Pagination
-                            currentPage={currentPage}
-                            totalPages={totalPages}
-                            margin="10px 0"
-                            handleNextClick={handleNextClick}
-                            handlePreviousClick={handlePreviousClick}
+                    {loading ? (
+                        <MuLoader />
+                    ) : (
+                        <Table
+                            rows={data}
+                            page={currentPage}
                             perPage={perPage}
-                            setPerPage={setPerPage}
-                        />
-                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-                    </Table>
+                            columnOrder={columns}
+                            id={["id"]}
+                            onEditClick={handleEdit}
+                            onDeleteClick={handleDelete}
+                            modalDeleteHeading="Delete"
+                            modalTypeContent="error"
+                            modalDeleteContent="Are you sure you want to delete "
+                        >
+                            <THead
+                                columnOrder={columns}
+                                onIconClick={handleIconClick}
+                            />
+                            <Pagination
+                                currentPage={currentPage}
+                                totalPages={totalPages}
+                                margin="10px 0"
+                                handleNextClick={handleNextClick}
+                                handlePreviousClick={handlePreviousClick}
+                                perPage={perPage}
+                                setPerPage={setPerPage}
+                            />
+                            {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                        </Table>
+                    )}
                 </>
             )}
             <LocationPopup
@@ -294,6 +301,7 @@ const ManageLocation = () => {
                 handleZone={zone => setSelectedZone(zone)}
                 handleDeclined={setIsDeclined}
                 setTotalPages={setTotalPages}
+                setLoader={setLoading}
             />
         </>
     );

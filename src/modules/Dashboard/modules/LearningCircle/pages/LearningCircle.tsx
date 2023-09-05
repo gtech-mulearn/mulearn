@@ -5,6 +5,7 @@ import {
     approveLcUser,
     getLcDetails,
     leaveLc,
+    removeMember,
     setLCMeetTime,
     toast,
     updateLcNote
@@ -22,6 +23,7 @@ import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { Tooltip } from "react-tooltip";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import Modal from "@/MuLearnComponents/Modal/Modal";
+import { RiDeleteBin5Line } from "react-icons/ri";
 
 type Props = {};
 
@@ -54,6 +56,19 @@ const LearningCircle = (props: Props) => {
             }
         }, 2000);
     }, []);
+
+    useEffect(() => {
+        if (lc && !lc.is_member) {
+            toast({
+                title: "Access Denied",
+                description: "Make sure you are a member of that circle",
+                status: "error",
+                duration: 2000,
+                isClosable: true
+            });
+            navigate("/dashboard/learning-circle/");
+        }
+    }, [lc])
 
     useEffect(() => {
         setMeetTime(lc?.meet_time || "");
@@ -115,6 +130,13 @@ const LearningCircle = (props: Props) => {
     const handleLeave = () => {
         leaveLc(id, "test", navigate);
     };
+    function handleRemove(circle: string | undefined, id: string): void {
+        removeMember(circle, id, navigate);
+        setTimeout(() => {
+            navigate(`/dashboard/learning-circle/details/${id}`);
+        }, 4000);
+    }
+
     return (
         <>
             {temp ? (
@@ -135,7 +157,7 @@ const LearningCircle = (props: Props) => {
                                     {lc?.total_karma} Karma
                                 </b>
                             </div>
-                            <IoArrowBackCircleOutline
+                            {/* <IoArrowBackCircleOutline
                                 data-tooltip-id="Icon"
                                 data-tooltip-content="Leave LC"
                                 style={{
@@ -148,7 +170,19 @@ const LearningCircle = (props: Props) => {
                                 onClick={() => {
                                     setIsOpen(true);
                                 }}
-                            />
+                            /> */}
+                            <div
+                                className={
+                                    styles.deleteIcon
+                                }
+                            >
+                                <button
+                                    onClick={() => {
+                                        setIsOpen(true);
+                                    }} >
+                                    Leave Circle</button>
+                            </div>
+                            <div></div>
                             <Tooltip
                                 id="Icon"
                                 style={{
@@ -464,7 +498,7 @@ const LearningCircle = (props: Props) => {
                             </div>
 
                             {lc?.pending_members &&
-                            lc.pending_members.length > 0 ? (
+                                lc.pending_members.length > 0 ? (
                                 <div className={styles.PendingApp}>
                                     <b className={styles.PendingTitle}>
                                         Pending approvals
@@ -591,24 +625,40 @@ const LearningCircle = (props: Props) => {
                                                 key={index}
                                                 className={styles.MemberName}
                                             >
-                                                <img
-                                                    src={
-                                                        member.profile_pic
-                                                            ? member?.profile_pic
-                                                            : pic
-                                                    }
-                                                    alt="Profile Picture"
-                                                />
-                                                <div>
-                                                    <p>{member.username}</p>
-                                                    <span>
-                                                        <img
-                                                            src="https://i.ibb.co/Dbhv9rS/karma.png"
-                                                            alt="karma"
-                                                        />
-                                                        {member.karma}
-                                                    </span>
+                                                <div className={styles.memberNameDiv}>
+                                                    <img
+                                                        src={
+                                                            member.profile_pic
+                                                                ? member?.profile_pic
+                                                                : pic
+                                                        }
+                                                        alt="Profile Picture"
+                                                    />
+                                                    <div>
+                                                        <p>{member.username}</p>
+                                                        <span>
+                                                            <img
+                                                                src="https://i.ibb.co/Dbhv9rS/karma.png"
+                                                                alt="karma"
+                                                            />
+                                                            {member.karma}
+                                                        </span>
+                                                    </div>
                                                 </div>
+                                                {lc.is_lead && !member.is_lead && (
+                                                    <div
+                                                        className={
+                                                            styles.deleteIcon
+                                                        }
+                                                    >
+                                                        {/* <RiDeleteBin5Line
+                                                            data-tooltip-id="Icon"
+                                                            data-tooltip-content="leave circle"
+                                                            onClick={() => { handleRemove(id, member.id) }}
+                                                        /> */}
+                                                        <button onClick={() => { handleRemove(id, member.id) }}>Remove</button>
+                                                    </div>
+                                                )}
                                             </div>
                                         ))}
                                 </div>

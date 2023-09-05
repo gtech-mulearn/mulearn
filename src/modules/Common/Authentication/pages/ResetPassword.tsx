@@ -35,20 +35,18 @@ const ResetPassword = (props: Props) => {
     };
 
     const onSubmit = async (values: any) => {
+        if (formik.errors.password || formik.errors.confirmPassword) return;
         resetPassword(token, values.password, toast, navigate);
     };
 
     const validate = (values: any) => {
         let errors: any = {};
-        if (!values.email) {
-            errors.email = "Email is required";
-        } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-            errors.email = "Invalid email address";
-        }
         if (!values.password) {
             errors.password = "Password is required";
         } else if (values.password == "") {
             errors.password = "Password should not be empty";
+        } else if (values.password.length < 8) {
+            errors.password = "Password should be atleast 8 characters";
         }
         if (!values.confirmPassword) {
             errors.confirmPassword = "Please confirm your password";

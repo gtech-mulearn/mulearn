@@ -1,4 +1,3 @@
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import moment from "moment";
 import { useEffect, useRef, useState } from "react";
 import dpm from "../assets/images/dpm.webp";
@@ -7,7 +6,6 @@ import MulearnBrand from "../assets/svg/MulearnBrand";
 import Rank from "../assets/svg/Rank";
 import { PieChart } from "../components/Piechart/PieChart";
 import {
-    fetchQRCode,
     getPublicUserLevels,
     getPublicUserLog,
     getPublicUserProfile,
@@ -18,32 +16,25 @@ import {
 } from "../services/api";
 import styles from "./Profile.module.css";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-import { Switch, useToast } from "@chakra-ui/react";
-import { saveAs } from "file-saver";
-import { Helmet } from "react-helmet";
+import { useToast } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import AvgKarma from "../assets/svg/AvgKarma";
 import EditProfilePopUp from "../components/EditProfilePopUp/pages/EditProfilePopUp";
 import BasicDetails from "../components/BasicDetails/pages/BasicDetails";
-import Instagram from "../assets/svg/Instagram";
-import Behance from "../assets/svg/Behance";
-import LinkedIn from "../assets/svg/LinkedIn";
-import Twitter from "../assets/svg/Twitter";
 import Socials from "../components/Socials/pages/Socials";
+import ShareProfilePopUp from "../components/ShareProfilePopUp/pages/ShareProfilePopUp";
+import HelmetMetaTags from "../components/HelmetMetaTags/HelmetMetaTags";
 
 //TODO: Verify the relevance of profile page image
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
-    const [copy, setCopy] = useState(false);
     const toast = useToast();
     const [APILoadStatus, setAPILoadStatus] = useState(0);
     const [profileList, setProfileList] = useState("basic-details");
-    const [blob, setBlob] = useState<any>();
     const [popUP, setPopUP] = useState(false);
-    const [embedSize, setEmbedSize] = useState("100px");
     const [editPopUp, setEditPopUp] = useState(false);
     const [userProfile, setUserProfile] = useState({
         first_name: "",
@@ -104,7 +95,6 @@ const Profile = () => {
             getUserProfile(setUserProfile, setAPILoadStatus, setProfileStatus);
         }, 1000);
     };
-
     useEffect(() => {
         if (firstFetch.current) {
             if (!id) {
@@ -122,101 +112,10 @@ const Profile = () => {
             }
         }
         firstFetch.current = false;
-        fetchQRCode(setBlob);
     }, []);
-
-    const downloadQR = () => {
-        saveAs(blob, `${userProfile.muid}.png`);
-    };
     return (
         <>
-            <Helmet>
-                {/* <!-- Primary Meta Tags --> */}
-                <title>Profile | Mulearn</title>
-                <meta
-                    name="title"
-                    content={`${userProfile.first_name} ${userProfile.last_name}`}
-                />
-                <meta name="viewport" content="width=device-width" />
-                <meta name="route-pattern" content="/dashboard/profile/:id" />
-                <meta name="description" content="you bio is here" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-                />
-
-                {/* <!-- Open Graph / Facebook --> */}
-                <meta
-                    property="og:image"
-                    itemProp="image"
-                    content={
-                        userProfile.profile_pic ? userProfile.profile_pic : dpm
-                    }
-                />
-                <meta
-                    property="og:image:alt"
-                    content={`${userProfile.first_name}'s Profile Picture`}
-                />
-                <meta property="og:site_name" content="Mulearn" />
-                <meta property="og:type" content="profile" />
-                <meta
-                    property="og:title"
-                    content={
-                        userProfile.first_name +
-                        " " +
-                        userProfile.last_name +
-                        "(" +
-                        userProfile.karma +
-                        ")"
-                    }
-                />
-                <meta
-                    name="hostname"
-                    content={import.meta.env.VITE_FRONTEND_URL as string}
-                />
-                <meta
-                    property="og:url"
-                    content={
-                        (import.meta.env.VITE_FRONTEND_URL as string) +
-                        "/dashboard/profile/" +
-                        userProfile.muid
-                    }
-                />
-                <meta property="og:description" content="you bio is here" />
-
-                <meta
-                    property="og:image:secure_url"
-                    content={
-                        userProfile.profile_pic ? userProfile.profile_pic : dpm
-                    }
-                />
-                <meta property="og:type" content="profile" />
-                <meta property="og:image:type" content="image/jpeg" />
-                <meta property="og:image:width" content="300" />
-                <meta property="og:image:height" content="300" />
-
-                {/* <!-- Twitter --> */}
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta
-                    property="twitter:site"
-                    content={
-                        (import.meta.env.VITE_FRONTEND_URL as string) +
-                        "/dashboard/profile/" +
-                        userProfile.muid
-                    }
-                />
-                <meta
-                    name="twitter:title"
-                    content={`${userProfile.first_name} ${userProfile.last_name} (${userProfile.karma})`}
-                />
-                <meta name="twitter:description" content="you bio is here" />
-                <meta
-                    name="twitter:image:src"
-                    content={
-                        userProfile.profile_pic ? userProfile.profile_pic : dpm
-                    }
-                />
-            </Helmet>
+            <HelmetMetaTags userProfile={userProfile} dpm={dpm} />
             <div
                 style={
                     id
@@ -246,125 +145,16 @@ const Profile = () => {
                                 setEditPopUP={setEditPopUp}
                                 triggerUpdateProfile={triggerUpdateProfile}
                             />
-                            {/* TODO : Convert this to share Profile pop component */}
-                            <div
-                                style={
-                                    popUP
-                                        ? { transform: "scale(1)" }
-                                        : {
-                                            transform: "scale(0)"
-                                            // opacity: "0",
-                                        }
-                                }
-                                className={styles.share_pop_up_container}
-                                onKeyDown={e => {
-                                    if (e.key === "Escape") {
-                                        setPopUP(false);
-                                    }
-                                }}
-                                tabIndex={0}
-                            >
-                                <div className={styles.share_pop_up}>
-                                    <div
-                                        className={styles.share_pop_up_contents}
-                                    >
-                                        <h1>Share your profile</h1>
-                                        <div className={styles.profile_state}>
-                                            <p>Switch to public profile</p>
-                                            <div className={styles.option}>
-                                                <Switch
-                                                    size="sm"
-                                                    isChecked={profileStatus}
-                                                    onChange={e => {
-                                                        setProfileStatus(
-                                                            e.target.checked
-                                                        );
-                                                        putIsPublic(
-                                                            e.target.checked,
-                                                            toast
-                                                        );
-                                                    }}
-                                                />
-                                            </div>
-                                        </div>
-                                        {profileStatus && (
-                                            <div
-                                                className={
-                                                    styles.share_profile_container
-                                                }
-                                            >
-                                                <div className={styles.qr_code}>
-                                                    <img src={blob} alt="" />
-                                                </div>
-                                                {/* Todo: Reusable copy link component */}
-                                                <div className={styles.link}>
-                                                    <p>
-                                                        {
-                                                            import.meta.env
-                                                                .VITE_FRONTEND_URL as string
-                                                        }
-                                                        /profile/
-                                                        {userProfile.muid}
-                                                    </p>
 
-                                                    <i
-                                                        onClick={() => {
-                                                            navigator.clipboard.writeText(
-                                                                `${import.meta
-                                                                    .env
-                                                                    .VITE_FRONTEND_URL as string
-                                                                }/profile/${userProfile.muid
-                                                                }`
-                                                            );
-                                                            setCopy(true);
-                                                            setTimeout(() => {
-                                                                setCopy(false);
-                                                            }, 3000);
-                                                        }}
-                                                        className="fi fi-sr-link"
-                                                    >
-                                                        {/* Todo: Create as left Side Tooltip Component for below component */}
-                                                        <div
-                                                            className={
-                                                                styles.toast
-                                                            }
-                                                        >
-                                                            <p>
-                                                                {!copy
-                                                                    ? "Copy"
-                                                                    : "Copied!"}
-                                                            </p>
-                                                        </div>
-                                                        {/* Todo: Create as left Side Tooltip Component for above component*/}
-                                                    </i>
-                                                </div>
-                                            </div>
-                                        )}
-                                        <hr />
-                                        {profileStatus && (
-                                            <MuButton
-                                                style={{
-                                                    background: "#456FF6",
-                                                    color: "#fff",
-                                                    margin: "0px 0px -8px 0px",
-                                                    display: "flex",
-                                                    justifyContent: "center",
-                                                    padding: "16px"
-                                                }}
-                                                text={"Download QR code"}
-                                                onClick={() => {
-                                                    downloadQR();
-                                                }}
-                                            />
-                                        )}
-                                        <PowerfulButton onClick={() => setPopUP(false)}>
-                                            {!profileStatus
-                                                ? "Cancel"
-                                                : "Close"}
-                                        </PowerfulButton>
-                                    </div>
-                                </div>
-                            </div>
+                            <ShareProfilePopUp
+                                popUP={popUP}
+                                setPopUP={setPopUP}
+                                profileStatus={profileStatus}
+                                setProfileStatus={setProfileStatus}
+                                userProfile={userProfile}
+                                putIsPublic={putIsPublic}
+                                toast={toast}
+                            />
 
                             <div className={styles.profileDash}>
                                 <div className={styles.profile}>

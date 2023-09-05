@@ -5,11 +5,11 @@ import { getHackDetails } from "../services/HackathonApis";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import styles from "./HackathonCreate.module.css"
 import { DateConverter, convertDateToYYYYMMDD } from "../../../utils/common";
-import { style } from "d3";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { HackList } from "../services/HackathonInterfaces";
 import { useToast } from "@chakra-ui/react";
 import { LuCopy } from "react-icons/lu";
+import Countdown from "../../../utils/Countdown";
 
 type Props = {};
 
@@ -36,86 +36,120 @@ export const HackathonDetails = (props: Props) => {
             })
     }, [])
 
+	const targetDateTime = String(data?.application_ends);
+    console.log(String(targetDateTime));
+    const [remainingTime, setRemainingTime] = useState<{
+        days: number;
+        hours: number;
+        minutes: number;
+        seconds: number;
+    }>({
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0
+    });
+	
     return (
         <>
-        { data ?(
-        <div className={styles.hackathonDetails}>
-            <div className={styles.hackathonDetailDash}>
-                <img className={styles.hackathonBanner} src={`https://dev.mulearn.org/${data?.banner}`} alt="" />
+            {data ? (
+                <div className={styles.hackathonDetails}>
+                    <div className={styles.hackathonDetailDash}>
+                        <img
+                            className={styles.hackathonBanner}
+                            src={`https://dev.mulearn.org/${data?.banner}`}
+                            alt=""
+                        />
 
-                <div className={styles.hackathonDesc}>
-                    <div className={styles.description}>
-                        <img className={styles.hackProfile} src={`https://dev.mulearn.org/${data?.event_logo}`} />
-                        <div className={styles.descTitle}>
-                            <div>
-                                <h1>{data?.title}</h1>
-                                <div className={styles.tagLine}>
-                                    <b>{data?.tagline}</b>
-                                    &nbsp;
-                                    <b>
-                                        {" "}
-                                        {data?.participant_count}+ participants
-                                    </b>
+                        <div className={styles.hackathonDesc}>
+                            <div className={styles.description}>
+                                <img
+                                    className={styles.hackProfile}
+                                    src={`https://dev.mulearn.org/${data?.event_logo}`}
+                                />
+                                <div className={styles.descTitle}>
+                                    <div>
+                                        <h1>{data?.title}</h1>
+                                        <div className={styles.tagLine}>
+                                            <b>{data?.tagline}</b>
+                                            &nbsp;
+                                            <b>
+                                                {" "}
+                                                {data?.participant_count}+
+                                                participants
+                                            </b>
+                                        </div>
+                                    </div>
+                                    <span className={styles.love}></span>
                                 </div>
                             </div>
-                            <span className={styles.love}>
-
-                            </span>
+                            <p>{data?.description}</p>
                         </div>
                     </div>
-                    <p>{data?.description}</p>
-                </div>
-            </div>
 
-            <div className={styles.hackathonEventCard}>
-                <div className={styles.hackathonApplyCard}>
-                    <div className={styles.date}>
-                        <span></span>
-                        <div className={styles.hackathonEventDate}>
-                            <div>
-                                <b className={styles.title}>EVENT DATES</b>
-                                <h3>
+                    <div className={styles.hackathonEventCard}>
+                        <div className={styles.hackathonApplyCard}>
+                            <div className={styles.date}>
+                                <span></span>
+                                <div className={styles.hackathonEventDate}>
+                                    <div>
+                                        <b className={styles.title}>
+                                            EVENT DATES
+                                        </b>
+                                        <h3>
+                                            {DateConverter(
+                                                convertDateToYYYYMMDD(
+                                                    data?.event_start
+                                                )
+                                            )}{" "}
+                                            <b style={{ color: "var(--blue)" }}>
+                                                to
+                                            </b>{" "}
+                                            {DateConverter(
+                                                convertDateToYYYYMMDD(
+                                                    data?.event_end
+                                                )
+                                            )}
+                                        </h3>
+                                    </div>
+                                    <div>
+                                        <b className={styles.title}>
+                                            HAPPENING AT
+                                        </b>
+                                        <h3>{data?.place}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={styles.close}>
+                                <b>APPLICATION CLOSING DATE</b>
+                                <h4>
                                     {DateConverter(
                                         convertDateToYYYYMMDD(
-                                            data?.event_start
-                                        )
-                                    )}{" "}
-                                    <b style={{ color: "var(--blue)" }}>to</b>{" "}
-                                    {DateConverter(
-                                        convertDateToYYYYMMDD(
-                                            data?.event_end
+                                            data?.application_ends
                                         )
                                     )}
-                                </h3>
+                                </h4>
+                                <Countdown
+                                    targetDateTime={targetDateTime}
+                                    remainingTime={remainingTime}
+                                    setRemainingTime={setRemainingTime}
+                                />
                             </div>
-                            <div>
-                                <b className={styles.title}>HAPPENING AT</b>
-                                <h3>{data?.place}</h3>
-                            </div>
+                            <PowerfulButton
+                                onClick={() =>
+                                    navigate(
+                                        `/dashboard/hackathon/apply/${data?.id}`
+                                    )
+                                }
+                                children="Apply Now"
+                            />
                         </div>
-                    </div>
-                    <div className={styles.close}>
-                        <b>APPLICATION CLOSING DATE</b>
-                        <h4>
-                            {DateConverter(
-                                convertDateToYYYYMMDD(
-                                    data?.application_ends
-                                )
-                            )}
-                        </h4>
-                    </div>
-                    <PowerfulButton 
-                        onClick={() => navigate(`/dashboard/hackathon/apply/${data?.id}`)}
-                        children="Apply Now"
-                    />
-                    
-                </div>
-                {data?.website && (
-                    <div className={styles.socialLinks}>
-                        <Link to={data?.website} >
+                        {data?.website && (
+                            <div className={styles.socialLinks}>
+                                <Link to={data?.website} >
                             <PowerfulButton variant="secondary" >
-                                <CiGlobe />
-                            </PowerfulButton>
+                                        <CiGlobe />
+                                    </PowerfulButton>
                         </Link>
                         <PowerfulButton
                             variant="secondary" 
@@ -133,7 +167,7 @@ export const HackathonDetails = (props: Props) => {
                         >
                             <LuCopy />
                         </PowerfulButton>
-                        {/* <a href="#">
+                                {/* <a href="#">
                             <i className="fab fa-linkedin-in"></i>
 							</a>
 							<a href="#">
@@ -142,16 +176,17 @@ export const HackathonDetails = (props: Props) => {
 							<a href="#">
                             <i className="fab fa-instagram"></i>
                         </a> */}
+                            </div>
+                        )}
                     </div>
-                )}
-            </div>
-        </div>):(
-            <div className={styles.spinnerContainer}>
-            <div className={styles.spinner}>
-                <MuLoader />{" "}
-            </div>
-        </div>
-        )}
+                </div>
+            ) : (
+                <div className={styles.spinnerContainer}>
+                    <div className={styles.spinner}>
+                        <MuLoader />{" "}
+                    </div>
+                </div>
+            )}
         </>
     );
 };
