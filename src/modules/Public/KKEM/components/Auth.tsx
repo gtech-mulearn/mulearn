@@ -54,7 +54,7 @@ export default function KKEMAuth({ jsid }: { jsid: string }) {
                     type="text"
                     name="muid"
                     id="muid"
-                    placeholder="Enter µ-Id"
+                    placeholder="Enter muid"
                     value={muid}
                     onChange={handleChange}
                 />

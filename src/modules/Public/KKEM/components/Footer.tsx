@@ -19,7 +19,7 @@ export default function Footer() {
                             <div className={styles.links}>
                                 {data.links.map(link => {
                                     return (
-                                        <a href={link.url} key={link.name}>
+                                        <a target="_blank" rel="noreferrer" href={link.url} key={link.name}>
                                             {link.name}
                                         </a>
                                     );
@@ -32,35 +32,33 @@ export default function Footer() {
             <hr />
             <div className={styles.container}>
                 <div className={styles.socialMedia}>
-                    <a href="#">
+                    <a target="_blank" rel="noreferrer" href="http://mulearn.org/whatsapp-community">
                         <RiWhatsappFill />
                     </a>
-                    <a href="#">
+                    <a target="_blank" rel="noreferrer" href="http://twitter.com/GtechMulearn">
                         <RiTwitterFill />
                     </a>
-                    <a href="#">
+                    <a target="_blank" rel="noreferrer" href="http://www.instagram.com/gtechmulearn/">
                         <RiInstagramFill />
                     </a>
-                    <a href="#">
+                    <a target="_blank" rel="noreferrer" href="http://www.linkedin.com/company/gtechmulearn/">
                         <RiLinkedinBoxFill />
                     </a>
-                    <a href="#">
+                    <a target="_blank" rel="noreferrer" href="https://www.youtube.com/c/mulearn">
                         <RiYoutubeFill />
                     </a>
-                    <a href="#">
+                    <a target="_blank" rel="noreferrer" href="http://www.facebook.com/gtechmulearn">
                         <RiFacebookBoxFill />
                     </a>
                 </div>
                 <div className={styles.legal}>
-                    <a href="#">
+                    <a target="_blank" rel="noreferrer" href="https://mulearn.org/privacypolicy">
                         <span>Privacy Policy</span>
                     </a>
-                    <a href="#">
+                    <a target="_blank" rel="noreferrer" href="https://mulearn.org/termsandconditions">
                         <span>Terms and Conditions</span>
                     </a>
-                    <a href="#">
-                        <span>Support</span>
-                    </a>
+
                 </div>
                 <div className={styles.copyRight}>
                     <span>© Copyright 2023, All Rights Reserved</span>

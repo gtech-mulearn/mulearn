@@ -120,8 +120,7 @@ const EditLocation = () => {
                             }}
                         />
                         <div className="ml_popup_btn_container">
-                            <MuButton
-                                text={"Decline"}
+                            <PowerfulButton                               
                                 className={styles.btn_cancel}
                                 onClick={() => {
                                     navigate("/dashboard/manage-locations", {
@@ -131,7 +130,7 @@ const EditLocation = () => {
                                         }
                                     });
                                 }}
-                            />
+                            >Decline</PowerfulButton>
                             <PowerfulButton type="submit" className={styles.btn_submit}>
                                 Confirm
                             </PowerfulButton>
