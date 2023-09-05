@@ -7,7 +7,7 @@
 
 .title {
     color: #293338;
-    font-size: 5rem;
+    font-size: 4.25rem;
     font-weight: 600;
     line-height: 111.5%;
     margin-bottom: 3rem;
@@ -16,14 +16,14 @@
 .description {
     margin-top: 2rem;
     color: #293338;
-    font-weight: 500;
-    font-size: 1.8rem;
+    font-weight: 400;
+    font-size: 1.25rem;
+    max-width: 50rem;
     line-height: 127.5%;
-    max-width: 60vmax;
 }
 .dc2 {
     font-weight: 500;
-    font-size: 1.8rem;
+    font-size: 1.35rem;
     line-height: 127.5%;
     max-width: 60vmax;
 }
@@ -49,7 +49,7 @@
 
 .muidLink {
     color: #2e85fe;
-    font-size: 1.8rem;
+    font-size: 1.1rem;
     font-weight: 500;
     text-decoration-line: underline;
 }
@@ -73,7 +73,7 @@
         flex-direction: column;
     }
     .muidLink {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 }
 
@@ -91,14 +91,14 @@
 
 @media screen and (max-width: 1200px) {
     .title {
-        font-size: 3rem;
+        font-size: 2.25rem;
     }
     .title::after {
         width: calc(2rem * 10);
         margin-top: -0.5rem;
     }
     .description {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
     .image {
         width: 20rem;
@@ -111,11 +111,11 @@
         flex-direction: column;
     }
     .title {
-        font-size: 2.5rem;
+        font-size: 2rem;
         margin-bottom: 2rem;
     }
     .description {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         max-width: 100%;
         margin-top: 2rem;
     }

@@ -38,7 +38,7 @@ export default function MulearnAbout() {
                                 className={styles.muidLink}
                             // onClick={() => setModalOpen(true)}
                             >
-                                No Mu-Id? Get now
+                                No muid ? Get now
                             </button>
                         </section>
                         {/* <MuIDModal open={modalOpen} setOpen={setModalOpen} /> */}
