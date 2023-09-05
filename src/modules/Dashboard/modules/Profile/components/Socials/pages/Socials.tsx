@@ -68,7 +68,7 @@ const Socials = (props: Props) => {
         validate: (values: { [key: string]: string }) => {
             let errors: { [key: string]: string } = {};
             Object.entries(values).forEach(([key, value]) => {
-                if (value && !value.match(/^[a-zA-Z0-9-_]+$/)) {
+                if (value && !value.match(/^[a-zA-Z0-9-_/.]+$/)) {
                     errors[key] = "Invalid username";
                 }
             });

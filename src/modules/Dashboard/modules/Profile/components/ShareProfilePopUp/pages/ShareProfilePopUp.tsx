@@ -145,7 +145,8 @@ const ShareProfilePopUp = (props: Props) => {
                                         margin: "0px 0px -8px 0px",
                                         display: "flex",
                                         justifyContent: "center",
-                                        padding: "26px"
+                                        padding: "26px 16px",
+                                        minWidth: "auto",
                                     }}
                                     text={"Download QR"}
                                     onClick={() => {

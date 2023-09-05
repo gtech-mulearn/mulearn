@@ -4,6 +4,7 @@ import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { useNavigate } from "react-router-dom";
+
 import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle, AiOutlineUser } from "react-icons/ai";
 import styles from "./CollegeLevels.module.css";
@@ -214,6 +215,7 @@ function CollegeLevels() {
                     onClick={handleCreate}
                 >Create
                 <AiOutlinePlusCircle></AiOutlinePlusCircle></PowerfulButton>
+
             </div>
 
             {data && (

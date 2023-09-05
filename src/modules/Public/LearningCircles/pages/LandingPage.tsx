@@ -41,6 +41,7 @@ const LandingPage = () => {
     );
     const [selectedCampus, setSelectedCampus] = useState<Option | null>(null);
     const [selectedIg, setSelectedIg] = useState<Option | null>(null);
+    const [msg, setMsg] = useState<string>("Select a district");
 
     useEffect(() => {
         fetchCountryOptions(setCountryOptions);
@@ -82,6 +83,7 @@ const LandingPage = () => {
             setData([]);
             setSelectedCampus(null);
             setSelectedIg(null);
+			setMsg("Select a campus");
         }
     };
 
@@ -95,6 +97,7 @@ const LandingPage = () => {
                 fetchLCFull(setData, selectedCampus.value, district);
             }, 1000);
             setData([]);
+			setMsg("");
         }
     };
 
@@ -337,6 +340,7 @@ const LandingPage = () => {
                                 alt="You haven't joined any circles yet"
                                 loading="eager"
                             />
+							<b>{msg}</b>
                         </div>
                     )}
                 </div>
