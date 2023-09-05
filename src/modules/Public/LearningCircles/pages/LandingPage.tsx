@@ -13,6 +13,7 @@ import {
     getInterestGroups
 } from "../services/LandingPageApi";
 import Select from "react-select";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 interface Option {
     value: string;
@@ -200,13 +201,13 @@ const LandingPage = () => {
                         <Link to="https://learn.mulearn.org/">Interest Group</Link>
                         <Link to="https://mulearn.org/careers">Careers</Link>
                     </div>
-                    <button
+                    <PowerfulButton
                         onClick={() => {
                             navigate("/dashboard/connect-discord");
                         }}
                     >
                         Join Us
-                    </button>
+                    </PowerfulButton>
                 </div>
             </nav>
 
@@ -226,9 +227,9 @@ const LandingPage = () => {
                     time learning about new things with a group of people with
                     same interests!
                 </p>
-                <button onClick={() => navigate("/dashboard/learning-circle")}>
+                <PowerfulButton onClick={() => navigate("/dashboard/learning-circle")}>
                     Create/Join Learning Circles
-                </button>
+                </PowerfulButton>
             </div>
 
             <div className={styles.LClandingPageEarth}>

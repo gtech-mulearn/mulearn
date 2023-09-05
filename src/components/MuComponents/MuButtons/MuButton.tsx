@@ -179,6 +179,7 @@ type Props = {
     icon?: JSX.Element;
     isLoading?: boolean; // show loading spinner if necessary.
     disabled?: boolean;
+    buttonUrl?: string;
 };
 
 type Variants =
@@ -193,7 +194,7 @@ type Variants =
 
 
 type ButtonProps = ({ children, className, variant, style, ...props }:
-    {children: ReactNode, className?:string, variant?:Variants, style?: React.CSSProperties} & React.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element
+    {children: ReactNode, className?:string, variant?:Variants, style?: React.CSSProperties, isLoading?:boolean ,  buttonUrl?: string  } & React.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element
 
 export const PowerfulButton:ButtonProps = ({ children, className = "", variant = "primary", style, ...props }) => {
     const variantName = variant ? styles[`${variant}-btn`] : ""

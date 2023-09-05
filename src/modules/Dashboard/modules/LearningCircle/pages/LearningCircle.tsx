@@ -176,11 +176,11 @@ const LearningCircle = (props: Props) => {
                                     styles.deleteIcon
                                 }
                             >
-                                <button
+                                <PowerfulButton
                                     onClick={() => {
                                         setIsOpen(true);
                                     }} >
-                                    Leave Circle</button>
+                                    Leave Circle</PowerfulButton>
                             </div>
                             <div></div>
                             <Tooltip
@@ -275,14 +275,14 @@ const LearningCircle = (props: Props) => {
                                                         No meeting scheduled
                                                     </h1>
                                                 </div>
-                                                <button
+                                                <PowerfulButton
                                                     className={styles.BtnBtn}
                                                     onClick={() =>
                                                         setIsEdit(false)
                                                     }
                                                 >
                                                     Schedule now
-                                                </button>
+                                                </PowerfulButton>
                                             </>
                                         )}
                                     </>
@@ -440,12 +440,12 @@ const LearningCircle = (props: Props) => {
                                             </div>
                                         </div>
 
-                                        <button
+                                        <PowerfulButton
                                             className={styles.BtnBtn}
                                             onClick={handleSchedule}
                                         >
                                             Schedule
-                                        </button>
+                                        </PowerfulButton>
                                     </>
                                 )}
                             </div>
@@ -478,7 +478,7 @@ const LearningCircle = (props: Props) => {
                                             }}
                                             placeholder="Notes"
                                         />
-                                        <button
+                                        <PowerfulButton
                                             className={styles.BtnBtn}
                                             onClick={() => {
                                                 updateLcNote(id, note);
@@ -492,7 +492,7 @@ const LearningCircle = (props: Props) => {
                                             }}
                                         >
                                             Submit
-                                        </button>
+                                        </PowerfulButton>
                                     </div>
                                 )}
                             </div>
@@ -534,7 +534,7 @@ const LearningCircle = (props: Props) => {
                                                                 styles.buttons
                                                             }
                                                         >
-                                                            <button
+                                                            <PowerfulButton
                                                                 className={
                                                                     styles.BtnBtn
                                                                 }
@@ -560,8 +560,8 @@ const LearningCircle = (props: Props) => {
                                                                 }}
                                                             >
                                                                 Approve
-                                                            </button>
-                                                            <button
+                                                            </PowerfulButton>
+                                                            <PowerfulButton
                                                                 className={
                                                                     styles.BtnClr
                                                                 }
@@ -587,7 +587,7 @@ const LearningCircle = (props: Props) => {
                                                                 }}
                                                             >
                                                                 Reject
-                                                            </button>
+                                                            </PowerfulButton>
                                                         </div>
                                                     </div>
                                                 )
@@ -656,7 +656,7 @@ const LearningCircle = (props: Props) => {
                                                             data-tooltip-content="leave circle"
                                                             onClick={() => { handleRemove(id, member.id) }}
                                                         /> */}
-                                                        <button onClick={() => { handleRemove(id, member.id) }}>Remove</button>
+                                                        <PowerfulButton onClick={() => { handleRemove(id, member.id) }}>Remove</PowerfulButton>
                                                     </div>
                                                 )}
                                             </div>
