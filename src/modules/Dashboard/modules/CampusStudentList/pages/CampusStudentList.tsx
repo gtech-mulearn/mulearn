@@ -193,7 +193,7 @@ const CampusStudentList = (props: Props) => {
                                     <h2>{campusData.campus_lead}</h2>
                                     <p>Campus Lead</p>
                                 </div>
-                            </div>
+                              </div>
                         </div>
                         <div className={styles.sec2}>
                             <p className={styles.clg_rank}>

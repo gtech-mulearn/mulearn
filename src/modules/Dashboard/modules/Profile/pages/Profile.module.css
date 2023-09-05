@@ -254,7 +254,7 @@
       .profileList {
         position: relative;
         display: flex;
-        /* flex-wrap: wrap; */
+        /*flex-wrap: wrap;*/
         gap: 15px;
         list-style: none;
         height: 30px;

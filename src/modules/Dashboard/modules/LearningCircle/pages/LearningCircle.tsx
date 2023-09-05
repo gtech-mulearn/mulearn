@@ -58,6 +58,19 @@ const LearningCircle = (props: Props) => {
     }, []);
 
     useEffect(() => {
+        if (lc && !lc.is_member) {
+            toast({
+                title: "Access Denied",
+                description: "Make sure you are a member of that circle",
+                status: "error",
+                duration: 2000,
+                isClosable: true
+            });
+            navigate("/dashboard/learning-circle/");
+        }
+    }, [lc])
+
+    useEffect(() => {
         setMeetTime(lc?.meet_time || "");
         setMeetVenue(lc?.meet_place || "");
         setMeetDays(lc?.day || []);
@@ -144,7 +157,7 @@ const LearningCircle = (props: Props) => {
                                     {lc?.total_karma} Karma
                                 </b>
                             </div>
-                            <IoArrowBackCircleOutline
+                            {/* <IoArrowBackCircleOutline
                                 data-tooltip-id="Icon"
                                 data-tooltip-content="Leave LC"
                                 style={{
@@ -157,7 +170,19 @@ const LearningCircle = (props: Props) => {
                                 onClick={() => {
                                     setIsOpen(true);
                                 }}
-                            />
+                            /> */}
+                            <div
+                                className={
+                                    styles.deleteIcon
+                                }
+                            >
+                                <button
+                                    onClick={() => {
+                                        setIsOpen(true);
+                                    }} >
+                                    Leave Circle</button>
+                            </div>
+                            <div></div>
                             <Tooltip
                                 id="Icon"
                                 style={{
@@ -626,11 +651,12 @@ const LearningCircle = (props: Props) => {
                                                             styles.deleteIcon
                                                         }
                                                     >
-                                                        <RiDeleteBin5Line
+                                                        {/* <RiDeleteBin5Line
                                                             data-tooltip-id="Icon"
-                                                            data-tooltip-content="Remove member"
+                                                            data-tooltip-content="leave circle"
                                                             onClick={() => { handleRemove(id, member.id) }}
-                                                        />
+                                                        /> */}
+                                                        <button onClick={() => { handleRemove(id, member.id) }}>Remove</button>
                                                     </div>
                                                 )}
                                             </div>
