@@ -195,8 +195,10 @@
     }
 
     .campus_student_list_container .content .sec2 {
+        margin-top: .7rem;
         text-align: center;
     }
+    
 }
 
 .loader_container {
