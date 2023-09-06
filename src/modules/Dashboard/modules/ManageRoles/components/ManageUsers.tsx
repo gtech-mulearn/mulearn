@@ -4,7 +4,7 @@ import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css"
 
 import * as Yup from "yup";
 import { Formik, Form,FormikProps } from 'formik'
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import FormikReactSelect from '@/MuLearnComponents/FormikComponents/FormikComponents';
 import {addUsers, deleteUser, getUser} from "../apis"
 import { AiOutlineDelete } from "react-icons/ai";
@@ -125,14 +125,14 @@ const ManageUsers = (props:Props) => {
                                 {`${user.label.substring(0,10)}
                                 ${user.label.length>10?'...':''}`}
                             </span>
-                            <PowerfulButton
+                            <button 
                                 type="button"
                                 onClick={
                                     ()=>handleUserDelete(user.value)
                                 }
                             >
                                 <AiOutlineDelete/>
-                            </PowerfulButton>
+                            </button>
                         </li>
                     )}
                 </ul>}

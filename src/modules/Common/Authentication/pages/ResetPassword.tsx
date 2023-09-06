@@ -4,7 +4,6 @@ import styles from "./Login.module.css";
 import { useToast } from "@chakra-ui/react";
 import { getMuid, resetPassword } from "../services/apis";
 import { useFormik } from "formik";
-import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 type Props = {};
 
@@ -97,7 +96,7 @@ const ResetPassword = (props: Props) => {
                                     {formik.errors.password}
                                 </div>
                             ) : null}
-                            <PowerfulButton
+                            <button
                                 className={styles.password_icon}
                                 onClick={e => {
                                     e.preventDefault();
@@ -111,7 +110,7 @@ const ResetPassword = (props: Props) => {
                                 ) : (
                                     <i className="fi fi-sr-eye-crossed"></i>
                                 )}
-                            </PowerfulButton>
+                            </button>
                         </div>
                         <div className={styles.password_div}>
                             <input
@@ -129,7 +128,7 @@ const ResetPassword = (props: Props) => {
                                     {formik.errors.confirmPassword}
                                 </div>
                             ) : null}
-                            <PowerfulButton
+                            <button
                                 className={styles.password_icon}
                                 onClick={e => {
                                     e.preventDefault();
@@ -143,11 +142,11 @@ const ResetPassword = (props: Props) => {
                                 ) : (
                                     <i className="fi fi-sr-eye-crossed"></i>
                                 )}
-                            </PowerfulButton>
+                            </button>
                         </div>
                         <br />
                         <br />
-                        <PowerfulButton
+                        <button
                             onClick={e => {
                                 e.preventDefault();
                                 onSubmit(formik.values);
@@ -155,7 +154,7 @@ const ResetPassword = (props: Props) => {
                             type="submit"
                         >
                             Confirm password
-                        </PowerfulButton>
+                        </button>
                     </form>
                 </div>
             </div>

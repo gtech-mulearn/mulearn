@@ -7,7 +7,6 @@ import {
     FaFirefox
  } from 'react-icons/fa'
 import styles from './ConnectedDevices.module.css'
-import { PowerfulButton } from '@/MuLearnComponents/MuButtons/MuButton'
 
 export type deviceType = {
     device_type:"Phone"|"Linux PC"|"Windows PC",
@@ -44,7 +43,7 @@ const DeviceCard = ({device}:{device:deviceType}) => {
                         <p>Current Session</p>
                     </>:
                     <div className={styles.button}>
-                    <PowerfulButton onClick={device.logout}>Logout</PowerfulButton>
+                    <button onClick={device.logout}>Logout</button>
                     </div>
                     
                 }
