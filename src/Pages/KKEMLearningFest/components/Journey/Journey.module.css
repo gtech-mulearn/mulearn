@@ -8,6 +8,7 @@
     border-radius: 1rem;
     box-shadow: 0 0 1rem rgba(0, 0, 0, .7);
     padding: 1.2rem 2rem;
+    padding-bottom: 2rem;
     margin: 4rem 0;
     width: fit-content;
 }
@@ -47,6 +48,7 @@
    
     .kkemJourney {
         padding: 1rem;
+        padding-bottom: 2rem;
         margin: 4rem 2rem;
     }
 
