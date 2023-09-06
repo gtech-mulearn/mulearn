@@ -9,7 +9,7 @@ import { inputs, schema } from "./ManageUsersEditUtils";
 import FormikReactSelect, {
     FormikTextInput
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { roles } from "@/MuLearnServices/types";
 import {
     getCommunities,
@@ -188,13 +188,13 @@ const ManageUsersEdit = (props: Props) => {
                                     navigate("/dashboard/manage-users");
                                 }}
                             />
-                            <PowerfulButton
+                            <button
                                 type="submit"
                                 className={styles.btn_submit}
                                 onClick={() => console.log(formikRef)}
                             >
                                 Confirm
-                            </PowerfulButton>
+                            </button>
                         </div>
                     </Form>
                 </Formik>

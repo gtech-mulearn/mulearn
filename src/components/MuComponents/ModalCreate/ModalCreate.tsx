@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { PowerfulButton } from '../MuButtons/MuButton';
 
 // ModalProps type definition
 interface ModalProps {
@@ -34,12 +33,12 @@ const ModalCreateComponent: React.FC<ModalProps> = ({ isOpen, onClose, content, 
             <div className={styles.modal}>
                 <div className={styles.modalContainer}>
                     <div className={styles.modalContainerRow}>
-                        <PowerfulButton
+                        <button
                             className={styles.closeBtn} onClick={() => {
                                 onClose(false);
                             }}>
                             <RiCloseLine style={{ marginBottom: "-3px" }} />
-                        </PowerfulButton>
+                        </button>
                     </div>
                     <div className={styles.modalContainerItemRow}>
                         <span className={styles.IGCreate}>{heading}</span>
@@ -75,16 +74,16 @@ const ModalCreateComponent: React.FC<ModalProps> = ({ isOpen, onClose, content, 
                                 placeholder={placeholder}
                             />
                             <div className={styles.modalContainerBtnRow}>
-                                <PowerfulButton type="submit" className={styles.btnSubmit}>
+                                <button type="submit" className={styles.btnSubmit}>
                                     {btnPrimaryText}
-                                </PowerfulButton>
-                                <PowerfulButton className={styles.btnCancel}
+                                </button>
+                                <button className={styles.btnCancel}
                                     onClick={() => {
                                         onClose(false);
                                     }}
                                 >
                                     {btnSecondaryText}
-                                </PowerfulButton>
+                                </button>
                             </div>
                         </Form>
                     </Formik>

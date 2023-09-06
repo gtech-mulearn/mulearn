@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { patchCountryData } from "./apis/CountryAPI";
 import { patchStateData } from "./apis/StateAPI";
 import { patchZoneData } from "./apis/ZoneAPI";
@@ -120,7 +120,8 @@ const EditLocation = () => {
                             }}
                         />
                         <div className="ml_popup_btn_container">
-                            <PowerfulButton                               
+                            <MuButton
+                                text={"Decline"}
                                 className={styles.btn_cancel}
                                 onClick={() => {
                                     navigate("/dashboard/manage-locations", {
@@ -130,10 +131,10 @@ const EditLocation = () => {
                                         }
                                     });
                                 }}
-                            >Decline</PowerfulButton>
-                            <PowerfulButton type="submit" className={styles.btn_submit}>
+                            />
+                            <button type="submit" className={styles.btn_submit}>
                                 Confirm
-                            </PowerfulButton>
+                            </button>
                         </div>
                     </Form>
                 </Formik>

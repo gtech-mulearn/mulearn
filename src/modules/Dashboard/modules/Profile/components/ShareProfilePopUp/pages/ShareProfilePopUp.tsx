@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ShareProfilePopUp.module.css";
 import { Switch } from "@chakra-ui/react";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { saveAs } from "file-saver";
 import { fetchQRCode } from "../services/api";
 
@@ -116,7 +116,7 @@ const ShareProfilePopUp = (props: Props) => {
                         <hr />
                         {props.profileStatus && (
                             <div className={styles.share_profile_btns}>
-                                <PowerfulButton
+                                <button
                                     className={styles.embed_copy_btn}
                                     onClick={() => {
                                         navigator.clipboard.writeText(
@@ -143,7 +143,7 @@ const ShareProfilePopUp = (props: Props) => {
                                         <option value="100">100</option>
                                         <option value="200">200</option>
                                     </select>
-                                </PowerfulButton>
+                                </button>
                                 <MuButton
                                     style={{
                                         border: "1px solid #456FF6",
@@ -161,9 +161,9 @@ const ShareProfilePopUp = (props: Props) => {
                                 />
                             </div>
                         )}
-                        <PowerfulButton onClick={() => props.setPopUP(false)}>
+                        <button onClick={() => props.setPopUP(false)}>
                             {!props.profileStatus ? "Cancel" : "Close"}
-                        </PowerfulButton>
+                        </button>
                     </div>
                 </div>
             </div>
