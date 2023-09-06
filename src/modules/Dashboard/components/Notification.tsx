@@ -5,7 +5,6 @@ import { IoIosClose } from 'react-icons/io';
 import { MdRefresh } from 'react-icons/md';
 import dpm from '../assets/images/dpm.webp';
 import { filterNotification, getTimeAgo, isRequest } from './utils';
-import { PowerfulButton } from '@/MuLearnComponents/MuButtons/MuButton';
 import { list, useToast } from '@chakra-ui/react'
 
 interface NotificationComponentProps {
@@ -36,17 +35,17 @@ const NotificationMessage = ({ profile, title, created_at, description, clear, i
                 <p>{description}</p>
                 {isRequest(title) &&
                     <div className="btns">
-                        <PowerfulButton onClick={() => {
+                        <button onClick={() => {
                             requestApproval(id, url, created_by, false, update, props);
                             update()
                             clear()
                             requestApproval(id, url, created_by, false, update, props);
-                        }}>Decline</PowerfulButton>
+                        }}>Decline</button>
                         &nbsp;
-                        <PowerfulButton className="accept" onClick={() => {
+                        <button className="accept" onClick={() => {
                             clear()
                             requestApproval(id, url, created_by, true, update, props)
-                        }}>Accept</PowerfulButton>
+                        }}>Accept</button>
                     </div>
                 }
             </div>

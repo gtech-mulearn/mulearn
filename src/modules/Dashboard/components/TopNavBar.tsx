@@ -10,7 +10,6 @@ import { Popover, PopoverTrigger, Button, PopoverContent, PopoverHeader, Popover
 import { Notification as NotificationProps, getNotifications } from "./api";
 import NotificationTab from "./Notification";
 import { useToast } from "@chakra-ui/react";
-import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 const TopNavBar = () => {
     const navigate = useNavigate();
     const [name, setName] = useState("");
@@ -54,7 +53,7 @@ const TopNavBar = () => {
                             {/* <i className="fi fi-sr-settings"></i> */}
                             <Popover placement="bottom-end">
                                 <PopoverTrigger >
-                                    <PowerfulButton {...notificationStyle}>{notificationList.length === 0 ? <MdNotifications size={50} /> : <MdNotificationAdd />}</PowerfulButton>
+                                    <Button {...notificationStyle}>{notificationList.length === 0 ? <MdNotifications size={50} /> : <MdNotificationAdd />}</Button>
                                 </PopoverTrigger>
                                 <PopoverContent style={{
                                     background: "transparent",

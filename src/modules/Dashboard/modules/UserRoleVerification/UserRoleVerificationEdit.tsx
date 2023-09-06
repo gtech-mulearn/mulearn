@@ -1,4 +1,4 @@
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { Form, Formik } from "formik";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -124,12 +124,12 @@ const UserRoleVerificationEdit = (props: Props) => {
                                         navigate("/user-role-verification");
                                     }}
                                 />
-                                <PowerfulButton
+                                <button
                                     type="submit"
                                     className={styles.btn_submit}
                                 >
                                     Confirm
-                                </PowerfulButton>
+                                </button>
                             </div>
                         </div>
                     </Form>

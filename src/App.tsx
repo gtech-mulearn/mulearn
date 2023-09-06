@@ -532,6 +532,7 @@ function App() {
                                         roles.ADMIN,
                                         roles.FELLOW
                                     ]}
+									toastText="Unauthorized"
                                     children={<LearningCircleLandingPage />}
                                 />
                             )
@@ -546,6 +547,12 @@ function App() {
                                         roles.FELLOW
                                     ]}
                                     children={<LearningCircle />}
+                                    redirectPath={
+                                        <Navigate
+                                            to="/dashboard/profile"
+                                            replace
+                                        />
+                                    }
                                 />
                             )
                         },

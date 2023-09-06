@@ -6,7 +6,10 @@ import styles from "./KKEMAuth.module.css";
 import Footer from "../components/Footer";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { useToast } from "@chakra-ui/react";
-
+import { privateGateway } from "@/MuLearnServices/apiGateways";
+import { dashboardRoutes } from "@/MuLearnServices/urls";
+import { refreshRoles } from "@/MuLearnServices/authCheck";
+type authGetUserInfo = APIResponse<UserInfo>;
 export default function KKEMAuth() {
     const { token } = useParams<{ token: string }>();
     const [status, setStatus] = useState("pending");
@@ -17,53 +20,66 @@ export default function KKEMAuth() {
             return;
         }
         const controller = new AbortController();
-        userAuthConfirm(token, controller).then(res => {
-            setStatus("success");
-            console.log(res.response)
-            localStorage.setItem(
-                "accessToken",
-                res?.response?.accessToken
-            );
-            localStorage.setItem(
-                "refreshToken",
-                res?.response?.refreshToken
-            );
-            toast({
-                title: "Integration successful.You will be redirected to learning circle page shortly",
-                status: "success",
-                duration: 3000,
-                isClosable: true,
-            });
-            setTimeout(() => {
-                navigate("/dashboard/learning-circle");
-            }, 2000);
-        }).catch((err) => {
-            console.log(err.hasError)
-            if (err?.hasError) {
-                setStatus("failure");
+        userAuthConfirm(token, controller)
+            .then(res => {
+                privateGateway
+                    .get(dashboardRoutes.getInfo)
+                    .then((response: authGetUserInfo) => {
+                        //console.log(response);
+                        localStorage.setItem(
+                            "userInfo",
+                            JSON.stringify(response.data.response)
+                        );
+                        refreshRoles();
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+                setStatus("success");
+                // console.log(res.response);
+                localStorage.setItem("accessToken", res?.response?.accessToken);
+                localStorage.setItem(
+                    "refreshToken",
+                    res?.response?.refreshToken
+                );
                 toast({
-                    title: "Invalid token.",
-                    status: "error",
+                    title: "Integration successful.You will be redirected to learning circle page shortly",
+                    status: "success",
                     duration: 3000,
-                    isClosable: true,
+                    isClosable: true
                 });
-            }
-        })
+                setTimeout(() => {
+                    navigate("/dashboard/learning-circle");
+                }, 2000);
+            })
+            .catch(err => {
+                // console.log(err.hasError);
+                if (err?.hasError) {
+                    setStatus("failure");
+                    toast({
+                        title: "Invalid token.",
+                        status: "error",
+                        duration: 3000,
+                        isClosable: true
+                    });
+                }
+            });
         return () => {
             controller.abort();
         };
     }, [token]);
     return (
         <main>
-            {status === "pending" ?
+            {status === "pending" ? (
                 <div className={styles.muLoader}>
                     <MuLoader />
-                </div> :
+                </div>
+            ) : (
                 <>
                     {status === "success" && <Success />}
                     {status === "failure" && <Failure />}
                 </>
-            }
+            )}
             <Footer />
         </main>
     );

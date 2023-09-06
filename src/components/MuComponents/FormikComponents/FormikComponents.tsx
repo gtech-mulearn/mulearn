@@ -1,7 +1,8 @@
 import { useField } from "formik";
 import styles from "./FormComponents.module.css";
-import React from "react";
+import React, { CSSProperties } from "react";
 import Select, { Props as SelectProps } from "react-select";
+import { propNames } from "@chakra-ui/react";
 
 /*
 TODO: Verify the Unused Code/Components in this File
@@ -84,6 +85,7 @@ interface FormikSelectProps extends SelectProps<Option> {
     label: string;
     options: Option[];
     addOnChange?: Function;
+    addStyles?: CSSProperties;
 }
 
 const FormikReactSelect: React.FC<FormikSelectProps> = ({
@@ -91,6 +93,7 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
     label,
     options,
     addOnChange = () => {},
+    addStyles,
     ...rest
 }) => {
     const [field, meta, helpers] = useField(name);
@@ -133,7 +136,7 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
                 options={options}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                styles={customStyles}
+                styles={{ ...customStyles, ...addStyles }}
             />
             {meta.touched && meta.error && (
                 <div className={styles.error}>{meta.error}</div>

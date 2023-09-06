@@ -153,7 +153,11 @@ const CollegeLevelsCreate = (props: Props) => {
             <Form className={styles.form}>
                 <div className={styles.selectContainer}>
                     {selectProps.map((props, index) => (
-                        <FormikReactSelect {...props} key={`select${index}`} />
+                        <FormikReactSelect
+                            addStyles={{ width: "200px" }}
+                            {...props}
+                            key={`select${index}`}
+                        />
                     ))}
                 </div>
 

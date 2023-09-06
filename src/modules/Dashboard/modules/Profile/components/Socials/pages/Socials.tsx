@@ -82,7 +82,6 @@ const Socials = (props: Props) => {
         getSocials(setSocials, formikRef);
         // console.log(formik.values);
     }, []);
-
     return (
         <>
             <div className={styles.edit_social_btn}>
@@ -117,6 +116,8 @@ const Socials = (props: Props) => {
             </div>
             <p className={styles.socials_icons}>
                 {Object.values(formik.values).filter(value => value !== "")
+                    .length != 0 ||
+                Object.values(formik.values).filter(value => value === null)
                     .length != 0
                     ? Object.entries(formik.values).map(
                           ([name, username], i) => {

@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './AccountCreation.module.css'
 import {FcGoogle} from 'react-icons/fc'
 import {HiEye} from 'react-icons/hi2'
-import { PowerfulButton } from '@/MuLearnComponents/MuButtons/MuButton'
 
 export default function AccountCreation() {
   return (
@@ -18,12 +17,12 @@ export default function AccountCreation() {
         <input type="number" placeholder='+91'/>
         <div className={styles.accountCreationPassword}>
         <input type="password" placeholder='Password'required />
-        <PowerfulButton>
+        <button>
           <HiEye size={26}/>
-        </PowerfulButton>
+        </button>
         </div>    
         <input type='password' placeholder='Confirm Password'required/>
-        <PowerfulButton>Create Account</PowerfulButton>
+        <button>Create Account</button>
       </div>
  
       <div className={styles.accountCreationAlternative}>
@@ -31,9 +30,9 @@ export default function AccountCreation() {
         <div>
           <hr/><p>OR</p><hr />
         </div> 
-        <PowerfulButton>
+        <button>
           <FcGoogle size={35}/> Sign in with google
-        </PowerfulButton>
+        </button>
         <div>
            <p>Don't have an account?  <a href="">Sign In</a></p> 
         </div>
