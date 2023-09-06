@@ -12,7 +12,6 @@
     display: grid;
     place-content: center;
     overflow: hidden;
-    overflow-y: scroll;
 }
 .cardsConatiner{
     padding:1rem;
@@ -154,6 +153,7 @@
 @media(width<1090px){
     .carosel{
         margin: 0 4rem;
+        overflow-y: scroll;
     }
  .cardsConatiner{
     margin: 1.5rem;
