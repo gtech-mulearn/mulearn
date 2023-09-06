@@ -22,15 +22,13 @@ const BasicDetails = (props: Props) => {
     const ig_sorted = ig.sort((a: any, b: any) => {
         return a.name > b.name ? 1 : -1;
     });
-    // console.log(ig_sorted);
-
     return (
         <>
             <div className={styles.interestGrp}>
                 <div className={styles.top_sec}>
                     <b>Interest Groups</b>
                     {!id &&
-                        props.userProfile.level.slice(3, 4) > 4 &&
+                        props.userProfile.level.slice(3, 4) >= 4 &&
                         !editIg && (
                             <p
                                 onClick={() => setEditIg(true)}
