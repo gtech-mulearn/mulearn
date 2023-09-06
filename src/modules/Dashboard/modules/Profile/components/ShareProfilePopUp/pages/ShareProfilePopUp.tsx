@@ -127,7 +127,7 @@ const ShareProfilePopUp = (props: Props) => {
                                         }, 3000);
                                     }}
                                 >
-                                    <p>Embed Link</p>
+                                    <p>{copy ? "Copied !" : "Embed Link"}</p>
                                     <select
                                         onChange={e => {
                                             setEmbedSize(e.target.value);
