@@ -11,6 +11,8 @@
     width: 100%;
     display: grid;
     place-content: center;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 .cardsConatiner{
     padding:1rem;
@@ -149,8 +151,10 @@
     animation: fade-down 3s ease;
 }
 
-@media(width<820px){
- 
+@media(width<1090px){
+    .carosel{
+        margin: 0 4rem;
+    }
  .cardsConatiner{
     margin: 1.5rem;
     justify-content: center;
@@ -169,7 +173,7 @@
  } 
 }
 
-@media(width<620px){
+@media(width<700px){
 .cardsConatiner{
     padding-bottom: 1rem;
     margin: 4rem;

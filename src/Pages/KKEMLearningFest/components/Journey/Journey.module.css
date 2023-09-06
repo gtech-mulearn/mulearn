@@ -43,10 +43,32 @@
     margin-top: -2rem;
 }
 
+@media (width<1200px) {
+   
+    .kkemJourney {
+        padding: 1rem;
+        margin: 4rem 2rem;
+    }
+
+    .kkemJourney h1 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    .kkemJourneyCard img{
+        width: 12rem;
+    }
+
+    .kkemJourneyCard span {
+        margin-top: -1rem;
+    } 
+    
+}
+
 @media(width<=768px) {
 
     .kkemJourney {
         padding: 1rem;
+        padding-bottom: 2rem;
         margin: 4rem 0;
     }
 
