@@ -3,7 +3,8 @@
 */
 .learningCircleLandingPage,
 .LearningCircleDetailsContent,
-.FindCircleContent {
+.FindCircleContent,
+.LearningCircleCreateContent {
     width: 100%;
     padding: 1rem 3rem;
     display: flex;
@@ -114,9 +115,13 @@
     display: none;
 }
 
-.learningCircleLandingPageExpandBtn:checked + .learningCircleLandingPageLevel {
+/* .learningCircleLandingPageExpandBtn:checked + .learningCircleLandingPageLevel,
+.learningCircleLandingPageExpandBtn:checked + .learningCircleLandingPageLevel div p{
     background: var(--blue);
     color: white;
+} */
+.learningCircleLandingPageExpandBtn:checked + .learningCircleLandingPageLevel{
+    border: 1px solid var(--blue);
 }
 
 .learningCircleLandingPageExpandBtn:checked
@@ -766,6 +771,7 @@
     border-radius: 1rem;
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 .LearningCircleCreateHeading {
@@ -815,7 +821,7 @@
     }
 }
 
-@media (width<860px) {
+@media (width<955px) {
     .LearningCircleCreateHeading div b {
         font-size: 1.5rem;
     }
