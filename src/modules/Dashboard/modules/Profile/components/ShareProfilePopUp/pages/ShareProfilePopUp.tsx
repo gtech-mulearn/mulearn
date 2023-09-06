@@ -22,6 +22,12 @@ const ShareProfilePopUp = (props: Props) => {
     useEffect(() => {
         fetchQRCode(setBlob);
     }, []);
+    useEffect(() => {
+        window.history.pushState(null, "", window.location.href);
+        window.addEventListener("popstate", () => {
+            props.setPopUP(false);
+        });
+    }, [props.popUP]);
     const downloadQR = () => {
         saveAs(blob, `${props.userProfile.muid}.png`);
     };
@@ -146,7 +152,7 @@ const ShareProfilePopUp = (props: Props) => {
                                         display: "flex",
                                         justifyContent: "center",
                                         padding: "26px 16px",
-                                        minWidth: "auto",
+                                        minWidth: "auto"
                                     }}
                                     text={"Download QR"}
                                     onClick={() => {
