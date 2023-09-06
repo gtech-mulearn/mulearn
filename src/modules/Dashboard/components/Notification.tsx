@@ -5,7 +5,7 @@ import { IoIosClose } from 'react-icons/io';
 import { MdRefresh } from 'react-icons/md';
 import dpm from '../assets/images/dpm.webp';
 import { filterNotification, getTimeAgo, isRequest } from './utils';
-import { useToast } from '@chakra-ui/react'
+import { list, useToast } from '@chakra-ui/react'
 
 interface NotificationComponentProps {
     notificationList: NotificationProps[];
@@ -15,7 +15,7 @@ interface NotificationComponentProps {
 
 const NotificationMessage = ({ profile, title, created_at, description, clear, id, url, update, created_by }: NotificationMessageProps) => {
     const toast = useToast();
-    const props = { toast: toast };
+    const props={toast}
     return (
         <div className="notiMessageTab">
             <img src={profile || dpm} alt="" />
@@ -23,8 +23,8 @@ const NotificationMessage = ({ profile, title, created_at, description, clear, i
                 <b>{title}</b>
                 <span className="blueDot" onClick={() => {
                     clear()
-                    clearNotification(id, props)
-                    update()
+                    clearNotification(id, {toast}).then(() =>
+                    update())
                 }}>
                     <IoIosClose size={'18px'} />
                 </span>
@@ -65,13 +65,31 @@ const NotificationTab = ({ notificationList, setNotificationList }: Notification
 
     const filteredNotification = filterNotification(active, notificationList);
 
-    const clearElement = (cleared: number) => {
-        setNotificationList(list => list.filter((_, index) => index !== cleared));
+    const clearElement = (clearedIndex: number, id: string) => {
+        setNotificationList(notificationList)
     };
 
     const clearAll = () => {
-        setNotificationList([]);
+        if (notificationList.length > 0){
         clearAllNotifications(props);
+        setNotificationList([]);
+            toast({
+                title: "Success",
+                description: "All notifications cleared",
+                status: "success",
+                duration: 3000,
+                isClosable: true
+            })
+    }
+    else{
+        toast({
+            title: "Error",
+            description: "No notifications to clear",
+            status: "error",
+            duration: 3000,
+            isClosable: true
+        })
+    }
     }
 
     return (
@@ -86,8 +104,8 @@ const NotificationTab = ({ notificationList, setNotificationList }: Notification
                 <ul>
                     {links.map((item, index) => (
                         <li key={index} className={active === index ? 'active' : 'inactive'} onClick={() => setActive(index)}>
-                            <p>{item.title}</p>
-                            <span>{item.count}</span>
+                            <p>{item?.title}</p>
+                            <span>{item?.count}</span>
                         </li>
                     ))}
                     <span className='glider' style={{ transform: `translateX(${active * 100}%)`, margin: `${active === 0 ? 0 : active === links.length - 1 ? 15 : 15}px` }}></span>
@@ -97,11 +115,11 @@ const NotificationTab = ({ notificationList, setNotificationList }: Notification
                 {filteredNotification.length > 0 ? (
                     <div className="notiMessage">
                         {filteredNotification.map((item, index) => (
-                            <div key={item.id}>
+                            <div key={item?.id}>
                                 <NotificationMessage
                                     key={index}
                                     {...item}
-                                    clear={() => clearElement(index)}
+                                    clear={() => clearElement(index,item?.id)}
                                     update={() => {
                                         getNotifications(setNotificationList, props)
                                     }}

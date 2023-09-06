@@ -251,7 +251,8 @@ const Onboarding = (props: Props) => {
             year_of_graduation: values.yog === "" ? null : values.yog, //required for student
             area_of_interests: values.areaOfInterest, //required,
             password: values.password, //required
-            referral_id: values.referral_id === "" ? null : values.referral_id
+            referral_id: values.referral_id === "" ? null : values.referral_id,
+            jsid: jsId ? jsId : null
         };
 
         registerUser(
@@ -698,6 +699,7 @@ const Onboarding = (props: Props) => {
                                                 onBlur={formik.handleBlur}
                                                 onChange={formik.handleChange}
                                                 value={formik.values.firstName}
+                                                disabled={jsId ? true : false}
                                             />
                                             {formik.touched.firstName &&
                                             formik.errors.firstName ? (
@@ -720,6 +722,7 @@ const Onboarding = (props: Props) => {
                                                 onBlur={formik.handleBlur}
                                                 onChange={formik.handleChange}
                                                 value={formik.values.lastName}
+                                                disabled={jsId ? true : false}
                                             />
                                         </div>
                                     </div>
@@ -741,6 +744,7 @@ const Onboarding = (props: Props) => {
                                                 onBlur={formik.handleBlur}
                                                 onChange={formik.handleChange}
                                                 value={formik.values.email}
+                                                disabled={jsId ? true : false}
                                                 // required
                                             />
                                             {formik.touched.email &&
@@ -774,6 +778,7 @@ const Onboarding = (props: Props) => {
                                                         textAlign: "center"
                                                     }}
                                                     name=""
+                                                    disabled={jsId ? true : false}
                                                 >
                                                     <option value="+91">
                                                         +91
@@ -790,6 +795,7 @@ const Onboarding = (props: Props) => {
                                                         formik.handleChange
                                                     }
                                                     value={formik.values.phone}
+                                                    disabled={jsId ? true : false}
                                                     // required
                                                 />
                                                 {formik.touched.phone &&
@@ -943,6 +949,7 @@ const Onboarding = (props: Props) => {
                                                         value={
                                                             formik.values.gender
                                                         }
+                                                        disabled={jsId ? true : false}
                                                     >
                                                         <option value="">
                                                             Select gender
@@ -999,6 +1006,7 @@ const Onboarding = (props: Props) => {
                                                         value={
                                                             formik.values.dob
                                                         }
+                                                        disabled={jsId ? true : false}
                                                     />
                                                 </div>
                                             </div>
