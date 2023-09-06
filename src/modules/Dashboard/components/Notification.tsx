@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import './Notification.css';
 import { clearAllNotifications, clearNotification, getNotifications, Notification as NotificationProps, requestApproval } from './api';
 import { IoIosClose } from 'react-icons/io';
+import { MdRefresh } from 'react-icons/md';
 import dpm from '../assets/images/dpm.webp';
 import { filterNotification, getTimeAgo, isRequest } from './utils';
-import { useToast } from '@chakra-ui/react'
+import { PowerfulButton } from '@/MuLearnComponents/MuButtons/MuButton';
+import { list, useToast } from '@chakra-ui/react'
 
 interface NotificationComponentProps {
     notificationList: NotificationProps[];
@@ -12,18 +14,18 @@ interface NotificationComponentProps {
 }
 
 
-const NotificationMessage = ({ profile, title, created_at, description, clear, id, url, update ,created_by}: NotificationMessageProps) => {
-    const toast=useToast();
-    const props={toast:toast};
+const NotificationMessage = ({ profile, title, created_at, description, clear, id, url, update, created_by }: NotificationMessageProps) => {
+    const toast = useToast();
+    const props={toast}
     return (
         <div className="notiMessageTab">
             <img src={profile || dpm} alt="" />
             <div className="notiMessageProfile">
-                <b>{title}</b>  
+                <b>{title}</b>
                 <span className="blueDot" onClick={() => {
                     clear()
-                    clearNotification(id,props)
-                    update()
+                    clearNotification(id, {toast}).then(() =>
+                    update())
                 }}>
                     <IoIosClose size={'18px'} />
                 </span>
@@ -34,17 +36,17 @@ const NotificationMessage = ({ profile, title, created_at, description, clear, i
                 <p>{description}</p>
                 {isRequest(title) &&
                     <div className="btns">
-                        <button onClick={() => { 
-                            requestApproval(id,url,created_by, false,update,props); 
-                            update() 
+                        <PowerfulButton onClick={() => {
+                            requestApproval(id, url, created_by, false, update, props);
+                            update()
                             clear()
-                            requestApproval(id,url,created_by, false,update,props);  
-                            }}>Decline</button>
+                            requestApproval(id, url, created_by, false, update, props);
+                        }}>Decline</PowerfulButton>
                         &nbsp;
-                        <button className="accept" onClick={() => {
+                        <PowerfulButton className="accept" onClick={() => {
                             clear()
-                            requestApproval(id,url,created_by, true, update,props)
-                            }}>Accept</button>
+                            requestApproval(id, url, created_by, true, update, props)
+                        }}>Accept</PowerfulButton>
                     </div>
                 }
             </div>
@@ -52,10 +54,10 @@ const NotificationMessage = ({ profile, title, created_at, description, clear, i
     );
 };
 
-const NotificationTab = ({notificationList,setNotificationList}: NotificationComponentProps) => {
+const NotificationTab = ({ notificationList, setNotificationList }: NotificationComponentProps) => {
     const [active, setActive] = useState(0);
-    const toast=useToast();
-    const props={toast:toast};
+    const toast = useToast();
+    const props = { toast: toast };
     const links = [
         { title: 'View All', count: notificationList.length },
         { title: 'Requests', count: notificationList.filter((item: NotificationProps) => isRequest(item.title)).length },
@@ -64,27 +66,47 @@ const NotificationTab = ({notificationList,setNotificationList}: NotificationCom
 
     const filteredNotification = filterNotification(active, notificationList);
 
-    const clearElement = (cleared: number) => {
-        setNotificationList(list => list.filter((_, index) => index !== cleared));
+    const clearElement = (clearedIndex: number, id: string) => {
+        setNotificationList(notificationList)
     };
 
     const clearAll = () => {
-        setNotificationList([]);
+        if (notificationList.length > 0){
         clearAllNotifications(props);
+        setNotificationList([]);
+            toast({
+                title: "Success",
+                description: "All notifications cleared",
+                status: "success",
+                duration: 3000,
+                isClosable: true
+            })
+    }
+    else{
+        toast({
+            title: "Error",
+            description: "No notifications to clear",
+            status: "error",
+            duration: 3000,
+            isClosable: true
+        })
+    }
     }
 
     return (
         <div className="yourNotification">
+
             <div className="notiTop">
                 <b>Your Notification</b>
                 <div className='clearAll' onClick={clearAll}>✖ Clear all</div>
+                <div className='clearAll' onClick={() => getNotifications(setNotificationList, props)}><MdRefresh size={20} /></div>
             </div>
             <div className="notiTabs">
                 <ul>
                     {links.map((item, index) => (
                         <li key={index} className={active === index ? 'active' : 'inactive'} onClick={() => setActive(index)}>
-                            <p>{item.title}</p>
-                            <span>{item.count}</span>
+                            <p>{item?.title}</p>
+                            <span>{item?.count}</span>
                         </li>
                     ))}
                     <span className='glider' style={{ transform: `translateX(${active * 100}%)`, margin: `${active === 0 ? 0 : active === links.length - 1 ? 15 : 15}px` }}></span>
@@ -94,13 +116,13 @@ const NotificationTab = ({notificationList,setNotificationList}: NotificationCom
                 {filteredNotification.length > 0 ? (
                     <div className="notiMessage">
                         {filteredNotification.map((item, index) => (
-                            <div key={item.id}>
+                            <div key={item?.id}>
                                 <NotificationMessage
                                     key={index}
                                     {...item}
-                                    clear={() => clearElement(index)}
-                                    update={() =>{
-                                        getNotifications(setNotificationList,props)
+                                    clear={() => clearElement(index,item?.id)}
+                                    update={() => {
+                                        getNotifications(setNotificationList, props)
                                     }}
                                 />
                             </div>

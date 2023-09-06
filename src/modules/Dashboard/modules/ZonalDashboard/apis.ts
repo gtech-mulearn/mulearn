@@ -93,7 +93,7 @@ export const getzonaldashboard = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -127,7 +127,7 @@ export const getAffiliation = async (setAffiliationData: any) => {
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -151,7 +151,7 @@ export const getCountry = async (setCountryData: any) => {
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -174,7 +174,7 @@ export const getStates = async (country: string, setStatesData: any) => {
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -201,7 +201,7 @@ export const getZones = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -231,7 +231,7 @@ export const getDistricts = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -245,41 +245,50 @@ export const getInfo = async (code: string) => {
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
 
-export const getStudentLevels = async () => {
-    const sum = (arr: number[]) => {
-        return arr.slice(1).reduce((acc, curr) => acc + curr);
-    };
-    const response = await privateGateway.get(
-        dashboardRoutes.getZonalStudentLevels
-    );
-    const data = response.data.response;
-    //Combining all colleges student levels into one
-    console.log(data);
-    return [
-        [
-            " ",
-            data[2].students_count,
-            data[3].students_count,
-            data[0].students_count,
-            data[1].students_count
-        ]
-    ];
+export const getStudentLevels = async (errHandler: (err: string) => void) => {
+    try {
+        // const sum = (arr: number[]) => {
+        //     return arr.slice(1).reduce((acc, curr) => acc + curr);
+        // };
+        const response = await privateGateway.get(
+            dashboardRoutes.getZonalStudentLevels
+        );
+        const data = response.data.response;
+        //Combining all colleges student levels into one
+        return [
+            [
+                " ",
+                data[2].students_count,
+                data[3].students_count,
+                data[0].students_count,
+                data[1].students_count
+            ]
+        ];
+    } catch (err: any) {
+        errHandler((err as AxiosError).message);
+        return [];
+    }
 };
 
-export const getTopDistrict = async () => {
-    const response = await privateGateway.get(
-        dashboardRoutes.getZonalTopDistrict
-    );
-    const data = response.data.response;
-    const returnData: any[] = [["Districts"], [" "]];
-    for (let item of data) {
-        returnData[0].push(item.district);
-        returnData[1].push(item.karma);
+export const getTopDistrict = async (errHandler: (err: string) => void) => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getZonalTopDistrict
+        );
+        const data = response.data.response;
+        const returnData: any[] = [["Districts"], [" "]];
+        for (let item of data) {
+            returnData[0].push(item.district);
+            returnData[1].push(item.karma);
+        }
+        return returnData;
+    } catch (err: any) {
+        errHandler(err);
+        return [];
     }
-    return returnData;
 };

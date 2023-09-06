@@ -21,7 +21,7 @@ import {
     getDWMSDetails
 } from "../services/onboardingApis";
 import { useNavigate, useParams } from "react-router-dom";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 const animatedComponents = makeAnimated();
 
@@ -413,14 +413,12 @@ const Onboarding = (props: Props) => {
                                                             }
                                                         </div>
                                                     ) : null}
-                                                    <MuButton
+                                                    <PowerfulButton
                                                         type="submit"
                                                         className={
                                                             styles.verify_button
                                                         }
-                                                        text={
-                                                            emailVerificationResultBtn
-                                                        }
+                                                        
                                                         onClick={e => {
                                                             e.preventDefault();
                                                             if (
@@ -474,7 +472,7 @@ const Onboarding = (props: Props) => {
                                                                 : {}
                                                         }
                                                         isLoading={showLoader}
-                                                    />
+                                                   >emailVerificationResultBtn</PowerfulButton> 
                                                 </form>
                                                 <a href="/login">
                                                     Do you have an account ?
@@ -498,7 +496,7 @@ const Onboarding = (props: Props) => {
                                         <div className={styles.question}>
                                             <h3>What is your role ?</h3>
                                             <div className={styles.answers}>
-                                                <button
+                                                <PowerfulButton
                                                     type="button"
                                                     onClick={() => {
                                                         roleAPI.map(
@@ -523,8 +521,8 @@ const Onboarding = (props: Props) => {
                                                     }}
                                                 >
                                                     I'm currently studying
-                                                </button>
-                                                <button
+                                                </PowerfulButton>
+                                                <PowerfulButton
                                                     type="button"
                                                     onClick={() => {
                                                         setOpacity(0);
@@ -540,8 +538,8 @@ const Onboarding = (props: Props) => {
                                                 >
                                                     I'm currently a working
                                                     professional
-                                                </button>
-                                                <button
+                                                </PowerfulButton>
+                                                <PowerfulButton
                                                     type="button"
                                                     onClick={() => {
                                                         roleAPI.map(
@@ -567,8 +565,8 @@ const Onboarding = (props: Props) => {
                                                     }}
                                                 >
                                                     I'm teaching in a institute
-                                                </button>
-                                                <button
+                                                </PowerfulButton>
+                                                <PowerfulButton
                                                     type="button"
                                                     onClick={() => {
                                                         setOpacity(0);
@@ -580,8 +578,8 @@ const Onboarding = (props: Props) => {
                                                     }}
                                                 >
                                                     I'm a freelancer
-                                                </button>
-                                                <button
+                                                </PowerfulButton>
+                                                <PowerfulButton
                                                     type="button"
                                                     onClick={() => {
                                                         setOpacity(0);
@@ -592,7 +590,7 @@ const Onboarding = (props: Props) => {
                                                 >
                                                     I'm not working, not
                                                     studying
-                                                </button>
+                                                </PowerfulButton>
                                             </div>
                                         </div>
                                     </div>
@@ -614,7 +612,7 @@ const Onboarding = (props: Props) => {
                                                 Mentor?
                                             </h3>
                                             <div className={styles.answers}>
-                                                <button
+                                                <PowerfulButton
                                                     type="button"
                                                     onClick={() => {
                                                         setRole([
@@ -630,8 +628,8 @@ const Onboarding = (props: Props) => {
                                                     }}
                                                 >
                                                     No
-                                                </button>
-                                                <button
+                                                </PowerfulButton>
+                                                <PowerfulButton
                                                     type="button"
                                                     onClick={() => {
                                                         roleAPI.map(
@@ -657,7 +655,7 @@ const Onboarding = (props: Props) => {
                                                     }}
                                                 >
                                                     Yes
-                                                </button>
+                                                </PowerfulButton>
                                             </div>
                                         </div>
                                     </div>
@@ -825,7 +823,7 @@ const Onboarding = (props: Props) => {
                                                 onChange={formik.handleChange}
                                                 value={formik.values.password}
                                             />
-                                            <button
+                                            <PowerfulButton
                                                 type="button"
                                                 className={styles.password_icon}
                                                 onClick={e => {
@@ -846,7 +844,7 @@ const Onboarding = (props: Props) => {
                                                 ) : (
                                                     <i className="fi fi-sr-eye-crossed"></i>
                                                 )}
-                                            </button>
+                                            </PowerfulButton>
                                             {formik.touched.password &&
                                             formik.errors.password ? (
                                                 <div
@@ -879,7 +877,7 @@ const Onboarding = (props: Props) => {
                                                         .confirmPassword
                                                 }
                                             />
-                                            <button
+                                            <PowerfulButton
                                                 type="button"
                                                 className={styles.password_icon}
                                                 onClick={e => {
@@ -900,7 +898,7 @@ const Onboarding = (props: Props) => {
                                                 ) : (
                                                     <i className="fi fi-sr-eye-crossed"></i>
                                                 )}
-                                            </button>
+                                            </PowerfulButton>
                                             {formik.touched.confirmPassword &&
                                             formik.errors.confirmPassword ? (
                                                 <div
@@ -1918,7 +1916,7 @@ const Onboarding = (props: Props) => {
                                         </label>
                                     </div>
                                     <div className={styles.form_buttons}>
-                                        <button
+                                        <PowerfulButton
                                             type="reset"
                                             onClick={() => {
                                                 community_select_ref.current.clearValue();
@@ -1928,10 +1926,9 @@ const Onboarding = (props: Props) => {
                                             }}
                                         >
                                             Cancel
-                                        </button>
-                                        <MuButton
+                                        </PowerfulButton>
+                                        <PowerfulButton
                                             className={styles.submit_button}
-                                            text={"Submit"}
                                             type="submit"
                                             onClick={e => {
                                                 // e.preventDefault();
@@ -1992,7 +1989,7 @@ const Onboarding = (props: Props) => {
                                                       }
                                             }
                                             disabled={!tcChecked}
-                                        />
+                                        >Submit</PowerfulButton>
                                     </div>
                                 </div>
                             </form>

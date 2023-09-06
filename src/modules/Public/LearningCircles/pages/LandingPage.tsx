@@ -9,9 +9,11 @@ import {
     fetchLC,
     fetchLCFull,
     fetchStateOptions,
+    getCount,
     getInterestGroups
 } from "../services/LandingPageApi";
 import Select from "react-select";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 interface Option {
     value: string;
@@ -32,18 +34,20 @@ const LandingPage = () => {
     const [campus, setCampus] = useState("");
     const [igOptions, setIgOptions] = useState<Option[] | undefined>([]);
     const [ig, setIg] = useState("");
+    const [count, setCount] = useState<LcCount>();
 
     const [selectedDistrict, setSelectedDistrict] = useState<Option | null>(
         null
     );
     const [selectedCampus, setSelectedCampus] = useState<Option | null>(null);
     const [selectedIg, setSelectedIg] = useState<Option | null>(null);
+    const [msg, setMsg] = useState<string>("Select a district");
 
     useEffect(() => {
         fetchCountryOptions(setCountryOptions);
         fetchStateOptions(country, setStateOptions);
         fetchDistrictOptions(state, setDistrictOptions);
-        console.log(districtOptions);
+        getCount(setCount);
     }, []);
 
     const handleCountryChange = async (selectedCountry: Option | null) => {
@@ -79,6 +83,7 @@ const LandingPage = () => {
             setData([]);
             setSelectedCampus(null);
             setSelectedIg(null);
+			setMsg("Select a campus");
         }
     };
 
@@ -88,10 +93,11 @@ const LandingPage = () => {
             setCampus(selectedCampus.value);
             setIgOptions(await getInterestGroups());
             setSelectedIg(null);
-			setTimeout(() => {
+            setTimeout(() => {
                 fetchLCFull(setData, selectedCampus.value, district);
             }, 1000);
             setData([]);
+			setMsg("");
         }
     };
 
@@ -117,7 +123,7 @@ const LandingPage = () => {
             color: "#000",
             width: "100%",
             padding: ".3rem .4rem",
-			minWidth: "200px",
+            minWidth: "200px",
         }),
         placeholder: (provided: any) => ({
             ...provided,
@@ -135,7 +141,14 @@ const LandingPage = () => {
     const targetRef = useRef<HTMLDivElement>(null); // Create a ref
 
     useEffect(() => {
-        const finalValues: number[] = [1, 16, 20, 500, 2500]; // Replace with your actual final values
+
+        const finalValues: number[] = [
+            count?.state ?? 0,
+            count?.district ?? 0,
+            count?.interest_group ?? 0,
+            count?.college ?? 0,
+            count?.learning_circle ?? 0
+        ];
 
         const observer = new IntersectionObserver(
             entries => {
@@ -145,10 +158,10 @@ const LandingPage = () => {
                             prevCounters.map((counter, index) =>
                                 counter < finalValues[index]
                                     ? counter +
-                                      Math.ceil(
-                                          finalValues[index] /
-                                              (durationInSeconds * 20)
-                                      ) // Increment smoothly
+                                    Math.ceil(
+                                        finalValues[index] /
+                                        (durationInSeconds * 20)
+                                    ) // Increment smoothly
                                     : finalValues[index]
                             )
                         );
@@ -175,7 +188,7 @@ const LandingPage = () => {
                 observer.unobserve(targetRef.current);
             }
         };
-    }, []);
+    }, [count]);
 
     return (
         <div className={styles.LClandingPage}>
@@ -188,13 +201,13 @@ const LandingPage = () => {
                         <Link to="https://learn.mulearn.org/">Interest Group</Link>
                         <Link to="https://mulearn.org/careers">Careers</Link>
                     </div>
-                    <button
+                    <PowerfulButton
                         onClick={() => {
                             navigate("/dashboard/connect-discord");
                         }}
                     >
                         Join Us
-                    </button>
+                    </PowerfulButton>
                 </div>
             </nav>
 
@@ -214,9 +227,9 @@ const LandingPage = () => {
                     time learning about new things with a group of people with
                     same interests!
                 </p>
-                <button onClick={() => navigate("/dashboard/learning-circle")}>
+                <PowerfulButton onClick={() => navigate("/dashboard/learning-circle")}>
                     Create/Join Learning Circles
-                </button>
+                </PowerfulButton>
             </div>
 
             <div className={styles.LClandingPageEarth}>
@@ -235,12 +248,12 @@ const LandingPage = () => {
                                     {index === 0
                                         ? "State"
                                         : index === 1
-                                        ? "Districts"
-                                        : index === 2
-                                        ? "Interest Groups"
-                                        : index === 3
-                                        ? "Campuses"
-                                        : "Learning Circles"}
+                                            ? "Districts"
+                                            : index === 2
+                                                ? "Interest Groups"
+                                                : index === 3
+                                                    ? "Campuses"
+                                                    : "Learning Circles"}
                                 </p>
                             </div>
                         ))}
@@ -321,14 +334,15 @@ const LandingPage = () => {
                             </div>
                         ))
                     ) : (
-                            <div className={styles.LClandingPagenone}>
-                                <img
-                                    src={imageBottom}
-                                    alt="You haven't joined any circles yet"
-                                    loading="eager"
-                                />
-                            </div>
-                    )}       
+                        <div className={styles.LClandingPagenone}>
+                            <img
+                                src={imageBottom}
+                                alt="You haven't joined any circles yet"
+                                loading="eager"
+                            />
+							<b>{msg}</b>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

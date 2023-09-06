@@ -69,7 +69,7 @@ export const getdistrictdashboard = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -105,7 +105,7 @@ export const getAffiliation = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -131,7 +131,7 @@ export const getCountry = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -157,7 +157,7 @@ export const getStates = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -184,7 +184,7 @@ export const getZones = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -214,7 +214,7 @@ export const getDistricts = async (
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
@@ -228,40 +228,52 @@ export const getInfo = async (code: string) => {
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            console.log(error.response);
+            throw error;
         }
     }
 };
-export const getStudentLevels = async () => {
-    const sum = (arr: number[]) => {
-        return arr.slice(1).reduce((acc, curr) => acc + curr);
-    };
+export const getStudentLevels = async (errHandler: (err: string) => void) => {
+    try {
+        // const sum = (arr: number[]) => {
+        //     return arr.slice(1).reduce((acc, curr) => acc + curr);
+        // };
 
-    const response = await privateGateway.get(
-        dashboardRoutes.getDistrictStudentLevels
-    );
-    const data = response.data.response;
+        const response = await privateGateway.get(
+            dashboardRoutes.getDistrictStudentLevels
+        );
+        const data = response.data.response;
 
-    return [
-        [
-            " ",
-            data[2].students_count,
-            data[3].students_count,
-            data[0].students_count,
-            data[1].students_count
-        ]
-    ];
+        return [
+            [
+                " ",
+                data[2].students_count,
+                data[3].students_count,
+                data[0].students_count,
+                data[1].students_count
+            ]
+        ];
+    } catch (err: any) {
+        console.log(err);
+        errHandler((err as AxiosError).message);
+        return [];
+    }
 };
 
-export const getTopCampus = async () => {
-    const response = await privateGateway.get(
-        dashboardRoutes.getDistrictTopCampus
-    );
-    const data = response.data.response;
-    const returnData: any[] = [["Colleges"], [" "]];
-    for (let item of data) {
-        returnData[0].push(item.campus_code);
-        returnData[1].push(item.karma);
+export const getTopCampus = async (errHandler: (err: string) => void) => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getDistrictTopCampus
+        );
+        const data = response.data.response;
+        const returnData: any[] = [["Colleges"], [" "]];
+        for (let item of data) {
+            returnData[0].push(item.campus_code);
+            returnData[1].push(item.karma);
+        }
+        return returnData;
+    } catch (err: any) {
+        console.log(err);
+        errHandler((err as AxiosError).message);
+        return [];
     }
-    return returnData;
 };

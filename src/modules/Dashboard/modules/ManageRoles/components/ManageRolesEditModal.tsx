@@ -1,19 +1,19 @@
-import React,{ useEffect, useState } from "react";
-import { editManageRoles, getManageRolesDetails,isRoleUnique } from "../apis";
+import React, { useEffect, useState } from "react";
+import { editManageRoles, getManageRolesDetails, isRoleUnique } from "../apis";
 import { useToast } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import styles from "./Modal.module.css"
-import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css"
+import styles from "./Modal.module.css";
+import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css";
 import { type } from "os";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 type Props = {
-    id:string
-    onClose:any
-    values:string[]
+    id: string;
+    onClose: any;
+    values: string[];
 };
 
 const ManageRolesEditModal = (props: Props) => {
@@ -25,17 +25,14 @@ const ManageRolesEditModal = (props: Props) => {
         title: "",
         description: ""
     });
-    const id = props.id
+    const id = props.id;
     const toast = useToast();
     useEffect(() => {
         getManageRolesDetails(id, setData);
     }, []);
-    if(!data.title)
-    return(
-        <MuLoader/>
-        )
+    if (!data.title) return <MuLoader />;
     return (
-        <Formik 
+        <Formik
             enableReinitialize={true}
             initialValues={{
                 // igName: name
@@ -48,27 +45,21 @@ const ManageRolesEditModal = (props: Props) => {
                 //     .required("Required"),
                 title: Yup.string()
                     .max(30, "Must be 30 characters or less")
-                    .required("Required")
-                    .test('unique role name','role name already exists',
-                    async (value)=>{
-                            return !isRoleUnique(value,props.values)
-                        
-                    }),
+                    .required("Required"),
                 description: Yup.string()
                     .max(30, "Must be 30 characters or less")
                     .required("Required")
             })}
             onSubmit={values => {
-                (async()=>{
+                (async () => {
                     await editManageRoles(
                         id,
                         values.title,
                         values.description,
                         toast
                     );
-                    props.onClose(null)
-                })()
-                
+                    props.onClose(null);
+                })();
             }}
         >
             <Form className={styles.Form}>
@@ -91,7 +82,7 @@ const ManageRolesEditModal = (props: Props) => {
                         className={`${mustyles.btn} ${styles.Decline}`}
                         text={"Decline"}
                         onClick={() => {
-                            props.onClose(null)
+                            props.onClose(null);
                         }}
                     />
                     <MuButton

@@ -6,6 +6,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { HiOutlinePencil } from "react-icons/hi";
 import Modal from "../Modal/Modal";
 import MuLoader from "../MuLoader/MuLoader";
+import { PowerfulButton } from "../MuButtons/MuButton";
 
 enum ModalType {
     Verify,
@@ -168,7 +169,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                             >
                                                 <div className={styles.icons}>
                                                     {props.onCopyClick && (
-                                                        <button
+                                                        <PowerfulButton
                                                             onClick={() =>
                                                                 props.onCopyClick &&
                                                                 props.onCopyClick(
@@ -179,10 +180,10 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                             }
                                                         >
                                                             <i className="fi fi-rr-duplicate"></i>
-                                                        </button>
+                                                        </PowerfulButton>
                                                     )}
                                                     {props.onEditClick && (
-                                                        <button
+                                                        <PowerfulButton
                                                             onClick={() =>
                                                                 props.onEditClick &&
                                                                 props.onEditClick(
@@ -193,10 +194,10 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                             }
                                                         >
                                                             <HiOutlinePencil />
-                                                        </button>
+                                                        </PowerfulButton>
                                                     )}
                                                     {props.onVerifyClick && (
-                                                        <button
+                                                        <PowerfulButton
                                                             className={
                                                                 styles.btns
                                                             }
@@ -208,7 +209,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                             }
                                                         >
                                                             Verify
-                                                        </button>
+                                                        </PowerfulButton>
                                                     )}
                                                     {isVerifyOpen[index] && (
                                                         <Modal
@@ -231,7 +232,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                         />
                                                     )}
                                                     {props.onDeleteClick && (
-                                                        <button
+                                                        <PowerfulButton
                                                             onClick={() =>
                                                                 toggleModal(
                                                                     index,
@@ -240,7 +241,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                             }
                                                         >
                                                             <AiOutlineDelete />
-                                                        </button>
+                                                        </PowerfulButton>
                                                     )}
                                                     {isDeleteOpen[index] && (
                                                         <Modal

@@ -37,6 +37,16 @@ const CampusStudentList = (props: Props) => {
     const [pieData, setPieData] = useState<string[][] | null>(null);
     const [barData, setBarData] = useState<string[][] | null>(null);
 
+    const errHandler = (err: any) => {
+        toast({
+            title: "Data fetch failed",
+            description: err,
+            status: "error",
+            duration: 3000,
+            isClosable: true
+        });
+    };
+
     const columnOrder = [
         { column: "fullname", Label: "Name", isSortable: true },
         // { column: "email", Label: "Email", isSortable: false },
@@ -73,21 +83,14 @@ const CampusStudentList = (props: Props) => {
             getStudentDetails(setStudentData, 1, perPage, setTotalPages);
             getCampusDetails(setCampusData);
             (async () => {
-                try {
-                    setBarData([["", "Karma"]].concat(await getWeeklyKarma()));
-                    setPieData(
-                        [["Level", "UsersPerLevel"]].concat(
-                            await getStudentLevel()
-                        )
-                    );
-                } catch (err) {
-                    toast({
-                        title: "Data fetch failed",
-                        status: "error",
-                        duration: 3000,
-                        isClosable: true
-                    });
-                }
+                setBarData(
+                    [["", "Karma"]].concat(await getWeeklyKarma(errHandler))
+                );
+                setPieData(
+                    [["Level", "UsersPerLevel"]].concat(
+                        await getStudentLevel(errHandler)
+                    )
+                );
             })();
         }
         firstFetch.current = false;
@@ -190,7 +193,7 @@ const CampusStudentList = (props: Props) => {
                                     <h2>{campusData.campus_lead}</h2>
                                     <p>Campus Lead</p>
                                 </div>
-                            </div>
+                              </div>
                         </div>
                         <div className={styles.sec2}>
                             <p className={styles.clg_rank}>

@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { postCountryData } from "./apis/CountryAPI";
 import { postStateData } from "./apis/StateAPI";
 import { postZoneData } from "./apis/ZoneAPI";
@@ -33,7 +33,7 @@ const AddLocation = () => {
             postDistrictData(location.state.zone, values.ItemName);
         }
         toast({
-            title: "Interest Group created",
+            title: "Location created",
             status: "success",
             duration: 3000,
             isClosable: true
@@ -110,9 +110,9 @@ const AddLocation = () => {
                                     });
                                 }}
                             />
-                            <button type="submit" className={styles.btn_submit}>
+                            <PowerfulButton type="submit" className={styles.btn_submit}>
                                 Confirm
-                            </button>
+                            </PowerfulButton>
                         </div>
                     </Form>
                 </Formik>

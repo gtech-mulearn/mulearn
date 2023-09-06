@@ -122,7 +122,7 @@ const UrlShortener = () => {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
+        getShortenUrls(setShortUrlData, nextPage, perPage, setTotalPages);
     };
 
     const handlePreviousClick = () => {
@@ -346,6 +346,7 @@ const UrlShortener = () => {
                         margin="10px 0"
                         handleNextClick={handleNextClick}
                         handlePreviousClick={handlePreviousClick}
+                        onPerPageNumber={handlePerPageNumber}
                         perPage={perPage}
                         setPerPage={setPerPage}
                     />
