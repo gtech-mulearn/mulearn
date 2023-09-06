@@ -55,7 +55,7 @@ const LearningCircle = (props: Props) => {
                 setIsEdit(true);
             }
         }, 2000);
-    }, [handleRemove]);
+    }, []);
 
     useEffect(() => {
         if (lc && !lc.is_member) {
