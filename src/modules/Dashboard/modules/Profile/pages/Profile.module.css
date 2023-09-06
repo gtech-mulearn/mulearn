@@ -234,6 +234,10 @@
 
         .edit_profile_btn {
           right: 60px;
+
+           & i {
+            width: 15px;
+          }
         }
 
         & button {

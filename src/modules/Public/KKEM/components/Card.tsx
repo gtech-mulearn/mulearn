@@ -1,23 +1,31 @@
 import styles from "./Card.module.css";
 import { Link } from "react-router-dom";
 
-type Props = {
+export type Props = {
     name: string;
     image: string;
     link: string;
     description: string;
-}
+    largeImg?: boolean;
+    date?: string;
+};
 
-const Card:FC<Props> = ({
+const Card: FC<Props> = ({
     name,
     image,
     link,
-    description
+    description,
+    largeImg,
+    date
 }) => {
     return (
         <>
             <Link to={link}>
-                <div className={styles.card}>
+                <div
+                    className={
+                        styles.card + " " + (largeImg && styles.largeImg)
+                    }
+                >
                     <div className={styles.card_image}>
                         <img
                             src={image}
@@ -26,6 +34,7 @@ const Card:FC<Props> = ({
                         />
                     </div>
                     <p className={styles.card_heading}>{name}</p>
+                    <p className={styles.card_description}>{date}</p>
                     <p className={styles.card_description}>{description}</p>
                     {/* {link !== "#" && (
                         <Link to={link}>

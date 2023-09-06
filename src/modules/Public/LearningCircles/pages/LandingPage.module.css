@@ -234,6 +234,11 @@
     margin-bottom: 3rem;
 }
 
+.LClandingPagenone{
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
 
 
 @media(width<=1230px){

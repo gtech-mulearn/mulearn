@@ -24,6 +24,12 @@ const EditProfilePopUp = (props: Props) => {
     const toast = useToast();
     const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }]);
     const [loadStatus, setLoadStatus] = useState(false);
+    useEffect(() => {
+        window.history.pushState(null, "", window.location.href);
+        window.addEventListener("popstate", () => {
+            props.setEditPopUP(false);
+        });
+    }, [props.editPopUp]);
     const formik = useFormik({
         initialValues: {
             first_name: "",
@@ -54,10 +60,11 @@ const EditProfilePopUp = (props: Props) => {
             return errors;
         }
     });
-
+    useEffect(() => {
+        return getCommunities(setCommunityAPI, setLoadStatus);
+    }, []);
     useEffect(() => {
         getEditUserProfile(data => formik.setValues(data));
-        return getCommunities(setCommunityAPI, setLoadStatus);
     }, [props.editPopUp]);
     const buttonStyle = {
         background: "#456FF6",
@@ -120,7 +127,12 @@ const EditProfilePopUp = (props: Props) => {
             }
         >
             <div className={styles.edit_profile}>
-                <div className={styles.edit_profile_contents}>
+                <div
+                    className={styles.edit_profile_contents}
+                    tabIndex={1}
+                    onFocus={() => props.setEditPopUP(true)}
+                    onBlur={() => props.setEditPopUP(false)}
+                >
                     <h2>Edit Profile</h2>
                     <form onSubmit={formik.handleSubmit}>
                         {propsList(formik).map((item, index) => (
