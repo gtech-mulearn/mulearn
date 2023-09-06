@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './RoleOne.module.css'
+import { PowerfulButton } from '@/MuLearnComponents/MuButtons/MuButton'
 
 export default function Role1() {
     return (
@@ -18,7 +19,7 @@ export default function Role1() {
             </div>
             
             <div className={styles.submit}>
-                <button className={styles.submitB}>Submit</button>
+                <PowerfulButton className={styles.submitB}>Submit</PowerfulButton>
                 
             </div>
            

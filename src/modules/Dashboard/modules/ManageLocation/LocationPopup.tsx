@@ -3,7 +3,7 @@ import Select from "react-select";
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { useNavigate } from "react-router-dom";
 import { getCountryData } from "./apis/CountryAPI";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 import { getStateData } from "./apis/StateAPI";
 import { getZoneData } from "./apis/ZoneAPI";
@@ -215,13 +215,13 @@ const LocationPopup: FC<LocationPopupProps> = ({
                                 handlePopup(false), handleDeclined(true);
                             }}
                         />
-                        <button
+                        <PowerfulButton
                             type="submit"
                             className={styles.btn_submit}
                             onClick={() => submitPopupSelection()}
                         >
                             Confirm
-                        </button>
+                        </PowerfulButton>
                     </div>
                 </div>
             </div>

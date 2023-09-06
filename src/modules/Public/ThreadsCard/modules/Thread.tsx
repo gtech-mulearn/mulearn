@@ -8,13 +8,14 @@ import barcode from '/src/modules/Public/ThreadsCard/assets/barcode.webp'
 import blend1 from '/src/modules/Public/ThreadsCard/assets/Blend-1.webp'
 import blend2 from '/src/modules/Public/ThreadsCard/assets/Blend-2.webp'
 import blend3 from '/src/modules/Public/ThreadsCard/assets/Blend-3.webp'
+import { PowerfulButton } from '@/MuLearnComponents/MuButtons/MuButton'
 
 export default function Thread() {
     return (
         <div className={styles.ThreadCardBg}>
-            <button className={styles.ThreadCardReturn} onClick={() => window.history.back()}>
+            <PowerfulButton className={styles.ThreadCardReturn} onClick={() => window.history.back()}>
                 &larr;
-            </button>
+            </PowerfulButton>
 
             <div className={styles.cardBg}>
                 <img src={blend1} alt="" />

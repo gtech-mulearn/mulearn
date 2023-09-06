@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./EditProfilePopUp.module.css";
 import { useToast } from "@chakra-ui/react";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import {
     getCommunities,
     getEditUserProfile,
@@ -188,13 +188,13 @@ const EditProfilePopUp = (props: Props) => {
                             style={buttonStyle}
                             text={"Update Profile"}
                         />
-                        <button
+                        <PowerfulButton
                             type="button"
                             className={styles.edit_profile_close}
                             onClick={() => props.setEditPopUP(false)}
                         >
                             Close
-                        </button>
+                        </PowerfulButton>
                     </form>
                 </div>
             </div>

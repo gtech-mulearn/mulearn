@@ -7,7 +7,7 @@ import {
     otpVerification
 } from "../services/apis";
 import { useNavigate } from "react-router-dom";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 const Login = () => {
     const [showOrHidePassword, setShowOrHidePassword] = useState("password");
@@ -83,9 +83,8 @@ const Login = () => {
                                     Login with <b>OTP</b>
                                 </a>
                             </p>
-                            <MuButton
-                                type="submit"
-                                text={"Sign In"}
+                            <PowerfulButton
+                                type="submit"                              
                                 className={styles.signin_button}
                                 onClick={e => {
                                     e.preventDefault();
@@ -101,7 +100,7 @@ const Login = () => {
                                     }
                                 }}
                                 isLoading={isLoading}
-                            />
+                            >Sign In</PowerfulButton>
                             <span className={styles.register}>
                                 <a href="register">
                                     Don't have an account? Sign up
@@ -168,17 +167,8 @@ const Login = () => {
                                     Login with <b>password</b>
                                 </a>
                             </p>
-                            <MuButton
+                            <PowerfulButton
                                 type="submit"
-                                text={
-                                    hasError
-                                        ? "Request OTP"
-                                        : otpLoading
-                                        ? "Processing"
-                                        : otpError
-                                        ? "Request OTP"
-                                        : "Sign In"
-                                }
                                 className={styles.signin_button}
                                 onClick={e => {
                                     setHasError(false);
@@ -208,7 +198,15 @@ const Login = () => {
                                 isLoading={
                                     otpLoading ? otpLoading : otpVerifyLoading
                                 }
-                            />
+                            >{
+                                hasError
+                                    ? "Request OTP"
+                                    : otpLoading
+                                    ? "Processing"
+                                    : otpError
+                                    ? "Request OTP"
+                                    : "Sign In"
+                            }</PowerfulButton>
                             <span className={styles.register}>
                                 {" "}
                                 <a href="register">

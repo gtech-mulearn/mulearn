@@ -87,7 +87,7 @@ const LearningCircleCreate = (props: Props) => {
                                             options={interestGroups!}
                                         />
                                     </div>
-                                      <button type="submit">Create</button>
+                                      <PowerfulButton type="submit">Create</PowerfulButton>
                                 </Form>
                             </Formik>
                         </div>

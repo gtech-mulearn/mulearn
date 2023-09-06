@@ -21,8 +21,8 @@ export function getNotifications(setResponse: UseStateFunc<Notification[]>,props
             console.error(err)
         })
 }
-export function clearAllNotifications(props: any) {
-    privateGateway.delete(NotificationRoutes.deleteAllNotification)
+export async function  clearAllNotifications(props: any) {
+    return await privateGateway.delete(NotificationRoutes.deleteAllNotification)
     .then(response => {})
     .catch(err => {
         props.toast({
