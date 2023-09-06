@@ -504,9 +504,7 @@ function App() {
                             path: "hackathon/organizers/:id",
                             element: (
                                 <RoleChecker
-                                    roles={[
-                                        roles.ADMIN,
-                                    ]}
+                                    roles={[roles.ADMIN]}
                                     children={<HackathonOrganizers />}
                                 />
                             )
@@ -534,6 +532,12 @@ function App() {
                                         roles.FELLOW
                                     ]}
                                     children={<LearningCircle />}
+                                    redirectPath={
+                                        <Navigate
+                                            to="/dashboard/profile"
+                                            replace
+                                        />
+                                    }
                                 />
                             )
                         },
