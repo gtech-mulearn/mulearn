@@ -115,14 +115,14 @@
     display: none;
 }
 
-/* .learningCircleLandingPageExpandBtn:checked + .learningCircleLandingPageLevel,
+ .learningCircleLandingPageExpandBtn:checked + .learningCircleLandingPageLevel,
 .learningCircleLandingPageExpandBtn:checked + .learningCircleLandingPageLevel div p{
     background: var(--blue);
     color: white;
-} */
-.learningCircleLandingPageExpandBtn:checked + .learningCircleLandingPageLevel{
+} 
+/* .learningCircleLandingPageExpandBtn:checked + .learningCircleLandingPageLevel{
     border: 1px solid var(--blue);
-}
+} */
 
 .learningCircleLandingPageExpandBtn:checked
     + .learningCircleLandingPageLevel
