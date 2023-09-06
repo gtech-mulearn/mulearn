@@ -546,6 +546,12 @@ function App() {
                                         roles.FELLOW
                                     ]}
                                     children={<LearningCircle />}
+                                    redirectPath={
+                                        <Navigate
+                                            to="/dashboard/profile"
+                                            replace
+                                        />
+                                    }
                                 />
                             )
                         },

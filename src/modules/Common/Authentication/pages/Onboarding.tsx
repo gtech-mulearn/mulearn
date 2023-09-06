@@ -251,7 +251,8 @@ const Onboarding = (props: Props) => {
             year_of_graduation: values.yog === "" ? null : values.yog, //required for student
             area_of_interests: values.areaOfInterest, //required,
             password: values.password, //required
-            referral_id: values.referral_id === "" ? null : values.referral_id
+            referral_id: values.referral_id === "" ? null : values.referral_id,
+            jsid: jsId ? jsId : null
         };
 
         registerUser(

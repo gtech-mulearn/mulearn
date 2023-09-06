@@ -22,6 +22,12 @@ const ShareProfilePopUp = (props: Props) => {
     useEffect(() => {
         fetchQRCode(setBlob);
     }, []);
+    useEffect(() => {
+        window.history.pushState(null, "", window.location.href);
+        window.addEventListener("popstate", () => {
+            props.setPopUP(false);
+        });
+    }, [props.popUP]);
     const downloadQR = () => {
         saveAs(blob, `${props.userProfile.muid}.png`);
     };
@@ -127,7 +133,7 @@ const ShareProfilePopUp = (props: Props) => {
                                         }, 3000);
                                     }}
                                 >
-                                    <p>Embed Link</p>
+                                    <p>{copy ? "Copied !" : "Embed Link"}</p>
                                     <select
                                         onChange={e => {
                                             setEmbedSize(e.target.value);
@@ -146,7 +152,7 @@ const ShareProfilePopUp = (props: Props) => {
                                         display: "flex",
                                         justifyContent: "center",
                                         padding: "26px 16px",
-                                        minWidth: "auto",
+                                        minWidth: "auto"
                                     }}
                                     text={"Download QR"}
                                     onClick={() => {
