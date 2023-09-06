@@ -7,10 +7,11 @@
   src: url("../../font/pixelmix.ttf") format("truetype");
 }
 
-.carosel {
-  width: 100%;
-  display: grid;
-  place-content: center;
+.carosel{
+    width: 100%;
+    display: grid;
+    place-content: center;
+    overflow: hidden;
 }
 .cardsConatiner {
   padding: 1rem;
@@ -162,6 +163,7 @@
     font-size: 35px;
   }
 }
+
 
 @media (width<620px) {
   .cardsConatiner {
