@@ -176,11 +176,12 @@ const LearningCircle = (props: Props) => {
                                     styles.deleteIcon
                                 }
                             >
-                                <PowerfulButton
+                                <button
+                                    
                                     onClick={() => {
                                         setIsOpen(true);
                                     }} >
-                                    Leave Circle</PowerfulButton>
+                                    Leave Circle</button>
                             </div>
                             <div></div>
                             <Tooltip

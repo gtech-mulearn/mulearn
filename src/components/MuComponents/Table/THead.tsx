@@ -29,12 +29,13 @@ const THead: React.FC<TableHeadProps> = ({
                         <div className={styles.thContainer}>
                             <span>{column.Label}</span>
                             {column.isSortable && (
-                                <PowerfulButton
+                                <button
+                                
                                     className={styles.icon}
                                     onClick={() => onIconClick(column.column)}
                                 >
                                     <BiSortAlt2 />
-                                </PowerfulButton>
+                                </button>
                             )}
                         </div>
                     </th>

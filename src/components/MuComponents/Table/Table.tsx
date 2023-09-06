@@ -169,7 +169,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                             >
                                                 <div className={styles.icons}>
                                                     {props.onCopyClick && (
-                                                        <PowerfulButton
+                                                        <button
                                                             onClick={() =>
                                                                 props.onCopyClick &&
                                                                 props.onCopyClick(
@@ -180,10 +180,10 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                             }
                                                         >
                                                             <i className="fi fi-rr-duplicate"></i>
-                                                        </PowerfulButton>
+                                                        </button>
                                                     )}
                                                     {props.onEditClick && (
-                                                        <PowerfulButton
+                                                        <button
                                                             onClick={() =>
                                                                 props.onEditClick &&
                                                                 props.onEditClick(
@@ -194,7 +194,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                             }
                                                         >
                                                             <HiOutlinePencil />
-                                                        </PowerfulButton>
+                                                        </button>
                                                     )}
                                                     {props.onVerifyClick && (
                                                         <PowerfulButton
@@ -232,7 +232,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                         />
                                                     )}
                                                     {props.onDeleteClick && (
-                                                        <PowerfulButton
+                                                        <button
                                                             onClick={() =>
                                                                 toggleModal(
                                                                     index,
@@ -241,7 +241,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                             }
                                                         >
                                                             <AiOutlineDelete />
-                                                        </PowerfulButton>
+                                                        </button>
                                                     )}
                                                     {isDeleteOpen[index] && (
                                                         <Modal
