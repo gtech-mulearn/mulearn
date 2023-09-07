@@ -35,7 +35,7 @@ export function  clearAllNotifications(props:any) {
         })
     })
     .catch(err => {
-        setNotificationList(getNotifications(setNotificationList,{toast}))
+        getNotifications(setNotificationList,{toast})
         toast({
             title: "Error",
             description: err.response.data.response,
