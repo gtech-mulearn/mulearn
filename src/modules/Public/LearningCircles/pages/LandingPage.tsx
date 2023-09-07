@@ -139,8 +139,20 @@ const LandingPage = () => {
 
     const targetRef = useRef<HTMLDivElement>(null); // Create a ref
 
-    useEffect(() => {
+	const isElementInViewport = (el: HTMLElement | null) => {
+        if (!el) return false;
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <=
+                (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <=
+                (window.innerWidth || document.documentElement.clientWidth)
+        );
+    };
 
+	useEffect(() => {
         const finalValues: number[] = [
             count?.state ?? 0,
             count?.district ?? 0,
@@ -149,45 +161,55 @@ const LandingPage = () => {
             count?.learning_circle ?? 0
         ];
 
+        const startCounterAnimation = () => {
+            const interval = setInterval(() => {
+                setCounters(prevCounters =>
+                    prevCounters.map((counter, index) =>
+                        counter < finalValues[index]
+                            ? counter +
+								Math.ceil(
+									finalValues[index] / (durationInSeconds * 20)
+								) // Increment smoothly
+                            : finalValues[index]
+                    )
+                );
+            }, 50);
+
+            return () => clearInterval(interval);
+        };
+
+        let cleanup: (() => void) | undefined;
+
         const observer = new IntersectionObserver(
             entries => {
                 if (entries[0].isIntersecting) {
-                    const interval = setInterval(() => {
-                        setCounters(prevCounters =>
-                            prevCounters.map((counter, index) =>
-                                counter < finalValues[index]
-                                    ? counter +
-                                    Math.ceil(
-                                        finalValues[index] /
-                                        (durationInSeconds * 20)
-                                    ) // Increment smoothly
-                                    : finalValues[index]
-                            )
-                        );
-                    }, 50); // Adjust the interval as needed
-
-                    return () => {
-                        clearInterval(interval);
-                    };
+                    cleanup = startCounterAnimation();
                 }
             },
             {
                 root: null,
                 rootMargin: "0px",
-                threshold: 0.5 // Adjust the threshold as needed
+                threshold: 0.5
             }
         );
 
         if (targetRef.current) {
-            observer.observe(targetRef.current);
+            if (isElementInViewport(targetRef.current)) {
+                cleanup = startCounterAnimation();
+            } else {
+                observer.observe(targetRef.current);
+            }
         }
 
         return () => {
+            if (cleanup) cleanup();
             if (targetRef.current) {
                 observer.unobserve(targetRef.current);
             }
         };
     }, [count]);
+
+
 
     return (
         <div className={styles.LClandingPage}>
