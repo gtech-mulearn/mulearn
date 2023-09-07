@@ -8,6 +8,7 @@
     border-radius: 1rem;
     box-shadow: 0 0 1rem rgba(0, 0, 0, .7);
     padding: 1.2rem 2rem;
+    padding-bottom: 2rem;
     margin: 4rem 0;
     width: fit-content;
 }
@@ -23,6 +24,9 @@
 .kkemJourneyContent {
     display: flex;
     gap: 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .kkemJourneyCard {
@@ -43,10 +47,33 @@
     margin-top: -2rem;
 }
 
+@media (width<1100px) {
+   
+    .kkemJourney {
+        padding: 1rem;
+        padding-bottom: 2rem;
+        margin: 4rem 2rem;
+    }
+
+    .kkemJourney h1 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    .kkemJourneyCard img{
+        width: 12rem;
+    }
+
+    .kkemJourneyCard span {
+        margin-top: -1rem;
+    } 
+    
+}
+
 @media(width<=768px) {
 
     .kkemJourney {
         padding: 1rem;
+        padding-bottom: 2rem;
         margin: 4rem 0;
     }
 

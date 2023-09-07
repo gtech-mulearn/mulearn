@@ -1,259 +1,253 @@
 @font-face {
-    font-family: "ArcadeClassic";
-    src: url("../../font/ARCADECLASSIC.TTF") format("truetype");
+  font-family: "ArcadeClassic";
+  src: url("../../font/ARCADECLASSIC.TTF") format("truetype");
 }
 @font-face {
-    font-family: "pixel";
-    src: url("../../font/pixelmix.ttf") format("truetype");
+  font-family: "pixel";
+  src: url("../../font/pixelmix.ttf") format("truetype");
 }
 
 .carosel{
     width: 100%;
     display: grid;
     place-content: center;
+    overflow: hidden;
 }
-.cardsConatiner{
-    padding:1rem;
-    margin: 3rem 0;
-    border-radius: 25.562px;
-    background: url("../../assets/bg.webp") no-repeat center center/cover;
-    background-color: #1E41AE;   
-    box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.50);
-    color: white;
-    display: grid;
-    place-items: center;
+.cardsConatiner {
+  padding: 1rem;
+  margin: 3rem 0;
+  border-radius: 25.562px;
+  background: url("../../assets/bg.webp") no-repeat center center/cover;
+  background-color: #1e41ae;
+  box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.5);
+  color: white;
+  display: grid;
+  place-items: center;
 }
-.cardsConatiner:nth-child(2){
-    background-color:#EE95BD;
+.cardsConatiner:nth-child(2) {
+  background-color: #ee95bd;
 }
-.cardsConatiner:nth-child(3){
-    background-color:#08A836;
+.cardsConatiner:nth-child(3) {
+  background-color: #08a836;
 }
 
-
-.card{
-    width: fit-content;
-    height: 553px;
-    display: flex;
-    
+.card {
+  width: fit-content;
+  height: 553px;
+  display: flex;
 }
-.card img{
-    margin: 2rem 0;
-    animation: fade-in 1.2s ease;
+.card img {
+  margin: 2rem 0;
+  animation: fade-in 1.2s ease;
 }
 
 .cardsConatiner:nth-child(2) .card img,
-.cardsConatiner:nth-child(3) .card img{
-    width: 15rem;
+.cardsConatiner:nth-child(3) .card img {
+  width: 15rem;
 }
 
 @keyframes fade-in {
-    0%{
-        opacity: 0;
-        transform: translate(-50px);
-    }
-    100%{
-        opacity: 1;
-        transform: translate(0px);
-    }
-
+  0% {
+    opacity: 0;
+    transform: translate(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0px);
+  }
 }
 
-.cardConatiner{
-    display: grid;
-    place-content: center;
-    font-family: inherit;
-    margin: 3rem;
-    width: 710px;
-    height: 461px;
-    padding: 55px 73px;
-    border-radius: 18.462px;
-    background: #FFF;
-    color: #000;
+.cardConatiner {
+  display: grid;
+  place-content: center;
+  font-family: inherit;
+  margin: 3rem;
+  width: 710px;
+  height: 461px;
+  padding: 55px 73px;
+  border-radius: 18.462px;
+  background: #fff;
+  color: #000;
 }
-.cardContent{
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    animation: fade-up 2s ease;
-}
-
-.cardContent h1{
-    font-family:'ArcadeClassic';
-    font-size: 49px;
-   text-transform: uppercase;
+.cardContent {
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  animation: fade-up 2s ease;
 }
 
-.cardContent h3{
-    font-family:'ArcadeClassic';
-    font-size: 22px;
-    margin: .5rem 0;
-    text-transform: uppercase;
+.cardContent h1 {
+  font-family: "ArcadeClassic";
+  font-size: 49px;
+  text-transform: uppercase;
+}
+
+.cardContent h3 {
+  font-family: "ArcadeClassic";
+  font-size: 22px;
+  margin: 0.5rem 0;
+  text-transform: uppercase;
 }
 
 @keyframes fade-up {
-    0%{
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    100%{
-        opacity: 1;
-    }
-    
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.cardblob{
-    display: flex;
-    width: 263px;
-    flex-wrap: wrap;
-    font-size: 14px;
-    gap: .5rem;
-    font-style: normal;
-    font-weight: 600;
-    margin: 1rem 0;
+.cardblob {
+  display: flex;
+  width: 263px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  gap: 0.5rem;
+  font-style: normal;
+  font-weight: 600;
+  margin: 1rem 0;
 }
-.cardblob div{
-    width: fit-content;
-    padding: 7px;
-    border-radius: 92px;
-    background: #F3F3F4;
-    animation: fade-down 2.5s ease; 
+.cardblob div {
+  width: fit-content;
+  padding: 7px;
+  border-radius: 92px;
+  background: #f3f3f4;
+  animation: fade-down 2.5s ease;
 }
-
 
 @keyframes fade-down {
-    0%{
-        opacity: 0;
-        transform: translate(-50px,50px);
-    }
-    100%{
-        opacity: 1;
-        transform: translate(0px);
-    }
+  0% {
+    opacity: 0;
+    transform: translate(-50px, 50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0px);
+  }
 }
 
-.cardContent button{
-    display: flex;
-    height: 40.615px;
-    padding: 16.615px 44.308px;
-    border-radius: 7.385px;
-    justify-content: center;
-    align-items: center;
-    background-color: #2E85FE;
-    font-family: 'pixel';
-    font-size: 14px;
-    font-weight: 400;
-    color: #FFF;
-    text-align: center;
-    margin-bottom: 1rem;
-    animation: fade-down 3s ease;
+.cardContent button {
+  display: flex;
+  height: 40.615px;
+  padding: 16.615px 44.308px;
+  border-radius: 7.385px;
+  justify-content: center;
+  align-items: center;
+  background-color: #2e85fe;
+  font-family: "pixel";
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 1rem;
+  animation: fade-down 3s ease;
 }
 
-@media(width<820px){
- 
- .cardsConatiner{
+@media (width<820px) {
+  .cardsConatiner {
     margin: 1.5rem;
     justify-content: center;
     padding: 0;
- }
- .card img{
-    width:15rem;
+  }
+  .card img {
+    width: 15rem;
     height: 25rem;
- }
- .cardConatiner{
+  }
+  .cardConatiner {
     width: fit-content;
     padding: 30px 20px;
- }
- .cardContent h1{
+  }
+  .cardContent h1 {
     font-size: 35px;
- } 
+  }
 }
 
-@media(width<620px){
-.cardsConatiner{
+
+@media (width<620px) {
+  .cardsConatiner {
     padding-bottom: 1rem;
-    margin: 4rem;
-}    
-.card{
+  }
+  .card {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-.card img{
+  }
+  .card img {
     position: relative;
     top: 50px;
-    width:8rem;
+    width: 8rem;
     height: 15rem;
     margin: 0;
     z-index: 2;
- }
-    .cardsConatiner:nth-child(2) .card img{
-        width: 10rem;
-        height: 15rem;
-    }
-     .cardsConatiner:nth-child(3) .card img{
-       height:16rem;
-       width: 8rem;
-    }
- .cardConatiner{
+  }
+  .cardsConatiner:nth-child(2) .card img {
+    width: 10rem;
+    height: 15rem;
+  }
+  .cardsConatiner:nth-child(3) .card img {
+    height: 16rem;
+    width: 8rem;
+  }
+  .cardConatiner {
     z-index: 10;
-    margin:0 3rem 6rem 3rem;
- }
+    margin: 0 3rem 6rem 3rem;
+  }
 
- .cardContent{
+  .cardContent {
     margin: 0;
- }
- .cardContent h1{
+  }
+  .cardContent h1 {
     font-size: 25px;
- }
+  }
 
- .cardContent h3{
+  .cardContent h3 {
     font-size: 20px;
- }
-
+  }
 }
 
-@media(width<415px){
-    .cardsConatiner{
-        padding-bottom: 0;
-        height: max-content;
-    }
-    .card{
-        padding: 3rem 0;
-    }
-    .card img{
-        width:5rem;
-        height: 15rem;
-        margin-top: 1rem;
-     }
-     .cardsConatiner:nth-child(1) .card img{
-       bottom: 50px;
-     }
+@media (width<415px) {
+  .cardsConatiner {
+    padding-bottom: 0;
+    height: max-content;
+  }
+  .card {
+    padding: 3rem 0;
+  }
+  .card img {
+    width: 5rem;
+    height: 15rem;
+    margin-top: 1rem;
+  }
+  .cardsConatiner:nth-child(1) .card img {
+    bottom: 50px;
+  }
 
-     .cardsConatiner:nth-child(2) .card img{
-        height: 15rem;
-        width: 8rem;
-     }
-     .cardsConatiner:nth-child(3) .card img{
-       height:15rem;
-       width: 5rem;
-    }
-     .cardConatiner{
-        padding: 15px 10px ;
-        right: 0;
-        top: -120px;
-        z-index: 10;
-        font-size: 12px;
-     }
-     .cardContent h1{
-        font-size: 22px;
-     }
-    
-     .cardContent h3{
-        font-size: 18px;
-     }
-    .cardblob{
-        width: 150px;
-        font-size: 10px;
-    }  
+  .cardsConatiner:nth-child(2) .card img {
+    height: 15rem;
+    width: 8rem;
+  }
+  .cardsConatiner:nth-child(3) .card img {
+    height: 15rem;
+    width: 5rem;
+  }
+  .cardConatiner {
+    padding: 15px 10px;
+    right: 0;
+    top: -120px;
+    z-index: 10;
+    font-size: 12px;
+  }
+  .cardContent h1 {
+    font-size: 22px;
+  }
+
+  .cardContent h3 {
+    font-size: 18px;
+  }
+  .cardblob {
+    width: 150px;
+    font-size: 10px;
+  }
 }
