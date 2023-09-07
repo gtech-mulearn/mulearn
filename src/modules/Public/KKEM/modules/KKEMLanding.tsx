@@ -146,12 +146,14 @@ export default function Landing() {
             </div>
             <IGAbout />
             <IGSection cards={igCardData} />
-            <IGSection
-                cards={pastEventCardData}
-                heading="Partnered Events"
-                headerFlag={true}
-                largeImg={true}
-            />
+            <div id="events">
+                <IGSection
+                    cards={pastEventCardData}
+                    heading="Partnered Events"
+                    headerFlag={true}
+                    largeImg={true}
+                />
+            </div>
             {/* <SkillExpress /> */}
             <Footer />
         </main>

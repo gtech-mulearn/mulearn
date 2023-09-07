@@ -77,22 +77,35 @@ export const getWeeklyKarma = async (errHandler: (err: string) => void) => {
     //data for barchart
 
     try {
-        const days = [
-            ["MON"],
-            ["TUE"],
-            ["WED"],
-            ["THU"],
-            ["FRI"],
-            ["SAT"],
-            ["SUN"]
-        ];
+        // const days = [
+        //     ["MON"],
+        //     ["TUE"],
+        //     ["WED"],
+        //     ["THU"],
+        //     ["FRI"],
+        //     ["SAT"],
+        //     ["SUN"]
+        // ];
         const response = await privateGateway.get(
             dashboardRoutes.getCampusWeeklyKarma
         );
-        let data: string[] = [];
-        if (!response.data.response.karma) data = Array(7).fill(0);
-        else data = Object.values(response.data.response.karma) as string[];
-        return days.map((day, index) => [day[0], data[index]]);
+        const { college_name, ...temp } = response.data.response;
+
+        console.log(
+            Object.keys(temp).map(key => {
+                return [key, temp[key] === null ? 0 : temp[key]];
+            })
+        );
+
+        return Object.keys(temp)
+            .map(key => {
+                return [key, temp[key] === null ? 0 : temp[key]];
+            })
+            .reverse();
+        // let data: string[] = [];
+        // if (!response.data.response.karma) data = Array(7).fill(0);
+        // else data = Object.values(response.data.response.karma) as string[];
+        // return days.map((day, index) => [day[0], data[index]]);
     } catch (err: any) {
         console.log(err);
         errHandler((err as AxiosError).message);

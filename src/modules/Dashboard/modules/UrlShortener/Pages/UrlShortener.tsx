@@ -78,6 +78,7 @@ const UrlShortener = () => {
                             // formik.handleReset(formik.values);
                         }, 500);
                         setEditBtn(false);
+                        setCreateBtn(false);
                     }
                 });
             } else {
@@ -154,7 +155,7 @@ const UrlShortener = () => {
             setSort(`-${column}`);
             getShortenUrls(
                 setShortUrlData,
-                1,
+                currentPage,
                 perPage,
                 setTotalPages,
                 "",
@@ -164,7 +165,7 @@ const UrlShortener = () => {
             setSort(column);
             getShortenUrls(
                 setShortUrlData,
-                1,
+                currentPage,
                 perPage,
                 setTotalPages,
                 "",
