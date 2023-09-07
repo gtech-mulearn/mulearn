@@ -54,7 +54,7 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
     const [disabled, setDisabled] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [integration, setIntegration] = useState('');
+    const [integration, setIntegration] = useState("");
     const toast = useToast();
     const navigate = useNavigate();
     let ruri = window.location.href.split("=")[1];
@@ -66,17 +66,17 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
         if (mu_id) {
             setMuid(mu_id);
             setJsid(js_id);
-            setIntegration('KKEM');
-            setDisabled(true)
+            setIntegration("KKEM");
+            setDisabled(true);
         }
-    }, [searchParams])
+    }, [searchParams]);
 
     useEffect(() => {
         if (js_id) {
             setJsid(js_id);
-            setIntegration('KKEM');
+            setIntegration("KKEM");
         }
-    }, [searchParams])
+    }, [searchParams]);
 
     const handleIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setMuid(e.target.value);
@@ -163,17 +163,30 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
 
                                 <button
                                     type="submit"
-                                    className={`${styles.submit} ${success ? styles.successBtn : ""
-                                        }`}
+                                    className={`${styles.submit} ${
+                                        success ? styles.successBtn : ""
+                                    }`}
                                     disabled={isLoading}
-                                    onClick={(e) => {
+                                    onClick={e => {
                                         e.preventDefault();
-                                        if (!muid || muid.length <= 0 || muid.trim().length <= 0) {
-                                            setError("Please enter a valid muid");
-                                        } else if (!password || password.length <= 0 || password.trim().length <= 0) {
-                                            setError("Please enter a valid password");
+                                        if (
+                                            !muid ||
+                                            muid.length <= 0 ||
+                                            muid.trim().length <= 0
+                                        ) {
+                                            setError(
+                                                "Please enter a valid muid"
+                                            );
+                                        } else if (
+                                            !password ||
+                                            password.length <= 0 ||
+                                            password.trim().length <= 0
+                                        ) {
+                                            setError(
+                                                "Please enter a valid password"
+                                            );
                                         } else {
-                                            setError("")
+                                            setError("");
                                             KKEMLogin(
                                                 muid,
                                                 password,
@@ -183,12 +196,14 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
                                                 ruri,
                                                 jsid,
                                                 integration
-                                            )
+                                            );
                                         }
                                     }}
                                 >
                                     {isLoading ? (
-                                        <AiOutlineLoading className={styles.spin} />
+                                        <AiOutlineLoading
+                                            className={styles.spin}
+                                        />
                                     ) : success ? (
                                         <HiCheck />
                                     ) : (
@@ -197,9 +212,17 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
                                 </button>
                             </div>
                             <div className={styles.loginHelp}>
-                                <p className={styles.loginHelpers} onClick={()=>{
-                                    navigate('/forgot-password')
-                                }}>Forgot <span className={styles.loginHelperBold}>password?</span></p>
+                                <p
+                                    className={styles.loginHelpers}
+                                    onClick={() => {
+                                        navigate("/forgot-password");
+                                    }}
+                                >
+                                    Forgot{" "}
+                                    <span className={styles.loginHelperBold}>
+                                        password?
+                                    </span>
+                                </p>
                             </div>
                         </>
                     </form>
@@ -213,9 +236,13 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
                 </div>
                 <div className={styles.flowContainer}>
                     <div className={styles.modalFooter}>
-                        <button type="button" className={styles.modalButton} onClick={() => {
-                            navigate('/register')
-                        }}>
+                        <button
+                            type="button"
+                            className={styles.modalButton}
+                            onClick={() => {
+                                navigate("/register?jsid=" + js_id);
+                            }}
+                        >
                             Get Mu-Id
                         </button>
                     </div>
