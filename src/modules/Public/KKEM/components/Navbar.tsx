@@ -5,7 +5,7 @@ export default function Navbar() {
             <div className={styles.container}>
                 <a target="_blank" rel="noreferrer" href="https://mulearn.org">About µLearn</a>
                 <a target="_blank" rel="noreferrer" href="https://knowledgemission.kerala.gov.in/">About K-KEM</a>
-                <a target="_blank" rel="noreferrer" href="https://www.instagram.com/gtechmulearn/">Our Programs</a>
+                <a href="/kkem#events">Our Programs</a>
             </div>
         </nav>
     );
