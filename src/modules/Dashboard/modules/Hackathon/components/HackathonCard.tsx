@@ -66,7 +66,7 @@ const HackathonCard: FC<HackathonCardProps> = ({
 
             <CardFooter>
                 <div style={{display: "flex",gap:"8px", flexWrap: "wrap"}}>
-                    <Badge> {hackathon.type.charAt(0).toUpperCase() + hackathon.type.slice(1)} </Badge>
+                    {/* <Badge> {hackathon.type.charAt(0).toUpperCase() + hackathon.type.slice(1)} </Badge> */}
                     <Badge> {hackathon.event_start ? DateConverter(hackathon.event_start) : "No Date"} </Badge>
                 </div>
 

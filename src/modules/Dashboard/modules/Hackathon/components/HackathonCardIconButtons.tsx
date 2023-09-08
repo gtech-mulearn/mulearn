@@ -52,8 +52,8 @@ const HackathonCardIconButtons = ({
             import.meta.env.VITE_FRONTEND_URL
         }/dashboard/hackathon/details/${hackathon.id}`
     };
-    const isShareable =
-        window.navigator.canShare && window.navigator.canShare(shareData);
+    // const isShareable =
+    //     window.navigator.canShare && window.navigator.canShare(shareData);
 
     const [isPublishOpen, setIsPublishOpen] = useState<boolean[]>(
         ownData.map(() => false)
@@ -174,10 +174,10 @@ const HackathonCardIconButtons = ({
                                             heading="Draft"
                                             content={`Are you sure you want to set ${hackathon.title} to Draft`}
                                             click={() => {
-                                                publishHackathon(
-                                                    hackathon.id,
-                                                    hackathon.status,
-                                                );
+                                                // publishHackathon(
+                                                //     hackathon.id,
+                                                //     hackathon.status,
+                                                // );
                                                 setTimeout(() => {
                                                     getHackathons(setOwnData);
                                                     getHackathons(setData);
@@ -208,11 +208,11 @@ const HackathonCardIconButtons = ({
                                         duration: 3000,
                                         isClosable: true
                                     });
-                                    if (isShareable) window.navigator.share(shareData);
+                                    // if (isShareable) window.navigator.share(shareData);
                                 }}
                             >
                                 <LuCopy data-tooltip-id="Icon"
-                                    data-tooltip-content={`Copy${ isShareable ? "/Share" : ""}`}
+                                    // data-tooltip-content={`Copy${ isShareable ? "/Share" : ""}`}
                                 />
                             </div>
                         )}
