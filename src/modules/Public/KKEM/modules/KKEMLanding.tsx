@@ -17,70 +17,71 @@ export default function Landing() {
         {
             image: igAssets.Android,
             name: "Android",
-            link: "#",
+            link: "https://learn.mulearn.org/webmobile/android",
             description:
                 "Android is a mobile operating system based on a modified version of the Linux kernel and other open-source software."
+
         },
         {
             image: igAssets.Frontend,
             name: "Front-End",
-            link: "#",
+            link: "https://learn.mulearn.org/webmobile/web",
             description: `
                     The term Front-End mainly referes to the User Interface which an user view and interacts with and its `
         },
         {
             image: igAssets.Blockchain,
             name: "Blockchain",
-            link: "#",
+            link: "https://learn.mulearn.org/blockchain",
             description: `
                     A blockchain is a digital ledger or database where encrypted blocks of digital asset data are stored and chained together`
         },
         {
             image: igAssets.AI,
             name: "Artifcial Intelligence",
-            link: "#",
+            link: "https://learn.mulearn.org/aimlanalytics/ai",
             description:
                 "AI which stands for artificial intelligence refers to systems or machines that mimic human intelligence to perform tasks."
         },
         {
             image: igAssets.ARVR,
             name: "AR/VR",
-            link: "#",
+            link: "https://learn.mulearn.org/arvrxr",
             description: `
                     Augmented and virtual reality (AR/VR) are immersive technologies that enable users to experience digitally rendered content`
         },
         {
             image: igAssets.QA,
             name: "QA",
-            link: "#",
+            link: "https://learn.mulearn.org/webmobile/qa",
             description:
                 "Quality assurance (QA) is any systematic process of determining whether a product or service meets specified requirements."
         },
         {
             image: igAssets.PM,
             name: "Product Management",
-            link: "#",
+            link: "https://learn.mulearn.org/innovationentre/pm",
             description:
                 "Are you interested in learning to build the right product and the product right?."
         },
         {
             image: igAssets.IOT,
             name: "IoT",
-            link: "#",
+            link: "https://learn.mulearn.org/iotrf/iot",
             description:
                 "IoT is the network of physical objects that are embedded with sensors, software etc.. for the purpose of connecting and exchanging data over the internet."
         },
         {
             image: igAssets.UIUX,
             name: "UI/UX",
-            link: "#",
+            link: "https://learn.mulearn.org/uiuxcreative/ux",
             description:
                 "UI Design and UX Design are some of the most in-demand skills today. While UI deals with the graphical layout of an app, UX deals with the human experience."
         },
         {
             image: igAssets.Cybersec,
             name: "Cyber Security",
-            link: "#",
+            link: "https://learn.mulearn.org/cybersec",
             description:
                 "Cyber Security is the practice of defending computers, servers, mobile devices, electronic systems, networks, and data from malicious attacks. "
         }
