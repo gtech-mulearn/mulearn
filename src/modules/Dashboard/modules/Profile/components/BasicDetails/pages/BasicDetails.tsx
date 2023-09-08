@@ -82,18 +82,18 @@ const BasicDetails = (props: Props) => {
                                                                 data.name
                                                         )
                                                     );
-                                                    editIgDetails(
-                                                        toast,
-                                                        ig
-                                                            .filter(
-                                                                (ig: any) =>
-                                                                    ig.name !=
-                                                                    data.name
-                                                            )
-                                                            .map((ig: any) => {
-                                                                return ig.id;
-                                                            })
-                                                    );
+                                                    // editIgDetails(
+                                                    //     toast,
+                                                    //     ig
+                                                    //         .filter(
+                                                    //             (ig: any) =>
+                                                    //                 ig.name !=
+                                                    //                 data.name
+                                                    //         )
+                                                    //         .map((ig: any) => {
+                                                    //             return ig.id;
+                                                    //         })
+                                                    // );
                                                 } else {
                                                     toast({
                                                         title: "Error",
