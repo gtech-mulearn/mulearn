@@ -15,6 +15,16 @@ type HackathonCardProps = {
     setData: UseStateFunc<HackList[]>;
     ownData: HackList[];
 };
+
+// return true if possible
+function isStillPossibleToApply(application:string|null){
+    if (application === null) return true
+
+    let now = new Date().getTime()
+    let applicationTime = new Date(application).getTime()
+
+    return (applicationTime - now) > 0
+}
  
 const HackathonCard: FC<HackathonCardProps> = ({
     hackathon,
@@ -69,18 +79,17 @@ const HackathonCard: FC<HackathonCardProps> = ({
                     {/* <Badge> {hackathon.type.charAt(0).toUpperCase() + hackathon.type.slice(1)} </Badge> */}
                     <Badge> {hackathon.event_start ? DateConverter(hackathon.event_start) : "No Date"} </Badge>
                 </div>
-
-            <PowerfulButton
-                children={isDraft ? "Edit Draft" : "Apply Now"}
-                variant={isDraft ? "draft" : "primary"}
-                onClick={() => {
-                    navigate(
-                        isDraft
-                            ? `/dashboard/hackathon/edit/${hackathon.id}`
-                            : `/dashboard/hackathon/details/${hackathon.id}`
-                    );
-                }}
+            {isDraft ? <PowerfulButton
+                children={"Edit Draft"}
+                variant={"draft"}
+                onClick={() => navigate(`/dashboard/hackathon/edit/${hackathon.id}`) }
             />
+            : <PowerfulButton
+                children={isStillPossibleToApply(hackathon.application_ends) ? "Apply Now" : "View Details"}
+                variant={"primary"}
+                onClick={() => navigate(`/dashboard/hackathon/details/${hackathon.id}` ) }
+            />  
+            }
             </CardFooter>
         </Card>
      );
