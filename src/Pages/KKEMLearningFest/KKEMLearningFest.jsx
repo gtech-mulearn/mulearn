@@ -4,7 +4,7 @@ import Hero from "./components/Hero/Hero";
 import Journey from "./components/Journey/Journey";
 import Footer from "./assets/footer.webp";
 import Cards from "./components/Cards/Cards"
-import Faq from "./components/FAQs/Faq";
+import Faq from "./components/FAQs/FAQ";
 
 const LearningFest = () => {
   return <div className={styles.kkemLearningFest}>
