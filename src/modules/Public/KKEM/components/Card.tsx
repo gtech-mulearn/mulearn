@@ -20,7 +20,7 @@ const Card: FC<Props> = ({
 }) => {
     return (
         <>
-            <Link to={link}>
+            <a target="_blank" rel="rel noreferrer" href={link}>
                 <div
                     className={
                         styles.card + " " + (largeImg && styles.largeImg)
@@ -61,7 +61,7 @@ const Card: FC<Props> = ({
                         </span>
                     )} */}
                 </div>
-            </Link>
+            </a>
         </>
     );
 };
