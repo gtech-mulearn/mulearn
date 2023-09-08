@@ -3,21 +3,15 @@ import * as yup from "yup";
 export const hackathonSchema = yup.object().shape({
     title: yup
         .string()
-        .required("Required")
         .min(2, "Too Short!")
         .max(50, "Too Long!"),
     tagline: yup.string().min(2, "Too Short!").max(100, "Too Long!"),
-    // .required("Required"),
     orgId: yup.string().min(2, "Too Short!"),
     place: yup.string().min(2, "Too Short!"),
     districtId: yup.string().min(2, "Too Short!"),
     type: yup.string().min(2, "Too Short!"),
     isOpenToAll: yup.boolean(),
     description: yup.string().min(5, "Too Short!"),
-    // eventStart: Yup.date(),
-    // eventEnd: Yup.date(),
-    // applicationStart: Yup.date(),
-    // applicationEnds: Yup.date(),
     participantCount: yup
         .number()
         .positive("Number of users should be a positive value")
@@ -29,10 +23,10 @@ export const hackathonSchema = yup.object().shape({
         .mixed()
         .test(
             "fileSize",
-            "File size is too large, maximum size is 10MB",
+            "File size is too large, maximum size is 1MB",
             (value: any) => {
                 if (value) {
-                    const maxSize = 10 * 1024 * 1024; // 10MB
+                    const maxSize = 1 * 1024 * 1024; // 1MB
                     return value.size <= maxSize;
                 }
                 return true; // No file selected, so it passes validation
@@ -58,10 +52,10 @@ export const hackathonSchema = yup.object().shape({
         .mixed()
         .test(
             "fileSize",
-            "File size is too large, maximum size is 20MB",
+            "File size is too large, maximum size is 1MB",
             (value: any) => {
                 if (value) {
-                    const maxSize = 20 * 1024 * 1024; // 20MB
+                    const maxSize = 1 * 1024 * 1024; // 1MB
                     return value.size <= maxSize;
                 }
                 return true; // No file selected, so it passes validation

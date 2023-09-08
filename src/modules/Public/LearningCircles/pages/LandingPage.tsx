@@ -140,7 +140,9 @@ const LandingPage = () => {
     const targetRef = useRef<HTMLDivElement>(null); // Create a ref
 
 	const isElementInViewport = (el: HTMLElement | null) => {
-        if (!el) return false;
+        if (!el) {
+            return false;
+        }
         const rect = el.getBoundingClientRect();
         return (
             rect.top >= 0 &&
@@ -202,7 +204,9 @@ const LandingPage = () => {
         }
 
         return () => {
-            if (cleanup) cleanup();
+            if (cleanup) {
+                cleanup();
+            }
             if (targetRef.current) {
                 observer.unobserve(targetRef.current);
             }
