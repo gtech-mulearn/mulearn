@@ -5,7 +5,6 @@ import muship from "../../../assets/muship.webp";
 import astroo from "../../../assets/astroo.webp";
 import astro from "../../../assets/astro.webp";
 import planet from "../../../assets/planet.webp";
-import OnboardingHeader from "../../../components/Head/OnboardingHeader";
 
 type TemplateProps = {
     children: ReactNode;
@@ -19,7 +18,6 @@ export default function OnboardingTemplate({ children }: TemplateProps) {
             <img className={styles.templateAstroo} src={astroo} alt="" />
             <img className={styles.templateMufo} src={mufo} alt="" />
             <img className={styles.templateMuship} src={muship} alt="" />
-            <OnboardingHeader />
             {children}
         </div>
     );

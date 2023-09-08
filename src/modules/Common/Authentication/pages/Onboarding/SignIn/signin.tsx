@@ -1,10 +1,17 @@
 import styles from "./SignIn.module.css";
 import google from "../../../assets/google.png";
 import OnboardingTemplate from "../OnboardingTeamplate/OnboardingTemplate";
+import OnboardingHeader from "../../../components/Head/OnboardingHeader";
 
 export default function SignIn() {
     return (
         <OnboardingTemplate>
+            <OnboardingHeader
+                title={"Hello ! Welcome back"}
+                desc={
+                    "Hey Welcome, please enter your details to<br/>sign in your account"
+                }
+            />
             <div>
                 <div className={styles.wrapper}>
                     <form action="">
