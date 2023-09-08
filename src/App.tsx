@@ -175,15 +175,13 @@ const CollegeLevels = lazy(
 import { roles } from "./services/types";
 import SecureAuthRoutes from "./services/authCheck";
 
-import Settings from "./modules/Dashboard/modules/Settings/Settings";
 import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
 import Refer from "./modules/Dashboard/modules/Refer/Refer";
-import Thread from "./modules/Public/ThreadsCard/modules/Thread";
-import RoleOne from "./modules/Common/Authentication/pages/Onboarding/RoleOne";
 import RoleFour from "./modules/Common/Authentication/pages/Onboarding/RoleFour";
 import LandingPage from "./modules/Public/LearningCircles/pages/LandingPage";
 import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/SignIn";
 import AccountCreation from "./modules/Common/Authentication/pages/Onboarding/AccountCreation/AccountCreation";
+import Rolepage from "./modules/Common/Authentication/pages/Onboarding/RolePage/Rolepage";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -232,8 +230,8 @@ function App() {
             element: <AccountCreation />
         },
         {
-            path: "/RoleOne",
-            element: <RoleOne />
+            path: "/role",
+            element: <Rolepage />
         },
         {
             path: "/RoleFour",
