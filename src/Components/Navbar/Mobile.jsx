@@ -89,7 +89,7 @@ export const MobileMenu = ({
           </button>
         </a>
         <a
-          href="http://mulearn.org/magazine"
+          href="http://mulearn.org/r/magazine"
           target="_blank"
           rel="noopener noreferrer"
           className="py-3 px-3 inline-block"
