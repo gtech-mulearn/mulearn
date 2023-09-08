@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './RoleOne.module.css'
 
 export default function Role1() {
@@ -21,7 +20,6 @@ export default function Role1() {
                 <button className={styles.submitB}>Submit</button>
                 
             </div>
-           
         </form>
     </div>
     </div>

@@ -1,11 +1,16 @@
 import styles from "./AccountCreation.module.css";
 import { FcGoogle } from "react-icons/fc";
 import { HiEye } from "react-icons/hi2";
-import OnboardingTemplate from "../OnboardingTeamplate/OnboardingTemplate";
+import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
+import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
 
 export default function AccountCreation() {
     return (
         <OnboardingTemplate>
+            <OnboardingHeader
+                title={"Welcome ! Create Account"}
+                desc={"Please enter the user informations"}
+            />
             <div className={styles.accountCreationContainer}>
                 <div className={styles.accountCreationInputs}>
                     <input type="email" placeholder="Email id" required />
