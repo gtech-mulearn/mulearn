@@ -179,7 +179,6 @@ import Settings from "./modules/Dashboard/modules/Settings/Settings";
 import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
 import Refer from "./modules/Dashboard/modules/Refer/Refer";
 import Thread from "./modules/Public/ThreadsCard/modules/Thread";
-import Template from "./modules/Common/Authentication/pages/Onboarding/Template";
 import SignIn from "./modules/Common/Authentication/pages/Onboarding/signin";
 import RoleOne from "./modules/Common/Authentication/pages/Onboarding/RoleOne";
 import RoleFour from "./modules/Common/Authentication/pages/Onboarding/RoleFour";
@@ -222,10 +221,6 @@ function App() {
                 { path: "forgot-password", element: <ForgotPassword /> },
                 { path: "reset-password", element: <ResetPassword /> }
             ]
-        },
-        {
-            path: "/template",
-            element: <Template />
         },
         {
             path: "/signin",
@@ -532,7 +527,7 @@ function App() {
                                         roles.ADMIN,
                                         roles.FELLOW
                                     ]}
-									toastText="Unauthorized"
+                                    toastText="Unauthorized"
                                     children={<LearningCircleLandingPage />}
                                 />
                             )
