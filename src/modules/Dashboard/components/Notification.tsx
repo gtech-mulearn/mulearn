@@ -13,19 +13,14 @@ interface NotificationComponentProps {
 }
 
 
-const NotificationMessage = ({ profile, title, created_at, description, clear, id, url, update, created_by }: NotificationMessageProps) => {
-    const toast = useToast();
-    const props={toast}
+const NotificationMessage = ({ profile, title, created_at, description, clearElementFromView, id, url, updateList, created_by }: NotificationMessageProps) => {
+    const props={toast:useToast(),updateList:updateList,clearElementFromView:clearElementFromView}
     return (
         <div className="notiMessageTab">
             <img src={profile || dpm} alt="" />
             <div className="notiMessageProfile">
                 <b>{title}</b>
-                <span className="blueDot" onClick={() => {
-                    clear()
-                    clearNotification(id, {toast}).then(() =>
-                    update())
-                }}>
+                <span className="blueDot" onClick={() => clearNotification(id, props) }>
                     <IoIosClose size={'18px'} />
                 </span>
                 <div className="day">
@@ -36,15 +31,11 @@ const NotificationMessage = ({ profile, title, created_at, description, clear, i
                 {isRequest(title) &&
                     <div className="btns">
                         <button onClick={() => {
-                            requestApproval(id, url, created_by, false, update, props);
-                            update()
-                            clear()
-                            requestApproval(id, url, created_by, false, update, props);
+                            requestApproval(id, url, created_by, false,props);
                         }}>Decline</button>
                         &nbsp;
                         <button className="accept" onClick={() => {
-                            clear()
-                            requestApproval(id, url, created_by, true, update, props)
+                            requestApproval(id, url, created_by, true, props)
                         }}>Accept</button>
                     </div>
                 }
@@ -65,31 +56,21 @@ const NotificationTab = ({ notificationList, setNotificationList }: Notification
 
     const filteredNotification = filterNotification(active, notificationList);
 
-    const clearElement = (clearedIndex: number, id: string) => {
-        setNotificationList(notificationList)
-    };
+    const clearElementFromView = ( id: string) => setNotificationList(notificationList=> notificationList.filter(item=> item.id !== id))
 
     const clearAll = () => {
         if (notificationList.length > 0){
-        clearAllNotifications(props);
-        setNotificationList([]);
+            setNotificationList([])
+            clearAllNotifications({toast:toast,setNotificationList:setNotificationList})
+        }else{
             toast({
-                title: "Success",
-                description: "All notifications cleared",
-                status: "success",
+                title: "Error",
+                description: "No notifications to clear",
+                status: "error",
                 duration: 3000,
                 isClosable: true
             })
-    }
-    else{
-        toast({
-            title: "Error",
-            description: "No notifications to clear",
-            status: "error",
-            duration: 3000,
-            isClosable: true
-        })
-    }
+        }
     }
 
     return (
@@ -119,10 +100,8 @@ const NotificationTab = ({ notificationList, setNotificationList }: Notification
                                 <NotificationMessage
                                     key={index}
                                     {...item}
-                                    clear={() => clearElement(index,item?.id)}
-                                    update={() => {
-                                        getNotifications(setNotificationList, props)
-                                    }}
+                                    clearElementFromView={() => clearElementFromView(item?.id)}
+                                    updateList={() => getNotifications(setNotificationList, props)}
                                 />
                             </div>
                         ))}
@@ -136,9 +115,9 @@ const NotificationTab = ({ notificationList, setNotificationList }: Notification
 };
 
 interface NotificationMessageProps extends NotificationProps {
-    clear: () => void;
+    clearElementFromView: () => void;
     profile?: string;
-    update: () => void;
+    updateList: () => void;
 }
 
 export default NotificationTab;
