@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 import styles from "./OnboardingTemplate.module.css";
-import mufo from "../../assets/mufo.webp";
-import muship from "../../assets/muship.webp";
-import astroo from "../../assets/astroo.webp";
-import astro from "../../assets/astro.webp";
-import planet from "../../assets/planet.webp";
+import mufo from "../../../assets/mufo.webp";
+import muship from "../../../assets/muship.webp";
+import astroo from "../../../assets/astroo.webp";
+import astro from "../../../assets/astro.webp";
+import planet from "../../../assets/planet.webp";
 import OnboardingHeader from "../../../components/Head/OnboardingHeader";
 
 type TemplateProps = {
