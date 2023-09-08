@@ -177,11 +177,12 @@ import SecureAuthRoutes from "./services/authCheck";
 
 import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
 import Refer from "./modules/Dashboard/modules/Refer/Refer";
-import RoleFour from "./modules/Common/Authentication/pages/Onboarding/RoleFour";
 import LandingPage from "./modules/Public/LearningCircles/pages/LandingPage";
 import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/SignIn";
 import AccountCreation from "./modules/Common/Authentication/pages/Onboarding/AccountCreation/AccountCreation";
-import Rolepage from "./modules/Common/Authentication/pages/Onboarding/RolePage/Rolepage";
+import Rolepage from "./modules/Common/Authentication/pages/Onboarding/RolePage/RolePage";
+import CollegePage from "./modules/Common/Authentication/pages/Onboarding/CollegePage/CollegePage";
+import CompanyPage from "./modules/Common/Authentication/pages/Onboarding/CompanyPage/CompanyPage";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -234,8 +235,12 @@ function App() {
             element: <Rolepage />
         },
         {
-            path: "/RoleFour",
-            element: <RoleFour />
+            path: "/college",
+            element: <CollegePage />
+        },
+        {
+            path: "/company",
+            element: <CompanyPage />
         },
 
         {

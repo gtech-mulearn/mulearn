@@ -1,11 +1,14 @@
-import OnboardingHeader from "../../components/OnboardingHeader/OnboardingHeader";
-import OnboardingTemplate from "../../components/OnboardingTeamplate/OnboardingTemplate";
-import styles from "./Role.module.css";
+import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
+import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
+import styles from "./CollegePage.module.css";
 
-export default function Role() {
+export default function CollegePage() {
     return (
         <OnboardingTemplate>
-            <OnboardingHeader title={""} desc={""} />
+            <OnboardingHeader
+                title={"What describe you the most!"}
+                desc={"Please select your college"}
+            />
             <div>
                 <div className={styles.wrapper}>
                     <form action="">
