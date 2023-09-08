@@ -1,0 +1,98 @@
+@font-face {
+    font-family: "ArcadeClassic";
+    src: url("../../font/ARCADECLASSIC.TTF") format("truetype");
+}
+
+.faqContainer {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 20px;
+    min-width: calc(19rem + 783px);
+    width: calc(19rem + 783px);
+    border-radius: 25.562px;
+    min-height: 270px;
+    border-radius: 27.692px;
+    background: url("../../assets/FAQ.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.50);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.faqContainer .screw {
+    background: url("../../assets/screw.png");
+    width: auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 20px;
+}
+
+.faqContainer .faqs {
+    max-width: 100%;
+    padding: 20px 30px;
+}
+
+.faqContainer .faqs h1 {
+    font-family: "ArcadeClassic";
+    font-size: 2.5rem;
+    color: #FFFFFF;
+}
+
+.faqContainer .faqs .faq .questionContainer {
+    border-bottom-width: thin;
+}
+
+.faqContainer .faqs .faq .questionContainer details {
+    min-height: 5px;
+    max-width: 700px;
+    position: relative;
+    transition: all .3s;
+    margin-top: 20px;
+}
+
+.faqContainer .faqs .faq .questionContainer details p {
+    /* font-family: "Poppins"; */
+    font-weight: 300;
+    font-size: 1rem;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+    width: 90%;
+}
+
+.faqContainer .faqs .faq .questionContainer summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: "Poppins";
+    font-weight: 300;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    margin-bottom: .5rem;
+}
+
+.faqContainer .faqs .faq .questionContainer details[open] summary~* {
+    animation: sweep .5s ease-in-out;
+}
+
+@keyframes sweep {
+    0% {
+        opacity: 0;
+        margin-left: -10px
+    }
+
+    100% {
+        opacity: 1;
+        margin-left: 0px
+    }
+}
+
+@media(width<820px) {
+    .faqContainer {
+        width: 94%;
+        min-width: unset;
+    }
+}
