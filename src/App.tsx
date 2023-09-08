@@ -179,10 +179,11 @@ import Settings from "./modules/Dashboard/modules/Settings/Settings";
 import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
 import Refer from "./modules/Dashboard/modules/Refer/Refer";
 import Thread from "./modules/Public/ThreadsCard/modules/Thread";
-import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/signin";
 import RoleOne from "./modules/Common/Authentication/pages/Onboarding/RoleOne";
 import RoleFour from "./modules/Common/Authentication/pages/Onboarding/RoleFour";
 import LandingPage from "./modules/Public/LearningCircles/pages/LandingPage";
+import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/SignIn";
+import AccountCreation from "./modules/Common/Authentication/pages/Onboarding/AccountCreation/AccountCreation";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -228,7 +229,7 @@ function App() {
         },
         {
             path: "/signup",
-            element: <SignIn />
+            element: <AccountCreation />
         },
         {
             path: "/RoleOne",

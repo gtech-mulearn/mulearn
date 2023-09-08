@@ -1,8 +1,8 @@
-import styles from "./signin.module.css";
+import styles from "./SignIn.module.css";
 import google from "../../../assets/google.png";
 import OnboardingTemplate from "../OnboardingTeamplate/OnboardingTemplate";
 
-export default function Signin() {
+export default function SignIn() {
     return (
         <OnboardingTemplate>
             <div>
