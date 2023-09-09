@@ -17,7 +17,7 @@ export const MuButton = (props: {
     onSubmit?: any;
     isLoading?: boolean; // show loading spinner if neccessary.
     disabled?: boolean; //disable the button if needed
-    buttonUrl?: string; // for styling purposes
+    buttonUrl?: string; 
     submit?: boolean; // for styling purposes
     isMinWidth?: boolean;
 }) => {
@@ -197,6 +197,7 @@ type ButtonProps = ({
     variant,
     style,
     isLoading,
+	buttonUrl,
     ...props
 }: {
     children: ReactNode;
@@ -204,6 +205,7 @@ type ButtonProps = ({
     variant?: Variants;
     style?: React.CSSProperties;
     isLoading?: boolean;
+	buttonUrl?: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element;
 
 export const PowerfulButton: ButtonProps = ({
