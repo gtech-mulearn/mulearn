@@ -7,7 +7,8 @@ interface AuthRoutesProps {
     redirectPath?: JSX.Element;
     children: JSX.Element;
     roles: Role[];
-	toastText?: string;
+	toastTitle?: string;
+	toastDescription?: string;
 }
 
 let localRoles = [] as Role[];
@@ -25,7 +26,8 @@ function SecureAuthRoutes() {
         redirectPath,
         children,
         roles,
-		toastText
+		toastTitle,
+		toastDescription
     }): JSX.Element => {
         console.log("redirectPath:", redirectPath); // Log the redirectPath
         if (hasRoleNoFetch(roles)) {
@@ -36,8 +38,8 @@ function SecureAuthRoutes() {
             useEffect(() => {
 				if(toast){
 					toast({
-						title: `${toastText}`,
-						description: "",
+						title: `${toastTitle}`,
+						description: `${toastDescription}`,
 						status: "error",
 						duration: 3000,
 						isClosable: true

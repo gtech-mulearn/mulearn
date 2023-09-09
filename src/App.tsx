@@ -175,15 +175,14 @@ const CollegeLevels = lazy(
 import { roles } from "./services/types";
 import SecureAuthRoutes from "./services/authCheck";
 
-import Settings from "./modules/Dashboard/modules/Settings/Settings";
 import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
 import Refer from "./modules/Dashboard/modules/Refer/Refer";
-import Thread from "./modules/Public/ThreadsCard/modules/Thread";
-import Template from "./modules/Common/Authentication/pages/Onboarding/Template";
-import SignIn from "./modules/Common/Authentication/pages/Onboarding/signin";
-import RoleOne from "./modules/Common/Authentication/pages/Onboarding/RoleOne";
-import RoleFour from "./modules/Common/Authentication/pages/Onboarding/RoleFour";
 import LandingPage from "./modules/Public/LearningCircles/pages/LandingPage";
+import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/SignIn";
+import AccountCreation from "./modules/Common/Authentication/pages/Onboarding/AccountCreation/AccountCreation";
+import Rolepage from "./modules/Common/Authentication/pages/Onboarding/RolePage/RolePage";
+import CollegePage from "./modules/Common/Authentication/pages/Onboarding/CollegePage/CollegePage";
+import CompanyPage from "./modules/Common/Authentication/pages/Onboarding/CompanyPage/CompanyPage";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -224,20 +223,24 @@ function App() {
             ]
         },
         {
-            path: "/template",
-            element: <Template />
-        },
-        {
             path: "/signin",
             element: <SignIn />
         },
         {
-            path: "/RoleOne",
-            element: <RoleOne />
+            path: "/signup",
+            element: <AccountCreation />
         },
         {
-            path: "/RoleFour",
-            element: <RoleFour />
+            path: "/role",
+            element: <Rolepage />
+        },
+        {
+            path: "/college",
+            element: <CollegePage />
+        },
+        {
+            path: "/company",
+            element: <CompanyPage />
         },
         {
             path: "/",
@@ -531,7 +534,8 @@ function App() {
                                         roles.ADMIN,
                                         roles.FELLOW
                                     ]}
-									toastText="Unauthorized"
+                                    toastTitle="Not Accessible"
+                                    toastDescription="Learning circle is accessible only to students."
                                     children={<LearningCircleLandingPage />}
                                 />
                             )
@@ -546,6 +550,8 @@ function App() {
                                         roles.FELLOW
                                     ]}
                                     children={<LearningCircle />}
+                                    toastTitle="Not Accessible"
+                                    toastDescription="Learning circle is accessible only to students."
                                     redirectPath={
                                         <Navigate
                                             to="/dashboard/profile"
@@ -564,6 +570,8 @@ function App() {
                                         roles.ADMIN,
                                         roles.FELLOW
                                     ]}
+                                    toastTitle="Not Accessible"
+                                    toastDescription="Learning circle is accessible only to students."
                                     children={<FindCircle />}
                                 />
                             )
@@ -577,6 +585,8 @@ function App() {
                                         roles.ADMIN,
                                         roles.FELLOW
                                     ]}
+                                    toastTitle="Not Accessible"
+                                    toastDescription="Learning circle is accessible only to students."
                                     children={<LearningCircleCreate />}
                                 />
                             )
