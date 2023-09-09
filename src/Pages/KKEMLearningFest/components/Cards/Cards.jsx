@@ -6,7 +6,8 @@ import luigi from "../../assets/Luigi.webp";
 
 export default function Cards() {
   return (
-    <div className={styles.carosel}>
+    <div className={styles.carosel}>      
+      <div className={styles.mainConatiner}>
       <div className={styles.cardsConatiner}>
         <div className={styles.card}>
           <img src={mario} alt="" />
@@ -92,6 +93,8 @@ export default function Cards() {
           </div>
         </div>
       </div>
+      </div>
+
     </div>
   );
 }
