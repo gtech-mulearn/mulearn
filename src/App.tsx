@@ -535,7 +535,8 @@ function App() {
                                         roles.ADMIN,
                                         roles.FELLOW
                                     ]}
-                                    toastText="Unauthorized"
+                                    toastTitle="Not Accessible"
+                                    toastDescription="Learning circle is accessible only to students."
                                     children={<LearningCircleLandingPage />}
                                 />
                             )
@@ -550,6 +551,8 @@ function App() {
                                         roles.FELLOW
                                     ]}
                                     children={<LearningCircle />}
+                                    toastTitle="Not Accessible"
+                                    toastDescription="Learning circle is accessible only to students."
                                     redirectPath={
                                         <Navigate
                                             to="/dashboard/profile"
@@ -568,6 +571,8 @@ function App() {
                                         roles.ADMIN,
                                         roles.FELLOW
                                     ]}
+                                    toastTitle="Not Accessible"
+                                    toastDescription="Learning circle is accessible only to students."
                                     children={<FindCircle />}
                                 />
                             )
@@ -581,6 +586,8 @@ function App() {
                                         roles.ADMIN,
                                         roles.FELLOW
                                     ]}
+                                    toastTitle="Not Accessible"
+                                    toastDescription="Learning circle is accessible only to students."
                                     children={<LearningCircleCreate />}
                                 />
                             )
