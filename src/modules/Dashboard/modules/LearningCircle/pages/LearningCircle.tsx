@@ -41,6 +41,7 @@ const LearningCircle = (props: Props) => {
     const [nextMeet, setNextMeet] = useState<string | null>(null);
     const [week, setWeek] = useState<string>("");
 
+    const [openRemoveConfrim, setOpenRemoveConfirm] = useState(false);
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -55,7 +56,7 @@ const LearningCircle = (props: Props) => {
                 setIsEdit(true);
             }
         }, 2000);
-    }, [handleRemove]);
+    }, []);
 
     useEffect(() => {
         if (lc && !lc.is_member) {
@@ -656,7 +657,15 @@ const LearningCircle = (props: Props) => {
                                                             data-tooltip-content="leave circle"
                                                             onClick={() => { handleRemove(id, member.id) }}
                                                         /> */}
-                                                        <button onClick={() => { handleRemove(id, member.id) }}>Remove</button>
+                                                        <button onClick={() => { setOpenRemoveConfirm(true) }}>Remove</button>
+                                                        {openRemoveConfrim && <Modal
+                                                            click={() => { handleRemove(id, member.id) }}
+                                                            content={`Are you want to remove ${member?.username} from ${lc?.name} ?`}
+                                                            heading={"Remove user from Learning Cicle"}
+                                                            id={"Remove"}
+                                                            setIsOpen={setOpenRemoveConfirm}
+                                                            type="error"
+                                                        />}
                                                     </div>
                                                 )}
                                             </div>

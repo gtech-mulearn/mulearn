@@ -239,7 +239,6 @@ function App() {
             path: "/RoleFour",
             element: <RoleFour />
         },
-
         {
             path: "/",
             element: <PrivateRoutes />,
@@ -532,6 +531,7 @@ function App() {
                                         roles.ADMIN,
                                         roles.FELLOW
                                     ]}
+									toastText="Unauthorized"
                                     children={<LearningCircleLandingPage />}
                                 />
                             )
