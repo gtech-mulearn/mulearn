@@ -70,9 +70,14 @@
                     margin: 0px 0px -8px 0px;
                     display: flex;
                     justify-content: flex-start;
-                    padding: 16px;
+                    padding: 16px 6px;
                     min-width: 40%;
                     position: relative;
+
+                    ::hover {
+                        background: #456FF6;
+                        color: #fff;
+                    }
 
                     & p {
                         color: #fff;

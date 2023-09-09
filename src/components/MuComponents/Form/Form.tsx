@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MuButton, PowerfulButton } from "../MuButtons/MuButton";
+import { MuButton } from "../MuButtons/MuButton";
 import Textfield from "../TextField/Textfield";
 import styles from "./Form.module.css";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -59,16 +59,18 @@ const Form = (props: Props) => {
                             />
                         ))}
                     <div className={styles.btn_container}>
-                        <PowerfulButton
+                        <MuButton
+                            text={"Decline"}
                             className={styles.btn_cancel}
                             onClick={() => {
                                 navigate(props.cancelPath);
                             }}
-                        >Decline</PowerfulButton>
-                        <PowerfulButton
+                        />
+                        <MuButton
+                            text={"Confirm"}
                             className={styles.btn_submit}
                             onClick={() => props.handleSubmitClick()}
-                        >Confirm</PowerfulButton>
+                        />
                     </div>
                 </div>
             </form>

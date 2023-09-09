@@ -56,12 +56,11 @@ export const FormikTextAreaWhite = ({ label, ...props }: any) => {
             <label className={styles.formLabel}>{label}</label>
             <textarea className="text-input" {...field} {...props} />
             {meta.touched && meta.error ? (
-                <div className={styles.error} >{meta.error}</div>
+                <div className={styles.error}>{meta.error}</div>
             ) : null}
         </div>
     );
 };
-
 
 export interface Option {
     label: string;
@@ -76,7 +75,7 @@ const customStyles: any = {
         borderRadius: "10px",
         width: "100%",
         padding: ".3rem .4rem",
-        minWidth: "200px",
+        minWidth: "200px"
     })
 };
 
@@ -84,26 +83,22 @@ interface FormikSelectProps extends SelectProps<Option> {
     name: string;
     label: string;
     options: Option[];
-    addOnChange?:Function;
+    addOnChange?: Function;
 }
 
 const FormikReactSelect: React.FC<FormikSelectProps> = ({
     name,
     label,
     options,
-    addOnChange=(()=>{}),
+    addOnChange = () => {},
     ...rest
 }) => {
     const [field, meta, helpers] = useField(name);
     const handleChange = (selectedOption: any) => {
-        addOnChange(selectedOption)
-        if(rest.isMulti)
-            helpers.setValue(
-                selectedOption
-                .map((obj:any)=>obj.value)
-            )
-        else
-            helpers.setValue(selectedOption ? selectedOption.value : null);
+        addOnChange(selectedOption);
+        if (rest.isMulti)
+            helpers.setValue(selectedOption.map((obj: any) => obj.value));
+        else helpers.setValue(selectedOption ? selectedOption.value : null);
     };
 
     const handleBlur = () => {
@@ -112,12 +107,13 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
 
     const getSelectedOption = () => {
         if (!field.value) {
-			return null;
+            return null;
         }
-        if(rest.isMulti){
-            return options.filter(option => 
-                field.value.includes(option.value)
-            ) || null   
+        if (rest.isMulti) {
+            return (
+                options.filter(option => field.value.includes(option.value)) ||
+                null
+            );
         }
         return options.find(option => option.value === field.value) || null;
     };
@@ -132,7 +128,7 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
                 id={name}
                 value={getSelectedOption()}
                 isSearchable
-				isClearable
+                isClearable
                 className={styles.reactSelect}
                 options={options}
                 onChange={handleChange}
@@ -145,7 +141,6 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
         </div>
     );
 };
-
 
 export default FormikReactSelect;
 
@@ -176,11 +171,10 @@ export const FormikImageComponent: React.FC<ImageFormProps> = ({
     );
 };
 
-
 interface FormikSelectWithoutLabelProps extends SelectProps<Option> {
     name: string;
     options: Option[];
-	onchangeFunction: any;
+    onchangeFunction: any;
 }
 
 export const FormikReactSelectCustom: React.FC<
@@ -190,8 +184,8 @@ export const FormikReactSelectCustom: React.FC<
 
     const handleChange = (selectedOption: any) => {
         helpers.setValue(selectedOption ? selectedOption.value : null);
-		console.log(selectedOption.value);
-		onchangeFunction(selectedOption.value);
+        console.log(selectedOption.value);
+        onchangeFunction(selectedOption.value);
     };
 
     const handleBlur = () => {

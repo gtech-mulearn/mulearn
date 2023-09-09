@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './rolepage.module.css'
 import mu from '/src/modules/Common/Authentication/assets/µLearn.png'
-import { PowerfulButton } from '@/MuLearnComponents/MuButtons/MuButton'
 export default function Rolepage() {
     return (
       <div className={styles.rolePageConatiner}>
@@ -37,7 +36,7 @@ export default function Rolepage() {
 
           </div>
 
-          <PowerfulButton>Continue</PowerfulButton>    
+          <button>Continue</button>    
       </div>
     )
 }

@@ -331,8 +331,6 @@ export const getDWMSDetails = (
             )
         )
         .then(response => {
-            // console.log(response.data);
-
             const {
                 job_seeker_fname,
                 job_seeker_lname,

@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './signin.module.css'
 import google from '../../assets/google.png'
-import { PowerfulButton } from '@/MuLearnComponents/MuButtons/MuButton'
 
 export default function Signin() {
     return (
@@ -19,12 +18,12 @@ export default function Signin() {
                 <p>Login with <span>OTP</span></p>
             </div>
             <div className={styles.submit}>
-                <PowerfulButton className={styles.submitB}>Submit</PowerfulButton>
+                <button className={styles.submitB}>Submit</button>
                 <p>OR</p>
-                <PowerfulButton className={styles.google}>
+                <button className={styles.google}>
                     <img className={styles.googleIcon} src={google} alt=""/>
                     <p>Sign in with google</p>
-                </PowerfulButton>
+                </button>
 
             </div>
             <div className={styles.noAccount}>

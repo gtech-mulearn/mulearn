@@ -50,7 +50,7 @@ const FindCircle = () => {
                                                 {circle?.member_count} Members
                                             </p>
                                             <div className={styles.join}>
-                                                <PowerfulButton
+                                                <button
                                                     onClick={() => {
                                                         joinCircle(circle.id);
 
@@ -62,7 +62,7 @@ const FindCircle = () => {
                                                     }}
                                                 >
                                                     Join
-                                                </PowerfulButton>
+                                                </button>
                                             </div>
                                         </div>
                                     </>

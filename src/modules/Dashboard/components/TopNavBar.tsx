@@ -10,7 +10,6 @@ import { Popover, PopoverTrigger, Button, PopoverContent, PopoverHeader, Popover
 import { Notification as NotificationProps, getNotifications } from "./api";
 import NotificationTab from "./Notification";
 import { useToast } from "@chakra-ui/react";
-import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 const TopNavBar = () => {
     const navigate = useNavigate();
     const [name, setName] = useState("");

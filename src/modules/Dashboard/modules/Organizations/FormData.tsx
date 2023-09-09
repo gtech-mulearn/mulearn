@@ -1,5 +1,5 @@
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { hasRole } from "@/MuLearnServices/common_functions";
 import { roles } from "@/MuLearnServices/types";
 import { useToast } from "@chakra-ui/react";
@@ -524,7 +524,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                                 navigate("/dashboard/organizations");
                             }}
                         />
-                        <PowerfulButton
+                        <button
                             type="submit"
                             className="btn blue-btn"
                             disabled={isDisabled}
@@ -537,7 +537,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                                     className={orgStyles.btnLoader}
                                 />
                             ) : null}
-                        </PowerfulButton>
+                        </button>
                     </div>
                 </Form>
             </Formik>

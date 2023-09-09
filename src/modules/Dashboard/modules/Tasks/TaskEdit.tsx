@@ -4,7 +4,7 @@ import {
     FormikSelect,
     FormikTextInput
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { taskEditSchema, useFormikData } from "./TaskEditUtils";
 
@@ -67,12 +67,12 @@ const TaskEdit = (props: Props) => {
                                             navigate("/dashboard/tasks");
                                         }}
                                     />
-                                    <PowerfulButton
+                                    <button
                                         type="submit"
                                         className={styles.btn_submit}
                                     >
                                         Confirm
-                                    </PowerfulButton>
+                                    </button>
                                 </div>
                             </Form>
                         </Formik>

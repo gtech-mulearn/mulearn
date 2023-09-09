@@ -55,7 +55,7 @@ const LearningCircle = (props: Props) => {
                 setIsEdit(true);
             }
         }, 2000);
-    }, []);
+    }, [handleRemove]);
 
     useEffect(() => {
         if (lc && !lc.is_member) {
@@ -177,7 +177,6 @@ const LearningCircle = (props: Props) => {
                                 }
                             >
                                 <button
-                                    
                                     onClick={() => {
                                         setIsOpen(true);
                                     }} >
@@ -276,14 +275,14 @@ const LearningCircle = (props: Props) => {
                                                         No meeting scheduled
                                                     </h1>
                                                 </div>
-                                                <PowerfulButton
+                                                <button
                                                     className={styles.BtnBtn}
                                                     onClick={() =>
                                                         setIsEdit(false)
                                                     }
                                                 >
                                                     Schedule now
-                                                </PowerfulButton>
+                                                </button>
                                             </>
                                         )}
                                     </>
@@ -441,12 +440,12 @@ const LearningCircle = (props: Props) => {
                                             </div>
                                         </div>
 
-                                        <PowerfulButton
+                                        <button
                                             className={styles.BtnBtn}
                                             onClick={handleSchedule}
                                         >
                                             Schedule
-                                        </PowerfulButton>
+                                        </button>
                                     </>
                                 )}
                             </div>
@@ -479,7 +478,7 @@ const LearningCircle = (props: Props) => {
                                             }}
                                             placeholder="Notes"
                                         />
-                                        <PowerfulButton
+                                        <button
                                             className={styles.BtnBtn}
                                             onClick={() => {
                                                 updateLcNote(id, note);
@@ -493,7 +492,7 @@ const LearningCircle = (props: Props) => {
                                             }}
                                         >
                                             Submit
-                                        </PowerfulButton>
+                                        </button>
                                     </div>
                                 )}
                             </div>
@@ -535,7 +534,7 @@ const LearningCircle = (props: Props) => {
                                                                 styles.buttons
                                                             }
                                                         >
-                                                            <PowerfulButton
+                                                            <button
                                                                 className={
                                                                     styles.BtnBtn
                                                                 }
@@ -561,8 +560,8 @@ const LearningCircle = (props: Props) => {
                                                                 }}
                                                             >
                                                                 Approve
-                                                            </PowerfulButton>
-                                                            <PowerfulButton
+                                                            </button>
+                                                            <button
                                                                 className={
                                                                     styles.BtnClr
                                                                 }
@@ -588,7 +587,7 @@ const LearningCircle = (props: Props) => {
                                                                 }}
                                                             >
                                                                 Reject
-                                                            </PowerfulButton>
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 )
@@ -657,7 +656,7 @@ const LearningCircle = (props: Props) => {
                                                             data-tooltip-content="leave circle"
                                                             onClick={() => { handleRemove(id, member.id) }}
                                                         /> */}
-                                                        <PowerfulButton onClick={() => { handleRemove(id, member.id) }}>Remove</PowerfulButton>
+                                                        <button onClick={() => { handleRemove(id, member.id) }}>Remove</button>
                                                     </div>
                                                 )}
                                             </div>

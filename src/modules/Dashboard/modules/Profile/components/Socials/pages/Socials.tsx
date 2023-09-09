@@ -68,7 +68,7 @@ const Socials = (props: Props) => {
         validate: (values: { [key: string]: string }) => {
             let errors: { [key: string]: string } = {};
             Object.entries(values).forEach(([key, value]) => {
-                if (value && !value.match(/^[a-zA-Z0-9-_]+$/)) {
+                if (value && !value.match(/^[a-zA-Z0-9-_/.]+$/)) {
                     errors[key] = "Invalid username";
                 }
             });
@@ -82,7 +82,6 @@ const Socials = (props: Props) => {
         getSocials(setSocials, formikRef);
         // console.log(formik.values);
     }, []);
-
     return (
         <>
             <div className={styles.edit_social_btn}>
@@ -117,6 +116,8 @@ const Socials = (props: Props) => {
             </div>
             <p className={styles.socials_icons}>
                 {Object.values(formik.values).filter(value => value !== "")
+                    .length != 0 ||
+                Object.values(formik.values).filter(value => value === null)
                     .length != 0
                     ? Object.entries(formik.values).map(
                           ([name, username], i) => {

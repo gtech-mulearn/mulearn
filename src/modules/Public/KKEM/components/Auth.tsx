@@ -4,7 +4,6 @@ import styles from "./Auth.module.css";
 import { userAuth } from "../services/auth";
 import { HiOutlineArrowRight, HiCheck } from "react-icons/hi";
 import { AiOutlineLoading } from "react-icons/ai";
-import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 /**
  * Page for KKEM auth when dwms_id is present in the URL
  */
@@ -59,7 +58,7 @@ export default function KKEMAuth({ jsid }: { jsid: string }) {
                     onChange={handleChange}
                 />
 
-                <PowerfulButton
+                <button
                     type="submit"
                     className={`${styles.submit} ${success ? styles.successBtn : ""
                         }`}
@@ -72,7 +71,7 @@ export default function KKEMAuth({ jsid }: { jsid: string }) {
                     ) : (
                         <HiOutlineArrowRight />
                     )}
-                </PowerfulButton>
+                </button>
             </form>
             {error && <p className={styles.error}>{error}</p>}
             {success && (

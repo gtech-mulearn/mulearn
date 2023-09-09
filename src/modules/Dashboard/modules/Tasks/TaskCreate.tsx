@@ -7,7 +7,7 @@ import {
     FormikSelect,
     FormikTextInput
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { AxiosError } from "axios";
@@ -216,9 +216,9 @@ const TaskCreate = (props: Props) => {
                                     navigate("/dashboard/tasks");
                                 }}
                             />
-                            <PowerfulButton type="submit" className={styles.btn_submit}>
+                            <button type="submit" className={styles.btn_submit}>
                                 Confirm
-                            </PowerfulButton>
+                            </button>
                         </div>
                     </Form>
                 </Formik>

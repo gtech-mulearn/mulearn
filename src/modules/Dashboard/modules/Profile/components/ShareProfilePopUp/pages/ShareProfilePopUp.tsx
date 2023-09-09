@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ShareProfilePopUp.module.css";
 import { Switch } from "@chakra-ui/react";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { saveAs } from "file-saver";
 import { fetchQRCode } from "../services/api";
 
@@ -22,6 +22,12 @@ const ShareProfilePopUp = (props: Props) => {
     useEffect(() => {
         fetchQRCode(setBlob);
     }, []);
+    useEffect(() => {
+        window.history.pushState(null, "", window.location.href);
+        window.addEventListener("popstate", () => {
+            props.setPopUP(false);
+        });
+    }, [props.popUP]);
     const downloadQR = () => {
         saveAs(blob, `${props.userProfile.muid}.png`);
     };
@@ -110,7 +116,7 @@ const ShareProfilePopUp = (props: Props) => {
                         <hr />
                         {props.profileStatus && (
                             <div className={styles.share_profile_btns}>
-                                <PowerfulButton
+                                <button
                                     className={styles.embed_copy_btn}
                                     onClick={() => {
                                         navigator.clipboard.writeText(
@@ -127,7 +133,7 @@ const ShareProfilePopUp = (props: Props) => {
                                         }, 3000);
                                     }}
                                 >
-                                    <p>Embed Link</p>
+                                    <p>{copy ? "Copied !" : "Embed Link"}</p>
                                     <select
                                         onChange={e => {
                                             setEmbedSize(e.target.value);
@@ -137,7 +143,7 @@ const ShareProfilePopUp = (props: Props) => {
                                         <option value="100">100</option>
                                         <option value="200">200</option>
                                     </select>
-                                </PowerfulButton>
+                                </button>
                                 <MuButton
                                     style={{
                                         border: "1px solid #456FF6",
@@ -145,7 +151,8 @@ const ShareProfilePopUp = (props: Props) => {
                                         margin: "0px 0px -8px 0px",
                                         display: "flex",
                                         justifyContent: "center",
-                                        padding: "26px"
+                                        padding: "26px 16px",
+                                        minWidth: "auto"
                                     }}
                                     text={"Download QR"}
                                     onClick={() => {
@@ -154,9 +161,9 @@ const ShareProfilePopUp = (props: Props) => {
                                 />
                             </div>
                         )}
-                        <PowerfulButton onClick={() => props.setPopUP(false)}>
+                        <button onClick={() => props.setPopUP(false)}>
                             {!props.profileStatus ? "Cancel" : "Close"}
-                        </PowerfulButton>
+                        </button>
                     </div>
                 </div>
             </div>

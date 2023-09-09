@@ -179,7 +179,7 @@ const KarmaVoucher = (props: Props) => {
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
-                        CSV={dashboardRoutes.getKarmaVoucher + "import/"}
+                        CSV={dashboardRoutes.getKarmaVoucher + "export/"}
                     />
                     <Table
                         rows={data}

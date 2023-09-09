@@ -6,7 +6,6 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { HiOutlinePencil } from "react-icons/hi";
 import Modal from "../Modal/Modal";
 import MuLoader from "../MuLoader/MuLoader";
-import { PowerfulButton } from "../MuButtons/MuButton";
 
 enum ModalType {
     Verify,
@@ -197,7 +196,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                         </button>
                                                     )}
                                                     {props.onVerifyClick && (
-                                                        <PowerfulButton
+                                                        <button
                                                             className={
                                                                 styles.btns
                                                             }
@@ -209,7 +208,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                             }
                                                         >
                                                             Verify
-                                                        </PowerfulButton>
+                                                        </button>
                                                     )}
                                                     {isVerifyOpen[index] && (
                                                         <Modal

@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { postCountryData } from "./apis/CountryAPI";
 import { postStateData } from "./apis/StateAPI";
 import { postZoneData } from "./apis/ZoneAPI";
@@ -110,9 +110,9 @@ const AddLocation = () => {
                                     });
                                 }}
                             />
-                            <PowerfulButton type="submit" className={styles.btn_submit}>
+                            <button type="submit" className={styles.btn_submit}>
                                 Confirm
-                            </PowerfulButton>
+                            </button>
                         </div>
                     </Form>
                 </Formik>
