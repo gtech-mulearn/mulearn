@@ -191,15 +191,47 @@ type Variants =
     | "link"
     | "draft";
 
+type ButtonProps = ({
+    children,
+    className,
+    variant,
+    style,
+    isLoading,
+    ...props
+}: {
+    children: ReactNode;
+    className?: string;
+    variant?: Variants;
+    style?: React.CSSProperties;
+    isLoading?: boolean;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element;
 
-type ButtonProps = ({ children, className, variant, style, ...props }:
-    {children: ReactNode, className?:string, variant?:Variants, style?: React.CSSProperties} & React.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element
+export const PowerfulButton: ButtonProps = ({
+    children,
+    className = "",
+    variant = "primary",
+    style,
+    isLoading,
+    ...props
+}) => {
+    const variantName = variant ? styles[`${variant}-btn`] : "";
 
-export const PowerfulButton:ButtonProps = ({ children, className = "", variant = "primary", style, ...props }) => {
-    const variantName = variant ? styles[`${variant}-btn`] : ""
-
-    return <button className={styles["common-btn"] + "  " + variantName + " " + className} 
-                             {...props} style={style}>
-        {children}
-    </button>
-}
+    return (
+        <button
+            className={
+                styles["common-btn"] + "  " + variantName + " " + className
+            }
+            {...props}
+            style={style}
+        >
+            {children}
+            {isLoading && (
+                <ClipLoader
+                    size={20}
+                    color="#ff"
+                    className={styles.btn_loader}
+                />
+            )}
+        </button>
+    );
+};
