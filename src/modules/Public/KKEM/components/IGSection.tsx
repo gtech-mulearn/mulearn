@@ -74,7 +74,9 @@ const IGSection = (props: Props) => {
                             <Card
                                 {...card}
                                 key={card.name}
+                                link={card.link}
                                 largeImg={props.largeImg}
+
                             />
                         ))}
                     </div>

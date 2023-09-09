@@ -242,7 +242,6 @@ function App() {
             path: "/company",
             element: <CompanyPage />
         },
-
         {
             path: "/",
             element: <PrivateRoutes />,
