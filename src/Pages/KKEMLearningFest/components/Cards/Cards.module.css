@@ -2,17 +2,20 @@
   font-family: "ArcadeClassic";
   src: url("../../font/ARCADECLASSIC.TTF") format("truetype");
 }
+
 @font-face {
   font-family: "pixel";
   src: url("../../font/pixelmix.ttf") format("truetype");
 }
 
-.carosel{
-    width: 100%;
-    display: grid;
-    place-content: center;
-    overflow: hidden;
+.carosel {
+  width: 100%;
+  display: grid;
+  place-content: center;
+  /* overflow: hidden; */
+  position: relative;
 }
+
 .cardsConatiner {
   padding: 1rem;
   margin: 3rem 0;
@@ -24,9 +27,11 @@
   display: grid;
   place-items: center;
 }
+
 .cardsConatiner:nth-child(2) {
   background-color: #ee95bd;
 }
+
 .cardsConatiner:nth-child(3) {
   background-color: #08a836;
 }
@@ -36,6 +41,7 @@
   height: 553px;
   display: flex;
 }
+
 .card img {
   margin: 2rem 0;
   animation: fade-in 1.2s ease;
@@ -51,6 +57,7 @@
     opacity: 0;
     transform: translate(-50px);
   }
+
   100% {
     opacity: 1;
     transform: translate(0px);
@@ -69,6 +76,7 @@
   background: #fff;
   color: #000;
 }
+
 .cardContent {
   font-style: normal;
   font-weight: 400;
@@ -94,6 +102,7 @@
     opacity: 0;
     transform: translateY(50px);
   }
+
   100% {
     opacity: 1;
   }
@@ -109,6 +118,7 @@
   font-weight: 600;
   margin: 1rem 0;
 }
+
 .cardblob div {
   width: fit-content;
   padding: 7px;
@@ -122,6 +132,7 @@
     opacity: 0;
     transform: translate(-50px, 50px);
   }
+
   100% {
     opacity: 1;
     transform: translate(0px);
@@ -151,14 +162,17 @@
     justify-content: center;
     padding: 0;
   }
+
   .card img {
     width: 15rem;
     height: 25rem;
   }
+
   .cardConatiner {
-    width: fit-content;
+    width: fit-content ;
     padding: 30px 20px;
   }
+
   .cardContent h1 {
     font-size: 35px;
   }
@@ -169,11 +183,13 @@
   .cardsConatiner {
     padding-bottom: 1rem;
   }
+
   .card {
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
+
   .card img {
     position: relative;
     top: 50px;
@@ -182,15 +198,19 @@
     margin: 0;
     z-index: 2;
   }
+
   .cardsConatiner:nth-child(2) .card img {
     width: 10rem;
     height: 15rem;
   }
+
   .cardsConatiner:nth-child(3) .card img {
     height: 16rem;
     width: 8rem;
   }
+
   .cardConatiner {
+    width: 85%;
     z-index: 10;
     margin: 0 3rem 6rem 3rem;
   }
@@ -198,6 +218,7 @@
   .cardContent {
     margin: 0;
   }
+
   .cardContent h1 {
     font-size: 25px;
   }
@@ -212,14 +233,17 @@
     padding-bottom: 0;
     height: max-content;
   }
+
   .card {
     padding: 3rem 0;
   }
+
   .card img {
     width: 5rem;
     height: 15rem;
     margin-top: 1rem;
   }
+
   .cardsConatiner:nth-child(1) .card img {
     bottom: 50px;
   }
@@ -228,17 +252,21 @@
     height: 15rem;
     width: 8rem;
   }
+
   .cardsConatiner:nth-child(3) .card img {
     height: 15rem;
     width: 5rem;
   }
+
   .cardConatiner {
+    width: 90%;
     padding: 15px 10px;
     right: 0;
     top: -120px;
     z-index: 10;
     font-size: 12px;
   }
+
   .cardContent h1 {
     font-size: 22px;
   }
@@ -246,6 +274,7 @@
   .cardContent h3 {
     font-size: 18px;
   }
+
   .cardblob {
     width: 150px;
     font-size: 10px;

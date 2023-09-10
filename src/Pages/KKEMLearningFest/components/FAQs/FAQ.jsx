@@ -28,7 +28,7 @@ const Faq = () => {
                                 <details>
                                     <summary>
                                         {item.question}
-
+                                        <span className={styles.arrow}>&#8249;</span>
                                     </summary>
                                     <p>{item.answer}</p>
                                 </details>

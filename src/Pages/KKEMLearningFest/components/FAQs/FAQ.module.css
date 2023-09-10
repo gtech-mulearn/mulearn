@@ -44,9 +44,22 @@
     border-bottom-width: thin;
 }
 
+.faqContainer .faqs .faq .questionContainer details .arrow {
+    rotate: -90deg;
+    font-size: 2.5rem;
+    color: #fff;
+    position: relative;
+    right: 1rem;
+    transition: all .3s ease-in-out;
+}
+
+.faqContainer .faqs .faq .questionContainer details[open] .arrow{
+    rotate: 90deg;
+}
+
 .faqContainer .faqs .faq .questionContainer details {
     min-height: 5px;
-    max-width: 700px;
+    /* max-width: 700px; */
     position: relative;
     transition: all .3s;
     margin-top: 20px;
@@ -72,6 +85,7 @@
     font-size: 1.5rem;
     color: #FFFFFF;
     margin-bottom: .5rem;
+    gap: 1.5rem;
 }
 
 .faqContainer .faqs .faq .questionContainer details[open] summary~* {
@@ -91,6 +105,9 @@
 }
 
 @media(width<820px) {
+    .faqContainer .faqs {
+        padding: 10px;
+    }
     .faqContainer {
         width: 94%;
         min-width: unset;
