@@ -90,7 +90,7 @@ export const getCountry = async (setCountryData: any) => {
                 return response.data
             })
             .then(data => {
-                const countries: CountryProps[] = data.response.data.countries;
+                const countries: CountryProps[] = data.response.data;
                 setCountryData(countries);
             })
     } catch (err: unknown) {
