@@ -1,14 +1,47 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import mario from "../../assets/mario.webp";
 import styles from "./Cards.module.css";
 import princess from "../../assets/Princess.webp";
 import luigi from "../../assets/Luigi.webp";
 
 export default function Cards() {
+  const slider = useRef(null);
+
+  useEffect(() => {
+    const sliderElement = slider.current; 
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    sliderElement.addEventListener('mousedown', (e) => {
+      isDown = true;
+      sliderElement.classList.add('active');
+      startX = e.pageX - sliderElement.offsetLeft;
+      scrollLeft = sliderElement.scrollLeft;
+    });
+
+    sliderElement.addEventListener('mouseleave', () => {
+      isDown = false;
+      sliderElement.classList.remove('active');
+    });
+
+    sliderElement.addEventListener('mouseup', () => {
+      isDown = false;
+      sliderElement.classList.remove('active');
+    });
+
+    sliderElement.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - sliderElement.offsetLeft;
+      const walk = (x - startX) * 3;
+      sliderElement.scrollLeft = scrollLeft - walk;
+    });
+  }, []);
+
   return (
-    <div className={styles.carosel}>      
-      <div className={styles.mainConatiner}>
-      <div className={styles.cardsConatiner}>
+    <div ref={slider} className={styles.carosel}>
+      <div  className={styles.cardsConatiner}>
         <div className={styles.card}>
           <img src={mario} alt="" />
           <div className={styles.cardConatiner}>
@@ -93,8 +126,6 @@ export default function Cards() {
           </div>
         </div>
       </div>
-      </div>
-
     </div>
   );
 }
