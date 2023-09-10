@@ -178,11 +178,11 @@ import SecureAuthRoutes from "./services/authCheck";
 import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
 import Refer from "./modules/Dashboard/modules/Refer/Refer";
 import LandingPage from "./modules/Public/LearningCircles/pages/LandingPage";
+import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/Signin";
 import AccountCreation from "./modules/Common/Authentication/pages/Onboarding/AccountCreation/AccountCreation";
 import Rolepage from "./modules/Common/Authentication/pages/Onboarding/RolePage/RolePage";
 import CollegePage from "./modules/Common/Authentication/pages/Onboarding/CollegePage/CollegePage";
 import CompanyPage from "./modules/Common/Authentication/pages/Onboarding/CompanyPage/CompanyPage";
-import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/SignIn";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")

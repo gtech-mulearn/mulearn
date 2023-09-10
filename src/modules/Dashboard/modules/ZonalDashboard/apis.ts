@@ -134,7 +134,7 @@ export const getAffiliation = async (setAffiliationData: any) => {
 export const getCountry = async (setCountryData: any) => {
     try {
         await privateGateway
-            .get(organizationRoutes.getLocation + "/country")
+            .get(organizationRoutes.getLocation + "/countries")
             .then(
                 (
                     response: APIResponse<{

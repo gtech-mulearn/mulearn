@@ -17,6 +17,8 @@ import styles from "./CampusStudentList.module.css";
 import CLIcon from "../assets/images/CampusLeadIcon.svg";
 import { useToast } from "@chakra-ui/react";
 
+import { convertDateToDayAndMonth } from "../../../utils/common";
+
 type Props = {};
 
 //TODO: Change the styles to camelCase from snake_case'
@@ -83,9 +85,13 @@ const CampusStudentList = (props: Props) => {
             getStudentDetails(setStudentData, 1, perPage, setTotalPages);
             getCampusDetails(setCampusData);
             (async () => {
-                setBarData(
-                    [["", "Karma"]].concat(await getWeeklyKarma(errHandler))
-                );
+                let weeklyKarma = await getWeeklyKarma(errHandler);
+                let formatedData = weeklyKarma.map((item: any) => [
+                    convertDateToDayAndMonth(item[0]),
+                    item[1]
+                ]);
+
+                setBarData([["", "Karma"]].concat(formatedData));
                 setPieData(
                     [["Level", "UsersPerLevel"]].concat(
                         await getStudentLevel(errHandler)
@@ -193,7 +199,7 @@ const CampusStudentList = (props: Props) => {
                                     <h2>{campusData.campus_lead}</h2>
                                     <p>Campus Lead</p>
                                 </div>
-                              </div>
+                            </div>
                         </div>
                         <div className={styles.sec2}>
                             <p className={styles.clg_rank}>
@@ -213,6 +219,7 @@ const CampusStudentList = (props: Props) => {
             <div className={styles.graphs}>
                 <div className={styles.container}>
                     <h2>Weekly Karma Insights</h2>
+
                     <BarChart
                         data={barData}
                         ylabel="Karma"
