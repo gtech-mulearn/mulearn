@@ -164,6 +164,7 @@ const CampusStudentList = (props: Props) => {
                 <div className={styles.campus_student_list_container}>
                     <div className={styles.content}>
                         <div className={styles.sec1}>
+                        <div className={styles.sec_clg}>
                             <h1 className={styles.clg_name}>
                                 {campusData &&
                                     campusData.college_name &&
@@ -172,34 +173,44 @@ const CampusStudentList = (props: Props) => {
                                     )}
                                 ({campusData.campus_code})
                             </h1>
+                        </div>
 
                             <div className={styles.details_card}>
-                                <div className={styles.card}>
-                                    <h1>
-                                        {parseInt(campusData.total_karma) > 1000
-                                            ? (
-                                                  parseInt(
-                                                      campusData.total_karma
-                                                  ) / 1000
-                                              ).toPrecision(4) + "K"
-                                            : campusData.total_karma}
-                                    </h1>
-                                    <p>Karma</p>
+
+                                <div className={styles.card_one}>
+                                    <div className={styles.card}>
+                                        <h1>
+                                            {parseInt(campusData.total_karma) > 1000
+                                                ? (
+                                                    parseInt(
+                                                        campusData.total_karma
+                                                    ) / 1000
+                                                ).toPrecision(4) + "K"
+                                                : campusData.total_karma}
+                                        </h1>
+                                        <p>Karma</p>
+                                    </div>
+                                    <div className={styles.card}>
+                                        <h1>{campusData.total_members}</h1>
+                                        <p>Total Members</p>
                                 </div>
-                                <div className={styles.card}>
-                                    <h1>{campusData.total_members}</h1>
-                                    <p>Total Members</p>
                                 </div>
-                                <div className={styles.card}>
-                                    <h1>{campusData.active_members}</h1>
-                                    <p>Active Members</p>
-                                </div>
-                                <div className={styles.campus_lead_card}>
-                                    <img src={CLIcon} alt="" />
-                                    <h2>{campusData.campus_lead}</h2>
-                                    <p>Campus Lead</p>
+                                <div className={styles.card_one}>
+                                    <div className={styles.card}>
+                                        <h1>{campusData.active_members}</h1>
+                                        <p>Active Members</p>
+                                    </div>
+                                    <div className={styles.card}>
+                                        <div className={styles.campus_lead_card}>
+                                            <img src={CLIcon} alt="" />
+                                            <h2>{campusData.campus_lead}</h2>
+                                            <p>Campus Lead</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
+
                         </div>
                         <div className={styles.sec2}>
                             <p className={styles.clg_rank}>
