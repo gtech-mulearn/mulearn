@@ -53,7 +53,7 @@
     transition: all .3s ease-in-out;
 }
 
-.faqContainer .faqs .faq .questionContainer details[open] .arrow{
+.faqContainer .faqs .faq .questionContainer details[open] .arrow {
     rotate: 90deg;
 }
 
@@ -104,12 +104,15 @@
     }
 }
 
-@media(width<820px) {
-    .faqContainer .faqs {
-        padding: 10px;
-    }
+@media(width<=1024px) {
     .faqContainer {
         width: 94%;
         min-width: unset;
+    }
+}
+
+@media(width<820px) {
+    .faqContainer .faqs {
+        padding: 10px;
     }
 }

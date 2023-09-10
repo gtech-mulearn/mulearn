@@ -10,10 +10,15 @@
 
 .carosel {
   width: 100%;
-  display: grid;
-  place-content: center;
-  /* overflow: hidden; */
+  display: flex;
   position: relative;
+  gap: 2rem;
+  padding: 0 13rem;
+  overflow-x: scroll;
+}
+
+.carosel::-webkit-scrollbar {
+  display: none;
 }
 
 .cardsConatiner {
@@ -156,7 +161,18 @@
   animation: fade-down 3s ease;
 }
 
+@media(width<1025px){
+  .carosel{
+    padding: 0 5rem;
+  }
+}
+
 @media (width<820px) {
+  .carosel {
+    padding: 0;
+    gap: 0rem;
+  }
+
   .cardsConatiner {
     margin: 1.5rem;
     justify-content: center;
@@ -169,7 +185,7 @@
   }
 
   .cardConatiner {
-    width: fit-content ;
+    width: fit-content;
     padding: 30px 20px;
   }
 
