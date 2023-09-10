@@ -1,4 +1,4 @@
-import styles from "./SignIn.module.css";
+import styles from "./Signin.module.css";
 import google from "../../../assets/google.png";
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
