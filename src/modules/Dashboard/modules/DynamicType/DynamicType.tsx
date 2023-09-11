@@ -11,7 +11,15 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
 import Modal from "./components/Modal";
 import CreateModal from "./components/CreateModal";
-import { getRoles, getTypes } from "./apis";
+import {
+    deleteRoleType,
+    deleteUserType,
+    getDynamicRoles,
+    getDynamicUsers,
+    getRoles,
+    getTypes,
+    getUsers
+} from "./apis";
 
 function DynamicType() {
     const [data, setData] = useState<any[]>([]);
@@ -22,11 +30,14 @@ function DynamicType() {
     const [isLoading, setIsLoading] = useState(false);
     const firstFetch = useRef(true);
     const toast = useToast();
+    const [tab, setTab] = useState<"Role" | "User">("Role");
+
     //Modal
     const [currModal, setCurrModal] = useState<null | "create">(null);
 
     const [roles, setRoles] = useState([]);
     const [types, setTypes] = useState([]);
+    const [users, setUsers] = useState([]);
     const icons = {
         user: (
             <div className={modalStyles.TickIcon}>
@@ -70,15 +81,13 @@ function DynamicType() {
         )
     };
 
-    const columnOrder = [
-        // { column: "id", Label: "ID", isSortable: true },
-        { column: "title", Label: "Title", isSortable: true },
-        { column: "description", Label: "Description", isSortable: true },
-        { column: "users_with_role", Label: "Members", isSortable: false },
-        { column: "updated_at", Label: "Updated On", isSortable: true },
-        { column: "updated_by", Label: "Updated By", isSortable: true },
-        { column: "created_by", Label: "Created By", isSortable: true },
-        { column: "created_at", Label: "Created On", isSortable: true }
+    const columnOrderRole = [
+        { column: "type", Label: "Type", isSortable: false },
+        { column: "role", Label: "Role", isSortable: false }
+    ];
+    const columnOrderUser = [
+        { column: "type", Label: "Type", isSortable: false },
+        { column: "user", Label: "Role", isSortable: false }
     ];
 
     const errHandler = (err: any) => {
@@ -93,17 +102,9 @@ function DynamicType() {
 
     useEffect(() => {
         if (firstFetch.current) {
-            // getManageRoles(
-            //     setData,
-            //     1,
-            //     perPage,
-            //     setIsLoading,
-            //     setTotalPages,
-            //     "",
-            //     ""
-            // );
             (async () => {
-                setRoles(await getRoles(errHandler));
+                if (tab === "Role") setRoles(await getRoles(errHandler));
+                if (tab === "User") setUsers(await getUsers(errHandler));
                 setTypes(await getTypes(errHandler));
             })();
         }
@@ -112,83 +113,75 @@ function DynamicType() {
     }, []);
 
     useEffect(() => {
-        if (firstFetch.current) return;
         if (currModal !== null) return;
-        // getManageRoles(
-        //     setData,
-        //     1,
-        //     perPage,
-        //     setIsLoading,
-        //     setTotalPages,
-        //     "",
-        //     sort
-        // );
-    }, [currModal]);
+        if (tab == "Role")
+            getDynamicRoles(
+                errHandler,
+                setData,
+                1,
+                perPage,
+                setIsLoading,
+                setTotalPages,
+                "",
+                sort
+            );
+        if (tab == "User")
+            getDynamicUsers(
+                errHandler,
+                setData,
+                1,
+                perPage,
+                setIsLoading,
+                setTotalPages,
+                "",
+                sort
+            );
+    }, [currModal, currentPage, perPage]);
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        // getManageRoles(
-        //     setData,
-        //     nextPage,
-        //     perPage,
-        //     setIsLoading,
-        //     () => {},
-        //     sort
-        // );
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        // getManageRoles(
-        //     setData,
-        //     prevPage,
-        //     perPage,
-        //     setIsLoading,
-        //     () => {},
-        //     sort
-        // );
     };
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        // getManageRoles(
-        //     setData,
-        //     1,
-        //     perPage,
-        //     setIsLoading,
-        //     setTotalPages,
-        //     search,
-        //     ""
-        // );
+        if (tab == "Role")
+            getDynamicRoles(
+                errHandler,
+                setData,
+                1,
+                perPage,
+                setIsLoading,
+                setTotalPages,
+                "",
+                sort
+            );
+        if (tab == "User")
+            getDynamicUsers(
+                errHandler,
+                setData,
+                1,
+                perPage,
+                setIsLoading,
+                setTotalPages,
+                "",
+                sort
+            );
     };
 
     const handleDelete = (id: string | undefined) => {
-        // deleteManageRoles(id, toast);
-        // getManageRoles(
-        //     setData,
-        //     1,
-        //     perPage,
-        //     setIsLoading,
-        //     setTotalPages,
-        //     "",
-        //     ""
-        // );
+        if (tab === "Role") deleteRoleType(errHandler, id);
+        if (tab === "User") deleteUserType(errHandler, id);
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        // getManageRoles(
-        //     setData,
-        //     1,
-        //     selectedValue,
-        //     setIsLoading,
-        //     setTotalPages,
-        //     "",
-        //     ""
-        // );
     };
 
     const handleCreate = () => {
@@ -196,30 +189,13 @@ function DynamicType() {
     };
 
     const handleIconClick = (column: string) => {
-        // if (sort === column) {
-        //     setSort(`-${column}`);
-        //     getManageRoles(
-        //         setData,
-        //         1,
-        //         perPage,
-        //         setIsLoading,
-        //         setTotalPages,
-        //         "",
-        //         `-${column}`
-        //     );
-        // } else {
-        //     setSort(column);
-        //     getManageRoles(
-        //         setData,
-        //         1,
-        //         perPage,
-        //         setIsLoading,
-        //         setTotalPages,
-        //         "",
-        //         column
-        //     );
-        // }
+        if (sort === column) {
+            setSort(`-${column}`);
+        } else {
+            setSort(column);
+        }
     };
+
     return (
         <>
             {currModal
@@ -233,7 +209,8 @@ function DynamicType() {
                                   paragraph="Enter the values for the new role"
                               >
                                   <CreateModal
-                                      roles={roles}
+                                      roles={tab === "Role" ? roles : undefined}
+                                      users={tab === "Role" ? users : undefined}
                                       type={types}
                                       onClose={setCurrModal}
                                   />
@@ -263,7 +240,9 @@ function DynamicType() {
                         rows={data}
                         page={currentPage}
                         perPage={perPage}
-                        columnOrder={columnOrder}
+                        columnOrder={
+                            tab === "Role" ? columnOrderRole : columnOrderUser
+                        }
                         id={["id"]}
                         onDeleteClick={handleDelete}
                         modalDeleteHeading="Delete"
@@ -271,7 +250,11 @@ function DynamicType() {
                         modalDeleteContent="Are you sure you want to delete this role ?"
                     >
                         <THead
-                            columnOrder={columnOrder}
+                            columnOrder={
+                                tab === "Role"
+                                    ? columnOrderRole
+                                    : columnOrderUser
+                            }
                             onIconClick={handleIconClick}
                             action={true}
                         />

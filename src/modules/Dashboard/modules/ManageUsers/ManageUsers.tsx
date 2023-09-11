@@ -26,7 +26,7 @@ function ManageRoles() {
         { column: "first_name", Label: "First Name", isSortable: true },
         { column: "last_name", Label: "Last Name", isSortable: true },
         { column: "karma", Label: "Total Karma", isSortable: true },
-        // { column: "mu_id", Label: "Mu ID", isSortable: false },
+        { column: "muid", Label: "Mu ID", isSortable: true },
         { column: "email", Label: "Email", isSortable: false },
         { column: "mobile", Label: "Mobile", isSortable: false },
         // { column: "dob", Label: "DOB", isSortable: false },
@@ -34,10 +34,10 @@ function ManageRoles() {
 
         // { column: "college", Label: "Institute", isSortable: false },
 
-        // { column: "discord_id", Label: "Discord ID", isSortable: false },
+        { column: "discord_id", Label: "Discord ID", isSortable: false },
         // { column: "id", Label: "ID", isSortable: false },
         // { column: "active", Label: "Active", isSortable: false },
-        { column: "level", Label: "Level", isSortable: false },
+        { column: "level", Label: "Level", isSortable: true },
         { column: "created_at", Label: "Created On", isSortable: true }
     ];
 

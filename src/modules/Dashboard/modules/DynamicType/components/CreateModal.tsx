@@ -7,44 +7,54 @@ import * as Yup from "yup";
 import FormikReactSelect, {
     FormikTextInput
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { createRoleType } from "../apis";
+import { createRoleType, createUserType } from "../apis";
 
 type Props = {
     onClose: any;
-    roles: { value: string; label: string }[];
+    users?: { value: string; label: string }[];
+    roles?: { value: string; label: string }[];
     type: { value: string; label: string }[];
 };
 
 const CreateModal = (props: Props) => {
     const toast = useToast();
-
+    const errHandler = (err: any) => {
+        toast({
+            title: "Something went wrong",
+            description: err.toString(),
+            status: "error",
+            duration: 3000,
+            isClosable: true
+        });
+    };
     return (
         <Formik
             initialValues={{
                 type: "",
-                role: ""
+                ...(props.roles && { role: "" }),
+                ...(props.users && { user: "" })
                 // acceptedTerms: false, // added for our checkbox
                 // jobType: "" // added for our select
             }}
             validationSchema={Yup.object({
                 type: Yup.string().required("Required"),
-                role: Yup.string().required("Required")
+                ...(props.roles && { role: Yup.string().required("Required") }),
+                ...(props.users && { user: Yup.string().required("Required") })
             })}
             onSubmit={values => {
                 (async () => {
-                    await createRoleType(
-                        (err: any) => {
-                            toast({
-                                title: "Something went wrong",
-                                description: err.toString(),
-                                status: "error",
-                                duration: 3000,
-                                isClosable: true
-                            });
-                        },
-                        values.type,
-                        values.role
-                    );
+                    if (props.roles)
+                        await createRoleType(
+                            errHandler,
+                            values.type,
+                            values.role!
+                        );
+                    if (props.users)
+                        await createUserType(
+                            errHandler,
+                            values.type,
+                            values.user!
+                        );
                     props.onClose(null);
                 })();
             }}
@@ -58,14 +68,26 @@ const CreateModal = (props: Props) => {
                     isClearable
                     isSearchable
                 />
-                <FormikReactSelect
-                    name="role"
-                    options={props.roles}
-                    label="Role"
-                    placeholder="Select the role"
-                    isClearable
-                    isSearchable
-                />
+                {props.roles && (
+                    <FormikReactSelect
+                        name="role"
+                        options={props.roles}
+                        label="Role"
+                        placeholder="Select the role"
+                        isClearable
+                        isSearchable
+                    />
+                )}
+                {props.users && (
+                    <FormikReactSelect
+                        name="user"
+                        options={props.users}
+                        label="User"
+                        placeholder="Select the user"
+                        isClearable
+                        isSearchable
+                    />
+                )}
 
                 <div className={styles.ButtonContainer}>
                     <MuButton
