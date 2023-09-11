@@ -5,7 +5,7 @@ import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getDepartments } from "./apis";
+import { deleteDepartment, getDepartments } from "./apis";
 
 const Departments = () => {
     const navigate = useNavigate();
@@ -32,7 +32,12 @@ const Departments = () => {
 
     const handleEdit = async (id: string | number | boolean) => {};
 
-    const handleDelete = (id: string | undefined) => {};
+    const handleDelete = async (id: string | undefined) => {
+        if (id) await deleteDepartment(id);
+        getDepartments({
+            setDepartments: setDepartments
+        });
+    };
 
     const handleIconClick = (column: string) => {};
 

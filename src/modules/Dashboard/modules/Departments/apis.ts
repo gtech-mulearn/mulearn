@@ -22,3 +22,15 @@ export const getDepartments = async ({
         console.log(err);
     }
 };
+
+export const deleteDepartment = async (id: string) => {
+    try {
+        const response = await privateGateway.delete(
+            `${dashboardRoutes.departments}delete/${id}/`
+        );
+        const departments: any = response?.data;
+        console.log("deleteDepartment - data", departments.response);
+    } catch (err: unknown) {
+        console.log(err);
+    }
+};
