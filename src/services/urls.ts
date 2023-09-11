@@ -72,6 +72,8 @@ export const dashboardRoutes = {
     zonalCampusDetails: "/api/v1/dashboard/zonal/college-details/",
     zonalCampusData: "/api/v1/dashboard/zonal/campus-details/csv/",
 
+    departments: "/api/v1/dashboard/organisation/departments/",
+
     districtStudentDetails: "/api/v1/dashboard/district/student-details/",
     districtStudentData: "/api/v1/dashboard/district/student-details/csv/",
     districtCampusDetails: "/api/v1/dashboard/district/college-details/",
@@ -118,11 +120,13 @@ export const dashboardRoutes = {
 } as const;
 
 export const organizationRoutes = {
-    getOrganizationsAll: "/api/v1/dashboard/organisation/institutes/info/all_inst",
+    getOrganizationsAll:
+        "/api/v1/dashboard/organisation/institutes/info/all_inst",
     getCompany: "/api/v1/dashboard/organisation/institutes/show/Company/",
     getCollege: "/api/v1/dashboard/organisation/institutes/show/College/",
     getCommunity: "/api/v1/dashboard/organisation/institutes/show/Community/",
-    getAffiliation: "/api/v1/dashboard/organisation/institutes/org/affiliation/",
+    getAffiliation:
+        "/api/v1/dashboard/organisation/institutes/org/affiliation/",
     getLocation: "/api/v1/location",
     postAddOrganization: "/api/v1/dashboard/organisation/institutes/add/",
     putUpdateOrganization: "/api/v1/dashboard/organisation/institutes",

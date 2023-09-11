@@ -3,28 +3,28 @@ import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { useToast } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getDepartments } from "./apis";
 
 const Departments = () => {
     const navigate = useNavigate();
     const toast = useToast();
 
-    const [data, setData] = useState<any[]>([]);
+    const [departments, setDepartments] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
 
-    const columnOrder = [
-        { column: "name", Label: "Name", isSortable: true },
-        { column: "user_ig_link_ig", Label: "Members", isSortable: false },
-        { column: "updated_at", Label: "Updated On", isSortable: true },
-        { column: "updated_by", Label: "Updated By", isSortable: true },
-        { column: "created_by", Label: "Created By", isSortable: true },
-        { column: "created_at", Label: "Created On", isSortable: true }
-    ];
+    const columnOrder = [{ column: "title", Label: "Name", isSortable: true }];
+
+    useEffect(() => {
+        getDepartments({
+            setDepartments: setDepartments
+        });
+    }, []);
 
     const handleSearch = (search: string) => {};
 
@@ -38,11 +38,13 @@ const Departments = () => {
 
     const handleNextClick = () => {};
 
-    const handlePreviousClick = () => {};
+    const handlePreviousClick = () => {
+        toast({ title: "Previous" });
+    };
 
     return (
         <>
-            {data && (
+            {departments && (
                 <>
                     <TableTop
                         onSearchText={handleSearch}
@@ -50,7 +52,7 @@ const Departments = () => {
                         // CSV={dashboardRoutes.getIgList}
                     />
                     <Table
-                        rows={data}
+                        rows={departments}
                         isloading={isLoading}
                         page={currentPage}
                         perPage={perPage}
