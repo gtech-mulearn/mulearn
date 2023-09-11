@@ -127,7 +127,7 @@ export const organizationRoutes = {
     getCommunity: "/api/v1/dashboard/organisation/institutes/show/Community/",
     getAffiliation:
         "/api/v1/dashboard/organisation/institutes/org/affiliation/",
-    getLocation: "/api/v1/location",
+    getLocation: "/api/v1/dashboard/location",
     postAddOrganization: "/api/v1/dashboard/organisation/institutes/add/",
     putUpdateOrganization: "/api/v1/dashboard/organisation/institutes",
     deleteOrgnaization: "/api/v1/dashboard/organisation/institutes/",

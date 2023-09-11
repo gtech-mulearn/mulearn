@@ -1,4 +1,4 @@
-import styles from './Rolepage.module.css'
+import styles from './RolePage.module.css'
 import OnboardingTemplate from '../../../components/OnboardingTeamplate/OnboardingTemplate'
 import OnboardingHeader from '../../../components/OnboardingHeader/OnboardingHeader';
 export default function Rolepage() {

@@ -85,12 +85,12 @@ export const getAffiliation = async (setAffiliationData: any) => {
 }
 export const getCountry = async (setCountryData: any) => {
     try {
-        await privateGateway.get(organizationRoutes.getLocation + "/country")
+        await privateGateway.get(organizationRoutes.getLocation + "/countries")
             .then(response => {
                 return response.data
             })
             .then(data => {
-                const countries: CountryProps[] = data.response.data.countries;
+                const countries: CountryProps[] = data.response.data;
                 setCountryData(countries);
             })
     } catch (err: unknown) {
