@@ -47,3 +47,20 @@ export function transformData(originalData: OriginalDataItem[]): {
 
     return { transformedData, columnOrder };
 }
+
+export function formatErrorMessage(error: string): string {
+    const fields = error
+        .replace("The following fields are empty: ", "")
+        .split(", ");
+    // Convert the field names into a more readable format
+    const formattedFields = fields.map(field => {
+        // Split by underscore and capitalize each word
+        return field
+            .split("_")
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ");
+    });
+    // Construct the new message
+    return "The following fields are empty: " + formattedFields.join(", ") + ".";
+}
+

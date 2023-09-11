@@ -30,10 +30,9 @@ export const FormTabApplication = ({
                     <label
                         key={key}
                         className={`${styles.checkBoxContainer} ${
-                            initialFormFields &&
-                            (initialFormFields.includes(key) // Check if it's in initialFormFields
+                            values.formFields.includes(key) // Check if it's checked
                                 ? styles.checked
-                                : "")
+                                : ""
                         }`}
                     >
                         <Field

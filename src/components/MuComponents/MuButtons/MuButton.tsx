@@ -1,6 +1,8 @@
 import React, { ReactNode, useState } from "react";
 import styles from "./MuButtons.module.css";
 import { ClipLoader } from "react-spinners";
+import { Spinner } from '@chakra-ui/react'
+import { LuCheck } from "react-icons/lu";
 
 /**
  * TODO: Make Single and Powerful Button Component(Multi-Purpose)
@@ -192,14 +194,25 @@ type Variants =
     | "draft";
 
 
-type ButtonProps = ({ children, className, variant, style, ...props }:
-    {children: ReactNode, className?:string, variant?:Variants, style?: React.CSSProperties} & React.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element
+type ButtonProps = ({ children, className, variant, style, isLoading, ...props }:
+    {children: ReactNode, className?:string, variant?:Variants, isLoading?:boolean, style?: React.CSSProperties} & React.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element
 
-export const PowerfulButton:ButtonProps = ({ children, className = "", variant = "primary", style, ...props }) => {
+export const PowerfulButton:ButtonProps = ({ children, className = "", variant = "primary", style, isLoading,...props }) => {
     const variantName = variant ? styles[`${variant}-btn`] : ""
 
-    return <button className={styles["common-btn"] + "  " + variantName + " " + className} 
+    return <button disabled={isLoading !== undefined ? isLoading : false} className={styles["common-btn"] + "  " + variantName + " " + className} 
                              {...props} style={style}>
         {children}
+        {isLoading !== undefined && 
+            (isLoading ? 
+            <Spinner 
+                thickness='3px'
+                speed='0.6s'
+                size={"md"}
+                color="currentcolor"
+                marginLeft={"1"}
+            />
+            : <></>) // <LuCheck size={"20px"} />)
+        }
     </button>
 }

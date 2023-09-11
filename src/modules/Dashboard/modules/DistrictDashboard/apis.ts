@@ -114,7 +114,7 @@ export const getCountry = async (
 ) => {
     try {
         await privateGateway
-            .get(organizationRoutes.getLocation + "/country")
+            .get(organizationRoutes.getLocation + "/countries")
             .then(
                 (
                     response: APIResponse<{

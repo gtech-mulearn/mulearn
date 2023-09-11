@@ -52,23 +52,6 @@ const formatDate = (date: any): [string, number] => {
     return [formattedDate, unix];
 };
 
-function isDetailsComplete(hackathon: HackList | undefined): true | string {
-    let returnVal = true;
-    let fieldsToFix: string[] = [];
-    {hackathon && Object.entries(hackathon).forEach(([key, value]) => {
-        if (value === null || value === "") {
-            returnVal = false;
-            fieldsToFix.push(
-                key.charAt(0).toUpperCase() + key.slice(1).replace("_", " ")
-            );
-        }
-    });}
-    if (!returnVal) {
-        return fieldsToFix.join(", ");
-    }
-    return true;
-}
-
 const HackathonCreate = () => {
     const [tabIndex, setTabIndex] = useState(0);
     const [formData, setFormData] = useState("");
@@ -80,9 +63,6 @@ const HackathonCreate = () => {
         []
     );
     const [isPublishing, setIsPublishing] = useState(false);
-    const [openImagePreview, setOpenImagePreview] = useState(false);
-    const [isComplete, setIsComplete] = useState('');
-
     const [id, setID] = useState(useParams().id);
 
     const toast = useToast();
@@ -223,62 +203,21 @@ const HackathonCreate = () => {
             try {
                 if (id) {
                     await editHackathon(hackathon, formattedFormFields);
-					await getHackDetails(id)
-                        .then(res => {
-                            setData(res);
-                            setLoading(true);
-                        })
-                        .catch(err => {
-                            console.error(err);
-                        });
                 } else {
                     setID(
                         await createHackathon(hackathon, formattedFormFields)
                     );
-					await getHackDetails(String(id))
-                        .then(res => {
-                            setData(res);
-                            setLoading(true);
-                        })
-                        .catch(err => {
-                            console.error(err);
-                        });
                 }
 
                 if (isPublishing && id) {
                     setIsPublishing(false);
-					setTimeout(() => {
-						setIsComplete(String(isDetailsComplete(data)))
-					}, 2000);
-                    if (isComplete === 'true') {
-						let responce = "";
-                        responce = await publishHackathon(id, hackathon.status);
-
-                        toast({
-                            title: "Successful",
-                            description:
-                                responce || "Hackathon Published Successfully",
-                            status: "success",
-                            duration: 3000,
-                            isClosable: true
-                        });
-                        navigate("/dashboard/hackathon");
-                    } else {
-                        toast({
-                            title: "Cannot publish",
-                            description: `Please fill the following fields: ${isComplete}`,
-                            status: "error",
-                            duration: 5000,
-                            isClosable: true,
-                            position: "top-right"
-                        });
-                    }
+                    publishHackathon(id, hackathon.status, toast);
                 } else {
                     toast({
                         title: "Changes Saved",
                         description: "Change has been saved Successfully",
                         status: "success",
-                        duration: 3000,
+                        duration: 4000,
                         isClosable: true
                     });
                     navigate("/dashboard/hackathon");
@@ -295,30 +234,26 @@ const HackathonCreate = () => {
         })();
     };
 
-    const handleCloseModal = () => {
-        setOpenImagePreview(false);
-    };
-
     const initialValues = {
-        title: data?.title || "",
-        tagline: data?.tagline || "",
-        description: data?.description || "",
-        participantCount: data?.participant_count || "",
+        title: data?.title || null,
+        tagline: data?.tagline || null,
+        description: data?.description || null,
+        participantCount: data?.participant_count || null,
         eventStart: convertDateToYYYYMMDD(String(data?.event_start)) || null,
         eventEnd: convertDateToYYYYMMDD(String(data?.event_end)) || null,
         applicationStart:
             convertDateToYYYYMMDD(String(data?.application_start)) || null,
         applicationEnds:
             convertDateToYYYYMMDD(String(data?.application_ends)) || null,
-        orgId: data?.org_id || "",
-        place: data?.place || "",
-        districtId: getLocationIdByName(district, String(data?.district)) || "",
+        orgId: data?.org_id || null,
+        place: data?.place || null,
+        districtId: getLocationIdByName(district, String(data?.district)) || null,
         isOpenToAll: data?.is_open_to_all || false,
         formFields: data?.form_fields || [],
-        event_logo: "",
-        banner: "",
-        website: data?.website || "",
-        type: data?.type || ""
+        event_logo: null,
+        banner: null,
+        website: data?.website || null,
+        type: data?.type || null
     };
 
     return (
@@ -358,7 +293,7 @@ const HackathonCreate = () => {
 
                             <Formik
                                 initialValues={initialValues}
-                                validationSchema={hackathonSchema}
+                                // validationSchema={hackathonSchema}
                                 onSubmit={handleSubmit}
                             >
                                 {({
