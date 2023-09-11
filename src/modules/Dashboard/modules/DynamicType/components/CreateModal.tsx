@@ -4,10 +4,15 @@ import styles from "./Modal.module.css";
 import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import * as Yup from "yup";
-import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import FormikReactSelect, {
+    FormikTextInput
+} from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import { createRoleType } from "../apis";
 
 type Props = {
     onClose: any;
+    roles: { value: string; label: string }[];
+    type: { value: string; label: string }[];
 };
 
 const CreateModal = (props: Props) => {
@@ -16,8 +21,8 @@ const CreateModal = (props: Props) => {
     return (
         <Formik
             initialValues={{
-                title: "",
-                description: ""
+                type: "",
+                role: ""
                 // acceptedTerms: false, // added for our checkbox
                 // jobType: "" // added for our select
             }}
@@ -27,29 +32,40 @@ const CreateModal = (props: Props) => {
             })}
             onSubmit={values => {
                 (async () => {
-                    console.log(values);
-                    // await createManageRoles(values.title, values.description);
-                    // toast({
-                    //     title: "Role created",
-                    //     status: "success",
-                    //     duration: 3000,
-                    //     isClosable: true
-                    // });
+                    await createRoleType(
+                        (err: any) => {
+                            toast({
+                                title: "Something went wrong",
+                                description: err.toString(),
+                                status: "error",
+                                duration: 3000,
+                                isClosable: true
+                            });
+                        },
+                        values.type,
+                        values.role
+                    );
                     props.onClose(null);
                 })();
             }}
         >
             <Form className={styles.Form}>
-                {/* <FormikTextInput
-                    name="title"
-                    type="text"
-                    placeholder="Enter a title"
+                <FormikReactSelect
+                    name="type"
+                    options={props.type}
+                    label="Type"
+                    placeholder="Select the type"
+                    isClearable
+                    isSearchable
                 />
-                <FormikTextInput
-                    name="description"
-                    type="text"
-                    placeholder="Enter a description"
-                /> */}
+                <FormikReactSelect
+                    name="role"
+                    options={props.roles}
+                    label="Role"
+                    placeholder="Select the role"
+                    isClearable
+                    isSearchable
+                />
 
                 <div className={styles.ButtonContainer}>
                     <MuButton

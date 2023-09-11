@@ -11,6 +11,7 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
 import Modal from "./components/Modal";
 import CreateModal from "./components/CreateModal";
+import { getRoles, getTypes } from "./apis";
 
 function DynamicType() {
     const [data, setData] = useState<any[]>([]);
@@ -20,8 +21,12 @@ function DynamicType() {
     const [sort, setSort] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const firstFetch = useRef(true);
+    const toast = useToast();
     //Modal
     const [currModal, setCurrModal] = useState<null | "create">(null);
+
+    const [roles, setRoles] = useState([]);
+    const [types, setTypes] = useState([]);
     const icons = {
         user: (
             <div className={modalStyles.TickIcon}>
@@ -76,6 +81,50 @@ function DynamicType() {
         { column: "created_at", Label: "Created On", isSortable: true }
     ];
 
+    const errHandler = (err: any) => {
+        toast({
+            title: "Something went wrong",
+            description: err.toString(),
+            status: "error",
+            duration: 3000,
+            isClosable: true
+        });
+    };
+
+    useEffect(() => {
+        if (firstFetch.current) {
+            // getManageRoles(
+            //     setData,
+            //     1,
+            //     perPage,
+            //     setIsLoading,
+            //     setTotalPages,
+            //     "",
+            //     ""
+            // );
+            (async () => {
+                setRoles(await getRoles(errHandler));
+                setTypes(await getTypes(errHandler));
+            })();
+        }
+
+        firstFetch.current = false;
+    }, []);
+
+    useEffect(() => {
+        if (firstFetch.current) return;
+        if (currModal !== null) return;
+        // getManageRoles(
+        //     setData,
+        //     1,
+        //     perPage,
+        //     setIsLoading,
+        //     setTotalPages,
+        //     "",
+        //     sort
+        // );
+    }, [currModal]);
+
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
@@ -102,36 +151,6 @@ function DynamicType() {
         // );
     };
 
-    useEffect(() => {
-        if (firstFetch.current) {
-            // getManageRoles(
-            //     setData,
-            //     1,
-            //     perPage,
-            //     setIsLoading,
-            //     setTotalPages,
-            //     "",
-            //     ""
-            // );
-        }
-
-        firstFetch.current = false;
-    }, []);
-
-    useEffect(() => {
-        if (firstFetch.current) return;
-        if (currModal !== null) return;
-        // getManageRoles(
-        //     setData,
-        //     1,
-        //     perPage,
-        //     setIsLoading,
-        //     setTotalPages,
-        //     "",
-        //     sort
-        // );
-    }, [currModal]);
-
     const handleSearch = (search: string) => {
         setCurrentPage(1);
         // getManageRoles(
@@ -145,7 +164,6 @@ function DynamicType() {
         // );
     };
 
-    const toast = useToast();
     const handleDelete = (id: string | undefined) => {
         // deleteManageRoles(id, toast);
         // getManageRoles(
@@ -214,7 +232,11 @@ function DynamicType() {
                                   header="Create Role"
                                   paragraph="Enter the values for the new role"
                               >
-                                  <CreateModal onClose={setCurrModal} />
+                                  <CreateModal
+                                      roles={roles}
+                                      type={types}
+                                      onClose={setCurrModal}
+                                  />
                               </Modal>
                           );
                   })()
