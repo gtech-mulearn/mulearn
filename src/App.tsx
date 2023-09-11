@@ -183,6 +183,7 @@ import AccountCreation from "./modules/Common/Authentication/pages/Onboarding/Ac
 import Rolepage from "./modules/Common/Authentication/pages/Onboarding/RolePage/RolePage";
 import CollegePage from "./modules/Common/Authentication/pages/Onboarding/CollegePage/CollegePage";
 import CompanyPage from "./modules/Common/Authentication/pages/Onboarding/CompanyPage/CompanyPage";
+import Departments from "./modules/Dashboard/modules/Departments/Departments";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -353,6 +354,15 @@ function App() {
                         {
                             path: "user-role-verification/edit/:id",
                             element: <UserRoleVerificationEdit />
+                        },
+                        {
+                            path: "manage-departments",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<Departments />}
+                                />
+                            )
                         },
                         {
                             path: "zonal-dashboard",
