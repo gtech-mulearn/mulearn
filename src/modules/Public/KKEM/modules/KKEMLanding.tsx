@@ -22,20 +22,6 @@ export default function Landing() {
                 "Android is a mobile operating system based on a modified version of the Linux kernel and other open-source software."
         },
         {
-            image: igAssets.IOS,
-            name: "iOS",
-            link: "#",
-            description:
-                "iOS is a mobile operating system created and developed by Apple Inc. exclusively for its hardware."
-        },
-        {
-            image: igAssets.Devops,
-            name: "DevOps",
-            link: "#",
-            description:
-                "DevOps is a set of practices that combines software development and IT operations."
-        },
-        {
             image: igAssets.Frontend,
             name: "Front-End",
             link: "#",
@@ -71,13 +57,6 @@ export default function Landing() {
                 "Quality assurance (QA) is any systematic process of determining whether a product or service meets specified requirements."
         },
         {
-            image: igAssets.Quantum,
-            name: "Quantum Computing",
-            link: "#",
-            description:
-                "A rapidly-emerging technology that harnesses the laws of quantum mechanics to solve issues too hard for computers."
-        },
-        {
             image: igAssets.PM,
             name: "Product Management",
             link: "#",
@@ -104,27 +83,6 @@ export default function Landing() {
             link: "#",
             description:
                 "Cyber Security is the practice of defending computers, servers, mobile devices, electronic systems, networks, and data from malicious attacks. "
-        },
-        {
-            image: igAssets.Google,
-            name: "Actions On, Google",
-            link: "#",
-            description: `
-                    The Actions console is the web-based tool used for developing Actions for registration, deployment, configuration, and analytics`
-        },
-        {
-            image: igAssets.cdesign,
-            name: "Creative Design",
-            link: "#",
-            description:
-                "Creative Design helps to portray ideas in the best fashion and requires an expertise in designing and a certain level of creativity. "
-        },
-        {
-            image: igAssets.Marketing,
-            name: "Marketing",
-            link: "#",
-            description:
-                "Marketing is the process of promoting and selling goods and services. It involves understanding the product, target audience, and making plans to promote it. "
         }
     ];
     const pastEventCardData = [
@@ -190,7 +148,7 @@ export default function Landing() {
             <IGSection cards={igCardData} />
             <IGSection
                 cards={pastEventCardData}
-                heading="Past Events"
+                heading="Partnered Events"
                 headerFlag={true}
                 largeImg={true}
             />
