@@ -85,7 +85,7 @@ export const getAffiliation = async (setAffiliationData: any) => {
 }
 export const getCountry = async (setCountryData: any) => {
     try {
-        await privateGateway.get(organizationRoutes.getLocation + "/countries")
+        await privateGateway.get(organizationRoutes.getLocation + "/countries/")
             .then(response => {
                 return response.data
             })
@@ -104,12 +104,12 @@ export const getStates = async (
     toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
-        await privateGateway.get(`${organizationRoutes.getLocation}/${country}/states`)
+        await privateGateway.get(`${organizationRoutes.getLocation}/states/${country}/`)
             .then(response => {
                 return response.data
             })
             .then(data => {
-                const states: CountryProps[] = data.response.data.states;
+                const states: CountryProps[] = data.response.data
                 setStatesData(states);
             })
     } catch (err: unknown) {
@@ -134,12 +134,12 @@ export const getZones = async (
     toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
-        await privateGateway.get(`${organizationRoutes.getLocation}/${country}/${state}/zone`)
+        await privateGateway.get(`${organizationRoutes.getLocation}/zones/${state}/`)
             .then(response => {
                 return response.data
             })
             .then(data => {
-                const states: CountryProps[] = data.response.data.zones;
+                const states: CountryProps[] = data.response.data;
                 setZonesData(states);
             })
     } catch (err: unknown) {
@@ -165,12 +165,12 @@ export const getDistricts = async (
     toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
-        await privateGateway.get(`${organizationRoutes.getLocation}/${country}/${state}/${zone}/district`)
+        await privateGateway.get(`${organizationRoutes.getLocation}/districts/${zone}/`)
             .then(response => {
                 return response.data
             })
             .then(data => {
-                const districts: CountryProps[] = data.response.data.districts;
+                const districts: CountryProps[] = data.response.data;
                 setDistrictsData(districts);
             })
     } catch (err: unknown) {
