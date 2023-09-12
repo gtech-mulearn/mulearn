@@ -7,33 +7,40 @@ import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComp
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import Modal from "../CollegeLevels/components/Modal";
 
-import { createDepartment, getDepartments } from "./apis";
+import { createDepartment, getDepartments, updateDepartment } from "./apis";
 import { modalTypes } from "../../utils/enums";
 
 const CreateOrUpdateDepartmentModal = ({
+    id,
+    title,
     setCurrModal,
     setDepartments,
     setIsLoading,
     toast
 }: {
+    id?: string;
+    title?: string;
     setCurrModal: Dispatch<SetStateAction<modalTypes | null>>;
     setDepartments: Dispatch<SetStateAction<any[]>>;
     setIsLoading: Dispatch<SetStateAction<boolean>>;
     toast: (options?: UseToastOptions | undefined) => ToastId;
 }) => {
     return (
-        <Modal onClose={setCurrModal} header="Create a new department">
+        <Modal
+            onClose={setCurrModal}
+            header={id ? "Edit department" : "Create a new department"}
+        >
             <Formik
-                initialValues={{
-                    deptName: ""
-                }}
+                initialValues={{ title: title || "" }}
                 validationSchema={Yup.object({
-                    deptName: Yup.string()
+                    title: Yup.string()
                         .max(50, "Must be 50 characters or less")
                         .required("Required")
                 })}
                 onSubmit={async values => {
-                    await createDepartment(values.deptName, toast);
+                    id
+                        ? await updateDepartment(id!, values.title, toast)
+                        : await createDepartment(values.title, toast);
                     getDepartments({
                         setDepartments: setDepartments,
                         setIsLoading: setIsLoading
@@ -41,13 +48,15 @@ const CreateOrUpdateDepartmentModal = ({
                     setCurrModal(null);
                 }}
             >
-                {({ handleSubmit, handleChange }) => (
+                {({ handleSubmit }) => (
                     <Form onSubmit={handleSubmit}>
                         <FormikTextInput
-                            label="Name"
-                            name="deptName"
+                            label={`${id ? "New " : ""}Name`}
+                            name="title"
                             type="text"
-                            placeholder="Enter department name"
+                            placeholder={`Enter ${
+                                id ? "new " : ""
+                            }department name`}
                         />
                         <PowerfulButton
                             children="Submit"

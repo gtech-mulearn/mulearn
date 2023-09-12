@@ -15,9 +15,7 @@ export const getDepartments = async ({
     setIsLoading(true);
     try {
         const response = await privateGateway.get(dashboardRoutes.departments, {
-            params: {
-                pageIndex: page
-            }
+            params: { pageIndex: page }
         });
         const departments: any = response?.data;
         console.log("getDepartments - data", departments.response);
@@ -47,6 +45,34 @@ export const createDepartment = async (
     } catch (err: unknown) {
         console.log(err);
 
+        toast({
+            title: "Error",
+            description: "Something went wrong",
+            status: "error",
+            isClosable: true
+        });
+    }
+};
+
+export const updateDepartment = async (
+    id: string,
+    title: string,
+    toast: (options?: UseToastOptions | undefined) => ToastId
+) => {
+    console.log("updateDepartment - id", id);
+    try {
+        const response = await privateGateway.put(
+            `${dashboardRoutes.departments}edit/${id}/`,
+            { title: title }
+        );
+        const message: String = response?.data.message.general[0];
+        toast({
+            title: message,
+            status: "success",
+            isClosable: true
+        });
+    } catch (err: unknown) {
+        console.log(err);
         toast({
             title: "Error",
             description: "Something went wrong",

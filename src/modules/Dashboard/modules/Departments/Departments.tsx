@@ -24,6 +24,8 @@ const Departments = () => {
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
 
+    const [choosenDeptId, setChoosenDeptId] = useState<string | null>(null);
+
     const [currModal, setCurrModal] = useState<modalTypes | null>(null);
 
     const columnOrder = [{ column: "title", Label: "Name", isSortable: true }];
@@ -40,11 +42,13 @@ const Departments = () => {
     const handlePerPageNumber = (selectedValue: number) => {};
 
     const handleEdit = async (id: string | number | boolean) => {
+        setChoosenDeptId(id as string);
         setCurrModal(modalTypes.edit);
     };
 
     const handleDelete = async (id: string | undefined) => {
-        if (id) await deleteDepartment(id);
+        if (!id) return;
+        await deleteDepartment(id);
         getDepartments({
             setDepartments: setDepartments,
             setIsLoading: setIsLoading
@@ -71,15 +75,15 @@ const Departments = () => {
                             toast: toast
                         });
                     if (currModal === modalTypes.edit)
-                        return (
-                            <Modal
-                                size="small"
-                                onClose={setCurrModal}
-                                header="Edit department"
-                            >
-                                <p>Edit Modal Opened</p>
-                            </Modal>
-                        );
+                        return choosenDeptId
+                            ? CreateOrUpdateDepartmentModal({
+                                  id: choosenDeptId!,
+                                  setCurrModal: setCurrModal,
+                                  setDepartments: setDepartments,
+                                  setIsLoading: setIsLoading,
+                                  toast: toast
+                              })
+                            : null;
                 })()}
             <div className={styles.createBtnContainer}>
                 <MuButton
@@ -91,11 +95,11 @@ const Departments = () => {
             </div>
             {departments && (
                 <>
-                    <TableTop
+                    {/* <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
                         // CSV={dashboardRoutes.getIgList}
-                    />
+                    /> */}
                     <Table
                         rows={departments}
                         isloading={isLoading}
