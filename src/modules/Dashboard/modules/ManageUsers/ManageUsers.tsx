@@ -13,7 +13,7 @@ function ManageRoles() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const [perPage, setPerPage] = useState(5);
+    const [perPage, setPerPage] = useState(20);
     const [sort, setSort] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
@@ -111,7 +111,7 @@ function ManageRoles() {
             search: "",
             sortID: ""
         });
-        navigate("/manage-users");
+        navigate("/dashboard/manage-users");
     };
 
     const handlePerPageNumber = (selectedValue: number) => {

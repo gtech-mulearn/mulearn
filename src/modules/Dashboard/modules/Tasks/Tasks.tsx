@@ -1,4 +1,7 @@
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import THead from "@/MuLearnComponents/Table/THead";
 import Table from "@/MuLearnComponents/Table/Table";
@@ -18,7 +21,7 @@ export const Tasks = (props: Props) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
-    const [perPage, setPerPage] = useState(5);
+    const [perPage, setPerPage] = useState(20);
     const [sort, setSort] = useState("");
     const firstFetch = useRef(true);
     const navigate = useNavigate();
@@ -85,16 +88,40 @@ export const Tasks = (props: Props) => {
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getTasks(setData, 1, selectedValue, setIsLoading, setTotalPages, "", "");
+        getTasks(
+            setData,
+            1,
+            selectedValue,
+            setIsLoading,
+            setTotalPages,
+            "",
+            ""
+        );
     };
 
     const handleIconClick = (column: string) => {
         if (sort === column) {
             setSort(`-${column}`);
-            getTasks(setData, 1, perPage, setIsLoading, setTotalPages, "", `-${column}`);
+            getTasks(
+                setData,
+                1,
+                perPage,
+                setIsLoading,
+                setTotalPages,
+                "",
+                `-${column}`
+            );
         } else {
             setSort(column);
-            getTasks(setData, 1, perPage, setIsLoading, setTotalPages, "", column);
+            getTasks(
+                setData,
+                1,
+                perPage,
+                setIsLoading,
+                setTotalPages,
+                "",
+                column
+            );
         }
 
         //console.log(`Icon clicked for column: ${column}`);
@@ -120,16 +147,15 @@ export const Tasks = (props: Props) => {
                     gap: "15px"
                 }}
             >
-
                 <PowerfulButton
                     variant="secondary"
-                    onClick={() => navigate("/dashboard/tasks/bulk-import")}>
+                    onClick={() => navigate("/dashboard/tasks/bulk-import")}
+                >
                     <AiOutlinePlusCircle />
                     Bulk Import
                 </PowerfulButton>
 
-                <PowerfulButton
-                    onClick={handleCreate}>
+                <PowerfulButton onClick={handleCreate}>
                     <AiOutlinePlusCircle />
                     Create
                 </PowerfulButton>
@@ -159,17 +185,19 @@ export const Tasks = (props: Props) => {
                             onIconClick={handleIconClick}
                         />
                         <div>
-                            {!isLoading &&
+                            {!isLoading && (
                                 <Pagination
                                     currentPage={currentPage}
                                     totalPages={totalPages}
                                     margin="10px 0"
                                     handleNextClick={handleNextClick}
-                                    handlePreviousClick={handlePreviousClick} onSearchText={handleSearch}
+                                    handlePreviousClick={handlePreviousClick}
+                                    onSearchText={handleSearch}
                                     onPerPageNumber={handlePerPageNumber}
                                     perPage={perPage}
                                     setPerPage={setPerPage}
-                                />}
+                                />
+                            )}
                         </div>
                         {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>

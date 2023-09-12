@@ -36,7 +36,7 @@ const UrlShortener = () => {
     const [createBtn, setCreateBtn] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const [perPage, setPerPage] = useState(5);
+    const [perPage, setPerPage] = useState(20);
     const [sort, setSort] = useState("");
     const [shortUrlData, setShortUrlData] = useState<urlData[]>([]);
 
