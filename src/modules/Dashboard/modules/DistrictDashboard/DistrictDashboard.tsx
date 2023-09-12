@@ -22,7 +22,7 @@ function DistrictDashboard() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const [perPage, setPerPage] = useState(5);
+    const [perPage, setPerPage] = useState(20);
     const [columns, setColumns] = useState(columnsStudent);
     const [activeTab, setActiveTab] = useState("Student management");
     const [sort, setSort] = useState("");
