@@ -32,14 +32,14 @@ const CreateModal = (props: Props) => {
             initialValues={{
                 type: "",
                 ...(props.roles && { role: "" }),
-                ...(props.users && { user: "" })
+                ...(!props.roles && { user: "" })
                 // acceptedTerms: false, // added for our checkbox
                 // jobType: "" // added for our select
             }}
             validationSchema={Yup.object({
                 type: Yup.string().required("Required"),
                 ...(props.roles && { role: Yup.string().required("Required") }),
-                ...(props.users && { user: Yup.string().required("Required") })
+                ...(!props.roles && { user: Yup.string().required("Required") })
             })}
             onSubmit={values => {
                 (async () => {
@@ -49,7 +49,7 @@ const CreateModal = (props: Props) => {
                             values.type,
                             values.role!
                         );
-                    if (props.users)
+                    else
                         await createUserType(
                             errHandler,
                             values.type,
@@ -68,7 +68,7 @@ const CreateModal = (props: Props) => {
                     isClearable
                     isSearchable
                 />
-                {props.roles && (
+                {!!props.roles ? (
                     <FormikReactSelect
                         name="role"
                         options={props.roles}
@@ -77,15 +77,12 @@ const CreateModal = (props: Props) => {
                         isClearable
                         isSearchable
                     />
-                )}
-                {props.users && (
-                    <FormikReactSelect
+                ) : (
+                    <FormikTextInput
+                        label="User Muid or Email"
                         name="user"
-                        options={props.users}
-                        label="User"
-                        placeholder="Select the user"
-                        isClearable
-                        isSearchable
+                        type="text"
+                        placeholder="Enter a muid or email"
                     />
                 )}
 

@@ -27,15 +27,6 @@ export const getTypes = async (errHandler: Function) => {
     }
 };
 
-export const getUsers = async (errHandler: Function) => {
-    try {
-        return [];
-    } catch (err) {
-        errHandler(err);
-        return [];
-    }
-};
-
 // try{
 
 // }catch(err){

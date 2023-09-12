@@ -11,14 +11,14 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
 import Modal from "./components/Modal";
 import CreateModal from "./components/CreateModal";
+import TableTopTab from "../ZonalDashboard/TableTopTab";
 import {
     deleteRoleType,
     deleteUserType,
     getDynamicRoles,
     getDynamicUsers,
     getRoles,
-    getTypes,
-    getUsers
+    getTypes
 } from "./apis";
 
 function DynamicType() {
@@ -37,7 +37,6 @@ function DynamicType() {
 
     const [roles, setRoles] = useState([]);
     const [types, setTypes] = useState([]);
-    const [users, setUsers] = useState([]);
     const icons = {
         user: (
             <div className={modalStyles.TickIcon}>
@@ -87,7 +86,7 @@ function DynamicType() {
     ];
     const columnOrderUser = [
         { column: "type", Label: "Type", isSortable: false },
-        { column: "user", Label: "Role", isSortable: false }
+        { column: "user", Label: "User", isSortable: false }
     ];
 
     const errHandler = (err: any) => {
@@ -104,7 +103,6 @@ function DynamicType() {
         if (firstFetch.current) {
             (async () => {
                 if (tab === "Role") setRoles(await getRoles(errHandler));
-                if (tab === "User") setUsers(await getUsers(errHandler));
                 setTypes(await getTypes(errHandler));
             })();
         }
@@ -136,7 +134,7 @@ function DynamicType() {
                 "",
                 sort
             );
-    }, [currModal, currentPage, perPage]);
+    }, [currModal, currentPage, perPage, tab]);
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -150,6 +148,7 @@ function DynamicType() {
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
+
         if (tab == "Role")
             getDynamicRoles(
                 errHandler,
@@ -196,8 +195,18 @@ function DynamicType() {
         }
     };
 
+    const handleTabClick = (newTab: any) => {
+        if (tab === newTab) return;
+        setTab(newTab);
+    };
+
     return (
         <>
+            <TableTopTab
+                active={tab}
+                onTabClick={handleTabClick}
+                tabletopTab={["Role", "User"]}
+            />
             {currModal
                 ? (() => {
                       if (currModal === "create")
@@ -210,7 +219,6 @@ function DynamicType() {
                               >
                                   <CreateModal
                                       roles={tab === "Role" ? roles : undefined}
-                                      users={tab === "Role" ? users : undefined}
                                       type={types}
                                       onClose={setCurrModal}
                                   />
