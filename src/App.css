@@ -58,7 +58,7 @@
 }
 
 .requiredLabel {
-    &::after{
+    &::after {
         content: "*";
         color: red;
     }
