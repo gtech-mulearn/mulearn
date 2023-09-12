@@ -116,7 +116,13 @@ export const dashboardRoutes = {
     getZonalTopDistrict: "api/v1/dashboard/zonal/top-districts/",
     getZonalStudentLevels: "api/v1/dashboard/zonal/student-level/",
 
-    collegeLevels: "api/v1/dashboard/college/"
+    collegeLevels: "api/v1/dashboard/college/",
+
+    //Dyanmic Type
+    dtGetRoles: "api/v1/dashboard/dynamic-management/roles/",
+    dtGetTypes: "api/v1/dashboard/dynamic-management/types/",
+    getDynamicRoles: "api/v1/dashboard/dynamic-management/dynamic-role/",
+    getDynamicUser: "api/v1/dashboard/dynamic-management/dynamic-user/"
 } as const;
 
 export const organizationRoutes = {

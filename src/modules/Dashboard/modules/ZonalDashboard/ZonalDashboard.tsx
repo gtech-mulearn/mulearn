@@ -154,7 +154,11 @@ function ZonalDashboard() {
     };
     return (
         <>
-            <TableTopTab active={activeTab} onTabClick={handleTabClick} />
+            <TableTopTab
+                active={activeTab}
+                onTabClick={handleTabClick}
+                tabletopTab={["Student management", "Campus management"]}
+            />
             <div className={graphStyles.graphs}>
                 <div className={graphStyles.container}>
                     <h2>Top 3 Districts</h2>

@@ -26,6 +26,13 @@
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.15);
 }
 
+.card_link {
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.5rem;
+    align-items: center;
+}
+
 /* .card:hover::after {
     transform: translateY(0px);
     transform: translateX(30px);
