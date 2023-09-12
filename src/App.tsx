@@ -46,6 +46,9 @@ const ManageUsersDelete = lazy(
 const ManageUsersEdit = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersEdit")
 );
+const DynamicType = lazy(
+    () => import("./modules/Dashboard/modules/DynamicType/DynamicType")
+);
 const ManageRoles = lazy(
     () => import("./modules/Dashboard/modules/ManageRoles/ManageRoles")
 );
@@ -321,6 +324,16 @@ function App() {
                                 />
                             )
                         },
+                        {
+                            path: "dynamic-roles",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<DynamicType />}
+                                />
+                            )
+                        },
+
                         {
                             path: "user-role-verification",
                             element: (
