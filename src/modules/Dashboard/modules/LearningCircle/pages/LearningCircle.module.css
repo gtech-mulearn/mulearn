@@ -458,6 +458,13 @@
     flex-wrap: wrap;
     justify-content: flex-start;
 }
+.memberNameDiv div{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 .memberNameDiv img {
     margin-right: 1rem;
 }
