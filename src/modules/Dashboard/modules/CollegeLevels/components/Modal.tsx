@@ -2,9 +2,9 @@ import React, { useEffect, useRef } from "react";
 import styles from "./Modal.module.css";
 
 type props = {
-    icon: React.ReactNode;
+    icon?: React.ReactNode;
     header: string;
-    paragraph: string;
+    paragraph?: string;
     children: React.ReactNode;
     onClose: any;
     size?: "small" | "large";
@@ -38,7 +38,7 @@ const Modal = (props: props) => {
             >
                 {props.icon}
                 <h2>{props.header}</h2>
-                <p>{props.paragraph}</p>
+                {props.paragraph && <p>{props.paragraph}</p>}
                 {props.children}
             </div>
         </div>

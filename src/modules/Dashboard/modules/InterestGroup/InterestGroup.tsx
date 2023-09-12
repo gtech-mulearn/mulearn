@@ -214,7 +214,7 @@ function InterestGroup() {
                             onIconClick={handleIconClick}
                             action={true}
                         />
-                        <div className={styles.tableFooter}>
+                        <div className="test">
                             {!isLoading && (
                                 <Pagination
                                     currentPage={currentPage}

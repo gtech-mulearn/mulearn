@@ -1,28 +1,37 @@
+import { useEffect, useState } from "react";
+import { useToast } from "@chakra-ui/react";
+
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { useToast } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { AiOutlinePlusCircle } from "react-icons/ai";
+
 import { deleteDepartment, getDepartments } from "./apis";
+import styles from "./Departments.module.css";
+import Modal from "../CollegeLevels/components/Modal";
+import { modalTypes } from "../../utils/enums";
+import CreateOrUpdateDepartmentModal from "./CreateOrUpdateDepartmentModal";
 
 const Departments = () => {
-    const navigate = useNavigate();
     const toast = useToast();
 
     const [departments, setDepartments] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [perPage, setPerPage] = useState(5);
     const [sort, setSort] = useState("");
+
+    const [currModal, setCurrModal] = useState<modalTypes | null>(null);
 
     const columnOrder = [{ column: "title", Label: "Name", isSortable: true }];
 
     useEffect(() => {
         getDepartments({
-            setDepartments: setDepartments
+            setDepartments: setDepartments,
+            setIsLoading: setIsLoading
         });
     }, []);
 
@@ -30,12 +39,15 @@ const Departments = () => {
 
     const handlePerPageNumber = (selectedValue: number) => {};
 
-    const handleEdit = async (id: string | number | boolean) => {};
+    const handleEdit = async (id: string | number | boolean) => {
+        setCurrModal(modalTypes.edit);
+    };
 
     const handleDelete = async (id: string | undefined) => {
         if (id) await deleteDepartment(id);
         getDepartments({
-            setDepartments: setDepartments
+            setDepartments: setDepartments,
+            setIsLoading: setIsLoading
         });
     };
 
@@ -49,6 +61,34 @@ const Departments = () => {
 
     return (
         <>
+            {currModal &&
+                (() => {
+                    if (currModal === modalTypes.create)
+                        return CreateOrUpdateDepartmentModal({
+                            setCurrModal: setCurrModal,
+                            setDepartments: setDepartments,
+                            setIsLoading: setIsLoading,
+                            toast: toast
+                        });
+                    if (currModal === modalTypes.edit)
+                        return (
+                            <Modal
+                                size="small"
+                                onClose={setCurrModal}
+                                header="Edit department"
+                            >
+                                <p>Edit Modal Opened</p>
+                            </Modal>
+                        );
+                })()}
+            <div className={styles.createBtnContainer}>
+                <MuButton
+                    className={styles.createBtn}
+                    text={"Create"}
+                    icon={<AiOutlinePlusCircle />}
+                    onClick={() => setCurrModal(modalTypes.create)}
+                />
+            </div>
             {departments && (
                 <>
                     <TableTop
@@ -74,8 +114,7 @@ const Departments = () => {
                             onIconClick={handleIconClick}
                             action={true}
                         />
-                        <div>
-                            {/* <div className={styles.tableFooter}> */}
+                        <div className={styles.tableFooter}>
                             {!isLoading && (
                                 <Pagination
                                     currentPage={currentPage}
