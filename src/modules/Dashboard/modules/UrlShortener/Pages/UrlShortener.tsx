@@ -26,9 +26,9 @@ type urlData = {
 const UrlShortener = () => {
     const columnOrder: ColOrder[] = [
         { column: "title", Label: "Title", isSortable: true },
-        { column: "short_url", Label: "Short URL", isSortable: false },
-        { column: "long_url", Label: "Long URL", isSortable: false },
-        { column: "created_at", Label: "Created Date", isSortable: false }
+        { column: "short_url", Label: "Short URL", isSortable: true },
+        { column: "long_url", Label: "Long URL", isSortable: true },
+        { column: "created_at", Label: "Created Date", isSortable: true }
     ];
 
     const toast = useToast();
