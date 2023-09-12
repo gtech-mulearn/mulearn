@@ -111,7 +111,7 @@ function ManageRoles() {
             search: "",
             sortID: ""
         });
-        navigate("/manage-users");
+        navigate("/dashboard/manage-users");
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
