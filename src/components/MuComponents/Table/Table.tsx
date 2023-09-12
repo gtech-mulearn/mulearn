@@ -152,7 +152,11 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                     </td>{" "}
                                     {props.columnOrder.map(column => (
                                         <td
-                                            className={styles.td}
+                                            className={`${styles.td} ${
+                                                column.column === "long_url"
+                                                    ? styles["url_wrap"]
+                                                    : ""
+                                            }`}
                                             key={column.column}
                                         >
                                             {convertToNormalDate(
@@ -173,7 +177,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                 props.onCopyClick &&
                                                                 props.onCopyClick(
                                                                     rowData[
-                                                                    column
+                                                                        column
                                                                     ]
                                                                 )
                                                             }
@@ -187,7 +191,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                 props.onEditClick &&
                                                                 props.onEditClick(
                                                                     rowData[
-                                                                    column
+                                                                        column
                                                                     ]
                                                                 )
                                                             }

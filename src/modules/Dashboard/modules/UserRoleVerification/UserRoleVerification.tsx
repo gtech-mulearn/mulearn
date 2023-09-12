@@ -11,7 +11,7 @@ function UsersRoleVerification() {
     const [data, setData] = useState<TData[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const [perPage, setPerPage] = useState(5);
+    const [perPage, setPerPage] = useState(20);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
     const firstFetch = useRef(true);
