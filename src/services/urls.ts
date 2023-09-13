@@ -72,6 +72,8 @@ export const dashboardRoutes = {
     zonalCampusDetails: "/api/v1/dashboard/zonal/college-details/",
     zonalCampusData: "/api/v1/dashboard/zonal/campus-details/csv/",
 
+    departments: "/api/v1/dashboard/organisation/departments/",
+
     districtStudentDetails: "/api/v1/dashboard/district/student-details/",
     districtStudentData: "/api/v1/dashboard/district/student-details/csv/",
     districtCampusDetails: "/api/v1/dashboard/district/college-details/",

@@ -21,7 +21,7 @@ function ManageRoles() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const [perPage, setPerPage] = useState(100);
+    const [perPage, setPerPage] = useState(20);
     const [sort, setSort] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();

@@ -9,6 +9,7 @@ const ManageUsersDelete = (props: Props) => {
     const { id } = useParams();
     const toast = useToast();
     const navigate = useNavigate();
+
     const handleSubmit = () => {
         if (id) {
             deleteManageUsers(id, toast);
