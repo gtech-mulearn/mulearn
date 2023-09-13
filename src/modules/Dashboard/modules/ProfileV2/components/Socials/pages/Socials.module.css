@@ -1,0 +1,51 @@
+.edit_social_btn {
+    display: flex;
+    justify-content: space-between;
+
+    .edit_profile_btn {
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgb(69, 111, 246);
+        position: relative;
+        border-radius: 50%;
+        background: aliceblue;
+        padding: 0px !important;
+
+        & i {
+            font-size: 16px !important;
+            /* display: flex; */
+            height: 20px;
+        }
+    }
+}
+
+.socials_icons {
+    .icon_and_input {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+
+        & input {
+            border-bottom: 1px solid #bdd9ff;
+            background: transparent;
+            font-size: 14px;
+            width: inherit;
+
+            &::placeholder {
+                font-weight: 100;
+                font-size: 14px;
+            }
+        }
+    }
+
+    .error_message {
+        color: red !important;
+        font-size: 0.8rem;
+        text-align: left;
+        padding: 0px !important;
+    }
+}
