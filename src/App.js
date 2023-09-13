@@ -45,7 +45,8 @@ import MutechLeaderboard from "./Pages/MutechLeaderBoard/MutechLeaderBoard";
 import CodeStorm from "./Pages/Events/GTA/CodeStorm/CodeStorm";
 import KKEMLearningFest from "./Pages/KKEMLearningFest/KKEMLearningFest";
 
-import MaveliPortfolio from './Pages/Events/MaveliPortfolio/MaveliPortfolio'
+import MaveliPortfolio from "./Pages/Events/MaveliPortfolio/MaveliPortfolio";
+import KKEMEventTemplate from "./Pages/Events/KKEMEventTemplate/KKEMEventTemplate";
 function App() {
   const [redirects, setRedirects] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -115,6 +116,7 @@ function App() {
             <Route path="events/learningfest" element={<KKEMLearningFest />} />
             <Route path="/keralatechfest" element={<KKEMLearningFest />} />
             <Route path="/maveliportfolio" element={<MaveliPortfolio />} />
+            <Route path="/events/beyondus" element={<KKEMEventTemplate />} />
             <Route path="/team">
               <Route path="" element={<Teams />} />
             </Route>
