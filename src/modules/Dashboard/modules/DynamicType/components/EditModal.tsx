@@ -7,16 +7,16 @@ import * as Yup from "yup";
 import FormikReactSelect, {
     FormikTextInput
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { createRoleType, createUserType } from "../apis";
+import { updateRoleType } from "../apis";
 
 type Props = {
     onClose: any;
     users?: { value: string; label: string }[];
     roles?: { value: string; label: string }[];
-    type: { value: string; label: string }[];
+    rowId: string;
 };
 
-const CreateModal = (props: Props) => {
+const EditModal = (props: Props) => {
     const toast = useToast();
     const errHandler = (err: any) => {
         toast({
@@ -39,46 +39,30 @@ const CreateModal = (props: Props) => {
     return (
         <Formik
             initialValues={{
-                type: "",
                 ...(props.roles && { role: "" }),
                 ...(!props.roles && { user: "" })
                 // acceptedTerms: false, // added for our checkbox
                 // jobType: "" // added for our select
             }}
             validationSchema={Yup.object({
-                type: Yup.string().required("Required"),
                 ...(props.roles && { role: Yup.string().required("Required") }),
                 ...(!props.roles && { user: Yup.string().required("Required") })
             })}
             onSubmit={values => {
                 (async () => {
                     if (props.roles)
-                        await createRoleType(
+                        await updateRoleType(
                             errHandler,
                             succHandler,
-                            values.type,
+                            props.rowId,
                             values.role!
                         );
-                    else
-                        await createUserType(
-                            errHandler,
-                            succHandler,
-                            values.type,
-                            values.user!
-                        );
+                    else console.log(values);
                     props.onClose(null);
                 })();
             }}
         >
             <Form className={styles.Form}>
-                <FormikReactSelect
-                    name="type"
-                    options={props.type}
-                    label="Type"
-                    placeholder="Select the type"
-                    isClearable
-                    isSearchable
-                />
                 {!!props.roles ? (
                     <FormikReactSelect
                         name="role"
@@ -117,4 +101,4 @@ const CreateModal = (props: Props) => {
     );
 };
 
-export default CreateModal;
+export default EditModal;
