@@ -118,11 +118,13 @@ export const dashboardRoutes = {
 } as const;
 
 export const organizationRoutes = {
-    getOrganizationsAll: "/api/v1/dashboard/organisation/institutes/info/all_inst",
+    getOrganizationsAll:
+        "/api/v1/dashboard/organisation/institutes/info/all_inst",
     getCompany: "/api/v1/dashboard/organisation/institutes/show/Company/",
     getCollege: "/api/v1/dashboard/organisation/institutes/show/College/",
     getCommunity: "/api/v1/dashboard/organisation/institutes/show/Community/",
-    getAffiliation: "/api/v1/dashboard/organisation/institutes/org/affiliation/",
+    getAffiliation:
+        "/api/v1/dashboard/organisation/institutes/org/affiliation/",
     getLocation: "/api/v1/location",
     postAddOrganization: "/api/v1/dashboard/organisation/institutes/add/",
     putUpdateOrganization: "/api/v1/dashboard/organisation/institutes",
@@ -145,7 +147,8 @@ export const ManageLocationsRoutes = {
 export const KKEMRoutes = {
     userAuth: "/api/v1/integrations/kkem/authorization/",
     userLogin: "/api/v1/integrations/kkem/login/",
-    getDWMSDetails: "/api/v1/integrations/kkem/user/${jsid}/"
+    getDWMSDetails: "/api/v1/integrations/kkem/user/${jsid}/",
+    userStatus: "user/status/"
 };
 
 export const PublicRoutes = {
