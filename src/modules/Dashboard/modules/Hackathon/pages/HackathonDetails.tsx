@@ -13,6 +13,16 @@ import Countdown from "../../../utils/Countdown";
 
 type Props = {};
 
+// return true if possible
+function isStillPossibleToApply(application:string|null){
+    if (application === null) return true
+
+    let now = new Date().getTime()
+    let applicationTime = new Date(application).getTime()
+
+    return (applicationTime - now) > 0
+}
+
 export const HackathonDetails = (props: Props) => {
     const { id } = useParams();
     const [data, setData] = useState<HackList>();
@@ -135,14 +145,16 @@ export const HackathonDetails = (props: Props) => {
                                     setRemainingTime={setRemainingTime}
                                 />
                             </div>
-                            <PowerfulButton
-                                onClick={() =>
-                                    navigate(
-                                        `/dashboard/hackathon/apply/${data?.id}`
-                                    )
-                                }
-                                children="Apply Now"
+                            {isStillPossibleToApply(data.application_ends) ? <PowerfulButton
+                                onClick={() => navigate( `/dashboard/hackathon/apply/${data?.id}` ) }
+                                children={"Apply Now"}
                             />
+                            :
+                            <PowerfulButton
+                                variant="draft"
+                                disabled
+                                children={"Application Closed"}
+                            />}
                         </div>
                         {data?.website && (
                             <div className={styles.socialLinks}>

@@ -12,6 +12,7 @@ import {
 } from "../services/LearningCircleAPIs";
 import { useNavigate, useParams } from "react-router-dom";
 import { BiEditAlt, BiLogOutCircle } from "react-icons/bi";
+import { RxCrossCircled } from "react-icons/rx";
 import {
     AllWeeks,
     convert24to12,
@@ -41,6 +42,7 @@ const LearningCircle = (props: Props) => {
     const [nextMeet, setNextMeet] = useState<string | null>(null);
     const [week, setWeek] = useState<string>("");
 
+    const [openRemoveConfrim, setOpenRemoveConfirm] = useState(false);
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -68,7 +70,7 @@ const LearningCircle = (props: Props) => {
             });
             navigate("/dashboard/learning-circle/");
         }
-    }, [lc])
+    }, [lc]);
 
     useEffect(() => {
         setMeetTime(lc?.meet_time || "");
@@ -171,16 +173,14 @@ const LearningCircle = (props: Props) => {
                                     setIsOpen(true);
                                 }}
                             /> */}
-                            <div
-                                className={
-                                    styles.deleteIcon
-                                }
-                            >
+                            <div className={styles.deleteIcon}>
                                 <button
                                     onClick={() => {
                                         setIsOpen(true);
-                                    }} >
-                                    Leave Circle</button>
+                                    }}
+                                >
+                                    Leave Circle
+                                </button>
                             </div>
                             <div></div>
                             <Tooltip
@@ -498,7 +498,7 @@ const LearningCircle = (props: Props) => {
                             </div>
 
                             {lc?.pending_members &&
-                                lc.pending_members.length > 0 ? (
+                            lc.pending_members.length > 0 ? (
                                 <div className={styles.PendingApp}>
                                     <b className={styles.PendingTitle}>
                                         Pending approvals
@@ -625,7 +625,11 @@ const LearningCircle = (props: Props) => {
                                                 key={index}
                                                 className={styles.MemberName}
                                             >
-                                                <div className={styles.memberNameDiv}>
+                                                <div
+                                                    className={
+                                                        styles.memberNameDiv
+                                                    }
+                                                >
                                                     <img
                                                         src={
                                                             member.profile_pic
@@ -645,20 +649,45 @@ const LearningCircle = (props: Props) => {
                                                         </span>
                                                     </div>
                                                 </div>
-                                                {lc.is_lead && !member.is_lead && (
-                                                    <div
-                                                        className={
-                                                            styles.deleteIcon
-                                                        }
-                                                    >
-                                                        {/* <RiDeleteBin5Line
+                                                {lc.is_lead &&
+                                                    !member.is_lead && (
+                                                        <div>
+                                                            {/* <RiDeleteBin5Line
                                                             data-tooltip-id="Icon"
                                                             data-tooltip-content="leave circle"
                                                             onClick={() => { handleRemove(id, member.id) }}
                                                         /> */}
-                                                        <button onClick={() => { handleRemove(id, member.id) }}>Remove</button>
-                                                    </div>
-                                                )}
+                                                            <RxCrossCircled
+                                                                size={24}
+                                                                onClick={() => {
+                                                                    setOpenRemoveConfirm(
+                                                                        true
+                                                                    );
+                                                                }}
+                                                            />
+                                                            {openRemoveConfrim && (
+                                                                <Modal
+                                                                    click={() => {
+                                                                        handleRemove(
+                                                                            id,
+                                                                            member.id
+                                                                        );
+                                                                    }}
+                                                                    content={`Are you want to remove ${member?.username} from ${lc?.name} ?`}
+                                                                    heading={
+                                                                        "Remove user from Learning Cicle"
+                                                                    }
+                                                                    id={
+                                                                        "Remove"
+                                                                    }
+                                                                    setIsOpen={
+                                                                        setOpenRemoveConfirm
+                                                                    }
+                                                                    type="error"
+                                                                />
+                                                            )}
+                                                        </div>
+                                                    )}
                                             </div>
                                         ))}
                                 </div>

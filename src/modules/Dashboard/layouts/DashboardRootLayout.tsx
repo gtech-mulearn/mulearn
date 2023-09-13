@@ -131,8 +131,22 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     ]
                 },
                 {
+                    url: "/dashboard/dynamic-roles",
+                    title: "Dynamic Roles",
+                    hasView: true,
+                    roles: [roles.ADMIN]
+                    // icon: <i className="fi fi-sr-users-gear"></i>
+                },
+                {
                     url: "/dashboard/manage-roles",
                     title: "Manage Roles",
+                    hasView: true,
+                    roles: [roles.ADMIN]
+                    // icon: <i className="fi fi-sr-users-gear"></i>
+                },
+                {
+                    url: "/dashboard/manage-departments",
+                    title: "Manage Departments",
                     hasView: true,
                     roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-users-gear"></i>

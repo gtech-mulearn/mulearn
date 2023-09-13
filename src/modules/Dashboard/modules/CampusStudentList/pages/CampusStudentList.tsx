@@ -17,6 +17,8 @@ import styles from "./CampusStudentList.module.css";
 import CLIcon from "../assets/images/CampusLeadIcon.svg";
 import { useToast } from "@chakra-ui/react";
 
+import { convertDateToDayAndMonth } from "../../../utils/common";
+
 type Props = {};
 
 //TODO: Change the styles to camelCase from snake_case'
@@ -27,7 +29,7 @@ const CampusStudentList = (props: Props) => {
 
     const columns = [];
     const [studentData, setStudentData] = useState<any[]>([]);
-    const [perPage, setPerPage] = useState(5);
+    const [perPage, setPerPage] = useState(20);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [sort, setSort] = useState("");
@@ -83,9 +85,13 @@ const CampusStudentList = (props: Props) => {
             getStudentDetails(setStudentData, 1, perPage, setTotalPages);
             getCampusDetails(setCampusData);
             (async () => {
-                setBarData(
-                    [["", "Karma"]].concat(await getWeeklyKarma(errHandler))
-                );
+                let weeklyKarma = await getWeeklyKarma(errHandler);
+                let formatedData = weeklyKarma.map((item: any) => [
+                    convertDateToDayAndMonth(item[0]),
+                    item[1]
+                ]);
+
+                setBarData([["", "Karma"]].concat(formatedData));
                 setPieData(
                     [["Level", "UsersPerLevel"]].concat(
                         await getStudentLevel(errHandler)
@@ -158,6 +164,7 @@ const CampusStudentList = (props: Props) => {
                 <div className={styles.campus_student_list_container}>
                     <div className={styles.content}>
                         <div className={styles.sec1}>
+                        <div className={styles.sec_clg}>
                             <h1 className={styles.clg_name}>
                                 {campusData &&
                                     campusData.college_name &&
@@ -166,34 +173,44 @@ const CampusStudentList = (props: Props) => {
                                     )}
                                 ({campusData.campus_code})
                             </h1>
+                        </div>
 
                             <div className={styles.details_card}>
-                                <div className={styles.card}>
-                                    <h1>
-                                        {parseInt(campusData.total_karma) > 1000
-                                            ? (
-                                                  parseInt(
-                                                      campusData.total_karma
-                                                  ) / 1000
-                                              ).toPrecision(4) + "K"
-                                            : campusData.total_karma}
-                                    </h1>
-                                    <p>Karma</p>
+
+                                <div className={styles.card_one}>
+                                    <div className={styles.card}>
+                                        <h1>
+                                            {parseInt(campusData.total_karma) > 1000
+                                                ? (
+                                                    parseInt(
+                                                        campusData.total_karma
+                                                    ) / 1000
+                                                ).toPrecision(4) + "K"
+                                                : campusData.total_karma}
+                                        </h1>
+                                        <p>Karma</p>
+                                    </div>
+                                    <div className={styles.card}>
+                                        <h1>{campusData.total_members}</h1>
+                                        <p>Total Members</p>
                                 </div>
-                                <div className={styles.card}>
-                                    <h1>{campusData.total_members}</h1>
-                                    <p>Total Members</p>
                                 </div>
-                                <div className={styles.card}>
-                                    <h1>{campusData.active_members}</h1>
-                                    <p>Active Members</p>
+                                <div className={styles.card_one}>
+                                    <div className={styles.card}>
+                                        <h1>{campusData.active_members}</h1>
+                                        <p>Active Members</p>
+                                    </div>
+                                    <div className={styles.card}>
+                                        <div className={styles.campus_lead_card}>
+                                            <img src={CLIcon} alt="" />
+                                            <h2>{campusData.campus_lead}</h2>
+                                            <p>Campus Lead</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className={styles.campus_lead_card}>
-                                    <img src={CLIcon} alt="" />
-                                    <h2>{campusData.campus_lead}</h2>
-                                    <p>Campus Lead</p>
-                                </div>
-                              </div>
+                            </div>
+
+
                         </div>
                         <div className={styles.sec2}>
                             <p className={styles.clg_rank}>
@@ -213,6 +230,7 @@ const CampusStudentList = (props: Props) => {
             <div className={styles.graphs}>
                 <div className={styles.container}>
                     <h2>Weekly Karma Insights</h2>
+
                     <BarChart
                         data={barData}
                         ylabel="Karma"

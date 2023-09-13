@@ -38,6 +38,12 @@
 /* .campus_student_list_container .content .sec1 .clg_name {
     max-width: 65%;
 } */
+.campus_student_list_container .content .sec1 .sec_clg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
 
 .campus_student_list_container .content .sec1 h1 {
     font-size: xx-large;
@@ -52,8 +58,16 @@
 .campus_student_list_container .content .sec1 .details_card {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: end;
+    justify-content: center;
+    align-items: center;
+}
+.campus_student_list_container .content .sec1 .details_card .card_one {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 50%;
+
 }
 
 .campus_student_list_container .content .sec1 .details_card .card {
@@ -158,6 +172,7 @@
         font-size: 17px;
         font-weight: 800;
     }
+    
 }
 
 @media (max-width: 1155px) {
@@ -198,7 +213,21 @@
         margin-top: .7rem;
         text-align: center;
     }
+    .campus_student_list_container .content .sec1 .details_card .card_one {
+        width: 100%;
+    }
+
     
+}
+@media (max-width:300px){
+    .campus_student_list_container .content .sec1 .details_card .card_one {
+        width: 80%;
+    }
+    .campus_student_list_container .content .sec1 .sec_clg{
+        width: 90%;
+
+    }
+
 }
 
 .loader_container {

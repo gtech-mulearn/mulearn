@@ -26,8 +26,9 @@ type urlData = {
 const UrlShortener = () => {
     const columnOrder: ColOrder[] = [
         { column: "title", Label: "Title", isSortable: true },
-        { column: "short_url", Label: "Short URL", isSortable: false },
-        { column: "long_url", Label: "Long URL", isSortable: false }
+        { column: "short_url", Label: "Short URL", isSortable: true },
+        { column: "long_url", Label: "Long URL", isSortable: true },
+        { column: "created_at", Label: "Created Date", isSortable: true }
     ];
 
     const toast = useToast();
@@ -35,7 +36,7 @@ const UrlShortener = () => {
     const [createBtn, setCreateBtn] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const [perPage, setPerPage] = useState(5);
+    const [perPage, setPerPage] = useState(20);
     const [sort, setSort] = useState("");
     const [shortUrlData, setShortUrlData] = useState<urlData[]>([]);
 
@@ -78,6 +79,7 @@ const UrlShortener = () => {
                             // formik.handleReset(formik.values);
                         }, 500);
                         setEditBtn(false);
+                        setCreateBtn(false);
                     }
                 });
             } else {
@@ -154,7 +156,7 @@ const UrlShortener = () => {
             setSort(`-${column}`);
             getShortenUrls(
                 setShortUrlData,
-                1,
+                currentPage,
                 perPage,
                 setTotalPages,
                 "",
@@ -164,7 +166,7 @@ const UrlShortener = () => {
             setSort(column);
             getShortenUrls(
                 setShortUrlData,
-                1,
+                currentPage,
                 perPage,
                 setTotalPages,
                 "",

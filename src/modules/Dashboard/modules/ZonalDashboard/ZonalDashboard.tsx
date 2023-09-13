@@ -17,7 +17,7 @@ function ZonalDashboard() {
     const [data, setData] = useState<Data[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const [perPage, setPerPage] = useState(5);
+    const [perPage, setPerPage] = useState(20);
     const [columns, setColumns] = useState(columnsStudent);
     const [activeTab, setActiveTab] = useState("Student management");
     const [sort, setSort] = useState("");
@@ -154,7 +154,11 @@ function ZonalDashboard() {
     };
     return (
         <>
-            <TableTopTab active={activeTab} onTabClick={handleTabClick} />
+            <TableTopTab
+                active={activeTab}
+                onTabClick={handleTabClick}
+                tabletopTab={["Student management", "Campus management"]}
+            />
             <div className={graphStyles.graphs}>
                 <div className={graphStyles.container}>
                     <h2>Top 3 Districts</h2>
