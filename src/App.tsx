@@ -17,6 +17,7 @@ import Profile from "./modules/Dashboard/modules/Profile/pages/Profile";
 const KarmaVoucher = lazy(
     () => import("./modules/Dashboard/modules/KarmaVoucher/KarmaVoucher")
 );
+
 const KarmaVoucherBulkImport = lazy(
     () =>
         import(
@@ -44,6 +45,9 @@ const ManageUsersDelete = lazy(
 );
 const ManageUsersEdit = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersEdit")
+);
+const DynamicType = lazy(
+    () => import("./modules/Dashboard/modules/DynamicType/DynamicType")
 );
 const ManageRoles = lazy(
     () => import("./modules/Dashboard/modules/ManageRoles/ManageRoles")
@@ -91,18 +95,7 @@ const KKEMLanding = lazy(
     () => import("./modules/Public/KKEM/modules/KKEMLanding")
 );
 const KKEMAuth = lazy(() => import("./modules/Public/KKEM/modules/KKEMAuth"));
-const LearningCircle = lazy(
-    () =>
-        import(
-            "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle"
-        )
-);
-const LearningCircleCreate = lazy(
-    () =>
-        import(
-            "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate"
-        )
-);
+
 const ManageLocation = lazy(
     () => import("./modules/Dashboard/modules/ManageLocation/ManageLocation")
 );
@@ -117,17 +110,7 @@ const HackathonOrganizers = lazy(() =>
         "./modules/Dashboard/modules/Hackathon/pages/HackathonOrganizers"
     ).then(module => ({ default: module.HackathonOrganizers }))
 );
-const FindCircle = lazy(
-    () =>
-        import(
-            "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind"
-        )
-);
-const LearningCircleLandingPage = lazy(() =>
-    import(
-        "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleLandingPage"
-    ).then(module => ({ default: module.LearningCircleLandingPage }))
-);
+
 const Organizations = lazy(
     () => import("./modules/Dashboard/modules/Organizations/Organizations")
 );
@@ -178,11 +161,15 @@ import SecureAuthRoutes from "./services/authCheck";
 import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
 import Refer from "./modules/Dashboard/modules/Refer/Refer";
 import LandingPage from "./modules/Public/LearningCircles/pages/LandingPage";
-import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/SignIn";
 import AccountCreation from "./modules/Common/Authentication/pages/Onboarding/AccountCreation/AccountCreation";
 import Rolepage from "./modules/Common/Authentication/pages/Onboarding/RolePage/RolePage";
 import CollegePage from "./modules/Common/Authentication/pages/Onboarding/CollegePage/CollegePage";
 import CompanyPage from "./modules/Common/Authentication/pages/Onboarding/CompanyPage/CompanyPage";
+import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/SignIn";
+import { LearningCircleLandingPage } from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleLandingPage";
+import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle";
+import LearningCircleCreate from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate";
+import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -337,6 +324,16 @@ function App() {
                                 />
                             )
                         },
+                        {
+                            path: "dynamic-roles",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<DynamicType />}
+                                />
+                            )
+                        },
+
                         {
                             path: "user-role-verification",
                             element: (

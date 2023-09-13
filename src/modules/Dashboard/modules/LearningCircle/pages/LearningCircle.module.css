@@ -452,11 +452,12 @@
 }
 
 .memberNameDiv {
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: flex-start;
 }
-
 .memberNameDiv img {
     margin-right: 1rem;
 }

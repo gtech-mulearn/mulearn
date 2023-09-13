@@ -3,39 +3,48 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { useNavigate } from "react-router-dom";
-import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle, AiOutlineUser } from "react-icons/ai";
-import styles from "./CollegeLevels.module.css";
+import styles from "./DynamicType.module.css";
 import modalStyles from "./components/Modal.module.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
 import Modal from "./components/Modal";
-import CollegeLevelsEdit from "./components/CollegeLevelsEdit";
-import CollegeLevelsCreate from "./components/CollegeLevelsCreate";
-import { deleteCollegeLevels, getCollegeLevels } from "./apis";
+import CreateModal from "./components/CreateModal";
+import TableTopTab from "../ZonalDashboard/TableTopTab";
+import {
+    deleteRoleType,
+    deleteUserType,
+    getDynamicRoles,
+    getDynamicUsers,
+    getRoles,
+    getTypes
+} from "./apis";
 
-function CollegeLevels() {
+function DynamicType() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const [perPage, setPerPage] = useState(20);
+    const [perPage, setPerPage] = useState(100);
     const [sort, setSort] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const firstFetch = useRef(true);
-    //Modal
-    const [currModal, setCurrModal] = useState<null | "create" | "edit">(null);
-    const [currOrdId, setCurrOrgId] = useState<string | null>(null);
-
     const toast = useToast();
+    const [tab, setTab] = useState<"Role" | "User">("Role");
+
+    //Modal
+    const [currModal, setCurrModal] = useState<null | "create">(null);
+
+    const [roles, setRoles] = useState([]);
+    const [types, setTypes] = useState([]);
     const icons = {
         user: (
-            <div className={modalStyles.tickIcon}>
+            <div className={modalStyles.TickIcon}>
                 <AiOutlineUser width="20" height="20" />
             </div>
         ),
         tick: (
-            <div className={modalStyles.tickIcon}>
+            <div className={modalStyles.TickIcon}>
                 <svg
                     width="20"
                     height="20"
@@ -54,7 +63,7 @@ function CollegeLevels() {
             </div>
         ),
         cross: (
-            <div className={modalStyles.crossIcon}>
+            <div className={modalStyles.CrossIcon}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -71,26 +80,61 @@ function CollegeLevels() {
         )
     };
 
-    const columnOrder = [
-        // { column: "id", Label: "ID", isSortable: true },
-        { column: "org", Label: "College", isSortable: false },
-        { column: "level", Label: "Level", isSortable: false },
-        { column: "discord_link", Label: "Discord", isSortable: false },
-        { column: "updated_by", Label: "Updated By", isSortable: false },
-        { column: "updated_at", Label: "Updated At", isSortable: false },
-        { column: "created_by", Label: "Created By", isSortable: false },
-        { column: "created_at", Label: "Created At", isSortable: false }
+    const columnOrderRole = [
+        { column: "type", Label: "Type", isSortable: false },
+        { column: "role", Label: "Role", isSortable: false }
+    ];
+    const columnOrderUser = [
+        { column: "type", Label: "Type", isSortable: false },
+        { column: "user", Label: "User", isSortable: false }
     ];
 
     const errHandler = (err: any) => {
         toast({
             title: "Something went wrong",
-            description: err,
+            description: err.toString(),
             status: "error",
             duration: 3000,
             isClosable: true
         });
     };
+
+    useEffect(() => {
+        if (firstFetch.current) {
+            (async () => {
+                if (tab === "Role") setRoles(await getRoles(errHandler));
+                setTypes(await getTypes(errHandler));
+            })();
+        }
+
+        firstFetch.current = false;
+    }, []);
+
+    useEffect(() => {
+        if (currModal !== null) return;
+        if (tab == "Role")
+            getDynamicRoles(
+                errHandler,
+                setData,
+                1,
+                perPage,
+                setIsLoading,
+                setTotalPages,
+                "",
+                sort
+            );
+        if (tab == "User")
+            getDynamicUsers(
+                errHandler,
+                setData,
+                1,
+                perPage,
+                setIsLoading,
+                setTotalPages,
+                "",
+                sort
+            );
+    }, [currModal, currentPage, perPage, tab]);
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -102,57 +146,36 @@ function CollegeLevels() {
         setCurrentPage(prevPage);
     };
 
-    useEffect(() => {
-        if (firstFetch.current) {
-            getCollegeLevels(
-                {
-                    setData: setData,
-                    page: 1,
-                    selectedValue: perPage,
-                    setIsLoading: setIsLoading,
-                    setTotalPages: setTotalPages,
-                    search: "",
-                    sortID: ""
-                },
-                errHandler
-            );
-        }
-
-        firstFetch.current = false;
-    }, []);
-
-    const delayedRefetch = () => {
-        console.log("refetch");
-        setTimeout(
-            () =>
-                getCollegeLevels(
-                    {
-                        setData: setData,
-                        page: 1,
-                        selectedValue: perPage,
-                        setIsLoading: setIsLoading,
-                        setTotalPages: setTotalPages,
-                        search: "",
-                        sortID: ""
-                    },
-                    errHandler
-                ),
-            1000
-        );
-    };
-
     const handleSearch = (search: string) => {
         setCurrentPage(1);
+
+        if (tab == "Role")
+            getDynamicRoles(
+                errHandler,
+                setData,
+                1,
+                perPage,
+                setIsLoading,
+                setTotalPages,
+                "",
+                sort
+            );
+        if (tab == "User")
+            getDynamicUsers(
+                errHandler,
+                setData,
+                1,
+                perPage,
+                setIsLoading,
+                setTotalPages,
+                "",
+                sort
+            );
     };
 
-    const handleEdit = (id: string | number | boolean) => {
-        setCurrOrgId(id.toString());
-        setCurrModal("edit");
-    };
-
-    const handleDelete = async (id: string | undefined) => {
-        await deleteCollegeLevels(id!);
-        delayedRefetch();
+    const handleDelete = (id: string | undefined) => {
+        if (tab === "Role") deleteRoleType(errHandler, id);
+        if (tab === "User") deleteUserType(errHandler, id);
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
@@ -171,8 +194,19 @@ function CollegeLevels() {
             setSort(column);
         }
     };
+
+    const handleTabClick = (newTab: any) => {
+        if (tab === newTab) return;
+        setTab(newTab);
+    };
+
     return (
         <>
+            <TableTopTab
+                active={tab}
+                onTabClick={handleTabClick}
+                tabletopTab={["Role", "User"]}
+            />
             {currModal
                 ? (() => {
                       if (currModal === "create")
@@ -180,28 +214,13 @@ function CollegeLevels() {
                               <Modal
                                   onClose={setCurrModal}
                                   icon={icons.tick}
-                                  header="Assign College Level"
-                                  paragraph="Select and assign the level"
+                                  header="Create Role"
+                                  paragraph="Enter the values for the new role"
                               >
-                                  <CollegeLevelsCreate
+                                  <CreateModal
+                                      roles={tab === "Role" ? roles : undefined}
+                                      type={types}
                                       onClose={setCurrModal}
-                                      refetch={delayedRefetch}
-                                  />
-                              </Modal>
-                          );
-                      if (currModal === "edit")
-                          return (
-                              <Modal
-                                  size="small"
-                                  onClose={setCurrModal}
-                                  icon={icons.cross}
-                                  header="Edit College Level"
-                                  paragraph="Select the new level"
-                              >
-                                  <CollegeLevelsEdit
-                                      onClose={setCurrModal}
-                                      org_id={currOrdId!}
-                                      refetch={delayedRefetch}
                                   />
                               </Modal>
                           );
@@ -209,10 +228,12 @@ function CollegeLevels() {
                 : ""}
 
             <div className={styles.createBtnContainer}>
-                <PowerfulButton onClick={handleCreate}>
-                    <AiOutlinePlusCircle />
-                    Create
-                </PowerfulButton>
+                <MuButton
+                    className={styles.createBtn}
+                    text={"Create"}
+                    icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
+                    onClick={handleCreate}
+                />
             </div>
 
             {data && (
@@ -220,23 +241,28 @@ function CollegeLevels() {
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
-                        // CSV={dashboardRoutes.getRolesList}
+                        CSV={dashboardRoutes.getRolesList}
                     />
                     <Table
                         isloading={isLoading}
                         rows={data}
                         page={currentPage}
                         perPage={perPage}
-                        columnOrder={columnOrder}
+                        columnOrder={
+                            tab === "Role" ? columnOrderRole : columnOrderUser
+                        }
                         id={["id"]}
-                        onEditClick={handleEdit}
                         onDeleteClick={handleDelete}
                         modalDeleteHeading="Delete"
                         modalTypeContent="error"
-                        modalDeleteContent="Are you sure you want to delete this college level ?"
+                        modalDeleteContent="Are you sure you want to delete this role ?"
                     >
                         <THead
-                            columnOrder={columnOrder}
+                            columnOrder={
+                                tab === "Role"
+                                    ? columnOrderRole
+                                    : columnOrderUser
+                            }
                             onIconClick={handleIconClick}
                             action={true}
                         />
@@ -262,4 +288,4 @@ function CollegeLevels() {
     );
 }
 
-export default CollegeLevels;
+export default DynamicType;

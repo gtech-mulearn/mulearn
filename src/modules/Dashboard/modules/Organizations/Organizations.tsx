@@ -22,7 +22,7 @@ function Organizations() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const [perPage, setPerPage] = useState(5);
+    const [perPage, setPerPage] = useState(20);
     const [columns, setColumns] = useState(columnsCollege);
     const [activeTab, setActiveTab] = useState<CCC>("Colleges");
     const [sort, setSort] = useState("");

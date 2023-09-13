@@ -1,6 +1,8 @@
 import React, { ReactNode, useState } from "react";
 import styles from "./MuButtons.module.css";
 import { ClipLoader } from "react-spinners";
+import { Spinner } from '@chakra-ui/react'
+import { LuCheck } from "react-icons/lu";
 
 /**
  * TODO: Make Single and Powerful Button Component(Multi-Purpose)
@@ -227,13 +229,20 @@ export const PowerfulButton: ButtonProps = ({
             style={style}
         >
             {children}
-            {isLoading && (
-                <ClipLoader
-                    size={20}
-                    color="#ff"
-                    className={styles.btn_loader}
-                />
-            )}
+            {
+                isLoading !== undefined &&
+                    (isLoading ? (
+                        <Spinner
+                            thickness="3px"
+                            speed="0.6s"
+                            size={"md"}
+                            color="currentcolor"
+                            marginLeft={"1"}
+                        />
+                    ) : (
+                        <></>
+                    )) // <LuCheck size={"20px"} />)
+            }
         </button>
     );
-};
+}
