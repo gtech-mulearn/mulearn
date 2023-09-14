@@ -10,7 +10,7 @@
   
   .errorLogButton {
     width: 300px;
-    height: 300px;
+    height: 100px;
     border: 3px dashed rgb(40, 117, 232);
     border-radius: 10px;
     background-color: rgba(12, 87, 173, 0.176);
