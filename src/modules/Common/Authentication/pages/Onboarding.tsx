@@ -31,7 +31,7 @@ interface BackendErrors {
 
 const Onboarding = (props: Props) => {
     const urlParams = new URLSearchParams(window.location.search);
-    const jsId = urlParams.get("jsid");
+    const jsId = urlParams.get("param");
     const referralId = urlParams.get("referral_id");
     // console.log(jsId)
     const queryParameters = new URLSearchParams(window.location.search);

@@ -4,14 +4,22 @@ import { RiCloseLine } from "react-icons/ri";
 import { AiOutlineLoading } from "react-icons/ai";
 import { HiCheck, HiOutlineArrowRight } from "react-icons/hi";
 import { useToast } from "@chakra-ui/react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { KKEMLogin } from "../services/apis";
 
 interface ModalProps extends React.HTMLAttributes<HTMLDialogElement> {
     open: boolean;
     setOpen?: UseStateFunc<boolean>;
+    muId?: string;
+    param?: string;
 }
-export default function Modal({ open, setOpen, ...props }: ModalProps) {
+export default function Modal({
+    open,
+    setOpen,
+    muId,
+    param,
+    ...props
+}: ModalProps) {
     const modalRef = useRef<HTMLDialogElement>(null);
     useEffect(() => {
         const modal = modalRef.current;
@@ -46,6 +54,7 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
             }
         };
     }, [modalRef, setOpen]);
+    // console.log(muId);
 
     const [muid, setMuid] = useState("");
     const [jsid, setJsid] = useState<string | null>("");
@@ -58,25 +67,12 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
     const toast = useToast();
     const navigate = useNavigate();
     let ruri = window.location.href.split("=")[1];
-    const [searchParams] = useSearchParams();
-    const mu_id = searchParams.get("mu_id");
-    const js_id = searchParams.get("jsid");
 
     useEffect(() => {
-        if (mu_id) {
-            setMuid(mu_id);
-            setJsid(js_id);
-            setIntegration("KKEM");
-            setDisabled(true);
-        }
-    }, [searchParams]);
-
-    useEffect(() => {
-        if (js_id) {
-            setJsid(js_id);
-            setIntegration("KKEM");
-        }
-    }, [searchParams]);
+        setMuid(muId ? muId : "");
+        setIntegration("KKEM");
+        setDisabled(true);
+    });
 
     const handleIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setMuid(e.target.value);
@@ -240,7 +236,7 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
                             type="button"
                             className={styles.modalButton}
                             onClick={() => {
-                                navigate("/register?jsid=" + js_id);
+                                navigate("/register?param=" + param);
                             }}
                         >
                             Get Mu-Id
