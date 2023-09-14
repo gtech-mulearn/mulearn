@@ -93,8 +93,6 @@
 
 .side_nav_bar_main_items {
     overflow-y: scroll;
-	width: 100%;
-	max-width: 250px;
 }
 
 .side_nav_bar_item :hover {
