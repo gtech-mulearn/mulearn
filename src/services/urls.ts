@@ -155,7 +155,8 @@ export const ManageLocationsRoutes = {
 export const KKEMRoutes = {
     userAuth: "/api/v1/integrations/kkem/authorization/",
     userLogin: "/api/v1/integrations/kkem/login/",
-    getDWMSDetails: "/api/v1/integrations/kkem/user/${jsid}/"
+    getDWMSDetails: "/api/v1/integrations/kkem/user/${jsid}/",
+    userStatus: "user/status/"
 };
 
 export const PublicRoutes = {

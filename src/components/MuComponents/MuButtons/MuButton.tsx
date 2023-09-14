@@ -19,7 +19,7 @@ export const MuButton = (props: {
     onSubmit?: any;
     isLoading?: boolean; // show loading spinner if neccessary.
     disabled?: boolean; //disable the button if needed
-    buttonUrl?: string; 
+    buttonUrl?: string; // for styling purposes
     submit?: boolean; // for styling purposes
     isMinWidth?: boolean;
 }) => {
@@ -193,56 +193,26 @@ type Variants =
     | "link"
     | "draft";
 
-type ButtonProps = ({
-    children,
-    className,
-    variant,
-    style,
-    isLoading,
-	buttonUrl,
-    ...props
-}: {
-    children: ReactNode;
-    className?: string;
-    variant?: Variants;
-    style?: React.CSSProperties;
-    isLoading?: boolean;
-	buttonUrl?: string;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element;
 
-export const PowerfulButton: ButtonProps = ({
-    children,
-    className = "",
-    variant = "primary",
-    style,
-    isLoading,
-    ...props
-}) => {
-    const variantName = variant ? styles[`${variant}-btn`] : "";
+type ButtonProps = ({ children, className, variant, style, isLoading, ...props }:
+    {children: ReactNode, className?:string, variant?:Variants, isLoading?:boolean, style?: React.CSSProperties} & React.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element
 
-    return (
-        <button
-            className={
-                styles["common-btn"] + "  " + variantName + " " + className
-            }
-            {...props}
-            style={style}
-        >
-            {children}
-            {
-                isLoading !== undefined &&
-                    (isLoading ? (
-                        <Spinner
-                            thickness="3px"
-                            speed="0.6s"
-                            size={"md"}
-                            color="currentcolor"
-                            marginLeft={"1"}
-                        />
-                    ) : (
-                        <></>
-                    )) // <LuCheck size={"20px"} />)
-            }
-        </button>
-    );
+export const PowerfulButton:ButtonProps = ({ children, className = "", variant = "primary", style, isLoading,...props }) => {
+    const variantName = variant ? styles[`${variant}-btn`] : ""
+
+    return <button disabled={isLoading !== undefined ? isLoading : false} className={styles["common-btn"] + "  " + variantName + " " + className} 
+                             {...props} style={style}>
+        {children}
+        {isLoading !== undefined && 
+            (isLoading ? 
+            <Spinner 
+                thickness='3px'
+                speed='0.6s'
+                size={"md"}
+                color="currentcolor"
+                marginLeft={"1"}
+            />
+            : <></>) // <LuCheck size={"20px"} />)
+        }
+    </button>
 }

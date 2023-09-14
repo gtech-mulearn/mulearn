@@ -13,6 +13,7 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import { BiEditAlt, BiLogOutCircle } from "react-icons/bi";
 import { RxCrossCircled } from "react-icons/rx";
+import { SiKnowledgebase } from "react-icons/si"
 import {
     AllWeeks,
     convert24to12,
@@ -24,7 +25,9 @@ import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { Tooltip } from "react-tooltip";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import Modal from "@/MuLearnComponents/Modal/Modal";
-import { RiDeleteBin5Line } from "react-icons/ri";
+
+import data from "../data/data.json"
+import { BsFillBookmarksFill } from "react-icons/bs";
 
 type Props = {};
 
@@ -43,6 +46,7 @@ const LearningCircle = (props: Props) => {
     const [week, setWeek] = useState<string>("");
 
     const [openRemoveConfrim, setOpenRemoveConfirm] = useState(false);
+    const [resourceLink, setResourceLink] = useState("");
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -58,6 +62,14 @@ const LearningCircle = (props: Props) => {
             }
         }, 2000);
     }, []);
+
+    useEffect(() => {
+        //find the correspoding resourceLink from the data by matching the igcode from lc
+        const igCode = lc?.ig_code;
+        const resourceLink = data.find((ig) => ig.igcode === igCode)?.resourcelink;
+        setResourceLink(resourceLink || "");
+    }, [lc])
+
 
     useEffect(() => {
         if (lc && !lc.is_member) {
@@ -150,6 +162,12 @@ const LearningCircle = (props: Props) => {
                                 {lc?.college} <br /> Code:
                                 {lc?.circle_code}
                             </b>
+                            {resourceLink.length > 0 && <a href={resourceLink} target="_blank" rel="noopener noreferrer">
+                                <p className={styles.resourcesLink}>
+                                    <BsFillBookmarksFill color="#456ff6" />
+                                    Learning Resources
+                                </p>
+                            </a>}
                         </div>
                         <div className={styles.CircleRank}>
                             <div>
