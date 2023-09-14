@@ -9,9 +9,6 @@ import Footer from "../components/Footer";
 import igAssets from "../assets/IGS";
 import pastEventsAssets from "../assets/past_events";
 
-/**
- * Landing page for KKEM
- */
 export default function Landing() {
     const igCardData = [
         {
