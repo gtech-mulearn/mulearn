@@ -36,7 +36,7 @@ const KKEMEventTemplate = () => {
 
       <div className={styles.aboutSection}>
         <div className={styles.aboutTexts}>
-          <p className={styles.aboutTextsHeading}>Learning Fest</p>
+          <p className={styles.aboutTextsHeading}>Beyond Us</p>
           <p className={styles.aboutTextstDescription}>
             µLearn in association with KKEM brings you Learning Fest a series of
             bootcamps to improve your skills in various domains and the chance

@@ -1154,3 +1154,12 @@
     all: revert;
     padding: 125px 0px;
 }
+
+.resourcesLink{
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    margin-top: 1rem;
+    font-weight: 400;
+    cursor: pointer;
+}
