@@ -9,7 +9,8 @@ export const getDepartments = async ({
     setIsLoading,
     search,
     perPage = 10,
-    setTotalPages
+    setTotalPages,
+    sortBy
 }: {
     setDepartments: Dispatch<SetStateAction<any[]>>;
     setIsLoading: Dispatch<SetStateAction<boolean>>;
@@ -17,13 +18,19 @@ export const getDepartments = async ({
     search?: string;
     perPage?: number;
     setTotalPages?: Dispatch<SetStateAction<number>>;
+    sortBy?: string;
 }) => {
     console.log("getDepartments - page", page);
 
     setIsLoading(true);
     try {
         const response = await privateGateway.get(dashboardRoutes.departments, {
-            params: { pageIndex: page, search: search, perPage: perPage }
+            params: {
+                pageIndex: page,
+                search: search,
+                perPage: perPage,
+                sortBy: sortBy
+            }
         });
         const departments: any = response?.data.response.data;
         const pagination: any = response?.data.response.pagination;

@@ -44,10 +44,21 @@ const Departments = () => {
             setDepartments: setDepartments,
             setIsLoading: setIsLoading,
             search: search,
-            setTotalPages: setTotalPages
+            setTotalPages: setTotalPages,
+            sortBy: sort
         });
 
-    const handlePerPageNumber = (selectedValue: number) => {};
+    const handlePerPageNumber = (selectedValue: number) => {
+        setCurrentPage(1);
+        setPerPage(selectedValue);
+        getDepartments({
+            setDepartments: setDepartments,
+            setIsLoading: setIsLoading,
+            perPage: selectedValue,
+            setTotalPages: setTotalPages,
+            sortBy: sort
+        });
+    };
 
     const handleEdit = async (id: string | number | boolean) => {
         setChoosenDeptId(id as string);
@@ -63,7 +74,15 @@ const Departments = () => {
         });
     };
 
-    const handleIconClick = (column: string) => {};
+    const handleSortIconClick = (column: string) => {
+        const sortBy = sort === column ? `-${column}` : column;
+        setSort(sortBy);
+        getDepartments({
+            setDepartments: setDepartments,
+            setIsLoading: setIsLoading,
+            sortBy: sortBy
+        });
+    };
 
     const handleNextClick = () => {
         if (currentPage >= totalPages) return;
@@ -71,7 +90,8 @@ const Departments = () => {
         getDepartments({
             setDepartments: setDepartments,
             setIsLoading: setIsLoading,
-            page: currentPage + 1
+            page: currentPage + 1,
+            sortBy: sort
         });
     };
 
@@ -81,7 +101,8 @@ const Departments = () => {
         getDepartments({
             setDepartments: setDepartments,
             setIsLoading: setIsLoading,
-            page: currentPage - 1
+            page: currentPage - 1,
+            sortBy: sort
         });
     };
 
@@ -120,7 +141,7 @@ const Departments = () => {
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
-                        // CSV={dashboardRoutes.getIgList}
+                        // CSV={}
                     />
                     <Table
                         rows={departments}
@@ -137,7 +158,7 @@ const Departments = () => {
                     >
                         <THead
                             columnOrder={columnOrder}
-                            onIconClick={handleIconClick}
+                            onIconClick={handleSortIconClick}
                             action={true}
                         />
                         <div className={styles.tableFooter}>
