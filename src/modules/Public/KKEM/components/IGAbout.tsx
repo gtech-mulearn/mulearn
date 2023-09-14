@@ -5,11 +5,25 @@ import im7 from "../assets/im7.webp";
 import im9 from "../assets/im9.webp";
 import im10 from "../assets/im10.webp";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { publicGateway } from "@/MuLearnServices/apiGateways";
+import { KKEMRoutes } from "@/MuLearnServices/urls";
 export default function MulearnAbout() {
     const [searchParams] = useSearchParams();
-    const jsid = searchParams.get("jsid");
-    const mu_id = searchParams.get("mu_id");
+    const encrypted_key = searchParams.get("param");
+
+    const [jsid, setJsId] = useState("");
+    const [mu_id, setMuId] = useState("");
+
+    useEffect(() => {
+        publicGateway.get(KKEMRoutes.userStatus + `${encrypted_key}`).then((res) => {
+            console.log(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }, [])
+
+
     const navigate = useNavigate();
     return (
         <section id="about" className={styles.section}>
