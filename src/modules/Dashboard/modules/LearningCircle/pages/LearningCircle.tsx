@@ -42,7 +42,7 @@ const LearningCircle = (props: Props) => {
     const [isEdit, setIsEdit] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [meetDays, setMeetDays] = useState<number[]>([]);
-    const [validAvatar, setValidAvatar] = useState(false);
+    const [validAvatar, setValidAvatar] = useState<string[]>([]);
 
     const [nextMeet, setNextMeet] = useState<string | null>(null);
     const [week, setWeek] = useState<string>("");
@@ -68,16 +68,11 @@ const LearningCircle = (props: Props) => {
     useEffect(() => {
         lc?.members.map(async member => {
             const imagePath: string = member.profile_pic;
+
             try {
                 const response: AxiosResponse = await axios.get(imagePath);
-
-                if (response.status === 200) {
-                    setValidAvatar(true);
-                } else {
-                    setValidAvatar(false);
-                }
             } catch (error) {
-                setValidAvatar(false);
+                setValidAvatar(valid => [...valid, member.id]);
             }
         });
     }, [lc]);
@@ -169,6 +164,11 @@ const LearningCircle = (props: Props) => {
         setTimeout(() => {
             navigate(`/dashboard/learning-circle/details/${id}`);
         }, 4000);
+    }
+
+    function avatarValidate(member: LcMembers) {
+        const isInvalid = validAvatar.find(id => member.id === id);
+        return isInvalid ? pic : member?.profile_pic || pic;
     }
 
     return (
@@ -560,12 +560,9 @@ const LearningCircle = (props: Props) => {
                                                     >
                                                         <span>
                                                             <img
-                                                                src={
-                                                                    validAvatar &&
-                                                                    member.profile_pic
-                                                                        ? member?.profile_pic
-                                                                        : pic
-                                                                }
+                                                                src={avatarValidate(
+                                                                    member
+                                                                )}
                                                                 alt="Profile picture"
                                                             />
                                                             <b>
@@ -676,12 +673,9 @@ const LearningCircle = (props: Props) => {
                                                     }
                                                 >
                                                     <img
-                                                        src={
-                                                            validAvatar &&
-                                                            member.profile_pic
-                                                                ? member?.profile_pic
-                                                                : pic
-                                                        }
+                                                        src={avatarValidate(
+                                                            member
+                                                        )}
                                                         alt="Profile Picture"
                                                     />
                                                     <div>
