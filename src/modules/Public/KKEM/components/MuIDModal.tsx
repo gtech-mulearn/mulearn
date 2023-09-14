@@ -56,8 +56,7 @@ export default function Modal({
     }, [modalRef, setOpen]);
     // console.log(muId);
 
-    const [muid, setMuid] = useState("");
-    const [jsid, setJsid] = useState<string | null>("");
+    const [muid, setMuid] = useState(muId);
     const [password, setPassword] = useState("");
     const [success, setSuccess] = useState(false);
     const [disabled, setDisabled] = useState(false);
@@ -69,14 +68,10 @@ export default function Modal({
     let ruri = window.location.href.split("=")[1];
 
     useEffect(() => {
-        setMuid(muId ? muId : "");
+        setMuid(muId);
         setIntegration("KKEM");
         setDisabled(true);
-    });
-
-    const handleIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setMuid(e.target.value);
-    };
+    }, []);
 
     const handlePassChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
@@ -99,17 +94,6 @@ export default function Modal({
             setError("Please enter a valid password");
             return;
         }
-        // userAuth(muid, dwmsId, controller).then(res => {
-        //     if (res.statusCode === 400) {
-        //         setError(res.message?.general?.toString());
-        //         setSuccess(false);
-        //     }
-        //     if (res.statusCode === 200) {
-        //         setError(null);
-        //         setSuccess(true);
-        //     }
-        //     setDisabled(false);
-        // });
         return () => {
             controller.abort();
         };
@@ -139,13 +123,11 @@ export default function Modal({
                     <form className={styles.form} onSubmit={handleSubmit}>
                         <>
                             <input
-                                disabled={disabled}
                                 type="text"
                                 name="muid"
-                                id="muid"
                                 placeholder="Enter µ-Id"
                                 value={muid}
-                                onChange={handleIdChange}
+                                onChange={(e) => setMuid(e.target.value)}
                             />
                             <div className={styles.pass}>
                                 <input
@@ -159,9 +141,8 @@ export default function Modal({
 
                                 <button
                                     type="submit"
-                                    className={`${styles.submit} ${
-                                        success ? styles.successBtn : ""
-                                    }`}
+                                    className={`${styles.submit} ${success ? styles.successBtn : ""
+                                        }`}
                                     disabled={isLoading}
                                     onClick={e => {
                                         e.preventDefault();
@@ -190,7 +171,6 @@ export default function Modal({
                                                 navigate,
                                                 setIsLoading,
                                                 ruri,
-                                                jsid,
                                                 integration
                                             );
                                         }
