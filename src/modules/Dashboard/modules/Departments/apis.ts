@@ -43,11 +43,18 @@ export const getDepartments = async ({
     setIsLoading(false);
 };
 
-export const getDepartmentData = async (
-    id: string,
-    setdept: Dispatch<SetStateAction<string>>,
-    toast: (options?: UseToastOptions | undefined) => ToastId
-) => {
+export const getDepartmentData = async ({
+    id,
+    setTitle,
+    setIsFetching,
+    toast
+}: {
+    id: string;
+    setTitle: Dispatch<SetStateAction<string>>;
+    setIsFetching?: Dispatch<SetStateAction<boolean>>;
+    toast: (options?: UseToastOptions | undefined) => ToastId;
+}) => {
+    // setIsFetching(true);
     try {
         const response = await privateGateway.get(
             `${dashboardRoutes.departments}${id}/`
@@ -63,6 +70,7 @@ export const getDepartmentData = async (
             isClosable: true
         });
     }
+    // setIsFetching(false);
 };
 
 export const createDepartment = async (

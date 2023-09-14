@@ -10,7 +10,6 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 
 import { deleteDepartment, getDepartments } from "./apis";
 import styles from "./Departments.module.css";
-import Modal from "../CollegeLevels/components/Modal";
 import { modalTypes } from "../../utils/enums";
 import CreateOrUpdateDepartmentModal from "./CreateOrUpdateDepartmentModal";
 
@@ -39,14 +38,16 @@ const Departments = () => {
         });
     }, []);
 
-    const handleSearch = (search: string) =>
-        getDepartments({
+    const handleSearch = (search: string) => {
+        setCurrentPage(1);
+        return getDepartments({
             setDepartments: setDepartments,
             setIsLoading: setIsLoading,
             search: search,
             setTotalPages: setTotalPages,
             sortBy: sort
         });
+    };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
@@ -75,6 +76,7 @@ const Departments = () => {
     };
 
     const handleSortIconClick = (column: string) => {
+        setCurrentPage(1);
         const sortBy = sort === column ? `-${column}` : column;
         setSort(sortBy);
         getDepartments({
