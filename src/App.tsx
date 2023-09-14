@@ -171,6 +171,7 @@ import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/Lea
 import LearningCircleCreate from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate";
 import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind";
 import KKEMEventTemplate from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventTemplate";
+import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -427,6 +428,15 @@ function App() {
                             )
                         },
                         {
+                            path: "/dashboard/error-log",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<ErrorLog />}
+                                />
+                            )
+                        },
+                        {
                             path: "karma-voucher/bulk-import",
                             element: <KarmaVoucherBulkImport />
                         },
@@ -618,7 +628,8 @@ function App() {
         {
             path: "/kkem/events/:id",
             element: <KKEMEventTemplate />
-        }
+        },
+       
 
     ]);
 
