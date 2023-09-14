@@ -2,8 +2,9 @@ import React from "react";
 import styles from "./KKEMEventTemplate.module.css";
 import titleFrame from "../../assets/titleFrame.svg";
 import mU from "../../assets/mU_pl.svg"
-import Card from "./Components/Card"
+import Card from "../../components/Card"
 import Footer from "../../components/Footer";
+import learningfest from "../../assets/learningfest.svg"
 
 const KKEMEventTemplate = () => {
   return (
@@ -47,7 +48,7 @@ const KKEMEventTemplate = () => {
           <button className={styles.aboutTextButton}>Explore More</button>
         </div>
         <img
-          src="/assets/events/kkem/aboutImage.svg"
+          src={learningfest}
           alt="about section"
           className={styles.aboutSectionImage}
         />
@@ -79,44 +80,7 @@ const KKEMEventTemplate = () => {
               name="Learning Fest"
               description="µLearn in association with KKEM brings you Learning Fest a series of bootcamps to improve your skills in various domains and the chance to earn Karma points and various other opportunities."
               image="/assets/events/kkem/aboutImage.svg"
-              link="#"
-            />
-            <Card
-              name="Learning Fest"
-              description="µLearn in association with KKEM brings you Learning Fest a series of bootcamps to improve your skills in various domains and the chance to earn Karma points and various other opportunities."
-              image="/assets/events/kkem/aboutImage.svg"
-              link="#"
-            />
-            <Card
-              name="Learning Fest"
-              description="µLearn in association with KKEM brings you Learning Fest a series of bootcamps to improve your skills in various domains and the chance to earn Karma points and various other opportunities."
-              image="/assets/events/kkem/aboutImage.svg"
-              link="#"
-            />
-            <Card
-              name="Learning Fest"
-              description="µLearn in association with KKEM brings you Learning Fest a series of bootcamps to improve your skills in various domains and the chance to earn Karma points and various other opportunities."
-              image="/assets/events/kkem/aboutImage.svg"
-              link="#"
-            />
-            <Card
-              name="Learning Fest"
-              description="µLearn in association with KKEM brings you Learning Fest a series of bootcamps to improve your skills in various domains and the chance to earn Karma points and various other opportunities."
-              image="/assets/events/kkem/aboutImage.svg"
-              link="#"
-            />
-            <Card
-              name="Learning Fest"
-              description="µLearn in association with KKEM brings you Learning Fest a series of bootcamps to improve your skills in various domains and the chance to earn Karma points and various other opportunities."
-              image="/assets/events/kkem/aboutImage.svg"
-              link="#"
-            />
-            <Card
-              name="Learning Fest"
-              description="µLearn in association with KKEM brings you Learning Fest a series of bootcamps to improve your skills in various domains and the chance to earn Karma points and various other opportunities."
-              image="/assets/events/kkem/aboutImage.svg"
-              link="#"
-            />
+              link="#" />
           </div>
         </div>
       </div>
