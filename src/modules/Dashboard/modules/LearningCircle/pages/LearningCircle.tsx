@@ -12,11 +12,8 @@ import {
 } from "../services/LearningCircleAPIs";
 import { useNavigate, useParams } from "react-router-dom";
 import { BiEditAlt, BiLogOutCircle } from "react-icons/bi";
-<<<<<<< HEAD
 import { RxCrossCircled } from "react-icons/rx";
-=======
 import { SiKnowledgebase } from "react-icons/si"
->>>>>>> kkem-updations
 import {
     AllWeeks,
     convert24to12,
