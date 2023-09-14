@@ -31,9 +31,11 @@ const Departments = () => {
     const columnOrder = [{ column: "title", Label: "Name", isSortable: true }];
 
     useEffect(() => {
+        setCurrentPage(1);
         getDepartments({
             setDepartments: setDepartments,
-            setIsLoading: setIsLoading
+            setIsLoading: setIsLoading,
+            setTotalPages: setTotalPages
         });
     }, []);
 
@@ -41,7 +43,8 @@ const Departments = () => {
         getDepartments({
             setDepartments: setDepartments,
             setIsLoading: setIsLoading,
-            search: search
+            search: search,
+            setTotalPages: setTotalPages
         });
 
     const handlePerPageNumber = (selectedValue: number) => {};
@@ -62,10 +65,24 @@ const Departments = () => {
 
     const handleIconClick = (column: string) => {};
 
-    const handleNextClick = () => {};
+    const handleNextClick = () => {
+        if (currentPage >= totalPages) return;
+        setCurrentPage(currentPage + 1);
+        getDepartments({
+            setDepartments: setDepartments,
+            setIsLoading: setIsLoading,
+            page: currentPage + 1
+        });
+    };
 
     const handlePreviousClick = () => {
-        toast({ title: "Previous" });
+        if (currentPage <= 1) return;
+        setCurrentPage(currentPage - 1);
+        getDepartments({
+            setDepartments: setDepartments,
+            setIsLoading: setIsLoading,
+            page: currentPage - 1
+        });
     };
 
     return (
