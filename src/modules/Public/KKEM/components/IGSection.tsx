@@ -1,9 +1,12 @@
 import Card from "./Card";
 import styles from "./IGSection.module.css";
 import assets from "../assets/IGS";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MuIDModal from "./MuIDModal";
 import { Props as cardProps } from "../components/Card";
+import { useSearchParams } from "react-router-dom";
+import { publicGateway } from "@/MuLearnServices/apiGateways";
+import { KKEMRoutes } from "@/MuLearnServices/urls";
 
 type Props = {
     cards: cardProps[];
@@ -13,12 +16,27 @@ type Props = {
 };
 
 const IGSection = (props: Props) => {
+    const [searchParams] = useSearchParams();
+    const encrypted_key = searchParams.get("param");
     const [modalOpen, setModalOpen] = useState(false);
-    console.log("ss");
+    const [mu_id, setMuId] = useState("");
+    // console.log("ss");
+    useEffect(() => {
+        publicGateway
+            .get(KKEMRoutes.userStatus + `${encrypted_key}`)
+            .then(res => {
+                // console.log(res.data.response.mu_id);
+                setMuId(res.data.response.mu_id);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }, []);
+    
     return (
         <>
             {!props.headerFlag && (
-                <MuIDModal open={modalOpen} setOpen={setModalOpen} />
+                <MuIDModal open={modalOpen} setOpen={setModalOpen} muId={mu_id} param={encrypted_key??""}/>
             )}
             <div className={styles.main_container}>
                 {!props.headerFlag && (
@@ -76,7 +94,6 @@ const IGSection = (props: Props) => {
                                 key={card.name}
                                 link={card.link}
                                 largeImg={props.largeImg}
-
                             />
                         ))}
                     </div>

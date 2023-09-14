@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 
 import igAssets from "../assets/IGS";
 import pastEventsAssets from "../assets/past_events";
+import { useState } from "react";
 
 export default function Landing() {
     const igCardData = [
@@ -17,7 +18,6 @@ export default function Landing() {
             link: "https://learn.mulearn.org/webmobile/android",
             description:
                 "Android is a mobile operating system based on a modified version of the Linux kernel and other open-source software."
-
         },
         {
             image: igAssets.Frontend,
@@ -130,7 +130,6 @@ export default function Landing() {
             date: "May 2023"
         }
     ];
-
     return (
         <main className={styles.main}>
             <Navbar />
@@ -142,7 +141,7 @@ export default function Landing() {
                 />
                 <img src={mU} alt="mU" className={styles.mU} />
             </div>
-            <IGAbout />
+            <IGAbout/>
             <IGSection cards={igCardData} />
             <div id="events">
                 <IGSection
