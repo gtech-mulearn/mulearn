@@ -167,6 +167,7 @@ import { LearningCircleLandingPage } from "./modules/Dashboard/modules/LearningC
 import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle";
 import LearningCircleCreate from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate";
 import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind";
+import KKEMEventTemplate from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventTemplate";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -600,7 +601,12 @@ function App() {
         {
             path: "/learning-circle",
             element: <LandingPage />
+        },
+        {
+            path: "/kkem/events/:id",
+            element: <KKEMEventTemplate />
         }
+
     ]);
 
     return <RouterProvider router={router} />;
