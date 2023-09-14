@@ -54,18 +54,19 @@ html {
 }
 
 .aboutSection {
-  margin: 2rem;
-  margin-top: 3rem;
+  max-width: 1300px;
+  padding: 2rem;
+  margin: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .aboutTextsHeading {
   color: #24292d;
-  font-family: sans-serif, "Plus Jakarta Sans";
+  font-family: Plus Jakarta Sans;
   font-size: 4rem;
   font-weight: 600;
   line-height: 111.5%; /* 90.499px */
@@ -73,7 +74,7 @@ html {
 
 .aboutTextstDescription {
   color: #24292d;
-  font-family: sans-serif, "Plus Jakarta Sans";
+  font-family: Plus Jakarta Sans;
   font-size: 1.35rem;
   font-style: normal;
   margin-top: 1rem;
@@ -84,7 +85,7 @@ html {
 
 .aboutTextDate {
   color: #656565;
-  font-family: sans-serif, "Plus Jakarta Sans";
+  font-family: Plus Jakarta Sans;
   font-size: 1.75rem;
   font-style: normal;
   color: #24292d;
@@ -163,6 +164,183 @@ html {
 
   .aboutTextButton {
     padding: 0.75rem 3rem;
-
   }
+}
+
+.countsSectionContainer {
+  background-color: #dae9ff;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1rem;
+}
+
+.countSectionCount {
+  color: #24292d;
+  font-family: Plus Jakarta Sans;
+  font-size: 3.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 127.5%; /* 91.649px */
+  animation: count-section-count 1s ease-in-out;
+}
+
+.countSectionDescription {
+  color: #4b94ff;
+  font-family: Plus Jakarta Sans;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 127.5%; /* 38.25px */
+  animation: count-section-description 1s ease-in-out;
+}
+
+@media screen and (max-width: 1224px) {
+  .countSectionCount {
+    font-size: 3rem;
+  }
+
+  .countSectionDescription {
+    font-size: 1.1rem;
+  }
+}
+
+@keyframes count-section-count {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes count-section-description {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.aboutTextsHeading,
+.winnerDetailsHeading {
+  color: #24292d;
+  font-family: Plus Jakarta Sans;
+  font-size: 3.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 111.5%; /* 90.499px */
+}
+
+.aboutTextstDescription {
+  font-size: 1.25rem;
+}
+
+.aboutTextDate {
+  font-size: 1.25rem;
+}
+
+@media screen and (max-width: 480px) {
+  .aboutTextsHeading,
+  .winnerDetailsHeading {
+    font-size: 2.5rem;
+  }
+
+  .aboutTextstDescription {
+    font-size: 1.1rem;
+  }
+
+  .aboutTextDate {
+    font-size: 1.1rem;
+  }
+
+  .aboutTextButton {
+    padding: 0.75rem 3rem;
+  }
+}
+
+.countsSectionContainer {
+  background-color: #dae9ff;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1rem;
+}
+
+.countSectionCount {
+  color: #24292d;
+  font-family: Plus Jakarta Sans;
+  font-size: 3.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 127.5%; /* 91.649px */
+  animation: count-section-count 1s ease-in-out;
+}
+
+.countSectionDescription {
+  color: #4b94ff;
+  font-family: Plus Jakarta Sans;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 127.5%; /* 38.25px */
+  animation: count-section-description 1s ease-in-out;
+}
+
+@media screen and (max-width: 1224px) {
+  .countSectionCount {
+    font-size: 3rem;
+  }
+
+  .countSectionDescription {
+    font-size: 1.1rem;
+  }
+}
+
+@keyframes count-section-count {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes count-section-description {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.winnerDetailsHeading {
+  padding: 2rem;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.winnerDetailsListing {
+  max-width: 1300px;
+  margin: auto;
+}
+
+.winnerCards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
