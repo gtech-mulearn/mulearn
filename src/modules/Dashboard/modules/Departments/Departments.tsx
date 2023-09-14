@@ -21,7 +21,7 @@ const Departments = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
-    const [perPage, setPerPage] = useState(5);
+    const [perPage, setPerPage] = useState(10);
     const [sort, setSort] = useState("");
 
     const [choosenDeptId, setChoosenDeptId] = useState<string | null>(null);
@@ -37,7 +37,12 @@ const Departments = () => {
         });
     }, []);
 
-    const handleSearch = (search: string) => {};
+    const handleSearch = (search: string) =>
+        getDepartments({
+            setDepartments: setDepartments,
+            setIsLoading: setIsLoading,
+            search: search
+        });
 
     const handlePerPageNumber = (selectedValue: number) => {};
 
@@ -95,11 +100,11 @@ const Departments = () => {
             </div>
             {departments && (
                 <>
-                    {/* <TableTop
+                    <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
                         // CSV={dashboardRoutes.getIgList}
-                    /> */}
+                    />
                     <Table
                         rows={departments}
                         isloading={isLoading}

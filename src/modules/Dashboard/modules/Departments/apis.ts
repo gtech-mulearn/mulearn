@@ -6,16 +6,22 @@ import { Dispatch, SetStateAction } from "react";
 export const getDepartments = async ({
     setDepartments,
     page = 1,
-    setIsLoading
+    setIsLoading,
+    search,
+    perPage = 10
 }: {
     setDepartments: Dispatch<SetStateAction<any[]>>;
     setIsLoading: Dispatch<SetStateAction<boolean>>;
     page?: number;
+    search?: string;
+    perPage?: number;
 }) => {
+    console.log("getDepartments - page", page);
+
     setIsLoading(true);
     try {
         const response = await privateGateway.get(dashboardRoutes.departments, {
-            params: { pageIndex: page }
+            params: { pageIndex: page, search: search, perPage: perPage }
         });
         const departments: any = response?.data;
         console.log("getDepartments - data", departments.response);
@@ -24,6 +30,28 @@ export const getDepartments = async ({
         console.log(err);
     }
     setIsLoading(false);
+};
+
+export const getDepartmentData = async (
+    id: string,
+    setdept: Dispatch<SetStateAction<string>>,
+    toast: (options?: UseToastOptions | undefined) => ToastId
+) => {
+    try {
+        const response = await privateGateway.get(
+            `${dashboardRoutes.departments}${id}/`
+        );
+        const department: any = response?.data;
+        console.log("getDepartmentData - data", department.response);
+    } catch (err: unknown) {
+        console.log(err);
+        toast({
+            title: "Error",
+            description: "Something went wrong",
+            status: "error",
+            isClosable: true
+        });
+    }
 };
 
 export const createDepartment = async (

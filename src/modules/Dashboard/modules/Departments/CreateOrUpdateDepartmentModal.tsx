@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import * as Yup from "yup";
 import { ToastId, useToast, UseToastOptions } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
@@ -7,31 +7,43 @@ import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComp
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import Modal from "../CollegeLevels/components/Modal";
 
-import { createDepartment, getDepartments, updateDepartment } from "./apis";
+import {
+    createDepartment,
+    getDepartmentData,
+    getDepartments,
+    updateDepartment
+} from "./apis";
 import { modalTypes } from "../../utils/enums";
 
 const CreateOrUpdateDepartmentModal = ({
     id,
-    title,
     setCurrModal,
     setDepartments,
     setIsLoading,
     toast
 }: {
     id?: string;
-    title?: string;
     setCurrModal: Dispatch<SetStateAction<modalTypes | null>>;
     setDepartments: Dispatch<SetStateAction<any[]>>;
     setIsLoading: Dispatch<SetStateAction<boolean>>;
     toast: (options?: UseToastOptions | undefined) => ToastId;
 }) => {
+    // const [dept, setdept] = useState("");
+    // const [isFetching, setIsFetching] = useState(true);
+
+    // useEffect(() => {
+    //     if (id) {
+    //         // getDepartmentData(id, setdept, toast);
+    //     }
+    // }, [id]);
+
     return (
         <Modal
             onClose={setCurrModal}
             header={id ? "Edit department" : "Create a new department"}
         >
             <Formik
-                initialValues={{ title: title || "" }}
+                initialValues={{ title: "" }}
                 validationSchema={Yup.object({
                     title: Yup.string()
                         .max(50, "Must be 50 characters or less")
