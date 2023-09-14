@@ -95,17 +95,19 @@ export const LearningCircleLandingPage = () => {
                                                         {circle.name}
                                                     </p>
                                                 </div>
-                                                <p
-                                                    className={
-                                                        styles.learningCircleLandingPagePara
-                                                    }
-                                                >
-                                                    {circle.ig}
-                                                </p>
                                                 <div>
+                                                    <p
+                                                        className={
+                                                            styles.learningCircleLandingPagePara
+                                                        }
+                                                    >
+                                                        {circle.ig}
+                                                    </p>
                                                     <PowerfulButton
                                                         style={{
-                                                            height: "2rem"
+                                                            height: "2rem",
+                                                            width: "fit-content",
+                                                            padding: "10px"
                                                         }}
                                                         onClick={() => {
                                                             navigate(
