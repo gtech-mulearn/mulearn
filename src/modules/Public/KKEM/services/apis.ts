@@ -9,12 +9,12 @@ export const KKEMLogin = (
     navigate: NavigateFunction,
     setIsLoading: UseStateFunc<boolean>,
     redirectPath: string,
-    jsid?:string | null,
-    integration?:string
+    integration?:string,
+    params?: string
 ) => {
     setIsLoading(true);
     publicGateway
-        .post(KKEMRoutes.userLogin, { emailOrMuid, password,jsid,integration:integration })
+        .post(KKEMRoutes.userLogin, { emailOrMuid, password,integration:integration, params:params })
         .then(response => {
             if (response.data.hasError == false) {
                 localStorage.setItem(

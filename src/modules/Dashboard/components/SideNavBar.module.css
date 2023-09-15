@@ -93,8 +93,8 @@
 
 .side_nav_bar_main_items {
     overflow-y: scroll;
-	width: 100%;
-	max-width: 250px;
+    width: 100%;
+    max-width: 250px;
 }
 
 .side_nav_bar_item :hover {
@@ -102,7 +102,11 @@
     color: #fff;
 }
 
-.side_nav_bar_container .side_nav_bar .side_nav_bar_items .side_nav_bar_item .side_nav_bar_item_icon {
+.side_nav_bar_container
+    .side_nav_bar
+    .side_nav_bar_items
+    .side_nav_bar_item
+    .side_nav_bar_item_icon {
     margin-right: 20px;
 }
 
@@ -129,6 +133,7 @@
     width: 100%;
     min-height: 20px;
     display: flex;
+    padding-right: 40px;
     align-items: center;
     background-color: #fff;
     justify-content: space-between;
@@ -204,7 +209,10 @@
         max-width: 35%;
     }
 
-    .side_nav_bar_container .side_nav_bar .side_nav_bar_items .side_nav_bar_item {
+    .side_nav_bar_container
+        .side_nav_bar
+        .side_nav_bar_items
+        .side_nav_bar_item {
         margin-bottom: 10px;
     }
 
@@ -254,7 +262,11 @@
         margin: 0px auto;
     }
 
-    .side_nav_bar_container .side_nav_bar .side_nav_bar_items .bottomButtons button {
+    .side_nav_bar_container
+        .side_nav_bar
+        .side_nav_bar_items
+        .bottomButtons
+        button {
         justify-content: center;
     }
 

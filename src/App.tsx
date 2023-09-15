@@ -171,6 +171,8 @@ import { LearningCircleLandingPage } from "./modules/Dashboard/modules/LearningC
 import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle";
 import LearningCircleCreate from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate";
 import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind";
+import Departments from "./modules/Dashboard/modules/Departments/Departments";
+import KKEMEventTemplate from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventTemplate";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -352,6 +354,10 @@ function App() {
                         {
                             path: "user-role-verification/edit/:id",
                             element: <UserRoleVerificationEdit />
+                        },
+                        {
+                            path: "manage-departments",
+                            element: <Departments />
                         },
                         {
                             path: "zonal-dashboard",
@@ -615,6 +621,10 @@ function App() {
         {
             path: "/learning-circle",
             element: <LandingPage />
+        },
+        {
+            path: "/kkem/events/:id",
+            element: <KKEMEventTemplate />
         }
     ]);
 
