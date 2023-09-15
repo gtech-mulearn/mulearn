@@ -320,14 +320,14 @@ export const emailVerification = (
 
 export const getDWMSDetails = (
     errorHandler: errorHandler,
-    jsId: string | null,
+    param: string | null,
     setDWMSDetails: (data: DWMSDetails) => void
 ) => {
     publicGateway
         .get(
             KKEMRoutes.getDWMSDetails.replace(
-                "${jsid}",
-                jsId === null ? "" : jsId
+                "${param}",
+                param === null ? "" : param
             )
         )
         .then(response => {

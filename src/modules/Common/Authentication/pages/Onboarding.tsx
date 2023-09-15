@@ -31,9 +31,9 @@ interface BackendErrors {
 
 const Onboarding = (props: Props) => {
     const urlParams = new URLSearchParams(window.location.search);
-    const jsId = urlParams.get("param");
+    const param = urlParams.get("param");
     const referralId = urlParams.get("referral_id");
-    // console.log(jsId)
+    // console.log(param)
     const queryParameters = new URLSearchParams(window.location.search);
     const navigate = useNavigate();
     // for hide and question container
@@ -165,15 +165,15 @@ const Onboarding = (props: Props) => {
         getCompanies(errorHandler, setCompanyAPI);
         getInterests(errorHandler, setAoiAPI);
         getRoles(errorHandler, setRoleAPI);
-        jsId &&
-            getDWMSDetails(errorHandler, jsId, (data: any) => {
+        param &&
+            getDWMSDetails(errorHandler, param, (data: any) => {
                 formik.setValues({
                     firstName: data.job_seeker_fname,
                     lastName: data.job_seeker_lname,
                     email: data.email_id,
                     password: "",
                     confirmPassword: "",
-                    phone: data.mobile_no,
+                    mobile: data.mobile_no,
                     gender: data.gender.toLowerCase(),
                     dob: data.dob,
                     role: "",
@@ -212,7 +212,7 @@ const Onboarding = (props: Props) => {
         email: "",
         password: "",
         confirmPassword: "",
-        phone: void 0,
+        mobile: void 0,
         gender: "",
         dob: "",
         role: "",
@@ -239,7 +239,7 @@ const Onboarding = (props: Props) => {
             first_name: values.firstName, //required
             last_name: values.lastName === "" ? null : values.lastName,
             email: values.email, //required
-            mobile: values.phone, //required
+            mobile: values.mobile, //required
             gender: values.gender === "" ? null : values.gender,
             dob: values.dob === "" ? null : values.dob,
             role: role[0]["id"] == "" ? null : role[0]["id"], //required
@@ -252,7 +252,7 @@ const Onboarding = (props: Props) => {
             area_of_interests: values.areaOfInterest, //required,
             password: values.password, //required
             referral_id: values.referral_id === "" ? null : values.referral_id,
-            jsid: jsId ? jsId : null
+            jsid: param ? param : null
         };
 
         registerUser(
@@ -287,10 +287,10 @@ const Onboarding = (props: Props) => {
         ) {
             errors.confirmPassword = "Password does not match";
         }
-        if (!values.phone) {
-            errors.phone = "Phone number is required";
-        } else if (values.phone.toString().length != 10) {
-            errors.phone = "Phone number is invalid";
+        if (!values.mobile) {
+            errors.mobile = "Phone number is required";
+        } else if (values.mobile.toString().length != 10) {
+            errors.mobile = "Phone number is invalid";
         }
         if (!values.organization) {
             errors.organization = "This field is required";
@@ -329,7 +329,7 @@ const Onboarding = (props: Props) => {
     }, [formik.values.email]);
 
     useEffect(() => {
-        if (jsId) {
+        if (param) {
             const foundRole = roleAPI.find(
                 (role: any) => role.title === "Student"
             );
@@ -356,7 +356,7 @@ const Onboarding = (props: Props) => {
                             ""
                         )}
                         <div className={styles.form_container}>
-                            {!jsId && (
+                            {!param && (
                                 <div
                                     style={{
                                         display: display0,
@@ -699,7 +699,7 @@ const Onboarding = (props: Props) => {
                                                 onBlur={formik.handleBlur}
                                                 onChange={formik.handleChange}
                                                 value={formik.values.firstName}
-                                                disabled={jsId ? true : false}
+                                                disabled={param ? true : false}
                                             />
                                             {formik.touched.firstName &&
                                             formik.errors.firstName ? (
@@ -722,7 +722,7 @@ const Onboarding = (props: Props) => {
                                                 onBlur={formik.handleBlur}
                                                 onChange={formik.handleChange}
                                                 value={formik.values.lastName}
-                                                disabled={jsId ? true : false}
+                                                disabled={param ? true : false}
                                             />
                                         </div>
                                     </div>
@@ -744,7 +744,7 @@ const Onboarding = (props: Props) => {
                                                 onBlur={formik.handleBlur}
                                                 onChange={formik.handleChange}
                                                 value={formik.values.email}
-                                                disabled={jsId ? true : false}
+                                                disabled={param ? true : false}
                                                 // required
                                             />
                                             {formik.touched.email &&
@@ -778,15 +778,15 @@ const Onboarding = (props: Props) => {
                                                         textAlign: "center"
                                                     }}
                                                     name=""
-                                                    disabled={jsId ? true : false}
+                                                    disabled={param ? true : false}
                                                 >
                                                     <option value="+91">
                                                         +91
                                                     </option>
                                                 </select>
                                                 <input
-                                                    id="phone_field"
-                                                    name="phone"
+                                                    id="mobile_field"
+                                                    name="mobile"
                                                     style={{ width: "78%" }}
                                                     type="number"
                                                     placeholder="8023456789"
@@ -794,18 +794,18 @@ const Onboarding = (props: Props) => {
                                                     onChange={
                                                         formik.handleChange
                                                     }
-                                                    value={formik.values.phone}
-                                                    disabled={jsId ? true : false}
+                                                    value={formik.values.mobile}
+                                                    disabled={param ? true : false}
                                                     // required
                                                 />
-                                                {formik.touched.phone &&
-                                                formik.errors.phone ? (
+                                                {formik.touched.mobile &&
+                                                formik.errors.mobile ? (
                                                     <div
                                                         className={
                                                             styles.error_message
                                                         }
                                                     >
-                                                        {formik.errors.phone}
+                                                        {formik.errors.mobile}
                                                     </div>
                                                 ) : null}
                                             </div>
@@ -949,7 +949,7 @@ const Onboarding = (props: Props) => {
                                                         value={
                                                             formik.values.gender
                                                         }
-                                                        disabled={jsId ? true : false}
+                                                        disabled={param ? true : false}
                                                     >
                                                         <option value="">
                                                             Select gender
@@ -1006,7 +1006,7 @@ const Onboarding = (props: Props) => {
                                                         value={
                                                             formik.values.dob
                                                         }
-                                                        disabled={jsId ? true : false}
+                                                        disabled={param ? true : false}
                                                     />
                                                 </div>
                                             </div>
@@ -1949,7 +1949,7 @@ const Onboarding = (props: Props) => {
                                                         "" ||
                                                     formik.errors.firstName ||
                                                     formik.errors.email ||
-                                                    formik.errors.phone ||
+                                                    formik.errors.mobile ||
                                                     formik.errors.password ||
                                                     formik.errors
                                                         .confirmPassword ||
