@@ -171,7 +171,8 @@ export default function Modal({
                                                 navigate,
                                                 setIsLoading,
                                                 ruri,
-                                                integration
+                                                integration,
+                                                param
                                             );
                                         }
                                     }}
