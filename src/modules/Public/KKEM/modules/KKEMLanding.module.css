@@ -22,13 +22,3 @@ html {
     scroll-behavior: smooth;
 }
 
-::-webkit-scrollbar {
-    display: block;
-    width: .8rem;
-    background-color: #f3f3f3;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: #52B565;
-    border-radius: .3rem;
-}
