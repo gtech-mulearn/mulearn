@@ -37,7 +37,7 @@ const IGSection = (props: Props) => {
 
     return (
         <>
-            {!props.headerFlag && mu_id && (
+            {(!props.headerFlag || mu_id) && (
                 <MuIDModal open={modalOpen} setOpen={setModalOpen} muId={mu_id} param={encrypted_key ?? ""} />
             )}
             <div className={styles.main_container}>
