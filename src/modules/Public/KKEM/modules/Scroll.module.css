@@ -1,0 +1,22 @@
+/* page-specific-styles.css */
+
+/* Scroll behavior for this specific page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Scrollbar styles for this specific page */
+::-webkit-scrollbar {
+    display: block;
+    width: 0.75rem;
+}
+::-webkit-scrollbar-track {
+    background: #dae9ff;
+}
+::-webkit-scrollbar-thumb {
+    background: #52b565;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #84cc92;
+}

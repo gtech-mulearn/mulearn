@@ -10,18 +10,21 @@ import { KKEMLogin } from "../services/apis";
 interface ModalProps extends React.HTMLAttributes<HTMLDialogElement> {
     open: boolean;
     setOpen?: UseStateFunc<boolean>;
-    muId?: string;
+    setMuId: UseStateFunc<string>;
+    muId: string;
     param?: string;
 }
 export default function Modal({
     open,
     setOpen,
+    setMuId,
     muId,
     param,
     ...props
 }: ModalProps) {
     const modalRef = useRef<HTMLDialogElement>(null);
     useEffect(() => {
+
         const modal = modalRef.current;
         if (modal) {
             if (open) {
@@ -56,7 +59,6 @@ export default function Modal({
     }, [modalRef, setOpen]);
     // console.log(muId);
 
-    const [muid, setMuid] = useState(muId);
     const [password, setPassword] = useState("");
     const [success, setSuccess] = useState(false);
     const [disabled, setDisabled] = useState(false);
@@ -68,7 +70,6 @@ export default function Modal({
     let ruri = window.location.href.split("=")[1];
 
     useEffect(() => {
-        setMuid(muId);
         setIntegration("KKEM");
         setDisabled(true);
     }, []);
@@ -82,10 +83,10 @@ export default function Modal({
         setSuccess(false);
         setDisabled(true);
         const controller = new AbortController();
-        if (!muid || muid.length <= 0 || muid.trim().length <= 0) {
+        if (!muId || muId.length <= 0 || muId.trim().length <= 0) {
             setSuccess(false);
             setDisabled(false);
-            setError("Please enter a valid muid");
+            setError("Please enter a valid muId");
             return;
         }
         if (!password || password.length <= 0 || password.trim().length <= 0) {
@@ -124,10 +125,11 @@ export default function Modal({
                         <>
                             <input
                                 type="text"
-                                name="muid"
+                                name="muId"
+
                                 placeholder="Enter µ-Id"
-                                value={muid}
-                                onChange={(e) => setMuid(e.target.value)}
+                                value={muId}
+                                onChange={(e) => setMuId(e.target.value)}
                             />
                             <div className={styles.pass}>
                                 <input
@@ -147,12 +149,12 @@ export default function Modal({
                                     onClick={e => {
                                         e.preventDefault();
                                         if (
-                                            !muid ||
-                                            muid.length <= 0 ||
-                                            muid.trim().length <= 0
+                                            !muId ||
+                                            muId.length <= 0 ||
+                                            muId.trim().length <= 0
                                         ) {
                                             setError(
-                                                "Please enter a valid muid"
+                                                "Please enter a valid muId"
                                             );
                                         } else if (
                                             !password ||
@@ -165,7 +167,7 @@ export default function Modal({
                                         } else {
                                             setError("");
                                             KKEMLogin(
-                                                muid,
+                                                muId,
                                                 password,
                                                 toast,
                                                 navigate,
