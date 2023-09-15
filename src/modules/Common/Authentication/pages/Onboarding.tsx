@@ -287,10 +287,10 @@ const Onboarding = (props: Props) => {
         ) {
             errors.confirmPassword = "Password does not match";
         }
-        if (!values.mobile) {
-            errors.mobile = "Phone number is required";
-        } else if (values.mobile.toString().length != 10) {
-            errors.mobile = "Phone number is invalid";
+        if (!values.phone) {
+            errors.phone = "Phone number is required";
+        } else if (values.phone.toString().length != 10) {
+            errors.phone = "Phone number is invalid";
         }
         if (!values.organization) {
             errors.organization = "This field is required";
@@ -785,7 +785,7 @@ const Onboarding = (props: Props) => {
                                                     </option>
                                                 </select>
                                                 <input
-                                                    id="mobile_field"
+                                                    id="phone_field"
                                                     name="mobile"
                                                     style={{ width: "78%" }}
                                                     type="number"
