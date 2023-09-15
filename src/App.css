@@ -23,10 +23,10 @@
     width: 100%;
     margin-top: 10px;
 }
-/* 
+
 ::-webkit-scrollbar {
     display: none;
-} */
+}
 
 :root {
     --Primary: #456ff6;

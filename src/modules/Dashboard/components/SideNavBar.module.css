@@ -32,10 +32,6 @@
     overflow-x: hidden;
 }
 
-.full_page::-webkit-scrollbar {
-    display: none;
-}
-
 .side_nav_bar_container {
     min-width: fit-content;
     max-width: 25%;

@@ -17,28 +17,8 @@
     opacity: 0.5;
 }
 
-/* page-specific-styles.css */
-
 /* Scroll behavior for this specific page */
 html {
     scroll-behavior: smooth;
 }
 
-/* Scrollbar styles for this specific page */
-.mainContainer::-webkit-scrollbar {
-    display: block;
-    width: 0.75rem;
-}
-
-.mainContainer::-webkit-scrollbar-track {
-    background: #dae9ff;
-}
-
-.mainContainer::-webkit-scrollbar-thumb {
-    background: #52b565;
-    border-radius: 5px;
-}
-
-.mainContainer::-webkit-scrollbar-thumb:hover {
-    background: #84cc92;
-}
