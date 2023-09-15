@@ -8,7 +8,6 @@ import Footer from "../components/Footer";
 
 import igAssets from "../assets/IGS";
 import pastEventsAssets from "../assets/past_events";
-import "./Scroll.module.css";
 import { useState } from "react";
 
 export default function Landing() {
