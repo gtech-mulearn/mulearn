@@ -3,7 +3,6 @@ import { KKEMRoutes } from "@/MuLearnServices/urls";
 
 export const userAuth = async (
     mu_id: string,
-    jsid: string,
     param: string,
     controller?: AbortController
 ) => {
@@ -13,7 +12,6 @@ export const userAuth = async (
             {
                 emailOrMuid: mu_id,
                 param: param,
-                jsid: jsid,
                 integration: "DWMS"
             },
             {

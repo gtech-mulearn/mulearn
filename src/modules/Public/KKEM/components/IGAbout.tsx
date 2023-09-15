@@ -51,7 +51,7 @@ export default function MulearnAbout() {
                     <>
                         <p className={styles.description}>Join Now: </p>
                         <section id="muId" className={styles.muidSection}>
-                            <KKEMAuth jsid={encrypted_key} />
+                            <KKEMAuth param={encrypted_key} />
                             <button
                                 onClick={() => {
                                     navigate(
