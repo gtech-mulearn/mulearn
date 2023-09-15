@@ -29,13 +29,16 @@ html {
     display: block;
     width: 0.75rem;
 }
+
 .mainContainer::-webkit-scrollbar-track {
     background: #dae9ff;
 }
+
 .mainContainer::-webkit-scrollbar-thumb {
     background: #52b565;
     border-radius: 5px;
 }
+
 .mainContainer::-webkit-scrollbar-thumb:hover {
     background: #84cc92;
 }
