@@ -327,7 +327,7 @@ function App() {
                             )
                         },
                         {
-                            path: "dynamic-roles",
+                            path: "dynamic-type",
                             element: (
                                 <RoleChecker
                                     roles={[roles.ADMIN]}
