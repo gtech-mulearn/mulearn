@@ -50,7 +50,7 @@ const NotificationTab = ({ notificationList, setNotificationList }: Notification
     const props = { toast: toast };
     const links = [
         { title: 'View All', count: notificationList.length },
-        { title: 'Requests', count: notificationList.filter((item: NotificationProps) => isRequest(item.title)).length },
+        // { title: 'Requests', count: notificationList.filter((item: NotificationProps) => isRequest(item.title)).length },
         // { title: 'Followers', count: 0 },
     ];
 
