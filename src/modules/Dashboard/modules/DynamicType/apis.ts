@@ -150,12 +150,13 @@ export const getDynamicUsers = async (
         ).data.response;
         const data = [];
         for (let i of response.data) {
-            for (let j of i.roles) {
+            for (let j of i.users) {
                 //storing the data json as id for fetching while deleting
                 data.push({
-                    id: j.id,
+                    id: "",
                     type: i.type,
-                    user: j
+                    email: j.email,
+                    muid: j.muid
                 });
             }
         }
