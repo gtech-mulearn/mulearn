@@ -237,53 +237,53 @@ export const registerUser = (
 ) => {
     setShowSubmitLoader(true);
     console.log(userData);
-    // publicGateway
-    //     .post(onboardingRoutes.register, userData)
-    //     .then((response: APIResponse<AllTokens>) => {
-    //         setFormSuccess(true);
-    //         setRoleVerified(response.data.roleVerified as boolean);
-    //         localStorage.setItem(
-    //             "accessToken",
-    //             response.data.response.accessToken
-    //         );
-    //         localStorage.setItem(
-    //             "refreshToken",
-    //             response.data.response.refreshToken
-    //         );
-    //         getInfo(()=>{
-    //             navigate("/dashboard/connect-discord");
-    //             setShowSubmitLoader(false);
-    //         })
+    publicGateway
+        .post(onboardingRoutes.register, userData)
+        .then((response: APIResponse<AllTokens>) => {
+            setFormSuccess(true);
+            setRoleVerified(response.data.roleVerified as boolean);
+            localStorage.setItem(
+                "accessToken",
+                response.data.response.accessToken
+            );
+            localStorage.setItem(
+                "refreshToken",
+                response.data.response.refreshToken
+            );
+            getInfo(()=>{
+                navigate("/dashboard/connect-discord");
+                setShowSubmitLoader(false);
+            })
             
         
-    //     })
+        })
 
-    //     .catch((error: APIError<{ key: any[] }>) => {
-    //         setShowSubmitLoader(false);
-    //         if (
-    //             error.response.data.message &&
-    //             Object.keys(error.response.data.message).length > 0
-    //         ) {
-    //             Object.entries(error.response.data.message).forEach(
-    //                 ([fieldName, errorMessage]) => {
-    //                     if (Array.isArray(errorMessage)) {
-    //                         console.log(fieldName, errorMessage);
+        .catch((error: APIError<{ key: any[] }>) => {
+            setShowSubmitLoader(false);
+            if (
+                error.response.data.message &&
+                Object.keys(error.response.data.message).length > 0
+            ) {
+                Object.entries(error.response.data.message).forEach(
+                    ([fieldName, errorMessage]) => {
+                        if (Array.isArray(errorMessage)) {
+                            console.log(fieldName, errorMessage);
 
-    //                         formik.setFieldError(
-    //                             fieldName,
-    //                             errorMessage?.join(", ") || ""
-    //                         );
-    //                     }
-    //                 }
-    //             );
-    //         }
-    //         setTimeout(() => {
-    //             setHasValidationError({
-    //                 error: false,
-    //                 message: ""
-    //             });
-    //         }, 3000);
-    //     });
+                            formik.setFieldError(
+                                fieldName,
+                                errorMessage?.join(", ") || ""
+                            );
+                        }
+                    }
+                );
+            }
+            setTimeout(() => {
+                setHasValidationError({
+                    error: false,
+                    message: ""
+                });
+            }, 3000);
+        });
 };
 
 export const emailVerification = (
