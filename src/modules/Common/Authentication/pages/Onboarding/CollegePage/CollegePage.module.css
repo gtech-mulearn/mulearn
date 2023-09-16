@@ -13,6 +13,12 @@
     width: 100%;
     height: 2.5rem;
     margin-top: 1.5rem;
+
+    span {
+        color: red;
+        font-size: small;
+        margin-left: 15px;
+    }
 }
 .inputBox input{
     width: 100%;
@@ -30,11 +36,6 @@
 }
 .submit button{
     width: 100%;
-    height: 2.5rem;
-    border-radius: 8px;
-    background: #456FF6;
-    color: white;
-    border: none;
 }
 .text{
     font-weight: 700;

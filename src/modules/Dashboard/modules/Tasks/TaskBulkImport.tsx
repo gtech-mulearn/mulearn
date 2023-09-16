@@ -71,7 +71,7 @@ const TaskBulkImport = (props: Props) => {
                     text={"Download Template"}
                     onClick={handleClick}
                     icon={<BiDownload />}
-                    link="https://drive.google.com/uc?export=download&id=1b2DUyj6zxDzY8q5pDTbL3NlZEL1J1dcq"
+                    link="https://docs.google.com/spreadsheets/d/1Lj-rRc_uo6MY_Lz6wJhpWZA8ya39EZw-omy-yN4-OBA/edit?usp=drivesdk"
                 />
             </div>
 
