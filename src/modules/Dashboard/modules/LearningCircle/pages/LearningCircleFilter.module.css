@@ -34,3 +34,18 @@
     justify-content: center;
     align-items: center;
 }
+
+@media (width<=820px) {
+    .selectOptions{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .LClandingPageForm{
+        width: 100%;
+    }
+
+    .LClandingPageForm select {
+        width: 100%;
+    }
+}
