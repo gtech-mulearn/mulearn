@@ -168,7 +168,8 @@
     font-size: 17px;
     padding: 6px 15px;
     transition: var(--transition-speed);
-
+	/* width: 100%;  this code is causing button inconsistency look in hackathon cards*/ 
+  
     &:hover {
         cursor: pointer;
     }
