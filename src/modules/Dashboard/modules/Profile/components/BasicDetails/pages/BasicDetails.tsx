@@ -52,7 +52,7 @@ const BasicDetails = (props: Props) => {
                             className={styles.edit_profile_btn}
                             tabIndex={0}
                         >
-                            <i className="fi fi-rr-circle-xmark"></i>
+                            <i className="fi fi-rr-circle-xmark"></i> 
                         </p>
                     )}
                 </div>
