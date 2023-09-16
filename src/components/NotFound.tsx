@@ -1,10 +1,8 @@
-import { Link } from "react-router-dom";
 import styles from "./NotFound.module.css";
-import astronaut from "./assests/images/astronaut_blue.webp";
-import stone from "./assests/rock.webp"
-import FourNotFour from "./assests/FourNotFour.webp"
-import NoBgFourNotFour from "./assests/NoBgFourNotFour.webp"
-import SmallRocks from "./assests/SmallRocks.webp"
+import stone from "./assests/NotFound/Stone.webp"
+import FourNotFour from "./assests/NotFound/FourNotFour.webp"
+import NoBgFourNotFour from "./assests/NotFound/NoBgFourNotFour.webp"
+import SmallRocks from "./assests/NotFound/SmallRocks.webp"
 
 const NotFound = () => {
     return (

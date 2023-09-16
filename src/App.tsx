@@ -40,9 +40,6 @@ const DeleteOrganizations = lazy(
 const ManageUsersCreate = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersCreate")
 );
-const ManageUsersDelete = lazy(
-    () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersDelete")
-);
 const ManageUsersEdit = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersEdit")
 );
@@ -56,12 +53,6 @@ const UserRoleVerification = lazy(
     () =>
         import(
             "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerification"
-        )
-);
-const UserRoleVerificationDelete = lazy(
-    () =>
-        import(
-            "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationDelete"
         )
 );
 const UserRoleVerificationEdit = lazy(
@@ -313,10 +304,6 @@ function App() {
                             element: <ManageUsersCreate />
                         },
                         {
-                            path: "manage-users/delete/:id",
-                            element: <ManageUsersDelete />
-                        },
-                        {
                             path: "manage-users/edit/:id",
                             element: <ManageUsersEdit />
                         },
@@ -347,10 +334,6 @@ function App() {
                                     children={<UserRoleVerification />}
                                 />
                             )
-                        },
-                        {
-                            path: "user-role-verification/delete/:id",
-                            element: <UserRoleVerificationDelete />
                         },
                         {
                             path: "user-role-verification/edit/:id",
