@@ -10,6 +10,9 @@ import {
     joinCircle
 } from "../services/LearningCircleAPIs";
 import { join } from "path";
+import { SearchBar } from "@/MuLearnComponents/TableTop/SearchBar";
+import { ClipLoader } from "react-spinners";
+import { HiDownload } from "react-icons/hi";
 
 const { toast } = createStandaloneToast();
 
@@ -20,7 +23,9 @@ const FindCircle = () => {
     useEffect(() => {
         getCampusLearningCircles(setLc);
     }, []);
-
+    const handleData = (search: string) => {
+        
+    }
     return (
         <>
             <div className={styles.FindCircleContent}>
@@ -30,6 +35,10 @@ const FindCircle = () => {
                         <b style={{ color: "#000" }}>
                             Browse and join learning circle around you
                         </b>
+                        <div style={{width: "100%"}}>
+                        <SearchBar onSearch={handleData} />
+                        </div>
+                    
                     </div>
                     <img src={imageTop} alt="image" />
                 </div>
