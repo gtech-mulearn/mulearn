@@ -111,6 +111,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     // icon: <i className="fi fi-sr-note"></i>
                 },
                 {
+                    url: "/dashboard/error-log",
+                    title: "Error Log",
+                    hasView: true,
+                    roles: [roles.ADMIN]
+                    // icon: <i className="fi fi-sr-note"></i>
+                },
+                {
                     url: "",
                     title: "User Management",
                     hasView: true,
