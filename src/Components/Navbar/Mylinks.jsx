@@ -502,21 +502,22 @@ export const links = [
         head: 3,
         name: "Learning Circles",
         submenu: true,
+        link: "https://app.mulearn.org/learning-circle",
         sublinks: [
           {
-            name: "Create Circle",
-            link:  "https://app.mulearn.org/dashboard/learning-circle",
+            name: "Search Circles",
+            link: "https://app.mulearn.org/learning-circle",
             submenu: false,
             sublinks: [],
             foreign: true,
           },
           {
-            name: "Join Circles",
+            name: "Join/Create Circles",
             link: "https://app.mulearn.org/dashboard/learning-circle",
             submenu: false,
             sublinks: [],
             foreign: true,
-          },
+          }
         ],
       },
       {
@@ -530,14 +531,7 @@ export const links = [
             submenu: false,
             sublinks: [],
             foreign: false,
-          },
-          {
-            name: "Existing Circles",
-            link: mainlink + "/searchcircles",
-            submenu: false,
-            sublinks: [],
-            foreign: false,
-          },
+          }
         ],
       },
     ],
@@ -886,8 +880,7 @@ export function getLinks(ig = []) {
           name: "Interest Groups",
           submenu: true,
           link: mainlink + "/",
-          sublinks: [...ig
-          ],
+          sublinks: [...ig],
         },
         {
           head: 3,
@@ -1027,5 +1020,4 @@ export function getLinks(ig = []) {
       ],
     },
   ];
-
-} 
+}
