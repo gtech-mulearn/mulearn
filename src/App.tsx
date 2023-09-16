@@ -358,7 +358,12 @@ function App() {
                         },
                         {
                             path: "manage-departments",
-                            element: <Departments />
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    children={<Departments />}
+                                />
+                            )
                         },
                         {
                             path: "zonal-dashboard",

@@ -61,7 +61,7 @@ const FindCircle = () => {
                 <LearningCircleForm  setLc={setLc} callAllLc={reset} searchString={searchString}/>
                 {lc ? (
                     <div className={styles.container}>
-                        {lc.map(
+                        {lc?.map(
                             circle =>
                                 circle && (
                                     
