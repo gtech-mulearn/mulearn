@@ -3,13 +3,17 @@ import { KKEMRoutes } from "@/MuLearnServices/urls";
 
 export const userAuth = async (
     mu_id: string,
-    jsid: string,
+    param: string,
     controller?: AbortController
 ) => {
     return await publicGateway
         .post(
             KKEMRoutes.userAuth,
-            { emailOrMuid:mu_id, jsid:jsid,integration:"DWMS" },
+            {
+                emailOrMuid: mu_id,
+                param: param,
+                integration: "DWMS"
+            },
             {
                 signal: controller?.signal
             }

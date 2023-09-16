@@ -46,6 +46,9 @@ const ManageUsersDelete = lazy(
 const ManageUsersEdit = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersEdit")
 );
+const DynamicType = lazy(
+    () => import("./modules/Dashboard/modules/DynamicType/DynamicType")
+);
 const ManageRoles = lazy(
     () => import("./modules/Dashboard/modules/ManageRoles/ManageRoles")
 );
@@ -158,6 +161,7 @@ import SecureAuthRoutes from "./services/authCheck";
 import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
 import Refer from "./modules/Dashboard/modules/Refer/Refer";
 import LandingPage from "./modules/Public/LearningCircles/pages/LandingPage";
+import ProfileV2 from "./modules/Dashboard/modules/ProfileV2/pages/Profile";
 import AccountCreation from "./modules/Common/Authentication/pages/Onboarding/AccountCreation/AccountCreation";
 import Rolepage from "./modules/Common/Authentication/pages/Onboarding/RolePage/RolePage";
 import CollegePage from "./modules/Common/Authentication/pages/Onboarding/CollegePage/CollegePage";
@@ -167,6 +171,8 @@ import { LearningCircleLandingPage } from "./modules/Dashboard/modules/LearningC
 import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle";
 import LearningCircleCreate from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate";
 import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind";
+import Departments from "./modules/Dashboard/modules/Departments/Departments";
+import KKEMEventTemplate from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventTemplate";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -235,6 +241,7 @@ function App() {
                     element: <DashboardRootLayout />,
                     children: [
                         { path: "profile", element: <Profile /> },
+                        { path: "profileV2", element: <ProfileV2 /> },
                         {
                             path: "connect-discord",
                             element: <ConnectDiscord />
@@ -322,10 +329,20 @@ function App() {
                             )
                         },
                         {
-                            path: "user-role-verification",
+                            path: "dynamic-roles",
                             element: (
                                 <RoleChecker
                                     roles={[roles.ADMIN]}
+                                    children={<DynamicType />}
+                                />
+                            )
+                        },
+
+                        {
+                            path: "user-role-verification",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<UserRoleVerification />}
                                 />
                             )
@@ -337,6 +354,10 @@ function App() {
                         {
                             path: "user-role-verification/edit/:id",
                             element: <UserRoleVerificationEdit />
+                        },
+                        {
+                            path: "manage-departments",
+                            element: <Departments />
                         },
                         {
                             path: "zonal-dashboard",
@@ -377,7 +398,7 @@ function App() {
                             path: "college-levels",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN]}
+                                    roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<CollegeLevels />}
                                 />
                             )
@@ -600,6 +621,10 @@ function App() {
         {
             path: "/learning-circle",
             element: <LandingPage />
+        },
+        {
+            path: "/kkem/events/:id",
+            element: <KKEMEventTemplate />
         }
     ]);
 

@@ -72,6 +72,8 @@ export const dashboardRoutes = {
     zonalCampusDetails: "/api/v1/dashboard/zonal/college-details/",
     zonalCampusData: "/api/v1/dashboard/zonal/campus-details/csv/",
 
+    departments: "/api/v1/dashboard/organisation/departments/",
+
     districtStudentDetails: "/api/v1/dashboard/district/student-details/",
     districtStudentData: "/api/v1/dashboard/district/student-details/csv/",
     districtCampusDetails: "/api/v1/dashboard/district/college-details/",
@@ -114,7 +116,13 @@ export const dashboardRoutes = {
     getZonalTopDistrict: "api/v1/dashboard/zonal/top-districts/",
     getZonalStudentLevels: "api/v1/dashboard/zonal/student-level/",
 
-    collegeLevels: "api/v1/dashboard/college/"
+    collegeLevels: "api/v1/dashboard/college/",
+
+    //Dyanmic Type
+    dtGetRoles: "api/v1/dashboard/dynamic-management/roles/",
+    dtGetTypes: "api/v1/dashboard/dynamic-management/types/",
+    getDynamicRoles: "api/v1/dashboard/dynamic-management/dynamic-role/",
+    getDynamicUser: "api/v1/dashboard/dynamic-management/dynamic-user/"
 } as const;
 
 export const organizationRoutes = {
@@ -125,7 +133,7 @@ export const organizationRoutes = {
     getCommunity: "/api/v1/dashboard/organisation/institutes/show/Community/",
     getAffiliation:
         "/api/v1/dashboard/organisation/institutes/org/affiliation/",
-    getLocation: "/api/v1/location",
+    getLocation: "/api/v1/dashboard/location",
     postAddOrganization: "/api/v1/dashboard/organisation/institutes/add/",
     putUpdateOrganization: "/api/v1/dashboard/organisation/institutes",
     deleteOrgnaization: "/api/v1/dashboard/organisation/institutes/",

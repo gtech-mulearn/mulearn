@@ -32,4 +32,5 @@ type LcDetail = {
     day: number[] | null;
 	is_member: boolean;
     note?: string;
+    ig_code?: string;
 };

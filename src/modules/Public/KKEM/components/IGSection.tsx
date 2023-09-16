@@ -7,6 +7,7 @@ import { Props as cardProps } from "../components/Card";
 import { useSearchParams } from "react-router-dom";
 import { publicGateway } from "@/MuLearnServices/apiGateways";
 import { KKEMRoutes } from "@/MuLearnServices/urls";
+import { m } from "framer-motion";
 
 type Props = {
     cards: cardProps[];
@@ -19,24 +20,25 @@ const IGSection = (props: Props) => {
     const [searchParams] = useSearchParams();
     const encrypted_key = searchParams.get("param");
     const [modalOpen, setModalOpen] = useState(false);
-    const [mu_id, setMuId] = useState("");
-    // console.log("ss");
+    const [muId, setMuId] = useState("");
     useEffect(() => {
-        publicGateway
-            .get(KKEMRoutes.userStatus + `${encrypted_key}`)
-            .then(res => {
-                // console.log(res.data.response.mu_id);
-                setMuId(res.data.response.mu_id);
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        if (muId == "") {
+            publicGateway
+                .get(KKEMRoutes.userStatus + `${encrypted_key}/`)
+                .then(res => {
+                    // console.log(res.data.response.muId);
+                    setMuId(res.data.response.mu_id);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }
     }, []);
-    
+
     return (
         <>
             {!props.headerFlag && (
-                <MuIDModal open={modalOpen} setOpen={setModalOpen} muId={mu_id} param={encrypted_key??""}/>
+                <MuIDModal open={modalOpen} setOpen={setModalOpen} setMuId={setMuId} muId={muId} param={encrypted_key ?? ""} />
             )}
             <div className={styles.main_container}>
                 {!props.headerFlag && (

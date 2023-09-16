@@ -4,11 +4,10 @@ import { useNavigate } from "react-router-dom";
 interface TableTopTabProps {
     active: string;
     onTabClick: (tab: string) => void;
+    tabletopTab: string[];
 }
 
-const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
-    const tabletopTab = ["Student management", "Campus management"];
-
+const TableTopTab = ({ active, onTabClick, tabletopTab }: TableTopTabProps) => {
     const navigate = useNavigate();
 
     return (
