@@ -48,7 +48,7 @@ const FindCircle = () => {
                         <b style={{ color: "#000" }}>
                             Browse and join learning circle around you
                         </b>
-                        <div style={{width: "100%"}}>
+                        <div style={{width: "75%"}}>
                         <SearchBar 
                         placeholder="Enter circle code" 
                         onSearch={handleData} 
