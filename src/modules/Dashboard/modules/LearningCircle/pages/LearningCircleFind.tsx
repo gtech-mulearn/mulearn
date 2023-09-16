@@ -25,7 +25,7 @@ const FindCircle = () => {
         getCampusLearningCircles(setLc);
     }, []);
     const handleData = (search: string) => {
-        searchLearningCircleWithCircleCode(setLc, search);
+        searchLearningCircleWithCircleCode(setLc, search,lc);
     }
     return (
         <>
@@ -40,7 +40,15 @@ const FindCircle = () => {
                         <SearchBar 
                         placeholder="Enter circle code" 
                         onSearch={handleData} 
-                        onClear={()=>getCampusLearningCircles(setLc)}
+                        onClear={()=>{
+                            getCampusLearningCircles(setLc)
+                            if(lc.length===1) toast({
+                                description: "Loading learning circles from your campus",
+                                status: "info",
+                                duration: 2000,
+                                isClosable: true
+                            })
+                        }}
                         />
                         </div>
                     </div>
@@ -52,8 +60,8 @@ const FindCircle = () => {
                         {lc.map(
                             circle =>
                                 circle && (
-                                    <>
-                                        <div className={styles.one}>
+                                    
+                                        <div className={styles.one} key={circle.id}> 
                                             <h2>{circle?.name}</h2>
                                             <p>
                                                 Team Lead: {circle?.created_by}
@@ -78,7 +86,7 @@ const FindCircle = () => {
                                                 </button>
                                             </div>
                                         </div>
-                                    </>
+                                    
                                 )
                         )}
                     </div>
