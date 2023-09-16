@@ -70,7 +70,7 @@
     .form_container {
         display: inline;
         align-items: center;
-        width: 45vw !important;
+        /* width: 45vw !important; */
     }
     .showSelect {
         position: absolute;

@@ -221,7 +221,7 @@ function DynamicType() {
         if (tab === newTab) return;
         setTab(newTab);
     };
-
+    console.log(data);
     return (
         <>
             <TableTopTab

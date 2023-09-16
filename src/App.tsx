@@ -173,6 +173,7 @@ import LearningCircleCreate from "./modules/Dashboard/modules/LearningCircle/pag
 import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind";
 import Departments from "./modules/Dashboard/modules/Departments/Departments";
 import KKEMEventTemplate from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventTemplate";
+import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -430,6 +431,15 @@ function App() {
                                 <RoleChecker
                                     roles={[roles.ADMIN]}
                                     children={<KarmaVoucher />}
+                                />
+                            )
+                        },
+                        {
+                            path: "/dashboard/error-log",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<ErrorLog />}
                                 />
                             )
                         },

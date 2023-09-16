@@ -22,7 +22,7 @@ export const LearningCircleLandingPage = () => {
     const handleCreate = () => {
         navigate("/dashboard/learning-circle/create-circle");
     };
-
+    
     return (
         <>
             <div className={styles.learningCircleLandingPage}>
