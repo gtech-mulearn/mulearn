@@ -29,7 +29,7 @@ function InterestGroup() {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
-    const [perPage, setPerPage] = useState(5);
+    const [perPage, setPerPage] = useState(20);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
     const toast = useToast();

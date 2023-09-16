@@ -20,7 +20,7 @@ export default function MulearnAbout() {
 
     useEffect(() => {
         publicGateway
-            .get(KKEMRoutes.userStatus + `${encrypted_key}`)
+            .get(KKEMRoutes.userStatus + `${encrypted_key}/`)
             .then(res => {
                 // console.log(res.data.response.mu_id);
                 setMuId(res.data.response.mu_id);
@@ -51,7 +51,7 @@ export default function MulearnAbout() {
                     <>
                         <p className={styles.description}>Join Now: </p>
                         <section id="muId" className={styles.muidSection}>
-                            <KKEMAuth jsid={encrypted_key} />
+                            <KKEMAuth param={encrypted_key} />
                             <button
                                 onClick={() => {
                                     navigate(

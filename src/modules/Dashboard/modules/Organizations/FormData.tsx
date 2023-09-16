@@ -438,7 +438,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         <div className={orgStyles.inputFieldContainer}>
                             <p>Affiliated University</p>
                             <Select
-                                value={affiliationData.find(
+                                value={affiliationData?.find(
                                     affiliation =>
                                         affiliation.value ===
                                         selectedAffiliation
@@ -453,7 +453,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     <div className={orgStyles.inputFieldContainer}>
                         <p>Country</p>
                         <Select
-                            value={countryData.find(
+                            value={countryData?.find(
                                 country =>
                                     country.value ===
                                     selectedCountry.toLowerCase()
@@ -467,7 +467,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     <div className={orgStyles.inputFieldContainer}>
                         <p>State</p>
                         <Select
-                            value={statesData.find(
+                            value={statesData?.find(
                                 state =>
                                     state.value === selectedState.toLowerCase()
                             )}
@@ -483,7 +483,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         <Select
                             value={
                                 selectedZone.length > 0 &&
-                                zonesData.find(
+                                zonesData?.find(
                                     zone =>
                                         zone.value ===
                                         selectedZone.toLowerCase()
@@ -500,7 +500,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         <Select
                             value={
                                 selectedDistrict.length > 0 &&
-                                districtsData.find(
+                                districtsData?.find(
                                     district =>
                                         district.value ===
                                         selectedDistrict.toLowerCase()

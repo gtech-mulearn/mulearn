@@ -62,7 +62,7 @@ export interface DWMSDetails {
     gender: string;
     dob: string;
     key_skills: string;
-    jsid: string;
+    param: string;
     job_seeker_id: string;
 }
 
@@ -236,6 +236,7 @@ export const registerUser = (
     setShowSubmitLoader: UseStateFunc<boolean>
 ) => {
     setShowSubmitLoader(true);
+    console.log(userData);
     publicGateway
         .post(onboardingRoutes.register, userData)
         .then((response: APIResponse<AllTokens>) => {
@@ -339,7 +340,7 @@ export const getDWMSDetails = (
                 gender,
                 dob,
                 key_skills,
-                jsid,
+                param,
                 job_seeker_id
             } = response.data.response.registration;
             const dwmsDetails: DWMSDetails = {
@@ -350,7 +351,7 @@ export const getDWMSDetails = (
                 gender,
                 dob,
                 key_skills,
-                jsid,
+                param,
                 job_seeker_id
                 // Initialize other fields here
             };
