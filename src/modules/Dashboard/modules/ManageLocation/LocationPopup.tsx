@@ -96,8 +96,8 @@ const LocationPopup: FC<LocationPopupProps> = ({
     }, [selectedData]);
 
     interface Option {
-        id: string;
-        name: string;
+        value: string;
+        label: string;
     }
 
     interface SelectionBoxProps {
@@ -123,8 +123,8 @@ const LocationPopup: FC<LocationPopupProps> = ({
                     name={title}
                     onChange={handleOptionChange}
                     options={data.map(item => ({
-                        value: item.id,
-                        label: item.name
+                        value: item.value,
+                        label: item.label
                     }))}
                     required
                 />
@@ -188,7 +188,7 @@ const LocationPopup: FC<LocationPopupProps> = ({
                 handleCountry(selectedData.Country.label);
                 handleState(selectedData.State.label);
                 handleZone(selectedData.Zone.label);
-            } 
+            }
         }
         handlePopup(false);
     }
