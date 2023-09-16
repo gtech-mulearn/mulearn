@@ -12,16 +12,12 @@ interface Props extends React.HTMLAttributes<HTMLInputElement> {
     fileName: string;
 }
 
-/*
-TODO: Change Template File
-TODO: Change From Component to Page
-*/
-
 const BulkImport = ({ path, fileName, onUpload, onError, ...rest }: Props) => {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [isDragging, setIsDragging] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const toast = useToast();
+
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files.length > 0) {
             const file = event.target.files[0];
@@ -130,10 +126,10 @@ const BulkImport = ({ path, fileName, onUpload, onError, ...rest }: Props) => {
                 onDragOver={handleDragOver}
                 onDrop={handleDrop}
             >
-                <div className={styles.upload_area}>
+                <div className={styles.uploadArea}>
                     <label
                         htmlFor="file-upload-input"
-                        className={styles.upload_button}
+                        className={styles.uploadButton}
                     >
                         <FiUploadCloud className={styles.icon} />
                         <p className={styles.text}>
