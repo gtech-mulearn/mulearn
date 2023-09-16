@@ -14,7 +14,7 @@ type InitialValues = {
     email: string;
     password: string;
     confirmPassword: string;
-    phone: undefined;
+    mobile: undefined;
     gender: string;
     dob: string;
     role: string;
