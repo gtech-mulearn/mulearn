@@ -83,7 +83,7 @@ const LearningCircleForm = (props:Props) => {
             fetchInterestGroupLc(props?.setLc, selectedIg.value, campus, district);
         }
     };
-    const enableResetBtn=selectedDistrict!==null || selectedCampus!==null || selectedIg!==null || props?.searchString!==null
+    const enableResetBtn=selectedDistrict!==null || selectedCampus!==null || selectedIg!==null || (props?.searchString!==null && props?.searchString!=='')
     return (
         <div className={styles.LClandingPageExplore}>
         <form className={styles.LClandingPageForm}>
