@@ -94,6 +94,7 @@ export const dashboardRoutes = {
 
     getCampusLearningCircles: "/api/v1/dashboard/lc/",
     createLearningCircle: "/api/v1/dashboard/lc/create/",
+    listLearningCircle: "/api/v1/dashboard/lc/list-all/",
     joinLearningCircle: "/api/v1/dashboard/lc/join/",
     setLCMeetTime: "/api/v1/dashboard/lc/meet/",
     getCampusIg: "api/v1/dashboard/ig/list/",
@@ -155,8 +156,8 @@ export const ManageLocationsRoutes = {
 export const KKEMRoutes = {
     userAuth: "/api/v1/integrations/kkem/authorization/",
     userLogin: "/api/v1/integrations/kkem/login/",
-    getDWMSDetails: "/api/v1/integrations/kkem/user/${jsid}/",
-    userStatus: "user/status/"
+    getDWMSDetails: "/api/v1/integrations/kkem/user/${param}/",
+    userStatus: "/api/v1/integrations/kkem/user/status/"
 };
 
 export const PublicRoutes = {

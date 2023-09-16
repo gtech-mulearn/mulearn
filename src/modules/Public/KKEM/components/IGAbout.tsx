@@ -8,21 +8,28 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { publicGateway } from "@/MuLearnServices/apiGateways";
 import { KKEMRoutes } from "@/MuLearnServices/urls";
+
 export default function MulearnAbout() {
     const [searchParams] = useSearchParams();
     const encrypted_key = searchParams.get("param");
+    // console.log(encrypted_key);
 
-    const [jsid, setJsId] = useState("");
+    // const [jsid, setJsId] = useState("");
     const [mu_id, setMuId] = useState("");
+    // let mu_id = null;
 
     useEffect(() => {
-        publicGateway.get(KKEMRoutes.userStatus + `${encrypted_key}`).then((res) => {
-            console.log(res.data);
-        }).catch((err) => {
-            console.log(err);
-        })
-    }, [])
-
+        publicGateway
+            .get(KKEMRoutes.userStatus + `${encrypted_key}/`)
+            .then(res => {
+                // console.log(res.data.response.mu_id);
+                setMuId(res.data.response.mu_id);
+                console.log(mu_id);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }, []);
 
     const navigate = useNavigate();
     return (
@@ -40,17 +47,19 @@ export default function MulearnAbout() {
                     entrepreneurship to data science
                 </p>
 
-                {jsid && !(jsid && mu_id) && (
+                {encrypted_key && !(encrypted_key && mu_id) && (
                     <>
                         <p className={styles.description}>Join Now: </p>
                         <section id="muId" className={styles.muidSection}>
-                            <KKEMAuth jsid={jsid} />
+                            <KKEMAuth param={encrypted_key} />
                             <button
                                 onClick={() => {
-                                    navigate(`/register?jsid=${jsid}`);
+                                    navigate(
+                                        `/register?param=${encrypted_key}`
+                                    );
                                 }}
                                 className={styles.muidLink}
-                            // onClick={() => setModalOpen(true)}
+                                // onClick={() => setModalOpen(true)}
                             >
                                 No muid ? Get now
                             </button>

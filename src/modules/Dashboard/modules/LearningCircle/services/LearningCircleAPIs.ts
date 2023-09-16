@@ -72,7 +72,7 @@ export const getCampusLearningCircles = async (
 ) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.createLearningCircle
+            dashboardRoutes.listLearningCircle
         );
         const message: any = response?.data;
         console.log(message.response);

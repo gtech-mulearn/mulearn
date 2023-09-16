@@ -110,16 +110,23 @@
     font-size: 1.2rem;
     font-weight: 500;
 }
-
+.learningCircleLandingPagePara {
+    display: flex;
+    word-break: keep-all;
+    width: fit-content;
+}
 .learningCircleLandingPageExpandBtn {
     display: none;
 }
 
- .learningCircleLandingPageExpandBtn:checked + .learningCircleLandingPageLevel,
-.learningCircleLandingPageExpandBtn:checked + .learningCircleLandingPageLevel div p{
+.learningCircleLandingPageExpandBtn:checked + .learningCircleLandingPageLevel,
+.learningCircleLandingPageExpandBtn:checked
+    + .learningCircleLandingPageLevel
+    div
+    p {
     background: var(--blue);
     color: white;
-} 
+}
 /* .learningCircleLandingPageExpandBtn:checked + .learningCircleLandingPageLevel{
     border: 1px solid var(--blue);
 } */
@@ -175,9 +182,9 @@
     }
 }
 @media (width<620px) {
-    .learningCircleLandingPageMiddle p{
-        font-size: .65rem;
-        margin-right: .5rem;
+    .learningCircleLandingPageMiddle p {
+        font-size: 0.65rem;
+        margin-right: 0.5rem;
     }
 }
 
@@ -189,8 +196,8 @@
         gap: 0.5rem;
         margin-top: 0rem;
     }
-    .learningCircleLandingPageMiddle p{
-        font-size: .5rem;
+    .learningCircleLandingPageMiddle p {
+        font-size: 0.5rem;
     }
 }
 
@@ -464,19 +471,19 @@
 
 .deleteIcon {
     cursor: pointer;
-    border-radius: .5rem;
-    background-color:red;
-    width:4.5rem;
+    border-radius: 0.5rem;
+    background-color: red;
+    width: 4.5rem;
     height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--White);
-    font-size:10px;
+    font-size: 10px;
     font-weight: bolder;
 }
 
-.MemberName .deleteIcon{
+.MemberName .deleteIcon {
     width: 4rem;
 }
 
@@ -507,8 +514,8 @@
         margin-left: 0.5rem;
     }
 }
-@media(width<870px){
-    .Members{
+@media (width<870px) {
+    .Members {
         min-height: 630px;
     }
 }
@@ -1156,7 +1163,7 @@
     padding: 125px 0px;
 }
 
-.resourcesLink{
+.resourcesLink {
     display: flex;
     align-items: center;
     column-gap: 0.5rem;
