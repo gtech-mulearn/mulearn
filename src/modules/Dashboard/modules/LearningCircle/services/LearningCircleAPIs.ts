@@ -71,7 +71,7 @@ export const getCampusLearningCircles = async (
     setCircleList: UseStateFunc<LcType[]>
 ) => {
     try {
-        const response = await privateGateway.get(
+        const response = await privateGateway.post(
             dashboardRoutes.listLearningCircle
         );
         const message: any = response?.data;
