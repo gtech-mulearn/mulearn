@@ -161,6 +161,7 @@ import SecureAuthRoutes from "./services/authCheck";
 import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
 import Refer from "./modules/Dashboard/modules/Refer/Refer";
 import LandingPage from "./modules/Public/LearningCircles/pages/LandingPage";
+import ProfileV2 from "./modules/Dashboard/modules/ProfileV2/pages/Profile";
 import AccountCreation from "./modules/Common/Authentication/pages/Onboarding/AccountCreation/AccountCreation";
 import Rolepage from "./modules/Common/Authentication/pages/Onboarding/RolePage/RolePage";
 import CollegePage from "./modules/Common/Authentication/pages/Onboarding/CollegePage/CollegePage";
@@ -240,6 +241,7 @@ function App() {
                     element: <DashboardRootLayout />,
                     children: [
                         { path: "profile", element: <Profile /> },
+                        { path: "profileV2", element: <ProfileV2 /> },
                         {
                             path: "connect-discord",
                             element: <ConnectDiscord />
