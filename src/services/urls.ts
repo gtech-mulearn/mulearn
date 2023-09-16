@@ -92,6 +92,7 @@ export const dashboardRoutes = {
     getApplicationForm: "/api/v1/hackathon/list-form/",
     getApplicants: "/api/v1/hackathon/list-applicants/",
 
+    searchLearningCircleWithCircleCode: "/api/v1/dashboard/lc/list-all/",
     getCampusLearningCircles: "/api/v1/dashboard/lc/",
     createLearningCircle: "/api/v1/dashboard/lc/create/",
     listLearningCircle: "/api/v1/dashboard/lc/list-all/",

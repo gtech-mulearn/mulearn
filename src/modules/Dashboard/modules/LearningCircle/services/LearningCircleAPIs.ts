@@ -71,7 +71,7 @@ export const getCampusLearningCircles = async (
     setCircleList: UseStateFunc<LcType[]>
 ) => {
     try {
-        const response = await privateGateway.get(
+        const response = await privateGateway.post(
             dashboardRoutes.listLearningCircle
         );
         const message: any = response?.data;
@@ -329,3 +329,32 @@ export const removeMember = async (
         });
     }
 };
+
+export const searchLearningCircleWithCircleCode =  (
+    setLc: UseStateFunc<LcType[]>,
+    circleCode: string
+)=>{
+    if(circleCode===''){
+        getCampusLearningCircles(setLc);
+        toast({
+            title: "Enter circle code",
+            description: "",
+            status: "error",
+            duration: 2000,
+            isClosable: true
+        })
+        return
+    }
+    privateGateway.post(`${dashboardRoutes.searchLearningCircleWithCircleCode}${circleCode}/`)
+    .then(res=>res.data.response)
+    .then(data=>setLc(data))
+    .catch(err=>{
+        for(let error of err.response?.data?.message?.general)
+        {toast({
+            description: error,
+            status: "error",
+            duration: 2000,
+            isClosable: true
+        });}
+    })
+}

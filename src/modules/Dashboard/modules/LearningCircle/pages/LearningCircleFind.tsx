@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { createStandaloneToast, UseToastOptions } from "@chakra-ui/react";
 import {
     getCampusLearningCircles,
-    joinCircle
+    joinCircle,
+    searchLearningCircleWithCircleCode
 } from "../services/LearningCircleAPIs";
 import { join } from "path";
 import { SearchBar } from "@/MuLearnComponents/TableTop/SearchBar";
@@ -24,7 +25,7 @@ const FindCircle = () => {
         getCampusLearningCircles(setLc);
     }, []);
     const handleData = (search: string) => {
-        
+        searchLearningCircleWithCircleCode(setLc, search);
     }
     return (
         <>
@@ -36,9 +37,12 @@ const FindCircle = () => {
                             Browse and join learning circle around you
                         </b>
                         <div style={{width: "100%"}}>
-                        <SearchBar onSearch={handleData} />
+                        <SearchBar 
+                        placeholder="Enter circle code" 
+                        onSearch={handleData} 
+                        onClear={()=>getCampusLearningCircles(setLc)}
+                        />
                         </div>
-                    
                     </div>
                     <img src={imageTop} alt="image" />
                 </div>
