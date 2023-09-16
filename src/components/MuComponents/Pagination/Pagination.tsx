@@ -1,4 +1,4 @@
-import styles from "./pagination.module.css";
+import styles from "./Pagination.module.css";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import { useState, Dispatch, SetStateAction } from "react";
 import ShowPerPage from "./ShowPerPage";
@@ -16,15 +16,11 @@ type Props = {
 };
 
 const Pagination = (props: Props) => {
-    // const [itemsPerPage, setItemsPerPage] = useState(5);
 
     const handleOptionChange = (value: number) => {
-        // setItemsPerPage(value);
         props.setPerPage(value);
         props.onPerPageNumber && props.onPerPageNumber(value);
-        // console.log(value);
     };
-    // console.log(props.perPage);
     return (
         <>
             {props.totalPages > 0 && (
@@ -45,7 +41,7 @@ const Pagination = (props: Props) => {
                             onClick={
                                 props.currentPage > 1
                                     ? props.handlePreviousClick
-                                    : () => {}
+                                    : () => { }
                             }
                             style={{ color: "var(--Dark)", cursor: "pointer" }}
                         />
@@ -57,7 +53,7 @@ const Pagination = (props: Props) => {
                             onClick={
                                 props.currentPage < props.totalPages
                                     ? props.handleNextClick
-                                    : () => {}
+                                    : () => { }
                             }
                             style={{ color: "var(--Dark)", cursor: "pointer" }}
                         />
