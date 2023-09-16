@@ -31,9 +31,8 @@ interface BackendErrors {
 
 const Onboarding = (props: Props) => {
     const urlParams = new URLSearchParams(window.location.search);
-    const jsId = urlParams.get("param");
+    const param = urlParams.get("param");
     const referralId = urlParams.get("referral_id");
-    // console.log(jsId)
     const queryParameters = new URLSearchParams(window.location.search);
     const navigate = useNavigate();
     // for hide and question container
@@ -98,7 +97,6 @@ const Onboarding = (props: Props) => {
     const [districtOption, setDistrictOption] = useState([
         { value: "", label: "" }
     ]);
-    const [district, setDistrict] = useState([{ value: "", label: "" }]);
 
     //State Array for storing the Department Options
     const [departmentAPI, setDepartmentAPI] = useState([
@@ -114,6 +112,7 @@ const Onboarding = (props: Props) => {
     const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }]);
     const [showOrHidePassword, setShowOrHidePassword] = useState("password");
     const [showOrHideCPassword, setShowOrHideCPassword] = useState("password");
+    const [defaultCommunity, setDefaultCommunity] = useState([{ value: "", label: "" }]);
 
     const customStyles = {
         control: (provided: any) => ({
@@ -165,8 +164,9 @@ const Onboarding = (props: Props) => {
         getCompanies(errorHandler, setCompanyAPI);
         getInterests(errorHandler, setAoiAPI);
         getRoles(errorHandler, setRoleAPI);
-        jsId &&
-            getDWMSDetails(errorHandler, jsId, (data: any) => {
+
+        if (param) {
+            getDWMSDetails(errorHandler, param, (data: any) => {
                 formik.setValues({
                     firstName: data.job_seeker_fname,
                     lastName: data.job_seeker_lname,
@@ -190,18 +190,17 @@ const Onboarding = (props: Props) => {
                     referral_id: ""
                 });
             });
+        }
     }, []);
 
     const [backendError, setBackendError] = useState<BackendErrors>({});
 
     const handleBackendErrors = (errors: BackendErrors) => {
-        // console.log(errors);
 
         const formattedErrors: BackendErrors = {};
         Object.entries(errors).forEach(([fieldName, errorMessages]) => {
             formattedErrors[fieldName] = errorMessages;
         });
-        // console.log(formattedErrors);
 
         setBackendError(formattedErrors);
     };
@@ -234,7 +233,7 @@ const Onboarding = (props: Props) => {
         if (values.organization != "") {
             values.community.push(values.organization);
         }
-        //console.log(values.community);
+        console.log(values.community);
 
         const userData = {
             first_name: values.firstName, //required
@@ -253,9 +252,8 @@ const Onboarding = (props: Props) => {
             area_of_interests: values.areaOfInterest, //required,
             password: values.password, //required
             referral_id: values.referral_id === "" ? null : values.referral_id,
-            jsid: jsId ? jsId : null
+            param: param ? param : null
         };
-
         registerUser(
             setFormSuccess,
             setRoleVerified,
@@ -326,11 +324,24 @@ const Onboarding = (props: Props) => {
     });
 
     useEffect(() => {
+        if (param && communityAPI.length > 0) {
+            //find the id and value of KKEM from the commmunityAPI and push it to the community array
+            const foundCommunity = communityAPI.find(
+                (community: any) => community.title === "KKEM"
+            );
+            if (foundCommunity && foundCommunity.id) {
+                setDefaultCommunity([{ value: foundCommunity.id, label: foundCommunity.title }])
+                console.log(defaultCommunity)
+            }
+        }
+    }, [communityAPI]);
+
+    useEffect(() => {
         setEmailVerificationResultBtn("Next");
     }, [formik.values.email]);
 
     useEffect(() => {
-        if (jsId) {
+        if (param) {
             const foundRole = roleAPI.find(
                 (role: any) => role.title === "Student"
             );
@@ -357,7 +368,7 @@ const Onboarding = (props: Props) => {
                             ""
                         )}
                         <div className={styles.form_container}>
-                            {!jsId && (
+                            {!param && (
                                 <div
                                     style={{
                                         display: display0,
@@ -700,7 +711,7 @@ const Onboarding = (props: Props) => {
                                                 onBlur={formik.handleBlur}
                                                 onChange={formik.handleChange}
                                                 value={formik.values.firstName}
-                                                disabled={jsId ? true : false}
+                                                disabled={param ? true : false}
                                             />
                                             {formik.touched.firstName &&
                                                 formik.errors.firstName ? (
@@ -723,7 +734,7 @@ const Onboarding = (props: Props) => {
                                                 onBlur={formik.handleBlur}
                                                 onChange={formik.handleChange}
                                                 value={formik.values.lastName}
-                                                disabled={jsId ? true : false}
+                                                disabled={param ? true : false}
                                             />
                                         </div>
                                     </div>
@@ -745,7 +756,7 @@ const Onboarding = (props: Props) => {
                                                 onBlur={formik.handleBlur}
                                                 onChange={formik.handleChange}
                                                 value={formik.values.email}
-                                                disabled={jsId ? true : false}
+                                                disabled={param ? true : false}
                                             // required
                                             />
                                             {formik.touched.email &&
@@ -779,7 +790,7 @@ const Onboarding = (props: Props) => {
                                                         textAlign: "center"
                                                     }}
                                                     name=""
-                                                    disabled={jsId ? true : false}
+                                                    disabled={param ? true : false}
                                                 >
                                                     <option value="+91">
                                                         +91
@@ -796,7 +807,7 @@ const Onboarding = (props: Props) => {
                                                         formik.handleChange
                                                     }
                                                     value={formik.values.phone}
-                                                    disabled={jsId ? true : false}
+                                                    disabled={param ? true : false}
                                                 // required
                                                 />
                                                 {formik.touched.phone &&
@@ -950,7 +961,7 @@ const Onboarding = (props: Props) => {
                                                         value={
                                                             formik.values.gender
                                                         }
-                                                        disabled={jsId ? true : false}
+                                                        disabled={param ? true : false}
                                                     >
                                                         <option value="">
                                                             Select gender
@@ -1007,7 +1018,7 @@ const Onboarding = (props: Props) => {
                                                         value={
                                                             formik.values.dob
                                                         }
-                                                        disabled={jsId ? true : false}
+                                                        disabled={param ? true : false}
                                                     />
                                                 </div>
                                             </div>
@@ -1025,7 +1036,10 @@ const Onboarding = (props: Props) => {
                                                 <Select
                                                     name="community.id"
                                                     ref={community_select_ref}
+                                                    key={defaultCommunity[0].value}
+                                                    defaultValue={param ? defaultCommunity : null}
                                                     onChange={OnChangeValue => {
+                                                        console.log(OnChangeValue)
                                                         formik.setFieldValue(
                                                             "community",
                                                             OnChangeValue.map(

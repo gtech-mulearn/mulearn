@@ -340,7 +340,7 @@ function App() {
                             path: "user-role-verification",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN]}
+                                    roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<UserRoleVerification />}
                                 />
                             )
@@ -396,7 +396,7 @@ function App() {
                             path: "college-levels",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN]}
+                                    roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<CollegeLevels />}
                                 />
                             )
