@@ -191,7 +191,8 @@ type Variants =
     | "destructive"
     | "success"
     | "link"
-    | "draft";
+    | "draft"
+    | "plain" ;
 
 type ButtonProps = ({
     children,
@@ -207,6 +208,7 @@ type ButtonProps = ({
     variant?: Variants;
     style?: React.CSSProperties;
     isLoading?: boolean;
+    loaderClass?: string;
 	buttonUrl?: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element;
 
@@ -216,6 +218,7 @@ export const PowerfulButton: ButtonProps = ({
     variant = "primary",
     style,
     isLoading,
+    loaderClass = "",
     ...props
 }) => {
     const variantName = variant ? styles[`${variant}-btn`] : "";
@@ -238,6 +241,7 @@ export const PowerfulButton: ButtonProps = ({
                             size={"md"}
                             color="currentcolor"
                             marginLeft={"1"}
+                            className={loaderClass}
                         />
                     ) : (
                         <></>

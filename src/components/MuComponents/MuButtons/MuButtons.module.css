@@ -258,3 +258,7 @@
         text-decoration-thickness: 2px;
     }
 }
+
+.plain-btn {
+    all: unset!important; /* please */
+}
