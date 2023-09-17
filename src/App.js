@@ -46,6 +46,9 @@ import CodeStorm from "./Pages/Events/GTA/CodeStorm/CodeStorm";
 import KKEMLearningFest from "./Pages/KKEMLearningFest/KKEMLearningFest";
 
 import MaveliPortfolio from "./Pages/Events/MaveliPortfolio/MaveliPortfolio";
+import Level1 from "./Pages/CapTF/Level1";
+import Spiderman from "./Pages/CapTF/Spiderman";
+import Submission from "./Pages/CapTF/Submission";
 function App() {
   const [redirects, setRedirects] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -115,7 +118,7 @@ function App() {
             <Route path="events/learningfest" element={<KKEMLearningFest />} />
             <Route path="/keralatechfest" element={<KKEMLearningFest />} />
             <Route path="/maveliportfolio" element={<MaveliPortfolio />} />
-           
+
             <Route path="/team">
               <Route path="" element={<Teams />} />
             </Route>
@@ -142,6 +145,10 @@ function App() {
             <Route path="/yipredirect" element={<YipForm />} />
             <Route path="/journey" element={<Journey />} />
           </Route>
+
+          <Route path="/level1" element={<Level1 />} />
+          <Route path="/spiderman" element={<Spiderman />} />
+          <Route path="/submission" element={<Submission />} />
         </Routes>
       </Router>
     </div>
