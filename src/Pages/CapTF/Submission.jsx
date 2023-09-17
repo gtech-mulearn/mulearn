@@ -75,8 +75,6 @@ const Submission = () => {
             Submit
           </button>
         </a>
-
-        <p style={{ color: "white" }}>{showParam}</p>
       </form>
     </div>
   );
