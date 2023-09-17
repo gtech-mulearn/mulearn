@@ -57,7 +57,7 @@ const Submission = () => {
         />
         <a
           href={
-            showParam === "true" || name != "Secret Key"
+            showParam === "true" || name !== "Secret Key"
               ? "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
               : "https://airtable.com/apppADe83MpHBM05J/shr3Dn6gSjCbcp45r"
           }
