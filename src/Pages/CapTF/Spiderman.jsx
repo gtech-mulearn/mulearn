@@ -28,7 +28,7 @@ const Spiderman = () => {
         </span>
       </p>
       <a
-        href="http://dev.mulearn.org/submission"
+        href="http://dev.mulearn.org/submission?show=true"
         target="_blank"
         rel="noopener noreferrer"
       >
