@@ -23,22 +23,30 @@ const Spiderman = () => {
         }}
       >
         Here is your flag{" "}
-        <span style={{ display: "none", color: "#000000", textShadow: "none" }}>CTFFlag123</span>
+        <span style={{ display: "none", color: "#000000", textShadow: "none" }}>
+          CTFFlag123
+        </span>
       </p>
-      <button
-        style={{
-          backgroundColor: "white",
-          color: "black",
-          padding: "10px 20px",
-          border: "none",
-          borderRadius: "5px",
-          marginTop: "20px",
-          cursor: "pointer",
-          boxShadow: "0px 0px 10px white", // added this line to add a horror effect to the button
-        }}
+      <a
+        href="http://mulearn.org/submission"
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        Submit
-      </button>
+        <button
+          style={{
+            backgroundColor: "white",
+            color: "black",
+            padding: "10px 20px",
+            border: "none",
+            borderRadius: "5px",
+            marginTop: "20px",
+            cursor: "pointer",
+            boxShadow: "0px 0px 10px white", // added this line to add a horror effect to the button
+          }}
+        >
+          Next
+        </button>
+      </a>
     </div>
   );
 };
