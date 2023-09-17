@@ -1,21 +1,3 @@
-html {
-    scroll-behavior: smooth;
-}
-::-webkit-scrollbar {
-    display: block;
-    width: 0.75rem;
-}
-::-webkit-scrollbar-track {
-    background: #dae9ff;
-}
-::-webkit-scrollbar-thumb {
-    background: #52b565;
-    border-radius: 5px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #84cc92;
-}
-
 .main {
     max-width: 200rem;
     margin: 0 auto;
@@ -34,3 +16,9 @@ html {
     height: 150%;
     opacity: 0.5;
 }
+
+/* Scroll behavior for this specific page */
+html {
+    scroll-behavior: smooth;
+}
+

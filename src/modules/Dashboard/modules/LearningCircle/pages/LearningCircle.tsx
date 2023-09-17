@@ -66,7 +66,7 @@ const LearningCircle = (props: Props) => {
     }, []);
 
     useEffect(() => {
-        lc?.members.map(async member => {
+        lc?.members?.map(async member => {
             const imagePath: string = member.profile_pic;
 
             try {
@@ -550,7 +550,7 @@ const LearningCircle = (props: Props) => {
 
                                     <div className={styles.PendingList}>
                                         {lc?.pending_members &&
-                                            lc.pending_members.map(
+                                            lc?.pending_members?.map(
                                                 (member, index) => (
                                                     <div
                                                         key={index}
@@ -662,7 +662,7 @@ const LearningCircle = (props: Props) => {
                                 </span>
                                 <div className={styles.MemberList}>
                                     {lc?.members &&
-                                        lc.members.map((member, index) => (
+                                        lc.members?.map((member, index) => (
                                             <div
                                                 key={index}
                                                 className={styles.MemberName}
@@ -679,7 +679,9 @@ const LearningCircle = (props: Props) => {
                                                         alt="Profile Picture"
                                                     />
                                                     <div>
+                                                        <div className={styles.username}>
                                                         <p>{member.username}</p>
+                                                        </div>
                                                         <span>
                                                             <img
                                                                 src="https://i.ibb.co/Dbhv9rS/karma.png"

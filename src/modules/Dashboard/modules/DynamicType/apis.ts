@@ -150,12 +150,13 @@ export const getDynamicUsers = async (
         ).data.response;
         const data = [];
         for (let i of response.data) {
-            for (let j of i.roles) {
+            for (let j of i.users) {
                 //storing the data json as id for fetching while deleting
                 data.push({
-                    id: j.id,
+                    id: j.dynamic_user_id,
                     type: i.type,
-                    user: j
+                    email: j.email,
+                    muid: j.muid
                 });
             }
         }
@@ -193,8 +194,27 @@ export const deleteUserType = async (
     id: any
 ) => {
     try {
-        console.log(id);
+        await privateGateway.delete(
+            dashboardRoutes.getDynamicUser + "delete/" + id
+        );
         succHandler("User removed");
+    } catch (err) {
+        errHandler(err);
+    }
+};
+
+export const updateUserType = async (
+    errHandler: Function,
+    succHandler: Function,
+    id: any,
+    user: string
+) => {
+    try {
+        await privateGateway.patch(
+            dashboardRoutes.getDynamicUser + "update/" + id + "/",
+            { new_user: user }
+        );
+        succHandler("Role updated");
     } catch (err) {
         errHandler(err);
     }

@@ -22,7 +22,7 @@ export const LearningCircleLandingPage = () => {
     const handleCreate = () => {
         navigate("/dashboard/learning-circle/create-circle");
     };
-
+    
     return (
         <>
             <div className={styles.learningCircleLandingPage}>
@@ -58,7 +58,7 @@ export const LearningCircleLandingPage = () => {
                         {userCircleList && userCircleList.length > 0 ? (
                             <>
                                 <b>Your learning circles</b>
-                                {userCircleList.map((circle, pos) => (
+                                {userCircleList?.map((circle, pos) => (
                                     <div key={pos}>
                                         <li
                                             className={

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import styles from "./modal.module.css";
+import styles from "./Modal.module.css";
 import { RiCloseLine } from "react-icons/ri";
 import { PowerfulButton } from "../MuButtons/MuButton";
 
@@ -22,7 +22,6 @@ const Modal: FC<ModalProps> = ({
     type,
     value
 }) => {
-    console.log(id, "-", heading, "-", content, "-", type, "-", value);
     return (
         <>
             <div className={styles.darkBG} onClick={() => setIsOpen(false)} />

@@ -28,6 +28,7 @@ function DynamicType() {
     const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(100);
     const [sort, setSort] = useState("");
+    const [search, setSearch] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const firstFetch = useRef(true);
     const toast = useToast();
@@ -87,7 +88,8 @@ function DynamicType() {
     ];
     const columnOrderUser = [
         { column: "type", Label: "Type", isSortable: false },
-        { column: "user", Label: "User", isSortable: false }
+        { column: "email", Label: "Email", isSortable: false },
+        { column: "muid", Label: "MUID", isSortable: false }
     ];
 
     const errHandler = (err: any) => {
@@ -131,7 +133,7 @@ function DynamicType() {
                 perPage,
                 setIsLoading,
                 setTotalPages,
-                "",
+                search,
                 sort
             );
         if (tab == "User")
@@ -142,10 +144,10 @@ function DynamicType() {
                 perPage,
                 setIsLoading,
                 setTotalPages,
-                "",
+                search,
                 sort
             );
-    }, [currModal, currentPage, perPage, tab]);
+    }, [currModal, currentPage, perPage, tab, sort, search]);
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -159,39 +161,13 @@ function DynamicType() {
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-
-        if (tab == "Role")
-            getDynamicRoles(
-                errHandler,
-                setData,
-                1,
-                perPage,
-                setIsLoading,
-                setTotalPages,
-                "",
-                sort
-            );
-        if (tab == "User")
-            getDynamicUsers(
-                errHandler,
-                setData,
-                1,
-                perPage,
-                setIsLoading,
-                setTotalPages,
-                "",
-                sort
-            );
+        setSearch(search);
     };
 
     const handleDelete = (id: string | undefined) => {
         (async () => {
-            if (tab === "Role")
+            if (tab === "Role") {
                 await deleteRoleType(errHandler, succHandler, id);
-            if (tab === "User")
-                await deleteUserType(errHandler, succHandler, id);
-
-            if (tab == "Role")
                 getDynamicRoles(
                     errHandler,
                     setData,
@@ -199,10 +175,13 @@ function DynamicType() {
                     perPage,
                     setIsLoading,
                     setTotalPages,
-                    "",
+                    search,
                     sort
                 );
-            if (tab == "User")
+            }
+
+            if (tab === "User") {
+                await deleteUserType(errHandler, succHandler, id);
                 getDynamicUsers(
                     errHandler,
                     setData,
@@ -210,9 +189,10 @@ function DynamicType() {
                     perPage,
                     setIsLoading,
                     setTotalPages,
-                    "",
+                    search,
                     sort
                 );
+            }
         })();
     };
     const handleEdit = (id: any) => {
@@ -241,7 +221,7 @@ function DynamicType() {
         if (tab === newTab) return;
         setTab(newTab);
     };
-
+    console.log(data);
     return (
         <>
             <TableTopTab

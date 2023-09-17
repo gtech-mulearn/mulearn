@@ -164,7 +164,6 @@ const Onboarding = (props: Props) => {
         getCompanies(errorHandler, setCompanyAPI);
         getInterests(errorHandler, setAoiAPI);
         getRoles(errorHandler, setRoleAPI);
-
         if (param) {
             getDWMSDetails(errorHandler, param, (data: any) => {
                 formik.setValues({
@@ -173,7 +172,7 @@ const Onboarding = (props: Props) => {
                     email: data.email_id,
                     password: "",
                     confirmPassword: "",
-                    phone: data.mobile_no,
+                    mobile: data.mobile_no,
                     gender: data.gender.toLowerCase(),
                     dob: data.dob,
                     role: "",
@@ -212,7 +211,7 @@ const Onboarding = (props: Props) => {
         email: "",
         password: "",
         confirmPassword: "",
-        phone: void 0,
+        mobile: void 0,
         gender: "",
         dob: "",
         role: "",
@@ -239,7 +238,7 @@ const Onboarding = (props: Props) => {
             first_name: values.firstName, //required
             last_name: values.lastName === "" ? null : values.lastName,
             email: values.email, //required
-            mobile: values.phone, //required
+            mobile: values.mobile, //required
             gender: values.gender === "" ? null : values.gender,
             dob: values.dob === "" ? null : values.dob,
             role: role[0]["id"] == "" ? null : role[0]["id"], //required
@@ -757,7 +756,6 @@ const Onboarding = (props: Props) => {
                                                 onChange={formik.handleChange}
                                                 value={formik.values.email}
                                                 disabled={param ? true : false}
-                                            // required
                                             />
                                             {formik.touched.email &&
                                                 formik.errors.email ? (
@@ -798,7 +796,7 @@ const Onboarding = (props: Props) => {
                                                 </select>
                                                 <input
                                                     id="phone_field"
-                                                    name="phone"
+                                                    name="mobile"
                                                     style={{ width: "78%" }}
                                                     type="number"
                                                     placeholder="8023456789"
@@ -806,18 +804,18 @@ const Onboarding = (props: Props) => {
                                                     onChange={
                                                         formik.handleChange
                                                     }
-                                                    value={formik.values.phone}
+                                                    value={formik.values.mobile}
                                                     disabled={param ? true : false}
                                                 // required
                                                 />
-                                                {formik.touched.phone &&
-                                                    formik.errors.phone ? (
+                                                {formik.touched.mobile &&
+                                                    formik.errors.mobile ? (
                                                     <div
                                                         className={
                                                             styles.error_message
                                                         }
                                                     >
-                                                        {formik.errors.phone}
+                                                        {formik.errors.mobile}
                                                     </div>
                                                 ) : null}
                                             </div>
@@ -1964,7 +1962,7 @@ const Onboarding = (props: Props) => {
                                                     "" ||
                                                     formik.errors.firstName ||
                                                     formik.errors.email ||
-                                                    formik.errors.phone ||
+                                                    formik.errors.mobile ||
                                                     formik.errors.password ||
                                                     formik.errors
                                                         .confirmPassword ||

@@ -131,7 +131,8 @@ export default function Landing() {
         }
     ];
     return (
-        <main className={styles.main}>
+
+        <main className={styles.mainContainer}>
             <Navbar />
             <div style={{ position: "relative", height: "100%" }}>
                 <img
@@ -141,7 +142,7 @@ export default function Landing() {
                 />
                 <img src={mU} alt="mU" className={styles.mU} />
             </div>
-            <IGAbout/>
+            <IGAbout />
             <IGSection cards={igCardData} />
             <div id="events">
                 <IGSection
@@ -154,5 +155,6 @@ export default function Landing() {
             {/* <SkillExpress /> */}
             <Footer />
         </main>
+
     );
 }

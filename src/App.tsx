@@ -40,9 +40,6 @@ const DeleteOrganizations = lazy(
 const ManageUsersCreate = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersCreate")
 );
-const ManageUsersDelete = lazy(
-    () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersDelete")
-);
 const ManageUsersEdit = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersEdit")
 );
@@ -56,12 +53,6 @@ const UserRoleVerification = lazy(
     () =>
         import(
             "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerification"
-        )
-);
-const UserRoleVerificationDelete = lazy(
-    () =>
-        import(
-            "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationDelete"
         )
 );
 const UserRoleVerificationEdit = lazy(
@@ -173,6 +164,7 @@ import LearningCircleCreate from "./modules/Dashboard/modules/LearningCircle/pag
 import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind";
 import Departments from "./modules/Dashboard/modules/Departments/Departments";
 import KKEMEventTemplate from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventTemplate";
+import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -312,10 +304,6 @@ function App() {
                             element: <ManageUsersCreate />
                         },
                         {
-                            path: "manage-users/delete/:id",
-                            element: <ManageUsersDelete />
-                        },
-                        {
                             path: "manage-users/edit/:id",
                             element: <ManageUsersEdit />
                         },
@@ -329,7 +317,7 @@ function App() {
                             )
                         },
                         {
-                            path: "dynamic-roles",
+                            path: "dynamic-type",
                             element: (
                                 <RoleChecker
                                     roles={[roles.ADMIN]}
@@ -342,14 +330,10 @@ function App() {
                             path: "user-role-verification",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN]}
+                                    roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<UserRoleVerification />}
                                 />
                             )
-                        },
-                        {
-                            path: "user-role-verification/delete/:id",
-                            element: <UserRoleVerificationDelete />
                         },
                         {
                             path: "user-role-verification/edit/:id",
@@ -357,7 +341,12 @@ function App() {
                         },
                         {
                             path: "manage-departments",
-                            element: <Departments />
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    children={<Departments />}
+                                />
+                            )
                         },
                         {
                             path: "zonal-dashboard",
@@ -398,7 +387,7 @@ function App() {
                             path: "college-levels",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN]}
+                                    roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<CollegeLevels />}
                                 />
                             )
@@ -428,8 +417,17 @@ function App() {
                             path: "karma-voucher",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN]}
+                                    roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<KarmaVoucher />}
+                                />
+                            )
+                        },
+                        {
+                            path: "/dashboard/error-log",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<ErrorLog />}
                                 />
                             )
                         },

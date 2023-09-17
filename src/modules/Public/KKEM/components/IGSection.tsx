@@ -20,13 +20,13 @@ const IGSection = (props: Props) => {
     const [searchParams] = useSearchParams();
     const encrypted_key = searchParams.get("param");
     const [modalOpen, setModalOpen] = useState(false);
-    const [mu_id, setMuId] = useState("");
+    const [muId, setMuId] = useState("");
     useEffect(() => {
-        if (mu_id == "") {
+        if (muId == "") {
             publicGateway
                 .get(KKEMRoutes.userStatus + `${encrypted_key}/`)
                 .then(res => {
-                    // console.log(res.data.response.mu_id);
+                    // console.log(res.data.response.muId);
                     setMuId(res.data.response.mu_id);
                 })
                 .catch(err => {
@@ -37,8 +37,8 @@ const IGSection = (props: Props) => {
 
     return (
         <>
-            {(!props.headerFlag || mu_id) && (
-                <MuIDModal open={modalOpen} setOpen={setModalOpen} muId={mu_id} param={encrypted_key ?? ""} />
+            {!props.headerFlag && (
+                <MuIDModal open={modalOpen} setOpen={setModalOpen} setMuId={setMuId} muId={muId} param={encrypted_key ?? ""} />
             )}
             <div className={styles.main_container}>
                 {!props.headerFlag && (
