@@ -40,9 +40,6 @@ const DeleteOrganizations = lazy(
 const ManageUsersCreate = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersCreate")
 );
-const ManageUsersDelete = lazy(
-    () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersDelete")
-);
 const ManageUsersEdit = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersEdit")
 );
@@ -56,12 +53,6 @@ const UserRoleVerification = lazy(
     () =>
         import(
             "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerification"
-        )
-);
-const UserRoleVerificationDelete = lazy(
-    () =>
-        import(
-            "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationDelete"
         )
 );
 const UserRoleVerificationEdit = lazy(
@@ -161,6 +152,7 @@ import SecureAuthRoutes from "./services/authCheck";
 import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
 import Refer from "./modules/Dashboard/modules/Refer/Refer";
 import LandingPage from "./modules/Public/LearningCircles/pages/LandingPage";
+import ProfileV2 from "./modules/Dashboard/modules/ProfileV2/pages/Profile";
 import AccountCreation from "./modules/Common/Authentication/pages/Onboarding/AccountCreation/AccountCreation";
 import Rolepage from "./modules/Common/Authentication/pages/Onboarding/RolePage/RolePage";
 import CollegePage from "./modules/Common/Authentication/pages/Onboarding/CollegePage/CollegePage";
@@ -170,6 +162,9 @@ import { LearningCircleLandingPage } from "./modules/Dashboard/modules/LearningC
 import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle";
 import LearningCircleCreate from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate";
 import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind";
+import Departments from "./modules/Dashboard/modules/Departments/Departments";
+import KKEMEventTemplate from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventTemplate";
+import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -238,6 +233,7 @@ function App() {
                     element: <DashboardRootLayout />,
                     children: [
                         { path: "profile", element: <Profile /> },
+                        { path: "profileV2", element: <ProfileV2 /> },
                         {
                             path: "connect-discord",
                             element: <ConnectDiscord />
@@ -308,10 +304,6 @@ function App() {
                             element: <ManageUsersCreate />
                         },
                         {
-                            path: "manage-users/delete/:id",
-                            element: <ManageUsersDelete />
-                        },
-                        {
                             path: "manage-users/edit/:id",
                             element: <ManageUsersEdit />
                         },
@@ -325,7 +317,7 @@ function App() {
                             )
                         },
                         {
-                            path: "dynamic-roles",
+                            path: "dynamic-type",
                             element: (
                                 <RoleChecker
                                     roles={[roles.ADMIN]}
@@ -338,18 +330,23 @@ function App() {
                             path: "user-role-verification",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN]}
+                                    roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<UserRoleVerification />}
                                 />
                             )
                         },
                         {
-                            path: "user-role-verification/delete/:id",
-                            element: <UserRoleVerificationDelete />
-                        },
-                        {
                             path: "user-role-verification/edit/:id",
                             element: <UserRoleVerificationEdit />
+                        },
+                        {
+                            path: "manage-departments",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    children={<Departments />}
+                                />
+                            )
                         },
                         {
                             path: "zonal-dashboard",
@@ -390,7 +387,7 @@ function App() {
                             path: "college-levels",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN]}
+                                    roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<CollegeLevels />}
                                 />
                             )
@@ -420,8 +417,17 @@ function App() {
                             path: "karma-voucher",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN]}
+                                    roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<KarmaVoucher />}
+                                />
+                            )
+                        },
+                        {
+                            path: "/dashboard/error-log",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<ErrorLog />}
                                 />
                             )
                         },
@@ -613,6 +619,10 @@ function App() {
         {
             path: "/learning-circle",
             element: <LandingPage />
+        },
+        {
+            path: "/kkem/events/:id",
+            element: <KKEMEventTemplate />
         }
     ]);
 

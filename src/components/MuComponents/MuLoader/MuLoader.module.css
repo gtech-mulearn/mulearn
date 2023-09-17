@@ -1,8 +1,8 @@
-.mu_loader{
+.muLoader {
     height: 200px;
 }
 
-.mu_loader_container{
+.muLoaderContainer {
     display: flex;
     align-items: center;
     justify-content: center;

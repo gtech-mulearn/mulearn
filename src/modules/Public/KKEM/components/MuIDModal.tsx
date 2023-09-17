@@ -4,16 +4,27 @@ import { RiCloseLine } from "react-icons/ri";
 import { AiOutlineLoading } from "react-icons/ai";
 import { HiCheck, HiOutlineArrowRight } from "react-icons/hi";
 import { useToast } from "@chakra-ui/react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { KKEMLogin } from "../services/apis";
 
 interface ModalProps extends React.HTMLAttributes<HTMLDialogElement> {
     open: boolean;
     setOpen?: UseStateFunc<boolean>;
+    setMuId: UseStateFunc<string>;
+    muId: string;
+    param?: string;
 }
-export default function Modal({ open, setOpen, ...props }: ModalProps) {
+export default function Modal({
+    open,
+    setOpen,
+    setMuId,
+    muId,
+    param,
+    ...props
+}: ModalProps) {
     const modalRef = useRef<HTMLDialogElement>(null);
     useEffect(() => {
+
         const modal = modalRef.current;
         if (modal) {
             if (open) {
@@ -46,9 +57,8 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
             }
         };
     }, [modalRef, setOpen]);
+    // console.log(muId);
 
-    const [muid, setMuid] = useState("");
-    const [jsid, setJsid] = useState<string | null>("");
     const [password, setPassword] = useState("");
     const [success, setSuccess] = useState(false);
     const [disabled, setDisabled] = useState(false);
@@ -58,29 +68,11 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
     const toast = useToast();
     const navigate = useNavigate();
     let ruri = window.location.href.split("=")[1];
-    const [searchParams] = useSearchParams();
-    const mu_id = searchParams.get("mu_id");
-    const js_id = searchParams.get("jsid");
 
     useEffect(() => {
-        if (mu_id) {
-            setMuid(mu_id);
-            setJsid(js_id);
-            setIntegration("KKEM");
-            setDisabled(true);
-        }
-    }, [searchParams]);
-
-    useEffect(() => {
-        if (js_id) {
-            setJsid(js_id);
-            setIntegration("KKEM");
-        }
-    }, [searchParams]);
-
-    const handleIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setMuid(e.target.value);
-    };
+        setIntegration("KKEM");
+        setDisabled(true);
+    }, []);
 
     const handlePassChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
@@ -91,10 +83,10 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
         setSuccess(false);
         setDisabled(true);
         const controller = new AbortController();
-        if (!muid || muid.length <= 0 || muid.trim().length <= 0) {
+        if (!muId || muId.length <= 0 || muId.trim().length <= 0) {
             setSuccess(false);
             setDisabled(false);
-            setError("Please enter a valid muid");
+            setError("Please enter a valid muId");
             return;
         }
         if (!password || password.length <= 0 || password.trim().length <= 0) {
@@ -103,17 +95,6 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
             setError("Please enter a valid password");
             return;
         }
-        // userAuth(muid, dwmsId, controller).then(res => {
-        //     if (res.statusCode === 400) {
-        //         setError(res.message?.general?.toString());
-        //         setSuccess(false);
-        //     }
-        //     if (res.statusCode === 200) {
-        //         setError(null);
-        //         setSuccess(true);
-        //     }
-        //     setDisabled(false);
-        // });
         return () => {
             controller.abort();
         };
@@ -143,13 +124,12 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
                     <form className={styles.form} onSubmit={handleSubmit}>
                         <>
                             <input
-                                disabled={disabled}
                                 type="text"
-                                name="muid"
-                                id="muid"
+                                name="muId"
+
                                 placeholder="Enter µ-Id"
-                                value={muid}
-                                onChange={handleIdChange}
+                                value={muId}
+                                onChange={(e) => setMuId(e.target.value)}
                             />
                             <div className={styles.pass}>
                                 <input
@@ -163,19 +143,18 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
 
                                 <button
                                     type="submit"
-                                    className={`${styles.submit} ${
-                                        success ? styles.successBtn : ""
-                                    }`}
+                                    className={`${styles.submit} ${success ? styles.successBtn : ""
+                                        }`}
                                     disabled={isLoading}
                                     onClick={e => {
                                         e.preventDefault();
                                         if (
-                                            !muid ||
-                                            muid.length <= 0 ||
-                                            muid.trim().length <= 0
+                                            !muId ||
+                                            muId.length <= 0 ||
+                                            muId.trim().length <= 0
                                         ) {
                                             setError(
-                                                "Please enter a valid muid"
+                                                "Please enter a valid muId"
                                             );
                                         } else if (
                                             !password ||
@@ -188,14 +167,13 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
                                         } else {
                                             setError("");
                                             KKEMLogin(
-                                                muid,
+                                                muId,
                                                 password,
                                                 toast,
                                                 navigate,
                                                 setIsLoading,
                                                 ruri,
-                                                jsid,
-                                                integration
+                                                param
                                             );
                                         }
                                     }}
@@ -240,7 +218,7 @@ export default function Modal({ open, setOpen, ...props }: ModalProps) {
                             type="button"
                             className={styles.modalButton}
                             onClick={() => {
-                                navigate("/register?jsid=" + js_id);
+                                navigate("/register?param=" + param);
                             }}
                         >
                             Get Mu-Id

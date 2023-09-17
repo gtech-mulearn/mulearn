@@ -1,8 +1,7 @@
 import {
     DropDownButtons,
     MuButton,
-    MuButtonLight,
-	PowerfulButton
+    MuButtonLight
 } from "@/MuLearnComponents/MuButtons/MuButton";
 import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
 import { useToast } from "@chakra-ui/react";
@@ -116,11 +115,12 @@ const SideNavBarBody = ({
                                                                 ))
                                                     )
                                                     .map((button, i) => (
-                                                        <PowerfulButton
+                                                        <MuButton
                                                             style={{
                                                                 width: "100%"
                                                             }}
                                                             key={i}
+                                                            text={button.title}
                                                             buttonUrl={
                                                                 button.url
                                                             }
@@ -133,9 +133,7 @@ const SideNavBarBody = ({
                                                                     ? toggleSideNavBar()
                                                                     : null;
                                                             }}
-                                                        >
-                                                            {button.title}
-                                                        </PowerfulButton>
+                                                        />
                                                     ))}
                                             />
                                         ) : (

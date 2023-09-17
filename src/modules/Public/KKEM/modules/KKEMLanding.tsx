@@ -8,10 +8,8 @@ import Footer from "../components/Footer";
 
 import igAssets from "../assets/IGS";
 import pastEventsAssets from "../assets/past_events";
+import { useState } from "react";
 
-/**
- * Landing page for KKEM
- */
 export default function Landing() {
     const igCardData = [
         {
@@ -20,7 +18,6 @@ export default function Landing() {
             link: "https://learn.mulearn.org/webmobile/android",
             description:
                 "Android is a mobile operating system based on a modified version of the Linux kernel and other open-source software."
-
         },
         {
             image: igAssets.Frontend,
@@ -133,9 +130,9 @@ export default function Landing() {
             date: "May 2023"
         }
     ];
-
     return (
-        <main className={styles.main}>
+
+        <main className={styles.mainContainer}>
             <Navbar />
             <div style={{ position: "relative", height: "100%" }}>
                 <img
@@ -158,5 +155,6 @@ export default function Landing() {
             {/* <SkillExpress /> */}
             <Footer />
         </main>
+
     );
 }

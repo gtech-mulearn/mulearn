@@ -23,7 +23,7 @@ const Dropdown = (props: {
     }, []);
 
     const handleContentSelect = (content: string) => {
-		props.setInput(content);
+        props.setInput(content);
         setSelectedContent(content);
         setIsDropdownOpen(false);
     };
@@ -32,9 +32,8 @@ const Dropdown = (props: {
         <div className={styles.dropdown}>
             <span>{props.label}</span>
             <div
-                className={`${styles.select} ${
-                    isDropdownOpen ? styles.open : ""
-                }`}
+                className={`${styles.select} ${isDropdownOpen ? styles.open : ""
+                    }`}
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
                 {selectedContent}
@@ -46,7 +45,7 @@ const Dropdown = (props: {
                         <div
                             key={index}
                             className={styles.content}
-                            onClick={() => { handleContentSelect(content)}}
+                            onClick={() => { handleContentSelect(content) }}
                         >
                             {content}
                         </div>

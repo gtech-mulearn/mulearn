@@ -19,7 +19,7 @@ export const MuButton = (props: {
     onSubmit?: any;
     isLoading?: boolean; // show loading spinner if neccessary.
     disabled?: boolean; //disable the button if needed
-    buttonUrl?: string; 
+    buttonUrl?: string; // for styling purposes
     submit?: boolean; // for styling purposes
     isMinWidth?: boolean;
 }) => {
@@ -42,9 +42,9 @@ export const MuButton = (props: {
             onSubmit={props.onSubmit}
             disabled={props.disabled}
             type={props.type ? props.type : "button"}
-            //When there are more than two button with type submit
-            //pressing enter wont submit the form
-            //buttons default to submit if left undefined
+        //When there are more than two button with type submit
+        //pressing enter wont submit the form
+        //buttons default to submit if left undefined
         >
             {props.icon && <div className={styles.btn_icon}>{props.icon}</div>}
             <span>{props.text}</span>
@@ -56,6 +56,27 @@ export const MuButton = (props: {
                 />
             )}
         </button>
+    );
+};
+
+export const SingleButton = (props: {
+    text: string; // text of main button
+    icon?: JSX.Element; // main button icon
+    style?: React.CSSProperties; // main button style if wanted
+    onClick?: React.MouseEventHandler; // onclick event if wanted
+    link?: string;
+}) => {
+    return (
+        <div className={styles.createBtnContainer} style={props.style}>
+            <a href={props.link} target="_blank">
+                <MuButton
+                    className={styles.createBtn}
+                    text={props.text}
+                    icon={props.icon}
+                    onClick={props.onClick}
+                />
+            </a>
+        </div>
     );
 };
 
@@ -145,27 +166,6 @@ export const DropDownButtons = (props: {
     );
 };
 
-export const SingleButton = (props: {
-    text: string; // text of main button
-    icon?: JSX.Element; // main button icon
-    style?: React.CSSProperties; // main button style if wanted
-    onClick?: React.MouseEventHandler; // onclick event if wanted
-    link?: string;
-}) => {
-    return (
-        <div className={styles.createBtnContainer} style={props.style}>
-            <a href={props.link} target="_blank">
-                <MuButton
-                    className={styles.createBtn}
-                    text={props.text}
-                    icon={props.icon}
-                    onClick={props.onClick}
-                />
-            </a>
-        </div>
-    );
-};
-
 type Props = {
     text: string;
     type?: any;
@@ -194,59 +194,26 @@ type Variants =
     | "draft"
     | "plain" ;
 
-type ButtonProps = ({
-    children,
-    className,
-    variant,
-    style,
-    isLoading,
-	buttonUrl,
-    ...props
-}: {
-    children: ReactNode;
-    className?: string;
-    variant?: Variants;
-    style?: React.CSSProperties;
-    isLoading?: boolean;
-    loaderClass?: string;
-	buttonUrl?: string;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element;
 
-export const PowerfulButton: ButtonProps = ({
-    children,
-    className = "",
-    variant = "primary",
-    style,
-    isLoading,
-    loaderClass = "",
-    ...props
-}) => {
-    const variantName = variant ? styles[`${variant}-btn`] : "";
+type ButtonProps = ({ children, className, variant, style, isLoading, ...props }:
+    { children: ReactNode, className?: string, variant?: Variants, isLoading?: boolean, style?: React.CSSProperties } & React.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element
 
-    return (
-        <button
-            className={
-                styles["common-btn"] + "  " + variantName + " " + className
-            }
-            {...props}
-            style={style}
-        >
-            {children}
-            {
-                isLoading !== undefined &&
-                    (isLoading ? (
-                        <Spinner
-                            thickness="3px"
-                            speed="0.6s"
-                            size={"md"}
-                            color="currentcolor"
-                            marginLeft={"1"}
-                            className={loaderClass}
-                        />
-                    ) : (
-                        <></>
-                    )) // <LuCheck size={"20px"} />)
-            }
-        </button>
-    );
+export const PowerfulButton: ButtonProps = ({ children, className = "", variant = "primary", style, isLoading, ...props }) => {
+    const variantName = variant ? styles[`${variant}-btn`] : ""
+
+    return <button disabled={isLoading !== undefined ? isLoading : false} className={styles["common-btn"] + "  " + variantName + " " + className}
+        {...props} style={style}>
+        {children}
+        {isLoading !== undefined &&
+            (isLoading ?
+                <Spinner
+                    thickness='3px'
+                    speed='0.6s'
+                    size={"md"}
+                    color="currentcolor"
+                    marginLeft={"1"}
+                />
+                : <></>) // <LuCheck size={"20px"} />)
+        }
+    </button>
 }
