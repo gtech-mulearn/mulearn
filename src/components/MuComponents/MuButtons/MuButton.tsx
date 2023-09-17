@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from "react";
 import styles from "./MuButtons.module.css";
 import { ClipLoader } from "react-spinners";
-import { Spinner } from '@chakra-ui/react'
+import { Spinner } from "@chakra-ui/react";
 import { LuCheck } from "react-icons/lu";
 
 /**
@@ -42,9 +42,9 @@ export const MuButton = (props: {
             onSubmit={props.onSubmit}
             disabled={props.disabled}
             type={props.type ? props.type : "button"}
-        //When there are more than two button with type submit
-        //pressing enter wont submit the form
-        //buttons default to submit if left undefined
+            //When there are more than two button with type submit
+            //pressing enter wont submit the form
+            //buttons default to submit if left undefined
         >
             {props.icon && <div className={styles.btn_icon}>{props.icon}</div>}
             <span>{props.text}</span>
@@ -184,7 +184,7 @@ type Props = {
 };
 
 type Variants =
-    | "primary"
+      "primary"
     | "secondary"
     | "ghost"
     | "outline"
@@ -192,28 +192,61 @@ type Variants =
     | "success"
     | "link"
     | "draft"
-    | "plain" ;
+    | "plain";
 
+type ButtonProps = ({
+    children,
+    className,
+    variant,
+    style,
+    isLoading,
+    loaderClass,
+    ...props
+}: {
+    children: ReactNode;
+    className?: string;
+    variant?: Variants;
+    isLoading?: boolean;
+    loaderClass?: string;
+    style?: React.CSSProperties;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element;
 
-type ButtonProps = ({ children, className, variant, style, isLoading, ...props }:
-    { children: ReactNode, className?: string, variant?: Variants, isLoading?: boolean, style?: React.CSSProperties } & React.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element
+export const PowerfulButton: ButtonProps = ({
+    children,
+    className = "",
+    variant = "primary",
+    style,
+    isLoading,
+    loaderClass = "",
+    ...props
+}) => {
+    const variantName = styles[`${variant}-btn`]
 
-export const PowerfulButton: ButtonProps = ({ children, className = "", variant = "primary", style, isLoading, ...props }) => {
-    const variantName = variant ? styles[`${variant}-btn`] : ""
-
-    return <button disabled={isLoading !== undefined ? isLoading : false} className={styles["common-btn"] + "  " + variantName + " " + className}
-        {...props} style={style}>
-        {children}
-        {isLoading !== undefined &&
-            (isLoading ?
-                <Spinner
-                    thickness='3px'
-                    speed='0.6s'
-                    size={"md"}
-                    color="currentcolor"
-                    marginLeft={"1"}
-                />
-                : <></>) // <LuCheck size={"20px"} />)
-        }
-    </button>
-}
+    return (
+        <button
+            disabled={isLoading !== undefined ? isLoading : false}
+            className={
+                styles["common-btn"] + " " + variantName + " " + className
+            }
+            {...props}
+            style={style}
+        >
+            {children}
+            {
+                isLoading !== undefined &&
+                    (isLoading ? (
+                        <Spinner
+                            thickness="3px"
+                            speed="0.6s"
+                            size={"md"}
+                            color="currentcolor"
+                            marginLeft={"1"}
+                            className={loaderClass}
+                        />
+                    ) : (
+                        <></>
+                    )) // <LuCheck size={"20px"} />)
+            }
+        </button>
+    );
+};

@@ -265,5 +265,5 @@
 }
 
 .plain-btn {
-    all: unset!important; /* please */
+    all: unset; /* please */
 }
