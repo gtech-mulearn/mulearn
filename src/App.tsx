@@ -417,7 +417,7 @@ function App() {
                             path: "karma-voucher",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN]}
+                                    roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<KarmaVoucher />}
                                 />
                             )

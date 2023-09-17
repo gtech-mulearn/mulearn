@@ -107,7 +107,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     url: "/dashboard/karma-voucher",
                     title: "Karma Voucher",
                     hasView: true,
-                    roles: [roles.ADMIN]
+                    roles: [roles.ADMIN, roles.FELLOW]
                     // icon: <i className="fi fi-sr-note"></i>
                 },
                 {
