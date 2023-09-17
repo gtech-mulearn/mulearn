@@ -27,34 +27,47 @@ const BasicDetails = (props: Props) => {
             <div className={styles.interestGrp}>
                 <div className={styles.top_sec}>
                     <b>Interest Groups</b>
-                    {!id &&
-                        props.userProfile.level.slice(3, 4) >= 4 &&
-                        !editIg && (
+                    <div className={styles.close_and_submit_btn_div}>
+                        {!id &&
+                            props.userProfile.level.slice(3, 4) <= 4 &&
+                            !editIg && (
+                                <p
+                                    onClick={() => setEditIg(true)}
+                                    className={styles.edit_profile_btn}
+                                    tabIndex={0}
+                                >
+                                    <i className="fi fi-rr-pencil"></i>
+                                </p>
+                            )}
+                        {editIg && (
                             <p
-                                onClick={() => setEditIg(true)}
+                                onClick={() => {
+                                    setEditIg(false);
+                                }}
                                 className={styles.edit_profile_btn}
                                 tabIndex={0}
                             >
-                                <i className="fi fi-rr-pencil"></i>
+                                <i className="fi fi-rr-circle-xmark"></i>
                             </p>
                         )}
-                    {editIg && (
-                        <p
-                            onClick={() => {
-                                setEditIg(false);
-                                editIgDetails(
-                                    toast,
-                                    ig_sorted.map((ig: any) => {
-                                        return ig.id;
-                                    })
-                                );
-                            }}
-                            className={styles.edit_profile_btn}
-                            tabIndex={0}
-                        >
-                            <i className="fi fi-rr-circle-xmark"></i> 
-                        </p>
-                    )}
+                        {editIg && (
+                            <p
+                                onClick={() => {
+                                    setEditIg(false);
+                                    editIgDetails(
+                                        toast,
+                                        ig_sorted.map((ig: any) => {
+                                            return ig.id;
+                                        })
+                                    );
+                                }}
+                                className={styles.edit_profile_btn}
+                                tabIndex={0}
+                            >
+                                <i className="fi fi-br-check"></i>
+                            </p>
+                        )}
+                    </div>
                 </div>
                 <div className={styles.igs_container}>
                     {props.userProfile.interest_groups.length != 0 ? (
