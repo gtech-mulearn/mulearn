@@ -1,0 +1,51 @@
+.LClandingPageForm select {
+	width: auto;
+}
+.LClandingPageExplore .selectOptions {
+    display: flex;
+    flex-wrap: wrap;
+    /* padding: 0rem 1rem; */
+    justify-content: space-around;
+
+    gap: 0.5rem;
+    /* margin: 1rem; */
+}
+
+.LClandingPageExplore .selectOptions select {
+    background: #F3F3F4;
+    border-radius: 8px;
+    padding: .75rem 1.5rem;
+    flex:1 0 auto; 
+    font-size: .8rem;
+    font-weight: 600;
+    color: #1D1B20;
+}
+.LClandingPageExplore .selectOptions {
+    justify-content: start;
+}
+
+.LClandingPageExplore .selectOptions select {
+    padding: .5rem 1rem;
+}
+.LClandingPageExplore {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (width<=820px) {
+    .selectOptions{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .LClandingPageForm{
+        width: 100%;
+    }
+
+    .LClandingPageForm select {
+        width: 100%;
+    }
+}

@@ -122,7 +122,7 @@ const ShareProfilePopUp = (props: Props) => {
                                         navigator.clipboard.writeText(
                                             `<img src="${
                                                 import.meta.env
-                                                    .VITE_FRONTEND_URL as string
+                                                    .VITE_BACKEND_URL as string
                                             }/embed/rank/${
                                                 props.userProfile.muid
                                             }" width="${embedSize}" height="${embedSize}"></img>`

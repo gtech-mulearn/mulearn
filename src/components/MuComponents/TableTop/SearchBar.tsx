@@ -5,11 +5,12 @@ import { PowerfulButton } from "../MuButtons/MuButton";
 
 type Props = {
     onSearch: (data: string) => void;
+    placeholder?: string,
+    onClear?: () => void
 };
 
 export const SearchBar = (props: Props) => {
     const [search, setSearch] = useState("");
-
     const onChangeSearch = (event: any) => {
         setSearch(event.target.value);
     };
@@ -21,6 +22,7 @@ export const SearchBar = (props: Props) => {
 
     const clearInput = () => {
         setSearch("");
+        props.onClear?props.onClear():{}
     };
 
     return (
@@ -28,7 +30,7 @@ export const SearchBar = (props: Props) => {
             <form className={styles.form_container} onSubmit={handleSubmit} style={{margin: 0}}>
                 <input
                     type="text"
-                    placeholder="Search"
+                    placeholder={props?.placeholder?props?.placeholder: "Search"}
                     className={styles.searchBar}
                     onChange={onChangeSearch}
                     value={search}

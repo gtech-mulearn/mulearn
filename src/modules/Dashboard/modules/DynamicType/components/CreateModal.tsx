@@ -27,6 +27,15 @@ const CreateModal = (props: Props) => {
             isClosable: true
         });
     };
+    const succHandler = (msg: any) => {
+        toast({
+            title: "Something went wrong",
+            description: msg.toString(),
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
+    };
     return (
         <Formik
             initialValues={{
@@ -46,12 +55,14 @@ const CreateModal = (props: Props) => {
                     if (props.roles)
                         await createRoleType(
                             errHandler,
+                            succHandler,
                             values.type,
                             values.role!
                         );
                     else
                         await createUserType(
                             errHandler,
+                            succHandler,
                             values.type,
                             values.user!
                         );

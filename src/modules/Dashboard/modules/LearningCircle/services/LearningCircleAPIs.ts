@@ -71,11 +71,10 @@ export const getCampusLearningCircles = async (
     setCircleList: UseStateFunc<LcType[]>
 ) => {
     try {
-        const response = await privateGateway.get(
-            dashboardRoutes.createLearningCircle
+        const response = await privateGateway.post(
+            dashboardRoutes.listLearningCircle
         );
         const message: any = response?.data;
-        console.log(message.response);
 
         setCircleList(message.response);
     } catch (err: unknown) {
@@ -329,3 +328,38 @@ export const removeMember = async (
         });
     }
 };
+
+export const searchLearningCircleWithCircleCode =  (
+    setLc: UseStateFunc<LcType[]>,
+    circleCode: string,
+    lc: LcType[]
+)=>{
+    if(circleCode===''){
+        if(lc.length===1){
+            getCampusLearningCircles(setLc)    
+        }
+        toast({
+            title: "Enter circle code",
+            status: "info",
+            duration: 2000,
+            isClosable: true
+        })
+        return
+    }
+    const regex = /[^a-zA-Z0-9]/g;
+    const circleCodeStrippedCapitailize = circleCode.replace(regex, '').toUpperCase();
+
+    privateGateway.post(`${dashboardRoutes.searchLearningCircleWithCircleCode}${circleCodeStrippedCapitailize}/`)
+    .then(res=>res.data.response)
+    .then(data=>setLc(data))
+    .catch(err=>{
+        for(let error of err.response?.data?.message?.general)
+        {toast({
+            description: error,
+            status: "error",
+            duration: 2000,
+            isClosable: true
+        });}
+    })
+}
+

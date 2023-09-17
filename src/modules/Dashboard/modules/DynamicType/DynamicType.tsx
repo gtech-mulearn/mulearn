@@ -20,6 +20,7 @@ import {
     getRoles,
     getTypes
 } from "./apis";
+import EditModal from "./components/EditModal";
 
 function DynamicType() {
     const [data, setData] = useState<any[]>([]);
@@ -27,13 +28,14 @@ function DynamicType() {
     const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(100);
     const [sort, setSort] = useState("");
+    const [search, setSearch] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const firstFetch = useRef(true);
     const toast = useToast();
     const [tab, setTab] = useState<"Role" | "User">("Role");
-
+    const [currRow, setCurrRow] = useState<string>("");
     //Modal
-    const [currModal, setCurrModal] = useState<null | "create">(null);
+    const [currModal, setCurrModal] = useState<null | "create" | "edit">(null);
 
     const [roles, setRoles] = useState([]);
     const [types, setTypes] = useState([]);
@@ -86,7 +88,8 @@ function DynamicType() {
     ];
     const columnOrderUser = [
         { column: "type", Label: "Type", isSortable: false },
-        { column: "user", Label: "User", isSortable: false }
+        { column: "email", Label: "Email", isSortable: false },
+        { column: "muid", Label: "MUID", isSortable: false }
     ];
 
     const errHandler = (err: any) => {
@@ -97,6 +100,16 @@ function DynamicType() {
             duration: 3000,
             isClosable: true
         });
+    };
+
+    const succHandler = (msg: any, add?: Function) => {
+        toast({
+            title: msg,
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
+        if (add) add();
     };
 
     useEffect(() => {
@@ -120,7 +133,7 @@ function DynamicType() {
                 perPage,
                 setIsLoading,
                 setTotalPages,
-                "",
+                search,
                 sort
             );
         if (tab == "User")
@@ -131,10 +144,10 @@ function DynamicType() {
                 perPage,
                 setIsLoading,
                 setTotalPages,
-                "",
+                search,
                 sort
             );
-    }, [currModal, currentPage, perPage, tab]);
+    }, [currModal, currentPage, perPage, tab, sort, search]);
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -148,34 +161,43 @@ function DynamicType() {
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-
-        if (tab == "Role")
-            getDynamicRoles(
-                errHandler,
-                setData,
-                1,
-                perPage,
-                setIsLoading,
-                setTotalPages,
-                "",
-                sort
-            );
-        if (tab == "User")
-            getDynamicUsers(
-                errHandler,
-                setData,
-                1,
-                perPage,
-                setIsLoading,
-                setTotalPages,
-                "",
-                sort
-            );
+        setSearch(search);
     };
 
     const handleDelete = (id: string | undefined) => {
-        if (tab === "Role") deleteRoleType(errHandler, id);
-        if (tab === "User") deleteUserType(errHandler, id);
+        (async () => {
+            if (tab === "Role") {
+                await deleteRoleType(errHandler, succHandler, id);
+                getDynamicRoles(
+                    errHandler,
+                    setData,
+                    1,
+                    perPage,
+                    setIsLoading,
+                    setTotalPages,
+                    search,
+                    sort
+                );
+            }
+
+            if (tab === "User") {
+                await deleteUserType(errHandler, succHandler, id);
+                getDynamicUsers(
+                    errHandler,
+                    setData,
+                    1,
+                    perPage,
+                    setIsLoading,
+                    setTotalPages,
+                    search,
+                    sort
+                );
+            }
+        })();
+    };
+    const handleEdit = (id: any) => {
+        setCurrRow(id);
+        setCurrModal("edit");
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
@@ -199,7 +221,7 @@ function DynamicType() {
         if (tab === newTab) return;
         setTab(newTab);
     };
-
+    console.log(data);
     return (
         <>
             <TableTopTab
@@ -220,6 +242,21 @@ function DynamicType() {
                                   <CreateModal
                                       roles={tab === "Role" ? roles : undefined}
                                       type={types}
+                                      onClose={setCurrModal}
+                                  />
+                              </Modal>
+                          );
+                      if (currModal === "edit")
+                          return (
+                              <Modal
+                                  onClose={setCurrModal}
+                                  icon={icons.tick}
+                                  header="Create Role"
+                                  paragraph="Enter the values for the new role"
+                              >
+                                  <EditModal
+                                      roles={tab === "Role" ? roles : undefined}
+                                      rowId={currRow}
                                       onClose={setCurrModal}
                                   />
                               </Modal>
@@ -252,6 +289,7 @@ function DynamicType() {
                             tab === "Role" ? columnOrderRole : columnOrderUser
                         }
                         id={["id"]}
+                        onEditClick={handleEdit}
                         onDeleteClick={handleDelete}
                         modalDeleteHeading="Delete"
                         modalTypeContent="error"
