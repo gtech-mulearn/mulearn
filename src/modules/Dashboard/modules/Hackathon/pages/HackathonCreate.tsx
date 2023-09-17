@@ -202,7 +202,7 @@ const HackathonCreate = () => {
         (async () => {
             try {
                 if (id) {
-                    await editHackathon(hackathon, formattedFormFields);
+                    await editHackathon(hackathon, formattedFormFields,navigate);
                 } else {
                     setID(
                         await createHackathon(hackathon, formattedFormFields)
