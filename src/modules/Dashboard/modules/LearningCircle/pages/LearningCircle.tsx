@@ -636,7 +636,9 @@ const LearningCircle = (props: Props) => {
                                                         alt="Profile Picture"
                                                     />
                                                     <div>
+                                                        <div className={styles.username}>
                                                         <p>{member.username}</p>
+                                                        </div>
                                                         <span>
                                                             <img
                                                                 src="https://i.ibb.co/Dbhv9rS/karma.png"

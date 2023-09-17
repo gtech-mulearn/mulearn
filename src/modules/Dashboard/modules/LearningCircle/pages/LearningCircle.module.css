@@ -411,7 +411,7 @@
     background-color: var(--White);
     box-shadow: var(--boxShadow);
     border-radius: 1rem;
-    padding: 2rem;
+    padding: 1.5rem;
     margin-top: 1rem;
     min-height: 530px;
     overflow: hidden;
@@ -459,11 +459,13 @@
     justify-content: flex-start;
 }
 .memberNameDiv div{
-    width: 50%;
+    width: 75%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-direction: column;
+    font-size: .8rem;
+    gap: .7rem;
 }
 .memberNameDiv img {
     margin-right: 1rem;
@@ -489,9 +491,9 @@
 
 .MemberName span {
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
     align-items: center;
-    padding: 0.2rem;
+    /*padding: 0.5rem;*/
 }
 .MemberName span img {
     width: 1.3rem;
@@ -518,6 +520,7 @@
     .Members{
         min-height: 630px;
     }
+
 }
 @media (width<820px) {
     .LearningCircleDetailsContent {
@@ -595,7 +598,7 @@
 }
 @media (width<450px) {
     .Members {
-        padding-left: 3rem;
+        padding-left: 1.5rem;
     }
     .MemberName {
         gap: 4rem;
