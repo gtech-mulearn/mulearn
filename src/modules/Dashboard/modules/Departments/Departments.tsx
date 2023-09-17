@@ -10,7 +10,6 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 
 import { deleteDepartment, getDepartments } from "./apis";
 import styles from "./Departments.module.css";
-import Modal from "../CollegeLevels/components/Modal";
 import { modalTypes } from "../../utils/enums";
 import CreateOrUpdateDepartmentModal from "./CreateOrUpdateDepartmentModal";
 
@@ -21,7 +20,7 @@ const Departments = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
-    const [perPage, setPerPage] = useState(5);
+    const [perPage, setPerPage] = useState(10);
     const [sort, setSort] = useState("");
 
     const [choosenDeptId, setChoosenDeptId] = useState<string | null>(null);
@@ -31,15 +30,36 @@ const Departments = () => {
     const columnOrder = [{ column: "title", Label: "Name", isSortable: true }];
 
     useEffect(() => {
+        setCurrentPage(1);
         getDepartments({
             setDepartments: setDepartments,
-            setIsLoading: setIsLoading
+            setIsLoading: setIsLoading,
+            setTotalPages: setTotalPages
         });
     }, []);
 
-    const handleSearch = (search: string) => {};
+    const handleSearch = (search: string) => {
+        setCurrentPage(1);
+        return getDepartments({
+            setDepartments: setDepartments,
+            setIsLoading: setIsLoading,
+            search: search,
+            setTotalPages: setTotalPages,
+            sortBy: sort
+        });
+    };
 
-    const handlePerPageNumber = (selectedValue: number) => {};
+    const handlePerPageNumber = (selectedValue: number) => {
+        setCurrentPage(1);
+        setPerPage(selectedValue);
+        getDepartments({
+            setDepartments: setDepartments,
+            setIsLoading: setIsLoading,
+            perPage: selectedValue,
+            setTotalPages: setTotalPages,
+            sortBy: sort
+        });
+    };
 
     const handleEdit = async (id: string | number | boolean) => {
         setChoosenDeptId(id as string);
@@ -55,12 +75,37 @@ const Departments = () => {
         });
     };
 
-    const handleIconClick = (column: string) => {};
+    const handleSortIconClick = (column: string) => {
+        setCurrentPage(1);
+        const sortBy = sort === column ? `-${column}` : column;
+        setSort(sortBy);
+        getDepartments({
+            setDepartments: setDepartments,
+            setIsLoading: setIsLoading,
+            sortBy: sortBy
+        });
+    };
 
-    const handleNextClick = () => {};
+    const handleNextClick = () => {
+        if (currentPage >= totalPages) return;
+        setCurrentPage(currentPage + 1);
+        getDepartments({
+            setDepartments: setDepartments,
+            setIsLoading: setIsLoading,
+            page: currentPage + 1,
+            sortBy: sort
+        });
+    };
 
     const handlePreviousClick = () => {
-        toast({ title: "Previous" });
+        if (currentPage <= 1) return;
+        setCurrentPage(currentPage - 1);
+        getDepartments({
+            setDepartments: setDepartments,
+            setIsLoading: setIsLoading,
+            page: currentPage - 1,
+            sortBy: sort
+        });
     };
 
     return (
@@ -95,11 +140,11 @@ const Departments = () => {
             </div>
             {departments && (
                 <>
-                    {/* <TableTop
+                    <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
-                        // CSV={dashboardRoutes.getIgList}
-                    /> */}
+                        // CSV={}
+                    />
                     <Table
                         rows={departments}
                         isloading={isLoading}
@@ -115,7 +160,7 @@ const Departments = () => {
                     >
                         <THead
                             columnOrder={columnOrder}
-                            onIconClick={handleIconClick}
+                            onIconClick={handleSortIconClick}
                             action={true}
                         />
                         <div className={styles.tableFooter}>

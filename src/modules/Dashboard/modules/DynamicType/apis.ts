@@ -8,7 +8,7 @@ export const getRoles = async (errHandler: Function) => {
             .data.response;
         return response.map((data: any) => ({
             label: data.title,
-            value: data.title
+            value: data.id
         }));
     } catch (err) {
         errHandler(err);
@@ -60,9 +60,9 @@ export const getDynamicRoles = async (
             for (let j of i.roles) {
                 //storing the data json as id for fetching while deleting
                 data.push({
-                    id: JSON.stringify({ type: i.type, role: j }),
+                    id: j.id,
                     type: i.type,
-                    role: j
+                    role: j.role
                 });
             }
         }
@@ -73,6 +73,59 @@ export const getDynamicRoles = async (
         errHandler(err);
     }
 };
+
+export const createRoleType = async (
+    errHandler: Function,
+    succHandler: Function,
+    type: string,
+    role: string
+) => {
+    try {
+        const response = await privateGateway.post(
+            dashboardRoutes.getDynamicRoles + "create/",
+            {
+                type: type,
+                role: role
+            }
+        );
+        succHandler("Role added");
+    } catch (err) {
+        errHandler((err as any).response.data.message.non_field_errors[0]);
+    }
+};
+
+export const deleteRoleType = async (
+    errHandler: Function,
+    succHandler: Function,
+    id: any
+) => {
+    try {
+        await privateGateway.delete(
+            dashboardRoutes.getDynamicRoles + "delete/" + id
+        );
+        succHandler("Role removed");
+    } catch (err) {
+        errHandler(err);
+    }
+};
+
+export const updateRoleType = async (
+    errHandler: Function,
+    succHandler: Function,
+    id: any,
+    role: string
+) => {
+    try {
+        await privateGateway.patch(
+            dashboardRoutes.getDynamicRoles + "update/" + id + "/",
+            { new_role: role }
+        );
+        succHandler("Role updated");
+    } catch (err) {
+        errHandler(err);
+    }
+};
+
 export const getDynamicUsers = async (
     errHandler: Function,
     setData: UseStateFunc<any>,
@@ -97,12 +150,13 @@ export const getDynamicUsers = async (
         ).data.response;
         const data = [];
         for (let i of response.data) {
-            for (let j of i.roles) {
+            for (let j of i.users) {
                 //storing the data json as id for fetching while deleting
                 data.push({
-                    id: JSON.stringify({ type: i.type, user: j }),
+                    id: j.dynamic_user_id,
                     type: i.type,
-                    user: j
+                    email: j.email,
+                    muid: j.muid
                 });
             }
         }
@@ -114,34 +168,9 @@ export const getDynamicUsers = async (
     }
 };
 
-export const createRoleType = async (
-    errHandler: Function,
-    type: string,
-    role: string
-) => {
-    try {
-        const response = await privateGateway.post(
-            dashboardRoutes.getDynamicRoles + "create/",
-            {
-                type: type,
-                role: role
-            }
-        );
-    } catch (err) {
-        errHandler((err as any).response.data.message.non_field_errors[0]);
-    }
-};
-
-export const deleteRoleType = async (errHandler: Function, data: any) => {
-    try {
-        console.log(JSON.parse(data), "deleted");
-    } catch (err) {
-        errHandler(err);
-    }
-};
-
 export const createUserType = async (
     errHandler: Function,
+    succHandler: Function,
     type: string,
     user: string
 ) => {
@@ -153,14 +182,39 @@ export const createUserType = async (
                 user: user
             }
         );
+        succHandler("User added");
     } catch (err) {
         errHandler((err as any).response.data.message.non_field_errors[0]);
     }
 };
 
-export const deleteUserType = async (errHandler: Function, data: any) => {
+export const deleteUserType = async (
+    errHandler: Function,
+    succHandler: Function,
+    id: any
+) => {
     try {
-        console.log(JSON.parse(data), "deleted");
+        await privateGateway.delete(
+            dashboardRoutes.getDynamicUser + "delete/" + id
+        );
+        succHandler("User removed");
+    } catch (err) {
+        errHandler(err);
+    }
+};
+
+export const updateUserType = async (
+    errHandler: Function,
+    succHandler: Function,
+    id: any,
+    user: string
+) => {
+    try {
+        await privateGateway.patch(
+            dashboardRoutes.getDynamicUser + "update/" + id + "/",
+            { new_user: user }
+        );
+        succHandler("Role updated");
     } catch (err) {
         errHandler(err);
     }

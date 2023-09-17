@@ -22,7 +22,7 @@ export const LearningCircleLandingPage = () => {
     const handleCreate = () => {
         navigate("/dashboard/learning-circle/create-circle");
     };
-
+    
     return (
         <>
             <div className={styles.learningCircleLandingPage}>
@@ -105,7 +105,9 @@ export const LearningCircleLandingPage = () => {
                                                     </p>
                                                     <PowerfulButton
                                                         style={{
-                                                            height: "2rem"
+                                                            height: "2rem",
+                                                            width: "fit-content",
+                                                            padding: "10px"
                                                         }}
                                                         onClick={() => {
                                                             navigate(

@@ -92,8 +92,10 @@ export const dashboardRoutes = {
     getApplicationForm: "/api/v1/hackathon/list-form/",
     getApplicants: "/api/v1/hackathon/list-applicants/",
 
+    searchLearningCircleWithCircleCode: "/api/v1/dashboard/lc/list-all/",
     getCampusLearningCircles: "/api/v1/dashboard/lc/",
     createLearningCircle: "/api/v1/dashboard/lc/create/",
+    listLearningCircle: "/api/v1/dashboard/lc/list-all/",
     joinLearningCircle: "/api/v1/dashboard/lc/join/",
     setLCMeetTime: "/api/v1/dashboard/lc/meet/",
     getCampusIg: "api/v1/dashboard/ig/list/",
@@ -143,19 +145,20 @@ export const organizationRoutes = {
 
 export const ManageLocationsRoutes = {
     getCountryData: "/api/v1/dashboard/location/countries/",
-    patchCountryData: "/api/v1/dashboard/location/countries/${country}/",
-    getStateData: "api/v1/dashboard/location/states/${country}/",
-    patchStateData: "api/v1/dashboard/location/states/${state}/",
-    getZoneData: "api/v1/dashboard/location/zones/${state}/",
-    patchZoneData: "api/v1/dashboard/location/zones/${zone}/",
-    getDistrictData: "api/v1/dashboard/location/districts/${zone}/",
-    patchDistrictData: "api/v1/dashboard/location/districts/${district}/"
+    patchCountryData: "/api/v1/dashboard/location/countries/<str:country_id>/",
+    getStateData: "/api/v1/dashboard/location/states/",
+    patchStateData: "/api/v1/dashboard/location/states/<str:state_id>/",
+    getZoneData: "/api/v1/dashboard/location/zones/",
+    patchZoneData: "/api/v1/dashboard/location/zones/<str:zone_id>/",
+    getDistrictData: "/api/v1/dashboard/location/districts/",
+    patchDistrictData: "/api/v1/dashboard/location/districts/<str:district_id>/"
 } as const;
 
 export const KKEMRoutes = {
     userAuth: "/api/v1/integrations/kkem/authorization/",
     userLogin: "/api/v1/integrations/kkem/login/",
-    getDWMSDetails: "/api/v1/integrations/kkem/user/${jsid}/"
+    getDWMSDetails: "/api/v1/integrations/kkem/user/${param}/",
+    userStatus: "/api/v1/integrations/kkem/user/status/"
 };
 
 export const PublicRoutes = {

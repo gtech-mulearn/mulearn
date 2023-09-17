@@ -69,7 +69,7 @@ const ModalCreateComponent: React.FC<ModalProps> = ({ isOpen, onClose, content, 
                         <Form className={styles.modalContainerItemRow}>
                             <span className={styles.IGCreateDesc}>{content}</span>
                             <FormikTextInput
-                                name={name}
+                                name={name as string}
                                 type={inputType}
                                 placeholder={placeholder}
                             />

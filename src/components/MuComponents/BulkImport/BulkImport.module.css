@@ -1,11 +1,11 @@
 .container {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
 }
 
-.upload_button {
+.uploadButton {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,29 +15,29 @@
     background-color: var(--InputDefaultBackground);
     border: 3.08px dashed rgb(11, 132, 224);
     cursor: pointer;
-  }
-  
-  .upload_button:hover {
+}
+
+.uploadButton:hover {
     background-color: rgba(12, 87, 173, 0.176);
-  }
-  
-  .icon {
+}
+
+.icon {
     font-size: 2.5rem;
     margin-top: 0.5rem;
     color: var(--blue);
-  }
-  
-  .text {
+}
+
+.text {
     margin: 1rem;
-  }
+}
 
 .fileInfo {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .fileInfo span {
-	font-weight: bold;
+    font-weight: bold;
 }
