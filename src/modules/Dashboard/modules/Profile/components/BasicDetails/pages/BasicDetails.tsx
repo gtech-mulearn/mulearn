@@ -29,7 +29,7 @@ const BasicDetails = (props: Props) => {
                     <b>Interest Groups</b>
                     <div className={styles.close_and_submit_btn_div}>
                         {!id &&
-                            props.userProfile.level.slice(3, 4) <= 4 &&
+                            props.userProfile.level.slice(3, 4) >= 4 &&
                             !editIg && (
                                 <p
                                     onClick={() => setEditIg(true)}
@@ -43,6 +43,7 @@ const BasicDetails = (props: Props) => {
                             <p
                                 onClick={() => {
                                     setEditIg(false);
+                                    setIg(props.userProfile.interest_groups);
                                 }}
                                 className={styles.edit_profile_btn}
                                 tabIndex={0}
@@ -95,18 +96,6 @@ const BasicDetails = (props: Props) => {
                                                                 data.name
                                                         )
                                                     );
-                                                    // editIgDetails(
-                                                    //     toast,
-                                                    //     ig
-                                                    //         .filter(
-                                                    //             (ig: any) =>
-                                                    //                 ig.name !=
-                                                    //                 data.name
-                                                    //         )
-                                                    //         .map((ig: any) => {
-                                                    //             return ig.id;
-                                                    //         })
-                                                    // );
                                                 } else {
                                                     toast({
                                                         title: "Error",
