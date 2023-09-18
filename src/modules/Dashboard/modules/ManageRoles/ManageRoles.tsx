@@ -277,7 +277,7 @@ function ManageRoles() {
 
             <div className={styles.createBtnContainer}>
                 <MuButton
-                    className={styles.createBtn}
+                    className={styles.createUserBtn}
                     text={"Users"}
                     icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
                     onClick={handleUsers}

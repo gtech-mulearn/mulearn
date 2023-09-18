@@ -82,9 +82,27 @@
 	color: #000000;
 }
 
-.createBtn {
+.createUserBtn {
 	background: #fff;
 	color: #456FF6;
+	width: 10%;
+	min-width: 100px;
+	padding: 10px 20px;
+	display: flex;
+	border-radius: 10px;
+	border: 1px solid #456FF6;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	margin-top: 1.5rem;
+	font-size: 15px;
+	cursor: pointer;
+	transition: .3s ease-in-out;
+}
+
+.createBtn {
+	color: #fff;
+	background: #456FF6;
 	width: 10%;
 	min-width: 100px;
 	padding: 10px 20px;
