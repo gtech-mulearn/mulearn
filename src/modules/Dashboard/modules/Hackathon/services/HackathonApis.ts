@@ -160,7 +160,7 @@ export function editHackathon(
                 isClosable: true
             });
             if (response?.data?.statusCode == 200) {
-                navigate('/hackathon');
+                navigate("/dashboard/hackathon");
             }
         } catch (err: unknown) {
             if (axios.isAxiosError(err)) {
