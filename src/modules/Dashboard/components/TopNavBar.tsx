@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styles from "./SideNavBar.module.css";
-import { VscBellDot, VscBell } from 'react-icons/vsc'
 import { MdNotifications, MdNotificationAdd } from 'react-icons/md'
-import MulearnBrand from "../assets/MulearnBrand";
 import { useNavigate } from "react-router-dom";
 import dpm from "../assets/images/dpm.webp";
 import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
-import { Popover, PopoverTrigger, Button, PopoverContent, PopoverHeader, PopoverCloseButton, PopoverBody, PopoverArrow, PopoverFooter } from "@chakra-ui/react";
+import { Popover, PopoverTrigger, Button, PopoverContent } from "@chakra-ui/react";
 import { Notification as NotificationProps, getNotifications } from "./api";
 import NotificationTab from "./Notification";
 import { useToast } from "@chakra-ui/react";
+
 const TopNavBar = () => {
     const navigate = useNavigate();
     const [name, setName] = useState("");

@@ -25,8 +25,6 @@ import { FormTabDates } from "../components/FormTabDates";
 import { FormTabDetails } from "../components/FormTabDetails";
 import { FormTabAdvanced } from "../components/FormTabAdvanced";
 import { FormTabApplication } from "../components/FormTabApplication";
-
-import { hackathonSchema } from "../utils";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 

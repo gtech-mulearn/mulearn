@@ -5,10 +5,8 @@ import styles from "./KKEMLanding.module.css";
 import IGAbout from "../components/IGAbout";
 import IGSection from "../components/IGSection";
 import Footer from "../components/Footer";
-
 import igAssets from "../assets/IGS";
 import pastEventsAssets from "../assets/past_events";
-import { useState } from "react";
 
 export default function Landing() {
     const igCardData = [

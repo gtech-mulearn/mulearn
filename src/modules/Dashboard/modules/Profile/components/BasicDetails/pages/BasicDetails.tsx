@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./BasicDetails.module.css";
 import HeatmapComponent from "../../Heatmap/HeatmapComponent";
 import { useToast } from "@chakra-ui/react";
-import { editIgDetails, getAllIg, getIgDetails } from "../services/api";
+import { editIgDetails, getAllIg } from "../services/api";
 import { useParams } from "react-router-dom";
 type Props = {
     userProfile: any;
@@ -78,8 +78,8 @@ const BasicDetails = (props: Props) => {
                                     style={
                                         editIg
                                             ? {
-                                                  transform: "scale(0.955)"
-                                              }
+                                                transform: "scale(0.955)"
+                                            }
                                             : {}
                                     }
                                     className={styles.igs}
@@ -115,11 +115,11 @@ const BasicDetails = (props: Props) => {
                                         {data.karma !== null
                                             ? data.karma > 1000
                                                 ? (
-                                                      data.karma / 1000
-                                                  ).toPrecision(2) + "K"
+                                                    data.karma / 1000
+                                                ).toPrecision(2) + "K"
                                                 : data.karma
-                                                ? data.karma
-                                                : "0"
+                                                    ? data.karma
+                                                    : "0"
                                             : "0"}
                                     </p>
                                 </div>
@@ -149,9 +149,9 @@ const BasicDetails = (props: Props) => {
                                                             (
                                                                 prevState: any
                                                             ) => [
-                                                                ...prevState,
-                                                                data
-                                                            ]
+                                                                    ...prevState,
+                                                                    data
+                                                                ]
                                                         );
                                                 }
                                                 // editIgDetails(
