@@ -8,7 +8,7 @@ import { BsChevronRight } from "react-icons/bs";
 import { getUserLearningCircles } from "../services/LearningCircleAPIs";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
-export const LearningCircleLandingPage = () => {
+const LearningCircleLandingPage = () => {
     const navigate = useNavigate();
     const [userCircleList, setUserCircleList] = useState<LcType[]>();
     const [isLoading, setIsLoading] = useState(true);
@@ -168,3 +168,5 @@ export const LearningCircleLandingPage = () => {
         </>
     );
 };
+
+export default LearningCircleLandingPage;
