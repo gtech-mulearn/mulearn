@@ -3,8 +3,6 @@ import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 
-import { modalStatesType } from "./InterestGroup";
-
 export const getInterestGroups = async (
     setData: UseStateFunc<any>,
     page: number,

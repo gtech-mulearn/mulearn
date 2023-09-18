@@ -10,11 +10,11 @@
     width: 100%;
     height: 100%;
     z-index: -4;
-    background-image: url(/src/components/assests/dust_bg.webp);
+    background-image: url(/src/components/assests/NotFound/DustBg.webp);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    opacity: .4;
+    opacity: 0.4;
 }
 
 .NotFoundMars {
@@ -92,11 +92,11 @@
 .Notfirst,
 .Notsecond,
 .Notthird {
-    color: #A1A1A1;
+    color: #a1a1a1;
     display: flex;
     align-items: center;
     flex-direction: row;
-    gap: .3rem;
+    gap: 0.3rem;
     font-size: 2rem;
     font-weight: 500;
 }
@@ -115,7 +115,7 @@
 
 .Notsecond img {
     position: relative;
-    top: .5rem;
+    top: 0.5rem;
     height: 5rem;
 }
 
@@ -124,21 +124,21 @@
     flex-direction: row;
     rotate: -12deg;
     position: relative;
-    top: .4rem;
+    top: 0.4rem;
     animation: span 2s ease-in-out infinite;
 }
 
 @keyframes span {
     0% {
-        transform: translateY(0%)
+        transform: translateY(0%);
     }
 
     50% {
-        transform: translateY(5%)
+        transform: translateY(5%);
     }
 
     100% {
-        transform: translateY(0%)
+        transform: translateY(0%);
     }
 }
 
@@ -154,18 +154,18 @@
     }
 
     50% {
-        transform: translateY(5%)
+        transform: translateY(5%);
     }
 
     100% {
-        transform: translateY(0%)
+        transform: translateY(0%);
     }
 }
 
 .oh {
     rotate: 7deg;
     position: relative;
-    top: .4rem;
+    top: 0.4rem;
     animation: uh 2s ease-in-out 1s infinite;
 }
 
@@ -175,11 +175,11 @@
     }
 
     50% {
-        transform: translateY(5%)
+        transform: translateY(5%);
     }
 
     100% {
-        transform: translateY(0%)
+        transform: translateY(0%);
     }
 }
 
@@ -200,18 +200,18 @@
     }
 
     50% {
-        transform: translateY(5%)
+        transform: translateY(5%);
     }
 
     100% {
-        transform: translateY(0%)
+        transform: translateY(0%);
     }
 }
 
 .space {
     position: relative;
     rotate: -2deg;
-    animation: space 2s ease-in-out .2s infinite;
+    animation: space 2s ease-in-out 0.2s infinite;
 }
 
 @keyframes space {
@@ -220,11 +220,11 @@
     }
 
     50% {
-        transform: translateY(5%)
+        transform: translateY(5%);
     }
 
     100% {
-        transform: translateY(0%)
+        transform: translateY(0%);
     }
 }
 
@@ -238,11 +238,11 @@
     }
 
     50% {
-        transform: translateY(5%)
+        transform: translateY(5%);
     }
 
     100% {
-        transform: translateY(0%)
+        transform: translateY(0%);
     }
 }
 
@@ -256,16 +256,16 @@
     }
 
     50% {
-        transform: translateY(5%)
+        transform: translateY(5%);
     }
 
     100% {
-        transform: translateY(0%)
+        transform: translateY(0%);
     }
 }
 
 .Notsecond .s {
-    animation: s 2s ease-in-out .7s infinite;
+    animation: s 2s ease-in-out 0.7s infinite;
 }
 
 @keyframes s {
@@ -274,11 +274,11 @@
     }
 
     50% {
-        transform: translateY(5%)
+        transform: translateY(5%);
     }
 
     100% {
-        transform: translateY(0%)
+        transform: translateY(0%);
     }
 }
 
@@ -292,15 +292,15 @@
     }
 
     50% {
-        transform: translateY(5%)
+        transform: translateY(5%);
     }
 
     100% {
-        transform: translateY(0%)
+        transform: translateY(0%);
     }
 }
 
-@media(width<820px) {
+@media (width<820px) {
     .Notbox {
         top: 5rem;
         left: 9rem;
@@ -340,7 +340,7 @@
     }
 }
 
-@media(width<400px) {
+@media (width<400px) {
     .Notbox {
         top: 3rem;
         left: 8rem;
@@ -380,7 +380,7 @@
     }
 }
 
-@media(width<300px) {
+@media (width<300px) {
     .Notbox {
         top: 3rem;
         left: 5rem;

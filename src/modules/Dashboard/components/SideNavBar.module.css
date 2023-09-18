@@ -133,7 +133,7 @@
     width: 100%;
     min-height: 20px;
     display: flex;
-    padding-right: 40px;
+    /* padding-right: 40px; */
     align-items: center;
     background-color: #fff;
     justify-content: space-between;

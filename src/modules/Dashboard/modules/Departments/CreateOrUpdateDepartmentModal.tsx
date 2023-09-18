@@ -1,6 +1,6 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import * as Yup from "yup";
-import { ToastId, useToast, UseToastOptions } from "@chakra-ui/react";
+import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
@@ -9,7 +9,6 @@ import Modal from "../CollegeLevels/components/Modal";
 
 import {
     createDepartment,
-    getDepartmentData,
     getDepartments,
     updateDepartment
 } from "./apis";
@@ -75,9 +74,8 @@ const CreateOrUpdateDepartmentModal = ({
                                 label={`${id ? "New " : ""}Name`}
                                 name="title"
                                 type="text"
-                                placeholder={`Enter ${
-                                    id ? "new " : ""
-                                }department name`}
+                                placeholder={`Enter ${id ? "new " : ""
+                                    }department name`}
                             />
                             <PowerfulButton
                                 children="Submit"

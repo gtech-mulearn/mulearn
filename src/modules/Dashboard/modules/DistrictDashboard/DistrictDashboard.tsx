@@ -4,9 +4,7 @@ import Table from "@/MuLearnComponents/Table/Table";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
-    PieChart,
     BarChart,
     ColumnChart
 } from "../CampusStudentList/Components/Graphs";

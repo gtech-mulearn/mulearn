@@ -1,22 +1,18 @@
 import styles from "../components/SideNavBar.module.css";
-
 import { Outlet } from "react-router-dom";
 import SideNavBar from "../components/SideNavBar";
 import TopNavBar from "../components/TopNavBar";
 import { Suspense, useEffect, useState } from "react";
-import adminButtons from "../utils/userwiseButtonsData/adminButtons";
 // import companyButtons from "../utils/userwiseButtonsData/companyButtons";
 // import userButtons from "../utils/userwiseButtonsData/userButtons";
 import { roles } from "@/MuLearnServices/types";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
+
 //TODO: Remove flaticons and use react-icons or vice-versa
 const DashboardRootLayout = (props: { component?: any }) => {
     const [connected, setConnected] = useState(false);
-    const [campusLead, setCampusLead] = useState(false);
-    const [zonalcampusLead, setZonalCampusLead] = useState(false);
-    const [userType, setUserType] = useState("");
-
+    
     useEffect(() => {
         const userInfo = fetchLocalStorage<UserInfo>("userInfo");
         if (userInfo) {
@@ -106,6 +102,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
                 {
                     url: "/dashboard/karma-voucher",
                     title: "Karma Voucher",
+                    hasView: true,
+                    roles: [roles.ADMIN, roles.FELLOW]
+                    // icon: <i className="fi fi-sr-note"></i>
+                },
+                {
+                    url: "/dashboard/error-log",
+                    title: "Error Log",
                     hasView: true,
                     roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-note"></i>

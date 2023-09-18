@@ -1,5 +1,4 @@
 import {
-    MuButton,
     PowerfulButton
 } from "@/MuLearnComponents/MuButtons/MuButton";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";

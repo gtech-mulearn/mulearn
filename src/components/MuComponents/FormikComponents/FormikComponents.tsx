@@ -8,8 +8,9 @@ import { propNames } from "@chakra-ui/react";
 TODO: Verify the Unused Code/Components in this File
 TODO: Transition the old inputs to the new one("eg.FormikTextAreaWhite")
 */
+
 type InputFormik = TextareaHTMLAttributes<HTMLInputElement> & ClassAttributes<HTMLInputElement> & FieldConfig<HTMLInputElement>
-export const FormikTextInput:FC<InputFormik & {label?:string}> = ({ label, ...props }) => {
+export const FormikTextInput: FC<InputFormik & { label?: string }> = ({ label, ...props }) => {
     // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
     // which we can spread on <input>. We can use field meta to show an error
     // message if the field is invalid and it has been touched (i.e. visited)
@@ -25,7 +26,7 @@ export const FormikTextInput:FC<InputFormik & {label?:string}> = ({ label, ...pr
     );
 };
 
-export const FormikTextInputWithoutLabel = ({...props }: InputFormik) => {
+export const FormikTextInputWithoutLabel = ({ ...props }: InputFormik) => {
     const [field, meta] = useField(props);
     return (
         <>
@@ -103,7 +104,7 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
     name,
     label,
     options,
-    addOnChange = () => {},
+    addOnChange = () => { },
     addStyles,
     ...rest
 }) => {

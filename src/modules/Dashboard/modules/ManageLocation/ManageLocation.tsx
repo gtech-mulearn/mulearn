@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Navigate, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
@@ -12,12 +12,10 @@ import {
     columnsZone,
     columnsDistrict
 } from "./ManageLocationHeaders";
-
 import { getCountryData, deleteCountryData } from "./apis/CountryAPI";
 import { getStateData, deleteStateData } from "./apis/StateAPI";
 import { getZoneData, deleteZoneData } from "./apis/ZoneAPI";
 import { getDistrictData, deleteDistrictData } from "./apis/DistrictAPI";
-
 import LocationPopup from "./LocationPopup";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
@@ -456,9 +454,8 @@ const LocationPath = ({
     zone?: string;
 }) => {
     function locationTextGenerate() {
-        return `${country?.toUpperCase()}${
-            state ? ` /  ${state?.toUpperCase()}` : ""
-        }${zone ? ` / ${zone?.toUpperCase()}` : ""}`;
+        return `${country?.toUpperCase()}${state ? ` /  ${state?.toUpperCase()}` : ""
+            }${zone ? ` / ${zone?.toUpperCase()}` : ""}`;
     }
 
     return (

@@ -7,7 +7,6 @@ import { useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { deleteManageUsers, getManageUsers } from "./apis";
-import { boolean } from "yup";
 
 function ManageRoles() {
     const [data, setData] = useState<any[]>([]);
@@ -64,7 +63,7 @@ function ManageRoles() {
             page: nextPage,
             selectedValue: perPage,
             setIsLoading: setIsLoading,
-            setTotalPages: () => {},
+            setTotalPages: () => { },
             search: "",
             sortID: sort
         });
@@ -78,7 +77,7 @@ function ManageRoles() {
             page: prevPage,
             selectedValue: perPage,
             setIsLoading: setIsLoading,
-            setTotalPages: () => {},
+            setTotalPages: () => { },
             search: "",
             sortID: sort
         });
@@ -175,7 +174,7 @@ function ManageRoles() {
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
                         CSV={dashboardRoutes.getUsersList}
-                        // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
+                    // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
                     />
                     <Table
                         rows={data}

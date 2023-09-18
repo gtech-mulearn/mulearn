@@ -7,7 +7,6 @@ import { Props as cardProps } from "../components/Card";
 import { useSearchParams } from "react-router-dom";
 import { publicGateway } from "@/MuLearnServices/apiGateways";
 import { KKEMRoutes } from "@/MuLearnServices/urls";
-import { m } from "framer-motion";
 
 type Props = {
     cards: cardProps[];
