@@ -1,5 +1,5 @@
 .LClandingPageForm select {
-	width: auto;
+    width: auto;
 }
 .LClandingPageExplore .selectOptions {
     display: flex;
@@ -12,20 +12,24 @@
 }
 
 .LClandingPageExplore .selectOptions select {
-    background: #F3F3F4;
+    background: #f3f3f4;
     border-radius: 8px;
-    padding: .75rem 1.5rem;
-    flex:1 0 auto; 
-    font-size: .8rem;
+    padding: 0.75rem 1.5rem;
+    flex: 1 0 auto;
+    font-size: 0.8rem;
     font-weight: 600;
-    color: #1D1B20;
+    color: #1d1b20;
 }
+
 .LClandingPageExplore .selectOptions {
     justify-content: start;
 }
+.LClandingPageExplore .selectOptions > div {
+    flex: 0;
+}
 
 .LClandingPageExplore .selectOptions select {
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
 }
 .LClandingPageExplore {
     display: flex;
@@ -36,12 +40,12 @@
 }
 
 @media (width<=820px) {
-    .selectOptions{
+    .selectOptions {
         display: flex;
         flex-direction: column;
     }
 
-    .LClandingPageForm{
+    .LClandingPageForm {
         width: 100%;
     }
 
