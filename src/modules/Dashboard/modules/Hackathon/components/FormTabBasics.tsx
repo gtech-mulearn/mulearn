@@ -1,10 +1,7 @@
-import { TabPanel } from "react-tabs";
-
 import {
     FormikTextAreaWhite,
     FormikTextInputWhite
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-
 import styles from "../pages/HackathonCreate.module.css";
 
 export const FormTabBasics = () => {

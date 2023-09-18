@@ -4,9 +4,7 @@ import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import {
-    createInterestGroups,
     deleteInterestGroups,
-    getIGDetails,
     getInterestGroups
 } from "./apis";
 import { useNavigate } from "react-router-dom";

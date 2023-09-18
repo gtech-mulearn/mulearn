@@ -1,20 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./LearningCircle.module.css";
 import imageTop from "../assets/images/LC1.svg";
-import { BsSearch } from "react-icons/bs";
-import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useNavigate } from "react-router-dom";
-import { createStandaloneToast, UseToastOptions } from "@chakra-ui/react";
+import { createStandaloneToast } from "@chakra-ui/react";
 import {
     getCampusLearningCircles,
     joinCircle,
     searchLearningCircleWithCircleCode
 } from "../services/LearningCircleAPIs";
-import { join } from "path";
 import { SearchBar } from "@/MuLearnComponents/TableTop/SearchBar";
-import { ClipLoader } from "react-spinners";
-import { HiDownload } from "react-icons/hi";
-import LearningCircleForm, { Option } from "./LearningCircleFilter";
+import LearningCircleForm from "./LearningCircleFilter";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 const { toast } = createStandaloneToast();
@@ -29,7 +24,7 @@ const FindCircle = () => {
     }, []);
     const handleData = (search: string) => {
         setSearchString(search);
-        searchLearningCircleWithCircleCode(setLc, search, lc,setIsLoading);
+        searchLearningCircleWithCircleCode(setLc, search, lc, setIsLoading);
     }
     const reset = () => {
         getCampusLearningCircles(setLc)
