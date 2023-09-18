@@ -230,10 +230,10 @@ export const approveLcUser = async (
     try {
         const response = await privateGateway.patch(
             dashboardRoutes.getCampusLearningCircles +
-                circleId +
-                "/" +
-                memberId +
-                "/",
+            circleId +
+            "/" +
+            memberId +
+            "/",
             {
                 is_accepted: flag
             }
@@ -301,10 +301,10 @@ export const removeMember = async (
     try {
         const response = await privateGateway.post(
             dashboardRoutes.getCampusLearningCircles +
-                circleId +
-                "/" +
-                memberId +
-                "/"
+            circleId +
+            "/" +
+            memberId +
+            "/"
         );
         toast({
             title: "Success",
@@ -329,14 +329,16 @@ export const removeMember = async (
     }
 };
 
-export const searchLearningCircleWithCircleCode =  (
+export const searchLearningCircleWithCircleCode = (
     setLc: UseStateFunc<LcType[]>,
     circleCode: string,
-    lc: LcType[]
-)=>{
-    if(circleCode===''){
-        if(lc.length===1){
-            getCampusLearningCircles(setLc)    
+    lc: LcType[],
+    setIsLoading: (isLoading: boolean) => void,
+) => {
+    setIsLoading(true);
+    if (circleCode === '') {
+        if (lc.length === 1) {
+            getCampusLearningCircles(setLc)
         }
         toast({
             title: "Enter circle code",
@@ -350,16 +352,21 @@ export const searchLearningCircleWithCircleCode =  (
     const circleCodeStrippedCapitailize = circleCode.replace(regex, '').toUpperCase();
 
     privateGateway.post(`${dashboardRoutes.searchLearningCircleWithCircleCode}${circleCodeStrippedCapitailize}/`)
-    .then(res=>res.data.response)
-    .then(data=>setLc(data))
-    .catch(err=>{
-        for(let error of err.response?.data?.message?.general)
-        {toast({
-            description: error,
-            status: "error",
-            duration: 2000,
-            isClosable: true
-        });}
-    })
+        .then((res) => res.data.response)
+        .then((data) => {
+            setLc(data);
+            setIsLoading(false); // Set isLoading to false
+        })
+        .catch(err => {
+            for (let error of err.response?.data?.message?.general) {
+                toast({
+                    description: error,
+                    status: "error",
+                    duration: 2000,
+                    isClosable: true
+                });
+            }
+            setIsLoading(false); // Set isLoading to false
+        })
 }
 
