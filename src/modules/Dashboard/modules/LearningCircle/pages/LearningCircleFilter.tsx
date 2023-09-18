@@ -39,7 +39,8 @@ const customStyles: any = {
 type Props = {
     setLc: (lc: LcType[]) => void;
     callAllLc: () => void
-    searchString: string | null
+    searchString: string | null,
+    ChangeLoadingState: (data: any) => void; 
 };
 const IndiaId = "f1840070-ec45-4b09-b582-763482137474"
 const KeralaId = "44c63af8-8747-43d1-8402-ba79215d4bed"
@@ -61,7 +62,7 @@ const LearningCircleForm = (props: Props) => {
         if (selectedDistrict) {
             setSelectedDistrict(selectedDistrict);
             fetchCampusOptions(selectedDistrict.value, setCampuses);
-            fetchDistrictLc(props?.setLc, selectedDistrict.value);
+            fetchDistrictLc(props?.setLc, selectedDistrict.value,props?.ChangeLoadingState);
 
             // Reset other options
             setIgOptions(undefined);
@@ -74,13 +75,13 @@ const LearningCircleForm = (props: Props) => {
             setSelectedCampus(selectedCampus);
             setIgOptions(await getInterestGroups());
             setSelectedIg(null);
-            fetchLCFull(props?.setLc, selectedCampus.value, district);
+            fetchLCFull(props?.setLc, selectedCampus.value, district,props?.ChangeLoadingState);
         }
     };
     const handleIgChange = (selectedIg: Option | null) => {
         if (selectedIg) {
             setSelectedIg(selectedIg);
-            fetchInterestGroupLc(props?.setLc, selectedIg.value, campus, district);
+            fetchInterestGroupLc(props?.setLc, selectedIg.value, campus, district,props?.ChangeLoadingState);
         }
     };
     const enableResetBtn = selectedDistrict !== null || selectedCampus !== null || selectedIg !== null || (props?.searchString !== null && props?.searchString !== '')
