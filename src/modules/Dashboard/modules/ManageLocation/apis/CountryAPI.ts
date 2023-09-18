@@ -5,7 +5,7 @@ import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 
 //* WORKING✅
 export const getCountryData = async (
-    setData: UseStateFunc<any>,
+    setData?: UseStateFunc<any>,
     toast?: (options?: UseToastOptions | undefined) => ToastId,
     perPage?: number,
     page?: number,
@@ -14,8 +14,8 @@ export const getCountryData = async (
     sortID?: string
 ) => {
     try {
-        await privateGateway
-            .get(ManageLocationsRoutes.getCountryData, {
+        const data = (
+            await privateGateway.get(ManageLocationsRoutes.getCountryData, {
                 params: {
                     perPage: perPage,
                     pageIndex: page,
@@ -23,12 +23,13 @@ export const getCountryData = async (
                     sortBy: sortID
                 }
             })
-            .then(({ data }) => data.response)
-            .then(({ data, pagination }) => {
-                console.log(data);
-                setData(data);
-                if (setTotalPages) setTotalPages(pagination.totalPages);
-            });
+        ).data.response;
+
+        if (setTotalPages) setTotalPages(data.pagination.totalPages);
+        if (setData) setData(data.data);
+        else {
+            return data.data;
+        }
     } catch (err: any) {
         if (err?.response) {
             const errorMsg = err.response?.data?.message?.general[0] ?? "";
