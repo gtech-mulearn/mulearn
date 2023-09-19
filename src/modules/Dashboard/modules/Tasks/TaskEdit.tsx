@@ -60,7 +60,7 @@ const TaskEdit = (props: Props) => {
                                     }
                                 })}
 
-                                <FormikSelect
+                                {/* <FormikSelect
                                     label={"Events"}
                                     name={"Event"}
                                     disabled={false}
@@ -85,7 +85,7 @@ const TaskEdit = (props: Props) => {
                                     >
                                         {"Aswin Ashok"}
                                     </option>
-                                </FormikSelect>
+                                </FormikSelect> */}
                                 <div className={styles.btn_container}>
                                     <MuButton
                                         text={"Decline"}
