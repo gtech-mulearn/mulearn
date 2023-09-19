@@ -2,15 +2,15 @@ import React from "react";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import '../DistrictDashboard/Organizations.css'
-import '../DistrictDashboard/DistricDashboard.scss'
+import "../DistrictDashboard/Organizations.css";
+import "../DistrictDashboard/DistricDashboard.scss";
 interface TableTopTabProps {
     active: string;
     onTabClick: (tab: string) => void;
 }
 
 const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
-    const tabletopTab = ["Colleges", "Companies", "Communities"];
+    const tabletopTab = ["College", "Company", "Community"];
 
     const navigate = useNavigate();
 
@@ -46,7 +46,7 @@ const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
                 text={"Create"}
                 style={{
                     backgroundColor: "#456FF6",
-                    color: "#fff"    
+                    color: "#fff"
                 }}
                 onClick={handleCreate}
                 icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
