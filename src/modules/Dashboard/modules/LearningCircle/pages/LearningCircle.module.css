@@ -939,11 +939,6 @@
     font-weight: 600;
 }
 
-.FindCircleContent img {
-    width: 40%;
-    padding: 1rem;
-}
-
 .FindCircleContentTop .desc .ig_search {
     display: flex;
     justify-content: space-between;
@@ -1080,11 +1075,6 @@
     font-weight: 600;
 }
 
-.FindCircleContent img {
-    width: 40%;
-    padding: 1rem;
-}
-
 .FindCircleContentTop .desc .ig_search {
     display: flex;
     justify-content: space-between;
@@ -1208,7 +1198,7 @@
 .loader {
     display: flex;
     width: 100%;
-    height: 55vh;
+    height: 100%;
     align-items: center;
     justify-content: center;
 }
