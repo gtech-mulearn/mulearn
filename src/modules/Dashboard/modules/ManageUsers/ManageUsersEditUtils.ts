@@ -241,22 +241,22 @@ const inputs = (
             ? arrayIntersection(
                   user.organizations,
                   college.map(item => item.value)
-              )[0] || "null"
-            : "null",
+              )[0] || null
+            : null,
         community: user?.organizations
             ? arrayIntersection(
                   user.organizations,
                   community.map(item => item.id)
               )
-            : ["null"],
+            : [null],
         company: user?.organizations
             ? arrayIntersection(
                   user.organizations,
                   company.map(item => item.id)
-              )[0] || "null"
-            : "null",
-        department: user?.department || "null",
-        graduation_year: user?.graduation_year || "null",
+              )[0] || null
+            : null,
+        department: user?.department || null,
+        graduation_year: user?.graduation_year || null,
         country: user?.country || "",
         state: user?.state || "",
         district: user?.district || "",
