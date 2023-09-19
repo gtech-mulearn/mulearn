@@ -49,11 +49,10 @@ const MaveliPortfolio = () => {
                   <p className={styles.sv_image}>⚒️</p>
                   <div className={styles.svp_heading}>Build</div>
                   <div className={styles.svp_text}>
-                    To participate in <span>BuildForTeam</span>, all you have to
-                    do is <span>Build </span>
-                    an awesome website for your favourite World Cup team to
-                    express your love and support. Priority will be given for
-                    responsive websites.
+                    To participate in <span>Mavelikk Oru Portfolio</span>, all
+                    you have to do is <span>Build </span>
+                    an awesome website/ui design for maveli. You can use any web
+                    development framework or UI/UX design tool of your choice.
                   </div>
                 </div>
 
@@ -61,10 +60,11 @@ const MaveliPortfolio = () => {
                   <p className={styles.sv_image}>🖥</p>
                   <div className={styles.svp_heading}>Learn</div>
                   <div className={styles.svp_text}>
-                    By building a website for your favourite football team, you
-                    are not just showcasing your love for your team but also
-                    your Web development skills. See this as an opportunity to
-                    learn, practice and showcase your skills in a fun way!
+                    By building a website for the Maveli Portfolio Competition,
+                    you are not just showcasing your love for the character of
+                    Mahabali, but also your web development and UI design
+                    skills. This is a great opportunity to learn, practice, and
+                    showcase your skills in a fun way!
                   </div>
                 </div>
 
@@ -72,9 +72,9 @@ const MaveliPortfolio = () => {
                   <p className={styles.sv_image}>🏆</p>
                   <div className={styles.svp_heading}>Earn</div>
                   <div className={styles.svp_text}>
-                    Once you’re done crafting the website, fill the and stand a
-                    chance to win your favorite team's jersey. 💥 Selected
-                    participants also stand a chance of winning cool goodies.
+                    Once you've crafted your website or UI design for the Maveli
+                    Portfolio Competition, submit your entry and stand a chance
+                    to earn some karma points.
                   </div>
                 </div>
               </div>
@@ -190,7 +190,8 @@ const MaveliPortfolio = () => {
                   optimized for both desktop and mobile platforms.
                 </li>
                 <li>
-                  • 3 winners will be selected from each(web development and ui/ux)
+                  • 3 winners will be selected from each(web development and
+                  ui/ux)
                 </li>
               </ul>
             </p>
@@ -221,13 +222,10 @@ const MaveliPortfolio = () => {
                 <li>• A minimum of 3 scrolling pages is required.</li>
                 <li>• Responsiveness of the website and ui is optional.</li>
                 <li>
-                  • You should use HTML and CSS; you can use libraries other
-                  than Bootstrap.
+                  • The website and ui should be created by the participant
+                  himself.
                 </li>
-                <li>
-                  • The website must be hosted, and you can use
-                  GitHub for hosting.
-                </li>
+                
               </ul>
             </p>
           </div>
