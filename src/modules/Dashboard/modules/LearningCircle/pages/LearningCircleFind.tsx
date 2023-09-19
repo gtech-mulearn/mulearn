@@ -20,14 +20,14 @@ const FindCircle = () => {
     const navigate = useNavigate();
     const [searchString, setSearchString] = useState<string | null>(null);
     useEffect(() => {
-        getCampusLearningCircles(setLc);
+        getCampusLearningCircles(setLc,setIsLoading);
     }, []);
     const handleData = (search: string) => {
         setSearchString(search);
         searchLearningCircleWithCircleCode(setLc, search, lc, setIsLoading);
     }
     const reset = () => {
-        getCampusLearningCircles(setLc)
+        getCampusLearningCircles(setLc,setIsLoading)
         if (lc.length === 1) toast({
             description: "Loading learning circles",
             status: "info",
@@ -36,9 +36,14 @@ const FindCircle = () => {
         })
         setSearchString(null)
     }
+
+    const ChangeLoadingState = (data:any) => {
+        setIsLoading(data);
+    }
+
     return (
         <>
-            {!isLoading ? <div className={styles.FindCircleContent}>
+            <div className={styles.FindCircleContent}>
                 <div className={styles.FindCircleContentTop}>
                     <div className={styles.desc}>
                         <h3>Find your learning circle</h3>
@@ -50,12 +55,14 @@ const FindCircle = () => {
                                 placeholder="Enter circle code"
                                 onSearch={handleData}
                                 onClear={reset}
-                            />
+                                />
                         </div>
                     </div>
                     <img src={imageTop} alt="image" />
                 </div>
-                <LearningCircleForm setLc={setLc} callAllLc={reset} searchString={searchString} />
+                <LearningCircleForm ChangeLoadingState={ChangeLoadingState} setLc={setLc} callAllLc={reset} searchString={searchString} />
+                {!isLoading ? 
+               <>
                 {lc ? (
                     <div className={styles.container}>
                         {lc?.map(
@@ -96,11 +103,13 @@ const FindCircle = () => {
                         <h1>Found no learning circles </h1>
                     </div>
                 )}
-            </div> :
+               </>
+            :
                 <div className={styles.loader}>
                     <MuLoader />
                 </div>
             }
+            </div> 
         </>
     );
 };
