@@ -20,14 +20,14 @@ const FindCircle = () => {
     const navigate = useNavigate();
     const [searchString, setSearchString] = useState<string | null>(null);
     useEffect(() => {
-        getCampusLearningCircles(setLc);
+        getCampusLearningCircles(setLc, setIsLoading);
     }, []);
     const handleData = (search: string) => {
         setSearchString(search);
         searchLearningCircleWithCircleCode(setLc, search, lc, setIsLoading);
     }
     const reset = () => {
-        getCampusLearningCircles(setLc)
+        getCampusLearningCircles(setLc, setIsLoading)
         if (lc.length === 1) toast({
             description: "Loading learning circles",
             status: "info",
@@ -36,9 +36,14 @@ const FindCircle = () => {
         })
         setSearchString(null)
     }
+
+    const ChangeLoadingState = (data: any) => {
+        setIsLoading(data);
+    }
+
     return (
         <>
-            {!isLoading ? <div className={styles.FindCircleContent}>
+            <div className={styles.FindCircleContent}>
                 <div className={styles.FindCircleContentTop}>
                     <div className={styles.desc}>
                         <h3>Find your learning circle</h3>
@@ -55,52 +60,57 @@ const FindCircle = () => {
                     </div>
                     <img src={imageTop} alt="image" />
                 </div>
-                <LearningCircleForm setLc={setLc} callAllLc={reset} searchString={searchString} />
-                {lc ? (
-                    <div className={styles.container}>
-                        {lc?.map(
-                            circle =>
-                                circle && (
+                <LearningCircleForm ChangeLoadingState={ChangeLoadingState} setLc={setLc} callAllLc={reset} searchString={searchString} />
 
-                                    <div className={styles.one} key={circle.id}>
-                                        <h2>{circle?.name}</h2>
-                                        <p>
-                                            Team Lead: {circle?.created_by}
-                                        </p>
-                                        <p>{circle?.ig}</p>
-                                        <p>
-                                            {circle?.member_count} Members
-                                        </p>
-                                        <div className={styles.join}>
-                                            <button
-                                                onClick={() => {
-                                                    joinCircle(circle.id);
+                {!isLoading ?
+                    <>
+                        {lc ? (
+                            <div className={styles.container}>
+                                {lc?.map(
+                                    circle =>
+                                        circle && (
 
-                                                    setTimeout(() => {
-                                                        navigate(
-                                                            `/dashboard/learning-circle`
-                                                        );
-                                                    }, 1500);
-                                                }}
-                                            >
-                                                Join
-                                            </button>
-                                        </div>
-                                    </div>
+                                            <div className={styles.one} key={circle.id}>
+                                                <h2>{circle?.name}</h2>
+                                                <p>
+                                                    Team Lead: {circle?.created_by}
+                                                </p>
+                                                <p>{circle?.ig}</p>
+                                                <p>
+                                                    {circle?.member_count} Members
+                                                </p>
+                                                <div className={styles.join}>
+                                                    <button
+                                                        onClick={() => {
+                                                            joinCircle(circle.id);
 
-                                )
+                                                            setTimeout(() => {
+                                                                navigate(
+                                                                    `/dashboard/learning-circle`
+                                                                );
+                                                            }, 1500);
+                                                        }}
+                                                    >
+                                                        Join
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        )
+                                )}
+                            </div>
+                        ) : (
+                            <div className={styles.error_container}>
+                                <h1>Found no learning circles </h1>
+                            </div>
                         )}
+                    </>
+                    :
+                    <div style={{ height: "100%" }}>
+                        <MuLoader />
                     </div>
-                ) : (
-                    <div className={styles.error_container}>
-                        <h1>Found no learning circles </h1>
-                    </div>
-                )}
-            </div> :
-                <div className={styles.loader}>
-                    <MuLoader />
-                </div>
-            }
+                }
+            </div>
         </>
     );
 };

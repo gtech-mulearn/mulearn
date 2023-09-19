@@ -77,18 +77,22 @@ export const getInterestGroups = async () => {
 export const fetchLCFull = async (
     setData: UseStateFunc<any>,
     campus: string,
-    district: string
+    district: string,
+    ChangeLoadingState: (data: any) => void
 ) => {
+    ChangeLoadingState(true);
     try {
         const response = await privateGateway.post(
-            dashboardRoutes.listLearningCircle ,
+            dashboardRoutes.listLearningCircle,
             {
                 org_id: campus,
                 district_id: district
             }
         );
         setData(response.data.response);
+        ChangeLoadingState(false);
     } catch (err: unknown) {
+        ChangeLoadingState(false);
         const error = err as AxiosError;
         if (error?.response) {
             throw error;
@@ -100,11 +104,13 @@ export const fetchInterestGroupLc = async (
     setData: UseStateFunc<any>,
     ig: string | null,
     campus: string,
-    district: string
+    district: string,
+    ChangeLoadingState: (data: any) => void
 ) => {
+    ChangeLoadingState(true);
     try {
         const response = await privateGateway.post(
-            dashboardRoutes.listLearningCircle ,
+            dashboardRoutes.listLearningCircle,
             {
                 ig_id: ig,
                 org_id: campus,
@@ -112,26 +118,32 @@ export const fetchInterestGroupLc = async (
             }
         );
         setData(response.data.response);
+        ChangeLoadingState(false);
     } catch (err: unknown) {
+        ChangeLoadingState(false);
         const error = err as AxiosError;
         if (error?.response) {
             throw error;
         }
     }
 };
-export const fetchDistrictLc = async ( 
+export const fetchDistrictLc = async (
     setLc: UseStateFunc<any>,
-    district: string
+    district: string,
+    ChangeLoadingState: (data: any) => void
 ) => {
+    ChangeLoadingState(true)
     try {
         const response = await privateGateway.post(
-            dashboardRoutes.listLearningCircle ,
+            dashboardRoutes.listLearningCircle,
             {
                 district_id: district
             }
         );
         setLc(response.data.response);
+        ChangeLoadingState(false)
     } catch (err: unknown) {
+        ChangeLoadingState(false)
         const error = err as AxiosError;
         if (error?.response) {
             throw error;

@@ -68,8 +68,10 @@ export const updateLcNote = async (id: string | undefined, note: string) => {
 };
 
 export const getCampusLearningCircles = async (
-    setCircleList: UseStateFunc<LcType[]>
+    setCircleList: UseStateFunc<LcType[]>,
+    setIsLoading: (isLoading: boolean) => void,
 ) => {
+    setIsLoading(true);
     try {
         const response = await privateGateway.post(
             dashboardRoutes.listLearningCircle
@@ -77,7 +79,9 @@ export const getCampusLearningCircles = async (
         const message: any = response?.data;
 
         setCircleList(message.response);
+        setIsLoading(false);
     } catch (err: unknown) {
+        setIsLoading(false);
         const error = err as AxiosError;
         if (error?.response) {
             throw error;
@@ -338,7 +342,7 @@ export const searchLearningCircleWithCircleCode = (
     setIsLoading(true);
     if (circleCode === '') {
         if (lc.length === 1) {
-            getCampusLearningCircles(setLc)
+            getCampusLearningCircles(setLc,setIsLoading)
         }
         toast({
             title: "Enter circle code",
