@@ -135,7 +135,7 @@ const ManageUsersEdit = (props: Props) => {
                             values.company,
                             ...values.community
                         ].filter(item => item !== null) as string[];
-                        
+
                         editManageUsers(
                             id,
                             values.first_name,
@@ -154,7 +154,7 @@ const ManageUsersEdit = (props: Props) => {
                 >
                     <Form>
                         <div className={usrStyles.container}>
-                            {/* {data?.role ? : }  */}
+
                             <div className={usrStyles.TextInputContainer}>
                                 {formikProps.inputs?.map((input, index) => (
                                     <FormikTextInput {...input} key={index} />
