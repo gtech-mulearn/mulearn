@@ -50,7 +50,7 @@ const KarmaVoucherBulkImport = () => {
                     variant="secondary"
                     onClick={() =>
                         window.open(
-                            "https://docs.google.com/spreadsheets/d/1Mn4IcK1kV5JnlUXu74eWEVxG2fD3QvAc/export?format=xlsx&id=1Mn4IcK1kV5JnlUXu74eWEVxG2fD3QvAc"
+                            "https://docs.google.com/spreadsheets/d/1eldAqkpzfzCsNeK40bviPtaZfppttstb/export?format=xlsx&id=1eldAqkpzfzCsNeK40bviPtaZfppttstb"
                         )
                     }
                 >
