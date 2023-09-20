@@ -12,7 +12,7 @@ import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
 //TODO: Remove flaticons and use react-icons or vice-versa
 const DashboardRootLayout = (props: { component?: any }) => {
     const [connected, setConnected] = useState(false);
-    
+
     useEffect(() => {
         const userInfo = fetchLocalStorage<UserInfo>("userInfo");
         if (userInfo) {
@@ -53,7 +53,11 @@ const DashboardRootLayout = (props: { component?: any }) => {
             url: "/dashboard/learning-circle",
             title: "Learning Circle",
             hasView: true,
-            roles: [roles.STUDENT],
+            roles: [roles.STUDENT,
+            roles.ADMIN,
+            roles.FELLOW,
+            roles.ENABLER,
+            roles.MENTOR],
             icon: <i className="fi fi-sr-books"></i>
         },
         {
