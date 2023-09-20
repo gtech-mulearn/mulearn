@@ -536,7 +536,9 @@ function App() {
                                     roles={[
                                         roles.STUDENT,
                                         roles.ADMIN,
-                                        roles.FELLOW
+                                        roles.FELLOW,
+                                        roles.ENABLER,
+                                        roles.MENTOR
                                     ]}
                                     toastTitle="Not Accessible"
                                     toastDescription="Learning circle is accessible only to students."
@@ -551,7 +553,9 @@ function App() {
                                     roles={[
                                         roles.STUDENT,
                                         roles.ADMIN,
-                                        roles.FELLOW
+                                        roles.FELLOW,
+                                        roles.ENABLER,
+                                        roles.MENTOR
                                     ]}
                                     children={<LearningCircle />}
                                     toastTitle="Not Accessible"
@@ -572,7 +576,9 @@ function App() {
                                     roles={[
                                         roles.STUDENT,
                                         roles.ADMIN,
-                                        roles.FELLOW
+                                        roles.FELLOW,
+                                        roles.ENABLER,
+                                        roles.MENTOR
                                     ]}
                                     toastTitle="Not Accessible"
                                     toastDescription="Learning circle is accessible only to students."
@@ -587,7 +593,9 @@ function App() {
                                     roles={[
                                         roles.STUDENT,
                                         roles.ADMIN,
-                                        roles.FELLOW
+                                        roles.FELLOW,
+                                        roles.ENABLER,
+                                        roles.MENTOR
                                     ]}
                                     toastTitle="Not Accessible"
                                     toastDescription="Learning circle is accessible only to students."

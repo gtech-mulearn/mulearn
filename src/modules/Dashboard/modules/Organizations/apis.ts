@@ -32,15 +32,18 @@ export const getOrganizations = async (
         };
 
         const data = (
-            await privateGateway.get(organizationRoutes.getOrganizationsAll, {
-                params: {
-                    perPage: selectedValue,
-                    pageIndex: page,
-                    search: search,
-                    sortBy: sortID,
-                    orgType: activeTab
+            await privateGateway.get(
+                organizationRoutes.getOrganizationsAll + `${activeTab}/`,
+                {
+                    params: {
+                        perPage: selectedValue,
+                        pageIndex: page,
+                        search: search,
+                        sortBy: sortID,
+                        orgType: activeTab
+                    }
                 }
-            })
+            )
         ).data.response;
 
         setIsLoading(false);
