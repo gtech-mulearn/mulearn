@@ -8,7 +8,9 @@ export const onboardingRoutes = {
     areaOfInterestList: "/api/v1/register/area-of-interest/list/",
     communityList: "/api/v1/register/community/list/",
     register: "/api/v1/register/",
-    emailVerification: "/api/v1/register/email-verification/"
+    emailVerification: "/api/v1/register/email-verification/",
+    // New Onboarding Routes
+    createAccount: "/api/v1/register/new/"
 } as const;
 
 export const authRoutes = {
