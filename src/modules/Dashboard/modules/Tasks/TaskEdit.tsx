@@ -22,7 +22,7 @@ const TaskEdit = (props: Props) => {
             ) : (
                 <div className={styles.external_container}>
                     <div className={styles.container}>
-                        <h1 className={styles.text}>IG Edit Page</h1>
+                        <h1 className={styles.text}>Task Edit Page</h1>
                         <Formik
                             enableReinitialize={true}
                             initialValues={initialValues}
@@ -59,6 +59,33 @@ const TaskEdit = (props: Props) => {
                                         );
                                     }
                                 })}
+
+                                {/* <FormikSelect
+                                    label={"Events"}
+                                    name={"Event"}
+                                    disabled={false}
+                                >
+                                    <option
+                                        value={""}
+                                    >
+                                        {"Shaheen hyder"}
+                                    </option>
+                                    <option
+                                        value={""}
+                                    >
+                                        {"Aswin Ashok"}
+                                    </option>
+                                    <option
+                                        value={""}
+                                    >
+                                        {"Shaheen hyder"}
+                                    </option>
+                                    <option
+                                        value={""}
+                                    >
+                                        {"Aswin Ashok"}
+                                    </option>
+                                </FormikSelect> */}
                                 <div className={styles.btn_container}>
                                     <MuButton
                                         text={"Decline"}
