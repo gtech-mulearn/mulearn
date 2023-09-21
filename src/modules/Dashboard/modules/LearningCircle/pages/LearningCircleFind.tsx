@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { createStandaloneToast } from "@chakra-ui/react";
 import {
     getCampusLearningCircles,
+    getUserOrg,
     joinCircle,
     searchLearningCircleWithCircleCode
 } from "../services/LearningCircleAPIs";
@@ -19,9 +20,12 @@ const FindCircle = () => {
     const [lc, setLc] = useState<LcType[]>([]);
     const navigate = useNavigate();
     const [searchString, setSearchString] = useState<string | null>(null);
+    const [org, setOrg] = useState<string | null>(null);
     useEffect(() => {
-        getCampusLearningCircles(setLc, setIsLoading);
-    }, []);
+        getUserOrg(setOrg);
+        getCampusLearningCircles(setLc, setIsLoading, org);
+
+    }, [org]);
     const handleData = (search: string) => {
         setSearchString(search);
         searchLearningCircleWithCircleCode(setLc, search, lc, setIsLoading);
@@ -76,6 +80,7 @@ const FindCircle = () => {
                                                     Team Lead: {circle?.created_by}
                                                 </p>
                                                 <p>{circle?.ig}</p>
+                                                <p>{circle?.org}</p>
                                                 <p>
                                                     {circle?.member_count} Members
                                                 </p>
