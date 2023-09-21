@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './Notification.css';
 import { clearAllNotifications, clearNotification, getNotifications, Notification as NotificationProps, requestApproval } from './api';
 import { IoIosClose } from 'react-icons/io';
 import { MdRefresh } from 'react-icons/md';
 import dpm from '../assets/images/dpm.webp';
 import { filterNotification, getTimeAgo, isRequest } from './utils';
-import { list, useToast } from '@chakra-ui/react'
+import { useToast } from '@chakra-ui/react'
 
 interface NotificationComponentProps {
     notificationList: NotificationProps[];
@@ -14,13 +14,13 @@ interface NotificationComponentProps {
 
 
 const NotificationMessage = ({ profile, title, created_at, description, clearElementFromView, id, url, updateList, created_by }: NotificationMessageProps) => {
-    const props={toast:useToast(),updateList:updateList,clearElementFromView:clearElementFromView}
+    const props = { toast: useToast(), updateList: updateList, clearElementFromView: clearElementFromView }
     return (
         <div className="notiMessageTab">
             <img src={profile || dpm} alt="" />
             <div className="notiMessageProfile">
                 <b>{title}</b>
-                <span className="blueDot" onClick={() => clearNotification(id, props) }>
+                <span className="blueDot" onClick={() => clearNotification(id, props)}>
                     <IoIosClose size={'18px'} />
                 </span>
                 <div className="day">
@@ -31,7 +31,7 @@ const NotificationMessage = ({ profile, title, created_at, description, clearEle
                 {isRequest(title) &&
                     <div className="btns">
                         <button onClick={() => {
-                            requestApproval(id, url, created_by, false,props);
+                            requestApproval(id, url, created_by, false, props);
                         }}>Decline</button>
                         &nbsp;
                         <button className="accept" onClick={() => {
@@ -50,19 +50,19 @@ const NotificationTab = ({ notificationList, setNotificationList }: Notification
     const props = { toast: toast };
     const links = [
         { title: 'View All', count: notificationList.length },
-        { title: 'Requests', count: notificationList.filter((item: NotificationProps) => isRequest(item.title)).length },
+        // { title: 'Requests', count: notificationList.filter((item: NotificationProps) => isRequest(item.title)).length },
         // { title: 'Followers', count: 0 },
     ];
 
     const filteredNotification = filterNotification(active, notificationList);
 
-    const clearElementFromView = ( id: string) => setNotificationList(notificationList=> notificationList.filter(item=> item.id !== id))
+    const clearElementFromView = (id: string) => setNotificationList(notificationList => notificationList.filter(item => item.id !== id))
 
     const clearAll = () => {
-        if (notificationList.length > 0){
+        if (notificationList.length > 0) {
             setNotificationList([])
-            clearAllNotifications({toast:toast,setNotificationList:setNotificationList})
-        }else{
+            clearAllNotifications({ toast: toast, setNotificationList: setNotificationList })
+        } else {
             toast({
                 title: "Error",
                 description: "No notifications to clear",

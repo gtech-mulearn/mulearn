@@ -32,7 +32,11 @@
                 width: 16px;
             }
         }
-    }
+        .close_and_submit_btn_div {
+            display: flex;
+            gap: 10px;
+        }
+    } 
 
     .igs_container {
         display: flex;

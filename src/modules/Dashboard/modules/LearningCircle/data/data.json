@@ -1,0 +1,78 @@
+[
+    {
+        "igcode": "PM",
+        "resourcelink": "https://learn.mulearn.org/innovationentre/pm"
+    },
+    {
+        "igcode": "CAD",
+        "resourcelink": "https://learn.mulearn.org/clouddevops"
+    },
+    {
+        "igcode": "NLC",
+        "resourcelink": ""
+    },
+    {
+        "igcode": "ENT",
+        "resourcelink": "https://learn.mulearn.org/innovationentre/innovent"
+    },
+    {
+        "igcode": "ARVR",
+        "resourcelink": "https://learn.mulearn.org/arvrxr/arvr"
+    },
+    {
+        "igcode": "CYB",
+        "resourcelink": "https://learn.mulearn.org/cybersec"
+    },
+    {
+        "igcode": "UIUX",
+        "resourcelink": "https://learn.mulearn.org/uiuxcreative"
+    },
+    {
+        "igcode": "MOB",
+        "resourcelink": "https://learn.mulearn.org/webmobile/android"
+    },
+    {
+        "igcode": "AI",
+        "resourcelink": "https://learn.mulearn.org/aimlanalytics/ai"
+    },
+    {
+        "igcode": "MARK",
+        "resourcelink": ""
+    },
+    {
+        "igcode": "AGM",
+        "resourcelink": ""
+    },
+    {
+        "igcode": "CC",
+        "resourcelink": ""
+    },
+    {
+        "igcode": "BLOC",
+        "resourcelink": "https://learn.mulearn.org/blockchain"
+    },
+    {
+        "igcode": "WEB",
+        "resourcelink": "https://learn.mulearn.org/webmobile/web"
+    },
+    {
+        "igcode": "SL",
+        "resourcelink": ""
+    },
+    {
+        "igcode": "CIV",
+        "resourcelink": "https://learn.mulearn.org/noncircuit/civil"
+    },
+    {
+        "igcode": "IOT",
+        "resourcelink": "https://learn.mulearn.org/iotrf/iot"
+    },
+    {
+        "igcode": "CRD",
+        "resourcelink": "https://learn.mulearn.org/uiuxcreative"
+    },
+    {
+        "igcode": "QA",
+        "resourcelink": "https://learn.mulearn.org/webmobile/qa"
+    }
+]

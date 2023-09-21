@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from "react";
 import styles from "./MuButtons.module.css";
 import { ClipLoader } from "react-spinners";
-import { Spinner } from '@chakra-ui/react'
+import { Spinner } from "@chakra-ui/react";
 import { LuCheck } from "react-icons/lu";
 
 /**
@@ -19,7 +19,7 @@ export const MuButton = (props: {
     onSubmit?: any;
     isLoading?: boolean; // show loading spinner if neccessary.
     disabled?: boolean; //disable the button if needed
-    buttonUrl?: string; 
+    buttonUrl?: string; // for styling purposes
     submit?: boolean; // for styling purposes
     isMinWidth?: boolean;
 }) => {
@@ -56,6 +56,27 @@ export const MuButton = (props: {
                 />
             )}
         </button>
+    );
+};
+
+export const SingleButton = (props: {
+    text: string; // text of main button
+    icon?: JSX.Element; // main button icon
+    style?: React.CSSProperties; // main button style if wanted
+    onClick?: React.MouseEventHandler; // onclick event if wanted
+    link?: string;
+}) => {
+    return (
+        <div className={styles.createBtnContainer} style={props.style}>
+            <a href={props.link} target="_blank">
+                <MuButton
+                    className={styles.createBtn}
+                    text={props.text}
+                    icon={props.icon}
+                    onClick={props.onClick}
+                />
+            </a>
+        </div>
     );
 };
 
@@ -145,27 +166,6 @@ export const DropDownButtons = (props: {
     );
 };
 
-export const SingleButton = (props: {
-    text: string; // text of main button
-    icon?: JSX.Element; // main button icon
-    style?: React.CSSProperties; // main button style if wanted
-    onClick?: React.MouseEventHandler; // onclick event if wanted
-    link?: string;
-}) => {
-    return (
-        <div className={styles.createBtnContainer} style={props.style}>
-            <a href={props.link} target="_blank">
-                <MuButton
-                    className={styles.createBtn}
-                    text={props.text}
-                    icon={props.icon}
-                    onClick={props.onClick}
-                />
-            </a>
-        </div>
-    );
-};
-
 type Props = {
     text: string;
     type?: any;
@@ -184,14 +184,15 @@ type Props = {
 };
 
 type Variants =
-    | "primary"
+      "primary"
     | "secondary"
     | "ghost"
     | "outline"
     | "destructive"
     | "success"
     | "link"
-    | "draft";
+    | "draft"
+    | "plain";
 
 type ButtonProps = ({
     children,
@@ -199,15 +200,15 @@ type ButtonProps = ({
     variant,
     style,
     isLoading,
-	buttonUrl,
+    loaderClass,
     ...props
 }: {
     children: ReactNode;
     className?: string;
     variant?: Variants;
-    style?: React.CSSProperties;
     isLoading?: boolean;
-	buttonUrl?: string;
+    loaderClass?: string;
+    style?: React.CSSProperties;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element;
 
 export const PowerfulButton: ButtonProps = ({
@@ -216,14 +217,16 @@ export const PowerfulButton: ButtonProps = ({
     variant = "primary",
     style,
     isLoading,
+    loaderClass = "",
     ...props
 }) => {
-    const variantName = variant ? styles[`${variant}-btn`] : "";
+    const variantName = styles[`${variant}-btn`]
 
     return (
         <button
+            disabled={isLoading !== undefined ? isLoading : false}
             className={
-                styles["common-btn"] + "  " + variantName + " " + className
+                styles["common-btn"] + " " + variantName + " " + className
             }
             {...props}
             style={style}
@@ -238,6 +241,7 @@ export const PowerfulButton: ButtonProps = ({
                             size={"md"}
                             color="currentcolor"
                             marginLeft={"1"}
+                            className={loaderClass}
                         />
                     ) : (
                         <></>
@@ -245,4 +249,4 @@ export const PowerfulButton: ButtonProps = ({
             }
         </button>
     );
-}
+};

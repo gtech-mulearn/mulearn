@@ -1,21 +1,17 @@
 import styles from "../components/SideNavBar.module.css";
-
 import { Outlet } from "react-router-dom";
 import SideNavBar from "../components/SideNavBar";
 import TopNavBar from "../components/TopNavBar";
 import { Suspense, useEffect, useState } from "react";
-import adminButtons from "../utils/userwiseButtonsData/adminButtons";
 // import companyButtons from "../utils/userwiseButtonsData/companyButtons";
 // import userButtons from "../utils/userwiseButtonsData/userButtons";
 import { roles } from "@/MuLearnServices/types";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
+
 //TODO: Remove flaticons and use react-icons or vice-versa
 const DashboardRootLayout = (props: { component?: any }) => {
     const [connected, setConnected] = useState(false);
-    const [campusLead, setCampusLead] = useState(false);
-    const [zonalcampusLead, setZonalCampusLead] = useState(false);
-    const [userType, setUserType] = useState("");
 
     useEffect(() => {
         const userInfo = fetchLocalStorage<UserInfo>("userInfo");
@@ -57,8 +53,19 @@ const DashboardRootLayout = (props: { component?: any }) => {
             url: "/dashboard/learning-circle",
             title: "Learning Circle",
             hasView: true,
-            roles: [roles.STUDENT],
+            roles: [roles.STUDENT,
+            roles.ADMIN,
+            roles.FELLOW,
+            roles.ENABLER,
+            roles.MENTOR],
             icon: <i className="fi fi-sr-books"></i>
+        },
+        {
+            url: "/dashboard/refer",
+            title: "Referrals",
+            hasView: true,
+            roles: [roles.STUDENT],
+            icon: <i className="fi fi-sr-building"></i>
         },
         {
             url: "",
@@ -81,18 +88,12 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-building"></i>
                 },
-                {
-                    url: "/dashboard/refer",
-                    title: "Referral Dashboard",
-                    hasView: true,
-                    roles: [roles.ADMIN]
-                    // icon: <i className="fi fi-sr-building"></i>
-                },
+
                 {
                     url: "/dashboard/college-levels",
                     title: "College Levels",
                     hasView: true,
-                    roles: [roles.ADMIN]
+                    roles: [roles.ADMIN, roles.FELLOW]
                     // icon: <i className="fi fi-sr-building"></i>
                 },
                 {
@@ -105,6 +106,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
                 {
                     url: "/dashboard/karma-voucher",
                     title: "Karma Voucher",
+                    hasView: true,
+                    roles: [roles.ADMIN, roles.FELLOW]
+                    // icon: <i className="fi fi-sr-note"></i>
+                },
+                {
+                    url: "/dashboard/error-log",
+                    title: "Error Log",
                     hasView: true,
                     roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-note"></i>
@@ -126,13 +134,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
                             url: "/dashboard/user-role-verification",
                             title: "User Role Verification",
                             hasView: true,
-                            roles: [roles.ADMIN]
+                            roles: [roles.ADMIN, roles.FELLOW]
                         }
                     ]
                 },
                 {
-                    url: "/dashboard/dynamic-roles",
-                    title: "Dynamic Roles",
+                    url: "/dashboard/dynamic-type",
+                    title: "Dynamic Type",
                     hasView: true,
                     roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-users-gear"></i>
@@ -179,13 +187,6 @@ const DashboardRootLayout = (props: { component?: any }) => {
             title: "District Dashbaord",
             hasView: true,
             roles: [roles.DISTRICT_CAMPUS_LEAD],
-            icon: <i className="fi fi-sr-map-marker"></i>
-        },
-        {
-            url: "/dashboard/refer",
-            title: "Refer",
-            hasView: false,
-            roles: [roles.STUDENT],
             icon: <i className="fi fi-sr-map-marker"></i>
         }
     ];

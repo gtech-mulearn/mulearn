@@ -5,8 +5,9 @@ import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 
 //*WORKING✅
 export const getZoneData = async (
-    state: string,
-    setData: UseStateFunc<any>,
+    setData?: UseStateFunc<any>,
+    state?: string,
+
     perPage?: number,
     page?: number,
     setTotalPages?: UseStateFunc<any>,
@@ -14,20 +15,26 @@ export const getZoneData = async (
     sortID?: string
 ) => {
     try {
-        await privateGateway
-            .get(ManageLocationsRoutes.getZoneData.replace("${state}", state), {
-                params: {
-                    perPage: perPage,
-                    pageIndex: page,
-                    search: search,
-                    sortBy: sortID
+        const data = (
+            await privateGateway.get(
+                ManageLocationsRoutes.getZoneData.replace(
+                    "${state}/",
+                    state ? state + "/" : ""
+                ),
+                {
+                    params: {
+                        perPage: perPage,
+                        pageIndex: page,
+                        search: search,
+                        sortBy: sortID
+                    }
                 }
-            })
-            .then(({ data }) => data.response)
-            .then(({ data, pagination }) => {
-                setData(data);
-                if (setTotalPages) setTotalPages(pagination.totalPages);
-            });
+            )
+        ).data.response;
+        console.log(data.data);
+        if (setTotalPages) setTotalPages(data.pagination.totalPages);
+        if (setData) setData(data.data);
+        else return data.data;
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

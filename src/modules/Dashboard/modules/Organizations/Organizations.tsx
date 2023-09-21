@@ -16,7 +16,7 @@ import TableTopTab from "./TableTopTab";
 import { organizationRoutes } from "@/MuLearnServices/urls";
 
 function Organizations() {
-    const ccc = ["Colleges", "Companies", "Communities"] as const;
+    const ccc = ["College", "Company", "Community"] as const;
     type CCC = (typeof ccc)[number];
 
     const [data, setData] = useState<any[]>([]);
@@ -24,10 +24,10 @@ function Organizations() {
     const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(20);
     const [columns, setColumns] = useState(columnsCollege);
-    const [activeTab, setActiveTab] = useState<CCC>("Colleges");
+    const [activeTab, setActiveTab] = useState<CCC>("College");
     const [sort, setSort] = useState("");
     const [popupStatus, setPopupStatus] = useState(false);
-    const [activeTabName, setActiveTabName] = useState("college");
+    const [activeTabName, setActiveTabName] = useState("College");
     const [isLoading, setIsLoading] = useState(false);
     const [isCreate, setIsCreate] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
@@ -37,7 +37,7 @@ function Organizations() {
     const toast = useToast();
 
     useEffect(() => {
-        if (firstFetch.current) {
+        if (firstFetch.current || true) {
             getOrganizations(
                 activeTab,
                 setData,
@@ -57,7 +57,7 @@ function Organizations() {
             setActiveTab(storedActiveTab as CCC);
             handleTabClick(storedActiveTab as CCC);
         }
-    }, []);
+    }, [currentPage]);
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -121,16 +121,16 @@ function Organizations() {
     const handleTabClick = (tab: CCC) => {
         if (ccc.some(c => c === tab)) {
             switch (tab) {
-                case "Colleges":
+                case "College":
                     setActiveTabName("college");
                     setColumns(columnsCollege);
                     break;
-                case "Companies":
-                    setActiveTabName("company");
+                case "Company":
+                    setActiveTabName("Company");
                     setColumns(columnsCompanies);
                     break;
-                case "Communities":
-                    setActiveTabName("community");
+                case "Community":
+                    setActiveTabName("Community");
                     setColumns(columnsCommunities);
                     break;
             }
@@ -198,7 +198,6 @@ function Organizations() {
             handleTabClick(activeTab);
         }, 1000);
     };
-
     return (
         <>
             <TableTopTab

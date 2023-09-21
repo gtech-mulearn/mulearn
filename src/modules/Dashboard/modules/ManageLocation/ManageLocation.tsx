@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Navigate, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
@@ -12,12 +12,10 @@ import {
     columnsZone,
     columnsDistrict
 } from "./ManageLocationHeaders";
-
 import { getCountryData, deleteCountryData } from "./apis/CountryAPI";
 import { getStateData, deleteStateData } from "./apis/StateAPI";
 import { getZoneData, deleteZoneData } from "./apis/ZoneAPI";
 import { getDistrictData, deleteDistrictData } from "./apis/DistrictAPI";
-
 import LocationPopup from "./LocationPopup";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
@@ -51,6 +49,7 @@ const ManageLocation = () => {
     const toast = useToast();
 
     useEffect(() => {
+        console.log(location);
         if (location.state) {
             setActiveTab(location.state.activeItem);
             setPopupStatus(false);
@@ -66,18 +65,28 @@ const ManageLocation = () => {
     }, [popupStatus]);
 
     function loadTableData() {
+        console.log("enter load");
         setLoading(true);
         if (activeTab === "Country") {
             setPopupStatus(false);
-            getCountryData(
-                setData,
-                toast,
-                perPage,
-                currentPage,
-                setTotalPages,
-                search,
-                sort
-            ).finally(() => setLoading(false));
+            (async () => {
+                const res = await getCountryData(
+                    undefined,
+                    toast,
+                    perPage,
+                    currentPage,
+                    setTotalPages,
+                    search,
+                    sort
+                );
+                setData(
+                    res.map((country: any) => ({
+                        name: country.label,
+                        id: country.value
+                    }))
+                );
+                setLoading(false);
+            })();
             setPopupFields({
                 countryShow: true,
                 stateShow: false,
@@ -85,74 +94,111 @@ const ManageLocation = () => {
             });
             setColumns(columnsCountry);
         } else if (activeTab === "State") {
-            setPopupStatus(true);
-            setPopupFields(prev => ({
-                ...prev,
-                stateShow: false,
-                zoneShow: false
-            }));
+            // setPopupStatus(true);
+            // setPopupFields(prev => ({
+            //     ...prev,
+            //     stateShow: false,
+            //     zoneShow: false
+            // }));
+            getLocationData();
             setColumns(columnsState);
         } else if (activeTab === "Zone") {
-            setPopupStatus(true);
-            setPopupFields(prev => ({
-                ...prev,
-                stateShow: true,
-                zoneShow: false
-            }));
+            // setPopupStatus(true);
+            // setPopupFields(prev => ({
+            //     ...prev,
+            //     stateShow: true,
+            //     zoneShow: false
+            // }));
+            getLocationData();
             setColumns(columnsZone);
         } else if (activeTab === "District") {
-            setPopupStatus(true);
-            setPopupFields(prev => ({
-                ...prev,
-                stateShow: true,
-                zoneShow: true
-            }));
+            // setPopupStatus(true);
+            // setPopupFields(prev => ({
+            //     ...prev,
+            //     stateShow: true,
+            //     zoneShow: true
+            // }));
+            getLocationData();
             setColumns(columnsDistrict);
         }
     }
 
     function getLocationData() {
+        console.log("enter getld");
         if (activeTab === "Country") {
-            getCountryData(
-                setData,
-                toast,
-                perPage,
-                currentPage,
-                setTotalPages,
-                search,
-                sort
-            );
+            (async () => {
+                const res = await getCountryData(
+                    undefined,
+                    toast,
+                    perPage,
+                    currentPage,
+                    setTotalPages,
+                    search,
+                    sort
+                );
+                setData(
+                    res.map((country: any) => ({
+                        name: country.label,
+                        id: country.value
+                    }))
+                );
+            })();
         } else if (activeTab === "State") {
             getStateData(
+                undefined,
                 selectedCountry,
-                setData,
                 toast,
                 perPage,
                 currentPage,
                 setTotalPages,
                 search,
                 sort
-            );
+            ).then(res => {
+                setData(
+                    res.map((data: any) => ({
+                        name: data.label,
+                        id: data.value
+                    }))
+                );
+                setLoading(false);
+            });
         } else if (activeTab === "Zone") {
             getZoneData(
+                undefined,
                 selectedState,
-                setData,
                 perPage,
                 currentPage,
                 setTotalPages,
                 search,
                 sort
-            );
+            ).then(res => {
+                console.log("asd", res);
+                setData(
+                    res.map((data: any) => ({
+                        name: data.label,
+                        id: data.value
+                    }))
+                );
+                setLoading(false);
+            });
         } else if (activeTab === "District") {
             getDistrictData(
+                undefined,
                 selectedZone,
-                setData,
                 perPage,
                 currentPage,
                 setTotalPages,
                 search,
                 sort
-            );
+            ).then(res => {
+                setData(
+                    res.map((data: any) => ({
+                        name: data.label,
+                        id: data.value
+                    }))
+                );
+                setLoading(false);
+            });
         }
     }
 
@@ -194,7 +240,6 @@ const ManageLocation = () => {
     };
 
     function handleEdit(id: string | number | boolean): void {
-        console.log(id);
         navigate("edit/country", {
             state: {
                 activeItem: activeTab,
@@ -223,6 +268,7 @@ const ManageLocation = () => {
 
     function handleTabClick(tab: string) {
         setActiveTab(tab);
+        setCurrentPage(1);
     }
 
     useEffect(() => {
@@ -408,9 +454,8 @@ const LocationPath = ({
     zone?: string;
 }) => {
     function locationTextGenerate() {
-        return `${country?.toUpperCase()}${
-            state ? ` /  ${state?.toUpperCase()}` : ""
-        }${zone ? ` / ${zone?.toUpperCase()}` : ""}`;
+        return `${country?.toUpperCase()}${state ? ` /  ${state?.toUpperCase()}` : ""
+            }${zone ? ` / ${zone?.toUpperCase()}` : ""}`;
     }
 
     return (

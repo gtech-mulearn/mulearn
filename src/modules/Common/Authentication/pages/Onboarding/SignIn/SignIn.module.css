@@ -16,6 +16,12 @@
     margin-top: 2rem;
     position: relative;
 
+    span {
+        color: red;
+        font-size: small;
+        margin-left: 15px;
+    }
+
 }
 .inputBox input{
     width: 100%;
@@ -28,6 +34,7 @@
 }
 
 .forgot{
+    margin-top: 1rem;
     font-size: small;
     display: flex;
     flex-direction: row;
@@ -62,22 +69,21 @@
 
 }
 .google{
+    color: #000;
     border: 2px #d9d9db solid;
-    display: flex;
-    justify-content: center;
-    gap: .3rem;
-    font-weight: 600;
-    align-items: center;
-
-
-
+    padding: 1.2rem;
+    font-size: small;
 }
 
-.noAccount{
+.noAccount {
     margin-top: 2rem;
-    font-size: smaller;
     display: flex;
     justify-content: center;
+    
+    button {
+        font-size: smaller;
+        color: #000;
+    }
 }
 .googleIcon{
     width: 1.5rem;

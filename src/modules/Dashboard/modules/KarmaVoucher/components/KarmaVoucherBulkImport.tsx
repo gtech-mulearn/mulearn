@@ -1,8 +1,7 @@
 import React, { useState, useMemo } from "react";
-
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import BulkImport from "@/MuLearnComponents/BulkImport/BulkImport";
-import { SingleButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { BiArrowBack, BiDownload } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
@@ -38,25 +37,26 @@ const KarmaVoucherBulkImport = () => {
                     alignItems: "center"
                 }}
             >
-                <SingleButton
-                    text={"Go Back"}
-                    icon={<BiArrowBack />}
-                    style={{
-                        display: "flex",
-                        justifyContent: "start",
-                        width: "100%",
-                        alignItems: "center"
-                    }}
+                <PowerfulButton
+                    variant="secondary"
                     onClick={() => {
                         navigate("/dashboard/karma-voucher");
                     }}
-                />
-                <SingleButton
-                    text={"Download Template"}
-                    icon={<BiDownload />}
-                    link="
-                    https://docs.google.com/spreadsheets/d/1Mn4IcK1kV5JnlUXu74eWEVxG2fD3QvAc/export?format=xlsx&id=1Mn4IcK1kV5JnlUXu74eWEVxG2fD3QvAc"
-                />
+                >
+                    <BiArrowBack />
+                    Go Back
+                </PowerfulButton>
+                <PowerfulButton
+                    variant="secondary"
+                    onClick={() =>
+                        window.open(
+                            "https://docs.google.com/spreadsheets/d/1Mn4IcK1kV5JnlUXu74eWEVxG2fD3QvAc/export?format=xlsx&id=1Mn4IcK1kV5JnlUXu74eWEVxG2fD3QvAc"
+                        )
+                    }
+                >
+                    <BiDownload />
+                    Download Template
+                </PowerfulButton>
             </div>
             <div>
                 <BulkImport
@@ -107,16 +107,18 @@ const KarmaVoucherBulkImport = () => {
                                 gap: "1rem"
                             }}
                         >
-                            <SingleButton
-                                text="Download Success data"
+                            <PowerfulButton
                                 onClick={memoizedSuccessDownload}
-                                style={{ width: "initial" }}
-                            />
-                            <SingleButton
-                                text="Download Failed data"
+                                variant="secondary"
+                            >
+                                Download Success data
+                            </PowerfulButton>
+                            <PowerfulButton
                                 onClick={memoizedFailureDownload}
-                                style={{ width: "initial" }}
-                            />
+                                variant="secondary"
+                            >
+                                Download Failed data
+                            </PowerfulButton>
                         </div>
                     </>
                 )}

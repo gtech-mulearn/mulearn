@@ -11,7 +11,6 @@ import {
     HackathonApplication
 } from "./HackathonInterfaces";
 import { formatErrorMessage, transformData } from "./HackathonUtils";
-
 const { toast } = createStandaloneToast();
 
 export const getHackathons = async (setData: UseStateFunc<HackList[]>) => {
@@ -114,14 +113,15 @@ export function createHackathon(
 
 export function editHackathon(
     hackathonData: HackList,
-    formFields: any
+    formFields: any,
+    navigate: NavigateFunction,
 ): Promise<string> {
     return new Promise(async (resolve, reject) => {
-		if(hackathonData.tagline === ""){
-			hackathonData.tagline = null;
-		}
+        if (hackathonData.tagline === "") {
+            hackathonData.tagline = null;
+        }
         try {
-            (await privateGateway.put(
+            const response = (await privateGateway.put(
                 dashboardRoutes.editHackathon + hackathonData.id + "/",
                 {
                     title: hackathonData.title,
@@ -149,9 +149,19 @@ export function editHackathon(
                         "Content-Type": "multipart/form-data"
                     }
                 }
-            )) as APIResponse<{}, { general: string[] }>;
-
+            ))
+            const message: String = response?.data.message.general[0];
             resolve(hackathonData.id!);
+            toast({
+                title: message,
+                description: "",
+                status: "success",
+                duration: 3000,
+                isClosable: true
+            });
+            if (response?.data?.statusCode == 200) {
+                navigate("/dashboard/hackathon");
+            }
         } catch (err: unknown) {
             if (axios.isAxiosError(err)) {
                 reject(err.message);
@@ -178,7 +188,7 @@ export const getAllDistricts = (setDistrict: UseStateFunc<Option[]>) => {
                     }))
             );
         })
-        .catch(error => {});
+        .catch(error => { });
 };
 
 export const getAllInstitutions = (
@@ -194,7 +204,7 @@ export const getAllInstitutions = (
                 }))
             );
         })
-        .catch(error => {});
+        .catch(error => { });
 };
 
 export const deleteHackathon = async (id: string) => {
@@ -249,25 +259,25 @@ export const publishHackathon = async (id: string, status: string, toast: (optio
     let a = status === "Draft" ? "Published" : "Draft";
 
     try {
-            const response = await privateGateway.put(
-                dashboardRoutes.publishHackathon + id + "/",
-                { status: a }
-            );
-            const data: any = response?.data;
-        } catch (err: unknown) {
-            const error:any = err as AxiosError;
-			let msg =
-                error?.response?.data?.message.non_field_errors[0] ||
-                "Make sure all fields are filled";
-			toast({
-				title: "Error",
-				description: formatErrorMessage(msg),
-				status: "error",
-				duration: 5000,
-				isClosable: true
-			})
-        }
-}  
+        const response = await privateGateway.put(
+            dashboardRoutes.publishHackathon + id + "/",
+            { status: a }
+        );
+        const data: any = response?.data;
+    } catch (err: unknown) {
+        const error: any = err as AxiosError;
+        let msg =
+            error?.response?.data?.message.non_field_errors[0] ||
+            "Make sure all fields are filled";
+        toast({
+            title: "Error",
+            description: formatErrorMessage(msg),
+            status: "error",
+            duration: 5000,
+            isClosable: true
+        })
+    }
+}
 export const getApplicationForm = async (
     setData: UseStateFunc<HackathonApplication[]>,
     id: string | undefined
