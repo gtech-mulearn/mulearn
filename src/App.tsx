@@ -13,18 +13,20 @@ import ResetPassword from "./modules/Common/Authentication/pages/ResetPassword";
 import PrivateRoutes from "./components/PrivateRoutes";
 import DashboardRootLayout from "./modules/Dashboard/layouts/DashboardRootLayout";
 import NotFound from "./components/NotFound";
-import Profile from "./modules/Dashboard/modules/Profile/pages/Profile";
+
+
+const Profile = lazy(
+    () => import("./modules/Dashboard/modules/Profile/pages/Profile")
+);
 const KarmaVoucher = lazy(
     () => import("./modules/Dashboard/modules/KarmaVoucher/KarmaVoucher")
 );
-
 const KarmaVoucherBulkImport = lazy(
     () =>
         import(
             "./modules/Dashboard/modules/KarmaVoucher/components/KarmaVoucherBulkImport"
         )
 );
-
 const Tasks = lazy(() =>
     import("./modules/Dashboard/modules/Tasks/Tasks").then(module => ({
         default: module.Tasks
@@ -40,9 +42,6 @@ const DeleteOrganizations = lazy(
 const ManageUsersCreate = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersCreate")
 );
-const ManageUsersDelete = lazy(
-    () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersDelete")
-);
 const ManageUsersEdit = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersEdit")
 );
@@ -56,12 +55,6 @@ const UserRoleVerification = lazy(
     () =>
         import(
             "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerification"
-        )
-);
-const UserRoleVerificationDelete = lazy(
-    () =>
-        import(
-            "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationDelete"
         )
 );
 const UserRoleVerificationEdit = lazy(
@@ -95,7 +88,6 @@ const KKEMLanding = lazy(
     () => import("./modules/Public/KKEM/modules/KKEMLanding")
 );
 const KKEMAuth = lazy(() => import("./modules/Public/KKEM/modules/KKEMAuth"));
-
 const ManageLocation = lazy(
     () => import("./modules/Dashboard/modules/ManageLocation/ManageLocation")
 );
@@ -110,7 +102,6 @@ const HackathonOrganizers = lazy(() =>
         "./modules/Dashboard/modules/Hackathon/pages/HackathonOrganizers"
     ).then(module => ({ default: module.HackathonOrganizers }))
 );
-
 const Organizations = lazy(
     () => import("./modules/Dashboard/modules/Organizations/Organizations")
 );
@@ -124,7 +115,6 @@ const InterestGroupCreate = lazy(
     () =>
         import("./modules/Dashboard/modules/InterestGroup/InterestGroupCreate")
 );
-
 const HackathonDetails = lazy(
     () => import("./modules/Dashboard/modules/Hackathon/pages/HackathonDetails")
 );
@@ -143,23 +133,29 @@ const HackathonRegistration = lazy(
             "./modules/Dashboard/modules/Hackathon/pages/HackathonRegistration"
         )
 );
-
 const HackathonParticipants = lazy(
     () =>
         import(
             "./modules/Dashboard/modules/Hackathon/pages/HackathonParticipants"
         )
 );
-
 const CollegeLevels = lazy(
     () => import("./modules/Dashboard/modules/CollegeLevels/CollegeLevels")
 );
+
+const Refer = lazy(() => import("./modules/Dashboard/modules/Refer/Refer"));
+const LearningCircle = lazy(() => import("./modules/Dashboard/modules/LearningCircle/pages/LearningCircle"));
+const LearningCircleCreate = lazy(() => import("./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate"));
+const FindCircle = lazy(() => import("./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind"));
+const Departments = lazy(() => import("./modules/Dashboard/modules/Departments/Departments"));
+const LearningCircleLandingPage = lazy(() => import("./modules/Dashboard/modules/LearningCircle/pages/LearningCircleLandingPage"));
+
 
 import { roles } from "./services/types";
 import SecureAuthRoutes from "./services/authCheck";
 
 import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
-import Refer from "./modules/Dashboard/modules/Refer/Refer";
+
 import LandingPage from "./modules/Public/LearningCircles/pages/LandingPage";
 import ProfileV2 from "./modules/Dashboard/modules/ProfileV2/pages/Profile";
 import AccountCreation from "./modules/Common/Authentication/pages/Onboarding/AccountCreation/AccountCreation";
@@ -167,11 +163,7 @@ import Rolepage from "./modules/Common/Authentication/pages/Onboarding/RolePage/
 import CollegePage from "./modules/Common/Authentication/pages/Onboarding/CollegePage/CollegePage";
 import CompanyPage from "./modules/Common/Authentication/pages/Onboarding/CompanyPage/CompanyPage";
 import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/SignIn";
-import { LearningCircleLandingPage } from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleLandingPage";
-import LearningCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle";
-import LearningCircleCreate from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate";
-import FindCircle from "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind";
-import Departments from "./modules/Dashboard/modules/Departments/Departments";
+
 import KKEMEventTemplate from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventTemplate";
 import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
 
@@ -313,10 +305,6 @@ function App() {
                             element: <ManageUsersCreate />
                         },
                         {
-                            path: "manage-users/delete/:id",
-                            element: <ManageUsersDelete />
-                        },
-                        {
                             path: "manage-users/edit/:id",
                             element: <ManageUsersEdit />
                         },
@@ -349,16 +337,17 @@ function App() {
                             )
                         },
                         {
-                            path: "user-role-verification/delete/:id",
-                            element: <UserRoleVerificationDelete />
-                        },
-                        {
                             path: "user-role-verification/edit/:id",
                             element: <UserRoleVerificationEdit />
                         },
                         {
                             path: "manage-departments",
-                            element: <Departments />
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    children={<Departments />}
+                                />
+                            )
                         },
                         {
                             path: "zonal-dashboard",
@@ -429,7 +418,7 @@ function App() {
                             path: "karma-voucher",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN]}
+                                    roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<KarmaVoucher />}
                                 />
                             )
@@ -547,7 +536,9 @@ function App() {
                                     roles={[
                                         roles.STUDENT,
                                         roles.ADMIN,
-                                        roles.FELLOW
+                                        roles.FELLOW,
+                                        roles.ENABLER,
+                                        roles.MENTOR
                                     ]}
                                     toastTitle="Not Accessible"
                                     toastDescription="Learning circle is accessible only to students."
@@ -562,7 +553,9 @@ function App() {
                                     roles={[
                                         roles.STUDENT,
                                         roles.ADMIN,
-                                        roles.FELLOW
+                                        roles.FELLOW,
+                                        roles.ENABLER,
+                                        roles.MENTOR
                                     ]}
                                     children={<LearningCircle />}
                                     toastTitle="Not Accessible"
@@ -583,7 +576,9 @@ function App() {
                                     roles={[
                                         roles.STUDENT,
                                         roles.ADMIN,
-                                        roles.FELLOW
+                                        roles.FELLOW,
+                                        roles.ENABLER,
+                                        roles.MENTOR
                                     ]}
                                     toastTitle="Not Accessible"
                                     toastDescription="Learning circle is accessible only to students."
@@ -598,7 +593,9 @@ function App() {
                                     roles={[
                                         roles.STUDENT,
                                         roles.ADMIN,
-                                        roles.FELLOW
+                                        roles.FELLOW,
+                                        roles.ENABLER,
+                                        roles.MENTOR
                                     ]}
                                     toastTitle="Not Accessible"
                                     toastDescription="Learning circle is accessible only to students."

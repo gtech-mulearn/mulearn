@@ -1,7 +1,8 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
-import { dashboardRoutes, organizationRoutes } from "@/MuLearnServices/urls";
+import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
+import { NavigateFunction } from "react-router-dom";
 export const getManageUsers = async ({
     setData,
     page,
@@ -79,6 +80,8 @@ export const createManageUsers = async (
 };
 
 export const editManageUsers = async (
+    toast: (options?: UseToastOptions | undefined) => ToastId,
+    navigate: NavigateFunction,
     id?: string,
     first_name?: string,
     last_name?: string,
@@ -88,7 +91,7 @@ export const editManageUsers = async (
     department?: string,
     graduation_year?: string,
     role?: string[],
-    interest_groups?: string[]
+    interest_groups?: string[],
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -105,20 +108,42 @@ export const editManageUsers = async (
                 interest_groups: interest_groups
             }
         );
+        navigate('/dashboard/manage-users')
         //console.log(first_name, last_name, email);
         const message: any = response?.data;
+        console.log(message)
         //console.log(message);
-        // toast({
-        //     title: "User created",
-        //     status: "success",
-        //     duration: 3000,
-        //     isClosable: true
-        // });
+        toast({
+            title: "Updated SuccessFully",
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
     } catch (err: unknown) {
-        const error = err as AxiosError;
-    }
-};
+        const error = err as APIError;
+        let errorMessage = "Some Error Occurred..";
+        if (error?.response?.data?.message) {
+            
+        console.log(((
+            error?.response?.data?.message as {
+                code?: string[];
+                general?: string[];
+            }
+        ))?.general?.[0]);
+        }
 
+
+        if (error?.response) {
+            toast({
+                title: errorMessage,
+                description: "",
+                status: "error",
+                duration: 2000,
+                isClosable: true
+            });
+        }
+        }
+    }
 export const getManageUsersDetails = async (
     id: string | undefined,
     setData: UseStateFunc<UserData | undefined>

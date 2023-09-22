@@ -8,7 +8,9 @@ export const onboardingRoutes = {
     areaOfInterestList: "/api/v1/register/area-of-interest/list/",
     communityList: "/api/v1/register/community/list/",
     register: "/api/v1/register/",
-    emailVerification: "/api/v1/register/email-verification/"
+    emailVerification: "/api/v1/register/email-verification/",
+    // New Onboarding Routes
+    createAccount: "/api/v1/register/new/"
 } as const;
 
 export const authRoutes = {
@@ -92,6 +94,7 @@ export const dashboardRoutes = {
     getApplicationForm: "/api/v1/hackathon/list-form/",
     getApplicants: "/api/v1/hackathon/list-applicants/",
 
+    searchLearningCircleWithCircleCode: "/api/v1/dashboard/lc/list-all/",
     getCampusLearningCircles: "/api/v1/dashboard/lc/",
     createLearningCircle: "/api/v1/dashboard/lc/create/",
     listLearningCircle: "/api/v1/dashboard/lc/list-all/",
@@ -129,8 +132,7 @@ export const dashboardRoutes = {
 } as const;
 
 export const organizationRoutes = {
-    getOrganizationsAll:
-        "/api/v1/dashboard/organisation/institutes/info/all_inst",
+    getOrganizationsAll: "/api/v1/dashboard/organisation/institutes/info/all/",
     getCompany: "/api/v1/dashboard/organisation/institutes/show/Company/",
     getCollege: "/api/v1/dashboard/organisation/institutes/show/College/",
     getCommunity: "/api/v1/dashboard/organisation/institutes/show/Community/",

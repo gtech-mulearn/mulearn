@@ -12,9 +12,8 @@ import {
     updateLcNote
 } from "../services/LearningCircleAPIs";
 import { useNavigate, useParams } from "react-router-dom";
-import { BiEditAlt, BiLogOutCircle } from "react-icons/bi";
+import { BiEditAlt } from "react-icons/bi";
 import { RxCrossCircled } from "react-icons/rx";
-import { SiKnowledgebase } from "react-icons/si";
 import {
     AllWeeks,
     convert24to12,
@@ -22,11 +21,8 @@ import {
     monthNames
 } from "../services/utils";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { Tooltip } from "react-tooltip";
-import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import Modal from "@/MuLearnComponents/Modal/Modal";
-
 import data from "../data/data.json";
 import { BsFillBookmarksFill } from "react-icons/bs";
 
@@ -66,7 +62,7 @@ const LearningCircle = (props: Props) => {
     }, []);
 
     useEffect(() => {
-        lc?.members.map(async member => {
+        lc?.members?.map(async member => {
             const imagePath: string = member.profile_pic;
 
             try {
@@ -542,7 +538,7 @@ const LearningCircle = (props: Props) => {
                             </div>
 
                             {lc?.pending_members &&
-                            lc.pending_members.length > 0 ? (
+                                lc.pending_members.length > 0 ? (
                                 <div className={styles.PendingApp}>
                                     <b className={styles.PendingTitle}>
                                         Pending approvals
@@ -550,7 +546,7 @@ const LearningCircle = (props: Props) => {
 
                                     <div className={styles.PendingList}>
                                         {lc?.pending_members &&
-                                            lc.pending_members.map(
+                                            lc?.pending_members?.map(
                                                 (member, index) => (
                                                     <div
                                                         key={index}
@@ -662,7 +658,7 @@ const LearningCircle = (props: Props) => {
                                 </span>
                                 <div className={styles.MemberList}>
                                     {lc?.members &&
-                                        lc.members.map((member, index) => (
+                                        lc.members?.map((member, index) => (
                                             <div
                                                 key={index}
                                                 className={styles.MemberName}
@@ -679,7 +675,9 @@ const LearningCircle = (props: Props) => {
                                                         alt="Profile Picture"
                                                     />
                                                     <div>
-                                                        <p>{member.username}</p>
+                                                        <div className={styles.username}>
+                                                            <p>{member.username}</p>
+                                                        </div>
                                                         <span>
                                                             <img
                                                                 src="https://i.ibb.co/Dbhv9rS/karma.png"

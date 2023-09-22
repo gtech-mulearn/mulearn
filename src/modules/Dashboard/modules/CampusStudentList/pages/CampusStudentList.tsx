@@ -16,7 +16,6 @@ import { PieChart, BarChart } from "../Components/Graphs";
 import styles from "./CampusStudentList.module.css";
 import CLIcon from "../assets/images/CampusLeadIcon.svg";
 import { useToast } from "@chakra-ui/react";
-
 import { convertDateToDayAndMonth } from "../../../utils/common";
 
 type Props = {};

@@ -804,12 +804,12 @@ const Onboarding = (props: Props) => {
                                                     onChange={
                                                         formik.handleChange
                                                     }
-                                                    value={formik.values.phone}
+                                                    value={formik.values.mobile}
                                                     disabled={param ? true : false}
                                                 // required
                                                 />
-                                                {formik.touched.phone &&
-                                                    formik.errors.phone ? (
+                                                {formik.touched.mobile &&
+                                                    formik.errors.mobile ? (
                                                     <div
                                                         className={
                                                             styles.error_message

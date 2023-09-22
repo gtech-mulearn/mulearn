@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import FormikReactSelect, {
     FormikTextInput
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { updateRoleType } from "../apis";
+import { updateRoleType, updateUserType } from "../apis";
 
 type Props = {
     onClose: any;
@@ -57,7 +57,13 @@ const EditModal = (props: Props) => {
                             props.rowId,
                             values.role!
                         );
-                    else console.log(values);
+                    else
+                        await updateUserType(
+                            errHandler,
+                            succHandler,
+                            props.rowId,
+                            values.user!
+                        );
                     props.onClose(null);
                 })();
             }}

@@ -3,15 +3,13 @@ import styles from "./LearningCircle.module.css";
 import * as Yup from "yup";
 import { Form, Formik } from "formik";
 import FormikReactSelect, {
-    FormikSelect,
     FormikTextInput
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import {
     getInterestGroups,
     createCircle
 } from "../services/LearningCircleAPIs";
-import { useNavigate, useParams } from "react-router-dom";
-import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./BasicDetails.module.css";
 import HeatmapComponent from "../../Heatmap/HeatmapComponent";
 import { useToast } from "@chakra-ui/react";
-import { editIgDetails, getAllIg, getIgDetails } from "../services/api";
+import { editIgDetails, getAllIg } from "../services/api";
 import { useParams } from "react-router-dom";
 type Props = {
     userProfile: any;
@@ -27,34 +27,48 @@ const BasicDetails = (props: Props) => {
             <div className={styles.interestGrp}>
                 <div className={styles.top_sec}>
                     <b>Interest Groups</b>
-                    {!id &&
-                        props.userProfile.level.slice(3, 4) >= 4 &&
-                        !editIg && (
+                    <div className={styles.close_and_submit_btn_div}>
+                        {!id &&
+                            props.userProfile.level.slice(3, 4) >= 4 &&
+                            !editIg && (
+                                <p
+                                    onClick={() => setEditIg(true)}
+                                    className={styles.edit_profile_btn}
+                                    tabIndex={0}
+                                >
+                                    <i className="fi fi-rr-pencil"></i>
+                                </p>
+                            )}
+                        {editIg && (
                             <p
-                                onClick={() => setEditIg(true)}
+                                onClick={() => {
+                                    setEditIg(false);
+                                    setIg(props.userProfile.interest_groups);
+                                }}
                                 className={styles.edit_profile_btn}
                                 tabIndex={0}
                             >
-                                <i className="fi fi-rr-pencil"></i>
+                                <i className="fi fi-rr-circle-xmark"></i>
                             </p>
                         )}
-                    {editIg && (
-                        <p
-                            onClick={() => {
-                                setEditIg(false);
-                                editIgDetails(
-                                    toast,
-                                    ig_sorted.map((ig: any) => {
-                                        return ig.id;
-                                    })
-                                );
-                            }}
-                            className={styles.edit_profile_btn}
-                            tabIndex={0}
-                        >
-                            <i className="fi fi-rr-circle-xmark"></i>
-                        </p>
-                    )}
+                        {editIg && (
+                            <p
+                                onClick={() => {
+                                    setEditIg(false);
+                                    editIgDetails(
+                                        toast,
+                                        ig_sorted.map((ig: any) => {
+                                            return ig.id;
+                                        })
+                                    );
+                                }}
+                                className={styles.edit_profile_btn}
+                                tabIndex={0}
+                            >
+                                <i className="fi fi-br-check"></i>
+                            </p>
+                        )}
+                    </div>
                 </div>
                 <div className={styles.igs_container}>
                     {props.userProfile.interest_groups.length != 0 ? (
@@ -64,8 +78,8 @@ const BasicDetails = (props: Props) => {
                                     style={
                                         editIg
                                             ? {
-                                                  transform: "scale(0.955)"
-                                              }
+                                                transform: "scale(0.955)"
+                                            }
                                             : {}
                                     }
                                     className={styles.igs}
@@ -82,18 +96,6 @@ const BasicDetails = (props: Props) => {
                                                                 data.name
                                                         )
                                                     );
-                                                    // editIgDetails(
-                                                    //     toast,
-                                                    //     ig
-                                                    //         .filter(
-                                                    //             (ig: any) =>
-                                                    //                 ig.name !=
-                                                    //                 data.name
-                                                    //         )
-                                                    //         .map((ig: any) => {
-                                                    //             return ig.id;
-                                                    //         })
-                                                    // );
                                                 } else {
                                                     toast({
                                                         title: "Error",
@@ -113,11 +115,11 @@ const BasicDetails = (props: Props) => {
                                         {data.karma !== null
                                             ? data.karma > 1000
                                                 ? (
-                                                      data.karma / 1000
-                                                  ).toPrecision(2) + "K"
+                                                    data.karma / 1000
+                                                ).toPrecision(2) + "K"
                                                 : data.karma
-                                                ? data.karma
-                                                : "0"
+                                                    ? data.karma
+                                                    : "0"
                                             : "0"}
                                     </p>
                                 </div>
@@ -147,9 +149,9 @@ const BasicDetails = (props: Props) => {
                                                             (
                                                                 prevState: any
                                                             ) => [
-                                                                ...prevState,
-                                                                data
-                                                            ]
+                                                                    ...prevState,
+                                                                    data
+                                                                ]
                                                         );
                                                 }
                                                 // editIgDetails(

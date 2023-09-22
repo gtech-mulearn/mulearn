@@ -1,18 +1,13 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import * as Yup from "yup";
-import { ToastId, useToast, UseToastOptions } from "@chakra-ui/react";
+import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import Modal from "../CollegeLevels/components/Modal";
 
-import {
-    createDepartment,
-    getDepartmentData,
-    getDepartments,
-    updateDepartment
-} from "./apis";
+import { createDepartment, getDepartments, updateDepartment } from "./apis";
 import { modalTypes } from "../../utils/enums";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
@@ -20,6 +15,7 @@ type Props = {
     id?: string;
     setCurrModal: Dispatch<SetStateAction<modalTypes | null>>;
     setDepartments: Dispatch<SetStateAction<any[]>>;
+    loading: boolean;
     setIsLoading: Dispatch<SetStateAction<boolean>>;
     toast: (options?: UseToastOptions | undefined) => ToastId;
 };
@@ -28,6 +24,7 @@ const CreateOrUpdateDepartmentModal = ({
     id,
     setCurrModal,
     setDepartments,
+    loading,
     setIsLoading,
     toast
 }: Props) => {
@@ -48,7 +45,7 @@ const CreateOrUpdateDepartmentModal = ({
             onClose={setCurrModal}
             header={id ? "Edit department" : "Create a new department"}
         >
-            {true ? (
+            {loading ? (
                 <MuLoader />
             ) : (
                 <Formik

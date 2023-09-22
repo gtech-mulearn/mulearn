@@ -3,7 +3,8 @@ import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { createStandaloneToast } from "@chakra-ui/react";
 import { SetStateAction } from "react";
-import { NavigateFunction, useNavigate } from "react-router-dom";
+import { NavigateFunction } from "react-router-dom";
+import { getUserProfile } from "../../Profile/services/api";
 
 export const { toast } = createStandaloneToast();
 
@@ -67,18 +68,40 @@ export const updateLcNote = async (id: string | undefined, note: string) => {
     }
 };
 
+export const getUserOrg = (setOrg: {
+    (value: SetStateAction<string | null>): void;
+    (arg0: any): void;
+}) => {
+    privateGateway
+        .get(dashboardRoutes.getUserProfile)
+        .then(response => {
+            const message: any = response?.data;
+            setOrg(message.response.college_id);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
+
 export const getCampusLearningCircles = async (
-    setCircleList: UseStateFunc<LcType[]>
+    setCircleList: UseStateFunc<LcType[]>,
+    setIsLoading: (isLoading: boolean) => void,
+    org?: string | null
 ) => {
+    setIsLoading(true);
     try {
-        const response = await privateGateway.get(
-            dashboardRoutes.listLearningCircle
+        const response = await privateGateway.post(
+            dashboardRoutes.listLearningCircle,
+            {
+                org_id: org
+            }
         );
         const message: any = response?.data;
-        console.log(message.response);
 
         setCircleList(message.response);
+        setIsLoading(false);
     } catch (err: unknown) {
+        setIsLoading(false);
         const error = err as AxiosError;
         if (error?.response) {
             throw error;
@@ -328,4 +351,50 @@ export const removeMember = async (
             isClosable: true
         });
     }
+};
+
+export const searchLearningCircleWithCircleCode = (
+    setLc: UseStateFunc<LcType[]>,
+    circleCode: string,
+    lc: LcType[],
+    setIsLoading: (isLoading: boolean) => void
+) => {
+    setIsLoading(true);
+    if (circleCode === "") {
+        if (lc.length === 1) {
+            getCampusLearningCircles(setLc, setIsLoading);
+        }
+        toast({
+            title: "Enter circle code",
+            status: "info",
+            duration: 2000,
+            isClosable: true
+        });
+        return;
+    }
+    const regex = /[^a-zA-Z0-9]/g;
+    const circleCodeStrippedCapitailize = circleCode
+        .replace(regex, "")
+        .toUpperCase();
+
+    privateGateway
+        .post(
+            `${dashboardRoutes.searchLearningCircleWithCircleCode}${circleCodeStrippedCapitailize}/`
+        )
+        .then(res => res.data.response)
+        .then(data => {
+            setLc(data);
+            setIsLoading(false); // Set isLoading to false
+        })
+        .catch(err => {
+            for (let error of err.response?.data?.message?.general) {
+                toast({
+                    description: error,
+                    status: "error",
+                    duration: 2000,
+                    isClosable: true
+                });
+            }
+            setIsLoading(false); // Set isLoading to false
+        });
 };
