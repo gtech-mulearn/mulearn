@@ -12,7 +12,6 @@ export default function Rolepage() {
     const toast = useToast();
 
     const [selectedRole, setSelectedRole] = useState<string>("");
-
     const [nextPage, setNextPage] = useState<string>("");
 
     return (

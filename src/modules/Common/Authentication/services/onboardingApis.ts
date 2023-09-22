@@ -3,8 +3,6 @@ import { KKEMRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import { NavigateFunction } from "react-router-dom";
 import { useFormik } from "formik";
 import { getInfo } from "../../../Dashboard/modules/ConnectDiscord/services/apis";
-import { Dispatch, SetStateAction } from "react";
-import { ToastId, UseToastOptions } from "@chakra-ui/react";
 
 // Define the type of MyValues
 type NN = { name: string; id: string };
@@ -225,46 +223,6 @@ export const getCommunities = (
         .catch((error: APIError) => {
             errorHandler(error.response.status, error.response.data.status);
         });
-};
-
-export const createAccount = async ({
-    userData,
-    setIsSubmitting,
-    toast,
-    navigate
-}: {
-    userData: Object;
-    setIsSubmitting: Dispatch<SetStateAction<boolean>>;
-    toast: (options?: UseToastOptions | undefined) => ToastId;
-    navigate: NavigateFunction;
-}) => {
-    setIsSubmitting(true);
-    console.log("UserData", userData);
-
-    try {
-        const response = await publicGateway.post(
-            onboardingRoutes.createAccount,
-            userData
-        );
-        const tokens = response.data.response;
-        console.log("createAccount - response.data.response", tokens);
-        localStorage.setItem("accessToken", tokens.accessToken);
-        localStorage.setItem("refreshToken", tokens.refreshToken);
-        getInfo(() => navigate("/role"));
-    } catch (err: any) {
-        const messages = err.response.data.message.general[0];
-        console.log("Create Account Error", messages[0]);
-        Object.entries(messages).forEach(([fieldName, errorMessage]) => {
-            if (Array.isArray(errorMessage)) {
-                toast({
-                    title: errorMessage?.join(", ") || "",
-                    status: "error",
-                    isClosable: true
-                });
-            }
-        });
-    }
-    setIsSubmitting(false);
 };
 
 // POST request for registration

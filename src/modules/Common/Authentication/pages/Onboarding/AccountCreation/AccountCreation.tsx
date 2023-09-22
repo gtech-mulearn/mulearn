@@ -11,7 +11,7 @@ import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useState } from "react";
 
-import { createAccount } from "../../../services/onboardingApis";
+import { createAccount } from "../../../services/newOnboardingApis";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
