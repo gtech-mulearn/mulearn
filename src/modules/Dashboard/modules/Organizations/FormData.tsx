@@ -81,7 +81,18 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     const toast = useToast();
 
     const myRef = useRef(false);
+    const strSwap = (
+        uuid: string,
+        type: "Country" | "State" | "District" | "Zone"
+    ) => {
+        switch (type) {
+            case "Country":
+                break;
 
+            default:
+                break;
+        }
+    };
     useEffect(() => {
         if (isSuccess) {
             navigate("/dashboard/organizations");
@@ -106,7 +117,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     };
 
     const orgType = props.activeItem;
-
+    // console.log(country);
     const handleSubmit = (Name: string, Code: string) => {
         // e.preventDefault();
         // resetStates()
@@ -126,17 +137,22 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             isCreate: boolean,
             affiliation?: string
         ) => {
-            const { country, state, zone, district, orgType, toast } = params;
+            // const { country, state, zone, district, orgType, toast } = params;
+            const { orgType, toast } = params;
 
             if (isCreate) {
                 if (orgType === "College") {
                     createOrganization(
                         Name,
                         Code,
-                        camelCase(country),
-                        camelCase(state),
-                        camelCase(zone),
-                        camelCase(district),
+                        country.label,
+                        state.label,
+                        zone.label,
+                        district.label,
+                        // camelCase(country),
+                        // camelCase(state),
+                        // camelCase(zone),
+                        // camelCase(district),
                         orgType,
                         toast,
                         affiliation,
@@ -147,10 +163,14 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     createOrganization(
                         Name,
                         Code,
-                        camelCase(country),
-                        camelCase(state),
-                        camelCase(zone),
-                        camelCase(district),
+                        country.label,
+                        state.label,
+                        zone.label,
+                        district.label,
+                        // camelCase(country),
+                        // camelCase(state),
+                        // camelCase(zone),
+                        // camelCase(district),
                         orgType,
                         toast,
                         "",
@@ -164,10 +184,14 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         Name,
                         Code,
                         oldCode,
-                        camelCase(country),
-                        camelCase(state),
-                        camelCase(zone),
-                        camelCase(district),
+                        country.label,
+                        state.label,
+                        zone.label,
+                        district.label,
+                        // camelCase(country),
+                        // camelCase(state),
+                        // camelCase(zone),
+                        // camelCase(district),
                         orgType,
                         toast,
                         affiliation,
@@ -179,10 +203,14 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         Name,
                         Code,
                         oldCode,
-                        camelCase(country),
-                        camelCase(state),
-                        camelCase(zone),
-                        camelCase(district),
+                        country.label,
+                        state.label,
+                        zone.label,
+                        district.label,
+                        // camelCase(country),
+                        // camelCase(state),
+                        // camelCase(zone),
+                        // camelCase(district),
                         orgType,
                         toast,
                         "",
@@ -338,7 +366,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     }, [selectedState]);
 
     useEffect(() => {
-       
         if (zone !== "" && zone.value !== undefined) {
             getDistricts(
                 camelCase(country.value || props.selectedCountry),
@@ -371,7 +398,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             setSelectedDistrict("");
             setState(option);
             setSelectedState(option.value as string);
-      
         }
     };
 
@@ -413,8 +439,8 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         .required("Required")
                 })}
                 onSubmit={values => {
-                    setIsLoading(true)
-                    handleSubmit(values.Name,values.Code);
+                    setIsLoading(true);
+                    handleSubmit(values.Name, values.Code);
                 }}
             >
                 <Form className={orgStyles.popupDropdownContainer}>
@@ -512,7 +538,9 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             required
                         />
                     </div>
-                    <div className={`${orgStyles.inputFieldContainer} grid-container`}>
+                    <div
+                        className={`${orgStyles.inputFieldContainer} grid-container`}
+                    >
                         {/* <div className="btn light-btn" onClick={resetStates}>
                             Decline
                         </div> */}

@@ -4,6 +4,7 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { createStandaloneToast } from "@chakra-ui/react";
 import { SetStateAction } from "react";
 import { NavigateFunction } from "react-router-dom";
+import { getUserProfile } from "../../Profile/services/api";
 
 export const { toast } = createStandaloneToast();
 
@@ -67,17 +68,40 @@ export const updateLcNote = async (id: string | undefined, note: string) => {
     }
 };
 
+export const getUserOrg = (setOrg: {
+    (value: SetStateAction<string | null>): void;
+    (arg0: any): void;
+}) => {
+    privateGateway
+        .get(dashboardRoutes.getUserProfile)
+        .then(response => {
+            const message: any = response?.data;
+            setOrg(message.response.college_id);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
+
 export const getCampusLearningCircles = async (
-    setCircleList: UseStateFunc<LcType[]>
+    setCircleList: UseStateFunc<LcType[]>,
+    setIsLoading: (isLoading: boolean) => void,
+    org?: string | null
 ) => {
+    setIsLoading(true);
     try {
         const response = await privateGateway.post(
-            dashboardRoutes.listLearningCircle
+            dashboardRoutes.listLearningCircle,
+            {
+                org_id: org
+            }
         );
         const message: any = response?.data;
 
         setCircleList(message.response);
+        setIsLoading(false);
     } catch (err: unknown) {
+        setIsLoading(false);
         const error = err as AxiosError;
         if (error?.response) {
             throw error;
@@ -230,10 +254,10 @@ export const approveLcUser = async (
     try {
         const response = await privateGateway.patch(
             dashboardRoutes.getCampusLearningCircles +
-            circleId +
-            "/" +
-            memberId +
-            "/",
+                circleId +
+                "/" +
+                memberId +
+                "/",
             {
                 is_accepted: flag
             }
@@ -301,10 +325,10 @@ export const removeMember = async (
     try {
         const response = await privateGateway.post(
             dashboardRoutes.getCampusLearningCircles +
-            circleId +
-            "/" +
-            memberId +
-            "/"
+                circleId +
+                "/" +
+                memberId +
+                "/"
         );
         toast({
             title: "Success",
@@ -333,27 +357,32 @@ export const searchLearningCircleWithCircleCode = (
     setLc: UseStateFunc<LcType[]>,
     circleCode: string,
     lc: LcType[],
-    setIsLoading: (isLoading: boolean) => void,
+    setIsLoading: (isLoading: boolean) => void
 ) => {
     setIsLoading(true);
-    if (circleCode === '') {
+    if (circleCode === "") {
         if (lc.length === 1) {
-            getCampusLearningCircles(setLc)
+            getCampusLearningCircles(setLc, setIsLoading);
         }
         toast({
             title: "Enter circle code",
             status: "info",
             duration: 2000,
             isClosable: true
-        })
-        return
+        });
+        return;
     }
     const regex = /[^a-zA-Z0-9]/g;
-    const circleCodeStrippedCapitailize = circleCode.replace(regex, '').toUpperCase();
+    const circleCodeStrippedCapitailize = circleCode
+        .replace(regex, "")
+        .toUpperCase();
 
-    privateGateway.post(`${dashboardRoutes.searchLearningCircleWithCircleCode}${circleCodeStrippedCapitailize}/`)
-        .then((res) => res.data.response)
-        .then((data) => {
+    privateGateway
+        .post(
+            `${dashboardRoutes.searchLearningCircleWithCircleCode}${circleCodeStrippedCapitailize}/`
+        )
+        .then(res => res.data.response)
+        .then(data => {
             setLc(data);
             setIsLoading(false); // Set isLoading to false
         })
@@ -367,6 +396,5 @@ export const searchLearningCircleWithCircleCode = (
                 });
             }
             setIsLoading(false); // Set isLoading to false
-        })
-}
-
+        });
+};

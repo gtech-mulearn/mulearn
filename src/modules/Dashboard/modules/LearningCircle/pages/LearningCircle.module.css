@@ -126,8 +126,11 @@
     display: none;
 }
 
-.learningCircleLandingPageExpandBtn:checked+.learningCircleLandingPageLevel,
-.learningCircleLandingPageExpandBtn:checked+.learningCircleLandingPageLevel div p {
+.learningCircleLandingPageExpandBtn:checked + .learningCircleLandingPageLevel,
+.learningCircleLandingPageExpandBtn:checked
+    + .learningCircleLandingPageLevel
+    div
+    p {
     background: var(--blue);
     color: white;
 }
@@ -136,7 +139,9 @@
     border: 1px solid var(--blue);
 } */
 
-.learningCircleLandingPageExpandBtn:checked+.learningCircleLandingPageLevel .learningCircleLandingPageBtn {
+.learningCircleLandingPageExpandBtn:checked
+    + .learningCircleLandingPageLevel
+    .learningCircleLandingPageBtn {
     background: var(--White);
     color: var(--blue);
 }
@@ -479,8 +484,8 @@
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
-    font-size: .8rem;
-    gap: .7rem;
+    font-size: 0.8rem;
+    gap: 0.7rem;
 }
 
 .memberNameDiv img {
@@ -540,7 +545,6 @@
     .Members {
         min-height: 630px;
     }
-
 }
 
 @media (width<820px) {
@@ -744,7 +748,7 @@
     display: none;
 }
 
-.Lcweek input[type="checkbox"]:checked+label {
+.Lcweek input[type="checkbox"]:checked + label {
     color: var(--White);
 }
 
@@ -939,11 +943,6 @@
     font-weight: 600;
 }
 
-.FindCircleContent img {
-    width: 40%;
-    padding: 1rem;
-}
-
 .FindCircleContentTop .desc .ig_search {
     display: flex;
     justify-content: space-between;
@@ -1080,11 +1079,6 @@
     font-weight: 600;
 }
 
-.FindCircleContent img {
-    width: 40%;
-    padding: 1rem;
-}
-
 .FindCircleContentTop .desc .ig_search {
     display: flex;
     justify-content: space-between;
@@ -1208,7 +1202,21 @@
 .loader {
     display: flex;
     width: 100%;
-    height: 55vh;
+    height: 100%;
     align-items: center;
     justify-content: center;
+}
+
+.full {
+    display: flex;
+    justify-content: end;
+}
+.disabled_button {
+    background-color: #e0e0e0;
+    color: #9e9e9e;
+    cursor: not-allowed;
+    width: 8rem;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
 }

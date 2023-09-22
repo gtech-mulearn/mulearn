@@ -2,7 +2,7 @@ import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.c
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getInfo } from "./apis";
-import orgStyles from './Organizations.module.css'
+import orgStyles from "./Organizations.module.css";
 
 import FormData from "./FormData";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
@@ -11,7 +11,7 @@ function EditOrganization() {
     const navigate = useNavigate();
     const location = useLocation();
     const [loading, setLoading] = useState(true);
-
+    console.log(location);
     const { activeItem, rowId } = location.state;
 
     const [inputName, setInputName] = useState("");
@@ -23,7 +23,6 @@ function EditOrganization() {
     const [selectedAffiliation, setSelectedAffiliation] = useState("");
 
     useEffect(() => {
-
         getInfo(rowId)
             .then(data => {
                 setInputName(data.title);
@@ -43,7 +42,7 @@ function EditOrganization() {
 
     const RenderFormData = ({ activeItem }: any) => {
         switch (activeItem) {
-            case "Colleges":
+            case "College":
                 return (
                     <FormData
                         isCreate={false}
@@ -57,7 +56,7 @@ function EditOrganization() {
                         selectedAffiliation={selectedAffiliation}
                     />
                 );
-            case "Companies":
+            case "Company":
                 return (
                     <FormData
                         isCreate={false}
@@ -70,7 +69,7 @@ function EditOrganization() {
                         selectedDistrict={selectedDistrict}
                     />
                 );
-            case "Communities":
+            case "Community":
                 return (
                     <FormData
                         isCreate={false}
@@ -98,7 +97,9 @@ function EditOrganization() {
                 <div className={orgStyles.popupContainer}>
                     <div className={styles.container}>
                         <div className={orgStyles.popupTopContainer}>
-                            <h1 className={orgStyles.popupTitle}>Edit {activeItem}</h1>
+                            <h1 className={orgStyles.popupTitle}>
+                                Edit {activeItem}
+                            </h1>
                             <i
                                 className="fi fi-sr-cross"
                                 onClick={() => {
