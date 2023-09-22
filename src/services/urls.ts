@@ -13,7 +13,8 @@ export const onboardingRoutes = {
     createAccount: "/api/v1/register/new/",
     rolesList: "/api/v1/register/role/list/",
     colleges: "/api/v1/register/colleges/",
-    departments: "/api/v1/register/department/list/"
+    departments: "/api/v1/register/department/list/",
+    companies: "/api/v1/register/company/list/"
 } as const;
 
 export const authRoutes = {

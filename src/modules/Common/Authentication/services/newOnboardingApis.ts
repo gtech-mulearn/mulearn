@@ -80,3 +80,21 @@ export const getDepartments = async ({
         console.log("getColleges Error", err);
     }
 };
+
+export const getCompanies = async ({
+    setIsLoading,
+    setCompanies
+}: {
+    setIsLoading: Dispatch<SetStateAction<boolean>>;
+    setCompanies: Dispatch<SetStateAction<any[]>>;
+}) => {
+    try {
+        const response = await publicGateway.get(onboardingRoutes.companies);
+        const companies = response.data.response.companies;
+        console.log("getCompanies - ", companies);
+        setCompanies(companies);
+        setIsLoading(false);
+    } catch (err: any) {
+        console.log("getCompanies Error", err);
+    }
+};
