@@ -27,6 +27,7 @@
         "react-icons": "^4.10.1",
         "react-qr-code": "^2.0.11",
         "react-router-dom": "^6.9.0",
+        "react-scrollbars-custom": "^4.1.1",
         "react-select": "^5.7.3",
         "react-spinners": "^0.13.8",
         "react-tabs": "^6.0.1",

@@ -1,5 +1,5 @@
 /* Scrollbar */
-::-webkit-scrollbar{
+/* ::-webkit-scrollbar{
     width: 10px;
     display: block;
   }
@@ -9,7 +9,7 @@
   }
   ::-webkit-scrollbar-thumb:hover{
     background: #6f6f6f;
-  }
+  } */
 
 
 

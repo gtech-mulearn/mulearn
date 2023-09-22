@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+.popup{
+    /* height: 100vh;
+    display: grid;
+    place-content: center; */
+    z-index: 100;
+    position: absolute;
+}
+.popupConatiner{
+    width: 432px;
+    height: fit-content;
+    padding: 32px;
+    display:flex;
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
+    flex-direction: column;
+    align-items: center;
+    gap:1rem;
+    background: #fff;
+    border-radius: 12px;
+    font-family: Plus Jakarta Sans;
+}
+
+.popupConatiner div{
+    text-align: center;
+}
+
+.popupConatiner div h1{
+    color: var(--gray-900, #101828);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    padding-top: 0px;
+}
+
+.popupConatiner div p{
+    width: 352px;
+    color: var(--gray-600, #475467);
+    font-style: normal;
+    padding-top: 4px;
+    font-weight: 500;
+    line-height: 20px;
+    font-size: 15px;
+}
+
+.popupInput {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-self: stretch;
+    height: 56px;  
+}
+
+.popupInput input{
+   border:none;
+   flex: 1 0 0;
+   padding: 0px 16px;
+   align-self: stretch;
+   background: #F3F3F4;
+   border-radius: 10px;  
+   color: #1D1B20;
+   font-size: 16px;
+   font-weight: 400;
+}
+
+.popupbtns{
+   width: 368px;
+   margin-top: 16px;
+   border-top: 1px solid #E4E7EC;
+   padding-top: 24px;
+   gap: 16px;
+   display: flex;
+   justify-content: center;
+   flex-direction: row;
+}
+
+.popupbtns button{
+    width: 170px;
+    height: 44px;
+    display: grid;
+    place-content: center;
+    border-radius: 12px;
+    border:none;
+    cursor: pointer;
+    background-color: var(--primary, #5570F1);
+    color: #FFF;
+    font-size: 20px;
+}
+
+.popupbtns button:nth-child(2){
+    background-color: #E4E7EC;
+    color: var(--primary, #5570F1);
+}
+
+@media (width<550px){
+    .popupConatiner{
+        width: 300px;
+        margin: 1rem 0;
+        padding: 18px;
+    }
+    .popupConatiner div h1{
+        font-size: 18px;
+    }
+    .popupConatiner div p{
+        font-size: 12px;
+    }
+    .popupbtns{
+        width: 294px;
+    }
+}
