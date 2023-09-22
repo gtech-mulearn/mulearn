@@ -1,9 +1,38 @@
-import { publicGateway } from "@/MuLearnServices/apiGateways";
+import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
+import { showToasts } from "@/MuLearnServices/common_functions";
 import { onboardingRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { Dispatch, SetStateAction } from "react";
 import { NavigateFunction } from "react-router-dom";
+import { bool, boolean } from "yup";
 import { getInfo } from "../../../Dashboard/modules/ConnectDiscord/services/apis";
+
+export const validate = async ({
+    userData,
+    setIsSubmitting,
+    toast
+}: {
+    userData: Object;
+    setIsSubmitting: Dispatch<SetStateAction<boolean>>;
+    toast: (options?: UseToastOptions | undefined) => ToastId;
+}): Promise<boolean> => {
+    let returnval = false;
+    try {
+        setIsSubmitting(true);
+        await privateGateway.put(onboardingRoutes.validate, userData);
+        returnval = true;
+        setIsSubmitting(false);
+    } catch (err: any) {
+        setIsSubmitting(false);
+        const messages = err.response.data.message.general[0];
+        showToasts({
+            toast: toast,
+            messages: messages,
+            status: "error"
+        });
+    }
+    return returnval;
+};
 
 export const createAccount = async ({
     userData,
@@ -21,28 +50,43 @@ export const createAccount = async ({
 
     try {
         const response = await publicGateway.post(
-            onboardingRoutes.createAccount,
+            onboardingRoutes.register,
             userData
         );
         const tokens = response.data.response;
         console.log("createAccount - response.data.response", tokens);
         localStorage.setItem("accessToken", tokens.accessToken);
         localStorage.setItem("refreshToken", tokens.refreshToken);
-        getInfo(() => navigate("/role"));
+        getInfo(() => {
+            navigate("/role");
+        });
     } catch (err: any) {
         const messages = err.response.data.message.general[0];
-        console.log("Create Account Error", messages[0]);
-        Object.entries(messages).forEach(([fieldName, errorMessage]) => {
-            if (Array.isArray(errorMessage)) {
-                toast({
-                    title: errorMessage?.join(", ") || "",
-                    status: "error",
-                    isClosable: true
-                });
-            }
+        showToasts({
+            toast: toast,
+            messages: messages,
+            status: "error"
         });
     }
     setIsSubmitting(false);
+};
+
+export const getRoles = async ({
+    setIsLoading,
+    setRoles
+}: {
+    setIsLoading: Dispatch<SetStateAction<boolean>>;
+    setRoles: Dispatch<SetStateAction<any[]>>;
+}) => {
+    try {
+        const response = await publicGateway.get(onboardingRoutes.roles);
+        const roles = response.data.response.roles;
+        console.log("getRoles - ", roles);
+        setRoles(roles);
+        setIsLoading(false);
+    } catch (err: any) {
+        console.log("getRoles Error", err);
+    }
 };
 
 export const getColleges = async ({
@@ -97,4 +141,37 @@ export const getCompanies = async ({
     } catch (err: any) {
         console.log("getCompanies Error", err);
     }
+};
+
+export const submitUserData = async ({
+    setIsLoading,
+    userData,
+    toast,
+    navigate
+}: {
+    setIsLoading: Dispatch<SetStateAction<boolean>>;
+    userData: Object;
+    toast: (options?: UseToastOptions | undefined) => ToastId;
+    navigate: NavigateFunction;
+}) => {
+    try {
+        setIsLoading(true);
+        const res = await privateGateway.post(
+            onboardingRoutes.register,
+            userData
+        );
+        const tokens = res.data.response;
+        console.log("createAccount - response.data.response", tokens);
+        localStorage.setItem("accessToken", tokens.accessToken);
+        localStorage.setItem("refreshToken", tokens.refreshToken);
+        getInfo(() => navigate("/dashboard/connect-discord"));
+    } catch (err: any) {
+        const messages = err.response.data.message.general[0];
+        showToasts({
+            toast: toast,
+            messages: messages,
+            status: "error"
+        });
+    }
+    setIsLoading(false);
 };

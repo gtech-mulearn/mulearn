@@ -57,7 +57,7 @@
 .select {
     display: flex;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row-reverse;
     margin-top: 2rem;
     gap: 1rem;
 }
@@ -71,5 +71,5 @@
     font-size: larger;
 }
 .selectRadio label {
-    margin-left: -5rem;
+    margin-left: -7rem;
 }

@@ -1,7 +1,7 @@
 const roleOptions = [
     {
         title: "I'm currently studying",
-        value: "student",
+        value: "Student",
         icon: (
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@ const roleOptions = [
     },
     {
         title: "I'm currently an enabler",
-        value: "enabler",
+        value: "Enabler",
         icon: (
             <svg
                 width="39"

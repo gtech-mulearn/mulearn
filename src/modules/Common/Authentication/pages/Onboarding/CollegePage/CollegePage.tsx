@@ -8,10 +8,13 @@ import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/
 import { useEffect, useState } from "react";
 import {
     getColleges,
-    getDepartments
+    getDepartments,
+    submitUserData
 } from "../../../services/newOnboardingApis";
 import ReactSelect from "react-select";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
 
 const inputObject = {
     college: "Collage Name",
@@ -40,6 +43,11 @@ const scheme = z.object({
 });
 
 export default function CollegePage() {
+    const navigate = useNavigate();
+    const toast = useToast();
+    const location = useLocation();
+    let userData = location.state as Object;
+
     const [isloading, setIsLoading] = useState(true);
     const [colleges, setColleges] = useState([{ id: "", title: "" }]);
     const [departments, setDepartments] = useState([{ id: "", title: "" }]);
@@ -64,7 +72,21 @@ export default function CollegePage() {
         });
     }, []);
 
-    // const setUserCollege = ()
+    const onSubmit = async (values: any) => {
+        const newUserData = {
+            ...userData,
+            dept: values.department,
+            year_of_graduation: values.graduationYear,
+            organizations: [values.college],
+            area_of_interests: []
+        };
+        submitUserData({
+            setIsLoading: setIsLoading,
+            userData: newUserData,
+            toast: toast,
+            navigate: navigate
+        });
+    };
 
     return (
         <OnboardingTemplate>
@@ -80,7 +102,7 @@ export default function CollegePage() {
                         Object.keys(inputObject).map(key => [key, ""])
                     )}
                     validationSchema={scheme}
-                    onSubmit={(value, action) => console.log(value)} // TODO: Add API call etc stuffs here
+                    onSubmit={(value, action) => onSubmit(value)}
                 >
                     {formik => (
                         <div>
@@ -106,7 +128,7 @@ export default function CollegePage() {
                                                     "college",
                                                     e.value
                                                 );
-                                                inputObject.college = e.label;
+                                                inputObject.college = e.value;
                                             }}
                                         />
                                     </div>
@@ -128,7 +150,7 @@ export default function CollegePage() {
                                                     e.value
                                                 );
                                                 inputObject.department =
-                                                    e.label;
+                                                    e.value;
                                             }}
                                         />
                                     </div>

@@ -11,7 +11,7 @@ import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useState } from "react";
 
-import { createAccount } from "../../../services/newOnboardingApis";
+import { validate } from "../../../services/newOnboardingApis";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
@@ -38,7 +38,7 @@ const scheme = z.object({
     lastName: z
         .string()
         .required(`${inputObject.lastName} is Required`)
-        .min(3, `${inputObject.lastName} must be at least 3 characters`)
+        .min(1, `${inputObject.lastName} must be at least 3 characters`)
         .max(100, `${inputObject.lastName} must be at most 100 characters`),
     phoneNumber: z
         .string()
@@ -62,7 +62,7 @@ export default function AccountCreation() {
     const toast = useToast();
     const navigate = useNavigate();
 
-    const onsubmit = (values: any, actions: any) => {
+    const onsubmit = async (values: any, actions: any) => {
         const userData = {
             first_name: values.firstName,
             last_name: values.lastName,
@@ -70,12 +70,12 @@ export default function AccountCreation() {
             mobile: values.phoneNumber,
             password: values.password
         };
-        createAccount({
+        const isSuccess = await validate({
             userData: userData,
             setIsSubmitting: setSubmitting,
-            toast: toast,
-            navigate: navigate
+            toast: toast
         });
+        if (isSuccess) navigate("/role", { state: userData });
     };
 
     return (
