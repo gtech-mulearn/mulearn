@@ -56,11 +56,14 @@ const scheme = z.object({
 });
 
 export default function AccountCreation() {
-    const [isSubmitting, setSubmitting] = useState(false);
-    const [isVisible, setVisible] = useState(false);
-
     const toast = useToast();
     const navigate = useNavigate();
+    const urlParams = new URLSearchParams(window.location.search);
+    const param = urlParams.get("param");
+    const referralId = urlParams.get("referral_id");
+
+    const [isSubmitting, setSubmitting] = useState(false);
+    const [isVisible, setVisible] = useState(false);
 
     const onsubmit = async (values: any, actions: any) => {
         const userData = {
@@ -68,7 +71,9 @@ export default function AccountCreation() {
             last_name: values.lastName,
             email: values.email,
             mobile: values.phoneNumber,
-            password: values.password
+            password: values.password,
+            referral_id: referralId,
+            param: param
         };
         const isSuccess = await validate({
             userData: userData,
