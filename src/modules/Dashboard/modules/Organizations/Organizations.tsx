@@ -181,9 +181,10 @@ function Organizations() {
             );
         }
     };
-
+    console.log(data);
     const handleEdit = (id: string | number | boolean) => {
         setIsEdit(true);
+        console.log(id);
         navigate("/dashboard/organizations/edit", {
             state: {
                 activeItem: activeTab,
