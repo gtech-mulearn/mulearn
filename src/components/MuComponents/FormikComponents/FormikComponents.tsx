@@ -1,6 +1,11 @@
 import { FieldConfig, useField } from "formik";
 import styles from "./FormComponents.module.css";
-import React, { CSSProperties, ClassAttributes, HTMLAttributes, TextareaHTMLAttributes } from "react";
+import React, {
+    CSSProperties,
+    ClassAttributes,
+    HTMLAttributes,
+    TextareaHTMLAttributes
+} from "react";
 import Select, { Props as SelectProps } from "react-select";
 import { propNames } from "@chakra-ui/react";
 
@@ -9,8 +14,13 @@ TODO: Verify the Unused Code/Components in this File
 TODO: Transition the old inputs to the new one("eg.FormikTextAreaWhite")
 */
 
-type InputFormik = TextareaHTMLAttributes<HTMLInputElement> & ClassAttributes<HTMLInputElement> & FieldConfig<HTMLInputElement>
-export const FormikTextInput: FC<InputFormik & { label?: string }> = ({ label, ...props }) => {
+type InputFormik = TextareaHTMLAttributes<HTMLInputElement> &
+    ClassAttributes<HTMLInputElement> &
+    FieldConfig<HTMLInputElement>;
+export const FormikTextInput: FC<InputFormik & { label?: string }> = ({
+    label,
+    ...props
+}) => {
     // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
     // which we can spread on <input>. We can use field meta to show an error
     // message if the field is invalid and it has been touched (i.e. visited)
@@ -31,7 +41,9 @@ export const FormikTextInputWithoutLabel = ({ ...props }: InputFormik) => {
     return (
         <>
             <input className="text-input" {...field} {...props} />
-            {meta.touched && meta.error ? <span className="formikErrorSpan">{meta.error}</span> : null}
+            {meta.touched && meta.error ? (
+                <span className="formikErrorSpan">{meta.error}</span>
+            ) : null}
         </>
     );
 };
@@ -78,7 +90,7 @@ export const FormikTextAreaWhite = ({ label, ...props }: any) => {
 export type Option = {
     label: string;
     value: string | boolean | number;
-}
+};
 
 const customStyles: any = {
     control: (provided: any) => ({
@@ -104,7 +116,7 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
     name,
     label,
     options,
-    addOnChange = () => { },
+    addOnChange = () => {},
     addStyles,
     ...rest
 }) => {

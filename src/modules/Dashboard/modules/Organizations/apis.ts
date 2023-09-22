@@ -375,7 +375,7 @@ export const deleteOrganization = async (
 
 export const getInfo = async (code: string) => {
     try {
-        const response = await privateGateway.post(
+        const response = await privateGateway.get(
             `${organizationRoutes.postGetInfo}${code}/`
         );
         return response.data.response.institution;
