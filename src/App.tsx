@@ -14,7 +14,6 @@ import PrivateRoutes from "./components/PrivateRoutes";
 import DashboardRootLayout from "./modules/Dashboard/layouts/DashboardRootLayout";
 import NotFound from "./components/NotFound";
 
-
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -144,12 +143,33 @@ const CollegeLevels = lazy(
 );
 
 const Refer = lazy(() => import("./modules/Dashboard/modules/Refer/Refer"));
-const LearningCircle = lazy(() => import("./modules/Dashboard/modules/LearningCircle/pages/LearningCircle"));
-const LearningCircleCreate = lazy(() => import("./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate"));
-const FindCircle = lazy(() => import("./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind"));
-const Departments = lazy(() => import("./modules/Dashboard/modules/Departments/Departments"));
-const LearningCircleLandingPage = lazy(() => import("./modules/Dashboard/modules/LearningCircle/pages/LearningCircleLandingPage"));
-
+const LearningCircle = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle"
+        )
+);
+const LearningCircleCreate = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate"
+        )
+);
+const FindCircle = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind"
+        )
+);
+const Departments = lazy(
+    () => import("./modules/Dashboard/modules/Departments/Departments")
+);
+const LearningCircleLandingPage = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleLandingPage"
+        )
+);
 
 import { roles } from "./services/types";
 import SecureAuthRoutes from "./services/authCheck";

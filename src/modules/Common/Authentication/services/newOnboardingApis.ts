@@ -166,6 +166,7 @@ export const submitUserData = async ({
         localStorage.setItem("refreshToken", tokens.refreshToken);
         getInfo(() => navigate("/dashboard/connect-discord"));
     } catch (err: any) {
+        setIsLoading(false);
         const messages = err.response.data.message.general[0];
         showToasts({
             toast: toast,
@@ -173,5 +174,4 @@ export const submitUserData = async ({
             status: "error"
         });
     }
-    setIsLoading(false);
 };

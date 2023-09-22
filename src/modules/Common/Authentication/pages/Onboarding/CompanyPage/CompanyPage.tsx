@@ -64,7 +64,9 @@ export default function CompanyPage() {
         const newUserData = {
             ...userData,
             organizations: [values.company],
-            area_of_interests: []
+            area_of_interests: [],
+            dept: null,
+            year_of_graduation: null
         };
 
         /// If user doesn't want to be a mentor set role to null
