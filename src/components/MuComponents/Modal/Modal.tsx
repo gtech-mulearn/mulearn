@@ -111,7 +111,7 @@ const Modal: FC<ModalProps> = ({
                                 setIsOpen(false);
                             }}
                         >
-                            Done
+                            {type == "error" ? "Delete" : "Confirm"}
                         </PowerfulButton>
                     </div>
                 </div>
