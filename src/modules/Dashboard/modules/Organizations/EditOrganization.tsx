@@ -11,7 +11,7 @@ function EditOrganization() {
     const navigate = useNavigate();
     const location = useLocation();
     const [loading, setLoading] = useState(true);
-
+    console.log(location);
     const { activeItem, rowId } = location.state;
 
     const [inputName, setInputName] = useState("");
