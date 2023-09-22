@@ -123,7 +123,9 @@ export const dashboardRoutes = {
     dtGetRoles: "api/v1/dashboard/dynamic-management/roles/",
     dtGetTypes: "api/v1/dashboard/dynamic-management/types/",
     getDynamicRoles: "api/v1/dashboard/dynamic-management/dynamic-role/",
-    getDynamicUser: "api/v1/dashboard/dynamic-management/dynamic-user/"
+    getDynamicUser: "api/v1/dashboard/dynamic-management/dynamic-user/",
+
+    getErrorLog: "api/v1/dashboard/error-log/"
 } as const;
 
 export const organizationRoutes = {
