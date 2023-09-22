@@ -62,14 +62,18 @@ export default function CollegePage() {
     });
 
     useEffect(() => {
-        getColleges({
-            setIsLoading: setIsLoading,
-            setColleges: setColleges
-        });
-        getDepartments({
-            setIsLoading: setIsLoading,
-            setDepartments: setDepartments
-        });
+        if (userData === undefined || userData === null) {
+            navigate("/signup", { replace: true });
+        } else {
+            getColleges({
+                setIsLoading: setIsLoading,
+                setColleges: setColleges
+            });
+            getDepartments({
+                setIsLoading: setIsLoading,
+                setDepartments: setDepartments
+            });
+        }
     }, []);
 
     const onSubmit = async (values: any) => {

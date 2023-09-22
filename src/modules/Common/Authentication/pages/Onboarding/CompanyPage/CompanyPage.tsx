@@ -1,6 +1,7 @@
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import styles from "./CompanyPage.module.css";
+import { submitUserData } from "../../../services/newOnboardingApis";
 
 import { Form, Formik } from "formik";
 import * as z from "yup";
@@ -10,6 +11,8 @@ import { useEffect, useState } from "react";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { getCompanies } from "../../../services/newOnboardingApis";
 import ReactSelect from "react-select";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
 
 const inputObject = {
     company: "Company Name"
@@ -29,20 +32,51 @@ const scheme = z.object({
 });
 
 export default function CompanyPage() {
+    const navigate = useNavigate();
+    const toast = useToast();
+    const location = useLocation();
+    let userData = location.state;
+
     const [isloading, setIsLoading] = useState(true);
     const [companies, setCompanies] = useState([{ id: "", title: "" }]);
 
     useEffect(() => {
-        getCompanies({
-            setIsLoading: setIsLoading,
-            setCompanies: setCompanies
-        });
+        if (
+            userData === undefined ||
+            userData === null ||
+            userData.email === undefined
+        ) {
+            navigate("/signup", { replace: true });
+        } else {
+            getCompanies({
+                setIsLoading: setIsLoading,
+                setCompanies: setCompanies
+            });
+        }
     }, []);
 
     const [selectedCompany, setSelectedCompany] = useState({
         id: "",
         title: ""
     });
+
+    const onSubmit = async (values: any) => {
+        const newUserData = {
+            ...userData,
+            organizations: [values.company],
+            area_of_interests: []
+        };
+
+        /// If user doesn't want to be a mentor set role to null
+        newUserData.role = values.radio === "yes" ? userData.role : null;
+
+        submitUserData({
+            setIsLoading: setIsLoading,
+            userData: newUserData,
+            toast: toast,
+            navigate: navigate
+        });
+    };
 
     return (
         <OnboardingTemplate>
@@ -62,7 +96,7 @@ export default function CompanyPage() {
                         radio: ""
                     }}
                     validationSchema={scheme}
-                    onSubmit={(value, action) => console.log(value)} // TODO: Add API call etc stuffs here
+                    onSubmit={(value, action) => onSubmit(value)}
                 >
                     {formik => (
                         <div>
@@ -88,7 +122,7 @@ export default function CompanyPage() {
                                                     "company",
                                                     e.value
                                                 );
-                                                inputObject.company = e.label;
+                                                inputObject.company = e.value;
                                             }
                                         }}
                                     />
@@ -113,7 +147,7 @@ export default function CompanyPage() {
                                                             formik.handleChange
                                                         }
                                                         type="radio"
-                                                        value="Yes"
+                                                        value="yes"
                                                         name="radio"
                                                     />
                                                     <span>Yes</span>
@@ -128,7 +162,7 @@ export default function CompanyPage() {
                                                             formik.handleChange
                                                         }
                                                         type="radio"
-                                                        value="NO"
+                                                        value="no"
                                                         name="radio"
                                                     />
                                                     <span>No</span>

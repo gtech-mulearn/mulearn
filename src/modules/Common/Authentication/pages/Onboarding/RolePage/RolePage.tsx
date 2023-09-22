@@ -23,10 +23,16 @@ export default function Rolepage() {
     const [selectedRoleId, setSelectedRoleId] = useState<string>("");
 
     useEffect(() => {
-        getRoles({
-            setIsLoading: setIsLoading,
-            setRoles: setRoles
-        });
+        console.log("userData", userData);
+
+        if (userData === undefined || userData === null) {
+            navigate("/signup", { replace: true });
+        } else {
+            getRoles({
+                setIsLoading: setIsLoading,
+                setRoles: setRoles
+            });
+        }
     }, []);
 
     return (
