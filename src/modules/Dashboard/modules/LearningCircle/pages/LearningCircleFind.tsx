@@ -84,7 +84,7 @@ const FindCircle = () => {
                                                 <p>
                                                     {circle?.member_count} Members
                                                 </p>
-                                                {circle?.member_count === 5 ?
+                                                {circle?.member_count < 5 ?
                                                     <div className={styles.join}>
                                                         <button
                                                             onClick={() => {
