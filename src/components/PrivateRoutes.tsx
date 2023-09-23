@@ -6,7 +6,7 @@ const PrivateRoutes: React.FC = () => {
     return refreshToken ? (
         <Outlet />
     ) : (
-        <Navigate to={`/login?ruri=${redirection}`} />
+        <Navigate to={`/signin?ruri=${redirection}`} />
     );
 };
 

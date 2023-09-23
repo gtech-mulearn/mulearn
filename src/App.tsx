@@ -197,7 +197,7 @@ function App() {
         // Add redirect from '/' to '/login'
         {
             path: "/",
-            element: <Navigate to="/login" replace />
+            element: <Navigate to="/signin" replace />
         },
         {
             path: "*",
