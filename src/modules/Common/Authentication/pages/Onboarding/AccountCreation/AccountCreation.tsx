@@ -198,14 +198,14 @@ export default function AccountCreation() {
                             </div>
 
                             <div className={styles.accountCreationAlternative}>
-                                <div>
+                                {/* <div>
                                     <hr />
                                     <p>OR</p>
                                     <hr />
                                 </div>
                                 <PowerfulButton type="button" variant="ghost">
                                     <FcGoogle size={35} /> Sign in with google
-                                </PowerfulButton>
+                                </PowerfulButton> */}
                                 <div>
                                     <p>
                                         Already have an account?{" "}
