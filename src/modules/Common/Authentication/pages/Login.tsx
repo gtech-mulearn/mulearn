@@ -184,14 +184,14 @@ const Login = () => {
                                     setHasError(false);
                                     e.preventDefault();
                                     if (emailOrMuid != "" && hasError) {
-                                        requestEmailOrMuidOtp(
+                                        requestEmailOrMuidOtp({
                                             emailOrMuid,
                                             toast,
                                             setHasError,
                                             setStatus,
                                             setOtpLoading,
                                             setOtpError
-                                        );
+                                        });
                                     }
                                     if (!hasError && password != "") {
                                         otpVerification(

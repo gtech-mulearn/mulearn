@@ -9,26 +9,19 @@ import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
-import { login } from "../../../services/apis";
+import {
+    login,
+    otpVerification,
+    requestEmailOrMuidOtp
+} from "../../../services/apis";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 const inputObject = {
     emailOrMuId: "Email or MuId",
-    password: "Password"
+    password: "Password",
+    otp: "OTP"
 };
-
-const scheme = z.object({
-    emailOrMuId: z
-        .string()
-        .required(`${inputObject.emailOrMuId} is Required`)
-        .min(5, `${inputObject.emailOrMuId} must be at least 3 characters`)
-        .max(100, `${inputObject.emailOrMuId} must be at most 100 characters`),
-    password: z
-        .string()
-        .required(`${inputObject.password} is Required`)
-        .min(8, `${inputObject.password} must be at least 8 characters`)
-});
 
 export default function SignIn() {
     const toast = useToast();
@@ -37,18 +30,66 @@ export default function SignIn() {
     let ruri = window.location.href.split("=")[1];
 
     const [isLoading, setIsLoading] = useState(false);
+    const [otpForm, setOtpForm] = useState(false);
+    const [didOtpSent, setDidOtpSent] = useState(false);
+
+    const scheme = z.object({
+        emailOrMuId: z
+            .string()
+            .required(`${inputObject.emailOrMuId} is Required`)
+            .min(5, `${inputObject.emailOrMuId} must be at least 3 characters`)
+            .max(
+                100,
+                `${inputObject.emailOrMuId} must be at most 100 characters`
+            ),
+        ...(!otpForm && {
+            password: z
+                .string()
+                .required(`${inputObject.password} is Required`)
+                .min(8, `${inputObject.password} must be at least 8 characters`)
+        }),
+        ...(otpForm && {
+            otp: z
+                .string()
+                .required(`${inputObject.otp} is Required`)
+                .min(5, `${inputObject.otp} must be at least 5 characters`)
+                .max(5, `${inputObject.otp} must be at most 5 characters`)
+        })
+    });
 
     const onSubmit = (values: any) => {
-        if (values.emailOrMuId === "" || values.password === "") return;
+        console.log(values);
 
-        login(
-            values.emailOrMuId,
-            values.password,
-            toast,
-            navigate,
-            setIsLoading,
-            ruri
-        );
+        if (!otpForm) {
+            login(
+                values.emailOrMuId,
+                values.password,
+                toast,
+                navigate,
+                setIsLoading,
+                ruri
+            );
+            return;
+        }
+
+        // For OTP Form
+        if (!didOtpSent) {
+            requestEmailOrMuidOtp({
+                emailOrMuid: values.emailOrMuId,
+                toast,
+                setOtpLoading: setIsLoading,
+                setDidOtpSent
+            });
+        } else {
+            otpVerification(
+                values.emailOrMuId,
+                values.otp,
+                toast,
+                navigate,
+                setIsLoading,
+                ruri
+            );
+        }
     };
 
     return (
@@ -70,7 +111,7 @@ export default function SignIn() {
                     <div>
                         <div className={styles.wrapper}>
                             <Form>
-                                {Object.entries(inputObject).map(
+                                {/* {Object.entries(inputObject).map(
                                     ([key, value]) => (
                                         <div
                                             className={styles.inputBox}
@@ -90,13 +131,50 @@ export default function SignIn() {
                                             />
                                         </div>
                                     )
+                                )} */}
+                                <div className={styles.inputBox}>
+                                    <SimpleInput
+                                        value={formik.values.emailOrMuId}
+                                        name="emailOrMuId"
+                                        placeholder="Email or MuId"
+                                        type="text"
+                                        disabled={isLoading}
+                                    />
+                                </div>
+                                {!otpForm ? (
+                                    <div className={styles.inputBox}>
+                                        <SimpleInput
+                                            value={formik.values.password}
+                                            name="password"
+                                            placeholder="Password"
+                                            type="password"
+                                            disabled={isLoading}
+                                        />
+                                    </div>
+                                ) : (
+                                    didOtpSent && (
+                                        <div className={styles.inputBox}>
+                                            <SimpleInput
+                                                value={formik.values.otp}
+                                                name="otp"
+                                                placeholder="OTP"
+                                                type="text"
+                                                disabled={isLoading}
+                                            />
+                                        </div>
+                                    )
                                 )}
                                 <div className={styles.forgot}>
-                                    <p>
-                                        Forgot your <span>Password</span>
-                                    </p>
-                                    <p>
-                                        Login with <span>OTP</span>
+                                    <a href="forgot-password">
+                                        <p>
+                                            Forgot your <span>Password</span>
+                                        </p>
+                                    </a>
+                                    <p onClick={() => setOtpForm(!otpForm)}>
+                                        Login with{" "}
+                                        <span>
+                                            {otpForm ? "Password" : "OTP"}
+                                        </span>
                                     </p>
                                 </div>
                                 <div className={styles.submit}>
@@ -104,7 +182,11 @@ export default function SignIn() {
                                         type="submit"
                                         isLoading={isLoading}
                                     >
-                                        Submit
+                                        {otpForm
+                                            ? didOtpSent
+                                                ? "Sign in with OTP"
+                                                : "Request OTP"
+                                            : "Sign in"}
                                     </PowerfulButton>
                                     {/* <p>OR</p>
                                     <PowerfulButton
