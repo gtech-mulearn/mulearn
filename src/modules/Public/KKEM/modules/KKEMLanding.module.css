@@ -1,4 +1,19 @@
-.main {
+/* Scrollbar */
+/* ::-webkit-scrollbar{
+    width: 10px;
+    display: block;
+  }
+::-webkit-scrollbar-thumb {
+    background: #848383; 
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover{
+    background: #6f6f6f;
+  } */
+
+
+
+.mainContainer{
     max-width: 200rem;
     margin: 0 auto;
 }
@@ -21,4 +36,6 @@
 html {
     scroll-behavior: smooth;
 }
+
+
 
