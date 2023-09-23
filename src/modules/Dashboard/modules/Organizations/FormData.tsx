@@ -436,7 +436,13 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         .required("Required"),
                     Code: Yup.string()
                         .max(30, "Must be 30 characters or less")
-                        .required("Required")
+                        .required("Required"),
+                    Country: Yup.string().required("Required"),
+                    State: Yup.string().required("Required"),
+                    Zone: Yup.string().required("Required"),
+                    District: Yup.string().required("Required"),
+                    Affiliation: Yup.string().required("Required")
+
                 })}
                 onSubmit={values => {
                     setIsLoading(true);
