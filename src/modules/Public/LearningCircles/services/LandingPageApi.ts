@@ -8,11 +8,13 @@ interface Option {
     label: string;
 }
 export const fetchLC = async (
+    setLoading: UseStateFunc<boolean>,
     setData: UseStateFunc<any>,
-    ig: string | null,
-    campus: string,
-    district: string
+    district?: string,
+    campus?: string,
+    ig?: string | null,
 ) => {
+    setLoading(true);
     try {
         const response = await privateGateway.post(
             dashboardRoutes.getCampusLearningCircles + "list" + "/",
@@ -28,28 +30,8 @@ export const fetchLC = async (
         if (error?.response) {
             throw error;
         }
-    }
-};
-
-export const fetchLCFull = async (
-    setData: UseStateFunc<any>,
-    campus: string,
-    district: string
-) => {
-    try {
-        const response = await privateGateway.post(
-            dashboardRoutes.getCampusLearningCircles + "list" + "/",
-            {
-                org_id: campus,
-                district_id: district
-            }
-        );
-        setData(response.data.response);
-    } catch (err: unknown) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            throw error;
-        }
+    } finally {
+        setLoading(false);
     }
 };
 
@@ -178,9 +160,7 @@ export const getInterestGroups = async () => {
 export const getCount = async (setCount: Dispatch<any>) => {
     try {
         const response = await privateGateway.get(dashboardRoutes.getCount);
-        setCount(
-            response.data.response
-        );
+        setCount(response.data.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
