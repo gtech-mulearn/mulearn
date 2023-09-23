@@ -70,7 +70,6 @@ export const editUserRoleVerification = async (
             console.log(error.response);
         }
     }
-    console.log('edit done!')
 };
 interface IData {
     verified: boolean;

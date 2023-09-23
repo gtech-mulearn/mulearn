@@ -40,7 +40,7 @@ export const getOrganizations = async (
                         pageIndex: page,
                         search: search,
                         sortBy: sortID,
-                        orgType: activeTab
+                        org_type: activeTab
                     }
                 }
             )
@@ -195,14 +195,14 @@ export const createOrganization = async (
     state: string,
     zone: string,
     district: string,
-    orgType: string,
+    org_type: string,
     toast: (options?: UseToastOptions | undefined) => ToastId,
     affiliation?: string,
     setIsSuccess?: any,
     setIsLoading?: any
 ) => {
     const addDataProps = () => {
-        if (orgType === "College") {
+        if (org_type === "College") {
             return {
                 title: title,
                 code: code,
@@ -211,7 +211,7 @@ export const createOrganization = async (
                 district: district,
                 country: country,
                 affiliation: affiliation,
-                orgType: orgType
+                org_type: org_type
             };
         } else {
             return {
@@ -221,7 +221,7 @@ export const createOrganization = async (
                 zone: zone,
                 district: district,
                 country: country,
-                orgType: orgType
+                org_type: org_type
             };
         }
     };
@@ -278,14 +278,14 @@ export const updateOrganization = async (
     state: string,
     zone: string,
     district: string,
-    orgType: string,
+    org_type: string,
     toast: (options?: UseToastOptions | undefined) => ToastId,
     affiliation?: string,
     setIsSuccess?: any,
     setIsLoading?: any
 ) => {
     const addDataProps = () => {
-        if (orgType === "College") {
+        if (org_type === "College") {
             return {
                 title: title,
                 code: code,
@@ -294,7 +294,7 @@ export const updateOrganization = async (
                 district: district,
                 country: country,
                 affiliation: affiliation,
-                orgType: orgType
+                org_type: org_type
             };
         } else {
             return {
@@ -304,7 +304,7 @@ export const updateOrganization = async (
                 zone: zone,
                 district: district,
                 country: country,
-                orgType: orgType
+                org_type: org_type
             };
         }
     };
@@ -375,7 +375,7 @@ export const deleteOrganization = async (
 
 export const getInfo = async (code: string) => {
     try {
-        const response = await privateGateway.post(
+        const response = await privateGateway.get(
             `${organizationRoutes.postGetInfo}${code}/`
         );
         return response.data.response.institution;

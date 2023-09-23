@@ -8,7 +8,9 @@ export const onboardingRoutes = {
     areaOfInterestList: "/api/v1/register/area-of-interest/list/",
     communityList: "/api/v1/register/community/list/",
     register: "/api/v1/register/",
-    emailVerification: "/api/v1/register/email-verification/"
+    emailVerification: "/api/v1/register/email-verification/",
+    // New Onboarding Routes
+    createAccount: "/api/v1/register/new/"
 } as const;
 
 export const authRoutes = {
@@ -124,7 +126,9 @@ export const dashboardRoutes = {
     dtGetRoles: "api/v1/dashboard/dynamic-management/roles/",
     dtGetTypes: "api/v1/dashboard/dynamic-management/types/",
     getDynamicRoles: "api/v1/dashboard/dynamic-management/dynamic-role/",
-    getDynamicUser: "api/v1/dashboard/dynamic-management/dynamic-user/"
+    getDynamicUser: "api/v1/dashboard/dynamic-management/dynamic-user/",
+
+    getErrorLog: "api/v1/dashboard/error-log/"
 } as const;
 
 export const organizationRoutes = {

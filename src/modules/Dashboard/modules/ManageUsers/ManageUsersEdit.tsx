@@ -137,6 +137,8 @@ const ManageUsersEdit = (props: Props) => {
                         ].filter(item => item !== null) as string[];
 
                         editManageUsers(
+                            toast,
+                            navigate,
                             id,
                             values.first_name,
                             values.last_name,
@@ -146,10 +148,10 @@ const ManageUsersEdit = (props: Props) => {
                             values.department ?? undefined,
                             values.graduation_year ?? undefined,
                             values.role,
-                            values.interest ?? undefined // use nullish coalescing operator to provide default value of undefined
+                            values.interest ?? undefined, // use nullish coalescing operator to provide default value of undefined
                         );
 
-                        navigate("/dashboard/manage-users");
+                        // navigate("/dashboard/manage-users");
                     }}
                 >
                     <Form>

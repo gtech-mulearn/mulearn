@@ -129,7 +129,7 @@ export default function Landing() {
         }
     ];
     return (
-
+        
         <main className={styles.mainContainer}>
             <Navbar />
             <div style={{ position: "relative", height: "100%" }}>
@@ -153,6 +153,5 @@ export default function Landing() {
             {/* <SkillExpress /> */}
             <Footer />
         </main>
-
     );
 }

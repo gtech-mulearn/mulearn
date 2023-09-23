@@ -7,11 +7,7 @@ import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComp
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import Modal from "../CollegeLevels/components/Modal";
 
-import {
-    createDepartment,
-    getDepartments,
-    updateDepartment
-} from "./apis";
+import { createDepartment, getDepartments, updateDepartment } from "./apis";
 import { modalTypes } from "../../utils/enums";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
@@ -19,6 +15,7 @@ type Props = {
     id?: string;
     setCurrModal: Dispatch<SetStateAction<modalTypes | null>>;
     setDepartments: Dispatch<SetStateAction<any[]>>;
+    loading: boolean;
     setIsLoading: Dispatch<SetStateAction<boolean>>;
     toast: (options?: UseToastOptions | undefined) => ToastId;
 };
@@ -27,6 +24,7 @@ const CreateOrUpdateDepartmentModal = ({
     id,
     setCurrModal,
     setDepartments,
+    loading,
     setIsLoading,
     toast
 }: Props) => {
@@ -47,7 +45,7 @@ const CreateOrUpdateDepartmentModal = ({
             onClose={setCurrModal}
             header={id ? "Edit department" : "Create a new department"}
         >
-            {true ? (
+            {loading ? (
                 <MuLoader />
             ) : (
                 <Formik
@@ -74,8 +72,9 @@ const CreateOrUpdateDepartmentModal = ({
                                 label={`${id ? "New " : ""}Name`}
                                 name="title"
                                 type="text"
-                                placeholder={`Enter ${id ? "new " : ""
-                                    }department name`}
+                                placeholder={`Enter ${
+                                    id ? "new " : ""
+                                }department name`}
                             />
                             <PowerfulButton
                                 children="Submit"

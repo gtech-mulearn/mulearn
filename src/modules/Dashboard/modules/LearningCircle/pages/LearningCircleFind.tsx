@@ -84,21 +84,27 @@ const FindCircle = () => {
                                                 <p>
                                                     {circle?.member_count} Members
                                                 </p>
-                                                <div className={styles.join}>
-                                                    <button
-                                                        onClick={() => {
-                                                            joinCircle(circle.id);
+                                                {circle?.member_count < 5 ?
+                                                    <div className={styles.join}>
+                                                        <button
+                                                            onClick={() => {
+                                                                joinCircle(circle.id);
 
-                                                            setTimeout(() => {
-                                                                navigate(
-                                                                    `/dashboard/learning-circle`
-                                                                );
-                                                            }, 1500);
-                                                        }}
-                                                    >
-                                                        Join
-                                                    </button>
-                                                </div>
+                                                                setTimeout(() => {
+                                                                    navigate(
+                                                                        `/dashboard/learning-circle`
+                                                                    );
+                                                                }, 1500);
+                                                            }}
+                                                        >
+                                                            Join
+                                                        </button>
+                                                    </div> :
+                                                    <div className={styles.full}>
+                                                        <button className={styles.disabled_button}>
+                                                            Circle Full
+                                                        </button></div>}
+
                                             </div>
 
                                         )

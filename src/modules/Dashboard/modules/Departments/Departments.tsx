@@ -116,6 +116,7 @@ const Departments = () => {
                         return CreateOrUpdateDepartmentModal({
                             setCurrModal: setCurrModal,
                             setDepartments: setDepartments,
+                            loading: isLoading,
                             setIsLoading: setIsLoading,
                             toast: toast
                         });
@@ -125,6 +126,7 @@ const Departments = () => {
                                   id: choosenDeptId!,
                                   setCurrModal: setCurrModal,
                                   setDepartments: setDepartments,
+                                  loading: isLoading,
                                   setIsLoading: setIsLoading,
                                   toast: toast
                               })
