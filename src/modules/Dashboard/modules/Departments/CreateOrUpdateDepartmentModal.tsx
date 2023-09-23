@@ -44,6 +44,7 @@ const CreateOrUpdateDepartmentModal = ({
         <Modal
             onClose={setCurrModal}
             header={id ? "Edit department" : "Create a new department"}
+            paragraph={id ? "Edit the department's name" : "Create a new department name"}
         >
             {loading ? (
                 <MuLoader />
@@ -72,15 +73,26 @@ const CreateOrUpdateDepartmentModal = ({
                                 label={`${id ? "New " : ""}Name`}
                                 name="title"
                                 type="text"
-                                placeholder={`Enter ${
-                                    id ? "new " : ""
-                                }department name`}
+                                placeholder={`Enter ${id ? "new " : ""
+                                    }department name`}
+                                style={{
+                                    width: window.innerWidth < 426 ? "13rem" : "20rem",
+                                }}
                             />
-                            <PowerfulButton
-                                children="Submit"
-                                type="submit"
-                                style={{ margin: "20px 0 0 0" }}
-                            />
+                            <hr style={{ marginBottom: "1rem" }} />
+                            <div style={{ display: "flex", flexDirection: window.innerWidth < 768 ? "column" : "row", justifyContent: "space-between", gap: "1rem" }}>
+                                <PowerfulButton
+                                    children="Cancel"
+                                    type="button"
+                                    onClick={() => setCurrModal(null)}
+                                    style={{ background: "#eff1f9", color: "#456ff6", width: "100%" }}
+                                />
+                                <PowerfulButton
+                                    children="Submit"
+                                    type="submit"
+                                    style={{ width: "100%" }}
+                                />
+                            </div>
                         </Form>
                     )}
                 </Formik>
