@@ -531,77 +531,19 @@ function App() {
                         },
                         {
                             path: "learning-circle",
-                            element: (
-                                <RoleChecker
-                                    roles={[
-                                        roles.STUDENT,
-                                        roles.ADMIN,
-                                        roles.FELLOW,
-                                        roles.ENABLER,
-                                        roles.MENTOR
-                                    ]}
-                                    toastTitle="Not Accessible"
-                                    toastDescription="Learning circle is accessible only to students."
-                                    children={<LearningCircleLandingPage />}
-                                />
-                            )
+                            element: <LearningCircleLandingPage />
                         },
                         {
                             path: "learning-circle/details/:id",
-                            element: (
-                                <RoleChecker
-                                    roles={[
-                                        roles.STUDENT,
-                                        roles.ADMIN,
-                                        roles.FELLOW,
-                                        roles.ENABLER,
-                                        roles.MENTOR
-                                    ]}
-                                    children={<LearningCircle />}
-                                    toastTitle="Not Accessible"
-                                    toastDescription="Learning circle is accessible only to students."
-                                    redirectPath={
-                                        <Navigate
-                                            to="/dashboard/profile"
-                                            replace
-                                        />
-                                    }
-                                />
-                            )
+                            element: <LearningCircle />
                         },
                         {
                             path: "learning-circle/find-circle",
-                            element: (
-                                <RoleChecker
-                                    roles={[
-                                        roles.STUDENT,
-                                        roles.ADMIN,
-                                        roles.FELLOW,
-                                        roles.ENABLER,
-                                        roles.MENTOR
-                                    ]}
-                                    toastTitle="Not Accessible"
-                                    toastDescription="Learning circle is accessible only to students."
-                                    children={<FindCircle />}
-                                />
-                            )
+                            element: <FindCircle />
                         },
                         {
                             path: "learning-circle/create-circle",
-                            element: (
-                                <RoleChecker
-                                    roles={[
-                                        roles.STUDENT,
-                                        roles.ADMIN,
-                                        roles.FELLOW,
-                                        roles.ENABLER,
-                                        roles.MENTOR
-                                    ]}
-                                    toastTitle="Not Accessible"
-                                    toastDescription="Learning circle is accessible only to students."
-                                    children={<LearningCircleCreate />}
-                                />
-                            )
+                            element: <LearningCircleCreate />
                         }
                         // {
                         //     path: "settings",
