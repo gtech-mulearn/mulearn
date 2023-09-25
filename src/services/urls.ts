@@ -10,7 +10,12 @@ export const onboardingRoutes = {
     register: "/api/v1/register/",
     emailVerification: "/api/v1/register/email-verification/",
     // New Onboarding Routes
-    createAccount: "/api/v1/register/new/"
+    createAccount: "/api/v1/register/new/",
+    roles: "/api/v1/register/role/list/",
+    colleges: "/api/v1/register/colleges/",
+    departments: "/api/v1/register/department/list/",
+    companies: "/api/v1/register/company/list/",
+    validate: "/api/v1/register/validate/"
 } as const;
 
 export const authRoutes = {

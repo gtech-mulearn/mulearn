@@ -11,7 +11,7 @@ import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useState } from "react";
 
-import { createAccount } from "../../../services/onboardingApis";
+import { validate } from "../../../services/newOnboardingApis";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
@@ -38,7 +38,7 @@ const scheme = z.object({
     lastName: z
         .string()
         .required(`${inputObject.lastName} is Required`)
-        .min(3, `${inputObject.lastName} must be at least 3 characters`)
+        .min(1, `${inputObject.lastName} must be at least 3 characters`)
         .max(100, `${inputObject.lastName} must be at most 100 characters`),
     phoneNumber: z
         .string()
@@ -56,26 +56,31 @@ const scheme = z.object({
 });
 
 export default function AccountCreation() {
+    const toast = useToast();
+    const navigate = useNavigate();
+    const urlParams = new URLSearchParams(window.location.search);
+    const param = urlParams.get("param");
+    const referralId = urlParams.get("referral_id");
+
     const [isSubmitting, setSubmitting] = useState(false);
     const [isVisible, setVisible] = useState(false);
 
-    const toast = useToast();
-    const navigate = useNavigate();
-
-    const onsubmit = (values: any, actions: any) => {
+    const onsubmit = async (values: any, actions: any) => {
         const userData = {
             first_name: values.firstName,
             last_name: values.lastName,
             email: values.email,
             mobile: values.phoneNumber,
-            password: values.password
+            password: values.password,
+            referral_id: referralId,
+            param: param
         };
-        createAccount({
+        const isSuccess = await validate({
             userData: userData,
             setIsSubmitting: setSubmitting,
-            toast: toast,
-            navigate: navigate
+            toast: toast
         });
+        if (isSuccess) navigate("/role", { state: userData });
     };
 
     return (
@@ -193,18 +198,18 @@ export default function AccountCreation() {
                             </div>
 
                             <div className={styles.accountCreationAlternative}>
-                                <div>
+                                {/* <div>
                                     <hr />
                                     <p>OR</p>
                                     <hr />
                                 </div>
                                 <PowerfulButton type="button" variant="ghost">
                                     <FcGoogle size={35} /> Sign in with google
-                                </PowerfulButton>
+                                </PowerfulButton> */}
                                 <div>
                                     <p>
                                         Already have an account?{" "}
-                                        <a href="">Sign In</a>
+                                        <a href="/signin">Sign In</a>
                                     </p>
                                 </div>
                             </div>

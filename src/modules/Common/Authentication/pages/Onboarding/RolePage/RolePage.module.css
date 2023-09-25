@@ -1,26 +1,26 @@
-.rolePageConatiner{
+.rolePageConatiner {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     font-family: inherit;
 }
-.rolePageConatiner button{
+.rolePageConatiner button {
     margin-top: 3rem;
     width: 465px;
     height: 49px;
     flex-shrink: 0;
     border-radius: 8px;
-    background: #456FF6;
+    background: #456ff6;
     color: #fff;
 }
 .rolePageCards {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
-    z-index: 10;    
+    z-index: 10;
 }
-.rolePageCards .rolePageCard{
+.rolePageCards .rolePageCard {
     width: 215px;
     height: 150px;
     border-radius: 1rem;
@@ -32,33 +32,37 @@
     text-align: center;
     justify-content: center;
     gap: 1rem;
+}
+.rolePageCards .rolePageCard:hover {
+    border: 1.177px solid #456ff6;
+    transition: 1s ease;
+}
 
+.rolePageCards .active {
+    border: 2px solid #456ff6;
 }
-.rolePageCards .rolePageCard:hover{
-    border: 1.177px solid #456FF6;
-    transition:1.5s ease;
-}
-.rolePageCard div{
+
+.rolePageCard div {
     display: flex;
 }
 
-@media(width<500px){
-    .rolePageConatiner button{
-     width: 200px;
-     margin-bottom: 5rem;
+@media (width<500px) {
+    .rolePageConatiner button {
+        width: 200px;
+        margin-bottom: 5rem;
     }
-    .rolePageCards{
+    .rolePageCards {
         grid-template-columns: 1fr;
         margin-top: 1.5rem;
     }
-    .rolePageCards .rolePageCard{
+    .rolePageCards .rolePageCard {
         width: 300px;
     }
 }
 
-@media(width<300px){
-    .rolePageCards .rolePageCard{
+@media (width<300px) {
+    .rolePageCards .rolePageCard {
         width: 200px;
-        font-size: .65rem;
+        font-size: 0.65rem;
     }
 }
