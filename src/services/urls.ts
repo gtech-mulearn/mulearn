@@ -80,7 +80,9 @@ export const dashboardRoutes = {
     zonalCampusData: "/api/v1/dashboard/zonal/campus-details/csv/",
 
     departments: "/api/v1/dashboard/organisation/departments/",
-
+    createDepartment: "/api/v1/dashboard/organisation/departments/create/",
+    editDepartment: "/api/v1/dashboard/organisation/departments/edit/",
+    deleteDepartment: "/api/v1/dashboard/organisation/departments/delete/",
     districtStudentDetails: "/api/v1/dashboard/district/student-details/",
     districtStudentData: "/api/v1/dashboard/district/student-details/csv/",
     districtCampusDetails: "/api/v1/dashboard/district/college-details/",
@@ -137,18 +139,22 @@ export const dashboardRoutes = {
 } as const;
 
 export const organizationRoutes = {
-    getOrganizationsAll: "/api/v1/dashboard/organisation/institutes/info/all/",
+    getOrganizationsAll: "/api/v1/dashboard/organisation/institutes/",
     getCompany: "/api/v1/dashboard/organisation/institutes/show/Company/",
     getCollege: "/api/v1/dashboard/organisation/institutes/show/College/",
     getCommunity: "/api/v1/dashboard/organisation/institutes/show/Community/",
     getAffiliation:
         "/api/v1/dashboard/organisation/institutes/org/affiliation/",
+    createAffiliation: "/api/v1/dashboard/organisation/institutes/affiliation/create/",
+    editAffiliation: "/api/v1/dashboard/organisation/institutes/affiliation/edit/",
+    deleteAffiliation: "/api/v1/dashboard/organisation/institutes/affiliation/delete/",
+
     getLocation: "/api/v1/dashboard/location",
-    postAddOrganization: "/api/v1/dashboard/organisation/institutes/add/",
-    putUpdateOrganization: "/api/v1/dashboard/organisation/institutes",
-    deleteOrgnaization: "/api/v1/dashboard/organisation/institutes/",
+    postAddOrganization: "/api/v1/dashboard/organisation/institutes/create/",
+    putUpdateOrganization: "/api/v1/dashboard/organisation/institutes/edit/",
+    deleteOrgnaization: "/api/v1/dashboard/organisation/institutes/delete/",
     postGetInfo: "/api/v1/dashboard/organisation/institutes/info/",
-    getOrgCsv: "/api/v1/dashboard/organisation/institutes/csv"
+    getOrgCsv:(org_type:string)=> `/api/v1/dashboard/organisation/institutes/${org_type}/csv/`
 } as const;
 
 export const ManageLocationsRoutes = {
