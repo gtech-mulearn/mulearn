@@ -25,7 +25,7 @@ export default function KKEMAuth() {
                 privateGateway
                     .get(dashboardRoutes.getInfo)
                     .then((response: authGetUserInfo) => {
-                        //console.log(response);
+
                         localStorage.setItem(
                             "userInfo",
                             JSON.stringify(response.data.response)
@@ -36,7 +36,7 @@ export default function KKEMAuth() {
                         console.log(error);
                     });
                 setStatus("success");
-                // console.log(res.response);
+               
                 localStorage.setItem("accessToken", res?.response?.accessToken);
                 localStorage.setItem(
                     "refreshToken",
@@ -53,7 +53,6 @@ export default function KKEMAuth() {
                 }, 2000);
             })
             .catch(err => {
-                // console.log(err.hasError);
                 if (err?.hasError) {
                     setStatus("failure");
                     toast({
