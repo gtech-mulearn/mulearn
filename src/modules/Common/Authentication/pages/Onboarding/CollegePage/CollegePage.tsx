@@ -78,11 +78,13 @@ export default function CollegePage() {
 
     const onSubmit = async (values: any) => {
         const newUserData = {
-            ...userData,
-            dept: values.department,
-            year_of_graduation: values.graduationYear,
-            organizations: [values.college],
-            area_of_interests: []
+            user: {
+                ...userData,
+                dept: values.department,
+                year_of_graduation: values.graduationYear,
+                organizations: [values.college],
+                area_of_interests: []
+            }
         };
         submitUserData({
             setIsLoading: setIsLoading,

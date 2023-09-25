@@ -199,10 +199,9 @@ export default function SignIn() {
                                     </PowerfulButton> */}
                                 </div>
                                 <div className={styles.noAccount}>
-                                    <PowerfulButton variant="link">
-                                        Don't have an account?
-                                        <a href="">Sign Up</a>
-                                    </PowerfulButton>
+                                    <a href="/signup">
+                                        Don't have an account? Sign up
+                                    </a>
                                 </div>
                             </Form>
                         </div>
