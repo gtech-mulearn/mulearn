@@ -33,6 +33,7 @@ const Onboarding = (props: Props) => {
     const urlParams = new URLSearchParams(window.location.search);
     const param = urlParams.get("param");
     const referralId = urlParams.get("referral_id");
+    const inviteCode = urlParams.get("invite_code")
     const queryParameters = new URLSearchParams(window.location.search);
     const navigate = useNavigate();
     // for hide and question container
@@ -225,7 +226,8 @@ const Onboarding = (props: Props) => {
         mentorRole: "",
         areaOfInterest: [],
         general: "",
-        referral_id: referralId ? referralId : ""
+        referral_id: referralId ? referralId : "",
+        invite_code: inviteCode ? inviteCode : ""
     };
 
     const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
