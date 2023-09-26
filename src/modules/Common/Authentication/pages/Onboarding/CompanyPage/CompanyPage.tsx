@@ -62,15 +62,24 @@ export default function CompanyPage() {
 
     const onSubmit = async (values: any) => {
         const newUserData = {
-            ...userData,
-            organizations: [values.company],
+            user: {
+                first_name: userData.first_name,
+                last_name: userData.last_name,
+                mobile: userData.mobile,
+                email: userData.email,
+                password: userData.password,
+                role: userData.role
+            },
+            dept: values.department,
+            year_of_graduation: values.graduationYear,
+            organizations: [values.college],
             area_of_interests: [],
-            dept: null,
-            year_of_graduation: null
+            referral_id: userData.referral_id,
+            param: userData.param
         };
 
         /// If user doesn't want to be a mentor set role to null
-        newUserData.role = values.radio === "yes" ? userData.role : null;
+        newUserData.user.role = values.radio === "yes" ? userData.role : null;
 
         submitUserData({
             setIsLoading: setIsLoading,
