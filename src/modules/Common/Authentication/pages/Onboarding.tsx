@@ -192,18 +192,6 @@ const Onboarding = (props: Props) => {
         }
     }, []);
 
-    const [backendError, setBackendError] = useState<BackendErrors>({});
-
-    const handleBackendErrors = (errors: BackendErrors) => {
-
-        const formattedErrors: BackendErrors = {};
-        Object.entries(errors).forEach(([fieldName, errorMessages]) => {
-            formattedErrors[fieldName] = errorMessages;
-        });
-
-        setBackendError(formattedErrors);
-    };
-
     // formik
     const initialValues = {
         firstName: "",
@@ -230,9 +218,10 @@ const Onboarding = (props: Props) => {
 
     const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
         if (values.organization != "") {
-            values.community.push(values.organization);
+            //if values.organization doesn't exist in values.community then push it
+            if (!values.community.includes(values.organization))
+                values.community.push(values.organization);
         }
-        console.log(values.community);
 
         const userData = {
             first_name: values.firstName, //required
