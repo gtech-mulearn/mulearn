@@ -135,7 +135,7 @@ export default function CollegePage() {
                                             name="college"
                                             placeholder="College"
                                             value={selectedCollege.title}
-                                            onChange={e => {
+                                            onChange={(e: any) => {
                                                 setSelectedCollege(e);
                                                 formik.setFieldValue(
                                                     "college",
@@ -156,7 +156,7 @@ export default function CollegePage() {
                                             name="department"
                                             placeholder="Department"
                                             value={selectedDepartment.title}
-                                            onChange={e => {
+                                            onChange={(e: any) => {
                                                 setSelectedDepartment(e);
                                                 formik.setFieldValue(
                                                     "department",

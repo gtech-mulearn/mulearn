@@ -126,7 +126,7 @@ export default function CompanyPage() {
                                         name="company"
                                         placeholder="Company Name"
                                         value={selectedCompany.title}
-                                        onChange={e => {
+                                        onChange={(e: any) => {
                                             if (e) {
                                                 setSelectedCompany(e);
                                                 formik.setFieldValue(
