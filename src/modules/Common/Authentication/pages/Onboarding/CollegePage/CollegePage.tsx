@@ -46,7 +46,7 @@ export default function CollegePage() {
     const navigate = useNavigate();
     const toast = useToast();
     const location = useLocation();
-    let userData = location.state as Object;
+    let userData: any = location.state as Object;
 
     const [isloading, setIsLoading] = useState(true);
     const [colleges, setColleges] = useState([{ id: "", title: "" }]);
@@ -78,11 +78,20 @@ export default function CollegePage() {
 
     const onSubmit = async (values: any) => {
         const newUserData = {
-            ...userData,
+            user: {
+                first_name: userData.first_name,
+                last_name: userData.last_name,
+                mobile: userData.mobile,
+                email: userData.email,
+                password: userData.password,
+                role: userData.role
+            },
             dept: values.department,
             year_of_graduation: values.graduationYear,
             organizations: [values.college],
-            area_of_interests: []
+            area_of_interests: [],
+            referral_id: userData.referral_id,
+            param: userData.param
         };
         submitUserData({
             setIsLoading: setIsLoading,
@@ -126,7 +135,7 @@ export default function CollegePage() {
                                             name="college"
                                             placeholder="College"
                                             value={selectedCollege.title}
-                                            onChange={e => {
+                                            onChange={(e: any) => {
                                                 setSelectedCollege(e);
                                                 formik.setFieldValue(
                                                     "college",
@@ -147,7 +156,7 @@ export default function CollegePage() {
                                             name="department"
                                             placeholder="Department"
                                             value={selectedDepartment.title}
-                                            onChange={e => {
+                                            onChange={(e: any) => {
                                                 setSelectedDepartment(e);
                                                 formik.setFieldValue(
                                                     "department",

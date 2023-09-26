@@ -48,11 +48,7 @@ const scheme = z.object({
     password: z
         .string()
         .required(`${inputObject.password} is Required`)
-        .min(8, `${inputObject.password} must be at least 8 characters`),
-    confirmPassword: z
-        .string()
-        .required(`${inputObject.confirmPassword} is Required`)
-        .oneOf([z.ref("password"), ""], "Passwords must match")
+        .min(8, `${inputObject.password} must be at least 8 characters`)
 });
 
 export default function AccountCreation() {
@@ -64,8 +60,19 @@ export default function AccountCreation() {
 
     const [isSubmitting, setSubmitting] = useState(false);
     const [isVisible, setVisible] = useState(false);
+    const [isTncChecked, setTncChecked] = useState(false);
 
     const onsubmit = async (values: any, actions: any) => {
+        if (!isTncChecked) {
+            toast({
+                title: "Please accept the terms and conditions",
+                status: "error",
+                duration: 3000,
+                isClosable: true
+            });
+            return;
+        }
+
         const userData = {
             first_name: values.firstName,
             last_name: values.lastName,
@@ -185,6 +192,34 @@ export default function AccountCreation() {
                                         required
                                         disabled={isSubmitting}
                                     />
+                                </div>
+
+                                <div className={styles.tnc}>
+                                    <input
+                                        type="checkbox"
+                                        name="tnc"
+                                        className={styles.tncCheckbox}
+                                        checked={isTncChecked}
+                                        onChange={() => setTncChecked(e => !e)}
+                                    />
+                                    <p>
+                                        I agree to the{" "}
+                                        <a
+                                            href="http://mulearn.org/termsandconditions"
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                            Terms & Conditions
+                                        </a>
+                                        {" and "}
+                                        <a
+                                            href="http://mulearn.org/privacypolicy"
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                            Privacy Policy
+                                        </a>
+                                    </p>
                                 </div>
 
                                 <PowerfulButton

@@ -33,6 +33,7 @@ const Onboarding = (props: Props) => {
     const urlParams = new URLSearchParams(window.location.search);
     const param = urlParams.get("param");
     const referralId = urlParams.get("referral_id");
+    const inviteCode = urlParams.get("invite_code")
     const queryParameters = new URLSearchParams(window.location.search);
     const navigate = useNavigate();
     // for hide and question container
@@ -251,7 +252,8 @@ const Onboarding = (props: Props) => {
             area_of_interests: values.areaOfInterest, //required,
             password: values.password, //required
             referral_id: values.referral_id === "" ? null : values.referral_id,
-            param: param ? param : null
+            param: param ? param : null,
+            invite_code: inviteCode ? inviteCode : null,
         };
         registerUser(
             setFormSuccess,
@@ -275,7 +277,6 @@ const Onboarding = (props: Props) => {
             errors.email = "Invalid email address";
         }
         if (values.password.length < 8)
-            errors.password = "Password length should be greater than 8";
 
         if (!values.confirmPassword) {
             errors.confirmPassword = "Please confirm your password";
