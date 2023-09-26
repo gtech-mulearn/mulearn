@@ -226,8 +226,7 @@ const Onboarding = (props: Props) => {
         mentorRole: "",
         areaOfInterest: [],
         general: "",
-        referral_id: referralId ? referralId : "",
-        invite_code: inviteCode ? inviteCode : ""
+        referral_id: referralId ? referralId : ""
     };
 
     const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
@@ -253,7 +252,8 @@ const Onboarding = (props: Props) => {
             area_of_interests: values.areaOfInterest, //required,
             password: values.password, //required
             referral_id: values.referral_id === "" ? null : values.referral_id,
-            param: param ? param : null
+            param: param ? param : null,
+            invite_code: inviteCode ? inviteCode : null,
         };
         registerUser(
             setFormSuccess,
@@ -277,7 +277,6 @@ const Onboarding = (props: Props) => {
             errors.email = "Invalid email address";
         }
         if (values.password.length < 8)
-            errors.password = "Password length should be greater than 8";
 
         if (!values.confirmPassword) {
             errors.confirmPassword = "Please confirm your password";
