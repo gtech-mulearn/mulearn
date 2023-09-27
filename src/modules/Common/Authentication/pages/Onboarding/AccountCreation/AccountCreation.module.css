@@ -60,6 +60,16 @@
     }
 }
 
+.col_2 {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.col_2 div {
+    flex: 1;
+}
+
 @media (max-width: 600px) {
     .accountCreationContainer {
         width: 90vw;
@@ -113,16 +123,20 @@
     margin-bottom: 2rem;
 }
 
-.tncCheckbox {
+.tnc {
     display: flex;
-    align-items: center;
+    align-items: start;
+    vertical-align: top;
     margin-top: 1rem;
+    align-items: center;
 }
 
 .tnc input {
     margin-right: 0.5rem;
+    margin-top: 0.2rem;
     display: inline-block;
     width: min-content;
+    vertical-align: top;
 }
 
 .tnc p {

@@ -211,18 +211,26 @@ export const getInterests = (errorHandler: errorHandler, setAoiAPI: AoiAPI) => {
 };
 
 // request for community list
-export const getCommunities = (
-    errorHandler: errorHandler,
-    setCommunityAPI: getAPI
-) => {
+export const getCommunities = ({
+    errorHandler,
+    setCommunityAPI,
+    setIsLoading
+}: {
+    errorHandler?: errorHandler;
+    setCommunityAPI: getAPI;
+    setIsLoading?: UseStateFunc<boolean>;
+}) => {
+    setIsLoading && setIsLoading(true);
     publicGateway
         .get(onboardingRoutes.communityList)
         .then(response => {
             setCommunityAPI(response.data.response.communities);
         })
         .catch((error: APIError) => {
-            errorHandler(error.response.status, error.response.data.status);
+            errorHandler &&
+                errorHandler(error.response.status, error.response.data.status);
         });
+    setIsLoading && setIsLoading(false);
 };
 
 // POST request for registration

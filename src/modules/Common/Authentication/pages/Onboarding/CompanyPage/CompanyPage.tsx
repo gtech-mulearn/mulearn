@@ -70,12 +70,18 @@ export default function CompanyPage() {
                 password: userData.password,
                 role: userData.role
             },
-            dept: values.department,
-            year_of_graduation: values.graduationYear,
-            organizations: [values.college],
+            organization: {
+                department: values.department,
+                year_of_graduation: values.graduationYear,
+                organizations: [values.college],
+                verified: true
+            },
+            referral: { mu_id: userData.referral_id },
             area_of_interests: [],
-            referral_id: userData.referral_id,
-            param: userData.param
+            integration: {
+                param: userData.param,
+                title: "DWMS"
+            }
         };
 
         /// If user doesn't want to be a mentor set role to null
@@ -96,103 +102,101 @@ export default function CompanyPage() {
                 desc={"Please select your company"}
             />
 
-            {isloading ? (
-                <MuLoader />
-            ) : (
-                <Formik
-                    initialValues={{
-                        ...Object.fromEntries(
-                            Object.keys(inputObject).map(key => [key, ""])
-                        ),
-                        radio: ""
-                    }}
-                    validationSchema={scheme}
-                    onSubmit={(value, action) => onSubmit(value)}
-                >
-                    {formik => (
-                        <div>
-                            <div className={styles.wrapper}>
-                                <Form onSubmit={formik.handleSubmit}>
-                                    <h5 className={styles.text}>
-                                        Please enter your company details
-                                    </h5>
-                                    <ReactSelect
-                                        options={
-                                            companies.map(company => ({
-                                                value: company.id,
-                                                label: company.title
-                                            })) as any
+            <Formik
+                initialValues={{
+                    ...Object.fromEntries(
+                        Object.keys(inputObject).map(key => [key, ""])
+                    ),
+                    radio: ""
+                }}
+                validationSchema={scheme}
+                onSubmit={(value, action) => onSubmit(value)}
+            >
+                {formik => (
+                    <div>
+                        <div className={styles.wrapper}>
+                            <Form onSubmit={formik.handleSubmit}>
+                                <h5 className={styles.text}>
+                                    Please enter your company details
+                                </h5>
+                                <ReactSelect
+                                    options={
+                                        companies.map(company => ({
+                                            value: company.id,
+                                            label: company.title
+                                        })) as any
+                                    }
+                                    name="company"
+                                    placeholder="Company Name"
+                                    value={selectedCompany.title}
+                                    isDisabled={isloading}
+                                    onChange={(e: any) => {
+                                        if (e) {
+                                            setSelectedCompany(e);
+                                            formik.setFieldValue(
+                                                "company",
+                                                e.value
+                                            );
+                                            inputObject.company = e.value;
                                         }
-                                        name="company"
-                                        placeholder="Company Name"
-                                        value={selectedCompany.title}
-                                        onChange={(e: any) => {
-                                            if (e) {
-                                                setSelectedCompany(e);
-                                                formik.setFieldValue(
-                                                    "company",
-                                                    e.value
-                                                );
-                                                inputObject.company = e.value;
-                                            }
-                                        }}
-                                    />
+                                    }}
+                                />
 
-                                    <div className={styles.content}>
-                                        <h5 className={styles.text}>
-                                            Do you want to become a mentor?
-                                        </h5>
-                                        {formik.touched.radio &&
-                                            formik.errors.radio && (
-                                                <span>
-                                                    {formik.errors.radio}
-                                                </span>
-                                            )}
-                                        <div className={styles.select}>
-                                            <button
-                                                className={styles.selectRadio}
-                                            >
-                                                <label>
-                                                    <input
-                                                        onChange={
-                                                            formik.handleChange
-                                                        }
-                                                        type="radio"
-                                                        value="yes"
-                                                        name="radio"
-                                                    />
-                                                    <span>Yes</span>
-                                                </label>
-                                            </button>
-                                            <button
-                                                className={styles.selectRadio}
-                                            >
-                                                <label>
-                                                    <input
-                                                        onChange={
-                                                            formik.handleChange
-                                                        }
-                                                        type="radio"
-                                                        value="no"
-                                                        name="radio"
-                                                    />
-                                                    <span>No</span>
-                                                </label>
-                                            </button>
-                                        </div>
+                                <div className={styles.content}>
+                                    <h5 className={styles.text}>
+                                        Do you want to become a mentor?
+                                    </h5>
+                                    {formik.touched.radio &&
+                                        formik.errors.radio && (
+                                            <span>{formik.errors.radio}</span>
+                                        )}
+                                    <div className={styles.select}>
+                                        <button className={styles.selectRadio}>
+                                            <label>
+                                                <input
+                                                    onChange={
+                                                        formik.handleChange
+                                                    }
+                                                    type="radio"
+                                                    value="yes"
+                                                    name="radio"
+                                                    disabled={isloading}
+                                                />
+                                                <span>Yes</span>
+                                            </label>
+                                        </button>
+                                        <button className={styles.selectRadio}>
+                                            <label>
+                                                <input
+                                                    onChange={
+                                                        formik.handleChange
+                                                    }
+                                                    type="radio"
+                                                    value="no"
+                                                    name="radio"
+                                                    disabled={isloading}
+                                                />
+                                                <span>No</span>
+                                            </label>
+                                        </button>
                                     </div>
+                                </div>
 
-                                    <div className={styles.submit}>
-                                        <PowerfulButton type="submit">
-                                            Submit
-                                        </PowerfulButton>
-                                    </div>
-                                </Form>
-                            </div>
+                                <div className={styles.submit}>
+                                    <PowerfulButton
+                                        type="submit"
+                                        isLoading={isloading}
+                                    >
+                                        {isloading
+                                            ? "Please wait..."
+                                            : "Submit"}
+                                    </PowerfulButton>
+                                </div>
+                            </Form>
                         </div>
-                    )}
-                </Formik>
-            )}
+                    </div>
+                )}
+            </Formik>
         </OnboardingTemplate>
     );
 }

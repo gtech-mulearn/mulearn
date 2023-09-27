@@ -21,7 +21,10 @@ import {
     getDWMSDetails
 } from "../services/onboardingApis";
 import { useNavigate, useParams } from "react-router-dom";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 
 const animatedComponents = makeAnimated();
 
@@ -33,7 +36,7 @@ const Onboarding = (props: Props) => {
     const urlParams = new URLSearchParams(window.location.search);
     const param = urlParams.get("param");
     const referralId = urlParams.get("referral_id");
-    const inviteCode = urlParams.get("invite_code")
+    const inviteCode = urlParams.get("invite_code");
     const queryParameters = new URLSearchParams(window.location.search);
     const navigate = useNavigate();
     // for hide and question container
@@ -113,7 +116,9 @@ const Onboarding = (props: Props) => {
     const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }]);
     const [showOrHidePassword, setShowOrHidePassword] = useState("password");
     const [showOrHideCPassword, setShowOrHideCPassword] = useState("password");
-    const [defaultCommunity, setDefaultCommunity] = useState([{ value: "", label: "" }]);
+    const [defaultCommunity, setDefaultCommunity] = useState([
+        { value: "", label: "" }
+    ]);
 
     const customStyles = {
         control: (provided: any) => ({
@@ -161,7 +166,7 @@ const Onboarding = (props: Props) => {
     useEffect(() => {
         localStorage.setItem("token", queryParameters.get("id") as string);
         getCountries(errorHandler, setCountryOption);
-        getCommunities(errorHandler, setCommunityAPI);
+        getCommunities({ errorHandler, setCommunityAPI });
         getCompanies(errorHandler, setCompanyAPI);
         getInterests(errorHandler, setAoiAPI);
         getRoles(errorHandler, setRoleAPI);
@@ -274,7 +279,10 @@ const Onboarding = (props: Props) => {
                 title: param ? "DWMS" : null,
             },
             area_of_interests: values.areaOfInterest, //required,
-            invite_code: inviteCode ? inviteCode : null,
+            password: values.password, //required
+            referral_id: values.referral_id === "" ? null : values.referral_id,
+            param: param ? param : null,
+            invite_code: inviteCode ? inviteCode : null
         };
         registerUser(
             setFormSuccess,
@@ -298,7 +306,6 @@ const Onboarding = (props: Props) => {
             errors.email = "Invalid email address";
         }
         if (values.password.length < 8)
-
             if (!values.confirmPassword) {
                 errors.confirmPassword = "Please confirm your password";
             } else if (
@@ -351,8 +358,10 @@ const Onboarding = (props: Props) => {
                 (community: any) => community.title === "KKEM"
             );
             if (foundCommunity && foundCommunity.id) {
-                setDefaultCommunity([{ value: foundCommunity.id, label: foundCommunity.title }])
-                console.log(defaultCommunity)
+                setDefaultCommunity([
+                    { value: foundCommunity.id, label: foundCommunity.title }
+                ]);
+                console.log(defaultCommunity);
             }
         }
     }, [communityAPI]);
@@ -1998,8 +2007,7 @@ const Onboarding = (props: Props) => {
                                                 // e.preventDefault();
                                                 validate(formik.values);
                                                 if (
-                                                    formik.values.firstName ==
-                                                    "" ||
+                                                    formik.values.firstName == "" ||
                                                     formik.errors.firstName ||
                                                     formik.errors.email ||
                                                     formik.errors.mobile ||
@@ -2043,16 +2051,19 @@ const Onboarding = (props: Props) => {
                                             style={
                                                 tcChecked
                                                     ? {
-                                                        backgroundColor:
-                                                            "#5570f1"
-                                                    }
+                                                          backgroundColor:
+                                                              "#5570f1"
+                                                      }
                                                     : {
-                                                        backgroundColor:
-                                                            "#5570f1",
-                                                        opacity: "0.5"
-                                                    }
+                                                          backgroundColor:
+                                                              "#5570f1",
+                                                          opacity: "0.5"
+                                                      }
                                             }
-                                            disabled={!tcChecked}>Submit</PowerfulButton>
+                                            disabled={!tcChecked}
+                                        >
+                                            Submit
+                                        </PowerfulButton>
                                     </div>
                                 </div>
                             </form>
