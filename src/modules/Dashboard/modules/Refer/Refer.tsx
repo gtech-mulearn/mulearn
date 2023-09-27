@@ -84,18 +84,19 @@ const Refer = () => {
                             like-minded enthusiasts!
                         </b>
                         <div className={styles.learningCircleLandingPageButton}>
-                            <MuButton
+                            <PowerfulButton
                                 className={styles.createBtn}
-                                text={"Invite"}
                                 onClick={() => setOpen(true)}
-                                icon={<RiSendPlaneLine />}
                                 style={{
                                     display: "flex",
                                     justifyContent: "space-evenly",
                                     alignItems: "center",
                                     width: "100%"
                                 }}
-                            />
+                            >
+                                <RiSendPlaneLine />
+                                Invite
+                            </PowerfulButton>
                         </div>
                     </div>
                 </div>
