@@ -106,14 +106,14 @@ export const login = (
         })
         .catch(error => {
             setIsLoading(false);
-            if(error.response.data){
+            if (error.response.data) {
                 toast({
                     title: error.response.data.message.general[0],
                     status: "error",
                     duration: 3000,
                     isClosable: true
                 });
-            }else{
+            } else {
                 toast({
                     title: "Something went wrong",
                     status: "error",
@@ -199,23 +199,33 @@ export const resetPassword = (
         });
 };
 
-export const requestEmailOrMuidOtp = (
-    emailOrMuid: string,
-    toast: ToastAsPara,
-    setHasError: UseStateFunc<boolean>,
-    setStatus: UseStateFunc<number>,
-    setOtpLoading: UseStateFunc<boolean>,
-    setOtpError: UseStateFunc<boolean>
-) => {
+export const requestEmailOrMuidOtp = ({
+    emailOrMuid,
+    toast,
+    setHasError,
+    setStatus,
+    setOtpLoading,
+    setOtpError,
+    setDidOtpSent
+}: {
+    emailOrMuid: string;
+    toast: ToastAsPara;
+    setHasError?: UseStateFunc<boolean>;
+    setStatus?: UseStateFunc<number>;
+    setOtpLoading: UseStateFunc<boolean>;
+    setOtpError?: UseStateFunc<boolean>;
+    setDidOtpSent?: UseStateFunc<boolean>;
+}) => {
     setOtpLoading(true);
     publicGateway
         .post(authRoutes.requestEmailOrMuidOtp, { emailOrMuid })
         .then((response: APIResponse) => {
             setOtpLoading(false);
-            setStatus(response.data.statusCode);
+            setStatus && setStatus(response.data.statusCode);
             if (response.data.hasError == false) {
-                setOtpError(false);
-                setHasError(false);
+                setOtpError && setOtpError(false);
+                setHasError && setHasError(false);
+                setDidOtpSent && setDidOtpSent(true);
                 toast({
                     title: "OTP Sent",
                     description: "OTP has been sent to your email",
@@ -227,7 +237,7 @@ export const requestEmailOrMuidOtp = (
         })
         .catch(error => {
             setOtpLoading(false);
-            setOtpError(true);
+            setOtpError && setOtpError(true);
             toast({
                 title: "Invalid Email or Muid",
                 description: "Kindly enter a valid email or Muid",

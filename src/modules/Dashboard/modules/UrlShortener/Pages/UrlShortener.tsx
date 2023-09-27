@@ -37,7 +37,7 @@ const UrlShortener = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(20);
-    const [sort, setSort] = useState("created_at");
+    const [sort, setSort] = useState("-created_at");
     const [shortUrlData, setShortUrlData] = useState<urlData[]>([]);
 
     const formik = useFormik({
@@ -212,7 +212,7 @@ const UrlShortener = () => {
     };
 
     useEffect(() => {
-        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
+        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages,"",sort);
         getShortenUrls(
             setShortUrlData,
             currentPage,

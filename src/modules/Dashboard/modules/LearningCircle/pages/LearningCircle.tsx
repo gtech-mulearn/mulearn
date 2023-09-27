@@ -45,6 +45,8 @@ const LearningCircle = (props: Props) => {
 
     const [openRemoveConfrim, setOpenRemoveConfirm] = useState(false);
     const [resourceLink, setResourceLink] = useState("");
+    const [username,setUsername] = useState("");
+    
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -701,17 +703,19 @@ const LearningCircle = (props: Props) => {
                                                                     setOpenRemoveConfirm(
                                                                         true
                                                                     );
+                                                                    setUsername(member?.username)
                                                                 }}
                                                             />
                                                             {openRemoveConfrim && (
-                                                                <Modal
+                                                                <Modal                                                     
                                                                     click={() => {
                                                                         handleRemove(
                                                                             id,
                                                                             member.id
-                                                                        );
+                                                                        );                                                                       
                                                                     }}
-                                                                    content={`Are you want to remove ${member?.username} from ${lc?.name} ?`}
+                                                                    
+                                                                    content={`Are you want to remove ${username} from ${lc.name} ?`}
                                                                     heading={
                                                                         "Remove user from Learning Cicle"
                                                                     }

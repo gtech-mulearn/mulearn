@@ -79,7 +79,7 @@ export const createDepartment = async (
 ) => {
     try {
         const response = await privateGateway.post(
-            dashboardRoutes.departments,
+            dashboardRoutes.createDepartment,
             { title: title }
         );
         const message: String = response?.data.message.general[0];
@@ -109,7 +109,7 @@ export const updateDepartment = async (
     console.log("updateDepartment - id", id);
     try {
         const response = await privateGateway.put(
-            `${dashboardRoutes.departments}edit/${id}/`,
+            `${dashboardRoutes.editDepartment}${id}/`,
             { title: title }
         );
         const message: String = response?.data.message.general[0];
@@ -132,7 +132,7 @@ export const updateDepartment = async (
 export const deleteDepartment = async (id: string) => {
     try {
         const response = await privateGateway.delete(
-            `${dashboardRoutes.departments}delete/${id}/`
+            `${dashboardRoutes.deleteDepartment}${id}/`
         );
         const departments: any = response?.data;
         console.log("deleteDepartment - data", departments.response);

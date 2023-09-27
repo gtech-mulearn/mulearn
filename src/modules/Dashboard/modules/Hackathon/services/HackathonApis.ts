@@ -332,13 +332,24 @@ export const submitHackApplication = async (
         });
         return response; // You might want to return the response from the API call
     } catch (err: unknown) {
-        const error = err as AxiosError;
+        const error = err as APIError;
         if (error?.response?.status === 400) {
             navigate("/dashboard/hackathon");
         }
+        console.log((
+            error?.response?.data?.message as {
+                code?: string[];
+                general?: string[];
+            }
+        )?.general?.[0])
         if (error?.response) {
             toast({
-                title: "Something went wrong",
+                title: (
+                    error?.response?.data?.message as {
+                        code?: string[];
+                        general?: string[];
+                    }
+                )?.general?.[0] || "Something went wrong",
                 description: "",
                 status: "error",
                 duration: 3000,

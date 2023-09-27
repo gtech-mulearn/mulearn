@@ -11,7 +11,7 @@ import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useState } from "react";
 
-import { createAccount } from "../../../services/onboardingApis";
+import { validate } from "../../../services/newOnboardingApis";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
@@ -38,7 +38,7 @@ const scheme = z.object({
     lastName: z
         .string()
         .required(`${inputObject.lastName} is Required`)
-        .min(3, `${inputObject.lastName} must be at least 3 characters`)
+        .min(1, `${inputObject.lastName} must be at least 3 characters`)
         .max(100, `${inputObject.lastName} must be at most 100 characters`),
     phoneNumber: z
         .string()
@@ -48,34 +48,46 @@ const scheme = z.object({
     password: z
         .string()
         .required(`${inputObject.password} is Required`)
-        .min(8, `${inputObject.password} must be at least 8 characters`),
-    confirmPassword: z
-        .string()
-        .required(`${inputObject.confirmPassword} is Required`)
-        .oneOf([z.ref("password"), ""], "Passwords must match")
+        .min(8, `${inputObject.password} must be at least 8 characters`)
 });
 
 export default function AccountCreation() {
-    const [isSubmitting, setSubmitting] = useState(false);
-    const [isVisible, setVisible] = useState(false);
-
     const toast = useToast();
     const navigate = useNavigate();
+    const urlParams = new URLSearchParams(window.location.search);
+    const param = urlParams.get("param");
+    const referralId = urlParams.get("referral_id");
 
-    const onsubmit = (values: any, actions: any) => {
+    const [isSubmitting, setSubmitting] = useState(false);
+    const [isVisible, setVisible] = useState(false);
+    const [isTncChecked, setTncChecked] = useState(false);
+
+    const onsubmit = async (values: any, actions: any) => {
+        if (!isTncChecked) {
+            toast({
+                title: "Please accept the terms and conditions",
+                status: "error",
+                duration: 3000,
+                isClosable: true
+            });
+            return;
+        }
+
         const userData = {
             first_name: values.firstName,
             last_name: values.lastName,
             email: values.email,
             mobile: values.phoneNumber,
-            password: values.password
+            password: values.password,
+            referral_id: referralId,
+            param: param
         };
-        createAccount({
+        const isSuccess = await validate({
             userData: userData,
             setIsSubmitting: setSubmitting,
-            toast: toast,
-            navigate: navigate
+            toast: toast
         });
+        if (isSuccess) navigate("/role", { state: userData });
     };
 
     return (
@@ -182,6 +194,34 @@ export default function AccountCreation() {
                                     />
                                 </div>
 
+                                <div className={styles.tnc}>
+                                    <input
+                                        type="checkbox"
+                                        name="tnc"
+                                        className={styles.tncCheckbox}
+                                        checked={isTncChecked}
+                                        onChange={() => setTncChecked(e => !e)}
+                                    />
+                                    <p>
+                                        I agree to the{" "}
+                                        <a
+                                            href="http://mulearn.org/termsandconditions"
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                            Terms & Conditions
+                                        </a>
+                                        {" and "}
+                                        <a
+                                            href="http://mulearn.org/privacypolicy"
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                            Privacy Policy
+                                        </a>
+                                    </p>
+                                </div>
+
                                 <PowerfulButton
                                     type="submit"
                                     style={{ marginTop: "10px" }}
@@ -193,18 +233,18 @@ export default function AccountCreation() {
                             </div>
 
                             <div className={styles.accountCreationAlternative}>
-                                <div>
+                                {/* <div>
                                     <hr />
                                     <p>OR</p>
                                     <hr />
                                 </div>
                                 <PowerfulButton type="button" variant="ghost">
                                     <FcGoogle size={35} /> Sign in with google
-                                </PowerfulButton>
+                                </PowerfulButton> */}
                                 <div>
                                     <p>
                                         Already have an account?{" "}
-                                        <a href="">Sign In</a>
+                                        <a href="/signin">Sign In</a>
                                     </p>
                                 </div>
                             </div>

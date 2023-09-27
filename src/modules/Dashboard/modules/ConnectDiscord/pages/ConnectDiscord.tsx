@@ -90,19 +90,19 @@ const ConnectDiscord = () => {
                                     </div>
                                     <div className={styles.box2}>
                                         <p>
-                                            From the menu shown aside select the
-                                            onboarding channel to continue.
+                                            From the sidebar select the
+                                            Aaronchettan to continue.
                                         </p>
                                         <p className={styles.p}>
-                                            Select the Onboarding Channel
+                                            Select the Aaronchettan Profile
                                         </p>
                                     </div>
                                     <div className={styles.box3}>
                                         <p>
-                                            From the opened channel click the
-                                            join now button.
+                                            From the opened direct message, click the
+                                            Connect Muid button.
                                         </p>
-                                        <p className={styles.p}>Join Now!</p>
+                                        <p className={styles.p}>Connect Muid!</p>
                                     </div>
                                     <div className={styles.box4}>
                                         <p>
