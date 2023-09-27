@@ -250,10 +250,10 @@ export const registerUser = (
                 "refreshToken",
                 response.data.response.refreshToken
             );
-            getInfo(() => {
-                navigate("/dashboard/connect-discord");
-                setShowSubmitLoader(false);
-            });
+            // getInfo(() => {
+            //     navigate("/dashboard/connect-discord");
+            //     setShowSubmitLoader(false);
+            // });
         })
 
         .catch((error: APIError<{ key: any[] }>) => {
