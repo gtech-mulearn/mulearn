@@ -41,20 +41,20 @@ export default function SignIn() {
             .max(
                 100,
                 `${inputObject.emailOrMuId} must be at most 100 characters`
-            ),
-        ...(!otpForm && {
-            password: z
-                .string()
-                .required(`${inputObject.password} is Required`)
-                .min(8, `${inputObject.password} must be at least 8 characters`)
-        }),
-        ...(otpForm && {
-            otp: z
-                .string()
-                .required(`${inputObject.otp} is Required`)
-                .min(5, `${inputObject.otp} must be at least 5 characters`)
-                .max(5, `${inputObject.otp} must be at most 5 characters`)
-        })
+            )
+        // ...(!otpForm && {
+        //     password: z
+        //         .string()
+        //         .required(`${inputObject.password} is Required`)
+        //         .min(6, `${inputObject.password} must be at least 6 characters`)
+        // }),
+        // ...(otpForm && {
+        //     otp: z
+        //         .string()
+        //         .required(`${inputObject.otp} is Required`)
+        //         .min(5, `${inputObject.otp} must be at least 5 characters`)
+        //         .max(5, `${inputObject.otp} must be at most 5 characters`)
+        // })
     });
 
     const onSubmit = (values: any) => {

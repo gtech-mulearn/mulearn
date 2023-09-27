@@ -21,7 +21,10 @@ import {
     getDWMSDetails
 } from "../services/onboardingApis";
 import { useNavigate, useParams } from "react-router-dom";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 
 const animatedComponents = makeAnimated();
 
@@ -33,7 +36,7 @@ const Onboarding = (props: Props) => {
     const urlParams = new URLSearchParams(window.location.search);
     const param = urlParams.get("param");
     const referralId = urlParams.get("referral_id");
-    const inviteCode = urlParams.get("invite_code")
+    const inviteCode = urlParams.get("invite_code");
     const queryParameters = new URLSearchParams(window.location.search);
     const navigate = useNavigate();
     // for hide and question container
@@ -113,7 +116,9 @@ const Onboarding = (props: Props) => {
     const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }]);
     const [showOrHidePassword, setShowOrHidePassword] = useState("password");
     const [showOrHideCPassword, setShowOrHideCPassword] = useState("password");
-    const [defaultCommunity, setDefaultCommunity] = useState([{ value: "", label: "" }]);
+    const [defaultCommunity, setDefaultCommunity] = useState([
+        { value: "", label: "" }
+    ]);
 
     const customStyles = {
         control: (provided: any) => ({
@@ -161,7 +166,7 @@ const Onboarding = (props: Props) => {
     useEffect(() => {
         localStorage.setItem("token", queryParameters.get("id") as string);
         getCountries(errorHandler, setCountryOption);
-        getCommunities(errorHandler, setCommunityAPI);
+        getCommunities({ errorHandler, setCommunityAPI });
         getCompanies(errorHandler, setCompanyAPI);
         getInterests(errorHandler, setAoiAPI);
         getRoles(errorHandler, setRoleAPI);
@@ -242,7 +247,7 @@ const Onboarding = (props: Props) => {
             password: values.password, //required
             referral_id: values.referral_id === "" ? null : values.referral_id,
             param: param ? param : null,
-            invite_code: inviteCode ? inviteCode : null,
+            invite_code: inviteCode ? inviteCode : null
         };
         registerUser(
             setFormSuccess,
@@ -266,15 +271,14 @@ const Onboarding = (props: Props) => {
             errors.email = "Invalid email address";
         }
         if (values.password.length < 8)
-
-        if (!values.confirmPassword) {
-            errors.confirmPassword = "Please confirm your password";
-        } else if (
-            values.confirmPassword == "" ||
-            values.password != values.confirmPassword
-        ) {
-            errors.confirmPassword = "Password does not match";
-        }
+            if (!values.confirmPassword) {
+                errors.confirmPassword = "Please confirm your password";
+            } else if (
+                values.confirmPassword == "" ||
+                values.password != values.confirmPassword
+            ) {
+                errors.confirmPassword = "Password does not match";
+            }
         if (!values.phone) {
             errors.phone = "Phone number is required";
         } else if (values.phone.toString().length != 10) {
@@ -319,8 +323,10 @@ const Onboarding = (props: Props) => {
                 (community: any) => community.title === "KKEM"
             );
             if (foundCommunity && foundCommunity.id) {
-                setDefaultCommunity([{ value: foundCommunity.id, label: foundCommunity.title }])
-                console.log(defaultCommunity)
+                setDefaultCommunity([
+                    { value: foundCommunity.id, label: foundCommunity.title }
+                ]);
+                console.log(defaultCommunity);
             }
         }
     }, [communityAPI]);
@@ -1958,69 +1964,72 @@ const Onboarding = (props: Props) => {
                                             }}
                                         >
                                             Cancel
-                                        </button>                                       
+                                        </button>
                                         <PowerfulButton
-                                        className={styles.submit_button}
-                                        type="submit"
-                                        onClick={e => {
-                                            // e.preventDefault();
-                                            validate(formik.values);
-                                            if (
-                                                formik.values.firstName ==
-                                                    "" ||
-                                                formik.errors.firstName ||
-                                                formik.errors.email ||
-                                                formik.errors.mobile ||
-                                                formik.errors.password ||
-                                                formik.errors
-                                                    .confirmPassword ||
-                                                formik.errors
-                                                    .areaOfInterest ||
-                                                (role[0]["title"] ==
-                                                    "Student" ||
-                                                role[0]["title"] ==
-                                                    "Enabler"
-                                                    ? formik.errors
-                                                          .organization ||
-                                                      formik.errors.dept
-                                                    : null) ||
-                                                (role[0]["title"] ==
-                                                "Student"
-                                                    ? formik.errors.yog
-                                                    : null) ||
-                                                // (role[0]["title"] == "Mentor"
-                                                //   ? formik.errors.mentorRole
-                                                //   : null) ||
-                                                // (formik.values.mentorRole == "Company"
-                                                //   ? formik.errors.organization
-                                                //   : null) ||
-                                                (formik.values
-                                                    .areaOfInterest
-                                                    .length == 0
-                                                    ? true
-                                                    : null)
-                                            ) {
-                                                //console.log(formik.errors);
-                                            } else {
-                                                // console.log(formik.values);
-                                                // console.log("no error");
-                                                onSubmit(formik.values, {});
+                                            className={styles.submit_button}
+                                            type="submit"
+                                            onClick={e => {
+                                                // e.preventDefault();
+                                                validate(formik.values);
+                                                if (
+                                                    formik.values.firstName ==
+                                                        "" ||
+                                                    formik.errors.firstName ||
+                                                    formik.errors.email ||
+                                                    formik.errors.mobile ||
+                                                    formik.errors.password ||
+                                                    formik.errors
+                                                        .confirmPassword ||
+                                                    formik.errors
+                                                        .areaOfInterest ||
+                                                    (role[0]["title"] ==
+                                                        "Student" ||
+                                                    role[0]["title"] ==
+                                                        "Enabler"
+                                                        ? formik.errors
+                                                              .organization ||
+                                                          formik.errors.dept
+                                                        : null) ||
+                                                    (role[0]["title"] ==
+                                                    "Student"
+                                                        ? formik.errors.yog
+                                                        : null) ||
+                                                    // (role[0]["title"] == "Mentor"
+                                                    //   ? formik.errors.mentorRole
+                                                    //   : null) ||
+                                                    // (formik.values.mentorRole == "Company"
+                                                    //   ? formik.errors.organization
+                                                    //   : null) ||
+                                                    (formik.values
+                                                        .areaOfInterest
+                                                        .length == 0
+                                                        ? true
+                                                        : null)
+                                                ) {
+                                                    //console.log(formik.errors);
+                                                } else {
+                                                    // console.log(formik.values);
+                                                    // console.log("no error");
+                                                    onSubmit(formik.values, {});
+                                                }
+                                            }}
+                                            isLoading={showSubmitLoader}
+                                            style={
+                                                tcChecked
+                                                    ? {
+                                                          backgroundColor:
+                                                              "#5570f1"
+                                                      }
+                                                    : {
+                                                          backgroundColor:
+                                                              "#5570f1",
+                                                          opacity: "0.5"
+                                                      }
                                             }
-                                        }}
-                                        isLoading={showSubmitLoader}
-                                        style={
-                                            tcChecked
-                                                ? {
-                                                      backgroundColor:
-                                                          "#5570f1"
-                                                  }
-                                                : {
-                                                      backgroundColor:
-                                                          "#5570f1",
-                                                      opacity: "0.5"
-                                                  }
-                                        }
-                                        disabled={!tcChecked}>Submit</PowerfulButton>
+                                            disabled={!tcChecked}
+                                        >
+                                            Submit
+                                        </PowerfulButton>
                                     </div>
                                 </div>
                             </form>
