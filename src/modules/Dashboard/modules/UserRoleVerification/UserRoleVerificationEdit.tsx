@@ -58,9 +58,6 @@ const UserRoleVerificationEdit = (props: Props) => {
                         verified: data.verified
                     }}
                     validationSchema={Yup.object({
-                        // igName: Yup.string()
-                        //     .max(30, "Must be 30 characters or less")
-                        //     .required("Required"),
                         verified: Yup.string()
                             .max(30, "Must be 30 characters or less")
                             .required("Required")

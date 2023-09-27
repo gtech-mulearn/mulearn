@@ -20,9 +20,6 @@ type Place = {
 }[];
 
 const schema = Yup.object({
-    // igName: Yup.string()
-    //     .max(30, "Must be 30 characters or less")
-    //     .required("Required"),
     first_name: Yup.string()
         .max(20, "Must be 20 characters or less")
         .required("Required"),

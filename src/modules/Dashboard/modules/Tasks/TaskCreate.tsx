@@ -13,9 +13,7 @@ import { useEffect, useState } from "react";
 import { AxiosError } from "axios";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
-type Props = {};
-
-const TaskCreate = (props: Props) => {
+const TaskCreate = () => {
     const navigate = useNavigate();
     const toast = useToast();
     const [uuidData, setuuidData] = useState<{ [index: string]: any[] } | null>(
@@ -51,15 +49,17 @@ const TaskCreate = (props: Props) => {
             .required("Mention the number of uses"),
         active: Yup.boolean().required("Select an option"),
         variable_karma: Yup.boolean().required("Select an option"),
-        description: Yup.string().min(4, "Too Short!").max(100, "Too Long!").required("A description is required"),
+        description: Yup.string()
+            .min(4, "Too Short!")
+            .max(100, "Too Long!")
+            .required("A description is required"),
         channel_id: Yup.string().required("Select a Channel"),
         type_id: Yup.string().required("Select a Type"),
         level_id: Yup.string(),
         ig_id: Yup.string(),
         organization_id: Yup.string()
     });
-    if(!uuidData)
-        return(<MuLoader/>)
+    if (!uuidData) return <MuLoader />;
 
     return (
         <div className={styles.external_container}>
@@ -96,12 +96,12 @@ const TaskCreate = (props: Props) => {
                             values.level_id,
                             values.ig_id,
                             values.organization_id,
-							toast
+                            toast
                         );
-                        
-                        setTimeout(() => {  
+
+                        setTimeout(() => {
                             navigate("/dashboard/tasks");
-                        },3000);
+                        }, 3000);
                     }}
                 >
                     <Form className={styles.inputContainer}>
@@ -148,11 +148,7 @@ const TaskCreate = (props: Props) => {
                             type="text"
                             placeholder="..."
                         />
-                        <FormikSelect
-                            label="Channel"
-                            name="channel_id"
-                            
-                        >
+                        <FormikSelect label="Channel" name="channel_id">
                             <option value="">Select an option</option>
                             {uuidData?.channel.map(val => {
                                 return (
@@ -160,11 +156,7 @@ const TaskCreate = (props: Props) => {
                                 );
                             })}
                         </FormikSelect>
-                        <FormikSelect
-                            label="Type"
-                            name="type_id"
-
-                        >
+                        <FormikSelect label="Type" name="type_id">
                             <option value="">Select an option</option>
                             {uuidData?.type.map(val => {
                                 return (
@@ -172,11 +164,7 @@ const TaskCreate = (props: Props) => {
                                 );
                             })}
                         </FormikSelect>
-                        <FormikSelect
-                            label="Level"
-                            name="level_id"
-                            
-                        >
+                        <FormikSelect label="Level" name="level_id">
                             <option value="">Select an option</option>
                             {uuidData?.level.map(val => {
                                 return (
@@ -184,11 +172,7 @@ const TaskCreate = (props: Props) => {
                                 );
                             })}
                         </FormikSelect>
-                        <FormikSelect
-                            label="IG"
-                            name="ig_id"
-                            
-                        >
+                        <FormikSelect label="IG" name="ig_id">
                             <option value="">Select an option</option>
                             {uuidData?.ig.map(val => {
                                 return (
@@ -199,7 +183,6 @@ const TaskCreate = (props: Props) => {
                         <FormikSelect
                             label="Organization"
                             name="organization_id"
-                            
                         >
                             <option value="">Select an option</option>
                             {uuidData?.organization.map(val => {

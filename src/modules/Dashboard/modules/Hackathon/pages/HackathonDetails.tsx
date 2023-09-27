@@ -3,7 +3,7 @@ import { CiGlobe } from "react-icons/ci";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getHackDetails } from "../services/HackathonApis";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import styles from "./HackathonCreate.module.css"
+import styles from "./HackathonCreate.module.css";
 import { DateConverter, convertDateToYYYYMMDD } from "../../../utils/common";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { HackList } from "../services/HackathonInterfaces";
@@ -14,39 +14,41 @@ import Countdown from "../../../utils/Countdown";
 type Props = {};
 
 // return true if possible
-function isStillPossibleToApply(application:string|null){
-    if (application === null) return true
+function isStillPossibleToApply(application: string | null) {
+    if (application === null) return true;
 
-    let now = new Date().getTime()
-    let applicationTime = new Date(application).getTime()
+    let now = new Date().getTime();
+    let applicationTime = new Date(application).getTime();
 
-    return (applicationTime - now) > 0
+    return applicationTime - now > 0;
 }
 
 export const HackathonDetails = (props: Props) => {
     const { id } = useParams();
     const [data, setData] = useState<HackList>();
-    const navigate = useNavigate()
-    const toast = useToast()
-    
+    const navigate = useNavigate();
+    const toast = useToast();
 
     const shareData = {
         title: data?.title || "not yet named",
-        url: `${import.meta.env.VITE_FRONTEND_URL}/dashboard/hackathon/details/${data?.id || ""}`
+        url: `${
+            import.meta.env.VITE_FRONTEND_URL
+        }/dashboard/hackathon/details/${data?.id || ""}`
     };
-    const isShareable =  window.navigator.canShare && window.navigator.canShare(shareData)
+    const isShareable =
+        window.navigator.canShare && window.navigator.canShare(shareData);
 
     useEffect(() => {
-        getHackDetails(id || '')
+        getHackDetails(id || "")
             .then(res => {
-                setData(res)
+                setData(res);
             })
             .catch(err => {
-                console.error(err)
-            })
-    }, [])
+                console.error(err);
+            });
+    }, []);
 
-	const targetDateTime = String(data?.application_ends);
+    const targetDateTime = String(data?.application_ends);
     console.log(String(targetDateTime));
     const [remainingTime, setRemainingTime] = useState<{
         days: number;
@@ -59,7 +61,7 @@ export const HackathonDetails = (props: Props) => {
         minutes: 0,
         seconds: 0
     });
-	
+
     return (
         <>
             {data ? (
@@ -145,49 +147,50 @@ export const HackathonDetails = (props: Props) => {
                                     setRemainingTime={setRemainingTime}
                                 />
                             </div>
-                            {isStillPossibleToApply(data.application_ends) ? <PowerfulButton
-                                onClick={() => navigate( `/dashboard/hackathon/apply/${data?.id}` ) }
-                                children={"Apply Now"}
-                            />
-                            :
-                            <PowerfulButton
-                                variant="draft"
-                                disabled
-                                children={"Application Closed"}
-                            />}
+                            {isStillPossibleToApply(data.application_ends) ? (
+                                <PowerfulButton
+                                    onClick={() =>
+                                        navigate(
+                                            `/dashboard/hackathon/apply/${data?.id}`
+                                        )
+                                    }
+                                    children={"Apply Now"}
+                                />
+                            ) : (
+                                <PowerfulButton
+                                    variant="draft"
+                                    disabled
+                                    children={"Application Closed"}
+                                />
+                            )}
                         </div>
                         {data?.website && (
                             <div className={styles.socialLinks}>
-                                <Link to={data?.website} >
-                            <PowerfulButton variant="secondary" >
+                                <Link to={data?.website}>
+                                    <PowerfulButton variant="secondary">
                                         <CiGlobe />
                                     </PowerfulButton>
-                        </Link>
-                        <PowerfulButton
-                            variant="secondary" 
-                            onClick={() => {
-                                window.navigator.clipboard.writeText( shareData.url );
-                                toast({
-                                    title: "Success",
-                                    description: "Link copied to clipboard",
-                                    status: "success",
-                                    duration: 3000,
-                                    isClosable: true
-                                });
-                                if (isShareable) window.navigator.share(shareData);
-                            }}
-                        >
-                            <LuCopy />
-                        </PowerfulButton>
-                                {/* <a href="#">
-                            <i className="fab fa-linkedin-in"></i>
-							</a>
-							<a href="#">
-                            <i className="fab fa-instagram"></i>
-							</a>
-							<a href="#">
-                            <i className="fab fa-instagram"></i>
-                        </a> */}
+                                </Link>
+                                <PowerfulButton
+                                    variant="secondary"
+                                    onClick={() => {
+                                        window.navigator.clipboard.writeText(
+                                            shareData.url
+                                        );
+                                        toast({
+                                            title: "Success",
+                                            description:
+                                                "Link copied to clipboard",
+                                            status: "success",
+                                            duration: 3000,
+                                            isClosable: true
+                                        });
+                                        if (isShareable)
+                                            window.navigator.share(shareData);
+                                    }}
+                                >
+                                    <LuCopy />
+                                </PowerfulButton>
                             </div>
                         )}
                     </div>

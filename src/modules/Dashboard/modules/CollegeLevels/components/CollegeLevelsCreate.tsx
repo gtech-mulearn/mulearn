@@ -2,7 +2,10 @@ import { useToast } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import styles from "./Modal.module.css";
 import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 import * as Yup from "yup";
 import FormikReactSelect from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { createCollegeLevels } from "../apis";
@@ -161,20 +164,21 @@ const CollegeLevelsCreate = (props: Props) => {
                     ))}
                 </div>
 
-                <div className={styles.buttonContainer}>                   
-                    <PowerfulButton className={`${mustyles.btn} ${styles.decline}`}
+                <div className={styles.buttonContainer}>
+                    <PowerfulButton
+                        className={`${mustyles.btn} ${styles.decline}`}
                         onClick={() => {
                             props.onClose(null);
-                        }}>Decline</PowerfulButton>
-                    <MuButton
-                        text={"Confirm"}
+                        }}
+                    >
+                        Decline
+                    </PowerfulButton>
+                    <PowerfulButton
                         className={`${mustyles.btn} ${styles.confirm}`}
-                        submit={true}
                         type="submit"
-                    />
-                    {/* <PowerfulButton className={`${mustyles.btn} ${styles.confirm}`}
-                        submit={true}
-                        type="submit">Confirm</PowerfulButton> */}
+                    >
+                        Confirm
+                    </PowerfulButton>
                 </div>
             </Form>
         </Formik>

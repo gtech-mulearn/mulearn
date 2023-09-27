@@ -21,6 +21,7 @@ import {
     getTypes
 } from "./apis";
 import EditModal from "./components/EditModal";
+import { Blank } from "@/MuLearnComponents/Table/Blank";
 
 function DynamicType() {
     const [data, setData] = useState<any[]>([]);
@@ -318,7 +319,7 @@ function DynamicType() {
                                 />
                             )}
                         </div>
-                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                        <Blank />
                     </Table>
                 </>
             )}

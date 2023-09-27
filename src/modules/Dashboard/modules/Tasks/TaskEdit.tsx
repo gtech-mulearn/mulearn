@@ -8,9 +8,7 @@ import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { taskEditSchema, useFormikData } from "./TaskEditUtils";
 
-type Props = {};
-
-const TaskEdit = (props: Props) => {
+const TaskEdit = () => {
     const { navigate, initialValues, submitHandler, loading, formStructure } =
         useFormikData();
     return (
@@ -60,32 +58,6 @@ const TaskEdit = (props: Props) => {
                                     }
                                 })}
 
-                                {/* <FormikSelect
-                                    label={"Events"}
-                                    name={"Event"}
-                                    disabled={false}
-                                >
-                                    <option
-                                        value={""}
-                                    >
-                                        {"Shaheen hyder"}
-                                    </option>
-                                    <option
-                                        value={""}
-                                    >
-                                        {"Aswin Ashok"}
-                                    </option>
-                                    <option
-                                        value={""}
-                                    >
-                                        {"Shaheen hyder"}
-                                    </option>
-                                    <option
-                                        value={""}
-                                    >
-                                        {"Aswin Ashok"}
-                                    </option>
-                                </FormikSelect> */}
                                 <div className={styles.btn_container}>
                                     <MuButton
                                         text={"Decline"}

@@ -70,7 +70,6 @@ const ManageLocation = () => {
         setSearch("");
         setSort("");
         console.log(activeTab);
-        // return setData([]), setTotalPages(1);
     }, [activeTab]);
 
     useEffect(() => {
@@ -109,30 +108,12 @@ const ManageLocation = () => {
             });
             setColumns(columnsCountry);
         } else if (activeTab === "State") {
-            // setPopupStatus(true);
-            // setPopupFields(prev => ({
-            //     ...prev,
-            //     stateShow: false,
-            //     zoneShow: false
-            // }));
             getLocationData();
             setColumns(columnsState);
         } else if (activeTab === "Zone") {
-            // setPopupStatus(true);
-            // setPopupFields(prev => ({
-            //     ...prev,
-            //     stateShow: true,
-            //     zoneShow: false
-            // }));
             getLocationData();
             setColumns(columnsZone);
         } else if (activeTab === "District") {
-            // setPopupStatus(true);
-            // setPopupFields(prev => ({
-            //     ...prev,
-            //     stateShow: true,
-            //     zoneShow: true
-            // }));
             getLocationData();
             setColumns(columnsDistrict);
         }

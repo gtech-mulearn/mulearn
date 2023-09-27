@@ -23,7 +23,7 @@ export const HackathonOrganizers = (props: Props) => {
     const columnOrder = [
         { column: "full_name", Label: "Name", isSortable: false },
         { column: "email", Label: "Email", isSortable: false },
-        { column: "muid", Label: "Mu ID", isSortable: false },
+        { column: "muid", Label: "Mu ID", isSortable: false }
     ];
 
     useEffect(() => {
@@ -62,17 +62,13 @@ export const HackathonOrganizers = (props: Props) => {
 
                         <PowerfulButton
                             children="Add Organizer"
-                            type="submit" style={{margin:"23px 0 0 0"}}
+                            type="submit"
+                            style={{ margin: "23px 0 0 0" }}
                         />
                     </Form>
                 </Formik>
             </div>
             <>
-                {/* <TableTop
-                        onSearchText={handleSearch}
-                        onPerPageNumber={handlePerPageNumber}
-                        CSV={dashboardRoutes.getIgList}
-                    /> */}
                 {data && (
                     <Table
                         rows={data}

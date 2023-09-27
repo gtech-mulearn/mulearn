@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./UrlShortener.module.css";
 import {
     getShortenUrls,
@@ -11,12 +11,12 @@ import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import { useFormik } from "formik";
-import { background, useToast } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import {
     MuButton,
-    MuButtonLight,
     PowerfulButton
 } from "@/MuLearnComponents/MuButtons/MuButton";
+import { Blank } from "@/MuLearnComponents/Table/Blank";
 type urlData = {
     id: string | number | boolean;
     long_url: string;
@@ -76,7 +76,6 @@ const UrlShortener = () => {
                                 perPage,
                                 setTotalPages
                             );
-                            // formik.handleReset(formik.values);
                         }, 500);
                         setEditBtn(false);
                         setCreateBtn(false);
@@ -212,7 +211,7 @@ const UrlShortener = () => {
     };
 
     useEffect(() => {
-        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages,"",sort);
+        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages, "", sort);
         getShortenUrls(
             setShortUrlData,
             currentPage,
@@ -347,7 +346,6 @@ const UrlShortener = () => {
                 >
                     <THead
                         columnOrder={columnOrder}
-                        // editableColumnNames={editableColumnNames}
                         onIconClick={handleIconClick}
                     />
                     <Pagination
@@ -360,7 +358,7 @@ const UrlShortener = () => {
                         perPage={perPage}
                         setPerPage={setPerPage}
                     />
-                    {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                    <Blank />
                 </Table>
             </>
         </>

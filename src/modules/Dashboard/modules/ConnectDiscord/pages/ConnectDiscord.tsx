@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./ConnectDiscord.module.css";
 import cdimage from "../assets/images/connectdiscordpng1.webp";
 import { getInfo } from "../services/apis";
@@ -58,7 +58,10 @@ const ConnectDiscord = () => {
                                     <MdContentCopy />
                                     {muid}
                                 </PowerfulButton>
-                                <a href={ import.meta.env.VITE_DISCORD_INVITE_URL }
+                                <a
+                                    href={
+                                        import.meta.env.VITE_DISCORD_INVITE_URL
+                                    }
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -99,10 +102,12 @@ const ConnectDiscord = () => {
                                     </div>
                                     <div className={styles.box3}>
                                         <p>
-                                            From the opened direct message, click the
-                                            Connect Muid button.
+                                            From the opened direct message,
+                                            click the Connect Muid button.
                                         </p>
-                                        <p className={styles.p}>Connect Muid!</p>
+                                        <p className={styles.p}>
+                                            Connect Muid!
+                                        </p>
                                     </div>
                                     <div className={styles.box4}>
                                         <p>

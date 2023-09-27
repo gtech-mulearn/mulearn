@@ -1,25 +1,23 @@
-import { useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Form, Formik } from "formik";
 import styles from "../../../utils/formStyle.module.css";
-import {
-    FormikTextInputWhite
-} from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import {
-    MuButton, PowerfulButton,
-} from "@/MuLearnComponents/MuButtons/MuButton";
+import { FormikTextInputWhite } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useNavigate, useParams } from "react-router-dom";
-import { getApplicationForm, getHackDetails, submitHackApplication } from "../services/HackathonApis";
+import {
+    getApplicationForm,
+    getHackDetails,
+    submitHackApplication
+} from "../services/HackathonApis";
 import { capitalizeFirstLetter } from "../../../utils/common";
 import { HackApplicationSchema } from "../services/HackathonYup";
-import { HackList, HackathonApplication } from "../services/HackathonInterfaces";
+import {
+    HackList,
+    HackathonApplication
+} from "../services/HackathonInterfaces";
 import Modal from "@/MuLearnComponents/Modal/Modal";
 
-type Props = {};
-
-// ... (previous imports)
-
-const HackathonRegistration = (props: Props) => {
+const HackathonRegistration = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [modal, setModal] = useState(true); // Set modal to false initially
@@ -27,13 +25,13 @@ const HackathonRegistration = (props: Props) => {
     const [application, setApplication] = useState<HackathonApplication[]>([]);
 
     useEffect(() => {
-        getHackDetails(id || '')
-        .then(res => {
-            setData(res)
-        })
-        .catch(err => {
-            console.error(err)
-        })
+        getHackDetails(id || "")
+            .then(res => {
+                setData(res);
+            })
+            .catch(err => {
+                console.error(err);
+            });
         getApplicationForm(setApplication, id);
     }, []);
 
@@ -57,7 +55,7 @@ const HackathonRegistration = (props: Props) => {
         if (hasNonSystemFields) {
             setModal(false);
         } else {
-			handleSubmit({
+            handleSubmit({
                 name: null,
                 gender: null,
                 email: null,
@@ -83,12 +81,12 @@ const HackathonRegistration = (props: Props) => {
                     click={handleModalClick}
                 />
             )}
-                {/* Check if there's at least one non-"system" field */}
-                {application.some(hack => hack.field_type !== "system") && (
-            <div className={styles.container}>
-                <h1 className={styles.text}>
-                    Application Form for {data?.title}
-                </h1>
+            {/* Check if there's at least one non-"system" field */}
+            {application.some(hack => hack.field_type !== "system") && (
+                <div className={styles.container}>
+                    <h1 className={styles.text}>
+                        Application Form for {data?.title}
+                    </h1>
 
                     <Formik
                         initialValues={{
@@ -129,9 +127,14 @@ const HackathonRegistration = (props: Props) => {
                                         )
                                 )}
                                 <div className={styles.inputContainerBtn}>
-                                    <PowerfulButton variant="secondary"
+                                    <PowerfulButton
+                                        variant="secondary"
                                         type="button"
-                                        onClick={() => navigate( `/dashboard/hackathon/details/${id}` )}
+                                        onClick={() =>
+                                            navigate(
+                                                `/dashboard/hackathon/details/${id}`
+                                            )
+                                        }
                                         children="Decline"
                                     />
                                     <PowerfulButton
@@ -142,8 +145,8 @@ const HackathonRegistration = (props: Props) => {
                             </Form>
                         )}
                     </Formik>
-            </div>
-                )}
+                </div>
+            )}
         </div>
     );
 };

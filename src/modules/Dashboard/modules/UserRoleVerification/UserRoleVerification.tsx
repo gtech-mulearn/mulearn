@@ -29,9 +29,7 @@ function UsersRoleVerification() {
         { column: "mu_id", Label: "Mu ID", isSortable: true },
         { column: "discord_id", Label: "Discord ID", isSortable: false },
         { column: "email", Label: "Email", isSortable: false },
-        // { column: "user_id", Label: "User ID", isSortable: false },
         { column: "role_title", Label: "Role Title", isSortable: true },
-        // { column: "role_id", Label: "Role ID", isSortable: false },
         { column: "verified", Label: "Verified", isSortable: false }
     ];
 
@@ -74,22 +72,12 @@ function UsersRoleVerification() {
     };
 
     const handleEdit = (id: string | number | boolean) => {
-        //console.log(id);
         navigate(`/dashboard/user-role-verification/edit/${id}`);
     };
-    // const handleEdit = (id: string | number | boolean) => {
-    //     console.log(id);
-    //     navigate(`/dashboard/user-role-verification/edit/${id}`);
-    // };
 
     const handleDelete = (id: string | number | boolean) => {
-        //console.log(id);
         navigate(`/dashboard//user-role-verification/delete/${id}`);
     };
-    // const handleDelete = (id: string | number | boolean) => {
-    //     console.log(id);
-    //     navigate(`/dashboard/user-role-verification/delete/${id}`);
-    // };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
@@ -128,8 +116,6 @@ function UsersRoleVerification() {
                 column
             );
         }
-
-        //console.log(`Icon clicked for column: ${column}`);
     };
 
     async function handleVerify(id: string | number | boolean) {

@@ -85,18 +85,6 @@ const AddLocation = () => {
                                 e.which === 13 && e.preventDefault();
                             }}
                         />
-
-                        {/* <MySelect label="Job Type" name="jobType">
-                            <option value="">Select a job type</option>
-                            <option value="designer">Designer</option>
-                            <option value="development">Developer</option>
-                            <option value="product">Product Manager</option>
-                            <option value="other">Other</option>
-                        </MySelect>
-
-                        <MyCheckbox name="acceptedTerms">
-                            I accept the terms and conditions
-                        </MyCheckbox> */}
                         <div className="ml_popup_btn_container">
                             <MuButton
                                 text={"Decline"}
