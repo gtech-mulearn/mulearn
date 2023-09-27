@@ -184,7 +184,7 @@ import CollegePage from "./modules/Common/Authentication/pages/Onboarding/Colleg
 import CompanyPage from "./modules/Common/Authentication/pages/Onboarding/CompanyPage/CompanyPage";
 import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/SignIn";
 
-import KKEMEventTemplate from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventTemplate";
+import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs";
 import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
 
 const ConnectedDevices = lazy(
@@ -592,8 +592,8 @@ function App() {
             element: <LandingPage />
         },
         {
-            path: "/kkem/events/:id",
-            element: <KKEMEventTemplate />
+            path: "/kkem/events/beyondus",
+            element: <KKEMEventBeyondUs />
         }
     ]);
 
