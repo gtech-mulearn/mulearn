@@ -76,9 +76,12 @@ export default function CompanyPage() {
                 organizations: [values.college],
                 verified: true
             },
-            referral: { referral: userData.referral_id },
+            referral: { mu_id: userData.referral_id },
             area_of_interests: [],
-            param: userData.param
+            integration: {
+                param: userData.param,
+                title: "DWMS"
+            }
         };
 
         /// If user doesn't want to be a mentor set role to null

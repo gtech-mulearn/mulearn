@@ -92,9 +92,12 @@ export default function CollegePage() {
                 organizations: [values.college],
                 verified: true
             },
-            referral: { referral: userData.referral_id },
+            referral: { mu_id: userData.referral_id },
             area_of_interests: [],
-            param: userData.param
+            integration: {
+                param: userData.param,
+                title: "DWMS"
+            }
         };
         submitUserData({
             setIsLoading: setIsLoading,
