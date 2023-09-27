@@ -31,7 +31,6 @@ export const getZoneData = async (
                 }
             )
         ).data.response;
-        console.log(data.data);
         if (setTotalPages) setTotalPages(data.pagination.totalPages);
         if (setData) setData(data.data);
         else return data.data;

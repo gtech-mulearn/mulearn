@@ -49,7 +49,6 @@ const ManageLocation = () => {
     const toast = useToast();
 
     useEffect(() => {
-        console.log(location);
         if (location.state) {
             setActiveTab(location.state.activeItem);
             setPopupStatus(false);
@@ -64,8 +63,24 @@ const ManageLocation = () => {
         }
     }, [popupStatus]);
 
+    useEffect(() => {
+        loadTableData();
+        setCurrentPage(1);
+        setPerPage(5);
+        setSearch("");
+        setSort("");
+        console.log(activeTab);
+        // return setData([]), setTotalPages(1);
+    }, [activeTab]);
+
+    useEffect(() => {
+        getLocationData();
+    }, [sort, currentPage, perPage, search]);
+    useEffect(() => {
+        console.log(data);
+    }, [data]);
     function loadTableData() {
-        console.log("enter load");
+        console.log(activeTab);
         setLoading(true);
         if (activeTab === "Country") {
             setPopupStatus(false);
@@ -80,9 +95,9 @@ const ManageLocation = () => {
                     sort
                 );
                 setData(
-                    res.map((country: any) => ({
-                        name: country.label,
-                        id: country.value
+                    res.map((data: any) => ({
+                        label: data.label,
+                        id: data.value
                     }))
                 );
                 setLoading(false);
@@ -124,7 +139,6 @@ const ManageLocation = () => {
     }
 
     function getLocationData() {
-        console.log("enter getld");
         if (activeTab === "Country") {
             (async () => {
                 const res = await getCountryData(
@@ -137,9 +151,9 @@ const ManageLocation = () => {
                     sort
                 );
                 setData(
-                    res.map((country: any) => ({
-                        name: country.label,
-                        id: country.value
+                    res.map((data: any) => ({
+                        label: data.label,
+                        id: data.value
                     }))
                 );
             })();
@@ -156,7 +170,7 @@ const ManageLocation = () => {
             ).then(res => {
                 setData(
                     res.map((data: any) => ({
-                        name: data.label,
+                        label: data.label,
                         id: data.value
                     }))
                 );
@@ -172,10 +186,9 @@ const ManageLocation = () => {
                 search,
                 sort
             ).then(res => {
-                console.log("asd", res);
                 setData(
                     res.map((data: any) => ({
-                        name: data.label,
+                        label: data.label,
                         id: data.value
                     }))
                 );
@@ -193,7 +206,7 @@ const ManageLocation = () => {
             ).then(res => {
                 setData(
                     res.map((data: any) => ({
-                        name: data.label,
+                        label: data.label,
                         id: data.value
                     }))
                 );
@@ -201,15 +214,6 @@ const ManageLocation = () => {
             });
         }
     }
-
-    useEffect(() => {
-        loadTableData();
-        setCurrentPage(1);
-        setPerPage(5);
-        setSearch("");
-        setSort("");
-        return setData([]), setTotalPages(1);
-    }, [activeTab]);
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -247,7 +251,7 @@ const ManageLocation = () => {
                 state: selectedState,
                 zone: selectedZone,
                 value: id,
-                name: data.find(item => item.id === id)?.name
+                label: data.find(item => item.id === id)?.label
             }
         });
     }
@@ -270,10 +274,6 @@ const ManageLocation = () => {
         setActiveTab(tab);
         setCurrentPage(1);
     }
-
-    useEffect(() => {
-        getLocationData();
-    }, [sort, currentPage, perPage, search]);
 
     return (
         <>
@@ -403,7 +403,6 @@ const TableTopToggle: FC<TableTopToggleType> = ({
             } else if (item === "Zone") {
                 handleZone("");
             } else if (item === "District") {
-                console.log("no changes");
             } else {
                 handleCountry("");
                 handleState("");
@@ -454,8 +453,9 @@ const LocationPath = ({
     zone?: string;
 }) => {
     function locationTextGenerate() {
-        return `${country?.toUpperCase()}${state ? ` /  ${state?.toUpperCase()}` : ""
-            }${zone ? ` / ${zone?.toUpperCase()}` : ""}`;
+        return `${country?.toUpperCase()}${
+            state ? ` /  ${state?.toUpperCase()}` : ""
+        }${zone ? ` / ${zone?.toUpperCase()}` : ""}`;
     }
 
     return (
