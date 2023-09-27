@@ -21,7 +21,8 @@ const inputObject = {
     lastName: "Last Name",
     phoneNumber: "Phone Number",
     password: "Password",
-    confirmPassword: "Confirm Password"
+    confirmPassword: "Confirm Password",
+    refferalId: "Refferal Id"
 };
 
 const scheme = z.object({
@@ -79,7 +80,7 @@ export default function AccountCreation() {
             email: values.email,
             mobile: values.phoneNumber,
             password: values.password,
-            referral_id: referralId,
+            referral_id: values.refferalId ?? referralId,
             param: param
         };
         const isSuccess = await validate({
@@ -155,40 +156,60 @@ export default function AccountCreation() {
                                         disabled={isSubmitting}
                                     />
                                 </div>
-                                <div className={styles.accountCreationPassword}>
+                                <div className={styles.col_2}>
+                                    <div
+                                        className={
+                                            styles.accountCreationPassword
+                                        }
+                                    >
+                                        <div>
+                                            <SimpleInput
+                                                name={"password"}
+                                                value={formik.values.password}
+                                                onChange={formik.handleChange}
+                                                type={
+                                                    isVisible
+                                                        ? "text"
+                                                        : "password"
+                                                }
+                                                placeholder="Password"
+                                                required
+                                                disabled={isSubmitting}
+                                            />
+                                        </div>
+
+                                        <button
+                                            type="button"
+                                            onClick={() => setVisible(e => !e)}
+                                        >
+                                            {isVisible ? (
+                                                <HiEye size={26} />
+                                            ) : (
+                                                <HiEyeSlash size={26} />
+                                            )}
+                                        </button>
+                                    </div>
+
                                     <div>
                                         <SimpleInput
-                                            name={"password"}
-                                            value={formik.values.password}
-                                            onChange={formik.handleChange}
-                                            type={
-                                                isVisible ? "text" : "password"
+                                            name={"confirmPassword"}
+                                            value={
+                                                formik.values.confirmPassword
                                             }
-                                            placeholder="Password"
+                                            onChange={formik.handleChange}
+                                            type="password"
+                                            placeholder="Confirm Password"
                                             required
                                             disabled={isSubmitting}
                                         />
                                     </div>
-
-                                    <button
-                                        type="button"
-                                        onClick={() => setVisible(e => !e)}
-                                    >
-                                        {isVisible ? (
-                                            <HiEye size={26} />
-                                        ) : (
-                                            <HiEyeSlash size={26} />
-                                        )}
-                                    </button>
                                 </div>
-
                                 <div>
                                     <SimpleInput
-                                        name={"confirmPassword"}
-                                        value={formik.values.confirmPassword}
-                                        onChange={formik.handleChange}
-                                        type="password"
-                                        placeholder="Confirm Password"
+                                        name={"refferalId"}
+                                        value={formik.values.refferalId}
+                                        type="text"
+                                        placeholder="Refferal Id"
                                         required
                                         disabled={isSubmitting}
                                     />
@@ -225,9 +246,10 @@ export default function AccountCreation() {
                                 <PowerfulButton
                                     type="submit"
                                     style={{ marginTop: "10px" }}
+                                    isLoading={isSubmitting}
                                 >
                                     {isSubmitting
-                                        ? "Please Wait ..."
+                                        ? "Please Wait..."
                                         : "Create Account"}
                                 </PowerfulButton>
                             </div>

@@ -86,11 +86,14 @@ export default function CollegePage() {
                 password: userData.password,
                 role: userData.role
             },
-            dept: values.department,
-            year_of_graduation: values.graduationYear,
-            organizations: [values.college],
+            organization: {
+                department: values.department,
+                year_of_graduation: values.graduationYear,
+                organizations: [values.college],
+                verified: true
+            },
+            referral: { referral: userData.referral_id },
             area_of_interests: [],
-            referral_id: userData.referral_id,
             param: userData.param
         };
         submitUserData({
@@ -107,86 +110,90 @@ export default function CollegePage() {
                 title={"What describe you the most!"}
                 desc={"Please select your college"}
             />
-            {isloading ? (
-                <MuLoader />
-            ) : (
-                <Formik
-                    initialValues={Object.fromEntries(
-                        Object.keys(inputObject).map(key => [key, ""])
-                    )}
-                    validationSchema={scheme}
-                    onSubmit={(value, action) => onSubmit(value)}
-                >
-                    {formik => (
-                        <div>
-                            <div className={styles.wrapper}>
-                                <Form onSubmit={formik.handleSubmit}>
-                                    <h5 className={styles.text}>
-                                        Please enter your collage details
-                                    </h5>
-                                    <div className={styles.inputBox}>
-                                        <ReactSelect
-                                            options={
-                                                colleges.map(college => ({
-                                                    value: college.id,
-                                                    label: college.title
-                                                })) as any
-                                            }
-                                            name="college"
-                                            placeholder="College"
-                                            value={selectedCollege.title}
-                                            onChange={(e: any) => {
-                                                setSelectedCollege(e);
-                                                formik.setFieldValue(
-                                                    "college",
-                                                    e.value
-                                                );
-                                                inputObject.college = e.value;
-                                            }}
-                                        />
-                                    </div>
-                                    <div className={styles.inputBox}>
-                                        <ReactSelect
-                                            options={
-                                                departments.map(department => ({
-                                                    value: department.id,
-                                                    label: department.title
-                                                })) as any
-                                            }
-                                            name="department"
-                                            placeholder="Department"
-                                            value={selectedDepartment.title}
-                                            onChange={(e: any) => {
-                                                setSelectedDepartment(e);
-                                                formik.setFieldValue(
-                                                    "department",
-                                                    e.value
-                                                );
-                                                inputObject.department =
-                                                    e.value;
-                                            }}
-                                        />
-                                    </div>
-                                    <div className={styles.inputBox}>
-                                        <SimpleInput
-                                            value={formik.values.graduationYear}
-                                            name="graduationYear"
-                                            type="number"
-                                            placeholder="Graduation Year"
-                                        />
-                                    </div>
 
-                                    <div className={styles.submit}>
-                                        <PowerfulButton type="submit">
-                                            Submit
-                                        </PowerfulButton>
-                                    </div>
-                                </Form>
-                            </div>
+            <Formik
+                initialValues={Object.fromEntries(
+                    Object.keys(inputObject).map(key => [key, ""])
+                )}
+                validationSchema={scheme}
+                onSubmit={(value, action) => onSubmit(value)}
+            >
+                {formik => (
+                    <div>
+                        <div className={styles.wrapper}>
+                            <Form onSubmit={formik.handleSubmit}>
+                                <h5 className={styles.text}>
+                                    Please enter your collage details
+                                </h5>
+                                <div className={styles.inputBox}>
+                                    <ReactSelect
+                                        options={
+                                            colleges.map(college => ({
+                                                value: college.id,
+                                                label: college.title
+                                            })) as any
+                                        }
+                                        name="college"
+                                        placeholder="College"
+                                        value={selectedCollege.title}
+                                        isDisabled={isloading}
+                                        onChange={(e: any) => {
+                                            setSelectedCollege(e);
+                                            formik.setFieldValue(
+                                                "college",
+                                                e.value
+                                            );
+                                            inputObject.college = e.value;
+                                        }}
+                                    />
+                                </div>
+                                <div className={styles.inputBox}>
+                                    <ReactSelect
+                                        options={
+                                            departments.map(department => ({
+                                                value: department.id,
+                                                label: department.title
+                                            })) as any
+                                        }
+                                        name="department"
+                                        placeholder="Department"
+                                        value={selectedDepartment.title}
+                                        isDisabled={isloading}
+                                        onChange={(e: any) => {
+                                            setSelectedDepartment(e);
+                                            formik.setFieldValue(
+                                                "department",
+                                                e.value
+                                            );
+                                            inputObject.department = e.value;
+                                        }}
+                                    />
+                                </div>
+                                <div className={styles.inputBox}>
+                                    <SimpleInput
+                                        value={formik.values.graduationYear}
+                                        name="graduationYear"
+                                        type="number"
+                                        placeholder="Graduation Year"
+                                        disabled={isloading}
+                                    />
+                                </div>
+
+                                <div className={styles.submit}>
+                                    <PowerfulButton
+                                        type="submit"
+                                        isLoading={isloading}
+                                    >
+                                        {isloading
+                                            ? "Please wait..."
+                                            : "Submit"}
+                                    </PowerfulButton>
+                                </div>
+                            </Form>
                         </div>
-                    )}
-                </Formik>
-            )}
+                    </div>
+                )}
+            </Formik>
         </OnboardingTemplate>
     );
 }
