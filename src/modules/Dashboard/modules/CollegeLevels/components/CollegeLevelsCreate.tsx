@@ -165,16 +165,10 @@ const CollegeLevelsCreate = (props: Props) => {
                     <PowerfulButton className={`${mustyles.btn} ${styles.decline}`}
                         onClick={() => {
                             props.onClose(null);
-                        }}>Decline</PowerfulButton>
-                    <MuButton
-                        text={"Confirm"}
-                        className={`${mustyles.btn} ${styles.confirm}`}
-                        submit={true}
-                        type="submit"
-                    />
-                    {/* <PowerfulButton className={`${mustyles.btn} ${styles.confirm}`}
-                        submit={true}
-                        type="submit">Confirm</PowerfulButton> */}
+                        }}>Decline</PowerfulButton>                 
+                    <PowerfulButton className={`${mustyles.btn} ${styles.confirm}`}
+                        
+                        type="submit">Confirm</PowerfulButton>
                 </div>
             </Form>
         </Formik>

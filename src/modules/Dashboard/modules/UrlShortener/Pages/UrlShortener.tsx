@@ -225,9 +225,9 @@ const UrlShortener = () => {
 
     return (
         <>
-            <MuButton
-                text="Create"
-                onClick={() => setCreateBtn(true)}
+            
+            <PowerfulButton onClick={() => setCreateBtn(true)}
+            
                 style={{
                     width: "fit-content",
                     minWidth: "auto",
@@ -235,8 +235,7 @@ const UrlShortener = () => {
                     color: "#fff",
                     margin: "auto",
                     marginRight: "3%"
-                }}
-            />
+                }}>Create</PowerfulButton>
             {(editBtn || createBtn) && (
                 <div className={styles.url_shortener_container}>
                     <div className={styles.create_new_url}>
