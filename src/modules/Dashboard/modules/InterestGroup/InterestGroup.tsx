@@ -178,19 +178,15 @@ function InterestGroup() {
     return (
         <>
             <div className={styles.createBtnContainer}>
-                <MuButton
+                <PowerfulButton
                     className={styles.createBtn}
-                    text={"Create"}
-                    icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
                     onClick={() => {
                         navigate("/dashboard/interest-groups/create");
                     }}
-                />
-                {/* <PowerfulButton className={styles.createBtn}
-                icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
-                onClick={() => {
-                    navigate("/dashboard/interest-groups/create");
-                }}>Create</PowerfulButton> */}
+                >
+                    <AiOutlinePlusCircle />
+                    Create
+                </PowerfulButton>
             </div>
 
             {data && (

@@ -17,7 +17,7 @@ import { getStateData, deleteStateData } from "./apis/StateAPI";
 import { getZoneData, deleteZoneData } from "./apis/ZoneAPI";
 import { getDistrictData, deleteDistrictData } from "./apis/DistrictAPI";
 import LocationPopup from "./LocationPopup";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
@@ -396,9 +396,8 @@ const TableTopToggle: FC<TableTopToggleType> = ({
         <div className="ml_top_container">
             <div className="ml_toggle_container">
                 {tabItems?.map((item: string): any => (
-                    <MuButton
-                        key={item}
-                        text={item}
+                    <PowerfulButton
+                        variant="plain"
                         className={
                             active === item
                                 ? "table_tab_btn active"
@@ -407,16 +406,14 @@ const TableTopToggle: FC<TableTopToggleType> = ({
                         onClick={() => {
                             handleTabClick(item);
                         }}
-                    />
+                    >{item}</PowerfulButton>
                 ))}
             </div>
             <div className="createBtnContainer">
-                <MuButton
+                <PowerfulButton
                     className="createBtn"
-                    text={`Add ${active}`}
-                    icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
                     onClick={handleAddLocation}
-                />
+                ><AiOutlinePlusCircle/>{`Add ${active}`}</PowerfulButton>
             </div>
         </div>
     );

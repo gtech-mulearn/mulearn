@@ -5,7 +5,7 @@ import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { deleteManageRoles, getManageRoles } from "./apis";
 import { useNavigate } from "react-router-dom";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle, AiOutlineUser } from "react-icons/ai";
 import styles from "./Manageroles.module.css";
 import modalStyles from "./components/Modal.module.css";
@@ -276,18 +276,21 @@ function ManageRoles() {
                 : ""}
 
             <div className={styles.createBtnContainer}>
-                <MuButton
+                <PowerfulButton
                     className={styles.createUserBtn}
-                    text={"Users"}
-                    icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
                     onClick={handleUsers}
-                />
-                <MuButton
+                >
+                    <AiOutlinePlusCircle />
+                    Users
+                </PowerfulButton>
+
+                <PowerfulButton
                     className={styles.createBtn}
-                    text={"Create"}
-                    icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
                     onClick={handleCreate}
-                />
+                >
+                    <AiOutlinePlusCircle />
+                    Create
+                </PowerfulButton>
             </div>
 
             {data && (
