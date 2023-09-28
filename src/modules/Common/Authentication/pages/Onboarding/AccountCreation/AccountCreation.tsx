@@ -9,11 +9,16 @@ import { Form, Formik } from "formik";
 import * as z from "yup";
 import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { validate } from "../../../services/newOnboardingApis";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
+import { getCommunities } from "../../../services/onboardingApis";
+
+const animatedComponents = makeAnimated();
 
 const inputObject = {
     email: "Email",
@@ -21,7 +26,8 @@ const inputObject = {
     lastName: "Last Name",
     phoneNumber: "Phone Number",
     password: "Password",
-    confirmPassword: "Confirm Password"
+    confirmPassword: "Confirm Password",
+    refferalId: "Refferal Id"
 };
 
 const scheme = z.object({
@@ -48,7 +54,7 @@ const scheme = z.object({
     password: z
         .string()
         .required(`${inputObject.password} is Required`)
-        .min(8, `${inputObject.password} must be at least 8 characters`)
+        .min(6, `${inputObject.password} must be at least 6 characters`)
 });
 
 export default function AccountCreation() {
@@ -58,9 +64,27 @@ export default function AccountCreation() {
     const param = urlParams.get("param");
     const referralId = urlParams.get("referral_id");
 
-    const [isSubmitting, setSubmitting] = useState(false);
+    //ref to community selector for resetting - temporary fix
+    const community_select_ref = useRef<any>();
+
+    const [isLoading, setIsLoading] = useState(false);
     const [isVisible, setVisible] = useState(false);
     const [isTncChecked, setTncChecked] = useState(false);
+
+    const [communitiesList, setCommunitiesList] = useState([
+        { id: "", title: "" }
+    ]);
+
+    const [defaultCommunity, setDefaultCommunity] = useState([
+        { value: "", label: "" }
+    ]);
+
+    useEffect(() => {
+        getCommunities({
+            setCommunityAPI: setCommunitiesList,
+            setIsLoading: setIsLoading
+        });
+    }, []);
 
     const onsubmit = async (values: any, actions: any) => {
         if (!isTncChecked) {
@@ -79,12 +103,12 @@ export default function AccountCreation() {
             email: values.email,
             mobile: values.phoneNumber,
             password: values.password,
-            referral_id: referralId,
+            referral_id: values.refferalId ?? referralId,
             param: param
         };
         const isSuccess = await validate({
             userData: userData,
-            setIsSubmitting: setSubmitting,
+            setIsSubmitting: setIsLoading,
             toast: toast
         });
         if (isSuccess) navigate("/role", { state: userData });
@@ -115,7 +139,7 @@ export default function AccountCreation() {
                                         onChange={formik.handleChange}
                                         placeholder="Email id"
                                         required
-                                        disabled={isSubmitting}
+                                        disabled={isLoading}
                                     />
                                 </div>
 
@@ -128,7 +152,7 @@ export default function AccountCreation() {
                                             placeholder="First Name"
                                             value={formik.values.firstName}
                                             required
-                                            disabled={isSubmitting}
+                                            disabled={isLoading}
                                         />
                                     </div>
 
@@ -140,7 +164,7 @@ export default function AccountCreation() {
                                             value={formik.values.lastName}
                                             placeholder="Last Name"
                                             required
-                                            disabled={isSubmitting}
+                                            disabled={isLoading}
                                         />
                                     </div>
                                 </div>
@@ -152,45 +176,102 @@ export default function AccountCreation() {
                                         type="number"
                                         placeholder="+91"
                                         required
-                                        disabled={isSubmitting}
+                                        disabled={isLoading}
                                     />
                                 </div>
-                                <div className={styles.accountCreationPassword}>
-                                    <div>
-                                        <SimpleInput
-                                            name={"password"}
-                                            value={formik.values.password}
-                                            onChange={formik.handleChange}
-                                            type={
-                                                isVisible ? "text" : "password"
-                                            }
-                                            placeholder="Password"
-                                            required
-                                            disabled={isSubmitting}
-                                        />
+                                <div className={styles.col_2}>
+                                    <div
+                                        className={
+                                            styles.accountCreationPassword
+                                        }
+                                    >
+                                        <div>
+                                            <SimpleInput
+                                                name={"password"}
+                                                value={formik.values.password}
+                                                onChange={formik.handleChange}
+                                                type={
+                                                    isVisible
+                                                        ? "text"
+                                                        : "password"
+                                                }
+                                                placeholder="Password"
+                                                required
+                                                disabled={isLoading}
+                                            />
+                                        </div>
+
+                                        <button
+                                            type="button"
+                                            onClick={() => setVisible(e => !e)}
+                                        >
+                                            {isVisible ? (
+                                                <HiEye size={26} />
+                                            ) : (
+                                                <HiEyeSlash size={26} />
+                                            )}
+                                        </button>
                                     </div>
 
-                                    <button
-                                        type="button"
-                                        onClick={() => setVisible(e => !e)}
-                                    >
-                                        {isVisible ? (
-                                            <HiEye size={26} />
-                                        ) : (
-                                            <HiEyeSlash size={26} />
-                                        )}
-                                    </button>
+                                    <div>
+                                        <SimpleInput
+                                            name={"confirmPassword"}
+                                            value={
+                                                formik.values.confirmPassword
+                                            }
+                                            onChange={formik.handleChange}
+                                            type="password"
+                                            placeholder="Confirm Password"
+                                            required
+                                            disabled={isLoading}
+                                        />
+                                    </div>
                                 </div>
-
+                                {/* <div>
+                                    <Select
+                                        name="community.id"
+                                        ref={community_select_ref}
+                                        // key={defaultCommunity[0].value}
+                                        // defaultValue={
+                                        //     param ? defaultCommunity : undefined
+                                        // }
+                                        placeholder="Select Communities you're part of"
+                                        onChange={OnChangeValue => {
+                                            console.log(OnChangeValue);
+                                            // formik.setFieldValue(
+                                            //     "community",
+                                            //     OnChangeValue.map(
+                                            //         (
+                                            //             value: any = {
+                                            //                 value: "",
+                                            //                 label: ""
+                                            //             }
+                                            //         ) => value.value
+                                            //     )
+                                            // );
+                                        }}
+                                        closeMenuOnSelect={false}
+                                        components={animatedComponents}
+                                        isClearable
+                                        isMulti
+                                        options={communitiesList.map(
+                                            company => {
+                                                return {
+                                                    value: company.id,
+                                                    label: company.title
+                                                };
+                                            }
+                                        )}
+                                    />
+                                </div> */}
                                 <div>
                                     <SimpleInput
-                                        name={"confirmPassword"}
-                                        value={formik.values.confirmPassword}
-                                        onChange={formik.handleChange}
-                                        type="password"
-                                        placeholder="Confirm Password"
+                                        name={"refferalId"}
+                                        value={formik.values.refferalId}
+                                        type="text"
+                                        placeholder="Refferal Id"
                                         required
-                                        disabled={isSubmitting}
+                                        disabled={isLoading}
                                     />
                                 </div>
 
@@ -225,9 +306,10 @@ export default function AccountCreation() {
                                 <PowerfulButton
                                     type="submit"
                                     style={{ marginTop: "10px" }}
+                                    isLoading={isLoading}
                                 >
-                                    {isSubmitting
-                                        ? "Please Wait ..."
+                                    {isLoading
+                                        ? "Please Wait..."
                                         : "Create Account"}
                                 </PowerfulButton>
                             </div>

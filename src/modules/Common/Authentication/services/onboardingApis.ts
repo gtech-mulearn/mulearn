@@ -211,18 +211,26 @@ export const getInterests = (errorHandler: errorHandler, setAoiAPI: AoiAPI) => {
 };
 
 // request for community list
-export const getCommunities = (
-    errorHandler: errorHandler,
-    setCommunityAPI: getAPI
-) => {
+export const getCommunities = ({
+    errorHandler,
+    setCommunityAPI,
+    setIsLoading
+}: {
+    errorHandler?: errorHandler;
+    setCommunityAPI: getAPI;
+    setIsLoading?: UseStateFunc<boolean>;
+}) => {
+    setIsLoading && setIsLoading(true);
     publicGateway
         .get(onboardingRoutes.communityList)
         .then(response => {
             setCommunityAPI(response.data.response.communities);
         })
         .catch((error: APIError) => {
-            errorHandler(error.response.status, error.response.data.status);
+            errorHandler &&
+                errorHandler(error.response.status, error.response.data.status);
         });
+    setIsLoading && setIsLoading(false);
 };
 
 // POST request for registration
@@ -265,11 +273,20 @@ export const registerUser = (
                 Object.entries(error.response.data.message).forEach(
                     ([fieldName, errorMessage]) => {
                         if (Array.isArray(errorMessage)) {
-                            console.log(fieldName, errorMessage);
-
                             formik.setFieldError(
                                 fieldName,
                                 errorMessage?.join(", ") || ""
+                            );
+                        } else {
+                            Object.entries(errorMessage).forEach(
+                                ([subFieldName, subErrorMessage]) => {
+                                    console.log(subFieldName, subErrorMessage);
+                                    formik.setFieldError(
+                                        subFieldName,
+                                        (subErrorMessage as string[]).join(", ") || ""
+                                    );
+                                }
+
                             );
                         }
                     }

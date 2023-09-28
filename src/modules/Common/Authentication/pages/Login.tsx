@@ -102,7 +102,7 @@ const Login = () => {
                                 }}
                                 isLoading={isLoading}>Sign In</PowerfulButton>
                             <span className={styles.register}>
-                                <a href="/signup">
+                                <a href="/register">
                                     Don't have an account? Sign up
                                 </a>
                             </span>
@@ -207,7 +207,7 @@ const Login = () => {
                                 }</PowerfulButton>
                             <span className={styles.register}>
                                 {" "}
-                                <a href="/signup">
+                                <a href="/register">
                                     Don't have an account? Sign up
                                 </a>
                             </span>
