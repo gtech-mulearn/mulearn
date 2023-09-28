@@ -64,21 +64,18 @@ const ManageLocation = () => {
     }, [popupStatus]);
 
     useEffect(() => {
-        loadTableData();
-        setCurrentPage(1);
-        setPerPage(5);
-        setSearch("");
-        setSort("");
         console.log(activeTab);
+        loadTableData();
+        // setCurrentPage(1);
+        // setPerPage(5);
+        // setSearch("");
+        // setSort("");
         // return setData([]), setTotalPages(1);
-    }, [activeTab]);
+    }, [activeTab, sort, currentPage, perPage, search]);
 
     useEffect(() => {
-        getLocationData();
-    }, [sort, currentPage, perPage, search]);
-    useEffect(() => {
-        console.log(data);
-    }, [data]);
+        // getLocationData();
+    }, []);
     function loadTableData() {
         console.log(activeTab);
         setLoading(true);
@@ -139,6 +136,7 @@ const ManageLocation = () => {
     }
 
     function getLocationData() {
+        console.log("asd", activeTab);
         if (activeTab === "Country") {
             (async () => {
                 const res = await getCountryData(

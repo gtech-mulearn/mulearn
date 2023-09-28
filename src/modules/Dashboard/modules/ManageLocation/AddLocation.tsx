@@ -2,11 +2,13 @@ import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.c
 import { useNavigate, useLocation } from "react-router-dom";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import FormikReactSelect, {
+    FormikTextInput
+} from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { postCountryData } from "./apis/CountryAPI";
-import { postStateData } from "./apis/StateAPI";
-import { postZoneData } from "./apis/ZoneAPI";
+import { getCountryData, postCountryData } from "./apis/CountryAPI";
+import { getStateData, postStateData } from "./apis/StateAPI";
+import { getZoneData, postZoneData } from "./apis/ZoneAPI";
 import { postDistrictData } from "./apis/DistrictAPI";
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
@@ -17,20 +19,30 @@ const AddLocation = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const toast = useToast();
+    const [option, setOption] = useState<{ label: string; value: string }[]>(
+        []
+    );
 
     useEffect(() => {
         setActiveItem(location.state.activeItem);
+        if (location.state.activeItem === "State") {
+            getCountryData(setOption);
+        } else if (location.state.activeItem === "Zone") {
+            getStateData(setOption);
+        } else if (location.state.activeItem === "District") {
+            getZoneData(setOption);
+        }
     }, []);
 
     function handleSubmitAdd(values: any) {
         if (activeItem === "Country") {
             postCountryData(values.ItemName, toast);
         } else if (activeItem === "State") {
-            postStateData(location.state.country, values.ItemName);
+            postStateData(values.dropdata, values.ItemName);
         } else if (activeItem === "Zone") {
-            postZoneData(location.state.state, values.ItemName);
+            postZoneData(values.dropdata, values.ItemName);
         } else if (activeItem === "District") {
-            postDistrictData(location.state.zone, values.ItemName);
+            postDistrictData(values.dropdata, values.ItemName);
         }
         toast({
             title: "Location created",
@@ -51,7 +63,9 @@ const AddLocation = () => {
                     <i
                         className="fi fi-sr-cross"
                         onClick={() => {
-                            navigate("/dashboard/manage-locations");
+                            navigate("/dashboard/manage-locations", {
+                                state: { activeItem: activeItem }
+                            });
                         }}
                     ></i>
                 </div>
@@ -63,9 +77,14 @@ const AddLocation = () => {
                 </p>
                 <Formik
                     initialValues={{
+                        ...(activeItem !== "Country" && { dropdata: "" }),
                         ItemName: ""
                     }}
                     validationSchema={Yup.object({
+                        ...(activeItem !== "Country" && {
+                            dropdata: Yup.string().required()
+                        }),
+
                         ItemName: Yup.string()
                             .max(30, "Must be 30 characters or less")
                             .required("Required")
@@ -76,6 +95,24 @@ const AddLocation = () => {
                     }}
                 >
                     <Form>
+                        {activeItem !== "Country" && (
+                            <FormikReactSelect
+                                label={(() => {
+                                    switch (activeItem) {
+                                        case "State":
+                                            return "Country";
+                                        case "Zone":
+                                            return "State";
+                                        case "District":
+                                            return "Zone";
+                                        default:
+                                            return "";
+                                    }
+                                })()}
+                                name="dropdata"
+                                options={option}
+                            />
+                        )}
                         <FormikTextInput
                             label={`${activeItem} Name`}
                             name="ItemName"

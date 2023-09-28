@@ -112,7 +112,7 @@ export const deleteCountryData = async (
     try {
         await privateGateway
             .delete(
-                ManageLocationsRoutes.patchCountryData.replace("${country}", id)
+                ManageLocationsRoutes.patchCountryData + `${id}`
                 // {
                 //     name: countryName
                 // }

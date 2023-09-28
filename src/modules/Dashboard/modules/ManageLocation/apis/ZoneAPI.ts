@@ -49,7 +49,7 @@ export const postZoneData = async (state: string, stateName: string) => {
         await privateGateway
             .post(ManageLocationsRoutes.patchZoneData.replace("${zone}/", ""), {
                 state: state,
-                name: stateName
+                label: stateName
             })
             .then(({ data }) => data.response);
     } catch (err: unknown) {
@@ -90,7 +90,7 @@ export const patchZoneData = async (
 export const deleteZoneData = async (zoneName: string) => {
     try {
         await privateGateway.delete(
-            ManageLocationsRoutes.patchZoneData.replace("${zone}", zoneName)
+            ManageLocationsRoutes.patchZoneData + `${zoneName}`
         );
     } catch (err: unknown) {
         const error = err as AxiosError;
