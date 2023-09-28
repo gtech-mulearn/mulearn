@@ -168,7 +168,7 @@ const Onboarding = (props: Props) => {
         getCountries(errorHandler, setCountryOption);
         getCommunities({ errorHandler, setCommunityAPI });
         getCompanies(errorHandler, setCompanyAPI);
-        getInterests(errorHandler, setAoiAPI);
+        // getInterests(errorHandler, setAoiAPI);
         getRoles(errorHandler, setRoleAPI);
         if (param) {
             getDWMSDetails(errorHandler, param, (data: any) => {
@@ -192,7 +192,7 @@ const Onboarding = (props: Props) => {
                     mentorRole: "",
                     areaOfInterest: [],
                     general: "",
-                    referral_id: ""
+                    mu_id: ""
                 });
             });
         }
@@ -219,7 +219,7 @@ const Onboarding = (props: Props) => {
         mentorRole: "",
         areaOfInterest: [],
         general: "",
-        referral_id: referralId ? referralId : ""
+        mu_id: referralId ? referralId : ""
     };
 
     const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
@@ -245,7 +245,7 @@ const Onboarding = (props: Props) => {
         //     year_of_graduation: values.yog === "" ? null : values.yog, //required for student
         //     area_of_interests: values.areaOfInterest, //required,
         //     password: values.password, //required
-        //     referral_id: values.referral_id === "" ? null : values.referral_id,
+        //     mu_id: values.mu_id === "" ? null : values.mu_id,
         //     param: param ? param : null,
         //     invite_code: inviteCode ? inviteCode : null,
         // };
@@ -304,9 +304,9 @@ const Onboarding = (props: Props) => {
             };
         }
 
-        if (values.referral_id) {
+        if (values.mu_id) {
             userData["referral"] = {
-                mu_id: values.referral_id,
+                mu_id: values.mu_id,
             };
         }
 
@@ -331,7 +331,7 @@ const Onboarding = (props: Props) => {
         } else if (!/\S+@\S+\.\S+/.test(values.email)) {
             errors.email = "Invalid email address";
         }
-        if (values.password.length < 8)
+        if (values.password.length > 8)
             if (!values.confirmPassword) {
                 errors.confirmPassword = "Please confirm your password";
             } else if (
@@ -340,6 +340,10 @@ const Onboarding = (props: Props) => {
             ) {
                 errors.confirmPassword = "Password does not match";
             }
+
+        if (values.password.length < 8) {
+            errors.password = "Password should be atleast 8 characters long"
+        }
         if (!values.phone) {
             errors.phone = "Phone number is required";
         } else if (values.phone.toString().length != 10) {
@@ -1856,7 +1860,7 @@ const Onboarding = (props: Props) => {
                                             <input
                                                 id="referralId"
                                                 type="text"
-                                                name="referral_id"
+                                                name="mu_id"
                                                 placeholder="Referral id , if any"
                                                 className={styles.input}
                                                 onBlur={formik.handleBlur}
@@ -1865,17 +1869,17 @@ const Onboarding = (props: Props) => {
                                                 }
                                                 onChange={formik.handleChange}
                                                 value={
-                                                    formik.values.referral_id
+                                                    formik.values.mu_id
                                                 }
                                             />
-                                            {formik.touched.referral_id &&
-                                                formik.errors.referral_id ? (
+                                            {formik.touched.mu_id &&
+                                                formik.errors.mu_id ? (
                                                 <div
                                                     className={
                                                         styles.error_message
                                                     }
                                                 >
-                                                    {formik.errors.referral_id}
+                                                    {formik.errors.mu_id}
                                                 </div>
                                             ) : null}
                                         </div>
@@ -2053,8 +2057,8 @@ const Onboarding = (props: Props) => {
                                                     (role[0]["title"] ==
                                                         "Student"
                                                         ? formik.errors.yog
-                                                        : null) 
-                                                        // ||
+                                                        : null)
+                                                    // ||
                                                     // (role[0]["title"] == "Mentor"
                                                     //   ? formik.errors.mentorRole
                                                     //   : null) ||
