@@ -13,6 +13,7 @@ import { getCompanies } from "../../../services/newOnboardingApis";
 import ReactSelect from "react-select";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
+import { log } from "console";
 
 const inputObject = {
     company: "Company Name"
@@ -61,19 +62,20 @@ export default function CompanyPage() {
     });
 
     const onSubmit = async (values: any) => {
+        console.log("values", values);
+        console.log("userData", userData);
+
         const newUserData: any = {
             user: {
                 first_name: userData.first_name,
                 last_name: userData.last_name,
                 mobile: userData.mobile,
                 email: userData.email,
-                password: userData.password,
-                role: userData.role
+                password: userData.password
             },
             organization: {
-                department: values.department,
                 year_of_graduation: values.graduationYear,
-                organizations: [values.college, ...userData.communities],
+                organizations: [values.company, ...userData.communities],
                 verified: true
             },
             area_of_interests: []
@@ -85,9 +87,9 @@ export default function CompanyPage() {
             newUserData["integration"]["param"] = userData.param;
             newUserData["integration"]["title"] = "DWMS";
         }
-
+        console.log("newUserData", newUserData);
         /// If user doesn't want to be a mentor set role to null
-        newUserData.user.role = values.radio === "yes" ? userData.role : null;
+        if (values.radio === "yes") newUserData.user["role"] = userData.role;
 
         submitUserData({
             setIsLoading: setIsLoading,

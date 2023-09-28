@@ -83,8 +83,7 @@ export default function CollegePage() {
                 last_name: userData.last_name,
                 mobile: userData.mobile,
                 email: userData.email,
-                password: userData.password,
-                role: userData.role
+                password: userData.password
             },
             organization: {
                 department: values.department,
@@ -95,6 +94,7 @@ export default function CollegePage() {
             area_of_interests: []
         };
 
+        if (userData.role) newUserData.user["role"] = userData.role;
         if (userData.referral_id)
             newUserData["referral"] = { mu_id: userData.referral_id };
         if (userData.param) {
