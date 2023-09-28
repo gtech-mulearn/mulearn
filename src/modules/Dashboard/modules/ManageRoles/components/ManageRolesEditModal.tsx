@@ -4,7 +4,7 @@ import { useToast } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import styles from "./Modal.module.css";
 import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css";
 import { type } from "os";
@@ -77,19 +77,17 @@ const ManageRolesEditModal = (props: Props) => {
                 />
 
                 <div className={styles.ButtonContainer}>
-                    <MuButton
+                    <PowerfulButton
                         type="button"
                         className={`${mustyles.btn} ${styles.Decline}`}
-                        text={"Decline"}
                         onClick={() => {
                             props.onClose(null);
                         }}
-                    />
-                    <MuButton
+                    >Decline</PowerfulButton>
+                    <PowerfulButton
                         className={`${mustyles.btn} ${styles.Confirm}`}
-                        text="Confirm"
                         type="submit"
-                    />
+                    >Confirm</PowerfulButton>
                 </div>
             </Form>
         </Formik>
