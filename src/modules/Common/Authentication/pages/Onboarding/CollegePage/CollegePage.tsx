@@ -77,7 +77,7 @@ export default function CollegePage() {
     }, []);
 
     const onSubmit = async (values: any) => {
-        const newUserData = {
+        const newUserData: any = {
             user: {
                 first_name: userData.first_name,
                 last_name: userData.last_name,
@@ -92,15 +92,15 @@ export default function CollegePage() {
                 organizations: [values.college, ...userData.communities],
                 verified: true
             },
-            referral: { mu_id: userData.referral_id },
-            area_of_interests: [],
-            integration: {
-                param: userData.param,
-                title: "DWMS"
-            }
+            area_of_interests: []
         };
-        console.log(newUserData);
-        return;
+
+        if (userData.referral_id)
+            newUserData["referral"] = { mu_id: userData.referral_id };
+        if (userData.param) {
+            newUserData["integration"]["param"] = userData.param;
+            newUserData["integration"]["title"] = "DWMS";
+        }
 
         submitUserData({
             setIsLoading: setIsLoading,
