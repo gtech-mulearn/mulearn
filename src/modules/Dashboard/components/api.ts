@@ -5,7 +5,7 @@ export type Notification = {
     [K in "id" | "url" | "title" | "button" | "created_at" | "description"|"created_by"]: string;
 };
 
-export function getNotifications(setResponse: UseStateFunc<Notification[]>,props: any) {
+export function getNotifications(setResponse: UseStateFunc<Notification[]>,props?: any) {
     privateGateway.get(NotificationRoutes.getNotification)
         .then(response => {
             setResponse((response.data.response as []).reverse());
