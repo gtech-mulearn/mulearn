@@ -2040,8 +2040,8 @@ const Onboarding = (props: Props) => {
                                                     formik.errors.password ||
                                                     formik.errors
                                                         .confirmPassword ||
-                                                    formik.errors
-                                                        .areaOfInterest ||
+                                                    // formik.errors
+                                                    //     .areaOfInterest ||
                                                     (role[0]["title"] ==
                                                         "Student" ||
                                                         role[0]["title"] ==
@@ -2053,18 +2053,19 @@ const Onboarding = (props: Props) => {
                                                     (role[0]["title"] ==
                                                         "Student"
                                                         ? formik.errors.yog
-                                                        : null) ||
+                                                        : null) 
+                                                        // ||
                                                     // (role[0]["title"] == "Mentor"
                                                     //   ? formik.errors.mentorRole
                                                     //   : null) ||
                                                     // (formik.values.mentorRole == "Company"
                                                     //   ? formik.errors.organization
                                                     //   : null) ||
-                                                    (formik.values
-                                                        .areaOfInterest
-                                                        .length == 0
-                                                        ? true
-                                                        : null)
+                                                    // (formik.values
+                                                    //     .areaOfInterest
+                                                    //     .length == 0
+                                                    //     ? true
+                                                    //     : null)
                                                 ) {
                                                     //console.log(formik.errors);
                                                 } else {
