@@ -250,40 +250,66 @@ const Onboarding = (props: Props) => {
         //     invite_code: inviteCode ? inviteCode : null,
         // };
 
-        const userData = {
+        const userData: {
+            user: {
+                first_name: any;
+                last_name: any | null;
+                email: any;
+                mobile: any;
+                password: any;
+                role: string | null;
+            };
+            organization: {
+                organizations: any;
+                verified: boolean;
+                department: any | null;
+                graduation_year: any | null;
+            };
+            password: any;
+            invite_code: string | null;
+            integration?: {
+                param: any | null;
+                title: string | null;
+            };
+            referral?: {
+                mu_id: any;
+            };
+        } = {
             user: {
                 first_name: values.firstName, //required
                 last_name: values.lastName === "" ? null : values.lastName,
                 email: values.email, //required
                 mobile: values.mobile, //required
-                gender: values.gender === "" ? null : values.gender,
-                dob: values.dob === "" ? null : values.dob,
                 password: values.password,
                 role: role[0]["id"] == "" ? null : role[0]["id"], //required
             },
             organization: {
-                organizations: [
+                organizations:
                     values.organization === "" && values.community.length === 0
                         ? null
-                        : values.community], //required except for individual
+                        : values.community, //required except for individual
                 verified: roleVerified,
                 department: values.dept === "" ? null : values.dept, //required for student and enabler
                 graduation_year: values.yog === "" ? null : values.yog,
             }, //required for student
             //required
-            referral: {
-                mu_id: values.referral_id === "" ? null : values.referral_id,
-            },
-            integration: {
+            password: values.password, //required
+            invite_code: inviteCode ? inviteCode : null,
+        };
+
+        if (param) {
+            userData["integration"] = {
                 param: param ? param : null,
                 title: param ? "DWMS" : null,
-            },
-            area_of_interests: values.areaOfInterest, //required,
-            password: values.password, //required
-            referral_id: values.referral_id === "" ? null : values.referral_id,
-            param: param ? param : null,
-            invite_code: inviteCode ? inviteCode : null
-        };
+            };
+        }
+
+        if (values.referral_id) {
+            userData["referral"] = {
+                mu_id: values.referral_id,
+            };
+        }
+
         registerUser(
             setFormSuccess,
             setRoleVerified,
@@ -340,9 +366,9 @@ const Onboarding = (props: Props) => {
         if (!values.mentorRole) {
             errors.mentorRole = "Type is required";
         }
-        if (!values.areaOfInterest) {
-            errors.areaOfInterest = "Area of interest is required";
-        }
+        // if (!values.areaOfInterest) {
+        //     errors.areaOfInterest = "Area of interest is required";
+        // }
         return errors;
     };
     const formik = useFormik({
@@ -970,7 +996,7 @@ const Onboarding = (props: Props) => {
                                         </div>
                                     </div>
                                     <div className={styles.inputs}>
-                                        <div className={styles.input_container}>
+                                        {/* <div className={styles.input_container}>
                                             <div
                                                 className={
                                                     styles.grouped_inputs
@@ -1061,7 +1087,7 @@ const Onboarding = (props: Props) => {
                                                     />
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> */}
                                         <div className={styles.input_container}>
                                             <div
                                                 style={{ width: "100%" }}
@@ -1855,7 +1881,7 @@ const Onboarding = (props: Props) => {
                                         </div>
                                     </div>
 
-                                    <div className={styles.inputs}>
+                                    {/* <div className={styles.inputs}>
                                         <div className={styles.label_container}>
                                             <label htmlFor="">
                                                 Areas of Interest / Stack{" "}
@@ -1937,7 +1963,7 @@ const Onboarding = (props: Props) => {
                                                 </div>
                                             ) : null}
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div className={styles.error_message}>
                                     {formik.errors.general || ""}
@@ -2051,14 +2077,14 @@ const Onboarding = (props: Props) => {
                                             style={
                                                 tcChecked
                                                     ? {
-                                                          backgroundColor:
-                                                              "#5570f1"
-                                                      }
+                                                        backgroundColor:
+                                                            "#5570f1"
+                                                    }
                                                     : {
-                                                          backgroundColor:
-                                                              "#5570f1",
-                                                          opacity: "0.5"
-                                                      }
+                                                        backgroundColor:
+                                                            "#5570f1",
+                                                        opacity: "0.5"
+                                                    }
                                             }
                                             disabled={!tcChecked}
                                         >
