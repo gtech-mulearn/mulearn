@@ -20,41 +20,42 @@ import { getCommunities } from "../../../services/onboardingApis";
 
 const animatedComponents = makeAnimated();
 
-const inputObject = {
-    email: "Email",
-    firstName: "First Name",
-    lastName: "Last Name",
-    phoneNumber: "Phone Number",
-    password: "Password",
-    confirmPassword: "Confirm Password",
-    refferalId: "Refferal Id"
+const initialValues = {
+    email: "",
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    password: "",
+    confirmPassword: "",
+    refferalId: "",
+    communities: []
 };
 
 const scheme = z.object({
     email: z
         .string()
-        .required(`${inputObject.email} is Required`)
-        .min(5, `${inputObject.email} must be at least 3 characters`)
-        .max(100, `${inputObject.email} must be at most 100 characters`),
+        .required(`Email is Required`)
+        .min(5, `Email must be at least 3 characters`)
+        .max(100, `Email must be at most 100 characters`),
     firstName: z
         .string()
-        .required(`${inputObject.firstName} is Required`)
-        .min(3, `${inputObject.firstName} must be at least 3 characters`)
-        .max(100, `${inputObject.firstName} must be at most 100 characters`),
+        .required(`Firstname is Required`)
+        .min(3, `Firstname must be at least 3 characters`)
+        .max(100, `Firstname must be at most 100 characters`),
     lastName: z
         .string()
-        .required(`${inputObject.lastName} is Required`)
-        .min(1, `${inputObject.lastName} must be at least 3 characters`)
-        .max(100, `${inputObject.lastName} must be at most 100 characters`),
+        .required(`Lastname is Required`)
+        .min(1, `Lastname must be at least 3 characters`)
+        .max(100, `Lastname must be at most 100 characters`),
     phoneNumber: z
         .string()
-        .required(`${inputObject.phoneNumber} is Required`)
-        .min(10, `${inputObject.phoneNumber} must be at least 10 characters`)
-        .max(10, `${inputObject.phoneNumber} must be at most 10 characters`),
+        .required(`Phone number is Required`)
+        .min(10, `Phone number must be at least 10 characters`)
+        .max(10, `Phone number must be at most 10 characters`),
     password: z
         .string()
-        .required(`${inputObject.password} is Required`)
-        .min(6, `${inputObject.password} must be at least 6 characters`)
+        .required(`Password is Required`)
+        .min(6, `Password must be at least 6 characters`)
 });
 
 export default function AccountCreation() {
@@ -104,7 +105,8 @@ export default function AccountCreation() {
             mobile: values.phoneNumber,
             password: values.password,
             referral_id: values.refferalId ?? referralId,
-            param: param
+            param: param,
+            communities: values.communities
         };
         const isSuccess = await validate({
             userData: userData,
@@ -121,9 +123,7 @@ export default function AccountCreation() {
                 desc={"Please enter the user informations"}
             />
             <Formik
-                initialValues={Object.fromEntries(
-                    Object.keys(inputObject).map(key => [key, ""])
-                )}
+                initialValues={initialValues}
                 validationSchema={scheme}
                 onSubmit={onsubmit}
             >
@@ -227,7 +227,7 @@ export default function AccountCreation() {
                                         />
                                     </div>
                                 </div>
-                                {/* <div>
+                                <div>
                                     <Select
                                         name="community.id"
                                         ref={community_select_ref}
@@ -238,17 +238,13 @@ export default function AccountCreation() {
                                         placeholder="Select Communities you're part of"
                                         onChange={OnChangeValue => {
                                             console.log(OnChangeValue);
-                                            // formik.setFieldValue(
-                                            //     "community",
-                                            //     OnChangeValue.map(
-                                            //         (
-                                            //             value: any = {
-                                            //                 value: "",
-                                            //                 label: ""
-                                            //             }
-                                            //         ) => value.value
-                                            //     )
-                                            // );
+                                            const ids = OnChangeValue.map(
+                                                (e: any) => e.value
+                                            );
+                                            formik.setFieldValue(
+                                                "communities",
+                                                ids
+                                            );
                                         }}
                                         closeMenuOnSelect={false}
                                         components={animatedComponents}
@@ -263,14 +259,13 @@ export default function AccountCreation() {
                                             }
                                         )}
                                     />
-                                </div> */}
+                                </div>
                                 <div>
                                     <SimpleInput
                                         name={"refferalId"}
                                         value={formik.values.refferalId}
                                         type="text"
                                         placeholder="Refferal Id"
-                                        required
                                         disabled={isLoading}
                                     />
                                 </div>
