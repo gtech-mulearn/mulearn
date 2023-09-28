@@ -17,7 +17,6 @@ const ManageRolesCreateModal = (props: Props) => {
     const toast = useToast();
 
     return (
-        
         <Formik
             initialValues={{
                 title: "",
@@ -29,11 +28,13 @@ const ManageRolesCreateModal = (props: Props) => {
                 title: Yup.string()
                     .max(30, "Must be 30 characters or less")
                     .required("Required")
-                    .test('unique role name','role name already exists',
-                    async (value)=>{
-                            return !isRoleUnique(value,props.values)
-                        
-                    }),
+                    .test(
+                        "unique role name",
+                        "role name already exists",
+                        async value => {
+                            return !isRoleUnique(value, props.values);
+                        }
+                    ),
                 description: Yup.string()
                     .max(30, "Must be 30 characters or less")
                     .required("Required")
@@ -60,7 +61,7 @@ const ManageRolesCreateModal = (props: Props) => {
                 //     .required("Required")
             })}
             onSubmit={values => {
-                (async ()=>{
+                (async () => {
                     await createManageRoles(values.title, values.description);
                     toast({
                         title: "Role created",
@@ -68,9 +69,8 @@ const ManageRolesCreateModal = (props: Props) => {
                         duration: 3000,
                         isClosable: true
                     });
-                    props.onClose(null)
-                })()
-                
+                    props.onClose(null);
+                })();
             }}
         >
             <Form className={styles.Form}>
@@ -103,23 +103,23 @@ const ManageRolesCreateModal = (props: Props) => {
                     I accept the terms and conditions
                 </MyCheckbox> */}
                 <div className={styles.ButtonContainer}>
-                    <MuButton
+                    <button
                         className={`${mustyles.btn} ${styles.Decline}`}
-                        text={"Decline"}
                         onClick={() => {
-                            props.onClose(null)
+                            props.onClose(null);
                         }}
-                    />
-                    <MuButton
+                    >
+                        Decline
+                    </button>
+                    <button
                         className={`${mustyles.btn} ${styles.Confirm}`}
-                        text={"Confirm"}
-                        submit={true}
                         type="submit"
-                    />
+                    >
+                        Confirm
+                    </button>
                 </div>
             </Form>
         </Formik>
-           
     );
 };
 
