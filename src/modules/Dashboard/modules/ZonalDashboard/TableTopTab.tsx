@@ -20,6 +20,7 @@ const TableTopTab = ({ active, onTabClick, tabletopTab }: TableTopTabProps) => {
                             ? "table_tab_btn active"
                             : "table_tab_btn inactive"
                     }
+                    variant="plain"
                     onClick={() => {
                         onTabClick(item);
                     }}>{item}</PowerfulButton>

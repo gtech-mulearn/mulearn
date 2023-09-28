@@ -1,5 +1,5 @@
 import React from "react";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import "../DistrictDashboard/Organizations.css";
@@ -27,30 +27,26 @@ const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
         <div className="table_tab_container">
             <div className="table_tabs">
                 {tabletopTab.map((item: string): any => (
-                    <MuButton
-                        key={item}
-                        text={item}
-                        className={
-                            active === item
-                                ? "table_tab_btn active"
-                                : "table_tab_btn inactive"
-                        }
-                        onClick={() => {
-                            onTabClick(item);
-                        }}
-                    />
+                    
+                    <PowerfulButton className={
+                        active === item
+                            ? "table_tab_btn active"
+                            : "table_tab_btn inactive"
+                    }
+                    variant="plain"
+                    onClick={() => {
+                        onTabClick(item);
+                    }}>{item}</PowerfulButton>
                 ))}
             </div>
-            <MuButton
-                className="org_create_btn"
-                text={"Create"}
+           
+            <PowerfulButton className="org_create_btn"
+                
                 style={{
                     backgroundColor: "#456FF6",
                     color: "#fff"
                 }}
-                onClick={handleCreate}
-                icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
-            />
+                onClick={handleCreate}><AiOutlinePlusCircle/>Create</PowerfulButton>
         </div>
     );
 };
