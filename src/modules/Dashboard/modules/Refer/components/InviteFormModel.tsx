@@ -11,6 +11,7 @@ import { AxiosError } from "axios";
 
 type Props = {
     id?: string;
+    inviteType?: string;
     onClose: any;
     values?: string[];
 };
@@ -33,7 +34,8 @@ const InviteFormModel = (props: Props) => {
                     const response = await privateGateway.post(
                         dashboardRoutes.createInviteEmail,
                         {
-                            email: values.email
+                            email: values.email,
+                            invite_type: props.inviteType,
                         }
                     );
                     const message: any = response?.data;

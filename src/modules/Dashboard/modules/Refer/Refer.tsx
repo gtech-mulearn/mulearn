@@ -72,7 +72,7 @@ const Refer = () => {
                     paragraph="Send a invite link to a email"
                     onClose={() => setOpen(false)}
                 >
-                    <InviteFormModel onClose={() => setOpen(false)} />
+                    <InviteFormModel inviteType={inviteType} onClose={() => setOpen(false)} />
                 </Modal>
             )}
             <div className={styles.learningCircleLandingPage}>
