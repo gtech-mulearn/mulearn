@@ -196,6 +196,8 @@ const Onboarding = (props: Props) => {
                 });
             });
         }
+
+        console.log(inviteCode);
     }, []);
 
     // formik
