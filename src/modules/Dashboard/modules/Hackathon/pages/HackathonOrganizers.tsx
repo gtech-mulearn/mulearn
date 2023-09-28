@@ -62,7 +62,7 @@ export const HackathonOrganizers = (props: Props) => {
 
                         <PowerfulButton
                             children="Add Organizer"
-                            type="submit" style={{margin:"23px 0 0 0"}}
+                            type="submit" style={{ margin: "23px 0 0 0" }}
                         />
                     </Form>
                 </Formik>
@@ -83,7 +83,7 @@ export const HackathonOrganizers = (props: Props) => {
                     >
                         <THead
                             columnOrder={columnOrder}
-                            onIconClick={() => {}}
+                            onIconClick={() => { }}
                         />
                         <Blank />
                     </Table>
