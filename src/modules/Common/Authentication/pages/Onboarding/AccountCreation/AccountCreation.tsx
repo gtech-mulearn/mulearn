@@ -24,6 +24,7 @@ const initialValues = {
     email: "",
     firstName: "",
     lastName: "",
+    countryCode: "+91",
     phoneNumber: "",
     password: "",
     confirmPassword: "",
@@ -168,16 +169,28 @@ export default function AccountCreation() {
                                         />
                                     </div>
                                 </div>
-                                <div>
-                                    <SimpleInput
-                                        name={"phoneNumber"}
-                                        value={formik.values.phoneNumber}
-                                        onChange={formik.handleChange}
-                                        type="number"
-                                        placeholder="+91"
-                                        required
-                                        disabled={isLoading}
-                                    />
+                                <div className={styles.col_2}>
+                                    <select
+                                        style={{
+                                            width: "15%",
+                                            textAlign: "center"
+                                        }}
+                                        name="countryCode"
+                                    >
+                                        <option value="+91" selected>
+                                            +91
+                                        </option>
+                                    </select>
+                                    <div>
+                                        <SimpleInput
+                                            name={"phoneNumber"}
+                                            value={formik.values.phoneNumber}
+                                            onChange={formik.handleChange}
+                                            type="number"
+                                            required
+                                            disabled={isLoading}
+                                        />
+                                    </div>
                                 </div>
                                 <div className={styles.col_2}>
                                     <div
