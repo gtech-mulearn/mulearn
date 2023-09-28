@@ -89,7 +89,7 @@ export default function CollegePage() {
             organization: {
                 department: values.department,
                 year_of_graduation: values.graduationYear,
-                organizations: [values.college],
+                organizations: [values.college, ...userData.communities],
                 verified: true
             },
             referral: { mu_id: userData.referral_id },
@@ -99,6 +99,9 @@ export default function CollegePage() {
                 title: "DWMS"
             }
         };
+        console.log(newUserData);
+        return;
+
         submitUserData({
             setIsLoading: setIsLoading,
             userData: newUserData,

@@ -73,7 +73,7 @@ export default function CompanyPage() {
             organization: {
                 department: values.department,
                 year_of_graduation: values.graduationYear,
-                organizations: [values.college],
+                organizations: [values.college, ...userData.communities],
                 verified: true
             },
             referral: { mu_id: userData.referral_id },
