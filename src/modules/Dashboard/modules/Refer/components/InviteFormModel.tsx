@@ -67,7 +67,6 @@ const InviteFormModel = (props: Props) => {
                     type="email"
                     placeholder="Enter a email address"
                 />
-
                 <div className={styles.ButtonContainer}>
                     <MuButton
                         className={`${mustyles.btn} ${styles.Decline}`}
@@ -82,6 +81,7 @@ const InviteFormModel = (props: Props) => {
                         submit={true}
                         type="submit"
                     />
+
                 </div>
             </Form>
         </Formik>
