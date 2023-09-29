@@ -2,7 +2,7 @@ import { useToast } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import styles from "./Modal.module.css";
 import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import * as Yup from "yup";
 import FormikReactSelect, {
     FormikTextInput
@@ -88,19 +88,20 @@ const EditModal = (props: Props) => {
                 )}
 
                 <div className={styles.ButtonContainer}>
-                    <MuButton
+                <PowerfulButton
                         className={`${mustyles.btn} ${styles.Decline}`}
-                        text={"Decline"}
                         onClick={() => {
                             props.onClose(null);
                         }}
-                    />
-                    <MuButton
+                    >
+                        Decline
+                    </PowerfulButton>
+                    <PowerfulButton
                         className={`${mustyles.btn} ${styles.Confirm}`}
-                        text={"Confirm"}
-                        submit={true}
                         type="submit"
-                    />
+                    >
+                        Confirm
+                    </PowerfulButton>
                 </div>
             </Form>
         </Formik>

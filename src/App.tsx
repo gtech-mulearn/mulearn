@@ -184,8 +184,8 @@ import CollegePage from "./modules/Common/Authentication/pages/Onboarding/Colleg
 import CompanyPage from "./modules/Common/Authentication/pages/Onboarding/CompanyPage/CompanyPage";
 import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/SignIn";
 
-import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs";
 import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
+import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs";
 import { Marketplace } from "./modules/Dashboard/modules/Marketplace/Marketplace";
 
 const ConnectedDevices = lazy(
