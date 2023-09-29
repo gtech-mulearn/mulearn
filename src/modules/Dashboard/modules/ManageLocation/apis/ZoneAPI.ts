@@ -69,14 +69,11 @@ export const patchZoneData = async (
 ) => {
     try {
         await privateGateway
-            .patch(
-                ManageLocationsRoutes.patchZoneData.replace("${zone}", zoneID),
-                {
-                    state: state,
-                    id: zoneID,
-                    name: newName
-                }
-            )
+            .patch(ManageLocationsRoutes.patchZoneData + `${zoneID}/`, {
+                // state: state,
+                id: zoneID,
+                label: newName
+            })
             .then(({ data }) => data.response);
     } catch (err: unknown) {
         const error = err as AxiosError;

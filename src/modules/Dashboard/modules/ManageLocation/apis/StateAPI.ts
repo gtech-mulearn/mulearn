@@ -2,6 +2,7 @@ import { AxiosError, AxiosRequestConfig } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { ManageLocationsRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
+import { stat } from "fs";
 
 //*WORKING✅
 export const getStateData = async (
@@ -81,17 +82,11 @@ export const patchStateData = async (
 ) => {
     try {
         await privateGateway
-            .patch(
-                ManageLocationsRoutes.patchStateData.replace(
-                    "${state}",
-                    stateID
-                ),
-                {
-                    country: country,
-                    id: stateID,
-                    name: newName
-                }
-            )
+            .patch(ManageLocationsRoutes.patchStateData + `${stateID}/`, {
+                // country: country,
+                id: stateID,
+                label: newName
+            })
             .then(({ data }) => data.response)
             .then(({ data }) => {
                 console.log(data);

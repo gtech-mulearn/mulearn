@@ -71,17 +71,11 @@ export const patchDistrictData = async (
 ) => {
     try {
         await privateGateway
-            .patch(
-                ManageLocationsRoutes.patchDistrictData.replace(
-                    "${district}",
-                    district
-                ),
-                {
-                    zone: zone,
-                    id: district,
-                    name: newName
-                }
-            )
+            .patch(ManageLocationsRoutes.patchDistrictData + `${district}/`, {
+                // zone: zone,
+                id: district,
+                label: newName
+            })
             .then(({ data }) => data.response)
             .then(({ data }) => {});
     } catch (err: unknown) {

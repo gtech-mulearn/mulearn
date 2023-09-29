@@ -82,16 +82,10 @@ export const patchCountryData = async (
     try {
         console.log(countryID);
         await privateGateway
-            .patch(
-                ManageLocationsRoutes.patchCountryData.replace(
-                    "${country}",
-                    countryID
-                ),
-                {
-                    id: countryID,
-                    name: newName
-                }
-            )
+            .patch(ManageLocationsRoutes.patchCountryData + `${countryID}/`, {
+                id: countryID,
+                label: newName
+            })
             .then(({ data }) => data.response)
             .then(({ data }) => {
                 console.log(data);

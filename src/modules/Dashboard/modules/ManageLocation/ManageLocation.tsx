@@ -73,11 +73,7 @@ const ManageLocation = () => {
         // return setData([]), setTotalPages(1);
     }, [activeTab, sort, currentPage, perPage, search]);
 
-    useEffect(() => {
-        // getLocationData();
-    }, []);
     function loadTableData() {
-        console.log(activeTab);
         setLoading(true);
         if (activeTab === "Country") {
             setPopupStatus(false);
@@ -112,7 +108,6 @@ const ManageLocation = () => {
             //     stateShow: false,
             //     zoneShow: false
             // }));
-            getLocationData();
             setColumns(columnsState);
         } else if (activeTab === "Zone") {
             // setPopupStatus(true);
@@ -121,7 +116,6 @@ const ManageLocation = () => {
             //     stateShow: true,
             //     zoneShow: false
             // }));
-            getLocationData();
             setColumns(columnsZone);
         } else if (activeTab === "District") {
             // setPopupStatus(true);
@@ -130,9 +124,10 @@ const ManageLocation = () => {
             //     stateShow: true,
             //     zoneShow: true
             // }));
-            getLocationData();
+
             setColumns(columnsDistrict);
         }
+        getLocationData();
     }
 
     function getLocationData() {
@@ -172,6 +167,7 @@ const ManageLocation = () => {
                         id: data.value
                     }))
                 );
+                console.log(res);
                 setLoading(false);
             });
         } else if (activeTab === "Zone") {
