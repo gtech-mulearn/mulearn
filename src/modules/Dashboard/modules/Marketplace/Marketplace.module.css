@@ -184,9 +184,27 @@
     gap: 10px;
     color: black;
 }
-.bottomSectionWrapper .Overlapper a{
+.bottomSectionWrapper .Overlapper a {
     background-color: #456ff6;
     color: white;
     padding: 8px 20px;
     border-radius: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .bottomSectionWrapper .Overlapper div {
+        padding: 30px 20px;
+        border-radius: 20px;
+        max-width: 350px;
+    }
+}
+@media screen and (max-width: 500px) {
+    .wrapper .topSectionWrapper .cont1 h1 {
+        font-size: 20px;
+    }
+
+    .wrapper .topSectionWrapper .cont2 h2 {
+        font-size: 15px;
+
+    }
 }
