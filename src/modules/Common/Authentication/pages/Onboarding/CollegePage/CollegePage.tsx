@@ -46,7 +46,7 @@ export default function CollegePage() {
     const navigate = useNavigate();
     const toast = useToast();
     const location = useLocation();
-    let userData = location.state as Object;
+    let userData: any = location.state as Object;
 
     const [isloading, setIsLoading] = useState(true);
     const [colleges, setColleges] = useState([{ id: "", title: "" }]);
@@ -77,13 +77,31 @@ export default function CollegePage() {
     }, []);
 
     const onSubmit = async (values: any) => {
-        const newUserData = {
-            ...userData,
-            dept: values.department,
-            year_of_graduation: values.graduationYear,
-            organizations: [values.college],
+        const newUserData: any = {
+            user: {
+                first_name: userData.first_name,
+                last_name: userData.last_name,
+                mobile: userData.mobile,
+                email: userData.email,
+                password: userData.password
+            },
+            organization: {
+                department: values.department,
+                year_of_graduation: values.graduationYear,
+                organizations: [values.college, ...userData.communities],
+                verified: true
+            },
             area_of_interests: []
         };
+
+        if (userData.role) newUserData.user["role"] = userData.role;
+        if (userData.referral_id)
+            newUserData["referral"] = { mu_id: userData.referral_id };
+        if (userData.param) {
+            newUserData["integration"]["param"] = userData.param;
+            newUserData["integration"]["title"] = "DWMS";
+        }
+
         submitUserData({
             setIsLoading: setIsLoading,
             userData: newUserData,
@@ -98,86 +116,90 @@ export default function CollegePage() {
                 title={"What describe you the most!"}
                 desc={"Please select your college"}
             />
-            {isloading ? (
-                <MuLoader />
-            ) : (
-                <Formik
-                    initialValues={Object.fromEntries(
-                        Object.keys(inputObject).map(key => [key, ""])
-                    )}
-                    validationSchema={scheme}
-                    onSubmit={(value, action) => onSubmit(value)}
-                >
-                    {formik => (
-                        <div>
-                            <div className={styles.wrapper}>
-                                <Form onSubmit={formik.handleSubmit}>
-                                    <h5 className={styles.text}>
-                                        Please enter your collage details
-                                    </h5>
-                                    <div className={styles.inputBox}>
-                                        <ReactSelect
-                                            options={
-                                                colleges.map(college => ({
-                                                    value: college.id,
-                                                    label: college.title
-                                                })) as any
-                                            }
-                                            name="college"
-                                            placeholder="College"
-                                            value={selectedCollege.title}
-                                            onChange={e => {
-                                                setSelectedCollege(e);
-                                                formik.setFieldValue(
-                                                    "college",
-                                                    e.value
-                                                );
-                                                inputObject.college = e.value;
-                                            }}
-                                        />
-                                    </div>
-                                    <div className={styles.inputBox}>
-                                        <ReactSelect
-                                            options={
-                                                departments.map(department => ({
-                                                    value: department.id,
-                                                    label: department.title
-                                                })) as any
-                                            }
-                                            name="department"
-                                            placeholder="Department"
-                                            value={selectedDepartment.title}
-                                            onChange={e => {
-                                                setSelectedDepartment(e);
-                                                formik.setFieldValue(
-                                                    "department",
-                                                    e.value
-                                                );
-                                                inputObject.department =
-                                                    e.value;
-                                            }}
-                                        />
-                                    </div>
-                                    <div className={styles.inputBox}>
-                                        <SimpleInput
-                                            value={formik.values.graduationYear}
-                                            name="graduationYear"
-                                            type="number"
-                                            placeholder="Graduation Year"
-                                        />
-                                    </div>
 
-                                    <div className={styles.submit}>
-                                        <PowerfulButton type="submit">
-                                            Submit
-                                        </PowerfulButton>
-                                    </div>
-                                </Form>
-                            </div>
+            <Formik
+                initialValues={Object.fromEntries(
+                    Object.keys(inputObject).map(key => [key, ""])
+                )}
+                validationSchema={scheme}
+                onSubmit={(value, action) => onSubmit(value)}
+            >
+                {formik => (
+                    <div>
+                        <div className={styles.wrapper}>
+                            <Form onSubmit={formik.handleSubmit}>
+                                <h5 className={styles.text}>
+                                    Please enter your collage details
+                                </h5>
+                                <div className={styles.inputBox}>
+                                    <ReactSelect
+                                        options={
+                                            colleges.map(college => ({
+                                                value: college.id,
+                                                label: college.title
+                                            })) as any
+                                        }
+                                        name="college"
+                                        placeholder="College"
+                                        value={selectedCollege.title}
+                                        isDisabled={isloading}
+                                        onChange={(e: any) => {
+                                            setSelectedCollege(e);
+                                            formik.setFieldValue(
+                                                "college",
+                                                e.value
+                                            );
+                                            inputObject.college = e.value;
+                                        }}
+                                    />
+                                </div>
+                                <div className={styles.inputBox}>
+                                    <ReactSelect
+                                        options={
+                                            departments.map(department => ({
+                                                value: department.id,
+                                                label: department.title
+                                            })) as any
+                                        }
+                                        name="department"
+                                        placeholder="Department"
+                                        value={selectedDepartment.title}
+                                        isDisabled={isloading}
+                                        onChange={(e: any) => {
+                                            setSelectedDepartment(e);
+                                            formik.setFieldValue(
+                                                "department",
+                                                e.value
+                                            );
+                                            inputObject.department = e.value;
+                                        }}
+                                    />
+                                </div>
+                                <div className={styles.inputBox}>
+                                    <SimpleInput
+                                        value={formik.values.graduationYear}
+                                        name="graduationYear"
+                                        type="number"
+                                        placeholder="Graduation Year"
+                                        disabled={isloading}
+                                    />
+                                </div>
+
+                                <div className={styles.submit}>
+                                    <PowerfulButton
+                                        type="submit"
+                                        isLoading={isloading}
+                                    >
+                                        {isloading
+                                            ? "Please wait..."
+                                            : "Submit"}
+                                    </PowerfulButton>
+                                </div>
+                            </Form>
                         </div>
-                    )}
-                </Formik>
-            )}
+                    </div>
+                )}
+            </Formik>
         </OnboardingTemplate>
     );
 }

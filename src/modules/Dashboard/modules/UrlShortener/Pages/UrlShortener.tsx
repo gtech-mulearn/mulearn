@@ -36,8 +36,9 @@ const UrlShortener = () => {
     const [createBtn, setCreateBtn] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+    const [loading, setLoading] = useState(false);
     const [perPage, setPerPage] = useState(20);
-    const [sort, setSort] = useState("created_at");
+    const [sort, setSort] = useState("-created_at");
     const [shortUrlData, setShortUrlData] = useState<urlData[]>([]);
 
     const formik = useFormik({
@@ -160,7 +161,9 @@ const UrlShortener = () => {
                 perPage,
                 setTotalPages,
                 "",
-                `-${column}`
+                `-${column}`,
+                setLoading
+
             );
         } else {
             setSort(column);
@@ -170,7 +173,8 @@ const UrlShortener = () => {
                 perPage,
                 setTotalPages,
                 "",
-                column
+                column,
+                setLoading
             );
         }
     };
@@ -212,22 +216,23 @@ const UrlShortener = () => {
     };
 
     useEffect(() => {
-        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
+        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages, "", sort, setLoading);
         getShortenUrls(
             setShortUrlData,
             currentPage,
             perPage,
             setTotalPages,
             "",
-            `${sort}`
+            `${sort}`,
+            setLoading
         );
     }, []);
 
     return (
         <>
-            <MuButton
-                text="Create"
-                onClick={() => setCreateBtn(true)}
+
+            <PowerfulButton onClick={() => setCreateBtn(true)}
+
                 style={{
                     width: "fit-content",
                     minWidth: "auto",
@@ -235,8 +240,7 @@ const UrlShortener = () => {
                     color: "#fff",
                     margin: "auto",
                     marginRight: "3%"
-                }}
-            />
+                }}>Create</PowerfulButton>
             {(editBtn || createBtn) && (
                 <div className={styles.url_shortener_container}>
                     <div className={styles.create_new_url}>
@@ -344,6 +348,7 @@ const UrlShortener = () => {
                     onEditClick={handleEdit}
                     onDeleteClick={handleDelete}
                     onCopyClick={handleCopy}
+                    isloading={loading}
                 >
                     <THead
                         columnOrder={columnOrder}

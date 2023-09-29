@@ -7,7 +7,7 @@ import {
     FormikSelect,
     FormikTextInput
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { AxiosError } from "axios";
@@ -209,13 +209,12 @@ const TaskCreate = (props: Props) => {
                             })}
                         </FormikSelect>
                         <div className={styles.btn_container}>
-                            <MuButton
-                                text={"Decline"}
+                            <button
                                 className={styles.btn_cancel}
                                 onClick={() => {
                                     navigate("/dashboard/tasks");
                                 }}
-                            />
+                            >Decline</button>
                             <button type="submit" className={styles.btn_submit}>
                                 Confirm
                             </button>

@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import FormikReactSelect, {
     FormikTextInput
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { getCountryData, postCountryData } from "./apis/CountryAPI";
 import { getStateData, postStateData } from "./apis/StateAPI";
 import { getZoneData, postZoneData } from "./apis/ZoneAPI";
@@ -135,8 +135,7 @@ const AddLocation = () => {
                             I accept the terms and conditions
                         </MyCheckbox> */}
                         <div className="ml_popup_btn_container">
-                            <MuButton
-                                text={"Decline"}
+                            <PowerfulButton
                                 className={styles.btn_cancel}
                                 onClick={() => {
                                     navigate("/dashboard/manage-locations", {
@@ -146,7 +145,9 @@ const AddLocation = () => {
                                         }
                                     });
                                 }}
-                            />
+                            >
+                                Decline
+                            </PowerfulButton>
                             <button type="submit" className={styles.btn_submit}>
                                 Confirm
                             </button>

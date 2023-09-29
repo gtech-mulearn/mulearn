@@ -21,7 +21,10 @@ import {
     getDWMSDetails
 } from "../services/onboardingApis";
 import { useNavigate, useParams } from "react-router-dom";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 
 const animatedComponents = makeAnimated();
 
@@ -33,6 +36,7 @@ const Onboarding = (props: Props) => {
     const urlParams = new URLSearchParams(window.location.search);
     const param = urlParams.get("param");
     const referralId = urlParams.get("referral_id");
+    const inviteCode = urlParams.get("invite_code");
     const queryParameters = new URLSearchParams(window.location.search);
     const navigate = useNavigate();
     // for hide and question container
@@ -112,7 +116,9 @@ const Onboarding = (props: Props) => {
     const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }]);
     const [showOrHidePassword, setShowOrHidePassword] = useState("password");
     const [showOrHideCPassword, setShowOrHideCPassword] = useState("password");
-    const [defaultCommunity, setDefaultCommunity] = useState([{ value: "", label: "" }]);
+    const [defaultCommunity, setDefaultCommunity] = useState([
+        { value: "", label: "" }
+    ]);
 
     const customStyles = {
         control: (provided: any) => ({
@@ -160,9 +166,9 @@ const Onboarding = (props: Props) => {
     useEffect(() => {
         localStorage.setItem("token", queryParameters.get("id") as string);
         getCountries(errorHandler, setCountryOption);
-        getCommunities(errorHandler, setCommunityAPI);
+        getCommunities({ errorHandler, setCommunityAPI });
         getCompanies(errorHandler, setCompanyAPI);
-        getInterests(errorHandler, setAoiAPI);
+        // getInterests(errorHandler, setAoiAPI);
         getRoles(errorHandler, setRoleAPI);
         if (param) {
             getDWMSDetails(errorHandler, param, (data: any) => {
@@ -186,23 +192,11 @@ const Onboarding = (props: Props) => {
                     mentorRole: "",
                     areaOfInterest: [],
                     general: "",
-                    referral_id: ""
+                    mu_id: ""
                 });
             });
         }
     }, []);
-
-    const [backendError, setBackendError] = useState<BackendErrors>({});
-
-    const handleBackendErrors = (errors: BackendErrors) => {
-
-        const formattedErrors: BackendErrors = {};
-        Object.entries(errors).forEach(([fieldName, errorMessages]) => {
-            formattedErrors[fieldName] = errorMessages;
-        });
-
-        setBackendError(formattedErrors);
-    };
 
     // formik
     const initialValues = {
@@ -225,34 +219,100 @@ const Onboarding = (props: Props) => {
         mentorRole: "",
         areaOfInterest: [],
         general: "",
-        referral_id: referralId ? referralId : ""
+        mu_id: referralId ? referralId : ""
     };
 
     const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
         if (values.organization != "") {
-            values.community.push(values.organization);
+            //if values.organization doesn't exist in values.community then push it
+            if (!values.community.includes(values.organization))
+                values.community.push(values.organization);
         }
-        console.log(values.community);
 
-        const userData = {
-            first_name: values.firstName, //required
-            last_name: values.lastName === "" ? null : values.lastName,
-            email: values.email, //required
-            mobile: values.mobile, //required
-            gender: values.gender === "" ? null : values.gender,
-            dob: values.dob === "" ? null : values.dob,
-            role: role[0]["id"] == "" ? null : role[0]["id"], //required
-            organizations:
-                values.organization === "" && values.community.length === 0
-                    ? null
-                    : values.community, //required except for individual
-            dept: values.dept === "" ? null : values.dept, //required for student and enabler
-            year_of_graduation: values.yog === "" ? null : values.yog, //required for student
-            area_of_interests: values.areaOfInterest, //required,
-            password: values.password, //required
-            referral_id: values.referral_id === "" ? null : values.referral_id,
-            param: param ? param : null
+        // const userData = {
+        //     first_name: values.firstName, //required
+        //     last_name: values.lastName === "" ? null : values.lastName,
+        //     email: values.email, //required
+        //     mobile: values.mobile, //required
+        //     gender: values.gender === "" ? null : values.gender,
+        //     dob: values.dob === "" ? null : values.dob,
+        //     role: role[0]["id"] == "" ? null : role[0]["id"], //required
+        //     organizations:
+        //         values.organization === "" && values.community.length === 0
+        //             ? null
+        //             : values.community, //required except for individual
+        //     dept: values.dept === "" ? null : values.dept, //required for student and enabler
+        //     year_of_graduation: values.yog === "" ? null : values.yog, //required for student
+        //     area_of_interests: values.areaOfInterest, //required,
+        //     password: values.password, //required
+        //     mu_id: values.mu_id === "" ? null : values.mu_id,
+        //     param: param ? param : null,
+        //     invite_code: inviteCode ? inviteCode : null,
+        // };
+
+        const userData: {
+            user: {
+                first_name: any;
+                last_name: any | null;
+                email: any;
+                mobile: any;
+                password: any;
+                role: string | null;
+            };
+            organization: {
+                organizations: any;
+                verified: boolean;
+                department: any | null;
+                graduation_year: any | null;
+            };
+            integration?: {
+                param: any | null;
+                title: string | null;
+            };
+            referral?: {
+                mu_id?: any;
+                invite_code?: any;
+            };
+        } = {
+            user: {
+                first_name: values.firstName, //required
+                last_name: values.lastName === "" ? null : values.lastName,
+                email: values.email, //required
+                mobile: values.mobile, //required
+                password: values.password,
+                role: role[0]["id"] == "" ? null : role[0]["id"] //required
+            },
+            organization: {
+                organizations:
+                    values.organization === "" && values.community.length === 0
+                        ? null
+                        : values.community, //required except for individual
+                verified: roleVerified,
+                department: values.dept === "" ? null : values.dept, //required for student and enabler
+                graduation_year: values.yog === "" ? null : values.yog
+            }, //required for student
+            //required
         };
+
+        if (param) {
+            userData["integration"] = {
+                param: param ? param : null,
+                title: param ? "DWMS" : null
+            };
+        }
+
+        if (values.mu_id) {
+            userData["referral"] = {
+                mu_id: values.mu_id
+            };
+        }
+
+        if (inviteCode) {
+            userData["referral"] = {
+                invite_code: inviteCode ? inviteCode : null
+            };
+        }
+
         registerUser(
             setFormSuccess,
             setRoleVerified,
@@ -274,16 +334,18 @@ const Onboarding = (props: Props) => {
         } else if (!/\S+@\S+\.\S+/.test(values.email)) {
             errors.email = "Invalid email address";
         }
-        if (values.password.length < 8)
-            errors.password = "Password length should be greater than 8";
+        if (values.password.length > 8)
+            if (!values.confirmPassword) {
+                errors.confirmPassword = "Please confirm your password";
+            } else if (
+                values.confirmPassword == "" ||
+                values.password != values.confirmPassword
+            ) {
+                errors.confirmPassword = "Password does not match";
+            }
 
-        if (!values.confirmPassword) {
-            errors.confirmPassword = "Please confirm your password";
-        } else if (
-            values.confirmPassword == "" ||
-            values.password != values.confirmPassword
-        ) {
-            errors.confirmPassword = "Password does not match";
+        if (values.password.length < 8) {
+            errors.password = "Password should be atleast 8 characters long";
         }
         if (!values.phone) {
             errors.phone = "Phone number is required";
@@ -311,9 +373,9 @@ const Onboarding = (props: Props) => {
         if (!values.mentorRole) {
             errors.mentorRole = "Type is required";
         }
-        if (!values.areaOfInterest) {
-            errors.areaOfInterest = "Area of interest is required";
-        }
+        // if (!values.areaOfInterest) {
+        //     errors.areaOfInterest = "Area of interest is required";
+        // }
         return errors;
     };
     const formik = useFormik({
@@ -329,8 +391,10 @@ const Onboarding = (props: Props) => {
                 (community: any) => community.title === "KKEM"
             );
             if (foundCommunity && foundCommunity.id) {
-                setDefaultCommunity([{ value: foundCommunity.id, label: foundCommunity.title }])
-                console.log(defaultCommunity)
+                setDefaultCommunity([
+                    { value: foundCommunity.id, label: foundCommunity.title }
+                ]);
+                console.log(defaultCommunity);
             }
         }
     }, [communityAPI]);
@@ -939,7 +1003,7 @@ const Onboarding = (props: Props) => {
                                         </div>
                                     </div>
                                     <div className={styles.inputs}>
-                                        <div className={styles.input_container}>
+                                        {/* <div className={styles.input_container}>
                                             <div
                                                 className={
                                                     styles.grouped_inputs
@@ -1030,7 +1094,7 @@ const Onboarding = (props: Props) => {
                                                     />
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> */}
                                         <div className={styles.input_container}>
                                             <div
                                                 style={{ width: "100%" }}
@@ -1799,7 +1863,7 @@ const Onboarding = (props: Props) => {
                                             <input
                                                 id="referralId"
                                                 type="text"
-                                                name="referral_id"
+                                                name="mu_id"
                                                 placeholder="Referral id , if any"
                                                 className={styles.input}
                                                 onBlur={formik.handleBlur}
@@ -1807,24 +1871,22 @@ const Onboarding = (props: Props) => {
                                                     referralId ? true : false
                                                 }
                                                 onChange={formik.handleChange}
-                                                value={
-                                                    formik.values.referral_id
-                                                }
+                                                value={formik.values.mu_id}
                                             />
-                                            {formik.touched.referral_id &&
-                                            formik.errors.referral_id ? (
+                                            {formik.touched.mu_id &&
+                                            formik.errors.mu_id ? (
                                                 <div
                                                     className={
                                                         styles.error_message
                                                     }
                                                 >
-                                                    {formik.errors.referral_id}
+                                                    {formik.errors.mu_id}
                                                 </div>
                                             ) : null}
                                         </div>
                                     </div>
 
-                                    <div className={styles.inputs}>
+                                    {/* <div className={styles.inputs}>
                                         <div className={styles.label_container}>
                                             <label htmlFor="">
                                                 Areas of Interest / Stack{" "}
@@ -1887,15 +1949,15 @@ const Onboarding = (props: Props) => {
                                                                     );
                                                                 }
                                                             }}
-                                                            // required
+                                                        // required
                                                         />
                                                         <span>{aoi.name}</span>
                                                     </label>
                                                 );
                                             })}
                                             {formik.touched.areaOfInterest &&
-                                            formik.values.areaOfInterest
-                                                .length == 0 ? (
+                                                formik.values.areaOfInterest
+                                                    .length == 0 ? (
                                                 <div
                                                     className={
                                                         styles.error_message
@@ -1906,7 +1968,7 @@ const Onboarding = (props: Props) => {
                                                 </div>
                                             ) : null}
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div className={styles.error_message}>
                                     {formik.errors.general || ""}
@@ -1968,69 +2030,73 @@ const Onboarding = (props: Props) => {
                                             }}
                                         >
                                             Cancel
-                                        </button>                                       
+                                        </button>
                                         <PowerfulButton
-                                        className={styles.submit_button}
-                                        type="submit"
-                                        onClick={e => {
-                                            // e.preventDefault();
-                                            validate(formik.values);
-                                            if (
-                                                formik.values.firstName ==
-                                                    "" ||
-                                                formik.errors.firstName ||
-                                                formik.errors.email ||
-                                                formik.errors.mobile ||
-                                                formik.errors.password ||
-                                                formik.errors
-                                                    .confirmPassword ||
-                                                formik.errors
-                                                    .areaOfInterest ||
-                                                (role[0]["title"] ==
-                                                    "Student" ||
-                                                role[0]["title"] ==
-                                                    "Enabler"
-                                                    ? formik.errors
-                                                          .organization ||
-                                                      formik.errors.dept
-                                                    : null) ||
-                                                (role[0]["title"] ==
-                                                "Student"
-                                                    ? formik.errors.yog
-                                                    : null) ||
-                                                // (role[0]["title"] == "Mentor"
-                                                //   ? formik.errors.mentorRole
-                                                //   : null) ||
-                                                // (formik.values.mentorRole == "Company"
-                                                //   ? formik.errors.organization
-                                                //   : null) ||
-                                                (formik.values
-                                                    .areaOfInterest
-                                                    .length == 0
-                                                    ? true
-                                                    : null)
-                                            ) {
-                                                //console.log(formik.errors);
-                                            } else {
-                                                // console.log(formik.values);
-                                                // console.log("no error");
-                                                onSubmit(formik.values, {});
+                                            className={styles.submit_button}
+                                            type="submit"
+                                            onClick={e => {
+                                                // e.preventDefault();
+                                                validate(formik.values);
+                                                if (
+                                                    formik.values.firstName ==
+                                                        "" ||
+                                                    formik.errors.firstName ||
+                                                    formik.errors.email ||
+                                                    formik.errors.mobile ||
+                                                    formik.errors.password ||
+                                                    formik.errors
+                                                        .confirmPassword ||
+                                                    // formik.errors
+                                                    //     .areaOfInterest ||
+                                                    (role[0]["title"] ==
+                                                        "Student" ||
+                                                    role[0]["title"] ==
+                                                        "Enabler"
+                                                        ? formik.errors
+                                                              .organization ||
+                                                          formik.errors.dept
+                                                        : null) ||
+                                                    (role[0]["title"] ==
+                                                    "Student"
+                                                        ? formik.errors.yog
+                                                        : null)
+                                                    // ||
+                                                    // (role[0]["title"] == "Mentor"
+                                                    //   ? formik.errors.mentorRole
+                                                    //   : null) ||
+                                                    // (formik.values.mentorRole == "Company"
+                                                    //   ? formik.errors.organization
+                                                    //   : null) ||
+                                                    // (formik.values
+                                                    //     .areaOfInterest
+                                                    //     .length == 0
+                                                    //     ? true
+                                                    //     : null)
+                                                ) {
+                                                    //console.log(formik.errors);
+                                                } else {
+                                                    // console.log(formik.values);
+                                                    // console.log("no error");
+                                                    onSubmit(formik.values, {});
+                                                }
+                                            }}
+                                            isLoading={showSubmitLoader}
+                                            style={
+                                                tcChecked
+                                                    ? {
+                                                          backgroundColor:
+                                                              "#5570f1"
+                                                      }
+                                                    : {
+                                                          backgroundColor:
+                                                              "#5570f1",
+                                                          opacity: "0.5"
+                                                      }
                                             }
-                                        }}
-                                        isLoading={showSubmitLoader}
-                                        style={
-                                            tcChecked
-                                                ? {
-                                                      backgroundColor:
-                                                          "#5570f1"
-                                                  }
-                                                : {
-                                                      backgroundColor:
-                                                          "#5570f1",
-                                                      opacity: "0.5"
-                                                  }
-                                        }
-                                        disabled={!tcChecked}>Submit</PowerfulButton>
+                                            disabled={!tcChecked}
+                                        >
+                                            Submit
+                                        </PowerfulButton>
                                     </div>
                                 </div>
                             </form>

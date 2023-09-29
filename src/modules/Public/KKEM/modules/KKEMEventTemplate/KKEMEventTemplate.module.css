@@ -1,346 +1,347 @@
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
 .navbar {
-  background-color: #ffffff;
-  padding: 2rem 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    background-color: #ffffff;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .container {
-  display: flex;
-  justify-content: space-between;
-  background-color: #fff;
-  padding: 1rem 2rem;
-  border-radius: 1.2rem;
-  width: 100%;
-  max-width: 800px;
-  perspective: 1000px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 1.2rem;
+    width: 100%;
+    max-width: 800px;
+    perspective: 1000px;
 }
 
 .container > a {
-  color: #000;
-  text-decoration: none;
-  font-weight: 600;
-  line-height: 1rem;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    line-height: 1rem;
 }
 .container > a:hover {
-  color: #2e85fe;
+    color: #2e85fe;
 }
 
 /* Banner */
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 .main {
-  max-width: 200rem;
-  margin: 0 auto;
+    max-width: 200rem;
+    margin: 0 auto;
 }
 .title {
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-  object-fit: cover;
-  display: block;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    object-fit: cover;
+    display: block;
 }
 .mU {
-  position: absolute;
-  top: -30%;
-  left: 20px;
-  height: 150%;
-  opacity: 0.5;
+    position: absolute;
+    top: -30%;
+    left: 20px;
+    height: 150%;
+    opacity: 0.5;
 }
 
 .aboutSection {
-  max-width: 1400px;
-  padding: 2rem;
-  margin: auto;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+    max-width: 1400px;
+    padding: 2rem;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .aboutTextsHeading {
-  color: #24292d;
-  font-family: Plus Jakarta Sans;
-  font-size: 4rem;
-  font-weight: 600;
-  line-height: 111.5%; /* 90.499px */
+    color: #24292d;
+    font-family: Plus Jakarta Sans;
+    font-size: 4rem;
+    font-weight: 600;
+    line-height: 111.5%; /* 90.499px */
 }
 
 .aboutTextstDescription {
-  color: #24292d;
-  font-family: Plus Jakarta Sans;
-  font-size: 1.35rem;
-  font-style: normal;
-  margin-top: 1rem;
-  font-weight: 500;
-  max-width: 40rem;
-  line-height: 127.5%; /* 38.25px */
+    color: #24292d;
+    font-family: Plus Jakarta Sans;
+    font-size: 1.35rem;
+    font-style: normal;
+    margin-top: 1rem;
+    font-weight: 500;
+    max-width: 40rem;
+    line-height: 127.5%; /* 38.25px */
 }
 
 .aboutTextDate {
-  color: #656565;
-  font-family: Plus Jakarta Sans;
-  font-size: 1.75rem;
-  font-style: normal;
-  color: #24292d;
-  font-weight: 300;
-  margin-top: 1rem;
-  line-height: 127.5%; /* 38.25px */
+    color: #656565;
+    font-family: Plus Jakarta Sans;
+    font-size: 1.75rem;
+    font-style: normal;
+    color: #24292d;
+    font-weight: 300;
+    margin-top: 1rem;
+    line-height: 127.5%; /* 38.25px */
 }
 
 .aboutTextButton {
-  margin-bottom: 1rem;
-  color: #ffffff;
-  padding: 1rem 3.5rem;
-  flex-shrink: 0;
-  border-radius: 15.62px;
-  background: #52b565;
-  margin-top: 1.5rem;
-  box-shadow: 0px 0px 41.21519px 0px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    color: #ffffff;
+    padding: 1rem 3.5rem;
+    flex-shrink: 0;
+    border-radius: 15.62px;
+    background: #52b565;
+    margin-top: 1.5rem;
+    box-shadow: 0px 0px 41.21519px 0px rgba(0, 0, 0, 0.1);
 }
 
 .aboutSectionImage {
-  width: 400px;
-  height: 400px;
+    width: 400px;
+    height: 400px;
+    border-radius: 1rem;
 }
 
 @media screen and (max-width: 1224px) {
-  .aboutTextsHeading {
-    font-size: 3.5rem;
-  }
+    .aboutTextsHeading {
+        font-size: 3.5rem;
+    }
 
-  .aboutSectionImage {
-    width: 300px;
-    height: 300px;
-  }
+    .aboutSectionImage {
+        width: 300px;
+        height: 300px;
+    }
 
-  .aboutTextstDescription {
-    font-size: 1.25rem;
-  }
+    .aboutTextstDescription {
+        font-size: 1.25rem;
+    }
 
-  .aboutTextDate {
-    font-size: 1.5rem;
-  }
+    .aboutTextDate {
+        font-size: 1.5rem;
+    }
 }
 
 @media screen and (max-width: 1004px) {
-  .aboutSection {
-    justify-content: flex-start;
-  }
+    .aboutSection {
+        justify-content: flex-start;
+    }
 }
 
 @media screen and (max-width: 768px) {
-  .aboutTextsHeading {
-    font-size: 3rem;
-  }
+    .aboutTextsHeading {
+        font-size: 3rem;
+    }
 
-  .aboutTextstDescription {
-    font-size: 1.25rem;
-  }
+    .aboutTextstDescription {
+        font-size: 1.25rem;
+    }
 
-  .aboutTextDate {
-    font-size: 1.25rem;
-  }
+    .aboutTextDate {
+        font-size: 1.25rem;
+    }
 }
 
 @media screen and (max-width: 480px) {
-  .aboutTextsHeading {
-    font-size: 2.5rem;
-  }
+    .aboutTextsHeading {
+        font-size: 2.5rem;
+    }
 
-  .aboutTextstDescription {
-    font-size: 1.1rem;
-  }
+    .aboutTextstDescription {
+        font-size: 1.1rem;
+    }
 
-  .aboutTextDate {
-    font-size: 1.1rem;
-  }
+    .aboutTextDate {
+        font-size: 1.1rem;
+    }
 
-  .aboutTextButton {
-    padding: 0.75rem 3rem;
-  }
+    .aboutTextButton {
+        padding: 0.75rem 3rem;
+    }
 }
 
 .countSectionCount {
-  color: #24292d;
-  font-family: Plus Jakarta Sans;
-  font-size: 3.5rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 127.5%; /* 91.649px */
-  animation: count-section-count 1s ease-in-out;
+    color: #24292d;
+    font-family: Plus Jakarta Sans;
+    font-size: 3.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 127.5%; /* 91.649px */
+    animation: count-section-count 1s ease-in-out;
 }
 
 .countSectionDescription {
-  color: #4b94ff;
-  font-family: Plus Jakarta Sans;
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 127.5%; /* 38.25px */
-  animation: count-section-description 1s ease-in-out;
+    color: #4b94ff;
+    font-family: Plus Jakarta Sans;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 127.5%; /* 38.25px */
+    animation: count-section-description 1s ease-in-out;
 }
 
 @media screen and (max-width: 1224px) {
-  .countSectionCount {
-    font-size: 3rem;
-  }
+    .countSectionCount {
+        font-size: 3rem;
+    }
 
-  .countSectionDescription {
-    font-size: 1.1rem;
-  }
+    .countSectionDescription {
+        font-size: 1.1rem;
+    }
 }
 
 @keyframes count-section-count {
-  0% {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 @keyframes count-section-description {
-  0% {
-    transform: translateY(50px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .aboutTextsHeading,
 .winnerDetailsHeading {
-  color: #24292d;
-  font-family: Plus Jakarta Sans;
-  font-size: 3.5rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 111.5%; /* 90.499px */
+    color: #24292d;
+    font-family: Plus Jakarta Sans;
+    font-size: 3.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 111.5%; /* 90.499px */
 }
 
 .aboutTextstDescription {
-  font-size: 1.25rem;
+    font-size: 1.25rem;
 }
 
 .aboutTextDate {
-  font-size: 1.25rem;
+    font-size: 1.25rem;
 }
 
 @media screen and (max-width: 480px) {
-  .aboutTextsHeading,
-  .winnerDetailsHeading {
-    font-size: 2.5rem;
-  }
+    .aboutTextsHeading,
+    .winnerDetailsHeading {
+        font-size: 2.5rem;
+    }
 
-  .aboutTextstDescription {
-    font-size: 1.1rem;
-  }
+    .aboutTextstDescription {
+        font-size: 1.1rem;
+    }
 
-  .aboutTextDate {
-    font-size: 1.1rem;
-  }
+    .aboutTextDate {
+        font-size: 1.1rem;
+    }
 
-  .aboutTextButton {
-    padding: 0.75rem 3rem;
-  }
+    .aboutTextButton {
+        padding: 0.75rem 3rem;
+    }
 }
 
 .countsSectionContainer {
-  background-color: #dae9ff;
-  margin-top: 1rem;
-  align-items: center;
+    background-color: #dae9ff;
+    margin-top: 1rem;
+    align-items: center;
 }
 
 .counts {
-  max-width: 1400px;
-  padding: 2rem;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: auto;
+    max-width: 1400px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
 }
 
 .countSectionCount {
-  color: #24292d;
-  font-family: Plus Jakarta Sans;
-  font-size: 3.5rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 127.5%; /* 91.649px */
-  animation: count-section-count 1s ease-in-out;
+    color: #24292d;
+    font-family: Plus Jakarta Sans;
+    font-size: 3.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 127.5%; /* 91.649px */
+    animation: count-section-count 1s ease-in-out;
 }
 
 .countSectionDescription {
-  color: #4b94ff;
-  font-family: Plus Jakarta Sans;
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 127.5%; /* 38.25px */
-  animation: count-section-description 1s ease-in-out;
+    color: #4b94ff;
+    font-family: Plus Jakarta Sans;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 127.5%; /* 38.25px */
+    animation: count-section-description 1s ease-in-out;
 }
 
 @media screen and (max-width: 1224px) {
-  .countSectionCount {
-    font-size: 3rem;
-  }
+    .countSectionCount {
+        font-size: 3rem;
+    }
 
-  .countSectionDescription {
-    font-size: 1.1rem;
-  }
+    .countSectionDescription {
+        font-size: 1.1rem;
+    }
 }
 
 @keyframes count-section-count {
-  0% {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 @keyframes count-section-description {
-  0% {
-    transform: translateY(50px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .winnerDetailsHeading {
-  padding: 2rem;
-  max-width: 1400px;
-  margin: auto;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: auto;
 }
 
 .winnerDetailsListing {
-  max-width: 1400px;
-  margin: auto;
+    max-width: 1400px;
+    margin: auto;
 }
 
 .winnerCards {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-self: center;
-  row-gap: 1rem;
-  column-gap: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-self: center;
+    row-gap: 1rem;
+    column-gap: 1rem;
 }

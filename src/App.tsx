@@ -184,8 +184,9 @@ import CollegePage from "./modules/Common/Authentication/pages/Onboarding/Colleg
 import CompanyPage from "./modules/Common/Authentication/pages/Onboarding/CompanyPage/CompanyPage";
 import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/SignIn";
 
-import KKEMEventTemplate from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventTemplate";
 import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
+import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs";
+import { Marketplace } from "./modules/Dashboard/modules/Marketplace/Marketplace";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -197,7 +198,7 @@ function App() {
         // Add redirect from '/' to '/login'
         {
             path: "/",
-            element: <Navigate to="/signin" replace />
+            element: <Navigate to="/login" replace />
         },
         {
             path: "*",
@@ -564,6 +565,10 @@ function App() {
                         {
                             path: "learning-circle/create-circle",
                             element: <LearningCircleCreate />
+                        },
+                        {
+                            path: "marketplace",
+                            element: <Marketplace />
                         }
                         // {
                         //     path: "settings",
@@ -592,8 +597,8 @@ function App() {
             element: <LandingPage />
         },
         {
-            path: "/kkem/events/:id",
-            element: <KKEMEventTemplate />
+            path: "/kkem/events/beyondus",
+            element: <KKEMEventBeyondUs />
         }
     ]);
 

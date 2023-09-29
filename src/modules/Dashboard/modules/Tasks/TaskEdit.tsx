@@ -87,13 +87,12 @@ const TaskEdit = (props: Props) => {
                                     </option>
                                 </FormikSelect> */}
                                 <div className={styles.btn_container}>
-                                    <MuButton
-                                        text={"Decline"}
+                                    <button
                                         className={styles.btn_cancel}
                                         onClick={() => {
                                             navigate("/dashboard/tasks");
                                         }}
-                                    />
+                                    >Decline</button>
                                     <button
                                         type="submit"
                                         className={styles.btn_submit}
