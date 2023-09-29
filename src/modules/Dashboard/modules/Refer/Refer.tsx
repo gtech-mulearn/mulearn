@@ -16,6 +16,7 @@ import InviteFormModel from "./components/InviteFormModel";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 import { getReferredUserList } from "./service/api";
+import { setIn } from "formik";
 
 type Dataflow = {
     full_name: string;
@@ -27,6 +28,7 @@ type Dataflow = {
 const Refer = () => {
     const [open, setOpen] = useState<boolean>(false);
     const [currentPage, setCurrentPage] = useState(1);
+    const [inviteType, setInviteType] = useState<string>("");
     const [perPage, setPerPage] = useState(5);
     const [data, setData] = useState<Dataflow[] | null>(null);
     // const data: Dataflow[] = [
@@ -70,7 +72,7 @@ const Refer = () => {
                     paragraph="Send a invite link to a email"
                     onClose={() => setOpen(false)}
                 >
-                    <InviteFormModel onClose={() => setOpen(false)} />
+                    <InviteFormModel inviteType={inviteType} onClose={() => setOpen(false)} />
                 </Modal>
             )}
             <div className={styles.learningCircleLandingPage}>
@@ -86,7 +88,7 @@ const Refer = () => {
                         <div className={styles.learningCircleLandingPageButton}>
                             <PowerfulButton
                                 className={styles.createBtn}
-                                onClick={() => setOpen(true)}
+                                onClick={() => { setOpen(true); setInviteType("Mucoin") }}
                                 style={{
                                     display: "flex",
                                     justifyContent: "space-evenly",
@@ -95,7 +97,20 @@ const Refer = () => {
                                 }}
                             >
                                 <RiSendPlaneLine />
-                                Invite
+                                Invite(MuCoin)
+                            </PowerfulButton>
+                            <PowerfulButton
+                                className={styles.createBtn}
+                                onClick={() => { setOpen(true); setInviteType("Karma") }}
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "space-evenly",
+                                    alignItems: "center",
+                                    width: "100%"
+                                }}
+                            >
+                                <RiSendPlaneLine />
+                                Invite (Karma)
                             </PowerfulButton>
                         </div>
                     </div>
