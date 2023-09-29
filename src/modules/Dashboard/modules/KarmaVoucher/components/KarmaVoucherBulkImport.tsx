@@ -92,11 +92,11 @@ const KarmaVoucherBulkImport = () => {
                         >
                             <CountCard
                                 title="Success"
-                                count={uploadResponse.response.Success.length}
+                                count={uploadResponse?.response?.Success?.length}
                             />
                             <CountCard
                                 title="Failed"
-                                count={uploadResponse.response.Failed.length}
+                                count={uploadResponse?.response?.Failed?.length}
                             />
                         </div>
                         <div

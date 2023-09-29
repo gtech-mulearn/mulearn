@@ -115,7 +115,7 @@ export default function Landing() {
             description:
                 "Embark on an extraordinary hackathon mission 🚀. Utilize your strategic thinking and create impressive projects from scratch to explore Beyond Us ✨",
             image: pastEventsAssets.buh,
-            link: "",
+            link: "https://app.mulearn.org/events/beyondus",
             date: "8th and 9th July 2023"
         },
         {

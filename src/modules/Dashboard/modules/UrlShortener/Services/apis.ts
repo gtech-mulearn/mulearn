@@ -14,8 +14,10 @@ export const getShortenUrls = (
     selectedValue: number,
     setTotalPages?: UseStateFunc<number>,
     search?: string,
-    sortID?: string
+    sortID?: string,
+    setLoading?: UseStateFunc<boolean>
 ) => {
+    setLoading && setLoading(true);
     privateGateway
         .get(dashboardRoutes.getShortenUrl, {
             params: {
@@ -47,6 +49,9 @@ export const getShortenUrls = (
         )
         .catch(error => {
             console.log(error);
+        })
+        .finally(() => {
+            setLoading && setLoading(false);
         });
 };
 

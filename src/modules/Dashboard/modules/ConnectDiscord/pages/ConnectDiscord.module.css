@@ -142,13 +142,13 @@
 .onboarding_flow_container .content .onboarding_flow .box {
     left: 0;
     top: 30px;
-    background-image: url(../assets/images/onboardingflow1.webp);
+    background-image: url(../assets/images/new/onboardingflow1.webp);
 }
 
 .onboarding_flow_container .content .onboarding_flow .box2 {
     right: 50px;
     top: 35%;
-    background-image: url(../assets/images/onboardingflow2.webp);
+    background-image: url(../assets/images/new/onboardingflow2.webp);
 }
 
 .onboarding_flow_container .content .onboarding_flow .box3 {
@@ -157,7 +157,7 @@
 
     /* technique to get blured background */
 
-    background-image: url(../assets/images/onboardingflow3.webp);
+    background-image: url(../assets/images/new/onboardingflow3.webp);
 
     position: relative;
 }
@@ -170,7 +170,7 @@
     background-position: center;
     background-size: 95%;
     background-repeat: no-repeat;
-    background-image: url(../assets/images/onboardingflow3.webp);
+    background-image: url(../assets/images/new/onboardingflow3.webp);
     width: 100%;
     height: 100%;
 }
@@ -178,7 +178,7 @@
 .onboarding_flow_container .content .onboarding_flow .box4 {
     right: 50px;
     top: 101%;
-    background-image: url(../assets/images/onboardingflow4.webp);
+    background-image: url(../assets/images/new/onboardingflow4.webp);
 }
 
 @media (width< 1230px) {

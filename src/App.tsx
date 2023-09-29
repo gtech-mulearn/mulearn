@@ -14,7 +14,6 @@ import PrivateRoutes from "./components/PrivateRoutes";
 import DashboardRootLayout from "./modules/Dashboard/layouts/DashboardRootLayout";
 import NotFound from "./components/NotFound";
 
-
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -144,12 +143,33 @@ const CollegeLevels = lazy(
 );
 
 const Refer = lazy(() => import("./modules/Dashboard/modules/Refer/Refer"));
-const LearningCircle = lazy(() => import("./modules/Dashboard/modules/LearningCircle/pages/LearningCircle"));
-const LearningCircleCreate = lazy(() => import("./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate"));
-const FindCircle = lazy(() => import("./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind"));
-const Departments = lazy(() => import("./modules/Dashboard/modules/Departments/Departments"));
-const LearningCircleLandingPage = lazy(() => import("./modules/Dashboard/modules/LearningCircle/pages/LearningCircleLandingPage"));
-
+const LearningCircle = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/LearningCircle/pages/LearningCircle"
+        )
+);
+const LearningCircleCreate = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleCreate"
+        )
+);
+const FindCircle = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleFind"
+        )
+);
+const Departments = lazy(
+    () => import("./modules/Dashboard/modules/Departments/Departments")
+);
+const LearningCircleLandingPage = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleLandingPage"
+        )
+);
 
 import { roles } from "./services/types";
 import SecureAuthRoutes from "./services/authCheck";
@@ -164,7 +184,7 @@ import CollegePage from "./modules/Common/Authentication/pages/Onboarding/Colleg
 import CompanyPage from "./modules/Common/Authentication/pages/Onboarding/CompanyPage/CompanyPage";
 import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/SignIn";
 
-import KKEMEventTemplate from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventTemplate";
+import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs";
 import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
 
 const ConnectedDevices = lazy(
@@ -531,77 +551,19 @@ function App() {
                         },
                         {
                             path: "learning-circle",
-                            element: (
-                                <RoleChecker
-                                    roles={[
-                                        roles.STUDENT,
-                                        roles.ADMIN,
-                                        roles.FELLOW,
-                                        roles.ENABLER,
-                                        roles.MENTOR
-                                    ]}
-                                    toastTitle="Not Accessible"
-                                    toastDescription="Learning circle is accessible only to students."
-                                    children={<LearningCircleLandingPage />}
-                                />
-                            )
+                            element: <LearningCircleLandingPage />
                         },
                         {
                             path: "learning-circle/details/:id",
-                            element: (
-                                <RoleChecker
-                                    roles={[
-                                        roles.STUDENT,
-                                        roles.ADMIN,
-                                        roles.FELLOW,
-                                        roles.ENABLER,
-                                        roles.MENTOR
-                                    ]}
-                                    children={<LearningCircle />}
-                                    toastTitle="Not Accessible"
-                                    toastDescription="Learning circle is accessible only to students."
-                                    redirectPath={
-                                        <Navigate
-                                            to="/dashboard/profile"
-                                            replace
-                                        />
-                                    }
-                                />
-                            )
+                            element: <LearningCircle />
                         },
                         {
                             path: "learning-circle/find-circle",
-                            element: (
-                                <RoleChecker
-                                    roles={[
-                                        roles.STUDENT,
-                                        roles.ADMIN,
-                                        roles.FELLOW,
-                                        roles.ENABLER,
-                                        roles.MENTOR
-                                    ]}
-                                    toastTitle="Not Accessible"
-                                    toastDescription="Learning circle is accessible only to students."
-                                    children={<FindCircle />}
-                                />
-                            )
+                            element: <FindCircle />
                         },
                         {
                             path: "learning-circle/create-circle",
-                            element: (
-                                <RoleChecker
-                                    roles={[
-                                        roles.STUDENT,
-                                        roles.ADMIN,
-                                        roles.FELLOW,
-                                        roles.ENABLER,
-                                        roles.MENTOR
-                                    ]}
-                                    toastTitle="Not Accessible"
-                                    toastDescription="Learning circle is accessible only to students."
-                                    children={<LearningCircleCreate />}
-                                />
-                            )
+                            element: <LearningCircleCreate />
                         }
                         // {
                         //     path: "settings",
@@ -630,8 +592,8 @@ function App() {
             element: <LandingPage />
         },
         {
-            path: "/kkem/events/:id",
-            element: <KKEMEventTemplate />
+            path: "/kkem/events/beyondus",
+            element: <KKEMEventBeyondUs />
         }
     ]);
 

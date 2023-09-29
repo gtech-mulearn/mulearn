@@ -8,7 +8,7 @@ import {
     getInterestGroups
 } from "./apis";
 import { useNavigate } from "react-router-dom";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./InterestGroup.module.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
@@ -177,14 +177,15 @@ function InterestGroup() {
     return (
         <>
             <div className={styles.createBtnContainer}>
-                <MuButton
+                <PowerfulButton
                     className={styles.createBtn}
-                    text={"Create"}
-                    icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
                     onClick={() => {
                         navigate("/dashboard/interest-groups/create");
                     }}
-                />
+                >
+                    <AiOutlinePlusCircle />
+                    Create
+                </PowerfulButton>
             </div>
 
             {data && (

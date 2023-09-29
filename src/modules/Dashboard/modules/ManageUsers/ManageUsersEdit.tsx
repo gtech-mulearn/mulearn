@@ -39,7 +39,7 @@ const ManageUsersEdit = (props: Props) => {
     const formikRef = useRef<any>();
 
     //DropDownStates
-    const [community, setCommuntiy] = useState([{ id: "", title: "" }]);
+    const [community, setCommunity] = useState([{ id: "", title: "" }]);
     const [interestGroup, setinterestGroup] = useState([{ id: "", name: "" }]);
     const [role, setRole] = useState([{ id: "", title: "" }]);
 
@@ -84,7 +84,10 @@ const ManageUsersEdit = (props: Props) => {
 
     useEffect(() => {
         //DropDown Fetch
-        getCommunities(errorHandler, setCommuntiy);
+        getCommunities({
+            errorHandler: errorHandler,
+            setCommunityAPI: setCommunity
+        });
         getCompanies(errorHandler, setCompany);
         getCountries(errorHandler, setCountry);
 

@@ -10,7 +10,7 @@
     min-width: 170px;
     padding: 6px 20px;
     display: flex;
-    border-radius: 12px;
+    border-radius: 8px;
     flex-direction: row;
     align-items: center;
     margin-bottom: 16px;
@@ -162,7 +162,7 @@
     align-items: center;
     justify-content: center;
     gap: 5px;
-    border-radius: var(--rounded-btn);
+    border-radius: 8px;
     border: var(--border-btn) transparent;
     font-weight: 500;
     font-size: 17px;

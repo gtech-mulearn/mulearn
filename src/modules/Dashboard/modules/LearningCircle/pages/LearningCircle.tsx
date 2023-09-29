@@ -25,8 +25,24 @@ import { Tooltip } from "react-tooltip";
 import Modal from "@/MuLearnComponents/Modal/Modal";
 import data from "../data/data.json";
 import { BsFillBookmarksFill } from "react-icons/bs";
+import Select from 'react-select';
 
 type Props = {};
+
+const generateTimeOptions = () => {
+    const options = [];
+    const intervals = ["00", "30"]; // for 30-minute intervals
+
+    for (let i = 1; i <= 12; i++) {
+        for (let interval of intervals) {
+            const time = `${i.toString().padStart(2, '0')}:${interval}`;
+            options.push({ value: time + " AM", label: time + " AM" });
+            options.push({ value: time + " PM", label: time + " PM" });
+        }
+    }
+
+    return options;
+};
 
 const LearningCircle = (props: Props) => {
     const [lc, setLc] = useState<LcDetail>();
@@ -45,6 +61,8 @@ const LearningCircle = (props: Props) => {
 
     const [openRemoveConfrim, setOpenRemoveConfirm] = useState(false);
     const [resourceLink, setResourceLink] = useState("");
+    const [username, setUsername] = useState("");
+
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -71,16 +89,25 @@ const LearningCircle = (props: Props) => {
                 setValidAvatar(valid => [...valid, member.id]);
             }
         });
-    }, [lc]);
+    }, []);
 
     useEffect(() => {
-        //find the correspoding resourceLink from the data by matching the igcode from lc
+        //find the corresponding resourceLink from the data by matching the igcode from lc
         const igCode = lc?.ig_code;
         const resourceLink = data.find(
             ig => ig.igcode === igCode
         )?.resourcelink;
         setResourceLink(resourceLink || "");
-    }, [lc]);
+
+        if (lc) {
+            const sortedLc = [...lc.members].sort((a, b) => b.karma - a.karma);
+            setLc(prevLc => ({
+                ...prevLc!,
+                members: sortedLc
+            }));
+        }
+    }, []);
+
 
     useEffect(() => {
         if (lc && !lc.is_member) {
@@ -335,33 +362,53 @@ const LearningCircle = (props: Props) => {
                                                 weekly meeting
                                             </p>
                                         </div>
+
+
+                                        <div className={styles.dateandtime}>
+
+                                            <Select
+                                                options={generateTimeOptions()}
+                                                value={generateTimeOptions().find(
+                                                    option =>
+                                                        option.value ===
+                                                        convert24to12(meetTime)
+                                                )}
+                                                isSearchable={false}
+                                                onChange={e => {
+                                                    function convertTo24Hr(time: string) {
+                                                        const [timeStr, modifier] = time.split(' ');
+                                                        let [hours, minutes] = timeStr.split(':');
+                                                        if (hours === '12') {
+                                                            hours = '00';
+                                                        }
+                                                        if (modifier === 'PM') {
+                                                            hours = String(parseInt(hours, 10) + 12);
+                                                        }
+                                                        return `${hours}:${minutes}`;
+                                                    }
+                                                    // console.log(e.value);
+                                                    e && setMeetTime(convertTo24Hr(e.value.toString()));
+                                                }}
+                                                className={styles.inputTime}
+                                            />
+
+
+                                            <input
+                                                required
+                                                value={meetVenue}
+                                                type="text"
+                                                onChange={e => {
+                                                    setMeetVenue(
+                                                        e.target.value
+                                                    );
+                                                }}
+                                                placeholder="meeting venue"
+                                                className={styles.inputVenue}
+                                            />
+                                        </div>
                                         <div className={styles.InputSchedule}>
-                                            <div>
-                                                <input
-                                                    required
-                                                    type="time"
-                                                    value={meetTime}
-                                                    onChange={e => {
-                                                        setMeetTime(
-                                                            e.target.value
-                                                        );
-                                                    }}
-                                                    placeholder="meeting time"
-                                                />
-                                                <input
-                                                    required
-                                                    value={meetVenue}
-                                                    type="text"
-                                                    onChange={e => {
-                                                        setMeetVenue(
-                                                            e.target.value
-                                                        );
-                                                    }}
-                                                    placeholder="meeting venue"
-                                                />
-                                            </div>
                                             <div className={styles.weeks}>
-                                                <p>meeting days</p>
+                                                <p>Meeting Days</p>
                                                 <div className={styles.Lcweek}>
                                                     <div>
                                                         <input
@@ -676,7 +723,7 @@ const LearningCircle = (props: Props) => {
                                                     />
                                                     <div>
                                                         <div className={styles.username}>
-                                                            <p>{member.username}</p>
+                                                            <p>{member.username} {member.is_lead && "(Lead)"}</p>
                                                         </div>
                                                         <span>
                                                             <img
@@ -701,6 +748,7 @@ const LearningCircle = (props: Props) => {
                                                                     setOpenRemoveConfirm(
                                                                         true
                                                                     );
+                                                                    setUsername(member?.username)
                                                                 }}
                                                             />
                                                             {openRemoveConfrim && (
@@ -711,7 +759,8 @@ const LearningCircle = (props: Props) => {
                                                                             member.id
                                                                         );
                                                                     }}
-                                                                    content={`Are you want to remove ${member?.username} from ${lc?.name} ?`}
+
+                                                                    content={`Are you want to remove ${username} from ${lc.name} ?`}
                                                                     heading={
                                                                         "Remove user from Learning Cicle"
                                                                     }

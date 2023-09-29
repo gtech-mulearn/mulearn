@@ -52,7 +52,7 @@ const TopNavBar = () => {
                             {/* <i className="fi fi-sr-settings"></i> */}
                             <Popover placement="bottom-end">
                                 <PopoverTrigger >
-                                    <Button {...notificationStyle}>{notificationList.length === 0 ? <MdNotifications size={50} /> : <MdNotificationAdd />}</Button>
+                                    <Button onClick={() => getNotifications(setNotificationList)} {...notificationStyle}>{notificationList.length === 0 ? <MdNotifications size={50} /> : <MdNotificationAdd />}</Button>
                                 </PopoverTrigger>
                                 <PopoverContent style={{
                                     background: "transparent",

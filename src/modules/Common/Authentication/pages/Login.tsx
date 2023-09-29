@@ -102,7 +102,7 @@ const Login = () => {
                                 }}
                                 isLoading={isLoading}>Sign In</PowerfulButton>
                             <span className={styles.register}>
-                                <a href="register">
+                                <a href="/register">
                                     Don't have an account? Sign up
                                 </a>
                             </span>
@@ -173,14 +173,14 @@ const Login = () => {
                                     setHasError(false);
                                     e.preventDefault();
                                     if (emailOrMuid != "" && hasError) {
-                                        requestEmailOrMuidOtp(
+                                        requestEmailOrMuidOtp({
                                             emailOrMuid,
                                             toast,
                                             setHasError,
                                             setStatus,
                                             setOtpLoading,
                                             setOtpError
-                                        );
+                                        });
                                     }
                                     if (!hasError && password != "") {
                                         otpVerification(
@@ -207,7 +207,7 @@ const Login = () => {
                                 }</PowerfulButton>
                             <span className={styles.register}>
                                 {" "}
-                                <a href="register">
+                                <a href="/register">
                                     Don't have an account? Sign up
                                 </a>
                             </span>

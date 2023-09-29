@@ -53,7 +53,7 @@ export const postCountryData = async (
     try {
         await privateGateway
             .post(ManageLocationsRoutes.getCountryData, {
-                name: countryName
+                label: countryName
             })
             .then(({ data }) => data.response)
             .then(({ data }) => {

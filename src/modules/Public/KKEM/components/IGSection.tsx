@@ -21,6 +21,7 @@ const IGSection = (props: Props) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [muId, setMuId] = useState("");
     useEffect(() => {
+        if(!encrypted_key) return;
         if (muId == "") {
             publicGateway
                 .get(KKEMRoutes.userStatus + `${encrypted_key}/`)
