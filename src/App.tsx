@@ -186,6 +186,7 @@ import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/Sign
 
 import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs";
 import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
+import { Marketplace } from "./modules/Dashboard/modules/Marketplace/Marketplace";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -564,6 +565,10 @@ function App() {
                         {
                             path: "learning-circle/create-circle",
                             element: <LearningCircleCreate />
+                        },
+                        {
+                            path: "marketplace",
+                            element: <Marketplace />
                         }
                         // {
                         //     path: "settings",
