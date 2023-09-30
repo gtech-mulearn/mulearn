@@ -79,7 +79,7 @@ export const HackathonOrganizers = (props: Props) => {
                     >
                         <THead
                             columnOrder={columnOrder}
-                            onIconClick={() => {}}
+                            onIconClick={() => { }}
                         />
                         <Blank />
                     </Table>

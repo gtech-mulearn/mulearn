@@ -64,22 +64,16 @@ const ManageLocation = () => {
     }, [popupStatus]);
 
     useEffect(() => {
+        console.log(activeTab);
         loadTableData();
-        setCurrentPage(1);
-        setPerPage(5);
-        setSearch("");
-        setSort("");
-        console.log(activeTab);
-    }, [activeTab]);
+        // setCurrentPage(1);
+        // setPerPage(5);
+        // setSearch("");
+        // setSort("");
+        // return setData([]), setTotalPages(1);
+    }, [activeTab, sort, currentPage, perPage, search]);
 
-    useEffect(() => {
-        getLocationData();
-    }, [sort, currentPage, perPage, search]);
-    useEffect(() => {
-        console.log(data);
-    }, [data]);
     function loadTableData() {
-        console.log(activeTab);
         setLoading(true);
         if (activeTab === "Country") {
             setPopupStatus(false);
@@ -108,18 +102,35 @@ const ManageLocation = () => {
             });
             setColumns(columnsCountry);
         } else if (activeTab === "State") {
-            getLocationData();
+            // setPopupStatus(true);
+            // setPopupFields(prev => ({
+            //     ...prev,
+            //     stateShow: false,
+            //     zoneShow: false
+            // }));
             setColumns(columnsState);
         } else if (activeTab === "Zone") {
-            getLocationData();
+            // setPopupStatus(true);
+            // setPopupFields(prev => ({
+            //     ...prev,
+            //     stateShow: true,
+            //     zoneShow: false
+            // }));
             setColumns(columnsZone);
         } else if (activeTab === "District") {
-            getLocationData();
+            // setPopupStatus(true);
+            // setPopupFields(prev => ({
+            //     ...prev,
+            //     stateShow: true,
+            //     zoneShow: true
+            // }));
             setColumns(columnsDistrict);
         }
+        getLocationData();
     }
 
     function getLocationData() {
+        console.log("asd", activeTab);
         if (activeTab === "Country") {
             (async () => {
                 const res = await getCountryData(
@@ -155,6 +166,7 @@ const ManageLocation = () => {
                         id: data.value
                     }))
                 );
+                console.log(res);
                 setLoading(false);
             });
         } else if (activeTab === "Zone") {

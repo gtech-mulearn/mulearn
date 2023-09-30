@@ -3,10 +3,10 @@ import styles from "./Modal.module.css";
 import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css";
 
 import * as Yup from "yup";
-import { Formik, Form } from "formik";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import FormikReactSelect from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { addUsers, deleteUser, getUser } from "../apis";
+import { Formik, Form } from 'formik'
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import FormikReactSelect from '@/MuLearnComponents/FormikComponents/FormikComponents';
+import { addUsers, deleteUser, getUser } from "../apis"
 import { AiOutlineDelete } from "react-icons/ai";
 import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 
@@ -131,19 +131,17 @@ const ManageUsers = (props: Props) => {
                     </ul>
                 )}
                 <div className={styles.ButtonContainer}>
-                    <MuButton
+                    <PowerfulButton
                         type="button"
                         className={`${mustyles.btn} ${styles.Decline}`}
-                        text={"Decline"}
                         onClick={() => {
                             props.onClose(null);
                         }}
-                    />
-                    <MuButton
+                    >Decline</PowerfulButton>
+                    <PowerfulButton
                         className={`${mustyles.btn} ${styles.Confirm}`}
-                        text="Add Users"
                         type="submit"
-                    />
+                   >Add Users</PowerfulButton> 
                 </div>
                 <span className={styles.note}>
                     Submission is not required for user deletion

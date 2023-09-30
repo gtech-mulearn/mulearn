@@ -689,6 +689,29 @@
     outline: none;
 }
 
+.dateandtime {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.inputVenue{
+    width: 50%;
+    background: #ececec;
+    display: flex;
+    flex-direction: column;
+    height: 45px;
+    margin-top: 10px;
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+.inputTime{
+    width: 40%;
+}
+
 .weeks {
     padding-top: 10px;
     display: flex;

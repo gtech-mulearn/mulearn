@@ -28,7 +28,7 @@ type InitialValues = {
     mentorRole: string;
     areaOfInterest: never[];
     general: string;
-    referral_id: string;
+    mu_id: string;
 };
 type FormikType = ReturnType<typeof useFormik<InitialValues>>;
 
@@ -273,11 +273,20 @@ export const registerUser = (
                 Object.entries(error.response.data.message).forEach(
                     ([fieldName, errorMessage]) => {
                         if (Array.isArray(errorMessage)) {
-                            console.log(fieldName, errorMessage);
-
                             formik.setFieldError(
                                 fieldName,
                                 errorMessage?.join(", ") || ""
+                            );
+                        } else {
+                            Object.entries(errorMessage).forEach(
+                                ([subFieldName, subErrorMessage]) => {
+                                    console.log(subFieldName, subErrorMessage);
+                                    formik.setFieldError(
+                                        subFieldName,
+                                        (subErrorMessage as string[]).join(", ") || ""
+                                    );
+                                }
+
                             );
                         }
                     }

@@ -64,19 +64,20 @@ const ManageRolesCreateModal = (props: Props) => {
                     placeholder="Enter a description"
                 />
                 <div className={styles.ButtonContainer}>
-                    <MuButton
+                    <button
                         className={`${mustyles.btn} ${styles.Decline}`}
-                        text={"Decline"}
                         onClick={() => {
                             props.onClose(null);
                         }}
-                    />
-                    <MuButton
+                    >
+                        Decline
+                    </button>
+                    <button
                         className={`${mustyles.btn} ${styles.Confirm}`}
-                        text={"Confirm"}
-                        submit={true}
                         type="submit"
-                    />
+                    >
+                        Confirm
+                    </button>
                 </div>
             </Form>
         </Formik>

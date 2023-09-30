@@ -110,10 +110,7 @@ const ManageUsers = lazy(
 const InterestGroup = lazy(
     () => import("./modules/Dashboard/modules/InterestGroup/InterestGroup")
 );
-const InterestGroupCreate = lazy(
-    () =>
-        import("./modules/Dashboard/modules/InterestGroup/InterestGroupCreate")
-);
+
 const HackathonDetails = lazy(
     () => import("./modules/Dashboard/modules/Hackathon/pages/HackathonDetails")
 );
@@ -184,8 +181,9 @@ import CollegePage from "./modules/Common/Authentication/pages/Onboarding/Colleg
 import CompanyPage from "./modules/Common/Authentication/pages/Onboarding/CompanyPage/CompanyPage";
 import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/SignIn";
 
-import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs";
 import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
+import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs";
+import { Marketplace } from "./modules/Dashboard/modules/Marketplace/Marketplace";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -197,7 +195,7 @@ function App() {
         // Add redirect from '/' to '/login'
         {
             path: "/",
-            element: <Navigate to="/signin" replace />
+            element: <Navigate to="/login" replace />
         },
         {
             path: "*",
@@ -277,14 +275,7 @@ function App() {
                                 />
                             )
                         },
-                        {
-                            path: "interest-groups/create",
-                            element: <InterestGroupCreate />
-                        },
-                        {
-                            path: "interest-groups/edit/:id",
-                            element: <InterestGroupCreate />
-                        },
+
                         {
                             path: "organizations/create",
                             element: <CreateOrganization />
@@ -564,6 +555,10 @@ function App() {
                         {
                             path: "learning-circle/create-circle",
                             element: <LearningCircleCreate />
+                        },
+                        {
+                            path: "marketplace",
+                            element: <Marketplace />
                         }
                         // {
                         //     path: "settings",

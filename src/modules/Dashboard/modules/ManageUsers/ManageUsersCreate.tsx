@@ -3,7 +3,7 @@ import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import * as Yup from "yup";
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 
@@ -106,13 +106,13 @@ const ManageUsersCreate = (props: Props) => {
                             placeholder="Enter a gender"
                         />
                         <div className={styles.btn_container}>
-                            <MuButton
-                                text={"Decline"}
+                            <PowerfulButton
+                                
                                 className={styles.btn_cancel}
                                 onClick={() => {
                                     navigate("/dashboard/manage-users");
                                 }}
-                            />
+                            >Decline</PowerfulButton>
                             <button type="submit" className={styles.btn_submit}>
                                 Confirm
                             </button>

@@ -9,7 +9,7 @@ import { inputs, schema } from "./ManageUsersEditUtils";
 import FormikReactSelect, {
     FormikTextInput
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { roles } from "@/MuLearnServices/types";
 import {
     getCommunities,
@@ -39,7 +39,7 @@ const ManageUsersEdit = (props: Props) => {
     const formikRef = useRef<any>();
 
     //DropDownStates
-    const [community, setCommuntiy] = useState([{ id: "", title: "" }]);
+    const [community, setCommunity] = useState([{ id: "", title: "" }]);
     const [interestGroup, setinterestGroup] = useState([{ id: "", name: "" }]);
     const [role, setRole] = useState([{ id: "", title: "" }]);
 
@@ -84,7 +84,10 @@ const ManageUsersEdit = (props: Props) => {
 
     useEffect(() => {
         //DropDown Fetch
-        getCommunities(errorHandler, setCommuntiy);
+        getCommunities({
+            errorHandler: errorHandler,
+            setCommunityAPI: setCommunity
+        });
         getCompanies(errorHandler, setCompany);
         getCountries(errorHandler, setCountry);
 
@@ -182,13 +185,13 @@ const ManageUsersEdit = (props: Props) => {
                             </div>
                         </div>
                         <div className={styles.btn_container}>
-                            <MuButton
-                                text={"Decline"}
+                            <PowerfulButton
+                                
                                 className={styles.btn_cancel}
                                 onClick={() => {
                                     navigate("/dashboard/manage-users");
                                 }}
-                            />
+                            >Decline</PowerfulButton>
                             <button
                                 type="submit"
                                 className={styles.btn_submit}
