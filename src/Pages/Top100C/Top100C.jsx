@@ -12,9 +12,19 @@ const Top100C = () => {
         <div className={styles.navbar}>
           <img src={Logo} alt="" className={styles.nav_logo1} />
           <div className={styles.links}>
-            <p className={styles.link}>About</p>
-            <p className={styles.link}>How To</p>
-            <p className={styles.link}>Join Now</p>
+            <a href="#about">
+              <p className={styles.link}>About</p>
+            </a>
+            <a href="#howto">
+              <p className={styles.link}>How To</p>
+            </a>
+            <a
+              href="https://huddleglobal.co.in/top100coders/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <p className={styles.link}>Join Now</p>
+            </a>
           </div>
           <img src={comb} alt="" className={styles.nav_logo2} />
         </div>
@@ -34,12 +44,12 @@ const Top100C = () => {
               days, starting October 1, targeting global market opportunities.
             </p>
             <button className={styles.register}>
-              <a href="https://www.mulearn.io/top100coders">Register Now</a>
+              <a target="_blank" rel="noreferrer" href="https://huddleglobal.co.in/top100coders/">Register Now</a>
             </button>
           </div>
         </div>
       </div>
-      <div className={styles.second_view_container}>
+      <div className={styles.second_view_container} id="howto">
         <div className={styles.second_view}>
           <div className={styles.sv_heading}>Steps of the Challenge</div>
           <div className={styles.sv_steps}>
@@ -59,7 +69,7 @@ const Top100C = () => {
           </div>
         </div>
       </div>
-      <div className={styles.third_view_container}>
+      <div className={styles.third_view_container} id="about">
         <div className={styles.third_view}>
           <div className={styles.thrid_view_text}>
             <p className={styles.tv_heading}>Huddle Super Coders</p>
