@@ -1,5 +1,5 @@
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { hasRole } from "@/MuLearnServices/common_functions";
 import { roles } from "@/MuLearnServices/types";
 import { useToast } from "@chakra-ui/react";
@@ -551,14 +551,13 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         {/* <div className="btn light-btn" onClick={resetStates}>
                             Decline
                         </div> */}
-                        <MuButton
-                            text={"Decline"}
+                        <PowerfulButton
                             type="button"
                             className="btn light-btn"
                             onClick={() => {
                                 navigate("/dashboard/organizations");
                             }}
-                        />
+                        >Decline</PowerfulButton>
                         <button
                             type="submit"
                             className="btn blue-btn"
