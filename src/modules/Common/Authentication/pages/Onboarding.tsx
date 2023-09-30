@@ -257,12 +257,12 @@ const Onboarding = (props: Props) => {
                 email: any;
                 mobile: any;
                 password: any;
-                role: string | null;
+                role?: string | null;
             };
             organization: {
                 organizations: any;
                 verified: boolean;
-                department: any | null;
+                department?: any | null;
                 graduation_year?: any | null;
             };
             integration?: {
@@ -279,8 +279,7 @@ const Onboarding = (props: Props) => {
                 last_name: values.lastName === "" ? null : values.lastName,
                 email: values.email, //required
                 mobile: values.mobile, //required
-                password: values.password,
-                role: role[0]["id"] == "" ? null : role[0]["id"] //required
+                password: values.password
             },
             organization: {
                 organizations:
@@ -288,8 +287,6 @@ const Onboarding = (props: Props) => {
                         ? null
                         : values.community, //required except for individual
                 verified: roleVerified,
-                department: values.dept === "" ? null : values.dept, //required for student and enabler
-                
             }, //required for student
             //required
         };
@@ -301,9 +298,18 @@ const Onboarding = (props: Props) => {
             };
         }
 
-        if(role[0]["title"] != "Enabler")
+        if(role && role[0] && role[0]["id"]){
+            userData.user.role = role[0]["id"] == "" ? null : role[0]["id"];
+        }
+
+        if(role[0]["title"] == "Student"  )
         {
             userData.organization.graduation_year = values.yog === "" ? null : values.yog;
+        }
+        
+        if(role[0]["title"] == "Student" || role[0]["title"] == "Enabler" )
+        {
+            userData.organization.department= values.dept === "" ? null : values.dept //required for student and enabler
         }
 
         if (values.mu_id) {
