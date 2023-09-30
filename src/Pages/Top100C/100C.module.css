@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Onest:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@font-face {
+  font-family: Cyberpunk;
+  src: url(./Cyberpunk.ttf);
+}
+
+.main_container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  color: #fff;
+}
+
+.first_view_container {
+  padding-top: 3rem;
+  background-color: yellow;
+  padding-bottom: 3rem;
+}
+
+.first_view {
+  max-width: 1300px;
+
+  margin: 0 auto;
+  padding: 0 2rem;
+  padding-top: 4re;
+}
+
+.first_view_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.fv_heading {
+  font-family: Onest;
+  font-size: 7rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 30rem;
+  line-height: 8rem;
+  color: #1d1d1d;
+}
+
+.first_view {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.fv_tagline {
+  font-family: Onest, "sans-serif";
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #1d1d1d;
+  max-width: 50rem;
+}
+
+.register {
+  background-color: #1d1d1d;
+  font-family: Onest, "sans-serif";
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  color: white;
+  padding: 1rem;
+  max-width: 30rem;
+}
+
+.fv_image {
+  width: 35rem;
+}
