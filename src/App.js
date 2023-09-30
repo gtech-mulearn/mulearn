@@ -32,7 +32,7 @@ import CommunityLanding from "./Pages/CommunityLanding/CommunityLanding";
 import CampusLogoGenerator from "./Pages/CampusLogoGen/CampusLogoGen";
 import TermsAndCondition from "./Pages/TermsAndCondition/TermsAndCondition";
 import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
-
+import Cyberpunk from "./Pages/Top100C/Top100C"
 //import redirects from "./redirects.json"
 import Redirection from "./Components/Redirection/Redirection";
 import Layout from "./Layout";
@@ -88,7 +88,7 @@ function App() {
             }
           /> */}
           <Route path="mutech/leaderboard" element={<MutechLeaderboard />} />
-
+          <Route path="/top100coders" element={<Cyberpunk />} />
           <Route path="/careers" element={<Career />} />
           <Route path="*" element={<NotFound isLoaded={isLoaded} />} />
           <Route path="/termsandconditions" element={<TermsAndCondition />} />
