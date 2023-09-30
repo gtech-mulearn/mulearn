@@ -110,10 +110,7 @@ const ManageUsers = lazy(
 const InterestGroup = lazy(
     () => import("./modules/Dashboard/modules/InterestGroup/InterestGroup")
 );
-const InterestGroupCreate = lazy(
-    () =>
-        import("./modules/Dashboard/modules/InterestGroup/InterestGroupCreate")
-);
+
 const HackathonDetails = lazy(
     () => import("./modules/Dashboard/modules/Hackathon/pages/HackathonDetails")
 );
@@ -278,14 +275,7 @@ function App() {
                                 />
                             )
                         },
-                        {
-                            path: "interest-groups/create",
-                            element: <InterestGroupCreate />
-                        },
-                        {
-                            path: "interest-groups/edit/:id",
-                            element: <InterestGroupCreate />
-                        },
+
                         {
                             path: "organizations/create",
                             element: <CreateOrganization />
