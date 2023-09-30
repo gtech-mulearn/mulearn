@@ -263,7 +263,7 @@ const Onboarding = (props: Props) => {
                 organizations: any;
                 verified: boolean;
                 department: any | null;
-                graduation_year: any | null;
+                graduation_year?: any | null;
             };
             integration?: {
                 param: any | null;
@@ -289,7 +289,7 @@ const Onboarding = (props: Props) => {
                         : values.community, //required except for individual
                 verified: roleVerified,
                 department: values.dept === "" ? null : values.dept, //required for student and enabler
-                graduation_year: values.yog === "" ? null : values.yog
+                
             }, //required for student
             //required
         };
@@ -299,6 +299,11 @@ const Onboarding = (props: Props) => {
                 param: param ? param : null,
                 title: param ? "DWMS" : null
             };
+        }
+
+        if(role[0]["title"] != "Enabler")
+        {
+            userData.organization.graduation_year = values.yog === "" ? null : values.yog;
         }
 
         if (values.mu_id) {
