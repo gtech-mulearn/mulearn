@@ -72,7 +72,7 @@ const Top100C = () => {
       <div className={styles.third_view_container} id="about">
         <div className={styles.third_view}>
           <div className={styles.thrid_view_text}>
-            <p className={styles.tv_heading}>Huddle Super Coders</p>
+            <p className={styles.tv_heading}>Top 100 Coders</p>
             <p className={styles.tv_tagline}>
               Kerala's Top 100 Coders, a highlight of Huddle Global 2023, aims
               to identify the state's top tech talents. This initiative seeks to

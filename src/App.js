@@ -88,7 +88,7 @@ function App() {
             }
           /> */}
           <Route path="mutech/leaderboard" element={<MutechLeaderboard />} />
-          <Route path="/cyberpunk" element={<Cyberpunk />} />
+          <Route path="/top100coders" element={<Cyberpunk />} />
           <Route path="/careers" element={<Career />} />
           <Route path="*" element={<NotFound isLoaded={isLoaded} />} />
           <Route path="/termsandconditions" element={<TermsAndCondition />} />
