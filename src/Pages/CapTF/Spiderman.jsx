@@ -55,7 +55,7 @@ const Spiderman = () => {
       </p>
       <div style={{ marginTop: "20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
         <p style={{ fontSize: "1.5rem", fontWeight: "bold", marginBottom: "10px" }}>Don't have a laptop? Don't worry!</p>
-        <input type="text" onChange={(e) => setKey(e.target.value)} style={{ padding: "10px", borderRadius: "5px", border: "none", boxShadow: "0px 0px 10px white", backgroundColor: "black", color: "white", marginBottom: "10px" }} placeholder="Enter the flag here" />
+        <input type="text" onChange={(e) => setKey(e.target.value)} style={{ padding: "10px", borderRadius: "5px", border: "none", boxShadow: "0px 0px 10px white", backgroundColor: "black", color: "white", marginBottom: "10px" }} placeholder="Enter the key to unlock" />
         <button onClick={() => {
           if (key === "display: none;") {
             alert("BeWebFlag");
