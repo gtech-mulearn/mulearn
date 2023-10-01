@@ -18,7 +18,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
 
-import { Pagination, Navigation } from "swiper"
+// import { Pagination, Navigation } from "swiper"
 
 const ArtOfTeaching = () => {
   const data = {
@@ -132,9 +132,9 @@ const ArtOfTeaching = () => {
 
             <div className={styles.cards_container_desktop}>
               <Swiper
-                pagination={true}
-                navigation={true}
-                modules={[Pagination, Navigation]}
+                // pagination={true}
+                // navigation={true}
+                // modules={[Pagination, Navigation]}
                 className="aswiper"
               >
                 <SwiperSlide>

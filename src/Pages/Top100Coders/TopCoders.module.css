@@ -1,0 +1,846 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@100;200;300;400;500;600;700&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
+
+:root {
+    --yellow: #ffd700;
+}
+
+.topCoders {
+    font-family: 'Antonio', sans-serif;
+    height: fit-content;
+}
+
+.topCoders .nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0 3rem;
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, .5);
+    transition: all .5s ease-in-out;
+}
+
+.top100Logo {
+    height: 4rem;
+}
+
+.topCoders .nav .navLinks {
+    color: #fff;
+    display: flex;
+    gap: 2rem;
+    position: relative;
+    left: 3rem;
+}
+
+.topCoders .nav .navLinks a {
+    font-weight: 100;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+.topCoders .nav .gtechLogo {
+    height: 3rem;
+}
+
+.topCodersHero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background: black;
+    background-image: radial-gradient(rgb(255, 215, 0, .8) 1.5px, transparent 0),
+        radial-gradient(rgb(250, 250, 250, .3) 1.5px, transparent 0);
+    background-position: -30px 55px, 70px 105px;
+    background-size: 100px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.topCodersHero .renderVideo{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.topCodersHero .rect {
+    position: absolute;
+    width: 3rem;
+    height: 1.3rem;
+    background: var(--yellow);
+}
+
+.topCodersHero .rect:first-child {
+    top: 20%;
+    left: 15%;
+}
+
+.topCodersHero .rect:nth-child(2) {
+    bottom: 15%;
+    left: 10%;
+}
+
+.topCodersHero .rect:nth-child(3) {
+    top: 30%;
+    right: 15%;
+}
+
+.topCodersHero .rect:nth-child(4) {
+    bottom: 25%;
+    right: 0;
+}
+
+.topCodersHero .heroBar {
+    width: fit-content;
+    position: relative;
+    top: 10rem;
+}
+
+.topCodersHero .heroBar img {
+    height: 5rem;
+}
+
+.topCodersHero .heroBar p {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.topCodersContent {
+    position: relative;
+    height: fit-content;
+    background-color: var(--yellow);
+    display: flex;
+    align-items: center;
+}
+
+.topCodersContent .topBorder {
+    position: absolute;
+    top: -2rem;
+    width: 100%;
+}
+
+.topCodersContent .text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.topCodersContent .text .rect2 {
+    background-color: black;
+    width: 3.5rem;
+    height: 1.5rem;
+    display: block;
+}
+
+.topCodersContent .text .textHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+.topCodersContent .text .textContent {
+    width: 60%;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.topCodersContent .text h1 {
+    font-size: 3rem;
+}
+
+.topCodersContent .text b {
+    font-size: 4rem;
+}
+
+.topCodersContent .card {
+    position: relative;
+    bottom: 4rem;
+    height: 40rem;
+    transition: all .5s ease-in-out;
+}
+
+.topCodersContent .card:hover img {
+    scale: 1.1;
+}
+
+.topCodersContent .text .prize {
+    position: relative;
+}
+
+.topCodersContent .text .prize p:nth-child(1) {
+    font-size: 2rem;
+    font-weight: 100;
+    letter-spacing: 1rem;
+}
+
+.topCodersContent .text .prize p:last-child {
+    font-size: 7rem;
+    margin-top: -1rem;
+    letter-spacing: .2rem;
+}
+
+.topCodersContent .text .prize span {
+    display: flex;
+    width: fit-content;
+    position: relative;
+}
+
+.topCodersContent .text .prize img {
+    position: absolute;
+    height: 8rem;
+    top: -1rem;
+    right: -10rem;
+}
+
+.topCodersContent .black {
+    position: absolute;
+    height: 1.5rem;
+    width: 100%;
+    background-color: black;
+    display: block;
+    bottom: 4rem;
+    left: 0;
+}
+
+.topCodersContent .line {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    width: 3.5px;
+    height: 2rem;
+}
+
+.topCoderSelection {
+    position: relative;
+    height: fit-content;
+    padding-top: 2rem;
+    top: -2rem;
+    background-color: black;
+    color: #fff;
+}
+
+.topCoderSelection .selectionHead {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 4rem;
+}
+
+.topCoderSelection .selectionHead span {
+    padding-right: 4rem;
+}
+
+.topCoderSelection .selectionHead span p:first-child {
+    font-size: 5rem;
+    text-transform: uppercase;
+}
+
+.topCoderSelection .selectionHead span p:last-child {
+    font-size: 1.7rem;
+    text-transform: uppercase;
+}
+
+.topCoderSelection .slider {
+    position: relative;
+    height: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    overflow-x: scroll;
+    overflow: visible;
+}
+
+.topCoderSelection .slider .CC {
+    height: 20rem;
+}
+
+.topCoderSelection .slider .card {
+    position: relative;
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* card-1 */
+.topCoderSelection .slider .card .key {
+    position: absolute;
+    height: 12rem;
+    top: -4rem;
+    animation: key 5s ease-in-out infinite;
+}
+
+/* card-2 */
+.topCoderSelection .slider .card .build {
+    position: absolute;
+    height: 15rem;
+    top: -1.5rem;
+    right: 0rem;
+    animation: key 15s ease-in-out infinite;
+}
+
+/* card-3 */
+.topCoderSelection .slider .card .algo {
+    position: absolute;
+    height: 17rem;
+    top: -3rem;
+    animation: key 8s ease-in-out infinite;
+}
+
+/* card-4 */
+.topCoderSelection .slider .card .earth {
+    position: absolute;
+    height: 12rem;
+    top: -1rem;
+    right: -1rem;
+    animation: key 8s ease-in-out infinite;
+}
+
+/* card-5 */
+.topCoderSelection .slider .card .shield {
+    position: absolute;
+    height: 10rem;
+    top: 0rem;
+    animation: key 8s ease-in-out infinite;
+}
+
+@keyframes key {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-.3rem);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.topCoderSelection .heroBar {
+    width: 100%;
+    display: flex;
+    position: relative;
+    bottom: -5rem;
+    left: 0;
+}
+
+.topCoderSelection .heroBar img {
+    width: 100%;
+    z-index: 1;
+}
+
+.topCodersForm {
+    position: relative;
+    height: fit-content;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 0;
+    color: var(--yellow);
+}
+
+.topCodersForm .codersForm div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.topCodersForm .codersForm input[type="text"] {
+    width: 100%;
+    height: 4rem;
+    border: none;
+    border-bottom: 1px solid var(--yellow);
+    background-color: transparent;
+    outline: none;
+    padding: 0 1rem;
+    color: var(--yellow);
+    width: 25rem;
+}
+
+.topCodersForm .codersForm input[type="text"]::placeholder {
+    color: var(--yellow);
+}
+
+.topCodersForm .codersForm textarea {
+    width: 100%;
+    margin-top: 1rem;
+    border: none;
+    border-bottom: 1px solid var(--yellow);
+    background-color: transparent;
+    outline: none;
+    color: var(--yellow);
+}
+
+.topCodersForm .codersForm .submit {
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topCodersForm .codersForm .submit span {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+.topCodersForm .codersForm .submit button {
+    width: 10rem;
+    height: 3rem;
+    border: none;
+    background-color: #FCEE0A;
+    color: black;
+    font-weight: 400;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.topcoderFaq {
+    position: relative;
+    height: fit-content;
+    background-color: black;
+    color: #fff;
+    padding: 4rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.topcoderFaq .faqHead {
+    padding-bottom: 2rem;
+    width: fit-content;
+}
+
+.topcoderFaq .faqHead h1 {
+    font-size: 5rem;
+}
+
+.topcoderFaq .faqHead p {
+    font-size: 1.5rem;
+    width: 100%;
+}
+
+.topcoderFaq .faq {
+    position: relative;
+    width: 100%;
+    height: 6rem;
+    background-image: url('./assets/faq1.webp');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: black;
+    text-align: center;
+    transition: all .5s ease-in-out;
+}
+
+.topcoderFaq .faq .question {
+    list-style: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.topcoderFaq .faq .answer {
+    position: relative;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    height: 8rem;
+    width: 65.8%;
+    padding: 2rem 0;
+    background-image: url('./assets/faq2.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 80% 50%;
+    color: white;
+    text-align: center;
+}
+
+.faq[open] {
+    margin-bottom: 5rem;
+}
+
+.topcodersFooter {
+    background-color: var(--yellow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding-top: 2rem;
+}
+
+.topcodersFooter div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+}
+
+.topcodersFooter span {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.topcodersFooter .socials {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.topcodersFooter .footerLogos {
+    margin-top: 2rem;
+    padding: 3rem;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    width: 50%;
+}
+
+.topcodersFooter .footerLogos span {
+    height: 2rem;
+    width: 2px;
+    display: block;
+    background-color: white;
+}
+
+.topcodersFooter .footerLogos img {
+    height: 3rem;
+}
+
+@media(width<748px) {
+    .topCoders .nav {
+        padding: 0 1rem;
+        height: 5rem;
+    }
+
+    .topCoders .nav .navLinks {
+        display: none;
+    }
+
+
+    .topCodersContent {
+        flex-direction: column;
+        padding: 2rem 0;
+        align-items: flex-end;
+    }
+
+    .topCodersContent .text .prize p:nth-child(1) {
+        font-size: 2.5rem;
+    }
+
+    .topCodersContent .text .prize p:last-child {
+        font-size: 4rem;
+    }
+
+    .topCodersContent .text .prize img {
+        height: 7rem;
+    }
+
+    .topCodersContent .card {
+        height: 25rem;
+        bottom: -1rem;
+    }
+
+    .topCodersContent .black,
+    .topCodersContent .line {
+        display: none;
+    }
+
+    .topCoderSelection .heroBar {
+        bottom: -3rem;
+    }
+
+    .topCoderSelection .heroBar img {
+        height: 5rem;
+        object-fit: cover;
+    }
+
+    /* selection section */
+    .topCoderSelection .selectionHead {
+        flex-direction: column-reverse;
+        padding: 1rem;
+    }
+
+    .topCoderSelection .selectionHead span p:first-child {
+        font-size: 4rem;
+    }
+
+    .topCoderSelection .selectionHead span p:last-child {
+        font-size: 1.3rem;
+    }
+
+    .topCoderSelection .selectionHead img {
+        height: 12rem;
+        padding-bottom: 2rem;
+    }
+
+    .topCoderSelection .slider {
+        height: 23rem;
+        gap: 1.5rem;
+        justify-content: start;
+        padding: 0 2rem;
+        overflow: scroll;
+    }
+
+    .topCodersForm .codersForm input[type="text"] {
+        width: 18rem;
+    }
+
+    /* Faq section */
+    .topcoderFaq {
+        position: relative;
+        height: fit-content;
+        background-color: black;
+        color: #fff;
+        padding: 4rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .topcoderFaq .faqHead {
+        padding-bottom: 0rem;
+        text-align: center;
+    }
+
+    .topcoderFaq .faqHead h1 {
+        font-size: 3rem;
+    }
+
+    .topcoderFaq .faqHead p {
+        font-size: 1rem;
+    }
+
+    .topcoderFaq .faq {
+        background-size: cover;
+    }
+
+    .topcoderFaq .faq .question {
+        list-style: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.5rem;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .topcoderFaq .faq .answer {
+        height: fit-content;
+        width: 100%;
+        padding: 2rem 0;
+        padding-bottom: 4rem;
+        font-size: .8rem;
+    }
+
+    /* Footer section */
+    .topcodersFooter .footerLogos {
+        gap: 2rem;
+        width: 100%;
+    }
+
+    .topcodersFooter .footerLogos img {
+        height: 2rem;
+    }
+}
+
+@media(width<=540px) {
+    .topCoders .nav .top100Logo {
+        height: 2.1rem;
+    }
+
+    .topCoders .nav .gtechLogo {
+        height: 1.8rem;
+    }
+
+    .topCodersHero .rect {
+        width: 2rem;
+        height: .8rem;
+    }
+
+    .topCodersHero .rect:nth-child(2) {
+        bottom: 25%;
+        left: 5%;
+    }
+
+    .topCodersHero .rect:nth-child(3) {
+        right: 10%;
+    }
+
+    .topCodersHero .rect:nth-child(4) {
+        bottom: 4%;
+    }
+
+    .topCodersHero .heroBar {
+        width: max-content;
+        top: 15rem;
+    }
+
+    .topCodersHero .heroBar img {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .topCodersHero .heroBar p {
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .topCodersContent .topBorder {
+        top: -.5rem;
+    }
+
+    /* Content Section */
+    .topCodersContent .text {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .topCodersContent .text .rect2 {
+        width: 2rem;
+        height: 1rem;
+    }
+
+    .topCodersContent .text .textContent {
+        margin-top: -1rem;
+        width: 90%;
+        margin-bottom: 1rem;
+    }
+
+    .topCodersContent .text h1 {
+        font-size: 2.5rem;
+        line-height: 3.5rem;
+    }
+
+    .topCodersContent .text b {
+        font-size: 3rem;
+    }
+
+    .topCodersContent .text .prize p:nth-child(1) {
+        font-size: 1.5rem;
+    }
+
+    .topCodersContent .text .prize p:last-child {
+        font-size: 3rem;
+    }
+
+    .topCodersContent .text .prize img {
+        height: 5rem;
+        right: -5rem;
+    }
+
+    .topCodersContent .card {
+        height: 20rem;
+        bottom: -1rem;
+    }
+
+    /* Selection section */
+    .topCoderSelection .selectionHead {
+        flex-direction: column-reverse;
+        padding: 1rem;
+    }
+
+    .topCoderSelection .selectionHead span p:first-child {
+        font-size: 2.5rem;
+    }
+
+    .topCoderSelection .selectionHead span p:last-child {
+        font-size: 1rem;
+    }
+
+    .topCoderSelection .selectionHead img {
+        height: 8rem;
+    }
+
+    .topCoderSelection .slider {
+        height: 23rem;
+        gap: 1.5rem;
+        justify-content: start;
+        padding: 0 2rem;
+        overflow: scroll;
+    }
+
+    .topCoderSelection .slider .CC {
+        height: 23rem;
+    }
+
+    .topCoderSelection .slider .card {
+        position: relative;
+        height: fit-content;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* card-1 */
+    .topCoderSelection .slider .card .key {
+        top: -2.5rem;
+    }
+
+    /* card-2 */
+    .topCoderSelection .slider .card .build {
+        top: .5rem;
+    }
+
+    /* card-3 */
+    .topCoderSelection .slider .card .algo {
+        top: -2rem;
+    }
+
+    /* card-4 */
+    .topCoderSelection .slider .card .earth {
+        height: 13rem;
+    }
+
+    /* card-5 */
+    .topCoderSelection .slider .card .shield {
+        height: 13rem;
+    }
+
+    /* Form section */
+    .topCodersForm .codersForm div {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
