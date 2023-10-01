@@ -22,7 +22,7 @@ import shield from './assets/shield.png'
 import signup from './assets/signup.png'
 import gt from './assets/gt.png'
 import kerala from './assets/kerala.png'
-import videoBg from './assets/render.mp4'
+import videoBg from './assets/vid.webm'
 
 // Icons import section
 import { BsDiscord } from 'react-icons/bs'
@@ -71,7 +71,7 @@ export default function TopCoders() {
                 <span className={styles.rect}></span>
                 <div className={styles.heroBar}>
                     <img src={heroBar} alt="" />
-                    <p>Join the Top 100 Elite Squad</p>
+                    <a href='#'>Join the Top 100 Elite Squad</a>
                 </div>
             </div>
 
