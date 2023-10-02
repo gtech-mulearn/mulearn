@@ -62,13 +62,13 @@ const useFormikData = () => {
         }
     }, [uuidData, data]);
 
-    const submitHandler = async (values: IVType) => {
+    const submitHandler = async (values: any) => {
         editTask(
             values.hashtag,
             values.title,
             values.karma,
-            values.active,
-            values.variable_karma,
+            values.active ? "True" : "False",
+            values.variable_karma ? "True" : "False",
             values.usage_count,
             values.channel_id,
             values.type_id,
@@ -83,12 +83,12 @@ const useFormikData = () => {
             navigate("/dashboard/tasks");
         }, 4000);
     };
-    const initialValues: IVType = {
+    const initialValues = {
         hashtag: data.hashtag || "",
         title: data.title || "",
         karma: data.karma || "",
-        active: data.active ? "1" : "0" || "",
-        variable_karma: data.variable_karma ? "1" : "0" || "",
+        active: data.active ? true : false,
+        variable_karma: data.variable_karma ? true : false,
         usage_count: data.usage_count || "",
         channel_id: data.channel || "",
         type_id: data.type || "",
@@ -103,14 +103,16 @@ const useFormikData = () => {
             name: "hashtag",
             label: "Hashtag",
             type: "text",
-            placeholder: "#example"
+            placeholder: "#example",
+            required: true
         },
         {
             element: "input",
             name: "title",
             label: "Title",
             type: "text",
-            placeholder: "Enter the title"
+            placeholder: "Enter the title",
+            required: true
         },
         {
             element: "input",
@@ -120,36 +122,28 @@ const useFormikData = () => {
             placeholder: "Karma Points"
         },
         {
-            element: "select",
+            element: "checkbox",
             name: "active",
-            label: "Active",
-            options: [
-                { value: "1", label: "True" },
-                { value: "0", label: "False" },
-                { value: "", label: "Select an option" }
-            ]
+            label: "Active"
         },
         {
-            element: "select",
+            element: "checkbox",
             name: "variable_karma",
-            label: "Variable Karma",
-            options: [
-                { value: "1", label: "True" },
-                { value: "0", label: "False" },
-                { value: "", label: "Select an option" }
-            ]
+            label: "Variable Karma"
         },
         {
             element: "input",
             name: "usage_count",
             label: "Usage Count",
             type: "number",
-            placeholder: "Number of times used"
+            placeholder: "Number of times used",
+            required: true
         },
         {
             element: "select",
             name: "channel_id",
             label: "Channel",
+            required: true,
             options:
                 (uuidData?.channel &&
                     uuidData?.channel
@@ -165,6 +159,7 @@ const useFormikData = () => {
             element: "select",
             name: "type_id",
             label: "Type",
+            required: true,
             options:
                 (uuidData?.type &&
                     uuidData?.type

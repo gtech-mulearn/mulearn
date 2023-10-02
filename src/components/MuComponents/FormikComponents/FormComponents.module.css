@@ -124,6 +124,10 @@
     /* width: 50%; */
 }
 
+sup {
+    color: red;
+}
+
 .inputBox span {
     font-weight: bold;
     color: var(--Dark);
@@ -212,4 +216,18 @@
     align-items: center;
     z-index: 200;
     transition: all 0.5s ease-in;
+}
+
+.checkBox {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.checkBox input {
+    height: 20px;
+    width: 20px;
+
+    margin: 0;
+    margin: 0.25rem;
 }
