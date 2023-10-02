@@ -54,9 +54,9 @@ export default function TopCoders() {
             <div ref={navbar} className={styles.nav}>
                 <img className={styles.top100Logo} src={top100} alt="logo" />
                 <div className={styles.navLinks}>
-                    <a href="">Home</a>
-                    <a href="">Top 100</a>
-                    <a href="">About</a>
+                    <a href="/">Home</a>
+                    <a href="/">Top 100</a>
+                    <a href="/">About</a>
                 </div>
                 <img className={styles.gtechLogo} src={gtech} alt="" />
             </div>
@@ -70,7 +70,7 @@ export default function TopCoders() {
                 <span className={styles.rect}></span>
                 <div className={styles.heroBar}>
                     <img src={heroBar} alt="" />
-                    <a href='#'>Join the Top 100 Elite Squad</a>
+                    <a href="/">Join the Top 100 Elite Squad</a>
                 </div>
             </div>
 
@@ -204,11 +204,11 @@ export default function TopCoders() {
                 <div>
                     <p>Find us on</p>
                     <span className={styles.socials}>
-                        <a href="#"> <BsDiscord /> </a>
-                        <a href="#"> <BsInstagram /> </a>
-                        <a href="#"> <BsTwitter /> </a>
-                        <a href="#"> <AiOutlineYoutube /> </a>
-                        <a href="#"> <BiLogoFacebook /> </a>
+                        <a href="/"> <BsDiscord /> </a>
+                        <a href="/"> <BsInstagram /> </a>
+                        <a href="/"> <BsTwitter /> </a>
+                        <a href="/"> <AiOutlineYoutube /> </a>
+                        <a href="/"> <BiLogoFacebook /> </a>
                     </span>
                 </div>
 
