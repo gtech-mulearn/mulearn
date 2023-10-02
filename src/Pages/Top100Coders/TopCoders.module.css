@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Antonio:wght@100;200;300;400;500;600;700&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
 
 :root {
-    --yellow: #ffd700;
+    --yellow: #FCEE0A;
 }
 
 .topCoders {
@@ -461,6 +461,10 @@
 .topcoderFaq .faq .question {
     list-style: none;
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .8rem;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -487,6 +491,10 @@
 
 .faq[open] {
     margin-bottom: 5rem;
+}
+
+.faq[open] .chev{
+    rotate: 180deg;
 }
 
 .topcodersFooter {
@@ -554,7 +562,7 @@
     .topCodersContent {
         flex-direction: column;
         padding: 2rem 0;
-        align-items: flex-end;
+        /* align-items: flex-end; */
     }
 
     .topCodersContent .text .prize p:nth-child(1) {
@@ -717,13 +725,8 @@
         object-fit: cover;
     }
 
-    .topCodersHero .heroBar p {
-        text-transform: uppercase;
+    .topCodersHero .heroBar a {
         font-size: 1.2rem;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
     }
 
     .topCodersContent .topBorder {
@@ -842,5 +845,27 @@
     .topCodersForm .codersForm div {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    .faq[open] {
+        margin-bottom: 6rem;
+    }
+}
+
+@media (width <400px){
+    .topCodersHero .heroBar a{
+        font-size: 1rem;
+    }
+
+    .topCodersContent .text .textHead .rect2:first-child{
+        display: none;
+    }
+
+    .topcoderFaq .faq .question {
+        font-size: 1.2rem;
+    }
+
+    .faq[open] {
+        margin-bottom: 7rem;
     }
 }
