@@ -30,6 +30,7 @@ import { BsInstagram } from 'react-icons/bs'
 import { AiOutlineYoutube } from 'react-icons/ai'
 import { BiLogoFacebook } from 'react-icons/bi'
 import { BsTwitter } from 'react-icons/bs'
+import { LuChevronDown } from 'react-icons/lu'
 
 export default function TopCoders() {
 
@@ -61,11 +62,9 @@ export default function TopCoders() {
             </div>
 
             <div className={styles.topCodersHero}>
-                <video
-                    className={styles.renderVideo}
-                    src={videoBg}
-                    autoPlay loop muted
-                />
+                <video className={styles.renderVideo} autoPlay loop muted preload="auto">
+                    <source src={videoBg} type="video/webm"></source>
+                </video>
                 <span className={styles.rect}></span>
                 <span className={styles.rect}></span>
                 <span className={styles.rect}></span>
@@ -165,7 +164,7 @@ export default function TopCoders() {
                 </div>
 
                 <details className={styles.faq}>
-                    <summary className={styles.question}>What is Top 100 Coders?</summary>
+                    <summary className={styles.question}>What is Top 100 Coders? <LuChevronDown className={styles.chev} /> </summary>
                     <p className={styles.answer}>
                         <b>
                             Top 100 Coders is an initiative by Gtech to recognize and empower the best coders in India.
@@ -175,7 +174,7 @@ export default function TopCoders() {
                     </p>
                 </details>
                 <details className={styles.faq}>
-                    <summary className={styles.question}>What happens after the selection process?</summary>
+                    <summary className={styles.question}>What happens after the selection process? <LuChevronDown className={styles.chev} /></summary>
                     <p className={styles.answer}>
                         <b>
                             Top 100 Coders is an initiative by Gtech to recognize and empower the best coders in India.
@@ -185,7 +184,7 @@ export default function TopCoders() {
                     </p>
                 </details>
                 <details className={styles.faq}>
-                    <summary className={styles.question}>How do I apply?</summary>
+                    <summary className={styles.question}>How do I apply? <LuChevronDown className={styles.chev} /></summary>
                     <p className={styles.answer}>
                         <b>
                             Top 100 Coders is an initiative by Gtech to recognize and empower the best coders in India.
