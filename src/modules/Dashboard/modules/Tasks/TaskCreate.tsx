@@ -61,9 +61,9 @@ const TaskCreate = (props: Props) => {
             .required("A description is required"),
         channel_id: Yup.string().required("Select a Channel"),
         type_id: Yup.string().required("Select a Type"),
-        level_id: Yup.string(),
-        ig_id: Yup.string(),
-        organization_id: Yup.string()
+        level_id: Yup.string().nullable(),
+        ig_id: Yup.string().nullable(),
+        organization_id: Yup.string().nullable()
     });
 
     if (!uuidData) return <MuLoader />;
@@ -178,33 +178,32 @@ const TaskCreate = (props: Props) => {
                                 label: val.title
                             }))}
                         />
-                        <FormikSelect label="Level" name="level_id">
-                            <option value="">Select an option</option>
-                            {uuidData?.level.map(val => {
-                                return (
-                                    <option value={val.id}>{val.name}</option>
-                                );
-                            })}
-                        </FormikSelect>
-                        <FormikSelect label="IG" name="ig_id">
-                            <option value="">Select an option</option>
-                            {uuidData?.ig.map(val => {
-                                return (
-                                    <option value={val.id}>{val.name}</option>
-                                );
-                            })}
-                        </FormikSelect>
-                        <FormikSelect
+                        <FormikReactSelect
+                            label="Level"
+                            name="level_id"
+                            options={uuidData?.level.map(val => ({
+                                value: val.id,
+                                label: val.name
+                            }))}
+                        />
+
+                        <FormikReactSelect
+                            label="IG"
+                            name="ig_id"
+                            options={uuidData?.ig.map(val => ({
+                                value: val.id,
+                                label: val.name
+                            }))}
+                        />
+
+                        <FormikReactSelect
                             label="Organization"
                             name="organization_id"
-                        >
-                            <option value="">Select an option</option>
-                            {uuidData?.organization.map(val => {
-                                return (
-                                    <option value={val.id}>{val.title}</option>
-                                );
-                            })}
-                        </FormikSelect>
+                            options={uuidData?.organization.map(val => ({
+                                value: val.id,
+                                label: val.title
+                            }))}
+                        />
                         <div className={styles.btn_container}>
                             <button
                                 className={styles.btn_cancel}
