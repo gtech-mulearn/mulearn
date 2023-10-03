@@ -6,7 +6,8 @@ import React, {
     HTMLAttributes,
     TextareaHTMLAttributes,
     useEffect,
-    useRef
+    useRef,
+    useState
 } from "react";
 import Select, { Props as SelectProps } from "react-select";
 import { propNames } from "@chakra-ui/react";
@@ -281,11 +282,18 @@ export const FormikCheckBox = ({ label, ...props }: any) => {
     const [field, meta, helper] = useField(props);
 
     //Work around :)
+    const [checked, setChecked] = useState(meta.initialValue);
 
     return (
         <div className={styles.checkBox}>
             <label className={styles.formLabel}>{label}</label>
-            <input type="checkbox" {...field} {...props} />
+            <input
+                type="checkbox"
+                {...field}
+                {...props}
+                checked={checked}
+                onChange={() => setChecked(!checked)}
+            />
             {meta.touched && meta.error ? (
                 <div className={styles.error}>{meta.error}</div>
             ) : null}
