@@ -9,8 +9,8 @@ export const getLCDashboard = (setLcCounts: ResponseType) => {
     publicGateway
         .get(PublicRoutes.getLcDashboard)
         .then(response => {
-            console.log(response.data);
-            setLcCounts(response.data);
+            console.log(response.data.response);
+            setLcCounts(response.data.response);
         })
         .catch(error => {
             console.error(error);
@@ -36,7 +36,6 @@ export const getLCReport = (
             }
         })
         .then(response => {
-            console.log(response.data);
             setLcReport(response.data.response);
             if (setTotalPages) setTotalPages(response.data.totalPages);
         })

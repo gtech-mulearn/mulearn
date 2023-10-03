@@ -5,16 +5,16 @@ export type ResponseType = {
 };
 
 export type InterestGroup = {
-    ig__name: string;
+    ig_name: string;
     total_circles: number;
 };
 
 export type UserDetail = {
-    user__first_name: string;
-    user__last_name: string;
-    user__mu_id: string;
-    circle__name: string;
-    circle__ig__name: string;
-    user__user_organization_link_user__org__title: string;
-    karma_earned: number;
+    irst_name: string;
+    last_name: string;
+    muid: string;
+    circle_name: string;
+    ig_name: string;
+    organization: string;
+    karma: number;
 };
