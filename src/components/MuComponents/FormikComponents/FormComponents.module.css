@@ -124,7 +124,8 @@
     /* width: 50%; */
 }
 
-sup {
+.inputBox sup,
+.InputSet sup {
     color: red;
 }
 
