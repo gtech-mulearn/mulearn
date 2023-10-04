@@ -25,9 +25,9 @@ const taskEditSchema = Yup.object().shape({
     variable_karma: Yup.boolean().required("Select an option"),
     channel_id: Yup.string().required("Select a channel"),
     type_id: Yup.string().required("Select a type"),
-    level_id: Yup.string().required("Select a Level"),
-    ig_id: Yup.string().required("Select an Interest Group"),
-    organization_id: Yup.string().required("Select an Organization")
+    level_id: Yup.string().nullable(),
+    ig_id: Yup.string().nullable(),
+    organization_id: Yup.string().nullable()
 });
 
 type IVType = {
@@ -67,8 +67,8 @@ const useFormikData = () => {
             values.hashtag,
             values.title,
             values.karma,
-            values.active ? "True" : "False",
-            values.variable_karma ? "True" : "False",
+            values.active,
+            values.variable_karma,
             values.usage_count,
             values.channel_id,
             values.type_id,
@@ -87,8 +87,8 @@ const useFormikData = () => {
         hashtag: data.hashtag || "",
         title: data.title || "",
         karma: data.karma || "",
-        active: data.active ? true : false,
-        variable_karma: data.variable_karma ? true : false,
+        active: data.active,
+        variable_karma: data.variable_karma,
         usage_count: data.usage_count || "",
         channel_id: data.channel || "",
         type_id: data.type || "",

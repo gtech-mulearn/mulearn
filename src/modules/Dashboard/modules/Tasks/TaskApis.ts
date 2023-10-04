@@ -95,8 +95,8 @@ export const editTask = async (
     hashtag: string,
     title: string,
     karma: string,
-    active: string,
-    variable_karma: string,
+    active: boolean,
+    variable_karma: boolean,
     usage_count: string,
     channel_id: string,
     type_id: string,
@@ -118,9 +118,9 @@ export const editTask = async (
                 variable_karma: variable_karma,
                 channel: channel_id,
                 type: type_id,
-                level: level_id,
-                ig: ig_id,
-                org: org_id
+                level: level_id === "" ? null : level_id,
+                ig: ig_id === "" ? null : ig_id,
+                org: org_id === "" ? null : org_id
             }
         );
         const message: any = response?.data;
@@ -151,8 +151,8 @@ export const createTask = async (
     title: string,
     karma: string,
     usage_count: string,
-    active: string,
-    variable_karma: string,
+    active: boolean,
+    variable_karma: boolean,
     description: string,
     channel_id: string,
     type_id: string,
@@ -174,9 +174,9 @@ export const createTask = async (
                 description: description,
                 channel: channel_id,
                 type: type_id,
-                level: level_id,
-                ig: ig_id,
-                org: org_id
+                level: level_id === "" ? null : level_id,
+                ig: ig_id === "" ? null : ig_id,
+                org: org_id === "" ? null : org_id
             }
         );
         toast({

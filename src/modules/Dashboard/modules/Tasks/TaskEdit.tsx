@@ -14,7 +14,6 @@ type Props = {};
 const TaskEdit = (props: Props) => {
     const { navigate, initialValues, submitHandler, loading, formStructure } =
         useFormikData();
-    console.log(initialValues);
     return (
         <>
             {loading ? (

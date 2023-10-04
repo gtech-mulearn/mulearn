@@ -283,7 +283,6 @@ export const FormikCheckBox = ({ label, ...props }: any) => {
 
     //Work around :)
     const [checked, setChecked] = useState(meta.initialValue);
-
     return (
         <div className={styles.checkBox}>
             <label className={styles.formLabel}>{label}</label>
