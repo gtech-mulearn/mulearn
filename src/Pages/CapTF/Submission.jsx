@@ -59,8 +59,10 @@ const Submission = () => {
           href={
             showParam === "true" || name !== "Secret Key"
               ? "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-              : "https://airtable.com/apppADe83MpHBM05J/shr3Dn6gSjCbcp45r"
+              : process.env.REACT_APP_CTF_SUMISSION_LINK
           }
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <button
             type="submit"
@@ -75,6 +77,10 @@ const Submission = () => {
             Submit
           </button>
         </a>
+        <br />
+        <span style={{ color: "white", marginBottom: "10px" }}>
+          Note: Right Click and Open in New Tab
+        </span>
       </form>
     </div>
   );

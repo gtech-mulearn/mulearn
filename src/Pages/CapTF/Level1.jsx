@@ -1,7 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import notapdf from "./notapdf.fpd";
 
 const Level1 = () => {
+  const [muid, setMuid] = useState("");
+  const [showContent, setShowContent] = useState(false);
+
+  const handleMuidChange = (event) => {
+    setMuid(event.target.value);
+  };
+
+  useEffect(() => {
+    const muid = localStorage.getItem("muid");
+    if (muid) {
+      setMuid(muid);
+      setShowContent(true);
+    }
+  }, []);
+
+  const handleContinueClick = () => {
+    if (muid.length >= 5) {
+      setShowContent(true);
+      //store muid in local storage
+      localStorage.setItem("muid", muid);
+    } else {
+      alert("Please enter a valid MUID (at least 5 characters).");
+    }
+  };
+
   return (
     <div
       style={{
@@ -15,21 +40,93 @@ const Level1 = () => {
         justifyContent: "center",
       }}
     >
-      <html>
-        <body>
-          <img
-            src="/assets/captf/img1.png"
-            alt=""
-            srcset=""
-            style={{ maxWidth: "100%", margin: "auto" }}
+      {!showContent && (
+        <div
+          style={{
+            backgroundColor: "#1c1c1c",
+            color: "#fff",
+            textAlign: "center",
+            fontFamily: "Arial, sans-serif",
+          }}
+        >
+          <h2 style={{ color: "#e62429" }}>
+            Please enter your MUID to continue
+          </h2>
+          <input
+            type="text"
+            value={muid}
+            onChange={handleMuidChange}
+            style={{
+              backgroundColor: "#fff",
+              color: "#1c1c1c",
+              borderRadius: "5px",
+              padding: "10px",
+              border: "none",
+              marginTop: "20px",
+            }}
           />
           <br />
-          <p
-            style={{ fontSize: "24px", fontWeight: "bold", marginTop: "20px" }}
+          <button
+            onClick={handleContinueClick}
+            style={{
+              backgroundColor: "#e62429",
+              color: "#fff",
+              border: "none",
+              borderRadius: "5px",
+              padding: "10px 20px",
+              fontSize: "18px",
+              fontWeight: "bold",
+              marginTop: "20px",
+              cursor: "pointer",
+            }}
           >
-            pxohduq.ruj/{" "}
-            <a href={notapdf} target="_blank" rel="noopener noreferrer">
-              <span
+            Continue
+          </button>
+        </div>
+      )}
+      {showContent && (
+        <html>
+          <body>
+            <img
+              src="/assets/captf/img1.png"
+              alt=""
+              srcset=""
+              style={{ maxWidth: "100%", margin: "auto" }}
+            />
+            <br />
+            <p
+              style={{
+                fontSize: "24px",
+                fontWeight: "bold",
+                marginTop: "20px",
+              }}
+            >
+              pxohduq.ruj/{" "}
+              <a href={notapdf} target="_blank" rel="noopener noreferrer">
+                <span
+                  style={{
+                    backgroundColor: "#e62429",
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: "5px",
+                    padding: "10px 20px",
+                    fontSize: "18px",
+                    fontWeight: "bold",
+                    marginTop: "20px",
+                    cursor: "pointer",
+                  }}
+                >
+                  Find Me
+                </span>{" "}
+              </a>
+              + Muhammad Kutty Panaparambil Ismai's Son
+            </p>
+            <a
+              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button
                 style={{
                   backgroundColor: "#e62429",
                   color: "#fff",
@@ -42,56 +139,34 @@ const Level1 = () => {
                   cursor: "pointer",
                 }}
               >
-                Find Me
-              </span>{" "}
+                For Finding Me(Real One)
+              </button>
             </a>
-            + Muhammad Kutty Panaparambil Ismai's Son
-          </p>
-          <a
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button
-              style={{
-                backgroundColor: "#e62429",
-                color: "#fff",
-                border: "none",
-                borderRadius: "5px",
-                padding: "10px 20px",
-                fontSize: "18px",
-                fontWeight: "bold",
-                marginTop: "20px",
-                cursor: "pointer",
-              }}
+            <a
+              href="/assets/captf/RawMenCCLVI.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              For Finding Me(Real One)
-            </button>
-          </a>
-          <a
-            href="/assets/captf/RawMenCCLVI.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button
-              style={{
-                backgroundColor: "#e62429",
-                color: "#fff",
-                border: "none",
-                borderRadius: "5px",
-                padding: "10px 20px",
-                marginLeft: "20px",
-                fontSize: "18px",
-                fontWeight: "bold",
-                marginTop: "20px",
-                cursor: "pointer",
-              }}
-            >
-              For Finding Me
-            </button>
-          </a>
-        </body>
-      </html>
+              <button
+                style={{
+                  backgroundColor: "#e62429",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "5px",
+                  padding: "10px 20px",
+                  marginLeft: "20px",
+                  fontSize: "18px",
+                  fontWeight: "bold",
+                  marginTop: "20px",
+                  cursor: "pointer",
+                }}
+              >
+                For Finding Me
+              </button>
+            </a>
+          </body>
+        </html>
+      )}
     </div>
   );
 };

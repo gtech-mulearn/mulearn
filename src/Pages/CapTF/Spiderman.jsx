@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Spiderman = () => {
+  const [muid, setMuid] = useState("");
+  const [flag, setFlag] = useState("");
+  const [secretKey, setSecretKey] = useState(""); // added this line to store the secret key
+  const navigate = useNavigate();
+  useEffect(() => {
+    const muid = localStorage.getItem("muid");
+    
+    if (muid) {
+      setMuid(muid);
+      setSecretKey(process.env.REACT_APP_CTF_SECRET_KEY); // added this line to store the secret key
+      const encrypted = btoa(muid + secretKey); // modified this line to use base64 encryption
+      setFlag(encrypted);
+    }
+  }, [secretKey]);
+
+  if (!muid) {
+    navigate("/level1");
+  }
+
   return (
     <div
       style={{
@@ -24,11 +44,11 @@ const Spiderman = () => {
       >
         Here is your flag{" "}
         <span style={{ display: "none", color: "#000000", textShadow: "none" }}>
-          CTFFlag123
+          {flag}
         </span>
       </p>
       <a
-        href="http://dev.mulearn.org/submission?show=true"
+        href="/submission?show=true"
         target="_blank"
         rel="noopener noreferrer"
       >
