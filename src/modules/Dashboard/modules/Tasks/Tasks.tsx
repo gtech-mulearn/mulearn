@@ -1,7 +1,4 @@
-import {
-    MuButton,
-    PowerfulButton
-} from "@/MuLearnComponents/MuButtons/MuButton";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import THead from "@/MuLearnComponents/Table/THead";
 import Table from "@/MuLearnComponents/Table/Table";
@@ -13,10 +10,9 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import styles from "../InterestGroup/InterestGroup.module.css";
 import { deleteTask, getTasks } from "./TaskApis";
+import { Blank } from "@/MuLearnComponents/Table/Blank";
 
-type Props = {};
-
-export const Tasks = (props: Props) => {
+export const Tasks = () => {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -200,7 +196,7 @@ export const Tasks = (props: Props) => {
                                 />
                             )}
                         </div>
-                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                        <Blank />
                     </Table>
                 </>
             )}

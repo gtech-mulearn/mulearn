@@ -12,6 +12,7 @@ import { deleteDepartment, getDepartments } from "./apis";
 import styles from "./Departments.module.css";
 import { modalTypes } from "../../utils/enums";
 import CreateOrUpdateDepartmentModal from "./CreateOrUpdateDepartmentModal";
+import { Blank } from "@/MuLearnComponents/Table/Blank";
 
 const Departments = () => {
     const toast = useToast();
@@ -181,7 +182,7 @@ const Departments = () => {
                                 />
                             )}
                         </div>
-                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                        <Blank />
                     </Table>
                 </>
             )}

@@ -585,7 +585,7 @@ const LearningCircle = (props: Props) => {
                             </div>
 
                             {lc?.pending_members &&
-                                lc.pending_members.length > 0 ? (
+                            lc.pending_members.length > 0 ? (
                                 <div className={styles.PendingApp}>
                                     <b className={styles.PendingTitle}>
                                         Pending approvals
@@ -722,6 +722,7 @@ const LearningCircle = (props: Props) => {
                                                         alt="Profile Picture"
                                                     />
                                                     <div>
+
                                                         <div className={styles.username}>
                                                             <p>{member.username} {member.is_lead && "(Lead)"}</p>
                                                         </div>
@@ -748,7 +749,9 @@ const LearningCircle = (props: Props) => {
                                                                     setOpenRemoveConfirm(
                                                                         true
                                                                     );
-                                                                    setUsername(member?.username)
+                                                                    setUsername(
+                                                                        member?.username
+                                                                    );
                                                                 }}
                                                             />
                                                             {openRemoveConfrim && (
@@ -759,7 +762,6 @@ const LearningCircle = (props: Props) => {
                                                                             member.id
                                                                         );
                                                                     }}
-
                                                                     content={`Are you want to remove ${username} from ${lc.name} ?`}
                                                                     heading={
                                                                         "Remove user from Learning Cicle"

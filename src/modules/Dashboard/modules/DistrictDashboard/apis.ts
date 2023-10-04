@@ -234,10 +234,6 @@ export const getInfo = async (code: string) => {
 };
 export const getStudentLevels = async (errHandler: (err: string) => void) => {
     try {
-        // const sum = (arr: number[]) => {
-        //     return arr.slice(1).reduce((acc, curr) => acc + curr);
-        // };
-
         const response = await privateGateway.get(
             dashboardRoutes.getDistrictStudentLevels
         );
