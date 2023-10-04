@@ -13,7 +13,7 @@ const Spiderman = () => {
     if (muid) {
       setMuid(muid);
       setSecretKey(process.env.REACT_APP_CTF_SECRET_KEY); // added this line to store the secret key
-      const encrypted = btoa(muid + secretKey); // modified this line to use base64 encryption
+      const encrypted = btoa(muid); // modified this line to use base64 encryption
       setFlag(encrypted);
     }
   }, [secretKey]);

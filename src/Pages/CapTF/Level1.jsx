@@ -12,7 +12,7 @@ const Level1 = () => {
   useEffect(() => {
     const muid = localStorage.getItem("muid");
     if (muid) {
-      setMuid(muid);
+      setMuid(muid.trim());
       setShowContent(true);
     }
   }, []);
