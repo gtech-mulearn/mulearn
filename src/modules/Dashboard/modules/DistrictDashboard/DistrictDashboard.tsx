@@ -4,10 +4,7 @@ import Table from "@/MuLearnComponents/Table/Table";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
-import {
-    BarChart,
-    ColumnChart
-} from "../CampusStudentList/Components/Graphs";
+import { BarChart, ColumnChart } from "../CampusStudentList/Components/Graphs";
 import { getdistrictdashboard, getStudentLevels, getTopCampus } from "./apis";
 import { columnsCampus, columnsStudent } from "./THeaders";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
@@ -15,6 +12,7 @@ import "./Organizations.css";
 import "./DistricDashboard.scss";
 import TableTopTab from "./TableTopTab";
 import graphStyles from "../CampusStudentList/pages/CampusStudentList.module.css";
+import { Blank } from "@/MuLearnComponents/Table/Blank";
 
 function DistrictDashboard() {
     const [data, setData] = useState<any[]>([]);
@@ -230,7 +228,7 @@ function DistrictDashboard() {
                             perPage={perPage}
                             setPerPage={handlePerPageNumber as any}
                         />
-                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                        <Blank />
                     </Table>
                 </>
             )}

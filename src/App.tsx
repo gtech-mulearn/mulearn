@@ -110,10 +110,7 @@ const ManageUsers = lazy(
 const InterestGroup = lazy(
     () => import("./modules/Dashboard/modules/InterestGroup/InterestGroup")
 );
-const InterestGroupCreate = lazy(
-    () =>
-        import("./modules/Dashboard/modules/InterestGroup/InterestGroupCreate")
-);
+
 const HackathonDetails = lazy(
     () => import("./modules/Dashboard/modules/Hackathon/pages/HackathonDetails")
 );
@@ -187,6 +184,7 @@ import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/Sign
 import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
 import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs";
 import { Marketplace } from "./modules/Dashboard/modules/Marketplace/Marketplace";
+import LearningCircles from "./modules/Public/KKEM/modules/Dashboard/LearningCircles/LearningCircles";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -278,14 +276,7 @@ function App() {
                                 />
                             )
                         },
-                        {
-                            path: "interest-groups/create",
-                            element: <InterestGroupCreate />
-                        },
-                        {
-                            path: "interest-groups/edit/:id",
-                            element: <InterestGroupCreate />
-                        },
+
                         {
                             path: "organizations/create",
                             element: <CreateOrganization />
@@ -599,6 +590,10 @@ function App() {
         {
             path: "/kkem/events/beyondus",
             element: <KKEMEventBeyondUs />
+        },
+        {
+            path: "/kkem/learningcircles/dashboard",
+            element: <LearningCircles />
         }
     ]);
 

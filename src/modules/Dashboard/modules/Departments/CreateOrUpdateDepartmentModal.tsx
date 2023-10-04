@@ -18,6 +18,7 @@ type Props = {
     loading: boolean;
     setIsLoading: Dispatch<SetStateAction<boolean>>;
     toast: (options?: UseToastOptions | undefined) => ToastId;
+    title?: string;
 };
 
 const CreateOrUpdateDepartmentModal = ({
@@ -26,25 +27,18 @@ const CreateOrUpdateDepartmentModal = ({
     setDepartments,
     loading,
     setIsLoading,
-    toast
+    toast,
+    title,
 }: Props) => {
-    // const [title, setTitle] = useState("");
-    // const [isFetching, setIsFetching] = useState(true);
-
-    // useEffect(() => {
-    //     getDepartmentData({
-    //         id: id!,
-    //         setTitle: setTitle,
-    //         // setIsFetching: setIsFetching,
-    //         toast: toast
-    //     });
-    // }, []);
-
     return (
         <Modal
             onClose={setCurrModal}
             header={id ? "Edit department" : "Create a new department"}
-            paragraph={id ? "Edit the department's name" : "Create a new department name"}
+            paragraph={
+                id
+                    ? "Edit the department's name"
+                    : "Create a new department name"
+            }
         >
             {loading ? (
                 <MuLoader />
@@ -73,19 +67,36 @@ const CreateOrUpdateDepartmentModal = ({
                                 label={`${id ? "New " : ""}Name`}
                                 name="title"
                                 type="text"
-                                placeholder={`Enter ${id ? "new " : ""
-                                    }department name`}
+                                value={title}
+                                placeholder={`${id ? title : "Enter New Department Name"}`}
                                 style={{
-                                    width: window.innerWidth < 426 ? "13rem" : "20rem",
+                                    width:
+                                        window.innerWidth < 426
+                                            ? "13rem"
+                                            : "20rem"
                                 }}
                             />
                             <hr style={{ marginBottom: "1rem" }} />
-                            <div style={{ display: "flex", flexDirection: window.innerWidth < 768 ? "column" : "row", justifyContent: "space-between", gap: "1rem" }}>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    flexDirection:
+                                        window.innerWidth < 768
+                                            ? "column"
+                                            : "row",
+                                    justifyContent: "space-between",
+                                    gap: "1rem"
+                                }}
+                            >
                                 <PowerfulButton
                                     children="Cancel"
                                     type="button"
                                     onClick={() => setCurrModal(null)}
-                                    style={{ background: "#eff1f9", color: "#456ff6", width: "100%" }}
+                                    style={{
+                                        background: "#eff1f9",
+                                        color: "#456ff6",
+                                        width: "100%"
+                                    }}
                                 />
                                 <PowerfulButton
                                     children="Submit"

@@ -11,8 +11,7 @@ type FormTabApplicationProps = {
 export const FormTabApplication = ({
     values,
     handleChange,
-    formData,
-    initialFormFields
+    formData
 }: FormTabApplicationProps) => {
     return (
         <>
