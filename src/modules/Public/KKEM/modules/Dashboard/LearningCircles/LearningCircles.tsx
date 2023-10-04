@@ -124,14 +124,18 @@ const LearningCircles = () => {
     };
 
     const data = [["Interest Group", "Total Circles"]];
-    LcCounts.circle_count_by_ig.forEach((item) => {
-        data.push([item.ig_name, item.total_circles.toString()]);
-    });
+    LcCounts.circle_count_by_ig
+        .sort((a, b) => a.total_circles - b.total_circles) // sort by total_circles in ascending order
+        .forEach((item) => {
+            data.push([item.ig_name, item.total_circles.toString()]);
+        });
 
-    const data2 = [["Organisation", "Total Circles"]];
-    orgCirclesArray.slice(0, 10).forEach((item) => {
-        data2.push([item.orgName, item.circleCount.toString()]);
-    });
+
+
+    // const data2 = [["Organisation", "Total Circles"]];
+    // orgCirclesArray.slice(0, 10).forEach((item) => {
+    //     data2.push([item.orgName, item.circleCount.toString()]);
+    // });
 
 
 
