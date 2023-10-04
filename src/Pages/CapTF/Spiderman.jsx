@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 const Spiderman = () => {
   const [muid, setMuid] = useState("");
   const [flag, setFlag] = useState("");
+  const [key, setKey] = useState(""); // added this line to store the key
   const [secretKey, setSecretKey] = useState(""); // added this line to store the secret key
   const navigate = useNavigate();
   useEffect(() => {
     const muid = localStorage.getItem("muid");
-    
+
     if (muid) {
       setMuid(muid);
       setSecretKey(process.env.REACT_APP_CTF_SECRET_KEY); // added this line to store the secret key
@@ -37,7 +38,11 @@ const Spiderman = () => {
         textAlign: "center", // added this line to center the text
       }}
     >
-      <img src="/assets/captf/displaynun.jpg" alt="" style={{maxWidth: "80vw"}}/>
+      <img
+        src="/assets/captf/displaynun.jpg"
+        alt=""
+        style={{ maxWidth: "80vw" }}
+      />
       <p
         style={{
           fontSize: "3rem", // added this line to increase the font size
@@ -48,11 +53,7 @@ const Spiderman = () => {
           {flag}
         </span>
       </p>
-      <a
-        href="/submission?show=true"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="/submission?show=true" target="_blank" rel="noopener noreferrer">
         <button
           style={{
             backgroundColor: "white",
@@ -69,19 +70,62 @@ const Spiderman = () => {
       </a>
       <br />
       <p>
-        Don't click away in a hurry. <br />
+        Don't click away in a hurry.
         Make sure you find the flag.
       </p>
-      <div style={{ marginTop: "20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
-        <p style={{ fontSize: "1.5rem", fontWeight: "bold", marginBottom: "10px" }}>Don't have a laptop? Don't worry!</p>
-        <input type="text" onChange={(e) => setKey(e.target.value)} style={{ padding: "10px", borderRadius: "5px", border: "none", boxShadow: "0px 0px 10px white", backgroundColor: "black", color: "white", marginBottom: "10px" }} placeholder="Enter the key to unlock" />
-        <button onClick={() => {
-          if (key === "display: none;") {
-            alert("BeWebFlag");
-          } else {
-            alert("Wrong answer. Try again!");
-          }
-        }} style={{ backgroundColor: "white", color: "black", padding: "10px 20px", border: "none", borderRadius: "5px", cursor: "pointer", boxShadow: "0px 0px 10px white" }}>Submit</button>
+      <div
+        style={{
+          marginTop: "20px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <p
+          style={{
+            fontSize: "1.5rem",
+            fontWeight: "bold",
+            marginBottom: "10px",
+          }}
+        >
+          Don't have a laptop? Don't worry!
+        </p>
+        <input
+          type="text"
+          onChange={(e) => setKey(e.target.value)}
+          style={{
+            padding: "10px",
+            borderRadius: "5px",
+            border: "none",
+            boxShadow: "0px 0px 10px white",
+            backgroundColor: "black",
+            color: "white",
+            marginBottom: "10px",
+          }}
+          placeholder="Enter the key to unlock"
+        />
+        <p>Hint: The Display has a Nun,<br/> Change this to a CSS Property</p>
+        <br />
+        <button
+          onClick={() => {
+            if (key === "display: none;") {
+              alert(flag);
+            } else {
+              alert("Wrong answer. Try again!");
+            }
+          }}
+          style={{
+            backgroundColor: "white",
+            color: "black",
+            padding: "10px 20px",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+            boxShadow: "0px 0px 10px white",
+          }}
+        >
+          Submit
+        </button>
       </div>
     </div>
   );
