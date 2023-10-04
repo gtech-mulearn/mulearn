@@ -145,27 +145,31 @@ export const organizationRoutes = {
     getCommunity: "/api/v1/dashboard/organisation/institutes/show/Community/",
     getAffiliation:
         "/api/v1/dashboard/organisation/institutes/org/affiliation/",
-    createAffiliation: "/api/v1/dashboard/organisation/institutes/affiliation/create/",
-    editAffiliation: "/api/v1/dashboard/organisation/institutes/affiliation/edit/",
-    deleteAffiliation: "/api/v1/dashboard/organisation/institutes/affiliation/delete/",
+    createAffiliation:
+        "/api/v1/dashboard/organisation/institutes/affiliation/create/",
+    editAffiliation:
+        "/api/v1/dashboard/organisation/institutes/affiliation/edit/",
+    deleteAffiliation:
+        "/api/v1/dashboard/organisation/institutes/affiliation/delete/",
 
     getLocation: "/api/v1/dashboard/location",
     postAddOrganization: "/api/v1/dashboard/organisation/institutes/create/",
     putUpdateOrganization: "/api/v1/dashboard/organisation/institutes/edit/",
     deleteOrgnaization: "/api/v1/dashboard/organisation/institutes/delete/",
     postGetInfo: "/api/v1/dashboard/organisation/institutes/info/",
-    getOrgCsv:(org_type:string)=> `/api/v1/dashboard/organisation/institutes/${org_type}/csv/`
+    getOrgCsv: (org_type: string) =>
+        `/api/v1/dashboard/organisation/institutes/${org_type}/csv/`
 } as const;
 
 export const ManageLocationsRoutes = {
     getCountryData: "/api/v1/dashboard/location/countries/",
-    patchCountryData: "/api/v1/dashboard/location/countries/<str:country_id>/",
+    patchCountryData: "/api/v1/dashboard/location/countries/",
     getStateData: "/api/v1/dashboard/location/states/",
-    patchStateData: "/api/v1/dashboard/location/states/<str:state_id>/",
+    patchStateData: "/api/v1/dashboard/location/states/",
     getZoneData: "/api/v1/dashboard/location/zones/",
-    patchZoneData: "/api/v1/dashboard/location/zones/<str:zone_id>/",
+    patchZoneData: "/api/v1/dashboard/location/zones/",
     getDistrictData: "/api/v1/dashboard/location/districts/",
-    patchDistrictData: "/api/v1/dashboard/location/districts/<str:district_id>/"
+    patchDistrictData: "/api/v1/dashboard/location/districts/"
 } as const;
 
 export const KKEMRoutes = {
@@ -176,5 +180,7 @@ export const KKEMRoutes = {
 };
 
 export const PublicRoutes = {
-    getRandomLc: "/api/v1/dashboard/lc/list/"
+    getRandomLc: "/api/v1/dashboard/lc/list/",
+    getLcDashboard: "/api/v1/get-log/lc-dashboard/",
+    getLcReport: "/api/v1/get-log/lc-report/",
 } as const;

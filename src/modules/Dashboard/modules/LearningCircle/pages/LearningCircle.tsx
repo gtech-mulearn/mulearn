@@ -583,7 +583,7 @@ const LearningCircle = (props: Props) => {
                             </div>
 
                             {lc?.pending_members &&
-                                lc.pending_members.length > 0 ? (
+                            lc.pending_members.length > 0 ? (
                                 <div className={styles.PendingApp}>
                                     <b className={styles.PendingTitle}>
                                         Pending approvals
@@ -720,6 +720,7 @@ const LearningCircle = (props: Props) => {
                                                         alt="Profile Picture"
                                                     />
                                                     <div>
+
                                                         <div className={styles.username}>
                                                             <p>{member.username} {member.is_lead && "(Lead)"}</p>
                                                         </div>

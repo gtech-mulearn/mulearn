@@ -65,7 +65,6 @@ export const createShortenUrl = (
         privateGateway
             .post(dashboardRoutes.createShortenUrl, urlData)
             .then(response => {
-                //console.log(response.data.response);
                 resolve(true);
                 toast({
                     title: "Shorten Url Created",
@@ -117,7 +116,6 @@ export const editShortenUrl = (
                 urlEditedData
             )
             .then(response => {
-                //console.log(response.data.response);
                 resolve(true);
                 toast({
                     title: "Shorten Url Edited",
@@ -128,7 +126,6 @@ export const editShortenUrl = (
                 });
             })
             .catch(error => {
-                // console.log(error.response.data.message.general[0]);
                 reject(false);
                 if (
                     error.response.data.message &&
