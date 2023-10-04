@@ -443,7 +443,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     Zone: Yup.string().required("Required"),
                     District: Yup.string().required("Required"),
                     Affiliation: Yup.string().required("Required")
-
                 })}
                 onSubmit={values => {
                     setIsLoading(true);

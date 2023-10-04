@@ -81,7 +81,6 @@ export const getTaskDetails = async (
             dashboardRoutes.getTasksData + "get/" + id + "/"
         );
         const message: any = response?.data;
-        //console.log(message);
         setData(message.response.Task);
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -123,7 +122,6 @@ export const editTask = async (
                 org: org_id
             }
         );
-        const message: any = response?.data;
         toast({
             title: "Task Updated",
             description: "Task has been updated successfully",
@@ -131,7 +129,6 @@ export const editTask = async (
             duration: 5000,
             isClosable: true
         });
-        //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -179,7 +176,7 @@ export const createTask = async (
                 org: org_id
             }
         );
-		toast({
+        toast({
             title: "Task created",
             status: "success",
             duration: 3000,
@@ -208,7 +205,6 @@ export const deleteTask = async (
             isClosable: true
         });
         const message: any = response?.data;
-        //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

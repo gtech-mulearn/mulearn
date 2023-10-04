@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import BulkImport from "@/MuLearnComponents/BulkImport/BulkImport";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
@@ -92,7 +92,9 @@ const KarmaVoucherBulkImport = () => {
                         >
                             <CountCard
                                 title="Success"
-                                count={uploadResponse?.response?.Success?.length}
+                                count={
+                                    uploadResponse?.response?.Success?.length
+                                }
                             />
                             <CountCard
                                 title="Failed"
