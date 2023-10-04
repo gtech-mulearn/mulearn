@@ -35,6 +35,7 @@ jobs:
     - name: Build
       env:
         REACT_APP_LEADERBOARD_API: ${{ secrets.REACT_APP_LEADERBOARD_API }}
+        REACT_APP_CTF_SUMISSION_LINK: ${{ secrets.REACT_APP_CTF_SUMISSION_LINK}}
       run: npm run build
     
     - name: Configure SSH key

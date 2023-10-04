@@ -23,7 +23,7 @@ const Level1 = () => {
       //store muid in local storage
       localStorage.setItem("muid", muid);
     } else {
-      alert("Please enter a valid MUID (at least 5 characters).");
+      alert("Please enter a valid muid (at least 5 characters).");
     }
   };
 
@@ -50,7 +50,7 @@ const Level1 = () => {
           }}
         >
           <h2 style={{ color: "#e62429" }}>
-            Please enter your MUID to continue
+            Please enter your muid to continue
           </h2>
           <input
             type="text"
