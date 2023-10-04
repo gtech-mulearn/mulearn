@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import styles from './LearningCircles.module.css'
 import { getLCDashboard, getLCReport } from './services/LearningCircles';
-import { ResponseType, UserDetail } from './services/types';
+import { OrgCircle, ResponseType, UserDetail } from './services/types';
 import TableTop from '@/MuLearnComponents/TableTop/TableTop';
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from '@/MuLearnComponents/Table/THead';
 import Pagination from '@/MuLearnComponents/Pagination/Pagination';
+import Chart from 'react-google-charts';
 
 const LearningCircles = () => {
     const [LcCounts, setLcCounts] = useState<ResponseType>({ lc_count: 0, total_enrollment: 0, circle_count_by_ig: [] })
@@ -29,15 +30,16 @@ const LearningCircles = () => {
         { column: "muid", Label: "muid", isSortable: false },
         { column: "circle_name", Label: "Circle Name", isSortable: false },
         { column: "circle_ig", Label: "Circle IG", isSortable: false },
-        { column: "organisation", Label: "Organization", isSortable: false },
+        { column: "organisation", Label: "organisation", isSortable: false },
         { column: "dwms_id", Label: "DWMS ID", isSortable: false },
         { column: "karma_earned", Label: "Karma Earned", isSortable: false },
     ];
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
     const [loading, setLoading] = useState(false);
     const [perPage, setPerPage] = useState(5);
+    const [orgCirclesArray, setOrgCirclesArray] = useState<OrgCircle[]>([]);
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -109,6 +111,46 @@ const LearningCircles = () => {
         }
     };
 
+    const data = [["Interest Group", "Total Circles"]];
+    LcCounts.circle_count_by_ig.forEach((item) => {
+        data.push([item.ig_name, item.total_circles.toString()]);
+    });
+
+    const data2 = [["Organisation", "Total Circles"]];
+    orgCirclesArray.slice(0, 10).forEach((item) => {
+        data2.push([item.orgName, item.circleCount.toString()]);
+    });
+
+
+
+    useEffect(() => {
+        // Create a mapping of organisations to unique learning circles
+        const orgCircleMap: { [key: string]: Set<string> } = {};
+        console.log(LcReport)
+        LcReport.forEach(item => {
+            const { organisation, circle_name } = item;
+
+            if (!orgCircleMap[organisation]) {
+                orgCircleMap[organisation] = new Set();
+            }
+
+            orgCircleMap[organisation].add(circle_name);
+        });
+
+        // Convert the mapping to an array of { orgName, circleCount }
+        const resultArray: OrgCircle[] = Object.entries(orgCircleMap).map(([org, circles]) => ({
+            orgName: org,
+            circleCount: circles.size
+        }));
+
+        setOrgCirclesArray(resultArray);
+
+        resultArray.sort((a, b) => {
+            return a.circleCount - b.circleCount;
+        });
+    }, [LcReport]);
+
+
     return (
         <>
             <div className={styles.dashboardContainer}>
@@ -129,6 +171,7 @@ const LearningCircles = () => {
                                     <div className={styles.studentsInvoled} key={index}>
                                         <p className={styles.label}>{item.ig_name}</p>
                                         <p className={styles.count}>{item.total_circles}</p>
+                                        <span>Learning Circles</span>
                                     </div>
                                 )
                             }
@@ -136,10 +179,43 @@ const LearningCircles = () => {
                         }
                     </div>
                     <br />
+
+                    <div className={styles.chartContainer}>
+                        <Chart
+                            width={"100%"}
+                            height={"400px"}
+                            chartType="Bar"
+                            loader={<div>Loading Chart</div>}
+                            data={data}
+                            options={{
+                                chart: {
+                                    title: "Interest Group Counts",
+                                },
+                            }}
+                        />
+
+                    </div>
+
+                    <div className={styles.chartContainer}>
+                        <Chart
+                            width={"100%"}
+                            height={"400px"}
+                            chartType="Bar"
+                            loader={<div>Loading Chart</div>}
+                            data={data2}
+                            options={{
+                                chart: {
+                                    title: "Organisation Learning Circle Counts",
+                                },
+                            }}
+                        />
+                    </div>
+
+
                     <div className={styles.tableContainer}>
 
                         <TableTop
-                            onSearchText={handleSearch}
+                            // onSearchText={handleSearch}
                             onPerPageNumber={handlePerPageNumber}
                         />
                         <br />

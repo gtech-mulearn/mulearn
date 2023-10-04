@@ -10,11 +10,16 @@ export type InterestGroup = {
 };
 
 export type UserDetail = {
-    irst_name: string;
+    first_name: string;
     last_name: string;
     muid: string;
     circle_name: string;
     ig_name: string;
-    organization: string;
+    organisation: string;
     karma: number;
+};
+
+export type OrgCircle = {
+    orgName: string;
+    circleCount: number;
 };

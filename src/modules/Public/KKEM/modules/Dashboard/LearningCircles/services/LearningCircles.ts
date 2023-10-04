@@ -36,8 +36,11 @@ export const getLCReport = (
             }
         })
         .then(response => {
-            setLcReport(response.data.response);
-            if (setTotalPages) setTotalPages(response.data.totalPages);
+            setLcReport(response.data.response.data);
+            if (setTotalPages){
+                const totalPages = response.data.response.pagination.totalPages;
+                setTotalPages(totalPages);
+            }
         })
         .catch(error => {
             console.error(error);

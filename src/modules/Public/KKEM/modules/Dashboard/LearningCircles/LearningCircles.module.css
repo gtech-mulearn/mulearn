@@ -18,7 +18,7 @@
 .studentsInvoled {
     padding: 1rem;
     margin: 0.5rem;
-    width: 178px;
+    width: 300px;
     height: 118px;
     justify-content: center;
     border-radius: 13px;
@@ -58,5 +58,21 @@
     margin-top: 1rem;
     font-style: normal;
     font-weight: 600;
+    margin-bottom: 1rem;
     line-height: normal;
+}
+
+.studentsInvoled span {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #464646;
+}
+
+.chartContainer {
+    margin-top: 2rem;
+    max-width: 1520px;
+    background-color: #fff;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
 }
