@@ -21,8 +21,6 @@ const Pagination = (props: Props) => {
         props.setPerPage(value);
         props.onPerPageNumber && props.onPerPageNumber(value);
     };
-
-    console.log(props.totalPages)
     return (
         <>
             {props.totalPages > 0 && (

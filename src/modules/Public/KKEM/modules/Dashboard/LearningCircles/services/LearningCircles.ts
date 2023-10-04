@@ -9,7 +9,6 @@ export const getLCDashboard = (setLcCounts: ResponseType) => {
     publicGateway
         .get(PublicRoutes.getLcDashboard)
         .then(response => {
-            console.log(response.data.response);
             setLcCounts(response.data.response);
         })
         .catch(error => {

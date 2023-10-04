@@ -7,22 +7,34 @@ import Table from "@/MuLearnComponents/Table/Table";
 import THead from '@/MuLearnComponents/Table/THead';
 import Pagination from '@/MuLearnComponents/Pagination/Pagination';
 import Chart from 'react-google-charts';
+import { useParams, useSearchParams } from 'react-router-dom';
+import MuLoader from '@/MuLearnComponents/MuLoader/MuLoader';
 
 const LearningCircles = () => {
+    const [authorized, setAuthorized] = useState(true);
+    const [searchParams] = useSearchParams();
+    const key = searchParams.get("key"); // [key: string
+
+    useEffect(() => {
+        if (key === "CDV9co7KhOxA9pqbsi68Q07tsDlg9llapsMvmTSdFHs81SH1ol") {
+            setAuthorized(true);
+        }
+        else {
+            setAuthorized(false);
+        }
+    }, [key]);
+
     const [LcCounts, setLcCounts] = useState<ResponseType>({ lc_count: 0, total_enrollment: 0, circle_count_by_ig: [] })
     const [LcReport, setLcReport] = useState<UserDetail[]>([])
     const [sort, setSort] = useState("");
 
     useEffect(() => {
-        getLCDashboard(setLcCounts);
-        getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", sort, setLoading);
-    }, [])
+        if (authorized) {
+            getLCDashboard(setLcCounts);
+            getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", sort, setLoading);
+        }
+    }, [authorized])
 
-    useEffect(() => {
-        console.log(LcCounts);
-
-        console.log(LcReport);
-    }, [])
 
     const columnOrder: ColOrder[] = [
         { column: "first_name", Label: "First Name", isSortable: false },
@@ -126,7 +138,6 @@ const LearningCircles = () => {
     useEffect(() => {
         // Create a mapping of organisations to unique learning circles
         const orgCircleMap: { [key: string]: Set<string> } = {};
-        console.log(LcReport)
         LcReport.forEach(item => {
             const { organisation, circle_name } = item;
 
@@ -153,7 +164,7 @@ const LearningCircles = () => {
 
     return (
         <>
-            <div className={styles.dashboardContainer}>
+            {authorized ? <div className={styles.dashboardContainer}>
                 <div className={styles.dashboardContent}>
                     <p className={styles.heading}>Learning Circles & Interest Group Counts</p>
                     <div className={styles.countsContainer}>
@@ -246,7 +257,8 @@ const LearningCircles = () => {
 
                     </div>
                 </div>
-            </div>
+            </div> : (key ? <div className={styles.dashboardContainer}> <p className={styles.heading}>You are not authorized to view this page</p></div> : <div className={styles.dashboardContainer}> <p className={styles.heading}>Please enter the key to view this page</p></div>)}
+
         </>
     )
 }
