@@ -18,6 +18,7 @@ type Props = {
     loading: boolean;
     setIsLoading: Dispatch<SetStateAction<boolean>>;
     toast: (options?: UseToastOptions | undefined) => ToastId;
+    title?: string;
 };
 
 const CreateOrUpdateDepartmentModal = ({
@@ -26,7 +27,8 @@ const CreateOrUpdateDepartmentModal = ({
     setDepartments,
     loading,
     setIsLoading,
-    toast
+    toast,
+    title,
 }: Props) => {
     return (
         <Modal
@@ -65,9 +67,8 @@ const CreateOrUpdateDepartmentModal = ({
                                 label={`${id ? "New " : ""}Name`}
                                 name="title"
                                 type="text"
-                                placeholder={`Enter ${
-                                    id ? "new " : ""
-                                }department name`}
+                                value={title}
+                                placeholder={`${id ? title : "Enter New Department Name"}`}
                                 style={{
                                     width:
                                         window.innerWidth < 426
