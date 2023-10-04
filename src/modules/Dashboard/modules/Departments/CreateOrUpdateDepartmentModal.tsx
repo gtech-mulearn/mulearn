@@ -44,7 +44,8 @@ const CreateOrUpdateDepartmentModal = ({
                 <MuLoader />
             ) : (
                 <Formik
-                    initialValues={{ title: "" }}
+                    enableReinitialize={true}
+                    initialValues={{ title: title || "" }}
                     validationSchema={Yup.object({
                         title: Yup.string()
                             .max(50, "Must be 50 characters or less")
@@ -63,12 +64,12 @@ const CreateOrUpdateDepartmentModal = ({
                 >
                     {({ handleSubmit }) => (
                         <Form onSubmit={handleSubmit}>
+
                             <FormikTextInput
-                                label={`${id ? "New " : ""}Name`}
+                                label={`${id ? "Department " : "New "}Name`}
                                 name="title"
                                 type="text"
-                                value={title}
-                                placeholder={`${id ? title : "Enter New Department Name"}`}
+                                placeholder="Enter Department Name"
                                 style={{
                                     width:
                                         window.innerWidth < 426

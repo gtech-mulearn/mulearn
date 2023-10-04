@@ -23,7 +23,7 @@ function ManageRoles() {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(20);
-    const [sort, setSort] = useState("");
+    const [sort, setSort] = useState("-created_at");
     const [isLoading, setIsLoading] = useState(false);
     const firstFetch = useRef(true);
     //Modal
@@ -245,7 +245,7 @@ function ManageRoles() {
                           return (
                               <Modal
                                   onClose={setCurrModal}
-                                  icon={icons.cross}
+                                  icon={icons.tick}
                                   header="Edit Role"
                                   paragraph="Enter the new values for this role"
                               >
