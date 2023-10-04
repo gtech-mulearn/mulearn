@@ -51,11 +51,14 @@ const ManageRolesCreateModal = (props: Props) => {
         >
             <Form className={styles.Form}>
                 <FormikTextInput
+                    label="Role Name"
                     name="title"
                     type="text"
                     placeholder="Enter a title"
+                    required
                 />
                 <FormikTextInput
+                    label="Description"
                     name="description"
                     type="text"
                     placeholder="Enter a description"

@@ -10,13 +10,13 @@
 
 .inputBox span {
 	font-weight: bold;
-	color: black;
+	color: var(--black);
 }
 
 .inputBox input {
 	border: none;
 	width: 100%;
-	color: black;
+	color: var(--black);
 	border-radius: 6px;
 	background-color: #f5f7fb;
 	outline: none;

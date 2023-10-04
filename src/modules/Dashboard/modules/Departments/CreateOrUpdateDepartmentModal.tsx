@@ -70,6 +70,7 @@ const CreateOrUpdateDepartmentModal = ({
                                 name="title"
                                 type="text"
                                 placeholder="Enter Department Name"
+                                required
                                 style={{
                                     width:
                                         window.innerWidth < 426

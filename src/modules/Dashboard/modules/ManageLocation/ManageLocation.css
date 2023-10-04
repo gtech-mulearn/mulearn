@@ -124,7 +124,7 @@
     gap: 1rem;
     align-items: center;
     p {
-        color: black;
+        color: var(--black);
         font-size: 1rem;
     }
     h3 {

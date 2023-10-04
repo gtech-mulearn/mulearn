@@ -75,7 +75,7 @@
 }
 .connectedDevices .lastseen  p{
     font-size: .8rem;
-    color: black;
+    color: var(--black);
 }
 .connectedDevices .google{
     display: flex;
@@ -99,7 +99,7 @@
 .connectedDevices .button p{
     font-size: .8rem;
     margin-left: .2rem;
-    color: black;
+    color: var(--black);
 }
 
 
