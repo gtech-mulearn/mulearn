@@ -34,17 +34,20 @@ const TableTop = (props: Props) => {
     };
 
     return (
-        <div className={styles.container}>
-            <div className={styles.body}>
+        <>
+
+            {props.onSearchText && <div className={styles.container}>
+                <div className={styles.body}>
                     <SearchBar onSearch={handleData} />
                     {props.CSV && (
                         <PowerfulButton onClick={() => handleClick()} disabled={isLoading} >
-                            {isLoading ? <ClipLoader size={20} color="#fff"  />  : <HiDownload />}
-                            CSV 
+                            {isLoading ? <ClipLoader size={20} color="#fff" /> : <HiDownload />}
+                            CSV
                         </PowerfulButton>
                     )}
-            </div>
-        </div>
+                </div>
+            </div>}
+        </>
     );
 };
 

@@ -76,7 +76,7 @@ const Refer = () => {
                             like-minded enthusiasts!
                         </b>
                         <div className={styles.learningCircleLandingPageButton}>
-                            <PowerfulButton
+                            {/* <PowerfulButton
                                 className={styles.createBtn}
                                 onClick={() => { setOpen(true); setInviteType("Mucoin") }}
                                 style={{
@@ -88,7 +88,7 @@ const Refer = () => {
                             >
                                 <RiSendPlaneLine />
                                 Invite(MuCoin)
-                            </PowerfulButton>
+                            </PowerfulButton> */}
                             <PowerfulButton
                                 className={styles.createBtn}
                                 onClick={() => { setOpen(true); setInviteType("Karma") }}

@@ -1,0 +1,78 @@
+.dashboardContainer {
+    background-color: #eef2ff;
+    padding: 2rem;
+}
+
+.dashboardContent {
+    max-width: 1600px;
+    margin: auto;
+}
+
+.countsContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.lcCount,
+.studentsInvoled {
+    padding: 1rem;
+    margin: 0.5rem;
+    width: 300px;
+    height: 118px;
+    justify-content: center;
+    border-radius: 13px;
+    background: #fff;
+    margin-left: 0;
+    margin-top: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.label {
+    font-family: Plus Jakarta Sans, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+}
+
+.count {
+    color: #000;
+
+    font-family: Plus Jakarta Sans;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.heading {
+    color: #292929;
+    font-family: Plus Jakarta Sans;
+    font-size: 30px;
+    margin-top: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: normal;
+}
+
+.studentsInvoled span {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #464646;
+}
+
+.chartContainer {
+    margin-top: 2rem;
+    max-width: 1520px;
+    background-color: #fff;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+}

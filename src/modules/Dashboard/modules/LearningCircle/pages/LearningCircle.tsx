@@ -62,6 +62,7 @@ const LearningCircle = (props: Props) => {
     const [openRemoveConfrim, setOpenRemoveConfirm] = useState(false);
     const [resourceLink, setResourceLink] = useState("");
     const [username, setUsername] = useState("");
+    const [deleteUserId, setDeleteUserId] = useState<string>("");
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -110,7 +111,7 @@ const LearningCircle = (props: Props) => {
 
 
     useEffect(() => {
-        if (lc && !lc.is_member) {
+        if (lc && !lc.is_member && lc?.circle_code?.length > 0) {
             toast({
                 title: "Access Denied",
                 description: "Make sure you are a member of that circle",
@@ -184,9 +185,6 @@ const LearningCircle = (props: Props) => {
     };
     function handleRemove(circle: string | undefined, id: string): void {
         removeMember(circle, id, navigate);
-        setTimeout(() => {
-            navigate(`/dashboard/learning-circle/details/${id}`);
-        }, 4000);
     }
 
     function avatarValidate(member: LcMembers) {
@@ -738,20 +736,14 @@ const LearningCircle = (props: Props) => {
                                                 {lc.is_lead &&
                                                     !member.is_lead && (
                                                         <div>
-                                                            {/* <RiDeleteBin5Line
-                                                            data-tooltip-id="Icon"
-                                                            data-tooltip-content="leave circle"
-                                                            onClick={() => { handleRemove(id, member.id) }}
-                                                        /> */}
                                                             <RxCrossCircled
                                                                 size={24}
                                                                 onClick={() => {
                                                                     setOpenRemoveConfirm(
                                                                         true
                                                                     );
-                                                                    setUsername(
-                                                                        member?.username
-                                                                    );
+                                                                    setUsername(member?.username)
+                                                                    setDeleteUserId(member?.id)
                                                                 }}
                                                             />
                                                             {openRemoveConfrim && (
@@ -759,10 +751,11 @@ const LearningCircle = (props: Props) => {
                                                                     click={() => {
                                                                         handleRemove(
                                                                             id,
-                                                                            member.id
+                                                                            deleteUserId
                                                                         );
                                                                     }}
-                                                                    content={`Are you want to remove ${username} from ${lc.name} ?`}
+
+                                                                    content={`Are you want to remove ${username} from ${lc.name}?`}
                                                                     heading={
                                                                         "Remove user from Learning Cicle"
                                                                     }
