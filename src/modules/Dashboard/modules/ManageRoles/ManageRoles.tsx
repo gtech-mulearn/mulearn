@@ -16,6 +16,7 @@ import ManageRolesEditModal from "./components/ManageRolesEditModal";
 import ManageRolesCreateModal from "./components/ManageRolesCreateModal";
 import { getRoles } from "../../../../modules/Common/Authentication/services/onboardingApis";
 import ManageUsers from "./components/ManageUsers";
+import { Blank } from "@/MuLearnComponents/Table/Blank";
 
 function ManageRoles() {
     const [data, setData] = useState<any[]>([]);
@@ -24,7 +25,6 @@ function ManageRoles() {
     const [perPage, setPerPage] = useState(20);
     const [sort, setSort] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const navigate = useNavigate();
     const firstFetch = useRef(true);
     //Modal
     const [currRoleID, setCurrRoleID] = useState("");
@@ -332,7 +332,7 @@ function ManageRoles() {
                                 />
                             )}
                         </div>
-                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                        <Blank />
                     </Table>
                 </>
             )}

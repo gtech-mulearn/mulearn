@@ -26,13 +26,10 @@ interface CollegeFormProps {
 const useFormData = (props: CollegeFormProps) => {
     const [inputName, setInputName] = useState("");
     const [inputCode, setInputCode] = useState("");
-
-    const [affiliation, setAffiliation] = useState<any>("");
     const [country, setCountry] = useState<any>("");
     const [state, setState] = useState<any>("");
     const [district, setDistrict] = useState<any>("");
     const [zone, setZone] = useState<any>("");
-    const [affiliatedUniversity, setAffiliatedUniversity] = useState("");
 
     const [affiliationData, setAffiliationData] = useState<any[]>([]);
     const [countryData, setCountryData] = useState<any[]>([]);
@@ -180,7 +177,6 @@ const useFormData = (props: CollegeFormProps) => {
 
     const handleAffiliationChange = (option: any) => {
         if (option) {
-            setAffiliation(option);
             setSelectedAffiliation(option.value as string);
         }
     };

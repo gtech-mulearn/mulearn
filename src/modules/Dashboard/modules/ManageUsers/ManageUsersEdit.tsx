@@ -98,8 +98,6 @@ const ManageUsersEdit = (props: Props) => {
         getManageUsersDetails(id, setData);
     }, []);
 
-
-
     useEffect(() => {
         //useEffect to recall lower demographic levels if previous level exist
         if (data?.country && state[0].value == "")
@@ -151,15 +149,12 @@ const ManageUsersEdit = (props: Props) => {
                             values.department ?? undefined,
                             values.graduation_year ?? undefined,
                             values.role,
-                            values.interest ?? undefined, // use nullish coalescing operator to provide default value of undefined
+                            values.interest ?? undefined // use nullish coalescing operator to provide default value of undefined
                         );
-
-                        // navigate("/dashboard/manage-users");
                     }}
                 >
                     <Form>
                         <div className={usrStyles.container}>
-
                             <div className={usrStyles.TextInputContainer}>
                                 {formikProps.inputs?.map((input, index) => (
                                     <FormikTextInput {...input} key={index} />
@@ -185,8 +180,8 @@ const ManageUsersEdit = (props: Props) => {
                                 {data?.roles.includes(
                                     roleStr(roles.ENABLER)
                                 ) && (
-                                        <FormikTextInput {...formikProps.enabler} />
-                                    )}
+                                    <FormikTextInput {...formikProps.enabler} />
+                                )}
                             </div>
                         </div>
                         <div className={styles.btn_container}>

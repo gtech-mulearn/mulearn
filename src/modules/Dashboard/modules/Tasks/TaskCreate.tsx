@@ -17,9 +17,7 @@ import { useEffect, useState } from "react";
 import { AxiosError } from "axios";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
-type Props = {};
-
-const TaskCreate = (props: Props) => {
+const TaskCreate = () => {
     const navigate = useNavigate();
     const toast = useToast();
     const [uuidData, setuuidData] = useState<{ [index: string]: any[] } | null>(
@@ -53,8 +51,10 @@ const TaskCreate = (props: Props) => {
         usage_count: Yup.number()
             .truncate()
             .required("Mention the number of uses"),
-        active: Yup.boolean(),
-        variable_karma: Yup.boolean(),
+
+        active: Yup.boolean().required("Select an option"),
+        variable_karma: Yup.boolean().required("Select an option"),
+
         description: Yup.string()
             .min(4, "Too Short!")
             .max(100, "Too Long!")
@@ -160,50 +160,49 @@ const TaskCreate = (props: Props) => {
                             placeholder="..."
                             required
                         />
-                        <FormikReactSelect
-                            label="Channel"
-                            name="channel_id"
-                            required
-                            options={uuidData?.channel.map(val => ({
-                                value: val.id,
-                                label: val.name
-                            }))}
-                        />
-                        <FormikReactSelect
-                            label="Type"
-                            name="type_id"
-                            required
-                            options={uuidData?.type.map(val => ({
-                                value: val.id,
-                                label: val.title
-                            }))}
-                        />
-                        <FormikReactSelect
-                            label="Level"
-                            name="level_id"
-                            options={uuidData?.level.map(val => ({
-                                value: val.id,
-                                label: val.name
-                            }))}
-                        />
-
-                        <FormikReactSelect
-                            label="IG"
-                            name="ig_id"
-                            options={uuidData?.ig.map(val => ({
-                                value: val.id,
-                                label: val.name
-                            }))}
-                        />
-
-                        <FormikReactSelect
+                        <FormikSelect label="Channel" name="channel_id">
+                            <option value="">Select an option</option>
+                            {uuidData?.channel.map(val => {
+                                return (
+                                    <option value={val.id}>{val.name}</option>
+                                );
+                            })}
+                        </FormikSelect>
+                        <FormikSelect label="Type" name="type_id">
+                            <option value="">Select an option</option>
+                            {uuidData?.type.map(val => {
+                                return (
+                                    <option value={val.id}>{val.title}</option>
+                                );
+                            })}
+                        </FormikSelect>
+                        <FormikSelect label="Level" name="level_id">
+                            <option value="">Select an option</option>
+                            {uuidData?.level.map(val => {
+                                return (
+                                    <option value={val.id}>{val.name}</option>
+                                );
+                            })}
+                        </FormikSelect>
+                        <FormikSelect label="IG" name="ig_id">
+                            <option value="">Select an option</option>
+                            {uuidData?.ig.map(val => {
+                                return (
+                                    <option value={val.id}>{val.name}</option>
+                                );
+                            })}
+                        </FormikSelect>
+                        <FormikSelect
                             label="Organization"
                             name="organization_id"
-                            options={uuidData?.organization.map(val => ({
-                                value: val.id,
-                                label: val.title
-                            }))}
-                        />
+                        >
+                            <option value="">Select an option</option>
+                            {uuidData?.organization.map(val => {
+                                return (
+                                    <option value={val.id}>{val.title}</option>
+                                );
+                            })}
+                        </FormikSelect>
                         <div className={styles.btn_container}>
                             <button
                                 className={styles.btn_cancel}
