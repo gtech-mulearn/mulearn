@@ -23,25 +23,15 @@ const schema = Yup.object({
     first_name: Yup.string()
         .max(20, "Must be 20 characters or less")
         .required("Required"),
-    last_name: Yup.string()
-        .max(20, "Must be 20 characters or less")
-        .required("Required"),
+    last_name: Yup.string().max(20, "Must be 20 characters or less"),
     email: Yup.string().email("Invalid email address").required("Required"),
     mobile: Yup.string()
         .length(10, "Invalid mobile number")
         .required("Required"),
-    college: Yup.string().required("Required"),
-    community: Yup.array().required("Required"),
-    company: Yup.string().required("Required"),
-    department: Yup.string()
-        .min(3, "Invalid mobile number")
-        .required("Required"),
+    community: Yup.array(),
     graduation_year: Yup.string()
         .length(4, "Invalid graduation_year")
-        .required("Required"),
-    country: Yup.string().optional(),
-    state: Yup.string().optional(),
-    district: Yup.string().optional(),
+        .optional(),
     interest: Yup.array().required("Required"),
     role: Yup.array().required("Required")
 });
@@ -224,7 +214,7 @@ const inputs = (
         enabler: {
             label: "User Graduation Year",
             name: "graduation_year",
-            type: "text",
+            type: "number",
             placeholder: "Enter a graduation year"
         }
     };
@@ -238,22 +228,22 @@ const inputs = (
             ? arrayIntersection(
                   user.organizations,
                   college.map(item => item.value)
-              )[0] || "null"
-            : "null",
+              )[0] || null
+            : null,
         community: user?.organizations
             ? arrayIntersection(
                   user.organizations,
                   community.map(item => item.id)
               )
-            : ["null"],
+            : [],
         company: user?.organizations
             ? arrayIntersection(
                   user.organizations,
                   company.map(item => item.id)
-              )[0] || "null"
-            : "null",
-        department: user?.department || "null",
-        graduation_year: user?.graduation_year || "null",
+              )[0] || null
+            : null,
+        department: user?.department || null,
+        graduation_year: user?.graduation_year || null,
         country: user?.country || "",
         state: user?.state || "",
         district: user?.district || "",
