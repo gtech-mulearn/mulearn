@@ -1,14 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useToast } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import FormikReactSelect, {
-    FormikTextInput
-} from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import FormikReactSelect from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import styles from "./Modal.module.css";
 import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css";
-import { type } from "os";
 import { editCollegeLevels } from "../apis";
 import { levelCount } from "../Utisl";
 
@@ -57,11 +52,15 @@ const CollegeLevelsEdit = (props: Props) => {
                         onClick={() => {
                             props.onClose(null);
                         }}
-                    >Decline</PowerfulButton>
+                    >
+                        Decline
+                    </PowerfulButton>
                     <PowerfulButton
                         className={`${mustyles.btn} ${styles.confirm}`}
                         type="submit"
-                    >Confirm</PowerfulButton>
+                    >
+                        Confirm
+                    </PowerfulButton>
                 </div>
             </Form>
         </Formik>

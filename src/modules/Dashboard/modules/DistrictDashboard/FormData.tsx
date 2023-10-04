@@ -1,13 +1,7 @@
-import React from "react";
 import Select from "react-select";
 import Textfield from "@/MuLearnComponents/TextField/Textfield";
 import "./Organizations.scss";
 import { useFormData } from "./FormDataUtils";
-
-interface Option {
-    value: string;
-    label: string;
-}
 
 interface CollegeFormProps {
     isCreate: boolean;

@@ -13,6 +13,7 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./InterestGroup.module.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
+import { Blank } from "@/MuLearnComponents/Table/Blank";
 import CreateOrUpdateModal from "./CreateOrUpdateModal";
 
 interface IgDetails {
@@ -249,7 +250,7 @@ function InterestGroup() {
                                 />
                             )}
                         </div>
-                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                        <Blank />
                     </Table>
                 </>
             )}
