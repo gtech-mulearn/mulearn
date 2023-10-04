@@ -207,7 +207,7 @@ const LearningCircles = () => {
 
                     </div>
 
-                    <div className={styles.chartContainer}>
+                    {/* <div className={styles.chartContainer}>
                         <Chart
                             width={"100%"}
                             height={"400px"}
@@ -220,7 +220,7 @@ const LearningCircles = () => {
                                 },
                             }}
                         />
-                    </div>
+                    </div> */}
 
 
                     <div className={styles.tableContainer}>
