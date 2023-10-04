@@ -91,13 +91,7 @@ export const Marketplace = (props: Props) => {
                                 <img src={img} alt="" />
                                 <div className={styles.containerContent}>
                                     <div className={styles.containerContent1}>
-                                        <div
-                                            style={{
-                                                display: "flex",
-                                                flexDirection: "column",
-                                                alignItems: "flex-start"
-                                            }}
-                                        >
+                                        <div className={styles.firstdiv}>
                                             <h1>ChatGPT Pro</h1>
                                             <p>
                                                 Lorem Ipsum bla bla description

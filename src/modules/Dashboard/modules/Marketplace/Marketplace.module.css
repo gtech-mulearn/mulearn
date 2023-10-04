@@ -83,8 +83,22 @@
     flex-direction: column;
     align-items: flex-start;
 }
+.containerContent1 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 .containerContent1 > .coinss {
     display: flex;
+}
+.containerContent1 .firstdiv {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.containerContent1 .firstdiv h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 @media screen and (max-width: 500px) {
     .wrapper .topSectionWrapper .cont1 h1 {
