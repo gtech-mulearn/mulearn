@@ -122,9 +122,8 @@ export const Tasks = () => {
 
         //console.log(`Icon clicked for column: ${column}`);
     };
-    console.log(data);
+
     const handleEdit = (id: string | number | boolean) => {
-        console.log(id);
         navigate(`/dashboard/tasks/edit/${id}`);
     };
 

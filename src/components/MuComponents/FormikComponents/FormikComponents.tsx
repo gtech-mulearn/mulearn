@@ -4,7 +4,10 @@ import React, {
     CSSProperties,
     ClassAttributes,
     HTMLAttributes,
-    TextareaHTMLAttributes
+    TextareaHTMLAttributes,
+    useEffect,
+    useRef,
+    useState
 } from "react";
 import Select, { Props as SelectProps } from "react-select";
 import { propNames } from "@chakra-ui/react";
@@ -25,9 +28,12 @@ export const FormikTextInput: FC<InputFormik & { label?: string }> = ({
     // which we can spread on <input>. We can use field meta to show an error
     // message if the field is invalid and it has been touched (i.e. visited)
     const [field, meta] = useField(props);
+
     return (
         <div className={styles.inputBox}>
-            <span>{label}</span>
+            <span>
+                {label} <sup>{props.required ? " *" : ""}</sup>{" "}
+            </span>
             <input className="text-input" {...field} {...props} />
             {meta.touched && meta.error ? (
                 <div className={styles.error}>{meta.error}</div>
@@ -52,7 +58,10 @@ export const FormikSelect = ({ label, ...props }: any) => {
     const [field, meta] = useField(props);
     return (
         <div className={styles.inputBox}>
-            <span>{label}</span>
+            <span>
+                {label}
+                <sup>{props.required ? " *" : ""}</sup>
+            </span>
             <select {...field} {...props} />
             {meta.touched && meta.error ? (
                 <div className={styles.error}>{meta.error}</div>
@@ -148,6 +157,7 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
         <div className={styles.InputSet}>
             <label className={styles.formLabel} htmlFor={name}>
                 {label}
+                <sup>{rest.required ? " *" : ""}</sup>
             </label>
             <Select
                 {...rest}
@@ -265,5 +275,28 @@ export const FormikReactSelectCustom: React.FC<
                 <div className="error">{meta.error}</div>
             )}
         </>
+    );
+};
+
+export const FormikCheckBox = ({ label, ...props }: any) => {
+    const [field, meta, helper] = useField(props);
+
+    //Work around :)
+    const [checked, setChecked] = useState(meta.initialValue);
+
+    return (
+        <div className={styles.checkBox}>
+            <label className={styles.formLabel}>{label}</label>
+            <input
+                type="checkbox"
+                {...field}
+                {...props}
+                checked={checked}
+                onChange={() => setChecked(!checked)}
+            />
+            {meta.touched && meta.error ? (
+                <div className={styles.error}>{meta.error}</div>
+            ) : null}
+        </div>
     );
 };

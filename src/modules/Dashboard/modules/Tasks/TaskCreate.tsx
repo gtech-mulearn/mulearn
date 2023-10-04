@@ -3,11 +3,15 @@ import { createTask, getUUID } from "./TaskApis";
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import {
+import FormikReactSelect, {
+    FormikCheckBox,
     FormikSelect,
     FormikTextInput
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { AxiosError } from "axios";
@@ -47,18 +51,21 @@ const TaskCreate = () => {
         usage_count: Yup.number()
             .truncate()
             .required("Mention the number of uses"),
+
         active: Yup.boolean().required("Select an option"),
         variable_karma: Yup.boolean().required("Select an option"),
+
         description: Yup.string()
             .min(4, "Too Short!")
             .max(100, "Too Long!")
             .required("A description is required"),
         channel_id: Yup.string().required("Select a Channel"),
         type_id: Yup.string().required("Select a Type"),
-        level_id: Yup.string(),
-        ig_id: Yup.string(),
-        organization_id: Yup.string()
+        level_id: Yup.string().nullable(),
+        ig_id: Yup.string().nullable(),
+        organization_id: Yup.string().nullable()
     });
+
     if (!uuidData) return <MuLoader />;
 
     return (
@@ -72,8 +79,8 @@ const TaskCreate = () => {
                         title: "",
                         karma: "",
                         usage_count: "",
-                        active: "",
-                        variable_karma: "",
+                        active: false,
+                        variable_karma: false,
                         description: "",
                         channel_id: "",
                         type_id: "",
@@ -88,8 +95,8 @@ const TaskCreate = () => {
                             values.title,
                             values.karma,
                             values.usage_count,
-                            values.active,
-                            values.variable_karma,
+                            values.active ? "True" : "False",
+                            values.variable_karma ? "True" : "False ",
                             values.description,
                             values.channel_id,
                             values.type_id,
@@ -110,12 +117,14 @@ const TaskCreate = () => {
                             name="hashtag"
                             type="text"
                             placeholder="#example"
+                            required
                         />
                         <FormikTextInput
                             label="Title"
                             name="title"
                             type="text"
                             placeholder="Enter the title"
+                            required
                         />
                         <FormikTextInput
                             label="Karma"
@@ -128,25 +137,28 @@ const TaskCreate = () => {
                             name="usage_count"
                             type="number"
                             placeholder="No. of times to be used"
+                            required
                         />
-                        <FormikSelect label="Active" name="active">
-                            <option value="">Select an option</option>
-                            <option value="1">True</option>
-                            <option value="0">False</option>
-                        </FormikSelect>
-                        <FormikSelect
-                            label="Variable Karma"
-                            name="variable_karma"
+
+                        <div
+                            style={{
+                                display: "flex",
+                                justifyContent: "space-evenly"
+                            }}
                         >
-                            <option value="">Select an option</option>
-                            <option value="1">True</option>
-                            <option value="0">False</option>
-                        </FormikSelect>
+                            <FormikCheckBox label="Active" name="active" />
+                            <FormikCheckBox
+                                label="Variable Karma"
+                                name="variable_karma"
+                            />
+                        </div>
+
                         <FormikTextInput
                             label="Description"
                             name="description"
                             type="text"
                             placeholder="..."
+                            required
                         />
                         <FormikSelect label="Channel" name="channel_id">
                             <option value="">Select an option</option>
@@ -197,7 +209,9 @@ const TaskCreate = () => {
                                 onClick={() => {
                                     navigate("/dashboard/tasks");
                                 }}
-                            >Decline</button>
+                            >
+                                Decline
+                            </button>
                             <button type="submit" className={styles.btn_submit}>
                                 Confirm
                             </button>

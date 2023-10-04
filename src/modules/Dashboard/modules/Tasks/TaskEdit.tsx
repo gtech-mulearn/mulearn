@@ -1,6 +1,7 @@
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { Form, Formik } from "formik";
-import {
+import FormikReactSelect, {
+    FormikCheckBox,
     FormikSelect,
     FormikTextInput
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
@@ -11,6 +12,7 @@ import { taskEditSchema, useFormikData } from "./TaskEditUtils";
 const TaskEdit = () => {
     const { navigate, initialValues, submitHandler, loading, formStructure } =
         useFormikData();
+    console.log(initialValues);
     return (
         <>
             {loading ? (
@@ -28,35 +30,53 @@ const TaskEdit = () => {
                             onSubmit={submitHandler}
                         >
                             <Form className={styles.inputContainer}>
-                                {formStructure?.map((val, index) => {
-                                    if (val.element === "input") {
+                                {formStructure
+                                    .filter(val => val.element === "input")
+                                    ?.map((val, index) => {
                                         return (
                                             <FormikTextInput
                                                 label={val.label}
                                                 name={val.name}
                                                 type={val.type}
                                                 placeholder={val.placeholder}
+                                                required={val.required}
+                                                key={val.label}
                                             />
                                         );
-                                    }
-                                    if (val.element === "select") {
-                                        return (
-                                            <FormikSelect
+                                    })}
+
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "space-evenly"
+                                    }}
+                                >
+                                    {formStructure
+                                        .filter(
+                                            val => val.element === "checkbox"
+                                        )
+                                        .map(val => (
+                                            <FormikCheckBox
                                                 label={val.label}
                                                 name={val.name}
-                                                disabled={val.disabled}
-                                            >
-                                                {val.options?.map(option => (
-                                                    <option
-                                                        value={option.value}
-                                                    >
-                                                        {option.label}
-                                                    </option>
-                                                ))}
-                                            </FormikSelect>
+                                                key={val.label}
+                                            />
+                                        ))}
+                                </div>
+                                {formStructure
+                                    .filter(val => val.element === "select")
+                                    ?.map((val, index) => {
+                                        return (
+                                            <FormikReactSelect
+                                                label={val.label}
+                                                name={val.name}
+                                                isDisabled={val.disabled}
+                                                required={val.required}
+                                                options={val.options!}
+                                                key={val.label}
+                                            />
                                         );
-                                    }
-                                })}
+                                    })}
 
                                 <div className={styles.btn_container}>
                                     <button
@@ -64,7 +84,9 @@ const TaskEdit = () => {
                                         onClick={() => {
                                             navigate("/dashboard/tasks");
                                         }}
-                                    >Decline</button>
+                                    >
+                                        Decline
+                                    </button>
                                     <button
                                         type="submit"
                                         className={styles.btn_submit}
