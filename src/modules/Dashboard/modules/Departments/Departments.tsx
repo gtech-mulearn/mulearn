@@ -23,6 +23,7 @@ const Departments = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [perPage, setPerPage] = useState(10);
     const [sort, setSort] = useState("");
+    const [title, setTitle] = useState("");
 
     const [choosenDeptId, setChoosenDeptId] = useState<string | null>(null);
 
@@ -64,6 +65,10 @@ const Departments = () => {
 
     const handleEdit = async (id: string | number | boolean) => {
         setChoosenDeptId(id as string);
+        const department = departments.find(dept => dept.id === id);
+        if (department) {
+            setTitle(department.title);
+        }
         setCurrModal(modalTypes.edit);
     };
 
@@ -124,13 +129,14 @@ const Departments = () => {
                     if (currModal === modalTypes.edit)
                         return choosenDeptId
                             ? CreateOrUpdateDepartmentModal({
-                                  id: choosenDeptId!,
-                                  setCurrModal: setCurrModal,
-                                  setDepartments: setDepartments,
-                                  loading: isLoading,
-                                  setIsLoading: setIsLoading,
-                                  toast: toast
-                              })
+                                id: choosenDeptId!,
+                                setCurrModal: setCurrModal,
+                                setDepartments: setDepartments,
+                                loading: isLoading,
+                                setIsLoading: setIsLoading,
+                                toast: toast,
+                                title: title
+                            })
                             : null;
                 })()}
             <div className={styles.createBtnContainer}>
@@ -147,7 +153,7 @@ const Departments = () => {
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
-                        // CSV={}
+                    // CSV={}
                     />
                     <Table
                         rows={departments}
