@@ -30,8 +30,8 @@ const schema = Yup.object({
         .required("Required"),
     community: Yup.array(),
     graduation_year: Yup.string()
-        .length(4, "Invalid graduation_year")
-        .optional(),
+        .nullable()
+        .length(4, "Invalid graduation_year"),
     interest: Yup.array().required("Required"),
     role: Yup.array().required("Required")
 });
