@@ -399,11 +399,11 @@
     }
 
     .LClandingPageEarth .totalCount div .count {
-        font-size: 2rem;
+        font-size: 1.5rem;   
     }
 
     .LClandingPageEarth .totalCount div .count p {
-        font-size: .8rem;
+        font-size: .4rem;
     }
     
     .LClandingPageEarth img {
@@ -423,7 +423,7 @@
 
 }
 
-@media (width<=350px) {
+@media (width<=380px) {
     .LClandingPageHero .dash {
         top: -58%;
         border-radius:35%;   
@@ -435,7 +435,6 @@
     }
     .LClandingPageEarth .totalCount div {
         gap: .5rem;
-        margin-left: .5rem;
     }
 
     .LClandingPageEarth .totalCount div .count {
@@ -451,6 +450,12 @@
         padding-left: .8rem;
     }
 
+}
+
+@media (width<=380px){
+    .LClandingPageEarth .totalCount div .count p {
+        font-size: .3rem;
+    } 
 }
 
 
