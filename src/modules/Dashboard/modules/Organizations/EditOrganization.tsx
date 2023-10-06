@@ -31,7 +31,7 @@ function EditOrganization() {
                 setSelectedState(data.state);
                 setSelectedZone(data.zone);
                 setSelectedDistrict(data.district);
-                setSelectedAffiliation(data.affiliation);
+                setSelectedAffiliation(data.affiliation_name);
                 setLoading(false);
             })
             .catch(error => {
