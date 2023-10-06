@@ -27,7 +27,10 @@ const taskEditSchema = Yup.object().shape({
     type_id: Yup.string().required("Select a type"),
     level_id: Yup.string().nullable(),
     ig_id: Yup.string().nullable(),
-    organization_id: Yup.string().nullable()
+    organization_id: Yup.string().nullable(),
+    desc: Yup.string()
+        .max(100, "Too Long!")
+        .required("A description is required")
 });
 
 type IVType = {
@@ -75,6 +78,7 @@ const useFormikData = () => {
             values.level_id,
             values.ig_id,
             values.organization_id,
+            values.desc,
             id,
             toast
         );
@@ -94,7 +98,8 @@ const useFormikData = () => {
         type_id: data.type || "",
         level_id: data.level || "",
         ig_id: data.ig || "",
-        organization_id: data.org || ""
+        organization_id: data.org || "",
+        desc: data.description || ""
     };
 
     const formStructure = [
@@ -104,6 +109,14 @@ const useFormikData = () => {
             label: "Hashtag",
             type: "text",
             placeholder: "#example",
+            required: true
+        },
+        {
+            element: "input",
+            label: "Description",
+            name: "desc",
+            type: "text",
+            placeholder: "...",
             required: true
         },
         {
