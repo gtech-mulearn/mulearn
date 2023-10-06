@@ -18,6 +18,7 @@ type Props = {
     loading: boolean;
     setIsLoading: Dispatch<SetStateAction<boolean>>;
     toast: (options?: UseToastOptions | undefined) => ToastId;
+    title?: string;
 };
 
 const CreateOrUpdateDepartmentModal = ({
@@ -26,7 +27,8 @@ const CreateOrUpdateDepartmentModal = ({
     setDepartments,
     loading,
     setIsLoading,
-    toast
+    toast,
+    title,
 }: Props) => {
     return (
         <Modal
@@ -42,7 +44,8 @@ const CreateOrUpdateDepartmentModal = ({
                 <MuLoader />
             ) : (
                 <Formik
-                    initialValues={{ title: "" }}
+                    enableReinitialize={true}
+                    initialValues={{ title: title || "" }}
                     validationSchema={Yup.object({
                         title: Yup.string()
                             .max(50, "Must be 50 characters or less")
@@ -61,13 +64,13 @@ const CreateOrUpdateDepartmentModal = ({
                 >
                     {({ handleSubmit }) => (
                         <Form onSubmit={handleSubmit}>
+
                             <FormikTextInput
-                                label={`${id ? "New " : ""}Name`}
+                                label={`${id ? "Department " : "New "}Name`}
                                 name="title"
                                 type="text"
-                                placeholder={`Enter ${
-                                    id ? "new " : ""
-                                }department name`}
+                                placeholder="Enter Department Name"
+                                required
                                 style={{
                                     width:
                                         window.innerWidth < 426

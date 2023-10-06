@@ -34,10 +34,7 @@ const ManageRolesCreateModal = (props: Props) => {
                         async value => {
                             return !isRoleUnique(value, props.values);
                         }
-                    ),
-                description: Yup.string()
-                    .max(30, "Must be 30 characters or less")
-                    .required("Required")
+                    )
             })}
             onSubmit={values => {
                 (async () => {
@@ -54,11 +51,14 @@ const ManageRolesCreateModal = (props: Props) => {
         >
             <Form className={styles.Form}>
                 <FormikTextInput
+                    label="Role Name"
                     name="title"
                     type="text"
                     placeholder="Enter a title"
+                    required
                 />
                 <FormikTextInput
+                    label="Description"
                     name="description"
                     type="text"
                     placeholder="Enter a description"

@@ -13,7 +13,7 @@
     backdrop-filter: blur(.1rem);
     overscroll-behavior: contain;
 
-    color: black;
+    color: var(--black);
 
 }
 .Modal .Container {

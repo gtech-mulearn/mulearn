@@ -125,7 +125,7 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
     name,
     label,
     options,
-    addOnChange = () => {},
+    addOnChange = () => { },
     addStyles,
     ...rest
 }) => {

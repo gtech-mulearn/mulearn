@@ -137,7 +137,7 @@
                     cursor: pointer;
                     padding: 10px;
                     margin-right: -10px;
-                    color: black;
+                    color: var(--black);
                     /* background: white; */
                     /* border-radius: 50%; */
                     display: flex;
