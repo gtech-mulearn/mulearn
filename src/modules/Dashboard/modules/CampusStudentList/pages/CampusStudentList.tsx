@@ -96,6 +96,8 @@ const CampusStudentList = (props: Props) => {
                         await getStudentLevel(errHandler)
                     )
                 );
+
+                
             })();
         }
         firstFetch.current = false;
@@ -163,16 +165,16 @@ const CampusStudentList = (props: Props) => {
                 <div className={styles.campus_student_list_container}>
                     <div className={styles.content}>
                         <div className={styles.sec1}>
-                        <div className={styles.sec_clg}>
-                            <h1 className={styles.clg_name}>
-                                {campusData &&
-                                    campusData.college_name &&
-                                    titleCase(
-                                        campusData?.college_name?.toLowerCase()
-                                    )}
-                                ({campusData.campus_code})
-                            </h1>
-                        </div>
+                            <div className={styles.sec_clg}>
+                                <h1 className={styles.clg_name}>
+                                    {campusData &&
+                                        campusData.college_name &&
+                                        titleCase(
+                                            campusData?.college_name?.toLowerCase()
+                                        )}
+                                    ({campusData.campus_code})
+                                </h1>
+                            </div>
 
                             <div className={styles.details_card}>
 
@@ -192,7 +194,7 @@ const CampusStudentList = (props: Props) => {
                                     <div className={styles.card}>
                                         <h1>{campusData.total_members}</h1>
                                         <p>Total Members</p>
-                                </div>
+                                    </div>
                                 </div>
                                 <div className={styles.card_one}>
                                     <div className={styles.card}>
@@ -241,19 +243,8 @@ const CampusStudentList = (props: Props) => {
                 </div>
                 <div className={styles.container}>
                     <h2>Student Statistics</h2>
-                    <PieChart
+                    <BarChart
                         data={pieData}
-                        addOptions={{
-                            // is3D:true,
-                            pieSliceText: "value",
-                            colors: [
-                                "#3B57B2",
-                                "#456FF6",
-                                "#A9BEFF",
-                                "#6C8FFF",
-                                "#A9BEFF"
-                            ]
-                        }}
                     />
                 </div>
             </div>

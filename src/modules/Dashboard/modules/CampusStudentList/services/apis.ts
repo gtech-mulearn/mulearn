@@ -119,10 +119,10 @@ export const getStudentLevel = async (errHandler: (err: string) => void) => {
         const response = await privateGateway.get(
             dashboardRoutes.getStudentLevels
         );
-        const data = response.data.response.map((data: studentLevelType) => [
-            `level ${data.level}`,
-            data.students
-        ]);
+        const data = response.data.response
+            .sort((a: studentLevelType, b: studentLevelType) => a.level - b.level)
+            .map((data: studentLevelType) => [`Level ${data.level}`, data.students]);
+
         return data;
     } catch (err: any) {
         console.log(err);
