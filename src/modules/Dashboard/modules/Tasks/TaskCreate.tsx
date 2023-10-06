@@ -56,7 +56,6 @@ const TaskCreate = () => {
         variable_karma: Yup.boolean().required("Select an option"),
 
         description: Yup.string()
-            .min(4, "Too Short!")
             .max(100, "Too Long!")
             .required("A description is required"),
         channel_id: Yup.string().required("Select a Channel"),
@@ -95,8 +94,8 @@ const TaskCreate = () => {
                             values.title,
                             values.karma,
                             values.usage_count,
-                            values.active ? "True" : "False",
-                            values.variable_karma ? "True" : "False ",
+                            values.active,
+                            values.variable_karma,
                             values.description,
                             values.channel_id,
                             values.type_id,

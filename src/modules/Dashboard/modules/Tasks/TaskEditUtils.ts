@@ -25,9 +25,12 @@ const taskEditSchema = Yup.object().shape({
     variable_karma: Yup.boolean().required("Select an option"),
     channel_id: Yup.string().required("Select a channel"),
     type_id: Yup.string().required("Select a type"),
-    level_id: Yup.string().required("Select a Level"),
-    ig_id: Yup.string().required("Select an Interest Group"),
-    organization_id: Yup.string().required("Select an Organization")
+    level_id: Yup.string().nullable(),
+    ig_id: Yup.string().nullable(),
+    organization_id: Yup.string().nullable(),
+    desc: Yup.string()
+        .max(100, "Too Long!")
+        .required("A description is required")
 });
 
 type IVType = {
@@ -67,14 +70,15 @@ const useFormikData = () => {
             values.hashtag,
             values.title,
             values.karma,
-            values.active ? "True" : "False",
-            values.variable_karma ? "True" : "False",
+            values.active,
+            values.variable_karma,
             values.usage_count,
             values.channel_id,
             values.type_id,
             values.level_id,
             values.ig_id,
             values.organization_id,
+            values.desc,
             id,
             toast
         );
@@ -87,14 +91,15 @@ const useFormikData = () => {
         hashtag: data.hashtag || "",
         title: data.title || "",
         karma: data.karma || "",
-        active: data.active ? true : false,
-        variable_karma: data.variable_karma ? true : false,
+        active: data.active,
+        variable_karma: data.variable_karma,
         usage_count: data.usage_count || "",
         channel_id: data.channel || "",
         type_id: data.type || "",
         level_id: data.level || "",
         ig_id: data.ig || "",
-        organization_id: data.org || ""
+        organization_id: data.org || "",
+        desc: data.description || ""
     };
 
     const formStructure = [
@@ -104,6 +109,14 @@ const useFormikData = () => {
             label: "Hashtag",
             type: "text",
             placeholder: "#example",
+            required: true
+        },
+        {
+            element: "input",
+            label: "Description",
+            name: "desc",
+            type: "text",
+            placeholder: "...",
             required: true
         },
         {
