@@ -25,22 +25,27 @@ export const Tasks = () => {
 
     const columnOrder: ColOrder[] = [
         { column: "title", Label: "Title", isSortable: true },
-        { column: "hashtag", Label: "Hashtag", isSortable: false },
-        { column: "org", Label: "Organization", isSortable: false },
-        { column: "active", Label: "Active", isSortable: false },
+        { column: "hashtag", Label: "Hashtag", isSortable: true },
+        { column: "org", Label: "Organization", isSortable: true },
+        { column: "active", Label: "Active", isSortable: true },
         { column: "karma", Label: "Karma", isSortable: true },
-        { column: "usage_count", Label: "Usage Count", isSortable: false },
+        { column: "usage_count", Label: "Usage Count", isSortable: true },
         {
             column: "variable_karma",
             Label: "Variable Karma",
-            isSortable: false
+            isSortable: true
         },
+        { column: "description", Label: "Description", isSortable: true },
         { column: "updated_by", Label: "Updated By", isSortable: true },
         { column: "updated_at", Label: "Updated On", isSortable: true },
-        { column: "created_by", Label: "Created By", isSortable: false },
-        { column: "created_at", Label: "Created On", isSortable: true }
+        { column: "created_by", Label: "Created By", isSortable: true },
+        { column: "created_at", Label: "Created On", isSortable: true },
+        { column: "ig", Label: "Interest Group", isSortable: true },
+        { column: "level", Label: "Level", isSortable: true },
+        { column: "channel", Label: "Channel", isSortable: true },
+        { column: "event", Label: "Event", isSortable: true }
     ];
-
+    console.log(data);
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);

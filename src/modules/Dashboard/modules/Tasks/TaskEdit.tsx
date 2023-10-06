@@ -12,7 +12,6 @@ import { taskEditSchema, useFormikData } from "./TaskEditUtils";
 const TaskEdit = () => {
     const { navigate, initialValues, submitHandler, loading, formStructure } =
         useFormikData();
-    console.log(initialValues);
     return (
         <>
             {loading ? (
