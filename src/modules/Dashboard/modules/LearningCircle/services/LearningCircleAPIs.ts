@@ -353,6 +353,42 @@ export const removeMember = async (
     }
 };
 
+export const transferLead = async (
+    circleId: string | undefined,
+    memberId: string,
+    navigate: NavigateFunction
+) => {
+    try {
+        const response = await privateGateway.patch(
+            dashboardRoutes.getLearningCirclesLead +
+                circleId +
+                "/" +
+                memberId +
+                "/"
+        );
+        toast({
+            title: "Success",
+            description: "",
+            status: "success",
+            duration: 2000,
+            isClosable: true
+        });
+        navigate(`/dashboard/learning-circle/details/${circleId}`);
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+        toast({
+            title: "Something went wrong",
+            description: "",
+            status: "error",
+            duration: 2000,
+            isClosable: true
+        });
+    }
+};
+
 export const searchLearningCircleWithCircleCode = (
     setLc: UseStateFunc<LcType[]>,
     circleCode: string,

@@ -9,6 +9,7 @@ import {
     removeMember,
     setLCMeetTime,
     toast,
+    transferLead,
     updateLcNote
 } from "../services/LearningCircleAPIs";
 import { useNavigate, useParams } from "react-router-dom";
@@ -25,6 +26,7 @@ import { Tooltip } from "react-tooltip";
 import Modal from "@/MuLearnComponents/Modal/Modal";
 import data from "../data/data.json";
 import { BsFillBookmarksFill } from "react-icons/bs";
+import { TbArrowsTransferUp } from "react-icons/tb";
 import Select from 'react-select';
 
 type Props = {};
@@ -62,6 +64,8 @@ const LearningCircle = (props: Props) => {
     const [openRemoveConfrim, setOpenRemoveConfirm] = useState(false);
     const [resourceLink, setResourceLink] = useState("");
     const [username, setUsername] = useState("");
+
+    const [transferConfirm,setTransferConfirm] = useState(false); 
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -189,6 +193,13 @@ const LearningCircle = (props: Props) => {
         }, 4000);
     }
 
+    function handleTransfer(circle: string | undefined, id: string): void {
+        transferLead(circle, id, navigate);
+        setTimeout(() => {
+            navigate(`/dashboard/learning-circle/details/${id}`);
+        }, 4000);
+    }
+
     function avatarValidate(member: LcMembers) {
         const isInvalid = validAvatar.find(id => member.id === id);
         return isInvalid ? pic : member?.profile_pic || pic;
@@ -266,7 +277,7 @@ const LearningCircle = (props: Props) => {
                                     heading={"Leave Learning Circle"}
                                     content={`Are you sure you want to leave ${lc?.name} ?`}
                                     click={handleLeave}
-                                    type="error"
+                                    type="Leave"
                                 />
                             )}
                         </div>
@@ -734,6 +745,43 @@ const LearningCircle = (props: Props) => {
                                                         </span>
                                                     </div>
                                                 </div>
+                                                {lc.is_lead &&
+                                                    !member.is_lead && (
+                                                        <div>
+                                                           
+                                                            <TbArrowsTransferUp
+                                                                size={24}
+                                                                onClick={() => {
+                                                                    setTransferConfirm(
+                                                                        true
+                                                                    );
+                                                                    setUsername(member?.username)
+                                                                }}
+                                                            />
+                                                            {transferConfirm && (
+                                                                <Modal
+                                                                    click={() => {
+                                                                        handleTransfer(
+                                                                            id,
+                                                                            member.id
+                                                                        );
+                                                                    }}
+
+                                                                    content={`Are you want to transfer lead to ${username} of ${lc.name} ?`}
+                                                                    heading={
+                                                                        "Transfer Lead Position"
+                                                                    }
+                                                                    id={
+                                                                        "Transfer"
+                                                                    }
+                                                                    setIsOpen={
+                                                                        setTransferConfirm
+                                                                    }
+                                                                    type="Confirm"
+                                                                />
+                                                            )}
+                                                        </div>
+                                                    )}
                                                 {lc.is_lead &&
                                                     !member.is_lead && (
                                                         <div>
