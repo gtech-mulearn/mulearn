@@ -7,7 +7,7 @@
 
 .main_task p,
 .main_task li {
-    color: black;
+    color: var(--black);
     font-weight: 500;
 }
 

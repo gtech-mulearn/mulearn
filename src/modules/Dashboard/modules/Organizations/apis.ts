@@ -71,8 +71,7 @@ export const getAffiliation = async (setAffiliationData: any) => {
                 return response.data;
             })
             .then(data => {
-                const affiliation: CountryProps[] =
-                    data.response.data.affiliation;
+                const affiliation: CountryProps[] = data.response.data;
                 setAffiliationData(affiliation);
             });
     } catch (err: unknown) {
@@ -108,6 +107,7 @@ export const getStates = async (
             })
             .then(data => {
                 const states: CountryProps[] = data.response.data;
+                console.log(states);
                 setStatesData(states);
             });
     } catch (err: unknown) {
@@ -139,6 +139,7 @@ export const getZones = async (
             })
             .then(data => {
                 const states: CountryProps[] = data.response.data;
+                console.log(getZones);
                 setZonesData(states);
             });
     } catch (err: unknown) {
@@ -378,7 +379,7 @@ export const getInfo = async (code: string) => {
         const response = await privateGateway.get(
             `${organizationRoutes.postGetInfo}${code}/`
         );
-        return response.data.response.institution;
+        return response.data.response;
     } catch (err: unknown) {
         const error = err as AxiosError;
     }

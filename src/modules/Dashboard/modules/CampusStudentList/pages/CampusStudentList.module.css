@@ -52,7 +52,7 @@
 }
 
 .campus_student_list_container .content .sec1 .campus_lead {
-    color: black;
+    color: var(--black);
 }
 
 .campus_student_list_container .content .sec1 .details_card {
@@ -88,7 +88,7 @@
 
 .campus_student_list_container .card h1 {
     font-size: 40px !important;
-    color: black;
+    color: var(--black);
 }
 .campus_student_list_container .card span {
     font-size: 10px;
@@ -100,7 +100,7 @@
     flex-direction: column;
     flex: auto;
     align-items: center;
-    color: black;
+    color: var(--black);
 }
 
 .campus_student_list_container .campus_lead_card h2 {
@@ -131,7 +131,7 @@
 
 .campus_student_list_container .content .sec2 .clg_rank_overlay {
     width: 170px;
-    color: black;
+    color: var(--black);
     font-weight: 600;
     font-size: 40px;
     /* text-align: center; */

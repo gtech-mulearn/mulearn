@@ -3,19 +3,21 @@ import { createTask, getUUID } from "./TaskApis";
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import {
+import FormikReactSelect, {
+    FormikCheckBox,
     FormikSelect,
     FormikTextInput
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { AxiosError } from "axios";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
-type Props = {};
-
-const TaskCreate = (props: Props) => {
+const TaskCreate = () => {
     const navigate = useNavigate();
     const toast = useToast();
     const [uuidData, setuuidData] = useState<{ [index: string]: any[] } | null>(
@@ -49,17 +51,21 @@ const TaskCreate = (props: Props) => {
         usage_count: Yup.number()
             .truncate()
             .required("Mention the number of uses"),
+
         active: Yup.boolean().required("Select an option"),
         variable_karma: Yup.boolean().required("Select an option"),
-        description: Yup.string().min(4, "Too Short!").max(100, "Too Long!").required("A description is required"),
+
+        description: Yup.string()
+            .max(100, "Too Long!")
+            .required("A description is required"),
         channel_id: Yup.string().required("Select a Channel"),
         type_id: Yup.string().required("Select a Type"),
-        level_id: Yup.string(),
-        ig_id: Yup.string(),
-        organization_id: Yup.string()
+        level_id: Yup.string().nullable(),
+        ig_id: Yup.string().nullable(),
+        organization_id: Yup.string().nullable()
     });
-    if(!uuidData)
-        return(<MuLoader/>)
+
+    if (!uuidData) return <MuLoader />;
 
     return (
         <div className={styles.external_container}>
@@ -72,8 +78,8 @@ const TaskCreate = (props: Props) => {
                         title: "",
                         karma: "",
                         usage_count: "",
-                        active: "",
-                        variable_karma: "",
+                        active: false,
+                        variable_karma: false,
                         description: "",
                         channel_id: "",
                         type_id: "",
@@ -96,12 +102,12 @@ const TaskCreate = (props: Props) => {
                             values.level_id,
                             values.ig_id,
                             values.organization_id,
-							toast
+                            toast
                         );
-                        
-                        setTimeout(() => {  
+
+                        setTimeout(() => {
                             navigate("/dashboard/tasks");
-                        },3000);
+                        }, 3000);
                     }}
                 >
                     <Form className={styles.inputContainer}>
@@ -110,12 +116,14 @@ const TaskCreate = (props: Props) => {
                             name="hashtag"
                             type="text"
                             placeholder="#example"
+                            required
                         />
                         <FormikTextInput
                             label="Title"
                             name="title"
                             type="text"
                             placeholder="Enter the title"
+                            required
                         />
                         <FormikTextInput
                             label="Karma"
@@ -128,31 +136,30 @@ const TaskCreate = (props: Props) => {
                             name="usage_count"
                             type="number"
                             placeholder="No. of times to be used"
+                            required
                         />
-                        <FormikSelect label="Active" name="active">
-                            <option value="">Select an option</option>
-                            <option value="1">True</option>
-                            <option value="0">False</option>
-                        </FormikSelect>
-                        <FormikSelect
-                            label="Variable Karma"
-                            name="variable_karma"
+
+                        <div
+                            style={{
+                                display: "flex",
+                                justifyContent: "space-evenly"
+                            }}
                         >
-                            <option value="">Select an option</option>
-                            <option value="1">True</option>
-                            <option value="0">False</option>
-                        </FormikSelect>
+                            <FormikCheckBox label="Active" name="active" />
+                            <FormikCheckBox
+                                label="Variable Karma"
+                                name="variable_karma"
+                            />
+                        </div>
+
                         <FormikTextInput
                             label="Description"
                             name="description"
                             type="text"
                             placeholder="..."
+                            required
                         />
-                        <FormikSelect
-                            label="Channel"
-                            name="channel_id"
-                            
-                        >
+                        <FormikSelect label="Channel" name="channel_id">
                             <option value="">Select an option</option>
                             {uuidData?.channel.map(val => {
                                 return (
@@ -160,11 +167,7 @@ const TaskCreate = (props: Props) => {
                                 );
                             })}
                         </FormikSelect>
-                        <FormikSelect
-                            label="Type"
-                            name="type_id"
-
-                        >
+                        <FormikSelect label="Type" name="type_id">
                             <option value="">Select an option</option>
                             {uuidData?.type.map(val => {
                                 return (
@@ -172,11 +175,7 @@ const TaskCreate = (props: Props) => {
                                 );
                             })}
                         </FormikSelect>
-                        <FormikSelect
-                            label="Level"
-                            name="level_id"
-                            
-                        >
+                        <FormikSelect label="Level" name="level_id">
                             <option value="">Select an option</option>
                             {uuidData?.level.map(val => {
                                 return (
@@ -184,11 +183,7 @@ const TaskCreate = (props: Props) => {
                                 );
                             })}
                         </FormikSelect>
-                        <FormikSelect
-                            label="IG"
-                            name="ig_id"
-                            
-                        >
+                        <FormikSelect label="IG" name="ig_id">
                             <option value="">Select an option</option>
                             {uuidData?.ig.map(val => {
                                 return (
@@ -199,7 +194,6 @@ const TaskCreate = (props: Props) => {
                         <FormikSelect
                             label="Organization"
                             name="organization_id"
-                            
                         >
                             <option value="">Select an option</option>
                             {uuidData?.organization.map(val => {
@@ -214,7 +208,9 @@ const TaskCreate = (props: Props) => {
                                 onClick={() => {
                                     navigate("/dashboard/tasks");
                                 }}
-                            >Decline</button>
+                            >
+                                Decline
+                            </button>
                             <button type="submit" className={styles.btn_submit}>
                                 Confirm
                             </button>

@@ -7,6 +7,7 @@ import { useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { deleteManageUsers, getManageUsers } from "./apis";
+import { Blank } from "@/MuLearnComponents/Table/Blank";
 
 function ManageRoles() {
     const [data, setData] = useState<any[]>([]);
@@ -26,16 +27,9 @@ function ManageRoles() {
         { column: "last_name", Label: "Last Name", isSortable: true },
         { column: "karma", Label: "Total Karma", isSortable: true },
         { column: "muid", Label: "Mu ID", isSortable: true },
-        { column: "email", Label: "Email", isSortable: false },
-        { column: "mobile", Label: "Mobile", isSortable: false },
-        // { column: "dob", Label: "DOB", isSortable: false },
-        // { column: "gender", Label: "Gender", isSortable: false },
-
-        // { column: "college", Label: "Institute", isSortable: false },
-
-        { column: "discord_id", Label: "Discord ID", isSortable: false },
-        // { column: "id", Label: "ID", isSortable: false },
-        // { column: "active", Label: "Active", isSortable: false },
+        { column: "email", Label: "Email", isSortable: true },
+        { column: "mobile", Label: "Mobile", isSortable: true },
+        { column: "discord_id", Label: "Discord ID", isSortable: true },
         { column: "level", Label: "Level", isSortable: true },
         { column: "created_at", Label: "Created On", isSortable: true }
     ];
@@ -63,7 +57,7 @@ function ManageRoles() {
             page: nextPage,
             selectedValue: perPage,
             setIsLoading: setIsLoading,
-            setTotalPages: () => { },
+            setTotalPages: () => {},
             search: "",
             sortID: sort
         });
@@ -77,7 +71,7 @@ function ManageRoles() {
             page: prevPage,
             selectedValue: perPage,
             setIsLoading: setIsLoading,
-            setTotalPages: () => { },
+            setTotalPages: () => {},
             search: "",
             sortID: sort
         });
@@ -127,10 +121,6 @@ function ManageRoles() {
         });
     };
 
-    // const handleCreate = () => {
-    //     navigate("/manage-users/create");
-    // };
-
     const handleIconClick = (column: string) => {
         if (sort === column) {
             setSort(`-${column}`);
@@ -159,22 +149,13 @@ function ManageRoles() {
 
     return (
         <>
-            {/* <div className={styles.createBtnContainer}>
-                <MuButton
-                    className={styles.createBtn}
-                    text={"Create"}
-                    icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
-                    onClick={handleCreate}
-                />
-            </div> */}
-
             {data && (
                 <>
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
                         CSV={dashboardRoutes.getUsersList}
-                    // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
+                        // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
                     />
                     <Table
                         rows={data}
@@ -209,7 +190,7 @@ function ManageRoles() {
                                 />
                             )}
                         </div>
-                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                        <Blank />
                     </Table>
                 </>
             )}

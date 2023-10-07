@@ -57,8 +57,9 @@ export const getTasks = async (
             }
         );
         const tasks: any = response?.data;
-        const uuids: Partial<uuidType> = await getUUID();
-        setData(uuidToString(tasks.response.data, uuids));
+        setData(tasks.response.data);
+        // const uuids: Partial<uuidType> = await getUUID();
+        // setData(uuidToString(tasks.response.data, uuids));
         if (setTotalPages) {
             setTotalPages(tasks.response.pagination.totalPages);
         }
@@ -78,11 +79,10 @@ export const getTaskDetails = async (
 ) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getTasksData + "get/" + id + "/"
+            dashboardRoutes.getTasksData + id + "/"
         );
         const message: any = response?.data;
-        //console.log(message);
-        setData(message.response.Task);
+        setData(message.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -95,35 +95,36 @@ export const editTask = async (
     hashtag: string,
     title: string,
     karma: string,
-    active: string,
-    variable_karma: string,
+    active: boolean,
+    variable_karma: boolean,
     usage_count: string,
     channel_id: string,
     type_id: string,
     level_id: string,
     ig_id: string,
     org_id: string,
+    desc: string,
     id: string | undefined,
     toast: ToastAsPara
 ) => {
     try {
         const response = await privateGateway.put(
-            dashboardRoutes.getTasksData + "edit/" + id + "/",
+            dashboardRoutes.getTasksData + id + "/",
             {
                 title: title,
                 hashtag: hashtag,
                 karma: parseInt(karma),
                 usage_count: parseInt(usage_count),
-                active: parseInt(active),
-                variable_karma: parseInt(variable_karma),
+                active: active,
+                variable_karma: variable_karma,
                 channel: channel_id,
                 type: type_id,
-                level: level_id,
-                ig: ig_id,
-                org: org_id
+                description: desc,
+                level: level_id === "" ? null : level_id,
+                ig: ig_id === "" ? null : ig_id,
+                org: org_id === "" ? null : org_id
             }
         );
-        const message: any = response?.data;
         toast({
             title: "Task Updated",
             description: "Task has been updated successfully",
@@ -131,7 +132,6 @@ export const editTask = async (
             duration: 5000,
             isClosable: true
         });
-        //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -151,8 +151,8 @@ export const createTask = async (
     title: string,
     karma: string,
     usage_count: string,
-    active: string,
-    variable_karma: string,
+    active: boolean,
+    variable_karma: boolean,
     description: string,
     channel_id: string,
     type_id: string,
@@ -163,23 +163,23 @@ export const createTask = async (
 ) => {
     try {
         const response = await privateGateway.post(
-            dashboardRoutes.getTasksData + "create/",
+            dashboardRoutes.getTasksData,
             {
                 title: title,
                 hashtag: hashtag,
                 karma: parseInt(karma),
                 usage_count: parseInt(usage_count),
-                active: parseInt(active),
-                variable_karma: parseInt(variable_karma),
+                active: active,
+                variable_karma: variable_karma,
                 description: description,
                 channel: channel_id,
                 type: type_id,
-                level: level_id,
-                ig: ig_id,
-                org: org_id
+                level: level_id === "" ? null : level_id,
+                ig: ig_id === "" ? null : ig_id,
+                org: org_id === "" ? null : org_id
             }
         );
-		toast({
+        toast({
             title: "Task created",
             status: "success",
             duration: 3000,
@@ -198,8 +198,8 @@ export const deleteTask = async (
     toast: ToastAsPara
 ) => {
     try {
-        const response = await privateGateway.patch(
-            dashboardRoutes.getTasksData + "delete/" + id + "/"
+        const response = await privateGateway.delete(
+            dashboardRoutes.getTasksData + id + "/"
         );
         toast({
             title: "Task deleted",
@@ -208,7 +208,6 @@ export const deleteTask = async (
             isClosable: true
         });
         const message: any = response?.data;
-        //console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { editManageRoles, getManageRolesDetails, isRoleUnique } from "../apis";
+import { useEffect, useState } from "react";
+import { editManageRoles, getManageRolesDetails } from "../apis";
 import { useToast } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
@@ -7,7 +7,6 @@ import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComp
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import styles from "./Modal.module.css";
 import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css";
-import { type } from "os";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 type Props = {
@@ -35,14 +34,10 @@ const ManageRolesEditModal = (props: Props) => {
         <Formik
             enableReinitialize={true}
             initialValues={{
-                // igName: name
                 title: data.title,
                 description: data.description
             }}
             validationSchema={Yup.object({
-                // igName: Yup.string()
-                //     .max(30, "Must be 30 characters or less")
-                //     .required("Required"),
                 title: Yup.string()
                     .max(30, "Must be 30 characters or less")
                     .required("Required"),

@@ -184,6 +184,7 @@ import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/Sign
 import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
 import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs";
 import { Marketplace } from "./modules/Dashboard/modules/Marketplace/Marketplace";
+import LearningCircles from "./modules/Public/KKEM/modules/Dashboard/LearningCircles/LearningCircles";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -589,6 +590,10 @@ function App() {
         {
             path: "/kkem/events/beyondus",
             element: <KKEMEventBeyondUs />
+        },
+        {
+            path: "/kkem/learningcircles/dashboard",
+            element: <LearningCircles />
         }
     ]);
 

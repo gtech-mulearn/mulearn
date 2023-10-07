@@ -1001,7 +1001,7 @@
     background: white;
     box-shadow: var(--boxShadow);
     border-radius: var(--borderRadius);
-    color: black;
+    color: var(--black);
     text-align: initial;
 }
 
@@ -1137,7 +1137,7 @@
     background: white;
     box-shadow: var(--boxShadow);
     border-radius: var(--borderRadius);
-    color: black;
+    color: var(--black);
     text-align: initial;
 }
 

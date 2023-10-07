@@ -64,6 +64,7 @@ const LearningCircle = (props: Props) => {
     const [openRemoveConfrim, setOpenRemoveConfirm] = useState(false);
     const [resourceLink, setResourceLink] = useState("");
     const [username, setUsername] = useState("");
+    const [deleteUserId, setDeleteUserId] = useState<string>("");
 
     const [transferConfirm,setTransferConfirm] = useState(false); 
 
@@ -114,7 +115,7 @@ const LearningCircle = (props: Props) => {
 
 
     useEffect(() => {
-        if (lc && !lc.is_member) {
+        if (lc && !lc.is_member && lc?.circle_code?.length > 0) {
             toast({
                 title: "Access Denied",
                 description: "Make sure you are a member of that circle",
@@ -188,9 +189,6 @@ const LearningCircle = (props: Props) => {
     };
     function handleRemove(circle: string | undefined, id: string): void {
         removeMember(circle, id, navigate);
-        setTimeout(() => {
-            navigate(`/dashboard/learning-circle/details/${id}`);
-        }, 4000);
     }
 
     function handleTransfer(circle: string | undefined, id: string): void {
@@ -596,7 +594,7 @@ const LearningCircle = (props: Props) => {
                             </div>
 
                             {lc?.pending_members &&
-                                lc.pending_members.length > 0 ? (
+                            lc.pending_members.length > 0 ? (
                                 <div className={styles.PendingApp}>
                                     <b className={styles.PendingTitle}>
                                         Pending approvals
@@ -733,6 +731,7 @@ const LearningCircle = (props: Props) => {
                                                         alt="Profile Picture"
                                                     />
                                                     <div>
+
                                                         <div className={styles.username}>
                                                             <p>{member.username} {member.is_lead && "(Lead)"}</p>
                                                         </div>
@@ -785,11 +784,6 @@ const LearningCircle = (props: Props) => {
                                                 {lc.is_lead &&
                                                     !member.is_lead && (
                                                         <div>
-                                                            {/* <RiDeleteBin5Line
-                                                            data-tooltip-id="Icon"
-                                                            data-tooltip-content="leave circle"
-                                                            onClick={() => { handleRemove(id, member.id) }}
-                                                        /> */}
                                                             <RxCrossCircled
                                                                 size={24}
                                                                 onClick={() => {
@@ -797,6 +791,7 @@ const LearningCircle = (props: Props) => {
                                                                         true
                                                                     );
                                                                     setUsername(member?.username)
+                                                                    setDeleteUserId(member?.id)
                                                                 }}
                                                             />
                                                             {openRemoveConfrim && (
@@ -804,11 +799,11 @@ const LearningCircle = (props: Props) => {
                                                                     click={() => {
                                                                         handleRemove(
                                                                             id,
-                                                                            member.id
+                                                                            deleteUserId
                                                                         );
                                                                     }}
 
-                                                                    content={`Are you want to remove ${username} from ${lc.name} ?`}
+                                                                    content={`Are you want to remove ${username} from ${lc.name}?`}
                                                                     heading={
                                                                         "Remove user from Learning Cicle"
                                                                     }

@@ -16,15 +16,15 @@ import ManageRolesEditModal from "./components/ManageRolesEditModal";
 import ManageRolesCreateModal from "./components/ManageRolesCreateModal";
 import { getRoles } from "../../../../modules/Common/Authentication/services/onboardingApis";
 import ManageUsers from "./components/ManageUsers";
+import { Blank } from "@/MuLearnComponents/Table/Blank";
 
 function ManageRoles() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [perPage, setPerPage] = useState(20);
-    const [sort, setSort] = useState("");
+    const [sort, setSort] = useState("-created_at");
     const [isLoading, setIsLoading] = useState(false);
-    const navigate = useNavigate();
     const firstFetch = useRef(true);
     //Modal
     const [currRoleID, setCurrRoleID] = useState("");
@@ -245,7 +245,7 @@ function ManageRoles() {
                           return (
                               <Modal
                                   onClose={setCurrModal}
-                                  icon={icons.cross}
+                                  icon={icons.tick}
                                   header="Edit Role"
                                   paragraph="Enter the new values for this role"
                               >
@@ -332,7 +332,7 @@ function ManageRoles() {
                                 />
                             )}
                         </div>
-                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                        <Blank />
                     </Table>
                 </>
             )}

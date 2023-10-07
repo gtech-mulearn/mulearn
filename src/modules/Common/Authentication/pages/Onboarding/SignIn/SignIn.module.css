@@ -45,7 +45,7 @@
     cursor: pointer;
 }
 .forgot span {
-    color: black;
+    color: var(--black);
 }
 .submit {
     display: flex;

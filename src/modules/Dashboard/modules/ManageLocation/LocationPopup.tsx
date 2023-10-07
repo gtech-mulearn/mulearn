@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Select from "react-select";
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { useNavigate } from "react-router-dom";
@@ -62,7 +62,6 @@ const LocationPopup: FC<LocationPopupProps> = ({
         Zone: null
     });
 
-    const navigate = useNavigate();
     const toast = useToast();
 
     useEffect(() => {

@@ -30,7 +30,6 @@ interface Option {
 interface CollegeFormProps {
     isCreate: boolean;
     activeItem: string;
-
     inputName?: string;
     inputCode?: string;
     selectedCountry?: string;
@@ -424,7 +423,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     Name: props.inputName || "",
                     Code: props.inputCode || "",
                     Country: country.value || "",
-                    Affiliation: affiliation.value || "",
+                    Affiliation: props.selectedAffiliation || "",
                     State: state.value || "",
                     Zone: zone.value || "",
                     District: district.value || ""
@@ -443,7 +442,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     Zone: Yup.string().required("Required"),
                     District: Yup.string().required("Required"),
                     Affiliation: Yup.string().required("Required")
-
                 })}
                 onSubmit={values => {
                     setIsLoading(true);

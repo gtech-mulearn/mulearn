@@ -14,7 +14,7 @@
     backdrop-filter: blur(0.1rem);
     overscroll-behavior: contain;
 
-    color: black;
+    color: var(--black);
 }
 .Modal .Container {
     width: min(80%, 500px);

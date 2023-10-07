@@ -124,7 +124,6 @@ const ManageLocation = () => {
             //     stateShow: true,
             //     zoneShow: true
             // }));
-
             setColumns(columnsDistrict);
         }
         getLocationData();
