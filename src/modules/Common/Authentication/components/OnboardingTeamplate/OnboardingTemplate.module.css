@@ -74,6 +74,7 @@
     bottom: -10rem;
     right: 18rem;
     animation: muship 10s linear infinite;
+    z-index: -3;
 }
 
 @keyframes muship {

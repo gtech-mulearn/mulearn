@@ -7,6 +7,7 @@ import SmallRocks from "./assests/NotFound/SmallRocks.webp"
 const NotFound = () => {
     return (
         <div className={styles.container_404}>
+            
 
             <div className={styles.NotBg}></div>
 
