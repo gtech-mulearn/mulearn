@@ -56,7 +56,15 @@ const scheme = z.object({
     password: z
         .string()
         .required(`Password is Required`)
+        .min(6, `Password must be at least 6 characters`),
+    confirmPassword: z
+        .string()
+        .required(`Password is Required`)
         .min(6, `Password must be at least 6 characters`)
+        .max(100, `Password must be at most 100 characters`)
+        .test('passwords-match', 'Passwords are not matching', function (value) {
+            return this.parent.password === value;
+        })
 });
 
 export default function AccountCreation() {
@@ -71,6 +79,7 @@ export default function AccountCreation() {
 
     const [isLoading, setIsLoading] = useState(false);
     const [isVisible, setVisible] = useState(false);
+    const [isVisibleC, setVisibleC] = useState(false);
     const [isTncChecked, setTncChecked] = useState(false);
 
     const [communitiesList, setCommunitiesList] = useState([
@@ -132,7 +141,7 @@ export default function AccountCreation() {
                     <Form>
                         <div className={styles.accountCreationContainer}>
                             <div className={styles.accountCreationInputs}>
-                                <div>
+                                <div className={styles.inputBox}>
                                     <SimpleInput
                                         name={"email"}
                                         type="email"
@@ -145,7 +154,7 @@ export default function AccountCreation() {
                                 </div>
 
                                 <div className={styles.accountCreationName}>
-                                    <div>
+                                    <div className={styles.inputBox}>
                                         <SimpleInput
                                             name={"firstName"}
                                             onChange={formik.handleChange}
@@ -157,7 +166,7 @@ export default function AccountCreation() {
                                         />
                                     </div>
 
-                                    <div>
+                                    <div className={styles.inputBox}>
                                         <SimpleInput
                                             name={"lastName"}
                                             onChange={formik.handleChange}
@@ -169,10 +178,13 @@ export default function AccountCreation() {
                                         />
                                     </div>
                                 </div>
+
                                 <div className={styles.col_2}>
                                     <select
                                         style={{
                                             width: "15%",
+                                            height: "40px",
+                                            borderRadius: "5px",
                                             textAlign: "center"
                                         }}
                                         name="countryCode"
@@ -181,7 +193,7 @@ export default function AccountCreation() {
                                             +91
                                         </option>
                                     </select>
-                                    <div>
+                                    <div className={styles.inputBox}>
                                         <SimpleInput
                                             name={"phoneNumber"}
                                             value={formik.values.phoneNumber}
@@ -198,7 +210,7 @@ export default function AccountCreation() {
                                             styles.accountCreationPassword
                                         }
                                     >
-                                        <div>
+                                        <div className={styles.inputBox}>
                                             <SimpleInput
                                                 name={"password"}
                                                 value={formik.values.password}
@@ -225,19 +237,39 @@ export default function AccountCreation() {
                                             )}
                                         </button>
                                     </div>
+                                    <div
+                                        className={
+                                            styles.accountCreationPassword
+                                        }
+                                    >
+                                        <div className={styles.inputBox}>
+                                            <SimpleInput
+                                                name={"confirmPassword"}
+                                                value={
+                                                    formik.values.confirmPassword
+                                                }
+                                                onChange={formik.handleChange}
 
-                                    <div>
-                                        <SimpleInput
-                                            name={"confirmPassword"}
-                                            value={
-                                                formik.values.confirmPassword
-                                            }
-                                            onChange={formik.handleChange}
-                                            type="password"
-                                            placeholder="Confirm Password"
-                                            required
-                                            disabled={isLoading}
-                                        />
+                                                type={
+                                                    isVisible
+                                                        ? "text"
+                                                        : "password"
+                                                }
+                                                placeholder="Confirm Password"
+                                                required
+                                                disabled={isLoading}
+                                            />
+                                        </div>
+                                        <button
+                                            type="button"
+                                            onClick={() => setVisibleC(e => !e)}
+                                        >
+                                            {isVisibleC ? (
+                                                <HiEye size={26} />
+                                            ) : (
+                                                <HiEyeSlash size={26} />
+                                            )}
+                                        </button>
                                     </div>
                                 </div>
                                 <div>
@@ -273,7 +305,7 @@ export default function AccountCreation() {
                                         )}
                                     />
                                 </div>
-                                <div>
+                                <div className={styles.inputBox}>
                                     <SimpleInput
                                         name={"refferalId"}
                                         value={formik.values.refferalId}
@@ -334,7 +366,7 @@ export default function AccountCreation() {
                                 <div>
                                     <p>
                                         Already have an account?{" "}
-                                        <a href="/signin">Sign In</a>
+                                        <a href="/login">Sign In</a>
                                     </p>
                                 </div>
                             </div>

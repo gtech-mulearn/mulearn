@@ -26,7 +26,7 @@ export default function Rolepage() {
         console.log("userData", userData);
 
         if (userData === undefined || userData === null) {
-            navigate("/signup", { replace: true });
+            navigate("/register", { replace: true });
         } else {
             getRoles({
                 setIsLoading: setIsLoading,

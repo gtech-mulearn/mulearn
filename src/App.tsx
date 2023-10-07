@@ -218,8 +218,8 @@ function App() {
             path: "/",
             element: <AuthRoutes />,
             children: [
-                { path: "register", element: <Onboarding /> },
-                { path: "login", element: <Login /> },
+                { path: "register", element: <AccountCreation /> },
+                { path: "login", element: <SignIn /> },
                 { path: "forgot-password", element: <ForgotPassword /> },
                 { path: "reset-password", element: <ResetPassword /> }
             ]

@@ -63,7 +63,7 @@ export default function CollegePage() {
 
     useEffect(() => {
         if (userData === undefined || userData === null) {
-            navigate("/signup", { replace: true });
+            navigate("/register", { replace: true });
         } else {
             getColleges({
                 setIsLoading: setIsLoading,
