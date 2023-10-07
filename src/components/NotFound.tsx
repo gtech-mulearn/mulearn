@@ -3,7 +3,6 @@ import stone from "./assests/NotFound/Stone.webp"
 import FourNotFour from "./assests/NotFound/FourNotFour.webp"
 import NoBgFourNotFour from "./assests/NotFound/NoBgFourNotFour.webp"
 import SmallRocks from "./assests/NotFound/SmallRocks.webp"
-import { AiOutlineArrowLeft } from "react-icons/ai";
 
 const NotFound = () => {
     return (
