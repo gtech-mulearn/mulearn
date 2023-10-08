@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.First{
+    background: #F5F5F5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 3rem;
+}
+.Container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 4rem;
+    gap: 3rem;
+}
+.Container_desc{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2rem;
+}
+.Container_image_one img{
+    width: 50%;
+}
+.Container_img_two img{
+    width: 50%;
+}
+.Container_image_one{
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+}
+.Head_one{
+    font-weight: 1000;
+    font-size: 3rem;
+}
+.Head_two{
+    font-weight: 1000;
+    font-size: 3rem;
+    color: #DC280B;
+}
+.Container_button_one{
+    width: 7rem;
+    height: 2rem;
+    border-radius: 8px;
+    background: #DC280B;
+    font-weight: 700;
+    border: none;
+    color: #EEEEEE;
+}
+.Container_button_two{
+    width: 7rem;
+    height: 2rem;
+    border-radius: 8px;
+    background: #EEEEEE;
+    font-weight: 700;
+    border: none;
+    color: #DC280B;
+}
+.Container_button{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2rem;
+}
+.desc{
+    font-size: 1rem;
+}
+.Lower_desc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.desc span{
+    font-weight: 700;
+}
+.Lower_red{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #DC280B;
+    color: white;
+    height: 3rem;
+    font-size: 1rem;
+}
+.Lower_red span{
+    font-weight: 700;
+}
+

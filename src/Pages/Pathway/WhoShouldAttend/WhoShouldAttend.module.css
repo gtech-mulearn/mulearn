@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    
+
+}
+.third{
+    background: #F5F5F5;
+}
+.Overview_container_head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    gap: 2rem;
+}
+.Overview_container_head hr{
+    width: 25%;
+    color: blue;
+}
+.Overview_container_head p{
+    color: #000;
+    font-size: 3rem;
+    font-weight: 700;
+}
+.sec{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 3rem;
+}
+.section_top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 6rem;
+    background-color: blue;
+    padding: 1rem;
+    border-radius: 8px;
+    color: white;
+}
+.sec_one{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.sec_two{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.section_mid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+.section_mid img{
+    width: 20%;
+}
+.section_bottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (width<1000px){
+    .Overview_container_head p{
+        font-size: 1rem;
+    }
+   
+    .Overview_container_head{
+        padding: 1rem;
+        gap: 1rem;
+        
+    }
+}
