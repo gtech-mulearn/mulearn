@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #F5F5F5;
+
+}
+.ContactUs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    padding: 4rem;
+}
+.Contact img{
+    width: 50%;
+
+}
+.ContactHead{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10rem;
+    align-items: center;
+    color: blue;
+    font-weight: 600;
+}
+.contactLists{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: .8rem;
+    gap: 2rem;
+}
+.contactLists ul{
+    list-style: none;
+    width: 100%;
+}
+.contactLists div{
+    width: 40%;
+}
