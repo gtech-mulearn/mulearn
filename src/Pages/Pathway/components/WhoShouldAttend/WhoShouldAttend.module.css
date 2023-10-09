@@ -1,0 +1,83 @@
+.WhoShouldAttend {
+    background: #F5F5F5;
+}
+
+.Overview_container_head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem;
+    gap: 2rem;
+    position: relative;
+}
+
+.Overview_container_head hr {
+    width: 100%;
+    background-color: #1C1CF0;
+    height: .25rem;
+}
+
+.Overview_container_head p {
+    position: absolute;
+    color: #000;
+    background-color: #F5F5F5;
+    padding: 0 1.5rem;
+    font-size: 3rem;
+    font-weight: 900;
+    width: max-content;
+}
+
+.section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem 2rem; 
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.container .box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.container .box_bottom {
+    width: 70%;
+}
+
+.container .box_top {
+    background-color: #1C1CF0;
+    padding: 1rem;
+    height: 5rem;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+}
+
+.container .box_mid img{
+    height: 8rem;
+} 
+
+@media (width<1000px) {
+    .Overview_container_head p {
+        font-size: 1rem;
+    }
+
+    .Overview_container_head {
+        padding: 1rem;
+        gap: 1rem;
+
+    }
+}

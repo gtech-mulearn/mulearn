@@ -49,6 +49,7 @@ import MaveliPortfolio from "./Pages/Events/MaveliPortfolio/MaveliPortfolio";
 import Level1 from "./Pages/CapTF/Level1";
 import Spiderman from "./Pages/CapTF/Spiderman";
 import Submission from "./Pages/CapTF/Submission";
+import Pathway from "./Pages/Pathway/Pathway";
 function App() {
   const [redirects, setRedirects] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -143,6 +144,7 @@ function App() {
             />
             <Route path="/yipredirect" element={<YipForm />} />
             <Route path="/journey" element={<Journey />} />
+            <Route path="/pathway" element={<Pathway />} />
           </Route>
 
           <Route path="/level1" element={<Level1 />} />

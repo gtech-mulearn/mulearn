@@ -1,0 +1,56 @@
+.About{
+    padding: 1rem 0;
+}
+
+.Overview_container_head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem;
+    gap: 2rem;
+    position: relative;
+}
+
+.Overview_container_head hr {
+    width: 100%;
+    background-color: #1C1CF0;
+    height: .25rem;
+}
+
+.Overview_container_head p {
+    position: absolute;
+    background-color: #F5F5F5;
+    padding: 0 1.5rem;
+    color: #000;
+    font-size: 3rem;
+    font-weight: 900;
+    width: max-content;
+}
+
+.WhatIsPathway_main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 3rem;
+    padding-right: 8rem;
+    margin: 3rem;
+}
+
+.WhatIsPathway_img img {
+    width: 60%;
+}
+
+.WhatIsPathway_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.WhatIsPathway_desc {
+    width: 80%;
+    font-size: 1.2rem;
+}
+
+.WhatIsPathway_desc span {
+    font-weight: 800;
+}

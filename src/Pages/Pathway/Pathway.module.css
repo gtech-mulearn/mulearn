@@ -1,0 +1,10 @@
+.pathway {
+    padding: 0 4rem;
+    background-color: #F5F5F5;
+}
+
+@media(width<=820px) {
+    .pathway {
+        padding: 0 1rem;
+    }
+}
