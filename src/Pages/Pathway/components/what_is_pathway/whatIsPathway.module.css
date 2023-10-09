@@ -1,31 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: #F5F5F5;
-
-}
-.Overview_container_head{
+.Overview_container_head {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 3rem;
     gap: 2rem;
 }
-.Overview_container_head hr{
+
+.Overview_container_head hr {
     width: 25%;
     color: blue;
 }
-.Overview_container_head p{
+
+.Overview_container_head p {
     color: #000;
     font-size: 3rem;
     font-weight: 700;
 }
 
-.WhatIsPathway_main{
+.WhatIsPathway_main {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,34 +26,41 @@
     margin: 3rem;
 
 }
-.WhatIsPathway_img img{
+
+.WhatIsPathway_img img {
     width: 60%;
 }
-.WhatIsPathway_img{
+
+.WhatIsPathway_img {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.WhatIsPathway_desc{
+
+.WhatIsPathway_desc {
     width: 80%;
     font-size: 1.2rem;
 }
-.WhatIsPathway_desc span{
+
+.WhatIsPathway_desc span {
     font-weight: 800;
 }
-@media (width<1000px){
-    .Overview_container_head p{
+
+@media (width<1000px) {
+    .Overview_container_head p {
         font-size: 1rem;
     }
-   /* .Overview_container_head hr{
+
+    /* .Overview_container_head hr{
         width: 7rem;
     }*/
-    .Overview_container_head{
+    .Overview_container_head {
         padding: 1rem;
         gap: 1rem;
-        
+
     }
-    .WhatIsPathway_main{
+
+    .WhatIsPathway_main {
         font-size: .8rem;
         gap: 2rem;
         padding: 1.5rem;
@@ -71,11 +70,12 @@
         flex-direction: column;
 
     }
-    .WhatIsPathway_desc{
+
+    .WhatIsPathway_desc {
         width: 100%;
     }
-    .WhatIsPathway_img{
+
+    .WhatIsPathway_img {
         margin-left: -2rem;
     }
 }
-

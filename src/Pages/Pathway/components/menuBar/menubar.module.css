@@ -1,0 +1,46 @@
+.menu_bar {
+    position: fixed;
+    top: 0;
+    display: flex;
+    width: 100%;
+    padding: 2rem 0;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, .25);
+    z-index: 1;
+}
+
+.menu_bar a {
+    background-color: #fff;
+    font-weight: 700;
+    color: #000;
+}
+
+.logo img {
+    height: 2rem;
+    background-color: #fff;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    gap: 2rem;
+    background-color: transparent;
+}
+
+.pre_rg a {
+    display: flex;
+    gap: .5rem;
+    border-radius: .8rem;
+    padding: .8rem 1.5rem;
+    background-color: #DC280B;
+    color: white;
+    border: none;
+}
+
+.pre_rg a img {
+    background-color: #DC280B;
+}

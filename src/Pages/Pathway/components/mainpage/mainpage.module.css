@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@100;200;300;400;500;600;700&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Rubik:wght@400;500;600;700;800;900&display=swap');
+
+.mainpage {
+    height: 100vh;
+    width: 100%;
+    background: #F5F5F5;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.First {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 0 4rem;
+}
+
+.Container_image_one {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Container_desc {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2rem;
+    width: 50%;
+}
+
+.Container_image_one img {
+    height: 30rem;
+    object-fit: contain;
+}
+
+.Container_img_two {
+    width: fit-content;
+    padding: .8rem .5rem;
+    border-radius: .5rem;
+    font-size: 1.5rem;
+    background-color: #232A34;
+    color: #fff;
+}
+
+.Container_head {
+    font-weight: 900;
+    font-size: 5rem;
+    font-family: 'Rubik', sans-serif;
+    line-height: 5rem;
+    width: max-content;
+}
+
+.Head_two {
+    background-color: transparent;
+    color: #DC280B;
+    font-family: 'Rubik', sans-serif;
+}
+
+.Container_button_one {
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    background-color: #DC280B;
+    font-weight: 700;
+    border: none;
+    color: #EEEEEE;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.Container_button_one img {
+    background-color: transparent;
+}
+
+.Container_button_two {
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    border-radius: 8px;
+    background: #EEEEEE;
+    font-weight: 900;
+    border: none;
+    color: #DC280B;
+}
+
+.Container_button {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.Lower_desc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.Lower_red {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background: #DC280B;
+    color: white;
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding: .8rem;
+}
+
+.Lower_red b {
+    background-color: #DC280B;
+    padding: 0 .3rem;
+}
