@@ -65,7 +65,7 @@ const Profile = () => {
         {
             karma: 0,
             name: "",
-            tasks: [{ task_name: "", completed: false, hashtag: "", karma: 0 }]
+            tasks: [{ task_name: "", discord_link: "", completed: false, hashtag: "", karma: 0 }]
         }
     ]);
     const convertedData1 = userProfile.interest_groups?.map(item => [
@@ -208,8 +208,8 @@ const Profile = () => {
                                                         <span>
                                                             <i
                                                                 className={`${!profileStatus
-                                                                        ? "fi fi-sr-shield-exclamation"
-                                                                        : "fi fi-sr-shield-check"
+                                                                    ? "fi fi-sr-shield-exclamation"
+                                                                    : "fi fi-sr-shield-check"
                                                                     }  ${!profileStatus
                                                                         ? styles.private
                                                                         : styles.public
