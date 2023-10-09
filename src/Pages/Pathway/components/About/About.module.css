@@ -1,20 +1,30 @@
+.About{
+    padding: 1rem 0;
+}
+
 .Overview_container_head {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 3rem;
+    padding: 5rem;
     gap: 2rem;
+    position: relative;
 }
 
 .Overview_container_head hr {
-    width: 25%;
-    color: blue;
+    width: 100%;
+    background-color: #1C1CF0;
+    height: .25rem;
 }
 
 .Overview_container_head p {
+    position: absolute;
+    background-color: #F5F5F5;
+    padding: 0 1.5rem;
     color: #000;
     font-size: 3rem;
-    font-weight: 700;
+    font-weight: 900;
+    width: max-content;
 }
 
 .WhatIsPathway_main {
@@ -24,7 +34,6 @@
     padding-left: 3rem;
     padding-right: 8rem;
     margin: 3rem;
-
 }
 
 .WhatIsPathway_img img {
@@ -44,38 +53,4 @@
 
 .WhatIsPathway_desc span {
     font-weight: 800;
-}
-
-@media (width<1000px) {
-    .Overview_container_head p {
-        font-size: 1rem;
-    }
-
-    /* .Overview_container_head hr{
-        width: 7rem;
-    }*/
-    .Overview_container_head {
-        padding: 1rem;
-        gap: 1rem;
-
-    }
-
-    .WhatIsPathway_main {
-        font-size: .8rem;
-        gap: 2rem;
-        padding: 1.5rem;
-        margin: 0;
-        padding-left: 1rem;
-        padding-right: .6rem;
-        flex-direction: column;
-
-    }
-
-    .WhatIsPathway_desc {
-        width: 100%;
-    }
-
-    .WhatIsPathway_img {
-        margin-left: -2rem;
-    }
 }

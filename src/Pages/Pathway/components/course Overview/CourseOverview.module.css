@@ -2,20 +2,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 3rem;
+    padding: 5rem;
     gap: 2rem;
+    position: relative;
 }
 
 .Overview_container_head hr {
-    width: 25%;
+    width: 100%;
     background-color: #1C1CF0;
     height: .25rem;
 }
 
 .Overview_container_head p {
+    position: absolute;
+    background-color: #F5F5F5;
+    padding: 0 1.5rem;
     color: #000;
     font-size: 3rem;
-    font-weight: 700;
+    font-weight: 900;
     width: max-content;
 }
 
@@ -23,44 +27,37 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
-    gap: 1rem;
+    gap: 2rem;
     padding: 1rem;
-    width: 50%;
 }
 
 .Overview_desc .course {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     padding: 1.5rem;
     border-radius: .5rem;
+    width: 50%;
+    height: 16rem;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: .5rem;
 }
 
-.Course_desc {
+.Overview_desc .course .Course_desc {
     display: flex;
     gap: .5rem;
 }
 
-.stage {
+.Overview_desc .course .Course_desc img {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.Overview_desc .course .stage {
     color: #E4311C;
     font-weight: 900;
     display: flex;
     align-items: center;
     gap: .5rem;
-}
-
-@media (width<1000px) {
-    .Overview_container_head p {
-        font-size: 1rem;
-    }
-
-    .Overview_container_head {
-        padding: 1rem;
-        gap: 1rem;
-    }
-
-    .Overview_desc {
-        width: 100%;
-        flex-direction: column;
-    }
-
 }

@@ -15,6 +15,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 1rem;
 }
 
 .Container {
@@ -23,6 +24,7 @@
     align-items: center;
     flex-direction: row;
     padding: 0 4rem;
+    gap: 1rem;
 }
 
 .Container_image_one {
@@ -102,11 +104,8 @@
     gap: 2rem;
 }
 
-.Lower_desc {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.desc {
+    width: 100%;
     text-align: center;
     font-size: 1.2rem;
 }
@@ -126,4 +125,31 @@
 .Lower_red b {
     background-color: #DC280B;
     padding: 0 .3rem;
+}
+
+@media(width<=820px) {
+    .Container {
+        flex-direction: column;
+    }
+
+    .Container_image_one {
+        width: 100%;
+    }
+
+    .Container_desc {
+        width: 100%;
+    }
+
+    .Container_head {
+        font-size: 4rem;
+        line-height: 4rem;
+    }
+
+    .desc {
+        font-size: 1rem;
+    }
+
+    .Lower_red {
+        font-size: .8rem;
+    }
 }

@@ -1,4 +1,4 @@
-.third {
+.WhoShouldAttend {
     background: #F5F5F5;
 }
 
@@ -6,71 +6,69 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 3rem;
+    padding: 5rem;
     gap: 2rem;
+    position: relative;
 }
 
 .Overview_container_head hr {
-    width: 25%;
-    color: blue;
+    width: 100%;
+    background-color: #1C1CF0;
+    height: .25rem;
 }
 
 .Overview_container_head p {
+    position: absolute;
     color: #000;
+    background-color: #F5F5F5;
+    padding: 0 1.5rem;
     font-size: 3rem;
-    font-weight: 700;
+    font-weight: 900;
+    width: max-content;
 }
 
-.sec {
+.section{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
-    padding: 3rem;
+    gap: 2rem;
+    padding: 1rem 2rem; 
 }
 
-.section_top {
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60%;
-    height: 6rem;
-    background-color: blue;
+    flex-direction: column;
+    text-align: center;
+}
+
+.container .box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.container .box_bottom {
+    width: 70%;
+}
+
+.container .box_top {
+    background-color: #1C1CF0;
     padding: 1rem;
-    border-radius: 8px;
-    color: white;
-}
-
-.sec_one {
+    height: 5rem;
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    border-bottom-right-radius: 1rem;
+    border-top-left-radius: 1rem;
 }
 
-.sec_two {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.section_mid {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 20%;
-}
-
-.section_mid img {
-    width: 20%;
-}
-
-.section_bottom {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+.container .box_mid img{
+    height: 8rem;
+} 
 
 @media (width<1000px) {
     .Overview_container_head p {

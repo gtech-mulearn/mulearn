@@ -3,12 +3,13 @@
     top: 0;
     display: flex;
     width: 100%;
-    padding: 2rem 0;
-    justify-content: space-around;
+    padding: 2rem;
+    justify-content: space-between;
     align-items: center;
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, .25);
     z-index: 1;
+    transition: all .5s ease-in-out;
 }
 
 .menu_bar a {
@@ -43,4 +44,23 @@
 
 .pre_rg a img {
     background-color: #DC280B;
+}
+
+@media(width<=820px) {
+    .menu_bar {
+        padding: 1rem;
+    }
+
+    .logo img {
+        height: 1rem;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .pre_rg a {
+        border-radius: .4rem;
+        padding: .5rem 1rem;
+    }
 }

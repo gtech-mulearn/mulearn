@@ -1,18 +1,17 @@
 import React from "react"
-import styles from './whatIsPathway.module.css'
-import img3 from "./assets/img3.webp";
+import styles from './About.module.css'
+import img3 from "../../assets/img3.webp";
 
-export default function what_is_pathway() {
+export default function About() {
     return (
-        <div>
+        <div id="about" className={styles.About}>
             <div class={styles.Overview_container_head}>
                 <hr />
                 <p>What is Pathway</p>
-                <hr />
             </div>
             <div class={styles.WhatIsPathway_main}>
                 <div class={styles.WhatIsPathway_img}>
-                    <img src={img3} />
+                    <img src={img3} alt="" />
                 </div>
                 <div class={styles.WhatIsPathway_desc}>
                     <p>
