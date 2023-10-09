@@ -103,6 +103,7 @@ export const editTask = async (
     level_id: string,
     ig_id: string,
     org_id: string,
+    discord_link: string,
     desc: string,
     id: string | undefined,
     toast: ToastAsPara
@@ -122,7 +123,8 @@ export const editTask = async (
                 description: desc,
                 level: level_id === "" ? null : level_id,
                 ig: ig_id === "" ? null : ig_id,
-                org: org_id === "" ? null : org_id
+                org: org_id === "" ? null : org_id,
+                discord_link: discord_link === "" ? null : discord_link
             }
         );
         toast({
@@ -159,6 +161,7 @@ export const createTask = async (
     level_id: string,
     ig_id: string,
     org_id: string,
+    discord_link: string,
     toast: ToastAsPara
 ) => {
     try {
@@ -176,7 +179,8 @@ export const createTask = async (
                 type: type_id,
                 level: level_id === "" ? null : level_id,
                 ig: ig_id === "" ? null : ig_id,
-                org: org_id === "" ? null : org_id
+                org: org_id === "" ? null : org_id,
+                discord_link: discord_link
             }
         );
         toast({
