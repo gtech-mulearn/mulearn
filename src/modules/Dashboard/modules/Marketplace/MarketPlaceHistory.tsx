@@ -1,22 +1,25 @@
-import styles from "./Marketplace.module.css";
+import styles from "./MarketPlaceHistory.module.css";
 import coin from "./assets/muCoin.svg";
 import i from "./assets/i.svg";
 import bg from "./assets/bgCard.svg";
 import { HintLogo } from "./assets/svg";
+import { style } from "d3";
 
 type Props = {};
 
-export const Marketplace = (props: Props) => {
-    const hello = (p: any) => {
-        console.log("hello");
+const MarketPlaceHistory = (props: Props) => {
+    const statusClr = (status: string) => {
+        if (status === "Delivered") return styles.green;
+        if (status === "Cancelled") return styles.red;
     };
+
     const data = [
         {
             img: bg,
             title: "ChatGPT Pro",
             desp: "Lorem Ipsum bla bla description I guess",
             coins: 20,
-            status: "Ordered",
+            status: "Cancelled",
             address:
                 "102, Dream Nest Opp.Tikka Hut, Mallamar Chokkabettu, Surathkal Mangaluru-575014",
             hints: "https://www.google.com"
@@ -26,7 +29,7 @@ export const Marketplace = (props: Props) => {
             title: "ChatGPT Pro",
             desp: "Lorem Ipsum bla bla description I guess",
             coins: 20,
-            status: "Ordered",
+            status: "Delivered",
             address:
                 "102, Dream Nest Opp.Tikka Hut, Mallamar Chokkabettu, Surathkal Mangaluru-575014",
             hints: "https://www.google.com"
@@ -104,7 +107,13 @@ export const Marketplace = (props: Props) => {
                                             <img src={coin} alt="" />
                                         </div>
                                     </div>
-                                    <div>
+                                    <div
+                                        className={
+                                            styles.status +
+                                            " " +
+                                            statusClr(status)
+                                        }
+                                    >
                                         <p>Status:</p>
                                         <h1>{status}</h1>
                                     </div>
@@ -128,3 +137,5 @@ export const Marketplace = (props: Props) => {
         </div>
     );
 };
+
+export default MarketPlaceHistory;
