@@ -23,7 +23,7 @@ export const updateSocials = (
     formikRef: any
 ) => {
     privateGateway
-        .put(dashboardRoutes.getSocials + "edit", socials)
+        .put(dashboardRoutes.getSocials + "edit/", socials)
         .then(response => {
             console.log(response);
         })
