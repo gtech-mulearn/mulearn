@@ -42,7 +42,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .campus_student_list_container .content .sec1 h1 {
@@ -67,7 +66,6 @@
     align-items: center;
     flex-direction: row;
     width: 50%;
-
 }
 
 .campus_student_list_container .content .sec1 .details_card .card {
@@ -172,7 +170,6 @@
         font-size: 17px;
         font-weight: 800;
     }
-    
 }
 
 @media (max-width: 1155px) {
@@ -210,24 +207,20 @@
     }
 
     .campus_student_list_container .content .sec2 {
-        margin-top: .7rem;
+        margin-top: 0.7rem;
         text-align: center;
     }
     .campus_student_list_container .content .sec1 .details_card .card_one {
         width: 100%;
     }
-
-    
 }
-@media (max-width:300px){
+@media (max-width: 300px) {
     .campus_student_list_container .content .sec1 .details_card .card_one {
         width: 80%;
     }
-    .campus_student_list_container .content .sec1 .sec_clg{
+    .campus_student_list_container .content .sec1 .sec_clg {
         width: 90%;
-
     }
-
 }
 
 .loader_container {
@@ -274,4 +267,42 @@
     .graphs .container {
         width: 100%;
     }
+}
+
+.no_org {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.no_org_heading {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.no_org_tagline {
+    font-size: 1rem;
+    max-width: 25rem;
+    text-align: center;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.no_org_button {
+    padding: 1rem 0.75rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: #0077b6;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.no_org_button:hover {
+    background-color: #0077b6;
 }

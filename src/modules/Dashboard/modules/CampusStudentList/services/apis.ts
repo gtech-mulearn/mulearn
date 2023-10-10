@@ -27,7 +27,8 @@ export const getStudentDetails = (
     selectedValue: number,
     setTotalPages?: UseStateFunc<number>,
     search?: string,
-    sortID?: string
+    sortID?: string,
+    setNoOrg?: UseStateFunc<boolean>
 ) => {
     privateGateway
         .get(dashboardRoutes.getStudentDetails, {
@@ -59,6 +60,7 @@ export const getStudentDetails = (
         )
         .catch(error => {
             console.log(error);
+            if (setNoOrg) setNoOrg(true);
         });
 };
 export const getCampusDetails = (setCampusData: campusData) => {
@@ -120,8 +122,13 @@ export const getStudentLevel = async (errHandler: (err: string) => void) => {
             dashboardRoutes.getStudentLevels
         );
         const data = response.data.response
-            .sort((a: studentLevelType, b: studentLevelType) => a.level - b.level)
-            .map((data: studentLevelType) => [`Level ${data.level}`, data.students]);
+            .sort(
+                (a: studentLevelType, b: studentLevelType) => a.level - b.level
+            )
+            .map((data: studentLevelType) => [
+                `Level ${data.level}`,
+                data.students
+            ]);
 
         return data;
     } catch (err: any) {

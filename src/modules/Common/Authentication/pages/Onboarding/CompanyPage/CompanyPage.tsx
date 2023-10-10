@@ -82,7 +82,7 @@ export default function CompanyPage() {
         };
 
         if (userData.referral_id)
-            newUserData["referral"] = { mu_id: userData.referral_id };
+            newUserData["referral"] = { muid: userData.referral_id };
         if (userData.param) {
             newUserData["integration"]["param"] = userData.param;
             newUserData["integration"]["title"] = "DWMS";

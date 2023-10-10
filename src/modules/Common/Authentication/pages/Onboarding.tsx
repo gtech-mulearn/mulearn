@@ -192,7 +192,7 @@ const Onboarding = (props: Props) => {
                     mentorRole: "",
                     areaOfInterest: [],
                     general: "",
-                    mu_id: ""
+                    muid: ""
                 });
             });
         }
@@ -219,36 +219,14 @@ const Onboarding = (props: Props) => {
         mentorRole: "",
         areaOfInterest: [],
         general: "",
-        mu_id: referralId ? referralId : ""
+        muid: referralId ? referralId : ""
     };
 
     const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
         if (values.organization != "") {
-            //if values.organization doesn't exist in values.community then push it
             if (!values.community.includes(values.organization))
                 values.community.push(values.organization);
         }
-
-        // const userData = {
-        //     first_name: values.firstName, //required
-        //     last_name: values.lastName === "" ? null : values.lastName,
-        //     email: values.email, //required
-        //     mobile: values.mobile, //required
-        //     gender: values.gender === "" ? null : values.gender,
-        //     dob: values.dob === "" ? null : values.dob,
-        //     role: role[0]["id"] == "" ? null : role[0]["id"], //required
-        //     organizations:
-        //         values.organization === "" && values.community.length === 0
-        //             ? null
-        //             : values.community, //required except for individual
-        //     dept: values.dept === "" ? null : values.dept, //required for student and enabler
-        //     year_of_graduation: values.yog === "" ? null : values.yog, //required for student
-        //     area_of_interests: values.areaOfInterest, //required,
-        //     password: values.password, //required
-        //     mu_id: values.mu_id === "" ? null : values.mu_id,
-        //     param: param ? param : null,
-        //     invite_code: inviteCode ? inviteCode : null,
-        // };
 
         const userData: {
             user: {
@@ -259,7 +237,7 @@ const Onboarding = (props: Props) => {
                 password: any;
                 role?: string | null;
             };
-            organization: {
+            organization?: {
                 organizations: any;
                 verified: boolean;
                 department?: any | null;
@@ -270,7 +248,7 @@ const Onboarding = (props: Props) => {
                 title: string | null;
             };
             referral?: {
-                mu_id?: any;
+                muid?: any;
                 invite_code?: any;
             };
         } = {
@@ -280,14 +258,8 @@ const Onboarding = (props: Props) => {
                 email: values.email, //required
                 mobile: values.mobile, //required
                 password: values.password
-            },
-            organization: {
-                organizations:
-                    values.organization === "" && values.community.length === 0
-                        ? null
-                        : values.community, //required except for individual
-                verified: roleVerified,
-            }, //required for student
+            }
+
             //required
         };
 
@@ -298,23 +270,26 @@ const Onboarding = (props: Props) => {
             };
         }
 
-        if(role && role[0] && role[0]["id"]){
+        if (role && role[0] && role[0]["id"]) {
             userData.user.role = role[0]["id"] == "" ? null : role[0]["id"];
         }
 
-        if(role[0]["title"] == "Student"  )
-        {
-            userData.organization.graduation_year = values.yog === "" ? null : values.yog;
-        }
-        
-        if(role[0]["title"] == "Student" || role[0]["title"] == "Enabler" )
-        {
-            userData.organization.department= values.dept === "" ? null : values.dept //required for student and enabler
+        if (role[0]["title"] == "Student" && userData.organization) {
+            userData.organization.graduation_year =
+                values.yog === "" ? null : values.yog;
         }
 
-        if (values.mu_id) {
+        if (
+            (role[0]["title"] == "Student" || role[0]["title"] == "Enabler") &&
+            userData.organization
+        ) {
+            userData.organization.department =
+                values.dept === "" ? null : values.dept; //required for student and enabler
+        }
+
+        if (values.muid) {
             userData["referral"] = {
-                mu_id: values.mu_id
+                muid: values.muid
             };
         }
 
@@ -322,6 +297,15 @@ const Onboarding = (props: Props) => {
             userData["referral"] = {
                 invite_code: inviteCode ? inviteCode : null
             };
+        }
+
+        if (
+            values.organization !== "" &&
+            values.community.length !== 0 &&
+            userData.organization
+        ) {
+            userData.organization.organizations = values.community;
+            userData.organization.verified = roleVerified;
         }
 
         registerUser(
@@ -1014,98 +998,6 @@ const Onboarding = (props: Props) => {
                                         </div>
                                     </div>
                                     <div className={styles.inputs}>
-                                        {/* <div className={styles.input_container}>
-                                            <div
-                                                className={
-                                                    styles.grouped_inputs
-                                                }
-                                            >
-                                                <div
-                                                    style={{ width: "49%" }}
-                                                    className={
-                                                        styles.input_container
-                                                    }
-                                                >
-                                                    <label htmlFor="">
-                                                        Gender
-                                                    </label>
-                                                    <select
-                                                        name="gender"
-                                                        onBlur={
-                                                            formik.handleBlur
-                                                        }
-                                                        onChange={
-                                                            formik.handleChange
-                                                        }
-                                                        value={
-                                                            formik.values.gender
-                                                        }
-                                                        disabled={
-                                                            param ? true : false
-                                                        }
-                                                    >
-                                                        <option value="">
-                                                            Select gender
-                                                        </option>
-                                                        <option value="male">
-                                                            <span
-                                                                className={
-                                                                    styles.gender
-                                                                }
-                                                            >
-                                                                ♂
-                                                            </span>{" "}
-                                                            Male
-                                                        </option>
-                                                        <option value="female">
-                                                            <span
-                                                                className={
-                                                                    styles.gender
-                                                                }
-                                                            >
-                                                                ♀
-                                                            </span>{" "}
-                                                            Female
-                                                        </option>
-                                                        <option value="other">
-                                                            Other
-                                                        </option>
-                                                        <option value="not to say">
-                                                            Prefer not to say
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div
-                                                    style={{ width: "49%" }}
-                                                    className={
-                                                        styles.input_container
-                                                    }
-                                                >
-                                                    <label htmlFor="">
-                                                        Date of Birth
-                                                    </label>
-                                                    <input
-                                                        id="gender_field"
-                                                        name="dob"
-                                                        type="date"
-                                                        placeholder="dd/mm/yyyy"
-                                                        className={styles.input}
-                                                        onBlur={
-                                                            formik.handleBlur
-                                                        }
-                                                        onChange={
-                                                            formik.handleChange
-                                                        }
-                                                        value={
-                                                            formik.values.dob
-                                                        }
-                                                        disabled={
-                                                            param ? true : false
-                                                        }
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div> */}
                                         <div className={styles.input_container}>
                                             <div
                                                 style={{ width: "100%" }}
@@ -1865,16 +1757,11 @@ const Onboarding = (props: Props) => {
                                         <div className={styles.input_container}>
                                             <label htmlFor="">
                                                 Referral id
-                                                {/* <span
-                                                    className={styles.required}
-                                                >
-                                                    *
-                                                </span> */}
                                             </label>
                                             <input
                                                 id="referralId"
                                                 type="text"
-                                                name="mu_id"
+                                                name="muid"
                                                 placeholder="Referral id , if any"
                                                 className={styles.input}
                                                 onBlur={formik.handleBlur}
@@ -1882,104 +1769,20 @@ const Onboarding = (props: Props) => {
                                                     referralId ? true : false
                                                 }
                                                 onChange={formik.handleChange}
-                                                value={formik.values.mu_id}
+                                                value={formik.values.muid}
                                             />
-                                            {formik.touched.mu_id &&
-                                            formik.errors.mu_id ? (
+                                            {formik.touched.muid &&
+                                            formik.errors.muid ? (
                                                 <div
                                                     className={
                                                         styles.error_message
                                                     }
                                                 >
-                                                    {formik.errors.mu_id}
+                                                    {formik.errors.muid}
                                                 </div>
                                             ) : null}
                                         </div>
                                     </div>
-
-                                    {/* <div className={styles.inputs}>
-                                        <div className={styles.label_container}>
-                                            <label htmlFor="">
-                                                Areas of Interest / Stack{" "}
-                                                <span
-                                                    className={styles.required}
-                                                >
-                                                    *
-                                                </span>
-                                            </label>
-                                        </div>
-
-                                        <div className={styles.aoi_container}>
-                                            {aoiAPI.map((aoi, i) => {
-                                                const checked =
-                                                    formik.values.areaOfInterest.includes(
-                                                        aoi.id as never
-                                                    );
-                                                const disabled =
-                                                    formik.values.areaOfInterest
-                                                        .length >= 3 &&
-                                                    !checked;
-                                                return (
-                                                    <label key={i}>
-                                                        <input
-                                                            name="areaOfInterest"
-                                                            onBlur={
-                                                                formik.handleBlur
-                                                            }
-                                                            value={
-                                                                formik.values
-                                                                    .areaOfInterest
-                                                            }
-                                                            // value={aoi.id}
-                                                            type="checkbox"
-                                                            checked={checked}
-                                                            disabled={disabled}
-                                                            onChange={e => {
-                                                                const selectedId =
-                                                                    aoi.id;
-                                                                if (checked) {
-                                                                    formik.setFieldValue(
-                                                                        "areaOfInterest",
-                                                                        formik.values.areaOfInterest.filter(
-                                                                            aois =>
-                                                                                aois !==
-                                                                                selectedId
-                                                                        )
-                                                                    );
-                                                                } else {
-                                                                    formik.setFieldValue(
-                                                                        "areaOfInterest",
-                                                                        [
-                                                                            ...formik
-                                                                                .values
-                                                                                .areaOfInterest,
-                                                                            selectedId
-                                                                        ].slice(
-                                                                            -3
-                                                                        )
-                                                                    );
-                                                                }
-                                                            }}
-                                                        // required
-                                                        />
-                                                        <span>{aoi.name}</span>
-                                                    </label>
-                                                );
-                                            })}
-                                            {formik.touched.areaOfInterest &&
-                                                formik.values.areaOfInterest
-                                                    .length == 0 ? (
-                                                <div
-                                                    className={
-                                                        styles.error_message
-                                                    }
-                                                >
-                                                    Please select at least one
-                                                    area of interest
-                                                </div>
-                                            ) : null}
-                                        </div>
-                                    </div> */}
                                 </div>
                                 <div className={styles.error_message}>
                                     {formik.errors.general || ""}
@@ -2046,7 +1849,6 @@ const Onboarding = (props: Props) => {
                                             className={styles.submit_button}
                                             type="submit"
                                             onClick={e => {
-                                                // e.preventDefault();
                                                 validate(formik.values);
                                                 if (
                                                     formik.values.firstName ==
@@ -2057,8 +1859,6 @@ const Onboarding = (props: Props) => {
                                                     formik.errors.password ||
                                                     formik.errors
                                                         .confirmPassword ||
-                                                    // formik.errors
-                                                    //     .areaOfInterest ||
                                                     (role[0]["title"] ==
                                                         "Student" ||
                                                     role[0]["title"] ==
@@ -2071,23 +1871,8 @@ const Onboarding = (props: Props) => {
                                                     "Student"
                                                         ? formik.errors.yog
                                                         : null)
-                                                    // ||
-                                                    // (role[0]["title"] == "Mentor"
-                                                    //   ? formik.errors.mentorRole
-                                                    //   : null) ||
-                                                    // (formik.values.mentorRole == "Company"
-                                                    //   ? formik.errors.organization
-                                                    //   : null) ||
-                                                    // (formik.values
-                                                    //     .areaOfInterest
-                                                    //     .length == 0
-                                                    //     ? true
-                                                    //     : null)
                                                 ) {
-                                                    //console.log(formik.errors);
                                                 } else {
-                                                    // console.log(formik.values);
-                                                    // console.log("no error");
                                                     onSubmit(formik.values, {});
                                                 }
                                             }}

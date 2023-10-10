@@ -56,8 +56,10 @@ export const getEditUserProfile = (
 
 export const patchEditUserProfile = (
     toast: ToastAsPara,
-    editedProfileDetails: profileDetails
-) => {    
+    editedProfileDetails: profileDetails,
+    setEditPopUp: (value: boolean) => void,
+    setFieldError: (field: string, message: string) => void
+) => {
     privateGateway
         .patch(dashboardRoutes.getEditUserProfile, editedProfileDetails)
         .then(response => {
@@ -69,9 +71,24 @@ export const patchEditUserProfile = (
                 duration: 3000,
                 isClosable: true
             });
+            setTimeout(() => {
+                setEditPopUp(false);
+            }, 1000);
         })
         .catch(error => {
-            console.log(error);
+            console.log(error.response.data.response);
+            const fieldErrors = error.response.data.response;
+            Object.keys(fieldErrors).forEach(field => {
+                console.log(`${field}: ${fieldErrors[field][0]}`);
+                setFieldError(field, fieldErrors[field][0]);
+                toast({
+                    title: `${field} Error`,
+                    description: `${fieldErrors[field][0]}`,
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true
+                });
+            });
         });
 };
 
