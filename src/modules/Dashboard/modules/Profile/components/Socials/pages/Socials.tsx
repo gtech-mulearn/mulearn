@@ -79,7 +79,7 @@ const Socials = (props: Props) => {
     const formikRef = useRef(formik);
 
     useEffect(() => {
-        getSocials(setSocials, formikRef);
+        getSocials(setSocials, formikRef, id);
         // console.log(formik.values);
     }, []);
     return (

@@ -3,9 +3,13 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 
 type setSocials = UseStateFunc<any>;
 
-export const getSocials = (setSocials: any, formikRef: any) => {
+export const getSocials = (
+    setSocials: any,
+    formikRef: any,
+    id: string | undefined
+) => {
     privateGateway
-        .get(dashboardRoutes.getSocials)
+        .get(dashboardRoutes.getSocials + id)
         .then(response => {
             const socialsData = response.data.response;
             setSocials(socialsData);
