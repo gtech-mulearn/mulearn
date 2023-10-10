@@ -9,7 +9,7 @@ export default function mainpage() {
             <section className={styles.First}>
                 <div className={styles.Container}>
                     <div className={styles.Container_image_one}>
-                        <img src={img2} />
+                        <img alt="hero" src={img2} />
                     </div>
                     <div className={styles.Container_desc}>
                         <div className={styles.Container_head}>
