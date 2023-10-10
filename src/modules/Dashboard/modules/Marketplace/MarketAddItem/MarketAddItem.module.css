@@ -1,0 +1,43 @@
+.AddItem {
+    width: 100%;
+}
+
+.AddItem form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.AddItem > h2 {
+    color: black;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: left;
+    height: 3rem;
+    border-bottom: solid rgba(177, 193, 242, 1) 1px;
+}
+
+.AddItem > h3 {
+    padding-top: 0.5rem;
+    color: rgba(112, 121, 148, 1);
+    font-size: 20px;
+    font-weight: 500;
+    text-align: left;
+}
+.padTopButton {
+    padding-top: 1.2rem;
+}
+.padLeftButton {
+    margin-left: 0.5rem;
+}
+
+.input {
+    background-color: transparent;
+    max-width: 500px;
+    flex: 1 1 0;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}

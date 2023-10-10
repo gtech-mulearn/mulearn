@@ -176,6 +176,12 @@ const Marketplace = lazy(
             "./modules/Dashboard/modules/Marketplace/UserMarketplace/UserMarketplce"
         )
 );
+const MarketAddItem = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/Marketplace/MarketAddItem/MarketAddItem"
+        )
+);
 
 import { roles } from "./services/types";
 import SecureAuthRoutes from "./services/authCheck";
@@ -573,6 +579,10 @@ function App() {
                         {
                             path: "marketplace-history",
                             element: <MarketPlaceHistory />
+                        },
+                        {
+                            path: "marketplace-additem",
+                            element: <MarketAddItem />
                         }
                         // {
                         //     path: "settings",

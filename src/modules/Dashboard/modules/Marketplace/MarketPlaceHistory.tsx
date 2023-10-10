@@ -4,6 +4,7 @@ import i from "./assets/i.svg";
 import bg from "./assets/bgCard.svg";
 import { HintLogo } from "./assets/svg";
 import { style } from "d3";
+import { useState } from "react";
 
 type Props = {};
 
@@ -13,7 +14,7 @@ const MarketPlaceHistory = (props: Props) => {
         if (status === "Cancelled") return styles.red;
     };
 
-    const data = [
+    const [data, setData] = useState([
         {
             img: bg,
             title: "ChatGPT Pro",
@@ -64,7 +65,7 @@ const MarketPlaceHistory = (props: Props) => {
                 "102, Dream Nest Opp.Tikka Hut, Mallamar Chokkabettu, Surathkal Mangaluru-575014",
             hints: "https://www.google.com"
         }
-    ];
+    ]);
     return (
         <div className={styles.wrapper}>
             <div className={styles.topSectionWrapper}>
