@@ -379,7 +379,7 @@ export const getInfo = async (code: string) => {
         const response = await privateGateway.get(
             `${organizationRoutes.postGetInfo}${code}/`
         );
-        return response.data.response;
+        return response.data.response[0];
     } catch (err: unknown) {
         const error = err as AxiosError;
     }
