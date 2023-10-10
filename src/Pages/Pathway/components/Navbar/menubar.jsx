@@ -22,7 +22,7 @@ export default function Menubar() {
     return (
         <div ref={navbar} className={styles.menu_bar}>
             <div className={styles.logo}>
-                <a href="#"><img src={img4} alt="Logo" /></a>
+                <a href="/"><img src={img4} alt="Logo" /></a>
             </div>
             <div className={styles.menu}>
                 <a href="#heroSection">Home</a>
@@ -31,7 +31,7 @@ export default function Menubar() {
                 <a href="#about">About Pathway</a>
             </div>
             <div className={styles.pre_rg}>
-                <a href="#">
+                <a href="/">
                     <img src={pre} alt="Pre-register" />
                     Pre-register
                 </a>
